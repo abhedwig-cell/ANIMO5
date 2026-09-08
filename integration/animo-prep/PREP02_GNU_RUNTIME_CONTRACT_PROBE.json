@@ -1,0 +1,176 @@
+{
+  "evidence_id": "ANIMO-PREP02-GNU-RUNTIME-CONTRACT-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_NOT_REFERENCE",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep01-bootstrap",
+  "source_archive": {
+    "artifact": "ANIMO_4.1.5.53(3).zip",
+    "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "embedded_version": "animo4.1.5",
+    "embedded_revision": "53",
+    "embedded_toolchain": "Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]",
+    "historical_project_file_present": false,
+    "historical_native_executable_present": false
+  },
+  "testbank": {
+    "artifact": "ANIMO_testbank.zip",
+    "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "runner_reference": "animo41.exe",
+    "runner_referenced_executable_present": false
+  },
+  "diagnostic_build": {
+    "compiler": "GNU Fortran 14.2.0",
+    "executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "reference_qualified": false
+  },
+  "explicit_case_adapter": {
+    "tool": "tools/prepare_gnu_case.py",
+    "tool_persist_commit": "08330a120afdbedb9dde5245a8062f17e1cc65a0",
+    "test_persist_commit": "5664c01cf589758e7e80edb01b02dea9c6e1accc",
+    "frozen_testbank_modified": false,
+    "adaptations": [
+      "Windows backslash path separators in execution-copy direct file changed to slash",
+      "case-insensitive Windows filename resolution materialized as exact-path execution-copy aliases",
+      "quoted two-character PrintBalLabel lexical form unquoted with character payload unchanged",
+      "PowerStation-compatible sequential-unformatted framing converted to GNU framing with logical payload bytes unchanged"
+    ],
+    "scientific_input_values_changed": false,
+    "unit_tests": {
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "coverage": [
+        "case-insensitive path resolution",
+        "PrintBalLabel payload preservation",
+        "multi-block PowerStation logical-record reconstruction"
+      ]
+    }
+  },
+  "case_execution": [
+    {
+      "case": "CranGrass",
+      "result": "SUCCESSFUL_COMPLETION",
+      "windows_path_separator_replacements": 14,
+      "case_aliases": 9,
+      "quoted_printbal_labels_unquoted": 2,
+      "hydrology_logical_records": 23393
+    },
+    {
+      "case": "CranMais",
+      "result": "SUCCESSFUL_COMPLETION",
+      "windows_path_separator_replacements": 14,
+      "case_aliases": 8,
+      "quoted_printbal_labels_unquoted": 2,
+      "hydrology_logical_records": 26313
+    },
+    {
+      "case": "GrassPeat",
+      "result": "SUCCESSFUL_COMPLETION",
+      "windows_path_separator_replacements": 14,
+      "case_aliases": 9,
+      "quoted_printbal_labels_unquoted": 4,
+      "hydrology_logical_records": 6497
+    },
+    {
+      "case": "LWKM_gras_1040.2021.2045",
+      "result": "SUCCESSFUL_COMPLETION",
+      "windows_path_separator_replacements": 10,
+      "case_aliases": 7,
+      "quoted_printbal_labels_unquoted": 3,
+      "hydrology_logical_records": 23417
+    },
+    {
+      "case": "Puitmijn_Cranendonck_60",
+      "result": "SUCCESSFUL_COMPLETION",
+      "windows_path_separator_replacements": 9,
+      "case_aliases": 7,
+      "quoted_printbal_labels_unquoted": 6,
+      "hydrology_logical_records": 43847
+    },
+    {
+      "case": "RuurloGrass",
+      "result": "SUCCESSFUL_COMPLETION",
+      "windows_path_separator_replacements": 14,
+      "case_aliases": 8,
+      "quoted_printbal_labels_unquoted": 3,
+      "hydrology_logical_records": 11691
+    },
+    {
+      "case": "STONE_akk_0006.2001.2015",
+      "result": "SUCCESSFUL_COMPLETION",
+      "windows_path_separator_replacements": 10,
+      "case_aliases": 7,
+      "quoted_printbal_labels_unquoted": 3,
+      "hydrology_logical_records": 7037
+    },
+    {
+      "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+      "result": "SUCCESSFUL_COMPLETION",
+      "windows_path_separator_replacements": 10,
+      "case_aliases": 8,
+      "quoted_printbal_labels_unquoted": 3,
+      "hydrology_logical_records": 14265
+    },
+    {
+      "case": "GHGMais",
+      "result": "BLOCKED_SOURCE_TESTCASE_CONTRACT_LINEAGE_MISMATCH",
+      "stop": 1995,
+      "message": "label >outGHG: not found in Input/general.inp",
+      "windows_path_separator_replacements": 10,
+      "case_aliases": 1,
+      "quoted_printbal_labels_unquoted": 2,
+      "hydrology_logical_records": 40189
+    }
+  ],
+  "ruurlo_build_semantics_matrix": [
+    {
+      "id": "G0",
+      "flags": [
+        "-fdefault-real-8",
+        "-fdefault-double-8",
+        "-fno-automatic"
+      ],
+      "result": "SUCCESSFUL_COMPLETION",
+      "message_lines": 48,
+      "nan_mentions": 0,
+      "oxydem_nonconvergence_warnings": 0,
+      "classification": "CURRENT_DIAGNOSTIC_CONTRACT"
+    },
+    {
+      "id": "G1",
+      "flags": [
+        "-fdefault-real-8",
+        "-fdefault-double-8"
+      ],
+      "result": "RUNTIME_FAILURE_FINAL_BALANCE_WRITE",
+      "failure": "Outbal_write.for dynamic format LineWA missing initial left parenthesis",
+      "classification": "STATIC_LOCAL_STORAGE_BEHAVIOURALLY_REQUIRED"
+    },
+    {
+      "id": "G2",
+      "flags": [
+        "-fno-automatic"
+      ],
+      "result": "STOP_1111",
+      "classification": "FOUR_BYTE_DEFAULT_REAL_NOT_VIABLE"
+    },
+    {
+      "id": "G3",
+      "flags": [
+        "-fdefault-real-8",
+        "-fno-automatic"
+      ],
+      "omitted_flag": "-fdefault-double-8",
+      "result": "NOMINAL_SUCCESS_WITH_NUMERICAL_PATHOLOGY",
+      "message_lines": 15624,
+      "oxydem_nonconvergence_warnings": 1947,
+      "nan_mentions": 85463,
+      "normalized_non_input_files_compared": 74,
+      "normalized_non_input_files_differing": 59,
+      "classification": "DOUBLE_PRECISION_SEMANTICS_BEHAVIOURALLY_MATERIAL"
+    }
+  ],
+  "decision": "DIAGNOSTIC_GNU_RUNTIME_CONTRACT_NARROWED_REFERENCE_NOT_QUALIFIED",
+  "reference_gate": "BLOCKED_HISTORICAL_REFERENCE_ENVIRONMENT_REQUIRED",
+  "production_migration_admitted": false
+}
