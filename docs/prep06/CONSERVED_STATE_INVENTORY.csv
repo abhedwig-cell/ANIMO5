@@ -1,0 +1,23 @@
+id,quantity,state_family,start_state,result_state,unit_or_storage_dimension,primary_mutator,commit_semantics,legacy_balance_family,scope,source_bound_note
+W-IC,water,canopy interception,Sic,Sict,m water,Hydro_detailed/Input_hydro,Init: Sic=Sict,Bawa,surface profile only,Bawa has Eint flux but Outbal_calc does not receive Sic/Sict; TCD-018 already confirmed
+W-SN,water,snow storage,Snla,Snt,m water,Input_hydro/Hydro_detailed,Init: Snla=Snt,Bawa,surface profile,Stsn_b/Stsn_e
+W-PN,water,ponding storage detailed,Pn,Pnt,m water,Input_hydro/Hydro_detailed,Init: Pn=Pnt,Bawa,surface profile,Stpn_b/Stpn_e for Iwa=2
+W-WA,water,surface water aggregated,Wale,Walet,m water,Input_hydro/Hydro_aggregated,Init: Wale=Walet,Bawa,surface profile,"Stpn_b/Stpn_e for Iwa=1 using -min(Wale,0)"
+W-SM,water,soil matrix water,Mofro,Mofrt,m3/m3,Input_hydro + Hydro_*,Init: Mofro=Mofrt,Bawa,soil layers,storage = He*Mofr
+W-MP,water,macropore water,SrWaMpOld,SrWaMp,m water,Input_hydro + MAPOHYDRO,Init: SrWaMpOld=SrWaMp,none in Bawa interface,macropore domains,MAPOHYDRO explicitly includes storage in Badev/MpDev; Outbal_calc does not receive SrWaMp
+C-FOM,carbon/OM,fresh solid organic matter fractions,Os,Rsos,kg/m2 OM,Addit + Resp_miner + GHG adjustments,Init: Os=Rsos,Bfom; Bano via Nifr; Bapo via Pofr,soil layers,direct conserved solid store
+C-HU,carbon/OM,humus original,Huos,Rshuos,kg/m2 OM,Addit + Resp_miner + GHG adjustments,Init: Huos=Rshuos,Bahu; Bano/Bapo via Nifrhu/Pofrhu,soil layers,direct conserved solid store
+C-HX,carbon/OM,humus exudate-derived,Huex,Rshuex,kg/m2 OM,Addit + Resp_miner,Init: Huex=Rshuex,Bahu; Bano/Bapo via Nifrhu/Pofrhu,soil layers,separate state but combined humus ledger family
+C-EX,carbon/OM,root exudate organic matter,Ex,Rsex,kg/m2 OM,Addit + Resp_miner,Init: Ex=Rsex,Bfom; Bano/Bapo via Nifrex/Pofrex,soil layers,direct conserved solid store
+C-DOM-L,C/N/P,labile dissolved organic family,Codiorma/Codiorni/Codiorpo,Rscodiorma/Rscodiorni/Rscodiorpo,kg/m3,Transca -> Transport -> Transsub,Init copies result to current,Bdom/Bano/Bapo,layer 0 + soil layers,storage includes aqueous + Rhbd*Socfdom sorbed contribution
+C-DOM-S,C/N/P,stable dissolved organic family,CoStdiorma/CoStdiorni/CoStdiorpo,RsCoStdiorma/RsCoStdiorni/RsCoStdiorpo,kg/m3,Resp_miner internal transport/transformation,Init copies result to current,Bdom/Bano/Bapo,soil layers; layer 0 forced zero in Addit,storage includes aqueous + Rhbd*Socfsdo sorbed contribution
+N-NH4-AQ,nitrogen,aqueous NH4,Conh,Rsconh,kg/m3 N,Transport -> Transsub,Init: Conh=Rsconh,Banh,layer 0 + soil layers,paired with adsorbed Cxnh
+N-NH4-AD,nitrogen,adsorbed NH4,Cxnh,Rscxnh,kg/m2 N layer amount,Transport -> Transsub,Init: Cxnh=Rscxnh,Banh,soil layers,stored separately from aqueous NH4
+N-NO3,nitrogen,nitrate solution,Coni,Rsconi,kg/m3 N,Transport -> Transsub,Init: Coni=Rsconi,Bani,layer 0 + soil layers,no separate sorbed store
+P-PO4-AQ,phosphorus,dissolved ortho-P,Copo,Rscopo,kg/m3 P,Transgen -> Transorp/Transsub,Init: Copo=Rscopo,Bapp,layer 0 + soil layers,aqueous store
+P-FAST,phosphorus,fast sorption sites,Amcxfa,Rsamcxfa,kg/m3 P,Transgen/Transorp,Init copies per site,Bapp,soil layers,sum exposed as Toamcxfa/Rstoamcxfa
+P-SLOW,phosphorus,slow sorption sites,Amcxsl,Rsamcxsl,kg/m3 P,Transgen/Transorp,Init copies per site,Bapp,soil layers,sum exposed as Toamcxsl/Rstoamcxsl; TCD-024 affects site parameter binding
+P-PR,phosphorus,precipitated P,Ampopr,Rsampopr,kg/m3 P,Transgen/Transorp + Addit,Init: Ampopr=Rsampopr,Bapp,soil layers,separate precipitated storage
+G-CH4,GHG,methane state,CoCH4/CsCH4,RsCoCH4/RsCsCH4,source-specific concentration/storage,GHGasses/GHG transport,Init explicitly copies CoCH4=RsCoCH4; Cs semantics require reconciliation,Btom / GHG outputs,soil profile,4.1.5 extension; exact theory-ledger contract still open
+G-N2O,GHG,nitrous oxide state,CoN2O/CsN2O,RsCoN2O/RsCsN2O,source-specific concentration/storage,GHGasses/GHG transport,Init explicitly copies CoN2O=RsCoN2O; Cs semantics require reconciliation,Btom / N-linked GHG terms,soil profile,4.1.5 extension; exact theory-ledger contract still open
+MP-SOL,C/N/P,macropore dissolved solutes,CoMpDiorMa/CoMpDiorNi/CoMpDiorPo; CoMpNh/CoMpNi/CoMpPo,RsCoMp*,kg/m3,MAPOTRANSPORT,Init copies RsCoMp* to CoMp*,no storage terms in main Outbal_calc interface,macropore domains,MAPOTRANSPORT checks SrWaMp*CoMp storage internally; main ledger coverage incomplete/ambiguous
