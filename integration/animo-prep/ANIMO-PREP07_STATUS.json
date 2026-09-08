@@ -1,0 +1,114 @@
+{
+  "work_unit": "ANIMO-PREP07",
+  "title": "Cross-Species Transfer & Ledger Identity Audit",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep07-transfer-species-identity",
+  "date": "2026-09-08",
+  "parent_closeout": "fe832c15692768b94869235e4ea53065682189b9",
+  "evaluated_evidence_head_before_status": "d819344a1fe71637fee5bd6755f1569046fd8655",
+  "decision": "QUALIFIED_SOURCE_BOUND_TRANSFER_SPECIES_IDENTITY_AUDIT_NO_NEW_ACTIVE_DIRECT_BINDING_DEFECT_REFERENCE_QUALIFICATION_STILL_BLOCKED",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "strong-name cross-species assignments, local formal/actual species identity, named generic transport bindings, and numeric same-array cross-slot identity",
+  "reference_qualified": false,
+  "corrected_legacy_admitted": false,
+  "legacy_source_modified": false,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "production_migration_admitted": false,
+  "source_identity": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "gates": {
+    "direct_assignment_species_identity": {
+      "fortran_source_members": 60,
+      "assignment_statements_scanned": 9117,
+      "strong_cross_species_assignments": 13,
+      "confirmed_existing_tcd023_statements": 2,
+      "intentional_ratio_or_stoichiometric_bindings": 7,
+      "latent_dormant_surface_bindings": 4,
+      "unresolved_candidates": 0,
+      "status": "PASS_NO_NEW_ACTIVE_DIRECT_DEFECT"
+    },
+    "local_procedure_species_identity": {
+      "local_subroutine_definitions": 114,
+      "call_statements": 1354,
+      "aligned_local_calls": 1347,
+      "strong_species_formal_actual_pairs": 450,
+      "strong_species_mismatches": 0,
+      "status": "PASS"
+    },
+    "named_generic_transport_species_identity": {
+      "named_calls_audited": 12,
+      "strong_species_actuals_checked": 35,
+      "species_mismatches": 0,
+      "status": "PASS"
+    },
+    "numeric_same_array_cross_slot_identity": {
+      "findings": 19,
+      "intentional_transfer_partitions": 18,
+      "existing_tcd027": 1,
+      "unresolved_candidates": 0,
+      "status": "PASS_NO_NEW_DEFECT"
+    }
+  },
+  "existing_findings_rediscovered_not_duplicated": [
+    "TCD-023",
+    "TCD-027"
+  ],
+  "previously_resolved_family_not_duplicated": [
+    "TCD-017 stable-DOP AdStdiorpopl redistribution omission",
+    "TCD-017 exudate-humus P Adhuexpopl ledger binding"
+  ],
+  "latent_not_promoted": [
+    {
+      "surface": "Outsel/Outselorg layer-0 RuDON stable contribution",
+      "binding": "AvcoStdiorma(0) where N-specific stable concentration would be expected",
+      "reason": "PREP06 established stable layer-0 DOM/DON/DOP state is dynamically dormant in revision 53"
+    },
+    {
+      "surface": "Outsel/Outselorg layer-0 RuDOP stable contribution",
+      "binding": "AvcoStdiorma(0) where P-specific stable concentration would be expected",
+      "reason": "PREP06 established stable layer-0 DOM/DON/DOP state is dynamically dormant in revision 53"
+    }
+  ],
+  "deliverables": {
+    "contract": "docs/prep07/WORK_UNIT_CONTRACT.md",
+    "direct_identity_analysis": "docs/prep07/CROSS_SPECIES_IDENTITY_AUDIT.md",
+    "pool_slot_and_transport_analysis": "docs/prep07/POOL_SLOT_AND_TRANSPORT_BINDING_AUDIT.md",
+    "species_tool": "tools/audit_species_identity.py",
+    "species_tests": "tests/test_species_identity_audit.py",
+    "species_evidence": "integration/animo-prep/PREP07_SPECIES_IDENTITY_AUDIT.json",
+    "pool_slot_tool": "tools/audit_pool_slot_identity.py",
+    "pool_slot_tests": "tests/test_pool_slot_identity_audit.py",
+    "pool_slot_evidence": "integration/animo-prep/PREP07_POOL_SLOT_IDENTITY_AUDIT.json",
+    "named_transport_tool": "tools/audit_named_transport_species.py",
+    "named_transport_tests": "tests/test_named_transport_species_audit.py",
+    "named_transport_evidence": "integration/animo-prep/PREP07_NAMED_TRANSPORT_SPECIES_AUDIT.json"
+  },
+  "test_result": {
+    "species_identity_unit_tests_passed": 6,
+    "pool_slot_unit_tests_passed": 4,
+    "named_transport_unit_tests_passed": 3,
+    "total_prep07_unit_tests_passed": 13
+  },
+  "scope_limits": [
+    "strong-name classification cannot prove correctness of generic or poorly named variables",
+    "computed indices and same-species wrong-pool bindings without numeric literal slot mismatch require other audits",
+    "intentional stoichiometric formulas are structurally classified but not scientifically reference-qualified by PREP07",
+    "GHG scientific qualification remains limited by source/testcase lineage and theory documentation gaps",
+    "historical behavioural reference remains unavailable"
+  ],
+  "recommended_next": {
+    "parallel": [
+      "audit restart and state-continuity symmetry across Input/Init/Output_Init and accepted-step state copies",
+      "audit option/branch coverage for supported versus parser-visible dormant features",
+      "continue exact 4.0-to-4.1.x theory reconciliation when controlled theory bytes become available"
+    ],
+    "serial_blocker": "PREP02 historical or independently trusted reference environment",
+    "production_migration": "NOT_ADMITTED"
+  }
+}
