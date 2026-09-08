@@ -113,6 +113,47 @@ Admission requirements:
 5. all substances and all `Iflsol` clipping branches using the same code path are tested;
 6. full-case trajectory differences are explained and admitted, not hidden under a global tolerance.
 
+#### TCD-023, stable-DOM phosphorus SDO-to-humus partition
+
+Source finding:
+
+`Resp_miner` Case(2) calculates the P-specific stable-DOM decay amount in `Transfop(17,Ln)`, but partitions `Transfon(17,Ln)` into the P release and assimilation terms:
+
+```fortran
+Transfop(19,Ln) = (1.0-AsfaSDO) * Transfon(17,Ln)
+Transfop(20,Ln) = AsfaSDO       * Transfon(17,Ln)
+```
+
+The C and N branches partition their own species-specific term, and the analogous P expressions in other stable-DOM cases use `Transfop(17,Ln)`. The two P terms feed both `Tomnpo`/`Rekopo` and `Outbal_calc`.
+
+Minimal diagnostic correction:
+
+```fortran
+Transfop(19,Ln) = (1.0-AsfaSDO) * Transfop(17,Ln)
+Transfop(20,Ln) = AsfaSDO       * Transfop(17,Ln)
+```
+
+Causal diagnostic evidence from `Puitmijn_Cranendonck_60`:
+
+- 9658 actual P-active Case(2) events are observed;
+- the frozen branch accumulates `1.0806894643265774e-7 kg/ha P` of cross-species partition mismatch;
+- `bapoLO` final cumulative residual changes from `-1.08e-7` to `2.31e-11 kg/ha P` after the two-line correction;
+- `Tomnpo` and derived `Rekopo` do change, although only at about `1e-14` scale in the supplied low-rate case;
+- ordinary formatted non-balance outputs remain unchanged in the supplied case, but this is not proof of state equivalence.
+
+This is Class B rather than Class A because the correction can change the mineral-P source term and therefore later P state.
+
+Admission requirements:
+
+1. qualified frozen reference reproduces the affected Case(2) branch;
+2. the local identity `Transfop(19)+Transfop(20)=Transfop(17)` is demonstrated for the corrected branch;
+3. unrounded P source and state trajectories are compared around affected events;
+4. at least one qualification case exercises Case(2) with materially larger stable-DOP mass or a different N:P ratio than the supplied low-rate case;
+5. TCD-023 is admitted independently from TCD-015 and from the other P corrections;
+6. full corrected-reference regression is rerun after any later composition.
+
+Detailed diagnostic evidence is in `docs/prep04/STABLE_DOM_P_PARTITION_DEFECT.md` and `integration/animo-prep/PREP04_STABLE_DOM_P_PARTITION.json`.
+
 ### Class C: state-model correction
 
 #### TCD-016, NH4 surface dry-down
@@ -158,7 +199,7 @@ No corrected initialization should be implemented until this policy is theory/re
 
 ## Non-composition rule
 
-The first corrected-legacy qualification must not apply TCD-014 through TCD-018 simultaneously.
+The first corrected-legacy qualification must not apply TCD-014 through TCD-018 and TCD-023 simultaneously.
 
 Required sequence:
 
@@ -168,7 +209,7 @@ Required sequence:
 4. only then compose already admitted corrections;
 5. rerun the full qualification suite after composition to detect interactions.
 
-This is especially important because TCD-015 can change later concentration trajectories, while TCD-017 and TCD-018 should not.
+This is especially important because TCD-015 and TCD-023 can change later concentration/source trajectories, while TCD-017 and TCD-018 should not.
 
 ## Proposed corrected-legacy work units
 
@@ -210,6 +251,18 @@ This is an architectural/scientific correction, not a cosmetic legacy patch.
 Scope:
 
 - TCD-014 only after authoritative initialization semantics are resolved.
+
+### CL-05, stable-DOM phosphorus partition conservation
+
+Scope:
+
+- TCD-023 only.
+
+Expected property:
+
+`species_specific_partition_identity_restored = true`
+
+but unrounded P source/state trajectories may change after affected Case(2) events.
 
 ## Exit discipline
 
