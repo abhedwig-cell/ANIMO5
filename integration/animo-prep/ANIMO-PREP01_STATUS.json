@@ -4,14 +4,14 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-prep01-bootstrap",
   "date": "2026-09-08",
-  "evaluated_commit": "8fb824227b2cf7272d0d73e92536c964226b1d5f",
+  "evaluated_evidence_head": "704aabf4be236cd089f1d4bf70388ad782f7fb88",
   "starting_state": {
     "repository_existed": true,
     "repository_was_empty": true,
     "default_branch": "main",
     "bootstrap_commit": "0fb4758bdaa55eab28a3bf521fa2a5cffb1aa9b2"
   },
-  "decision": "BLOCKED_AUTHORITATIVE_LEGACY_SOURCE_DOCUMENTATION_AND_EXECUTABLE_REQUIRED",
+  "decision": "BLOCKED_REPRODUCIBLE_NATIVE_LEGACY_EXECUTION_AND_CONTROLLED_B0_RETENTION_REQUIRED",
   "implemented": true,
   "persisted": true,
   "tested": true,
@@ -22,99 +22,134 @@
   "production_migration_started": false,
   "evidence": {
     "legacy_source": {
-      "available": false,
-      "status": "BLOCKED_MATERIAL_NOT_AVAILABLE",
-      "frozen": false
+      "available": true,
+      "artifact": "ANIMO_4.1.5.53(3).zip",
+      "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "archive_size_bytes": 350696,
+      "file_count": 65,
+      "embedded_version_tag": "animo4.1.5",
+      "embedded_revision": "53",
+      "embedded_toolchain": "Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]",
+      "member_manifest_persisted": true,
+      "raw_bytes_republished_to_public_github": false,
+      "status": "HASH_FROZEN_PENDING_CONTROLLED_BYTE_RETENTION_AND_REFERENCE_BUILD"
     },
     "legacy_documentation": {
-      "available": false,
-      "status": "BLOCKED_TECHNICAL_DOCUMENTATION_NOT_AVAILABLE",
-      "frozen": false
+      "available": true,
+      "document": "ANIMO 4.0 User's guide, Alterra Report 224, 2005",
+      "sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+      "source_version_covered": "4.0",
+      "comprehensive_theory_complete": false,
+      "raw_bytes_republished_to_public_github": false,
+      "status": "HASH_FROZEN_PARTIAL_VERSION_DOCUMENTATION"
     },
     "testbank": {
-      "available_locally": true,
+      "available": true,
       "archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
       "archive_size_bytes": 7659314,
       "testcase_count": 9,
       "file_count": 119,
       "member_manifest_persisted": true,
-      "binary_archive_persisted_to_github": false,
-      "binary_archive_persistence_status": "BLOCKED_BINARY_UPLOAD_CAPABILITY",
       "trusted_expected_outputs_available": false,
-      "executable_available": false,
-      "executable_cases": 0,
+      "successful_reference_cases": 0,
       "qualified_rr_cases": 0,
       "qualified_qg_cases": 0
     }
   },
   "tests": {
-    "python_compile": "PASS",
-    "prep01_inventory_unittest": {
+    "testbank_inventory_integrity": {
       "result": "PASS",
       "tests_run": 4,
       "failures": 0,
-      "errors": 0,
-      "local_binary_archive_present": true,
-      "reproducibility_outputs_exact_match": {
-        "testbank_inventory_json": true,
-        "testbank_manifest_csv": true,
-        "testcase_inventory_csv": true
-      }
+      "errors": 0
     },
-    "legacy_build": "NOT_RUN_SOURCE_UNAVAILABLE",
-    "legacy_runtime_regression": "NOT_RUN_EXECUTABLE_UNAVAILABLE"
+    "source_inventory_integrity": {
+      "result": "PASS",
+      "tests_run": 2,
+      "failures": 0,
+      "errors": 0,
+      "archive_hash_exact": true,
+      "member_manifest_exact": true
+    },
+    "source_archive_sha256_check": "PASS",
+    "documentation_sha256_check": "PASS",
+    "testbank_archive_sha256_check": "PASS",
+    "gnu_portability_probe": {
+      "compile_link": "PASS_WITH_NONREFERENCE_COMPATIBILITY_SHIMS_AND_ONE_TARGETED_SYNTAX_ADAPTATION",
+      "qualified_reference_build": false
+    },
+    "legacy_runtime_probe": {
+      "result": "BLOCKED_BINARY_HYDROLOGY_RUNTIME_COMPATIBILITY",
+      "successful_cases": 0
+    }
   },
   "deliverables": {
     "repository_initialized": "IMPLEMENTED_PERSISTED",
-    "frozen_legacy_source_baseline": "BLOCKED_MATERIAL_NOT_AVAILABLE",
-    "frozen_legacy_documentation_baseline": "BLOCKED_TECHNICAL_DOCUMENTATION_NOT_AVAILABLE",
+    "frozen_legacy_source_baseline": "HASH_FROZEN_PENDING_CONTROLLED_BYTE_RETENTION_AND_BUILD_QUALIFICATION",
+    "frozen_legacy_documentation_baseline": "HASH_FROZEN_PARTIAL_VERSION_DOCUMENTATION_PENDING_CONTROLLED_RETENTION",
     "provenance_record": "IMPLEMENTED_PERSISTED",
     "testcase_inventory": "IMPLEMENTED_PERSISTED_TESTED",
-    "build_reproducibility_assessment": "IMPLEMENTED_PERSISTED_BLOCKED",
-    "compiler_interface_audit_baseline": "IMPLEMENTED_PERSISTED_NOT_ASSESSED_SOURCE_UNAVAILABLE",
-    "io_dependency_inventory": "IMPLEMENTED_PERSISTED_TESTCASE_LEVEL_ONLY",
-    "process_dataflow_inventory": "IMPLEMENTED_PERSISTED_TESTCASE_LEVEL_ONLY",
-    "theory_code_discrepancy_register": "IMPLEMENTED_PERSISTED",
+    "build_reproducibility_assessment": "IMPLEMENTED_PERSISTED_TESTED_BLOCKED",
+    "compiler_interface_audit_baseline": "IMPLEMENTED_PERSISTED_SOURCE_BOUND",
+    "io_dependency_inventory": "IMPLEMENTED_PERSISTED_SOURCE_BOUND",
+    "process_dataflow_inventory": "IMPLEMENTED_PERSISTED_SOURCE_PLUS_DOCUMENTATION_BOUND",
+    "theory_code_discrepancy_register": "IMPLEMENTED_PERSISTED_SEEDED",
     "status_a_to_aa_gap_register": "IMPLEMENTED_PERSISTED",
     "architecture_invariants": "IMPLEMENTED_PERSISTED",
     "development_governance": "IMPLEMENTED_PERSISTED",
     "migration_dependency_dag": "IMPLEMENTED_PERSISTED",
     "test_architecture_baseline": "IMPLEMENTED_PERSISTED",
-    "machine_readable_status": "IMPLEMENTED"
+    "machine_readable_status": "IMPLEMENTED_PERSISTED"
+  },
+  "source_audit_highlights": {
+    "approx_program_units": 150,
+    "very_long_argument_lists_confirmed": true,
+    "largest_observed_formal_argument_count": 352,
+    "explicit_procedure_interfaces_widespread": false,
+    "common_blocks_found_by_static_scan": false,
+    "direct_file_io_confirmed": true,
+    "direct_stop_confirmed": true,
+    "precision_policy_centralized": false,
+    "platform_dependencies_confirmed": [
+      "case-insensitive include naming assumptions",
+      "Intel dfport/secnds",
+      "KINT/KIDNNT behaviour",
+      "GNU-incompatible Outsel output-list construct"
+    ]
   },
   "not_assessed": [
-    "legacy Fortran language level and compiler extensions",
-    "legacy compiler and build flags",
-    "external libraries and compile order",
-    "Fortran interface defects and argument semantics",
-    "source-level I/O dependency map",
-    "process equations and authoritative ordering",
-    "persistent state and scratch ownership in legacy code",
-    "legacy precision declarations",
-    "mass-accounting implementation",
-    "theory-code agreement",
-    "binary hydrology reader format",
-    "mandatory versus optional semantics of unresolved animo.ini paths"
+    "exact historical Intel compiler flags and project/link configuration",
+    "authoritative source-file selection provenance for alternate duplicate units",
+    "binary SWATRE.UNF/swap.bun/result.bun record format and writer runtime",
+    "per-argument read/write/propagation/units audit for large interfaces",
+    "complete persistent-state versus scratch ownership",
+    "complete 4.1.5 theory-code agreement",
+    "4.1.5 greenhouse-gas theory provenance",
+    "4.1.5 macropore scientific qualification",
+    "version-specific mass-balance term crosswalk",
+    "scientific validity of testcase results because no reference execution completed"
   ],
   "blockers": [
-    "authoritative ANIMO production source tree unavailable",
-    "authoritative ANIMO theory/user documentation unavailable",
-    "ANIMO executable unavailable",
-    "trusted numerical output oracle unavailable",
-    "byte-exact binary testcase archive cannot be uploaded through the available chat GitHub connector"
+    "controlled immutable B0 byte retention is not yet established for source/documentation in the public-repository legal context",
+    "native or otherwise qualified legacy reference build is not reproduced",
+    "binary hydrology input runtime/record compatibility is not reproduced",
+    "no testcase has yet completed under a qualified reference executable",
+    "unrounded trusted numerical output oracle is not yet captured",
+    "supplied documentation is ANIMO 4.0 and does not fully document the 4.1.5 revision-53 source"
   ],
   "recommended_next": {
     "serial": [
-      "PREP02 authoritative source/documentation ingest and immutable B0 freeze",
-      "reproducible legacy build gate",
-      "first source-bound compiler/interface and I/O audit"
+      "ANIMO-PREP02 controlled B0 retention and native/reference build recovery",
+      "identify and qualify binary hydrology reader/writer runtime convention",
+      "execute and capture at least one minimal reference testcase before any legacy correction"
     ],
-    "parallel_after_evidence_ingest": [
-      "documentation inventory and theory-code reconciliation preparation",
-      "testcase execution/capture harness",
-      "compiler/interface audit tooling",
-      "process/dataflow archaeology",
-      "Status A/AA gap ownership and evidence planning"
+    "parallel": [
+      "large-interface argument semantics audit",
+      "source-level I/O ownership and kernel-seam archaeology",
+      "4.0 documentation to 4.1.5 source discrepancy expansion",
+      "mass-balance variable crosswalk",
+      "locate comprehensive theory and 4.1.x change documentation",
+      "Status A/AA evidence ownership planning"
     ],
     "production_migration": "NOT_ADMITTED"
   }
