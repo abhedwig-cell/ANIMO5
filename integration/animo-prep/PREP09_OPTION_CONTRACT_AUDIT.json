@@ -1,0 +1,64 @@
+{
+  "evidence_id": "ANIMO-PREP09-OPTION-CONTRACT-AUDIT-2026-09-08",
+  "evidence_class": "SOURCE_TESTBANK_AND_DIAGNOSTIC_NOT_REFERENCE",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep09-option-contract-audit",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "frozen_source_modified": false,
+  "frozen_testbank_modified": false,
+  "reference_qualified": false,
+  "production_migration_admitted": false,
+  "static_audit": {
+    "tool": "tools/audit_option_contracts.py",
+    "checks_passed": 6,
+    "checks_total": 6,
+    "animo40_ioptae_range": "0..1",
+    "animo41_ioptae_range": "0..2",
+    "main_dispatch": "Ioptae /= 1 -> Aeration_original; Ioptae == 1 -> Aeration_sonicg",
+    "source_explicit_ioptae_eq_2_branches": 0,
+    "testbank_aeration_records": 12,
+    "testbank_aeration_value_counts": {
+      "0": 8,
+      "1": 4,
+      "2": 0
+    },
+    "distinct_testbank_option_comment": "0=diffusion model; 1=WFPS concept acording to SONICG/NITDEN; 2= option + adj. for denitrification"
+  },
+  "dynamic_probe": {
+    "case": "Puitmijn_Cranendonck_60",
+    "baseline_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "only_scientific_input_change": "AerationModel 0 -> 2 in diagnostic execution-copy GENERAL.INP",
+    "option0_general_sha256": "cc68eec5936c9b25cf13044b5b5a1b308d243a85828ad296eeb84be8486c72c7",
+    "option2_general_sha256": "e700f74a6d67d8965aab05b2cf95efce460a0b93f6dbf602cebf2674e4c33a3f",
+    "option0_successful_completion": true,
+    "option2_successful_completion": true,
+    "common_noninput_output_files": 77,
+    "raw_different_files": 20,
+    "normalized_different_files": 0,
+    "normalization": "remove only volatile lines containing run start, run end, File created on, elapsed or CPU time",
+    "decision": "AERATIONMODEL_2_BEHAVIOURALLY_ALIASES_0_IN_THIS_DIAGNOSTIC_CASE"
+  },
+  "finding": {
+    "id": "TCD-030",
+    "classification": "CONFIRMED_PARSER_AND_TESTCASE_ADVERTISED_AERATION_OPTION2_SEMANTIC_ALIAS_TO_OPTION0",
+    "impact_scope": "feature/interface contract; no wrong-physics claim for exercised options 0 or 1",
+    "production_support_for_option2": false,
+    "corrected_semantics_known": false,
+    "safe_decision": "FAIL_CLOSED_ON_AERATIONMODEL_2_UNTIL_AUTHORITATIVE_INTENT_OR_TRUSTED_IMPLEMENTATION_IS_RECOVERED"
+  },
+  "screened_option_contracts": {
+    "matrix": "docs/prep09/OPTION_CONTRACT_MATRIX.csv",
+    "new_findings": ["TCD-030"],
+    "existing_findings_preserved": ["TCD-007", "TCD-008", "TCD-013", "TCD-022", "TCD-024", "TCD-025", "TCD-029"],
+    "coverage_gaps_not_promoted_to_defects": [
+      "HydrologicInput/Iwa=1",
+      "SoilTempFile/Ioptte=1",
+      "IoptGHG=2",
+      "PClassOption=1",
+      "Ncxsl site counts 1 and 2",
+      "Optpr=1"
+    ]
+  },
+  "decision": "QUALIFIED_PREP09_TCD030_OPTION_ALIAS_CAUSALITY_REFERENCE_ADMISSION_BLOCKED"
+}
