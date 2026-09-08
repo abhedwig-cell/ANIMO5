@@ -1,0 +1,61 @@
+{
+  "evidence_id": "ANIMO-PREP01-ORGANIC-P-PLOUGHING-LEDGER-DEFECT-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_CAUSAL_BALANCE_BOOKKEEPING_DEFECT_EVIDENCE_NOT_REFERENCE_CORRECTION",
+  "case": "LWKM_gras_1040.2021.2045",
+  "balance": "organic P",
+  "balance_file": "bapoGP.Out",
+  "baseline_nontrivial_period_residuals_kg_ha_p": {
+    "1997": 0.0441,
+    "1998": 0.0494,
+    "2007": 0.0251,
+    "2008": 0.0352
+  },
+  "baseline_max_cumulative_residual_kg_ha_p": 0.154,
+  "transport_1998": {
+    "summed_bapd_minus_batr_kg_ha_p": 1.453497900372971e-7,
+    "interpretation": "not the source of the 0.0494 kg/ha annual residual"
+  },
+  "ploughing_redistribution": {
+    "source_routine": "Addit.for",
+    "surface_removal_variable": "Addiorpotoppl(I)",
+    "layer_change_variable": "Addiorpopl(I,Ln)",
+    "events": [
+      {
+        "associated_balance_year": 1997,
+        "surface_term_kg_ha_p": -0.044113049197064061,
+        "layer_term_sum_kg_ha_p": 0.04411304919706420,
+        "net_kg_ha_p": 1.4e-16
+      },
+      {
+        "associated_balance_year": 1998,
+        "surface_term_kg_ha_p": -0.049376586649567941,
+        "layer_term_sum_kg_ha_p": 0.049376586649567955,
+        "net_kg_ha_p": 1.4e-17
+      }
+    ],
+    "state_redistribution_conservative_for_investigated_events": true
+  },
+  "source_cause": {
+    "routine": "Outbal_calc.for",
+    "classification": "CONFIRMED_LEGACY_BALANCE_BOOKKEEPING_DEFECT",
+    "observation": "organic-N top redistribution is booked through Addiornitoppl and inorganic-P through Adpotoppl, but organic-P Addiorpotoppl is omitted while layer Addiorpopl terms are included",
+    "missing_statement": "Bapo(Redi,Ly) = Bapo(Redi,Ly) + Addiorpotoppl(I)*Z",
+    "underlying_process_state_defect_demonstrated": false
+  },
+  "accounting_only_probe": {
+    "temporary_source_only": true,
+    "frozen_source_modified": false,
+    "changed_process_physics": false,
+    "changed_state_update": false,
+    "changed_statement_count": 1,
+    "period_residual_kg_ha_p": {
+      "1997": 5.07e-13,
+      "1998": 4.61e-10
+    },
+    "largest_observed_period_residual_after_probe_kg_ha_p": 4.06e-8,
+    "nontrivial_ploughing_residuals_removed": true
+  },
+  "qualification_consequence": "legacy organic-P balance residuals associated with ploughing must not be used as acceptance tolerances; corrected-legacy bookkeeping requires separate qualification even if state trajectories are unchanged",
+  "qualified_reference_correction": false,
+  "production_migration_admitted": false
+}
