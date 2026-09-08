@@ -1,0 +1,35 @@
+{
+  "work_unit": "ANIMO-PREP02",
+  "evidence_id": "ANIMO-PREP02-CLASS-A-LEDGER-COMPOSITION-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_CORRECTED_LEGACY_COMPOSITION_NOT_REFERENCE_ADMISSION",
+  "case": "LWKM_gras_1040.2021.2045",
+  "included_findings": ["TCD-017", "TCD-018"],
+  "excluded_non_class_a_findings": ["TCD-014", "TCD-015", "TCD-016"],
+  "state_or_process_physics_changed": false,
+  "testcase_changed": false,
+  "balance_envelope_after_probe": {
+    "water_max_abs_period_mm": 0.000207,
+    "fresh_organic_matter_max_abs_period_kg_ha": 6.98e-10,
+    "humus_max_abs_period_kg_ha": 5.82e-10,
+    "dissolved_organic_matter_max_abs_period_kg_ha": 0.00011,
+    "nh4_n_max_abs_period_kg_ha_n": 3.16e-6,
+    "no3_n_max_abs_period_kg_ha_n": 0.576,
+    "organic_n_max_abs_period_kg_ha_n": 5.99e-6,
+    "po4_p_max_abs_period_kg_ha_p": 0.0171,
+    "organic_p_max_abs_period_kg_ha_p": 6.54e-7
+  },
+  "ordinary_output_equivalence": {
+    "files_compared": 20,
+    "normalization": ["run timestamp", "file creation timestamp"],
+    "differences_after_normalization": 0
+  },
+  "unaffected_balance_output_equivalence": {
+    "files_compared": 21,
+    "families": ["organic matter", "nitrogen", "inorganic phosphorus"],
+    "differences_after_normalization": 0
+  },
+  "interpretation": "TCD-017 and TCD-018 compose as accounting-only corrections for the investigated LWKM diagnostic scope while unrelated residual classes remain visible",
+  "qualified_reference_correction": false,
+  "production_migration_admitted": false,
+  "status": "DIAGNOSTIC_CLASS_A_COMPOSITION_SUPPORTED"
+}
