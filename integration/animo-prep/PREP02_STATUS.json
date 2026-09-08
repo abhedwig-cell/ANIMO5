@@ -1,0 +1,108 @@
+{
+  "workunit": "ANIMO-PREP02",
+  "title": "Legacy Reference Build and Behavioural Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep01-bootstrap",
+  "status": "BLOCKED_HISTORICAL_REFERENCE_ENVIRONMENT_REQUIRED",
+  "provenance_head_before_status": "9b802d5310d032bf27916190e901299fc0367f35",
+  "source_identities": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "user_guide_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "diagnostic_gnu_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e"
+  },
+  "state_dimensions": {
+    "realized": true,
+    "persisted": true,
+    "tested": true,
+    "reference_qualified": false,
+    "corrected_legacy_qualified": false,
+    "production_migration_admitted": false
+  },
+  "gates": {
+    "P2_G0_controlled_B0_availability": {
+      "status": "SESSION_ARTIFACTS_HASH_VERIFIED_DURABLE_CONTROL_NOT_YET_PROVEN",
+      "source_hash_verified": true,
+      "testbank_hash_verified": true,
+      "documentation_hash_verified": true,
+      "durable_controlled_runner_retention_qualified": false
+    },
+    "P2_G1_historical_build_contract": {
+      "status": "HYPOTHESIS_READY_NATIVE_EXECUTION_NOT_RUN",
+      "compiler_lineage": "Intel Visual Fortran Composer XE 12.1.0.233 Intel 64",
+      "candidate_semantics": [
+        "eight-byte default REAL, plausibly /4R8 or /Qautodouble",
+        "PowerStation-compatible I/O, plausibly /fpscomp:ioformat",
+        "Intel default local storage before any /Qsave sensitivity variant"
+      ],
+      "exact_historical_project_or_command_available": false
+    },
+    "P2_G2_minimal_native_Ruurlo": {
+      "status": "BLOCKED_NO_NATIVE_EXECUTABLE_OR_INTEL_ENVIRONMENT",
+      "primary_case": "RuurloGrass",
+      "native_run_completed": false
+    },
+    "P2_G3_native_vs_GNU_equivalence": {
+      "status": "TOOLING_READY_NO_NATIVE_COMPARAND",
+      "formatted_output_comparator": "tools/compare_legacy_output_trees.py",
+      "comparator_tests": "tests/test_compare_legacy_output_trees.py",
+      "comparator_fail_closed": true,
+      "global_scientific_tolerance_invented": false
+    },
+    "P2_G4_unrounded_native_observer": {
+      "status": "BLOCKED_UNTIL_NATIVE_BUILD_CONTRACT_ESTABLISHED"
+    },
+    "P2_G5_reference_coverage_expansion": {
+      "status": "BLOCKED_UNTIL_MINIMAL_NATIVE_REFERENCE_EXISTS"
+    }
+  },
+  "supplied_native_artifact_search": {
+    "source_archive_native_executable_count": 0,
+    "source_archive_project_file_count": 0,
+    "testbank_native_executable_count": 0,
+    "testbank_launchers": [
+      "CranGrass/RunCranGrass.bat -> ..\\animo41.exe Animo.ini",
+      "CranMais/RunCranMais.bat -> ..\\animo41.exe Animo.ini",
+      "GrassPeat/RunGrassPeat.bat -> ..\\animo41.exe Animo.ini",
+      "RuurloGrass/RunRuurloGrass.cmd -> ..\\animo41.exe Animo.ini",
+      "GHGMais/runanimo.bat -> ANIMO animo.ini"
+    ],
+    "interpretation": "the testbank documents expected historical executable names/placement but does not supply the executable itself"
+  },
+  "class_A_progress": {
+    "TCD_017": {
+      "status": "DIAGNOSTIC_LEDGER_FAMILY_CAUSALLY_SUPPORTED_NOT_REFERENCE_QUALIFIED",
+      "candidate_terms": [
+        "Addiorpotoppl",
+        "AdStdiorpopl",
+        "Adhuexpopl"
+      ],
+      "natural_and_controlled_activation_evidence_persisted": true,
+      "ordinary_non_balance_trajectory_change_observed": false
+    },
+    "TCD_018": {
+      "status": "DIAGNOSTIC_LEDGER_INTERFACE_CAUSALLY_SUPPORTED_NOT_REFERENCE_QUALIFIED"
+    },
+    "composition_probe": {
+      "status": "DIAGNOSTIC_CLASS_A_COMPOSITION_SUPPORTED_NOT_REFERENCE_QUALIFIED"
+    }
+  },
+  "qualification_tooling": {
+    "reference_output_comparator": {
+      "implemented": true,
+      "persisted": true,
+      "tested": true,
+      "reference_admission_power": false
+    }
+  },
+  "primary_blocker": {
+    "code": "HISTORICAL_REFERENCE_ENVIRONMENT_REQUIRED",
+    "needed_next": [
+      "trusted historical ANIMO 4.1/4.1.5 executable with provenance, or",
+      "compatible Intel Visual Fortran 12.1 Intel64 build environment and recoverable build settings"
+    ],
+    "why_tooling_cannot_resolve_it": "deterministic GNU agreement cannot independently establish historical behavioural truth"
+  },
+  "decision": "BLOCKED_HISTORICAL_REFERENCE_ENVIRONMENT_REQUIRED",
+  "production_migration_admitted": false
+}
