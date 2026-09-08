@@ -1,0 +1,110 @@
+{
+  "work_unit": "ANIMO-PREP02",
+  "title": "Legacy Reference Build and Behavioural Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep01-bootstrap",
+  "date": "2026-09-08",
+  "evaluated_evidence_head": "6630e4237f667e7ce45b251aab0f2f5d2400a34d",
+  "decision": "BLOCKED_HISTORICAL_REFERENCE_ENVIRONMENT_REQUIRED",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": false,
+  "blocked": true,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "production_migration_admitted": false,
+  "frozen_evidence": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "source_archive_modified": false,
+    "testbank_archive_modified": false
+  },
+  "reference_plan": {
+    "document": "docs/prep02/REFERENCE_QUALIFICATION_PLAN.md",
+    "state": "PLANNED_FAIL_CLOSED_REFERENCE_ENVIRONMENT_REQUIRED",
+    "first_native_case": "RuurloGrass",
+    "native_reference_obtained": false,
+    "equivalent_reference_admitted": false,
+    "unrounded_reference_oracle_obtained": false
+  },
+  "corrected_legacy_preparation": {
+    "plan": "docs/prep02/CORRECTED_LEGACY_CANDIDATE_PLAN.md",
+    "class_a_probe": "docs/prep02/CLASS_A_LEDGER_COMPOSITION_PROBE.md",
+    "class_a_state_trajectory_equivalence": "DEMONSTRATED_FOR_LWKM_DIAGNOSTIC_SCOPE_ONLY",
+    "correction_admitted": false
+  },
+  "gnu_runtime_contract": {
+    "document": "docs/prep02/GNU_RUNTIME_CONTRACT_PROBE.md",
+    "machine_evidence": "integration/animo-prep/PREP02_GNU_RUNTIME_CONTRACT_PROBE.json",
+    "case_adapter": "tools/prepare_gnu_case.py",
+    "case_adapter_test": "tests/test_prepare_gnu_case.py",
+    "adapter_tests_passed": 3,
+    "successful_diagnostic_cases": 8,
+    "blocked_case": "GHGMais",
+    "blocked_case_stop": 1995,
+    "current_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "current_contract": {
+      "default_real_bytes": 8,
+      "double_precision_bytes": 8,
+      "static_local_storage": true,
+      "powerstation_record_payload_preserved": true,
+      "windows_path_semantics_explicitly_adapted": true,
+      "printbal_character_payload_preserved": true
+    },
+    "sensitivity_findings": [
+      "four-byte default REAL stops with STOP 1111 in RuurloGrass",
+      "automatic locals fail during final balance writing because retained local state is lost",
+      "eight-byte default REAL without eight-byte DOUBLE PRECISION semantics produces 1947 OXYDEM non-convergence warnings and NaN diagnostics in RuurloGrass"
+    ],
+    "interpretation": "GNU equivalent-reference search space materially narrowed, but independent behavioural truth is still absent",
+    "reference_qualified": false
+  },
+  "historical_reference_acquisition": {
+    "document": "docs/prep02/HISTORICAL_REFERENCE_ACQUISITION.md",
+    "public_wur_route_identified": true,
+    "public_wur_claim": "ANIMO executable available upon request; model/code availability information via Leo Renaud",
+    "claim_checked_date": "2026-09-08",
+    "exact_revision_53_artifact_obtained": false,
+    "preferred_artifacts": [
+      "ANIMO 4.1.5 revision 53 animo41.exe with provenance",
+      "Intel Visual Fortran project/build metadata",
+      "historical RuurloGrass output bundle tied to executable identity",
+      "nearest retained 4.1.x executable if exact revision 53 is unavailable"
+    ]
+  },
+  "resolved_or_narrowed": [
+    "GNU testcase execution compatibility is now explicit rather than implicit",
+    "case-sensitive filesystem and Windows direct-file assumptions are classified as runtime compatibility",
+    "PrintBalLabel Intel/GNU list-directed lexical incompatibility is isolated with payload-preserving adaptation",
+    "all eight previously successful cases re-execute through the explicit adapter",
+    "Zuiderzeeland mixed-case SWAP.bun reference is handled through explicit case-insensitive path materialization",
+    "GHGMais remains independently blocked and is not hidden by compatibility adaptation",
+    "REAL, DOUBLE PRECISION and local-storage semantics are all demonstrated behaviourally material",
+    "a concrete external historical-executable acquisition route is identified"
+  ],
+  "hard_blockers": [
+    "no independently trusted ANIMO 4.1.5 revision-53 executable has been obtained",
+    "no historical Intel project/build log is present in the supplied archives",
+    "no native RuurloGrass output bundle is available as an independent oracle",
+    "controlled immutable B0 byte retention outside public GitHub remains to be formalized",
+    "GHGMais source/testcase lineage remains unresolved",
+    "trusted unrounded native numerical output is not available"
+  ],
+  "recommended_next": {
+    "serial": [
+      "obtain and hash the historical ANIMO 4.1.5 revision-53 executable or nearest provenance-qualified 4.1.x executable",
+      "run frozen RuurloGrass under the native executable without GNU testcase translation",
+      "compare native and GNU outputs by compatibility surface and numerical variable class",
+      "if build metadata is available, reconstruct the original Intel release contract and then add observer-only unrounded capture"
+    ],
+    "parallel_while_waiting": [
+      "continue 4.0-to-4.1.5 theory/code reconciliation",
+      "continue semantic audit of very long legacy argument lists",
+      "prepare local qualification cases for TCD-014 through TCD-018 without production admission",
+      "investigate GHGMais provenance separately"
+    ],
+    "production_migration": "NOT_ADMITTED"
+  }
+}
