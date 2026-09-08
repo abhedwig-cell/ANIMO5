@@ -38,9 +38,8 @@ def sha256(path: Path) -> str:
 def uncommented_fortran_statements(text: str) -> list[tuple[int, str]]:
     """Return approximate logical statements while preserving first line number.
 
-    The supplied source is free-form-style legacy Fortran. This helper is not a
-    complete parser; it only joins ampersand continuations needed by the ledger
-    expressions audited here and removes full-line/comment tails.
+    This is intentionally not a complete Fortran parser. It joins the ampersand
+    continuations used by the audited ledger expressions and removes comments.
     """
     statements: list[tuple[int, str]] = []
     current = ""
@@ -58,7 +57,6 @@ def uncommented_fortran_statements(text: str) -> list[tuple[int, str]]:
         begins_continuation = code.startswith("&")
         if begins_continuation:
             code = code[1:].lstrip()
-
         ends_continuation = code.endswith("&")
         if ends_continuation:
             code = code[:-1].rstrip()
@@ -80,6 +78,23 @@ def uncommented_fortran_statements(text: str) -> list[tuple[int, str]]:
     if current:
         statements.append((first_line, current))
     return statements
+
+
+def _compact(value: str) -> str:
+    return re.sub(r"\s+", "", value.replace("&", "").lower())
+
+
+def statement_contains(text: str, *fragments: str) -> bool:
+    wanted = [_compact(fragment) for fragment in fragments]
+    return any(
+        all(fragment in _compact(statement) for fragment in wanted)
+        for _, statement in uncommented_fortran_statements(text)
+    )
+
+
+def global_contains(text: str, *fragments: str) -> bool:
+    normalized = _compact(text)
+    return all(_compact(fragment) in normalized for fragment in fragments)
 
 
 def detailed_accumulator_audit(text: str) -> dict:
@@ -111,9 +126,9 @@ def detailed_accumulator_audit(text: str) -> dict:
         assignments.append(row)
         wrong = sorted({slot for slot in refs if slot != lhs})
         if wrong:
-            row = dict(row)
-            row["cross_slot_rhs_slots"] = wrong
-            cross_slot_self_references.append(row)
+            anomalous = dict(row)
+            anomalous["cross_slot_rhs_slots"] = wrong
+            cross_slot_self_references.append(anomalous)
 
     normalized_slots = {name: sorted(values) for name, values in slots_by_family.items()}
     union = sorted(set().union(*slots_by_family.values()))
@@ -133,22 +148,25 @@ def detailed_accumulator_audit(text: str) -> dict:
     }
 
 
-def _contains(text: str, fragments: list[str]) -> bool:
-    normalized = " ".join(text.replace("&", " ").lower().split())
-    return all(fragment.lower() in normalized for fragment in fragments)
-
-
 def initial_final_state_audit(outbal_init: str, outbal_calc: str) -> dict:
     checks = {
         "fresh_om_initial_exudate": {
-            "initial_has_ex": _contains(outbal_init, ["bfom(inip_x", "ex(ln)"]),
-            "final_has_rsex": _contains(outbal_calc, ["bfom(finp_x", "rsex(ln)"]),
+            "initial_has_ex": statement_contains(
+                outbal_init, "Bfom(Inip_x", "Ex(Ln)"
+            ),
+            "final_has_rsex": statement_contains(
+                outbal_calc, "Bfom(Finp_x", "Rsex(Ln)"
+            ),
         },
         "organic_n_initial_exudate": {
-            "initial_has_ex_n": _contains(outbal_init, ["bano(inip_x", "ex(ln)*nifrex"]),
+            "initial_has_ex_n": statement_contains(
+                outbal_init, "Bano(Inip_x", "Ex(Ln)", "Nifrex"
+            ),
         },
         "organic_p_initial_exudate": {
-            "initial_has_ex_p": _contains(outbal_init, ["bapo(inip_x", "ex(ln)*pofrex"]),
+            "initial_has_ex_p": statement_contains(
+                outbal_init, "Bapo(Inip_x", "Ex(Ln)", "Pofrex"
+            ),
         },
     }
     checks["fresh_om_initial_exudate"]["asymmetric"] = (
@@ -160,14 +178,14 @@ def initial_final_state_audit(outbal_init: str, outbal_calc: str) -> dict:
 
 def stable_surface_reachability_audit(input1: str, resp_miner: str, init: str) -> dict:
     return {
-        "parser_exposes_layer_zero_stable_dom": _contains(
-            input1, ["costdiorma(ln)", "costdiorni(ln)"]
+        "parser_exposes_stable_dom_arrays": global_contains(
+            input1, "CoStdiorma(Ln)", "CoStdiorni(Ln)"
         ),
-        "resp_miner_explicitly_skips_layer_zero": _contains(
-            resp_miner, ["if(ln.eq.0)goto 1000"]
-        ) or _contains(resp_miner, ["if(ln .eq. 0) goto 1000"]),
-        "init_zeroes_result_stable_dom": _contains(
-            init, ["rscostdiorma(ln)", "0.0"]
+        "resp_miner_explicitly_skips_layer_zero": statement_contains(
+            resp_miner, "if(Ln.Eq.0)", "goto 1000"
+        ),
+        "init_zeroes_result_stable_dom": statement_contains(
+            init, "RsCoStdiorma(Ln)", "0.0"
         ),
         "interpretation": "source signals only; reachability classification remains a reviewed evidence decision",
     }
@@ -192,7 +210,7 @@ def audit_archive(source_zip: Path) -> dict:
             return archive.read(members[key]).decode("latin1")
 
         outbal_calc = read("Outbal_calc.for")
-        result = {
+        return {
             "evidence_class": "SOURCE_BOUND_TRANSFER_LEDGER_AUDIT_NOT_DEFECT_ADMISSION",
             "source_sha256": actual_sha,
             "detailed_accumulators": detailed_accumulator_audit(outbal_calc),
@@ -204,7 +222,6 @@ def audit_archive(source_zip: Path) -> dict:
             ),
             "automatic_defect_admission": False,
         }
-    return result
 
 
 def main() -> int:
