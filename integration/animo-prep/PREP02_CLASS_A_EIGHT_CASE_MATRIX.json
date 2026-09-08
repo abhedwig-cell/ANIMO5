@@ -1,0 +1,47 @@
+{
+  "evidence_id": "ANIMO-PREP02-CLASS-A-EIGHT-CASE-MATRIX-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_CORRECTED_LEGACY_NONINTERFERENCE_NOT_REFERENCE_ADMISSION",
+  "baseline_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+  "clean_class_a_executable_sha256": "733dd2750e819cebe3c41b425a065ef899fe1d6929660d3ef3a24518022fd94e",
+  "corrections": [
+    "TCD-017 organic-P redistribution balance bookkeeping",
+    "TCD-018 interception-storage water balance state coverage"
+  ],
+  "observer_instrumentation_present": false,
+  "frozen_source_archive_modified": false,
+  "cases": {
+    "CranGrass": {"completed": true, "common_outputs": 31, "equal_after_declared_volatile_normalization": 31, "intended_differences": [], "unintended_differences": [], "missing": [], "extra": []},
+    "CranMais": {"completed": true, "common_outputs": 23, "equal_after_declared_volatile_normalization": 23, "intended_differences": [], "unintended_differences": [], "missing": [], "extra": []},
+    "GrassPeat": {"completed": true, "common_outputs": 60, "equal_after_declared_volatile_normalization": 60, "intended_differences": [], "unintended_differences": [], "missing": [], "extra": []},
+    "LWKM_gras_1040.2021.2045": {
+      "completed": true,
+      "common_outputs": 55,
+      "equal_after_declared_volatile_normalization": 43,
+      "intended_differences": ["ani_pGP.Bal","ani_pRP.Bal","ani_pTP.Bal","ani_waGP.Bal","ani_waRP.Bal","ani_waTP.Bal","bapoGP.Out","bapoRP.Out","bapoTP.Out","bawaGP.Out","bawaRP.Out","bawaTP.Out"],
+      "unintended_differences": [],
+      "missing": [],
+      "extra": [],
+      "max_abs_water_period_residual_mm_after_probe": 0.000207,
+      "max_abs_organic_p_period_residual_kg_ha_p_after_probe": 0.000000654
+    },
+    "Puitmijn_Cranendonck_60": {"completed": true, "common_outputs": 77, "equal_after_declared_volatile_normalization": 77, "intended_differences": [], "unintended_differences": [], "missing": [], "extra": []},
+    "RuurloGrass": {"completed": true, "common_outputs": 72, "equal_after_declared_volatile_normalization": 72, "intended_differences": [], "unintended_differences": [], "missing": [], "extra": []},
+    "STONE_akk_0006.2001.2015": {"completed": true, "common_outputs": 45, "equal_after_declared_volatile_normalization": 45, "intended_differences": [], "unintended_differences": [], "missing": [], "extra": []},
+    "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA": {"completed": true, "common_outputs": 16, "equal_after_declared_volatile_normalization": 16, "intended_differences": [], "unintended_differences": [], "missing": [], "extra": []}
+  },
+  "totals": {
+    "cases_completed": 8,
+    "cases_attempted": 8,
+    "outputs_compared": 379,
+    "equal_after_declared_volatile_normalization": 367,
+    "intended_differences": 12,
+    "unintended_differences": 0,
+    "missing_candidate_outputs": 0,
+    "extra_candidate_outputs": 0
+  },
+  "active_correction_cases": ["LWKM_gras_1040.2021.2045"],
+  "interpretation": "Accounting-only noninterference is strongly supported across the eight compatible diagnostic cases; measurable correction activation is still demonstrated only in LWKM.",
+  "reference_qualified": false,
+  "corrected_legacy_qualified": false,
+  "production_migration_admitted": false
+}
