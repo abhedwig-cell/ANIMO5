@@ -4,7 +4,7 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-prep01-bootstrap",
   "date": "2026-09-08",
-  "evaluated_evidence_head": "e71f5cb615b14df85bcba1fcefa77981d117f864",
+  "evaluated_evidence_head": "b889f3b77b2139a8b645abfec53959cb96d5a6fe",
   "decision": "BLOCKED_REFERENCE_QUALIFICATION_CONTROLLED_B0_RETENTION_AND_GHG_PROVENANCE_REQUIRED",
   "implemented": true,
   "persisted": true,
@@ -139,6 +139,19 @@
         "hydro_detailed_period_badev_mm": -0.000052640587582358,
         "cause": "Hydro_detailed includes interception storage change but Outbal_calc does not receive Sic/Sict and cannot represent that store",
         "production_correction_admitted": false
+      },
+      {
+        "id": "TCD-019",
+        "process": "PO4 nonlinear sorption numerical conservation",
+        "classification": "CONFIRMED_LEGACY_NUMERICAL_CONSERVATION_POLICY_DEFECT",
+        "case": "LWKM_gras_1040.2021.2045",
+        "baseline_cumulative_transgen_residual_kg_ha_p": -0.27254515116348993,
+        "cause": "small-delta Langmuir tangent approximation dominates systematic bias; C_unl Newton Small=1e-4 supplies remaining nonlinear residual",
+        "combined_diagnostic_residual_kg_ha_p": 0.000009633743430599514,
+        "absolute_drift_reduction_percent": 99.99646526698807,
+        "accounting_only": false,
+        "numerical_policy_change_required": true,
+        "production_correction_admitted": false
       }
     ],
     "small_unclassified_diagnostic_residuals": {
@@ -156,7 +169,8 @@
     "mass_balance_crosswalk": "IMPLEMENTED_PERSISTED_SOURCE_BOUND",
     "diagnostic_residual_envelope": "IMPLEMENTED_PERSISTED_NOT_ACCEPTANCE_THRESHOLD",
     "balance_residual_reconciliation": "IMPLEMENTED_PERSISTED_CAUSAL_CLASSIFICATION_NOT_REFERENCE",
-    "theory_code_discrepancy_register": "IMPLEMENTED_PERSISTED_ACTIVE_TCD001_TO_TCD018",
+    "theory_code_discrepancy_register": "IMPLEMENTED_PERSISTED_ACTIVE_TCD001_TO_TCD019",
+    "po4_numerical_conservation_gate": "IMPLEMENTED_PERSISTED_DIAGNOSTIC_CAUSAL_NOT_REFERENCE",
     "machine_readable_status": "IMPLEMENTED_PERSISTED"
   },
   "hard_blockers": [
@@ -179,7 +193,8 @@
     "largest diagnostic NO3 residual localization and causal defect identification",
     "largest diagnostic NH4 residual localization and causal dry-down defect identification",
     "dominant organic-P residual localization to omitted redistribution ledger term",
-    "dominant water residual localization to omitted interception-storage state in Outbal_calc"
+    "dominant water residual localization to omitted interception-storage state in Outbal_calc",
+    "recurring LWKM inorganic-P drift localization to nonlinear constitutive linearization plus solver convergence policy"
   ],
   "recommended_next": {
     "serial": [
@@ -191,7 +206,8 @@
     "parallel": [
       "continue large-interface semantic audit",
       "expand 4.0-to-4.1.5 theory/code reconciliation",
-      "prepare corrected-legacy qualification cases for TCD-014 through TCD-018 without admitting production fixes",
+      "prepare corrected-legacy qualification cases for TCD-014 through TCD-019 without admitting production fixes",
+      "exercise Class-E constitutive-conservation tests for nonlinear fast sorption independently of legacy tolerance tuning",
       "classify remaining small DOM and organic-N diagnostic residuals only if they materially affect the reference gate"
     ],
     "production_migration": "NOT_ADMITTED"
