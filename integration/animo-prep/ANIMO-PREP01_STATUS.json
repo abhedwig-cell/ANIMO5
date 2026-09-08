@@ -4,7 +4,7 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-prep01-bootstrap",
   "date": "2026-09-08",
-  "evaluated_evidence_head": "26ebd62d8e4e140dcdfc8ae33014ac11339fa94d",
+  "evaluated_evidence_head": "e71f5cb615b14df85bcba1fcefa77981d117f864",
   "decision": "BLOCKED_REFERENCE_QUALIFICATION_CONTROLLED_B0_RETENTION_AND_GHG_PROVENANCE_REQUIRED",
   "implemented": true,
   "persisted": true,
@@ -79,7 +79,9 @@
     "crosswalk": "docs/prep01/MASS_BALANCE_CROSSWALK.md",
     "index_map": "docs/prep01/BALANCE_INDEX_MAP.csv",
     "diagnostic_envelope": "integration/animo-prep/PREP01_DIAGNOSTIC_BALANCE_ENVELOPE.json",
+    "residual_reconciliation": "integration/animo-prep/PREP01_BALANCE_RESIDUAL_RECONCILIATION.json",
     "acceptance_threshold_defined": false,
+    "raw_legacy_maxima_admissible_as_tolerances": false,
     "confirmed_findings": [
       {
         "id": "TCD-014",
@@ -114,8 +116,35 @@
         "outflow_probe_avc_kg_m3": 33702.6688094305,
         "production_correction_admitted": false,
         "architectural_requirement": "explicit theory-qualified conservative dry-solute or equivalent surface phase state"
+      },
+      {
+        "id": "TCD-017",
+        "process": "organic-P ploughing redistribution balance bookkeeping",
+        "classification": "CONFIRMED_LEGACY_BALANCE_BOOKKEEPING_DEFECT",
+        "case": "LWKM_gras_1040.2021.2045",
+        "baseline_1997_period_residual_kg_ha_p": 0.0441,
+        "baseline_1998_period_residual_kg_ha_p": 0.0494,
+        "baseline_cumulative_residual_kg_ha_p_rounded": 0.154,
+        "cause": "Bapo redistribution records Addiorpopl layer gain but omits the already tracked Addiorpotoppl top-reservoir loss",
+        "diagnostic_1998_residual_after_balance_only_probe_kg_ha_p": 4.61e-10,
+        "production_correction_admitted": false
+      },
+      {
+        "id": "TCD-018",
+        "process": "water interception-storage balance state coverage",
+        "classification": "CONFIRMED_LEGACY_BALANCE_INTERFACE_STATE_OMISSION",
+        "case": "LWKM_gras_1040.2021.2045",
+        "baseline_period_residual_mm": -0.0601,
+        "interception_storage_change_mm": -0.06,
+        "hydro_detailed_period_badev_mm": -0.000052640587582358,
+        "cause": "Hydro_detailed includes interception storage change but Outbal_calc does not receive Sic/Sict and cannot represent that store",
+        "production_correction_admitted": false
       }
-    ]
+    ],
+    "small_unclassified_diagnostic_residuals": {
+      "dissolved_organic_matter_max_abs_period_kg_ha": 0.00011,
+      "organic_n_max_abs_period_kg_ha_n": 0.000418
+    }
   },
   "deliverables": {
     "repository_and_governance": "IMPLEMENTED_PERSISTED",
@@ -126,7 +155,8 @@
     "io_process_dataflow_audit": "IMPLEMENTED_PERSISTED_SOURCE_BOUND",
     "mass_balance_crosswalk": "IMPLEMENTED_PERSISTED_SOURCE_BOUND",
     "diagnostic_residual_envelope": "IMPLEMENTED_PERSISTED_NOT_ACCEPTANCE_THRESHOLD",
-    "theory_code_discrepancy_register": "IMPLEMENTED_PERSISTED_ACTIVE",
+    "balance_residual_reconciliation": "IMPLEMENTED_PERSISTED_CAUSAL_CLASSIFICATION_NOT_REFERENCE",
+    "theory_code_discrepancy_register": "IMPLEMENTED_PERSISTED_ACTIVE_TCD001_TO_TCD018",
     "machine_readable_status": "IMPLEMENTED_PERSISTED"
   },
   "hard_blockers": [
@@ -147,20 +177,22 @@
     "earlier four-byte-default-REAL OXYDEM NaN hypothesis",
     "PO4 first-step residual localization",
     "largest diagnostic NO3 residual localization and causal defect identification",
-    "largest diagnostic NH4 residual localization and causal dry-down defect identification"
+    "largest diagnostic NH4 residual localization and causal dry-down defect identification",
+    "dominant organic-P residual localization to omitted redistribution ledger term",
+    "dominant water residual localization to omitted interception-storage state in Outbal_calc"
   ],
   "recommended_next": {
     "serial": [
-      "recover historical Intel project/build semantics or independently qualify an equivalent reference-build contract",
+      "ANIMO-PREP02 recover historical Intel project/build semantics or independently qualify an equivalent reference-build contract",
       "establish legally controlled immutable B0 storage",
       "qualify at least one legacy reference case and capture unrounded output",
       "resolve GHGMais source/testcase lineage"
     ],
     "parallel": [
-      "localize remaining nontrivial diagnostic mass residuals without treating them as tolerances",
       "continue large-interface semantic audit",
       "expand 4.0-to-4.1.5 theory/code reconciliation",
-      "prepare corrected-legacy defect evidence without admitting production fixes"
+      "prepare corrected-legacy qualification cases for TCD-014 through TCD-018 without admitting production fixes",
+      "classify remaining small DOM and organic-N diagnostic residuals only if they materially affect the reference gate"
     ],
     "production_migration": "NOT_ADMITTED"
   }
