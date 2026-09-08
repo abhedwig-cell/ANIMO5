@@ -1,0 +1,41 @@
+{
+  "work_unit": "ANIMO-PREP02",
+  "evidence_class": "CORRECTED_LEGACY_ADMISSION_PLAN_NOT_IMPLEMENTATION",
+  "production_migration_admitted": false,
+  "frozen_reference_required_first": true,
+  "non_composition_rule": true,
+  "classes": {
+    "A_LEDGER_REPORTING": {
+      "findings": ["TCD-017", "TCD-018"],
+      "expected_state_trajectory_change": false,
+      "candidate_work_unit": "CL-01",
+      "admission_requires_state_trajectory_equivalence": true
+    },
+    "B_LOCAL_ALGEBRA": {
+      "findings": ["TCD-015"],
+      "expected_state_trajectory_change": true,
+      "candidate_work_unit": "CL-02",
+      "local_causal_probe_exists": true,
+      "production_fix_admitted": false
+    },
+    "C_STATE_MODEL": {
+      "findings": ["TCD-016"],
+      "candidate_work_unit": "CL-03",
+      "theory_state_contract_required_before_implementation": true,
+      "diagnostic_tiny_outflow_workaround_admitted": false
+    },
+    "D_INITIALIZATION_CONTRACT": {
+      "findings": ["TCD-014"],
+      "candidate_work_unit": "CL-04",
+      "authoritative_initialization_semantics_required_before_implementation": true
+    }
+  },
+  "required_sequence": [
+    "qualify affected frozen reference behaviour",
+    "admit one correction independently",
+    "persist correction-specific output and ledger delta",
+    "compose only already admitted corrections",
+    "rerun full qualification after composition"
+  ],
+  "status": "PLANNED_FAIL_CLOSED"
+}
