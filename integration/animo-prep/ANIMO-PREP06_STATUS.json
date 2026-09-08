@@ -1,0 +1,64 @@
+{
+  "work_unit": "ANIMO-PREP06",
+  "title": "Conserved State and Transfer-Ledger Audit",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep06-conserved-state-ledger",
+  "date": "2026-09-08",
+  "starting_head": "cbd71f1e651d312c4f1d7573269e6cbd18178801",
+  "decision": "QUALIFIED_SOURCE_BOUND_CONSERVED_STATE_LEDGER_MAP_MACROPORE_BEHAVIOURAL_ADMISSION_BLOCKED",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "source-bound static state ownership transaction and ledger-interface mapping only",
+  "blocked": true,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "legacy_source_modified": false,
+  "reference_qualified": false,
+  "production_migration_admitted": false,
+  "verification": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "static_source_checks": "47/47",
+    "macropore_testbank_active_occurrences": 0
+  },
+  "finding": {
+    "id": "TCD-025",
+    "classification": "SOURCE_CONFIRMED_MACROPORE_MAIN_LEDGER_STATE_AND_DRA4_INTEGRATION_GAP_TESTBANK_UNEXERCISED",
+    "behavioural_magnitude_measured": false,
+    "production_correction_admitted": false
+  },
+  "deliverables": {
+    "analysis": "docs/prep06/CONSERVED_STATE_TRANSFER_LEDGER.md",
+    "state_inventory": "docs/prep06/CONSERVED_STATE_INVENTORY.csv",
+    "audit_tool": "tools/audit_conserved_state_ledger.py",
+    "machine_evidence": "integration/animo-prep/PREP06_CONSERVED_STATE_LEDGER.json",
+    "canonical_discrepancy_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
+  },
+  "architectural_constraints": [
+    "preserve explicit accepted/start versus trial/result state semantics",
+    "give each conserved store one state owner and explicit unit",
+    "represent internal and external transfers separately with control-volume scope",
+    "do not treat legacy balance arrays as canonical physical state",
+    "include macropore water and solute storage in the canonical ledger contract if macropores remain supported"
+  ],
+  "remaining_blockers": [
+    "PREP02 historical or independently trusted reference remains unavailable",
+    "supplied testbank has no active macropore case",
+    "revision-53 macropore theory and completed public balance contract remain incomplete",
+    "controlled immutable B0 retention still needs formalization"
+  ],
+  "recommended_next": {
+    "parallel_now": [
+      "complete a transfer-edge inventory for Addit Resp_miner Transca Transgen and Transport with C/N/P species identity checks",
+      "scan balance formulas for terms accumulated but never consumed and states consumed without explicit storage ownership",
+      "design a synthetic qualification specification for macropore storage/direct drainage without admitting it as reference evidence"
+    ],
+    "serial_when_reference_available": [
+      "run a dedicated macropore case under qualified frozen reference",
+      "capture unrounded matrix/macropore exchange storage and direct drainage",
+      "qualify any corrected public ledger interface independently"
+    ]
+  }
+}
