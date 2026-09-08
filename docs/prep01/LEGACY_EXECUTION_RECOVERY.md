@@ -1,84 +1,145 @@
 # Legacy execution recovery evidence
 
-Status: `STRUCTURAL_EXECUTION_RECOVERED_NUMERICAL_REFERENCE_NOT_QUALIFIED`.
+Status: `DIAGNOSTIC_EXECUTION_RECOVERED_REFERENCE_NOT_QUALIFIED`.
 
-This document records PREP01 execution-recovery work against the supplied ANIMO 4.1.5 revision-53 source and the frozen RuurloGrass testcase. No frozen source file was modified.
+This record describes execution archaeology against the supplied ANIMO 4.1.5 revision-53 source and frozen testbank. No frozen scientific source file is modified by this work.
 
-## 1. Legacy hydrology record framing
+## 1. PowerStation hydrology framing recovered
 
-The RuurloGrass `SWATRE.UNF` file is not directly readable by GNU Fortran's default unformatted sequential runtime. Byte-level inspection establishes an observed framing for this case:
+The supplied binary hydrology files are not directly readable by GNU Fortran's default sequential-unformatted runtime because their record framing follows a Microsoft/Intel Fortran PowerStation-compatible convention.
 
-- file header byte: `0x4b`;
-- each logical record: one-byte payload length, payload bytes, same one-byte trailing length;
-- file trailer byte: `0x82`.
+The observed framing consists of:
 
-For RuurloGrass:
+- file header `0x4b`;
+- one or more physical blocks per logical record;
+- physical-block marker `0..128` for a terminating block of that payload length;
+- marker `0x81` for a 128-byte continuation block;
+- identical leading/trailing marker for every physical block;
+- file trailer `0x82`.
 
-- source SHA-256: `36d8dbeee7a46c769026c7441ea607160a715768571ba3e048b32ee2ace74d13`;
+`tools/convert_legacy_unformatted.py` joins physical blocks into logical records and rewrites framing to GNU's default four-byte record markers. Logical payload bytes are copied unchanged. The parser fails closed on malformed marker pairs, truncation, continuation at EOF or bytes after the file trailer.
+
+### RuurloGrass
+
+- source hydrology SHA-256: `36d8dbeee7a46c769026c7441ea607160a715768571ba3e048b32ee2ace74d13`;
 - source size: 888148 bytes;
 - logical records: 11691;
-- observed payload lengths: 8, 12, 20, 24, 40, 80 and 84 bytes;
-- first payload decodes exactly as `(1980, 1985, 1.0, 120.0, 1.0)`, matching the old-SWAP header read in `input1.for`.
+- physical blocks: 11691;
+- logical payload lengths: 8, 12, 20, 24, 40, 80 and 84 bytes;
+- first logical payload decodes as `(1980, 1985, 1.0, 120.0, 1.0)`, matching the old-SWAP header contract in `input1.for`;
+- GNU-framed target SHA-256: `b5fc15f51074ba9e4131e0616b4348e31d523d0a8e874be6055bcd614de4de5c`.
 
-`tools/convert_legacy_unformatted.py` rewrites record framing only. Payload bytes are copied unchanged. The converted Ruurlo file is 958292 bytes with SHA-256 `b5fc15f51074ba9e4131e0616b4348e31d523d0a8e874be6055bcd614de4de5c`.
+### GHGMais
 
-The converter deliberately fails closed for high-bit/extended markers. `GHGMais/Input/result.bun` contains such a marker and is not admitted yet.
+The earlier assumption that `result.bun` used an unresolved extended record format was wrong. Marker `0x80` is a valid terminating 128-byte block and marker `0x81` is the continuation form.
 
-## 2. Confirmed `Dble_trunc` return-kind defect
+For `GHGMais/Input/result.bun`:
 
-The supplied `Function.for` defines `Dble_trunc` with a `REAL(8)` function result. Active callers, including `input1.for`, `Input_hydro.for` and `Animo.inc`, declare `Dble_trunc` as default `REAL`.
+- source SHA-256: `cd4202745ee8a9ccd890e6aa6d3f551ff3bb80041efd178aedb3f5f4bbe002e2`;
+- source size: 4178832 bytes;
+- logical records: 40189;
+- physical blocks: 43841;
+- logical payload lengths: 4, 8, 12, 16, 20, 72, 80, 128 and 132 bytes;
+- GNU-framed target SHA-256: `c6cc86dfa7855d02e0ff13b909317460ee478008c6f284bd1cb902d2215e7537`.
 
-This is a source-level return-kind mismatch across an implicit procedure interface.
+All nine testbank hydrology files are now structurally parseable by the qualification adapter. Binary record framing is no longer a PREP01 blocker.
 
-Under GNU Fortran the consequence is directly observable. The Ruurlo hydrology header contains `STimahy=120.0`, but the caller receives `Timahy=0.0` through the mismatched function result and terminates with `STOP 1111` because the ANIMO and hydrology periods no longer agree.
+## 2. Default-real and local-storage semantics
 
-A diagnostic copy in which the function result is made consistent with the caller declaration passes that gate. The frozen source remains unchanged.
+An earlier GNU probe used four-byte default `REAL`. In that build `Function.for` returned `REAL(8)` from `Dble_trunc` while callers declared default `REAL`, resulting in a return-kind mismatch. The corrupted hydrology end time caused `STOP 1111`, and later diagnostic adaptations exposed `OXYDEM` NaNs.
 
-PREP01 classification: `CONFIRMED_DEFECT` for interface/type correctness. Scientific/numerical impact under the historical Intel build still requires reference evidence before a corrected legacy baseline is admitted.
+A fresh diagnostic build using:
 
-## 3. Compiler-dependent local-state retention in `Outbal_write`
+```text
+-fdefault-real-8
+-fdefault-double-8
+-fno-automatic
+```
 
-A GNU diagnostic run reaches the end of the Ruurlo simulation after the hydrology framing and `Dble_trunc` compatibility issues are bypassed, but initially fails at the final balance-description write. `Outbal_write` initializes local character format strings in the `Itask=1` path and reuses them in the later `Itask=3` path without an explicit `SAVE` declaration.
+in addition to the legacy/free-form compatibility flags gives a materially different and internally more coherent result:
 
-Adding `SAVE` only in a diagnostic copy permits the run to finish. This is currently classified `SUSPICIOUS_LEGACY_CONSTRUCT`, not yet `CONFIRMED_DEFECT`, because the exact historical Intel project flags are unavailable and could have imposed static local storage.
+- caller-side default `REAL` is eight bytes, consistent with the explicit `REAL(8)` `Dble_trunc` result;
+- local data in routines such as `Outbal_write` have static storage, preserving values across the split `Itask` calls;
+- eight testcases complete without `NaN` diagnostics.
 
-## 4. First completed diagnostic run
+This does **not** establish that these were the exact historical Intel project options. It does establish that the earlier GNU failures cannot be promoted to legacy model defects without first resolving compiler semantics.
 
-With three execution-only compatibility measures outside the frozen source:
+Current classifications:
 
-1. GNU-oriented record-framing conversion of `SWATRE.UNF` with payload bytes unchanged;
-2. a diagnostic correction of the `Dble_trunc` result-kind mismatch;
-3. diagnostic persistence of the `Outbal_write` local format strings;
+- `Dble_trunc`: `SUSPICIOUS_LEGACY_CONSTRUCT`, dangerous because correctness depends on default-real compiler policy and an implicit procedure interface;
+- `Outbal_write` local retention: `SUSPICIOUS_LEGACY_CONSTRUCT`, because persistence depends on compiler storage semantics not expressed in the routine;
+- earlier `OXYDEM` NaNs: `DIAGNOSTIC_BUILD_ARTIFACT` for PREP01 purposes, not a demonstrated legacy aeration defect.
 
-the supplied RuurloGrass case reaches:
+## 3. Independently rebuilt diagnostic executable
 
-`Successful completion of simulation`
+A fresh source extraction, with no edits to frozen scientific source, was compiled from 58 selected units under GNU Fortran 14.2.0 using:
 
-and produces the expected broad classes of legacy outputs and mass-balance files.
+```text
+-ffree-form
+-ffree-line-length-none
+-fallow-argument-mismatch
+-std=legacy
+-fdefault-real-8
+-fdefault-double-8
+-fno-automatic
+```
 
-This run is **not** a scientific reference result.
+Execution-only compatibility material consisted of include-case aliases, minimal `dfport/secnds` and `KINT/KIDNNT` shims, and a GNU-equivalent rewrite of one rejected `Outsel.for` output-list construct.
 
-The run reports IEEE invalid/divide-by-zero/overflow/denormal exceptions and contains 7788 message lines with `NaN`. `OXYDEM` fails to converge from the first simulated timestep, with `NaN` values in aerated fractions and oxygen-demand diagnostics. Therefore none of these output files may be promoted to `FROZEN_LEGACY`, `CORRECTED_LEGACY_REFERENCE`, RR or QG expected values.
+Fresh diagnostic executable SHA-256:
 
-## 5. Current interpretation
+`0d082a8f59f4c1fd8c083df33ef92b23a2947d1abf69727c12801e3ceea499bd`
 
-Execution recovery has moved from a file-format blocker to a numerical/reference blocker.
+This executable is a research artifact, not an admitted legacy reference.
 
-Established facts:
+## 4. Eight deterministic diagnostic cases
 
-- the Ruurlo binary hydrology payload can be preserved exactly while converting only record framing;
-- the supplied source contains a confirmed implicit-interface result-kind mismatch in `Dble_trunc`;
-- a full control-flow run is possible under GNU with explicit diagnostic compatibility adaptations;
-- that run is numerically invalid and cannot serve as behavioural truth.
+The following cases reach the legacy successful-completion path:
+
+1. `CranGrass`;
+2. `CranMais`;
+3. `GrassPeat`;
+4. `LWKM_gras_1040.2021.2045`;
+5. `Puitmijn_Cranendonck_60`;
+6. `RuurloGrass`;
+7. `STONE_akk_0006.2001.2015`;
+8. `Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA`.
+
+Two repeated execution sets and an independently rebuilt executable were compared. After normalizing only volatile run timestamps and elapsed CPU seconds, the generated output bundles are byte-identical for all eight cases. Exact file counts and bundle hashes are recorded in `integration/animo-prep/PREP01_DIAGNOSTIC_EXECUTION.json`.
+
+This establishes deterministic diagnostic behaviour for the investigated GNU build. It does not establish equivalence to the historical Intel executable and the bundle hashes are not admitted as `FROZEN_LEGACY` or `QUALIFIED_GOLDEN_CASE` expected values.
+
+## 5. GHGMais is a source/testcase contract blocker
+
+`GHGMais` passes hydrology conversion but stops in text-input parsing with `STOP 1995` and the message:
+
+`label ">outGHG:" not found in file "Input/general.inp"`
+
+The supplied revision-53 `input1.for` requires `>outGHG:` when `IoptGHG >= 1` and then reads GHG-control variables from that section. The supplied `GHGMais/Input/general.inp` instead contains a different set of GHG output keys and no `>outGHG:` section.
+
+This is evidence that the GHG testcase and supplied source do not share exactly the same input contract, or that required testcase material is missing. PREP01 does not insert the missing section or translate the newer keys because that would manufacture a reference case.
+
+## 6. Current interpretation
+
+Execution recovery has moved beyond the original build and binary-I/O blockers. We now have:
+
+- source-bound build semantics hypotheses;
+- a payload-preserving PowerStation-to-GNU record adapter;
+- a fresh deterministic diagnostic build;
+- eight reproducibly completing testcases;
+- one explicit source/testcase provenance blocker.
 
 Still unresolved:
 
-- exact historical Intel compiler/project flags;
-- whether `Dble_trunc` produced materially different behaviour in the historical qualified executable;
-- source of the first `OXYDEM` NaN and whether it is a legacy numerical defect, an uninitialized-state/compiler-semantics dependency, or a consequence of another interface mismatch;
-- byte/reference outputs from a trusted native ANIMO 4.1.5 revision-53 executable;
-- extended record framing used by the GHGMais `result.bun` case.
+- exact historical Intel compiler flags/project configuration;
+- equivalence of the GNU diagnostic results to a trusted native ANIMO 4.1.5 revision-53 executable;
+- controlled immutable retention of the raw source and documentation bytes;
+- provenance of the `GHGMais` testcase and the matching ANIMO revision;
+- trusted unrounded numerical outputs from a qualified legacy reference;
+- complete 4.1.5 theory documentation and balance-term reconciliation.
 
 ## Gate
 
-PREP01 must remain fail-closed. Structural program completion is not equivalent to a reproducible scientific legacy reference.
+`DIAGNOSTIC_EXECUTION_RECOVERED_REFERENCE_NOT_QUALIFIED`
+
+PREP01 must remain fail-closed. Deterministic diagnostic execution is evidence for archaeology and later qualification, not yet a behavioural oracle.
