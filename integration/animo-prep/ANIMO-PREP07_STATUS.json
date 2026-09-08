@@ -1,0 +1,89 @@
+{
+  "work_unit": "ANIMO-PREP07",
+  "title": "Transfer-Edge and Species-Identity Audit",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep07-transfer-edge-audit",
+  "date": "2026-09-08",
+  "starting_head": "7a744f688f85606875ee7c3eb37630bae3aff96f",
+  "evaluated_evidence_head": "901e69aab5ba5bd26e768d693923b80d5c894e5a",
+  "decision": "QUALIFIED_SOURCE_BOUND_TRANSFER_EDGE_AUDIT_TWO_NEW_GAPS_REFERENCE_ADMISSION_BLOCKED",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "source-bound static transfer-edge and species/site identity audit plus reuse of already persisted diagnostic P-ledger evidence",
+  "blocked": true,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "legacy_source_modified": false,
+  "reference_qualified": false,
+  "corrected_legacy_production_change": false,
+  "production_migration_admitted": false,
+  "verification": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "static_checks_passed": 25,
+    "static_checks_total": 25,
+    "supplied_ncxfa_records": 7,
+    "supplied_ncxfa_values": [1, 1, 1, 1, 1, 1, 1]
+  },
+  "findings": [
+    {
+      "id": "TCD-028",
+      "classification": "SOURCE_CONFIRMED_EXUDATE_HUMUS_PLOUGHING_LEDGER_DOUBLE_COUNT_AND_SPECIES_RECONSTRUCTION_GAP",
+      "affected_routines": ["Addit.for", "Outbal_calc.for"],
+      "key_identity": "legacy Adhuexpl redistribution = -old + new + new; expected = -old + new",
+      "exact_ledger_excess": "+new Huex",
+      "prior_p_activation_evidence": "legacy Adhuexpl*Pofrhu max abs period residuals RP=45.2 GP=90.3 TP=90.3 kg/ha P; explicit Adhuexpopl reduces to near numerical noise",
+      "new_c_or_n_behavioural_magnitude_measured": false,
+      "production_correction_admitted": false
+    },
+    {
+      "id": "TCD-029",
+      "classification": "SOURCE_CONFIRMED_MULTISITE_FAST_SORPTION_MANAGEMENT_INTEGRATION_GAP_TESTBANK_UNEXERCISED",
+      "affected_routines": ["input1.for", "Inicalc.for", "Transorp.for", "Addit.for"],
+      "revision53_parser_contract": "NCXFA=1..3",
+      "management_contract": "Ampoma/Socfpo helper initialization restricted to NCXFA=1 and Addit writes Amcxfa(1) without Parcxfa site parameters",
+      "supplied_multisite_coverage": false,
+      "behavioural_magnitude_measured": false,
+      "production_correction_admitted": false
+    }
+  ],
+  "negative_findings_not_promoted": [
+    "N2Od and PDen are not classified as omissions from top-level nitrate residual structure alone",
+    "CH4f CO2f and Dssi are not classified as omissions without revision-specific GHG theory"
+  ],
+  "deliverables": {
+    "analysis": "docs/prep07/TRANSFER_EDGE_SPECIES_IDENTITY_AUDIT.md",
+    "audit_tool": "tools/audit_transfer_edges.py",
+    "machine_evidence": "integration/animo-prep/PREP07_TRANSFER_EDGE_SPECIES_AUDIT.json",
+    "canonical_discrepancy_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
+  },
+  "architectural_constraints": [
+    "internal transfers require explicit source store destination store species amount unit and scope",
+    "element-specific transfer quantities should be consumed directly rather than reconstructed from a generic carrier after redistribution",
+    "constitutive site identity must remain explicit across management and transport",
+    "solver iteration indices site indices and species indices must have distinct roles",
+    "balance arrays remain observers rather than physical state owners",
+    "each admitted option combination requires cross-module path coverage"
+  ],
+  "remaining_blockers": [
+    "PREP02 historical or independently trusted reference remains unavailable",
+    "TCD-028 C/N whole-case magnitude is not independently measured under a qualified reference",
+    "no supplied testcase exercises NCXFA greater than 1",
+    "revision-53 multi-site fast-sorption management theory/change provenance is incomplete",
+    "controlled immutable B0 retention still needs formalization"
+  ],
+  "recommended_next": {
+    "parallel_now": [
+      "build a synthetic NCXFA=2 management redistribution probe solely as diagnostic path evidence",
+      "instrument TCD-028 C/N/OM redistribution terms to separate the duplicate generic amount from species reconstruction effects",
+      "continue source-wide option-isolation audit for writes to disabled chemical-state families"
+    ],
+    "serial_when_reference_available": [
+      "reproduce TCD-028 ploughing behaviour under qualified frozen reference",
+      "qualify duplicate removal and explicit N/P transfer consumption independently",
+      "qualify an NCXFA=2 or NCXFA=3 management case against trusted 4.1.x reference before admitting multi-site support"
+    ]
+  }
+}
