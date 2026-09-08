@@ -1,0 +1,68 @@
+{
+  "evidence_id": "ANIMO-PREP01-BALANCE-RESIDUAL-RECONCILIATION-2026-09-08",
+  "evidence_class": "SOURCE_BOUND_DIAGNOSTIC_RESIDUAL_CLASSIFICATION_NOT_ACCEPTANCE_TOLERANCE",
+  "source_envelope": "integration/animo-prep/PREP01_DIAGNOSTIC_BALANCE_ENVELOPE.json",
+  "acceptance_threshold_defined": false,
+  "reference_qualified": false,
+  "residuals": {
+    "po4_p": {
+      "raw_max_abs_period_kg_ha_p": 0.724,
+      "classification": "INITIAL_STATE_CONSISTENCY_AND_MASS_LEDGER_SEAM",
+      "evidence": "integration/animo-prep/PREP01_PO4_INITIALIZATION_LEDGER_SEAM.json",
+      "causal_result": "making only the supplied fast initial sorption consistent with the model relation reduces the first-profile residual by 99.9864 percent",
+      "acceptance_tolerance_candidate": false
+    },
+    "no3_n": {
+      "raw_max_abs_period_kg_ha_n": 0.576,
+      "classification": "CONFIRMED_LEGACY_CODE_DEFECT_NEGATIVE_CONCENTRATION_REKO_RECONSTRUCTION",
+      "evidence": "docs/prep01/NITROGEN_BALANCE_DIAGNOSTICS.md",
+      "causal_result": "removing the double-counted moisture derivative from the diagnostic Reko reconstruction collapses the 1997 residual to about 2.28e-7 kg/ha N",
+      "acceptance_tolerance_candidate": false
+    },
+    "nh4_n": {
+      "raw_max_abs_period_kg_ha_n": 0.139,
+      "classification": "CONFIRMED_LEGACY_CODE_DEFECT_AND_DRY_SOLUTE_STATE_GAP",
+      "evidence": "integration/animo-prep/PREP01_NH4_DRYDOWN_LEDGER_SEAM.json",
+      "causal_result": "the remaining dissolved mass is exactly the local and annual residual; forcing it through tiny Fu closes the ledger but creates a pathological concentration and is not an admitted fix",
+      "acceptance_tolerance_candidate": false
+    },
+    "organic_p": {
+      "raw_max_abs_period_kg_ha_p": 0.0494,
+      "raw_late_cumulative_kg_ha_p_rounded": 0.154,
+      "classification": "CONFIRMED_LEGACY_BALANCE_BOOKKEEPING_DEFECT_TOP_RESERVOIR_REDISTRIBUTION_OMITTED",
+      "evidence": "integration/animo-prep/PREP01_ORGANIC_P_REDISTRIBUTION_DEFECT.json",
+      "causal_result": "adding the already tracked Addiorpotoppl term to the diagnostic balance collapses 1997 and 1998 residuals to approximately 1e-10 kg/ha P or smaller",
+      "acceptance_tolerance_candidate": false
+    },
+    "water": {
+      "raw_max_abs_period_mm": 0.0601,
+      "classification": "CONFIRMED_LEGACY_BALANCE_INTERFACE_STATE_OMISSION_INTERCEPTION_STORAGE",
+      "evidence": "integration/animo-prep/PREP01_WATER_INTERCEPTION_STORAGE_SEAM.json",
+      "causal_result": "interception storage change -0.0600 mm plus detailed-hydrology Badev -5.264e-5 mm explains the formatted -0.0601 mm period deviation",
+      "acceptance_tolerance_candidate": false
+    },
+    "fresh_organic_matter": {
+      "raw_max_abs_period_kg_ha": 1.12e-8,
+      "classification": "MACHINE_SCALE_DIAGNOSTIC_CLOSURE_NO_DEFECT_LOCALIZED",
+      "acceptance_tolerance_candidate": false
+    },
+    "humus": {
+      "raw_max_abs_period_kg_ha": 1.86e-9,
+      "classification": "MACHINE_SCALE_DIAGNOSTIC_CLOSURE_NO_DEFECT_LOCALIZED",
+      "acceptance_tolerance_candidate": false
+    },
+    "dissolved_organic_matter": {
+      "raw_max_abs_period_kg_ha": 0.00011,
+      "classification": "SMALL_DIAGNOSTIC_RESIDUAL_NOT_YET_CAUSALLY_CLASSIFIED",
+      "acceptance_tolerance_candidate": false
+    },
+    "organic_n": {
+      "raw_max_abs_period_kg_ha_n": 0.000418,
+      "classification": "SMALL_DIAGNOSTIC_RESIDUAL_NOT_YET_CAUSALLY_CLASSIFIED",
+      "acceptance_tolerance_candidate": false
+    }
+  },
+  "conclusion": "The dominant raw legacy residual envelope is a mixture of initialization inconsistency, algebraic defects, state-model gaps and balance-interface omissions. It must not be converted into blanket numerical tolerances.",
+  "qualification_policy_requirement": "derive future conservation thresholds from explicit conserved-ledger policy and qualified corrected-reference evidence after known deterministic defects are separated from numerical roundoff/discretization closure",
+  "production_migration_admitted": false
+}
