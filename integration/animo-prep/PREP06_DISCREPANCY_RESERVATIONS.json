@@ -1,7 +1,7 @@
 {
   "work_unit": "ANIMO-PREP06",
   "purpose": "prevent discrepancy-number collisions while PREP06 evidence is persisted before central-register closeout",
-  "register_tail_observed": "TCD-025",
+  "register_tail_observed_before_closeout": "TCD-025",
   "reservations": [
     {
       "id": "TCD-026",
@@ -22,7 +22,8 @@
       ]
     }
   ],
-  "central_register_updated": false,
-  "update_rule": "append reservations to docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv during PREP06 closeout after re-reading the live tail",
+  "central_register_updated": true,
+  "central_register_tail_after_closeout": "TCD-027",
+  "central_register_commit": "dc83e510d99c5570a87abfe310a98f63d8d517c6",
   "production_migration_admitted": false
 }
