@@ -1,0 +1,85 @@
+{
+  "work_unit": "ANIMO-PREP05",
+  "title": "Slow-Langmuir Site-Index Causal Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep01-bootstrap",
+  "date": "2026-09-08",
+  "decision": "QUALIFIED_DIAGNOSTIC_DEFECT_CAUSALITY_REFERENCE_ADMISSION_STILL_BLOCKED",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "source-bound and GNU diagnostic synthetic causal defect evidence only",
+  "blocked": true,
+  "legacy_source_modified": false,
+  "reference_qualified": false,
+  "corrected_legacy_production_change": false,
+  "production_migration_admitted": false,
+  "finding": {
+    "id": "TCD-024",
+    "classification": "CONFIRMED_LEGACY_WRONG_INDEX_DEFECT_AND_LATENT_BOUNDS_RISK",
+    "corrected_legacy_class": "B_LOCAL_ALGEBRAIC_INDEX_CORRECTION_WITH_STATE_TRAJECTORY_CHANGE",
+    "affected_routine": "Transorp/Conc_unl",
+    "affected_option": "OPTCXSL=2 slow Langmuir sorption",
+    "legacy_expression": "Parcxsl(3,I)",
+    "site_correct_expression_probe": "Parcxsl(3,J)",
+    "supplied_testbank_natural_coverage": false
+  },
+  "synthetic_probe": {
+    "base_case": "LWKM_gras_1040.2021.2045",
+    "slow_sorption_sites": 3,
+    "site_affinity_parameters": [500.0, 1000.0, 2000.0],
+    "baseline_completion": true,
+    "indexfix_completion": true,
+    "output_files_compared": 55,
+    "normalized_equal": 44,
+    "changed": 11,
+    "missing": 0,
+    "extra": 0
+  },
+  "mass_balance_effect": {
+    "GP_final_cumulative_kg_ha_p": {
+      "baseline": -158.0,
+      "indexfix": -0.432
+    },
+    "TP_final_cumulative_kg_ha_p": {
+      "baseline": -329.0,
+      "indexfix": -0.726
+    },
+    "RP_final_cumulative_kg_ha_p": {
+      "baseline": -54.4,
+      "indexfix": -0.254
+    },
+    "interpretation": "single site-index correction removes more than 99.5 percent of synthetic cumulative P nonclosure in each balance scope; remaining drift is not an acceptance tolerance and includes independent TCD-019 numerical-conservation behaviour"
+  },
+  "bounds_risk": {
+    "trial_index_range": "1..20",
+    "site_dimension_Macx": 3,
+    "runtime_bounds_failure_observed_in_probe": false,
+    "latent_out_of_bounds_proven_by_index_domains": true
+  },
+  "deliverables": {
+    "analysis": "docs/prep05/SLOW_LANGMUIR_SITE_INDEX_DEFECT.md",
+    "machine_evidence": "integration/animo-prep/PREP05_SLOW_LANGMUIR_SITE_INDEX_DEFECT.json",
+    "canonical_discrepancy_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
+  },
+  "remaining_blockers": [
+    "PREP02 historical or independently trusted native reference remains unavailable",
+    "no supplied testcase naturally covers OPTCXSL=2",
+    "revision-specific slow-Langmuir theory/change provenance is incomplete",
+    "TCD-019 must be qualified separately before composing P numerical corrections",
+    "controlled immutable B0 retention still needs formalization"
+  ],
+  "recommended_next": {
+    "parallel_now": [
+      "build a source-wide loop-index and species-index audit around nested constitutive loops",
+      "compose TCD-024 with TCD-019 only in a temporary synthetic diagnostic candidate to test independence",
+      "add dedicated path-coverage specifications for OPTCXSL=1 2 and 3 without production migration"
+    ],
+    "serial_when_reference_available": [
+      "reproduce the frozen OPTCXSL=2 behaviour under a qualified reference",
+      "capture unrounded slow-sorption site states and parameter binding",
+      "qualify the I-to-J correction independently before composing it with other P corrections"
+    ]
+  }
+}
