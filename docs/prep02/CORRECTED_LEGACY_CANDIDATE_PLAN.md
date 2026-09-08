@@ -20,10 +20,12 @@ These corrections change diagnostic balance accounting but are not expected to c
 
 Source finding:
 
-- `Addit.for` already performs conservative top-reservoir-to-soil redistribution;
-- `Outbal_calc.for` records the positive soil redistribution in `Bapo(Redi)` but omits the already available negative top-reservoir term `Addiorpotoppl`.
+- `Addit.for` performs the top-reservoir-to-soil redistribution and records the top-reservoir dissolved-organic-P loss in `Addiorpotoppl`;
+- it separately records stable dissolved-organic-P redistribution in `AdStdiorpopl`;
+- it separately records P associated with redistributed exudate-derived humus in `Adhuexpopl`;
+- `Outbal_calc.for` omits `Addiorpotoppl`, omits `AdStdiorpopl`, and reconstructs the exudate-humus term as `Adhuexpl * Pofrhu` instead of consuming the explicit P-valued `Adhuexpopl` ledger quantity.
 
-Minimal candidate correction:
+The original minimal measured-case correction was:
 
 ```fortran
 Bapo(Redi,Ly) = Bapo(Redi,Ly) + Addiorpotoppl(I)*Z
@@ -31,13 +33,39 @@ Bapo(Redi,Ly) = Bapo(Redi,Ly) + Addiorpotoppl(I)*Z
 
 inside the same top-reservoir balance scope used by the analogous N and inorganic-P terms.
 
+The subsequent PREP02 P-array audit expands the Class-A candidate family, but not its reference admission. Two controlled activation probes show that the dormant P-specific arrays are also required when their states are active:
+
+```fortran
+Bapo(Redi,Ly) = Bapo(Redi,Ly) +
+     (Addiorpopl(I,Ln) + AdStdiorpopl(I,Ln))*Z
+```
+
+and, for the exudate-humus P redistribution term:
+
+```fortran
+Dum = Adhuexpopl(I,Ln) * Z
+```
+
+instead of reconstructing that term from `Adhuexpl * Pofrhu`.
+
+Diagnostic evidence:
+
+- supplied phosphorus/ploughing cases naturally leave `AdStdiorpopl` and `Adhuexpopl` at zero, so natural testbank parity alone cannot qualify them;
+- a stable-DOP activation probe reduced the partial-profile RP maximum absolute period residual from `1.43e-4` to `2.34e-10 kg/ha P` when `AdStdiorpopl` was admitted to the diagnostic ledger;
+- an exudate-humus activation probe reduced the corresponding RP residual from `45.2` to `2.34e-10 kg/ha P` when `Adhuexpopl` replaced the legacy reconstruction;
+- ordinary non-balance outputs were unchanged after normalization of only the PREP01 volatile fields in both probes;
+- detailed evidence is in `docs/prep02/ORGANIC_P_PLOUGHING_ARRAY_AUDIT.md` and `integration/animo-prep/PREP02_ORGANIC_P_PLOUGHING_ARRAY_AUDIT.json`.
+
 Admission requirements:
 
-1. frozen reference reproduces the original ploughing residuals;
-2. corrected case removes only the bookkeeping defect;
-3. all process-state and ordinary non-balance outputs are unchanged at the admitted comparison precision;
-4. period and cumulative organic-P ledgers close after the correction;
-5. the still-open P-specific redistribution arrays `AdStdiorpopl` and `Adhuexpopl` are audited before declaring the correction generic beyond the measured case.
+1. frozen reference reproduces the original naturally active ploughing residuals;
+2. each ledger subterm remains independently reversible and attributable;
+3. corrected cases remove only the bookkeeping defects;
+4. all process-state and ordinary non-balance outputs are unchanged at the admitted comparison precision;
+5. period and cumulative organic-P ledgers close after the correction;
+6. reference qualification includes at least one admitted activation of stable DOP and exudate-humus P, because the supplied natural testbank leaves those terms dormant;
+7. partial balance profiles that intersect the ploughing zone are included, not only whole-plough-zone profiles;
+8. any GNU execution-copy compatibility adaptation is recorded separately and is not treated as reference evidence.
 
 #### TCD-018, interception water storage
 
