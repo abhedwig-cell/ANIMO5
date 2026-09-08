@@ -1,0 +1,13 @@
+{
+  "work_unit": "ANIMO-PREP06",
+  "title": "Conserved State and Transfer-Ledger Audit",
+  "repository": "abhedwig-cell/ANIMO5",
+  "source_branch": "work/animo-prep01-bootstrap",
+  "date": "2026-09-08",
+  "state": "RESERVED_SOURCE_BOUND_AUDIT_ONLY",
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "legacy_source_modified": false,
+  "production_migration_admitted": false,
+  "checkpoint": "docs/prep06/WORK_UNIT_CONTRACT.md"
+}
