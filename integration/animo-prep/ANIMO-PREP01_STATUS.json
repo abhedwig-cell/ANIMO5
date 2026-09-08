@@ -4,14 +4,14 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-prep01-bootstrap",
   "date": "2026-09-08",
-  "evaluated_evidence_head": "704aabf4be236cd089f1d4bf70388ad782f7fb88",
+  "evaluated_evidence_head": "db9a5fe62a1cd4fc4b0e075918866e29d77ea320",
   "starting_state": {
     "repository_existed": true,
     "repository_was_empty": true,
     "default_branch": "main",
     "bootstrap_commit": "0fb4758bdaa55eab28a3bf521fa2a5cffb1aa9b2"
   },
-  "decision": "BLOCKED_REPRODUCIBLE_NATIVE_LEGACY_EXECUTION_AND_CONTROLLED_B0_RETENTION_REQUIRED",
+  "decision": "BLOCKED_REFERENCE_QUALIFICATION_CONTROLLED_B0_RETENTION_AND_GHG_PROVENANCE_REQUIRED",
   "implemented": true,
   "persisted": true,
   "tested": true,
@@ -32,7 +32,7 @@
       "embedded_toolchain": "Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]",
       "member_manifest_persisted": true,
       "raw_bytes_republished_to_public_github": false,
-      "status": "HASH_FROZEN_PENDING_CONTROLLED_BYTE_RETENTION_AND_REFERENCE_BUILD"
+      "status": "HASH_FROZEN_PENDING_CONTROLLED_IMMUTABLE_BYTE_RETENTION_AND_REFERENCE_QUALIFICATION"
     },
     "legacy_documentation": {
       "available": true,
@@ -41,7 +41,7 @@
       "source_version_covered": "4.0",
       "comprehensive_theory_complete": false,
       "raw_bytes_republished_to_public_github": false,
-      "status": "HASH_FROZEN_PARTIAL_VERSION_DOCUMENTATION"
+      "status": "HASH_FROZEN_PARTIAL_VERSION_DOCUMENTATION_PENDING_CONTROLLED_RETENTION"
     },
     "testbank": {
       "available": true,
@@ -51,6 +51,8 @@
       "file_count": 119,
       "member_manifest_persisted": true,
       "trusted_expected_outputs_available": false,
+      "successful_diagnostic_cases": 8,
+      "diagnostic_contract_blocked_cases": 1,
       "successful_reference_cases": 0,
       "qualified_rr_cases": 0,
       "qualified_qg_cases": 0
@@ -74,31 +76,52 @@
     "source_archive_sha256_check": "PASS",
     "documentation_sha256_check": "PASS",
     "testbank_archive_sha256_check": "PASS",
-    "gnu_portability_probe": {
-      "compile_link": "PASS_WITH_NONREFERENCE_COMPATIBILITY_SHIMS_AND_ONE_TARGETED_SYNTAX_ADAPTATION",
+    "powerstation_hydrology_adapter": {
+      "result": "PASS",
+      "single_block_records": "SUPPORTED_TESTED",
+      "multiblock_continuation_records": "SUPPORTED_TESTED",
+      "all_nine_testbank_hydrology_files_structurally_parse": true,
+      "logical_payload_bytes_modified": false
+    },
+    "gnu_diagnostic_build": {
+      "result": "PASS_REPRODUCIBLE_DIAGNOSTIC_ONLY",
+      "compiler": "GNU Fortran 14.2.0",
+      "executable_sha256": "0d082a8f59f4c1fd8c083df33ef92b23a2947d1abf69727c12801e3ceea499bd",
+      "default_real_bytes": 8,
+      "static_local_storage": true,
       "qualified_reference_build": false
     },
-    "legacy_runtime_probe": {
-      "result": "BLOCKED_BINARY_HYDROLOGY_RUNTIME_COMPATIBILITY",
-      "successful_cases": 0
+    "diagnostic_runtime": {
+      "result": "PASS_8_OF_9_REFERENCE_NOT_QUALIFIED",
+      "successful_cases": 8,
+      "nan_free_successful_cases": 8,
+      "independent_rebuild_exact_normalized_output_matches": 8,
+      "blocked_cases": 1,
+      "blocked_case": "GHGMais",
+      "blocker": "SOURCE_TESTCASE_GHG_INPUT_CONTRACT_MISMATCH"
+    },
+    "legacy_reference_runtime": {
+      "result": "NOT_QUALIFIED",
+      "successful_reference_cases": 0
     }
   },
   "deliverables": {
     "repository_initialized": "IMPLEMENTED_PERSISTED",
-    "frozen_legacy_source_baseline": "HASH_FROZEN_PENDING_CONTROLLED_BYTE_RETENTION_AND_BUILD_QUALIFICATION",
+    "frozen_legacy_source_baseline": "HASH_FROZEN_PENDING_CONTROLLED_BYTE_RETENTION_AND_REFERENCE_QUALIFICATION",
     "frozen_legacy_documentation_baseline": "HASH_FROZEN_PARTIAL_VERSION_DOCUMENTATION_PENDING_CONTROLLED_RETENTION",
     "provenance_record": "IMPLEMENTED_PERSISTED",
     "testcase_inventory": "IMPLEMENTED_PERSISTED_TESTED",
-    "build_reproducibility_assessment": "IMPLEMENTED_PERSISTED_TESTED_BLOCKED",
+    "build_reproducibility_assessment": "IMPLEMENTED_PERSISTED_TESTED_DIAGNOSTIC_REPRODUCIBILITY_ESTABLISHED",
     "compiler_interface_audit_baseline": "IMPLEMENTED_PERSISTED_SOURCE_BOUND",
     "io_dependency_inventory": "IMPLEMENTED_PERSISTED_SOURCE_BOUND",
     "process_dataflow_inventory": "IMPLEMENTED_PERSISTED_SOURCE_PLUS_DOCUMENTATION_BOUND",
-    "theory_code_discrepancy_register": "IMPLEMENTED_PERSISTED_SEEDED",
+    "theory_code_discrepancy_register": "IMPLEMENTED_PERSISTED_ACTIVE",
     "status_a_to_aa_gap_register": "IMPLEMENTED_PERSISTED",
     "architecture_invariants": "IMPLEMENTED_PERSISTED",
     "development_governance": "IMPLEMENTED_PERSISTED",
     "migration_dependency_dag": "IMPLEMENTED_PERSISTED",
     "test_architecture_baseline": "IMPLEMENTED_PERSISTED",
+    "diagnostic_execution_evidence": "IMPLEMENTED_PERSISTED_TESTED_NOT_REFERENCE",
     "machine_readable_status": "IMPLEMENTED_PERSISTED"
   },
   "source_audit_highlights": {
@@ -110,45 +133,76 @@
     "direct_file_io_confirmed": true,
     "direct_stop_confirmed": true,
     "precision_policy_centralized": false,
+    "compiler_semantics_material_to_behaviour": [
+      "default REAL kind",
+      "automatic versus static local storage",
+      "implicit procedure return-kind agreement"
+    ],
     "platform_dependencies_confirmed": [
       "case-insensitive include naming assumptions",
       "Intel dfport/secnds",
       "KINT/KIDNNT behaviour",
-      "GNU-incompatible Outsel output-list construct"
+      "GNU-incompatible Outsel output-list construct",
+      "PowerStation-compatible sequential-unformatted binary framing"
     ]
+  },
+  "diagnostic_execution": {
+    "evidence_file": "integration/animo-prep/PREP01_DIAGNOSTIC_EXECUTION.json",
+    "successful_cases": [
+      "CranGrass",
+      "CranMais",
+      "GrassPeat",
+      "LWKM_gras_1040.2021.2045",
+      "Puitmijn_Cranendonck_60",
+      "RuurloGrass",
+      "STONE_akk_0006.2001.2015",
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+    ],
+    "blocked_cases": {
+      "GHGMais": "general.inp lacks >outGHG: required by supplied revision-53 source and uses a different GHG output-key contract"
+    },
+    "reference_admission": false
   },
   "not_assessed": [
     "exact historical Intel compiler flags and project/link configuration",
     "authoritative source-file selection provenance for alternate duplicate units",
-    "binary SWATRE.UNF/swap.bun/result.bun record format and writer runtime",
     "per-argument read/write/propagation/units audit for large interfaces",
     "complete persistent-state versus scratch ownership",
     "complete 4.1.5 theory-code agreement",
     "4.1.5 greenhouse-gas theory provenance",
+    "matching source/version provenance for supplied GHGMais testcase",
     "4.1.5 macropore scientific qualification",
     "version-specific mass-balance term crosswalk",
-    "scientific validity of testcase results because no reference execution completed"
+    "behavioural equivalence between diagnostic GNU output and historical native ANIMO"
   ],
   "blockers": [
     "controlled immutable B0 byte retention is not yet established for source/documentation in the public-repository legal context",
-    "native or otherwise qualified legacy reference build is not reproduced",
-    "binary hydrology input runtime/record compatibility is not reproduced",
-    "no testcase has yet completed under a qualified reference executable",
+    "native historical build or independently qualified equivalent reference build is not yet established",
+    "no testcase has completed under a qualified legacy reference executable",
     "unrounded trusted numerical output oracle is not yet captured",
+    "supplied GHGMais testcase does not match the input contract of supplied revision-53 source",
     "supplied documentation is ANIMO 4.0 and does not fully document the 4.1.5 revision-53 source"
+  ],
+  "resolved_previous_blockers": [
+    "legacy production source availability",
+    "technical legacy documentation availability at ANIMO 4.0 level",
+    "modern diagnostic compile/link feasibility",
+    "PowerStation binary hydrology record framing",
+    "deterministic diagnostic execution for eight supplied cases"
   ],
   "recommended_next": {
     "serial": [
-      "ANIMO-PREP02 controlled B0 retention and native/reference build recovery",
-      "identify and qualify binary hydrology reader/writer runtime convention",
-      "execute and capture at least one minimal reference testcase before any legacy correction"
+      "ANIMO-PREP02 recover historical Intel project/build semantics or qualify an equivalent reference build contract",
+      "establish legally controlled immutable B0 storage for raw source/document/testbank bytes",
+      "qualify one minimal legacy reference testcase and capture unrounded output before any corrected-legacy change",
+      "resolve GHGMais source/testcase lineage before GHG qualification"
     ],
     "parallel": [
       "large-interface argument semantics audit",
       "source-level I/O ownership and kernel-seam archaeology",
       "4.0 documentation to 4.1.5 source discrepancy expansion",
       "mass-balance variable crosswalk",
-      "locate comprehensive theory and 4.1.x change documentation",
+      "locate comprehensive theory and 4.1.x change/GHG documentation",
       "Status A/AA evidence ownership planning"
     ],
     "production_migration": "NOT_ADMITTED"
