@@ -11,6 +11,7 @@
     "historical_toolchain_string": "Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]"
   },
   "diagnostic_build": {
+    "tool": "tools/build_gnu_diagnostic.py",
     "compiler": "GNU Fortran 14.2.0",
     "flags": [
       "-ffree-form",
@@ -20,6 +21,9 @@
       "-fdefault-real-8",
       "-fdefault-double-8",
       "-fno-automatic"
+    ],
+    "link_flags": [
+      "-Wl,--build-id=none"
     ],
     "selected_fortran_units": 58,
     "excluded_alternate_units": [
@@ -32,9 +36,20 @@
       "diagnostic KINT/KIDNNT compatibility shim",
       "GNU-only equivalent rewrite of the nested implied-do output list in Outsel.for"
     ],
+    "outsel_expected_substitutions": 14,
     "frozen_source_modified": false,
-    "fresh_rebuild_executable_sha256": "0d082a8f59f4c1fd8c083df33ef92b23a2947d1abf69727c12801e3ceea499bd",
+    "clean_builds_compared": 2,
+    "byte_identical_clean_builds": true,
+    "deterministic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
     "scientific_reference_qualified": false
+  },
+  "build_semantics_evidence": {
+    "default_real_bytes": 8,
+    "double_precision_bytes": 8,
+    "local_storage": "static_for_diagnostic_contract",
+    "interpretation": "source-consistent diagnostic hypothesis; exact historical Intel project flags remain unproven",
+    "four_byte_default_real_findings_promoted_to_legacy_defects": false,
+    "earlier_oxydem_nan_classification": "DIAGNOSTIC_BUILD_ARTIFACT"
   },
   "hydrology_exchange": {
     "format": "Microsoft/Intel Fortran PowerStation-compatible sequential unformatted framing",
@@ -44,11 +59,15 @@
     "all_nine_testbank_hydrology_files_parse": true
   },
   "reproducibility": {
-    "independent_fresh_rebuild_compared": true,
+    "independent_previous_build_compared": true,
+    "deterministic_build_recipe_compared": true,
     "volatile_fields_normalized": [
-      "run timestamp",
+      "run start timestamp",
+      "run end timestamp",
+      "file creation timestamp",
       "elapsed CPU seconds"
     ],
+    "successful_cases_with_exact_normalized_execution_tree_match": 8,
     "successful_cases_with_exact_normalized_output_match": 8,
     "qualified_as_reference": false
   },
@@ -111,11 +130,20 @@
     },
     {
       "case": "GHGMais",
-      "diagnostic_result": "BLOCKED_INPUT_CONTRACT_VERSION_MISMATCH",
-      "stop": "STOP 1995",
-      "message": "label >outGHG: not found in Input/general.inp",
-      "source_expectation": "input1.for requires >outGHG: when IoptGHG >= 1",
-      "testcase_observation": "supplied general.inp uses a different GHG output-key contract and has no >outGHG: section",
+      "diagnostic_result": "BLOCKED_SOURCE_TESTCASE_CONTRACT_LINEAGE_MISMATCH",
+      "initial_stop": "STOP 1995",
+      "initial_message": "label >outGHG: not found in Input/general.inp",
+      "source_contract": {
+        "general_required": ">outGHG: with NuCO2fr, CO2fr, CvCH4_CO2 and CvN2O_CO2",
+        "material_required": ">orgcom: with Cfracom",
+        "deffra_fields": "frno recfav hufros Ratio_rd_st asfa nifr [pofr]"
+      },
+      "testcase_contract": {
+        "general_observed": "named GreenHouseGasses output keys; no >outGHG:",
+        "material_observed": ">defGHG: with CH4_CO2e, N2O_CO2e, NuCO2fr and CO2frno; no >orgcom:",
+        "deffra_fields": "frno recfav hufros Ratio_rd_st asfa RQ cbfr nifr pofr"
+      },
+      "controlled_input_only_probe": "reusing the already-present >defGHG values in a temporary >outGHG block advanced to the independent missing >orgcom contract; probe abandoned and not admitted",
       "binary_hydrology_blocked": false,
       "qualified": false
     }
