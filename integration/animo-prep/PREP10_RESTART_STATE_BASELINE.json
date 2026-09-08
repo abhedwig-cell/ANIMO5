@@ -1,0 +1,86 @@
+{
+  "evidence_id": "ANIMO-PREP10-RESTART-STATE-BASELINE-2026-09-08",
+  "evidence_class": "SOURCE_BOUND_RESTART_STATE_MAPPING_NOT_REFERENCE",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep10-restart-state-continuity",
+  "parent_closeout": "0ae0e2180cf0569f8ea22319aa9ccb54ebca3210",
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "frozen_source_modified": false,
+  "frozen_testbank_modified": false,
+  "reference_qualified": false,
+  "production_migration_admitted": false,
+  "core_structural_restart_families_mapped": [
+    "moisture",
+    "NH4",
+    "NO3",
+    "exudate OM",
+    "humus from exudates",
+    "fresh OM fractions",
+    "humus OM",
+    "labile DOM/DON",
+    "stable DOM/DON/DOP",
+    "plant actual/root/shoot state",
+    "P solution and sorption/precipitation/DOP states",
+    "GHG CH4/N2O concentration when active"
+  ],
+  "phosphorus_restart": {
+    "output_canonicalizes_to_Inpo": 1,
+    "all_configured_fast_sites_written": true,
+    "all_configured_slow_sites_written": true,
+    "precipitated_p_written": true,
+    "dop_written": true,
+    "classification": "CANONICALIZATION_REQUIRES_SPLIT_RUN_CHECK"
+  },
+  "macropore_restart": {
+    "input_reader": "Mapoinput Nupa=4",
+    "input_labels": [">MPnitr:", ">MPorgs:", ">MPphos:"],
+    "accepted_result_copy_in_Init": true,
+    "Output_Init_writer_blocks_present_but_commented": true,
+    "supplied_active_macropore_cases": 0,
+    "classification": "SOURCE_CONFIRMED_PERSISTENT_STATE_WRITER_OMISSION_TESTBANK_UNEXERCISED",
+    "behavioural_magnitude_measured": false,
+    "related_existing_tcd": "TCD-025 covers main balance integration, not restart continuity"
+  },
+  "macropore_input_validation_candidate": {
+    "read_nitrate_values": ["CoMpni(1)", "CoMpni(2)"],
+    "check_labels": ["CoMpni(1)", "CoMpni(2)"],
+    "actual_values_passed_to_Checkrea": ["CoMpnh(1)", "CoMpnh(2)"],
+    "classification": "SOURCE_SUSPICION_UNEXERCISED_NOT_YET_PROMOTED"
+  },
+  "plant_restart_candidates": {
+    "potential_uptake": {
+      "accepted": ["Amplni_pot", "Amplpo_pot"],
+      "result": ["Rsamplni_pot", "Rsamplpo_pot"],
+      "carried_between_timesteps": true,
+      "future_process_use_confirmed": "Uptpar_Plant uses Amplni_pot-Amplni_act",
+      "restart_input_fields": false,
+      "restart_output_fields": false,
+      "Inicalc_resets_potential_to_zero": true,
+      "classification": "CAUSAL_PROBE_REQUIRED"
+    },
+    "actual_uptake_initialization": {
+      "restart_reads_Rsamplni_act": true,
+      "restart_reads_Rsamplpo_act_when_P": true,
+      "static_copy_direction_requires_runtime_probe": true,
+      "classification": "CAUSAL_PROBE_REQUIRED"
+    }
+  },
+  "ghg_auxiliary_candidate": {
+    "state": ["Huos_CO2", "Rshuos_CO2", "Frhu_CO2"],
+    "direct_restart_field": false,
+    "reconstruction_logic_present": true,
+    "classification": "RECONSTRUCTION_SEMANTICS_UNRESOLVED_GHG_LINEAGE_BLOCKED"
+  },
+  "deliverables": {
+    "analysis": "docs/prep10/RESTART_STATE_CONTINUITY_BASELINE.md",
+    "inventory": "docs/prep10/RESTART_STATE_INVENTORY.csv",
+    "machine_evidence": "integration/animo-prep/PREP10_RESTART_STATE_BASELINE.json"
+  },
+  "next": [
+    "persist and test a hash-pinned restart-state source audit",
+    "reserve/promote macropore restart writer omission if discrepancy tail remains available",
+    "run controlled nonzero plant actual/potential restart probes before any plant-state defect classification",
+    "trace GHG auxiliary reconstruction before classification"
+  ]
+}
