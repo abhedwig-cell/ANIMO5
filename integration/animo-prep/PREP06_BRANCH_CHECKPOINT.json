@@ -1,0 +1,6 @@
+{
+  "work_unit": "ANIMO-PREP06",
+  "shared_branch_checkpoint": "80310fe3d89b91d5d35442926beb9de67bdc2c69",
+  "dedicated_branch": "work/animo-prep06-conserved-state-ledger",
+  "purpose": "avoid concurrent modification of the shared preparatory branch during deeper source-bound audit"
+}
