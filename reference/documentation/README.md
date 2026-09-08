@@ -1,9 +1,16 @@
 # Frozen legacy documentation baseline
 
-Status: `BLOCKED_TECHNICAL_DOCUMENTATION_NOT_AVAILABLE`.
+Status: `HASH_FROZEN_PARTIAL_VERSION_DOCUMENTATION`.
 
-No ANIMO theory manual or user manual was available as an importable technical artifact in PREP01. Planning material found in the project File Library confirms that documentation and a test bench are modernization priorities, but it is not used as a substitute for legacy model documentation.
+Supplied document:
 
-Comments embedded in testcase input files are retained inside the frozen testcase archive and may be used as local input-format evidence. They are not promoted to authoritative model theory.
+- *User's guide of the ANIMO 4.0 nutrient leaching model*
+- L.V. Renaud, J. Roelsma, P. Groenendijk
+- Alterra Report 224, 2005
+- SHA-256: `ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301`
 
-A later documentation-ingest gate must hash and freeze each supplied manual/report before theory-code reconciliation starts.
+The document provides summarized model theory, detailed input/output documentation, example cases, mass-balance definitions and a technical ANIMO 4.0 program description. It explicitly points to other publications for comprehensive theory.
+
+It is not treated as an exact specification of the supplied ANIMO 4.1.5 revision-53 source. Version differences are recorded in the theory-code discrepancy register.
+
+The report contains an explicit copyright restriction. Because the repository is public and no redistribution permission has been established, the full PDF is not copied here. Its exact identity and evidence role are frozen by hash.
