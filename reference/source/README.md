@@ -1,15 +1,16 @@
 # Frozen legacy source baseline
 
-Status: `BLOCKED_MATERIAL_NOT_AVAILABLE`.
+Status: `HASH_FROZEN_PENDING_CONTROLLED_BYTE_RETENTION_AND_REFERENCE_BUILD`.
 
-ANIMO-PREP01 did not receive an importable ANIMO production Fortran source tree. No substitute source was downloaded or inferred from unrelated repositories because that would destroy provenance control.
+ANIMO-PREP01 now has a supplied source candidate:
 
-When the authoritative legacy source is supplied, PREP02 or a dedicated source-ingest gate must:
+- artifact: `ANIMO_4.1.5.53(3).zip`
+- SHA-256: `183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566`
+- version evidence: `Version.inc` identifies tag `animo4.1.5`, revision `53`
+- exact per-member identity: `source_manifest.csv`
 
-1. import it without content edits;
-2. hash every file;
-3. record original archive/directory identity and version evidence;
-4. preserve original encoding and line endings in the frozen copy;
-5. establish a dedicated immutable B0 source commit before any fixes or modernization.
+The archive is kept byte-unaltered in the project evidence and was only inspected/extracted for analysis. No legacy source has been cleaned up or migrated into `src/`.
 
-No production code is present under `src/` as a result of PREP01.
+Because this GitHub repository is public and no source redistribution licence has been established, the raw archive is not republished here. The cryptographic identity is frozen, but a legally controlled immutable B0 byte snapshot still has to be established before the frozen-source deliverable is considered fully qualified.
+
+Build and source-audit findings are recorded under `docs/prep01/`.
