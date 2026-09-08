@@ -1,0 +1,84 @@
+{
+  "assignment_class_counts": {
+    "CONFIRMED_EXISTING_DISCREPANCY": 2,
+    "INTENTIONAL_DON_TO_DOC_RATIO": 1,
+    "INTENTIONAL_DOP_TO_DOC_RATIO": 1,
+    "INTENTIONAL_STOICHIOMETRIC_P_FROM_N_CONTENT_RATIO": 4,
+    "INTENTIONAL_STOICHIOMETRIC_P_FROM_N_HUMUS_RATIO": 1,
+    "LATENT_DORMANT_STABLE_SURFACE_DON_BINDING": 2,
+    "LATENT_DORMANT_STABLE_SURFACE_DOP_BINDING": 2
+  },
+  "assignment_statements_scanned": 9117,
+  "call_interface_audit": {
+    "aligned_local_calls": 1347,
+    "call_statements": 1354,
+    "local_subroutine_definitions": 114,
+    "strong_species_formal_actual_pairs": 450,
+    "strong_species_mismatch_count": 0,
+    "strong_species_mismatches": []
+  },
+  "confirmed_existing_discrepancies": [
+    {
+      "classification": "CONFIRMED_EXISTING_DISCREPANCY",
+      "existing_discrepancy": "TCD-023",
+      "file": "resp_miner.for",
+      "foreign_rhs": [{"name": "Transfon", "species": "N"}],
+      "lhs": "Transfop",
+      "lhs_species": "P",
+      "line": 564,
+      "statement": "Transfop(19,Ln) = (1.0-AsfaSDO) * Transfon(17,Ln)"
+    },
+    {
+      "classification": "CONFIRMED_EXISTING_DISCREPANCY",
+      "existing_discrepancy": "TCD-023",
+      "file": "resp_miner.for",
+      "foreign_rhs": [{"name": "Transfon", "species": "N"}],
+      "lhs": "Transfop",
+      "lhs_species": "P",
+      "line": 565,
+      "statement": "Transfop(20,Ln) = AsfaSDO * Transfon(17,Ln)"
+    }
+  ],
+  "cross_species_assignment_findings": 13,
+  "decision": "NO_NEW_ACTIVE_DIRECT_CROSS_SPECIES_DEFECT_FROM_STRONG_IDENTITY_SCAN",
+  "evidence_class": "SOURCE_BOUND_HEURISTIC_AUDIT_NOT_SCIENTIFIC_REFERENCE",
+  "fortran_source_members": 60,
+  "intentional_stoichiometric_or_ratio_binding_count": 7,
+  "latent_dormant_binding_count": 4,
+  "latent_dormant_bindings": [
+    {
+      "file": "Outsel.for",
+      "line": 1091,
+      "lhs": "Rudon",
+      "classification": "LATENT_DORMANT_STABLE_SURFACE_DON_BINDING",
+      "statement": "Rudon = Rudon + Rurv*(Avcodiorni(0)+AvcoStdiorma(0))*1.d+4*St"
+    },
+    {
+      "file": "Outsel.for",
+      "line": 1093,
+      "lhs": "Rudop",
+      "classification": "LATENT_DORMANT_STABLE_SURFACE_DOP_BINDING",
+      "statement": "Rudop = Rudop + Rurv*(Avcodiorpo(0)+AvcoStdiorma(0))*1.d+4*St"
+    },
+    {
+      "file": "Outselorg.for",
+      "line": 1023,
+      "lhs": "Rudon",
+      "classification": "LATENT_DORMANT_STABLE_SURFACE_DON_BINDING",
+      "statement": "Rudon = Rudon + Rurv*(Avcodiorni(0)+AvcoStdiorma(0))*1.d+4*St"
+    },
+    {
+      "file": "Outselorg.for",
+      "line": 1025,
+      "lhs": "Rudop",
+      "classification": "LATENT_DORMANT_STABLE_SURFACE_DOP_BINDING",
+      "statement": "Rudop = Rudop + Rurv*(Avcodiorpo(0)+AvcoStdiorma(0))*1.d+4*St"
+    }
+  ],
+  "unresolved_cross_species_candidates": [],
+  "source_sha256_required": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "tool": "tools/audit_species_identity.py",
+  "tests": "tests/test_species_identity_audit.py",
+  "unit_tests_passed": 6,
+  "production_migration_admitted": false
+}
