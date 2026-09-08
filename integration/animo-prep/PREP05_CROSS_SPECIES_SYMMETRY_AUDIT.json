@@ -1,0 +1,51 @@
+{
+  "evidence_id": "ANIMO-PREP05-CROSS-SPECIES-SYMMETRY-AUDIT-2026-09-08",
+  "evidence_class": "SOURCE_BOUND_STATIC_CROSS_SPECIES_SYMMETRY_AUDIT_NOT_DEFECT_ADMISSION_BY_ITSELF",
+  "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "tool": "tools/audit_cross_species_symmetry.py",
+  "test": "tests/test_cross_species_symmetry_audit.py",
+  "fortran_files_scanned": 60,
+  "structural_similarity_threshold": 0.9,
+  "inferred_n_p_sibling_pairs": 99,
+  "high_confidence_statement_count": 2,
+  "independent_new_finding_count": 0,
+  "high_confidence_statements": [
+    {
+      "file": "resp_miner.for",
+      "n_line": 557,
+      "p_line": 564,
+      "n_statement": "Transfon(19,Ln) = (1.0-AsfaSDO) * Transfon(17,Ln)",
+      "p_statement": "Transfop(19,Ln) = (1.0-AsfaSDO) * Transfon(17,Ln)",
+      "expected_p_sibling": "Transfop(17,Ln)",
+      "structural_similarity": 0.9655172413793104,
+      "mapped_discrepancy": "TCD-023"
+    },
+    {
+      "file": "resp_miner.for",
+      "n_line": 558,
+      "p_line": 565,
+      "n_statement": "Transfon(20,Ln) = AsfaSDO * Transfon(17,Ln)",
+      "p_statement": "Transfop(20,Ln) = AsfaSDO * Transfon(17,Ln)",
+      "expected_p_sibling": "Transfop(17,Ln)",
+      "structural_similarity": 0.9565217391304348,
+      "mapped_discrepancy": "TCD-023"
+    }
+  ],
+  "reviewed_contextual_coupling": {
+    "Upintg_Plant": "reciprocal N/P uptake-limitation coupling; deliberately not promoted",
+    "Inicalc_Pofrhu": "explicit N/P ratio relationship; does not match sibling-assignment asymmetry rule"
+  },
+  "tests": {
+    "synthetic_cases": 4,
+    "passed": 4,
+    "positive_control": "TCD-023-style stale N sibling is flagged",
+    "negative_controls": [
+      "correct P sibling is not flagged",
+      "reciprocal N/P coupling is not promoted",
+      "isolated N/P ratio relationship is not promoted"
+    ]
+  },
+  "conclusion": "within this deliberately narrow high-symmetry N/P assignment class the frozen revision-53 source reproduces only the already known TCD-023 defect and yields no new independent high-confidence finding",
+  "reference_qualified": false,
+  "production_migration_admitted": false
+}
