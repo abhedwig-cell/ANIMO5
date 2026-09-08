@@ -4,7 +4,7 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-prep01-bootstrap",
   "date": "2026-09-08",
-  "evaluated_evidence_head": "892f5946ef07c501403183660000b90113049dfa",
+  "evaluated_evidence_head": "dd8b9dfcd71f2999bd8ea312fd8cce1f2459e12a",
   "decision": "QUALIFIED_DIAGNOSTIC_DEFECT_CAUSALITY_REFERENCE_ADMISSION_STILL_BLOCKED",
   "implemented": true,
   "persisted": true,
@@ -53,7 +53,9 @@
   "deliverables": {
     "analysis": "docs/prep04/STABLE_DOM_P_PARTITION_DEFECT.md",
     "machine_evidence": "integration/animo-prep/PREP04_STABLE_DOM_P_PARTITION.json",
-    "canonical_discrepancy_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
+    "canonical_discrepancy_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "corrected_legacy_plan": "docs/prep02/CORRECTED_LEGACY_CANDIDATE_PLAN.md",
+    "corrected_legacy_work_unit": "CL-05"
   },
   "important_interpretation": [
     "the correction is not ledger-only because it changes Tomnpo and derived Rekopo",
