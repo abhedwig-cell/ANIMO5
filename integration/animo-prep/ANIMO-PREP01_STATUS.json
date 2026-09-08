@@ -4,13 +4,7 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-prep01-bootstrap",
   "date": "2026-09-08",
-  "evaluated_evidence_head": "afbcca579e9df8618070eb8312fbad537e4bc881",
-  "starting_state": {
-    "repository_existed": true,
-    "repository_was_empty": true,
-    "default_branch": "main",
-    "bootstrap_commit": "0fb4758bdaa55eab28a3bf521fa2a5cffb1aa9b2"
-  },
+  "evaluated_evidence_head": "26ebd62d8e4e140dcdfc8ae33014ac11339fa94d",
   "decision": "BLOCKED_REFERENCE_QUALIFICATION_CONTROLLED_B0_RETENTION_AND_GHG_PROVENANCE_REQUIRED",
   "implemented": true,
   "persisted": true,
@@ -18,217 +12,155 @@
   "qualified": false,
   "blocked": true,
   "physics_change": false,
-  "numerical_policy_change": false,
   "production_migration_started": false,
-  "evidence": {
-    "legacy_source": {
-      "available": true,
+  "starting_state": {
+    "repository_existed": true,
+    "repository_was_empty": true,
+    "bootstrap_commit": "0fb4758bdaa55eab28a3bf521fa2a5cffb1aa9b2"
+  },
+  "frozen_evidence_identity": {
+    "source": {
       "artifact": "ANIMO_4.1.5.53(3).zip",
-      "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
-      "archive_size_bytes": 350696,
+      "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
       "file_count": 65,
-      "embedded_version_tag": "animo4.1.5",
+      "embedded_version": "animo4.1.5",
       "embedded_revision": "53",
       "embedded_toolchain": "Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]",
-      "member_manifest_persisted": true,
       "raw_bytes_republished_to_public_github": false,
-      "status": "HASH_FROZEN_PENDING_CONTROLLED_IMMUTABLE_BYTE_RETENTION_AND_REFERENCE_QUALIFICATION"
+      "status": "HASH_AND_MEMBER_MANIFEST_FROZEN_CONTROLLED_BYTE_RETENTION_OPEN"
     },
-    "legacy_documentation": {
-      "available": true,
-      "document": "ANIMO 4.0 User's guide, Alterra Report 224, 2005",
+    "documentation": {
+      "artifact": "ANIMO 4.0 User's Guide, Alterra Report 224, 2005",
       "sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
-      "source_version_covered": "4.0",
-      "comprehensive_theory_complete": false,
-      "raw_bytes_republished_to_public_github": false,
-      "status": "HASH_FROZEN_PARTIAL_VERSION_DOCUMENTATION_PENDING_CONTROLLED_RETENTION"
+      "exact_source_version_covered": false,
+      "supplementary_theory_leads_persisted": true,
+      "status": "PARTIAL_VERSION_DOCUMENTATION"
     },
     "testbank": {
-      "available": true,
-      "archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
-      "archive_size_bytes": 7659314,
+      "artifact": "ANIMO_testbank.zip",
+      "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
       "testcase_count": 9,
       "file_count": 119,
-      "member_manifest_persisted": true,
-      "trusted_expected_outputs_available": false,
-      "successful_diagnostic_cases": 8,
-      "diagnostic_contract_blocked_cases": 1,
-      "successful_reference_cases": 0,
-      "qualified_rr_cases": 0,
-      "qualified_qg_cases": 0
+      "trusted_expected_outputs_available": false
     }
   },
-  "tests": {
-    "testbank_inventory_integrity": {
-      "result": "PASS",
-      "tests_run": 4,
-      "failures": 0,
-      "errors": 0
-    },
-    "source_inventory_integrity": {
-      "result": "PASS",
-      "tests_run": 2,
-      "failures": 0,
-      "errors": 0,
-      "archive_hash_exact": true,
-      "member_manifest_exact": true
-    },
-    "source_archive_sha256_check": "PASS",
-    "documentation_sha256_check": "PASS",
-    "testbank_archive_sha256_check": "PASS",
-    "powerstation_hydrology_adapter": {
-      "result": "PASS",
-      "single_block_records": "SUPPORTED_TESTED",
-      "multiblock_continuation_records": "SUPPORTED_TESTED",
-      "all_nine_testbank_hydrology_files_structurally_parse": true,
-      "logical_payload_bytes_modified": false
-    },
-    "gnu_diagnostic_build": {
-      "result": "PASS_DETERMINISTIC_DIAGNOSTIC_ONLY",
-      "tool": "tools/build_gnu_diagnostic.py",
-      "compiler": "GNU Fortran 14.2.0",
-      "compile_flags": [
-        "-ffree-form",
-        "-ffree-line-length-none",
-        "-fallow-argument-mismatch",
-        "-std=legacy",
-        "-fdefault-real-8",
-        "-fdefault-double-8",
-        "-fno-automatic"
-      ],
-      "link_flags": [
-        "-Wl,--build-id=none"
-      ],
-      "clean_builds_compared": 2,
-      "byte_identical_clean_builds": true,
-      "executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+  "diagnostic_build_and_execution": {
+    "evidence_class": "DIAGNOSTIC_NOT_REFERENCE",
+    "gnu_build_tool": "tools/build_gnu_diagnostic.py",
+    "compiler": "GNU Fortran 14.2.0",
+    "contract": {
       "default_real_bytes": 8,
-      "static_local_storage": true,
-      "qualified_reference_build": false
+      "static_local_storage_emulation": true,
+      "powerstation_unformatted_adapter": true,
+      "logical_hydrology_payload_modified": false
     },
-    "diagnostic_runtime": {
-      "result": "PASS_8_OF_9_REFERENCE_NOT_QUALIFIED",
-      "successful_cases": 8,
-      "nan_free_successful_cases": 8,
-      "exact_normalized_execution_tree_matches_against_previous_independent_build": 8,
-      "blocked_cases": 1,
-      "blocked_case": "GHGMais",
-      "blocker": "SOURCE_TESTCASE_GHG_AND_ORGANIC_MATTER_INPUT_CONTRACT_LINEAGE_MISMATCH"
-    },
-    "legacy_reference_runtime": {
-      "result": "NOT_QUALIFIED",
-      "successful_reference_cases": 0
-    }
+    "clean_builds_compared": 2,
+    "byte_identical_clean_builds": true,
+    "executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "successful_cases": 8,
+    "nan_free_successful_cases": 8,
+    "exact_normalized_execution_tree_matches": 8,
+    "blocked_case": "GHGMais",
+    "blocked_case_reason": "SOURCE_TESTCASE_GHG_AND_ORGANIC_MATTER_INPUT_CONTRACT_LINEAGE_MISMATCH",
+    "qualified_reference_cases": 0
   },
-  "deliverables": {
-    "repository_initialized": "IMPLEMENTED_PERSISTED",
-    "frozen_legacy_source_baseline": "HASH_FROZEN_PENDING_CONTROLLED_BYTE_RETENTION_AND_REFERENCE_QUALIFICATION",
-    "frozen_legacy_documentation_baseline": "HASH_FROZEN_PARTIAL_VERSION_DOCUMENTATION_PENDING_CONTROLLED_RETENTION",
-    "provenance_record": "IMPLEMENTED_PERSISTED",
-    "testcase_inventory": "IMPLEMENTED_PERSISTED_TESTED",
-    "build_reproducibility_assessment": "IMPLEMENTED_PERSISTED_TESTED_DETERMINISTIC_DIAGNOSTIC_RECIPE",
-    "gnu_diagnostic_build_tool": "IMPLEMENTED_PERSISTED_TESTED_LOCALLY",
-    "compiler_interface_audit_baseline": "IMPLEMENTED_PERSISTED_SOURCE_BOUND_RECONCILED",
-    "io_dependency_inventory": "IMPLEMENTED_PERSISTED_SOURCE_BOUND",
-    "process_dataflow_inventory": "IMPLEMENTED_PERSISTED_SOURCE_PLUS_DOCUMENTATION_BOUND",
-    "theory_code_discrepancy_register": "IMPLEMENTED_PERSISTED_ACTIVE",
-    "ghg_testcase_provenance": "IMPLEMENTED_PERSISTED_BLOCKED_LINEAGE_MISMATCH",
-    "status_a_to_aa_gap_register": "IMPLEMENTED_PERSISTED",
-    "architecture_invariants": "IMPLEMENTED_PERSISTED",
-    "development_governance": "IMPLEMENTED_PERSISTED",
-    "migration_dependency_dag": "IMPLEMENTED_PERSISTED",
-    "test_architecture_baseline": "IMPLEMENTED_PERSISTED",
-    "diagnostic_execution_evidence": "IMPLEMENTED_PERSISTED_TESTED_NOT_REFERENCE",
-    "machine_readable_status": "IMPLEMENTED_PERSISTED"
-  },
-  "source_audit_highlights": {
-    "approx_program_units": 150,
+  "source_and_provenance_findings": {
+    "archive_version_metadata_homogeneous": false,
+    "provenance_discrepancy": "Version.inc identifies animo4.1.5 revision 53 while 53 observed file-level HeadURL keywords point to tags/animo4.1.4",
     "very_long_argument_lists_confirmed": true,
     "largest_observed_formal_argument_count": 352,
-    "explicit_procedure_interfaces_widespread": false,
-    "common_blocks_found_by_static_scan": false,
+    "implicit_procedure_interfaces_widespread": true,
+    "default_real_kind_is_build_contract_dependency": true,
+    "local_storage_duration_is_build_contract_dependency": true,
     "direct_file_io_confirmed": true,
-    "direct_stop_confirmed": true,
-    "precision_policy_centralized": false,
-    "compiler_semantics_material_to_behaviour": [
-      "default REAL kind",
-      "automatic versus static local storage",
-      "implicit procedure return-kind agreement"
-    ],
-    "reconciled_findings": {
-      "dble_trunc": "BUILD_CONTRACT_DEPENDENCY_NOT_CONFIRMED_HISTORICAL_DEFECT",
-      "earlier_oxydem_nan": "CLOSED_DIAGNOSTIC_BUILD_ARTIFACT",
-      "outbal_local_retention": "BUILD_CONTRACT_DEPENDENCY"
-    },
-    "platform_dependencies_confirmed": [
-      "case-insensitive include naming assumptions",
-      "Intel dfport/secnds",
-      "KINT/KIDNNT behaviour",
-      "GNU-incompatible Outsel output-list construct",
-      "PowerStation-compatible sequential-unformatted binary framing"
+    "direct_stop_confirmed": true
+  },
+  "mass_balance_archaeology": {
+    "crosswalk": "docs/prep01/MASS_BALANCE_CROSSWALK.md",
+    "index_map": "docs/prep01/BALANCE_INDEX_MAP.csv",
+    "diagnostic_envelope": "integration/animo-prep/PREP01_DIAGNOSTIC_BALANCE_ENVELOPE.json",
+    "acceptance_threshold_defined": false,
+    "confirmed_findings": [
+      {
+        "id": "TCD-014",
+        "process": "PO4 initial-state mass accounting",
+        "classification": "INITIAL_STATE_CONSISTENCY_AND_MASS_LEDGER_SEAM",
+        "case": "CranGrass",
+        "baseline_residual_kg_ha_p": -0.7235825146799,
+        "causal_control_reduction_percent": 99.9864,
+        "production_correction_admitted": false
+      },
+      {
+        "id": "TCD-015",
+        "process": "NO3 negative-concentration transport mass conservation",
+        "classification": "CONFIRMED_LEGACY_CODE_DEFECT",
+        "case": "LWKM_gras_1040.2021.2045",
+        "baseline_1997_period_residual_kg_ha_n": 0.5760503022407,
+        "dominant_event": "TITO 2312 layer 1",
+        "cause": "Hv storage derivative double-counted in Reko reconstruction after concentration clipping",
+        "diagnostic_correction_residual_kg_ha_n": 2.28e-7,
+        "production_correction_admitted": false
+      },
+      {
+        "id": "TCD-016",
+        "process": "NH4 surface-layer dry-down mass conservation",
+        "classification": "CONFIRMED_LEGACY_CODE_DEFECT_AND_STATE_MODEL_GAP",
+        "case": "Puitmijn_Cranendonck_60",
+        "baseline_2006_period_residual_kg_ha_n": 0.139,
+        "dominant_event": "TITO 1490 layer 0",
+        "lost_mass_kg_ha_n": 0.13880242022597072,
+        "cause": "wet-to-dry Transsub branch zeroes remaining solution mass when Fu is positive but below 1e-6 and no dry-solute state exists",
+        "mass_conserving_outflow_probe_residual_kg_ha_n": -6.62e-10,
+        "outflow_probe_avc_kg_m3": 33702.6688094305,
+        "production_correction_admitted": false,
+        "architectural_requirement": "explicit theory-qualified conservative dry-solute or equivalent surface phase state"
+      }
     ]
   },
-  "diagnostic_execution": {
-    "evidence_file": "integration/animo-prep/PREP01_DIAGNOSTIC_EXECUTION.json",
-    "successful_cases": [
-      "CranGrass",
-      "CranMais",
-      "GrassPeat",
-      "LWKM_gras_1040.2021.2045",
-      "Puitmijn_Cranendonck_60",
-      "RuurloGrass",
-      "STONE_akk_0006.2001.2015",
-      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
-    ],
-    "blocked_cases": {
-      "GHGMais": "structurally different GHG/organic-matter text-input contract: source requires >outGHG: and >orgcom: with narrower >deffra: records; testcase uses >defGHG:, lacks >orgcom:, and includes RQ/cbfr columns"
-    },
-    "reference_admission": false
+  "deliverables": {
+    "repository_and_governance": "IMPLEMENTED_PERSISTED",
+    "source_document_testbank_identity": "IMPLEMENTED_PERSISTED_HASH_FROZEN",
+    "deterministic_diagnostic_build": "IMPLEMENTED_PERSISTED_TESTED_NOT_REFERENCE",
+    "hydrology_record_adapter": "IMPLEMENTED_PERSISTED_TESTED_ALL_NINE_FILES",
+    "interface_audit": "IMPLEMENTED_PERSISTED_SOURCE_BOUND",
+    "io_process_dataflow_audit": "IMPLEMENTED_PERSISTED_SOURCE_BOUND",
+    "mass_balance_crosswalk": "IMPLEMENTED_PERSISTED_SOURCE_BOUND",
+    "diagnostic_residual_envelope": "IMPLEMENTED_PERSISTED_NOT_ACCEPTANCE_THRESHOLD",
+    "theory_code_discrepancy_register": "IMPLEMENTED_PERSISTED_ACTIVE",
+    "machine_readable_status": "IMPLEMENTED_PERSISTED"
   },
-  "not_assessed": [
-    "exact historical Intel compiler flags and project/link configuration",
-    "authoritative source-file selection provenance for alternate duplicate units",
-    "per-argument read/write/propagation/units audit for large interfaces",
-    "complete persistent-state versus scratch ownership",
-    "complete 4.1.5 theory-code agreement",
-    "4.1.5 greenhouse-gas theory provenance",
-    "matching source/version provenance for supplied GHGMais testcase",
-    "4.1.5 macropore scientific qualification",
-    "version-specific mass-balance term crosswalk",
-    "behavioural equivalence between diagnostic GNU output and historical native ANIMO"
-  ],
-  "blockers": [
-    "controlled immutable B0 byte retention is not yet established for source/documentation in the public-repository legal context",
-    "native historical build or independently qualified equivalent reference build is not yet established",
+  "hard_blockers": [
+    "controlled immutable B0 byte retention is not established for supplied source/documentation in the public-repository legal context",
+    "native historical Intel build or independently qualified equivalent reference build is not established",
     "no testcase has completed under a qualified legacy reference executable",
-    "unrounded trusted numerical output oracle is not yet captured",
-    "supplied GHGMais testcase belongs to a different or incomplete input-contract lineage relative to supplied revision-53 source",
-    "supplied documentation is ANIMO 4.0 and does not fully document the 4.1.5 revision-53 source"
+    "trusted unrounded numerical reference output is not captured",
+    "GHGMais belongs to a different or incomplete input-contract lineage relative to the supplied revision-53 source",
+    "supplied documentation does not fully document revision-53 physics and parser semantics"
   ],
-  "resolved_previous_blockers": [
-    "legacy production source availability",
-    "technical legacy documentation availability at ANIMO 4.0 level",
+  "resolved_or_narrowed_previous_blockers": [
+    "legacy source availability",
+    "technical documentation availability at ANIMO 4.0 level",
     "modern diagnostic compile/link feasibility",
     "PowerStation binary hydrology record framing",
     "deterministic diagnostic build recipe",
-    "deterministic diagnostic execution for eight supplied cases",
-    "earlier four-byte-default-REAL OXYDEM NaN hypothesis"
+    "deterministic diagnostic execution for eight cases",
+    "earlier four-byte-default-REAL OXYDEM NaN hypothesis",
+    "PO4 first-step residual localization",
+    "largest diagnostic NO3 residual localization and causal defect identification",
+    "largest diagnostic NH4 residual localization and causal dry-down defect identification"
   ],
   "recommended_next": {
     "serial": [
-      "ANIMO-PREP02 recover historical Intel project/build semantics or independently qualify an equivalent reference build contract",
-      "establish legally controlled immutable B0 storage for raw source/document/testbank bytes",
-      "qualify one minimal legacy reference testcase and capture unrounded output before any corrected-legacy change",
-      "resolve GHGMais source/testcase lineage before GHG qualification"
+      "recover historical Intel project/build semantics or independently qualify an equivalent reference-build contract",
+      "establish legally controlled immutable B0 storage",
+      "qualify at least one legacy reference case and capture unrounded output",
+      "resolve GHGMais source/testcase lineage"
     ],
     "parallel": [
-      "large-interface argument semantics audit",
-      "systematic external-function declaration/definition crosscheck",
-      "source-level I/O ownership and kernel-seam archaeology",
-      "4.0 documentation to 4.1.5 source discrepancy expansion",
-      "mass-balance variable crosswalk",
-      "locate comprehensive theory and 4.1.x change/GHG documentation",
-      "Status A/AA evidence ownership planning"
+      "localize remaining nontrivial diagnostic mass residuals without treating them as tolerances",
+      "continue large-interface semantic audit",
+      "expand 4.0-to-4.1.5 theory/code reconciliation",
+      "prepare corrected-legacy defect evidence without admitting production fixes"
     ],
     "production_migration": "NOT_ADMITTED"
   }
