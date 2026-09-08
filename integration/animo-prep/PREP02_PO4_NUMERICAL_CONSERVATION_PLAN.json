@@ -1,0 +1,40 @@
+{
+  "work_unit": "ANIMO-PREP02-PO4-NUMERICAL-CONSERVATION",
+  "semantic_class": "CLASS_E_NUMERICAL_CONSTITUTIVE_CONSERVATION_CORRECTION",
+  "source_finding": "TCD-019",
+  "reference_required": true,
+  "physics_relation_changed": false,
+  "numerical_policy_changed": true,
+  "state_trajectory_may_change": true,
+  "accounting_only": false,
+  "baseline_diagnostic": {
+    "case": "LWKM_gras_1040.2021.2045",
+    "cumulative_transgen_residual_kg_ha_p": -0.27254515116348993,
+    "local_records": 27000,
+    "negative_local_residual_count": 24379,
+    "positive_local_residual_count": 2621
+  },
+  "causal_probes": {
+    "small_delta_exact_secant": {
+      "cumulative_residual_kg_ha_p": -0.017973962837645012
+    },
+    "newton_small_1e_8": {
+      "cumulative_residual_kg_ha_p": -0.25489423322790195
+    },
+    "combined": {
+      "cumulative_residual_kg_ha_p": 0.000009633743430599514,
+      "absolute_drift_reduction_percent": 99.99646526698807
+    }
+  },
+  "gates": [
+    "qualified frozen native/equivalent reference reproduction",
+    "local constitutive finite-storage identity for linear Langmuir and Freundlich options",
+    "separate nonlinear residual and mass residual diagnostics",
+    "trajectory qualification for solution sorption precipitation flux and coupled outputs",
+    "explicit TCD-014 initialization interaction",
+    "whole-case and cross-case regression"
+  ],
+  "qualified": false,
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false
+}
