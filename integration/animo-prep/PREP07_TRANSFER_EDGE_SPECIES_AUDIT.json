@@ -1,0 +1,89 @@
+{
+  "evidence_id": "ANIMO-PREP07-TRANSFER-EDGE-SPECIES-AUDIT-2026-09-08",
+  "evidence_class": "SOURCE_BOUND_STATIC_TRANSFER_EDGE_AUDIT",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep07-transfer-edge-audit",
+  "starting_head": "7a744f688f85606875ee7c3eb37630bae3aff96f",
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "legacy_source_modified": false,
+  "checks": {
+    "passed": 25,
+    "total": 25,
+    "fail_closed": true,
+    "covered_families": [
+      "existing TCD-023 cross-species guard",
+      "exudate-humus ploughing producer and ledger consumers",
+      "multi-site fast-sorption parser/initialization/transport/management contract",
+      "supplied-testbank NCXFA coverage",
+      "exact duplicate-transfer algebra"
+    ]
+  },
+  "findings": {
+    "TCD-028": {
+      "title": "Exudate-humus ploughing ledger double count and species reconstruction",
+      "classification": "SOURCE_CONFIRMED_EXUDATE_HUMUS_PLOUGHING_LEDGER_DOUBLE_COUNT_AND_SPECIES_RECONSTRUCTION_GAP",
+      "source_evidence": {
+        "old_state_subtracted_once": true,
+        "new_state_added_to_Adhuexpl_twice": true,
+        "explicit_Adhuexnipl_created": true,
+        "explicit_Adhuexpopl_created": true,
+        "Outbal_C_consumes_Adhuexpl": true,
+        "Outbal_N_reconstructs_from_Adhuexpl": true,
+        "Outbal_P_reconstructs_from_Adhuexpl": true,
+        "Outbal_consumes_explicit_Adhuexnipl": false,
+        "Outbal_consumes_explicit_Adhuexpopl": false
+      },
+      "algebraic_identity": {
+        "expected": "-old + new",
+        "legacy": "-old + new + new",
+        "exact_excess": "+new"
+      },
+      "prior_causal_p_evidence_reused": {
+        "evidence": "PREP02_ORGANIC_P_PLOUGHING_ARRAY_AUDIT.json",
+        "legacy_Adhuexpl_times_Pofrhu_max_abs_period_residual_kg_ha_p": {
+          "RP": 45.2,
+          "GP": 90.3,
+          "TP": 90.3
+        },
+        "explicit_Adhuexpopl_max_abs_period_residual_kg_ha_p": {
+          "RP": 2.34e-10,
+          "GP": 4.06e-8,
+          "TP": 6.54e-7
+        },
+        "interpretation": "prior probe proves the P reconstruction path is nonconservative under activated Huex; PREP07 separately proves duplicated generic Adhuexpl algebra and does not attribute the entire prior residual to one subdefect"
+      },
+      "behavioural_c_or_n_magnitude_measured_in_prep07": false,
+      "production_correction_admitted": false
+    },
+    "TCD-029": {
+      "title": "Multi-site fast-sorption management integration gap",
+      "classification": "SOURCE_CONFIRMED_MULTISITE_FAST_SORPTION_MANAGEMENT_INTEGRATION_GAP_TESTBANK_UNEXERCISED",
+      "source_evidence": {
+        "revision53_parser_ncxfa_range": "1..3",
+        "Transorp_site_loop_present": true,
+        "Inicalc_Ampoma_Socfpo_helpers_condition": "Optcxfa=2 and Ncxfa=1",
+        "Addit_uses_Ampoma_count": 8,
+        "Addit_uses_Socfpo_count": 16,
+        "Addit_writes_Amcxfa_site1_count": 6,
+        "Addit_receives_Parcxfa": false
+      },
+      "documentation_context": {
+        "supplied_animo40_guide": "ANIMO 4.0 permits only NCXFA=1 while documenting a site-indexed input layout",
+        "interpretation": "NCXFA>1 is a later revision-53-admitted capability whose management path must be qualified separately"
+      },
+      "testbank_coverage": {
+        "explicit_ncxfa_records": 7,
+        "values": [1, 1, 1, 1, 1, 1, 1],
+        "multisite_covered": false
+      },
+      "behavioural_magnitude_measured": false,
+      "production_correction_admitted": false
+    }
+  },
+  "negative_findings_not_promoted": [
+    "N2Od and PDen are not classified from absence in Ddev because they may be subordinate denitrification reporting",
+    "CH4f CO2f and Dssi are not classified from absence in Ddev because revision-specific GHG decomposition theory is incomplete"
+  ],
+  "decision": "QUALIFIED_SOURCE_BOUND_TRANSFER_EDGE_AUDIT_TWO_NEW_GAPS_REFERENCE_ADMISSION_BLOCKED"
+}
