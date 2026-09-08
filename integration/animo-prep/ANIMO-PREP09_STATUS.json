@@ -5,16 +5,18 @@
   "branch": "work/animo-prep09-option-contract-audit",
   "date": "2026-09-08",
   "starting_head": "933795e2e9bf72a78b5fcf5412510f057d0ab869",
-  "decision": "QUALIFIED_SOURCE_AND_DIAGNOSTIC_OPTION_CONTRACT_AUDIT_TCD030_REFERENCE_ADMISSION_BLOCKED",
+  "evaluated_evidence_head_before_status": "1f7557991dda861bd52819c889f1155da4bcc547",
+  "decision": "QUALIFIED_SOURCE_AND_DIAGNOSTIC_OPTION_CONTRACT_AUDIT_TCD030_REPLICATED_REFERENCE_ADMISSION_BLOCKED",
   "implemented": true,
   "persisted": true,
   "tested": true,
   "qualified": true,
-  "qualification_scope": "hash-pinned parser/source/testbank option-contract audit plus GNU diagnostic option-0 versus option-2 behavioural probe",
+  "qualification_scope": "hash-pinned parser/source/testbank option-contract mapping plus GNU diagnostic causal confirmation and independent same-case sensitivity-controlled replication of TCD-030; not historical behavioural reference qualification",
   "blocked": true,
   "physics_change": false,
   "numerical_policy_change": false,
   "legacy_source_modified": false,
+  "frozen_testbank_modified": false,
   "reference_qualified": false,
   "corrected_legacy_production_change": false,
   "production_migration_admitted": false,
@@ -24,17 +26,65 @@
     "animo41_parser_range": "0..2",
     "source_distinct_aeration_routes": 2,
     "option2_explicit_source_branches": 0,
-    "diagnostic_option0_vs_option2_normalized_output_differences": 0,
-    "diagnostic_output_files_compared": 77,
-    "production_option2_admitted": false
+    "production_option2_admitted": false,
+    "corrected_option2_semantics_known": false
+  },
+  "dynamic_evidence": {
+    "puitmijn_primary_probe": {
+      "comparison": "AerationModel 0 vs 2",
+      "common_noninput_output_files": 77,
+      "normalized_different_files": 0,
+      "successful_completion_both": true
+    },
+    "lwkm_independent_replication": {
+      "evidence": "docs/prep09/AERATION_OPTION2_LWKM_REPLICATION.md",
+      "comparison_0_vs_2_common_generated_files": 55,
+      "comparison_0_vs_2_normalized_different_files": 0,
+      "comparison_0_vs_1_normalized_different_files": 47,
+      "comparison_1_vs_2_normalized_different_files": 47,
+      "successful_completion_all_three": true,
+      "interpretation": "option 2 alias to option 0 is independently reproduced in a case demonstrably sensitive to separately dispatched option 1"
+    }
+  },
+  "extended_dispatch_audit": {
+    "tool": "tools/audit_option_dispatch_contracts.py",
+    "tests": "tests/test_option_dispatch_contracts.py",
+    "machine_evidence": "integration/animo-prep/PREP09_EXTENDED_OPTION_DISPATCH_AUDIT.json",
+    "checks_passed": 20,
+    "checks_total": 20,
+    "unit_tests_passed": 4,
+    "new_semantic_alias_defects_found": 0,
+    "important_non_findings": [
+      "Optst=3 is an internal -10/-30 negative-timestep sentinel and not a parser-admitted user option",
+      "Optcxfa helper branches for values 1 and 3 are not parser-admitted and do not establish supported configurations",
+      "IoptGrEv 1..3 has explicit source dispatch for all three values",
+      "Optmf 0..2 has distinct disabled/type1/type2 handling",
+      "Optalfe 0..2 has distinct disabled/direct/derived handling",
+      "Inpo 1..3 has explicit distinct initialization branches"
+    ]
   },
   "deliverables": {
     "analysis": "docs/prep09/PARSER_OPTION_CONTRACT_AUDIT.md",
     "option_matrix": "docs/prep09/OPTION_CONTRACT_MATRIX.csv",
-    "audit_tool": "tools/audit_option_contracts.py",
-    "machine_evidence": "integration/animo-prep/PREP09_OPTION_CONTRACT_AUDIT.json",
-    "status": "integration/animo-prep/ANIMO-PREP09_STATUS.json"
+    "replication_analysis": "docs/prep09/AERATION_OPTION2_LWKM_REPLICATION.md",
+    "primary_audit_tool": "tools/audit_option_contracts.py",
+    "extended_audit_tool": "tools/audit_option_dispatch_contracts.py",
+    "extended_audit_tests": "tests/test_option_dispatch_contracts.py",
+    "primary_machine_evidence": "integration/animo-prep/PREP09_OPTION_CONTRACT_AUDIT.json",
+    "extended_machine_evidence": "integration/animo-prep/PREP09_EXTENDED_OPTION_DISPATCH_AUDIT.json",
+    "status": "integration/animo-prep/ANIMO-PREP09_STATUS.json",
+    "canonical_register_tail": "TCD-030"
   },
+  "coverage_gaps_not_promoted_to_defects": [
+    "HydrologicInput/Iwa=1 aggregated hydrology",
+    "SoilTempFile/Ioptte=1",
+    "GreenHouseGasOption/IoptGHG=2",
+    "PClassOption/IoptPCl=1",
+    "SoilPAlFeMode/Optalfe=0",
+    "PInitialisationMode/Inpo=2 and 3",
+    "Ncxsl site counts 1 and 2",
+    "Optpr=1"
+  ],
   "remaining_blockers": [
     "PREP02 historical or independently trusted native reference remains unavailable",
     "no supplied testcase activates AerationModel=2",
@@ -43,16 +93,25 @@
     "several parser-visible source-distinct option values remain uncovered by the supplied testbank",
     "controlled immutable B0 retention still needs formalization"
   ],
+  "architectural_constraints": [
+    "parser acceptance is not production feature admission",
+    "every option value needs an explicit support and qualification state",
+    "internal sentinel values must not leak into user configuration contracts",
+    "dormant source branches do not establish support",
+    "coverage gaps remain distinct from confirmed defects",
+    "unsupported or semantically unresolved legacy values fail closed"
+  ],
   "recommended_next": {
     "parallel_now": [
-      "build a site-indexed chemical-state producer-consumer inventory across initialization management transport restart and output",
-      "prepare explicit fail-closed ANIMO5 feature-support states without changing production code",
-      "continue Class-A corrected-legacy qualification preparation for ledger-only TCDs while reference acquisition proceeds"
+      "start a new uniquely numbered restart/state-continuity workunit because PREP08 is already consumed by management causal probes",
+      "audit Input/Init/result/commit/Output_Init symmetry for every restartable state family",
+      "build a producer-consumer inventory for site-indexed phosphorus state across initialization management transport restart and output",
+      "continue Class-A corrected-legacy qualification preparation while reference acquisition proceeds"
     ],
     "serial_when_reference_available": [
-      "recover historical intended AerationModel=2 semantics or prove that the delivered comment is stale",
-      "qualify any option-2 implementation independently before production support",
-      "run uncovered source-distinct option values against trusted reference cases before admission"
+      "reproduce TCD-030 under qualified frozen reference",
+      "recover historical intended AerationModel=2 semantics or prove the delivered comment stale",
+      "qualify uncovered source-distinct option values before production admission"
     ]
   }
 }
