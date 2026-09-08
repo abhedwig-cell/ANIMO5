@@ -1,44 +1,50 @@
 # I/O dependency inventory
 
-## Scope boundary
+Evidence level: `SOURCE_BOUND_BASELINE`.
 
-Source-level I/O dependency mapping is `BLOCKED_SOURCE_UNAVAILABLE`.
+## Architectural observation
 
-PREP01 can, however, map the external file contract visible in the testcase steering files. This is testcase-observed interface evidence, not proof of internal routine ownership.
+Legacy ANIMO 4.1.5 is not separated into a file-free computational kernel. File parsing, file opening, reporting, restart output and runtime diagnostics are spread over dedicated I/O routines and are connected directly to the main time-step program through very large argument lists and file-unit arguments.
 
-## Observed `animo.ini` roles
+This is an architectural finding, not a scientific defect.
 
-| Key | Observed role from filenames/configuration | Provisional future ownership |
+## Source-bound I/O ownership
+
+| Routine / area | Observed responsibility | Future ANIMO5 boundary hypothesis |
 | --- | --- | --- |
-| GEN | general simulation/options input | configuration / numerical and physical options to separate later |
-| MAT | material definitions | parameters |
-| PLA | plant/crop definitions | parameters / crop contract |
-| SOI | soil/profile definitions | parameters / initial structure |
-| BOU | boundary chemistry conditions | forcing / boundary contract |
-| INI | initial model values | initial state |
-| MAN | management schedule | forcing / management |
-| SWU | hydrologic binary input (`SWATRE.UNF`, `swap.bun`, `result.bun`) | hydrology exchange / forcing |
-| WAI | water-balance text input when used | hydrology input, exact semantics NOT_ASSESSED |
-| WAU | water-balance binary input when used | hydrology input, exact semantics NOT_ASSESSED |
-| CHE | chemistry parameters | parameters |
-| CRU | external crop input | crop exchange / forcing |
-| INO | `initial.out` target | restart/state serialization candidate |
-| MES | `message.out` target | diagnostics/reporting |
+| `Input1` | reads steering/general/material/plant/soil/boundary/initial configuration and performs input checking | parser/adapters -> parameters, initial state, config |
+| `Input_addit` | reads time-dependent management/addition events | management forcing adapter |
+| `Input_cropext` | reads external crop input | crop exchange adapter |
+| `Input_hydro` | reads dynamic hydrology records | hydrology exchange adapter |
+| `Input_SoilTemper` | reads externally supplied soil temperature | forcing/exchange adapter |
+| `Input_Echo` | opens/writes input echo and intermediate report stream | diagnostics/report adapter |
+| `Outbal_write` | opens/writes balance files | mass-diagnostic serialization adapter |
+| `Outsel` | opens/writes selected state/flux outputs | results serialization adapter |
+| `Output_Init` | writes final/restart-style state output | explicit state serialization adapter |
+| `grass_init` / output routines | opens/writes crop reporting | results adapter |
+| `Animo.for` | central STOP/error termination control and top-level call orchestration | runtime controller, no file I/O in future kernel |
 
-This ownership column is an architectural mapping hypothesis for later separation. It is not a claim about current legacy implementation.
+A static statement scan confirms extensive legacy I/O: dozens of `OPEN`/`CLOSE` operations and hundreds of `READ`/`WRITE` statements are present. Exact semantics remain routine-specific and must be audited before extraction.
 
-## Runner-observed output behaviour
+## External file contract
 
-Legacy runner scripts copy top-level `*.bal`, `*.out`, and in one case `*.csv` files into an `Output` directory, then delete the top-level copies. Exact producer routines and numerical semantics are `NOT_ASSESSED`.
+The 4.0 user's guide documents the principal external contract as general/default files, field-specific nutrient files and hydrological files. The supplied testbank and 4.1.5 parser confirm the continued use of `animo.ini` indirection and roles such as `GEN`, `MAT`, `PLA`, `SOI`, `BOU`, `INI`, `MAN`, hydrology, chemical parameters and external crop input.
 
-## Current gaps
+Provisional ANIMO5 ownership mapping:
 
-- all frozen Output directories are empty;
-- exact generated output filenames are unavailable;
-- six testcases have one or more unresolved `animo.ini` path references;
-- the internal binary hydrology format is not decoded;
-- no source exists to map OPEN/READ/WRITE/CLOSE calls to compute routines.
+- material/soil/chemical/plant definitions -> parameters;
+- initial profile quantities -> state initialization;
+- management/boundary/weather/hydrology/crop time series -> forcing or exchange;
+- numerical/output switches -> numerical/runtime configuration, to be separated from physical configuration;
+- `INITIAL.out` semantics -> state checkpoint/restart serialization candidate;
+- balance and message output -> diagnostics/results, not kernel file operations.
 
-## Architectural target retained
+## Binary hydrology boundary
 
-The future ANIMO5 computational kernel must not know file units, paths, parsing, serialization formats, or report formats. Legacy file behaviour may survive behind adapters.
+The supplied testbank contains binary hydrology files including `SWATRE.UNF`, `swap.bun` and `result.bun`. The legacy source uses unformatted Fortran reads. A GNU/Linux probe does not read at least the supplied `SWATRE.UNF` using default GNU sequential-unformatted runtime semantics.
+
+The binary record format, compiler-runtime convention and compatibility relationship therefore remain an explicit blocker. No binary file is converted or reinterpreted in PREP01.
+
+## Target retained
+
+The ANIMO5 computational kernel must not know file units, paths, parsing, serialization or report formats. Legacy file behaviour may be retained behind adapters after behaviour is qualified.
