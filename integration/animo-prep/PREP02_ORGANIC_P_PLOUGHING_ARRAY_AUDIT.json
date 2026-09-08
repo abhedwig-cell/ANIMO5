@@ -1,0 +1,127 @@
+{
+  "evidence_id": "ANIMO-PREP02-ORGANIC-P-PLOUGHING-ARRAY-AUDIT-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_NOT_REFERENCE",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep01-bootstrap",
+  "starting_head": "669cb562e22984c4d1a5a31f769414f33f1b637d",
+  "source": {
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "baseline_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "baseline_hash_reproduced_before_probe": true,
+    "frozen_source_modified": false
+  },
+  "source_findings": {
+    "top_reservoir_dop": {
+      "producer": "Addit.for:Addiorpotoppl",
+      "legacy_consumer": "omitted from Outbal_calc Bapo redistribution",
+      "classification": "CAUSALLY_SUPPORTED_MISSING_LEDGER_TERM"
+    },
+    "stable_dop": {
+      "producer": "Addit.for:AdStdiorpopl",
+      "legacy_consumer": "omitted while Addiorpopl is consumed",
+      "nitrogen_analogue": "Outbal_calc consumes Addiornipl + AdStdiornipl",
+      "classification": "CAUSALLY_SUPPORTED_MISSING_LEDGER_TERM"
+    },
+    "exudate_humus_p": {
+      "producer": "Addit.for:Adhuexpopl",
+      "legacy_consumer": "Outbal_calc reconstructs Adhuexpl * Pofrhu instead",
+      "classification": "CAUSALLY_SUPPORTED_WRONG_LEDGER_RECONSTRUCTION"
+    }
+  },
+  "natural_case_probe": {
+    "cases": [
+      "LWKM_gras_1040.2021.2045",
+      "STONE_akk_0006.2001.2015",
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+    ],
+    "all_complete": true,
+    "adstdiorpopl_observed_nonzero": false,
+    "adhuexpopl_observed_nonzero": false,
+    "interpretation": "supplied phosphorus/ploughing cases do not activate the two previously open arrays",
+    "lwkm_top_term": {
+      "baseline_max_abs_period_residual_kg_ha_p": 0.0494,
+      "corrected_max_abs_period_residual_by_profile_kg_ha_p": {
+        "RP": 2.33e-10,
+        "GP": 4.06e-08,
+        "TP": 6.54e-07
+      }
+    }
+  },
+  "stable_dop_activation_probe": {
+    "base_case": "LWKM_gras_1040.2021.2045",
+    "supplied_testcase": false,
+    "changes": [
+      "non-zero depth-varying initial CoStdiorpo in >sdomin:",
+      "RP lower balance boundary changed from compartment 5 to compartment 2"
+    ],
+    "hydrology_and_management_unchanged": true,
+    "adstdiorpopl_observed_nonzero": true,
+    "max_abs_period_residual_kg_ha_p": {
+      "top_term_only": {
+        "RP": 0.000143,
+        "GP": 0.000284,
+        "TP": 0.000285
+      },
+      "top_plus_adstdiorpopl": {
+        "RP": 2.34e-10,
+        "GP": 9.50e-08,
+        "TP": 6.53e-07
+      }
+    },
+    "ordinary_non_balance_output_differences_after_volatile_normalization": 0,
+    "differences_confined_to": "phosphorus balance and detailed phosphorus transformation balance outputs",
+    "decision": "ADSTDIORPOPL_REQUIRED_WHEN_STABLE_DOP_PLOUGHING_REDISTRIBUTION_IS_ACTIVE"
+  },
+  "exudate_humus_activation_probe": {
+    "base_case": "LWKM_gras_1040.2021.2045",
+    "supplied_testcase": false,
+    "changes": [
+      "non-zero depth-varying initial Huex in >humexu:",
+      "RP lower balance boundary changed from compartment 5 to compartment 2"
+    ],
+    "stable_dop_left_at_supplied_zero_state": true,
+    "hydrology_and_management_unchanged": true,
+    "adhuexpopl_observed_nonzero": true,
+    "max_abs_period_residual_kg_ha_p": {
+      "legacy_adhuexpl_times_pofrhu": {
+        "RP": 45.2,
+        "GP": 90.3,
+        "TP": 90.3
+      },
+      "explicit_adhuexpopl": {
+        "RP": 2.34e-10,
+        "GP": 4.06e-08,
+        "TP": 6.54e-07
+      }
+    },
+    "ordinary_non_balance_output_differences_after_volatile_normalization": 0,
+    "differences_confined_to": "phosphorus balance and detailed phosphorus transformation balance outputs",
+    "decision": "ADHUEXPOPL_REQUIRED_FOR_CONSERVATIVE_LEDGER_WHEN_EXUDATE_HUMUS_P_REDISTRIBUTION_IS_ACTIVE"
+  },
+  "execution_copy_compatibility": {
+    "powerstation_hydrology_payload_preserved": true,
+    "case_sensitive_path_resolution_only": true,
+    "print_balance_label_comment_adaptation": {
+      "applied": true,
+      "reason": "GNU internal list-directed character read rejects Intel-tolerated trailing inline comment",
+      "transformation": "strip trailing comment after quoted PrintBalLabel value in execution copy",
+      "data_value_changed": false,
+      "admitted_as_reference": false
+    }
+  },
+  "candidate_scope": {
+    "tcd": "TCD-017",
+    "class": "A_LEDGER_REPORTING_ONLY",
+    "candidate_terms": [
+      "Addiorpotoppl",
+      "AdStdiorpopl",
+      "Adhuexpopl"
+    ],
+    "state_trajectory_unchanged": "demonstrated_for_compared_diagnostic_probes",
+    "native_reference_qualified": false,
+    "production_correction_admitted": false,
+    "production_migration_admitted": false
+  },
+  "decision": "DIAGNOSTIC_TCD017_LEDGER_FAMILY_CAUSALLY_SUPPORTED_NOT_REFERENCE_QUALIFIED"
+}
