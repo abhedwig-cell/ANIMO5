@@ -34,9 +34,20 @@ Confirmed portability dependencies include:
 
 The last two findings are especially important. A four-byte-default-REAL GNU build produces unstable interface behaviour and NaNs. A build with eight-byte default `REAL` plus static local storage is internally coherent for the investigated cases. This is evidence about a missing build contract, not proof of the exact historical Intel options.
 
-## Reproducible diagnostic build
+## Reproducible diagnostic build tool
 
-A fresh extraction of the supplied source was compiled from 58 selected units with GNU Fortran 14.2.0 and:
+`tools/build_gnu_diagnostic.py` reconstructs the diagnostic build directly from the original supplied source ZIP. The tool:
+
+1. verifies the exact source archive SHA-256 before extracting;
+2. modifies only a temporary execution copy;
+3. creates case aliases for include names required on a case-sensitive filesystem;
+4. supplies minimal `dfport/secnds` and `KINT/KIDNNT` compatibility shims;
+5. creates a GNU-only syntax-equivalent copy of the rejected `Outsel.for` nested implied-do output list and requires exactly 14 known substitutions;
+6. requires exactly 58 selected legacy compilation units and explicitly excludes the alternate `input1_1.for` and `Outselorg.for` units;
+7. builds from relative paths and disables the linker build ID to remove path/build-instance volatility;
+8. records compiler, flags, adaptation count and executable SHA-256 as machine-readable metadata.
+
+GNU Fortran 14.2.0 compile flags:
 
 ```text
 -ffree-form
@@ -48,53 +59,55 @@ A fresh extraction of the supplied source was compiled from 58 selected units wi
 -fno-automatic
 ```
 
-Excluded alternate units:
+Link flag:
 
-- `input1_1.for`;
-- `Outselorg.for`.
+```text
+-Wl,--build-id=none
+```
 
-Execution-only compatibility material outside the frozen source:
+Two completely fresh invocations in separate output directories produced byte-identical executables:
 
-- include-name case aliases;
-- minimal `dfport/secnds` shim;
-- minimal `KINT/KIDNNT` shim;
-- GNU-equivalent rewrite of one rejected nested implied-do output list in `Outsel.for`.
+`0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e`
 
-Frozen scientific source files were not modified.
+This establishes a deterministic GNU diagnostic build recipe for the supplied archive in the investigated environment. It does **not** establish equivalence to the historical Intel executable.
 
-Fresh diagnostic executable SHA-256:
+## Behavioural repeatability of the deterministic build
 
-`0d082a8f59f4c1fd8c083df33ef92b23a2947d1abf69727c12801e3ceea499bd`
+The deterministic build was run through the same execution-copy harness used for the prior independent GNU build.
 
-This build is reproducible as a diagnostic artifact. It is not yet a qualified behavioural reference.
+Results:
+
+- eight compatible cases again reached `Successful completion of simulation`;
+- all eight again contained zero `NaN` mentions;
+- `GHGMais` again stopped at the known textual source/testcase contract mismatch;
+- after normalizing only legacy run-start/run-end timestamps and elapsed CPU seconds, the complete copied execution trees for all eight successful cases were byte-identical to the previous independently rebuilt execution trees.
+
+Therefore the changed executable binary identity caused by the now-controlled link recipe does not change the observed diagnostic model behaviour for the eight admitted diagnostic cases.
+
+The existing normalized scientific/output bundle hashes in `integration/animo-prep/PREP01_DIAGNOSTIC_EXECUTION.json` remain unchanged.
 
 ## Hydrology exchange
 
-The binary testbank hydrology uses Microsoft/Intel Fortran PowerStation-compatible sequential-unformatted record framing. A fail-closed adapter now converts framing while preserving every logical-record payload byte. Both single-block and continued multiblock records are supported and all nine hydrology files parse structurally.
+The binary testbank hydrology uses Microsoft/Intel Fortran PowerStation-compatible sequential-unformatted record framing. A fail-closed adapter converts framing while preserving every logical-record payload byte. Both single-block and continued multiblock records are supported and all nine hydrology files parse structurally.
 
 Binary hydrology record framing is therefore no longer a build blocker.
 
-## Testcase execution
+## GHGMais
 
-Eight cases reach legacy successful completion under the diagnostic build:
+`GHGMais` passes binary hydrology conversion but is not contract-compatible with the supplied revision-53 source. The mismatch is broader than the previously observed missing `>outGHG:` label:
 
-- `CranGrass`;
-- `CranMais`;
-- `GrassPeat`;
-- `LWKM_gras_1040.2021.2045`;
-- `Puitmijn_Cranendonck_60`;
-- `RuurloGrass`;
-- `STONE_akk_0006.2001.2015`;
-- `Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA`.
+- revision-53 expects `>outGHG:` in `GENERAL.INP`;
+- the testcase instead stores equivalent-looking GHG constants under `>defGHG:` in `MATERIAL.INP`;
+- revision-53 requires `>orgcom:` in `MATERIAL.INP`, which the testcase lacks;
+- revision-53 reads a narrower positional `>deffra:` record, while the testcase includes additional `RQ` and `cbfr` columns.
 
-The eight cases contain no `NaN` diagnostics in this build. Repeated runs and an independently rebuilt executable produce byte-identical generated output after normalization of only run timestamp and elapsed CPU seconds. Exact diagnostic bundle hashes are persisted in `integration/animo-prep/PREP01_DIAGNOSTIC_EXECUTION.json`.
-
-`GHGMais` passes binary hydrology conversion but stops in the text parser because its supplied `general.inp` lacks the `>outGHG:` section required by revision-53 `input1.for` and uses a different GHG output-key contract. This is a testcase/source provenance mismatch and is not repaired inside PREP01.
+A controlled input-only probe confirmed that inserting only `>outGHG:` merely advances to the next contract mismatch. No translated GHGMais testcase is admitted. See `docs/prep01/GHG_TESTCASE_PROVENANCE.md`.
 
 ## Current result
 
 - native historical Intel/Windows build: `NOT_REPRODUCED`;
-- reproducible GNU diagnostic build: `PASS`;
+- deterministic GNU diagnostic build recipe: `PASS`;
+- byte-identical clean diagnostic rebuilds: `2/2` in the recorded reproducibility probe;
 - diagnostic successful-completion cases: `8/9`;
 - diagnostic deterministic-output cases: `8/9`;
 - source/testcase contract blockers: `1/9` (`GHGMais`);
