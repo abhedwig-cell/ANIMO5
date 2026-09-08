@@ -1,0 +1,21 @@
+area,current_evidence,status_a_gap,status_aa_gap,owner,status
+conceptual_model,technical legacy documentation unavailable,obtain and reconcile conceptual model,independent mature review and maintained traceability,TBD,OPEN
+formal_model,technical legacy documentation unavailable,freeze equations and assumptions,full maintained formal traceability and review,TBD,OPEN
+implementation_description,source unavailable,source-bound component/process description,complete versioned implementation mapping,TBD,OPEN
+parameters,testcase parameter files available but semantics incomplete,parameter catalogue with units/provenance,uncertainty and applicability metadata,TBD,OPEN
+variables,source unavailable,state/flux/diagnostic catalogue,complete ownership and precision metadata,TBD,OPEN
+input_output,testcase steering inventory available,formal input/output contracts and adapters,stable versioned public contracts,TBD,OPEN
+provenance,testbank identity/manifests frozen; binary upload plus source/docs blocked,authoritative source/doc/test lineage,release-grade complete provenance chain,TBD,IN_PROGRESS
+testing,test architecture baseline only,reproducible UT/CT/IT/INV/RR/QG evidence,broad maintained coverage and independent qualification,TBD,IN_PROGRESS
+calibration,not assessed,document calibration status/methods,maintained calibration evidence where applicable,TBD,OPEN
+validation,no trusted validation cases identified,identify and reproduce validation evidence,independent multi-domain validation where applicable,TBD,OPEN
+sensitivity,not assessed,document available sensitivity evidence,maintained sensitivity programme,TBD,OPEN
+uncertainty,not assessed,document uncertainty treatment,maintained quantitative uncertainty evidence,TBD,OPEN
+applicability,partial context only,explicit domains and intended use,reviewed applicability envelope,TBD,OPEN
+limitations,not assessed,known limitations register,maintained evidence-linked limitations,TBD,OPEN
+versioning,new GitHub repository initialized,define release/version policy,mature release and retirement governance,TBD,IN_PROGRESS
+maintenance,governance baseline drafted,owners/change gates/maintenance process,long-term audited maintenance process,TBD,IN_PROGRESS
+ownership,not established,assign component/evidence owners,stable accountable ownership and review,TBD,OPEN
+dependencies,source unavailable,build/runtime/external dependency inventory,maintained SBOM-like scientific/software dependency record,TBD,OPEN
+user_documentation,technical manual unavailable,versioned user documentation,reviewed maintained user and coupling docs,TBD,OPEN
+review_readiness,PREP01 evidence gaps explicit,complete Status A review package,repeatable Status AA review and maintenance package,TBD,OPEN
