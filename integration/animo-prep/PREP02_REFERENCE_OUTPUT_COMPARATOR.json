@@ -1,0 +1,42 @@
+{
+  "evidence_id": "ANIMO-PREP02-REFERENCE-OUTPUT-COMPARATOR-2026-09-08",
+  "evidence_class": "QUALIFICATION_TOOLING_NOT_REFERENCE_ADMISSION",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep01-bootstrap",
+  "tool": "tools/compare_legacy_output_trees.py",
+  "tests": "tests/test_compare_legacy_output_trees.py",
+  "policy": {
+    "fail_closed": true,
+    "scientific_numeric_tolerance_applied": false,
+    "declared_volatile_normalization": [
+      "file creation timestamp",
+      "ANIMO40 run-start timestamp",
+      "message run-start timestamp",
+      "message run-end timestamp",
+      "elapsed CPU seconds"
+    ],
+    "raw_only_supported": true,
+    "explicit_file_list_supported": true,
+    "explicit_exclude_patterns_supported": true,
+    "reference_qualified_by_comparator": false
+  },
+  "validation": {
+    "synthetic_timestamp_only_match": "PASS_MATCH_AFTER_DECLARED_VOLATILE_NORMALIZATION",
+    "synthetic_scientific_number_change": "PASS_EXPECTED_FAIL_CLOSED",
+    "synthetic_extra_candidate_file": "PASS_EXPECTED_FAIL_CLOSED",
+    "synthetic_raw_only_timestamp_change": "PASS_EXPECTED_FAIL_CLOSED",
+    "real_diagnostic_case": {
+      "case": "LWKM_gras_1040.2021.2045",
+      "comparison": "TCD-017 top-term diagnostic versus top-plus-stable-DOP diagnostic on supplied natural input",
+      "common_files": 69,
+      "equal_raw": 61,
+      "equal_after_declared_volatile_normalization": 8,
+      "different_after_normalization": 0,
+      "decision": "MATCH_AFTER_DECLARED_VOLATILE_NORMALIZATION",
+      "interpretation": "tooling check only; stable-DOP ledger path is dormant in this supplied natural case"
+    }
+  },
+  "native_reference_available": false,
+  "production_migration_admitted": false,
+  "decision": "REFERENCE_OUTPUT_COMPARATOR_READY_NATIVE_REFERENCE_STILL_REQUIRED"
+}
