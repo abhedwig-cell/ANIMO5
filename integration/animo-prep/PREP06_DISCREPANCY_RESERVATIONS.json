@@ -1,0 +1,28 @@
+{
+  "work_unit": "ANIMO-PREP06",
+  "purpose": "prevent discrepancy-number collisions while PREP06 evidence is persisted before central-register closeout",
+  "register_tail_observed": "TCD-025",
+  "reservations": [
+    {
+      "id": "TCD-026",
+      "finding": "fresh-organic-matter initial exudate storage omission",
+      "classification": "CONFIRMED_LEGACY_INITIAL_STORAGE_LEDGER_OMISSION",
+      "evidence": [
+        "docs/prep06/EXUDATE_INITIAL_STORAGE_LEDGER_DEFECT.md",
+        "integration/animo-prep/PREP06_EXUDATE_INITIAL_STORAGE_DEFECT.json"
+      ]
+    },
+    {
+      "id": "TCD-027",
+      "finding": "organic-P detailed redistribution accumulator reads Bafop(25) instead of Bafop(24)",
+      "classification": "CONFIRMED_LEGACY_DETAILED_LEDGER_ACCUMULATOR_DEFECT",
+      "evidence": [
+        "docs/prep06/ORGANIC_P_DETAILED_REDISTRIBUTION_ACCUMULATOR_DEFECT.md",
+        "integration/animo-prep/PREP06_ORGANIC_P_DETAILED_ACCUMULATOR_DEFECT.json"
+      ]
+    }
+  ],
+  "central_register_updated": false,
+  "update_rule": "append reservations to docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv during PREP06 closeout after re-reading the live tail",
+  "production_migration_admitted": false
+}
