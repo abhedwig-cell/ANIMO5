@@ -2,67 +2,58 @@
 
 ## Scope
 
-This record freezes the provenance of the evidence available to ANIMO-PREP01 on 2026-09-08. It does not claim that unavailable legacy material does not exist elsewhere.
+This record identifies the evidence supplied to ANIMO-PREP01 on 2026-09-08. Source, documentation and testcase evidence remain separate and none is automatically treated as scientific truth.
 
 ## Repository bootstrap
 
-- Repository: `abhedwig-cell/ANIMO5`
-- Initial repository commit: `0fb4758bdaa55eab28a3bf521fa2a5cffb1aa9b2`
+- repository: `abhedwig-cell/ANIMO5`
+- initial repository commit: `0fb4758bdaa55eab28a3bf521fa2a5cffb1aa9b2`
 - PREP01 branch: `work/animo-prep01-bootstrap`
-- Import date: 2026-09-08
-- Legal status: no LICENSE added because no legal basis was supplied or established in PREP01.
+- import date: 2026-09-08
+- legal status: no LICENSE added because no legal basis was supplied or established.
 
-## Legacy source origin
+## Legacy source
 
-Status: `BLOCKED_MATERIAL_NOT_AVAILABLE`
+Supplied project artifact: `ANIMO_4.1.5.53(3).zip`.
 
-No ANIMO production Fortran source tree was present in the locally mounted PREP01 artifacts, and repeated project-file searches did not return an ANIMO production source tree. PREP01 therefore does not create a fictitious source baseline. `reference/source/` records the blocked state.
+- size: 350,696 bytes
+- SHA-256: `183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566`
+- 65 file members under `ANIMO_4.1.5.53/`
+- exact member identities and hashes: `reference/source/source_manifest.csv`
+- archive transformations: none for analysis; archive was inspected without rewriting or repacking
 
-Source version: `NOT_ASSESSED`.
+`Version.inc` self-identifies the source as tag `animo4.1.5`, revision `53`, and names Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64] as the build toolchain. This is embedded source evidence, not independent authentication of the archive origin.
 
-Frozen source commit: `NOT_AVAILABLE`.
+The raw archive is not republished to the public GitHub repository because no redistribution licence or equivalent legal basis has been established. Its byte identity is cryptographically pinned. A controlled retained B0 byte snapshot remains required before the source-freeze deliverable can be called fully complete.
 
-## Legacy documentation origin
+## Legacy documentation
 
-Status: `BLOCKED_TECHNICAL_DOCUMENTATION_NOT_AVAILABLE`
+Supplied project artifact: ANIMO 4.0 user's guide, Alterra Report 224, Renaud, Roelsma and Groenendijk, 2005.
 
-No ANIMO theory manual or user manual was available as an importable technical legacy artifact during PREP01. Project planning documents mentioning ANIMO modernization were found, but these are programme context, not a frozen theory/user-manual baseline.
+- SHA-256: `ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301`
+- evidence role: ANIMO 4.0 user, I/O, example, mass-balance and technical-program documentation, with summarized model theory
+- version limitation: it documents 4.0, not the supplied 4.1.5 revision 53 source
+- completeness limitation: it refers to additional publications for comprehensive theory
 
-Documentation version: `NOT_ASSESSED`.
+The report carries an explicit copyright restriction. Its full bytes are therefore not republished to the public repository without an established legal basis. The exact document identity and evidence role are retained by hash and inventory.
 
-Frozen documentation commit: `NOT_AVAILABLE`.
+## Testcase evidence
 
-## Testcase origin
+Supplied artifact: `ANIMO_testbank.zip`.
 
-Available artifact: `ANIMO_testbank.zip` supplied to this ChatGPT project for PREP01.
-
-- Original byte size: 7,659,314 bytes
+- size: 7,659,314 bytes
 - SHA-256: `44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84`
-- ZIP file members: 119 files plus directory entries
-- Top-level testcase directories: 9
-- Per-file identity: `reference/testcases/testbank_manifest.csv`
-- Parsed testcase metadata: `reference/testcases/testbank_inventory.json`
+- 119 files
+- 9 top-level testcases
+- exact member identities: `reference/testcases/testbank_manifest.csv`
+- parsed metadata: `reference/testcases/testbank_inventory.json`
 
-### Known transformations
+The testbank was not line-ending-normalized, re-encoded, renamed or repacked for analysis. Binary hydrology files remain undecoded as reference bytes.
 
-The source ZIP used for analysis was not line-ending-normalized, re-encoded, renamed, or repacked.
+## Evidence separation and current qualification boundary
 
-Text files were decoded only for analysis, using UTF-8 where possible and falling back to Windows-1252/Latin-1. That decoding is not applied to the frozen source artifact.
+1. **Source:** a concrete 4.1.5 revision-53 candidate is now available and hash-inventoried. Its exact build and behavioural status are not yet qualified.
+2. **Documentation:** a 4.0 technical user's guide is available and hash-inventoried. It is useful evidence but not an exact 4.1.5 theory specification.
+3. **Testcases:** nine input packages are inventory-frozen, but no numerical oracle has yet been qualified.
 
-Binary `.UNF` and `.bun` hydrology files are preserved unchanged in the supplied archive. Their internal record format was not decoded in PREP01.
-
-### Persistence limitation
-
-The GitHub connector available to this chat accepts UTF-8 text and Git blob content but does not expose a local-file upload parameter. The 7.66 MB binary ZIP therefore cannot be transferred byte-for-byte through the connector without embedding its entire base64 payload in the chat. PREP01 persists its exact SHA-256 and per-member hashes and treats the repository-side binary freeze as `BLOCKED_BINARY_UPLOAD_CAPABILITY`, not as completed.
-
-## Original file identities
-
-Exact member paths, byte sizes, CRC32 values, ZIP timestamps, SHA-256 values, and observed text encoding are listed in `reference/testcases/testbank_manifest.csv`.
-
-## Evidence separation
-
-PREP01 treats three evidence classes separately:
-
-1. source behaviour: currently blocked because the production source tree is unavailable;
-2. documentation/theory intent: currently blocked because technical legacy documentation is unavailable;
-3. testcase behaviour: input packages are inventoried and hashed, but numerical behaviour is not qualified because the ANIMO executable/source and trusted expected outputs are unavailable.
+No source, documentation or testcase difference is silently corrected in PREP01.
