@@ -1,0 +1,33 @@
+{
+  "evidence_id": "ANIMO-PREP01-WATER-INTERCEPTION-STORAGE-SEAM-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_CAUSAL_BALANCE_INTERFACE_STATE_OMISSION_NOT_REFERENCE_CORRECTION",
+  "case": "LWKM_gras_1040.2021.2045",
+  "balance": "water total profile",
+  "observed_period_deviation_mm": -0.0601,
+  "hydrology_whole_profile_check": {
+    "routine": "Hydro_detailed",
+    "step_count": 36,
+    "sum_badev_mm": -0.000052640587582358,
+    "max_abs_step_badev_mm": 0.00021353500000961855,
+    "interpretation": "external/detailed hydrology closes far more tightly than Bawa period output"
+  },
+  "interception_storage": {
+    "first_sic_m": 0.00006,
+    "final_sict_m": 0.0,
+    "telescoping_change_mm": -0.06,
+    "interstep_discontinuity_sum_mm": 0.0
+  },
+  "reconciliation": {
+    "interception_change_plus_badev_mm": -0.06005264058758236,
+    "formatted_bawa_period_deviation_mm": -0.0601,
+    "explained_to_output_precision": true
+  },
+  "source_cause": {
+    "hydro_detailed_includes_term": "-(Sict-Sic)",
+    "outbal_calc_storage_terms": ["snow", "ponding", "soil moisture"],
+    "sic_sict_passed_to_outbal_calc": false,
+    "classification": "CONFIRMED_LEGACY_BALANCE_INTERFACE_STATE_OMISSION"
+  },
+  "qualified_reference_correction": false,
+  "production_migration_admitted": false
+}
