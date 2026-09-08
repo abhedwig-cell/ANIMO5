@@ -66,13 +66,15 @@ This does **not** establish that these were the exact historical Intel project o
 
 Current classifications:
 
-- `Dble_trunc`: `SUSPICIOUS_LEGACY_CONSTRUCT`, dangerous because correctness depends on default-real compiler policy and an implicit procedure interface;
-- `Outbal_write` local retention: `SUSPICIOUS_LEGACY_CONSTRUCT`, because persistence depends on compiler storage semantics not expressed in the routine;
+- default-real dependence around `Dble_trunc` and related implicit interfaces: `BUILD_CONTRACT_DEPENDENCY`, not a demonstrated legacy scientific defect;
+- `Outbal_write` local retention: `BUILD_CONTRACT_DEPENDENCY`, because persistence depends on compiler storage semantics not expressed in the routine;
 - earlier `OXYDEM` NaNs: `DIAGNOSTIC_BUILD_ARTIFACT` for PREP01 purposes, not a demonstrated legacy aeration defect.
 
-## 3. Independently rebuilt diagnostic executable
+## 3. Deterministic diagnostic build recipe
 
-A fresh source extraction, with no edits to frozen scientific source, was compiled from 58 selected units under GNU Fortran 14.2.0 using:
+`tools/build_gnu_diagnostic.py` now reconstructs the diagnostic executable directly from the exact supplied source ZIP and fails closed on source hash, expected source-unit count and expected GNU-only syntax adaptation count.
+
+The controlled recipe uses GNU Fortran 14.2.0 with:
 
 ```text
 -ffree-form
@@ -84,13 +86,19 @@ A fresh source extraction, with no edits to frozen scientific source, was compil
 -fno-automatic
 ```
 
-Execution-only compatibility material consisted of include-case aliases, minimal `dfport/secnds` and `KINT/KIDNNT` shims, and a GNU-equivalent rewrite of one rejected `Outsel.for` output-list construct.
+and linker option:
 
-Fresh diagnostic executable SHA-256:
+```text
+-Wl,--build-id=none
+```
 
-`0d082a8f59f4c1fd8c083df33ef92b23a2947d1abf69727c12801e3ceea499bd`
+Execution-only compatibility material consists of include-case aliases, minimal `dfport/secnds` and `KINT/KIDNNT` shims, and a GNU-equivalent rewrite of one rejected `Outsel.for` output-list construct. The original archive remains unchanged.
 
-This executable is a research artifact, not an admitted legacy reference.
+Two clean builds in separate directories produced byte-identical executables:
+
+`0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e`
+
+This improves reproducibility of the diagnostic toolchain. It does not convert the GNU executable into a qualified historical reference.
 
 ## 4. Eight deterministic diagnostic cases
 
@@ -105,29 +113,35 @@ The following cases reach the legacy successful-completion path:
 7. `STONE_akk_0006.2001.2015`;
 8. `Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA`.
 
-Two repeated execution sets and an independently rebuilt executable were compared. After normalizing only volatile run timestamps and elapsed CPU seconds, the generated output bundles are byte-identical for all eight cases. Exact file counts and bundle hashes are recorded in `integration/animo-prep/PREP01_DIAGNOSTIC_EXECUTION.json`.
+Repeated executions, an independently rebuilt earlier executable and the new deterministic build recipe were compared. After normalizing only volatile legacy run-start/run-end timestamps and elapsed CPU seconds, the complete execution trees for all eight successful cases are byte-identical. Exact generated-output counts and normalized scientific/output bundle hashes remain recorded in `integration/animo-prep/PREP01_DIAGNOSTIC_EXECUTION.json`.
 
-This establishes deterministic diagnostic behaviour for the investigated GNU build. It does not establish equivalence to the historical Intel executable and the bundle hashes are not admitted as `FROZEN_LEGACY` or `QUALIFIED_GOLDEN_CASE` expected values.
+This establishes deterministic diagnostic behaviour for the investigated GNU build contract. It does not establish equivalence to the historical Intel executable and the bundle hashes are not admitted as `FROZEN_LEGACY` or `QUALIFIED_GOLDEN_CASE` expected values.
 
-## 5. GHGMais is a source/testcase contract blocker
+## 5. GHGMais is a structural source/testcase contract blocker
 
-`GHGMais` passes hydrology conversion but stops in text-input parsing with `STOP 1995` and the message:
+`GHGMais` passes hydrology conversion but stops in text-input parsing with `STOP 1995` because the supplied `GENERAL.INP` lacks `>outGHG:` required by revision-53 `input1.for`.
 
-`label ">outGHG:" not found in file "Input/general.inp"`
+Further source-bound inspection shows that this is not a single missing-label packaging error:
 
-The supplied revision-53 `input1.for` requires `>outGHG:` when `IoptGHG >= 1` and then reads GHG-control variables from that section. The supplied `GHGMais/Input/general.inp` instead contains a different set of GHG output keys and no `>outGHG:` section.
+- the testcase stores `CH4_CO2e`, `N2O_CO2e`, `NuCO2fr` and `CO2frno` under `>defGHG:` in `MATERIAL.INP`;
+- revision-53 instead reads equivalent GHG controls from `>outGHG:` in `GENERAL.INP`;
+- revision-53 requires `>orgcom:` and `Cfracom` in `MATERIAL.INP`, which supplied GHGMais lacks;
+- revision-53 `>deffra:` consumes `frno recfav hufros Ratio_rd_st asfa nifr [pofr]`;
+- supplied GHGMais `>deffra:` contains additional positional `RQ` and `cbfr` fields before `nifr` and `pofr`.
 
-This is evidence that the GHG testcase and supplied source do not share exactly the same input contract, or that required testcase material is missing. PREP01 does not insert the missing section or translate the newer keys because that would manufacture a reference case.
+A controlled input-only diagnostic probe reused the already-present `>defGHG:` values in a temporary `>outGHG:` block only to test whether the mismatch ended there. It advanced to the missing `>orgcom:` contract and was abandoned. No translated testcase is admitted.
+
+Therefore GHGMais belongs to a different or incomplete source/input-contract lineage. Blindly inserting labels or dropping positional columns could alter scientific semantics. See `docs/prep01/GHG_TESTCASE_PROVENANCE.md`.
 
 ## 6. Current interpretation
 
 Execution recovery has moved beyond the original build and binary-I/O blockers. We now have:
 
-- source-bound build semantics hypotheses;
+- source-bound build-semantics hypotheses;
 - a payload-preserving PowerStation-to-GNU record adapter;
-- a fresh deterministic diagnostic build;
-- eight reproducibly completing testcases;
-- one explicit source/testcase provenance blocker.
+- a deterministic source-hash-bound diagnostic build recipe;
+- eight reproducibly completing and NaN-free diagnostic testcases;
+- one explicit structural source/testcase provenance blocker.
 
 Still unresolved:
 
