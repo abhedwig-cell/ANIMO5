@@ -1,0 +1,95 @@
+{
+  "evidence_id": "ANIMO-PREP08-MANAGEMENT-TRANSFER-CAUSAL-PROBES-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_NOT_REFERENCE",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep08-causal-management-probes",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "frozen_source_modified": false,
+  "frozen_testbank_modified": false,
+  "reference_qualified": false,
+  "production_migration_admitted": false,
+  "executables": {
+    "baseline_gnu_diagnostic_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "tcd028_duplicate_only_sha256": "2690e2d60f1000cece8ec636c9e3c24c92a730010784230724f275bafe2e9f14",
+    "tcd028_duplicate_plus_explicit_np_sha256": "239a6ba0f28d4a61b32829d691b21570be45bc6770718832c8565d7e0f02c0fc",
+    "tcd029_observer_sha256": "01e020735359774293a51d083d55cbe5d14ea0907594c16c04587acef69c4a49"
+  },
+  "tcd028": {
+    "classification": "CONFIRMED_LEGACY_EXUDATE_HUMUS_PLOUGHING_LEDGER_DOUBLE_COUNT",
+    "corrected_legacy_class": "A_LEDGER_REPORTING_ONLY",
+    "synthetic_base_case": "LWKM_gras_1040.2021.2045",
+    "synthetic_change": "initial Huex in first four compartments set to 0.01 0.02 0.03 0.04 kg m-2; all remaining Huex zero",
+    "synthetic_initial_sha256": "d62c6455e3b3eb3c0bc700bb55dfa4c6f1d51922c2b6ae2093fdc6131337db54",
+    "legacy": {
+      "max_abs_humus_period_residual_kg_ha": 942.0,
+      "final_cumulative_humus_residual_kg_ha": 3580.0,
+      "max_abs_organic_n_period_residual_kg_ha": 45.2,
+      "final_cumulative_organic_n_residual_kg_ha": 172.0,
+      "max_abs_organic_p_period_residual_kg_ha": 5.7,
+      "final_cumulative_organic_p_residual_kg_ha": 21.6
+    },
+    "duplicate_only": {
+      "max_abs_humus_period_residual_kg_ha": {
+        "RP": 1.16e-10,
+        "GP": 1.46e-10,
+        "TP": 6.98e-10
+      },
+      "max_abs_organic_n_period_residual_kg_ha": {
+        "RP": 2.31e-9,
+        "GP": 3.83e-7,
+        "TP": 5.99e-6
+      },
+      "max_abs_organic_p_period_residual_kg_ha": 0.0494,
+      "final_cumulative_organic_p_residual_kg_ha": 0.154,
+      "interpretation": "remaining characteristic P residual belongs to independently established TCD-017 ploughing ledger family"
+    },
+    "output_comparison": {
+      "files_compared": 55,
+      "legacy_vs_duplicate_only_normalized_changed": 27,
+      "changed_files_confined_to_balance_or_detailed_om_n_p_reporting": true,
+      "duplicate_only_vs_duplicate_plus_explicit_np_normalized_changed": 0,
+      "ordinary_nonbalance_output_change_observed": false
+    },
+    "refinement": "duplicate generic Adhuexpl update is causally sufficient for this activated configuration; no additional independent N/P reconstruction defect is demonstrated here beyond existing TCD-017 P evidence"
+  },
+  "tcd029": {
+    "classification": "CONFIRMED_LEGACY_MULTISITE_FAST_SORPTION_MANAGEMENT_MASS_CREATION_AND_INTERFACE_GAP",
+    "corrected_legacy_class": "PROCESS_STATE_AND_CONSTITUTIVE_SITE_CORRECTION",
+    "synthetic_base_case": "LWKM_gras_1040.2021.2045",
+    "synthetic_changes": [
+      "NCXFA changed from 1 to 2",
+      "second fast Langmuir site parameters added: [0.0, 2.500e-6, 500.0, 0.0, 0.0]",
+      "second Amcxfa initial row added and aligned with revision-53 Fast relation sufficiently to remove Amcxfa(2) consistency warnings"
+    ],
+    "synthetic_chempar_sha256": "72cba1019cfddf164b3393187ffca94a11e57f7c739e1c3d2102dcb98af41cec",
+    "synthetic_initial_sha256": "0fd579a28c9d062d2645cf37b17dc7d6700e80dd102ede1c559ed7ed86642675",
+    "initial_amcxfa2_consistency_warnings": 0,
+    "observer_output_files_compared": 55,
+    "observer_vs_nonobserver_normalized_changed": 0,
+    "single_site_control": {
+      "event_count": 4,
+      "event_years": [1997, 1998, 2007, 2008],
+      "addition_index": 6,
+      "plough_layers": 4,
+      "max_abs_event_delta_kg_m2": 4.1598668953923834e-15,
+      "sum_delta_kg_ha": -5.377642775528102e-11
+    },
+    "two_site_probe": {
+      "event_count": 4,
+      "events": [
+        {"year": 1997, "before_kg_m2": 2.242951695726745, "after_kg_m2": 2.315292370702143, "delta_kg_m2": 0.07234067497539831, "delta_kg_ha": 723.4067497539831},
+        {"year": 1998, "before_kg_m2": 2.7131772924622, "after_kg_m2": 2.801858107679592, "delta_kg_m2": 0.0886808152173919, "delta_kg_ha": 886.8081521739191},
+        {"year": 2007, "before_kg_m2": 5.798870755720791, "after_kg_m2": 5.887551570938182, "delta_kg_m2": 0.08868081521739146, "delta_kg_ha": 886.8081521739147},
+        {"year": 2008, "before_kg_m2": 6.360842698865333, "after_kg_m2": 6.449523514082725, "delta_kg_m2": 0.08868081521739235, "delta_kg_ha": 886.8081521739235}
+      ],
+      "sum_delta_kg_m2": 0.33838312062757403,
+      "sum_delta_kg_ha": 3383.8312062757404,
+      "transgen_gt5pct_massbalance_warnings_full_run": 3021,
+      "warning_interpretation": "broader synthetic multi-site pathology; not all warnings are attributed solely to the ploughing seam"
+    },
+    "source_correction_admitted": false,
+    "reason_no_minimal_fix": "Addit lacks the site-specific Parcxfa contract and remains coupled to Ampoma/Socfpo and Amcxfa(1), so a safe repair requires an explicit management-side multi-site constitutive interface"
+  },
+  "decision": "QUALIFIED_PREP08_DIAGNOSTIC_CAUSALITY_REFERENCE_ADMISSION_BLOCKED"
+}
