@@ -5,43 +5,92 @@
   "branch": "work/animo-prep06-conserved-state-ledger",
   "date": "2026-09-08",
   "starting_head": "cbd71f1e651d312c4f1d7573269e6cbd18178801",
-  "decision": "QUALIFIED_SOURCE_BOUND_CONSERVED_STATE_LEDGER_MAP_MACROPORE_BEHAVIOURAL_ADMISSION_BLOCKED",
+  "evaluated_evidence_head_before_status": "88bf3d25f64ee6f9a57205f0f16260e2f989a19a",
+  "decision": "QUALIFIED_SOURCE_BOUND_CONSERVED_STATE_AND_TRANSFER_LEDGER_AUDIT_REFERENCE_AND_MACROPORE_BEHAVIOURAL_ADMISSION_BLOCKED",
   "implemented": true,
   "persisted": true,
   "tested": true,
   "qualified": true,
-  "qualification_scope": "source-bound static state ownership transaction and ledger-interface mapping only",
+  "qualification_scope": "source-bound conserved-state ownership and transfer-ledger mapping plus diagnostic causal confirmation of accounting-only seams; not historical behavioural reference qualification",
   "blocked": true,
   "physics_change": false,
   "numerical_policy_change": false,
   "legacy_source_modified": false,
   "reference_qualified": false,
+  "corrected_legacy_admitted": false,
   "production_migration_admitted": false,
   "verification": {
     "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
-    "static_source_checks": "47/47",
+    "static_conserved_state_checks": "47/47",
+    "transfer_ledger_symmetry_tests_persisted": true,
     "macropore_testbank_active_occurrences": 0
   },
-  "finding": {
-    "id": "TCD-025",
-    "classification": "SOURCE_CONFIRMED_MACROPORE_MAIN_LEDGER_STATE_AND_DRA4_INTEGRATION_GAP_TESTBANK_UNEXERCISED",
-    "behavioural_magnitude_measured": false,
-    "production_correction_admitted": false
+  "canonical_findings": [
+    {
+      "id": "TCD-025",
+      "process": "macropore main balance integration",
+      "classification": "SOURCE_CONFIRMED_MACROPORE_MAIN_LEDGER_STATE_AND_DRA4_INTEGRATION_GAP_TESTBANK_UNEXERCISED",
+      "behavioural_magnitude_measured": false,
+      "production_correction_admitted": false
+    },
+    {
+      "id": "TCD-026",
+      "process": "fresh organic matter initial exudate storage",
+      "classification": "CONFIRMED_LEGACY_INITIAL_STORAGE_LEDGER_OMISSION",
+      "natural_testbank_activation": false,
+      "synthetic_omitted_mass_kg_ha": 10.0,
+      "baseline_period_residual_kg_ha": -10.0,
+      "ledger_only_max_abs_period_residual_kg_ha": 6.55e-11,
+      "unintended_changed_outputs": 0,
+      "corrected_legacy_class": "A_ACCOUNTING_ONLY_INITIAL_STORAGE_COVERAGE",
+      "production_correction_admitted": false
+    },
+    {
+      "id": "TCD-027",
+      "process": "organic P detailed redistribution accumulator",
+      "classification": "CONFIRMED_LEGACY_DETAILED_LEDGER_ACCUMULATOR_DEFECT",
+      "natural_case": "LWKM_gras_1040.2021.2045",
+      "legacy_1997_redis_EXP_kg_ha_p": -7.0644,
+      "ledger_probe_1997_redis_EXP_kg_ha_p": 0.0,
+      "changed_outputs": 3,
+      "total_mass_balance_changed": false,
+      "state_trajectory_changed": false,
+      "corrected_legacy_class": "A_ACCOUNTING_ONLY_DETAILED_TRANSFER_REPORTING",
+      "production_correction_admitted": false
+    }
+  ],
+  "non_promoted_source_surface": {
+    "stable_DOM_DON_DOP_layer0": {
+      "classification": "PARSER_REPRESENTABLE_DYNAMICALLY_DORMANT_STATE_SURFACE",
+      "parser_accepts_layer0": true,
+      "dynamic_revision53_production_found": false,
+      "supplied_testbank_nonzero_layer0": false,
+      "active_mass_balance_defect_claimed": false,
+      "evidence": "docs/prep06/STABLE_SURFACE_STATE_REACHABILITY.md"
+    }
   },
   "deliverables": {
     "analysis": "docs/prep06/CONSERVED_STATE_TRANSFER_LEDGER.md",
     "state_inventory": "docs/prep06/CONSERVED_STATE_INVENTORY.csv",
+    "state_baseline": "docs/prep06/CONSERVATION_STATE_BASELINE.md",
     "audit_tool": "tools/audit_conserved_state_ledger.py",
+    "symmetry_audit_tool": "tools/audit_transfer_ledger_symmetry.py",
     "machine_evidence": "integration/animo-prep/PREP06_CONSERVED_STATE_LEDGER.json",
-    "canonical_discrepancy_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
+    "exudate_evidence": "integration/animo-prep/PREP06_EXUDATE_INITIAL_STORAGE_DEFECT.json",
+    "organic_p_detailed_evidence": "integration/animo-prep/PREP06_ORGANIC_P_DETAILED_ACCUMULATOR_DEFECT.json",
+    "canonical_discrepancy_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "canonical_register_tail": "TCD-027"
   },
   "architectural_constraints": [
     "preserve explicit accepted/start versus trial/result state semantics",
     "give each conserved store one state owner and explicit unit",
+    "generate beginning and end ledger storage from the same ownership model",
     "represent internal and external transfers separately with control-volume scope",
+    "derive detailed process ledgers from typed transfer events rather than parallel hand-maintained slot arrays",
     "do not treat legacy balance arrays as canonical physical state",
-    "include macropore water and solute storage in the canonical ledger contract if macropores remain supported"
+    "include macropore water and solute storage in the canonical ledger contract if macropores remain supported",
+    "do not expose parser or restart state indexes whose evolution semantics are undefined"
   ],
   "remaining_blockers": [
     "PREP02 historical or independently trusted reference remains unavailable",
@@ -51,13 +100,14 @@
   ],
   "recommended_next": {
     "parallel_now": [
-      "complete a transfer-edge inventory for Addit Resp_miner Transca Transgen and Transport with C/N/P species identity checks",
-      "scan balance formulas for terms accumulated but never consumed and states consumed without explicit storage ownership",
-      "design a synthetic qualification specification for macropore storage/direct drainage without admitting it as reference evidence"
+      "continue transfer-edge inventory for Addit Resp_miner Transca Transgen and Transport with C/N/P species identity checks only in a new workunit or explicitly extended PREP06 scope",
+      "prepare synthetic qualification specifications for dormant or unexercised state paths without treating them as historical reference evidence",
+      "compose TCD-026 and TCD-027 with previously qualified Class-A accounting probes only after reference qualification is available"
     ],
     "serial_when_reference_available": [
       "run a dedicated macropore case under qualified frozen reference",
       "capture unrounded matrix/macropore exchange storage and direct drainage",
+      "qualify TCD-026 and TCD-027 accounting corrections against frozen historical behaviour",
       "qualify any corrected public ledger interface independently"
     ]
   }
