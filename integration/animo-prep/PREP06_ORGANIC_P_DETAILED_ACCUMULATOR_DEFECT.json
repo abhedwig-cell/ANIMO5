@@ -1,0 +1,37 @@
+{
+  "work_unit": "ANIMO-PREP06",
+  "evidence_id": "ANIMO-PREP06-ORGANIC-P-DETAILED-REDISTRIBUTION-ACCUMULATOR-2026-09-08",
+  "reserved_discrepancy_id": "TCD-027",
+  "evidence_class": "DIAGNOSTIC_CAUSAL_DETAILED_LEDGER_DEFECT_NOT_REFERENCE_CORRECTION",
+  "classification": "CONFIRMED_LEGACY_DETAILED_LEDGER_ACCUMULATOR_DEFECT",
+  "corrected_legacy_class": "A_ACCOUNTING_ONLY_DETAILED_TRANSFER_REPORTING",
+  "source": {
+    "routine": "Outbal_calc.for",
+    "legacy_expression": "Bafop(24,Ly)=Bafop(25,Ly)+Dum",
+    "correct_expression_probe": "Bafop(24,Ly)=Bafop(24,Ly)+Dum",
+    "analogue_om": "Bafom(24,Ly)=Bafom(24,Ly)+Adexpl(I,Ln)*Z",
+    "analogue_n": "Bafon(24,Ly)=Bafon(24,Ly)+Dum"
+  },
+  "natural_case": {
+    "case": "LWKM_gras_1040.2021.2045",
+    "period": 1997,
+    "legacy_redis_EXP_kg_ha_p": -7.0644,
+    "probe_redis_EXP_kg_ha_p": 0.0,
+    "profiles": ["GP", "RP", "TP"]
+  },
+  "non_interference": {
+    "common_top_level_outputs_compared": 58,
+    "changed_outputs": ["transfopGP.Out", "transfopRP.Out", "transfopTP.Out"],
+    "changed_output_count": 3,
+    "total_organic_p_balance_outputs_changed": false,
+    "ordinary_state_or_process_outputs_changed": false,
+    "redis_OP_changed": false,
+    "redis_DOP_changed": false,
+    "redis_HUP_changed": false
+  },
+  "physics_changed": false,
+  "state_trajectory_changed": false,
+  "total_mass_balance_changed": false,
+  "qualified_reference_correction": false,
+  "production_migration_admitted": false
+}
