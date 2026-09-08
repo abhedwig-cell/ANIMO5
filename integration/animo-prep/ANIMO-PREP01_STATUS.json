@@ -1,0 +1,121 @@
+{
+  "work_unit": "ANIMO-PREP01",
+  "title": "Repository, Frozen Legacy Baseline, Evidence Inventory & Development Governance",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep01-bootstrap",
+  "date": "2026-09-08",
+  "evaluated_commit": "8fb824227b2cf7272d0d73e92536c964226b1d5f",
+  "starting_state": {
+    "repository_existed": true,
+    "repository_was_empty": true,
+    "default_branch": "main",
+    "bootstrap_commit": "0fb4758bdaa55eab28a3bf521fa2a5cffb1aa9b2"
+  },
+  "decision": "BLOCKED_AUTHORITATIVE_LEGACY_SOURCE_DOCUMENTATION_AND_EXECUTABLE_REQUIRED",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": false,
+  "blocked": true,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "production_migration_started": false,
+  "evidence": {
+    "legacy_source": {
+      "available": false,
+      "status": "BLOCKED_MATERIAL_NOT_AVAILABLE",
+      "frozen": false
+    },
+    "legacy_documentation": {
+      "available": false,
+      "status": "BLOCKED_TECHNICAL_DOCUMENTATION_NOT_AVAILABLE",
+      "frozen": false
+    },
+    "testbank": {
+      "available_locally": true,
+      "archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "archive_size_bytes": 7659314,
+      "testcase_count": 9,
+      "file_count": 119,
+      "member_manifest_persisted": true,
+      "binary_archive_persisted_to_github": false,
+      "binary_archive_persistence_status": "BLOCKED_BINARY_UPLOAD_CAPABILITY",
+      "trusted_expected_outputs_available": false,
+      "executable_available": false,
+      "executable_cases": 0,
+      "qualified_rr_cases": 0,
+      "qualified_qg_cases": 0
+    }
+  },
+  "tests": {
+    "python_compile": "PASS",
+    "prep01_inventory_unittest": {
+      "result": "PASS",
+      "tests_run": 4,
+      "failures": 0,
+      "errors": 0,
+      "local_binary_archive_present": true,
+      "reproducibility_outputs_exact_match": {
+        "testbank_inventory_json": true,
+        "testbank_manifest_csv": true,
+        "testcase_inventory_csv": true
+      }
+    },
+    "legacy_build": "NOT_RUN_SOURCE_UNAVAILABLE",
+    "legacy_runtime_regression": "NOT_RUN_EXECUTABLE_UNAVAILABLE"
+  },
+  "deliverables": {
+    "repository_initialized": "IMPLEMENTED_PERSISTED",
+    "frozen_legacy_source_baseline": "BLOCKED_MATERIAL_NOT_AVAILABLE",
+    "frozen_legacy_documentation_baseline": "BLOCKED_TECHNICAL_DOCUMENTATION_NOT_AVAILABLE",
+    "provenance_record": "IMPLEMENTED_PERSISTED",
+    "testcase_inventory": "IMPLEMENTED_PERSISTED_TESTED",
+    "build_reproducibility_assessment": "IMPLEMENTED_PERSISTED_BLOCKED",
+    "compiler_interface_audit_baseline": "IMPLEMENTED_PERSISTED_NOT_ASSESSED_SOURCE_UNAVAILABLE",
+    "io_dependency_inventory": "IMPLEMENTED_PERSISTED_TESTCASE_LEVEL_ONLY",
+    "process_dataflow_inventory": "IMPLEMENTED_PERSISTED_TESTCASE_LEVEL_ONLY",
+    "theory_code_discrepancy_register": "IMPLEMENTED_PERSISTED",
+    "status_a_to_aa_gap_register": "IMPLEMENTED_PERSISTED",
+    "architecture_invariants": "IMPLEMENTED_PERSISTED",
+    "development_governance": "IMPLEMENTED_PERSISTED",
+    "migration_dependency_dag": "IMPLEMENTED_PERSISTED",
+    "test_architecture_baseline": "IMPLEMENTED_PERSISTED",
+    "machine_readable_status": "IMPLEMENTED"
+  },
+  "not_assessed": [
+    "legacy Fortran language level and compiler extensions",
+    "legacy compiler and build flags",
+    "external libraries and compile order",
+    "Fortran interface defects and argument semantics",
+    "source-level I/O dependency map",
+    "process equations and authoritative ordering",
+    "persistent state and scratch ownership in legacy code",
+    "legacy precision declarations",
+    "mass-accounting implementation",
+    "theory-code agreement",
+    "binary hydrology reader format",
+    "mandatory versus optional semantics of unresolved animo.ini paths"
+  ],
+  "blockers": [
+    "authoritative ANIMO production source tree unavailable",
+    "authoritative ANIMO theory/user documentation unavailable",
+    "ANIMO executable unavailable",
+    "trusted numerical output oracle unavailable",
+    "byte-exact binary testcase archive cannot be uploaded through the available chat GitHub connector"
+  ],
+  "recommended_next": {
+    "serial": [
+      "PREP02 authoritative source/documentation ingest and immutable B0 freeze",
+      "reproducible legacy build gate",
+      "first source-bound compiler/interface and I/O audit"
+    ],
+    "parallel_after_evidence_ingest": [
+      "documentation inventory and theory-code reconciliation preparation",
+      "testcase execution/capture harness",
+      "compiler/interface audit tooling",
+      "process/dataflow archaeology",
+      "Status A/AA gap ownership and evidence planning"
+    ],
+    "production_migration": "NOT_ADMITTED"
+  }
+}
