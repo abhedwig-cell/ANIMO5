@@ -1,0 +1,107 @@
+{
+  "evidence_id": "ANIMO-PREP06-CONSERVED-STATE-LEDGER-2026-09-08",
+  "evidence_class": "SOURCE_BOUND_STATIC_AUDIT_NOT_REFERENCE",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep06-conserved-state-ledger",
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "audit": {
+    "tool": "tools/audit_conserved_state_ledger.py",
+    "checks_passed": 47,
+    "checks_total": 47,
+    "all_checks_passed": true,
+    "files_checked": [
+      "Init.for",
+      "Outbal_Init.for",
+      "MAPOHYDRO.FOR",
+      "MAPOTRANSPORT.FOR",
+      "Outbal_calc.for"
+    ]
+  },
+  "transaction_seam": {
+    "routine": "Init.for",
+    "interpretation": "promotes prior-step result state into current/start state before the next calculation",
+    "representative_pairs": [
+      "Mofrt->Mofro",
+      "Sict->Sic",
+      "Pnt->Pn",
+      "Rsconh->Conh",
+      "Rsconi->Coni",
+      "Rscodiorma->Codiorma",
+      "RsCoStdiorma->CoStdiorma",
+      "Rscopo->Copo",
+      "Rsamcxfa->Amcxfa",
+      "Rsamcxsl->Amcxsl",
+      "SrWaMp->SrWaMpOld",
+      "RsCoMp*->CoMp*"
+    ]
+  },
+  "state_inventory": {
+    "artifact": "docs/prep06/CONSERVED_STATE_INVENTORY.csv",
+    "rows": 22,
+    "includes": [
+      "water matrix/surface/interception/snow/macropore",
+      "solid and dissolved organic C/N/P",
+      "NH4 aqueous and adsorbed",
+      "NO3",
+      "PO4 aqueous fast-sorbed slow-sorbed precipitated",
+      "CH4 and N2O",
+      "macropore solutes"
+    ]
+  },
+  "macropore_main_ledger_interface": {
+    "outbal_calc_receives_SrWaMp": false,
+    "outbal_calc_receives_RsCoMp": false,
+    "ddev_formula_mentions_Dra4": false,
+    "active_direct_drainage_terms": {
+      "Banh(Dra4": true,
+      "Bani(Dra4": true,
+      "Bano(Dra4": true,
+      "Bdom(Dra4": false,
+      "Bapp(Dra4": false,
+      "Bapo(Dra4": false
+    }
+  },
+  "testbank_macropore": {
+    "settings_observed": 12,
+    "active_occurrences": 0,
+    "settings": [
+      {"file": "ANIMO_testbank/CranGrass/Input/GENERAL.INP", "value": "0"},
+      {"file": "ANIMO_testbank/CranMais/Input/GENERAL.INP", "value": "0"},
+      {"file": "ANIMO_testbank/GHGMais/Input/general.inp", "value": "0"},
+      {"file": "ANIMO_testbank/GrassPeat/Input/GENERAL.INP", "value": "0"},
+      {"file": "ANIMO_testbank/LWKM_gras_1040.2021.2045/input/GENERAL.INP", "value": "0"},
+      {"file": "ANIMO_testbank/Puitmijn_Cranendonck_60/input/GENERAL.INP", "value": "0"},
+      {"file": "ANIMO_testbank/Puitmijn_Cranendonck_60/input/GENERAL_PsorpPools.INP", "value": "0"},
+      {"file": "ANIMO_testbank/Puitmijn_Cranendonck_60/input/GENERAL_yearbal.INP", "value": "0"},
+      {"file": "ANIMO_testbank/Puitmijn_Cranendonck_60/input/GENERAL_zonderOutput PsorpPools.INP", "value": "0"},
+      {"file": "ANIMO_testbank/RuurloGrass/Input/GENERAL.INP", "value": "0"},
+      {"file": "ANIMO_testbank/STONE_akk_0006.2001.2015/input/GENERAL.INP", "value": "0"},
+      {"file": "ANIMO_testbank/Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA/Input/GENERAL.INP", "value": "0"}
+    ]
+  },
+  "finding": {
+    "id": "TCD-025",
+    "classification": "SOURCE_CONFIRMED_MACROPORE_MAIN_LEDGER_STATE_AND_DRA4_INTEGRATION_GAP_TESTBANK_UNEXERCISED",
+    "source_confirmed": true,
+    "behavioural_magnitude_measured": false,
+    "reference_qualified": false,
+    "production_correction_admitted": false,
+    "basis": [
+      "MAPOHYDRO includes macropore storage change and direct drainage in its own water balance",
+      "MAPOTRANSPORT includes SrWaMp*CoMp old/new storage in its own solute balance",
+      "Outbal_calc does not receive SrWaMp or result macropore concentration state",
+      "water and DOM direct-drainage main-ledger additions are commented provisional code",
+      "NH4 NO3 and organic-N Dra4 terms are accumulated but no main Ddev formula references Dra4",
+      "no active Bapp/Bapo Dra4 additions were found",
+      "all supplied MacroPoreOption settings are zero"
+    ]
+  },
+  "dormant_source_limitations": [
+    "Outbal_calc comments state stable DOM/DON/DOP layer-0 runoff is not yet included, but revision-53 Addit forces stable layer-0 state to zero; not promoted to an active defect",
+    "stable N/P layer-0 runoff output expressions contain species-name inconsistencies but remain dormant under the current forced-zero surface stable state"
+  ],
+  "decision": "QUALIFIED_SOURCE_BOUND_CONSERVED_STATE_LEDGER_MAP_MACROPORE_BEHAVIOURAL_ADMISSION_BLOCKED",
+  "reference_qualified": false,
+  "production_migration_admitted": false
+}
