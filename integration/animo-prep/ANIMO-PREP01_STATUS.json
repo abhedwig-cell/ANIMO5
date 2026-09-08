@@ -4,7 +4,7 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-prep01-bootstrap",
   "date": "2026-09-08",
-  "evaluated_evidence_head": "db9a5fe62a1cd4fc4b0e075918866e29d77ea320",
+  "evaluated_evidence_head": "afbcca579e9df8618070eb8312fbad537e4bc881",
   "starting_state": {
     "repository_existed": true,
     "repository_was_empty": true,
@@ -84,9 +84,24 @@
       "logical_payload_bytes_modified": false
     },
     "gnu_diagnostic_build": {
-      "result": "PASS_REPRODUCIBLE_DIAGNOSTIC_ONLY",
+      "result": "PASS_DETERMINISTIC_DIAGNOSTIC_ONLY",
+      "tool": "tools/build_gnu_diagnostic.py",
       "compiler": "GNU Fortran 14.2.0",
-      "executable_sha256": "0d082a8f59f4c1fd8c083df33ef92b23a2947d1abf69727c12801e3ceea499bd",
+      "compile_flags": [
+        "-ffree-form",
+        "-ffree-line-length-none",
+        "-fallow-argument-mismatch",
+        "-std=legacy",
+        "-fdefault-real-8",
+        "-fdefault-double-8",
+        "-fno-automatic"
+      ],
+      "link_flags": [
+        "-Wl,--build-id=none"
+      ],
+      "clean_builds_compared": 2,
+      "byte_identical_clean_builds": true,
+      "executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
       "default_real_bytes": 8,
       "static_local_storage": true,
       "qualified_reference_build": false
@@ -95,10 +110,10 @@
       "result": "PASS_8_OF_9_REFERENCE_NOT_QUALIFIED",
       "successful_cases": 8,
       "nan_free_successful_cases": 8,
-      "independent_rebuild_exact_normalized_output_matches": 8,
+      "exact_normalized_execution_tree_matches_against_previous_independent_build": 8,
       "blocked_cases": 1,
       "blocked_case": "GHGMais",
-      "blocker": "SOURCE_TESTCASE_GHG_INPUT_CONTRACT_MISMATCH"
+      "blocker": "SOURCE_TESTCASE_GHG_AND_ORGANIC_MATTER_INPUT_CONTRACT_LINEAGE_MISMATCH"
     },
     "legacy_reference_runtime": {
       "result": "NOT_QUALIFIED",
@@ -111,11 +126,13 @@
     "frozen_legacy_documentation_baseline": "HASH_FROZEN_PARTIAL_VERSION_DOCUMENTATION_PENDING_CONTROLLED_RETENTION",
     "provenance_record": "IMPLEMENTED_PERSISTED",
     "testcase_inventory": "IMPLEMENTED_PERSISTED_TESTED",
-    "build_reproducibility_assessment": "IMPLEMENTED_PERSISTED_TESTED_DIAGNOSTIC_REPRODUCIBILITY_ESTABLISHED",
-    "compiler_interface_audit_baseline": "IMPLEMENTED_PERSISTED_SOURCE_BOUND",
+    "build_reproducibility_assessment": "IMPLEMENTED_PERSISTED_TESTED_DETERMINISTIC_DIAGNOSTIC_RECIPE",
+    "gnu_diagnostic_build_tool": "IMPLEMENTED_PERSISTED_TESTED_LOCALLY",
+    "compiler_interface_audit_baseline": "IMPLEMENTED_PERSISTED_SOURCE_BOUND_RECONCILED",
     "io_dependency_inventory": "IMPLEMENTED_PERSISTED_SOURCE_BOUND",
     "process_dataflow_inventory": "IMPLEMENTED_PERSISTED_SOURCE_PLUS_DOCUMENTATION_BOUND",
     "theory_code_discrepancy_register": "IMPLEMENTED_PERSISTED_ACTIVE",
+    "ghg_testcase_provenance": "IMPLEMENTED_PERSISTED_BLOCKED_LINEAGE_MISMATCH",
     "status_a_to_aa_gap_register": "IMPLEMENTED_PERSISTED",
     "architecture_invariants": "IMPLEMENTED_PERSISTED",
     "development_governance": "IMPLEMENTED_PERSISTED",
@@ -138,6 +155,11 @@
       "automatic versus static local storage",
       "implicit procedure return-kind agreement"
     ],
+    "reconciled_findings": {
+      "dble_trunc": "BUILD_CONTRACT_DEPENDENCY_NOT_CONFIRMED_HISTORICAL_DEFECT",
+      "earlier_oxydem_nan": "CLOSED_DIAGNOSTIC_BUILD_ARTIFACT",
+      "outbal_local_retention": "BUILD_CONTRACT_DEPENDENCY"
+    },
     "platform_dependencies_confirmed": [
       "case-insensitive include naming assumptions",
       "Intel dfport/secnds",
@@ -159,7 +181,7 @@
       "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
     ],
     "blocked_cases": {
-      "GHGMais": "general.inp lacks >outGHG: required by supplied revision-53 source and uses a different GHG output-key contract"
+      "GHGMais": "structurally different GHG/organic-matter text-input contract: source requires >outGHG: and >orgcom: with narrower >deffra: records; testcase uses >defGHG:, lacks >orgcom:, and includes RQ/cbfr columns"
     },
     "reference_admission": false
   },
@@ -180,7 +202,7 @@
     "native historical build or independently qualified equivalent reference build is not yet established",
     "no testcase has completed under a qualified legacy reference executable",
     "unrounded trusted numerical output oracle is not yet captured",
-    "supplied GHGMais testcase does not match the input contract of supplied revision-53 source",
+    "supplied GHGMais testcase belongs to a different or incomplete input-contract lineage relative to supplied revision-53 source",
     "supplied documentation is ANIMO 4.0 and does not fully document the 4.1.5 revision-53 source"
   ],
   "resolved_previous_blockers": [
@@ -188,17 +210,20 @@
     "technical legacy documentation availability at ANIMO 4.0 level",
     "modern diagnostic compile/link feasibility",
     "PowerStation binary hydrology record framing",
-    "deterministic diagnostic execution for eight supplied cases"
+    "deterministic diagnostic build recipe",
+    "deterministic diagnostic execution for eight supplied cases",
+    "earlier four-byte-default-REAL OXYDEM NaN hypothesis"
   ],
   "recommended_next": {
     "serial": [
-      "ANIMO-PREP02 recover historical Intel project/build semantics or qualify an equivalent reference build contract",
+      "ANIMO-PREP02 recover historical Intel project/build semantics or independently qualify an equivalent reference build contract",
       "establish legally controlled immutable B0 storage for raw source/document/testbank bytes",
       "qualify one minimal legacy reference testcase and capture unrounded output before any corrected-legacy change",
       "resolve GHGMais source/testcase lineage before GHG qualification"
     ],
     "parallel": [
       "large-interface argument semantics audit",
+      "systematic external-function declaration/definition crosscheck",
       "source-level I/O ownership and kernel-seam archaeology",
       "4.0 documentation to 4.1.5 source discrepancy expansion",
       "mass-balance variable crosswalk",
