@@ -6,17 +6,23 @@ The repository is intentionally bootstrapped evidence-first. Production migratio
 
 Current initial work unit: `ANIMO-PREP01`.
 
-Current PREP01 decision: `BLOCKED_AUTHORITATIVE_LEGACY_SOURCE_DOCUMENTATION_AND_EXECUTABLE_REQUIRED`.
+Current PREP01 decision: `BLOCKED_REPRODUCIBLE_NATIVE_LEGACY_EXECUTION_AND_CONTROLLED_B0_RETENTION_REQUIRED`.
 
-The blocked decision is deliberate. The repository now contains the provenance framework, testcase identity/manifests, evidence inventories, governance, architecture invariants, test architecture and quality registers, but no legacy production source or production ANIMO5 migration code.
+PREP01 now has three concrete evidence classes:
+
+- supplied ANIMO 4.1.5 revision-53 source candidate, archive/member hashes persisted;
+- supplied ANIMO 4.0 technical user's guide, document hash and scope persisted;
+- nine-case ANIMO testbank, archive/member hashes and inventory persisted.
+
+The remaining block is no longer missing material. It is qualification: exact controlled B0 byte retention, native/reference build reproduction, binary hydrology compatibility and successful capture of unrounded testcase behaviour are not yet established. No ANIMO5 process migration has started.
 
 Top-level areas:
 
-- `reference/`: immutable-evidence placeholders and testcase identity/manifests;
+- `reference/`: cryptographically pinned legacy evidence identities and manifests;
 - `src/`: future ANIMO5 production source, intentionally empty during PREP01;
 - `tests/`: evidence-integrity bootstrap tests and later scientific tests;
 - `docs/`: architecture, governance, PREP, testing and quality evidence;
 - `tools/`: reproducible evidence/audit tooling;
 - `integration/`: machine-readable work-unit and qualification records.
 
-No LICENSE is added until a legal basis is established.
+No LICENSE is added until a legal basis is established. The public repository does not republish supplied legacy source/document bytes without an established redistribution basis.
