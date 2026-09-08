@@ -27,7 +27,7 @@ These are compatibility observations, not automatically scientific defects.
 
 ## Diagnostic build semantics
 
-A fresh source extraction was compiled with:
+The source-consistent diagnostic hypothesis uses:
 
 ```text
 -ffree-form
@@ -39,26 +39,40 @@ A fresh source extraction was compiled with:
 -fno-automatic
 ```
 
-Fifty-eight Fortran compilation units were selected. `input1_1.for` and `Outselorg.for` were excluded as alternate units because the main-program signatures bind to `input1.for` and `Outsel.for` in this diagnostic lineage.
+Fifty-eight Fortran compilation units are selected. `input1_1.for` and `Outselorg.for` are excluded as alternate units because the main-program signatures bind to `input1.for` and `Outsel.for` in this diagnostic lineage.
 
-Execution-only compatibility material outside the frozen source consisted of:
+Execution-only compatibility material outside the frozen source consists of:
 
 - case aliases for include names on a case-sensitive filesystem;
 - a minimal `dfport/secnds` shim;
 - a minimal `KINT`/`KIDNNT` shim;
 - a GNU-equivalent rewrite of the rejected nested implied-do output list in `Outsel.for`.
 
-No frozen source file was edited. The independently rebuilt diagnostic executable has SHA-256:
+No frozen source file is edited.
 
-`0d082a8f59f4c1fd8c083df33ef92b23a2947d1abf69727c12801e3ceea499bd`
+## Deterministic build recipe
 
-Object inspection confirms that default local `REAL` data are eight bytes under this probe and that `-fno-automatic` gives static local storage for the legacy local format variables used across calls.
+`tools/build_gnu_diagnostic.py` makes the above probe repeatable from the original source ZIP. It verifies the exact archive hash and fails closed if the expected source-unit count or known `Outsel` compatibility pattern changes.
+
+The link step uses:
+
+```text
+-Wl,--build-id=none
+```
+
+and compiles from relative paths so that build-directory identity is not embedded as accidental volatility.
+
+Two completely fresh builds in separate output directories produced byte-identical executables with SHA-256:
+
+`0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e`
+
+This replaces the earlier manually assembled diagnostic executable as the preferred reproducibility artifact. It does not change the scientific qualification status.
 
 ## Hydrology binary exchange
 
 The supplied hydrology files use Microsoft/Intel Fortran PowerStation-compatible sequential-unformatted framing. The repository adapter `tools/convert_legacy_unformatted.py` converts only physical/logical record framing. Logical-record payload bytes are unchanged.
 
-The parser now supports both:
+The parser supports both:
 
 - one-block logical records;
 - multiblock logical records using PowerStation continuation blocks.
@@ -67,7 +81,7 @@ All nine testbank hydrology files can be structurally parsed. Binary hydrology f
 
 ## Diagnostic testcase execution
 
-Eight of nine supplied cases reach legacy `Successful completion of simulation` under the diagnostic build:
+Eight of nine supplied cases reach legacy `Successful completion of simulation` under the deterministic diagnostic build:
 
 - `CranGrass`;
 - `CranMais`;
@@ -80,9 +94,15 @@ Eight of nine supplied cases reach legacy `Successful completion of simulation` 
 
 No `NaN` diagnostics occur in those eight runs. Some runs emit GNU IEEE underflow/denormal notes; these have not been promoted to scientific findings.
 
-The eight successful cases were run again and also compared with an independently rebuilt diagnostic executable. After normalizing only volatile run timestamps and elapsed CPU seconds, generated outputs matched exactly in all eight cases. Exact diagnostic bundle hashes are persisted in `integration/animo-prep/PREP01_DIAGNOSTIC_EXECUTION.json`.
+The deterministic-build executions were compared against the earlier independently rebuilt execution trees. After normalizing only run-start/run-end/file-creation timestamps and elapsed CPU seconds, all eight complete execution trees match byte-for-byte. Exact diagnostic scientific/output bundle hashes remain persisted in `integration/animo-prep/PREP01_DIAGNOSTIC_EXECUTION.json`.
 
-`GHGMais` now passes the binary hydrology stage but stops during text input parsing. The supplied `general.inp` lacks the `>outGHG:` section required by the supplied 4.1.5 revision-53 `input1.for` when `IoptGHG >= 1` and uses a different set of GHG output keys. This is treated as a source/testcase contract-provenance mismatch, not repaired silently.
+## GHGMais
+
+`GHGMais` passes binary hydrology but is not input-contract compatible with the supplied revision-53 source.
+
+The first visible mismatch is the absent `>outGHG:` section in `GENERAL.INP`. Deeper inspection establishes independent schema differences in `MATERIAL.INP`: supplied GHGMais uses `>defGHG:`, lacks source-required `>orgcom:`, and has extra positional `RQ` and `cbfr` fields in `>deffra:`.
+
+A controlled input-only probe showed that inserting only the already-available GHG constants under the revision-53 label merely advances to the next mismatch. No translated testcase is admitted. See `docs/prep01/GHG_TESTCASE_PROVENANCE.md`.
 
 ## Interpretation of earlier GNU failures
 
@@ -90,15 +110,15 @@ An earlier diagnostic build using four-byte default `REAL` produced a `Dble_trun
 
 Accordingly:
 
-- the `Dble_trunc` declaration pattern remains a dangerous implicit-interface/build-semantics dependency, but is not currently qualified as a legacy scientific defect;
-- the earlier `OXYDEM` NaNs are classified as a diagnostic build-semantics artifact unless independent native reference evidence shows otherwise;
-- local-state retention in `Outbal_write` remains an explicit compiler-semantics dependency because the historical Intel project flags are still unavailable.
+- default-real dependence around `Dble_trunc` is classified as `BUILD_CONTRACT_DEPENDENCY`, not as a demonstrated historical defect;
+- the earlier `OXYDEM` NaNs are classified as `DIAGNOSTIC_BUILD_ARTIFACT` unless independent qualified evidence reproduces them;
+- local-state retention in `Outbal_write` is classified as `BUILD_CONTRACT_DEPENDENCY` because the historical Intel project flags are still unavailable.
 
 ## Gate
 
 Current evidence supports:
 
-- modern diagnostic build feasibility: `DEMONSTRATED`;
+- deterministic modern diagnostic build: `DEMONSTRATED`;
 - PowerStation hydrology framing recovery: `DEMONSTRATED`;
 - deterministic diagnostic execution for eight testcases: `DEMONSTRATED`;
 - native historical build reproduction: `NOT_REPRODUCED`;
