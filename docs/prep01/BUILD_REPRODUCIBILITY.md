@@ -1,50 +1,63 @@
 # Legacy build and reproducibility assessment
 
-Status: `BLOCKED_SOURCE_AND_EXECUTABLE_MISSING`.
+Status: `PARTIALLY_ASSESSED_BUILD_NOT_YET_REFERENCE_REPRODUCIBLE`.
 
 ## Observed environment
 
-PREP01 runtime tools:
+- GNU Fortran 14.2.0 available
+- CMake 3.31.6 available
+- GNU Make 4.4.1 available
+- Intel `ifort`/`ifx` not observed
+- Wine not observed
 
-- GNU Fortran 14.2.0 available;
-- CMake 3.31.6 available;
-- GNU Make 4.4.1 available;
-- Intel `ifort`/`ifx` not observed;
-- `flang-new` not observed;
-- Wine not observed.
+## Historical/source-declared toolchain
 
-These tool versions are environment facts only. They do not establish the historical ANIMO compiler.
+The supplied `Version.inc` identifies:
 
-## Source-bound build assessment
+`Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]`
 
-Not possible because the ANIMO production source tree is unavailable.
+No Visual Studio project, makefile, compiler command line, link script or historical binary was present in the supplied source archive. The exact historical build flags and selected source-file list are therefore not yet reproduced.
 
-The following remain `NOT_ASSESSED`:
+## Fortran/source-form assessment
 
-- Fortran language level;
-- fixed/free source form;
-- compiler extensions;
-- required compiler/vendor;
-- compiler flags;
-- external libraries;
-- generated files;
-- compile/link order;
-- platform-specific APIs;
-- record-format assumptions for binary hydrology input;
-- reproducibility under GNU Fortran.
+The source is a mixed legacy/modern Fortran code base. Although 58 files use a `.for` suffix, they contain free-form continuation and constructs that require free-form interpretation in the GNU investigation. Two additional files use `.f90`. Include files are external textual includes rather than a module-based interface layer.
 
-## Testcase execution assessment
+A modern-compiler probe establishes several portability dependencies:
 
-Five runner scripts were observed. Four call `..\animo41.exe`; one calls `ANIMO` from PATH. The archive does not contain the executable. The remaining four cases contain no runner script.
+- case-insensitive include-file naming assumptions;
+- Intel `dfport/secnds` dependency;
+- `KINT`/`KIDNNT` toolchain-specific behaviour;
+- one `Outsel.for` WRITE-list construct rejected by GNU Fortran 14.2;
+- large numbers of implicit external interfaces and legacy calling conventions.
 
-Therefore no legacy testcase is executable from the frozen package alone.
+See `docs/prep01/GNU_COMPILER_PROBE.md`.
 
-The absence of some files referenced by `animo.ini` is recorded separately. Their mandatory/optional semantics cannot be decided without the parser/source or a working executable.
+## Probe result
 
-## Build gate
+In a disposable working copy only, with explicit compatibility shims and one targeted GNU syntax adaptation, a selected 58-unit build compiles and links under GNU Fortran 14.2. Those adaptations are not part of the frozen source and the resulting executable is not a behavioural oracle.
 
-PREP01 build gate result:
+This demonstrates that a modern-portability route appears feasible, but it does **not** establish a reproducible legacy reference build.
 
-`BLOCKED_AUTHORITATIVE_SOURCE_REQUIRED`
+## Testcase execution
 
-No attempt is made to patch input, invent a build system, or substitute a different ANIMO version.
+The nine testcases identify themselves as `Animo41`. Source parsing accepts `Animo40` and `Animo41`, supporting format continuity but not proving numerical compatibility.
+
+A GNU probe run required nonreference path/case normalization for Windows-style testcase paths. It then reached hydrological input reading and failed on the supplied binary `SWATRE.UNF` under GNU sequential-unformatted runtime semantics.
+
+Current result:
+
+- native historical Intel/Windows build: `NOT_REPRODUCED`
+- GNU portability build: `PROBE_ONLY_WITH_SHIMS`
+- testcases executed to successful completion: `0/9`
+- qualified reference-regression cases: `0/9`
+- trusted numerical oracle: `NOT_ESTABLISHED`
+
+## Build blockers
+
+1. historical Intel compiler/runtime or an evidenced byte-compatible alternative;
+2. exact compile/link source selection and flags;
+3. binary hydrology record-format/runtime compatibility;
+4. controlled capture of unrounded legacy output;
+5. a qualified relation between source 4.1.5 revision 53 and the supplied testbank.
+
+No legacy source is modified in PREP01 to make this gate pass.
