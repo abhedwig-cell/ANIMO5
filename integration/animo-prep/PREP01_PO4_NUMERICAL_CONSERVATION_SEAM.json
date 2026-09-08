@@ -1,0 +1,63 @@
+{
+  "evidence_id": "ANIMO-PREP01-PO4-NUMERICAL-CONSERVATION-SEAM-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_CAUSAL_NUMERICAL_CONSERVATION_DEFECT_EVIDENCE_NOT_REFERENCE_CORRECTION",
+  "case": "LWKM_gras_1040.2021.2045",
+  "substance": "PHOSPHORUS",
+  "baseline": {
+    "transgen_records": 27000,
+    "cumulative_bapd_minus_batr_kg_ha_p": -0.27254515116348993,
+    "max_abs_local_residual_kg_ha_p": 0.0005011328758918021,
+    "negative_local_residual_count": 24379,
+    "positive_local_residual_count": 2621
+  },
+  "source_cause": {
+    "routine": "Transorp/Sorpfast/C_unl",
+    "fast_sorption_option_in_case": "Langmuir",
+    "mechanism_1": "for abs(Ct-Ct0)<1e-6 Sorpfast substitutes the tangent derivative at Ct for the exact finite Langmuir storage secant",
+    "mechanism_2": "C_unl Newton convergence uses Small=1e-4 and permits the remaining nonlinear equation residual to accumulate",
+    "classification": "CONFIRMED_LEGACY_NUMERICAL_CONSERVATION_POLICY_DEFECT"
+  },
+  "probes": {
+    "tangent_switch_threshold_only": {
+      "temporary_source_only": true,
+      "change": "Langmuir small-delta tangent switch threshold 1e-6 -> 1e-12",
+      "cumulative_bapd_minus_batr_kg_ha_p": -0.017973962837645012,
+      "max_abs_local_residual_kg_ha_p": 0.0002569152032477569,
+      "negative_local_residual_count": 21395,
+      "positive_local_residual_count": 5602
+    },
+    "newton_tolerance_only": {
+      "temporary_source_only": true,
+      "change": "C_unl Small 1e-4 -> 1e-8",
+      "cumulative_bapd_minus_batr_kg_ha_p": -0.25489423322790195,
+      "max_abs_local_residual_kg_ha_p": 0.0005011328887994662
+    },
+    "combined": {
+      "temporary_source_only": true,
+      "changes": [
+        "Langmuir small-delta tangent switch threshold 1e-6 -> 1e-12",
+        "C_unl Small 1e-4 -> 1e-8"
+      ],
+      "cumulative_bapd_minus_batr_kg_ha_p": 0.000009633743430599514,
+      "max_abs_local_residual_kg_ha_p": 0.000010140786786886464,
+      "negative_local_residual_count": 13752,
+      "positive_local_residual_count": 13243,
+      "largest_gp_period_residual_kg_ha_p": 0.0000102,
+      "final_gp_cumulative_residual_kg_ha_p": 0.00000989,
+      "absolute_drift_reduction_percent": 99.99646526698807,
+      "improvement_factor": 28290.679851179022
+    },
+    "stable_analytical_secant_check": {
+      "temporary_source_only": true,
+      "formula": "a/((1+b*C)*(1+b*C0)) for S(C)=a*C/(1+b*C)",
+      "combined_with_newton_small_1e_8_cumulative_residual_kg_ha_p": -0.0002652507515957926,
+      "interpretation": "confirms a stable conservative constitutive route; remaining startup/store inconsistency belongs to the separate initialization contract TCD-014"
+    }
+  },
+  "state_trajectory_unchanged": false,
+  "accounting_only": false,
+  "acceptance_tolerance_candidate": false,
+  "qualified_reference_correction": false,
+  "production_migration_admitted": false,
+  "architectural_requirement": "constitutive storage updates inside conserved transport equations should use mass-consistent finite changes or equivalent conservative formulations; nonlinear solver tolerances must not substitute for ledger consistency"
+}
