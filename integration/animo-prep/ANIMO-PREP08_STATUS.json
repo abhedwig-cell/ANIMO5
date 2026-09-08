@@ -1,0 +1,84 @@
+{
+  "work_unit": "ANIMO-PREP08",
+  "title": "Transfer-Edge Diagnostic Probes and Causality Refinement",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep08-transfer-probes",
+  "date": "2026-09-08",
+  "starting_head": "c4fe28b7878f6e8155560754b87b7ae115dd6473",
+  "evaluated_evidence_head": "97c043f01962fb557e15355281709ee186b4f15e",
+  "decision": "QUALIFIED_DIAGNOSTIC_TRANSFER_CAUSALITY_TCD028_REFINED_TCD029_CONFIRMED_TCD030_SOURCE_BOUND_REFERENCE_ADMISSION_BLOCKED",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "diagnostic-only causal transfer probes plus source-bound element-fraction sequencing proof",
+  "blocked": true,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "legacy_source_modified": false,
+  "testbank_modified": false,
+  "reference_qualified": false,
+  "corrected_legacy_production_change": false,
+  "production_migration_admitted": false,
+  "verification": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "baseline_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "ncxfa1_control_plough_event_max_abs_delta_kg_ha_p": 4.1598668953923834e-11,
+    "ncxfa2_diagnostic_plough_event_min_delta_kg_ha_p": 723.4067497539831,
+    "ncxfa2_diagnostic_plough_event_max_delta_kg_ha_p": 886.8081521739235
+  },
+  "findings": [
+    {
+      "id": "TCD-028",
+      "classification": "CONFIRMED_LEGACY_EXUDATE_HUMUS_PLOUGHING_DOUBLE_COUNT_LEDGER_DEFECT",
+      "refinement": "duplicate generic amount is causally confirmed; explicit N/P consumer replacement is not independently causal in the PREP08 activation after duplicate removal",
+      "class_candidate": "A_ACCOUNTING_ONLY_PENDING_REFERENCE_EQUIVALENCE",
+      "production_correction_admitted": false
+    },
+    {
+      "id": "TCD-029",
+      "classification": "DIAGNOSTICALLY_CAUSAL_MULTISITE_FAST_SORPTION_MANAGEMENT_MASS_NONCONSERVATION",
+      "synthetic_activation": true,
+      "natural_testbank_coverage": false,
+      "production_correction_admitted": false
+    },
+    {
+      "id": "TCD-030",
+      "classification": "SOURCE_CONFIRMED_EXUDATE_HUMUS_ELEMENT_FRACTION_REDISPATCH_SEQUENCING_GAP_TESTBANK_UNEXERCISED",
+      "behavioural_magnitude_measured": false,
+      "production_correction_admitted": false
+    }
+  ],
+  "deliverables": {
+    "analysis": "docs/prep08/TRANSFER_EDGE_DIAGNOSTIC_PROBES.md",
+    "machine_evidence": "integration/animo-prep/PREP08_TRANSFER_EDGE_PROBES.json",
+    "canonical_discrepancy_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
+  },
+  "architectural_constraints": [
+    "management transfers must conserve explicit pre-state and post-state element amounts",
+    "generic carrier mass must not be combined with a fraction whose temporal side is ambiguous",
+    "multi-site constitutive identity must be preserved through additions and redistribution as well as transport",
+    "synthetic diagnostic magnitudes must never be reused as qualification tolerances",
+    "accounting-only corrections remain independently qualified from state-changing corrections"
+  ],
+  "remaining_blockers": [
+    "PREP02 historical or independently trusted reference remains unavailable",
+    "no supplied testcase exercises NCXFA greater than 1",
+    "TCD-030 requires a non-uniform pre-plough Nifrhu/Pofrhu activation to measure behavioural magnitude",
+    "revision-53 multi-site management theory/change provenance remains incomplete",
+    "controlled immutable B0 retention still needs formalization"
+  ],
+  "recommended_next": {
+    "parallel_now": [
+      "build a controlled TCD-030 non-uniform humus-fraction probe that measures exact pre/post Huex*N and Huex*P storage",
+      "audit slow-sorption Amcxsl management/ploughing semantics because the redistribution code is commented out",
+      "continue option-path isolation for parser-admitted features with no supplied activation"
+    ],
+    "serial_when_reference_available": [
+      "qualify TCD-028 duplicate removal as a standalone accounting correction",
+      "qualify multi-site fast-sorption management against a trusted 4.1.x reference",
+      "qualify exact exudate-humus element-transfer semantics before any TCD-030 correction"
+    ]
+  }
+}
