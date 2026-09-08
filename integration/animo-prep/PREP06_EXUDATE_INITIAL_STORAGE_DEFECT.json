@@ -1,0 +1,56 @@
+{
+  "work_unit": "ANIMO-PREP06",
+  "evidence_id": "ANIMO-PREP06-EXUDATE-INITIAL-STORAGE-LEDGER-DEFECT-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_CAUSAL_ACCOUNTING_DEFECT_NOT_REFERENCE_CORRECTION",
+  "classification": "CONFIRMED_LEGACY_INITIAL_STORAGE_LEDGER_OMISSION",
+  "corrected_legacy_class": "A_ACCOUNTING_ONLY_INITIAL_STORAGE_COVERAGE",
+  "state": {
+    "name": "exudate organic matter",
+    "begin_variable": "Ex(Ln)",
+    "end_variable": "Rsex(Ln)",
+    "persistent": true,
+    "restart_written": true
+  },
+  "source_asymmetry": {
+    "final_fresh_om_ledger_includes": "Rsex(Ln)*Z in Bfom(Finp_x,Ly)",
+    "initial_fresh_om_ledger_omits": "Ex(Ln)*P from Bfom(Inip_x,Ly)",
+    "initial_organic_n_includes": "Ex(Ln)*Nifrex*P",
+    "initial_organic_p_includes": "Ex(Ln)*Pofrex*P"
+  },
+  "supplied_testbank": {
+    "all_orgexu_initial_values_zero": true,
+    "natural_activation_present": false
+  },
+  "synthetic_probe": {
+    "base_case": "RuurloGrass",
+    "only_input_change": "Ex(1)=1.0e-3 kg/m2",
+    "introduced_initial_mass_kg_ha": 10.0,
+    "baseline_fresh_om_max_abs_period_residual_kg_ha": 10.0,
+    "baseline_fresh_om_max_abs_cumulative_residual_kg_ha": 10.0,
+    "first_record_residual_kg_ha": -10.0
+  },
+  "ledger_only_probe": {
+    "temporary_source_only": true,
+    "change": "add Ex(Ln)*P to Bfom(Inip_x,Ly)",
+    "fresh_om_max_abs_period_residual_kg_ha": 6.55e-11,
+    "fresh_om_max_abs_cumulative_residual_kg_ha": 9.09e-11,
+    "physics_changed": false,
+    "state_trajectory_changed": false
+  },
+  "non_interference": {
+    "generated_outputs_compared": 72,
+    "changed_outputs": 6,
+    "changed_files": [
+      "ani_omGP.Bal",
+      "ani_omRP.Bal",
+      "ani_omTP.Bal",
+      "baomGP.Out",
+      "baomRP.Out",
+      "baomTP.Out"
+    ],
+    "unintended_changed_outputs": 0
+  },
+  "qualified_reference_correction": false,
+  "production_migration_admitted": false,
+  "architectural_requirement": "all restartable conserved stores require symmetric beginning/end ledger coverage generated from explicit state ownership"
+}
