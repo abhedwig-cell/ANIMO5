@@ -39,6 +39,30 @@
     "normalization": "remove only volatile lines containing run start, run end, File created on, elapsed or CPU time",
     "decision": "AERATIONMODEL_2_BEHAVIOURALLY_ALIASES_0_IN_THIS_DIAGNOSTIC_CASE"
   },
+  "replication_and_sensitivity_control": {
+    "evidence": "docs/prep09/AERATION_OPTION2_LWKM_REPLICATION.md",
+    "case": "LWKM_gras_1040.2021.2045",
+    "diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "variants": [0, 1, 2],
+    "all_variants_successful_completion": true,
+    "option0_vs_option2": {
+      "common_generated_files": 55,
+      "normalized_different_files": 0,
+      "missing_or_extra_files": 0
+    },
+    "option0_vs_option1": {
+      "common_generated_files": 55,
+      "normalized_different_files": 47,
+      "missing_or_extra_files": 0
+    },
+    "option1_vs_option2": {
+      "common_generated_files": 55,
+      "normalized_different_files": 47,
+      "missing_or_extra_files": 0
+    },
+    "decision": "AERATIONMODEL_2_ALIAS_TO_0_REPLICATED_WITH_SAME_CASE_SENSITIVITY_CONTROL",
+    "new_discrepancy_created": false
+  },
   "finding": {
     "id": "TCD-030",
     "classification": "CONFIRMED_PARSER_AND_TESTCASE_ADVERTISED_AERATION_OPTION2_SEMANTIC_ALIAS_TO_OPTION0",
@@ -60,5 +84,5 @@
       "Optpr=1"
     ]
   },
-  "decision": "QUALIFIED_PREP09_TCD030_OPTION_ALIAS_CAUSALITY_REFERENCE_ADMISSION_BLOCKED"
+  "decision": "QUALIFIED_PREP09_TCD030_OPTION_ALIAS_CAUSALITY_REPLICATED_WITH_SENSITIVITY_CONTROL_REFERENCE_ADMISSION_BLOCKED"
 }
