@@ -1,0 +1,25 @@
+{
+  "work_unit": "ANIMO-PREP06",
+  "evidence_class": "SOURCE_BOUND_CONSERVED_STATE_BASELINE",
+  "branch": "work/animo-prep06-conserved-state-ledger",
+  "source_modified": false,
+  "testcase_modified": false,
+  "production_migration_admitted": false,
+  "state_families": {
+    "water": ["ponding", "snow", "soil_water", "interception_in_hydrology_not_standard_outbal"],
+    "organic_matter": ["fresh_organic_fractions", "humus_original", "humus_exudate", "exudate", "labile_DOM", "stable_DOM", "top_DOM"],
+    "nitrogen": ["aqueous_NH4", "sorbed_NH4", "aqueous_NO3", "labile_DON", "stable_DON", "top_DON", "solid_organic_N"],
+    "phosphorus": ["aqueous_PO4", "fast_sorbed_P", "slow_sorbed_P", "precipitated_P", "labile_DOP", "stable_DOP", "top_DOP", "solid_organic_P"]
+  },
+  "unqualified_candidate": {
+    "name": "fresh organic matter initial exudate storage omission",
+    "final_ledger_term": "Bfom(Finp_x) includes Rsex",
+    "initial_ledger_term": "Bfom(Inip_x) omits Ex",
+    "cross_family_evidence": ["Bano(Inip_x) includes Ex*Nifrex", "Bapo(Inip_x) includes Ex*Pofrex"],
+    "persistent_state_proven": true,
+    "supplied_testbank_activation": false,
+    "reason": "all supplied >orgexu initial states are zero",
+    "defect_confirmed": false
+  },
+  "next_gate": "nonzero initial exudate causal balance probe followed by one-term ledger-only control"
+}
