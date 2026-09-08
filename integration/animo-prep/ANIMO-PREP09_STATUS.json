@@ -1,0 +1,58 @@
+{
+  "work_unit": "ANIMO-PREP09",
+  "title": "Parser-Exposed Option Contract Audit",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep09-option-contract-audit",
+  "date": "2026-09-08",
+  "starting_head": "933795e2e9bf72a78b5fcf5412510f057d0ab869",
+  "decision": "QUALIFIED_SOURCE_AND_DIAGNOSTIC_OPTION_CONTRACT_AUDIT_TCD030_REFERENCE_ADMISSION_BLOCKED",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "hash-pinned parser/source/testbank option-contract audit plus GNU diagnostic option-0 versus option-2 behavioural probe",
+  "blocked": true,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "legacy_source_modified": false,
+  "reference_qualified": false,
+  "corrected_legacy_production_change": false,
+  "production_migration_admitted": false,
+  "finding": {
+    "id": "TCD-030",
+    "classification": "CONFIRMED_PARSER_AND_TESTCASE_ADVERTISED_AERATION_OPTION2_SEMANTIC_ALIAS_TO_OPTION0",
+    "animo41_parser_range": "0..2",
+    "source_distinct_aeration_routes": 2,
+    "option2_explicit_source_branches": 0,
+    "diagnostic_option0_vs_option2_normalized_output_differences": 0,
+    "diagnostic_output_files_compared": 77,
+    "production_option2_admitted": false
+  },
+  "deliverables": {
+    "analysis": "docs/prep09/PARSER_OPTION_CONTRACT_AUDIT.md",
+    "option_matrix": "docs/prep09/OPTION_CONTRACT_MATRIX.csv",
+    "audit_tool": "tools/audit_option_contracts.py",
+    "machine_evidence": "integration/animo-prep/PREP09_OPTION_CONTRACT_AUDIT.json",
+    "status": "integration/animo-prep/ANIMO-PREP09_STATUS.json"
+  },
+  "remaining_blockers": [
+    "PREP02 historical or independently trusted native reference remains unavailable",
+    "no supplied testcase activates AerationModel=2",
+    "revision-specific intended equations for the advertised option-2 denitrification adjustment are unavailable",
+    "GHG option-1 active testcase remains source-lineage incompatible with revision 53",
+    "several parser-visible source-distinct option values remain uncovered by the supplied testbank",
+    "controlled immutable B0 retention still needs formalization"
+  ],
+  "recommended_next": {
+    "parallel_now": [
+      "build a site-indexed chemical-state producer-consumer inventory across initialization management transport restart and output",
+      "prepare explicit fail-closed ANIMO5 feature-support states without changing production code",
+      "continue Class-A corrected-legacy qualification preparation for ledger-only TCDs while reference acquisition proceeds"
+    ],
+    "serial_when_reference_available": [
+      "recover historical intended AerationModel=2 semantics or prove that the delivered comment is stale",
+      "qualify any option-2 implementation independently before production support",
+      "run uncovered source-distinct option values against trusted reference cases before admission"
+    ]
+  }
+}
