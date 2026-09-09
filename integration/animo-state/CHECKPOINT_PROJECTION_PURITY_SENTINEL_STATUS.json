@@ -1,0 +1,27 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "artifact": "RC-R8/RC-R9 checkpoint projection purity sentinel",
+  "profile": "CORE_CNP_SUBSURFACE_ONLY",
+  "status": "PERSISTED_NOT_YET_EXECUTED",
+  "evidence_class": "SYNTHETIC_CHECKPOINT_PROJECTION_CONTRACT_NON_B2",
+  "production_code": false,
+  "physics_change": false,
+  "canonical_state_admission": "NOT_ADMITTED",
+  "harness_module": "tools/stateq01/checkpoint_projection_purity_harness.py",
+  "test_module": "tests/stateq01/test_checkpoint_projection_purity_harness.py",
+  "rc_r8_contract": {
+    "serializer_observational_only": true,
+    "final_result_generation_may_change_physical_payload": false,
+    "input_mutation": "FORBIDDEN",
+    "output_alias_to_accepted_state": "FORBIDDEN"
+  },
+  "rc_r9_contract": {
+    "report_accumulator_is_physical_owner": false,
+    "report_value_change_may_change_physical_checkpoint": false,
+    "report_accumulators_in_physical_checkpoint_payload": "FORBIDDEN"
+  },
+  "tested": false,
+  "qualified": false,
+  "qualification_boundary": "synthetic candidate projection only; no revision-53 behavioural split across final/report boundary",
+  "next": "execute persisted sentinel in GitHub Actions"
+}
