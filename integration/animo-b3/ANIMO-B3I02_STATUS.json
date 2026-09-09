@@ -4,6 +4,11 @@
   "status": "QUALIFIED_INCREMENTAL_CANONICAL_DISCREPANCY_INTAKE_NO_ADMISSIONS",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3i02-post-b3i01-incremental-intake",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "work_unit_complete": true,
   "base_authority": {
     "branch": "work/animo-b3i01-canonical-register-append",
     "head": "383c7a83e84a578969f92113280dc715b7bdddb4",
@@ -119,7 +124,13 @@
   "validation": {
     "validator": "tools/b3i02/validate_b3i02.py",
     "workflow": ".github/workflows/animo-b3i02-incremental-intake.yml",
-    "github_actions_conclusion": "PENDING"
+    "tested_head_before_status_closeout": "4e356da94476d0b70e7ded70dfb7ee7c5ee04018",
+    "github_actions_run_id": 34348398698,
+    "github_actions_head": "4e356da94476d0b70e7ded70dfb7ee7c5ee04018",
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS",
+    "scope_guard": "PASS_GOVERNANCE_ONLY_NO_PRODUCTION_REFERENCE_OR_CANONICAL_REGISTER_CHANGE",
+    "changed_file_count": 6
   },
   "deliverables": [
     "docs/b3/POST_B3I01_INCREMENTAL_INTAKE.md",
