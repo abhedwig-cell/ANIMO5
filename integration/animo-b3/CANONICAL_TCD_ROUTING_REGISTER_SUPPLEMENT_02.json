@@ -1,0 +1,67 @@
+{
+  "record_type": "POST_G5_CANONICAL_ROUTING_SUPPLEMENT_NO_ADMISSION",
+  "work_unit": "ANIMO-B3I01",
+  "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_02",
+  "repository": "abhedwig-cell/ANIMO5",
+  "base_routing_register": "integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER.json",
+  "prior_supplement": "integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER_SUPPLEMENT_01.json",
+  "reservation_artifact": "integration/animo-b3/POST_G5_TCD_RESERVATIONS_SUPPLEMENT_02.json",
+  "authority_head": {
+    "STATEQ01": "5a5e0785b6f4a9cb4f67d1fa10d79b184d7d41e9"
+  },
+  "canonical_routing_additions": [
+    {
+      "canonical_key": "TCD-040",
+      "canonical_id_state": "RESERVED_BY_B3I01_SUPPLEMENT_02_NOT_YET_REGISTER_ROW",
+      "phenomenon": "layer0 aqueous restart initialization erases explicitly represented accepted state before first timestep",
+      "affected_coordinates": ["Conh(0)", "Coni(0)", "Codiorma(0)", "Codiorni(0)", "Codiorpo(0)"],
+      "excluded_coordinate": "Copo(0)",
+      "b3_class": "B",
+      "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+      "source_key": "RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING",
+      "qualification_owner": "PROPOSED_ANIMO-STATEQ02",
+      "atomicity": "ONE_CAUSAL_INITIALIZATION_TRANSACTION_MULTI_COORDINATE_SCOPE",
+      "dependencies": [
+        "accepted layer0 aqueous reader-to-owner restore identity",
+        "per-coordinate activation and natural or synthetic nonzero reachability",
+        "unrounded state and downstream flux expected-difference envelope",
+        "continuous-versus-split restart equivalence",
+        "independent B3 review"
+      ],
+      "admitted": false
+    }
+  ],
+  "existing_tcd_boundaries": [
+    {
+      "tcd": "TCD-016",
+      "relation": "DISTINCT",
+      "reason": "TCD-016 concerns runtime wet-to-low-storage NH4 continuation and missing non-aqueous state ownership; TCD-040 concerns initialization erasure of already represented aqueous restart coordinates"
+    },
+    {
+      "tcd": "TCD-014",
+      "relation": "DISTINCT",
+      "reason": "TCD-014 concerns coupled PO4 initial-state consistency and accounting; Copo(0) is not zeroed by the cited TCD-040 block and is explicitly excluded"
+    },
+    {
+      "tcd": "TCD-038",
+      "relation": "DISTINCT",
+      "reason": "crop actual uptake restart direction uses a different state family and causal assignment"
+    },
+    {
+      "tcd": "TCD-039",
+      "relation": "DISTINCT",
+      "reason": "crop potential uptake continuation is missing from the restart representation, whereas TCD-040 coordinates are represented but erased"
+    }
+  ],
+  "atomicity_decision": {
+    "top_level_ids_allocated": 1,
+    "species_split": false,
+    "reason": "NH4, NO3, labile DOM, DON and DOP are affected by the same unconditional Inicalc initialization transaction and the same represented-layer0 restore contract. Qualification must remain coordinate-specific, but separate top-level IDs would duplicate the causal phenomenon unless later evidence proves species-specific intended zeroing or a separate trigger."
+  },
+  "admission_state": {
+    "new_corrections_admitted": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "evidence_strength_increased_by_routing": false
+  }
+}
