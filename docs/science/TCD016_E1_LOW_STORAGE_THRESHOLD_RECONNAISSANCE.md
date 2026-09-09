@@ -4,13 +4,13 @@ Work unit: `ANIMO-SQ01`
 
 Child qualification record: `TCD-016-E1`
 
-Status: `SOURCE_BOUND_NUMERICAL_POLICY_RECONNAISSANCE_COMPLETE_ADMISSION_BLOCKED_BY_C1`
+Status: `SOURCE_BOUND_NUMERICAL_AND_SHARED_REPRESENTATION_POLICY_RECONNAISSANCE_COMPLETE_ADMISSION_BLOCKED_BY_C1`
 
 Production migration: `NOT_ADMITTED`
 
 ## 1. Scope
 
-This note isolates the numerical and representation policy in revision-53 `Transsub.for` that surrounds the historical semi-analytical solute-transport equation.
+This note isolates the numerical and representation policy in revision-53 `Transsub.for` around the historical semi-analytical solute-transport equation and reconciles it with the surface-water activation logic in the hydrological preprocessing.
 
 It does not propose a replacement threshold and does not admit a numerical correction.
 
@@ -26,9 +26,7 @@ SHA-256:
 
 `183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566`
 
-Read-only archive scan shows the TCD-016 low-storage threshold expressions occur in `Transsub.for`.
-
-Relevant source history:
+Relevant `Transsub.for` source history:
 
 - `$Id: Transsub.for 34 2013-03-11 10:17:47Z renau001 $`
 - `$HeadURL: .../tags/animo4.1.4/Transsub.for $`
@@ -48,9 +46,9 @@ dc(t)/dt
 
 The historical ANIMO 3.5 Report 144 numerical theory describes the same family of semi-analytical concentration equations and coefficient functions. Revision-53 `Detcoef` uses corresponding power, logarithmic and exponential forms.
 
-The low-storage handling is separate source logic executed before the ordinary coefficient solution is completed.
+The low-storage handling is additional source logic around that mathematical formulation.
 
-This distinction supports classification of the threshold issue as numerical/representation policy rather than phase theory.
+A new source reconciliation shows that one part of this handling, the effective layer-0 `0.1 mm` storage threshold, is aligned with the hydrological ponding-activation boundary. It should therefore not be described as merely a local `Transsub` numerical cutoff.
 
 ## 4. Threshold family
 
@@ -68,7 +66,7 @@ Vvsmall = 1e-20
 
 These constants are plainly part of numerical branch selection.
 
-### 4.2 Water-storage transition threshold
+### 4.2 Water-storage transition threshold in Transsub
 
 The wet-to-low-storage branch is triggered by:
 
@@ -92,11 +90,21 @@ Therefore the effective thresholds are:
 - ordinary layers: `1e-6 m water = 0.001 mm water`;
 - layer 0: `1e-4 m water = 0.1 mm water`.
 
-The factor of 100 is therefore not dimensionless in effect: it deliberately makes the surface-compartment representation switch at a water storage 100 times larger than the soil-layer threshold.
+### 4.3 Shared hydrological surface-activation threshold
 
-No recovered theory source in SQ01 derives `0.1 mm` as a physical surface-water phase boundary.
+`Hydro_detailed.for` sets `Flpn=1` when either old or new ponding plus snow storage exceeds `1.0d-4 m`; otherwise `Flpn=0`.
 
-### 4.3 Tiny-outflow threshold
+`Hydro_aggregated.for` uses the same `1.0d-4 m` threshold for old or new ponding.
+
+Thus the effective layer-0 threshold in `Transsub` is aligned with the hydrological surface-water activation boundary:
+
+`1.0d-4 m = 0.1 mm`.
+
+The exact expression `1e-6*Factor` occurs in `Transsub`, but the effective `0.1 mm` boundary is a shared hydrology/transport representation convention in the supplied source.
+
+No recovered ANIMO theory in SQ01 derives `0.1 mm` as a physical chemical phase boundary.
+
+### 4.4 Tiny-outflow threshold
 
 Inside the layer-0 wet-to-low-storage branch, residual mass is routed to the average outflow concentration only when:
 
@@ -108,9 +116,9 @@ This equals:
 
 `0.001 mm d-1`.
 
-No recovered ANIMO process theory in SQ01 defines this value as a physical solute-export threshold.
+A read-only archive scan found this TCD-016 `Fu` condition only in `Transsub.for`. No recovered ANIMO process theory in SQ01 defines it as a physical solute-export threshold.
 
-## 5. Captured TCD-016 event relative to the thresholds
+## 5. Captured TCD-016 event relative to the shared activation boundary
 
 For `Puitmijn_Cranendonck_60`, `TITO=1490`, layer 0:
 
@@ -128,7 +136,7 @@ Mto*Ld = 1.087117e-4 m = 0.1087117 mm
 Mt*Ld  = 3.256434e-6 m = 0.003256434 mm
 ```
 
-The layer-0 threshold is:
+The shared surface activation boundary is:
 
 ```text
 1e-4 m = 0.1 mm
@@ -136,7 +144,7 @@ The layer-0 threshold is:
 
 So the event moves from only about `1.0871` times the threshold to about `0.03256` times the threshold within one timestep.
 
-This confirms that the branch is triggered by a representational cutoff around a small but nonzero ponding storage, not by exact disappearance of water.
+This is not merely a solver approaching exact zero water. It is a transition across the source-defined surface-state activation boundary.
 
 The observed leaving water flux is:
 
@@ -147,21 +155,45 @@ Fu = 4.11844e-10 m d-1
 
 The export threshold `1e-6 m d-1` is about `2428` times larger than the observed `Fu`.
 
-Therefore the source selects the branch that sets `Rsc=0` and, for the observed `Iflsol=2`, `Avc=0`, while a finite residual NH4 mass still exists.
+Therefore the source deactivates the layer-0 aqueous representation at the same scale used by hydrology while the transport-specific export guard refuses to assign the residual mass to the tiny leaving-water flux. `Rsc` becomes zero and, for the observed `Iflsol=2`, `Avc` also becomes zero.
 
-## 6. Threshold occurrence audit
+## 6. Ancillary 1 mm dry-deposition routing threshold
 
-A read-only scan of the frozen archive found:
+`UBoundconc.for` contains a separate routing boundary:
 
-- `Factor = 1e2` for layer 0 only in `Transsub.for`;
-- `Fu > 1e-6` only in `Transsub.for`;
-- `1e-6*Factor` low-storage tests only in `Transsub.for`.
+```text
+Flpn = 0 OR (Pn+Snla) < 1e-3 m
+```
 
-This establishes that the TCD-016 cutoff is a local transport-solver policy surface in the supplied archive.
+routes dry NH4/NO3 deposition to the first soil compartment, whereas:
 
-It does not establish when or why the constants were introduced historically.
+```text
+Flpn = 1 AND (Pn+Snla) >= 1e-3 m
+```
 
-## 7. Why E1 cannot be solved by deleting the thresholds
+routes dry deposition to layer 0.
+
+This equals `1 mm`, ten times the `Flpn` activation threshold.
+
+The supplied ANIMO 4.0 technical description independently states that `UBOUNDCONC` chooses the upper-boundary concentration for layer 0 or layer 1 depending on ponding and that dry deposition is added to layer 1 in the no-ponding case.
+
+For the canonical TCD-016 event the start surface storage is about `0.109 mm`, so it lies above the shared `0.1 mm` activation boundary but below the `1 mm` dry-deposition routing boundary.
+
+This is an additional surface-routing semantic seam. SQ01 does not claim it caused the observed TCD-016 mass loss, and no new TCD is opened from this fact alone.
+
+## 7. Corrected policy interpretation
+
+The threshold family must now be separated into three roles:
+
+1. **Analytical small-value constants** such as `Small=1e-8`: local numerical branch selection.
+2. **Shared `0.1 mm` surface activation boundary**: hydrology/transport representation policy controlling whether the ponding compartment is active/representable.
+3. **`Fu > 0.001 mm d-1` export threshold**: `Transsub`-local policy deciding whether residual mass can be forced through the leaving-water concentration in the low-storage branch.
+
+The shared `0.1 mm` boundary is source-defined behaviour and must be preserved as historical evidence. Its physical derivation is not established.
+
+The `Fu` threshold remains a local numerical/export policy with no recovered physical derivation.
+
+## 8. Why E1 cannot be solved by deleting either threshold
 
 Simply lowering or removing the water-storage threshold is not sufficient.
 
@@ -171,15 +203,17 @@ Likewise, applying the existing outflow formula for every positive `Fu` closes m
 
 Therefore E1 is subordinate to C1:
 
-- C1 decides where mass physically resides when aqueous representation is unavailable;
-- E1 decides how and when the numerical representation transitions between admitted states without introducing discontinuous mass loss or pathological conditioning.
+- C1 decides what owns conserved mass when the source deactivates the aqueous surface representation;
+- E1 decides how the numerical transport representation behaves approaching, crossing and leaving that admitted state boundary.
 
-## 8. Required E1 qualification envelope after C1
+The existence of a shared legacy activation boundary strengthens C1 rather than removing it.
+
+## 9. Required E1 qualification envelope after C1
 
 Once C1 semantics are fixed, E1 should test at minimum a two-dimensional envelope around:
 
-- surface water storage approaching zero from above;
-- leaving water flux approaching zero from above and below any candidate numerical switch.
+- surface water storage below, at and above the shared `0.1 mm` legacy activation boundary;
+- leaving water flux below, at and above any candidate export/conditioning switch, including the legacy `0.001 mm d-1` value as historical evidence rather than an acceptance target.
 
 Required observations per case:
 
@@ -188,22 +222,27 @@ Required observations per case:
 - continuation-phase mass;
 - aqueous concentration;
 - boundary export mass;
+- surface activation state;
 - transition count and direction;
 - timestep sensitivity;
 - floating-point precision sensitivity;
 - restart equivalence on either side of the switch.
 
-The acceptance criteria must be derived from the admitted state equations and conservation identity, not from the current `0.1 mm` or `0.001 mm d-1` values.
+The acceptance criteria must be derived from the admitted state equations and conservation identity, not from defective historical residuals.
 
-## 9. Current E1 disposition
+## 10. Current E1 disposition
 
-Source reconnaissance supports:
+Source reconnaissance now supports:
 
-`LOW_STORAGE_THRESHOLDS_ARE_LOCAL_REPRESENTATION_OR_NUMERICAL_POLICY_SURFACES`
+`0_1MM_LOW_STORAGE_BOUNDARY_IS_SHARED_SURFACE_REPRESENTATION_ACTIVATION_POLICY`
+
+and:
+
+`FU_EXPORT_THRESHOLD_REMAINS_TRANSSUB_LOCAL_NUMERICAL_OR_EXPORT_POLICY`.
 
 It does not support:
 
-`LEGACY_THRESHOLD_VALUES_ARE_PHYSICAL_CONSTANTS`.
+`LEGACY_THRESHOLD_VALUES_ARE_PHYSICAL_CHEMICAL_CONSTANTS`.
 
 No replacement values are proposed.
 
