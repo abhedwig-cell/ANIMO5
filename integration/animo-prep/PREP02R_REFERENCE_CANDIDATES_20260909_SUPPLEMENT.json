@@ -1,0 +1,65 @@
+{
+  "work_unit": "ANIMO-PREP02R",
+  "record_type": "REFERENCE_CANDIDATE_REGISTRY_INCREMENT",
+  "registry_date": "2026-09-09",
+  "supersedes_existing_candidate_entries": false,
+  "reference_admission_rule": "independence_plus_provenance_required",
+  "candidates": [
+    {
+      "id": "PREP02R-C10",
+      "artifact_identity": "user-supplied animo41.exe received 2026-09-09",
+      "artifact_type": "native_executable_candidate",
+      "version": "4.1.5_by_embedded_tag_family",
+      "revision": "53_by_embedded_Version_inc_family",
+      "date": "PE_timestamp_2026-05-27T13:41:28Z",
+      "toolchain": "modern Intel-family x64 Debug build; exact compiler executable version not independently proven",
+      "sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+      "bytes_available": true,
+      "provenance_strength": "strong_received_byte_identity_and_intrinsic_build_path_evidence_but_no_upstream_chain_of_custody",
+      "relation_to_revision_53": "same_tag_family_and_58_unit_selection_but_exact_B0_source_byte_identity_unproven",
+      "trust_classification": "MODERN_NATIVE_REBUILD_NOT_HISTORICAL_REFERENCE",
+      "reference_admitted": false,
+      "native_execution_completed": false,
+      "evidence": [
+        "PE32+ x86-64",
+        "PDB path D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\x64\\Debug\\animo41.pdb",
+        "source root D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\src_develop_for_20260519\\",
+        "embedded tag file:///V:/svn_Animo/tags/animo4.1.5",
+        "58 embedded Fortran source names match supplied vfproj selection",
+        "PE timestamp 2026-05-27 and Intel RTL catalog dated 2019 preclude treating it as a 2011-era historical release executable"
+      ]
+    },
+    {
+      "id": "PREP02R-C11",
+      "artifact_identity": "user-supplied animo41.sln + animo41.vfproj received 2026-09-09",
+      "artifact_type": "project_build_metadata",
+      "version": "Visual Studio 2010 / Intel Fortran project version 11.0",
+      "revision": null,
+      "date": null,
+      "toolchain": "Intel Fortran project, Console Application - Converted from CVF",
+      "sha256": null,
+      "content_set_sha256": "3dc760141d9047d86e07f9490c5e591ac1d6298b3c47882177d8ed9dec53e2b6",
+      "bytes_available": true,
+      "provenance_strength": "strong_intrinsic_build_contract_evidence_without_independently_verified_historical_chain_of_custody",
+      "relation_to_revision_53": "selects exactly 58 B0 Fortran units and excludes input1_1.for and Outselorg.for; strongly corroborates PREP01 selected-unit contract",
+      "trust_classification": "STRONG_BUILD_CONTRACT_EVIDENCE_NOT_HISTORICAL_BEHAVIOURAL_REFERENCE",
+      "reference_admitted": false,
+      "build_contract_findings": {
+        "RealKIND": "realKIND8",
+        "LocalVariableStorage": "localStorageSave",
+        "FPS4IOFormat": true,
+        "FPS4LDIOSpacing": true,
+        "FPS4General": true,
+        "FloatingPointExceptionHandling": "fpe0",
+        "FloatingPointModel": "source",
+        "CallingConvention": "callConventionCVF",
+        "BoundsCheck": true,
+        "Debug_x64_LocalSavedScalarsZero": true
+      }
+    }
+  ],
+  "qualifying_historical_reference_artifact_obtained": false,
+  "project_build_contract_materially_strengthened": true,
+  "native_reference_run_completed": false,
+  "global_tolerance_defined": false
+}
