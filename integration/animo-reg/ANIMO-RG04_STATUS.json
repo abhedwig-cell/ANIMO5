@@ -4,13 +4,13 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-rg04-state-mass-b2-reconciliation",
   "starting_parent": "820ba9a9bbc90aceb892ac9ac36ecf7fb782b136",
-  "state": "QUALIFIED_LATE_WAVE_STATE_MASS_B2_RECONCILIATION_NO_ADMISSIONS",
-  "decision": "QUALIFIED_LATE_WAVE_STATE_MASS_B2_RECONCILIATION_NO_ADMISSIONS",
+  "state": "IN_PROGRESS_POST_CLOSEOUT_AUTHORITY_REFRESH",
+  "decision": "PENDING_REFRESH_VALIDATION",
   "implemented": true,
   "persisted": true,
-  "tested": true,
-  "qualified": true,
-  "work_unit_complete": true,
+  "tested": false,
+  "qualified": false,
+  "work_unit_complete": false,
   "scientific_admission_performed": false,
   "b3_baseline_established": false,
   "b4_baseline_admitted": false,
@@ -36,7 +36,7 @@
     "B3A03": "8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
     "B3A03R": "0876e6e1b6ce33ee5e7b812ab4107f54760d6b27",
     "B3A01": "b2bac82512fef0fa232e759f0c68b472567c11d5",
-    "UBQ01": "f3500990e7eaa1f5c02c6093186eb1ac369c5a42",
+    "UBQ01": "18ff8802dbef8e797f1e9b1d52ca81aa4f25c3a9",
     "canonical_tcd_register_tail": "TCD-042"
   },
   "frozen_identity": {
@@ -61,6 +61,16 @@
     "historical_reference_artifact_obtained": false,
     "reference_qualified": false,
     "modern_native_rebuild_is_historical_B2": false
+  },
+  "ubq01": {
+    "state": "IN_PROGRESS_SCIENTIFIC_ATOMIZATION",
+    "current_head": "18ff8802dbef8e797f1e9b1d52ca81aa4f25c3a9",
+    "supplied_native_build_contract_evidence_persisted": true,
+    "historical_reference_execution_established": false,
+    "corrected_semantics_selected": false,
+    "tcd042_atomized": false,
+    "qualified": false,
+    "admitted": false
   },
   "gate_reconciliation": {
     "G6H": "PARTIAL_RECOVERY_HISTORICAL_B2_NOT_PASSED",
@@ -109,15 +119,19 @@
     "NOT_READY": 0,
     "scientific_admissions": 0
   },
+  "prior_closeout_validation": {
+    "head": "8ac9063c98265bf9ad788700f3494fb4f937258a",
+    "github_actions_run_id": 34361370257,
+    "conclusion": "success"
+  },
   "validation": {
     "validator": "tools/validate_rg04_governance.py",
     "workflow": ".github/workflows/animo-rg04-governance.yml",
-    "tested_head_before_status_closeout": "10700a80a98a117645a5cc780705f72197c02581",
-    "github_actions_run_id": 34361238868,
-    "github_actions_head": "10700a80a98a117645a5cc780705f72197c02581",
-    "github_actions_conclusion": "success",
-    "validator_result": "PASS",
-    "scope_guard": "PASS_RG04_GOVERNANCE_ONLY_NO_SOURCE_OR_FROZEN_PATHS_CHANGED"
+    "github_actions_run_id": null,
+    "github_actions_head": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
   },
   "deliverables": [
     "docs/governance/ANIMO_RG04_PROJECT_REGIE.md",
