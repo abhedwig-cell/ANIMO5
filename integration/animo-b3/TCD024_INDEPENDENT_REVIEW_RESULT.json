@@ -3,6 +3,7 @@
   "target_tcd": "TCD-024",
   "class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
   "review_branch": "review/animo-b3b03r-tcd024-independent-second-line",
+  "review_start_head": "07e440bb42d58facad6b4e5408dd57a0d8f82daf",
   "candidate_branch": "work/animo-b3b03-tcd024-slow-langmuir-index-readiness",
   "candidate_head": "446f57f3aeff6e7db56ce473f0724bdb58cad94f",
   "technical_review_branch": "work/animo-b3b03r-tcd024-second-line-review",
@@ -13,31 +14,97 @@
   "handoff_contract_head": "1d0aeae8c9f40547f8ac9273fc4c9655593bdecd",
   "handoff_contract_validation_run": 34385420335,
   "handoff_contract_validation_conclusion": "success",
-  "review_status": "PENDING_INDEPENDENT_REVIEW",
-  "reviewer_independent_from_B3B03_authoring": null,
-  "reviewer_identity_or_workunit": null,
-  "reviewed_candidate_head": null,
-  "gates": {
-    "frozen_canonical_identity": "PENDING",
-    "exact_source_seam": "PENDING",
-    "class_B_atomicity": "PENDING",
-    "unequal_site_discriminator": "PENDING",
-    "unrounded_state_transfer_evidence": "PENDING",
-    "multi_site_conservation_identity": "PENDING",
-    "active_inactive_controls": "PENDING",
-    "TCD019_separation": "PENDING",
-    "expected_difference_non_interference": "PENDING",
-    "natural_activation_limitation_retained": "PENDING",
-    "historical_prevalence_UNKNOWN_retained": "PENDING",
-    "live_admission_route_rechecked": "PENDING"
+  "review_status": "COMPLETED_PASS",
+  "reviewer_independent_from_B3B03_authoring": true,
+  "reviewer_identity_or_workunit": "ANIMO-B3B03R separate ChatGPT review context",
+  "independence_scope": "SEPARATE_CHATGPT_CONTEXT_ONLY_NO_ORGANIZATIONAL_OR_HUMAN_INDEPENDENCE_CLAIM",
+  "reviewed_candidate_head": "446f57f3aeff6e7db56ce473f0724bdb58cad94f",
+  "atomic_claim": {
+    "legacy": "Yy = One + Parcxsl(3,I) * Avc",
+    "candidate": "Yy = One + Parcxsl(3,J) * Avc",
+    "reviewed_meaning": "slow-Langmuir site-specific affinity belongs to slow-site index J, not nonlinear trial counter I"
   },
-  "overall_technical_second_line_result": "PENDING",
-  "route_state_at_review": "PENDING_LIVE_RECHECK",
+  "frozen_identity": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "source_member": "ANIMO_4.1.5.53/Transorp.for",
+    "source_member_sha256": "65ab0f70ed7cc4f1c0012ca95bcdddeb5c26dd21b09df0ec61b7b269e51cd0ad",
+    "canonical_TCD_register_blob": "224acc350fde69d3c4aebed8628c0f945e0b3367"
+  },
+  "live_pins": {
+    "B3Q01_head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "NQ02_head": "40a41089020f78ee1d5181b8afc7bdb511af3193",
+    "SYNQ01_commit_head": "842f72300fd03ede0b9024537a7ee6126722a121",
+    "SYNQ01_tree_sha": "124364c008cdca511f024b3b7d7677572c6ac0c7",
+    "SYNQ01_oracle_register_blob": "4c215d19844614de8868380fb03f93268ea4c5d8",
+    "GOV03_head": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "GOV03_closeout_workflow_run": 34391300744,
+    "GOV03_closeout_workflow_conclusion": "success",
+    "B3D03_head": "a3e194573b3a7ce95d5ef15fc179ddb3a613d8a6",
+    "B3D03_closeout_workflow_run": 34395336504,
+    "B3D03_closeout_workflow_conclusion": "success"
+  },
+  "evidence_pins": {
+    "TCD024_readiness_fixture_blob": "ce22505f06f16dd027a36a5b0c19b00a23998492",
+    "TCD024_expected_difference_blob": "31218abe2567c1695f45508e7c49d511d6dbcb75",
+    "PREP05_slow_langmuir_source_bound_doc_blob": "246e6373c2c12985ddc2f9c0dd2455eebfc4db67",
+    "PREP05_slow_langmuir_machine_evidence_blob": "c6f941e2c44e3931664b28e5ea6f9182d361a1d2",
+    "SYNQ01_oracle_register_blob": "4c215d19844614de8868380fb03f93268ea4c5d8",
+    "NQ02_interaction_blob": "9ca37e90115faab9604a3f3051a8246b5e3a0813"
+  },
+  "source_review_boundary": "Frozen raw Transorp.for bytes are not republished in GitHub. The exact seam was reverified against the frozen member hash, source manifest, source-bound PREP05 evidence, canonical TCD identity, and independent index-domain/equation checks. No claim of a fresh byte-for-byte raw-member reread is made.",
+  "independent_numeric_recheck": {
+    "precision": "80-decimal arithmetic",
+    "qnew_site_J": [
+      "0.013382497037579703764323601003327353135602564031862008456803506888922032817413340",
+      "0.14753969645039970073105831290404905178546400628007091356315257450780555441805199",
+      "0.052409932714652284323717408180830665689512840129054843302530861570332277037363397"
+    ],
+    "qnew_wrong_K1_selector": [
+      "0.013382497037579703764323601003327353135602564031862008456803506888922032817413340",
+      "0.077231793016630632245642328684096944742583375424392326084530401228142520492628225",
+      "0.0076455859493262592189248710070344630901401232826660990593613765090187853437838248"
+    ],
+    "transfer_rate_site_J": [
+      "0.0022549980250531358428824006688849020904017093545746723045356712592813552116088933",
+      "0.085026464300266467154038875269366034523642670853380609042101716338537036278701327",
+      "0.031606621809768189549144938787220443793008560086036562201687241046888184691575598"
+    ],
+    "sum_slow_site_storage_gain": "0.17833212620263168881909932208820707061057941044098776532248694296705986427282873",
+    "isolated_solution_counter_transfer": "-0.17833212620263168881909932208820707061057941044098776532248694296705986427282873",
+    "isolated_conservation_residual": "0 exactly",
+    "selector_discriminator": [false, true, true]
+  },
+  "gates": {
+    "frozen_canonical_identity": "PASS",
+    "exact_source_seam": "PASS",
+    "class_B_atomicity": "PASS",
+    "unequal_site_discriminator": "PASS",
+    "unrounded_state_transfer_evidence": "PASS",
+    "multi_site_conservation_identity": "PASS",
+    "active_inactive_controls": "PASS",
+    "TCD019_separation": "PASS",
+    "expected_difference_non_interference": "PASS",
+    "natural_activation_limitation_retained": "PASS",
+    "historical_prevalence_UNKNOWN_retained": "PASS",
+    "live_admission_route_rechecked": "PASS"
+  },
+  "overall_technical_second_line_result": "PASS",
+  "route_state_at_review": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "B2_qualified_for_target_path": false,
   "historical_prevalence": "UNKNOWN",
+  "historical_fidelity_claimed": false,
+  "natural_positive_Optcxsl2_activation_in_frozen_testbank": false,
   "B3_admitted": false,
   "production_patch": false,
   "production_migration_admitted": false,
+  "report": "docs/b3/TCD024_INDEPENDENT_SECOND_LINE_REVIEW.md",
   "review_notes": [
-    "Handoff execution contract validated in run 34385420335. This does not satisfy reviewer independence and must not be treated as a completed second-line review."
+    "The earlier B3B03, technical-review and B3D03 conclusions were not accepted as self-authenticating evidence; their underlying pins and route state were rechecked.",
+    "SYNQ01 live commit head is 842f72300fd03ede0b9024537a7ee6126722a121; 124364c008cdca511f024b3b7d7677572c6ac0c7 is its tree SHA. The oracle-register blob remains 4c215d19844614de8868380fb03f93268ea4c5d8.",
+    "The B3B03 candidate status contains a stale pre-GOV03 route snapshot. Live GOV03 and B3D03 establish route eligibility but do not perform admission.",
+    "No natural positive Optcxsl=2 activation exists in the supplied frozen testbank. Synthetic evidence establishes causality/coverage, not historical prevalence.",
+    "Historical prevalence remains UNKNOWN and no historical-fidelity claim is made.",
+    "A separate B3 admission-closeout step is required after this review if admission is to be considered."
   ]
 }
