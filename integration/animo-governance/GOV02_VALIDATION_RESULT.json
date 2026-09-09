@@ -40,6 +40,7 @@
       "expected": "REJECT",
       "observed": "REJECT",
       "reasons": [
+        "historical-uncertainty route lacks two independently classed scientific-oracle forms",
         "Class C missing-state claim requires independent state-model/theory authority"
       ]
     },
@@ -51,6 +52,7 @@
         "historical-uncertainty route missing independent_cross_check",
         "historical-uncertainty route missing independent_second_line_review",
         "historical-uncertainty route lacks an accepted scientific-oracle class",
+        "historical-uncertainty route lacks two independently classed scientific-oracle forms",
         "smaller residual is not a numerical-policy correctness oracle",
         "Class E numerical policy missing numerical_formulation_authority",
         "Class E numerical policy missing convergence_study",
@@ -69,7 +71,8 @@
         "historical-uncertainty route missing non_interference",
         "historical-uncertainty route missing path_coverage",
         "historical-uncertainty route missing independent_cross_check",
-        "historical-uncertainty route missing independent_second_line_review"
+        "historical-uncertainty route missing independent_second_line_review",
+        "historical-uncertainty route lacks two independently classed scientific-oracle forms"
       ]
     }
   ],
