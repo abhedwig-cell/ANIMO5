@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Fail-closed structural validator for ANIMO-RG05.
 
-RG05 is governance-only. This validator deliberately checks non-admission,
-authority identity, gate consistency, queue arithmetic and parallel-routing
-invariants. It does not infer scientific truth from integration.
+RG05 is governance-only. This validator checks non-admission, authority identity,
+gate consistency, queue arithmetic and parallel-routing invariants. It does not
+infer scientific truth from integration.
 """
 from __future__ import annotations
 
@@ -27,6 +27,8 @@ DOC_HASH = "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
 RG04_HEAD = "cf9975ded20fa64bb8125b3241f2609cbb5b51b3"
 REGISTER_HEAD = "814ea660d367494432beb63ea78298d1f6cd73d7"
 B3I05_HEAD = "7fa0162415e02a6f0167e71b48ae38177a9e06e0"
+NQ03_HEAD = "8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6"
+B3B03_HEAD = "446f57f3aeff6e7db56ce473f0724bdb58cad94f"
 
 
 def load_json(path: Path):
@@ -54,7 +56,6 @@ def main() -> None:
     parallel_rows = load_csv(PAR_PATH)
     doc = DOC_PATH.read_text(encoding="utf-8")
 
-    # Workunit identity and frozen baseline.
     assert status["work_unit"] == "ANIMO-RG05"
     assert status["branch"] == "work/animo-rg05-late-wave-authority-refresh"
     assert status["starting_parent"] == RG04_HEAD
@@ -66,14 +67,12 @@ def main() -> None:
         "documentation_sha256": DOC_HASH,
     }
 
-    # Integration may observe evidence but may never promote or admit it.
     adm = status["admission_state"]
     assert all(value is False for value in adm.values())
     assert status["gate_snapshot"]["B4"] == "NOT_ADMITTED"
     assert status["gate_snapshot"]["PRODUCTION"] == "NOT_ADMITTED"
     assert status["gate_snapshot"]["G7"] == "NO_ATOMIC_SCIENTIFIC_ADMISSIONS"
 
-    # Historical route must remain fail closed after the internal-recovery stop.
     hist = status["historical_route"]
     assert hist["internal_recovery_decision"] == "STOP_FURTHER_INTERNAL_REFERENCE_RECOVERY_AND_PROCEED_WITH_AVAILABLE_EVIDENCE_WITHIN_EXISTING_GOV02_SCOPE"
     assert hist["historical_reference_artifact_obtained"] is False
@@ -84,11 +83,12 @@ def main() -> None:
     assert "does **not** mean historical reference acquisition has been exhausted" in doc
     assert "NOT_ELIGIBLE_ACQUISITION_NOT_EXHAUSTED_EXTERNAL_ACTION_UNSENT" in doc
 
-    # Canonical discrepancy identity is append-only through TCD-042.
     snap = status["authority_snapshot_pre_validation"]
     assert snap["RG04"] == RG04_HEAD
     assert snap["B3I03_REGISTER"] == REGISTER_HEAD
     assert snap["B3I05"] == B3I05_HEAD
+    assert snap["NQ03"] == NQ03_HEAD
+    assert snap["B3B03"] == B3B03_HEAD
     assert snap["canonical_tcd_register_tail"] == "TCD-042"
     t42 = status["tcd042"]
     assert t42["canonical_top_level_parent"] == "TCD-042"
@@ -96,9 +96,8 @@ def main() -> None:
     assert t42["tcd_043_reserved"] is False
     assert set(t42["children"]) == {"TCD-042-B1", "TCD-042-E1"}
     assert "QUALIFIED_ATOMIC_CLASS_B_READINESS" in t42["children"]["TCD-042-B1"]
-    assert "POLICY_WORK_IN_PROGRESS" in t42["children"]["TCD-042-E1"]
+    assert "QUALIFIED_RESTRICTED_NATURAL_ENVELOPE_NUMERICAL_POLICY" in t42["children"]["TCD-042-E1"]
 
-    # Authority table: required workunits, strict realized/persisted/tested/qualified/admitted separation.
     auth = {r["workunit"]: r for r in authority_rows}
     required_auth = {
         "RG04", "GOV02", "PREP02R", "STATEQ02", "B3I04", "MASSQ02",
@@ -117,12 +116,15 @@ def main() -> None:
     assert auth["B3I05"]["current_head"] == B3I05_HEAD
     assert auth["B3A04"]["current_state"] == "QUALIFIED_TCD026_CLASS_A_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING"
     assert auth["B3B02"]["current_state"] == "QUALIFIED_TCD042_B1_ATOMIC_CLASS_B_READINESS_ROUTE_AND_REVIEW_FAIL_CLOSED"
-    assert auth["B3B03"]["qualified"] == "False"
+    assert auth["B3B03"]["current_head"] == B3B03_HEAD
+    assert auth["B3B03"]["tested"] == "True"
+    assert auth["B3B03"]["qualified"] == "True"
+    assert auth["NQ03"]["current_head"] == NQ03_HEAD
+    assert auth["NQ03"]["tested"] == "True"
+    assert auth["NQ03"]["qualified"] == "True"
     assert auth["B3B04"]["qualified"] == "False"
-    assert auth["NQ03"]["qualified"] == "False"
     assert auth["IO02"]["qualified"] == "False"
 
-    # Gate matrix exact fail-closed states.
     gates = {r["gate"]: r for r in gate_rows}
     for gate in ("G6H", "G6U", "G7", "GSTATE", "GTIME", "GMASS", "GEX", "GARCH", "TCD042_PARENT", "B4_PROFILE", "PRODUCTION"):
         assert gate in gates
@@ -133,7 +135,6 @@ def main() -> None:
     assert gates["B4_PROFILE"]["state"] == "NOT_ADMITTED"
     assert gates["PRODUCTION"]["state"] == "NOT_ADMITTED"
 
-    # Queue identity, arithmetic and child routing.
     assert queue["canonical_register"]["head"] == REGISTER_HEAD
     assert queue["canonical_register"]["tail"] == "TCD-042"
     assert queue["canonical_register"]["tcd_043_reserved"] is False
@@ -154,12 +155,12 @@ def main() -> None:
     assert e42["queue_state"] == "WAITING_ON_CHILDREN"
     children = {c["id"]: c for c in e42["children"]}
     assert children["TCD-042-B1"]["state"] == "WAITING_ON_ROUTE_AND_REVIEW"
-    assert children["TCD-042-E1"]["state"] == "IN_PROGRESS_NUMERICAL_QUALIFICATION"
+    assert children["TCD-042-E1"]["state"] == "WAITING_ON_ROUTE_AND_REVIEW"
+    assert "QUALIFIED_RESTRICTED_TCD042_E1" in children["TCD-042-E1"]["status"]
     assert next(e for e in entries if e["tcd"] == "TCD-026")["queue_state"] == "WAITING_ON_ROUTE_AND_REVIEW"
-    assert next(e for e in entries if e["tcd"] == "TCD-024")["queue_state"] == "IN_PROGRESS_ADMISSION_READINESS"
+    assert next(e for e in entries if e["tcd"] == "TCD-024")["queue_state"] == "WAITING_ON_ROUTE_AND_REVIEW"
     assert next(e for e in entries if e["tcd"] == "TCD-040")["queue_state"] == "IN_PROGRESS_ADMISSION_READINESS"
 
-    # Parallelism matrix must distinguish safe work from serialized authority decisions.
     streams = {r["stream"]: r for r in parallel_rows}
     required_streams = {
         "historical_external_acquisition", "exact_zero_upper_reservoir",
@@ -172,12 +173,12 @@ def main() -> None:
     assert required_streams.issubset(streams)
     assert streams["exact_zero_upper_reservoir"]["parallel_class"] == "SHARED_PARENT_DISTINCT_ATOM"
     assert streams["finite_positive_upper_reservoir"]["parallel_class"] == "SHARED_PARENT_DISTINCT_ATOM"
+    assert "QUALIFIED_RESTRICTED_NATURAL_ENVELOPE_POLICY" in streams["finite_positive_upper_reservoir"]["current_state"]
     assert "TCD-019" in streams["slow_langmuir_index"]["guards"]
     assert streams["tcd042_parent"]["parallel_class"] == "SERIAL_COMPOSITION"
     assert streams["b4_profile"]["parallel_class"] == "SERIAL_GATE"
     assert streams["production"]["parallel_class"] == "SERIAL_GATE"
 
-    # Deliverable surface is exactly governance/integration tooling, not production source.
     required_files = {
         "docs/governance/ANIMO_RG05_PROJECT_REGIE.md",
         "integration/animo-reg/RG05_WORKUNIT_AUTHORITY.csv",
@@ -192,7 +193,6 @@ def main() -> None:
     for rel in required_files:
         assert (ROOT / rel).exists(), rel
 
-    # Final status may still be pending during the first CI run, but may never overclaim.
     if status["work_status"]["qualified"]:
         assert status["state"] == "QUALIFIED_POST_RG04_LATE_WAVE_AUTHORITY_REFRESH_ATOMIC_QUEUE_RESET_NO_ADMISSIONS"
         assert status["decision"] == status["state"]
