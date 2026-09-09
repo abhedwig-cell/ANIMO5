@@ -1,0 +1,176 @@
+{
+  "work_unit": "ANIMO-TIMEQ02",
+  "title": "Non-Production External-Owner Adapter Transaction Fixture Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-timeq02-adapter-transaction-fixtures",
+  "date": "2026-09-09",
+  "starting_head": "ddd5de478165d51a53352033bc92c55ce672d3aa",
+  "tested_head": "8ad45372c38a81fb4c3c624c9cfb26066088c334",
+  "decision": "QUALIFIED_CANDIDATE_EXTERNAL_OWNER_ADAPTER_RUNTIME_FIXTURE_SYNTHETIC_NON_B2_NONPRODUCTION",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "blocked": false,
+  "qualification_scope": "executable schema-driven synthetic hydrology and external-crop producer adapters instantiating ARCH05 field/identity contracts, ARCH07 adapter and coupled-runtime cases, and TIME01/TIMEQ01 transaction semantics; no real SWAP/WOFOST producer, ANIMO process physics, historical reference behaviour, canonical exchange gate or production adapter is qualified",
+  "authoritative_inputs": {
+    "ARCH05": {
+      "branch": "work/animo-arch05-external-exchange-contracts",
+      "qualification_head": "99b6098a19db405ce34928af89bb78b856dce7cd",
+      "decision": "QUALIFIED_CANDIDATE_EXTERNAL_EXCHANGE_CONTRACT_ARCHITECTURE",
+      "exchange_fields": 42,
+      "transaction_rules": 18
+    },
+    "ARCH07": {
+      "branch": "work/animo-arch07-adapter-qualification-spec",
+      "head": "7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6",
+      "decision": "QUALIFIED_CANDIDATE_EXTERNAL_ADAPTER_QUALIFICATION_TEST_SPECIFICATION",
+      "test_cases": 41
+    },
+    "TIME01": {
+      "branch": "work/animo-time01-generic-time-transaction-contract",
+      "head": "246128dd14732173a6f27c15c923970d50c14e2a",
+      "decision": "QUALIFIED_CANDIDATE_GENERIC_TIME_TRANSACTION_AND_SCHEDULER_CONTRACT"
+    },
+    "TIMEQ01": {
+      "branch": "work/animo-timeq01-runtime-transaction-qualification",
+      "head": "ddd5de478165d51a53352033bc92c55ce672d3aa",
+      "decision": "QUALIFIED_CANDIDATE_RUNTIME_TRANSACTION_AND_SCHEDULER_TRACE_FIXTURE_NON_B2_NONPRODUCTION"
+    },
+    "ARCHG02": {
+      "branch": "work/animo-archg02-temporal-revalidation",
+      "head": "db8183802631902f41aa5bec518a3c2e63e03ab7",
+      "decision": "QUALIFIED_CANDIDATE_ARCHITECTURE_REVALIDATED_AGAINST_FINAL_TS01_TIME01_PRODUCTION_NOT_ADMITTED"
+    }
+  },
+  "implementation": {
+    "model": "docs/timeq02/ADAPTER_RUNTIME_FIXTURE_MODEL.md",
+    "fixture": "tools/timeq02_adapter_fixture.py",
+    "tests": "tools/test_timeq02_adapter_fixture.py",
+    "case_disposition": "integration/animo-time/TIMEQ02_ARCH07_CASE_DISPOSITION.csv",
+    "workflow": ".github/workflows/timeq02-adapter-runtime.yml",
+    "runtime_result": "integration/animo-time/TIMEQ02_RUNTIME_RESULT.json",
+    "schema_driven_from_arch05_exchange_fields": true,
+    "synthetic_hydrology_producer": true,
+    "synthetic_external_crop_producer": true,
+    "uses_timeq01_transaction_runtime": true,
+    "real_swap_adapter": false,
+    "real_wofost_adapter": false,
+    "animo_process_kernel_connected": false
+  },
+  "verification": {
+    "github_actions_run_id": 34321715432,
+    "github_actions_job_id": 102369618484,
+    "github_actions_tested_head": "8ad45372c38a81fb4c3c624c9cfb26066088c334",
+    "github_actions_conclusion": "success",
+    "runner": "ubuntu-24.04",
+    "python_version": "3.12.14",
+    "python_compile": "PASS",
+    "arch07_case_rows": 41,
+    "arch07_cases_executed": 38,
+    "arch07_cases_deferred": 3,
+    "deferred_case_ids": ["H016", "T008", "T009"],
+    "tests_total": 38,
+    "tests_passed": 38,
+    "tests_failed": 0
+  },
+  "qualified_runtime_fixture_evidence": {
+    "detailed_hydrology_frame": true,
+    "aggregated_hydrology_frame": true,
+    "conditional_field_enforcement": true,
+    "unit_and_shape_fail_closed": true,
+    "explicit_sign_normalization": true,
+    "frame_immutability": true,
+    "accepted_generation_binding": true,
+    "layout_geometry_configuration_exchange_binding_checks": true,
+    "chemistry_hydrology_boundary_separation": true,
+    "tcd018_interception_observability_surface": true,
+    "inactive_macropore_fields_rejected": true,
+    "unadmitted_macropore_activation_rejected": true,
+    "external_crop_owner_mode_enforced": true,
+    "root_distribution_contract_enforced": true,
+    "crop_demand_unit_shape_enforced": true,
+    "explicit_residue_and_export_bundles": true,
+    "state_delta_transfer_inference_forbidden": true,
+    "realized_n_uptake_typed_event_link": true,
+    "realized_p_uptake_typed_event_link": true,
+    "rejected_uptake_noncommit": true,
+    "coupled_begin_binding": true,
+    "coupled_reject_atomicity": true,
+    "coupled_accept_barrier": true,
+    "retry_identity": true,
+    "diagnostic_nonownership": true,
+    "checkpoint_external_owner_split": true,
+    "precision_reference_mismatch_fails_as_identity": true,
+    "diagnostic_identity_invariance": true,
+    "parameter_change_configuration_identity": true,
+    "feature_layout_change_invalidates_stale_frame": true,
+    "schema_version_change_rejected": true
+  },
+  "deferred_arch07_cases": {
+    "H016": {
+      "reason": "positive active macropore adapter case requires scientifically admitted matching feature contract",
+      "evidence_tier": "SCIENTIFIC_ADMISSION",
+      "executed": false
+    },
+    "T008": {
+      "reason": "split-run equivalence requires admitted STATE/TIME plus independent reference comparison evidence",
+      "evidence_tier": "REFERENCE_BEHAVIOR",
+      "executed": false
+    },
+    "T009": {
+      "reason": "rollback-replay historical equivalence cannot be established by synthetic replay",
+      "evidence_tier": "REFERENCE_BEHAVIOR",
+      "executed": false
+    }
+  },
+  "evidence_boundaries": {
+    "evidence_class": "ADAPTER_RUNTIME_SYNTHETIC_PRODUCER",
+    "historical_reference_qualified": false,
+    "b2_reference_available": false,
+    "historical_split_run_equivalence_qualified": false,
+    "historical_rollback_replay_equivalence_qualified": false,
+    "scientific_correctness_qualified": false,
+    "positive_macropore_adapter_qualified": false,
+    "numerical_equivalence_qualified": false,
+    "numerical_tolerance_defined": false,
+    "canonical_state_admitted": false,
+    "canonical_time_admitted": false,
+    "canonical_mass_admitted": false,
+    "canonical_exchange_admitted": false,
+    "b3_scientific_admission": false,
+    "b4_baseline_admitted": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false
+  },
+  "change_boundary": {
+    "legacy_source_modified": false,
+    "historical_testcase_modified": false,
+    "production_code_modified": false,
+    "production_swap_adapter_implemented": false,
+    "production_crop_adapter_implemented": false,
+    "physics_changed": false,
+    "numerical_policy_changed": false,
+    "scientific_baseline_changed": false,
+    "canonical_tcd_allocated": false,
+    "branch_merge_performed": false
+  },
+  "remaining_blockers": [
+    "PREP02R still lacks an independently trustworthy historical B2 reference environment",
+    "no real SWAP hydrology adapter has been implemented or qualified",
+    "no real WOFOST or other external crop adapter has been implemented or qualified",
+    "no ANIMO scientific process kernel has been exercised through these adapter fixtures",
+    "positive active macropore adapter qualification remains scientifically blocked",
+    "historical split-run and rollback-replay comparison evidence remains absent",
+    "canonical STATE and TIME remain unadmitted",
+    "MASS and EX remain unadmitted downstream gates",
+    "B3 scientific baseline and B4 canonical baseline remain unestablished"
+  ],
+  "next_safe_work": [
+    "attach TIMEQ02 to RG02 G5/G8 as synthetic adapter-runtime evidence without canonical EX or B2 promotion",
+    "derive a producer-specific non-production adapter mapping fixture only when a real producer contract is available and retain producer provenance explicitly",
+    "continue PREP02R independent historical reference recovery in parallel",
+    "keep positive macropore adapter qualification on its owning MP/B3 science path",
+    "do not open canonical EX or production migration from this synthetic fixture pass"
+  ]
+}
