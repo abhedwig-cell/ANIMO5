@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
-"""Fail-closed contract validator for ANIMO-B3B03R independent review handoff.
+"""Fail-closed validator for ANIMO-B3B03R independent second-line review.
 
-This validator does not perform the independent review. It validates either:
-1. a structurally complete pending handoff; or
-2. a completed independent technical review record with all mandatory gates PASS.
-
-It never admits B3 and never authorizes a production patch.
+This validator validates either a structurally complete pending handoff or a
+completed review record. It does not perform B3 admission and does not authorize
+or modify production source.
 """
 from __future__ import annotations
 
@@ -16,11 +14,21 @@ ROOT = Path(__file__).resolve().parents[1]
 RESULT = ROOT / "integration/animo-b3/TCD024_INDEPENDENT_REVIEW_RESULT.json"
 HANDOFF = ROOT / "integration/animo-b3/ANIMO-B3B03R_REVIEW_HANDOFF.json"
 PACKET = ROOT / "docs/b3/TCD024_SECOND_LINE_REVIEW_PACKET.md"
+REPORT = ROOT / "docs/b3/TCD024_INDEPENDENT_SECOND_LINE_REVIEW.md"
 CANDIDATE_STATUS = ROOT / "integration/animo-b3/ANIMO-B3B03_STATUS.json"
 
 EXPECTED_CANDIDATE = "446f57f3aeff6e7db56ce473f0724bdb58cad94f"
 EXPECTED_TECHNICAL = "02ce1f49582d2b8cb794c3bfb9d674481a2eea1e"
 EXPECTED_RUN = 34383614846
+EXPECTED_REVIEW_START = "07e440bb42d58facad6b4e5408dd57a0d8f82daf"
+EXPECTED_GOV03 = "cbd262bdabe92923113b7326f2f42822ce9a971c"
+EXPECTED_B3D03 = "a3e194573b3a7ce95d5ef15fc179ddb3a613d8a6"
+EXPECTED_B3Q01 = "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+EXPECTED_NQ02 = "40a41089020f78ee1d5181b8afc7bdb511af3193"
+EXPECTED_SYNQ01 = "842f72300fd03ede0b9024537a7ee6126722a121"
+EXPECTED_SYNQ01_TREE = "124364c008cdca511f024b3b7d7677572c6ac0c7"
+EXPECTED_SYNQ_ORACLE_BLOB = "4c215d19844614de8868380fb03f93268ea4c5d8"
+
 MANDATORY_GATES = {
     "frozen_canonical_identity",
     "exact_source_seam",
@@ -90,16 +98,43 @@ def main() -> None:
     assert status in {"COMPLETED_PASS", "COMPLETED_FAIL"}
     assert result["reviewer_independent_from_B3B03_authoring"] is True
     assert isinstance(result["reviewer_identity_or_workunit"], str) and result["reviewer_identity_or_workunit"].strip()
+    assert result["independence_scope"] == "SEPARATE_CHATGPT_CONTEXT_ONLY_NO_ORGANIZATIONAL_OR_HUMAN_INDEPENDENCE_CLAIM"
     assert result["reviewed_candidate_head"] == EXPECTED_CANDIDATE
+    assert result["review_start_head"] == EXPECTED_REVIEW_START
+    assert result["historical_fidelity_claimed"] is False
+    assert result["B2_qualified_for_target_path"] is False
+    assert result["natural_positive_Optcxsl2_activation_in_frozen_testbank"] is False
     assert result["route_state_at_review"] in {
         "NORMAL_B2_AVAILABLE",
         "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
         "BLOCKED_NO_VALID_ADMISSION_ROUTE",
     }
 
+    pins = result["live_pins"]
+    assert pins["GOV03_head"] == EXPECTED_GOV03
+    assert pins["B3D03_head"] == EXPECTED_B3D03
+    assert pins["B3Q01_head"] == EXPECTED_B3Q01
+    assert pins["NQ02_head"] == EXPECTED_NQ02
+    assert pins["SYNQ01_commit_head"] == EXPECTED_SYNQ01
+    assert pins["SYNQ01_tree_sha"] == EXPECTED_SYNQ01_TREE
+    assert pins["SYNQ01_oracle_register_blob"] == EXPECTED_SYNQ_ORACLE_BLOB
+
+    report = REPORT.read_text(encoding="utf-8")
+    assert "PASS_TCD024_ATOMIC_CLASS_B_SECOND_LINE_REVIEW_NO_ADMISSION" in report
+    assert EXPECTED_CANDIDATE in report
+    assert EXPECTED_GOV03 in report
+    assert EXPECTED_B3D03 in report
+    assert EXPECTED_SYNQ01 in report
+    assert EXPECTED_SYNQ01_TREE in report
+    assert "historical prevalence remains `UNKNOWN`" in report
+    assert "No organizational or human independence is claimed" in report
+    assert "No B3 admission is performed" in report
+    assert "No production source is modified" in report
+
     if status == "COMPLETED_PASS":
         assert all(v == "PASS" for v in gates.values())
         assert result["overall_technical_second_line_result"] == "PASS"
+        assert result["route_state_at_review"] == "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY"
         print("ANIMO-B3B03R independent review execution contract: PASS_COMPLETED_REVIEW")
     else:
         assert any(v == "FAIL" for v in gates.values())
