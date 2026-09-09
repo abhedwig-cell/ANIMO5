@@ -1,0 +1,91 @@
+{
+  "work_unit": "ANIMO-PREP02R",
+  "evidence_id": "PREP02R-INTEL-NATIVE-DUPLO-20260909",
+  "date": "2026-09-09",
+  "status": "CURRENT_INTEL_NATIVE_REPEAT_DETERMINISTIC_SEVEN_CASE_EXECUTION_CAPTURED_REFERENCE_NOT_QUALIFIED",
+  "reference_admitted": false,
+  "historical_b2_admitted": false,
+  "equivalent_reference_build_qualified": false,
+  "global_numerical_tolerance_defined": false,
+  "inputs": {
+    "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "animo41_exe_sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+    "run1_zip_sha256": "be67f35845c016e8d16db087f3ae8704d9bf6551d7539fef0ab03abba04aebf2",
+    "run2_zip_sha256": "29ca595dd5551aa89e99c6deac2ee2e97f0a8aab40e08ad62915a92df355814e",
+    "command_per_case": "..\\animo41.exe animo.ini",
+    "runs_created_independently_from_frozen_zip": true
+  },
+  "duplo_repeat": {
+    "paired_non_directory_file_count": 492,
+    "paired_relative_file_set_identical": true,
+    "raw_byte_identical_files": 413,
+    "raw_byte_different_files": 79,
+    "testbank_tree_file_count": 464,
+    "testbank_tree_raw_byte_identical_files": 395,
+    "testbank_tree_raw_byte_different_files": 69,
+    "normalization": {
+      "line_ending_normalization_used_for_cross_platform_text_comparison": false,
+      "model_repeat_metadata_rules": [
+        "ANIMO40-run started on timestamp",
+        "File created on timestamp",
+        "ANIMO run start timestamp",
+        "ANIMO run End timestamp",
+        "Elapsed runtime line"
+      ],
+      "scientific_values_normalized": false,
+      "numerical_tolerance_used": false
+    },
+    "testbank_tree_equal_after_declared_model_metadata_normalization": true,
+    "normalized_testbank_tree_content_set_sha256": "1afed5769d5ee794cf7a4b585cac6a7f66135dcece97a9547e868286d6b83945",
+    "stdout_stderr_capture_pairs_raw_byte_identical": true,
+    "interpretation": "The received Intel-native executable is repeat-deterministic for the complete attempted frozen suite. Differences between run1 and run2 model trees are confined to declared timestamp and elapsed-time metadata; no scientific value is thresholded or normalized. Administrative RUN_INFO and summary records differ by run identity and timestamps as expected."
+  },
+  "case_results": [
+    {"case":"CranGrass","run1_exit_code":100,"run2_exit_code":100,"successful_completion_message":true,"classification":"SUCCESS_STOP_100"},
+    {"case":"CranMais","run1_exit_code":100,"run2_exit_code":100,"successful_completion_message":true,"classification":"SUCCESS_STOP_100"},
+    {"case":"GHGMais","run1_exit_code":1995,"run2_exit_code":1995,"successful_completion_message":false,"classification":"KNOWN_GHG_INPUT_CONTRACT_FAILURE","evidence":"label >outGHG: not found in Input\\general.inp"},
+    {"case":"GrassPeat","run1_exit_code":100,"run2_exit_code":100,"successful_completion_message":true,"classification":"SUCCESS_STOP_100"},
+    {"case":"LWKM_gras_1040.2021.2045","run1_exit_code":100,"run2_exit_code":100,"successful_completion_message":true,"classification":"SUCCESS_STOP_100"},
+    {"case":"Puitmijn_Cranendonck_60","run1_exit_code":100,"run2_exit_code":100,"successful_completion_message":true,"classification":"SUCCESS_STOP_100"},
+    {"case":"RuurloGrass","run1_exit_code":1410,"run2_exit_code":1410,"successful_completion_message":false,"classification":"DETERMINISTIC_HYDRO_UPPER_BOUNDARY_FAILURE","evidence":"day 1 FLAB(0) top-boundary deviation 0.002400241 m/d"},
+    {"case":"STONE_akk_0006.2001.2015","run1_exit_code":100,"run2_exit_code":100,"successful_completion_message":true,"classification":"SUCCESS_STOP_100"},
+    {"case":"Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA","run1_exit_code":100,"run2_exit_code":100,"successful_completion_message":true,"classification":"SUCCESS_STOP_100"}
+  ],
+  "stop_code_interpretation": {
+    "stop_100": "frozen source executes STOP 100 immediately after printing Successful completion of simulation",
+    "stop_1410": "HYDRO detailed top-boundary failure",
+    "stop_1995": "input error routed through Stoponerror"
+  },
+  "intel_vs_gnu_b1": {
+    "comparison_scope": "ordinary formatted outputs; no global numerical tolerance",
+    "seven_intel_success_cases_have_matching_output_surface_with_gnu_b1": true,
+    "ruurlo_intel_vs_gnu_disposition": "DISCREPANT_EXECUTION_GNU_B1_SUCCEEDS_INTEL_NATIVE_STOPS_1410",
+    "lwkm_tcd015": {
+      "formatted_nitrate_out_matches_gnu_b1_after_volatile_timestamp_and_line_ending_normalization": true,
+      "formatted_ammonium_out_matches_gnu_b1_after_volatile_timestamp_and_line_ending_normalization": true,
+      "formatted_miner_n_out_matches_gnu_b1_after_volatile_timestamp_and_line_ending_normalization": true,
+      "formatted_nitrate_balance_outputs_baniGP_baniRP_baniTP_match_gnu_b1": true,
+      "message_tcd015_transport_warning_content_matches_gnu_b1": true,
+      "transport_mass_balance_events": [
+        {"TITO":2312,"layer":1,"BAPD_formatted":-0.000843,"BATR_formatted":-0.000901},
+        {"TITO":3042,"layer":3,"BAPD_formatted":-0.000150,"BATR_formatted":-0.000132},
+        {"TITO":4513,"layer":2,"BAPD_formatted":-0.000598,"BATR_formatted":-0.000558}
+      ],
+      "annual_1997_baniGP_formatted_residual_kg_per_ha": "5.76E-01",
+      "unrounded_affected_state_flux_comparison_available": false,
+      "exact_clipping_branch_activation_observed_in_native_binary": false,
+      "b2_requirement_satisfied": false,
+      "interpretation": "The current Intel-native executable reproduces the ordinary formatted LWKM legacy symptom on the TCD-015 path, but formatted agreement cannot substitute for the B3Q01 unrounded affected-state/flux B2 requirement."
+    }
+  },
+  "ruurlo_source_hazard": {
+    "classification": "SOURCE_LEVEL_RUNTIME_STATE_HAZARD_CAUSAL_HYPOTHESIS_NOT_YET_INTEL_INTERNAL_VALUE_PROVEN",
+    "source_file": "Hydro_detailed.for",
+    "observation": "The near-zero runoff branch sets Rupr, Rurv and Ruso to zero but does not assign Runinu, whereas the Ru<0 and positive-Ru branches assign Runinu. Runinu is subsequently used in the detailed-hydrology top-boundary equations.",
+    "consistent_with_native_failure": true,
+    "confirmed_as_native_root_cause": false,
+    "intake_route": "B3I02_RUNTIME_STATE_DISCREPANCY_INTAKE"
+  },
+  "decision": "KEEP_PREP02R_REFERENCE_ADMISSION_FAIL_CLOSED",
+  "why": "Native Intel behaviour is now captured and repeat-deterministic, and LWKM reproduces the formatted TCD-015 legacy symptom. However the executable is a 2026 build whose exact source-byte provenance is not independently established, Ruurlo exposes a material Intel-vs-GNU runtime discrepancy, and TCD-015 still lacks the unrounded affected-state/flux native B2 evidence required by B3Q01."
+}
