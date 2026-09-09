@@ -9,10 +9,15 @@ on:
       - 'docs/io/**'
       - 'integration/animo-io/**'
       - 'tools/audit_io01_contracts.py'
+      - 'tools/audit_material_ruurlo_lineage.py'
       - 'tools/io01_direct_pilot.py'
+      - 'tools/io01_material_pilot.py'
       - 'tools/materialize_ttutil427.py'
       - 'tools/qualify_io01_direct_pilot.py'
+      - 'tools/qualify_io01_material_pilot.py'
       - 'tools/ttutil_direct_probe.f90'
+      - 'tools/ttutil_material_probe.f90'
+      - 'tools/ttutil_material_probe_typed_double.f90'
       - 'tests/io/**'
       - '.github/workflows/io01-contract-audit.yml'
 
@@ -24,5 +29,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - run: >-
+          python -m py_compile
+          tools/audit_io01_contracts.py
+          tools/audit_material_ruurlo_lineage.py
+          tools/io01_direct_pilot.py
+          tools/io01_material_pilot.py
+          tools/materialize_ttutil427.py
+          tools/qualify_io01_direct_pilot.py
+          tools/qualify_io01_material_pilot.py
       - run: python tools/audit_io01_contracts.py
       - run: python -m unittest discover -s tests/io -p 'test_*.py'
