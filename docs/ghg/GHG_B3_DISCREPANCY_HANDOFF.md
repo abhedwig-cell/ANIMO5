@@ -2,11 +2,11 @@
 
 Status: `POST_CLOSEOUT_HANDOFF_PERSISTED_NO_CANONICAL_TCD_ALLOCATION`
 
-This handoff packages the source-confirmed findings from ANIMO-GHG01 for later B3 and RG02 reconciliation. It does not reopen the GHG01 qualification, allocate canonical TCD numbers, repair revision-53 source, or admit production migration.
+This handoff packages the source-confirmed and theory-source reconciliation findings from ANIMO-GHG01 for later B3 and RG02 reconciliation. It does not reopen the GHG01 qualification, allocate canonical TCD numbers, repair revision-53 source, or admit production migration.
 
 ## Governance boundary
 
-Live RG02 evidence at handoff time identifies `work/animo-rg02-branch-authority-integration@27231ac9e52380c4ec10c9cf8e1cff5b72711e96` as the active branch-authority integration line. Its local-TCD reconciliation states that the qualified B3Q01 canonical register ends at `TCD-027`, with only a separate `TCD-028` reservation observed. Post-027 identifiers created on evidence branches are not canonical unless allocated through the B3 governance line.
+Live RG02 evidence at initial handoff time identified `work/animo-rg02-branch-authority-integration@27231ac9e52380c4ec10c9cf8e1cff5b72711e96` as the active branch-authority integration line. Its local-TCD reconciliation states that the qualified B3Q01 canonical register ends at `TCD-027`, with only a separate `TCD-028` reservation observed. Post-027 identifiers created on evidence branches are not canonical unless allocated through the B3 governance line.
 
 Therefore this document uses GHG01-local finding keys only.
 
@@ -15,7 +15,7 @@ Existing canonical GHG discrepancies remain distinct:
 - `TCD-008`: GHG theory/version documentation gap;
 - `TCD-013`: GHGMais versus revision-53 input-contract lineage mismatch.
 
-Neither identifier is broadened here to absorb newly found conservation or observer defects.
+Neither identifier is broadened here to absorb newly found conservation, observer or equation-reconciliation findings.
 
 ## GHG01 local candidate findings
 
@@ -53,6 +53,34 @@ This finding must not automatically be classified as a legacy physics defect. Th
 
 Recommended B3/architecture treatment: retain as a control-volume and state-ownership qualification requirement. Allocate a canonical TCD only if B3 governance decides that revision-53 claimed a model-wide balance that is contradicted by this scope.
 
+### `GHG01-LCL-N2O-NITRIFICATION-TEMPERATURE-SIGN-DOC-SOURCE`
+
+Classification: `DOCUMENT_SOURCE_SIGN_CONFLICT_UNRESOLVED`
+
+Peer-reviewed ANIMO-specific 2011 Appendix A17 represents the nitrification N2O-fraction temperature response with a Q10-ratio factor raised to `(T-Tref)/10`, while frozen revision 53 uses `2**(-(Te-Terf)/10)` in `FracN2Onitr`.
+
+This is a direct document-source difference but is not yet a qualified code defect. Revision-53 source explicitly cites Maag & Vinther (1996), and the experimental literature is consistent with a decreasing N2O fraction from nitrification as temperature rises. A publication notation issue, source evolution, or different definition of the response factor therefore remains plausible.
+
+Required B3 treatment: retain separately from generic TCD-008 and require the detailed Hendriks ANIMO GHG derivation, authoritative Report 2054 bytes or equivalent change history before scientific disposition.
+
+### `GHG01-LCL-N2O-REDUCTION-AERATION-FACTOR-DOC-SOURCE`
+
+Classification: `DOCUMENT_SOURCE_AERATION_FACTOR_PLACEMENT_CONFLICT_REQUIRES_DETAILED_AUTHORITY`
+
+Peer-reviewed ANIMO-specific 2011 Appendix A11, as printed, does not include the denitrification aeration response factor in the numerator of the N2O reduction term, while its denominator does contain the factor. Frozen revision 53 constructs `RatFacN2O` from pH, temperature, aeration and electron affinity and uses the combined factor in its reduction partition.
+
+The discrepancy is potentially material because aeration changes competition between N2O production and reduction. It is nevertheless not safe to choose one formulation as authoritative without the detailed derivation or version/change history.
+
+Required B3 treatment: independent algebra/unit review plus detailed-authority recovery before any corrected-legacy decision.
+
+## 2011 theory-authority consequence
+
+Post-closeout web research recovered strong peer-reviewed ANIMO-specific N2O equation authority in Stolk et al. (2011), Vadose Zone Journal, DOI `10.2136/vzj2010.0029`, and Stolk et al. (2011), Biogeosciences, DOI `10.5194/bg-8-2649-2011`.
+
+The Biogeosciences paper explicitly distinguishes the original equilibrium ANIMO N2O concept from a later mobile-immobile aggregate extension. The original concept matches revision-53 state and transport structure closely. Exact/algebraic source matches were found for the N2O Bunsen-equilibrium state relation, combined gas/water diffusion, nitrification production and WFPS response, denitrification pH response, the Q10=2.6 relative temperature response and the aeration-response relation. See `GHG_THEORY_AUTHORITY_RECOVERY_2011.md`.
+
+This narrows TCD-008 materially for N2O, but does not close the release-specific documentation gap. It also exposes the two relation-level conflicts above, which must not be hidden inside a generic `SOURCE_ONLY` label.
+
 ## Required activated-case evidence
 
 Before either source defect is admitted to corrected-legacy or production work, obtain a revision-53-compatible GHG case without silently translating GHGMais and record at minimum:
@@ -69,11 +97,12 @@ A synthetic or compatibility-derived case may establish causal reachability but 
 
 ## B3 admission consequence
 
-GHG01 closes theory/source/input-lineage qualification only to the declared level. GHG B3 admission remains blocked by four independent evidence classes:
+GHG01 closes theory/source/input-lineage qualification only to the declared level. GHG B3 admission remains blocked by independent evidence classes:
 
-- exact revision-53 equation and parameter authority, linked to existing `TCD-008`;
-- matching historical testcase/input lineage, linked to existing `TCD-013`;
+- the remaining release-specific equation and parameter authority gap under `TCD-008`, now narrowed substantially for N2O but still open for CH4 and unresolved N2O subrelations;
+- matching historical testcase/input lineage under `TCD-013`;
 - source-confirmed conservation-path and balance-observer findings documented above;
+- two N2O document-source equation conflicts requiring scientific disposition;
 - absence of a qualified historical reference runner/output oracle.
 
 No finding in this handoff is a production patch specification. No canonical TCD number is allocated here.
