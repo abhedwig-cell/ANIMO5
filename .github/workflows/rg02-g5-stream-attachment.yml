@@ -1,0 +1,25 @@
+name: RG02 G5 stream attachment audit
+
+on:
+  push:
+    branches:
+      - work/animo-rg02-g5-independent-stream-attachment
+    paths:
+      - 'docs/governance/ANIMO_RG02_G5_*'
+      - 'integration/animo-reg/g5/**'
+      - 'tools/audit_rg02_g5_stream_attachment.py'
+      - '.github/workflows/rg02-g5-stream-attachment.yml'
+  workflow_dispatch:
+
+jobs:
+  structural-audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit RG02 G5 stream attachment
+        run: |
+          python tools/audit_rg02_g5_stream_attachment.py . --output /tmp/ANIMO_RG02_G5_STRUCTURAL_AUDIT.json
+          cat /tmp/ANIMO_RG02_G5_STRUCTURAL_AUDIT.json
