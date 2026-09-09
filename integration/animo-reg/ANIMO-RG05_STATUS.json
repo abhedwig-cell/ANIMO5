@@ -5,16 +5,17 @@
   "branch": "work/animo-rg05-late-wave-authority-refresh",
   "starting_parent": "cf9975ded20fa64bb8125b3241f2609cbb5b51b3",
   "starting_work_unit": "ANIMO-RG04",
-  "state": "QUALIFIED_POST_RG04_LATE_WAVE_AUTHORITY_REFRESH_ATOMIC_QUEUE_RESET_NO_ADMISSIONS",
-  "decision": "QUALIFIED_POST_RG04_LATE_WAVE_AUTHORITY_REFRESH_ATOMIC_QUEUE_RESET_NO_ADMISSIONS",
+  "reconciliation_revision": "POST_CLOSEOUT_DELTA_1_HETOP_ZERO_CHILD_DOMAIN",
+  "state": "IN_PROGRESS_PERSISTED_POST_CLOSEOUT_DELTA_REVALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_REVALIDATION",
   "governance_only": true,
   "authority_rule": "CONTENT_AND_ANCESTRY_PLUS_EXPLICIT_STATUS_NOT_BRANCH_NAME_NOT_LAST_WRITER_WINS",
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": true,
-    "qualified": true,
-    "work_unit_complete": true
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
   },
   "admission_state": {
     "scientific_admission_performed": false,
@@ -60,11 +61,15 @@
     "ARCHG02": "db8183802631902f41aa5bec518a3c2e63e03ab7",
     "ARCH05": "99b6098a19db405ce34928af89bb78b856dce7cd",
     "NQ03": "8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6",
+    "NQ03R": "0153779e9045c6527b7c31156f2295ff44b57eeb",
     "IO02_IN_PROGRESS": "fdf6a27feefcb1d1afb9faff0aaab2f5363073c9",
-    "B3A04": "2097e1e1c83c60b683d850d7c944e8da795ca8ac",
-    "B3B02": "c4eb36e5ece7ab2354b628192662ab8ce80b12fd",
+    "B3A04": "1192ee77eda47149af1e31a752e09d343edd9273",
+    "B3B02": "412bf889ce959d85c651c3b9180dec0a6ff9bb61",
     "B3B03": "446f57f3aeff6e7db56ce473f0724bdb58cad94f",
+    "B3B03R_TECH": "02ce1f49582d2b8cb794c3bfb9d674481a2eea1e",
+    "B3B03R_HANDOFF": "11db97289ffafdd6281b83f0aa0e96b544d6eb5a",
     "B3B04_IN_PROGRESS": "c87ed020a8b4a4685e76f701364b560c8f9c7aef",
+    "B3E01": "41e43c6a6888aac5b5b52041bcdd088c7afc68f1",
     "canonical_tcd_register_tail": "TCD-042"
   },
   "historical_route": {
@@ -82,6 +87,7 @@
     "GMASS": "TYPED_EVENT_AND_RESIDUAL_CAUSALITY_QUALIFIED_ADMISSION_PENDING",
     "GEX": "SYNTHETIC_CONTRACT_FIXTURE_QUALIFIED_REAL_ADAPTER_BLOCKED",
     "GARCH": "QUALIFIED_CANDIDATE_ARCHITECTURE_REVALIDATED",
+    "TCD042_PARENT": "WAITING_ON_CHILDREN",
     "B4": "NOT_ADMITTED",
     "PRODUCTION": "NOT_ADMITTED"
   },
@@ -89,18 +95,26 @@
     "canonical_top_level_parent": "TCD-042",
     "canonical_register_tail": "TCD-042",
     "tcd_043_reserved": false,
-    "parent_state": "ATOMIZED_B1_EXACT_ZERO_PLUS_E1_FINITE_POSITIVE_NO_ADMISSION",
+    "parent_state": "WAITING_ON_CHILDREN_SHARED_HETOP_ZERO_DOMAIN_UNRESOLVED_NO_ADMISSION",
+    "shared_domain_owner": "TCD-042_HETOP_ZERO_DOMAIN",
+    "shared_domain_finding": "Hetop=0 is accepted by frozen input validation and explicitly lies in the pinned documented HETOP range [0.0,0.2]; no qualified zero-thickness transport semantics are available",
     "children": {
-      "TCD-042-B1": "QUALIFIED_ATOMIC_CLASS_B_READINESS_ROUTE_AND_REVIEW_FAIL_CLOSED",
-      "TCD-042-E1": "QUALIFIED_RESTRICTED_NATURAL_ENVELOPE_NUMERICAL_POLICY_INDEPENDENT_REVIEW_PENDING"
+      "TCD-042-B1": "PARTIAL_TCD042_B1_CLASS_B_READINESS_HETOP_ZERO_DOMAIN_UNRESOLVED_ROUTE_AND_REVIEW_FAIL_CLOSED",
+      "TCD-042-E1": "PARTIAL_TCD042_E1_CLASS_E_READINESS_POSITIVE_HETOP_POLICY_QUALIFIED_FULL_CHILD_DOMAIN_AND_ADMISSION_ROUTE_FAIL_CLOSED"
     }
   },
   "late_wave_delta": {
-    "B3A04_TCD026": "QUALIFIED_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING",
-    "B3B02_TCD042_B1": "QUALIFIED_READINESS_ROUTE_AND_REVIEW_FAIL_CLOSED",
+    "B3A04_TCD026": "QUALIFIED_READINESS_WITH_MODEL_PRODUCED_RESTART_FORMAT_REPLAY_ROUTE_AND_INDEPENDENT_REVIEW_PENDING",
+    "B3B02_TCD042_B1": "EARLIER_BROAD_READINESS_SUPERSEDED_PARTIAL_POSITIVE_HETOP_ONLY",
     "B3B03_TCD024": "QUALIFIED_READINESS_HISTORICAL_ROUTE_BLOCKED_SECOND_LINE_REVIEW_PENDING",
+    "B3B03R_TCD024_TECH": "TECHNICAL_RECONFIRMATION_PASS_NOT_INDEPENDENT",
+    "B3B03R_TCD024_HANDOFF": "REQUEST_PREPARED_NOT_COMPLETED",
     "B3B04_TCD040": "IN_PROGRESS_PERSISTED_EVIDENCE_QUALIFICATION_PENDING",
-    "NQ03_TCD042_E1": "QUALIFIED_RESTRICTED_NATURAL_ENVELOPE_POLICY_INDEPENDENT_REVIEW_PENDING",
+    "NQ03_TCD042_E1": "QUALIFIED_RESTRICTED_POSITIVE_HETOP_POLICY",
+    "NQ03R_TCD042_E1": "INDEPENDENT_NUMERICAL_REVIEW_PASS_RESTRICTED_POLICY_IMPLEMENTATION_ORDER_CONSTRAINT_CARRIED",
+    "B3E01_TCD042_E1": "PARTIAL_POSITIVE_HETOP_READINESS_FULL_CHILD_DOMAIN_AND_ROUTE_FAIL_CLOSED",
+    "B3E01_latest_workflow_run_id": 34385155661,
+    "B3E01_latest_workflow_conclusion": "success",
     "IO02_GENERAL": "IN_PROGRESS_PERSISTED_SOURCE_CONTRACT_EXTRACTION_VALIDATION_FAILING",
     "IO02_latest_workflow_run_id": 34383556997,
     "IO02_latest_workflow_conclusion": "failure"
@@ -108,12 +122,14 @@
   "validation": {
     "validator": "tools/validate_rg05_governance.py",
     "workflow": ".github/workflows/animo-rg05-governance.yml",
-    "tested_head_before_status_closeout": "9d9133212e651d4c16fe288f8bdf58703d4fea25",
-    "github_actions_run_id": 34384146652,
-    "github_actions_head": "9d9133212e651d4c16fe288f8bdf58703d4fea25",
-    "github_actions_conclusion": "success",
-    "validator_result": "PASS",
-    "scope_guard": "PASS_RG05_GOVERNANCE_ONLY_NO_SOURCE_FROZEN_OR_CANONICAL_REGISTER_CHANGE"
+    "previous_qualified_head": "ba83a305fcc27091e6c7c9c190a24b2105fb6585",
+    "previous_successful_closeout_run_id": 34384252647,
+    "post_closeout_delta_validation": "PENDING",
+    "github_actions_run_id": null,
+    "github_actions_head": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
   },
   "deliverables": [
     "docs/governance/ANIMO_RG05_PROJECT_REGIE.md",
