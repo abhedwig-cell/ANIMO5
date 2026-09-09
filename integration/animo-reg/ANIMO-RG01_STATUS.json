@@ -1,0 +1,89 @@
+{
+  "work_unit": "ANIMO-RG01",
+  "title": "Preparatory Evidence Baseline Stabilization & Branch Separation",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-rg01-baseline-stabilization",
+  "evaluated_candidate_head": "803e4651b5e429114a6afa721db60e46732115d7",
+  "baseline_evidence_head": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
+  "baseline_anchor_branch": "baseline/animo-prep01-05-evidence",
+  "decision": "QUALIFIED_PREPARATORY_BASELINE_STABILIZED_PRODUCTION_MIGRATION_STILL_BLOCKED",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "blocked": false,
+  "production_migration_admitted": false,
+  "reference_admitted": false,
+  "corrected_legacy_admitted": false,
+  "qualification_scope": "repository governance, preparatory evidence baseline identity, forward branch separation, PR scope correction, and serial/parallel dependency control only",
+  "non_admissions": [
+    "no historical or independently qualified equivalent reference is admitted",
+    "no diagnostic GNU output is promoted to reference behaviour",
+    "no corrected-legacy source change is admitted",
+    "no physics change is admitted",
+    "no numerical-policy change is admitted",
+    "no ANIMO5 production process migration is admitted"
+  ],
+  "verification": {
+    "source_branch_live_head_rechecked": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
+    "baseline_commit_contains_final_prep05_evidence": true,
+    "prep06_execution_in_baseline_scope": false,
+    "frozen_source_sha256_reverified_from_supplied_bytes": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "frozen_documentation_sha256_reverified_from_supplied_bytes": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "frozen_testbank_sha256_reverified_from_supplied_bytes": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "candidate_vs_baseline_commit_count": 6,
+    "candidate_vs_baseline_changed_paths": [
+      "README.md",
+      "docs/quality/STATUS_A_AA_GAP_REGISTER.csv",
+      "docs/reg/ANIMO-RG01_BRANCH_AND_INTEGRATION_PLAN.md",
+      "docs/reg/ANIMO-RG01_SERIAL_PARALLEL_DAG.md",
+      "integration/animo-reg/ANIMO-RG01_PREPARATORY_BASELINE.json"
+    ],
+    "frozen_legacy_source_changed": false,
+    "testcase_content_changed": false,
+    "production_source_changed": false,
+    "workflow_runs_observed_for_evaluated_candidate": 0,
+    "note_on_testing": "RG01 is metadata/governance-only. Qualification uses live Git ancestry/path comparison, evidence-hash revalidation and status/governance reconciliation; it does not claim runtime or scientific-reference testing."
+  },
+  "pr_decision": {
+    "pr_1": {
+      "state": "closed",
+      "merged": false,
+      "reason": "PREP01-only scope no longer matched its 161-commit, 116-file PREP01-PREP05 plus PREP06-reservation content"
+    },
+    "pr_3": {
+      "state": "open",
+      "draft": true,
+      "mergeable_at_last_check": true,
+      "role": "superseding accurately scoped preparatory-baseline integration surface"
+    },
+    "merge_performed": false,
+    "merge_recommended_now": false,
+    "reason_merge_deferred": "main is unprotected and has no required status checks; reference/B0 blockers also remain explicit and must not be obscured by an under-governed integration event"
+  },
+  "open_scientific_and_reference_blockers": [
+    "controlled immutable B0 byte retention",
+    "historical Intel or independently qualified equivalent reference environment",
+    "trusted unrounded reference-case output",
+    "GHGMais matching source/testcase provenance",
+    "revision-53 theory/change provenance including GHG and extension-specific semantics",
+    "explicit reference admission",
+    "corrected-legacy admission",
+    "qualified migration baseline"
+  ],
+  "safe_parallel_work": [
+    "source-bound ownership audits",
+    "PREP06 conserved-state and transfer-ledger audit",
+    "theory/code reconciliation",
+    "path-coverage specifications",
+    "corrected-legacy harness preparation without source admission",
+    "GHGMais provenance recovery",
+    "Status A/AA evidence-gap maintenance"
+  ],
+  "serially_blocked_work": [
+    "reference admission until B0 and qualified reference behaviour are established",
+    "corrected-legacy admission until reference admission and discrepancy-specific qualification are satisfied",
+    "qualified migration baseline until corrected-legacy admission",
+    "ANIMO5 production migration until qualified migration baseline admission"
+  ]
+}
