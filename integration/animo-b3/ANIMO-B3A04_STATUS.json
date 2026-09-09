@@ -1,0 +1,91 @@
+{
+  "work_unit": "ANIMO-B3A04",
+  "title": "TCD-026 Fresh-Organic-Matter Initial Exudate Storage Ledger Admission Readiness",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3a04-tcd026-class-a-readiness",
+  "target_tcd": "TCD-026",
+  "class": "A_ACCOUNTING_REPORTING_ONLY",
+  "started_after_live_nonexistence_check": true,
+  "preexisting_branch_found": false,
+  "preexisting_issue_found": false,
+  "preexisting_pull_request_found": false,
+  "base_branch": "work/animo-b3i01-canonical-register-append",
+  "base_head": "383c7a83e84a578969f92113280dc715b7bdddb4",
+  "frozen_B0": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "narrow_claim": "TCD-026 is limited to omission of existing initial Ex(Ln) root-exudate organic matter from Bfom(Inip_x,Ly); the candidate Class-A observation is Ex(Ln)*P only.",
+  "readiness_results": {
+    "exact_physical_owner": "PASS",
+    "begin_end_storage_identity": "PASS",
+    "exact_omitted_ledger_term": "PASS",
+    "conservation_identity": "PASS_FOR_ATOMIC_COMPONENT",
+    "physical_state_non_interference": "PASS_FOR_READINESS",
+    "process_flux_non_interference": "PASS_FOR_READINESS",
+    "total_physical_mass_non_interference": "PASS_FOR_READINESS",
+    "changed_output_whitelist": "PASS",
+    "natural_activation": "STRUCTURALLY_UNREACHABLE_IN_SUPPLIED_NATURAL_B1_BECAUSE_INITIAL_EX_IS_ZERO",
+    "dedicated_causal_activation": "PASS_PREP06_SYNTHETIC",
+    "negative_controls": "PASS_FOR_READINESS",
+    "applicable_SYNQ01_oracle": "NONE_REGISTERED",
+    "valid_admission_route": "PENDING_BLOCKED",
+    "independent_second_line_review": "REQUEST_PREPARED_NOT_COMPLETED"
+  },
+  "PREP06_non_interference_evidence": {
+    "generated_outputs_compared": 72,
+    "changed_outputs": 6,
+    "unintended_changed_outputs": 0,
+    "changed_files": [
+      "ani_omGP.Bal",
+      "ani_omRP.Bal",
+      "ani_omTP.Bal",
+      "baomGP.Out",
+      "baomRP.Out",
+      "baomTP.Out"
+    ]
+  },
+  "live_route_recheck": {
+    "PREP02R_branch": "work/animo-prep02r-historical-reference-recovery",
+    "PREP02R_head": "a2fda49871ee3c7104daf7e06cd8dffdac06b125",
+    "PREP02R_status": "PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED",
+    "normal_B2_reference_available": false,
+    "historical_uncertainty_route_eligible": false,
+    "reference_qualified": false,
+    "route_effect": "CORRECTED_LEGACY_ADMISSION_BLOCKED"
+  },
+  "independent_review": {
+    "packet_prepared": true,
+    "packet": "docs/b3/TCD026_SECOND_LINE_REVIEW_PACKET.md",
+    "request": "integration/animo-b3/TCD026_SECOND_LINE_REVIEW_REQUEST.json",
+    "reviewer_assigned": false,
+    "review_complete": false,
+    "own_authoring_counted_as_independent_review": false
+  },
+  "hard_constraints": {
+    "physical_state_patch": false,
+    "initialization_physics_change": false,
+    "composition_with_other_organic_matter_TCDs": false,
+    "numerical_tolerance": false,
+    "corrected_legacy_admission": false,
+    "production_migration": false
+  },
+  "deliverables": {
+    "docs/b3/TCD026_CLASS_A_ADMISSION_READINESS.md": "COMPLETE",
+    "integration/animo-b3/TCD026_EXPECTED_DIFFERENCE.json": "COMPLETE",
+    "integration/animo-b3/TCD026_CLASS_A_READINESS.json": "COMPLETE",
+    "docs/b3/TCD026_SECOND_LINE_REVIEW_PACKET.md": "COMPLETE",
+    "integration/animo-b3/TCD026_SECOND_LINE_REVIEW_REQUEST.json": "COMPLETE",
+    "integration/animo-b3/ANIMO-B3A04_STATUS.json": "COMPLETE"
+  },
+  "admitted": false,
+  "production_patch_present": false,
+  "production_migration_admitted": false,
+  "next_required_conditions": [
+    "An independent second-line reviewer/workunit executes the prepared TCD-026 packet and records PASS, FAIL or INCOMPLETE.",
+    "GOV02/PREP02R reaches a route state valid for B3 admission.",
+    "A separate B3 admission authority records any later corrected-legacy disposition fail-closed.",
+    "A model-produced restart activation may be added as stronger naturalistic path evidence, but is not claimed by this workunit."
+  ],
+  "decision": "QUALIFIED_TCD026_CLASS_A_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING"
+}
