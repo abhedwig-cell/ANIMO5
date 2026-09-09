@@ -31,7 +31,7 @@ jobs:
           git diff --name-only "$BASE"...HEAD > /tmp/ubq01_changed.txt
           cat /tmp/ubq01_changed.txt
 
-          allowed='^(.github/workflows/animo-ubq01-zero-flow-oracle\.yml|docs/science/TCD042_ZERO_THROUGHFLOW_ATOMIZATION\.md|integration/animo-science/TCD042_ZERO_FLOW_ATOMIZATION\.json|integration/animo-science/ANIMO-UBQ01_STATUS\.json|tools/ubq01/validate_tcd042_zero_flow\.py)$'
+          allowed='^(.github/workflows/animo-ubq01-zero-flow-oracle\.yml|docs/science/TCD042_ZERO_THROUGHFLOW_ATOMIZATION\.md|integration/animo-science/TCD042_ZERO_FLOW_ATOMIZATION\.json|integration/animo-science/ANIMO-UBQ01_STATUS\.json|integration/animo-science/UBQ01_SUPPLIED_NATIVE_BUILD_EVIDENCE\.json|tools/ubq01/validate_tcd042_zero_flow\.py)$'
 
           unexpected=$(grep -Ev "$allowed" /tmp/ubq01_changed.txt || true)
           if [ -n "$unexpected" ]; then
