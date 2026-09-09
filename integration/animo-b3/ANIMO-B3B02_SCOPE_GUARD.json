@@ -7,6 +7,7 @@
     "docs/b3/TCD042_B1_CLASS_B_ADMISSION_READINESS_V2.md",
     "integration/animo-b3/ANIMO-B3B02_STATUS.json",
     "integration/animo-b3/TCD042_B1_EXPECTED_DIFFERENCE.json",
+    "integration/animo-b3/TCD042_B1_HETOP_DOMAIN_EVIDENCE.json",
     "integration/animo-b3/ANIMO-B3B02_SCOPE_GUARD.json"
   ],
   "forbidden_path_prefixes": [
