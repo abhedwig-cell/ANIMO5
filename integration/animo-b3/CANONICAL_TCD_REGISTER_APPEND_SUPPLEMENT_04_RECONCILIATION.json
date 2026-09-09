@@ -1,0 +1,45 @@
+{
+  "record_type": "CANONICAL_TCD_REGISTER_APPEND_RECONCILIATION_NO_ADMISSION",
+  "work_unit": "ANIMO-B3I01",
+  "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_04",
+  "repository": "abhedwig-cell/ANIMO5",
+  "canonical_register": {
+    "path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "tail_before": "TCD-040",
+    "tail_after": "TCD-041",
+    "blob_before": "fb44f54aabcf9cd9ee8a8a52bbec78e5cdf06c25",
+    "blob_after": "c057fdc5a9b2199dde07a19f0d70213cfaab235b",
+    "append_commit": "d2cb81605372c81e9e158a7068ebe4b75f33a27b",
+    "append_parent": "7d826c63436a22b802fa73600642f32e0fa82a7f",
+    "append_only": true,
+    "existing_rows_changed": false,
+    "compare_additions": 1,
+    "compare_deletions": 0
+  },
+  "prepared_rows": "integration/animo-b3/B3I01_REGISTER_APPEND_SUPPLEMENT_04_ROWS.csv",
+  "reservation": "integration/animo-b3/POST_G5_TCD_RESERVATIONS_SUPPLEMENT_04.json",
+  "routing": "integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER_SUPPLEMENT_04.json",
+  "registered_not_admitted": ["TCD-041"],
+  "source_authority": {
+    "workunit": "ANIMO-BUILDQ04",
+    "head": "0ae1e58f80ca01c1b6eced7ac0d6e5c031827676",
+    "source_local_key": "BUILDQ03-LCL-GHGASSES-FLAIR-NLPLUS1-UNINITIALIZED"
+  },
+  "atomicity": {
+    "top_level_ids_appended": 1,
+    "single_mechanism": "lower external GHG air-interface first-use initialization omission",
+    "derived_coordinates_kept_inside_record": ["Flaiio(Nl)", "Flaiou(Nl)"]
+  },
+  "evidence_boundary": {
+    "qualified_identity": "FLAIR_NLPLUS1_EQUALS_ZERO_FOR_CLOSED_LOWER_GHG_AIR_BOUNDARY",
+    "first_read_scope": "UNCONDITIONAL_TASK1_FIRST_READ_WITHOUT_SOURCE_ASSIGNMENT_FOR_NL_GE_1",
+    "historical_intel_effect": "UNKNOWN",
+    "register_append_increases_evidence_strength": false
+  },
+  "admission_state": {
+    "new_corrections_admitted": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "evidence_strength_increased_by_register_append": false
+  }
+}
