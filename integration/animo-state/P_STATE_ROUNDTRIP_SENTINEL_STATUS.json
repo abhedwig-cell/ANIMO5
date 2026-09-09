@@ -2,14 +2,23 @@
   "workunit": "ANIMO-STATEQ01",
   "artifact": "RC-R4 site-resolved phosphorus state roundtrip sentinel",
   "profile": "CORE_CNP_SUBSURFACE_ONLY",
-  "status": "PERSISTED_NOT_YET_EXECUTED",
-  "evidence_class": "SYNTHETIC_PERSISTENT_STATE_CONTRACT_NON_B2",
+  "status": "PASS_SYNTHETIC_EXACT_INPO1_SITE_RESOLVED_ROUNDTRIP_NON_B2",
+  "evidence_class": "SYNTHETIC_EXECUTABLE_PERSISTENT_STATE_CONTRACT_NON_B2",
   "production_code": false,
   "physics_change": false,
   "canonical_state_admission": "NOT_ADMITTED",
   "initialization_fixture": "INPO1_EXPLICIT_P_STATE",
   "harness_module": "tools/stateq01/p_state_roundtrip_harness.py",
   "test_module": "tests/stateq01/test_p_state_roundtrip_harness.py",
+  "workflow": {
+    "run_id": 34337364081,
+    "job_id": 102419793911,
+    "tested_head": "4a49f9fc157ed295bb397dc7f559194c69d6cbdd",
+    "python": "3.12.14",
+    "tests_run": 13,
+    "tests_passed": 13,
+    "tests_failed": 0
+  },
   "persistent_owners": [
     "aqueous_po4[soil_layer]",
     "fast_sorbed[soil_layer;fast_site]",
@@ -26,8 +35,19 @@
     "extra_site_truncation": "FORBIDDEN",
     "inpo2_or_inpo3_projection_qualified_here": false
   },
-  "tested": false,
-  "qualified": false,
-  "qualification_boundary": "synthetic exact site-resolved state roundtrip only; no revision-53 P-process split-run and no Inpo2/3 canonicalization",
-  "next": "execute persisted sentinel in GitHub Actions"
+  "sentinel_results": {
+    "site_resolved_roundtrip_exact": true,
+    "fast_site_order_preserved": true,
+    "slow_site_order_preserved": true,
+    "layout_mismatch_rejected_before_state_decode": true,
+    "missing_site_not_zero_filled": true,
+    "extra_site_not_truncated": true,
+    "derived_total_not_checkpointed": true,
+    "derived_total_recomputable_from_owners": true,
+    "payload_and_state_nonmutation": true
+  },
+  "tested": true,
+  "qualified": true,
+  "qualification_boundary": "synthetic exact site-resolved Inpo=1 state roundtrip only; no revision-53 P-process split-run, no numerical-process equivalence and no Inpo2/3 canonicalization",
+  "next": "retain site-resolved owner contract; execute profile-clean P-active behavioural split-run under admitted numerical policy when available"
 }
