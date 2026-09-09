@@ -1,12 +1,12 @@
 # ANIMO-PREP10 — Restart-state continuity baseline
 
-Status: `SOURCE_BOUND_BASELINE_PERSISTED_CAUSAL_PROBES_PENDING`.
+Status: `SOURCE_BOUND_AND_DIAGNOSTIC_CAUSAL_BASELINE_PERSISTED_REFERENCE_SPLIT_RUN_BLOCKED`.
 
-This document inventories the first restart/state-continuity findings for frozen ANIMO 4.1.5 revision 53. It does not change source or testcase bytes and does not qualify historical runtime behaviour.
+This document inventories restart/state-continuity findings for frozen ANIMO 4.1.5 revision 53. It does not change frozen source or testcase bytes and does not qualify historical runtime behaviour.
 
 ## 1. Lifecycle contract
 
-PREP10 evaluates persistent state against the chain:
+PREP10 evaluates persistent state against:
 
 ```text
 INITIAL.INP read
@@ -17,119 +17,133 @@ INITIAL.INP read
 -> subsequent INITIAL.INP read
 ```
 
-A state is restart-complete only if its scientifically required information survives this chain. Derived state may be intentionally omitted only when reconstruction from persisted state is explicit and lossless for the admitted model option.
+A state is restart-complete only if scientifically required information survives this chain. Derived state may be omitted only when reconstruction from persisted state is explicit and lossless for the admitted option.
 
-## 2. Core state families with direct read/write symmetry
+## 2. Core state families with direct structural symmetry
 
-The revision-53 source exposes direct restart read/write surfaces for the following major families:
+Revision 53 exposes matching read/write surfaces for the major matrix-state families:
 
-- soil moisture state through `>moistf:`;
-- NH4 solution state through `>ammoni:`;
-- NO3 solution state through `>nitrat:`;
+- soil moisture through `>moistf:`;
+- NH4 solution through `>ammoni:`;
+- NO3 solution through `>nitrat:`;
 - exudate organic matter through `>orgexu:`;
 - humus from exudates through `>humexu:`;
 - fresh-organic-matter fractions through `>orgfsh:`;
 - humus organic matter through `>humorg:`;
 - labile dissolved organic C/N through `>orgsol:`;
 - stable dissolved organic C/N/P through `>sdomin:`;
-- actual plant/root/shoot state through `>orgpla:`;
-- phosphorus solution/fast-sorbed/slow-sorbed/precipitated/DOP state through `>inipho:`;
-- CH4 and N2O system concentrations through `>methan:` and `>nitoxi:` when GHG is active.
+- root/shoot and actual plant uptake through `>orgpla:`;
+- P solution, sorption, precipitation and DOP through `>inipho:`;
+- CH4 and N2O concentrations through `>methan:` and `>nitoxi:` when GHG is active.
 
-This is structural symmetry only. It does not prove bit-identical split-run restart equivalence.
+This proves only source-level representation symmetry. It is not split-run reference qualification.
 
-## 3. Phosphorus restart canonicalization
+Some accepted/result quantities that are not serialized are explicit derived state. Examples include NH4 sorbed amount `Cxnh/Rscxnh`, reconstructed from NH4 concentration plus sorption parameters, and total P sorption sums reconstructed from serialized site states. PREP10 does not classify such deliberate derivations as restart omissions.
 
-`Output_Init.for` always writes P restart state using:
+## 3. P restart canonicalization remains open
 
-```fortran
-Inpo = 1
-```
+`Output_Init.for` always writes P restart state using `Inpo=1` and explicit final solution P, every configured fast/slow sorption site, precipitated P and DOP.
 
-and then writes explicit final solution P, every configured fast-sorption site, every configured slow-sorption site, precipitated P and dissolved organic P.
+Input accepts `Inpo=1..3`. A trajectory started from another initialization mode is therefore canonicalized to explicit-state mode at restart output.
 
-Revision-53 input supports `Inpo=1..3`. Therefore a run started from another initialization mode is canonicalized to explicit-state mode in the emitted restart file.
+All supplied P-active cases already use `Inpo=1`, so the testbank does not exercise a 2/3-to-1 round trip. PREP10 does not classify canonicalization itself as a defect. A dedicated split-run test is still required before modes 2 or 3 can be admitted as restart-equivalent.
 
-PREP10 does not classify this as a defect by itself. It is acceptable only if the emitted explicit state contains all information needed to continue the same trajectory. Split-run equivalence remains to be tested.
+## 4. TCD-032 — macropore solute writer omission
 
-## 4. Source-confirmed macropore restart writer omission
-
-When `IoptMp=1`, `Mapoinput.for` with `Nupa=4` actively reads macropore initial concentrations from `INITIAL.INP`:
-
-- `>MPnitr:`: `CoMpnh(1:2)`, `CoMpni(1:2)`;
-- `>MPorgs:`: `CoMpDiorma(1:2)`, `CoMpDiorni(1:2)`;
-- `>MPphos:` when P is active: `CoMpPo(1:2)`, `CoMpDiorpo(1:2)`.
-
-`Init.for` confirms these are persistent accepted/result state pairs. On later timesteps it copies:
+When `IoptMp=1`, `mapoinput.for` actively reads persistent macropore solute concentrations from:
 
 ```text
-RsCoMpDiorMa -> CoMpDiorMa
-RsCoMpDiorNi -> CoMpDiorNi
-RsCoMpNh     -> CoMpNh
-RsCoMpNi     -> CoMpNi
-RsCoMpDiorPo -> CoMpDiorPo
-RsCoMpPo     -> CoMpPo
+>MPnitr:  CoMpNh(1:2), CoMpNi(1:2)
+>MPorgs:  CoMpDiorMa(1:2), CoMpDiorNi(1:2)
+>MPphos:  CoMpPo(1:2), CoMpDiorPo(1:2)   [when P active]
 ```
 
-However, the corresponding macropore blocks in `Output_Init.for` are entirely commented out. The standard emitted `INITIAL.OUT` therefore has no active writer for these persistent macropore solute states.
+`Init.for` carries all six result-state families back to accepted state on later timesteps.
 
-This is a strong source-confirmed restart-continuity omission. It is not yet a behavioural magnitude claim because all supplied testcases have macropores disabled.
+The corresponding writer block in `Output_Init.for` is entirely commented out. Thus the standard `INITIAL.OUT` cannot serialize state that the active reader expects.
 
-A nearby validation error is also visible in `Mapoinput.for`: the checks labelled `CoMpni(1)` and `CoMpni(2)` pass `CoMpnh(1)` and `CoMpnh(2)` to `Checkrea`, so nitrate values are read but ammonium is checked twice. PREP10 records this separately as an unexercised parser-validation candidate and does not yet assign it a discrepancy number.
+Classification:
 
-## 5. Plant cumulative potential-uptake candidate
+`SOURCE_CONFIRMED_PERSISTENT_MACROPORE_SOLUTE_RESTART_WRITER_OMISSION_TESTBANK_UNEXERCISED`.
 
-The plant system has persistent accepted/result quantities:
+All supplied macropore options are zero, so no behavioural split-run magnitude is claimed. This is distinct from TCD-025, which concerns the public/main macropore balance control volume.
 
-```text
-Amplni_pot  <-> Rsamplni_pot
-Amplpo_pot  <-> Rsamplpo_pot
-```
+## 5. TCD-033 — actual plant uptake restart direction defect
 
-`Init.for` carries these values between ordinary timesteps for plant modes that use them. `Uptpar_Plant.for` uses `Amplni_pot - Amplni_act` in later nutrient-demand logic, so potential uptake is not merely a report accumulator.
+`input1.for` reads cumulative actual plant uptake as `Rsamplni_act` and optional `Rsamplpo_act` from `>orgpla:`.
 
-Yet `>orgpla:` reads/writes only:
-
-```text
-Rsamplro
-Rsamplsh
-Rsamplni_act
-Rsamplpo_act   [when P is active]
-```
-
-No `Rsamplni_pot` or `Rsamplpo_pot` restart field exists on this interface, and `Inicalc.for` initializes `Amplni_pot` and `Amplpo_pot` to zero.
-
-This is a **candidate restart information-loss seam**, not yet a confirmed defect. Its effect depends on crop mode, restart timing and whether the cumulative potential quantity can be reconstructed from other persisted state. PREP10 requires a nonzero causal restart probe before promotion.
-
-## 6. Actual plant uptake initialization requires special scrutiny
-
-`input1.for` reads `Rsamplni_act` and optional `Rsamplpo_act`. In `Inicalc.for` the initialization block contains:
+`Inicalc.for` then contains, for the relevant plant modes:
 
 ```fortran
 If(Rsamplni_act.Lt.1.0d-4) Amplni_act = 0.0
 Rsamplni_act = Amplni_act
-Amplni_pot = 0.0
 ```
 
-with the analogous P code.
+with analogous P code. For a nontrivial restart value there is no preceding `Amplni_act = Rsamplni_act`; the dataflow is in the opposite direction.
 
-For a nonzero restart value above the threshold, this block does not visibly execute `Amplni_act = Rsamplni_act` before copying the opposite direction. Because legacy storage semantics matter, PREP10 will not infer the resulting runtime value from static inspection alone. A controlled nonzero restart probe is required.
+This is naturally exercised by the supplied testbank. Four unmodified initial files contain nonzero actual N/P uptake and the observer sees the accepted values become zero immediately after `Inicalc`:
 
-## 7. GHG auxiliary continuity candidate
+- LWKM: N `0.0666813`, P `0.0088759` kg/m2;
+- GrassPeat: N `0.0632935`, P `0.00675465` kg/m2;
+- STONE: N `0.0195003`, P `0.00295112` kg/m2;
+- Zuiderzeeland: N `0.0235216`, P `0.00322743` kg/m2.
 
-The GHG path contains `Huos_CO2`, `Rshuos_CO2` and `Frhu_CO2`. `Init.for` carries `Rshuos_CO2 -> Huos_CO2` between timesteps, while `ghgasses.for` derives/updates the CO2-associated humus fraction. No explicit restart field for this auxiliary state is emitted by `Output_Init`.
+A temporary minimal causal probe assigns actual accepted state from the restart value before the existing small-value filter. For LWKM the post-`Inicalc` values then equal the supplied restart values exactly.
 
-The source also contains reconstruction logic (`Huos_CO2 = Frhu_CO2 * Huos`), so omission from the restart file is not by itself proof of information loss. GHG restart continuity remains a source-bound candidate and is additionally blocked by the existing GHG source/testcase lineage problem.
+The correction is not accounting-only: in the full LWKM diagnostic comparison 26 of 55 common generated outputs differ after declared volatile-metadata normalization. These differences are diagnostic evidence only, not an acceptance envelope.
 
-## 8. Current classification boundary
+Classification:
+
+`CONFIRMED_LEGACY_PLANT_ACTUAL_UPTAKE_RESTART_INITIALIZATION_DIRECTION_DEFECT`.
+
+## 6. TCD-034 — potential plant uptake missing from restart representation
+
+The plant system carries persistent potential uptake state between ordinary timesteps for applicable plant modes:
+
+```text
+Amplni_pot <-> Rsamplni_pot
+Amplpo_pot <-> Rsamplpo_pot
+```
+
+`Uptpar_Plant` uses potential-minus-actual uptake in later nutrient-demand logic, so this is scientifically active state rather than a reporting accumulator.
+
+Nevertheless `>orgpla:` reads and writes only root/shoot state plus cumulative **actual** N/P uptake. No potential-uptake restart fields exist, and `Inicalc` resets accepted potential uptake to zero.
+
+Natural supplied-case observer evidence shows nonzero state immediately before the restart writer:
+
+- LWKM: N potential `0.06634733`, P potential `0.007806854` kg/m2;
+- GrassPeat: N potential `0.06759374`, P potential `0.009396654` kg/m2;
+- STONE: N potential `0.021070089005`, P potential `0.0028565385393` kg/m2.
+
+For LWKM, `initial.out` contains the actual N/P values in `>orgpla:` but no representation of these nonzero potential states.
+
+Classification:
+
+`CONFIRMED_LEGACY_PLANT_POTENTIAL_UPTAKE_RESTART_STATE_OMISSION`.
+
+A full continuous-versus-split behavioural magnitude is still unmeasured and must not be guessed.
+
+## 7. Nearby but not promoted findings
+
+### Macropore nitrate validation
+
+In `mapoinput.for`, checks labelled `CoMpNi(1)` and `CoMpNi(2)` pass the ammonium variables `CoMpNh(1)` and `CoMpNh(2)` to `Checkrea`. Nitrate is read but ammonium is validated twice. This remains a separate unexercised parser-validation candidate and is not folded into TCD-032.
+
+### GHG CO2-associated humus auxiliary
+
+`Huos_CO2/Rshuos_CO2` is not directly serialized, but source reconstruction through `Frhu_CO2*Huos` exists. Because the only supplied GHG case has a source/testcase lineage mismatch, PREP10 does not promote this to a restart defect.
+
+## 8. Current boundary
 
 At this checkpoint:
 
-- core read/write symmetry: `STRUCTURALLY_MAPPED_NOT_SPLIT_RUN_QUALIFIED`;
+- core matrix-state read/write mapping: `STRUCTURALLY_MAPPED_NOT_SPLIT_RUN_QUALIFIED`;
 - P `Inpo -> 1` restart conversion: `CANONICALIZATION_REQUIRES_SPLIT_RUN_CHECK`;
-- macropore solute restart writer: `SOURCE_CONFIRMED_PERSISTENT_STATE_WRITER_OMISSION_TESTBANK_UNEXERCISED`;
-- plant cumulative potential uptake: `CAUSAL_PROBE_REQUIRED`;
-- nonzero actual plant uptake initialization: `CAUSAL_PROBE_REQUIRED`;
-- GHG auxiliary CO2 humus state: `RECONSTRUCTION_SEMANTICS_UNRESOLVED`.
+- TCD-032: source-confirmed persistent macropore restart writer omission, testbank unexercised;
+- TCD-033: confirmed actual plant uptake initialization-direction defect with natural multi-case reachability;
+- TCD-034: confirmed potential plant uptake restart-state omission with natural nonzero writer-boundary evidence;
+- GHG auxiliary reconstruction: unresolved because of lineage/reference blockers.
+
+PREP02 historical reference qualification remains unavailable. None of the diagnostic probes qualifies corrected production behaviour.
 
 Production migration remains `NOT_ADMITTED`.
