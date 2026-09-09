@@ -21,6 +21,8 @@
     "repository_evidence_reviewed": true,
     "supplied_archives_rescanned": true,
     "public_acquisition_search_run": true,
+    "official_distribution_route_deepened": true,
+    "source_lineage_keyword_heterogeneity_reconciled_into_request": true,
     "candidate_registry_persisted": true,
     "acquisition_packet_persisted": true,
     "historical_reference_artifact_obtained": false,
@@ -32,9 +34,12 @@
     "production_migration_admitted": false
   },
   "source_bound_release_identity": {
-    "tag": "file:///V:/svn_Animo/tags/animo4.1.5",
-    "revision": "53",
-    "compiler_string": "Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]"
+    "archive_self_identification_tag": "file:///V:/svn_Animo/tags/animo4.1.5",
+    "archive_self_identification_revision": "53",
+    "compiler_string": "Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]",
+    "file_level_headurl_observation": "53_observed_HeadURL_values_point_to_tags/animo4.1.4",
+    "canonical_homogeneous_svn_tag_provenance_proven": false,
+    "interpretation": "exact supplied archive bytes are pinned; archive self-identifies as 4.1.5 revision 53; canonical homogeneous SVN checkout identity remains unresolved"
   },
   "supplied_artifact_scan": {
     "historical_animo_executable_found": false,
@@ -49,6 +54,8 @@
       "GrassPeat",
       "RuurloGrass"
     ],
+    "ghgmais_runner_identity": "ANIMO animo.ini",
+    "ghgmais_runner_relation_to_r53": "AMBIGUOUS_DISTINCT_OR_INCOMPLETE_LINEAGE_NOT_REFERENCE_FIRST_CASE",
     "unattributed_restart_outputs": [
       {
         "path": "Puitmijn_Cranendonck_60/input/initial.out",
@@ -68,15 +75,30 @@
     "trustworthy_public_visual_fortran_project_found": false,
     "executable_linked_ruurlo_output_found": false,
     "official_wur_executable_on_request_route_found": true,
+    "official_wur_current_agreement_version": "4.0",
+    "official_wur_current_agreement_establishes_4_1_x_distribution": false,
     "official_wur_program_availability_contact": "Leo Renaud",
+    "official_wur_current_experts": [
+      "Piet Groenendijk",
+      "Leo Renaud"
+    ],
+    "official_general_terms_third_party_redistribution_requires_prior_written_permission": true,
     "historical_4_0_20_binary_identity_documented": true,
     "historical_4_0_20_binary_reference_admitted": false,
     "animo4_1_process_description_citation_found": true,
     "animo4_1_cited_report_recovered": false,
     "negative_search_is_proof_of_nonexistence": false
   },
+  "acquisition_policy": {
+    "generic_current_animo_request_sufficient": false,
+    "must_request_historical_4_1_x_explicitly": true,
+    "current_version_4_0_distribution_must_remain_distinct_lineage": true,
+    "requested_release_provenance_should_include_source_checkout_or_manifest": true,
+    "binary_public_redistribution_assumed_permitted": false,
+    "controlled_retention_preferred": true
+  },
   "preferred_next_acquisition": [
-    "exact ANIMO 4.1.5 revision-53 animo41.exe with provenance",
+    "exact ANIMO 4.1.5 revision-53 animo41.exe with executable and source-checkout provenance",
     "original Intel Visual Fortran project/build metadata or archived build environment",
     "complete historical RuurloGrass output tied to a known executable",
     "nearest provenance-qualified ANIMO 4.1.x executable as explicitly distinct lineage"
@@ -92,9 +114,10 @@
   "artifacts": {
     "work_unit_contract": "docs/prep02r/WORK_UNIT_CONTRACT.md",
     "recovery_report": "docs/prep02r/HISTORICAL_REFERENCE_RECOVERY_REPORT.md",
+    "official_distribution_route_audit": "docs/prep02r/OFFICIAL_DISTRIBUTION_ROUTE_AUDIT.md",
     "reference_artifact_request": "docs/prep02r/REFERENCE_ARTIFACT_REQUEST.md",
     "candidate_registry": "integration/animo-prep/PREP02R_REFERENCE_CANDIDATES.json"
   },
   "decision": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
-  "why_blocked": "No independently trustworthy historical ANIMO 4.1.x executable, exact native build metadata, or executable-linked historical output has yet been obtained. GNU determinism cannot close this independence gap."
+  "why_blocked": "No independently trustworthy historical ANIMO 4.1.x executable, exact native build metadata, or executable-linked historical output has yet been obtained. The current official WUR agreement names Version 4.0, so the official request route does not itself close the historical 4.1.x independence gap. GNU determinism cannot close that gap either."
 }
