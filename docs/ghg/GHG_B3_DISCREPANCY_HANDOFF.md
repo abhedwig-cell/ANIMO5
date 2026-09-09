@@ -1,4 +1,4 @@
-# ANIMO-GHG01 — B3 discrepancy and governance handoff
+# ANIMO-GHG01 - B3 discrepancy and governance handoff
 
 Status: `POST_CLOSEOUT_HANDOFF_PERSISTED_NO_CANONICAL_TCD_ALLOCATION`
 
@@ -15,7 +15,9 @@ Existing canonical GHG discrepancies remain distinct:
 - `TCD-008`: GHG theory/version documentation gap;
 - `TCD-013`: GHGMais versus revision-53 input-contract lineage mismatch.
 
-Neither identifier is broadened here to absorb newly found conservation, observer, initialization or equation-reconciliation findings.
+`TCD-011` is also relevant as an existing build-contract dependency for local storage, but GHG01 does not silently broaden it. The active GHG finding extends beyond `Outbal_write` formatting state into scientific process, transport and temporary physical-state restoration.
+
+Neither identifier is broadened here to absorb newly found conservation, observer, initialization, hidden-state or equation-reconciliation findings.
 
 ## GHG01 local candidate findings
 
@@ -62,6 +64,28 @@ Classification: `SOURCE_CONFIRMED_USE_BEFORE_DEFINITION_IN_ACTIVE_CH4_PLANT_TRAN
 The source therefore does not define which temperature state controls the plant-growth multiplier. Compiler/local-storage behaviour may change the runtime manifestation but cannot supply scientific intent.
 
 Recommended B3 treatment: source defect candidate distinct from generic compiler-storage TCDs because it lies on an active scientific transfer path. Recover the intended temperature-state definition before proposing a correction.
+
+### `GHG01-LCL-GHG-HIDDEN-TASK-STATE-PERSISTENCE`
+
+Classification: `SOURCE_CONFIRMED_BUILD_CONTRACT_DEPENDENT_HIDDEN_SCIENTIFIC_STATE_ACROSS_ACTIVE_GHG_TASK_CALLS`
+
+A wider task-state audit found a recurring revision-53 pattern in which an `Itask=1` invocation writes local state and later `Itask=2` or `Itask=3` invocations require the same state without arguments or explicit `SAVE`.
+
+The source-confirmed active subfindings cover:
+
+- `GHGponding`: scalar REAL restore state for temporarily modified ponding hydrology;
+- `GHGasses`: phase-1 hydrology/air-flow locals reused by the separate final-N2O phase;
+- `CH4oxid`: hidden CH4 nonlinear iteration and oxygen-availability state;
+- `N2Oproreduc`: hidden N2O iteration and nitrate-reset state;
+- `NO3N2OReduc`: hidden correction-history arrays;
+- `GHGtransport`: scalar `Ln1`, `FlTopUns` and `Co1Old` reused by shared CH4/N2O transport iterations;
+- `GHGtranssub`: hidden CTE coefficient arrays reused while reaction coefficients iterate.
+
+This materially extends the storage issue already visible under `TCD-011`. PREP01's Intel-default explanation for CHARACTER state does not establish persistence for the scalar INTEGER/REAL/LOGICAL state now found in the active GHG route. The historical project storage switches remain unresolved.
+
+A controlled B1 source-fragment probe of exact `GHGponding` task logic demonstrated causal storage sensitivity. GNU automatic locals with explicit NaN initialization produced NaN restoration on task 2, while static locals restored the exact original ponding state. This diagnostic is not B2 and does not identify historical Intel behavior.
+
+Recommended B3 treatment: do not apply a blanket `SAVE` or `/Qsave` repair. First reconcile the historical Intel storage contract and then decide whether this should broaden `TCD-011` or receive a distinct GHG canonical discrepancy. ANIMO5 migration must represent persistent scientific task state explicitly or recompute it deterministically.
 
 ### `GHG01-LCL-GHG-OUTBAL-WORKING-ARRAYS`
 
@@ -122,10 +146,12 @@ Before source defects are admitted to corrected-legacy or production work, obtai
 3. `QPrCH4`, `QPrCH4Do`, `QPrCH4Ex`, `QPrCH4Hu`, `QPrCH4Os`, their sum, `Rdfaox`, and corresponding source-pool changes under partial anaerobiosis;
 4. fresh-OM fractions spanning both sides of the `0.00082 d-1` weighting threshold where possible;
 5. first-read `Ln`, `Te50`, `fGrow`, `K1plant`, plant oxidation and plant emission on the active CH4 route;
-6. CH4 oxidation and the diffusion, air-flow, ebullition and plant-mediated emission components;
-7. N2O nitrification production, denitrification production, N2O reduction and emission components;
-8. ordinary C/N balance terms plus GHG-specific observer terms;
-9. unrounded model-wide C and N residuals reconstructed from explicit state and transfers.
+6. exact ponding state before task 1, during GHG processing, and after task 2/task 3 restoration;
+7. explicit capture or deterministic recomputation of phase-coupling, CH4 oxidation, N2O iteration and shared transport task state;
+8. CH4 oxidation and the diffusion, air-flow, ebullition and plant-mediated emission components;
+9. N2O nitrification production, denitrification production, N2O reduction and emission components;
+10. ordinary C/N balance terms plus GHG-specific observer terms;
+11. unrounded model-wide C and N residuals reconstructed from explicit state and transfers.
 
 A synthetic or compatibility-derived case may establish causal reachability but cannot become B0 or B2 historical evidence. Historical behaviour remains reference-blocked until a qualified historical runner or equivalent admitted oracle exists.
 
@@ -137,6 +163,7 @@ GHG01 closes theory/source/input-lineage qualification only to the declared leve
 - matching historical testcase/input lineage under `TCD-013`;
 - source-confirmed CH4 source-pool transfer and component-partition nonclosure;
 - unresolved fresh-OM weighting-index intent and active plant-growth temperature use-before-definition;
+- build-contract dependent hidden scientific state throughout the active GHG task architecture;
 - source-confirmed balance-observer findings and incomplete model-wide gas-store control volume;
 - two N2O document-source equation conflicts requiring scientific disposition;
 - absence of a qualified historical reference runner/output oracle.
