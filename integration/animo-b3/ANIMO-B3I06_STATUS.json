@@ -3,7 +3,7 @@
   "title": "Post-UBQ03 Incremental HETOP Zero-Domain Intake",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3i06-ubq03-hetop-zero-intake",
-  "status": "IN_PROGRESS_PERSISTED_VALIDATION_PENDING",
+  "status": "QUALIFIED_UBQ03_INCREMENTAL_INTAKE_RUNTIME_INPUT_DOMAIN_HAZARD_NO_NEW_TCD_NO_ADMISSION",
   "base": {
     "work_unit": "ANIMO-UBQ03",
     "head": "ca55248f2382000288488659571b645fd5a8043b",
@@ -24,6 +24,14 @@
     "relation_to_tcd042": "DOMAIN_CONSTRAINT_ONLY_NOT_NEW_CHILD",
     "reason_no_reservation": "The HETOP=0 inconsistency is source-bound and real, but the intended model-level remedy is not uniquely determined. Input exclusion, conditional admissibility, or explicit zero-capacity semantics have materially different scientific and compatibility consequences."
   },
+  "validation": {
+    "tested_head": "b533ad2f6d6acd36788556d02a2c81372c2d818f",
+    "github_actions_run_id": 34388254599,
+    "job_id": 102589904717,
+    "workflow_conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS"
+  },
   "scope_guards": {
     "production_source_modified": false,
     "input_validation_modified": false,
@@ -38,8 +46,14 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
-  }
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
+  },
+  "decision": "QUALIFIED_UBQ03_INCREMENTAL_INTAKE_RUNTIME_INPUT_DOMAIN_HAZARD_NO_NEW_TCD_NO_ADMISSION",
+  "recommended_next": [
+    "Qualify the intended model-level meaning of HETOP=0 from version-specific theory/provenance before choosing an input or process correction.",
+    "Keep TCD-042-B1 and TCD-042-E1 bounded to Hetop>0 and do not add another TCD-042 child for the broader HETOP endpoint issue.",
+    "Keep TCD-043 unreserved until a later central intake has one atomic causal correction identity to register."
+  ]
 }
