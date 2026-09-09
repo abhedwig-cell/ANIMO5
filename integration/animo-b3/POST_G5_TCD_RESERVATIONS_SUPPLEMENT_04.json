@@ -1,0 +1,79 @@
+{
+  "record_type": "CANONICAL_TCD_RESERVATION_SUPPLEMENT_NOT_B3_DISPOSITION",
+  "work_unit": "ANIMO-B3I01",
+  "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_04",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i01-canonical-register-append",
+  "reservation_status": "RESERVED_FAIL_CLOSED_PENDING_CANONICAL_REGISTER_APPEND_NOT_ADMITTED",
+  "authority": {
+    "canonical_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "canonical_register_blob_observed": "fb44f54aabcf9cd9ee8a8a52bbec78e5cdf06c25",
+    "canonical_register_tail_observed": "TCD-040",
+    "b3_owner": "ANIMO-B3 governance",
+    "source_workunit": "ANIMO-BUILDQ04",
+    "source_branch": "work/animo-buildq04-ghg-bottom-boundary-initialization",
+    "source_head": "0ae1e58f80ca01c1b6eced7ac0d6e5c031827676",
+    "source_local_key": "BUILDQ03-LCL-GHGASSES-FLAIR-NLPLUS1-UNINITIALIZED"
+  },
+  "collision_audit": {
+    "canonical_register_tail_before_reservation": "TCD-040",
+    "tcd_041_default_branch_code_search_matches": 0,
+    "tcd_041_issue_search_matches": 0,
+    "tcd_041_pull_request_search_matches": 0,
+    "tcd_041_matching_branch_refs": 0,
+    "commit_search_endpoint": "NOT_AVAILABLE_THROUGH_CURRENT_CONNECTOR_CONTRACT",
+    "observation_scope": "live authoritative B3I01 register plus default-branch code search, issue search, pull-request search and matching branch refs immediately before reservation; not a transactional repository lock"
+  },
+  "reservations": [
+    {
+      "tcd_id": "TCD-041",
+      "source_local_key": "BUILDQ03-LCL-GHGASSES-FLAIR-NLPLUS1-UNINITIALIZED",
+      "source_workunit": "ANIMO-BUILDQ04",
+      "phenomenon": "revision-53 GHGasses reads the lower external air-flux interface Flair(Nl+1) without a Task-1 assignment, while connected GHG transport source establishes a closed zero lower advective air boundary",
+      "affected_coordinates": [
+        "Flair(Nl+1)",
+        "Flaiio(Nl)",
+        "Flaiou(Nl)"
+      ],
+      "downstream_surface": [
+        "GHGtransport bottom advection balance",
+        "GHGtranssub bottom disappearance coefficient Y3",
+        "CH4 and N2O gas-state trajectories and outputs when affected values propagate"
+      ],
+      "qualified_source_identity": "FLAIR_NLPLUS1_EQUALS_ZERO_FOR_CLOSED_LOWER_GHG_AIR_BOUNDARY",
+      "first_read_scope": "UNCONDITIONAL_TASK1_FIRST_READ_WITHOUT_SOURCE_ASSIGNMENT_FOR_NL_GE_1",
+      "controlled_materiality": [
+        "FLUX_MATERIAL",
+        "STATE_MATERIAL",
+        "OUTPUT_MATERIAL_POTENTIAL"
+      ],
+      "historical_intel_effect": "UNKNOWN",
+      "existing_tcd_relation": {
+        "TCD-011": "DISTINCT: TCD-011 concerns cross-call local storage duration; TCD-041 concerns same-call first-use omission of an external interface boundary coordinate",
+        "TCD-032": "DISTINCT: methanogenesis source-pool transfer path",
+        "TCD-033": "DISTINCT: CH4 production component partition",
+        "TCD-034": "DISTINCT: CH4 plant growth temperature indexing",
+        "TCD-035": "DISTINCT: GHG restart phase partition",
+        "TCD-036": "DISTINCT: GHG ponding layer0 restart continuity",
+        "TCD-037": "DISTINCT: GHG balance observer working-array interface"
+      },
+      "atomicity": "ONE_LOWER_EXTERNAL_AIR_INTERFACE_INITIALIZATION_OMISSION",
+      "provisional_b3_class": "B",
+      "class_rationale": "the connected source already defines the lower external gas boundary and no new physical state or numerical policy is required; the candidate is a local boundary-index initialization omission with controlled flux/state materiality",
+      "qualification_owner": "PROPOSED_ANIMO-BUILDQ05_OR_LOCAL_CLASS_B_ADMISSION_UNIT_WITH_GHG_REVIEW",
+      "admitted": false
+    }
+  ],
+  "required_qualification_before_admission": [
+    "retain the exact connected-source zero lower air-boundary identity",
+    "prove the minimal local correction covers every active GHG Task-1 path without changing unrelated air-flow interfaces",
+    "compare unrounded affected gas flux and state trajectories in an activated qualified GHG case",
+    "preserve historical Intel behavior as unknown unless a matching executable/build is recovered",
+    "prove non-interference outside the lower GHG air-advection boundary",
+    "obtain independent B3 review before any corrected behavior is admitted"
+  ],
+  "new_corrections_admitted": false,
+  "b3_baseline_established": false,
+  "production_migration_admitted": false,
+  "evidence_strength_increased_by_reservation": false
+}
