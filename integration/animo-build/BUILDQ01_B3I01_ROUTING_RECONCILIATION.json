@@ -1,0 +1,60 @@
+{
+  "work_unit": "ANIMO-BUILDQ01",
+  "record_type": "POST_CLOSEOUT_B3_ROUTING_RECONCILIATION_NO_ADMISSION",
+  "status": "RECONCILED_WITH_B3I01_CANONICAL_RUNTIME_ROUTING_NO_NEW_TCD",
+  "repository": "abhedwig-cell/ANIMO5",
+  "buildq01_branch": "work/animo-buildq01-runtime-semantics",
+  "buildq01_evidence_head_before_reconciliation": "e09d3a83467b736158c9a81523b05c3464eebbb3",
+  "b3i01_authority": {
+    "branch": "work/animo-b3i01-canonical-register-append",
+    "head": "d2fe4eb3793a1ffc6c09197d7db01c3e3fe33f88",
+    "routing_artifact": "integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER_SUPPLEMENT_01.json",
+    "intake_document": "docs/b3/POST_G5_DISCREPANCY_INTAKE_SUPPLEMENT_01.md",
+    "buildq01_head_consumed_by_b3i01": "bf5c932753518c883d868c372c6c26bcdcacec68"
+  },
+  "ancestry_check": {
+    "base": "bf5c932753518c883d868c372c6c26bcdcacec68",
+    "head": "e09d3a83467b736158c9a81523b05c3464eebbb3",
+    "status": "ahead",
+    "ahead_by": 2,
+    "behind_by": 0,
+    "merge_base_equals_b3i01_consumed_head": true,
+    "later_changes_change_routed_phenomenon": false
+  },
+  "routes": [
+    {
+      "local_key": "BUILDQ01-LCL-MAPOHYDRO-LNBOMPMX-CROSS-TASK-LIFETIME",
+      "buildq01_finding": "GNU controlled probes establish cross-call storage-duration dependence with control-flow and state materiality; LnBoMpMx is derivable task context rather than persistent scientific state",
+      "canonical_disposition": "MAP_TO_EXISTING_TCD",
+      "canonical_tcd": "TCD-011",
+      "b3_class": null,
+      "qualification_owner": "PROPOSED_ANIMO-BUILDQ02",
+      "new_tcd_allocated": false,
+      "admitted": false
+    },
+    {
+      "local_key": "BUILDQ01-LCL-MAPOHYDRO-INDEX0-BOUNDS-ORDER",
+      "buildq01_finding": "GNU bounds checking confirms an out-of-declared-domain index-zero read before the lower-bound logical conjunct",
+      "canonical_disposition": "BUILD_RUNTIME_HAZARD_NOT_TCD",
+      "canonical_tcd": null,
+      "b3_class": null,
+      "qualification_owner": "PROPOSED_ANIMO-BUILDQ02",
+      "new_tcd_allocated": false,
+      "admitted": false
+    }
+  ],
+  "closed_candidates": [
+    {
+      "candidate": "TRANSPORT_Transgen_GHGtransport_zero_scale_balance_division",
+      "status": "CLOSED_BY_SOURCE_CONTROL_FLOW_RECHECK",
+      "canonical_tcd": null
+    }
+  ],
+  "admission_state": {
+    "new_canonical_tcd_allocated": false,
+    "new_corrections_admitted": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false,
+    "evidence_strength_increased_by_routing": false
+  }
+}
