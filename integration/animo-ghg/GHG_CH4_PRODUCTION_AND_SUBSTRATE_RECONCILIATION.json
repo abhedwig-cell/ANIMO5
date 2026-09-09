@@ -1,0 +1,73 @@
+{
+  "work_unit": "ANIMO-GHG01",
+  "artifact": "GHG_CH4_PRODUCTION_AND_SUBSTRATE_RECONCILIATION",
+  "status": "CH4_TOTAL_PRODUCTION_FORMULATION_SUPPORTED_PARTITION_NONCLOSURE_CONFIRMED_SOURCE_INDEX_CANDIDATE_IDENTIFIED",
+  "source_branch": "work/animo-ghg01-ghg-qualification",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_file_sha256": {
+    "ghg_ch4.for": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98",
+    "Inicalc.for": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1",
+    "Rates.for": "7a1a8aee4715d85b9b7e9e172f83756e4aee8b8278386c804210ef77dc2a857a",
+    "ghgasses.for": "4bf5906f571a586d4312d8e7b0d57f6df3b4b6c2073410335616f3d3c042da93"
+  },
+  "version_near_secondary_documentation": {
+    "citation": "Victoria Naipal (2012), Analysis of lake methane emissions using Open Path Wavelength Modulation Spectroscopy (WMS) and eddy covariance observations, Wageningen MSc thesis",
+    "doi": "10.13140/RG.2.1.3951.7606",
+    "authority_level": "SECONDARY_VERSION_NEAR_NOT_RELEASE_SPECIFICATION",
+    "supports": [
+      "SWAP-ANIMO methane production linear in methanogenic substrate",
+      "Walter and Heimann production-factor form",
+      "same pH polynomial as frozen source",
+      "organic-matter pools weighted using their respective decomposition rates with labile/resistant transition near 0.82e-3 d-1"
+    ]
+  },
+  "total_production": {
+    "definitions": {
+      "A": "1-Rdfaox",
+      "S_i": "pre-aeration methanogenic substrate contribution of source family i",
+      "S": "sum_i(S_i)",
+      "E": "RdfapH*CrfaTe*R0CH4pr"
+    },
+    "revision53_relation": "QPrCH4=E*A*S",
+    "temperature_relation": "CrfaTe=5**((Te-Terf)/10) for Te>0, else 0",
+    "pH_relation": "RdfapH=-0.09*pH^2+1.195*pH-2.965 for 3.3<=pH<10, else 0",
+    "provenance": {
+      "substrate_linear_process": "INDEPENDENT_THEORY",
+      "pH_polynomial": "VERSION_NEAR_SECONDARY_DOCUMENTATION_SUPPORTED_SOURCE_RELATION",
+      "hardcoded_Q10_5": "SOURCE_ONLY"
+    }
+  },
+  "component_partition_nonclosure": {
+    "local_key": "GHG01-LCL-CH4-PRODUCTION-COMPONENT-PARTITION",
+    "classification": "SOURCE_CONFIRMED_CH4_PRODUCTION_COMPONENT_PARTITION_NONCLOSURE",
+    "revision53_component_relation": "QPrCH4_i=QPrCH4*S_i/(A*S)=E*S_i",
+    "component_sum": "sum_i(QPrCH4_i)=E*S=QPrCH4/A",
+    "closure_condition": "A=1",
+    "partial_anaerobiosis": "for 0<A<1 component sum exceeds total production by factor 1/A",
+    "zero_substrate_domain_risk": "if S=0 and anaerobic early return is not taken, component allocation performs 0/0",
+    "active_ledger_reach": "Rates2 uses QPrCH4Do as active DOM sink when IoptGHG>=1",
+    "ghg_miner_implication": "reactivating inactive GHG_Miner unchanged would propagate the same nonclosing component rates into all source-family depletion terms",
+    "historical_runtime_magnitude": "REFERENCE_BLOCKED"
+  },
+  "fresh_om_weighting_index": {
+    "local_key": "GHG01-LCL-CH4-FRESH-OM-WEIGHTING-INDEX",
+    "classification": "SOURCE_CONFIRMED_CROSS_FRACTION_INDEX_DEPENDENCE_WRONG_INDEX_CANDIDATE_REFERENCE_UNEXERCISED",
+    "source_location": "Inicalc.for:509-514",
+    "observed_selector": "Recfav(Nf)>0.00082",
+    "computed_fraction": "FOmCH4Os(Fn) uses Recfav(Fn)",
+    "effect": "last defined fraction selects linear-versus-power weighting rule for every fresh-OM fraction",
+    "intended_selector_claim": "UNRESOLVED",
+    "support_for_per_fraction_interpretation": "Naipal 2012 describes different organic-matter pools using their respective decomposition rates and the same labile/resistant threshold",
+    "correction_admitted": false
+  },
+  "required_closure": [
+    "recover detailed Hendriks ANIMO GHG derivation or authoritative source history",
+    "obtain revision-53-compatible activated GHG case",
+    "record QPrCH4 and all QPrCH4 source-family components under partial anaerobiosis",
+    "test fresh-OM fractions on both sides of the 0.00082 d-1 threshold",
+    "use any Recfav(Fn) counterfactual only as diagnostic evidence"
+  ],
+  "b3_admitted": false,
+  "production_migration_admitted": false,
+  "historical_revision53_behaviour_established": false
+}
