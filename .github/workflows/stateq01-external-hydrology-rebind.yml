@@ -1,0 +1,24 @@
+name: STATEQ01 external hydrology rebind qualification
+
+on:
+  push:
+    branches:
+      - work/animo-stateq01-canonical-state-readiness
+    paths:
+      - tools/stateq01/external_hydrology_frame_rebind_harness.py
+      - tests/stateq01/test_external_hydrology_frame_rebind_harness.py
+      - docs/state/EXTERNAL_HYDROLOGY_FRAME_REBIND_QUALIFICATION.md
+      - integration/animo-state/EXTERNAL_HYDROLOGY_FRAME_REBIND_SENTINEL_STATUS.json
+      - .github/workflows/stateq01-external-hydrology-rebind.yml
+  workflow_dispatch:
+
+jobs:
+  external-hydrology-rebind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run RC-R6 exact external frame sentinels
+        run: python -m unittest tests/stateq01/test_external_hydrology_frame_rebind_harness.py -v
