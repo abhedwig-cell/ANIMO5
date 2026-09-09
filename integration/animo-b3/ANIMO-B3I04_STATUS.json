@@ -3,7 +3,7 @@
   "title": "Post-STATEQ02 Restricted-Core State Evidence Intake & Prior Split-Run Artifact Reconciliation",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3i04-stateq02-incremental-intake",
-  "status": "PERSISTED_STATEQ02_INCREMENTAL_STATE_INTAKE_VALIDATION_PENDING",
+  "status": "QUALIFIED_POST_STATEQ02_INCREMENTAL_STATE_EVIDENCE_INTAKE_NO_NEW_TCD_NO_ADMISSIONS",
   "base": {
     "branch": "work/animo-b3i03-canonical-register-append",
     "head": "814ea660d367494432beb63ea78298d1f6cd73d7",
@@ -62,17 +62,19 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "validation": {
     "validator": "tools/b3i04/validate_b3i04.py",
     "workflow": ".github/workflows/animo-b3i04-stateq02-intake.yml",
-    "github_actions_run_id": null,
-    "github_actions_head": null,
-    "github_actions_conclusion": null,
-    "validator_result": "PENDING"
+    "tested_head_before_status_closeout": "dd39eec43c7cd4cad936a5857c4737e03fc49d23",
+    "github_actions_run_id": 34361252162,
+    "github_actions_head": "dd39eec43c7cd4cad936a5857c4737e03fc49d23",
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS",
+    "scope_guard": "PASS_GOVERNANCE_ONLY_NO_PRODUCTION_REFERENCE_OR_CANONICAL_REGISTER_CHANGE"
   },
   "deliverables": [
     "docs/b3/POST_STATEQ02_INCREMENTAL_STATE_INTAKE.md",
