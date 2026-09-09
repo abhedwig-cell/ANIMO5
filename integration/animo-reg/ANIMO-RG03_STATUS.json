@@ -1,0 +1,21 @@
+{
+  "work_unit": "ANIMO-RG03",
+  "title": "Post-G5 Evidence Wave Integration, Gate Reconciliation & Process-Scoped B3 Queue Governance",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-rg03-post-g5-gate-reconciliation",
+  "starting_parent": "5c278152eacc33660f1c5870c7d419b8041b20a9",
+  "state": "IN_PROGRESS_PERSISTED_BEFORE_TEST",
+  "implemented": false,
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "scientific_admission_performed": false,
+  "production_migration": "NOT_ADMITTED",
+  "legacy_source_modified": false,
+  "corrected_legacy_admitted": false,
+  "notes": [
+    "RG03 is a governance and gate-reconciliation workunit only.",
+    "The branch was created from the qualified RG02-G5 integration head and persisted before qualification work, per persist-early/test-second policy.",
+    "No branch is treated as authoritative based on its name alone; live status and provenance must be reconciled before closeout."
+  ]
+}
