@@ -4,7 +4,7 @@ Work unit: `ANIMO-B3I05`
 
 Branch: `work/animo-b3i05-ubq02-numerical-seam-intake`
 
-Status target: `QUALIFIED_POST_UBQ02_INCREMENTAL_ATOMIZATION_TCD042_B1_E1_NO_NEW_TCD_NO_ADMISSIONS`
+Status target: `QUALIFIED_TCD042_CANONICAL_CHILD_ROUTING_NO_NEW_TCD_NO_ADMISSIONS`
 
 ## Purpose
 
