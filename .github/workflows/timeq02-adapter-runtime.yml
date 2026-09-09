@@ -1,0 +1,57 @@
+name: ANIMO-TIMEQ02 adapter runtime qualification
+
+on:
+  push:
+    branches:
+      - work/animo-timeq02-adapter-transaction-fixtures
+    paths:
+      - 'tools/timeq01_runtime_fixture.py'
+      - 'tools/timeq02_adapter_fixture.py'
+      - 'tools/test_timeq02_adapter_fixture.py'
+      - 'docs/timeq02/**'
+      - 'integration/animo-time/TIMEQ02_ARCH07_CASE_DISPOSITION.csv'
+      - 'integration/animo-architecture/ARCH05_EXCHANGE_FIELDS.csv'
+      - 'integration/animo-architecture/ARCH05_TRANSACTION_RULES.csv'
+      - 'integration/animo-architecture/ARCH05_COMPATIBILITY_SCHEMA.csv'
+      - 'integration/animo-architecture/ARCH07_TEST_CASES.csv'
+      - '.github/workflows/timeq02-adapter-runtime.yml'
+  workflow_dispatch:
+
+jobs:
+  synthetic-adapter-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile TIMEQ02 fixtures
+        run: |
+          python -m py_compile \
+            tools/timeq01_runtime_fixture.py \
+            tools/timeq02_adapter_fixture.py \
+            tools/test_timeq02_adapter_fixture.py
+
+      - name: Verify ARCH07 case disposition
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          path = Path('integration/animo-time/TIMEQ02_ARCH07_CASE_DISPOSITION.csv')
+          rows = list(csv.DictReader(path.open(newline='', encoding='utf-8')))
+          assert len(rows) == 41, len(rows)
+          execute = {r['test_id'] for r in rows if r['timeq02_disposition'] == 'EXECUTE'}
+          defer = {r['test_id'] for r in rows if r['timeq02_disposition'] == 'DEFER'}
+          assert len(execute) == 38, len(execute)
+          assert defer == {'H016', 'T008', 'T009'}, defer
+          assert all(r['timeq02_evidence_class'] == 'ADAPTER_RUNTIME_SYNTHETIC_PRODUCER' for r in rows if r['timeq02_disposition'] == 'EXECUTE')
+          print('TIMEQ02 case disposition: PASS (38 execute, 3 deferred)')
+          PY
+
+      - name: Execute 38 TIMEQ02 synthetic adapter cases
+        run: |
+          python tools/test_timeq02_adapter_fixture.py
