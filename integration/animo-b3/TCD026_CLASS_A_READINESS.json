@@ -55,6 +55,11 @@
       "coverage_matrix_blob": "a57415535405e05294a487c4260f6e8caebde6a0",
       "applicable_TCD026_oracle": null,
       "use": "NO_APPLICABLE_INDEPENDENT_ORACLE_CURRENTLY_REGISTERED"
+    },
+    "B3A04_model_produced_state_replay": {
+      "path": "integration/animo-b3/TCD026_MODEL_PRODUCED_STATE_REPLAY.json",
+      "classification": "MODEL_PRODUCED_RESTART_FORMAT_STATE_REPLAY_NOT_CHRONOLOGICAL_SPLIT_RUN",
+      "use": "stronger path activation and non-interference evidence only; not B2 and not split-run qualification"
     }
   },
   "physical_owner": {
@@ -92,19 +97,38 @@
     "ledger_only_probe_max_abs_cumulative_residual_kg_ha": 9.09e-11,
     "small_post_probe_residual_is_tolerance": false
   },
+  "model_produced_state_replay": {
+    "case": "CranMais",
+    "producer_initial_out_sha256": "254fa48dfd1349f6b0d2079b6dc0ca8ec16c35ea80bcd5b8eb464bd60b770a86",
+    "model_produced_nonzero_Ex_layers": [1,2,3,4,5,6,7,8,9],
+    "model_produced_Ex_total_kg_ha": 5989.6594,
+    "legacy_first_period_fresh_om_deviation_kg_ha_printed": -5990.0,
+    "candidate_first_period_fresh_om_deviation_kg_ha_printed": -7.28e-12,
+    "legacy_begin_fresh_om_kg_ha_printed": 10943.275,
+    "candidate_begin_fresh_om_kg_ha_printed": 16932.935,
+    "printed_begin_store_increment_kg_ha": 5989.66,
+    "output_initial_byte_identical_legacy_vs_candidate": true,
+    "normalized_scientific_surfaces_compared": 22,
+    "normalized_changed_surfaces": ["ani_omMP.Bal", "ani_omTP.Bal", "baomMP.Out", "baomTP.Out"],
+    "normalized_unexpected_changed_surfaces": [],
+    "chronological_split_run_claimed": false,
+    "historical_reference_claimed": false
+  },
   "natural_activation": {
     "supplied_B0_B1_initial_exudate_nonzero_case": false,
     "all_supplied_orgexu_initial_values_zero": true,
-    "classification": "STRUCTURALLY_UNREACHABLE_ZERO_INITIAL_EX_IN_SUPPLIED_NATURAL_TESTBANK",
+    "ordinary_start_classification": "STRUCTURALLY_UNREACHABLE_ZERO_INITIAL_EX_IN_SUPPLIED_NATURAL_TESTBANK",
     "synthetic_causal_activation_available": true,
-    "future_model_produced_restart_activation_executed_here": false
+    "model_produced_restart_format_state_activation_executed_here": true,
+    "model_produced_activation_case": "CranMais",
+    "model_produced_activation_classification": "PASS_MODEL_PRODUCED_RESTART_FORMAT_STATE_REPLAY_NOT_CHRONOLOGICAL_SPLIT_RUN"
   },
   "non_interference": {
     "physical_state": "PASS_FOR_READINESS",
     "process_flux": "PASS_FOR_READINESS",
     "total_physical_mass": "PASS_FOR_READINESS",
-    "basis": "PREP06 temporary Bfom-only diagnostic compared 72 outputs; six fresh-OM balance files changed and no unintended ordinary output changed",
-    "observed_changed_files": [
+    "basis": "PREP06 temporary Bfom-only diagnostic compared 72 outputs with six whitelisted fresh-OM balance files changed; B3A04 additionally replayed model-produced CranMais restart-format state and found identical Output/initial.out bytes plus 22 normalized scientific surfaces with only four fresh-OM balance surfaces changed and no unexpected differences.",
+    "PREP06_observed_changed_files": [
       "ani_omGP.Bal",
       "ani_omRP.Bal",
       "ani_omTP.Bal",
@@ -112,14 +136,21 @@
       "baomRP.Out",
       "baomTP.Out"
     ],
+    "B3A04_replay_changed_files": [
+      "ani_omMP.Bal",
+      "ani_omTP.Bal",
+      "baomMP.Out",
+      "baomTP.Out"
+    ],
     "unintended_changed_outputs": 0
   },
   "negative_controls": {
     "zero_initial_Ex": "PASS_BY_EXACT_ZERO_TERM_AND_SUPPLIED_TESTBANK_STRUCTURE",
+    "ordinary_CranMais_zero_Ex_start_first_period_fresh_om_deviation_kg_ha_printed": -1.46e-11,
     "Bano_unchanged": "REQUIRED_AND_SOURCE_SUPPORTED",
     "Bapo_unchanged": "REQUIRED_AND_SOURCE_SUPPORTED",
     "other_organic_stores_unchanged": "REQUIRED",
-    "ordinary_state_process_outputs_unchanged": "PASS_PREP06_DIAGNOSTIC"
+    "ordinary_state_process_outputs_unchanged": "PASS_PREP06_AND_B3A04_MODEL_PRODUCED_STATE_REPLAY"
   },
   "output_contract": "integration/animo-b3/TCD026_EXPECTED_DIFFERENCE.json",
   "gates": {
@@ -130,8 +161,8 @@
     "begin_end_storage_identity": "PASS",
     "exact_omitted_ledger_term": "PASS",
     "closed_conservation_identity": "PASS_FOR_ATOMIC_COMPONENT",
-    "causal_activation": "PASS_SYNTHETIC",
-    "natural_activation_or_structural_unreachability": "PASS_STRUCTURAL_UNREACHABILITY",
+    "causal_activation": "PASS_SYNTHETIC_AND_MODEL_PRODUCED_STATE_REPLAY",
+    "natural_activation_or_structural_unreachability": "PASS_STRUCTURAL_ZERO_ORDINARY_START_PLUS_MODEL_PRODUCED_RESTART_FORMAT_STATE_ACTIVATION",
     "physical_state_non_interference": "PASS_FOR_READINESS",
     "process_flux_non_interference": "PASS_FOR_READINESS",
     "total_physical_mass_non_interference": "PASS_FOR_READINESS",
