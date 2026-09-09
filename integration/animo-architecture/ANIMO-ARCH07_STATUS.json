@@ -1,0 +1,123 @@
+{
+  "work_unit": "ANIMO-ARCH07",
+  "title": "External Adapter Qualification Test Specification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-arch07-adapter-qualification-spec",
+  "date": "2026-09-09",
+  "starting_head": "ce3ea8089902dbc4bcbe3ff0224d30c2f8daf3a4",
+  "source_workunit": "ANIMO-ARCH06",
+  "source_decision": "QUALIFIED_CANDIDATE_NORMALIZED_MODEL_CONFIGURATION_AND_IDENTITY_ARCHITECTURE",
+  "decision": "QUALIFIED_CANDIDATE_EXTERNAL_ADAPTER_QUALIFICATION_TEST_SPECIFICATION",
+  "qualification_scope": "candidate fail-closed qualification specification with exact coverage of all ARCH05 exchange fields and transaction rules, ARCH06 identity mismatch tests, coupled rollback/commit/checkpoint experiments and deferred macropore/reference cases; no runtime adapter qualification",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "blocked": true,
+  "candidate_specification_only": true,
+  "adapter_qualified": false,
+  "canonical_state_gate_admitted": false,
+  "canonical_time_gate_admitted": false,
+  "canonical_mass_gate_admitted": false,
+  "canonical_exchange_gate_admitted": false,
+  "reference_qualified": false,
+  "production_implemented": false,
+  "legacy_source_modified": false,
+  "testcase_modified": false,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false,
+  "upstream_verification": {
+    "arch06_head": "ce3ea8089902dbc4bcbe3ff0224d30c2f8daf3a4",
+    "arch06_final_head_ci_run": 34305999651,
+    "arch06_final_head_ci_conclusion": "success"
+  },
+  "verification": {
+    "arch05_exchange_fields": 42,
+    "arch05_transaction_rules": 18,
+    "test_cases": 41,
+    "field_coverage_rows": 42,
+    "transaction_rule_coverage_rows": 18,
+    "github_actions_run_id": 34306484108,
+    "github_actions_tested_head": "fef6043b0e2a84a640049f82cd03de26b5c3ff2b",
+    "github_actions_conclusion": "success",
+    "consistency_test": "PASS",
+    "consistency_test_artifact": "integration/animo-architecture/ARCH07_CONSISTENCY_TEST.json",
+    "audit_tool": "tools/audit_arch07_adapter_qualification_spec.py",
+    "audit_tool_executed_from_repository_checkout": true,
+    "runtime_hydrology_adapter_executed": false,
+    "runtime_crop_adapter_executed": false,
+    "coupled_runtime_executed": false,
+    "reference_evidence_generated": false
+  },
+  "specification_policy": {
+    "all_arch05_fields_have_exact_coverage": true,
+    "all_arch05_transaction_rules_have_exact_coverage": true,
+    "invalid_unit_shape_geometry_layout_schema_or_config_fails_closed": true,
+    "frame_identity_is_immutable": true,
+    "accepted_generation_mixing_is_rejected": true,
+    "producer_sign_normalized_at_adapter_boundary": true,
+    "external_crop_state_remains_external_owner": true,
+    "realized_crop_uptake_requires_typed_event_link": true,
+    "residue_and_export_delta_inference_forbidden": true,
+    "rejected_trial_physical_contribution_forbidden": true,
+    "diagnostics_remain_nonphysical": true,
+    "macropore_positive_case_deferred_until_admission": true,
+    "split_run_and_rollback_replay_reserved_as_future_behavioural_tests": true,
+    "numeric_tolerance_defined": false
+  },
+  "evidence_tiers": [
+    "SPEC_STRUCTURAL",
+    "ADAPTER_RUNTIME",
+    "COUPLED_RUNTIME",
+    "REFERENCE_BEHAVIOR",
+    "SCIENTIFIC_ADMISSION"
+  ],
+  "mapped_open_evidence": [
+    "TCD-018",
+    "TCD-025"
+  ],
+  "deliverables": {
+    "contract": "docs/arch07/WORK_UNIT_CONTRACT.md",
+    "qualification_model": "docs/arch07/ADAPTER_QUALIFICATION_MODEL.md",
+    "hydrology_test_spec": "docs/arch07/HYDROLOGY_ADAPTER_TEST_SPEC.md",
+    "crop_test_spec": "docs/arch07/CROP_ADAPTER_TEST_SPEC.md",
+    "coupled_transaction_test_spec": "docs/arch07/COUPLED_TRANSACTION_TEST_SPEC.md",
+    "test_matrix": "integration/animo-architecture/ARCH07_TEST_CASES.csv",
+    "field_coverage": "integration/animo-architecture/ARCH07_FIELD_COVERAGE.csv",
+    "transaction_rule_coverage": "integration/animo-architecture/ARCH07_TRANSACTION_RULE_COVERAGE.csv",
+    "audit_tool": "tools/audit_arch07_adapter_qualification_spec.py",
+    "workflow": ".github/workflows/arch07-adapter-qualification-spec.yml",
+    "consistency_test": "integration/animo-architecture/ARCH07_CONSISTENCY_TEST.json",
+    "status": "integration/animo-architecture/ANIMO-ARCH07_STATUS.json"
+  },
+  "remaining_blockers": [
+    "MIGRATION_DAG still requires qualified migration baseline QM before canonical STATE TIME MASS and EX admission",
+    "PREP02 historical or independently trusted reference environment remains unresolved",
+    "controlled immutable B0 retention remains a separate governance gate",
+    "generic TIME acceptance retry substep and coupled convergence semantics remain unqualified",
+    "no production SWAP hydrology adapter exists",
+    "no production WOFOST or other external crop adapter exists",
+    "no runtime coupled reject commit or retry evidence exists",
+    "no split-run or rollback replay comparison evidence exists",
+    "numerical comparison and tolerance policy remains external to ARCH07",
+    "TCD-018 remains a legacy public-ledger seam rather than an admitted correction",
+    "supplied testbank has no active macropore case and TCD-025 blocks macropore positive qualification"
+  ],
+  "recommended_next": {
+    "parallel_now": [
+      "define candidate homogeneous execution-class grouping rules from ARCH06 physical_layout_id while preserving exact physical configuration semantics",
+      "define a parameter-set identity and canonicalization architecture without inventing scientific defaults or tolerances",
+      "prepare adapter fixture formats that instantiate ARCH07 tests without implementing SWAP/WOFOST adapters",
+      "continue PREP02 historical reference recovery and controlled B0 retention independently"
+    ],
+    "serial_after_qm_and_time": [
+      "qualify or revise canonical STATE and TIME contracts",
+      "implement candidate concrete adapters behind ARCH05 schemas",
+      "execute ARCH07 ADAPTER_RUNTIME and COUPLED_RUNTIME cases",
+      "behaviourally qualify checkpoint rollback and replay",
+      "admit MASS and then EX only with required evidence"
+    ]
+  }
+}
