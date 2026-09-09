@@ -84,7 +84,22 @@
     "executable_validator": "tools/validate_time02_vectors.py",
     "executable_result": "integration/animo-time/TIME02_EXECUTABLE_RESULT.json",
     "workflow": ".github/workflows/time02-exact-time.yml",
-    "workflow_execution": "PENDING"
+    "tested_head": "8fd923d8260717542e136f70d72087b031a6e599",
+    "github_actions_run_id": 34328058769,
+    "github_actions_job_id": 102389859827,
+    "github_actions_conclusion": "success",
+    "python_version": "3.12.14",
+    "vectors_total": 17,
+    "vectors_passed": 17,
+    "vectors_failed": 0,
+    "comparison_mode": "EXACT_INTEGER_RATIONAL_NO_FLOAT_TOLERANCE"
+  },
+  "review_surface": {
+    "pull_request": 18,
+    "draft": true,
+    "base": "work/animo-rg02-g5-independent-stream-attachment",
+    "merge_performed": false,
+    "purpose": "governance/review attachment proposal only"
   },
   "evidence_boundaries": {
     "b0_source_and_testbank_inspection": true,
