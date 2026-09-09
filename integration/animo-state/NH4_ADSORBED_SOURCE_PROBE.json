@@ -1,0 +1,75 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "test_id": "RC-R5-source-component",
+  "status": "PASS_FROZEN_SOURCE_COMPONENT_RECONSTRUCTION_CONTINUITY_FULL_MODEL_SPLIT_RUN_OPEN",
+  "evidence_class": "B0_HASH_PINNED_SOURCE_COMPONENT_EXECUTION_NOT_B2",
+  "canonical_state_admission": "NOT_ADMITTED",
+  "canonical_time_admission": "NOT_ADMITTED",
+  "production_code": false,
+  "physics_change": false,
+  "tested_content_head": "f72d8c4829c0f9904afa075a4f441a54d53ea93c",
+  "driver_git_blob_sha": "85aaf0f607831d1ee608bed950eec281cca18a46",
+  "driver_sha256": "c4808783ddcd5718d91bdffe10f62b25a469eed15a038a7a6e5b3aec15ce1a3a",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_file_hashes": {
+    "TRANSPORT.FOR": "3f597b896ab5514e0b836f5547b342e317b03c8e3e58e053e113bd1c17e2f998",
+    "Transsub.for": "c548e5d372ffbc7f4d4e4d8d86609cf1f34cf70ea513d345e3c7fada5cf6b552",
+    "Param.inc": "20d85ed8bca9e0060d3b51c2f800ff02fdf0bc3ebb8c834baf4afca870a33475"
+  },
+  "compiler": "GNU Fortran (Debian 14.2.0-19) 14.2.0",
+  "compiler_flags": [
+    "-O0",
+    "-ffree-form",
+    "-ffree-line-length-none",
+    "-fallow-argument-mismatch",
+    "-std=legacy",
+    "-fdefault-real-8",
+    "-fdefault-double-8",
+    "-fno-automatic"
+  ],
+  "executable_sha256": "98596aed62ccf1a6b2a7c5b4b903a1c64c7e34ff09983f92ff13382d4df235b9",
+  "results": {
+    "checkpoint_rsco": 0.010307667655236559,
+    "checkpoint_rscx": 0.002679993590361505,
+    "reconstructed_cx": 0.002679993590361505,
+    "checkpoint_equals_reconstructed_cx_exact": true,
+    "continuous_final": [
+      0.010452035544246962,
+      0.00271752924150421,
+      0.010380227551667098,
+      0.00015,
+      0.00010380227551667098
+    ],
+    "reconstructed_final": [
+      0.010452035544246962,
+      0.00271752924150421,
+      0.010380227551667098,
+      0.00015,
+      0.00010380227551667098
+    ],
+    "omitted_final": [
+      0.010452035544246962,
+      0.00271752924150421,
+      0.010380227551667098,
+      0.00015,
+      0.00010380227551667098
+    ],
+    "continuous_equals_reconstructed_exact": true,
+    "continuous_equals_omitted_physical_exact": true
+  },
+  "balance_logs": {
+    "control_paths_warning_free": true,
+    "omitted_adsorbed_storage_warning": true,
+    "omitted_balance_batr_reported": 0.00268
+  },
+  "interpretation": {
+    "accepted_rscx_equals_candidate_reconstruction_exact_within_build": true,
+    "next_component_outputs_equal_uninterrupted_vs_reconstructed_exact_within_build": true,
+    "omitting_cx_changes_component_physical_outputs": false,
+    "omitting_cx_breaks_original_transport_storage_ledger_check": true,
+    "independent_mutable_adsorbed_nh4_owner_supported": false,
+    "physical_adsorbed_nh4_storage_can_be_dropped_from_control_volume": false
+  },
+  "qualification_boundary": "original frozen TRANSPORT.FOR plus Transsub.for component only under the deterministic GNU diagnostic build contract; no full revision-53 profile-clean split, no historical B2 oracle and no canonical numerical-policy admission",
+  "next": "retain adsorbed NH4 as derived/recomputable physical-storage view; full profile-clean accepted-boundary split remains required before RC-R5 can be promoted beyond source-component evidence"
+}
