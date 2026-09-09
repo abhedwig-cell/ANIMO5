@@ -98,7 +98,8 @@ def main() -> int:
             "Every retry receives a new `trial_id`",
             "A shorter/longer proposed interval is a new interval",
             "portable physical checkpoint may be created only while the model is in accepted-idle state",
-            "management/event cursor must be serialized or deterministically reconstructed",
+            "serialize explicit event schedule/cursor continuation state",
+            "deterministically reconstruct selection from immutable absolute event schedule",
             "side-effect free",
         ]:
             need(retry, fragment, "retry/checkpoint policy")
