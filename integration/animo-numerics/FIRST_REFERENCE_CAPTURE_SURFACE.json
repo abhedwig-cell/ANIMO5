@@ -1,0 +1,134 @@
+{
+  "work_unit": "ANIMO-NQ01",
+  "title": "First independent reference capture surface",
+  "status": "SOURCE_BOUND_CAPTURE_SURFACE_PREDEFINED_AWAITING_B2",
+  "preferred_first_case": "RuurloGrass",
+  "source_registers": {
+    "prep06_branch": "work/animo-prep06-conserved-state-ledger",
+    "prep06_head_observed": "9b1f1ea51c24fb82823290193651830dc61ea3c8",
+    "prep06_status": "QUALIFIED_CONSERVED_STATE_AND_TRANSFER_LEDGER_PREPARATORY_EVIDENCE",
+    "state_register": "integration/animo-prep/PREP06_CONSERVED_STATE_INVENTORY.csv",
+    "transfer_register": "integration/animo-prep/PREP06_TRANSFER_LEDGER.csv",
+    "state_register_rows_reported": 53,
+    "transfer_register_rows_reported": 124
+  },
+  "selection_policy": {
+    "this_is_not_a_ruurlo_activation_claim": true,
+    "capture_only_when_semantics_are_source_bound": true,
+    "required_if_active_and_observer_capable": true,
+    "missing_expected_active_surface_fails_closed": true,
+    "inactive_surface_may_be_omitted_only_with_recorded_activation_evidence": true,
+    "formatted_report_is_not_sufficient_for_unrounded_scientific_surface": true,
+    "global_numerical_tolerance_defined": false
+  },
+  "standard_state_checkpoints": [
+    "INITIAL_STATE",
+    "PRE_PROCESS_STATE",
+    "POST_PROCESS_STATE",
+    "ACCEPTED_END_OF_STEP_STATE",
+    "FINAL_STATE"
+  ],
+  "standard_ledger_checkpoints": [
+    "INITIAL_STATE",
+    "CUMULATIVE_PERIOD_BALANCE",
+    "FINAL_STATE"
+  ],
+  "state_surfaces": [
+    {"state_id": "W-MATRIX", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "HYDROLOGIC_CONTEXT", "species": "water", "required_if_active": true},
+    {"state_id": "TOP-NH4", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "BOUNDARY_RESERVOIR", "species": "NH4-N", "required_if_active": true},
+    {"state_id": "TOP-NO3", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "BOUNDARY_RESERVOIR", "species": "NO3-N", "required_if_active": true},
+    {"state_id": "TOP-PO4", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "BOUNDARY_RESERVOIR", "species": "PO4-P", "required_if_active": true},
+    {"state_id": "N-NH4-AQ", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_N", "species": "NH4-N", "required_if_active": true},
+    {"state_id": "N-NH4-ADS", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_N", "species": "NH4-N", "required_if_active": true},
+    {"state_id": "N-NO3", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_N", "species": "NO3-N", "required_if_active": true},
+    {"state_id": "P-PO4-AQ", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_P", "species": "PO4-P", "required_if_active": true},
+    {"state_id": "P-FAST", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_P", "species": "PO4-P", "required_if_active": true},
+    {"state_id": "P-SLOW", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_P", "species": "PO4-P", "required_if_active": true},
+    {"state_id": "P-PRECIP", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_P", "species": "PO4-P", "required_if_active": true},
+    {"state_id": "DOM-L-C", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_OM", "species": "labile dissolved organic matter", "required_if_active": true},
+    {"state_id": "DOM-L-N", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_N", "species": "dissolved organic N", "required_if_active": true},
+    {"state_id": "DOM-L-P", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_P", "species": "dissolved organic P", "required_if_active": true},
+    {"state_id": "DOM-S-C", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_OM", "species": "stable dissolved organic matter", "required_if_active": true},
+    {"state_id": "DOM-S-N", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_N", "species": "stable dissolved organic N", "required_if_active": true},
+    {"state_id": "DOM-S-P", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_P", "species": "stable dissolved organic P", "required_if_active": true},
+    {"state_id": "OM-FOM", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_OM", "species": "fresh organic matter", "required_if_active": true},
+    {"state_id": "OM-HUMUS", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_OM", "species": "humus", "required_if_active": true},
+    {"state_id": "OM-HUMUS-EX", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_OM", "species": "humus from exudates", "required_if_active": true},
+    {"state_id": "OM-EXUDATE", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CORE_OM", "species": "root exudate organic matter", "required_if_active": true},
+    {"state_id": "CROP-N-ACT", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CROP_COUPLING", "species": "plant N", "required_if_active": true},
+    {"state_id": "CROP-P-ACT", "variable_class": "PHYSICAL_STORAGE_STATE", "tier": "CROP_COUPLING", "species": "plant P", "required_if_active": true}
+  ],
+  "transfer_surfaces": [
+    {"transfer_id": "NH4-VERTICAL", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "CORE_N", "required_if_active": true},
+    {"transfer_id": "NH4-DRAIN", "variable_class": "EXTERNAL_BOUNDARY_FLUX", "tier": "CORE_N", "required_if_active": true},
+    {"transfer_id": "NH4-BOTTOM-DOWN", "variable_class": "EXTERNAL_BOUNDARY_FLUX", "tier": "CORE_N", "required_if_active": true},
+    {"transfer_id": "NH4-BOTTOM-UP", "variable_class": "EXTERNAL_BOUNDARY_FLUX", "tier": "CORE_N", "required_if_active": true},
+    {"transfer_id": "NO3-VERTICAL", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "CORE_N", "required_if_active": true},
+    {"transfer_id": "NO3-DRAIN", "variable_class": "EXTERNAL_BOUNDARY_FLUX", "tier": "CORE_N", "required_if_active": true},
+    {"transfer_id": "NO3-BOTTOM-DOWN", "variable_class": "EXTERNAL_BOUNDARY_FLUX", "tier": "CORE_N", "required_if_active": true},
+    {"transfer_id": "NO3-BOTTOM-UP", "variable_class": "EXTERNAL_BOUNDARY_FLUX", "tier": "CORE_N", "required_if_active": true},
+    {"transfer_id": "PO4-VERTICAL", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "CORE_P", "required_if_active": true},
+    {"transfer_id": "PO4-DRAIN", "variable_class": "EXTERNAL_BOUNDARY_FLUX", "tier": "CORE_P", "required_if_active": true},
+    {"transfer_id": "PO4-BOTTOM-DOWN", "variable_class": "EXTERNAL_BOUNDARY_FLUX", "tier": "CORE_P", "required_if_active": true},
+    {"transfer_id": "PO4-BOTTOM-UP", "variable_class": "EXTERNAL_BOUNDARY_FLUX", "tier": "CORE_P", "required_if_active": true},
+    {"transfer_id": "CROP-N-UPTAKE", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "CROP_COUPLING", "required_if_active": true},
+    {"transfer_id": "CROP-P-UPTAKE", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "CROP_COUPLING", "required_if_active": true},
+    {"transfer_id": "N-MINERALIZATION", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "PROCESS_N", "required_if_active": true},
+    {"transfer_id": "N-IMMOBILIZATION", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "PROCESS_N", "required_if_active": true},
+    {"transfer_id": "P-MINERALIZATION", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "PROCESS_P", "required_if_active": true},
+    {"transfer_id": "P-IMMOBILIZATION", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "PROCESS_P", "required_if_active": true},
+    {"transfer_id": "N-NITRIFICATION", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "PROCESS_N", "required_if_active": true},
+    {"transfer_id": "N-DENITRIFICATION", "variable_class": "EXTERNAL_BOUNDARY_FLUX", "tier": "PROCESS_N", "required_if_active": true},
+    {"transfer_id": "P-FAST-SORPTION", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "PROCESS_P_NUMERICAL", "required_if_active": true},
+    {"transfer_id": "P-SLOW-SORPTION", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "PROCESS_P_NUMERICAL", "required_if_active": true},
+    {"transfer_id": "P-PRECIPITATION", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "PROCESS_P", "required_if_active": true},
+    {"transfer_id": "P-INIT-PROJECTION", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "INITIALIZATION_P", "required_if_active": true},
+    {"transfer_id": "PLOUGH-DOM", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "EVENT_CONDITIONAL", "required_if_active": true},
+    {"transfer_id": "PLOUGH-PO4", "variable_class": "INTERNAL_TRANSFER_FLUX", "tier": "EVENT_CONDITIONAL", "required_if_active": true}
+  ],
+  "ledger_surfaces": [
+    {"ledger_id": "PROFILE-NH4", "variable_class": "CUMULATIVE_LEDGER", "legacy_balance_surface": "Banh", "conserved_quantity": "nitrogen", "required_if_active": true},
+    {"ledger_id": "PROFILE-NO3", "variable_class": "CUMULATIVE_LEDGER", "legacy_balance_surface": "Bani", "conserved_quantity": "nitrogen", "required_if_active": true},
+    {"ledger_id": "PROFILE-INORGANIC-P", "variable_class": "CUMULATIVE_LEDGER", "legacy_balance_surface": "Bapp", "conserved_quantity": "phosphorus", "required_if_active": true},
+    {"ledger_id": "PROFILE-ORGANIC-N", "variable_class": "CUMULATIVE_LEDGER", "legacy_balance_surface": "Bano", "conserved_quantity": "nitrogen", "required_if_active": true},
+    {"ledger_id": "PROFILE-ORGANIC-P", "variable_class": "CUMULATIVE_LEDGER", "legacy_balance_surface": "Bapo", "conserved_quantity": "phosphorus", "required_if_active": true},
+    {"ledger_id": "PROFILE-DOM-C", "variable_class": "CUMULATIVE_LEDGER", "legacy_balance_surface": "Bdom", "conserved_quantity": "organic matter mass", "required_if_active": true}
+  ],
+  "defect_sensitive_diagnostics": [
+    {
+      "id": "P-NONLINEAR-SORPTION-PATH",
+      "related_findings": ["TCD-014", "TCD-019", "TCD-024"],
+      "variable_classes": ["NONLINEAR_SOLVER_STATE", "DIAGNOSTIC_RESIDUAL", "DISCRETE_CONTROL_FLOW"],
+      "capture": ["iteration_index", "branch_id", "fallback_id", "nonlinear_residual", "accepted_aqueous_po4", "fast_sorbed_p", "slow_sorbed_p", "precipitated_p"],
+      "trial_state_capture": "ONLY_WHEN_NEEDED_FOR_SOLVER_PATH_CHARACTERIZATION",
+      "required_if_active": true
+    },
+    {
+      "id": "NO3-NEGATIVE-CONSTRAINT-PATH",
+      "related_findings": ["TCD-015"],
+      "variable_classes": ["DISCRETE_CONTROL_FLOW", "DIAGNOSTIC_RESIDUAL", "PHYSICAL_STORAGE_STATE"],
+      "capture": ["branch_id", "pre_constraint_no3", "accepted_no3", "transport_residual"],
+      "required_if_active": true
+    },
+    {
+      "id": "NH4-SURFACE-DRYDOWN-PATH",
+      "related_findings": ["TCD-016"],
+      "variable_classes": ["DISCRETE_CONTROL_FLOW", "PHYSICAL_STORAGE_STATE", "DIAGNOSTIC_RESIDUAL"],
+      "capture": ["branch_id", "surface_water_storage", "surface_nh4_mass_before", "surface_nh4_mass_after", "transport_residual"],
+      "required_if_active": true
+    }
+  ],
+  "activation_evidence_required": [
+    "input option or process configuration where available",
+    "source-bound branch or routine activation evidence",
+    "ordinary output event evidence when unambiguous",
+    "observer branch_id or call-context evidence after non-interference is proven"
+  ],
+  "explicitly_not_admitted_by_this_registry": [
+    "scientific numerical tolerances",
+    "historical equivalence",
+    "corrected numerical policy",
+    "B3 scientific admission",
+    "production migration"
+  ]
+}
