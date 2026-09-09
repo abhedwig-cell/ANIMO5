@@ -11,9 +11,31 @@ spec.loader.exec_module(mod)
 HASH_D = "d" * 64
 
 
+def representation_scope(observed_count=0):
+    keys = sorted(mod._load_representation_registry_keys())
+    observed = [
+        {"domain": domain, "subject": subject}
+        for domain, subject in keys[:observed_count]
+    ]
+    omitted = [
+        {
+            "domain": domain,
+            "subject": subject,
+            "reason_class": "NOT_JOINTLY_OBSERVABLE",
+            "rationale": "synthetic test packet marks this predefined subject as not jointly observable",
+        }
+        for domain, subject in keys[observed_count:]
+    ]
+    return {
+        "registry": mod.REPRESENTATION_REGISTRY,
+        "jointly_observed_subjects": observed,
+        "omitted_subjects": omitted,
+    }
+
+
 def packet():
     return {
-        "packet_schema_version": "1.1.0",
+        "packet_schema_version": "1.2.0",
         "work_unit": "ANIMO-NQ01",
         "testcase_id": "RuurloGrass",
         "inputs": {
@@ -50,6 +72,7 @@ def packet():
             "b2_structured_capture": None,
             "b1_structured_capture": None,
         },
+        "representation_scope": representation_scope(0),
         "representation_comparison": {
             "result_artifact": None,
             "decision": "NOT_RUN_NO_STRUCTURED_REPRESENTATION_CAPTURE",
@@ -84,6 +107,7 @@ def enable_observer(p):
             "b1_structured_capture": "b1-capture.json",
         }
     )
+    p["representation_scope"] = representation_scope(1)
     p["representation_comparison"].update(
         {
             "result_artifact": "representation-comparison.json",
@@ -105,6 +129,10 @@ class FirstReferencePacketTests(unittest.TestCase):
         self.assertTrue(report["packet_complete"])
         self.assertTrue(report["comparison_may_still_be_fail_closed"])
         self.assertFalse(report["numerical_equivalence_qualified_by_this_tool"])
+        self.assertEqual(
+            report["representation_registry_subjects"],
+            report["representation_omitted_subjects"],
+        )
 
     def test_wrong_b1_executable_fails_closed(self):
         p = packet()
@@ -127,9 +155,49 @@ class FirstReferencePacketTests(unittest.TestCase):
         self.assertFalse(report["packet_complete"])
         self.assertTrue(any("explicit B2" in error for error in report["errors"]))
 
+    def test_incomplete_representation_scope_fails_closed(self):
+        p = packet()
+        p["representation_scope"]["omitted_subjects"].pop()
+        report = mod.validate_packet(p)
+        self.assertFalse(report["packet_complete"])
+        self.assertTrue(any("does not disposition all predefined subjects" in error for error in report["errors"]))
+
+    def test_unknown_representation_subject_fails_closed(self):
+        p = packet()
+        p["representation_scope"]["jointly_observed_subjects"].append(
+            {"domain": "formatting", "subject": "invented_after_seeing_b2"}
+        )
+        report = mod.validate_packet(p)
+        self.assertFalse(report["packet_complete"])
+        self.assertTrue(any("outside the predefined registry" in error for error in report["errors"]))
+
+    def test_representation_subject_cannot_be_observed_and_omitted(self):
+        p = packet()
+        first = p["representation_scope"]["omitted_subjects"][0]
+        p["representation_scope"]["jointly_observed_subjects"].append(
+            {"domain": first["domain"], "subject": first["subject"]}
+        )
+        report = mod.validate_packet(p)
+        self.assertFalse(report["packet_complete"])
+        self.assertTrue(any("both observed and omitted" in error for error in report["errors"]))
+
+    def test_observed_representation_subject_requires_comparison(self):
+        p = packet()
+        p["representation_scope"] = representation_scope(1)
+        report = mod.validate_packet(p)
+        self.assertFalse(report["packet_complete"])
+        self.assertTrue(any("jointly observed representation subjects exist" in error for error in report["errors"]))
+
     def test_observer_requires_non_interference_and_captures(self):
         p = packet()
         p["observer"]["used"] = True
+        p["representation_scope"] = representation_scope(1)
+        p["representation_comparison"].update(
+            {
+                "result_artifact": "representation-comparison.json",
+                "decision": "DIFFERENT_REPRESENTATION_FAIL_CLOSED",
+            }
+        )
         p["structured_comparison"]["decision"] = "DIFFERENT_FAIL_CLOSED"
         p["structured_comparison"]["result_artifact"] = "structured-comparison.json"
         report = mod.validate_packet(p)
@@ -155,9 +223,11 @@ class FirstReferencePacketTests(unittest.TestCase):
         report = mod.validate_packet(p)
         self.assertTrue(report["packet_complete"])
         self.assertEqual(report["decision"], "PACKET_COMPLETE")
+        self.assertEqual(report["representation_jointly_observed_subjects"], 1)
 
     def test_representation_difference_can_be_retained_in_complete_packet(self):
         p = packet()
+        p["representation_scope"] = representation_scope(1)
         p["representation_comparison"].update(
             {
                 "result_artifact": "representation-comparison.json",
