@@ -1,0 +1,170 @@
+{
+  "work_unit": "ANIMO-PREP10",
+  "subscope": "stable-DOM causal activation",
+  "branch": "work/animo-prep10-stable-dom-causal-activation",
+  "parent_checkpoint": "d728496cd72ba1a2e20a5f0cd731b3800b72f4a6",
+  "decision": "QUALIFIED_CURRENT_GNU_CAUSAL_ACTIVATION_FOR_STABLE_DOM_AND_DON_PLOUGH_ACCUMULATOR_RESET_DEFECT",
+  "implemented": true,
+  "persisted": true,
+  "authoring_environment_tested": true,
+  "github_actions_reproduced_with_private_b0_bytes": false,
+  "historical_native_runtime_tested": false,
+  "reference_output_admitted": false,
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false,
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "cranmais_initial_member_sha256": "8df3d78e830f344bc315d4dff2ae4c1ee4d6e959a07ba7d112e4105e6fbbb201"
+  },
+  "diagnostic_builds": {
+    "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "observer_executable_sha256": "d179aba23e0a0ef90b118437c2817a0c3a0ec6f227be555598ba393c31d7a501",
+    "reset_counterfactual_executable_sha256": "f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db",
+    "compiler": "GNU Fortran (Debian 14.2.0-19) 14.2.0",
+    "relevant_contract_flag": "-fno-automatic",
+    "evidence_class": "DIAGNOSTIC_NOT_REFERENCE"
+  },
+  "diagnostic_input_descendants": {
+    "dom_only": {
+      "parent_member_sha256": "8df3d78e830f344bc315d4dff2ae4c1ee4d6e959a07ba7d112e4105e6fbbb201",
+      "output_sha256": "d66acd69d62c2cfded22d581048a25b365b81d9972aa1a3a31fd55047d712f04",
+      "changes": {
+        "CoStdiorma_indices": [1, 2],
+        "value": 0.01,
+        "CoStdiorni_changed": false,
+        "CoStdiorpo_changed": false
+      }
+    },
+    "don_only": {
+      "parent_member_sha256": "8df3d78e830f344bc315d4dff2ae4c1ee4d6e959a07ba7d112e4105e6fbbb201",
+      "output_sha256": "a3e1349bba096d769438e62635f9408046d858c611ebdf5decb498afd1f30455",
+      "changes": {
+        "CoStdiorni_indices": [1, 2],
+        "value": 0.001,
+        "CoStdiorma_changed": false,
+        "CoStdiorpo_changed": false
+      }
+    },
+    "dop_negative_control": {
+      "parent_member_sha256": "8df3d78e830f344bc315d4dff2ae4c1ee4d6e959a07ba7d112e4105e6fbbb201",
+      "output_sha256": "e9b3024ee98536ef563ac7929ce2af082c4b5d54b71bf36e02441ef77f1846a3",
+      "changes": {
+        "CoStdiorpo_indices": [1, 2],
+        "value": 0.0001,
+        "CoStdiorma_changed": false,
+        "CoStdiorni_changed": false
+      },
+      "negative_control_reason": "CranMais GENERAL.INP has PhosphorusCycle=0, so revision-53 does not read the DOP sdomin vector for this testcase."
+    },
+    "combined_observer": {
+      "parent_member_sha256": "8df3d78e830f344bc315d4dff2ae4c1ee4d6e959a07ba7d112e4105e6fbbb201",
+      "output_sha256": "3e11b78441d30d207420c96adf55dd3dd5c4d1430febdaf166bead8254602c73",
+      "changes": {
+        "CoStdiorma_indices": [1, 2],
+        "CoStdiorma_value": 0.01,
+        "CoStdiorni_indices": [1, 2],
+        "CoStdiorni_value": 0.001,
+        "CoStdiorpo_indices": [1, 2],
+        "CoStdiorpo_value": 0.0001
+      }
+    }
+  },
+  "observer_carryover": {
+    "plough_event_count": 9,
+    "first_event_before": {
+      "SuStdiorma": 0.0,
+      "SuStdiorni": 0.0,
+      "SuStdiorpo": 0.0
+    },
+    "first_event_after": {
+      "SuStdiorma": 2.1670933665864016e-06,
+      "SuStdiorni": 2.1670933665864018e-07,
+      "SuStdiorpo": 0.0
+    },
+    "second_event_before": {
+      "SuStdiorma": 2.1670933665864016e-06,
+      "SuStdiorni": 2.1670933665864018e-07,
+      "SuStdiorpo": 0.0
+    },
+    "carryover_exactly_observed_for_dom_and_don": true,
+    "interpretation": "Under the current GNU diagnostic build contract the values left after the first plough event are still present immediately before the second plough event."
+  },
+  "baseline_vs_reset_counterfactual": {
+    "declared_volatile_metadata_only_normalization": true,
+    "numerical_tolerance_used_for_acceptance": false,
+    "scientifically_different_files_dom_only": [
+      "Output/initial.out",
+      "ani_nMP.Bal",
+      "ani_nTP.Bal",
+      "ani_omMP.Bal",
+      "ani_omTP.Bal",
+      "banhMP.Out",
+      "banhTP.Out",
+      "baniMP.Out",
+      "baniTP.Out",
+      "banoMP.Out",
+      "banoTP.Out",
+      "baomMP.Out",
+      "baomTP.Out",
+      "discharge.out",
+      "miner-N.out",
+      "nitrate.out"
+    ],
+    "scientifically_different_files_don_only": [
+      "Output/initial.out",
+      "ani_nMP.Bal",
+      "ani_nTP.Bal",
+      "ani_omMP.Bal",
+      "ani_omTP.Bal",
+      "banhMP.Out",
+      "banhTP.Out",
+      "baniMP.Out",
+      "baniTP.Out",
+      "banoMP.Out",
+      "banoTP.Out",
+      "baomMP.Out",
+      "baomTP.Out",
+      "discharge.out",
+      "miner-N.out",
+      "nitrate.out"
+    ],
+    "scientifically_different_files_dop_negative_control": [],
+    "final_restart_sdomin_metrics": {
+      "dom_only": {
+        "sum_baseline": 6.136175457677e-05,
+        "sum_reset": 1.3633400418508182e-05,
+        "baseline_minus_reset": 4.772835415826182e-05,
+        "baseline_to_reset_ratio": 4.500840046733142,
+        "max_absolute_layer_difference": 5.54336177839e-06
+      },
+      "don_only": {
+        "sum_baseline": 6.136069957677e-06,
+        "sum_reset": 1.3632378235187933e-06,
+        "baseline_minus_reset": 4.7728321341582064e-06,
+        "baseline_to_reset_ratio": 4.501100139547595,
+        "max_absolute_layer_difference": 5.54336178354e-07
+      },
+      "dop_negative_control": {
+        "sum_baseline": 0.0,
+        "sum_reset": 0.0,
+        "scientific_outputs_match_after_normalization": true
+      }
+    }
+  },
+  "qualification": {
+    "dom_current_gnu_causal_effect_qualified": true,
+    "don_current_gnu_causal_effect_qualified": true,
+    "dop_current_gnu_causal_effect_qualified": false,
+    "dop_reason": "phosphorus cycle disabled in CranMais; negative control only",
+    "historical_intel_effect_qualified": false,
+    "physical_representativeness_of_activation_values_claimed": false,
+    "source_defect_correction_admitted": false
+  },
+  "open_gates": [
+    "exercise the phosphorus accumulator in a provenance-pinned testcase with PhosphorusCycle=1 or construct a separate controlled P-enabled diagnostic descendant",
+    "repeat causal activation against a provenance-qualified historical native build if recovered",
+    "define and qualify the minimal corrected-legacy initialization patch separately from this diagnostic counterfactual",
+    "perform conservation-ledger reconciliation for the correction candidate before migration admission"
+  ]
+}
