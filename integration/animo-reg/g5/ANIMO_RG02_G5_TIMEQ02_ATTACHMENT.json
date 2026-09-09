@@ -1,0 +1,69 @@
+{
+  "attachment": "ANIMO_RG02_G5_TIMEQ02",
+  "date": "2026-09-09",
+  "host_work_unit": "ANIMO-RG02-G5",
+  "source_work_unit": "ANIMO-TIMEQ02",
+  "branch": "work/animo-timeq02-adapter-transaction-fixtures",
+  "head": "6b19e55f93fd84f1f956fd8e5a32034235b39588",
+  "status_path": "integration/animo-time/ANIMO-TIMEQ02_STATUS.json",
+  "decision": "QUALIFIED_CANDIDATE_EXTERNAL_OWNER_ADAPTER_RUNTIME_FIXTURE_SYNTHETIC_NON_B2_NONPRODUCTION",
+  "authority_basis": "qualified child of TIMEQ01 using pinned ARCH05 ARCH07 TIME01 and ARCHG02 contracts with successful GitHub Actions execution",
+  "verification": {
+    "tested_head": "8ad45372c38a81fb4c3c624c9cfb26066088c334",
+    "workflow": ".github/workflows/timeq02-adapter-runtime.yml",
+    "workflow_run_id": 34321715432,
+    "job_id": 102369618484,
+    "conclusion": "success",
+    "python": "3.12.14",
+    "arch07_case_rows": 41,
+    "cases_executed": 38,
+    "cases_deferred": 3,
+    "tests_passed": 38,
+    "tests_failed": 0
+  },
+  "evidence": {
+    "class": "ADAPTER_RUNTIME_SYNTHETIC_PRODUCER",
+    "synthetic_hydrology_producer": true,
+    "synthetic_external_crop_producer": true,
+    "actual_animo_process_kernel_connected": false,
+    "real_swap_adapter_executed": false,
+    "real_wofost_or_other_crop_adapter_executed": false,
+    "historical_reference_qualified": false,
+    "b2_reference": false,
+    "scientific_correctness_qualified": false,
+    "numerical_equivalence_qualified": false
+  },
+  "executed_scope": [
+    "15 hydrology adapter cases H001-H015",
+    "12 external crop adapter cases C001-C012",
+    "7 coupled transaction cases T001-T007",
+    "4 static identity cases I001-I004"
+  ],
+  "deferred_arch07_cases": {
+    "H016": "positive macropore case requires scientific admission",
+    "T008": "split-run equivalence remains reference behaviour requiring B2/admitted STATE/TIME",
+    "T009": "rollback-replay equivalence remains reference behaviour and synthetic replay is insufficient"
+  },
+  "g5_effect": {
+    "generic_synthetic_external_owner_adapter_runtime_fixture_absent": false,
+    "arch05_arch07_contracts_have_executable_synthetic_adapter_evidence": true,
+    "producer_specific_mapping_qualified": false,
+    "historical_behavior_qualified": false,
+    "positive_macropore_adapter_qualified": false,
+    "canonical_state_admitted": false,
+    "canonical_time_admitted": false,
+    "canonical_mass_admitted": false,
+    "canonical_exchange_admitted": false,
+    "b3_scientific_admission": false,
+    "b4_baseline_admitted": false,
+    "production_migration_admitted": false
+  },
+  "governance_disposition": "ATTACHED_AS_SYNTHETIC_EXTERNAL_OWNER_ADAPTER_RUNTIME_EVIDENCE_ONLY",
+  "branch_merge_performed": false,
+  "legacy_source_modified": false,
+  "historical_testcase_modified": false,
+  "production_code_modified": false,
+  "physics_changed": false,
+  "numerical_policy_changed": false,
+  "scientific_baseline_changed": false
+}
