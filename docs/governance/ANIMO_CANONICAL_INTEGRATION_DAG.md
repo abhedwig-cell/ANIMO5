@@ -36,10 +36,8 @@ PREP06
   +--> PREP07 transfer-edge-audit [AUTHORITATIVE PREP07]
   |      |
   |      +--> PREP08 causal-management-probes [AUTHORITATIVE PREP08]
-  |      |      |
-  |      |      +--> PREP09 option-contract-audit [SUPPLEMENTAL, renumber before integration]
   |      |
-  |      +--> PREP08 transfer-probes [SUPPLEMENTAL]
+  |      +--> PREP08 transfer-probes [SUPPLEMENTAL PACKET]
   |             |
   |             +--> PREP09 element-transfer-and-slow-sorption [AUTHORITATIVE PREP09]
   |                    |
@@ -49,24 +47,34 @@ PREP06
   |                           |
   |                           +--> B3 TCD-028 intake [reservation only]
   |
-  +--> PREP07 transfer-species-identity [SUPPLEMENTAL, divergent]
-         |
-         +--> PREP08 restart-state-continuity [SUPERSEDED reservation]
+  +--> PREP07 transfer-species-identity [SUPPLEMENTAL PACKET, divergent]
 ```
 
-A second PREP10 branch, `work/animo-prep10-restart-state-continuity`, contains unique evidence but reused the PREP10 identifier. It is outside the authoritative PREP10 lineage and must be transplanted into a newly numbered evidence work unit before canonical integration.
+Two substantive reused work-unit lines have now been given non-colliding RG02 reservations for rehome only:
+
+```text
+work/animo-prep09-option-contract-audit
+    -> ANIMO-PREP11 [RG02_RESERVED_NOT_STARTED]
+
+work/animo-prep10-restart-state-continuity
+    -> ANIMO-PREP12 [RG02_RESERVED_NOT_STARTED]
+```
+
+No PREP11 or PREP12 branch has been created by RG02. The reservations exist so a later path-level transplant cannot silently create another PREP09/PREP10 authority.
 
 ### Required preparatory consolidation
 
 Before a single preparatory evidence branch can be produced:
 
 1. Freeze the authoritative PREP06 snapshot.
-2. Transplant unique PREP07 species-identity evidence into a new supplemental evidence packet without its conflicting PREP07 status file.
-3. Transplant unique PREP08 transfer-probe evidence without importing its local post-027 TCD numbers as canonical IDs.
-4. Transplant PREP09 option-contract evidence under a new work-unit identifier.
-5. Transplant PREP10 restart evidence under a new work-unit identifier.
-6. Reconcile every local post-027 TCD label through the B3-owned ID map.
+2. Rehome unique PREP07 species-identity evidence as supplemental packet `RG02-SUPP-P07-SPECIES-001`, without its conflicting PREP07 status/contract ownership.
+3. Rehome unique PREP08 transfer-probe evidence as supplemental packet `RG02-SUPP-P08-TRANSFER-001`, without its local TCD register or PREP08 status.
+4. Rehome PREP09 option-contract evidence as `ANIMO-PREP11`; do not import the old PREP09 status or local `TCD-030` identity.
+5. Rehome PREP10 restart evidence as `ANIMO-PREP12`; do not import the old PREP10 contract, local `TCD-032/033/034` reservation file or divergent TCD register.
+6. Use `integration/animo-reg/ANIMO_LOCAL_TCD_RECONCILIATION.json` for all post-027 local finding identity until B3 governance allocates canonical IDs.
 7. Only then construct a canonical preparatory evidence aggregate.
+
+The exact path-level include/exclude plan is persisted in `integration/animo-reg/ANIMO_SUPPLEMENTAL_EVIDENCE_TRANSPLANT_PLAN.json`.
 
 This is a consolidation operation, not a scientific requalification. Existing findings retain their original evidence class and source branch.
 
@@ -118,7 +126,16 @@ PREP06 evidence + EB01 evidence semantics
                                       [NOT ESTABLISHED BY RG02]
 ```
 
-B3Q01 is the owner of B3 classification contracts. Canonical TCD allocation from 028 onward is controlled by the B3 governance line. Preparatory local IDs are input to reconciliation, not direct register entries.
+B3Q01 is the owner of B3 classification contracts and the qualified central discrepancy register. Its qualified register ends at `TCD-027` with blob `224acc350fde69d3c4aebed8628c0f945e0b3367`.
+
+The observed later preparatory labels are now governance-reconciled through RG02 local keys. They are not canonical IDs. In particular:
+
+- local `TCD-028` on the transfer lineage is not central `TCD-028`;
+- two different findings used local `TCD-030` on divergent branches;
+- local `TCD-032` was used both by a restart branch and by a superseded PREP10C proposal;
+- the PREP10 restart branch's statement that its local register tail was `TCD-031` is not a project-canonical register assertion.
+
+The central B3 intake branch still reserves `TCD-028` only for the stable-DOM plough accumulator event-reset finding, and that reservation is not yet a canonical register append or B3 admission.
 
 SQ01 is a separate scientific-qualification branch based on B3Q01. It may consume pinned theory and PREP evidence, but its results cannot be integrated into B3 until its own admission gates close.
 
@@ -144,7 +161,7 @@ PREP06
 
 This is a coherent sequential candidate-design chain. It is eligible for a separate architecture consolidation branch after an ARCHG work-unit contract is persisted. It is not eligible for production integration merely because its internal design checks pass.
 
-The observed `work/animo-archg01-candidate-architecture-consolidation` ref is currently identical to ARCH07 and has no independent ARCHG01 status artifact. It is therefore only a reservation at this RG02 snapshot.
+The observed `work/animo-archg01-candidate-architecture-consolidation` ref is currently identical to ARCH07 and had no independent ARCHG01 status artifact at the RG02 authority snapshot. It therefore did not receive authority from its branch name.
 
 Canonical architecture admission remains downstream of the evidence gates required by the existing migration policy. In particular, candidate STATE, TIME, MASS and EX contracts remain unadmitted while B2/B3 and related scientific gates are unresolved.
 
@@ -168,15 +185,15 @@ Canonical architecture admission remains downstream of the evidence gates requir
 - TCD-028 B3 intake reservation
 - all ARCH01 to ARCH07 candidate designs
 
-### Cherry-pick or transplant only
+### Path-level transplant only
 
 - PREP07 species-identity supplemental evidence
 - PREP08 transfer-probes supplemental evidence
-- PREP09 option-contract evidence
-- PREP10 restart/state-continuity evidence
+- PREP09 option-contract evidence, rehomed as PREP11
+- PREP10 restart/state-continuity evidence, rehomed as PREP12
 - any useful material from PREP10C superseded branches that is not already present in the re-anchored PREP10C branch
 
-These commits must be selected path-by-path. Do not import same-name work-unit status files or a divergent `THEORY_CODE_DISCREPANCY_REGISTER.csv`.
+These commits must not be imported wholesale. Use the RG02 path-level include/exclude plan and preserve source blob provenance. Do not import same-name work-unit status files or a divergent `THEORY_CODE_DISCREPANCY_REGISTER.csv`.
 
 ### Never merge as branches
 
@@ -197,7 +214,7 @@ G0  RG02 branch authority register complete
  |
 G1  canonical TCD/local-ID reconciliation complete
  |
-G2  duplicate PREP07-10 evidence transplanted under unique identifiers
+G2  duplicate PREP07-10 evidence transplanted under unique packet/workunit identities
  |
 G3  governance artifacts consolidated: RG + EB + EG
  |
@@ -216,15 +233,27 @@ G9  B4 canonical ANIMO5 baseline admission
 G10 production migration
 ```
 
-At the RG02 snapshot, G0 is substantially complete as repository governance, but G1 and G2 are blocked by unresolved local-ID and duplicate-lineage content mapping. G6 and G7 are also independently blocked or incomplete. Therefore no direct canonical merge is authorized.
+Current RG02 state:
 
-## 8. Immediate safe actions after RG02
+- G0: `SUBSTANTIALLY_COMPLETE`;
+- G1: `COMPLETE_FOR_OBSERVED_POST_027_PREPARATORY_LINEAGES`;
+- G2: `PLANNED_NOT_EXECUTED`;
+- G3: `PLANNED_NOT_EXECUTED`;
+- G4: `NOT_READY`;
+- G6: independently blocked by PREP02R;
+- G7 onward: not admitted.
 
-The next safe integration work is governance-only:
+G1 completion does not assign any new canonical TCD number. It only makes the local identity collisions explicit and machine-readable.
 
-- create a canonical local-ID reconciliation ledger for all post-027 preparatory TCD labels;
-- assign new work-unit identifiers to PREP09 option-contract and PREP10 restart evidence before transplant;
-- persist an ARCHG01 contract before using the existing ARCHG01 ref as an architecture consolidation surface;
+## 8. Immediate safe actions after the current checkpoint
+
+The next safe integration work remains governance/evidence-only:
+
+- execute the two supplemental packet rehomes path-by-path;
+- instantiate PREP11 and PREP12 from a governance-approved canonical evidence base rather than from their divergent source branch heads;
+- preserve source branch/head/blob provenance for every transplanted artifact;
+- validate that no old PREP07/PREP08/PREP09/PREP10 status or local TCD register entered the rehome branches;
+- consolidate RG, EB and EG governance only after G2 readback passes;
 - keep PREP02R acquisition and NQ01 comparison readiness independent;
 - keep B3 admissions separate from branch convergence.
 
