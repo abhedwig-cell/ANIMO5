@@ -1,0 +1,39 @@
+{
+  "work_unit": "ANIMO-B3A04",
+  "target_tcd": "TCD-026",
+  "purpose": "Strengthen naturalistic activation evidence with a bounded chronological restart probe while preserving the Class-A accounting-only scope.",
+  "status": "PLANNED_NOT_YET_EXECUTED",
+  "branch": "work/animo-b3a04-tcd026-class-a-readiness",
+  "starting_head": "1192ee77eda47149af1e31a752e09d343edd9273",
+  "frozen_B0": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "candidate_case": "CranMais",
+  "source_bound_restart_capability": {
+    "final_state_writer": "Output_Init.for writes Rsex into >orgexu: of INITIAL.OUT",
+    "accepted_boundary_promotion": "Init.for promotes Ex=Rsex",
+    "hydrology_subperiod_support": "input1.for can position SWATRE.UNF to an ANIMO start date inside the hydrology period"
+  },
+  "probe_design": {
+    "segment_A": "Run frozen diagnostic CranMais from original start to a selected accepted chronological boundary and capture model-produced INITIAL.OUT.",
+    "segment_B": "Start a second execution at that chronological boundary using segment-A INITIAL.OUT as INITIAL.INP and the same frozen hydrology stream positioned to the new start date.",
+    "comparison": "Evaluate only the TCD-026 restart-state and beginning-ledger identity surfaces required for Class-A readiness; do not infer whole-model split-run identity unless independently proven.",
+    "candidate_ledger_observation": "Bfom(Inip_x,Ly) += Ex(Ln)*P"
+  },
+  "required_checks": [
+    "Segment-A generated INITIAL.OUT contains nonzero model-produced Ex/Rsex.",
+    "Segment-B reads the model-produced >orgexu: values without manual Ex synthesis.",
+    "Legacy segment-B first fresh-OM balance residual matches the omitted beginning Ex mass subject only to report-format rounding.",
+    "Ledger-only candidate removes that deterministic residual without changing restart state or ordinary state/process outputs.",
+    "No tolerance is introduced.",
+    "No physical source, testcase, initialization physics, production migration, corrected-legacy admission or other organic-matter TCD is modified."
+  ],
+  "explicit_nonclaims": [
+    "This plan does not predeclare a full continuous-vs-split trajectory identity qualification.",
+    "This plan does not qualify management continuation completeness.",
+    "This plan does not create B2 historical-reference evidence.",
+    "This plan does not constitute independent second-line review."
+  ],
+  "fail_closed": true
+}
