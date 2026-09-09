@@ -1,0 +1,123 @@
+{
+  "work_unit": "ANIMO-PREP02R-I5",
+  "evidence_type": "RECEIVED_ARTIFACT_LINEAGE_AND_BUILD_CONTRACT_REVIEW",
+  "date": "2026-09-09",
+  "base": "work/animo-prep02r-native-intel-artifact-intake-4@e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+  "execution_policy": {
+    "received_executable_executed": false,
+    "binary_inspection_only": true,
+    "reference_admission_performed": false,
+    "B2_admission_performed": false
+  },
+  "artifact_identity": {
+    "animo41_sln_sha256": "206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2",
+    "animo41_vfproj_sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+    "animo41_exe_sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+    "project_bundle_content_set_sha256": "3dc760141d9047d86e07f9490c5e591ac1d6298b3c47882177d8ed9dec53e2b6"
+  },
+  "solution_observations": {
+    "solution_format_version": "11.00",
+    "visual_studio_label": "Visual Studio 2010",
+    "project_name": "animo41",
+    "project_file": "animo41.vfproj",
+    "platforms": ["Win32", "x64"]
+  },
+  "project_observations": {
+    "project_creator": "Intel Fortran",
+    "keyword": "Console Application - Converted from CVF",
+    "project_version": "11.0",
+    "project_member_file_count": 63,
+    "frozen_source_top_level_file_count": 65,
+    "project_files_not_in_frozen_source": [],
+    "frozen_source_files_not_in_project": ["input1_1.for", "Outselorg.for"],
+    "unreferenced_extra_files_are_not_proof_of_compilation": true,
+    "all_configurations": {
+      "RealKIND": "realKIND8",
+      "LocalVariableStorage": "localStorageSave",
+      "FloatingPointModel": "source",
+      "CallingConvention": "callConventionCVF",
+      "FPS4IOFormat": true,
+      "FPS4LDIOSpacing": true,
+      "FloatingPointExceptionHandling": "fpe0",
+      "BoundsCheck": true
+    },
+    "release_win32_additional": {
+      "FPS4Logicals": true
+    },
+    "debug_x64_additional": {
+      "LocalSavedScalarsZero": true,
+      "RuntimeLibrary": "rtMultiThreadedDebug",
+      "GenerateDebugInformation": true,
+      "GenerateMapFile": true
+    }
+  },
+  "executable_observations": {
+    "format": "PE32+",
+    "architecture": "x86-64",
+    "subsystem": "Windows CUI",
+    "pe_timestamp_utc_interpretation": "2026-05-27T13:41:28Z",
+    "linker_version": "14.35",
+    "codeview_format": "RSDS",
+    "codeview_guid": "5becb417bcf34f00891da327fe408881",
+    "pdb_age": 1,
+    "pdb_path": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\x64\\Debug\\animo41.pdb",
+    "intel_fortran_rtl_catalog_string": "V20.0-001 Jan 10 2019",
+    "embedded_source_root": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\src_develop_for_20260519\\",
+    "embedded_source_root_date_token": "20260519",
+    "embedded_svn_tag_string": "file:///V:/svn_Animo/tags/animo4.1.5",
+    "embedded_version_inc_compiler_claim": "Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]",
+    "static_version_inc_compiler_claim_matches_observed_actual_linker_runtime_lineage": false
+  },
+  "lineage_assessment": {
+    "received_executable_classification": "RECENT_2026_NATIVE_REBUILD_CANDIDATE_NOT_HISTORICAL_REFERENCE",
+    "reason": [
+      "PE timestamp is 2026-05-27",
+      "embedded debug source root explicitly names src_develop_for_20260519",
+      "CodeView path points to x64/Debug",
+      "linker version 14.35 is a modern Microsoft linker lineage and is not the 2011 toolchain string frozen in Version.inc",
+      "Intel Fortran runtime catalog string is dated 2019",
+      "the static Version.inc compiler string therefore cannot be used as proof of the actual compiler that produced this executable"
+    ],
+    "historical_revision_53_reference_admitted": false,
+    "historical_fidelity_claim": false,
+    "recent_native_reconstruction_evidence_usable": true,
+    "project_metadata_classification": "DIRECT_BUILD_CONFIGURATION_EVIDENCE_WITH_UNVERIFIED_ORIGINAL_PROVENANCE",
+    "exact_project_to_executable_identity_proven": false,
+    "exact_frozen_source_bytes_to_executable_identity_proven": false
+  },
+  "build_contract_impact": {
+    "TCD_010_default_real_kind": {
+      "previous_gap": "historical Intel project flags absent",
+      "new_evidence": "received vfproj sets RealKIND=realKIND8 in all four configurations",
+      "effect": "substantially narrows build-contract uncertainty for this project artifact and is consistent with the successful eight-byte diagnostic contract",
+      "historical_B2_closed": false
+    },
+    "TCD_011_local_storage_duration": {
+      "previous_gap": "local SAVE semantics were inferred but not directly project-bound",
+      "new_evidence": "received vfproj sets LocalVariableStorage=localStorageSave in all four configurations; Debug|x64 additionally sets LocalSavedScalarsZero=true",
+      "effect": "directly supports SAVE-style local storage for this project artifact and strongly explains persistent local CHARACTER format state",
+      "historical_B2_closed": false
+    },
+    "TCD_004_build_environment": {
+      "new_evidence": "Visual Studio 2010-format Intel Fortran project metadata exists and declares explicit CVF-compatibility flags",
+      "effect": "build contract is materially better specified, but the supplied executable demonstrates that the project metadata can be used in a later modern rebuild and therefore does not by itself prove an original historical build environment",
+      "historical_B2_closed": false
+    }
+  },
+  "configuration_match_assessment": {
+    "received_executable_is_strongly_consistent_with": "Debug|x64",
+    "support": [
+      "PE architecture is x86-64",
+      "CodeView PDB path contains x64\\Debug",
+      "debug information is present"
+    ],
+    "exact_vfproj_generated_this_executable_proven": false
+  },
+  "next_route": {
+    "historical_reference_recovery": "still requires provenance-qualified historical 4.1.x executable/build/output or a valid PREP02R/GOV02 closure route",
+    "native_reconstruction_route": "the received 2026 executable can be evaluated separately as a source-adjacent native reconstruction candidate, never as independent B2 merely because it runs",
+    "preferred_first_runtime_case_if_admitted": "RuurloGrass",
+    "silent_input_translation_allowed": false,
+    "public_binary_redistribution_assumed_permitted": false
+  }
+}
