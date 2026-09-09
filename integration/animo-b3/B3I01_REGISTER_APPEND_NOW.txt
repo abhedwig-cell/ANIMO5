@@ -1,1 +1,0 @@
-Next operation must be fetch/update canonical register, not more prep.
