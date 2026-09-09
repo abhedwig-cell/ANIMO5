@@ -1,0 +1,42 @@
+{
+  "work_unit": "ANIMO-PREP11",
+  "title": "Parser-Exposed Option Contract Evidence Rehome",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep11-option-contract-rehome",
+  "base": {
+    "branch": "work/animo-rg02-branch-authority-integration",
+    "head": "67104b7253d5ebc963ee2a801f4e07a23552572a",
+    "role": "governance-converged evidence base"
+  },
+  "source_evidence": {
+    "branch": "work/animo-prep09-option-contract-audit",
+    "head": "0ae0e2180cf0569f8ea22319aa9ccb54ebca3210",
+    "historical_workunit_label": "ANIMO-PREP09",
+    "requalification_claimed": false
+  },
+  "decision": "IN_PROGRESS_EVIDENCE_REHOME_NO_REQUALIFICATION",
+  "implemented": true,
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "blocked": false,
+  "local_finding_identity": {
+    "source_local_label": "TCD-030",
+    "rg02_reconciliation_key": "RG02-LCL-AERATION-OPTION2-ALIAS",
+    "canonical_tcd_id": null,
+    "canonical_allocation_owner": "ANIMO-B3 governance"
+  },
+  "hard_rules": {
+    "legacy_source_modified": false,
+    "testcase_modified": false,
+    "physics_changed": false,
+    "numerical_policy_changed": false,
+    "corrected_legacy_admitted": false,
+    "B3_admitted": false,
+    "B4_admitted": false,
+    "production_migration_admitted": false,
+    "source_prep09_status_import_allowed": false,
+    "source_discrepancy_register_import_allowed": false
+  },
+  "next": "transplant selected source evidence with exact blob provenance and verify exclusions"
+}
