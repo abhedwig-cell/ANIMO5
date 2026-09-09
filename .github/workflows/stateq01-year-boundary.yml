@@ -1,0 +1,24 @@
+name: STATEQ01 year-boundary continuation qualification
+
+on:
+  push:
+    branches:
+      - work/animo-stateq01-canonical-state-readiness
+    paths:
+      - tools/stateq01/year_boundary_continuation_harness.py
+      - tests/stateq01/test_year_boundary_continuation_harness.py
+      - docs/state/YEAR_BOUNDARY_CONTINUATION_QUALIFICATION.md
+      - integration/animo-state/YEAR_BOUNDARY_CONTINUATION_SENTINEL_STATUS.json
+      - .github/workflows/stateq01-year-boundary.yml
+  workflow_dispatch:
+
+jobs:
+  year-boundary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run RC-R3 exact year-boundary sentinels
+        run: python -m unittest tests/stateq01/test_year_boundary_continuation_harness.py -v
