@@ -1,0 +1,25 @@
+name: STATEQ01 upper-boundary reservoir qualification
+
+on:
+  push:
+    branches:
+      - work/animo-stateq01-canonical-state-readiness
+    paths:
+      - tools/stateq01/upper_boundary_reservoir_wiring_harness.py
+      - tests/stateq01/test_upper_boundary_reservoir_wiring_harness.py
+      - docs/state/UPPER_BOUNDARY_RESERVOIR_CONTINUATION_QUALIFICATION.md
+      - integration/animo-state/UPPER_BOUNDARY_RESERVOIR_AUDIT.json
+      - integration/animo-state/UPPER_BOUNDARY_RESERVOIR_WIRING_SENTINEL_STATUS.json
+      - .github/workflows/stateq01-upper-boundary-reservoir.yml
+  workflow_dispatch:
+
+jobs:
+  upper-boundary-reservoir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run RC-R12 exact upper-boundary wiring sentinels
+        run: python -m unittest tests/stateq01/test_upper_boundary_reservoir_wiring_harness.py -v
