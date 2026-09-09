@@ -1,0 +1,65 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "test_id": "RC-R12-source-component",
+  "status": "PASS_FROZEN_SOURCE_COMPONENT_CONTINUITY_FULL_MODEL_SPLIT_RUN_OPEN",
+  "evidence_class": "B0_HASH_PINNED_SOURCE_COMPONENT_EXECUTION_NOT_B2",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "compiler": "GNU Fortran 14.2.0",
+  "probe_driver_sha256": "f8805877d949c6a9edaa34a13466f04c4fd20c712820e9bbb220fd1c9495e678",
+  "source_file_hashes": {
+    "UBoundconc.for": "b9a7ec980d40c0f76279077852190788e36cd976d185b12683a38da0c7dfecf7",
+    "Init.for": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+    "Output_Init.for": "6452c175dcd7c6e80983c1176467735d07f75595cf8341526b115b70121b6a2f",
+    "Transgen.for": "cd5efa76c1a4840b50901ee5015940b74c5fe4df79aca43d53a4a4cb77b9fecb",
+    "Transca.for": "7f31150050bd41aef203587818cde94cf689e6288094b2ad84aea34732b07ff9"
+  },
+  "scenario": {
+    "hydrology_mode": 2,
+    "iopthyvs": 1,
+    "flpn": 0,
+    "p_cycle": 1,
+    "initial_top_concentrations": [2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
+    "species_order": ["NH4", "NO3", "DOM", "DON", "PO4", "DOP"],
+    "nonzero_flux": true,
+    "purpose": "exercise revision-53 UBoundconc no-ponding residence-time update with nonzero upper-boundary state and compare uninterrupted component handoff, explicit checkpoint/restore handoff, and deliberate checkpoint omission"
+  },
+  "builds": [
+    {
+      "id": "GNU_DEFAULT_REAL",
+      "flags": ["-O0"],
+      "executable_sha256": "0342ef2fe6b316d0837c68c5b85c25a6a2009fb95044afcbfe68248eff1ebc7c",
+      "continuous_final": [1.514901876449585, 2.160053014755249, 2.5053133964538574, 3.129020929336548, 3.900608777999878, 4.3541669845581055],
+      "split_final": [1.514901876449585, 2.160053014755249, 2.5053133964538574, 3.129020929336548, 3.900608777999878, 4.3541669845581055],
+      "omitted_checkpoint_final": [0.15522819757461548, 0.16998644173145294, 0.016891960054636002, 0.01964801549911499, 0.10517466813325882, 0.012695640325546265],
+      "continuous_equals_split_exact_within_build": true,
+      "omitted_checkpoint_differs": true
+    },
+    {
+      "id": "GNU_DEFAULT_REAL_8_QUALIFICATION_VARIANT",
+      "flags": ["-O0", "-fdefault-real-8"],
+      "executable_sha256": "7f9db44fd84ce18f1c826efeb14ade5be128753bc338e79530811fdc86a7a6de",
+      "continuous_final": [1.5149018660733145, 2.160052739946197, 2.5053132153732447, 3.1290206550352222, 3.900608370625736, 4.354166130830522],
+      "split_final": [1.5149018660733145, 2.160052739946197, 2.5053132153732447, 3.1290206550352222, 3.900608370625736, 4.354166130830522],
+      "omitted_checkpoint_final": [0.15522823107408237, 0.16998647068364575, 0.01689196099889785, 0.019648017793454865, 0.10517468348261136, 0.012695642266540068],
+      "continuous_equals_split_exact_within_build": true,
+      "omitted_checkpoint_differs": true
+    }
+  ],
+  "source_contract": {
+    "accepted_start_aliases": ["Conhtop", "Conitop", "Codiormatop", "Codiornitop", "Copotop", "Codiorpotop"],
+    "accepted_end_results": ["Rsconhtop", "Rsconitop", "Rscodiormatop", "Rscodiornitop", "Rscopotop", "Rscodiorpotop"],
+    "interval_average_derived": ["Avconhtop", "Avconitop", "Avcodiormatop", "Avcodiornitop", "Avcopotop", "Avcodiorpotop"],
+    "next_interval_handoff": "Init copies Rs*top to Con*top before the next interval",
+    "transport_feed": "Av*top is used as upper-boundary concentration for first active transport compartment when Flpn=0"
+  },
+  "qualification_boundary": {
+    "full_animo_uninterrupted_vs_split_run": false,
+    "canonical_serialization_precision_qualified": false,
+    "historical_reference_b2": false,
+    "canonical_state_admitted": false,
+    "production_code_changed": false,
+    "physics_changed": false,
+    "historical_default_real_contract_proven": false
+  }
+}
