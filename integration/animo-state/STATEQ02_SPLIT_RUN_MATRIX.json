@@ -1,0 +1,16 @@
+{
+  "workunit": "ANIMO-STATEQ02",
+  "status": "IN_PROGRESS_NO_EXECUTABLE_RESULTS_YET",
+  "evidence_class": "PENDING_B0_HASH_PINNED_EXECUTION",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "profile": "RESTRICTED_CORE_CNP_SURFACE_EXCLUDED",
+  "cases": [],
+  "hard_rules": {
+    "restart_output_adjusted_to_force_equality": false,
+    "omitted_state_zero_filled": false,
+    "hidden_tolerance": false,
+    "report_accumulator_is_physical_owner": false,
+    "production_implementation": false
+  }
+}
