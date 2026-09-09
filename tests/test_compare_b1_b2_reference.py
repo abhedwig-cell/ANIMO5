@@ -148,6 +148,15 @@ class ComparatorTests(unittest.TestCase):
         self.assertEqual(report["decision"], "SCHEMA_OR_PROVENANCE_FAILURE")
         self.assertTrue(report["b2_validation_errors"])
 
+    def test_missing_precision_metadata_fails_schema_validation(self):
+        b2_record = record()
+        del b2_record["precision"]
+        b2 = capture("B2_HISTORICAL_REFERENCE_QUALIFIED", [b2_record])
+        b1 = capture("B1_DIAGNOSTIC", [record()])
+        report = mod.compare_captures(b2, b1)
+        self.assertEqual(report["decision"], "SCHEMA_OR_PROVENANCE_FAILURE")
+        self.assertTrue(any("missing precision" in item for item in report["b2_validation_errors"]))
+
     def test_missing_record_fails_closed(self):
         b2 = capture("B2_HISTORICAL_REFERENCE_QUALIFIED", [record()])
         b1 = capture("B1_DIAGNOSTIC", [])
