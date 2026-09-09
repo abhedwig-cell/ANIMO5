@@ -1,0 +1,53 @@
+{
+  "attachment": "ANIMO-RG02-G5-MP02",
+  "domain": "macropore_complete_case_activation",
+  "source_work_unit": "ANIMO-MP02",
+  "branch": "work/animo-mp02-whole-case-activation",
+  "head": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+  "status_path": "integration/animo-macropore/ANIMO-MP02_STATUS.json",
+  "decision": "QUALIFIED_COMPLETE_CASE_B1_MACROPORE_ACTIVATION_WITH_TCD025_SYMPTOM_EVIDENCE_GNU_FPE_SEAM_AND_HISTORICAL_REFERENCE_RESTART_OPEN",
+  "authority_basis": "qualified child workunit of RG02-attached MP01; branch/head and self-identifying status read live",
+  "evidence_class": "B1_COMPLETE_CASE_SYNTHETIC_DIAGNOSTIC_ONLY",
+  "parent_case": "CranGrass",
+  "complete_case_runs": 6,
+  "successful_completion_runs": 6,
+  "active_species": ["DOC", "DON", "NH4", "NO3", "DOP", "PO4"],
+  "historical_reference_qualified": false,
+  "b2_historically_referenced": false,
+  "b3_ready": false,
+  "b3_admitted": false,
+  "production_migration_admitted": false,
+  "tcd025": {
+    "classification": "COMPLETE_CASE_B1_SYMPTOM_CONFIRMED_MACROPORE_MAIN_LEDGER_CONTROL_VOLUME_GAP_HISTORICAL_MAGNITUDE_OPEN",
+    "correction_implemented": false,
+    "correction_admitted": false
+  },
+  "restart": {
+    "classification": "SOURCE_AND_COMPLETE_CASE_CONFIRMED_PERSISTENT_MACROPORE_SOLUTE_RESTART_OMISSION",
+    "continuous_vs_split_equivalence_executed": false,
+    "reason": "persistent state representation is incomplete"
+  },
+  "new_governance_handoffs": [
+    {
+      "finding": "MAPOTRANSPORT balance-warning guard evaluates Abs(BaDev/BaMx) on the active GNU diagnostic route and raises IEEE_INVALID when BaMx is zero",
+      "classification": "GNU_DIAGNOSTIC_ACTIVE_ROUTE_INVALID_FLAG_FROM_BALANCE_WARNING_GUARD_HISTORICAL_COMPILER_EFFECT_UNPROVEN",
+      "owner": "numerical/build governance",
+      "canonical_tcd_allocated_here": false,
+      "correction_admitted": false
+    },
+    {
+      "finding": "MP01 source seam: nitrate initial concentration is read into CoMpNi but labelled CoMpni range checks use CoMpNh values",
+      "classification": "SOURCE_CONFIRMED_MACROPORE_INITIAL_NO3_VALIDATION_SEAM_NOT_PART_OF_TCD025",
+      "owner": "canonical discrepancy governance",
+      "canonical_tcd_allocated_here": false,
+      "correction_admitted": false
+    }
+  ],
+  "rg02_disposition": "ATTACHED_BLOCKED_NO_EVIDENCE_STRENGTH_PROMOTION",
+  "notes": [
+    "MP02 strengthens MP01 from specialized-kernel B1 to complete ANIMO orchestration B1 for active macropore paths.",
+    "MP02 does not supply B2 historical reference evidence and does not satisfy G6 or G7.",
+    "The GNU invalid-operation seam must not be projected onto historical Intel behaviour without separate qualification.",
+    "No TCD-025 correction or production migration is authorized by this attachment."
+  ]
+}
