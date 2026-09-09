@@ -35,6 +35,7 @@ B3B02_HEAD = "412bf889ce959d85c651c3b9180dec0a6ff9bb61"
 B3B03_HEAD = "446f57f3aeff6e7db56ce473f0724bdb58cad94f"
 B3B03R_TECH_HEAD = "02ce1f49582d2b8cb794c3bfb9d674481a2eea1e"
 B3B03R_HANDOFF_HEAD = "11db97289ffafdd6281b83f0aa0e96b544d6eb5a"
+B3B04_HEAD = "19e38ae0dfc211e88fe782b4b7d6e42b1b7f5865"
 B3E01_HEAD = "41e43c6a6888aac5b5b52041bcdd088c7afc68f1"
 
 
@@ -103,6 +104,7 @@ def main() -> None:
     assert snap["B3B03"] == B3B03_HEAD
     assert snap["B3B03R_TECH"] == B3B03R_TECH_HEAD
     assert snap["B3B03R_HANDOFF"] == B3B03R_HANDOFF_HEAD
+    assert snap["B3B04"] == B3B04_HEAD
     assert snap["B3E01"] == B3E01_HEAD
     assert snap["canonical_tcd_register_tail"] == "TCD-042"
 
@@ -153,7 +155,9 @@ def main() -> None:
     assert auth["B3B03R-TECH"]["qualified"] == "True"
     assert auth["B3B03R-HANDOFF"]["current_head"] == B3B03R_HANDOFF_HEAD
     assert auth["B3B03R-HANDOFF"]["qualified"] == "False"
-    assert auth["B3B04"]["qualified"] == "False"
+    assert auth["B3B04"]["current_head"] == B3B04_HEAD
+    assert auth["B3B04"]["tested"] == "True" and auth["B3B04"]["qualified"] == "True"
+    assert auth["B3B04"]["current_state"] == "QUALIFIED_ATOMIC_CLASS_B_RESTART_IDENTITY_READINESS_ONLY_NO_B3_ADMISSION"
     assert auth["B3E01"]["current_head"] == B3E01_HEAD
     assert auth["B3E01"]["tested"] == "True" and auth["B3E01"]["qualified"] == "True"
     assert auth["B3E01"]["current_state"].startswith("PARTIAL_TCD042_E1_CLASS_E_READINESS")
@@ -164,6 +168,7 @@ def main() -> None:
     assert gates["G6H"]["state"] == hist["G6H"]
     assert gates["G6U"]["state"] == hist["G6U"]
     assert gates["G7"]["state"] == "NO_ATOMIC_SCIENTIFIC_ADMISSIONS"
+    assert "TCD-040" in gates["G7"]["qualified_basis"]
     assert gates["TCD042_PARENT"]["state"] == "WAITING_ON_CHILDREN"
     assert "Hetop=0" in gates["TCD042_PARENT"]["remaining_dependencies"]
     assert gates["B4_PROFILE"]["state"] == "NOT_ADMITTED"
@@ -196,7 +201,10 @@ def main() -> None:
     assert children["TCD-042-E1"]["status"].startswith("PARTIAL_TCD042_E1_CLASS_E_READINESS")
     assert next(e for e in entries if e["tcd"] == "TCD-026")["queue_state"] == "WAITING_ON_ROUTE_AND_REVIEW"
     assert next(e for e in entries if e["tcd"] == "TCD-024")["queue_state"] == "WAITING_ON_ROUTE_AND_REVIEW"
-    assert next(e for e in entries if e["tcd"] == "TCD-040")["queue_state"] == "IN_PROGRESS_ADMISSION_READINESS"
+    e40 = next(e for e in entries if e["tcd"] == "TCD-040")
+    assert e40["queue_state"] == "WAITING_ON_ROUTE_AND_REVIEW"
+    assert "B3B04" in e40["owners"]
+    assert "unconditional" in e40["next_action"]
 
     streams = {r["stream"]: r for r in parallel_rows}
     required_streams = {
@@ -216,6 +224,8 @@ def main() -> None:
     assert streams["nq03_independent_review"]["current_state"].startswith("INDEPENDENT_REVIEW_PASS")
     assert streams["general_input_contract"]["current_state"] == "QUALIFIED_BOUNDED_REV53_GENERAL_NORMALIZED_REPRESENTATION_WITH_EXPLICIT_LEGACY_HAZARD_EXCLUSIONS"
     assert "production migration" in streams["general_input_contract"]["guards"]
+    assert streams["layer0_restart_identity"]["current_state"] == "QUALIFIED_ATOMIC_CLASS_B_RESTART_IDENTITY_READINESS_ONLY_NO_B3_ADMISSION"
+    assert "unconditional" in streams["layer0_restart_identity"]["guards"]
     assert "TCD-019" in streams["slow_langmuir_index"]["guards"]
     assert streams["tcd042_parent"]["parallel_class"] == "SERIAL_COMPOSITION"
     assert streams["b4_profile"]["parallel_class"] == "SERIAL_GATE"
@@ -255,6 +265,7 @@ def main() -> None:
     print("canonical TCD tail and TCD-042 child routing: PASS")
     print("shared Hetop=0 semantic owner: PASS")
     print("bounded IO02 GENERAL qualification: PASS")
+    print("TCD-040 atomic restart readiness routing: PASS")
     print("25-entry atomic queue arithmetic: PASS")
     print("parallelism and serialization guards: PASS")
     print("scientific/B4/production admissions: 0")
