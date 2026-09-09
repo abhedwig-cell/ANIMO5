@@ -15,7 +15,7 @@ Existing canonical GHG discrepancies remain distinct:
 - `TCD-008`: GHG theory/version documentation gap;
 - `TCD-013`: GHGMais versus revision-53 input-contract lineage mismatch.
 
-Neither identifier is broadened here to absorb newly found conservation, observer or equation-reconciliation findings.
+Neither identifier is broadened here to absorb newly found conservation, observer, initialization or equation-reconciliation findings.
 
 ## GHG01 local candidate findings
 
@@ -30,6 +30,38 @@ The same inactive `GHG_Miner` route contains the intended coupling of methanogen
 Impact boundary: source structure permits an incomplete C-transfer chain if the GHG branch is activated. Numerical magnitude and historical executable behaviour remain unqualified because no revision-53-compatible historical GHG case and no qualified historical reference executable are available.
 
 Recommended B3 treatment: separate from TCD-008 and TCD-013; candidate for canonical discrepancy allocation after independent source review and activated-case reproduction.
+
+### `GHG01-LCL-CH4-PRODUCTION-COMPONENT-PARTITION`
+
+Classification: `SOURCE_CONFIRMED_CH4_PRODUCTION_COMPONENT_PARTITION_NONCLOSURE`
+
+Revision 53 first scales total methanogenic substrate by the anaerobic fraction `A=1-Rdfaox`, so total production is `QPrCH4=E*A*S`. It then allocates source-family production using the unscaled family substrates in the numerator and the already scaled total substrate in the denominator. Algebraically this gives `QPrCH4_i=E*S_i` and therefore `sum_i(QPrCH4_i)=QPrCH4/A`.
+
+For partial anaerobiosis (`0<A<1`), source-family production exceeds total physical CH4 production by the exact factor `1/A`. This is not only diagnostic: `Rates2` uses `QPrCH4Do` to deplete DOM. The inactive `GHG_Miner` would use the same component family for the other source pools if reactivated unchanged.
+
+Impact boundary: source-confirmed C-transfer nonclosure. Historical magnitude remains `REFERENCE_BLOCKED`. A zero-substrate `0/0` component-allocation domain risk also exists when the anaerobic early return is not taken.
+
+Recommended B3 treatment: distinct from the inactive `GHG_Miner` finding. Reactivating the missing transfer routine cannot by itself restore conservation.
+
+### `GHG01-LCL-CH4-FRESH-OM-WEIGHTING-INDEX`
+
+Classification: `SOURCE_CONFIRMED_CROSS_FRACTION_INDEX_DEPENDENCE_WRONG_INDEX_CANDIDATE_REFERENCE_UNEXERCISED`
+
+`Inicalc.for` computes each fresh-OM methanogenic weight `FOmCH4Os(Fn)` from the current fraction's `Recfav(Fn)`, but chooses the linear-versus-power branch from `Recfav(Nf)`, the final defined fraction. One fraction therefore selects the weighting regime for all fractions.
+
+Version-near secondary documentation describes weighting from the respective decomposition rates and the same `0.00082 d-1` transition, which makes a per-fraction selector plausible but does not prove the intended revision-53 expression.
+
+Recommended B3 treatment: retain as a source-index candidate requiring detailed formulation/source-history authority and an activated case spanning both sides of the threshold before any correction decision.
+
+### `GHG01-LCL-CH4-PLANT-GROWTH-TEMPERATURE-INDEX`
+
+Classification: `SOURCE_CONFIRMED_USE_BEFORE_DEFINITION_IN_ACTIVE_CH4_PLANT_TRANSPORT_PATH_REFERENCE_UNEXERCISED`
+
+`GHG_Methane` declares local integer `Ln` and executes `Te50=Te(Ln)` before the first source assignment to `Ln`. The resulting `Te50` controls `fGrow`, which multiplies every root-zone `K1plant`. `K1plant` then enters shared GHG transport, plant CH4 oxidation `QOxCH4Plt` and plant-mediated emission `QEmCH4Plt`.
+
+The source therefore does not define which temperature state controls the plant-growth multiplier. Compiler/local-storage behaviour may change the runtime manifestation but cannot supply scientific intent.
+
+Recommended B3 treatment: source defect candidate distinct from generic compiler-storage TCDs because it lies on an active scientific transfer path. Recover the intended temperature-state definition before proposing a correction.
 
 ### `GHG01-LCL-GHG-OUTBAL-WORKING-ARRAYS`
 
@@ -59,7 +91,7 @@ Classification: `DOCUMENT_SOURCE_SIGN_CONFLICT_UNRESOLVED`
 
 Peer-reviewed ANIMO-specific 2011 Appendix A17 represents the nitrification N2O-fraction temperature response with a Q10-ratio factor raised to `(T-Tref)/10`, while frozen revision 53 uses `2**(-(Te-Terf)/10)` in `FracN2Onitr`.
 
-This is a direct document-source difference but is not yet a qualified code defect. Revision-53 source explicitly cites Maag & Vinther (1996), and the experimental literature is consistent with a decreasing N2O fraction from nitrification as temperature rises. A publication notation issue, source evolution, or different definition of the response factor therefore remains plausible.
+This is a direct document-source difference but is not yet a qualified code defect. Revision-53 source explicitly cites Maag & Vinther (1996), and that experimental evidence is consistent with a decreasing N2O fraction from nitrification as temperature rises. A publication notation issue, source evolution, or different response-factor definition therefore remains plausible.
 
 Required B3 treatment: retain separately from generic TCD-008 and require the detailed Hendriks ANIMO GHG derivation, authoritative Report 2054 bytes or equivalent change history before scientific disposition.
 
@@ -77,21 +109,23 @@ Required B3 treatment: independent algebra/unit review plus detailed-authority r
 
 Post-closeout web research recovered strong peer-reviewed ANIMO-specific N2O equation authority in Stolk et al. (2011), Vadose Zone Journal, DOI `10.2136/vzj2010.0029`, and Stolk et al. (2011), Biogeosciences, DOI `10.5194/bg-8-2649-2011`.
 
-The Biogeosciences paper explicitly distinguishes the original equilibrium ANIMO N2O concept from a later mobile-immobile aggregate extension. The original concept matches revision-53 state and transport structure closely. Exact/algebraic source matches were found for the N2O Bunsen-equilibrium state relation, combined gas/water diffusion, nitrification production and WFPS response, denitrification pH response, the Q10=2.6 relative temperature response and the aeration-response relation. See `GHG_THEORY_AUTHORITY_RECOVERY_2011.md`.
+The Biogeosciences paper explicitly distinguishes the original equilibrium ANIMO N2O concept from a later mobile-immobile aggregate extension. The original concept matches revision-53 state and transport structure closely. Exact/algebraic source matches were found for the N2O Bunsen-equilibrium state relation, combined gas/water diffusion, nitrification production and WFPS response, denitrification pH response, the Q10=2.6 relative temperature response and the aeration-response relation. See `GHG_THEORY_AUTHORITY_RECOVERY_2011.md` and `GHG_N2O_EQUATION_ALGEBRA_RECONCILIATION.md`.
 
 This narrows TCD-008 materially for N2O, but does not close the release-specific documentation gap. It also exposes the two relation-level conflicts above, which must not be hidden inside a generic `SOURCE_ONLY` label.
 
 ## Required activated-case evidence
 
-Before either source defect is admitted to corrected-legacy or production work, obtain a revision-53-compatible GHG case without silently translating GHGMais and record at minimum:
+Before source defects are admitted to corrected-legacy or production work, obtain a revision-53-compatible GHG case without silently translating GHGMais and record at minimum:
 
 1. branch reachability for both `GHGasses(1)` and `GHGasses(2)`;
 2. start/end `CsCH4/RsCsCH4` and `CsN2O/RsCsN2O` storage;
-3. `QPrCH4Do`, `QPrCH4Ex`, `QPrCH4Hu`, `QPrCH4Os` and corresponding source-pool changes;
-4. CH4 oxidation and the diffusion, air-flow, ebullition and plant-mediated emission components;
-5. N2O nitrification production, denitrification production, N2O reduction and emission components;
-6. ordinary C/N balance terms plus GHG-specific observer terms;
-7. unrounded model-wide C and N residuals reconstructed from explicit state and transfers.
+3. `QPrCH4`, `QPrCH4Do`, `QPrCH4Ex`, `QPrCH4Hu`, `QPrCH4Os`, their sum, `Rdfaox`, and corresponding source-pool changes under partial anaerobiosis;
+4. fresh-OM fractions spanning both sides of the `0.00082 d-1` weighting threshold where possible;
+5. first-read `Ln`, `Te50`, `fGrow`, `K1plant`, plant oxidation and plant emission on the active CH4 route;
+6. CH4 oxidation and the diffusion, air-flow, ebullition and plant-mediated emission components;
+7. N2O nitrification production, denitrification production, N2O reduction and emission components;
+8. ordinary C/N balance terms plus GHG-specific observer terms;
+9. unrounded model-wide C and N residuals reconstructed from explicit state and transfers.
 
 A synthetic or compatibility-derived case may establish causal reachability but cannot become B0 or B2 historical evidence. Historical behaviour remains reference-blocked until a qualified historical runner or equivalent admitted oracle exists.
 
@@ -101,7 +135,9 @@ GHG01 closes theory/source/input-lineage qualification only to the declared leve
 
 - the remaining release-specific equation and parameter authority gap under `TCD-008`, now narrowed substantially for N2O but still open for CH4 and unresolved N2O subrelations;
 - matching historical testcase/input lineage under `TCD-013`;
-- source-confirmed conservation-path and balance-observer findings documented above;
+- source-confirmed CH4 source-pool transfer and component-partition nonclosure;
+- unresolved fresh-OM weighting-index intent and active plant-growth temperature use-before-definition;
+- source-confirmed balance-observer findings and incomplete model-wide gas-store control volume;
 - two N2O document-source equation conflicts requiring scientific disposition;
 - absence of a qualified historical reference runner/output oracle.
 
