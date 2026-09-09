@@ -5,30 +5,47 @@
   "branch": "work/animo-massq01-b1-massledger-projection",
   "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
   "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
-  "runtime": {
-    "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
-    "observer_execution_copy_executable_sha256": "1999f839ad1c220619f18dd62b84450c29dc686d0af41b23bb7a67a9d3f7f7a7",
-    "baseline_animo_for_sha256": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
-    "observer_execution_copy_animo_for_sha256": "404c90180675353e397225420d83d1fa942a5baab347505c882c88a1fa80f20b",
-    "frozen_source_modified": false,
-    "observer_physical_state_mutation": false,
-    "observer_outputs": ["massq01_start.dat", "massq01_step.dat"]
-  },
+  "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+  "frozen_source_modified": false,
+  "observer_physical_state_mutation": false,
+  "observer_sidecars": [
+    "massq01_start.dat",
+    "massq01_chem_start.dat",
+    "massq01_step.dat"
+  ],
   "observer_boundary": {
-    "begin_snapshot": "after Init and applicable Grass_init/initial Outbal_Init initialization, before interval hydrology and process execution",
-    "reason": "begin storage must be snapshotted before interval mutation; reconstructing beginning storage from start-side arrays at interval end produced artificial initialization/event residuals",
-    "postprocessing_rule": "residual = persisted_begin_storage + external_inputs + source_terms - external_outputs - end_storage",
-    "legacy_balance_arrays_used_as_storage_owner": false
+    "water_begin_snapshot": "after Init before hydrology/process mutation",
+    "chemical_begin_snapshot": "after hydrology/crop preparation before Addit",
+    "source_reason": "Init promotes Mofro only for layers 1:Nl while chemical concentrations are promoted for layers 0:Nl; a universal post-Init chemical snapshot therefore mixes incompatible layer-0 coordinates during wet/dry transitions",
+    "residual_rule": "begin storage + external inputs + source terms - external outputs - end storage",
+    "legacy_balance_arrays_used_as_storage_owner": false,
+    "acceptance_tolerance_applied": false
   },
+  "rejected_observer_artifacts": [
+    {"case":"GrassPeat","tito":1704,"apparent_n_kg_ha":-8.276164955692366,"layer0_coordinate_jump_kg_ha":-8.27616495572782},
+    {"case":"STONE_akk_0006.2001.2015","tito":1530,"apparent_n_kg_ha":-4.90885883878218,"layer0_coordinate_jump_kg_ha":-4.908858838774846},
+    {"case":"Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA","tito":473,"apparent_n_kg_ha":-2.3146104119950905,"layer0_coordinate_jump_kg_ha":-2.314610412007279}
+  ],
   "natural_cases": [
-    {"case":"CranGrass","timesteps":2922,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.0030198960466805147,"n_max_abs_kg_ha_n":0.16896934284523013,"p_max_abs_kg_ha_p":0.723582514679947,"om_proxy_max_abs_kg_ha_om":0.1784147895523347},
-    {"case":"CranMais","timesteps":3287,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.000059258412875351496,"n_max_abs_kg_ha_n":0.07038033849312342,"p_active":false,"p_max_abs_kg_ha_p":0.0,"om_proxy_max_abs_kg_ha_om":3.4924596548080444e-10},
-    {"case":"GrassPeat","timesteps":540,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.00007458692562067881,"n_max_abs_kg_ha_n":8.276164955692366,"p_max_abs_kg_ha_p":0.6307652791874716,"om_proxy_max_abs_kg_ha_om":2.240789260715246},
-    {"case":"LWKM_gras_1040.2021.2045","timesteps":900,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.0002351636003368185,"n_max_abs_kg_ha_n":0.5842666837997967,"p_max_abs_kg_ha_p":0.002631564380862983,"p_cumulative_signed_kg_ha_p":-0.27487889863550663,"om_proxy_max_abs_kg_ha_om":0.07337614707648754},
-    {"case":"Puitmijn_Cranendonck_60","timesteps":4383,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.00006569953166035702,"n_max_abs_kg_ha_n":0.7796114634547848,"n_cumulative_signed_kg_ha_n":-14.64267091365764,"p_max_abs_kg_ha_p":0.03419510608546261,"om_proxy_max_abs_kg_ha_om":2.66998540610075e-7},
-    {"case":"RuurloGrass","timesteps":1947,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.00007131574966479094,"n_max_abs_kg_ha_n":0.0067493732130969875,"p_active":false,"p_max_abs_kg_ha_p":0.0,"om_proxy_max_abs_kg_ha_om":1.862645149230957e-9},
-    {"case":"STONE_akk_0006.2001.2015","timesteps":540,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.0000839964932310977,"n_max_abs_kg_ha_n":4.908858838774904,"p_max_abs_kg_ha_p":0.7386178465530975,"om_proxy_max_abs_kg_ha_om":9.313225746154785e-10},
-    {"case":"Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA","timesteps":1096,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.00007408471083181212,"n_max_abs_kg_ha_n":2.3146104118204676,"p_max_abs_kg_ha_p":0.21522170615935465,"om_proxy_max_abs_kg_ha_om":9.313225746154785e-9}
+    {"case":"CranGrass","timesteps":2922,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.00301989604668,"n_max_abs_kg_ha_n":0.00381630992160,"p_max_abs_kg_ha_p":0.723582514680,"soil_organic_c_max_abs_kg_ha_c":0.0000257063831668},
+    {"case":"CranMais","timesteps":3287,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.0000592584128754,"n_max_abs_kg_ha_n":0.00000328222085955,"p_active":false,"soil_organic_c_max_abs_kg_ha_c":2.02562659979e-10},
+    {"case":"GrassPeat","timesteps":540,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.0000745869256207,"n_max_abs_kg_ha_n":0.299863457680,"p_max_abs_kg_ha_p":0.00171616832813,"soil_organic_c_max_abs_kg_ha_c":1.08033418655e-8},
+    {"case":"LWKM_gras_1040.2021.2045","timesteps":900,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.000235163600337,"n_max_abs_kg_ha_n":0.584266683800,"p_max_abs_kg_ha_p":0.00134024659565,"p_cumulative_signed_kg_ha_p":-0.2725459891917126,"soil_organic_c_max_abs_kg_ha_c":0.0000283007044345},
+    {"case":"Puitmijn_Cranendonck_60","timesteps":4383,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.0000656995316604,"n_max_abs_kg_ha_n":0.224051081193,"p_max_abs_kg_ha_p":0.0133329241853,"soil_organic_c_max_abs_kg_ha_c":1.49457482621e-7},
+    {"case":"RuurloGrass","timesteps":1947,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.0000713157496648,"n_max_abs_kg_ha_n":0.00674937321310,"p_active":false,"soil_organic_c_max_abs_kg_ha_c":1.08033418655e-9},
+    {"case":"STONE_akk_0006.2001.2015","timesteps":540,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.0000839964932311,"n_max_abs_kg_ha_n":0.0236675819542,"p_max_abs_kg_ha_p":0.00243889995181,"soil_organic_c_max_abs_kg_ha_c":5.40167093277e-10},
+    {"case":"Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA","timesteps":1096,"ghg_active":false,"macropore_active":false,"water_max_abs_mm":0.0000740847108318,"n_max_abs_kg_ha_n":7.47968442738e-8,"p_max_abs_kg_ha_p":0.0259910714594,"soil_organic_c_max_abs_kg_ha_c":5.40167093277e-9}
+  ],
+  "known_discrepancy_visibility": [
+    {"case":"CranGrass","interval_tito":1,"quantity":"P","observer_residual_kg_ha":-0.723582514679947,"classification":"EXPECTED_KNOWN_TCD","canonical_tcd":"TCD-014"},
+    {"case":"LWKM_gras_1040.2021.2045","interval_tito":2312,"quantity":"N","observer_residual_kg_ha":0.5787119019951206,"classification":"EXPECTED_KNOWN_TCD","canonical_tcd":"TCD-015"},
+    {"case":"Puitmijn_Cranendonck_60","interval_tito":1490,"quantity":"N","known_nh4_component_kg_ha":0.13880242022597,"total_observer_residual_kg_ha":0.2240510811934655,"classification":"EXPECTED_KNOWN_TCD_COMPONENT_PLUS_UNEXPLAINED_REMAINDER","canonical_tcd":"TCD-016"},
+    {"case":"LWKM_gras_1040.2021.2045","interval":"whole observed run","quantity":"P","observer_cumulative_residual_kg_ha":-0.2725459891917126,"classification":"EXPECTED_KNOWN_TCD","canonical_tcd":"TCD-019"}
+  ],
+  "local_unexplained_examples": [
+    {"case":"GrassPeat","interval_tito":5224,"quantity":"N","observer_kg_ha":0.29986345767974854,"legacy_whole_profile_kg_ha":0.2998634577478822},
+    {"case":"STONE_akk_0006.2001.2015","interval_tito":2382,"quantity":"N","observer_kg_ha":0.023667581954214256,"legacy_whole_profile_kg_ha":0.023667581953337291},
+    {"case":"Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA","interval_tito":1,"quantity":"P","observer_kg_ha":-0.025991071459429804,"legacy_whole_profile_kg_ha":-0.025991071465794973}
   ],
   "non_interference": {
     "cases_compared": 8,
@@ -37,39 +54,13 @@
     "equal_after_declared_volatile_normalization": 100,
     "different": 0,
     "missing_or_extra_physical_outputs": 0,
-    "normalization_scope": ["file creation timestamp", "run start/end timestamp", "elapsed CPU seconds"],
     "scientific_numeric_tolerance_applied": false,
     "decision": "PASS_NO_PHYSICAL_OUTPUT_DIFFERENCE_AFTER_DECLARED_VOLATILE_NORMALIZATION"
   },
-  "known_discrepancy_reproduction": [
-    {
-      "case":"CranGrass",
-      "interval_tito":1,
-      "quantity":"P",
-      "observer_residual_kg_ha_p":-0.723582514679947,
-      "classification":"EXPECTED_KNOWN_TCD",
-      "canonical_tcd":"TCD-014",
-      "note":"independent state-plus-transfer projection reproduces the known first-step P initialization seam"
-    },
-    {
-      "case":"LWKM_gras_1040.2021.2045",
-      "interval_tito":2312,
-      "quantity":"N",
-      "observer_residual_kg_ha_n":0.5787119019951206,
-      "classification":"EXPECTED_KNOWN_TCD",
-      "canonical_tcd":"TCD-015",
-      "note":"matches the source-localized negative-concentration Reko nonclosure to floating-point noise"
-    }
-  ],
-  "local_unexplained_event_findings": [
-    {"local_id":"MASSQ01-LCL-001","case":"GrassPeat","interval_tito":1704,"quantities":"N,P,organic_matter_mass","classification":"UNEXPLAINED_RESIDUAL","note":"isolated discrete event-boundary residual cluster; transfer capture/control-volume mapping not yet reconciled"},
-    {"local_id":"MASSQ01-LCL-002","case":"STONE_akk_0006.2001.2015","interval_tito":1530,"quantities":"N,P","classification":"UNEXPLAINED_RESIDUAL","note":"isolated discrete event-boundary residual cluster; transfer capture/control-volume mapping not yet reconciled"},
-    {"local_id":"MASSQ01-LCL-003","case":"Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA","interval_tito":473,"quantities":"N,P","classification":"UNEXPLAINED_RESIDUAL","note":"isolated discrete event-boundary residual cluster; transfer capture/control-volume mapping not yet reconciled"}
-  ],
   "coverage_limits": {
-    "elemental_carbon_closure_qualified": false,
-    "organic_matter_mass_proxy_observed": true,
-    "reason_elemental_carbon": "PREP06/ARCH03 keep organic-matter mass, crop dry matter and elemental/gaseous carbon as separate quantity contracts until a scientific conversion contract is qualified",
+    "soil_organic_carbon": "bounded source-defined Cfracom projection; all eight natural cases use Cfracom=0.58",
+    "whole_system_elemental_carbon_closure_qualified": false,
+    "soil_crop_nested_closure_qualified": false,
     "ghg_runtime_coverage": "INCOMPLETE_NO_COMPATIBLE_NATURAL_ACTIVE_B1_CASE",
     "macropore_runtime_coverage": "SYNTHETIC_B1_MP02_ONLY"
   },
@@ -79,5 +70,5 @@
   "mass_gate_admitted": false,
   "b3_admitted": false,
   "production_migration_admitted": false,
-  "checkpoint_decision": "RUNTIME_OBSERVER_AND_NONINTERFERENCE_EVIDENCE_PERSISTED_CONTROL_VOLUME_TRANSFER_MAPPING_REMAINS_OPEN"
+  "checkpoint_decision": "QUALIFIED_MASSLEDGER_OBSERVER_PROJECTION_B1_NONREFERENCE_MASS_GATE_NOT_ADMITTED"
 }
