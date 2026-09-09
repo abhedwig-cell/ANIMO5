@@ -1,4 +1,3 @@
-import copy
 import importlib.util
 from pathlib import Path
 import unittest
@@ -14,7 +13,7 @@ HASH_D = "d" * 64
 
 def packet():
     return {
-        "packet_schema_version": "1.0.0",
+        "packet_schema_version": "1.1.0",
         "work_unit": "ANIMO-NQ01",
         "testcase_id": "RuurloGrass",
         "inputs": {
@@ -51,6 +50,10 @@ def packet():
             "b2_structured_capture": None,
             "b1_structured_capture": None,
         },
+        "representation_comparison": {
+            "result_artifact": None,
+            "decision": "NOT_RUN_NO_STRUCTURED_REPRESENTATION_CAPTURE",
+        },
         "structured_comparison": {
             "result_artifact": None,
             "decision": "NOT_RUN_NO_UNROUNDED_CAPTURE",
@@ -59,6 +62,7 @@ def packet():
             "global_numeric_tolerance_applied": False,
             "legacy_residual_used_as_tolerance": False,
             "rounded_report_treated_as_unrounded_oracle": False,
+            "representation_difference_auto_accepted": False,
             "b1_classified_as_independent_reference": False,
             "numerical_equivalence_qualified_by_packet": False,
             "production_migration_admitted": False,
@@ -68,6 +72,30 @@ def packet():
             "next_action": "classify formatted differences before any numerical admission",
         },
     }
+
+
+def enable_observer(p):
+    p["observer"].update(
+        {
+            "used": True,
+            "ordinary_output_non_interference_passed": True,
+            "observer_patch_sha256": "f" * 64,
+            "b2_structured_capture": "b2-capture.json",
+            "b1_structured_capture": "b1-capture.json",
+        }
+    )
+    p["representation_comparison"].update(
+        {
+            "result_artifact": "representation-comparison.json",
+            "decision": "MATCH_EXACT_REPRESENTATION_OBSERVATIONS",
+        }
+    )
+    p["structured_comparison"].update(
+        {
+            "result_artifact": "structured-comparison.json",
+            "decision": "DIFFERENT_FAIL_CLOSED",
+        }
+    )
 
 
 class FirstReferencePacketTests(unittest.TestCase):
@@ -108,26 +136,44 @@ class FirstReferencePacketTests(unittest.TestCase):
         self.assertFalse(report["packet_complete"])
         self.assertTrue(any("non-interference" in error for error in report["errors"]))
 
-    def test_observer_packet_may_be_complete_even_when_structured_comparison_fails(self):
+    def test_observer_requires_representation_comparison(self):
         p = packet()
-        p["observer"].update(
+        enable_observer(p)
+        p["representation_comparison"].update(
             {
-                "used": True,
-                "ordinary_output_non_interference_passed": True,
-                "observer_patch_sha256": "f" * 64,
-                "b2_structured_capture": "b2-capture.json",
-                "b1_structured_capture": "b1-capture.json",
+                "result_artifact": None,
+                "decision": "NOT_RUN_NO_STRUCTURED_REPRESENTATION_CAPTURE",
             }
         )
-        p["structured_comparison"].update(
+        report = mod.validate_packet(p)
+        self.assertFalse(report["packet_complete"])
+        self.assertTrue(any("representation comparison must be run" in error for error in report["errors"]))
+
+    def test_observer_packet_may_be_complete_even_when_structured_comparison_fails(self):
+        p = packet()
+        enable_observer(p)
+        report = mod.validate_packet(p)
+        self.assertTrue(report["packet_complete"])
+        self.assertEqual(report["decision"], "PACKET_COMPLETE")
+
+    def test_representation_difference_can_be_retained_in_complete_packet(self):
+        p = packet()
+        p["representation_comparison"].update(
             {
-                "result_artifact": "structured-comparison.json",
-                "decision": "DIFFERENT_FAIL_CLOSED",
+                "result_artifact": "representation-comparison.json",
+                "decision": "DIFFERENT_REPRESENTATION_FAIL_CLOSED",
             }
         )
         report = mod.validate_packet(p)
         self.assertTrue(report["packet_complete"])
-        self.assertEqual(report["decision"], "PACKET_COMPLETE")
+        self.assertFalse(report["representation_difference_auto_accepted"])
+
+    def test_representation_auto_acceptance_invalidates_packet(self):
+        p = packet()
+        p["policy_assertions"]["representation_difference_auto_accepted"] = True
+        report = mod.validate_packet(p)
+        self.assertFalse(report["packet_complete"])
+        self.assertTrue(any("representation_difference_auto_accepted" in error for error in report["errors"]))
 
     def test_any_global_tolerance_claim_invalidates_packet(self):
         p = packet()
