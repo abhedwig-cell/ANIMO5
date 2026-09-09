@@ -6,7 +6,14 @@
   "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
   "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
   "compiler": "GNU Fortran 14.2.0",
-  "probe_driver_sha256": "f8805877d949c6a9edaa34a13466f04c4fd20c712820e9bbb220fd1c9495e678",
+  "executed_probe_driver_sha256": "f8805877d949c6a9edaa34a13466f04c4fd20c712820e9bbb220fd1c9495e678",
+  "persisted_reusable_fixture": {
+    "path": "tests/stateq01/fixtures/stateq01_rc12_upper_boundary_probe.f90",
+    "git_blob_sha": "c1f516ab66732cce0b08f29a27ea0ad493129fed",
+    "byte_identical_to_executed_temporary_driver": false,
+    "difference_boundary": "reusable fixture is a cleaned semantically equivalent driver; executed temporary driver identity remains authoritative for the recorded numerical vectors"
+  },
+  "reproduction_runner": "tools/stateq01/run_rc12_upper_boundary_source_probe.py",
   "source_file_hashes": {
     "UBoundconc.for": "b9a7ec980d40c0f76279077852190788e36cd976d185b12683a38da0c7dfecf7",
     "Init.for": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
@@ -60,6 +67,7 @@
     "canonical_state_admitted": false,
     "production_code_changed": false,
     "physics_changed": false,
-    "historical_default_real_contract_proven": false
+    "historical_default_real_contract_proven": false,
+    "cross_build_float_equivalence_claimed": false
   }
 }
