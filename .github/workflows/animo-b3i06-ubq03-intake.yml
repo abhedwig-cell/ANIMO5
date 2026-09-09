@@ -1,0 +1,32 @@
+name: ANIMO B3I06 UBQ03 HETOP zero intake
+
+on:
+  push:
+    branches:
+      - work/animo-b3i06-ubq03-hetop-zero-intake
+  pull_request:
+    paths:
+      - 'docs/b3/POST_UBQ03_HETOP_ZERO_INCREMENTAL_INTAKE.md'
+      - 'integration/animo-b3/B3I06_UBQ03_FINDING_CROSSWALK.csv'
+      - 'integration/animo-b3/ANIMO-B3I06_STATUS.json'
+      - 'tools/b3i06/**'
+      - '.github/workflows/animo-b3i06-ubq03-intake.yml'
+
+jobs:
+  validate-b3i06:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history for scope guard
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse status JSON
+        run: python -m json.tool integration/animo-b3/ANIMO-B3I06_STATUS.json >/dev/null
+      - name: Compile validator
+        run: python -m py_compile tools/b3i06/validate_b3i06.py
+      - name: Validate incremental intake and scope
+        run: python tools/b3i06/validate_b3i06.py
