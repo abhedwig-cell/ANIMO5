@@ -28,11 +28,11 @@ TCD-008 remains `OPEN`.
 
 ### TCD-021 stable dissolved organic matter
 
-TH01 found independent post-4.0 formulation/provenance evidence for a second stable dissolved-organic-matter pool. A 2008 WUR study recommends the added pool, and a 2011 external project report made with Alterra/ANIMO developer participation contains a stable-DOM process diagram and parameter names that strongly overlap the frozen source. Later WUR ANIMO application material independently uses separate stable and labile DOM pools.
+TH01 found independent post-2005 development/provenance evidence for a second stable dissolved-organic-matter pool. A 2008 WUR study recommends the added pool. A 2011 BMBF/UFZ report describes development from ANIMO 3.8, records active participation by Alterra ANIMO developers, and contains a stable-DOM carbon process diagram with parameter names that strongly overlap the frozen revision-53 source, including `Ratio_rd_st`, `sdofr`, `recfSDO`, `recfHSDO` and `asfaSDO`.
 
-This is sufficient to strengthen the broad process-intent evidence, but not to declare the exact revision-53 C/N/P algebra authoritative. The external 2011 report also uses a conflicting `ANIMO Version 4.0` label even though the supplied 2005 ANIMO 4.0 guide has no stable-DOM pool.
+This is sufficient to strengthen the broad carbon-process intent evidence, but not to declare the exact revision-53 C/N/P algebra authoritative. The 2011 report calls its modified branch `ANIMO Version 4.0`, while the supplied canonical 2005 ANIMO 4.0 User's Guide has only one DOM pool and predates that development project. TH01 therefore classifies the release-number relation as `CONFLICTING_EVIDENCE` rather than silently mapping the external version label onto the frozen source lineage.
 
-TCD-021 therefore remains `OPEN` as a version/lineage gap. TCD-023 remains the separate source-confirmed stable-DOM P algebra defect.
+TCD-021 remains `OPEN` as a version/lineage and N/P-formulation gap. TCD-023 remains the separate source-confirmed stable-DOM P algebra defect.
 
 ### TCD-024 slow Langmuir
 
