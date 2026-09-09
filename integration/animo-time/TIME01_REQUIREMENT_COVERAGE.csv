@@ -1,0 +1,27 @@
+ts01_sentinel_id,time01_requirement_id,contract_artifact,candidate_disposition,evidence_required,runtime_required,canonical_time_gate_status
+TS01-S01,TIME-R01,docs/time01/CANDIDATE_TIME_TRANSACTION_MODEL.md,"interval identity binds t0/t1 before trial execution; source clock-storage mechanism not copied literally",SOURCE_STATIC,NO,NOT_ADMITTED
+TS01-S02,TIME-R02,docs/time01/CANDIDATE_TIME_TRANSACTION_MODEL.md,"prior accepted/end result semantics represented as G_ACCEPTED_START for next interval",SOURCE_STATIC,NO,NOT_ADMITTED
+TS01-S03,TIME-R03,docs/time01/INTERVAL_FRAME_IDENTITY_CONTRACT.md,"management endpoint class locked to t0 < E <= t1 in source-equivalence mode",SOURCE_STATIC,NO,NOT_ADMITTED
+TS01-S04,TIME-R04,docs/time01/INTERVAL_FRAME_IDENTITY_CONTRACT.md,"harvest endpoint class locked to t0 <= H < t1 in source-equivalence mode",SOURCE_STATIC,NO,NOT_ADMITTED
+TS01-S05,TIME-R05,docs/time01/SCHEDULER_PARTIAL_ORDER_CONTRACT.md,"same-row addition precedes ploughing and plough sees post-addition state",SOURCE_STATIC,NO,NOT_ADMITTED
+TS01-S06,TIME-R06,docs/time01/SCHEDULER_PARTIAL_ORDER_CONTRACT.md,"post-management trial state is visible before boundary chemistry demand rates and transport",SYNTHETIC_CAUSAL,YES,NOT_ADMITTED
+TS01-S07,TIME-R07,docs/time01/SCHEDULER_PARTIAL_ORDER_CONTRACT.md,"distinct start/end crop identities retained across interval transition",SOURCE_STATIC,NO,NOT_ADMITTED
+TS01-S08,TIME-R08,docs/time01/SCHEDULER_PARTIAL_ORDER_CONTRACT.md,"potential chain precedes aeration and actual chain",SOURCE_STATIC,NO,NOT_ADMITTED
+TS01-S09,TIME-R09,docs/time01/CANDIDATE_TIME_TRANSACTION_MODEL.md,"G_PROVISIONAL cannot emit committed physical transfers",ARCH_CONTRACT,YES,NOT_ADMITTED
+TS01-S10,TIME-R10,docs/time01/SCHEDULER_PARTIAL_ORDER_CONTRACT.md,"Resp_miner uses PREVIOUS_ACCEPTED_NEIGHBOR where source requires it and process-local recalc does not create transaction boundary",SOURCE_STATIC,YES,NOT_ADMITTED
+TS01-S11,TIME-R11,docs/time01/SCHEDULER_PARTIAL_ORDER_CONTRACT.md,"generic transport preserves Sqnu SAME_TRIAL_UPSTREAM dependency",SOURCE_STATIC,YES,NOT_ADMITTED
+TS01-S12,TIME-R12,docs/time01/SCHEDULER_PARTIAL_ORDER_CONTRACT.md,"actual NH4 transport precedes denitrification/NO3 source construction and NO3 transport",SOURCE_STATIC,YES,NOT_ADMITTED
+TS01-S13,TIME-R13,docs/time01/SCHEDULER_PARTIAL_ORDER_CONTRACT.md,"P processing preserves Sqnu traversal and per-layer transport/phase coupling",SOURCE_STATIC,YES,NOT_ADMITTED
+TS01-S14,TIME-R14,docs/time01/SCHEDULER_PARTIAL_ORDER_CONTRACT.md,"soil-side uptake and later crop integration share one physical transfer identity",ARCH_CONTRACT,YES,NOT_ADMITTED
+TS01-S15,TIME-R15,docs/time01/SCHEDULER_PARTIAL_ORDER_CONTRACT.md,"balance observation occurs after physical trial and crop integration are complete",SOURCE_STATIC,YES,NOT_ADMITTED
+TS01-S16,TIME-R16,docs/time01/CANDIDATE_TIME_TRANSACTION_MODEL.md,"report reset/rollover remains G_REPORT_ONLY and cannot accept physical state",SOURCE_STATIC,YES,NOT_ADMITTED
+TS01-S17,TIME-R17,docs/time01/INTERVAL_FRAME_IDENTITY_CONTRACT.md,"year closeout and next-step year-start logic remain on source-observed sides of boundary",SOURCE_STATIC,YES,NOT_ADMITTED
+TS01-S18,TIME-R18,docs/time01/RETRY_REJECT_CHECKPOINT_POLICY.md,"final/source-compat export reads completed actual result generation",SOURCE_STATIC,YES,NOT_ADMITTED
+TS01-S19,TIME-R19,docs/time01/RETRY_REJECT_CHECKPOINT_POLICY.md,"canonical checkpoint writer is side-effect free; legacy serializer clamp is explicit compatibility transformation if retained",ARCH_CONTRACT,YES,NOT_ADMITTED
+TS01-S20,TIME-R20,docs/time01/INTERVAL_FRAME_IDENTITY_CONTRACT.md,"hydrology frame explicitly binds interval generation geometry schema configuration and immutable frame identity",ARCH_CONTRACT,YES,NOT_ADMITTED
+TS01-S21,TIME-R21,docs/time01/RETRY_REJECT_CHECKPOINT_POLICY.md,"management/event cursor must be serialized or deterministically reconstructed and later prove no replay/skip",REFERENCE_BEHAVIOR,YES,BLOCKED_B2
+TS01-S22,TIME-R22,docs/time01/RETRY_REJECT_CHECKPOINT_POLICY.md,"clean continuous-versus-split accepted-state comparison reserved for independent reference evidence",REFERENCE_BEHAVIOR,YES,BLOCKED_B2
+TS01-S23,TIME-R23,docs/time01/RETRY_REJECT_CHECKPOINT_POLICY.md,"split immediately around management event must preserve one occurrence and source ordering",REFERENCE_BEHAVIOR,YES,BLOCKED_B2
+TS01-S24,TIME-R24,docs/time01/RETRY_REJECT_CHECKPOINT_POLICY.md,"split around crop harvest year boundary must preserve transition and annual semantics",REFERENCE_BEHAVIOR,YES,BLOCKED_B2
+TS01-S25,TIME-R25,docs/time01/RETRY_REJECT_CHECKPOINT_POLICY.md,"mid-report split distinguishes physical continuation from diagnostic continuation equivalence",REFERENCE_BEHAVIOR,YES,BLOCKED_B2
+TS01-S26,TIME-R26,docs/time01/RETRY_REJECT_CHECKPOINT_POLICY.md,"reject discards trial state/scratch/journal and leaves all accepted owner generations unchanged",ARCH_CONTRACT,YES,NOT_ADMITTED
