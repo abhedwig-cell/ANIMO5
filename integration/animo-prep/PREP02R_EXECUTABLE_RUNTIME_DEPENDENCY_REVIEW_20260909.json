@@ -1,0 +1,37 @@
+{
+  "schema": "animo-prep02r-received-executable-runtime-review-v1",
+  "work_unit": "ANIMO-PREP02R",
+  "artifact": {
+    "filename": "animo41.exe",
+    "sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+    "size": 6778368,
+    "format": "PE32+ Windows console x86-64",
+    "pe_timestamp_utc": "2026-05-27T13:41:28Z",
+    "major_linker_version": 14,
+    "minor_linker_version": 35,
+    "image_version": "4.0",
+    "security_directory_present": false
+  },
+  "imports": {
+    "dlls": ["KERNEL32.dll", "imagehlp.dll"],
+    "external_intel_fortran_runtime_dll_imported": false,
+    "ifcore_msg_dll_string_embedded": true,
+    "interpretation": "The received executable does not import an Intel Fortran runtime DLL through the PE import table. Its ordinary launch dependency surface is therefore materially simpler than a dynamically linked Intel runtime build, but this does not prove historical build identity or remove the requirement to capture the Windows runtime environment."
+  },
+  "embedded_runtime_evidence": {
+    "intel_fortran_rtl_catalog": "Intel Fortran RTL Message Catalog V20.0-001 Jan 10 2019",
+    "intel_visual_fortran_runtime_error_strings_present": true,
+    "debug_pdb_path": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\x64\\Debug\\animo41.pdb",
+    "source_root": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\src_develop_for_20260519\\"
+  },
+  "native_execution_readiness": {
+    "genuine_windows_x64_required": true,
+    "separate_intel_runtime_installation_known_required": false,
+    "frozen_ruurlo_input_pin": "integration/animo-prep/PREP02R_RUURLO_NATIVE_INPUT_PIN_20260909.json",
+    "capture_harness": "tools/prep02r_capture_ruurlo_native.ps1",
+    "reference_class": "CROSS_RUNTIME_DIAGNOSTIC_NATIVE_ONLY"
+  },
+  "historical_reference_admitted": false,
+  "normal_B2_reference_available": false,
+  "production_migration_admitted": false
+}
