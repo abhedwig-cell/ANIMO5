@@ -18,10 +18,12 @@ from pathlib import Path
 from typing import Any
 
 
-PACKET_SCHEMA_VERSION = "1.1.0"
+PACKET_SCHEMA_VERSION = "1.2.0"
 FROZEN_TESTBANK_SHA256 = "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
 PINNED_B1_EXECUTABLE_SHA256 = "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e"
 PREFERRED_FIRST_CASE = "RuurloGrass"
+REPRESENTATION_REGISTRY = "integration/animo-numerics/FIRST_REFERENCE_REPRESENTATION_SURFACE.json"
+REPRESENTATION_REGISTRY_PATH = Path(__file__).parents[1] / REPRESENTATION_REGISTRY
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 B2_ROLES = {
@@ -42,6 +44,13 @@ REPRESENTATION_DECISIONS = {
 }
 
 REPRESENTATION_NOT_RUN = "NOT_RUN_NO_STRUCTURED_REPRESENTATION_CAPTURE"
+
+REPRESENTATION_OMISSION_REASONS = {
+    "NOT_APPLICABLE_TO_CASE",
+    "NOT_JOINTLY_OBSERVABLE",
+    "OBSERVER_NOT_ADMITTED",
+    "HISTORICAL_BUILD_METADATA_UNAVAILABLE",
+}
 
 STRUCTURED_DECISIONS = {
     "MATCH_EXACT_COMPARISON_EVIDENCE",
@@ -71,6 +80,37 @@ def _sha256(value: Any) -> bool:
     return isinstance(value, str) and bool(SHA256_RE.fullmatch(value))
 
 
+def _representation_key(value: Any) -> tuple[str, str] | None:
+    if not isinstance(value, dict):
+        return None
+    domain = value.get("domain")
+    subject = value.get("subject")
+    if not _nonempty_string(domain) or not _nonempty_string(subject):
+        return None
+    return str(domain), str(subject)
+
+
+def _load_representation_registry_keys() -> set[tuple[str, str]]:
+    try:
+        data = json.loads(REPRESENTATION_REGISTRY_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"cannot read representation registry {REPRESENTATION_REGISTRY}: {exc}") from exc
+    if not isinstance(data, dict) or not isinstance(data.get("subjects"), list):
+        raise ValueError("representation registry must contain a subjects array")
+
+    keys: set[tuple[str, str]] = set()
+    for index, item in enumerate(data["subjects"]):
+        key = _representation_key(item)
+        if key is None:
+            raise ValueError(f"representation registry subject {index} lacks domain or subject")
+        if key in keys:
+            raise ValueError(f"representation registry contains duplicate subject {key}")
+        keys.add(key)
+    if not keys:
+        raise ValueError("representation registry contains no subjects")
+    return keys
+
+
 def load_packet(path: Path) -> dict[str, Any]:
     try:
         packet = json.loads(path.read_text(encoding="utf-8"))
@@ -84,6 +124,12 @@ def load_packet(path: Path) -> dict[str, Any]:
 def validate_packet(packet: dict[str, Any]) -> dict[str, Any]:
     errors: list[str] = []
     warnings: list[str] = []
+
+    try:
+        registry_keys = _load_representation_registry_keys()
+    except ValueError as exc:
+        errors.append(str(exc))
+        registry_keys = set()
 
     if packet.get("packet_schema_version") != PACKET_SCHEMA_VERSION:
         errors.append(f"packet_schema_version must be {PACKET_SCHEMA_VERSION!r}")
@@ -165,12 +211,65 @@ def validate_packet(packet: dict[str, Any]) -> dict[str, Any]:
         if observer.get("ordinary_output_non_interference_passed") is True:
             warnings.append("observer non-interference is marked passed although observer.used is false")
 
+    representation_scope = _obj(packet.get("representation_scope"))
+    if representation_scope.get("registry") != REPRESENTATION_REGISTRY:
+        errors.append(f"representation_scope.registry must be {REPRESENTATION_REGISTRY!r}")
+
+    observed_items = representation_scope.get("jointly_observed_subjects")
+    omitted_items = representation_scope.get("omitted_subjects")
+    if not isinstance(observed_items, list):
+        errors.append("representation_scope.jointly_observed_subjects must be an array")
+        observed_items = []
+    if not isinstance(omitted_items, list):
+        errors.append("representation_scope.omitted_subjects must be an array")
+        omitted_items = []
+
+    observed_keys: set[tuple[str, str]] = set()
+    omitted_keys: set[tuple[str, str]] = set()
+    for index, item in enumerate(observed_items):
+        key = _representation_key(item)
+        if key is None:
+            errors.append(f"jointly_observed_subjects[{index}] lacks domain or subject")
+            continue
+        if key in observed_keys:
+            errors.append(f"duplicate jointly observed representation subject {key}")
+        observed_keys.add(key)
+
+    for index, item in enumerate(omitted_items):
+        key = _representation_key(item)
+        if key is None:
+            errors.append(f"omitted_subjects[{index}] lacks domain or subject")
+            continue
+        if key in omitted_keys:
+            errors.append(f"duplicate omitted representation subject {key}")
+        omitted_keys.add(key)
+        if not isinstance(item, dict) or item.get("reason_class") not in REPRESENTATION_OMISSION_REASONS:
+            errors.append(f"omitted_subjects[{index}] has missing or invalid reason_class")
+        if not isinstance(item, dict) or not _nonempty_string(item.get("rationale")):
+            errors.append(f"omitted_subjects[{index}] requires a non-empty rationale")
+
+    overlap = observed_keys & omitted_keys
+    if overlap:
+        errors.append(f"representation subjects cannot be both observed and omitted: {sorted(overlap)}")
+
+    if registry_keys:
+        unknown = (observed_keys | omitted_keys) - registry_keys
+        missing = registry_keys - (observed_keys | omitted_keys)
+        if unknown:
+            errors.append(f"representation scope contains subjects outside the predefined registry: {sorted(unknown)}")
+        if missing:
+            errors.append(f"representation scope does not disposition all predefined subjects: {sorted(missing)}")
+
     representation = _obj(packet.get("representation_comparison"))
     representation_decision = representation.get("decision")
     if representation_decision == REPRESENTATION_NOT_RUN:
         if representation.get("result_artifact") not in {None, ""}:
             errors.append(
                 "representation_comparison.result_artifact must be null when representation comparison was not run"
+            )
+        if observed_keys:
+            errors.append(
+                "jointly observed representation subjects exist, so representation comparison must be run"
             )
         if observer_used is True:
             errors.append(
@@ -180,6 +279,10 @@ def validate_packet(packet: dict[str, Any]) -> dict[str, Any]:
         if not _nonempty_string(representation.get("result_artifact")):
             errors.append(
                 "representation_comparison.result_artifact is required when representation comparison was run"
+            )
+        if not observed_keys:
+            errors.append(
+                "representation comparison cannot be run without at least one jointly observed predefined subject"
             )
     else:
         errors.append("representation_comparison.decision is missing or unknown")
@@ -228,6 +331,9 @@ def validate_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "evidence_class": "FIRST_REFERENCE_PACKET_COMPLETENESS_NOT_NUMERICAL_ADMISSION",
         "packet_schema_version": PACKET_SCHEMA_VERSION,
         "testcase_id": testcase_id,
+        "representation_registry_subjects": len(registry_keys),
+        "representation_jointly_observed_subjects": len(observed_keys),
+        "representation_omitted_subjects": len(omitted_keys),
         "packet_complete": packet_complete,
         "errors": errors,
         "warnings": warnings,
