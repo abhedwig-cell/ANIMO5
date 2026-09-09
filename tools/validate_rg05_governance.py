@@ -2,8 +2,8 @@
 """Fail-closed structural validator for ANIMO-RG05.
 
 RG05 is governance-only. This validator checks non-admission, authority identity,
-gate consistency, queue arithmetic and parallel-routing invariants. It does not
-infer scientific truth from integration.
+supersession, gate consistency, queue arithmetic and parallel-routing invariants.
+It does not infer scientific truth from integration.
 """
 from __future__ import annotations
 
@@ -28,7 +28,13 @@ RG04_HEAD = "cf9975ded20fa64bb8125b3241f2609cbb5b51b3"
 REGISTER_HEAD = "814ea660d367494432beb63ea78298d1f6cd73d7"
 B3I05_HEAD = "7fa0162415e02a6f0167e71b48ae38177a9e06e0"
 NQ03_HEAD = "8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6"
+NQ03R_HEAD = "0153779e9045c6527b7c31156f2295ff44b57eeb"
+B3A04_HEAD = "1192ee77eda47149af1e31a752e09d343edd9273"
+B3B02_HEAD = "412bf889ce959d85c651c3b9180dec0a6ff9bb61"
 B3B03_HEAD = "446f57f3aeff6e7db56ce473f0724bdb58cad94f"
+B3B03R_TECH_HEAD = "02ce1f49582d2b8cb794c3bfb9d674481a2eea1e"
+B3B03R_HANDOFF_HEAD = "11db97289ffafdd6281b83f0aa0e96b544d6eb5a"
+B3E01_HEAD = "41e43c6a6888aac5b5b52041bcdd088c7afc68f1"
 
 
 def load_json(path: Path):
@@ -72,6 +78,7 @@ def main() -> None:
     assert status["gate_snapshot"]["B4"] == "NOT_ADMITTED"
     assert status["gate_snapshot"]["PRODUCTION"] == "NOT_ADMITTED"
     assert status["gate_snapshot"]["G7"] == "NO_ATOMIC_SCIENTIFIC_ADMISSIONS"
+    assert status["gate_snapshot"]["TCD042_PARENT"] == "WAITING_ON_CHILDREN"
 
     hist = status["historical_route"]
     assert hist["internal_recovery_decision"] == "STOP_FURTHER_INTERNAL_REFERENCE_RECOVERY_AND_PROCEED_WITH_AVAILABLE_EVIDENCE_WITHIN_EXISTING_GOV02_SCOPE"
@@ -88,23 +95,34 @@ def main() -> None:
     assert snap["B3I03_REGISTER"] == REGISTER_HEAD
     assert snap["B3I05"] == B3I05_HEAD
     assert snap["NQ03"] == NQ03_HEAD
+    assert snap["NQ03R"] == NQ03R_HEAD
+    assert snap["B3A04"] == B3A04_HEAD
+    assert snap["B3B02"] == B3B02_HEAD
     assert snap["B3B03"] == B3B03_HEAD
+    assert snap["B3B03R_TECH"] == B3B03R_TECH_HEAD
+    assert snap["B3B03R_HANDOFF"] == B3B03R_HANDOFF_HEAD
+    assert snap["B3E01"] == B3E01_HEAD
     assert snap["canonical_tcd_register_tail"] == "TCD-042"
+
     t42 = status["tcd042"]
     assert t42["canonical_top_level_parent"] == "TCD-042"
     assert t42["canonical_register_tail"] == "TCD-042"
     assert t42["tcd_043_reserved"] is False
+    assert t42["shared_domain_owner"] == "TCD-042_HETOP_ZERO_DOMAIN"
+    assert "Hetop=0" in t42["shared_domain_finding"]
+    assert "documented" in t42["shared_domain_finding"]
     assert set(t42["children"]) == {"TCD-042-B1", "TCD-042-E1"}
-    assert "QUALIFIED_ATOMIC_CLASS_B_READINESS" in t42["children"]["TCD-042-B1"]
-    assert "QUALIFIED_RESTRICTED_NATURAL_ENVELOPE_NUMERICAL_POLICY" in t42["children"]["TCD-042-E1"]
+    assert t42["children"]["TCD-042-B1"].startswith("PARTIAL_TCD042_B1_CLASS_B_READINESS")
+    assert t42["children"]["TCD-042-E1"].startswith("PARTIAL_TCD042_E1_CLASS_E_READINESS")
 
     auth = {r["workunit"]: r for r in authority_rows}
     required_auth = {
         "RG04", "GOV02", "PREP02R", "STATEQ02", "B3I04", "MASSQ02",
         "B3I03", "B3I03-REGISTER", "UBQ01", "UBQ02", "B3I05",
         "B3B01", "B3A01", "B3A02", "B3A03", "B3A03R", "NQ02",
-        "TIME02", "IO01", "ARCHG02", "ARCH05", "NQ03", "IO02",
-        "B3A04", "B3B02", "B3B03", "B3B04",
+        "TIME02", "IO01", "ARCHG02", "ARCH05", "NQ03", "NQ03R", "IO02",
+        "B3A04", "B3B02", "B3B03", "B3B03R-TECH", "B3B03R-HANDOFF",
+        "B3B04", "B3E01",
     }
     assert required_auth.issubset(auth)
     for row in authority_rows:
@@ -112,17 +130,28 @@ def main() -> None:
             as_bool(row[col])
         assert as_bool(row["admitted"]) is False
         assert row["production_effect"] == "NONE"
+
     assert auth["PREP02R"]["qualified"] == "False"
     assert auth["B3I05"]["current_head"] == B3I05_HEAD
-    assert auth["B3A04"]["current_state"] == "QUALIFIED_TCD026_CLASS_A_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING"
-    assert auth["B3B02"]["current_state"] == "QUALIFIED_TCD042_B1_ATOMIC_CLASS_B_READINESS_ROUTE_AND_REVIEW_FAIL_CLOSED"
-    assert auth["B3B03"]["current_head"] == B3B03_HEAD
-    assert auth["B3B03"]["tested"] == "True"
-    assert auth["B3B03"]["qualified"] == "True"
     assert auth["NQ03"]["current_head"] == NQ03_HEAD
-    assert auth["NQ03"]["tested"] == "True"
     assert auth["NQ03"]["qualified"] == "True"
+    assert auth["NQ03R"]["current_head"] == NQ03R_HEAD
+    assert auth["NQ03R"]["tested"] == "True" and auth["NQ03R"]["qualified"] == "True"
+    assert auth["B3A04"]["current_head"] == B3A04_HEAD
+    assert auth["B3A04"]["current_state"] == "QUALIFIED_TCD026_CLASS_A_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING"
+    assert auth["B3B02"]["current_head"] == B3B02_HEAD
+    assert auth["B3B02"]["qualified"] == "False"
+    assert auth["B3B02"]["current_state"].startswith("PARTIAL_TCD042_B1_CLASS_B_READINESS")
+    assert auth["B3B03"]["current_head"] == B3B03_HEAD
+    assert auth["B3B03"]["tested"] == "True" and auth["B3B03"]["qualified"] == "True"
+    assert auth["B3B03R-TECH"]["current_head"] == B3B03R_TECH_HEAD
+    assert auth["B3B03R-TECH"]["qualified"] == "True"
+    assert auth["B3B03R-HANDOFF"]["current_head"] == B3B03R_HANDOFF_HEAD
+    assert auth["B3B03R-HANDOFF"]["qualified"] == "False"
     assert auth["B3B04"]["qualified"] == "False"
+    assert auth["B3E01"]["current_head"] == B3E01_HEAD
+    assert auth["B3E01"]["tested"] == "True" and auth["B3E01"]["qualified"] == "True"
+    assert auth["B3E01"]["current_state"].startswith("PARTIAL_TCD042_E1_CLASS_E_READINESS")
     assert auth["IO02"]["qualified"] == "False"
 
     gates = {r["gate"]: r for r in gate_rows}
@@ -132,6 +161,7 @@ def main() -> None:
     assert gates["G6U"]["state"] == hist["G6U"]
     assert gates["G7"]["state"] == "NO_ATOMIC_SCIENTIFIC_ADMISSIONS"
     assert gates["TCD042_PARENT"]["state"] == "WAITING_ON_CHILDREN"
+    assert "Hetop=0" in gates["TCD042_PARENT"]["remaining_dependencies"]
     assert gates["B4_PROFILE"]["state"] == "NOT_ADMITTED"
     assert gates["PRODUCTION"]["state"] == "NOT_ADMITTED"
 
@@ -151,12 +181,15 @@ def main() -> None:
     assert declared["scientific_admissions"] == 0
     assert queue["scientific_admissions"] == []
     assert queue["production_migration"] == "NOT_ADMITTED"
+
     e42 = next(e for e in entries if e["tcd"] == "TCD-042")
     assert e42["queue_state"] == "WAITING_ON_CHILDREN"
+    assert "Hetop=0" in " ".join(e42["blockers"])
     children = {c["id"]: c for c in e42["children"]}
-    assert children["TCD-042-B1"]["state"] == "WAITING_ON_ROUTE_AND_REVIEW"
-    assert children["TCD-042-E1"]["state"] == "WAITING_ON_ROUTE_AND_REVIEW"
-    assert "QUALIFIED_RESTRICTED_TCD042_E1" in children["TCD-042-E1"]["status"]
+    assert children["TCD-042-B1"]["state"] == "WAITING_ON_THEORY"
+    assert children["TCD-042-E1"]["state"] == "WAITING_ON_THEORY"
+    assert children["TCD-042-B1"]["status"].startswith("PARTIAL_TCD042_B1_CLASS_B_READINESS")
+    assert children["TCD-042-E1"]["status"].startswith("PARTIAL_TCD042_E1_CLASS_E_READINESS")
     assert next(e for e in entries if e["tcd"] == "TCD-026")["queue_state"] == "WAITING_ON_ROUTE_AND_REVIEW"
     assert next(e for e in entries if e["tcd"] == "TCD-024")["queue_state"] == "WAITING_ON_ROUTE_AND_REVIEW"
     assert next(e for e in entries if e["tcd"] == "TCD-040")["queue_state"] == "IN_PROGRESS_ADMISSION_READINESS"
@@ -164,16 +197,19 @@ def main() -> None:
     streams = {r["stream"]: r for r in parallel_rows}
     required_streams = {
         "historical_external_acquisition", "exact_zero_upper_reservoir",
-        "finite_positive_upper_reservoir", "slow_langmuir_index",
-        "nonlinear_p_policy", "exudate_initial_ledger", "layer0_restart_identity",
-        "general_input_contract", "completed_readiness_reviews",
-        "canonical_state_gate", "canonical_time_gate", "canonical_mass_gate",
-        "canonical_exchange_gate", "tcd042_parent", "b4_profile", "production",
+        "finite_positive_upper_reservoir", "tcd042_zero_thickness_domain",
+        "nq03_independent_review", "slow_langmuir_index", "nonlinear_p_policy",
+        "exudate_initial_ledger", "layer0_restart_identity", "general_input_contract",
+        "completed_readiness_reviews", "canonical_state_gate", "canonical_time_gate",
+        "canonical_mass_gate", "canonical_exchange_gate", "tcd042_parent",
+        "b4_profile", "production",
     }
     assert required_streams.issubset(streams)
     assert streams["exact_zero_upper_reservoir"]["parallel_class"] == "SHARED_PARENT_DISTINCT_ATOM"
     assert streams["finite_positive_upper_reservoir"]["parallel_class"] == "SHARED_PARENT_DISTINCT_ATOM"
-    assert "QUALIFIED_RESTRICTED_NATURAL_ENVELOPE_POLICY" in streams["finite_positive_upper_reservoir"]["current_state"]
+    assert streams["tcd042_zero_thickness_domain"]["parallel_class"] == "SHARED_SEMANTIC_OWNER"
+    assert "documented" in streams["tcd042_zero_thickness_domain"]["guards"]
+    assert streams["nq03_independent_review"]["current_state"].startswith("INDEPENDENT_REVIEW_PASS")
     assert "TCD-019" in streams["slow_langmuir_index"]["guards"]
     assert streams["tcd042_parent"]["parallel_class"] == "SERIAL_COMPOSITION"
     assert streams["b4_profile"]["parallel_class"] == "SERIAL_GATE"
@@ -201,16 +237,17 @@ def main() -> None:
         assert status["validation"]["validator_result"] == "PASS"
         assert status["validation"]["github_actions_conclusion"] == "success"
     else:
-        assert status["state"] == "IN_PROGRESS_PERSISTED_AUTHORITY_SNAPSHOT_VALIDATION_PENDING"
-        assert status["decision"] == "PENDING_FAIL_CLOSED_VALIDATION"
+        assert status["state"] == "IN_PROGRESS_PERSISTED_POST_CLOSEOUT_DELTA_REVALIDATION_PENDING"
+        assert status["decision"] == "PENDING_FAIL_CLOSED_REVALIDATION"
         assert status["work_status"]["tested"] is False
         assert status["work_status"]["work_unit_complete"] is False
 
     print("ANIMO-RG05 governance validator: PASS")
-    print("authority-by-content/ancestry: PASS")
+    print("authority-by-content/ancestry and supersession: PASS")
     print("frozen B0 identity: PASS")
     print("G6H/G6U fail-closed route: PASS")
     print("canonical TCD tail and TCD-042 child routing: PASS")
+    print("shared Hetop=0 semantic owner: PASS")
     print("25-entry atomic queue arithmetic: PASS")
     print("parallelism and serialization guards: PASS")
     print("scientific/B4/production admissions: 0")
