@@ -1,0 +1,97 @@
+{
+  "work_unit": "ANIMO-B3A03",
+  "target": "TCD-018",
+  "class": "A_ACCOUNTING_REPORTING_ONLY",
+  "claim_scope": "Correct the legacy water ledger so that the already-existing interception storage change is observed in the selected water control volume. Do not change hydrology, water-state representation, forcing, process fluxes or state promotion semantics.",
+  "physical_owner": {
+    "quantity": "canopy interception water storage",
+    "begin_state": "Sic",
+    "end_state": "Sict",
+    "unit": "m water",
+    "mutator_path": "Hydro_detailed/Input_hydro",
+    "promotion": "Init: Sic = Sict for the applicable detailed-hydrology route"
+  },
+  "accounting_observation": {
+    "step_storage_change_mm": "(Sict - Sic) * 1000",
+    "period_storage_change_mm": "sum((Sict - Sic) * 1000) over the active Bawa balance period",
+    "corrected_residual_relation": "Bawa_Ddev_corrected = Bawa_Ddev_legacy - period_storage_change_mm",
+    "sign_rationale": "Hydro_detailed already subtracts end-minus-begin interception storage in its water balance. The legacy Bawa residual omits that same storage contribution.",
+    "implementation_boundary": "read or pass existing Sic/Sict into Outbal_calc or an equivalent reporting-only ledger observer; no physical state write is permitted"
+  },
+  "natural_b1_activation": {
+    "case": "LWKM_gras_1040.2021.2045",
+    "legacy_total_profile_example": {
+      "period_end_year": 2008,
+      "legacy_formatted_bawa_ddev_mm": -0.0601,
+      "initial_sic_mm": 0.06,
+      "final_sict_mm": 0.0,
+      "period_interception_storage_change_mm": -0.06,
+      "summed_hydro_detailed_badev_mm": -0.0000526405876,
+      "interpretation": "The legacy reporting residual is explained to output precision by the omitted interception storage change plus the much smaller detailed-hydrology residual. The value 0.0601 mm is evidence, not an acceptance tolerance."
+    },
+    "full_run_relation": "Across all 25 annual total-profile balance periods, legacy BAWADV is reproduced to formatted-output precision by summed Hydro_detailed Badev plus final-minus-initial interception storage."
+  },
+  "intended_output_whitelist": {
+    "legacy_water_balance_files": [
+      "bawaGP.Out",
+      "bawaRP.Out",
+      "bawaTP.Out",
+      "ani_waGP.Bal",
+      "ani_waRP.Bal",
+      "ani_waTP.Bal"
+    ],
+    "difference_condition": "Only periods/profiles for which the selected Bawa control volume is active and net interception storage changes over the reporting period are expected to differ.",
+    "allowed_semantic_difference": "water ledger storage/residual reporting caused solely by inclusion of existing Sic/Sict storage",
+    "new_physical_output_allowed": false
+  },
+  "must_remain_unchanged": {
+    "hydrological_state_trajectory": [
+      "Sic",
+      "Sict",
+      "Mofro/Mofrt",
+      "Pn/Pnt",
+      "Snla/Snt",
+      "Wale/Walet where applicable"
+    ],
+    "hydrological_flux_trajectory": [
+      "Prr",
+      "Prirr",
+      "Prsn",
+      "Evicpr",
+      "Evicirr",
+      "Evsn",
+      "Evpn",
+      "Evso",
+      "Ev/Flev",
+      "Ru",
+      "Flab",
+      "drainage fluxes",
+      "Leak",
+      "Runon/Runinu"
+    ],
+    "non_water_reporting": "all ordinary physical outputs and all non-water balance families",
+    "testcase_inputs": true,
+    "swap_or_swatre_payload": true
+  },
+  "noninterference_evidence": {
+    "prep01_tcd_specific_probe": "The temporary interception ledger probe changed no hydrologic state, flux, forcing, soil-water equation or testcase input.",
+    "prep02_class_a_combined_probe": "Across eight compatible natural cases, the combined TCD-017/TCD-018 Class-A probe compared 379 outputs with 0 unintended differences; 12 intended differences occurred only in the activated LWKM reporting surfaces. The TCD-018-specific whitelist is the water-only subset of those reporting differences.",
+    "massq01_observer": "The read-only MassLedger observer compared 379 physical outputs across eight natural cases with 0 physical differences after declared volatile normalization and no scientific numeric tolerance."
+  },
+  "explicit_exclusions": [
+    "No SWAP hydrology modification",
+    "No water-state representation change",
+    "No change to interception process physics",
+    "No balancing correction for unrelated water residuals",
+    "No use of 0.0601 mm or any other observed residual as a tolerance",
+    "No B2 historical-reference claim",
+    "No admission decision"
+  ],
+  "evidence_boundary": {
+    "readiness_expected_difference_qualified": true,
+    "standalone_tcd018_eight_case_patch_run_performed_in_this_workunit": false,
+    "historical_reference_qualified": false,
+    "independent_second_line_review_complete": false,
+    "admitted": false
+  }
+}
