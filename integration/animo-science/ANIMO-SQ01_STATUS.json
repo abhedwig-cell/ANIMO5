@@ -1,0 +1,40 @@
+{
+  "work_unit": "ANIMO-SQ01",
+  "title": "TCD-016 Dry-Solute Continuation State, Phase Ownership & Conservation Qualification",
+  "status": "IN_PROGRESS_EVIDENCE_RECONSTRUCTION_PERSISTED",
+  "production_migration": "NOT_ADMITTED",
+  "target_discrepancy": "TCD-016",
+  "primary_class": "C",
+  "secondary_class": "E",
+  "admitted": false,
+  "branch": "work/animo-sq01-tcd016-dry-solute-state",
+  "base": {
+    "branch": "work/animo-b3q01-scientific-admission-framework",
+    "commit": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "frozen_evidence": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "animo40_guide_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "source_modified": false,
+    "testbank_modified": false
+  },
+  "live_evidence_heads": {
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "TH01": "a3360415364ef4a66a81d7b6715bcd400829df1b",
+    "TH02_rev41": "f7f3722b14f65340dc6d67a8f80d74f5d0ebb158",
+    "PREP06_observed": "9b1f1ea51c24fb82823290193651830dc61ea3c8"
+  },
+  "checkpoint": {
+    "legacy_loss_mechanism_reconfirmed": true,
+    "synthetic_experiments_complete": false,
+    "candidate_matrix_complete": false,
+    "theory_provenance_complete": false,
+    "class_c_gates_complete": false
+  },
+  "notes": [
+    "This is a qualification branch only. No production implementation is permitted.",
+    "The branch is based on the authoritative B3Q01 classification head rather than merging parallel theory or preparatory branches.",
+    "External theory and state-audit branches are treated as pinned evidence until branch-convergence governance resolves integration authority."
+  ]
+}
