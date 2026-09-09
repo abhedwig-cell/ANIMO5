@@ -51,13 +51,19 @@ TCD-026 and TCD-028 motivate deriving beginning/end storage and reporting from t
 
 ### Matrix plus macropore
 
-`CV-MATRIX-MACROPORE-N` and `CV-MATRIX-MACROPORE-P` exist as candidate views only. They show how matrix/macropore exchange would cancel internally while direct macropore drainage remains external.
+`CV-MATRIX-MACROPORE-OM`, `CV-MATRIX-MACROPORE-N` and `CV-MATRIX-MACROPORE-P` exist as candidate views only. They show how matrix/macropore exchange would cancel internally while direct macropore drainage remains external for dissolved OM, N and P.
 
 They are feature-blocked because the supplied testbank does not exercise the active macropore route and TCD-025 remains unresolved at the public-ledger level.
 
 ### GHG views
 
 `CV-GHG-C` and `CV-GHG-N` observe explicit CH4-C and N2O-N system storage. They do not claim complete whole-system C/N closure because reaction coupling to the organic/mineral domains remains theory-ledger blocked.
+
+## State-to-ledger projection
+
+`integration/animo-architecture/ARCH03_STATE_LEDGER_PROJECTION.csv` assigns every one of the 53 ARCH01 state/non-state families an explicit ledger role. Physical state can project into one or more conserved quantities, while derived views, scratch, reporting accumulators and dormant parser surfaces are explicitly excluded.
+
+Organic material pools are intentionally multi-quantity projections: their OM mass is physical storage and their explicit N/P composition contributes to N/P storage. This does not imply a conversion to elemental carbon.
 
 ## Nested-view consistency
 
