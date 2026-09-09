@@ -1,0 +1,24 @@
+field_id,record_scope,value_kind,source,required,physical_role,rule
+ledger_id,interval_view,string,observer,YES,identity,unique per ledger observation
+trial_or_commit_id,interval_view,string,transaction layer,YES,transaction_identity,must identify committed interval for canonical reporting
+control_volume_id,interval_view,enum,ARCH03_CONTROL_VOLUMES,YES,view_identity,determines inside/outside endpoint membership
+quantity_id,interval_view,enum,ARCH03_LEDGER_QUANTITIES,YES,conserved_quantity,one conserved quantity per closure record
+unit,interval_view,unit,quantity registry,YES,unit_contract,must match canonical quantity unit or explicit qualified conversion
+begin_storage,interval_view,nonnegative_or_signed_scalar,accepted owner state,YES,physical_storage,derived from included canonical state owners only
+end_storage,interval_view,nonnegative_or_signed_scalar,committed or trial owner state,YES,physical_storage,derived from same owner mapping as begin_storage
+external_input,interval_view,nonnegative_scalar,typed transfer journal,YES,boundary_transfer,sum admitted events with source outside and sink inside
+external_output,interval_view,nonnegative_scalar,typed transfer journal,YES,boundary_transfer,sum admitted events with source inside and sink outside
+internal_transfer_total,interval_view,nonnegative_scalar,typed transfer journal,YES,diagnostic_detail,sum events with both endpoints inside; excluded from closure residual
+closure_residual,interval_view,signed_scalar,derived,YES,conservation_diagnostic,end_storage-begin_storage-external_input+external_output
+closure_tolerance,interval_view,nullable_scalar,numerical policy,NO,not_defined_by_ARCH03,must remain null until separate numerical policy qualification
+closure_status,interval_view,enum,observer,YES,diagnostic_classification,SEMANTIC_ONLY or POLICY_EVALUATED; ARCH03 cannot invent pass tolerance
+constraint_nonclosure,interval_view,signed_scalar,TT-CONSTRAINT diagnostics,YES,diagnostic_only,not included as physical flux unless separately admitted
+reaction_bundle_nonclosure,interval_view,signed_scalar,reaction bundle checker,YES,diagnostic_only,sum source legs minus sink/external legs per quantity
+initialization_nonclosure,interval_view,signed_scalar,initialization journal,YES,diagnostic_only,separate from runtime interval closure
+observer_integrity_status,interval_view,enum,schema checker,YES,reporting_integrity,detect duplicate event consumption missing owner mapping or observer mutation
+source_state_snapshot_id,interval_view,string,state snapshot registry,YES,traceability,pins beginning accepted snapshot
+sink_state_snapshot_id,interval_view,string,state snapshot registry,YES,traceability,pins end committed or trial snapshot
+journal_id,interval_view,string,typed transfer journal,YES,traceability,pins exact event set consumed
+schema_id,interval_view,string,MassLedger schema,YES,compatibility,restore or comparison fails closed on incompatible schema
+feature_layout_id,interval_view,string,feature activation contract,YES,compatibility,identifies crop GHG macropore surface reservoir activation
+geometry_id,interval_view,string,spatial layout contract,YES,compatibility,identifies layer site and domain topology
