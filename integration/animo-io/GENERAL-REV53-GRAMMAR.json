@@ -1,0 +1,135 @@
+{
+  "schema": "General41LegacyGrammar/v1",
+  "workunit": "ANIMO-IO02",
+  "authority": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "source_member": "ANIMO_4.1.5.53/input1.for",
+    "source_revision": 53,
+    "animo_version_branch": 41,
+    "vfproj_sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+    "default_real_kind": "REAL(8) under supplied Intel project RealKIND=realKIND8"
+  },
+  "top_level": {
+    "parser_call_order": [
+      ">simopt:",
+      ">simtim:",
+      ">outscr:",
+      ">outbal:",
+      ">outsel:",
+      ">outtot:"
+    ],
+    "conditional_call": {
+      "label": ">outGHG:",
+      "condition": "GreenHouseGasOption>=1",
+      "admission": "ROUTE_ONLY_NOT_NORMALIZED"
+    },
+    "lookup_semantics": "Findadr REWINDs before every search and compares the first A8 exactly; therefore physical order of complete top-level blocks is not authoritative, while records consumed after each located label are sequential and order-sensitive."
+  },
+  "sections": {
+    "simopt": {
+      "label": ">simopt:",
+      "ordered_fields": [
+        {"key": "HydrologicInput=", "reader": "ReadOp", "range": [1, 2], "target": "ModelConfiguration.hydrology_input"},
+        {"key": "PhosphorusCycle=", "reader": "ReadOp", "range": [0, 1], "target": "ModelConfiguration.phosphorus_cycle"},
+        {"key": "SulphateSimulation=", "reader": "ReadOp", "range": [0, 1], "target": "ModelConfiguration.sulphate_simulation"},
+        {"key": "AerationModel=", "reader": "ReadOp", "range": [0, 2], "target": "ModelConfiguration.aeration_model"},
+        {"key": "CropUptakeModel=", "reader": "ReadOp", "range": [0, 1], "target": "ModelConfiguration.crop_uptake_model"},
+        {"key": "MacroPoreOption=", "reader": "ReadOp", "range": [0, 1], "target": "ModelConfiguration.macropore_option"},
+        {"key": "GreenHouseGasOption=", "reader": "ReadOp", "range": [0, 2], "target": "ModelConfiguration.greenhouse_gas_option"},
+        {"key": "SoilTempFile=", "reader": "ReadOp", "range": [0, 1], "target": "ModelConfiguration.soil_temperature_file"},
+        {"key": "PClassOption=", "reader": "ReadOp", "range": [0, 1], "default_on_mismatch": 0, "default_rule": "GEN-DEF-PCLASSOPTION-0", "target": "ModelConfiguration.p_class.option"},
+        {"key": "PClassYearSwitch=", "reader": "ReadOp", "condition": "PClassOption=1", "target": "ModelConfiguration.p_class.year_switch"},
+        {"key": "PClass=", "reader": "ReadOp", "range": [1, 3], "condition": "PClassOption=1", "target": "ModelConfiguration.p_class.class"}
+      ],
+      "inactive_rule": "When PClassOption!=1, PClassYearSwitch is assigned 0 by caller logic and PClass is not read."
+    },
+    "simtim": {
+      "label": ">simtim:",
+      "ordered_fields": [
+        {"key": "StartDateRecord", "reader": "raw A256 positional date extraction", "key_name_validated": false, "target": "SimulationWindow.start_date"},
+        {"key": "EndDateRecord", "reader": "raw A256 positional date extraction", "key_name_validated": false, "target": "SimulationWindow.end_date"},
+        {"key": "HydroYearSwitch=", "reader": "ReadOp", "default_on_mismatch": 0, "default_rule": "GEN-DEF-HYDROYRSWITCH-0", "target": "ModelConfiguration.hydrology.year_switch", "range_check_source_behavior": "source accidentally Checkint-checks IoptPCl 0..1 instead of HydrYrSw"}
+      ]
+    },
+    "outscr": {
+      "label": ">outscr:",
+      "ordered_fields": [
+        {"key": "ProgressToScreen=", "reader": "ReadOp", "range": [0, 3], "target": "DiagnosticsConfiguration.progress_to_screen"}
+      ]
+    },
+    "outbal": {
+      "label": ">outbal:",
+      "count": {"key": "NumberOfPrintBal=", "reader": "ReadOp", "range": [0, "MABA"], "target": "DiagnosticsConfiguration.balances.count"},
+      "repeat": {
+        "count_field": "NumberOfPrintBal=",
+        "ordered_fields": [
+          {"key": "PrintBalLabel=", "reader": "manual A256 prefix check plus list-directed character read", "on_mismatch": "Input1 RETURN without assigning Error"},
+          {"key": "PrintBalWater=", "reader": "ReadOp"},
+          {"key": "PrintBalOrgMat=", "reader": "ReadOp"},
+          {"key": "PrintBalNitrogen=", "reader": "ReadOp"},
+          {"key": "PrintBalPhosphor=", "reader": "ReadOp"},
+          {"key": "PrintBalSulphate=", "reader": "ReadOp"},
+          {"key": "PrintBalTopLay=", "reader": "ReadOp", "range": "0..PrintBalBotLay"},
+          {"key": "PrintBalBotLay=", "reader": "ReadOp", "range": "PrintBalTopLay..MANL"},
+          {"key": "PrintBalNoUpd=", "reader": "ReadOp", "source_check": "Checkint Low=999 High=100; 999 disables lower bound"},
+          {"key": "PrintBalUpdDate=", "reader": "Readvals", "condition": "PrintBalNoUpd not in {-1,0}", "cardinality": "PrintBalNoUpd", "range": [1.0, 365.0], "post_parse_operation": "sort ascending in place", "target_value_kind": "REAL(8)_ARRAY"}
+        ]
+      },
+      "excluded_repeat_state": "PrintBalNoUpd<-1 passes the source lower-bound sentinel but IO02 assigns no normalized repeat semantics to that path."
+    },
+    "outsel": {
+      "label": ">outsel:",
+      "prefix": [
+        {"key": "SelectedComp=", "reader": "ReadOp", "range": [0, "MANL"]},
+        {"key": "CompartmentNo=", "reader": "Readints", "condition": "SelectedComp>=1", "cardinality": "SelectedComp", "range": [0, "MANL"]}
+      ],
+      "separator_semantics": "Before each output group Input1 executes an empty-list formatted READ that consumes exactly one record; separator contents are not scientific values but cursor position is part of grammar.",
+      "groups": [
+        {"name": "Hydrology", "fields": [{"key": "MoistureFraction=", "outse_index": 6},{"key": "VerticalFlux=", "outse_index": 72},{"key": "DrainFlux3=", "outse_index": 31},{"key": "DrainFlux2=", "outse_index": 32},{"key": "DrainFlux1=", "outse_index": 33},{"key": "SoilTemperature=", "outse_index": 71}]},
+        {"name": "Nitrogen", "fields": [{"key": "Nitrate=", "outse_index": 1},{"key": "Ammonium=", "outse_index": 2},{"key": "SorbedNH4=", "outse_index": 7},{"key": "MineralN=", "outse_index": 8},{"key": "TotalN=", "outse_index": 10},{"key": "SolidOrgN=", "outse_index": 9},{"key": "DissOrgN=", "outse_index": 3},{"key": "SorbedDON=", "outse_index": 60},{"key": "TotalDON=", "outse_index": 61},{"key": "StableDissOrgN=", "outse_index": 62},{"key": "SorbedStableDON=", "outse_index": 63},{"key": "TotalSorbedDON=", "outse_index": 64},{"key": "TimeAveLiquidN=", "outse_index": 38}]},
+        {"name": "Phosphorus", "fields": [{"key": "orthoP=", "outse_index": 4},{"key": "DissOrgP=", "outse_index": 5},{"key": "SorbedDOP=", "outse_index": 65},{"key": "TotalDOP=", "outse_index": 66},{"key": "StableDissOrgP=", "outse_index": 67},{"key": "SorbedStableDOP=", "outse_index": 68},{"key": "TotalSorbedDOP=", "outse_index": 69},{"key": "SolidOrgP=", "outse_index": 14},{"key": "SorbedP=", "outse_index": 11},{"key": "Sorbed_LiquidP=", "outse_index": 12},{"key": "PrecipitatedP=", "outse_index": 13},{"key": "TotalP=", "outse_index": 15},{"key": "Pw-number=", "outse_index": 16},{"key": "PAL-number=", "outse_index": 17},{"key": "P-oxalate-extr=", "outse_index": 20},{"key": "Psaturationdegree=", "outse_index": 75},{"key": "PsorpEquiPool_1=", "outse_index": 21},{"key": "PsorpEquiPool_2=", "outse_index": 22},{"key": "PsorpEquiPool_3=", "outse_index": 23},{"key": "PsorpRatePool_1=", "outse_index": 24},{"key": "PsorpRatePool_2=", "outse_index": 25},{"key": "PsorpRatePool_3=", "outse_index": 26},{"key": "PsorpRatePoolSum=", "outse_index": 27},{"key": "Pdischarge3=", "outse_index": 28},{"key": "Pdischarge2=", "outse_index": 29},{"key": "Pdischarge1=", "outse_index": 30},{"key": "TimeAveLiquidP=", "outse_index": 39}]},
+        {"name": "OrganicMatter", "fields": [{"key": "Ratio_CN=", "outse_index": 18},{"key": "Ratio_CP=", "outse_index": 19},{"key": "DissOrgMat=", "outse_index": 40},{"key": "SorbedDOM=", "outse_index": 55},{"key": "TotalDOM=", "outse_index": 56},{"key": "StableDissOrgMat=", "outse_index": 57},{"key": "SorbedStableDOM=", "outse_index": 58},{"key": "TotalStableDOM=", "outse_index": 59},{"key": "LiquidDOM_SDO=", "outse_index": 70}]},
+        {"name": "Aeration", "fields": [{"key": "O2_content=", "outse_index": 34},{"key": "AerationFrac=", "outse_index": 35},{"key": "PotDenitrif=", "outse_index": 74},{"key": "ActDenitrif=", "outse_index": 36},{"key": "SoilRespiration=", "outse_index": 73}]},
+        {"name": "GreenHouseGasses", "fields": [{"key": "CO2emission=", "outse_index": 41},{"key": "SoilSubsidence=", "outse_index": 42},{"key": "CH4_SoilConc=", "outse_index": 44},{"key": "CH4_WaterConc=", "outse_index": 45},{"key": "CH4production=", "outse_index": 46},{"key": "CH4oxidation=", "outse_index": 47},{"key": "N2O_SoilConc=", "outse_index": 49},{"key": "N2O_WaterConc=", "outse_index": 50},{"key": "N2Oprod_denitr=", "outse_index": 51},{"key": "N2Oprod_nitrif=", "outse_index": 52},{"key": "N2Oreduction=", "outse_index": 53}]},
+        {"name": "WholeProfile", "fields": [{"key": "Disch+Transport=", "outse_index": 37, "second_selector_target": "idum"},{"key": "CH4emission=", "outse_index": 43, "second_selector_target": "idum"},{"key": "N2Oemission=", "outse_index": 48, "second_selector_target": "idum"},{"key": "AnnualGHG=", "outse_index": 54, "second_selector_target": "idum"},{"key": "Grassland=", "target": "Outgr", "second_selector_target": "idum"},{"key": "DetailedCycles=", "target": "Outtransfom", "second_selector_target": "idum"},{"key": "SoilScheme=", "outse_index": 76},{"key": "AnnDOMNtotNO3_1mGWL=", "outse_index": 77, "mismatch_rule": "file output jout=0 and Error=0; OutseLn(77) remains storage-dependent"},{"key": "DOMNtotNO3_1mGWL=", "outse_index": 78, "mismatch_rule": "file output jout=0 and Error=0; OutseLn(78) remains storage-dependent"}]}
+      ],
+      "reader": "ReadTs",
+      "reader_semantics": "After the first '=' ReadTs scans columns through 132 and uses the first character 0,1,2,3 anywhere in the remainder, including comment text; 0=(0,0), 1=(1,0), 2=(0,1), 3=(1,1).",
+      "post_read_validation": "Input1 Checkint-validates Outse(1:78) and OutseLn(1:78) globally, which exposes storage hazards for indices not assigned by a particular ReadTs call."
+    },
+    "outtot": {
+      "label": ">outtot:",
+      "ordered_fields": [
+        {"key": "IntMedOutputTS=", "reader": "ReadOp", "range": [0, 1]},
+        {"key": "NumIntMedOutputTS=", "reader": "ReadOp", "condition": "IntMedOutputTS=0", "range": [0, 52]},
+        {"key": "IntMedOutFromStart=", "reader": "Readints", "condition": "IntMedOutputTS=0", "cardinality": "NumIntMedOutputTS", "range": [0, 9999]}
+      ]
+    }
+  },
+  "lexical_semantics": {
+    "Findadr": "REWIND, then sequential A8 reads until exact label equality; missing label sets Error=1995.",
+    "ReadOp": "Consumes exactly one next record; compares prefix through first '='; list-directed INTEGER conversion from substring between first '=' and first '!'; mismatch sets 9870. PClassOption and HydroYearSwitch callers explicitly clear that error and assign 0.",
+    "Readints": "Consumes exactly one next record; prefix-through-'=' check; list-directed INTEGER array conversion between '=' and '!'; mismatch sets 9870. Zero cardinality is treated as a bounded zero-element representation case only.",
+    "Readvals": "Consumes exactly one next record; prefix-through-'=' check; list-directed default REAL array conversion between '=' and '!'; mismatch sets 9870; supplied project makes default REAL binary64.",
+    "ReadTs": "Consumes exactly one next record; prefix-through-'=' check; first digit 0..3 in remaining 132-character record selects file/selected-compartment flags; mismatch normally sets 9871, except the two late optional whole-profile outputs which set jout=0 and Error=0 without defining the line-selector storage."
+  },
+  "normalized_representation": {
+    "record_identity": ["field_id", "section", "sequence_index", "repeat_index"],
+    "provenance": ["source_line", "lexical_form", "legacy_parser_path"],
+    "presence_states": ["EXPLICIT", "DEFAULTED", "INACTIVE_NULL"],
+    "typed_targets": ["ModelConfiguration", "SimulationWindow", "DiagnosticsConfiguration"],
+    "not_a_free_order_property_bag": true,
+    "no_blanket_numeric_tolerance": true,
+    "round_trip_claim": "No byte round-trip identity claim. Semantic equivalence is by normalized parser projection plus preserved lexical/order provenance for admitted inputs."
+  },
+  "explicit_non_admissions": [
+    "production input migration",
+    "GENERAL grammar redesign or free ordering",
+    "silent defaults not observed in revision-53 source",
+    "GHGMais or generic GHG schema admission",
+    "binary hydrology",
+    "INITIAL or restart",
+    "TTUTIL as scientific or numeric authority",
+    "undefined legacy storage normalized to fabricated values"
+  ]
+}
