@@ -1,0 +1,48 @@
+{
+  "work_unit": "ANIMO-UBQ02",
+  "title": "TCD-042 Finite-Positive Subthreshold Upper-Boundary Numerical Policy Qualification",
+  "status": "IN_PROGRESS_CHECKPOINT",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-ubq02-subthreshold-upper-boundary-numerics",
+  "base": {
+    "branch": "work/animo-ubq01-tcd042-upper-boundary-transaction",
+    "head": "6895b67799f26888025eced7188e7190b2a0d07d",
+    "parent_tcd": "TCD-042",
+    "qualified_sibling_atom": "EXACT_FLUX_ZERO_CLASS_B"
+  },
+  "scope": {
+    "flux_range": "0<Flux<1.0d-8",
+    "provisional_class": "E_NUMERICAL_POLICY",
+    "silent_composition_with_exact_zero_atom": false,
+    "threshold_change_admitted": false,
+    "tolerance_admitted": false,
+    "new_tcd_allocation": false,
+    "production_source_change": false
+  },
+  "known_reachability": {
+    "executed_natural_cases": 8,
+    "finite_positive_subthreshold_records": 1238,
+    "cases_with_reachability": 6,
+    "source": "integration/animo-science/TCD042_SUBTHRESHOLD_REACHABILITY.json"
+  },
+  "qualification_targets": [
+    "derive stable evaluation of the existing positive-flow reservoir coefficients without changing the governing equation",
+    "separate cancellation error from any intentional small-flow approximation policy",
+    "identify naturally loaded subthreshold events and quantify state, flux and conservation materiality",
+    "characterize precision sensitivity and transition continuity around Flux=1.0d-8",
+    "retain exact-zero Class-B atom as a separate already-qualified sibling",
+    "route any canonical child or new TCD through governed incremental intake"
+  ],
+  "work_status": {
+    "realized": false,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "admission": {
+    "b3_admitted": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false
+  }
+}
