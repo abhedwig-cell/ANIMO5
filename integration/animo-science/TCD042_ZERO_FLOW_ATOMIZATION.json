@@ -2,7 +2,7 @@
   "work_unit": "ANIMO-UBQ01",
   "target": "TCD-042",
   "scope": "EXACT_ZERO_THROUGHFLOW_ATOM_ONLY",
-  "status": "SOURCE_THEORY_ATOMIZATION_PERSISTED_EXECUTABLE_VALIDATION_PENDING",
+  "status": "EXECUTABLE_EVIDENCE_PERSISTED_VALIDATION_REFRESH_PENDING",
   "frozen_identity": {
     "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
@@ -85,12 +85,40 @@
     "selected_candidate": "B_LOCAL_ALGEBRA_ZERO_FLOW_LIMIT",
     "reason": "The existing positive-flow reservoir equation has a unique exact zero-flow limit; no new state or process is required."
   },
+  "executable_evidence": {
+    "synthetic_exact_zero_oracle": {
+      "workflow_run_id": 34362690102,
+      "head": "656bc7fe073a6e7636e73f88940e98bf023db9b7",
+      "conclusion": "success",
+      "comparison_policy": "EXACT_DECIMAL_IDENTITY_NO_TOLERANCE"
+    },
+    "natural_isolated_probe": {
+      "artifact": "integration/animo-science/TCD042_NATURAL_EXACT_ZERO_PROBE.json",
+      "case": "RuurloGrass",
+      "isolated_interval": "TITO=1915",
+      "all_prior_trace_records_bitwise_equal": true,
+      "records_before_first_difference": 1914,
+      "only_predeclared_direct_surfaces_differ_at_first_difference": true,
+      "direct_different_coordinates": ["Rsconhtop", "Rsconitop", "Avconhtop", "Avconitop"],
+      "all_binary64_formula_predictions_bitwise_equal": true,
+      "zero_load_control_bitwise_equal": true,
+      "positive_flow_control_bitwise_equal": true,
+      "comparison_policy": "EXACT_BITWISE_NO_TOLERANCE"
+    }
+  },
   "finite_positive_subthreshold": {
     "range": "0<Flux<1.0d-8",
     "included_in_exact_zero_atom": false,
-    "classification": "UNRESOLVED_NUMERICAL_SEAM_REACHABILITY_AND_MATERIALITY_REQUIRED",
+    "classification": "REACHABLE_PROVISIONAL_E_NUMERICAL_POLICY_MATERIALITY_AND_POLICY_UNRESOLVED",
+    "reachability_artifact": "integration/animo-science/TCD042_SUBTHRESHOLD_REACHABILITY.json",
+    "executed_cases": 8,
+    "blocked_cases_without_trace": 1,
+    "finite_positive_subthreshold_records": 1238,
+    "cases_with_finite_positive_subthreshold": 6,
     "automatic_class_B_claim": false,
-    "tolerance_or_threshold_change_admitted": false
+    "tolerance_or_threshold_change_admitted": false,
+    "new_tcd_reserved": false,
+    "canonical_child_created": false
   },
   "admission": {
     "b3_admitted": false,
