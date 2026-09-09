@@ -1,0 +1,100 @@
+{
+  "packet": "ANIMO-ARCHG01-G5-ATTACHMENT",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-archg01-candidate-architecture-consolidation",
+  "parent_head_before_packet": "5cef7969ee921acd2044521cc7636d388aa02efe",
+  "current_attachment_head_resolution": "use live branch head containing this packet; do not infer from branch name",
+  "status": "G5_ATTACHMENT_READY_FOR_RG02_LIVE_AUTHORITY_REFRESH",
+  "architecture_decision": "QUALIFIED_CONSOLIDATED_CANDIDATE_ARCHITECTURE_PRODUCTION_IMPLEMENTATION_NOT_ADMITTED",
+  "rg02": {
+    "branch": "work/animo-rg02-branch-authority-integration",
+    "live_head_observed": "ec8709cd6a37c985ab7452bc0f2e6e64a430db6a",
+    "decision": "QUALIFIED_BRANCH_AUTHORITY_GOVERNANCE_CONVERGENCE_AND_PREPARATORY_AGGREGATE_G5_PENDING",
+    "next_safe_gate": "G5_INDEPENDENT_THEORY_TESTING_NUMERICAL_TEMPORAL_SCIENCE_STREAM_ATTACHMENT",
+    "archg01_historical_snapshot_classification": "UNRESOLVED_REQUIRES_RECONCILIATION",
+    "archg01_live_refresh_required": true,
+    "rg02_write_performed_by_this_packet": false
+  },
+  "architecture_lineage": {
+    "ARCH01": {"branch": "work/animo-arch01-state-ownership-typed-transfers", "head": "24f57d8daab828f88446a79bd6a276f2925c828b"},
+    "ARCH02": {"branch": "work/animo-arch02-restart-checkpoint-sufficiency", "head": "a079d93c965f6073586c55ee4b3544dd8873b723"},
+    "ARCH03": {"branch": "work/animo-arch03-mass-ledger-observer", "head": "bc27bd7cf0c8148b38768315d2fa54014f5a6cf9"},
+    "ARCH04": {"branch": "work/animo-arch04-feature-activation-state-allocation", "head": "87930bbdfc413ad626176ce119f52ea409198f1d"},
+    "ARCH05": {"branch": "work/animo-arch05-external-exchange-contracts", "head": "99b6098a19db405ce34928af89bb78b856dce7cd"},
+    "ARCH06": {"branch": "work/animo-arch06-normalized-model-configuration", "head": "ce3ea8089902dbc4bcbe3ff0224d30c2f8daf3a4"},
+    "ARCH07": {"branch": "work/animo-arch07-adapter-qualification-spec", "head": "7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6"}
+  },
+  "independent_streams": {
+    "TH01": {"branch": "work/animo-th01-rev53-theory-provenance", "head": "a3360415364ef4a66a81d7b6715bcd400829df1b", "role": "theory_provenance_boundaries"},
+    "TQ01": {"branch": "work/animo-tq01-testcase-qualification", "head": "5c43ee16df37a0a1357614fdec527f25e5ca8c16", "role": "testcase_lineage_and_process_coverage"},
+    "NQ01": {"branch": "work/animo-nq01-numerical-qualification-architecture", "head": "e558dff12b127e0662cad62beea7527b42ad89ac", "role": "numerical_comparison_and_capture_policy"},
+    "B3Q01": {"branch": "work/animo-b3q01-scientific-admission-framework", "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54", "role": "scientific_admission_governance"},
+    "TS01": {"branch": "work/animo-ts01-temporal-semantics", "head": "ed12a678cfba19ce851eb2f380e6da3f49203fe4", "decision": "QUALIFIED_SOURCE_BOUND_TEMPORAL_SEMANTICS_PREPARATORY_EVIDENCE", "role": "source_bound_temporal_order_and_generation_constraints", "b2_reference": false, "canonical_time_policy": false}
+  },
+  "frozen_b0": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
+  },
+  "post_ts01_revalidation": {
+    "candidate_object_model_invalidated": false,
+    "accepted_trial_roles_retained": true,
+    "explicit_read_generation_required": true,
+    "same_step_management_visibility_required": true,
+    "heterogeneous_event_endpoint_rules_preserved": true,
+    "same_row_add_before_plough_preserved": true,
+    "potential_pass_committed_physical_events_allowed_by_default": false,
+    "sqnu_reordering_admitted": false,
+    "previous_step_neighbour_reads_may_be_replaced_by_latest_trial_values": false,
+    "crop_uptake_double_booking_allowed": false,
+    "initial_out_is_canonical_restart_snapshot": false,
+    "canonical_restart_writer_read_only": true,
+    "atomic_commit_source_equivalence_qualified": false,
+    "generic_retry_reject_policy_qualified": false,
+    "runtime_topology_transition_qualified": false
+  },
+  "qualified_candidate_scope": [
+    "state ownership",
+    "accepted/trial lifecycle roles as candidate abstraction",
+    "typed transfer semantics",
+    "observer-only MassLedger semantics",
+    "structural restart/checkpoint contract",
+    "feature and state-allocation contract",
+    "external exchange contract",
+    "normalized configuration contract",
+    "adapter qualification specification",
+    "legacy parser boundary",
+    "TS01-compatible temporal preservation constraints"
+  ],
+  "not_admitted": [
+    "B2 historical behavioural reference",
+    "B3 scientific baseline",
+    "canonical TIME implementation",
+    "split-run restart equivalence",
+    "numerical tolerance or convergence policy",
+    "GHG scientific admission",
+    "macropore scientific/state/ledger admission",
+    "stable DOM scientific admission",
+    "discrepancy-specific P/N corrections",
+    "B4 canonical baseline",
+    "production migration"
+  ],
+  "attachment_files": [
+    "docs/architecture/ANIMO5_CONSOLIDATED_CANDIDATE_ARCHITECTURE.md",
+    "docs/architecture/ANIMO5_CANDIDATE_TYPE_MODEL.md",
+    "docs/architecture/ARCH01_07_RECONCILIATION_MATRIX.csv",
+    "docs/architecture/ARCHG01_CONFLICT_REGISTER.csv",
+    "docs/architecture/ANIMO5_TS01_HANDOFF_AND_REVALIDATION.md",
+    "docs/architecture/ANIMO5_RG02_AUTHORITY_RECHECK.md",
+    "docs/architecture/ANIMO5_ARCHG01_G5_ATTACHMENT.md",
+    "integration/animo-architecture/ANIMO-ARCHG01_STATUS.json"
+  ],
+  "evidence_strength_upgraded": false,
+  "branch_merge_requested": false,
+  "canonical_tcd_register_modified": false,
+  "legacy_source_modified": false,
+  "testcase_modified": false,
+  "physics_changed": false,
+  "numerical_policy_changed": false,
+  "production_migration_admitted": false
+}

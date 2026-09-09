@@ -2,21 +2,21 @@
 
 Work unit: `ANIMO-ARCHG01`
 
-Status: `LIVE_AUTHORITY_RECHECK_AFTER_INITIAL_ARCHG01_CLOSEOUT`
+Status: `LIVE_AUTHORITY_RECHECK_RG02_G5_PENDING`
 
-## Why this note exists
+## Current RG02 state
 
-The first ARCHG01 consolidation observed `work/animo-rg02-branch-authority-integration` while it still pointed at the inherited RG01 closeout `662bca8aff40f4dca1f6ccdde6bef6274c6bede2`. During this continuation pass the same RG02 branch had advanced to `8d59b0cabf2001d07aa37eee1a76affaad181dbb` and now contained the persisted RG02 authority register and status.
+The live RG02 branch `work/animo-rg02-branch-authority-integration` is now at `ec8709cd6a37c985ab7452bc0f2e6e64a430db6a` with decision:
 
-The initial ARCHG01 fallback authority check must therefore be superseded by this later live evidence for ARCH01-ARCH07.
+`QUALIFIED_BRANCH_AUTHORITY_GOVERNANCE_CONVERGENCE_AND_PREPARATORY_AGGREGATE_G5_PENDING`
 
-## RG02 result relevant to ARCHG01
+RG02 is therefore no longer globally blocked by the earlier PREP07 through PREP10 lineage collisions. It has completed the observed local-ID reconciliation, governance-only consolidation, provenance-qualified supplemental evidence transplant and a provenance-qualified preparatory aggregate. None of those actions constitutes B2, B3, B4 or production admission.
 
-RG02 is not globally qualified. Its own decision is `BLOCKED_UNRESOLVED_PARALLEL_LINEAGE_COLLISIONS`, mainly because PREP07-PREP10 and post-TCD027 local/canonical evidence still require reconciliation.
+## ARCH01 through ARCH07 authority
 
-That blocked global status does not make every authority decision unusable. RG02 explicitly classifies each of ARCH01 through ARCH07 as `AUTHORITATIVE_CANDIDATE_DESIGN` at the same heads used by ARCHG01:
+RG02 confirms the same authoritative candidate-design branches and heads used by ARCHG01:
 
-| Work unit | RG02 authoritative branch | Head |
+| Work unit | Branch | Head |
 |---|---|---|
 | ARCH01 | `work/animo-arch01-state-ownership-typed-transfers` | `24f57d8daab828f88446a79bd6a276f2925c828b` |
 | ARCH02 | `work/animo-arch02-restart-checkpoint-sufficiency` | `a079d93c965f6073586c55ee4b3544dd8873b723` |
@@ -26,22 +26,33 @@ That blocked global status does not make every authority decision unusable. RG02
 | ARCH06 | `work/animo-arch06-normalized-model-configuration` | `ce3ea8089902dbc4bcbe3ff0224d30c2f8daf3a4` |
 | ARCH07 | `work/animo-arch07-adapter-qualification-spec` | `7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6` |
 
-This independently confirms the ARCH01-ARCH07 authority chain used by the consolidation.
+## Historical ARCHG01 entry
 
-## ARCHG01 entry in the RG02 snapshot
+RG02 still records ARCHG01 among refs that were unresolved at its earlier authority snapshot. That statement is explicitly historical. At that snapshot the ARCHG01 branch had not yet persisted an independent work-unit result.
 
-The RG02 authority-register snapshot classified ARCHG01 as `UNRESOLVED_REQUIRES_RECONCILIATION` because, at that snapshot, the ARCHG01 ref was still identical to ARCH07 and no independent ARCHG01 status existed.
+ARCHG01 subsequently persisted its initial consolidation at `92812896b6a91b422fcbd9bf5e843da5cfc0f278`, hardened it at `5cef7969ee921acd2044521cc7636d388aa02efe`, and now performs post-TS01 revalidation.
 
-That observation was correct for the RG02 snapshot. It is no longer a current statement about the branch after commit `92812896b6a91b422fcbd9bf5e843da5cfc0f278`, which added the independent ARCHG01 contract/deliverables/status.
+RG02's current status explicitly states that ARCHG01 requires a live authority refresh in G5 if independent persisted work now exists.
 
-ARCHG01 does not rewrite RG02 history to hide this timing. Instead it records:
+## G5 consequence
 
-- RG02's ARCH01-ARCH07 authority decisions as current supporting authority evidence;
-- RG02's ARCHG01 unresolved entry as snapshot-stale after the later ARCHG01 persistence;
-- the need for RG02 to refresh its inventory before it can itself classify the new ARCHG01 head.
+RG02 identifies the next safe gate as:
 
-Until such a refresh, ARCHG01's own candidate qualification does not claim canonical integration authority beyond its branch.
+`G5_INDEPENDENT_THEORY_TESTING_NUMERICAL_TEMPORAL_SCIENCE_STREAM_ATTACHMENT`
 
-## Governance consequence
+ARCHG01 should therefore not rewrite RG02's historical authority register or merge itself into RG02. The safe action is to provide a provenance-explicit G5 attachment packet containing:
 
-The consolidated architecture remains a candidate design. RG02's blocked convergence state reinforces, rather than weakens, the rule that this branch must not be merged wholesale as a canonical architecture baseline while evidence-lineage collisions remain unresolved.
+- exact ARCHG01 branch and head;
+- exact candidate decision and non-admissions;
+- exact ARCH01 through ARCH07 lineage references;
+- qualified TS01 temporal closeout reference;
+- theory, testcase, numerical and B3 governance references used by the architecture;
+- frozen B0 identities;
+- unresolved B2/B3/production gates;
+- file-level attachment manifest.
+
+The packet is provided in `integration/animo-architecture/ANIMO-ARCHG01_G5_ATTACHMENT.json` with a human-readable companion note.
+
+## Governance boundary
+
+The G5 packet is suitable for live RG02 authority refresh and stream attachment. It is not a branch merge, does not change the canonical TCD register, does not upgrade evidence strength and does not admit a canonical architecture, B3 baseline, B4 baseline or production migration.

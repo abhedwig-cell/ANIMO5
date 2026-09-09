@@ -2,43 +2,43 @@
 
 Work unit: `ANIMO-ARCHG01`
 
-Decision target: `QUALIFIED_CONSOLIDATED_CANDIDATE_ARCHITECTURE_PRODUCTION_IMPLEMENTATION_NOT_ADMITTED`
+Decision: `QUALIFIED_CONSOLIDATED_CANDIDATE_ARCHITECTURE_PRODUCTION_IMPLEMENTATION_NOT_ADMITTED`
 
-Status: candidate architecture consolidation only. This document does not admit a production architecture, B3 legacy behaviour, a numerical policy, a TIME contract, or B4 implementation.
+Status: candidate architecture consolidation, revalidated after ANIMO-TS01 closeout. This document does not admit a production architecture, a B3 scientific baseline, a numerical policy, a canonical TIME policy, or a B4 implementation.
 
-## 1. Live authority check
+## 1. Current governance and authority position
 
-The live RG02 branch `work/animo-rg02-branch-authority-integration` exists at `662bca8aff40f4dca1f6ccdde6bef6274c6bede2`, but that head is still the inherited RG01 closeout commit and contains no persisted RG02 authority-resolution artifact. ARCHG01 therefore applies the fail-closed live-evidence fallback: use unique branch identity, current head, explicit source lineage in each status artifact, and exact parent-head continuity. No copy, shadow, review, or alternate ARCH01-ARCH07 branch was found.
+ARCHG01 remains on `work/animo-archg01-candidate-architecture-consolidation` and is based on the linear ARCH01 through ARCH07 candidate-design lineage ending at `7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6`.
 
-| Work unit | Authoritative live branch | Live head | Authority basis |
-|---|---|---|---|
-| ARCH01 | `work/animo-arch01-state-ownership-typed-transfers` | `24f57d8daab828f88446a79bd6a276f2925c828b` | unique ARCH01 branch; ARCH02 starts from this exact head |
-| ARCH02 | `work/animo-arch02-restart-checkpoint-sufficiency` | `a079d93c965f6073586c55ee4b3544dd8873b723` | unique ARCH02 branch; ARCH03 starts from this exact head |
-| ARCH03 | `work/animo-arch03-mass-ledger-observer` | `bc27bd7cf0c8148b38768315d2fa54014f5a6cf9` | unique ARCH03 branch; ARCH04 starts from this exact head |
-| ARCH04 | `work/animo-arch04-feature-activation-state-allocation` | `87930bbdfc413ad626176ce119f52ea409198f1d` | unique ARCH04 branch; ARCH05 starts from this exact head |
-| ARCH05 | `work/animo-arch05-external-exchange-contracts` | `99b6098a19db405ce34928af89bb78b856dce7cd` | unique ARCH05 branch; ARCH06 starts from this exact head |
-| ARCH06 | `work/animo-arch06-normalized-model-configuration` | `ce3ea8089902dbc4bcbe3ff0224d30c2f8daf3a4` | unique ARCH06 branch; ARCH07 starts from this exact head |
-| ARCH07 | `work/animo-arch07-adapter-qualification-spec` | `7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6` | unique ARCH07 branch and terminal head of the linear candidate-architecture chain |
+RG02 has now qualified branch-authority governance and a provenance-qualified preparatory aggregate at live branch head `ec8709cd6a37c985ab7452bc0f2e6e64a430db6a`, with decision `QUALIFIED_BRANCH_AUTHORITY_GOVERNANCE_CONVERGENCE_AND_PREPARATORY_AGGREGATE_G5_PENDING`.
 
-ARCHG01 starts from the ARCH07 live head. This does not merge or supersede parallel EB, TQ, B3Q, NQ, theory, or preparatory evidence branches. Those branches remain cited evidence authorities for their own scope.
+RG02 confirms ARCH01 through ARCH07 as authoritative candidate designs at the heads used by ARCHG01. Its older authority snapshot still records ARCHG01 itself as unresolved because that snapshot was taken before independent ARCHG01 persistence. RG02 explicitly requires a live G5 refresh when later persisted ARCHG01 evidence exists. ARCHG01 therefore prepares a G5 attachment packet but does not modify RG02 governance history or claim canonical integration authority.
+
+| Work unit | Authoritative candidate branch | Head |
+|---|---|---|
+| ARCH01 | `work/animo-arch01-state-ownership-typed-transfers` | `24f57d8daab828f88446a79bd6a276f2925c828b` |
+| ARCH02 | `work/animo-arch02-restart-checkpoint-sufficiency` | `a079d93c965f6073586c55ee4b3544dd8873b723` |
+| ARCH03 | `work/animo-arch03-mass-ledger-observer` | `bc27bd7cf0c8148b38768315d2fa54014f5a6cf9` |
+| ARCH04 | `work/animo-arch04-feature-activation-state-allocation` | `87930bbdfc413ad626176ce119f52ea409198f1d` |
+| ARCH05 | `work/animo-arch05-external-exchange-contracts` | `99b6098a19db405ce34928af89bb78b856dce7cd` |
+| ARCH06 | `work/animo-arch06-normalized-model-configuration` | `ce3ea8089902dbc4bcbe3ff0224d30c2f8daf3a4` |
+| ARCH07 | `work/animo-arch07-adapter-qualification-spec` | `7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6` |
 
 ## 2. Evidence basis and non-admissions
 
-This consolidation uses:
+The consolidation uses the B0 to B4 governance model, PREP03 interface and parser evidence, PREP06 conserved-state and transfer evidence, TQ01 testcase qualification, B3Q01 scientific admission classes, NQ01 numerical qualification architecture, ARCH01 through ARCH07, and now qualified source-bound TS01 temporal semantics.
 
-- EB01 B0-B4 evidence semantics at `work/animo-eb01-evidence-baseline-model`, head `52411b9d2d6d80717914bc6642544290a54ded21`;
-- PREP03 interface and semantic ownership audit as carried in the PREP06 lineage;
-- PREP06 conserved-state and transfer registers at head `9b1f1ea51c24fb82823290193651830dc61ea3c8`;
-- TQ01 testcase lineage and process coverage at head `5c43ee16df37a0a1357614fdec527f25e5ca8c16`;
-- B3Q01 scientific admission classes at head `846e0f4d02a38b9e02cc1419b1ca87e63aaedb54`;
-- NQ01 comparison and capture constraints, with canonical NQ01 branch head `e558dff12b127e0662cad62beea7527b42ad89ac`;
-- ARCH01 through ARCH07 at the live heads listed above.
+Relevant live supporting heads at this revalidation are:
 
-The frozen B0 source, testbank and documentation identities are not changed. No historical behaviour is promoted from B1 to B2 or B3. No architecture choice is used to close a theory, B3, reference, or numerical-policy gap.
+- TH01: `a3360415364ef4a66a81d7b6715bcd400829df1b`;
+- TQ01: `5c43ee16df37a0a1357614fdec527f25e5ca8c16`;
+- NQ01: `e558dff12b127e0662cad62beea7527b42ad89ac`;
+- B3Q01: `846e0f4d02a38b9e02cc1419b1ca87e63aaedb54`;
+- TS01: `ed12a678cfba19ce851eb2f380e6da3f49203fe4`.
+
+Frozen B0 source, testbank and documentation identities are unchanged. No B1 diagnostic observation is promoted to B2 or B3. No architecture choice closes a theory, scientific-admission, reference, or numerical-policy gap.
 
 ## 3. Consolidated candidate object graph
-
-The coherent candidate architecture is:
 
 ```text
 ModelConfiguration
@@ -50,7 +50,7 @@ AcceptedState ---- immutable ExternalExchange frames
         v                     v
 TrialState <------------- StepContext
         |
-        +---- TrialScratch
+        +---- TrialScratch / provisional results
         |
         +---- TransferEvent journal
         |
@@ -65,194 +65,131 @@ TrialState <------------- StepContext
                               +---- RestartSnapshot at accepted boundary
 ```
 
-`ModelState` is the logical aggregate root for ANIMO-owned physical state components. It is not a mega-state. It does not absorb immutable configuration, external-owner state, forcing, diagnostics, transfer journals, or process scratch.
+`ModelState` is only the logical aggregate root for ANIMO-owned continuation-critical physical state. It does not absorb immutable configuration, foreign-owned hydrology or crop state, forcing, diagnostics, journals, or scratch.
 
-`AcceptedState` and `TrialState` are lifecycle roles over a `ModelState` snapshot. They are not separate scientific state models.
+`AcceptedState` and `TrialState` are modern lifecycle roles. TS01 confirms that revision 53 has meaningful start/current and result/end generations, but it also shows that legacy current/start arrays are mutated during the interval and that legacy has no literal atomic end-step commit. The modern lifecycle is therefore an abstraction whose behavioural equivalence remains subject to TIME and reference qualification.
 
-`StepContext` binds interval identity, exact configuration identity, accepted generation, immutable forcing/exchange frames, and trial identity. ARCHG01 does not define process ordering, substep policy, retry policy, or timestep acceptance criteria. Those remain a TS01/TIME responsibility.
+## 4. TS01 revalidation result
 
-## 4. State ownership reconciliation
+TS01 closes with `QUALIFIED_SOURCE_BOUND_TEMPORAL_SEMANTICS_PREPARATORY_EVIDENCE`. It reconstructs source order and state-generation visibility but does not qualify a canonical ANIMO5 TIME controller or production transaction policy.
 
-The seven ARCH workunits are consistent on the core ownership rule: every continuation-critical physical store has one canonical runtime owner.
+The candidate object separation survives TS01 without adding a mega-state or changing ownership. The following constraints are now binding on future migration seams:
 
-The consolidated rule set is:
+1. same-step management and residue mutations must be visible to later processes exactly where the source observes them;
+2. management uses `(t0,t1]`, annual harvest/root residue uses `[t0,t1)`, and balance reporting uses its own half-step crossing rule;
+3. addition precedes ploughing within one management row;
+4. potential biochemical results are provisional and must not enter the committed physical transfer journal as actual transfers;
+5. generic solute and phosphorus layer processing follows `Sqnu` order, with same-step downstream propagation where source-defined;
+6. `Resp_miner` contains intentional previous-step neighbour reads that must remain distinguishable from latest trial values;
+7. soil-side crop uptake and plant-side result integration represent one physical nutrient transfer, not two removals;
+8. first-step, ordinary-step and final-step generations are asymmetric;
+9. `Outbal_calc` and report resets are observer/report continuation semantics, not physical acceptance;
+10. `INITIAL.OUT` is not a canonical checkpoint schema and `Output_Init` is not a pure serializer.
 
-1. ANIMO owns soil chemical state and optional ANIMO-owned crop state.
-2. Hydrological state is externally owned even when ANIMO requires its coordinates to compute aqueous storage and transport.
-3. External crop state remains externally owned in `crop_mode=external`.
-4. Reporting accumulators, detailed process arrays, derived totals, and solver/process scratch are not physical owners.
-5. Crop is an explicit conservation compartment when whole soil-crop closure is requested. Soil-only and soil-plus-crop ledgers remain views over the same transfer events.
-6. Macropore physical state must exist as an explicit owner group if the feature is ever admitted. It cannot disappear behind a matrix-only state model.
-7. Inactive optional physical state is absent, not silently retained as hidden persistent zero state.
-8. Parser-visible but dynamically dormant stable surface DOM/DON/DOP is unsupported state, not dormant canonical state.
-9. Site-resolved P state remains site-resolved. Aggregate P site totals are derived views.
-10. GHG state remains conditional and blocked pending theory-to-ledger qualification.
+TS01 therefore resolves source-order uncertainty, but not behavioural equivalence of a modern atomic commit, retry/reject policy, mid-step checkpointing, runtime topology changes, or the future canonical time representation.
 
-This is consistent with PREP06. It also preserves PREP03's rejection of mechanical argument shortening, a monolithic mega-state, and module-global replacement without ownership contracts.
+## 5. State ownership reconciliation
 
-## 5. Restart and temporal consistency
+Every continuation-critical physical store has one canonical runtime owner.
 
-ARCH01, ARCH02, ARCH04, ARCH05 and ARCH06 are mutually compatible on restart:
+- ANIMO owns soil chemical state and optional ANIMO-owned crop state.
+- Hydrological state remains externally owned even when its coordinates are needed for aqueous storage and transport.
+- External crop state remains externally owned in external crop mode.
+- Reporting accumulators, detailed process arrays, derived totals and scratch are not physical owners.
+- Crop is an explicit conservation compartment when whole soil-crop closure is requested.
+- Macropore physical state must exist explicitly if that feature is admitted.
+- Inactive optional physical state is absent rather than hidden as persistent zero state.
+- Parser-visible but unsupported dormant surface stable DOM/DON/DOP is not canonical state.
+- Site-resolved phosphorus state remains site-resolved.
+- GHG state remains conditional and blocked pending theory-to-ledger qualification.
 
-- only accepted physical state is checkpointed;
-- uncommitted trial state and trial events are excluded;
-- ANIMO-owned physical stores are serialized in canonical owner representation;
-- external hydrology and external crop state are restored by their own owners;
-- direct restore fails closed on physical-layout, geometry, site-count, ownership-mode, feature, schema, or precision-representation mismatch;
-- derived views and process scratch are reconstructed;
-- diagnostic continuation is a separate optional payload if report continuity across a mid-report-period checkpoint is required.
+## 6. Read-generation contract
 
-What ARCHG01 cannot decide without TS01:
+TS01 makes one refinement mandatory: a process API cannot expose only a generic `state` view.
 
-- the definition of a globally accepted time boundary in all standalone and coupled modes;
-- process ordering within a trial;
-- whether processes observe accepted or already-mutated trial values at each schedule point;
-- substepping and retry semantics;
-- coupled convergence and logical accept/reject policy;
-- topology or feature transitions during simulation;
-- exact calendar/time representation;
-- whether any mid-step checkpoint semantics will ever be admitted.
+Each migrated process seam must state whether a read is from:
 
-ARCHG01 therefore treats `AcceptedState`, `TrialState`, and accepted-boundary restart as candidate lifecycle semantics, not as a qualified TIME policy.
+- beginning accepted state;
+- post-management trial state;
+- provisional potential-pass result;
+- actual same-step result;
+- explicitly previous-step neighbour state;
+- same-step upstream average/result propagated in `Sqnu` order;
+- immutable external-owner observation.
 
-## 6. MassLedger derivation rule
+This is a contract requirement, not permission to change source order. A future scheduler may be cleaner than the legacy main program, but any changed ordering or read generation requires explicit B3, NQ or reference qualification as applicable.
 
-For an ANIMO-owned control volume, `MassLedger` can be derived completely from:
+## 7. Restart and checkpoint consistency
 
-- beginning and end canonical owner state projections; and
-- the committed `TransferEvent` journal.
+The candidate restart model remains structurally coherent:
 
-For a wider control volume that includes externally owned stores, such as soil plus an externally owned crop, ANIMO-owned `ModelState` alone is insufficient. The ledger must use an ownership-aware `CanonicalStateView` consisting of the relevant ANIMO state snapshot plus immutable accepted external-owner state observations. Those observations remain external ownership and are not copied into `ModelState`.
+- checkpoint only accepted physical state;
+- exclude uncommitted trial state and provisional scratch;
+- serialize ANIMO-owned stores in canonical owner representation;
+- coordinate external hydrology/crop restore through their owners;
+- fail closed on incompatible configuration, layout, geometry, feature, site-count, ownership or schema identity;
+- keep diagnostic continuation separate from physical state.
 
-This resolves an otherwise hidden assumption between ARCH03 and ARCH05. "Canonical state" means authoritative state from each owner, not "all state copied into ANIMO".
+TS01 adds two hard constraints. First, strong continuous-versus-split equivalence remains unqualified because `INITIAL.OUT` omits continuation context such as management/event cursors, reporting accumulators and complete external-owner synchronization state. Second, `Output_Init` can clamp a negative phosphorus crop result before writing. A modern `RestartSnapshot` must remain a read-only serialization of accepted canonical state. Any legacy restart compatibility transformation must be explicit and separately qualified.
 
-The ledger remains observer-only. It cannot repair a residual, create a balancing flux, or cause commit.
+## 8. MassLedger derivation rule
 
-## 7. External exchange versus typed transfer semantics
+For an ANIMO-owned control volume, `MassLedger` derives from beginning/end canonical owner projections plus the committed `TransferEvent` journal.
 
-`ExternalExchange` and `TransferEvent` are related but are not the same type.
+For control volumes containing foreign-owned stores, use a read-only ownership-aware `CanonicalStateView`: ANIMO accepted state plus immutable authoritative external-owner observations. Foreign state is never copied into `ModelState` merely for accounting convenience.
 
-An external frame can contain:
+The ledger remains an observer. It cannot repair residuals, create balancing fluxes, choose tolerances, or cause commit.
 
-- endpoint state coordinates, such as accepted and proposed water storage coordinates;
-- interval forcing;
-- producer identity and accepted generation;
-- interval-integrated physical transfer quantities;
-- crop demand or external-owner state observations.
+## 9. External exchange and typed transfers
 
-Only the physical transfer part becomes one or more `TransferEvent` records after explicit boundary normalization and validation. State observations remain observations. Trial-control metadata remains metadata.
+`ExternalExchange` and `TransferEvent` remain different semantic types.
 
-This avoids two opposite errors:
+External frames may contain state observations, forcing, producer and generation identity, interval transfer quantities, and crop demand. Only validated physical transfer quantities normalize exactly once into directed non-negative `TransferEvent` records. State observations stay observations and control metadata stays metadata.
 
-- treating every external state coordinate as a mass transfer;
-- maintaining a separate external balance vocabulary that does not reconcile with the internal ledger.
+TS01 additionally requires interval identity and event timing to preserve source-observed boundary semantics. Hydrology record alignment remains an explicit future adapter validation seam rather than an implicit sequence assumption.
 
-After normalization, an external physical transfer uses the same directed, non-negative, conserved-quantity event semantics as an internal transfer, with an `EXT:*` endpoint as appropriate.
+## 10. Configuration, feature activation and adapters
 
-## 8. Feature, configuration, allocation and restart consistency
+Normalized configuration remains fail closed. Parser visibility does not imply runtime or scientific admission. Unsupported or ambiguous legacy options must produce an explicit unsupported/error disposition rather than hidden activation.
 
-ARCH04 and ARCH06 are coherent if configuration is treated as a fail-closed manifest, not as a convenience parser object.
+The `LegacyInputAdapter` remains outside the scientific process kernel. It may translate only explicitly supported and qualified semantics, preserve B0 provenance, resolve convenience defaults before normalization, and never invent feature admission, scientific defaults, units, tolerance or process semantics.
 
-A valid normalized configuration must make explicit:
+Concrete adapters remain unqualified until ARCH07-style runtime evidence exists.
 
-- hydrology mode and exchange schema;
-- crop ownership mode;
-- feature activation;
-- feature admission identities for blocked optional features;
-- geometry and P-site cardinalities;
-- physical state schema identities;
-- numerical-policy and precision-policy references;
-- forcing and management contract bindings;
-- diagnostic observer configuration separately from physical configuration.
+## 11. Numerical and scientific boundaries
 
-Unsupported legacy options cannot be silently represented as active modern features. A legacy parser may recognize them, but normalization must return either a qualified supported semantic mapping or an explicit unsupported/error disposition.
+NQ01 remains binding. ARCHG01 defines no epsilon, tolerance, floating precision, convergence criterion or nonlinear policy. Reordered layer execution, altered stale/current reads, or other nonexact numerical differences require separate qualification.
 
-Inactive conditional fields are explicit `null` in configuration and absent from physical state allocation.
+B3Q01 remains authoritative for scientific dispositions. Architecture cannot close GHG theory, macropore state/ledger admission, stable DOM issues, phosphorus site/index semantics, negative-concentration/dry-solute continuation semantics, Class E numerical changes, Class F physics changes, or historical-behaviour uncertainty that needs B2/reference evidence.
 
-## 9. LegacyInputAdapter boundary
-
-`LegacyInputAdapter` is an ingestion boundary, not part of the process kernel.
-
-It must:
-
-1. parse legacy input without modifying B0 artifacts;
-2. preserve source member identity, parser version, labels/options and compatibility transformations;
-3. translate only semantics that are explicit in qualified parser/source evidence;
-4. resolve convenience defaults before normalized configuration is created;
-5. emit a complete `ModelConfiguration` or fail closed;
-6. record unsupported, parser-visible but non-operational, dormant, or version-mismatched options explicitly;
-7. never invent scientific defaults, feature admission, units, tolerance, or process semantics;
-8. never translate a B3 uncertainty into an architecture default;
-9. provide adapter evidence sufficient for later conformance tests.
-
-PREP03 is especially important here because the 4.0 guide is not sufficient authority for all revision-53 parser semantics.
-
-## 10. Numerical-policy boundary
-
-NQ01 is binding on the candidate architecture:
-
-- scientific floating comparisons do not gain an arbitrary tolerance from ARCHG01;
-- precision policy is explicit and identity-bearing;
-- reference capture must support unrounded round-trip-safe scientific values when qualification requires them;
-- branch, fallback, sign, index, and discrete control-flow evidence can require exact comparison;
-- a formatted report difference is not automatically "formatting only";
-- no legacy residual defines an acceptance threshold.
-
-The candidate types therefore carry unit and representation identities where needed, but ARCHG01 does not choose numeric precision, epsilon, relative tolerance, ULP policy, nonlinear solver policy, or convergence criteria.
-
-## 11. B3 and theory boundaries
-
-Architecture cannot close these scientific seams:
-
-- GHG state and whole-system C/N ledger semantics;
-- macropore state, transfer and public-ledger completeness;
-- stable DOM theory and the TCD-023 P/N cross-species defect;
-- P initialization and multi-site/slow-site semantics;
-- negative-concentration and dry-down continuation semantics;
-- any Class E numerical-policy discrepancy;
-- any Class F physics/model evolution;
-- any historical-behaviour question that requires B2 or the stricter historical-uncertainty route.
-
-B3Q01 qualification classes remain authoritative. Architecture may expose the seam and require an admission identity, but cannot set `admitted=true`.
-
-## 12. Migration readiness boundary
-
-The consolidated candidate architecture is coherent enough to define migration seams and future implementation contracts. It is not ready for production implementation because the migration DAG still requires qualified shared semantic gates.
+## 12. Migration readiness after TS01
 
 | Area | Candidate design coherent | Production implementation admitted |
 |---|---:|---:|
 | state ownership | yes | no |
-| accepted/trial lifecycle | yes as candidate semantics | no, TS01 required |
-| restart payload structure | yes | no, behavioural split-run qualification required |
-| MassLedger observer model | yes | no, canonical STATE/TIME and runtime event producers required |
+| accepted/trial lifecycle | yes as modern abstraction | no, behavioural TIME/reference qualification still required |
+| source process order and read generations | reconstructed by TS01 | no reordering admitted |
+| event endpoint semantics | source-bound reconstructed | no normalization change admitted |
+| restart payload structure | yes | no, split-run/reference evidence required |
+| MassLedger observer model | yes | no, runtime event producers and scientific admissions required |
 | feature allocation | yes | no |
-| external exchange schemas | yes | no, concrete adapters and coupled runtime evidence required |
-| normalized configuration | yes | no |
-| adapter qualification specification | yes | no concrete adapter qualified |
-| B3 scientific dispositions | referenced only | no |
+| external exchange schemas | yes | no concrete coupled adapter qualified |
+| normalized configuration | yes | no production parser/adapter qualified |
 | numerical acceptance policy | intentionally absent | no |
+| B3 scientific dispositions | referenced only | no |
 
-## 13. Conflict register
+The serial architecture gate is therefore no longer blocked by unknown legacy ordering. It is blocked by the distinction between source-bound temporal reconstruction and a qualified modern TIME/transaction implementation.
 
-| ID | Conflict or ambiguity | Disposition | Resolution |
-|---|---|---|---|
-| ARCHG-C01 | Does `ModelState` become a mega-state that owns configuration, diagnostics and external state? | `RESOLVED_ARCHITECTURAL` | no; it is a logical aggregate of ANIMO-owned physical components only |
-| ARCHG-C02 | Can whole-system MassLedger use ANIMO `ModelState` alone when crop or hydrology state is externally owned? | `RESOLVED_ARCHITECTURAL` | no; use an ownership-aware canonical state view without duplicating foreign ownership |
-| ARCHG-C03 | Are `ExternalExchange` frames identical to `TransferEvent` records? | `RESOLVED_ARCHITECTURAL` | no; only validated physical transfer fields normalize into typed events |
-| ARCHG-C04 | Can feature topology change inside a normal trial? | `REQUIRES_TS01` | no rule is admitted; current candidate assumes fixed topology for a trial and requires a separate qualified transition contract |
-| ARCHG-C05 | Which process reads accepted versus already-mutated trial values? | `REQUIRES_TS01` | ARCHG01 does not define process ordering |
-| ARCHG-C06 | Can GHG candidate state be allocated and used because ARCH01/04 define it? | `REQUIRES_THEORY` | state shape is representable, but scientific theory-to-ledger admission is open |
-| ARCHG-C07 | Can active macropore state be treated as ready because arrays and exchange fields exist? | `REQUIRES_B3` | no; no compatible supplied active historical case and TCD-025 remains blocking |
-| ARCHG-C08 | Can P-site initialization/index semantics be selected by architecture? | `REQUIRES_B3` | no; TCD-014, TCD-024 and TCD-029 require discrepancy-specific qualification |
-| ARCHG-C09 | Can numerical closure tolerance be chosen to make ledger/restart comparisons pass? | `REQUIRES_REFERENCE` | no; NQ01 requires independent evidence and fail-closed comparison policy |
-| ARCHG-C10 | Can legacy parser-visible unsupported or dormant options normalize to active features? | `RESOLVED_ARCHITECTURAL` | no; adapter must fail closed or emit explicit unsupported disposition |
-| ARCHG-C11 | Is restart behaviour qualified by structural checkpoint sufficiency alone? | `REQUIRES_REFERENCE` | no; continuous-versus-split behavioural evidence remains required |
-| ARCHG-C12 | Is the consolidated architecture a B4 or production architecture? | `NOT_PRODUCTION_READY` | explicitly no |
+## 13. Governance handoff
+
+RG02 identifies G5 as the next safe integration gate: attach independent theory, testcase, numerical, temporal, scientific and architecture streams by explicit authority references without collapsing their evidence strength.
+
+ARCHG01 provides `integration/animo-architecture/ANIMO-ARCHG01_G5_ATTACHMENT.json` and `docs/architecture/ANIMO5_ARCHG01_G5_ATTACHMENT.md` for that purpose. This is an attachment packet, not a merge request and not a B3/B4 admission.
 
 ## 14. Decision
 
-ARCH01 through ARCH07 form one internally coherent candidate architecture after the clarifications above. The main reconciliation change is conceptual, not physical: ANIMO-owned `ModelState`, external-owner state observations, external exchange frames, typed physical transfer events, diagnostics, and configuration remain separate first-class concepts.
+After TS01 closeout, ARCH01 through ARCH07 plus the ARCHG01 reconciliation still form an internally coherent candidate architecture. TS01 requires stricter process read-generation and ordering contracts, but it does not invalidate the core type separation, ownership model, typed-transfer model, observer-only ledger, fail-closed configuration, or external exchange boundary.
 
-The appropriate closeout decision is:
+The closeout decision remains:
 
 `QUALIFIED_CONSOLIDATED_CANDIDATE_ARCHITECTURE_PRODUCTION_IMPLEMENTATION_NOT_ADMITTED`

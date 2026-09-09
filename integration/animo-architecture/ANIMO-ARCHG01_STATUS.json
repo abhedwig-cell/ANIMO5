@@ -9,6 +9,8 @@
     "head": "7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6"
   },
   "initial_consolidation_commit": "92812896b6a91b422fcbd9bf5e843da5cfc0f278",
+  "pre_ts01_closeout_hardening_commit": "5cef7969ee921acd2044521cc7636d388aa02efe",
+  "post_ts01_revalidation_commit_resolution": "use live branch head containing this status",
   "decision": "QUALIFIED_CONSOLIDATED_CANDIDATE_ARCHITECTURE_PRODUCTION_IMPLEMENTATION_NOT_ADMITTED",
   "implemented": true,
   "persisted": true,
@@ -26,15 +28,14 @@
   "corrected_legacy_admitted": false,
   "authority_check": {
     "rg02_branch": "work/animo-rg02-branch-authority-integration",
-    "rg02_live_head_initial": "662bca8aff40f4dca1f6ccdde6bef6274c6bede2",
-    "rg02_live_head_recheck": "8d59b0cabf2001d07aa37eee1a76affaad181dbb",
-    "rg02_decision": "BLOCKED_UNRESOLVED_PARALLEL_LINEAGE_COLLISIONS",
-    "rg02_authority_register_persisted": true,
+    "rg02_live_head": "ec8709cd6a37c985ab7452bc0f2e6e64a430db6a",
+    "rg02_decision": "QUALIFIED_BRANCH_AUTHORITY_GOVERNANCE_CONVERGENCE_AND_PREPARATORY_AGGREGATE_G5_PENDING",
+    "rg02_qualified": true,
+    "rg02_next_safe_gate": "G5_INDEPENDENT_THEORY_TESTING_NUMERICAL_TEMPORAL_SCIENCE_STREAM_ATTACHMENT",
     "rg02_confirms_arch01_07_as_authoritative_candidate_design": true,
     "rg02_archg01_snapshot_preceded_independent_archg01_persistence": true,
-    "rg02_archg01_snapshot_classification": "UNRESOLVED_REQUIRES_RECONCILIATION",
-    "rg02_archg01_snapshot_classification_current_after_92812896": false,
-    "rg02_refresh_required_for_archg01_authority": true,
+    "rg02_archg01_live_g5_refresh_required": true,
+    "archg01_g5_attachment_ready": true,
     "authoritative_arch_heads": {
       "ARCH01": "24f57d8daab828f88446a79bd6a276f2925c828b",
       "ARCH02": "a079d93c965f6073586c55ee4b3544dd8873b723",
@@ -45,48 +46,41 @@
       "ARCH07": "7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6"
     }
   },
-  "evidence": {
-    "eb01": {
-      "branch": "work/animo-eb01-evidence-baseline-model",
-      "head": "52411b9d2d6d80717914bc6642544290a54ded21",
-      "role": "B0-B4 governance"
-    },
-    "prep03": {
-      "artifact": "integration/animo-prep/ANIMO-PREP03_STATUS.json",
-      "carried_by_branch": "work/animo-prep06-conserved-state-ledger",
-      "evaluated_evidence_head": "799bcbf871188cb61824f5138822063bcfc93d82",
-      "role": "interface and parser/version audit"
-    },
-    "prep06": {
-      "branch": "work/animo-prep06-conserved-state-ledger",
-      "head": "9b1f1ea51c24fb82823290193651830dc61ea3c8",
-      "decision": "QUALIFIED_CONSERVED_STATE_AND_TRANSFER_LEDGER_PREPARATORY_EVIDENCE"
-    },
-    "tq01": {
-      "branch": "work/animo-tq01-testcase-qualification",
-      "head": "5c43ee16df37a0a1357614fdec527f25e5ca8c16",
-      "decision": "QUALIFIED_TESTCASE_LINEAGE_AND_PROCESS_COVERAGE_PREPARATORY_EVIDENCE"
-    },
-    "b3q01": {
-      "branch": "work/animo-b3q01-scientific-admission-framework",
-      "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
-      "decision": "QUALIFIED_B3_SCIENTIFIC_ADMISSION_FRAMEWORK_NO_LEGACY_CORRECTIONS_ADMITTED"
-    },
-    "nq01": {
-      "branch": "work/animo-nq01-numerical-qualification-architecture",
-      "head": "e558dff12b127e0662cad62beea7527b42ad89ac",
-      "status": "QUALIFIED_NUMERICAL_QUALIFICATION_ARCHITECTURE_AWAITING_INDEPENDENT_REFERENCE_DATA"
-    },
-    "ts01_live": {
-      "branch": "work/animo-ts01-temporal-semantics",
-      "head": "5bd1bdd3012adec63679e72077a243ae95ccc01f",
-      "phase": "STARTED_SOURCE_BOUND_AUDIT",
-      "decision": "IN_PROGRESS",
-      "use_by_archg01": "PROVISIONAL_CONSTRAINT_AND_REVALIDATION_INPUT_ONLY"
-    },
-    "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
-    "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "independent_evidence_heads": {
+    "TH01": "a3360415364ef4a66a81d7b6715bcd400829df1b",
+    "TQ01": "5c43ee16df37a0a1357614fdec527f25e5ca8c16",
+    "NQ01": "e558dff12b127e0662cad62beea7527b42ad89ac",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "TS01": "ed12a678cfba19ce851eb2f380e6da3f49203fe4"
+  },
+  "frozen_evidence": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
     "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
+  },
+  "ts01_revalidation": {
+    "ts01_decision": "QUALIFIED_SOURCE_BOUND_TEMPORAL_SEMANTICS_PREPARATORY_EVIDENCE",
+    "ts01_source_bound_qualified": true,
+    "ts01_b2_reference": false,
+    "candidate_object_model_invalidated": false,
+    "accepted_trial_roles_retained_as_modern_abstraction": true,
+    "atomic_end_step_commit_literal_legacy_mechanism": false,
+    "atomic_commit_source_equivalence_qualified": false,
+    "same_step_management_visibility_required": true,
+    "heterogeneous_event_endpoint_rules_preserved": true,
+    "same_row_add_before_plough_preserved": true,
+    "explicit_process_read_generation_required": true,
+    "potential_pass_committed_as_physical_transfer_by_default": false,
+    "sqnu_order_source_observable": true,
+    "arbitrary_layer_reordering_or_parallelization_admitted": false,
+    "previous_step_neighbour_reads_source_observable": true,
+    "crop_uptake_one_physical_transfer": true,
+    "report_reset_is_physical_commit": false,
+    "legacy_initial_out_is_canonical_restart_snapshot": false,
+    "canonical_restart_writer_read_only": true,
+    "generic_retry_reject_policy_qualified": false,
+    "runtime_topology_transition_qualified": false,
+    "canonical_time_representation_qualified": false
   },
   "reconciliation": {
     "arch01_07_linear_authority_chain": true,
@@ -99,44 +93,23 @@
     "external_exchange_is_not_identical_to_transfer_event": true,
     "external_physical_transfers_normalize_to_same_typed_event_semantics": true,
     "legacy_adapter_can_only_emit_explicitly_supported_normalized_semantics": true,
-    "candidate_accepted_trial_roles_can_represent_observed_legacy_generations": true,
-    "atomic_end_step_commit_equivalence_to_delayed_legacy_init_staging_qualified": false,
-    "universal_event_endpoint_normalization_allowed": false,
-    "potential_pass_committed_as_physical_transfer_by_default": false,
-    "arbitrary_layer_reordering_or_parallelization_admitted": false,
-    "legacy_output_init_is_canonical_restart_snapshot": false,
-    "process_ordering_decided_by_archg01": false,
+    "source_process_order_now_reconstructed": true,
+    "source_read_generation_constraints_now_reconstructed": true,
+    "process_reordering_admitted_by_archg01": false,
     "numerical_tolerance_decided_by_archg01": false
   },
-  "temporal_recheck": {
-    "ts01_closeout_qualified": false,
-    "source_bound_documents_present": true,
-    "findings_material_to_architecture": [
-      "legacy result-to-current staging is delayed to next Init",
-      "management mutates current-step state before later process calculations",
-      "management and harvest use different exact-boundary interval predicates",
-      "potential and actual biochemical passes are temporally distinct",
-      "generic solute and phosphorus layer processing is sequential in Sqnu order",
-      "Resp_miner intentionally mixes previous-step neighbour state with current-layer calculations",
-      "crop soil-side uptake sink precedes plant-side state integration",
-      "first and final timestep generations are asymmetric",
-      "INITIAL.OUT does not establish complete restart sufficiency",
-      "Output_Init has a phosphorus clamping side effect before serialization"
-    ],
-    "archg01_revalidation_required_after_ts01_closeout": true,
-    "production_time_contract_admitted": false
-  },
   "open_scientific_or_reference_boundaries": [
+    "independent B2 historical behavioural reference",
+    "behavioural continuous-versus-split restart equivalence",
+    "canonical TIME retry/reject implementation",
+    "runtime feature/topology transition contract",
     "GHG theory-to-ledger reconciliation",
-    "macropore active-case and complete ledger admission",
+    "macropore active-path state/transfer/ledger admission",
     "stable DOM provenance and TCD-023",
-    "P initialization and site/index semantics TCD-014 TCD-024 TCD-029",
-    "negative concentration and dry-down continuation TCD-015 TCD-016",
+    "P initialization and site/index semantics including TCD-014 TCD-024 TCD-029",
+    "negative concentration and dry-solute continuation including TCD-015 TCD-016",
     "TCD-019 separate numerical-policy qualification",
-    "behavioural split-run restart evidence",
-    "independent B2 reference data",
-    "legacy Output_Init phosphorus clamp disposition",
-    "continuation-critical management cursor reconstruction"
+    "legacy Output_Init phosphorus clamp scientific/restart compatibility disposition"
   ],
   "deliverables": [
     "docs/architecture/ANIMO5_CONSOLIDATED_CANDIDATE_ARCHITECTURE.md",
@@ -146,21 +119,18 @@
     "docs/architecture/ARCHG01_CONFLICT_REGISTER.csv",
     "docs/architecture/ANIMO5_TS01_HANDOFF_AND_REVALIDATION.md",
     "docs/architecture/ANIMO5_RG02_AUTHORITY_RECHECK.md",
+    "docs/architecture/ANIMO5_ARCHG01_G5_ATTACHMENT.md",
+    "integration/animo-architecture/ANIMO-ARCHG01_G5_ATTACHMENT.json",
     "integration/animo-architecture/ANIMO-ARCHG01_STATUS.json"
   ],
   "verification": {
     "reconciliation_matrix_rows": 14,
     "conflict_register_rows": 17,
-    "required_conflict_dispositions_used": [
-      "RESOLVED_ARCHITECTURAL",
-      "REQUIRES_TS01",
-      "REQUIRES_B3",
-      "REQUIRES_THEORY",
-      "REQUIRES_REFERENCE",
-      "NOT_PRODUCTION_READY"
-    ],
     "rg02_arch01_07_heads_match_archg01_inputs": true,
-    "ts01_used_as_qualified_time_contract": false,
+    "ts01_closeout_head_recorded": true,
+    "ts01_used_as_b2_reference": false,
+    "ts01_used_as_canonical_time_policy": false,
+    "g5_attachment_preserves_evidence_strength": true,
     "production_code_paths_changed": false,
     "frozen_legacy_paths_changed": false,
     "testcase_paths_changed": false,

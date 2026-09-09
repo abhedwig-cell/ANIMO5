@@ -1,164 +1,152 @@
-# ANIMO5 ARCHG01 to TS01 handoff and revalidation contract
+# ANIMO5 ARCHG01 TS01 closeout revalidation
 
 Work unit: `ANIMO-ARCHG01`
 
-Status: `CANDIDATE_ARCHITECTURE_TEMPORAL_HANDOFF_TS01_IN_PROGRESS`
+Status: `TS01_CLOSEOUT_REVALIDATED_SOURCE_BOUND_CONSTRAINTS_INTEGRATED_TIME_POLICY_NOT_ADMITTED`
 
-This note is a follow-up hardening pass on the consolidated candidate architecture. It reads the live ANIMO-TS01 source-bound audit at head `5bd1bdd3012adec63679e72077a243ae95ccc01f`. TS01 itself still reports `decision = IN_PROGRESS`, so none of its unfinished findings are promoted here to a qualified TIME contract. They are used only to test whether ARCHG01 has made assumptions that the source audit already contradicts.
+TS01 is now qualified as source-bound preparatory evidence at live head `ed12a678cfba19ce851eb2f380e6da3f49203fe4`, with decision `QUALIFIED_SOURCE_BOUND_TEMPORAL_SEMANTICS_PREPARATORY_EVIDENCE`.
 
-## 1. Result of the provisional compatibility check
+This document supersedes the earlier provisional TS01 handoff written while TS01 was still in progress.
 
-The core ARCH01-ARCH07 object separation survives the source-bound temporal audit, but only under a stricter interpretation than a generic immutable-start-state timestep.
+## 1. Revalidation outcome
 
-The candidate architecture may keep:
+The consolidated candidate object model remains valid. TS01 does not require a mega-state, a different state owner model, or removal of `AcceptedState`, `TrialState`, `TransferEvent`, `ExternalExchange`, `MassLedger`, `RestartSnapshot`, `DiagnosticsView` or `LegacyInputAdapter`.
 
-- one immutable `AcceptedState` generation;
-- a mutable `TrialState`;
-- trial-local scratch and provisional calculations;
-- typed physical transfer events;
-- one logical accept/reject boundary;
-- observer-only ledgers and diagnostics;
-- accepted-boundary restart snapshots.
+It does require stronger temporal contracts around those types.
 
-However, it may not infer that every legacy process reads only the immutable beginning-of-step state. TS01 shows that revision 53 deliberately mixes several generations and order-sensitive values inside one interval. The future process contract must state which generation each read comes from.
+The revalidation result is:
 
-Therefore ARCHG01 remains a coherent candidate architecture, but production implementation is still blocked by the TIME/TS01 gate.
+- no candidate type is invalidated;
+- `AcceptedState` remains a valid modern immutable lifecycle role, but it is not a literal legacy mechanism;
+- `TrialState` must represent same-step event mutation before later process reads;
+- process seams must declare read generation explicitly;
+- `StepContext` must bind source-compatible event timing and ordering constraints without pretending that one universal endpoint convention exists;
+- potential-pass results remain provisional/scratch semantics;
+- restart compatibility remains structurally designed but behaviourally unqualified;
+- arbitrary layer reordering or parallelization remains unadmitted;
+- no canonical TIME/retry/reject implementation is admitted.
 
-## 2. Accepted state and delayed legacy staging
+## 2. Legacy acceptance mapping
 
-Revision 53 does not execute an explicit end-of-step commit. For ordinary timesteps, the previous `Rs*` result arrays become the next current/start arrays only when the following `Init` call executes. The final interval is different because `Output_Init` serializes the final `Rs*` result generation directly.
+Revision 53 stages previous end results into current/start arrays at the next step's `Init`. The modern architecture proposes a logical accepted boundary after the completed actual result.
 
-ARCHG01's atomic commit is therefore an abstraction, not a literal description of the legacy source.
-
-It can be admitted only if a later TIME qualification establishes that the following mapping is behaviourally safe:
+The candidate mapping remains possible:
 
 ```text
-legacy completed actual result R(n,t1)
-        ~= candidate TrialState result at t1
-candidate logical accept at t1
-        -> next AcceptedState
-legacy next-step Init staging
-        ~= candidate begin_trial state construction plus explicitly scheduled boundary actions
+legacy final actual result R(n,t1)
+        -> source-authoritative end generation
+modern completed TrialState(n,t1)
+        -> logical accept
+        -> AcceptedState(n+1,t1)
+legacy next Init
+        -> stages R(n,t1) into current/start representation
 ```
 
-The equivalence condition is not just equality of chemistry fields. It must preserve:
+This mapping is structurally coherent because TS01 finds a real old/start versus result/end generation split. It is not yet behaviourally qualified because first-step handling, final-step serialization, event cursors, crop/year boundaries, reporting continuation and external-owner synchronization can affect split-run equivalence.
 
-- final-interval output generation;
-- first-step special initialization;
-- crop/year boundary actions performed in `Init`;
-- management/reporting cursor semantics;
-- any process that intentionally reads old versus already-mutated state.
+Disposition: architecture survives; reference/TIME qualification remains required.
 
-Until TS01 closes and this mapping is reviewed, `AcceptedState` and `TrialState` are qualified architecture roles only, not an admitted source-equivalent TIME implementation.
+## 3. Same-step management and read visibility
 
-## 3. Same-step management belongs in TrialState
+TS01 confirms that `Addit` mutates current/start chemistry before `UBoundconc`, crop demand, potential processing and actual processing.
 
-TS01 shows that `Addit` mutates the current/start arrays before `UBoundconc`, uptake demand, the potential pass and the actual pass. A future architecture must therefore model material application and ploughing as mutations/events inside the current trial, before the later processes that consume their consequences.
+The modern seam therefore must execute management/residue application inside the trial before downstream readers that depend on it. The physical transfer must be represented once. A legacy mutation plus a second typed-transfer application would double apply the material.
 
-The safe candidate mapping is:
+Disposition: resolved architecturally by mutable `TrialState` plus one physical `TransferEvent`; source order is binding unless separately qualified.
 
-1. `AcceptedState` remains immutable;
-2. begin the trial by constructing `TrialState` from accepted physical state;
-3. apply the scheduled management/residue actions to `TrialState` once;
-4. emit the corresponding physical `TransferEvent` legs once;
-5. later process kernels read the required post-event trial state where the source does;
-6. reject discards both the state mutation and the event journal;
-7. accept promotes the completed result generation.
+## 4. Event boundaries
 
-Retaining legacy `Addit` mutation while also adding a typed event producer would double-apply material and is forbidden at a migration seam.
+TS01 qualifies source-bound differences that cannot be collapsed by architecture:
 
-## 4. Event scheduling cannot use one universal endpoint rule
-
-TS01 has already established three distinct source-bound conventions:
-
-- management addition/plough packets: `(t0,t1]`;
+- management addition/plough packet: `(t0,t1]`;
 - annual harvest/root-residue trigger: `[t0,t1)`;
-- selected balance dates: a half-step crossing rule.
+- balance-report dates: half-step crossing logic;
+- same management row: addition before ploughing.
 
-ARCHG01 therefore refines `StepContext`: it may bind an immutable event/schedule view, but it must not normalize all event sources to one endpoint convention unless a later behavioural/scientific qualification explicitly admits that change.
+`StepContext` may carry an immutable schedule/event view, but event classes must retain their own qualified boundary rule and ordering relation.
 
-The same management row also has a strict internal order: addition before ploughing/mixing. A future generic event collection must preserve an ordering relation or a compound-event identity. Treating both actions as unordered events is not source-equivalent.
+Disposition: resolved as a preservation contract. Any normalization change requires expected-difference/reference evidence.
 
-## 5. Potential pass is provisional state, not committed physics
+## 5. Process read generations
 
-Revision 53 performs a potential biochemical pass before aeration and a later actual pass. Potential `Rs*`/average results can be overwritten by the actual calculation.
+A future process seam must be able to distinguish at least:
 
-In the candidate type model:
+1. beginning accepted state;
+2. post-management trial state;
+3. provisional potential-pass result;
+4. actual same-step result;
+5. explicitly previous-step neighbour state;
+6. same-step upstream average propagated in `Sqnu` order;
+7. immutable external-owner observation.
 
-- potential-pass intermediate results belong to trial scratch or explicitly labeled provisional trial values;
-- they cannot become committed `TransferEvent` records merely because a legacy routine writes result-shaped arrays;
-- physical event emission belongs to the actual admitted transfer-producing path;
-- diagnostic capture of the potential pass is allowed but remains nonphysical.
+This is the most important refinement produced by TS01. A generic `latest_state` read contract is not sufficient for source-equivalent migration.
 
-This is important for MassLedger. If potential and actual passes both entered the physical journal, the ledger would double count transformations that revision 53 treats as provisional then actual.
+Disposition: resolved at architecture-contract level, still unimplemented.
 
-## 6. Layer order is not a performance-only choice
+## 6. Potential and actual passes
 
-TS01 shows that generic transport and phosphorus processing traverse the hydrologically determined `Sqnu` order and can pass same-step average concentrations to the next layer. `Resp_miner` additionally uses previous-timestep neighbour concentrations in availability checks.
+Potential `Rates1`, `Transca`, `Resp_miner` and preliminary NH4 results precede aeration and the actual pass. They may be overwritten.
 
-Consequences for the candidate migration seams:
+The candidate architecture therefore keeps potential values in trial scratch or explicitly provisional trial fields. They do not emit committed physical transfers by default. Diagnostic observation is allowed but remains nonphysical.
 
-- a process seam may not promise arbitrary layer parallelism from the architecture alone;
-- `AcceptedState` versus `TrialState` read provenance must be expressible per field/process;
-- a solver that replaces previous-step neighbour values with same-step neighbour values changes temporal/numerical semantics;
-- a reordered or parallel layer algorithm requires NQ/B3 equivalence evidence, not only unit tests and conservation closure.
+Disposition: resolved architecturally. Any changed numerical formulation is NQ/B3 work.
 
-ARCHG01 therefore treats physical state ownership and execution scheduling as separate concerns. The ownership model is compatible with sequential execution, but it does not authorize reordering.
+## 7. Layer traversal and stale/current mixtures
 
-## 7. Crop uptake must remain one physical transfer
+TS01 confirms that generic transport and phosphorus traverse `Sqnu` in source-observable order, while `Resp_miner` contains explicit previous-step neighbour reads for availability calculations.
 
-TS01 confirms that soil-side crop uptake is already applied as a sink in transport, while `Upintg_*` later integrates the corresponding realized uptake into crop result state.
+The architecture does not authorize changing either behaviour. Parallel execution is allowed only if a future implementation proves equivalence under the applicable numerical/scientific/reference policy.
 
-The typed-transfer mapping must represent this as one physical nutrient transfer with two state effects inside the same accepted transaction:
+Disposition: source order/read generation now known; production optimization remains unadmitted.
 
-```text
-soil nutrient store -> crop nutrient store
-```
+## 8. Crop uptake
 
-For an external crop owner, the sink is still emitted once by ANIMO's trial and the external owner consumes the accepted result under the coupled commit barrier. `Upintg_*`-like plant-side bookkeeping may not be modeled as a second soil sink.
+The soil-side nutrient sink occurs in transport and plant-side `Upintg_*` later integrates realized uptake into crop state.
 
-## 8. Restart has a new explicit architecture hazard
+The typed-transfer model therefore represents one nutrient transfer from soil to crop. Plant-side integration is the sink's receiving-state effect, not a second soil removal.
 
-The provisional TS01 audit identifies two facts that strengthen ARCH02/ARCHG01's caution around legacy restart files.
+Disposition: resolved architecturally.
 
-First, `INITIAL.OUT` omits continuation context such as the management-reader cursor, reporting accumulators and complete coordinated external-owner state. Second, `Output_Init` is not fully read-only: it clamps negative `Rsamplpo_act` to zero before writing.
+## 9. Restart and serialization
 
-Therefore:
+TS01 confirms that final `Rs*` result fields are the relevant end generation, but `INITIAL.OUT` is not evidence for complete transaction/checkpoint equivalence.
 
-- canonical `RestartSnapshot` creation must remain read-only over accepted physical state;
-- `INITIAL.OUT` cannot be treated as the canonical checkpoint schema;
-- importing/exporting a legacy restart file needs a separate compatibility adapter/qualification path;
-- any clamp or other legacy serializer transformation must be explicit evidence, not a hidden checkpoint side effect;
-- split-run equivalence remains a reference/behavioural qualification problem.
+Important gaps include management/event cursor state, reporting continuation, external-owner synchronization, macropore continuation and other mode-dependent continuation variables. `Output_Init` also contains a state-changing phosphorus clamp before serialization.
 
-ARCHG01 deliberately does not add the legacy serializer side effect to the modern checkpoint contract.
+The canonical `RestartSnapshot` therefore remains read-only over accepted canonical state. A legacy restart adapter may reproduce serializer transformations only as explicit compatibility behaviour and only after qualification.
 
-## 9. Required TS01 answers before ARCHG01 can be revalidated
+Disposition: structure resolved, behavioural split-run equivalence requires reference evidence.
 
-ARCHG01 requests the following outputs from the completed temporal audit:
+## 10. Retry, rejection and topology transitions
 
-1. exact interval lifecycle and the semantic point at which a completed result may be considered accepted;
-2. per-process read generation: pre-event accepted, post-event current/trial, provisional result, actual result, previous-step neighbour, same-step upstream average;
-3. complete event endpoint and ordering rules, including crop/year transitions;
-4. whether any physical state mutation occurs after the candidate logical commit point but before the next interval begins;
-5. which provisional passes must never enter the committed transfer journal;
-6. exact temporal role of `Sqnu` order and any other source-observable iteration sequence;
-7. final-state and restart generation semantics, including `Output_Init` transformations;
-8. continuation-critical cursors or scheduling metadata not represented by the chemical state arrays;
-9. whether rejected/retried trials are a new ANIMO5 orchestration capability rather than a source behaviour to preserve;
-10. which source ordering facts are historical implementation details versus scientifically/numerically constrained behaviour requiring B3/NQ evidence to change.
+TS01 does not find a generic legacy trial rejection/rollback mechanism, a mid-step portable checkpoint, or a qualified runtime feature-topology transition policy.
 
-## 10. Revalidation rule
+These are future orchestration capabilities, not source behaviours that architecture may infer.
 
-When TS01 closes, ARCHG01 must be rechecked before canonical STATE/TIME admission.
+Disposition: not production-ready. Separate TIME/transition contracts are required.
 
-The recheck must classify every temporal dependency in `ARCHG01_CONFLICT_REGISTER.csv` as one of:
+## 11. Conflict-register closeout mapping
 
-- resolved without changing the candidate object model;
-- requires refinement of `StepContext` or process seam contracts;
-- requires a B3 expected-difference/admission record;
-- requires NQ numerical equivalence qualification;
-- requires reference/split-run evidence;
-- invalidates part of the current candidate architecture.
+The temporal conflicts are reclassified as follows:
 
-No TS01 closeout may be treated as an automatic production migration authorization.
+| Conflict | Post-TS01 disposition |
+|---|---|
+| delayed staging versus atomic commit | `REQUIRES_REFERENCE` |
+| same-step management visibility | `RESOLVED_ARCHITECTURAL` |
+| heterogeneous event endpoints | `RESOLVED_ARCHITECTURAL` with reference gate for any change |
+| potential versus actual pass | `RESOLVED_ARCHITECTURAL` with NQ/B3 gate for reformulation |
+| sequential `Sqnu` propagation | `NOT_PRODUCTION_READY` for reordering; source contract known |
+| previous-step neighbour reads | `RESOLVED_ARCHITECTURAL` as explicit read-generation requirement |
+| first-step asymmetry | `RESOLVED_ARCHITECTURAL` as separate initialization boundary |
+| restart cursor/report omissions | `REQUIRES_REFERENCE` |
+| runtime feature/topology transition | `NOT_PRODUCTION_READY` |
+
+No temporal finding invalidates the core candidate architecture.
+
+## 12. Final boundary
+
+TS01 is preparatory source-bound qualification, not B2 historical reference, B3 admission, canonical TIME implementation, or production migration authorization.
+
+ARCHG01 therefore remains:
+
+`QUALIFIED_CONSOLIDATED_CANDIDATE_ARCHITECTURE_PRODUCTION_IMPLEMENTATION_NOT_ADMITTED`

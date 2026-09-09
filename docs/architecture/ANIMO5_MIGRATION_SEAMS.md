@@ -2,9 +2,9 @@
 
 Work unit: `ANIMO-ARCHG01`
 
-Status: `CANDIDATE_MIGRATION_SEAMS_NOT_PRODUCTION_IMPLEMENTATION_PLAN`
+Status: `CANDIDATE_MIGRATION_SEAMS_POST_TS01_REVALIDATED_NOT_PRODUCTION_IMPLEMENTATION_PLAN`
 
-A migration seam is the smallest boundary at which legacy behaviour can later be replaced behind already-qualified state, transfer, configuration and exchange contracts. A seam is not permission to migrate the process now.
+A migration seam is the smallest boundary at which legacy behaviour can later be replaced behind qualified state, transfer, configuration, exchange and temporal-preservation contracts. A seam is not permission to migrate the process now.
 
 ## General seam contract
 
@@ -12,16 +12,19 @@ Every process seam must declare:
 
 - ANIMO-owned input state;
 - external-owner observations/forcing;
+- exact read generation for temporally sensitive inputs;
 - trial state it may mutate;
 - typed transfer events it may emit;
+- provisional versus actual outputs;
 - derived/scratch outputs;
-- required feature and configuration identities;
+- required feature/configuration identities;
+- event endpoint and ordering semantics where applicable;
+- `Sqnu` or other source-observable traversal dependencies where applicable;
 - B3 discrepancy/admission dependencies;
 - NQ comparison/capture requirements;
 - TQ coverage evidence;
-- TS01 ordering/accepted-versus-trial dependencies;
 - expected-difference policy;
-- rollback and restart relevance.
+- rollback/restart relevance.
 
 A seam must not accept a legacy routine merely because its argument list has been wrapped.
 
@@ -35,7 +38,9 @@ A seam must not accept a legacy routine merely because its argument list has bee
 
 **Migration boundary:** replace SWATRE/WATBAL/file-global access with one qualified immutable hydrology exchange adapter.
 
-**Open gates:** TS01 coupled interval semantics; concrete adapter qualification; restart synchronization; active macropore extension if used.
+**TS01 constraint:** hydrology records are consumed sequentially and source audit found no explicit per-record equality assertion between the hydrology timestamp and already advanced ANIMO interval time. A modern adapter must validate interval/time identity explicitly.
+
+**Open gates:** concrete adapter qualification, canonical coupled TIME/retry semantics, restart synchronization, active macropore extension if used.
 
 **Readiness:** candidate seam defined, production implementation not admitted.
 
@@ -47,9 +52,11 @@ A seam must not accept a legacy routine merely because its argument list has bee
 
 **Transfers:** sorption/desorption, nitrification, denitrification, crop uptake, deposition/addition, leaching/drainage/runoff, DOM/mineral exchange as qualified.
 
-**Migration boundary:** process routines receive typed state views and emit events into the trial journal.
+**Migration boundary:** process routines receive explicit state-generation views and emit events into the trial journal.
 
-**Open gates:** TCD-015 negative-concentration handling and TCD-016 dry-down continuation require B3 qualification; TS01 ordering is required; NQ applies to numerical behaviour.
+**TS01 constraints:** same-step management is visible before process rates; potential NH4 transport precedes aeration; actual NH4 transport precedes NO3 source construction; `Resp_miner` may read previous-step neighbour NH4; generic transport follows `Sqnu` order.
+
+**Open gates:** TCD-015 negative-concentration handling, TCD-016 dry-solute continuation, discrepancy-specific B3 qualification and NQ for changed numerical behaviour.
 
 **Readiness:** candidate seam coherent, not production-ready.
 
@@ -63,7 +70,9 @@ A seam must not accept a legacy routine merely because its argument list has bee
 
 **Migration boundary:** keep site identity explicit across initialization, management and runtime mutation.
 
-**Open gates:** TCD-014 initialization projection, TCD-019 nonlinear numerical policy, TCD-024 slow-site parameter indexing, TCD-029 multi-site management semantics. Class E work must remain separate from architecture.
+**TS01 constraints:** P transport, fast/slow sorption and precipitation/dissolution are coupled per layer through `Transgen/Transorp`; same-step average P can propagate in `Sqnu` order; previous-step neighbour P can be used by `Resp_miner` availability logic. No global reorderable all-transport/all-sorption split is source-equivalent by assumption.
+
+**Open gates:** TCD-014 initialization projection, TCD-019 nonlinear numerical policy, TCD-024 slow-site parameter indexing, TCD-029 multi-site management semantics, and `Output_Init` phosphorus clamp compatibility.
 
 **Readiness:** not production-ready.
 
@@ -77,9 +86,11 @@ A seam must not accept a legacy routine merely because its argument list has bee
 
 **Migration boundary:** one source-of-truth owner model with typed reaction bundles. Beginning and end storage use the same state projection.
 
-**Open gates:** GHG elemental-C reconciliation for any whole C ledger; discrepancy-specific B3 admissions. TCD-026 is accounting evidence, not automatic production correction.
+**TS01 constraints:** distinguish potential versus actual `Transca/Resp_miner`; potential results remain provisional; same-step residue/management mutation precedes later process calculations.
 
-**Readiness:** candidate seam defined, production correction/admission still separate.
+**Open gates:** GHG elemental-C reconciliation for whole C ledger and discrepancy-specific B3 admissions. TCD-026 remains accounting evidence, not automatic production correction.
+
+**Readiness:** candidate seam defined, production correction/admission separate.
 
 ## Crop
 
@@ -91,21 +102,25 @@ A seam must not accept a legacy routine merely because its argument list has bee
 
 **Migration boundary:** crop owner mode is fixed by normalized configuration and physical layout.
 
-**Open gates:** TS01 coupled acceptance/rollback; concrete external crop adapter qualification; B3 qualification for process-specific discrepancies; split-run restart evidence.
+**TS01 constraints:** crop demand/selectivity occurs before transport; soil-side uptake sink occurs inside transport; plant-side `Upintg_*` later integrates the same realized transfer. Annual harvest/root-residue uses `[t0,t1)` and crop identity can differ at `t0` and `t1`.
+
+**Open gates:** canonical coupled acceptance/rollback, concrete external crop adapter qualification, B3 qualification for process-specific discrepancies, split-run reference evidence.
 
 **Readiness:** architecture-ready, implementation not admitted.
 
 ## Management
 
-**State owner:** no persistent "management state" unless continuation evidence requires a scheduled-event cursor. Applied material becomes typed transfers into physical stores.
+**State owner:** no persistent generic management physical state. Continuation may require an event/schedule cursor in orchestration metadata.
 
-**Inputs:** immutable management-event frame bound by configuration and trial interval.
+**Inputs:** immutable management-event frame bound by configuration and interval.
 
 **Transfers:** additions, volatilization, redistribution/ploughing, harvest/grazing/export where the management contract owns the action.
 
 **Migration boundary:** parser/schedule representation is separated from physical event emission.
 
-**Open gates:** TS01 event ordering; P multi-site management semantics; B3 discrepancy classification; legacy parser compatibility.
+**TS01 constraints:** management packets use `(t0,t1]`; same-row material addition precedes ploughing; same-step applied material is visible to downstream chemistry; event cursor continuation matters for restart equivalence.
+
+**Open gates:** canonical TIME/event scheduler, P multi-site management semantics, B3 discrepancy classification, legacy parser compatibility, split-run reference evidence.
 
 **Readiness:** not production-ready.
 
@@ -119,6 +134,8 @@ A seam must not accept a legacy routine merely because its argument list has bee
 
 **Migration boundary:** keep quantity/species explicit so P transfers cannot consume N amounts.
 
+**TS01 constraints:** top-reservoir additions can be visible to same-interval `UBoundconc`; transport order and same-step propagation remain source-observable.
+
 **Open gates:** stable-DOM provenance/theory, TCD-023, dormant surface stable DOM unsupported status, B3 admission.
 
 **Readiness:** labile candidate seam coherent; stable-DOM production scope not admitted.
@@ -131,9 +148,9 @@ A seam must not accept a legacy routine merely because its argument list has bee
 
 **Transfers:** only after theory-to-ledger reaction/conversion contracts define how organic matter, mineral N and gas quantities reconcile.
 
-**Migration boundary:** no legacy GHG routine may be migrated merely by exposing its arrays.
+**TS01 constraint:** preliminary and final GHG calls occupy different points around potential/actual processing. Reachable source ordering is evidence, not sufficient scientific admission.
 
-**Open gates:** revision-53 theory/provenance, B3/scientific admission, compatible testcase lineage, TQ coverage, NQ where numerical choices matter.
+**Open gates:** revision-53 theory/provenance, B3 scientific admission, compatible testcase lineage, TQ coverage and NQ where numerical choices matter.
 
 **Readiness:** `NOT_PRODUCTION_READY`, theory-blocked.
 
@@ -147,10 +164,12 @@ A seam must not accept a legacy routine merely because its argument list has bee
 
 **Migration boundary:** full state plus transfer plus hydrology-exchange extension must be migrated as one qualified seam, not as an optional array tail.
 
-**Open gates:** TCD-025, no supplied active historical case, B3 feature admission, external hydrology contract extension, restart and ledger qualification.
+**TS01 constraint:** source temporal reconstruction covers reachable macropore branches but no supplied historical case naturally exercises active macropore behaviour; `Output_Init` macropore serialization is commented out.
+
+**Open gates:** TCD-025, active-path scientific/theory qualification, external hydrology contract extension, restart and ledger qualification, reference evidence.
 
 **Readiness:** `NOT_PRODUCTION_READY`.
 
 ## Sequencing boundary
 
-ARCHG01 recommends no production migration before the shared candidate architecture is admitted through the project serial gates. Future process work may prepare fixtures, adapters, unit-level kernels, state mappings and comparison harnesses behind these seams, but integration into a canonical ANIMO5 runtime remains blocked until the relevant B3, STATE, TS01/TIME, MASS and EX gates are satisfied.
+TS01 now reconstructs legacy source order, but that does not admit a production scheduler. Future work may prepare fixtures, adapters, typed state views, event producers and comparison harnesses behind these seams. Integration into a canonical ANIMO5 runtime remains blocked until relevant B3, STATE, TIME, MASS, EX, numerical and reference gates are satisfied.
