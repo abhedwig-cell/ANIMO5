@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/abhedwig-cell/ANIMO5/integration/animo-b3/B3_CHILD_ATOM_DISPOSITION_CARRIER_SCHEMA.json",
+  "title": "ANIMO5 B3 Canonical Child-Atom Disposition Carrier",
+  "description": "Additive adapter around B3Q01 dispositions. It preserves the top-level parent TCD as lineage while binding the actual atomic disposition target to a canonically routed child atom. Cross-file routing and embedded B3_DISPOSITION_SCHEMA validation are enforced by tools/b3q02/validate_b3q02.py.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "carrier_id",
+    "carrier_version",
+    "carrier_mode",
+    "parent_tcd_id",
+    "atom_id",
+    "qualification_class",
+    "canonical_routing",
+    "target_binding",
+    "route_state",
+    "b3_disposition",
+    "admission_effect",
+    "residual_blockers"
+  ],
+  "properties": {
+    "carrier_id": {"type": "string", "minLength": 1},
+    "carrier_version": {"type": "integer", "minimum": 1},
+    "carrier_mode": {"enum": ["READINESS_ONLY", "FORMAL_DISPOSITION"]},
+    "parent_tcd_id": {"type": "string", "pattern": "^TCD-[0-9]{3}$"},
+    "atom_id": {"type": "string", "pattern": "^TCD-[0-9]{3}-[A-F][0-9]+$"},
+    "qualification_class": {"enum": ["A", "B", "C", "D", "E", "F"]},
+    "canonical_routing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_unit", "status_ref", "atomization_ref", "parent_is_top_level_tcd", "atom_is_top_level_tcd"],
+      "properties": {
+        "work_unit": {"type": "string", "minLength": 1},
+        "status_ref": {"type": "string", "minLength": 1},
+        "atomization_ref": {"type": "string", "minLength": 1},
+        "parent_is_top_level_tcd": {"const": true},
+        "atom_is_top_level_tcd": {"const": false}
+      }
+    },
+    "target_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_kind", "parent_role", "atom_role", "embedded_tcd_ids_role", "new_top_level_tcd_reserved"],
+      "properties": {
+        "target_kind": {"const": "CANONICAL_CHILD_ATOM"},
+        "parent_role": {"const": "TOP_LEVEL_LINEAGE_PARENT_ONLY"},
+        "atom_role": {"const": "ATOMIC_DISPOSITION_TARGET"},
+        "embedded_tcd_ids_role": {"const": "LINEAGE_PARENT_IDS_NOT_DISPOSITION_TARGET"},
+        "new_top_level_tcd_reserved": {"const": false}
+      }
+    },
+    "route_state": {
+      "enum": [
+        "NO_ADMISSION_ROUTE_CURRENTLY_AVAILABLE",
+        "NORMAL_B2_AVAILABLE",
+        "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY"
+      ]
+    },
+    "b3_disposition": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "object"}
+      ]
+    },
+    "admission_effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["atom_admitted", "parent_admitted", "new_top_level_tcd_reserved", "canonical_register_append", "production_migration_admitted"],
+      "properties": {
+        "atom_admitted": {"type": "boolean"},
+        "parent_admitted": {"const": false},
+        "new_top_level_tcd_reserved": {"const": false},
+        "canonical_register_append": {"const": false},
+        "production_migration_admitted": {"const": false}
+      }
+    },
+    "residual_blockers": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"carrier_mode": {"const": "READINESS_ONLY"}}, "required": ["carrier_mode"]},
+      "then": {
+        "properties": {
+          "route_state": {"const": "NO_ADMISSION_ROUTE_CURRENTLY_AVAILABLE"},
+          "b3_disposition": {"type": "null"},
+          "admission_effect": {"properties": {"atom_admitted": {"const": false}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"carrier_mode": {"const": "FORMAL_DISPOSITION"}}, "required": ["carrier_mode"]},
+      "then": {
+        "properties": {
+          "route_state": {"enum": ["NORMAL_B2_AVAILABLE", "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY"]},
+          "b3_disposition": {"type": "object"}
+        }
+      }
+    }
+  ],
+  "x-cross-file-invariants": [
+    "atom_id must exist under parent_tcd_id in the cited canonical atomization artifact",
+    "the cited atom must not be a top-level TCD row and no new top-level TCD may be allocated",
+    "for FORMAL_DISPOSITION, b3_disposition must independently validate against B3_DISPOSITION_SCHEMA.json",
+    "for FORMAL_DISPOSITION, b3_disposition.tcd_ids must equal [parent_tcd_id] and are lineage only inside this carrier",
+    "for FORMAL_DISPOSITION, b3_disposition.atomicity must be ATOMIC and qualification_class/admission_route must match the carrier",
+    "for FORMAL_DISPOSITION, b3_disposition.admission_decision.decision_scope must equal CANONICAL_CHILD_ATOM:<atom_id>",
+    "for FORMAL_DISPOSITION, admission_effect.atom_admitted must equal b3_disposition.admission_decision.admitted",
+    "parent admission, canonical-register append, new TCD reservation and production migration are never implied by a child carrier"
+  ]
+}
