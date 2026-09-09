@@ -1,0 +1,161 @@
+{
+  "work_unit": "ANIMO-B3A04",
+  "title": "TCD-026 Fresh-Organic-Matter Initial Exudate Storage Ledger Admission Readiness",
+  "target_tcd": "TCD-026",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "atomicity": "ATOMIC_INITIAL_STORAGE_LEDGER_CLAIM",
+  "base": {
+    "branch": "work/animo-b3i01-canonical-register-append",
+    "head": "383c7a83e84a578969f92113280dc715b7bdddb4"
+  },
+  "frozen_B0": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "authorities": {
+    "canonical_TCD_register": {
+      "path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+      "classification": "CONFIRMED_LEGACY_INITIAL_STORAGE_LEDGER_OMISSION"
+    },
+    "PREP06": {
+      "branch": "work/animo-prep06-conserved-state-ledger",
+      "head": "9b1f1ea51c24fb82823290193651830dc61ea3c8",
+      "defect_doc": "docs/prep06/EXUDATE_INITIAL_STORAGE_LEDGER_DEFECT.md",
+      "defect_doc_blob": "bbb7cd88c2beaa758e786e14e234a975b361b387",
+      "machine_evidence": "integration/animo-prep/PREP06_EXUDATE_INITIAL_STORAGE_DEFECT.json",
+      "machine_evidence_blob": "0e60d8aaf526c0b0127da1143b68c9c8235e9fe3",
+      "state_inventory": "docs/prep06/CONSERVED_STATE_INVENTORY.csv",
+      "state_inventory_blob": "838f224fc67a72371437c6d5b6e75cd03f5c8d51"
+    },
+    "B3Q01": {
+      "branch": "work/animo-b3q01-scientific-admission-framework",
+      "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+      "framework_blob": "878ec3033eccf11ff278afa76bd6ddc9809fe769",
+      "classification": "A",
+      "current_disposition": "UNRESOLVED_NOT_ADMITTED"
+    },
+    "GOV02": {
+      "branch": "work/animo-gov02-evidence-dag-reconciliation",
+      "head": "db7add6f9561730bbf352aa7fd3f3968405cfaa3",
+      "B2_requirement_scope_blob": "7602faf85d425775b7d50c43596c5e13fa5a3421",
+      "PREP02R_closure_blob": "75ff02a4de10a395e7a61edf74b896893bba71bb"
+    },
+    "PREP02R_live": {
+      "branch": "work/animo-prep02r-historical-reference-recovery",
+      "head": "a2fda49871ee3c7104daf7e06cd8dffdac06b125",
+      "status_blob": "a6c94f3480e039a97a065cd4ad5612545e5c081a",
+      "status": "PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED",
+      "normal_B2_reference_available": false,
+      "historical_uncertainty_route_eligible": false,
+      "reference_qualified": false
+    },
+    "SYNQ01": {
+      "branch": "work/animo-synq01-independent-synthetic-oracles",
+      "head": "842f72300fd03ede0b9024537a7ee6126722a121",
+      "coverage_matrix_blob": "a57415535405e05294a487c4260f6e8caebde6a0",
+      "applicable_TCD026_oracle": null,
+      "use": "NO_APPLICABLE_INDEPENDENT_ORACLE_CURRENTLY_REGISTERED"
+    }
+  },
+  "physical_owner": {
+    "state_family": "C-EX",
+    "quantity": "root exudate organic matter",
+    "start_state": "Ex(Ln)",
+    "result_state": "Rsex(Ln)",
+    "unit": "kg/m2 OM",
+    "primary_mutator": "Addit + Resp_miner",
+    "accepted_boundary_commit": "Init: Ex=Rsex",
+    "restart_persistence": "Output_Init writes Rsex for restart",
+    "ledger_families": ["Bfom", "Bano via Nifrex", "Bapo via Pofrex"]
+  },
+  "ledger_asymmetry": {
+    "beginning_current": "Bfom(Inip_x,Ly) omits Ex(Ln)*P",
+    "beginning_candidate": "Bfom(Inip_x,Ly) = Bfom(Inip_x,Ly) + Ex(Ln)*P",
+    "ending_current": "Bfom(Finp_x,Ly) includes Rsex(Ln)*Z",
+    "organic_N_beginning_current": "includes Ex(Ln)*Nifrex*P",
+    "organic_P_beginning_current": "includes Ex(Ln)*Pofrex*P"
+  },
+  "conservation_identity": {
+    "accepted_boundary": "Ex_next(Ln)=Rsex_previous(Ln)",
+    "beginning_store": "existing_begin_terms + sum(Ex(Ln)*P)",
+    "ending_store": "existing_end_terms + sum(Rsex(Ln)*Z)",
+    "defect_signature": "when only initial Ex is introduced, legacy fresh-OM residual equals negative omitted beginning mass"
+  },
+  "causal_probe": {
+    "source": "PREP06",
+    "base_case": "RuurloGrass",
+    "only_input_change": "Ex(1)=1.0e-3 kg/m2",
+    "introduced_mass_kg_ha": 10.0,
+    "legacy_first_record_residual_kg_ha": -10.0,
+    "legacy_max_abs_period_residual_kg_ha": 10.0,
+    "ledger_only_probe_max_abs_period_residual_kg_ha": 6.55e-11,
+    "ledger_only_probe_max_abs_cumulative_residual_kg_ha": 9.09e-11,
+    "small_post_probe_residual_is_tolerance": false
+  },
+  "natural_activation": {
+    "supplied_B0_B1_initial_exudate_nonzero_case": false,
+    "all_supplied_orgexu_initial_values_zero": true,
+    "classification": "STRUCTURALLY_UNREACHABLE_ZERO_INITIAL_EX_IN_SUPPLIED_NATURAL_TESTBANK",
+    "synthetic_causal_activation_available": true,
+    "future_model_produced_restart_activation_executed_here": false
+  },
+  "non_interference": {
+    "physical_state": "PASS_FOR_READINESS",
+    "process_flux": "PASS_FOR_READINESS",
+    "total_physical_mass": "PASS_FOR_READINESS",
+    "basis": "PREP06 temporary Bfom-only diagnostic compared 72 outputs; six fresh-OM balance files changed and no unintended ordinary output changed",
+    "observed_changed_files": [
+      "ani_omGP.Bal",
+      "ani_omRP.Bal",
+      "ani_omTP.Bal",
+      "baomGP.Out",
+      "baomRP.Out",
+      "baomTP.Out"
+    ],
+    "unintended_changed_outputs": 0
+  },
+  "negative_controls": {
+    "zero_initial_Ex": "PASS_BY_EXACT_ZERO_TERM_AND_SUPPLIED_TESTBANK_STRUCTURE",
+    "Bano_unchanged": "REQUIRED_AND_SOURCE_SUPPORTED",
+    "Bapo_unchanged": "REQUIRED_AND_SOURCE_SUPPORTED",
+    "other_organic_stores_unchanged": "REQUIRED",
+    "ordinary_state_process_outputs_unchanged": "PASS_PREP06_DIAGNOSTIC"
+  },
+  "output_contract": "integration/animo-b3/TCD026_EXPECTED_DIFFERENCE.json",
+  "gates": {
+    "B0_identity": "PASS",
+    "canonical_scope": "PASS",
+    "atomicity": "PASS",
+    "physical_owner": "PASS",
+    "begin_end_storage_identity": "PASS",
+    "exact_omitted_ledger_term": "PASS",
+    "closed_conservation_identity": "PASS_FOR_ATOMIC_COMPONENT",
+    "causal_activation": "PASS_SYNTHETIC",
+    "natural_activation_or_structural_unreachability": "PASS_STRUCTURAL_UNREACHABILITY",
+    "physical_state_non_interference": "PASS_FOR_READINESS",
+    "process_flux_non_interference": "PASS_FOR_READINESS",
+    "total_physical_mass_non_interference": "PASS_FOR_READINESS",
+    "changed_output_whitelist": "PASS",
+    "negative_controls": "PASS_FOR_READINESS",
+    "no_tolerance": "PASS",
+    "valid_admission_route": "PENDING_BLOCKED",
+    "independent_second_line_review": "REQUEST_PREPARED_NOT_COMPLETED",
+    "corrected_legacy_admission": "NOT_ADMITTED",
+    "production_migration": "NOT_ADMITTED"
+  },
+  "hard_constraints": {
+    "physical_state_patch": false,
+    "initialization_physics_change": false,
+    "organic_matter_TCD_composition": false,
+    "numerical_tolerance_added": false,
+    "corrected_legacy_admission_performed": false,
+    "production_migration_performed": false
+  },
+  "readiness_decision": {
+    "narrow_claim_supported": true,
+    "qualified_for_admission_readiness": true,
+    "admitted": false,
+    "production_correction_authorized": false,
+    "status": "QUALIFIED_TCD026_CLASS_A_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING"
+  }
+}
