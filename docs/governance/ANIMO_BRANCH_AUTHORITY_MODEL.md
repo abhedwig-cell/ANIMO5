@@ -33,6 +33,8 @@ Authority is scoped. A branch can be authoritative for its own evidence or candi
 | PREP09 | `work/animo-prep09-element-transfer-and-slow-sorption` @ `e3c3b0dfa8daabe345c51be8c4f29f2731d65c47` | AUTHORITATIVE_FOR_IDENTIFIER | Qualified evidence and explicit base of active PREP10 PR #9 and its downstream B3 intake |
 | PREP10 | `work/animo-prep10-stable-dom-plough-accumulators` @ `65cd4a65a3ea27cd4ce004f505d5022fdb08b9ab` | AUTHORITATIVE_FOR_IDENTIFIER | PR #9 is the active review surface; later PREP10C and B3 intake explicitly use this lineage |
 | PREP10C | `work/animo-prep10c-stable-dom-event-reset-authoritative` @ `549545921dc8175f01d86c283647acd470c14290` | AUTHORITATIVE_REVIEW_SURFACE | PR #14 explicitly re-anchors PREP10C on authoritative PREP10 and supersedes older PREP10C histories |
+| PREP11 | no branch yet | RG02_RESERVED_NOT_STARTED | Reserved as the rehome target for `work/animo-prep09-option-contract-audit`; reservation prevents further PREP09 reuse |
+| PREP12 | no branch yet | RG02_RESERVED_NOT_STARTED | Reserved as the rehome target for `work/animo-prep10-restart-state-continuity`; reservation prevents further PREP10 reuse |
 | NQ01 | `work/animo-nq01-numerical-qualification-architecture` @ `e558dff12b127e0662cad62beea7527b42ad89ac` | AUTHORITATIVE | Active branch is 33 commits ahead of stale alias head `438a883...` and carries the latest persisted NQ01 qualification architecture |
 | TQ01 | `work/animo-tq01-testcase-qualification` @ `5c43ee16df37a0a1357614fdec527f25e5ca8c16` | AUTHORITATIVE | Primary branch and PR #15 are 10 commits strictly ahead of all shadow refs |
 | TH01 | `work/animo-th01-rev53-theory-provenance` @ `a3360415364ef4a66a81d7b6715bcd400829df1b` | AUTHORITATIVE | Qualified theory/provenance review surface, PR #13 |
@@ -46,29 +48,29 @@ Authority is scoped. A branch can be authoritative for its own evidence or candi
 | TS01 | `work/animo-ts01-temporal-semantics` @ `9a85f84aaf422dd1a590c6f42a250be15a142984` | AUTHORITATIVE_IN_PROGRESS | Own persisted source-bound status; based on PREP06 |
 | RG02 | `work/animo-rg02-branch-authority-integration` | AUTHORITATIVE_IN_PROGRESS | Dedicated branch created from exact RG01 closeout |
 
-`work/animo-archg01-candidate-architecture-consolidation` currently points exactly at the ARCH07 head and has no independent persisted ARCHG01 status at the observed snapshot. `work/animo-mp01-macropore-qualification` likewise points at the TH02 head. They are reservations, not authority established by name. They remain `UNRESOLVED_REQUIRES_RECONCILIATION` until they acquire an explicit contract/status or are deliberately retired.
+`work/animo-archg01-candidate-architecture-consolidation` pointed exactly at the ARCH07 head and had no independent persisted ARCHG01 status at the RG02 authority snapshot. `work/animo-mp01-macropore-qualification` likewise pointed at the TH02 head. They did not receive authority merely from their names. If later work adds explicit status on those refs, a later RG02 refresh may update their state without rewriting this historical decision basis.
 
 ## 3. Duplicate lineage dispositions
 
 ### PREP07
 
-`work/animo-prep07-transfer-edge-audit` and `work/animo-prep07-transfer-species-identity` diverge. Both contain substantive persisted evidence. The transfer-edge line is authoritative for the PREP07 identifier because it is the qualified ancestor consumed by the downstream PREP08/PREP09/PREP10 chain. The species-identity line is `SUPPLEMENTAL_EVIDENCE`. It must be transplanted as a separately identified evidence packet before any canonical consolidation. It must not be merged wholesale into PREP07.
+`work/animo-prep07-transfer-edge-audit` and `work/animo-prep07-transfer-species-identity` diverge. Both contain substantive persisted evidence. The transfer-edge line is authoritative for the PREP07 identifier because it is the qualified ancestor consumed by the downstream PREP08/PREP09/PREP10 chain. The species-identity line is `SUPPLEMENTAL_EVIDENCE`. Its unique paths are assigned supplemental packet `RG02-SUPP-P07-SPECIES-001`. It must not be merged wholesale into PREP07.
 
 ### PREP08
 
-`work/animo-prep08-causal-management-probes` is authoritative for PREP08. `work/animo-prep08-transfer-probes` is `SUPPLEMENTAL_EVIDENCE` because it contains unique diagnostic work on the transfer-edge lineage. `work/animo-prep08-restart-state-continuity` is only a reservation and is `SUPERSEDED_DO_NOT_MERGE`; the later option-audit closeout explicitly says restart/state continuity must receive a new work-unit number.
+`work/animo-prep08-causal-management-probes` is authoritative for PREP08. `work/animo-prep08-transfer-probes` is `SUPPLEMENTAL_EVIDENCE` because it contains unique diagnostic work on the transfer-edge lineage. Its unique evidence is assigned supplemental packet `RG02-SUPP-P08-TRANSFER-001`. `work/animo-prep08-restart-state-continuity` is only a reservation and is `SUPERSEDED_DO_NOT_MERGE`; the later option-audit closeout explicitly says restart/state continuity must receive a new work-unit number.
 
 ### PREP09
 
-The element-transfer/slow-sorption and option-contract branches diverge and both are qualified. The element-transfer branch is authoritative for PREP09 because the active PREP10 and B3 chain consumes it. The option-contract branch is `SUPPLEMENTAL_EVIDENCE_RENUMBER_REQUIRED`. Its parser-option audit is not discarded, but it may not overwrite the PREP09 status artifact or its local TCD numbering during consolidation.
+The element-transfer/slow-sorption and option-contract branches diverge and both are qualified. The element-transfer branch is authoritative for PREP09 because the active PREP10 and B3 chain consumes it. The option-contract branch is `SUPPLEMENTAL_EVIDENCE_REHOME_REQUIRED`. RG02 reserves `ANIMO-PREP11` as the new work-unit identity for that evidence. No PREP11 branch has been created yet. The old PREP09 status and local discrepancy register are excluded from transplant.
 
 ### PREP10
 
-The stable-DOM plough-accumulator branch is authoritative. The causal-activation branch is `SUPPLEMENTAL_EVIDENCE_ALREADY_RECONCILED`; PR #7 is closed and its evidence is explicitly pinned by the later PREP10 reconciliation artifact. The restart-state-continuity branch is `SUPPLEMENTAL_EVIDENCE_RENUMBER_AND_TCD_RECONCILE_REQUIRED`. It contains unique restart findings but reused PREP10 after the identifier had already acquired an authoritative stable-DOM lineage. It must not be merged as PREP10.
+The stable-DOM plough-accumulator branch is authoritative. The causal-activation branch is `SUPPLEMENTAL_EVIDENCE_ALREADY_RECONCILED`; PR #7 is closed and its evidence is explicitly pinned by the later PREP10 reconciliation artifact. The restart-state-continuity branch is `SUPPLEMENTAL_EVIDENCE_REHOME_REQUIRED`. RG02 reserves `ANIMO-PREP12` as the new work-unit identity. No PREP12 branch has been created yet. The old PREP10 contract, local `TCD-032/033/034` reservation file and divergent discrepancy register are excluded from transplant.
 
 ### PREP10C
 
-The re-anchored event-reset branch is authoritative for PREP10C review. The old candidate branch is `SUPERSEDED_DO_NOT_MERGE` after PR #11 was closed and replaced by PR #14. The reset-readiness branch is also `SUPERSEDED_DO_NOT_MERGE` as PREP10C. Its provisional `TCD-032` is not a canonical TCD ID.
+The re-anchored event-reset branch is authoritative for PREP10C review. The old candidate branch is `SUPERSEDED_DO_NOT_MERGE` after PR #11 was closed and replaced by PR #14. The reset-readiness branch is also `SUPERSEDED_DO_NOT_MERGE` as PREP10C. Its provisional `TCD-032` is not a canonical TCD ID and is explicitly redirected by the authoritative PREP10C reconciliation to the central `TCD-028` reservation for that candidate.
 
 ### NQ01
 
@@ -92,12 +94,20 @@ Primary, copy, PR and review refs point to the same commit. The primary branch i
 
 The last cross-stream canonical discrepancy register accepted by the B3 governance line is the B3Q01 snapshot through `TCD-027`. B3Q01 records the canonical register blob as `224acc350fde69d3c4aebed8628c0f945e0b3367` and the tail as `TCD-027`.
 
-Later PREP branches independently wrote local `TCD-028`, `TCD-029`, `TCD-030`, `TCD-031`, `TCD-032`, `TCD-033` and `TCD-034` labels. These labels collide across divergent branches and are not canonical merely because they are present in a CSV. PR #10 separately reserves canonical `TCD-028` for the stable-DOM B3 intake. Therefore:
+Later PREP branches independently wrote local `TCD-028`, `TCD-029`, `TCD-030`, `TCD-031`, `TCD-032`, `TCD-033` and `TCD-034` labels. RG02 has now reconciled the observed post-027 identities in `integration/animo-reg/ANIMO_LOCAL_TCD_RECONCILIATION.json` without allocating any new canonical number.
+
+Three collisions are explicit:
+
+- local `TCD-028` on the transfer lineage conflicts numerically with the central `TCD-028` reservation for stable-DOM event-reset;
+- local `TCD-030` denotes exudate-humus fraction sequencing on one lineage and aeration option-2 aliasing on another;
+- local `TCD-032` denotes the macropore restart writer omission on the reused PREP10 restart line, while a superseded PREP10C branch used the same local number for stable-DOM reset readiness.
+
+Therefore:
 
 - B3 governance owns canonical TCD allocation from `TCD-028` onward.
-- preparatory branches may retain their historical local labels as provenance only;
+- preparatory branches retain historical local labels as provenance only;
+- RG02 local reconciliation keys are used during evidence convergence until B3 assigns a canonical ID;
 - no post-027 preparatory label may be copied into the canonical register unchanged unless the B3 owner explicitly maps it;
-- a reconciliation record must preserve `source_branch`, `local_id`, `canonical_id_or_unassigned`, `finding_identity_hash_or_locator` and disposition;
 - silent CSV union is forbidden.
 
 ### B3 classification and disposition registers
@@ -110,7 +120,7 @@ EB01 owns the B0 to B4 semantics. RG01/RG02 own repository and integration gover
 
 ### Migration DAG and Status A/AA registers
 
-`docs/governance/MIGRATION_DAG.md` and `docs/quality/STATUS_A_AA_GAP_REGISTER.csv` predate several later branches. They are cross-cutting governance artifacts. From RG02 onward they must have one designated governance owner, proposed as the RG series, and changes from evidence, theory, numerical or architecture branches must arrive as reviewed proposals rather than direct parallel rewrites.
+`docs/governance/MIGRATION_DAG.md` and `docs/quality/STATUS_A_AA_GAP_REGISTER.csv` predate several later branches. They are cross-cutting governance artifacts. From RG02 onward they have one designated governance owner, the RG series, and changes from evidence, theory, numerical or architecture branches must arrive as reviewed proposals rather than direct parallel rewrites.
 
 ### Architecture contracts
 
@@ -128,10 +138,14 @@ ARCH01 through ARCH07 are authoritative candidate-design artifacts for their own
 8. Cross-stream canonical files use a single-owner proposal model. Parallel branches may carry proposed patches, but the owner branch performs the canonical mutation after reconciliation.
 9. Direct branch merges are prohibited when both sides mutate a canonical register or a same-path status artifact for the same work-unit identifier.
 10. Cherry-picks are allowed only when the selected commit has disjoint semantic ownership and does not import stale canonical-register state.
+11. A rehome target such as PREP11/PREP12 starts from a governance-approved canonical evidence base. It must not be created by simply renaming the divergent source branch.
+12. Rehome execution preserves source branch, head and blob provenance and follows the path-level include/exclude plan in `integration/animo-reg/ANIMO_SUPPLEMENTAL_EVIDENCE_TRANSPLANT_PLAN.json`.
 
 ## 6. Current gate
 
-RG02 resolves repository authority well enough to prevent accidental last-writer-wins integration, but it does not resolve the content identity of every local post-027 TCD or every duplicate PREP07 to PREP10 evidence packet. Canonical convergence is therefore blocked pending explicit consolidation.
+RG02 has resolved branch authority and the observed post-027 local discrepancy identities well enough to prevent accidental last-writer-wins integration. G1 is now `COMPLETE_FOR_OBSERVED_POST_027_PREPARATORY_LINEAGES`.
+
+Canonical convergence is still blocked because G2 has not executed the path-level evidence rehomes and G3 has not yet consolidated RG, EB and EG governance. PREP02R independently remains blocked on historical B2 acquisition.
 
 `scientific_baseline_changed=false`
 
