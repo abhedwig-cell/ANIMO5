@@ -1,0 +1,107 @@
+{
+  "schema": "ANIMO5_ARCH06_IDENTITY_TEST_VECTORS_V1",
+  "base_manifest": {
+    "model_configuration_schema_id": "ANIMO5_ARCH06_MANIFEST_V1",
+    "state_schema_id": "ANIMO5_STATE_CANDIDATE_V1",
+    "parameter_schema_id": "ANIMO5_PARAMETERS_CANDIDATE_V1",
+    "parameter_set_id": "parameters:example-core-A",
+    "geometry_schema_id": "ANIMO5_GEOMETRY_CANDIDATE_V1",
+    "geometry_id": "geometry:example-3-layer",
+    "feature_contract_schema_id": "ANIMO5_ARCH04_FEATURES_V1",
+    "hydrology_mode": "detailed",
+    "snow_enabled": false,
+    "surface_reservoir_enabled": true,
+    "stable_dom_enabled": false,
+    "crop_mode": "none",
+    "ghg_enabled": false,
+    "ghg_admission_id": null,
+    "macropore_enabled": false,
+    "macropore_admission_id": null,
+    "surface_stable_dom_enabled": false,
+    "fast_p_site_count": 1,
+    "slow_p_site_count": 1,
+    "layer_count": 3,
+    "organic_fraction_count": 2,
+    "hydrology_exchange_schema_id": "ANIMO5_ARCH05_HYDRO_V1",
+    "crop_exchange_schema_id": null,
+    "crop_state_schema_id": null,
+    "crop_external_schema_id": null,
+    "ghg_schema_id": null,
+    "macropore_schema_id": null,
+    "forcing_contract_schema_id": "ANIMO5_FORCING_CANDIDATE_V1",
+    "forcing_binding_id": "forcing:example-weather-A",
+    "management_contract_schema_id": "ANIMO5_MANAGEMENT_CANDIDATE_V1",
+    "management_binding_id": "management:example-A",
+    "numerical_policy_schema_id": "ANIMO5_NUMERICS_CANDIDATE_V1",
+    "numerical_policy_ref": "numerics:unqualified-example-A",
+    "precision_policy_ref": "precision:unqualified-example-A",
+    "diagnostics_mode": "basic",
+    "observer_schema_id": "ANIMO5_ARCH03_OBSERVER_V1",
+    "exchange_contract_schema_id": "ANIMO5_ARCH05_EXCHANGE_V1",
+    "transaction_schema_id": "ANIMO5_ARCH05_TRANSACTION_V1",
+    "hydrology_producer_contract_id": "hydrology-contract:example-v1",
+    "crop_producer_contract_id": null
+  },
+  "positive_cases": [
+    {
+      "case_id": "BASE",
+      "set": {},
+      "expected": {
+        "feature_set_id": "sha256:17907952f8269b5a927ad0b1778b0f9996daed6b25f3208f2b2c463906383770",
+        "physical_layout_id": "sha256:3baa46982fc431e1e088bc6d7d339e693f35fd3b2a6288ac0ce6ae74cfd084d3",
+        "exchange_binding_id": "sha256:16cbe5410ea28c3c802171c80806732eaa14ea24d62466b8e2f3edf5bb2fd753",
+        "configuration_identity": "sha256:fb62ae499a6661ce5473ab5bdc43adb3c6d98111b7abb8066c102cbeb8546d2c",
+        "observer_configuration_id": "sha256:45569ece9a95b07f0079f1f513d95e83d71b528cc656bbe0bd47f088053d64f9"
+      }
+    },
+    {
+      "case_id": "DIAGNOSTICS_ONLY_CHANGE",
+      "set": {
+        "diagnostics_mode": "detailed",
+        "observer_schema_id": "ANIMO5_ARCH03_OBSERVER_DETAILED_V1"
+      },
+      "expected": {
+        "feature_set_id": "sha256:17907952f8269b5a927ad0b1778b0f9996daed6b25f3208f2b2c463906383770",
+        "physical_layout_id": "sha256:3baa46982fc431e1e088bc6d7d339e693f35fd3b2a6288ac0ce6ae74cfd084d3",
+        "exchange_binding_id": "sha256:16cbe5410ea28c3c802171c80806732eaa14ea24d62466b8e2f3edf5bb2fd753",
+        "configuration_identity": "sha256:fb62ae499a6661ce5473ab5bdc43adb3c6d98111b7abb8066c102cbeb8546d2c",
+        "observer_configuration_id": "sha256:8311dd080e55e5547ee08d2367a704bba421f557e46157f0a92b016efcbf6ce6"
+      }
+    },
+    {
+      "case_id": "PARAMETER_SET_CHANGE",
+      "set": {"parameter_set_id": "parameters:example-core-B"},
+      "expected": {
+        "feature_set_id": "sha256:17907952f8269b5a927ad0b1778b0f9996daed6b25f3208f2b2c463906383770",
+        "physical_layout_id": "sha256:3baa46982fc431e1e088bc6d7d339e693f35fd3b2a6288ac0ce6ae74cfd084d3",
+        "exchange_binding_id": "sha256:16cbe5410ea28c3c802171c80806732eaa14ea24d62466b8e2f3edf5bb2fd753",
+        "configuration_identity": "sha256:e951f66aafc4dc8b9d9d2fd65a56b3d118dfca09aa4e77c76396e7ccc5f1f926",
+        "observer_configuration_id": "sha256:45569ece9a95b07f0079f1f513d95e83d71b528cc656bbe0bd47f088053d64f9"
+      }
+    },
+    {
+      "case_id": "EXTERNAL_CROP_OWNER",
+      "set": {
+        "crop_mode": "external",
+        "crop_exchange_schema_id": "ANIMO5_ARCH05_CROP_V1",
+        "crop_external_schema_id": "CROP_EXTERNAL_STATE_V1",
+        "crop_producer_contract_id": "crop-contract:example-v1"
+      },
+      "expected": {
+        "feature_set_id": "sha256:c1ddbb911bb27e1de7bf134643cd28e3016959f0c598885d637cb6a88863c8ac",
+        "physical_layout_id": "sha256:87e6cd26bb2f18179144c01a3b1015ec3f18ec9b1da2b25e98bc294ce343a890",
+        "exchange_binding_id": "sha256:92ab29e6e4389cd494d54a431128b0031976d31fb4864bde7857987ab5b6ed8e",
+        "configuration_identity": "sha256:ba105c153e8928098e0fc75244c9aa244d068d44fc115b2478756c550c3108c7",
+        "observer_configuration_id": "sha256:45569ece9a95b07f0079f1f513d95e83d71b528cc656bbe0bd47f088053d64f9"
+      }
+    }
+  ],
+  "negative_cases": [
+    {"case_id": "UNKNOWN_FIELD", "set": {"unknown_setting": true}},
+    {"case_id": "DORMANT_SURFACE_ENABLED", "set": {"surface_stable_dom_enabled": true}},
+    {"case_id": "MACROPORE_WITHOUT_ADMISSION", "set": {"macropore_enabled": true}},
+    {"case_id": "GHG_WITHOUT_ADMISSION", "set": {"ghg_enabled": true}},
+    {"case_id": "CROP_EXTERNAL_MISSING_CONTRACTS", "set": {"crop_mode": "external"}},
+    {"case_id": "DIAGNOSTICS_OFF_WITH_SCHEMA", "set": {"diagnostics_mode": "off"}}
+  ]
+}
