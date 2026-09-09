@@ -2,29 +2,35 @@
 
 This dependency map is not an authorization to start production migration.
 
-Canonical baseline semantics are defined in:
+Canonical B0-B4 baseline semantics remain defined by EB01 in `docs/governance/ANIMO5_EVIDENCE_BASELINE_MODEL.md`. ANIMO-GOV02 reconciles the cross-stream dependency interpretation without replacing EB01 ownership.
 
-`docs/governance/ANIMO5_EVIDENCE_BASELINE_MODEL.md`
-
-The earlier use of `B0` for a reproducible build is retired. `B0` now consistently means the immutable historical artifact baseline, matching the project's controlled B0 retention terminology.
+## Evidence DAG, not a universal ladder
 
 ```mermaid
 flowchart TD
     P1[Preparatory evidence and governance]
-    B0[B0 historical artifact baseline]
-    D0[Documentation and theory evidence]
-    B1[B1 reproducible diagnostic legacy observation]
+    B0[B0 pinned historical artifacts]
+    B1[B1 reproducible diagnostic execution]
     B2A[B2 historical reference acquisition]
     B2[B2 independent historical behavioural reference]
-    B2F[Historical reference not recoverable after documented effort]
-    TH[Theory code behaviour reconciliation]
-    DISP[Explicit discrepancy dispositions]
-    FBACK[Independent scientific admission with historical uncertainty]
-    B3[B3 qualified scientific legacy baseline by admitted process scope]
+    B2F[B2 unavailable after documented reasonable acquisition effort]
+
+    SRC[Source semantics]
+    THR[Authoritative theory]
+    CONS[Conservation identities]
+    ANA[Analytical oracles]
+    SYN[Synthetic causal tests]
+    META[Metamorphic oracles]
+    NUM[Independent numerical and high-precision oracles]
+    EMP[Empirical validation where applicable]
+
+    CLAIM[Atomic scoped B3 claim]
+    HU[Independent scientific admission with historical uncertainty]
+    B3[B3 process-level scientific disposition]
     STATE[Canonical state and data ownership]
     TIME[Generic time and transaction contract]
     MASS[Mass accounting contract]
-    EX[SWAP WOFOST exchange contracts]
+    EX[External exchange contracts]
     PROC[Process migrations on admitted contracts]
     INT[Integrated qualification]
     B4[B4 ANIMO5 canonical admission baseline]
@@ -32,19 +38,28 @@ flowchart TD
     AA[Status AA maturation]
 
     P1 --> B0
-    P1 --> D0
     B0 --> B1
     B0 --> B2A
-    D0 --> TH
-    B0 --> TH
-    B1 --> TH
     B2A --> B2
-    B2 --> TH
     B2A --> B2F
-    B2F --> FBACK
-    TH --> DISP
-    DISP --> B3
-    FBACK --> B3
+
+    B0 --> SRC
+    B1 --> CLAIM
+    SRC --> CLAIM
+    THR --> CLAIM
+    CONS --> CLAIM
+    ANA --> CLAIM
+    SYN --> CLAIM
+    META --> CLAIM
+    NUM --> CLAIM
+    EMP --> CLAIM
+    B2 --> CLAIM
+
+    B2F --> HU
+    CLAIM --> B3
+    CLAIM --> HU
+    HU --> B3
+
     B3 --> STATE
     STATE --> TIME
     TIME --> MASS
@@ -56,56 +71,88 @@ flowchart TD
     A --> AA
 ```
 
-## Meaning of the graph
+The historical-fidelity track remains:
 
-B0 establishes identity and provenance, not correctness.
+`B0 -> B1 -> B2`
 
-B1 provides reproducible diagnostic observation, not independent historical truth.
+This does not mean B1 becomes B2. B2 remains an independent historical reference.
 
-B2 provides independent historical behaviour where it can be recovered. B2 does not automatically establish scientific correctness.
+The scientific-qualification track can receive source semantics, authoritative theory, conservation identities, analytical oracles, synthetic causal tests, metamorphic tests, independent numerical/high-precision calculations and empirical validation where applicable. These sources do not become B2 merely because they are independent scientific oracles.
 
-B3 is constructed by explicit reconciliation and discrepancy disposition. It may be established incrementally by process scope, but a process cannot be migrated merely because a B1 diagnostic run exists.
+`historical oracle != scientific truth`
 
-B4 is the first admitted modern ANIMO5 canonical baseline within the qualified scope.
+`scientific oracle != proof of historical behaviour`
+
+## Claim-scoped B2 requirement
+
+Every B3 disposition must declare its claim type:
+
+- `HISTORICAL_FIDELITY_CLAIM`
+- `SCIENTIFIC_CORRECTION_CLAIM`
+- `REPRESENTATION_EQUIVALENCE_CLAIM`
+- `NUMERICAL_POLICY_CLAIM`
+- `PHYSICS_MODEL_CLAIM`
+
+B2 is mandatory for historical-fidelity claims and for representation-equivalence claims whose reference is historical behaviour. B2 is also mandatory when a historical output is used as the acceptance oracle or when compiler/runtime behaviour is claimed to match the historical Intel environment.
+
+A scientific correction claim can only proceed without B2 through `INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY`, after documented reasonable B2 acquisition has genuinely concluded without a usable reference. The evidence burden is not lower and historical behaviour remains unknown.
 
 ## Historical-reference fallback
 
-The fallback path from failed B2 acquisition to B3 is deliberately stricter than ordinary behavioural comparison.
+The fallback route is governed by:
 
-It is allowed only after a documented reasonable historical-reference acquisition effort and requires the evidence contract defined for `INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY`.
+- `docs/governance/HISTORICAL_UNCERTAINTY_ADMISSION_POLICY.md`;
+- `docs/governance/PREP02R_BOUNDED_ACQUISITION_CLOSURE.md`;
+- `docs/governance/B2_REQUIREMENT_SCOPE.md`.
 
-This fallback does not authorize poorly documented physics changes, arbitrary tolerances or broad numerical-policy changes.
+It requires independent scientific authority, B1 causality, predeclared expected difference, non-interference, path coverage, an independent cross-check and second-line review. It is not activated by difficulty in obtaining B2.
 
-## Parallel candidates before B3 production admission
+At the GOV02 snapshot PREP02R still records `external_request_sent=false`; therefore its policy state is `B2_ACQUISITION_STILL_ACTIVE`, and the historical-uncertainty route is not currently eligible.
 
-The following may proceed when ownership is disjoint:
+## Class boundaries
 
-- documentation inventory and revision reconciliation;
-- compiler and interface audit tooling;
-- testcase harness development;
-- B1 diagnostic execution and causal probes;
-- B2 historical reference recovery;
-- process and dataflow inventory;
-- conserved-state and transfer-ledger audit;
-- corrected-legacy qualification-case preparation without correction admission;
-- GHGMais provenance recovery;
-- Status A/AA gap analysis.
+- Class A may be scientifically qualifiable without B2 after the strict fallback gate when a closed identity plus physical state/flux non-interference independently bound the correction.
+- Class B may use unambiguous mathematical/species authority plus independent causal cross-checks and strong path coverage.
+- Class C cannot infer missing physical state from mass closure alone; independent state-model/theory authority is required.
+- Class D historical representation equivalence remains B2-dependent; B3-to-B4 representation equivalence may later use the admitted B3 process contract and must inherit its uncertainty.
+- Class E requires separate numerical formulation, convergence, precision/discretization and independent numerical review. Better residuals are insufficient.
+- Class F is model/physics evolution and requires separate scientific-model governance; B2 is not authority for new physics.
+
+## Parallel evidence preparation
+
+The project may prepare and qualify evidence components in parallel when ownership is disjoint, including B1 diagnostic probes, B2 acquisition, source/theory reconciliation, synthetic oracle development, testcase/path qualification, numerical studies and candidate architecture.
+
+Parallel evidence preparation does not imply an admission. A process migrates only after its exact B3 claim scope and all required cross-cutting contracts are admitted.
 
 ## Serial shared-semantic gates
 
-- B0 source identity before behavioural correction claims;
-- explicit B3 admission strategy for a process before production migration of that process;
+The following remain serial where they apply:
+
+- B0 identity before claims that depend on the historical artifact;
+- B2 before any historical-fidelity or historical-equivalence claim;
+- documented reasonable B2 acquisition closure before any historical-uncertainty route can be considered;
+- B3 admission for a process before production migration of that process;
 - canonical state ownership before broad process migration;
-- time and transaction semantics before coupled trial execution;
+- time/transaction semantics before coupled trial execution;
 - mass accounting before coupled qualification;
-- shared exchange interfaces before SWAP/WOFOST integration;
+- shared exchange interfaces before external coupling;
 - integrated qualification before B4 admission;
 - B4 before Status A claims for migrated production scope.
 
-The project may prepare B3 evidence while B2 acquisition is open. It may not relabel B1 as B2 or B3 to bypass the reference problem.
+## Uncertainty inheritance
 
-## RG02 ownership note
+A B3 item admitted without B2 must carry `historical_behaviour_status=UNKNOWN` and its historical-reference status into composition, regression statements, B4 migration records and release documentation. B4 cannot silently promote unknown history to historical equivalence.
 
-From ANIMO-RG02 onward this cross-stream migration DAG is owned by the RG governance series. Evidence, theory, numerical, B3 and architecture work units may propose changes, but parallel branches must not independently replace this file.
+If B2 is found later, historical fidelity is retested as a new claim and the original scientific disposition remains provenance-stable.
 
-The RG02 repository-convergence DAG is separately recorded in `docs/governance/ANIMO_CANONICAL_INTEGRATION_DAG.md`. Repository convergence does not bypass any scientific gate shown above.
+## RG ownership
+
+From ANIMO-RG02 onward this cross-stream migration DAG is owned by the RG governance series. GOV02 is an RG-scope evidence-governance reconciliation. Evidence, theory, numerical, B3 and architecture work units may propose changes, but parallel branches must not independently replace this file.
+
+Repository convergence remains separately documented in `docs/governance/ANIMO_CANONICAL_INTEGRATION_DAG.md`. Repository convergence does not bypass any scientific or historical-fidelity requirement.
+
+`B2_devalued=false`
+
+`synthetic_evidence_promoted_to_B2=false`
+
+`production_migration_admitted=false`
