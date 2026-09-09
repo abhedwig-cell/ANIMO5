@@ -73,14 +73,19 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
+    "tested": true,
     "qualified": true,
     "work_unit_complete": true
   },
   "validation": {
     "validator": "tools/b3i03/validate_b3i03.py",
     "workflow": ".github/workflows/animo-b3i03-massq02-intake.yml",
-    "github_actions_conclusion": "PENDING"
+    "tested_head_before_status_closeout": "69d4f4ade954ac13cee14fa0a9ab435919436cd9",
+    "github_actions_run_id": 34352962325,
+    "github_actions_head": "69d4f4ade954ac13cee14fa0a9ab435919436cd9",
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS",
+    "scope_guard": "PASS_GOVERNANCE_ONLY_NO_PRODUCTION_OR_CANONICAL_REGISTER_CHANGE"
   },
   "deliverables": [
     "docs/b3/POST_MASSQ02_INCREMENTAL_CAUSAL_INTAKE.md",
