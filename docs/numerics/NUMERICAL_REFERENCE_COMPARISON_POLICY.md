@@ -1,6 +1,6 @@
 # ANIMO-NQ01 Numerical Reference Comparison Policy
 
-Status: `QUALIFICATION_ARCHITECTURE_DRAFT_PERSISTED_NO_B2_EQUIVALENCE_CLAIM`.
+Status: `QUALIFIED_NUMERICAL_QUALIFICATION_ARCHITECTURE_AWAITING_INDEPENDENT_REFERENCE_DATA`.
 
 ## Purpose
 
@@ -50,7 +50,7 @@ The minimum scientific comparison classes are:
 | `CUMULATIVE_LEDGER` | unrounded, temporally aligned trajectory comparison | no threshold defined |
 | `NONLINEAR_SOLVER_STATE` | exact discrete path fields plus unrounded float fields | no threshold defined |
 | `DIAGNOSTIC_RESIDUAL` | diagnostic magnitude and sign comparison only | no threshold defined |
-| `FORMATTED_REPORT_VALUE` | lexical or parsed report comparison | never sole unrounded oracle |
+| `FORMATTED_REPORT_VALUE` | lexical or parsed report comparison | never sole unrounded oracle; differing report values fail closed pending classification |
 | `TIMING_OR_NONSCIENTIFIC_METADATA` | declared normalization allowed | not scientific acceptance |
 
 Two additional representation classes are defined:
@@ -74,6 +74,7 @@ Exact logical equality is required for:
 
 - option integers;
 - branch identifiers;
+- fallback identifiers when the same numerical path is claimed;
 - index mappings;
 - ledger membership and sign conventions;
 - event ordering when the compared contract claims the same control path.
@@ -88,11 +89,14 @@ For physical states, fluxes, ledgers, solver states and residuals:
 
 1. compare unrounded values when available;
 2. record exact source precision and capture encoding;
-3. report exact equality when it occurs;
-4. otherwise report the absolute and relative numerical difference as diagnostics only;
-5. classify the result as `UNQUALIFIED_NUMERICAL_DIFFERENCE` until a separate evidence-backed acceptance policy exists.
+3. require the capture to establish round-trip or exact binary reconstruction for a floating scientific value;
+4. report exact equality when it occurs;
+5. otherwise report the absolute and relative numerical difference as diagnostics only;
+6. classify the result as `UNQUALIFIED_NUMERICAL_DIFFERENCE` until a separate evidence-backed acceptance policy exists.
 
 No global relative or absolute tolerance exists in this policy.
+
+A capture declared `rounded_report_only = true` cannot supply `PHYSICAL_STORAGE_STATE`, transfer, ledger, nonlinear state or residual values as an unrounded scientific oracle. Such a capture can still provide formatted report evidence, but it cannot pass the structured unrounded comparison gate for those quantities.
 
 A future tolerance may only be admitted when its derivation is traceable to relevant evidence such as numerical convergence, analytical scale, measurement or discretization meaning, precision limits, or process-specific scientific sensitivity. It may not be reverse-engineered from the observed B1 to B2 mismatch.
 
@@ -104,12 +108,16 @@ The following parts are exact:
 
 - which stores are included;
 - which transfers are included;
+- ledger member identity;
 - sign convention;
 - species identity;
 - layer or compartment indices;
+- index mapping where one legacy array index represents a scientific member;
 - period reset semantics;
 - units and conversion factors;
 - initial-state inclusion policy.
+
+The capture schema therefore carries `ledger_member_id`, `ledger_sign` and `index_mapping_id` explicitly. A mismatch in these semantics is an accounting-identity failure even when the floating value itself happens to match.
 
 The numerical evaluation of the identity is floating-point work and must be captured unrounded. A nonzero closure residual is not accepted merely because it is below a historical warning floor.
 
@@ -171,7 +179,7 @@ Examples:
 - timestamps;
 - report column width.
 
-Formatting classification does not prove numerical equivalence if the report is rounded.
+Formatting classification does not prove numerical equivalence if the report is rounded. A differing `FORMATTED_REPORT_VALUE` is not automatically normalized or declared harmless by the structured comparator. It fails closed until the difference is shown to be lexical or another explicitly non-scientific representation issue. Only `TIMING_OR_NONSCIENTIFIC_METADATA` receives non-failing representation-only treatment by default.
 
 ### `binary_record_representation`
 
@@ -204,11 +212,13 @@ Differences in internal transfers or external boundary fluxes through time.
 
 ### `ledger_trajectory`
 
-Differences in cumulative or period balances, including reset behaviour.
+Differences in cumulative or period balances, including reset behaviour and exact ledger-member semantics.
 
 ### `control_flow_branch`
 
 Differences in option state, branch path, nonlinear iteration route, fallback path or event timing.
+
+The structured comparator compares captured `branch_id` and `fallback_id` even when the resulting floating quantity is numerically equal. Same-value agreement must not hide a different solver or constitutive route.
 
 ## Temporal comparison contract
 
@@ -235,6 +245,7 @@ Records are aligned by a composite scientific key containing at least:
 - species;
 - quantity name;
 - state, transfer or ledger identity;
+- cumulative versus instantaneous semantics;
 - accepted versus trial context.
 
 Missing or unexpected records fail closed. The comparator must never silently interpolate unmatched time points.
@@ -266,20 +277,29 @@ The capture schema is:
 
 `integration/animo-numerics/REFERENCE_CAPTURE_SCHEMA.json`
 
+Current schema version:
+
+`1.1.0`
+
 Observer instrumentation must remain observer-only and must first demonstrate that it reproduces the ordinary native output contract before its added quantities are trusted.
 
 ## Comparator decisions
 
-The structured comparator may emit the following result classes:
+The structured comparator can emit result classes including:
 
 - `EXACT_MATCH`;
-- `REPRESENTATION_ONLY_DIFFERENCE` when an explicitly declared non-scientific normalization fully explains the difference;
+- `REPRESENTATION_ONLY_DIFFERENCE` only for declared non-scientific metadata;
+- `FORMATTED_REPORT_DIFFERENCE_FAIL_CLOSED`;
 - `UNQUALIFIED_NUMERICAL_DIFFERENCE`;
 - `CONTROL_FLOW_DIFFERENCE`;
-- `MISSING_OR_UNEXPECTED_RECORD`;
+- `ACCOUNTING_IDENTITY_DIFFERENCE`;
+- `UNIT_MISMATCH`;
+- missing or unexpected record evidence;
 - `SCHEMA_OR_PROVENANCE_FAILURE`.
 
-Only the first two can be non-failing in NQ01, and `REPRESENTATION_ONLY_DIFFERENCE` is non-failing only for a declared non-scientific surface. A floating scientific difference remains failing because no tolerance is qualified here.
+Only exact matches and explicitly non-scientific representation-only differences can be non-failing in NQ01. A floating scientific difference remains failing because no tolerance is qualified here. A formatted report difference also fails closed because the comparator cannot infer from the text alone whether the cause is merely lexical or scientifically meaningful.
+
+An exact comparison against a `B2_HISTORICAL_REFERENCE_CANDIDATE` remains explicitly a candidate match and does not upgrade the artifact to a qualified B2 reference.
 
 ## Relationship to the existing formatted-tree comparator
 
@@ -313,7 +333,8 @@ The first comparison is ready to start immediately once PREP02R supplies a prove
 - B1 run uses the pinned diagnostic executable and same frozen testcase;
 - all compared output files have manifests;
 - structured unrounded observer capture is used only after its ordinary-output non-interference gate passes;
-- B1 and B2 capture files validate against the same schema;
+- B1 and B2 capture files validate against schema version `1.1.0`;
+- each floating scientific record is proven round-trip or exact-binary capture;
 - no tolerance file is supplied unless separately qualified;
 - initial, process, end-of-step, period and final checkpoints are represented where the variable class requires them;
 - comparator output is retained as evidence, not as automatic B2 or B3 admission.
