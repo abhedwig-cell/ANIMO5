@@ -1,0 +1,51 @@
+{
+  "work_unit": "ANIMO-RG02",
+  "gate": "G2",
+  "record_type": "PROVENANCE_PRESERVING_SUPPLEMENTAL_PACKET_MANIFEST",
+  "branch": "work/animo-rg02-g2-supplemental-evidence-transplant",
+  "transplant_commit": "ab31dd97155d62e25c6c998b55b04dae84916d4e",
+  "transplant_tree": "2460a4bec1510fd6ced5d13bd208777f9ec6ac1e",
+  "packets": [
+    {
+      "packet_id": "RG02-SUPP-P07-SPECIES-001",
+      "source_branch": "work/animo-prep07-transfer-species-identity",
+      "source_head": "aefdbbcbd7aaac121831cf2dd522a152260594d0",
+      "source_tree": "ecbec0cd25c8fe3bee4d6d4acaee6f7831ad9cd7",
+      "copy_mode": "EXACT_BLOB_REUSE_NO_CONTENT_REWRITE",
+      "files": [
+        ["docs/prep07/CROSS_SPECIES_IDENTITY_AUDIT.md", "be986dbb42289b09ad0f0fbdf08308b496a63122", "docs/supplemental/rg02/RG02-SUPP-P07-SPECIES-001/CROSS_SPECIES_IDENTITY_AUDIT.md"],
+        ["docs/prep07/POOL_SLOT_AND_TRANSPORT_BINDING_AUDIT.md", "225320b3f5f6417e204df7175c25e2dc9a4322dd", "docs/supplemental/rg02/RG02-SUPP-P07-SPECIES-001/POOL_SLOT_AND_TRANSPORT_BINDING_AUDIT.md"],
+        ["integration/animo-prep/PREP07_NAMED_TRANSPORT_SPECIES_AUDIT.json", "72e403d29d255a7aa5ce1e3007b7f4e768f121dd", "integration/animo-reg/supplemental/RG02-SUPP-P07-SPECIES-001/PREP07_NAMED_TRANSPORT_SPECIES_AUDIT.json"],
+        ["integration/animo-prep/PREP07_POOL_SLOT_IDENTITY_AUDIT.json", "643be52a5b0dacb464e3b0c665152eba58cba7cd", "integration/animo-reg/supplemental/RG02-SUPP-P07-SPECIES-001/PREP07_POOL_SLOT_IDENTITY_AUDIT.json"],
+        ["integration/animo-prep/PREP07_SPECIES_IDENTITY_AUDIT.json", "04edf52e70ae2ab0a4a0e40159f596667055c684", "integration/animo-reg/supplemental/RG02-SUPP-P07-SPECIES-001/PREP07_SPECIES_IDENTITY_AUDIT.json"],
+        ["tools/audit_named_transport_species.py", "c0ecc8083f67f1a2ba6034a53151ce790bcded6f", "supplemental/rg02/RG02-SUPP-P07-SPECIES-001/tools/audit_named_transport_species.py"],
+        ["tools/audit_pool_slot_identity.py", "9c74c61d9bdb56e127c275e347757407be5cb1bb", "supplemental/rg02/RG02-SUPP-P07-SPECIES-001/tools/audit_pool_slot_identity.py"],
+        ["tools/audit_species_identity.py", "a0eeab1db21ab7b8b17e60ae4a50fa4b6432e037", "supplemental/rg02/RG02-SUPP-P07-SPECIES-001/tools/audit_species_identity.py"],
+        ["tests/test_named_transport_species_audit.py", "66d9efe33bf738fc4f575289e47110d58d161f51", "supplemental/rg02/RG02-SUPP-P07-SPECIES-001/tests/test_named_transport_species_audit.py"],
+        ["tests/test_pool_slot_identity_audit.py", "af11d7889b1ccccca01038d604eb0ed589cb4076", "supplemental/rg02/RG02-SUPP-P07-SPECIES-001/tests/test_pool_slot_identity_audit.py"],
+        ["tests/test_species_identity_audit.py", "271194473fa191788581967935159a3f49be544f", "supplemental/rg02/RG02-SUPP-P07-SPECIES-001/tests/test_species_identity_audit.py"]
+      ],
+      "excluded": ["docs/prep07/WORK_UNIT_CONTRACT.md", "integration/animo-prep/ANIMO-PREP07_STATUS.json", "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"]
+    },
+    {
+      "packet_id": "RG02-SUPP-P08-TRANSFER-001",
+      "source_branch": "work/animo-prep08-transfer-probes",
+      "source_head": "340db9d91e71c906143efe877313149c5af36a24",
+      "source_tree": "2f6a8d6a5288ea0d29dc24101d2949b8d3c4a04f",
+      "copy_mode": "EXACT_BLOB_REUSE_NO_CONTENT_REWRITE",
+      "files": [
+        ["docs/prep08/TRANSFER_EDGE_DIAGNOSTIC_PROBES.md", "fc8b02659bf9aa08f8ba6e84cb8123286aa8eac7", "docs/supplemental/rg02/RG02-SUPP-P08-TRANSFER-001/TRANSFER_EDGE_DIAGNOSTIC_PROBES.md"],
+        ["integration/animo-prep/PREP08_TRANSFER_EDGE_PROBES.json", "82176353810bf72697544a0406003d7864b18bda", "integration/animo-reg/supplemental/RG02-SUPP-P08-TRANSFER-001/PREP08_TRANSFER_EDGE_PROBES.json"]
+      ],
+      "excluded": ["integration/animo-prep/ANIMO-PREP08_STATUS.json", "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"]
+    }
+  ],
+  "referenced_rehomes": {
+    "PREP11": {"branch": "work/animo-prep11-option-contract-rehome", "head": "20e77dd7617c68e56e9e7436c06d9df13d22bf5e"},
+    "PREP12": {"branch": "work/animo-prep12-restart-state-continuity-rehome", "head": "3d86de057247adcfeefb82c11d7cf7d5b2cbdf73"}
+  },
+  "canonical_register_modified": false,
+  "scientific_reinterpretation": false,
+  "scientific_requalification_claimed": false,
+  "production_migration_admitted": false
+}
