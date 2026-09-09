@@ -1,19 +1,121 @@
 {
   "work_unit": "ANIMO-B3A03R",
-  "target_tcd": "TCD-018",
+  "review_type": "GENUINELY_SEPARATE_CHATGPT_CONTEXT_SECOND_LINE",
+  "separate_chatgpt_context_from_B3A03_B3D05_authoring": true,
+  "organizational_or_human_independence_claimed": false,
+  "repository": "abhedwig-cell/ANIMO5",
   "review_branch": "review/animo-b3a03r-tcd018-independent-second-line",
-  "review_start_head": "8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
-  "candidate_readiness": "ANIMO-B3A03@8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
-  "technical_review": "ANIMO-B3A03R@0876e6e1b6ce33ee5e7b812ab4107f54760d6b27",
-  "formal_route_reconciliation": "ANIMO-B3D05@2f06cc86225637f8dadfdd969fe48dcf851b9ee2",
-  "review_status": "PENDING_INDEPENDENT_REVIEW",
-  "independent_from_correction_authoring": null,
-  "overall_result": "PENDING_INDEPENDENT_REVIEW",
-  "B3_admitted": false,
-  "production_patch": false,
-  "notes": [
-    "The same-context technical review is evidence input only and must not be counted as independent second line.",
-    "GOV03 opens the historical-uncertainty route but does not itself admit TCD-018.",
-    "Historical revision-53 behaviour remains UNKNOWN unless a qualified B2 is later recovered."
-  ]
+  "review_start_head": "3096c4dfa6a2cee72504445a71fc211842feb9cd",
+  "target_tcd": "TCD-018",
+  "classification": "A_ACCOUNTING_REPORTING_ONLY",
+  "overall_result": "FAIL_TCD018_INDEPENDENT_SECOND_LINE_READINESS_REVIEW",
+  "result_basis": "FAIL_CLOSED_UNRESOLVED_MANDATORY_GATES",
+  "atomic_claim": "Bawa_Ddev_corrected = Bawa_Ddev_legacy - sum((Sict-Sic)*1000) over the active reporting period/control volume, with no hydrology or state-promotion change",
+  "reviewed_heads": {
+    "ANIMO-B3A03": "8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+    "ANIMO-B3A03R_same_context_evidence_only": "0876e6e1b6ce33ee5e7b812ab4107f54760d6b27",
+    "ANIMO-B3D05": "2f06cc86225637f8dadfdd969fe48dcf851b9ee2",
+    "ANIMO-RG05B": "c353c3179f213c1bf24c48b3c06f8065c760d3e2",
+    "ANIMO-GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "ANIMO-PREP06": "9b1f1ea51c24fb82823290193651830dc61ea3c8",
+    "ANIMO-MASSQ01": "6ccddd631a8dcc21f06b1384baf2561e81179e75",
+    "ANIMO-SYNQ01": "842f72300fd03ede0b9024537a7ee6126722a121"
+  },
+  "frozen_B0": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "identity_gate": "PASS"
+  },
+  "evidence_refs": [
+    "reference/source/ANIMO_4.1.5.53.zip.sha256@3096c4dfa6a2cee72504445a71fc211842feb9cd",
+    "reference/testcases/ANIMO_testbank.zip.sha256@3096c4dfa6a2cee72504445a71fc211842feb9cd",
+    "integration/animo-prep/PREP06_SOURCE_REVERIFICATION.json@9b1f1ea51c24fb82823290193651830dc61ea3c8",
+    "docs/prep06/CONSERVED_STATE_INVENTORY.csv@9b1f1ea51c24fb82823290193651830dc61ea3c8",
+    "docs/prep01/WATER_INTERCEPTION_STORAGE_BALANCE_SEAM.md@8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+    "integration/animo-prep/PREP01_WATER_INTERCEPTION_STORAGE_SEAM.json@8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+    "integration/animo-prep/PREP01_BALANCE_RESIDUAL_RECONCILIATION.json@8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+    "integration/animo-synthetic/SYNTHETIC_ORACLE_REGISTER.json@842f72300fd03ede0b9024537a7ee6126722a121",
+    "integration/animo-mass/MASSLEDGER_RESIDUAL_REGISTER.csv@6ccddd631a8dcc21f06b1384baf2561e81179e75",
+    "integration/animo-b3/TCD018_ISOLATED_CLASS_A_NONINTERFERENCE.json@0876e6e1b6ce33ee5e7b812ab4107f54760d6b27",
+    "docs/b3/TCD018_INDEPENDENT_SECOND_LINE_HANDOFF.md@0876e6e1b6ce33ee5e7b812ab4107f54760d6b27",
+    "integration/animo-governance/ANIMO-GOV03_STATUS.json@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "integration/animo-b3/ANIMO-B3D05_STATUS.json@2f06cc86225637f8dadfdd969fe48dcf851b9ee2",
+    "integration/animo-reg/ANIMO-RG05B_STATUS.json@c353c3179f213c1bf24c48b3c06f8065c760d3e2"
+  ],
+  "gates": {
+    "1": "PASS",
+    "2": "PASS",
+    "3": "PASS",
+    "4": "PASS",
+    "5": "PASS",
+    "6": "PASS",
+    "7": "PASS",
+    "8": "UNRESOLVED_FULL_25_PERIOD_RECORD_NOT_PERSISTED",
+    "9": "PASS_ORACLE_ONLY_NOT_B2",
+    "10": "UNRESOLVED_ISOLATED_RUN_PROVENANCE_NOT_INDEPENDENTLY_REPLAYABLE",
+    "11": "UNRESOLVED_COUNTS_ONLY_AVAILABLE_IN_SAME_CONTEXT_SUMMARY",
+    "12": "PASS_EXACT_SIX_FILE_DECLARED_SURFACE",
+    "13": "UNRESOLVED_FOR_ISOLATED_RUN",
+    "14": "UNRESOLVED_FOR_ISOLATED_RUN",
+    "15": "UNRESOLVED_FOR_ISOLATED_RUN",
+    "16": "PASS_EVIDENCE_ONLY_NOT_TOLERANCE",
+    "17": "PASS_VISIBLE_UNEXPLAINED_RESIDUAL_OUTSIDE_TCD018",
+    "18": "PASS_NO_GLOBAL_WATER_CLOSURE_CLAIM",
+    "19": "PASS_HISTORICAL_REVISION53_BEHAVIOUR_UNKNOWN",
+    "20": "PASS_GOV03_B3D05_ROUTE_LIVE_NO_ADMISSION",
+    "21": "PASS_SAME_CONTEXT_TECHNICAL_REVIEW_NOT_PROMOTED"
+  },
+  "blocking_unresolved_gates": [8, 10, 11, 13, 14, 15],
+  "isolated_run_reported_not_independently_derived": {
+    "cases": 8,
+    "outputs_compared": 376,
+    "equal_after_declared_volatile_normalization": 370,
+    "whitelisted_differences": 6,
+    "unexpected_differences": 0,
+    "scientific_numeric_tolerance_applied": false,
+    "status": "REPORTED_BY_SAME_CONTEXT_EVIDENCE_NOT_PROMOTED_TO_INDEPENDENT_FACT"
+  },
+  "exact_declared_whitelist": [
+    "bawaGP.Out",
+    "bawaRP.Out",
+    "bawaTP.Out",
+    "ani_waGP.Bal",
+    "ani_waRP.Bal",
+    "ani_waTP.Bal"
+  ],
+  "residual_boundaries": {
+    "LWKM_approximately_0_0601_mm": "CAUSAL_EVIDENCE_NOT_TOLERANCE",
+    "MASSQ01_CranGrass_TITO724_mm": -0.0030198960466805147,
+    "MASSQ01_CranGrass_TITO724_class": "UNEXPLAINED_RESIDUAL",
+    "global_water_closure_claimed": false
+  },
+  "historical_route": {
+    "qualified_B2_exists": false,
+    "historical_revision53_behaviour": "UNKNOWN",
+    "GOV03_G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "TCD018_admitted": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "hydrology_physics_modified": false,
+    "hydrology_state_modified": false,
+    "hydrology_flux_modified": false,
+    "forcing_modified": false,
+    "state_promotion_modified": false,
+    "swap_swat_payload_modified": false,
+    "testcase_inputs_modified": false,
+    "canonical_tcd_register_modified": false,
+    "B4_admitted": false,
+    "production_migration_admitted": false,
+    "B3_admission_performed": false
+  },
+  "validation": {
+    "validator": "tools/validate_tcd018_independent_review.py",
+    "workflow": ".github/workflows/animo-tcd018-independent-review.yml",
+    "state": "PENDING",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "conclusion": null,
+    "scope_guard": "PENDING"
+  }
 }
