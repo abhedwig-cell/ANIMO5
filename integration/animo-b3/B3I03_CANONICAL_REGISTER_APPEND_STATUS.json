@@ -1,0 +1,47 @@
+{
+  "work_unit": "ANIMO-B3I03",
+  "followup": "CANONICAL_REGISTER_APPEND",
+  "status": "QUALIFIED_CANONICAL_REGISTER_APPEND_TCD042_NO_ADMISSIONS",
+  "decision": "QUALIFIED_CANONICAL_REGISTER_APPEND_TCD042_NO_ADMISSIONS",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i03-canonical-register-append",
+  "base_head": "6a015587807130b4ce12c9f1518c1ddac4e5d624",
+  "registered_ids": [
+    "TCD-042"
+  ],
+  "canonical_register": {
+    "path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "blob_before": "c057fdc5a9b2199dde07a19f0d70213cfaab235b",
+    "blob_after_append": "8b9a1b39286f74c9c9cac4fb9aea9fe2d498e9e1",
+    "tail_before": "TCD-041",
+    "tail_after": "TCD-042",
+    "append_only": true,
+    "preexisting_logical_rows_unchanged": true,
+    "contiguous_ids_tcd001_through_tcd042": true
+  },
+  "reservation_authority": {
+    "branch": "work/animo-b3i03-massq02-causal-intake",
+    "head": "6a015587807130b4ce12c9f1518c1ddac4e5d624",
+    "artifact": "integration/animo-b3/B3I03_TCD_RESERVATIONS.json",
+    "reserved_id": "TCD-042"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-b3i03-register-append.yml",
+    "workflow_run_id": 34353456153,
+    "workflow_trigger_head": "ddc73ccc894df5f866e09a515bd52a3f918f983c",
+    "validator_result": "PASS_GENERATION_AND_READBACK"
+  },
+  "invariants": {
+    "register_presence_is_not_b3_admission": true,
+    "new_corrections_admitted": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "production_code_modified": false,
+    "source_correction": false,
+    "evidence_strength_increased_by_append": false,
+    "tcd042_requires_atomization_before_admission": true
+  },
+  "tested": true,
+  "qualified": true,
+  "work_unit_complete": true
+}
