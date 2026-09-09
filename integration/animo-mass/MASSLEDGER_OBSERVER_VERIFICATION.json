@@ -1,0 +1,68 @@
+{
+  "work_unit": "ANIMO-MASSQ01",
+  "evidence_class": "B1_DIAGNOSTIC_OBSERVER_VERIFICATION_NOT_REFERENCE",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6f1cb9cc5b63568",
+  "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+  "analyzer_tests": {
+    "passed": 6,
+    "total": 6,
+    "checks": [
+      "water uses hydrological start snapshot",
+      "N/P/OM use process-start chemical snapshot",
+      "nonclosure is preserved without tolerance",
+      "missing chemical snapshot fails closed",
+      "soil-organic-C projection uses source Cfracom",
+      "invalid Cfracom fails closed"
+    ]
+  },
+  "transaction_boundary": {
+    "source_finding": "Init promotes Mofro only for layers 1:Nl while solute concentrations are promoted for layers 0:Nl",
+    "qualified_water_begin": "massq01_start.dat after Init before hydrology/process mutation",
+    "qualified_chemical_begin": "massq01_chem_start.dat after hydrology/crop preparation before Addit",
+    "rejected_post_init_layer0_artifacts": [
+      {"case":"GrassPeat","tito":1704,"apparent_n_kg_ha":-8.276164955692366,"predicted_layer0_coordinate_jump_kg_ha":-8.27616495572782},
+      {"case":"STONE_akk_0006.2001.2015","tito":1530,"apparent_n_kg_ha":-4.90885883878218,"predicted_layer0_coordinate_jump_kg_ha":-4.908858838774846},
+      {"case":"Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA","tito":473,"apparent_n_kg_ha":-2.3146104119950905,"predicted_layer0_coordinate_jump_kg_ha":-2.314610412007279}
+    ],
+    "canonical_tcd_allocated_for_rejected_artifacts": false
+  },
+  "natural_case_execution": {
+    "cases": 8,
+    "all_completed": true,
+    "case_names": ["CranGrass","CranMais","GrassPeat","LWKM_gras_1040.2021.2045","Puitmijn_Cranendonck_60","RuurloGrass","STONE_akk_0006.2001.2015","Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"],
+    "all_cfracom": 0.58,
+    "whole_system_carbon_claim": false
+  },
+  "known_tcd_reproduction": [
+    {"tcd":"TCD-014","case":"CranGrass","tito":1,"quantity":"P","observer_residual_kg_ha":-0.723582514679947},
+    {"tcd":"TCD-015","case":"LWKM_gras_1040.2021.2045","tito":2312,"quantity":"N","observer_residual_kg_ha":0.5787119019951206},
+    {"tcd":"TCD-019","case":"LWKM_gras_1040.2021.2045","interval":"whole observed run","quantity":"P","observer_cumulative_residual_kg_ha":-0.2725459891917126}
+  ],
+  "legacy_per_step_cross_checks": [
+    {"case":"GrassPeat","tito":5224,"quantity":"N","observer_kg_ha":0.29986345767974854,"legacy_whole_profile_kg_ha":0.2998634577478822,"classification":"UNEXPLAINED_RESIDUAL_WITH_TCD015_CANDIDATE_RELATION_NOT_PROMOTED"},
+    {"case":"STONE_akk_0006.2001.2015","tito":2382,"quantity":"N","observer_kg_ha":0.023667581954214256,"legacy_whole_profile_kg_ha":0.023667581953337291,"classification":"UNEXPLAINED_RESIDUAL_WITH_TCD015_CANDIDATE_RELATION_NOT_PROMOTED"},
+    {"case":"STONE_akk_0006.2001.2015","tito":10,"quantity":"P","observer_kg_ha":0.0024388999518123455,"legacy_whole_profile_kg_ha":0.0024388999542151574,"classification":"UNEXPLAINED_RESIDUAL"},
+    {"case":"Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA","tito":1,"quantity":"P","observer_kg_ha":-0.025991071459429804,"legacy_whole_profile_kg_ha":-0.025991071465794973,"classification":"UNEXPLAINED_RESIDUAL_WITH_TCD014_CANDIDATE_RELATION_NOT_PROMOTED"}
+  ],
+  "non_interference": {
+    "cases_compared": 8,
+    "physical_output_files_compared": 379,
+    "equal_raw": 279,
+    "equal_after_declared_volatile_normalization": 100,
+    "different": 0,
+    "missing_or_extra": 0,
+    "scientific_numeric_tolerance_applied": false,
+    "decision": "PASS_NO_PHYSICAL_OUTPUT_DIFFERENCE_AFTER_DECLARED_VOLATILE_NORMALIZATION"
+  },
+  "macropore": {"coverage":"MP02_SYNTHETIC_B1_ONLY","canonical_tcd":"TCD-025","natural_active_cases":0,"b2_reference":false},
+  "ghg": {"coverage":"INCOMPLETE","reason":"no compatible natural active-GHG revision-53 B1 case; source/task/restart and whole-ledger coupling gaps remain"},
+  "residual_tolerance_defined": false,
+  "legacy_balance_authoritative_storage": false,
+  "physical_state_mutation_by_observer": false,
+  "reference_qualified": false,
+  "mass_gate_admitted": false,
+  "b3_admitted": false,
+  "production_migration_admitted": false,
+  "decision": "QUALIFIED_MASSLEDGER_OBSERVER_PROJECTION_B1_NONREFERENCE_MASS_GATE_NOT_ADMITTED"
+}
