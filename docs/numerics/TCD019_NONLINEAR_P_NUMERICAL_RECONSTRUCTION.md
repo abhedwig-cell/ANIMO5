@@ -65,6 +65,8 @@ If Newton does not return, the routine enters a 50-iteration bisection-like scal
 
 ## Constitutive conservation seam
 
+### Fast Langmuir
+
 For a Langmuir site
 
 ```text
@@ -94,7 +96,66 @@ and derivative
 
 For an actual start store not exactly equal to `S(C0)`, the diagnostic exact-storage formulation retains that mismatch explicitly. A scientifically material off-relation initialization remains TCD-014 and must not be hidden in TCD-019.
 
-The fast Freundlich option contains an analogous small-delta tangent switch. NQ02 therefore treats this as a numerical-policy family, although the historical activation studied here is fast Langmuir.
+### Fast Freundlich
+
+The source contains the same policy structure for fast Freundlich sorption. With
+
+```text
+S(C) = k*C^n / Rhbd
+```
+
+where `k = Parcxfa(4,I)` and `n = Parcxfa(5,I)`, the small-delta branch replaces the finite storage change by the endpoint tangent
+
+```text
+S'(C) = k*n*C^(n-1) / Rhbd.
+```
+
+For positive `C0` and `C`, the exact on-relation finite secant is
+
+```text
+D(C,C0) = k/Rhbd * (C^n - C0^n)/(C-C0).
+```
+
+Writing
+
+```text
+r = (C-C0)/C0
+```
+
+gives the mathematically equivalent form
+
+```text
+D(C,C0)
+  = k/Rhbd * C0^(n-1)
+    * expm1(n*log1p(r))/r.
+```
+
+This form makes the cancellation problem explicit: the direct power difference is poorly conditioned as `r` approaches zero, while the exact secant itself has the finite limit
+
+```text
+lim D = k*n*C0^(n-1)/Rhbd.
+```
+
+The derivative required by Newton can be written as
+
+```text
+dD/dC = k/Rhbd * C0^(n-2) * q'(r)
+```
+
+with
+
+```text
+q(r)  = ((1+r)^n - 1)/r
+q'(r) = [n*r*(1+r)^(n-1) - ((1+r)^n - 1)]/r^2.
+```
+
+Near `r=0`, stable evaluation of `q` and `q'` requires either compensated special-function evaluation or a separately qualified series/evaluation policy. The mathematical constitutive identity is therefore clear, but an implementation-grade, compiler-portable fast-Freundlich evaluation policy has not been qualified here. Selecting a new numerical switch for that evaluation would itself require evidence and must not be hidden inside TCD-019 admission.
+
+The inspected supplied P-active natural cases use fast Langmuir rather than fast Freundlich. Fast-Freundlich solver integration therefore remains without natural-case coverage in the supplied testbank.
+
+### Linear fast sorption
+
+For the linear option, the storage coefficient is constant and exact. There is no corresponding nonlinear secant-versus-tangent ambiguity.
 
 ## Solver-independent diagnostic residuals
 
@@ -133,14 +194,26 @@ The executed matrix confirms the earlier PREP01 localization and sharpens it:
 
 The signed residual asymmetry was not materially activated in the primary LWKM experiment. It is a source risk, not part of the qualified causal claim.
 
+## Natural multi-case extension
+
+Five additional supplied natural cases with the same fast-Langmuir/slow-Freundlich option family were executed under frozen B0 hash control. All five reproduce negative legacy cumulative P drift. Exact storage plus refined nonlinear solution strongly reduces the post-initial-step residual across the set.
+
+The extension also changes the interpretation of fallback from a rare very-tight-LWKM edge to a normal process-path concern: the unchanged Puitmijn baseline uses 6 bisection fallbacks and the unchanged Zuiderzeeland baseline uses 2. Tightening `Small` increases fallback use and does not improve whole-run conservation monotonically in every case.
+
+CranGrass contains a large first-step residual that is almost unchanged by TCD-019 refinement. NQ02 preserves that term as a separate initialization/state-consistency signal rather than tuning the TCD-019 policy against it. The exact attribution of that term is outside this work unit.
+
+See `docs/numerics/TCD019_MULTICASE_NATURAL_COVERAGE.md` and `integration/animo-numerics/TCD019_MULTICASE_EXTENSION.json`.
+
 ## Numerical interpretation
 
 TCD-019 has two distinct numerical contributions:
 
 1. **formulation bias**: the small-delta tangent is not the exact finite conserved storage change. This dominates the systematic sign bias;
-2. **nonlinear acceptance error**: once the storage formulation is made exact, the legacy Newton stopping policy controls the remaining equation and conservation residual. Excessive tightening cannot be assessed independently of the fallback policy because bisection begins to activate.
+2. **nonlinear acceptance error**: once the storage formulation is made exact, the Newton and fallback acceptance policy controls the remaining equation and conservation residual.
 
 A threshold-free, cancellation-safe exact storage representation is therefore preferable to selecting a smaller arbitrary `|Delta C|` switch. A future solver policy must qualify Newton and fallback acceptance together.
+
+The multi-case evidence rules out a single universal argument of the form “tighten `Small` until the balance is small”. A smaller Newton residual can coincide with more fallback use and a larger whole-run absolute conservation residual.
 
 ## Boundary of this qualification
 
@@ -148,6 +221,8 @@ The route-level candidate is:
 
 `EXACT_CONSERVATIVE_CONSTITUTIVE_STORAGE_REPRESENTATION_PLUS_QUALIFIED_NONLINEAR_AND_FALLBACK_POLICY`.
 
-This is a `CONVERGENT_POLICY_CANDIDATE`, not an admitted change. NQ02 does not select `Small=1e-7`, `1e-8`, or any other production threshold. It does not define a global numerical tolerance. Multi-case natural coverage, independent B2 evidence where obtainable, independent numerical review and later B3 admission remain separate gates.
+This is a `CONVERGENT_POLICY_CANDIDATE`, not an admitted change. NQ02 does not select `Small=1e-7`, `1e-8`, or any other production threshold. It does not define a global numerical tolerance.
+
+Natural multi-case support now exists for the supplied fast-Langmuir family. Remaining technical gaps include implementation-grade fast-Freundlich evaluation policy, joint Newton/fallback production-policy qualification, independent B2 evidence where obtainable and independent numerical review. Later B3 admission remains a separate work unit.
 
 `TOLERANCE_NOT_YET_QUALIFIED`.
