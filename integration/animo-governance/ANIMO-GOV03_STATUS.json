@@ -1,0 +1,61 @@
+{
+  "work_unit": "ANIMO-GOV03",
+  "title": "Historical B2 Acquisition Closure & G6U Eligibility Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-gov03-historical-b2-acquisition-closure",
+  "base": {
+    "work_unit": "ANIMO-RG05",
+    "head": "f127528e148b9106149daec02d48ad972581e6df",
+    "decision": "QUALIFIED_POST_RG04_LATE_WAVE_AUTHORITY_REFRESH_ATOMIC_QUEUE_RESET_NO_ADMISSIONS"
+  },
+  "governance_authority": {
+    "GOV02": "db7add6f9561730bbf352aa7fd3f3968405cfaa3",
+    "PREP02R": "a2fda49871ee3c7104daf7e06cd8dffdac06b125",
+    "closure_contract": "docs/governance/PREP02R_BOUNDED_ACQUISITION_CLOSURE.md"
+  },
+  "state": "IN_PROGRESS_PERSISTED_ACQUISITION_EVIDENCE_CAPTURED_VALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "target_closure_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+  "target_G6U_state": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+  "evidence_record": "integration/animo-governance/GOV03_ACQUISITION_EVIDENCE.json",
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "hard_boundaries": {
+    "historical_B2_recovered": false,
+    "historical_equivalence_claimed": false,
+    "rebuild_is_B2": false,
+    "problematic_executable_is_B2": false,
+    "scientific_B3_admission_performed": false,
+    "corrected_legacy_admitted": false,
+    "canonical_state_admitted": false,
+    "canonical_time_admitted": false,
+    "canonical_mass_admitted": false,
+    "canonical_external_exchange_admitted": false,
+    "B4_admitted": false,
+    "production_migration_admitted": false,
+    "production_source_modified": false,
+    "canonical_tcd_register_modified": false
+  },
+  "qualification_claim": "GOV03 only qualifies bounded historical-reference acquisition closure and resulting G6U route eligibility. It does not qualify historical behaviour or admit any scientific correction.",
+  "validation": {
+    "validator": "tools/validate_gov03_acquisition_closure.py",
+    "workflow": ".github/workflows/animo-gov03-acquisition-closure.yml",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "deliverables": [
+    "integration/animo-governance/GOV03_ACQUISITION_EVIDENCE.json",
+    "integration/animo-governance/ANIMO-GOV03_STATUS.json",
+    "docs/governance/ANIMO_GOV03_HISTORICAL_B2_ACQUISITION_CLOSURE.md",
+    "tools/validate_gov03_acquisition_closure.py",
+    ".github/workflows/animo-gov03-acquisition-closure.yml"
+  ]
+}
