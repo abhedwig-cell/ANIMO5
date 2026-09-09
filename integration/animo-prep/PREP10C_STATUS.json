@@ -1,0 +1,47 @@
+{
+  "work_unit": "ANIMO-PREP10C",
+  "title": "Stable-DOM plough accumulator reset corrected-legacy readiness",
+  "branch": "work/animo-prep10c-stable-dom-reset-readiness",
+  "parent_branch": "work/animo-prep10-stable-dom-plough-accumulators",
+  "parent_sha": "5c927c2f9c218eb740080817203f4962034e5846",
+  "decision": "QUALIFIED_RESET_CANDIDATE_CONTRACT_CORRECTED_LEGACY_IMPLEMENTATION_BLOCKED_REFERENCE_REQUIRED",
+  "state_dimensions": {
+    "implemented": true,
+    "persisted": true,
+    "candidate_contract_defined": true,
+    "minimal_candidate_semantics_defined": true,
+    "diagnostic_counterfactual_already_causally_qualified_by_parent_prep10": true,
+    "historical_or_independently_admitted_reference_available": false,
+    "corrected_legacy_lineage_started": false,
+    "corrected_legacy_admitted": false,
+    "reference_output_admitted": false,
+    "production_migration_admitted": false
+  },
+  "candidate": {
+    "proposed_discrepancy_id": "TCD-032",
+    "target_member": "ANIMO_4.1.5.53/Addit.for",
+    "parent_member_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+    "diagnostic_counterfactual_member_sha256": "a1993aa2d22c8f2c13fc169e78f9121587c8f14a122ef7d3f757cc24a58a54ae",
+    "event_local_assignments": [
+      "SuStdiorma = 0.0",
+      "SuStdiorni = 0.0",
+      "If (Ipo.Eq.1) SuStdiorpo = 0.0"
+    ]
+  },
+  "qualified_parent_decision": "QUALIFIED_GNU_DIAGNOSTIC_CAUSAL_ACCUMULATOR_CARRYOVER_CONFIRMED_CONTROLLED_INPUT_DESCENDANTS_HISTORICAL_INTEL_OPEN",
+  "blocker": "HISTORICAL_OR_INDEPENDENTLY_ADMITTED_REFERENCE_CONTRACT_REQUIRED_BEFORE_CORRECTED_LEGACY_LINEAGE",
+  "why_blocked": "The project corrected-legacy governance requires affected frozen behavior to be qualified against a historical or independently admitted reference contract before a state-changing corrected-legacy lineage may begin. PREP10 closes current-GNU diagnostic causality but explicitly leaves historical Intel manifestation open.",
+  "artifacts": {
+    "work_unit_contract": "docs/prep10c/WORK_UNIT_CONTRACT.md",
+    "candidate_contract": "integration/animo-prep/PREP10C_STABLE_DOM_RESET_CANDIDATE.json",
+    "proposed_discrepancy_entry": "docs/prep10c/TCD_032_PROPOSED_ENTRY.md"
+  },
+  "non_admissions": [
+    "no B0 mutation",
+    "no raw corrected source published",
+    "no historical Intel behavior claim",
+    "no corrected-legacy source admission",
+    "no reference-output promotion",
+    "no ANIMO5 production migration admission"
+  ]
+}
