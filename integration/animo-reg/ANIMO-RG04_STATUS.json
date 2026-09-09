@@ -1,0 +1,123 @@
+{
+  "work_unit": "ANIMO-RG04",
+  "title": "Late-Wave State, Mass, Historical-Recovery & TCD-042 Gate Reconciliation",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-rg04-state-mass-b2-reconciliation",
+  "starting_parent": "820ba9a9bbc90aceb892ac9ac36ecf7fb782b136",
+  "state": "IN_PROGRESS_PERSISTED_BEFORE_VALIDATION",
+  "decision": "PENDING_VALIDATION",
+  "implemented": true,
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "work_unit_complete": false,
+  "scientific_admission_performed": false,
+  "b3_baseline_established": false,
+  "b4_baseline_admitted": false,
+  "canonical_state_admitted": false,
+  "canonical_time_admitted": false,
+  "canonical_mass_admitted": false,
+  "canonical_external_exchange_admitted": false,
+  "corrected_legacy_admitted": false,
+  "production_migration": "NOT_ADMITTED",
+  "legacy_source_modified": false,
+  "frozen_testcase_modified": false,
+  "production_code_modified": false,
+  "evidence_strength_increased_by_integration": false,
+  "authority_snapshot": {
+    "RG03": "820ba9a9bbc90aceb892ac9ac36ecf7fb782b136",
+    "PREP02R": "60f3c57a3299a1890b4cdd66befd5a120a306383",
+    "STATEQ02": "ada93a409aa054f9aebac32728e79f80468215a7",
+    "MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "B3I03": "6a015587807130b4ce12c9f1518c1ddac4e5d624",
+    "B3I03_REGISTER": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "B3B01": "b982242949aecab32b9067cf7910ad75abfc2b19",
+    "B3A02": "6e0f21b11d09cd9e0c804f83a209171403533473",
+    "B3A03": "8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+    "B3A03R": "0876e6e1b6ce33ee5e7b812ab4107f54760d6b27",
+    "B3A01": "b2bac82512fef0fa232e759f0c68b472567c11d5",
+    "UBQ01": "f3500990e7eaa1f5c02c6093186eb1ac369c5a42",
+    "canonical_tcd_register_tail": "TCD-042"
+  },
+  "frozen_identity": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
+  },
+  "supplied_native_artifacts": {
+    "animo41_exe_sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+    "animo41_vfproj_sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+    "animo41_sln_sha256": "206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2",
+    "classification": "MODERN_NATIVE_REBUILD_AND_STRONG_BUILD_CONTRACT_EVIDENCE_NOT_HISTORICAL_B2"
+  },
+  "gate_reconciliation": {
+    "G6H": "PARTIAL_RECOVERY_HISTORICAL_B2_NOT_PASSED",
+    "G6U": "NOT_ELIGIBLE_ACQUISITION_NOT_EXHAUSTED",
+    "G7": "NO_ATOMIC_SCIENTIFIC_ADMISSIONS_YET",
+    "GSTATE": "RESTRICTED_CORE_EXECUTABLE_SPLIT_RUN_QUALIFIED_ADMISSION_PENDING",
+    "GTIME": "CONCRETE_CANDIDATE_QUALIFIED_ADMISSION_BLOCKED",
+    "GMASS": "TYPED_EVENT_AND_RESIDUAL_CAUSALITY_QUALIFIED_ADMISSION_PENDING",
+    "GEX": "SYNTHETIC_CONTRACT_FIXTURE_QUALIFIED_REAL_ADAPTER_BLOCKED",
+    "GARCH": "QUALIFIED_CANDIDATE_ARCHITECTURE_REVALIDATED",
+    "B4": "NOT_ADMITTED",
+    "PRODUCTION": "NOT_ADMITTED"
+  },
+  "stateq02": {
+    "profile": "RESTRICTED_CORE_CNP_WITH_EXTERNAL_CROP_SURFACE_EXCLUDED",
+    "split_boundaries_qualified": [66, 67, 68, 71, 72],
+    "longest_exact_post_restore_horizon_records": 833,
+    "comparison_policy": "EXACT_BITWISE_NO_TOLERANCE",
+    "canonical_state_admission": "PENDING",
+    "whole_model_state_claim": false
+  },
+  "massq02": {
+    "nonzero_records_classified": 23,
+    "known_tcd": 6,
+    "reporting_semantic_difference": 2,
+    "new_causal_findings": 15,
+    "unexplained": 0,
+    "typed_event_projection": "QUALIFIED_CANDIDATE_NOT_CANONICAL_RUNTIME_JOURNAL",
+    "canonical_mass_admission": "PENDING"
+  },
+  "b3i03": {
+    "new_reservations": ["TCD-042"],
+    "canonical_register_append_performed": true,
+    "canonical_register_tail": "TCD-042",
+    "scientific_admission_performed": false
+  },
+  "b3_queue": {
+    "entries": 25,
+    "READY_FOR_ADMISSION_READINESS": 7,
+    "WAITING_ON_ROUTE_AND_REVIEW": 4,
+    "WAITING_ON_THEORY": 4,
+    "WAITING_ON_NUMERICS": 2,
+    "WAITING_ON_STATE": 5,
+    "WAITING_ON_RUNTIME": 2,
+    "WAITING_ON_ATOMIZATION": 1,
+    "NOT_READY": 0,
+    "scientific_admissions": 0
+  },
+  "validation": {
+    "validator": "tools/validate_rg04_governance.py",
+    "workflow": ".github/workflows/animo-rg04-governance.yml",
+    "github_actions_run_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING"
+  },
+  "deliverables": [
+    "docs/governance/ANIMO_RG04_PROJECT_REGIE.md",
+    "integration/animo-reg/RG04_WORKUNIT_AUTHORITY.csv",
+    "integration/animo-reg/RG04_GATE_MATRIX.csv",
+    "integration/animo-reg/RG04_B3_QUEUE.json",
+    "integration/animo-reg/ANIMO-RG04_STATUS.json",
+    "tools/validate_rg04_governance.py",
+    ".github/workflows/animo-rg04-governance.yml"
+  ],
+  "recommended_next": [
+    "Continue UBQ01 until TCD-042 is atomized or fails closed.",
+    "Execute the actual PREP02R archival acquisition action; the modern native rebuild is diagnostic only.",
+    "Obtain genuinely independent second-line review for TCD-015, TCD-017, TCD-018 and TCD-027 readiness packages.",
+    "Open remaining atomic readiness work for TCD-023, TCD-024, TCD-026, TCD-030, TCD-038, TCD-040 and TCD-041 as capacity allows.",
+    "Do not create any B3 admission, B4 baseline or production migration from RG04 itself."
+  ]
+}
