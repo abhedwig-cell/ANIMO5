@@ -160,7 +160,24 @@ GHG01 strengthens that design with two explicit sufficiency conditions:
 
 A portable ANIMO5 checkpoint does not need to serialize both `Cs` and `Co` merely to imitate the legacy file. It does need enough accepted thermodynamic and hydrological state to reconstruct the phase view uniquely and identically, including the active ponding compartment when present.
 
-## 8. Required qualification experiment
+## 8. PREP12 restart-evidence reconciliation
+
+The current restart evidence rehome is `work/animo-prep12-restart-state-continuity-rehome@3d86de057247adcfeefb82c11d7cf7d5b2cbdf73`.
+
+Its preserved `RESTART_STATE_CONTINUITY_BASELINE.md` explicitly says that CH4 and N2O have matching `>methan:` and `>nitoxi:` read/write surfaces but that this proves only source-level representation symmetry, not split-run qualification. Its `RESTART_STATE_INVENTORY.csv` classifies both GHG rows as `STRUCTURAL_SYMMETRY_GHG_REFERENCE_BLOCKED`.
+
+GHG01 does not contradict that baseline. It makes the previously unresolved semantics more precise. The GHG row crosses representations:
+
+- accepted runtime process view includes dissolved concentration `Co`;
+- final physical system state includes `RsCs` and dissolved `RsCo`;
+- restart serialization writes `RsCs` only;
+- restart reconstruction derives `Co` using `Terf` and omits layer-0 dissolved reconstruction.
+
+Therefore label-level read/write symmetry is insufficient to classify GHG continuation state as restart-complete. The PREP12 GHG rows should remain reference-blocked and, when that evidence line is next reconciled, should consume the two GHG01 local findings rather than creating competing restart identifiers.
+
+This is an evidence handoff only. GHG01 does not modify or requalify PREP12.
+
+## 9. Required qualification experiment
 
 A future revision-53-compatible activated GHG case should test a split-run continuation against an uninterrupted run at an accepted checkpoint where:
 
@@ -172,7 +189,7 @@ A future revision-53-compatible activated GHG case should test a split-run conti
 
 A synthetic case can establish causal restart sensitivity, but cannot become B0 or B2 historical reference evidence.
 
-## 9. Qualification consequence
+## 10. Qualification consequence
 
 Revision-53 `INITIAL.OUT` is sufficient to carry total CH4-C and N2O-N system concentration textually, but GHG01 cannot qualify it as a behaviourally sufficient GHG restart representation.
 
