@@ -59,6 +59,7 @@ def write_capture(
                 "run": run,
                 "exit_status": 0,
                 "input_content_transformed": False,
+                "pre_case_file_count": len(pin["files"]),
                 "pre_case_content_set_sha256": pin[
                     "case_file_content_set_sha256"
                 ],
@@ -70,10 +71,24 @@ def write_capture(
                 ),
                 "deleted_case_files": deleted,
                 "deleted_content_set_sha256": validator.content_set_sha256(deleted),
+                "stdout_size": (run_root / "stdout.txt").stat().st_size,
                 "stdout_sha256": validator.sha256_file(run_root / "stdout.txt"),
+                "stderr_size": (run_root / "stderr.txt").stat().st_size,
                 "stderr_sha256": validator.sha256_file(run_root / "stderr.txt"),
             }
         )
+
+    raw_repeat_exact = (
+        run_records[0]["post_case_content_set_sha256"]
+        == run_records[1]["post_case_content_set_sha256"]
+        and run_records[0]["stdout_sha256"] == run_records[1]["stdout_sha256"]
+        and run_records[0]["stderr_sha256"] == run_records[1]["stderr_sha256"]
+    )
+    harness_repeat = (
+        "NATIVE_REPEAT_EXACT_RAW"
+        if raw_repeat_exact
+        else "NATIVE_REPEAT_DIFFERENT_REQUIRES_DECLARED_VOLATILE_CLASSIFICATION"
+    )
 
     manifest = {
         "schema": validator.SCHEMA,
@@ -81,9 +96,11 @@ def write_capture(
         "work_unit": "ANIMO-PREP02R",
         "case": "RuurloGrass",
         "executable": {
+            "filename": "animo41.exe",
             "sha256": validator.EXPECTED_EXE_SHA256,
             "classification": "MODERN_NATIVE_REBUILD_NOT_HISTORICAL_REFERENCE",
             "bytes_in_transfer_bundle": False,
+            "native_execution_attempt_admitted": True,
             "historical_reference_admitted": False,
         },
         "input": {
@@ -93,7 +110,13 @@ def write_capture(
             "input_content_transformed": False,
         },
         "runs": run_records,
-        "repeat_determinism": {"classification": "NATIVE_REPEAT_EXACT_RAW"},
+        "repeat_determinism": {"classification": harness_repeat},
+        "reference_admission": {
+            "historical_reference_environment_qualified": False,
+            "normal_B2_reference_available": False,
+            "decision": "NOT_A_REFERENCE_ADMISSION_ACTION",
+        },
+        "production_migration_admitted": False,
     }
     (root / validator.MANIFEST_NAME).write_text(
         json.dumps(manifest), encoding="utf-8"
@@ -174,6 +197,27 @@ class TestPrep02RNativeCaptureValidator(unittest.TestCase):
             self.assertEqual(report["capture_integrity"], "FAIL")
             self.assertTrue(
                 any("forbidden executable" in error for error in report["errors"])
+            )
+
+    def test_false_raw_repeat_declaration_fails_integrity(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_capture(
+                root,
+                self.pin,
+                output_by_run=(b"value 1\n", b"value 2\n"),
+            )
+            manifest_path = root / validator.MANIFEST_NAME
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest["repeat_determinism"]["classification"] = (
+                "NATIVE_REPEAT_EXACT_RAW"
+            )
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+            report = validator.validate_capture(root, self.pin, self.comparator)
+            self.assertEqual(report["capture_integrity"], "FAIL")
+            self.assertTrue(
+                any("repeat classification inconsistent" in error for error in report["errors"])
             )
 
 
