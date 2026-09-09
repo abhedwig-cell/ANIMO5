@@ -8,10 +8,11 @@
   "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
   "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
   "evidence_model": "B0-B4_CANONICAL",
-  "implemented": false,
+  "implemented": true,
   "persisted": true,
-  "tested": false,
-  "qualified": false,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "B0 member identity, revision-53 parser/source option compatibility, natural B1 route coverage, diagnostic reachability boundaries, GHGMais lineage assessment, synthetic evidence policy and ordered coverage gaps",
   "historical_reference_qualified": false,
   "production_migration": "NOT_ADMITTED",
   "supplied_case_count": 9,
@@ -19,13 +20,49 @@
   "known_lineage_exception": "GHGMais",
   "prep02r_live_head_checked": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
   "prep02r_reference_state": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
-  "decision": "IN_PROGRESS_CHECKPOINT_PERSISTED_BEFORE_TESTING",
-  "next": [
-    "reverify member identities and per-case steering contracts from frozen B0 bytes",
-    "map configured options to revision-53 source predicates",
-    "separate configured/present/reached/mutated/output-only evidence",
-    "write GHGMais lineage dossier",
-    "write process and option coverage matrices",
-    "write synthetic evidence policy and ordered gap register"
-  ]
+  "verification": {
+    "artifact": "integration/animo-testing/ANIMO-TQ01_VERIFICATION.json",
+    "checks_passed": 9,
+    "checks_total": 9,
+    "result": "PASS",
+    "natural_plough_events_observed": 31,
+    "natural_macropore_active_cases": 0,
+    "natural_ghg_active_cases": 1,
+    "ghg_active_case_revision53_compatible": false,
+    "natural_p_active_cases": 6,
+    "p_active_fast_sorption": "Langmuir Optcxfa=2 Ncxfa=1",
+    "p_active_slow_sorption": "Freundlich Optcxsl=3 Ncxsl=3",
+    "natural_slow_langmuir_cases": 0
+  },
+  "deliverables": {
+    "contract": "docs/testing/ANIMO_TQ01_WORK_UNIT_CONTRACT.md",
+    "lineage": "docs/testing/ANIMO_TESTCASE_LINEAGE.md",
+    "member_hashes": "docs/testing/TESTCASE_MEMBER_HASHES.csv",
+    "process_matrix": "docs/testing/PROCESS_COVERAGE_MATRIX.csv",
+    "option_matrix": "docs/testing/OPTION_COVERAGE_MATRIX.csv",
+    "synthetic_policy": "docs/testing/SYNTHETIC_CASE_EVIDENCE_POLICY.md",
+    "ghgmais": "docs/testing/GHGMAIS_LINEAGE_ASSESSMENT.md",
+    "verification": "integration/animo-testing/ANIMO-TQ01_VERIFICATION.json",
+    "status": "integration/animo-testing/ANIMO-TQ01_STATUS.json"
+  },
+  "ordered_gaps": [
+    "NATURAL_CASE_LINEAGE_UNCERTAIN: GHGMais is the only supplied GHG-active case and cannot be attributed to revision 53 behaviour",
+    "NO_NATURAL_B0_COVERAGE: macropores, slow Langmuir, slow linear sorption, aggregated Iwa=1 hydrology, SoilTempFile=1 and multiple parser-admitted option values",
+    "ACTIVE_ONLY_UNDER_SYNTHETIC_PROBE: several causal defect and index/bounds findings",
+    "OPTION_PRESENT_BUT_UNEXERCISED: nonzero mutation is not proven merely by successful completion or output presence",
+    "REFERENCE_OUTPUT_MISSING: no independently trusted executable-linked B2 outputs supplied",
+    "REFERENCE_SPLIT_RUN_MISSING: restart behaviour lacks independent continuous-versus-split qualification",
+    "LINEAGE_COMPATIBLE_NOT_PROVEN: eight successful cases are revision-53 parser-compatible but their exact originating source revision is not proven"
+  ],
+  "non_admissions": [
+    "no frozen testcase modified",
+    "no historical case repaired for coverage",
+    "no compatibility transform promoted to B0",
+    "no synthetic case classified as historical reference",
+    "no numerical tolerance established",
+    "no B2 historical reference admitted",
+    "no B3 scientific legacy baseline admitted by this workunit",
+    "no B4 or production migration admission"
+  ],
+  "decision": "QUALIFIED_TESTCASE_LINEAGE_AND_PROCESS_COVERAGE_PREPARATORY_EVIDENCE"
 }
