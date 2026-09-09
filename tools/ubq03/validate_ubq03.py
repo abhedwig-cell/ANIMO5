@@ -74,7 +74,7 @@ def main() -> None:
     require(cd["new_top_level_tcd_reserved"] is False and cd["tcd_043_reserved"] is False, "new TCD allocated")
     require(cd["scientific_admission"] is False and cd["production_change"] is False, "UBQ03 performed forbidden admission/change")
 
-    require("legacy fallback itself is not the source of a division" in d, "document lacks E1/B1 distinction")
+    require("fallback itself is not the source of a division" in d, "document lacks E1/B1 distinction")
     require("does not prove that every possible `Hetop=0` execution fails" in d, "document lacks conditional-runtime claim boundary")
 
     require(s["work_unit"] == "ANIMO-UBQ03", "wrong status owner")
