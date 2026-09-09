@@ -1,0 +1,61 @@
+{
+  "work_unit": "ANIMO-ARCH05",
+  "test_id": "ARCH05-EXTERNAL-EXCHANGE-STRUCTURAL-CONSISTENCY",
+  "date": "2026-09-09",
+  "result": "PASS",
+  "method": "tools/audit_arch05_exchange_contracts.py executed in GitHub Actions from a repository checkout",
+  "github_actions": {
+    "run_id": 34305238925,
+    "job_id": 102320447137,
+    "tested_head": "e7ee2f63ab999bfc4d9416552bba19f5625cfebe",
+    "conclusion": "success",
+    "checkout_step": "success",
+    "audit_step": "success"
+  },
+  "registry_blobs": {
+    "exchange_domains": "d357a8bd3bef8537fff57bfc05b215f554568286",
+    "exchange_fields": "f2c0e975cdbeca09a98ec6abb2d03c4bebfb207a",
+    "transaction_rules": "42776d20e91e8ef45371f2523f19cf70001ee255",
+    "compatibility_schema": "3ea2852f8ac186d4eed7fc3d42f717f3d21bdf04"
+  },
+  "counts": {
+    "exchange_domains": 3,
+    "exchange_fields": 42,
+    "transaction_rules": 18,
+    "compatibility_fields": 31
+  },
+  "checks": {
+    "exchange_domain_ids_unique_and_exact": true,
+    "exchange_field_ids_unique": true,
+    "transaction_rule_ids_unique_and_exact": true,
+    "compatibility_field_ids_unique": true,
+    "required_hydrology_state_and_transfer_fields_present": true,
+    "detailed_interception_and_ponding_coordinates_present": true,
+    "required_external_crop_fields_present": true,
+    "realized_crop_uptake_is_animo_to_external_owner_trial_result": true,
+    "all_hydrology_fields_remain_external_owner": true,
+    "all_external_crop_input_fields_remain_external_owner": true,
+    "macropore_exchange_fields_remain_blocked_by_tcd025": true,
+    "interception_exchange_preserves_tcd018_open_seam": true,
+    "crop_residue_requires_explicit_bundle_not_state_delta_inference": true,
+    "arch04_exchange_layout_anchors_present": true,
+    "precision_policy_is_reference_only": true,
+    "crop_external_mode_is_explicit": true,
+    "architecture_invariants_12_to_15_preserved": true,
+    "reject_rule_preserves_accepted_state_and_forbids_partial_commit": true,
+    "coupled_commit_barrier_rule_present": true,
+    "required_prep06_hydrology_and_crop_transfer_evidence_present": true
+  },
+  "not_tested": [
+    "runtime SWAP adapter",
+    "runtime WOFOST adapter",
+    "behavioural coupled rollback",
+    "coupled timestep acceptance or convergence policy",
+    "reference equivalence",
+    "production ABI",
+    "unit conversion implementations",
+    "active macropore coupling"
+  ],
+  "reference_evidence": false,
+  "production_evidence": false
+}
