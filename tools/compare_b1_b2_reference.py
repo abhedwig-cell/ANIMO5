@@ -148,6 +148,7 @@ def validate_capture_minimum(capture: dict[str, Any], *, expected_side: str) -> 
                     "location",
                     "scientific_context",
                     "execution_context",
+                    "precision",
                     "value",
                 ):
                     if field not in record:
