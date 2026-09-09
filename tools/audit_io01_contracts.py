@@ -61,11 +61,14 @@ if not required_negative <= classes:
 direct = load_json(DIRECT)
 if direct.get("result") != "PASS":
     fail("DIRECT Pilot A evidence is not PASS")
-if direct.get("field_exact_equivalence_pass") != direct.get("natural_case_count"):
+if direct.get("field_exact_equivalence_pass") != direct.get("cases"):
     fail("DIRECT Pilot A is not field-exact for all recorded natural cases")
-for key in ("production_migration", "GHG_schema", "binary_hydrology", "B4"):
-    if direct.get("non_admissions", {}).get(key) is not False:
-        fail(f"DIRECT Pilot A non-admission {key} must remain false")
+if not direct.get("details") or not all(
+    item.get("field_exact_equivalent") is True for item in direct["details"]
+):
+    fail("DIRECT Pilot A contains a non-field-exact case")
+if "no model physics" not in direct.get("qualification_scope", ""):
+    fail("DIRECT Pilot A scope widened beyond parser representation")
 
 # Natural Ruurlo old/new lineage is the authority for sparse omitted-cell zeros.
 lineage = load_json(MAT_LINEAGE)
