@@ -1,0 +1,101 @@
+{
+  "work_unit": "ANIMO-TH02",
+  "title": "ANIMO 4.1.x Release-Lineage, Extension Introduction & Provenance Recovery",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-th02-rev41-lineage-recovery",
+  "base_branch": "work/animo-th01-rev53-theory-provenance",
+  "base_head": "a3360415364ef4a66a81d7b6715bcd400829df1b",
+  "status": "QUALIFIED_PARTIAL_41X_RELEASE_LINEAGE_WITH_PRE40_MACROPORE_AND_PRE41_GHG_PROVENANCE_AND_EXPLICIT_VERSION_CONFLICTS",
+  "decision": "QUALIFIED_PARTIAL_41X_RELEASE_LINEAGE_WITH_PRE40_MACROPORE_AND_PRE41_GHG_PROVENANCE_AND_EXPLICIT_VERSION_CONFLICTS",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "work_unit_complete": true,
+  "blocked": false,
+  "complete_animo41_changelog_recovered": false,
+  "downstream_b3_admission_blocked": true,
+  "legacy_source_modified": false,
+  "testcase_modified": false,
+  "production_code_modified": false,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "production_migration_admitted": false,
+  "frozen_source": {
+    "artifact": "ANIMO_4.1.5.53(3).zip",
+    "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "archive_version": "4.1.5",
+    "archive_revision": "53"
+  },
+  "source_lineage_scan": {
+    "non_directory_members": 65,
+    "expanded_headurl_members": 53,
+    "expanded_headurl_tag_animo4_1_4": 53,
+    "source_history_release_animo4_1_members": 47,
+    "animo3_7_5_marker_members": 1,
+    "interpretation": "ARCHIVE_IDENTIFIED_AS_4_1_5_REV53_FILE_LEVEL_LINEAGE_HETEROGENEOUS"
+  },
+  "qualified_lineage_findings": {
+    "macropores": {
+      "first_known_implementation_lineage": "ANIMO_3_7_5_1999_SOURCE_AND_PEER_REVIEWED_MODEL_LINEAGE",
+      "animo40_status": "DOCUMENTED_BUT_NOT_FULLY_OPERATIONAL_IN_SUPPLIED_OFFICIAL_GUIDE",
+      "rev53_status": "ACTIVE_SOURCE_PRESENT",
+      "decision": "PRE40_IMPLEMENTATION_LINEAGE_WITH_ANIMO40_NONOPERATIONAL_RELEASE_STATUS_AND_LATER_REV53_ACTIVE_SOURCE"
+    },
+    "greenhouse_gases": {
+      "first_known_development": "2007_CH4_GHG_ORCHESTRATION_AND_2008_N2O_SOURCE_HISTORY_WITH_INDEPENDENT_2007_PUBLICATION",
+      "relationship_to_animo41": "PREDATES_GENERIC_2010_2011_ANIMO41_RELEASE_MARKERS",
+      "supported_release_introduction": "UNRESOLVED"
+    },
+    "stable_dom": {
+      "public_provenance": "ANIMO_3_8_DERIVED_PROJECT_LINEAGE_WITH_STABLE_DOM_AND_ALTERRA_DEVELOPER_PARTICIPATION",
+      "external_version_label": "ANIMO_VERSION_4_0",
+      "relationship_to_supplied_2005_animo40": "CONFLICTING_VERSION_NOMENCLATURE",
+      "official_merge_into_41x": "UNRESOLVED"
+    },
+    "p_class_emw2012": {
+      "source_specific_marker": "2010_RENAUD_RELEASE_OF_ANIMO4_1",
+      "generic_release_marker_elsewhere": "2011_GROENENDIJK_RENAUD_RELEASE_OF_ANIMO4_1",
+      "release_year": "2010_OR_2011_SOURCE_INTERNAL_UNRESOLVED",
+      "scientific_parameter_provenance": "UNRESOLVED"
+    },
+    "soil_temperature_file": {
+      "source_history_signal": "2000",
+      "interpretation": "INPUT_ROUTING_LINEAGE_PREDATES_ANIMO41_UNDERLYING_TEMPERATURE_PHYSICS_INHERITED"
+    }
+  },
+  "deliverables": {
+    "contract": "docs/theory/ANIMO-TH02_WORK_UNIT_CONTRACT.md",
+    "release_lineage_reconciliation": "docs/theory/REV41_RELEASE_LINEAGE_RECONCILIATION.md",
+    "source_history_register": "docs/theory/REV41_SOURCE_HISTORY_REGISTER.csv",
+    "macropore_lineage_reconciliation": "docs/theory/MACROPORE_RELEASE_LINEAGE_RECONCILIATION.md",
+    "refined_th01_provenance_register": "docs/theory/REV53_THEORY_PROVENANCE_REGISTER.csv",
+    "extractor": "tools/extract_animo_source_history.py",
+    "verification": "integration/animo-theory/ANIMO-TH02_VERIFICATION.json",
+    "status": "integration/animo-theory/ANIMO-TH02_STATUS.json"
+  },
+  "verification": {
+    "artifact": "integration/animo-theory/ANIMO-TH02_VERIFICATION.json",
+    "verification_head_before_status": "5078b56c84ecd976a5bcb006579f72ccdf1138aa",
+    "result": "PASS",
+    "exact_source_sha_match": true,
+    "legacy_source_paths_changed": false,
+    "testcase_paths_changed": false,
+    "production_code_paths_changed": false
+  },
+  "remaining_blockers": [
+    "no authoritative public ANIMO 4.1 or 4.1.x release note/changelog recovered that maps extensions to supported releases",
+    "exact official ANIMO 4.1 release year remains ambiguous between source-internal 2010 and 2011 markers",
+    "relationship between file-level tags/animo4.1.4 SVN keywords and archive-level animo4.1.5 revision 53 remains unresolved",
+    "exact supported-release introduction of greenhouse-gas functionality remains unresolved",
+    "exact supported-release completion/reactivation of macropore functionality after the ANIMO 4.0 non-operational status remains unresolved",
+    "stable-DOM official merge/release point and N/P extension provenance remain unresolved",
+    "P-class EMW2012 thresholds, switching semantics and parameter provenance remain insufficient for B3"
+  ],
+  "unused_branch_note": {
+    "branch": "work/animo-th02-release-lineage-recovery",
+    "head": "a3360415364ef4a66a81d7b6715bcd400829df1b",
+    "status": "UNUSED_DUPLICATE_BRANCH_NO_TH02_COMMITS"
+  },
+  "production_migration": "NOT_ADMITTED"
+}
