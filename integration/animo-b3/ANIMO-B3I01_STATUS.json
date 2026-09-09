@@ -3,10 +3,12 @@
   "title": "Post-G5 Discrepancy Canonical Intake, Atomicity Reconciliation & Qualification Routing",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3i01-post-g5-discrepancy-intake",
-  "status": "IN_PROGRESS_FAIL_CLOSED_POST_G5_CANONICAL_INTAKE",
+  "status": "QUALIFIED_POST_G5_DISCREPANCY_CANONICAL_INTAKE_AND_ROUTING_NO_ADMISSIONS",
+  "decision": "QUALIFIED_POST_G5_DISCREPANCY_CANONICAL_INTAKE_AND_ROUTING_NO_ADMISSIONS",
   "persisted_early": true,
-  "tested": false,
-  "qualified": false,
+  "tested": true,
+  "qualified": true,
+  "work_unit_complete": true,
   "base": {
     "branch": "work/animo-b3-tcd028-stable-dom-intake",
     "head": "7f38b79d88c05fd86c89fbdd7a5794b90ffba2bf",
@@ -24,10 +26,56 @@
     "PREP10": {"branch": "work/animo-prep10-stable-dom-plough-accumulators", "head": "65cd4a65a3ea27cd4ce004f505d5022fdb08b9ab"},
     "PREP10C": {"branch": "work/animo-prep10c-stable-dom-event-reset-authoritative", "head": "549545921dc8175f01d86c283647acd470c14290"}
   },
-  "canonical_register_tail_before_work": "TCD-027",
-  "reserved_ids_observed_before_work": ["TCD-028"],
-  "post_028_allocations_observed_before_work": [],
+  "canonical_register": {
+    "path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "sha_observed": "224acc350fde69d3c4aebed8628c0f945e0b3367",
+    "tail_before_work": "TCD-027",
+    "tail_after_work": "TCD-027",
+    "central_rows_appended": false,
+    "reason": "B3I01 reserves and routes TCD-028 through TCD-037 fail-closed without silently rewriting the pre-existing canonical CSV snapshot. A separate explicit register-append integration commit remains permissible and does not imply B3 admission."
+  },
+  "intake": {
+    "local_crosswalk_rows": 23,
+    "preexisting_reservation_intaken": ["TCD-028"],
+    "new_fail_closed_reservations": ["TCD-029", "TCD-030", "TCD-031", "TCD-032", "TCD-033", "TCD-034", "TCD-035", "TCD-036", "TCD-037"],
+    "new_reservation_count": 9,
+    "child_atoms_without_new_top_level_id": ["TCD-016-C1", "TCD-016-E1", "TCD-009-GHG-GAS-STORE"],
+    "deduplicated_multiworkunit_phenomena": ["TCD-025 MP01 plus MP02 evidence", "TCD-031 MP01 plus MP02 restart evidence"],
+    "build_runtime_hazards_not_tcd": ["MP02-LCL-GNU-MAPOTRANSPORT-INVALID-GUARD"],
+    "theory_provenance_gaps_not_new_tcd": ["GHG01-LCL-N2O-NITRIFICATION-TEMPERATURE-SIGN-DOC-SOURCE", "GHG01-LCL-N2O-REDUCTION-AERATION-FACTOR-DOC-SOURCE"],
+    "insufficient_evidence_no_id": ["GHG01-LCL-CH4-FRESH-OM-WEIGHTING-INDEX", "SQ01-LCL-UBOUNDCONC-DRY-DEPOSITION-1MM", "SQ01-LCL-TRANSCA-LAYER0-PARAMETER-INITIALIZATION"]
+  },
+  "explicit_reconciliations": {
+    "NQ02_IFLSOL4_Detcoef_Coefdc": "TCD-029_RESERVED_CLASS_E_DISTINCT_FROM_TCD019_AND_TCD024",
+    "macropore_initial_NO3_validation": "TCD-030_RESERVED_CLASS_B",
+    "MP02_GNU_invalid_operation_warning_guard": "BUILD_RUNTIME_HAZARD_NOT_TCD",
+    "GHG01_all_local_candidates": "ROUTED_WITH_ATOMICITY_AND_DEPENDENCIES",
+    "TCD016_C1_E1": "ATOMIZED_UNDER_PARENT_WITH_C1_BEFORE_E1",
+    "TCD028": "PREEXISTING_RESERVATION_INTAKEN_NO_DUPLICATE_ID"
+  },
+  "verification": {
+    "reservation_collision_scan_completed_before_new_reservations": true,
+    "reservation_artifact_readback_passed": true,
+    "routing_register_readback_passed": true,
+    "crosswalk_readback_passed": true,
+    "base_to_head_change_scope_checked": true,
+    "base_to_precloseout_head_commits": 5,
+    "base_to_precloseout_head_changed_files": 5,
+    "only_governance_docs_and_integration_artifacts_changed_precloseout": true,
+    "frozen_source_modified": false,
+    "frozen_testbank_modified": false,
+    "production_code_modified": false,
+    "test_type": "repository governance structural readback and evidence-provenance consistency only"
+  },
+  "deliverables": [
+    "docs/b3/POST_G5_DISCREPANCY_INTAKE.md",
+    "integration/animo-b3/POST_G5_LOCAL_FINDING_CROSSWALK.csv",
+    "integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER.json",
+    "integration/animo-b3/ANIMO-B3I01_STATUS.json",
+    "integration/animo-b3/POST_G5_TCD_RESERVATIONS.json"
+  ],
   "new_corrections_admitted": false,
   "b3_baseline_established": false,
-  "production_migration_admitted": false
+  "production_migration_admitted": false,
+  "evidence_strength_increased_by_intake": false
 }
