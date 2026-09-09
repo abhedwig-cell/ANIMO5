@@ -1,0 +1,109 @@
+{
+  "work_unit": "ANIMO-BUILDQ04",
+  "record_type": "GHG_BOTTOM_AIR_BOUNDARY_INITIALIZATION_QUALIFICATION_MATRIX",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-buildq04-ghg-bottom-boundary-initialization",
+  "target_local_key": "BUILDQ03-LCL-GHGASSES-FLAIR-NLPLUS1-UNINITIALIZED",
+  "base": "work/animo-buildq03-ghg-task-context-qualification@5e06473bc2bb1df6cf4e449d8d6aa04da35c7d47",
+  "frozen_evidence": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "ghgasses_sha256": "4bf5906f571a586d4312d8e7b0d57f6df3b4b6c2073410335616f3d3c042da93",
+    "ghgtransport_sha256": "d86e420952c43aaa6e730235f5820802310dd14a0019dc890537d9acd95fcff6",
+    "ghgtranssub_sha256": "48d5e45d0b68b87c1d32bc16a867fe36f2f440e0d2c0ca8c95bf605f9f24ea6c",
+    "diagnostic_compiler": "GNU Fortran 14.2.0"
+  },
+  "source_topology": {
+    "nl_domain": "Nl >= 1",
+    "la_before_decrement_upper_bound": "La <= Nl",
+    "la_after_decrement_invariant": "0 <= La <= Nl-1",
+    "flair_la_plus_1_max_assigned_index": "Nl",
+    "forward_zero_loop_max_assigned_index": "Nl",
+    "bottom_transform_read": "Flair(Nl+1)",
+    "classification": "UNCONDITIONAL_TASK1_FIRST_READ_WITHOUT_SOURCE_ASSIGNMENT_FOR_NL_GE_1",
+    "buildq03_refinement": "previous wording allowed a hypothetical final La=Nl branch; full control-flow proves that state is eliminated by La=Max(0,La-1)"
+  },
+  "boundary_identity": {
+    "coordinate": "Flair(Nl+1)",
+    "meaning": "advective air flux across lower external face of modeled soil column; downward positive",
+    "qualified_value": 0.0,
+    "qualified_contract": "FLAIR_NLPLUS1_EQUALS_ZERO_FOR_CLOSED_LOWER_GHG_AIR_BOUNDARY",
+    "support": [
+      "GHGasses comment and recurrence establish zero air flow below first saturated zone",
+      "GHGtransport bottom equation has no lower-neighbour gas inflow concentration",
+      "GHGtransport bottom diffusion has no lower-boundary term",
+      "GHGtranssub sets Y2(Nl)=0 and P2(Nl)=0 and lower tridiagonal coupling to zero",
+      "GHG public source interface supplies atmospheric gas boundary but no bottom-air concentration or flux boundary",
+      "CH4 and N2O advective emission outputs are atmosphere-soil boundary terms only"
+    ],
+    "independent_theory": {
+      "source": "Stolk et al. 2011 Biogeosciences 8:2649-2663 DOI 10.5194/bg-8-2649-2011",
+      "supports": "original ANIMO N2O conservation/transport contains vertical air advection and atmosphere-soil gas emission",
+      "does_not_by_itself_prove": "exact discrete lower boundary value in revision 53"
+    }
+  },
+  "uninitialized_probe": {
+    "source": "tools/buildq04/buildq04_uninitialized_first_read_probe.f90",
+    "source_sha256": "12d3b924c4d5b456b8e6dee5f5e5937f2be2a25cd0ab382cf1ccf792232eb4d5",
+    "nl_cases": [1,2,3,4],
+    "observations": {
+      "gnu_O0_fautomatic": "tested process image happened to expose zero",
+      "gnu_O2_fautomatic": "several cases exposed small positive nonzero stack values",
+      "gnu_O0_fautomatic_finit_real_snan": "NaN propagated through bottom Flaiio/Flaiou transformation",
+      "gnu_O2_fautomatic_finit_real_snan": "slot remained NaN while optimized MIN/MAX happened to yield zero transformed flux",
+      "gnu_fno_automatic": "tested image often exposed zero but this is not a Fortran initialization contract",
+      "gnu_fno_automatic_finit_real_snan": "explicit NaN initialization proves static duration does not define scientific zero"
+    },
+    "historical_intel": "UNKNOWN"
+  },
+  "boundary_sensitivity_probe": {
+    "source": "tools/buildq04/buildq04_boundary_sensitivity_probe.f90",
+    "source_sha256": "55d075a53338108e257c95c9f18722b5e69adcf22d477c76c2863b592e7ad5c3",
+    "nl_cases": [1,2,3,4],
+    "topology_cases": 3,
+    "boundary_values": [-0.001,-0.000001,0.0,0.000001,0.001],
+    "output_rows": 60,
+    "gnu_O0_output_sha256": "fb98a0d17f3e9295f919c60f2decf7bde584a4f8fdccee85ce0501b5240ce756",
+    "gnu_O2_output_sha256": "fb98a0d17f3e9295f919c60f2decf7bde584a4f8fdccee85ce0501b5240ce756",
+    "byte_identical_O0_O2": true,
+    "positive_boundary_identity": {
+      "Flaiou_Nl": "q_b plus any upper-face outflow component; in controlled bottom-zero upper-face cases exactly q_b",
+      "Delta_ToFl": "-AvCa(Nl)*q_b*St",
+      "Delta_Y3": "ReBuAv(Nl)*q_b/He(Nl) for ordinary non-top-unsaturated branch"
+    },
+    "negative_boundary_identity": {
+      "Flaiio_Nl": "-q_b",
+      "bottom_solver_coupling": "suppressed by Y2(Nl)=0 and absence of lower-neighbour concentration term"
+    },
+    "representative_case": {
+      "Nl": 4,
+      "q_b": 0.001,
+      "Flaiou_Nl": 0.001,
+      "Delta_ToFl": -0.00003,
+      "Delta_Y3": 0.008
+    }
+  },
+  "materiality": [
+    "FLUX_MATERIAL",
+    "STATE_MATERIAL",
+    "OUTPUT_MATERIAL_POTENTIAL",
+    "HISTORICAL_EFFECT_UNKNOWN"
+  ],
+  "provisional_b3": {
+    "class": "B",
+    "class_name": "LOCAL_ALGEBRA_INDEX_OR_SPECIES_CORRECTION",
+    "local_subtype": "BOUNDARY_INDEX_INITIALIZATION_OMISSION",
+    "existing_tcd_relation": {
+      "TCD-011": "DISTINCT_CAUSAL_MECHANISM_CROSS_CALL_STORAGE_VS_SAME_CALL_FIRST_USE_INITIALIZATION",
+      "TCD-032_to_TCD-037": "DISTINCT_GHG_PROCESS_RESTART_AND_OBSERVER_PHENOMENA"
+    },
+    "recommended_disposition": "NEW_CANONICAL_TCD_CANDIDATE_PENDING_CENTRAL_COLLISION_CHECK_AND_RESERVATION"
+  },
+  "admission": {
+    "new_canonical_tcd_allocated": false,
+    "corrected_legacy_admitted": false,
+    "b3_scientific_admitted": false,
+    "production_migration_admitted": false,
+    "production_source_modified": false
+  }
+}
