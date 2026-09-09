@@ -1,0 +1,55 @@
+{
+  "work_unit": "ANIMO-TH02",
+  "verification_type": "EXACT_B0_SOURCE_HISTORY_SCAN_AND_DOCUMENTARY_PROVENANCE_RECONCILIATION",
+  "base_head": "a3360415364ef4a66a81d7b6715bcd400829df1b",
+  "source_scan": {
+    "artifact": "ANIMO_4.1.5.53(3).zip",
+    "expected_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "observed_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "sha_match": true,
+    "non_directory_members": 65,
+    "members_with_expanded_headurl": 53,
+    "members_with_headurl_tag_animo4_1_4": 53,
+    "members_with_source_history_release_animo4_1": 47,
+    "members_with_animo3_7_5_marker": 1,
+    "generated_register_sha256": "705dd8f9a6d675c6e05b4e9aa79ce4e2d6085169b2a45602b5c507652ab3cb6a"
+  },
+  "source_specific_checks": {
+    "archive_version_inc_marks_animo4_1_5_revision_53": true,
+    "mapotransport_self_identifies_animo3_7_5_with_macropores": true,
+    "mapotransport_history_records_1999_hendriks_creation": true,
+    "mapohydro_has_october_2008_marker": true,
+    "mapoinput_has_2007_and_2008_animo4_0_release_labels": true,
+    "ghg_ch4_history_records_2007_hendriks": true,
+    "ghg_n2o_history_records_2008_hendriks": true,
+    "choose_pclass_history_records_2010_renaud_release_animo4_1": true,
+    "generic_source_history_also_records_2011_release_animo4_1": true,
+    "input_soiltemp_has_pre41_2000_history_signal": true
+  },
+  "public_corroboration": {
+    "macropore_1999_peer_reviewed_flo_cr_animo": "https://research.wur.nl/en/publications/simulation-of-bromide-tracer-and-nitrogen-transport-in-a-cracked-/",
+    "ghg_2007_swap_animo": "https://research.wur.nl/en/publications/predicting-soil-subsidence-and-greenhouse-gas-emission-in-peat-so/",
+    "stable_dom_bmbf_ufz_report": "https://edocs.tib.eu/files/e01fb12/72746826X.pdf",
+    "wur_animo_product_page": "https://www.wur.nl/en/research/products-services/animo"
+  },
+  "reconciliation_checks": {
+    "macropore_not_classified_as_simple_post40_invention": true,
+    "animo40_nonoperational_status_preserved": true,
+    "ghg_first_known_development_predates_animo41_marker": true,
+    "stable_dom_external_version40_label_treated_as_conflicting_nomenclature": true,
+    "pclass_2010_vs_generic_2011_animo41_date_conflict_explicit": true,
+    "source_release_comments_not_promoted_to_authoritative_release_notes": true
+  },
+  "branch_scope_before_verification_artifact": {
+    "compare_status": "ahead",
+    "ahead_by": 6,
+    "behind_by": 0,
+    "changed_files": 6,
+    "legacy_source_paths_changed": false,
+    "testcase_paths_changed": false,
+    "production_code_paths_changed": false,
+    "physics_change": false,
+    "numerical_policy_change": false
+  },
+  "result": "PASS"
+}
