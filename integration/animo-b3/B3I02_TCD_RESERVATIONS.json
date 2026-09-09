@@ -9,17 +9,75 @@
     "canonical_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
     "canonical_register_tail_observed": "TCD-041"
   },
+  "incremental_refresh": {
+    "work_unit": "ANIMO-MASSQ02",
+    "branch": "work/animo-massq02-residual-causality-typed-events",
+    "head": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "status": "QUALIFIED_TYPED_MASS_EVENT_PROJECTION_AND_RESIDUAL_RECONCILIATION_MASS_ADMISSION_PENDING",
+    "new_causal_findings_consumed": 15
+  },
   "collision_scan": {
     "tcd_028_through_tcd_037_reuse_forbidden": true,
     "tcd_040_already_registered": true,
     "tcd_041_already_registered": true,
     "tcd_042_present_in_authoritative_register": false,
+    "tcd_042_found_in_live_b3i_branch_or_commit_collision_scan": false,
     "next_unallocated_candidate_observed": "TCD-042",
-    "reservation_created_for_tcd_042": false,
-    "reason": "NO_INCREMENTAL_FINDING_SATISFIES_NEW_TCD_CAUSALITY_AND_ATOMICITY_THRESHOLD",
-    "scope_note": "Absence of TCD-042 was checked against the live authoritative B3I01 register. This is not a transactional repository lock and does not reserve the identifier."
+    "reservation_created_for_tcd_042": true,
+    "reason": "MASSQ02 R016 establishes one source-localized and atomic zero-top-throughflow external-N input/state-transfer seam that is distinct from existing TCD identities.",
+    "scope_note": "This reservation is a governed identity claim only. It is not a transactional repository lock, is not yet a canonical-register append, and is not a scientific or corrected-legacy admission."
   },
-  "reservations": [],
+  "reservations": [
+    {
+      "tcd_id": "TCD-042",
+      "source_finding": "MASSQ02-R016",
+      "crosswalk_key": "MASSQ01-LCL-N006",
+      "process": "upper-boundary precipitation/deposition nitrogen retention under zero top throughflow",
+      "phenomenon": "At RuurloGrass TITO=1915 the zero-throughflow UBoundconc branch sets A1=1 and A2=0, retaining previous Conhtop values and suppressing incoming NH4/NO3 Load transfer, while Outbal_calc books the same precipitation/deposition nitrogen as external input.",
+      "evidence_coordinates": [
+        "UBoundconc.for:110-132",
+        "Outbal_calc.for:766-784"
+      ],
+      "runtime_identity": {
+        "Iopthyvs": 0,
+        "Flib_1": 0.0,
+        "Rurv": 0.0,
+        "Flux": 0.0,
+        "A1": 1.0,
+        "A2": 0.0,
+        "booked_NH4_input_kg_ha_N": 0.005069031338,
+        "booked_NO3_input_kg_ha_N": 0.00168034188,
+        "booked_total_input_kg_ha_N": 0.006749373218,
+        "observer_residual_kg_ha_N": 0.0067493732130969875
+      },
+      "atomicity": "ONE_ZERO_TOP_THROUGHFLOW_EXTERNAL_N_INPUT_STATE_TRANSFER_SEAM_MULTI_SPECIES_SCOPE",
+      "species_scope": [
+        "NH4-N",
+        "NO3-N"
+      ],
+      "species_specific_tcds_created": false,
+      "provisional_b3_classification": {
+        "primary": "C_MISSING_PHYSICAL_STATE_OR_INCOMPLETE_STATE_MODEL",
+        "secondary": "A_ACCOUNTING_REPORTING_ONLY_POSSIBLE_ALTERNATIVE",
+        "classification_status": "PROVISIONAL_CORRECTION_SEMANTICS_NOT_SELECTED",
+        "reason": "The discrepancy identity is the mismatch between booked external mass and represented retained/transferred mass at zero throughflow. Whether corrected semantics require a retained surface-solute state or a narrower ledger-input definition remains a later scientific admission question."
+      },
+      "distinct_from": [
+        "TCD-014",
+        "TCD-015",
+        "TCD-016",
+        "TCD-017",
+        "TCD-018",
+        "TCD-019",
+        "TCD-025",
+        "TCD-040",
+        "TCD-041"
+      ],
+      "canonical_register_appended": false,
+      "admitted": false,
+      "status": "RESERVED_PENDING_CANONICAL_REGISTER_APPEND_NOT_ADMITTED"
+    }
+  ],
   "existing_canonical_routes_reused": [
     {
       "source_finding": "RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING",
@@ -37,18 +95,22 @@
       "atomicity": "EXISTING_BUILD_CONTRACT_AND_STORAGE_DURATION_DISCREPANCY"
     }
   ],
-  "massq01_policy": {
-    "unexplained_residual_count": 15,
-    "new_tcd_allocations": 0,
-    "disposition": "LOCAL_OBSERVER_FINDING_PENDING_CAUSALITY",
-    "rule": "A deterministic nonzero observer residual is not a canonical defect without source-localized causal evidence. Candidate relations to existing TCDs remain context only unless the exact residual is causally assigned."
+  "massq02_policy": {
+    "formerly_unexplained_residual_count": 15,
+    "massq02_new_causal_finding_count": 15,
+    "new_tcd_reservations": 1,
+    "insufficient_identity_or_mechanism_count": 14,
+    "new_child_atoms": 0,
+    "acceptance_epsilon_introduced": false,
+    "rule": "Source/process localization is necessary but not sufficient for canonical identity. A new TCD is reserved only when both the discrepancy mechanism and atomic scope are sufficiently bounded against existing TCDs."
   },
   "stateq01_post_cutoff_policy": {
     "first_post_restart_surface_frame_divergence": "INSUFFICIENT_EVIDENCE_PENDING_CAUSAL_ISOLATION",
     "final_persistent_state_divergence": "INSUFFICIENT_EVIDENCE_PENDING_CAUSAL_ISOLATION",
     "new_tcd_allocations": 0
   },
-  "canonical_register_append_required": false,
+  "canonical_register_append_required": true,
+  "canonical_register_append_performed": false,
   "admission_performed": false,
   "production_change_performed": false
 }
