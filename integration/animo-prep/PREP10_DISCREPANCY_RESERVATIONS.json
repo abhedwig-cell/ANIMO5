@@ -15,12 +15,22 @@
     {
       "id": "TCD-033",
       "finding": "nonzero actual plant uptake restart state is not transferred from Rsampl*_act to Ampl*_act during Inicalc initialization",
-      "classification": "RESERVED_CAUSAL_RESTART_PROBE_PENDING"
+      "classification": "CONFIRMED_LEGACY_PLANT_ACTUAL_UPTAKE_RESTART_INITIALIZATION_DIRECTION_DEFECT",
+      "natural_case_reachability": "LWKM_gras_1040.2021.2045",
+      "evidence": [
+        "docs/prep10/PLANT_UPTAKE_RESTART_CONTINUITY_DEFECTS.md",
+        "integration/animo-prep/PREP10_PLANT_UPTAKE_RESTART_CONTINUITY.json"
+      ]
     },
     {
       "id": "TCD-034",
       "finding": "cumulative potential plant uptake state is carried between normal timesteps but absent from orgpla restart read/write contract",
-      "classification": "RESERVED_CAUSAL_RESTART_PROBE_PENDING"
+      "classification": "CONFIRMED_LEGACY_PLANT_POTENTIAL_UPTAKE_RESTART_STATE_OMISSION",
+      "natural_case_reachability": "LWKM_gras_1040.2021.2045",
+      "evidence": [
+        "docs/prep10/PLANT_UPTAKE_RESTART_CONTINUITY_DEFECTS.md",
+        "integration/animo-prep/PREP10_PLANT_UPTAKE_RESTART_CONTINUITY.json"
+      ]
     }
   ],
   "central_register_updated_for_TCD032_TCD033_TCD034": false,
