@@ -1,0 +1,198 @@
+{
+  "work_unit": "ANIMO-B3B02",
+  "title": "TCD-042-B1 Exact-Zero Upper-Boundary Reservoir Algebra Admission Readiness",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3b02-tcd042-b1-class-b-readiness",
+  "date": "2026-09-09",
+  "target": "TCD-042-B1",
+  "parent_tcd": "TCD-042",
+  "class": "B_LOCAL_ALGEBRA_ZERO_FLOW_LIMIT",
+  "trigger": "Flpn = 0 AND Flux = 0",
+  "status": "QUALIFIED_TCD042_B1_ATOMIC_CLASS_B_READINESS_ROUTE_AND_REVIEW_FAIL_CLOSED",
+  "base": {
+    "branch": "work/animo-b3i05-ubq02-numerical-seam-intake",
+    "head": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+    "reason": "latest qualified canonical TCD-042 child routing"
+  },
+  "frozen_b0": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "uboundconc_member_sha256": "b9a7ec980d40c0f76279077852190788e36cd976d185b12683a38da0c7dfecf7"
+  },
+  "upstream": {
+    "UBQ01": {
+      "branch": "work/animo-ubq01-tcd042-upper-boundary-transaction",
+      "head": "6895b67799f26888025eced7188e7190b2a0d07d",
+      "role": "completed exact-zero B1/scientific evidence, not B2"
+    },
+    "B3Q01": {
+      "branch": "work/animo-b3q01-scientific-admission-framework",
+      "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+    },
+    "GOV02": {
+      "branch": "work/animo-gov02-evidence-dag-reconciliation",
+      "head": "db7add6f9561730bbf352aa7fd3f3968405cfaa3"
+    },
+    "SYNQ01": {
+      "branch": "work/animo-synq01-independent-synthetic-oracles",
+      "head": "842f72300fd03ede0b9024537a7ee6126722a121",
+      "direct_tcd042_oracle_registered": false,
+      "treatment": "no direct SYNQ01 TCD-042 evidence claimed"
+    }
+  },
+  "legacy_algebra": {
+    "source": "UBoundconc.for:110-149",
+    "P": "St*Flux/Hetop",
+    "positive_flow": {
+      "A1": "exp(-P)",
+      "A2": "(1-A1)/Flux",
+      "B1": "(1-A1)/P",
+      "B2": "(1-B1)/Flux",
+      "C1": "C0*A1 + Load*A2",
+      "Cavg": "C0*B1 + Load*B2"
+    },
+    "legacy_subthreshold_fallback": {
+      "condition": "Flux < 1.0d-8",
+      "A1": "1",
+      "A2": "0",
+      "B1": "1",
+      "B2": "0"
+    }
+  },
+  "unique_exact_zero_limit": {
+    "A1": "1",
+    "A2": "St/Hetop",
+    "B1": "1",
+    "B2": "St/(2*Hetop)",
+    "C1": "C0 + Load*St/Hetop",
+    "Cavg": "C0 + Load*St/(2*Hetop)",
+    "conservation": "Hetop*C1 = Hetop*C0 + St*Load",
+    "same_step_export": "St*Flux*Cavg = 0 exactly"
+  },
+  "atomic_candidate": {
+    "semantic_change": "apply unique zero-flow coefficients only when Flpn=0 AND Flux=0",
+    "production_source_patch": false,
+    "threshold_change": false,
+    "tolerance_added": false,
+    "finite_positive_policy_change": false,
+    "general_upper_boundary_redesign": false
+  },
+  "affected_surfaces": {
+    "direct": [
+      "loaded upper-reservoir accepted end concentration Rs*top",
+      "loaded upper-reservoir step-average concentration Av*top"
+    ],
+    "causal_descendants_allowed": [
+      "next-step beginning Con*top through existing accepted-state path",
+      "later downstream chemistry after retained mass is transported or transformed"
+    ],
+    "same_step_flux_change": false
+  },
+  "expected_unchanged_surfaces": [
+    "records before first exact-zero non-zero-load activation",
+    "hydrology and forcing",
+    "Load, St, Hetop and beginning C0 at activation",
+    "same-step reservoir solute export at Flux=0",
+    "exact-zero zero-load behavior",
+    "ordinary positive-flow behavior",
+    "all finite-positive 0<Flux<1.0d-8 behavior in this workunit",
+    "Flpn!=0 behavior",
+    "thresholds and tolerances",
+    "frozen B0 source and testbank",
+    "TCD-042 parent admission state",
+    "TCD-042-E1 state"
+  ],
+  "natural_ruurlo": {
+    "evidence_class": "B0_HASH_PINNED_DIAGNOSTIC_EXECUTION_NOT_B2",
+    "activation": {
+      "TITO": 1915,
+      "Flpn": 0,
+      "Flux": 0.0,
+      "Pr_m_per_d": 0.0002000407,
+      "St_d": 1.0,
+      "Hetop_m": 0.02,
+      "Coprnhyn_kg_per_m3": 0.002534,
+      "Coprniyn_kg_per_m3": 0.00084,
+      "NH4_Load_kg_per_m2_d": 5.069031338e-7,
+      "NO3_Load_kg_per_m2_d": 1.68034188e-7,
+      "booked_mineral_N_kg_per_ha_d": 0.006749373218,
+      "observer_nonclosure_kg_per_ha_N": 0.0067493732130969875
+    },
+    "candidate_direct_differences": {
+      "NH4_end_increment_kg_per_m3": 2.534515669e-5,
+      "NO3_end_increment_kg_per_m3": 8.4017094e-6,
+      "NH4_average_increment_kg_per_m3": 1.2672578345e-5,
+      "NO3_average_increment_kg_per_m3": 4.2008547e-6,
+      "formula_prediction": "BITWISE_MATCH"
+    },
+    "coverage_limit": "natural execution directly exercises NH4 and NO3 only; source-bound algebra is species-generic but all-species natural execution is not claimed"
+  },
+  "negative_controls": {
+    "pre_activation_through_TITO_1914": "BITWISE_IDENTICAL",
+    "exact_zero_zero_load_TITO_10": "BITWISE_IDENTICAL",
+    "ordinary_positive_flow_TITO_1": {
+      "Flux": 0.0024002409999999996,
+      "result": "BITWISE_IDENTICAL"
+    },
+    "numerical_tolerance_used": false,
+    "immediate_activation_layer1_state": "UNCHANGED",
+    "later_observed_propagation": "layer1 chemistry first appears among differences at TITO=1917"
+  },
+  "readiness_gates": {
+    "atomicity": "PASS",
+    "exact_trigger": "PASS",
+    "legacy_expression": "PASS",
+    "unique_limit": "PASS",
+    "conservation_identity": "PASS",
+    "atomic_correction_contract": "PASS",
+    "affected_surface_mapping": "PASS",
+    "expected_unchanged_surface_mapping": "PASS",
+    "natural_B1_activation": "PASS_MINERAL_N_SCOPE",
+    "negative_controls": "PASS",
+    "local_non_interference": "PASS_EXERCISED_MINERAL_N_SCOPE",
+    "threshold_unchanged": "PASS",
+    "tolerance_absent": "PASS",
+    "finite_positive_seam_excluded": "PASS",
+    "historical_B2_route": "FAIL_CLOSED_UNAVAILABLE",
+    "historical_uncertainty_route": "FAIL_CLOSED_NOT_ELIGIBLE",
+    "independent_second_line_review": "FAIL_CLOSED_PENDING"
+  },
+  "route_state": {
+    "prep02r_status": "PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED",
+    "normal_B2_reference_available": false,
+    "historical_reference_artifact_obtained": false,
+    "reference_qualified": false,
+    "historical_uncertainty_route_eligible": false,
+    "external_wur_archival_request_sent": false,
+    "received_2026_native_executable_is_historical_B2": false,
+    "decision": "FAIL_CLOSED"
+  },
+  "independent_review": {
+    "performed": false,
+    "reviewer": null,
+    "decision": "FAIL_CLOSED_PENDING"
+  },
+  "scope_exclusions": {
+    "TCD_042_E1_finite_positive": true,
+    "threshold_change": true,
+    "tolerance": true,
+    "upper_boundary_redesign": true,
+    "production_patch": true,
+    "corrected_legacy_admission": true,
+    "parent_TCD_042_admission": true,
+    "B2_claim_from_UBQ01_or_UBQ02": true
+  },
+  "admission": {
+    "readiness_qualified": true,
+    "corrected_legacy_admitted": false,
+    "parent_tcd_admitted": false,
+    "production_migration_admitted": false,
+    "reason": "B2/GOV02 route and independent review remain fail closed"
+  },
+  "artifacts": {
+    "readiness_dossier": "docs/b3/TCD042_B1_CLASS_B_ADMISSION_READINESS.md",
+    "status": "integration/animo-b3/ANIMO-B3B02_STATUS.json"
+  },
+  "decision": "QUALIFIED_TCD042_B1_ATOMIC_CLASS_B_READINESS_ROUTE_AND_REVIEW_FAIL_CLOSED"
+}
