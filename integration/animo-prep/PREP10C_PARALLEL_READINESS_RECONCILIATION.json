@@ -1,0 +1,52 @@
+{
+  "work_unit": "ANIMO-PREP10C",
+  "record_type": "PARALLEL_READINESS_BRANCH_RECONCILIATION_NOT_ADMISSION",
+  "status": "RECONCILED_SUPERSEDED_DO_NOT_MERGE",
+  "authoritative_candidate_branch": "work/animo-prep10c-stable-dom-event-reset-authoritative",
+  "authoritative_parent": {
+    "branch": "work/animo-prep10-stable-dom-plough-accumulators",
+    "commit": "65cd4a65a3ea27cd4ce004f505d5022fdb08b9ab"
+  },
+  "parallel_branch": {
+    "branch": "work/animo-prep10c-stable-dom-reset-readiness",
+    "observed_head": "f88b8a4ca65bff4a3d9c4132a7f384c2ae698087",
+    "parent_sha": "5c927c2f9c218eb740080817203f4962034e5846",
+    "relationship_to_authoritative_prep10_head": "DIVERGED_FROM_EARLIER_PREP10_CHECKPOINT",
+    "merge_recommended": false
+  },
+  "parallel_content": {
+    "status_blob_sha": "9fb6d6da2e584dd86484061647bae5ef6ef2c4f3",
+    "candidate_contract_blob_sha": "80f2906cbbed93acb1d9a8d64c50243f639900e3",
+    "proposed_tcd_entry_blob_sha": "b6bbb9aafba4cadb4cc314ac0a5cf785075cde6d",
+    "decision": "QUALIFIED_RESET_CANDIDATE_CONTRACT_CORRECTED_LEGACY_IMPLEMENTATION_BLOCKED_REFERENCE_REQUIRED",
+    "candidate_addit_sha256": "a1993aa2d22c8f2c13fc169e78f9121587c8f14a122ef7d3f757cc24a58a54ae",
+    "candidate_semantics_match_authoritative_candidate": true,
+    "new_runtime_causal_evidence_beyond_authoritative_prep10": false,
+    "corrected_legacy_lineage_started": false,
+    "corrected_legacy_admitted": false
+  },
+  "identifier_reconciliation": {
+    "parallel_proposed_id": "TCD-032",
+    "parallel_entry_self_classification": "PROPOSED_AND_RENUMBER_IF_COLLISION",
+    "central_b3_intake_reserved_id": "TCD-028",
+    "central_b3_intake_pr": 10,
+    "central_b3_intake_head": "7f38b79d88c05fd86c89fbdd7a5794b90ffba2bf",
+    "central_b3_intake_status": "RESERVED_PENDING_CANONICAL_REGISTER_APPEND_NOT_ADMITTED",
+    "authoritative_candidate_id_for_current_handoff": "TCD-028",
+    "tcd_032_must_not_be_used_for_this_candidate": true,
+    "canonical_register_append_proven": false
+  },
+  "evidence_disposition": {
+    "retain_parallel_branch_as_audit_history": true,
+    "merge_parallel_branch": false,
+    "reuse_candidate_semantics_as_independent_evidence": false,
+    "reason": "the branch predates the final authoritative PREP10 handoff, duplicates the same reset semantics, proposes a now-conflicting provisional identifier, and contains readiness-contract evidence rather than an independent scientific review or new historical reference"
+  },
+  "non_admissions": [
+    "parallel readiness is not independent second-line review",
+    "parallel readiness is not B2 historical reference",
+    "TCD-032 proposal is not canonical registration",
+    "TCD-028 reservation is not canonical admission",
+    "no corrected-legacy/B3/B4 admission is implied"
+  ]
+}
