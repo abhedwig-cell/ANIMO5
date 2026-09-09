@@ -1,0 +1,72 @@
+{
+  "checks": {
+    "Asfa": true,
+    "Asfaca": true,
+    "Asfaex": true,
+    "Asfahu": true,
+    "FR_full_matrix_after_sparse_zero_fill": true,
+    "FRca_full_matrix_after_sparse_zero_fill": true,
+    "Frhetero": true,
+    "Frnh": true,
+    "Frni": true,
+    "Fror": true,
+    "Hufros_old_scalar_expands_to_all_new_fractions": true,
+    "Nf": true,
+    "Nifr": true,
+    "Nifrex": true,
+    "Nifrhuma": true,
+    "Nm": true,
+    "Recfav": true,
+    "Recfcaav": true,
+    "Recfdeav": true,
+    "Recfexav": true,
+    "Recfhuav": true,
+    "Recfntav": true
+  },
+  "dimensions": {
+    "Nf": 14,
+    "Nm": 11,
+    "full_matrix_cells_each": 154,
+    "sparse_explicit_triplets": 24,
+    "sparse_omitted_cells_each": 130
+  },
+  "evidence_class": "CROSS_VERSION_NATURAL_CASE_LINEAGE_EVIDENCE_NOT_RUNTIME_REFERENCE",
+  "files": {
+    "old": {
+      "path": "ANIMO_testbank/RuurloGrass/Input/MATERIAL_oud.INP",
+      "sha256": "7c3258ba50fbf8757e0f3d6f62b670d66ef0ca031f4e8dce0899ea6c3e1427d4"
+    },
+    "revision53": {
+      "path": "ANIMO_testbank/RuurloGrass/Input/MATERIAL.INP",
+      "sha256": "03857e4681cc83fe84c054ac1b1e1cd3df91c9b5204f7f8bc70962d14033c507"
+    }
+  },
+  "ipo0_lexical_residue": {
+    "interpretation": "revision-53 implied-DO consumes zero P elements when IPO=0; trailing lexical columns are not active Frpo/Pofr input values",
+    "new_deffra_rows_with_trailing_values": 14,
+    "new_defmat_rows_with_trailing_values": 11
+  },
+  "result": "PASS",
+  "revision53_only_or_restructured_fields": {
+    "AsfaSDO": "1",
+    "Cfracom": "0.58",
+    "Hufrosex": "1",
+    "Pofrex": "0",
+    "Pofrhuma": "0",
+    "Ratio_rd_st_unique": [
+      "1"
+    ],
+    "RecfHUSDOav": "0",
+    "RecfSDOav": "1",
+    "SDOfr": "1"
+  },
+  "schema": "ANIMO-IO01/RuurloMaterialLineageAudit/v1",
+  "sparse_zero_rule": {
+    "normalization_candidate": "omitted (material,fraction) sparse entries normalize to numeric zero",
+    "old_full_FR_equals_new_sparse_FR_zero_filled": true,
+    "old_full_FRca_equals_new_sparse_FRca_zero_filled": true,
+    "runtime_implementation_dependency_separate": true,
+    "status": "SUPPORTED_BY_EXACT_NATURAL_CASE_LINEAGE_EQUIVALENCE"
+  },
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+}
