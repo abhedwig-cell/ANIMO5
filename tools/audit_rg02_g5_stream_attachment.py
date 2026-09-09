@@ -94,7 +94,8 @@ def main() -> int:
         checks.append({"check": "no_evidence_strength_promotion", "result": "PASS"})
 
         require("not a global NQ02 branch-authority reassignment" in by_id["NQ02"]["notes"], "NQ02 local authority scope not explicit")
-        require("revalidation was resolved by ARCHG02" in by_id["ARCHG01"]["notes"], "ARCHG02 temporal revalidation resolution not explicit")
+        archg_note = by_id["ARCHG01"]["notes"]
+        require("resolved by ARCHG02" in archg_note and "G8 remains unadmitted" in archg_note, "ARCHG02 temporal revalidation resolution not explicit")
         for fragment in ["complete-case synthetic B1", "not proven historical Intel behaviour", "no B2/B3 promotion"]:
             require(fragment in by_id["MP02"]["notes"], f"MP02 evidence guard missing: {fragment}")
         for fragment in ["19/19 synthetic", "no ANIMO process kernel", "historical behavioural equivalence"]:
