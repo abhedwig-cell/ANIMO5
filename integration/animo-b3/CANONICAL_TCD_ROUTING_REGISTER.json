@@ -1,0 +1,246 @@
+{
+  "work_unit": "ANIMO-B3I01",
+  "record_type": "POST_G5_CANONICAL_INTAKE_AND_ROUTING_NO_ADMISSION",
+  "repository": "abhedwig-cell/ANIMO5",
+  "authority": {
+    "b3_classification_owner": "ANIMO-B3Q01",
+    "canonical_id_allocation_owner": "ANIMO-B3 governance",
+    "rg02_g5_branch": "work/animo-rg02-g5-independent-stream-attachment",
+    "rg02_g5_head": "5c278152eacc33660f1c5870c7d419b8041b20a9",
+    "b3q01_branch": "work/animo-b3q01-scientific-admission-framework",
+    "b3q01_head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "canonical_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "canonical_register_tail_observed": "TCD-027",
+    "existing_pre_b3i01_reservation": "TCD-028"
+  },
+  "register_policy": {
+    "local_finding_is_canonical_tcd": false,
+    "same_phenomenon_found_by_multiple_workunits_gets_multiple_ids": false,
+    "different_phenomena_in_same_routine_get_merged": false,
+    "new_id_requires_fail_closed_reservation_first": true,
+    "central_csv_rows_appended_by_b3i01": false,
+    "central_csv_append_reason": "B3I01 establishes collision-checked canonical reservations and routing without silently mutating the pre-existing TCD-001 through TCD-027 register snapshot. TCD-028 through TCD-037 remain explicit reserved canonical intake IDs pending a separate register-append integration commit. This does not reduce their evidence strength or admit corrections.",
+    "reservation_artifact": "integration/animo-b3/POST_G5_TCD_RESERVATIONS.json"
+  },
+  "canonical_routing": [
+    {
+      "canonical_key": "TCD-016-C1",
+      "parent_tcd": "TCD-016",
+      "canonical_id_state": "CHILD_ATOM_NO_NEW_TOP_LEVEL_ID",
+      "phenomenon": "surface NH4 continuation-state ownership across wet-to-dry ponding deactivation",
+      "b3_class": "C",
+      "disposition": "ATOMIZE_EXISTING_TCD",
+      "qualification_owner": "PROPOSED_ANIMO-SQ02",
+      "dependencies": ["ANIMO-specific phase identity", "dry-hold chemistry", "rewetting law", "independent scientific review", "B2 historical transition characterization"],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-016-E1",
+      "parent_tcd": "TCD-016",
+      "canonical_id_state": "CHILD_ATOM_NO_NEW_TOP_LEVEL_ID",
+      "phenomenon": "low-storage surface transport activation and export numerical policy",
+      "b3_class": "E",
+      "disposition": "ATOMIZE_EXISTING_TCD",
+      "qualification_owner": "PROPOSED_ANIMO-NQ04",
+      "dependencies": ["TCD-016-C1 scientific semantics first", "B2 unrounded path characterization", "threshold and transition convergence envelope"],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-009-GHG-GAS-STORE",
+      "parent_tcd": "TCD-009",
+      "canonical_id_state": "CHILD_ATOM_NO_NEW_TOP_LEVEL_ID",
+      "phenomenon": "CH4-C and N2O-N gas stores missing from ordinary C and N control-volume start/end storage",
+      "b3_class": "A",
+      "disposition": "ATOMIZE_EXISTING_TCD",
+      "qualification_owner": "PROPOSED_ANIMO-GHG04",
+      "dependencies": ["closed C and N control-volume identity", "proof of unchanged physical state and process flux", "B2 or historical-uncertainty route prerequisites"],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-025",
+      "canonical_id_state": "EXISTING_CANONICAL_TCD",
+      "phenomenon": "macropore main-ledger storage and direct-drainage integration gap",
+      "b3_class": "A",
+      "disposition": "MAP_TO_EXISTING_TCD",
+      "qualification_owner": "PROPOSED_ANIMO-MP05",
+      "evidence_sources": ["ANIMO-MP01", "ANIMO-MP02"],
+      "dependencies": ["revision53 macropore process qualification", "active historical B2 case", "state and flux non-interference proof"],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-028",
+      "canonical_id_state": "PREEXISTING_FAIL_CLOSED_RESERVATION",
+      "phenomenon": "stable DOM plough event accumulator use-before-definition and current GNU inter-event carryover",
+      "b3_class": "B",
+      "disposition": "MAP_TO_EXISTING_TCD",
+      "qualification_owner": "ANIMO-PREP10C",
+      "reservation_ref": "integration/animo-b3/TCD-028_RESERVATION.json",
+      "dependencies": ["historical local-storage semantics", "B2 admission-route eligibility", "independent second-line review"],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-029",
+      "canonical_id_state": "RESERVED_BY_B3I01_NOT_REGISTER_ROW",
+      "phenomenon": "Iflsol4 Detcoef and Coefdc analytical coefficient cancellation",
+      "b3_class": "E",
+      "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+      "qualification_owner": "PROPOSED_ANIMO-NQ03",
+      "source_local_key": "NQ02-LCL-IFLSOL4-DETCOEF-CANCELLATION",
+      "dependencies": ["cancellation-safe mathematical equivalence", "precision sensitivity", "natural and B2 trajectory characterization", "independent numerical review"],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-030",
+      "canonical_id_state": "RESERVED_BY_B3I01_NOT_REGISTER_ROW",
+      "phenomenon": "macropore initial NO3 validation checks NH4 values",
+      "b3_class": "B",
+      "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+      "qualification_owner": "PROPOSED_ANIMO-MP03",
+      "source_local_key": "MP01-LCL-INITIAL-NO3-VALIDATION",
+      "dependencies": ["input contract identity", "positive and negative branch coverage", "historical active case if available"],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-031",
+      "canonical_id_state": "RESERVED_BY_B3I01_NOT_REGISTER_ROW",
+      "phenomenon": "persistent macropore solute restart serialization omission",
+      "b3_class": "C",
+      "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+      "qualification_owner": "PROPOSED_ANIMO-MP04",
+      "source_local_keys": ["MP01-LCL-MACROPORE-SOLUTE-RESTART-PERSISTENCE", "MP02-LCL-MACROPORE-SOLUTE-RESTART-PERSISTENCE"],
+      "deduplication": "one phenomenon independently observed by MP01 and MP02",
+      "dependencies": ["complete persistent state definition", "initialization and restart ownership", "continuous-versus-split active qualification", "historical reference"],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-032",
+      "canonical_id_state": "RESERVED_BY_B3I01_NOT_REGISTER_ROW",
+      "phenomenon": "GHG methanogenesis source-pool transfer path incomplete relative to CH4 production sources",
+      "b3_class": "B",
+      "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+      "qualification_owner": "PROPOSED_ANIMO-GHG02",
+      "source_local_key": "GHG01-LCL-METHANOGENESIS-SOURCE-POOL-TRANSFER",
+      "dependencies": ["revision-specific source-pool theory", "C balance closure", "historical GHG reference"],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-033",
+      "canonical_id_state": "RESERVED_BY_B3I01_NOT_REGISTER_ROW",
+      "phenomenon": "CH4 production component partition does not close to total under partial anaerobiosis",
+      "b3_class": "B",
+      "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+      "qualification_owner": "PROPOSED_ANIMO-GHG02",
+      "source_local_key": "GHG01-LCL-CH4-PRODUCTION-COMPONENT-PARTITION",
+      "dependencies": ["authoritative CH4 component equation", "partition identity test", "historical GHG reference"],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-034",
+      "canonical_id_state": "RESERVED_BY_B3I01_NOT_REGISTER_ROW",
+      "phenomenon": "CH4 plant-growth temperature index read before local layer index definition",
+      "b3_class": "B",
+      "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+      "qualification_owner": "PROPOSED_ANIMO-GHG02",
+      "source_local_key": "GHG01-LCL-CH4-PLANT-GROWTH-TEMPERATURE-INDEX",
+      "dependencies": ["intended temperature layer semantics", "branch activation", "compiler first-read sensitivity characterization", "historical GHG reference"],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-035",
+      "canonical_id_state": "RESERVED_BY_B3I01_NOT_REGISTER_ROW",
+      "phenomenon": "GHG restart phase partition reconstructed from total gas using fixed reference temperature",
+      "b3_class": "C",
+      "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+      "qualification_owner": "PROPOSED_ANIMO-GHG03",
+      "source_local_key": "GHG01-LCL-GHG-RESTART-PHASE-PARTITION",
+      "dependencies": ["checkpoint thermodynamic state definition", "phase reconstruction law", "split-run equivalence", "historical GHG reference"],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-036",
+      "canonical_id_state": "RESERVED_BY_B3I01_NOT_REGISTER_ROW",
+      "phenomenon": "ponding layer0 GHG state has incomplete restart reconstruction",
+      "b3_class": "C",
+      "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+      "qualification_owner": "PROPOSED_ANIMO-GHG03",
+      "source_local_key": "GHG01-LCL-GHG-PONDING-RESTART-LAYER0",
+      "dependencies": ["layer0 phase ownership", "pre-existing ponding restart path", "split-run equivalence", "historical GHG reference"],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-037",
+      "canonical_id_state": "RESERVED_BY_B3I01_NOT_REGISTER_ROW",
+      "phenomenon": "GHG Outbal observer consumes working arrays without identified active producer or explicit interface",
+      "b3_class": "A",
+      "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+      "qualification_owner": "PROPOSED_ANIMO-GHG04",
+      "source_local_key": "GHG01-LCL-GHG-OUTBAL-WORKING-ARRAYS",
+      "dependencies": ["intended ledger producer identity", "unchanged physical state and flux proof", "historical GHG ledger reference"],
+      "admitted": false
+    }
+  ],
+  "non_tcd_routes": [
+    {
+      "local_key": "MP02-LCL-GNU-MAPOTRANSPORT-INVALID-GUARD",
+      "disposition": "BUILD_RUNTIME_HAZARD_NOT_TCD",
+      "b3_class": null,
+      "owner": "PROPOSED_ANIMO-BUILD01",
+      "reason": "GNU invalid flag is proven on the diagnostic active route but historical Intel effect and model-state or flux materiality are not proven"
+    },
+    {
+      "local_key": "GHG01-LCL-GHG-HIDDEN-TASK-STATE-PERSISTENCE",
+      "disposition": "MAP_TO_EXISTING_TCD",
+      "existing_tcd": "TCD-011",
+      "b3_class": null,
+      "owner": "PROPOSED_ANIMO-BUILD01",
+      "reason": "same unresolved compiler local-storage duration family controls interpretation"
+    },
+    {
+      "local_key": "GHG01-LCL-N2O-NITRIFICATION-TEMPERATURE-SIGN-DOC-SOURCE",
+      "disposition": "THEORY_PROVENANCE_GAP_NOT_TCD",
+      "existing_tcd": "TCD-008",
+      "b3_class": null,
+      "owner": "ANIMO-GHG01_AND_ANIMO-TH02"
+    },
+    {
+      "local_key": "GHG01-LCL-N2O-REDUCTION-AERATION-FACTOR-DOC-SOURCE",
+      "disposition": "THEORY_PROVENANCE_GAP_NOT_TCD",
+      "existing_tcd": "TCD-008",
+      "b3_class": null,
+      "owner": "ANIMO-GHG01_AND_ANIMO-TH02"
+    },
+    {
+      "local_key": "GHG01-LCL-CH4-FRESH-OM-WEIGHTING-INDEX",
+      "disposition": "INSUFFICIENT_EVIDENCE",
+      "provisional_b3_class_if_causal_identity_is_established": "B",
+      "owner": "ANIMO-GHG01_FOLLOWUP"
+    },
+    {
+      "local_key": "SQ01-LCL-UBOUNDCONC-DRY-DEPOSITION-1MM",
+      "disposition": "INSUFFICIENT_EVIDENCE",
+      "provisional_b3_class_if_materiality_is_established": "E",
+      "owner": "ANIMO-SQ01_FOLLOWUP"
+    },
+    {
+      "local_key": "SQ01-LCL-TRANSCA-LAYER0-PARAMETER-INITIALIZATION",
+      "disposition": "INSUFFICIENT_EVIDENCE",
+      "provisional_b3_class_if_runtime_effect_is_established": "B",
+      "owner": "ANIMO-SQ01_FOLLOWUP"
+    }
+  ],
+  "allocation_summary": {
+    "preexisting_reserved_ids_intaken": ["TCD-028"],
+    "new_fail_closed_reservations": ["TCD-029", "TCD-030", "TCD-031", "TCD-032", "TCD-033", "TCD-034", "TCD-035", "TCD-036", "TCD-037"],
+    "existing_tcd_atoms_created_as_routing_keys": ["TCD-016-C1", "TCD-016-E1", "TCD-009-GHG-GAS-STORE"],
+    "new_top_level_ids_for_atoms": 0,
+    "build_runtime_hazards_without_tcd": 1,
+    "theory_provenance_gaps_without_new_tcd": 2,
+    "insufficient_evidence_without_id": 3
+  },
+  "admission_state": {
+    "new_corrections_admitted": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "evidence_strength_increased_by_routing": false
+  }
+}
