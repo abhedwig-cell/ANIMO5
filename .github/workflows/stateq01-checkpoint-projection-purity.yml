@@ -1,0 +1,24 @@
+name: STATEQ01 checkpoint projection purity qualification
+
+on:
+  push:
+    branches:
+      - work/animo-stateq01-canonical-state-readiness
+    paths:
+      - tools/stateq01/checkpoint_projection_purity_harness.py
+      - tests/stateq01/test_checkpoint_projection_purity_harness.py
+      - docs/state/CHECKPOINT_PROJECTION_PURITY_QUALIFICATION.md
+      - integration/animo-state/CHECKPOINT_PROJECTION_PURITY_SENTINEL_STATUS.json
+      - .github/workflows/stateq01-checkpoint-projection-purity.yml
+  workflow_dispatch:
+
+jobs:
+  checkpoint-projection-purity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run RC-R8 RC-R9 checkpoint purity sentinels
+        run: python -m unittest tests/stateq01/test_checkpoint_projection_purity_harness.py -v
