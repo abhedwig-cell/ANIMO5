@@ -1,0 +1,56 @@
+{
+  "parent_tcd": "TCD-016",
+  "work_unit": "ANIMO-SQ01",
+  "parent_status": "BLOCKED_TCD016_INSUFFICIENT_THEORY_FOR_CORRECTED_LEGACY_ADMISSION",
+  "parent_admitted": false,
+  "production_migration": "NOT_ADMITTED",
+  "children": [
+    {
+      "id": "TCD-016-C1",
+      "title": "Surface NH4 continuation-state ownership",
+      "provisional_class": "C_MISSING_PHYSICAL_STATE_OR_INCOMPLETE_STATE_MODEL",
+      "status": "BLOCKED_INSUFFICIENT_ANIMO_SPECIFIC_PHASE_THEORY",
+      "preferred_hypothesis": {
+        "state": "M_surface_NH4_non_aqueous_continuation",
+        "unit": "kg_N_m-2",
+        "owner": "surface_control_volume",
+        "scientific_status": "PROPOSED_MODEL_EXTENSION_NOT_CORRECTED_LEGACY"
+      },
+      "gates": {
+        "authoritative_phase_theory": "FAIL_MISSING",
+        "state_definition_units": "PROVISIONAL",
+        "single_owner_control_volume": "PROVISIONAL",
+        "initialization": "NOT_QUALIFIED",
+        "restart_checkpoint": "DESIGNABLE_NOT_QUALIFIED",
+        "wet_to_dry_transfer": "CONSERVATION_FORM_DEFINED_PHYSICS_NOT_QUALIFIED",
+        "dry_hold": "NOT_QUALIFIED",
+        "rewetting_release": "NOT_QUALIFIED",
+        "connected_process_conservation": "PARTIAL_DIAGNOSTIC_ONLY",
+        "edge_case_tests": "DIAGNOSTIC_TOPOLOGY_ONLY",
+        "legacy_divergence": "PARTIALLY_CHARACTERIZED",
+        "independent_scientific_review": "NOT_DONE"
+      }
+    },
+    {
+      "id": "TCD-016-E1",
+      "title": "Low-storage transport threshold and transition policy",
+      "provisional_class": "E_NUMERICAL_POLICY_CHANGE",
+      "status": "BLOCKED_DEPENDS_ON_TCD016_C1",
+      "legacy_surfaces": [
+        "Factor=100 low-storage criterion",
+        "Fu > 1e-6 m d-1 layer-0 export threshold"
+      ],
+      "excluded_candidate": "FORCE_ALL_RESIDUAL_MASS_THROUGH_TINY_OUTFLOW",
+      "dependency": "TCD-016-C1"
+    }
+  ],
+  "dependency_order": [
+    "TCD-016-C1",
+    "TCD-016-E1",
+    "TCD-016 parent disposition"
+  ],
+  "standalone_class_b_child": {
+    "created": false,
+    "reason": "The local zeroing branch is source-localized, but the correct replacement cannot be defined without a physical mass destination. Current evidence therefore does not support a local-algebra-only correction."
+  }
+}
