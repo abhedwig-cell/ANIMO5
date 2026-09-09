@@ -1,0 +1,66 @@
+file,id_revision,id_date,id_author,headurl_tag,history_years,explicit_release_markers,notable_scope
+Addit.for,11,2013-02-28,renau001,animo4.1.4,1992|1993|1994|1999|2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,stable_DOM
+Aeration_original.for,11,2013-02-28,renau001,animo4.1.4,2003|2006|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,GHG
+AERATION_SONICG.FOR,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Animo.for,41,2016-08-26,renau001,animo4.1.4,1985|2011|2016,,stable_DOM|GHG|PClass_EMW2012|soil_temperature
+Animo.inc,,,,,,,PClass_EMW2012|soil_temperature
+CORRECTION.FOR,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Denitr.for,11,2013-02-28,renau001,animo4.1.4,1991|2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,GHG
+FRACPNT.FOR,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Function.for,34,2013-03-11,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,GHG
+func_julianday.f90,,,,,2003|2006|2011,Release of ANIMO4.0 | Release of ANIMO4.1,
+ghgasses.for,11,2013-02-28,renau001,animo4.1.4,2000|2007|2013,Release of ANIMO4.0,GHG|macropore
+ghgtransport.for,,,,animo4.1.4,2000|2007,Release of ANIMO4.0,GHG
+ghgtranssub.for,,,,animo4.1.4,2000|2007|2008,Release of ANIMO4.0,GHG
+ghg_ch4.for,11,2013-02-28,renau001,animo4.1.4,2007|2013,Release of ANIMO4.0,GHG
+ghg_n2o.for,11,2013-02-28,renau001,animo4.1.4,2008|2013,Release of ANIMO4.0,GHG
+Grassprd.for,11,2013-02-28,renau001,animo4.1.4,1995|2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Grassup3.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+grass_init.for,11,2013-02-28,renau001,animo4.1.4,2003|2010|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+gregoriandate.f90,,,,,,,
+Hydro_aggregated.for,11,2013-02-28,renau001,animo4.1.4,1993|2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Hydro_detailed.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,macropore
+Inicalc.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,stable_DOM|GHG
+Init.for,27,2013-02-28,renau001,animo4.1.4,2003|2010|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,stable_DOM|GHG|PClass_EMW2012
+input1.for,53,2013-06-04,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,stable_DOM|GHG|PClass_EMW2012|soil_temperature
+input1_1.for,53,2013-06-04,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,stable_DOM|GHG|PClass_EMW2012|soil_temperature
+Input_addit.for,46,2013-06-03,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,PClass_EMW2012
+Input_cropext.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,PClass_EMW2012
+Input_Echo.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,stable_DOM|PClass_EMW2012
+Input_hydro.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,GHG
+Input_SoilTemp.for,,,,,2000,,soil_temperature
+MAPOHYDRO.FOR,,,,,2000|2008,,macropore
+mapoinput.for,7,2013-02-28,renau001,,2007|2008|2013,Release of ANIMO4.0 | Release of ANIMO4.0 (32),macropore
+MAPOTRANSPORT.FOR,7,2013-02-28,renau001,,1999|2000|2013,"ANIMO 3.7.5, version that includes macropores):",macropore
+MODFLUX.FOR,11,2013-02-28,renau001,animo4.1.4,1993|2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,macropore
+outbal1.inc,,,,,,,
+outbal2.inc,,,,,,,GHG
+Outbal_calc.for,27,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,GHG
+Outbal_Init.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,GHG
+Outbal_write.for,11,2013-02-28,renau001,animo4.1.4,2000|2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,GHG
+Output2.for,34,2013-03-11,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Output_Init.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,GHG|macropore
+output_initPCl.for,19,2013-02-28,renau001,animo4.1.4,2013,,PClass_EMW2012
+Outsel.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,stable_DOM|GHG
+Outselorg.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,stable_DOM|GHG
+OXYDEM.FOR,34,2013-03-11,renau001,animo4.1.4,2000|2001|2003|2010|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Param.inc,,,,,1987,,
+Rates.for,11,2013-02-28,renau001,animo4.1.4,2003|2006|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,stable_DOM|GHG
+resp_miner.for,,,,,,,stable_DOM|GHG
+root_extern.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+root_grass.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+root_plant.for,11,2013-02-28,renau001,animo4.1.4,1995|2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Temper.for,11,2013-02-28,renau001,animo4.1.4,2003|2007|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,GHG
+Transca.for,11,2013-02-28,renau001,animo4.1.4,1993|2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,stable_DOM|GHG
+Transgen.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Transorp.for,34,2013-03-11,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+TRANSPORT.FOR,11,2013-02-28,renau001,animo4.1.4,1987|1993|1994|2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,macropore
+Transsub.for,34,2013-03-11,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+UBoundconc.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Upintg_Extern.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Upintg_Grass.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Upintg_Plant.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Uptpar_Extern.for,33,2013-03-11,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Uptpar_Grass.for,11,2013-02-28,renau001,animo4.1.4,2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Uptpar_Plant.for,11,2013-02-28,renau001,animo4.1.4,1994|1995|2003|2011|2013,Release of ANIMO4.0 | Release of ANIMO4.1,
+Version.inc,,,,,,,
