@@ -5,11 +5,16 @@
   "branch": "work/animo-io01-legacy-text-input-contracts",
   "starting_head": "12ae76b23728d75fc6ca746ca1c67aa26e0ec005",
   "date": "2026-09-09",
-  "state": "IN_PROGRESS_AUTHORITY_AND_B0_IDENTITY_PINNED",
-  "implemented": false,
+  "decision": "QUALIFIED_LEGACY_INPUT_CONTRACT_AND_TTUTIL_SUITABILITY_EVIDENCE",
+  "qualification_scope": "source-bound revision-53 input-family inventory, parser/normalization/scientific boundary, defaults and error-contract audit, TTUTIL suitability classification, normalized parser-equivalence model, negative-case architecture and bounded pilot selection; no runtime TTUTIL adapter qualification",
+  "implemented": true,
   "persisted": true,
-  "tested": false,
-  "qualified": false,
+  "tested": true,
+  "qualified": true,
+  "audit_qualified": true,
+  "ttutil_runtime_adapter_qualified": false,
+  "pilot_status": "SELECTED_NOT_IMPLEMENTED_TTUTIL_DEPENDENCY_AND_LEGACY_STRICTNESS_CONTRACT_NOT_PINNED",
+  "production_migration": "NOT_ADMITTED",
   "authority_basis": {
     "RG02_G5_head_at_start": "12ae76b23728d75fc6ca746ca1c67aa26e0ec005",
     "PREP01_05": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
@@ -26,12 +31,34 @@
     "local_testbank_hash_verified": true,
     "frozen_bytes_modified": false
   },
-  "duplicate_workunit_check": {
-    "io01_branch_found_before_start": false,
-    "ttutil_branch_found_before_start": false,
-    "ttutil_commit_found_before_start": false
+  "verification": {
+    "input_family_contract_rows": 15,
+    "defaults_registered": 15,
+    "positive_equivalence_cases": 5,
+    "negative_equivalence_cases": 20,
+    "structural_audit_tool": "tools/audit_io01_contracts.py",
+    "unit_tests": "tests/io/test_io01_contracts.py",
+    "workflow": ".github/workflows/io01-contract-audit.yml",
+    "local_structural_audit": "PASS",
+    "github_actions": "PENDING",
+    "local_unit_tests": "PASS"
   },
-  "scope": "audit revision-53 legacy input contracts, separate parser/normalization/scientific semantics, classify TTUTIL suitability, define normalized parser-equivalence evidence and select bounded pilots; no broad production replacement",
+  "principal_findings": [
+    "TTUTIL is useful parser infrastructure but is not a drop-in parser for the revision-53 legacy grammar",
+    "ANIMO41 GENERAL named records are sequentially order-sensitive while public TTUTIL reading is name-based and order-independent",
+    "legacy label-addressed files and sequential management streams need explicit compatibility behaviour before any TTUTIL substitution",
+    "source-only defaults and compatibility fallbacks must be materialized in the normalized dump with rule ids",
+    "INITIAL and restart state remain specialized state adapters",
+    "external crop and soil-temperature time series remain specialized forcing/exchange adapters",
+    "binary hydrology remains outside TTUTIL and maps only semantically to ARCH05 hydrology exchange",
+    "GHGMais is rejected under the revision-53 adapter until a provenance-qualified versioned lineage exists"
+  ],
+  "pilot_selection": {
+    "pilot_A": "DIRECT/animo.ini routing contract",
+    "pilot_B_candidate": "MAT non-GHG static core after Pilot A",
+    "pilot_implementation_committed": false,
+    "reason": "TTUTIL source/version/dependency provenance and strict legacy compatibility policy are not yet pinned"
+  },
   "non_admissions": {
     "legacy_scientific_semantics_changed": false,
     "frozen_source_modified": false,
@@ -40,5 +67,11 @@
     "GHGMais_silently_normalized": false,
     "production_migration_admitted": false,
     "B4_admitted": false
-  }
+  },
+  "next_safe_steps": [
+    "pin an exact TTUTIL source/version/license provenance without vendoring it by accident",
+    "build an exact legacy-parser normalization dump oracle for DIRECT then MAT",
+    "execute positive and negative parser-only equivalence fixtures against the frozen B0 cases and synthetic descendants",
+    "only then implement a bounded TTUTIL-backed prototype and classify it separately from this audit"
+  ]
 }

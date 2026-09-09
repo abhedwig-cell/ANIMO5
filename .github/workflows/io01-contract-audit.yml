@@ -1,0 +1,24 @@
+name: IO01 input-contract audit
+
+on:
+  push:
+    branches:
+      - work/animo-io01-legacy-text-input-contracts
+  pull_request:
+    paths:
+      - 'docs/io/**'
+      - 'integration/animo-io/**'
+      - 'tools/audit_io01_contracts.py'
+      - 'tests/io/**'
+      - '.github/workflows/io01-contract-audit.yml'
+
+jobs:
+  contract-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python tools/audit_io01_contracts.py
+      - run: python -m unittest discover -s tests/io -p 'test_*.py'

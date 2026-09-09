@@ -1,0 +1,16 @@
+default_id,family,where_defined,trigger,legacy_value,documented,version_specific,normalized_target,classification,must_be_explicit
+IO01-D001,DIRECT,input1.for default file assignment before direct-file branch,no direct-file argument,AnimoVersion=41 and default GEN/MAT/PLA/SOI/BOU/INI/MAN/SWATRE/WATBAL/CHE/INO/CRU/STE names,partly; 4.0 guide documents default-name concept,revision-53 default set,LegacyInputBinding,OPERATIONAL_DEFAULT,true
+IO01-D002,DIRECT,input1.for message output setup,MES selector absent,message.Out,4.0 guide documents MES/message output role,no evidence of semantic change,DiagnosticsConfiguration.message_path,OPERATIONAL_DEFAULT,true
+IO01-D003,GEN,input1.for ANIMO40 simopt path,AnimoVersion=40,Ioptte=0,not in 4.0 input table as separate switch,yes,ModelConfiguration.soil_temperature_external,VERSION_COMPATIBILITY_DEFAULT,true
+IO01-D004,GEN,input1.for ANIMO41 ReadOp PClassOption fallback,PClassOption next-record read returns error,IoptPCl=0; error cleared,source-only in supplied evidence,yes,ModelConfiguration.p_class.enabled,SOURCE_COMPATIBILITY_DEFAULT,true
+IO01-D005,GEN,input1.for after PClassOption,IoptPCl != 1,PClYrSw=0,source-only in supplied evidence,yes,ModelConfiguration.p_class.year_switch,INACTIVE_FEATURE_VALUE,true
+IO01-D006,GEN,ReadTs helper,missing/mismatched AnnDOMNtotNO3_1mGWL or DOMNtotNO3_1mGWL output record,jout=0 and no error,source-only,yes,DiagnosticsConfiguration,OPTIONAL_DIAGNOSTIC_DEFAULT,true
+IO01-D007,PLA,input1.for grass crop record,IoptGrEv single-character integer read fails,IoptGrEv=2,source-only compatibility behaviour,yes,CropConfiguration.grass_evaporation_reduction_option,SCIENTIFIC_OPTION_DEFAULT,true
+IO01-D008,PLA,input1.for grass branch,grass crop branch,Drymatconsum=0.0014,source comment only in inspected revision,potentially,ParameterSet.grass.dry_matter_consumption,SCIENTIFIC_DEFAULT,true
+IO01-D009,PLA,input1.for optional >grharv: section,>grharv: missing,NoHarvEvents=0 and simulation continues,source warning,post-4.0 surface,CropConfiguration.harvest_events,OPTIONAL_SECTION_DEFAULT,true
+IO01-D010,PLA,input1.for optional >fmeteo: section,>fmeteo: missing,IoptMeteo=0 and simulation continues,source warning,post-4.0 surface,MeteoBinding,OPTIONAL_SECTION_DEFAULT,true
+IO01-D011,PLA,input1.for non-grass crop compatibility read,extended crop record read fails,"ExPrFa=0.41; Detuha=0.1, with preceding values reused as P uptake values when IPO=1",source-only compatibility behaviour,yes,CropConfiguration + ParameterSet,SCIENTIFIC_COMPATIBILITY_DEFAULT,true
+IO01-D012,SOI,input1.for optional >RdfDOM: section,>RdfDOM: missing,NuRF=1; LnRfDOM(1)=NL; RdFaDOM(1)=1.0; error cleared,source warning,yes,ParameterSet.dom_reduction_profile,SCIENTIFIC_DEFAULT,true
+IO01-D013,SOI,input1.for optional >PALfac: section,>PALfac: missing,IoptPal=2; Palfact(:)=1.0; error cleared,source warning,yes,ParameterSet.pal_adjustment,SCIENTIFIC_DEFAULT,true
+IO01-D014,HYDRO_BINARY,Input_hydro.for older detailed hydrology branch,Iopthyvs=0,Runon=0.0,source-only branch behaviour,hydrology-layout specific,HydrologyFrame.runon_flux,PAYLOAD_COMPATIBILITY_DEFAULT,true
+IO01-D015,CROP_EXT,Input_cropext.for,min and max crop N/P fraction equal within 1e-12,min *= 0.8; max *= 1.25,source-only normalization behaviour,revision-53 observed,ExternalCropForcing.bounds,LEGACY_NORMALIZATION_QUIRK,true

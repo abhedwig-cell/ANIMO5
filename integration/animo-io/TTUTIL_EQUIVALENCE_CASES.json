@@ -1,0 +1,37 @@
+{
+  "work_unit": "ANIMO-IO01",
+  "schema": "TTUTIL_EQUIVALENCE_CASES/v1",
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "qualification_rule": "parser-normalization equivalence first; model regression second",
+  "positive_cases": [
+    {"id":"IOP-DIR-001","family":"DIRECT","basis":"all supplied cases","purpose":"valid Animo41 routing bindings normalize to same paths and version","required_comparison":"field_exact"},
+    {"id":"IOP-GEN-001","family":"GEN","basis":"RuurloGrass","purpose":"revision-53 ANIMO41 ordered options and output selections","required_comparison":"field_exact+presence"},
+    {"id":"IOP-MAT-001","family":"MAT","basis":"RuurloGrass","purpose":"non-GHG material core with natural B0 coverage","required_comparison":"field_exact+cardinality+units"},
+    {"id":"IOP-SOI-001","family":"SOI","basis":"RuurloGrass","purpose":"profile geometry and ordinary soil parameters","required_comparison":"field_exact+cardinality+units"},
+    {"id":"IOP-CHE-001","family":"CHE","basis":"CranGrass","purpose":"P chemistry site/horizon structure","required_comparison":"field_exact+cardinality+units"}
+  ],
+  "negative_cases": [
+    {"id":"ION-001","family":"GEN","mutation":"omit mandatory sequential key","expected":"REJECT_BEFORE_PHYSICS","class":"omitted_mandatory_field"},
+    {"id":"ION-002","family":"GEN","mutation":"swap two required ANIMO41 sequential keys","expected":"REJECT_BEFORE_PHYSICS","class":"wrong_order"},
+    {"id":"ION-003","family":"GEN","mutation":"duplicate expected key so next key is displaced","expected":"REJECT_BEFORE_PHYSICS","class":"duplicate_field"},
+    {"id":"ION-004","family":"GEN","mutation":"malformed integer/real literal","expected":"REJECT_BEFORE_PHYSICS","class":"malformed_number"},
+    {"id":"ION-005","family":"MAT","mutation":"unknown/missing required eight-char section","expected":"REJECT_BEFORE_PHYSICS","class":"missing_section"},
+    {"id":"ION-006","family":"MAT","mutation":"too few values for NM/NF-driven row","expected":"REJECT_BEFORE_PHYSICS","class":"wrong_count"},
+    {"id":"ION-007","family":"SOI","mutation":"NUHO inconsistent with required horizon arrays","expected":"REJECT_BEFORE_PHYSICS","class":"inconsistent_cardinality"},
+    {"id":"ION-008","family":"BOU","mutation":"IPO=1 but omit required P conditional values/section","expected":"REJECT_BEFORE_PHYSICS","class":"missing_conditional_section"},
+    {"id":"ION-009","family":"MAN","mutation":"skip/repeat add event label or corrupt sequential event count","expected":"REJECT_BEFORE_PHYSICS","class":"repeated_or_missing_section"},
+    {"id":"ION-010","family":"CROP_EXT","mutation":"extra or missing time-series column","expected":"REJECT_BEFORE_PHYSICS","class":"malformed_table"},
+    {"id":"ION-011","family":"CROP_EXT","mutation":"date/timestep does not cover ANIMO simulation contract","expected":"REJECT_BEFORE_PHYSICS","class":"time_contract"},
+    {"id":"ION-012","family":"SOIL_TEMP","mutation":"too few fixed-column layer temperatures","expected":"REJECT_BEFORE_PHYSICS","class":"missing_column"},
+    {"id":"ION-013","family":"DIRECT","mutation":"empty required file binding","expected":"REJECT_BEFORE_PHYSICS","class":"empty_value"},
+    {"id":"ION-014","family":"GHG_SCHEMA","mutation":"feed supplied GHGMais schema to revision-53 adapter","expected":"LINEAGE_UNRESOLVED_REJECT","class":"versioned_schema_mismatch"},
+    {"id":"ION-015","family":"HYDRO_BINARY","mutation":"route SWATRE.UNF/SWAP.BUN/result.bun to TTUTIL text reader","expected":"REJECT_WRONG_ADAPTER_CLASS","class":"binary_not_text"},
+    {"id":"ION-016","family":"RESTART","mutation":"route INITIAL.OUT to ordinary static-config reader","expected":"REJECT_WRONG_OWNER_CLASS","class":"restart_not_config"},
+    {"id":"ION-017","family":"GEN","mutation":"whitespace/comment variant preserving expected record/key and ! delimiter","expected":"ACCEPT_IF_LEGACY_ACCEPTS","class":"comment_whitespace_variant"},
+    {"id":"ION-018","family":"DIRECT","mutation":"unknown 4-char selector","expected":"LEGACY_MODE_PRESERVE_OBSERVED_IGNORE_WITH_DIAGNOSTIC","class":"unknown_key_legacy_quirk"},
+    {"id":"ION-019","family":"DIRECT","mutation":"duplicate known selector","expected":"LEGACY_MODE_LAST_ASSIGNMENT_WINS_WITH_PROVENANCE","class":"duplicate_key_legacy_quirk"},
+    {"id":"ION-020","family":"MAT","mutation":"duplicate Findadr section label with different second payload","expected":"LEGACY_MODE_FIRST_SECTION_WINS_WITH_PROVENANCE","class":"repeated_section_legacy_quirk"}
+  ],
+  "required_negative_classes": ["omitted_mandatory_field","duplicate_field","malformed_number","malformed_table","wrong_count","unknown_key_legacy_quirk","versioned_schema_mismatch","missing_column","empty_value","comment_whitespace_variant","repeated_section_legacy_quirk","inconsistent_cardinality","missing_conditional_section"]
+}
