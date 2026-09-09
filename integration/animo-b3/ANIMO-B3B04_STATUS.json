@@ -5,7 +5,7 @@
   "base": "ANIMO-B3I04@400b7cd79f89043e091751707dfa96537587dcf6",
   "target": "TCD-040",
   "class": "B_LOCAL_RESTORE_INITIALIZATION_IDENTITY",
-  "status": "IN_PROGRESS_PERSISTED_EVIDENCE_QUALIFICATION_PENDING",
+  "status": "QUALIFIED_ATOMIC_CLASS_B_RESTART_IDENTITY_READINESS_ONLY_NO_B3_ADMISSION",
   "frozen_b0": {
     "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
@@ -27,8 +27,57 @@
     "fail_closed_on_owner_ambiguity": true
   },
   "stateq02_guard_282_is_tcd040_qualification": false,
+  "qualification": {
+    "physical_owner_identity_unambiguous": true,
+    "natural_nonzero_layer0_fixture": "GrassPeat",
+    "separate_process_atomic_split_fixture": "LWKM_gras_1040.2021.2045",
+    "nonzero_split": 282,
+    "zero_state_negative_control_split": 67,
+    "comparison_policy": "EXACT_RAW_IEEE754_BYTES_NO_TOLERANCE",
+    "continuous_and_corrected_restore_full_trace_exact": true,
+    "full_trace_records_compared": 1800,
+    "first_defective_post_restore_divergence": "step 283 phase 0 layer 0 on NH4, NO3, DOM, DON, DOP",
+    "cold_start_restart_discriminator_present_in_legacy_zeroing_path": false,
+    "unconditional_deletion_of_Inicalc_zeroing_qualified": false,
+    "atomic_restore_identity_contract_qualified": true,
+    "whole_model_checkpoint_or_STATE_qualified": false,
+    "historical_fidelity_or_prevalence_claim": false
+  },
+  "deliverables": [
+    "docs/b3/TCD040_LAYER0_RESTART_IDENTITY_QUALIFICATION.md",
+    "integration/animo-b3/B3B04_TCD040_RESTART_IDENTITY_EVIDENCE.json",
+    "tools/b3b04/validate_b3b04.py",
+    ".github/workflows/animo-b3b04-tcd040-readiness.yml"
+  ],
+  "validation": {
+    "workflow": "ANIMO-B3B04 TCD-040 readiness validation",
+    "run_id": 34386299961,
+    "tested_head_before_status_closeout": "0405acf1a93a7988cc60fd5d709df0048796bfcc",
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS_ATOMIC_READINESS_ONLY_NO_PRODUCTION_PATCH_NO_CANONICAL_STATE_NO_B3_ADMISSION"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": true,
+    "qualified": true,
+    "workunit_complete": true
+  },
+  "explicit_non_admissions": [
+    "STATEQ02 split 282 rejection sentinel is not promoted to TCD-040 qualification",
+    "canonical STATE is not admitted",
+    "TCD-016 is not composed",
+    "internal-crop state is not composed",
+    "no broad restart redesign is qualified",
+    "no production patch is produced or admitted",
+    "TCD-040 is not admitted into B3",
+    "historical fidelity and historical prevalence remain unclaimed",
+    "GOV02 historical-uncertainty admission route is not bypassed"
+  ],
   "notes": [
-    "Persisted before executable qualification work.",
-    "STATEQ02 split 282 is scope activation evidence only and was rejected before checkpoint creation."
+    "Physical owner identity is source-bound and no fail-closed ambiguity remains for the five target layer-0 aqueous coordinates.",
+    "The qualified correction is restart-only preservation/restoration of exact accepted owner bytes while retaining cold-start semantics.",
+    "Because the legacy destructive initialization has no explicit restart discriminator, simply deleting Inicalc.for:125-129 is not a qualified implementation."
   ]
 }
