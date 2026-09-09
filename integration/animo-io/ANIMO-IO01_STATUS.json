@@ -40,8 +40,11 @@
     "unit_tests": "tests/io/test_io01_contracts.py",
     "workflow": ".github/workflows/io01-contract-audit.yml",
     "local_structural_audit": "PASS",
-    "github_actions": "PENDING",
-    "local_unit_tests": "PASS"
+    "local_unit_tests": "PASS",
+    "github_actions": "PASS",
+    "github_actions_run_id": 34323924225,
+    "github_actions_tested_head": "33dd34e9a31c6ba4ef5988e24cf67c3b23267c80",
+    "github_actions_conclusion": "success"
   },
   "principal_findings": [
     "TTUTIL is useful parser infrastructure but is not a drop-in parser for the revision-53 legacy grammar",
