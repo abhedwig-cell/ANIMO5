@@ -1,0 +1,25 @@
+name: STATEQ01 checkpoint serializer purity qualification
+
+on:
+  push:
+    branches:
+      - work/animo-stateq01-canonical-state-readiness
+    paths:
+      - 'tools/stateq01/checkpoint_serializer_purity_harness.py'
+      - 'tests/stateq01/test_checkpoint_serializer_purity_harness.py'
+      - '.github/workflows/stateq01-checkpoint-serializer-purity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checkpoint-serializer-purity:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run RC-R8 serializer non-interference sentinels
+        run: python -m unittest tests/stateq01/test_checkpoint_serializer_purity_harness.py -v
