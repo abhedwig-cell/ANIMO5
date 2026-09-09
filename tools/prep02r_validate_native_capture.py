@@ -16,7 +16,7 @@ import zipfile
 from pathlib import Path, PurePosixPath
 from typing import Iterable
 
-SCHEMA = "animo-prep02r-native-run-capture-v2"
+SCHEMA = "animo-prep02r-ruurlo-native-harness-capture-v1"
 EVIDENCE_CLASS = "CROSS_RUNTIME_DIAGNOSTIC_NATIVE_NOT_REFERENCE_ADMISSION"
 EXPECTED_EXE_SHA256 = "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d"
 EXPECTED_TESTBANK_SHA256 = "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
