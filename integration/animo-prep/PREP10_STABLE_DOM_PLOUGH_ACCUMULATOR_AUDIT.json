@@ -3,28 +3,36 @@
   "subscope": "stable-DOM plough accumulators",
   "branch": "work/animo-prep10-stable-dom-plough-accumulators",
   "source_parent": "e3c3b0dfa8daabe345c51be8c4f29f2731d65c47",
-  "decision": "QUALIFIED_SOURCE_LEVEL_USE_BEFORE_DEFINITION_FROZEN_PLOUGH_INPUT_PRESENT_GNU_STORAGE_PERSISTENCE_CONFIRMED_RUNTIME_MAGNITUDE_OPEN",
+  "decision": "QUALIFIED_GNU_DIAGNOSTIC_CAUSAL_ACCUMULATOR_CARRYOVER_CONFIRMED_CONTROLLED_INPUT_DESCENDANTS_HISTORICAL_INTEL_OPEN",
   "implemented": true,
   "persisted": true,
   "tested": true,
   "source_level_finding_qualified": true,
   "frozen_input_activation_qualified": true,
+  "actual_addit_observer_run_tested": true,
+  "frozen_testbank_nondiscrimination_qualified": true,
   "current_gnu_diagnostic_storage_semantics_probed": true,
+  "controlled_diagnostic_descendants_executed": true,
+  "current_gnu_diagnostic_causal_carryover_qualified": true,
+  "carbon_and_nitrogen_carryover_qualified": true,
+  "conditional_phosphorus_carryover_qualified": true,
   "historical_native_runtime_tested": false,
-  "runtime_numerical_magnitude_qualified": false,
+  "historical_intel_manifestation_qualified": false,
+  "scientific_realism_or_field_magnitude_qualified": false,
+  "numerical_acceptance_tolerance_defined": false,
   "reference_output_admitted": false,
   "corrected_legacy_admitted": false,
   "production_migration_admitted": false,
   "frozen_identity": {
     "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
-    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "addit_for_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d"
   },
   "source_audit": {
     "tool": "tools/audit_stable_dom_plough_accumulators.py",
     "classification": "CONFIRMED_SOURCE_LEVEL_USE_BEFORE_DEFINITION",
     "member": "ANIMO_4.1.5.53/Addit.for",
     "member_size_bytes": 35615,
-    "member_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
     "plough_event_branch_line": 449,
     "targets": [
       {
@@ -49,18 +57,11 @@
   },
   "frozen_testbank_activation_audit": {
     "tool": "tools/audit_stable_dom_plough_activation.py",
-    "classification": "FROZEN_CRANMAIS_REPEATED_PLOUGH_INPUT_PRESENT_INITIAL_STABLE_DOM_ZERO",
-    "management_member": "ANIMO_testbank/CranMais/Input/MANAGEMENT.INP",
-    "management_member_sha256": "61458d7e849fd5e181133d62d0abc8f9b0eb2dbe0b0d45bdb3adf03e488446da",
-    "plough_request_count": 9,
-    "plough_request_lines": [66, 93, 107, 121, 135, 149, 159, 169, 179],
-    "initial_member": "ANIMO_testbank/CranMais/Input/Initial.inp",
-    "initial_member_sha256": "8df3d78e830f344bc315d4dff2ae4c1ee4d6e959a07ba7d112e4105e6fbbb201",
-    "sdomin_marker_line": 106,
-    "sdomin_value_lines": [107, 108, 109],
-    "sdomin_value_count": 69,
-    "all_initial_sdomin_values_zero": true,
-    "interpretation": "The frozen CranMais input requests the plough operation repeatedly. This establishes a concrete frozen-input path to the Addit.for plough branch, but it is not evidence that a provenance-qualified historical executable actually ran the case. Initial stable DOM/DON/DOP values are zero; the source-level undefined self-read remains present independently of the operand values, while the numerical manifestation remains compiler/runtime dependent."
+    "cranmais_management_member_sha256": "61458d7e849fd5e181133d62d0abc8f9b0eb2dbe0b0d45bdb3adf03e488446da",
+    "cranmais_initial_member_sha256": "8df3d78e830f344bc315d4dff2ae4c1ee4d6e959a07ba7d112e4105e6fbbb201",
+    "cranmais_plough_request_count": 9,
+    "cranmais_initial_sdomin_value_count": 69,
+    "cranmais_all_initial_sdomin_values_zero": true
   },
   "gnu_storage_semantics_probe": {
     "tool": "tools/probe_prep10_local_storage_semantics.py",
@@ -74,42 +75,94 @@
       "-fdefault-double-8",
       "-fno-automatic"
     ],
-    "github_actions_run_id": 34302300827,
-    "github_actions_head": "c14c04b852e48167ac4b08f0746a66a8bc6846e7",
-    "github_actions_conclusion": "success",
-    "github_actions_compiler": "GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
     "diagnostic_contract_probe_values": [1.0, 2.0, 3.0],
     "diagnostic_contract_local_state_persists_across_calls": true,
     "snan_observer_values": ["NaN", "NaN", "NaN"],
     "snan_observer_exposes_undefined_first_read": true,
-    "interpretation": "For a synthetic local self-read matching the relevant storage pattern, the current GNU diagnostic flag contract retains local state across calls. An added signaling-NaN initialization observer exposes the first undefined read. This qualifies GNU-contract storage behavior for the probe only; it does not quantify Addit.for or establish historical Intel behavior."
+    "scope": "synthetic compiler-storage behavior only; not historical Intel evidence"
+  },
+  "frozen_observer_matrix": {
+    "artifact": "integration/animo-prep/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json",
+    "decision": "FROZEN_PLOUGH_CASES_NONDISCRIMINATING_FOR_STABLE_DOM_ACCUMULATOR_RESET_UNDER_CURRENT_GNU_DIAGNOSTIC",
+    "successful_plough_active_cases": 4,
+    "total_observed_plough_events": 31,
+    "all_accumulators_zero_before_and_after_every_observed_event": true,
+    "observer_scientific_or_structural_output_differences": 0,
+    "event_reset_scientific_or_structural_output_differences": 0,
+    "interpretation": "the frozen successful plough-active cases are diagnostically dormant for this defect under the current GNU contract; this is not a general harmlessness claim"
+  },
+  "controlled_causal_activation": {
+    "artifact": "integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json",
+    "input_transform_tool": "tools/make_prep10_sdomin_activation.py",
+    "input_descendant_class": "DIAGNOSTIC_INPUT_DESCENDANT_NOT_B0_NOT_REFERENCE",
+    "activation_values": {
+      "stable_dom": "1.000000E-04",
+      "stable_don": "1.000000E-05",
+      "stable_dop": "1.000000E-06",
+      "indices_0_based": [0, 1, 2],
+      "scientific_realism_claimed": false
+    },
+    "cranmais": {
+      "parent_initial_sha256": "8df3d78e830f344bc315d4dff2ae4c1ee4d6e959a07ba7d112e4105e6fbbb201",
+      "descendant_initial_sha256": "a5acb3333207d0ed65814abf4d9b097bd752830cbf27f212aface3f1810f25f2",
+      "observed_plough_events": 9,
+      "carbon_carryover_observed": true,
+      "nitrogen_carryover_observed": true,
+      "phosphorus_cycle_enabled": false,
+      "observer_nonintrusive_for_compared_generated_outputs": true,
+      "baseline_vs_event_reset_scientific_or_structural_difference_files": 12,
+      "signed_zero_format_only_difference_files": 4
+    },
+    "zuiderzeeland_phosphorus_enabled": {
+      "parent_initial_sha256": "f47dcbc7905f1d9d4b8b36def6e993e5f5ab31ebfd419b57a758e1f63c3e3937",
+      "descendant_initial_sha256": "7dddf3a6b5724866dc3dd06bf6a64941db15f4ccc0fd9abfa1c79490156a0550",
+      "observed_plough_events": 3,
+      "carbon_carryover_observed": true,
+      "nitrogen_carryover_observed": true,
+      "phosphorus_cycle_enabled": true,
+      "conditional_phosphorus_carryover_observed": true,
+      "observer_nonintrusive_for_compared_generated_outputs": true,
+      "baseline_vs_event_reset_scientific_or_structural_difference_files": 8,
+      "signed_zero_format_only_difference_files": 2
+    },
+    "qualified_interpretation": "under the current GNU diagnostic contract, the missing event reset is causally active for controlled B0-derived descendants with deliberately nonzero stable DOM/DON/DOP; accumulated values carry into later plough events and the explicit reset counterfactual changes generated model outputs"
+  },
+  "diagnostic_build_identity": {
+    "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "observer_executable_sha256": "d179aba23e0a0ef90b118437c2817a0c3a0ec6f227be555598ba393c31d7a501",
+    "event_reset_counterfactual_executable_sha256": "f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db",
+    "evidence_class": "DIAGNOSTIC_NOT_REFERENCE"
   },
   "verification": {
-    "exact_source_archive_audit_passed_in_authoring_environment": true,
-    "exact_testbank_activation_audit_passed_in_authoring_environment": true,
-    "synthetic_unit_tests_passed": 7,
-    "unit_test_command": "python -m unittest discover -s tests/prep10 -v",
-    "unit_test_scope": "four source-scanner cases and three frozen-input scanner cases",
-    "github_actions_scanner_and_probe_gate_passed": true,
-    "github_actions_run_id": 34302300827,
-    "github_actions_steps_passed": [
-      "compile audit tools",
-      "run PREP10 scanner unit tests",
-      "validate machine-readable audit JSON",
-      "probe GNU diagnostic-contract local storage semantics"
+    "authoring_environment_exact_source_archive_audit_passed": true,
+    "authoring_environment_exact_testbank_activation_audit_passed": true,
+    "controlled_baseline_observer_reset_runs_completed": true,
+    "legacy_stop_100_treated_as_normal_completion": true,
+    "github_actions_gate_passed": true,
+    "github_actions_run_id": 34304420175,
+    "github_actions_head": "700ff597129d9b55142c4a12efa30e959b97825f",
+    "github_actions_conclusion": "success",
+    "github_actions_python": "3.12.14",
+    "github_actions_synthetic_unit_tests_passed": 14,
+    "github_actions_validated_json_artifacts": [
+      "integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json",
+      "integration/animo-prep/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json",
+      "integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json"
     ],
+    "github_actions_reruns_restricted_b0_causal_experiment": false,
+    "github_actions_b0_scope_note": "the public CI repository does not contain restricted raw B0 archives; CI validates tooling, synthetic tests, JSON evidence and the synthetic GNU storage probe, while the controlled ANIMO runs were performed in the authoring environment against exact hash-pinned supplied bytes",
     "raw_source_or_testbank_bytes_added_to_git": false
   },
   "open_gates": [
-    "run an observer-only diagnostic of the actual Addit.for path on a working copy under the GNU diagnostic build contract",
-    "quantify whether and how the finding changes stable DOM/DON/DOP redistribution and downstream balances",
-    "establish the historical Intel local-storage manifestation if a provenance-qualified native build or build environment becomes available",
-    "compare against a provenance-qualified historical native reference if one becomes available",
-    "if correction is proposed, qualify it as corrected legacy before any migrated ANIMO5 admission"
+    "obtain and run a provenance-qualified historical Intel/native reference or build environment to determine historical manifestation",
+    "qualify realistic scientific magnitude and affected process/state boundaries if needed for scientific disposition",
+    "submit any proposed event-local accumulator reset through corrected-legacy/B3 scientific admission governance before migration"
   ],
   "non_admissions": [
-    "no historical native reference execution",
-    "no actual Addit.for runtime magnitude claim",
+    "controlled activation descendants are not B0",
+    "activation amplitudes are not asserted to be realistic field states",
+    "no historical Intel/native reference execution",
+    "no scientific numerical acceptance tolerance",
     "no reference-output promotion",
     "no frozen-source correction",
     "no corrected-legacy admission",
