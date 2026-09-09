@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 """Analyze ANIMO-MASSQ01 observer sidecars without applying a closure tolerance.
 
-Qualification tooling only. The sidecars are observer evidence, not physical state.
-Beginning storage is taken from the persisted interval-start snapshot. The
-recomputed beginning-storage and residual columns in massq01_step.dat are kept
-only for instrumentation archaeology and are deliberately not used here.
+Qualification tooling only. Sidecars are observer evidence, not physical state.
+For the first simulated interval, beginning storage comes from the initialized
+accepted-state snapshot. For subsequent chemical intervals (N, P and organic
+matter), beginning storage comes from the previous result-state projection
+captured immediately before Init. This avoids treating Init/hydrology staging as
+physical creation or loss. Water continues to use the explicit persisted start
+snapshot.
+
+The recomputed beginning-storage and residual columns in massq01_step.dat are
+instrumentation archaeology only and are deliberately not authoritative here.
 """
 from __future__ import annotations
 
@@ -14,6 +20,7 @@ from collections import defaultdict
 from pathlib import Path
 
 START_FILE = "massq01_start.dat"
+RESULT_BEGIN_FILE = "massq01_init_pre.dat"
 STEP_FILE = "massq01_step.dat"
 ELEMENT_UNITS = {
     "W": "mm water",
@@ -21,6 +28,7 @@ ELEMENT_UNITS = {
     "P": "kg/ha P",
     "O": "kg/ha organic_matter_mass",
 }
+CHEMICAL_ELEMENTS = {"N", "P", "O"}
 
 
 def _key(value: float) -> str:
@@ -54,6 +62,30 @@ def parse_start(path: Path) -> dict[str, dict]:
         }
     if not result:
         raise ValueError(f"{path}: no start snapshots")
+    return result
+
+
+def parse_result_begin(path: Path) -> dict[str, dict]:
+    result: dict[str, dict] = {}
+    for lineno, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if not raw.strip():
+            continue
+        parts = raw.split()
+        if len(parts) != 5:
+            raise ValueError(f"{path}:{lineno}: expected 5 columns, got {len(parts)}")
+        tito, st, nitrogen, phosphorus, organic_matter = parts
+        key = _key(float(tito))
+        if key in result:
+            raise ValueError(f"{path}:{lineno}: duplicate TITO {key}")
+        result[key] = {
+            "tito": float(tito),
+            "st": float(st),
+            "N": float(nitrogen),
+            "P": float(phosphorus),
+            "O": float(organic_matter),
+        }
+    if not result:
+        raise ValueError(f"{path}: no previous-result snapshots")
     return result
 
 
@@ -93,7 +125,9 @@ def parse_steps(path: Path) -> list[dict]:
 
 def analyze_case(case_dir: Path) -> dict:
     starts = parse_start(case_dir / START_FILE)
+    result_begins = parse_result_begin(case_dir / RESULT_BEGIN_FILE)
     steps = parse_steps(case_dir / STEP_FILE)
+    first_tito_key = _key(steps[0]["tito"])
     by_element: dict[str, list[dict]] = defaultdict(list)
     seen_pairs: set[tuple[str, str]] = set()
 
@@ -109,9 +143,23 @@ def analyze_case(case_dir: Path) -> dict:
         start = starts[tito_key]
         if start["IoptGHG"] != row["IoptGHG"] or start["IoptMp"] != row["IoptMp"]:
             raise ValueError(f"{case_dir}: feature flag mismatch at TITO {tito_key}")
-        persisted_begin = start[row["element"]]
+
+        if row["element"] in CHEMICAL_ELEMENTS and tito_key != first_tito_key:
+            if tito_key not in result_begins:
+                raise ValueError(
+                    f"{case_dir}: missing previous-result begin snapshot for TITO {tito_key}"
+                )
+            result_begin = result_begins[tito_key]
+            if result_begin["st"] != row["st"]:
+                raise ValueError(f"{case_dir}: result-begin timestep mismatch at TITO {tito_key}")
+            begin_storage = result_begin[row["element"]]
+            begin_source = RESULT_BEGIN_FILE
+        else:
+            begin_storage = start[row["element"]]
+            begin_source = START_FILE
+
         residual = (
-            persisted_begin
+            begin_storage
             + row["external_inputs"]
             + row["source_terms"]
             - row["external_outputs"]
@@ -120,7 +168,8 @@ def analyze_case(case_dir: Path) -> dict:
         by_element[row["element"]].append({
             "tito": row["tito"],
             "st": row["st"],
-            "begin_storage": persisted_begin,
+            "begin_storage": begin_storage,
+            "begin_storage_source": begin_source,
             "external_inputs": row["external_inputs"],
             "external_outputs": row["external_outputs"],
             "source_terms": row["source_terms"],
@@ -137,6 +186,7 @@ def analyze_case(case_dir: Path) -> dict:
             "max_abs_residual": abs(max_row["residual"]),
             "signed_residual_at_max": max_row["residual"],
             "tito_at_max": max_row["tito"],
+            "begin_storage_source_at_max": max_row["begin_storage_source"],
             "cumulative_signed_residual": sum(item["residual"] for item in rows),
             "acceptance_tolerance_applied": False,
         }
@@ -144,7 +194,9 @@ def analyze_case(case_dir: Path) -> dict:
     return {
         "case": case_dir.name,
         "evidence_class": "B1_DIAGNOSTIC_OBSERVER_SIDECAR_NOT_REFERENCE",
-        "begin_storage_source": START_FILE,
+        "first_interval_begin_storage_source": START_FILE,
+        "subsequent_chemical_begin_storage_source": RESULT_BEGIN_FILE,
+        "water_begin_storage_source": START_FILE,
         "step_transfer_and_end_storage_source": STEP_FILE,
         "legacy_balance_accumulator_used_as_storage_owner": False,
         "acceptance_tolerance_applied": False,
