@@ -1,0 +1,14 @@
+{
+  "work_unit": "ANIMO-B3A03R",
+  "title": "TCD-018 Second-Line Technical Review and Independence Gate",
+  "target": "TCD-018",
+  "candidate_branch": "work/animo-b3a03-tcd018-class-a-admission-readiness",
+  "candidate_head": "8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+  "branch": "work/animo-b3a03r-tcd018-second-line-review",
+  "status": "IN_PROGRESS_REVIEW_CHECKPOINT",
+  "persisted": true,
+  "review_complete": false,
+  "independent_second_line_gate_satisfied": false,
+  "admitted": false,
+  "note": "Technical re-review may proceed in this workunit, but reviewer-independence credit must not be claimed unless independence from correction authoring is genuinely established."
+}
