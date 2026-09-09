@@ -143,6 +143,7 @@ def validate_capture(capture_root: Path, input_pin: dict, comparator: object) ->
     _check_equal(errors, "case", manifest.get("case"), "RuurloGrass")
 
     exe = manifest.get("executable", {})
+    _check_equal(errors, "executable.filename", exe.get("filename"), "animo41.exe")
     _check_equal(errors, "executable.sha256", exe.get("sha256"), EXPECTED_EXE_SHA256)
     _check_equal(
         errors,
@@ -161,6 +162,12 @@ def validate_capture(capture_root: Path, input_pin: dict, comparator: object) ->
         "executable.historical_reference_admitted",
         exe.get("historical_reference_admitted"),
         False,
+    )
+    _check_equal(
+        errors,
+        "executable.native_execution_attempt_admitted",
+        exe.get("native_execution_attempt_admitted"),
+        True,
     )
 
     inp = manifest.get("input", {})
@@ -240,6 +247,7 @@ def validate_capture(capture_root: Path, input_pin: dict, comparator: object) ->
         manifest_deleted = run.get("deleted_case_files", [])
 
         checks = {
+            "pre_file_count": run.get("pre_case_file_count") == len(baseline),
             "pre_content_set": run.get("pre_case_content_set_sha256")
             == EXPECTED_CASE_CONTENT_SET,
             "post_content_set": run.get("post_case_content_set_sha256")
@@ -251,7 +259,9 @@ def validate_capture(capture_root: Path, input_pin: dict, comparator: object) ->
             "deleted_records": manifest_deleted == deleted,
             "deleted_content_set": run.get("deleted_content_set_sha256")
             == content_set_sha256(deleted),
+            "stdout_size": run.get("stdout_size") == stdout_path.stat().st_size,
             "stdout_sha256": run.get("stdout_sha256") == sha256_file(stdout_path),
+            "stderr_size": run.get("stderr_size") == stderr_path.stat().st_size,
             "stderr_sha256": run.get("stderr_sha256") == sha256_file(stderr_path),
             "input_content_transformed": run.get("input_content_transformed") is False,
         }
@@ -323,13 +333,47 @@ def validate_capture(capture_root: Path, input_pin: dict, comparator: object) ->
         manifest_repeat = manifest.get("repeat_determinism", {}).get(
             "classification"
         )
-        if manifest_repeat not in {
-            "NATIVE_REPEAT_EXACT_RAW",
-            "NATIVE_REPEAT_DIFFERENT_REQUIRES_DECLARED_VOLATILE_CLASSIFICATION",
-        }:
-            warnings.append(
-                f"unexpected harness repeat classification: {manifest_repeat!r}"
+        run1 = runs[0]
+        run2 = runs[1]
+        expected_manifest_repeat = (
+            "NATIVE_REPEAT_EXACT_RAW"
+            if run1.get("post_case_content_set_sha256")
+            == run2.get("post_case_content_set_sha256")
+            and run1.get("stdout_sha256") == run2.get("stdout_sha256")
+            and run1.get("stderr_sha256") == run2.get("stderr_sha256")
+            else "NATIVE_REPEAT_DIFFERENT_REQUIRES_DECLARED_VOLATILE_CLASSIFICATION"
+        )
+        if manifest_repeat != expected_manifest_repeat:
+            errors.append(
+                "manifest repeat classification inconsistent with captured raw hashes: "
+                f"expected {expected_manifest_repeat}, got {manifest_repeat!r}"
             )
+
+    reference = manifest.get("reference_admission", {})
+    _check_equal(
+        errors,
+        "reference_admission.historical_reference_environment_qualified",
+        reference.get("historical_reference_environment_qualified"),
+        False,
+    )
+    _check_equal(
+        errors,
+        "reference_admission.normal_B2_reference_available",
+        reference.get("normal_B2_reference_available"),
+        False,
+    )
+    _check_equal(
+        errors,
+        "reference_admission.decision",
+        reference.get("decision"),
+        "NOT_A_REFERENCE_ADMISSION_ACTION",
+    )
+    _check_equal(
+        errors,
+        "production_migration_admitted",
+        manifest.get("production_migration_admitted"),
+        False,
+    )
 
     integrity = "PASS" if not errors else "FAIL"
     if integrity == "FAIL":
