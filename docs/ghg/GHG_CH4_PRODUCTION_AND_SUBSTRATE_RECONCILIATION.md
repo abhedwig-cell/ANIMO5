@@ -21,7 +21,7 @@ Walter & Heimann (2000) independently supports the broad wetland-methane process
 
 A 2012 Wageningen MSc thesis by Victoria Naipal, *Analysis of lake methane emissions using Open Path Wavelength Modulation Spectroscopy (WMS) and eddy covariance observations*, provides version-near secondary documentation of the SWAP-ANIMO methane production relation. It explicitly states that ANIMO uses the Walter & Heimann production form, linearly related to substrate availability, and reproduces the temperature and pH response relations. It also describes the methanogenic organic-matter pool construction as based on DOM plus other pools weighted by their respective decomposition rates, with a labile/resistant transition at `0.82e-3 d-1`.
 
-This MSc thesis is useful corroborating documentation but is not treated as a revision-53 release specification or as equivalent to peer-reviewed primary model documentation. Exact revision-53 CH4 kinetics therefore remain only partly independently qualified.
+This MSc thesis is useful corroborating documentation but is not treated as a revision-53 release specification or as equivalent to peer-reviewed primary model documentation. It therefore does not create a fifth provenance class. Where it corroborates an exact source relation without release-specific authority, that relation remains `SOURCE_ONLY` under the GHG01 qualification vocabulary.
 
 ## 2. Revision-53 total CH4 production relation
 
@@ -49,13 +49,13 @@ Source response functions are:
 - pH for `3.3 <= pH < 10`: `RdfapH = -0.09*pH^2 + 1.195*pH - 2.965`;
 - pH outside that interval: zero production factor.
 
-The Naipal 2012 SWAP-ANIMO description independently reproduces the same production-factor form and the same pH polynomial. It presents the temperature relation in generic Q10 form, so the exact hard-coded revision-53 value `Q10=5` is not promoted here beyond source-specific authority unless a stronger parameter source is recovered.
+The Naipal 2012 SWAP-ANIMO description independently corroborates the same production-factor form and the same pH polynomial as secondary version-near documentation. It presents the temperature relation in generic Q10 form. Because neither source is a proven revision-53 release specification, the exact pH polynomial and hard-coded revision-53 value `Q10=5` remain `SOURCE_ONLY` for exact-equation provenance.
 
 Qualification:
 
 - substrate-linear methane production class: `INDEPENDENT_THEORY`;
-- ANIMO pH response polynomial: `VERSION_NEAR_SECONDARY_DOCUMENTATION_SUPPORTED_SOURCE_RELATION`;
-- exact revision-53 hard-coded Q10 value 5: `SOURCE_ONLY` in this work unit.
+- exact ANIMO pH response polynomial in revision 53: `SOURCE_ONLY`, corroborated by version-near secondary documentation;
+- exact revision-53 hard-coded Q10 value 5: `SOURCE_ONLY`.
 
 ## 3. Source-confirmed CH4 production-component nonclosure
 
@@ -144,7 +144,7 @@ Required closure before any correction:
 
 The methane qualification is now more specific than the previous broad `SOURCE_ONLY` label for exact kinetics.
 
-The total CH4 production structure and pH response have version-near documentary support, but the frozen source contains a source-internal component-partition nonclosure that directly reaches active DOM depletion. A separate initialization indexing construct can make all fresh-OM methanogenic weights depend on the last fraction's decomposition-rate class.
+The total CH4 production structure has independent process-level support, while the exact pH and Q10 relations remain `SOURCE_ONLY`; the pH relation is additionally corroborated by version-near secondary documentation. The frozen source contains a source-internal component-partition nonclosure that directly reaches active DOM depletion. A separate initialization indexing construct can make all fresh-OM methanogenic weights depend on the last fraction's decomposition-rate class.
 
 These are not historical behaviour claims because the supplied GHGMais case still does not reach the revision-53 GHG process branch and no qualified historical runner is available.
 
