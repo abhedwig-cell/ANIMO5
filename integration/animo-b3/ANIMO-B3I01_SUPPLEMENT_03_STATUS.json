@@ -4,10 +4,12 @@
   "title": "BUILDQ03 GHG Runtime-Semantic Evidence Intake",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3i01-canonical-register-append",
-  "status": "PERSISTED_PENDING_EXECUTABLE_VALIDATION_BUILDQ03_TCD011_STRENGTHENED_FLAIR_RUNTIME_HAZARD_ROUTED_NO_NEW_TCD",
+  "status": "COMPLETE_TESTED_QUALIFIED_BUILDQ03_TCD011_STRENGTHENED_FLAIR_RUNTIME_HAZARD_ROUTED_NO_NEW_TCD",
   "persisted_early": true,
-  "tested": false,
-  "qualified": false,
+  "tested": true,
+  "qualified": true,
+  "validated_head": "fffdf62d4bcbf769f5fa0cf06e88b5d5baf0e397",
+  "successful_ci_runs": [34338238281],
   "source_authority": {
     "workunit": "ANIMO-BUILDQ03",
     "branch": "work/animo-buildq03-ghg-task-context-qualification",
@@ -41,5 +43,5 @@
   "production_migration_admitted": false,
   "production_code_modified": false,
   "source_correction": false,
-  "checkpoint": "supplement-03 routing persisted before executable validation; canonical register remains unchanged through TCD-040"
+  "checkpoint": "supplement-03 routing persisted and executable validation passed; canonical register remains unchanged through TCD-040"
 }
