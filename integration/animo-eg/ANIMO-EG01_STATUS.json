@@ -1,0 +1,124 @@
+{
+  "work_unit": "ANIMO-EG01",
+  "title": "Controlled Immutable B0 Evidence Retention",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-eg01-controlled-b0-retention",
+  "parent_branch": "work/animo-rg01-baseline-stabilization",
+  "parent_sha": "662bca8aff40f4dca1f6ccdde6bef6274c6bede2",
+  "evaluated_candidate_head_before_status_record": "fceb0d1a91a73bd8c3176bb970dffb26a328b9fa",
+  "decision": "QUALIFIED_B0_RETENTION_CONTRACT_IMPLEMENTATION_PENDING_EXTERNAL_CONTROLLED_STORAGE",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "blocked": false,
+  "controlled_immutable_storage_proven": false,
+  "reference_admitted": false,
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false,
+  "scope": "evidence-governance contract, public B0 metadata register, run-lineage schema and external controlled-storage admission requirements only",
+  "deliverables": [
+    "docs/eg01/WORK_UNIT_CONTRACT.md",
+    "docs/eg01/B0_RETENTION_AND_LINEAGE_POLICY.md",
+    "integration/evidence/ANIMO_B0_EVIDENCE_REGISTER.json",
+    "integration/evidence/ANIMO_RUN_LINEAGE_SCHEMA.json",
+    "docs/governance/DEVELOPMENT_GOVERNANCE.md"
+  ],
+  "frozen_artifacts": [
+    {
+      "evidence_id": "ANIMO-B0-SRC-41553-R53",
+      "role": "source",
+      "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "size_bytes": 350696,
+      "local_supplied_bytes_revalidated": true
+    },
+    {
+      "evidence_id": "ANIMO-B0-TB-202609",
+      "role": "testcase_package",
+      "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "size_bytes": 7659314,
+      "local_supplied_bytes_revalidated": true
+    },
+    {
+      "evidence_id": "ANIMO-B0-DOC-UG40-2005",
+      "role": "documentation",
+      "sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+      "size_bytes": 1169499,
+      "local_supplied_bytes_revalidated": true
+    }
+  ],
+  "evidence_classes_defined": [
+    "B0_RAW_IMMUTABLE",
+    "B0_MANIFEST",
+    "WORKING_COPY",
+    "COMPATIBILITY_TRANSFORM",
+    "DIAGNOSTIC_OUTPUT",
+    "REFERENCE_OUTPUT",
+    "CORRECTED_LEGACY",
+    "MIGRATED_ANIMO5"
+  ],
+  "verification": {
+    "repository_visibility_confirmed_public": true,
+    "source_sha_file_matches_supplied_bytes": true,
+    "testbank_sha_file_matches_supplied_bytes": true,
+    "documentation_sha_file_matches_supplied_bytes": true,
+    "source_manifest_present_and_member_hashed": true,
+    "testbank_manifest_present_and_member_hashed": true,
+    "run_lineage_schema_is_valid_draft_2020_12_json_schema": true,
+    "run_lineage_positive_probe_validated": true,
+    "candidate_vs_parent_ahead_by_commits_before_status": 5,
+    "candidate_changed_paths_before_status": [
+      "docs/eg01/B0_RETENTION_AND_LINEAGE_POLICY.md",
+      "docs/eg01/WORK_UNIT_CONTRACT.md",
+      "docs/governance/DEVELOPMENT_GOVERNANCE.md",
+      "integration/evidence/ANIMO_B0_EVIDENCE_REGISTER.json",
+      "integration/evidence/ANIMO_RUN_LINEAGE_SCHEMA.json"
+    ],
+    "raw_zip_or_pdf_added_to_public_git": false,
+    "legacy_source_changed": false,
+    "testcase_bytes_changed": false,
+    "documentation_bytes_changed": false,
+    "runtime_or_scientific_execution_tested": false,
+    "testing_scope_note": "TESTED means cryptographic identity revalidation of the supplied bytes plus JSON/schema and branch-diff contract checks. It does not mean historical ANIMO execution, scientific reference qualification or controlled-storage restore testing."
+  },
+  "external_implementation_pending": {
+    "required": true,
+    "authorized_human_custodian_required": true,
+    "actions": [
+      "establish legal/redistribution handling basis for each raw artifact",
+      "provision an authoritative immutable primary storage target",
+      "provision an independently recoverable secondary copy in a separate failure domain",
+      "configure least-privilege access and auditability",
+      "ingest the exact three B0 byte objects without transformation",
+      "verify SHA-256 from retained bytes after ingest",
+      "verify the independent secondary copy",
+      "perform and record a restore test followed by byte-hash verification",
+      "record non-secret custody and immutability proof references in the B0 register"
+    ]
+  },
+  "stronger_status_gate": {
+    "target": "QUALIFIED_CONTROLLED_IMMUTABLE_B0_RETENTION",
+    "admitted_now": false,
+    "required_proof": [
+      "controlled storage authority identified",
+      "primary immutable copy proven",
+      "independent secondary copy proven",
+      "post-ingest SHA-256 verification passed for all required B0 objects",
+      "restore test passed",
+      "custodian approval/proof references recorded"
+    ]
+  },
+  "prep_blockers": {
+    "PREP01_B0_blocker_lifted": false,
+    "PREP02_B0_blocker_lifted": false,
+    "reason": "EG01 qualifies only the retention contract. Actual controlled immutable storage is not proven."
+  },
+  "non_admissions": [
+    "no raw proprietary or restricted artifact was copied into public Git",
+    "no legal redistribution permission is inferred",
+    "no historical reference environment is qualified",
+    "no diagnostic output is promoted to reference output",
+    "no corrected-legacy source is admitted",
+    "no ANIMO5 production migration is admitted"
+  ]
+}
