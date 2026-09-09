@@ -66,7 +66,9 @@
   "reviewer_independence": {
     "independent_from_correction_authoring": false,
     "reason": "ANIMO-B3A03R was executed in the same ChatGPT authoring context that prepared ANIMO-B3A03; a fresh technical recheck does not satisfy the governance requirement for a genuinely separate second-line reviewer.",
-    "gate_result": "FAIL_NOT_INDEPENDENT"
+    "gate_result": "FAIL_NOT_INDEPENDENT",
+    "independent_handoff_prepared": true,
+    "handoff_artifact": "docs/b3/TCD018_INDEPENDENT_SECOND_LINE_HANDOFF.md"
   },
   "live_route_state": {
     "GOV02_branch": "work/animo-gov02-evidence-dag-reconciliation",
@@ -90,10 +92,11 @@
     "integration/animo-b3/ANIMO-B3A03R_STATUS.json": "COMPLETE",
     "integration/animo-b3/TCD018_ISOLATED_CLASS_A_NONINTERFERENCE.json": "COMPLETE",
     "integration/animo-b3/TCD018_SECOND_LINE_TECHNICAL_REVIEW_RESULT.json": "COMPLETE",
-    "docs/b3/TCD018_SECOND_LINE_TECHNICAL_REVIEW.md": "COMPLETE"
+    "docs/b3/TCD018_SECOND_LINE_TECHNICAL_REVIEW.md": "COMPLETE",
+    "docs/b3/TCD018_INDEPENDENT_SECOND_LINE_HANDOFF.md": "COMPLETE_ADDITIONAL"
   },
   "next_required_conditions": [
-    "obtain a genuinely independent second-line reviewer/workunit and record PASS/FAIL against the prepared B3A03 review contract",
+    "obtain a genuinely independent second-line reviewer/workunit and record PASS/FAIL against docs/b3/TCD018_INDEPENDENT_SECOND_LINE_HANDOFF.md",
     "open a GOV02-valid admission route through provenance-qualified B2 evidence or documented closure of reasonable B2 acquisition effort for the historical-uncertainty route",
     "only after both gates pass may a separate B3 admission authority consider ADMIT_CORRECTED_LEGACY_BEHAVIOUR"
   ],
