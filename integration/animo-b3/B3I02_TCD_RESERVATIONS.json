@@ -1,0 +1,54 @@
+{
+  "record_type": "ANIMO_B3I02_INCREMENTAL_TCD_RESERVATION_RESULT",
+  "work_unit": "ANIMO-B3I02",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i02-post-b3i01-incremental-intake",
+  "base_authority": {
+    "branch": "work/animo-b3i01-canonical-register-append",
+    "head": "383c7a83e84a578969f92113280dc715b7bdddb4",
+    "canonical_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "canonical_register_tail_observed": "TCD-041"
+  },
+  "collision_scan": {
+    "tcd_028_through_tcd_037_reuse_forbidden": true,
+    "tcd_040_already_registered": true,
+    "tcd_041_already_registered": true,
+    "tcd_042_present_in_authoritative_register": false,
+    "next_unallocated_candidate_observed": "TCD-042",
+    "reservation_created_for_tcd_042": false,
+    "reason": "NO_INCREMENTAL_FINDING_SATISFIES_NEW_TCD_CAUSALITY_AND_ATOMICITY_THRESHOLD",
+    "scope_note": "Absence of TCD-042 was checked against the live authoritative B3I01 register. This is not a transactional repository lock and does not reserve the identifier."
+  },
+  "reservations": [],
+  "existing_canonical_routes_reused": [
+    {
+      "source_finding": "RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING",
+      "canonical_tcd": "TCD-040",
+      "atomicity": "ONE_CAUSAL_INITIALIZATION_TRANSACTION_MULTI_COORDINATE_SCOPE"
+    },
+    {
+      "source_finding": "BUILDQ03-LCL-GHGASSES-FLAIR-NLPLUS1-UNINITIALIZED",
+      "canonical_tcd": "TCD-041",
+      "atomicity": "ONE_LOWER_EXTERNAL_AIR_INTERFACE_INITIALIZATION_OMISSION"
+    },
+    {
+      "source_finding": "GHG01-LCL-GHG-HIDDEN-TASK-STATE-PERSISTENCE",
+      "canonical_tcd": "TCD-011",
+      "atomicity": "EXISTING_BUILD_CONTRACT_AND_STORAGE_DURATION_DISCREPANCY"
+    }
+  ],
+  "massq01_policy": {
+    "unexplained_residual_count": 15,
+    "new_tcd_allocations": 0,
+    "disposition": "LOCAL_OBSERVER_FINDING_PENDING_CAUSALITY",
+    "rule": "A deterministic nonzero observer residual is not a canonical defect without source-localized causal evidence. Candidate relations to existing TCDs remain context only unless the exact residual is causally assigned."
+  },
+  "stateq01_post_cutoff_policy": {
+    "first_post_restart_surface_frame_divergence": "INSUFFICIENT_EVIDENCE_PENDING_CAUSAL_ISOLATION",
+    "final_persistent_state_divergence": "INSUFFICIENT_EVIDENCE_PENDING_CAUSAL_ISOLATION",
+    "new_tcd_allocations": 0
+  },
+  "canonical_register_append_required": false,
+  "admission_performed": false,
+  "production_change_performed": false
+}
