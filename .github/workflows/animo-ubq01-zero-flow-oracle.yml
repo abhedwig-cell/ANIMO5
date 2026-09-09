@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -26,7 +28,6 @@ jobs:
         run: |
           set -euo pipefail
           BASE=814ea660d367494432beb63ea78298d1f6cd73d7
-          git fetch --no-tags origin "$BASE" || true
           git cat-file -e "${BASE}^{commit}"
           git diff --name-only "$BASE"...HEAD > /tmp/ubq01_changed.txt
           cat /tmp/ubq01_changed.txt
