@@ -1,106 +1,135 @@
-# ANIMO-PREP10 — Stable-DOM causal activation report
+# ANIMO-PREP10 — Stable-DOM/DON/DOP causal activation report
 
-Status: `QUALIFIED_SOURCE_DEFECT_AND_CURRENT_GNU_CAUSAL_EFFECT_FOR_STABLE_DOM_AND_DON_HISTORICAL_NATIVE_AND_DOP_OPEN`.
+Status: `QUALIFIED_SOURCE_DEFECT_AND_CURRENT_GNU_CAUSAL_EFFECT_FOR_STABLE_DOM_DON_AND_DOP_HISTORICAL_NATIVE_OPEN`.
 
 ## Starting point
 
-The parent PREP10 checkpoint had already established two facts for the exact revision-53 bytes:
+The exact revision-53 `Addit.for` source has already been qualified as reading `SuStdiorma`, `SuStdiorni` and `SuStdiorpo` in their first plough-branch assignments without an explicit preceding definition or event reset.
 
-1. `SuStdiorma`, `SuStdiorni` and `SuStdiorpo` are read in their first assignments in the plough branch without a preceding explicit definition or reset;
-2. the frozen CranMais testcase requests nine plough events, but its initial `>sdomin:` vectors are all zero and the unmodified frozen case is therefore numerically non-discriminating under the current GNU diagnostic build.
+The unmodified frozen testbank remains non-discriminating for this defect under the current GNU diagnostic build because the successful frozen plough cases begin with zero stable-DOM/DON/DOP activation. Controlled diagnostic descendants were therefore used. They are not B0 and are not scientific reference cases.
 
-The remaining question was whether a controlled, explicitly non-B0 diagnostic input could make the missing event reset causally visible.
+## CranMais DOM and DON activation
 
-## Diagnostic input design
-
-The frozen CranMais `Input/Initial.inp` member is pinned at SHA-256:
+Frozen CranMais `Input/Initial.inp` SHA-256:
 
 `8df3d78e830f344bc315d4dff2ae4c1ee4d6e959a07ba7d112e4105e6fbbb201`
 
-`tools/make_prep10_causal_initial.py` creates deterministic descendants and refuses any other parent hash. It changes only compartment indices 1 and 2 of the three `>sdomin:` vectors.
-
-Single-species probes used here are:
+`tools/make_prep10_causal_initial.py` creates deterministic descendants and rejects any different parent hash. The single-species probes used were:
 
 - DOM: `CoStdiorma(1:2) = 1.0E-2`, descendant SHA-256 `d66acd69d62c2cfded22d581048a25b365b81d9972aa1a3a31fd55047d712f04`;
-- DON: `CoStdiorni(1:2) = 1.0E-3`, descendant SHA-256 `a3e1349bba096d769438e62635f9408046d858c611ebdf5decb498afd1f30455`;
-- DOP negative control: `CoStdiorpo(1:2) = 1.0E-4`, descendant SHA-256 `e9b3024ee98536ef563ac7929ce2af082c4b5d54b71bf36e02441ef77f1846a3`.
+- DON: `CoStdiorni(1:2) = 1.0E-3`, descendant SHA-256 `a3e1349bba096d769438e62635f9408046d858c611ebdf5decb498afd1f30455`.
 
-These values satisfy the revision-53 input range check but are diagnostic activation values only. No physical representativeness is claimed.
+CranMais has `PhosphorusCycle=0`, so its DOP-only descendant remains a useful negative control but cannot exercise `SuStdiorpo`.
 
-CranMais has `PhosphorusCycle=0`, so the DOP vector is not an active runtime probe in this testcase. It is retained as a negative control.
+### Observer carryover
 
-## Observer result
-
-The combined observer descendant was run with the existing observer-only Addit working-copy transform under GNU Fortran 14.2.0 and the existing diagnostic build contract including `-fno-automatic`.
-
-At the first plough event the observer recorded:
-
-- before: `SuStdiorma = 0`, `SuStdiorni = 0`;
-- after: `SuStdiorma = 2.1670933665864016E-06`, `SuStdiorni = 2.1670933665864018E-07`.
-
-Immediately before the second plough event it recorded exactly the same retained values:
+Under GNU Fortran 14.2.0 with the existing diagnostic contract including `-fno-automatic`, the first CranMais plough event left:
 
 - `SuStdiorma = 2.1670933665864016E-06`;
 - `SuStdiorni = 2.1670933665864018E-07`.
 
-This directly demonstrates inter-event carryover under the current GNU diagnostic storage contract. The missing reset is therefore not merely a theoretical source concern in this environment.
+Exactly those values were present immediately before the second plough event. The observer build itself produced no scientific output differences relative to the baseline after declared volatile-only normalization.
 
-## Baseline versus reset counterfactual
+### Event-reset counterfactual
 
-The same diagnostic input descendants were run with:
+A diagnostic counterfactual resets the three stable-DOM plough accumulators to zero at the start of each plough event. It is not an admitted correction.
 
-- baseline diagnostic executable SHA-256 `0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e`;
-- reset-counterfactual executable SHA-256 `f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db`.
-
-The reset build sets the three stable-DOM plough accumulators to zero at the start of each plough event. It remains a diagnostic counterfactual, not an admitted correction.
-
-Comparisons used only the already declared volatile timestamp and CPU metadata normalization. No numerical tolerance was used to turn differences into matches.
-
-### DOM-only activation
-
-Baseline and reset differ in 16 scientific output files after volatile-only normalization, including the final restart output, organic-matter and nitrogen balance outputs, discharge, mineral-N and nitrate outputs.
-
-In the final `>sdomin:` restart vector:
+For DOM-only activation, baseline and reset differ in 16 scientific output files. In the final stable-DOM restart vector:
 
 - baseline sum: `6.136175457677E-05`;
 - reset sum: `1.3633400418508182E-05`;
 - baseline minus reset: `4.772835415826182E-05`;
 - baseline/reset ratio: `4.500840046733142`.
 
-### DON-only activation
-
-The same 16 scientific output files are discriminating.
-
-In the final stable-DON restart vector:
+For DON-only activation, the same 16 scientific output files are discriminating. In the final stable-DON restart vector:
 
 - baseline sum: `6.136069957677E-06`;
 - reset sum: `1.3632378235187933E-06`;
 - baseline minus reset: `4.7728321341582064E-06`;
 - baseline/reset ratio: `4.501100139547595`.
 
-### DOP negative control
+No numerical tolerance was used to convert a difference into a match.
 
-After declared volatile-only normalization, baseline and reset scientific outputs match. This is expected because CranMais disables the phosphorus cycle. It must not be interpreted as evidence that `SuStdiorpo` is safe.
+## Phosphorus-enabled stable-DOP activation
+
+To close the current-GNU DOP gate without changing the frozen CranMais phosphorus switch, PREP10 uses the already provenance-pinned frozen testcase `LWKM_gras_1040.2021.2045`.
+
+Relevant frozen identities are:
+
+- `input/INITIAL.INP`: SHA-256 `0e6bb1d30c46c3aa8c7dcd077c06845afebcb6bd8b576c0df24e037382dfa483`;
+- `input/GENERAL.INP`: SHA-256 `e511f8a222f2e12959683429fb31008a420856aa476e578a1fe2e6b525914120`;
+- `input/Management.inp`: SHA-256 `bbfa83721eaaa7deb23d4d09f7f263964ba842a917ef6d4d58454e56f7309493`.
+
+This testcase has `PhosphorusCycle=1`. The successful current-GNU run observes four plough events.
+
+`tools/make_prep10_lwkm_p_causal_initial.py` accepts only the exact frozen LWKM initial-state parent. It changes only `CoStdiorpo` indices 1 and 2 from zero to `1.0E-4`. The resulting diagnostic descendant SHA-256 is:
+
+`1efe16d5e8c3e685ad22168132da4ffa789c4f982e8c178640a97fff14fd4e48`
+
+The activation value is selected for causal observability only. No physical calibration claim is made.
+
+### DOP observer carryover
+
+At the first LWKM plough event:
+
+- before: `SuStdiorpo = 0`;
+- after: `SuStdiorpo = 3.0585643629036948E-12`.
+
+Immediately before the second plough event:
+
+- `SuStdiorpo = 3.0585643629036948E-12`.
+
+The later observed values remain carried between events as well. The observer run was scientifically non-interfering: of 55 generated output files, 47 were raw-equal and 8 became equal after declared volatile-only normalization, with zero scientific differences.
+
+### DOP baseline versus event reset
+
+Baseline and event-reset runs both completed through the established GNU diagnostic path. After declared volatile-only normalization, 11 generated scientific files differ:
+
+- `ani_pGP.Bal`;
+- `ani_pRP.Bal`;
+- `ani_pTP.Bal`;
+- `bapoGP.Out`;
+- `bapoRP.Out`;
+- `bapoTP.Out`;
+- `discharge.out`;
+- `initial.out`;
+- `transfopGP.Out`;
+- `transfopRP.Out`;
+- `transfopTP.Out`.
+
+In the final stable-DOP restart vector:
+
+- baseline sum: `1.7192446562370895E-08`;
+- reset sum: `1.7191897420234135E-08`;
+- baseline minus reset: `5.491421367604038E-13`;
+- baseline/reset ratio: `1.000031941915621`;
+- maximum absolute layer difference: `1.5200000000006317E-13`.
+
+The DOP numerical effect is much smaller than the deliberately stronger CranMais DOM/DON activation, but it is reproducible, survives volatile-only normalization, and is directionally tied to the event-reset counterfactual.
 
 ## Qualification conclusion
 
-For the exact revision-53 source and a hash-pinned controlled descendant of the frozen CranMais input, the missing reset of the stable-DOM and stable-DON plough accumulators has a reproducible causal numerical effect under the current GNU diagnostic build contract.
+The current-GNU causal gate is now closed for all three accumulator species:
 
-The qualified statement is deliberately narrower than a historical-legacy defect admission:
+- source-level use-before-definition: qualified for `SuStdiorma`, `SuStdiorni`, `SuStdiorpo`;
+- current GNU causal effect: qualified for stable DOM, stable DON and stable DOP;
+- observer-only transform noninterference: qualified for the exercised diagnostic paths;
+- historical Intel manifestation: still open;
+- physical representativeness of activation values: not claimed;
+- diagnostic outputs: not reference outputs;
+- reset counterfactual: not a corrected-legacy admission;
+- B0 source and testcase bytes: unchanged.
 
-- source-level use-before-definition is qualified for DOM, DON and DOP accumulators;
-- current-GNU causal numerical activation is qualified for DOM and DON;
-- DOP runtime causality remains open because the chosen testcase disables phosphorus;
-- historical Intel manifestation remains open;
-- the activation values are diagnostic and not a scientific reference scenario;
-- no correction, corrected-legacy baseline or ANIMO5 migration is admitted.
+Machine-readable evidence is split between:
 
-## CI verification
+- `integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION.json` for CranMais DOM/DON;
+- `integration/animo-prep/PREP10_STABLE_DOP_CAUSAL_ACTIVATION.json` for phosphorus-enabled LWKM DOP;
+- `integration/animo-prep/ANIMO-PREP10_STATUS.json` for the workunit decision.
 
-GitHub Actions run `34303844330` at head `1adcb12443a9a113a4f2f8daec8a1ed29a0b1b56` completed successfully. Thirteen PREP10 unit tests passed, the audit JSON files validated, the transform tools compiled, and the existing GNU storage-semantics probe remained green.
+## CI and evidence boundary
 
-The private/restricted B0 archives were not copied into GitHub Actions or public Git. The actual causal model runs were executed in the authoring environment against locally supplied exact B0 bytes and are identified by the hashes recorded in `integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION.json`.
+Public GitHub Actions validates the source scanners, deterministic input-transform tools, machine-readable JSON and synthetic GNU local-storage probe. Restricted/private B0 archives are intentionally not uploaded to public CI. The actual causal model runs were executed in the authoring environment against locally supplied exact B0 bytes and are hash-bound in the machine-readable evidence.
 
 ## Next gate
 
-The next correction step must be separate from this audit. A minimal event-reset patch can now be proposed as a corrected-legacy candidate, but it should only be admitted after conservation-ledger reconciliation and a dedicated qualification gate. A separate P-enabled diagnostic path is also required before the `SuStdiorpo` runtime effect can be closed.
+PREP10 should not silently turn this diagnosis into a production fix. The next meaningful step is a separate corrected-legacy candidate workunit for the minimal event reset, with exact source-descendant identity, frozen-testbank noninterference checks, causal-descendant convergence to the qualified reset counterfactual, conservation-ledger reconciliation, and an explicit no-reference/no-migration boundary until the historical-reference gate is resolved.
