@@ -9,7 +9,7 @@
   "production_migration": "NOT_ADMITTED",
   "production_implementation": "NONE",
   "physics_changes": "NONE",
-  "scope": "READINESS_MATRIX_CHECKPOINT_CONTRACT_SOURCE_LAYER0_GUARD_LOCAL_RESTART_FINDING_AND_MANAGEMENT_CURSOR_QUALIFICATION_ONLY",
+  "scope": "READINESS_MATRIX_CHECKPOINT_CONTRACT_SOURCE_LAYER0_GUARD_EXECUTABLE_UNIT_SENTINEL_LOCAL_RESTART_FINDING_AND_MANAGEMENT_CURSOR_QUALIFICATION_ONLY",
   "source_hash": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
   "testbank_hash": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
   "prep12_local_findings": [
@@ -38,6 +38,19 @@
     "restricted_core_restart_rule": "all layer0 restart solute coordinates in scope must be zero",
     "reason_guard_is_stricter_than_legacy_threshold": "do not hide physically positive low-storage state below process activation threshold"
   },
+  "restricted_core_guard_execution": {
+    "status": "QUALIFICATION_GUARD_UNIT_SENTINEL_PASSED_INTEGRATION_SENTINEL_STILL_OPEN",
+    "guard_module": "tools/stateq01/restricted_core_guard.py",
+    "test_module": "tests/stateq01/test_restricted_core_guard.py",
+    "runtime": "CPython 3.13.5 GCC 14.2.0",
+    "tests_run": 14,
+    "failures": 0,
+    "errors": 0,
+    "no_hidden_epsilon": true,
+    "input_non_mutation_tested": true,
+    "integration_rc_r10_rc_r11_passed": false,
+    "qualification_boundary": "standalone fail-closed guard logic only; full transaction ordering and split-run integration remain open"
+  },
   "upper_boundary_reservoir_reconciliation": {
     "status": "CORE_CONTINUATION",
     "coordinates": ["Conhtop/Rsconhtop","Conitop/Rsconitop","Codiormatop/Rscodiormatop","Codiornitop/Rscodiornitop","Copotop/Rscopotop","Codiorpotop/Rscodiorpotop"],
@@ -51,12 +64,11 @@
     "next_event_time": "DERIVED_FROM_BOUND_SCHEDULE_UNDER_CANONICAL_TIME",
     "legacy_file_offset": "NONCANONICAL_ADAPTER_IMPLEMENTATION_STATE",
     "time_only_reconstruction": "NOT_GENERALLY_ADMITTED",
-    "source_counterexample": "Input_addit accepts next_raw_time >= Tito+1e-6 but maps Tinead=next_raw_time+Judami-0.5; therefore a source-valid next raw time up to Tito+0.5 can map at or before the accepted Juda boundary while Adnr already points to it",
-    "testbank_schedule_scan": "11 Management*.inp files with addition schedules; all detected >addNNN labels are unique contiguous and start at 1",
+    "testbank_schedule_scan": "11 Management*.inp files with addition schedules; detected >addNNN labels are unique contiguous and start at 1",
     "remaining": ["event-adjacent split-run qualification","canonical TIME integration"]
   },
   "profile_summary": {
-    "CORE_CNP_SUBSURFACE_ONLY": "READY_CANDIDATE_SOURCE_GUARD_AND_CURSOR_OWNERSHIP_QUALIFIED_SPLIT_RUN_NOT_EXECUTED",
+    "CORE_CNP_SUBSURFACE_ONLY": "READY_CANDIDATE_SOURCE_GUARD_UNIT_SENTINEL_PASSED_CURSOR_OWNERSHIP_QUALIFIED_SPLIT_RUN_NOT_EXECUTED",
     "CORE_CNP": "BLOCKED_ON_TCD016_C1_AND_LAYER0_RESTART_INIT_ZEROING",
     "CORE_CNP_WITH_CROP": "BLOCKED_ON_PREP12_CROP_RESTART_FINDINGS_AND_CONTINUATION_CLOSURE",
     "CORE_CNP_WITH_EXTERNAL_CROP": "READY_CANDIDATE_WITH_EXTERNAL_FRAME_AND_SPLIT_RUN_QUALIFICATION_REQUIRED",
@@ -83,6 +95,9 @@
     "integration/animo-state/MANAGEMENT_SCHEDULE_TESTBANK_SCAN.csv",
     "integration/animo-state/STATE_PROFILE_MATRIX.csv",
     "integration/animo-state/STATE_ADMISSION_TEST_MATRIX.csv",
+    "integration/animo-state/RESTRICTED_CORE_GUARD_TEST_STATUS.json",
+    "tools/stateq01/restricted_core_guard.py",
+    "tests/stateq01/test_restricted_core_guard.py",
     "integration/animo-state/ANIMO-STATEQ01_STATUS.json"
   ],
   "hard_rule_assertions": {
@@ -98,21 +113,22 @@
     "initial_out_declared_canonical_checkpoint": false,
     "production_implementation_performed": false,
     "prep12_source_local_tcd_promoted_to_canonical": false,
-    "restricted_core_declared_b3_admitted": false
+    "restricted_core_declared_b3_admitted": false,
+    "unit_guard_pass_treated_as_integrated_rc_r10_rc_r11": false
   },
   "global_blockers": [
-    "Restricted-core guard has not yet been exercised by executable fail-before-mutate sentinels",
+    "Standalone restricted-core guard unit sentinel passes, but binding into a qualification transaction harness before chemistry and management mutation is not yet demonstrated",
     "No B3-admitted uninterrupted-versus-split portable restart equivalence for CORE_CNP_SUBSURFACE_ONLY",
     "General CORE_CNP remains blocked by TCD-016-C1 and RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING",
-    "Management next-event identity is now structurally mandatory but event-adjacent split-run equivalence remains unqualified",
+    "Management next-event identity is structurally mandatory but event-adjacent split-run equivalence remains unqualified",
     "Canonical TIME is needed to resolve exact event boundaries from normalized schedule records",
     "P Inpo2/3 origin to explicit restart canonicalization requires qualification when those initialization modes are admitted",
     "PREP12 and STATEQ01 local findings require B3 canonical intake before canonical TCD reference",
     "Feature-specific profiles remain blocked where their science/restart contracts are incomplete"
   ],
   "next_admission_work": [
-    "Build diagnostic fail-before-mutate sentinels for positive surface storage and nonzero layer0 restart state without changing frozen source/testcase evidence",
-    "Execute restricted-core RC-R1 through RC-R12 after the guard harness exists",
+    "Bind the passing guard into a qualification-only accepted/candidate transaction harness and execute integrated RC-R10 and RC-R11",
+    "Execute restricted-core RC-R1 through RC-R12 without promoting the qualification harness to production code",
     "Add an event-adjacent split-run sentinel that checkpoints exact next_management_event_id and proves no replay or skip",
     "Integrate next event boundary resolution with the admitted concrete TIME representation when TIME02 closes",
     "Qualify NH4 adsorbed-state deterministic reconstruction across checkpoint restore",
