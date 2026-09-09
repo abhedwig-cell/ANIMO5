@@ -1,0 +1,52 @@
+{
+  "work_unit": "ANIMO-TS01",
+  "verification_phase": "POST_CLOSE_EXACT_PERSISTED_TOOL_REEXECUTION",
+  "date": "2026-09-09",
+  "branch": "work/animo-ts01-temporal-semantics",
+  "qualified_closeout_head_before_verification": "61d1f077406533f65941e39e977dbb8471bb4443",
+  "qualification_decision_unchanged": "QUALIFIED_SOURCE_BOUND_TEMPORAL_SEMANTICS_PREPARATORY_EVIDENCE",
+  "historical_reference_qualified": false,
+  "production_migration": "NOT_ADMITTED",
+  "frozen_source": {
+    "artifact_local_name": "ANIMO_4.1.5.53(3).zip",
+    "expected_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "observed_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "hash_match": true,
+    "modified": false,
+    "executed": false,
+    "access_mode": "read-only static source inspection after extraction to temporary verification directory"
+  },
+  "persisted_audit_tool": {
+    "path": "tools/audit_ts01_temporal_source.py",
+    "github_blob_sha1": "117ec2a6e86cdfe23d2355e9e0865a45f714548e",
+    "locally_reconstructed_git_blob_sha1": "117ec2a6e86cdfe23d2355e9e0865a45f714548e",
+    "blob_identity_match": true,
+    "local_file_sha256": "30ae90bc4c5dcfe73ba158000bea8bed2804c3c2e187b2703c43f14dcf2f312a",
+    "exact_persisted_tool_blob_executed_locally": true,
+    "repository_checkout_execution": false
+  },
+  "execution": {
+    "result": "PASS",
+    "total_checks_including_frozen_hash": 13,
+    "temporal_semantic_anchor_checks": 12,
+    "checks": [
+      "frozen_source_sha256",
+      "main_timestep_call_order",
+      "management_interval_predicate",
+      "harvest_interval_predicate",
+      "same_row_add_then_plough",
+      "result_to_current_staging",
+      "management_reporting_reset_before_addit",
+      "resp_miner_previous_step_neighbor_and_iteration",
+      "transport_flow_order_and_crop_sink",
+      "p_transport_phase_coupling",
+      "report_period_post_step_reset",
+      "restart_serializer_boundaries",
+      "management_cursor_advances_on_read"
+    ],
+    "b2_evidence_generated": false,
+    "behavioural_model_run": false,
+    "testcase_execution": false
+  },
+  "interpretation": "The exact persisted TS01 static audit tool blob passes against the hash-verified frozen revision-53 source. This strengthens reproducibility of the source-bound temporal reconstruction but does not create historical behavioural reference evidence and does not admit canonical TIME or production migration."
+}
