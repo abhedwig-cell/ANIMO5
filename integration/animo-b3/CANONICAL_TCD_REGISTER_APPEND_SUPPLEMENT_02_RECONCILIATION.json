@@ -1,0 +1,50 @@
+{
+  "record_type": "CANONICAL_TCD_REGISTER_APPEND_SUPPLEMENT_RECONCILIATION_NO_ADMISSION",
+  "work_unit": "ANIMO-B3I01",
+  "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_02",
+  "repository": "abhedwig-cell/ANIMO5",
+  "canonical_register": {
+    "path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "blob_before": "264ea7d0dd5764d837b40f19d6ba70152be2e743",
+    "blob_after": "fb44f54aabcf9cd9ee8a8a52bbec78e5cdf06c25",
+    "tail_before": "TCD-039",
+    "tail_after": "TCD-040",
+    "append_only": true,
+    "existing_rows_changed": false,
+    "compare_base": "8b19d781e9ba673584f7326a7cf74c384284f647",
+    "append_commit": "1a3d881654d6b9918fa9e7e7f02fc7317ab6aa1e",
+    "compare_result": "1 addition 0 deletions in canonical register"
+  },
+  "reservation_precondition": {
+    "artifact": "integration/animo-b3/POST_G5_TCD_RESERVATIONS_SUPPLEMENT_02.json",
+    "reservation_commit": "4d3c73696560d5729c3d1a0533d54ed2eab69c84",
+    "reserved_before_append": true,
+    "ids": ["TCD-040"]
+  },
+  "prepared_rows": "integration/animo-b3/B3I01_REGISTER_APPEND_SUPPLEMENT_02_ROWS.csv",
+  "routing": "integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER_SUPPLEMENT_02.json",
+  "crosswalk": "integration/animo-b3/POST_G5_LOCAL_FINDING_CROSSWALK_SUPPLEMENT_02.csv",
+  "registered_not_admitted": ["TCD-040"],
+  "source_local_reconciliation": {
+    "RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING": "canonical TCD-040"
+  },
+  "atomicity": {
+    "top_level_ids_allocated": 1,
+    "affected_coordinates": ["Conh(0)", "Coni(0)", "Codiorma(0)", "Codiorni(0)", "Codiorpo(0)"],
+    "explicitly_excluded_coordinate": "Copo(0)",
+    "species_split": false,
+    "qualification_must_be_coordinate_specific": true,
+    "future_reclassification_allowed_if_species_specific_intent_or_distinct_trigger_is_proven": true
+  },
+  "classification": {
+    "provisional_b3_class": "B",
+    "reason": "the affected coordinates are already represented by restart reader/writer and accepted-owner state; the candidate concerns a local initialization erasure rather than an absent physical-state representation",
+    "reclassification_required_if_new_state_or_numerical_policy_is_needed": true
+  },
+  "admission_state": {
+    "new_corrections_admitted": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "evidence_strength_increased_by_register_append": false
+  }
+}
