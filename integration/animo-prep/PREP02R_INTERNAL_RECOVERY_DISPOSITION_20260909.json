@@ -1,0 +1,45 @@
+{
+  "work_unit": "ANIMO-PREP02R",
+  "date": "2026-09-09",
+  "record_type": "INTERNAL_RECOVERY_DISPOSITION_NO_B2_RELAXATION",
+  "decision": "STOP_FURTHER_INTERNAL_REFERENCE_RECOVERY_AND_PROCEED_WITH_AVAILABLE_EVIDENCE_WITHIN_EXISTING_GOV02_SCOPE",
+  "internal_recovery": {
+    "further_repository_search_planned": false,
+    "further_local_artifact_archaeology_planned": false,
+    "further_internal_tooling_planned": false,
+    "reason": "The internal recovery path has reached diminishing returns: B0 is pinned, the build contract is materially reconstructed, a modern native Intel-family executable is pinned for optional cross-runtime diagnostics, and exact file-level GNU comparison machinery is ready. No provenance-qualified historical 4.1.5 revision-53 behavioural reference has been recovered."
+  },
+  "evidence_available_for_downstream_use": {
+    "b0_source_and_testbank_identity": true,
+    "reproducible_b1_gnu_diagnostic": true,
+    "recovered_intel_project_build_contract": true,
+    "modern_native_rebuild_provenance_classified": true,
+    "windows_native_capture_and_ingestion_tooling_ready": true,
+    "gnu_ruurlo_file_level_cross_runtime_surface_ready": true,
+    "qualified_historical_b2_reference": false
+  },
+  "gov02_state": {
+    "historical_reference_status": "NOT_RECOVERED",
+    "historical_behaviour_status": "UNKNOWN",
+    "normal_B2_reference_available": false,
+    "b2_acquisition_state": "B2_ACQUISITION_STILL_ACTIVE",
+    "historical_uncertainty_route_eligible": false,
+    "reason": "GOV02 explicitly requires PREP02R to reach B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT. The prepared external archival/provenance request has not been sent, so stopping internal recovery alone does not satisfy acquisition closure."
+  },
+  "allowed_downstream_interpretation": [
+    "Use B0/B1/source/theory/synthetic/conservation evidence for claim-scoped readiness and scientific analysis where governing work-unit contracts permit it.",
+    "Continue unrelated or independently qualifiable work that does not assert historical fidelity and does not require activation of the GOV02 historical-uncertainty admission route.",
+    "Keep historical behaviour explicitly UNKNOWN wherever B2 is absent."
+  ],
+  "prohibited_downstream_interpretation": [
+    "Do not relabel the 2026 native executable as historical B2.",
+    "Do not relabel GNU/native cross-runtime agreement as historical fidelity.",
+    "Do not mark PREP02R B2 acquisition closed solely because internal work has stopped.",
+    "Do not admit a no-B2 B3 correction through GOV02 until acquisition closure and all class-specific review gates are actually satisfied."
+  ],
+  "external_options_preserved_but_not_required_for_internal_progress": [
+    "A genuine Windows run of the 2026 executable may still strengthen cross-runtime reconstruction but cannot create B2.",
+    "The prepared WUR archival/provenance request remains available if formal GOV02 acquisition closure is later pursued."
+  ],
+  "production_migration_admitted": false
+}
