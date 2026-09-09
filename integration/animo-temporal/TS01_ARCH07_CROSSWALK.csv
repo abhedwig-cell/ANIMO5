@@ -1,0 +1,27 @@
+sentinel_id,arch07_test_ids,coverage,owner,followup,gate
+TS01-S01,,NONE,TEMPORAL_SCHEDULER,"retain dedicated clock/staging sentinel",TIME
+TS01-S02,,NONE,TEMPORAL_SCHEDULER,"retain result-to-start generation sentinel",TIME
+TS01-S03,,NONE,MANAGEMENT_SCHEDULER,"add event endpoint fixture for management (t0,t1]",TIME
+TS01-S04,,NONE,CROP_EVENT_SCHEDULER,"add harvest endpoint fixture for [t0,t1)",TIME
+TS01-S05,C008-C010,PARTIAL,MANAGEMENT_SCHEDULER,"preserve same-row add-before-plough identity/order; ARCH07 bundles alone do not test row order",TIME_MASS
+TS01-S06,C008-C010,PARTIAL,TEMPORAL_SCHEDULER,"prove same-step event visibility before boundary/demand/chemistry",TIME
+TS01-S07,C001-C004,PARTIAL,CROP_EVENT_SCHEDULER,"bind distinct start/end crop identity across transition",TIME_EX
+TS01-S08,,NONE,TEMPORAL_SCHEDULER,"potential-before-actual process-chain sentinel",TIME
+TS01-S09,T002;T005,PARTIAL,TRANSACTION_LEDGER,"mark potential observations nonphysical and exclude from committed physical journal",TIME_MASS
+TS01-S10,,NONE,TEMPORAL_SCHEDULER,"explicit previous-neighbour generation read fixture",TIME
+TS01-S11,,NONE,TEMPORAL_SCHEDULER,"record and verify Sqnu order and same-step neighbour propagation",TIME_NUMERICS
+TS01-S12,,NONE,TEMPORAL_SCHEDULER,"verify actual NH4 to Denitr/Rekoni to NO3 chain",TIME
+TS01-S13,,NONE,TEMPORAL_SCHEDULER,"verify per-layer coupled P solve; no global phase split",TIME_NUMERICS_B3
+TS01-S14,C005;C006,STRONG,CROP_TRANSACTION,"reconcile one physical soil-to-crop transfer with source-side ordering",TIME_MASS_EX
+TS01-S15,T005,PARTIAL,LEDGER_OBSERVER,"verify balance observation only after physical/crop result completion",TIME_MASS
+TS01-S16,T005,PARTIAL,LEDGER_OBSERVER,"explicitly assert report reset never commits physical state",TIME_MASS
+TS01-S17,,NONE,TEMPORAL_SCHEDULER,"add Jan-1 closeout then next-step initialization fixture",TIME
+TS01-S18,T006;T008,PARTIAL,RESTART_SCHEDULER,"ensure final checkpoint reads final result generation",STATE_TIME_REFERENCE
+TS01-S19,T006;T008,PARTIAL,RESTART_SCHEDULER,"serializer purity test plus explicit compatibility-transform path if legacy clamp reproduced",STATE_TIME_REFERENCE
+TS01-S20,H001;H009;H011;T001,STRONG,HYDROLOGY_ADAPTER,"add explicit t0/t1 binding check to concrete adapter fixtures",TIME_EX
+TS01-S21,T008,PARTIAL,RESTART_MANAGEMENT,"split around management event and verify cursor reconstruction/event count",STATE_TIME_REFERENCE
+TS01-S22,T008,STRONG,COUPLED_RESTART,"instantiate clean accepted-boundary split case once B2 exists",STATE_TIME_REFERENCE
+TS01-S23,T008,PARTIAL,COUPLED_RESTART,"instantiate before/after management split, not only clean split",STATE_TIME_REFERENCE
+TS01-S24,T008,PARTIAL,COUPLED_RESTART,"instantiate crop/harvest/year boundary split",STATE_TIME_REFERENCE
+TS01-S25,T006;T008,PARTIAL,COUPLED_RESTART,"separate physical from diagnostic/report continuation assertions",STATE_TIME_MASS_REFERENCE
+TS01-S26,T002;T009,STRONG,COUPLED_TRANSACTION,"retain rejected journal exclusion and replay equivalence",TIME_REFERENCE
