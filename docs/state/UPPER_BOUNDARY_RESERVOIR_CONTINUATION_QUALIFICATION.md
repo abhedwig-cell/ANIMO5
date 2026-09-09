@@ -1,6 +1,6 @@
 # ANIMO-STATEQ01 upper-boundary reservoir continuation qualification
 
-Status: `SOURCE_QUALIFIED_SYNTHETIC_EXACT_RC_R12_WIRING_PASS_NONZERO_FLUX_REAL_SPLIT_OPEN`
+Status: `SOURCE_QUALIFIED_FROZEN_SOURCE_COMPONENT_RC_R12_PASS_FULL_MODEL_SPLIT_RUN_OPEN`
 
 Canonical STATE admission: `NOT_ADMITTED`
 
@@ -18,6 +18,10 @@ This audit qualifies the continuation role of the revision-53 upper-boundary C/N
 Evidence is source-bound to frozen ANIMO 4.1.5 revision 53 SHA-256:
 
 `183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566`
+
+Frozen testbank SHA-256:
+
+`44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84`
 
 No source or testcase bytes were changed.
 
@@ -38,12 +42,13 @@ Codiorpotop   <- Rscodiorpotop   when P is active
 
 and then clears the `Rs*top` work/result coordinates before the new interval is evaluated.
 
-This establishes two source roles rather than two independent physical owners:
+This establishes three source roles:
 
 - `Con*top`: start-of-current-interval alias;
-- `Rs*top`: end-of-current-interval accepted-boundary value.
+- `Rs*top`: end-of-current-interval accepted-boundary value;
+- `Av*top`: interval-average derived transport boundary.
 
-A modern checkpoint should not serialize both as independent mutable state. At an accepted boundary the candidate owner payload is the `Rs*top` value, or an equivalent canonical field with the same physical meaning. Restore constructs the next start alias from that owner.
+A modern checkpoint should not serialize these as independent mutable owners. At an accepted boundary the candidate owner payload is the `Rs*top` value, or an equivalent canonical field with the same physical meaning. Restore constructs the next start alias from that owner. `Av*top` is recomputed for the new interval.
 
 ## 2. Initial input and restart output are lifecycle-compatible
 
@@ -55,18 +60,13 @@ For P-active configurations, `input1.for:3321-3325` or `3367-3376` reads `Copoto
 
 The restart writer uses the end-state side of the lifecycle instead. `Output_Init.for:82-87` writes `Rsconhtop` and `Rsconitop`; `Output_Init.for:102-105` writes `Rscodiormatop` and `Rscodiornitop`; P-active output writes `Rscopotop` and `Rscodiorpotop` at `Output_Init.for:121-134`.
 
-Thus the legacy text restart itself already embodies the end-state-to-next-start mapping. It is not evidence that both `Con*top` and `Rs*top` should be independently checkpointed.
+Thus the legacy text restart already embodies the end-state-to-next-start mapping. This is restart-intent evidence only. It does not establish `INITIAL.OUT` as a canonical checkpoint format.
 
 ## 3. Physical storage meaning
 
-`Hetop` is read from the profile geometry input at `input1.for:1819-1829` and is not a dynamic reservoir state coordinate in these routines.
+`Hetop` is read from profile geometry input and is not a dynamic reservoir state coordinate in these routines.
 
-The legacy balances represent reservoir material as concentration times `Hetop`:
-
-- final NH4 and NO3 upper-boundary storage: `Rsconhtop*Hetop` and `Rsconitop*Hetop` at `Outbal_calc.for:1173-1179`;
-- final DON upper-boundary storage: `Rscodiornitop*Hetop` at the same location;
-- final DOM upper-boundary storage: `Rscodiormatop*Hetop` at `Outbal_calc.for:688-699`;
-- final PO4 and DOP upper-boundary storage: `Rscopotop*Hetop` and `Rscodiorpotop*Hetop` at `Outbal_calc.for:1585-1590`.
+The legacy balances represent reservoir material as concentration times `Hetop`, including final NH4, NO3, DOM, DON, PO4 and DOP upper-boundary storage.
 
 Candidate canonical storage identity therefore requires the bound geometry/configuration identity containing `Hetop`. The mutable state coordinate can remain concentration because the corresponding physical amount is deterministic only under that immutable geometry binding.
 
@@ -97,39 +97,32 @@ end concentration     Rs*top = Con*top*A1 + Load*A2
 interval-average      Av*top = Con*top*B1 + Load*B2
 ```
 
-For `Flux < 1e-8`, the source sets `A1=B1=1` and `A2=B2=0`, so both end and average concentration equal the current `Con*top` exactly.
+For `Flux < 1e-8`, the source sets `A1=B1=1` and `A2=B2=0`.
 
-The external load terms are assembled at `UBoundconc.for:72-99` from precipitation, irrigation, runon and input-boundary concentrations according to hydrology mode.
+The external load terms are assembled from precipitation, irrigation, runon and input-boundary concentrations according to hydrology mode.
 
-The `Av*top` coordinates are therefore interval-derived quantities. They are not independent accepted-boundary owners.
+The `Av*top` coordinates are therefore interval-derived quantities, not independent accepted-boundary owners.
 
-## 5. Management mutation precedes the reservoir update
+## 5. Management mutation precedes reservoir update
 
-The ordering matters. `Animo.for:456-490` processes the current management addition and calls `Addit` before `UBoundconc`.
+The ordering matters. The current management addition is processed before `UBoundconc`.
 
-Inside `Addit`, when the surface is not ponded under its legacy threshold route, dissolved additions are placed directly into the upper-boundary reservoirs: `Conitop`, `Conhtop`, `Copotop`, `Codiormatop`, `Codiornitop` and `Codiorpotop` at `Addit.for:342-372`.
-
-Ploughing explicitly includes reservoir material in the mixed amount at `Addit.for:448-470` and subsequently empties all six top-reservoir start coordinates at `Addit.for:691-697`.
+`Addit` can place dissolved additions directly into `Conitop`, `Conhtop`, `Copotop`, `Codiormatop`, `Codiornitop` and `Codiorpotop`. Ploughing can include reservoir material in the mixed amount and subsequently clear the six top-reservoir start coordinates.
 
 Consequently a correct split/restart contract must preserve process ordering. A checkpoint cannot restore a pre-management reservoir value after the corresponding management event cursor has already advanced.
 
 ## 6. The interval-average reservoir concentration feeds layer 1 when `Flpn=0`
 
-The general transport routine sets:
+The general transport routine uses:
 
 ```text
 K1 = 1-Flpn
 Cob(K1) = Cotop
 ```
 
-at `TRANSPORT.FOR:129-131`. Therefore `Flpn=0` makes compartment 1 the first active transport compartment and uses the supplied top concentration as its incoming boundary concentration.
+Therefore `Flpn=0` makes compartment 1 the first active transport compartment and uses the supplied top concentration as its incoming boundary concentration.
 
-The main program passes:
-
-- `Avconhtop` into NH4 transport at `Animo.for:810-823`;
-- `Avconitop` into NO3 transport at `Animo.for:846-859`;
-- `Avcodiormatop`, `Avcodiornitop` and `Avcodiorpotop` through `Transca` at `Animo.for:736-756`, with the corresponding `Transport` calls at `Transca.for:97-120`, `151-174` and `185-208`;
-- `Avcopotop` into `Transgen` at `Animo.for:887-903`, where `Transgen.for:212-215` sets `Cob(1-Flpn)=Avcopotop`.
+The main program passes `Avconhtop`, `Avconitop`, the DOM/DON/DOP upper-boundary averages through `Transca`, and `Avcopotop` through `Transgen`.
 
 Upper-boundary reservoirs are therefore core continuation state for the restricted profile. They are not a management-only optional feature.
 
@@ -148,40 +141,89 @@ upper_boundary.dop = Rscodiorpotop   if P active
 
 and bind immutable geometry/configuration identity that fixes at least `Hetop`, P activation and the normalized external-input schemas used to derive loads.
 
-Restore must construct the next-step `Con*top` aliases from these values before any management or upper-boundary mutation. It must not restore stale `Av*top` values, because those are recomputed for the new interval.
+Restore must construct the next-step `Con*top` aliases from these values before any management or upper-boundary mutation. It must not restore stale `Av*top` values.
 
 ## 8. Exact synthetic RC-R12 sentinel
 
-The nonzero-flux source rule contains `exp(-P)`. STATEQ01 does not invent a local numeric comparison tolerance for RC-R12. Full nonzero-flux uninterrupted-versus-split equivalence must use the admitted numerical comparison policy.
-
-A narrower exact sentinel therefore uses the source `Flux < 1e-8` branch, further restricted to exactly zero flux and zero external load. The reservoir concentrations are deliberately nonzero. Under this source branch:
+A qualification-only exact sentinel used the source `Flux < 1e-8` branch, further restricted to zero flux and zero external load, with deliberately nonzero reservoir concentrations. Under this branch:
 
 ```text
 Rs*top = Con*top
 Av*top = Con*top
 ```
 
-`tools/stateq01/upper_boundary_reservoir_wiring_harness.py` represents synthetic concentrations and `Hetop` as exact rational `Fraction` values. It tests the accepted-owner to checkpoint to next-start lifecycle without floating comparison.
+`tools/stateq01/upper_boundary_reservoir_wiring_harness.py` represents concentrations and `Hetop` as exact rational `Fraction` values. GitHub Actions run `34335620989`, job `102414197663`, executed the persisted harness at head `d19cc018dc67636b9d3501a88e63cc7499bbf6c2` under CPython 3.12.14. All 10 tests passed.
 
-GitHub Actions run `34335620989`, job `102414197663`, executed the persisted harness at head `d19cc018dc67636b9d3501a88e63cc7499bbf6c2` under CPython 3.12.14. All 10 tests passed.
+The sentinel verifies exact accepted-owner round trip, first-compartment feed wiring, single ownership, exact amount calculation and fail-closed geometry/P-activation mismatch. It is `SYNTHETIC_SOURCE_BRANCH_CONTRACT_NON_B2` evidence and does not execute revision-53 physics.
 
-The passing sentinels establish, within this exact synthetic branch:
+## 9. Frozen-source nonzero-flux component probe
 
-- nonzero NH4, NO3, DOM, DON, PO4 and DOP reservoir state survives the accepted boundary exactly;
-- split checkpoint/restore wiring matches uninterrupted wiring;
-- the interval-average boundary equals the restored owner and feeds first active compartment 1 for `Flpn=0`;
-- checkpoint state contains one accepted reservoir owner, not duplicate start and average owners;
-- reservoir amount equals concentration times the bound `Hetop` exactly;
-- geometry identity, `Hetop` and P-activation mismatch fail before restore;
-- no test mutates input state or checkpoint payload;
-- no floating tolerance is used.
+STATEQ01 subsequently executed the original hash-pinned `UBoundconc.for` itself with a qualification-only Fortran driver.
 
-This is `SYNTHETIC_SOURCE_BRANCH_CONTRACT_NON_B2` evidence. It does not execute `UBoundconc.for`, transport physics or a revision-53 split run.
+The probe uses:
+
+- `Flpn=0`;
+- detailed hydrology mode;
+- P active;
+- six nonzero initial top-reservoir concentrations: `2,3,4,5,6,7`;
+- nonzero `Flux`;
+- nonzero external load terms.
+
+Three two-interval component paths were compared:
+
+1. uninterrupted component lifecycle, where first-step `Rs*top` is promoted to the second-step `Con*top`;
+2. explicit split/restore, where the six first-step `Rs*top` values are captured and restored before interval two;
+3. an omission sentinel, where those six checkpoint values are deliberately replaced by zero before interval two.
+
+The probe was executed with GNU Fortran 14.2.0 at `-O0` under both compiler default REAL and the separate `-fdefault-real-8` qualification variant.
+
+For both build variants independently:
+
+```text
+uninterrupted final reservoir vector == split/restore final reservoir vector  exactly
+omitted-checkpoint final reservoir vector != uninterrupted final vector
+```
+
+The default-REAL uninterrupted/split final vector was:
+
+```text
+1.514901876449585
+2.160053014755249
+2.5053133964538574
+3.129020929336548
+3.900608777999878
+4.3541669845581055
+```
+
+The default-REAL-8 qualification variant also produced exact uninterrupted-versus-split equality within that build, although its absolute floating values differ from the default-REAL build. STATEQ01 does not interpret that cross-build difference as a numerical discrepancy and does not invent a tolerance to reconcile it.
+
+Machine-readable evidence, source hashes and executable hashes are persisted in:
+
+`integration/animo-state/UPPER_BOUNDARY_RESERVOIR_SOURCE_PROBE.json`
+
+The reusable driver and local hash-checking runner are persisted at:
+
+- `tests/stateq01/fixtures/stateq01_rc12_upper_boundary_probe.f90`
+- `tools/stateq01/run_rc12_upper_boundary_source_probe.py`
+
+This evidence class is `B0_HASH_PINNED_SOURCE_COMPONENT_EXECUTION_NOT_B2`. It is stronger than the synthetic wiring sentinel because frozen revision-53 source is executed, but it is still not a complete ANIMO uninterrupted-versus-restart run.
+
+The probe does not prove the historical Intel default-REAL build contract. The two compiler variants are qualification probes only.
 
 ## Result
 
-RC-R12 now has both source ownership/feed qualification and an executable exact wiring sentinel:
+RC-R12 advances to:
 
-`SOURCE_QUALIFIED_SYNTHETIC_EXACT_RC_R12_WIRING_PASS_NONZERO_FLUX_REAL_SPLIT_OPEN`
+`PASS_FROZEN_SOURCE_COMPONENT_CONTINUITY_FULL_MODEL_SPLIT_RUN_OPEN`
 
-The remaining RC-R12 gap is narrower: nonzero-flux exponential update continuity and a profile-clean executable split run remain open. Those comparisons must use the admitted numerical policy rather than a STATEQ01-specific tolerance.
+The six active upper-boundary reservoir values are checkpoint-mandatory continuation state. Explicit restoration reproduces the uninterrupted second-step `UBoundconc` result within each tested build; deliberate omission changes that result.
+
+Remaining RC-R12 boundary:
+
+- full profile-clean ANIMO uninterrupted-versus-split execution remains open;
+- canonical serialization precision remains open;
+- combined event/crop/report continuation at the same split remains open;
+- B2 historical-reference comparison remains unavailable;
+- canonical STATE remains `NOT_ADMITTED`.
+
+No production code or physics was changed.
