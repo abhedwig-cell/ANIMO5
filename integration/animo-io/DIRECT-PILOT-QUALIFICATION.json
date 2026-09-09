@@ -1,0 +1,82 @@
+{
+  "cases": 10,
+  "compiler": "GNU Fortran (Debian 14.2.0-19) 14.2.0",
+  "details": [
+    {
+      "case": "ANIMO_testbank/CranGrass/animo.ini",
+      "field_exact_equivalent": true,
+      "legacy_adapter": "LegacyRevision53TextAdapter",
+      "native_adapter": "TTUTILNativeTextAdapter/v1"
+    },
+    {
+      "case": "ANIMO_testbank/CranMais/animo.ini",
+      "field_exact_equivalent": true,
+      "legacy_adapter": "LegacyRevision53TextAdapter",
+      "native_adapter": "TTUTILNativeTextAdapter/v1"
+    },
+    {
+      "case": "ANIMO_testbank/GHGMais/animo.ini",
+      "field_exact_equivalent": true,
+      "legacy_adapter": "LegacyRevision53TextAdapter",
+      "native_adapter": "TTUTILNativeTextAdapter/v1"
+    },
+    {
+      "case": "ANIMO_testbank/GrassPeat/animo.ini",
+      "field_exact_equivalent": true,
+      "legacy_adapter": "LegacyRevision53TextAdapter",
+      "native_adapter": "TTUTILNativeTextAdapter/v1"
+    },
+    {
+      "case": "ANIMO_testbank/LWKM_gras_1040.2021.2045/animo.ini",
+      "field_exact_equivalent": true,
+      "legacy_adapter": "LegacyRevision53TextAdapter",
+      "native_adapter": "TTUTILNativeTextAdapter/v1"
+    },
+    {
+      "case": "ANIMO_testbank/Puitmijn_Cranendonck_60/animo.ini",
+      "field_exact_equivalent": true,
+      "legacy_adapter": "LegacyRevision53TextAdapter",
+      "native_adapter": "TTUTILNativeTextAdapter/v1"
+    },
+    {
+      "case": "ANIMO_testbank/Puitmijn_Cranendonck_60/input/animo.ini",
+      "field_exact_equivalent": true,
+      "legacy_adapter": "LegacyRevision53TextAdapter",
+      "native_adapter": "TTUTILNativeTextAdapter/v1"
+    },
+    {
+      "case": "ANIMO_testbank/RuurloGrass/animo.ini",
+      "field_exact_equivalent": true,
+      "legacy_adapter": "LegacyRevision53TextAdapter",
+      "native_adapter": "TTUTILNativeTextAdapter/v1"
+    },
+    {
+      "case": "ANIMO_testbank/STONE_akk_0006.2001.2015/animo.ini",
+      "field_exact_equivalent": true,
+      "legacy_adapter": "LegacyRevision53TextAdapter",
+      "native_adapter": "TTUTILNativeTextAdapter/v1"
+    },
+    {
+      "case": "ANIMO_testbank/Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA/animo.ini",
+      "field_exact_equivalent": true,
+      "legacy_adapter": "LegacyRevision53TextAdapter",
+      "native_adapter": "TTUTILNativeTextAdapter/v1"
+    }
+  ],
+  "field_exact_equivalence_pass": 10,
+  "legacy_undefined_behavior_exclusion": {
+    "reason": "Istart can remain 0 while Ilast>0, causing Fname(0:Ilast) out-of-bounds substring semantics",
+    "revision53_strip_empty_or_whitespace_only_quoted_payload": "FAIL_CLOSED_NOT_NORMALIZED"
+  },
+  "qualification_scope": "LegacyInputBinding routing semantics only; no model physics and no GHG schema admission",
+  "result": "PASS",
+  "schema": "ANIMO-IO01/DIRECTPilotQualification/v2",
+  "source_identity": {
+    "animo_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "embedded_ttutil_zip_sha256": "ee40b4bc20b158163318a4a77a1294e0d9430f5cb73641fcf4a2f3c773d01193",
+    "swap_4_3_1_sha256": "2b48353db6cdf00246a1e5c0dcaafc2c61858729fad18446a1dc66359ec2a360",
+    "ttutil_files_verified": 168,
+    "ttutil_fortran_objects_built": 153,
+    "ttutil_version": "4.27"
+  }
+}
