@@ -1,0 +1,36 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "artifact": "RC-R6 exact external hydrology frame rebind sentinel",
+  "profile": "CORE_CNP_SUBSURFACE_ONLY",
+  "status": "PERSISTED_NOT_YET_EXECUTED",
+  "evidence_class": "SYNTHETIC_TIME02_EXTERNAL_FRAME_CONTRACT_NON_B2",
+  "production_code": false,
+  "physics_change": false,
+  "canonical_state_admission": "NOT_ADMITTED",
+  "canonical_time_admission": "NOT_ADMITTED",
+  "harness_module": "tools/stateq01/external_hydrology_frame_rebind_harness.py",
+  "test_module": "tests/stateq01/test_external_hydrology_frame_rebind_harness.py",
+  "exact_bound_fields": [
+    "t0",
+    "t1",
+    "producer_accepted_generation",
+    "geometry_id",
+    "hydrology_schema_id",
+    "configuration_id"
+  ],
+  "frame_provenance_fields": [
+    "frame_id",
+    "content_fingerprint"
+  ],
+  "rules": {
+    "floating_tolerance": "FORBIDDEN",
+    "one_second_boundary_mismatch": "REJECT_BEFORE_PROCESS_STATE_CONSTRUCTION",
+    "stale_generation": "REJECT_BEFORE_PROCESS_STATE_CONSTRUCTION",
+    "schema_or_geometry_mismatch": "REJECT_BEFORE_PROCESS_STATE_CONSTRUCTION",
+    "implicit_frame_truncation_or_extension": "NOT_ADMITTED"
+  },
+  "tested": false,
+  "qualified": false,
+  "qualification_boundary": "synthetic exact rebind guard only; no real hydrology producer adapter or profile-clean revision-53 split-run",
+  "next": "execute persisted sentinel in GitHub Actions"
+}
