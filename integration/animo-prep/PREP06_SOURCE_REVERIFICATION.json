@@ -1,0 +1,74 @@
+{
+  "evidence_id": "ANIMO-PREP06-SOURCE-REVERIFICATION-2026-09-09",
+  "evidence_class": "SOURCE_BOUND_POST_CLOSE_REVERIFICATION_NOT_REFERENCE",
+  "work_unit": "ANIMO-PREP06",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep06-conserved-state-ledger",
+  "tested_against_branch_head": "a63181764e8dace09465a3b2b191a7ba7aef6f4f",
+  "frozen_archives": {
+    "source_name": "ANIMO_4.1.5.53(3).zip",
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_name": "ANIMO_testbank.zip",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "source_identity_match": true,
+    "testbank_identity_match": true
+  },
+  "static_conserved_state_predicates": {
+    "method": "direct execution against the uploaded frozen source archive using the 47 source predicates carried by tools/audit_conserved_state_ledger.py",
+    "checks_passed": 47,
+    "checks_total": 47,
+    "all_passed": true,
+    "per_file": {
+      "Init.for": "25/25",
+      "Outbal_Init.for": "10/10",
+      "MAPOHYDRO.FOR": "4/4",
+      "MAPOTRANSPORT.FOR": "3/3",
+      "Outbal_calc.for": "5/5"
+    }
+  },
+  "macropore_main_ledger_interface": {
+    "outbal_calc_receives_SrWaMp": false,
+    "outbal_calc_receives_RsCoMp": false,
+    "active_Ddev_expression_mentions_Dra4": false,
+    "testbank_macro_pore_option_occurrences": 12,
+    "testbank_active_macro_pore_occurrences": 0,
+    "interpretation": "TCD-025 source predicates reverified; behavioural magnitude remains unmeasured and unqualified"
+  },
+  "transfer_ledger_symmetry_reverification": {
+    "method": "direct source parsing of uncommented continuation-joined Bafom/Bafon/Bafop assignments and initial/final exudate storage predicates",
+    "detailed_accumulator_assignments_observed": 77,
+    "cross_slot_self_reference_count": 1,
+    "cross_slot_self_reference": {
+      "source": "Outbal_calc.for",
+      "line": 1428,
+      "family": "Bafop",
+      "lhs_slot": 24,
+      "rhs_slot": 25,
+      "statement": "Bafop(24,Ly)=bafop(25,Ly) + Dum",
+      "existing_finding": "TCD-027"
+    },
+    "fresh_om_initial_exudate": {
+      "initial_Bfom_contains_Ex": false,
+      "final_Bfom_contains_Rsex": true,
+      "initial_Bano_contains_Ex_Nifrex": true,
+      "initial_Bapo_contains_Ex_Pofrex": true,
+      "asymmetric": true,
+      "existing_finding": "TCD-026"
+    },
+    "stable_dom_p_cross_species_source_lines": {
+      "Resp_miner.for:563": "Transfop(17,Ln) = mofr(Ln)*recfSDO(Ln)*AvcoStdiorpo(Ln)*Hest",
+      "Resp_miner.for:564": "Transfop(19,Ln) = (1.0-AsfaSDO) * Transfon(17,Ln)",
+      "Resp_miner.for:565": "Transfop(20,Ln) = AsfaSDO * Transfon(17,Ln)",
+      "existing_finding": "TCD-023"
+    }
+  },
+  "new_tcd_opened": false,
+  "legacy_source_modified": false,
+  "testcase_modified": false,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "reference_qualified": false,
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false,
+  "decision": "REVERIFIED_SOURCE_BOUND_PREPARATORY_EVIDENCE_NO_QUALIFICATION_EXPANSION"
+}
