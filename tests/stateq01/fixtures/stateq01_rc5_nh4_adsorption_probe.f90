@@ -29,7 +29,6 @@ program stateq01_rc5_nh4_adsorption_probe
   Coirr=0.; Copryn=0.; Prirr=0.; Prr=0.; TimSwi=0.
   subst='AMMONIUM    '; caller='ANIMO-act   '
 
-  ! Step 1 creates a nontrivial accepted component boundary.
   Co=0.; Cx=0.; Rsco=0.; Rscx=0.; Avco=0.; Toin=0.; Toou=0.
   Co(1)=0.010; Cx(1)=He(1)*Rhbd(1)*Socf(1)*Co(1); Cotop=0.020; Tito=1.0
   open(unit=91,file='step1.log',status='replace',action='write'); Uoer=91
@@ -39,7 +38,6 @@ program stateq01_rc5_nh4_adsorption_probe
   cp_co=Rsco(1); cp_cx=Rscx(1)
   recon_cx=He(1)*Rhbd(1)*Socf(1)*cp_co
 
-  ! Uninterrupted step 2 uses the accepted Rscx directly.
   Co=0.; Cx=0.; Rsco=0.; Rscx=0.; Avco=0.; Toin=0.; Toou=0.
   Co(1)=cp_co; Cx(1)=cp_cx; Cotop=0.015; Tito=2.0
   open(unit=92,file='continuous.log',status='replace',action='write'); Uoer=92
@@ -48,8 +46,6 @@ program stateq01_rc5_nh4_adsorption_probe
   if (Errornumber.ne.0) stop 12
   cont_rsco=Rsco(1); cont_rscx=Rscx(1); cont_avco=Avco(1); cont_toin=Toin(1); cont_toou=Toou(1)
 
-  ! Split/restart candidate stores aqueous NH4 and reconstructs adsorbed NH4
-  ! from the exact accepted concentration and immutable layer/sorption data.
   Co=0.; Cx=0.; Rsco=0.; Rscx=0.; Avco=0.; Toin=0.; Toou=0.
   Co(1)=cp_co; Cx(1)=recon_cx; Cotop=0.015; Tito=2.0
   open(unit=93,file='reconstructed.log',status='replace',action='write'); Uoer=93
@@ -58,9 +54,6 @@ program stateq01_rc5_nh4_adsorption_probe
   if (Errornumber.ne.0) stop 13
   recon_rsco=Rsco(1); recon_rscx=Rscx(1); recon_avco=Avco(1); recon_toin=Toin(1); recon_toou=Toou(1)
 
-  ! Negative sentinel: omit start adsorbed storage. The physical concentration
-  ! path is unchanged in this source component, but the original TRANSPORT
-  ! mass-balance checker must detect the missing storage.
   Co=0.; Cx=0.; Rsco=0.; Rscx=0.; Avco=0.; Toin=0.; Toou=0.
   Co(1)=cp_co; Cx(1)=0.0; Cotop=0.015; Tito=2.0
   open(unit=94,file='omitted.log',status='replace',action='write'); Uoer=94
@@ -79,9 +72,6 @@ program stateq01_rc5_nh4_adsorption_probe
   write(*,'(A,1X,L1)') 'CONT_EQ_RECON',(cont_rsco.eq.recon_rsco .and. cont_rscx.eq.recon_rscx .and. cont_avco.eq.recon_avco .and. cont_toin.eq.recon_toin .and. cont_toou.eq.recon_toou)
   write(*,'(A,1X,L1)') 'CONT_EQ_OMIT_PHYSICAL',(cont_rsco.eq.omit_rsco .and. cont_rscx.eq.omit_rscx .and. cont_avco.eq.omit_avco .and. cont_toin.eq.omit_toin .and. cont_toou.eq.omit_toou)
 end program stateq01_rc5_nh4_adsorption_probe
-
-! TRANSPORT contains macropore calls behind Ioptmp=1. RC-R5 fixes Ioptmp=0,
-! so a link-only no-op symbol is sufficient and is never executed.
 subroutine MapoTransport()
   implicit none
 end subroutine MapoTransport
