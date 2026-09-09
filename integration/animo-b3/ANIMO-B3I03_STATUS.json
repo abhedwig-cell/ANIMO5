@@ -1,0 +1,32 @@
+{
+  "work_unit": "ANIMO-B3I03",
+  "title": "Post-MASSQ02 Incremental Causal Discrepancy Intake",
+  "status": "IN_PROGRESS_CHECKPOINT",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i03-massq02-causal-intake",
+  "base": {
+    "branch": "work/animo-b3i02-post-b3i01-incremental-intake",
+    "head": "c1a69c00a02aa0e32ca60580c3d0ebee96442c17",
+    "canonical_register_tail": "TCD-041"
+  },
+  "evidence": {
+    "MASSQ02_branch": "work/animo-massq02-residual-causality-typed-events",
+    "MASSQ02_head": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "new_causal_findings": 15,
+    "unexplained": 0
+  },
+  "hard_rules": {
+    "incremental_only": true,
+    "no_correction_admission": true,
+    "no_production_source_change": true,
+    "no_tcd_from_residual_magnitude_only": true,
+    "collision_scan_before_new_reservation": true
+  },
+  "work_status": {
+    "realized": false,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  }
+}
