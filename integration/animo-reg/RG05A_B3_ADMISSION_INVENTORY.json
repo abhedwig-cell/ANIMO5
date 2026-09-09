@@ -1,0 +1,64 @@
+{
+  "work_unit": "ANIMO-RG05A",
+  "inventory_kind": "ATOMIC_B3_SCIENTIFIC_ADMISSIONS",
+  "snapshot_date": "2026-09-09",
+  "authority_rule": "ONLY_EXPLICIT_B3Q01_COMPLIANT_ADMISSION_RECORDS_WITH_ALL_MANDATORY_GATES_PASS_COUNT_AS_ADMISSIONS",
+  "source_regie_snapshot": {
+    "RG05": "f127528e148b9106149daec02d48ad972581e6df",
+    "prior_scientific_admissions": 0,
+    "prior_G7": "NO_ATOMIC_SCIENTIFIC_ADMISSIONS"
+  },
+  "route_authority": {
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "closure": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS"
+  },
+  "admissions": [
+    {
+      "tcd": "TCD-017",
+      "class": "A_ACCOUNTING_REPORTING_ONLY",
+      "process": "organic-P ploughing redistribution reporting ledger",
+      "admission_authority": "ANIMO-B3D02@bf31ffa96b4f71541c13d1426ccf48eac9536b24",
+      "review_authority": "ANIMO-B3A02R@8b38b03ac489c349192ae9fa55a8fe51cea183cb",
+      "readiness_authority": "ANIMO-B3A02@1a714eb144e43420ef5b176727e496ff9c46bc6d",
+      "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+      "disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+      "decision": "ADMIT_TCD017_ATOMIC_CLASS_A_SCIENTIFIC_ACCOUNTING_CORRECTION_WITH_HISTORICAL_UNCERTAINTY",
+      "atomic_claim": "add the already-existing top-reservoir dissolved-organic-P ploughing loss Addiorpotoppl(I)*Z to Bapo(Redi,Ly) in the Ln.Eq.0 reporting branch only",
+      "expected_changed_surfaces": [
+        "Bapo(Redi,Ly) for active TCD-017 redistribution events",
+        "derived organic-P balance/report fields"
+      ],
+      "required_unchanged_surfaces": [
+        "all physical states",
+        "all process fluxes",
+        "transport/reaction/hydrology/crop/management trajectories",
+        "Bafop",
+        "TCD-027 and TCD-028 surfaces",
+        "non-whitelisted outputs"
+      ],
+      "historical_behaviour": "UNKNOWN",
+      "historical_fidelity_claimed": false,
+      "whole_model_equivalence_claimed": false,
+      "composition_admitted": false,
+      "b4_admitted": false,
+      "production_patch_authorized": false,
+      "production_migration_admitted": false
+    }
+  ],
+  "counts": {
+    "scientific_admissions": 1,
+    "atomic_admissions": 1,
+    "historical_uncertainty_admissions": 1,
+    "normal_b2_route_admissions": 0,
+    "b4_admissions": 0,
+    "production_migrations": 0
+  },
+  "project_boundary": {
+    "B3_complete": false,
+    "B4_open": false,
+    "production_open": false,
+    "canonical_tcd_register_tail": "TCD-042",
+    "TCD043_reserved": false
+  }
+}
