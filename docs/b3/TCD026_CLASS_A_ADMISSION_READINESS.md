@@ -97,15 +97,25 @@ PREP06 independently of this work unit performed a temporary ledger-only diagnos
 - `baomRP.Out`;
 - `baomTP.Out`.
 
-No ordinary state/process output changed. The diagnostic changed no physical state trajectory.
+No ordinary state/process output changed.
+
+ANIMO-B3A04 added a second, stronger activation check using model-produced restart-format state. A frozen-source GNU diagnostic CranMais run produced `Output/initial.out` with nonzero persisted exudate state in layers 1 through 9, totalling `5989.6594 kg/ha`. Those exact `INITIAL.OUT` bytes, SHA-256 `254fa48dfd1349f6b0d2079b6dc0ca8ec16c35ea80bcd5b8eb464bd60b770a86`, were replayed as `Input/initial.inp` in both the legacy and ledger-only diagnostic runs.
+
+The legacy replay showed a first-period fresh-OM deviation printed as `-5.99E+03 kg/ha`. The ledger-only candidate increased printed beginning fresh-OM storage from `10943.275` to `16932.935 kg/ha`, an increment of `5989.66 kg/ha`, and reduced the printed first-period deviation to `-7.28E-12 kg/ha`. The difference between the exact model-produced `5989.6594 kg/ha` and the printed `5989.66 kg/ha` increment is report rounding, not a tolerance.
+
+The resulting `Output/initial.out` files from legacy and candidate replay were byte-identical with SHA-256 `f1a3d8f600675d4f6ac3da4039b3625f416d7bbfb699152a092f4f2c4df3bc9b`. Across 22 scientific output surfaces compared after only known volatile timestamp/CPU normalization, exactly four fresh-OM balance surfaces changed: `ani_omMP.Bal`, `ani_omTP.Bal`, `baomMP.Out` and `baomTP.Out`. No unexpected surface changed.
+
+This replay is deliberately classified as `MODEL_PRODUCED_RESTART_FORMAT_STATE_REPLAY_NOT_CHRONOLOGICAL_SPLIT_RUN`. It proves model-produced state-path activation and non-interference, but does not claim accepted-boundary chronological continuation or split-run identity.
 
 Result for readiness: `PASS_FOR_READINESS`.
+
+Machine evidence: `integration/animo-b3/TCD026_MODEL_PRODUCED_STATE_REPLAY.json`.
 
 ## 7. Process-flux non-interference
 
 The candidate does not recompute or mutate mineralization, organic transformation, transport, hydrology, crop, management or boundary fluxes. `Ex` and `Rsex` continue to follow the frozen physical process path.
 
-The PREP06 output comparison found no unintended ordinary output differences outside the fresh-OM balance surfaces.
+PREP06 found no unintended ordinary output differences outside the fresh-OM balance surfaces. The B3A04 model-produced-state replay independently retained all non-whitelisted normalized scientific surfaces and produced byte-identical restart output state.
 
 Result for readiness: `PASS_FOR_READINESS`.
 
@@ -113,7 +123,9 @@ Result for readiness: `PASS_FOR_READINESS`.
 
 The omitted quantity already exists physically before the candidate observation and remains physically present after it. The candidate neither adds nor removes mass from `Ex`, `Rsex` or any other store.
 
-The physical mass trajectory is therefore invariant. Only the bookkeeping representation of beginning storage changes.
+The model-produced-state replay strengthens this claim because the same model-produced initial-state bytes were consumed by legacy and candidate runs and their resulting `Output/initial.out` bytes were identical.
+
+The physical mass trajectory is therefore invariant within the observed replay. Only the bookkeeping representation of beginning storage changes.
 
 Result for readiness: `PASS_FOR_READINESS`.
 
@@ -143,30 +155,31 @@ Any unexpected difference fails closed. No numerical tolerance is introduced for
 
 Machine-readable contract: `integration/animo-b3/TCD026_EXPECTED_DIFFERENCE.json`.
 
-## 10. Natural B1 activation and structural unreachability
+## 10. Natural B1 activation, structural start-state unreachability and model-produced state activation
 
-Natural activation in the supplied B0/B1 testbank is not available.
+Ordinary natural activation at the supplied model start is not available.
 
-PREP06 audited the supplied `>orgexu:` initial conditions and found every initial exudate value zero. Therefore the TCD-026 beginning-storage omission is structurally unobservable in the ordinary supplied natural cases: the omitted term evaluates exactly to zero at model start.
+PREP06 audited the supplied `>orgexu:` initial conditions and found every initial exudate value zero. Therefore the TCD-026 beginning-storage omission is structurally unobservable in the ordinary supplied natural starts: the omitted term evaluates exactly to zero.
 
-This is not treated as absence of the defect. The physical state is valid and restartable, and PREP06 activates the path with a single controlled nonzero initial `Ex` diagnostic.
+ANIMO-B3A04 then tested whether the model itself can generate a nonzero persisted exudate state rather than manually inventing one. It can. A normal CranMais diagnostic execution produced nonzero `Rsex` persisted through `Output_Init` into restart-format `INITIAL.OUT`; layers 1 through 9 were nonzero and summed to `5989.6594 kg/ha`. Replaying those exact bytes through the ordinary `INITIAL.INP` path activated the TCD-026 omission exactly as predicted.
 
-A future model-produced restart whose persisted `Rsex` becomes nonzero would be a useful naturalistic activation without manually inventing exudate mass, but such a split-run activation is not claimed to have been executed by ANIMO-B3A04.
+This is stronger naturalistic path evidence than the manually seeded PREP06 microcase, but it is not a true chronological restart. Hydrology and management chronology were replayed from the original case start. Therefore ANIMO-B3A04 does not claim split-run identity, continuation equivalence or historical restart behaviour.
 
 Result:
 
-- supplied natural activation: `STRUCTURALLY_UNREACHABLE_ZERO_INITIAL_EX`;
-- dedicated causal activation: `PASS_PREP06_SYNTHETIC`;
+- ordinary supplied natural start activation: `STRUCTURALLY_UNREACHABLE_ZERO_INITIAL_EX`;
+- dedicated synthetic causal activation: `PASS_PREP06_SYNTHETIC`;
+- model-produced restart-format state activation: `PASS_CRANMAIS_REPLAY_NOT_CHRONOLOGICAL_SPLIT_RUN`;
 - historical B2 activation: `NOT_AVAILABLE`.
 
 ## 11. Negative controls
 
 Four negative controls bind the claim:
 
-1. **Zero-Ex control.** With all initial `Ex(Ln)=0`, the candidate term is exactly zero. The supplied testbank therefore must remain unchanged.
+1. **Zero-Ex control.** With all initial `Ex(Ln)=0`, the candidate term is exactly zero. The ordinary CranMais frozen-input first-period fresh-OM deviation remained only `-1.46E-11 kg/ha`, so the large replay discrepancy requires nonzero initial Ex rather than appearing generically.
 2. **N/P control.** Revision-53 organic-N and organic-P beginning ledgers already include the same physical exudate store through `Ex*Nifrex*P` and `Ex*Pofrex*P`. TCD-026 must not modify `Bano` or `Bapo`.
 3. **Other-organic-store control.** `Os`, `Huos`, `Huex`, DOM and other organic-matter stores retain their existing ownership and accounting. TCD-026 must not absorb any other organic-matter discrepancy.
-4. **Ordinary-output control.** When nonzero `Ex` activates the candidate observation, ordinary state/process outputs must remain identical. PREP06 observed this in its ledger-only diagnostic.
+4. **Ordinary-output control.** When nonzero model-produced Ex activates the candidate observation, ordinary state/process outputs and restart state must remain identical. PREP06 and the B3A04 model-produced-state replay both support this.
 
 ## 12. SYNQ01 applicability
 
@@ -174,7 +187,7 @@ SYNQ01 is qualified as an independent synthetic-oracle layer, but its current TC
 
 No SYNQ01 oracle is therefore claimed as independent authority for this work unit. Reusing the interception-storage oracle `SYNQ-O003` would be an invalid scope substitution because its conserved quantity and control volume are water/interception, not exudate organic matter.
 
-The closed C-EX storage identity is source/conservation evidence. The PREP06 causal probe is supporting evidence. Neither is relabelled as an independent SYNQ01 oracle.
+The closed C-EX storage identity is source/conservation evidence. The PREP06 causal probe and B3A04 model-produced-state replay are supporting causal/non-interference evidence. None is relabelled as an independent SYNQ01 oracle or independent second-line review.
 
 ## 13. Route gate
 
@@ -203,15 +216,17 @@ An independent second-line reviewer must verify at minimum:
 - C-EX physical ownership and `Ex -> Rsex -> Ex_next` lifecycle;
 - exact beginning/end Bfom asymmetry;
 - exact omitted term `Ex(Ln)*P`;
-- 10 kg/ha causal discriminator without treating the post-correction residual as a tolerance;
+- 10 kg/ha PREP06 causal discriminator without treating the post-correction residual as a tolerance;
+- the CranMais model-produced state replay, including the `5989.6594 kg/ha` generated Ex state, same replay-input bytes, legacy `-5.99E+03 kg/ha` printed deviation and candidate-only fresh-OM balance changes;
+- the explicit boundary that this replay is not a chronological split-run or B2 reference;
 - physical state, process-flux and total-mass non-interference;
 - output whitelist and all negative controls;
-- structural reason natural supplied B1 activation is unavailable;
+- structural reason ordinary supplied start activation is unavailable;
 - absence of a currently applicable SYNQ01 oracle;
 - GOV02/PREP02R route state;
 - non-composition with other organic-matter TCDs.
 
-The authoring performed in ANIMO-B3A04 is not independent review and must not be counted as such.
+The authoring and additional replay work performed in ANIMO-B3A04 are not independent review and must not be counted as such.
 
 Review packet: `docs/b3/TCD026_SECOND_LINE_REVIEW_PACKET.md`.
 
@@ -227,6 +242,7 @@ Explicitly excluded:
 - any correction of other fresh-OM, humus, dissolved-OM or ploughing ledgers;
 - composition with any other organic-matter TCD;
 - any numerical tolerance policy;
+- chronological restart/split-run qualification;
 - corrected-legacy admission;
 - production migration.
 
@@ -236,9 +252,9 @@ The narrow Class-A hypothesis is supported rather than falsified:
 
 `TCD-026 is an accounting/reporting-only beginning-storage omission for the existing C-EX physical store within the qualified scope.`
 
-The evidence is sufficient to qualify **admission readiness**, because the physical owner, exact omitted term, conservation identity, causal activation, non-interference surfaces, output whitelist, structural natural-case unreachability and negative controls are explicit.
+The evidence is sufficient to qualify admission readiness. The physical owner, exact omitted term, conservation identity, synthetic causal activation, model-produced restart-format state activation, non-interference surfaces, output whitelist, ordinary-start structural unreachability and negative controls are explicit.
 
-It is **not** sufficient for corrected-legacy admission. The route gate remains blocked and independent second-line review has not occurred.
+It is not sufficient for corrected-legacy admission. The route gate remains blocked and independent second-line review has not occurred. The model-produced state replay also does not substitute for a true chronological split-run qualification or a historical B2 reference.
 
 Final status:
 
