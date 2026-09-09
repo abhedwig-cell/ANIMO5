@@ -1,0 +1,45 @@
+{
+  "work_unit": "ANIMO-B3I01",
+  "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_03",
+  "title": "BUILDQ03 GHG Runtime-Semantic Evidence Intake",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i01-canonical-register-append",
+  "status": "PERSISTED_PENDING_EXECUTABLE_VALIDATION_BUILDQ03_TCD011_STRENGTHENED_FLAIR_RUNTIME_HAZARD_ROUTED_NO_NEW_TCD",
+  "persisted_early": true,
+  "tested": false,
+  "qualified": false,
+  "source_authority": {
+    "workunit": "ANIMO-BUILDQ03",
+    "branch": "work/animo-buildq03-ghg-task-context-qualification",
+    "head": "8b1e4006be86eea344cf9f7da978218261ee1a15"
+  },
+  "canonical_register": {
+    "tail_before_supplement": "TCD-040",
+    "tail_after_supplement": "TCD-040",
+    "append_performed": false,
+    "new_tcd_allocated": false
+  },
+  "existing_tcd_action": {
+    "TCD-011": {
+      "action": "STRENGTHEN_EXISTING_TCD_EVIDENCE_ONLY",
+      "qualified_ghg_hidden_families": 6,
+      "persistent_model_state_families": 0,
+      "historical_intel_equivalence_qualified": false,
+      "closed": false,
+      "admitted": false
+    }
+  },
+  "runtime_hazard_action": {
+    "local_key": "BUILDQ03-LCL-GHGASSES-FLAIR-NLPLUS1-UNINITIALIZED",
+    "disposition": "BUILD_RUNTIME_INITIALIZATION_HAZARD_NOT_TCD_PENDING_BOUNDARY_SEMANTICS",
+    "new_tcd": false,
+    "diagnostic_zero_boundary_admitted": false,
+    "owner": "PROPOSED_ANIMO-BUILDQ04_WITH_GHG_SCIENCE_REVIEW"
+  },
+  "new_corrections_admitted": false,
+  "b3_baseline_established": false,
+  "production_migration_admitted": false,
+  "production_code_modified": false,
+  "source_correction": false,
+  "checkpoint": "supplement-03 routing persisted before executable validation; canonical register remains unchanged through TCD-040"
+}
