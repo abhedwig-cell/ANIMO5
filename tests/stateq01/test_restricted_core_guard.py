@@ -3,6 +3,7 @@ from __future__ import annotations
 from copy import deepcopy
 from pathlib import Path
 import importlib.util
+import sys
 import unittest
 
 
@@ -10,6 +11,7 @@ MODULE_PATH = Path(__file__).resolve().parents[2] / "tools" / "stateq01" / "rest
 SPEC = importlib.util.spec_from_file_location("restricted_core_guard", MODULE_PATH)
 assert SPEC and SPEC.loader
 MODULE = importlib.util.module_from_spec(SPEC)
+sys.modules[SPEC.name] = MODULE
 SPEC.loader.exec_module(MODULE)
 
 GuardError = MODULE.RestrictedCoreGuardError
