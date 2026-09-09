@@ -1,0 +1,22 @@
+{
+  "evidence_class": "SOURCE_BOUND_NAMED_GENERIC_TRANSPORT_BINDING_AUDIT_NOT_REFERENCE",
+  "source_sha256_required": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "named_transport_calls_audited": 12,
+  "strong_species_actuals_checked": 35,
+  "species_mismatch_count": 0,
+  "species_mismatches": [],
+  "covered_routines": ["Transport", "Transsub", "Transgen"],
+  "covered_literal_substance_families": [
+    "AMMONIUM",
+    "NITRATE",
+    "PHOSPHORUS",
+    "Sol.Org.Mat",
+    "Sol.Org.Nit",
+    "Sol.Org.Pho"
+  ],
+  "decision": "NO_STRONG_SPECIES_MISMATCH_IN_NAMED_GENERIC_TRANSPORT_CALLS",
+  "tool": "tools/audit_named_transport_species.py",
+  "tests": "tests/test_named_transport_species_audit.py",
+  "unit_tests_passed": 3,
+  "production_migration_admitted": false
+}

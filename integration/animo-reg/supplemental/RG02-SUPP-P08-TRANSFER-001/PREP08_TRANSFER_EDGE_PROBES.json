@@ -1,0 +1,76 @@
+{
+  "evidence_id": "ANIMO-PREP08-TRANSFER-EDGE-PROBES-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_NOT_REFERENCE",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep08-transfer-probes",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "baseline_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+  "frozen_source_modified": false,
+  "frozen_testbank_modified": false,
+  "tcd028": {
+    "activation_case": "LWKM_gras_1040.2021.2045 temporary execution copy",
+    "activation_initial_sha256": "d62c6455e3b3eb3c0bc700bb55dfa4c6f1d51922c2b6ae2093fdc6131337db54",
+    "activation": "non-zero depth-varying Huex in first four compartments",
+    "duplicate_only_executable_sha256": "2690e2d60f1000cece8ec636c9e3c24c92a730010784230724f275bafe2e9f14",
+    "duplicate_plus_explicit_np_executable_sha256": "239a6ba0f28d4a61b32829d691b21570be45bc6770718832c8565d7e0f02c0fc",
+    "legacy_max_abs_period": {
+      "humus_om_kg_ha": 942.0,
+      "organic_n_kg_ha_n": 45.2,
+      "organic_p_kg_ha_p": 5.7
+    },
+    "duplicate_only_max_abs_period": {
+      "humus_om_rp_kg_ha": 1.16e-10,
+      "humus_om_gp_kg_ha": 1.46e-10,
+      "humus_om_tp_kg_ha": 6.98e-10,
+      "organic_n_rp_kg_ha_n": 2.31e-09,
+      "organic_n_gp_kg_ha_n": 3.83e-07,
+      "organic_n_tp_kg_ha_n": 5.99e-06,
+      "organic_p_all_profiles_kg_ha_p": 0.0494
+    },
+    "remaining_organic_p_final_cumulative_kg_ha_p": 0.154,
+    "remaining_p_attribution": "existing TCD-017 ledger family",
+    "duplicate_vs_explicit_np_normalized_scientific_differences": 0,
+    "decision": "DUPLICATE_ADHUEXPL_CAUSALLY_CONFIRMED_ELEMENT_CONSUMER_RECONSTRUCTION_NOT_INDEPENDENTLY_CAUSAL_IN_THIS_ACTIVATION"
+  },
+  "tcd029": {
+    "activation_case": "LWKM_gras_1040.2021.2045 temporary NCXFA=2 execution copy",
+    "chempar_sha256": "72cba1019cfddf164b3393187ffca94a11e57f7c739e1c3d2102dcb98af41cec",
+    "initial_sha256": "0fd579a28c9d062d2645cf37b17dc7d6700e80dd102ede1c559ed7ed86642675",
+    "observer_executable_sha256": "01e020735359774293a51d083d55cbe5d14ea0907594c16c04587acef69c4a49",
+    "control_ncxfa1_events": [
+      {"year": 1997, "delta_kg_ha_p": -2.525757381022231e-11},
+      {"year": 1998, "delta_kg_ha_p": 2.1198320876436583e-11},
+      {"year": 2007, "delta_kg_ha_p": -8.118505867571457e-12},
+      {"year": 2008, "delta_kg_ha_p": -4.1598668953923834e-11}
+    ],
+    "ncxfa2_events": [
+      {"year": 1997, "before_kg_m2_p": 2.242951695726745, "after_kg_m2_p": 2.315292370702143, "delta_kg_ha_p": 723.4067497539831},
+      {"year": 1998, "before_kg_m2_p": 2.7131772924622, "after_kg_m2_p": 2.801858107679592, "delta_kg_ha_p": 886.8081521739191},
+      {"year": 2007, "before_kg_m2_p": 5.798870755720791, "after_kg_m2_p": 5.887551570938182, "delta_kg_ha_p": 886.8081521739147},
+      {"year": 2008, "before_kg_m2_p": 6.360842698865333, "after_kg_m2_p": 6.449523514082725, "delta_kg_ha_p": 886.8081521739235}
+    ],
+    "sum_diagnostic_delta_kg_ha_p": 3383.8312062757404,
+    "later_synthetic_trajectory_not_admitted": true,
+    "decision": "DIAGNOSTICALLY_CAUSAL_MULTISITE_FAST_SORPTION_MANAGEMENT_MASS_NONCONSERVATION"
+  },
+  "tcd030": {
+    "classification": "SOURCE_CONFIRMED_EXUDATE_HUMUS_ELEMENT_FRACTION_REDISPATCH_SEQUENCING_GAP_TESTBANK_UNEXERCISED",
+    "physical_storage_identity": [
+      "Huex*Nifrhu",
+      "Huex*Pofrhu"
+    ],
+    "producer_sequence": [
+      "subtract old Huex with old Nifrhu/Pofrhu",
+      "redistribute Huex",
+      "add new Huex with still-old layer Nifrhu/Pofrhu",
+      "recompute Nifrhu/Pofrhu from redistributed Huosni/Huos and Huospo/Huos"
+    ],
+    "correct_state_difference": "new_Huex*new_fraction - old_Huex*old_fraction",
+    "current_explicit_array_form": "new_Huex*old_fraction - old_Huex*old_fraction",
+    "current_generic_reconstruction_form": "(new_Huex-old_Huex)*new_fraction",
+    "natural_testbank_activation_proven": false,
+    "production_correction_admitted": false
+  },
+  "decision": "QUALIFIED_DIAGNOSTIC_TRANSFER_CAUSALITY_TCD028_REFINED_TCD029_CONFIRMED_TCD030_SOURCE_BOUND_REFERENCE_ADMISSION_BLOCKED"
+}

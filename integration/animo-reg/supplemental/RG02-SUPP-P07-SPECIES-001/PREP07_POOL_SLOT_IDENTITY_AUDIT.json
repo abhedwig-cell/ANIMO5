@@ -1,0 +1,30 @@
+{
+  "evidence_class": "SOURCE_BOUND_NUMERIC_CROSS_SLOT_AUDIT_NOT_REFERENCE",
+  "source_sha256_required": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "same_array_cross_slot_findings": 19,
+  "classification_counts": {
+    "CONFIRMED_EXISTING_DISCREPANCY": 1,
+    "INTENTIONAL_TRANSFER_PARTITION": 18
+  },
+  "confirmed_existing_discrepancy": {
+    "id": "TCD-027",
+    "file": "Outbal_calc.for",
+    "line": 1428,
+    "array": "Bafop",
+    "lhs_slot": 24,
+    "rhs_slot": 25,
+    "statement": "Bafop(24,Ly)=bafop(25,Ly) + Dum"
+  },
+  "intentional_partition_family": {
+    "arrays": ["Transfom", "Transfon", "Transfop"],
+    "derived_slots": [19, 20],
+    "source_slot": 17,
+    "count": 18
+  },
+  "unresolved_cross_slot_candidates": [],
+  "decision": "NO_NEW_CROSS_SLOT_DEFECT_BEYOND_TCD027",
+  "tool": "tools/audit_pool_slot_identity.py",
+  "tests": "tests/test_pool_slot_identity_audit.py",
+  "unit_tests_passed": 4,
+  "production_migration_admitted": false
+}
