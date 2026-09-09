@@ -1,0 +1,37 @@
+{
+  "work_unit": "ANIMO-TS01",
+  "status_type": "POST_CLOSE_CONTINUATION_STATUS",
+  "date": "2026-09-09",
+  "branch": "work/animo-ts01-temporal-semantics",
+  "qualified_closeout_head": "61d1f077406533f65941e39e977dbb8471bb4443",
+  "post_close_verification_commit": "5415ab292890bdd8f7d07ec57e7d9fefc5bc7ec4",
+  "architecture_feedback_commit": "2cfc787a4ecd25821ae3015053865143f92b8984",
+  "qualification_decision": "QUALIFIED_SOURCE_BOUND_TEMPORAL_SEMANTICS_PREPARATORY_EVIDENCE",
+  "qualification_changed": false,
+  "historical_reference_qualified": false,
+  "canonical_time_admitted": false,
+  "production_migration": "NOT_ADMITTED",
+  "new_evidence": {
+    "exact_persisted_static_tool_blob_reexecuted": true,
+    "audit_result": "PASS",
+    "frozen_source_hash_match": true,
+    "b2_evidence_generated": false,
+    "architecture_migration_feedback_persisted": true
+  },
+  "new_artifacts": [
+    "integration/animo-temporal/TS01_POST_CLOSE_VERIFICATION.json",
+    "docs/temporal/ARCHG01_TEMPORAL_FEEDBACK.md"
+  ],
+  "remaining_blockers_unchanged": [
+    "independent B2 historical reference remains unavailable",
+    "continuous-versus-split restart behaviour remains unqualified",
+    "canonical ANIMO5 TIME transaction/retry policy remains unadmitted",
+    "GHG and macropore feature/theory qualification remain incomplete",
+    "discrepancy-specific B3 and numerical-policy work remains separate"
+  ],
+  "recommended_next": [
+    "use the TS01 scheduler sentinels when a process-scheduler or adapter qualification harness is opened",
+    "feed this TS01 feedback into a future authoritative ARCHG01 follow-up or governance consolidation rather than silently editing ARCHG01 conclusions",
+    "execute split-run and order-sentinel behavioural qualification only after PREP02R obtains independently trustworthy reference evidence"
+  ]
+}
