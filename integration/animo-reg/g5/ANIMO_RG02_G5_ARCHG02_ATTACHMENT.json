@@ -1,0 +1,38 @@
+{
+  "work_unit": "ANIMO-RG02-G5",
+  "attachment_type": "POST_G5_ARCHITECTURE_TEMPORAL_REVALIDATION_REFERENCE",
+  "date": "2026-09-09",
+  "source_workunit": "ANIMO-ARCHG02",
+  "source_branch": "work/animo-archg02-temporal-revalidation",
+  "source_qualified_head": "db8183802631902f41aa5bec518a3c2e63e03ab7",
+  "source_decision": "QUALIFIED_CANDIDATE_ARCHITECTURE_REVALIDATED_AGAINST_FINAL_TS01_TIME01_PRODUCTION_NOT_ADMITTED",
+  "source_closeout_ci": {
+    "run_id": 34319423226,
+    "conclusion": "success",
+    "tested_head": "db8183802631902f41aa5bec518a3c2e63e03ab7"
+  },
+  "rg02_g5_effect": {
+    "archg01_temporal_revalidation_requirement": "RESOLVED_BY_ARCHG02_CANDIDATE_REVALIDATION",
+    "g8_candidate_architecture_scientific_qualification": "STILL_NOT_ADMITTED",
+    "reason_g8_still_open": [
+      "canonical STATE and TIME remain unadmitted",
+      "runtime scheduler and coupled transaction evidence remains absent",
+      "B2 restart/reference evidence remains unavailable",
+      "discrepancy-specific B3 science and numerical gates remain open",
+      "GHG and macropore feature-scientific gates remain open",
+      "MASS and EX remain downstream unadmitted gates"
+    ]
+  },
+  "evidence_boundaries": {
+    "b2_reference_qualified": false,
+    "b3_scientific_admission": false,
+    "canonical_state_admitted": false,
+    "canonical_time_admitted": false,
+    "b4_baseline_admitted": false,
+    "production_migration_admitted": false
+  },
+  "branch_merge_performed": false,
+  "archg01_historical_artifacts_rewritten": false,
+  "legacy_source_modified": false,
+  "historical_testcase_modified": false
+}
