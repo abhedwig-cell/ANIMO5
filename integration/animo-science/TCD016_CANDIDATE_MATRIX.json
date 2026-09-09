@@ -1,0 +1,177 @@
+{
+  "work_unit": "ANIMO-SQ01",
+  "target": "TCD-016",
+  "quantity": "NH4-N",
+  "control_volume": "surface ponding compartment plus any explicitly admitted continuation phase",
+  "classification": {
+    "primary": "C_MISSING_PHYSICAL_STATE_OR_INCOMPLETE_STATE_MODEL",
+    "secondary": "E_NUMERICAL_POLICY_CHANGE",
+    "atomicity": "REQUIRES_ATOMIZATION_BEFORE_ADMISSION"
+  },
+  "source_bound_event": {
+    "case": "Puitmijn_Cranendonck_60",
+    "time": 1490.0,
+    "layer": 0,
+    "year_balance": 2006,
+    "co_kg_m3": 0.12767937602481674,
+    "mto_m3_m3": 0.0005435585,
+    "mt_m3_m3": 0.00001628217,
+    "layer_thickness_m": 0.2,
+    "dt_d": 1.0,
+    "outflow_m_d": 4.1184400265397315e-10,
+    "evaporation_m_d": 0.000105455,
+    "reko_kg_m3_d": 0.0,
+    "reki_d_1": 0.0,
+    "layer0_sorption_contribution": 0.0,
+    "mass_before_kg_m2": 0.000013880242022597072,
+    "mass_before_kg_ha": 0.13880242022597072,
+    "legacy_mass_after_kg_m2": 0.0,
+    "legacy_local_nonclosure_kg_m2": 0.000013880242022597072
+  },
+  "synthetic_sequence": {
+    "purpose": "diagnostic conservation only, not historical testcase modification",
+    "wet_to_dry": {
+      "candidate_A_dry_store_after_kg_m2": 0.000013880242022597072,
+      "closure_residual_kg_m2": 0.0
+    },
+    "dry_hold": {
+      "candidate_A_dry_store_before_kg_m2": 0.000013880242022597072,
+      "candidate_A_dry_store_after_kg_m2": 0.000013880242022597072,
+      "closure_residual_kg_m2": 0.0
+    },
+    "dry_to_wet": {
+      "diagnostic_water_areal_storage_m": 0.001,
+      "diagnostic_assumption": "complete instantaneous dissolution for closure demonstration only",
+      "aqueous_mass_after_kg_m2": 0.000013880242022597072,
+      "dry_mass_after_kg_m2": 0.0,
+      "resulting_concentration_kg_m3": 0.013880242022597071,
+      "closure_residual_kg_m2": 0.0,
+      "kinetics_qualified": false
+    }
+  },
+  "candidates": [
+    {
+      "id": "A",
+      "name": "explicit_dry_or_immobile_surface_solute_store",
+      "state_definition": "areic NH4-N mass independent of water volume",
+      "unit": "kg N m-2",
+      "owner": "proposed surface chemistry/ponding subsystem",
+      "conserves_mass": true,
+      "finite_at_zero_water": true,
+      "rewetting_defined_by_available_ANIMO_theory": false,
+      "interaction_with_soil_adsorption": "none until an explicit transfer reaches a soil layer",
+      "transport_semantics": "immobile while dry; mobile only after explicit transfer to an aqueous state",
+      "restart_implication": "new persistent accepted/result dry-mass state required",
+      "architecture_implication": "new physical state owner plus typed internal wet_to_dry and dry_to_wet transfers",
+      "numerical_conditioning": "good",
+      "legacy_correction_or_evolution": "MODEL_EXTENSION_UNLESS_AUTHORITATIVE_INTENDED_THEORY_IS_RECOVERED",
+      "scientific_basis": "mass-conservative phase abstraction; not yet ANIMO-specific theory",
+      "disposition": "PREFERRED_PROPOSED_MODEL_EXTENSION",
+      "admitted": false
+    },
+    {
+      "id": "B",
+      "name": "existing_sorbed_or_solid_phase_absorbs_residual_mass",
+      "state_definition": "transfer residual surface NH4 to existing soil adsorbed NH4",
+      "unit": "kg N m-2 in soil sorbed store",
+      "owner": "existing soil layer sorption subsystem",
+      "conserves_mass": true,
+      "finite_at_zero_water": true,
+      "rewetting_defined_by_available_ANIMO_theory": false,
+      "interaction_with_soil_adsorption": "would bypass the existing requirement for physical arrival in the soil layer",
+      "transport_semantics": "requires unsupported cross-compartment transfer",
+      "restart_implication": "mechanically representable in existing soil state but scientifically misassigned",
+      "architecture_implication": "would create an undeclared surface_to_soil phase transfer",
+      "numerical_conditioning": "good",
+      "legacy_correction_or_evolution": "MODEL_EVOLUTION_WITH_UNSUPPORTED_TRANSFER",
+      "scientific_basis": "ANIMO documents soil NH4 sorption but not automatic deposition of disappearing ponding residue into layer 1",
+      "disposition": "REJECTED_AS_CORRECTED_LEGACY_CANDIDATE",
+      "admitted": false
+    },
+    {
+      "id": "C",
+      "name": "residual_water_representation",
+      "state_definition": "maintain positive chemically active aqueous storage even when hydrological ponding vanishes",
+      "unit": "m water plus kg N m-3 concentration",
+      "owner": "not present in current hydrological state model",
+      "conserves_mass": true,
+      "finite_at_zero_water": false,
+      "rewetting_defined_by_available_ANIMO_theory": false,
+      "interaction_with_soil_adsorption": "depends on arbitrary residual concentration and subsequent transport",
+      "transport_semantics": "creates ghost water unless hydrological theory supplies the phase",
+      "restart_implication": "must persist residual water as well as concentration",
+      "architecture_implication": "changes hydrological state ownership and couples a solute threshold to water storage",
+      "numerical_conditioning": "poor_near_water_floor",
+      "captured_event_actual_final_water_storage_m": 0.000003256434,
+      "captured_event_concentration_if_all_mass_retained_kg_m3": 4.262405447982999,
+      "legacy_correction_or_evolution": "STATE_AND_NUMERICAL_POLICY_EVOLUTION",
+      "scientific_basis": "none found in available ANIMO-specific evidence for a chemically active residual surface-water film",
+      "disposition": "REJECTED_WITH_CURRENT_ANIMO_HYDROLOGY",
+      "admitted": false
+    },
+    {
+      "id": "D",
+      "name": "reuse_artificial_additions_top_reservoir",
+      "state_definition": "transfer residual ponding NH4 into Conhtop*Hetop",
+      "unit": "kg N m-2 represented as kg N m-3 times Hetop",
+      "owner": "existing fertilizer/additions reservoir",
+      "conserves_mass": true,
+      "finite_at_zero_water": true,
+      "rewetting_defined_by_available_ANIMO_theory": "reservoir release law exists but is for additions, not generic dry residue",
+      "interaction_with_soil_adsorption": "later routing follows additions-reservoir flux law",
+      "transport_semantics": "changes provenance and release kinetics of residual ponding mass",
+      "restart_implication": "mechanically representable but changes meaning of existing restart state",
+      "architecture_implication": "aliases two scientifically different stores under one owner",
+      "numerical_conditioning": "good",
+      "legacy_correction_or_evolution": "SEMANTIC_MODEL_EVOLUTION",
+      "scientific_basis": "source-supported reservoir exists, but ANIMO theory assigns it to fertilizer/addition storage",
+      "disposition": "REJECTED_SEMANTIC_ALIASING",
+      "admitted": false
+    }
+  ],
+  "excluded_counterfactuals": [
+    {
+      "name": "force_all_residual_mass_through_tiny_positive_outflow",
+      "conservation": "closes local and annual ledger",
+      "reason_rejected": "requires pathological average concentration of approximately 3.37e4 kg N m-3 in the captured diagnostic",
+      "physical_state_model": false
+    },
+    {
+      "name": "concentration_cap_without_mass_destination",
+      "conservation": "fails unless clipped mass is assigned elsewhere",
+      "reason_rejected": "mass deletion or hidden state",
+      "physical_state_model": false
+    }
+  ],
+  "theory_evidence": {
+    "ANIMO40_user_guide": {
+      "supports": [
+        "liquid-phase concentration storage",
+        "ponding layer 0",
+        "separate additions reservoir",
+        "soil-horizon NH4 sorption",
+        "restart from modeled state families"
+      ],
+      "does_not_establish": [
+        "dry surface NH4 residue store",
+        "residual active surface-water film",
+        "automatic transfer to layer-1 sorption",
+        "dry-to-wet remobilization kinetics"
+      ]
+    },
+    "TH01": "no recovered dry-continuation state authority",
+    "TH02": "source release lineage recovered only; release stamps are not phase theory",
+    "Report983": "official publication record confirmed; full text not admitted to SQ01 evidence, so no claim is made about whether it contains a dry-continuation formulation"
+  },
+  "recommended_route": "PHYSICS_MODEL_EXTENSION_REQUIRED",
+  "preferred_candidate": "A",
+  "preferred_candidate_admitted": false,
+  "class_c_gates_complete": false,
+  "blocking_gates": [
+    "authoritative ANIMO-specific theory for dry continuation phase",
+    "authoritative dry-to-wet remobilization rule",
+    "independent scientific review",
+    "physical-envelope trajectory and non-interference qualification after model semantics are fixed"
+  ],
+  "production_migration": "NOT_ADMITTED"
+}
