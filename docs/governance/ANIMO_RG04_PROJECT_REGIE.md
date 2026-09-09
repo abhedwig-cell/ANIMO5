@@ -22,7 +22,7 @@ RG04 reconciles, without increasing evidence strength:
 - the current `ANIMO-PREP02R` recovery state after receipt of the supplied Intel project metadata and native executable, including the completed Windows-native capture preparation;
 - current TCD-015, TCD-017, TCD-018 and TCD-027 admission-readiness states;
 - `ANIMO-B3A03R` as a technical review recheck that explicitly fails the independence gate and prepares a separate handoff;
-- the newly opened `ANIMO-UBQ01` TCD-042 atomization workunit.
+- the opened `ANIMO-UBQ01` TCD-042 atomization workunit, including its later supplied-native build-contract evidence.
 
 RG04 changes no physical model, frozen source, frozen testbank, scientific equation, corrected-legacy behaviour, canonical runtime implementation, B3 admission, B4 baseline or production code.
 
@@ -124,7 +124,11 @@ B3I03 reconciled the 15 MASSQ02 causal findings. It reserved exactly one new fai
 
 The corrected semantics are not selected. TCD-042 still requires atomization between possible accounting-only, persistent-state and local-transfer interpretations.
 
-`ANIMO-UBQ01@f3500990e7eaa1f5c02c6093186eb1ac369c5a42` is only an in-progress persisted checkpoint and creates no admission.
+Current UBQ01 evidence head:
+
+`work/animo-ubq01-tcd042-upper-boundary-transaction@18ff8802dbef8e797f1e9b1d52ca81aa4f25c3a9`
+
+The additional supplied-native artifact evidence directly confirms important execution-contract assumptions, including default REAL kind 8, SAVE/static local storage, PowerStation-compatible I/O settings and the selected 58-of-60 source-unit set. It does not establish historical execution, does not choose corrected TCD-042 semantics and does not make UBQ01 complete. UBQ01 therefore remains an in-progress scientific atomization workunit with no admission.
 
 ## Process-scoped B3 readiness
 
