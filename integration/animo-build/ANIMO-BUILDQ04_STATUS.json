@@ -1,0 +1,90 @@
+{
+  "work_unit": "ANIMO-BUILDQ04",
+  "title": "GHG Bottom-Boundary First-Use Initialization Qualification",
+  "status": "QUALIFIED_ZERO_BOTTOM_AIR_ADVECTIVE_BOUNDARY_CONTRACT_LOCAL_INITIALIZATION_DEFECT_CANDIDATE_HISTORICAL_INTEL_OPEN",
+  "branch": "work/animo-buildq04-ghg-bottom-boundary-initialization",
+  "base": {
+    "branch": "work/animo-buildq03-ghg-task-context-qualification",
+    "commit": "5e06473bc2bb1df6cf4e449d8d6aa04da35c7d47"
+  },
+  "target": {
+    "local_key": "BUILDQ03-LCL-GHGASSES-FLAIR-NLPLUS1-UNINITIALIZED",
+    "routine": "GHGasses",
+    "coordinate": "Flair(Nl+1)"
+  },
+  "frozen_evidence": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "source_modified": false,
+    "testbank_modified": false,
+    "diagnostic_compiler": "GNU Fortran 14.2.0"
+  },
+  "qualification": {
+    "first_read_scope": "UNCONDITIONAL_TASK1_FIRST_READ_WITHOUT_SOURCE_ASSIGNMENT_FOR_NL_GE_1",
+    "buildq03_topology_refined": true,
+    "post_update_la_invariant": "0 <= La <= Nl-1",
+    "boundary_coordinate_meaning": "LOWER_EXTERNAL_ADVECTIVE_AIR_FLUX_DOWNWARD_POSITIVE",
+    "qualified_boundary_contract": "FLAIR_NLPLUS1_EQUALS_ZERO_FOR_CLOSED_LOWER_GHG_AIR_BOUNDARY",
+    "boundary_value": 0.0,
+    "missing_physical_state": false,
+    "numerical_policy_change": false,
+    "compiler_initialization_is_semantics": false,
+    "historical_intel_effect": "UNKNOWN"
+  },
+  "source_contract_evidence": [
+    "GHGasses zero-airflow rule below first saturated zone",
+    "GHGtransport bottom equation has no lower-neighbour inflow concentration",
+    "GHGtransport has no lower diffusion boundary term",
+    "GHGtranssub sets Y2(Nl)=0 and P2(Nl)=0 and zero lower tridiagonal coupling",
+    "no public bottom-air boundary concentration or flux input exists",
+    "CH4 and N2O air-flow emission output is atmosphere-soil boundary only"
+  ],
+  "independent_theory": {
+    "source": "Stolk et al. 2011 Biogeosciences 8:2649-2663 DOI 10.5194/bg-8-2649-2011",
+    "result": "CONSISTENT_WITH_VERTICAL_AIR_ADVECTION_AND_ATMOSPHERE_SOIL_EMISSION_BUT_NOT_RELEASE_SPECIFIC_DISCRETE_BOTTOM_BOUNDARY_AUTHORITY"
+  },
+  "diagnostics": {
+    "uninitialized_first_read_probe": {
+      "source": "tools/buildq04/buildq04_uninitialized_first_read_probe.f90",
+      "source_sha256": "12d3b924c4d5b456b8e6dee5f5e5937f2be2a25cd0ab382cf1ccf792232eb4d5",
+      "compiler_sensitivity_confirmed": true,
+      "snan_O0_propagates_to_bottom_flux": true,
+      "ordinary_O2_nonzero_stack_values_observed": true
+    },
+    "boundary_sensitivity_probe": {
+      "source": "tools/buildq04/buildq04_boundary_sensitivity_probe.f90",
+      "source_sha256": "55d075a53338108e257c95c9f18722b5e69adcf22d477c76c2863b592e7ad5c3",
+      "rows": 60,
+      "O0_O2_byte_identical": true,
+      "output_sha256": "fb98a0d17f3e9295f919c60f2decf7bde584a4f8fdccee85ce0501b5240ce756",
+      "positive_boundary_flux_state_material": true,
+      "negative_boundary_inflow_not_coupled_at_bottom": true
+    }
+  },
+  "materiality": [
+    "FLUX_MATERIAL",
+    "STATE_MATERIAL",
+    "OUTPUT_MATERIAL_POTENTIAL",
+    "HISTORICAL_EFFECT_UNKNOWN"
+  ],
+  "b3_handoff": {
+    "provisional_class": "B",
+    "subtype": "LOCAL_BOUNDARY_INDEX_INITIALIZATION_OMISSION",
+    "relation_to_TCD011": "DISTINCT_CAUSAL_MECHANISM",
+    "relation_to_GHG_TCD032_037": "DISTINCT",
+    "recommended_disposition": "NEW_CANONICAL_TCD_CANDIDATE_PENDING_CENTRAL_COLLISION_CHECK_AND_RESERVATION",
+    "canonical_id_allocated_by_buildq04": false
+  },
+  "deliverables": [
+    "docs/build/ANIMO-BUILDQ04_WORK_UNIT_CONTRACT.md",
+    "docs/build/GHG_BOTTOM_BOUNDARY_INITIALIZATION_QUALIFICATION.md",
+    "integration/animo-build/BUILDQ04_GHG_BOTTOM_BOUNDARY_MATRIX.json",
+    "integration/animo-build/ANIMO-BUILDQ04_STATUS.json",
+    "tools/buildq04/buildq04_uninitialized_first_read_probe.f90",
+    "tools/buildq04/buildq04_boundary_sensitivity_probe.f90"
+  ],
+  "corrected_legacy_admitted": false,
+  "b3_scientific_admitted": false,
+  "production_migration_admitted": false,
+  "production_code_modified": false
+}
