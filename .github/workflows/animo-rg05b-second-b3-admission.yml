@@ -1,0 +1,51 @@
+name: ANIMO-RG05B second B3 admission integration
+
+on:
+  push:
+    branches:
+      - work/animo-rg05b-second-b3-admission-integration
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-rg05b:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Validate second B3 admission integration
+        run: python tools/validate_rg05b_second_b3_admission.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              "docs/governance/ANIMO_RG05B_SECOND_B3_ADMISSION_REGIE.md",
+              "integration/animo-reg/RG05B_B3_ADMISSION_INVENTORY.json",
+              "integration/animo-reg/RG05B_B3_QUEUE_DELTA.json",
+              "integration/animo-reg/ANIMO-RG05B_STATUS.json",
+              "tools/validate_rg05b_second_b3_admission.py",
+              ".github/workflows/animo-rg05b-second-b3-admission.yml",
+          }
+          base = "a42e1158b3eda670ca08329bc55943c7c6c9d655"
+          changed = set(subprocess.check_output(
+              ["git", "diff", "--name-only", f"{base}..HEAD"], text=True
+          ).splitlines())
+          unexpected = changed - allowed
+          missing = allowed - changed
+          if unexpected:
+              raise SystemExit("FAIL_RG05B_SCOPE_GUARD unexpected files: " + ", ".join(sorted(unexpected)))
+          if missing:
+              raise SystemExit("FAIL_RG05B_SCOPE_GUARD missing integration files: " + ", ".join(sorted(missing)))
+          print("PASS_RG05B_SCOPE_GUARD")
+          PY
