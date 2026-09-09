@@ -1,0 +1,23 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "artifact": "restricted-core fail-before-mutate guard",
+  "profile": "CORE_CNP_SUBSURFACE_ONLY",
+  "status": "PERSISTED_NOT_YET_EXECUTED",
+  "production_code": false,
+  "physics_change": false,
+  "canonical_state_admission": "NOT_ADMITTED",
+  "purpose": "qualification-only executable sentinel for the source-qualified zero-surface and zero-layer0 application envelope",
+  "guard_module": "tools/stateq01/restricted_core_guard.py",
+  "test_module": "tests/stateq01/test_restricted_core_guard.py",
+  "assertions": [
+    "accepted and candidate surface storage must satisfy exact restricted-core zero predicates",
+    "all in-scope layer0 restart solute coordinates must be exactly zero",
+    "no hidden epsilon or tolerance is used",
+    "non-finite and negative physical storage coordinates fail closed",
+    "unsupported hydrology modes and incomplete state mappings fail closed",
+    "guard evaluation must not mutate input state"
+  ],
+  "tested": false,
+  "qualified": false,
+  "next": "execute the standalone sentinel tests after persistence and record exact result"
+}
