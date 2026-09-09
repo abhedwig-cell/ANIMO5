@@ -10,7 +10,7 @@
   "requested_trigger": "Flpn = 0 AND Flux = 0",
   "status": "PARTIAL_TCD042_B1_CLASS_B_READINESS_HETOP_ZERO_DOMAIN_UNRESOLVED_ROUTE_AND_REVIEW_FAIL_CLOSED",
   "supersedes_status": "QUALIFIED_TCD042_B1_ATOMIC_CLASS_B_READINESS_ROUTE_AND_REVIEW_FAIL_CLOSED",
-  "supersession_reason": "closeout source recheck found that frozen revision-53 input validation accepts Hetop=0, while the proposed zero-flow limit contains division by Hetop",
+  "supersession_reason": "closeout source recheck found that frozen revision-53 input validation accepts Hetop=0, while the proposed zero-flow limit contains division by Hetop; subsequent executable probing confirmed a natural zero-Hetop Ruurlo variant traps in pre-existing legacy positive-flow algebra",
   "base": {
     "branch": "work/animo-b3i05-ubq02-numerical-seam-intake",
     "head": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
@@ -98,6 +98,7 @@
     "input_source": "input1.for:1826-1829",
     "input_lower_bound": 0.0,
     "input_upper_bound": 0.2,
+    "documentation_range": "[0.0 ... 0.2] m",
     "checkrea_lower_bound_semantics": "rejects only Value.Lt.Low at input1.for:4068-4074, so equality at zero is accepted",
     "zero_Hetop_equation_at_Flux_zero": "0 = Load",
     "zero_Hetop_nonzero_load": "INCONSISTENT_FINITE_CONCENTRATION_STORAGE_BALANCE",
@@ -105,6 +106,33 @@
     "candidate_division_by_zero_at_Hetop_zero": true,
     "full_requested_trigger_domain_resolved": false,
     "treatment": "FAIL_CLOSED_UNRESOLVED"
+  },
+  "runtime_zero_Hetop_probe": {
+    "evidence_class": "B0_HASH_PINNED_DIAGNOSTIC_EXECUTION_NOT_B2",
+    "compiler": "GNU Fortran 14.2.0",
+    "case": "RuurloGrass",
+    "only_scientific_input_change": "Hetop 0.02 -> 0.0; He(0) remains 0.2",
+    "ordinary_build": {
+      "executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+      "positive_Hetop_baseline_text_NaNs": 0,
+      "zero_Hetop_initial_out_NaNs": 185,
+      "zero_Hetop_flags": [
+        "IEEE_INVALID_FLAG",
+        "IEEE_DIVIDE_BY_ZERO"
+      ]
+    },
+    "trap_build": {
+      "executable_sha256": "981bce0cbdfd9119ab5696f1a49752826195835e6935b7c23fafe587ea092568",
+      "positive_Hetop_baseline": "SUCCESSFUL_COMPLETION_NO_TRAP",
+      "zero_Hetop_return_code": 136,
+      "zero_Hetop_signal": "SIGFPE",
+      "first_trapped_source": "UBoundconc.for:114",
+      "first_trapped_expression": "P = St*Flux/Hetop",
+      "caller": "Animo.for:517",
+      "branch_context": "pre-existing Flpn=0 ordinary positive-flow branch Flux>=1.0d-8"
+    },
+    "interpretation": "Hetop=0 is demonstrably broader than the local exact-zero Class-B atom and cannot be assigned semantics inside B3B02",
+    "b2_claim": false
   },
   "atomic_candidate": {
     "semantic_change_positive_Hetop_subdomain": "apply the unique zero-flow coefficients only for the scientifically qualified positive-Hetop exact-zero case",
@@ -168,7 +196,7 @@
       0.02
     ],
     "zero_Hetop_case_observed": false,
-    "interpretation": "existing UBQ01/testbank evidence supports positive-Hetop readiness only and cannot resolve zero-thickness semantics"
+    "interpretation": "existing UBQ01/testbank evidence supports positive-Hetop readiness only and cannot define zero-thickness semantics"
   },
   "negative_controls": {
     "pre_activation_through_TITO_1914": "BITWISE_IDENTICAL",
@@ -198,12 +226,14 @@
     "tolerance_absent": "PASS",
     "finite_positive_seam_excluded": "PASS",
     "legacy_input_domain_coverage": "FAIL_CLOSED_HETOP_ZERO_ACCEPTED_BUT_UNQUALIFIED",
+    "zero_thickness_runtime_safety": "FAIL_CLOSED_EXECUTABLE_SIGFPE_IN_EXISTING_LEGACY_PATH",
     "zero_thickness_semantics": "FAIL_CLOSED_UNRESOLVED",
     "historical_B2_route": "FAIL_CLOSED_UNAVAILABLE",
     "historical_uncertainty_route": "FAIL_CLOSED_NOT_ELIGIBLE",
     "independent_second_line_review": "FAIL_CLOSED_PENDING"
   },
   "route_state": {
+    "prep02r_head_rechecked": "a2fda49871ee3c7104daf7e06cd8dffdac06b125",
     "prep02r_status": "PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED",
     "normal_B2_reference_available": false,
     "historical_reference_artifact_obtained": false,
@@ -217,13 +247,13 @@
     "performed": false,
     "reviewer": null,
     "decision": "FAIL_CLOSED_PENDING",
-    "additional_review_requirement": "review must explicitly assess Hetop=0 parser admissibility and semantic treatment"
+    "additional_review_requirement": "review must explicitly assess Hetop=0 parser/documentation admissibility, executable failure evidence, and whether zero-thickness is external to the B1 algebra atom"
   },
   "residual_uncertainty": [
-    "revision-53 parser accepts Hetop=0",
+    "revision-53 parser and user guide allow Hetop=0",
+    "a natural Ruurlo zero-Hetop variant fails with SIGFPE in existing positive-flow UBoundconc algebra",
     "the recovered reservoir ODE does not provide a finite exact-zero concentration update at Hetop=0",
-    "no authoritative higher-level contract has yet been qualified that excludes Hetop=0 despite parser acceptance",
-    "no zero-thickness semantic policy is admitted",
+    "no authoritative zero-thickness semantic policy has been qualified",
     "historical B2 remains unavailable",
     "independent second-line review remains pending"
   ],
@@ -234,6 +264,7 @@
     "upper_boundary_redesign": true,
     "production_patch": true,
     "silent_Hetop_guard": true,
+    "zero_thickness_input_policy": true,
     "corrected_legacy_admission": true,
     "parent_TCD_042_admission": true,
     "B2_claim_from_UBQ01_or_UBQ02": true,
@@ -245,12 +276,23 @@
     "corrected_legacy_admitted": false,
     "parent_tcd_admitted": false,
     "production_migration_admitted": false,
-    "reason": "full trigger remains fail closed on accepted Hetop=0 domain; B2/GOV02 route and independent review also remain fail closed"
+    "reason": "full parser-admitted trigger remains fail closed on Hetop=0; B2/GOV02 route and independent review also remain fail closed"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "executable_domain_probe_performed": true,
+    "b3b02_github_actions_run": false,
+    "qualified": "PARTIAL_POSITIVE_HETOP_SUBDOMAIN_ONLY",
+    "work_unit_complete": true,
+    "completion_boundary": "further progress requires separate zero-thickness input/runtime semantic reconciliation and/or a valid B3 admission route plus independent second-line review"
   },
   "artifacts": {
     "initial_readiness_dossier": "docs/b3/TCD042_B1_CLASS_B_ADMISSION_READINESS.md",
     "authoritative_domain_refined_dossier": "docs/b3/TCD042_B1_CLASS_B_ADMISSION_READINESS_V2.md",
+    "runtime_zero_thickness_reconciliation": "docs/b3/TCD042_B1_HETOP_ZERO_RUNTIME_RECONCILIATION.md",
     "expected_difference": "integration/animo-b3/TCD042_B1_EXPECTED_DIFFERENCE.json",
+    "Hetop_domain_evidence": "integration/animo-b3/TCD042_B1_HETOP_DOMAIN_EVIDENCE.json",
     "scope_guard": "integration/animo-b3/ANIMO-B3B02_SCOPE_GUARD.json",
     "status": "integration/animo-b3/ANIMO-B3B02_STATUS.json"
   },
