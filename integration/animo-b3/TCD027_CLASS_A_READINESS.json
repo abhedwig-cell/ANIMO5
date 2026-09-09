@@ -1,0 +1,130 @@
+{
+  "work_unit": "ANIMO-B3A01",
+  "record_type": "B3_ADMISSION_READINESS_NOT_DISPOSITION",
+  "tcd_id": "TCD-027",
+  "qualification_class": "A",
+  "qualification_class_name": "ACCOUNTING_REPORTING_ONLY",
+  "atomicity": "ATOMIC_DETAILED_REPORTING_CLAIM",
+  "current_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "admitted": false,
+  "admission_record_created": false,
+  "reason_no_admission_record": "Neither NORMAL_B2_AVAILABLE nor the historical-uncertainty fallback precondition is currently satisfied, so a schema-valid admitted disposition record would be false evidence.",
+  "framework": {
+    "base_commit": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "framework_status": "QUALIFIED_B3_SCIENTIFIC_ADMISSION_FRAMEWORK_NO_LEGACY_CORRECTIONS_ADMITTED",
+    "schema": "integration/animo-b3/B3_DISPOSITION_SCHEMA.json"
+  },
+  "b0": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "documentation_exact_revision53_authority": false
+  },
+  "b1": {
+    "status": "DIAGNOSTIC_NOT_REFERENCE",
+    "primary_evidence": "integration/animo-prep/PREP06_ORGANIC_P_DETAILED_ACCUMULATOR_DEFECT.json",
+    "evidence_blob_sha": "5bc14b350b1b60f870ab568d4c8a127275ca8a84",
+    "causal_path_confirmed": true,
+    "natural_supplied_case_activation": true,
+    "historical_reference_implied": false
+  },
+  "b2": {
+    "status": "NOT_ESTABLISHED",
+    "prep02r_status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+    "prep02r_status_blob_sha": "eb3c8e877d82f402415061cfd39c3d2bcbe550a7",
+    "historical_reference_artifact_obtained": false,
+    "normal_route_available": false,
+    "historical_uncertainty_route_precondition_met": false,
+    "historical_uncertainty_route_blocker": "Prepared WUR archival request has not yet been sent; acquisition effort cannot legitimately be declared failed."
+  },
+  "source_claim": {
+    "routine": "Outbal_calc.for",
+    "legacy_expression": "Bafop(24,Ly)=Bafop(25,Ly)+Dum",
+    "candidate_probe_expression": "Bafop(24,Ly)=Bafop(24,Ly)+Dum",
+    "claim_scope": "detailed organic-P reporting accumulator only"
+  },
+  "accounting_identity": {
+    "identity": "new_slot24 = old_slot24 + current_slot24_increment",
+    "legacy_violation": "slot 24 is seeded from slot 25",
+    "analogue_support": [
+      "Bafom(24,Ly)=Bafom(24,Ly)+Adexpl(I,Ln)*Z",
+      "Bafon(24,Ly)=Bafon(24,Ly)+Dum"
+    ],
+    "broader_physics_claimed": false
+  },
+  "coverage": {
+    "natural_case": "LWKM_gras_1040.2021.2045",
+    "period": 1997,
+    "branch_or_path_activation_proven_in_b1": true,
+    "synthetic_only": false,
+    "b2_path_activation_proven": false
+  },
+  "observed_b1_difference": {
+    "legacy_redis_EXP_kg_ha_p": -7.0644,
+    "probe_redis_EXP_kg_ha_p": 0.0,
+    "profiles": ["GP", "RP", "TP"],
+    "changed_outputs": [
+      "transfopGP.Out",
+      "transfopRP.Out",
+      "transfopTP.Out"
+    ],
+    "changed_output_count": 3
+  },
+  "class_a_non_interference": {
+    "physical_state_trajectory_unchanged": true,
+    "process_flux_trajectory_unchanged": true,
+    "total_organic_p_balance_outputs_changed": false,
+    "total_mass_balance_changed": false,
+    "ordinary_state_or_process_outputs_changed": false,
+    "redis_OP_changed": false,
+    "redis_DOP_changed": false,
+    "redis_HUP_changed": false,
+    "evidence_scope": "B1 diagnostic only",
+    "sufficient_for_b3_admission": false
+  },
+  "expected_difference_contract": {
+    "changed_surfaces": [
+      "detailed organic-P redis_EXP reporting in transfopGP.Out",
+      "detailed organic-P redis_EXP reporting in transfopRP.Out",
+      "detailed organic-P redis_EXP reporting in transfopTP.Out"
+    ],
+    "unchanged_surfaces": [
+      "physical organic-P state trajectory",
+      "process flux trajectory",
+      "total organic-P balances",
+      "total mass balance",
+      "redis_OP",
+      "redis_DOP",
+      "redis_HUP",
+      "ordinary non-reporting model outputs"
+    ],
+    "fail_closed_on_unexpected_difference": true
+  },
+  "gates": {
+    "b0_identity": "PASS",
+    "b1_causal_evidence": "PASS_FOR_READINESS_ONLY",
+    "class_a_local_identity": "PASS_FOR_READINESS_ONLY",
+    "natural_path_coverage": "PASS_IN_B1",
+    "state_non_interference": "PASS_IN_B1",
+    "flux_non_interference": "PASS_IN_B1",
+    "reporting_difference_whitelist": "PASS_IN_B1",
+    "conservation_non_interference": "PASS_IN_B1",
+    "b2_route": "BLOCKED",
+    "historical_uncertainty_fallback": "NOT_ELIGIBLE_YET",
+    "independent_review": "PENDING",
+    "b3_admission": "FAIL_CLOSED_NOT_ADMITTED"
+  },
+  "residual_uncertainty": [
+    "Exact historical executable behaviour for the natural LWKM path is unavailable.",
+    "The supplied ANIMO 4.0 documentation does not explicitly define revision-53 detailed accumulator slot algebra.",
+    "Independent second-line review has not yet been completed.",
+    "B1 non-interference evidence must not be mistaken for B2 historical equivalence."
+  ],
+  "next_required_actions": [
+    "Complete the PREP02R external historical-reference acquisition action.",
+    "If B2 is obtained, execute the relevant natural LWKM path under the qualified reference and capture detailed organic-P reporting plus independent unrounded state/flux observation surfaces.",
+    "Obtain independent second-line review of source semantics, changed-output whitelist and non-interference.",
+    "Only then instantiate and validate an atomic B3 disposition record."
+  ],
+  "production_migration": "NOT_ADMITTED"
+}
