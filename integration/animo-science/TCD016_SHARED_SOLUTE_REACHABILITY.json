@@ -1,0 +1,137 @@
+{
+  "work_unit": "ANIMO-SQ01",
+  "target": "TCD-016",
+  "status": "SOURCE_BOUND_SHARED_REPRESENTATION_REACHABILITY_RECONSTRUCTED_NO_NEW_TCD_ADMITTED",
+  "production_migration": "NOT_ADMITTED",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "shared_surface_state_machine": {
+    "activation_threshold_m": 0.0001,
+    "activation_threshold_mm": 0.1,
+    "activation_rule": "Flpn=1 when old OR new surface-water storage exceeds threshold",
+    "transport_top_index_when_active": 0,
+    "transport_top_index_when_inactive": 1,
+    "crossing_step_layer0_processed": true,
+    "next_step_layer0_omitted_if_old_and_new_below_threshold": true,
+    "state_promotion": [
+      "Pn=Pnt",
+      "Mofro=Mofrt",
+      "Conh=Rsconh",
+      "Coni=Rsconi",
+      "soluble_organic_result_to_accepted_concentrations",
+      "Copo=Rscopo"
+    ],
+    "interpretation": "crossing timestep is the explicit legacy opportunity to transfer residual layer0 solute before ponding transport state deactivates"
+  },
+  "canonical_hydrology": {
+    "start_storage_m": 0.0001087117,
+    "start_storage_mm": 0.1087117,
+    "end_storage_m": 0.000003256434,
+    "end_storage_mm": 0.003256434,
+    "outflow_m_d": 4.1184400265397315e-10,
+    "layer_thickness_m": 0.2,
+    "hv1_minus_hv_for_zero_reaction_zero_selectivity_d_1": 2.059220013269866e-9,
+    "transsub_small_d_1": 1e-8,
+    "conservative_solver_class": "Iflsol=2",
+    "wet_to_low_storage_branch": true,
+    "fu_export_branch": false,
+    "result_for_conservative_layer0_probe": {
+      "rsc": 0.0,
+      "avc": 0.0
+    }
+  },
+  "substances": [
+    {
+      "substance": "NH4-N",
+      "route": "Animo->Transport(AMMONIUM)->Transsub",
+      "layer0_reachable": true,
+      "evidence_level": "OBSERVED_AND_REPRODUCED_DEFECT",
+      "historical_case": "Puitmijn_Cranendonck_60",
+      "observed_mass_loss_kg_N_m2": 0.000013880242022597072,
+      "observed_mass_loss_kg_N_ha": 0.13880242022597072,
+      "new_tcd": false,
+      "reason": "this is the existing TCD-016 discrepancy"
+    },
+    {
+      "substance": "mineral_phosphorus_orthophosphate",
+      "route": "Animo->Transgen(PHOSPHORUS)->Transsub_for_Ln0",
+      "layer0_reachable": true,
+      "layer0_process_terms": "Transgen passes zero selectivity, zero reaction, zero bulk-density and zero sorption contribution for Ln=0",
+      "canonical_hydrology_reaches_same_Iflsol2_branch": true,
+      "evidence_level": "SOURCE_CONFIRMED_STRUCTURAL_REACHABILITY_NOT_HISTORICALLY_ACTIVATED_IN_SQ01",
+      "new_tcd": false,
+      "must_remain_separate_from": ["TCD-019", "TCD-024"]
+    },
+    {
+      "substance": "NO3-N",
+      "route": "Animo->Transport(NITRATE)->Transsub",
+      "layer0_reachable": true,
+      "species_specific_complication": "aeration and denitrification can modify nitrate reaction coefficients at the active surface index and therefore alter the Transsub analytical-solution class",
+      "evidence_level": "SHARED_SEAM_REACHABLE_EXACT_DELETION_NOT_ESTABLISHED",
+      "new_tcd": false,
+      "must_remain_separate_from": ["TCD-015"]
+    },
+    {
+      "substance": "soluble_organic_matter",
+      "route": "Animo->Transca->Transport(Sol.Org.Mat)->Transsub",
+      "layer0_reachable": true,
+      "species_specific_complication": "soil-derived reaction or sorption arrays used by Transca are populated explicitly for soil layers; this audit does not infer unresolved layer0 runtime values",
+      "evidence_level": "SHARED_TRANSSUB_REACHABILITY_REQUIRES_SEPARATE_LAYER0_PARAMETER_INITIALIZATION_AUDIT",
+      "new_tcd": false
+    },
+    {
+      "substance": "soluble_organic_nitrogen",
+      "route": "Animo->Transca->Transport(Sol.Org.Nit)->Transsub",
+      "layer0_reachable": true,
+      "species_specific_complication": "same Transca layer0 parameter-initialization uncertainty",
+      "evidence_level": "SHARED_TRANSSUB_REACHABILITY_REQUIRES_SEPARATE_LAYER0_PARAMETER_INITIALIZATION_AUDIT",
+      "new_tcd": false
+    },
+    {
+      "substance": "soluble_organic_phosphorus",
+      "route": "Animo->Transca->Transport(Sol.Org.Pho)->Transsub",
+      "layer0_reachable": true,
+      "species_specific_complication": "same Transca layer0 parameter-initialization uncertainty",
+      "evidence_level": "SHARED_TRANSSUB_REACHABILITY_REQUIRES_SEPARATE_LAYER0_PARAMETER_INITIALIZATION_AUDIT",
+      "new_tcd": false,
+      "must_remain_separate_from": ["TCD-017", "TCD-023", "TCD-027"]
+    },
+    {
+      "substance": "CH4_N2O_and_GHG_transport_states",
+      "route": "GHG-specific transport subsystem",
+      "layer0_reachable_via_TCD016_Transsub_route": false,
+      "evidence_level": "OUT_OF_TCD016_SHARED_TRANSSUB_SCOPE",
+      "new_tcd": false
+    }
+  ],
+  "scope_guard": {
+    "existing_parent_identity": "NH4 surface-layer dry-down mass conservation",
+    "broader_finding": "observed NH4 instance of a shared surface aqueous representation hazard",
+    "not_supported": "all solutes have confirmed TCD016 mass loss",
+    "new_tcd_trigger": [
+      "natural historical case showing nonclosure or incorrect state transition",
+      "source-bound algebraic proof independent of unresolved species-specific semantics",
+      "explicit governance decision to create a generic surface-state discrepancy parent"
+    ]
+  },
+  "historical_origin": {
+    "ANIMO40_process_report": "Alterra Report 983 official WUR record confirmed",
+    "ANIMO40_user_guide": "Alterra Report 224 available and reviewed",
+    "threshold_present_in_source_lineage": true,
+    "physical_derivation_of_0_1mm_recovered": false,
+    "physical_derivation_of_Fu_1e_6_m_d_recovered": false,
+    "report983_full_text_retrieved_in_this_continuation": false,
+    "negative_claim_about_unretrieved_report983_text": false,
+    "status": "0_1MM_CONVENTION_PRESENT_IN_ANIMO40_LINEAGE_BUT_ORIGIN_OR_PHYSICAL_DERIVATION_NOT_RECOVERED"
+  },
+  "qualification_implication": {
+    "C1": "continuation-state architecture should not be hard-coded as NH4-only before theory review, while scientific phase and rewetting admission remains species-specific",
+    "E1_future_minimum_envelope": [
+      "NH4 natural diagnostic",
+      "nonreactive conservative equation probe",
+      "layer0 mineral phosphorus direct Transsub route"
+    ],
+    "E1_current_status": "BLOCKED_DEPENDS_ON_TCD016_C1"
+  },
+  "parent_status": "BLOCKED_TCD016_INSUFFICIENT_THEORY_FOR_CORRECTED_LEGACY_ADMISSION",
+  "admitted": false
+}
