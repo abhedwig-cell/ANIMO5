@@ -13,13 +13,14 @@
     "b1",
     "formatted_tree_comparison",
     "observer",
+    "representation_scope",
     "representation_comparison",
     "structured_comparison",
     "policy_assertions",
     "disposition"
   ],
   "properties": {
-    "packet_schema_version": {"const": "1.1.0"},
+    "packet_schema_version": {"const": "1.2.0"},
     "work_unit": {"const": "ANIMO-NQ01"},
     "testcase_id": {"const": "RuurloGrass"},
     "inputs": {
@@ -127,6 +128,65 @@
         "observer_patch_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
         "b2_structured_capture": {"type": ["string", "null"]},
         "b1_structured_capture": {"type": ["string", "null"]}
+      }
+    },
+    "representation_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["registry", "jointly_observed_subjects", "omitted_subjects"],
+      "properties": {
+        "registry": {
+          "const": "integration/animo-numerics/FIRST_REFERENCE_REPRESENTATION_SURFACE.json"
+        },
+        "jointly_observed_subjects": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["domain", "subject"],
+            "properties": {
+              "domain": {
+                "enum": [
+                  "file_path_compatibility",
+                  "formatting",
+                  "binary_record_representation",
+                  "precision_representation"
+                ]
+              },
+              "subject": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "omitted_subjects": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["domain", "subject", "reason_class", "rationale"],
+            "properties": {
+              "domain": {
+                "enum": [
+                  "file_path_compatibility",
+                  "formatting",
+                  "binary_record_representation",
+                  "precision_representation"
+                ]
+              },
+              "subject": {"type": "string", "minLength": 1},
+              "reason_class": {
+                "enum": [
+                  "NOT_APPLICABLE_TO_CASE",
+                  "NOT_JOINTLY_OBSERVABLE",
+                  "OBSERVER_NOT_ADMITTED",
+                  "HISTORICAL_BUILD_METADATA_UNAVAILABLE"
+                ]
+              },
+              "rationale": {"type": "string", "minLength": 1}
+            }
+          }
+        }
       }
     },
     "representation_comparison": {
