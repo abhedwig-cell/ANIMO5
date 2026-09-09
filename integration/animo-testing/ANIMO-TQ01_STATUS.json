@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-TQ01",
+  "title": "Historical Testcase Lineage, Process Coverage & Evidence Strength Matrix",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-tq01-testcase-qualification",
+  "source_head": "52411b9d2d6d80717914bc6642544290a54ded21",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+  "evidence_model": "B0-B4_CANONICAL",
+  "implemented": false,
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "historical_reference_qualified": false,
+  "production_migration": "NOT_ADMITTED",
+  "supplied_case_count": 9,
+  "known_b1_success_count": 8,
+  "known_lineage_exception": "GHGMais",
+  "prep02r_live_head_checked": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+  "prep02r_reference_state": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+  "decision": "IN_PROGRESS_CHECKPOINT_PERSISTED_BEFORE_TESTING",
+  "next": [
+    "reverify member identities and per-case steering contracts from frozen B0 bytes",
+    "map configured options to revision-53 source predicates",
+    "separate configured/present/reached/mutated/output-only evidence",
+    "write GHGMais lineage dossier",
+    "write process and option coverage matrices",
+    "write synthetic evidence policy and ordered gap register"
+  ]
+}
