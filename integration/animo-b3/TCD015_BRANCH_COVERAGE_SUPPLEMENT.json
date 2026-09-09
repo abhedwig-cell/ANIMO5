@@ -1,0 +1,213 @@
+{
+  "work_unit": "ANIMO-B3B01",
+  "target_tcd": "TCD-015",
+  "record_type": "CLASS_B_BRANCH_COVERAGE_SUPPLEMENT_NOT_B2_NOT_ADMISSION",
+  "date": "2026-09-09",
+  "status": "QUALIFIED_REACHABLE_CLIPPING_RECONSTRUCTION_BRANCH_COVERAGE_WITH_STRUCTURAL_UNREACHABILITY_FOR_IFLSOL_2_AND_5",
+  "scope": {
+    "claim": "Only the second negative-concentration Reko reconstruction and the duplicated Hv contribution are covered.",
+    "excluded": [
+      "clipping-policy redesign",
+      "tolerance change",
+      "analytical-solver policy change",
+      "non-NITRATE correction",
+      "historical Intel behaviour",
+      "B2 creation",
+      "B3 admission"
+    ]
+  },
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "Transsub_for_sha256": "c548e5d372ffbc7f4d4e4d8d86609cf1f34cf70ea513d345e3c7fada5cf6b552"
+  },
+  "natural_B1_branch_observer": {
+    "observer_change": "stdout-only diagnostic write immediately before the frozen line-304 Reko reconstruction",
+    "instrumented_Transsub_sha256": "fdd0b6cf3e2814121484399a78d220d3bb58c5b66971fa2e54a471183355496a",
+    "instrumented_executable_sha256": "b8f0b2421200cde55c848a60e5fc942761363af113d8ed555d423bacd9e02013",
+    "cases": {
+      "CranGrass": {
+        "nitrate_hits": 0,
+        "Iflsol_counts": {}
+      },
+      "CranMais": {
+        "nitrate_hits": 0,
+        "Iflsol_counts": {}
+      },
+      "GrassPeat": {
+        "nitrate_hits": 301,
+        "Iflsol_counts": {
+          "1": 279,
+          "3": 22
+        }
+      },
+      "LWKM_gras_1040.2021.2045": {
+        "nitrate_hits": 199,
+        "Iflsol_counts": {
+          "1": 199
+        }
+      },
+      "RuurloGrass": {
+        "nitrate_hits": 0,
+        "Iflsol_counts": {}
+      },
+      "STONE_akk_0006.2001.2015": {
+        "nitrate_hits": 8,
+        "Iflsol_counts": {
+          "1": 8
+        }
+      },
+      "Puitmijn_Cranendonck_60": {
+        "nitrate_hits": 0,
+        "Iflsol_counts": {}
+      },
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA": {
+        "nitrate_hits": 0,
+        "Iflsol_counts": {}
+      }
+    },
+    "aggregate": {
+      "nitrate_hits": 508,
+      "Iflsol_counts": {
+        "1": 486,
+        "3": 22
+      },
+      "non_nitrate_hits": 0
+    },
+    "interpretation": "Natural B1 reaches the exact reconstruction through Iflsol 1 and 3. Iflsol 1 carries the Hv correction effect; Iflsol 3 has Hv=0 and is an exact zero-delta control."
+  },
+  "isolated_frozen_source_harness": {
+    "purpose": "Exercise reachable analytical modes not all represented naturally while calling the exact frozen Transsub source and the species-scoped execution-only candidate.",
+    "harness_sha256": "6826809198954ab7adea3aabf729b34b85c08bccfcd5553d62607a6c854d1b41",
+    "baseline_executable_sha256": "da7d11adb8f870cfca0b4a987eddb9ad67884274844aebe5e77e912ff8fab2c2",
+    "candidate_executable_sha256": "b9f4e01a4a416aa6973e15c798ef17028b5f15087ef283ab91c580f2764c3501",
+    "candidate_Transsub_sha256": "2e28838db0b03ab6571694e386c20eca0eb7ea2bb9d414a1facbb25dbd2f149b",
+    "compiler": "GNU Fortran 14.2.0",
+    "common": {
+      "Substname": "NITRATE",
+      "Optneg": 0,
+      "Ln": 1,
+      "Socf": 0.0,
+      "Rhbd": 1000.0,
+      "Rd": 0.0,
+      "Fev": 0.0,
+      "Reki": 0.0,
+      "Flo": 0.0,
+      "Flb": 0.0,
+      "Fid": 0.0,
+      "Con": 0.0,
+      "Cb": 0.0,
+      "Coid": 0.0,
+      "Co": 0.01,
+      "St": 1.0,
+      "Ld": 0.05,
+      "initial_Reko": -0.002
+    },
+    "cases": {
+      "Iflsol_1": {
+        "inputs": {
+          "Mto": 0.2,
+          "Mt": 0.1,
+          "Fu": 0.001
+        },
+        "derived": {
+          "Hv": -0.1,
+          "Hv1": -0.08
+        },
+        "baseline": {
+          "Reko": -0.002457475434203804,
+          "Rsc": 1e-12,
+          "Avc": 0.005718442928797548
+        },
+        "candidate": {
+          "Reko": -0.0018856311413240493,
+          "Rsc": 1e-12,
+          "Avc": 0.005718442928797548
+        },
+        "candidate_minus_baseline_Reko": 0.0005718442928797549,
+        "effect": "EXPECTED_NONZERO",
+        "minus_Avc_times_Hv_from_printed_values": 0.0005718442928797548,
+        "floating_reconstruction_difference": 1.0842021724855044e-19,
+        "identity_interpretation": "The source-level candidate-minus-legacy expression is algebraically -Avc*Hv. Reconstructing both sides from separately rounded printed floating values differs by one rounding unit; no tolerance is used as an acceptance rule."
+      },
+      "Iflsol_3": {
+        "inputs": {
+          "Mto": 0.2,
+          "Mt": 0.2,
+          "Fu": 0.001
+        },
+        "derived": {
+          "Hv": 0.0,
+          "Hv1": 0.02
+        },
+        "baseline": {
+          "Reko": -0.0019062035958855592,
+          "Rsc": 1e-12,
+          "Avc": 0.004689820195722035
+        },
+        "candidate": {
+          "Reko": -0.0019062035958855592,
+          "Rsc": 1e-12,
+          "Avc": 0.004689820195722035
+        },
+        "candidate_minus_baseline_Reko": 0.0,
+        "effect": "EXACT_ZERO_DELTA_CONTROL",
+        "minus_Avc_times_Hv_from_printed_values": 0.0,
+        "floating_reconstruction_difference": 0.0
+      },
+      "Iflsol_4": {
+        "inputs": {
+          "Mto": 0.2,
+          "Mt": 0.1,
+          "Fu": 0.005
+        },
+        "derived": {
+          "Hv": -0.1,
+          "Hv1": 0.0
+        },
+        "baseline": {
+          "Reko": -0.0019999999999,
+          "Rsc": 1e-12,
+          "Avc": 0.004563860560983565
+        },
+        "candidate": {
+          "Reko": -0.0015436139438016437,
+          "Rsc": 1e-12,
+          "Avc": 0.004563860560983565
+        },
+        "candidate_minus_baseline_Reko": 0.0004563860560983565,
+        "effect": "EXPECTED_NONZERO",
+        "minus_Avc_times_Hv_from_printed_values": 0.00045638605609835646,
+        "floating_reconstruction_difference": 0.0
+      }
+    },
+    "non_interference": "For all three isolated calls Rsc and Avc are identical between baseline and candidate output; only Reko changes when Hv is nonzero.",
+    "acceptance_note": "No numerical tolerance is used. Branch reachability is determined by exact control flow; Rsc/Avc non-interference is observed as identical formatted outputs; the Reko delta claim is source-algebraic, with printed floating reconstructions reported explicitly rather than thresholded."
+  },
+  "structural_reachability": {
+    "B": "Mto + Rhbd*Socf",
+    "pre_adjust_invariant": "Before analytical-solution selection, the frozen source enforces B*Co + Hv2*St >= 0, or replaces Hv2 so that the numerator becomes Vsmall.",
+    "Iflsol_2": {
+      "condition": "Hv1=Hv != 0",
+      "reduced_final_concentration": "Rsc = (B*Co + Hv2*St)/(B + Hv*St)",
+      "negative_reconstruction_reachable_for_positive_final_storage_denominator": false,
+      "reason": "The numerator is non-negative by the frozen pre-adjust invariant and the denominator is the positive final storage factor."
+    },
+    "Iflsol_5": {
+      "condition": "Hv=0 and Hv1=0",
+      "reduced_final_concentration": "Rsc = (B*Co + Hv2*St)/B",
+      "negative_reconstruction_reachable_for_positive_storage_denominator": false,
+      "reason": "The numerator is non-negative by the frozen pre-adjust invariant and B is positive."
+    },
+    "coverage_conclusion": "All reachable modes of the second negative-concentration reconstruction are covered: Iflsol 1 naturally and synthetically, Iflsol 3 naturally and synthetically as an exact zero-delta control, and Iflsol 4 synthetically. Iflsol 2 and 5 are structurally unreachable for the negative-reconstruction branch under the valid positive-storage domain."
+  },
+  "admission_boundary": {
+    "B2_created": false,
+    "historical_behaviour_claimed": false,
+    "independent_second_line_review_complete": false,
+    "route_eligible": false,
+    "B3_admitted": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false
+  }
+}
