@@ -39,6 +39,9 @@ def record(variable_class="PHYSICAL_STORAGE_STATE", text="1.25", quantity="NO3")
             "ledger_id": None,
             "cumulative": False,
             "boundary": None,
+            "ledger_member_id": None,
+            "ledger_sign": None,
+            "index_mapping_id": None,
         },
         "execution_context": {
             "source_routine": "Transgen",
@@ -69,7 +72,7 @@ def record(variable_class="PHYSICAL_STORAGE_STATE", text="1.25", quantity="NO3")
 
 def capture(role, records):
     return {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "evidence_role": role,
         "run_identity": {
             "run_id": role.lower(),
@@ -106,6 +109,7 @@ class ComparatorTests(unittest.TestCase):
         self.assertEqual(report["decision"], "MATCH_EXACT_COMPARISON_EVIDENCE")
         self.assertFalse(report["numerical_equivalence_qualified_by_this_tool"])
         self.assertFalse(report["global_numeric_tolerance_applied"])
+        self.assertEqual(report["record_set"]["unrounded_scientific_b2_records"], 1)
 
     def test_nonexact_float_fails_closed_without_tolerance(self):
         b2 = capture("B2_HISTORICAL_REFERENCE_QUALIFIED", [record(text="1.000000")])
@@ -129,6 +133,19 @@ class ComparatorTests(unittest.TestCase):
         self.assertEqual(report["decision"], "DIFFERENT_FAIL_CLOSED")
         self.assertEqual(report["comparisons"][0]["classification"], "CONTROL_FLOW_DIFFERENCE")
 
+    def test_branch_context_difference_fails_even_when_value_matches(self):
+        b2_record = record()
+        b1_record = copy.deepcopy(b2_record)
+        b2_record["execution_context"]["branch_id"] = "SECANT"
+        b1_record["execution_context"]["branch_id"] = "TANGENT"
+        b2 = capture("B2_HISTORICAL_REFERENCE_QUALIFIED", [b2_record])
+        b1 = capture("B1_DIAGNOSTIC", [b1_record])
+        report = mod.compare_captures(b2, b1)
+        self.assertEqual(report["decision"], "DIFFERENT_FAIL_CLOSED")
+        comparison = report["comparisons"][0]
+        self.assertEqual(comparison["classification"], "CONTROL_FLOW_DIFFERENCE")
+        self.assertIn("branch_id", comparison["execution_path_difference"])
+
     def test_non_scientific_metadata_difference_is_nonfatal(self):
         b2_record = record(variable_class="TIMING_OR_NONSCIENTIFIC_METADATA", text="1.2", quantity="cpu")
         b1_record = copy.deepcopy(b2_record)
@@ -140,6 +157,21 @@ class ComparatorTests(unittest.TestCase):
         report = mod.compare_captures(b2, b1)
         self.assertEqual(report["decision"], "MATCH_SCIENTIFIC_RECORDS_REPRESENTATION_DIFFERS")
         self.assertEqual(report["comparisons"][0]["classification"], "REPRESENTATION_ONLY_DIFFERENCE")
+
+    def test_formatted_report_difference_is_not_auto_normalized(self):
+        b2_record = record(variable_class="FORMATTED_REPORT_VALUE", text="1.200", quantity="report-po4")
+        b1_record = copy.deepcopy(b2_record)
+        b1_record["record_id"] = "b1-report"
+        b1_record["value"]["text"] = "1.201"
+        b1_record["value"]["decimal_text"] = "1.201"
+        b2 = capture("B2_HISTORICAL_REFERENCE_QUALIFIED", [b2_record])
+        b1 = capture("B1_DIAGNOSTIC", [b1_record])
+        report = mod.compare_captures(b2, b1)
+        self.assertEqual(report["decision"], "DIFFERENT_FAIL_CLOSED")
+        self.assertEqual(
+            report["comparisons"][0]["classification"],
+            "FORMATTED_REPORT_DIFFERENCE_FAIL_CLOSED",
+        )
 
     def test_b2_must_not_be_b1_role(self):
         b2 = capture("B1_DIAGNOSTIC", [record()])
@@ -156,6 +188,51 @@ class ComparatorTests(unittest.TestCase):
         report = mod.compare_captures(b2, b1)
         self.assertEqual(report["decision"], "SCHEMA_OR_PROVENANCE_FAILURE")
         self.assertTrue(any("missing precision" in item for item in report["b2_validation_errors"]))
+
+    def test_non_round_trip_scientific_capture_fails_validation(self):
+        b2_record = record()
+        b2_record["precision"]["capture_is_round_trip"] = False
+        b2 = capture("B2_HISTORICAL_REFERENCE_QUALIFIED", [b2_record])
+        b1 = capture("B1_DIAGNOSTIC", [record()])
+        report = mod.compare_captures(b2, b1)
+        self.assertEqual(report["decision"], "SCHEMA_OR_PROVENANCE_FAILURE")
+        self.assertTrue(any("not proven round-trip" in item for item in report["b2_validation_errors"]))
+
+    def test_rounded_report_only_cannot_supply_scientific_float_oracle(self):
+        b2 = capture("B2_HISTORICAL_REFERENCE_QUALIFIED", [record()])
+        b2["capture_contract"]["rounded_report_only"] = True
+        b2["capture_contract"]["precision_capture_method"] = "LEGACY_FORMATTED_DECIMAL_ONLY"
+        b1 = capture("B1_DIAGNOSTIC", [record()])
+        report = mod.compare_captures(b2, b1)
+        self.assertEqual(report["decision"], "SCHEMA_OR_PROVENANCE_FAILURE")
+        self.assertTrue(any("rounded_report_only" in item for item in report["b2_validation_errors"]))
+
+    def test_accounting_sign_difference_fails_closed(self):
+        b2_record = record(variable_class="EXACT_ACCOUNTING_IDENTITY", text="2.0", quantity="p-ledger-term")
+        b1_record = copy.deepcopy(b2_record)
+        b2_record["scientific_context"].update(
+            {
+                "ledger_id": "P_TOTAL",
+                "ledger_member_id": "boundary_in",
+                "ledger_sign": 1,
+                "index_mapping_id": "species=P,layer=1",
+            }
+        )
+        b1_record["scientific_context"].update(
+            {
+                "ledger_id": "P_TOTAL",
+                "ledger_member_id": "boundary_in",
+                "ledger_sign": -1,
+                "index_mapping_id": "species=P,layer=1",
+            }
+        )
+        b2 = capture("B2_HISTORICAL_REFERENCE_QUALIFIED", [b2_record])
+        b1 = capture("B1_DIAGNOSTIC", [b1_record])
+        report = mod.compare_captures(b2, b1)
+        self.assertEqual(report["decision"], "DIFFERENT_FAIL_CLOSED")
+        comparison = report["comparisons"][0]
+        self.assertEqual(comparison["classification"], "ACCOUNTING_IDENTITY_DIFFERENCE")
+        self.assertIn("ledger_sign", comparison["accounting_identity_difference"])
 
     def test_missing_record_fails_closed(self):
         b2 = capture("B2_HISTORICAL_REFERENCE_QUALIFIED", [record()])
