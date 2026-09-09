@@ -4,13 +4,13 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-rg04-state-mass-b2-reconciliation",
   "starting_parent": "820ba9a9bbc90aceb892ac9ac36ecf7fb782b136",
-  "state": "QUALIFIED_LATE_WAVE_STATE_MASS_B2_RECONCILIATION_NO_ADMISSIONS",
-  "decision": "QUALIFIED_LATE_WAVE_STATE_MASS_B2_RECONCILIATION_NO_ADMISSIONS",
+  "state": "IN_PROGRESS_PERSISTED_BEFORE_REVALIDATION",
+  "decision": "PENDING_REVALIDATION_AFTER_PREP02R_ADVANCE",
   "implemented": true,
   "persisted": true,
-  "tested": true,
-  "qualified": true,
-  "work_unit_complete": true,
+  "tested": false,
+  "qualified": false,
+  "work_unit_complete": false,
   "scientific_admission_performed": false,
   "b3_baseline_established": false,
   "b4_baseline_admitted": false,
@@ -26,7 +26,7 @@
   "evidence_strength_increased_by_integration": false,
   "authority_snapshot": {
     "RG03": "820ba9a9bbc90aceb892ac9ac36ecf7fb782b136",
-    "PREP02R": "60f3c57a3299a1890b4cdd66befd5a120a306383",
+    "PREP02R": "286205cb58455236ba749d1898c490aca0c50179",
     "STATEQ02": "ada93a409aa054f9aebac32728e79f80468215a7",
     "MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
     "B3I03": "6a015587807130b4ce12c9f1518c1ddac4e5d624",
@@ -49,6 +49,18 @@
     "animo41_vfproj_sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
     "animo41_sln_sha256": "206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2",
     "classification": "MODERN_NATIVE_REBUILD_AND_STRONG_BUILD_CONTRACT_EVIDENCE_NOT_HISTORICAL_B2"
+  },
+  "prep02r": {
+    "state": "PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED",
+    "windows_native_capture_handoff_ready": true,
+    "ruurlo_frozen_input_surface_pinned": true,
+    "windows_native_capture_harness_persisted": true,
+    "native_candidate_execution_completed": false,
+    "native_vs_gnu_comparison_completed": false,
+    "external_request_sent": false,
+    "historical_reference_artifact_obtained": false,
+    "reference_qualified": false,
+    "modern_native_rebuild_is_historical_B2": false
   },
   "gate_reconciliation": {
     "G6H": "PARTIAL_RECOVERY_HISTORICAL_B2_NOT_PASSED",
@@ -100,12 +112,12 @@
   "validation": {
     "validator": "tools/validate_rg04_governance.py",
     "workflow": ".github/workflows/animo-rg04-governance.yml",
-    "tested_head_before_status_closeout": "b0e9de02e042fd820e906142d557f161b7cd6a93",
-    "github_actions_run_id": 34360447785,
-    "github_actions_head": "b0e9de02e042fd820e906142d557f161b7cd6a93",
-    "github_actions_conclusion": "success",
-    "validator_result": "PASS",
-    "scope_guard": "PASS_RG04_GOVERNANCE_ONLY_NO_SOURCE_OR_FROZEN_PATHS_CHANGED"
+    "previous_green_run_id": 34360447785,
+    "previous_green_head": "b0e9de02e042fd820e906142d557f161b7cd6a93",
+    "previous_green_scope": "PRE_PREP02R_ADVANCE_RECONCILIATION",
+    "github_actions_run_id": null,
+    "github_actions_conclusion": "PENDING_REVALIDATION",
+    "validator_result": "PENDING_REVALIDATION"
   },
   "deliverables": [
     "docs/governance/ANIMO_RG04_PROJECT_REGIE.md",
@@ -118,6 +130,7 @@
   ],
   "recommended_next": [
     "Continue UBQ01 until TCD-042 is atomized or fails closed.",
+    "Execute the prepared genuine-Windows PREP02R diagnostic capture when that environment is available, without relabelling it historical B2.",
     "Execute the actual PREP02R archival acquisition action; the modern native rebuild is diagnostic only.",
     "Obtain genuinely independent second-line review for TCD-015, TCD-017, TCD-018 and TCD-027 readiness packages.",
     "Open remaining atomic readiness work for TCD-023, TCD-024, TCD-026, TCD-030, TCD-038, TCD-040 and TCD-041 as capacity allows.",
