@@ -3,14 +3,59 @@
   "title": "TCD-042-E1 Restricted Class-E Numerical Policy Admission Readiness",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3e01-tcd042-e1-class-e-admission-readiness",
-  "status": "IN_PROGRESS_PERSISTED_GOVERNANCE_ROUTE_AND_CHILD_DISPOSITION_CHECK_PENDING",
+  "status": "PARTIAL_TCD042_E1_CLASS_E_READINESS_POSITIVE_HETOP_POLICY_QUALIFIED_FULL_CHILD_DOMAIN_AND_ADMISSION_ROUTE_FAIL_CLOSED",
   "target_parent": "TCD-042",
   "target_atom": "TCD-042-E1",
   "qualification_class": "E_NUMERICAL_POLICY",
+  "requested_trigger": "Flpn=0 AND 0<Flux<1.0d-8",
   "base": {
     "work_unit": "ANIMO-NQ03R",
     "head": "0153779e9045c6527b7c31156f2295ff44b57eeb",
     "review_outcome": "INDEPENDENT_REVIEW_PASS_RESTRICTED_POLICY"
+  },
+  "authorities": {
+    "B3I05_head": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+    "NQ03_head": "8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6",
+    "NQ03R_head": "0153779e9045c6527b7c31156f2295ff44b57eeb",
+    "B3Q01_head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "GOV02_head": "db7add6f9561730bbf352aa7fd3f3968405cfaa3",
+    "PREP02R_live_head_used": "a2fda49871ee3c7104daf7e06cd8dffdac06b125",
+    "B3B02_peer_domain_head_used": "412bf889ce959d85c651c3b9180dec0a6ff9bb61"
+  },
+  "qualified_subdomain": {
+    "policy": "NQ03_RESTRICTED_NATURAL_ENVELOPE_QUADRATIC_DIMENSIONLESS_POLICY",
+    "applicability": "Flpn=0, 0<Flux<1.0d-8, Hetop>0, 0<P<=3.8510200002999744e-7, binary64",
+    "independent_numerical_review": "PASS",
+    "full_routed_child_trigger_covered": false
+  },
+  "blocking_gates": {
+    "full_child_trigger_domain": "FAIL_CLOSED_HETOP_ZERO_ACCEPTED_BUT_UNQUALIFIED",
+    "zero_thickness_semantics": "FAIL_CLOSED_UNRESOLVED",
+    "normal_B2_route": "FAIL_CLOSED_UNAVAILABLE",
+    "historical_uncertainty_route": "FAIL_CLOSED_NOT_ELIGIBLE_ACQUISITION_STILL_ACTIVE",
+    "formal_child_disposition_carrier": "FAIL_CLOSED_CURRENT_SCHEMA_DOES_NOT_DIRECTLY_ENCODE_CHILD_ATOM",
+    "independent_B3_disposition_review": "FAIL_CLOSED_NOT_PERFORMED",
+    "bitwise_production_binding": "FAIL_CLOSED_EVALUATION_ORDER_NOT_FROZEN"
+  },
+  "governance_reconciliation": {
+    "PREP02R_status": "PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED",
+    "normal_B2_reference_available": false,
+    "external_wur_archival_request_sent": false,
+    "historical_uncertainty_route_eligible": false,
+    "modern_2026_native_executable_is_historical_B2": false,
+    "internal_recovery_stop_closes_GOV02_acquisition": false,
+    "current_B3_disposition_tcd_id_pattern": "^TCD-[0-9]{3}$",
+    "TCD_042_E1_matches_formal_tcd_id_pattern": false,
+    "parent_only_substitution_used": false
+  },
+  "validation": {
+    "tested_head": "481fc203478f58c2816e6948e5d5413ea4638de4",
+    "github_actions_run_id": 34384823820,
+    "job_id": 102578343932,
+    "workflow_conclusion": "success",
+    "peer_governance_fetch_step": "PASS",
+    "validator_compile_step": "PASS",
+    "readiness_validator_step": "PASS"
   },
   "scope_guards": {
     "production_patch": false,
@@ -20,11 +65,34 @@
     "canonical_register_modification": false,
     "tcd042_b1_modification": false
   },
+  "admission": {
+    "restricted_positive_Hetop_numerical_policy_qualified": true,
+    "full_requested_E1_trigger_admission_ready": false,
+    "corrected_legacy_admitted": false,
+    "numerical_policy_admitted_to_B3": false,
+    "parent_TCD042_admitted": false,
+    "production_binding_authorized": false,
+    "production_migration_admitted": false
+  },
+  "deliverables": [
+    "docs/b3/TCD042_E1_CLASS_E_ADMISSION_READINESS.md",
+    "integration/animo-b3/TCD042_E1_CLASS_E_READINESS.json",
+    "integration/animo-b3/ANIMO-B3E01_STATUS.json",
+    "tools/b3e01/validate_b3e01.py",
+    ".github/workflows/animo-b3e01-tcd042-e1-readiness.yml"
+  ],
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
-  }
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
+  },
+  "next_gates": [
+    "Resolve or govern the parser-admissible Hetop=0 child-domain semantics without silently adding a production guard.",
+    "Close the claim-scoped B2 acquisition route under GOV02 or obtain a qualified historical B2 reference.",
+    "Define a formal atomic B3 disposition carrier for B3I05 child keys without reserving a new top-level TCD.",
+    "Perform independent second-line review of any eventual B3 disposition.",
+    "Freeze or separately qualify production coefficient evaluation order before bitwise implementation binding."
+  ]
 }
