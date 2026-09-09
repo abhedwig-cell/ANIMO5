@@ -1,0 +1,48 @@
+{
+  "work_unit": "ANIMO-NQ01",
+  "title": "Numerical Equivalence, Reference Comparison & Acceptance Policy Architecture",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-nq01-numerical-qualification-architecture",
+  "date": "2026-09-09",
+  "source_base": {
+    "branch": "work/animo-prep02r-historical-reference-recovery",
+    "head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7"
+  },
+  "governance_reference": {
+    "work_unit": "ANIMO-EB01",
+    "branch": "work/animo-eb01-evidence-baseline-model",
+    "head": "52411b9d2d6d80717914bc6642544290a54ded21",
+    "document": "docs/governance/ANIMO5_EVIDENCE_BASELINE_MODEL.md",
+    "role": "canonical_B0_B4_evidence_model_reference"
+  },
+  "prep02r_live_observation": {
+    "head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+    "status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+    "preferred_first_case": "RuurloGrass",
+    "historical_reference_artifact_obtained": false,
+    "native_reference_run_completed": false,
+    "native_vs_gnu_comparison_completed": false,
+    "global_numerical_tolerance_defined": false,
+    "rounded_report_output_sufficient_as_oracle": false
+  },
+  "state_dimensions": {
+    "implemented": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "independent_reference_data_available": false,
+    "numerical_equivalence_qualified": false,
+    "production_migration_admitted": false
+  },
+  "status": "IN_PROGRESS_ARCHITECTURE_PERSISTED_BEFORE_TESTING",
+  "target_status": "QUALIFIED_NUMERICAL_QUALIFICATION_ARCHITECTURE_AWAITING_INDEPENDENT_REFERENCE_DATA",
+  "production_migration": "NOT_ADMITTED",
+  "hard_rules": {
+    "arbitrary_tolerances_forbidden": true,
+    "legacy_residual_must_not_define_tolerance": true,
+    "rounded_report_must_not_be_sole_unrounded_oracle": true,
+    "solver_changes_forbidden_in_this_work_unit": true,
+    "precision_policy_changes_forbidden_in_this_work_unit": true,
+    "gnu_b1_must_not_be_classified_as_independent_reference": true
+  }
+}
