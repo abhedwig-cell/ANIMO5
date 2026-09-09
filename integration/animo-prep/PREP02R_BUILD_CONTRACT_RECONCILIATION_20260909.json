@@ -1,0 +1,82 @@
+{
+  "work_unit": "ANIMO-PREP02R",
+  "record_type": "PREP01_BUILD_CONTRACT_RECONCILIATION",
+  "date": "2026-09-09",
+  "prior_artifact": "integration/animo-prep/PREP01_REFERENCE_BUILD_CONTRACT.json",
+  "new_authority": "received animo41.vfproj SHA256 f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+  "scope": "Reconcile prior diagnostic build hypotheses with explicit project properties. This does not prove historical release provenance or admit a B2 reference.",
+  "material_updates": {
+    "default_real": {
+      "PREP01": "8-byte default REAL was a strongly supported hypothesis with candidate Windows options",
+      "new_evidence": "RealKIND=realKIND8 in all four Intel project configurations",
+      "new_classification": "PROJECT_SETTING_DIRECTLY_SUPPORTED",
+      "exact_command_line_token_proven": false
+    },
+    "local_storage": {
+      "PREP01": "Intel default local-storage semantics was the baseline; /Qsave treated as sensitivity only",
+      "new_evidence": "LocalVariableStorage=localStorageSave in all four Intel project configurations",
+      "new_classification": "PREP01_INTERPRETATION_SUPERSEDED_BY_EXPLICIT_PROJECT_SAVE_SEMANTICS",
+      "consequence": "The GNU diagnostic use of -fno-automatic is more directly aligned with the recovered project contract than PREP01 could previously establish."
+    },
+    "unformatted_io": {
+      "PREP01": "PowerStation-compatible framing was very strongly supported and /fpscomp:ioformat was a candidate option",
+      "new_evidence": "FPS4IOFormat=true in all four project configurations",
+      "new_classification": "PROJECT_SETTING_DIRECTLY_SUPPORTED",
+      "additional_project_evidence": ["FPS4LDIOSpacing=true", "FPS4General=true"]
+    },
+    "floating_point_model": {
+      "PREP01": "unknown",
+      "new_evidence": "FloatingPointModel=source in all configurations",
+      "new_classification": "PROJECT_SETTING_DIRECTLY_SUPPORTED"
+    },
+    "floating_exception_handling": {
+      "PREP01": "exception and underflow handling unknown",
+      "new_evidence": "FloatingPointExceptionHandling=fpe0 in all configurations",
+      "new_classification": "EXCEPTION_MODE_PROJECT_SETTING_SUPPORTED_UNDERFLOW_POLICY_NOT_SEPARATELY_PROVEN"
+    },
+    "calling_convention": {
+      "PREP01": "alignment and calling convention unknown",
+      "new_evidence": "CallingConvention=callConventionCVF in all configurations",
+      "new_classification": "CALLING_CONVENTION_PROJECT_SETTING_SUPPORTED_ALIGNMENT_STILL_UNRESOLVED"
+    },
+    "runtime_checks": {
+      "PREP01": "debug/runtime-check settings unknown",
+      "new_evidence": "Traceback=true and BoundsCheck=true in all configurations; Debug configurations explicitly enable debug information; Debug|x64 enables LocalSavedScalarsZero=true",
+      "new_classification": "MATERIALLY_RESOLVED_FOR_PROJECT_CONFIGURATIONS"
+    },
+    "source_selection": {
+      "PREP01": "exact source-unit selection provenance unknown",
+      "new_evidence": "58 project Fortran units; all are present in B0; B0 alternates input1_1.for and Outselorg.for are not selected; received executable embeds the same 58 source names and no alternate paths",
+      "new_classification": "SOURCE_UNIT_SELECTION_STRONGLY_RECONCILED_EXACT_SOURCE_BYTES_STILL_UNPROVEN"
+    },
+    "linker_and_runtime": {
+      "PREP01": "linker settings and runtime libraries unknown",
+      "new_evidence": "Project supplies console subsystem, animo41.exe output name, kernel32.lib dependency, debug/release incremental-link policy; Debug configurations name the multithreaded debug Fortran runtime. Received executable imports only KERNEL32.dll and imagehlp.dll and embeds Intel Fortran RTL strings.",
+      "new_classification": "PARTIALLY_RESOLVED_PROJECT_LEVEL_EXACT_HISTORICAL_LINK_COMMAND_STILL_UNPROVEN"
+    },
+    "optimization": {
+      "PREP01": "unknown",
+      "new_evidence": "Debug configurations explicitly set optimizeDisabled; Release configurations do not carry an explicit Optimization attribute in the supplied project",
+      "received_executable_relation": "PDB path strongly supports x64 Debug, therefore optimizeDisabled for this received 2026 rebuild",
+      "new_classification": "RESOLVED_FOR_RECEIVED_DEBUG_REBUILD_NOT_FOR_HISTORICAL_RELEASE"
+    },
+    "double_precision": {
+      "PREP01": "GNU diagnostic forced 8-byte DOUBLE PRECISION semantics with -fdefault-double-8",
+      "new_evidence": "Project exposes RealKIND=realKIND8 but no separate DOUBLE PRECISION property was identified in the supplied project XML",
+      "new_classification": "TOOLCHAIN_SEMANTICS_CONFIRMATION_STILL_REQUIRED",
+      "warning": "Do not infer exact DOUBLE PRECISION width from the project property alone without verifying Intel project-property semantics."
+    }
+  },
+  "remaining_unknowns_after_reconciliation": [
+    "whether the supplied .vfproj bytes are the original historical revision-53 release project or a preserved descendant",
+    "exact compiler executable/version that produced the received 2026 binary",
+    "exact source-byte identity of the 2026 binary relative to frozen B0",
+    "historical release configuration selection (Debug/Release and Win32/x64)",
+    "exact historical linker command line and library versions",
+    "exact DOUBLE PRECISION semantics under the historical compiler/project property",
+    "historical output bundle or independently trusted executable behaviour"
+  ],
+  "reference_admitted": false,
+  "historical_reference_artifact_obtained": false,
+  "decision": "BUILD_CONTRACT_HYPOTHESES_MATERIALLY_RECONCILED_HISTORICAL_BEHAVIOURAL_REFERENCE_STILL_OPEN"
+}
