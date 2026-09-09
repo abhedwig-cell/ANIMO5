@@ -7,6 +7,7 @@ on:
     paths:
       - 'docs/governance/ANIMO_RG02_G5_*'
       - 'integration/animo-reg/g5/**'
+      - 'integration/animo-reg/ANIMO-RG02_STATUS.json'
       - 'tools/audit_rg02_g5_stream_attachment.py'
       - '.github/workflows/rg02-g5-stream-attachment.yml'
   workflow_dispatch:
