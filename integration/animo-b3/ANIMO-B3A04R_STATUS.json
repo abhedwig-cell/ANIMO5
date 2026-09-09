@@ -9,6 +9,15 @@
   "review_type": "TECHNICAL_REVIEW_SAME_AUTHORING_CONTEXT_NOT_INDEPENDENT_SECOND_LINE",
   "technical_disposition": "PASS_TCD026_CLASS_A_TECHNICAL_READINESS_REVIEWED",
   "governance_disposition": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_AND_VALID_ROUTE_STILL_REQUIRED",
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": true,
+    "technically_reviewed": true,
+    "independent_second_line_qualified": false,
+    "admitted": false,
+    "production_migration_admitted": false
+  },
   "frozen_B0": {
     "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
@@ -118,6 +127,32 @@
     "independent_second_line_review": "FAIL_NOT_INDEPENDENT",
     "corrected_legacy_admitted": false,
     "production_migration_admitted": false
+  },
+  "structural_validation": {
+    "validator": "tools/b3a04r/validate_b3a04r.py",
+    "workflow": ".github/workflows/animo-b3a04r-tcd026-technical-review.yml",
+    "latest_green_run_id": 34387624320,
+    "latest_green_run_number": 2,
+    "validated_head": "82250a3aea4e66b25757dc09c7c28a2354dc52bb",
+    "job_id": 102587782998,
+    "conclusion": "SUCCESS",
+    "classification": "PERSISTED_REVIEW_CONSISTENCY_AND_SCOPE_VALIDATION_NOT_INDEPENDENT_SCIENTIFIC_REVIEW",
+    "status_only_pushes_ignored_to_avoid_validation_recursion": true
+  },
+  "branch_scope_guard": {
+    "compared_against_reviewed_head": "5eaf02298603b85f802d8e35d6a63941d0878879",
+    "comparison_status_before_status_closeout": "PASS",
+    "ahead_by_before_status_closeout": 5,
+    "production_files_changed": 0,
+    "frozen_reference_files_changed": 0,
+    "testcase_files_changed": 0,
+    "review_documentation_validation_files_added": 4,
+    "paths": [
+      ".github/workflows/animo-b3a04r-tcd026-technical-review.yml",
+      "docs/b3/TCD026_TECHNICAL_REVIEW.md",
+      "integration/animo-b3/ANIMO-B3A04R_STATUS.json",
+      "tools/b3a04r/validate_b3a04r.py"
+    ]
   },
   "hard_constraints": {
     "physical_state_patch": false,
