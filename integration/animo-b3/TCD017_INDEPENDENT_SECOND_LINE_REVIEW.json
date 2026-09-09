@@ -1,0 +1,200 @@
+{
+  "work_unit": "ANIMO-B3A02R",
+  "title": "Independent Second-Line Review of TCD-017 Class-A Admission Readiness",
+  "repository": "abhedwig-cell/ANIMO5",
+  "review_branch": "review/animo-b3a02r-tcd017-second-line",
+  "frozen_review_object": "3ff8f4bda77c631b82110b83317c6a9b42b867ad",
+  "result": "PASS_TCD017_INDEPENDENT_SECOND_LINE_READINESS_REVIEW",
+  "result_scope": "Independent second-line readiness review only. This is not B3 admission.",
+  "independence": {
+    "separate_chatgpt_context_from_b3a02_b3d01_authoring": true,
+    "organizational_or_human_independence_claimed": false
+  },
+  "reviewed_authorities": {
+    "primary_frozen_files": {
+      "docs/b3/TCD017_CLASS_A_ADMISSION_READINESS.md": "dcca801d1a1e5636bfa887d1198188a70f731bfa",
+      "integration/animo-b3/TCD017_EXPECTED_DIFFERENCE.json": "fc8d57197ddecb7f1c5f4229e9fd1de80e6668c3",
+      "integration/animo-b3/TCD017_CLASS_A_READINESS.json": "4cf792b282f8d97493eacee26ff7103998a666ae",
+      "integration/animo-b3/ANIMO-B3A02_STATUS.json": "4607a819f131628f69cdb034b08d28f7f8730e5a"
+    },
+    "source_provenance": {
+      "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "Addit.for_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+      "Outbal_calc.for_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+      "source_manifest_blob": "2b876e28fb3dd2fb316502b77030abbf4e5111ab"
+    },
+    "prep01": {
+      "organic_p_report_blob": "f5122fd4182f829fa2806d9c06d5ece485e7f0a5",
+      "organic_p_machine_blob": "6e8370e6b34d52555151cc834b72dea602238f21",
+      "process_dataflow_blob": "7bf59d331e965121f2cfec6cff00d14cf52753aa",
+      "mass_balance_crosswalk_blob": "7f92be17c74f32bdfdfb703e9b6f1cb102154c80"
+    },
+    "prep02": {
+      "organic_p_report_blob": "d262af83bdb930b7919fd2d2044ed063791a8abd",
+      "organic_p_machine_blob": "af4cdd84a8b0fbf3bd0cf062d37eaeae090ac0b5",
+      "eight_case_matrix_blob": "cd44b31a3bfb66ae94c6c707f28253ce66d58787",
+      "composition_blob": "3e4e2a8e899774ecc2b704768e5055bf461ec26d"
+    },
+    "prep06": {
+      "transfer_ledger_blob": "9caf62061ffbfefd28940b9ac170d6ae12b4d638",
+      "conserved_state_inventory_blob": "7893a1567a1c38eeadd08aaf4b571c1cf639bfa8",
+      "source_reverification_blob": "bd0ec232f3de269c0f4251c30761b528a8d28e65"
+    },
+    "b3q01": {
+      "scientific_admission_framework_blob": "878ec3033eccf11ff278afa76bd6ddc9809fe769",
+      "qualification_classes_blob": "b67b46eff837ae03732e97dd43a3d6e1f1c220ed",
+      "existing_tcd_classification_blob": "5cc126298bb7ce04e0dba5b64de07e0a51f50938"
+    },
+    "synq01": {
+      "head": "842f72300fd03ede0b9024537a7ee6126722a121",
+      "synthetic_oracle_register_blob": "4c215d19844614de8868380fb03f93268ea4c5d8",
+      "oracle": "SYNQ-O002"
+    },
+    "gov03": {
+      "head": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+      "status_blob": "b85af297731f8bd84feddaf3aa23685549129496",
+      "acquisition_evidence_blob": "160eda7632235cc1558f1dde89ea4d7fd5e2e380",
+      "closure": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+      "g6u": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS"
+    },
+    "b3d01": {
+      "head": "6ada2522101587ab74974a70f980b50e64cf9b86",
+      "formal_disposition_blob": "ade128c51a0cf7f64ea4ef6e891d612675d4880b",
+      "machine_disposition_blob": "f8b235e4b0fed5c712da719a14f1c9934c3cf0d9",
+      "disposition_at_review": "UNRESOLVED_NOT_ADMITTED"
+    },
+    "issue": {
+      "number": 25,
+      "latest_route_comment_id": 5607121734
+    }
+  },
+  "atomic_claim": {
+    "source_loss": "Addiorpotoppl(I)",
+    "layer_redistribution": "Addiorpopl(I,Ln)",
+    "ledger": "Bapo(Redi,Ly)",
+    "candidate": "Bapo(Redi,Ly) = Bapo(Redi,Ly) + Addiorpotoppl(I)*Z",
+    "classification": "A_ACCOUNTING_REPORTING_ONLY"
+  },
+  "independent_checks": [
+    {
+      "id": 1,
+      "name": "source_destination_ownership",
+      "status": "PASS",
+      "finding": "Hash-bound PREP01/PREP02 source audits and PREP06 ledger/state inventory consistently identify Addiorpotoppl as the top-reservoir DOP loss and Addiorpopl as redistributed layer DOP change."
+    },
+    {
+      "id": 2,
+      "name": "exact_bapo_omission",
+      "status": "PASS",
+      "finding": "Source-bound PREP01/PREP02 audits identify Bapo(Redi,Ly) as containing Addiorpopl(I,Ln)*Z while omitting Addiorpotoppl(I)*Z; analogous ledgers include corresponding top terms."
+    },
+    {
+      "id": 3,
+      "name": "natural_lwkm_activation",
+      "status": "PASS",
+      "finding": "Natural LWKM evidence activates the top-reservoir path with nonzero top loss -0.15380316471773922 kg/ha P and matching layer gain +0.15380316471773947 kg/ha P."
+    },
+    {
+      "id": 4,
+      "name": "physical_control_volume_closure",
+      "status": "PASS",
+      "finding": "Before any reporting correction, natural LWKM top plus layer redistribution closes to about 2.5e-16 kg/ha P; SYNQ-O002 independently encodes the same closed internal-transfer identity."
+    },
+    {
+      "id": 5,
+      "name": "candidate_write_set_reporting_only",
+      "status": "PASS",
+      "finding": "The candidate changes only Bapo(Redi,Ly) in Outbal_calc reporting accumulation and does not alter Addit or physical process routines."
+    },
+    {
+      "id": 6,
+      "name": "physical_state_trajectory_noninterference",
+      "status": "PASS",
+      "finding": "Outbal_calc is after the timestep physical-process chain; diagnostic comparison reports unchanged state trajectories and no normalized ordinary non-balance output changes for the bounded candidate."
+    },
+    {
+      "id": 7,
+      "name": "process_flux_trajectory_noninterference",
+      "status": "PASS",
+      "finding": "No process-flux write is introduced; the candidate is a Bapo reporting accumulation after process calculation, and bounded diagnostic comparisons report no process/ordinary-output trajectory changes."
+    },
+    {
+      "id": 8,
+      "name": "expected_difference_whitelist_complete",
+      "status": "PASS",
+      "finding": "Observed bounded top-term differences are confined to Bapo and derived organic-P balance/report surfaces; all physical states, process fluxes, Bafop and non-whitelisted outputs remain forbidden."
+    },
+    {
+      "id": 9,
+      "name": "other_organic_p_changes_excluded",
+      "status": "PASS",
+      "finding": "TCD-027 Bafop detailed-accumulator correction, TCD-028 stable-DOM event-accumulator lifecycle, AdStdiorpopl, Adhuexpopl, Bafop and all other organic-P changes are separate and excluded."
+    },
+    {
+      "id": 10,
+      "name": "synq_o002_role",
+      "status": "PASS",
+      "finding": "SYNQ-O002 is used only as independent conservation evidence. It explicitly does not constitute B2 or admission evidence."
+    },
+    {
+      "id": 11,
+      "name": "cross_evidence_consistency",
+      "status": "PASS",
+      "finding": "PREP01, PREP02, PREP06, B3Q01, GOV03 and SYNQ01 agree on ownership, internal-transfer conservation, Class-A evidence requirements, absence of B2 and the no-admission boundary."
+    },
+    {
+      "id": 12,
+      "name": "residual_uncertainty_explicit",
+      "status": "PASS",
+      "finding": "Historical revision-53 behaviour remains unknown because no B2 exists; raw licensed source bytes are not republished in GitHub, so this review rechecks source semantics through exact hash-bound source-audit evidence rather than a fresh raw-byte parse."
+    }
+  ],
+  "expected_difference": {
+    "allowed": [
+      "Bapo(Redi,Ly) for active TCD-017 redistribution events",
+      "derived organic-P balance fields",
+      "bapo*.Out balance/report output surfaces"
+    ],
+    "forbidden": [
+      "physical states",
+      "process fluxes",
+      "transport policy",
+      "reaction policy",
+      "ploughing physics",
+      "numerical policy",
+      "Bafop",
+      "TCD-027",
+      "TCD-028",
+      "AdStdiorpopl",
+      "Adhuexpopl",
+      "all other organic-P corrections",
+      "non-whitelisted outputs"
+    ]
+  },
+  "historical_uncertainty": {
+    "b2_exists": false,
+    "historical_revision_53_behaviour": "UNKNOWN",
+    "historical_fidelity_claimed": false,
+    "synthetic_oracle_promoted_to_b2": false
+  },
+  "boundaries": {
+    "production_source_modified": false,
+    "physical_state_patch_performed": false,
+    "ploughing_physics_changed": false,
+    "transport_policy_changed": false,
+    "numerical_policy_changed": false,
+    "b3_admission_performed": false,
+    "b4_admission_performed": false
+  },
+  "residual_uncertainty": [
+    "No qualified B2 behavioural reference exists, so historical revision-53 behaviour and historical fidelity remain unknown.",
+    "The licensed frozen source archive is hash-pinned but raw Addit.for and Outbal_calc.for bytes are not republished in GitHub; this review independently cross-checks pre-authoring source-bound audits and manifests but does not claim a fresh raw-byte source parse.",
+    "Natural activation for the target top-reservoir path is demonstrated in LWKM; inactive natural cases do not enlarge the activation claim.",
+    "Separate organic-P defects and candidates, including TCD-027, TCD-028, AdStdiorpopl and Adhuexpopl, remain outside this review."
+  ],
+  "review_decision": {
+    "readiness_review_passed": true,
+    "b3_admitted": false,
+    "next_step_authorized_by_this_review": "NONE_BEYOND_USE_AS_INPUT_TO_A_SEPARATE_B3_ADMISSION_CLOSEOUT"
+  }
+}
