@@ -3,7 +3,7 @@ name: ANIMO-PREP10C corrected candidate
 on:
   push:
     branches:
-      - work/animo-prep10c-stable-dom-event-reset-candidate
+      - work/animo-prep10c-stable-dom-event-reset-authoritative
   pull_request:
     paths:
       - 'tools/make_prep10c_corrected_addit.py'
