@@ -1,0 +1,112 @@
+{
+  "work_unit": "ANIMO-PREP02R",
+  "supplement": "INTEL_NATIVE_ARTIFACT_INTAKE_20260909",
+  "date": "2026-09-09",
+  "status": "RECEIVED_CURRENT_INTEL_NATIVE_EXECUTABLE_AND_BUILD_METADATA_HISTORICAL_REFERENCE_NOT_YET_QUALIFIED",
+  "repository": "abhedwig-cell/ANIMO5",
+  "base_prep02r_head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+  "received_artifacts": {
+    "animo41_exe": {
+      "sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+      "size_bytes": 6778368,
+      "receipt": "integration/animo-prep/receipts/ANIMO41_EXE_RECEIPT.json"
+    },
+    "animo41_sln": {
+      "sha256": "206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2",
+      "size_bytes": 1233,
+      "receipt": "integration/animo-prep/receipts/ANIMO41_SLN_RECEIPT.json"
+    },
+    "animo41_vfproj": {
+      "sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+      "size_bytes": 9829,
+      "receipt": "integration/animo-prep/receipts/ANIMO41_VFPROJ_RECEIPT.json"
+    }
+  },
+  "executable_static_observations": {
+    "format": "PE32+ Windows console executable x86-64",
+    "pe_timestamp_utc": "2026-05-27T13:41:28Z",
+    "linker_version": "14.35",
+    "image_version": "4.0",
+    "subsystem_version": "6.0",
+    "embedded_model_strings": [
+      "ANIMO: 4.1",
+      "file:///V:/svn_Animo/tags/animo4.1.5",
+      "Version.inc"
+    ],
+    "embedded_intel_runtime_string": "Intel Fortran RTL Message Catalog V20.0-001 Jan 10 2019",
+    "embedded_pdb_path": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\x64\\Debug\\animo41.pdb",
+    "embedded_source_root": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\src_develop_for_20260519",
+    "interpretation": "The received executable is a recent/current Intel-native build, not an untouched historical 2010/2011-era binary. Static strings support ANIMO 4.1/4.1.5 lineage, but do not prove exact source-byte identity by themselves."
+  },
+  "build_metadata_observations": {
+    "solution": {
+      "format": "Microsoft Visual Studio Solution File, Format Version 11.00",
+      "declared_visual_studio": "Visual Studio 2010",
+      "project_name": "animo41",
+      "platforms": ["Win32", "x64"],
+      "configurations": ["Debug", "Release"]
+    },
+    "vfproj": {
+      "ProjectCreator": "Intel Fortran",
+      "Keyword": "Console Application - Converted from CVF",
+      "Version": "11.0",
+      "debug_x64_relevant_settings": {
+        "SourceFileFormat": "fileFormatFree",
+        "RealKIND": "realKIND8",
+        "LocalVariableStorage": "localStorageSave",
+        "LocalSavedScalarsZero": true,
+        "FloatingPointExceptionHandling": "fpe0",
+        "FloatingPointModel": "source",
+        "CallingConvention": "callConventionCVF",
+        "BoundsCheck": true,
+        "RuntimeLibrary": "rtMultiThreadedDebug"
+      },
+      "project_source_members": 63,
+      "all_project_members_present_in_frozen_source_archive": true,
+      "frozen_archive_members_not_referenced_by_project": ["input1_1.for", "outselorg.for"]
+    }
+  },
+  "testbank_binding": {
+    "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "launchers_referencing_animo41_exe": [
+      "CranGrass/RunCranGrass.bat",
+      "CranMais/RunCranMais.bat",
+      "GrassPeat/RunGrassPeat.bat",
+      "RuurloGrass/RunRuurloGrass.cmd"
+    ],
+    "runner_form": "..\\animo41.exe Animo.ini",
+    "native_first_case": "RuurloGrass"
+  },
+  "qualification_interpretation": {
+    "historical_reference_artifact_bytes_now_received": true,
+    "historical_reference_provenance_qualified": false,
+    "exact_revision_53_binary_source_identity_proven": false,
+    "current_intel_native_execution_candidate": true,
+    "controlled_native_execution_useful_for_cross_compiler_semantics": true,
+    "B2_historical_reference_created": false,
+    "equivalent_reference_build_qualified": false,
+    "historical_uncertainty_route_eligible": false,
+    "external_archival_request_still_useful": true
+  },
+  "next_execution_contract": {
+    "first_case": "RuurloGrass",
+    "frozen_input_content_transformation_allowed": false,
+    "repeat_native_run_required_when_practical": true,
+    "capture_raw_output_tree_before_normalization": true,
+    "compare_against_deterministic_GNU_B1": true,
+    "global_numerical_tolerance": null,
+    "classification_of_any_difference": "variable/unit/output-precision/compiler-runtime-mechanism before any acceptance"
+  },
+  "environment_limit": {
+    "current_chat_runtime_can_execute_PE32plus_directly": false,
+    "reason": "The current analysis container is Linux and no Windows compatibility runtime is installed.",
+    "effect": "Static qualification and receipt are completed here; native case execution requires a controlled Windows or compatible isolated runtime."
+  },
+  "admission_boundary": {
+    "reference_admitted": false,
+    "B2_admitted": false,
+    "corrected_legacy_admitted": false,
+    "B3_admitted": false,
+    "production_migration_admitted": false
+  }
+}
