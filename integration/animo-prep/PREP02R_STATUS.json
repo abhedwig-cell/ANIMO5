@@ -27,6 +27,13 @@
     "acquisition_packet_persisted": true,
     "external_request_draft_ready": true,
     "external_request_sent": false,
+    "artifact_receipt_protocol_ready": true,
+    "artifact_receipt_tool_implemented": true,
+    "artifact_receipt_tool_persisted": true,
+    "artifact_receipt_tool_local_unit_tests_passed": 4,
+    "artifact_receipt_tool_ci_run": false,
+    "native_ruurlo_capture_contract_ready": true,
+    "native_run_manifest_template_ready": true,
     "historical_reference_artifact_obtained": false,
     "native_reference_run_completed": false,
     "native_vs_gnu_comparison_completed": false,
@@ -105,6 +112,18 @@
     "controlled_retention_preferred": true,
     "external_send_requires_human_action": true
   },
+  "receipt_and_native_readiness": {
+    "receipt_evidence_class": "RECEIPT_MANIFEST_NOT_REFERENCE_ADMISSION",
+    "receipt_default_trust_classification": "UNASSESSED_RECEIVED_ARTIFACT",
+    "hash_before_execution_required": true,
+    "absolute_controlled_storage_path_omitted_from_public_manifest": true,
+    "native_first_case": "RuurloGrass",
+    "native_input_content_transformation_default": false,
+    "native_repeat_determinism_required_when_practical": true,
+    "formatted_tree_comparator_available": true,
+    "global_tolerance_defined": false,
+    "observer_capture_blocked_until_ordinary_native_contract": true
+  },
   "preferred_next_acquisition": [
     "send or otherwise submit the prepared WUR archival request through a verified current institutional contact route",
     "exact ANIMO 4.1.5 revision-53 animo41.exe with executable and source-checkout provenance",
@@ -126,8 +145,13 @@
     "official_distribution_route_audit": "docs/prep02r/OFFICIAL_DISTRIBUTION_ROUTE_AUDIT.md",
     "reference_artifact_request": "docs/prep02r/REFERENCE_ARTIFACT_REQUEST.md",
     "wur_archival_request_draft": "docs/prep02r/WUR_ARCHIVAL_REQUEST_DRAFT.md",
+    "reference_artifact_receipt_protocol": "docs/prep02r/REFERENCE_ARTIFACT_RECEIPT_PROTOCOL.md",
+    "artifact_receipt_tool": "tools/capture_reference_artifact_manifest.py",
+    "artifact_receipt_tool_tests": "tests/test_capture_reference_artifact_manifest.py",
+    "native_ruurlo_capture_contract": "docs/prep02r/NATIVE_RUURLO_CAPTURE_CONTRACT.md",
+    "native_run_manifest_template": "integration/animo-prep/PREP02R_NATIVE_RUN_MANIFEST_TEMPLATE.json",
     "candidate_registry": "integration/animo-prep/PREP02R_REFERENCE_CANDIDATES.json"
   },
   "decision": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
-  "why_blocked": "No independently trustworthy historical ANIMO 4.1.x executable, exact native build metadata, or executable-linked historical output has yet been obtained. The current official WUR agreement names Version 4.0, so the official request route does not itself close the historical 4.1.x independence gap. A targeted archival request is prepared but not sent. GNU determinism cannot close the independence gap either."
+  "why_blocked": "No independently trustworthy historical ANIMO 4.1.x executable, exact native build metadata, or executable-linked historical output has yet been obtained. Receipt and native-capture tooling are now ready, but readiness cannot replace independent historical evidence. The current official WUR agreement names Version 4.0, so the official request route does not itself close the historical 4.1.x independence gap. A targeted archival request is prepared but not sent. GNU determinism cannot close the independence gap either."
 }
