@@ -1,8 +1,9 @@
 {
   "work_unit": "ANIMO-GHG01",
   "title": "Greenhouse-Gas Lineage, Input Contract, Process Activation & Scientific Qualification",
-  "status": "IN_PROGRESS_PERSISTED",
+  "status": "QUALIFIED_GHG_THEORY_SOURCE_AND_INPUT_LINEAGE_EVIDENCE_WITH_HISTORICAL_REFERENCE_GAPS",
   "production_migration": "NOT_ADMITTED",
+  "production_ready": false,
   "b3_admitted": false,
   "branch": "work/animo-ghg01-ghg-qualification",
   "base_commit": "f7f3722b14f65340dc6d67a8f80d74f5d0ebb158",
@@ -24,10 +25,115 @@
     "current_version_as_rev53_lineage": false
   },
   "deliverables": {
-    "GHG_REV53_PROCESS_RECONSTRUCTION.md": "PENDING",
-    "GHG_INPUT_LINEAGE_RECONCILIATION.md": "PENDING",
-    "GHGMAIS_COMPATIBILITY_ANALYSIS.md": "PENDING",
-    "GHG_LEDGER_RECONCILIATION.md": "PENDING"
+    "GHG_REV53_PROCESS_RECONSTRUCTION.md": "COMPLETE",
+    "GHG_INPUT_LINEAGE_RECONCILIATION.md": "COMPLETE",
+    "GHGMAIS_COMPATIBILITY_ANALYSIS.md": "COMPLETE",
+    "GHG_LEDGER_RECONCILIATION.md": "COMPLETE",
+    "GHGMAIS_CDD001.json": "COMPLETE"
   },
-  "target_closeout": "QUALIFIED_GHG_THEORY_SOURCE_AND_INPUT_LINEAGE_EVIDENCE_WITH_HISTORICAL_REFERENCE_GAPS"
+  "theory_qualification": {
+    "broad_CH4_scientific_intent": "THEORY_READY",
+    "broad_N2O_scientific_intent": "THEORY_READY",
+    "base_CO2_aeration_context": "VERSION_SPECIFIC_DOCUMENTATION_AVAILABLE_FOR_ANIMO_4_0",
+    "exact_revision53_equation_authority": "PARTIALLY_SOURCE_ONLY",
+    "revision53_release_specific_GHG_specification": "UNRESOLVED"
+  },
+  "source_activation": {
+    "GHG_guard": "SOURCE_REACHABLE_IoptGHG_GE_1",
+    "CH4_production_oxidation_transport_emission": "SOURCE_READY",
+    "N2O_nitrification_denitrification_reduction_transport_emission": "SOURCE_READY",
+    "dedicated_GHG_outputs": "SOURCE_READY",
+    "supplied_historical_case_reaches_GHG_branch": false
+  },
+  "ghgmais_lineage": {
+    "frozen_case_classification": "B0_HISTORICAL_INPUT_EVIDENCE_ONLY",
+    "revision53_parser_compatible": false,
+    "exact_consuming_source_or_executable": "UNRESOLVED",
+    "first_mismatch": "GENERAL_OUTGHG_MISSING",
+    "controlled_descendant": "GHG01-CDD-001",
+    "controlled_descendant_class": "COMPATIBILITY_DIAGNOSTIC_DESCENDANT",
+    "controlled_descendant_result": "STOP_AT_SECOND_INDEPENDENT_MATERIAL_ORGCOM_MISMATCH",
+    "further_translation_performed": false,
+    "activated_GHG_state_mutation_observed": false,
+    "historical_GHG_behaviour_claim": "NOT_ADMITTED"
+  },
+  "ledger_qualification": {
+    "status": "GHG_CONSERVATION_OWNERSHIP_IDENTIFIED_BUT_LEGACY_C_N_TRANSFER_AND_OBSERVER_CHAIN_INCOMPLETE",
+    "gas_state_ownership": "SOURCE_CONFIRMED",
+    "full_model_C_ledger_closed": false,
+    "full_model_N_ledger_closed": false,
+    "source_findings": [
+      "INACTIVE_COMMENTED_GHG_MINER_CALLS_BREAK_COMPLETE_METHANOGENESIS_SOURCE_POOL_TRANSFER_PATH",
+      "ONLY_DOM_CH4_PRODUCTION_HAS_SEPARATE_ACTIVE_SOURCE_DEPLETION_PATH_FOUND",
+      "GHG_CO2_AND_SUBSIDENCE_OUTPUT_PRODUCER_PATH_DEPENDS_ON_INACTIVE_GHG_MINER",
+      "OUTBAL_AMCH4_WORKING_ARRAY_DECLARED_AND_CONSUMED_BUT_NOT_PASSED_OR_ASSIGNED",
+      "OUTBAL_AMN2ODENI_WORKING_ARRAY_DECLARED_AND_CONSUMED_BUT_NOT_PASSED_OR_ASSIGNED",
+      "CH4_AND_N2O_GAS_STORAGE_NOT_INCLUDED_AS_CANONICAL_END_STATE_IN_STANDARD_C_N_BALANCE_RESIDUALS"
+    ],
+    "historical_runtime_magnitude": "REFERENCE_BLOCKED"
+  },
+  "process_readiness": {
+    "CO2_base_organic_transformation": [
+      "THEORY_READY",
+      "SOURCE_READY",
+      "REFERENCE_BLOCKED_FOR_GHG_EXTENSION"
+    ],
+    "CH4_production": [
+      "THEORY_READY",
+      "SOURCE_READY",
+      "TESTCASE_LINEAGE_BLOCKED",
+      "REFERENCE_BLOCKED",
+      "KNOWN_CONSERVATION_PATH_GAP"
+    ],
+    "CH4_oxidation": [
+      "THEORY_READY",
+      "SOURCE_READY",
+      "TESTCASE_LINEAGE_BLOCKED",
+      "REFERENCE_BLOCKED",
+      "LEDGER_INCOMPLETE"
+    ],
+    "CH4_transport_emission": [
+      "THEORY_READY",
+      "SOURCE_READY",
+      "TESTCASE_LINEAGE_BLOCKED",
+      "REFERENCE_BLOCKED",
+      "FULL_C_LEDGER_INCOMPLETE"
+    ],
+    "N2O_nitrification_production": [
+      "THEORY_READY",
+      "SOURCE_READY",
+      "TESTCASE_LINEAGE_BLOCKED",
+      "REFERENCE_BLOCKED",
+      "FULL_N_LEDGER_INCOMPLETE"
+    ],
+    "N2O_denitrification_production_reduction": [
+      "THEORY_READY",
+      "SOURCE_READY",
+      "TESTCASE_LINEAGE_BLOCKED",
+      "REFERENCE_BLOCKED",
+      "OUTBAL_OBSERVER_DEFECT"
+    ],
+    "N2O_transport_emission": [
+      "THEORY_READY",
+      "SOURCE_READY",
+      "TESTCASE_LINEAGE_BLOCKED",
+      "REFERENCE_BLOCKED",
+      "FULL_N_LEDGER_INCOMPLETE"
+    ],
+    "exact_revision53_GHG_parameter_and_equation_set": [
+      "INSUFFICIENT_EVIDENCE"
+    ]
+  },
+  "remaining_blockers": [
+    "EXACT_GHGMAIS_CONSUMING_LINEAGE_NOT_IDENTIFIED",
+    "NO_REVISION53_COMPATIBLE_HISTORICAL_GHG_REFERENCE_CASE",
+    "NO_QUALIFIED_HISTORICAL_REFERENCE_EXECUTABLE_OR_EQUIVALENT_ORACLE",
+    "EXACT_REVISION53_GHG_EQUATION_AND_PARAMETER_PROVENANCE_INCOMPLETE",
+    "SOURCE_CONFIRMED_GHG_C_N_CONSERVATION_AND_OUTBAL_GAPS_REQUIRE_SEPARATE_RECONCILIATION_BEFORE_B3"
+  ],
+  "final_qualification": "QUALIFIED_GHG_THEORY_SOURCE_AND_INPUT_LINEAGE_EVIDENCE_WITH_HISTORICAL_REFERENCE_GAPS",
+  "prohibited_promotions": [
+    "B3_ADMITTED",
+    "PRODUCTION_READY"
+  ]
 }
