@@ -18,7 +18,6 @@
     "incremental_only": true,
     "no_reuse_tcd_028_through_037": true,
     "no_mass_residual_defect_without_causality": true,
-    "source_localization_not_sufficient_without_atomic_identity": true,
     "compiler_hazard_not_automatically_scientific_tcd": true,
     "admission_allowed": false
   },
@@ -28,14 +27,10 @@
       "TCD-040",
       "TCD-041"
     ],
-    "new_tcd_reservations": [
-      "TCD-042"
-    ],
+    "new_tcd_reservations": [],
     "new_child_atoms": [],
-    "canonical_register_append_required": true,
-    "canonical_register_append_performed": false,
-    "canonical_register_tail_remains": "TCD-041",
-    "reservation_status": "TCD-042_RESERVED_PENDING_CANONICAL_REGISTER_APPEND_NOT_ADMITTED"
+    "canonical_register_append_required": false,
+    "next_unallocated_candidate_observed_not_reserved": "TCD-042"
   },
   "special_targets": {
     "buildq04_flair_nlplus1": {
@@ -43,7 +38,8 @@
       "canonical_tcd": "TCD-041",
       "provisional_class": "B",
       "atomicity": "ONE_LOWER_EXTERNAL_AIR_INTERFACE_INITIALIZATION_OMISSION",
-      "new_id_required": false
+      "new_id_required": false,
+      "reason": "BUILDQ04 source and controlled materiality evidence had already been collision-scanned and registered by B3I01 Supplement 04."
     },
     "stateq01_layer0_restart_zeroing": {
       "disposition": "EXISTING_TCD",
@@ -59,25 +55,13 @@
       "species_specific_atoms_created": false,
       "relation_to_tcd016": "DISTINCT_CAUSAL_MECHANISM"
     },
-    "massq02_residual_reconciliation": {
-      "source_work_unit": "ANIMO-MASSQ02",
-      "head": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
-      "status": "QUALIFIED_TYPED_MASS_EVENT_PROJECTION_AND_RESIDUAL_RECONCILIATION_MASS_ADMISSION_PENDING",
-      "formerly_unexplained_count": 15,
-      "massq02_new_causal_finding_count": 15,
-      "new_top_level_tcd_reservations": 1,
-      "insufficient_canonical_identity_count": 14,
-      "new_child_atoms": 0,
-      "acceptance_epsilon_introduced": false,
-      "reserved_finding": {
-        "source_record": "R016",
-        "crosswalk_key": "MASSQ01-LCL-N006",
-        "canonical_tcd": "TCD-042",
-        "atomicity": "ONE_ZERO_TOP_THROUGHFLOW_EXTERNAL_N_INPUT_STATE_TRANSFER_SEAM_MULTI_SPECIES_SCOPE",
-        "provisional_primary_class": "C",
-        "secondary_class_alternative": "A",
-        "correction_semantics_selected": false
-      }
+    "massq01_unexplained_residuals": {
+      "count": 15,
+      "record_range": "MASSQ01-R010..MASSQ01-R024",
+      "disposition": "LOCAL_OBSERVER_FINDING_PENDING_CAUSALITY",
+      "canonicalized_count": 0,
+      "new_tcd_count": 0,
+      "acceptance_epsilon_introduced": false
     }
   },
   "runtime_handoffs": {
@@ -121,24 +105,15 @@
       "evidence_strength_increased": false,
       "canonical_tcd_register_tail": "TCD-041",
       "new_tcd_count": 0
-    },
-    {
-      "work_unit": "ANIMO-MASSQ02",
-      "branch": "work/animo-massq02-residual-causality-typed-events",
-      "head": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
-      "evidence": "qualified residual causal reconciliation and candidate typed transfer projection",
-      "qualified": true,
-      "tested": true,
-      "mass_admitted": false,
-      "new_causal_findings": 15,
-      "b3i02_new_tcd_reservations": [
-        "TCD-042"
-      ],
-      "b3i02_insufficient_identity_count": 14,
-      "scientific_admission_performed": false
     }
   ],
   "explicitly_excluded_in_progress_workunits": [
+    {
+      "work_unit": "ANIMO-MASSQ02",
+      "branch": "work/animo-massq02-residual-causality-typed-events",
+      "head": "50fbc79886d2f89b68bd59d53de73924c0ef7ce6",
+      "reason": "START_CHECKPOINT_NOT_COMPLETED_QUALIFICATION"
+    },
     {
       "work_unit": "ANIMO-STATEQ02",
       "branch": "work/animo-stateq02-restricted-core-executable-split-run",
@@ -146,22 +121,16 @@
       "reason": "PRE_EXECUTION_CHECKPOINT_NOT_COMPLETED_QUALIFICATION"
     }
   ],
-  "previous_closeout_validation": {
-    "tested_head": "c1a69c00a02aa0e32ca60580c3d0ebee96442c17",
-    "pull_request_run_id": 34351344034,
-    "pull_request_b3q01_run_id": 34351343874,
-    "conclusion": "success"
-  },
-  "current_supplement_validation": {
+  "validation": {
     "validator": "tools/b3i02/validate_b3i02.py",
     "workflow": ".github/workflows/animo-b3i02-incremental-intake.yml",
-    "state": "PASS",
-    "tested_head_before_status_closeout": "74666295704a2668070e168039ce7c9fe7f21dda",
-    "b3i02_github_actions_run_id": 34353050589,
-    "b3i02_github_actions_conclusion": "success",
-    "b3q01_github_actions_run_id": 34353050593,
-    "b3q01_github_actions_conclusion": "success",
-    "scope_guard": "PASS_GOVERNANCE_ONLY_NO_PRODUCTION_REFERENCE_OR_CANONICAL_REGISTER_CHANGE"
+    "tested_head_before_status_closeout": "4e356da94476d0b70e7ded70dfb7ee7c5ee04018",
+    "github_actions_run_id": 34348398698,
+    "github_actions_head": "4e356da94476d0b70e7ded70dfb7ee7c5ee04018",
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS",
+    "scope_guard": "PASS_GOVERNANCE_ONLY_NO_PRODUCTION_REFERENCE_OR_CANONICAL_REGISTER_CHANGE",
+    "changed_file_count": 6
   },
   "deliverables": [
     "docs/b3/POST_B3I01_INCREMENTAL_INTAKE.md",
@@ -173,7 +142,7 @@
     "tools/b3i02/validate_b3i02.py",
     ".github/workflows/animo-b3i02-incremental-intake.yml"
   ],
-  "canonical_register_append": "REQUIRED_PENDING_COLLISION_RECHECK_AND_APPEND_TCD042",
+  "canonical_register_append": "NOT_REQUIRED_NO_NEW_TCD",
   "scientific_admission_performed": false,
   "corrected_legacy_admission_performed": false,
   "production_migration_admitted": false,
