@@ -8,6 +8,7 @@
     "branch": "work/animo-arch07-adapter-qualification-spec",
     "head": "7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6"
   },
+  "initial_consolidation_commit": "92812896b6a91b422fcbd9bf5e843da5cfc0f278",
   "decision": "QUALIFIED_CONSOLIDATED_CANDIDATE_ARCHITECTURE_PRODUCTION_IMPLEMENTATION_NOT_ADMITTED",
   "implemented": true,
   "persisted": true,
@@ -25,11 +26,15 @@
   "corrected_legacy_admitted": false,
   "authority_check": {
     "rg02_branch": "work/animo-rg02-branch-authority-integration",
-    "rg02_live_head": "662bca8aff40f4dca1f6ccdde6bef6274c6bede2",
-    "rg02_rules_persisted_at_live_head": false,
-    "rg02_live_head_is_inherited_rg01_closeout": true,
-    "fallback_method": "unique ARCH branch identity plus live head plus exact serial starting-head continuity",
-    "parallel_or_shadow_arch01_07_branches_observed": false,
+    "rg02_live_head_initial": "662bca8aff40f4dca1f6ccdde6bef6274c6bede2",
+    "rg02_live_head_recheck": "8d59b0cabf2001d07aa37eee1a76affaad181dbb",
+    "rg02_decision": "BLOCKED_UNRESOLVED_PARALLEL_LINEAGE_COLLISIONS",
+    "rg02_authority_register_persisted": true,
+    "rg02_confirms_arch01_07_as_authoritative_candidate_design": true,
+    "rg02_archg01_snapshot_preceded_independent_archg01_persistence": true,
+    "rg02_archg01_snapshot_classification": "UNRESOLVED_REQUIRES_RECONCILIATION",
+    "rg02_archg01_snapshot_classification_current_after_92812896": false,
+    "rg02_refresh_required_for_archg01_authority": true,
     "authoritative_arch_heads": {
       "ARCH01": "24f57d8daab828f88446a79bd6a276f2925c828b",
       "ARCH02": "a079d93c965f6073586c55ee4b3544dd8873b723",
@@ -72,6 +77,13 @@
       "head": "e558dff12b127e0662cad62beea7527b42ad89ac",
       "status": "QUALIFIED_NUMERICAL_QUALIFICATION_ARCHITECTURE_AWAITING_INDEPENDENT_REFERENCE_DATA"
     },
+    "ts01_live": {
+      "branch": "work/animo-ts01-temporal-semantics",
+      "head": "5bd1bdd3012adec63679e72077a243ae95ccc01f",
+      "phase": "STARTED_SOURCE_BOUND_AUDIT",
+      "decision": "IN_PROGRESS",
+      "use_by_archg01": "PROVISIONAL_CONSTRAINT_AND_REVALIDATION_INPUT_ONLY"
+    },
     "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
     "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
@@ -87,19 +99,33 @@
     "external_exchange_is_not_identical_to_transfer_event": true,
     "external_physical_transfers_normalize_to_same_typed_event_semantics": true,
     "legacy_adapter_can_only_emit_explicitly_supported_normalized_semantics": true,
+    "candidate_accepted_trial_roles_can_represent_observed_legacy_generations": true,
+    "atomic_end_step_commit_equivalence_to_delayed_legacy_init_staging_qualified": false,
+    "universal_event_endpoint_normalization_allowed": false,
+    "potential_pass_committed_as_physical_transfer_by_default": false,
+    "arbitrary_layer_reordering_or_parallelization_admitted": false,
+    "legacy_output_init_is_canonical_restart_snapshot": false,
     "process_ordering_decided_by_archg01": false,
     "numerical_tolerance_decided_by_archg01": false
   },
-  "ts01_deferred": [
-    "global accepted time boundary",
-    "process ordering",
-    "accepted-versus-mutated-trial read semantics per process",
-    "substep and retry policy",
-    "coupled convergence and accept/reject",
-    "mid-step checkpoint policy",
-    "runtime feature/topology transition policy",
-    "calendar/time representation"
-  ],
+  "temporal_recheck": {
+    "ts01_closeout_qualified": false,
+    "source_bound_documents_present": true,
+    "findings_material_to_architecture": [
+      "legacy result-to-current staging is delayed to next Init",
+      "management mutates current-step state before later process calculations",
+      "management and harvest use different exact-boundary interval predicates",
+      "potential and actual biochemical passes are temporally distinct",
+      "generic solute and phosphorus layer processing is sequential in Sqnu order",
+      "Resp_miner intentionally mixes previous-step neighbour state with current-layer calculations",
+      "crop soil-side uptake sink precedes plant-side state integration",
+      "first and final timestep generations are asymmetric",
+      "INITIAL.OUT does not establish complete restart sufficiency",
+      "Output_Init has a phosphorus clamping side effect before serialization"
+    ],
+    "archg01_revalidation_required_after_ts01_closeout": true,
+    "production_time_contract_admitted": false
+  },
   "open_scientific_or_reference_boundaries": [
     "GHG theory-to-ledger reconciliation",
     "macropore active-case and complete ledger admission",
@@ -108,18 +134,23 @@
     "negative concentration and dry-down continuation TCD-015 TCD-016",
     "TCD-019 separate numerical-policy qualification",
     "behavioural split-run restart evidence",
-    "independent B2 reference data"
+    "independent B2 reference data",
+    "legacy Output_Init phosphorus clamp disposition",
+    "continuation-critical management cursor reconstruction"
   ],
   "deliverables": [
     "docs/architecture/ANIMO5_CONSOLIDATED_CANDIDATE_ARCHITECTURE.md",
     "docs/architecture/ARCH01_07_RECONCILIATION_MATRIX.csv",
     "docs/architecture/ANIMO5_CANDIDATE_TYPE_MODEL.md",
     "docs/architecture/ANIMO5_MIGRATION_SEAMS.md",
+    "docs/architecture/ARCHG01_CONFLICT_REGISTER.csv",
+    "docs/architecture/ANIMO5_TS01_HANDOFF_AND_REVALIDATION.md",
+    "docs/architecture/ANIMO5_RG02_AUTHORITY_RECHECK.md",
     "integration/animo-architecture/ANIMO-ARCHG01_STATUS.json"
   ],
   "verification": {
     "reconciliation_matrix_rows": 14,
-    "required_concepts_present": true,
+    "conflict_register_rows": 17,
     "required_conflict_dispositions_used": [
       "RESOLVED_ARCHITECTURAL",
       "REQUIRES_TS01",
@@ -128,6 +159,8 @@
       "REQUIRES_REFERENCE",
       "NOT_PRODUCTION_READY"
     ],
+    "rg02_arch01_07_heads_match_archg01_inputs": true,
+    "ts01_used_as_qualified_time_contract": false,
     "production_code_paths_changed": false,
     "frozen_legacy_paths_changed": false,
     "testcase_paths_changed": false,
