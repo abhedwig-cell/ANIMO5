@@ -12,7 +12,8 @@
   },
   "frozen_b0": {
     "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
-    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
   },
   "canonical_routing": {
     "parent": "TCD-042",
@@ -85,6 +86,15 @@
       "input_lower_bound": 0.0,
       "checkrea_semantics": "equality at lower bound is accepted"
     },
+    "documentation_evidence": {
+      "source": "ANIMO 4.0 User's Guide, Alterra Report 224 (2005), Table 6, report page 42",
+      "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+      "HETOP_description": "thickness of the virtual reservoir where fertilizer additions are leached from proportional to cumulative precipitation since the fertilization event",
+      "HETOP_unit": "m",
+      "HETOP_documented_range": [0.0, 0.2],
+      "zero_is_in_documented_range": true,
+      "zero_thickness_special_transport_rule_qualified": false
+    },
     "P_at_Hetop_zero": "UNDEFINED_FOR_FINITE_POSITIVE_FLUX",
     "recovered_equation_at_Hetop_zero": "0 = Load - Flux*C",
     "full_B3I05_E1_trigger_covered_by_NQ03": false,
@@ -141,8 +151,9 @@
     "independent_numerical_review": "PASS",
     "natural_reachability": "PASS",
     "natural_loaded_event_materiality": "PASS_MINERAL_N_ONLY_LIMITATION_RECORDED",
+    "documented_HETOP_range": "PASS_ZERO_EXPLICITLY_IN_DOCUMENTED_RANGE",
     "implementation_order_for_production_binding": "FAIL_CLOSED_NOT_FROZEN",
-    "full_child_trigger_domain": "FAIL_CLOSED_HETOP_ZERO_ACCEPTED_BUT_UNQUALIFIED",
+    "full_child_trigger_domain": "FAIL_CLOSED_HETOP_ZERO_ACCEPTED_DOCUMENTED_BUT_UNQUALIFIED",
     "zero_thickness_semantics": "FAIL_CLOSED_UNRESOLVED",
     "normal_B2_route": "FAIL_CLOSED_UNAVAILABLE",
     "historical_uncertainty_route": "FAIL_CLOSED_NOT_ELIGIBLE",
@@ -159,7 +170,8 @@
     "production_migration_admitted": false
   },
   "residual_uncertainty": [
-    "Hetop=0 is accepted by frozen input validation but is outside the NQ03 positive-Hetop policy domain",
+    "Hetop=0 is accepted by frozen input validation and explicitly included in the pinned user-guide HETOP range but is outside the NQ03 positive-Hetop policy domain",
+    "no zero-thickness special transport semantics have been qualified from the reviewed documentation",
     "the full B3I05 E1 child trigger has not been refined or qualified for zero-thickness semantics",
     "historical B2 remains unavailable and GOV02 acquisition closure remains incomplete",
     "the current formal B3 disposition schema does not directly encode child atom identifiers",
