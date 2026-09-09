@@ -1,0 +1,22 @@
+{
+  "work_unit": "ANIMO-PREP02R-I5",
+  "title": "Native Intel Project/Executable Artifact Intake & Lineage Classification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep02r-native-intel-artifact-intake-5",
+  "base": "work/animo-prep02r-native-intel-artifact-intake-4@e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+  "date": "2026-09-09",
+  "status": "IN_PROGRESS_RECEIPT_PERSISTED_BEFORE_VALIDATION",
+  "scope": {
+    "receipt_and_lineage_classification_only": true,
+    "historical_reference_admission": false,
+    "native_execution_admission": false,
+    "B2_admission": false,
+    "production_migration": false
+  },
+  "received_artifacts": [
+    "animo41.sln",
+    "animo41.vfproj",
+    "animo41.exe"
+  ],
+  "hard_guard": "A received executable or project file is not historical reference evidence until provenance and lineage are independently qualified."
+}
