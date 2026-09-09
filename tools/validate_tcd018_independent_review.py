@@ -56,7 +56,7 @@ require(data["historical_route"]["TCD018_admitted"] is False, "TCD-018 not admit
 for key, value in data["hard_boundaries"].items():
     require(value is False, f"hard boundary must remain false: {key}")
 require(EXPECTED_RESULT in report, "report contains exact result token")
-require("25-row reconciliation artifact was found" not in report, "report must not claim missing evidence exists")
+require("No complete 25-row reconciliation artifact was found" in report, "report must preserve the missing full 25-period evidence finding")
 require("No claim of organizational or human independence is made" in report, "report independence boundary")
 
 print("PASS_TCD018_INDEPENDENT_REVIEW_RECORD_VALIDATOR")
