@@ -6,10 +6,11 @@
   "base_head": "5c278152eacc33660f1c5870c7d419b8041b20a9",
   "status": "QUALIFIED_CANONICAL_STATE_READINESS_MATRIX_STATE_ADMISSION_STILL_BLOCKED",
   "canonical_state_admission": "NOT_ADMITTED",
+  "canonical_time_admission": "NOT_ADMITTED",
   "production_migration": "NOT_ADMITTED",
   "production_implementation": "NONE",
   "physics_changes": "NONE",
-  "scope": "READINESS_MATRIX_CHECKPOINT_CONTRACT_SOURCE_LAYER0_GUARD_EXECUTABLE_UNIT_SENTINEL_LOCAL_RESTART_FINDING_AND_MANAGEMENT_CURSOR_QUALIFICATION_ONLY",
+  "scope": "READINESS_MATRIX_CHECKPOINT_CONTRACT_SOURCE_LAYER0_GUARD_EXECUTABLE_SENTINELS_TESTBANK_COVERAGE_NH4_RECONSTRUCTION_AND_TIME02_MANAGEMENT_CURSOR_RECONCILIATION_ONLY",
   "source_hash": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
   "testbank_hash": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
   "prep12_local_findings": [
@@ -39,36 +40,88 @@
     "reason_guard_is_stricter_than_legacy_threshold": "do not hide physically positive low-storage state below process activation threshold"
   },
   "restricted_core_guard_execution": {
-    "status": "QUALIFICATION_GUARD_UNIT_SENTINEL_PASSED_INTEGRATION_SENTINEL_STILL_OPEN",
+    "unit_guard_status": "PASS",
     "guard_module": "tools/stateq01/restricted_core_guard.py",
-    "test_module": "tests/stateq01/test_restricted_core_guard.py",
-    "runtime": "CPython 3.13.5 GCC 14.2.0",
-    "tests_run": 14,
-    "failures": 0,
-    "errors": 0,
+    "unit_test_module": "tests/stateq01/test_restricted_core_guard.py",
+    "unit_tests_run": 14,
+    "unit_failures": 0,
+    "transaction_harness_status": "PASS_RC_R10_RC_R11_QUALIFICATION_ONLY",
+    "transaction_harness_module": "tools/stateq01/restricted_core_transaction_harness.py",
+    "transaction_test_module": "tests/stateq01/test_restricted_core_transaction_harness.py",
+    "transaction_harness_tests": 7,
+    "combined_guard_and_transaction_tests": 21,
     "no_hidden_epsilon": true,
     "input_non_mutation_tested": true,
-    "integration_rc_r10_rc_r11_passed": false,
-    "qualification_boundary": "standalone fail-closed guard logic only; full transaction ordering and split-run integration remain open"
+    "rc_r10": "PASS_QUALIFICATION_TRANSACTION_HARNESS",
+    "rc_r11": "PASS_QUALIFICATION_TRANSACTION_HARNESS",
+    "qualification_boundary": "qualification-only ordering harness; revision-53 physics and uninterrupted-versus-split trajectory equivalence not established"
+  },
+  "restricted_core_testbank_coverage": {
+    "status": "SUPPLIED_TESTBANK_HAS_ZERO_SURFACE_WITNESS_BUT_NO_CLEAN_FULL_RUN_CORE_ONLY_PROFILE_WITNESS",
+    "successful_observer_cases": 8,
+    "zero_surface_full_run_cases": ["RuurloGrass"],
+    "ruurlo_crop_ownership_route": "internal",
+    "profile_clean_core_only_case_available": false,
+    "consequence": "RC-R1 cannot be claimed from the supplied natural testbank without either a separately qualified synthetic core-only fixture or closure of a broader crop/external-crop profile"
   },
   "upper_boundary_reservoir_reconciliation": {
     "status": "CORE_CONTINUATION",
     "coordinates": ["Conhtop/Rsconhtop","Conitop/Rsconitop","Codiormatop/Rscodiormatop","Codiornitop/Rscodiornitop","Copotop/Rscopotop","Codiorpotop/Rscodiorpotop"],
     "former_optional_profile_withdrawn": "CORE_CNP_WITH_ADDITION_RESERVOIRS",
-    "reason": "UBoundconc evolves reservoirs with Flpn=0 and standard transport uses them as upper boundary for layer1"
+    "reason": "UBoundconc evolves reservoirs with Flpn=0 and standard transport uses them as upper boundary for layer1",
+    "rc_r12": "OPEN_SOURCE_OWNER_IDENTIFIED_EXECUTABLE_SPLIT_CONTINUITY_NOT_YET_RUN"
+  },
+  "nh4_adsorbed_reconstruction": {
+    "status": "PASS_SOURCE_RECONSTRUCTION_CONTRACT_SPLIT_RUN_OPEN",
+    "accepted_boundary_relation": "Rscxnh(Ln)=He(Ln)*Rhbd(Ln)*Socfnh(Ln)*Rsconh(Ln)",
+    "checkpoint_disposition": "DERIVED_RECOMPUTABLE_PHYSICAL_STORAGE_VIEW",
+    "physical_n_storage_retained_in_control_volume": true,
+    "independent_checkpoint_owner_required_by_source": false,
+    "rc_r5_behavioral_split_run_qualified": false
   },
   "management_cursor_qualification": {
-    "status": "SOURCE_QUALIFIED_EXPLICIT_NEXT_EVENT_CURSOR_REQUIRED_FOR_SOURCE_EQUIVALENT_CHECKPOINT",
+    "status": "SOURCE_QUALIFIED_EXPLICIT_CURSOR_PLUS_TIME02_SYNTHETIC_RC_R2_PASS_BEHAVIOURAL_SPLIT_RUN_OPEN",
     "schedule_identity": "MANDATORY_EXACT",
     "next_event_identity": "MANDATORY_EXPLICIT_CONTINUATION",
-    "next_event_time": "DERIVED_FROM_BOUND_SCHEDULE_UNDER_CANONICAL_TIME",
+    "next_event_time": "DERIVED_FROM_BOUND_SCHEDULE_UNDER_TIME02_CANDIDATE_COORDINATE",
     "legacy_file_offset": "NONCANONICAL_ADAPTER_IMPLEMENTATION_STATE",
     "time_only_reconstruction": "NOT_GENERALLY_ADMITTED",
     "testbank_schedule_scan": "11 Management*.inp files with addition schedules; detected >addNNN labels are unique contiguous and start at 1",
-    "remaining": ["event-adjacent split-run qualification","canonical TIME integration"]
+    "time02_input": {
+      "branch": "work/animo-time02-concrete-time-coordinate",
+      "head": "b4d78cf32cb149cf50aa2b0a0fbefee571eee6b8",
+      "calendar_contract_id": "ANIMO_PG_86400_NOLEAPSECONDS_V1",
+      "candidate_representation": "NORMALIZED_EXACT_RATIONAL_CIVIL_DAY_COORDINATE",
+      "canonical_time_admitted": false
+    },
+    "rc_r2_synthetic_execution": {
+      "status": "PASS_SYNTHETIC_CANDIDATE_CONTRACT_NON_B2",
+      "tested_head": "d84b15ce61e20666dbe7d194238c4a498a59df83",
+      "workflow_run": 34334358185,
+      "job_id": 102410148985,
+      "python": "3.12.14",
+      "tests_run": 10,
+      "tests_passed": 10,
+      "tests_failed": 0,
+      "exact_split_event_replay": false,
+      "exact_split_event_skip": false,
+      "time_only_restore_rejected": true,
+      "duplicate_next_event_time_owner": false,
+      "floating_tolerance_used": false
+    },
+    "initial_workflow_infrastructure_failure": {
+      "run_id": 34334285404,
+      "semantic_test_failure": false,
+      "cause": "importlib dataclass loader module registration",
+      "corrected_by": "d84b15ce61e20666dbe7d194238c4a498a59df83"
+    },
+    "remaining": [
+      "canonical TIME admission remains external",
+      "behavioural event-adjacent split-run equivalence on an admitted/profile-clean executable case"
+    ]
   },
   "profile_summary": {
-    "CORE_CNP_SUBSURFACE_ONLY": "READY_CANDIDATE_SOURCE_GUARD_UNIT_SENTINEL_PASSED_CURSOR_OWNERSHIP_QUALIFIED_SPLIT_RUN_NOT_EXECUTED",
+    "CORE_CNP_SUBSURFACE_ONLY": "READINESS_ADVANCED_GUARD_RC_R10_R11_PASS_RC_R2_SYNTHETIC_PASS_RC_R5_SOURCE_PASS_BUT_PROFILE_CLEAN_SPLIT_RUN_UNAVAILABLE",
     "CORE_CNP": "BLOCKED_ON_TCD016_C1_AND_LAYER0_RESTART_INIT_ZEROING",
     "CORE_CNP_WITH_CROP": "BLOCKED_ON_PREP12_CROP_RESTART_FINDINGS_AND_CONTINUATION_CLOSURE",
     "CORE_CNP_WITH_EXTERNAL_CROP": "READY_CANDIDATE_WITH_EXTERNAL_FRAME_AND_SPLIT_RUN_QUALIFICATION_REQUIRED",
@@ -77,6 +130,7 @@
     "CORE_CNP_WITH_GHG": "FAIL_CLOSED_FEATURE_STATE_BLOCKED",
     "CORE_CNP_WITH_REPORT_CONTINUITY": "PHYSICAL_PROFILE_READY_CANDIDATE_DIAGNOSTIC_CONTINUATION_OPTIONAL"
   },
+  "rc_status_file": "integration/animo-state/RESTRICTED_CORE_RC_STATUS.csv",
   "deliverables": [
     "docs/state/ANIMO5_CANONICAL_STATE_READINESS.md",
     "docs/state/CHECKPOINT_COMPLETENESS_CONTRACT.md",
@@ -88,6 +142,8 @@
     "docs/state/LAYER0_RESTART_INITIALIZATION_FINDING.md",
     "docs/state/RESTRICTED_CORE_ENVELOPE_QUALIFICATION_SPEC.md",
     "docs/state/MANAGEMENT_CURSOR_CONTINUATION_QUALIFICATION.md",
+    "docs/state/RESTRICTED_CORE_TESTBANK_SUITABILITY.md",
+    "docs/state/TIME02_MANAGEMENT_CURSOR_RECONCILIATION.md",
     "integration/animo-state/PERSISTENT_STATE_MATRIX.csv",
     "integration/animo-state/PERSISTENT_STATE_MATRIX_OVERRIDES.csv",
     "integration/animo-state/LAYER0_ACTIVATION_PREDICATES.csv",
@@ -96,8 +152,18 @@
     "integration/animo-state/STATE_PROFILE_MATRIX.csv",
     "integration/animo-state/STATE_ADMISSION_TEST_MATRIX.csv",
     "integration/animo-state/RESTRICTED_CORE_GUARD_TEST_STATUS.json",
+    "integration/animo-state/RESTRICTED_CORE_TRANSACTION_SENTINEL_STATUS.json",
+    "integration/animo-state/RESTRICTED_CORE_TESTBANK_SUITABILITY.csv",
+    "integration/animo-state/NH4_ADSORBED_RECONSTRUCTION_AUDIT.json",
+    "integration/animo-state/MANAGEMENT_CURSOR_EXACT_TIME_SENTINEL_STATUS.json",
+    "integration/animo-state/RESTRICTED_CORE_RC_STATUS.csv",
     "tools/stateq01/restricted_core_guard.py",
+    "tools/stateq01/restricted_core_transaction_harness.py",
+    "tools/stateq01/management_cursor_exact_time_harness.py",
     "tests/stateq01/test_restricted_core_guard.py",
+    "tests/stateq01/test_restricted_core_transaction_harness.py",
+    "tests/stateq01/test_management_cursor_exact_time_harness.py",
+    ".github/workflows/stateq01-management-cursor.yml",
     "integration/animo-state/ANIMO-STATEQ01_STATUS.json"
   ],
   "hard_rule_assertions": {
@@ -114,24 +180,27 @@
     "production_implementation_performed": false,
     "prep12_source_local_tcd_promoted_to_canonical": false,
     "restricted_core_declared_b3_admitted": false,
-    "unit_guard_pass_treated_as_integrated_rc_r10_rc_r11": false
+    "qualification_harness_pass_promoted_to_revision53_split_run": false,
+    "time02_candidate_treated_as_canonical_time_admission": false,
+    "ruurlo_internal_crop_ignored_for_core_only_qualification": false,
+    "nh4_derived_view_treated_as_duplicate_mutable_owner": false
   },
   "global_blockers": [
-    "Standalone restricted-core guard unit sentinel passes, but binding into a qualification transaction harness before chemistry and management mutation is not yet demonstrated",
     "No B3-admitted uninterrupted-versus-split portable restart equivalence for CORE_CNP_SUBSURFACE_ONLY",
+    "The supplied testbank has no uncontaminated full-run CORE_CNP_SUBSURFACE_ONLY witness; RuurloGrass is zero-surface but uses internal crop",
+    "Canonical TIME is not admitted even though TIME02 candidate exact-coordinate integration now has synthetic RC-R2 evidence",
     "General CORE_CNP remains blocked by TCD-016-C1 and RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING",
-    "Management next-event identity is structurally mandatory but event-adjacent split-run equivalence remains unqualified",
-    "Canonical TIME is needed to resolve exact event boundaries from normalized schedule records",
+    "RC-R5 NH4 adsorbed-state reconstruction is source-qualified but behavioural split-run equivalence is still open",
+    "RC-R12 upper-boundary reservoir owner semantics are identified but executable split continuity is still open",
     "P Inpo2/3 origin to explicit restart canonicalization requires qualification when those initialization modes are admitted",
     "PREP12 and STATEQ01 local findings require B3 canonical intake before canonical TCD reference",
     "Feature-specific profiles remain blocked where their science/restart contracts are incomplete"
   ],
   "next_admission_work": [
-    "Bind the passing guard into a qualification-only accepted/candidate transaction harness and execute integrated RC-R10 and RC-R11",
-    "Execute restricted-core RC-R1 through RC-R12 without promoting the qualification harness to production code",
-    "Add an event-adjacent split-run sentinel that checkpoints exact next_management_event_id and proves no replay or skip",
-    "Integrate next event boundary resolution with the admitted concrete TIME representation when TIME02 closes",
-    "Qualify NH4 adsorbed-state deterministic reconstruction across checkpoint restore",
+    "Qualify RC-R12 upper-boundary reservoir update/feed/restore contract and add a nonzero-reservoir split sentinel",
+    "Decide and qualify the route for a profile-clean executable CORE_CNP_SUBSURFACE_ONLY fixture before claiming RC-R1",
+    "Execute RC-R5 adsorbed-N reconstruction across accepted-boundary restore under admitted numerical comparison policy",
+    "Add RC-R6 and RC-R7 exact external-frame and geometry/cardinality fail-closed restore sentinels",
     "Qualify P Inpo2/3 origin to explicit-state restart if those initialization modes are in scope",
     "Route RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING through B3 canonical intake",
     "Keep general surface-capable core and all blocked optional features fail-closed"
