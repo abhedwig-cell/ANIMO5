@@ -1,0 +1,161 @@
+{
+  "work_unit": "ANIMO-RG02",
+  "record_type": "SUPPLEMENTAL_EVIDENCE_PATH_LEVEL_TRANSPLANT_PLAN",
+  "status": "QUALIFIED_PLAN_NOT_EXECUTED",
+  "purpose": "preserve unique evidence from divergent reused work-unit lineages without wholesale branch merges or canonical-register overwrite",
+  "global_rules": {
+    "wholesale_branch_merge": false,
+    "legacy_source_paths_allowed": false,
+    "testcase_paths_allowed": false,
+    "canonical_discrepancy_register_import_allowed": false,
+    "same_name_status_import_allowed": false,
+    "scientific_content_reinterpretation_allowed": false,
+    "source_branch_and_head_provenance_required": true,
+    "source_blob_identity_required_when_transplanted": true,
+    "local_tcd_labels_must_use_rg02_reconciliation_keys": true,
+    "canonical_tcd_allocation_owner": "ANIMO-B3 governance"
+  },
+  "workunit_identifier_reservations": [
+    {
+      "target_workunit": "ANIMO-PREP11",
+      "title": "Parser-Exposed Option Contract Evidence Rehome",
+      "source_branch": "work/animo-prep09-option-contract-audit",
+      "source_head": "0ae0e2180cf0569f8ea22319aa9ccb54ebca3210",
+      "reservation_state": "RG02_RESERVED_NOT_STARTED",
+      "branch_created": false,
+      "reason": "substantive option-contract audit reused PREP09 while authoritative PREP09 is element-transfer/slow-sorption"
+    },
+    {
+      "target_workunit": "ANIMO-PREP12",
+      "title": "Restart-State Continuity Evidence Rehome",
+      "source_branch": "work/animo-prep10-restart-state-continuity",
+      "source_head": "761db23269b45ba79df3be97ea85289682e57106",
+      "reservation_state": "RG02_RESERVED_NOT_STARTED",
+      "branch_created": false,
+      "reason": "substantive restart audit reused PREP10 while authoritative PREP10 is stable-DOM plough accumulator qualification"
+    }
+  ],
+  "packets": [
+    {
+      "packet_id": "RG02-SUPP-P07-SPECIES-001",
+      "source_branch": "work/animo-prep07-transfer-species-identity",
+      "source_head": "aefdbbcbd7aaac121831cf2dd522a152260594d0",
+      "source_relationship": "diverged from authoritative PREP07 at 7a744f688f85606875ee7c3eb37630bae3aff96f",
+      "target_type": "SUPPLEMENTAL_EVIDENCE_PACKET_NO_NEW_PREP_WORKUNIT",
+      "include_paths": [
+        "docs/prep07/CROSS_SPECIES_IDENTITY_AUDIT.md",
+        "docs/prep07/POOL_SLOT_AND_TRANSPORT_BINDING_AUDIT.md",
+        "integration/animo-prep/PREP07_NAMED_TRANSPORT_SPECIES_AUDIT.json",
+        "integration/animo-prep/PREP07_POOL_SLOT_IDENTITY_AUDIT.json",
+        "integration/animo-prep/PREP07_SPECIES_IDENTITY_AUDIT.json",
+        "tools/audit_named_transport_species.py",
+        "tools/audit_pool_slot_identity.py",
+        "tools/audit_species_identity.py",
+        "tests/test_named_transport_species_audit.py",
+        "tests/test_pool_slot_identity_audit.py",
+        "tests/test_species_identity_audit.py"
+      ],
+      "exclude_paths": [
+        "docs/prep07/WORK_UNIT_CONTRACT.md",
+        "integration/animo-prep/ANIMO-PREP07_STATUS.json",
+        "integration/animo-prep/ANIMO-PREP06_STATUS.json"
+      ],
+      "target_rehome_rule": "place under a supplemental namespace and preserve original branch/head/blob provenance; do not create a second PREP07 authority"
+    },
+    {
+      "packet_id": "RG02-SUPP-P08-TRANSFER-001",
+      "source_branch": "work/animo-prep08-transfer-probes",
+      "source_head": "340db9d91e71c906143efe877313149c5af36a24",
+      "source_relationship": "diverged from authoritative PREP08 at c4fe28b7878f6e8155560754b87b7ae115dd6473",
+      "target_type": "SUPPLEMENTAL_EVIDENCE_PACKET_NO_NEW_PREP_WORKUNIT",
+      "include_paths": [
+        "docs/prep08/TRANSFER_EDGE_DIAGNOSTIC_PROBES.md",
+        "integration/animo-prep/PREP08_TRANSFER_EDGE_PROBES.json"
+      ],
+      "exclude_paths": [
+        "integration/animo-prep/ANIMO-PREP08_STATUS.json",
+        "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
+      ],
+      "local_id_mapping": [
+        "RG02-LCL-EXHUMUS-PLOUGH-LEDGER",
+        "RG02-LCL-MULTISITE-FAST-P-MANAGEMENT",
+        "RG02-LCL-EXHUMUS-ELEMENT-FRACTION-SEQUENCING"
+      ]
+    },
+    {
+      "packet_id": "RG02-REHOME-PREP11-OPTION-CONTRACT",
+      "source_branch": "work/animo-prep09-option-contract-audit",
+      "source_head": "0ae0e2180cf0569f8ea22319aa9ccb54ebca3210",
+      "target_workunit": "ANIMO-PREP11",
+      "target_status": "RESERVED_NOT_STARTED",
+      "include_paths": [
+        "docs/prep09/PARSER_OPTION_CONTRACT_AUDIT.md",
+        "docs/prep09/OPTION_CONTRACT_MATRIX.csv",
+        "docs/prep09/AERATION_OPTION2_LWKM_REPLICATION.md",
+        "integration/animo-prep/PREP09_OPTION_CONTRACT_AUDIT.json",
+        "integration/animo-prep/PREP09_EXTENDED_OPTION_DISPATCH_AUDIT.json",
+        "tools/audit_option_contracts.py",
+        "tools/audit_option_dispatch_contracts.py",
+        "tests/test_option_dispatch_contracts.py"
+      ],
+      "exclude_paths": [
+        "integration/animo-prep/ANIMO-PREP09_STATUS.json",
+        "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
+      ],
+      "required_rehome_edits": [
+        "new PREP11 contract and status must identify source branch/head as evidence provenance",
+        "old local TCD-030 must be replaced in governance metadata by RG02-LCL-AERATION-OPTION2-ALIAS until B3 allocates a canonical ID",
+        "scientific evidence text must not be rewritten merely to fit the new workunit number"
+      ]
+    },
+    {
+      "packet_id": "RG02-REHOME-PREP12-RESTART-CONTINUITY",
+      "source_branch": "work/animo-prep10-restart-state-continuity",
+      "source_head": "761db23269b45ba79df3be97ea85289682e57106",
+      "target_workunit": "ANIMO-PREP12",
+      "target_status": "RESERVED_NOT_STARTED",
+      "include_paths": [
+        "docs/prep10/MACROPORE_SOLUTE_RESTART_WRITER_OMISSION.md",
+        "docs/prep10/PLANT_UPTAKE_RESTART_CONTINUITY_DEFECTS.md",
+        "docs/prep10/RESTART_STATE_CONTINUITY_BASELINE.md",
+        "docs/prep10/RESTART_STATE_INVENTORY.csv",
+        "integration/animo-prep/PREP10_MACROPORE_RESTART_WRITER_OMISSION.json",
+        "integration/animo-prep/PREP10_PLANT_UPTAKE_RESTART_CONTINUITY.json",
+        "integration/animo-prep/PREP10_RESTART_STATE_BASELINE.json",
+        "tools/audit_restart_state_continuity.py"
+      ],
+      "exclude_paths": [
+        "docs/prep10/WORK_UNIT_CONTRACT.md",
+        "integration/animo-prep/PREP10_DISCREPANCY_RESERVATIONS.json",
+        "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+        "integration/animo-prep/ANIMO-PREP08_STATUS.json",
+        "integration/animo-prep/ANIMO-PREP09_STATUS.json",
+        "docs/prep08/MANAGEMENT_TRANSFER_CAUSAL_PROBES.md",
+        "docs/prep09/PARSER_OPTION_CONTRACT_AUDIT.md",
+        "integration/animo-prep/PREP09_OPTION_CONTRACT_AUDIT.json"
+      ],
+      "required_rehome_edits": [
+        "new PREP12 contract/status must explicitly state that PREP10 is already owned by the stable-DOM accumulator lineage",
+        "local TCD-032/033/034 reservations must not be imported as canonical reservations",
+        "use RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER, RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION and RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE until B3 allocates canonical IDs",
+        "keep TCD-025 distinct because the source evidence itself states that the macropore restart writer omission is distinct from the main-ledger gap"
+      ]
+    }
+  ],
+  "execution_order": [
+    "persist this plan and local-ID reconciliation",
+    "create PREP11 and PREP12 only from a governance-approved canonical evidence base, not from the divergent source branches",
+    "copy selected evidence path-by-path with source blob provenance",
+    "create new workunit contracts/status artifacts without importing conflicting status/register files",
+    "run documentary/tool tests where the transplanted tools are included",
+    "only after readback verification mark G2 complete"
+  ],
+  "gate_state": {
+    "G1_local_id_reconciliation": "COMPLETE_FOR_OBSERVED_POST_027_PREPARATORY_LINEAGES",
+    "G2_supplemental_evidence_transplant": "PLANNED_NOT_EXECUTED",
+    "merge_performed": false,
+    "scientific_baseline_changed": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false
+  }
+}
