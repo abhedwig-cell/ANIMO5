@@ -93,7 +93,7 @@ class StorageProofGateTests(unittest.TestCase):
     def test_duplicate_id_fails(self):
         proof = valid_proof()
         proof["evidence_objects"][1]["evidence_id"] = proof["evidence_objects"][0]["evidence_id"]
-        result = mod.evaluate(proof(), REGISTER)
+        result = mod.evaluate(proof, REGISTER)
         self.assertFalse(result["admission_ready"])
         self.assertTrue(any("duplicate evidence_id" in x for x in result["failures"]))
 
