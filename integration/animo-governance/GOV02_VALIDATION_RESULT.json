@@ -1,0 +1,77 @@
+{
+  "work_unit": "ANIMO-GOV02",
+  "validator": "tools/validate_gov02_evidence_dag.py",
+  "result": "PASS",
+  "cases": [
+    {
+      "id": "VALID_CLASS_A_HISTORICAL_UNCERTAINTY",
+      "expected": "ALLOW",
+      "observed": "ALLOW",
+      "reasons": []
+    },
+    {
+      "id": "INVALID_SYNTHETIC_AS_B2",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "reasons": [
+        "B2 may only be an independent historical reference; synthetic/B1 promotion rejected",
+        "historical fidelity/equivalence claim requires qualified B2 evidence"
+      ]
+    },
+    {
+      "id": "INVALID_B1_GNU_AS_HISTORICAL_ORACLE",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "reasons": [
+        "B2 may only be an independent historical reference; synthetic/B1 promotion rejected",
+        "historical fidelity/equivalence claim requires qualified B2 evidence"
+      ]
+    },
+    {
+      "id": "INVALID_ACQUISITION_NOT_ACTUALLY_ATTEMPTED",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "reasons": [
+        "reasonable B2 acquisition effort incomplete: response_or_documented_unrecoverable,targeted_wur_request_sent_verified_route"
+      ]
+    },
+    {
+      "id": "INVALID_CLASS_C_MASS_CLOSURE_ONLY",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "reasons": [
+        "Class C missing-state claim requires independent state-model/theory authority"
+      ]
+    },
+    {
+      "id": "INVALID_CLASS_E_SMALLER_RESIDUAL_ONLY",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "reasons": [
+        "historical-uncertainty route missing independent_cross_check",
+        "historical-uncertainty route missing independent_second_line_review",
+        "historical-uncertainty route lacks an accepted scientific-oracle class",
+        "smaller residual is not a numerical-policy correctness oracle",
+        "Class E numerical policy missing numerical_formulation_authority",
+        "Class E numerical policy missing convergence_study",
+        "Class E numerical policy missing precision_discretization_study",
+        "Class E numerical policy missing independent_numerical_review"
+      ]
+    },
+    {
+      "id": "INVALID_HISTORICAL_EQUIVALENCE_WITHOUT_B2",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "reasons": [
+        "historical fidelity/equivalence claim requires qualified B2 evidence",
+        "historical-uncertainty route missing b1_causality",
+        "historical-uncertainty route missing expected_difference_predeclared",
+        "historical-uncertainty route missing non_interference",
+        "historical-uncertainty route missing path_coverage",
+        "historical-uncertainty route missing independent_cross_check",
+        "historical-uncertainty route missing independent_second_line_review"
+      ]
+    }
+  ],
+  "errors": []
+}
