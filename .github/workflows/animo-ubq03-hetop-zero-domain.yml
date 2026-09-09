@@ -1,0 +1,34 @@
+name: ANIMO UBQ03 HETOP zero-domain characterization
+
+on:
+  push:
+    branches:
+      - work/animo-ubq03-hetop-zero-thickness-semantics
+  pull_request:
+    paths:
+      - 'docs/numerics/HETOP_ZERO_THICKNESS_SEMANTICS.md'
+      - 'integration/animo-science/UBQ03_HETOP_ZERO_DOMAIN.json'
+      - 'integration/animo-science/ANIMO-UBQ03_STATUS.json'
+      - 'tools/ubq03/**'
+      - '.github/workflows/animo-ubq03-hetop-zero-domain.yml'
+
+jobs:
+  validate-ubq03:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history for scope guard
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse persisted JSON
+        run: |
+          python -m json.tool integration/animo-science/UBQ03_HETOP_ZERO_DOMAIN.json >/dev/null
+          python -m json.tool integration/animo-science/ANIMO-UBQ03_STATUS.json >/dev/null
+      - name: Compile validator
+        run: python -m py_compile tools/ubq03/validate_ubq03.py
+      - name: Validate characterization and scope
+        run: python tools/ubq03/validate_ubq03.py
