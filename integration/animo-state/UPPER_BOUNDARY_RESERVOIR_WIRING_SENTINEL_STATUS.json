@@ -1,0 +1,27 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "artifact": "RC-R12 exact zero-flux nonzero-reservoir wiring sentinel",
+  "profile": "CORE_CNP_SUBSURFACE_ONLY",
+  "status": "PERSISTED_NOT_YET_EXECUTED",
+  "evidence_class": "SYNTHETIC_SOURCE_BRANCH_CONTRACT_NON_B2",
+  "source_basis": "UBoundconc.for Flux<1e-8 branch narrowed to exact Flux=0 and zero load, where Rs*top=Av*top=Con*top",
+  "production_code": false,
+  "physics_change": false,
+  "canonical_state_admission": "NOT_ADMITTED",
+  "harness_module": "tools/stateq01/upper_boundary_reservoir_wiring_harness.py",
+  "test_module": "tests/stateq01/test_upper_boundary_reservoir_wiring_harness.py",
+  "assertions": [
+    "nonzero C/N/P accepted owner survives exact zero-flux interval",
+    "interval-average boundary equals the accepted owner in the exact zero-flux source branch",
+    "Flpn=0 feeds first active compartment 1",
+    "split checkpoint/restore wiring matches uninterrupted wiring exactly",
+    "checkpoint contains one accepted owner copy rather than duplicate Con*top and Av*top owners",
+    "physical reservoir amount is concentration times bound Hetop",
+    "geometry identity, Hetop and phosphorus activation mismatches fail before restore",
+    "synthetic sentinel uses exact Fraction arithmetic and no floating tolerance"
+  ],
+  "tested": false,
+  "qualified": false,
+  "qualification_boundary": "does not exercise the nonzero-flux exponential update and is not revision-53 executable split-run evidence",
+  "next": "execute persisted sentinel in GitHub Actions and record result"
+}
