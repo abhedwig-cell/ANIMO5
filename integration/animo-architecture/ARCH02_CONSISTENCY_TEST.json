@@ -1,0 +1,38 @@
+{
+  "work_unit": "ANIMO-ARCH02",
+  "test": "restart policy structural consistency",
+  "date": "2026-09-09",
+  "result": "PASS",
+  "evidence_class": "ARCHITECTURE_STRUCTURE_TEST_NOT_REFERENCE_EVIDENCE",
+  "inputs": {
+    "arch01_state_registry": "integration/animo-architecture/ARCH01_STATE_OWNERSHIP.csv",
+    "arch01_blob_sha": "1d374520ffc844857d1f633768c24d90d62b47c5",
+    "arch02_restart_policy": "integration/animo-architecture/ARCH02_RESTART_POLICY.csv",
+    "arch02_blob_sha": "9543b170d82da24ad3fee7bee7ad3e6ea6a70546"
+  },
+  "checks": {
+    "arch01_rows": 53,
+    "arch02_rows": 53,
+    "legacy_state_id_coverage_exact": true,
+    "legacy_state_ids_unique": true,
+    "candidate_field_id_alignment_exact": true,
+    "owner_component_alignment_exact": true,
+    "accepted_boundary_required_all_rows": true,
+    "hydrology_exchange_coordinates_duplicated_as_animo_physical_checkpoint": 0,
+    "hydrology_exchange_coordinates_with_external_restart_owner": 4,
+    "derived_or_scratch_rows_checkpointed_as_physical": 0,
+    "derived_or_scratch_rows_recomputed": 10,
+    "diagnostic_observer_rows_checkpointed_as_physical": 0,
+    "diagnostic_continuation_rows": 2,
+    "unconditional_animo_physical_state_rows": 23,
+    "conditional_physical_or_owner_state_rows": 13,
+    "unsupported_dormant_rows": 1
+  },
+  "validation_method": "Exact persisted CSV rows were re-read through the GitHub connector in two bounded line ranges per registry and compared against the ARCH01 ownership contract. The same predicates are persisted in tools/audit_arch02_restart_policy.py.",
+  "audit_tool_persisted": true,
+  "audit_tool_executed_from_repository_checkout": false,
+  "frozen_source_executed": false,
+  "behavioural_restart_test_executed": false,
+  "reference_evidence": false,
+  "qualification_effect": "candidate architecture consistency only"
+}
