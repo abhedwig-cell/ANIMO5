@@ -1,0 +1,33 @@
+name: ANIMO-NQ01 comparator qualification
+
+on:
+  push:
+    branches:
+      - work/animo-nq01-numerical-qualification-architecture
+    paths:
+      - tools/compare_b1_b2_reference.py
+      - tests/test_compare_b1_b2_reference.py
+      - integration/animo-numerics/REFERENCE_CAPTURE_SCHEMA.json
+      - .github/workflows/animo-nq01.yml
+  pull_request:
+    paths:
+      - tools/compare_b1_b2_reference.py
+      - tests/test_compare_b1_b2_reference.py
+      - integration/animo-numerics/REFERENCE_CAPTURE_SCHEMA.json
+      - .github/workflows/animo-nq01.yml
+
+permissions:
+  contents: read
+
+jobs:
+  comparator-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile comparator
+        run: python -m py_compile tools/compare_b1_b2_reference.py
+      - name: Run synthetic fail-closed tests
+        run: python -m unittest tests/test_compare_b1_b2_reference.py
