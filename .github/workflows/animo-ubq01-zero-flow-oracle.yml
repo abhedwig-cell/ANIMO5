@@ -1,0 +1,43 @@
+name: ANIMO-UBQ01 exact-zero upper-boundary oracle
+
+on:
+  push:
+    branches:
+      - work/animo-ubq01-tcd042-upper-boundary-transaction
+  workflow_dispatch:
+
+jobs:
+  validate-zero-flow-atom:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Validate exact-zero atom
+        run: python tools/ubq01/validate_tcd042_zero_flow.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=814ea660d367494432beb63ea78298d1f6cd73d7
+          git fetch --no-tags origin "$BASE" || true
+          git cat-file -e "${BASE}^{commit}"
+          git diff --name-only "$BASE"...HEAD > /tmp/ubq01_changed.txt
+          cat /tmp/ubq01_changed.txt
+
+          allowed='^(.github/workflows/animo-ubq01-zero-flow-oracle\.yml|docs/science/TCD042_ZERO_THROUGHFLOW_ATOMIZATION\.md|integration/animo-science/TCD042_ZERO_FLOW_ATOMIZATION\.json|integration/animo-science/ANIMO-UBQ01_STATUS\.json|tools/ubq01/validate_tcd042_zero_flow\.py)$'
+
+          unexpected=$(grep -Ev "$allowed" /tmp/ubq01_changed.txt || true)
+          if [ -n "$unexpected" ]; then
+            echo "UBQ01 scope violation. Unexpected changed paths:"
+            echo "$unexpected"
+            exit 1
+          fi
+
+          echo "UBQ01 scope guard PASS"
