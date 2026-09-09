@@ -1,0 +1,98 @@
+{
+  "work_unit": "ANIMO-BUILDQ01",
+  "title": "Hidden Runtime State, Storage Duration, Floating-Exception & Compiler-Semantics Qualification",
+  "status": "QUALIFIED_POST_G5_FORTRAN_RUNTIME_SEMANTIC_HAZARD_AUDIT_PRODUCTION_BLOCKS_EXPLICIT",
+  "admitted": false,
+  "production_migration": "NOT_ADMITTED",
+  "corrected_legacy_admission": "NOT_ADMITTED",
+  "branch": "work/animo-buildq01-runtime-semantics",
+  "base": {
+    "branch": "work/animo-rg02-g5-independent-stream-attachment",
+    "commit": "5c278152eacc33660f1c5870c7d419b8041b20a9"
+  },
+  "evidence_heads": {
+    "PREP01_05": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
+    "GHG01": "dac7b7b5c591b781b82ec968896edb5957664c88",
+    "MP02": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "SQ01": "26d0c74aa440bd73c23709d313e24ea8af2a0bcd",
+    "NQ02": "40a41089020f78ee1d5181b8afc7bdb511af3193",
+    "PREP03": "attached_at_G5_base"
+  },
+  "frozen_evidence": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "source_modified": false,
+    "testbank_modified": false,
+    "diagnostic_compiler": "GNU Fortran 14.2.0"
+  },
+  "static_audit": {
+    "selected_local_source_files": 58,
+    "prep03_selected_routines_functions": 137,
+    "approx_call_statements": 790,
+    "unique_called_routines": 92,
+    "computed_goto_dispatch_statements": 19,
+    "data_statement_starts": 44,
+    "explicit_save_declaration_lines": 5,
+    "alternate_units_excluded": [
+      "input1_1.for",
+      "Outselorg.for"
+    ]
+  },
+  "controlled_probes": {
+    "GHGponding_exact_source": {
+      "result": "STORAGE_DURATION_DEPENDENCY_CONFIRMED",
+      "gnu_fautomatic": "TASK2_RESTORE_CORRUPTED",
+      "gnu_O2_fautomatic": "TASK2_RESTORE_ZEROED_IN_THIS_PROBE",
+      "gnu_fautomatic_finit_real_snan": "TASK2_RESTORE_NAN",
+      "gnu_fno_automatic_finit_real_snan": "TASK2_RESTORE_EXACT_ORIGINALS",
+      "interpretation": "proves GNU storage-duration dependence; does not establish historical Intel behavior or intended science"
+    },
+    "MP_balance_guard_exact_expression": {
+      "result": "GNU_INVALID_FLAG_AND_TRAP_SENSITIVITY_CONFIRMED",
+      "nontrapping": {
+        "branch_taken": false,
+        "ieee_invalid_flag": true,
+        "ratio": "NaN"
+      },
+      "trapping": {
+        "exit_code": 136,
+        "signal": "SIGFPE"
+      },
+      "interpretation": "IEEE_FLAG_ONLY in observed ordinary GNU execution; CONTROL_FLOW_MATERIAL under trapping FP environment; historical Intel effect unknown"
+    }
+  },
+  "key_findings": [
+    "active GHG task families rely on non-SAVEd locals across procedure returns",
+    "active macropore task/dispatch families rely on non-SAVEd locals across procedure returns",
+    "most hidden task locals are transaction or solver context and are not persistent scientific-state candidates",
+    "GHG layer-0 restart phase state is separately restart-relevant physical state",
+    "SQ01 Transca layer-0 parameter/rate initialization gap is source-confirmed but runtime-effect unqualified",
+    "MP02 balance-warning invalid operation is reconciled as GNU IEEE_FLAG_ONLY in nontrapping execution and CONTROL_FLOW_MATERIAL under trapping environment",
+    "implicit interfaces remain a systemic runtime/refactor hazard",
+    "no material aliasing defect was admitted by the duplicate-actual static scan",
+    "compiler flags remain diagnostic build controls, not scientific fixes"
+  ],
+  "b3_routing": {
+    "new_canonical_tcd_allocated": false,
+    "GHG_hidden_task_state": "BLOCKS_EXPLICIT_MIGRATION_RECONCILE_WITH_GHG01",
+    "macropore_hidden_task_state": "BLOCKS_EXPLICIT_MIGRATION_RECONCILE_WITH_MP02",
+    "SQ01_index0_parameter_gap": "ROUTE_TO_B3_INTAKE_ONLY_IF_RUNTIME_MATERIALITY_ESTABLISHED",
+    "NQ02_nonlinear_evaluation_order": "RETAIN_UNDER_TCD019_SCOPE_UNLESS_INDEPENDENT_DEFECT_EVIDENCE",
+    "compiler_flags_as_fix": "PROHIBITED"
+  },
+  "deliverables": [
+    "docs/build/HIDDEN_RUNTIME_STATE_AUDIT.md",
+    "docs/build/FORTRAN_STORAGE_DURATION_CONTRACT.md",
+    "docs/build/FLOATING_EXCEPTION_HAZARD_MATRIX.md",
+    "integration/animo-build/HIDDEN_STATE_REGISTER.csv",
+    "integration/animo-build/ANIMO-BUILDQ01_STATUS.json"
+  ],
+  "remaining_production_blocks": [
+    "externalize and qualify active GHG task/solver contexts before migration",
+    "externalize and qualify macropore task/solver contexts before migration",
+    "resolve GHG restart layer-0 phase reconstruction under canonical STATE work",
+    "establish runtime materiality or close the SQ01 Transca layer-0 parameter initialization finding",
+    "replace implicit interfaces seam-by-seam only with equivalence evidence",
+    "qualify floating-domain/evaluation-order source risks before any correction"
+  ]
+}
