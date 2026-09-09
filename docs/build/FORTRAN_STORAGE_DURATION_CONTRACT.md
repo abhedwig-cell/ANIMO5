@@ -62,6 +62,18 @@ Active hidden local state means the affected routines cannot be assumed reentran
 
 Mass ledgers, warning counters and output caches can observe physical state and transfers, but may not become the only retained owner of physical continuation data.
 
+### 13. Mixed explicit and accidental lifetime in one routine must be decomposed per variable
+
+`Mapohydro` is the clearest counterexample to a blanket storage policy. It explicitly saves `FlMpInTo` and `FlMpOuTo` across Task 1 to Task 3, while the scalar INTEGER `LnBoMpMx` is also consumed across Task 1 to Task 4 but has no explicit `SAVE`. GNU probes show that automatic-storage variants can either terminate or skip the required Task-4 state reset, whereas static storage preserves the observed task protocol.
+
+This does not justify adding `SAVE` to every local. It shows that the semantic contract must be reconstructed per variable. Where a retained value is deterministically derivable from already explicit context, recomputation or an explicit scoped context is preferable to checkpointing compiler-lifetime artifacts.
+
+The distinction is also relevant to historical Intel reconstruction. PREP01's default `/Qauto-scalar` hypothesis can plausibly explain persistence of the CHARACTER locals used by `Outbal_write`, but does not by itself retain a non-SAVEd scalar INTEGER such as `LnBoMpMx`. Intel-default storage therefore cannot be treated as a complete explanation of revision-53 cross-call behavior.
+
+### 14. Bounds checks must precede array access structurally
+
+A logical `.AND.` must never be used as the only protection against an out-of-domain array subscript. `MAPOHYDRO.FOR` contains wet-domain search predicates that access second-dimension index zero before testing that the index is at least one. A bounds-checking GNU build traps. Future ANIMO5 code must sequence the bound test and the array access in separate control-flow steps. This is a runtime-language contract, not a scientific equation change.
+
 ## Migration classification test
 
 For each legacy retained local ask, in order:
