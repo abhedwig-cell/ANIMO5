@@ -1,0 +1,164 @@
+{
+  "work_unit": "ANIMO-B3A03",
+  "target": "TCD-018",
+  "class": "A_ACCOUNTING_REPORTING_ONLY",
+  "status": "QUALIFIED_TCD018_CLASS_A_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING",
+  "qualified_readiness": true,
+  "admitted": false,
+  "base_authority": {
+    "branch": "work/animo-rg02-g5-independent-stream-attachment",
+    "head": "5c278152eacc33660f1c5870c7d419b8041b20a9"
+  },
+  "frozen_evidence_identity": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "hydro_detailed_sha256": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
+    "outbal_calc_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+    "init_sha256": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058"
+  },
+  "evidence_sources": [
+    {
+      "work_unit": "PREP01",
+      "artifact": "docs/prep01/WATER_INTERCEPTION_STORAGE_BALANCE_SEAM.md",
+      "role": "source-bound causal localization and natural LWKM diagnostic correction probe"
+    },
+    {
+      "work_unit": "PREP06",
+      "branch": "work/animo-prep06-conserved-state-ledger",
+      "head": "9b1f1ea51c24fb82823290193651830dc61ea3c8",
+      "artifacts": [
+        "docs/prep06/CONSERVED_STATE_INVENTORY.csv",
+        "docs/prep06/PROCESS_CONSERVATION_IDENTITIES.md"
+      ],
+      "role": "water-store ownership and control-volume identity"
+    },
+    {
+      "work_unit": "MASSQ01",
+      "branch": "work/animo-massq01-b1-massledger-projection",
+      "head": "6ccddd631a8dcc21f06b1384baf2561e81179e75",
+      "artifacts": [
+        "docs/mass/CONTROL_VOLUME_RUNTIME_MAPPING.md",
+        "integration/animo-mass/MASSLEDGER_OBSERVER_VERIFICATION.json",
+        "integration/animo-mass/MASSLEDGER_RESIDUAL_REGISTER.csv"
+      ],
+      "role": "read-only natural B1 water observer and reporting-only classification"
+    },
+    {
+      "work_unit": "SYNQ01",
+      "branch": "work/animo-synq01-independent-synthetic-oracles",
+      "head": "842f72300fd03ede0b9024537a7ee6126722a121",
+      "oracle": "SYNQ-O003",
+      "role": "strongly independent exact interception control-volume conservation oracle"
+    },
+    {
+      "work_unit": "B3Q01",
+      "branch": "work/animo-b3q01-scientific-admission-framework",
+      "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+      "role": "Class-A qualification and fail-closed admission contract"
+    },
+    {
+      "work_unit": "GOV02",
+      "branch": "work/animo-gov02-evidence-dag-reconciliation",
+      "head": "db7add6f9561730bbf352aa7fd3f3968405cfaa3",
+      "role": "claim-scoped B2 route and bounded historical-uncertainty policy"
+    }
+  ],
+  "gates": {
+    "tcd_identity_and_class": {
+      "result": "PASS",
+      "evidence": "TCD-018 is governed as CONFIRMED_LEGACY_BALANCE_INTERFACE_STATE_OMISSION and Class A with an atomic balance-interface claim."
+    },
+    "sic_sict_physical_ownership": {
+      "result": "PASS",
+      "evidence": "PREP06 W-IC owns Sic as begin state and Sict as end state for canopy interception water; Init promotes Sic=Sict on the applicable detailed-hydrology route."
+    },
+    "begin_end_storage_contribution": {
+      "result": "PASS",
+      "identity": "external water in - external water out - delta(matrix + snow + ponding + interception) = 0",
+      "candidate_term": "delta interception = Sict - Sic"
+    },
+    "detailed_hydrology_closure": {
+      "result": "PASS",
+      "evidence": "Hydro_detailed includes -(Sict-Sic) in Badev. For the natural LWKM 2008 period the summed detailed-hydrology Badev is -5.2640587582358e-5 mm while legacy Bawa reports -0.0601 mm."
+    },
+    "bawa_interface_omission": {
+      "result": "PASS",
+      "evidence": "Outbal_calc does not receive Sic or Sict and has no interception-storage contribution although it accounts interception evaporation and other water stores."
+    },
+    "natural_b1_activation": {
+      "result": "PASS",
+      "case": "LWKM_gras_1040.2021.2045",
+      "evidence": "PREP01 reconciles all 25 annual total-profile periods with the interception storage change, and MASSQ01 retains TCD-018 as LEGACY_REPORTING_ONLY_DIFFERENCE."
+    },
+    "independent_conservation_oracle": {
+      "result": "PASS",
+      "oracle": "SYNQ-O003",
+      "identity": "S0 + precipitation - evaporation - throughfall - S1 = 0 exactly",
+      "independence": "STRONGLY_INDEPENDENT"
+    },
+    "proposed_accounting_only_observation": {
+      "result": "PASS_FOR_READINESS",
+      "evidence": "The PREP01 causal probe observes and accumulates existing Sic/Sict storage only; no hydrology equation or state mutation is introduced."
+    },
+    "hydrological_state_trajectory_noninterference": {
+      "result": "PASS_FOR_READINESS_SECOND_LINE_REVIEW_PENDING",
+      "evidence": "The TCD-specific PREP01 probe records changed_hydrology_state=false. The combined Class-A PREP02 probe records state_or_process_physics_changed=false. MASSQ01 independently shows a read-only observer can run with zero physical-output differences across eight natural cases."
+    },
+    "hydrological_flux_trajectory_noninterference": {
+      "result": "PASS_FOR_READINESS_SECOND_LINE_REVIEW_PENDING",
+      "evidence": "The TCD-specific PREP01 probe records changed_hydrology_fluxes=false and changes no forcing or soil-water equation; the Class-A diagnostic comparison has zero unintended output differences."
+    },
+    "output_whitelist": {
+      "result": "PASS_FOR_READINESS",
+      "water_only_files": [
+        "bawaGP.Out",
+        "bawaRP.Out",
+        "bawaTP.Out",
+        "ani_waGP.Bal",
+        "ani_waRP.Bal",
+        "ani_waTP.Bal"
+      ],
+      "qualification_note": "PREP02's eight-case matrix is a combined TCD-017/TCD-018 Class-A probe. Source localization separates TCD-018 to the six water-ledger files; the six P-ledger differences belong to TCD-017. A standalone isolated eight-case TCD-018 rerun is not claimed by this workunit."
+    },
+    "no_unrelated_residual_masking": {
+      "result": "PASS",
+      "evidence": "MASSQ01 retains the unrelated CranGrass TITO=724 water residual of -0.0030198960466805147 mm as UNEXPLAINED_RESIDUAL. TCD-018 does not claim global water closure."
+    },
+    "tolerance_policy": {
+      "result": "PASS",
+      "raw_0_0601_mm_used_as_tolerance": false,
+      "global_water_tolerance_defined": false
+    },
+    "valid_admission_route": {
+      "result": "PENDING",
+      "normal_b2_route_available": false,
+      "historical_uncertainty_route_eligible": false,
+      "live_prep02r_status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+      "external_request_sent": false,
+      "historical_reference_artifact_obtained": false,
+      "reference_qualified": false,
+      "reason": "GOV02 requires either qualified B2 evidence or bounded acquisition closure before the historical-uncertainty route can be used. PREP02R has not yet reached either state."
+    },
+    "independent_second_line_review": {
+      "result": "PENDING",
+      "required_before_admission": true
+    }
+  },
+  "hard_constraints": {
+    "swap_hydrology_modified": false,
+    "water_state_representation_changed": false,
+    "physical_state_patch_present": false,
+    "hydrology_physics_change_present": false,
+    "raw_0_0601_mm_residual_used_as_tolerance": false,
+    "known_unrelated_residuals_corrected_or_masked": false
+  },
+  "admission_decision": {
+    "admitted": false,
+    "reason": "The atomic Class-A claim is ready for admission review, but no valid historical-evidence route is currently open and independent second-line review is not complete.",
+    "required_next_conditions": [
+      "PREP02R/B2 route reaches a GOV02-valid state",
+      "independent second-line reviewer verifies the source, natural B1 activation, non-interference surface and expected-difference whitelist",
+      "admission authority records a separate fail-closed B3 decision"
+    ]
+  }
+}
