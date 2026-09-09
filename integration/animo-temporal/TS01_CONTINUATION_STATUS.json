@@ -12,6 +12,8 @@
   "arch07_crosswalk_doc_commit": "6eeb6601cc0248416079ea69cabc0718325eaef0",
   "arch07_crosswalk_matrix_commit": "9838d25f749edd75b31b13d9777fc9f9c9780f0b",
   "scheduler_spec_audit_commit": "9169c2da417f90028dc9ad85129b31019d5c7042",
+  "time_gate_handoff_doc_commit": "59ed99d143fc69d5ac06e0b3eb7ef6186482d76f",
+  "time_gate_input_commit": "b67c2b33805f89235a11e8983e6abaa7232a48f2",
   "qualification_decision": "QUALIFIED_SOURCE_BOUND_TEMPORAL_SEMANTICS_PREPARATORY_EVIDENCE",
   "qualification_changed": false,
   "historical_reference_qualified": false,
@@ -29,7 +31,8 @@
     "scheduler_matrix_git_blob_sha": "f214de825d5fa33252d817d55b73881c592cb532",
     "scheduler_audit_tool_git_blob_sha": "f98d5b73107a5094ca049430cbbcde0e4f32c82a",
     "arch07_temporal_crosswalk_persisted": true,
-    "arch07_authoritative_head_used": "7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6"
+    "arch07_authoritative_head_used": "7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6",
+    "future_time_gate_source_input_persisted": true
   },
   "scheduler_evidence_tiers": [
     "SOURCE_STATIC",
@@ -53,7 +56,9 @@
     "tools/audit_ts01_scheduler_spec.py",
     "integration/animo-temporal/TS01_SCHEDULER_SPEC_AUDIT.json",
     "docs/temporal/ARCH07_TEMPORAL_CROSSWALK.md",
-    "integration/animo-temporal/TS01_ARCH07_CROSSWALK.csv"
+    "integration/animo-temporal/TS01_ARCH07_CROSSWALK.csv",
+    "docs/temporal/TIME_GATE_INPUT_REQUIREMENTS.md",
+    "integration/animo-temporal/TS01_TIME_GATE_INPUT.json"
   ],
   "crosswalk_findings": {
     "arch07_strong_coverage": [
@@ -81,17 +86,25 @@
       "year closeout/new-year initialization ordering"
     ]
   },
+  "time_gate_handoff": {
+    "source_equivalence_constraints_machine_readable": true,
+    "future_transaction_policy_separated_from_literal_legacy": true,
+    "reference_behavior_requirements_separated": true,
+    "canonical_time_decision_made": false,
+    "time_gate_admission_effect": "NONE"
+  },
   "remaining_blockers_unchanged": [
     "independent B2 historical reference remains unavailable",
     "continuous-versus-split restart behaviour remains unqualified",
     "canonical ANIMO5 TIME transaction/retry policy remains unadmitted",
+    "canonical STATE admission remains a serial migration-DAG prerequisite",
     "GHG and macropore feature/theory qualification remain incomplete",
     "discrepancy-specific B3 and numerical-policy work remains separate"
   ],
   "recommended_next": [
+    "treat TS01_TIME_GATE_INPUT.json as the source-bound handoff to any future dedicated TIME workunit, without claiming TIME admission",
     "use TS01_SCHEDULER_SENTINELS.csv as the single temporal-source baseline when a scheduler or management-event adapter qualification workunit is opened",
     "extend a future ARCH07 runtime fixture set by reference to TS01 sentinel IDs rather than duplicating temporal assumptions",
-    "design a separate canonical TIME candidate only after distinguishing source-equivalence requirements from future transaction/retry policy",
     "execute split-run and order/event behavioural qualification only after PREP02R obtains independently trustworthy reference evidence"
   ]
 }
