@@ -1,40 +1,266 @@
 {
   "work_unit": "ANIMO-TS01",
   "title": "Legacy Process Ordering, Temporal Semantics, State Acceptance & Transaction Boundary Audit",
+  "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-ts01-temporal-semantics",
-  "started_from_commit": "9b1f1ea51c24fb82823290193651830dc61ea3c8",
+  "date": "2026-09-09",
   "started_from_branch": "work/animo-prep06-conserved-state-ledger",
-  "phase": "STARTED_SOURCE_BOUND_AUDIT",
-  "decision": "IN_PROGRESS",
+  "started_from_commit": "9b1f1ea51c24fb82823290193651830dc61ea3c8",
+  "evaluated_ts01_head_before_closeout": "fa825b8763a672cce338c30010cdf4c51ede4e2d",
+  "phase": "QUALIFIED_SOURCE_BOUND_AUDIT",
+  "decision": "QUALIFIED_SOURCE_BOUND_TEMPORAL_SEMANTICS_PREPARATORY_EVIDENCE",
+  "qualified": true,
+  "blocked": true,
   "historical_reference_qualified": false,
+  "b2_reference_available": false,
   "production_migration": "NOT_ADMITTED",
+  "production_implemented": false,
+  "legacy_source_modified": false,
+  "testcase_modified": false,
+  "process_order_changed": false,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "audit_artifacts_implemented": true,
   "source_authority": {
     "artifact": "ANIMO_4.1.5.53.zip",
     "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
-    "role": "B0 immutable historical source; revision-53 implementation authority for temporal reconstruction"
+    "role": "B0 immutable historical source and revision-53 implementation authority for temporal reconstruction"
   },
   "testbank_authority": {
     "artifact": "ANIMO_testbank.zip",
     "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
-    "role": "B0 historical input evidence only; no testcase modifications admitted"
+    "role": "B0 historical input evidence only; no testcase modifications and no synthetic case promoted to B2"
   },
   "documentation_context": {
     "artifact": "ANIMO 4.0 User's guide",
     "sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
-    "role": "inherited public concepts and nomenclature; not revision-53 implementation authority"
+    "role": "supporting historical concepts and nomenclature; not revision-53 implementation authority"
   },
-  "architecture_heads_observed_at_start": {
+  "historical_reference_status": {
+    "work_unit": "ANIMO-PREP02R",
+    "branch": "work/animo-prep02r-historical-reference-recovery",
+    "live_head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+    "historical_reference_artifact_obtained": false,
+    "native_reference_run_completed": false,
+    "decision": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+    "ts01_consequence": "no source-order or synthetic diagnostic result is promoted to B2 historical behavioural reference"
+  },
+  "architecture_heads_at_qualification": {
     "ARCH01": "24f57d8daab828f88446a79bd6a276f2925c828b",
     "ARCH02": "a079d93c965f6073586c55ee4b3544dd8873b723",
     "ARCH03": "bc27bd7cf0c8148b38768315d2fa54014f5a6cf9",
-    "ARCHG01": null
+    "ARCHG01": "92812896b6a91b422fcbd9bf5e843da5cfc0f278"
   },
-  "hard_rules": {
+  "main_source_order": [
+    "advance interval clock to t1",
+    "Init: stage previous result into current/start representation",
+    "first-step-only Outbal_Init",
+    "Input_hydro",
+    "Hydro_Aggregated or Hydro_detailed",
+    "root/crop residue preparation",
+    "management packet read when event boundary is crossed",
+    "Addit: residues and management mutation; same-row addition before ploughing",
+    "UBoundconc",
+    "crop uptake demand/selectivity",
+    "temperature and fraction setup",
+    "Rates1 potential",
+    "Transca potential",
+    "Resp_miner potential",
+    "preliminary NH4 Transport",
+    "aeration",
+    "optional preliminary GHG",
+    "Rates2 actual",
+    "Transca actual",
+    "Resp_miner actual",
+    "actual NH4 Transport",
+    "Denitr plus optional grass uptake adjustment and Correction(1)",
+    "actual NO3 Transport and Correction(2)",
+    "optional final GHG",
+    "Transgen phosphorus",
+    "Upintg crop result-state integration",
+    "Outbal_calc",
+    "Outbal_write report-period write/reset",
+    "Outsel",
+    "annual/final output hook"
+  ],
+  "key_source_bound_findings": [
+    {
+      "id": "TS01-F01",
+      "finding": "The main clock is advanced to the interval end before Init stages state for that interval.",
+      "impact": "t0 and t1 semantics must be explicit; Juda and Juda-St are not interchangeable."
+    },
+    {
+      "id": "TS01-F02",
+      "finding": "Legacy has a real current/start versus result/end generation split, but result-to-current staging occurs at the beginning of the next timestep.",
+      "impact": "There is no literal atomic end-of-step commit in revision 53."
+    },
+    {
+      "id": "TS01-F03",
+      "finding": "Current/start arrays are mutated in Addit before uptake demand, rates and transport.",
+      "impact": "ARCH01 immutable AcceptedState is not a literal legacy mechanism; a future trial must reproduce post-management read visibility."
+    },
+    {
+      "id": "TS01-F04",
+      "finding": "Management events use (t0,t1], while annual harvest/root-residue triggering uses [t0,t1).",
+      "impact": "One normalized endpoint convention would move exact-boundary events."
+    },
+    {
+      "id": "TS01-F05",
+      "finding": "Within one management row, material addition is applied before ploughing/mixing and ploughing includes the reservoir.",
+      "impact": "Management actions in a row are ordered, not commutative."
+    },
+    {
+      "id": "TS01-F06",
+      "finding": "Crop demand/selectivity is calculated after management but before transformation/transport; the soil-side uptake sink is applied inside transport and plant-side state gain is integrated later in Upintg_*.",
+      "impact": "Separating uptake into new components can double-apply removal unless the soil/plant transfer is represented once."
+    },
+    {
+      "id": "TS01-F07",
+      "finding": "Potential Rates1/Transca/Resp_miner/preliminary NH4 precede aeration and the actual Rates2/process pass.",
+      "impact": "Potential result fields are provisional and must not be treated as committed physical state or physical transfer events."
+    },
+    {
+      "id": "TS01-F08",
+      "finding": "Resp_miner immobilization availability explicitly reads previous-timestep neighbour Conh/Copo values and can perform one recalculation.",
+      "impact": "Replacing all reads with newest same-step neighbour state changes the source algorithm."
+    },
+    {
+      "id": "TS01-F09",
+      "finding": "Generic solute transport and phosphorus processing traverse Sqnu flow order; same-step average concentrations are propagated to subsequent layers.",
+      "impact": "Layer reordering or naive parallelization is not source-equivalent by assumption."
+    },
+    {
+      "id": "TS01-F10",
+      "finding": "Phosphorus transport, sorption/desorption and precipitation are coupled inside Transgen/Transorp per layer.",
+      "impact": "No source basis exists for a globally reorderable all-transport versus all-sorption schedule."
+    },
+    {
+      "id": "TS01-F11",
+      "finding": "Outbal_calc observes the completed physical interval; Outbal_write then writes and resets reporting accumulators without accepting physical state.",
+      "impact": "Reporting-period reset is not a transaction commit boundary."
+    },
+    {
+      "id": "TS01-F12",
+      "finding": "The final interval has no following Init; Output_Init serializes selected final Rs* result fields directly.",
+      "impact": "Final restart material belongs to the end/result generation, not stale current/start arrays."
+    },
+    {
+      "id": "TS01-F13",
+      "finding": "Output_Init omits several temporal/reporting/external-owner continuation quantities and its macropore serialization block is commented; it also clamps negative Rsamplpo_act to zero while serializing.",
+      "impact": "INITIAL.OUT purpose does not prove strong split-run equivalence or serializer purity."
+    },
+    {
+      "id": "TS01-F14",
+      "finding": "Input_hydro relies on sequential hydrology-record consumption; no direct per-record Tiwa equality assertion against the already advanced ANIMO interval timestamp was found in the audited input route.",
+      "impact": "Hydrology-time alignment is an implicit coupling seam and should fail closed in a future adapter."
+    }
+  ],
+  "temporal_conservation_dispositions": {
+    "material_addition": "generated/selected before Addit; applied immediately to current state; Ad* reporting deltas accumulated later by Outbal_calc",
+    "redistribution": "applied in Addit after same-row addition; reporting deltas accumulated later; TCD-017 remains reporting-side and does not justify moving physical mutation",
+    "organic_transform": "potential pass is provisional; actual Transca/Resp_miner applies result and rates; balances observe afterward",
+    "n_mineralization": "actual Resp_miner creates organic result and NH4 source/sink terms; availability correction can use previous-step neighbours",
+    "nitrification_denitrification": "actual NH4 average precedes Rekoni assembly; NO3 transport then applies the assembled source/sink",
+    "p_sorption": "transport and phase transfers are coupled in per-layer Transgen/Transorp execution",
+    "solute_transport": "applied sequentially in Sqnu order; Toin/Toou/Av/Rs are reported later",
+    "crop_uptake": "soil loss occurs in transport; crop gain is integrated later from the same interval averages",
+    "drydown": "transport result guards execute before final balances; TCD-016 remains a missing-state/explicit-export problem",
+    "report_accumulation": "Outbal_calc/Outbal_write are observers and report-continuation state only"
+  },
+  "architecture_reconciliation": {
+    "ARCH01": {
+      "overall": "PARTIALLY_SUPPORTED_WITH_LITERAL_LEGACY_CONTRADICTIONS",
+      "confirmed": [
+        "old/start versus result/end generations exist",
+        "derived values need explicit generation identity",
+        "potential/rate scratch is distinct from final result"
+      ],
+      "contradicted_as_literal_legacy": [
+        "accepted state remains immutable for the whole trial",
+        "one atomic end-of-step TrialState-to-AcceptedState commit exists"
+      ],
+      "unresolved": [
+        "typed transfer journal as runtime physical truth is a future architecture construct"
+      ]
+    },
+    "ARCH02": {
+      "overall": "PARTIALLY_SUPPORTED_RESTART_SUFFICIENCY_UNRESOLVED",
+      "confirmed": [
+        "final result families rather than potential scratch are serialized",
+        "site-resolved P state is serialized",
+        "report accumulators are separate from physical state",
+        "active macropore restart cannot be assumed from Output_Init"
+      ],
+      "unresolved": [
+        "strong split-run behavioural equivalence",
+        "sufficiency of reconstructed temporal/event/crop/external-owner continuation state"
+      ]
+    },
+    "ARCH03": {
+      "overall": "CONFIRMED_OBSERVER_SEMANTICS_RUNTIME_EVENT_JOURNAL_UNRESOLVED",
+      "confirmed": [
+        "balances are observers after physical mutation",
+        "report resets are not physical commits",
+        "begin/end/report interval identity must be explicit"
+      ],
+      "unresolved": [
+        "future typed-event journal production and behavioural MassLedger closure"
+      ]
+    },
+    "ARCHG01": {
+      "overall": "TS01_DEFERRED_TEMPORAL_ITEMS_SOURCE_BOUND_PARTIALLY_RESOLVED",
+      "confirmed_or_reconstructed": [
+        "source process ordering",
+        "accepted-versus-mutated-current-step read distinctions",
+        "process-internal iteration and Sqnu traversal",
+        "legacy event/calendar endpoint rules"
+      ],
+      "partially_supported": [
+        "global accepted boundary is represented implicitly by next-step Init staging",
+        "future immutable AcceptedState can model legacy only if same-step management visibility is preserved"
+      ],
+      "unresolved": [
+        "generic retry/reject policy",
+        "mid-step checkpoint policy",
+        "runtime topology transition policy",
+        "canonical future calendar/time representation"
+      ]
+    }
+  },
+  "static_verification": {
+    "audit_result": "PASS",
+    "artifact": "integration/animo-temporal/TS01_SOURCE_ORDER_AUDIT.json",
+    "tool": "tools/audit_ts01_temporal_source.py",
+    "tool_persisted_before_execution": true,
+    "repository_tool_direct_checkout_execution": false,
+    "equivalent_fail_closed_checks_executed_locally_against_hash_verified_frozen_source": true,
+    "checks": 12,
+    "frozen_source_executed": false,
+    "reference_evidence_generated": false
+  },
+  "temporal_test_specifications": [
+    "management event sentinel at exact t0/interior/exact t1",
+    "annual harvest sentinel at exact t0/interior/exact t1",
+    "same-row fertilizer plus ploughing add-then-mix sentinel",
+    "same-step virtual-reservoir addition and UBoundconc visibility sentinel",
+    "crop transition Kicrold/Kicryn boundary sentinel",
+    "year-boundary closeout and next-year initialization sentinel",
+    "balance half-step report-boundary sentinel",
+    "first-step versus ordinary-step versus final-step generation sentinel",
+    "continuous versus split run at clean accepted boundary once qualified reference is available",
+    "split before/after management event and crop/year boundary",
+    "mid-report-period physical versus diagnostic continuation check",
+    "Resp_miner previous-step neighbour read sentinel",
+    "final Output_Init serializer side-effect sentinel"
+  ],
+  "synthetic_tests_are_b2": false,
+  "hard_rules_satisfied": {
     "source_modification": false,
     "testcase_modification": false,
     "production_implementation": false,
     "process_order_improvement": false,
-    "architecture_assumption_as_source_substitute": false
+    "order_declared_scientifically_irrelevant_without_evidence": false,
+    "architecture_assumption_used_as_source_substitute": false
   },
   "deliverables": [
     "docs/temporal/LEGACY_TIMESTEP_LIFECYCLE.md",
@@ -43,5 +269,23 @@
     "docs/temporal/EVENT_BOUNDARY_SEMANTICS.md",
     "docs/temporal/RESTART_ACCEPTANCE_SEMANTICS.md",
     "integration/animo-temporal/ANIMO-TS01_STATUS.json"
+  ],
+  "supplemental_artifacts": [
+    "tools/audit_ts01_temporal_source.py",
+    "integration/animo-temporal/TS01_SOURCE_ORDER_AUDIT.json"
+  ],
+  "remaining_blockers": [
+    "independent B2 historical reference remains unavailable",
+    "no behavioural continuous-versus-split restart qualification has been executed",
+    "no canonical ANIMO5 TIME transaction/retry policy is admitted",
+    "scientific dispositions for TCD-014 TCD-015 TCD-016 TCD-019 TCD-023 TCD-024 TCD-025 TCD-029 remain owned by their qualification workunits",
+    "GHG and macropore temporal semantics remain feature/theory qualified only to the reachable source branches documented here",
+    "production migration must preserve or explicitly qualify all source-observed order and event boundaries"
+  ],
+  "recommended_next": [
+    "feed TS01 read-generation and process-order constraints back into ARCHG01 migration seams without changing candidate source order",
+    "use TS01 event predicates and state-generation boundaries to design adapter/process-scheduler qualification tests",
+    "when PREP02R obtains independent reference evidence, execute continuous-versus-split and order-sentinel behavioural qualification",
+    "do not admit canonical TIME or production migration from TS01 source evidence alone"
   ]
 }
