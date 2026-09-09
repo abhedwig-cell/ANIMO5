@@ -1,6 +1,0 @@
-{
-  "guard": "DO_NOT_TREAT_RESERVATION_OR_REGISTER_PRESENCE_AS_ADMISSION",
-  "new_corrections_admitted": false,
-  "b3_baseline_established": false,
-  "production_migration_admitted": false
-}
