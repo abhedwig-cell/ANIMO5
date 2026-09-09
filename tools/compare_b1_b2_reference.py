@@ -20,7 +20,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 
-SCHEMA_VERSION = "1.0.0"
+SCHEMA_VERSION = "1.1.0"
 B1_ROLE = "B1_DIAGNOSTIC"
 B2_ROLES = {
     "B2_HISTORICAL_REFERENCE_CANDIDATE",
@@ -44,10 +44,11 @@ FLOAT_SCIENTIFIC_CLASSES = {
     "DIAGNOSTIC_RESIDUAL",
 }
 
-REPRESENTATION_ONLY_CLASSES = {
-    "FORMATTED_REPORT_VALUE",
+NONSCIENTIFIC_REPRESENTATION_CLASSES = {
     "TIMING_OR_NONSCIENTIFIC_METADATA",
 }
+
+FORMATTED_REPORT_CLASS = "FORMATTED_REPORT_VALUE"
 
 CLASS_TO_DOMAIN = {
     "ARTIFACT_IDENTITY": "file_path_compatibility",
@@ -97,18 +98,25 @@ def _require(mapping: dict[str, Any], field: str, context: str) -> Any:
     return mapping[field]
 
 
+def _nested(mapping: dict[str, Any], key: str) -> dict[str, Any]:
+    value = mapping.get(key)
+    return value if isinstance(value, dict) else {}
+
+
 def validate_capture_minimum(capture: dict[str, Any], *, expected_side: str) -> list[str]:
-    """Validate fields needed for deterministic comparison.
+    """Validate fields needed for deterministic fail-closed comparison.
 
     Full JSON Schema validation is intentionally not bundled into this stdlib-only
     tool. The repository schema remains the authoritative complete contract.
+    This validator nevertheless enforces the safety-critical precision rules that
+    prevent rounded report values from masquerading as unrounded scientific data.
     """
     errors: list[str] = []
     try:
         version = _require(capture, "schema_version", "capture")
         role = _require(capture, "evidence_role", "capture")
         run_identity = _require(capture, "run_identity", "capture")
-        _require(capture, "capture_contract", "capture")
+        capture_contract = _require(capture, "capture_contract", "capture")
         records = _require(capture, "records", "capture")
 
         if version != SCHEMA_VERSION:
@@ -117,6 +125,7 @@ def validate_capture_minimum(capture: dict[str, Any], *, expected_side: str) -> 
             errors.append(f"B1 capture role must be {B1_ROLE}, got {role!r}")
         if expected_side == "b2" and role not in B2_ROLES:
             errors.append(f"B2 capture role must be one of {sorted(B2_ROLES)}, got {role!r}")
+
         if not isinstance(run_identity, dict):
             errors.append("run_identity must be an object")
         else:
@@ -132,9 +141,25 @@ def validate_capture_minimum(capture: dict[str, Any], *, expected_side: str) -> 
                     errors.append(f"missing run_identity.{field}")
             if run_identity.get("input_content_transformed") is True:
                 errors.append("input_content_transformed must be false for the frozen first-reference path")
+
+        rounded_report_only = False
+        if not isinstance(capture_contract, dict):
+            errors.append("capture_contract must be an object")
+        else:
+            for field in (
+                "observer_only",
+                "ordinary_output_reproduced_before_observer_trust",
+                "rounded_report_only",
+                "precision_capture_method",
+            ):
+                if field not in capture_contract:
+                    errors.append(f"missing capture_contract.{field}")
+            rounded_report_only = capture_contract.get("rounded_report_only") is True
+
         if not isinstance(records, list):
             errors.append("records must be an array")
         else:
+            scientific_float_records = 0
             for index, record in enumerate(records):
                 if not isinstance(record, dict):
                     errors.append(f"records[{index}] must be an object")
@@ -153,14 +178,29 @@ def validate_capture_minimum(capture: dict[str, Any], *, expected_side: str) -> 
                 ):
                     if field not in record:
                         errors.append(f"records[{index}] missing {field}")
+
+                variable_class = record.get("variable_class")
+                if variable_class in FLOAT_SCIENTIFIC_CLASSES:
+                    scientific_float_records += 1
+                    precision = record.get("precision")
+                    if not isinstance(precision, dict):
+                        errors.append(f"records[{index}].precision must be an object")
+                    else:
+                        for field in ("storage_kind", "bits", "capture_is_round_trip"):
+                            if field not in precision:
+                                errors.append(f"records[{index}] missing precision.{field}")
+                        if precision.get("capture_is_round_trip") is not True:
+                            errors.append(
+                                f"records[{index}] scientific floating capture is not proven round-trip"
+                            )
+
+            if rounded_report_only and scientific_float_records:
+                errors.append(
+                    "rounded_report_only capture cannot supply floating scientific records as an unrounded oracle"
+                )
     except CaptureError as exc:
         errors.append(str(exc))
     return errors
-
-
-def _nested(mapping: dict[str, Any], key: str) -> dict[str, Any]:
-    value = mapping.get(key)
-    return value if isinstance(value, dict) else {}
 
 
 def record_key(record: dict[str, Any]) -> tuple[Any, ...]:
@@ -184,6 +224,7 @@ def record_key(record: dict[str, Any]) -> tuple[Any, ...]:
         scientific.get("state_id"),
         scientific.get("transfer_id"),
         scientific.get("ledger_id"),
+        scientific.get("cumulative"),
         scientific.get("boundary"),
         execution.get("accepted_state"),
         execution.get("trial_state"),
@@ -249,6 +290,30 @@ def _numeric_difference(left: Decimal, right: Decimal) -> dict[str, str]:
     }
 
 
+def _execution_path_difference(reference: dict[str, Any], candidate: dict[str, Any]) -> dict[str, Any] | None:
+    reference_execution = _nested(reference, "execution_context")
+    candidate_execution = _nested(candidate, "execution_context")
+    differences: dict[str, dict[str, Any]] = {}
+    for field in ("branch_id", "fallback_id"):
+        left = reference_execution.get(field)
+        right = candidate_execution.get(field)
+        if left != right:
+            differences[field] = {"reference": left, "candidate": right}
+    return differences or None
+
+
+def _accounting_identity_difference(reference: dict[str, Any], candidate: dict[str, Any]) -> dict[str, Any] | None:
+    reference_scientific = _nested(reference, "scientific_context")
+    candidate_scientific = _nested(candidate, "scientific_context")
+    differences: dict[str, dict[str, Any]] = {}
+    for field in ("ledger_member_id", "ledger_sign", "index_mapping_id"):
+        left = reference_scientific.get(field)
+        right = candidate_scientific.get(field)
+        if left != right:
+            differences[field] = {"reference": left, "candidate": right}
+    return differences or None
+
+
 def compare_record(reference: dict[str, Any], candidate: dict[str, Any]) -> dict[str, Any]:
     variable_class = str(reference.get("variable_class"))
     domain = CLASS_TO_DOMAIN.get(variable_class, "precision_representation")
@@ -272,6 +337,23 @@ def compare_record(reference: dict[str, Any], candidate: dict[str, Any]) -> dict
         result["candidate_units"] = candidate.get("units")
         return result
 
+    path_difference = _execution_path_difference(reference, candidate)
+    if path_difference is not None:
+        result["classification"] = "CONTROL_FLOW_DIFFERENCE"
+        result["difference_domain"] = "control_flow_branch"
+        result["execution_path_difference"] = path_difference
+        result["fail_closed"] = True
+        return result
+
+    if variable_class == "EXACT_ACCOUNTING_IDENTITY":
+        accounting_difference = _accounting_identity_difference(reference, candidate)
+        if accounting_difference is not None:
+            result["classification"] = "ACCOUNTING_IDENTITY_DIFFERENCE"
+            result["difference_domain"] = "ledger_trajectory"
+            result["accounting_identity_difference"] = accounting_difference
+            result["fail_closed"] = True
+            return result
+
     left_text = _value_text(reference)
     right_text = _value_text(candidate)
 
@@ -290,7 +372,7 @@ def compare_record(reference: dict[str, Any], candidate: dict[str, Any]) -> dict
             result["candidate_value"] = right_text
         return result
 
-    if variable_class in REPRESENTATION_ONLY_CLASSES:
+    if variable_class in NONSCIENTIFIC_REPRESENTATION_CLASSES:
         if left_text == right_text:
             result["classification"] = "EXACT_MATCH"
         else:
@@ -298,6 +380,21 @@ def compare_record(reference: dict[str, Any], candidate: dict[str, Any]) -> dict
             result["reference_value"] = left_text
             result["candidate_value"] = right_text
         result["fail_closed"] = False
+        return result
+
+    if variable_class == FORMATTED_REPORT_CLASS:
+        if left_text == right_text:
+            result["classification"] = "EXACT_MATCH"
+            result["fail_closed"] = False
+        else:
+            result["classification"] = "FORMATTED_REPORT_DIFFERENCE_FAIL_CLOSED"
+            result["reference_value"] = left_text
+            result["candidate_value"] = right_text
+            result["note"] = (
+                "formatted report differences are comparison evidence but are not automatically "
+                "representation-only; scientific versus lexical cause must be classified separately"
+            )
+            result["fail_closed"] = True
         return result
 
     if variable_class in FLOAT_SCIENTIFIC_CLASSES:
@@ -395,7 +492,10 @@ def compare_captures(b2: dict[str, Any], b1: dict[str, Any]) -> dict[str, Any]:
     missing_in_b1 = sorted((str(key) for key in b2_keys - b1_keys))
     unexpected_in_b1 = sorted((str(key) for key in b1_keys - b2_keys))
 
-    comparisons = [compare_record(b2_index[key], b1_index[key]) for key in sorted(b2_keys & b1_keys, key=str)]
+    comparisons = [
+        compare_record(b2_index[key], b1_index[key])
+        for key in sorted(b2_keys & b1_keys, key=str)
+    ]
 
     classification_counts = Counter(item["classification"] for item in comparisons)
     domain_counts: dict[str, Counter[str]] = defaultdict(Counter)
@@ -419,8 +519,13 @@ def compare_captures(b2: dict[str, Any], b1: dict[str, Any]) -> dict[str, Any]:
     else:
         decision = "MATCH_EXACT_COMPARISON_EVIDENCE"
 
+    unrounded_scientific_records = sum(
+        1 for item in b2_index.values() if item.get("variable_class") in FLOAT_SCIENTIFIC_CLASSES
+    )
+
     return {
         "evidence_class": "COMPARATOR_OUTPUT_NOT_REFERENCE_ADMISSION",
+        "schema_version": SCHEMA_VERSION,
         "b2_role": b2.get("evidence_role"),
         "b1_role": b1.get("evidence_role"),
         "testcase_id": b2_run.get("testcase_id"),
@@ -432,6 +537,7 @@ def compare_captures(b2: dict[str, Any], b1: dict[str, Any]) -> dict[str, Any]:
             "common_records": len(b2_keys & b1_keys),
             "missing_in_b1": missing_in_b1,
             "unexpected_in_b1": unexpected_in_b1,
+            "unrounded_scientific_b2_records": unrounded_scientific_records,
         },
         "classification_counts": dict(sorted(classification_counts.items())),
         "difference_domains": {
@@ -445,6 +551,7 @@ def compare_captures(b2: dict[str, Any], b1: dict[str, Any]) -> dict[str, Any]:
         "global_numeric_tolerance_applied": False,
         "qualified_numeric_tolerance_applied": False,
         "non_exact_scientific_values_are_accepted": False,
+        "rounded_report_values_treated_as_unrounded_oracle": False,
         "b2_reference_qualified_by_this_tool": False,
         "numerical_equivalence_qualified_by_this_tool": False,
         "production_migration_admitted": False,
