@@ -18,7 +18,7 @@ Schema:
 
 Current packet schema version:
 
-`1.1.0`
+`1.2.0`
 
 Template:
 
@@ -116,6 +116,30 @@ An observer packet cannot be complete if ordinary-output non-interference has no
 
 The structured capture can carry both representation observations and unrounded scientific records. Those two evidence classes are compared separately.
 
+## Representation observability scope
+
+The predefined representation subject registry is:
+
+`integration/animo-numerics/FIRST_REFERENCE_REPRESENTATION_SURFACE.json`.
+
+The packet must disposition every predefined representation subject before it can be complete. Each subject is either:
+
+- listed under `jointly_observed_subjects`; or
+- listed under `omitted_subjects` with an allowed reason class and a non-empty rationale.
+
+A subject cannot be both observed and omitted. Subjects that are not in the predefined registry are rejected. This prevents representation scope from being selected after B2 differences are visible.
+
+Allowed omission reason classes are:
+
+- `NOT_APPLICABLE_TO_CASE`;
+- `NOT_JOINTLY_OBSERVABLE`;
+- `OBSERVER_NOT_ADMITTED`;
+- `HISTORICAL_BUILD_METADATA_UNAVAILABLE`.
+
+Omission is a recorded evidence limitation, not evidence of equality.
+
+If one or more subjects are jointly observed, the representation comparison must be run. If none are jointly observable, the packet may record that representation comparison was not run, but all predefined subjects still require explicit omission dispositions.
+
 ## Layer 2: representation comparison
 
 The dedicated representation comparator is:
@@ -133,6 +157,8 @@ Recognized decisions are:
 When no structured representation capture exists, the packet records:
 
 `NOT_RUN_NO_STRUCTURED_REPRESENTATION_CAPTURE`.
+
+An empty representation observation set cannot yield an exact match. The comparator rejects it as a schema-level failure.
 
 If observer structured captures do exist, representation comparison may not remain marked as unavailable. The packet validator fails closed until that layer has been run.
 
