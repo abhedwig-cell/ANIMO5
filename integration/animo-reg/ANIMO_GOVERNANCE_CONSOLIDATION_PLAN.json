@@ -1,8 +1,9 @@
 {
   "work_unit": "ANIMO-RG02",
   "record_type": "GOVERNANCE_ARTIFACT_CONSOLIDATION_PLAN",
-  "status": "QUALIFIED_PATH_PLAN_BEFORE_EXECUTION",
+  "status": "EXECUTED_GOVERNANCE_ONLY_READBACK_VERIFIED",
   "target_branch": "work/animo-rg02-branch-authority-integration",
+  "executed_through_head": "df55e600de8ba4209491bd879f5707758a0fe1ec",
   "purpose": "converge RG, EB and EG governance without branch merge, scientific reinterpretation or last-writer-wins replacement",
   "authority_sources": {
     "RG01": {
@@ -31,11 +32,13 @@
       "writers": ["EB01", "EG01", "RG01/RG02 inherited base"],
       "resolution": "MANUAL_SEMANTIC_COMPOSITION",
       "owner_after_rg02": "RG governance series",
-      "required_content": [
+      "target_blob_sha": "ebc7301f307b49634d5e3c0db58daf425c55066c",
+      "required_content_verified": [
         "EB01 B0-B4 evidence semantics and prohibited implications",
         "EB01 B2-unavailable fallback boundary",
         "EG01 controlled immutable B0 retention and run-lineage requirements",
-        "RG persist-early and serial-versus-parallel ownership rules"
+        "RG persist-early and serial-versus-parallel ownership rules",
+        "RG02 one-workunit-one-authoritative-branch and canonical-artifact ownership"
       ]
     },
     {
@@ -43,26 +46,49 @@
       "writers": ["EB01", "RG01/RG02 inherited base"],
       "resolution": "EB01_SEMANTICS_ADOPTED_UNDER_RG_OWNERSHIP",
       "owner_after_rg02": "RG governance series",
-      "reason": "RG02 inherited the pre-EB01 B0=reproducible-build terminology while EB01 explicitly retired that naming collision"
+      "target_blob_sha": "37d43dfcb6d1911fbab7422e847b651f718d85d1",
+      "verified_semantics": "B0 historical artifacts -> B1 diagnostic observation -> B2 independent historical behaviour where obtainable -> reconciliation/disposition or qualified historical-uncertainty fallback -> B3 -> STATE/TIME/MASS/EX -> migrated processes -> integrated qualification -> B4 -> Status A -> Status AA"
     }
   ],
-  "disjoint_eb01_paths_to_transplant": [
-    "docs/governance/ANIMO5_EVIDENCE_BASELINE_MODEL.md",
-    "integration/animo-governance/ANIMO_EVIDENCE_BASELINE_MODEL.json"
-  ],
-  "disjoint_eg01_paths_to_transplant": [
-    ".github/workflows/animo-eg01-b0-proof-gate.yml",
-    "docs/eg01/B0_CUSTODIAN_HANDOFF.md",
-    "docs/eg01/B0_RETENTION_AND_LINEAGE_POLICY.md",
-    "docs/eg01/WORK_UNIT_CONTRACT.md",
-    "integration/animo-eg/ANIMO-EG01_STATUS.json",
-    "integration/evidence/ANIMO_B0_EVIDENCE_REGISTER.json",
-    "integration/evidence/ANIMO_B0_STORAGE_PROOF_SCHEMA.json",
-    "integration/evidence/ANIMO_B0_STORAGE_PROOF_TEMPLATE.json",
-    "integration/evidence/ANIMO_RUN_LINEAGE_SCHEMA.json",
-    "tests/eg01/test_validate_b0_storage_proof.py",
-    "tools/validate_b0_storage_proof.py"
-  ],
+  "byte_identity_verification": {
+    "EB01": [
+      {
+        "path": "docs/governance/ANIMO5_EVIDENCE_BASELINE_MODEL.md",
+        "source_blob_sha": "8b7c6f4197ecc953740e740e64610c3ae3196392",
+        "target_blob_sha": "8b7c6f4197ecc953740e740e64610c3ae3196392",
+        "match": true
+      },
+      {
+        "path": "integration/animo-governance/ANIMO_EVIDENCE_BASELINE_MODEL.json",
+        "source_blob_sha": "5360e14d30b1c0b823540506701df83703f4e70f",
+        "target_blob_sha": "5360e14d30b1c0b823540506701df83703f4e70f",
+        "match": true
+      }
+    ],
+    "EG01": [
+      {"path": ".github/workflows/animo-eg01-b0-proof-gate.yml", "source_blob_sha": "864c99656cec8dba21076d5bd40f023344fcc70f", "target_blob_sha": "864c99656cec8dba21076d5bd40f023344fcc70f", "match": true},
+      {"path": "docs/eg01/B0_CUSTODIAN_HANDOFF.md", "source_blob_sha": "8961a45b674a666fad9415fa034fa375982d2b8a", "target_blob_sha": "8961a45b674a666fad9415fa034fa375982d2b8a", "match": true},
+      {"path": "docs/eg01/B0_RETENTION_AND_LINEAGE_POLICY.md", "source_blob_sha": "d445e9f73aacf90ca718fe7667652bfcdac75de2", "target_blob_sha": "d445e9f73aacf90ca718fe7667652bfcdac75de2", "match": true},
+      {"path": "docs/eg01/WORK_UNIT_CONTRACT.md", "source_blob_sha": "a003d09d79296abdc039a91452d6ebf00e822ce2", "target_blob_sha": "a003d09d79296abdc039a91452d6ebf00e822ce2", "match": true},
+      {"path": "integration/animo-eg/ANIMO-EG01_STATUS.json", "source_blob_sha": "49798ff3d0a7bc85014b35239159c616dffbd888", "target_blob_sha": "49798ff3d0a7bc85014b35239159c616dffbd888", "match": true},
+      {"path": "integration/evidence/ANIMO_B0_EVIDENCE_REGISTER.json", "source_blob_sha": "a53bb0cc695aa2ba7c8b2096e86b4e4aacf13a1e", "target_blob_sha": "a53bb0cc695aa2ba7c8b2096e86b4e4aacf13a1e", "match": true},
+      {"path": "integration/evidence/ANIMO_B0_STORAGE_PROOF_SCHEMA.json", "source_blob_sha": "795ba2fc027e6ca918d152c2e449cd0aa03787fe", "target_blob_sha": "795ba2fc027e6ca918d152c2e449cd0aa03787fe", "match": true},
+      {"path": "integration/evidence/ANIMO_B0_STORAGE_PROOF_TEMPLATE.json", "source_blob_sha": "8a962539960b7afbf1cfeffaae49cfb0abc25548", "target_blob_sha": "8a962539960b7afbf1cfeffaae49cfb0abc25548", "match": true},
+      {"path": "integration/evidence/ANIMO_RUN_LINEAGE_SCHEMA.json", "source_blob_sha": "014f98463e947d4626c7b50ea77b109321eae240", "target_blob_sha": "014f98463e947d4626c7b50ea77b109321eae240", "match": true},
+      {"path": "tests/eg01/test_validate_b0_storage_proof.py", "source_blob_sha": "8be53e2932a9da0d84aa1f99fdcce07e16019374", "target_blob_sha": "8be53e2932a9da0d84aa1f99fdcce07e16019374", "match": true},
+      {"path": "tools/validate_b0_storage_proof.py", "source_blob_sha": "c739ea62977e170f19e97b7fd1cd47c60c0a22d9", "target_blob_sha": "c739ea62977e170f19e97b7fd1cd47c60c0a22d9", "match": true}
+    ]
+  },
+  "verification_boundary": {
+    "target_tree_readback_completed": true,
+    "all_disjoint_source_target_blob_matches": true,
+    "cross_cutting_files_semantically_composed_under_rg_owner": true,
+    "current_rg02_head_ci_run_claimed": false,
+    "prior_eg01_ci_evidence_carried_only_by_exact_blob_identity": true,
+    "prior_eg01_ci_run": 34301118338,
+    "prior_eg01_ci_tested_head": "789a0cddc6ec0c026bf6a1359710637504db0078",
+    "scientific_runtime_test_claimed": false
+  },
   "explicit_exclusions": [
     "no branch merge of EB01 or EG01",
     "no raw B0 ZIP or PDF bytes",
@@ -72,22 +98,16 @@
     "no corrected-legacy source",
     "no production implementation"
   ],
-  "execution_order": [
-    "persist this plan",
-    "transplant EB01 disjoint canonical evidence-model artifacts byte-for-byte",
-    "transplant EG01 disjoint retention artifacts byte-for-byte",
-    "compose DEVELOPMENT_GOVERNANCE under RG ownership",
-    "replace stale pre-EB01 MIGRATION_DAG with EB01 B0-B4 semantics under RG ownership",
-    "read back source identities and target blobs",
-    "mark G3 complete only after path presence and cross-cutting semantic checks"
-  ],
   "dependency_correction": {
     "previous_order": "G1 -> G2 -> G3",
     "revised_order": "G1 -> G3 -> G2",
-    "reason": "PREP11/PREP12 rehome execution requires a governance-approved evidence base; therefore governance convergence must precede creation of those rehome branches",
+    "reason": "PREP11/PREP12 rehome execution requires a governance-approved evidence base; governance convergence therefore precedes creation of those rehome branches",
     "scientific_effect": "NONE"
   },
-  "non_admissions": {
+  "gate_result": {
+    "G3_governance_artifact_consolidation": "COMPLETE_GOVERNANCE_ONLY",
+    "next_gate": "G2_SUPPLEMENTAL_EVIDENCE_REHOME",
+    "branch_merge_performed": false,
     "scientific_baseline_changed": false,
     "corrected_legacy_admitted": false,
     "production_migration_admitted": false
