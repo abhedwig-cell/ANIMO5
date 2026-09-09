@@ -1,0 +1,155 @@
+{
+  "work_unit": "ANIMO-NQ03",
+  "target": "TCD-042-E1",
+  "class": "E_NUMERICAL_POLICY",
+  "scope": "Flpn=0 AND 0<Flux<1.0d-8",
+  "conditioning_coordinate": "P=St*Flux/Hetop",
+  "upstream": {
+    "UBQ01_head": "6895b67799f26888025eced7188e7190b2a0d07d",
+    "UBQ01_role": "EXACT_ZERO_BOUNDARY_REFERENCE_ONLY",
+    "UBQ02_head": "bb572bb5d431f91d780018a1acbb345fbcfced37",
+    "UBQ02_characterization_blob": "b65a0d05d9a314e8d6dcecc008ee6e4eaa2ba321",
+    "B3I05_head_at_start": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+    "B3I05_status_at_start": "QUALIFIED_TCD042_CANONICAL_CHILD_ROUTING_NO_NEW_TCD_NO_ADMISSIONS"
+  },
+  "frozen_identity": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "governing_equation": {
+    "ode": "Hetop*dC/dt = Load - Flux*C",
+    "P": "St*Flux/Hetop",
+    "A1": "exp(-P)",
+    "A2": "(St/Hetop)*f(P)",
+    "B1": "f(P)",
+    "B2": "(St/Hetop)*g(P)",
+    "f": "(1-exp(-P))/P",
+    "g": "(P-1+exp(-P))/P^2",
+    "end_state": "C1=C0*A1+Load*A2",
+    "time_average": "Cavg=C0*B1+Load*B2",
+    "conservation": "Hetop*(C1-C0)=St*Load-St*Flux*Cavg"
+  },
+  "legacy_policy": {
+    "positive_branch": "Flux>=1.0d-8 uses direct exponential coefficient expressions",
+    "fallback": "Flux<1.0d-8 sets A1=1,A2=0,B1=1,B2=0",
+    "classification_reason": "finite-positive fallback is a small-delta numerical approximation and is not the exact positive-flow solution"
+  },
+  "natural_P_envelope": {
+    "records": 1238,
+    "cases": 6,
+    "min": 4.2351647362715017e-20,
+    "p01": 8.470329472543003e-20,
+    "p25": 1.3552527156068803e-18,
+    "median": 2.7105054312137607e-18,
+    "p75": 5.421010862427522e-18,
+    "p99": 1.5098499996065392e-7,
+    "max": 3.8510200002999744e-7,
+    "source": "UBQ02 B0-hash-pinned natural trace"
+  },
+  "high_precision_oracle": {
+    "decimal_digits": 100,
+    "implementation": "Python decimal.Decimal.exp",
+    "comparison_grid": "2001 logarithmic envelope points plus seven persisted natural quantile points",
+    "comparison_points_unique": 2008
+  },
+  "conditioning_results": {
+    "direct_binary64_nested": {
+      "max_relative_error_f_dense_envelope": 1.0,
+      "max_relative_error_g_dense_envelope": 4.722366482869656e19,
+      "UBQ02_natural_records_one_minus_exp_zero": 1189,
+      "disposition": "REJECT"
+    },
+    "expm1_binary64": {
+      "f_form": "-expm1(-P)/P",
+      "max_relative_error_f_dense_envelope": 1.1102232230331982e-16,
+      "g_nested_form": "(1-f)/P",
+      "max_relative_error_g_nested_dense_envelope": 1.0,
+      "finding": "expm1 removes first-order cancellation in f but does not by itself remove the second-order cancellation needed for g",
+      "disposition": "REJECT_AS_COMPLETE_POLICY"
+    },
+    "series_degree_1_binary64": {
+      "f": "1-P/2",
+      "g": "1/2-P/6",
+      "max_relative_error_f_dense_envelope": 2.4757978216313843e-14,
+      "max_relative_error_g_dense_envelope": 1.2323477155270986e-14,
+      "disposition": "REJECT"
+    },
+    "series_degree_2_binary64": {
+      "f": "1-P/2+P^2/6",
+      "g": "1/2-P/6+P^2/24",
+      "max_relative_error_to_rounded_100_digit_reference_f_dense_envelope": 0.0,
+      "max_relative_error_to_rounded_100_digit_reference_g_dense_envelope": 0.0,
+      "Pmax_absolute_truncation_error_f": 2.3796662284266274e-21,
+      "Pmax_absolute_truncation_error_g": 4.759332517947534e-22,
+      "Pmax_alternating_remainder_bound_f": 2.3796664117094745e-21,
+      "Pmax_alternating_remainder_bound_g": 4.759332823418949e-22,
+      "binary64_unit_roundoff": 1.1102230246251565e-16,
+      "minimal_series_degree_with_truncation_below_binary64_unit_roundoff_over_natural_envelope": 2,
+      "disposition": "SELECT"
+    }
+  },
+  "precision_sensitivity": {
+    "canonical_reference_precision": "binary64 aligned with PRECISION_POLICY_BASELINE; no broader precision admission is made here",
+    "binary32_role": "SENSITIVITY_ONLY_NOT_CANONICAL",
+    "binary32_emulated_series_degree_2_dense_max_relative_error_A1": 2.964350052422269e-8,
+    "binary32_emulated_series_degree_2_dense_max_relative_error_f": 2.9776470955588576e-8,
+    "binary32_emulated_series_degree_2_dense_max_relative_error_g": 2.974938239881409e-8
+  },
+  "conservation_probe": {
+    "normalized_identity": "C1-C0=Lbar-P*Cavg where Lbar=(St/Hetop)*Load",
+    "probe_states": [
+      {"name": "decay", "C0": 0.37, "Lbar": 0.0},
+      {"name": "loaded", "C0": 0.37, "Lbar": 0.23},
+      {"name": "source_only", "C0": 0.0, "Lbar": 0.23}
+    ],
+    "max_absolute_binary64_identity_roundoff_dense_envelope": 1.1102230246251565e-16,
+    "acceptance_tolerance_derived_from_residual": false
+  },
+  "timestep_sensitivity": {
+    "basis": "constant Flux and Load over the interval; exact affine reservoir solution has a semigroup property",
+    "full_vs_equal_substeps": {
+      "2": {"max_abs_Cend_difference": 1.1102230246251565e-16, "max_abs_Cavg_difference": 1.1102230246251565e-16},
+      "4": {"max_abs_Cend_difference": 2.220446049250313e-16, "max_abs_Cavg_difference": 1.6653345369377348e-16},
+      "8": {"max_abs_Cend_difference": 5.551115123125783e-16, "max_abs_Cavg_difference": 2.7755575615628914e-16},
+      "16": {"max_abs_Cend_difference": 9.992007221626409e-16, "max_abs_Cavg_difference": 4.440892098500626e-16},
+      "32": {"max_abs_Cend_difference": 1.887379141862766e-15, "max_abs_Cavg_difference": 8.326672684688674e-16}
+    },
+    "interpretation": "differences remain roundoff-scale and accumulate with repeated binary64 operations; no timestep tolerance is inferred"
+  },
+  "exact_zero_continuity": {
+    "limit_A1": 1.0,
+    "limit_f": 1.0,
+    "limit_g": 0.5,
+    "limit_A2": "St/Hetop",
+    "limit_B1": 1.0,
+    "limit_B2": "St/(2*Hetop)",
+    "matches_UBQ01_exact_zero_limit": true,
+    "TCD042_B1_redefined": false,
+    "P_equals_zero_inside_NQ03_scope": false
+  },
+  "selected_candidate_policy": {
+    "name": "NQ03_RESTRICTED_NATURAL_ENVELOPE_QUADRATIC_DIMENSIONLESS_POLICY",
+    "applicability": "Flpn=0, 0<Flux<1.0d-8, Hetop>0, and 0<P<=3.8510200002999744e-7",
+    "evaluation_precision": "binary64",
+    "A1": "exp(-P)",
+    "f": "1-P/2+P^2/6 evaluated in binary64",
+    "g": "1/2-P/6+P^2/24 evaluated in binary64",
+    "A2": "(St/Hetop)*f",
+    "B1": "f",
+    "B2": "(St/Hetop)*g",
+    "switch_inside_qualified_envelope": false,
+    "raw_Flux_threshold_selected_by_NQ03": false,
+    "hidden_epsilon": false,
+    "outside_applicability": "NOT_QUALIFIED_FAIL_CLOSED",
+    "production_implementation_selected": false
+  },
+  "nonclaims": {
+    "production_patch": false,
+    "B3_admission": false,
+    "parent_TCD042_admission": false,
+    "new_TCD_reserved": false,
+    "TCD042_B1_modified": false,
+    "binary32_admitted": false,
+    "policy_qualified_outside_declared_P_envelope": false
+  }
+}
