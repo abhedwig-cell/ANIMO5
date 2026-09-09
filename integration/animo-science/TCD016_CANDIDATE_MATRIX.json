@@ -28,6 +28,24 @@
     "legacy_mass_after_kg_m2": 0.0,
     "legacy_local_nonclosure_kg_m2": 0.000013880242022597072
   },
+  "surface_activation_semantics": {
+    "shared_surface_activation_threshold_m": 0.0001,
+    "shared_surface_activation_threshold_mm": 0.1,
+    "hydro_detailed": "Flpn=1 when old or new ponding plus snow exceeds 1e-4 m; layer0 moisture state derived from surface storage divided by He(0)",
+    "hydro_aggregated": "Flpn=1 when old or new ponding exceeds 1e-4 m; layer0 moisture state derived from surface storage divided by He(0)",
+    "transsub_layer0_effective_threshold": "1e-6*Factor with Factor=100 equals 1e-4 m",
+    "canonical_event_start_storage_mm": 0.1087117,
+    "canonical_event_end_storage_mm": 0.003256434,
+    "canonical_event_interpretation": "crosses from just above to well below the shared source-defined surface activation boundary",
+    "transsub_outflow_threshold_m_d": 0.000001,
+    "transsub_outflow_threshold_mm_d": 0.001,
+    "canonical_event_outflow_mm_d": 4.1184400265397315e-7,
+    "outflow_threshold_to_event_ratio": 2428.103829498251,
+    "uboundconc_dry_deposition_routing_threshold_m": 0.001,
+    "uboundconc_dry_deposition_routing_threshold_mm": 1.0,
+    "uboundconc_threshold_status": "ANCILLARY_SURFACE_ROUTING_SEAM_CAUSAL_RELEVANCE_TO_TCD016_NOT_ESTABLISHED",
+    "physical_derivation_of_thresholds_recovered": false
+  },
   "historical_theory_recovery": {
     "ANIMO35_Report144": {
       "official_metadata": "CONFIRMED_BY_WUR_RESEARCH_PORTAL",
@@ -59,23 +77,28 @@
         "ponding layer surface solute balance",
         "separate virtual additions reservoir",
         "soil-horizon NH4 sorption",
-        "separate solution and soil-complex NH4 balance storage"
+        "separate solution and soil-complex NH4 balance storage",
+        "UBOUNDCONC distinguishes layer0 and layer1 upper-boundary routing based on ponding"
       ],
       "does_not_establish": [
         "dry surface NH4 residue store",
         "residual active surface-water film",
-        "automatic transfer to layer-1 sorption",
+        "automatic transfer to layer-1 sorption at ponding deactivation",
         "dry-to-wet remobilization kinetics"
       ]
     },
     "revision53_source_interpretation": {
       "Transsub_equation": "semi-analytical liquid concentration equation recognizable from historical transport theory",
-      "low_storage_branch": "representation/numerical guard around the equation, not independent physical phase theory",
+      "shared_layer0_storage_boundary": "effective 0.1 mm Transsub threshold aligns with Flpn hydrological ponding activation in both detailed and aggregated hydrology",
+      "shared_layer0_storage_boundary_role": "SOURCE_DEFINED_SURFACE_REPRESENTATION_ACTIVATION_BOUNDARY_PHYSICAL_CHEMICAL_MEANING_NOT_ESTABLISHED",
       "layer0_threshold_factor": 100.0,
       "tiny_outflow_threshold_m_d": 0.000001,
+      "tiny_outflow_threshold_role": "TRANSSUB_LOCAL_EXPORT_OR_CONDITIONING_POLICY",
+      "uboundconc_dry_deposition_threshold_m": 0.001,
+      "uboundconc_threshold_role": "ANCILLARY_PROCESS_ROUTING_SEAM_NOT_CAUSALLY_REQUIRED_FOR_TCD016",
       "physical_parameter_status_of_thresholds": "NOT_ESTABLISHED"
     },
-    "combined_conclusion": "THEORY_SUPPORTED_CONSERVATION_REQUIREMENT_AND_REPRESENTATION_GAP_BUT_NO_THEORY_QUALIFIED_DRY_PHASE"
+    "combined_conclusion": "THEORY_SUPPORTED_CONSERVATION_REQUIREMENT_AND_SOURCE_BOUND_SURFACE_ACTIVATION_GAP_BUT_NO_THEORY_QUALIFIED_DRY_PHASE"
   },
   "synthetic_sequence": {
     "purpose": "diagnostic conservation only, not historical testcase modification",
@@ -114,9 +137,9 @@
       "restart_implication": "new persistent accepted/result continuation-mass state required",
       "architecture_implication": "new physical state owner plus typed internal aqueous_to_continuation and continuation_to_receiving_phase transfers",
       "numerical_conditioning": "good",
-      "historical_theory_support": "conservation need and representation gap supported, phase identity not supported",
+      "historical_theory_support": "conservation need supported and exact legacy surface deactivation seam source-bound; phase identity not supported",
       "legacy_correction_or_evolution": "MODEL_EXTENSION_UNLESS_AUTHORITATIVE_INTENDED_PHASE_THEORY_IS_RECOVERED",
-      "scientific_basis": "conservation-derived state abstraction constrained by historical ANIMO phase ownership",
+      "scientific_basis": "conservation-derived state abstraction constrained by historical ANIMO phase ownership and shared surface activation semantics",
       "disposition": "PREFERRED_PROPOSED_MODEL_EXTENSION_REVIEW_READY_NOT_ADMITTED",
       "admitted": false
     },
@@ -142,20 +165,20 @@
     {
       "id": "C",
       "name": "residual_water_representation",
-      "state_definition": "maintain positive chemically active aqueous storage even when hydrological ponding vanishes",
+      "state_definition": "maintain positive chemically active aqueous storage even when hydrological ponding representation is deactivated",
       "unit": "m water plus kg N m-3 concentration",
       "owner": "not present in current hydrological state model",
       "conserves_mass": true,
       "finite_at_zero_water": false,
       "rewetting_defined_by_available_ANIMO_theory": false,
       "interaction_with_soil_adsorption": "depends on arbitrary residual concentration and later transport",
-      "transport_semantics": "creates extra water unless hydrological theory supplies the phase",
+      "transport_semantics": "creates extra water or contradicts source activation semantics unless hydrological theory supplies the phase",
       "restart_implication": "must persist residual water as well as concentration",
       "architecture_implication": "changes hydrological state ownership and couples solute representation to a water floor",
       "numerical_conditioning": "poor_near_water_floor",
       "captured_event_actual_final_water_storage_m": 0.000003256434,
       "captured_event_concentration_if_all_mass_retained_kg_m3": 4.262405447982999,
-      "historical_theory_support": "historical numerical theory uses actual hydrology-supplied moisture and does not establish an independent chemical water floor",
+      "historical_theory_support": "historical numerical theory uses actual hydrology-supplied moisture and source explicitly deactivates ponding representation at 0.1 mm",
       "legacy_correction_or_evolution": "STATE_AND_NUMERICAL_POLICY_EVOLUTION",
       "disposition": "REJECTED_WITH_CURRENT_ANIMO_HYDROLOGY",
       "admitted": false
@@ -174,7 +197,7 @@
       "restart_implication": "mechanically representable but changes meaning of existing restart state",
       "architecture_implication": "aliases two scientifically different stores under one owner",
       "numerical_conditioning": "good",
-      "historical_theory_support": "strongly addition-specific in Report144 and ANIMO40 documentation",
+      "historical_theory_support": "strongly addition-specific in Report144 and ANIMO40 documentation; revision53 UBoundconc also keeps top-reservoir logic distinct from ponding routing",
       "legacy_correction_or_evolution": "SEMANTIC_MODEL_EVOLUTION",
       "disposition": "REJECTED_SEMANTIC_ALIASING",
       "admitted": false
@@ -198,14 +221,14 @@
     "TCD-016-C1": {
       "class": "C",
       "status": "BLOCKED_INSUFFICIENT_ANIMO_SPECIFIC_PHASE_THEORY",
-      "stronger_evidence": "conservation need and phase representation gap are now historically theory-supported",
-      "remaining_blocker": "physical phase identity and remobilization law"
+      "stronger_evidence": "conservation need is historically theory-supported and the exact 0.1 mm surface deactivation seam is source-bound across hydrology and transport",
+      "remaining_blocker": "physical phase identity, dry-hold chemistry and remobilization law"
     },
     "TCD-016-E1": {
       "class": "E",
       "status": "BLOCKED_DEPENDS_ON_TCD016_C1",
-      "stronger_evidence": "legacy low-storage branch is identifiable as numerical or representation policy around the semi-analytical theory formulation",
-      "remaining_blocker": "cannot qualify threshold policy until physical C1 semantics are fixed"
+      "stronger_evidence": "0.1 mm is a shared representation activation boundary while Fu>1e-6 m/d is a Transsub-local export policy; neither has recovered physical chemical derivation",
+      "remaining_blocker": "cannot qualify transition and conditioning policy until physical C1 semantics are fixed"
     }
   },
   "recommended_route": "PHYSICS_MODEL_EXTENSION_REQUIRED",
