@@ -1,0 +1,101 @@
+{
+  "work_unit": "ANIMO-GHG01",
+  "artifact": "GHG_RESTART_STATE_CONTINUITY_AUDIT",
+  "status": "SOURCE_CONFIRMED_GHG_RESTART_PHASE_STATE_DISCONTINUITIES_REFERENCE_UNEXERCISED",
+  "source_branch": "work/animo-ghg01-ghg-qualification",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_file_sha256": {
+    "Output_Init.for": "6452c175dcd7c6e80983c1176467735d07f75595cf8341526b115b70121b6a2f",
+    "input1.for": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+    "Inicalc.for": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1",
+    "Init.for": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+    "ghg_ch4.for": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98",
+    "ghg_n2o.for": "493bf88d4b321df64817a7c0eaa2725ad614a45df0a0f16cefa96ac348254175",
+    "ghgtransport.for": "d86e420952c43aaa6e730235f5820802310dd14a0019dc890537d9acd95fcff6"
+  },
+  "serialized_ghg_state": {
+    "output_file": "INITIAL.OUT",
+    "ch4": "RsCsCH4(0:Nl) written as >methan: and read as CsCH4(0:Nl)",
+    "n2o": "RsCsN2O(0:Nl) written as >nitoxi: and read as CsN2O(0:Nl)",
+    "owner_representation": "TOTAL_GAS_WATER_SYSTEM_CONCENTRATION"
+  },
+  "continuous_continuation": {
+    "ch4": "CoCH4(0:Nl)=RsCoCH4(0:Nl)",
+    "n2o": "CoN2O(0:Nl)=RsCoN2O(0:Nl)",
+    "classification": "DIRECT_ACCEPTED_DISSOLVED_RESULT_STATE"
+  },
+  "restart_soil_phase_partition": {
+    "local_key": "GHG01-LCL-GHG-RESTART-PHASE-PARTITION",
+    "classification": "SOURCE_CONFIRMED_RESTART_PHASE_STATE_RECONSTRUCTION_DISCONTINUITY_REFERENCE_UNEXERCISED",
+    "soil_layers_reconstructed": "1..Nl",
+    "reconstruction_temperature": "Terf",
+    "checkpoint_temperature_used": false,
+    "algebra": {
+      "continuous": "Co_cont=Cs/(theta+r_prev*(theta_sat-theta))",
+      "restart": "Co_rst=Cs/(theta+r_ref*(theta_sat-theta))",
+      "ratio": "Co_rst/Co_cont=(theta+r_prev*a)/(theta+r_ref*a)",
+      "exact_continuity_conditions": [
+        "r_ref=r_prev",
+        "air_filled_porosity_a=0",
+        "zero_gas_state"
+      ]
+    },
+    "instant_total_mass_loss_claim": false,
+    "behavioural_restart_equivalence_established": false,
+    "historical_runtime_magnitude": "REFERENCE_BLOCKED"
+  },
+  "ponding_layer0": {
+    "local_key": "GHG01-LCL-GHG-PONDING-RESTART-LAYER0",
+    "classification": "SOURCE_CONFIRMED_PONDING_GHG_LAYER0_RESTART_STATE_RECONSTRUCTION_GAP_REFERENCE_UNEXERCISED",
+    "serialized_layer0_total_state": true,
+    "input_reads_layer0_total_state": true,
+    "inicalc_reconstructs_CoCH4_0": false,
+    "inicalc_reconstructs_CoN2O_0": false,
+    "new_ponding_transport_overwrites_Co0": true,
+    "pre_existing_ponding_transport_overwrites_Co0": false,
+    "historical_runtime_manifestation": "REFERENCE_BLOCKED"
+  },
+  "source_function_sensitivity_not_historical_run": {
+    "reciprocal_bunsen_ch4": {
+      "0C": 19.4781,
+      "25C": 30.5366,
+      "40C": 38.5128
+    },
+    "reciprocal_bunsen_n2o": {
+      "0C": 0.820665,
+      "25C": 1.67016,
+      "40C": 2.41464
+    }
+  },
+  "continuous_bunsen_update_related_issue": {
+    "previous_bunsen_state_retained_in_active_code": false,
+    "active_ReBu0_assignment_occurs_after_current_temperature_update": true,
+    "merged_with_restart_findings": false,
+    "reason": "continuous-run numerical/state approximation is broader than INITIAL.OUT restart discontinuity"
+  },
+  "arch02_reconciliation": {
+    "branch": "work/animo-arch02-restart-checkpoint-sufficiency",
+    "head_observed": "a079d93c965f6073586c55ee4b3544dd8873b723",
+    "existing_design_rule": "GHG aqueous phase views recomputed from canonical system state with synchronized external hydrology",
+    "strengthened_invariants": [
+      "GHG_PHASE_VIEW_RECONSTRUCTION_USES_ACCEPTED_CHECKPOINT_THERMODYNAMIC_AND_HYDROLOGY_STATE",
+      "ACTIVE_PONDING_GHG_STATE_HAS_EXPLICIT_LAYER0_OWNER_OR_DETERMINISTIC_RECONSTRUCTION"
+    ],
+    "serialize_both_Cs_and_Co_required": false,
+    "required_sufficiency": "canonical GHG owner state plus exact accepted thermodynamic/hydrology coordinates or an equivalent deterministic reconstruction contract"
+  },
+  "required_split_run_qualification": [
+    "revision-53-compatible activated GHG case",
+    "accepted checkpoint with at least one unsaturated GHG-active layer and Te not equal to Terf",
+    "nonzero CH4 or N2O storage",
+    "capture RsCs, RsCo, water content and checkpoint temperature",
+    "compare restored Cs, reconstructed Co and first-step gas phase before aggregate output",
+    "separate pre-existing ponding case with nonzero layer0 GHG state"
+  ],
+  "synthetic_case_can_establish_causality": true,
+  "synthetic_case_can_establish_historical_behaviour": false,
+  "historical_revision53_behaviour_established": false,
+  "b3_admitted": false,
+  "production_migration_admitted": false,
+  "final_qualification_unchanged": "QUALIFIED_GHG_THEORY_SOURCE_AND_INPUT_LINEAGE_EVIDENCE_WITH_HISTORICAL_REFERENCE_GAPS"
+}
