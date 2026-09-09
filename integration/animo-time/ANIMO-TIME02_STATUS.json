@@ -80,11 +80,16 @@
     "split_restart_boundary_vector": "PASS_SYNTHETIC_NON_B2",
     "changed_t1_retry_vector": "PASS_SYNTHETIC",
     "hydrology_frame_exact_mismatch_vector": "PASS_SYNTHETIC",
-    "floating_tolerance_used": false
+    "floating_tolerance_used": false,
+    "executable_validator": "tools/validate_time02_vectors.py",
+    "executable_result": "integration/animo-time/TIME02_EXECUTABLE_RESULT.json",
+    "workflow": ".github/workflows/time02-exact-time.yml",
+    "workflow_execution": "PENDING"
   },
   "evidence_boundaries": {
     "b0_source_and_testbank_inspection": true,
     "synthetic_contract_vectors": true,
+    "synthetic_executable_contract_check": true,
     "b2_reference_available": false,
     "historical_split_run_equivalence_qualified": false,
     "historical_event_boundary_equivalence_qualified": false,
@@ -123,7 +128,11 @@
     "docs/time02/CONCRETE_TIME_REPRESENTATION.md",
     "docs/time02/CALENDAR_AND_BOUNDARY_CONTRACT.md",
     "docs/time02/LEGACY_TIME_MAPPING.md",
+    "docs/time02/EXECUTABLE_VECTOR_QUALIFICATION.md",
     "integration/animo-time/TIME02_TEST_VECTORS.json",
-    "integration/animo-time/ANIMO-TIME02_STATUS.json"
+    "integration/animo-time/TIME02_EXECUTABLE_RESULT.json",
+    "integration/animo-time/ANIMO-TIME02_STATUS.json",
+    "tools/validate_time02_vectors.py",
+    ".github/workflows/time02-exact-time.yml"
   ]
 }
