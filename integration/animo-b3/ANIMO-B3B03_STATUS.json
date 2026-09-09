@@ -1,0 +1,58 @@
+{
+  "work_unit": "ANIMO-B3B03",
+  "title": "TCD-024 Slow Langmuir Sorption Site Indexing Admission Readiness",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3b03-tcd024-slow-langmuir-index-readiness",
+  "status": "IN_PROGRESS_PERSISTED_EVIDENCE_VALIDATION_PENDING",
+  "target_tcd": "TCD-024",
+  "class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "atomic_claim": "Within Transorp.for Conc_unl slow-Langmuir kinetics, the site-specific affinity parameter must be indexed by slow-sorption site J rather than nonlinear trial counter I.",
+  "base_authority": {
+    "branch": "work/animo-b3q01-scientific-admission-framework",
+    "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "frozen_B0": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "source_member": "ANIMO_4.1.5.53/Transorp.for",
+    "source_member_sha256": "65ab0f70ed7cc4f1c0012ca95bcdddeb5c26dd21b09df0ec61b7b269e51cd0ad"
+  },
+  "source_expression": {
+    "legacy": "Yy = One + Parcxsl(3,I) * Avc",
+    "candidate_atomic_correction": "Yy = One + Parcxsl(3,J) * Avc",
+    "outer_trial_index": "I=1..20",
+    "slow_site_index": "J=1..Ncxsl",
+    "site_dimension_bound": "Macx=3"
+  },
+  "hard_boundaries": {
+    "modify_TCD019_numerical_policy": false,
+    "joint_TCD019_TCD024_admission": false,
+    "solver_redesign": false,
+    "numerical_tolerance": false,
+    "production_patch": false,
+    "B3_admission": false
+  },
+  "historical_reference": {
+    "B2_qualified_for_target_path": false,
+    "historical_prevalence": "UNKNOWN",
+    "historical_fidelity_claim": false,
+    "GOV02_historical_uncertainty_route_active": false,
+    "reason": "Live PREP02R evidence still lacks a qualified historical reference and GOV02 requires completed bounded acquisition before the uncertainty route can open."
+  },
+  "required_evidence": [
+    "canonical TCD-024 source-bound defect record",
+    "SYNQ01 TCD-024 per-site analytical oracle and index-domain oracle",
+    "NQ02 four-way TCD-019/TCD-024 interaction evidence without composing corrections for admission",
+    "unequal-site active fixture",
+    "inactive-site control",
+    "inactive constitutive-route control",
+    "multi-site conservation identity",
+    "unrounded P state and transfer comparison",
+    "predeclared expected-difference surface",
+    "non-interference outside targeted slow-site indexing"
+  ],
+  "natural_activation_policy": "Use natural B1 activation only where present. The frozen supplied active-P cases use OPTCXSL=3 and therefore do not naturally activate TCD-024; this absence must remain explicit.",
+  "admitted": false,
+  "production_migration_admitted": false
+}
