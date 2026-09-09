@@ -72,8 +72,22 @@
       "class": "E",
       "topic": "low-storage transport threshold and transition policy",
       "status": "BLOCKED_DEPENDS_ON_TCD016_C1",
-      "stronger_evidence": "threshold branch is distinguishable from the underlying semi-analytical transport theory",
-      "remaining_blocker": "numerical policy cannot be qualified before C1 physical semantics"
+      "source_reconnaissance": {
+        "layer0_water_storage_threshold_m": 0.0001,
+        "layer0_water_storage_threshold_mm": 0.1,
+        "ordinary_layer_water_storage_threshold_m": 0.000001,
+        "ordinary_layer_water_storage_threshold_mm": 0.001,
+        "layer0_outflow_threshold_m_d": 0.000001,
+        "layer0_outflow_threshold_mm_d": 0.001,
+        "captured_event_start_storage_mm": 0.1087117,
+        "captured_event_end_storage_mm": 0.003256434,
+        "captured_event_outflow_mm_d": 4.1184400265397315e-7,
+        "outflow_threshold_to_event_ratio": 2428.103829498251,
+        "threshold_occurrence": "LOCAL_TO_TRANSSUB_IN_FROZEN_ARCHIVE",
+        "physical_derivation_recovered": false
+      },
+      "stronger_evidence": "low-storage thresholds are local representation or numerical policy surfaces around the historical semi-analytical transport formulation",
+      "remaining_blocker": "numerical transition policy cannot be admitted before C1 physical semantics"
     },
     "standalone_class_B_child": "NOT_CREATED_CORRECT_REPLACEMENT_DEPENDS_ON_C1"
   },
@@ -117,6 +131,7 @@
     "docs/science/TCD016_THEORY_EVIDENCE_SWEEP.md",
     "docs/science/TCD016_HISTORICAL_THEORY_RECOVERY.md",
     "docs/science/TCD016_C1_PROPOSED_NONAQUEOUS_STATE_CONTRACT.md",
+    "docs/science/TCD016_E1_LOW_STORAGE_THRESHOLD_RECONNAISSANCE.md",
     "docs/science/TCD016_ATOMIZATION_AND_GATE_PLAN.md",
     "integration/animo-science/TCD016_CANDIDATE_MATRIX.json",
     "integration/animo-science/TCD016_ATOMIZATION_PLAN.json",
@@ -127,7 +142,7 @@
     "seek source-history or design documentation for the origin and intended meaning of the revision-53 low-storage thresholds",
     "obtain independent scientific review of the review-ready C1 non-aqueous state contract",
     "if no legacy phase theory is recovered, keep Candidate A as explicit model evolution and open a separate scientific admission route rather than corrected-legacy B3 admission",
-    "only after C1 semantics are fixed, qualify TCD-016-E1 threshold and conditioning policy",
+    "only after C1 semantics are fixed, execute the E1 storage-by-outflow threshold envelope and numerical sensitivity qualification",
     "after semantics are fixed, qualify restart equivalence, process ordering, application-envelope trajectories and non-interference"
   ],
   "notes": [
@@ -136,6 +151,7 @@
     "No concentration cap, mass deletion, mass creation or invented external outflow is admitted as a solution.",
     "Conservation closure of Candidate A is necessary evidence but is not treated as proof of ANIMO-specific intended physics.",
     "The provisional continuation-state name is deliberately chemically noncommittal until theory establishes residue, sorption, precipitation or residual-film semantics.",
-    "The historical theory recovery narrows the blocker: conservation need is no longer the main uncertainty; physical phase identity and remobilization are."
+    "The historical theory recovery narrows the blocker: conservation need is no longer the main uncertainty; physical phase identity and remobilization are.",
+    "E1 reconnaissance establishes dimensions and locality of legacy thresholds but intentionally proposes no replacement value."
   ]
 }
