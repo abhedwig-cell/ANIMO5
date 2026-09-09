@@ -1,0 +1,209 @@
+{
+  "work_unit": "ANIMO-RG02",
+  "record_type": "LOCAL_TO_CANONICAL_TCD_IDENTITY_RECONCILIATION_NO_SCIENTIFIC_REINTERPRETATION",
+  "repository": "abhedwig-cell/ANIMO5",
+  "status": "QUALIFIED_GOVERNANCE_MAPPING_CANONICAL_ALLOCATION_DEFERRED_TO_B3",
+  "canonical_register_authority": {
+    "work_unit": "ANIMO-B3Q01",
+    "branch": "work/animo-b3q01-scientific-admission-framework",
+    "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "register_blob_sha": "224acc350fde69d3c4aebed8628c0f945e0b3367",
+    "canonical_tail": "TCD-027"
+  },
+  "canonical_reservations_after_snapshot": [
+    {
+      "canonical_id": "TCD-028",
+      "reserved_for": "stable-DOM plough accumulator event-reset defect",
+      "branch": "work/animo-b3-tcd028-stable-dom-intake",
+      "head": "7f38b79d88c05fd86c89fbdd7a5794b90ffba2bf",
+      "state": "RESERVED_PENDING_CANONICAL_REGISTER_APPEND_NOT_ADMITTED",
+      "canonical_register_appended": false,
+      "b3_admitted": false
+    }
+  ],
+  "policy": {
+    "preparatory_post_027_labels_are_canonical_ids": false,
+    "rg02_assigns_new_canonical_tcd_numbers": false,
+    "same_local_number_implies_same_finding": false,
+    "semantic_cluster_is_based_on_persisted_ancestry_and_carried_finding_identity_only": true,
+    "scientific_reinterpretation_performed": false,
+    "source_finding_wording_is_not_replaced": true,
+    "silent_register_union_allowed": false
+  },
+  "local_identity_clusters": [
+    {
+      "local_reconciliation_key": "RG02-LCL-EXHUMUS-PLOUGH-LEDGER",
+      "canonical_id": null,
+      "canonical_allocation_state": "UNALLOCATED_B3_OWNED",
+      "source_identity": "exudate-humus ploughing redistribution ledger double-count / duplicate generic transfer",
+      "lineage_occurrences": [
+        {
+          "branch": "work/animo-prep07-transfer-edge-audit",
+          "head": "c4fe28b7878f6e8155560754b87b7ae115dd6473",
+          "local_label": "TCD-028"
+        },
+        {
+          "branch": "work/animo-prep08-causal-management-probes",
+          "head": "933795e2e9bf72a78b5fcf5412510f057d0ab869",
+          "local_label": "TCD-028"
+        },
+        {
+          "branch": "work/animo-prep08-transfer-probes",
+          "head": "340db9d91e71c906143efe877313149c5af36a24",
+          "local_label": "TCD-028"
+        },
+        {
+          "branch": "work/animo-prep09-element-transfer-and-slow-sorption",
+          "head": "e3c3b0dfa8daabe345c51be8c4f29f2731d65c47",
+          "local_label": "TCD-028"
+        }
+      ],
+      "collision": "LOCAL_TCD_028_COLLIDES_WITH_CENTRAL_TCD_028_RESERVATION_FOR_STABLE_DOM",
+      "integration_rule": "retain local reconciliation key; do not copy local TCD-028 into canonical register"
+    },
+    {
+      "local_reconciliation_key": "RG02-LCL-MULTISITE-FAST-P-MANAGEMENT",
+      "canonical_id": null,
+      "canonical_allocation_state": "UNALLOCATED_B3_OWNED",
+      "source_identity": "multi-site fast phosphorus sorption management integration / mass-conservation gap",
+      "lineage_occurrences": [
+        {
+          "branch": "work/animo-prep07-transfer-edge-audit",
+          "head": "c4fe28b7878f6e8155560754b87b7ae115dd6473",
+          "local_label": "TCD-029"
+        },
+        {
+          "branch": "work/animo-prep08-causal-management-probes",
+          "head": "933795e2e9bf72a78b5fcf5412510f057d0ab869",
+          "local_label": "TCD-029"
+        },
+        {
+          "branch": "work/animo-prep08-transfer-probes",
+          "head": "340db9d91e71c906143efe877313149c5af36a24",
+          "local_label": "TCD-029"
+        },
+        {
+          "branch": "work/animo-prep09-element-transfer-and-slow-sorption",
+          "head": "e3c3b0dfa8daabe345c51be8c4f29f2731d65c47",
+          "local_label": "TCD-029"
+        }
+      ],
+      "integration_rule": "retain local reconciliation key pending B3-owned canonical allocation"
+    },
+    {
+      "local_reconciliation_key": "RG02-LCL-EXHUMUS-ELEMENT-FRACTION-SEQUENCING",
+      "canonical_id": null,
+      "canonical_allocation_state": "UNALLOCATED_B3_OWNED",
+      "source_identity": "exudate-humus N/P fraction sequencing during ploughing",
+      "lineage_occurrences": [
+        {
+          "branch": "work/animo-prep08-transfer-probes",
+          "head": "340db9d91e71c906143efe877313149c5af36a24",
+          "local_label": "TCD-030"
+        },
+        {
+          "branch": "work/animo-prep09-element-transfer-and-slow-sorption",
+          "head": "e3c3b0dfa8daabe345c51be8c4f29f2731d65c47",
+          "local_label": "TCD-030"
+        }
+      ],
+      "collision": "LOCAL_TCD_030_IS_NOT_GLOBALLY_UNIQUE",
+      "integration_rule": "retain local reconciliation key; do not equate with option-contract local TCD-030"
+    },
+    {
+      "local_reconciliation_key": "RG02-LCL-AERATION-OPTION2-ALIAS",
+      "canonical_id": null,
+      "canonical_allocation_state": "UNALLOCATED_B3_OWNED",
+      "source_identity": "aeration option 2 semantic alias to option 0",
+      "lineage_occurrences": [
+        {
+          "branch": "work/animo-prep09-option-contract-audit",
+          "head": "0ae0e2180cf0569f8ea22319aa9ccb54ebca3210",
+          "local_label": "TCD-030"
+        }
+      ],
+      "collision": "LOCAL_TCD_030_COLLIDES_WITH_ELEMENT_FRACTION_SEQUENCING_LINEAGE",
+      "integration_rule": "retain separate local reconciliation key and transplant under a new work-unit identity before B3 intake"
+    },
+    {
+      "local_reconciliation_key": "RG02-LCL-SLOW-SORPTION-TILLAGE-POLICY",
+      "canonical_id": null,
+      "canonical_allocation_state": "UNALLOCATED_B3_OWNED",
+      "source_identity": "slow non-equilibrium phosphorus sorption tillage policy gap",
+      "lineage_occurrences": [
+        {
+          "branch": "work/animo-prep09-element-transfer-and-slow-sorption",
+          "head": "e3c3b0dfa8daabe345c51be8c4f29f2731d65c47",
+          "local_label": "TCD-031"
+        }
+      ],
+      "integration_rule": "retain local reconciliation key pending B3-owned canonical allocation"
+    },
+    {
+      "local_reconciliation_key": "RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER",
+      "canonical_id": null,
+      "canonical_allocation_state": "UNALLOCATED_B3_OWNED",
+      "source_identity": "persistent macropore solute restart writer omission",
+      "lineage_occurrences": [
+        {
+          "branch": "work/animo-prep10-restart-state-continuity",
+          "head": "761db23269b45ba79df3be97ea85289682e57106",
+          "local_label": "TCD-032"
+        }
+      ],
+      "collision": "LOCAL_TCD_032_COLLIDES_WITH_SUPERSEDED_PREP10C_PROPOSAL",
+      "integration_rule": "renumbering is mandatory before transplant; do not use TCD-032 as canonical identity"
+    },
+    {
+      "local_reconciliation_key": "RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION",
+      "canonical_id": null,
+      "canonical_allocation_state": "UNALLOCATED_B3_OWNED",
+      "source_identity": "actual plant uptake restart initialization direction defect",
+      "lineage_occurrences": [
+        {
+          "branch": "work/animo-prep10-restart-state-continuity",
+          "head": "761db23269b45ba79df3be97ea85289682e57106",
+          "local_label": "TCD-033"
+        }
+      ],
+      "integration_rule": "retain local reconciliation key pending B3-owned canonical allocation"
+    },
+    {
+      "local_reconciliation_key": "RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE",
+      "canonical_id": null,
+      "canonical_allocation_state": "UNALLOCATED_B3_OWNED",
+      "source_identity": "potential plant uptake restart-state omission",
+      "lineage_occurrences": [
+        {
+          "branch": "work/animo-prep10-restart-state-continuity",
+          "head": "761db23269b45ba79df3be97ea85289682e57106",
+          "local_label": "TCD-034"
+        }
+      ],
+      "integration_rule": "retain local reconciliation key pending B3-owned canonical allocation"
+    }
+  ],
+  "retired_or_redirected_local_proposals": [
+    {
+      "branch": "work/animo-prep10c-stable-dom-reset-readiness",
+      "head": "f88b8a4ca65bff4a3d9c4132a7f384c2ae698087",
+      "local_label": "TCD-032",
+      "finding_identity": "stable-DOM plough accumulator event-reset candidate",
+      "disposition": "SUPERSEDED_DO_NOT_USE_AS_CANONICAL_ID",
+      "redirect": {
+        "canonical_reservation": "TCD-028",
+        "reservation_branch": "work/animo-b3-tcd028-stable-dom-intake",
+        "reservation_state": "RESERVED_PENDING_CANONICAL_REGISTER_APPEND_NOT_ADMITTED"
+      }
+    }
+  ],
+  "gate_result": {
+    "G1_local_to_canonical_identity_reconciliation": "COMPLETE_FOR_OBSERVED_POST_027_PREPARATORY_LINEAGES",
+    "canonical_ids_allocated_by_rg02": 0,
+    "canonical_register_modified": false,
+    "scientific_baseline_changed": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false
+  }
+}
