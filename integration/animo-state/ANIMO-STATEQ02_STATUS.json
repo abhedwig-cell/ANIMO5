@@ -16,6 +16,14 @@
   "production_implementation": "NONE",
   "execution_started": true,
   "execution_completed": true,
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": true,
+    "qualified": true,
+    "canonical_state_admitted": false,
+    "production_migration_admitted": false
+  },
   "profile": "RESTRICTED_CORE_CNP_WITH_EXTERNAL_CROP_SURFACE_EXCLUDED",
   "natural_case": "LWKM_gras_1040.2021.2045",
   "split_boundaries_qualified": [
@@ -35,6 +43,17 @@
     "exit_code": 95,
     "checkpoint_created": false
   },
+  "validation": {
+    "validator": "tools/stateq02/validate_stateq02.py",
+    "workflow": ".github/workflows/animo-stateq02-restricted-core.yml",
+    "scope_check_base": "4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "green_github_actions_run_id_before_status_metadata_closeout": 34360501847,
+    "green_run_head": "773311b0b1e6d6b26d7d829f096d00ecc638e27a",
+    "green_run_conclusion": "success",
+    "validator_result": "PASS",
+    "validation_scope": "PERSISTED_EVIDENCE_INTERNAL_CONSISTENCY_EXACT_COMPARISON_INVARIANTS_AND_NO_PRODUCTION_OR_FROZEN_REFERENCE_PATH_CHANGES",
+    "b0_split_run_reexecuted_in_ci": false
+  },
   "excluded": [
     "GHG",
     "MACROPORES",
@@ -50,5 +69,9 @@
     "integration/animo-state/STATEQ02_SPLIT_RUN_MATRIX.json",
     "integration/animo-state/STATEQ02_CHECKPOINT_DIFFS.csv",
     "integration/animo-state/ANIMO-STATEQ02_STATUS.json"
+  ],
+  "additional_validation_artifacts": [
+    "tools/stateq02/validate_stateq02.py",
+    ".github/workflows/animo-stateq02-restricted-core.yml"
   ]
 }
