@@ -33,7 +33,8 @@
     "pH_relation": "RdfapH=-0.09*pH^2+1.195*pH-2.965 for 3.3<=pH<10, else 0",
     "provenance": {
       "substrate_linear_process": "INDEPENDENT_THEORY",
-      "pH_polynomial": "VERSION_NEAR_SECONDARY_DOCUMENTATION_SUPPORTED_SOURCE_RELATION",
+      "pH_polynomial": "SOURCE_ONLY",
+      "pH_polynomial_secondary_corroboration": "VERSION_NEAR_SECONDARY_DOCUMENTATION",
       "hardcoded_Q10_5": "SOURCE_ONLY"
     }
   },
