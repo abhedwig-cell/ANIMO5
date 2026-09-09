@@ -1,0 +1,19 @@
+rule_id,qualification_test_ids,coverage_assertion,evidence_required
+TR-BEGIN-IDENTITY,H001;H008;H011;T001,trial binds immutable exact interval frame schema geometry layout and configuration identities,ADAPTER_AND_COUPLED_RUNTIME
+TR-ACCEPTED-START,H001;H009;T001,begin coordinates and owner observations come from accepted t0 generations only,COUPLED_RUNTIME
+TR-HYDRO-READONLY,H008;T002,hydrology exchange frame is immutable and ANIMO reject cannot alter foreign accepted state,ADAPTER_AND_COUPLED_RUNTIME
+TR-CROP-READONLY,C001;C011;C012;T002,external crop persistent state remains external and supplied observations are immutable/nonowning,ADAPTER_AND_COUPLED_RUNTIME
+TR-RESULT-SEPARATION,C005;C006;C007,realized uptake is trial result linked to typed events and is not externally committed before accept,COUPLED_RUNTIME
+TR-REJECT,C007;T002;T009,rejected state results and journal make no accepted physical contribution,COUPLED_RUNTIME_AND_REPLAY
+TR-COMMIT-BARRIER,T003,corresponding participant generations commit as one logical interval without early partial commit,COUPLED_RUNTIME
+TR-RETRY,H008;C012;T004;T009,retry has new trial binding and changed immutable frames get new IDs,COUPLED_RUNTIME_AND_REPLAY
+TR-UNITS,H003;H005;C003,required physical units are exact or use separately qualified explicit conversion; implicit conversion rejected,ADAPTER_RUNTIME
+TR-GEOMETRY,H006;H010;C003;C004;I003,shape layer domain and topology mismatch is rejected without resize pad truncate or reorder,ADAPTER_RUNTIME
+TR-SIGN,H007,producer-native sign is normalized at adapter boundary to ARCH05 contract semantics,ADAPTER_RUNTIME
+TR-MACROPORE-BLOCK,H004;H014;H015;H016,macropore fields rejected while inactive or unadmitted and future extension requires active scientific qualification,ADAPTER_RUNTIME_PLUS_SCIENTIFIC_ADMISSION
+TR-CHEM-BOUNDARY-SEPARATION,H012,hydrology adapter cannot carry undeclared chemistry or management composition,ADAPTER_RUNTIME
+TR-CROP-RESIDUE-EXPLICIT,C008;C009,residue and exudate transfers require explicit typed bundles and cannot be inferred from state delta,ADAPTER_RUNTIME
+TR-CROP-EXPORT-EXPLICIT,C010,combined crop ledger receives explicit export event bundle for harvest grazing or other removals,ADAPTER_RUNTIME
+TR-DIAGNOSTIC-NONOWNERSHIP,C011;T005;I001,diagnostics and external state observations do not own or mutate physical state,COUPLED_RUNTIME_PLUS_STRUCTURAL_IDENTITY
+TR-CHECKPOINT-OWNER,T006;T008,ANIMO checkpoint excludes foreign persistent state and split-run qualification checkpoints each owner separately,COUPLED_RUNTIME_AND_RESTART
+TR-PRECISION-REFERENCE,T007,precision mismatch is compatibility issue but ARCH07 defines no tolerance or conversion,ADAPTER_RUNTIME_PLUS_NUMERICAL_POLICY
