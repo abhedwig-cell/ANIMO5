@@ -76,7 +76,7 @@ A passing second-line readiness review must answer yes to all of these questions
 
 Any negative or unresolved answer fails the second-line review.
 
-## Live route state at handoff preparation
+## Live route state at handoff refresh
 
 The latest checked PREP02R branch is:
 
@@ -84,22 +84,37 @@ The latest checked PREP02R branch is:
 
 Head:
 
-`e29aa75f782a17e1cca6b0c2791ba04077e8bde7`
+`a877eb3f1d1e7a440b45805bbc46fc8e9acfe7ce`
 
 Its machine-readable status is:
 
-`BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED`
+`PARTIAL_RECOVERY_BUILD_CONTRACT_STRONGLY_IMPROVED_MODERN_NATIVE_REBUILD_IDENTIFIED_HISTORICAL_REFERENCE_STILL_BLOCKED`
 
-At that head:
+The newly supplied artifacts materially improve the build-contract evidence:
 
-- the external archival request is prepared but not sent;
+- `animo41.vfproj` and `animo41.sln` recover the Visual Studio/Intel Fortran project configuration, including 8-byte default REAL, SAVE/static local storage, FPS-compatible I/O settings, source floating-point model and CVF calling convention;
+- all project-selected source units are present in frozen B0, with `input1_1.for` and `Outselorg.for` excluded from the project selection;
+- the supplied `animo41.exe` has SHA-256 `40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d`.
+
+However, PREP02R has classified that executable as:
+
+`MODERN_NATIVE_REBUILD_NOT_HISTORICAL_REFERENCE`
+
+Static evidence includes a 2026 PE timestamp, an x64 Debug PDB path, a modern linker signature and post-2011 Intel runtime evidence. It therefore cannot substitute for the missing historical B2 executable or executable-linked historical output.
+
+At the checked PREP02R head:
+
+- the external archival request is still prepared but not sent;
+- project/build metadata has been obtained;
+- a native candidate executable has been obtained but is nonhistorical;
 - no provenance-qualified historical reference artifact has been obtained;
+- no native candidate execution has been completed in the controlled environment;
 - no native reference run has been completed;
 - no native-vs-GNU comparison has been completed;
-- no historical reference has been qualified;
-- receipt and native-capture tooling are ready, but that readiness does not close B2.
+- no historical or equivalent reference has been qualified;
+- the historical-uncertainty route is not yet eligible because bounded acquisition is not closed.
 
-Therefore the B3A02 route gate remains pending regardless of the second-line review result.
+Therefore the B3A02 route gate remains pending regardless of the second-line review result. The modern native rebuild may support cross-runtime diagnostics, but must not be cited as historical B2 evidence.
 
 ## Allowed review disposition
 
