@@ -128,7 +128,7 @@ for token in (
     "INSUFFICIENT_EVIDENCE_PENDING_CAUSAL_ISOLATION",
     "canonical STATE admission = PENDING",
     "whole-model STATE claim = false",
-    "EXACT",
+    "No comparison tolerance is used.",
 ):
     if token not in narrative:
         fail(f"narrative missing required token: {token}")
