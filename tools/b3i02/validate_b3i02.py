@@ -15,6 +15,7 @@ REGISTER_PATH = ROOT / "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
 DOC_PATH = ROOT / "docs/b3/POST_B3I01_INCREMENTAL_INTAKE.md"
 
 EXPECTED_STATUS = "QUALIFIED_INCREMENTAL_CANONICAL_DISCREPANCY_INTAKE_NO_ADMISSIONS"
+RG03_HEAD = "b67a6cac325fe3f838aedc9df106e120fd5a3d0f"
 
 
 def require(condition: bool, message: str) -> None:
@@ -51,6 +52,21 @@ def main() -> None:
     require(status["canonical_results"]["new_child_atoms"] == [], "status contains new child atoms")
     require(status["canonical_results"]["canonical_register_append_required"] is False, "register append unexpectedly required")
     require(status["canonical_results"]["next_unallocated_candidate_observed_not_reserved"] == "TCD-042", "next unallocated candidate mismatch")
+
+    completed = {item["work_unit"]: item for item in status["post_b3i01_completed_incremental_evidence"]}
+    require(set(completed) == {"ANIMO-STATEQ01", "ANIMO-RG03"}, "completed incremental evidence set changed unexpectedly")
+    rg03 = completed["ANIMO-RG03"]
+    require(rg03["head"] == RG03_HEAD, "RG03 closeout head mismatch")
+    require(rg03["disposition"] == "GOVERNANCE_RECONCILIATION_NO_NEW_DISCREPANCY", "RG03 was promoted into a discrepancy")
+    require(rg03["qualified"] is True and rg03["tested"] is True, "RG03 closeout is not recorded as tested and qualified")
+    require(rg03["scientific_admission_performed"] is False, "RG03 scientific admission leaked into B3I02")
+    require(rg03["evidence_strength_increased"] is False, "RG03 integration incorrectly increases evidence strength")
+    require(rg03["canonical_tcd_register_tail"] == "TCD-041", "RG03 canonical register tail differs from B3I01 authority")
+    require(rg03["new_tcd_count"] == 0, "RG03 generated a new TCD in B3I02")
+
+    excluded = {item["work_unit"] for item in status["explicitly_excluded_in_progress_workunits"]}
+    require(excluded == {"ANIMO-MASSQ02", "ANIMO-STATEQ02"}, "in-progress exclusion set changed unexpectedly")
+    require("ANIMO-RG03" not in excluded, "completed RG03 remains incorrectly excluded as in progress")
 
     require(reservations["work_unit"] == "ANIMO-B3I02", "wrong reservation work_unit")
     require(reservations["reservations"] == [], "reservation file must remain empty")
@@ -92,11 +108,14 @@ def main() -> None:
     require(EXPECTED_STATUS in doc, "narrative does not state final status")
     require("`reservations = []`" in doc, "narrative does not state empty reservations")
     require("do not receive `TCD-042`" in doc, "narrative does not preserve fail-closed TCD-042 disposition")
+    require("GOVERNANCE_RECONCILIATION_NO_NEW_DISCREPANCY" in doc, "narrative does not record RG03 no-discrepancy disposition")
+    require(RG03_HEAD in doc, "narrative does not bind the consumed RG03 closeout head")
 
     print("ANIMO-B3I02 validation: PASS")
     print(f"crosswalk_findings={len(crosswalk)}")
     print(f"mass_pending_causality={len(mass_rows)}")
     print(f"state_pending_causal_isolation={len(state_rows)}")
+    print("rg03_disposition=GOVERNANCE_RECONCILIATION_NO_NEW_DISCREPANCY")
     print("new_tcd_reservations=0")
     print("canonical_register_tail=TCD-041")
 
