@@ -1,0 +1,33 @@
+name: ANIMO-TIMEQ01 runtime transaction qualification
+
+on:
+  push:
+    branches:
+      - work/animo-timeq01-runtime-transaction-qualification
+    paths:
+      - 'tools/timeq01_runtime_fixture.py'
+      - 'tools/test_timeq01_runtime_fixture.py'
+      - 'integration/animo-time/TIMEQ01_TEST_CASES.csv'
+      - 'docs/timeq01/**'
+      - '.github/workflows/timeq01-runtime-transaction.yml'
+  workflow_dispatch:
+
+jobs:
+  synthetic-runtime-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile TIMEQ01 fixture
+        run: |
+          python -m py_compile tools/timeq01_runtime_fixture.py tools/test_timeq01_runtime_fixture.py
+
+      - name: Execute 19 TIMEQ01 synthetic contract tests
+        run: |
+          python tools/test_timeq01_runtime_fixture.py
