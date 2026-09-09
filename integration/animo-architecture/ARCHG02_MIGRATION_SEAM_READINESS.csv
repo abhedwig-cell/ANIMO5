@@ -1,0 +1,14 @@
+seam,archg01_prior_readiness,archg02_temporal_revalidation,remaining_primary_blocks,production_admitted
+hydrology_exchange,candidate seam defined production not admitted,TEMPORAL_CONTRACT_CANDIDATE_SPECIFIED,"canonical TIME; concrete adapter runtime qualification; restart synchronization; macropore extension if active",NO
+mineral_nitrogen,candidate seam coherent not production-ready,TEMPORAL_ORDER_AND_GENERATION_CONSTRAINTS_RESOLVED_SOURCE_BOUND,"TCD015; TCD016; runtime event production; canonical STATE/TIME; NQ/B3 as applicable",NO
+phosphorus,not production-ready,TEMPORAL_LAYER_ORDER_AND_COUPLING_RESOLVED_SOURCE_BOUND,"TCD014; TCD019; TCD024; TCD029; numerical/B3 qualification; canonical STATE/TIME",NO
+organic_matter,candidate seam defined production correction separate,TEMPORAL_POTENTIAL_ACTUAL_AND_MANAGEMENT_VISIBILITY_RESOLVED_SOURCE_BOUND,"GHG whole-C reconciliation where active; discrepancy B3; runtime event production",NO
+crop,architecture-ready implementation not admitted,TEMPORAL_UPTAKE_AND_COUPLED_TRANSACTION_CANDIDATE_SPECIFIED,"concrete crop adapter; runtime coupled accept/reject; split-run B2; process-specific B3",NO
+management,not production-ready,EVENT_ORDER_AND_ENDPOINT_COMPATIBILITY_RESOLVED_SOURCE_BOUND,"parser compatibility; continuation cursor B2; P multisite management; B3 differences",NO
+dissolved_organic,labile candidate coherent stable DOM not admitted,TEMPORAL_TRANSPORT_GENERATION_CONSTRAINTS_RESOLVED_SOURCE_BOUND,"stable-DOM provenance/theory; TCD023; surface stable DOM support; B3",NO
+ghg,NOT_PRODUCTION_READY theory-blocked,TEMPORAL_FRAMEWORK_ONLY_FEATURE_CONTRACT_STILL_BLOCKED,"GHG01 historical reference; release-specific equations; C/N ledger; B3",NO
+macropores,NOT_PRODUCTION_READY,TEMPORAL_FRAMEWORK_ONLY_FEATURE_CONTRACT_STILL_BLOCKED,"MP01 active historical reference; TCD025; restart; external hydrology extension; B3",NO
+restart_checkpoint,candidate payload structure coherent,TEMPORAL_ACCEPTED_BOUNDARY_MODEL_REFINED,"B2 continuous-vs-split; event/report continuation; external-owner coordinated restore; canonical TIME",NO
+mass_ledger,observer model coherent,TEMPORAL_OBSERVER_BOUNDARY_CONFIRMED,"canonical STATE/TIME; runtime committed event producers; MASS admission; feature-specific ledgers",NO
+external_exchange,candidate schemas coherent,TEMPORAL_INTERVAL_GENERATION_BINDING_CANDIDATE_SPECIFIED,"canonical TIME; concrete adapter/runtime coupled qualification; feature extensions",NO
+overall_candidate_architecture,coherent candidate production not admitted,REVALIDATED_WITH_FINAL_TS01_TIME01_CONSTRAINTS,"canonical STATE/TIME; B2 restart/reference; B3 science; runtime adapters/events; MASS/EX; B4",NO
