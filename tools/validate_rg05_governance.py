@@ -29,6 +29,7 @@ REGISTER_HEAD = "814ea660d367494432beb63ea78298d1f6cd73d7"
 B3I05_HEAD = "7fa0162415e02a6f0167e71b48ae38177a9e06e0"
 NQ03_HEAD = "8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6"
 NQ03R_HEAD = "0153779e9045c6527b7c31156f2295ff44b57eeb"
+IO02_HEAD = "302d53050d51dacfb68e1ea8d1cc7dd64e985cf3"
 B3A04_HEAD = "1192ee77eda47149af1e31a752e09d343edd9273"
 B3B02_HEAD = "412bf889ce959d85c651c3b9180dec0a6ff9bb61"
 B3B03_HEAD = "446f57f3aeff6e7db56ce473f0724bdb58cad94f"
@@ -96,6 +97,7 @@ def main() -> None:
     assert snap["B3I05"] == B3I05_HEAD
     assert snap["NQ03"] == NQ03_HEAD
     assert snap["NQ03R"] == NQ03R_HEAD
+    assert snap["IO02"] == IO02_HEAD
     assert snap["B3A04"] == B3A04_HEAD
     assert snap["B3B02"] == B3B02_HEAD
     assert snap["B3B03"] == B3B03_HEAD
@@ -137,6 +139,9 @@ def main() -> None:
     assert auth["NQ03"]["qualified"] == "True"
     assert auth["NQ03R"]["current_head"] == NQ03R_HEAD
     assert auth["NQ03R"]["tested"] == "True" and auth["NQ03R"]["qualified"] == "True"
+    assert auth["IO02"]["current_head"] == IO02_HEAD
+    assert auth["IO02"]["tested"] == "True" and auth["IO02"]["qualified"] == "True"
+    assert auth["IO02"]["current_state"] == "QUALIFIED_BOUNDED_REV53_GENERAL_NORMALIZED_REPRESENTATION_WITH_EXPLICIT_LEGACY_HAZARD_EXCLUSIONS"
     assert auth["B3A04"]["current_head"] == B3A04_HEAD
     assert auth["B3A04"]["current_state"] == "QUALIFIED_TCD026_CLASS_A_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING"
     assert auth["B3B02"]["current_head"] == B3B02_HEAD
@@ -152,7 +157,6 @@ def main() -> None:
     assert auth["B3E01"]["current_head"] == B3E01_HEAD
     assert auth["B3E01"]["tested"] == "True" and auth["B3E01"]["qualified"] == "True"
     assert auth["B3E01"]["current_state"].startswith("PARTIAL_TCD042_E1_CLASS_E_READINESS")
-    assert auth["IO02"]["qualified"] == "False"
 
     gates = {r["gate"]: r for r in gate_rows}
     for gate in ("G6H", "G6U", "G7", "GSTATE", "GTIME", "GMASS", "GEX", "GARCH", "TCD042_PARENT", "B4_PROFILE", "PRODUCTION"):
@@ -210,6 +214,8 @@ def main() -> None:
     assert streams["tcd042_zero_thickness_domain"]["parallel_class"] == "SHARED_SEMANTIC_OWNER"
     assert "documented" in streams["tcd042_zero_thickness_domain"]["guards"]
     assert streams["nq03_independent_review"]["current_state"].startswith("INDEPENDENT_REVIEW_PASS")
+    assert streams["general_input_contract"]["current_state"] == "QUALIFIED_BOUNDED_REV53_GENERAL_NORMALIZED_REPRESENTATION_WITH_EXPLICIT_LEGACY_HAZARD_EXCLUSIONS"
+    assert "production migration" in streams["general_input_contract"]["guards"]
     assert "TCD-019" in streams["slow_langmuir_index"]["guards"]
     assert streams["tcd042_parent"]["parallel_class"] == "SERIAL_COMPOSITION"
     assert streams["b4_profile"]["parallel_class"] == "SERIAL_GATE"
@@ -248,6 +254,7 @@ def main() -> None:
     print("G6H/G6U fail-closed route: PASS")
     print("canonical TCD tail and TCD-042 child routing: PASS")
     print("shared Hetop=0 semantic owner: PASS")
+    print("bounded IO02 GENERAL qualification: PASS")
     print("25-entry atomic queue arithmetic: PASS")
     print("parallelism and serialization guards: PASS")
     print("scientific/B4/production admissions: 0")
