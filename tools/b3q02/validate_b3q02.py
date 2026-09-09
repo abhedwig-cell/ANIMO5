@@ -5,11 +5,13 @@ from __future__ import annotations
 import copy
 import json
 import subprocess
+import sys
 from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
 BASE = "41e43c6a6888aac5b5b52041bcdd088c7afc68f1"
 CARRIER_SCHEMA = ROOT / "integration/animo-b3/B3_CHILD_ATOM_DISPOSITION_CARRIER_SCHEMA.json"
 BASE_SCHEMA = ROOT / "integration/animo-b3/B3_DISPOSITION_SCHEMA.json"
