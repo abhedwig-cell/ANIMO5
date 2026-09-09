@@ -1,0 +1,22 @@
+name: ARCH05 exchange contract structural audit
+
+on:
+  push:
+    branches:
+      - work/animo-arch05-external-exchange-contracts
+    paths:
+      - 'docs/arch05/**'
+      - 'integration/animo-architecture/ARCH05_*.csv'
+      - 'integration/animo-architecture/ANIMO-ARCH05_STATUS.json'
+      - 'tools/audit_arch05_exchange_contracts.py'
+      - '.github/workflows/arch05-exchange-contracts.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run ARCH05 structural audit
+        run: python3 tools/audit_arch05_exchange_contracts.py
