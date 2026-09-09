@@ -4,6 +4,7 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-tq01-testcase-qualification",
   "source_head": "52411b9d2d6d80717914bc6642544290a54ded21",
+  "evaluated_evidence_head_before_status": "380fa55df7c2f3abe558dfa16b1a805a4496a296",
   "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
   "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
   "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
@@ -12,7 +13,7 @@
   "persisted": true,
   "tested": true,
   "qualified": true,
-  "qualification_scope": "B0 member identity, revision-53 parser/source option compatibility, natural B1 route coverage, diagnostic reachability boundaries, GHGMais lineage assessment, synthetic evidence policy and ordered coverage gaps",
+  "qualification_scope": "B0 active input-member identity, revision-53 parser/source option compatibility, natural B1 route coverage, configured/reached/mutated/output evidence boundaries, GHGMais lineage assessment, synthetic evidence policy, case-specific discrepancy relevance and ordered qualification gaps",
   "historical_reference_qualified": false,
   "production_migration": "NOT_ADMITTED",
   "supplied_case_count": 9,
@@ -22,8 +23,8 @@
   "prep02r_reference_state": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
   "verification": {
     "artifact": "integration/animo-testing/ANIMO-TQ01_VERIFICATION.json",
-    "checks_passed": 9,
-    "checks_total": 9,
+    "checks_passed": 13,
+    "checks_total": 13,
     "result": "PASS",
     "natural_plough_events_observed": 31,
     "natural_macropore_active_cases": 0,
@@ -32,7 +33,9 @@
     "natural_p_active_cases": 6,
     "p_active_fast_sorption": "Langmuir Optcxfa=2 Ncxfa=1",
     "p_active_slow_sorption": "Freundlich Optcxsl=3 Ncxsl=3",
-    "natural_slow_langmuir_cases": 0
+    "natural_slow_langmuir_cases": 0,
+    "option_matrix_rows": 23,
+    "ordered_gap_rows": 17
   },
   "deliverables": {
     "contract": "docs/testing/ANIMO_TQ01_WORK_UNIT_CONTRACT.md",
@@ -42,15 +45,17 @@
     "option_matrix": "docs/testing/OPTION_COVERAGE_MATRIX.csv",
     "synthetic_policy": "docs/testing/SYNTHETIC_CASE_EVIDENCE_POLICY.md",
     "ghgmais": "docs/testing/GHGMAIS_LINEAGE_ASSESSMENT.md",
+    "gap_register": "docs/testing/QUALIFICATION_GAP_REGISTER.csv",
     "verification": "integration/animo-testing/ANIMO-TQ01_VERIFICATION.json",
     "status": "integration/animo-testing/ANIMO-TQ01_STATUS.json"
   },
   "ordered_gaps": [
-    "NATURAL_CASE_LINEAGE_UNCERTAIN: GHGMais is the only supplied GHG-active case and cannot be attributed to revision 53 behaviour",
-    "NO_NATURAL_B0_COVERAGE: macropores, slow Langmuir, slow linear sorption, aggregated Iwa=1 hydrology, SoilTempFile=1 and multiple parser-admitted option values",
-    "ACTIVE_ONLY_UNDER_SYNTHETIC_PROBE: several causal defect and index/bounds findings",
-    "OPTION_PRESENT_BUT_UNEXERCISED: nonzero mutation is not proven merely by successful completion or output presence",
-    "REFERENCE_OUTPUT_MISSING: no independently trusted executable-linked B2 outputs supplied",
+    "REFERENCE_OUTPUT_MISSING: no independently trusted executable-linked B2 output is admitted for any supplied case",
+    "NATURAL_CASE_LINEAGE_UNCERTAIN: GHGMais is the only supplied GHG-active case and cannot be attributed to revision-53 behaviour",
+    "NO_NATURAL_B0_COVERAGE: active macropores, slow Langmuir, slow linear sorption and other intended/support-candidate routes lack supplied natural cases",
+    "ACTIVE_ONLY_UNDER_SYNTHETIC_PROBE: slow Langmuir and several causal/index findings have diagnostic descendants but no natural historical case",
+    "OPTION_PRESENT_BUT_UNEXERCISED: aggregated Iwa=1 hydrology, AerationModel=2, SoilTempFile=1, PClassOption=1, Inpo=2/3, multi-site P options and other values lack natural coverage",
+    "NONZERO_MUTATION_COVERAGE_UNEVEN: route reachability does not establish nonzero runoff, drainage, immobilization or stable-DOM mutation case by case",
     "REFERENCE_SPLIT_RUN_MISSING: restart behaviour lacks independent continuous-versus-split qualification",
     "LINEAGE_COMPATIBLE_NOT_PROVEN: eight successful cases are revision-53 parser-compatible but their exact originating source revision is not proven"
   ],
