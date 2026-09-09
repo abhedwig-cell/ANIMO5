@@ -5,12 +5,14 @@
   "branch": "work/animo-b3q01-scientific-admission-framework",
   "date": "2026-09-09",
   "starting_base_branch": "work/animo-prep06-conserved-state-ledger",
-  "decision": "IN_PROGRESS_B3_SCIENTIFIC_ADMISSION_FRAMEWORK_PERSISTED_BEFORE_VALIDATION",
+  "decision": "QUALIFIED_B3_SCIENTIFIC_ADMISSION_FRAMEWORK_NO_LEGACY_CORRECTIONS_ADMITTED",
   "implemented": true,
   "persisted": true,
-  "tested": false,
-  "qualified": false,
-  "blocked": true,
+  "tested": true,
+  "qualified": true,
+  "blocked": false,
+  "qualification_scope": "B3 admission governance, qualification-class contracts, discrepancy classification and composition policy only",
+  "b3_baseline_established": false,
   "physics_change": false,
   "numerical_policy_change": false,
   "legacy_source_modified": false,
@@ -18,6 +20,7 @@
   "production_code_modified": false,
   "corrected_legacy_admitted": false,
   "production_migration_admitted": false,
+  "production_migration": "NOT_ADMITTED",
   "source_evidence": {
     "eb01_canonical_governance_branch": "work/animo-eb01-evidence-baseline-model",
     "eb01_canonical_document_blob_sha": "8b7c6f4197ecc953740e740e64610c3ae3196392",
@@ -31,17 +34,87 @@
     "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
     "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
   },
-  "scope": {
-    "governance_only": true,
-    "legacy_corrections_admitted": [],
-    "production_migration": "NOT_ADMITTED"
-  },
-  "planned_deliverables": [
+  "deliverables": [
     "docs/governance/B3_SCIENTIFIC_ADMISSION_FRAMEWORK.md",
     "docs/governance/B3_QUALIFICATION_CLASSES.md",
     "docs/governance/B3_COMPOSITION_RULES.md",
     "integration/animo-b3/B3_DISPOSITION_SCHEMA.json",
     "integration/animo-b3/B3_EXISTING_TCD_CLASSIFICATION.csv",
     "integration/animo-b3/ANIMO-B3Q01_STATUS.json"
-  ]
+  ],
+  "supplementary_validation_artifacts": [
+    "tools/validate_b3q01_governance.py",
+    ".github/workflows/animo-b3q01-governance.yml"
+  ],
+  "qualification_classes": {
+    "A": "ACCOUNTING_REPORTING_ONLY",
+    "B": "LOCAL_ALGEBRA_INDEX_SPECIES",
+    "C": "MISSING_PHYSICAL_STATE_OR_INCOMPLETE_STATE_MODEL",
+    "D": "REPRESENTATION_ONLY_MODERNIZATION",
+    "E": "NUMERICAL_POLICY_CHANGE",
+    "F": "PHYSICS_MODEL_EVOLUTION"
+  },
+  "admission_routes": {
+    "normal": "NORMAL_B2_AVAILABLE",
+    "historical_uncertainty": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "historical_uncertainty_is_stricter": true
+  },
+  "classification_summary": {
+    "classified_tcd_count": 11,
+    "class_A_primary": ["TCD-017", "TCD-018", "TCD-025", "TCD-026", "TCD-027"],
+    "class_B_primary": ["TCD-015", "TCD-023", "TCD-024"],
+    "class_C_primary": ["TCD-016"],
+    "class_D_primary": [],
+    "class_E_primary": ["TCD-014", "TCD-019"],
+    "class_F_primary": [],
+    "requires_atomization": ["TCD-014", "TCD-016"],
+    "separate_numerical_qualification": ["TCD-019"],
+    "all_classifications_are_preliminary_not_admissions": true,
+    "legacy_corrections_admitted": []
+  },
+  "fail_closed_contract": {
+    "schema": "integration/animo-b3/B3_DISPOSITION_SCHEMA.json",
+    "all_required_gates_must_pass_for_admitted_true": true,
+    "b1_cannot_substitute_for_b2": true,
+    "synthetic_case_cannot_substitute_for_b2": true,
+    "unresolved_atomicity_blocks_admission": true,
+    "composition_requires_separate_record_and_qualification": true,
+    "class_E_requires_separate_numerical_qualification": true,
+    "class_F_requires_separate_scientific_admission": true
+  },
+  "validation": {
+    "workflow": "ANIMO-B3Q01 governance validation",
+    "pre_closeout_run_id": 34304951999,
+    "pre_closeout_head": "1dd290e571330367198aeafb4c42f4383b51777e",
+    "pre_closeout_conclusion": "success",
+    "json_parse": "PASS",
+    "json_schema_meta_validation": "PASS",
+    "normal_B2_route_fixture": "PASS",
+    "historical_uncertainty_route_fixture": "PASS",
+    "fail_closed_negative_tests": "PASS",
+    "classification_register_checks": "PASS",
+    "closeout_change_scope": "status metadata only after successful framework validation"
+  },
+  "explicit_non_admissions": [
+    "No existing TCD is admitted as corrected legacy behaviour by ANIMO-B3Q01",
+    "B1 causal evidence is not promoted to B3",
+    "B2 remains unavailable at this closeout and is not fabricated",
+    "Class C missing-state work is not reduced to accounting correction",
+    "Class E numerical-policy work is not admitted from mass-balance improvement alone",
+    "Class F physics evolution is outside corrected-legacy admission in this workunit",
+    "Production migration is NOT_ADMITTED"
+  ],
+  "recommended_followup": {
+    "serial_or_gate_dependent": [
+      "continue independent historical B2 reference recovery",
+      "atomize TCD-014 into ledger and numerical-policy child qualification scopes before any admission attempt",
+      "define a theory-qualified physical continuation state for TCD-016 before any corrected-legacy admission attempt"
+    ],
+    "independent_candidate_workunits": [
+      "Class A admission workunit for one ledger-only TCD at a time",
+      "Class B admission workunit for one local algebra/index/species TCD at a time",
+      "Class E numerical qualification workunit for TCD-019",
+      "macropore theory and activated-path qualification before TCD-025 can be considered for Class A admission"
+    ]
+  }
 }
