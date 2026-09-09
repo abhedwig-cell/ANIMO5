@@ -1,6 +1,6 @@
 # ANIMO-STATEQ01 upper-boundary reservoir continuation qualification
 
-Status: `SOURCE_QUALIFIED_ACCEPTED_BOUNDARY_OWNER_AND_TRANSPORT_FEED_RC_R12_EXECUTION_OPEN`
+Status: `SOURCE_QUALIFIED_SYNTHETIC_EXACT_RC_R12_WIRING_PASS_NONZERO_FLUX_REAL_SPLIT_OPEN`
 
 Canonical STATE admission: `NOT_ADMITTED`
 
@@ -150,23 +150,38 @@ and bind immutable geometry/configuration identity that fixes at least `Hetop`, 
 
 Restore must construct the next-step `Con*top` aliases from these values before any management or upper-boundary mutation. It must not restore stale `Av*top` values, because those are recomputed for the new interval.
 
-## 8. Numerical and evidence boundary
+## 8. Exact synthetic RC-R12 sentinel
 
 The nonzero-flux source rule contains `exp(-P)`. STATEQ01 does not invent a local numeric comparison tolerance for RC-R12. Full nonzero-flux uninterrupted-versus-split equivalence must use the admitted numerical comparison policy.
 
-A narrower exact synthetic sentinel can nevertheless test lifecycle wiring without touching this numerical question by using the source branch `Flux < 1e-8` with nonzero reservoir concentration and zero external load. In that branch source semantics give exactly:
+A narrower exact sentinel therefore uses the source `Flux < 1e-8` branch, further restricted to exactly zero flux and zero external load. The reservoir concentrations are deliberately nonzero. Under this source branch:
 
 ```text
 Rs*top = Con*top
 Av*top = Con*top
 ```
 
-Such a sentinel can prove that a nonzero accepted-boundary owner round-trips and feeds the first compartment, but it remains synthetic contract evidence rather than revision-53 split-run evidence.
+`tools/stateq01/upper_boundary_reservoir_wiring_harness.py` represents synthetic concentrations and `Hetop` as exact rational `Fraction` values. It tests the accepted-owner to checkpoint to next-start lifecycle without floating comparison.
+
+GitHub Actions run `34335620989`, job `102414197663`, executed the persisted harness at head `d19cc018dc67636b9d3501a88e63cc7499bbf6c2` under CPython 3.12.14. All 10 tests passed.
+
+The passing sentinels establish, within this exact synthetic branch:
+
+- nonzero NH4, NO3, DOM, DON, PO4 and DOP reservoir state survives the accepted boundary exactly;
+- split checkpoint/restore wiring matches uninterrupted wiring;
+- the interval-average boundary equals the restored owner and feeds first active compartment 1 for `Flpn=0`;
+- checkpoint state contains one accepted reservoir owner, not duplicate start and average owners;
+- reservoir amount equals concentration times the bound `Hetop` exactly;
+- geometry identity, `Hetop` and P-activation mismatch fail before restore;
+- no test mutates input state or checkpoint payload;
+- no floating tolerance is used.
+
+This is `SYNTHETIC_SOURCE_BRANCH_CONTRACT_NON_B2` evidence. It does not execute `UBoundconc.for`, transport physics or a revision-53 split run.
 
 ## Result
 
-Source-level RC-R12 ownership and feed semantics are now qualified:
+RC-R12 now has both source ownership/feed qualification and an executable exact wiring sentinel:
 
-`SOURCE_QUALIFIED_ACCEPTED_BOUNDARY_OWNER_AND_TRANSPORT_FEED_RC_R12_EXECUTION_OPEN`
+`SOURCE_QUALIFIED_SYNTHETIC_EXACT_RC_R12_WIRING_PASS_NONZERO_FLUX_REAL_SPLIT_OPEN`
 
-What remains is executable split continuity. The next safe step is an exact no-flux, nonzero-reservoir synthetic wiring sentinel, followed later by a profile-clean real split-run under the admitted numerical policy.
+The remaining RC-R12 gap is narrower: nonzero-flux exponential update continuity and a profile-clean executable split run remain open. Those comparisons must use the admitted numerical policy rather than a STATEQ01-specific tolerance.
