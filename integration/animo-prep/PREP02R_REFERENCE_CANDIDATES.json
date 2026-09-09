@@ -21,24 +21,31 @@
     },
     {
       "id": "PREP02R-C02",
-      "artifact_identity": "animo41.exe referenced by supplied historical testcase launchers",
-      "artifact_type": "expected_historical_executable",
-      "version": "4.1.x_by_runner_name_only",
-      "revision": null,
-      "date": null,
-      "toolchain": null,
-      "sha256": null,
-      "bytes_available": false,
-      "provenance_strength": "medium_testbank_runner_reference",
-      "relation_to_revision_53": "plausible_runner_for_supplied_4.1-era_testbank_but_exact_revision_unproven",
-      "trust_classification": "TARGET_NOT_OBTAINED",
+      "artifact_identity": "received animo41.exe matching supplied testcase runner filename",
+      "artifact_type": "received_native_executable",
+      "version": "4.1.5_claimed_with_embedded_animo4.1.5_tag_string",
+      "revision": "53_claimed_or_static_source_metadata_not_independent_binary_provenance",
+      "date": "PE_timestamp_2026-05-27T13:41:28Z",
+      "toolchain": "observed Microsoft linker 14.35; Intel Fortran RTL catalog V20.0-001 Jan 10 2019; RSDS PDB path x64/Debug",
+      "sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+      "bytes_available": true,
+      "provenance_strength": "strong_received_byte_identity_and_direct_recent_build_evidence_but_unverified_original_transfer_provenance",
+      "relation_to_revision_53": "source-adjacent recent rebuild candidate; direct PE/debug evidence prevents classification as an original historical revision-53 executable",
+      "trust_classification": "RECENT_2026_NATIVE_REBUILD_CANDIDATE_NOT_HISTORICAL_REFERENCE",
       "reference_admitted": false,
+      "native_execution_admitted": false,
       "evidence": [
         "CranGrass/RunCranGrass.bat -> ..\\animo41.exe Animo.ini",
         "CranMais/RunCranMais.bat -> ..\\animo41.exe Animo.ini",
         "GrassPeat/RunGrassPeat.bat -> ..\\animo41.exe Animo.ini",
-        "RuurloGrass/RunRuurloGrass.cmd -> ..\\animo41.exe Animo.ini"
-      ]
+        "RuurloGrass/RunRuurloGrass.cmd -> ..\\animo41.exe Animo.ini",
+        "PE timestamp 2026-05-27T13:41:28Z",
+        "embedded source root D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\src_develop_for_20260519\\",
+        "CodeView PDB path D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\x64\\Debug\\animo41.pdb",
+        "linker version 14.35",
+        "Intel Fortran RTL catalog V20.0-001 Jan 10 2019"
+      ],
+      "notes": "The frozen Version.inc compiler string identifies Intel Visual Fortran Composer XE 12.1.0.233, but the received executable's direct linker/runtime/debug metadata shows a later build. Static source metadata is not actual build provenance."
     },
     {
       "id": "PREP02R-C03",
@@ -165,9 +172,39 @@
       "reference_admitted": false,
       "notes": "Terms prohibit making WENR software available to third parties without prior written WENR permission; PREP02R should retain received binaries under controlled access and publish only hashes/provenance unless permission says otherwise.",
       "source_url": "https://backend.wur.nl/sites/default/files/2025-10/GENERAL-TERMS-CONDITIONS-ENG.pdf"
+    },
+    {
+      "id": "PREP02R-C10",
+      "artifact_identity": "received animo41.sln plus animo41.vfproj project metadata bundle",
+      "artifact_type": "received_project_build_metadata",
+      "version": "Visual Studio solution format 11.00 / Intel Fortran project version 11.0",
+      "revision": null,
+      "date": "received_2026-09-09",
+      "toolchain": "Intel Fortran project; Console Application - Converted from CVF",
+      "sha256": null,
+      "content_set_sha256": "3dc760141d9047d86e07f9490c5e591ac1d6298b3c47882177d8ed9dec53e2b6",
+      "member_hashes": {
+        "animo41.sln": "206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2",
+        "animo41.vfproj": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a"
+      },
+      "bytes_available": true,
+      "provenance_strength": "strong_received_byte_identity_direct_build_configuration_evidence_original_historical_provenance_unverified",
+      "relation_to_revision_53": "source-set is highly compatible with the frozen supplied archive but exact original historical project identity is not proven",
+      "trust_classification": "DIRECT_BUILD_CONFIGURATION_EVIDENCE_WITH_UNVERIFIED_ORIGINAL_PROVENANCE",
+      "reference_admitted": false,
+      "evidence": [
+        "RealKIND=realKIND8 in all four configurations",
+        "LocalVariableStorage=localStorageSave in all four configurations",
+        "FloatingPointModel=source in all four configurations",
+        "CallingConvention=callConventionCVF in all four configurations",
+        "Debug|x64 LocalSavedScalarsZero=true",
+        "63 project members; frozen source directory has 65 files; only input1_1.for and Outselorg.for are absent from the project"
+      ],
+      "notes": "This materially narrows TCD-004/TCD-010/TCD-011 build-contract uncertainty but cannot itself establish B2 historical fidelity."
     }
   ],
   "qualifying_reference_artifact_obtained": false,
+  "native_reconstruction_candidate_obtained": true,
   "native_reference_run_completed": false,
   "global_tolerance_defined": false
 }
