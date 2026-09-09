@@ -2,14 +2,23 @@
   "workunit": "ANIMO-STATEQ01",
   "artifact": "RC-R3 exact year-boundary continuation sentinel",
   "profile": "CORE_CNP_SUBSURFACE_ONLY",
-  "status": "PERSISTED_NOT_YET_EXECUTED",
-  "evidence_class": "SYNTHETIC_TS01_TIME02_BOUNDARY_CONTRACT_NON_B2",
+  "status": "PASS_SYNTHETIC_EXACT_YEAR_BOUNDARY_CONTINUATION_NON_B2",
+  "evidence_class": "SYNTHETIC_EXECUTABLE_TS01_TIME02_BOUNDARY_CONTRACT_NON_B2",
   "production_code": false,
   "physics_change": false,
   "canonical_state_admission": "NOT_ADMITTED",
   "canonical_time_admission": "NOT_ADMITTED",
   "harness_module": "tools/stateq01/year_boundary_continuation_harness.py",
   "test_module": "tests/stateq01/test_year_boundary_continuation_harness.py",
+  "workflow": {
+    "run_id": 34337823482,
+    "job_id": 102421283485,
+    "tested_head": "5b5f1234f8d2d4a76a1c1abb0e21c4a7871912cf",
+    "python": "3.12.14",
+    "tests_run": 10,
+    "tests_passed": 10,
+    "tests_failed": 0
+  },
   "contract": {
     "physical_processing_before_prior_year_closeout": true,
     "checkpoint_at_single_exact_year_boundary": true,
@@ -18,8 +27,18 @@
     "new_year_initialization_occurs_on_next_interval_side": true,
     "hidden_epsilon": "FORBIDDEN"
   },
-  "tested": false,
-  "qualified": false,
-  "qualification_boundary": "synthetic ordering contract only; no supplied-case revision-53 year-boundary split and canonical TIME remains external",
-  "next": "execute persisted sentinel in GitHub Actions"
+  "sentinel_results": {
+    "prior_year_closeout_after_physical_t1": true,
+    "checkpoint_and_next_start_share_exact_coordinate": true,
+    "split_and_uninterrupted_synthetic_state_match": true,
+    "closeout_not_replayed_on_restore": true,
+    "new_year_init_only_on_next_interval_side": true,
+    "one_second_offset_rejected": true,
+    "floating_coordinate_rejected": true,
+    "nonreduced_rational_coordinate_rejected": true
+  },
+  "tested": true,
+  "qualified": true,
+  "qualification_boundary": "synthetic ordering contract only; no supplied-case revision-53 behavioural year-boundary split and canonical TIME remains external",
+  "next": "retain exact shared-boundary ordering contract; execute a profile-clean behavioural year-boundary split when an admissible fixture exists"
 }
