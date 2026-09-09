@@ -9,6 +9,10 @@
   "technical_review_head": "02ce1f49582d2b8cb794c3bfb9d674481a2eea1e",
   "technical_review_validation_run": 34383614846,
   "technical_review_validation_conclusion": "success",
+  "handoff_contract_branch": "work/animo-b3b03r-review-execution-contract",
+  "handoff_contract_head": "1d0aeae8c9f40547f8ac9273fc4c9655593bdecd",
+  "handoff_contract_validation_run": 34385420335,
+  "handoff_contract_validation_conclusion": "success",
   "review_status": "PENDING_INDEPENDENT_REVIEW",
   "reviewer_independent_from_B3B03_authoring": null,
   "reviewer_identity_or_workunit": null,
@@ -33,5 +37,7 @@
   "B3_admitted": false,
   "production_patch": false,
   "production_migration_admitted": false,
-  "review_notes": []
+  "review_notes": [
+    "Handoff execution contract validated in run 34385420335. This does not satisfy reviewer independence and must not be treated as a completed second-line review."
+  ]
 }
