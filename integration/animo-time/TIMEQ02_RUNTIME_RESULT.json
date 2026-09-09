@@ -1,0 +1,71 @@
+{
+  "work_unit": "ANIMO-TIMEQ02",
+  "evidence_class": "ADAPTER_RUNTIME_SYNTHETIC_PRODUCER",
+  "reference_behavior": "NOT_B2",
+  "scientific_admission": false,
+  "tested_head": "8ad45372c38a81fb4c3c624c9cfb26066088c334",
+  "workflow": ".github/workflows/timeq02-adapter-runtime.yml",
+  "workflow_name": "ANIMO-TIMEQ02 adapter runtime qualification",
+  "workflow_run_id": 34321715432,
+  "job_id": 102369618484,
+  "runner": "ubuntu-24.04",
+  "python": "3.12.14",
+  "compile_result": "PASS",
+  "arch07_case_disposition": {
+    "rows": 41,
+    "execute": 38,
+    "deferred": 3,
+    "deferred_ids": ["H016", "T008", "T009"],
+    "result": "PASS"
+  },
+  "tests_total": 38,
+  "tests_passed": 38,
+  "tests_failed": 0,
+  "result": "PASS",
+  "executed_arch07_cases": [
+    "H001", "H002", "H003", "H004", "H005", "H006", "H007", "H008", "H009", "H010", "H011", "H012", "H013", "H014", "H015",
+    "C001", "C002", "C003", "C004", "C005", "C006", "C007", "C008", "C009", "C010", "C011", "C012",
+    "T001", "T002", "T003", "T004", "T005", "T006", "T007",
+    "I001", "I002", "I003", "I004"
+  ],
+  "qualified_fixture_observations": [
+    "valid detailed and aggregated hydrology frame construction is executable",
+    "missing required and inactive conditional fields fail closed",
+    "semantic unit and shape mismatch fail closed without inferred conversion or resize",
+    "explicit producer-native sign normalization creates a new immutable frame identity",
+    "stale generation layout geometry configuration exchange-binding precision and schema identities fail closed",
+    "undeclared chemistry is rejected from hydrology frame metadata",
+    "TCD-018 interception begin/end storage plus interception evaporation can be represented together without correction admission",
+    "macropore exchange fields fail closed while inactive and macropore activation without admission fails closed",
+    "external crop frame ownership demand root-distribution state-observation and event-bundle rules are executable",
+    "external crop residue/export transfer inference from state delta is forbidden",
+    "realized N and P uptake link to exactly one typed physical trial event",
+    "rejected uptake result leaves no committed physical event or owner-generation advance",
+    "coupled begin reject accept retry diagnostic and checkpoint-owner rules execute through TIMEQ01",
+    "diagnostic settings do not alter physical binding identity",
+    "parameter changes alter configuration identity without changing layout/exchange topology identity",
+    "feature-layout and schema changes invalidate stale bindings"
+  ],
+  "deferred_cases": {
+    "H016": "positive macropore adapter qualification requires a scientifically admitted matching feature contract",
+    "T008": "split-run equivalence remains REFERENCE_BEHAVIOR and requires admitted STATE/TIME plus independent comparison evidence",
+    "T009": "rollback-replay equivalence remains REFERENCE_BEHAVIOR; TIMEQ01/TIMEQ02 synthetic replay cannot substitute for historical B2"
+  },
+  "non_claims": [
+    "no SWAP hydrology adapter executed",
+    "no WOFOST or other external crop adapter executed",
+    "no ANIMO scientific process equation executed",
+    "no historical testcase executed by TIMEQ02",
+    "no B2 historical behaviour generated",
+    "no positive active macropore adapter case qualified",
+    "no numerical solver precision or tolerance policy qualified",
+    "no canonical STATE TIME MASS or EX admitted",
+    "no B3 or B4 admitted",
+    "no production readiness or migration admitted"
+  ],
+  "legacy_source_modified": false,
+  "historical_testcase_modified": false,
+  "production_code_modified": false,
+  "physics_changed": false,
+  "numerical_policy_changed": false
+}
