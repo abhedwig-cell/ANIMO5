@@ -33,38 +33,21 @@
   },
   "residual_reconciliation": {
     "source_register": "integration/animo-mass/MASSQ02_RESIDUAL_CLASSIFICATION.csv",
+    "final_probe_evidence": "integration/animo-mass/MASSQ02_FINAL_RESIDUAL_PROBE_EVIDENCE.json",
     "nonzero_records_classified": 23,
     "class_counts": {
       "KNOWN_TCD": 6,
       "REPORTING_SEMANTIC_DIFFERENCE": 2,
-      "NEW_CAUSAL_FINDING": 13,
-      "UNEXPLAINED": 2
+      "CONTROL_VOLUME_MISMATCH": 0,
+      "TRANSACTION_BOUNDARY_MISMATCH": 0,
+      "NEW_CAUSAL_FINDING": 15,
+      "UNEXPLAINED": 0
     },
-    "unexplained": [
-      {
-        "record_id": "R010",
-        "case": "CranGrass",
-        "interval": "TITO=724",
-        "quantity": "water",
-        "residual": -0.0030198960466805147,
-        "unit": "mm",
-        "effect": "MASS_ADMISSION_BLOCKER_PENDING_CAUSAL_ISOLATION"
-      },
-      {
-        "record_id": "R016",
-        "case": "RuurloGrass",
-        "interval": "TITO=1915",
-        "quantity": "N",
-        "residual": 0.0067493732130969875,
-        "unit": "kg/ha N",
-        "effect": "MASS_ADMISSION_BLOCKER_PENDING_CAUSAL_ISOLATION"
-      }
-    ],
+    "causal_reconciliation_complete_for_current_evidence_set": true,
     "new_causal_findings": {
-      "count": 13,
+      "count": 15,
       "canonical_tcd_allocated_here": 0,
-      "route": "NEXT_GOVERNED_INCREMENTAL_B3_INTAKE",
-      "reason": "completed B3I02 explicitly excluded in-progress MASSQ02; MASSQ02 is not permitted to allocate new TCD identifiers"
+      "route": "NEXT_GOVERNED_INCREMENTAL_B3_INTAKE"
     },
     "known_tcd_visibility": [
       "TCD-014",
@@ -77,10 +60,33 @@
       "TCD-017",
       "TCD-018"
     ],
+    "final_new_localizations": [
+      {
+        "record_id": "R010",
+        "case": "CranGrass",
+        "interval": "TITO=724",
+        "quantity": "water",
+        "classification": "NEW_CAUSAL_FINDING",
+        "causal_owner": "Hydro_detailed.for:235-247 whole-profile Badev equation",
+        "observer_residual_mm": -0.0030198960466805147,
+        "source_computed_badev_mm": -0.003019896046315779
+      },
+      {
+        "record_id": "R016",
+        "case": "RuurloGrass",
+        "interval": "TITO=1915",
+        "quantity": "N",
+        "classification": "NEW_CAUSAL_FINDING",
+        "causal_owner": "UBoundconc.for:110-132 zero-top-throughflow concentration-reservoir branch plus Outbal_calc.for:766-784 booked precipitation/deposition input",
+        "observer_residual_kg_ha_N": 0.0067493732130969875,
+        "booked_precipitation_deposition_N_kg_ha": 0.006749373218
+      }
+    ],
     "acceptance_epsilon_introduced": false
   },
   "typed_event_projection": {
     "artifact": "integration/animo-mass/TYPED_EVENT_PROJECTION.json",
+    "documentation": "docs/mass/TYPED_TRANSFER_EVENT_CANDIDATE.md",
     "status": "QUALIFIED_CANDIDATE_TYPED_EVENT_PROJECTION_NOT_CANONICAL_RUNTIME_JOURNAL",
     "required_fields": [
       "time_interval",
@@ -100,14 +106,15 @@
     "external_event_single_boundary_crossing_rule": "PASS_BY_OWNER_XOR_RULE",
     "legacy_balance_accumulator_as_state_owner": false,
     "legacy_balance_accumulator_as_event_amount_owner": false,
-    "canonical_runtime_event_journal_implemented": false
+    "canonical_runtime_event_journal_implemented": false,
+    "canonical_runtime_event_journal_admitted": false
   },
   "observer_independence": {
     "closure_rule": "begin storage + external inputs + source terms - external outputs - end storage",
     "physical_storage_source": "read-only owner state snapshots/result state",
     "physical_transfer_source": "source process/transport coordinates",
     "legacy_balance_arrays_authoritative": false,
-    "supporting_result": "multiple N/P residuals reproduce locally in TRANSPORT/Transgen before public whole-profile balance accumulation"
+    "supporting_result": "residuals localize in TRANSPORT/Transgen/Hydro_detailed/UBoundconc-plus-explicit-input without requiring legacy whole-profile balance arrays as physical owners"
   },
   "natural_coverage": {
     "case_count": 8,
@@ -130,7 +137,8 @@
     "crop_uptake_routes": {
       "CropUptakeModel_0_naturally_exercised": true,
       "CropUptakeModel_1_naturally_exercised": true,
-      "full_executable_soil_crop_nested_closure_qualified": false
+      "typed_owner_event_semantics_qualified": true,
+      "full_executable_soil_crop_nested_state_plus_event_closure_qualified": false
     }
   },
   "feature_readiness": {
@@ -140,28 +148,18 @@
     "GHG": "FAIL_CLOSED_INCOMPLETE_NO_COMPATIBLE_NATURAL_ACTIVE_B1_CASE_NO_MASSQ02_GHG_EVENT_ADMISSION",
     "carbon": "BOUNDED_SOIL_ORGANIC_C_ONLY_WHOLE_SYSTEM_ELEMENTAL_C_NOT_QUALIFIED"
   },
-  "b3i02_reconciliation": {
-    "branch": "work/animo-b3i02-post-b3i01-incremental-intake",
-    "closeout_head": "c1a69c00a02aa0e32ca60580c3d0ebee96442c17",
-    "closeout_status": "QUALIFIED_INCREMENTAL_CANONICAL_DISCREPANCY_INTAKE_NO_ADMISSIONS",
-    "massq01_residuals_at_closeout": "LOCAL_OBSERVER_FINDING_PENDING_CAUSALITY",
-    "massq02_was_explicitly_excluded_as_in_progress": true,
-    "massq02_new_tcd_allocation": 0,
-    "followup": "feed the 13 newly causal findings into the next governed incremental B3 intake"
-  },
   "mass_gate": {
     "ready_for_next_admission_work": true,
     "admitted": false,
     "decision": "MASS_ADMISSION_PENDING",
     "blockers": [
-      "CranGrass TITO=724 water residual remains UNEXPLAINED",
-      "RuurloGrass TITO=1915 N residual remains UNEXPLAINED",
-      "13 newly causal findings require governed B3 intake",
-      "full executable soil+crop nested closure is not yet qualified",
+      "15 newly causal findings require governed incremental B3 intake",
+      "existing governed TCDs remain admission constraints where physical or ledger nonclosure is exposed",
+      "candidate typed-event projection is not yet an implemented/admitted canonical runtime journal",
+      "full executable soil+crop nested state-plus-event closure is not qualified",
       "natural active-macropore coverage is absent",
       "GHG event/state completeness is fail-closed incomplete",
-      "whole-system elemental-C closure is not qualified",
-      "candidate typed-event projection is not yet a canonical runtime journal"
+      "whole-system elemental-C closure is not qualified"
     ]
   },
   "deliverables": [
@@ -171,5 +169,8 @@
     "integration/animo-mass/TYPED_EVENT_PROJECTION.json",
     "integration/animo-mass/ANIMO-MASSQ02_STATUS.json"
   ],
+  "b2_reference_claim": false,
+  "b3_admitted": false,
+  "production_migration_admitted": false,
   "checkpoint_decision": "QUALIFIED_TYPED_MASS_EVENT_PROJECTION_AND_RESIDUAL_RECONCILIATION_MASS_ADMISSION_PENDING"
 }
