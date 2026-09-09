@@ -19,6 +19,7 @@
     "class_specific_evidence",
     "gates",
     "residual_uncertainty",
+    "composition",
     "admission_decision"
   ],
   "properties": {
@@ -318,17 +319,53 @@
               }
             }
           },
-          "evidence": {"required": ["historical_uncertainty"]}
+          "evidence": {"required": ["historical_uncertainty"]},
+          "disposition": {
+            "enum": [
+              "ADMIT_CORRECTED_LEGACY_BEHAVIOUR",
+              "REPRESENTATION_CHANGE_ONLY",
+              "NUMERICAL_POLICY_CHANGE_REQUIRES_SEPARATE_QUALIFICATION",
+              "PHYSICS_CHANGE_REQUIRES_SEPARATE_SCIENTIFIC_ADMISSION",
+              "UNRESOLVED_NOT_ADMITTED",
+              "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY"
+            ]
+          }
         }
       }
     },
     {
+      "if": {"properties": {"disposition": {"const": "PRESERVE_HISTORICAL_BEHAVIOUR"}}},
+      "then": {"properties": {"admission_route": {"const": "NORMAL_B2_AVAILABLE"}}}
+    },
+    {
       "if": {"properties": {"disposition": {"const": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY"}}},
+      "then": {"properties": {"admission_route": {"const": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY"}}}
+    },
+    {
+      "if": {"properties": {"disposition": {"const": "REPRESENTATION_CHANGE_ONLY"}}},
+      "then": {"properties": {"qualification_class": {"const": "D"}}}
+    },
+    {
+      "if": {"properties": {"disposition": {"const": "NUMERICAL_POLICY_CHANGE_REQUIRES_SEPARATE_QUALIFICATION"}}},
       "then": {
         "properties": {
-          "admission_route": {"const": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY"}
+          "qualification_class": {"const": "E"},
+          "admission_decision": {"properties": {"admitted": {"const": false}}}
         }
       }
+    },
+    {
+      "if": {"properties": {"disposition": {"const": "PHYSICS_CHANGE_REQUIRES_SEPARATE_SCIENTIFIC_ADMISSION"}}},
+      "then": {
+        "properties": {
+          "qualification_class": {"const": "F"},
+          "admission_decision": {"properties": {"admitted": {"const": false}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"disposition": {"const": "UNRESOLVED_NOT_ADMITTED"}}},
+      "then": {"properties": {"admission_decision": {"properties": {"admitted": {"const": false}}}}}
     },
     {
       "if": {"properties": {"qualification_class": {"const": "A"}}},
@@ -469,10 +506,36 @@
       }
     },
     {
+      "if": {"properties": {"composition": {"properties": {"is_composition": {"const": true}}}}},
+      "then": {
+        "properties": {
+          "composition": {
+            "required": ["composition_record_id"],
+            "properties": {"component_record_ids": {"minItems": 2}}
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "composition": {
+            "properties": {"component_record_ids": {"maxItems": 0}}
+          }
+        }
+      }
+    },
+    {
       "if": {"properties": {"admission_decision": {"properties": {"admitted": {"const": true}}}},
       "then": {
         "properties": {
           "atomicity": {"const": "ATOMIC"},
+          "disposition": {
+            "enum": [
+              "PRESERVE_HISTORICAL_BEHAVIOUR",
+              "ADMIT_CORRECTED_LEGACY_BEHAVIOUR",
+              "REPRESENTATION_CHANGE_ONLY",
+              "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY"
+            ]
+          },
           "gates": {
             "properties": {
               "b0_identity": {"properties": {"status": {"const": "PASS"}}},
@@ -541,6 +604,7 @@
     "test_pass_without_qualification": "NOT_ADMITTED",
     "b1_used_as_b2": "NOT_ADMITTED",
     "synthetic_case_used_as_historical_reference": "NOT_ADMITTED",
-    "composition_without_separate_record": "NOT_ADMITTED"
+    "composition_without_separate_record": "NOT_ADMITTED",
+    "non_admission_disposition_with_admitted_true": "SCHEMA_INVALID"
   }
 }
