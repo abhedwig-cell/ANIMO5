@@ -6,6 +6,7 @@
   "base_branch": "work/animo-b3q01-scientific-admission-framework",
   "base_head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
   "evaluated_candidate_head_before_closeout_record": "7c36561054f2e4df812d28ca7c65ae30e213f9d8",
+  "continuation_substantive_head_before_status_update": "7486bc493abc97fa8c282ae3394f4fe828f99af7",
   "target_tcd": "TCD-015",
   "b3_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
   "atomicity": "ATOMIC_LOCAL_ALGEBRA_CLAIM",
@@ -38,6 +39,7 @@
     "SYNQ01_oracle": "PASS_SYNQ_O001_STRONGLY_INDEPENDENT_NO_B2_CLAIM",
     "expected_difference_predeclared_before_broad_matrix": "PASS",
     "additional_B1_non_interference": "PASS_CURRENT_CORE_NON_GHG_SCOPE",
+    "reachable_clipping_reconstruction_branch_coverage": "PASS_IFLSOL_1_3_4_WITH_STRUCTURAL_UNREACHABILITY_IFLSOL_2_5",
     "historical_reference": "NOT_QUALIFIED",
     "independent_second_line_review": "PENDING"
   },
@@ -60,8 +62,29 @@
     "LWKM_nitrate_massbalance_warnings_baseline": 3,
     "LWKM_nitrate_massbalance_warnings_candidate": 0
   },
+  "branch_coverage_supplement": {
+    "status": "QUALIFIED_REACHABLE_CLIPPING_RECONSTRUCTION_BRANCH_COVERAGE_WITH_STRUCTURAL_UNREACHABILITY_FOR_IFLSOL_2_AND_5",
+    "natural_target_hits": 508,
+    "natural_iflsol_counts": {
+      "1": 486,
+      "3": 22
+    },
+    "natural_non_nitrate_target_hits": 0,
+    "isolated_reachable_modes_exercised": [
+      1,
+      3,
+      4
+    ],
+    "iflsol_3_exact_zero_delta_control": true,
+    "iflsol_2_structurally_unreachable_for_target_branch_in_valid_positive_storage_domain": true,
+    "iflsol_5_structurally_unreachable_for_target_branch_in_valid_positive_storage_domain": true,
+    "numerical_tolerance_used_for_acceptance": false,
+    "machine_record": "integration/animo-b3/TCD015_BRANCH_COVERAGE_SUPPLEMENT.json",
+    "human_record": "docs/b3/TCD015_BRANCH_COVERAGE_SUPPLEMENT.md"
+  },
   "route": {
     "PREP02R_status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+    "live_rechecked_2026_09_09": true,
     "normal_B2_route_available": false,
     "historical_uncertainty_route_eligible": false,
     "external_request_sent": false,
@@ -73,7 +96,18 @@
     "required": true,
     "complete": false,
     "self_certified": false,
-    "result": "NOT_REVIEWED"
+    "result": "NOT_REVIEWED",
+    "pull_request": 21,
+    "pull_request_ready_for_review": true,
+    "review_submissions_observed": 1,
+    "independent_review_submissions_observed": 0,
+    "note": "The only observed review submission is a COMMENTED handoff by the same repository account and is not counted as independent second-line review."
+  },
+  "validation": {
+    "substantive_head": "7486bc493abc97fa8c282ae3394f4fe828f99af7",
+    "workflow": "ANIMO-B3Q01 governance validation",
+    "workflow_run": 34352362649,
+    "conclusion": "success"
   },
   "feature_scope": {
     "qualified_readiness_scope": "core nitrate transport with GreenHouseGasOption=0",
@@ -91,6 +125,10 @@
     "integration/animo-b3/TCD015_EXPECTED_DIFFERENCE.json",
     "integration/animo-b3/TCD015_CLASS_B_READINESS.json",
     "integration/animo-b3/ANIMO-B3B01_STATUS.json"
+  ],
+  "supplemental_artifacts": [
+    "docs/b3/TCD015_BRANCH_COVERAGE_SUPPLEMENT.md",
+    "integration/animo-b3/TCD015_BRANCH_COVERAGE_SUPPLEMENT.json"
   ],
   "hard_rules_verified": {
     "clipping_policy_redesign": false,
