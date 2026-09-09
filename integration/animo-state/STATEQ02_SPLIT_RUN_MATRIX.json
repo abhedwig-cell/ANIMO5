@@ -1,16 +1,299 @@
 {
   "workunit": "ANIMO-STATEQ02",
-  "status": "IN_PROGRESS_NO_EXECUTABLE_RESULTS_YET",
-  "evidence_class": "PENDING_B0_HASH_PINNED_EXECUTION",
+  "status": "QUALIFIED_RESTRICTED_CORE_EXECUTABLE_CHECKPOINT_SEMANTICS_CANONICAL_STATE_ADMISSION_PENDING",
+  "evidence_class": "B0_HASH_PINNED_DIAGNOSTIC_EXECUTION_NOT_B2",
+  "branch": "work/animo-stateq02-restricted-core-executable-split-run",
+  "base": "ANIMO-STATEQ01@4adae99576eb56978da71f7c8a250e4445fd3bc4",
   "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
   "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
-  "profile": "RESTRICTED_CORE_CNP_SURFACE_EXCLUDED",
-  "cases": [],
+  "qualification_executable_sha256": "ecb38aa4de825b4f4017c68c4870dd38c7c916d337404147193e7c0fe332cb31",
+  "continuous_trace_sha256": "162520bc38451e3242a3d72d418a24ed994f650f2b9d10003d8abf0d425156a5",
+  "continuous_meta_sha256": "4bce56dea5a795567ea741e5c93dbe8fd8f3c83072b27078aee5afab19fcde7b",
+  "profile": "RESTRICTED_CORE_CNP_WITH_EXTERNAL_CROP_SURFACE_EXCLUDED",
+  "cases": [
+    {
+      "case_id": "STATEQ02-SPLIT-66",
+      "natural_case": "LWKM_gras_1040.2021.2045",
+      "split_step": 66,
+      "accepted_runtime_date": "1992-11-01",
+      "boundary_classes": [
+        "MANAGEMENT_ADJACENT",
+        "P_ACTIVE",
+        "UPPER_RESERVOIR_NONZERO",
+        "ZERO_SURFACE_STORAGE"
+      ],
+      "profile_guards": {
+        "IoptGHG": 0,
+        "IoptMP": 0,
+        "IoptPCl": 0,
+        "surface_Pnt": 0.0,
+        "surface_Snt": 0.0,
+        "layer0_restart_solutes": "EXACT_ZERO",
+        "stable_dom_state": "EXACT_ZERO"
+      },
+      "p_state": {
+        "active": true,
+        "fast_site_count": 1,
+        "slow_site_count": 3,
+        "site_resolved_checkpointed": true
+      },
+      "crop_mode": "EXTERNAL",
+      "external_crop_continuation": {
+        "actual_N": true,
+        "potential_N": true,
+        "actual_P": true,
+        "potential_P": true,
+        "deficits_reconstructed_exactly": true
+      },
+      "management": {
+        "accepted_Adnr": 48,
+        "next_Adnr": 49,
+        "dynamic_material_composition_cache_checkpointed_as_continuation": true
+      },
+      "upper_boundary_reservoir_max_abs": 0.005646091783698756,
+      "accepted_restore_snapshot_exact": true,
+      "future_records_compared": 24,
+      "future_end_step": 90,
+      "future_physical_trace_exact": true,
+      "max_abs_difference": 0.0,
+      "comparison_policy": "EXACT_BITWISE_NO_TOLERANCE",
+      "checkpoint_sha256": "d55a54242542828d5863ad75e0700ea8ae74a3164faaa78fd066e358fe9a2cb4",
+      "restore_echo_sha256": "e1bdddabe79103a6c56acf299ce323bfe2dbc782d79d6130efb49d2a6060185c",
+      "restart_tail_trace_sha256": "56b82586842c7e0e97156f4118019a97e6fa583a5290bd19de1c8edeac20d0bd"
+    },
+    {
+      "case_id": "STATEQ02-SPLIT-67",
+      "natural_case": "LWKM_gras_1040.2021.2045",
+      "split_step": 67,
+      "accepted_runtime_date": "1992-11-11",
+      "boundary_classes": [
+        "ORDINARY_INTERIOR",
+        "P_ACTIVE",
+        "UPPER_RESERVOIR_NONZERO",
+        "ZERO_SURFACE_STORAGE"
+      ],
+      "profile_guards": {
+        "IoptGHG": 0,
+        "IoptMP": 0,
+        "IoptPCl": 0,
+        "surface_Pnt": 0.0,
+        "surface_Snt": 0.0,
+        "layer0_restart_solutes": "EXACT_ZERO",
+        "stable_dom_state": "EXACT_ZERO"
+      },
+      "p_state": {
+        "active": true,
+        "fast_site_count": 1,
+        "slow_site_count": 3,
+        "site_resolved_checkpointed": true
+      },
+      "crop_mode": "EXTERNAL",
+      "external_crop_continuation": {
+        "actual_N": true,
+        "potential_N": true,
+        "actual_P": true,
+        "potential_P": true,
+        "deficits_reconstructed_exactly": true
+      },
+      "management": {
+        "accepted_Adnr": 49,
+        "next_Adnr": 49,
+        "dynamic_material_composition_cache_checkpointed_as_continuation": true
+      },
+      "upper_boundary_reservoir_max_abs": 0.012704037934301091,
+      "accepted_restore_snapshot_exact": true,
+      "future_records_compared": 833,
+      "future_end_step": 900,
+      "future_physical_trace_exact": true,
+      "max_abs_difference": 0.0,
+      "comparison_policy": "EXACT_BITWISE_NO_TOLERANCE",
+      "checkpoint_sha256": "0fd081a4b2e8a655b91054c1cfa755fd1d38c133ee8a5efa51a7a116d0a01c15",
+      "restore_echo_sha256": "5f3d8e7d3c93416487ffb0c942bb372270b882d7b1f196bef770ec3d73eb9dfc",
+      "restart_tail_trace_sha256": "10d7a720f6d3dade56e3632b28710b9bb881f8a6a490d822632a74a5c2037ca1"
+    },
+    {
+      "case_id": "STATEQ02-SPLIT-68",
+      "natural_case": "LWKM_gras_1040.2021.2045",
+      "split_step": 68,
+      "accepted_runtime_date": "1992-11-21",
+      "boundary_classes": [
+        "P_ACTIVE",
+        "UPPER_RESERVOIR_NONZERO",
+        "ZERO_SURFACE_STORAGE_NEGATIVE_CONTROL"
+      ],
+      "profile_guards": {
+        "IoptGHG": 0,
+        "IoptMP": 0,
+        "IoptPCl": 0,
+        "surface_Pnt": 0.0,
+        "surface_Snt": 0.0,
+        "layer0_restart_solutes": "EXACT_ZERO",
+        "stable_dom_state": "EXACT_ZERO"
+      },
+      "p_state": {
+        "active": true,
+        "fast_site_count": 1,
+        "slow_site_count": 3,
+        "site_resolved_checkpointed": true
+      },
+      "crop_mode": "EXTERNAL",
+      "external_crop_continuation": {
+        "actual_N": true,
+        "potential_N": true,
+        "actual_P": true,
+        "potential_P": true,
+        "deficits_reconstructed_exactly": true
+      },
+      "management": {
+        "accepted_Adnr": 49,
+        "next_Adnr": 49,
+        "dynamic_material_composition_cache_checkpointed_as_continuation": true
+      },
+      "upper_boundary_reservoir_max_abs": 0.001423256833984173,
+      "accepted_restore_snapshot_exact": true,
+      "future_records_compared": 42,
+      "future_end_step": 110,
+      "future_physical_trace_exact": true,
+      "max_abs_difference": 0.0,
+      "comparison_policy": "EXACT_BITWISE_NO_TOLERANCE",
+      "checkpoint_sha256": "3482cc116b222d158f52fa82b97665ba13a3422f66bc6d05939ea17fc1e608e3",
+      "restore_echo_sha256": "dd8653e1f496b7c8928216050d07d607f996b21b7293bdaffa4f8c0cfdd60cc4",
+      "restart_tail_trace_sha256": "d0c0bbf28f8bc8ceaf0f352b8fc04ace2d233de6fe7f5128a08eed07880e79e0"
+    },
+    {
+      "case_id": "STATEQ02-SPLIT-71",
+      "natural_case": "LWKM_gras_1040.2021.2045",
+      "split_step": 71,
+      "accepted_runtime_date": "1992-12-21",
+      "boundary_classes": [
+        "YEAR_ADJACENT",
+        "UPPER_RESERVOIR_NONZERO",
+        "ZERO_SURFACE_STORAGE"
+      ],
+      "profile_guards": {
+        "IoptGHG": 0,
+        "IoptMP": 0,
+        "IoptPCl": 0,
+        "surface_Pnt": 0.0,
+        "surface_Snt": 0.0,
+        "layer0_restart_solutes": "EXACT_ZERO",
+        "stable_dom_state": "EXACT_ZERO"
+      },
+      "p_state": {
+        "active": true,
+        "fast_site_count": 1,
+        "slow_site_count": 3,
+        "site_resolved_checkpointed": true
+      },
+      "crop_mode": "EXTERNAL",
+      "external_crop_continuation": {
+        "actual_N": true,
+        "potential_N": true,
+        "actual_P": true,
+        "potential_P": true,
+        "deficits_reconstructed_exactly": true
+      },
+      "management": {
+        "accepted_Adnr": 49,
+        "next_Adnr": 49,
+        "dynamic_material_composition_cache_checkpointed_as_continuation": true
+      },
+      "upper_boundary_reservoir_max_abs": 1.2008693303859089e-05,
+      "accepted_restore_snapshot_exact": true,
+      "future_records_compared": 24,
+      "future_end_step": 95,
+      "future_physical_trace_exact": true,
+      "max_abs_difference": 0.0,
+      "comparison_policy": "EXACT_BITWISE_NO_TOLERANCE",
+      "checkpoint_sha256": "3b37383ac73c5fa5656d49a575dc93b703c2490fd43c89381c447b7832512547",
+      "restore_echo_sha256": "7e16961843692e29b097fb7cd35e6e00df8bcc5918263f5015114a1bfd3102e0",
+      "restart_tail_trace_sha256": "d2649f82bd1622fa03cbfb2d34ce4fe6c97f6fb6797ba8b0a3dfa572cb84e02f"
+    },
+    {
+      "case_id": "STATEQ02-SPLIT-72",
+      "natural_case": "LWKM_gras_1040.2021.2045",
+      "split_step": 72,
+      "accepted_runtime_date": "1993-01-01",
+      "boundary_classes": [
+        "YEAR_BOUNDARY",
+        "P_ACTIVE",
+        "UPPER_RESERVOIR_NONZERO",
+        "ZERO_SURFACE_STORAGE"
+      ],
+      "profile_guards": {
+        "IoptGHG": 0,
+        "IoptMP": 0,
+        "IoptPCl": 0,
+        "surface_Pnt": 0.0,
+        "surface_Snt": 0.0,
+        "layer0_restart_solutes": "EXACT_ZERO",
+        "stable_dom_state": "EXACT_ZERO"
+      },
+      "p_state": {
+        "active": true,
+        "fast_site_count": 1,
+        "slow_site_count": 3,
+        "site_resolved_checkpointed": true
+      },
+      "crop_mode": "EXTERNAL",
+      "external_crop_continuation": {
+        "actual_N": true,
+        "potential_N": true,
+        "actual_P": true,
+        "potential_P": true,
+        "deficits_reconstructed_exactly": true
+      },
+      "management": {
+        "accepted_Adnr": 49,
+        "next_Adnr": 49,
+        "dynamic_material_composition_cache_checkpointed_as_continuation": true
+      },
+      "upper_boundary_reservoir_max_abs": 1.0947327904478608e-05,
+      "accepted_restore_snapshot_exact": true,
+      "future_records_compared": 28,
+      "future_end_step": 100,
+      "future_physical_trace_exact": true,
+      "max_abs_difference": 0.0,
+      "comparison_policy": "EXACT_BITWISE_NO_TOLERANCE",
+      "checkpoint_sha256": "17e2723c419b66c7386a7b8b2263d76b8b62295ac7c8cea3b4e86794e2112524",
+      "restore_echo_sha256": "f61237020252fdf2ef8f3d0fbb78f7a5117019f3139c3180614582c221979ffc",
+      "restart_tail_trace_sha256": "bf2a43060bcf413d1704e9f1b9e11506aac2165cd9b9f7a14c0a1beed1219129"
+    },
+    {
+      "case_id": "STATEQ02-GUARD-282",
+      "natural_case": "LWKM_gras_1040.2021.2045",
+      "split_step": 282,
+      "accepted_runtime_date": "1998-11-01",
+      "boundary_classes": [
+        "POSITIVE_SURFACE_REJECTION_SENTINEL",
+        "TCD-040_LAYER0_ACTIVE_SENTINEL"
+      ],
+      "surface_Pnt": 0.001674652,
+      "surface_Snt": 0.0,
+      "layer0_restart_solutes_nonzero": true,
+      "stage_a_exit_code": 95,
+      "checkpoint_created": false,
+      "result": "REJECTED_BEFORE_CHECKPOINT",
+      "comparison_policy": "EXACT_GUARD_NO_TOLERANCE"
+    }
+  ],
   "hard_rules": {
     "restart_output_adjusted_to_force_equality": false,
     "omitted_state_zero_filled": false,
     "hidden_tolerance": false,
     "report_accumulator_is_physical_owner": false,
+    "parser_roundtrip_used_as_state_admission": false,
     "production_implementation": false
-  }
+  },
+  "scope_limits": [
+    "GHG",
+    "MACROPORES",
+    "TCD-016-C1_DRY_SOLUTE_TRANSITION",
+    "TCD-040_NONZERO_LAYER0_AQUEOUS_RESTART_PATH",
+    "INTERNAL_CROP_RESTART_STATE",
+    "STABLE_DOM_ACTIVE_STATE",
+    "PCLASS_ACTIVE_STATE"
+  ],
+  "canonical_state_admission": "PENDING",
+  "whole_model_state_claim": false
 }
