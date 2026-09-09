@@ -25,7 +25,7 @@ jobs:
       - name: Validate fail-closed independent review contract
         run: python tools/validate_b3b03r_independent_review.py
 
-      - name: Guard execution-contract scope
+      - name: Guard independent-review scope
         shell: bash
         run: |
           set -euo pipefail
@@ -33,10 +33,10 @@ jobs:
           cat /tmp/changed.txt
           while IFS= read -r f; do
             case "$f" in
-              integration/animo-b3/TCD024_INDEPENDENT_REVIEW_RESULT.json|tools/validate_b3b03r_independent_review.py|.github/workflows/animo-b3b03r-independent-review-contract.yml)
+              docs/b3/TCD024_INDEPENDENT_SECOND_LINE_REVIEW.md|integration/animo-b3/TCD024_INDEPENDENT_REVIEW_RESULT.json|tools/validate_b3b03r_independent_review.py|.github/workflows/animo-b3b03r-independent-review-contract.yml)
                 ;;
               *)
-                echo "Unexpected file outside B3B03R review-execution contract: $f" >&2
+                echo "Unexpected file outside B3B03R independent-review scope: $f" >&2
                 exit 1
                 ;;
             esac
