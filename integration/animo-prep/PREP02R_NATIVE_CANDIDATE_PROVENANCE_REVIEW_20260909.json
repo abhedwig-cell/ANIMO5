@@ -1,0 +1,143 @@
+{
+  "work_unit": "ANIMO-PREP02R",
+  "record_type": "SUPPLIED_NATIVE_ARTIFACT_PROVENANCE_REVIEW_NOT_REFERENCE_ADMISSION",
+  "review_date": "2026-09-09",
+  "received_artifacts": {
+    "animo41_exe": {
+      "sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+      "size": 6778368,
+      "receipt_manifest": "integration/animo-prep/PREP02R_RECEIPT_ANIMO41_EXE_20260909.json"
+    },
+    "animo41_sln": {
+      "sha256": "206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2",
+      "size": 1233
+    },
+    "animo41_vfproj": {
+      "sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+      "size": 9829,
+      "receipt_manifest": "integration/animo-prep/PREP02R_RECEIPT_ANIMO41_BUILD_METADATA_20260909.json"
+    }
+  },
+  "project_metadata_review": {
+    "solution_format": "Visual Studio 2010 solution, format version 11.00",
+    "project_creator": "Intel Fortran",
+    "project_keyword": "Console Application - Converted from CVF",
+    "project_version": "11.0",
+    "platforms": ["Win32", "x64"],
+    "configurations": ["Debug|Win32", "Release|Win32", "Debug|x64", "Release|x64"],
+    "common_compiler_contract": {
+      "SourceFileFormat": "fileFormatFree",
+      "FPS4IOFormat": true,
+      "FPS4LDIOSpacing": true,
+      "FPS4General": true,
+      "RealKIND": "realKIND8",
+      "LocalVariableStorage": "localStorageSave",
+      "FloatingPointExceptionHandling": "fpe0",
+      "FloatingPointModel": "source",
+      "CallingConvention": "callConventionCVF",
+      "Traceback": true,
+      "BoundsCheck": true
+    },
+    "configuration_specific": {
+      "Debug|x64": {
+        "LocalSavedScalarsZero": true,
+        "Optimization": "optimizeDisabled",
+        "DebugInformationFormat": "debugEnabled",
+        "RuntimeLibrary": "rtMultiThreadedDebug",
+        "GenerateDebugInformation": true,
+        "GenerateMapFile": true
+      },
+      "Release|Win32": {
+        "FPS4Logicals": true
+      }
+    },
+    "source_selection": {
+      "project_fortran_units": 58,
+      "project_include_files": 5,
+      "all_project_fortran_units_found_in_frozen_B0_archive": true,
+      "frozen_archive_fortran_units": 60,
+      "frozen_archive_units_not_selected_by_project": ["input1_1.for", "Outselorg.for"],
+      "matches_PREP01_GNU_selected_unit_count": true,
+      "interpretation": "The supplied Intel project independently confirms the 58-unit source selection used by PREP01 and explicitly excludes the same two alternate source units."
+    },
+    "build_contract_consequence": {
+      "eight_byte_default_REAL_project_setting_directly_supported": true,
+      "static_or_saved_local_storage_project_setting_directly_supported": true,
+      "exact_DOUBLE_PRECISION_semantics_from_RealKIND_setting_alone_proven": false,
+      "additional_Intel_compatibility_semantics_now_explicit": [
+        "PowerStation-4 I/O format compatibility",
+        "PowerStation-4 list-directed I/O spacing",
+        "CVF calling convention",
+        "source floating-point model",
+        "floating-point exception mode fpe0",
+        "bounds checking",
+        "x64 Debug saved-scalar zero initialization"
+      ]
+    },
+    "provenance_limitation": "The .sln/.vfproj files carry no independently verified chain of custody or intrinsic timestamp establishing that these exact bytes are the original revision-53 release project. They are strong build-contract evidence but not by themselves historical behavioural truth."
+  },
+  "executable_review": {
+    "format": "PE32+ Windows console executable",
+    "machine": "x86-64",
+    "pe_timestamp_utc": "2026-05-27T13:41:28Z",
+    "major_linker_version": 14,
+    "minor_linker_version": 35,
+    "image_version": "4.0",
+    "security_directory_present": false,
+    "imported_dlls": ["imagehlp.dll", "KERNEL32.dll"],
+    "codeview": {
+      "signature": "RSDS",
+      "pdb_guid": "5becb417-bcf3-4f00-891d-a327fe408881",
+      "age": 1,
+      "pdb_path": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\x64\\Debug\\animo41.pdb"
+    },
+    "embedded_build_paths": {
+      "source_root": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\src_develop_for_20260519\\",
+      "Version_inc_path": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\src_develop_for_20260519\\Version.inc"
+    },
+    "embedded_lineage_strings": [
+      "file:///V:/svn_Animo/tags/animo4.1.5",
+      "ANIMO 4.1",
+      "Successful completion of simulation"
+    ],
+    "embedded_runtime_string": "Intel Fortran RTL Message Catalog V20.0-001 Jan 10 2019",
+    "embedded_source_paths": {
+      "fortran_source_paths_observed": 58,
+      "Version_inc_path_observed": true,
+      "source_names_match_supplied_vfproj_selection_case_insensitively": true,
+      "alternate_input1_1_path_observed": false,
+      "alternate_Outselorg_path_observed": false
+    },
+    "configuration_attribution": {
+      "x64": "STRONGLY_SUPPORTED_BY_PE_MACHINE_AND_PDB_PATH",
+      "Debug": "STRONGLY_SUPPORTED_BY_x64_Debug_PDB_PATH_AND_DEBUG_DIRECTORY",
+      "exact_compiler_executable_version": "NOT_PROVEN_FROM_BINARY_ALONE"
+    },
+    "historical_classification": "MODERN_NATIVE_REBUILD_NOT_HISTORICAL_EXECUTABLE",
+    "historical_classification_basis": [
+      "PE timestamp is 2026-05-27, not a 4.1-era historical build date",
+      "embedded source root is src_develop_for_20260519",
+      "embedded PDB path identifies x64 Debug output",
+      "embedded Intel RTL catalog is dated 2019",
+      "linker version 14.35 is inconsistent with the source-declared 2011-era Intel Visual Fortran toolchain being the sole build environment"
+    ],
+    "relation_to_frozen_B0": {
+      "embedded_tag_and_revision_family_consistent": true,
+      "source_unit_selection_consistent": true,
+      "exact_source_byte_identity_proven": false,
+      "reason": "The executable exposes source names and paths but no content hashes or source checkout manifest. It was built from a 2026 development directory."
+    }
+  },
+  "reference_consequence": {
+    "historical_reference_artifact_obtained": false,
+    "project_build_metadata_obtained": true,
+    "native_candidate_executable_obtained": true,
+    "candidate_executable_reference_admitted": false,
+    "candidate_executable_can_be_used_as_historical_B2_truth": false,
+    "candidate_executable_can_be_used_for_build_contract_and_cross_runtime_comparison": true,
+    "native_execution_completed_in_this_review": false,
+    "native_execution_blocker": "Current execution environment has no Windows/Wine runtime; do not silently adapt the binary or testcase to manufacture a native result.",
+    "external_historical_acquisition_still_useful": true
+  },
+  "decision": "PARTIAL_RECOVERY_BUILD_CONTRACT_STRONGLY_IMPROVED_MODERN_NATIVE_REBUILD_IDENTIFIED_HISTORICAL_REFERENCE_STILL_BLOCKED"
+}
