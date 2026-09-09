@@ -112,10 +112,12 @@
   "validation": {
     "validator": "tools/validate_tcd018_independent_review.py",
     "workflow": ".github/workflows/animo-tcd018-independent-review.yml",
-    "state": "PENDING",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "conclusion": null,
-    "scope_guard": "PENDING"
+    "state": "VALIDATED_FAIL_CLOSED_RECORD",
+    "tested_head": "ce91d1c2ae15303879d45aa46cec57985803c48c",
+    "github_actions_run_id": 34404394011,
+    "conclusion": "success",
+    "validator_result": "PASS_TCD018_INDEPENDENT_REVIEW_RECORD_VALIDATOR",
+    "scope_guard": "PASS_TCD018_INDEPENDENT_REVIEW_SCOPE_GUARD",
+    "closeout_note": "Run 34404394011 validated the persisted review package before this validation-metadata closeout commit; this closeout commit must pass the same workflow independently."
   }
 }
