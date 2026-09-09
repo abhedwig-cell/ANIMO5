@@ -1,0 +1,44 @@
+name: ANIMO-RG04 late-wave gate reconciliation
+
+on:
+  push:
+    branches:
+      - work/animo-rg04-state-mass-b2-reconciliation
+  workflow_dispatch:
+
+jobs:
+  validate-rg04:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Validate RG04 governance artifacts
+        run: python tools/validate_rg04_governance.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=820ba9a9bbc90aceb892ac9ac36ecf7fb782b136
+          git cat-file -e "${BASE}^{commit}"
+          git diff --name-only "$BASE"...HEAD > /tmp/rg04_changed.txt
+          cat /tmp/rg04_changed.txt
+
+          allowed='^(.github/workflows/animo-rg04-governance\.yml|docs/governance/ANIMO_RG04_PROJECT_REGIE\.md|integration/animo-reg/RG04_WORKUNIT_AUTHORITY\.csv|integration/animo-reg/RG04_GATE_MATRIX\.csv|integration/animo-reg/RG04_B3_QUEUE\.json|integration/animo-reg/ANIMO-RG04_STATUS\.json|tools/validate_rg04_governance\.py)$'
+
+          unexpected=$(grep -Ev "$allowed" /tmp/rg04_changed.txt || true)
+          if [ -n "$unexpected" ]; then
+            echo "RG04 scope violation. Unexpected changed paths:"
+            echo "$unexpected"
+            exit 1
+          fi
+
+          echo "RG04 scope guard PASS"
