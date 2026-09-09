@@ -1,0 +1,28 @@
+name: ANIMO NQ03 TCD-042-E1 numerical policy
+
+on:
+  push:
+    branches:
+      - work/animo-nq03-tcd042-e1-numerical-policy
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-nq03:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history for scope guard
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: High-precision oracle smoke test
+        run: python tools/nq03/tcd042_e1_high_precision_oracle.py > /tmp/nq03-oracle.json
+      - name: Validate NQ03 qualification and scope
+        run: python tools/nq03/validate_nq03.py
