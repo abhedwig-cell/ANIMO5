@@ -50,8 +50,8 @@
   },
   "verification": {
     "authoring_environment_b0_bytes_rehashed_before_runtime_use": true,
-    "github_actions_run_id": 34305210902,
-    "github_actions_head": "f212cac453286dbd64103f08ee1781fbc5c9e5bc",
+    "github_actions_run_id": 34305245712,
+    "github_actions_head": "1e369f977dce027059626c9fd96be8dc0b81f967",
     "github_actions_conclusion": "success",
     "github_actions_scope": "compile PREP10C tooling; run fail-closed transform and conservation helper tests; validate machine-readable PREP10C JSON; private B0 runtime bytes are not uploaded to public CI",
     "raw_source_or_testbank_bytes_added_to_git": false
