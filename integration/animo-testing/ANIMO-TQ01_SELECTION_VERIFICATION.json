@@ -1,0 +1,23 @@
+{
+  "work_unit": "ANIMO-TQ01",
+  "subscope": "testcase evidence-strength and B2/B3 selection guidance",
+  "evidence_class": "PREPARATORY_SELECTION_VERIFICATION_NOT_REFERENCE",
+  "checks": [
+    {"check":"evidence_strength_case_count","passed":true,"observed":9},
+    {"check":"all_cases_have_pinned_active_input_identity","passed":true,"observed":9},
+    {"check":"revision53_b1_success_count","passed":true,"observed":8},
+    {"check":"ghgmais_remains_lineage_blocked","passed":true,"observed":"LINEAGE_UNCERTAIN_CONTRACT_MISMATCH"},
+    {"check":"all_case_b2_statuses_not_admitted","passed":true,"observed":9},
+    {"check":"all_case_b3_statuses_not_admitted","passed":true,"observed":9},
+    {"check":"prep02r_native_first_role_preserved","passed":true,"observed":"RuurloGrass"},
+    {"check":"rich_process_candidate_preserves_natural_p_and_plough_evidence","passed":true,"observed":"LWKM_gras_1040.2021.2045"},
+    {"check":"drydown_stable_dom_case_role_preserved","passed":true,"observed":"Puitmijn_Cranendonck_60"},
+    {"check":"po4_initialization_case_role_preserved","passed":true,"observed":"CranGrass"},
+    {"check":"ghgmais_excluded_from_revision53_b2_capture_order","passed":true,"observed":true},
+    {"check":"selection_guidance_defines_no_tolerance_or_production_admission","passed":true,"observed":true}
+  ],
+  "passed": 12,
+  "total": 12,
+  "decision": "PASS",
+  "qualification_boundary": "case-role prioritization only; no testcase gains B2, B3 or production status from this matrix or guidance"
+}
