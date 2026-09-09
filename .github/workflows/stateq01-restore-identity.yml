@@ -1,0 +1,25 @@
+name: STATEQ01 restore identity qualification
+
+on:
+  push:
+    branches:
+      - work/animo-stateq01-canonical-state-readiness
+    paths:
+      - 'tools/stateq01/restore_identity_guard.py'
+      - 'tests/stateq01/test_restore_identity_guard.py'
+      - '.github/workflows/stateq01-restore-identity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  restore-identity:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run RC-R6 RC-R7 exact restore identity sentinels
+        run: python -m unittest tests/stateq01/test_restore_identity_guard.py -v
