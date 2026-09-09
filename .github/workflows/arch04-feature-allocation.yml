@@ -1,0 +1,19 @@
+name: ARCH04 feature allocation structural audit
+
+on:
+  push:
+    branches:
+      - work/animo-arch04-feature-activation-state-allocation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run ARCH04 structural audit
+        run: python tools/audit_arch04_feature_allocation.py
