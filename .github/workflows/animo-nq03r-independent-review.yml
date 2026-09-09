@@ -1,0 +1,30 @@
+name: ANIMO NQ03R TCD-042-E1 independent numerical review
+
+on:
+  push:
+    branches:
+      - review/animo-nq03r-tcd042-e1-independent-numerical
+    paths:
+      - '.github/workflows/animo-nq03r-independent-review.yml'
+      - 'docs/numerics/TCD042_E1_INDEPENDENT_NUMERICAL_REVIEW.md'
+      - 'integration/animo-science/ANIMO-NQ03R_STATUS.json'
+      - 'integration/animo-science/NQ03R_*'
+      - 'tools/nq03r/**'
+  workflow_dispatch:
+
+jobs:
+  validate-nq03r:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history for scope review
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile independent review validator
+        run: python -m py_compile tools/nq03r/validate_nq03r.py
+      - name: Validate independent numerical review
+        run: python tools/nq03r/validate_nq03r.py
