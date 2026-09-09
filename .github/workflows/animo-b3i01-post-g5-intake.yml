@@ -11,6 +11,7 @@ on:
       - 'docs/b3/B3I01_CANONICAL_REGISTER_APPEND.md'
       - 'docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv'
       - 'integration/animo-b3/ANIMO-B3I01_STATUS.json'
+      - 'integration/animo-b3/ANIMO-B3I01_SUPPLEMENT_01_STATUS.json'
       - 'integration/animo-b3/B3I01_CANONICAL_REGISTER_APPEND_STATUS.json'
       - 'integration/animo-b3/B3I01_REGISTER_APPEND_ROWS.csv'
       - 'integration/animo-b3/B3I01_REGISTER_APPEND_SUPPLEMENT_01_ROWS.csv'
@@ -45,6 +46,7 @@ jobs:
       - name: Parse B3I01 JSON artifacts
         run: |
           python -m json.tool integration/animo-b3/ANIMO-B3I01_STATUS.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3I01_SUPPLEMENT_01_STATUS.json >/dev/null
           python -m json.tool integration/animo-b3/B3I01_CANONICAL_REGISTER_APPEND_STATUS.json >/dev/null
           python -m json.tool integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER.json >/dev/null
           python -m json.tool integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER_SUPPLEMENT_01.json >/dev/null
