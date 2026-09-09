@@ -1,0 +1,117 @@
+{
+  "work_unit": "ANIMO-RG05",
+  "title": "Post-RG04 Late-Wave Authority Refresh, Atomic Queue Reset & Parallel Workstream Governance",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-rg05-late-wave-authority-refresh",
+  "starting_parent": "cf9975ded20fa64bb8125b3241f2609cbb5b51b3",
+  "starting_work_unit": "ANIMO-RG04",
+  "state": "IN_PROGRESS_PERSISTED_AUTHORITY_SNAPSHOT_VALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "governance_only": true,
+  "authority_rule": "CONTENT_AND_ANCESTRY_PLUS_EXPLICIT_STATUS_NOT_BRANCH_NAME_NOT_LAST_WRITER_WINS",
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "admission_state": {
+    "scientific_admission_performed": false,
+    "corrected_legacy_admitted": false,
+    "canonical_state_admitted": false,
+    "canonical_time_admitted": false,
+    "canonical_mass_admitted": false,
+    "canonical_external_exchange_admitted": false,
+    "b3_baseline_established": false,
+    "b4_baseline_admitted": false,
+    "production_migration_admitted": false,
+    "production_code_modified": false,
+    "legacy_source_modified": false,
+    "frozen_testcase_modified": false,
+    "canonical_tcd_register_modified": false,
+    "evidence_strength_promoted_by_integration": false
+  },
+  "frozen_identity": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
+  },
+  "authority_snapshot_pre_validation": {
+    "RG04": "cf9975ded20fa64bb8125b3241f2609cbb5b51b3",
+    "GOV02": "db7add6f9561730bbf352aa7fd3f3968405cfaa3",
+    "PREP02R": "a2fda49871ee3c7104daf7e06cd8dffdac06b125",
+    "STATEQ02": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "B3I04": "400b7cd79f89043e091751707dfa96537587dcf6",
+    "MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "B3I03": "6a015587807130b4ce12c9f1518c1ddac4e5d624",
+    "B3I03_REGISTER": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "UBQ01": "6895b67799f26888025eced7188e7190b2a0d07d",
+    "UBQ02": "bb572bb5d431f91d780018a1acbb345fbcfced37",
+    "B3I05": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+    "B3B01": "b982242949aecab32b9067cf7910ad75abfc2b19",
+    "B3A01": "b2bac82512fef0fa232e759f0c68b472567c11d5",
+    "B3A02": "1a714eb144e43420ef5b176727e496ff9c46bc6d",
+    "B3A03": "8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+    "B3A03R": "0876e6e1b6ce33ee5e7b812ab4107f54760d6b27",
+    "NQ02": "40a41089020f78ee1d5181b8afc7bdb511af3193",
+    "TIME02": "b4d78cf32cb149cf50aa2b0a0fbefee571eee6b8",
+    "IO01": "2bcf65360b08d278f28f1cc61ac96714db4793a3",
+    "ARCHG02": "db8183802631902f41aa5bec518a3c2e63e03ab7",
+    "ARCH05": "99b6098a19db405ce34928af89bb78b856dce7cd",
+    "NQ03_IN_PROGRESS": "c3668573d07a2283ce08d14a1d5e1135e0da7f6d",
+    "IO02_IN_PROGRESS": "9770b98c787ff0f54883039f5de9f9c31bbf3a61",
+    "B3A04_BRANCH_ONLY": "383c7a83e84a578969f92113280dc715b7bdddb4",
+    "B3B02_BRANCH_ONLY": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+    "B3B03_IN_PROGRESS": "57709b1029e42fa4d56e7cbf3575fe2056e1438b",
+    "B3B04": null,
+    "canonical_tcd_register_tail": "TCD-042"
+  },
+  "historical_route": {
+    "internal_recovery_decision": "STOP_FURTHER_INTERNAL_REFERENCE_RECOVERY_AND_PROCEED_WITH_AVAILABLE_EVIDENCE_WITHIN_EXISTING_GOV02_SCOPE",
+    "historical_reference_artifact_obtained": false,
+    "external_archival_or_provenance_action_sent": false,
+    "G6H": "HISTORICAL_B2_NOT_PASSED_INTERNAL_RECOVERY_STOPPED",
+    "G6U": "NOT_ELIGIBLE_ACQUISITION_NOT_EXHAUSTED_EXTERNAL_ACTION_UNSENT",
+    "forbidden_reclassification": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT"
+  },
+  "gate_snapshot": {
+    "G7": "NO_ATOMIC_SCIENTIFIC_ADMISSIONS",
+    "GSTATE": "RESTRICTED_CORE_EXECUTABLE_SPLIT_RUN_QUALIFIED_ADMISSION_PENDING",
+    "GTIME": "CONCRETE_CANDIDATE_QUALIFIED_CANONICAL_ADMISSION_NOT_PERFORMED",
+    "GMASS": "TYPED_EVENT_AND_RESIDUAL_CAUSALITY_QUALIFIED_ADMISSION_PENDING",
+    "GEX": "SYNTHETIC_CONTRACT_FIXTURE_QUALIFIED_REAL_ADAPTER_BLOCKED",
+    "GARCH": "QUALIFIED_CANDIDATE_ARCHITECTURE_REVALIDATED",
+    "B4": "NOT_ADMITTED",
+    "PRODUCTION": "NOT_ADMITTED"
+  },
+  "tcd042": {
+    "canonical_top_level_parent": "TCD-042",
+    "canonical_register_tail": "TCD-042",
+    "tcd_043_reserved": false,
+    "parent_state": "ATOMIZED_B1_EXACT_ZERO_PLUS_E1_FINITE_POSITIVE_NO_ADMISSION",
+    "children": {
+      "TCD-042-B1": "EXACT_ZERO_CLASS_B_ATOM_QUALIFIED_READINESS_WORK_BRANCH_STARTED_NO_ADMISSION",
+      "TCD-042-E1": "FINITE_POSITIVE_CLASS_E_SEAM_QUALIFIED_POLICY_WORK_IN_PROGRESS_NO_ADMISSION"
+    }
+  },
+  "validation": {
+    "validator": "tools/validate_rg05_governance.py",
+    "workflow": ".github/workflows/animo-rg05-governance.yml",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING",
+    "github_actions_run_id": null,
+    "github_actions_head": null,
+    "github_actions_conclusion": "PENDING"
+  },
+  "deliverables": [
+    "docs/governance/ANIMO_RG05_PROJECT_REGIE.md",
+    "integration/animo-reg/RG05_WORKUNIT_AUTHORITY.csv",
+    "integration/animo-reg/RG05_GATE_MATRIX.csv",
+    "integration/animo-reg/RG05_B3_QUEUE.json",
+    "integration/animo-reg/RG05_PARALLELISM_MATRIX.csv",
+    "integration/animo-reg/ANIMO-RG05_STATUS.json",
+    "tools/validate_rg05_governance.py",
+    ".github/workflows/animo-rg05-governance.yml"
+  ]
+}
