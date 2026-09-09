@@ -21,7 +21,7 @@
   "production_migration": "NOT_ADMITTED",
   "authority_basis": {
     "RG02_G5_head_at_start": "12ae76b23728d75fc6ca746ca1c67aa26e0ec005",
-    "PREP01_05": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
+    "PREP01_05": "9df84bd0ab9bc4ef5988e24cf67c3b23267c80",
     "TQ01": "5c43ee16df37a0a1357614fdec527f25e5ca8c16",
     "ARCH05": "99b6098a19db405ce34928af89bb78b856dce7cd",
     "ARCH06": "ce3ea8089902dbc4bcbe3ff0224d30c2f8daf3a4",
@@ -78,22 +78,33 @@
   },
   "material_pilot": {
     "case": "RuurloGrass",
-    "feature_scope": {"IPO": 0, "Ioptae": 0, "IoptGHG": 0},
+    "feature_scope": {
+      "IPO": 0,
+      "Ioptae": 0,
+      "IoptGHG": 0
+    },
     "legacy_adapter": "LegacyRevision53MaterialAdapter/Ruurlo-v1",
     "native_adapter": "TTUTILNativeMaterialAdapter/v1",
     "normalized_schema": "MaterialParameterSet/v1",
     "qualification_runner": "tools/qualify_io01_material_pilot.py",
+    "qualification_runner_capability": "SELF_REPRODUCING_V2_FROM_USER_SUPPLIED_FROZEN_ARCHIVES",
+    "persisted_runtime_evidence_schema": "ANIMO-IO01/MATERIALPilotQualification/v1",
+    "next_clean_runtime_reproduction_schema": "ANIMO-IO01/MATERIALPilotQualification/v2",
     "exact_runtime_probe": "tools/ttutil_material_probe.f90",
     "typed_double_comparison_probe": "tools/ttutil_material_probe_typed_double.f90",
     "lineage_evidence": "integration/animo-io/MATERIAL-RUURLO-LINEAGE-EQUIVALENCE.json",
     "qualification_evidence": "integration/animo-io/MATERIAL-PILOT-B-QUALIFICATION.json",
+    "dedicated_status": "integration/animo-io/MATERIAL-PILOT-B-STATUS.json",
     "result": "PASS",
     "classification": "QUALIFIED_REPRESENTATION_ONLY_TTUTIL_ADAPTER_CANDIDATE_WITH_RUNTIME_HAZARD_EXCLUSIONS",
     "field_exact_equivalent": true,
     "numeric_tolerance_used": false,
     "sparse_lineage": {
-      "Nm": 11, "Nf": 14, "full_matrix_cells_each": 154,
-      "explicit_sparse_triplets": 24, "omitted_cells_each": 130,
+      "Nm": 11,
+      "Nf": 14,
+      "full_matrix_cells_each": 154,
+      "explicit_sparse_triplets": 24,
+      "omitted_cells_each": 130,
       "omitted_cell_normalization": "ZERO_BY_EXACT_NATURAL_RUURLO_OLD_NEW_LINEAGE_EQUIVALENCE"
     },
     "ipo0_presence": {
@@ -109,6 +120,14 @@
       "typed_double_max_ulp_distance": 1,
       "typed_double_max_absolute_difference": 1.1102230246251565e-16,
       "exact_candidate_transport": "TTUTIL CHARACTER scalar/array numeric tokens plus adapter-owned REAL(8) conversion"
+    },
+    "reproducer_hardening": {
+      "commit": "75c74dd710ab5804444f2be484c0edf5124a568b",
+      "source_level_ci_run_id": 34336915868,
+      "source_level_ci": "PASS",
+      "archive_dependent_runtime_in_github_ci": false,
+      "reason": "frozen/user-supplied SWAP and ANIMO ZIP bytes are not vendored",
+      "v2_additional_check": "bitwise comparison of every natural Ruurlo numeric lexeme against GNU Fortran external list-directed REAL(8) conversion"
     },
     "runtime_hazard_exclusions": [
       "sparse FR/FRca omitted cells are read by revision 53 without identified explicit source initialization; intended zero semantics are lineage-qualified but the legacy storage mechanism is not",
@@ -129,11 +148,12 @@
     "local_direct_runtime_qualification": "10/10 PASS",
     "local_material_runtime_qualification": "FIELD_EXACT PASS",
     "github_actions": "PASS",
-    "github_actions_run_id": 34336374711,
-    "github_actions_tested_head": "65e8534a20572018ca3aebe767a82b750b95cb70",
+    "github_actions_run_id": 34337256829,
+    "github_actions_tested_head": "c789c335dae1c00a9a38be00a3888fe889eed601",
     "github_actions_python_compile": "PASS",
-    "github_actions_structural_audit": "PASS: 15 input-family contracts, 20 negative cases, DIRECT Pilot A, Ruurlo MATERIAL lineage, MATERIAL Pilot B",
-    "github_actions_unit_tests": "30/30 PASS"
+    "github_actions_structural_audit": "PASS: 15 input-family contracts, 20 negative cases, DIRECT Pilot A, Ruurlo MATERIAL lineage, MATERIAL Pilot B, status reconciliation",
+    "github_actions_unit_tests": "30/30 PASS",
+    "material_status_reconciliation": "PASS"
   },
   "principal_findings": [
     "TTUTIL 4.27 source provenance is exact and hash-pinned from the supplied SWAP 4.3.1 distribution",
@@ -144,7 +164,9 @@
     "Pilot B produces field-exact MaterialParameterSet/v1 semantics for the bounded non-GHG Ruurlo contract with no numeric tolerance",
     "direct TTUTIL 4.27 DOUBLE parsing is rejected for field-exact MATERIAL representation because 26 Ruurlo numeric leaves differ by one binary64 ULP",
     "the qualified MATERIAL candidate uses TTUTIL CHARACTER token transport with adapter-owned REAL(8) conversion so TTUTIL does not become numeric/scientific authority",
+    "the MATERIAL reproducer is now self-contained from user-supplied frozen archives and can add a bitwise GNU list-directed numeric-oracle check on clean rerun",
     "two MATERIAL runtime-storage hazards remain explicitly excluded and routed to BUILDQ01/B3I01 rather than normalized away",
+    "the dedicated MATERIAL Pilot B status and the global IO01 status are now CI-reconciled",
     "ANIMO41 GENERAL remains sequentially order-sensitive and is not qualified by either pilot",
     "INITIAL and restart state remain specialized state adapters",
     "external crop and soil-temperature time series remain specialized forcing/exchange adapters",
@@ -173,7 +195,9 @@
   },
   "next_safe_steps": [
     "keep MAT-RH-001 and MAT-RH-002 routed to BUILDQ01/B3I01 and do not assign a local canonical TCD number",
-    "select any next text-input pilot independently, preferring another bounded non-GHG static contract or separately evidenced MATERIAL feature variant",
+    "treat IO01 as closeout-ready after the bounded DIRECT and MATERIAL representation qualifications",
+    "if a v2 MATERIAL runtime evidence refresh is desired, execute tools/qualify_io01_material_pilot.py from a clean checkout with the exact frozen SWAP 4.3.1 and ANIMO testbank ZIPs",
+    "start any additional text-input family as a separate bounded follow-on rather than broadening IO01 implicitly",
     "keep GENERAL sequence-sensitive until its own strict legacy normalization is qualified",
     "keep GHGMais and cross-lineage GHG fields outside generic MATERIAL admission",
     "do not generalize Pilots A/B to SOIL, PLANT, management, restart or binary hydrology"
