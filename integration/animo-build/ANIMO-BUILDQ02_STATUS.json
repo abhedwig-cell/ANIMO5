@@ -74,6 +74,14 @@
     "scientific_state_or_flux_discrepancy_established": false,
     "new_tcd_requested": false
   },
+  "diagnostic_reproducibility": {
+    "temporary_patch_persisted": true,
+    "storage_driver_persisted": true,
+    "matrix_driver_persisted": true,
+    "modflux_coupled_driver_persisted": true,
+    "reproduction_recipe_persisted": true,
+    "frozen_source_patch_admitted": false
+  },
   "qualification_outcome": {
     "mapohydro_hidden_lifetime_semantics_qualified_for_migration_design": true,
     "blanket_save_policy_qualified": false,
@@ -90,6 +98,11 @@
     "docs/build/TCD011_MAPOHYDRO_STORAGE_DURATION_QUALIFICATION.md",
     "docs/build/MAPOHYDRO_BOUNDS_EVALUATION_ORDER_QUALIFICATION.md",
     "integration/animo-build/BUILDQ02_MAPOHYDRO_RUNTIME_MATRIX.json",
+    "tools/buildq02/MAPOHYDRO_SAFE_DIAGNOSTIC.patch",
+    "tools/buildq02/mapohydro_storage_driver.f90",
+    "tools/buildq02/mapohydro_matrix_driver.f90",
+    "tools/buildq02/mapohydro_modflux_coupled_driver.f90",
+    "tools/buildq02/README.md",
     "integration/animo-build/ANIMO-BUILDQ02_STATUS.json"
   ],
   "next_routing": {
