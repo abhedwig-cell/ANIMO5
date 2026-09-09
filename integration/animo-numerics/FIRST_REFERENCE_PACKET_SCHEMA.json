@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/abhedwig-cell/ANIMO5/integration/animo-numerics/FIRST_REFERENCE_PACKET_SCHEMA.json",
+  "title": "ANIMO-NQ01 first independent reference comparison packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_schema_version",
+    "work_unit",
+    "testcase_id",
+    "inputs",
+    "b2",
+    "b1",
+    "formatted_tree_comparison",
+    "observer",
+    "structured_comparison",
+    "policy_assertions",
+    "disposition"
+  ],
+  "properties": {
+    "packet_schema_version": {"const": "1.0.0"},
+    "work_unit": {"const": "ANIMO-NQ01"},
+    "testcase_id": {"const": "RuurloGrass"},
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "testbank_archive_sha256",
+        "input_tree_manifest",
+        "hydrology_identity_or_manifest",
+        "input_content_transformed"
+      ],
+      "properties": {
+        "testbank_archive_sha256": {
+          "const": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+        },
+        "input_tree_manifest": {"type": "string", "minLength": 1},
+        "hydrology_identity_or_manifest": {"type": "string", "minLength": 1},
+        "input_content_transformed": {"const": false}
+      }
+    },
+    "b2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_role",
+        "artifact_sha256",
+        "receipt_manifest",
+        "lineage_classification",
+        "execution_attempt_permitted_by_prep02r",
+        "ordinary_run_manifest",
+        "raw_output_tree_manifest",
+        "repeat_determinism",
+        "repeat_rationale"
+      ],
+      "properties": {
+        "evidence_role": {
+          "enum": [
+            "B2_HISTORICAL_REFERENCE_CANDIDATE",
+            "B2_HISTORICAL_REFERENCE_QUALIFIED"
+          ]
+        },
+        "artifact_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "receipt_manifest": {"type": "string", "minLength": 1},
+        "lineage_classification": {"type": "string", "minLength": 1},
+        "execution_attempt_permitted_by_prep02r": {"const": true},
+        "ordinary_run_manifest": {"type": "string", "minLength": 1},
+        "raw_output_tree_manifest": {"type": "string", "minLength": 1},
+        "repeat_determinism": {
+          "enum": [
+            "NOT_RUN_WITH_RATIONALE",
+            "NATIVE_REPEAT_EXACT",
+            "NATIVE_REPEAT_DECLARED_VOLATILE_ONLY",
+            "NATIVE_REPEAT_DIFFERENT_FAIL_CLOSED"
+          ]
+        },
+        "repeat_rationale": {"type": ["string", "null"]}
+      }
+    },
+    "b1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_role",
+        "executable_sha256",
+        "run_manifest",
+        "raw_output_tree_manifest"
+      ],
+      "properties": {
+        "evidence_role": {"const": "B1_DIAGNOSTIC"},
+        "executable_sha256": {
+          "const": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e"
+        },
+        "run_manifest": {"type": "string", "minLength": 1},
+        "raw_output_tree_manifest": {"type": "string", "minLength": 1}
+      }
+    },
+    "formatted_tree_comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["result_artifact", "decision"],
+      "properties": {
+        "result_artifact": {"type": "string", "minLength": 1},
+        "decision": {
+          "enum": [
+            "MATCH_EXACT",
+            "MATCH_AFTER_DECLARED_VOLATILE_NORMALIZATION",
+            "DIFFERENT_FAIL_CLOSED"
+          ]
+        }
+      }
+    },
+    "observer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "used",
+        "ordinary_output_non_interference_passed",
+        "observer_patch_sha256",
+        "b2_structured_capture",
+        "b1_structured_capture"
+      ],
+      "properties": {
+        "used": {"type": "boolean"},
+        "ordinary_output_non_interference_passed": {"type": ["boolean", "null"]},
+        "observer_patch_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "b2_structured_capture": {"type": ["string", "null"]},
+        "b1_structured_capture": {"type": ["string", "null"]}
+      }
+    },
+    "structured_comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["result_artifact", "decision"],
+      "properties": {
+        "result_artifact": {"type": ["string", "null"]},
+        "decision": {
+          "enum": [
+            "NOT_RUN_NO_UNROUNDED_CAPTURE",
+            "MATCH_EXACT_COMPARISON_EVIDENCE",
+            "MATCH_EXACT_B2_CANDIDATE_NOT_QUALIFIED",
+            "MATCH_SCIENTIFIC_RECORDS_REPRESENTATION_DIFFERS",
+            "DIFFERENT_FAIL_CLOSED",
+            "SCHEMA_OR_PROVENANCE_FAILURE"
+          ]
+        }
+      }
+    },
+    "policy_assertions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "global_numeric_tolerance_applied",
+        "legacy_residual_used_as_tolerance",
+        "rounded_report_treated_as_unrounded_oracle",
+        "b1_classified_as_independent_reference",
+        "numerical_equivalence_qualified_by_packet",
+        "production_migration_admitted"
+      ],
+      "properties": {
+        "global_numeric_tolerance_applied": {"const": false},
+        "legacy_residual_used_as_tolerance": {"const": false},
+        "rounded_report_treated_as_unrounded_oracle": {"const": false},
+        "b1_classified_as_independent_reference": {"const": false},
+        "numerical_equivalence_qualified_by_packet": {"const": false},
+        "production_migration_admitted": {"const": false}
+      }
+    },
+    "disposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["b2_reference_status", "next_action"],
+      "properties": {
+        "b2_reference_status": {
+          "enum": [
+            "CANDIDATE_NOT_QUALIFIED",
+            "PROVENANCE_QUALIFIED_REFERENCE"
+          ]
+        },
+        "next_action": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
