@@ -1,0 +1,399 @@
+{
+  "work_unit": "ANIMO-MASSQ02",
+  "status": "QUALIFIED_CANDIDATE_TYPED_EVENT_PROJECTION_NOT_CANONICAL_RUNTIME_JOURNAL",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "candidate_event_fields": [
+    "time_interval",
+    "element",
+    "species_pool",
+    "amount",
+    "unit",
+    "source_owner",
+    "destination_owner",
+    "internal_external",
+    "process",
+    "evidence_coordinate"
+  ],
+  "field_contract": {
+    "time_interval": "exact accepted interval identity from the admitted time model; no epsilon/tolerance semantics are introduced here",
+    "element": "water, N, P, or C. C is admitted only for a pool with an explicit qualified conversion; MASSQ02 natural C evidence is soil-organic-C only via Cfracom",
+    "species_pool": "physical species or pool being transferred",
+    "amount": "non-negative scalar transfer magnitude; direction is encoded only by source_owner and destination_owner",
+    "unit": "explicit amount unit per ground area; presentation conversions such as kg/ha are projections only",
+    "source_owner": "exact physical owner or external boundary sentinel",
+    "destination_owner": "exact physical owner or external boundary sentinel",
+    "internal_external": "derived from owner membership in the declared ANIMO system boundary",
+    "process": "source process that caused the transfer",
+    "evidence_coordinate": "source routine/state/transfer coordinate or qualified synthetic evidence coordinate"
+  },
+  "owner_rules": {
+    "internal_owner_prefix": "animo.",
+    "external_owner_prefix": "external.",
+    "internal_event": "source and destination are both internal owners",
+    "external_event": "exactly one of source or destination is an internal owner",
+    "invalid_event": "both owners are external, source equals destination, negative amount, or missing evidence coordinate",
+    "control_volume_projection": "an intrinsically internal event may appear as a boundary term for a narrower observer control volume, e.g. soil-to-crop uptake for a soil-only volume. The event itself is not duplicated or retyped."
+  },
+  "conservation_proof": {
+    "owner_delta_definition": "for one event, source owner delta = -amount and destination owner delta = +amount",
+    "internal_combined_control_volume": "if both owners are included, (-amount)+(+amount)=0 exactly. No tolerance is part of this identity.",
+    "external_boundary_crossing": "XOR(internal(source_owner), internal(destination_owner)) must be true, therefore exactly one system boundary crossing exists.",
+    "interface_rule": "one physical transfer creates one event edge. Two independently signed layer records are forbidden because they could double count an internal interface.",
+    "legacy_balance_accumulator_dependency": "none; event amount must originate from process transfer/state coordinates, not Bawa/Banh/Bani/Bano/Bapp/Bapo accumulators"
+  },
+  "event_types": [
+    {
+      "event_type": "WATER_ATMOSPHERIC_INPUT",
+      "element": "water",
+      "species_pool": "water",
+      "unit": "m water per m2 ground area",
+      "source_owner": "external.atmosphere_or_irrigation",
+      "destination_owner": "animo.surface_or_profile_water",
+      "internal_external": "external",
+      "process": "precipitation_snowmelt_irrigation_runon_inundation",
+      "evidence_coordinate": "PREP06 ID-WATER-PROFILE; Input_hydro/Hydro_detailed; source hydrology PRR/PRIRR/RUNON/RU direction and accepted water states",
+      "amount_rule": "non-negative accepted-interval boundary flux amount; direction encoded by owners, not sign"
+    },
+    {
+      "event_type": "WATER_ATMOSPHERIC_OUTPUT",
+      "element": "water",
+      "species_pool": "water",
+      "unit": "m water per m2 ground area",
+      "source_owner": "animo.surface_or_profile_water",
+      "destination_owner": "external.atmosphere",
+      "internal_external": "external",
+      "process": "evaporation_transpiration_sublimation",
+      "evidence_coordinate": "PREP06 ID-WATER-PROFILE; Input_hydro/Hydro_detailed; EVSO/EVPN/EVICPR/EVICIRR/EVSN/FLEV",
+      "amount_rule": "non-negative accepted-interval flux amount"
+    },
+    {
+      "event_type": "WATER_HYDROLOGIC_EXPORT",
+      "element": "water",
+      "species_pool": "water",
+      "unit": "m water per m2 ground area",
+      "source_owner": "animo.surface_or_profile_water",
+      "destination_owner": "external.surface_or_groundwater",
+      "internal_external": "external",
+      "process": "runoff_drainage_bottom_leaching",
+      "evidence_coordinate": "PREP06 ID-WATER-PROFILE; RU/FLK/FLS/FLG/FLD/FLD2/FLAB bottom boundary",
+      "amount_rule": "non-negative accepted-interval flux amount after direction resolution"
+    },
+    {
+      "event_type": "WATER_LAYER_INTERFACE",
+      "element": "water",
+      "species_pool": "water",
+      "unit": "m water per m2 ground area",
+      "source_owner": "animo.soil.layer[i].water",
+      "destination_owner": "animo.soil.layer[i+1].water",
+      "internal_external": "internal",
+      "process": "vertical_matrix_water_transfer",
+      "evidence_coordinate": "PREP06 ID-INTERNAL-INTERFACE-CANCEL; FLAB interface fluxes",
+      "amount_rule": "one event per physical interface; reverse owners when flux direction reverses"
+    },
+    {
+      "event_type": "SOLUTE_LAYER_INTERFACE",
+      "element": "N_or_P_or_C",
+      "species_pool": "DON_DOP_DOM_NH4_NO3_PO4",
+      "unit": "kg element per m2 ground area",
+      "source_owner": "animo.soil.layer[i].species_pool",
+      "destination_owner": "animo.soil.layer[i+1].species_pool",
+      "internal_external": "internal",
+      "process": "vertical_solute_transport",
+      "evidence_coordinate": "PREP06 ID-SOLUTE-LAYER/ID-SOLUTE-PROFILE; TRANSPORT.FOR/Transgen.for Toin/Toou",
+      "amount_rule": "single edge sourced from the physical interface transfer; do not emit independent signed copies for both layers"
+    },
+    {
+      "event_type": "SOLUTE_BOUNDARY_INPUT",
+      "element": "N_or_P_or_C",
+      "species_pool": "DON_DOP_DOM_NH4_NO3_PO4",
+      "unit": "kg element per m2 ground area",
+      "source_owner": "external.hydrologic_or_atmospheric_boundary",
+      "destination_owner": "animo.surface_or_soil.species_pool",
+      "internal_external": "external",
+      "process": "precipitation_deposition_irrigation_runon_lateral_infiltration_upward_seepage",
+      "evidence_coordinate": "BOUNDARY input variables plus PREP06 ID-SOLUTE-PROFILE; TRANSPORT/Transgen boundary transfer terms",
+      "amount_rule": "one event for each source boundary/species transfer actually realized in the accepted interval"
+    },
+    {
+      "event_type": "SOLUTE_BOUNDARY_OUTPUT",
+      "element": "N_or_P_or_C",
+      "species_pool": "DON_DOP_DOM_NH4_NO3_PO4",
+      "unit": "kg element per m2 ground area",
+      "source_owner": "animo.surface_or_soil.species_pool",
+      "destination_owner": "external.surface_or_groundwater",
+      "internal_external": "external",
+      "process": "runoff_drainage_bottom_leaching",
+      "evidence_coordinate": "PREP06 ID-SOLUTE-PROFILE; TRANSPORT/Transgen Toou and pathway-specific drainage/export transfers",
+      "amount_rule": "one event per system-boundary crossing; internal layer transport is excluded"
+    },
+    {
+      "event_type": "MATERIAL_ADDITION",
+      "element": "N_or_P_or_C",
+      "species_pool": "organic_fraction_DOM_DON_DOP_NH4_NO3_PO4",
+      "unit": "kg element per m2 ground area",
+      "source_owner": "external.management_material",
+      "destination_owner": "animo.surface_reservoir_or_soil.species_pool",
+      "internal_external": "external",
+      "process": "fertilizer_manure_material_addition",
+      "evidence_coordinate": "PREP06 ID-MATERIAL-ADDITION; Addit; QUMT with FROR/FRNH/FRNI/FRPO/FR/FRCA and N/P pool fractions",
+      "amount_rule": "material composition is expanded into species-specific non-negative transfers; no legacy balance accumulator is an amount source"
+    },
+    {
+      "event_type": "NH4_VOLATILIZATION_AT_ADDITION",
+      "element": "N",
+      "species_pool": "NH4-N",
+      "unit": "kg N per m2 ground area",
+      "source_owner": "external.management_material_or_animo.surface_NH4",
+      "destination_owner": "external.atmosphere",
+      "internal_external": "external",
+      "process": "addition_volatilization",
+      "evidence_coordinate": "PREP06 ID-MATERIAL-ADDITION; Addit FRVO branch",
+      "amount_rule": "explicit external-loss component of the material-addition identity"
+    },
+    {
+      "event_type": "SURFACE_RESERVOIR_RELEASE",
+      "element": "N_or_P_or_C",
+      "species_pool": "DOM_DON_DOP_NH4_NO3_PO4",
+      "unit": "kg element per m2 ground area",
+      "source_owner": "animo.surface_reservoir.species_pool",
+      "destination_owner": "animo.soil.layer[1].species_pool_or_external_runoff",
+      "internal_external": "internal_or_external_by_destination",
+      "process": "upper_boundary_reservoir_release",
+      "evidence_coordinate": "PREP06 conserved-state mapping; layer-0/top-reservoir transport in TRANSPORT/Transgen",
+      "amount_rule": "internal only when destination remains inside ANIMO system; external when released across runoff/system boundary"
+    },
+    {
+      "event_type": "CROP_UPTAKE_N",
+      "element": "N",
+      "species_pool": "NH4-N_or_NO3-N",
+      "unit": "kg N per m2 ground area",
+      "source_owner": "animo.soil.layer[i].mineral_N",
+      "destination_owner": "animo.crop.N",
+      "internal_external": "internal",
+      "process": "realized_crop_uptake",
+      "evidence_coordinate": "PREP06 ID-CROP-N; Upintg_Plant.for:54-64; Upintg_Grass.for:49-62; Upintg_Extern.for:48-54; actual Upni transfer and Rsamplni_act state gain",
+      "amount_rule": "use realized uptake from the process transfer, never requested/potential uptake or a soil-only balance sink"
+    },
+    {
+      "event_type": "CROP_UPTAKE_P",
+      "element": "P",
+      "species_pool": "PO4-P",
+      "unit": "kg P per m2 ground area",
+      "source_owner": "animo.soil.layer[i].PO4-P",
+      "destination_owner": "animo.crop.P",
+      "internal_external": "internal",
+      "process": "realized_crop_uptake",
+      "evidence_coordinate": "PREP06 ID-CROP-P; Upintg_Plant/Grass/Extern actual P uptake and Rsamplpo_act state gain",
+      "amount_rule": "same realized amount debits soil and credits crop in the combined soil+crop control volume"
+    },
+    {
+      "event_type": "CROP_RESIDUE_RETURN",
+      "element": "N_or_P_or_C",
+      "species_pool": "root_or_shoot_organic_material",
+      "unit": "kg element per m2 ground area",
+      "source_owner": "animo.crop.element_store",
+      "destination_owner": "animo.soil.organic_pool",
+      "internal_external": "internal",
+      "process": "root_death_or_crop_residue_return",
+      "evidence_coordinate": "PREP06 ID-CROP-RESIDUE; crop-loss/root-death transfer into material/organic stores",
+      "amount_rule": "one owner-to-owner event for the returned fraction; composition determines element-specific companion events"
+    },
+    {
+      "event_type": "CROP_HARVEST_EXPORT",
+      "element": "N_or_P_or_C",
+      "species_pool": "crop_biomass_element",
+      "unit": "kg element per m2 ground area",
+      "source_owner": "animo.crop.element_store",
+      "destination_owner": "external.harvest",
+      "internal_external": "external",
+      "process": "harvest_export",
+      "evidence_coordinate": "PREP06 ID-CROP-HARVEST; crop state loss minus explicitly returned residue fraction",
+      "amount_rule": "external remainder is derived from crop-state loss and explicit residue return, not from a soil-only balance accumulator"
+    },
+    {
+      "event_type": "CROP_GRAZING_EXPORT",
+      "element": "N_or_P_or_C",
+      "species_pool": "crop_biomass_element",
+      "unit": "kg element per m2 ground area",
+      "source_owner": "animo.crop.element_store",
+      "destination_owner": "external.grazing_removal",
+      "internal_external": "external",
+      "process": "grazing_export",
+      "evidence_coordinate": "PREP06 ID-CROP-GRAZING; crop state loss and Osgr-return semantics",
+      "amount_rule": "external consumed remainder unless a separate management return event explicitly re-enters the system"
+    },
+    {
+      "event_type": "SOIL_REDISTRIBUTION",
+      "element": "N_or_P_or_C",
+      "species_pool": "conserved_pool",
+      "unit": "kg element per m2 ground area",
+      "source_owner": "animo.soil_or_surface.source_store",
+      "destination_owner": "animo.soil.destination_store",
+      "internal_external": "internal",
+      "process": "ploughing_mixing_redistribution",
+      "evidence_coordinate": "PREP06 ID-REDISTRIBUTION; Addit redistribution state transfers; TCD-017 reporting seam remains visible",
+      "amount_rule": "one physical transfer per source/destination pair; public Bapo(Redi) is not an authoritative amount source"
+    },
+    {
+      "event_type": "ORGANIC_POOL_TRANSFORMATION",
+      "element": "N_or_P_or_C",
+      "species_pool": "fresh_DOM_stableDOM_exudate_humus_mineral_pool",
+      "unit": "kg element per m2 ground area",
+      "source_owner": "animo.soil.organic_or_mineral_pool_A",
+      "destination_owner": "animo.soil.organic_or_mineral_pool_B",
+      "internal_external": "internal",
+      "process": "decomposition_assimilation_mineralization_immobilization",
+      "evidence_coordinate": "PREP06 ID-ORG-TRANSFORM / ID-N-MINERALIZATION / ID-P-MINERALIZATION; Resp_miner transfer variables",
+      "amount_rule": "species-specific amount follows the source process transfer; C events require an explicit qualified carbon conversion for the participating pool"
+    },
+    {
+      "event_type": "NITRIFICATION",
+      "element": "N",
+      "species_pool": "NH4-N_to_NO3-N",
+      "unit": "kg N per m2 ground area",
+      "source_owner": "animo.soil.NH4-N",
+      "destination_owner": "animo.soil.NO3-N",
+      "internal_external": "internal",
+      "process": "nitrification",
+      "evidence_coordinate": "PREP06 ID-NITRIFICATION; process source/sink terms feeding TRANSPORT",
+      "amount_rule": "non-GHG core projection only; any N2O split requires active qualified GHG event topology"
+    },
+    {
+      "event_type": "DENITRIFICATION_EXPORT",
+      "element": "N",
+      "species_pool": "NO3-N_to_gaseous_N",
+      "unit": "kg N per m2 ground area",
+      "source_owner": "animo.soil.NO3-N",
+      "destination_owner": "external.atmosphere",
+      "internal_external": "external",
+      "process": "denitrification",
+      "evidence_coordinate": "PREP06 ID-DENITRIFICATION; Denitr and process terms feeding nitrate transport",
+      "amount_rule": "core external N loss may be projected where source transfer is explicit; detailed N2/N2O split remains feature-scoped"
+    },
+    {
+      "event_type": "P_PHASE_TRANSFER",
+      "element": "P",
+      "species_pool": "PO4_aqueous_fast_sorbed_slow_sorbed_precipitated",
+      "unit": "kg P per m2 ground area",
+      "source_owner": "animo.soil.layer[i].P_phase_A",
+      "destination_owner": "animo.soil.layer[i].P_phase_B",
+      "internal_external": "internal",
+      "process": "sorption_desorption_precipitation_dissolution",
+      "evidence_coordinate": "PREP06 ID-P-SORPTION; Transgen/Transorp state deltas Rscopo/Rsamcxfa/Rsamcxsl/Rsampopr; TCD-019 remains visible",
+      "amount_rule": "single phase-transfer edge; numerical/storage inconsistency is a residual, never corrected by ledger projection"
+    },
+    {
+      "event_type": "MACROPORE_MATRIX_EXCHANGE",
+      "element": "water_or_N_or_P_or_C",
+      "species_pool": "macropore_supported_species",
+      "unit": "m water or kg element per m2 ground area",
+      "source_owner": "animo.matrix.layer[i].pool",
+      "destination_owner": "animo.macropore.domain[d].pool",
+      "internal_external": "internal",
+      "process": "matrix_macropore_exchange",
+      "evidence_coordinate": "PREP06 ID-MACROPORE-WATER / ID-MACROPORE-SOLUTE; MAPOHYDRO/MAPOTRANSPORT; MP02 synthetic B1 only",
+      "amount_rule": "source/destination reverse with physical exchange direction; no natural active case in frozen testbank"
+    },
+    {
+      "event_type": "MACROPORE_DIRECT_DRAINAGE",
+      "element": "water_or_N_or_P_or_C",
+      "species_pool": "macropore_supported_species",
+      "unit": "m water or kg element per m2 ground area",
+      "source_owner": "animo.macropore.domain[d].pool",
+      "destination_owner": "external.drainage",
+      "internal_external": "external",
+      "process": "macropore_direct_drainage",
+      "evidence_coordinate": "PREP06 specialized MAPOHYDRO/MAPOTRANSPORT identities; MP02 synthetic B1; TCD-025 public-ledger gap",
+      "amount_rule": "exactly one boundary crossing; main legacy Dra4/public balance arrays are not authoritative physical state"
+    }
+  ],
+  "nested_crop_projection": {
+    "status": "SOURCE_BOUND_AND_NATURAL_PATH_COVERED_CANDIDATE",
+    "soil_plus_crop_rule": "realized uptake is one internal event from soil nutrient owner to crop nutrient owner; the same amount debits soil and credits Rsamplni_act/Rsamplpo_act through the active uptake route",
+    "soil_only_rule": "the same event projects as an external sink from a soil-only observer volume without changing the underlying event",
+    "external_crop_forcing_rule": "for CropUptakeModel=1, requested external forcing is not itself a physical mass crossing. Only realized Upintg_Extern uptake becomes a soil-to-crop transfer.",
+    "natural_path_coverage": {
+      "CropUptakeModel_0": [
+        "CranGrass",
+        "CranMais",
+        "Puitmijn_Cranendonck_60",
+        "RuurloGrass",
+        "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+      ],
+      "CropUptakeModel_1": [
+        "GrassPeat",
+        "LWKM_gras_1040.2021.2045",
+        "STONE_akk_0006.2001.2015"
+      ]
+    },
+    "runtime_event_journal": "not yet implemented; MASSQ02 qualifies the source-to-event projection and owner algebra, not a canonical production journal"
+  },
+  "runtime_projection_examples": [
+    {
+      "evidence_id": "OBS-MP02-EX-W",
+      "time_interval": "TITO=1",
+      "element": "water",
+      "species_pool": "water",
+      "amount": 0.02,
+      "unit": "mm water",
+      "source_owner": "animo.matrix.layer[2].water",
+      "destination_owner": "animo.macropore.domain[2].water",
+      "internal_external": "internal",
+      "process": "matrix_macropore_exchange",
+      "evidence_coordinate": "MASSQ01 MASSLEDGER_OBSERVER_RECORDS.csv + MP02 synthetic complete-case",
+      "combined_owner_delta_sum": 0.0,
+      "interpretation": "synthetic feature example only"
+    },
+    {
+      "evidence_id": "OBS-MP02-DD-W",
+      "time_interval": "TITO=1",
+      "element": "water",
+      "species_pool": "water",
+      "amount": 0.02,
+      "unit": "mm water",
+      "source_owner": "animo.macropore.domain[1].water",
+      "destination_owner": "external.drainage",
+      "internal_external": "external",
+      "process": "macropore_direct_drainage",
+      "evidence_coordinate": "MASSQ01 MASSLEDGER_OBSERVER_RECORDS.csv + MP02 synthetic complete-case",
+      "system_boundary_crossings": 1,
+      "interpretation": "synthetic feature example only"
+    }
+  ],
+  "natural_coverage": {
+    "cases": [
+      "CranGrass",
+      "CranMais",
+      "GrassPeat",
+      "LWKM_gras_1040.2021.2045",
+      "Puitmijn_Cranendonck_60",
+      "RuurloGrass",
+      "STONE_akk_0006.2001.2015",
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+    ],
+    "case_count": 8,
+    "phosphorus_active_cases": 6,
+    "phosphorus_inactive_cases": 2,
+    "macropore_active_cases": 0,
+    "ghg_active_compatible_cases": 0,
+    "observer_noninterference_physical_outputs_compared": 379,
+    "observer_noninterference_different": 0,
+    "scientific_numeric_tolerance_applied": false
+  },
+  "feature_readiness": {
+    "core_water_N_P": "candidate projection source-qualified and B1 natural observer coverage present",
+    "crop_nested_owner": "candidate source-qualified; both internal and externally-forced uptake routes naturally executed",
+    "macropore": "synthetic MP02 only; TCD-025 remains visible; no natural feature admission",
+    "GHG": "fail-closed incomplete; no compatible natural active B1 case and no MASSQ02 event admission",
+    "carbon": "soil-organic-C projection only where Cfracom is explicit; whole-system elemental-C closure is not claimed"
+  },
+  "validation_results": {
+    "event_field_completeness": "PASS_CANDIDATE_SCHEMA",
+    "internal_event_net_zero_over_combined_control_volume": "PASS_BY_SINGLE_EDGE_OWNER_ALGEBRA_NO_TOLERANCE",
+    "external_event_exactly_one_system_boundary_crossing": "PASS_BY_OWNER_XOR_RULE",
+    "legacy_balance_accumulator_as_amount_or_storage_owner": "FAIL_CLOSED_FORBIDDEN_AND_NOT_USED",
+    "canonical_runtime_typed_event_journal": "NOT_IMPLEMENTED_OR_ADMITTED",
+    "mass_gate_admitted": false
+  }
+}
