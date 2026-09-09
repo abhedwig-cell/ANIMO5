@@ -8,6 +8,16 @@ Class: `A_ACCOUNTING_REPORTING_ONLY`
 
 This file prepares, but does not perform, the independent second-line review required by B3Q01. The authoring context of ANIMO-B3A02 must not count itself as the independent reviewer.
 
+## Review request
+
+A dedicated GitHub review request is now open:
+
+Issue `#25`:
+
+`ANIMO-B3A02R — Independent second-line review of TCD-017 Class-A readiness`
+
+That issue is a coordination object only. Opening it does not satisfy the independent-review gate. The actual reviewer must work in a separate workunit/context and persist independent review evidence.
+
 ## Frozen review object
 
 Review the admission-readiness dossier as frozen at commit:
