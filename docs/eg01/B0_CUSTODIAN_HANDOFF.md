@@ -78,6 +78,16 @@ Return only non-secret evidence suitable for the public repository:
 
 Use `integration/evidence/ANIMO_B0_STORAGE_PROOF_SCHEMA.json` for the machine-readable return record.
 
+Before any status promotion, run the fail-closed semantic gate from the repository root:
+
+```text
+python tools/validate_b0_storage_proof.py <returned-proof.json>
+```
+
+Exit code `0` means the public proof metadata is internally consistent with the canonical B0 register and contains all three expected evidence IDs, exact B0 digests, primary/secondary verification flags, restore results and non-placeholder proof references. Any other exit code blocks promotion.
+
+Schema conformance or a machine-gate pass is not sufficient evidence by itself. The gate cannot authenticate a custodian, storage authority or proof reference. An authorized human reviewer must still inspect those external claims before the stronger status is admitted.
+
 ## Legal handling
 
 EG01 establishes evidence-preservation procedure, not redistribution rights. The source and testcase redistribution basis is not established. The supplied ANIMO 4.0 User's Guide contains an explicit reproduction/storage restriction. Storage and access must therefore follow the applicable organizational authorization and copyright/licensing assessment.
@@ -92,7 +102,9 @@ The stronger status may be considered only after all three evidence objects have
 - proven independent secondary retention;
 - matching post-ingest SHA-256 values;
 - matching restored SHA-256 values;
-- a custodian approval/proof reference.
+- a custodian approval/proof reference;
+- a passing semantic metadata gate against the canonical B0 register;
+- explicit human review of the external storage and custody proof.
 
 Until then:
 
