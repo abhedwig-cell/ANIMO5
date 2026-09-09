@@ -101,7 +101,7 @@ def main() -> int:
             "attachment without collapse",
             "canonical_time_admitted = false",
             "ARCHG01 live candidate architecture + completed TS01 + TIME01",
-            "not a global NQ02 branch-authority reassignment",
+            "global NQ02 branch-authority reassignment",
             "b3_baseline_established = false",
             "G10 production migration remains not admitted",
             "QUALIFIED_INDEPENDENT_STREAM_ATTACHMENT_NO_SCIENTIFIC_COLLAPSE",
