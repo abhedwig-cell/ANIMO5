@@ -98,8 +98,8 @@ The detailed rules are in `integration/animo-reg/RG05_PARALLELISM_MATRIX.csv`.
 
 RG05 observes but does not promote:
 
-- `B3B04`: TCD-040 evidence persisted, qualification pending;
-- `IO02@f7c1872e2e875c68dc2c86c2027193ee5d4fd55f`: strict GENERAL.INP representation observer implemented, while the authoritative IO02 checkpoint still says `NOT_YET_QUALIFIED` and `IN_PROGRESS_PERSISTED_SOURCE_CONTRACT_EXTRACTION`.
+- `B3B04@c87ed020a8b4a4685e76f701364b560c8f9c7aef`: TCD-040 evidence persisted, qualification pending;
+- `IO02@fdf6a27feefcb1d1afb9faff0aaab2f5363073c9`: strict GENERAL.INP representation observer and contract tests are persisted, but qualification remains fail closed. Workflow `34383556997` compiled the observer/test code successfully and then failed in the unittest step. The authoritative IO02 checkpoint therefore remains `IN_PROGRESS_PERSISTED_SOURCE_CONTRACT_EXTRACTION` and `NOT_YET_QUALIFIED`.
 
 Later advances after this snapshot require another explicit content/state reconciliation. They are not silently part of RG05.
 
@@ -123,7 +123,7 @@ Later advances after this snapshot require another explicit content/state reconc
 1. Complete B3B04 TCD-040 restore-identity qualification without broadening canonical STATE.
 2. Run genuinely independent reviews for TCD-015, TCD-017, TCD-018, TCD-024, TCD-026, TCD-027, TCD-042-B1 and the NQ03 TCD-042-E1 numerical policy. Keep all admission decisions fail closed while claim-scoped route requirements are unmet.
 3. Execute the real external archival/provenance acquisition action if progress on G6U is desired.
-4. Continue IO02 as representation-only work until its full grammar, negative probes, natural projection and validation are qualified.
+4. Fix IO02's failing contract tests and continue representation-only qualification until its full grammar, negative probes, natural projection and validation are green.
 5. Open TCD-023, TCD-030, TCD-038 and TCD-041 atomic readiness work as capacity allows.
 6. Continue NQ02/TCD-019 and TCD-029 as separate numerical-policy work.
 7. Do not start B4 composition or production migration from readiness-only evidence.
