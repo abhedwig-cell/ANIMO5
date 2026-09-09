@@ -41,7 +41,7 @@ def main():
     require("no organizational or human independence claimed" in review["scope"], "independence boundary retained")
 
     hist = admission["evidence"]["historical_uncertainty"]
-    require("UNKNOWN" in hist["uncertainty_statement"].upper() or "unknown" in hist["uncertainty_statement"].lower(), "historical uncertainty explicit")
+    require("unknown" in hist["uncertainty_statement"].lower(), "historical uncertainty explicit")
     require(EXPECTED_REVIEW_HEAD in hist["second_line_review_ref"], "second-line ref pinned")
 
     gates = admission["gates"]
@@ -59,11 +59,14 @@ def main():
     require(decision["admitted"] is True, "admission decision true")
     require(decision["decision"] == "ADMIT_TCD017_ATOMIC_CLASS_A_SCIENTIFIC_ACCOUNTING_CORRECTION_WITH_HISTORICAL_UNCERTAINTY", "bounded admission decision")
 
-    expected_forbidden = {
-        "physical states", "process fluxes", "Bafop", "TCD-027 and TCD-028 surfaces"
+    expected_unchanged = {
+        "all physical states",
+        "all process fluxes",
+        "Bafop",
+        "TCD-027 and TCD-028 surfaces",
     }
     unchanged = set(admission["evidence"]["expected_difference"]["unchanged_surfaces"])
-    require(expected_forbidden.issubset(unchanged), "expected-difference non-interference boundary")
+    require(expected_unchanged.issubset(unchanged), "expected-difference non-interference boundary")
 
     require(admission["composition"]["is_composition"] is False, "no composition")
     require(admission["composition"]["component_record_ids"] == [], "no composition components")
