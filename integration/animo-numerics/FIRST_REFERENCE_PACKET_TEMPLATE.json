@@ -1,0 +1,55 @@
+{
+  "packet_schema_version": "1.0.0",
+  "work_unit": "ANIMO-NQ01",
+  "testcase_id": "RuurloGrass",
+  "inputs": {
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "input_tree_manifest": "FILL_AFTER_FROZEN_STAGING",
+    "hydrology_identity_or_manifest": "FILL_AFTER_FROZEN_STAGING",
+    "input_content_transformed": false
+  },
+  "b2": {
+    "evidence_role": "B2_HISTORICAL_REFERENCE_CANDIDATE",
+    "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "receipt_manifest": "FILL_AFTER_PREP02R_RECEIPT",
+    "lineage_classification": "FILL_AFTER_PREP02R_LINEAGE_REVIEW",
+    "execution_attempt_permitted_by_prep02r": false,
+    "ordinary_run_manifest": "FILL_AFTER_NATIVE_RUN",
+    "raw_output_tree_manifest": "FILL_AFTER_NATIVE_RUN",
+    "repeat_determinism": "NOT_RUN_WITH_RATIONALE",
+    "repeat_rationale": "FILL_OR_REPLACE_WITH_REPEAT_CLASSIFICATION"
+  },
+  "b1": {
+    "evidence_role": "B1_DIAGNOSTIC",
+    "executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "run_manifest": "FILL_AFTER_CORRESPONDING_B1_RUN",
+    "raw_output_tree_manifest": "FILL_AFTER_CORRESPONDING_B1_RUN"
+  },
+  "formatted_tree_comparison": {
+    "result_artifact": "FILL_AFTER_FORMATTED_TREE_COMPARISON",
+    "decision": "DIFFERENT_FAIL_CLOSED"
+  },
+  "observer": {
+    "used": false,
+    "ordinary_output_non_interference_passed": null,
+    "observer_patch_sha256": null,
+    "b2_structured_capture": null,
+    "b1_structured_capture": null
+  },
+  "structured_comparison": {
+    "result_artifact": null,
+    "decision": "NOT_RUN_NO_UNROUNDED_CAPTURE"
+  },
+  "policy_assertions": {
+    "global_numeric_tolerance_applied": false,
+    "legacy_residual_used_as_tolerance": false,
+    "rounded_report_treated_as_unrounded_oracle": false,
+    "b1_classified_as_independent_reference": false,
+    "numerical_equivalence_qualified_by_packet": false,
+    "production_migration_admitted": false
+  },
+  "disposition": {
+    "b2_reference_status": "CANDIDATE_NOT_QUALIFIED",
+    "next_action": "FILL_AFTER_COMPARISON_REVIEW"
+  }
+}
