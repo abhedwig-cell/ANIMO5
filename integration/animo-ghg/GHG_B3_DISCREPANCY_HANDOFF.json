@@ -1,0 +1,68 @@
+{
+  "work_unit": "ANIMO-GHG01",
+  "artifact": "GHG_B3_DISCREPANCY_HANDOFF",
+  "status": "POST_CLOSEOUT_HANDOFF_PERSISTED_NO_CANONICAL_TCD_ALLOCATION",
+  "source_branch": "work/animo-ghg01-ghg-qualification",
+  "ghg01_qualification": "QUALIFIED_GHG_THEORY_SOURCE_AND_INPUT_LINEAGE_EVIDENCE_WITH_HISTORICAL_REFERENCE_GAPS",
+  "governance_snapshot": {
+    "rg02_branch": "work/animo-rg02-branch-authority-integration",
+    "rg02_head_observed": "27231ac9e52380c4ec10c9cf8e1cff5b72711e96",
+    "qualified_b3q01_canonical_register_tail": "TCD-027",
+    "later_canonical_reservation_observed": "TCD-028",
+    "canonical_id_allocation_performed_here": false
+  },
+  "existing_canonical_ghg_links": {
+    "TCD-008": "GHG theory/version documentation gap",
+    "TCD-013": "GHGMais versus revision-53 input-contract lineage mismatch"
+  },
+  "local_findings": [
+    {
+      "key": "GHG01-LCL-METHANOGENESIS-SOURCE-POOL-TRANSFER",
+      "classification": "SOURCE_CONFIRMED_INCOMPLETE_PHYSICAL_TRANSFER_PATH",
+      "canonical_tcd": null,
+      "root_finding": "CH4 production draws from DOM, exudates, humus and fresh organic matter, while the comprehensive GHG_Miner source-pool transfer calls are inactive and only the separate DOM depletion path was found active",
+      "dependent_subfinding": "GHG CO2 and subsidence accounting producer path also depends on inactive GHG_Miner",
+      "historical_runtime_magnitude": "REFERENCE_BLOCKED",
+      "recommended_action": "independent source review plus activated-case reproduction before canonical allocation"
+    },
+    {
+      "key": "GHG01-LCL-GHG-OUTBAL-WORKING-ARRAYS",
+      "classification": "SOURCE_CONFIRMED_BALANCE_OBSERVER_INTERFACE_DEFECT",
+      "canonical_tcd": null,
+      "root_finding": "Outbal_calc consumes AmCH4 and AmN2Odeni although neither is passed into the routine and no active assignment under those symbols was found; AmN2Onitr is calculated locally",
+      "historical_runtime_magnitude": "REFERENCE_BLOCKED",
+      "recommended_action": "treat separately from theory and parser lineage; reproduce under an activated compatible case"
+    },
+    {
+      "key": "GHG01-LCL-GAS-STORE-CN-CONTROL-VOLUME",
+      "classification": "MODEL_WIDE_CONSERVATION_CONTROL_VOLUME_GAP",
+      "canonical_tcd": null,
+      "root_finding": "dynamic CH4-C and N2O-N gas stores are not canonical start/end state in the ordinary C/N residuals",
+      "legacy_defect_claim": "NOT_AUTOMATICALLY_ADMITTED",
+      "animo5_requirement": "model-wide MassLedger must include gas storage and explicit atmosphere-boundary transfers",
+      "recommended_action": "B3 governance to decide whether this warrants a canonical TCD or remains an architecture/control-volume requirement"
+    }
+  ],
+  "activated_case_minimum_evidence": [
+    "GHGasses task 1 and task 2 reachability",
+    "CH4 and N2O start/end gas system storage",
+    "all CH4 production source-family contributions and corresponding source-pool changes",
+    "CH4 oxidation and all emission mechanisms",
+    "N2O nitrification production, denitrification production, reduction and emission",
+    "ordinary C/N balances plus GHG observer terms",
+    "unrounded model-wide C/N residual reconstructed from explicit state and transfers"
+  ],
+  "evidence_rules": {
+    "translated_GHGMais_is_B0": false,
+    "compatibility_descendant_is_B2": false,
+    "synthetic_case_can_establish_causality": true,
+    "synthetic_case_can_establish_historical_behaviour": false,
+    "production_patch_specification": false
+  },
+  "b3_blockers": [
+    "TCD-008_EXACT_REV53_GHG_EQUATION_PARAMETER_AUTHORITY",
+    "TCD-013_MATCHING_HISTORICAL_GHG_INPUT_LINEAGE",
+    "GHG01_SOURCE_CONFIRMED_CONSERVATION_PATH_AND_OBSERVER_FINDINGS",
+    "QUALIFIED_HISTORICAL_REFERENCE_RUNNER_OR_EQUIVALENT_ORACLE"
+  ]
+}
