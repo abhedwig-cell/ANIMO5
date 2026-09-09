@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import importlib.util
+import unittest
 from pathlib import Path
 
 
@@ -27,54 +28,44 @@ def fixture() -> bytes:
     )
 
 
-def test_controlled_transform_is_length_preserving_and_hashes_descendant():
-    parent = fixture()
-    descendant, manifest = module.transform(
-        parent,
-        expected_parent_sha256=sha256(parent),
-        indices=[0, 1, 2],
-    )
-    assert len(descendant) == len(parent)
-    assert manifest["parent_sha256"] == sha256(parent)
-    assert manifest["descendant_sha256"] == sha256(descendant)
-    assert manifest["b0_modified"] is False
-    assert b"1.000000E-04" in descendant
-    assert b"1.000000E-05" in descendant
-    assert b"1.000000E-06" in descendant
-
-
-def test_parent_hash_mismatch_fails_closed():
-    parent = fixture()
-    try:
-        module.transform(
-            parent,
-            expected_parent_sha256="0" * 64,
-            indices=[0, 1, 2],
-        )
-    except ValueError as exc:
-        assert "parent SHA-256 mismatch" in str(exc)
-    else:
-        raise AssertionError("hash mismatch was not rejected")
-
-
-def test_nonzero_selected_parent_token_is_rejected():
-    parent = fixture().replace(b"0.000000E+00", b"2.000000E-03", 1)
-    try:
-        module.transform(
+class StableDomActivationTransformTests(unittest.TestCase):
+    def test_controlled_transform_is_length_preserving_and_hashes_descendant(self):
+        parent = fixture()
+        descendant, manifest = module.transform(
             parent,
             expected_parent_sha256=sha256(parent),
             indices=[0, 1, 2],
         )
-    except ValueError as exc:
-        assert "is not zero" in str(exc)
-    else:
-        raise AssertionError("nonzero parent token was not rejected")
+        self.assertEqual(len(descendant), len(parent))
+        self.assertEqual(manifest["parent_sha256"], sha256(parent))
+        self.assertEqual(manifest["descendant_sha256"], sha256(descendant))
+        self.assertFalse(manifest["b0_modified"])
+        self.assertIn(b"1.000000E-04", descendant)
+        self.assertIn(b"1.000000E-05", descendant)
+        self.assertIn(b"1.000000E-06", descendant)
+
+    def test_parent_hash_mismatch_fails_closed(self):
+        parent = fixture()
+        with self.assertRaisesRegex(ValueError, "parent SHA-256 mismatch"):
+            module.transform(
+                parent,
+                expected_parent_sha256="0" * 64,
+                indices=[0, 1, 2],
+            )
+
+    def test_nonzero_selected_parent_token_is_rejected(self):
+        parent = fixture().replace(b"0.000000E+00", b"2.000000E-03", 1)
+        with self.assertRaisesRegex(ValueError, "is not zero"):
+            module.transform(
+                parent,
+                expected_parent_sha256=sha256(parent),
+                indices=[0, 1, 2],
+            )
+
+    def test_duplicate_indices_are_rejected(self):
+        with self.assertRaisesRegex(ValueError, "unique"):
+            module.parse_indices("0,1,1")
 
 
-def test_duplicate_indices_are_rejected():
-    try:
-        module.parse_indices("0,1,1")
-    except ValueError as exc:
-        assert "unique" in str(exc)
-    else:
-        raise AssertionError("duplicate indices were not rejected")
+if __name__ == "__main__":
+    unittest.main()
