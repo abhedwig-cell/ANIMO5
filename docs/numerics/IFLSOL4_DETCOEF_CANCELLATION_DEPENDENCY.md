@@ -171,9 +171,7 @@ Current classification:
 
 Local NQ02 key:
 
-`NQ02-LCL-IFLSOL4-DETC OEF-CANCELLATION`
-
-The space in that display key is not an identifier convention. Machine-readable metadata uses `NQ02-LCL-IFLSOL4-DETCOEF-CANCELLATION`.
+`NQ02-LCL-IFLSOL4-DETCOEF-CANCELLATION`
 
 Before any TCD-019 B3 admission workunit, the numerical coefficient semantics used for comparison must be pinned. A later independent qualification workunit should determine whether the revision-53 expressions are intended historical arithmetic, whether an algebraically stable evaluation is admissible, and what other `Iflsol` branches have comparable conditioning risk.
 
