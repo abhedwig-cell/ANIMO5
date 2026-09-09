@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-GOV02",
+  "purpose": "Evidence-DAG and process-scoped B2 requirement policy. Governance only; no scientific admissions.",
+  "baseline_labels": {
+    "B0": "PINNED_HISTORICAL_ARTIFACT_AND_PROVENANCE",
+    "B1": "REPRODUCIBLE_DIAGNOSTIC_EXECUTION_NOT_INDEPENDENT_REFERENCE",
+    "B2": "INDEPENDENT_HISTORICAL_BEHAVIOURAL_REFERENCE",
+    "B3": "PROCESS_SCOPED_QUALIFIED_SCIENTIFIC_DISPOSITION",
+    "B4": "ADMITTED_MIGRATED_ANIMO5_IMPLEMENTATION_BASELINE"
+  },
+  "definitions": {
+    "baseline": "Pinned condition, artifact set or evidence snapshot.",
+    "reference": "Comparison source independent of the result being evaluated for the scoped claim.",
+    "oracle": "Source that supplies normative expected behaviour for a bounded claim.",
+    "historical_oracle": "B2-type independently trusted evidence of relevant historical behaviour.",
+    "scientific_oracle": "Claim-specific analytical, conservation, metamorphic, independent numerical, high-precision or theory-derived normative evidence."
+  },
+  "non_equivalences": [
+    "HISTORICAL_ORACLE_IS_NOT_SCIENTIFIC_TRUTH",
+    "SCIENTIFIC_ORACLE_IS_NOT_PROOF_OF_HISTORICAL_BEHAVIOUR"
+  ],
+  "claim_types": [
+    "HISTORICAL_FIDELITY_CLAIM",
+    "SCIENTIFIC_CORRECTION_CLAIM",
+    "REPRESENTATION_EQUIVALENCE_CLAIM",
+    "NUMERICAL_POLICY_CLAIM",
+    "PHYSICS_MODEL_CLAIM"
+  ],
+  "historical_fidelity_track": {
+    "nodes": ["B0", "B1", "B2"],
+    "rule": "B2 remains independent from B1; B1 cannot be promoted to B2."
+  },
+  "scientific_qualification_track": {
+    "inputs": [
+      "SOURCE_SEMANTICS",
+      "AUTHORITATIVE_THEORY",
+      "CONSERVATION_IDENTITY",
+      "ANALYTICAL_ORACLE",
+      "SYNTHETIC_CAUSAL_TEST",
+      "METAMORPHIC_ORACLE",
+      "INDEPENDENT_NUMERICAL_ORACLE",
+      "HIGH_PRECISION_ORACLE",
+      "THEORY_DERIVED_ORACLE",
+      "EMPIRICAL_VALIDATION_WHERE_APPLICABLE"
+    ],
+    "output": "PROCESS_SCOPED_B3_DISPOSITION",
+    "rule": "Evidence requirements are selected by atomic claim type and B3 class."
+  },
+  "scientific_oracle_classes": [
+    "ANALYTICAL_ORACLE",
+    "CONSERVATION_ORACLE",
+    "METAMORPHIC_ORACLE",
+    "INDEPENDENT_NUMERICAL_ORACLE",
+    "HIGH_PRECISION_ORACLE",
+    "THEORY_DERIVED_ORACLE"
+  ],
+  "forbidden_promotions": [
+    "SYNTHETIC_EVIDENCE_TO_B2",
+    "B1_OUTPUT_TO_B2",
+    "B2_AGREEMENT_TO_SCIENTIFIC_CORRECTNESS",
+    "SMALLER_RESIDUAL_TO_NUMERICAL_CORRECTNESS",
+    "MASS_CLOSURE_ONLY_TO_CLASS_C_STATE_AUTHORITY"
+  ],
+  "b2_mandatory_for": [
+    "HISTORICAL_FIDELITY_CLAIM",
+    "HISTORICAL_INTEL_RUNTIME_EQUIVALENCE_CLAIM",
+    "HISTORICAL_OUTPUT_USED_AS_ACCEPTANCE_ORACLE",
+    "HISTORICAL_REGRESSION_CLAIM_WITHOUT_OTHER_INDEPENDENT_HISTORICAL_EVIDENCE",
+    "REPRESENTATION_EQUIVALENCE_TO_HISTORICAL_BEHAVIOUR"
+  ],
+  "routes": {
+    "B2_BACKED_RECONCILIATION": {
+      "historical_reference_required_when_claim_is_historical": true,
+      "b2_proves_scientific_correctness": false
+    },
+    "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY": {
+      "entry_prep02r_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+      "scientific_claim_scope_must_be_narrow": true,
+      "b1_causality_required": true,
+      "primary_independent_scientific_authority_required": true,
+      "independent_cross_check_required": true,
+      "expected_difference_predeclared": true,
+      "non_interference_required": true,
+      "path_coverage_required": true,
+      "independent_second_line_review_required": true,
+      "historical_behaviour_status": "UNKNOWN",
+      "historical_fidelity_claim_admitted": false,
+      "evidence_burden_lower_than_b2_backed_route": false
+    }
+  },
+  "prep02r_closure_states": [
+    "B2_REFERENCE_OBTAINED",
+    "B2_PARTIAL_HISTORICAL_EVIDENCE_OBTAINED",
+    "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "B2_ACQUISITION_STILL_ACTIVE",
+    "B2_ACQUISITION_INSUFFICIENTLY_ATTEMPTED"
+  ],
+  "current_prep02r_policy_state": "B2_ACQUISITION_STILL_ACTIVE",
+  "current_prep02r_route_eligible": false,
+  "current_prep02r_basis": {
+    "external_request_sent": false,
+    "historical_reference_artifact_obtained": false,
+    "reference_qualified": false,
+    "no_unavailability_claim_made": true
+  },
+  "uncertainty_propagation": {
+    "required_markers_without_b2": {
+      "historical_behaviour_status": "UNKNOWN",
+      "historical_reference_status": "UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT"
+    },
+    "propagate_to": [
+      "B3_COMPOSITION",
+      "REGRESSION_CLAIMS",
+      "B4_MIGRATION_RECORDS",
+      "RELEASE_DOCUMENTATION",
+      "FUTURE_B2_COMPARISON"
+    ],
+    "later_b2_recovery_action": "OPEN_NEW_HISTORICAL_FIDELITY_COMPARISON_DO_NOT_RETROACTIVELY_REWRITE_ORIGINAL_SCIENTIFIC_DISPOSITION"
+  },
+  "rg02_gate_reconciliation": {
+    "G6": "HISTORICAL_FIDELITY_B2_ACQUISITION_AND_COMPARISON_GATE",
+    "G7": "PROCESS_SCOPED_B3_QUALIFICATION_FROM_RELEVANT_EVIDENCE_ROUTE",
+    "g7_scientific_claim_can_be_considered_without_b2_only_via_strict_historical_uncertainty_route": true,
+    "g7_historical_claim_requires_g6_b2": true,
+    "g6_pass_implied_by_no_b2_scientific_disposition": false,
+    "whole_model_historical_equivalence_remains_b2_dependent": true,
+    "b4_inherits_uncertainty_provenance": true
+  },
+  "governance_assertions": {
+    "B2_devalued": false,
+    "synthetic_evidence_promoted_to_B2": false,
+    "historical_uncertainty_route_weakened": false,
+    "new_TCD_admissions": false,
+    "B3_global_baseline_established": false,
+    "B4_admitted": false,
+    "production_migration_admitted": false
+  }
+}

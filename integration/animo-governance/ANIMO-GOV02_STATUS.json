@@ -1,0 +1,124 @@
+{
+  "work_unit": "ANIMO-GOV02",
+  "title": "B2 Gate Scope Reconciliation, Synthetic Oracle Evidence & Historical-Uncertainty Route Activation Policy",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-gov02-evidence-dag-reconciliation",
+  "date": "2026-09-09",
+  "started_from_rg02_head": "5c278152eacc33660f1c5870c7d419b8041b20a9",
+  "persist_early_checkpoint_commit": "db3e18f4b386ab83cd5cf6576637472219125d6c",
+  "decision": "QUALIFIED_EVIDENCE_DAG_AND_PROCESS_SCOPED_B2_REQUIREMENT_NO_SCIENTIFIC_ADMISSIONS",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "governance_only": true,
+  "authority_resolution": {
+    "RG02": "work/animo-rg02-g5-independent-stream-attachment@5c278152eacc33660f1c5870c7d419b8041b20a9",
+    "EB01": "work/animo-eb01-evidence-baseline-model@52411b9d2d6d80717914bc6642544290a54ded21",
+    "B3Q01": "work/animo-b3q01-scientific-admission-framework@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "PREP02R": "work/animo-prep02r-historical-reference-recovery@e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+    "SYNQ01": "work/animo-synq01-independent-synthetic-oracles@e1134630b5ff4cded17dfd33ba13881ec3264ae0",
+    "TQ01": "work/animo-tq01-testcase-qualification@5c43ee16df37a0a1357614fdec527f25e5ca8c16",
+    "NQ01": "work/animo-nq01-numerical-qualification-architecture@e558dff12b127e0662cad62beea7527b42ad89ac",
+    "NQ02": "work/animo-nq02-tcd019-nonlinear-p-qualification@12e874559d484417cea1ca5d4ef719ea0b359585",
+    "TS01": "work/animo-ts01-temporal-semantics@ed12a678cfba19ce851eb2f380e6da3f49203fe4",
+    "B3A01": "work/animo-b3a01-tcd027-class-a-readiness@b2bac82512fef0fa232e759f0c68b472567c11d5"
+  },
+  "reconciliation": {
+    "baseline_labels_retained": ["B0", "B1", "B2", "B3", "B4"],
+    "strict_global_B2_before_any_B3_rejected": true,
+    "replacement_rule": "B2 is claim-scoped: mandatory for historical fidelity and historical-equivalence claims; independently qualifiable scientific claims may only use the strict historical-uncertainty route after documented reasonable B2 acquisition is genuinely exhausted.",
+    "historical_fidelity_track": ["B0", "B1", "B2"],
+    "scientific_track_feeds_process_scoped_B3": true,
+    "historical_oracle_is_scientific_truth": false,
+    "scientific_oracle_proves_historical_behaviour": false
+  },
+  "current_prep02r_policy_state": {
+    "state": "B2_ACQUISITION_STILL_ACTIVE",
+    "external_request_sent": false,
+    "historical_reference_artifact_obtained": false,
+    "historical_uncertainty_route_eligible": false,
+    "reason": "The authoritative PREP02R status still records the prepared external institutional request as unsent. No failure or exhaustion is inferred."
+  },
+  "synthetic_oracle_policy": {
+    "taxonomy_reconciled": [
+      "ANALYTICAL_ORACLE",
+      "CONSERVATION_ORACLE",
+      "METAMORPHIC_ORACLE",
+      "INDEPENDENT_NUMERICAL_ORACLE",
+      "HIGH_PRECISION_ORACLE",
+      "THEORY_DERIVED_ORACLE"
+    ],
+    "synq01_stream_state_at_snapshot": "IN_PROGRESS_PERSISTED_BEFORE_ORACLE_QUALIFICATION",
+    "taxonomy_adopted_as_governance_classes_not_blanket_oracle_qualification": true,
+    "synthetic_evidence_is_B2": false
+  },
+  "class_policy": {
+    "A": "no-B2 scientific route possible only after acquisition closure, closed identity, physical non-interference, B1 causality, coverage and independent review",
+    "B": "no-B2 scientific route possible only with unambiguous local authority, independent causal/oracle cross-checks and strong coverage",
+    "C": "missing state requires independent state-model/theory authority; mass closure alone forbidden",
+    "D": "historical representation equivalence requires B2; B3-to-B4 representation equivalence may reference admitted B3 while inheriting uncertainty",
+    "E": "separate numerical formulation, convergence, precision/discretization and independent numerical review required; smaller residual forbidden as sole authority",
+    "F": "new physics requires separate scientific-model governance; B2 is not authority for new physics"
+  },
+  "rg02_gate_reconciliation": {
+    "G6H": "historical-fidelity B2 acquisition/comparison scope inside existing G6",
+    "G6U": "bounded acquisition closure scope inside existing G6",
+    "G7": "atomic process/discrepancy B3 qualification using claim-required evidence route",
+    "no_b2_scientific_disposition_marks_G6H_passed": false,
+    "whole_model_historical_equivalence_remains_B2_dependent": true,
+    "B4_inherits_historical_uncertainty": true
+  },
+  "validation": {
+    "validator": "tools/validate_gov02_evidence_dag.py",
+    "unit_tests": "tests/test_gov02_evidence_dag.py",
+    "validator_result_artifact": "integration/animo-governance/GOV02_VALIDATION_RESULT.json",
+    "validator_result": "PASS",
+    "unit_tests_result": "PASS",
+    "unit_tests_count": 4,
+    "required_case_matrix_result": "PASS",
+    "execution_environment": "local stdlib Python validation against the exact authored GOV02 machine-policy/test artifacts before GitHub publication",
+    "github_actions_run_claimed": false
+  },
+  "owner_document_policy": {
+    "EB01_owner_document_modified": false,
+    "B3Q01_owner_document_modified": false,
+    "RG02_canonical_integration_DAG_reconciled": true,
+    "RG_migration_DAG_reconciled": true,
+    "reason": "GOV02 is a cross-stream reconciliation layer and does not silently replace EB01/B3Q01 owner-qualified semantics. RG-owned gate/integration documents are the direct cross-stream update surface."
+  },
+  "deliverables": [
+    "docs/governance/ANIMO_GOV02_WORK_UNIT_CONTRACT.md",
+    "docs/governance/ANIMO5_EVIDENCE_DAG_RECONCILIATION.md",
+    "docs/governance/B2_REQUIREMENT_SCOPE.md",
+    "docs/governance/HISTORICAL_UNCERTAINTY_ADMISSION_POLICY.md",
+    "docs/governance/PREP02R_BOUNDED_ACQUISITION_CLOSURE.md",
+    "docs/governance/MIGRATION_DAG.md",
+    "docs/governance/ANIMO_CANONICAL_INTEGRATION_DAG.md",
+    "integration/animo-governance/ANIMO_EVIDENCE_DAG.json",
+    "integration/animo-governance/B2_REQUIREMENT_MATRIX.csv",
+    "integration/animo-governance/GOV02_VALIDATION_CASES.json",
+    "integration/animo-governance/GOV02_VALIDATION_RESULT.json",
+    "integration/animo-governance/ANIMO-GOV02_STATUS.json",
+    "tools/validate_gov02_evidence_dag.py",
+    "tests/test_gov02_evidence_dag.py"
+  ],
+  "hard_rule_assertions": {
+    "B2_devalued": false,
+    "synthetic_evidence_promoted_to_B2": false,
+    "historical_uncertainty_route_weakened": false,
+    "new_TCD_admissions": false,
+    "B3_global_baseline_established": false,
+    "B4_admitted": false,
+    "production_migration_admitted": false
+  },
+  "scientific_admissions_created": false,
+  "corrected_legacy_admitted": false,
+  "production_source_modified": false,
+  "recommended_next": [
+    "Keep PREP02R acquisition active until the prepared verified institutional request is actually sent and the bounded acquisition policy can be evaluated on real outcomes.",
+    "Have future B3 disposition records declare atomic claim type and historical-reference status explicitly.",
+    "When SYNQ01 closes, bind individually qualified oracle artifacts to the GOV02 oracle classes; do not infer qualification from taxonomy alone.",
+    "If B2 is later recovered, reopen historical-fidelity comparison for any B3 process carrying historical_behaviour_status=UNKNOWN."
+  ]
+}

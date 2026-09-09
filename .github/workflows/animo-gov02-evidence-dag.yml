@@ -1,0 +1,54 @@
+name: ANIMO-GOV02 evidence DAG validation
+
+on:
+  push:
+    branches:
+      - work/animo-gov02-evidence-dag-reconciliation
+    paths:
+      - 'docs/governance/ANIMO_GOV02_WORK_UNIT_CONTRACT.md'
+      - 'docs/governance/ANIMO5_EVIDENCE_DAG_RECONCILIATION.md'
+      - 'docs/governance/B2_REQUIREMENT_SCOPE.md'
+      - 'docs/governance/HISTORICAL_UNCERTAINTY_ADMISSION_POLICY.md'
+      - 'docs/governance/PREP02R_BOUNDED_ACQUISITION_CLOSURE.md'
+      - 'docs/governance/MIGRATION_DAG.md'
+      - 'docs/governance/ANIMO_CANONICAL_INTEGRATION_DAG.md'
+      - 'integration/animo-governance/**'
+      - 'tools/validate_gov02_evidence_dag.py'
+      - 'tests/test_gov02_evidence_dag.py'
+      - '.github/workflows/animo-gov02-evidence-dag.yml'
+  pull_request:
+    paths:
+      - 'docs/governance/ANIMO_GOV02_WORK_UNIT_CONTRACT.md'
+      - 'docs/governance/ANIMO5_EVIDENCE_DAG_RECONCILIATION.md'
+      - 'docs/governance/B2_REQUIREMENT_SCOPE.md'
+      - 'docs/governance/HISTORICAL_UNCERTAINTY_ADMISSION_POLICY.md'
+      - 'docs/governance/PREP02R_BOUNDED_ACQUISITION_CLOSURE.md'
+      - 'docs/governance/MIGRATION_DAG.md'
+      - 'docs/governance/ANIMO_CANONICAL_INTEGRATION_DAG.md'
+      - 'integration/animo-governance/**'
+      - 'tools/validate_gov02_evidence_dag.py'
+      - 'tests/test_gov02_evidence_dag.py'
+      - '.github/workflows/animo-gov02-evidence-dag.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse GOV02 JSON
+        run: |
+          python -m json.tool integration/animo-governance/ANIMO_EVIDENCE_DAG.json >/dev/null
+          python -m json.tool integration/animo-governance/GOV02_VALIDATION_CASES.json >/dev/null
+          python -m json.tool integration/animo-governance/GOV02_VALIDATION_RESULT.json >/dev/null
+          python -m json.tool integration/animo-governance/ANIMO-GOV02_STATUS.json >/dev/null
+      - name: Run fail-closed GOV02 validator
+        run: python tools/validate_gov02_evidence_dag.py
+      - name: Run GOV02 unit tests
+        run: python -m unittest tests/test_gov02_evidence_dag.py -v

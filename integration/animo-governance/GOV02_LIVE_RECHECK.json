@@ -1,0 +1,25 @@
+{
+  "work_unit": "ANIMO-GOV02",
+  "date": "2026-09-09",
+  "purpose": "Closeout recheck of fast-moving upstream evidence streams after GOV02 authoring.",
+  "PREP02R": {
+    "branch": "work/animo-prep02r-historical-reference-recovery",
+    "head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+    "head_changed_since_GOV02_start_check": false,
+    "policy_effect": "NONE; B2 acquisition remains active and no unavailable-after-reasonable-effort state is established."
+  },
+  "SYNQ01": {
+    "branch": "work/animo-synq01-independent-synthetic-oracles",
+    "head_at_GOV02_start_check": "e1134630b5ff4cded17dfd33ba13881ec3264ae0",
+    "head_at_closeout_recheck": "4872aba239c6b348f3ad832adf7bbe6ad9250c21",
+    "head_changed_since_GOV02_start_check": true,
+    "status_at_closeout_recheck": "IN_PROGRESS_PERSISTED_BEFORE_ORACLE_QUALIFICATION",
+    "qualified_at_closeout_recheck": false,
+    "B2_reference_created": false,
+    "policy_effect": "NONE; the coverage-matrix commit does not change the oracle taxonomy or promote synthetic evidence to B2."
+  },
+  "governance_closeout_still_valid": true,
+  "new_scientific_admissions_detected_by_this_recheck": false,
+  "B2_devalued": false,
+  "synthetic_evidence_promoted_to_B2": false
+}

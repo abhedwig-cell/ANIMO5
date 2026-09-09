@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "cases": [
+    {
+      "id": "VALID_CLASS_A_HISTORICAL_UNCERTAINTY",
+      "expected": "ALLOW",
+      "b3_class": "A",
+      "claim_type": "SCIENTIFIC_CORRECTION_CLAIM",
+      "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+      "acquisition_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+      "acquisition_evidence": {
+        "targeted_wur_request_sent_verified_route": true,
+        "response_or_documented_unrecoverable": true,
+        "additional_plausible_route_attempted_or_not_applicable_with_reason": true,
+        "public_search_history_recorded": true,
+        "stopping_rationale_independently_reviewed": true,
+        "no_known_high_probability_route_skipped": true
+      },
+      "evidence": [
+        {"class": "B1_CAUSAL_EVIDENCE", "source_kind": "B1_DIAGNOSTIC"},
+        {"class": "CONSERVATION_ORACLE", "source_kind": "INDEPENDENT_SCIENTIFIC_ORACLE"},
+        {"class": "ANALYTICAL_ORACLE", "source_kind": "INDEPENDENT_SCIENTIFIC_ORACLE"}
+      ],
+      "b1_causality": true,
+      "expected_difference_predeclared": true,
+      "non_interference": true,
+      "path_coverage": true,
+      "independent_cross_check": true,
+      "independent_second_line_review": true,
+      "closed_conservation_identity": true,
+      "physical_state_flux_non_interference": true
+    },
+    {
+      "id": "INVALID_SYNTHETIC_AS_B2",
+      "expected": "REJECT",
+      "b3_class": "A",
+      "claim_type": "HISTORICAL_FIDELITY_CLAIM",
+      "route": "B2_BACKED_RECONCILIATION",
+      "evidence": [
+        {"class": "B2", "source_kind": "SYNTHETIC_TEST"}
+      ]
+    },
+    {
+      "id": "INVALID_B1_GNU_AS_HISTORICAL_ORACLE",
+      "expected": "REJECT",
+      "b3_class": "B",
+      "claim_type": "HISTORICAL_FIDELITY_CLAIM",
+      "route": "B2_BACKED_RECONCILIATION",
+      "evidence": [
+        {"class": "B2", "source_kind": "B1_GNU_OUTPUT"}
+      ]
+    },
+    {
+      "id": "INVALID_ACQUISITION_NOT_ACTUALLY_ATTEMPTED",
+      "expected": "REJECT",
+      "b3_class": "A",
+      "claim_type": "SCIENTIFIC_CORRECTION_CLAIM",
+      "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+      "acquisition_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+      "acquisition_evidence": {
+        "targeted_wur_request_sent_verified_route": false,
+        "response_or_documented_unrecoverable": false,
+        "additional_plausible_route_attempted_or_not_applicable_with_reason": true,
+        "public_search_history_recorded": true,
+        "stopping_rationale_independently_reviewed": true,
+        "no_known_high_probability_route_skipped": true
+      },
+      "evidence": [
+        {"class": "B1_CAUSAL_EVIDENCE", "source_kind": "B1_DIAGNOSTIC"},
+        {"class": "CONSERVATION_ORACLE", "source_kind": "INDEPENDENT_SCIENTIFIC_ORACLE"},
+        {"class": "ANALYTICAL_ORACLE", "source_kind": "INDEPENDENT_SCIENTIFIC_ORACLE"}
+      ],
+      "b1_causality": true,
+      "expected_difference_predeclared": true,
+      "non_interference": true,
+      "path_coverage": true,
+      "independent_cross_check": true,
+      "independent_second_line_review": true,
+      "closed_conservation_identity": true,
+      "physical_state_flux_non_interference": true
+    },
+    {
+      "id": "INVALID_CLASS_C_MASS_CLOSURE_ONLY",
+      "expected": "REJECT",
+      "b3_class": "C",
+      "claim_type": "SCIENTIFIC_CORRECTION_CLAIM",
+      "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+      "acquisition_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+      "acquisition_evidence": {
+        "targeted_wur_request_sent_verified_route": true,
+        "response_or_documented_unrecoverable": true,
+        "additional_plausible_route_attempted_or_not_applicable_with_reason": true,
+        "public_search_history_recorded": true,
+        "stopping_rationale_independently_reviewed": true,
+        "no_known_high_probability_route_skipped": true
+      },
+      "evidence": [
+        {"class": "B1_CAUSAL_EVIDENCE", "source_kind": "B1_DIAGNOSTIC"},
+        {"class": "CONSERVATION_ORACLE", "source_kind": "INDEPENDENT_SCIENTIFIC_ORACLE"}
+      ],
+      "b1_causality": true,
+      "expected_difference_predeclared": true,
+      "non_interference": true,
+      "path_coverage": true,
+      "independent_cross_check": true,
+      "independent_second_line_review": true,
+      "closed_conservation_identity": true,
+      "state_model_authority": false
+    },
+    {
+      "id": "INVALID_CLASS_E_SMALLER_RESIDUAL_ONLY",
+      "expected": "REJECT",
+      "b3_class": "E",
+      "claim_type": "NUMERICAL_POLICY_CLAIM",
+      "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+      "acquisition_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+      "acquisition_evidence": {
+        "targeted_wur_request_sent_verified_route": true,
+        "response_or_documented_unrecoverable": true,
+        "additional_plausible_route_attempted_or_not_applicable_with_reason": true,
+        "public_search_history_recorded": true,
+        "stopping_rationale_independently_reviewed": true,
+        "no_known_high_probability_route_skipped": true
+      },
+      "evidence": [
+        {"class": "B1_CAUSAL_EVIDENCE", "source_kind": "B1_DIAGNOSTIC"}
+      ],
+      "b1_causality": true,
+      "expected_difference_predeclared": true,
+      "non_interference": true,
+      "path_coverage": true,
+      "independent_cross_check": false,
+      "independent_second_line_review": false,
+      "smaller_residual_only": true,
+      "numerical_formulation_authority": false,
+      "convergence_study": false,
+      "precision_discretization_study": false,
+      "independent_numerical_review": false
+    },
+    {
+      "id": "INVALID_HISTORICAL_EQUIVALENCE_WITHOUT_B2",
+      "expected": "REJECT",
+      "b3_class": "D",
+      "claim_type": "REPRESENTATION_EQUIVALENCE_CLAIM",
+      "representation_reference": "HISTORICAL_BEHAVIOUR",
+      "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+      "acquisition_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+      "acquisition_evidence": {
+        "targeted_wur_request_sent_verified_route": true,
+        "response_or_documented_unrecoverable": true,
+        "additional_plausible_route_attempted_or_not_applicable_with_reason": true,
+        "public_search_history_recorded": true,
+        "stopping_rationale_independently_reviewed": true,
+        "no_known_high_probability_route_skipped": true
+      },
+      "evidence": [
+        {"class": "METAMORPHIC_ORACLE", "source_kind": "INDEPENDENT_SCIENTIFIC_ORACLE"}
+      ]
+    }
+  ]
+}
