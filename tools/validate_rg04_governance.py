@@ -10,6 +10,9 @@ ROOT = Path(__file__).resolve().parents[1]
 REG = ROOT / "integration" / "animo-reg"
 DOC = ROOT / "docs" / "governance"
 
+EXPECTED_PREP02R_HEAD = "286205cb58455236ba749d1898c490aca0c50179"
+EXPECTED_PREP02R_STATE = "PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED"
+
 EXPECTED_COUNTS = {
     "entries": 25,
     "READY_FOR_ADMISSION_READINESS": 7,
@@ -114,6 +117,7 @@ def main() -> None:
     require(REQUIRED_WORKUNITS.issubset(workunits), f"missing RG04 authority rows: {sorted(REQUIRED_WORKUNITS-set(workunits))}")
     by_wu = {r["workunit"]: r for r in authority}
     require(by_wu["PREP02R"]["qualified"] == "False", "PREP02R must not be marked qualified B2")
+    require(by_wu["PREP02R"]["authoritative_head"] == EXPECTED_PREP02R_HEAD, "PREP02R authority must pin the Windows-capture-ready head")
     require(by_wu["STATEQ02"]["qualified"] == "True", "STATEQ02 executable restricted profile must be recorded qualified")
     require(by_wu["MASSQ02"]["qualified"] == "True", "MASSQ02 readiness must be recorded qualified")
     require(by_wu["UBQ01"]["completed"] == "False", "UBQ01 must remain in progress")
@@ -124,30 +128,42 @@ def main() -> None:
     require(len(gate_ids) == len(set(gate_ids)), "duplicate RG04 gate rows")
     require(REQUIRED_GATES.issubset(gate_ids), f"missing RG04 gates: {sorted(REQUIRED_GATES-set(gate_ids))}")
     by_gate = {r["gate"]: r for r in gates}
+    require(by_gate["G6H"]["state"] == "PARTIAL_RECOVERY_HISTORICAL_B2_NOT_PASSED", "G6H gate state mismatch")
+    require("Windows capture" in by_gate["G6H"]["qualified_basis"] or "Windows" in by_gate["G6H"]["qualified_basis"], "G6H basis must record Windows capture readiness")
     require(by_gate["GSTATE"]["state"] == "RESTRICTED_CORE_EXECUTABLE_SPLIT_RUN_QUALIFIED_ADMISSION_PENDING", "GSTATE state mismatch")
     require(by_gate["GMASS"]["state"] == "TYPED_EVENT_AND_RESIDUAL_CAUSALITY_QUALIFIED_ADMISSION_PENDING", "GMASS state mismatch")
     require(by_gate["G7"]["state"] == "NO_ATOMIC_SCIENTIFIC_ADMISSIONS_YET", "G7 must remain unadmitted")
     require(by_gate["B4(profile)"]["state"] == "NOT_ADMITTED", "B4 must remain closed")
     require(by_gate["PRODUCTION"]["state"] == "NOT_ADMITTED", "production must remain closed")
 
-    # Human regie must state the critical non-promotions.
+    # Human regie must state the critical non-promotions and latest PREP02R state.
     require("2026 development rebuild" in regie, "regie must distinguish modern native rebuild from historical oracle")
+    require(EXPECTED_PREP02R_HEAD in regie, "regie must pin the latest PREP02R authority")
+    require(EXPECTED_PREP02R_STATE in regie, "regie must record Windows-native capture-ready PREP02R state")
     require("833 remaining accepted records" in regie, "STATEQ02 strongest executable witness missing")
     require("unexplained residual count is now zero" in regie, "MASSQ02 residual reconciliation missing")
     require("TCD-042" in regie and "atomization" in regie, "TCD-042 routing missing")
     require("RG04 itself must not admit any correction or canonical gate" in regie, "RG04 non-admission invariant missing")
 
-    # Status is either persisted pre-test or final closeout; both must stay non-admitting.
+    # Status is either persisted pre-test or final closeout; both must stay non-admitting and pin latest authority.
     require(status["work_unit"] == "ANIMO-RG04", "status workunit mismatch")
     require(status["production_migration"] == "NOT_ADMITTED", "status production state mismatch")
     require(status["scientific_admission_performed"] is False, "status may not record scientific admission")
     require(status["canonical_state_admitted"] is False, "canonical STATE must remain unadmitted")
     require(status["canonical_mass_admitted"] is False, "canonical MASS must remain unadmitted")
     require(status["authority_snapshot"]["canonical_tcd_register_tail"] == "TCD-042", "status canonical tail mismatch")
+    require(status["authority_snapshot"]["PREP02R"] == EXPECTED_PREP02R_HEAD, "status PREP02R authority snapshot is stale")
+    prep02r = status.get("prep02r")
+    require(isinstance(prep02r, dict), "status must contain PREP02R reconciliation block")
+    require(prep02r["state"] == EXPECTED_PREP02R_STATE, "status PREP02R state mismatch")
+    require(prep02r["windows_native_capture_handoff_ready"] is True, "Windows native capture handoff readiness must be recorded")
+    require(prep02r["native_candidate_execution_completed"] is False, "RG04 must not invent native execution evidence")
+    require(prep02r["external_request_sent"] is False, "RG04 must retain unsent archival request state")
+    require(prep02r["historical_reference_artifact_obtained"] is False, "RG04 must retain absent historical reference state")
     if status["state"] == "QUALIFIED_LATE_WAVE_STATE_MASS_B2_RECONCILIATION_NO_ADMISSIONS":
         require(status["tested"] is True and status["qualified"] is True and status["work_unit_complete"] is True, "final RG04 status must be tested/qualified/complete")
 
-    print("RG04 validation PASS: 25 queue entries, TCD-042 canonical, no admissions")
+    print("RG04 validation PASS: 25 queue entries, TCD-042 canonical, PREP02R Windows capture ready, no admissions")
 
 
 if __name__ == "__main__":
