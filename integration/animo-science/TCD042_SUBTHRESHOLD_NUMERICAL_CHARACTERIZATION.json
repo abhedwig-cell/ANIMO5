@@ -1,0 +1,117 @@
+{
+  "work_unit": "ANIMO-UBQ02",
+  "target_parent": "TCD-042",
+  "status": "CHARACTERIZED_NOT_ADMITTED",
+  "evidence_class": "B0_HASH_PINNED_DIAGNOSTIC_EXECUTION_AND_NUMERICAL_CHARACTERIZATION_NOT_B2",
+  "scope": "0<Flux<1.0d-8, Flpn=0",
+  "frozen_identity": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "base": {
+    "work_unit": "ANIMO-UBQ01",
+    "head": "6895b67799f26888025eced7188e7190b2a0d07d",
+    "exact_zero_atom_qualified": true
+  },
+  "execution": {
+    "instrumentation_only": true,
+    "production_source_modified": false,
+    "diagnostic_compiler": "GNU Fortran 14.2.0",
+    "instrumented_executable_sha256": "7241a72edd5f253539575bb64deab3e1a2860cf7aa1aa06cf32f7cb9d3793d82",
+    "invocation_contract": "animo_trace Animo.ini",
+    "cases_total": 9,
+    "successful_cases": 8,
+    "blocked_cases": 1,
+    "case_counts": {
+      "CranGrass": 188,
+      "CranMais": 299,
+      "GHGMais": 0,
+      "GrassPeat": 0,
+      "LWKM_gras_1040.2021.2045": 12,
+      "Puitmijn_Cranendonck_60": 490,
+      "RuurloGrass": 191,
+      "STONE_akk_0006.2001.2015": 0,
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA": 58
+    },
+    "trace_sha256": {
+      "CranGrass": "92a970a8ec8a01cc07386868778a00b9717de3581102d90417d00cacdb28aa2a",
+      "CranMais": "e126eccb8e2b5ab7379ef70579a13a1cd0c949c3d298bf69acaaeafaad7cba3a",
+      "LWKM_gras_1040.2021.2045": "c4b42523061c0e872e54d8f6e50d6259785f7962eb49e7bc3da108e73b163b44",
+      "Puitmijn_Cranendonck_60": "11afdaa6427fa554dcab4190094266e6475de17b110c685d40cddee4be9a083f",
+      "RuurloGrass": "0bcd32003e1757cc29473815c267a8ffd1fc6aed38c4df96328d0624c28899cf",
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA": "ce357babee9b5920129fd1c530cfca14c94cd0f008991704e5be74e3aa2dc161"
+    },
+    "GHGMais": "BLOCKED_AT_EXISTING_OUTGHG_INPUT_OUTPUT_CONTRACT; NO_ABSENCE_CLAIM"
+  },
+  "reachability": {
+    "records": 1238,
+    "cases": 6,
+    "P_definition": "St*Flux/Hetop",
+    "P_distribution": {
+      "min": 4.2351647362715017e-20,
+      "p01": 8.470329472543003e-20,
+      "p25": 1.3552527156068803e-18,
+      "median": 2.7105054312137607e-18,
+      "p75": 5.421010862427522e-18,
+      "p99": 1.5098499996065392e-7,
+      "max": 3.8510200002999744e-7
+    }
+  },
+  "legacy_fallback": {
+    "trigger": "Flux<1.0d-8",
+    "A1": 1,
+    "A2": 0,
+    "B1": 1,
+    "B2": 0,
+    "local_signed_residual": "St*(Load-Flux*C0)"
+  },
+  "binary64_direct_formula": {
+    "records": 1238,
+    "one_minus_exp_zero": 1189,
+    "f_median_relative_error": 1.0,
+    "f_max_relative_error": 1.0,
+    "f_records_gt_1pct": 1189,
+    "g_median_relative_error": 7.378697629483822e17,
+    "g_max_relative_error": 4.722366482869645e19,
+    "g_records_gt_1pct": 1206
+  },
+  "stable_comparison_candidate": {
+    "selected_policy": false,
+    "f_series": "1-P/2+P^2/6-P^3/24+P^4/120",
+    "g_series": "1/2-P/6+P^2/24-P^3/120+P^4/720",
+    "envelope": "observed P range only",
+    "reference_precision_decimal_digits": 80,
+    "binary64_max_relative_error_f": 1.1102231667337098e-16,
+    "binary64_max_relative_error_g": 1.11022311936419e-16,
+    "binary32_max_relative_error_f": 2.920929761157157e-8,
+    "binary32_max_relative_error_g": 2.9382266927954594e-8,
+    "max_abs_conservation_roundoff_kg_ha": 4.336808689942018e-15
+  },
+  "natural_materiality": {
+    "mineral_N_signed_local_residual_sum_kg_ha": 0.01686637146830565,
+    "mineral_N_absolute_local_residual_sum_kg_ha": 0.01687197932049386,
+    "nonzero_mineral_N_load_records": 4,
+    "RuurloGrass_signed_local_N_residual_kg_ha": 0.016866741552807048,
+    "RuurloGrass_max_abs_single_record_N_residual_kg_ha": 0.0067476693479999565,
+    "nonzero_load_TITO": [527, 533, 595, 847],
+    "P_enabled_records": 748,
+    "P_load_nonzero_records": 0,
+    "DOM_load_nonzero_records": 0,
+    "DON_load_nonzero_records": 0
+  },
+  "classification": {
+    "provisional_class": "E_NUMERICAL_POLICY",
+    "reason": "finite-positive threshold is a small-delta approximation that changes the numerical solution; removing it with raw direct formulas is unsafe",
+    "exact_zero_Class_B_reopened": false,
+    "parent_tcd_fully_qualified": false,
+    "canonical_incremental_intake_recommended": true,
+    "new_tcd_reserved": false,
+    "canonical_child_created": false
+  },
+  "admission": {
+    "b3_admitted": false,
+    "corrected_legacy_admitted": false,
+    "numerical_policy_admitted": false,
+    "production_migration_admitted": false
+  }
+}
