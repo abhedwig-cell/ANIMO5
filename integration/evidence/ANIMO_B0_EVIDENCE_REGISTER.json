@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-EG01",
+  "title": "Controlled Immutable B0 Evidence Register",
+  "repository": "abhedwig-cell/ANIMO5",
+  "public_repository": true,
+  "branch": "work/animo-eg01-controlled-b0-retention",
+  "parent_sha": "662bca8aff40f4dca1f6ccdde6bef6274c6bede2",
+  "register_status": "CONTRACT_DEFINED_EXTERNAL_CONTROLLED_STORAGE_NOT_YET_PROVEN",
+  "qualification_decision": "QUALIFIED_B0_RETENTION_CONTRACT_IMPLEMENTATION_PENDING_EXTERNAL_CONTROLLED_STORAGE",
+  "stronger_decision_prohibited_until_proven": "QUALIFIED_CONTROLLED_IMMUTABLE_B0_RETENTION",
+  "raw_bytes_in_public_git": false,
+  "hash_algorithm_primary": "SHA-256",
+  "evidence_classes": [
+    "B0_RAW_IMMUTABLE",
+    "B0_MANIFEST",
+    "WORKING_COPY",
+    "COMPATIBILITY_TRANSFORM",
+    "DIAGNOSTIC_OUTPUT",
+    "REFERENCE_OUTPUT",
+    "CORRECTED_LEGACY",
+    "MIGRATED_ANIMO5"
+  ],
+  "public_metadata_policy": {
+    "allowed": [
+      "evidence IDs and classes",
+      "filenames where disclosure is acceptable",
+      "byte sizes",
+      "cryptographic digests and algorithm identifiers",
+      "member manifests and inventories that do not republish restricted raw content",
+      "provenance and qualification state",
+      "non-secret opaque controlled-storage proof references",
+      "transform and run lineage"
+    ],
+    "prohibited_without_explicit_authorization": [
+      "raw source archive bytes",
+      "raw testcase archive bytes when redistribution status is uncertain or restricted",
+      "full documentation PDF bytes",
+      "storage credentials or encryption keys",
+      "secret storage locations",
+      "functionally equivalent republished raw artifacts disguised as extracted or renamed copies"
+    ]
+  },
+  "external_control_requirements": {
+    "storage_authority_role": "B0 Evidence Custodian",
+    "storage_platform_status": "NOT_PROVEN",
+    "primary_immutable_copy_required": true,
+    "independent_secondary_copy_required": true,
+    "storage_enforced_write_protection_required": true,
+    "least_privilege_access_required": true,
+    "auditable_access_required_where_supported": true,
+    "post_ingest_hash_verification_required": true,
+    "restore_test_required": true,
+    "scheduled_revalidation_minimum": "at least annually while active",
+    "human_or_organizational_actions_pending": true
+  },
+  "artifacts": [
+    {
+      "evidence_id": "ANIMO-B0-SRC-41553-R53",
+      "evidence_class": "B0_RAW_IMMUTABLE",
+      "role": "source",
+      "supplied_filename": "ANIMO_4.1.5.53(3).zip",
+      "size_bytes": 350696,
+      "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "public_manifest": {
+        "class": "B0_MANIFEST",
+        "path": "reference/source/source_manifest.csv",
+        "sha256_pin_path": "reference/source/ANIMO_4.1.5.53.zip.sha256"
+      },
+      "identity_basis": {
+        "source_self_identification": "ANIMO 4.1.5 revision 53",
+        "archive_member_count": 65,
+        "note": "Embedded version/build identifiers are source evidence, not independent origin authentication."
+      },
+      "legal_redistribution_status": "NOT_ESTABLISHED_FOR_PUBLIC_REPUBLICATION",
+      "working_copy_allowed": true,
+      "controlled_storage": {
+        "status": "PENDING_EXTERNAL_IMPLEMENTATION",
+        "primary_storage_record_id": null,
+        "secondary_storage_record_id": null,
+        "immutability_proof_reference": null,
+        "post_ingest_sha256_verified": false,
+        "secondary_copy_sha256_verified": false,
+        "restore_test_passed": false,
+        "custodian_approval_reference": null
+      },
+      "local_setup_revalidation": {
+        "performed": true,
+        "sha256_match": true,
+        "scope": "transient supplied project bytes only; not proof of controlled retention"
+      }
+    },
+    {
+      "evidence_id": "ANIMO-B0-TB-202609",
+      "evidence_class": "B0_RAW_IMMUTABLE",
+      "role": "testcase_package",
+      "supplied_filename": "ANIMO_testbank.zip",
+      "size_bytes": 7659314,
+      "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "public_manifest": {
+        "class": "B0_MANIFEST",
+        "path": "reference/testcases/testbank_manifest.csv",
+        "inventory_path": "reference/testcases/testbank_inventory.json",
+        "sha256_pin_path": "reference/testcases/ANIMO_testbank.zip.sha256"
+      },
+      "identity_basis": {
+        "archive_member_count": 119,
+        "top_level_testcase_count": 9,
+        "note": "Testcase identity is byte-based; working input changes must be separate descendants."
+      },
+      "legal_redistribution_status": "NOT_ESTABLISHED_FOR_PUBLIC_REPUBLICATION",
+      "working_copy_allowed": true,
+      "controlled_storage": {
+        "status": "PENDING_EXTERNAL_IMPLEMENTATION",
+        "primary_storage_record_id": null,
+        "secondary_storage_record_id": null,
+        "immutability_proof_reference": null,
+        "post_ingest_sha256_verified": false,
+        "secondary_copy_sha256_verified": false,
+        "restore_test_passed": false,
+        "custodian_approval_reference": null
+      },
+      "local_setup_revalidation": {
+        "performed": true,
+        "sha256_match": true,
+        "scope": "transient supplied project bytes only; not proof of controlled retention"
+      }
+    },
+    {
+      "evidence_id": "ANIMO-B0-DOC-UG40-2005",
+      "evidence_class": "B0_RAW_IMMUTABLE",
+      "role": "documentation",
+      "supplied_filename": "animo_users_guide_of_the_animo_nutrient_leaching_-wageningen_university_and_research_20340(2).pdf",
+      "logical_title": "ANIMO 4.0 User's Guide, Alterra Report 224, 2005",
+      "size_bytes": 1169499,
+      "sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+      "public_manifest": {
+        "class": "B0_MANIFEST",
+        "sha256_pin_path": "reference/documentation/animo_user_guide_4_0.pdf.sha256",
+        "inventory_path": "docs/prep01/DOCUMENTATION_INVENTORY.md"
+      },
+      "identity_basis": {
+        "documented_model_version": "ANIMO 4.0",
+        "note": "Documentation is evidence for 4.0 and is not an exact theory specification for 4.1.5 revision 53."
+      },
+      "legal_redistribution_status": "RESTRICTED_OR_PERMISSION_REQUIRED",
+      "working_copy_allowed": true,
+      "controlled_storage": {
+        "status": "PENDING_EXTERNAL_IMPLEMENTATION",
+        "primary_storage_record_id": null,
+        "secondary_storage_record_id": null,
+        "immutability_proof_reference": null,
+        "post_ingest_sha256_verified": false,
+        "secondary_copy_sha256_verified": false,
+        "restore_test_passed": false,
+        "custodian_approval_reference": null
+      },
+      "local_setup_revalidation": {
+        "performed": true,
+        "sha256_match": true,
+        "scope": "transient supplied project bytes only; not proof of controlled retention"
+      }
+    }
+  ],
+  "admission_rules": {
+    "b0_available_for_reference_qualification": "all required artifacts must have controlled_storage.status=PROVEN_CONTROLLED_IMMUTABLE, matching post-ingest digest verification, secondary copy verification and a passed restore test",
+    "reference_output": "requires a separate reference qualification gate and complete run lineage; diagnostic output is not sufficient",
+    "corrected_legacy": "must remain a separate descendant with discrepancy-specific rationale and qualification",
+    "migrated_animo5": "must trace through admitted corrected/reference lineage to the relevant B0 evidence"
+  },
+  "compatibility_transform_rule": {
+    "may_replace_b0": false,
+    "must_have_distinct_id": true,
+    "must_hash_parent": true,
+    "must_hash_output": true,
+    "must_record_recipe_or_tool_identity": true,
+    "semantic_equivalence_must_be_separately_justified": true
+  },
+  "prep_blocker_policy": {
+    "PREP01_B0_blocker_may_be_lifted_now": false,
+    "PREP02_B0_blocker_may_be_lifted_now": false,
+    "lift_condition": "only after ANIMO-EG01 reaches QUALIFIED_CONTROLLED_IMMUTABLE_B0_RETENTION with external storage proof"
+  }
+}
