@@ -1,0 +1,43 @@
+{
+  "request_id": "ANIMO-B3A04-TCD026-SECOND-LINE-REVIEW",
+  "work_unit": "ANIMO-B3A04",
+  "target_tcd": "TCD-026",
+  "review_type": "INDEPENDENT_SECOND_LINE_B3_CLASS_A_READINESS_REVIEW",
+  "authoring_counts_as_independent_review": false,
+  "review_assigned": false,
+  "review_complete": false,
+  "required_review_scope": [
+    "Verify frozen B0 source and testbank identities.",
+    "Verify canonical TCD-026 classification and Class-A atomic scope.",
+    "Verify C-EX physical ownership: Ex start state, Rsex result state, Init promotion and restart persistence.",
+    "Verify current Bfom beginning/end asymmetry and exact candidate term Ex(Ln)*P.",
+    "Verify the component conservation identity and the PREP06 10 kg/ha causal discriminator.",
+    "Verify that tiny post-probe residuals are not used as tolerance.",
+    "Verify physical-state, process-flux and total-physical-mass non-interference evidence.",
+    "Verify the changed-output whitelist and negative controls.",
+    "Verify that supplied natural B1 activation is structurally unreachable because all initial orgexu values are zero, rather than silently treating non-activation as a pass.",
+    "Verify that current SYNQ01 has no TCD-026 oracle and that no unrelated oracle is substituted.",
+    "Verify live GOV02/PREP02R route eligibility before any admission decision.",
+    "Verify no composition with other organic-matter TCDs and no initialization physics change."
+  ],
+  "primary_packet": "docs/b3/TCD026_SECOND_LINE_REVIEW_PACKET.md",
+  "readiness_record": "integration/animo-b3/TCD026_CLASS_A_READINESS.json",
+  "expected_difference_contract": "integration/animo-b3/TCD026_EXPECTED_DIFFERENCE.json",
+  "fail_conditions": [
+    "Any physical state or initialization value must change.",
+    "Any process flux or total physical OM trajectory must change.",
+    "Any output outside the declared fresh-OM balance whitelist changes.",
+    "The causal residual is explained only by tolerance rather than the exact omitted beginning mass.",
+    "Natural activation is claimed without an actually nonzero initial Ex or a model-produced restart state.",
+    "An unrelated SYNQ oracle is presented as TCD-026-specific independent evidence.",
+    "The route gate is treated as PASS while PREP02R remains ineligible.",
+    "The same authoring activity is counted as independent review.",
+    "The review composes another organic-matter discrepancy into TCD-026."
+  ],
+  "required_outcome_values": [
+    "PASS_INDEPENDENT_REVIEW",
+    "FAIL_INDEPENDENT_REVIEW",
+    "INCOMPLETE_REVIEW"
+  ],
+  "current_outcome": "INCOMPLETE_REVIEW"
+}
