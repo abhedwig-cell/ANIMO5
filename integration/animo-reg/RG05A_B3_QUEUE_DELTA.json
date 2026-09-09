@@ -1,0 +1,56 @@
+{
+  "work_unit": "ANIMO-RG05A",
+  "snapshot_date": "2026-09-09",
+  "base_queue": "ANIMO-RG05@f127528e148b9106149daec02d48ad972581e6df:integration/animo-reg/RG05_B3_QUEUE.json",
+  "integration_rule": "PRESERVE_RG05_AS_HISTORICAL_SNAPSHOT_APPLY_ONLY_EXPLICIT_POST_RG05_AUTHORITY_DELTAS",
+  "route_delta": {
+    "from": {
+      "G6U": "NOT_ELIGIBLE_ACQUISITION_NOT_EXHAUSTED_EXTERNAL_ACTION_UNSENT",
+      "historical_uncertainty_route_eligible": false
+    },
+    "to": {
+      "G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+      "historical_uncertainty_route_eligible": true,
+      "authority": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+    }
+  },
+  "tcd_deltas": [
+    {
+      "tcd": "TCD-017",
+      "from_queue_state": "WAITING_ON_ROUTE_AND_REVIEW",
+      "to_state": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+      "removed_blockers": [
+        "no valid claim-scoped G6 route",
+        "genuinely independent second-line review pending"
+      ],
+      "route_authority": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+      "review_authority": "ANIMO-B3A02R@8b38b03ac489c349192ae9fa55a8fe51cea183cb",
+      "admission_authority": "ANIMO-B3D02@bf31ffa96b4f71541c13d1426ccf48eac9536b24",
+      "disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+      "historical_behaviour": "UNKNOWN",
+      "next_action": "Do not reopen readiness. Integrate only in future B3 composition under propagated historical uncertainty; production implementation requires separate downstream authorization."
+    }
+  ],
+  "post_delta_counts": {
+    "canonical_tcd_entries": 25,
+    "active_queue_entries": 24,
+    "READY_FOR_ADMISSION_READINESS": 4,
+    "IN_PROGRESS_ADMISSION_READINESS": 0,
+    "WAITING_ON_ROUTE_AND_REVIEW": 6,
+    "WAITING_ON_THEORY": 4,
+    "WAITING_ON_NUMERICS": 2,
+    "WAITING_ON_STATE": 5,
+    "WAITING_ON_RUNTIME": 2,
+    "WAITING_ON_CHILDREN": 1,
+    "NOT_READY": 0,
+    "scientific_admissions": 1
+  },
+  "unchanged_high_level_boundaries": {
+    "canonical_tcd_register_tail": "TCD-042",
+    "TCD043_reserved": false,
+    "B3_whole_model_baseline_complete": false,
+    "B4": "NOT_ADMITTED",
+    "PRODUCTION": "NOT_ADMITTED"
+  },
+  "other_queue_entries": "UNCHANGED_FROM_RG05_UNLESS_SUPERSEDED_BY_A_LATER_EXPLICIT_AUTHORITY_NOT_IN_SCOPE_OF_RG05A"
+}
