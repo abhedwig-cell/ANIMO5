@@ -13,12 +13,13 @@
     "b1",
     "formatted_tree_comparison",
     "observer",
+    "representation_comparison",
     "structured_comparison",
     "policy_assertions",
     "disposition"
   ],
   "properties": {
-    "packet_schema_version": {"const": "1.0.0"},
+    "packet_schema_version": {"const": "1.1.0"},
     "work_unit": {"const": "ANIMO-NQ01"},
     "testcase_id": {"const": "RuurloGrass"},
     "inputs": {
@@ -128,6 +129,22 @@
         "b1_structured_capture": {"type": ["string", "null"]}
       }
     },
+    "representation_comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["result_artifact", "decision"],
+      "properties": {
+        "result_artifact": {"type": ["string", "null"]},
+        "decision": {
+          "enum": [
+            "NOT_RUN_NO_STRUCTURED_REPRESENTATION_CAPTURE",
+            "MATCH_EXACT_REPRESENTATION_OBSERVATIONS",
+            "DIFFERENT_REPRESENTATION_FAIL_CLOSED",
+            "SCHEMA_OR_PROVENANCE_FAILURE"
+          ]
+        }
+      }
+    },
     "structured_comparison": {
       "type": "object",
       "additionalProperties": false,
@@ -153,6 +170,7 @@
         "global_numeric_tolerance_applied",
         "legacy_residual_used_as_tolerance",
         "rounded_report_treated_as_unrounded_oracle",
+        "representation_difference_auto_accepted",
         "b1_classified_as_independent_reference",
         "numerical_equivalence_qualified_by_packet",
         "production_migration_admitted"
@@ -161,6 +179,7 @@
         "global_numeric_tolerance_applied": {"const": false},
         "legacy_residual_used_as_tolerance": {"const": false},
         "rounded_report_treated_as_unrounded_oracle": {"const": false},
+        "representation_difference_auto_accepted": {"const": false},
         "b1_classified_as_independent_reference": {"const": false},
         "numerical_equivalence_qualified_by_packet": {"const": false},
         "production_migration_admitted": {"const": false}
