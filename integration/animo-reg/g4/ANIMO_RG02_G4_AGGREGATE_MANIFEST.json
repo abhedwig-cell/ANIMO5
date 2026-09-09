@@ -1,0 +1,136 @@
+{
+  "work_unit": "ANIMO-RG02",
+  "gate": "G4",
+  "record_type": "CANONICAL_PREPARATORY_EVIDENCE_AGGREGATE_MANIFEST",
+  "branch": "work/animo-rg02-g4-canonical-preparatory-evidence-aggregate",
+  "base_head": "e510a3fa905375ce210298ea10d54f970d4eb098",
+  "aggregate_semantics": "provenance-resolved evidence index plus exact-blob canonical copies of authoritative PREP07-PREP10 core evidence; already-qualified G2 supplemental and PREP11/PREP12 rehome surfaces are incorporated by immutable branch/head reference rather than duplicated or merged",
+  "inherited_baseline": {
+    "PREP01_to_PREP06": "retained from RG02 base without rewrite",
+    "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "authoritative_core": [
+    {
+      "workunit": "ANIMO-PREP07",
+      "source_branch": "work/animo-prep07-transfer-edge-audit",
+      "source_head": "c4fe28b7878f6e8155560754b87b7ae115dd6473",
+      "source_tree": "e9dab03f068a0500b3caecde22dddb2f67aa13f7",
+      "source_status_blob": "d195a7dc7d08595a768468b57f205306e522e6f6",
+      "evidence_strength": "SOURCE_BOUND_STATIC_AUDIT_WITH_REFERENCE_ADMISSION_BLOCKED",
+      "files": [
+        ["docs/prep07/TRANSFER_EDGE_SPECIES_IDENTITY_AUDIT.md", "d2fef9e5403c069aedd3dcd3faf5c9dbc2140ede", "docs/aggregate/preparatory/PREP07/TRANSFER_EDGE_SPECIES_IDENTITY_AUDIT.md"],
+        ["integration/animo-prep/PREP07_TRANSFER_EDGE_SPECIES_AUDIT.json", "a0e027dfff46f53412eda553b729f22b53690ba5", "integration/animo-reg/g4/aggregate/PREP07/PREP07_TRANSFER_EDGE_SPECIES_AUDIT.json"],
+        ["tools/audit_transfer_edges.py", "20ba04f4020e674ee9523d2f131e73a38a4b190c", "aggregate/preparatory/PREP07/tools/audit_transfer_edges.py"]
+      ],
+      "excluded": ["integration/animo-prep/ANIMO-PREP07_STATUS.json", "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"]
+    },
+    {
+      "workunit": "ANIMO-PREP08",
+      "source_branch": "work/animo-prep08-causal-management-probes",
+      "source_head": "933795e2e9bf72a78b5fcf5412510f057d0ab869",
+      "source_tree": "cb517c63068e0e48d4f48b203d6c3bd4b3a7fdd6",
+      "source_status_blob": "12855f5d15feadb74c80d1556481abcd3699eeef",
+      "evidence_strength": "DIAGNOSTIC_NOT_REFERENCE",
+      "files": [
+        ["docs/prep08/MANAGEMENT_TRANSFER_CAUSAL_PROBES.md", "1971759a75e6806869ced26e8540a80ac6cfeb8a", "docs/aggregate/preparatory/PREP08/MANAGEMENT_TRANSFER_CAUSAL_PROBES.md"],
+        ["integration/animo-prep/PREP08_MANAGEMENT_TRANSFER_CAUSAL_PROBES.json", "828072d3303f5e63f38f0415287b931b6968f3f8", "integration/animo-reg/g4/aggregate/PREP08/PREP08_MANAGEMENT_TRANSFER_CAUSAL_PROBES.json"]
+      ],
+      "excluded": ["integration/animo-prep/ANIMO-PREP08_STATUS.json", "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"]
+    },
+    {
+      "workunit": "ANIMO-PREP09",
+      "source_branch": "work/animo-prep09-element-transfer-and-slow-sorption",
+      "source_head": "e3c3b0dfa8daabe345c51be8c4f29f2731d65c47",
+      "source_tree": "aca27ac2e5c52b500ddde61178d1cda7a54b3458",
+      "source_status_blob": "347b4bbca46d5aa61a76b651c7ad93ccf1e599ab",
+      "evidence_strength": "SOURCE_BOUND_AND_DIAGNOSTIC_NOT_REFERENCE",
+      "files": [
+        ["docs/prep09/ELEMENT_TRANSFER_AND_SLOW_SORPTION_AUDIT.md", "6a977d1638a1497f7cbc245b09095d9c6eb0a293", "docs/aggregate/preparatory/PREP09/ELEMENT_TRANSFER_AND_SLOW_SORPTION_AUDIT.md"],
+        ["docs/prep09/WORKING_FINDINGS.md", "f3b9869d8bcdeed9c151f208d59952299116c5e0", "docs/aggregate/preparatory/PREP09/WORKING_FINDINGS.md"],
+        ["integration/animo-prep/PREP09_ELEMENT_TRANSFER_SLOW_SORPTION.json", "94e14813c604897e8b5bc3ea8927965bddb55b9f", "integration/animo-reg/g4/aggregate/PREP09/PREP09_ELEMENT_TRANSFER_SLOW_SORPTION.json"],
+        ["tools/audit_prep09_transfer_semantics.py", "a8e8c0ec816d34209c5bf2c59ae028d495cbedba", "aggregate/preparatory/PREP09/tools/audit_prep09_transfer_semantics.py"]
+      ],
+      "excluded": ["integration/animo-prep/ANIMO-PREP09_STATUS.json", "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"]
+    },
+    {
+      "workunit": "ANIMO-PREP10",
+      "source_branch": "work/animo-prep10-stable-dom-plough-accumulators",
+      "source_head": "65cd4a65a3ea27cd4ce004f505d5022fdb08b9ab",
+      "source_tree": "5b95aea6c8f44aed68705b30f88bd6083822600a",
+      "source_status_blob": null,
+      "authority_note": "authoritative PREP10 lineage has no ANIMO-PREP10_STATUS.json at the expected path; RG02 authority is based on exact lineage, active review surface and downstream handoff evidence rather than an invented status file",
+      "source_contract_blob": "755ade89a3759d620121b246ff8473ac1ea0d355",
+      "evidence_strength": "SOURCE_BOUND_AND_DIAGNOSTIC_WITH_B3_HANDOFF_NOT_ADMITTED",
+      "files": [
+        ["docs/prep10/B3_DISPOSITION_HANDOFF.md", "6a2f68912e3966bdfbb5c41f0eb2c5e4b2de189e", "docs/aggregate/preparatory/PREP10/B3_DISPOSITION_HANDOFF.md"],
+        ["docs/prep10/WORKING_FINDINGS.md", "ee451908c74de3acb506b484456ab2924fe96625", "docs/aggregate/preparatory/PREP10/WORKING_FINDINGS.md"],
+        ["integration/animo-prep/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json", "16ce962cae3ec39539d620d345813d08dee96bea", "integration/animo-reg/g4/aggregate/PREP10/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json"],
+        ["integration/animo-prep/PREP10_PARALLEL_CAUSAL_EVIDENCE_RECONCILIATION.json", "e6e569a5b107d3f6b2818e46b9a6d017f1ab63d5", "integration/animo-reg/g4/aggregate/PREP10/PREP10_PARALLEL_CAUSAL_EVIDENCE_RECONCILIATION.json"],
+        ["integration/animo-prep/PREP10_STABLE_DOM_B3_HANDOFF.json", "027b0d57957081b71cfce0badd11b485039a18a8", "integration/animo-reg/g4/aggregate/PREP10/PREP10_STABLE_DOM_B3_HANDOFF.json"],
+        ["integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json", "d4b45f22bef9672acf4820ac3b695fa631633640", "integration/animo-reg/g4/aggregate/PREP10/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json"],
+        ["integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json", "71116dd5448542cc190ae2a620b0fe9d561633c5", "integration/animo-reg/g4/aggregate/PREP10/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json"]
+      ],
+      "tool_and_test_provenance_reference": {
+        "source_branch_head": "65cd4a65a3ea27cd4ce004f505d5022fdb08b9ab",
+        "tools": [
+          ["tools/audit_stable_dom_plough_accumulators.py", "d77625520ceba74840f1166ff558c17625d3a802"],
+          ["tools/audit_stable_dom_plough_activation.py", "754d3759b5e9e185ab83332ef1c5a9e4260df627"],
+          ["tools/make_prep10_addit_variants.py", "fe43c0ef5f6f0d6000a68c4b1d3707db70f2ae41"],
+          ["tools/make_prep10_sdomin_activation.py", "8177558882d60d9f1d869576e0de58b92da3c97e"],
+          ["tools/probe_prep10_local_storage_semantics.py", "ec304fb99a9673636cd8f315566d0efda9022124"]
+        ],
+        "tests": [
+          ["tests/prep10/test_audit_stable_dom_plough_accumulators.py", "0df4a1f2c030adbf1939970a6802ee0985228826"],
+          ["tests/prep10/test_audit_stable_dom_plough_activation.py", "b3f58d8804366d8578684f7d120596ff7bba9085"],
+          ["tests/prep10/test_make_prep10_addit_variants.py", "574f959d9de2f65c74bc8cf8f05b72285919f1cc"],
+          ["tests/prep10/test_make_prep10_sdomin_activation.py", "d04e5b3775c66b77faec4fe8b7c49964250093b9"]
+        ],
+        "materialized_into_G4": false
+      },
+      "excluded": ["docs/prep10/WORK_UNIT_CONTRACT.md", "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv", "all stale PREP08/PREP09 artifacts inherited through PREP10 ancestry"]
+    }
+  ],
+  "qualified_rehome_inputs": {
+    "G2_supplemental": {
+      "branch": "work/animo-rg02-g2-supplemental-evidence-transplant",
+      "head": "cfe9995aa52649577eb258845f517b69aa13d435",
+      "packet_manifest": "integration/animo-reg/g2/ANIMO_RG02_G2_PACKET_MANIFEST.json",
+      "packets": ["RG02-SUPP-P07-SPECIES-001", "RG02-SUPP-P08-TRANSFER-001"],
+      "incorporation": "IMMUTABLE_QUALIFIED_REFERENCE_NO_DUPLICATE_COPY"
+    },
+    "PREP11": {
+      "branch": "work/animo-prep11-option-contract-rehome",
+      "head": "20e77dd7617c68e56e9e7436c06d9df13d22bf5e",
+      "manifest": "integration/animo-prep/PREP11_REHOME_MANIFEST.json",
+      "incorporation": "IMMUTABLE_QUALIFIED_REFERENCE_NO_DUPLICATE_COPY"
+    },
+    "PREP12": {
+      "branch": "work/animo-prep12-restart-state-continuity-rehome",
+      "head": "3d86de057247adcfeefb82c11d7cf7d5b2cbdf73",
+      "manifest": "integration/animo-prep/PREP12_REHOME_MANIFEST.json",
+      "incorporation": "IMMUTABLE_QUALIFIED_REFERENCE_NO_DUPLICATE_COPY"
+    }
+  },
+  "excluded_from_G4": {
+    "PREP10C": "corrected-legacy candidate/review line belongs downstream of preparatory evidence aggregation and is not imported",
+    "source_local_TCD_registers": true,
+    "source_workunit_status_files_as_canonical_state": true,
+    "legacy_source_mutations": true,
+    "testcase_mutations": true
+  },
+  "register_contract": {
+    "G4_physical_register_path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "must_remain_blob": "e6c2dec78f718f9ffb70af8910f0ec483e676e63",
+    "B3_canonical_register_owner": "ANIMO-B3 governance",
+    "new_canonical_tcd_ids_allocated": 0
+  },
+  "non_admissions": {
+    "scientific_requalification": false,
+    "scientific_baseline_changed": false,
+    "corrected_legacy_admitted": false,
+    "B3_admitted": false,
+    "B4_admitted": false,
+    "production_migration_admitted": false
+  }
+}
