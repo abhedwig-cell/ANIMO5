@@ -1,0 +1,54 @@
+legacy_state_id,candidate_field_id,allocation_class,activation_expression,allocator,layout_dimensions,checkpoint_treatment,inactive_semantics,open_evidence
+W-INTERCEPTION,hydrology.interception,EXTERNAL_COORDINATE,hydrology_mode=detailed,external_hydrology_owner,profile_scalar_or_external_geometry,external_coordinated state,not present in ANIMO-owned persistent payload,TCD-018
+W-SNOW,hydrology.snow,EXTERNAL_COORDINATE,snow_enabled=true,external_hydrology_owner,profile_scalar_or_external_geometry,external coordinated state,not present when snow disabled,
+W-POND,hydrology.ponding,EXTERNAL_COORDINATE,hydrology_mode=detailed,external_hydrology_owner,profile_scalar_or_external_geometry,external coordinated state,not present in aggregated mode,
+W-SURFACE-AGG,hydrology.surface_aggregate_view,DERIVED_VIEW,hydrology_mode=aggregated,derived_views,profile_scalar,recompute after restore,not present in detailed mode,
+W-MATRIX,hydrology.matrix_water,EXTERNAL_COORDINATE,soil_chemistry=required,external_hydrology_owner,layer_count,external coordinated state,configuration invalid if transport lacks matrix-water coordinate,
+W-MACROPORE,macropore.water,CONDITIONAL_PERSISTENT,macropore_enabled=true AND feature_admitted,MacroporeState,macropore_domain_shape,checkpoint if feature admitted,absent when inactive,TCD-025
+TOP-NH4,surface_reservoir.nh4,CONDITIONAL_PERSISTENT,surface_reservoir_enabled=true,SurfaceReservoirState,surface_reservoir_shape,checkpoint,absent when inactive,
+TOP-NO3,surface_reservoir.no3,CONDITIONAL_PERSISTENT,surface_reservoir_enabled=true,SurfaceReservoirState,surface_reservoir_shape,checkpoint,absent when inactive,
+TOP-DOM-C,surface_reservoir.dom_om,CONDITIONAL_PERSISTENT,surface_reservoir_enabled=true,SurfaceReservoirState,surface_reservoir_shape,checkpoint,absent when inactive,
+TOP-DON,surface_reservoir.don,CONDITIONAL_PERSISTENT,surface_reservoir_enabled=true,SurfaceReservoirState,surface_reservoir_shape,checkpoint,absent when inactive,
+TOP-PO4,surface_reservoir.po4,CONDITIONAL_PERSISTENT,surface_reservoir_enabled=true,SurfaceReservoirState,surface_reservoir_shape,checkpoint,absent when inactive,
+TOP-DOP,surface_reservoir.dop,CONDITIONAL_PERSISTENT,surface_reservoir_enabled=true,SurfaceReservoirState,surface_reservoir_shape,checkpoint,absent when inactive,
+TOP-SDOM-DORMANT,surface_reservoir.stable_dom_dormant,UNSUPPORTED_DORMANT,forbidden,NO_RUNTIME_OWNER,none,not restored,parser-visible dormant state is not allocated,PREP06_DORMANT_SURFACE
+OM-FOM,organic.fom,MODEL_PERSISTENT,soil_chemistry=required,OrganicMatterState,layer_count*organic_fraction_count,checkpoint,always present in candidate core,
+OM-HUMUS,organic.humus,MODEL_PERSISTENT,soil_chemistry=required,OrganicMatterState,layer_count,checkpoint,always present in candidate core,
+OM-HUMUS-EX,organic.humus_exudate,MODEL_PERSISTENT,soil_chemistry=required,OrganicMatterState,layer_count,checkpoint,always present in candidate core,
+OM-EXUDATE,organic.exudate,MODEL_PERSISTENT,soil_chemistry=required,OrganicMatterState,layer_count,checkpoint,always present in candidate core,TCD-026
+DOM-L-C,dissolved.labile_om,MODEL_PERSISTENT,soil_chemistry=required,DissolvedOrganicState,layer_count_plus_supported_surface,checkpoint,always present in candidate core,
+DOM-L-N,dissolved.labile_n,MODEL_PERSISTENT,soil_chemistry=required,DissolvedOrganicState,layer_count_plus_supported_surface,checkpoint,always present in candidate core,
+DOM-L-P,dissolved.labile_p,MODEL_PERSISTENT,soil_chemistry=required,DissolvedOrganicState,layer_count_plus_supported_surface,checkpoint,always present in candidate core,
+DOM-S-C,dissolved.stable_om,CONDITIONAL_PERSISTENT,stable_dom_enabled=true,DissolvedOrganicState,layer_count,checkpoint,absent when inactive,TCD-021
+DOM-S-N,dissolved.stable_n,CONDITIONAL_PERSISTENT,stable_dom_enabled=true,DissolvedOrganicState,layer_count,checkpoint,absent when inactive,TCD-021
+DOM-S-P,dissolved.stable_p,CONDITIONAL_PERSISTENT,stable_dom_enabled=true,DissolvedOrganicState,layer_count,checkpoint,absent when inactive,TCD-021;TCD-023
+N-NH4-AQ,mineral_n.nh4_aqueous,MODEL_PERSISTENT,soil_chemistry=required,MineralNitrogenState,layer_count_plus_supported_surface,checkpoint,always present in candidate core,TCD-016
+N-NH4-ADS,mineral_n.nh4_adsorbed,MODEL_PERSISTENT,soil_chemistry=required,MineralNitrogenState,layer_count,checkpoint,always present in candidate core,
+N-NO3,mineral_n.no3,MODEL_PERSISTENT,soil_chemistry=required,MineralNitrogenState,layer_count_plus_supported_surface,checkpoint,always present in candidate core,TCD-015
+P-PO4-AQ,mineral_p.po4_aqueous,MODEL_PERSISTENT,soil_chemistry=required,MineralPhosphorusState,layer_count_plus_supported_surface,checkpoint,always present in candidate core,TCD-014;TCD-019
+P-FAST,mineral_p.fast_site,CONDITIONAL_PERSISTENT,fast_p_site_count>0,MineralPhosphorusState,layer_count*fast_p_site_count,checkpoint site-resolved,absent when site count is zero,TCD-029
+P-SLOW,mineral_p.slow_site,CONDITIONAL_PERSISTENT,slow_p_site_count>0,MineralPhosphorusState,layer_count*slow_p_site_count,checkpoint site-resolved,absent when site count is zero,TCD-024
+P-PRECIP,mineral_p.precipitated,MODEL_PERSISTENT,soil_chemistry=required,MineralPhosphorusState,layer_count,checkpoint,always present in candidate core,
+CROP-SHOOT-DM,crop.shoot_dry_matter,CONDITIONAL_OWNER_PERSISTENT,crop_mode=animo,CropState,crop_owner_shape,checkpoint if ANIMO owns crop,no duplicate persistent state for external or none mode,
+CROP-ROOT-DM,crop.root_dry_matter,CONDITIONAL_OWNER_PERSISTENT,crop_mode=animo,CropState,crop_owner_shape,checkpoint if ANIMO owns crop,no duplicate persistent state for external or none mode,
+CROP-N-ACT,crop.nitrogen,CONDITIONAL_OWNER_PERSISTENT,crop_mode=animo,CropState,crop_owner_shape,checkpoint if ANIMO owns crop,no duplicate persistent state for external or none mode,
+CROP-P-ACT,crop.phosphorus,CONDITIONAL_OWNER_PERSISTENT,crop_mode=animo,CropState,crop_owner_shape,checkpoint if ANIMO owns crop,no duplicate persistent state for external or none mode,
+CROP-N-POT,crop.n_demand,DERIVED_VIEW,crop_mode!=none,DerivedViews,crop_exchange_shape,recompute from restored/external crop inputs,absent if crop disabled,
+CROP-P-POT,crop.p_demand,DERIVED_VIEW,crop_mode!=none,DerivedViews,crop_exchange_shape,recompute from restored/external crop inputs,absent if crop disabled,
+GHG-CH4-SYS,gas.ch4_system,CONDITIONAL_PERSISTENT,ghg_enabled=true AND feature_admitted,GasState,layer_count,checkpoint if admitted,absent when inactive,TCD-008
+GHG-CH4-WATER,gas.ch4_water_view,DERIVED_VIEW,ghg_enabled=true AND feature_admitted,DerivedViews,layer_count,recompute from CH4 system state,absent when inactive,TCD-008
+GHG-N2O-SYS,gas.n2o_system,CONDITIONAL_PERSISTENT,ghg_enabled=true AND feature_admitted,GasState,layer_count,checkpoint if admitted,absent when inactive,TCD-008
+GHG-N2O-WATER,gas.n2o_water_view,DERIVED_VIEW,ghg_enabled=true AND feature_admitted,DerivedViews,layer_count,recompute from N2O system state,absent when inactive,TCD-008
+MP-DOM-C,macropore.dom_om,CONDITIONAL_PERSISTENT,macropore_enabled=true AND feature_admitted,MacroporeState,macropore_domain_shape,checkpoint if admitted,absent when inactive,TCD-025
+MP-DON,macropore.don,CONDITIONAL_PERSISTENT,macropore_enabled=true AND feature_admitted,MacroporeState,macropore_domain_shape,checkpoint if admitted,absent when inactive,TCD-025
+MP-DOP,macropore.dop,CONDITIONAL_PERSISTENT,macropore_enabled=true AND feature_admitted,MacroporeState,macropore_domain_shape,checkpoint if admitted,absent when inactive,TCD-025
+MP-NH4,macropore.nh4,CONDITIONAL_PERSISTENT,macropore_enabled=true AND feature_admitted,MacroporeState,macropore_domain_shape,checkpoint if admitted,absent when inactive,TCD-025
+MP-NO3,macropore.no3,CONDITIONAL_PERSISTENT,macropore_enabled=true AND feature_admitted,MacroporeState,macropore_domain_shape,checkpoint if admitted,absent when inactive,TCD-025
+MP-PO4,macropore.po4,CONDITIONAL_PERSISTENT,macropore_enabled=true AND feature_admitted,MacroporeState,macropore_domain_shape,checkpoint if admitted,absent when inactive,TCD-025
+DERIVED-P-FAST-TOTAL,views.p_fast_total,DERIVED_VIEW,fast_p_site_count>0,DerivedViews,layer_count,recompute from site-resolved state,absent when fast site count zero,
+DERIVED-P-SLOW-TOTAL,views.p_slow_total,DERIVED_VIEW,slow_p_site_count>0,DerivedViews,layer_count,recompute from site-resolved state,absent when slow site count zero,
+RATE-N-MIN,scratch.n_mineralization,STEP_LOCAL_SCRATCH,soil_chemistry=required,ProcessScratch,layer_count,reinitialize each trial,allocated only for active trial path,
+RATE-P-MIN,scratch.p_mineralization,STEP_LOCAL_SCRATCH,soil_chemistry=required,ProcessScratch,layer_count,reinitialize each trial,allocated only for active trial path,TCD-023
+REPORT-MAIN-BAL,diagnostics.mass_balance,DIAGNOSTIC_OBSERVER,diagnostics_mode=basic OR diagnostics_mode=detailed,DiagnosticsLedger,ledger_quantity*control_volume_selection,diagnostic continuation only if required,absent when diagnostics off,TCD-017;TCD-018;TCD-026
+REPORT-DETAILED-TRANS,diagnostics.process_transfers,DIAGNOSTIC_OBSERVER,diagnostics_mode=detailed,DiagnosticsLedger,process_transfer_selection,diagnostic continuation only if required,absent unless detailed diagnostics,TCD-027;TCD-028
+REPORT-AVERAGE-CONC,views.average_concentration,DERIVED_VIEW,soil_chemistry=required,DerivedViews,active_species*layer_count,recompute per accepted/trial pair,not persistent,
