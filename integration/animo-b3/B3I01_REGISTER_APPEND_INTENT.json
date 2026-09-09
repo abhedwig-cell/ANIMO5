@@ -1,4 +1,0 @@
-{
-  "intent": "append reserved TCD-028 through TCD-037 to canonical register after fail-closed reservation",
-  "source_register_mutation_pending": true
-}
