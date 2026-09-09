@@ -4,13 +4,13 @@
   "branch": "work/animo-stateq01-canonical-state-readiness",
   "base_branch": "work/animo-rg02-g5-independent-stream-attachment",
   "base_head": "5c278152eacc33660f1c5870c7d419b8041b20a9",
-  "reconciles_prior_stateq01_commit": "420d4b535da4d923dcfa8ca59a4b6f20b812d3ba",
+  "reconciles_prior_stateq01_commit": "5a5e0785b6f4a9cb4f67d1fa10d79b184d7d41e9",
   "status": "QUALIFIED_CANONICAL_STATE_READINESS_MATRIX_STATE_ADMISSION_STILL_BLOCKED",
   "canonical_state_admission": "NOT_ADMITTED",
   "production_migration": "NOT_ADMITTED",
   "production_implementation": "NONE",
   "physics_changes": "NONE",
-  "scope": "READINESS_MATRIX_AND_CHECKPOINT_CONTRACT_ONLY",
+  "scope": "READINESS_MATRIX_CHECKPOINT_CONTRACT_SURFACE_SCOPE_RECONCILIATION_AND_RESTRICTED_CORE_TEST_SPEC_ONLY",
   "state_classes": [
     "CORE_STATE_READY_CANDIDATE",
     "OPTIONAL_FEATURE_STATE_READY_CANDIDATE",
@@ -22,118 +22,57 @@
     "UNRESOLVED_SCIENTIFIC_STATE"
   ],
   "evidence_streams": [
-    {
-      "id": "RG02-G5",
-      "branch": "work/animo-rg02-g5-independent-stream-attachment",
-      "head": "5c278152eacc33660f1c5870c7d419b8041b20a9",
-      "role": "independent-stream attachment baseline"
-    },
-    {
-      "id": "PREP06",
-      "branch": "work/animo-prep06-conserved-state-ledger",
-      "head": "9b1f1ea51c24fb82823290193651830dc61ea3c8",
-      "role": "conserved-state inventory and observer separation"
-    },
-    {
-      "id": "PREP12",
-      "branch": "work/animo-prep12-restart-state-continuity-rehome",
-      "head": "3d86de057247adcfeefb82c11d7cf7d5b2cbdf73",
-      "role": "provenance-preserving restart-state continuity evidence rehome with local finding identities"
-    },
-    {
-      "id": "ARCH01",
-      "branch": "work/animo-arch01-state-ownership-typed-transfers",
-      "head": "24f57d8daab828f88446a79bd6a276f2925c828b",
-      "role": "state ownership and accepted/trial separation"
-    },
-    {
-      "id": "ARCH02",
-      "branch": "work/animo-arch02-restart-checkpoint-sufficiency",
-      "head": "a079d93c965f6073586c55ee4b3544dd8873b723",
-      "role": "checkpoint identity and diagnostic continuation model"
-    },
-    {
-      "id": "ARCH04",
-      "branch": "work/animo-arch04-feature-activation-state-allocation",
-      "head": "87930bbdfc413ad626176ce119f52ea409198f1d",
-      "role": "feature guards and conditional state allocation"
-    },
-    {
-      "id": "TS01",
-      "branch": "work/animo-ts01-temporal-semantics",
-      "head": "ed12a678cfba19ce851eb2f380e6da3f49203fe4",
-      "role": "legacy temporal generations final-step semantics and Output_Init audit"
-    },
-    {
-      "id": "TIME01",
-      "branch": "work/animo-time01-generic-time-transaction-contract",
-      "head": "246128dd14732173a6f27c15c923970d50c14e2a",
-      "role": "accepted-boundary transaction and external frame identity contract"
-    },
-    {
-      "id": "ARCHG01",
-      "branch": "work/animo-archg01-candidate-architecture-consolidation",
-      "head": "981de99811806da362244440502218a84754157b",
-      "role": "candidate architecture consolidation"
-    },
-    {
-      "id": "ARCHG02",
-      "branch": "work/animo-archg02-temporal-revalidation",
-      "head": "db8183802631902f41aa5bec518a3c2e63e03ab7",
-      "role": "temporal architecture revalidation"
-    },
-    {
-      "id": "MP02",
-      "branch": "work/animo-mp02-whole-case-activation",
-      "head": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
-      "role": "complete-case macropore activation and persistent restart omission evidence"
-    },
-    {
-      "id": "GHG01",
-      "branch": "work/animo-ghg01-ghg-qualification",
-      "head": "dac7b7b5c591b781b82ec968896edb5957664c88",
-      "role": "GHG owner phase restart and hidden task-state evidence"
-    },
-    {
-      "id": "SQ01",
-      "branch": "work/animo-sq01-tcd016-dry-solute-state",
-      "head": "26d0c74aa440bd73c23709d313e24ea8af2a0bcd",
-      "role": "TCD-016 C1 missing-state science qualification"
-    }
+    {"id":"RG02-G5","branch":"work/animo-rg02-g5-independent-stream-attachment","head":"5c278152eacc33660f1c5870c7d419b8041b20a9"},
+    {"id":"PREP06","branch":"work/animo-prep06-conserved-state-ledger","head":"9b1f1ea51c24fb82823290193651830dc61ea3c8"},
+    {"id":"PREP12","branch":"work/animo-prep12-restart-state-continuity-rehome","head":"3d86de057247adcfeefb82c11d7cf7d5b2cbdf73"},
+    {"id":"ARCH01","branch":"work/animo-arch01-state-ownership-typed-transfers","head":"24f57d8daab828f88446a79bd6a276f2925c828b"},
+    {"id":"ARCH02","branch":"work/animo-arch02-restart-checkpoint-sufficiency","head":"a079d93c965f6073586c55ee4b3544dd8873b723"},
+    {"id":"ARCH04","branch":"work/animo-arch04-feature-activation-state-allocation","head":"87930bbdfc413ad626176ce119f52ea409198f1d"},
+    {"id":"TS01","branch":"work/animo-ts01-temporal-semantics","head":"ed12a678cfba19ce851eb2f380e6da3f49203fe4"},
+    {"id":"TIME01","branch":"work/animo-time01-generic-time-transaction-contract","head":"246128dd14732173a6f27c15c923970d50c14e2a"},
+    {"id":"ARCHG01","branch":"work/animo-archg01-candidate-architecture-consolidation","head":"981de99811806da362244440502218a84754157b"},
+    {"id":"ARCHG02","branch":"work/animo-archg02-temporal-revalidation","head":"db8183802631902f41aa5bec518a3c2e63e03ab7"},
+    {"id":"MP02","branch":"work/animo-mp02-whole-case-activation","head":"6b0f2e7470f13baeb6612b0bddb662a497dea528"},
+    {"id":"GHG01","branch":"work/animo-ghg01-ghg-qualification","head":"dac7b7b5c591b781b82ec968896edb5957664c88"},
+    {"id":"SQ01","branch":"work/animo-sq01-tcd016-dry-solute-state","head":"26d0c74aa440bd73c23709d313e24ea8af2a0bcd"}
   ],
   "prep12_local_findings": [
-    {
-      "source_local_label": "TCD-032",
-      "rg02_reconciliation_key": "RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER",
-      "canonical_tcd_id": null,
-      "stateq01_disposition": "CONSUME_AS_FEATURE_RESTART_BLOCKER_WITHOUT_CANONICAL_ALLOCATION"
-    },
-    {
-      "source_local_label": "TCD-033",
-      "rg02_reconciliation_key": "RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION",
-      "canonical_tcd_id": null,
-      "stateq01_disposition": "CONSUME_AS_CROP_RESTART_BLOCKER_WITHOUT_CANONICAL_ALLOCATION"
-    },
-    {
-      "source_local_label": "TCD-034",
-      "rg02_reconciliation_key": "RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE",
-      "canonical_tcd_id": null,
-      "stateq01_disposition": "CONSUME_AS_CROP_CONTINUATION_BLOCKER_WITHOUT_CANONICAL_ALLOCATION"
-    }
+    {"source_local_label":"TCD-032","rg02_reconciliation_key":"RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER","canonical_tcd_id":null,"stateq01_disposition":"CONSUME_AS_FEATURE_RESTART_BLOCKER_WITHOUT_CANONICAL_ALLOCATION"},
+    {"source_local_label":"TCD-033","rg02_reconciliation_key":"RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION","canonical_tcd_id":null,"stateq01_disposition":"CONSUME_AS_CROP_RESTART_BLOCKER_WITHOUT_CANONICAL_ALLOCATION"},
+    {"source_local_label":"TCD-034","rg02_reconciliation_key":"RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE","canonical_tcd_id":null,"stateq01_disposition":"CONSUME_AS_CROP_CONTINUATION_BLOCKER_WITHOUT_CANONICAL_ALLOCATION"}
   ],
+  "surface_scope_correction": {
+    "status": "QUALIFIED_SCOPE_CORRECTION_NO_PHYSICS_CHANGE",
+    "incorrect_first_interpretation": "Con*top management/addition reservoirs were conflated with layer0 aqueous transport state",
+    "corrected_topology": ["soil dissolved state layers 1..Nl","layer0 aqueous state index 0","virtual management/addition reservoir Con*top/Rscon*top"],
+    "tcd016_scope": "layer0 aqueous NH4 wet-to-low-storage continuation",
+    "addition_reservoir_is_tcd016_owner": false,
+    "proposed_non_aqueous_nh4_canonicalized": false
+  },
+  "restricted_core_qualification_spec": {
+    "profile": "CORE_CNP_SUBSURFACE_ONLY",
+    "status": "CANDIDATE_TEST_SPEC_NOT_B3_ADMISSION",
+    "envelope_invariant": "no layer0 aqueous C/N/P solute coordinate may become physically active in any accepted interval or committable trial",
+    "fail_closed_required": true,
+    "source_activation_predicates_still_to_qualify": true,
+    "split_run_test_classes": ["RC-R1","RC-R2","RC-R3","RC-R4","RC-R5","RC-R6","RC-R7","RC-R8","RC-R9","RC-R10"]
+  },
   "deliverables": [
     "docs/state/ANIMO5_CANONICAL_STATE_READINESS.md",
     "docs/state/CHECKPOINT_COMPLETENESS_CONTRACT.md",
     "docs/state/PREP12_RESTART_EVIDENCE_RECONCILIATION.md",
+    "docs/state/SURFACE_STATE_SCOPE_CORRECTION.md",
+    "docs/state/RESTRICTED_CORE_ENVELOPE_QUALIFICATION_SPEC.md",
     "integration/animo-state/PERSISTENT_STATE_MATRIX.csv",
     "integration/animo-state/STATE_PROFILE_MATRIX.csv",
     "integration/animo-state/ANIMO-STATEQ01_STATUS.json"
   ],
   "profile_summary": {
-    "CORE_CNP": "READY_CANDIDATE_WITH_SPLIT_RUN_QUALIFICATION_REQUIRED",
-    "CORE_CNP_WITH_SURFACE_RESERVOIR": "BLOCKED_ON_TCD016_C1",
+    "CORE_CNP_SUBSURFACE_ONLY": "READY_CANDIDATE_WITH_APPLICATION_ENVELOPE_AND_SPLIT_RUN_QUALIFICATION_REQUIRED",
+    "CORE_CNP": "BLOCKED_ON_TCD016_C1",
+    "CORE_CNP_WITH_ADDITION_RESERVOIRS": "BLOCKED_BY_BASE_SURFACE_GAP_WITH_ADDITION_STATE_STRUCTURALLY_READY",
     "CORE_CNP_WITH_CROP": "BLOCKED_ON_EXPLICIT_PREP12_RESTART_FINDINGS_AND_CONTINUATION_CLOSURE",
-    "CORE_CNP_WITH_EXTERNAL_CROP": "READY_CANDIDATE_WITH_EXTERNAL_FRAME_ADMISSION_REQUIRED",
+    "CORE_CNP_WITH_EXTERNAL_CROP": "READY_CANDIDATE_WITH_EXTERNAL_FRAME_AND_APPLICATION_ENVELOPE_QUALIFICATION_REQUIRED",
     "CORE_CNP_WITH_STABLE_DOM": "BLOCKED_FEATURE_STATE",
     "CORE_CNP_WITH_MACROPORES": "FAIL_CLOSED_ON_TCD025_AND_INDEPENDENT_PREP12_RESTART_FINDING",
     "CORE_CNP_WITH_GHG": "FAIL_CLOSED_FEATURE_STATE_BLOCKED",
@@ -142,75 +81,35 @@
   "hard_rule_assertions": {
     "new_physics_added": false,
     "tcd016_c1_canonicalized": false,
+    "addition_reservoir_reused_as_tcd016_continuation": false,
     "hidden_ghg_task_state_declared_intended_physics": false,
     "macropore_restart_omission_repaired": false,
     "report_accumulator_declared_physical_owner": false,
     "initial_out_declared_canonical_checkpoint": false,
     "production_implementation_performed": false,
     "prep12_source_local_tcd_promoted_to_canonical": false,
-    "tcd025_reused_as_macropore_restart_writer_identifier": false
-  },
-  "explicit_reconciliations": {
-    "ts01_final_step": "final G_ACTUAL_RESULT is logically accepted before pure checkpoint serialization even without another legacy Init call",
-    "time01_accepted_boundary": "checkpoint permitted only from accepted idle and exact accepted generation",
-    "prep12_core_symmetry": "major core read/write surfaces support structural readiness only and do not establish split-run admission",
-    "nh4_adsorbed_checkpoint": "physical adsorbed N storage is reconstructed from aqueous NH4 and sorption contract rather than serialized as an independent checkpoint coordinate subject to later split-run qualification",
-    "p_restart_canonicalization": "site-resolved explicit P is the candidate accepted checkpoint shape while Inpo2/3 origin to Inpo1 restart conversion remains unqualified",
-    "macropore_control_volume": "TCD-025 remains the main/public control-volume and transfer-integration issue",
-    "macropore_restart": "RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER is the independent PREP12 restart blocker; source-local TCD-032 is not canonical",
-    "crop_actual_restart": "RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION blocks crop checkpoint continuity; source-local TCD-033 is not canonical",
-    "crop_potential_restart": "RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE identifies continuation-critical potential uptake omitted by restart; source-local TCD-034 is not canonical",
-    "ghg_restart": "Cs owner evidence retained but phase reconstruction and layer0 ponding continuity block GHG profile",
-    "ghg_hidden_task_state": "recorded as unresolved trial/scientific state and not canonized as intended physics",
-    "tcd016_c1": "review-ready model extension remains unresolved scientific state and is forbidden as canonical field",
-    "output_init": "legacy serializer is evidence only; negative crop-P clamp is not adopted as checkpoint semantics",
-    "report_accumulators": "diagnostic observer continuation is separate and optional unless exact report continuity is promised"
+    "tcd025_reused_as_macropore_restart_writer_identifier": false,
+    "restricted_core_declared_b3_admitted": false
   },
   "global_blockers": [
-    "No B3-admitted uninterrupted-versus-split portable restart equivalence for CORE_CNP",
+    "No B3-admitted uninterrupted-versus-split portable restart equivalence for CORE_CNP_SUBSURFACE_ONLY",
+    "No-layer0 aqueous activation application envelope is not yet source-qualified and tested fail-closed",
+    "General CORE_CNP remains blocked by TCD-016-C1",
     "Management continuation cursor or deterministic reconstruction still requires qualification",
     "P Inpo2/3 origin to explicit restart canonicalization requires qualification when those initialization modes are admitted",
-    "Canonical CONFIG and STATE admission are separate governance gates",
-    "PREP12 local findings require B3 canonical intake/allocation before they can be referenced as canonical TCDs",
-    "Feature-specific profiles remain blocked where their own science/restart contracts are incomplete"
+    "Canonical CONFIG and STATE admission remain separate governance gates",
+    "PREP12 local findings require B3 canonical intake/allocation before canonical TCD reference",
+    "Feature-specific profiles remain blocked where their science/restart contracts are incomplete"
   ],
-  "feature_blockers": {
-    "surface_reservoir": [
-      "TCD-016-C1 blocked pending science",
-      "shared low-storage surface representation hazard not generalized beyond evidence"
-    ],
-    "crop_mode_animo": [
-      "RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION",
-      "RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE",
-      "exact residual future-influencing crop continuation family not yet minimized",
-      "split-run qualification missing",
-      "Output_Init negative crop-P clamp must not mutate canonical checkpoint state"
-    ],
-    "stable_dom": [
-      "stable DOM qualification remains separate",
-      "TCD-023 for stable DOM phosphorus partition remains governed separately"
-    ],
-    "macropores": [
-      "TCD-025 main/public control-volume and transfer-integration gap",
-      "RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER persistent restart omission",
-      "no independent historical B2 macropore reference",
-      "macropore feature not B3 admitted"
-    ],
-    "ghg": [
-      "restart phase partition uses Terf rather than proven accepted checkpoint thermodynamic state",
-      "layer0 ponding dissolved-state reconstruction gap",
-      "build-contract-dependent hidden task-state semantics",
-      "GHG feature not B3 admitted"
-    ]
-  },
   "next_admission_work": [
-    "Implement no production code from this work unit",
-    "Design CORE_CNP accepted-boundary split-run qualification against the completeness contract",
+    "Source-qualify the exact predicates that can activate layer0 aqueous CNP state",
+    "Turn the restricted-core envelope into a machine-checkable fail-closed guard specification",
+    "Execute RC-R1 through RC-R10 only after the envelope itself is qualified",
     "Qualify management continuation reconstruction or explicit cursor state",
     "Qualify NH4 adsorbed-state deterministic reconstruction across checkpoint restore",
     "Qualify P Inpo2/3 origin to explicit-state restart if those initialization modes are in scope",
     "Route PREP12 local findings through B3 canonical intake without pre-allocating TCD numbers",
     "Close crop continuation family before crop-profile checkpoint admission",
-    "Keep surface reservoir macropore GHG and stable DOM profiles fail-closed until their independent blockers close"
+    "Keep general surface-capable core, stable DOM, macropore and GHG profiles fail-closed until independent blockers close"
   ]
 }
