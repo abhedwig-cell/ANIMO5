@@ -47,7 +47,8 @@
       "historical surface reservoir is addition-specific with rainfall-controlled release",
       "historical NH4 sorption is tied to the soil complex",
       "historical numerical approach is the semi-analytical concentration formulation recognizable in revision-53 Transsub and Detcoef",
-      "the exact problematic state transition is now source-bound to a shared 0.1 mm surface activation boundary in hydrology and transport"
+      "the exact problematic state transition is source-bound to a shared 0.1 mm surface activation boundary in hydrology and transport",
+      "the 0.1 mm convention is present in the ANIMO4.0 source lineage but its physical derivation has not been recovered"
     ],
     "combined_conclusion": "THEORY_SUPPORTED_CONSERVATION_REQUIREMENT_AND_SOURCE_BOUND_SURFACE_ACTIVATION_GAP_BUT_NO_THEORY_QUALIFIED_DRY_PHASE"
   },
@@ -61,17 +62,40 @@
     "canonical_event_start_storage_mm": 0.1087117,
     "canonical_event_end_storage_mm": 0.003256434,
     "canonical_event_crosses_shared_boundary": true,
+    "crossing_timestep_still_has_Flpn_1": true,
+    "following_timestep_omits_layer0_if_old_and_new_are_below_boundary": true,
+    "interpretation": "the crossing timestep is the explicit legacy opportunity to move residual layer0 solute into a persistent owner before ponding transport deactivates",
     "physical_chemical_derivation_recovered": false,
     "ancillary_uboundconc_dry_deposition_threshold_m": 0.001,
     "ancillary_uboundconc_dry_deposition_threshold_mm": 1.0,
     "ancillary_threshold_causal_relevance": "NOT_ESTABLISHED",
     "new_tcd_for_ancillary_threshold": false
   },
+  "shared_solute_reachability": {
+    "status": "SOURCE_BOUND_SHARED_REPRESENTATION_REACHABILITY_RECONSTRUCTED_NO_NEW_TCD_ADMITTED",
+    "main_conclusion": "TCD-016 is an observed NH4 instance of a shared surface-aqueous representation hazard",
+    "not_claimed": "all solutes have confirmed TCD-016 mass loss",
+    "generic_conservative_probe": {
+      "canonical_hydrology_wet_to_low_storage_branch": true,
+      "Fu_over_Ld_d_1": 2.059220013269866e-9,
+      "Transsub_Small_d_1": 1e-8,
+      "solver_class_for_zero_reaction_zero_selectivity": "Iflsol=2",
+      "result_when_Fu_le_1e_6_m_d": "RSC_0_AVC_0"
+    },
+    "NH4": "OBSERVED_AND_REPRODUCED_DEFECT_EXISTING_TCD016",
+    "mineral_phosphorus": "SOURCE_CONFIRMED_STRUCTURAL_REACHABILITY_NOT_HISTORICALLY_ACTIVATED_IN_SQ01",
+    "NO3": "SHARED_SEAM_REACHABLE_EXACT_DELETION_NOT_ESTABLISHED_DUE_SPECIES_SPECIFIC_REACTION_TERMS",
+    "soluble_organic_M_N_P": "SHARED_TRANSSUB_REACHABILITY_REQUIRES_SEPARATE_LAYER0_PARAMETER_INITIALIZATION_AUDIT",
+    "GHG_and_macropore": "OUT_OF_TCD016_SHARED_TRANSSUB_SCOPE",
+    "new_tcd_opened": false,
+    "scope_guard": "do not widen TCD-016 or merge it with TCD-015 TCD-019 TCD-023 or TCD-024 without independent discrepancy evidence"
+  },
   "candidate_decision": {
     "preferred": "A_EXPLICIT_NON_AQUEOUS_SURFACE_NH4_CONTINUATION_MASS",
     "preferred_state_name": "M_surface_NH4_non_aqueous_continuation",
     "preferred_unit": "kg_N_m-2",
     "preferred_status": "PREFERRED_PROPOSED_MODEL_EXTENSION_REVIEW_READY_NOT_ADMITTED",
+    "architecture_scope_note": "a future continuation-state topology should not be hard-coded NH4-only before shared-surface representation review, but phase identity reactions and remobilization remain species-specific scientific questions",
     "candidate_B": "REJECTED_AS_CORRECTED_LEGACY_CANDIDATE",
     "candidate_C": "REJECTED_WITH_CURRENT_ANIMO_HYDROLOGY",
     "candidate_D": "REJECTED_SEMANTIC_ALIASING"
@@ -81,7 +105,7 @@
       "class": "C",
       "topic": "surface NH4 continuation-state ownership across ponding deactivation",
       "status": "BLOCKED_INSUFFICIENT_ANIMO_SPECIFIC_PHASE_THEORY",
-      "stronger_evidence": "conservation requirement is historically theory-supported and the exact shared 0.1 mm source activation seam is reconstructed",
+      "stronger_evidence": "conservation requirement, exact two-step activation lifecycle and shared surface representation hazard are source-bound",
       "remaining_blocker": "physical identity, dry-hold chemistry and remobilization law"
     },
     "TCD-016-E1": {
@@ -103,7 +127,11 @@
         "outflow_threshold_to_event_ratio": 2428.103829498251,
         "physical_derivation_recovered": false
       },
-      "stronger_evidence": "0.1 mm is a shared surface representation activation boundary, while Fu>1e-6 m/d remains a Transsub-local export or conditioning policy",
+      "future_minimum_species_envelope": [
+        "NH4 natural diagnostic",
+        "nonreactive conservative equation probe",
+        "layer0 mineral phosphorus direct Transsub route"
+      ],
       "remaining_blocker": "numerical transition policy cannot be admitted before C1 physical semantics"
     },
     "standalone_class_B_child": "NOT_CREATED_CORRECT_REPLACEMENT_DEPENDS_ON_C1"
@@ -112,6 +140,8 @@
     "legacy_state_and_phase_reconstruction": "PASS",
     "historical_conservation_theory": "PASS_FOR_REQUIREMENT_NOT_FOR_PHASE_IDENTITY",
     "source_defined_surface_activation_boundary": "PASS_FOR_RECONSTRUCTION_PHYSICAL_MEANING_UNQUALIFIED",
+    "two_step_deactivation_lifecycle": "PASS_SOURCE_BOUND",
+    "shared_solute_reachability_scope": "PASS_SOURCE_BOUND_NO_BROADER_DEFECT_ADMISSION",
     "state_variable_definition_units_and_owner_for_preferred_candidate": "REVIEW_READY_PROPOSED_NOT_THEORY_QUALIFIED",
     "initialization_and_restart_contract": "DEFINED_FAIL_CLOSED_NOT_SCIENTIFICALLY_ADMITTED",
     "wet_to_continuation_transfer_contract": "CONSERVATION_RESIDUAL_RULE_DEFINED_PHYSICAL_TRIGGER_UNQUALIFIED",
@@ -141,7 +171,7 @@
     "ANIMO35_Report144": "historical process theory recovered from a secondary public mirror crosschecked to official WUR metadata; supports conservation, phase ownership and semi-analytical transport lineage but not a dry surface continuation phase",
     "TH01": "no dry-solute continuation authority recovered",
     "TH02": "release-lineage evidence only, not phase theory",
-    "Report983": "official WUR publication record and eDepot target confirmed; public indexing supports addition-specific surface-reservoir lineage but full report text was not fully retrieved, so no comprehensive negative claim is made"
+    "Report983": "official WUR publication record and eDepot target confirmed; public indexing is consistent with ponding and addition-reservoir lineage but full report text was not fully retrieved, so no comprehensive negative claim is made"
   },
   "deliverables": [
     "docs/science/TCD016_DRY_SOLUTE_STATE_RECONSTRUCTION.md",
@@ -151,10 +181,12 @@
     "docs/science/TCD016_HISTORICAL_THEORY_RECOVERY.md",
     "docs/science/TCD016_C1_PROPOSED_NONAQUEOUS_STATE_CONTRACT.md",
     "docs/science/TCD016_SURFACE_STATE_ACTIVATION_SEAM.md",
+    "docs/science/TCD016_SHARED_SOLUTE_REACHABILITY.md",
     "docs/science/TCD016_E1_LOW_STORAGE_THRESHOLD_RECONNAISSANCE.md",
     "docs/science/TCD016_ATOMIZATION_AND_GATE_PLAN.md",
     "integration/animo-science/TCD016_CANDIDATE_MATRIX.json",
     "integration/animo-science/TCD016_ATOMIZATION_PLAN.json",
+    "integration/animo-science/TCD016_SHARED_SOLUTE_REACHABILITY.json",
     "integration/animo-science/ANIMO-SQ01_STATUS.json"
   ],
   "next_required_actions": [
@@ -163,6 +195,7 @@
     "obtain independent scientific review of the review-ready C1 non-aqueous state contract",
     "if no legacy phase theory is recovered, keep Candidate A as explicit model evolution and open a separate scientific admission route rather than corrected-legacy B3 admission",
     "only after C1 semantics are fixed, execute the E1 storage-by-outflow threshold envelope and numerical sensitivity qualification",
+    "perform a separate fail-closed layer0 parameter-initialization audit for Transca if useful, without widening TCD-016 from static reachability alone",
     "after semantics are fixed, qualify restart equivalence, process ordering, application-envelope trajectories and non-interference"
   ],
   "notes": [
@@ -171,8 +204,9 @@
     "No concentration cap, mass deletion, mass creation or invented external outflow is admitted as a solution.",
     "Conservation closure of Candidate A is necessary evidence but is not treated as proof of ANIMO-specific intended physics.",
     "The provisional continuation-state name is deliberately chemically noncommittal until theory establishes residue, sorption, precipitation or residual-film semantics.",
-    "The blocker is now narrower: conservation need and the exact representation seam are established; physical phase identity and remobilization are not.",
-    "The previous wording that the 0.1 mm cutoff was purely Transsub-local has been corrected. The effective boundary is shared with hydrological ponding activation.",
-    "The separate 1 mm UBoundconc dry-deposition routing threshold is recorded as an ancillary seam without claiming causal relevance to TCD-016."
+    "The blocker is now narrower: conservation need, the exact representation seam, the two-step deactivation lifecycle and broader source reachability are established; physical phase identity and remobilization are not.",
+    "The effective 0.1 mm boundary is shared with hydrological ponding activation; the Fu export threshold remains Transsub-local.",
+    "The separate 1 mm UBoundconc dry-deposition routing threshold is recorded as an ancillary seam without claiming causal relevance to TCD-016.",
+    "Shared Transsub reachability is deliberately not converted into unsupported substance-specific defect claims or new TCDs."
   ]
 }
