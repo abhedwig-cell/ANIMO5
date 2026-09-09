@@ -1,0 +1,54 @@
+legacy_state_id,candidate_field_id,owner_component,restart_class,physical_checkpoint,diagnostic_checkpoint,restart_source,accepted_boundary_required,recompute_after_restore,conditional_feature,open_evidence,notes
+W-INTERCEPTION,hydrology.interception,HydrologyExchangeState,EXTERNAL_COORDINATED_STATE,NO,NO,EXTERNAL_HYDROLOGY_OWNER,YES,NO,detailed_hydrology,TCD-018,ANIMO restart contract requires the coordinate but does not duplicate external ownership
+W-SNOW,hydrology.snow,HydrologyExchangeState,EXTERNAL_COORDINATED_STATE,NO,NO,EXTERNAL_HYDROLOGY_OWNER,YES,NO,snow_active,,
+W-POND,hydrology.ponding,HydrologyExchangeState,EXTERNAL_COORDINATED_STATE,NO,NO,EXTERNAL_HYDROLOGY_OWNER,YES,NO,detailed_hydrology,,
+W-SURFACE-AGG,hydrology.surface_aggregate_view,DerivedViews,RECOMPUTED_VIEW,NO,NO,DERIVE_FROM_RESTORED_INPUTS,YES,YES,aggregated_hydrology,,
+W-MATRIX,hydrology.matrix_water,HydrologyExchangeState,EXTERNAL_COORDINATED_STATE,NO,NO,EXTERNAL_HYDROLOGY_OWNER,YES,NO,always_for_transport,,
+W-MACROPORE,macropore.water,MacroporeState,CONDITIONAL_PHYSICAL_STATE,IF_FEATURE_ADMITTED,NO,ANIMO_CHECKPOINT,YES,NO,macropore_option,TCD-025,Not admitted until active feature qualification exists
+TOP-NH4,surface_reservoir.nh4,SurfaceReservoirState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,surface_reservoir,,
+TOP-NO3,surface_reservoir.no3,SurfaceReservoirState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,surface_reservoir,,
+TOP-DOM-C,surface_reservoir.dom_om,SurfaceReservoirState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,surface_reservoir,,
+TOP-DON,surface_reservoir.don,SurfaceReservoirState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,surface_reservoir,,
+TOP-PO4,surface_reservoir.po4,SurfaceReservoirState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,surface_reservoir,,
+TOP-DOP,surface_reservoir.dop,SurfaceReservoirState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,surface_reservoir,,
+TOP-SDOM-DORMANT,surface_reservoir.stable_dom_dormant,UnsupportedDormantState,UNSUPPORTED_DORMANT,NO,NO,NOT_RESTORED,YES,NO,none_in_revision53,PREP06_DORMANT_SURFACE,Parser-visible dormant state is not a supported continuation contract
+OM-FOM,organic.fom,OrganicMatterState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,organic_processes,,
+OM-HUMUS,organic.humus,OrganicMatterState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,organic_processes,,
+OM-HUMUS-EX,organic.humus_exudate,OrganicMatterState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,organic_processes,,
+OM-EXUDATE,organic.exudate,OrganicMatterState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,root_exudate,TCD-026,Physical continuation state even though legacy beginning ledger omits it
+DOM-L-C,dissolved.labile_om,DissolvedOrganicState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,dom,,
+DOM-L-N,dissolved.labile_n,DissolvedOrganicState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,dom,,
+DOM-L-P,dissolved.labile_p,DissolvedOrganicState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,dom,,
+DOM-S-C,dissolved.stable_om,DissolvedOrganicState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,stable_dom,TCD-021,
+DOM-S-N,dissolved.stable_n,DissolvedOrganicState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,stable_dom,TCD-021,
+DOM-S-P,dissolved.stable_p,DissolvedOrganicState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,stable_dom,TCD-021;TCD-023,
+N-NH4-AQ,mineral_n.nh4_aqueous,MineralNitrogenState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,mineral_n,TCD-016,
+N-NH4-ADS,mineral_n.nh4_adsorbed,MineralNitrogenState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,mineral_n,,
+N-NO3,mineral_n.no3,MineralNitrogenState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,mineral_n,TCD-015,
+P-PO4-AQ,mineral_p.po4_aqueous,MineralPhosphorusState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,mineral_p,TCD-014;TCD-019,
+P-FAST,mineral_p.fast_site,MineralPhosphorusState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,fast_sorption,TCD-029,Checkpoint retains all admitted site-resolved state
+P-SLOW,mineral_p.slow_site,MineralPhosphorusState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,slow_sorption,TCD-024,Checkpoint retains all site-resolved state
+P-PRECIP,mineral_p.precipitated,MineralPhosphorusState,PHYSICAL_STATE,YES,NO,ANIMO_CHECKPOINT,YES,NO,mineral_p,,
+CROP-SHOOT-DM,crop.shoot_dry_matter,CropState,CONDITIONAL_OWNER_STATE,IF_ANIMO_OWNS_CROP,NO,ANIMO_OR_EXTERNAL_CROP_OWNER,YES,NO,crop_active,,Ownership mode must be explicit in checkpoint manifest
+CROP-ROOT-DM,crop.root_dry_matter,CropState,CONDITIONAL_OWNER_STATE,IF_ANIMO_OWNS_CROP,NO,ANIMO_OR_EXTERNAL_CROP_OWNER,YES,NO,crop_active,,
+CROP-N-ACT,crop.nitrogen,CropState,CONDITIONAL_OWNER_STATE,IF_ANIMO_OWNS_CROP,NO,ANIMO_OR_EXTERNAL_CROP_OWNER,YES,NO,crop_active,,
+CROP-P-ACT,crop.phosphorus,CropState,CONDITIONAL_OWNER_STATE,IF_ANIMO_OWNS_CROP,NO,ANIMO_OR_EXTERNAL_CROP_OWNER,YES,NO,crop_active,,
+CROP-N-POT,crop.n_demand,DerivedViews,RECOMPUTED_VIEW,NO,NO,DERIVE_FROM_RESTORED_INPUTS,YES,YES,crop_active,,
+CROP-P-POT,crop.p_demand,DerivedViews,RECOMPUTED_VIEW,NO,NO,DERIVE_FROM_RESTORED_INPUTS,YES,YES,crop_active,,
+GHG-CH4-SYS,gas.ch4_system,GasState,CONDITIONAL_PHYSICAL_STATE,IF_FEATURE_ADMITTED,NO,ANIMO_CHECKPOINT,YES,NO,ghg_active,TCD-008,Theory-ledger qualification still blocks canonical admission
+GHG-CH4-WATER,gas.ch4_water_view,DerivedViews,RECOMPUTED_PHASE_VIEW,NO,NO,DERIVE_FROM_SYSTEM_STATE,YES,YES,ghg_active,TCD-008,
+GHG-N2O-SYS,gas.n2o_system,GasState,CONDITIONAL_PHYSICAL_STATE,IF_FEATURE_ADMITTED,NO,ANIMO_CHECKPOINT,YES,NO,ghg_active,TCD-008,
+GHG-N2O-WATER,gas.n2o_water_view,DerivedViews,RECOMPUTED_PHASE_VIEW,NO,NO,DERIVE_FROM_SYSTEM_STATE,YES,YES,ghg_active,TCD-008,
+MP-DOM-C,macropore.dom_om,MacroporeState,CONDITIONAL_PHYSICAL_STATE,IF_FEATURE_ADMITTED,NO,ANIMO_CHECKPOINT,YES,NO,macropore_option,TCD-025,
+MP-DON,macropore.don,MacroporeState,CONDITIONAL_PHYSICAL_STATE,IF_FEATURE_ADMITTED,NO,ANIMO_CHECKPOINT,YES,NO,macropore_option,TCD-025,
+MP-DOP,macropore.dop,MacroporeState,CONDITIONAL_PHYSICAL_STATE,IF_FEATURE_ADMITTED,NO,ANIMO_CHECKPOINT,YES,NO,macropore_option,TCD-025,
+MP-NH4,macropore.nh4,MacroporeState,CONDITIONAL_PHYSICAL_STATE,IF_FEATURE_ADMITTED,NO,ANIMO_CHECKPOINT,YES,NO,macropore_option,TCD-025,
+MP-NO3,macropore.no3,MacroporeState,CONDITIONAL_PHYSICAL_STATE,IF_FEATURE_ADMITTED,NO,ANIMO_CHECKPOINT,YES,NO,macropore_option,TCD-025,
+MP-PO4,macropore.po4,MacroporeState,CONDITIONAL_PHYSICAL_STATE,IF_FEATURE_ADMITTED,NO,ANIMO_CHECKPOINT,YES,NO,macropore_option,TCD-025,
+DERIVED-P-FAST-TOTAL,views.p_fast_total,DerivedViews,RECOMPUTED_VIEW,NO,NO,DERIVE_FROM_RESTORED_SITE_STATE,YES,YES,fast_sorption,,
+DERIVED-P-SLOW-TOTAL,views.p_slow_total,DerivedViews,RECOMPUTED_VIEW,NO,NO,DERIVE_FROM_RESTORED_SITE_STATE,YES,YES,slow_sorption,,
+RATE-N-MIN,scratch.n_mineralization,ProcessScratch,STEP_LOCAL_SCRATCH,NO,NO,REINITIALIZE_FOR_NEXT_TRIAL,YES,YES,organic_processes,,Never checkpoint trial-local rates
+RATE-P-MIN,scratch.p_mineralization,ProcessScratch,STEP_LOCAL_SCRATCH,NO,NO,REINITIALIZE_FOR_NEXT_TRIAL,YES,YES,organic_processes,TCD-023,Never checkpoint trial-local rates
+REPORT-MAIN-BAL,diagnostics.mass_balance,DiagnosticsLedger,DIAGNOSTIC_CONTINUATION,NO,IF_MID_REPORT_PERIOD_CONTINUITY_REQUIRED,DIAGNOSTIC_CHECKPOINT_OR_RESET_AT_REPORT_BOUNDARY,YES,NO,diagnostics,TCD-017;TCD-018;TCD-026,Not physical state but may be continuation-critical for identical cumulative reports
+REPORT-DETAILED-TRANS,diagnostics.process_transfers,DiagnosticsLedger,DIAGNOSTIC_CONTINUATION,NO,IF_MID_REPORT_PERIOD_CONTINUITY_REQUIRED,DIAGNOSTIC_CHECKPOINT_OR_RESET_AT_REPORT_BOUNDARY,YES,NO,diagnostics,TCD-027;TCD-028,Observer state must not become a second physical ledger
+REPORT-AVERAGE-CONC,views.average_concentration,DerivedViews,RECOMPUTED_VIEW,NO,NO,DERIVE_FROM_ACCEPTED_AND_NEW_TRIAL_STATE,YES,YES,transport,,Average concentration is not continuation-critical at accepted boundary
