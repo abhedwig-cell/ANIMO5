@@ -1,0 +1,55 @@
+{
+  "work_unit": "ANIMO-ARCH06",
+  "test_id": "ARCH06-NORMALIZED-CONFIGURATION-IDENTITY-AUDIT",
+  "date": "2026-09-09",
+  "result": "PASS",
+  "method": "tools/audit_arch06_configuration_identity.py executed from a GitHub Actions repository checkout against the exact candidate registries and golden vectors",
+  "github_actions": {
+    "run_id": 34305828137,
+    "tested_head": "901cf8bb2c7e63d8c6d8f2531526624c61cec5aa",
+    "conclusion": "success"
+  },
+  "registry_blobs": {
+    "manifest_fields": "90ea70a0103edee48e29421afc97e1406efb3af7",
+    "normalization_rules": "50b2c8ddf84488cce1edbe67de4509977693cac6",
+    "identity_derivations": "b0dd098770a99506abd01deffd9caf5c4e01a472",
+    "identity_test_vectors": "c077a271b32d09c24efb069f63b9ea4b5502717c"
+  },
+  "counts": {
+    "manifest_fields": 40,
+    "normalization_rules": 23,
+    "derived_identities": 5,
+    "positive_vectors": 4,
+    "negative_vectors": 6
+  },
+  "checks": {
+    "field_ids_unique": true,
+    "rule_ids_unique_and_exact": true,
+    "identity_domains_unique_and_exact": true,
+    "trial_specific_fields_excluded_from_static_manifest": true,
+    "arch04_static_compatibility_fields_covered": true,
+    "arch05_static_compatibility_fields_covered": true,
+    "diagnostics_excluded_from_physical_and_coupling_identities": true,
+    "parameter_set_change_changes_only_configuration_identity_among_physical_ids": true,
+    "diagnostics_only_change_changes_only_observer_configuration_id": true,
+    "external_crop_owner_change_changes_feature_layout_exchange_and_configuration_ids": true,
+    "unknown_field_rejected": true,
+    "dormant_surface_stable_dom_rejected": true,
+    "ghg_without_admission_rejected": true,
+    "macropore_without_admission_rejected": true,
+    "external_crop_without_contracts_rejected": true,
+    "diagnostics_off_with_nonnull_observer_schema_rejected": true,
+    "golden_sha256_identities_reproduced": true
+  },
+  "not_tested": [
+    "production configuration parser",
+    "scientific parameter canonicalization",
+    "production forcing serializer",
+    "runtime SWAP/WOFOST adapter compatibility",
+    "checkpoint migration across layout identities",
+    "numerical policy selection or tolerance",
+    "historical behavioural equivalence"
+  ],
+  "reference_evidence": false,
+  "production_evidence": false
+}
