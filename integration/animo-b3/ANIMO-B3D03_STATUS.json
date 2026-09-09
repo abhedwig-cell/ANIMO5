@@ -1,0 +1,81 @@
+{
+  "work_unit": "ANIMO-B3D03",
+  "title": "TCD-024 Formal B3 Disposition Under GOV03 Historical-Uncertainty Route",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d03-tcd024-gov03-disposition",
+  "base": {
+    "work_unit": "ANIMO-RG05A",
+    "head": "a4eb1bb1632a573c93b7d44186f7d200a862c6e7"
+  },
+  "target_tcd": "TCD-024",
+  "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "readiness_authority": "ANIMO-B3B03@446f57f3aeff6e7db56ce473f0724bdb58cad94f",
+  "b3_framework": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "state": "IN_PROGRESS_PERSISTED_ROUTE_RECONCILIATION_VALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "route_reconciliation": {
+    "historical_B2_available": false,
+    "GOV03_closure_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "b2_route_gate": "PASS",
+    "historical_prevalence": "UNKNOWN"
+  },
+  "scientific_gates": {
+    "b0_identity": "PASS",
+    "b1_evidence": "PASS",
+    "b2_route": "PASS",
+    "theory_or_exact_identity": "PASS",
+    "causal": "PASS",
+    "conservation": "PASS",
+    "expected_difference": "PASS",
+    "non_interference": "PASS_WITHIN_QUALIFIED_DIAGNOSTIC_SCOPE",
+    "coverage": "PASS_RESTRICTED_SYNTHETIC_ACTIVE_PLUS_NATURAL_NEGATIVE_CONTROL",
+    "class_specific": "PASS_FOR_READINESS",
+    "residual_uncertainty": "PASS",
+    "independent_review": "FAIL_PENDING_NOT_COMPLETED",
+    "composition_if_applicable": "PASS_NOT_APPLICABLE"
+  },
+  "independent_review": {
+    "handoff_branch": "review/animo-b3b03r-tcd024-independent-second-line",
+    "handoff_head": "07e440bb42d58facad6b4e5408dd57a0d8f82daf",
+    "review_status": "PENDING_INDEPENDENT_REVIEW",
+    "same_authoring_context_may_count": false,
+    "gate": "BLOCKING"
+  },
+  "admission": {
+    "admitted": false,
+    "historical_fidelity_claimed": false,
+    "production_patch_authorized": false,
+    "production_migration_admitted": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "validation": {
+    "validator": "tools/validate_b3d03_tcd024_disposition.py",
+    "workflow": ".github/workflows/animo-b3d03-tcd024-disposition.yml",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_job_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "deliverables": [
+    "integration/animo-b3/TCD024_B3_DISPOSITION_GOV03.json",
+    "integration/animo-b3/ANIMO-B3D03_STATUS.json",
+    "docs/b3/TCD024_GOV03_FORMAL_DISPOSITION.md",
+    "tools/validate_b3d03_tcd024_disposition.py",
+    ".github/workflows/animo-b3d03-tcd024-disposition.yml"
+  ],
+  "recommended_next": [
+    "Execute the genuinely independent second-line review from the validated handoff branch.",
+    "If and only if that review passes, open a separate admission-closeout step under the GOV03 historical-uncertainty route.",
+    "Do not modify production source or compose TCD-019 into TCD-024."
+  ]
+}
