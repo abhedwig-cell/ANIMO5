@@ -1,0 +1,19 @@
+{
+  "work_unit": "ANIMO-B3A03R",
+  "target_tcd": "TCD-018",
+  "review_branch": "review/animo-b3a03r-tcd018-independent-second-line",
+  "review_start_head": "8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+  "candidate_readiness": "ANIMO-B3A03@8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+  "technical_review": "ANIMO-B3A03R@0876e6e1b6ce33ee5e7b812ab4107f54760d6b27",
+  "formal_route_reconciliation": "ANIMO-B3D05@2f06cc86225637f8dadfdd969fe48dcf851b9ee2",
+  "review_status": "PENDING_INDEPENDENT_REVIEW",
+  "independent_from_correction_authoring": null,
+  "overall_result": "PENDING_INDEPENDENT_REVIEW",
+  "B3_admitted": false,
+  "production_patch": false,
+  "notes": [
+    "The same-context technical review is evidence input only and must not be counted as independent second line.",
+    "GOV03 opens the historical-uncertainty route but does not itself admit TCD-018.",
+    "Historical revision-53 behaviour remains UNKNOWN unless a qualified B2 is later recovered."
+  ]
+}
