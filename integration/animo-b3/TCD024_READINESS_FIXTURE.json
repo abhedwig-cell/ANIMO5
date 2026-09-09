@@ -1,0 +1,80 @@
+{
+  "work_unit": "ANIMO-B3B03",
+  "target_tcd": "TCD-024",
+  "precision_digits": 80,
+  "units": {
+    "concentration": "normalized P concentration",
+    "q": "normalized sorbed P mass",
+    "rate": "d-1",
+    "dt": "d",
+    "transfer_rate": "normalized P mass d-1"
+  },
+  "synq_oracle": {
+    "oracle_ids": ["SYNQ-O006", "SYNQ-O007"],
+    "authority_branch": "work/animo-synq01-independent-synthetic-oracles",
+    "authority_head": "124364c008cdca511f024b3b7d7677572c6ac0c7",
+    "published_expected_qnew_prefixes": [
+      "0.01338249703757970376432360100",
+      "0.1475396964503997007310583129",
+      "0.05240993271465228432371740819"
+    ],
+    "published_wrong_K1_prefixes": [
+      "0.01338249703757970376432360100",
+      "0.07723179301663063224564232867",
+      "0.007645585949326259218924871008"
+    ]
+  },
+  "active_unequal_sites": {
+    "concentration": "0.04",
+    "rho": "1",
+    "dt": "1.5",
+    "sites": [
+      {"site": 1, "qmax": "0.30", "K": "2", "qold": "0.010", "r_ads": "0.20", "r_des": "0.02"},
+      {"site": 2, "qmax": "0.90", "K": "40", "qold": "0.020", "r_ads": "0.07", "r_des": "0.01"},
+      {"site": 3, "qmax": "0.12", "K": "600", "qold": "0.005", "r_ads": "0.015", "r_des": "0.003"}
+    ],
+    "expected_unrounded_qnew_80": [
+      "0.013382497037579703764323601003327353135602564031862008456803506888922032817413340",
+      "0.14753969645039970073105831290404905178546400628007091356315257450780555441805199",
+      "0.052409932714652284323717408180830665689512840129054843302530861570332277037363397"
+    ],
+    "expected_unrounded_transfer_rate_80": [
+      "0.0022549980250531358428824006688849020904017093545746723045356712592813552116088933",
+      "0.085026464300266467154038875269366034523642670853380609042101716338537036278701327",
+      "0.031606621809768189549144938787220443793008560086036562201687241046888184691575598"
+    ],
+    "expected_wrong_K1_qnew_80": [
+      "0.013382497037579703764323601003327353135602564031862008456803506888922032817413340",
+      "0.077231793016630632245642328684096944742583375424392326084530401228142520492628225",
+      "0.0076455859493262592189248710070344630901401232826660990593613765090187853437838248"
+    ],
+    "expected_selector_discriminator": [false, true, true]
+  },
+  "inactive_site_control": {
+    "concentration": "0.04",
+    "rho": "1",
+    "dt": "1.5",
+    "site": {"site": 3, "qmax": "0.12", "K": "600", "qold": "0.005", "r_ads": "0", "r_des": "0"},
+    "expected_qnew": "0.005",
+    "expected_transfer_rate": "0",
+    "rule": "Zero selected kinetic rate makes the site exactly inactive, so K selector choice cannot change qnew."
+  },
+  "multi_site_conservation_identity": {
+    "control_volume": "dissolved P plus all slow-sorption sites for the isolated internal transfer",
+    "identity": "solution_counter_transfer + sum_j(qnew_j-qold_j) = 0 exactly",
+    "external_sources": "0",
+    "external_sinks": "0",
+    "tolerance": "NONE"
+  },
+  "inactive_route_control": {
+    "natural_case": "LWKM_gras_1040.2021.2045",
+    "Optcxsl": 3,
+    "existing_PREP05_result": "55 model outputs compared; normalized differences 0 for the TCD-024-only diagnostic executable",
+    "interpretation": "Freundlich route is outside the targeted Optcxsl=2 expression and must remain unchanged."
+  },
+  "natural_activation": {
+    "available_in_frozen_supplied_testbank": false,
+    "reason": "All six supplied active-P cases use OPTCXSL=3; none exercises slow Langmuir OPTCXSL=2.",
+    "historical_prevalence": "UNKNOWN"
+  }
+}
