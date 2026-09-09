@@ -1,0 +1,38 @@
+name: ANIMO-EG01 B0 proof gate
+
+on:
+  pull_request:
+    paths:
+      - 'integration/evidence/ANIMO_B0_EVIDENCE_REGISTER.json'
+      - 'integration/evidence/ANIMO_B0_STORAGE_PROOF_*.json'
+      - 'tools/validate_b0_storage_proof.py'
+      - 'tests/eg01/**'
+      - '.github/workflows/animo-eg01-b0-proof-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proof-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate public JSON syntax
+        run: |
+          python -m json.tool integration/evidence/ANIMO_B0_EVIDENCE_REGISTER.json >/dev/null
+          python -m json.tool integration/evidence/ANIMO_B0_STORAGE_PROOF_SCHEMA.json >/dev/null
+          python -m json.tool integration/evidence/ANIMO_B0_STORAGE_PROOF_TEMPLATE.json >/dev/null
+      - name: Run semantic gate tests
+        run: python -m unittest tests.eg01.test_validate_b0_storage_proof -v
+      - name: Confirm pending template fails closed
+        shell: bash
+        run: |
+          set +e
+          python tools/validate_b0_storage_proof.py integration/evidence/ANIMO_B0_STORAGE_PROOF_TEMPLATE.json > /tmp/eg01-pending-gate.json
+          rc=$?
+          cat /tmp/eg01-pending-gate.json
+          test "$rc" -eq 2
