@@ -2,21 +2,45 @@ state_id,overridden_field,new_value,reason,evidence_refs
 ADD-001,class,CORE_STATE_READY_CANDIDATE,upper-boundary NH4 reservoir evolves and feeds first active transport compartment even when Flpn=0,PREP06;PREP12;STATEQ01_LAYER0_ACTIVATION
 ADD-001,canonical_owner,ANIMO upper-boundary reservoir owner,not an optional management-only feature,UBoundconc;TRANSPORT
 ADD-001,feature_guard,core_upper_boundary,required in restricted core when present,UBoundconc;TRANSPORT
+ADD-001,checkpoint_requirement,MANDATORY_CORE_ACCEPTED_BOUNDARY_OWNER,Rsconhtop is the accepted-boundary continuation value and Init maps it to next-step Conhtop,STATEQ01_RC_R12;Init;Output_Init
+ADD-001,restart_restore_rule,restore accepted Rsconhtop as next Conhtop alias before management and UBoundconc; recompute Avconhtop in the interval,Conhtop and Rsconhtop are lifecycle aliases not duplicate owners; Avconhtop is interval-derived,STATEQ01_RC_R12
+ADD-001,b3_status,SOURCE_OWNER_AND_FEED_QUALIFIED_SYNTHETIC_ZERO_FLUX_RC_R12_PASS_NONZERO_FLUX_SPLIT_OPEN,source lifecycle feed and exact zero-flux nonzero-state wiring are qualified without promoting real split behaviour,STATEQ01_RC_R12
+ADD-001,blocker,nonzero-flux and profile-clean executable split equivalence under admitted numerical comparison policy,UBoundconc exponential update remains outside synthetic exact sentinel,STATEQ01_RC_R12
 ADD-002,class,CORE_STATE_READY_CANDIDATE,upper-boundary NO3 reservoir evolves and feeds first active transport compartment even when Flpn=0,PREP06;PREP12;STATEQ01_LAYER0_ACTIVATION
 ADD-002,canonical_owner,ANIMO upper-boundary reservoir owner,not an optional management-only feature,UBoundconc;TRANSPORT
 ADD-002,feature_guard,core_upper_boundary,required in restricted core when present,UBoundconc;TRANSPORT
+ADD-002,checkpoint_requirement,MANDATORY_CORE_ACCEPTED_BOUNDARY_OWNER,Rsconitop is the accepted-boundary continuation value and Init maps it to next-step Conitop,STATEQ01_RC_R12;Init;Output_Init
+ADD-002,restart_restore_rule,restore accepted Rsconitop as next Conitop alias before management and UBoundconc; recompute Avconitop in the interval,Conitop and Rsconitop are lifecycle aliases not duplicate owners; Avconitop is interval-derived,STATEQ01_RC_R12
+ADD-002,b3_status,SOURCE_OWNER_AND_FEED_QUALIFIED_SYNTHETIC_ZERO_FLUX_RC_R12_PASS_NONZERO_FLUX_SPLIT_OPEN,source lifecycle feed and exact zero-flux nonzero-state wiring are qualified without promoting real split behaviour,STATEQ01_RC_R12
+ADD-002,blocker,nonzero-flux and profile-clean executable split equivalence under admitted numerical comparison policy,UBoundconc exponential update remains outside synthetic exact sentinel,STATEQ01_RC_R12
 ADD-003,class,CORE_STATE_READY_CANDIDATE,upper-boundary DOM reservoir evolves and feeds first active transport compartment even when Flpn=0,PREP06;PREP12;STATEQ01_LAYER0_ACTIVATION
 ADD-003,canonical_owner,ANIMO upper-boundary reservoir owner,not an optional management-only feature,UBoundconc;TRANSPORT
 ADD-003,feature_guard,core_upper_boundary,required in restricted core when present,UBoundconc;TRANSPORT
+ADD-003,checkpoint_requirement,MANDATORY_CORE_ACCEPTED_BOUNDARY_OWNER,Rscodiormatop is the accepted-boundary continuation value and Init maps it to next-step Codiormatop,STATEQ01_RC_R12;Init;Output_Init
+ADD-003,restart_restore_rule,restore accepted Rscodiormatop as next Codiormatop alias before management and UBoundconc; recompute Avcodiormatop in the interval,start and end names are lifecycle aliases not duplicate owners; average is interval-derived,STATEQ01_RC_R12
+ADD-003,b3_status,SOURCE_OWNER_AND_FEED_QUALIFIED_SYNTHETIC_ZERO_FLUX_RC_R12_PASS_NONZERO_FLUX_SPLIT_OPEN,source lifecycle feed and exact zero-flux nonzero-state wiring are qualified without promoting real split behaviour,STATEQ01_RC_R12
+ADD-003,blocker,nonzero-flux and profile-clean executable split equivalence under admitted numerical comparison policy,UBoundconc exponential update remains outside synthetic exact sentinel,STATEQ01_RC_R12
 ADD-004,class,CORE_STATE_READY_CANDIDATE,upper-boundary DON reservoir evolves and feeds first active transport compartment even when Flpn=0,PREP06;PREP12;STATEQ01_LAYER0_ACTIVATION
 ADD-004,canonical_owner,ANIMO upper-boundary reservoir owner,not an optional management-only feature,UBoundconc;TRANSPORT
 ADD-004,feature_guard,core_upper_boundary,required in restricted core when present,UBoundconc;TRANSPORT
+ADD-004,checkpoint_requirement,MANDATORY_CORE_ACCEPTED_BOUNDARY_OWNER,Rscodiornitop is the accepted-boundary continuation value and Init maps it to next-step Codiornitop,STATEQ01_RC_R12;Init;Output_Init
+ADD-004,restart_restore_rule,restore accepted Rscodiornitop as next Codiornitop alias before management and UBoundconc; recompute Avcodiornitop in the interval,start and end names are lifecycle aliases not duplicate owners; average is interval-derived,STATEQ01_RC_R12
+ADD-004,b3_status,SOURCE_OWNER_AND_FEED_QUALIFIED_SYNTHETIC_ZERO_FLUX_RC_R12_PASS_NONZERO_FLUX_SPLIT_OPEN,source lifecycle feed and exact zero-flux nonzero-state wiring are qualified without promoting real split behaviour,STATEQ01_RC_R12
+ADD-004,blocker,nonzero-flux and profile-clean executable split equivalence under admitted numerical comparison policy,UBoundconc exponential update remains outside synthetic exact sentinel,STATEQ01_RC_R12
 ADD-005,class,CORE_STATE_READY_CANDIDATE,upper-boundary PO4 reservoir evolves and feeds first active transport compartment even when Flpn=0,PREP06;PREP12;STATEQ01_LAYER0_ACTIVATION
 ADD-005,canonical_owner,ANIMO upper-boundary reservoir owner,not an optional management-only feature,UBoundconc;TRANSPORT
 ADD-005,feature_guard,core_upper_boundary;p_cycle=on,required in restricted core when P is active,UBoundconc;TRANSPORT
+ADD-005,checkpoint_requirement,MANDATORY_CORE_WHEN_P_ACTIVE_ACCEPTED_BOUNDARY_OWNER,Rscopotop is the accepted-boundary continuation value and Init maps it to next-step Copotop,STATEQ01_RC_R12;Init;Output_Init
+ADD-005,restart_restore_rule,restore accepted Rscopotop as next Copotop alias before management and UBoundconc; recompute Avcopotop in the interval,start and end names are lifecycle aliases not duplicate owners; average is interval-derived,STATEQ01_RC_R12
+ADD-005,b3_status,SOURCE_OWNER_AND_FEED_QUALIFIED_SYNTHETIC_ZERO_FLUX_RC_R12_PASS_NONZERO_FLUX_SPLIT_OPEN,source lifecycle feed and exact zero-flux nonzero-state wiring are qualified without promoting real split behaviour,STATEQ01_RC_R12
+ADD-005,blocker,nonzero-flux and profile-clean executable split equivalence under admitted numerical comparison policy,UBoundconc exponential update remains outside synthetic exact sentinel,STATEQ01_RC_R12
 ADD-006,class,CORE_STATE_READY_CANDIDATE,upper-boundary DOP reservoir evolves and feeds first active transport compartment even when Flpn=0,PREP06;PREP12;STATEQ01_LAYER0_ACTIVATION
 ADD-006,canonical_owner,ANIMO upper-boundary reservoir owner,not an optional management-only feature,UBoundconc;TRANSPORT
 ADD-006,feature_guard,core_upper_boundary;p_cycle=on,required in restricted core when P is active,UBoundconc;TRANSPORT
+ADD-006,checkpoint_requirement,MANDATORY_CORE_WHEN_P_ACTIVE_ACCEPTED_BOUNDARY_OWNER,Rscodiorpotop is the accepted-boundary continuation value and Init maps it to next-step Codiorpotop,STATEQ01_RC_R12;Init;Output_Init
+ADD-006,restart_restore_rule,restore accepted Rscodiorpotop as next Codiorpotop alias before management and UBoundconc; recompute Avcodiorpotop in the interval,start and end names are lifecycle aliases not duplicate owners; average is interval-derived,STATEQ01_RC_R12
+ADD-006,b3_status,SOURCE_OWNER_AND_FEED_QUALIFIED_SYNTHETIC_ZERO_FLUX_RC_R12_PASS_NONZERO_FLUX_SPLIT_OPEN,source lifecycle feed and exact zero-flux nonzero-state wiring are qualified without promoting real split behaviour,STATEQ01_RC_R12
+ADD-006,blocker,nonzero-flux and profile-clean executable split equivalence under admitted numerical comparison policy,UBoundconc exponential update remains outside synthetic exact sentinel,STATEQ01_RC_R12
 SURFAQ-001,b3_status,BLOCKED_TCD016_AND_LOCAL_RESTART_FINDING,TCD-016-C1 and explicit layer0 restart initialization zeroing are independent blockers,SQ01;STATEQ01_LAYER0_RESTART
 SURFAQ-002,b3_status,BLOCKED_LOCAL_RESTART_FINDING_PENDING_B3_INTAKE,explicit nonzero layer0 NO3 input is read then zeroed before first timestep,STATEQ01_LAYER0_RESTART
 SURFAQ-003,b3_status,BLOCKED_LOCAL_RESTART_FINDING_PENDING_B3_INTAKE,explicit nonzero layer0 labile DOM input is read then zeroed before first timestep,STATEQ01_LAYER0_RESTART
@@ -24,6 +48,6 @@ SURFAQ-004,b3_status,BLOCKED_LOCAL_RESTART_FINDING_PENDING_B3_INTAKE,explicit no
 SURFAQ-006,b3_status,BLOCKED_LOCAL_RESTART_FINDING_PENDING_B3_INTAKE,layer0 DOP input coordinate is also unconditionally zeroed by Inicalc; natural nonzero supplied-case reachability not yet separately quantified,STATEQ01_LAYER0_RESTART
 MGMT-002,checkpoint_requirement,MANDATORY_EXPLICIT_NEXT_EVENT_ID,accepted time plus schedule identity is not universally sufficient to reconstruct legacy reader progression,STATEQ01_MGMT_CURSOR;TS01
 MGMT-002,restart_restore_rule,restore exact next event/source-row identity and resolve its boundary from bound schedule under admitted TIME; never infer solely as first future event,the legacy Adnr progression is explicit while Tinead is schedule-derived,STATEQ01_MGMT_CURSOR;TIME01
-MGMT-002,b3_status,SOURCE_CURSOR_OWNERSHIP_QUALIFIED_SPLIT_RUN_NOT_ADMITTED,source qualifies canonical continuation representation but event-adjacent split-run evidence remains open,STATEQ01_MGMT_CURSOR
-MGMT-002,blocker,event-adjacent split-run qualification and canonical TIME integration; time-only reconstruction forbidden by default,source-level counterexample defeats unrestricted deterministic reconstruction,STATEQ01_MGMT_CURSOR
+MGMT-002,b3_status,SOURCE_CURSOR_OWNERSHIP_QUALIFIED_SYNTHETIC_TIME02_RC_R2_PASS_BEHAVIOURAL_SPLIT_OPEN,source qualifies continuation representation and candidate TIME02 exact cursor wiring is executable; real event-adjacent split remains open,STATEQ01_MGMT_CURSOR;STATEQ01_TIME02_RC_R2
+MGMT-002,blocker,behavioural event-adjacent split-run qualification and canonical TIME admission; time-only reconstruction forbidden by default,source-level counterexample defeats unrestricted deterministic reconstruction,STATEQ01_MGMT_CURSOR;STATEQ01_TIME02_RC_R2
 MGMT-001,checkpoint_requirement,MANDATORY_EXACT_SCHEDULE_IDENTITY,next event identity is interpretable only under exact immutable management schedule/configuration identity,TIME01;TS01;STATEQ01_MGMT_CURSOR
