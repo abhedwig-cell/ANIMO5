@@ -19,7 +19,7 @@ Frozen local evidence was used only after B0 hash verification:
 - testbank ZIP SHA-256 `44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84`;
 - diagnostic compiler: GNU Fortran 14.2.0.
 
-The primary static scan excluded alternate units `input1_1.for` and `Outselorg.for`, matching PREP03 selection logic. A local scan saw 58 selected source compilation files, approximately 790 `CALL` statements to 92 distinct names, 19 computed-GOTO dispatch statements, 44 `DATA` statement starts, and only five explicit `SAVE ::` declaration lines. PREP03 independently counts 137 selected routines/functions and demonstrates that implicit, large mixed-semantic interfaces are systemic.
+The primary static scan excluded alternate units `input1_1.for` and `Outselorg.for`, matching PREP03 selection logic. A local scan saw 58 selected source compilation files, approximately 790 `CALL` statements to 92 distinct names, 19 computed-GOTO dispatch statements, 44 `DATA` statement starts, and five declaration lines carrying the `SAVE` attribute plus one separate `Save FlMpInTo, FlMpOuTo` statement. PREP03 independently counts 137 selected routines/functions and demonstrates that implicit, large mixed-semantic interfaces are systemic.
 
 ## Main result
 
@@ -44,6 +44,7 @@ The strongest new result is that GHG and macropore code contain active, non-`SAV
 | CH4 oxidation | oxygen availability, old CH4 concentration and active depth reused across tasks | source-confirmed | CH4 nonlinear iteration context |
 | `N2Oproreduc` | NO3/N2O coupled iteration arrays reused across tasks | source-confirmed | N2O nonlinear iteration context |
 | `NO3N2OReduc` | `FlExcd` and `QPrN2OdenMax` correction history reused across calls | source-confirmed | nested N2O solver context |
+| `Mapohydro` | explicitly saved profile flux totals plus unsaved `LnBoMpMx` reused by later task calls | GNU exact-source probe confirms storage-duration materiality | macropore hydrology task context |
 | `MapoTransport` | phase flags and substance-specific macropore source arrays reused across dispatch | source-confirmed; active MP02 route | macropore process transaction context |
 | `MPTRANSP` | iteration counters, flags, old concentrations, original source terms and balance context across Tasks 1/2/3 | source-confirmed; active MP02 route | macropore transport solver/transaction context |
 
@@ -86,7 +87,19 @@ The confirmed MP02 `MPTRANSP` balance warning uses:
 
 Fortran does not guarantee short-circuit evaluation. With `BaDev=BaMx=0`, the exact-expression GNU probe sets IEEE invalid even though the first conjunct is false. Under an invalid trap the program terminates. This is reconciled in `FLOATING_EXCEPTION_HAZARD_MATRIX.md`.
 
-Static scanning found similar source-level risk in relative balance checks in `TRANSPORT`, `Transgen` and `GHGtransport`, and in nonlinear convergence/domain divisions in `Transorp`, `Transsub` and `NO3N2OReduc`. These are not promoted to defects without reachability/materiality evidence.
+The first static pass also flagged relative balance checks in `TRANSPORT`, `Transgen` and `GHGtransport`. Full control-flow reinspection closes that zero-scale suspicion for finite inputs because each inner relative division is dominated by a separate outer nonzero-scale test. The still-open source-level domain/evaluation-order candidates are in `Transorp`, `Transsub` and `NO3N2OReduc`; these are not promoted to defects without reachability/materiality evidence.
+
+## Post-closeout MAPOHYDRO strengthening
+
+A source-wide computed-GOTO cross-phase scan identified one active family that was not explicit enough in the initial closeout: `Mapohydro`. `Hydro_detailed.for` calls it four separate times in one timestep with `TaskMp=1,2,3,4`. The routine explicitly `SAVE`s `FlMpInTo` and `FlMpOuTo` for Task 1 to Task 3 reuse, but `LnBoMpMx` is computed in Task 1 and read as the Task-4 loop bound without being a formal argument, recomputed, DATA-initialized or explicitly `SAVE`d.
+
+An exact frozen-source GNU microprobe confirms materiality. With a two-layer active macropore setup, Task 4 should undo temporary matrix-inflow additions and change `Flid(1:2)` from `[1.0,1.0]` to `[0.9,0.8]`. `-O0 -fautomatic` segfaulted after the Task-1 return; `-O2 -fautomatic` completed but left `[1.0,1.0]`; `-fno-automatic` produced `[0.9,0.8]`. This is therefore `CONTROL_FLOW_MATERIAL` and `STATE_MATERIAL` under GNU storage variants, with historical Intel effect unknown. The value is derivable task context, not accepted persistent physical state. See `MAPOHYDRO_STORAGE_AND_BOUNDS_PROBE.md`.
+
+The same probe exposed a distinct bounds/evaluation-order seam. The wet-domain searches evaluate `FrHeWeMpWl(...,LnBoMp(...))` or `FrHeWeMpWl(2,Ln)` before the corresponding lower-bound conjunct. When the index reaches zero, GNU `-fcheck=bounds` traps because `FrHeWeMpWl` has second-dimension lower bound 1. Ordinary non-checking execution may silently read outside the declared array. This is a local runtime-safety candidate, not a scientific correction and not automatically part of TCD-025.
+
+This also changes the Intel-storage interpretation materially. PREP01's documented default Intel `/Qauto-scalar` hypothesis can plausibly explain persistence of CHARACTER locals in `Outbal_write`, but it does **not** explain persistence of the non-SAVEd scalar INTEGER `LnBoMpMx`. BUILDQ01 therefore cannot treat Intel-default storage as a complete candidate explanation for all active cross-call state.
+
+The explicit-SAVE inventory is also refined: the selected source contains five declaration lines carrying the `SAVE` attribute plus one separate `Save FlMpInTo, FlMpOuTo` statement in `MAPOHYDRO.FOR`. Counting only `SAVE ::` declaration lines understates the explicit persistence surface.
 
 ## Scientific-state decision rule
 
@@ -103,6 +116,7 @@ BUILDQ01 does not allocate new canonical TCD numbers. It provides routing eviden
 
 - GHG hidden task-state families block explicit GHG migration and must be reconciled with GHG01 restart/state work;
 - macropore hidden task-state families block explicit MP migration and coexist with MP02's qualified active route and known conservation findings;
+- `Mapohydro` `LnBoMpMx` is a new local runtime-semantic candidate for B3 intake because controlled GNU probing establishes control-flow/state materiality; the bounds-order seam is a separate intake candidate and must not be merged automatically with TCD-025;
 - the SQ01 layer-0 parameter/rate initialization gap remains runtime-effect unqualified and should enter B3 intake only if materiality is established;
 - NQ02 nonlinear P policy remains TCD-019 scope unless independent runtime-semantic defect evidence is obtained;
 - no compiler flag is admitted as a scientific correction.
