@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Fail-closed static source audit for ANIMO-TS01.
 
-This tool does not execute or modify the frozen ANIMO source. It verifies that the
-source anchors on which the TS01 temporal reconstruction depends are present and
-ordered as documented. It is source-bound diagnostic tooling, not B2 evidence.
+This tool does not execute or modify the frozen ANIMO source. It verifies source
+anchors and ordering used by the TS01 temporal reconstruction. Passing this audit
+is source-bound diagnostic evidence, not B2 historical behavioural evidence.
 """
 from __future__ import annotations
 
@@ -30,22 +30,21 @@ def read(root: Path, name: str) -> str:
     return p.read_text(encoding="latin-1")
 
 
-def pos(text: str, needle: str, label: str) -> int:
-    i = text.lower().find(needle.lower())
+def pos(text: str, needle: str, label: str, start: int = 0) -> int:
+    i = text.lower().find(needle.lower(), start)
     if i < 0:
         raise AssertionError(f"missing source anchor {label}: {needle}")
     return i
 
 
-def ordered(text: str, anchors: list[tuple[str, str]]) -> list[dict]:
-    hits = []
-    last = -1
+def ordered(text: str, anchors: list[tuple[str, str]], start: int = 0) -> list[dict]:
+    """Find anchors progressively so repeated call strings resolve to later calls."""
+    hits: list[dict] = []
+    cursor = start
     for label, needle in anchors:
-        i = pos(text, needle, label)
-        if i <= last:
-            raise AssertionError(f"source order violation at {label}")
+        i = pos(text, needle, label, cursor)
         hits.append({"label": label, "offset": i})
-        last = i
+        cursor = i + 1
     return hits
 
 
@@ -89,11 +88,6 @@ def main() -> int:
             ("potential_resp", "Call Resp_miner"),
             ("potential_nh4", "Call Transport"),
             ("rates2", "Call Rates2"),
-        ])
-        # The repeated calls after Rates2 need scoped searches rather than global find.
-        rates2_offset = main_order[-1]["offset"]
-        tail = animo[rates2_offset:]
-        tail_order = ordered(tail, [
             ("actual_transca", "Call Transca"),
             ("actual_resp", "Call Resp_miner"),
             ("actual_nh4", "CAll Transport"),
@@ -107,16 +101,13 @@ def main() -> int:
             ("outbal_write", "Call Outbal_write"),
             ("outsel", "Call Outsel"),
         ])
-        checks.append({"check": "main_timestep_call_order", "result": "PASS", "anchors": main_order + tail_order})
+        checks.append({"check": "main_timestep_call_order", "result": "PASS", "anchors": main_order})
 
-        management_pred = "If(Juda.ge.Tinead .and. (Juda-St).lt.Tinead) Then"
-        pos(animo, management_pred, "management_event_predicate")
+        pos(animo, "If(Juda.ge.Tinead .and. (Juda-St).lt.Tinead) Then", "management_event_predicate")
         checks.append({"check": "management_interval_predicate", "result": "PASS", "semantic_interval": "(t0,t1]"})
 
-        harvest_a = "Juda.Gt.Tiha(Manper)"
-        harvest_b = "(Juda-St).Le.Tiha(Manper)"
-        pos(addit, harvest_a, "harvest_end_predicate")
-        pos(addit, harvest_b, "harvest_start_predicate")
+        pos(addit, "Juda.Gt.Tiha(Manper)", "harvest_end_predicate")
+        pos(addit, "(Juda-St).Le.Tiha(Manper)", "harvest_start_predicate")
         checks.append({"check": "harvest_interval_predicate", "result": "PASS", "semantic_interval": "[t0,t1)"})
 
         add_pos = pos(addit, "Do 200   I = 1,Nuad", "management_row_loop")
@@ -141,22 +132,31 @@ def main() -> int:
         checks.append({"check": "management_reporting_reset_before_addit", "result": "PASS"})
 
         pos(resp, "COINBE= conc from previous timestep", "previous_step_neighbor_comment")
-        pos(resp, "Coinab = Conh(Ln-1)", "nh4_previous_neighbor")
-        pos(resp, "Coinbe = Conh(Ln+1)", "nh4_previous_neighbor_below")
-        pos(resp, "Coinab = Copo(Ln-1)", "p_previous_neighbor")
-        pos(resp, "Coinbe = Copo(Ln+1)", "p_previous_neighbor_below")
-        pos(resp, "Do While (iter.Le.2", "immobilization_two_pass")
+        for needle, label in [
+            ("Coinab = Conh(Ln-1)", "nh4_neighbor_above"),
+            ("Coinbe = Conh(Ln+1)", "nh4_neighbor_below"),
+            ("Coinab = Copo(Ln-1)", "p_neighbor_above"),
+            ("Coinbe = Copo(Ln+1)", "p_neighbor_below"),
+            ("Do While (iter.Le.2", "immobilization_two_pass"),
+        ]:
+            pos(resp, needle, label)
         checks.append({"check": "resp_miner_previous_step_neighbor_and_iteration", "result": "PASS"})
 
-        pos(transport, "Ln = Sqnu(K)", "transport_sqnu")
-        pos(transport, "Cob(Ln+1) = Avco(Ln)", "transport_same_step_downstream")
-        pos(transport, "Coo(Ln) = Avco(Ln)", "transport_same_step_upstream")
-        pos(transport, "Se(Ln)*Flev(Ln)", "transport_crop_uptake")
+        for needle, label in [
+            ("Ln = Sqnu(K)", "transport_sqnu"),
+            ("Cob(Ln+1) = Avco(Ln)", "transport_same_step_downstream"),
+            ("Coo(Ln) = Avco(Ln)", "transport_same_step_upstream"),
+            ("Se(Ln)*Flev(Ln)", "transport_crop_uptake"),
+        ]:
+            pos(transport, needle, label)
         checks.append({"check": "transport_flow_order_and_crop_sink", "result": "PASS"})
 
-        pos(transgen, "Ln = Sqnu(K)", "p_sqnu")
-        pos(transgen, "Call Transorp", "p_transorp")
-        pos(transgen, "Cob(Ln+1) = Avcopo(Ln)", "p_neighbor_average")
+        for needle, label in [
+            ("Ln = Sqnu(K)", "p_sqnu"),
+            ("Call Transorp", "p_transorp"),
+            ("Cob(Ln+1) = Avcopo(Ln)", "p_neighbor_average"),
+        ]:
+            pos(transgen, needle, label)
         checks.append({"check": "p_transport_phase_coupling", "result": "PASS"})
 
         pos(outbal_calc, "Optout(Ly) = 0", "balance_period_flag")
