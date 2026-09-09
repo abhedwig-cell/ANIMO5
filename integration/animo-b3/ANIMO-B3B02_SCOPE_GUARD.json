@@ -1,0 +1,26 @@
+{
+  "work_unit": "ANIMO-B3B02",
+  "base_sha": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+  "scope": "admission-readiness evidence only",
+  "allowed_changed_paths": [
+    "docs/b3/TCD042_B1_CLASS_B_ADMISSION_READINESS.md",
+    "integration/animo-b3/ANIMO-B3B02_STATUS.json",
+    "integration/animo-b3/TCD042_B1_EXPECTED_DIFFERENCE.json",
+    "integration/animo-b3/ANIMO-B3B02_SCOPE_GUARD.json"
+  ],
+  "forbidden_path_prefixes": [
+    "src/",
+    "reference/source/",
+    "reference/testcases/"
+  ],
+  "production_source_modified": false,
+  "frozen_reference_modified": false,
+  "threshold_modified": false,
+  "tolerance_added": false,
+  "tcd042_e1_modified": false,
+  "parent_tcd042_admitted": false,
+  "corrected_legacy_admitted": false,
+  "independent_review_passed": false,
+  "route_passed": false,
+  "decision": "PASS_SCOPE_ONLY_ADMISSION_REMAINS_FAIL_CLOSED"
+}
