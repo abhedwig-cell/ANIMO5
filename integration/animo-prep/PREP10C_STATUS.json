@@ -1,0 +1,80 @@
+{
+  "work_unit": "ANIMO-PREP10C",
+  "title": "Stable-DOM/DON/DOP plough event-reset corrected-legacy candidate",
+  "branch": "work/animo-prep10c-stable-dom-event-reset-candidate",
+  "parent_checkpoint": "0a174fcee84865f027abab3dde491470c7a04afa",
+  "decision": "QUALIFIED_CORRECTED_LEGACY_CANDIDATE_CURRENT_GNU_NONINTERFERENCE_AND_CAUSAL_CONVERGENCE_B3_ADMISSION_OPEN",
+  "state_dimensions": {
+    "implemented": true,
+    "persisted": true,
+    "tested": true,
+    "candidate_qualified": true,
+    "source_transform_byte_identical_to_prep10_counterfactual": true,
+    "frozen_testbank_noninterference_qualified_current_gnu": true,
+    "dom_causal_convergence_qualified_current_gnu": true,
+    "don_causal_convergence_qualified_current_gnu": true,
+    "dop_causal_convergence_qualified_current_gnu": true,
+    "conservation_reconciliation_qualified_source_bound": true,
+    "historical_native_effect_qualified": false,
+    "independent_second_line_review_completed": false,
+    "corrected_legacy_admitted": false,
+    "b3_admitted": false,
+    "production_migration_admitted": false
+  },
+  "candidate_identity": {
+    "frozen_source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "frozen_addit_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+    "candidate_addit_sha256": "a1993aa2d22c8f2c13fc169e78f9121587c8f14a122ef7d3f757cc24a58a54ae",
+    "candidate_executable_sha256_current_gnu": "f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db"
+  },
+  "qualification_evidence": {
+    "contract": "docs/prep10c/WORK_UNIT_CONTRACT.md",
+    "report": "docs/prep10c/CANDIDATE_QUALIFICATION_REPORT.md",
+    "machine_record": "integration/animo-prep/PREP10C_EVENT_RESET_CANDIDATE.json",
+    "candidate_transform_tool": "tools/make_prep10c_corrected_addit.py",
+    "conservation_audit_tool": "tools/audit_prep10c_plough_conservation.py",
+    "causal_parent_dom_don": "integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION.json",
+    "causal_parent_dop": "integration/animo-prep/PREP10_STABLE_DOP_CAUSAL_ACTIVATION.json"
+  },
+  "frozen_testbank_noninterference": {
+    "successful_cases_compared": 8,
+    "common_files_compared": 550,
+    "raw_equal_files": 450,
+    "volatile_only_equal_files": 100,
+    "scientific_or_structural_differences": 0,
+    "ghgmais_baseline_return_code": 203,
+    "ghgmais_candidate_return_code": 203,
+    "ghgmais_status": "EXISTING_LINEAGE_INPUT_CONTRACT_MISMATCH_NOT_ATTRIBUTED_TO_PREP10C",
+    "numerical_tolerance_used_for_acceptance": false
+  },
+  "verification": {
+    "authoring_environment_b0_bytes_rehashed_before_runtime_use": true,
+    "github_actions_run_id": 34305210902,
+    "github_actions_head": "f212cac453286dbd64103f08ee1781fbc5c9e5bc",
+    "github_actions_conclusion": "success",
+    "github_actions_scope": "compile PREP10C tooling; run fail-closed transform and conservation helper tests; validate machine-readable PREP10C JSON; private B0 runtime bytes are not uploaded to public CI",
+    "raw_source_or_testbank_bytes_added_to_git": false
+  },
+  "b3q01_state": {
+    "provisional_class": "CLASS_B_LOCAL_ALGEBRA_INDEX_OR_SPECIES_CORRECTION",
+    "b2_route_status": "B2_NOT_AVAILABLE_FOR_AFFECTED_PATH",
+    "historical_uncertainty_route_status": "NOT_OPENED",
+    "independent_review_status": "OPEN",
+    "disposition": "UNRESOLVED_NOT_ADMITTED"
+  },
+  "open_gates": [
+    "independent second-line B3Q01 review of the atomic Class B candidate",
+    "incorporate a provenance-qualified historical native B2 reference if PREP02R recovers one",
+    "only if B2 acquisition is genuinely exhausted, separately decide whether the stricter historical-uncertainty route may be opened",
+    "qualify composition before any use in a combined B3 baseline",
+    "keep B4 migration blocked until B3 admission and composition gates are satisfied"
+  ],
+  "non_admissions": [
+    "candidate qualification is not corrected-legacy admission",
+    "current-GNU evidence is not historical Intel evidence",
+    "synthetic causal descendants are not B2 historical reference",
+    "no B3 baseline composition is admitted",
+    "no ANIMO5 production migration is admitted"
+  ]
+}
