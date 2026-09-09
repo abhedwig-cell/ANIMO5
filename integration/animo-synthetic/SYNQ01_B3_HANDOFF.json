@@ -1,0 +1,91 @@
+{
+  "work_unit": "ANIMO-SYNQ01",
+  "record_type": "B3_EVIDENCE_HANDOFF_NO_ADMISSION",
+  "repository": "abhedwig-cell/ANIMO5",
+  "source_branch": "work/animo-synq01-independent-synthetic-oracles",
+  "source_qualified_head_before_handoff": "95ae5b8d4627f8c12f732dd8116ba2fb50ef0f50",
+  "b3_governance": {
+    "classification_owner": "ANIMO-B3Q01",
+    "branch": "work/animo-b3q01-scientific-admission-framework",
+    "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "rule": "synthetic evidence may support causal, conservation, coverage or independent-oracle gates but is never B2 historical reference evidence and never self-admits a correction"
+  },
+  "b3_intake": {
+    "work_unit": "ANIMO-B3I01",
+    "branch": "work/animo-b3i01-post-g5-discrepancy-intake",
+    "head": "7b2be9d9742aaad78128c0531591d8e38d7e8450",
+    "decision": "QUALIFIED_POST_G5_DISCREPANCY_CANONICAL_INTAKE_AND_ROUTING_NO_ADMISSIONS",
+    "new_tcd_allocation_required_for_synq01": false,
+    "reason": "SYNQ01 qualifies evidence for existing TCD-015, TCD-017, TCD-018, TCD-019, TCD-023, TCD-024 and TCD-025; it does not identify a distinct new discrepancy phenomenon"
+  },
+  "evidence_routes": [
+    {
+      "tcd": "TCD-015",
+      "b3_class": "B",
+      "synq_oracles": ["SYNQ-O001"],
+      "usable_as": ["closed local conservation identity", "independent causal discriminator"],
+      "still_required": ["B2 route or documented historical-uncertainty route prerequisites", "independent second-line review", "declared non-interference surface"],
+      "admission_effect": "NONE"
+    },
+    {
+      "tcd": "TCD-017",
+      "b3_class": "A",
+      "synq_oracles": ["SYNQ-O002"],
+      "usable_as": ["closed internal-transfer conservation identity", "ledger control-volume oracle"],
+      "still_required": ["trajectory non-interference evidence", "B2 route or documented historical-uncertainty route prerequisites", "independent second-line review"],
+      "admission_effect": "NONE"
+    },
+    {
+      "tcd": "TCD-018",
+      "b3_class": "A",
+      "synq_oracles": ["SYNQ-O003"],
+      "usable_as": ["closed water-storage identity", "explicit control-volume oracle"],
+      "still_required": ["hydrology state and flux non-interference evidence", "B2 route or documented historical-uncertainty route prerequisites", "independent second-line review"],
+      "admission_effect": "NONE"
+    },
+    {
+      "tcd": "TCD-019",
+      "b3_class": "E",
+      "synq_oracles": ["SYNQ-O009"],
+      "usable_as": ["independent high-precision mathematical root oracle", "narrow precision cross-check"],
+      "still_required": ["separate numerical-policy qualification", "fallback/discrete-closure qualification", "convergence envelope", "precision sensitivity across applicable solver families", "no arbitrary tolerance selection"],
+      "admission_effect": "NONE"
+    },
+    {
+      "tcd": "TCD-023",
+      "b3_class": "B",
+      "synq_oracles": ["SYNQ-O004", "SYNQ-O005"],
+      "usable_as": ["species-local analytical identity", "species-permutation metamorphic cross-check"],
+      "still_required": ["B2 route or documented historical-uncertainty route prerequisites", "path applicability and magnitude characterization", "independent second-line review"],
+      "admission_effect": "NONE"
+    },
+    {
+      "tcd": "TCD-024",
+      "b3_class": "B",
+      "synq_oracles": ["SYNQ-O006", "SYNQ-O007"],
+      "usable_as": ["unequal-site analytical discriminator", "exact index-domain proof"],
+      "still_required": ["historical or otherwise qualified path activation", "full branch coverage", "independent second-line review"],
+      "admission_effect": "NONE"
+    },
+    {
+      "tcd": "TCD-025",
+      "b3_class": "A",
+      "synq_oracles": ["SYNQ-O008"],
+      "usable_as": ["matrix/macropore internal-transfer cancellation identity", "direct-drain external-transfer ledger oracle"],
+      "still_required": ["revision-53 macropore process qualification", "persistent state completeness", "active historical B2 case or valid uncertainty route", "state and flux non-interference evidence"],
+      "admission_effect": "NONE"
+    }
+  ],
+  "temporal_oracles": {
+    "records": ["SYNQ-O010", "SYNQ-O011", "SYNQ-O012"],
+    "routing": "TIME/STATE qualification evidence only; not discrepancy admission evidence unless a later specific TCD is established",
+    "historical_reference_effect": "NONE"
+  },
+  "evidence_boundary": {
+    "B2_reference_created": false,
+    "historical_behaviour_claimed": false,
+    "corrected_legacy_admitted": false,
+    "B3_admission_performed": false,
+    "production_migration_admitted": false
+  }
+}
