@@ -7,7 +7,7 @@
   "target_discrepancy": "TCD-016",
   "primary_class": "C_MISSING_PHYSICAL_STATE_OR_INCOMPLETE_STATE_MODEL",
   "secondary_class": "E_NUMERICAL_POLICY_CHANGE",
-  "atomicity": "REQUIRES_ATOMIZATION_BEFORE_ADMISSION",
+  "atomicity": "ATOMIZATION_PLAN_DEFINED_CHILDREN_NOT_ADMITTED",
   "admitted": false,
   "branch": "work/animo-sq01-tcd016-dry-solute-state",
   "base": {
@@ -37,17 +37,33 @@
     "counterfactual_tiny_outflow": "REJECTED_PATHOLOGICAL_CONCENTRATION"
   },
   "candidate_decision": {
-    "preferred": "A_EXPLICIT_DRY_OR_IMMOBILE_SURFACE_SOLUTE_STORE",
+    "preferred": "A_EXPLICIT_NON_AQUEOUS_SURFACE_NH4_CONTINUATION_MASS",
+    "preferred_state_name": "M_surface_NH4_non_aqueous_continuation",
+    "preferred_unit": "kg_N_m-2",
     "preferred_status": "PREFERRED_PROPOSED_MODEL_EXTENSION_NOT_ADMITTED",
     "candidate_B": "REJECTED_AS_CORRECTED_LEGACY_CANDIDATE",
     "candidate_C": "REJECTED_WITH_CURRENT_ANIMO_HYDROLOGY",
     "candidate_D": "REJECTED_SEMANTIC_ALIASING"
   },
+  "atomization": {
+    "TCD-016-C1": {
+      "class": "C",
+      "topic": "surface NH4 continuation-state ownership",
+      "status": "BLOCKED_INSUFFICIENT_ANIMO_SPECIFIC_PHASE_THEORY"
+    },
+    "TCD-016-E1": {
+      "class": "E",
+      "topic": "low-storage transport threshold and transition policy",
+      "status": "BLOCKED_DEPENDS_ON_TCD016_C1"
+    },
+    "standalone_class_B_child": "NOT_CREATED_CORRECT_REPLACEMENT_DEPENDS_ON_C1"
+  },
   "class_c_gates": {
     "legacy_state_and_phase_reconstruction": "PASS",
     "state_variable_definition_units_and_owner_for_preferred_candidate": "PROPOSED_NOT_THEORY_QUALIFIED",
-    "initialization_and_restart_contract": "DEFINED_FOR_QUALIFICATION",
-    "wet_to_dry_transfer_contract": "DEFINED_FOR_QUALIFICATION",
+    "initialization_and_restart_contract": "DEFINED_FOR_QUALIFICATION_NOT_SCIENTIFICALLY_ADMITTED",
+    "wet_to_dry_transfer_contract": "CONSERVATION_FORM_DEFINED_PHYSICS_UNQUALIFIED",
+    "dry_hold_semantics": "NOT_QUALIFIED",
     "dry_to_wet_transfer_contract": "FORM_DEFINED_KINETICS_UNQUALIFIED",
     "local_conservation_closure": "PASS_DIAGNOSTIC_FOR_CANDIDATE_A",
     "appearance_disappearance_edge_sequence": "PASS_DIAGNOSTIC_FOR_CANDIDATE_A",
@@ -58,28 +74,44 @@
     "all_class_c_gates_complete": false
   },
   "theory_evidence": {
-    "ANIMO40_user_guide": "establishes ponding layer, liquid concentration state, soil NH4 sorption and separate additions reservoir, but no dry-solute continuation phase or remobilization law was found",
+    "ANIMO40_user_guide": {
+      "status": "REVIEWED",
+      "findings": [
+        "section 2.3 defines dissolved storage through liquid fraction theta and liquid-phase concentration c",
+        "surface runoff uses a ponding-layer solute balance",
+        "the artificial additions reservoir is separate from ponding",
+        "Table 8 distinguishes CONHTOP from CONH(0:NL)",
+        "NH4 sorption parameters are specified per soil horizon",
+        "no dry-surface NH4 continuation state or rewetting law was found"
+      ]
+    },
     "TH01": "no dry-solute continuation authority recovered",
     "TH02": "release-lineage evidence only, not phase theory",
-    "Report983": "official WUR publication record confirmed; full text was not available in the admitted SQ01 evidence set, so SQ01 makes no negative claim about its detailed contents"
+    "Report983": "official WUR publication record and eDepot target confirmed; full text could not be retrieved through the available web path, so no negative claim is made about detailed contents",
+    "ANIMO35_Report144": "official WUR publication record confirmed; full process text not yet reviewed for dry-surface continuation semantics"
   },
   "deliverables": [
     "docs/science/TCD016_DRY_SOLUTE_STATE_RECONSTRUCTION.md",
     "docs/science/TCD016_CONTINUATION_STATE_CANDIDATES.md",
     "docs/science/TCD016_CONSERVATION_AND_REWETTING_CONTRACT.md",
+    "docs/science/TCD016_THEORY_EVIDENCE_SWEEP.md",
+    "docs/science/TCD016_ATOMIZATION_AND_GATE_PLAN.md",
     "integration/animo-science/TCD016_CANDIDATE_MATRIX.json",
+    "integration/animo-science/TCD016_ATOMIZATION_PLAN.json",
     "integration/animo-science/ANIMO-SQ01_STATUS.json"
   ],
   "next_required_actions": [
-    "recover and inspect authoritative ANIMO process theory that can define or reject a dry continuation phase, especially the full process description lineage around Alterra Report 983 and any later ANIMO release documentation",
-    "obtain independent scientific review of the phase ownership and rewetting semantics",
-    "if no legacy theory is recovered, treat Candidate A explicitly as model evolution and open a separate scientific admission route rather than corrected-legacy B3 admission",
+    "recover and inspect full-text authoritative ANIMO process theory, especially Alterra Report 983 and historical ANIMO 3.5 Report 144, for an explicit dry/phase continuation rule",
+    "obtain independent scientific review of phase ownership and rewetting semantics",
+    "if no legacy theory is recovered, treat Candidate A explicitly as model evolution under a separate scientific admission route rather than corrected-legacy B3 admission",
+    "only after TCD-016-C1 semantics are fixed, qualify TCD-016-E1 numerical thresholds and transition conditioning",
     "after semantics are fixed, qualify process ordering, restart equivalence, physical-envelope trajectories and non-interference"
   ],
   "notes": [
     "No production implementation was created.",
     "No frozen source or historical testcase was modified.",
     "No concentration cap, mass deletion, mass creation or invented external outflow is admitted as a solution.",
-    "Conservation closure of Candidate A is necessary evidence but is not treated as proof of ANIMO-specific intended physics."
+    "Conservation closure of Candidate A is necessary evidence but is not treated as proof of ANIMO-specific intended physics.",
+    "The provisional continuation-state name is deliberately chemically noncommittal until theory establishes residue, sorption, precipitation or residual-film semantics."
   ]
 }
