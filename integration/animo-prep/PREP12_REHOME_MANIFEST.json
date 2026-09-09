@@ -1,0 +1,38 @@
+{
+  "work_unit": "ANIMO-PREP12",
+  "record_type": "PROVENANCE_PRESERVING_REHOME_MANIFEST",
+  "source_branch": "work/animo-prep10-restart-state-continuity",
+  "source_head": "761db23269b45ba79df3be97ea85289682e57106",
+  "source_tree": "e1b18d8ee75bb40597b5e7872fe82927733b05bc",
+  "target_branch": "work/animo-prep12-restart-state-continuity-rehome",
+  "local_identities": [
+    "RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER",
+    "RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION",
+    "RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE"
+  ],
+  "canonical_tcd_ids": [],
+  "copy_mode": "EXACT_BLOB_REUSE_NO_CONTENT_REWRITE",
+  "files": [
+    {"source_path": "docs/prep10/MACROPORE_SOLUTE_RESTART_WRITER_OMISSION.md", "source_blob_sha": "cde658dfd12f08aec9d161cbc44a69bc13756026", "target_path": "docs/prep12/source/MACROPORE_SOLUTE_RESTART_WRITER_OMISSION.md"},
+    {"source_path": "docs/prep10/PLANT_UPTAKE_RESTART_CONTINUITY_DEFECTS.md", "source_blob_sha": "ebda7e05416696e4bf94b653f134b20e325ef9f5", "target_path": "docs/prep12/source/PLANT_UPTAKE_RESTART_CONTINUITY_DEFECTS.md"},
+    {"source_path": "docs/prep10/RESTART_STATE_CONTINUITY_BASELINE.md", "source_blob_sha": "ed1cf3fdaa7746b2f6b558ec7ebd9065f2176524", "target_path": "docs/prep12/source/RESTART_STATE_CONTINUITY_BASELINE.md"},
+    {"source_path": "docs/prep10/RESTART_STATE_INVENTORY.csv", "source_blob_sha": "d2131181a56c8d6f6a1a829a801417f6fc55848d", "target_path": "docs/prep12/source/RESTART_STATE_INVENTORY.csv"},
+    {"source_path": "integration/animo-prep/PREP10_MACROPORE_RESTART_WRITER_OMISSION.json", "source_blob_sha": "de9dbb52f436c5e668d33c0005cda96e4b0b35e3", "target_path": "integration/animo-prep12/source/PREP10_MACROPORE_RESTART_WRITER_OMISSION.json"},
+    {"source_path": "integration/animo-prep/PREP10_PLANT_UPTAKE_RESTART_CONTINUITY.json", "source_blob_sha": "5da6b4f11dc1a0c7df00ea779a9dba58a0af0308", "target_path": "integration/animo-prep12/source/PREP10_PLANT_UPTAKE_RESTART_CONTINUITY.json"},
+    {"source_path": "integration/animo-prep/PREP10_RESTART_STATE_BASELINE.json", "source_blob_sha": "6e10a27fc5bb20c658f949178d41b7dfcc416327", "target_path": "integration/animo-prep12/source/PREP10_RESTART_STATE_BASELINE.json"},
+    {"source_path": "tools/audit_restart_state_continuity.py", "source_blob_sha": "974f08bb4a3efcc5fea1504d1533a0c54b0a6a00", "target_path": "tools/audit_restart_state_continuity.py"}
+  ],
+  "excluded_source_paths": [
+    "docs/prep10/WORK_UNIT_CONTRACT.md",
+    "integration/animo-prep/PREP10_DISCREPANCY_RESERVATIONS.json",
+    "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "integration/animo-prep/ANIMO-PREP08_STATUS.json",
+    "integration/animo-prep/ANIMO-PREP09_STATUS.json",
+    "docs/prep08/MANAGEMENT_TRANSFER_CAUSAL_PROBES.md",
+    "docs/prep09/PARSER_OPTION_CONTRACT_AUDIT.md",
+    "integration/animo-prep/PREP09_OPTION_CONTRACT_AUDIT.json"
+  ],
+  "scientific_reinterpretation": false,
+  "requalification_claimed": false,
+  "production_migration_admitted": false
+}
