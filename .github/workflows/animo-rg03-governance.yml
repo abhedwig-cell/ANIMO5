@@ -1,0 +1,58 @@
+name: ANIMO-RG03 post-G5 gate reconciliation
+
+on:
+  push:
+    branches:
+      - work/animo-rg03-post-g5-gate-reconciliation
+  pull_request:
+    paths:
+      - 'docs/governance/ANIMO_RG03_PROJECT_REGIE.md'
+      - 'docs/governance/POST_G5_CANONICAL_GATE_DAG.md'
+      - 'integration/animo-reg/RG03_WORKUNIT_AUTHORITY.csv'
+      - 'integration/animo-reg/RG03_GATE_MATRIX.csv'
+      - 'integration/animo-reg/RG03_B3_QUEUE.json'
+      - 'integration/animo-reg/ANIMO-RG03_STATUS.json'
+      - 'tools/validate_rg03_governance.py'
+      - '.github/workflows/animo-rg03-governance.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile validator
+        run: python -m py_compile tools/validate_rg03_governance.py
+      - name: Validate RG03 governance artifacts
+        run: python tools/validate_rg03_governance.py
+      - name: Fail closed on out-of-scope changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=5c278152eacc33660f1c5870c7d419b8041b20a9
+          mapfile -t changed < <(git diff --name-only "$base" HEAD)
+          printf '%s\n' "${changed[@]}"
+          for p in "${changed[@]}"; do
+            case "$p" in
+              docs/governance/ANIMO_RG03_PROJECT_REGIE.md|\
+              docs/governance/POST_G5_CANONICAL_GATE_DAG.md|\
+              integration/animo-reg/RG03_WORKUNIT_AUTHORITY.csv|\
+              integration/animo-reg/RG03_GATE_MATRIX.csv|\
+              integration/animo-reg/RG03_B3_QUEUE.json|\
+              integration/animo-reg/ANIMO-RG03_STATUS.json|\
+              tools/validate_rg03_governance.py|\
+              .github/workflows/animo-rg03-governance.yml)
+                ;;
+              *)
+                echo "RG03 out-of-scope changed path: $p" >&2
+                exit 1
+                ;;
+            esac
+          done
