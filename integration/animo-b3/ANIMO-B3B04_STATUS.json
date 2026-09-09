@@ -1,0 +1,34 @@
+{
+  "workunit": "ANIMO-B3B04",
+  "title": "TCD-040 Nonzero Layer-0 Aqueous Restart Initialization Identity Qualification",
+  "branch": "work/animo-b3b04-tcd040-layer0-restart-readiness",
+  "base": "ANIMO-B3I04@400b7cd79f89043e091751707dfa96537587dcf6",
+  "target": "TCD-040",
+  "class": "B_LOCAL_RESTORE_INITIALIZATION_IDENTITY",
+  "status": "IN_PROGRESS_PERSISTED_EVIDENCE_QUALIFICATION_PENDING",
+  "frozen_b0": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "required_upstream": {
+    "STATEQ01": "work/animo-stateq01-canonical-state-readiness",
+    "STATEQ02": "work/animo-stateq02-restricted-core-executable-split-run",
+    "B3I04": "work/animo-b3i04-stateq02-incremental-intake@400b7cd79f89043e091751707dfa96537587dcf6",
+    "B3Q01": "work/animo-b3q01-scientific-admission-framework@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "GOV02": "work/animo-gov02-evidence-dag-reconciliation@db7add6f9561730bbf352aa7fd3f3968405cfaa3"
+  },
+  "scope_guards": {
+    "canonical_state_admission": false,
+    "tcd016_composition": false,
+    "internal_crop_state_composition": false,
+    "broad_restart_redesign": false,
+    "production_patch": false,
+    "b3_admission": false,
+    "fail_closed_on_owner_ambiguity": true
+  },
+  "stateq02_guard_282_is_tcd040_qualification": false,
+  "notes": [
+    "Persisted before executable qualification work.",
+    "STATEQ02 split 282 is scope activation evidence only and was rejected before checkpoint creation."
+  ]
+}
