@@ -1,0 +1,213 @@
+{
+  "work_unit": "ANIMO-B3A02",
+  "title": "TCD-017 Organic-P Ploughing Ledger Correction Admission Readiness",
+  "target_tcd": "TCD-017",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "atomicity": "ATOMIC",
+  "claimed_change": "Add the already-existing Addiorpotoppl(I)*Z top-reservoir dissolved-organic-P ploughing loss to Bapo(Redi,Ly) in the Ln.Eq.0 reporting branch only",
+  "proposed_physical_state_patch": false,
+  "proposed_ploughing_physics_change": false,
+  "base": {
+    "branch": "work/animo-b3i01-canonical-register-append",
+    "head": "383c7a83e84a578969f92113280dc715b7bdddb4"
+  },
+  "identities": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "natural_case": "LWKM_gras_1040.2021.2045"
+  },
+  "evidence_authorities": {
+    "PREP01": {
+      "path": "docs/prep01/ORGANIC_P_REDISTRIBUTION_BALANCE_DEFECT.md",
+      "blob_sha": "f5122fd4182f829fa2806d9c06d5ece485e7f0a5",
+      "use": "causal source asymmetry, natural LWKM activation, physical top-plus-layer closure, top-term-only diagnostic correction"
+    },
+    "PREP02": {
+      "path": "docs/prep02/ORGANIC_P_PLOUGHING_ARRAY_AUDIT.md",
+      "blob_sha": "d262af83bdb930b7919fd2d2044ed063791a8abd",
+      "use": "Class-A top-term-only natural comparison method and output non-interference evidence only; later organic-P findings excluded"
+    },
+    "PREP06": {
+      "path": "integration/animo-prep/PREP06_TRANSFER_LEDGER.csv",
+      "blob_sha": "9caf62061ffbfefd28940b9ac170d6ae12b4d638",
+      "transfer_id": "PLOUGH-DOM",
+      "use": "internal transfer ownership and cancellation identity"
+    },
+    "B3Q01": {
+      "classification_path": "integration/animo-b3/B3_EXISTING_TCD_CLASSIFICATION.csv",
+      "classification_blob_sha": "5cc126298bb7ce04e0dba5b64de07e0a51f50938",
+      "framework_path": "docs/governance/B3_SCIENTIFIC_ADMISSION_FRAMEWORK.md",
+      "framework_blob_sha": "878ec3033eccf11ff278afa76bd6ddc9809fe769",
+      "use": "Class-A contract, atomicity, fail-closed admission gates"
+    },
+    "GOV02": {
+      "branch": "work/animo-gov02-evidence-dag-reconciliation",
+      "head": "db7add6f9561730bbf352aa7fd3f3968405cfaa3",
+      "b2_scope_blob_sha": "7602faf85d425775b7d50c43596c5e13fa5a3421",
+      "prep02r_closure_blob_sha": "75ff02a4de10a395e7a61edf74b896893bba71bb",
+      "use": "claim-scoped B2 route policy and current PREP02R route ineligibility"
+    },
+    "SYNQ01": {
+      "branch": "work/animo-synq01-independent-synthetic-oracles",
+      "head": "842f72300fd03ede0b9024537a7ee6126722a121",
+      "oracle_id": "SYNQ-O002",
+      "oracle_register_blob_sha": "4c215d19844614de8868380fb03f93268ea4c5d8",
+      "independence": "STRONGLY_INDEPENDENT",
+      "use": "closed internal-transfer conservation oracle only, not B2"
+    }
+  },
+  "causal_chain": {
+    "source_loss": {
+      "variable": "Addiorpotoppl(I)",
+      "expression": "Addiorpotoppl(I) = - Sudiorpo",
+      "meaning": "negative loss from separate top-reservoir dissolved organic P during ploughing"
+    },
+    "destination_gain": {
+      "variable": "Addiorpopl(I,Ln)",
+      "meaning": "net pre-to-post dissolved-organic-P store change in each redistributed soil layer"
+    },
+    "physical_identity": "Addiorpotoppl source loss plus the layer Addiorpopl redistribution closes to zero for an encompassing control volume",
+    "current_ledger_omission": "Outbal_calc.for adds Addiorpopl(I,Ln)*Z to Bapo(Redi,Ly) but does not add Addiorpotoppl(I)*Z in the Ln.Eq.0 branch",
+    "proposed_ledger_term": "Bapo(Redi,Ly) = Bapo(Redi,Ly) + Addiorpotoppl(I)*Z"
+  },
+  "natural_LWKM_evidence": {
+    "activation": "PASS",
+    "cumulative_top_loss_kg_ha_P": -0.15380316471773922,
+    "cumulative_layer_gain_kg_ha_P": 0.15380316471773947,
+    "stable_DOP_contribution_kg_ha_P": 0.0,
+    "combined_physical_redistribution_residual_kg_ha_P": 2.5e-16,
+    "legacy_public_ledger_effect_kg_ha_P_approx": 0.154,
+    "top_term_only_normalized_difference_scope": "organic-P balance surfaces only",
+    "ordinary_non_balance_output_difference_after_volatile_normalization": "NONE_OBSERVED"
+  },
+  "class_A_evidence": {
+    "physical_state_trajectory_unchanged": {
+      "status": "PASS_FOR_READINESS",
+      "basis": [
+        "candidate statement writes only Bapo(Redi,Ly) in Outbal_calc.for",
+        "physical Codiorpotop/Codiorpo redistribution is completed earlier in Addit.for",
+        "candidate statement does not mutate Addiorpotoppl or Addiorpopl",
+        "PREP01 changed no model state, process rate, transport calculation or testcase input",
+        "PREP02 top-term-only natural comparison found no normalized ordinary non-balance output difference"
+      ]
+    },
+    "process_flux_trajectory_unchanged": {
+      "status": "PASS_FOR_READINESS",
+      "basis": [
+        "candidate statement is a reporting accumulator addition only",
+        "no transport, reaction, hydrology, crop or management flux is written or recomputed",
+        "PREP01 transport audit separates the large ledger residual from transport nonclosure"
+      ]
+    },
+    "intended_ledger_or_report_only": {
+      "status": "PASS_FOR_READINESS",
+      "basis": "only Bapo redistribution and its derived organic-P balance report fields are whitelisted"
+    },
+    "conservation_identity_restored": {
+      "status": "PASS_FOR_READINESS",
+      "basis": "PREP06 PLOUGH-DOM and SYNQ-O002 require source plus destination cancellation; natural LWKM independently shows physical top-plus-layer closure"
+    },
+    "total_physical_mass_non_interference": {
+      "status": "PASS_FOR_READINESS",
+      "basis": "the candidate changes no physical store or external transfer; measured physical redistribution already closes before the reporting correction"
+    },
+    "non_interference": {
+      "status": "PASS_FOR_READINESS",
+      "basis": "source write-set is Bapo-only and natural top-term comparison confines normalized differences to organic-P balance surfaces"
+    }
+  },
+  "output_whitelist": {
+    "allowed_changed_surfaces": [
+      "Bapo(Redi,Ly) for active TCD-017 top-reservoir ploughing events",
+      "Bapo-derived organic-P balance deviation/report fields",
+      "bapo<balance-label>.Out fields causally derived from the corrected redistribution ledger"
+    ],
+    "must_remain_unchanged": [
+      "all physical states",
+      "all process fluxes",
+      "all non-organic-P balance families",
+      "Bapp",
+      "all ordinary state and process outputs",
+      "Bafop detailed reporting surfaces"
+    ],
+    "unexpected_difference_policy": "FAIL_CLOSED"
+  },
+  "atomic_scope_exclusions": {
+    "is_composition": false,
+    "excluded_tcds": [
+      "TCD-027",
+      "TCD-028"
+    ],
+    "excluded_findings": [
+      "AdStdiorpopl stable-DOP ledger extension",
+      "Adhuexpopl exudate-humus-P ledger extension",
+      "Bafop detailed accumulator correction",
+      "stable-DOM plough accumulator lifecycle correction",
+      "any organic-P physics or numerical-policy change"
+    ]
+  },
+  "gates": {
+    "b0_identity": {
+      "status": "PASS",
+      "justification": "frozen source and testbank identities are explicit"
+    },
+    "atomicity": {
+      "status": "PASS",
+      "justification": "only the Addiorpotoppl-to-Bapo top-reservoir ledger omission is in scope"
+    },
+    "b1_causal_evidence": {
+      "status": "PASS",
+      "justification": "PREP01 natural LWKM causally links the omitted top term to the public organic-P balance residual"
+    },
+    "natural_path_activation": {
+      "status": "PASS",
+      "justification": "LWKM_gras_1040.2021.2045 naturally activates the top-reservoir TCD-017 path"
+    },
+    "closed_conservation_identity": {
+      "status": "PASS",
+      "justification": "PREP06 transfer ownership, natural LWKM closure and SYNQ-O002 agree on source-destination cancellation"
+    },
+    "expected_difference": {
+      "status": "PASS",
+      "justification": "changed and unchanged surfaces are predeclared in TCD017_EXPECTED_DIFFERENCE.json"
+    },
+    "state_non_interference": {
+      "status": "PASS_FOR_READINESS",
+      "justification": "structural write-set proof plus natural top-term-only output comparison"
+    },
+    "process_flux_non_interference": {
+      "status": "PASS_FOR_READINESS",
+      "justification": "reporting-only code path has no process-flux write path and causal evidence isolates the ledger defect"
+    },
+    "total_physical_mass_non_interference": {
+      "status": "PASS_FOR_READINESS",
+      "justification": "physical top-plus-layer redistribution already closes and no physical store is modified by the proposed ledger term"
+    },
+    "output_whitelist": {
+      "status": "PASS",
+      "justification": "only Bapo-derived organic-P balance reporting is allowed to change"
+    },
+    "b2_or_historical_uncertainty_route": {
+      "status": "PENDING_BLOCKED",
+      "justification": "GOV02 reports PREP02R B2 acquisition still active; no qualified B2 exists and historical-uncertainty route eligibility has not been reached"
+    },
+    "independent_second_line_review": {
+      "status": "PENDING",
+      "justification": "SYNQ-O002 is an independent conservation oracle but is not the required second-line B3 admission review"
+    },
+    "admission": {
+      "status": "NOT_ADMITTED",
+      "justification": "route and independent review gates are not satisfied"
+    }
+  },
+  "readiness_decision": {
+    "qualified_for_admission_readiness": true,
+    "admitted": false,
+    "production_correction_authorized": false,
+    "next_required_events": [
+      "valid B3 admission route becomes available under GOV02/PREP02R policy",
+      "independent second-line review verifies the atomic TCD-017 evidence and whitelist"
+    ],
+    "status": "QUALIFIED_TCD017_CLASS_A_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "work_unit": "ANIMO-B3A02",
+  "title": "TCD-017 Organic-P Ploughing Ledger Correction Admission Readiness",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3a02-tcd017-class-a-admission-readiness",
+  "base": {
+    "branch": "work/animo-b3i01-canonical-register-append",
+    "head": "383c7a83e84a578969f92113280dc715b7bdddb4"
+  },
+  "target_tcd": "TCD-017",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "scope": "atomic Addiorpotoppl top-reservoir dissolved-organic-P ploughing loss omission from Bapo redistribution ledger only",
+  "deliverables": [
+    "docs/b3/TCD017_CLASS_A_ADMISSION_READINESS.md",
+    "integration/animo-b3/TCD017_EXPECTED_DIFFERENCE.json",
+    "integration/animo-b3/TCD017_CLASS_A_READINESS.json",
+    "integration/animo-b3/ANIMO-B3A02_STATUS.json"
+  ],
+  "supplementary_deliverables": [
+    "docs/b3/TCD017_SECOND_LINE_REVIEW_HANDOFF.md"
+  ],
+  "required_evidence_result": {
+    "Addiorpotoppl_source_loss": "QUALIFIED",
+    "Addiorpopl_destination_gain": "QUALIFIED",
+    "net_physical_redistribution_zero": "QUALIFIED_ON_NATURAL_LWKM_CONTROL_VOLUME_AND_SYNQ_O002_IDENTITY",
+    "current_ledger_omission": "QUALIFIED",
+    "proposed_ledger_only_accounting_term": "FROZEN_NOT_PATCHED",
+    "state_non_interference": "QUALIFIED_FOR_READINESS",
+    "process_flux_non_interference": "QUALIFIED_FOR_READINESS",
+    "total_physical_mass_non_interference": "QUALIFIED_FOR_READINESS",
+    "output_whitelist": "FROZEN",
+    "natural_LWKM_activation": "QUALIFIED"
+  },
+  "hard_rules": {
+    "physical_state_patch_applied": false,
+    "ploughing_physics_changed": false,
+    "composed_with_TCD_027": false,
+    "composed_with_TCD_028": false,
+    "composed_with_other_organic_P_findings": false,
+    "admission_performed": false
+  },
+  "route": {
+    "normal_B2_available": false,
+    "historical_uncertainty_route_eligible": false,
+    "current_GOV02_PREP02R_state": "B2_ACQUISITION_STILL_ACTIVE",
+    "live_PREP02R": {
+      "branch": "work/animo-prep02r-historical-reference-recovery",
+      "head": "9912001a8848bfdafcaef050d7458136564bc3c6",
+      "status": "PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED",
+      "external_request_sent": false,
+      "project_build_metadata_obtained": true,
+      "native_candidate_executable_obtained": true,
+      "native_candidate_classification": "MODERN_NATIVE_REBUILD_NOT_HISTORICAL_REFERENCE",
+      "native_candidate_sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+      "ruurlo_frozen_input_surface_pinned": true,
+      "windows_native_capture_harness_ready": true,
+      "windows_native_execution_handoff_ready": true,
+      "historical_reference_artifact_obtained": false,
+      "native_candidate_execution_completed": false,
+      "native_reference_run_completed": false,
+      "native_vs_gnu_comparison_completed": false,
+      "reference_qualified": false,
+      "equivalent_reference_build_qualified": false,
+      "build_contract_recovery": "MATERIALLY_STRENGTHENED",
+      "cross_runtime_diagnostic_readiness": "READY_FOR_WINDOWS_EXECUTION",
+      "effect_on_B3A02_route": "NONE_ROUTE_STILL_PENDING_MODERN_NATIVE_REBUILD_AND_CAPTURE_READINESS_CANNOT_SUBSTITUTE_FOR_HISTORICAL_B2"
+    },
+    "gate": "PENDING"
+  },
+  "independent_review": {
+    "SYNQ_O002_independent_conservation_oracle_available": true,
+    "second_line_B3_review_complete": false,
+    "review_handoff_prepared": true,
+    "review_handoff": "docs/b3/TCD017_SECOND_LINE_REVIEW_HANDOFF.md",
+    "review_request_issue_opened": true,
+    "review_request_issue_number": 25,
+    "review_request_title": "ANIMO-B3A02R — Independent second-line review of TCD-017 Class-A readiness",
+    "clean_review_branch_created": true,
+    "clean_review_branch": "review/animo-b3a02r-tcd017-second-line",
+    "clean_review_branch_base": "3ff8f4bda77c631b82110b83317c6a9b42b867ad",
+    "clean_review_branch_has_authoring_changes": false,
+    "frozen_review_object_head": "3ff8f4bda77c631b82110b83317c6a9b42b867ad",
+    "authoring_context_counts_as_independent_review": false,
+    "gate": "PENDING"
+  },
+  "future_cross_runtime_diagnostic_relevance": {
+    "may_strengthen_non_interference_if_executed": true,
+    "may_strengthen_compiler_runtime_corroboration": true,
+    "may_serve_as_historical_B2": false,
+    "may_close_route_gate_by_itself": false,
+    "required_label": "CROSS_RUNTIME_DIAGNOSTIC_NOT_HISTORICAL_REFERENCE"
+  },
+  "execution": {
+    "new_executable_patch": false,
+    "new_physical_simulation": false,
+    "evidence_reconciled_against_frozen_B0_source": true,
+    "natural_runtime_evidence_reused": "PREP01/PREP02 LWKM diagnostic evidence",
+    "synthetic_oracle_reused": "SYNQ-O002",
+    "received_modern_native_candidate_used_as_B2": false,
+    "production_correction_authorized": false
+  },
+  "admission": {
+    "admitted": false,
+    "disposition": "UNRESOLVED_NOT_ADMITTED_ROUTE_AND_REVIEW_PENDING"
+  },
+  "status": "QUALIFIED_TCD017_CLASS_A_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING"
+}
