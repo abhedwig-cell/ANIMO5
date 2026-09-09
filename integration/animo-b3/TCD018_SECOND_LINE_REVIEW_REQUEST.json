@@ -1,0 +1,63 @@
+{
+  "work_unit": "ANIMO-B3A03",
+  "target": "TCD-018",
+  "record_type": "INDEPENDENT_SECOND_LINE_REVIEW_REQUEST",
+  "review_status": "REQUEST_PREPARED_NOT_COMPLETED",
+  "independent_from_correction_authoring_required": true,
+  "admission_effect": "NONE_UNTIL_REVIEW_COMPLETE_AND_ROUTE_VALID",
+  "candidate_readiness_head_before_review_request": "836ae1e6680b2892bf06f8fd3b2241f27604a61a",
+  "review_scope": [
+    "Recheck B0 source and testcase hashes independently.",
+    "Verify exact source seam: Hydro_detailed includes -(Sict-Sic), Outbal_calc has no Sic/Sict interface or storage term, Init lifecycle is unchanged.",
+    "Verify TCD-018 atomicity as a reporting/ledger-interface correction only.",
+    "Verify natural LWKM activation and the 25-period reconciliation without treating 0.0601 mm as a tolerance.",
+    "Verify SYNQ-O003 as an independent control-volume cross-check rather than B2 evidence.",
+    "Verify state and flux non-interference evidence and its limitations.",
+    "Verify the water-only output whitelist and explicitly distinguish it from the combined PREP02 TCD-017/TCD-018 Class-A probe.",
+    "Verify unrelated MASSQ01 water residuals remain visible and outside the TCD-018 claim.",
+    "Recheck live PREP02R/GOV02 route status before any admission decision."
+  ],
+  "required_inputs": [
+    "docs/b3/TCD018_CLASS_A_ADMISSION_READINESS.md",
+    "integration/animo-b3/TCD018_EXPECTED_DIFFERENCE.json",
+    "integration/animo-b3/TCD018_CLASS_A_READINESS.json",
+    "integration/animo-b3/TCD018_SOURCE_SEAM_PIN.json",
+    "integration/animo-prep/PREP01_WATER_INTERCEPTION_STORAGE_SEAM.json",
+    "docs/prep06/CONSERVED_STATE_INVENTORY.csv",
+    "docs/prep06/PROCESS_CONSERVATION_IDENTITIES.md",
+    "integration/animo-mass/MASSLEDGER_RESIDUAL_REGISTER.csv",
+    "integration/animo-synthetic/SYNTHETIC_ORACLE_REGISTER.json",
+    "docs/governance/B3_SCIENTIFIC_ADMISSION_FRAMEWORK.md",
+    "docs/governance/B2_REQUIREMENT_SCOPE.md",
+    "integration/animo-prep/PREP02R_STATUS.json"
+  ],
+  "reviewer_must_record": {
+    "reviewer_or_workunit": "REQUIRED",
+    "independent_from_correction_authoring": true,
+    "reviewed_branch_head": "REQUIRED",
+    "b0_identity_result": "PASS_OR_FAIL",
+    "source_seam_result": "PASS_OR_FAIL",
+    "atomicity_result": "PASS_OR_FAIL",
+    "causal_activation_result": "PASS_OR_FAIL",
+    "conservation_result": "PASS_OR_FAIL",
+    "noninterference_result": "PASS_OR_FAIL",
+    "output_whitelist_result": "PASS_OR_FAIL",
+    "residual_uncertainty_result": "PASS_OR_FAIL",
+    "route_result": "PASS_OR_FAIL",
+    "overall_result": "PASS_OR_FAIL"
+  },
+  "fail_closed_conditions": [
+    "Any physical state or flux difference attributable to the candidate.",
+    "Any need to modify SWAP hydrology or interception physics.",
+    "Any output difference outside the predeclared water-ledger whitelist that is not independently explained and requalified.",
+    "Use of the observed approximately 0.0601 mm residual as an acceptance epsilon.",
+    "Attempt to use SYNQ01 or GNU B1 evidence as B2 historical reference.",
+    "PREP02R still active/blocked while trying to select the historical-uncertainty admission route.",
+    "Reviewer not independent from correction authoring."
+  ],
+  "current_blockers": {
+    "valid_admission_route": false,
+    "second_line_review_complete": false,
+    "tcd018_admitted": false
+  }
+}
