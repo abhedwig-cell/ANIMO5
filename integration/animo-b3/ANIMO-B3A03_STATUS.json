@@ -1,20 +1,69 @@
 {
   "work_unit": "ANIMO-B3A03",
+  "title": "TCD-018 Interception Storage Balance Interface Admission Readiness",
   "target": "TCD-018",
   "class": "A_ACCOUNTING_REPORTING_ONLY",
   "branch": "work/animo-b3a03-tcd018-class-a-admission-readiness",
   "base_branch": "work/animo-rg02-g5-independent-stream-attachment",
   "base_commit": "5c278152eacc33660f1c5870c7d419b8041b20a9",
-  "status": "STARTED_EVIDENCE_RECONCILIATION",
+  "status": "QUALIFIED_TCD018_CLASS_A_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING",
   "persisted": true,
-  "tested": false,
-  "qualified": false,
+  "qualified": true,
   "admitted": false,
+  "production_patch_present": false,
+  "new_runtime_executed_in_this_workunit": false,
+  "qualification_basis": "source-bound evidence plus previously qualified natural B1 diagnostic execution, PREP06 control-volume mapping, MASSQ01 observer evidence, SYNQ01 independent oracle, B3Q01 Class-A contract and GOV02 route policy",
+  "claim": "Existing Sic/Sict interception storage must be observed in the detailed-profile water ledger. The corrected-legacy candidate is reporting-only and must not change hydrology state or flux trajectories.",
+  "readiness_results": {
+    "sic_sict_physical_ownership": "PASS",
+    "begin_end_storage_contribution": "PASS",
+    "detailed_hydrology_closure": "PASS",
+    "bawa_interface_omission": "PASS",
+    "natural_b1_activation": "PASS_LWKM",
+    "synq01_interception_oracle": "PASS_SYNQ_O003_STRONGLY_INDEPENDENT",
+    "accounting_only_observation": "PASS_FOR_READINESS",
+    "hydrology_state_noninterference": "PASS_FOR_READINESS_SECOND_LINE_REVIEW_PENDING",
+    "hydrology_flux_noninterference": "PASS_FOR_READINESS_SECOND_LINE_REVIEW_PENDING",
+    "output_whitelist": "PASS_FOR_READINESS",
+    "no_raw_residual_tolerance": "PASS",
+    "valid_admission_route": "PENDING",
+    "independent_second_line_review": "PENDING"
+  },
+  "route_state": {
+    "prep02r_branch": "work/animo-prep02r-historical-reference-recovery",
+    "prep02r_head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+    "prep02r_status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+    "normal_b2_route_available": false,
+    "historical_uncertainty_route_eligible": false,
+    "external_request_sent": false,
+    "historical_reference_artifact_obtained": false,
+    "reference_qualified": false
+  },
   "hard_constraints": {
     "swap_hydrology_modification": false,
     "water_state_representation_change": false,
+    "physical_state_patch": false,
+    "interception_or_ploughing_physics_change": false,
     "raw_0_0601_mm_used_as_tolerance": false,
+    "unrelated_residual_masking": false,
     "admission_without_valid_route": false,
     "admission_without_second_line_review": false
-  }
+  },
+  "unresolved_visible_evidence": {
+    "massq01_unexplained_water_residual_retained": true,
+    "example": "CranGrass TITO=724: -0.0030198960466805147 mm remains UNEXPLAINED_RESIDUAL",
+    "effect_on_tcd018": "outside atomic TCD-018 claim; prevents any broad global water-closure inference"
+  },
+  "deliverables": {
+    "docs/b3/TCD018_CLASS_A_ADMISSION_READINESS.md": "COMPLETE",
+    "integration/animo-b3/TCD018_EXPECTED_DIFFERENCE.json": "COMPLETE",
+    "integration/animo-b3/TCD018_CLASS_A_READINESS.json": "COMPLETE",
+    "integration/animo-b3/ANIMO-B3A03_STATUS.json": "COMPLETE"
+  },
+  "next_required_conditions": [
+    "PREP02R or another B2 path reaches a GOV02-valid route state",
+    "independent second-line review confirms source identity, natural activation, non-interference and output whitelist",
+    "a separate B3 admission authority records the admission decision fail-closed"
+  ],
+  "final_decision": "QUALIFIED_TCD018_CLASS_A_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING"
 }
