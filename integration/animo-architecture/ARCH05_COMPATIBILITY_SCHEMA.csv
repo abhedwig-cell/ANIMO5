@@ -1,0 +1,32 @@
+field_id,scope,required,value_kind,compatibility_role,rule
+exchange_contract_schema_id,all,YES,string,schema_identity,pins ARCH05 contract schema
+transaction_schema_id,all,YES,string,transaction_identity,pins coupled trial metadata schema
+interval_id,all,YES,string,time_identity,identifies exact proposed interval without defining acceptance policy
+trial_id,all,YES,string,trial_identity,unique for each trial attempt
+t0,all,YES,time,time_identity,exact interval start bound
+t1,all,YES,time,time_identity,exact interval end bound
+physical_layout_id,all,YES,string,physical_compatibility,must match ARCH04 physical layout identity
+geometry_id,all,YES,string,spatial_compatibility,must match layer and domain geometry
+feature_set_id,all,YES,string,configuration_compatibility,must match normalized feature activation identity
+precision_policy_ref,all,YES,string,numerical_compatibility,reference only and ARCH05 defines no precision or tolerance
+producer_model_id,producer_frame,YES,string,provenance,identifies external owner implementation family
+producer_model_version,producer_frame,YES,string,provenance,identifies producer implementation version or qualified build identity
+producer_accepted_snapshot_id,producer_frame,YES,string,state_generation,pins producer accepted t0 generation
+producer_trial_snapshot_id,producer_frame,CONDITIONAL,string,state_generation,required when end state belongs to an unaccepted producer trial
+producer_frame_id,producer_frame,YES,string,immutability_identity,unique immutable frame identity
+hydrology_exchange_schema_id,EX-HYDROLOGY,YES,string,field_unit_shape_identity,must match ARCH04 hydrology exchange schema reference
+hydrology_mode,EX-HYDROLOGY,YES,enum_detailed_aggregated,topology_identity,must match physical layout and required field set
+snow_enabled,EX-HYDROLOGY,YES,boolean,topology_identity,controls snow coordinate presence
+macropore_enabled,EX-HYDROLOGY,YES,boolean,topology_identity,may be true only with compatible admission identity
+macropore_admission_id,EX-HYDROLOGY,CONDITIONAL,string,qualification_identity,required when macropore_enabled=true
+crop_exchange_schema_id,EX-CROP-EXTERNAL,CONDITIONAL,string,field_unit_shape_identity,required when crop_mode=external
+crop_mode,EX-CROP-EXTERNAL,YES,enum_none_animo_external,owner_identity,EX-CROP-EXTERNAL valid only for external mode
+crop_schema_id,EX-CROP-EXTERNAL,CONDITIONAL,string,external_state_identity,required for external crop owner observation contract
+crop_producer_accepted_snapshot_id,EX-CROP-EXTERNAL,CONDITIONAL,string,state_generation,required when crop_mode=external
+crop_producer_trial_snapshot_id,EX-CROP-EXTERNAL,CONDITIONAL,string,state_generation,required when proposed end crop observations are supplied
+animo_accepted_snapshot_id,EX-ORCHESTRATION,YES,string,state_generation,pins ANIMO accepted t0 generation
+animo_trial_result_id,EX-ORCHESTRATION,CONDITIONAL,string,trial_result_identity,required after successful ANIMO trial evaluation before accept or reject
+hydrology_frame_id,EX-ORCHESTRATION,YES,string,binding_identity,pins exact hydrology frame consumed by ANIMO trial
+crop_frame_id,EX-ORCHESTRATION,CONDITIONAL,string,binding_identity,required when crop_mode=external
+configuration_identity,EX-ORCHESTRATION,YES,string,configuration_identity,pins parameter forcing feature and ownership configuration applicable to trial
+commit_group_id,EX-ORCHESTRATION,CONDITIONAL,string,commit_barrier_identity,required only when a coupled accept is actually committed
