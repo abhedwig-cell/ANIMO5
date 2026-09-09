@@ -1,0 +1,120 @@
+{
+  "record_id": "B3D01-TCD017-GOV03-DISPOSITION",
+  "record_version": 1,
+  "tcd_ids": ["TCD-017"],
+  "atomicity": "ATOMIC",
+  "qualification_class": "A",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "disposition": "UNRESOLVED_NOT_ADMITTED",
+  "scope": {
+    "process": "organic-P ploughing redistribution reporting ledger",
+    "code_path": "Outbal_calc.for Bapo(Redi,Ly) redistribution accumulation for Addiorpotoppl(I)",
+    "claimed_change": "add the already-existing top-reservoir dissolved-organic-P ploughing loss Addiorpotoppl(I)*Z to Bapo(Redi,Ly) in the Ln.Eq.0 reporting branch only",
+    "control_volume": "top-reservoir plus redistributed soil-layer dissolved organic P during ploughing"
+  },
+  "identities": {
+    "b0": {
+      "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "testcase_status": "FROZEN_CASE_IDENTIFIED",
+      "testcase_identity": "LWKM_gras_1040.2021.2045 natural activation plus SYNQ-O002 conservation oracle",
+      "documentation_or_theory_identity": "B3A02@1a714eb144e43420ef5b176727e496ff9c46bc6d; PREP06 PLOUGH-DOM; B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+    },
+    "b1": {
+      "status": "DIAGNOSTIC_NOT_REFERENCE",
+      "evidence_identity": "PREP01/PREP02 natural LWKM diagnostic evidence plus B3A02 frozen readiness dossier",
+      "diagnostic_limitations": "B1/source/runtime diagnostics establish causality and non-interference only; they do not establish historical executable behaviour."
+    },
+    "b2": {
+      "status": "UNAVAILABLE_AFTER_DOCUMENTED_ACQUISITION_ATTEMPT",
+      "acquisition_effort_ref": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+    }
+  },
+  "evidence": {
+    "theory": {
+      "status": "PRESENT",
+      "summary": "The accounting identity is an internal source-plus-destination redistribution ledger identity and does not require a physical-state correction.",
+      "refs": ["B3A02@1a714eb144e43420ef5b176727e496ff9c46bc6d", "PREP06 PLOUGH-DOM"]
+    },
+    "causal": {
+      "status": "PRESENT",
+      "summary": "Frozen source shows Addiorpotoppl(I) as the top-reservoir source loss, Addiorpopl(I,Ln) as redistributed layer change, and the Bapo omission is source-demonstrated.",
+      "refs": ["integration/animo-b3/TCD017_CLASS_A_READINESS.json@B3A02"]
+    },
+    "conservation": {
+      "status": "PRESENT",
+      "summary": "Natural LWKM top-plus-layer physical redistribution closes and SYNQ-O002 independently encodes the internal-transfer conservation identity.",
+      "refs": ["B3A02 natural LWKM evidence", "SYNQ-O002", "PREP06 PLOUGH-DOM"]
+    },
+    "expected_difference": {
+      "changed_states": [],
+      "changed_fluxes": [],
+      "changed_ledgers_or_reports": ["Bapo(Redi,Ly) for active TCD-017 events", "derived organic-P balance/report fields"],
+      "unchanged_surfaces": ["all physical states", "all process fluxes", "transport/reaction/hydrology/crop/management trajectories", "non-whitelisted outputs"]
+    },
+    "non_interference": {
+      "status": "PRESENT",
+      "summary": "Candidate write-set is reporting accumulator Bapo only; B3A02 found no intended physical-state or process-flux mutation and no normalized ordinary non-balance output change.",
+      "refs": ["B3A02@1a714eb144e43420ef5b176727e496ff9c46bc6d"]
+    },
+    "coverage": {
+      "natural_case_coverage": "Natural LWKM activates the relevant top-reservoir ploughing path.",
+      "synthetic_case_coverage": "SYNQ-O002 independently covers closed internal-transfer conservation.",
+      "branch_activation_proven": true,
+      "refs": ["B3A02 natural LWKM evidence", "SYNQ-O002"]
+    },
+    "independent_review": {
+      "status": "INCOMPLETE",
+      "reviewer_or_workunit": "GitHub issue #25 and clean branch review/animo-b3a02r-tcd017-second-line",
+      "independent_from_correction_authoring": false,
+      "scope": "genuinely independent second-line review of the frozen B3A02 four-file readiness object",
+      "result": "NOT_REVIEWED"
+    },
+    "historical_uncertainty": {
+      "acquisition_effort_ref": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+      "stopping_rationale": "Direct ANIMO experts and archive holders searched their own archives over several days; no usable historical behavioural reference was recovered beyond source, a problematic executable and source repositories.",
+      "scientific_basis_ref": "B3A02@1a714eb144e43420ef5b176727e496ff9c46bc6d",
+      "independent_cross_check_ref": "SYNQ-O002 conservation oracle",
+      "second_line_review_ref": "PENDING: GitHub issue #25 / review/animo-b3a02r-tcd017-second-line",
+      "uncertainty_statement": "Historical revision-53 behaviour for this correction remains unknown because no qualified B2 behavioural reference exists.",
+      "scope_limitations": "Any later admission may establish only the atomic scientific/accounting correction with inherited historical uncertainty; it may not claim historical fidelity or whole-model equivalence."
+    }
+  },
+  "class_specific_evidence": {
+    "physical_state_trajectory_unchanged": "PASS_FOR_READINESS",
+    "process_flux_trajectory_unchanged": "PASS_FOR_READINESS",
+    "intended_ledger_or_report_only": "PASS_FOR_READINESS",
+    "conservation_or_report_identity_restored": "PASS_FOR_READINESS",
+    "non_interference": "PASS_FOR_READINESS",
+    "source_candidate": "Bapo(Redi,Ly) = Bapo(Redi,Ly) + Addiorpotoppl(I)*Z"
+  },
+  "gates": {
+    "b0_identity": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Frozen source/testbank identities are pinned.", "evidence_refs": ["B3A02", "GOV03"]},
+    "b1_evidence": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Causal diagnostic evidence is present and is not promoted to B2.", "evidence_refs": ["PREP01", "PREP02", "B3A02"]},
+    "b2_route": {"status": "PASS", "applicability": "APPLICABLE", "justification": "GOV03 qualifies B2 unavailability after reasonable acquisition effort and opens the strict historical-uncertainty route.", "evidence_refs": ["ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"]},
+    "theory": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Internal-transfer reporting identity is source/conservation grounded.", "evidence_refs": ["PREP06 PLOUGH-DOM", "B3A02"]},
+    "causal": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Exact omitted ledger term and owner paths are source-demonstrated.", "evidence_refs": ["B3A02"]},
+    "conservation": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Natural and synthetic conservation evidence agree.", "evidence_refs": ["B3A02", "SYNQ-O002"]},
+    "expected_difference": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Expected-difference whitelist is frozen to ledger/report surfaces.", "evidence_refs": ["TCD017_EXPECTED_DIFFERENCE.json@B3A02"]},
+    "non_interference": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Candidate is reporting-only with no physical state/process write path.", "evidence_refs": ["B3A02"]},
+    "coverage": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Natural LWKM path activation plus independent synthetic conservation coverage are present.", "evidence_refs": ["B3A02", "SYNQ-O002"]},
+    "independent_review": {"status": "FAIL", "applicability": "APPLICABLE", "justification": "A genuinely independent second-line reviewer has not yet completed the review; this authoring context cannot count itself.", "evidence_refs": ["GitHub issue #25", "review/animo-b3a02r-tcd017-second-line"]},
+    "residual_uncertainty": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Historical uncertainty is explicitly retained and bounded; no historical-fidelity claim is made.", "evidence_refs": ["GOV03", "this disposition record"]},
+    "class_specific": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Class-A physical non-interference, ledger-only scope and conservation identity are qualified for readiness.", "evidence_refs": ["B3A02"]},
+    "composition_if_applicable": {"status": "PASS", "applicability": "NOT_APPLICABLE", "justification": "This is one atomic TCD-017 claim only.", "evidence_refs": []}
+  },
+  "residual_uncertainty": [
+    "Historical revision-53 behavioural equivalence is unknown because B2 is unavailable.",
+    "Independent second-line B3 review is still pending and blocks admission."
+  ],
+  "composition": {
+    "is_composition": false,
+    "component_record_ids": []
+  },
+  "admission_decision": {
+    "admitted": false,
+    "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03",
+    "decision_scope": "TCD-017 atomic Class-A reporting-ledger correction only",
+    "decision_evidence_ref": "ANIMO-B3D01"
+  }
+}
