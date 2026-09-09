@@ -1,0 +1,40 @@
+{
+  "schema": "animo-prep02r-reference-artifact-receipt-v1",
+  "evidence_class": "RECEIPT_MANIFEST_NOT_REFERENCE_ADMISSION",
+  "captured_at_utc": "2026-09-09T12:59:08Z",
+  "artifact": {
+    "label": "user-supplied animo41 Visual Studio and Intel Fortran project metadata received 2026-09-09",
+    "artifact_class": "project_build_metadata",
+    "container_type": "directory",
+    "claimed_version": "ANIMO 4.1 project",
+    "claimed_revision": null,
+    "provenance_note": "Supplied directly in the ANIMO5 ChatGPT work context. No upstream archive timestamp or chain-of-custody metadata accompanied the files; their intrinsic project configuration is reviewed separately.",
+    "file_count": 2,
+    "total_size": 11062,
+    "sha256": null,
+    "content_set_sha256": "3dc760141d9047d86e07f9490c5e591ac1d6298b3c47882177d8ed9dec53e2b6",
+    "files": [
+      {
+        "relative_path": "animo41.sln",
+        "size": 1233,
+        "sha256": "206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2"
+      },
+      {
+        "relative_path": "animo41.vfproj",
+        "size": 9829,
+        "sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a"
+      }
+    ]
+  },
+  "receipt_checks": {
+    "bytes_hashed_before_execution": true,
+    "expected_sha256_supplied": false,
+    "expected_sha256_matched": null,
+    "artifact_executed_by_this_tool": false,
+    "artifact_copied_by_this_tool": false
+  },
+  "trust_classification": "UNASSESSED_RECEIVED_ARTIFACT",
+  "reference_admitted": false,
+  "native_execution_admitted": false,
+  "note": "Receipt and hashing only. Provenance and lineage must be reviewed before any build-contract or reference-admission decision."
+}
