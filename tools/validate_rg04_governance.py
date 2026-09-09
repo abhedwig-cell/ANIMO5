@@ -12,6 +12,7 @@ DOC = ROOT / "docs" / "governance"
 
 EXPECTED_PREP02R_HEAD = "286205cb58455236ba749d1898c490aca0c50179"
 EXPECTED_PREP02R_STATE = "PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED"
+EXPECTED_UBQ01_HEAD = "18ff8802dbef8e797f1e9b1d52ca81aa4f25c3a9"
 
 EXPECTED_COUNTS = {
     "entries": 25,
@@ -106,6 +107,7 @@ def main() -> None:
     route = queue["route_state"]
     require(route["G6H"] == "PARTIAL_RECOVERY_HISTORICAL_B2_NOT_PASSED", "G6H state mismatch")
     require(route["G6U"] == "NOT_ELIGIBLE_ACQUISITION_NOT_EXHAUSTED", "G6U state mismatch")
+    require(route["PREP02R_head"] == EXPECTED_PREP02R_HEAD, "queue PREP02R authority snapshot is stale")
     require(route["PREP02R_external_request_sent"] is False, "external archival request must remain recorded as unsent")
     require(route["historical_reference_artifact_obtained"] is False, "historical reference must remain absent")
     require(route["modern_native_rebuild_obtained"] is True, "modern native recovery must be recorded")
@@ -121,6 +123,8 @@ def main() -> None:
     require(by_wu["STATEQ02"]["qualified"] == "True", "STATEQ02 executable restricted profile must be recorded qualified")
     require(by_wu["MASSQ02"]["qualified"] == "True", "MASSQ02 readiness must be recorded qualified")
     require(by_wu["UBQ01"]["completed"] == "False", "UBQ01 must remain in progress")
+    require(by_wu["UBQ01"]["qualified"] == "False", "UBQ01 must remain unqualified")
+    require(by_wu["UBQ01"]["authoritative_head"] == EXPECTED_UBQ01_HEAD, "UBQ01 authority snapshot is stale")
     require("NOT_INDEPENDENT" in by_wu["B3A03R"]["evidence_class"], "B3A03R must not be mistaken for independent review")
 
     # Gate matrix must preserve exact current dispositions.
@@ -136,10 +140,11 @@ def main() -> None:
     require(by_gate["B4(profile)"]["state"] == "NOT_ADMITTED", "B4 must remain closed")
     require(by_gate["PRODUCTION"]["state"] == "NOT_ADMITTED", "production must remain closed")
 
-    # Human regie must state the critical non-promotions and latest PREP02R state.
+    # Human regie must state the critical non-promotions and latest authority states.
     require("2026 development rebuild" in regie, "regie must distinguish modern native rebuild from historical oracle")
     require(EXPECTED_PREP02R_HEAD in regie, "regie must pin the latest PREP02R authority")
     require(EXPECTED_PREP02R_STATE in regie, "regie must record Windows-native capture-ready PREP02R state")
+    require(EXPECTED_UBQ01_HEAD in regie, "regie must pin the current UBQ01 evidence head")
     require("833 remaining accepted records" in regie, "STATEQ02 strongest executable witness missing")
     require("unexplained residual count is now zero" in regie, "MASSQ02 residual reconciliation missing")
     require("TCD-042" in regie and "atomization" in regie, "TCD-042 routing missing")
@@ -153,6 +158,7 @@ def main() -> None:
     require(status["canonical_mass_admitted"] is False, "canonical MASS must remain unadmitted")
     require(status["authority_snapshot"]["canonical_tcd_register_tail"] == "TCD-042", "status canonical tail mismatch")
     require(status["authority_snapshot"]["PREP02R"] == EXPECTED_PREP02R_HEAD, "status PREP02R authority snapshot is stale")
+    require(status["authority_snapshot"]["UBQ01"] == EXPECTED_UBQ01_HEAD, "status UBQ01 authority snapshot is stale")
     prep02r = status.get("prep02r")
     require(isinstance(prep02r, dict), "status must contain PREP02R reconciliation block")
     require(prep02r["state"] == EXPECTED_PREP02R_STATE, "status PREP02R state mismatch")
@@ -163,7 +169,7 @@ def main() -> None:
     if status["state"] == "QUALIFIED_LATE_WAVE_STATE_MASS_B2_RECONCILIATION_NO_ADMISSIONS":
         require(status["tested"] is True and status["qualified"] is True and status["work_unit_complete"] is True, "final RG04 status must be tested/qualified/complete")
 
-    print("RG04 validation PASS: 25 queue entries, TCD-042 canonical, PREP02R Windows capture ready, no admissions")
+    print("RG04 validation PASS: 25 queue entries, TCD-042 canonical, PREP02R/UBQ01 authorities current, no admissions")
 
 
 if __name__ == "__main__":
