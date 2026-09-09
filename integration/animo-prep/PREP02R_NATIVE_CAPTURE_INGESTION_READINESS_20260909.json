@@ -1,0 +1,78 @@
+{
+  "work_unit": "ANIMO-PREP02R",
+  "record": "NATIVE_CAPTURE_INGESTION_READINESS_NOT_REFERENCE_ADMISSION",
+  "date": "2026-09-09",
+  "status": "WINDOWS_NATIVE_CAPTURE_AND_FAIL_CLOSED_INGESTION_READY_EXECUTION_NOT_RUN",
+  "candidate": {
+    "executable_sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+    "classification": "MODERN_NATIVE_REBUILD_NOT_HISTORICAL_REFERENCE"
+  },
+  "frozen_input": {
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "ruurlo_case_content_set_sha256": "0f12d19f74e6640b6d17f8f401ac9c294e35ae13064205ed4d1821d6a15c9ac9",
+    "hydrology_sha256": "36d8dbeee7a46c769026c7441ea607160a715768571ba3e048b32ee2ace74d13",
+    "input_pin": "integration/animo-prep/PREP02R_RUURLO_NATIVE_INPUT_PIN_20260909.json"
+  },
+  "capture_harness": {
+    "path": "tools/prep02r_capture_ruurlo_native.ps1",
+    "schema": "animo-prep02r-ruurlo-native-harness-capture-v1",
+    "persisted": true,
+    "genuine_windows_execution_completed": false,
+    "powershell_runtime_test_completed_here": false,
+    "host_independent_content_set_ordering": true,
+    "changed_or_new_files_captured": true,
+    "deleted_files_captured": true,
+    "raw_stdout_stderr_redirected_outside_powershell_pipeline": true,
+    "staged_executable_removed_before_transfer": true,
+    "temporary_full_testbank_extract_removed_before_transfer": true,
+    "transfer_zip_sha256_sidecar_emitted": true
+  },
+  "ingestion_validator": {
+    "path": "tools/prep02r_validate_native_capture.py",
+    "persisted": true,
+    "capture_integrity_recomputed": true,
+    "changed_or_new_delta_recomputed": true,
+    "deleted_delta_recomputed": true,
+    "manifest_repeat_claim_recomputed": true,
+    "forbidden_executable_transfer_checked": true,
+    "reference_admission_claims_fail_closed": true,
+    "declared_volatile_comparator": "tools/compare_legacy_output_trees.py",
+    "scientific_numeric_tolerance_applied": false,
+    "local_mirror_tests": {
+      "performed": true,
+      "passed": 6,
+      "failed": 0,
+      "scope": [
+        "exact repeat",
+        "declared volatile-only repeat",
+        "unlisted changed output",
+        "file deletion recomputation",
+        "forbidden executable transfer",
+        "false raw-repeat declaration"
+      ]
+    },
+    "repository_test_file": "tests/test_prep02r_validate_native_capture.py"
+  },
+  "schema_separation": {
+    "raw_harness_schema": "animo-prep02r-ruurlo-native-harness-capture-v1",
+    "generic_reviewed_native_record_schema": "animo-prep02r-native-run-capture-v2",
+    "generic_template": "integration/animo-prep/PREP02R_NATIVE_RUN_MANIFEST_TEMPLATE.json",
+    "reason": "raw two-run Windows transfer evidence must be validated before constructing any reviewed native-run record"
+  },
+  "admission": {
+    "historical_reference_artifact_obtained": false,
+    "normal_B2_reference_available": false,
+    "historical_uncertainty_route_eligible": false,
+    "reference_qualified": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false
+  },
+  "next": [
+    "execute the capture harness on a genuine Windows x64 environment with the pinned executable and frozen testbank",
+    "return the transfer ZIP and record its SHA-256",
+    "validate capture integrity and repeat determinism",
+    "only after validation compare the ordinary native result against the deterministic GNU Ruurlo diagnostic result",
+    "independently continue historical 4.1.x acquisition/provenance closure"
+  ],
+  "decision": "WINDOWS_NATIVE_CAPTURE_AND_FAIL_CLOSED_INGESTION_READY_EXECUTION_NOT_RUN"
+}
