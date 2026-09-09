@@ -1,0 +1,24 @@
+--- ghgtransport_reference.for
++++ ghgtransport_explicit_context.for
+@@ -15,7 +15,9 @@
+      & Ca,Ca_atm,Flaiib,Flaiio,Flaiou,Flib,Flio,Flou,He,He0old,HeTrns,
+      & K1plant,Mofr,Mofro,Mofrsa,Mofrt,Pmdf1hn,Pmdf2hn,Pn,ReBu0,ReBuAv,
+      & ReBuT,Reki,Reko,St,Te,Tito,Errornumber,
+-     & AvCa,AvCo,AvCs,Co,Co_atm,Cs,DfcfAv,HeAv,RsCo,RsCs)
++     & AvCa,AvCo,AvCs,Co,Co_atm,Cs,DfcfAv,HeAv,RsCo,RsCs,
++     & Ln1,FlTopUns,Co1Old,TrP1,TrP2,TrY1,TrY2,TrY3,TrHv,TrHv2,
++     & TrHvnil,TrAlfBuAv1)
+@@ -60,6 +62,9 @@
+       Real :: Dfcf0,DfcfAir,DfcfAv(0:Manl),DiffusCoef,He0
+       Real :: HeAv(0:Manl),Help1,Help2,HeOld,RsCa(0:Manl),ToDf,ToFl
+       Logical :: FlTopUns
++      Real :: TrP1(0:Manl),TrP2(0:Manl),TrY1(0:Manl),TrY2(0:Manl)
++      Real :: TrY3(0:Manl),TrHv(0:Manl),TrHv2(0:Manl),TrAlfBuAv1
++      Logical :: TrHvnil(0:Manl)
+@@ -157,7 +162,8 @@
+       Call GHGtranssub
+      & (Itask,Ln1,Nl,FlTopUns,Ca_atm,Co,DfcfAv,Flaiib,Flaiio,Flaiou,
+      & Flib,Flio,Flou,He,HeAv,K1plant,Mofr,Mofro,Mofrsa,Mofrt,Reki,Reko,
+-     & ReBu0,ReBuAv,ReBuT,St,  AvCo,RsCo)
++     & ReBu0,ReBuAv,ReBuT,St,TrP1,TrP2,TrY1,TrY2,TrY3,TrHv,TrHv2,
++     & TrHvnil,TrAlfBuAv1,AvCo,RsCo)
