@@ -1,0 +1,38 @@
+{
+  "carrier_id": "B3Q02-TCD042-E1-READINESS-CARRIER",
+  "carrier_version": 1,
+  "carrier_mode": "READINESS_ONLY",
+  "parent_tcd_id": "TCD-042",
+  "atom_id": "TCD-042-E1",
+  "qualification_class": "E",
+  "canonical_routing": {
+    "work_unit": "ANIMO-B3I05",
+    "status_ref": "integration/animo-b3/ANIMO-B3I05_STATUS.json",
+    "atomization_ref": "integration/animo-b3/B3I05_TCD042_ATOMIZATION.json",
+    "parent_is_top_level_tcd": true,
+    "atom_is_top_level_tcd": false
+  },
+  "target_binding": {
+    "target_kind": "CANONICAL_CHILD_ATOM",
+    "parent_role": "TOP_LEVEL_LINEAGE_PARENT_ONLY",
+    "atom_role": "ATOMIC_DISPOSITION_TARGET",
+    "embedded_tcd_ids_role": "LINEAGE_PARENT_IDS_NOT_DISPOSITION_TARGET",
+    "new_top_level_tcd_reserved": false
+  },
+  "route_state": "NO_ADMISSION_ROUTE_CURRENTLY_AVAILABLE",
+  "b3_disposition": null,
+  "admission_effect": {
+    "atom_admitted": false,
+    "parent_admitted": false,
+    "new_top_level_tcd_reserved": false,
+    "canonical_register_append": false,
+    "production_migration_admitted": false
+  },
+  "residual_blockers": [
+    "TCD-042-E1 full routed child domain includes documented/parser-admissible Hetop=0 while NQ03 qualification is Hetop>0 only",
+    "normal B2 route is unavailable",
+    "GOV02 historical-uncertainty route is not eligible while documented acquisition remains active",
+    "independent B3 disposition review has not been performed",
+    "production coefficient evaluation order is not frozen"
+  ]
+}
