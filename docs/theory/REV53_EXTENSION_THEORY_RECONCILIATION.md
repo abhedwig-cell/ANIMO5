@@ -49,7 +49,7 @@ The 4.0 guide and Report-983 lineage establish the principal inherited model arc
 - environmental response functions for aeration/moisture, temperature and pH;
 - water-driven compartment transport and explicit mass-balance reporting.
 
-Revision-53 source retains these concepts. Post-4.0 qualification therefore starts from inheritance, not from an assumption that all revision-53 functionality is new.
+Revision-53 source retains these concepts. Qualification of later or differently labelled extension surfaces therefore starts from inheritance, not from an assumption that all revision-53 functionality is new.
 
 ## 4. Greenhouse gases
 
@@ -140,15 +140,19 @@ Hydrological domain intent is reasonably supported. ANIMO-specific solute proces
 
 ### Reconciliation state
 
-`THEORY_PARTIALLY_RECONSTRUCTED`
+`THEORY_PARTIALLY_RECONSTRUCTED_WITH_VERSION_LABEL_CONFLICT`
 
 ### Provenance
 
-The supplied ANIMO 4.0 guide has one dissolved-organic-matter pool, not a stable/labile split.
+The supplied canonical 2005 ANIMO 4.0 User's Guide has one dissolved-organic-matter pool, not a stable/labile split.
 
-A 2008 WUR SWAP-ANIMO peat study explicitly recommended adding a second dissolved organic matter pool to distinguish labile/fresh and more stable peat-derived organic matter. A later NOBV ANIMO application explicitly describes stable and labile DOM pools, vertical/horizontal transport, and transformation of DOM to humus/biomass. These sources provide independent scientific provenance for the existence and broad intent of the stable-DOM extension.
+A 2008 WUR SWAP-ANIMO peat study explicitly recommended adding a second dissolved organic matter pool to distinguish labile/fresh and more stable peat-derived organic matter. A 2011 BMBF/UFZ report then describes model development starting from ANIMO 3.8, records active participation by Alterra ANIMO developers, and shows a carbon-cycle extension with stable dissolved organic matter and sorbed stable DOM. Its process diagram contains parameter names that strongly overlap revision 53, including `Ratio_rd_st`, `sdofr`, `recfSDO`, `recfHSDO` and `asfaSDO`. The report also states that the modified branch was used by the original ANIMO developers at Alterra/Wageningen.
 
-This chronology is consistent with stable DOM being a post-4.0 feature and with the revision-53 source carrying the implementation. It still does not identify the exact introducing revision.
+This is substantially stronger provenance than a later application description. It independently supports the broad carbon-side stable-DOM state and transformation topology.
+
+However, the 2011 report labels its improved branch `ANIMO Version 4.0`. That conflicts with the supplied 2005 ANIMO 4.0 guide, which predates the 2007-2010 development project and contains no second DOM pool. TH01 therefore classifies the exact release-number relation as `CONFLICTING_EVIDENCE`. The external label is not silently mapped onto the frozen revision-53 lineage.
+
+Later WUR ANIMO application material independently confirms that stable and labile DOM pools became part of ANIMO use, but likewise does not resolve the exact introducing revision.
 
 ### Revision-53 implementation-derived formulation
 
@@ -164,7 +168,7 @@ Observed pathways include:
 - separate stable-DOM sorption through `SocfSDO`;
 - C/N/P co-transport and storage.
 
-Those exact rate equations and parameter meanings are not independently version-qualified and remain `IMPLEMENTATION_DERIVED_NOT_INDEPENDENT_THEORY` below the broad process level.
+The independent 2011 diagram makes the broad carbon topology and several parameter roles reasonably defensible. It does not independently establish the revision-53 N/P generalization, exact rate algebra, temporal integration or parameter calibration. Those parts remain `IMPLEMENTATION_DERIVED_NOT_INDEPENDENT_THEORY`.
 
 ### Theory/code conflict
 
@@ -172,7 +176,7 @@ PREP04 TCD-023 is a direct C/N/P symmetry violation in the stable-DOM decay acco
 
 ### B3 relevance
 
-The broad stable-DOM concept can be scientifically reviewed now, but exact parameter semantics and historical trajectories cannot yet be admitted. TCD-023 remains a corrected-legacy qualification item. B2 remains necessary or must be replaced by the stronger independent-scientific-admission fallback defined by EB01.
+The broad carbon-side stable-DOM concept can be scientifically reviewed with medium-high confidence. Exact release numbering and the N/P extension remain unresolved, and TCD-023 remains a corrected-legacy qualification item. B2 remains necessary or must be replaced by the stronger independent-scientific-admission fallback defined by EB01.
 
 ## 7. Phosphorus sorption and precipitation
 
@@ -255,7 +259,7 @@ Classification:
 | Slow P Freundlich | high | theory-ready; historical behaviour/tolerances still require B2 |
 | Slow P Langmuir | medium-high | blocked by TCD-024 plus missing independent algorithm-level reference |
 | Instantaneous P precipitation | high inherited core | theory-ready for inherited route |
-| Stable DOM | medium-high broad intent, medium exact equations | partial only; TCD-023 and parameter provenance block admission |
+| Stable DOM | medium-high carbon topology, medium-low to medium exact N/P equations | partial only; version-label conflict, TCD-023 and N/P provenance block admission |
 | GHG CH4/N2O | medium broad intent, low-to-medium exact revision equations | partial only; matching theory and testcase lineage required |
 | Macropore nutrient transport | medium hydrological provenance, low-to-medium ANIMO solute theory | partial only; no active testbank evidence |
 | P-class crop forcing | low-to-medium | source-defined only, not B3-ready |
@@ -271,8 +275,8 @@ It does support:
 
 because:
 
-1. the inherited ANIMO 4.0 theory boundary is identifiable;
-2. the major post-4.0 extension surfaces are now separated from inherited theory;
+1. the inherited 2005 ANIMO 4.0 theory boundary is identifiable;
+2. the major revision-53 extension surfaces are separated from that inherited boundary without forcing ambiguous external version labels into the release lineage;
 3. public provenance exists for GHG, stable DOM intent and macropore hydrological architecture;
 4. source-only equations are explicitly labelled non-independent;
 5. known theory/code conflicts are separated from missing-theory gaps;
