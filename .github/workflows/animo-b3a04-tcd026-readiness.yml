@@ -1,0 +1,21 @@
+name: ANIMO-B3A04 TCD-026 readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3a04-tcd026-class-a-readiness
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out full branch history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate persisted TCD-026 readiness evidence
+        run: python tools/b3a04/validate_b3a04.py
