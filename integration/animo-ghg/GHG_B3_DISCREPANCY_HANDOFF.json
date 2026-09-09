@@ -26,6 +26,42 @@
       "recommended_action": "independent source review plus activated-case reproduction before canonical allocation"
     },
     {
+      "key": "GHG01-LCL-CH4-PRODUCTION-COMPONENT-PARTITION",
+      "classification": "SOURCE_CONFIRMED_CH4_PRODUCTION_COMPONENT_PARTITION_NONCLOSURE",
+      "canonical_tcd": null,
+      "root_finding": "revision-53 total CH4 production is scaled by anaerobic fraction A but source-family components divide by the already scaled substrate while retaining unscaled family numerators, giving sum(QPrCH4_i)=QPrCH4/A",
+      "active_ledger_reach": "Rates2 uses QPrCH4Do as an active DOM depletion term",
+      "ghg_miner_interaction": "reactivating GHG_Miner unchanged would propagate the same nonclosing components to the other source-family depletion terms",
+      "zero_substrate_domain_risk": "component allocation can perform 0/0 when A passes the early-return threshold but total substrate is zero",
+      "historical_runtime_magnitude": "REFERENCE_BLOCKED",
+      "recommended_action": "treat separately from the inactive GHG_Miner finding and require source-family production to close exactly to total production in any qualified correction"
+    },
+    {
+      "key": "GHG01-LCL-CH4-FRESH-OM-WEIGHTING-INDEX",
+      "classification": "SOURCE_CONFIRMED_CROSS_FRACTION_INDEX_DEPENDENCE_WRONG_INDEX_CANDIDATE_REFERENCE_UNEXERCISED",
+      "canonical_tcd": null,
+      "root_finding": "Inicalc selects the linear-versus-power FOmCH4Os weighting branch with Recfav(Nf) for every fraction while calculating each weight with Recfav(Fn)",
+      "intended_selector": "UNRESOLVED",
+      "secondary_support": "version-near documentation describes weighting from respective decomposition rates and the same 0.00082 d-1 transition",
+      "correction_admitted": false,
+      "recommended_action": "recover detailed formulation or source history and exercise an activated case with fresh-OM fractions on both sides of the threshold"
+    },
+    {
+      "key": "GHG01-LCL-CH4-PLANT-GROWTH-TEMPERATURE-INDEX",
+      "classification": "SOURCE_CONFIRMED_USE_BEFORE_DEFINITION_IN_ACTIVE_CH4_PLANT_TRANSPORT_PATH_REFERENCE_UNEXERCISED",
+      "canonical_tcd": null,
+      "root_finding": "GHG_Methane executes Te50=Te(Ln) before the first source assignment to local Ln; Te50 determines fGrow used in every root-zone K1plant",
+      "downstream_fluxes": [
+        "plant-mediated CH4 transport through GHGtransport",
+        "QOxCH4Plt",
+        "QEmCH4Plt"
+      ],
+      "intended_temperature_state": "UNRESOLVED",
+      "compiler_storage_can_define_scientific_intent": false,
+      "historical_runtime_magnitude": "REFERENCE_BLOCKED",
+      "recommended_action": "recover intended temperature-state definition and instrument the active path under a qualified build contract before correction"
+    },
+    {
       "key": "GHG01-LCL-GHG-OUTBAL-WORKING-ARRAYS",
       "classification": "SOURCE_CONFIRMED_BALANCE_OBSERVER_INTERFACE_DEFECT",
       "canonical_tcd": null,
@@ -78,10 +114,20 @@
     "detailed_hendriks_report_2054": "PUBLICATION_EXISTENCE_AND_REPORT_NUMBER_LEAD_NOT_FROZEN",
     "public_source_history_search": "NO_PUBLIC_SOURCE_CODE_HIT_RECOVERED_FOR_TARGETED_INTERNAL_SYMBOLS"
   },
+  "ch4_post_closeout_reconciliation": {
+    "production_and_substrate_artifact": "integration/animo-ghg/GHG_CH4_PRODUCTION_AND_SUBSTRATE_RECONCILIATION.json",
+    "plant_transport_artifact": "integration/animo-ghg/GHG_CH4_PLANT_TRANSPORT_INITIALIZATION_AUDIT.json",
+    "component_partition_nonclosure_source_confirmed": true,
+    "fresh_om_weighting_index_intent_resolved": false,
+    "plant_growth_temperature_use_before_definition_source_confirmed": true,
+    "historical_behaviour_established": false
+  },
   "activated_case_minimum_evidence": [
     "GHGasses task 1 and task 2 reachability",
     "CH4 and N2O start/end gas system storage",
-    "all CH4 production source-family contributions and corresponding source-pool changes",
+    "QPrCH4 total plus all CH4 source-family components, their sum, Rdfaox and corresponding source-pool changes under partial anaerobiosis",
+    "fresh-OM fractions on both sides of the 0.00082 d-1 weighting threshold where possible",
+    "first-read Ln, Te50, fGrow, K1plant, QOxCH4Plt and QEmCH4Plt",
     "CH4 oxidation and all emission mechanisms",
     "N2O nitrification production, denitrification production, reduction and emission",
     "ordinary C/N balances plus GHG observer terms",
@@ -97,7 +143,10 @@
   "b3_blockers": [
     "TCD-008_REMAINING_RELEASE_SPECIFIC_GHG_EQUATION_PARAMETER_AUTHORITY",
     "TCD-013_MATCHING_HISTORICAL_GHG_INPUT_LINEAGE",
-    "GHG01_SOURCE_CONFIRMED_CONSERVATION_PATH_AND_OBSERVER_FINDINGS",
+    "GHG01_CH4_SOURCE_POOL_TRANSFER_AND_COMPONENT_PARTITION_NONCLOSURE",
+    "GHG01_CH4_FRESH_OM_WEIGHTING_INDEX_INTENT_UNRESOLVED",
+    "GHG01_CH4_PLANT_GROWTH_TEMPERATURE_USE_BEFORE_DEFINITION",
+    "GHG01_SOURCE_CONFIRMED_BALANCE_OBSERVER_AND_CONTROL_VOLUME_FINDINGS",
     "GHG01_N2O_DOCUMENT_SOURCE_EQUATION_CONFLICTS",
     "QUALIFIED_HISTORICAL_REFERENCE_RUNNER_OR_EQUIVALENT_ORACLE"
   ]
