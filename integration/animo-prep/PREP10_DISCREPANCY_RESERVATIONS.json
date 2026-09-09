@@ -11,9 +11,19 @@
         "docs/prep10/MACROPORE_SOLUTE_RESTART_WRITER_OMISSION.md",
         "integration/animo-prep/PREP10_MACROPORE_RESTART_WRITER_OMISSION.json"
       ]
+    },
+    {
+      "id": "TCD-033",
+      "finding": "nonzero actual plant uptake restart state is not transferred from Rsampl*_act to Ampl*_act during Inicalc initialization",
+      "classification": "RESERVED_CAUSAL_RESTART_PROBE_PENDING"
+    },
+    {
+      "id": "TCD-034",
+      "finding": "cumulative potential plant uptake state is carried between normal timesteps but absent from orgpla restart read/write contract",
+      "classification": "RESERVED_CAUSAL_RESTART_PROBE_PENDING"
     }
   ],
-  "central_register_updated_for_TCD032": false,
+  "central_register_updated_for_TCD032_TCD033_TCD034": false,
   "reservation_rule": "new PREP10 findings must use the next unreserved canonical identifier; sibling branch-local IDs are not canonical until reconciled",
   "production_migration_admitted": false
 }
