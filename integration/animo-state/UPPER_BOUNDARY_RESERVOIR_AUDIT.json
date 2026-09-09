@@ -1,0 +1,87 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "artifact": "upper-boundary reservoir continuation source audit",
+  "profile": "CORE_CNP_SUBSURFACE_ONLY",
+  "status": "SOURCE_QUALIFIED_ACCEPTED_BOUNDARY_OWNER_AND_TRANSPORT_FEED_RC_R12_EXECUTION_OPEN",
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "production_code": false,
+  "physics_change": false,
+  "canonical_state_admission": "NOT_ADMITTED",
+  "owner_model": {
+    "accepted_boundary_owner_coordinates": [
+      "Rsconhtop",
+      "Rsconitop",
+      "Rscodiormatop",
+      "Rscodiornitop",
+      "Rscopotop if Ipo=1",
+      "Rscodiorpotop if Ipo=1"
+    ],
+    "next_interval_start_aliases": [
+      "Conhtop",
+      "Conitop",
+      "Codiormatop",
+      "Codiornitop",
+      "Copotop if Ipo=1",
+      "Codiorpotop if Ipo=1"
+    ],
+    "interval_derived_nonowners": [
+      "Avconhtop",
+      "Avconitop",
+      "Avcodiormatop",
+      "Avcodiornitop",
+      "Avcopotop if Ipo=1",
+      "Avcodiorpotop if Ipo=1"
+    ],
+    "immutable_geometry_dependency": "Hetop",
+    "physical_amount_relation": "upper-boundary material amount = concentration * Hetop"
+  },
+  "source_evidence": {
+    "timestep_lifecycle_call": "Animo.for:262-295 calls Init before current-step hydrology/process execution",
+    "end_to_start_copy": "Init.for:322-337 copies Rs*top to Con*top and clears Rs*top except first timestep",
+    "initial_input": [
+      "input1.for:3197-3218 NH4/NO3 top concentrations",
+      "input1.for:3263-3286 DOM/DON top concentrations",
+      "input1.for:3321-3325 or 3367-3376 PO4 top concentration depending Inpo",
+      "input1.for:3390-3394 DOP top concentration"
+    ],
+    "restart_writer": [
+      "Output_Init.for:82-87 Rsconhtop/Rsconitop",
+      "Output_Init.for:102-105 Rscodiormatop/Rscodiornitop",
+      "Output_Init.for:121-134 Rscopotop/Rscodiorpotop when P active"
+    ],
+    "geometry": "input1.for:1819-1829 reads Hetop from profile geometry",
+    "end_storage_balances": [
+      "Outbal_calc.for:688-699 DOM top end state",
+      "Outbal_calc.for:1173-1179 NH4/NO3/DON top end states",
+      "Outbal_calc.for:1585-1590 PO4/DOP top end states"
+    ],
+    "management_before_boundary_update": "Animo.for:456-490 calls Addit before UBoundconc at 499-518",
+    "management_top_additions": "Addit.for:342-372 routes dissolved additions to Con*top when legacy surface threshold route is not ponded",
+    "ploughing_emptying": "Addit.for:448-470 includes top reservoir in mixed amount and Addit.for:691-697 empties all top reservoirs",
+    "restricted_update": "UBoundconc.for:110-150 computes Rs*top end concentrations and Av*top interval averages when Flpn=0",
+    "zero_flux_exact_branch": "UBoundconc.for:113-124 sets A1=B1=1 and A2=B2=0 for Flux<1e-8",
+    "generic_transport_top_boundary": "TRANSPORT.FOR:129-131 sets K1=1-Flpn and Cob(K1)=Cotop",
+    "nh4_feed": "Animo.for:810-823 passes Avconhtop into Transport",
+    "no3_feed": "Animo.for:846-859 passes Avconitop into Transport",
+    "dom_don_dop_feed": "Animo.for:736-756 -> Transca.for:97-120,151-174,185-208 passes Avcodiormatop/Avcodiornitop/Avcodiorpotop into Transport",
+    "po4_feed": "Animo.for:887-903 passes Avcopotop into Transgen; Transgen.for:212-215 sets Cob(1-Flpn)=Avcopotop"
+  },
+  "restricted_core_consequences": {
+    "flpn_zero_first_active_compartment": 1,
+    "upper_boundary_reservoir_is_core": true,
+    "management_only_optional_feature": false,
+    "checkpoint_both_con_and_rs_as_independent_owners": false,
+    "checkpoint_avtop": false,
+    "restore_alias_from_accepted_owner_before_mutation": true,
+    "preserve_management_ordering": true
+  },
+  "rc_r12": {
+    "source_owner_qualified": true,
+    "source_transport_feed_qualified": true,
+    "source_restart_mapping_qualified": true,
+    "synthetic_exact_wiring_sentinel_run": false,
+    "real_profile_split_run_qualified": false,
+    "full_nonzero_flux_comparison_policy": "USE_ADMITTED_NUMERICAL_POLICY_DO_NOT_INVENT_LOCAL_TOLERANCE"
+  },
+  "next": "persist and execute an exact no-flux nonzero-reservoir synthetic wiring sentinel; keep full nonzero-flux split equivalence open"
+}
