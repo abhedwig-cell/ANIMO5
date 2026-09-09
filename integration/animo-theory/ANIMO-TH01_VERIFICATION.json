@@ -1,12 +1,12 @@
 {
   "work_unit": "ANIMO-TH01",
   "verification_type": "DOCUMENTARY_SCOPE_AND_MACHINE_REGISTER_VERIFICATION",
-  "candidate_head": "a8e9ab0dfc100b8de4c3fcf1d6209075ac49bf0d",
+  "candidate_head": "b439867016e1da78efefd7f256c3a558d4c57665",
   "base_head": "52411b9d2d6d80717914bc6642544290a54ded21",
   "compare_status": "ahead",
-  "ahead_by": 11,
+  "ahead_by": 15,
   "behind_by": 0,
-  "changed_files_before_verification_artifact": 10,
+  "changed_files_before_verification_artifact": 11,
   "scope_check": {
     "only_docs_quality_docs_theory_and_integration_animo_theory_changed": true,
     "legacy_source_paths_changed": false,
@@ -46,7 +46,9 @@
       "P-class-dependent crop forcing",
       "sulphate parser surface",
       "soil-temperature input option"
-    ]
+    ],
+    "stable_dom_version_label_conflict_explicit": true,
+    "slow_langmuir_inherited_option_semantics_explicit": true
   },
   "qualification_documents_present": [
     "docs/theory/REV53_EXTENSION_THEORY_RECONCILIATION.md",
@@ -61,12 +63,16 @@
     "synced_from_qualified_PREP06_register": true,
     "synced_through": "TCD-027",
     "new_defect_tcd_added_by_th01": false,
-    "existing_tcd_closed_by_th01": false
+    "existing_tcd_closed_by_th01": false,
+    "strengthened_theory_context_recorded_in": "docs/theory/THEORY_CODE_DISCREPANCY_RECONCILIATION.md"
   },
   "hard_rule_check": {
     "undocumented_code_behavior_promoted_to_intended_theory": false,
     "source_only_equations_labelled_implementation_derived": true,
     "public_sources_coupled_to_rev53_only_with_explicit_provenance_limits": true,
+    "conflicting_external_version_label_treated_as_conflicting_evidence": true,
+    "scientific_tolerances_invented": false,
+    "corrected_legacy_patch_applied": false,
     "production_migration_admitted": false
   },
   "result": "PASS"
