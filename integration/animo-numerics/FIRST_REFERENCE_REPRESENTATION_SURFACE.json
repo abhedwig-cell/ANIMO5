@@ -1,0 +1,140 @@
+{
+  "work_unit": "ANIMO-NQ01",
+  "title": "First independent reference representation comparison surface",
+  "status": "PREDEFINED_REPRESENTATION_SUBJECTS_AWAITING_B2",
+  "preferred_first_case": "RuurloGrass",
+  "selection_policy": {
+    "select_after_seeing_b2_difference": false,
+    "compare_only_when_jointly_observable": true,
+    "omitted_predefined_subject_requires_observability_rationale": true,
+    "empty_representation_comparison_allowed": false,
+    "representation_difference_auto_accepted": false,
+    "normalization_defined_here": false,
+    "numerical_tolerance_defined_here": false
+  },
+  "subjects": [
+    {
+      "domain": "file_path_compatibility",
+      "subject": "working_directory_layout",
+      "priority": "CORE",
+      "required_when_jointly_observable": true,
+      "evidence": "native and B1 run manifests"
+    },
+    {
+      "domain": "file_path_compatibility",
+      "subject": "input_tree_relative_paths",
+      "priority": "CORE",
+      "required_when_jointly_observable": true,
+      "evidence": "frozen staged input-tree manifests"
+    },
+    {
+      "domain": "file_path_compatibility",
+      "subject": "path_staging_or_drive_mapping",
+      "priority": "CORE",
+      "required_when_jointly_observable": true,
+      "evidence": "PREP02R native run manifest and B1 compatibility manifest"
+    },
+    {
+      "domain": "file_path_compatibility",
+      "subject": "filesystem_case_semantics",
+      "priority": "CONTEXT",
+      "required_when_jointly_observable": true,
+      "evidence": "execution environment identity"
+    },
+    {
+      "domain": "formatting",
+      "subject": "text_encoding_or_code_page",
+      "priority": "CORE",
+      "required_when_jointly_observable": true,
+      "evidence": "runtime environment and raw output bytes"
+    },
+    {
+      "domain": "formatting",
+      "subject": "line_ending_convention",
+      "priority": "CORE",
+      "required_when_jointly_observable": true,
+      "evidence": "raw formatted output bytes"
+    },
+    {
+      "domain": "formatting",
+      "subject": "floating_exponent_representation",
+      "priority": "SCIENTIFIC_REPORT_CONTEXT",
+      "required_when_jointly_observable": true,
+      "evidence": "formatted scientific report tokens"
+    },
+    {
+      "domain": "formatting",
+      "subject": "declared_volatile_metadata_surface",
+      "priority": "CORE",
+      "required_when_jointly_observable": true,
+      "evidence": "raw-tree comparator volatile normalization inventory"
+    },
+    {
+      "domain": "binary_record_representation",
+      "subject": "hydrology_record_marker_convention",
+      "priority": "CORE_IF_UNFORMATTED_EXCHANGE_USED",
+      "required_when_jointly_observable": true,
+      "evidence": "hydrology file inspection and runtime read contract"
+    },
+    {
+      "domain": "binary_record_representation",
+      "subject": "hydrology_byte_order",
+      "priority": "CORE_IF_UNFORMATTED_EXCHANGE_USED",
+      "required_when_jointly_observable": true,
+      "evidence": "hydrology file representation characterization"
+    },
+    {
+      "domain": "binary_record_representation",
+      "subject": "hydrology_payload_real_kind",
+      "priority": "CORE_IF_UNFORMATTED_EXCHANGE_USED",
+      "required_when_jointly_observable": true,
+      "evidence": "source-bound REAL(4) staging evidence and native/B1 runtime characterization"
+    },
+    {
+      "domain": "precision_representation",
+      "subject": "internal_default_real_kind",
+      "priority": "CORE",
+      "required_when_jointly_observable": true,
+      "evidence": "historical build metadata or observer/runtime characterization; B1 compiler contract"
+    },
+    {
+      "domain": "precision_representation",
+      "subject": "explicit_real4_exchange_boundary",
+      "priority": "CORE",
+      "required_when_jointly_observable": true,
+      "evidence": "source-bound Dble_trunc and hydrology staging evidence plus runtime characterization"
+    },
+    {
+      "domain": "precision_representation",
+      "subject": "floating_point_compiler_model",
+      "priority": "CONTEXT",
+      "required_when_jointly_observable": true,
+      "evidence": "historical compiler flags/build metadata and B1 compiler flags"
+    },
+    {
+      "domain": "precision_representation",
+      "subject": "structured_capture_serialization",
+      "priority": "CORE_IF_OBSERVER_USED",
+      "required_when_jointly_observable": true,
+      "evidence": "REFERENCE_CAPTURE_SCHEMA precision and value encoding metadata"
+    }
+  ],
+  "omission_contract": {
+    "allowed_reason_classes": [
+      "NOT_APPLICABLE_TO_CASE",
+      "NOT_JOINTLY_OBSERVABLE",
+      "OBSERVER_NOT_ADMITTED",
+      "HISTORICAL_BUILD_METADATA_UNAVAILABLE"
+    ],
+    "omission_is_equivalence_evidence": false,
+    "omission_may_require_later_reference_work": true
+  },
+  "not_admitted": [
+    "automatic representation normalization",
+    "scientific numerical tolerance",
+    "B2 qualification",
+    "numerical equivalence",
+    "B3 admission",
+    "production migration"
+  ]
+}
