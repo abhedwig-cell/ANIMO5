@@ -1,0 +1,29 @@
+{
+  "work_unit": "ANIMO-UBQ03",
+  "title": "HETOP Zero-Thickness Upper-Reservoir Domain and Runtime Semantics Characterization",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-ubq03-hetop-zero-thickness-semantics",
+  "status": "IN_PROGRESS_PERSISTED_VALIDATION_PENDING",
+  "base": {
+    "work_unit": "ANIMO-B3Q02",
+    "head": "1db63b17cb5f48cbd8ae28116a2e716b4bdaadf3"
+  },
+  "target": "HETOP=0 parser/documentation domain relevant to TCD-042-B1 and TCD-042-E1",
+  "scope_guards": {
+    "production_source_modified": false,
+    "input_validation_modified": false,
+    "canonical_tcd_register_modified": false,
+    "new_tcd_reserved": false,
+    "TCD042_B1_admitted": false,
+    "TCD042_E1_admitted": false,
+    "parent_TCD042_admitted": false,
+    "numerical_policy_widened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  }
+}
