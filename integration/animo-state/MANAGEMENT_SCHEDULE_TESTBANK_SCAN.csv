@@ -1,0 +1,2 @@
+scope,files_scanned,files_with_addition_schedule,all_labels_start_at_1,all_labels_unique,all_labels_contiguous,qualification_boundary
+supplied_ANIMO_testbank,11,11,true,true,true,"supports normalized explicit event identity for supplied corpus only; arbitrary external files still require parser validation"
