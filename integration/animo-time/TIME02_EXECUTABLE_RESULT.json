@@ -1,0 +1,11 @@
+{
+  "work_unit": "ANIMO-TIME02",
+  "result": "PENDING_GITHUB_ACTIONS_EXECUTION",
+  "validator": "tools/validate_time02_vectors.py",
+  "vector_file": "integration/animo-time/TIME02_TEST_VECTORS.json",
+  "workflow": ".github/workflows/time02-exact-time.yml",
+  "comparison_mode": "EXACT_INTEGER_RATIONAL_NO_FLOAT_TOLERANCE",
+  "evidence_class": "SYNTHETIC_EXECUTABLE_CONTRACT_NON_B2",
+  "b2_evidence": false,
+  "canonical_time_admitted": false
+}
