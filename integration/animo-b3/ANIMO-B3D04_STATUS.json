@@ -1,0 +1,72 @@
+{
+  "work_unit": "ANIMO-B3D04",
+  "title": "TCD-024 B3 Admission Closeout Under GOV03 Historical-Uncertainty Route",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d04-tcd024-admission-closeout",
+  "base": {
+    "work_unit": "ANIMO-B3D03",
+    "head": "a3e194573b3a7ce95d5ef15fc179ddb3a613d8a6",
+    "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03"
+  },
+  "review_authority": {
+    "work_unit": "ANIMO-B3B03R",
+    "head": "b36aedb4406c3f92d6ee7cd2fa4231ed872620ec",
+    "result": "PASS",
+    "workflow_run": 34396595546,
+    "issue": 26,
+    "issue_result_comment": 5607701626,
+    "independence_scope": "SEPARATE_CHATGPT_CONTEXT_ONLY_NO_ORGANIZATIONAL_OR_HUMAN_INDEPENDENCE_CLAIM"
+  },
+  "target_tcd": "TCD-024",
+  "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "state": "IN_PROGRESS_PERSISTED_ADMISSION_RECORD_VALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "intended_final_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "admission": {
+    "scientific_b3_admission_intended": true,
+    "historical_behaviour_status": "UNKNOWN",
+    "historical_prevalence": "UNKNOWN",
+    "historical_fidelity_claimed": false,
+    "natural_positive_Optcxsl2_activation_in_frozen_testbank": false,
+    "whole_model_equivalence_claimed": false,
+    "b4_admitted": false,
+    "production_patch_authorized": false,
+    "production_migration_admitted": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_source_modified": false,
+    "frozen_testbank_modified": false,
+    "canonical_tcd_register_modified": false,
+    "TCD019_composed": false,
+    "solver_tolerance_modified": false,
+    "composition_admitted": false,
+    "historical_b2_fabricated": false,
+    "rebuild_promoted_to_b2": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "validation": {
+    "validator": "tools/validate_b3d04_tcd024_admission.py",
+    "workflow": ".github/workflows/animo-b3d04-tcd024-admission.yml",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_job_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "deliverables": [
+    "integration/animo-b3/TCD024_B3_ADMISSION_CLOSEOUT.json",
+    "integration/animo-b3/ANIMO-B3D04_STATUS.json",
+    "docs/b3/TCD024_B3_ADMISSION_CLOSEOUT.md",
+    "tools/validate_b3d04_tcd024_admission.py",
+    ".github/workflows/animo-b3d04-tcd024-admission.yml"
+  ]
+}
