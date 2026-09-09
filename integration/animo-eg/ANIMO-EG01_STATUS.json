@@ -5,7 +5,7 @@
   "branch": "work/animo-eg01-controlled-b0-retention",
   "parent_branch": "work/animo-rg01-baseline-stabilization",
   "parent_sha": "662bca8aff40f4dca1f6ccdde6bef6274c6bede2",
-  "evaluated_candidate_head_before_status_record": "4bffedb571959a68b08bed7ef93c6b5d43a581b9",
+  "evaluated_candidate_head_before_status_record": "789a0cddc6ec0c026bf6a1359710637504db0078",
   "decision": "QUALIFIED_B0_RETENTION_CONTRACT_IMPLEMENTATION_PENDING_EXTERNAL_CONTROLLED_STORAGE",
   "implemented": true,
   "persisted": true,
@@ -93,7 +93,16 @@
       "placeholder approval reference fails"
     ],
     "github_actions_workflow_added": true,
-    "github_actions_workflow_run_observed_at_status_update": false,
+    "github_actions_workflow_run_observed_at_status_update": true,
+    "github_actions_workflow_run_id": 34301118338,
+    "github_actions_workflow_head": "789a0cddc6ec0c026bf6a1359710637504db0078",
+    "github_actions_workflow_conclusion": "success",
+    "github_actions_job_id": 102308027697,
+    "github_actions_successful_steps": [
+      "Validate public JSON syntax",
+      "Run semantic gate tests",
+      "Confirm pending template fails closed"
+    ],
     "storage_proof_schema_external_positive_proof_not_available": true,
     "raw_zip_or_pdf_added_to_public_git": false,
     "legacy_source_changed": false,
@@ -101,7 +110,7 @@
     "documentation_bytes_changed": false,
     "runtime_or_scientific_execution_tested": false,
     "controlled_storage_restore_tested": false,
-    "testing_scope_note": "TESTED means cryptographic identity revalidation of the supplied bytes, JSON/run-lineage contract checks, and six fail-closed semantic proof-gate unit tests executed in the authoring environment. No GitHub Actions run was observed at this status update. Synthetic unit-test proof references are explicitly not real storage evidence. No historical ANIMO execution, scientific reference qualification or controlled-storage restore testing is claimed."
+    "testing_scope_note": "TESTED means cryptographic identity revalidation of the supplied bytes, JSON/run-lineage contract checks, six fail-closed semantic proof-gate unit tests, and successful GitHub Actions run 34301118338 confirming JSON syntax, semantic gate tests and fail-closed handling of the pending proof template. Synthetic unit-test proof references are explicitly not real storage evidence. No historical ANIMO execution, scientific reference qualification or controlled-storage restore testing is claimed."
   },
   "external_implementation_pending": {
     "required": true,
