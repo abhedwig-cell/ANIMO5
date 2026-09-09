@@ -1,0 +1,18 @@
+{
+  "work_unit": "ANIMO-B3I01",
+  "followup": "CANONICAL_REGISTER_APPEND",
+  "branch": "work/animo-b3i01-canonical-register-append",
+  "issue": 17,
+  "status": "IN_PROGRESS_FAIL_CLOSED_REGISTER_APPEND",
+  "base_head": "7b2be9d9742aaad78128c0531591d8e38d7e8450",
+  "reserved_ids": ["TCD-028","TCD-029","TCD-030","TCD-031","TCD-032","TCD-033","TCD-034","TCD-035","TCD-036","TCD-037"],
+  "invariants": {
+    "existing_rows_001_027_semantically_unchanged": true,
+    "child_atoms_not_top_level_rows": true,
+    "b3_admission": false,
+    "production_code_modified": false,
+    "source_correction": false
+  },
+  "tested": false,
+  "qualified": false
+}
