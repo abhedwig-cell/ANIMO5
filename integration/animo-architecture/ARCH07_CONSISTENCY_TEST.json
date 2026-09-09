@@ -1,0 +1,59 @@
+{
+  "work_unit": "ANIMO-ARCH07",
+  "test_id": "ARCH07-ADAPTER-QUALIFICATION-SPEC-STRUCTURAL-AUDIT",
+  "date": "2026-09-09",
+  "result": "PASS",
+  "method": "tools/audit_arch07_adapter_qualification_spec.py executed from GitHub Actions repository checkout against ARCH05 field/rule contracts and exact ARCH07 coverage registries",
+  "github_actions": {
+    "run_id": 34306484108,
+    "tested_head": "fef6043b0e2a84a640049f82cd03de26b5c3ff2b",
+    "conclusion": "success"
+  },
+  "registry_blobs": {
+    "test_cases": "f60fc4ee988d30251b17be53293f44b309074cc4",
+    "field_coverage": "c5bf8378edcb8ea42133c4465b71c5a0c91a05de",
+    "transaction_rule_coverage": "d8e6e601eb5d22ee0b10a5564b7036659bfa7f66"
+  },
+  "counts": {
+    "arch05_exchange_fields": 42,
+    "arch05_transaction_rules": 18,
+    "arch07_test_cases": 41,
+    "field_coverage_rows": 42,
+    "transaction_rule_coverage_rows": 18,
+    "hydrology_cases": 16,
+    "crop_cases": 12,
+    "coupled_transaction_cases": 9,
+    "identity_cases": 4
+  },
+  "checks": {
+    "arch05_exchange_field_coverage_exact": true,
+    "arch05_transaction_rule_coverage_exact": true,
+    "test_ids_unique_and_exact": true,
+    "all_field_test_references_resolve": true,
+    "all_rule_test_references_resolve": true,
+    "required_fail_closed_categories_present": true,
+    "runtime_evidence_tiers_not_misreported_as_structural": true,
+    "deferred_reference_and_scientific_cases_remain_deferred": true,
+    "tcd018_interception_fields_have_direct_ledger_projection_case": true,
+    "all_five_macropore_fields_remain_tcd025_blocked": true,
+    "crop_realized_uptake_has_typed_event_link_cases": true,
+    "crop_residue_has_explicit_bundle_and_no_delta_inference_pair": true,
+    "crop_export_has_explicit_bundle_case": true,
+    "rollback_retry_checkpoint_and_precision_rules_are_covered": true,
+    "no_numeric_tolerance_literal_is_defined_in_test_matrix": true
+  },
+  "not_executed": [
+    "any production hydrology adapter",
+    "any production external crop adapter",
+    "coupled reject or commit runtime",
+    "split-run restart equivalence",
+    "rollback replay equivalence",
+    "active macropore case",
+    "historical/reference comparison",
+    "numerical tolerance qualification"
+  ],
+  "specification_qualified": true,
+  "adapter_qualified": false,
+  "reference_evidence": false,
+  "production_evidence": false
+}
