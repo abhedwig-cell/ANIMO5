@@ -5,24 +5,171 @@
   "branch": "work/animo-mp01-macropore-qualification",
   "base_branch": "work/animo-th02-rev41-lineage-recovery",
   "base_head": "f7f3722b14f65340dc6d67a8f80d74f5d0ebb158",
-  "status": "IN_PROGRESS_SOURCE_THEORY_AND_DIAGNOSTIC_PATH_QUALIFICATION",
+  "verification_head_before_status_closeout": "1b3e0e578b88a2990efaabb5299eb78e9e578e2b",
+  "status": "QUALIFIED_MACROPORE_SOURCE_THEORY_AND_DIAGNOSTIC_PATH_EVIDENCE_HISTORICAL_REFERENCE_OPEN",
+  "decision": "QUALIFIED_MACROPORE_SOURCE_THEORY_AND_DIAGNOSTIC_PATH_EVIDENCE_HISTORICAL_REFERENCE_OPEN",
+  "implemented": true,
   "persisted": true,
-  "tested": false,
-  "qualified": false,
-  "production_migration_admitted": false,
+  "tested": true,
+  "qualified": true,
+  "work_unit_complete": true,
+  "blocked": true,
+  "historical_reference_qualified": false,
+  "b2_historically_referenced": false,
+  "b3_ready": false,
   "b3_admitted": false,
+  "production_migration_admitted": false,
+  "legacy_source_modified": false,
+  "testcase_modified": false,
+  "production_code_modified": false,
+  "physics_change": false,
+  "numerical_policy_change": false,
   "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
   "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
   "upstream_evidence_pins": {
-    "TH01": "a3360415364ef4a66a81d7b6715bcd400829df1b",
-    "TH02": "f7f3722b14f65340dc6d67a8f80d74f5d0ebb158",
-    "PREP06": "9b1f1ea51c24fb82823290193651830dc61ea3c8",
-    "TQ01": "5c43ee16df37a0a1357614fdec527f25e5ca8c16"
+    "TH01": {
+      "branch": "work/animo-th01-rev53-theory-provenance",
+      "head": "a3360415364ef4a66a81d7b6715bcd400829df1b"
+    },
+    "TH02": {
+      "branch": "work/animo-th02-rev41-lineage-recovery",
+      "head": "f7f3722b14f65340dc6d67a8f80d74f5d0ebb158"
+    },
+    "PREP06": {
+      "branch": "work/animo-prep06-conserved-state-ledger",
+      "head": "9b1f1ea51c24fb82823290193651830dc61ea3c8"
+    },
+    "TQ01": {
+      "branch": "work/animo-tq01-testcase-qualification",
+      "head": "5c43ee16df37a0a1357614fdec527f25e5ca8c16"
+    }
   },
-  "known_constraints": [
-    "supplied historical testbank has zero naturally active macropore cases",
-    "synthetic descendants are diagnostic evidence only and cannot become B2 historical reference evidence",
-    "TCD-025 correction is not admitted before activated-path and theory qualification",
-    "production implementation is out of scope"
+  "lineage": {
+    "first_known_implementation": "ANIMO_3_7_5_1999_SOURCE_LINEAGE_WITH_INDEPENDENT_1999_FLOCR_ANIMO_PUBLICATION",
+    "animo40_release_status": "DOCUMENTED_INTERFACE_BUT_NOT_FULLY_OPERATIONAL",
+    "revision53_status": "ACTIVE_STATE_AND_TRANSFER_SOURCE_PRESENT",
+    "interpretation": "PRE40_IMPLEMENTATION_LINEAGE_WITH_ANIMO40_NONOPERATIONAL_RELEASE_STATUS_AND_LATER_REV53_ACTIVE_SOURCE"
+  },
+  "activation_contract": {
+    "qualified_hydrology_route": "DETAILED_IWA2",
+    "configuration_gate": "Ioptmp=1",
+    "hydrology_gate": "Hlpimp=2",
+    "mismatch_handling": "revision53 errors when detailed-hydrology Ioptmp and Hlpimp disagree",
+    "dynamic_reachability": "Nd>0 derived from wet macropore wall fractions",
+    "aggregated_hydrology_with_macropores": "NOT_A_QUALIFIED_REV53_CONFIGURATION",
+    "molecular_diffusion": "DISABLED_IN_REV53"
+  },
+  "subsystem_state": {
+    "water": "SrWaMpOld(1:2) -> SrWaMp(1:2)",
+    "solute_states": [
+      "CoMpDiorMa -> RsCoMpDiorMa",
+      "CoMpDiorNi -> RsCoMpDiorNi",
+      "CoMpDiorPo -> RsCoMpDiorPo when P active",
+      "CoMpNh -> RsCoMpNh",
+      "CoMpNi -> RsCoMpNi",
+      "CoMpPo -> RsCoMpPo when P active"
+    ],
+    "domains": [
+      "Main Bypass Flow",
+      "Internal Catchment"
+    ],
+    "direct_drainage_domain": "Main Bypass only"
+  },
+  "diagnostic_evidence": {
+    "artifact": "integration/animo-macropore/ANIMO-MP01_DIAGNOSTIC.json",
+    "verification": "integration/animo-macropore/ANIMO-MP01_VERIFICATION.json",
+    "compiler": "GNU Fortran 14.2 diagnostic build",
+    "water_cases_executed": 4,
+    "water_max_abs_reconstructed_residual_m": 8.673617379884035e-19,
+    "solute_cases_executed": 5,
+    "solute_max_abs_reconstructed_residual": 3.469446951953614e-18,
+    "source_kernel_balance_warning_cases": 0,
+    "evidence_class": "SYNTHETIC_DIAGNOSTIC_ONLY",
+    "frozen_source_kernel_causally_exercised": true,
+    "full_animo_active_macropore_case_executed": false,
+    "historical_reference_evidence": false
+  },
+  "evidence_ladder": {
+    "SOURCE_SUPPORTED": true,
+    "THEORY_SUPPORTED": true,
+    "THEORY_SUPPORT_DETAIL": "hydrological architecture and conservation ownership supported; exact revision53 ANIMO solute formulation independently documented only partially",
+    "B1_CAUSALLY_EXERCISED": true,
+    "B1_SCOPE": "specialized MAPOHYDRO water kernel and generic MAPOTRANSPORT solute kernel",
+    "B2_HISTORICALLY_REFERENCED": false,
+    "B3_READY": false
+  },
+  "testbank": {
+    "supplied_case_count": 9,
+    "natural_macropore_active_cases": 0,
+    "negative_control_result": "all active GENERAL.INP members selected by case animo.ini use MacroPoreOption=0",
+    "whole_case_b0_descendant_parent": "CranGrass",
+    "whole_case_positive_descendants": "DESIGNED_NOT_FULL_CASE_EXECUTED",
+    "synthetic_policy": "diagnostic only, never B2"
+  },
+  "restart": {
+    "in_memory_state_promotion": "SOURCE_SUPPORTED",
+    "persistent_macropore_solute_serialization": "INCOMPLETE",
+    "source_finding": "Output_Init macropore >MPnitr, >MPorgs and >MPphos writer block and call arguments are commented out",
+    "classification": "SOURCE_CONFIRMED_PERSISTENT_RESTART_INCOMPLETE_FOR_MACROPORE_SOLUTES",
+    "continuous_vs_split_active_b1": false
+  },
+  "tcd025": {
+    "upstream_classification": "SOURCE_CONFIRMED_MACROPORE_MAIN_LEDGER_STATE_AND_DRA4_INTEGRATION_GAP_TESTBANK_UNEXERCISED",
+    "mp01_classification": "SOURCE_AND_B1_PATH_CONFIRMED_MACROPORE_MAIN_LEDGER_CONTROL_VOLUME_GAP_HISTORICAL_MAGNITUDE_OPEN",
+    "specialized_water_balance_causally_closed": true,
+    "specialized_solute_balance_causally_closed": true,
+    "public_main_macropore_storage_complete": false,
+    "public_water_direct_drain_complete": false,
+    "public_dom_direct_drain_complete": false,
+    "public_n_dra4_slots_populated": true,
+    "public_n_dra4_in_residual": false,
+    "public_p_direct_drain_complete": false,
+    "correction_implemented": false,
+    "correction_admitted": false
+  },
+  "ancillary_source_findings": [
+    {
+      "finding": "mapoinput reads CoMpNi but the labelled CoMpni range checks pass CoMpNh values",
+      "classification": "SOURCE_CONFIRMED_MACROPORE_INITIAL_NO3_VALIDATION_SEAM_NOT_PART_OF_TCD025",
+      "numbered_tcd_opened_here": false,
+      "reason": "must be reconciled through canonical discrepancy governance rather than assigned on a divergent evidence branch"
+    }
+  ],
+  "deliverables": {
+    "contract": "docs/macropore/ANIMO-MP01_WORK_UNIT_CONTRACT.md",
+    "process_model": "docs/macropore/MACROPORE_PROCESS_MODEL.md",
+    "activation_contract": "docs/macropore/MACROPORE_ACTIVATION_CONTRACT.md",
+    "conservation_identities": "docs/macropore/MACROPORE_CONSERVATION_IDENTITIES.md",
+    "tcd025_qualification": "docs/macropore/TCD025_QUALIFICATION.md",
+    "diagnostic_evidence": "integration/animo-macropore/ANIMO-MP01_DIAGNOSTIC.json",
+    "verification": "integration/animo-macropore/ANIMO-MP01_VERIFICATION.json",
+    "status": "integration/animo-macropore/ANIMO-MP01_STATUS.json"
+  },
+  "remaining_blockers": [
+    "no supplied naturally active macropore case",
+    "no independently trusted active historical B2 reference",
+    "positive B0-derived whole-case descendants are designed but not yet executed as complete ANIMO simulations",
+    "individual full DOM/DON/DOP/NH4/NO3/PO4 orchestration paths are source-traced but not each complete-case B1 exercised",
+    "persistent restart serialization is incomplete for macropore solutes",
+    "TCD-025 public/main ledger control volume remains incomplete and uncorrected",
+    "exact revision53 ANIMO solute-transfer theory remains only partially independently documented",
+    "macropore initial NO3 validation seam requires canonical discrepancy-governance reconciliation"
+  ],
+  "non_admissions": [
+    "no frozen source modified",
+    "no frozen testcase modified",
+    "no synthetic diagnostic promoted to historical evidence",
+    "no numerical tolerance established",
+    "no TCD-025 correction implemented",
+    "no production implementation",
+    "no B3 admission"
+  ],
+  "recommended_next": [
+    "build and execute the designed CranGrass B0-derived whole-case descendants with exact transform manifests",
+    "recover a native historical active macropore case or independently trusted reference output if available",
+    "run continuous-versus-split active macropore restart qualification after a complete restart representation is specified",
+    "reconcile the initial macropore NO3 validation seam through the canonical discrepancy register",
+    "only after those steps consider a separate admission workunit for a corrected main ledger and production migration"
   ]
 }
