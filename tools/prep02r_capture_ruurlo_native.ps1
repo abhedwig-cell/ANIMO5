@@ -10,6 +10,7 @@ Set-StrictMode -Version Latest
 $ExpectedExeSha256 = '40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d'
 $ExpectedTestbankSha256 = '44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84'
 $ExpectedCaseContentSet = '0f12d19f74e6640b6d17f8f401ac9c294e35ae13064205ed4d1821d6a15c9ac9'
+$ExpectedHydrologySha256 = '36d8dbeee7a46c769026c7441ea607160a715768571ba3e048b32ee2ace74d13'
 
 function Get-Sha256([string]$Path) {
     return (Get-FileHash -Algorithm SHA256 -LiteralPath $Path).Hash.ToLowerInvariant()
@@ -32,16 +33,25 @@ function Get-RelativePathCompat([string]$Root, [string]$Path) {
     return $pathFull.Substring($rootFull.Length).TrimStart([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar).Replace('\','/')
 }
 
+function Get-PathSortKey([string]$Path) {
+    # Fixed-width lowercase hex preserves UTF-8 byte-wise lexical ordering and
+    # avoids culture/case ordering differences between Windows hosts.
+    return ([BitConverter]::ToString([Text.Encoding]::UTF8.GetBytes($Path))).Replace('-','').ToLowerInvariant()
+}
+
 function Get-Inventory([string]$Root) {
     $items = @()
-    Get-ChildItem -LiteralPath $Root -Recurse -File | Sort-Object FullName | ForEach-Object {
+    Get-ChildItem -LiteralPath $Root -Recurse -File | ForEach-Object {
+        $relative = Get-RelativePathCompat $Root $_.FullName
         $items += [pscustomobject]@{
-            path = Get-RelativePathCompat $Root $_.FullName
+            path = $relative
             size = $_.Length
             sha256 = Get-Sha256 $_.FullName
+            sort_key = Get-PathSortKey $relative
         }
     }
-    return ,$items
+    $sorted = @($items | Sort-Object sort_key)
+    return ,@($sorted | Select-Object path,size,sha256)
 }
 
 function Get-ContentSetSha256($Inventory) {
@@ -80,6 +90,17 @@ function Get-ChangedOrNew($Before, $After) {
     return ,$result
 }
 
+function Get-Deleted($Before, $After) {
+    $afterMap = Inventory-ToMap $After
+    $result = @()
+    foreach ($item in $Before) {
+        if (-not $afterMap.ContainsKey($item.path)) {
+            $result += $item
+        }
+    }
+    return ,$result
+}
+
 $ExecutablePath = (Resolve-Path -LiteralPath $ExecutablePath).Path
 $TestbankZip = (Resolve-Path -LiteralPath $TestbankZip).Path
 $CaptureRoot = [IO.Path]::GetFullPath($CaptureRoot)
@@ -102,6 +123,8 @@ $sourceContentSet = Get-ContentSetSha256 $sourceInventory
 if ($sourceContentSet -ne $ExpectedCaseContentSet) {
     throw "Frozen RuurloGrass case content-set mismatch. Expected $ExpectedCaseContentSet, got $sourceContentSet"
 }
+$sourceHydrology = Join-Path $sourceCase 'Input\SWATRE.UNF'
+Assert-Hash $sourceHydrology $ExpectedHydrologySha256 'RuurloGrass SWATRE.UNF' | Out-Null
 
 $runRecords = @()
 for ($run = 1; $run -le 2; $run++) {
@@ -121,19 +144,24 @@ for ($run = 1; $run -le 2; $run++) {
     $stderrPath = Join-Path $runRoot 'stderr.txt'
     $started = [DateTime]::UtcNow.ToString('o')
     $sw = [Diagnostics.Stopwatch]::StartNew()
-    Push-Location $caseRoot
     try {
-        & $stagedExe 'Animo.ini' 1> $stdoutPath 2> $stderrPath
-        $exitCode = $LASTEXITCODE
+        # Start-Process redirects the native process handles directly to files,
+        # avoiding PowerShell pipeline text re-encoding of stdout/stderr.
+        $process = Start-Process -FilePath $stagedExe -ArgumentList @('Animo.ini') `
+            -WorkingDirectory $caseRoot -RedirectStandardOutput $stdoutPath `
+            -RedirectStandardError $stderrPath -NoNewWindow -Wait -PassThru
+        $exitCode = $process.ExitCode
     } finally {
-        Pop-Location
         $sw.Stop()
     }
     $ended = [DateTime]::UtcNow.ToString('o')
 
     $postInventory = Get-Inventory $caseRoot
+    $postContentSet = Get-ContentSetSha256 $postInventory
     $changed = Get-ChangedOrNew $preInventory $postInventory
+    $deleted = Get-Deleted $preInventory $postInventory
     $changedContentSet = Get-ContentSetSha256 $changed
+    $deletedContentSet = Get-ContentSetSha256 $deleted
 
     $runRecords += [pscustomobject]@{
         run = $run
@@ -143,11 +171,18 @@ for ($run = 1; $run -le 2; $run++) {
         exit_status = $exitCode
         command = '..\animo41.exe Animo.ini'
         input_content_transformed = $false
+        pre_case_file_count = $preInventory.Count
         pre_case_content_set_sha256 = $preContentSet
+        post_case_file_count = $postInventory.Count
+        post_case_content_set_sha256 = $postContentSet
+        stdout_size = (Get-Item -LiteralPath $stdoutPath).Length
         stdout_sha256 = Get-Sha256 $stdoutPath
+        stderr_size = (Get-Item -LiteralPath $stderrPath).Length
         stderr_sha256 = Get-Sha256 $stderrPath
         changed_or_new_case_files = $changed
         changed_or_new_content_set_sha256 = $changedContentSet
+        deleted_case_files = $deleted
+        deleted_content_set_sha256 = $deletedContentSet
     }
 
     # Preserve only hashes/provenance in the transferable capture bundle.
@@ -155,15 +190,19 @@ for ($run = 1; $run -le 2; $run++) {
     Remove-Item -LiteralPath $stagedExe -Force
 }
 
-$repeatClass = if ($runRecords[0].changed_or_new_content_set_sha256 -eq $runRecords[1].changed_or_new_content_set_sha256) {
-    'NATIVE_REPEAT_EXACT_CHANGED_OUTPUT_SET'
+$repeatClass = if (
+    $runRecords[0].post_case_content_set_sha256 -eq $runRecords[1].post_case_content_set_sha256 -and
+    $runRecords[0].stdout_sha256 -eq $runRecords[1].stdout_sha256 -and
+    $runRecords[0].stderr_sha256 -eq $runRecords[1].stderr_sha256
+) {
+    'NATIVE_REPEAT_EXACT_RAW'
 } else {
-    'NATIVE_REPEAT_DIFFERENT_REQUIRES_VOLATILE_CLASSIFICATION'
+    'NATIVE_REPEAT_DIFFERENT_REQUIRES_DECLARED_VOLATILE_CLASSIFICATION'
 }
 
 $codePage = (& cmd /c chcp 2>&1 | Out-String).Trim()
 $manifest = [ordered]@{
-    schema = 'animo-prep02r-native-run-capture-v1'
+    schema = 'animo-prep02r-native-run-capture-v2'
     evidence_class = 'CROSS_RUNTIME_DIAGNOSTIC_NATIVE_NOT_REFERENCE_ADMISSION'
     work_unit = 'ANIMO-PREP02R'
     case = 'RuurloGrass'
@@ -181,7 +220,7 @@ $manifest = [ordered]@{
         case_content_set_sha256 = $sourceContentSet
         input_content_transformed = $false
         hydrology_path = 'Input/SWATRE.UNF'
-        hydrology_sha256 = '36d8dbeee7a46c769026c7441ea607160a715768571ba3e048b32ee2ace74d13'
+        hydrology_sha256 = $ExpectedHydrologySha256
     }
     runtime_environment = [ordered]@{
         os_version = [Environment]::OSVersion.VersionString
@@ -198,6 +237,7 @@ $manifest = [ordered]@{
     repeat_determinism = [ordered]@{
         repeat_run_performed = $true
         classification = $repeatClass
+        downstream_declared_volatile_recheck_required_if_not_raw_exact = ($repeatClass -ne 'NATIVE_REPEAT_EXACT_RAW')
         scientific_numeric_tolerance_applied = $false
     }
     reference_admission = [ordered]@{
@@ -216,7 +256,13 @@ Remove-Item -LiteralPath $extractRoot -Recurse -Force
 
 $archivePath = "$CaptureRoot.zip"
 Compress-Archive -Path (Join-Path $CaptureRoot '*') -DestinationPath $archivePath
+$archiveHash = Get-Sha256 $archivePath
+$sidecarPath = "$archivePath.sha256.txt"
+("{0}  {1}" -f $archiveHash, [IO.Path]::GetFileName($archivePath)) | Set-Content -LiteralPath $sidecarPath -Encoding ASCII
+
 Write-Host "Capture complete."
 Write-Host "Manifest: $manifestPath"
 Write-Host "Archive:  $archivePath"
+Write-Host "Archive SHA-256: $archiveHash"
+Write-Host "SHA sidecar: $sidecarPath"
 Write-Host "Repeat classification: $repeatClass"
