@@ -53,7 +53,7 @@ Serialize every matrix row whose class is `CORE_STATE_READY_CANDIDATE` and is re
 
 For an enabled optional feature, serialize every required row classified `OPTIONAL_FEATURE_STATE_READY_CANDIDATE` only if the feature itself has been admitted for the profile. A row classified `FEATURE_STATE_BLOCKED` makes the profile checkpoint incomplete and restore must fail closed.
 
-No aggregate is serialized as a second owner when its matrix class is `DERIVED_RECOMPUTABLE`.
+A physical quantity can be excluded as an independent checkpoint coordinate when its matrix class is `DERIVED_RECOMPUTABLE` and the reconstruction contract is admitted. This does not mean the physical storage disappears from conservation. It means there is no second independent checkpoint degree of freedom.
 
 ### 3.3 External-owner bindings
 
@@ -63,11 +63,13 @@ ANIMO may cache external coordinates during execution, but the canonical checkpo
 
 If the referenced external generation cannot be recovered or proven identical, restore fails before ANIMO state mutation.
 
-### 3.4 Accepted continuation metadata
+### 3.4 Accepted continuation metadata and state
 
 Every `NUMERICAL_CONTINUATION` row required at the accepted boundary is serialized or deterministically reconstructed under an admitted rule.
 
 This includes management progression. The event schedule identity alone is insufficient when the next-event cursor cannot be reconstructed uniquely. Conversely, an implementation may omit a cursor only after equivalence evidence proves exact deterministic reconstruction from accepted coordinates and schedule identity.
+
+Continuation-critical scientific coordinates that are not conserved stocks must also survive when future behaviour depends on them. PREP12 demonstrates this for cumulative potential crop N/P uptake in applicable plant modes. These values are not disposable trial scratch merely because PREP06 classified them as derived demand/reference state.
 
 Within-step nonlinear solver arrays and potential-pass scratch are not accepted continuation merely because a legacy procedure retains them between task calls.
 
@@ -91,6 +93,7 @@ AND continuation_complete(P)
 AND external_owner_bindings_complete(P)
 AND every_enabled_feature_is_admitted(P)
 AND every_enabled_feature_state_is_complete(P)
+AND every_required_reconstruction_contract_is_admitted(P)
 AND (
       report_continuity_not_requested(P)
       OR diagnostic_observer_state_complete(P)
@@ -109,7 +112,7 @@ Restore is fail-before-mutate.
 4. Resolve all external-owner bindings and verify accepted time plus layout/schema compatibility.
 5. Allocate only state families enabled by the validated profile.
 6. Load ANIMO-owned accepted physical state without projection, clipping or chemistry changes.
-7. Restore accepted continuation metadata or execute only an admitted deterministic reconstruction rule.
+7. Restore accepted continuation metadata/state or execute only an admitted deterministic reconstruction rule.
 8. Recompute `DERIVED_RECOMPUTABLE` views in the declared dependency order from the restored accepted state and bound frames.
 9. Restore diagnostic observer continuation separately when requested.
 10. Establish a new runtime `ACCEPTED_IDLE` object representing the restored accepted generation. No physical process is run as part of restore.
@@ -120,13 +123,15 @@ Any failure before step 10 leaves no partially accepted model state.
 
 A quantity may be excluded from the serialized owner set as `DERIVED_RECOMPUTABLE` only when all of the following hold:
 
-- it has no independent conserved ownership;
+- it has no independent accepted-boundary degree of freedom;
 - every input to its reconstruction is present in accepted state, configuration or a bound external frame;
 - the reconstruction is deterministic under the admitted numerical/thermodynamic policy;
 - reconstruction does not invoke an unadmitted physical process;
 - split-run evidence later confirms that the reconstruction preserves the promised trajectory equivalence.
 
 A convenient formula is not sufficient evidence.
+
+Revision 53 provides a source-level example for NH4 adsorption: adsorbed NH4 is real physical N storage but is reconstructed from aqueous NH4 and the sorption relation rather than serialized independently. STATEQ01 therefore treats the checkpoint coordinate as derived/recomputable, subject to later split-run qualification.
 
 ## 7. `Output_Init` purity boundary
 
@@ -142,7 +147,19 @@ serialize(accepted_state) does not change accepted_state
 
 If legacy compatibility ever requires a clamped export representation, that must be an explicit output projection outside the canonical accepted checkpoint and governed by its own discrepancy/compatibility decision.
 
-## 8. TCD-016 boundary
+## 8. PREP12 governance boundary
+
+PREP12 is a provenance-preserving rehome of PREP10 restart evidence. It explicitly records its source-local labels `TCD-032`, `TCD-033` and `TCD-034` with `canonical_tcd_id = null`.
+
+STATEQ01 therefore uses the following reconciliation keys without allocating canonical TCD numbers:
+
+- `RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER`;
+- `RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION`;
+- `RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE`.
+
+Canonical allocation remains owned by ANIMO B3 governance.
+
+## 9. TCD-016 boundary
 
 `M_surface_NH4_non_aqueous_continuation` is not a canonical checkpoint field in STATEQ01.
 
@@ -155,17 +172,25 @@ SQ01 classifies it as a preferred proposed model extension that is review-ready 
 
 If C1 is later scientifically admitted, its accepted areic mass would become mandatory persistent state and its restart semantics would require separate qualification.
 
-## 9. Macropore boundary
+## 10. Phosphorus canonicalization boundary
+
+The candidate canonical accepted P state is explicit site-resolved state. A checkpoint therefore stores aqueous PO4, each configured fast site, each configured slow site, precipitated P and DOP under the exact layout/cardinality identity.
+
+Revision 53 `Output_Init` always emits `Inpo=1` explicit restart state even when the original initialization used `Inpo=2/3`. STATEQ01 does not treat the original initialization mode as an extra persistent owner. However a legacy trajectory originating in mode 2 or 3 is not admitted as restart-equivalent until a dedicated split-run qualification shows that the 2/3-to-1 canonicalization preserves the promised trajectory.
+
+## 11. Macropore boundary
 
 For `CORE_CNP_WITH_MACROPORES`:
 
 - macropore water remains an external hydrology-owner reference;
 - ANIMO-owned macropore solute state must be present for every enabled species/domain required by the admitted feature;
-- the revision-53 `Output_Init` omission of `>MPnitr:`, `>MPorgs:` and `>MPphos:` is evidence of incompleteness, not permission to reconstruct zero state.
+- `TCD-025` remains the separate public/main control-volume and transfer-integration blocker;
+- the revision-53 `Output_Init` omission of `>MPnitr:`, `>MPorgs:` and `>MPphos:` is the independent PREP12 finding `RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER`, not TCD-025;
+- missing macropore state may not be reconstructed as zero.
 
-Until TCD-025 and restart qualification close, the feature profile fails closed.
+Until both the control-volume issue and the independent restart finding are canonically disposed and the feature is qualified, the profile fails closed.
 
-## 10. GHG boundary
+## 12. GHG boundary
 
 For `CORE_CNP_WITH_GHG`, total `CsCH4` and `CsN2O` owner state alone does not establish behavioural checkpoint sufficiency.
 
@@ -173,15 +198,21 @@ Before a GHG checkpoint profile can be complete, governance must admit a determi
 
 Hidden cross-call GHG task locals are not automatically added to the accepted checkpoint. They must first be classified as explicit trial state, deterministic recomputation, or genuinely persistent science under a separate GHG qualification. STATEQ01 makes no intended-physics claim about them.
 
-## 11. Crop continuation boundary
+## 13. Crop continuation boundary
 
-ANIMO-owned crop root/shoot dry matter and actual N/P are physical owner candidates. Exact checkpoint completeness additionally depends on the future-use continuation set for crop demand, deficit, stage and cumulative uptake logic.
+ANIMO-owned crop root/shoot dry matter and actual N/P are persistent optional physical-owner candidates.
 
-Because TS01 identifies omitted continuation variables that may affect future demand, `CORE_CNP_WITH_CROP` remains blocked for canonical checkpoint qualification until the minimal set is source-qualified and split-run tested. A checkpoint that stores only the four obvious crop stocks is not yet proven sufficient.
+Checkpoint continuity is nevertheless blocked by two concrete PREP12 findings in applicable plant modes.
+
+`RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION`: actual cumulative N/P uptake is represented in `>orgpla:` but the restart-to-accepted initialization direction loses nontrivial values.
+
+`RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE`: cumulative potential N/P uptake is carried between ordinary timesteps and influences later demand, but has no restart representation and is reset to zero.
+
+Potential uptake is continuation state, not a conserved crop stock. Additional TS01 crop demand/deficit/stage continuation still requires minimization. Therefore a checkpoint that stores only root/shoot and actual crop N/P is not sufficient for `CORE_CNP_WITH_CROP`.
 
 In `crop_mode=external`, ANIMO instead binds the exact external crop frame/generation and does not duplicate an external crop owner.
 
-## 12. Report-period boundary
+## 14. Report-period boundary
 
 Balance-period closeout is a reporting event, not physical acceptance. A report reset can happen after a physical interval without altering the physical state generation.
 
@@ -193,12 +224,14 @@ physical_checkpoint_complete != report_continuation_complete
 
 The two may be bundled in one file container, but their ownership and validation remain separate.
 
-## 13. Admission tests still required
+## 15. Admission tests still required
 
 This contract is ready for later implementation/test design, but canonical STATE admission still requires evidence beyond structure:
 
 - uninterrupted versus split-run equivalence for `CORE_CNP` at multiple accepted boundaries;
+- explicit verification of NH4 adsorbed-state reconstruction under checkpoint restore;
 - checkpoints adjacent to management events and year/crop transitions;
+- P mode-2/3 origin to explicit-state restart qualification when those initialization modes are in scope;
 - final-interval serializer-purity testing;
 - explicit external-frame rebind/reject tests;
 - P site-cardinality mismatch rejection;
