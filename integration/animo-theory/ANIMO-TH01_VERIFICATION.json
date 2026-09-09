@@ -1,10 +1,10 @@
 {
   "work_unit": "ANIMO-TH01",
   "verification_type": "DOCUMENTARY_SCOPE_AND_MACHINE_REGISTER_VERIFICATION",
-  "candidate_head": "b439867016e1da78efefd7f256c3a558d4c57665",
+  "candidate_head": "d1f55b3a7af60bff807301f7674e538397f52989",
   "base_head": "52411b9d2d6d80717914bc6642544290a54ded21",
   "compare_status": "ahead",
-  "ahead_by": 15,
+  "ahead_by": 18,
   "behind_by": 0,
   "changed_files_before_verification_artifact": 11,
   "scope_check": {
