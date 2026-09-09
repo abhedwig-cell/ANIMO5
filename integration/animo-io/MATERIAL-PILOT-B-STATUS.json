@@ -1,0 +1,62 @@
+{
+  "work_unit": "ANIMO-IO01",
+  "pilot": "B",
+  "family": "MAT",
+  "scope": "revision-53 non-GHG static MATERIAL core using natural RuurloGrass",
+  "status": "STARTED_SOURCE_CONTRACT_RECONSTRUCTION",
+  "qualified": false,
+  "production_migration": "NOT_ADMITTED",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "case": {
+    "name": "RuurloGrass",
+    "material_file": "ANIMO_testbank/RuurloGrass/Input/MATERIAL.INP",
+    "PhosphorusCycle": 0,
+    "AerationModel": 0,
+    "GreenHouseGasOption": 0,
+    "PClassOption": 0,
+    "Nm": 11,
+    "Nf": 14
+  },
+  "active_sections": [
+    ">defmat:",
+    ">orgcom:",
+    ">deffra:",
+    ">defexu:",
+    ">defdom:",
+    ">defsdo:",
+    ">defhum:",
+    ">defntr:",
+    ">defden:",
+    ">matfra:"
+  ],
+  "inactive_sections": [">sonicg:", ">sonic2:", "post-matfra GHG validation"],
+  "findings": [
+    "defmat and deffra use IPO-conditioned implied-DO phosphorus reads; with IPO=0 the natural trailing zero columns are lexical residue rather than normalized Frpo/Pofr values",
+    "pofrex and Pofrhuma are parsed and range-checked unconditionally even when IPO=0",
+    "matfra uses sparse list-directed assignment that can span physical records",
+    "revision-53 subsequently reads and validates all FR/Frca entries for each material, while the MATERIAL block itself does not explicitly initialize unassigned entries"
+  ],
+  "open_dependency": {
+    "id": "IO01-PB-RUNTIME-INIT-001",
+    "description": "legacy meaning of unassigned sparse FR/Frca entries",
+    "routing": "ANIMO-BUILDQ01 runtime/storage semantics",
+    "classification": "UNQUALIFIED_RUNTIME_SEMANTICS_DEPENDENCY_CANDIDATE",
+    "fail_closed": true
+  },
+  "next_steps": [
+    "qualify sparse FR/Frca initialization semantics",
+    "define MaterialParameterSet/v1 normalized schema",
+    "implement legacy MATERIAL normalization oracle",
+    "implement separate TTUTIL native MATERIAL v1 representation",
+    "perform parser-level field/cardinality/presence equivalence before model regression"
+  ],
+  "non_admissions": {
+    "GHGMais_included": false,
+    "GHG_lineage_normalized": false,
+    "legacy_science_changed": false,
+    "frozen_bytes_modified": false,
+    "production_migration_admitted": false,
+    "B4_admitted": false
+  }
+}
