@@ -1,0 +1,6 @@
+equal_substeps,max_abs_Cend_full_vs_split,max_abs_Cavg_full_vs_split,interpretation
+2,1.1102230246251565e-16,1.1102230246251565e-16,roundoff_scale
+4,2.220446049250313e-16,1.6653345369377348e-16,roundoff_scale
+8,5.551115123125783e-16,2.7755575615628914e-16,roundoff_accumulation
+16,9.992007221626409e-16,4.440892098500626e-16,roundoff_accumulation
+32,1.887379141862766e-15,8.326672684688674e-16,roundoff_accumulation
