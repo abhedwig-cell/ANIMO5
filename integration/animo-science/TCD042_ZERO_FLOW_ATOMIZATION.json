@@ -1,0 +1,100 @@
+{
+  "work_unit": "ANIMO-UBQ01",
+  "target": "TCD-042",
+  "scope": "EXACT_ZERO_THROUGHFLOW_ATOM_ONLY",
+  "status": "SOURCE_THEORY_ATOMIZATION_PERSISTED_EXECUTABLE_VALIDATION_PENDING",
+  "frozen_identity": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
+  },
+  "existing_owner": {
+    "present": true,
+    "coordinates": [
+      "Conhtop/Rsconhtop/Avconhtop",
+      "Conitop/Rsconitop/Avconitop",
+      "Codiormatop/Rscodiormatop/Avcodiormatop",
+      "Codiornitop/Rscodiornitop/Avcodiornitop",
+      "Copotop/Rscopotop/Avcopotop",
+      "Codiorpotop/Rscodiorpotop/Avcodiorpotop"
+    ],
+    "storage_scale": "Hetop",
+    "begin_storage_evidence": "Outbal_Init.for:119-123 and phosphorus analogues",
+    "end_storage_evidence": "Outbal_calc.for:1173-1179 and phosphorus analogues",
+    "continuation_evidence": "Init.for:324-336",
+    "addition_input_evidence": "Addit.for:360-370"
+  },
+  "positive_flow_equation": {
+    "source_coordinate": "UBoundconc.for:110-149",
+    "P": "St*Flux/Hetop",
+    "A1": "exp(-P)",
+    "A2": "(1-A1)/Flux",
+    "B1": "(1-A1)/P",
+    "B2": "(1-B1)/Flux",
+    "end_concentration": "C1=C0*A1+Load*A2",
+    "average_concentration": "Cavg=C0*B1+Load*B2",
+    "recovered_ode": "Hetop*dC/dt=Load-Flux*C",
+    "conservation_identity": "Hetop*C1=Hetop*C0+St*Load-St*Flux*Cavg"
+  },
+  "exact_zero_limit": {
+    "Flux": 0,
+    "A1": 1,
+    "A2": "St/Hetop",
+    "B1": 1,
+    "B2": "St/(2*Hetop)",
+    "C1": "C0+Load*St/Hetop",
+    "Cavg": "C0+Load*St/(2*Hetop)",
+    "conservation_identity": "Hetop*C1=Hetop*C0+St*Load"
+  },
+  "legacy_zero_fallback": {
+    "source_coordinate": "UBoundconc.for:119-123",
+    "trigger": "Flux<1.0d-8",
+    "A1": 1,
+    "A2": 0,
+    "B1": 1,
+    "B2": 0,
+    "exact_zero_defect": "For Load!=0 and Flux=0 the represented end storage omits St*Load."
+  },
+  "natural_witness": {
+    "source": "MASSQ02-R016",
+    "case": "RuurloGrass",
+    "interval": "TITO=1915",
+    "Iopthyvs": 0,
+    "Flib_1": 0.0,
+    "Rurv": 0.0,
+    "Flux": 0.0,
+    "Pr_m_d": 0.0002000407,
+    "Coprnhyn_kg_m3": 0.002534,
+    "Coprniyn_kg_m3": 0.00084,
+    "St_d": 1.0,
+    "Hetop_m": 0.02,
+    "NH4_load_kg_m2_d": 5.069031338e-7,
+    "NO3_load_kg_m2_d": 1.68034188e-7,
+    "booked_NH4_kg_ha": 0.005069031338,
+    "booked_NO3_kg_ha": 0.00168034188,
+    "booked_total_N_kg_ha": 0.006749373218,
+    "observer_residual_kg_ha_N": 0.0067493732130969875,
+    "zero_limit_NH4_end_increment_kg_m3": 2.534515669e-5,
+    "zero_limit_NO3_end_increment_kg_m3": 8.4017094e-6,
+    "zero_limit_NH4_average_increment_kg_m3": 1.2672578345e-5,
+    "zero_limit_NO3_average_increment_kg_m3": 4.2008547e-6
+  },
+  "classification": {
+    "class_A_accounting_only": "REJECTED_FOR_EXACT_ZERO_ATOM",
+    "class_C_missing_state": "REJECTED_FOR_EXACT_ZERO_ATOM_EXISTING_OWNER_PRESENT",
+    "selected_candidate": "B_LOCAL_ALGEBRA_ZERO_FLOW_LIMIT",
+    "reason": "The existing positive-flow reservoir equation has a unique exact zero-flow limit; no new state or process is required."
+  },
+  "finite_positive_subthreshold": {
+    "range": "0<Flux<1.0d-8",
+    "included_in_exact_zero_atom": false,
+    "classification": "UNRESOLVED_NUMERICAL_SEAM_REACHABILITY_AND_MATERIALITY_REQUIRED",
+    "automatic_class_B_claim": false,
+    "tolerance_or_threshold_change_admitted": false
+  },
+  "admission": {
+    "b3_admitted": false,
+    "source_correction_implemented": false,
+    "production_migration_admitted": false
+  }
+}
