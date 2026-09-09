@@ -6,11 +6,11 @@
   "date": "2026-09-09",
   "framework_base_commit": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
   "target_tcd": "TCD-027",
-  "decision": "IN_PROGRESS_TCD027_CLASS_A_READINESS_PERSISTED_BEFORE_VALIDATION",
+  "decision": "QUALIFIED_TCD027_CLASS_A_ADMISSION_READINESS_B3_ADMISSION_BLOCKED_BY_B2_ROUTE",
   "implemented": true,
   "persisted": true,
-  "tested": false,
-  "qualified": false,
+  "tested": true,
+  "qualified": true,
   "blocked": true,
   "qualification_scope": "Class A B3 admission readiness only; no corrected-legacy admission",
   "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
@@ -29,19 +29,49 @@
     "historical_uncertainty_route_eligible": false,
     "reason": "PREP02R has not obtained a historical reference artifact and its prepared archival request has not yet been sent, so neither admission route is complete."
   },
+  "evidence_summary": {
+    "b0_identity_pass": true,
+    "b1_source_causality_pass_for_readiness": true,
+    "natural_b1_path_activation": true,
+    "class_a_state_non_interference_pass_in_b1": true,
+    "class_a_flux_non_interference_pass_in_b1": true,
+    "changed_output_whitelist_pass_in_b1": true,
+    "total_balance_non_interference_pass_in_b1": true,
+    "b2_gate_pass": false,
+    "historical_uncertainty_fallback_eligible": false,
+    "independent_review_complete": false,
+    "admission_possible_now": false
+  },
+  "validation": {
+    "workflow": "ANIMO-B3A01 TCD-027 readiness validation",
+    "run_id": 34305383486,
+    "validated_head": "80c80dc0060e2a82ffd7c7eb7ba93da650d0c269",
+    "conclusion": "success",
+    "json_parse": "PASS",
+    "tcd_and_class_consistency": "PASS",
+    "b0_identity_consistency": "PASS",
+    "prep06_evidence_binding": "PASS",
+    "class_a_non_interference_assertions": "PASS",
+    "b2_fail_closed_assertions": "PASS",
+    "framework_non_admission_consistency": "PASS"
+  },
   "deliverables": [
     "docs/b3a01/WORK_UNIT_CONTRACT.md",
     "docs/b3a01/TCD027_CLASS_A_ADMISSION_READINESS.md",
     "integration/animo-b3/TCD027_CLASS_A_READINESS.json",
-    "integration/animo-b3/ANIMO-B3A01_STATUS.json"
+    "integration/animo-b3/ANIMO-B3A01_STATUS.json",
+    "tools/validate_b3a01_tcd027.py",
+    ".github/workflows/animo-b3a01-tcd027.yml"
   ],
-  "planned_validation": [
-    "machine-readable readiness JSON parse",
-    "TCD identity and class consistency",
-    "B0 identity consistency",
-    "B1 evidence binding",
-    "B2 blocker consistency",
-    "Class A changed/unchanged surface assertions",
-    "fail-closed non-admission assertions"
+  "remaining_blockers": [
+    "No independently trusted B2 historical reference is available.",
+    "The historical-uncertainty fallback is not yet eligible because the prepared external acquisition request has not been sent and cannot be declared failed.",
+    "Independent second-line review of the eventual admission record remains required."
+  ],
+  "recommended_next": [
+    "Complete the PREP02R external historical-reference acquisition action.",
+    "If B2 is obtained, execute the natural LWKM path under the qualified historical reference and capture relevant detailed organic-P reporting plus independent unrounded state and flux observation surfaces.",
+    "Instantiate the atomic TCD-027 B3 disposition record only after a legitimate admission route exists.",
+    "Do not compose TCD-027 with any other organic-P correction before atomic admission."
   ]
 }
