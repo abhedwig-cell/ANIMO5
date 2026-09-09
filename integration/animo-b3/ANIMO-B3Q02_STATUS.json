@@ -1,0 +1,30 @@
+{
+  "work_unit": "ANIMO-B3Q02",
+  "title": "Canonical Child-Atom Disposition Carrier and Schema Adapter Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3q02-child-atom-disposition-carrier",
+  "status": "IN_PROGRESS_PERSISTED_CHILD_ATOM_SCHEMA_QUALIFICATION_PENDING",
+  "base": {
+    "work_unit": "ANIMO-B3E01",
+    "head": "41e43c6a6888aac5b5b52041bcdd088c7afc68f1",
+    "decision": "PARTIAL_TCD042_E1_CLASS_E_READINESS_POSITIVE_HETOP_POLICY_QUALIFIED_FULL_CHILD_DOMAIN_AND_ADMISSION_ROUTE_FAIL_CLOSED"
+  },
+  "goal": "Define an additive formal disposition carrier for canonical child atoms such as TCD-042-E1 without reserving a new top-level TCD, weakening B3Q01 atomicity, or admitting any correction.",
+  "scope_guards": {
+    "existing_B3_DISPOSITION_SCHEMA_modified": false,
+    "canonical_tcd_register_modified": false,
+    "new_tcd_reserved": false,
+    "scientific_admission": false,
+    "production_source_modified": false,
+    "parent_TCD042_admitted": false,
+    "TCD042_E1_admitted": false,
+    "TCD042_B1_modified": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  }
+}
