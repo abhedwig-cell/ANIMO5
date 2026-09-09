@@ -1,17 +1,24 @@
 {
-  "schema": "animo-prep02r-native-run-capture-v1",
+  "schema": "animo-prep02r-native-run-capture-v2",
   "evidence_class": "NATIVE_RUN_CAPTURE_NOT_REFERENCE_ADMISSION",
   "work_unit": "ANIMO-PREP02R",
   "case": "RuurloGrass",
+  "execution_purpose": null,
+  "allowed_execution_purposes": [
+    "REFERENCE_NATIVE_ATTEMPT",
+    "CROSS_RUNTIME_DIAGNOSTIC_NATIVE"
+  ],
   "artifact_receipt_manifest": null,
   "executable": {
+    "candidate_id": null,
     "filename": null,
     "sha256": null,
     "claimed_version": null,
     "claimed_revision": null,
     "lineage_classification": null,
     "provenance_summary": null,
-    "native_execution_attempt_admitted": false
+    "native_execution_attempt_admitted": false,
+    "historical_reference_claim_allowed_for_this_artifact": false
   },
   "build_contract": {
     "supplied_binary": null,
@@ -26,7 +33,8 @@
     "unformatted_record_convention": null,
     "optimization": null,
     "floating_point_model": null,
-    "runtime_library_assumptions": []
+    "runtime_library_assumptions": [],
+    "project_contract_reconciliation": "integration/animo-prep/PREP02R_BUILD_CONTRACT_RECONCILIATION_20260909.json"
   },
   "runtime_environment": {
     "os": null,
@@ -41,10 +49,13 @@
   },
   "input": {
     "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
-    "case_tree_content_set_sha256": null,
+    "case_tree_content_set_sha256_before": null,
+    "case_tree_content_set_sha256_after": null,
+    "input_tree_unchanged_after_execution": null,
     "hydrology_file": null,
     "hydrology_sha256": null,
-    "file_inventory": [],
+    "file_inventory_before": [],
+    "file_inventory_after": [],
     "path_or_filesystem_staging": [],
     "input_content_transformed": false,
     "compatibility_transformation_classification": null
@@ -52,25 +63,30 @@
   "execution": {
     "command": null,
     "working_directory_layout": null,
+    "historical_runner_postprocessing_executed_before_raw_capture": false,
     "started_at": null,
     "ended_at": null,
     "exit_status": null,
     "stdout_sha256": null,
     "stderr_sha256": null,
+    "successful_completion_text_present": null,
     "warnings": [],
     "stop_messages": [],
     "runtime_seconds": null
   },
   "outputs": {
-    "raw_tree_preserved": false,
-    "content_set_sha256": null,
-    "file_count": null,
-    "file_inventory": []
+    "raw_pre_runner_tree_preserved": false,
+    "raw_pre_runner_content_set_sha256": null,
+    "raw_pre_runner_file_count": null,
+    "raw_pre_runner_file_inventory": [],
+    "runner_postprocessing_reproduced_separately": false,
+    "post_runner_content_set_sha256": null,
+    "post_runner_file_inventory": []
   },
   "repeat_determinism": {
     "repeat_run_performed": false,
     "classification": null,
-    "second_output_content_set_sha256": null,
+    "second_raw_output_content_set_sha256": null,
     "declared_volatile_only": null
   },
   "native_vs_gnu": {
@@ -88,7 +104,8 @@
       "mass_balance": null,
       "process_trajectory": null
     },
-    "global_numerical_tolerance_defined": false
+    "global_numerical_tolerance_defined": false,
+    "diagnostic_cross_runtime_agreement_may_be_relabelled_as_historical_B2": false
   },
   "observer": {
     "observer_build_attempted": false,
