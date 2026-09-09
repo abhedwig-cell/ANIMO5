@@ -1,0 +1,30 @@
+{
+  "work_unit": "ANIMO-NQ03R",
+  "title": "TCD-042-E1 Independent Numerical Review",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "review/animo-nq03r-tcd042-e1-independent-numerical",
+  "status": "IN_PROGRESS_PERSISTED_INDEPENDENT_RECONSTRUCTION_PENDING",
+  "target": "TCD-042-E1",
+  "review_target": "NQ03_RESTRICTED_NATURAL_ENVELOPE_QUADRATIC_DIMENSIONLESS_POLICY",
+  "base": {
+    "work_unit": "ANIMO-NQ03",
+    "head": "8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6",
+    "status": "QUALIFIED_RESTRICTED_TCD042_E1_NATURAL_ENVELOPE_NUMERICAL_POLICY_INDEPENDENT_REVIEW_PENDING"
+  },
+  "review_contract": {
+    "methodological_independence": "RECONSTRUCT_EQUATIONS_ORACLE_AND_ERROR_BOUNDS_WITHOUT_USING_NQ03_CANDIDATE_IMPLEMENTATION_AS_AUTHORITY",
+    "organizational_independence_claimed": false,
+    "production_patch": false,
+    "b3_admission": false,
+    "parent_tcd_admission": false,
+    "new_tcd_reservation": false,
+    "tcd042_b1_modified": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "work_unit_complete": false
+  }
+}
