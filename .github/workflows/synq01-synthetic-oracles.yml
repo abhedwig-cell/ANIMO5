@@ -1,0 +1,28 @@
+name: ANIMO SYNQ01 synthetic oracles
+
+on:
+  push:
+    branches:
+      - work/animo-synq01-independent-synthetic-oracles
+  pull_request:
+    paths:
+      - 'tools/reference/**'
+      - 'tests/synthetic/**'
+      - 'integration/animo-synthetic/**'
+      - 'docs/synthetic/**'
+      - '.github/workflows/synq01-synthetic-oracles.yml'
+
+jobs:
+  qualify-synthetic-oracles:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run independent oracle self-test
+        run: python tools/reference/synthetic_oracles.py
+      - name: Run synthetic oracle unit tests
+        run: python -m unittest discover -s tests/synthetic -p 'test_*.py' -v
+      - name: Audit machine-readable oracle register
+        run: python tools/reference/audit_synthetic_register.py integration/animo-synthetic/SYNTHETIC_ORACLE_REGISTER.json /tmp/SYNQ_AUDIT.json
