@@ -1,0 +1,192 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "artifact": "CORE_CNP_WITH_EXTERNAL_CROP behavioural split qualification probe",
+  "status": "FAIL_BEHAVIOURAL_EQUIVALENCE_FIRST_POST_RESTART_SURFACE_FRAME_AND_FINAL_STATE_DIVERGE",
+  "evidence_class": "B0_HASH_PINNED_REV53_DIAGNOSTIC_EXECUTION_NOT_B2",
+  "canonical_state_admission": "NOT_ADMITTED",
+  "canonical_time_admission": "NOT_ADMITTED",
+  "production_migration": "NOT_ADMITTED",
+  "production_code": false,
+  "physics_change": false,
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "case": "LWKM_gras_1040.2021.2045",
+  "profile_under_probe": "CORE_CNP_WITH_EXTERNAL_CROP",
+  "candidate": {
+    "checkpoint_tito": 4403.0,
+    "checkpoint_end_date": "2033-01-20",
+    "restart_start_date": "2033-01-21",
+    "next_tito_continuous": 4414.0,
+    "next_step_length_days": 11.0,
+    "selected_by": "external crop exact-zero subwindow scan",
+    "surface_at_checkpoint_exact_zero": true,
+    "neighbor_boundaries_exact_zero": true,
+    "management_event_on_prev_current_next": false,
+    "external_crop_start_contract_compatible": true,
+    "hidden_epsilon_used": false
+  },
+  "stage_a": {
+    "status": "SUCCESSFUL_COMPLETION",
+    "checkpoint_sha256": "f27ae73d68db6323359dd4c6e7ecfae545c4972eff480cd4d216ef1f18506d50",
+    "checkpoint_bytes": 21186,
+    "executable_sha256": "3606db8c7d425dddba588a75c4022a40c4188147e0016e147111e6c3267a47ef",
+    "qualification_patch": "execution-copy stop/final-output at exact Tito=4403 after physical interval processing; no production source change"
+  },
+  "restart_tail": {
+    "reproduction_manifest": "integration/animo-state/EXTERNAL_CROP_RESTART_TAIL_MANIFEST.json",
+    "next_original_add_number": 289,
+    "retained_add_blocks": 312,
+    "retained_management_periods": 13,
+    "management_sha256": "1c7f62432ad849c0788c18765705a31abb1d65b5d9015b99df8528212ec89934",
+    "boundary_sha256": "f8c298faa386109e82f354060807e0a5bbd220fb361e046c2843cce9d38b61e3",
+    "external_crop_payload_modified_by_adapter": false,
+    "hydrology_payload_modified_by_adapter": false
+  },
+  "stage_b": {
+    "status": "SUCCESSFUL_COMPLETION",
+    "final_checkpoint_sha256": "69960ca466d40df8e1ff7bda1cadae175f31982796856547c13e67d36a731b86",
+    "final_checkpoint_bytes": 21186,
+    "executable_sha256": "e3bb73c569a3c3caf04d7f07ef7436ba06e6e7a9919958a8ac6da3876e4f6e6c",
+    "surface_trace_records": 466,
+    "management_trace_records": 312
+  },
+  "uninterrupted_reference_within_same_diagnostic_contract": {
+    "final_checkpoint_sha256": "c56ec44bcfcefcc36962d6b543009b684d7b722e99afe73add43f53185026018",
+    "final_checkpoint_bytes": 21186,
+    "post_split_surface_records": 466,
+    "post_split_management_events": 312
+  },
+  "management_continuation_comparison": {
+    "continuous_records": 312,
+    "restart_records": 312,
+    "exact_after_tito_offset": true,
+    "mismatch_count": 0,
+    "interpretation": "management cursor/timing continuation reproduces exactly for all post-split observed events under this probe"
+  },
+  "surface_frame_comparison": {
+    "continuous_records": 466,
+    "restart_records": 466,
+    "mismatch_count": 1,
+    "first_mismatch": {
+      "index": 0,
+      "continuous": [
+        4414.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        11.0,
+        0.0
+      ],
+      "restart_local": [
+        11.0,
+        5e-05,
+        0.0,
+        0.0,
+        0.0,
+        11.0,
+        0.0
+      ],
+      "delta_continuous_minus_restart_shifted": [
+        0.0,
+        -5e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "remaining_records_after_first_mismatch_exact": true,
+    "first_mismatch_interpretation": "continuous Pn=0.0 m; restart Pn=5.0e-5 m at the first post-restart boundary; restricted exact-zero envelope therefore fails without tolerance"
+  },
+  "final_checkpoint_comparison": {
+    "byte_identical": false,
+    "differing_label_count": 6,
+    "differing_labels": [
+      {
+        "label": "ammoni",
+        "kind": "numeric",
+        "value_count": 32,
+        "different_values": 3,
+        "max_abs_difference": 1.0000000003410059e-10,
+        "max_relative_difference": 2.185164265005809e-07,
+        "max_difference_index_zero_based": 5,
+        "continuous_value_at_max": 0.0004576315,
+        "restart_value_at_max": 0.0004576314
+      },
+      {
+        "label": "humorg",
+        "kind": "numeric",
+        "value_count": 30,
+        "different_values": 10,
+        "max_abs_difference": 1.000000000139778e-06,
+        "max_relative_difference": 9.910429539222287e-07,
+        "max_difference_index_zero_based": 18,
+        "continuous_value_at_max": 1.009037,
+        "restart_value_at_max": 1.009038
+      },
+      {
+        "label": "inipho",
+        "kind": "numeric",
+        "value_count": 220,
+        "different_values": 34,
+        "max_abs_difference": 1.0000000000287557e-07,
+        "max_relative_difference": 6.318803875883247e-07,
+        "max_difference_index_zero_based": 98,
+        "continuous_value_at_max": 0.1582578,
+        "restart_value_at_max": 0.1582577
+      },
+      {
+        "label": "nitrat",
+        "kind": "numeric",
+        "value_count": 32,
+        "different_values": 8,
+        "max_abs_difference": 1.0000000003410059e-09,
+        "max_relative_difference": 1.8265407333944723e-07,
+        "max_difference_index_zero_based": 2,
+        "continuous_value_at_max": 0.00547483,
+        "restart_value_at_max": 0.005474829
+      },
+      {
+        "label": "orgfsh",
+        "kind": "numeric",
+        "value_count": 750,
+        "different_values": 12,
+        "max_abs_difference": 1.0000000003174137e-05,
+        "max_relative_difference": 2.9183591943268663e-07,
+        "max_difference_index_zero_based": 560,
+        "continuous_value_at_max": 34.26582,
+        "restart_value_at_max": 34.26583
+      },
+      {
+        "label": "orgsol",
+        "kind": "numeric",
+        "value_count": 64,
+        "different_values": 1,
+        "max_abs_difference": 9.999999999940612e-09,
+        "max_relative_difference": 8.472171036138563e-07,
+        "max_difference_index_zero_based": 28,
+        "continuous_value_at_max": 0.01180335,
+        "restart_value_at_max": 0.01180334
+      }
+    ],
+    "largest_absolute_difference": 1.0000000003174137e-05
+  },
+  "interpretation": {
+    "behavioural_split_equivalence_qualified": false,
+    "external_crop_split_route_executable": true,
+    "management_cursor_failure_observed": false,
+    "first_post_restart_hydrology_surface_rebind_failure_observed": true,
+    "final_state_divergence_observed": true,
+    "single_cause_attribution_proven": false,
+    "serializer_restore_precision_remains_candidate_contributor": true,
+    "legacy_output_init_is_canonical_checkpoint": false,
+    "local_tolerance_introduced": false
+  },
+  "next": [
+    "isolate first post-restart hydrology t0/t1/frame positioning and explain the 5e-5 m Pn discontinuity",
+    "separately isolate Output_Init formatting/restore precision effects on final-state divergence",
+    "repeat split only after those seams are qualified; do not promote this run to STATE admission"
+  ]
+}

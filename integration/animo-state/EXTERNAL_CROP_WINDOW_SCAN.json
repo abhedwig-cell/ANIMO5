@@ -1,0 +1,502 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "status": "PASS_EXTERNAL_CROP_EXACT_ZERO_SUBWINDOW_SCAN_SPLIT_BEHAVIOUR_NOT_QUALIFIED",
+  "evidence_class": "B0_HASH_PINNED_DIAGNOSTIC_OBSERVER_EXECUTION_NOT_B2",
+  "canonical_state_admission": "NOT_ADMITTED",
+  "canonical_time_admission": "NOT_ADMITTED",
+  "production_code": false,
+  "physics_change": false,
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "compiler": "GNU Fortran (Debian 14.2.0-19) 14.2.0",
+  "compiler_flags": [
+    "-ffree-form",
+    "-ffree-line-length-none",
+    "-fallow-argument-mismatch",
+    "-std=legacy",
+    "-fdefault-real-8",
+    "-fdefault-double-8",
+    "-fno-automatic"
+  ],
+  "observer_executable_sha256": "96897522422df62a6c7dc00fd243a4c3f33e4018bad3a42a6f49fdfa22b7b9b2",
+  "cases": {
+    "GrassPeat": {
+      "start_date": "1986-01-01",
+      "end_date": "2000-12-31",
+      "surface_records": 540,
+      "strict_zero_records": 438,
+      "management_events": 366,
+      "zero_runs": [
+        {
+          "records": 41,
+          "tito_start": 1035.0,
+          "tito_end": 1440.0,
+          "date_start": "1988-10-31",
+          "date_end": "1989-12-10"
+        },
+        {
+          "records": 30,
+          "tito_start": 709.0,
+          "tito_end": 1004.0,
+          "date_start": "1987-12-10",
+          "date_end": "1988-09-30"
+        },
+        {
+          "records": 27,
+          "tito_start": 3722.0,
+          "tito_end": 3987.0,
+          "date_start": "1996-03-10",
+          "date_end": "1996-11-30"
+        },
+        {
+          "records": 26,
+          "tito_start": 5041.0,
+          "tito_end": 5295.0,
+          "date_start": "1999-10-20",
+          "date_end": "2000-06-30"
+        },
+        {
+          "records": 22,
+          "tito_start": 1471.0,
+          "tito_end": 1683.0,
+          "date_start": "1990-01-10",
+          "date_end": "1990-08-10"
+        },
+        {
+          "records": 22,
+          "tito_start": 4322.0,
+          "tito_end": 4534.0,
+          "date_start": "1997-10-31",
+          "date_end": "1998-05-31"
+        },
+        {
+          "records": 20,
+          "tito_start": 1895.0,
+          "tito_end": 2089.0,
+          "date_start": "1991-03-10",
+          "date_end": "1991-09-20"
+        },
+        {
+          "records": 20,
+          "tito_start": 3246.0,
+          "tito_end": 3438.0,
+          "date_start": "1994-11-20",
+          "date_end": "1995-05-31"
+        },
+        {
+          "records": 19,
+          "tito_start": 2222.0,
+          "tito_end": 2404.0,
+          "date_start": "1992-01-31",
+          "date_end": "1992-07-31"
+        },
+        {
+          "records": 18,
+          "tito_start": 2577.0,
+          "tito_end": 2748.0,
+          "date_start": "1993-01-20",
+          "date_end": "1993-07-10"
+        },
+        {
+          "records": 18,
+          "tito_start": 3001.0,
+          "tito_end": 3175.0,
+          "date_start": "1994-03-20",
+          "date_end": "1994-09-10"
+        },
+        {
+          "records": 17,
+          "tito_start": 3468.0,
+          "tito_end": 3631.0,
+          "date_start": "1995-06-30",
+          "date_end": "1995-12-10"
+        },
+        {
+          "records": 16,
+          "tito_start": 4807.0,
+          "tito_end": 4960.0,
+          "date_start": "1999-02-28",
+          "date_end": "1999-07-31"
+        },
+        {
+          "records": 15,
+          "tito_start": 4049.0,
+          "tito_end": 4189.0,
+          "date_start": "1997-01-31",
+          "date_end": "1997-06-20"
+        },
+        {
+          "records": 14,
+          "tito_start": 151.0,
+          "tito_end": 283.0,
+          "date_start": "1986-05-31",
+          "date_end": "1986-10-10"
+        },
+        {
+          "records": 12,
+          "tito_start": 2435.0,
+          "tito_end": 2546.0,
+          "date_start": "1992-08-31",
+          "date_end": "1992-12-20"
+        },
+        {
+          "records": 11,
+          "tito_start": 416.0,
+          "tito_end": 516.0,
+          "date_start": "1987-02-20",
+          "date_end": "1987-05-31"
+        },
+        {
+          "records": 10,
+          "tito_start": 2789.0,
+          "tito_end": 2881.0,
+          "date_start": "1993-08-20",
+          "date_end": "1993-11-20"
+        },
+        {
+          "records": 10,
+          "tito_start": 4687.0,
+          "tito_end": 4779.0,
+          "date_start": "1998-10-31",
+          "date_end": "1999-01-31"
+        },
+        {
+          "records": 9,
+          "tito_start": 5326.0,
+          "tito_end": 5407.0,
+          "date_start": "2000-07-31",
+          "date_end": "2000-10-20"
+        },
+        {
+          "records": 8,
+          "tito_start": 4219.0,
+          "tito_end": 4291.0,
+          "date_start": "1997-07-20",
+          "date_end": "1997-09-30"
+        },
+        {
+          "records": 6,
+          "tito_start": 69.0,
+          "tito_end": 120.0,
+          "date_start": "1986-03-10",
+          "date_end": "1986-04-30"
+        },
+        {
+          "records": 5,
+          "tito_start": 1805.0,
+          "tito_end": 1846.0,
+          "date_start": "1990-12-10",
+          "date_end": "1991-01-20"
+        },
+        {
+          "records": 4,
+          "tito_start": 546.0,
+          "tito_end": 577.0,
+          "date_start": "1987-06-30",
+          "date_end": "1987-07-31"
+        },
+        {
+          "records": 4,
+          "tito_start": 648.0,
+          "tito_end": 679.0,
+          "date_start": "1987-10-10",
+          "date_end": "1987-11-10"
+        },
+        {
+          "records": 4,
+          "tito_start": 1744.0,
+          "tito_end": 1775.0,
+          "date_start": "1990-10-10",
+          "date_end": "1990-11-10"
+        },
+        {
+          "records": 3,
+          "tito_start": 344.0,
+          "tito_end": 365.0,
+          "date_start": "1986-12-10",
+          "date_end": "1986-12-31"
+        },
+        {
+          "records": 3,
+          "tito_start": 2119.0,
+          "tito_end": 2140.0,
+          "date_start": "1991-10-20",
+          "date_end": "1991-11-10"
+        },
+        {
+          "records": 3,
+          "tito_start": 2942.0,
+          "tito_end": 2963.0,
+          "date_start": "1994-01-20",
+          "date_end": "1994-02-10"
+        },
+        {
+          "records": 3,
+          "tito_start": 4564.0,
+          "tito_end": 4584.0,
+          "date_start": "1998-06-30",
+          "date_end": "1998-07-20"
+        },
+        {
+          "records": 3,
+          "tito_start": 5448.0,
+          "tito_end": 5468.0,
+          "date_start": "2000-11-30",
+          "date_end": "2000-12-20"
+        },
+        {
+          "records": 2,
+          "tito_start": 31.0,
+          "tito_end": 41.0,
+          "date_start": "1986-01-31",
+          "date_end": "1986-02-10"
+        },
+        {
+          "records": 2,
+          "tito_start": 608.0,
+          "tito_end": 618.0,
+          "date_start": "1987-08-31",
+          "date_end": "1987-09-10"
+        },
+        {
+          "records": 2,
+          "tito_start": 3205.0,
+          "tito_end": 3215.0,
+          "date_start": "1994-10-10",
+          "date_end": "1994-10-20"
+        },
+        {
+          "records": 2,
+          "tito_start": 4615.0,
+          "tito_end": 4626.0,
+          "date_start": "1998-08-20",
+          "date_end": "1998-08-31"
+        },
+        {
+          "records": 2,
+          "tito_start": 5001.0,
+          "tito_end": 5011.0,
+          "date_start": "1999-09-10",
+          "date_end": "1999-09-20"
+        },
+        {
+          "records": 1,
+          "tito_start": 314.0,
+          "tito_end": 314.0,
+          "date_start": "1986-11-10",
+          "date_end": "1986-11-10"
+        },
+        {
+          "records": 1,
+          "tito_start": 1714.0,
+          "tito_end": 1714.0,
+          "date_start": "1990-09-10",
+          "date_end": "1990-09-10"
+        },
+        {
+          "records": 1,
+          "tito_start": 2191.0,
+          "tito_end": 2191.0,
+          "date_start": "1991-12-31",
+          "date_end": "1991-12-31"
+        },
+        {
+          "records": 1,
+          "tito_start": 2911.0,
+          "tito_end": 2911.0,
+          "date_start": "1993-12-20",
+          "date_end": "1993-12-20"
+        },
+        {
+          "records": 1,
+          "tito_start": 4656.0,
+          "tito_end": 4656.0,
+          "date_start": "1998-09-30",
+          "date_end": "1998-09-30"
+        }
+      ],
+      "strict_neighbor_non_event_same_year_candidates": 48,
+      "external_crop_start_compatible_candidates": 37
+    },
+    "LWKM_gras_1040.2021.2045": {
+      "start_date": "2021-01-01",
+      "end_date": "2045-12-31",
+      "surface_records": 900,
+      "strict_zero_records": 898,
+      "management_events": 600,
+      "zero_runs": [
+        {
+          "records": 617,
+          "tito_start": 2881.0,
+          "tito_end": 9131.0,
+          "date_start": "2028-11-20",
+          "date_end": "2045-12-31"
+        },
+        {
+          "records": 281,
+          "tito_start": 10.0,
+          "tito_end": 2850.0,
+          "date_start": "2021-01-10",
+          "date_end": "2028-10-20"
+        }
+      ],
+      "strict_neighbor_non_event_same_year_candidates": 150,
+      "external_crop_start_compatible_candidates": 89
+    },
+    "STONE_akk_0006.2001.2015": {
+      "start_date": "2001-01-01",
+      "end_date": "2015-12-31",
+      "surface_records": 540,
+      "strict_zero_records": 492,
+      "management_events": 271,
+      "zero_runs": [
+        {
+          "records": 90,
+          "tito_start": 4442.0,
+          "tito_end": 5345.0,
+          "date_start": "2013-02-28",
+          "date_end": "2015-08-20"
+        },
+        {
+          "records": 75,
+          "tito_start": 3662.0,
+          "tito_end": 4414.0,
+          "date_start": "2011-01-10",
+          "date_end": "2013-01-31"
+        },
+        {
+          "records": 61,
+          "tito_start": 1846.0,
+          "tito_end": 2454.0,
+          "date_start": "2006-01-20",
+          "date_end": "2007-09-20"
+        },
+        {
+          "records": 49,
+          "tito_start": 2779.0,
+          "tito_end": 3266.0,
+          "date_start": "2008-08-10",
+          "date_end": "2009-12-10"
+        },
+        {
+          "records": 35,
+          "tito_start": 799.0,
+          "tito_end": 1146.0,
+          "date_start": "2003-03-10",
+          "date_end": "2004-02-20"
+        },
+        {
+          "records": 32,
+          "tito_start": 41.0,
+          "tito_end": 354.0,
+          "date_start": "2001-02-10",
+          "date_end": "2001-12-20"
+        },
+        {
+          "records": 27,
+          "tito_start": 1551.0,
+          "tito_end": 1815.0,
+          "date_start": "2005-03-31",
+          "date_end": "2005-12-20"
+        },
+        {
+          "records": 27,
+          "tito_start": 3346.0,
+          "tito_end": 3611.0,
+          "date_start": "2010-02-28",
+          "date_end": "2010-11-20"
+        },
+        {
+          "records": 23,
+          "tito_start": 385.0,
+          "tito_end": 608.0,
+          "date_start": "2002-01-20",
+          "date_end": "2002-08-31"
+        },
+        {
+          "records": 16,
+          "tito_start": 1175.0,
+          "tito_end": 1328.0,
+          "date_start": "2004-03-20",
+          "date_end": "2004-08-20"
+        },
+        {
+          "records": 16,
+          "tito_start": 2597.0,
+          "tito_end": 2748.0,
+          "date_start": "2008-02-10",
+          "date_end": "2008-07-10"
+        },
+        {
+          "records": 11,
+          "tito_start": 5376.0,
+          "tito_end": 5478.0,
+          "date_start": "2015-09-20",
+          "date_end": "2015-12-31"
+        },
+        {
+          "records": 9,
+          "tito_start": 2484.0,
+          "tito_end": 2566.0,
+          "date_start": "2007-10-20",
+          "date_end": "2008-01-10"
+        },
+        {
+          "records": 8,
+          "tito_start": 638.0,
+          "tito_end": 709.0,
+          "date_start": "2002-09-30",
+          "date_end": "2002-12-10"
+        },
+        {
+          "records": 5,
+          "tito_start": 1359.0,
+          "tito_end": 1400.0,
+          "date_start": "2004-09-20",
+          "date_end": "2004-10-31"
+        },
+        {
+          "records": 5,
+          "tito_start": 1471.0,
+          "tito_end": 1512.0,
+          "date_start": "2005-01-10",
+          "date_end": "2005-02-20"
+        },
+        {
+          "records": 2,
+          "tito_start": 1430.0,
+          "tito_end": 1440.0,
+          "date_start": "2004-11-30",
+          "date_end": "2004-12-10"
+        },
+        {
+          "records": 1,
+          "tito_start": 3318.0,
+          "tito_end": 3318.0,
+          "date_start": "2010-01-31",
+          "date_end": "2010-01-31"
+        }
+      ],
+      "strict_neighbor_non_event_same_year_candidates": 98,
+      "external_crop_start_compatible_candidates": 88
+    }
+  },
+  "selected_candidate": {
+    "case": "LWKM_gras_1040.2021.2045",
+    "selection_rule": "highest strict-zero fraction; then longest zero run; earliest external-crop-start-compatible strict non-event candidate in midpoint calendar year",
+    "midpoint_year": 2033,
+    "row_index_zero_based": 433,
+    "checkpoint_tito": 4403.0,
+    "checkpoint_end_date": "2033-01-20",
+    "restart_start_date": "2033-01-21",
+    "previous_tito": 4393.0,
+    "next_tito": 4414.0,
+    "next_step_length": 11.0,
+    "surface_storage_exact_zero": true,
+    "neighbor_surface_storage_exact_zero": true,
+    "management_event_at_previous_current_next": false,
+    "same_calendar_year_previous_current_next": true,
+    "external_crop_input_start_check_compatible": true,
+    "hidden_epsilon_used": false
+  }
+}

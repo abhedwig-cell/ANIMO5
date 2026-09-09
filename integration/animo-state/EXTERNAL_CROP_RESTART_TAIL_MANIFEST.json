@@ -1,0 +1,23 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "status": "QUALIFICATION_ONLY_EXTERNAL_CROP_RESTART_TAIL_PREPARED",
+  "checkpoint_tito": 4403.0,
+  "restart_start_date": "2033-01-21",
+  "next_original_add_number": 289,
+  "retained_management_periods": 13,
+  "retained_add_blocks": 312,
+  "first_rebased_event_coordinate": 37.0,
+  "annual_boundary_offset_years": 12,
+  "annual_boundary_years": 13,
+  "p_active_inpo1": true,
+  "checkpoint_sha256": "f27ae73d68db6323359dd4c6e7ecfae545c4972eff480cd4d216ef1f18506d50",
+  "restart_input_sha256": "f27ae73d68db6323359dd4c6e7ecfae545c4972eff480cd4d216ef1f18506d50",
+  "management_sha256": "1c7f62432ad849c0788c18765705a31abb1d65b5d9015b99df8528212ec89934",
+  "boundary_sha256": "f8c298faa386109e82f354060807e0a5bbd220fb361e046c2843cce9d38b61e3",
+  "hydrology_payload_modified_by_this_adapter": false,
+  "external_crop_payload_modified_by_this_adapter": false,
+  "canonical_state_admission": "NOT_ADMITTED",
+  "production_code": false,
+  "physics_change": false,
+  "qualification_boundary": "legacy input-tail adapter only; exact split behaviour must be tested independently"
+}
