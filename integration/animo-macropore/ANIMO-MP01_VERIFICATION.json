@@ -1,0 +1,73 @@
+{
+  "work_unit": "ANIMO-MP01",
+  "verification_head_before_closeout_status": "3107dc920da81354ec1676f2cd24d866aa12c756",
+  "base_head": "f7f3722b14f65340dc6d67a8f80d74f5d0ebb158",
+  "branch_relation_to_base": {
+    "status": "ahead",
+    "ahead_by": 7,
+    "behind_by": 0,
+    "merge_base_matches_base_head": true
+  },
+  "required_deliverables_present": true,
+  "deliverable_blobs": {
+    "docs/macropore/MACROPORE_PROCESS_MODEL.md": "f11817298996799e9cacd05c3eb5e611a09e087f",
+    "docs/macropore/MACROPORE_ACTIVATION_CONTRACT.md": "fac834d5542bec39d010d65bcbbac59d9417a7f9",
+    "docs/macropore/MACROPORE_CONSERVATION_IDENTITIES.md": "93502fe8a5683205eec066abcef7416278b12296",
+    "docs/macropore/TCD025_QUALIFICATION.md": "19939ad8267653e414419c3405dc885504d44c19"
+  },
+  "diagnostic_artifact": "integration/animo-macropore/ANIMO-MP01_DIAGNOSTIC.json",
+  "diagnostic_result": {
+    "water_cases_executed": 4,
+    "water_max_abs_reconstructed_residual_m": 8.673617379884035e-19,
+    "water_balance_warning_cases": 0,
+    "solute_cases_executed": 5,
+    "solute_max_abs_reconstructed_residual": 3.469446951953614e-18,
+    "solute_balance_warning_cases": 0,
+    "evidence_class": "SYNTHETIC_DIAGNOSTIC_ONLY",
+    "b1_causal_path_evidence": true,
+    "historical_reference_evidence": false
+  },
+  "source_identity": {
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "verified_before_diagnostics": true,
+    "frozen_source_modified": false
+  },
+  "testbank_identity": {
+    "archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "verified_before_diagnostics": true,
+    "frozen_testbank_modified": false,
+    "natural_macropore_active_cases": 0
+  },
+  "scope_diff": {
+    "legacy_source_paths_changed": false,
+    "testcase_paths_changed": false,
+    "production_code_paths_changed": false,
+    "files_added_before_status_closeout": [
+      "docs/macropore/ANIMO-MP01_WORK_UNIT_CONTRACT.md",
+      "docs/macropore/MACROPORE_ACTIVATION_CONTRACT.md",
+      "docs/macropore/MACROPORE_CONSERVATION_IDENTITIES.md",
+      "docs/macropore/MACROPORE_PROCESS_MODEL.md",
+      "docs/macropore/TCD025_QUALIFICATION.md",
+      "integration/animo-macropore/ANIMO-MP01_DIAGNOSTIC.json",
+      "integration/animo-macropore/ANIMO-MP01_STATUS.json"
+    ]
+  },
+  "qualified_findings": {
+    "activation": "SOURCE_SUPPORTED_DETAILED_HYDROLOGY_IOPTMP1_HLPIMP2_WITH_DYNAMIC_ND_GATE",
+    "two_domain_semantics": "THEORY_AND_SOURCE_SUPPORTED_MAIN_BYPASS_AND_INTERNAL_CATCHMENT_DISTINCT",
+    "water_conservation": "B1_CAUSALLY_EXERCISED_SPECIALIZED_WATER_CONSERVATION",
+    "solute_conservation": "B1_CAUSALLY_EXERCISED_SHARED_SOLUTE_KERNEL_CONSERVATION",
+    "restart": "SOURCE_CONFIRMED_PERSISTENT_RESTART_INCOMPLETE_FOR_MACROPORE_SOLUTES",
+    "tcd025": "SOURCE_AND_B1_PATH_CONFIRMED_MACROPORE_MAIN_LEDGER_CONTROL_VOLUME_GAP_HISTORICAL_MAGNITUDE_OPEN",
+    "historical_active_reference": "ABSENT"
+  },
+  "non_admissions": [
+    "no synthetic case promoted to B2",
+    "no historical reference admitted",
+    "no TCD-025 correction implemented",
+    "no production implementation",
+    "no B3 admission",
+    "no numerical tolerance established"
+  ],
+  "result": "PASS"
+}
