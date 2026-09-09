@@ -6,6 +6,7 @@
   "date": "2026-09-09",
   "parent_rg02_branch": "work/animo-rg02-branch-authority-integration",
   "starting_parent_head": "ec8709cd6a37c985ab7452bc0f2e6e64a430db6a",
+  "verification_head_before_status_closeout": "1bcf03f1afbbcf066077a169b6c6ec70086e93da",
   "decision": "QUALIFIED_INDEPENDENT_STREAM_ATTACHMENT_NO_SCIENTIFIC_COLLAPSE",
   "qualified": true,
   "blocked": false,
@@ -73,12 +74,16 @@
   "verification": {
     "audit_tool": "tools/audit_rg02_g5_stream_attachment.py",
     "audit_artifact": "integration/animo-reg/g5/ANIMO_RG02_G5_STRUCTURAL_AUDIT.json",
-    "audit_result": "PENDING_POST_MP02_REFRESH_CI",
+    "audit_result": "PASS",
     "github_actions_workflow": ".github/workflows/rg02-g5-stream-attachment.yml",
     "qualified_g5_closeout_run_id": 34318799877,
     "archg02_closeout_run_id": 34319423226,
     "archg02_closeout_head": "db8183802631902f41aa5bec518a3c2e63e03ab7",
-    "mp02_attachment_refresh_required_ci": true
+    "mp02_attachment_refresh_ci_run_id": 34320262728,
+    "mp02_attachment_refresh_ci_job_id": 102365107528,
+    "mp02_attachment_refresh_ci_head": "1bcf03f1afbbcf066077a169b6c6ec70086e93da",
+    "mp02_attachment_refresh_ci_conclusion": "success",
+    "mp02_attachment_refresh_checks_streams": 13
   },
   "evidence_boundaries": {
     "b2_reference_qualified": false,
