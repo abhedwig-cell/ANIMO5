@@ -132,8 +132,10 @@ def main() -> None:
     assert [str(x) for x in mutant_28] == recheck["wrong_K1_recomputed"]
     published_correct = [D(x) for x in oracle["published_expected_qnew"]]
     published_mutant = [D(x) for x in oracle["published_wrong_K1"]]
-    assert [str(published_correct[i] - correct_28[i]) for i in range(3)] == recheck["correct_published_minus_recomputed"]
-    assert [str(published_mutant[i] - mutant_28[i]) for i in range(3)] == recheck["wrong_K1_published_minus_recomputed"]
+    correct_delta = [published_correct[i] - correct_28[i] for i in range(3)]
+    mutant_delta = [published_mutant[i] - mutant_28[i] for i in range(3)]
+    assert correct_delta == [D(x) for x in recheck["correct_published_minus_recomputed"]]
+    assert mutant_delta == [D(x) for x in recheck["wrong_K1_published_minus_recomputed"]]
 
     # Closed multi-site internal transfer identity. The dissolved-state
     # counter-transfer is the exact negative of total slow-site storage gain.
