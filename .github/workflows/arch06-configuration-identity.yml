@@ -1,0 +1,19 @@
+name: ARCH06 normalized configuration identity audit
+
+on:
+  push:
+    branches:
+      - work/animo-arch06-normalized-model-configuration
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run ARCH06 structural and identity audit
+        run: python3 tools/audit_arch06_configuration_identity.py
