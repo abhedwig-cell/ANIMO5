@@ -1,0 +1,169 @@
+{
+  "work_unit": "ANIMO-B3E01",
+  "target_parent": "TCD-042",
+  "target_atom": "TCD-042-E1",
+  "class": "E_NUMERICAL_POLICY",
+  "requested_trigger": "Flpn=0 AND 0<Flux<1.0d-8",
+  "decision": "PARTIAL_TCD042_E1_CLASS_E_READINESS_POSITIVE_HETOP_POLICY_QUALIFIED_FULL_CHILD_DOMAIN_AND_ADMISSION_ROUTE_FAIL_CLOSED",
+  "base": {
+    "NQ03R_head": "0153779e9045c6527b7c31156f2295ff44b57eeb",
+    "NQ03_head": "8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6",
+    "B3I05_head": "7fa0162415e02a6f0167e71b48ae38177a9e06e0"
+  },
+  "frozen_b0": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "canonical_routing": {
+    "parent": "TCD-042",
+    "children": ["TCD-042-B1", "TCD-042-E1"],
+    "child_keys_are_top_level_tcd_rows": false,
+    "tcd_043_reserved": false,
+    "parent_admitted": false,
+    "e1_admitted": false
+  },
+  "qualified_policy": {
+    "name": "NQ03_RESTRICTED_NATURAL_ENVELOPE_QUADRATIC_DIMENSIONLESS_POLICY",
+    "conditioning_coordinate": "P=St*Flux/Hetop",
+    "domain": "Flpn=0, 0<Flux<1.0d-8, Hetop>0, 0<P<=3.8510200002999744e-7, binary64",
+    "A1": "exp(-P)",
+    "f": "1-P/2+P^2/6",
+    "g": "1/2-P/6+P^2/24",
+    "A2": "(St/Hetop)*f",
+    "B1": "f",
+    "B2": "(St/Hetop)*g",
+    "outside_envelope": "NOT_QUALIFIED_FAIL_CLOSED",
+    "production_implementation_selected": false
+  },
+  "independent_numerical_review": {
+    "work_unit": "ANIMO-NQ03R",
+    "outcome": "INDEPENDENT_REVIEW_PASS_RESTRICTED_POLICY",
+    "methodological_independence": true,
+    "organizational_independence_claimed": false,
+    "oracle_decimal_digits": 120,
+    "probe_points_unique": 2008,
+    "degree2_minimal_under_declared_truncation_criterion": true,
+    "conservation_identity_verified": true,
+    "equal_subinterval_semigroup_reviewed": true,
+    "zero_limit_matches_UBQ01": true
+  },
+  "legacy_and_expected_difference": {
+    "legacy_subthreshold_coefficients": {"A1": 1.0, "A2": 0.0, "B1": 1.0, "B2": 0.0},
+    "legacy_C1": "C0",
+    "legacy_Cavg": "C0",
+    "candidate_C1": "C0*exp(-P)+Load*(St/Hetop)*f(P)",
+    "candidate_Cavg": "C0*f(P)+Load*(St/Hetop)*g(P)",
+    "delta_C1": "C0*(exp(-P)-1)+Load*(St/Hetop)*f(P)",
+    "delta_Cavg": "C0*(f(P)-1)+Load*(St/Hetop)*g(P)",
+    "delta_same_interval_export": "St*Flux*delta_Cavg",
+    "accepted_end_reservoir_state_may_change": true,
+    "same_interval_export_may_change": true,
+    "later_state_and_flux_descendants_may_change": true,
+    "hydrology_forcing_changed": false,
+    "legacy_flux_threshold_changed": false
+  },
+  "natural_coverage": {
+    "finite_positive_records": 1238,
+    "cases": 6,
+    "P_min": 4.2351647362715017e-20,
+    "P_max": 3.8510200002999744e-7,
+    "nonzero_mineral_N_load_records": 4,
+    "Ruurlo_nonzero_load_TITO": [527, 533, 595, 847],
+    "P_enabled_records": 748,
+    "P_nonzero_load_records": 0,
+    "DOM_nonzero_load_records": 0,
+    "DON_nonzero_load_records": 0,
+    "interpretation": "natural branch reachability is broad, but loaded-event materiality in the persisted trace is directly demonstrated only for mineral N; the numerical coefficient oracle itself is species-independent"
+  },
+  "domain_reconciliation": {
+    "nq03_requires_Hetop_positive": true,
+    "legacy_input_accepts_Hetop_zero": true,
+    "source_bound_peer_recheck": {
+      "work_unit": "ANIMO-B3B02",
+      "head": "412bf889ce959d85c651c3b9180dec0a6ff9bb61",
+      "input_source": "input1.for:1826-1829",
+      "input_lower_bound": 0.0,
+      "checkrea_semantics": "equality at lower bound is accepted"
+    },
+    "P_at_Hetop_zero": "UNDEFINED_FOR_FINITE_POSITIVE_FLUX",
+    "recovered_equation_at_Hetop_zero": "0 = Load - Flux*C",
+    "full_B3I05_E1_trigger_covered_by_NQ03": false,
+    "positive_Hetop_subdomain_covered": true,
+    "zero_thickness_semantics": "FAIL_CLOSED_UNRESOLVED",
+    "silent_Hetop_guard_authorized": false
+  },
+  "implementation_order_constraint": {
+    "severity": "NON_BLOCKING_FOR_RESTRICTED_POLICY_BLOCKING_BEFORE_BITWISE_PRODUCTION_BINDING",
+    "horner_exact_rounded_oracle_match_points": 2008,
+    "literal_order_f_mismatch_points": 67,
+    "literal_order_g_mismatch_points": 73,
+    "unique_points_with_literal_order_mismatch": 129,
+    "required_before_production_binding": "freeze coefficient evaluation order and FP contraction/reassociation semantics, or qualify the selected implementation against an equation-derived ulp bound",
+    "hidden_epsilon_allowed": false,
+    "balance_residual_tolerance_allowed": false
+  },
+  "governance_route": {
+    "B3Q01_head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "GOV02_head": "db7add6f9561730bbf352aa7fd3f3968405cfaa3",
+    "PREP02R_live_head": "a2fda49871ee3c7104daf7e06cd8dffdac06b125",
+    "PREP02R_status": "PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED",
+    "normal_B2_reference_available": false,
+    "historical_reference_artifact_obtained": false,
+    "historical_uncertainty_route_eligible": false,
+    "external_wur_archival_request_sent": false,
+    "modern_2026_native_executable_is_historical_B2": false,
+    "normal_route": "FAIL_CLOSED_B2_UNAVAILABLE",
+    "historical_uncertainty_route": "FAIL_CLOSED_ACQUISITION_NOT_CLOSED"
+  },
+  "formal_disposition_carrier": {
+    "current_B3Q01_schema_tcd_id_pattern": "^TCD-[0-9]{3}$",
+    "child_atom_id": "TCD-042-E1",
+    "child_atom_matches_current_tcd_id_pattern": false,
+    "B3I05_child_is_top_level_register_row": false,
+    "parent_only_substitution_used": false,
+    "treatment": "FAIL_CLOSED_PENDING_CHILD_ATOM_DISPOSITION_ROUTING_CONVENTION_OR_SCHEMA_ADAPTER",
+    "reason": "A formal atomic disposition must not silently encode the atom as the non-atomic parent TCD-042."
+  },
+  "readiness_gates": {
+    "frozen_B0_identity": "PASS",
+    "canonical_child_routing": "PASS",
+    "governing_equation": "PASS",
+    "legacy_policy_reconstructed": "PASS",
+    "conditioning_coordinate": "PASS",
+    "high_precision_oracle": "PASS",
+    "candidate_policy_selection": "PASS_RESTRICTED_DOMAIN",
+    "series_truncation": "PASS_RESTRICTED_DOMAIN",
+    "binary64_precision": "PASS_RESTRICTED_DOMAIN",
+    "binary32_sensitivity": "PASS_SENSITIVITY_ONLY_NOT_ADMITTED",
+    "conservation": "PASS_RESTRICTED_DOMAIN",
+    "interval_subdivision": "PASS_RESTRICTED_DOMAIN",
+    "exact_zero_continuity": "PASS_WITHOUT_B1_REDEFINITION",
+    "independent_numerical_review": "PASS",
+    "natural_reachability": "PASS",
+    "natural_loaded_event_materiality": "PASS_MINERAL_N_ONLY_LIMITATION_RECORDED",
+    "implementation_order_for_production_binding": "FAIL_CLOSED_NOT_FROZEN",
+    "full_child_trigger_domain": "FAIL_CLOSED_HETOP_ZERO_ACCEPTED_BUT_UNQUALIFIED",
+    "zero_thickness_semantics": "FAIL_CLOSED_UNRESOLVED",
+    "normal_B2_route": "FAIL_CLOSED_UNAVAILABLE",
+    "historical_uncertainty_route": "FAIL_CLOSED_NOT_ELIGIBLE",
+    "formal_child_disposition_carrier": "FAIL_CLOSED_UNRESOLVED",
+    "independent_B3_disposition_review": "FAIL_CLOSED_NOT_PERFORMED"
+  },
+  "admission": {
+    "restricted_positive_Hetop_numerical_policy_qualified": true,
+    "full_requested_E1_trigger_admission_ready": false,
+    "corrected_legacy_admitted": false,
+    "parent_tcd_admitted": false,
+    "numerical_policy_admitted_to_B3": false,
+    "production_binding_authorized": false,
+    "production_migration_admitted": false
+  },
+  "residual_uncertainty": [
+    "Hetop=0 is accepted by frozen input validation but is outside the NQ03 positive-Hetop policy domain",
+    "the full B3I05 E1 child trigger has not been refined or qualified for zero-thickness semantics",
+    "historical B2 remains unavailable and GOV02 acquisition closure remains incomplete",
+    "the current formal B3 disposition schema does not directly encode child atom identifiers",
+    "a separate independent review of any eventual B3 disposition remains required",
+    "production evaluation order and FP contraction/reassociation semantics are not yet frozen"
+  ]
+}
