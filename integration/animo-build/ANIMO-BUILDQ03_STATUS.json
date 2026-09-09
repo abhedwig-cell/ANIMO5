@@ -1,7 +1,7 @@
 {
   "work_unit": "ANIMO-BUILDQ03",
   "title": "GHG Explicit Task/Solver Context Qualification",
-  "status": "GHG_TCD011_EXPLICIT_CONTEXT_EQUIVALENCE_CONFIRMED_FOR_PONDING_CH4_N2O_SHARED_TRANSPORT_GHGASSES_PHASE_CONTEXT_OPEN_HISTORICAL_INTEL_OPEN",
+  "status": "QUALIFIED_GHG_HIDDEN_TASK_CONTEXT_OWNERSHIP_AND_CONTROLLED_EQUIVALENCE_FLAIR_BOTTOM_BOUNDARY_RUNTIME_HAZARD_SEPARATE_HISTORICAL_INTEL_OPEN",
   "branch": "work/animo-buildq03-ghg-task-context-qualification",
   "base": {
     "branch": "work/animo-buildq02-tcd011-storage-runtime-qualification",
@@ -9,7 +9,8 @@
   },
   "canonical_routing": {
     "authority_branch": "work/animo-b3i01-canonical-register-append",
-    "authority_head": "d2fe4eb3793a1ffc6c09197d7db01c3e3fe33f88",
+    "routing_head_consumed": "d2fe4eb3793a1ffc6c09197d7db01c3e3fe33f88",
+    "latest_closeout_head_checked": "8e3ce76a3b842814d3f1e3bbebdcbf84e77768f3",
     "source_local_key": "GHG01-LCL-GHG-HIDDEN-TASK-STATE-PERSISTENCE",
     "canonical_tcd": "TCD-011",
     "new_tcd_requested": false
@@ -51,6 +52,7 @@
       "persistent_model_state": false,
       "explicit_context_equivalence": true,
       "reference_output_sha256": "5ead8015d31cfe0ae58a8a9d3fecb49f5059c31c674c9af2824c0d131f709afc",
+      "diagnostic_explicit_source_sha256": "63575307aa170187b68b3e20d116c535b02a5d4984c2f88195ad531a5e078f12",
       "source_format_boundary": "syntax-preserving GNU fixed-form normalization in combined diagnostic copy"
     },
     "GHGtranssub": {
@@ -59,11 +61,46 @@
       "explicit_context_equivalence": true,
       "context_minimization_qualified": false,
       "reference_output_sha256": "54bb8578d13d1f65ee156c2bb6aa7ec105656d8528178f38a867849d2dbb3e8b",
+      "diagnostic_explicit_source_sha256": "6adb9df1eee8729a476b18b620074d40aea44648bb404a8d1109411daeb92ae8",
       "source_format_boundary": "syntax-preserving GNU fixed-form normalization in isolated diagnostic copy"
+    },
+    "GHGasses": {
+      "owner": "GHG_TIMESTEP_PHASE_CONTEXT",
+      "persistent_model_state": false,
+      "explicit_context_equivalence": true,
+      "matrix_cases": 16,
+      "members": [
+        "Floux",
+        "Mofrx",
+        "Mofrsax",
+        "Flaiib",
+        "Flaiio",
+        "Flaiou",
+        "FlaiAtmos"
+      ],
+      "task1_helper_not_cross_call": ["Flair"],
+      "explicit_nonhidden_related_arguments": ["Mofrox", "Mofrtx"],
+      "reference_output_sha256": "c4f47a3e09b6087a37d7351dcea62aa103a4e2421e1a018693eba8d9edbfcc55",
+      "original_automatic_output_sha256": "411f2ee264dbdb4c3f5bd80eed58e17f131f610512bb57d7545113335febdc46",
+      "diagnostic_explicit_source_sha256": "2439d63bfe2dc9753dff7d302f7434117265609512ffc4832c59e08646eab9b2",
+      "recomputation_at_task2_qualified": false,
+      "diagnostic_hazard_isolation": "Flair(Nl+1)=0.0 used only to isolate independent initialization seam; not admitted semantics"
     }
   },
-  "open_runtime_families": {
-    "GHGasses": "SOURCE_SUPPORTED_RECONSTRUCTION_CANDIDATE_RUNTIME_UNQUALIFIED"
+  "additional_runtime_hazards": {
+    "BUILDQ03-LCL-GHGASSES-FLAIR-NLPLUS1-UNINITIALIZED": {
+      "routine": "GHGasses",
+      "hazard_class": "CONDITIONAL_UNINITIALIZED_LOCAL_BOUNDARY_SLOT",
+      "source_confirmed": true,
+      "controlled_gnu_probe": true,
+      "variable_expression": "Flair(Nl+1) read by bottom-layer Flaiio/Flaiou transformation when La < Nl",
+      "controlled_probe_observation": "automatic O0 explicit-context projection produced NaN in bottom-layer air-flow terms; O2 happened to match retained/static output",
+      "downstream_path": "Flaiio/Flaiou -> GHGtransport/GHGtranssub air-flow terms -> air-flow-dependent transport coefficients including Y2/Y3",
+      "scientific_state_candidate": false,
+      "historical_intel": "UNKNOWN",
+      "canonical_disposition_requested": "RUNTIME_INITIALIZATION_HAZARD_PENDING_B3_INTAKE_NO_NEW_TCD_REQUESTED_BY_BUILDQ03",
+      "production_correction_admitted": false
+    }
   },
   "diagnostic_materiality": {
     "GHGponding_automatic": "NAN_RESTORE_UNDER_SNAN_INITIALIZATION",
@@ -71,23 +108,30 @@
     "CH4oxid_automatic_O2": "SOLVER_CONTROL_FLOW_CHANGED_FALSE_CONVERGENCE",
     "N2O_automatic": "SOLVER_CONTROL_FLOW_CHANGED_AND_NAN_FINALIZATION",
     "GHGtranssub_automatic": "TASK2_AVERAGE_AND_END_CONCENTRATIONS_NAN",
-    "GHGtransport_automatic": "TASK2_CAPTURED_AVERAGE_AND_END_GAS_STATE_NAN"
+    "GHGtransport_automatic": "TASK2_CAPTURED_AVERAGE_AND_END_GAS_STATE_NAN",
+    "GHGasses_automatic": "TASK2_PHASE_PROJECTION_CONTEXT_LOST; OUTPUT_HASH_DIFFERS_FROM_RETAINED_STATIC_REFERENCE"
   },
   "semantic_rules_strengthened": [
     "pre-mutation snapshots must be explicit when the caller-visible representation is temporarily overwritten",
     "nonlinear iteration history is solver context, not accepted persistent physical state",
-    "fixed transport coefficients belong to scoped timestep solver context",
-    "fixed setup context may only be recomputed after input invariance and equivalence are proven",
+    "fixed transport coefficients belong to scoped timestep solver context unless recomputation equivalence is separately proven",
+    "phase-1 projections consumed after a procedure return require explicit phase context unless deterministic recomputation is proven",
     "blanket static-local storage is not an ANIMO5 state architecture",
-    "historical Intel behavior remains separate from GNU diagnostic evidence"
+    "hidden compiler lifetime must not be converted wholesale into checkpointed ModelState",
+    "historical Intel behavior remains separate from GNU diagnostic evidence",
+    "an explicit-context qualification must not silently repair an independently exposed uninitialized-read seam"
   ],
+  "qualification_counts": {
+    "qualified_active_hidden_family_count": 6,
+    "open_active_hidden_family_count": 0,
+    "separate_runtime_hazards_pending_intake": 1
+  },
   "remaining_work": [
-    "determine whether GHGasses phase-1 hydrology and air-flow projection can be explicitly threaded or deterministically recomputed at phase 2 without changing semantics",
-    "persist diagnostic reproduction assets and source-format normalization recipe",
-    "reconcile completed BUILDQ03 evidence back into B3 governance without closing TCD-011 unless all required historical/runtime conditions are met"
+    "route BUILDQ03-LCL-GHGASSES-FLAIR-NLPLUS1-UNINITIALIZED through B3 runtime intake without silently assigning scientific semantics",
+    "retain TCD-011 open for historical Intel storage semantics and non-GHG storage-duration families",
+    "use the qualified explicit owner model as migration input only after normal architecture and admission gates",
+    "do not admit Flair(Nl+1)=0.0 or any blanket SAVE/static compiler setting as a production correction"
   ],
-  "qualified_runtime_family_count": 5,
-  "open_active_family_count": 1,
   "historical_intel_equivalence_qualified": false,
   "tcd011_closed": false,
   "b3_scientific_admitted": false,
