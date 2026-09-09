@@ -1,7 +1,7 @@
 {
   "work_unit": "ANIMO-BUILDQ03",
   "title": "GHG Explicit Task/Solver Context Qualification",
-  "status": "PARTIAL_GHG_TCD011_EXPLICIT_CONTEXT_EQUIVALENCE_CONFIRMED_FOR_PONDING_CH4_N2O_TRANSPORT_CONTEXT_OPEN_HISTORICAL_INTEL_OPEN",
+  "status": "GHG_TCD011_EXPLICIT_CONTEXT_EQUIVALENCE_CONFIRMED_FOR_PONDING_CH4_N2O_SHARED_TRANSPORT_GHGASSES_PHASE_CONTEXT_OPEN_HISTORICAL_INTEL_OPEN",
   "branch": "work/animo-buildq03-ghg-task-context-qualification",
   "base": {
     "branch": "work/animo-buildq02-tcd011-storage-runtime-qualification",
@@ -45,33 +45,49 @@
       "explicit_context_equivalence": true,
       "context_minimization_qualified": false,
       "reference_output_sha256": "ffb0c1fb1f7471ac9d50d214717ce1bcc520fdf2fbb5e91e223d3a5ec52f88b4"
+    },
+    "GHGtransport": {
+      "owner": "GAS_TRANSPORT_BRANCH_AND_REPRESENTATION_SNAPSHOT_CONTEXT",
+      "persistent_model_state": false,
+      "explicit_context_equivalence": true,
+      "reference_output_sha256": "5ead8015d31cfe0ae58a8a9d3fecb49f5059c31c674c9af2824c0d131f709afc",
+      "source_format_boundary": "syntax-preserving GNU fixed-form normalization in combined diagnostic copy"
+    },
+    "GHGtranssub": {
+      "owner": "FIXED_TIMESTEP_TRANSPORT_COEFFICIENT_CONTEXT",
+      "persistent_model_state": false,
+      "explicit_context_equivalence": true,
+      "context_minimization_qualified": false,
+      "reference_output_sha256": "54bb8578d13d1f65ee156c2bb6aa7ec105656d8528178f38a867849d2dbb3e8b",
+      "source_format_boundary": "syntax-preserving GNU fixed-form normalization in isolated diagnostic copy"
     }
   },
   "open_runtime_families": {
-    "GHGasses": "SOURCE_SUPPORTED_RECONSTRUCTION_CANDIDATE_RUNTIME_UNQUALIFIED",
-    "GHGtransport": "SOURCE_QUALIFIED_CONTEXT_OWNER_RUNTIME_EQUIVALENCE_OPEN",
-    "GHGtranssub": "SOURCE_QUALIFIED_FIXED_COEFFICIENT_CONTEXT_RUNTIME_EQUIVALENCE_OPEN"
+    "GHGasses": "SOURCE_SUPPORTED_RECONSTRUCTION_CANDIDATE_RUNTIME_UNQUALIFIED"
   },
   "diagnostic_materiality": {
     "GHGponding_automatic": "NAN_RESTORE_UNDER_SNAN_INITIALIZATION",
     "CH4oxid_automatic_O0": "SIGSEGV_IN_CONTROLLED_PROBE",
     "CH4oxid_automatic_O2": "SOLVER_CONTROL_FLOW_CHANGED_FALSE_CONVERGENCE",
-    "N2O_automatic": "SOLVER_CONTROL_FLOW_CHANGED_AND_NAN_FINALIZATION"
+    "N2O_automatic": "SOLVER_CONTROL_FLOW_CHANGED_AND_NAN_FINALIZATION",
+    "GHGtranssub_automatic": "TASK2_AVERAGE_AND_END_CONCENTRATIONS_NAN",
+    "GHGtransport_automatic": "TASK2_CAPTURED_AVERAGE_AND_END_GAS_STATE_NAN"
   },
   "semantic_rules_strengthened": [
     "pre-mutation snapshots must be explicit when the caller-visible representation is temporarily overwritten",
     "nonlinear iteration history is solver context, not accepted persistent physical state",
+    "fixed transport coefficients belong to scoped timestep solver context",
     "fixed setup context may only be recomputed after input invariance and equivalence are proven",
     "blanket static-local storage is not an ANIMO5 state architecture",
     "historical Intel behavior remains separate from GNU diagnostic evidence"
   ],
   "remaining_work": [
-    "qualify GHGtransport explicit branch/snapshot context under automatic storage",
-    "qualify GHGtranssub fixed Task-1 coefficient context under automatic storage",
-    "determine whether GHGasses phase-1 projection can be deterministically recomputed at phase 2 without changing semantics",
-    "persist diagnostic reproduction assets and exact source diffs",
+    "determine whether GHGasses phase-1 hydrology and air-flow projection can be explicitly threaded or deterministically recomputed at phase 2 without changing semantics",
+    "persist diagnostic reproduction assets and source-format normalization recipe",
     "reconcile completed BUILDQ03 evidence back into B3 governance without closing TCD-011 unless all required historical/runtime conditions are met"
   ],
+  "qualified_runtime_family_count": 5,
+  "open_active_family_count": 1,
   "historical_intel_equivalence_qualified": false,
   "tcd011_closed": false,
   "b3_scientific_admitted": false,
