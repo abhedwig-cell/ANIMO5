@@ -60,42 +60,45 @@ def main() -> int:
         matrix_path = root / "integration/animo-architecture/ARCHG02_TEMPORAL_REVALIDATION_MATRIX.csv"
         with matrix_path.open(newline="", encoding="utf-8") as f:
             rows = list(csv.DictReader(f))
-        by_id = {r["item_id"]: r for r in rows}
+        by_id = {(r["item_id"] or "").strip(): r for r in rows}
         if len(rows) != 21 or set(by_id) != EXPECTED_IDS:
             raise AssertionError(f"temporal matrix coverage mismatch: rows={len(rows)} ids={sorted(by_id)}")
         if len(by_id) != len(rows):
             raise AssertionError("duplicate ARCHG02 item_id")
         checks.append({"check": "exact_temporal_revalidation_coverage", "result": "PASS", "rows": len(rows)})
 
+        def disposition(rid: str) -> str:
+            return (by_id[rid]["disposition"] or "").strip()
+
         contradicted = "CONTRADICTED_AS_LITERAL_LEGACY_BUT_VALID_CANDIDATE_ABSTRACTION"
         for rid in ["ARCHG02-R02", "ARCHG02-R03"]:
-            if by_id[rid]["disposition"] != contradicted:
+            if disposition(rid) != contradicted:
                 raise AssertionError(f"literal legacy contradiction guard changed for {rid}")
         for rid in ["ARCHG02-R04", "ARCHG02-R05", "ARCHG02-R07", "ARCHG02-R08"]:
-            if by_id[rid]["disposition"] != "SOURCE_CONSTRAINT_NOW_RESOLVED":
+            if disposition(rid) != "SOURCE_CONSTRAINT_NOW_RESOLVED":
                 raise AssertionError(f"source-bound resolution lost for {rid}")
         for rid in ["ARCHG02-R10", "ARCHG02-R11", "ARCHG02-R12", "ARCHG02-R13", "ARCHG02-R17"]:
-            if by_id[rid]["disposition"] != "CANDIDATE_POLICY_NOW_SPECIFIED_NONCANONICAL":
+            if disposition(rid) != "CANDIDATE_POLICY_NOW_SPECIFIED_NONCANONICAL":
                 raise AssertionError(f"candidate policy/noncanonical boundary changed for {rid}")
-        if by_id["ARCHG02-R15"]["disposition"] != "REMAINS_BLOCKED_B2":
+        if disposition("ARCHG02-R15") != "REMAINS_BLOCKED_B2":
             raise AssertionError("split-run B2 blocker lost")
-        if by_id["ARCHG02-R16"]["disposition"] != "REMAINS_BLOCKED_CANONICAL_STATE_TIME":
+        if disposition("ARCHG02-R16") != "REMAINS_BLOCKED_CANONICAL_STATE_TIME":
             raise AssertionError("canonical STATE/TIME blocker lost")
         for rid in ["ARCHG02-R19", "ARCHG02-R20", "ARCHG02-R21"]:
-            if by_id[rid]["disposition"] != "REMAINS_BLOCKED_SCIENTIFIC_OR_NUMERICAL":
+            if disposition(rid) != "REMAINS_BLOCKED_SCIENTIFIC_OR_NUMERICAL":
                 raise AssertionError(f"scientific/numerical blocker lost for {rid}")
         checks.append({"check": "critical_temporal_dispositions_locked", "result": "PASS"})
 
         seam_path = root / "integration/animo-architecture/ARCHG02_MIGRATION_SEAM_READINESS.csv"
         with seam_path.open(newline="", encoding="utf-8") as f:
             seam_rows = list(csv.DictReader(f))
-        seams = {r["seam"]: r for r in seam_rows}
+        seams = {(r["seam"] or "").strip(): r for r in seam_rows}
         if set(seams) != EXPECTED_SEAMS or len(seam_rows) != len(EXPECTED_SEAMS):
             raise AssertionError(f"migration seam coverage mismatch: observed={sorted(seams)}")
         for seam, row in seams.items():
-            if row["production_admitted"] != "NO":
+            if (row["production_admitted"] or "").strip() != "NO":
                 raise AssertionError(f"production improperly admitted for seam {seam}")
-        if seams["overall_candidate_architecture"]["archg02_temporal_revalidation"] != "REVALIDATED_WITH_FINAL_TS01_TIME01_CONSTRAINTS":
+        if (seams["overall_candidate_architecture"]["archg02_temporal_revalidation"] or "").strip() != "REVALIDATED_WITH_FINAL_TS01_TIME01_CONSTRAINTS":
             raise AssertionError("overall revalidation disposition changed")
         checks.append({"check": "migration_seams_remain_nonproduction", "result": "PASS", "seams": len(seam_rows)})
 
