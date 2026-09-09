@@ -1,0 +1,41 @@
+{
+  "work_unit": "ANIMO-TH01",
+  "title": "Revision-53 Theory, Extension Provenance & Scientific Intent Qualification",
+  "status": "IN_PROGRESS_SOURCE_BOUND_THEORY_PROVENANCE_AUDIT",
+  "branch": "work/animo-th01-rev53-theory-provenance",
+  "base_branch": "work/animo-eb01-evidence-baseline-model",
+  "base_head": "52411b9d2d6d80717914bc6642544290a54ded21",
+  "frozen_source": {
+    "artifact": "ANIMO_4.1.5.53(3).zip",
+    "version": "4.1.5",
+    "revision": "53",
+    "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566"
+  },
+  "supplied_documentation": {
+    "artifact": "ANIMO 4.0 User's Guide",
+    "sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "role": "AUTHORITATIVE_INHERITED_ANIMO40_THEORY_NOT_COMPLETE_REV53_AUTHORITY"
+  },
+  "evidence_model": {
+    "document": "docs/governance/ANIMO5_EVIDENCE_BASELINE_MODEL.md",
+    "B0": "historical artifact identity",
+    "B1": "reproducible diagnostic observation",
+    "B2": "independent historical behaviour",
+    "B3": "qualified scientific legacy baseline",
+    "B4": "admitted canonical ANIMO5 baseline"
+  },
+  "source_bound_evidence_heads": {
+    "PREP01_to_PREP05_common_source": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
+    "PREP06": "9b1f1ea51c24fb82823290193651830dc61ea3c8"
+  },
+  "deliverables": {
+    "work_unit_contract": "persisted",
+    "extension_reconciliation": "pending",
+    "provenance_register": "pending",
+    "ghg_qualification": "pending",
+    "macropore_qualification": "pending",
+    "p_sorption_qualification": "pending",
+    "theory_code_discrepancy_register_update": "pending_if_supported"
+  },
+  "production_migration": "NOT_ADMITTED"
+}
