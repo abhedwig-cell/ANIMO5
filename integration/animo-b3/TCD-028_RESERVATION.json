@@ -1,0 +1,79 @@
+{
+  "record_type": "TCD_RESERVATION_NOT_B3_DISPOSITION",
+  "tcd_id": "TCD-028",
+  "reservation_status": "RESERVED_PENDING_CANONICAL_REGISTER_APPEND_NOT_ADMITTED",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3-tcd028-stable-dom-intake",
+  "governance_base": {
+    "branch": "work/animo-b3q01-scientific-admission-framework",
+    "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "decision": "QUALIFIED_B3_SCIENTIFIC_ADMISSION_FRAMEWORK_NO_LEGACY_CORRECTIONS_ADMITTED",
+    "canonical_tcd_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "canonical_tcd_register_sha": "224acc350fde69d3c4aebed8628c0f945e0b3367",
+    "canonical_register_tail_at_reservation": "TCD-027"
+  },
+  "collision_avoidance_observation": {
+    "issue_search_tcd_028_matches": 0,
+    "pull_request_search_tcd_028_matches": 0,
+    "branch_name_search_028_matches": 0,
+    "observation_scope": "live GitHub searches immediately before reservation; not a transactional repository lock"
+  },
+  "process": "stable dissolved-organic matter plough redistribution accumulator lifecycle",
+  "finding": "CONFIRMED_SOURCE_USE_BEFORE_DEFINITION_AND_CURRENT_GNU_INTER_EVENT_ACCUMULATOR_CARRYOVER",
+  "provisional_class": "B",
+  "provisional_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "atomicity": "ATOMIC_LOCAL_EVENT_ACCUMULATOR_IDENTITY_CLAIM",
+  "candidate_claim": "define SuStdiorma, SuStdiorni and SuStdiorpo from the additive identity zero at the beginning of each plough event while preserving existing conditional phosphorus semantics",
+  "prep10_binding": {
+    "draft_pr": 9,
+    "branch": "work/animo-prep10-stable-dom-plough-accumulators",
+    "head": "65cd4a65a3ea27cd4ce004f505d5022fdb08b9ab",
+    "parent": "e3c3b0dfa8daabe345c51be8c4f29f2731d65c47",
+    "intake_issue": 8,
+    "decision": "QUALIFIED_GNU_DIAGNOSTIC_CAUSAL_ACCUMULATOR_CARRYOVER_CONFIRMED_CONTROLLED_INPUT_DESCENDANTS_HISTORICAL_INTEL_OPEN"
+  },
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "addit_for_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d"
+  },
+  "b1": {
+    "status": "DIAGNOSTIC_NOT_REFERENCE",
+    "source_use_before_definition_confirmed": true,
+    "current_gnu_causal_carryover_confirmed": true,
+    "controlled_descendants_discriminate_event_reset": true,
+    "supplemental_parallel_causal_corroboration_available": true,
+    "independent_second_line_review_complete": false
+  },
+  "b2": {
+    "status": "NOT_ESTABLISHED",
+    "historical_reference_recovery_still_open": true,
+    "documented_acquisition_route_formally_exhausted": false,
+    "normal_b2_route_eligible_now": false,
+    "historical_uncertainty_route_eligible_now": false
+  },
+  "b3_disposition_record": {
+    "schema": "integration/animo-b3/B3_DISPOSITION_SCHEMA.json",
+    "instantiated": false,
+    "reason": "the schema requires either qualified B2 availability for the normal route or documented B2 acquisition exhaustion for the historical-uncertainty route; neither condition is currently true",
+    "fail_closed_state": "B3_DISPOSITION_RECORD_DEFERRED_UNTIL_ADMISSION_ROUTE_ELIGIBLE"
+  },
+  "canonical_register": {
+    "tcd_028_row_present": false,
+    "append_pending_review": true,
+    "b3q01_existing_classification_snapshot_modified": false,
+    "reason_existing_classification_not_modified": "B3Q01 qualification and validator intentionally assert the exact pre-existing classified TCD set through TCD-027"
+  },
+  "admissions": {
+    "b3_admitted": false,
+    "corrected_legacy_admitted": false,
+    "reference_output_admitted": false,
+    "production_migration_admitted": false
+  },
+  "next_valid_actions": [
+    "review collision-free TCD-028 reservation and append the canonical discrepancy-register row through explicit integration",
+    "confirm provisional Class B and atomic event-local identity independently",
+    "continue PREP02R historical B2 recovery",
+    "instantiate a B3 disposition record only after one schema admission route becomes legitimately eligible"
+  ]
+}
