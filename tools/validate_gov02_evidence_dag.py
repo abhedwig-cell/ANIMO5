@@ -37,7 +37,11 @@ def load_json(path: Path):
 
 def valid_b2_evidence(case: dict) -> bool:
     for item in case.get("evidence", []):
-        if item.get("class") == "B2" and item.get("source_kind") == "INDEPENDENT_HISTORICAL_REFERENCE":
+        if (
+            item.get("class") == "B2"
+            and item.get("source_kind") == "INDEPENDENT_HISTORICAL_REFERENCE"
+            and item.get("qualified") is True
+        ):
             return True
     return False
 
@@ -49,8 +53,12 @@ def invalid_b2_promotion(case: dict) -> bool:
     return False
 
 
+def scientific_oracle_classes(case: dict) -> set[str]:
+    return {item.get("class") for item in case.get("evidence", []) if item.get("class") in SCIENTIFIC_ORACLES}
+
+
 def has_scientific_oracle(case: dict) -> bool:
-    return any(item.get("class") in SCIENTIFIC_ORACLES for item in case.get("evidence", []))
+    return bool(scientific_oracle_classes(case))
 
 
 def evaluate(case: dict) -> tuple[bool, list[str]]:
@@ -89,6 +97,8 @@ def evaluate(case: dict) -> tuple[bool, list[str]]:
                 reasons.append(f"historical-uncertainty route missing {key}")
         if not has_scientific_oracle(case):
             reasons.append("historical-uncertainty route lacks an accepted scientific-oracle class")
+        if len(scientific_oracle_classes(case)) < 2:
+            reasons.append("historical-uncertainty route lacks two independently classed scientific-oracle forms")
 
     if b3_class == "A" and route == HU_ROUTE:
         if case.get("closed_conservation_identity") is not True:
