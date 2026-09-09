@@ -3,11 +3,12 @@
   "snapshot_date": "2026-09-09",
   "decision_boundary": "QUEUE_GOVERNANCE_ONLY_NO_SCIENTIFIC_ADMISSIONS",
   "canonical_register": {
-    "branch": "work/animo-b3i01-canonical-register-append",
-    "head": "383c7a83e84a578969f92113280dc715b7bdddb4",
-    "tail": "TCD-041",
+    "branch": "work/animo-b3i03-canonical-register-append",
+    "head": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "tail": "TCD-042",
     "append_only": true,
-    "register_presence_is_admission": false
+    "register_presence_is_admission": false,
+    "preexisting_logical_rows_unchanged": true
   },
   "route_state": {
     "G6H": "ACTIVE_B2_ACQUISITION_NOT_PASSED",
@@ -22,10 +23,13 @@
     "B3I02": {"branch":"work/animo-b3i02-post-b3i01-incremental-intake","head":"c1a69c00a02aa0e32ca60580c3d0ebee96442c17","status":"QUALIFIED_INCREMENTAL_CANONICAL_DISCREPANCY_INTAKE_NO_ADMISSIONS","tested":true},
     "STATEQ02": {"branch":"work/animo-stateq02-restricted-core-executable-split-run","head":"ada93a409aa054f9aebac32728e79f80468215a7","status":"QUALIFIED_RESTRICTED_CORE_EXECUTABLE_CHECKPOINT_SEMANTICS_CANONICAL_STATE_ADMISSION_PENDING","tested":true,"admitted":false},
     "MASSQ02": {"branch":"work/animo-massq02-residual-causality-typed-events","head":"56a11b524d03c33ee4ab9b1cd13b2cd523d543fc","status":"QUALIFIED_TYPED_MASS_EVENT_PROJECTION_AND_RESIDUAL_RECONCILIATION_MASS_ADMISSION_PENDING","tested":true,"admitted":false},
-    "B3I03": {"branch":"work/animo-b3i03-massq02-causal-intake","head":"6a015587807130b4ce12c9f1518c1ddac4e5d624","status":"QUALIFIED_POST_MASSQ02_INCREMENTAL_CAUSAL_INTAKE_TCD042_RESERVED_NO_ADMISSIONS","tested":true,"canonical_register_append_performed":false},
-    "in_progress_excluded": [],
-    "noncanonical_reservations": ["TCD-042"],
-    "canonical_register_tail_changed": false,
+    "B3I03": {"branch":"work/animo-b3i03-massq02-causal-intake","head":"6a015587807130b4ce12c9f1518c1ddac4e5d624","status":"QUALIFIED_POST_MASSQ02_INCREMENTAL_CAUSAL_INTAKE_TCD042_RESERVED_NO_ADMISSIONS","tested":true,"reserved_tcd":"TCD-042"},
+    "B3I03_REGISTER": {"branch":"work/animo-b3i03-canonical-register-append","head":"814ea660d367494432beb63ea78298d1f6cd73d7","status":"QUALIFIED_CANONICAL_REGISTER_APPEND_TCD042_NO_ADMISSIONS","tested":true,"canonical_register_append_performed":true,"tail_before":"TCD-041","tail_after":"TCD-042"},
+    "in_progress_excluded": {
+      "UBQ01": {"branch":"work/animo-ubq01-tcd042-upper-boundary-transaction","head":"18ff8802dbef8e797f1e9b1d52ca81aa4f25c3a9","status":"IN_PROGRESS_CHECKPOINT"}
+    },
+    "noncanonical_reservations": [],
+    "canonical_register_tail_changed": true,
     "scientific_admission_performed": false,
     "evidence_strength_increased": false
   },
@@ -62,18 +66,10 @@
     {"tcd":"TCD-038","process":"crop actual uptake restart initialization direction","b3_class":"B provisional","queue_state":"READY_FOR_ADMISSION_READINESS","owners":["STATEQ01","B3I01","STATEQ02"],"blockers":["STATEQ02 exact split-run witness uses external crop and does not qualify the unresolved internal-crop restart direction","historical route not open"],"next_action":"Open atomic Class B restore-identity readiness for the unresolved internal-crop path while keeping the external-crop STATEQ02 evidence and full canonical STATE admission separate.","admission_route_state":"NO_ROUTE_OPEN_G6H_NOT_PASSED_G6U_NOT_ELIGIBLE"},
     {"tcd":"TCD-039","process":"crop potential uptake restart continuation state","b3_class":"C provisional","queue_state":"WAITING_ON_STATE","owners":["STATEQ01","B3I01","STATEQ02"],"blockers":["owner versus deterministic reconstruction not admitted for internal crop","STATEQ02 exact split-run witness uses external crop and explicitly excludes internal-crop restart state"],"next_action":"Resolve under GSTATE as a Class C internal-crop continuation-state problem before B3 readiness.","admission_route_state":"NO_ROUTE_OPEN_G6H_NOT_PASSED_G6U_NOT_ELIGIBLE"},
     {"tcd":"TCD-040","process":"layer0 aqueous restart initialization erasure","b3_class":"B provisional","queue_state":"READY_FOR_ADMISSION_READINESS","owners":["STATEQ01","B3I01","STATEQ02"],"blockers":["STATEQ02 qualifies only the exact-zero layer0 restricted profile and rejects an active nonzero sentinel before checkpoint","atomic correction/non-interference for the active TCD-040 path remains unqualified","historical route not open"],"next_action":"Open atomic Class B restore-identity readiness for the active nonzero layer0 path; preserve STATEQ02 fail-closed guard and keep TCD-016 low-storage state model out of scope.","admission_route_state":"NO_ROUTE_OPEN_G6H_NOT_PASSED_G6U_NOT_ELIGIBLE"},
-    {"tcd":"TCD-041","process":"GHG lower air boundary initialization","b3_class":"B provisional","queue_state":"READY_FOR_ADMISSION_READINESS","owners":["BUILDQ04","BUILDQ03","GHG01","B3I01"],"blockers":["historical Intel effect unknown","activated GHG non-interference/admission record not yet completed","historical route not open"],"next_action":"Open atomic Class B readiness using zero-boundary contract and unrounded active GHG state/flux comparisons.","admission_route_state":"NO_ROUTE_OPEN_G6H_NOT_PASSED_G6U_NOT_ELIGIBLE"}
+    {"tcd":"TCD-041","process":"GHG lower air boundary initialization","b3_class":"B provisional","queue_state":"READY_FOR_ADMISSION_READINESS","owners":["BUILDQ04","BUILDQ03","GHG01","B3I01"],"blockers":["historical Intel effect unknown","activated GHG non-interference/admission record not yet completed","historical route not open"],"next_action":"Open atomic Class B readiness using zero-boundary contract and unrounded active GHG state/flux comparisons.","admission_route_state":"NO_ROUTE_OPEN_G6H_NOT_PASSED_G6U_NOT_ELIGIBLE"},
+    {"tcd":"TCD-042","process":"upper-boundary precipitation/deposition solute transaction at zero top throughflow","b3_class":"C provisional strictest until atomized; candidate A/C/B children","queue_state":"NOT_READY","owners":["MASSQ02","B3I03","B3I03-REGISTER","UBQ01"],"blockers":["exact ANIMO system boundary at zero top throughflow not yet selected","incoming mass crossing timing unresolved","existing versus missing persistent surface/top solute owner unresolved","accounting-only versus state-model versus local-algebra atomization incomplete","UBQ01 is in progress and not yet qualified","historical route not open"],"next_action":"Continue ANIMO-UBQ01. Select the boundary/owner semantics only after source, theory and zero/nonzero-throughflow runtime evidence; atomize TCD-042 before any admission-readiness claim.","admission_route_state":"NO_ROUTE_OPEN_G6H_NOT_PASSED_G6U_NOT_ELIGIBLE"}
   ],
-  "noncanonical_reservations": [
-    {
-      "tcd": "TCD-042",
-      "owner": "B3I03",
-      "status": "RESERVED_FAIL_CLOSED_NOT_CANONICAL_REGISTERED",
-      "phenomenon": "upper-boundary precipitation/deposition solute transaction at zero top throughflow",
-      "atomicity": "REQUIRES_ATOMIZATION_BEFORE_ADMISSION",
-      "next_action": "Run focused TCD-042 transaction and owner-semantics qualification, then use a separate canonical append authority before it can enter the canonical queue."
-    }
-  ],
+  "noncanonical_reservations": [],
   "scientific_admissions": [],
   "production_migration": "NOT_ADMITTED"
 }
