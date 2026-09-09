@@ -1,0 +1,56 @@
+name: ANIMO-BUILDQ04 GHG bottom-boundary qualification
+
+on:
+  push:
+    branches:
+      - work/animo-buildq04-ghg-bottom-boundary-initialization
+  pull_request:
+    paths:
+      - 'docs/build/ANIMO-BUILDQ04_WORK_UNIT_CONTRACT.md'
+      - 'docs/build/GHG_BOTTOM_BOUNDARY_INITIALIZATION_QUALIFICATION.md'
+      - 'docs/build/BUILDQ04_B3_HANDOFF.md'
+      - 'integration/animo-build/BUILDQ04_GHG_BOTTOM_BOUNDARY_MATRIX.json'
+      - 'integration/animo-build/ANIMO-BUILDQ04_STATUS.json'
+      - 'tools/buildq04/**'
+      - 'tools/validate_buildq04.py'
+      - '.github/workflows/animo-buildq04-ghg-bottom-boundary.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install GNU Fortran
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gfortran
+          gfortran --version
+      - name: Validate persisted artifacts
+        run: |
+          python -m py_compile tools/validate_buildq04.py
+          python -m json.tool integration/animo-build/BUILDQ04_GHG_BOTTOM_BOUNDARY_MATRIX.json >/dev/null
+          python -m json.tool integration/animo-build/ANIMO-BUILDQ04_STATUS.json >/dev/null
+          python tools/validate_buildq04.py
+      - name: Reproduce explicit boundary sensitivity matrix
+        run: |
+          gfortran -O0 -fautomatic -finit-real=snan -fdefault-real-8 -fdefault-double-8 \
+            tools/buildq04/buildq04_boundary_sensitivity_probe.f90 -o buildq04_boundary_O0.exe
+          ./buildq04_boundary_O0.exe > buildq04_boundary_O0.out
+          gfortran -O2 -fautomatic -finit-real=snan -fdefault-real-8 -fdefault-double-8 \
+            tools/buildq04/buildq04_boundary_sensitivity_probe.f90 -o buildq04_boundary_O2.exe
+          ./buildq04_boundary_O2.exe > buildq04_boundary_O2.out
+          test "$(wc -l < buildq04_boundary_O0.out)" -eq 60
+          cmp buildq04_boundary_O0.out buildq04_boundary_O2.out
+      - name: Reproduce uninitialized first-read exposure
+        run: |
+          gfortran -O0 -fautomatic -finit-real=snan -fdefault-real-8 -fdefault-double-8 \
+            tools/buildq04/buildq04_uninitialized_first_read_probe.f90 -o buildq04_uninit.exe
+          ./buildq04_uninit.exe > buildq04_uninit.out
+          test "$(wc -l < buildq04_uninit.out)" -eq 4
+          grep -q 'NaN' buildq04_uninit.out
