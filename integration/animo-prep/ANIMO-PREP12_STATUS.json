@@ -1,0 +1,56 @@
+{
+  "work_unit": "ANIMO-PREP12",
+  "title": "Restart-State Continuity Evidence Rehome",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep12-restart-state-continuity-rehome",
+  "base": {
+    "branch": "work/animo-rg02-branch-authority-integration",
+    "head": "67104b7253d5ebc963ee2a801f4e07a23552572a",
+    "role": "governance-converged evidence base"
+  },
+  "source_evidence": {
+    "branch": "work/animo-prep10-restart-state-continuity",
+    "head": "761db23269b45ba79df3be97ea85289682e57106",
+    "source_tree": "e1b18d8ee75bb40597b5e7872fe82927733b05bc",
+    "historical_workunit_label": "ANIMO-PREP10",
+    "requalification_claimed": false
+  },
+  "decision": "IN_PROGRESS_EVIDENCE_REHOME_NO_REQUALIFICATION",
+  "implemented": true,
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "blocked": false,
+  "local_finding_identities": [
+    {
+      "source_local_label": "TCD-032",
+      "rg02_reconciliation_key": "RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER",
+      "canonical_tcd_id": null
+    },
+    {
+      "source_local_label": "TCD-033",
+      "rg02_reconciliation_key": "RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION",
+      "canonical_tcd_id": null
+    },
+    {
+      "source_local_label": "TCD-034",
+      "rg02_reconciliation_key": "RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE",
+      "canonical_tcd_id": null
+    }
+  ],
+  "canonical_allocation_owner": "ANIMO-B3 governance",
+  "hard_rules": {
+    "legacy_source_modified": false,
+    "testcase_modified": false,
+    "physics_changed": false,
+    "numerical_policy_changed": false,
+    "corrected_legacy_admitted": false,
+    "B3_admitted": false,
+    "B4_admitted": false,
+    "production_migration_admitted": false,
+    "source_prep10_contract_import_allowed": false,
+    "source_discrepancy_reservations_import_allowed": false,
+    "source_discrepancy_register_import_allowed": false
+  },
+  "next": "transplant selected restart evidence with exact blob provenance and verify exclusions"
+}
