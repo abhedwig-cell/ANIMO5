@@ -82,7 +82,59 @@ Classification:
 
 `SOURCE_CONFIRMED_INCOMPLETE_METHANOGENESIS_SOURCE_POOL_TRANSFER_PATH_REFERENCE_UNEXERCISED`
 
-## 4. CH4 oxidation, CO2 and subsidence reporting
+### 3.4 CH4 production-component partition does not close to total production
+
+The deeper CH4 audit identifies a second, independent C-transfer problem inside active `CH4produc`.
+
+Let `A = 1-Rdfaox`, let `S_i` be each pre-anaerobic DOM/exudate/humus/fresh-OM substrate contribution, `S=sum(S_i)`, and let `E` be the common pH/temperature/rate factor. Revision 53 calculates:
+
+`QPrCH4 = E*A*S`
+
+but allocates each source-family component as:
+
+`QPrCH4_i = QPrCH4*S_i/(A*S) = E*S_i`.
+
+Therefore:
+
+`sum_i(QPrCH4_i) = E*S = QPrCH4/A`.
+
+For `0<A<1`, the source-family rates exceed the actual gas-production rate by the exact factor `1/A`. Only at full anaerobiosis (`A=1`) do the components close to total production.
+
+This is ledger-relevant because `Rates2` actively uses `QPrCH4Do` as a DOM depletion term. The physical CH4 store receives `QPrCH4`, while the DOM source ledger is driven by a component rate that omits the anaerobic scaling. The intended inactive `GHG_Miner` would likewise consume the same nonclosing component family if reactivated unchanged.
+
+A zero-substrate numerical-domain risk also exists: if `A` passes the anaerobic early-return test but `S=0`, the component allocation performs `0/0`.
+
+Classification:
+
+`SOURCE_CONFIRMED_CH4_PRODUCTION_COMPONENT_PARTITION_NONCLOSURE`
+
+Local reconciliation key:
+
+`GHG01-LCL-CH4-PRODUCTION-COMPONENT-PARTITION`
+
+Consequence: reactivating `GHG_Miner` alone cannot establish C conservation. A qualified future transfer contract must require the invariant:
+
+`sum(CH4_PRODUCTION_SOURCE_FAMILY) == CH4_PRODUCTION_TOTAL`
+
+within the numerical policy of the accepted timestep.
+
+### 3.5 Fresh-OM methanogenic weighting has cross-fraction selector dependence
+
+`Inicalc.for:509-514` loops over fresh-OM fraction `Fn`, calculates `FOmCH4Os(Fn)` with `Recfav(Fn)`, but selects the linear-versus-power branch using `Recfav(Nf)`, the decomposition rate of the final defined fraction.
+
+Thus one fraction selects the weighting law for every fresh-OM fraction. Version-near secondary documentation describes the pool weighting in terms of the respective decomposition rates, which makes a per-fraction selector plausible, but this is not sufficient to declare the intended revision-53 expression.
+
+Classification:
+
+`SOURCE_CONFIRMED_CROSS_FRACTION_INDEX_DEPENDENCE_WRONG_INDEX_CANDIDATE_REFERENCE_UNEXERCISED`
+
+Local reconciliation key:
+
+`GHG01-LCL-CH4-FRESH-OM-WEIGHTING-INDEX`
+
+The effect can change methanogenic fresh-OM substrate weights and therefore total/source-family CH4 production whenever fractions span the `0.00082 d-1` branch threshold. No production correction is admitted without detailed theory or source-history authority.
+
+## 4. CH4 oxidation, CO2, subsidence and plant-mediated transfer
 
 `GHG_Methane` actively removes CH4 through soil and plant oxidation terms `QOxCH4Soi` and `QOxCH4Plt` and couples soil oxidation to oxygen demand.
 
@@ -102,6 +154,26 @@ This must not be converted into a historical claim such as “the old executable
 Classification:
 
 `SOURCE_CONFIRMED_GHG_CO2_SUBSIDENCE_PRODUCER_PATH_INACTIVE_HISTORICAL_RUNTIME_EFFECT_UNRESOLVED`
+
+### 4.1 Plant-mediated CH4 transfer uses a temperature index before definition
+
+A separate active-path audit found that `GHG_Methane` declares local integer `Ln` and executes `Te50 = Te(Ln)` before the first source assignment to `Ln`. `Te50` then controls `fGrow`, and the same `fGrow` is applied to root-zone plant transport coefficients:
+
+`K1plant(Ln) = Kpl * FvegCH4 * fRoot * fGrow`.
+
+`K1plant` participates in shared gas transport and in both `QOxCH4Plt` and `QEmCH4Plt`.
+
+Thus the source does not define which temperature state controls the plant-growth multiplier. Compiler/local-storage behaviour can influence the historical runtime manifestation, but it cannot supply scientific intent.
+
+Classification:
+
+`SOURCE_CONFIRMED_USE_BEFORE_DEFINITION_IN_ACTIVE_CH4_PLANT_TRANSPORT_PATH_REFERENCE_UNEXERCISED`
+
+Local reconciliation key:
+
+`GHG01-LCL-CH4-PLANT-GROWTH-TEMPERATURE-INDEX`
+
+The intended temperature location is `UNRESOLVED`; no substitute index is admitted by GHG01.
 
 ## 5. Main balance observer has disconnected GHG working arrays
 
@@ -166,12 +238,14 @@ The same control-volume problem is stronger for CH4.
 A full C ledger therefore cannot be reconstructed from the standard OM balance alone. It must include at least:
 
 - organic source-pool depletion caused by methanogenesis;
+- source-family production components that close exactly to total CH4-C production;
 - start/end CH4 system storage;
 - CH4 oxidation transfer to CO2;
 - CH4 diffusion, air-flow, ebullition and plant-mediated boundary fluxes;
+- an explicitly defined state controlling plant-mediated transport;
 - CO2 boundary emission where the selected GHG C accounting requires it.
 
-Because the comprehensive source-pool transfer routine is inactive, the current source does not provide a complete closed chain for all of these transfers.
+Because the comprehensive source-pool transfer routine is inactive, the active DOM depletion uses a nonclosing CH4 component rate, and the plant-growth transport factor reads an undefined local index, the current source does not provide a complete closed and source-defined chain for all of these transfers.
 
 Verdict:
 
@@ -181,11 +255,12 @@ Verdict:
 
 | GHG transfer | Physical source implementation | Main C/N ledger integration | Qualification |
 | --- | --- | --- | --- |
-| DOM-C -> CH4-C | Active CH4 production plus active DOM sink in `Rates2` | Gas storage not included in standard OM end state | `PARTIAL` |
-| exudate-C -> CH4-C | Active CH4 production | Intended source depletion in inactive `GHG_Miner` | `NOT_CLOSED` |
-| humus-C -> CH4-C | Active CH4 production | Intended source depletion in inactive `GHG_Miner` | `NOT_CLOSED` |
-| fresh-OM-C -> CH4-C | Active CH4 production | Intended source depletion in inactive `GHG_Miner` | `NOT_CLOSED` |
+| DOM-C -> CH4-C | Active total CH4 production plus active DOM sink in `Rates2`; `QPrCH4Do` belongs to a component family that does not close to total production under partial anaerobiosis | Gas storage not included in standard OM end state | `NOT_CLOSED` |
+| exudate-C -> CH4-C | Active CH4 production; source component shares partition nonclosure | Intended source depletion in inactive `GHG_Miner` | `NOT_CLOSED` |
+| humus-C -> CH4-C | Active CH4 production; source component shares partition nonclosure | Intended source depletion in inactive `GHG_Miner` | `NOT_CLOSED` |
+| fresh-OM-C -> CH4-C | Active CH4 production; component partition nonclosure plus cross-fraction initialization selector candidate | Intended source depletion in inactive `GHG_Miner` | `NOT_CLOSED` |
 | CH4 oxidation -> CO2 | Active CH4 sink and oxygen coupling | GHG CO2 producer/accounting path depends on inactive `GHG_Miner` | `NOT_CLOSED` |
+| CH4 plant-mediated transport/oxidation | Active `K1plant`, `QOxCH4Plt`, `QEmCH4Plt` path | common growth multiplier is derived from `Te(Ln)` before local `Ln` is defined | `SOURCE_UNDEFINED_TRANSFER_MAGNITUDE_REFERENCE_BLOCKED` |
 | CH4 storage -> atmospheric CH4 | Active GHG transport/emission | Not represented as canonical C storage plus boundary transfer in standard OM ledger | `NOT_CLOSED` |
 | NH4-N -> N2O-N | Active process partition | NH4/nitrification accounting partly split; N2O gas store absent from conventional N end state | `PARTIAL` |
 | NO3-N -> N2O-N -> N2-N | Active coupled N2O/denitrification process | nitrate loss is represented, but gas storage and GHG observer are not a closed full-N ledger | `PARTIAL_NOT_MODEL_WIDE_CLOSED` |
@@ -201,8 +276,10 @@ A future ANIMO5 MassLedger cannot infer complete C/N conservation from the legac
 Minimum future ledger contract, before implementation admission:
 
 - `CH4_PRODUCTION`: source organic-C store -> CH4-C store;
+- invariant `sum(CH4_PRODUCTION_SOURCE_FAMILY) == CH4_PRODUCTION_TOTAL` for each accepted timestep and control volume;
 - `CH4_OXIDATION`: CH4-C store -> CO2-C boundary/store according to chosen physical state model;
 - `CH4_EMISSION_*`: CH4-C store -> atmosphere, separated by diffusion, air flow, ebullition and plant transport;
+- plant-mediated CH4 transfer must depend on an explicitly owned and defined temperature/growth state, not local-storage residue;
 - `N2O_NITRIFICATION`: NH4-N -> N2O-N;
 - `N2O_DENITRIFICATION`: NO3-N -> N2O-N;
 - `N2O_REDUCTION`: N2O-N -> N2-N atmosphere/boundary;
@@ -215,7 +292,7 @@ The legacy balance arrays may remain useful diagnostic observers, but they canno
 
 These findings are source-confirmed static discrepancies. They have not been numerically exercised by a revision-53-compatible GHG testcase, and no qualified historical executable/reference is available. Their historical numerical magnitude therefore remains `REFERENCE_BLOCKED`.
 
-They nevertheless block GHG B3 admission because the scientific process route cannot be considered conservation-qualified while source-pool transfer and observer interfaces are incomplete.
+They nevertheless block GHG B3 admission because the scientific process route cannot be considered conservation-qualified while source-pool transfer, CH4 source-family partition, plant-transfer state definition and observer interfaces are incomplete or source-undefined.
 
 Recommended central follow-up is to register the distinct source discrepancies in the canonical theory/code discrepancy register after regie reconciliation, without repairing them on this branch.
 
