@@ -1,0 +1,51 @@
+{
+  "work_unit": "ANIMO-UBQ02",
+  "title": "TCD-042 Finite-Positive Subthreshold Upper-Reservoir Numerical Seam Characterization",
+  "status": "IN_PROGRESS_PERSISTED_BEFORE_MATERIALITY_QUALIFICATION",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-ubq02-tcd042-subthreshold-numerical-seam",
+  "base": {
+    "work_unit": "ANIMO-UBQ01",
+    "head": "6895b67799f26888025eced7188e7190b2a0d07d",
+    "qualified_parent_atom": "TCD-042 EXACT_FLUX_ZERO Class B only"
+  },
+  "scope": {
+    "target_parent": "TCD-042",
+    "range": "0<Flux<1.0d-8 with Flpn=0",
+    "purpose": "characterize reachability, materiality, floating-point cancellation and candidate cancellation-safe evaluation without selecting or admitting numerical policy",
+    "provisional_class": "E_NUMERICAL_POLICY",
+    "exact_zero_atom_reopened": false,
+    "new_tcd_reserved": false,
+    "canonical_child_created": false,
+    "threshold_change_admitted": false,
+    "tolerance_admitted": false,
+    "production_source_change": false
+  },
+  "inherited_evidence": {
+    "no_ponding_records_scanned": 15043,
+    "finite_positive_subthreshold_records": 1238,
+    "cases_with_finite_positive_subthreshold": 6,
+    "source": "integration/animo-science/TCD042_SUBTHRESHOLD_REACHABILITY.json"
+  },
+  "work_status": {
+    "realized": false,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "planned_axes": [
+    "dimensionless P=St*Flux/Hetop distribution on natural reachable records",
+    "legacy fallback versus mathematically exact positive-flow reservoir response",
+    "binary64 cancellation in A2/B1/B2 direct formulas",
+    "cancellation-safe expm1/series candidates as comparison methods only",
+    "natural nonzero-load materiality for N/P/DOM where observable",
+    "policy boundary and whether canonical incremental intake is required"
+  ],
+  "admission": {
+    "b3_admitted": false,
+    "corrected_legacy_admitted": false,
+    "numerical_policy_admitted": false,
+    "production_migration_admitted": false
+  }
+}
