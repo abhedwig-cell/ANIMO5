@@ -82,7 +82,7 @@ The actual external request has not been sent, so a failed/exhausted acquisition
 
 `G7 = atomic process-scoped B3 qualification`
 
-G7 consumes the B3Q01 class contract, B3I01 canonical identity/routing, and evidence specific to one atomic discrepancy or process scope.
+G7 consumes the B3Q01 class contract, B3I01 canonical identity/routing, and evidence specific to one atomic discrepancy or process scope. Later incremental intake such as B3I02/B3I03 may reserve or route findings but cannot create admission by itself.
 
 G7 has two distinct concepts:
 
@@ -91,7 +91,7 @@ G7 has two distinct concepts:
 
 Readiness can proceed before G6H/G6U if the scientific, numerical, state and runtime dependencies are independently qualified enough for that bounded work. Actual corrected-legacy admission must still satisfy the claim-scoped route required by GOV02/B3Q01.
 
-No G7 admission exists at RG03 closeout.
+No G7 admission exists at the current RG03 refresh.
 
 ## Canonical STATE
 
@@ -109,9 +109,11 @@ It requires:
 - admitted state-model changes for active Class C scopes;
 - split-run/restart qualification appropriate to the claim.
 
-STATEQ01 qualifies a readiness matrix and multiple exact synthetic/source contracts. It does not admit canonical STATE. Optional disabled feature state is not a global prerequisite for a profile that excludes that feature.
+STATEQ01 qualifies the structural readiness matrix and checkpoint completeness contracts. STATEQ02 adds direct B0-hash-pinned diagnostic executable evidence for a deliberately restricted `CORE_CNP_WITH_EXTERNAL_CROP` profile: accepted snapshots and post-restore trajectories are bitwise exact across five qualified split boundaries, including one full 833-record remainder. It also fail-closes an active surface/layer-0 sentinel before checkpoint creation.
 
-Current state: `READINESS_QUALIFIED_ADMISSION_BLOCKED`.
+This is materially stronger GSTATE readiness than STATEQ01 alone, but it is still profile-bounded and non-B2. STATEQ02 explicitly excludes GHG, macropores, active TCD-040 layer-0 restart state, internal-crop restart state, active stable DOM and active P-class state. Those exclusions remain real blockers for profiles that enable them. Canonical STATE admission still requires a separate admission authority and compatible canonical TIME/external-owner binding for the claimed profile.
+
+Current state: `RESTRICTED_CORE_EXECUTABLE_CHECKPOINT_SEMANTICS_QUALIFIED_ADMISSION_BLOCKED`.
 
 ## Canonical TIME
 
@@ -131,13 +133,15 @@ Current state: `CONCRETE_CANDIDATE_QUALIFIED_ADMISSION_BLOCKED`.
 
 `GMASS(profile)`
 
-MASSQ01 proves an observer-only B1 projection can be attached without physical-output interference across its qualified case set. That projection is not a canonical MassLedger admission.
+MASSQ01 proves an observer-only B1 projection can be attached without physical-output interference across its qualified case set. MASSQ02 then reconciles the current residual evidence set without correcting residuals: 23 nonzero records are classified, 15 are new causal findings and zero remain unexplained. It also qualifies a candidate typed-event projection with explicit source/destination owners and no legacy balance accumulator as authoritative physical state or event owner.
 
-GMASS requires canonical active state owners and admitted transfer/process identities. It must include active feature control volumes. GHG and macropore ledger gaps cannot be hidden by choosing a smaller observer volume while still claiming those features.
+The MASSQ02 candidate is not a canonical runtime event journal. B3I03 conservatively routes the 15 new causal findings and reserves only `TCD-042`; it performs no register append and no admission. Existing mass-relevant TCDs, nested soil/crop closure, active macropore/GHG feature closure and whole-system elemental-C completeness remain open.
+
+GMASS therefore requires canonical active state owners and admitted transfer/process identities. It must include active feature control volumes. GHG and macropore ledger gaps cannot be hidden by choosing a smaller observer volume while still claiming those features.
 
 Legacy balance accumulators remain report/comparison evidence, not authoritative storage owners.
 
-Current state: `B1_OBSERVER_READINESS_QUALIFIED_ADMISSION_BLOCKED`.
+Current state: `TYPED_EVENT_PROJECTION_AND_RESIDUAL_RECONCILIATION_QUALIFIED_ADMISSION_BLOCKED`.
 
 ## External exchange
 
@@ -145,7 +149,7 @@ Current state: `B1_OBSERVER_READINESS_QUALIFIED_ADMISSION_BLOCKED`.
 
 ARCH05 and ARCH07 define candidate external exchange/adapter contracts. TIMEQ02 executes synthetic hydrology and external-crop producer fixtures.
 
-Canonical GEX additionally requires producer-specific real adapter qualification, exact time/state identity binding, and feature-compatible semantics. No real SWAP/WATBAL or external-crop production adapter is qualified by TIMEQ02.
+Canonical GEX additionally requires producer-specific real adapter qualification, exact time/state identity binding, and feature-compatible semantics. No real SWAP/WATBAL or external-crop production adapter is qualified by TIMEQ02. STATEQ02's qualification-only replay/rebind is executable evidence for restart identity in its restricted profile, not a production producer adapter admission.
 
 Current state: `SYNTHETIC_CONTRACT_FIXTURE_QUALIFIED_REAL_ADAPTER_BLOCKED`.
 
@@ -184,7 +188,9 @@ Current state: `NOT_ADMITTED`.
 
 ## Canonical discrepancy routing
 
-The B3I01 canonical append surface ends at `TCD-041` at the RG03 snapshot. Appends were reconciled as append-only identity/routing updates. They create no scientific admission.
+The B3I01 canonical append surface still ends at `TCD-041` at this RG03 refresh. Appends were reconciled as append-only identity/routing updates. They create no scientific admission.
+
+B3I03 is later incremental causal intake over MASSQ02. It reserves `TCD-042` fail-closed for the upper-boundary precipitation/deposition solute transaction at zero top throughflow and explicitly requires atomization before admission. B3I03 performs no canonical append, so the authoritative register tail remains `TCD-041`. RG03 tracks the TCD-042 reservation separately and does not insert it into the canonical queue prematurely.
 
 RG03 therefore routes TCD-028 through TCD-041 from the canonical register, even where the initial B3I01 closeout only reserved TCD-028 through TCD-037. Later state and runtime supplements are treated as additional canonical identity evidence, not as retrospective strengthening of the original findings.
 
@@ -196,6 +202,7 @@ RG03 requires all of the following:
 - G6U cannot become eligible while the actual bounded acquisition action has not occurred.
 - B1 and synthetic evidence cannot be relabelled B2.
 - B3 readiness is not B3 admission.
+- a fail-closed TCD reservation is not a canonical register append and not an admission.
 - canonical STATE, TIME, MASS and EX remain separate gates.
 - Class C state gaps cannot be repaired as reporting-only fixes.
 - Class E numerical policy cannot be selected from smaller residual alone.
