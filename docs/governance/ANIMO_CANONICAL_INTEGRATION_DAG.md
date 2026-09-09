@@ -26,7 +26,9 @@ main
            +--> RG02 branch authority and integration governance
 ```
 
-EB01 and RG01 are not substitutes for each other. EB01 owns evidence semantics. RG01/RG02 own repository convergence and integration policy. EG01 owns controlled B0 retention. A future governance consolidation must transplant these disjoint governance artifacts onto one integration branch without replacing their source authority.
+EB01 and RG01 are not substitutes for each other. EB01 owns evidence semantics. RG01/RG02 own repository convergence and integration policy. EG01 owns controlled B0 retention.
+
+RG02 has now completed the governance-only convergence of those roles on its own branch. The EB01 evidence-model artifacts and EG01 retention/proof artifacts were transplanted with exact blob identity. The overlapping `DEVELOPMENT_GOVERNANCE.md` was manually composed under RG ownership, and the stale pre-EB01 `MIGRATION_DAG.md` terminology was replaced with the B0-B4 semantics. This did not merge EB01 or EG01 branches and did not alter scientific registers.
 
 ## 2. Preparatory evidence convergence
 
@@ -50,7 +52,7 @@ PREP06
   +--> PREP07 transfer-species-identity [SUPPLEMENTAL PACKET, divergent]
 ```
 
-Two substantive reused work-unit lines have now been given non-colliding RG02 reservations for rehome only:
+Two substantive reused work-unit lines have non-colliding RG02 reservations for rehome only:
 
 ```text
 work/animo-prep09-option-contract-audit
@@ -60,23 +62,23 @@ work/animo-prep10-restart-state-continuity
     -> ANIMO-PREP12 [RG02_RESERVED_NOT_STARTED]
 ```
 
-No PREP11 or PREP12 branch has been created by RG02. The reservations exist so a later path-level transplant cannot silently create another PREP09/PREP10 authority.
+No PREP11 or PREP12 branch has yet been created. They must start from the governance-converged RG02 evidence base, not by renaming or merging the divergent source branches.
 
 ### Required preparatory consolidation
 
-Before a single preparatory evidence branch can be produced:
+Before a single preparatory evidence aggregate can be produced:
 
-1. Freeze the authoritative PREP06 snapshot.
+1. Use the RG02 governance-converged branch as the integration-policy base.
 2. Rehome unique PREP07 species-identity evidence as supplemental packet `RG02-SUPP-P07-SPECIES-001`, without its conflicting PREP07 status/contract ownership.
 3. Rehome unique PREP08 transfer-probe evidence as supplemental packet `RG02-SUPP-P08-TRANSFER-001`, without its local TCD register or PREP08 status.
-4. Rehome PREP09 option-contract evidence as `ANIMO-PREP11`; do not import the old PREP09 status or local `TCD-030` identity.
+4. Rehome PREP09 option-contract evidence as `ANIMO-PREP11`; do not import the old PREP09 status or local `TCD-030` identity as canonical.
 5. Rehome PREP10 restart evidence as `ANIMO-PREP12`; do not import the old PREP10 contract, local `TCD-032/033/034` reservation file or divergent TCD register.
-6. Use `integration/animo-reg/ANIMO_LOCAL_TCD_RECONCILIATION.json` for all post-027 local finding identity until B3 governance allocates canonical IDs.
-7. Only then construct a canonical preparatory evidence aggregate.
+6. Use `integration/animo-reg/ANIMO_LOCAL_TCD_RECONCILIATION.json` for all post-027 local finding identities until B3 governance allocates canonical IDs.
+7. Only after readback verification of those rehomes construct a canonical preparatory evidence aggregate.
 
-The exact path-level include/exclude plan is persisted in `integration/animo-reg/ANIMO_SUPPLEMENTAL_EVIDENCE_TRANSPLANT_PLAN.json`.
+The exact include/exclude plan is persisted in `integration/animo-reg/ANIMO_SUPPLEMENTAL_EVIDENCE_TRANSPLANT_PLAN.json`.
 
-This is a consolidation operation, not a scientific requalification. Existing findings retain their original evidence class and source branch.
+This is evidence convergence, not scientific requalification. Existing findings retain their original evidence class and source provenance.
 
 ## 3. Theory, testing and numerical lines
 
@@ -103,7 +105,7 @@ PREP06
   +--> TS01 temporal semantics [in progress]
 ```
 
-TH01, TH02, TQ01 and NQ01 are mergeable only as evidence/governance artifacts after their bases are reconciled. Their branches must not be used to drag an older copy of canonical registers over newer governance state.
+TH01, TH02, TQ01 and NQ01 are mergeable only as evidence/governance artifacts after their bases are reconciled. Their branches must not drag an older copy of canonical registers over newer governance state.
 
 NQ01 is qualified architecture for comparison and capture, not numerical equivalence. PREP02R remains the serial B2 gate.
 
@@ -126,16 +128,18 @@ PREP06 evidence + EB01 evidence semantics
                                       [NOT ESTABLISHED BY RG02]
 ```
 
-B3Q01 is the owner of B3 classification contracts and the qualified central discrepancy register. Its qualified register ends at `TCD-027` with blob `224acc350fde69d3c4aebed8628c0f945e0b3367`.
+B3Q01 owns B3 classification contracts and the qualified central discrepancy register. Its qualified register ends at `TCD-027` with blob `224acc350fde69d3c4aebed8628c0f945e0b3367`.
 
-The observed later preparatory labels are now governance-reconciled through RG02 local keys. They are not canonical IDs. In particular:
+The observed later preparatory labels are governance-reconciled through RG02 local keys. They are not canonical IDs. In particular:
 
 - local `TCD-028` on the transfer lineage is not central `TCD-028`;
 - two different findings used local `TCD-030` on divergent branches;
 - local `TCD-032` was used both by a restart branch and by a superseded PREP10C proposal;
 - the PREP10 restart branch's statement that its local register tail was `TCD-031` is not a project-canonical register assertion.
 
-The central B3 intake branch still reserves `TCD-028` only for the stable-DOM plough accumulator event-reset finding, and that reservation is not yet a canonical register append or B3 admission.
+The central B3 intake branch reserves `TCD-028` only for the stable-DOM plough accumulator event-reset finding. That reservation is not yet a canonical register append or B3 admission.
+
+The RG02 branch itself still contains its inherited historical discrepancy-register file. That physical file is not promoted by RG02 into the canonical B3 register. Canonical TCD authority remains on B3Q01 until a later explicit register-convergence operation.
 
 SQ01 is a separate scientific-qualification branch based on B3Q01. It may consume pinned theory and PREP evidence, but its results cannot be integrated into B3 until its own admission gates close.
 
@@ -161,62 +165,63 @@ PREP06
 
 This is a coherent sequential candidate-design chain. It is eligible for a separate architecture consolidation branch after an ARCHG work-unit contract is persisted. It is not eligible for production integration merely because its internal design checks pass.
 
-The observed `work/animo-archg01-candidate-architecture-consolidation` ref is currently identical to ARCH07 and had no independent ARCHG01 status artifact at the RG02 authority snapshot. It therefore did not receive authority from its branch name.
+The observed `work/animo-archg01-candidate-architecture-consolidation` ref was identical to ARCH07 and had no independent ARCHG01 status artifact at the RG02 authority snapshot. It therefore did not receive authority from its branch name.
 
-Canonical architecture admission remains downstream of the evidence gates required by the existing migration policy. In particular, candidate STATE, TIME, MASS and EX contracts remain unadmitted while B2/B3 and related scientific gates are unresolved.
+Canonical architecture admission remains downstream of the evidence gates required by the migration policy. Candidate STATE, TIME, MASS and EX contracts remain unadmitted while B2/B3 and related scientific gates are unresolved.
 
 ## 6. Integration classes
 
-### Mergeable after governance-only rebase or transplant
+### Governance-converged on RG02
 
-- EB01 governance documents
-- EG01 controlled-retention governance
-- RG02 authority model and registers
-- TH/TQ/NQ documentation and machine evidence that do not overwrite canonical registers
-- ARCH candidate-design artifacts in their own namespaces
+- EB01 canonical B0-B4 evidence-model document and machine model;
+- EG01 B0 retention policy, proof schemas, validator, tests, workflow and status;
+- RG development governance and branch authority policy;
+- RG-owned migration DAG using B0-B4 terminology.
 
-"Mergeable" here means semantically mergeable after base reconciliation. It does not authorize a direct branch merge.
+This is G3 completion only. It does not make RG02 a B3 scientific register branch.
 
 ### Evidence-only until later admission
 
-- PREP diagnostic and source-bound findings
-- GHG01, SQ01 and TS01 while in progress
-- B3A01 readiness artifacts
-- TCD-028 B3 intake reservation
-- all ARCH01 to ARCH07 candidate designs
+- PREP diagnostic and source-bound findings;
+- GHG01, SQ01 and TS01 while in progress;
+- B3A01 readiness artifacts;
+- TCD-028 B3 intake reservation;
+- all ARCH01 to ARCH07 candidate designs.
 
 ### Path-level transplant only
 
-- PREP07 species-identity supplemental evidence
-- PREP08 transfer-probes supplemental evidence
-- PREP09 option-contract evidence, rehomed as PREP11
-- PREP10 restart/state-continuity evidence, rehomed as PREP12
-- any useful material from PREP10C superseded branches that is not already present in the re-anchored PREP10C branch
+- PREP07 species-identity supplemental evidence;
+- PREP08 transfer-probes supplemental evidence;
+- PREP09 option-contract evidence, rehomed as PREP11;
+- PREP10 restart/state-continuity evidence, rehomed as PREP12;
+- any useful material from PREP10C superseded branches not already represented in the re-anchored PREP10C branch.
 
-These commits must not be imported wholesale. Use the RG02 path-level include/exclude plan and preserve source blob provenance. Do not import same-name work-unit status files or a divergent `THEORY_CODE_DISCREPANCY_REGISTER.csv`.
+These source branches must not be imported wholesale. Preserve source branch, head and blob provenance. Do not import same-name work-unit status files or divergent `THEORY_CODE_DISCREPANCY_REGISTER.csv` files.
 
 ### Never merge as branches
 
-- EB01 copy/pr/review aliases
-- NQ01 `final`, `ignore`, `copy`, `packet-temp`, `stop` aliases
-- TQ01 shadow, shadow2 and shadow3
-- TH02 release-lineage-recovery no-op alias
-- PREP08 restart-state-continuity reservation under the reused identifier
-- PREP10 stable-DOM causal branch as a competing PREP10 line, because its evidence is already reconciled by authoritative PREP10
-- PREP10C old candidate and reset-readiness branches as PREP10C integration lines
+- EB01 copy/pr/review aliases;
+- NQ01 `final`, `ignore`, `copy`, `packet-temp`, `stop` aliases;
+- TQ01 shadow, shadow2 and shadow3;
+- TH02 release-lineage-recovery no-op alias;
+- PREP08 restart-state-continuity reservation under the reused identifier;
+- PREP10 stable-DOM causal branch as a competing PREP10 line, because its evidence is already reconciled by authoritative PREP10;
+- PREP10C old candidate and reset-readiness branches as PREP10C integration lines.
 
 Their historical commits remain evidence where relevant. `NEVER_MERGE` does not mean delete evidence.
 
 ## 7. Required convergence gates
 
+The dependency order was corrected after RG02 found that PREP11/PREP12 cannot safely be instantiated before a governance-approved integration base exists.
+
 ```text
-G0  RG02 branch authority register complete
+G0  RG02 branch authority register substantially complete
  |
-G1  canonical TCD/local-ID reconciliation complete
+G1  local post-TCD027 identity reconciliation complete
+ |
+G3  RG + EB + EG governance artifacts consolidated
  |
 G2  duplicate PREP07-10 evidence transplanted under unique packet/workunit identities
- |
-G3  governance artifacts consolidated: RG + EB + EG
  |
 G4  preparatory evidence aggregate assembled without register collisions
  |
@@ -237,27 +242,27 @@ Current RG02 state:
 
 - G0: `SUBSTANTIALLY_COMPLETE`;
 - G1: `COMPLETE_FOR_OBSERVED_POST_027_PREPARATORY_LINEAGES`;
+- G3: `COMPLETE_GOVERNANCE_ONLY`;
 - G2: `PLANNED_NOT_EXECUTED`;
-- G3: `PLANNED_NOT_EXECUTED`;
 - G4: `NOT_READY`;
 - G6: independently blocked by PREP02R;
 - G7 onward: not admitted.
 
-G1 completion does not assign any new canonical TCD number. It only makes the local identity collisions explicit and machine-readable.
+G1 completion assigns no new canonical TCD number. G3 completion admits no scientific baseline. Both are repository-governance gates only.
 
 ## 8. Immediate safe actions after the current checkpoint
 
-The next safe integration work remains governance/evidence-only:
+The next safe work is G2:
 
-- execute the two supplemental packet rehomes path-by-path;
-- instantiate PREP11 and PREP12 from a governance-approved canonical evidence base rather than from their divergent source branch heads;
-- preserve source branch/head/blob provenance for every transplanted artifact;
-- validate that no old PREP07/PREP08/PREP09/PREP10 status or local TCD register entered the rehome branches;
-- consolidate RG, EB and EG governance only after G2 readback passes;
+- create PREP11 and PREP12 only from the governance-converged RG02 base;
+- execute the PREP07 and PREP08 supplemental packet rehomes path-by-path;
+- transplant only the include-listed PREP11/PREP12 evidence paths;
+- preserve source branch/head/blob identity for every transplant;
+- validate that no old PREP07/PREP08/PREP09/PREP10 status, work-unit contract or local TCD register entered the new authoritative/rehome surfaces;
 - keep PREP02R acquisition and NQ01 comparison readiness independent;
-- keep B3 admissions separate from branch convergence.
+- keep B3 admission and canonical TCD allocation separate from branch convergence.
 
-No merge was performed by RG02.
+No branch merge was performed by RG02.
 
 `scientific_baseline_changed=false`
 
