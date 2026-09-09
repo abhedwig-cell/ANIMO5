@@ -4,6 +4,11 @@
   "parent_status": "BLOCKED_TCD016_INSUFFICIENT_THEORY_FOR_CORRECTED_LEGACY_ADMISSION",
   "parent_admitted": false,
   "production_migration": "NOT_ADMITTED",
+  "historical_theory_effect": {
+    "status": "THEORY_SUPPORTED_CONSERVATION_REQUIREMENT_AND_REPRESENTATION_GAP_BUT_NO_THEORY_QUALIFIED_DRY_PHASE",
+    "ANIMO35_Report144": "conservation, liquid plus named soil-solid phase storage, addition-specific surface reservoir, soil-complex NH4 sorption and semi-analytical transport lineage recovered",
+    "revision53_low_storage_interpretation": "numerical_or_representation_guard_around_historical_transport_formulation_not_physical_phase_authority"
+  },
   "children": [
     {
       "id": "TCD-016-C1",
@@ -14,22 +19,25 @@
         "state": "M_surface_NH4_non_aqueous_continuation",
         "unit": "kg_N_m-2",
         "owner": "surface_control_volume",
-        "scientific_status": "PROPOSED_MODEL_EXTENSION_NOT_CORRECTED_LEGACY"
+        "scientific_status": "PROPOSED_MODEL_EXTENSION_REVIEW_READY_NOT_CORRECTED_LEGACY",
+        "contract": "docs/science/TCD016_C1_PROPOSED_NONAQUEOUS_STATE_CONTRACT.md"
       },
       "gates": {
-        "authoritative_phase_theory": "FAIL_MISSING",
-        "state_definition_units": "PROVISIONAL",
-        "single_owner_control_volume": "PROVISIONAL",
-        "initialization": "NOT_QUALIFIED",
-        "restart_checkpoint": "DESIGNABLE_NOT_QUALIFIED",
-        "wet_to_dry_transfer": "CONSERVATION_FORM_DEFINED_PHYSICS_NOT_QUALIFIED",
-        "dry_hold": "NOT_QUALIFIED",
-        "rewetting_release": "NOT_QUALIFIED",
+        "historical_conservation_requirement": "PASS",
+        "authoritative_phase_identity_theory": "FAIL_MISSING",
+        "state_definition_units": "PROPOSED_REVIEW_READY",
+        "single_owner_control_volume": "PROPOSED_REVIEW_READY",
+        "initialization": "FAIL_CLOSED_CONTRACT_DEFINED_NOT_SCIENTIFICALLY_QUALIFIED",
+        "restart_checkpoint": "CONTRACT_DEFINED_NOT_QUALIFIED",
+        "wet_to_dry_transfer": "CONSERVATION_RESIDUAL_RULE_DEFINED_PHYSICAL_TRIGGER_NOT_QUALIFIED",
+        "dry_hold": "NO_PROCESS_FAIL_CLOSED_RULE_PROPOSED_CHEMISTRY_NOT_QUALIFIED",
+        "rewetting_release": "BOUNDED_TRANSFER_OPERATOR_DEFINED_KINETICS_NOT_QUALIFIED",
         "connected_process_conservation": "PARTIAL_DIAGNOSTIC_ONLY",
-        "edge_case_tests": "DIAGNOSTIC_TOPOLOGY_ONLY",
+        "edge_case_tests": "DIAGNOSTIC_WET_DRY_HOLD_WET_ONLY",
         "legacy_divergence": "PARTIALLY_CHARACTERIZED",
         "independent_scientific_review": "NOT_DONE"
-      }
+      },
+      "remaining_scientific_blocker": "physical identity of continuation phase and its dry-hold and remobilization laws"
     },
     {
       "id": "TCD-016-E1",
@@ -37,11 +45,13 @@
       "provisional_class": "E_NUMERICAL_POLICY_CHANGE",
       "status": "BLOCKED_DEPENDS_ON_TCD016_C1",
       "legacy_surfaces": [
-        "Factor=100 low-storage criterion",
+        "Factor=100 low-storage criterion for layer 0",
         "Fu > 1e-6 m d-1 layer-0 export threshold"
       ],
+      "historical_theory_relation": "Transsub and Detcoef implement the semi-analytical concentration family documented in ANIMO3.5; low-storage early-return thresholds are additional guard policy with no recovered physical-phase authority",
       "excluded_candidate": "FORCE_ALL_RESIDUAL_MASS_THROUGH_TINY_OUTFLOW",
-      "dependency": "TCD-016-C1"
+      "dependency": "TCD-016-C1",
+      "admission_precondition": "C1 physical state semantics fixed and admitted or explicitly accepted as model evolution"
     }
   ],
   "dependency_order": [
@@ -51,6 +61,6 @@
   ],
   "standalone_class_b_child": {
     "created": false,
-    "reason": "The local zeroing branch is source-localized, but the correct replacement cannot be defined without a physical mass destination. Current evidence therefore does not support a local-algebra-only correction."
+    "reason": "The local zeroing branch is source-localized, but the correct replacement still depends on a physical mass destination. Historical theory strengthens conservation but does not identify an existing continuation state."
   }
 }
