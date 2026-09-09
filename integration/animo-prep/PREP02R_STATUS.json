@@ -2,11 +2,11 @@
   "work_unit": "ANIMO-PREP02R",
   "title": "Historical Reference Environment Recovery & Reference Admission",
   "repository": "abhedwig-cell/ANIMO5",
-  "branch": "work/animo-prep02r-historical-reference-recovery",
+  "branch": "work/animo-prep02r-native-intel-artifact-intake-5",
   "source_baseline_branch": "baseline/animo-prep01-05-evidence",
   "source_baseline_head": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
   "date": "2026-09-09",
-  "status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+  "status": "BLOCKED_HISTORICAL_REFERENCE_PROVENANCE_NOT_ESTABLISHED_RECEIVED_2026_REBUILD_CANDIDATE",
   "source_identities": {
     "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
@@ -34,6 +34,10 @@
     "artifact_receipt_tool_ci_run": false,
     "native_ruurlo_capture_contract_ready": true,
     "native_run_manifest_template_ready": true,
+    "received_project_metadata_artifact": true,
+    "received_executable_artifact": true,
+    "received_artifact_lineage_review_completed": true,
+    "native_reconstruction_candidate_obtained": true,
     "historical_reference_artifact_obtained": false,
     "native_reference_run_completed": false,
     "native_vs_gnu_comparison_completed": false,
@@ -51,10 +55,30 @@
     "interpretation": "exact supplied archive bytes are pinned; archive self-identifies as 4.1.5 revision 53; canonical homogeneous SVN checkout identity remains unresolved"
   },
   "supplied_artifact_scan": {
+    "received_animo_executable_found": true,
+    "received_animo_executable_sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+    "received_animo_executable_classification": "RECENT_2026_NATIVE_REBUILD_CANDIDATE_NOT_HISTORICAL_REFERENCE",
+    "received_animo_executable_pe_timestamp": "2026-05-27T13:41:28Z",
+    "received_animo_executable_linker_version": "14.35",
+    "received_animo_executable_pdb_path": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\x64\\Debug\\animo41.pdb",
+    "received_animo_executable_embedded_source_root": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\src_develop_for_20260519\\",
     "historical_animo_executable_found": false,
     "historical_animo_dll_found": false,
-    "visual_fortran_project_found": false,
-    "visual_studio_solution_found": false,
+    "visual_fortran_project_found": true,
+    "visual_fortran_project_sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+    "visual_studio_solution_found": true,
+    "visual_studio_solution_sha256": "206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2",
+    "received_project_build_contract": {
+      "project_creator": "Intel Fortran",
+      "project_version": "11.0",
+      "solution_label": "Visual Studio 2010",
+      "RealKIND_all_configs": "realKIND8",
+      "LocalVariableStorage_all_configs": "localStorageSave",
+      "FloatingPointModel_all_configs": "source",
+      "CallingConvention_all_configs": "callConventionCVF",
+      "Debug_x64_LocalSavedScalarsZero": true,
+      "provenance_classification": "DIRECT_BUILD_CONFIGURATION_EVIDENCE_WITH_UNVERIFIED_ORIGINAL_PROVENANCE"
+    },
     "historical_build_log_found": false,
     "runner_reference_to_animo41_exe_found": true,
     "runner_reference_cases": [
@@ -117,6 +141,9 @@
     "receipt_default_trust_classification": "UNASSESSED_RECEIVED_ARTIFACT",
     "hash_before_execution_required": true,
     "absolute_controlled_storage_path_omitted_from_public_manifest": true,
+    "intake5_project_receipt": "integration/animo-prep/PREP02R_INTAKE5_PROJECT_RECEIPT.json",
+    "intake5_executable_receipt": "integration/animo-prep/PREP02R_INTAKE5_EXE_RECEIPT.json",
+    "intake5_lineage_evidence": "integration/animo-prep/PREP02R_INTAKE5_LINEAGE_EVIDENCE.json",
     "native_first_case": "RuurloGrass",
     "native_input_content_transformation_default": false,
     "native_repeat_determinism_required_when_practical": true,
@@ -126,9 +153,9 @@
   },
   "preferred_next_acquisition": [
     "send or otherwise submit the prepared WUR archival request through a verified current institutional contact route",
-    "exact ANIMO 4.1.5 revision-53 animo41.exe with executable and source-checkout provenance",
-    "original Intel Visual Fortran project/build metadata or archived build environment",
-    "complete historical RuurloGrass output tied to a known executable",
+    "provenance for the received project and executable, especially original transfer/archive context",
+    "original PDB, build log or compiler-environment record tied to the received executable",
+    "provenance-qualified historical ANIMO 4.1.x executable or executable-linked historical output",
     "nearest provenance-qualified ANIMO 4.1.x executable as explicitly distinct lineage"
   ],
   "native_admission": {
@@ -137,7 +164,9 @@
     "rounded_report_output_sufficient_as_oracle": false,
     "global_numerical_tolerance_defined": false,
     "observer_only_unrounded_capture_admitted": false,
-    "observer_blocker": "requires provenance-qualified native build/reference contract first"
+    "received_2026_executable_native_reconstruction_candidate": true,
+    "received_2026_executable_historical_reference": false,
+    "observer_blocker": "requires a separately reviewed native reconstruction contract; reconstructed native output must not be relabelled as independent B2"
   },
   "artifacts": {
     "work_unit_contract": "docs/prep02r/WORK_UNIT_CONTRACT.md",
@@ -150,8 +179,10 @@
     "artifact_receipt_tool_tests": "tests/test_capture_reference_artifact_manifest.py",
     "native_ruurlo_capture_contract": "docs/prep02r/NATIVE_RUURLO_CAPTURE_CONTRACT.md",
     "native_run_manifest_template": "integration/animo-prep/PREP02R_NATIVE_RUN_MANIFEST_TEMPLATE.json",
-    "candidate_registry": "integration/animo-prep/PREP02R_REFERENCE_CANDIDATES.json"
+    "candidate_registry": "integration/animo-prep/PREP02R_REFERENCE_CANDIDATES.json",
+    "intake5_report": "docs/prep02r/NATIVE_INTEL_ARTIFACT_INTAKE_5.md",
+    "intake5_status": "integration/animo-prep/PREP02R_NATIVE_INTEL_ARTIFACT_INTAKE_5_STATUS.json"
   },
-  "decision": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
-  "why_blocked": "No independently trustworthy historical ANIMO 4.1.x executable, exact native build metadata, or executable-linked historical output has yet been obtained. Receipt and native-capture tooling are now ready, but readiness cannot replace independent historical evidence. The current official WUR agreement names Version 4.0, so the official request route does not itself close the historical 4.1.x independence gap. A targeted archival request is prepared but not sent. GNU determinism cannot close the independence gap either."
+  "decision": "BLOCKED_HISTORICAL_REFERENCE_PROVENANCE_NOT_ESTABLISHED_RECEIVED_2026_REBUILD_CANDIDATE",
+  "why_blocked": "Received Visual Studio/Intel Fortran project metadata materially narrows the build contract and explicitly supports REAL(8) default-kind plus SAVE-style local storage. A received animo41.exe is also available, but direct PE/debug evidence classifies it as a 2026 native rebuild: timestamp 2026-05-27, source path src_develop_for_20260519, linker 14.35 and a 2019 Intel Fortran RTL catalog. It is therefore useful reconstruction evidence but not an independently trustworthy historical ANIMO 4.1.x/B2 reference. Original project/executable provenance, historical executable-linked outputs or another qualified historical route remain required for historical reference admission."
 }
