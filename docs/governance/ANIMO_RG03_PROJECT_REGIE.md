@@ -69,21 +69,33 @@ This blocks historical-fidelity claims and any admission route that currently re
 
 ## Post-G5 evidence wave
 
-The minimum requested post-G5 streams are all present. Additional authoritative support streams relevant to RG03 were also observed:
+The minimum requested post-G5 streams are all present. Additional authoritative support streams relevant to RG03 were observed and are attached by immutable branch/head reference with their evidence class preserved.
 
-- `B3A01`, which has qualified TCD-027 Class A readiness but is route-blocked;
-- `TIMEQ01`, a qualified synthetic runtime transaction/scheduler fixture;
-- `TIMEQ02`, a qualified synthetic external-owner adapter fixture;
-- `ARCHG02`, the final TS01/TIME01 candidate-architecture temporal revalidation;
-- B3I01 append-only canonical-register supplements, now extending the canonical identity surface through `TCD-041`.
+The initial RG03 closeout already included `B3A01`, `TIMEQ01`, `TIMEQ02`, `ARCHG02`, and the append-only B3I01 register supplements through `TCD-041`.
 
-These streams are attached by immutable branch/head reference. Their evidence class is preserved.
+A later live refresh adds the following completed evidence without increasing its strength:
+
+- `B3B01` at `d65ecddfba2b87ad9e97900c946a82b580c19571`: TCD-015 Class B admission readiness qualified, CI observed green, no correction or admission;
+- `B3A02` at `3ff8f4bda77c631b82110b83317c6a9b42b867ad`: TCD-017 Class A admission readiness qualified, CI observed green, no ledger patch or admission;
+- `B3A03` at `8eaaca34e4f0d906c2d8245f0df232586efe8ff3`: TCD-018 Class A admission-readiness status qualified, no production patch, but no live GitHub Actions run was observed on that branch, so RG03 does not promote a tested claim for B3A03;
+- `B3I02` at `c1a69c00a02aa0e32ca60580c3d0ebee96442c17`: qualified incremental canonical intake with no new TCD, no register append and no admission.
+
+`MASSQ02` at `50fbc79886d2f89b68bd59d53de73924c0ef7ce6` and `STATEQ02` at `0875f7f5c0976f8b0b3ae70d00fd2f48b31697d5` are explicitly retained as in-progress checkpoints. They do not change `GMASS` or `GSTATE` until their own qualification closes.
 
 ## Current project reading
 
 Historical fidelity is unresolved. Scientific qualification is no longer represented as one monolithic post-B2 gate.
 
-The project can safely run several process-scoped readiness workunits in parallel. In particular, TCD-015, TCD-017, TCD-018, TCD-023, TCD-024, TCD-026, TCD-030, TCD-038, TCD-040 and TCD-041 have enough bounded evidence to justify an atomic admission-readiness workunit without pretending that an admission route is already open.
+Four queue items now have their atomic admission-readiness dossiers complete but remain outside scientific admission because the legitimate route is not open and independent review remains pending where required:
+
+- TCD-015 through `B3B01`;
+- TCD-017 through `B3A02`;
+- TCD-018 through `B3A03`;
+- TCD-027 through `B3A01`.
+
+These four are therefore `WAITING_ON_B2_OR_G6U`, not `READY_FOR_ADMISSION_READINESS`. This is a forward queue transition: readiness work is done; it must not be repeated merely because historical acquisition is still active.
+
+The remaining queue items that are still ready to open as bounded atomic readiness workunits are TCD-023, TCD-024, TCD-026, TCD-030, TCD-038, TCD-040 and TCD-041. Their readiness work may proceed without pretending that an admission route is already open.
 
 Other items have real non-B2 blockers:
 
@@ -91,7 +103,8 @@ Other items have real non-B2 blockers:
 - TCD-016 and several GHG items remain theory blocked.
 - TCD-025, TCD-031, TCD-035, TCD-036 and TCD-039 depend on state ownership/restart completeness.
 - TCD-028 and TCD-037 depend on runtime-lifetime/interface resolution.
-- TCD-027 has already completed readiness and is now specifically waiting for G6H or legitimate G6U eligibility.
+
+B3I02 also confirms that MASSQ01 unexplained residuals remain local observer findings pending causality. No new TCD was allocated from those residuals and `TCD-042` is only the next unallocated candidate identifier, not a reservation.
 
 This distinction is intentional. `WAITING_ON_B2_OR_G6U` is not assigned to every item merely because B2 is currently absent.
 
@@ -102,11 +115,11 @@ This distinction is intentional. `WAITING_ON_B2_OR_G6U` is not assigned to every
 | G6H | ACTIVE_B2_ACQUISITION_NOT_PASSED | Historical fidelity remains open and important. |
 | G6U | NOT_ELIGIBLE_ACQUISITION_NOT_EXHAUSTED | The prepared external request has not been executed. |
 | G7 | NO_ATOMIC_SCIENTIFIC_ADMISSIONS_YET | Process-scoped readiness queue is active; no scientific admission is created by RG03. |
-| GSTATE | READINESS_QUALIFIED_ADMISSION_BLOCKED | STATEQ01 is a strong readiness matrix, not canonical STATE admission. |
+| GSTATE | READINESS_QUALIFIED_ADMISSION_BLOCKED | STATEQ01 is a strong readiness matrix; STATEQ02 remains in progress; canonical STATE is not admitted. |
 | GTIME | CONCRETE_CANDIDATE_QUALIFIED_ADMISSION_BLOCKED | TIME02 selected an exact rational candidate; canonical TIME remains closed. |
-| GMASS | B1_OBSERVER_READINESS_QUALIFIED_ADMISSION_BLOCKED | MASSQ01 is observer-only B1 evidence, not a canonical ledger admission. |
+| GMASS | B1_OBSERVER_READINESS_QUALIFIED_ADMISSION_BLOCKED | MASSQ01 is observer-only B1 evidence; MASSQ02 remains in progress; canonical MASS is not admitted. |
 | GEX | SYNTHETIC_CONTRACT_FIXTURE_QUALIFIED_REAL_ADAPTER_BLOCKED | TIMEQ02/ARCH contracts are nonproduction; real producer adapters remain absent. |
-| GARCH | QUALIFIED_CANDIDATE_ARCHITECTURE_REVALIDATED | ARCHG02 closes the candidate temporal revalidation task, not production architecture. |
+| GARCH | QUALIFIED_CANDIDATE_ARCHITECTURE_REVALIDATED | ARCHG02 closes candidate temporal revalidation, not production architecture. |
 | B4(profile) | NOT_ADMITTED | No profile can be composed until its included upstream gates are admitted. |
 | PRODUCTION | NOT_ADMITTED | RG03 makes no production change. |
 
