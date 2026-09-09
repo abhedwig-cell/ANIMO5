@@ -5,9 +5,10 @@
   "parent_admitted": false,
   "production_migration": "NOT_ADMITTED",
   "historical_theory_effect": {
-    "status": "THEORY_SUPPORTED_CONSERVATION_REQUIREMENT_AND_REPRESENTATION_GAP_BUT_NO_THEORY_QUALIFIED_DRY_PHASE",
+    "status": "THEORY_SUPPORTED_CONSERVATION_REQUIREMENT_AND_SOURCE_BOUND_SURFACE_ACTIVATION_GAP_BUT_NO_THEORY_QUALIFIED_DRY_PHASE",
     "ANIMO35_Report144": "conservation, liquid plus named soil-solid phase storage, addition-specific surface reservoir, soil-complex NH4 sorption and semi-analytical transport lineage recovered",
-    "revision53_low_storage_interpretation": "numerical_or_representation_guard_around_historical_transport_formulation_not_physical_phase_authority"
+    "revision53_surface_activation": "effective 0.1 mm layer0 Transsub low-storage boundary aligns with Flpn hydrological ponding activation in both detailed and aggregated hydrology",
+    "revision53_low_storage_interpretation": "shared representation activation boundary plus separate Transsub-local export policy, not recovered physical dry-phase authority"
   },
   "children": [
     {
@@ -22,14 +23,24 @@
         "scientific_status": "PROPOSED_MODEL_EXTENSION_REVIEW_READY_NOT_CORRECTED_LEGACY",
         "contract": "docs/science/TCD016_C1_PROPOSED_NONAQUEOUS_STATE_CONTRACT.md"
       },
+      "source_defined_activation_seam": {
+        "threshold_m": 0.0001,
+        "threshold_mm": 0.1,
+        "hydrology": "Flpn activation in Hydro_detailed and Hydro_aggregated",
+        "transport": "effective layer0 Transsub threshold 1e-6*100",
+        "canonical_event_crosses_threshold": true,
+        "physical_phase_meaning_qualified": false
+      },
       "gates": {
         "historical_conservation_requirement": "PASS",
+        "source_defined_surface_activation_seam": "PASS_FOR_RECONSTRUCTION",
         "authoritative_phase_identity_theory": "FAIL_MISSING",
         "state_definition_units": "PROPOSED_REVIEW_READY",
         "single_owner_control_volume": "PROPOSED_REVIEW_READY",
+        "activation_deactivation_physical_semantics": "NOT_QUALIFIED",
         "initialization": "FAIL_CLOSED_CONTRACT_DEFINED_NOT_SCIENTIFICALLY_QUALIFIED",
         "restart_checkpoint": "CONTRACT_DEFINED_NOT_QUALIFIED",
-        "wet_to_dry_transfer": "CONSERVATION_RESIDUAL_RULE_DEFINED_PHYSICAL_TRIGGER_NOT_QUALIFIED",
+        "wet_to_continuation_transfer": "CONSERVATION_RESIDUAL_RULE_DEFINED_PHYSICAL_TRIGGER_NOT_QUALIFIED",
         "dry_hold": "NO_PROCESS_FAIL_CLOSED_RULE_PROPOSED_CHEMISTRY_NOT_QUALIFIED",
         "rewetting_release": "BOUNDED_TRANSFER_OPERATOR_DEFINED_KINETICS_NOT_QUALIFIED",
         "connected_process_conservation": "PARTIAL_DIAGNOSTIC_ONLY",
@@ -45,15 +56,25 @@
       "provisional_class": "E_NUMERICAL_POLICY_CHANGE",
       "status": "BLOCKED_DEPENDS_ON_TCD016_C1",
       "legacy_surfaces": [
-        "Factor=100 low-storage criterion for layer 0",
-        "Fu > 1e-6 m d-1 layer-0 export threshold"
+        "shared 0.1 mm surface activation boundary in hydrology and effective layer0 Transsub low-storage test",
+        "Fu > 1e-6 m d-1 = 0.001 mm d-1 Transsub-local export threshold",
+        "Small/Vsmall/Vvsmall analytical branch-selection constants"
       ],
-      "historical_theory_relation": "Transsub and Detcoef implement the semi-analytical concentration family documented in ANIMO3.5; low-storage early-return thresholds are additional guard policy with no recovered physical-phase authority",
+      "historical_theory_relation": "Transsub and Detcoef implement the semi-analytical concentration family documented in ANIMO3.5; no recovered theory identifies the shared 0.1 mm activation or Transsub-local Fu threshold as physical chemical constants",
       "excluded_candidate": "FORCE_ALL_RESIDUAL_MASS_THROUGH_TINY_OUTFLOW",
       "dependency": "TCD-016-C1",
       "admission_precondition": "C1 physical state semantics fixed and admitted or explicitly accepted as model evolution"
     }
   ],
+  "ancillary_surface_seam": {
+    "location": "UBoundconc.for",
+    "threshold_m": 0.001,
+    "threshold_mm": 1.0,
+    "role": "dry NH4/NO3 deposition routing between layer0 and first soil compartment",
+    "canonical_event_start_storage_mm": 0.1087117,
+    "causal_relevance_to_TCD016": "NOT_ESTABLISHED",
+    "new_tcd_created": false
+  },
   "dependency_order": [
     "TCD-016-C1",
     "TCD-016-E1",
@@ -61,6 +82,6 @@
   ],
   "standalone_class_b_child": {
     "created": false,
-    "reason": "The local zeroing branch is source-localized, but the correct replacement still depends on a physical mass destination. Historical theory strengthens conservation but does not identify an existing continuation state."
+    "reason": "The local zeroing branch is source-localized, but the correct replacement still depends on a physical mass destination. Historical theory and the shared activation seam strengthen the state-gap diagnosis but do not identify an existing continuation state."
   }
 }
