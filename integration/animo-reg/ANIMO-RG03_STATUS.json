@@ -26,11 +26,26 @@
   "evidence_strength_increased_by_integration": false,
   "last_writer_wins_register_update": false,
   "authority_snapshot": {
-    "workunit_rows": 24,
+    "workunit_rows": 28,
     "canonical_tcd_register_branch": "work/animo-b3i01-canonical-register-append",
     "canonical_tcd_register_head": "383c7a83e84a578969f92113280dc715b7bdddb4",
     "canonical_tcd_register_tail": "TCD-041",
     "authority_selection_by_branch_name": false
+  },
+  "post_closeout_refresh": {
+    "state": "PERSISTED_BEFORE_REFRESH_VALIDATION",
+    "B3B01": {"head":"d65ecddfba2b87ad9e97900c946a82b580c19571","qualified":true,"tested":true,"admitted":false},
+    "B3A02": {"head":"3ff8f4bda77c631b82110b83317c6a9b42b867ad","qualified":true,"tested":true,"admitted":false},
+    "B3A03": {"head":"8eaaca34e4f0d906c2d8245f0df232586efe8ff3","qualified":true,"tested":false,"live_ci_observed":false,"admitted":false},
+    "B3I02": {"head":"c1a69c00a02aa0e32ca60580c3d0ebee96442c17","qualified":true,"tested":true,"new_tcd_count":0,"admitted":false},
+    "in_progress_excluded": {
+      "MASSQ02": {"head":"50fbc79886d2f89b68bd59d53de73924c0ef7ce6","status":"IN_PROGRESS_CHECKPOINT_PERSISTED"},
+      "STATEQ02": {"head":"0875f7f5c0976f8b0b3ae70d00fd2f48b31697d5","status":"IN_PROGRESS_PERSISTED_BEFORE_LONG_EXECUTION"}
+    },
+    "canonical_register_tail_changed": false,
+    "scientific_admission_performed": false,
+    "evidence_strength_increased": false,
+    "refresh_validation": "PENDING"
   },
   "gate_reconciliation": {
     "G6H": "ACTIVE_B2_ACQUISITION_NOT_PASSED",
@@ -55,8 +70,8 @@
   },
   "b3_queue": {
     "entries": 24,
-    "READY_FOR_ADMISSION_READINESS": 10,
-    "WAITING_ON_B2_OR_G6U": 1,
+    "READY_FOR_ADMISSION_READINESS": 7,
+    "WAITING_ON_B2_OR_G6U": 4,
     "WAITING_ON_THEORY": 4,
     "WAITING_ON_NUMERICS": 2,
     "WAITING_ON_STATE": 5,
@@ -67,12 +82,11 @@
   "validation": {
     "validator": "tools/validate_rg03_governance.py",
     "workflow": ".github/workflows/animo-rg03-governance.yml",
-    "tested_head_before_status_closeout": "fe88fc34349fc160ac1a0cc256955493b445c0b2",
-    "github_actions_run_id": 34347955634,
-    "github_actions_head": "fe88fc34349fc160ac1a0cc256955493b445c0b2",
-    "github_actions_conclusion": "success",
-    "validator_result": "PASS",
-    "scope_guard": "PASS_NO_PRODUCTION_OR_FROZEN_SOURCE_PATHS_CHANGED"
+    "initial_closeout_run_id": 34348072677,
+    "initial_closeout_head": "b67a6cac325fe3f838aedc9df106e120fd5a3d0f",
+    "initial_closeout_conclusion": "success",
+    "post_closeout_refresh_validation": "PENDING",
+    "scope_guard": "NO_PRODUCTION_OR_FROZEN_SOURCE_PATHS_INTENDED"
   },
   "deliverables": [
     "docs/governance/ANIMO_RG03_PROJECT_REGIE.md",
@@ -90,16 +104,21 @@
     "Historical fidelity and scientific qualification are separate tracks.",
     "B2 remains mandatory for historical fidelity/equivalence claims and is not devalued.",
     "PREP02R remains active; G6U is not eligible before the real bounded acquisition action is executed and closed.",
-    "Independent process-scoped B3 readiness may proceed where scientific, numerical, state and runtime dependencies allow.",
+    "TCD-015, TCD-017, TCD-018 and TCD-027 now have completed admission-readiness dossiers but no valid scientific admission route.",
+    "Independent process-scoped B3 readiness remains open for TCD-023, TCD-024, TCD-026, TCD-030, TCD-038, TCD-040 and TCD-041.",
+    "B3I02 creates no new TCD and does not promote unexplained MASSQ01 residuals without causality.",
+    "MASSQ02 and STATEQ02 remain in progress and do not promote GMASS or GSTATE.",
     "Synthetic oracle and synthetic runtime/adapter evidence remain explicitly non-B2.",
     "STATE, TIME, MASS and external exchange remain separate unadmitted canonical gates.",
     "B4 can only be composed from explicitly admitted upstream scopes for a declared profile.",
-    "Canonical TCD identity integration is append-only and does not imply scientific admission."
+    "Canonical TCD identity integration remains append-only and does not imply scientific admission."
   ],
   "recommended_next": [
     "Execute the actual PREP02R external acquisition action so G6H can progress and G6U can eventually become legitimately decidable.",
-    "Open atomic admission-readiness workunits for queue items marked READY_FOR_ADMISSION_READINESS without waiting for PREP02R where their local dependencies are already qualified.",
-    "Continue NQ02/TCD-029 numerical work, SQ01/TCD-016 theory work, and feature-scoped STATE/runtime work in parallel.",
+    "Preserve TCD-015, TCD-017, TCD-018 and TCD-027 readiness dossiers; do not redo readiness work while route/review gates are pending.",
+    "Open remaining atomic readiness work for TCD-023, TCD-024, TCD-026, TCD-030, TCD-038, TCD-040 and TCD-041 as independent capacity allows.",
+    "Continue MASSQ02 and STATEQ02 independently but do not promote GMASS or GSTATE until their own qualification completes.",
+    "Continue NQ02/TCD-029 numerical work and SQ01/TCD-016 theory work in parallel.",
     "Do not create any B3 admission, B4 baseline or production migration from RG03 itself."
   ]
 }
