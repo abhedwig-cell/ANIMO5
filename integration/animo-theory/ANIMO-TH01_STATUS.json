@@ -121,11 +121,11 @@
   },
   "verification": {
     "artifact": "integration/animo-theory/ANIMO-TH01_VERIFICATION.json",
-    "verification_commit": "1f41bba6a06d6718aaca4ec0267ab6bf5ba80922",
+    "verification_commit": "eb334f885b9e73c2ccf9f1c1986caf38d62c4891",
     "result": "PASS",
-    "pre_verification_candidate_head": "b439867016e1da78efefd7f256c3a558d4c57665",
+    "pre_verification_candidate_head": "d1f55b3a7af60bff807301f7674e538397f52989",
     "base_compare_status": "ahead",
-    "base_compare_ahead_by": 15,
+    "base_compare_ahead_by": 18,
     "base_compare_behind_by": 0,
     "changed_files_before_verification_artifact": 11,
     "legacy_source_paths_changed": false,
@@ -144,7 +144,7 @@
     "reason": "TH01 strengthened theory/provenance interpretation for existing findings but did not obtain evidence sufficient to close them or to invent a new defect solely from missing theory"
   },
   "remaining_blockers": [
-    "no exact revision-53 theory/change specification covering all post-4.0 extensions",
+    "no exact revision-53 theory/change specification covering all revision-53 extensions beyond the supplied 2005 guide boundary",
     "GHG source/testcase input-contract lineage mismatch remains unresolved",
     "no active supplied macropore testcase and no independent ANIMO solute-transport reference",
     "stable-DOM exact release numbering and N/P extension authority remain unresolved",
