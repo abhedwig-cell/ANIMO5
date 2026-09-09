@@ -1,0 +1,43 @@
+name: ANIMO-B3I03 TCD-042 canonical register append
+
+on:
+  push:
+    branches:
+      - work/animo-b3i03-canonical-register-append
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  append-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Append TCD-042 and generate append status
+        run: python tools/b3i03/append_tcd042_register.py
+      - name: Verify generated diff scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code -- docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv >/dev/null && exit 1 || true
+          test -f integration/animo-b3/B3I03_CANONICAL_REGISTER_APPEND_STATUS.json
+          changed="$(git status --short | awk '{print $2}' | sort)"
+          expected="$(printf '%s\n' docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv integration/animo-b3/B3I03_CANONICAL_REGISTER_APPEND_STATUS.json | sort)"
+          test "$changed" = "$expected"
+      - name: Commit qualified append
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv integration/animo-b3/B3I03_CANONICAL_REGISTER_APPEND_STATUS.json
+          git commit -m "register(B3I03): append TCD-042 without admission"
+          git push origin HEAD:work/animo-b3i03-canonical-register-append
