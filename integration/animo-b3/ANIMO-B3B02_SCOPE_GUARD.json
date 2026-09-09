@@ -4,6 +4,7 @@
   "scope": "admission-readiness evidence only",
   "allowed_changed_paths": [
     "docs/b3/TCD042_B1_CLASS_B_ADMISSION_READINESS.md",
+    "docs/b3/TCD042_B1_CLASS_B_ADMISSION_READINESS_V2.md",
     "integration/animo-b3/ANIMO-B3B02_STATUS.json",
     "integration/animo-b3/TCD042_B1_EXPECTED_DIFFERENCE.json",
     "integration/animo-b3/ANIMO-B3B02_SCOPE_GUARD.json"
@@ -22,5 +23,6 @@
   "corrected_legacy_admitted": false,
   "independent_review_passed": false,
   "route_passed": false,
+  "domain_refinement_allowed": true,
   "decision": "PASS_SCOPE_ONLY_ADMISSION_REMAINS_FAIL_CLOSED"
 }
