@@ -1,0 +1,60 @@
+{
+  "work_unit": "ANIMO-B3B03",
+  "target_tcd": "TCD-024",
+  "pinned_evidence": {
+    "canonical_tcd_register": {
+      "branch": "work/animo-b3q01-scientific-admission-framework",
+      "blob_sha": "224acc350fde69d3c4aebed8628c0f945e0b3367",
+      "path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+      "classification": "CONFIRMED_LEGACY_WRONG_INDEX_DEFECT_AND_LATENT_BOUNDS_RISK"
+    },
+    "B3Q01_class_contract": {
+      "branch": "work/animo-b3q01-scientific-admission-framework",
+      "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+      "path": "docs/governance/B3_QUALIFICATION_CLASSES.md",
+      "blob_sha": "b67b46eff837ae03732e97dd43a3d6e1f1c220ed"
+    },
+    "GOV02_historical_uncertainty_policy": {
+      "branch": "work/animo-gov02-evidence-dag-reconciliation",
+      "head": "db7add6f9561730bbf352aa7fd3f3968405cfaa3",
+      "path": "docs/governance/HISTORICAL_UNCERTAINTY_ADMISSION_POLICY.md",
+      "blob_sha": "dd6b29432d836189a8beb98759a4f93d74777f6c",
+      "route_active_at_authority_snapshot": false
+    },
+    "SYNQ01_TCD024": {
+      "branch": "work/animo-synq01-independent-synthetic-oracles",
+      "head": "124364c008cdca511f024b3b7d7677572c6ac0c7",
+      "path": "integration/animo-synthetic/SYNTHETIC_ORACLE_REGISTER.json",
+      "blob_sha": "4c215d19844614de8868380fb03f93268ea4c5d8",
+      "oracle_ids": ["SYNQ-O006", "SYNQ-O007"],
+      "claims": [
+        "per-site slow-Langmuir kinetic relaxation with site-specific K_j",
+        "trial-index domain 1..20 is not a valid site selector for site domain 1..3"
+      ]
+    },
+    "NQ02_TCD019_TCD024_interaction": {
+      "branch": "work/animo-nq02-tcd019-nonlinear-p-qualification",
+      "head": "40a41089020f78ee1d5181b8afc7bdb511af3193",
+      "path": "docs/numerics/TCD019_TCD024_INTERACTION.md",
+      "blob_sha": "9ca37e90115faab9604a3f3051a8246b5e3a0813",
+      "status": "FOUR_WAY_SYNTHETIC_INTERACTION_CHARACTERIZED_NO_COMPOSITION_ADMISSION",
+      "admission_separation": "TCD-019 remains Class E and TCD-024 remains Class B. B3B03 uses only the TCD-024-only evidence axis and does not alter TCD-019 policy."
+    },
+    "PREP02R_live_checked_status": {
+      "branch": "work/animo-prep02r-native-intel-artifact-intake-4",
+      "head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+      "path": "integration/animo-prep/PREP02R_STATUS.json",
+      "blob_sha": "eb3c8e877d82f402415061cfd39c3d2bcbe550a7",
+      "status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+      "reference_qualified": false,
+      "external_request_sent": false
+    }
+  },
+  "route_consequence": {
+    "normal_B2_route_available_for_TCD024": false,
+    "historical_uncertainty_route_available": false,
+    "historical_prevalence": "UNKNOWN",
+    "readiness_may_be_qualified_without_admission": true,
+    "B3_admission_performed": false
+  }
+}
