@@ -100,12 +100,21 @@
     "no material aliasing defect was admitted by the duplicate-actual static scan",
     "compiler flags remain diagnostic build controls, not scientific fixes"
   ],
+  "post_closeout_b3_reconciliation": {
+    "status": "RECONCILED_WITH_B3I01_CANONICAL_RUNTIME_ROUTING_NO_NEW_TCD",
+    "b3i01_branch": "work/animo-b3i01-canonical-register-append",
+    "b3i01_head": "d2fe4eb3793a1ffc6c09197d7db01c3e3fe33f88",
+    "b3i01_buildq01_head_consumed": "bf5c932753518c883d868c372c6c26bcdcacec68",
+    "current_buildq01_evidence_head_reconciled": "e09d3a83467b736158c9a81523b05c3464eebbb3",
+    "ancestry": "CURRENT_HEAD_TWO_COMMITS_AHEAD_ZERO_BEHIND_OF_B3I01_CONSUMED_HEAD",
+    "artifact": "integration/animo-build/BUILDQ01_B3I01_ROUTING_RECONCILIATION.json"
+  },
   "b3_routing": {
     "new_canonical_tcd_allocated": false,
     "GHG_hidden_task_state": "BLOCKS_EXPLICIT_MIGRATION_RECONCILE_WITH_GHG01",
     "macropore_hidden_task_state": "BLOCKS_EXPLICIT_MIGRATION_RECONCILE_WITH_MP02",
-    "MAPOHYDRO_LnBoMpMx": "NEW_LOCAL_RUNTIME_SEMANTIC_CANDIDATE_FOR_B3_INTAKE_CONTROL_AND_STATE_MATERIAL_GNU_HISTORICAL_INTEL_UNKNOWN",
-    "MAPOHYDRO_bounds_order": "SEPARATE_LOCAL_RUNTIME_SAFETY_EVALUATION_ORDER_CANDIDATE_FOR_B3_INTAKE_DO_NOT_AUTO_MERGE_TCD025",
+    "MAPOHYDRO_LnBoMpMx": "MAP_TO_EXISTING_TCD_011_LOCAL_STORAGE_DURATION_PROPOSED_OWNER_ANIMO_BUILDQ02",
+    "MAPOHYDRO_bounds_order": "BUILD_RUNTIME_HAZARD_NOT_TCD_PROPOSED_OWNER_ANIMO_BUILDQ02",
     "SQ01_index0_parameter_gap": "ROUTE_TO_B3_INTAKE_ONLY_IF_RUNTIME_MATERIALITY_ESTABLISHED",
     "NQ02_nonlinear_evaluation_order": "RETAIN_UNDER_TCD019_SCOPE_UNLESS_INDEPENDENT_DEFECT_EVIDENCE",
     "compiler_flags_as_fix": "PROHIBITED"
@@ -115,18 +124,20 @@
     "docs/build/FORTRAN_STORAGE_DURATION_CONTRACT.md",
     "docs/build/FLOATING_EXCEPTION_HAZARD_MATRIX.md",
     "docs/build/MAPOHYDRO_STORAGE_AND_BOUNDS_PROBE.md",
+    "docs/build/BUILDQ01_B3I01_ROUTING_RECONCILIATION.md",
     "integration/animo-build/HIDDEN_STATE_REGISTER.csv",
+    "integration/animo-build/BUILDQ01_B3I01_ROUTING_RECONCILIATION.json",
     "integration/animo-build/ANIMO-BUILDQ01_STATUS.json"
   ],
   "remaining_production_blocks": [
     "externalize and qualify active GHG task/solver contexts before migration",
     "externalize and qualify macropore task/solver contexts before migration",
-    "resolve Mapohydro cross-task LnBoMpMx semantics without relying on blanket static storage",
-    "resolve Mapohydro bounds/evaluation-order seam under governed B3/runtime qualification",
+    "qualify Mapohydro cross-task LnBoMpMx semantics under existing TCD-011 and proposed ANIMO-BUILDQ02 without relying on blanket static storage",
+    "qualify Mapohydro bounds/evaluation-order runtime hazard under proposed ANIMO-BUILDQ02; no scientific TCD is currently allocated",
     "resolve GHG restart layer-0 phase reconstruction under canonical STATE work",
     "establish runtime materiality or close the SQ01 Transca layer-0 parameter initialization finding",
     "replace implicit interfaces seam-by-seam only with equivalence evidence",
-    "qualify floating-domain/evaluation-order source risks before any correction",
+    "qualify remaining floating-domain/evaluation-order source risks before any correction",
     "recover or independently qualify historical Intel local-storage semantics; Intel default /Qauto-scalar is not a complete explanation of active revision-53 cross-call behavior"
   ]
 }
