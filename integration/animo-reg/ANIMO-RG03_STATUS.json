@@ -73,9 +73,12 @@
     "scientific_admission_performed": false,
     "evidence_strength_increased": false,
     "second_refresh_validation": {
-      "state": "PENDING_GITHUB_ACTIONS_AFTER_PERSIST",
-      "validator": "tools/validate_rg03_governance.py",
-      "workflow": ".github/workflows/animo-rg03-governance.yml"
+      "state": "PASS",
+      "tested_head": "b7f0d7a5249504a301ef9c148da8885c0e43de28",
+      "github_actions_run_id": 34360383114,
+      "conclusion": "success",
+      "validator_result": "PASS",
+      "scope_guard": "PASS_NO_PRODUCTION_OR_FROZEN_SOURCE_PATHS_CHANGED"
     }
   },
   "gate_reconciliation": {
@@ -120,11 +123,11 @@
     "post_closeout_refresh_run_id": 34350280909,
     "post_closeout_refresh_head": "08e44fedadf878a63ea13992742abaf22e01fe52",
     "post_closeout_refresh_conclusion": "success",
-    "second_refresh_run_id": null,
-    "second_refresh_head": null,
-    "second_refresh_conclusion": "PENDING",
-    "validator_result": "PENDING_SECOND_REFRESH",
-    "scope_guard": "PENDING_SECOND_REFRESH"
+    "second_refresh_run_id": 34360383114,
+    "second_refresh_head": "b7f0d7a5249504a301ef9c148da8885c0e43de28",
+    "second_refresh_conclusion": "success",
+    "validator_result": "PASS",
+    "scope_guard": "PASS_NO_PRODUCTION_OR_FROZEN_SOURCE_PATHS_CHANGED"
   },
   "deliverables": [
     "docs/governance/ANIMO_RG03_PROJECT_REGIE.md",
