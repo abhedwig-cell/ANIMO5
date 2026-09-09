@@ -21,5 +21,34 @@ jobs:
           python-version: '3.12'
       - name: Install validator dependency
         run: python -m pip install --disable-pip-version-check jsonschema
-      - name: Validate B3 governance artifacts
+      - name: Check JSON Schema validity
+        run: |
+          python - <<'PY'
+          import json
+          from jsonschema import Draft202012Validator
+          schema = json.load(open('integration/animo-b3/B3_DISPOSITION_SCHEMA.json', encoding='utf-8'))
+          Draft202012Validator.check_schema(schema)
+          print('JSON Schema: PASS')
+          PY
+      - name: Validate normal-route fixture
+        run: |
+          python - <<'PY'
+          import json
+          from jsonschema import Draft202012Validator
+          import tools.validate_b3q01_governance as v
+          schema = json.load(open('integration/animo-b3/B3_DISPOSITION_SCHEMA.json', encoding='utf-8'))
+          Draft202012Validator(schema).validate(v.normal_class_a_record())
+          print('Normal route fixture: PASS')
+          PY
+      - name: Validate historical-uncertainty fixture
+        run: |
+          python - <<'PY'
+          import json
+          from jsonschema import Draft202012Validator
+          import tools.validate_b3q01_governance as v
+          schema = json.load(open('integration/animo-b3/B3_DISPOSITION_SCHEMA.json', encoding='utf-8'))
+          Draft202012Validator(schema).validate(v.uncertainty_class_a_record())
+          print('Historical uncertainty fixture: PASS')
+          PY
+      - name: Validate full fail-closed governance contract
         run: python tools/validate_b3q01_governance.py
