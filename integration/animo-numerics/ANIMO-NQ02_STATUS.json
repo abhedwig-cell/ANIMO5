@@ -123,6 +123,27 @@
     "cran_grass_first_step_seam_separated": true,
     "cran_grass_first_step_attributed_to_tcd014": false
   },
+  "fallback_policy_study": {
+    "executed": true,
+    "evidence_role": "B1_DIAGNOSTIC_NATURAL_FALLBACK_SENSITIVITY_ONLY",
+    "documentation": "docs/numerics/TCD019_FALLBACK_POLICY_STUDY.md",
+    "matrix": "integration/animo-numerics/TCD019_FALLBACK_POLICY_MATRIX.json",
+    "cases": [
+      "Puitmijn_Cranendonck_60",
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+    ],
+    "fixed_constitutive_route": "cancellation_safe_fast_langmuir_exact_secant",
+    "fixed_newton_small": 1e-7,
+    "bisection_thresholds_tested": [1e-6, 1e-7, 1e-8],
+    "diagnostic_descendants_hashed": true,
+    "post_initial_refinement_converges_in_both_cases": true,
+    "root_or_branch_selection_materiality_observed": true,
+    "initialization_interaction_observed": true,
+    "smaller_fallback_residual_not_sufficient_for_scientific_acceptance": true,
+    "fallback_policy_classification": "FALLBACK_POLICY_CAUSALLY_MATERIAL_BUT_NOT_YET_QUALIFIED",
+    "specific_fallback_tolerance_qualified": false,
+    "finding": "fallback cannot be treated as an ordinary tolerance knob; tighter scalar Df acceptance improves post-initial residuals but can select a materially different first-step solution, so residual, bracket, root selection, inherited Recfso and initialization semantics require joint qualification"
+  },
   "precision_study": {
     "executed": true,
     "canonical_precision": "GNU diagnostic binary64-default path",
@@ -153,6 +174,8 @@
     "candidate_route": "THRESHOLD_FREE_CANCELLATION_SAFE_EXACT_STORAGE_REPRESENTATION_PLUS_JOINTLY_QUALIFIED_NONLINEAR_AND_FALLBACK_POLICY",
     "route_level_convergence_candidate_qualified": true,
     "fast_langmuir_natural_multicase_support": true,
+    "fallback_policy_causally_material": true,
+    "fallback_policy_qualified": false,
     "fallback_policy_must_be_jointly_qualified": true,
     "specific_production_small_qualified": false,
     "specific_fallback_tolerance_qualified": false,
@@ -175,6 +198,8 @@
     "tcd024_interaction_executed": true,
     "convergence_policy_candidate_qualified": true,
     "natural_fast_langmuir_multicase_coverage_completed": true,
+    "fallback_natural_sensitivity_executed": true,
+    "fallback_policy_qualified": false,
     "constitutive_family_coverage_completed": false,
     "independent_numerical_review_completed": false,
     "corrected_legacy_admitted": false,
@@ -185,9 +210,11 @@
     "reconstruction": "docs/numerics/TCD019_NONLINEAR_P_NUMERICAL_RECONSTRUCTION.md",
     "convergence_study": "docs/numerics/TCD019_CONVERGENCE_STUDY.md",
     "multicase_study": "docs/numerics/TCD019_MULTICASE_NATURAL_COVERAGE.md",
+    "fallback_study": "docs/numerics/TCD019_FALLBACK_POLICY_STUDY.md",
     "interaction": "docs/numerics/TCD019_TCD024_INTERACTION.md",
     "matrix": "integration/animo-numerics/TCD019_NUMERICAL_MATRIX.json",
     "multicase_matrix": "integration/animo-numerics/TCD019_MULTICASE_EXTENSION.json",
+    "fallback_matrix": "integration/animo-numerics/TCD019_FALLBACK_POLICY_MATRIX.json",
     "status": "integration/animo-numerics/ANIMO-NQ02_STATUS.json"
   },
   "hard_rules": {
@@ -201,15 +228,16 @@
     "diagnostic_descendants_must_be_hashed": true
   },
   "tolerance_status": "TOLERANCE_NOT_YET_QUALIFIED",
-  "status": "QUALIFIED_TCD019_NUMERICAL_CAUSALITY_AND_ROUTE_LEVEL_CONVERGENCE_POLICY_CANDIDATE_B3_ADMISSION_NOT_YET_OPEN",
+  "status": "QUALIFIED_TCD019_NUMERICAL_CAUSALITY_AND_ROUTE_LEVEL_CONVERGENCE_POLICY_CANDIDATE_FALLBACK_MATERIAL_B3_ADMISSION_NOT_YET_OPEN",
   "corrected_legacy_admitted": false,
   "B3_admitted": false,
   "production_migration_admitted": false,
   "open_blockers": [
     "constitutive-family completion beyond the supplied fast-Langmuir natural cases, especially fast Freundlich numerical policy",
+    "joint Newton/fallback governing residual, bracketing and root-selection policy qualification",
+    "separate initialization/state-consistency resolution for the first-step fallback interaction",
     "independent numerical review",
-    "B2 historical/reference characterization where obtainable",
-    "joint nonlinear/fallback production policy qualification without tolerance invention"
+    "B2 historical/reference characterization where obtainable"
   ],
-  "next_gate": "COMPLETE_CONSTITUTIVE_FAMILY_AND_FALLBACK_POLICY_QUALIFICATION_AND_OBTAIN_INDEPENDENT_REVIEW_BEFORE_ANY_B3_ADMISSION_WORKUNIT"
+  "next_gate": "QUALIFY_FAST_FREUNDLICH_CONSTITUTIVE_POLICY_AND_JOINT_NEWTON_FALLBACK_ROOT_SELECTION_BEFORE_ANY_B3_ADMISSION_WORKUNIT"
 }
