@@ -1,0 +1,14 @@
+--- ghgponding_reference.for
++++ ghgponding_explicit_context.for
+@@ -1,5 +1,6 @@
+       Subroutine GHGponding
+-     &(Itask,Flpn,He,He0Old,Mofr,Mofro,Mofrsa,Mofrt)
++     &(Itask,Flpn,He,He0Old,Mofr,Mofro,Mofrsa,Mofrt,He0,Mofr0,Mofro0,
++     & Mofrsa0,Mofrt0)
+@@ -17,8 +18,8 @@
+       Implicit None
+       Integer :: Flpn,Itask
+-      Real :: He(0:0),He0Old,Mofr(0:0),Mofro(0:0),Mofrsa(0:0),Mofrt(0:0)
+-      Real :: He0,Mofr0,Mofro0,Mofrsa0,Mofrt0
++      Real :: He(0:0),He0Old,Mofr(0:0),Mofro(0:0),Mofrsa(0:0),Mofrt(0:0),
++     &        He0,Mofr0,Mofro0,Mofrsa0,Mofrt0
