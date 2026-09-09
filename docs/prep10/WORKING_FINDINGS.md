@@ -1,6 +1,6 @@
 # ANIMO-PREP10 — Stable-DOM plough accumulator audit
 
-Status: `QUALIFIED_SOURCE_LEVEL_USE_BEFORE_DEFINITION_FROZEN_PLOUGH_INPUT_PRESENT_RUNTIME_MAGNITUDE_OPEN`.
+Status: `QUALIFIED_SOURCE_LEVEL_USE_BEFORE_DEFINITION_FROZEN_PLOUGH_INPUT_PRESENT_GNU_STORAGE_PERSISTENCE_CONFIRMED_RUNTIME_MAGNITUDE_OPEN`.
 
 ## Purpose
 
@@ -45,17 +45,28 @@ This is stronger than the earlier "potentially material" wording. The finding no
 
 `ANIMO_testbank/CranMais/Input/Initial.inp` has the `>sdomin:` block at line 106. Its 69 listed stable soluble organic matter, nitrogen and phosphorus initial values on lines 107-109 are all zero. The member SHA-256 is `8df3d78e830f344bc315d4dff2ae4c1ee4d6e959a07ba7d112e4105e6fbbb201`.
 
-This establishes a concrete frozen-input path requesting repeated ploughing. It does not establish that a provenance-qualified historical executable actually ran the case. Initial stable-DOM values being zero do not remove the source-level undefined read: the accumulator itself is still read before definition. The observed numerical value of such a read remains dependent on compiler/runtime/storage semantics.
+This establishes a concrete frozen-input path requesting repeated ploughing. It does not establish that a provenance-qualified historical executable actually ran the case. Initial stable-DOM values being zero do not remove the source-level undefined read: the accumulator itself is still read before definition.
+
+## GNU diagnostic-contract storage semantics
+
+The existing GNU diagnostic build contract includes `-fno-automatic`. PREP10 now has a separate synthetic compiler-semantics probe in `tools/probe_prep10_local_storage_semantics.py` that reproduces the relevant pattern: a local scalar is self-read and updated on repeated calls without prior explicit definition.
+
+GitHub Actions run `34302300827` executed this probe successfully with GNU Fortran 13.3.0. Under the current diagnostic flags the probe produced successive values `1.0`, `2.0`, `3.0`, demonstrating that local state is retained across calls in this probe. The same pattern compiled with the additional diagnostic observer `-finit-real=snan` produced `NaN` on every call, exposing the undefined first read rather than silently assigning it a physical meaning.
+
+This closes one narrower question: the current GNU diagnostic storage contract is capable of preserving such local state across calls. It does **not** prove the numerical magnitude inside `Addit.for`, and it does not establish what the historical Intel Visual Fortran build did.
+
+The important implication for the next diagnostic is that a GNU run using the existing `-fno-automatic` contract must not be interpreted as if these three variables were fresh event-local accumulators. The source does not reset them, and the compiler contract can retain local state between calls.
 
 ## Verification
 
-Seven synthetic scanner unit tests passed in the authoring environment:
+Seven synthetic scanner unit tests pass. GitHub Actions run `34302300827` also passed:
 
-```text
-python -m unittest discover -s tests/prep10 -v
-```
+- audit-tool compilation;
+- the seven PREP10 scanner tests;
+- machine-readable JSON validation;
+- the GNU local-storage semantics probe.
 
-The exact source archive audit and exact frozen-testbank activation audit also passed against the supplied B0 bytes. Raw source and testcase archives were not added to Git.
+The exact source archive audit and exact frozen-testbank activation audit passed against the supplied B0 bytes in the authoring environment. Raw source and testcase archives were not added to Git.
 
 Machine-readable evidence is persisted in:
 
@@ -63,12 +74,12 @@ Machine-readable evidence is persisted in:
 
 ## What is not yet qualified
 
-This source/input qualification does not yet quantify numerical consequences. In particular it does not prove:
+This source/input/compiler-contract qualification still does not quantify actual ANIMO numerical consequences. In particular it does not prove:
 
-- the value observed for an undefined local under the historical Intel build;
-- whether a GNU diagnostic build happens to zero, preserve or otherwise expose the local storage;
+- the value observed for these locals in the actual revision-53 `Addit.for` execution path;
 - the magnitude of any stable DOM/DON/DOP redistribution difference;
 - downstream balance effects;
+- the local-storage behavior of the historical Intel Visual Fortran build;
 - agreement or disagreement with a provenance-qualified historical reference executable.
 
-The next meaningful gate is an observer-only diagnostic on a working copy under an explicit compiler/build contract, followed by build-semantics sensitivity. Any actual initialization correction must remain a separate corrected-legacy candidate and cannot be applied to B0.
+The next meaningful gate is therefore no longer another generic storage-semantics probe. It is an observer-only diagnostic of the actual `Addit.for` plough path on a working copy, ideally comparing the existing diagnostic contract with an explicit initialization-observer build. Any actual initialization correction must remain a separate corrected-legacy candidate and cannot be applied to B0.
