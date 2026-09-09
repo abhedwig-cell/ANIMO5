@@ -1,0 +1,39 @@
+name: ANIMO B3E01 TCD-042-E1 Class-E admission readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3e01-tcd042-e1-class-e-admission-readiness
+    paths:
+      - '.github/workflows/animo-b3e01-tcd042-e1-readiness.yml'
+      - 'docs/b3/TCD042_E1_CLASS_E_ADMISSION_READINESS.md'
+      - 'integration/animo-b3/ANIMO-B3E01_STATUS.json'
+      - 'integration/animo-b3/TCD042_E1_CLASS_E_READINESS.json'
+      - 'tools/b3e01/**'
+  workflow_dispatch:
+
+jobs:
+  validate-b3e01:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history for scope guard
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch pinned peer governance branches
+        run: |
+          git fetch --no-tags origin \
+            +refs/heads/work/animo-b3b02-tcd042-b1-class-b-readiness:refs/remotes/origin/b3b02-peer \
+            +refs/heads/work/animo-prep02r-historical-reference-recovery:refs/remotes/origin/prep02r-peer \
+            +refs/heads/work/animo-gov02-evidence-dag-reconciliation:refs/remotes/origin/gov02-peer
+          git cat-file -e 412bf889ce959d85c651c3b9180dec0a6ff9bb61^{commit}
+          git cat-file -e a2fda49871ee3c7104daf7e06cd8dffdac06b125^{commit}
+          git cat-file -e db7add6f9561730bbf352aa7fd3f3968405cfaa3^{commit}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile B3E01 validator
+        run: python -m py_compile tools/b3e01/validate_b3e01.py
+      - name: Validate B3E01 readiness and scope
+        run: python tools/b3e01/validate_b3e01.py
