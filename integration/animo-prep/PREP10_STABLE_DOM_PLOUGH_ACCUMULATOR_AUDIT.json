@@ -3,11 +3,13 @@
   "subscope": "stable-DOM plough accumulators",
   "branch": "work/animo-prep10-stable-dom-plough-accumulators",
   "source_parent": "e3c3b0dfa8daabe345c51be8c4f29f2731d65c47",
-  "decision": "QUALIFIED_SOURCE_LEVEL_USE_BEFORE_DEFINITION_FROZEN_PLOUGH_INPUT_PRESENT_RUNTIME_MAGNITUDE_OPEN",
+  "decision": "QUALIFIED_SOURCE_LEVEL_USE_BEFORE_DEFINITION_FROZEN_PLOUGH_INPUT_PRESENT_GNU_STORAGE_PERSISTENCE_CONFIRMED_RUNTIME_MAGNITUDE_OPEN",
   "implemented": true,
   "persisted": true,
   "tested": true,
   "source_level_finding_qualified": true,
+  "frozen_input_activation_qualified": true,
+  "current_gnu_diagnostic_storage_semantics_probed": true,
   "historical_native_runtime_tested": false,
   "runtime_numerical_magnitude_qualified": false,
   "reference_output_admitted": false,
@@ -60,24 +62,54 @@
     "all_initial_sdomin_values_zero": true,
     "interpretation": "The frozen CranMais input requests the plough operation repeatedly. This establishes a concrete frozen-input path to the Addit.for plough branch, but it is not evidence that a provenance-qualified historical executable actually ran the case. Initial stable DOM/DON/DOP values are zero; the source-level undefined self-read remains present independently of the operand values, while the numerical manifestation remains compiler/runtime dependent."
   },
+  "gnu_storage_semantics_probe": {
+    "tool": "tools/probe_prep10_local_storage_semantics.py",
+    "classification": "CURRENT_GNU_DIAGNOSTIC_CONTRACT_LOCAL_STATE_PERSISTENCE_CONFIRMED_BY_SYNTHETIC_PROBE",
+    "diagnostic_contract_flags": [
+      "-ffree-form",
+      "-ffree-line-length-none",
+      "-fallow-argument-mismatch",
+      "-std=legacy",
+      "-fdefault-real-8",
+      "-fdefault-double-8",
+      "-fno-automatic"
+    ],
+    "github_actions_run_id": 34302300827,
+    "github_actions_head": "c14c04b852e48167ac4b08f0746a66a8bc6846e7",
+    "github_actions_conclusion": "success",
+    "github_actions_compiler": "GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "diagnostic_contract_probe_values": [1.0, 2.0, 3.0],
+    "diagnostic_contract_local_state_persists_across_calls": true,
+    "snan_observer_values": ["NaN", "NaN", "NaN"],
+    "snan_observer_exposes_undefined_first_read": true,
+    "interpretation": "For a synthetic local self-read matching the relevant storage pattern, the current GNU diagnostic flag contract retains local state across calls. An added signaling-NaN initialization observer exposes the first undefined read. This qualifies GNU-contract storage behavior for the probe only; it does not quantify Addit.for or establish historical Intel behavior."
+  },
   "verification": {
     "exact_source_archive_audit_passed_in_authoring_environment": true,
     "exact_testbank_activation_audit_passed_in_authoring_environment": true,
     "synthetic_unit_tests_passed": 7,
     "unit_test_command": "python -m unittest discover -s tests/prep10 -v",
     "unit_test_scope": "four source-scanner cases and three frozen-input scanner cases",
+    "github_actions_scanner_and_probe_gate_passed": true,
+    "github_actions_run_id": 34302300827,
+    "github_actions_steps_passed": [
+      "compile audit tools",
+      "run PREP10 scanner unit tests",
+      "validate machine-readable audit JSON",
+      "probe GNU diagnostic-contract local storage semantics"
+    ],
     "raw_source_or_testbank_bytes_added_to_git": false
   },
   "open_gates": [
-    "run an observer-only diagnostic on a working copy under an explicit compiler/build contract",
-    "test compiler/storage-semantics sensitivity of the undefined local accumulators",
+    "run an observer-only diagnostic of the actual Addit.for path on a working copy under the GNU diagnostic build contract",
     "quantify whether and how the finding changes stable DOM/DON/DOP redistribution and downstream balances",
+    "establish the historical Intel local-storage manifestation if a provenance-qualified native build or build environment becomes available",
     "compare against a provenance-qualified historical native reference if one becomes available",
     "if correction is proposed, qualify it as corrected legacy before any migrated ANIMO5 admission"
   ],
   "non_admissions": [
     "no historical native reference execution",
-    "no numerical magnitude claim",
+    "no actual Addit.for runtime magnitude claim",
     "no reference-output promotion",
     "no frozen-source correction",
     "no corrected-legacy admission",
