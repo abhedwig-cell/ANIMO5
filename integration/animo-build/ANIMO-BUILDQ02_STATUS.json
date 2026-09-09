@@ -80,6 +80,7 @@
     "matrix_driver_persisted": true,
     "modflux_coupled_driver_persisted": true,
     "reproduction_recipe_persisted": true,
+    "b3_handoff_persisted": true,
     "frozen_source_patch_admitted": false
   },
   "qualification_outcome": {
@@ -97,6 +98,7 @@
     "docs/build/ANIMO-BUILDQ02_WORK_UNIT_CONTRACT.md",
     "docs/build/TCD011_MAPOHYDRO_STORAGE_DURATION_QUALIFICATION.md",
     "docs/build/MAPOHYDRO_BOUNDS_EVALUATION_ORDER_QUALIFICATION.md",
+    "docs/build/BUILDQ02_B3_HANDOFF.md",
     "integration/animo-build/BUILDQ02_MAPOHYDRO_RUNTIME_MATRIX.json",
     "tools/buildq02/MAPOHYDRO_SAFE_DIAGNOSTIC.patch",
     "tools/buildq02/mapohydro_storage_driver.f90",
