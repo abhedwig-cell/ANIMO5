@@ -1,0 +1,119 @@
+{
+  "work_unit": "ANIMO-NQ03R",
+  "target": "TCD-042-E1",
+  "review_target": "NQ03_RESTRICTED_NATURAL_ENVELOPE_QUADRATIC_DIMENSIONLESS_POLICY",
+  "reviewed_head": "8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6",
+  "outcome": "INDEPENDENT_REVIEW_PASS_RESTRICTED_POLICY",
+  "independence": {
+    "methodological": true,
+    "organizational": false,
+    "method": "fresh equation derivation and 120-decimal-digit Decimal oracle; candidate implementation not used as mathematical authority"
+  },
+  "equation_reconstruction": {
+    "ode": "Hetop*dC/dt = Load - Flux*C",
+    "conditioning_coordinate": "P=St*Flux/Hetop",
+    "f": "(1-exp(-P))/P",
+    "g": "(P-1+exp(-P))/P^2",
+    "A1": "exp(-P)",
+    "A2": "(St/Hetop)*f",
+    "B1": "f",
+    "B2": "(St/Hetop)*g",
+    "conservation": "Hetop*(C1-C0)=St*Load-St*Flux*Cavg",
+    "verified": true
+  },
+  "natural_envelope": {
+    "records": 1238,
+    "cases": 6,
+    "P_min": 4.2351647362715017e-20,
+    "P_max": 3.8510200002999744e-7,
+    "upstream_source": "UBQ02 hash-pinned trace",
+    "verified_against_persisted_upstream": true
+  },
+  "oracle": {
+    "decimal_digits": 120,
+    "implementation": "Python decimal.Decimal.exp",
+    "dense_log_points": 2001,
+    "natural_quantile_points": 7,
+    "unique_binary64_probe_points": 2008,
+    "independent_from_candidate_polynomial": true
+  },
+  "conditioning": {
+    "direct_binary64_max_relative_error_f": 1.0,
+    "direct_binary64_max_relative_error_g": 4.722366482869656e19,
+    "expm1_f_max_relative_error": 1.1102232230331982e-16,
+    "expm1_nested_g_max_relative_error": 1.0,
+    "direct_rejected": true,
+    "expm1_only_rejected_as_complete_policy": true
+  },
+  "series_order_review": {
+    "Pmax_degree1_abs_error_f": 2.47172560248511296198e-14,
+    "Pmax_degree1_abs_error_g": 6.17931412519608771686e-15,
+    "Pmax_degree2_abs_error_f": 2.37966622842662737665e-21,
+    "Pmax_degree2_abs_error_g": 4.75933251794753433471e-22,
+    "binary64_half_ulp_near_f": 1.1102230246251565e-16,
+    "binary64_half_ulp_near_g": 5.551115123125783e-17,
+    "degree1_rejected": true,
+    "degree2_minimal_under_declared_truncation_criterion": true,
+    "degree2_horner_matches_rounded_120_digit_oracle_all_2008_points": true
+  },
+  "precision_review": {
+    "binary32_role": "SENSITIVITY_ONLY_NOT_CANONICAL",
+    "binary32_max_relative_error_A1": 2.964350052422269e-8,
+    "binary32_max_relative_error_f": 2.9776470955588576e-8,
+    "binary32_max_relative_error_g": 2.974938239881409e-8,
+    "binary32_admitted": false
+  },
+  "conservation_review": {
+    "max_absolute_normalized_binary64_remainder": 1.1102230246251565e-16,
+    "residual_used_as_acceptance_tolerance": false,
+    "verified": true
+  },
+  "subdivision_review": {
+    "substeps": [2, 4, 8, 16, 32],
+    "max_end_state_difference_at_32": 1.887379141862766e-15,
+    "max_time_average_difference_at_32": 8.326672684688674e-16,
+    "interpretation": "roundoff accumulation for the reviewed binary64 evaluation; no timestep tolerance inferred",
+    "verified": true
+  },
+  "zero_limit_review": {
+    "A1": 1.0,
+    "f": 1.0,
+    "g": 0.5,
+    "A2": "St/Hetop",
+    "B1": 1.0,
+    "B2": "St/(2*Hetop)",
+    "matches_UBQ01_boundary": true,
+    "redefines_TCD042_B1": false
+  },
+  "implementation_order_review_finding": {
+    "severity": "NON_BLOCKING_FOR_RESTRICTED_POLICY_BLOCKING_BEFORE_BITWISE_PRODUCTION_BINDING",
+    "finding": "The zero-relative-error dense claim is reproduced by the Horner evaluation used by NQ03 validation. A mathematically equivalent literal binary64 evaluation order differs by one ulp on some probes.",
+    "literal_order_f_mismatch_points": 67,
+    "literal_order_g_mismatch_points": 73,
+    "unique_points_with_any_literal_order_mismatch": 129,
+    "literal_order_max_relative_error_f": 1.1102232290426114e-16,
+    "literal_order_max_relative_error_g": 1.1102231629518697e-16,
+    "required_downstream_constraint": "Before production binding, freeze the coefficient evaluation order/FP contraction policy or replace the exact-rounded claim with an equation-derived ulp bound and revalidate that implementation.",
+    "reason_not_blocking_review_pass": "NQ03 explicitly selects no production implementation; the quadratic mathematical policy and its analytic truncation envelope remain valid."
+  },
+  "scope_review": {
+    "nq03_base": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+    "nq03_head": "8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6",
+    "changed_files": 11,
+    "production_source_modified": false,
+    "canonical_tcd_register_modified": false,
+    "tcd042_b1_artifact_modified": false,
+    "b3_admission_modified": false,
+    "new_tcd_reserved": false,
+    "verified": true
+  },
+  "review_nonclaims": {
+    "production_patch_authorized": false,
+    "b3_admission_performed": false,
+    "parent_tcd042_admitted": false,
+    "new_tcd_reserved": false,
+    "binary32_admitted": false,
+    "policy_extended_beyond_Pmax": false,
+    "organizational_independence_claimed": false
+  }
+}
