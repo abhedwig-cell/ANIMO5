@@ -1,0 +1,49 @@
+name: ANIMO-B3I05 UBQ02 numerical-seam intake
+
+on:
+  push:
+    branches:
+      - work/animo-b3i05-ubq02-numerical-seam-intake
+  workflow_dispatch:
+
+jobs:
+  validate-b3i05:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Validate TCD-042 child atomization
+        run: python tools/b3i05/validate_b3i05.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=400b7cd79f89043e091751707dfa96537587dcf6
+          git cat-file -e "${BASE}^{commit}"
+          git diff --name-only "$BASE"...HEAD > /tmp/b3i05_changed.txt
+          cat /tmp/b3i05_changed.txt
+
+          allowed='^(.github/workflows/animo-b3i05-ubq02-intake\.yml|docs/b3/POST_UBQ02_INCREMENTAL_NUMERICAL_INTAKE\.md|integration/animo-b3/B3I05_TCD042_ATOMIZATION\.json|integration/animo-b3/B3I05_UBQ02_FINDING_CROSSWALK\.csv|integration/animo-b3/ANIMO-B3I05_STATUS\.json|tools/b3i05/validate_b3i05\.py)$'
+
+          unexpected=$(grep -Ev "$allowed" /tmp/b3i05_changed.txt || true)
+          if [ -n "$unexpected" ]; then
+            echo "B3I05 scope violation. Unexpected changed paths:"
+            echo "$unexpected"
+            exit 1
+          fi
+
+          if grep -q '^docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv$' /tmp/b3i05_changed.txt; then
+            echo "B3I05 must not mutate canonical TCD register"
+            exit 1
+          fi
+
+          echo "B3I05 scope guard PASS"
