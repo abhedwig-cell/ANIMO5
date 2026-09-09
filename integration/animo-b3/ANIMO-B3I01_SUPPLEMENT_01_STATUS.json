@@ -1,0 +1,47 @@
+{
+  "work_unit": "ANIMO-B3I01",
+  "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_01",
+  "title": "Live Post-G5 Intake for PREP12, STATEQ01 and BUILDQ01",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i01-canonical-register-append",
+  "status": "IN_PROGRESS_PERSISTED_CANONICAL_TCD038_TCD039_APPEND_AWAITING_FINAL_CI",
+  "persisted_early": true,
+  "tested": false,
+  "qualified": false,
+  "canonical_register": {
+    "tail_before_supplement": "TCD-037",
+    "tail_after_supplement": "TCD-039",
+    "blob_after_supplement": "264ea7d0dd5764d837b40f19d6ba70152be2e743",
+    "supplement_append_commit": "6514b227dfd7c68d23860679991a2d02e87002ee",
+    "append_only_compare_verified": true,
+    "append_only_compare_changes": "2 additions 0 deletions"
+  },
+  "new_canonical_ids": {
+    "TCD-038": {
+      "phenomenon": "actual plant uptake restart initialization direction",
+      "class": "B",
+      "owner": "PROPOSED_ANIMO-STATEQ02",
+      "admitted": false
+    },
+    "TCD-039": {
+      "phenomenon": "potential plant uptake missing restart continuation representation",
+      "class": "C",
+      "class_state": "PROVISIONAL_PENDING_RECONSTRUCTION_TEST",
+      "owner": "PROPOSED_ANIMO-STATEQ02",
+      "admitted": false
+    }
+  },
+  "deduplication": {
+    "PREP12_source_local_TCD-032": "MAP_TO_EXISTING_CANONICAL_TCD-031"
+  },
+  "runtime_routes": {
+    "BUILDQ01_MAPOHYDRO_LnBoMpMx": "MAP_TO_EXISTING_TCD-011",
+    "BUILDQ01_MAPOHYDRO_INDEX0_BOUNDS_ORDER": "BUILD_RUNTIME_HAZARD_NOT_TCD"
+  },
+  "checked_no_new_allocation": ["ANIMO-TIME02", "ANIMO-MASSQ01", "ANIMO-SYNQ01", "ANIMO-GOV02"],
+  "new_corrections_admitted": false,
+  "b3_baseline_established": false,
+  "production_migration_admitted": false,
+  "production_code_modified": false,
+  "source_correction": false
+}
