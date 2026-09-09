@@ -1,0 +1,60 @@
+{
+  "work_unit": "ANIMO-B3A04",
+  "target_tcd": "TCD-026",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "atomic_claim": "Initial root-exudate organic-matter storage Ex(Ln) is an existing conserved physical store that is omitted only from the fresh-organic-matter beginning-storage ledger Bfom(Inip_x,Ly).",
+  "candidate_ledger_observation": "Bfom(Inip_x,Ly) = Bfom(Inip_x,Ly) + Ex(Ln) * P",
+  "physical_state_patch": false,
+  "initialization_physics_change": false,
+  "expected_changed_surfaces": [
+    "Bfom(Inip_x,Ly) beginning-storage accounting for balance profiles containing a layer with nonzero Ex(Ln)",
+    "fresh-organic-matter balance residual/report fields derived from Bfom",
+    "organic-matter balance files derived from affected Bfom balance sets"
+  ],
+  "observed_PREP06_Ruurlo_synthetic_changed_files": [
+    "ani_omGP.Bal",
+    "ani_omRP.Bal",
+    "ani_omTP.Bal",
+    "baomGP.Out",
+    "baomRP.Out",
+    "baomTP.Out"
+  ],
+  "must_remain_exactly_unchanged": [
+    "Ex(Ln) and every other physical current state",
+    "Rsex(Ln) and every other physical result state",
+    "all initialization values and restart-state values",
+    "all reaction, mineralization, transport, hydrology, crop and management process fluxes",
+    "total physical organic-matter mass trajectory",
+    "Bano and all nitrogen balance families",
+    "Bapo and all phosphorus balance families",
+    "all water balance families",
+    "all ordinary state and process outputs",
+    "all organic-matter ledger terms not causally derived from the added Ex beginning-storage observation"
+  ],
+  "negative_controls": [
+    {
+      "id": "NC_ZERO_EX",
+      "condition": "all initial Ex(Ln)=0",
+      "expected_result": "candidate ledger term is exactly zero and no output changes"
+    },
+    {
+      "id": "NC_N_P_ALREADY_COVERED",
+      "condition": "nonzero initial Ex with existing Nifrex/Pofrex accounting",
+      "expected_result": "Bano and Bapo are unchanged because their beginning ledgers already include Ex"
+    },
+    {
+      "id": "NC_OTHER_FOM_STORES",
+      "condition": "Os/Huos/Huex and other organic stores vary while Ex remains zero",
+      "expected_result": "TCD-026 candidate contributes zero and does not alter their existing ledger ownership"
+    },
+    {
+      "id": "NC_ORDINARY_OUTPUTS",
+      "condition": "candidate observation is active",
+      "expected_result": "ordinary state/process output trees remain identical; only whitelisted organic-matter balance surfaces may differ"
+    }
+  ],
+  "unexpected_difference_policy": "FAIL_CLOSED",
+  "numeric_tolerance_policy": "NO_TOLERANCE_FOR_SCOPE_OR_NON_INTERFERENCE_CLAIMS",
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false
+}
