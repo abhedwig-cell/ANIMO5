@@ -1,0 +1,20 @@
+{
+  "work_unit": "ANIMO-MASSQ01",
+  "title": "B1 MassLedger Projection, Observer Non-Interference & Control-Volume Qualification",
+  "status": "IN_PROGRESS_PERSISTED_BEFORE_RUNTIME_QUALIFICATION",
+  "branch": "work/animo-massq01-b1-massledger-projection",
+  "base_authority": {
+    "branch": "work/animo-rg02-g5-independent-stream-attachment",
+    "head": "5c278152eacc33660f1c5870c7d419b8041b20a9"
+  },
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "observer_only": true,
+  "physical_state_mutation_allowed": false,
+  "legacy_balance_authoritative": false,
+  "residual_tolerance_defined": false,
+  "b2_reference_claim": false,
+  "mass_gate_admitted": false,
+  "production_migration_admitted": false,
+  "checkpoint": "contract persisted; runtime evidence pending"
+}
