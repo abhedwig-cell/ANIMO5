@@ -1,0 +1,63 @@
+{
+  "work_unit": "ANIMO-B3A02",
+  "title": "TCD-017 Organic-P Ploughing Ledger Correction Admission Readiness",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3a02-tcd017-class-a-admission-readiness",
+  "base": {
+    "branch": "work/animo-b3i01-canonical-register-append",
+    "head": "383c7a83e84a578969f92113280dc715b7bdddb4"
+  },
+  "target_tcd": "TCD-017",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "scope": "atomic Addiorpotoppl top-reservoir dissolved-organic-P ploughing loss omission from Bapo redistribution ledger only",
+  "deliverables": [
+    "docs/b3/TCD017_CLASS_A_ADMISSION_READINESS.md",
+    "integration/animo-b3/TCD017_EXPECTED_DIFFERENCE.json",
+    "integration/animo-b3/TCD017_CLASS_A_READINESS.json",
+    "integration/animo-b3/ANIMO-B3A02_STATUS.json"
+  ],
+  "required_evidence_result": {
+    "Addiorpotoppl_source_loss": "QUALIFIED",
+    "Addiorpopl_destination_gain": "QUALIFIED",
+    "net_physical_redistribution_zero": "QUALIFIED_ON_NATURAL_LWKM_CONTROL_VOLUME_AND_SYNQ_O002_IDENTITY",
+    "current_ledger_omission": "QUALIFIED",
+    "proposed_ledger_only_accounting_term": "FROZEN_NOT_PATCHED",
+    "state_non_interference": "QUALIFIED_FOR_READINESS",
+    "process_flux_non_interference": "QUALIFIED_FOR_READINESS",
+    "total_physical_mass_non_interference": "QUALIFIED_FOR_READINESS",
+    "output_whitelist": "FROZEN",
+    "natural_LWKM_activation": "QUALIFIED"
+  },
+  "hard_rules": {
+    "physical_state_patch_applied": false,
+    "ploughing_physics_changed": false,
+    "composed_with_TCD_027": false,
+    "composed_with_TCD_028": false,
+    "composed_with_other_organic_P_findings": false,
+    "admission_performed": false
+  },
+  "route": {
+    "normal_B2_available": false,
+    "historical_uncertainty_route_eligible": false,
+    "current_GOV02_PREP02R_state": "B2_ACQUISITION_STILL_ACTIVE",
+    "gate": "PENDING"
+  },
+  "independent_review": {
+    "SYNQ_O002_independent_conservation_oracle_available": true,
+    "second_line_B3_review_complete": false,
+    "gate": "PENDING"
+  },
+  "execution": {
+    "new_executable_patch": false,
+    "new_physical_simulation": false,
+    "evidence_reconciled_against_frozen_B0_source": true,
+    "natural_runtime_evidence_reused": "PREP01/PREP02 LWKM diagnostic evidence",
+    "synthetic_oracle_reused": "SYNQ-O002",
+    "production_correction_authorized": false
+  },
+  "admission": {
+    "admitted": false,
+    "disposition": "UNRESOLVED_NOT_ADMITTED_ROUTE_AND_REVIEW_PENDING"
+  },
+  "status": "QUALIFIED_TCD017_CLASS_A_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING"
+}
