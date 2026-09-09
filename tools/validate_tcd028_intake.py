@@ -2,9 +2,9 @@
 """Validate the TCD-028 fail-closed intake reservation across register phases.
 
 The reservation itself is an immutable pre-append evidence snapshot bound to the
-qualified TCD-001..027 register. On later integration branches TCD-028 may be
-present in the canonical register, but only when an explicit append
-reconciliation proves that registration did not constitute B3 admission.
+qualified TCD-001..027 register. Later integration branches may register TCD-028
+and subsequent IDs only through explicit append reconciliations that preserve
+non-admission.
 """
 from __future__ import annotations
 
@@ -18,6 +18,7 @@ CLASSIFICATION = ROOT / "integration/animo-b3/B3_EXISTING_TCD_CLASSIFICATION.csv
 B3_STATUS = ROOT / "integration/animo-b3/ANIMO-B3Q01_STATUS.json"
 RESERVATION = ROOT / "integration/animo-b3/TCD-028_RESERVATION.json"
 APPEND_RECON = ROOT / "integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_RECONCILIATION.json"
+APPEND_RECON_SUPP1 = ROOT / "integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_SUPPLEMENT_01_RECONCILIATION.json"
 
 EXPECTED_GOVERNANCE_HEAD = "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
 EXPECTED_REGISTER_SHA = "224acc350fde69d3c4aebed8628c0f945e0b3367"
@@ -29,32 +30,58 @@ def ids(path: Path, column: str) -> list[str]:
         return [row[column] for row in csv.DictReader(handle)]
 
 
+def assert_recon_non_admission(recon: dict, label: str) -> None:
+    admission = recon.get("admission_state", {})
+    if any(admission.get(key) is not False for key in [
+        "new_corrections_admitted",
+        "b3_baseline_established",
+        "production_migration_admitted",
+        "evidence_strength_increased_by_register_append",
+    ]):
+        raise AssertionError(f"{label} improperly increases admission or evidence strength")
+
+
+def validate_first_append() -> dict:
+    if not APPEND_RECON.is_file():
+        raise AssertionError("TCD-028 is registered but initial append reconciliation is missing")
+    recon = json.loads(APPEND_RECON.read_text(encoding="utf-8"))
+    canonical = recon.get("canonical_register", {})
+    if canonical.get("tail_before") != "TCD-027" or canonical.get("tail_after") != "TCD-037":
+        raise AssertionError("initial append reconciliation has unexpected register tails")
+    if canonical.get("append_only") is not True or canonical.get("existing_rows_changed") is not False:
+        raise AssertionError("initial TCD registration is not proven append-only")
+    if "TCD-028" not in recon.get("registered_not_admitted", []):
+        raise AssertionError("initial append reconciliation does not preserve TCD-028 as registered-not-admitted")
+    assert_recon_non_admission(recon, "initial append reconciliation")
+    return recon
+
+
 def validate_register_phase(register_ids: list[str]) -> str:
     pre_append_ids = [f"TCD-{i:03d}" for i in range(1, 28)]
-    post_append_ids = [f"TCD-{i:03d}" for i in range(1, 38)]
+    first_append_ids = [f"TCD-{i:03d}" for i in range(1, 38)]
+    supplement_1_ids = [f"TCD-{i:03d}" for i in range(1, 40)]
 
     if register_ids == pre_append_ids:
         return "PRE_APPEND_RESERVATION_PHASE"
-    if register_ids == post_append_ids:
-        if not APPEND_RECON.is_file():
-            raise AssertionError("TCD-028 is registered but append reconciliation is missing")
-        recon = json.loads(APPEND_RECON.read_text(encoding="utf-8"))
+
+    if register_ids == first_append_ids:
+        validate_first_append()
+        return "POST_APPEND_REGISTERED_NOT_ADMITTED_PHASE_TCD037"
+
+    if register_ids == supplement_1_ids:
+        validate_first_append()
+        if not APPEND_RECON_SUPP1.is_file():
+            raise AssertionError("TCD-038/039 are registered but supplemental append reconciliation is missing")
+        recon = json.loads(APPEND_RECON_SUPP1.read_text(encoding="utf-8"))
         canonical = recon.get("canonical_register", {})
-        if canonical.get("tail_before") != "TCD-027" or canonical.get("tail_after") != "TCD-037":
-            raise AssertionError("post-append reconciliation has unexpected register tails")
+        if canonical.get("tail_before") != "TCD-037" or canonical.get("tail_after") != "TCD-039":
+            raise AssertionError("supplemental append reconciliation has unexpected register tails")
         if canonical.get("append_only") is not True or canonical.get("existing_rows_changed") is not False:
-            raise AssertionError("post-append TCD registration is not proven append-only")
-        if "TCD-028" not in recon.get("registered_not_admitted", []):
-            raise AssertionError("post-append reconciliation does not preserve TCD-028 as registered-not-admitted")
-        admission = recon.get("admission_state", {})
-        if any(admission.get(key) is not False for key in [
-            "new_corrections_admitted",
-            "b3_baseline_established",
-            "production_migration_admitted",
-            "evidence_strength_increased_by_register_append",
-        ]):
-            raise AssertionError("post-append reconciliation improperly increases admission or evidence strength")
-        return "POST_APPEND_REGISTERED_NOT_ADMITTED_PHASE"
+            raise AssertionError("supplemental TCD registration is not proven append-only")
+        if recon.get("registered_not_admitted") != ["TCD-038", "TCD-039"]:
+            raise AssertionError("supplemental append reconciliation has unexpected registered IDs")
+        assert_recon_non_admission(recon, "supplemental append reconciliation")
+        return "POST_APPEND_REGISTERED_NOT_ADMITTED_PHASE_TCD039"
 
     raise AssertionError(f"unexpected canonical register sequence for TCD-028 intake: {register_ids}")
 
@@ -119,8 +146,6 @@ def main() -> None:
     if disposition.get("fail_closed_state") != "B3_DISPOSITION_RECORD_DEFERRED_UNTIL_ADMISSION_ROUTE_ELIGIBLE":
         raise AssertionError("unexpected disposition deferral state")
 
-    # These fields describe the reservation-time snapshot and deliberately remain
-    # unchanged even after a later canonical register append.
     canonical = reservation.get("canonical_register", {})
     if canonical.get("tcd_028_row_present") is not False:
         raise AssertionError("reservation snapshot must record TCD-028 as absent at reservation time")
