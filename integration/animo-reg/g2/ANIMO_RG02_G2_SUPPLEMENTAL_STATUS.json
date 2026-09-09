@@ -1,0 +1,56 @@
+{
+  "work_unit": "ANIMO-RG02",
+  "gate": "G2",
+  "record_type": "SUPPLEMENTAL_EVIDENCE_TRANSPLANT_EXECUTION_STATUS",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-rg02-g2-supplemental-evidence-transplant",
+  "base": {
+    "branch": "work/animo-rg02-branch-authority-integration",
+    "head": "67104b7253d5ebc963ee2a801f4e07a23552572a"
+  },
+  "decision": "IN_PROGRESS_PROVENANCE_PRESERVING_G2_EXECUTION",
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "packets": [
+    {
+      "packet_id": "RG02-SUPP-P07-SPECIES-001",
+      "source_branch": "work/animo-prep07-transfer-species-identity",
+      "source_head": "aefdbbcbd7aaac121831cf2dd522a152260594d0",
+      "source_tree": "ecbec0cd25c8fe3bee4d6d4acaee6f7831ad9cd7",
+      "state": "READY_FOR_EXACT_BLOB_TRANSPLANT"
+    },
+    {
+      "packet_id": "RG02-SUPP-P08-TRANSFER-001",
+      "source_branch": "work/animo-prep08-transfer-probes",
+      "source_head": "340db9d91e71c906143efe877313149c5af36a24",
+      "source_tree": "2f6a8d6a5288ea0d29dc24101d2949b8d3c4a04f",
+      "state": "READY_FOR_EXACT_BLOB_TRANSPLANT"
+    },
+    {
+      "packet_id": "RG02-REHOME-PREP11-OPTION-CONTRACT",
+      "target_branch": "work/animo-prep11-option-contract-rehome",
+      "qualified_rehome_head": "20e77dd7617c68e56e9e7436c06d9df13d22bf5e",
+      "state": "QUALIFIED_REHOME_REFERENCE_ONLY"
+    },
+    {
+      "packet_id": "RG02-REHOME-PREP12-RESTART-CONTINUITY",
+      "target_branch": "work/animo-prep12-restart-state-continuity-rehome",
+      "qualified_rehome_head": "3d86de057247adcfeefb82c11d7cf7d5b2cbdf73",
+      "state": "QUALIFIED_REHOME_REFERENCE_ONLY"
+    }
+  ],
+  "hard_rules": {
+    "wholesale_branch_merge": false,
+    "legacy_source_paths_allowed": false,
+    "testcase_paths_allowed": false,
+    "canonical_discrepancy_register_import_allowed": false,
+    "same_name_status_import_allowed": false,
+    "scientific_content_reinterpretation_allowed": false,
+    "canonical_tcd_allocation_allowed": false,
+    "scientific_baseline_changed": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false
+  },
+  "next": "transplant P07 and P08 packets into packet-scoped supplemental namespaces using exact source blobs, then verify path/blob identity and exclusions"
+}
