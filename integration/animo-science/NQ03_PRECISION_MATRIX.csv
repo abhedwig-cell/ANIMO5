@@ -1,0 +1,6 @@
+method,precision,role,max_rel_A1_dense,max_rel_f_dense,max_rel_g_dense,disposition
+legacy_nested_direct,binary64,comparison,0.0,1.0,4.722366482869656e19,REJECT
+expm1_f_plus_nested_g,binary64,comparison,0.0,1.1102232230331982e-16,1.0,REJECT_AS_COMPLETE_POLICY
+series_degree1,binary64,comparison,0.0,2.4757978216313843e-14,1.2323477155270986e-14,REJECT
+series_degree2,binary64,canonical_candidate,0.0,0.0,0.0,SELECT
+series_degree2,emulated_binary32,sensitivity,2.964350052422269e-8,2.9776470955588576e-8,2.974938239881409e-8,SENSITIVITY_ONLY_NOT_CANONICAL
