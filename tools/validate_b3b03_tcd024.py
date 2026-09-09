@@ -42,6 +42,12 @@ def site_update(site: dict, concentration: Decimal, rho: Decimal, dt: Decimal, e
         return qeq, yy, qnew, transfer_rate
 
 
+def round_significant(value: Decimal, digits: int) -> Decimal:
+    with localcontext() as ctx:
+        ctx.prec = digits
+        return +value
+
+
 def main() -> None:
     fixture = load(FIXTURE)
     expected = load(EXPECTED)
@@ -115,13 +121,19 @@ def main() -> None:
     assert [str(x) for x in mutant] == active["expected_wrong_K1_qnew_80"]
     assert [a != b for a, b in zip(correct, mutant)] == active["expected_selector_discriminator"]
 
-    # SYNQ01 publishes shorter decimal strings. Require exact textual prefix
-    # agreement as a provenance consistency check, never as a numeric tolerance.
+    # Reconcile the shorter displayed SYNQ01 register values exactly. They are
+    # provenance evidence, not a B3B03 numerical acceptance oracle.
     oracle = fixture["synq_oracle"]
-    for actual, prefix in zip(correct, oracle["published_expected_qnew_prefixes"]):
-        assert str(actual).startswith(prefix)
-    for actual, prefix in zip(mutant, oracle["published_wrong_K1_prefixes"]):
-        assert str(actual).startswith(prefix)
+    assert oracle["displayed_numeric_values_used_as_B3B03_acceptance_oracle"] is False
+    recheck = oracle["exact_28_significant_digit_recheck"]
+    correct_28 = [round_significant(x, 28) for x in correct]
+    mutant_28 = [round_significant(x, 28) for x in mutant]
+    assert [str(x) for x in correct_28] == recheck["correct_recomputed"]
+    assert [str(x) for x in mutant_28] == recheck["wrong_K1_recomputed"]
+    published_correct = [D(x) for x in oracle["published_expected_qnew"]]
+    published_mutant = [D(x) for x in oracle["published_wrong_K1"]]
+    assert [str(published_correct[i] - correct_28[i]) for i in range(3)] == recheck["correct_published_minus_recomputed"]
+    assert [str(published_mutant[i] - mutant_28[i]) for i in range(3)] == recheck["wrong_K1_published_minus_recomputed"]
 
     # Closed multi-site internal transfer identity. The dissolved-state
     # counter-transfer is the exact negative of total slow-site storage gain.
@@ -165,6 +177,7 @@ def main() -> None:
     print("active unequal-site discriminator: PASS")
     print("inactive-site exact control: PASS")
     print("multi-site exact conservation projection: PASS")
+    print("SYNQ01 displayed-value reconciliation: PASS_WITH_REPRESENTATION_INCONSISTENCY_RECORDED")
     print("TCD-019 separation guard: PASS")
     print("historical prevalence: UNKNOWN")
     print("B3 admission performed: false")
