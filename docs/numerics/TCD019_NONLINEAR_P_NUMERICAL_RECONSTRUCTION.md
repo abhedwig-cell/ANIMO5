@@ -1,48 +1,41 @@
 # ANIMO-NQ02 — TCD-019 nonlinear phosphorus numerical reconstruction
 
-Status: `SOURCE_BOUND_RECONSTRUCTION_PERSISTED_DIAGNOSTIC_MATRIX_NOT_YET_EXECUTED`.
+Status: `SOURCE_BOUND_RECONSTRUCTION_AND_CAUSAL_NUMERICAL_QUALIFICATION_COMPLETED`.
 
 ## Scope and evidence boundary
 
-This work unit qualifies TCD-019 only: nonlinear phosphate sorption numerical conservation and convergence policy. TCD-024, the slow-Langmuir wrong-index defect, is treated only as a separate interaction risk and is not merged into the TCD-019 correction claim.
-
-No production source is changed. Any executable or source descendant used later is B1 diagnostic evidence only.
+This work unit treats TCD-019 only: nonlinear phosphate sorption numerical conservation and convergence policy. TCD-024, the slow-Langmuir wrong-index defect, remains a separate Class B interaction risk. No production source is changed. Every changed executable used here is a hashed B1 diagnostic descendant and is not B2.
 
 ## Pinned evidence
 
-- Frozen source archive SHA-256: `183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566`.
-- Frozen testcase archive SHA-256: `44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84`.
-- Authoritative NQ01 branch for this work unit: `work/animo-nq01-numerical-qualification-architecture`.
-- Authoritative NQ01 head at NQ02 start: `e558dff12b127e0662cad62beea7527b42ad89ac`.
-- NQ01 status: `QUALIFIED_NUMERICAL_QUALIFICATION_ARCHITECTURE_AWAITING_INDEPENDENT_REFERENCE_DATA`.
-- TCD-019 B3Q01 class: `E`, `ATOMIC_NUMERICAL_POLICY_CLAIM`, not admitted.
-- TCD-024 B3Q01 class: `B`, `ATOMIC_LOCAL_INDEX_CLAIM`, not admitted.
+- frozen source archive SHA-256: `183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566`;
+- frozen testcase archive SHA-256: `44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84`;
+- NQ01 authority selected by live ancestry/content comparison: `work/animo-nq01-numerical-qualification-architecture` at `e558dff12b127e0662cad62beea7527b42ad89ac`;
+- NQ01 status: `QUALIFIED_NUMERICAL_QUALIFICATION_ARCHITECTURE_AWAITING_INDEPENDENT_REFERENCE_DATA`;
+- TCD-019: Class E, `CONFIRMED_LEGACY_NUMERICAL_CONSERVATION_POLICY_DEFECT`, not admitted;
+- TCD-024: Class B, `CONFIRMED_LEGACY_WRONG_INDEX_DEFECT_AND_LATENT_BOUNDS_RISK`, not admitted.
 
-The local source and testbank artifacts were re-hashed before source inspection and matched the two frozen B0 hashes above.
+Both local B0 archives were re-hashed before diagnostic execution and matched the frozen identities above.
 
 ## Source-bound algorithm
 
-### Process entry
+`Transgen.for` calls the phosphorus transport/sorption route per layer and reconstructs the exact layer balance from the accepted aqueous concentration and the fast-sorbed, slow-sorbed and precipitated states. Its unfiltered conservation diagnostic is `Bapd-Batr`.
 
-`Transgen.for` calls `Transorp` once per mineral-P layer. `Transgen` then reconstructs the layer transport plus storage balance from the solved aqueous concentration, fast sorption, slow sorption and precipitated-P states. Its diagnostic residual is `Bapd-Batr`.
+For `LWKM_gras_1040.2021.2045` the active configuration is:
 
-For the supplied `LWKM_gras_1040.2021.2045` case, `CHEMPAR.INP` activates:
+- `Optcxfa = 2`, one fast Langmuir site;
+- `Optcxsl = 3`, three slow Freundlich sites.
 
-- `Optcxfa = 2`: fast Langmuir sorption;
-- `Ncxfa = 1`;
-- `Optcxsl = 3`: slow Freundlich sorption;
-- `Ncxsl = 3`.
+This activates TCD-019 but not the TCD-024 slow-Langmuir index path.
 
-Therefore the known LWKM TCD-019 signal activates the fast-Langmuir small-delta path, while the TCD-024 slow-Langmuir wrong-index path is not active in this historical case.
+### Nonlinear unknowns and residual
 
-### Unknowns and nonlinear system
+`Transorp.for:C_unl` solves two coupled unknowns:
 
-`C_unl` solves two coupled unknowns:
+- `Rsc`, end-of-step aqueous concentration;
+- `Avc`, average concentration over the step.
 
-- `Rsc`: concentration at end of the timestep;
-- `Avc`: average concentration during the timestep.
-
-It starts with `Rsc = Con` and `Avc = Con`, then uses Newton updates for at most 20 iterations. The Newton residual vector is:
+The Newton residual is
 
 ```text
 F1 = Con*A1 + Hv2*A2 - Rsc
@@ -52,11 +45,9 @@ F2 = Con*B1 + Hv2*B2 - Avc
      + sum_i Fact_i * Difcxsl_i * B2
 ```
 
-where `A1,A2,B1,B2` are the analytical conservation-equation coefficients returned by `Detcoef`. They depend on the fast-sorption storage coefficient `Avadco`. Slow sorption enters through `Difcxsl`, the adsorption/desorption rate choice and `Fact`.
+`A1,A2,B1,B2` come from `Detcoef` and depend on the fast-sorption storage coefficient `Avadco`. Slow sorption enters through `Difcxsl`, the adsorption/desorption rate choice and `Fact`. The Jacobian is assembled explicitly and includes `Avadcodc` from `Sorpfast`.
 
-The Jacobian is assembled explicitly from `Coefdc`, `Eqcxsldc`, the Langmuir slow-sorption rate dependence where active, and the derivative `Avadcodc` supplied by `Sorpfast`.
-
-### Newton stopping and late-iteration policy
+### Legacy convergence policy
 
 Source constants are:
 
@@ -66,125 +57,97 @@ Ccrit   = 1e-6
 Maxiter = 20
 ```
 
-For iterations 16 through 20, the routine no longer applies the current Newton correction directly. It accumulates corrections and subtracts their running average. It also stores the `Avc` associated with the smallest observed `abs(Vec(1))+abs(Vec(2))` for use as a later bisection initial estimate.
+Iterations 16 through 20 use running-average corrections rather than the current Newton correction and retain an `Avc_opt` associated with the smallest observed residual norm for fallback use.
 
-The primary convergence test combines relative corrections and one-sided residual comparisons. In source form the residual checks use `Vec(1) < 1e-3*Con` and `Vec(2) < 1e-3*Con`, not absolute residuals. Negative residuals therefore satisfy these terms regardless of magnitude. This is a source-bound asymmetry that must be measured separately from the `Small` threshold itself.
+The primary stopping test combines correction tests with signed residual comparisons `Vec(1) < 1e-3*Con` and `Vec(2) < 1e-3*Con`, not magnitude comparisons. Low-concentration `Ccrit` branches can also accept without the relative correction checks.
 
-Additional branches accept low `Rsc` values through `Ccrit` without requiring the relative correction tests.
+If Newton does not return, the routine enters a 50-iteration bisection-like scalar route with `abs(Df) < 1e-6` acceptance. `Recfso`, the slow-sorption adsorption/desorption rate selection, is inherited from the preceding Newton route rather than recomputed for every bisection trial. This is a source-bound fallback coupling risk, not separately admitted as a defect in NQ02.
 
-### Fallback
+## Constitutive conservation seam
 
-If Newton does not return, `C_unl` switches to a 50-iteration bisection-like scalar solve. The scalar residual is `Df = Lhs-Rhs`. Acceptance uses `abs(Df) < 1e-6`.
-
-The fallback relation enforces:
-
-```text
-Ctry = 2*Ctrya - Con
-```
-
-and evaluates aqueous storage, fast sorption and slow-sorption terms directly. However, the adsorption/desorption rate array `Recfso` is inherited from the preceding Newton loop rather than recomputed inside each bisection trial. This is a separate control-path property to capture in NQ02. It is not yet classified as a defect.
-
-## Fast-sorption constitutive seam
-
-`Sorpfast` implements three fast-sorption models.
-
-### Linear
-
-The storage coefficient is exact and constant.
-
-### Langmuir
-
-For a site with
+For a Langmuir site
 
 ```text
 S(C) = a*C/(1+b*C)
 ```
 
-where `a = Parcxfa(2,I)*Parcxfa(3,I)/Rhbd`, the general branch uses the finite storage change:
+with `a = Parcxfa(2,I)*Parcxfa(3,I)/Rhbd`, the general `Sorpfast` branch represents storage through a finite secant. When `abs(Ct-Ct0) < 1e-6`, however, it substitutes the tangent
 
 ```text
-Avadco contribution = (S(Ct)-Ampocxfa(I))/(Ct-Ct0)
+S'(Ct) = a/(1+b*Ct)^2.
 ```
 
-For `abs(Ct-Ct0) < 1e-6`, the source replaces that finite change with the tangent at `Ct`:
+The tangent is not the finite start/end storage change. `Detcoef` therefore solves an equation containing an approximate storage contribution while `Transgen` later checks conservation using the actual stored states. This explains how `R_eq` can be small while `R_cons` is systematically biased.
 
-```text
-S'(Ct) = a/(1+b*Ct)^2
-```
-
-The tangent is not equal to the secant for finite `Ct-Ct0`. Because `Detcoef` uses `Avadco` as storage capacity while the final state contains `S(Ct)`, the nonlinear solve can satisfy its approximate equation while the exact start/end storage accounting does not close.
-
-When the start store is on the constitutive relation, the exact Langmuir secant has a cancellation-free form:
+For an on-relation start state, Langmuir admits the cancellation-free exact secant
 
 ```text
 [S(C)-S(C0)]/(C-C0)
   = a / ((1+b*C)*(1+b*C0))
 ```
 
-with derivative with respect to `C`:
+and derivative
 
 ```text
--a*b / ((1+b*C)^2*(1+b*C0))
+-a*b / ((1+b*C)^2*(1+b*C0)).
 ```
 
-This removes the need for a numerical switch threshold. It is only a TCD-019 candidate when the start store is constitutively consistent. If `Ampocxfa != S(C0)`, the difference belongs to the separate TCD-014 initialization/state-consistency contract and must not be silently discarded.
+For an actual start store not exactly equal to `S(C0)`, the diagnostic exact-storage formulation retains that mismatch explicitly. A scientifically material off-relation initialization remains TCD-014 and must not be hidden in TCD-019.
 
-### Freundlich
+The fast Freundlich option contains an analogous small-delta tangent switch. NQ02 therefore treats this as a numerical-policy family, although the historical activation studied here is fast Langmuir.
 
-The same `abs(Ct-Ct0) < 1e-6` tangent substitution exists for the fast Freundlich option. NQ02 therefore treats the policy family as broader than one Langmuir expression, although the current TCD-019 historical signal is Langmuir-active.
+## Solver-independent diagnostic residuals
 
-## Reference-quality residuals
+NQ02 uses three separate quantities.
 
-NQ02 will not use a legacy warning threshold as an acceptance rule. It defines three distinct diagnostic residuals.
+### `R_eq`
 
-### R_eq: nonlinear equation residual
+Independent re-evaluation of `F1,F2` at the accepted `Rsc,Avc`, outside the legacy stopping predicate. It measures how closely the accepted state solves the equation represented by the selected numerical formulation.
 
-Evaluate the accepted state with the governing `C_unl` equations independently of the solver stopping test. Record both components `F1,F2` and a dimensioned norm. The norm is evidence, not an admission tolerance.
-
-### R_cons: exact layer P conservation residual
-
-Use the `Transgen` identity before its warning filter:
+### `R_cons`
 
 ```text
 R_cons = Bapd - Batr
 ```
 
-where `Batr` contains actual start/end aqueous, fast-sorbed, slow-sorbed and precipitated storage changes plus transport, and `Bapd` is the process production term. Capture the unfiltered signed value for every layer/timestep.
+before any warning filter. `Batr` uses actual start/end aqueous, fast-sorbed, slow-sorbed and precipitated states plus transfers. This is the layer conservation residual.
 
-### R_constitutive: represented versus actual fast-storage change
-
-For each fast-sorption site:
+### `R_constitutive`
 
 ```text
-R_constitutive = Rhbd * ( Avadco*(Rsc-Con)
-                          - (Rsampocxfa-Ampocxfa) )
+R_constitutive = Rhbd * (Avadco*(Rsc-Con) - (fast_end-fast_start)).
 ```
 
-with the exact source units retained in capture metadata. This directly measures whether the storage coefficient used by the solve represents the actual fast-sorption state change. For the small-delta tangent path it should expose the constitutive conservation defect independently of whole-layer fluxes.
+It measures whether the storage term supplied to the nonlinear equation equals the actual fast-sorption state change.
 
-These residuals must be kept separate. A smaller `R_cons` does not prove that `R_eq` is converged, and a small `R_eq` for an approximate constitutive equation does not prove exact storage conservation.
+These residuals are deliberately non-interchangeable. A small `R_eq` can coexist with biased `R_cons` when the represented constitutive equation is itself non-conservative.
 
-## Existing B1 causal evidence
+## Source-bound causal result
 
-Existing PREP01 B1 evidence for LWKM reports:
+The executed matrix confirms the earlier PREP01 localization and sharpens it:
 
-- baseline cumulative `sum(BAPD-BATR) = -0.27254515116349 kg/ha P` over 27,000 layer/timestep checks;
-- lowering only the fast-sorption small-delta switch from `1e-6` to `1e-12` reduced the cumulative residual to `-0.017973962837645 kg/ha P`;
-- tightening only `C_unl Small` from `1e-4` to `1e-8` changed the cumulative residual to about `-0.2548942332 kg/ha P`;
-- combining those two probes produced about `+9.63e-6 kg/ha P` cumulative residual.
+- legacy LWKM cumulative `R_cons`: `-0.27254515116349 kg/ha P`;
+- exact/cancellation-safe storage representation with legacy `Small`: `-0.0179739628387 kg/ha P` and `R_constitutive` reduced to the binary64 floor;
+- tightening `Small` alone to `1e-8` with the legacy tangent leaves `-0.254894233228 kg/ha P`;
+- exact storage plus nonlinear refinement reaches a stable region around `Small=1e-7` to `1e-8`, with cumulative `R_cons` about `-5e-7 kg/ha P`, before still tighter Newton thresholds begin to activate the separate fallback route.
 
-This is strong causal localization, but it is not a convergence study and it does not qualify either numerical threshold. In particular, `1e-12` and `1e-8` remain diagnostic probe values, not candidate production tolerances.
+The signed residual asymmetry was not materially activated in the primary LWKM experiment. It is a source risk, not part of the qualified causal claim.
 
-## Immediate qualification questions
+## Numerical interpretation
 
-NQ02 must now establish whether:
+TCD-019 has two distinct numerical contributions:
 
-1. exact constitutive storage representation removes the systematic residual without depending on a switch threshold;
-2. the accepted aqueous and sorbed trajectories stabilize under monotone solver refinement;
-3. the one-sided residual stopping test changes the apparent convergence envelope;
-4. fallback use or late-iteration averaging materially affects accepted states;
-5. precision changes scale the residual or leave a formulation-dominated floor;
-6. time-step refinement changes the inferred policy candidate;
-7. TCD-024 correction composes independently when slow Langmuir is activated.
+1. **formulation bias**: the small-delta tangent is not the exact finite conserved storage change. This dominates the systematic sign bias;
+2. **nonlinear acceptance error**: once the storage formulation is made exact, the legacy Newton stopping policy controls the remaining equation and conservation residual. Excessive tightening cannot be assessed independently of the fallback policy because bisection begins to activate.
 
-Until those are answered, `TOLERANCE_NOT_YET_QUALIFIED` applies.
+A threshold-free, cancellation-safe exact storage representation is therefore preferable to selecting a smaller arbitrary `|Delta C|` switch. A future solver policy must qualify Newton and fallback acceptance together.
+
+## Boundary of this qualification
+
+The route-level candidate is:
+
+`EXACT_CONSERVATIVE_CONSTITUTIVE_STORAGE_REPRESENTATION_PLUS_QUALIFIED_NONLINEAR_AND_FALLBACK_POLICY`.
+
+This is a `CONVERGENT_POLICY_CANDIDATE`, not an admitted change. NQ02 does not select `Small=1e-7`, `1e-8`, or any other production threshold. It does not define a global numerical tolerance. Multi-case natural coverage, independent B2 evidence where obtainable, independent numerical review and later B3 admission remain separate gates.
+
+`TOLERANCE_NOT_YET_QUALIFIED`.
