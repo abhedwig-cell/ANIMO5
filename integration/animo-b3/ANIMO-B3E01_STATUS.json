@@ -1,0 +1,30 @@
+{
+  "work_unit": "ANIMO-B3E01",
+  "title": "TCD-042-E1 Restricted Class-E Numerical Policy Admission Readiness",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3e01-tcd042-e1-class-e-admission-readiness",
+  "status": "IN_PROGRESS_PERSISTED_GOVERNANCE_ROUTE_AND_CHILD_DISPOSITION_CHECK_PENDING",
+  "target_parent": "TCD-042",
+  "target_atom": "TCD-042-E1",
+  "qualification_class": "E_NUMERICAL_POLICY",
+  "base": {
+    "work_unit": "ANIMO-NQ03R",
+    "head": "0153779e9045c6527b7c31156f2295ff44b57eeb",
+    "review_outcome": "INDEPENDENT_REVIEW_PASS_RESTRICTED_POLICY"
+  },
+  "scope_guards": {
+    "production_patch": false,
+    "b3_admission": false,
+    "parent_tcd_admission": false,
+    "new_tcd_reservation": false,
+    "canonical_register_modification": false,
+    "tcd042_b1_modification": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  }
+}
