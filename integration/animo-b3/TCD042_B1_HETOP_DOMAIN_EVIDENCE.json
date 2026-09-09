@@ -1,0 +1,102 @@
+{
+  "work_unit": "ANIMO-B3B02",
+  "target": "TCD-042-B1",
+  "purpose": "closeout evidence for the Hetop domain precondition of the exact-zero algebra",
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
+  },
+  "source_input_contract": {
+    "file": "ANIMO_4.1.5.53/input1.for",
+    "read_coordinate": "1826",
+    "validation_coordinates": "1827-1829",
+    "read_expression": "Read(Uiso,*,Err=7000) Hetop, He(0)",
+    "declared_bounds": {
+      "lower": 0.0,
+      "upper": 0.2
+    },
+    "checkrea_lower_bound_coordinates": "4068-4074",
+    "checkrea_lower_bound_rule": "error only if Value.Lt.Low",
+    "Hetop_zero_accepted": true
+  },
+  "documentation_corroboration": {
+    "source": "ANIMO user guide, Alterra Report 224",
+    "pdf_page": 42,
+    "table": "Table 6, input file SOIL.INP",
+    "mnemonic": "HETOP",
+    "description": "Thickness of the virtual reservoir where fertilizer additions are leached from proportional to cumulative precipitation since the fertilization event",
+    "documented_range_m": "[0.0 ... 0.2]",
+    "zero_explicitly_in_documented_range": true,
+    "higher_level_positive_only_constraint_found": false
+  },
+  "tcd042_equation_domain": {
+    "source": "UBoundconc.for:110-149",
+    "recovered_equation": "Hetop*dC/dt = Load - Flux*C",
+    "positive_Hetop_zero_flow_limit": {
+      "domain": "Hetop > 0",
+      "A2": "St/Hetop",
+      "B2": "St/(2*Hetop)",
+      "defined": true
+    },
+    "Hetop_zero_Flux_zero": {
+      "reduced_equation": "0 = Load",
+      "Load_nonzero": "no finite concentration-storage solution under the recovered equation",
+      "Load_zero": "concentration evolution not determined by the recovered equation",
+      "positive_Hetop_limit_formula_defined": false
+    }
+  },
+  "other_frozen_source_dependencies_on_positive_Hetop": [
+    {
+      "file": "Addit.for",
+      "coordinates": "361-370",
+      "observation": "no-ponding dissolved additions divide by Hetop"
+    },
+    {
+      "file": "Uptpar_Grass.for",
+      "coordinates": "92 and 194",
+      "observation": "Help = Flab(1)/Hetop is evaluated before the following branch tests"
+    },
+    {
+      "file": "Uptpar_Plant.for",
+      "coordinates": "110 and 283",
+      "observation": "Help = Flab(1)/Hetop is evaluated before the following branch tests"
+    }
+  ],
+  "interpretation_of_other_dependencies": "These observations do not by themselves classify Hetop=0 as a new TCD or prove historical runtime behaviour. They show that zero-thickness semantics are broader than the local TCD-042-B1 coefficient replacement and must not be silently invented inside B3B02.",
+  "frozen_testbank_SOIL_profiles": {
+    "profiles_scanned": 9,
+    "all_profiles_parsed_at_profil_section": true,
+    "observed_Hetop_values_m": [
+      0.02
+    ],
+    "Hetop_zero_profiles": 0,
+    "profiles": [
+      "CranGrass/Input/SOIL.INP",
+      "CranMais/Input/SOIL.INP",
+      "GHGMais/Input/soil.inp",
+      "GrassPeat/Input/SOIL.INP",
+      "LWKM_gras_1040.2021.2045/input/SOIL.INP",
+      "Puitmijn_Cranendonck_60/input/SOIL.INP",
+      "RuurloGrass/Input/SOIL.INP",
+      "STONE_akk_0006.2001.2015/input/Soil.inp",
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA/Input/Soil.inp"
+    ],
+    "coverage_consequence": "the frozen testbank supports the positive-Hetop subdomain but contains no natural or regression witness for Hetop=0"
+  },
+  "ruurlo": {
+    "Hetop_m": 0.02,
+    "UBQ01_natural_exact_zero_evidence_remains_applicable": true,
+    "zero_thickness_coverage": false
+  },
+  "governance_consequence": {
+    "full_requested_trigger_readiness": false,
+    "positive_Hetop_subdomain_readiness": true,
+    "silent_Hetop_gt_zero_guard_admitted": false,
+    "new_tcd_reserved": false,
+    "TCD_042_E1_scope_changed": false,
+    "production_source_change": false,
+    "corrected_legacy_admitted": false,
+    "decision": "FAIL_CLOSED_ZERO_THICKNESS_DOMAIN_UNRESOLVED"
+  }
+}
