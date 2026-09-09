@@ -17,9 +17,10 @@
       "branch": "work/animo-b3q01-scientific-admission-framework",
       "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
     },
-    "B3I01_checkpoint": {
+    "B3I01": {
       "branch": "work/animo-b3i01-post-g5-discrepancy-intake",
-      "head": "8199e993ec40c0442b1775c38f88c988de25368c"
+      "head": "7b2be9d9742aaad78128c0531591d8e38d7e8450",
+      "decision": "QUALIFIED_POST_G5_DISCREPANCY_CANONICAL_INTAKE_AND_ROUTING_NO_ADMISSIONS"
     },
     "NQ02": {
       "branch": "work/animo-nq02-tcd019-nonlinear-p-qualification",
@@ -84,7 +85,19 @@
     "unittest_cases_passed": 10,
     "unittest_cases_failed": 0,
     "register_structural_audit": "PASS",
-    "forbidden_B2_records": 0
+    "forbidden_B2_records": 0,
+    "last_observed_completed_push_ci_before_governance_handoff": {
+      "head": "c44dc3789dcddb8c60aa9b399af5b4d122f2e331",
+      "run_id": 34328259466,
+      "conclusion": "success"
+    }
+  },
+  "b3_handoff": {
+    "artifact": "integration/animo-synthetic/SYNQ01_B3_HANDOFF.json",
+    "new_tcd_allocation_required": false,
+    "evidence_strength_upgraded_by_handoff": false,
+    "admission_effect": "NONE",
+    "note": "SYNQ01 evidence is explicitly routed to existing TCD-015, TCD-017, TCD-018, TCD-019, TCD-023, TCD-024 and TCD-025 without substituting for B2, second-line review or class-specific admission gates"
   },
   "remaining_theory_dependent_gaps": [
     "TCD-019 fallback discrete closure and any production tolerance remain unqualified",
@@ -107,6 +120,7 @@
     "coverage": "integration/animo-synthetic/TCD_ORACLE_COVERAGE_MATRIX.csv",
     "structural_audit": "integration/animo-synthetic/SYNTHETIC_ORACLE_STRUCTURAL_AUDIT.json",
     "test_results": "integration/animo-synthetic/SYNTHETIC_ORACLE_TEST_RESULTS.json",
+    "b3_handoff": "integration/animo-synthetic/SYNQ01_B3_HANDOFF.json",
     "reference_tool": "tools/reference/synthetic_oracles.py",
     "audit_tool": "tools/reference/audit_synthetic_register.py",
     "tests": "tests/synthetic/test_synthetic_oracles.py",
