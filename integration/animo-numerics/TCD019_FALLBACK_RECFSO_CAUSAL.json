@@ -1,0 +1,90 @@
+{
+  "work_unit": "ANIMO-NQ02",
+  "target": "TCD-019",
+  "evidence_class": "B1_DIAGNOSTIC_ONE_FACTOR_FALLBACK_RATE_BRANCH_CAUSALITY_ONLY",
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "b0_hash_check_passed": true,
+  "driver_sha256": "00f36924dc07e23bbd609e74b9a23d56550e1d7047eb2006450aef9e07960a30",
+  "fixed_policy": {
+    "fast_sorption": "Langmuir",
+    "fast_storage": "cancellation_safe_exact_finite_secant",
+    "newton_small": 1e-7,
+    "fallback_equation": "legacy_scalar_equation_and_bracket",
+    "changed_factor_only": "Recfso_and_slow_equilibrium_recomputed_from_each_fallback_trial_state"
+  },
+  "diagnostic_descendants": {
+    "bisection_1e-6": {
+      "scientific_transorp_sha256": "301795b83aa5978bc452f5dcffeff48c9ff8cf13e20d7b3c84171223b608fa84",
+      "observer_transorp_sha256": "45c5e12f8f3300b98c636612265921392982372b6ed6b53d8af7a4395d0a7bf5",
+      "executable_sha256": "2b953fdc52339e29e565d7ca8d41e2ad50e40d4f4ed68d1e84e4b44c209af608"
+    },
+    "bisection_1e-8": {
+      "scientific_transorp_sha256": "fb74d74154d34a16e67ca225b90cb131d14aab26d7e3c6b0f86c2f0a6edeabd3",
+      "observer_transorp_sha256": "21121101ed67fc2bfd1314753ad1367e0293bfb121070414a87dbb0eaf63ba7b",
+      "executable_sha256": "e5605d5c13e613f35a4745f7d74d4a91255744f4ea65ef42efdd3edeb9effd64"
+    }
+  },
+  "cases": {
+    "Puitmijn_Cranendonck_60": {
+      "bisection_1e-6_state_local": {
+        "cumulative_R_cons_kg_ha": 0.0018121039901993128,
+        "sum_abs_R_cons_kg_ha": 0.0050570109451064365,
+        "first_timestep_R_cons_kg_ha": -0.00019774630824713338,
+        "bisection_accepts": 12,
+        "same_aggregate_as_inherited_route": true
+      },
+      "bisection_1e-8_state_local": {
+        "cumulative_R_cons_kg_ha": -0.00018371581432759552,
+        "sum_abs_R_cons_kg_ha": 0.0003205814865975566,
+        "first_timestep_R_cons_kg_ha": -0.00019774630824713338,
+        "bisection_accepts": 19,
+        "same_aggregate_as_inherited_route": true
+      },
+      "interpretation": "causal control; prior observer found no inherited-versus-state-local Recfso mismatch and recomputation is behaviorally inert"
+    },
+    "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA": {
+      "bisection_1e-6_state_local": {
+        "cumulative_R_cons_kg_ha": 0.0032703492633138534,
+        "sum_abs_R_cons_kg_ha": 0.012044790404298528,
+        "first_timestep_R_cons_kg_ha": -0.0014688924080409073,
+        "bisection_accepts": 15,
+        "same_aggregate_as_inherited_route": true
+      },
+      "bisection_1e-8_inherited_reference": {
+        "cumulative_R_cons_kg_ha": -0.025252972774996354,
+        "sum_abs_R_cons_kg_ha": 0.025910382512428002,
+        "first_timestep_R_cons_kg_ha": -0.02526056285746824,
+        "first_timestep_sum_abs_R_cons_kg_ha": 0.025812879493605063,
+        "post_first_timestep_R_cons_kg_ha": 7.590082471883756e-6,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 9.750301882293674e-5,
+        "bisection_accepts": 13
+      },
+      "bisection_1e-8_state_local": {
+        "cumulative_R_cons_kg_ha": 0.00018363583594392793,
+        "sum_abs_R_cons_kg_ha": 0.000485938447464702,
+        "first_timestep_R_cons_kg_ha": 0.0001466068297977211,
+        "first_timestep_sum_abs_R_cons_kg_ha": 0.00041757728656454746,
+        "post_first_timestep_R_cons_kg_ha": 0.000037029006146206835,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.00006836116090015455,
+        "bisection_accepts": 12,
+        "max_accepted_abs_Df": 6.000268e-9,
+        "materially_different_from_inherited_route": true
+      },
+      "interpretation": "one-factor state-local branch ownership materially changes the tight-fallback first-step root and trajectory where inherited and state-local branches disagree"
+    }
+  },
+  "qualification": {
+    "history_dependent_Recfso_causally_material": true,
+    "case_and_path_specific_activation": true,
+    "root_selection_coupled": true,
+    "smaller_mass_residual_proves_policy_correct": false,
+    "classification": "HISTORY_DEPENDENT_FALLBACK_RATE_BRANCH_CAUSALLY_MATERIAL_POLICY_NOT_QUALIFIED",
+    "fallback_policy_qualified": false,
+    "specific_tolerance_qualified": false,
+    "tolerance_status": "TOLERANCE_NOT_YET_QUALIFIED",
+    "corrected_legacy_admitted": false,
+    "B3_admitted": false,
+    "production_migration_admitted": false
+  }
+}
