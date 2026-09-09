@@ -1,0 +1,29 @@
+{
+  "work_unit": "ANIMO-TS01",
+  "audit_type": "STATIC_SOURCE_ORDER_AND_TEMPORAL_ANCHOR_AUDIT",
+  "result": "PASS",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "historical_reference_qualified": false,
+  "source_executed": false,
+  "source_modified": false,
+  "testcase_modified": false,
+  "checks": [
+    "main_timestep_call_order",
+    "management_(t0,t1]",
+    "harvest_[t0,t1)",
+    "add_then_plough",
+    "result_to_current_staging",
+    "management_reporting_reset_before_addit",
+    "resp_miner_previous_neighbor_and_two_pass",
+    "transport_flow_order",
+    "p_coupled_flow_order",
+    "balance_period_boundary_and_reset",
+    "restart_serializer",
+    "management_cursor"
+  ],
+  "execution_note": "Equivalent fail-closed checks executed locally against extracted bytes of the hash-verified frozen source after TS01 documentation and audit-tool persistence.",
+  "repository_tool": "tools/audit_ts01_temporal_source.py",
+  "repository_tool_persisted": true,
+  "repository_tool_direct_checkout_execution": false,
+  "b2_evidence_generated": false
+}
