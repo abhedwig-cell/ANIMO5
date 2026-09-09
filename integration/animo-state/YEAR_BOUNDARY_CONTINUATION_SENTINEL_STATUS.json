@@ -1,0 +1,25 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "artifact": "RC-R3 exact year-boundary continuation sentinel",
+  "profile": "CORE_CNP_SUBSURFACE_ONLY",
+  "status": "PERSISTED_NOT_YET_EXECUTED",
+  "evidence_class": "SYNTHETIC_TS01_TIME02_BOUNDARY_CONTRACT_NON_B2",
+  "production_code": false,
+  "physics_change": false,
+  "canonical_state_admission": "NOT_ADMITTED",
+  "canonical_time_admission": "NOT_ADMITTED",
+  "harness_module": "tools/stateq01/year_boundary_continuation_harness.py",
+  "test_module": "tests/stateq01/test_year_boundary_continuation_harness.py",
+  "contract": {
+    "physical_processing_before_prior_year_closeout": true,
+    "checkpoint_at_single_exact_year_boundary": true,
+    "next_interval_starts_at_same_exact_coordinate": true,
+    "prior_year_closeout_replayed_after_restore": false,
+    "new_year_initialization_occurs_on_next_interval_side": true,
+    "hidden_epsilon": "FORBIDDEN"
+  },
+  "tested": false,
+  "qualified": false,
+  "qualification_boundary": "synthetic ordering contract only; no supplied-case revision-53 year-boundary split and canonical TIME remains external",
+  "next": "execute persisted sentinel in GitHub Actions"
+}
