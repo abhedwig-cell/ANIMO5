@@ -1,0 +1,41 @@
+{
+  "relation": "ANIMO-B3A02",
+  "target_tcd": "TCD-017",
+  "evidence_class": "DOCUMENTATION_CORROBORATION_NOT_B2_NOT_INDEPENDENT_REVIEW",
+  "base_b3a02_head": "21d093f563264743942275d9effa6e0251badad7",
+  "frozen_primary_review_object": "3ff8f4bda77c631b82110b83317c6a9b42b867ad",
+  "documentation": {
+    "title": "User's guide of the ANIMO 4.0 nutrient leaching model",
+    "authors": ["L.V. Renaud", "J. Roelsma", "P. Groenendijk"],
+    "year": 2005,
+    "report": "Alterra Report 224",
+    "sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "version_scope": "ANIMO 4.0",
+    "revision53_identity_claimed": false
+  },
+  "corroborated_semantics": {
+    "artificial_top_reservoir_exists": true,
+    "management_ploughing_empties_compartment_0_when_PL_gt_0": true,
+    "organic_P_mass_balance_has_explicit_storage_and_deviation_terms": true,
+    "organic_P_reporting_includes_redistribution_or_incorporation_category": true,
+    "OUTBAL_CALC_documented_as_balance_term_accumulator": true,
+    "physical_storage_and_balance_terms_reported_separately": true
+  },
+  "relation_to_atomic_claim": {
+    "supports_top_reservoir_control_volume_interpretation": true,
+    "supports_reporting_only_classification": true,
+    "supports_internal_redistribution_ledger_semantics": true,
+    "proves_exact_Addiorpotoppl_omission": false,
+    "proves_revision53_historical_behavior": false,
+    "proves_non_interference_by_itself": false
+  },
+  "contradictory_documentation_found": false,
+  "gate_effect": {
+    "normal_B2_available": false,
+    "historical_uncertainty_route_eligible": false,
+    "independent_second_line_review_complete": false,
+    "admitted": false,
+    "production_patch_authorized": false
+  },
+  "status": "DOCUMENTATION_CORROBORATES_TCD017_CLASS_A_READINESS_NO_GATE_CHANGE"
+}
