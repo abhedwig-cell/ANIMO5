@@ -5,7 +5,14 @@
   "frozen_identity": {
     "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
-    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "source_member_sha256": {
+      "input1.for": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+      "UBoundconc.for": "b9a7ec980d40c0f76279077852190788e36cd976d185b12683a38da0c7dfecf7",
+      "Addit.for": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+      "Uptpar_Grass.for": "538a84b5e4b8f9dd770d0f959bfea37a4fe2e67ddd59ce86b8f9515098bfd18d",
+      "Uptpar_Plant.for": "c7bfbc7c7e74c8a19e996d6f28de5aa60d580618fda61a2b18994553ad1d946a"
+    }
   },
   "source_input_contract": {
     "file": "ANIMO_4.1.5.53/input1.for",
@@ -48,6 +55,11 @@
   },
   "other_frozen_source_dependencies_on_positive_Hetop": [
     {
+      "file": "UBoundconc.for",
+      "coordinates": "113-118",
+      "observation": "ordinary positive-flow upper-reservoir algebra evaluates P = St*Flux/Hetop"
+    },
+    {
       "file": "Addit.for",
       "coordinates": "361-370",
       "observation": "no-ponding dissolved additions divide by Hetop"
@@ -63,7 +75,69 @@
       "observation": "Help = Flab(1)/Hetop is evaluated before the following branch tests"
     }
   ],
-  "interpretation_of_other_dependencies": "These observations do not by themselves classify Hetop=0 as a new TCD or prove historical runtime behaviour. They show that zero-thickness semantics are broader than the local TCD-042-B1 coefficient replacement and must not be silently invented inside B3B02.",
+  "runtime_zero_thickness_probe": {
+    "evidence_class": "B0_HASH_PINNED_DIAGNOSTIC_EXECUTION_NOT_B2",
+    "date": "2026-09-09",
+    "compiler": "GNU Fortran 14.2.0",
+    "build_contract_source": {
+      "path": "tools/build_gnu_diagnostic.py",
+      "upstream_branch": "work/animo-ubq01-tcd042-upper-boundary-transaction",
+      "blob_sha": "484a876f06926ab48d863383a28171936a4b09c6"
+    },
+    "case_adapter_contract_source": {
+      "path": "tools/prepare_gnu_case.py",
+      "upstream_branch": "work/animo-ubq01-tcd042-upper-boundary-transaction",
+      "blob_sha": "c85e37d3849f71aba9bd0b11d6357ad577016f75"
+    },
+    "case": "RuurloGrass",
+    "scientific_input_delta": {
+      "file": "Input/SOIL.INP",
+      "baseline_profil_pair": "0.02 0.2",
+      "probe_profil_pair": "0.0 0.2",
+      "changed_parameter": "Hetop only",
+      "He_0_unchanged": true,
+      "baseline_adapted_soil_sha256": "97881a83a8da46c6ac28694bfc6e2a5540584b1af9d753603e66d1c4deb36da4",
+      "zero_Hetop_adapted_soil_sha256": "10c03e7ceb99b2552d5ea04d97ab423c13db4199ca2c1f9aaf2f15f70bba813f"
+    },
+    "ordinary_diagnostic_build": {
+      "executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+      "baseline_initial_out_sha256": "206a65a9b56fd68f20f6e8812ebb638d59684e76f69767bb335416b72ff644a5",
+      "baseline_text_output_NaN_count": 0,
+      "zero_Hetop_initial_out_sha256": "b7ed29f84617300a1fba7432b6423a2f8e02d2e9451b459b0e282ce0affc0577",
+      "zero_Hetop_initial_out_NaN_count": 185,
+      "runtime_floating_point_flags": [
+        "IEEE_INVALID_FLAG",
+        "IEEE_DIVIDE_BY_ZERO"
+      ],
+      "observation": "without trapping, the modified case continues far enough to emit NaN state/output and reports floating-point exception flags"
+    },
+    "trap_diagnostic_build": {
+      "additional_compile_flags": [
+        "-g",
+        "-fbacktrace",
+        "-ffpe-trap=zero,invalid,overflow"
+      ],
+      "executable_sha256": "981bce0cbdfd9119ab5696f1a49752826195835e6935b7c23fafe587ea092568",
+      "positive_Hetop_baseline": {
+        "Hetop_m": 0.02,
+        "result": "NORMAL_MODEL_STOP_100_AFTER_SUCCESSFUL_COMPLETION",
+        "floating_point_trap": false
+      },
+      "zero_Hetop_probe": {
+        "Hetop_m": 0.0,
+        "process_return_code": 136,
+        "signal": "SIGFPE",
+        "first_trapped_source": "UBoundconc.for:114",
+        "first_trapped_expression": "P = St*Flux/Hetop",
+        "caller": "Animo.for:517",
+        "branch_context": "Flpn=0 and ordinary positive-flow branch Flux>=1.0d-8",
+        "interpretation": "the natural Ruurlo zero-Hetop variant fails in pre-existing legacy positive-flow algebra before the later exact-zero TCD-042-B1 witness"
+      }
+    },
+    "probe_scope_limit": "This probe proves operational failure for the Ruurlo zero-Hetop variant and identifies the first trapped legacy site. It does not establish semantics for every possible zero-Hetop configuration and is not historical B2 evidence.",
+    "consequence": "parser/documentation acceptance of Hetop=0 cannot be treated as proof of a well-posed upper-reservoir runtime domain"
+  },
+  "interpretation_of_other_dependencies": "The source audit plus executable probe show that zero-thickness semantics are broader than the local TCD-042-B1 coefficient replacement. Hetop=0 is accepted by input validation but can fail in existing legacy runtime algebra independently of the exact-zero candidate. B3B02 must not invent a silent zero-thickness policy.",
   "frozen_testbank_SOIL_profiles": {
     "profiles_scanned": 9,
     "all_profiles_parsed_at_profil_section": true,
@@ -92,11 +166,13 @@
   "governance_consequence": {
     "full_requested_trigger_readiness": false,
     "positive_Hetop_subdomain_readiness": true,
+    "zero_Hetop_is_local_B1_coefficient_problem": false,
+    "zero_Hetop_requires_separate_input_runtime_contract_reconciliation": true,
     "silent_Hetop_gt_zero_guard_admitted": false,
     "new_tcd_reserved": false,
     "TCD_042_E1_scope_changed": false,
     "production_source_change": false,
     "corrected_legacy_admitted": false,
-    "decision": "FAIL_CLOSED_ZERO_THICKNESS_DOMAIN_UNRESOLVED"
+    "decision": "FAIL_CLOSED_ZERO_THICKNESS_DOMAIN_UNRESOLVED_BUT_DEMONSTRATED_BROADER_THAN_TCD042_B1"
   }
 }
