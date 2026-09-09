@@ -5,7 +5,7 @@
   "branch": "work/animo-eg01-controlled-b0-retention",
   "parent_branch": "work/animo-rg01-baseline-stabilization",
   "parent_sha": "662bca8aff40f4dca1f6ccdde6bef6274c6bede2",
-  "evaluated_candidate_head_before_status_record": "1a499a47aeb1114c0e9203eaaedbdc97ec4276a1",
+  "evaluated_candidate_head_before_status_record": "4bffedb571959a68b08bed7ef93c6b5d43a581b9",
   "decision": "QUALIFIED_B0_RETENTION_CONTRACT_IMPLEMENTATION_PENDING_EXTERNAL_CONTROLLED_STORAGE",
   "implemented": true,
   "persisted": true,
