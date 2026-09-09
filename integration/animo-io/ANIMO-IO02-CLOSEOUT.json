@@ -1,0 +1,123 @@
+{
+  "work_unit": "ANIMO-IO02",
+  "status": "CLOSEOUT_READY_BOUNDED_GENERAL_REPRESENTATION_QUALIFICATION_COMPLETE",
+  "decision": "QUALIFIED_BOUNDED_REV53_GENERAL_NORMALIZED_REPRESENTATION_WITH_EXPLICIT_LEGACY_HAZARD_EXCLUSIONS",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-io02-general-input-normalization",
+  "upstream_io01_head": "2bcf65360b08d278f28f1cc61ac96714db4793a3",
+  "qualification_baseline_head": "06c0371b72df9415bc76562188b10266fc8826db",
+  "qualification_baseline_ci": {
+    "workflow": "IO02 GENERAL contract audit",
+    "run_id": 34386275458,
+    "conclusion": "success",
+    "unit_tests": 11,
+    "persisted_qualification_audit": "PASS"
+  },
+  "frozen_identity": {
+    "revision_53_source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "animo_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "animo_vfproj_sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "frozen_bytes_modified": false
+  },
+  "qualified_scope": {
+    "family": "GENERAL.INP",
+    "source_revision": 53,
+    "animo_version_branch": 41,
+    "ghg_schema": false,
+    "natural_non_ghg_files_qualified": 7,
+    "natural_non_ghg_files_examined": 8,
+    "ghg_natural_files_excluded": 1,
+    "mutation_probes": 13,
+    "typed_targets": [
+      "ModelConfiguration",
+      "SimulationWindow",
+      "DiagnosticsConfiguration"
+    ]
+  },
+  "core_contract": {
+    "top_level_complete_block_physical_order": "NOT_AUTHORITATIVE_BECAUSE_FINDADR_REWINDS",
+    "within_section_record_order": "STRICT_SEQUENTIAL",
+    "free_order_property_bag": false,
+    "source_observed_defaults_only": true,
+    "byte_round_trip_identity_claimed": false,
+    "semantic_representation_equivalence": true,
+    "blanket_numeric_tolerance": false,
+    "ttutil_numeric_or_scientific_authority": false
+  },
+  "source_behaviour_preserved": [
+    "Findadr exact A8 lookup with rewind before each top-level search",
+    "ReadOp/Readints/Readvals sequential next-record ordering",
+    "PClassOption mismatch compatibility default to zero with consumed record and cleared error",
+    "HydroYearSwitch mismatch compatibility default to zero",
+    "HydroYearSwitch source range-check defect checking IoptPCl instead of HydrYrSw",
+    "ReadTs first 0..3 character scan across remainder of record including comments",
+    "balance update-date sorting after parsing",
+    "PrintBalLabel mismatch bare RETURN without normal parser error assignment",
+    "late optional output file flag default with selected-compartment flag left storage-dependent"
+  ],
+  "natural_evidence": {
+    "qualified": [
+      "CranGrass",
+      "CranMais",
+      "LWKM_gras_1040.2021.2045",
+      "Puitmijn_Cranendonck_60",
+      "RuurloGrass",
+      "STONE_akk_0006.2001.2015",
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+    ],
+    "negative_sequence_evidence": {
+      "case": "GrassPeat",
+      "error": "9871",
+      "line": 118,
+      "unexpected": "WFPS=",
+      "expected": "O2_content=",
+      "admission": false
+    },
+    "scope_exclusion": {
+      "case": "GHGMais",
+      "reason": "GHG schema not admitted",
+      "GreenHouseGasOption": 1
+    }
+  },
+  "explicit_hazard_exclusions": [
+    "OutseLn(77:78) is not assigned a fabricated value when late optional output records are omitted",
+    "OutseLn(37,43,48,54) storage is not treated as input-defined where ReadTs sends the second selector to idum",
+    "a late optional ReadTs mismatch can clear a previous 9871; malformed recovery is not normalized",
+    "PrintBalNoUpd below -1 receives no normalized repeat semantics despite the Checkint lower-bound sentinel",
+    "malformed ReadTs records without '=' remain outside the admitted grammar",
+    "PrintBalLabel mismatch return-without-error is preserved as an explicit source hazard"
+  ],
+  "evidence": {
+    "qualification": "integration/animo-io/ANIMO-IO02-QUALIFICATION.json",
+    "grammar_manifest": "integration/animo-io/GENERAL-REV53-GRAMMAR.json",
+    "contract": "docs/io/GENERAL_INPUT_CONTRACT.md",
+    "qualification_observer": "tools/io02_general_contract.py",
+    "qualification_runner": "tools/qualify_io02_general.py",
+    "unit_tests": "tests/io/test_io02_general_contract.py",
+    "qualification_audit": "tools/audit_io02_qualification.py"
+  },
+  "non_admissions": {
+    "production_input_migration": false,
+    "GENERAL_grammar_redesign": false,
+    "free_order_GENERAL": false,
+    "silent_default_insertion_beyond_source": false,
+    "GHGMais_schema_admission": false,
+    "generic_GHG_schema_admission": false,
+    "binary_hydrology": false,
+    "INITIAL_migration": false,
+    "restart_checkpoint_migration": false,
+    "broad_IO01_reopen": false,
+    "TTUTIL_scientific_authority": false,
+    "TTUTIL_numeric_authority": false,
+    "undefined_storage_normalized_to_values": false,
+    "production_activation": false,
+    "canonical_merge_admitted_by_IO02_alone": false
+  },
+  "handoff": {
+    "future_GENERAL_adapter": "MUST_CONSUME_THIS_STRICT_CONTRACT_WITHOUT_RELAXING_ORDER_OR_DEFAULTS",
+    "GHG_schema": "SEPARATE_SCOPED_QUALIFICATION_REQUIRED",
+    "INITIAL_restart": "REMAINS_SPECIALIZED_OUT_OF_SCOPE",
+    "production_migration": "SEPARATE_ADMISSION_REQUIRED"
+  }
+}
