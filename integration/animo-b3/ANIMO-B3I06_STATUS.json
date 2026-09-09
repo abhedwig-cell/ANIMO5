@@ -1,0 +1,45 @@
+{
+  "work_unit": "ANIMO-B3I06",
+  "title": "Post-UBQ03 Incremental HETOP Zero-Domain Intake",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i06-ubq03-hetop-zero-intake",
+  "status": "IN_PROGRESS_PERSISTED_VALIDATION_PENDING",
+  "base": {
+    "work_unit": "ANIMO-UBQ03",
+    "head": "ca55248f2382000288488659571b645fd5a8043b",
+    "decision": "QUALIFIED_CHARACTERIZATION_HETOP_ZERO_PARSER_ADMISSIBLE_CONDITIONALLY_UNDEFINED_NO_GLOBAL_ZERO_THICKNESS_POLICY"
+  },
+  "canonical_authority": {
+    "parent_tcd": "TCD-042",
+    "canonical_tail": "TCD-042",
+    "existing_children": ["TCD-042-B1", "TCD-042-E1"],
+    "child_keys_are_top_level_rows": false
+  },
+  "intake": {
+    "new_findings": 1,
+    "new_top_level_tcd_count": 0,
+    "tcd_043_reserved": false,
+    "canonical_register_append_performed": false,
+    "disposition": "RUNTIME_INPUT_DOMAIN_HAZARD_PENDING_AUTHORITATIVE_ZERO_THICKNESS_MODEL_SEMANTICS",
+    "relation_to_tcd042": "DOMAIN_CONSTRAINT_ONLY_NOT_NEW_CHILD",
+    "reason_no_reservation": "The HETOP=0 inconsistency is source-bound and real, but the intended model-level remedy is not uniquely determined. Input exclusion, conditional admissibility, or explicit zero-capacity semantics have materially different scientific and compatibility consequences."
+  },
+  "scope_guards": {
+    "production_source_modified": false,
+    "input_validation_modified": false,
+    "canonical_tcd_register_modified": false,
+    "new_tcd_reserved": false,
+    "TCD042_parent_admitted": false,
+    "TCD042_B1_modified_or_admitted": false,
+    "TCD042_E1_modified_or_admitted": false,
+    "scientific_admission": false,
+    "production_migration_admitted": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  }
+}
