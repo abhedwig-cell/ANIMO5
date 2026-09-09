@@ -22,15 +22,26 @@
       "peer_reviewed": true,
       "open_access": true,
       "authority": "Original ANIMO N2O concept and Appendix A governing equations"
+    },
+    {
+      "citation": "Maag & Vinther (1996), Nitrous oxide emission by nitrification and denitrification in different soil types and at different soil moisture contents and temperatures, Applied Soil Ecology 4, 5-14",
+      "doi": "10.1016/0929-1393(96)00106-0",
+      "peer_reviewed": true,
+      "authority": "empirical direction of nitrification N2O fraction versus temperature cited by revision-53 source"
     }
   ],
   "detailed_report_lead": {
     "authors": "Hendriks, Groenendijk, Stolk, van den Akker & Renaud",
     "title": "Modelling of greenhouse gas emissions with ANIMO 4.0",
-    "year_cited": 2011,
+    "year_cited": "2010/2011 across secondary and peer-reviewed references",
     "possible_report_number": "Alterra report 2054",
     "status": "PUBLICATION_EXISTENCE_AND_REPORT_NUMBER_LEAD_NOT_FROZEN",
-    "reason": "peer-reviewed papers cite the work while another October 2011 Alterra report cites it as in preparation; authoritative final bytes were not recovered"
+    "reason": "peer-reviewed papers cite the work and independent secondary material identifies Alterra report 2054, but no authoritative final report bytes or release record were recovered in targeted search"
+  },
+  "public_source_history_search": {
+    "target_strings": ["RatFacN2O", "RelK_N2Ode", "FracN2Onitr", "FrN2Oni", "GHG_Miner"],
+    "result": "NO_PUBLIC_SOURCE_CODE_HIT_RECOVERED_IN_TARGETED_WEB_SEARCH",
+    "source_history_resolved": false
   },
   "version_boundary": {
     "independent_equations_are_revision53_release_specification": false,
@@ -80,9 +91,10 @@
       "relation": "nitrification temperature response",
       "publication_equation": "Appendix A17",
       "source_location": "ghg_n2o.for:717-720",
-      "result": "DOCUMENT_SOURCE_SIGN_CONFLICT",
+      "result": "PUBLICATION_EQUATION_SIGN_SUSPECT_SOURCE_DIRECTION_SUPPORTED_BY_CITED_EMPIRICAL_STUDY",
       "provenance": "UNRESOLVED",
-      "local_key": "GHG01-LCL-N2O-NITRIFICATION-TEMPERATURE-SIGN-DOC-SOURCE"
+      "local_key": "GHG01-LCL-N2O-NITRIFICATION-TEMPERATURE-SIGN-DOC-SOURCE",
+      "defect_admitted": false
     },
     {
       "relation": "denitrification pH response",
@@ -109,17 +121,20 @@
       "relation": "denitrification N2O production competition",
       "publication_equation": "Appendix A9/A10",
       "source_location": "ghg_n2o.for:547-561",
-      "result": "STRONG_ALGEBRAIC_STRUCTURE_MATCH",
+      "result": "A10_EXACT_ALGEBRAIC_MATCH_FOR_OM_LIMITED_BRANCH_AFTER_STOICHIOMETRIC_MAPPING",
       "provenance": "INDEPENDENT_THEORY",
-      "remaining_work": "exact unit and stoichiometry derivation"
+      "crosswalk": "integration/animo-ghg/GHG_N2O_EQUATION_ALGEBRA_RECONCILIATION.json"
     },
     {
-      "relation": "N2O reduction aeration-factor placement",
+      "relation": "N2O reduction competition",
       "publication_equation": "Appendix A11",
       "source_location": "ghg_n2o.for:279-282 and 558-561",
-      "result": "DOCUMENT_SOURCE_AERATION_FACTOR_PLACEMENT_CONFLICT",
+      "result": "A11_ISOLATED_EXTRA_FAE_FACTOR_IN_REV53_REDUCTION_NUMERATOR_RELATIVE_TO_PRINTED_PUBLICATION",
       "provenance": "UNRESOLVED",
-      "local_key": "GHG01-LCL-N2O-REDUCTION-AERATION-FACTOR-DOC-SOURCE"
+      "local_instantaneous_relation": "REV53_REDUCTION_RATE = fae * APPENDIX_A11_REDUCTION_RATE under otherwise identical mapped variables",
+      "whole_timestep_factor_claim": false,
+      "local_key": "GHG01-LCL-N2O-REDUCTION-AERATION-FACTOR-DOC-SOURCE",
+      "defect_admitted": false
     },
     {
       "relation": "N2O atmosphere emission mechanisms",
@@ -129,6 +144,10 @@
       "provenance": "INDEPENDENT_THEORY"
     }
   ],
+  "algebra_crosswalk": {
+    "markdown": "docs/ghg/GHG_N2O_EQUATION_ALGEBRA_RECONCILIATION.md",
+    "json": "integration/animo-ghg/GHG_N2O_EQUATION_ALGEBRA_RECONCILIATION.json"
+  },
   "new_local_reconciliation_keys": [
     "GHG01-LCL-N2O-NITRIFICATION-TEMPERATURE-SIGN-DOC-SOURCE",
     "GHG01-LCL-N2O-REDUCTION-AERATION-FACTOR-DOC-SOURCE"
