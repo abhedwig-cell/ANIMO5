@@ -1,0 +1,47 @@
+name: ANIMO-PREP10C corrected candidate
+
+on:
+  push:
+    branches:
+      - work/animo-prep10c-stable-dom-event-reset-authoritative
+  pull_request:
+    paths:
+      - 'tools/make_prep10c_corrected_addit.py'
+      - 'tools/audit_prep10c_plough_conservation.py'
+      - 'tools/validate_prep10c_review_request.py'
+      - 'tests/prep10/test_make_prep10c_corrected_addit.py'
+      - 'tests/prep10/test_audit_prep10c_plough_conservation.py'
+      - 'tests/prep10/test_validate_prep10c_review_request.py'
+      - 'docs/prep10c/**'
+      - 'integration/animo-prep/PREP10C_*.json'
+      - '.github/workflows/animo-prep10c-corrected-candidate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-contract-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile PREP10C tooling
+        run: |
+          python -m py_compile tools/make_prep10c_corrected_addit.py
+          python -m py_compile tools/audit_prep10c_plough_conservation.py
+          python -m py_compile tools/validate_prep10c_review_request.py
+      - name: Run PREP10C tests
+        run: |
+          python -m unittest tests.prep10.test_make_prep10c_corrected_addit -v
+          python -m unittest tests.prep10.test_audit_prep10c_plough_conservation -v
+          python -m unittest tests.prep10.test_validate_prep10c_review_request -v
+      - name: Validate PREP10C machine-readable evidence when present
+        run: |
+          shopt -s nullglob
+          for file in integration/animo-prep/PREP10C_*.json; do
+            python -m json.tool "$file" >/dev/null
+          done
+      - name: Enforce fail-closed B3 review request
+        run: python tools/validate_prep10c_review_request.py integration/animo-prep/PREP10C_B3_REVIEW_REQUEST.json

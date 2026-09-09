@@ -1,0 +1,112 @@
+{
+  "work_unit": "ANIMO-PREP10C",
+  "title": "Stable-DOM/DON/DOP plough event-reset corrected-legacy candidate",
+  "branch": "work/animo-prep10c-stable-dom-event-reset-authoritative",
+  "authoritative_parent": {
+    "branch": "work/animo-prep10-stable-dom-plough-accumulators",
+    "commit": "65cd4a65a3ea27cd4ce004f505d5022fdb08b9ab",
+    "decision": "QUALIFIED_GNU_DIAGNOSTIC_CAUSAL_ACCUMULATOR_CARRYOVER_CONFIRMED_CONTROLLED_INPUT_DESCENDANTS_HISTORICAL_INTEL_OPEN"
+  },
+  "lineage_reanchor": {
+    "required": true,
+    "reason": "the first PREP10C branch descended from a parallel causal branch that authoritative PREP10 later reconciled as supplemental evidence rather than merge ancestry",
+    "method": "candidate-specific blobs transplanted onto the exact authoritative PREP10 head without merging superseded parallel history",
+    "superseded_candidate_branch": "work/animo-prep10c-stable-dom-event-reset-candidate",
+    "superseded_parent_branch": "work/animo-prep10-stable-dom-causal-activation",
+    "superseded_parent_commit": "0a174fcee84865f027abab3dde491470c7a04afa",
+    "parallel_evidence_may_be_used_only_via": "integration/animo-prep/PREP10_PARALLEL_CAUSAL_EVIDENCE_RECONCILIATION.json"
+  },
+  "decision": "QUALIFIED_CORRECTED_LEGACY_CANDIDATE_REANCHORED_TO_AUTHORITATIVE_PREP10_B3_ADMISSION_OPEN",
+  "evidence_class": "CORRECTED_LEGACY_CANDIDATE_NOT_ADMITTED",
+  "b3q01_provisional_class": "CLASS_B_LOCAL_ALGEBRA_INDEX_OR_SPECIES_CORRECTION",
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "addit_member_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+    "inicalc_member_sha256": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1"
+  },
+  "candidate_transform": {
+    "tool": "tools/make_prep10c_corrected_addit.py",
+    "candidate_addit_sha256": "a1993aa2d22c8f2c13fc169e78f9121587c8f14a122ef7d3f757cc24a58a54ae",
+    "candidate_addit_size_bytes": 35719,
+    "candidate_addit_crlf_count": 738,
+    "authoritative_prep10_counterfactual_addit_sha256": "a1993aa2d22c8f2c13fc169e78f9121587c8f14a122ef7d3f757cc24a58a54ae",
+    "byte_identical_to_authoritative_prep10_counterfactual": true,
+    "changes": [
+      "SuStdiorma = 0.0 at the start of each Pl(I)>0 event",
+      "SuStdiorni = 0.0 at the start of each Pl(I)>0 event",
+      "If (Ipo.Eq.1) SuStdiorpo = 0.0 at the start of each Pl(I)>0 event"
+    ],
+    "physics_changed": false,
+    "numerical_policy_changed": false,
+    "frozen_source_modified": false
+  },
+  "current_gnu_build_identity": {
+    "compiler": "GNU Fortran (Debian 14.2.0-19) 14.2.0",
+    "diagnostic_flags_include": "-fno-automatic",
+    "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "candidate_executable_sha256": "f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db",
+    "authoritative_prep10_counterfactual_executable_sha256": "f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db",
+    "candidate_executable_byte_identical_to_authoritative_counterfactual": true
+  },
+  "authoritative_prep10_evidence": {
+    "source_audit": "integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json",
+    "frozen_observer_matrix": "integration/animo-prep/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json",
+    "controlled_activation_matrix": "integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json",
+    "parallel_causal_reconciliation": "integration/animo-prep/PREP10_PARALLEL_CAUSAL_EVIDENCE_RECONCILIATION.json",
+    "b3_handoff": "integration/animo-prep/PREP10_STABLE_DOM_B3_HANDOFF.json",
+    "carbon_carryover_current_gnu_confirmed": true,
+    "nitrogen_carryover_current_gnu_confirmed": true,
+    "conditional_phosphorus_carryover_current_gnu_confirmed": true,
+    "controlled_descendants_are_b2": false,
+    "historical_intel_manifestation_qualified": false
+  },
+  "frozen_testbank_noninterference": {
+    "authoring_environment_b0_bytes_rehashed_before_use": true,
+    "comparison_normalization": "declared volatile creation/run timestamps and elapsed CPU seconds only; no scientific-number tolerance",
+    "successful_cases_compared": 8,
+    "total_common_files_compared": 550,
+    "raw_equal_files": 450,
+    "equal_after_declared_volatile_only_normalization": 100,
+    "scientifically_or_structurally_different_files": 0,
+    "missing_candidate_files": 0,
+    "extra_candidate_files": 0,
+    "known_unresolved_case": "GHGMais",
+    "known_unresolved_case_baseline_return_code": 203,
+    "known_unresolved_case_candidate_return_code": 203,
+    "known_unresolved_case_reason": "pre-existing supplied-testcase/revision-53 lineage/input-contract mismatch",
+    "lineage_reanchor_caused_runtime_reexecution": false,
+    "transfer_basis": "candidate source and current-GNU executable identities are unchanged and equal the authoritative PREP10 counterfactual identities"
+  },
+  "conservation_reconciliation": {
+    "tool": "tools/audit_prep10c_plough_conservation.py",
+    "control_volume": "current plough event stable-DOM/DON/DOP material over Ln=0..Pl(I), redistributed into Ln=1..Pl(I)",
+    "defect_mechanism": "a persistent prior-event accumulator is added to current-event mass and redistributed again",
+    "candidate_mechanism": "zero event-local accumulators before current-event summation, leaving current-event summation and redistribution equations unchanged",
+    "closed_current_event_redistribution_identity_restored": true,
+    "new_physical_storage_introduced": false,
+    "solver_or_tolerance_change_introduced": false
+  },
+  "b3_intake": {
+    "reserved_tcd_id": "TCD-028",
+    "reservation_pr": 10,
+    "reservation_state": "RESERVED_PENDING_CANONICAL_REGISTER_APPEND_NOT_ADMITTED",
+    "canonical_register_append_proven": false,
+    "current_disposition": "UNRESOLVED_NOT_ADMITTED",
+    "independent_second_line_review_completed": false,
+    "b2_reference_available_for_affected_path": false,
+    "historical_uncertainty_route_opened": false,
+    "corrected_legacy_admitted": false,
+    "b3_admitted": false,
+    "production_migration_admitted": false
+  },
+  "non_admissions": [
+    "candidate qualification is not B3 admission",
+    "current-GNU causality is not historical Intel behaviour",
+    "controlled diagnostic descendants are not B2 references",
+    "TCD-028 reservation is not canonical register admission",
+    "parallel corroboration is not independent second-line review",
+    "no corrected-legacy source is promoted to canonical baseline",
+    "no ANIMO5 production migration is admitted"
+  ]
+}

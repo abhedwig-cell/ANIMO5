@@ -1,0 +1,81 @@
+{
+  "work_unit": "ANIMO-PREP10C",
+  "record_type": "INDEPENDENT_B3_REVIEW_REQUEST_NOT_DISPOSITION",
+  "status": "READY_FOR_INDEPENDENT_REVIEW_NOT_REVIEWED_NOT_ADMITTED",
+  "candidate_branch": "work/animo-prep10c-stable-dom-event-reset-authoritative",
+  "authoritative_parent": {
+    "branch": "work/animo-prep10-stable-dom-plough-accumulators",
+    "commit": "65cd4a65a3ea27cd4ce004f505d5022fdb08b9ab"
+  },
+  "candidate_identity": {
+    "frozen_addit_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+    "candidate_addit_sha256": "a1993aa2d22c8f2c13fc169e78f9121587c8f14a122ef7d3f757cc24a58a54ae",
+    "candidate_executable_sha256_current_gnu": "f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db"
+  },
+  "b3_context": {
+    "provisional_class": "CLASS_B_LOCAL_ALGEBRA_INDEX_OR_SPECIES_CORRECTION",
+    "reserved_tcd_id": "TCD-028",
+    "tcd_reservation_pr": 10,
+    "tcd_reservation_head": "7f38b79d88c05fd86c89fbdd7a5794b90ffba2bf",
+    "tcd_reservation_status": "RESERVED_PENDING_CANONICAL_REGISTER_APPEND_NOT_ADMITTED",
+    "tcd_reservation_canonical_append_proven": false,
+    "candidate_pr": 14,
+    "b2_affected_path_reference_established": false,
+    "historical_uncertainty_route_opened": false,
+    "current_disposition": "UNRESOLVED_NOT_ADMITTED"
+  },
+  "historical_reference_dependency": {
+    "work_unit": "ANIMO-PREP02R",
+    "branch": "work/animo-prep02r-historical-reference-recovery",
+    "observed_head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+    "status_record_blob_sha": "eb3c8e877d82f402415061cfd39c3d2bcbe550a7",
+    "status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+    "historical_reference_artifact_obtained": false,
+    "native_reference_run_completed": false,
+    "native_vs_gnu_comparison_completed": false,
+    "reference_qualified": false,
+    "external_request_sent": false,
+    "normal_b2_route_eligible": false,
+    "historical_uncertainty_route_acquisition_precondition_exhausted": false,
+    "route_conclusion": "NO_B3_ADMISSION_ROUTE_CURRENTLY_ELIGIBLE"
+  },
+  "reviewer": {
+    "identity": null,
+    "independent_workunit": null,
+    "reviewed_candidate_commit": null,
+    "review_date": null,
+    "independence_statement": null
+  },
+  "required_review_gates": {
+    "atomic_class_b_classification": "PENDING",
+    "event_local_accumulator_intent": "PENDING",
+    "source_bound_conservation_identity": "PENDING",
+    "authoritative_prep10_causal_evidence": "PENDING",
+    "expected_difference_scope": "PENDING",
+    "non_interference_interpretation": "PENDING",
+    "historical_route_eligibility": "BLOCKED_PREP02R_ARTIFACT_NOT_OBTAINED_AND_ACQUISITION_NOT_EXHAUSTED",
+    "residual_uncertainty": "PENDING"
+  },
+  "allowed_review_outcomes": [
+    "PASS_CLASS_B_AND_EVIDENCE_READY_FOR_ROUTE_EVALUATION",
+    "PASS_WITH_OPEN_EVIDENCE_REQUIREMENT",
+    "FAIL_OR_RECLASSIFY"
+  ],
+  "review_outcome": null,
+  "review_findings": [],
+  "review_completed": false,
+  "independent_second_line_review_completed": false,
+  "corrected_legacy_admitted": false,
+  "b3_admitted": false,
+  "production_migration_admitted": false,
+  "fail_closed_rules": [
+    "candidate authoring cannot self-satisfy independent review",
+    "CI success is not independent review",
+    "TCD-028 reservation is not canonical registration or admission",
+    "controlled diagnostic descendants are not B2",
+    "PREP02R currently proves neither a B2 artifact nor exhaustion of the acquisition route",
+    "historical-uncertainty route cannot be inferred from B2 unavailability alone",
+    "review completion does not itself set admitted=true"
+  ],
+  "review_packet": "docs/prep10c/INDEPENDENT_B3_REVIEW_PACKET.md"
+}
