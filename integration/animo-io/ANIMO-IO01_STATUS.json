@@ -5,15 +5,17 @@
   "branch": "work/animo-io01-legacy-text-input-contracts",
   "starting_head": "12ae76b23728d75fc6ca746ca1c67aa26e0ec005",
   "date": "2026-09-09",
-  "decision": "QUALIFIED_LEGACY_INPUT_CONTRACT_AND_TTUTIL_SUITABILITY_EVIDENCE",
-  "qualification_scope": "source-bound revision-53 input-family inventory, parser/normalization/scientific boundary, defaults and error-contract audit, TTUTIL suitability classification, normalized parser-equivalence model, negative-case architecture and bounded pilot selection; no runtime TTUTIL adapter qualification",
+  "decision": "QUALIFIED_LEGACY_INPUT_CONTRACT_AND_TTUTIL_SOURCE_PROVENANCE_EVIDENCE",
+  "qualification_scope": "source-bound revision-53 input-family inventory, parser/normalization/scientific boundary, defaults and error-contract audit, TTUTIL suitability classification, normalized parser-equivalence model, negative-case architecture, official TTUTIL 4.27 source provenance and bounded pilot selection; no production input migration",
   "implemented": true,
   "persisted": true,
   "tested": true,
   "qualified": true,
   "audit_qualified": true,
+  "ttutil_source_provenance_qualified": true,
+  "ttutil_runtime_smoke_qualified": true,
   "ttutil_runtime_adapter_qualified": false,
-  "pilot_status": "SELECTED_NOT_IMPLEMENTED_OFFICIAL_TTUTIL_SOURCE_BYTES_NOT_MATERIALIZED_AND_LEGACY_STRICTNESS_CONTRACT_NOT_PINNED",
+  "pilot_status": "PILOT_A_READY_FOR_IMPLEMENTATION_SOURCE_AND_ADAPTER_POLICY_PINNED",
   "production_migration": "NOT_ADMITTED",
   "authority_basis": {
     "RG02_G5_head_at_start": "12ae76b23728d75fc6ca746ca1c67aa26e0ec005",
@@ -27,24 +29,31 @@
     "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
     "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
-    "local_source_hash_verified": true,
-    "local_testbank_hash_verified": true,
     "frozen_bytes_modified": false
   },
   "ttutil_dependency_provenance": {
-    "official_distribution": "SWAP 4.3.1 development release, June 2026",
-    "official_distribution_source_page": "https://swap.wur.nl/downloads.html",
-    "official_distribution_package_sha256_from_prior_project_evidence": "2b48353db6cdf00246a1e5c0dcaafc2c61858729fad18446a1dc66359ec2a360",
+    "official_distribution": "SWAP 4.3.1 development release",
+    "official_distribution_package_sha256": "2b48353db6cdf00246a1e5c0dcaafc2c61858729fad18446a1dc66359ec2a360",
+    "embedded_archive_path": "SWAP_4.3.1/tools/SWAP/source/TTUTIL.ZIP",
+    "embedded_ttutil_archive_sha256": "ee40b4bc20b158163318a4a77a1294e0d9430f5cb73641fcf4a2f3c773d01193",
     "bundled_ttutil_version": "4.27",
-    "official_download_requires_registration_and_license_acceptance": true,
-    "official_package_bytes_available_in_current_runtime": false,
-    "official_ttutil_subtree_individually_manifested": false,
+    "embedded_file_count": 168,
+    "fortran_compilation_unit_count": 153,
+    "official_ttutil_subtree_individually_manifested": true,
+    "manifest_path": "integration/animo-io/TTUTIL-4.27-SHA256SUMS.txt",
     "candidate_public_mirror": "SWAP-model/ttutil",
     "candidate_public_mirror_commit": "bd8601dca3cfb449a79accddd39a566811f1a75e",
-    "candidate_public_mirror_source_version": "4.27",
-    "candidate_public_mirror_authority": "NON_AUTHORITATIVE_UNTIL_BYTE_EQUIVALENCE_PROVED",
+    "candidate_public_mirror_authority": "NON_EQUIVALENT_REFERENCE_ONLY",
     "source_vendored_into_animo5": false,
-    "provenance_note": "docs/io/TTUTIL_SOURCE_PROVENANCE.md"
+    "provenance_note": "docs/io/TTUTIL_SOURCE_PROVENANCE.md",
+    "adapter_policy": "docs/io/TTUTIL_ADAPTER_POLICY.md"
+  },
+  "ttutil_local_runtime_verification": {
+    "compiler": "GNU Fortran 14.2.0",
+    "compiled_objects": 153,
+    "static_library_sha256_local_build_only": "3b623a668582776bf6b2d4930fe3199c9b59b9b6e7299f6896793a003ca031e6",
+    "smoke": "PASS",
+    "smoke_observation": "RDINIT + RDSINT returned TTUTIL_SMOKE_X=42"
   },
   "verification": {
     "input_family_contract_rows": 15,
@@ -58,26 +67,26 @@
     "local_unit_tests": "PASS",
     "github_actions": "PASS",
     "github_actions_run_id": 34323924225,
-    "github_actions_tested_head": "33dd34e9a31c6ba4ef5988e24cf67c3b23267c80",
-    "github_actions_conclusion": "success"
+    "github_actions_tested_head": "33dd34e9a31c6ba4ef5988e24cf67c3b23267c80"
   },
   "principal_findings": [
-    "TTUTIL is useful parser infrastructure but is not a drop-in parser for the revision-53 legacy grammar",
-    "ANIMO41 GENERAL named records are sequentially order-sensitive while public TTUTIL reading is name-based and order-independent",
-    "legacy label-addressed files and sequential management streams need explicit compatibility behaviour before any TTUTIL substitution",
-    "source-only defaults and compatibility fallbacks must be materialized in the normalized dump with rule ids",
+    "TTUTIL 4.27 source provenance is now exact and independently hash-pinned from the supplied SWAP 4.3.1 distribution",
+    "the public SWAP-model/ttutil repository is not byte-identical to the official SWAP 4.3.1 embedded TTUTIL and is reference-only",
+    "TTUTIL remains useful parser infrastructure but is not a drop-in parser for the revision-53 legacy grammar",
+    "LegacyRevision53TextAdapter and TTUTILNativeTextAdapter/v1 are now explicitly separate representation contracts",
+    "ANIMO41 GENERAL named records are sequentially order-sensitive while TTUTIL reading is name-based and order-independent",
     "INITIAL and restart state remain specialized state adapters",
     "external crop and soil-temperature time series remain specialized forcing/exchange adapters",
-    "binary hydrology remains outside TTUTIL and maps only semantically to ARCH05 hydrology exchange",
-    "GHGMais is rejected under the revision-53 adapter until a provenance-qualified versioned lineage exists",
-    "official SWAP distribution identity and bundled TTUTIL 4.27 version are now pinned, but official TTUTIL source bytes are not currently materialized for per-file hashing",
-    "SWAP-model/ttutil is a useful 4.27 candidate mirror but its own README calls it unofficial, so it is not admitted as official source without byte-equivalence evidence"
+    "binary hydrology remains outside TTUTIL",
+    "GHGMais remains rejected under the revision-53 adapter until a provenance-qualified versioned lineage exists"
   ],
   "pilot_selection": {
     "pilot_A": "DIRECT/animo.ini routing contract",
     "pilot_B_candidate": "MAT non-GHG static core after Pilot A",
     "pilot_implementation_committed": false,
-    "reason": "official TTUTIL 4.27 distribution identity is pinned, but the official source subtree is not yet materialized/manifested and the strict legacy compatibility policy is not yet pinned"
+    "source_provenance_blocker_resolved": true,
+    "strict_adapter_policy_blocker_resolved": true,
+    "remaining_requirement": "implement and qualify legacy DIRECT normalization plus native TTUTIL DIRECT normalization and compare field-exact outputs"
   },
   "non_admissions": {
     "legacy_scientific_semantics_changed": false,
@@ -89,11 +98,10 @@
     "B4_admitted": false
   },
   "next_safe_steps": [
-    "make the official SWAP_4.3.1 package bytes available again and verify SHA-256 2b48353db6cdf00246a1e5c0dcaafc2c61858729fad18446a1dc66359ec2a360",
-    "extract only the bundled TTUTIL 4.27 source subtree and create a per-file source manifest before vendoring or compiling it in ANIMO5",
-    "compare the official TTUTIL source manifest with SWAP-model/ttutil@bd8601dca3cfb449a79accddd39a566811f1a75e and record any differences",
-    "build an exact legacy-parser normalization dump oracle for DIRECT then MAT",
-    "execute positive and negative parser-only equivalence fixtures against the frozen B0 cases and synthetic descendants",
-    "only then implement a bounded TTUTIL-backed prototype and classify it separately from this audit"
+    "implement exact LegacyRevision53TextAdapter DIRECT normalization and negative cases",
+    "add deterministic TTUTIL 4.27 materialization/verification tooling without automatic WUR registration or download",
+    "implement a native TTUTIL DIRECT v1 parser probe against the exact official source",
+    "compare both DIRECT representations at normalized LegacyInputBinding level",
+    "only then classify Pilot A and proceed to MATERIAL"
   ]
 }
