@@ -1,0 +1,41 @@
+name: ANIMO-PREP10C corrected candidate
+
+on:
+  push:
+    branches:
+      - work/animo-prep10c-stable-dom-event-reset-candidate
+  pull_request:
+    paths:
+      - 'tools/make_prep10c_corrected_addit.py'
+      - 'tools/audit_prep10c_plough_conservation.py'
+      - 'tests/prep10/test_make_prep10c_corrected_addit.py'
+      - 'tests/prep10/test_audit_prep10c_plough_conservation.py'
+      - 'docs/prep10c/**'
+      - 'integration/animo-prep/PREP10C_*.json'
+      - '.github/workflows/animo-prep10c-corrected-candidate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-contract-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile PREP10C tooling
+        run: |
+          python -m py_compile tools/make_prep10c_corrected_addit.py
+          python -m py_compile tools/audit_prep10c_plough_conservation.py
+      - name: Run PREP10C tests
+        run: |
+          python -m unittest tests.prep10.test_make_prep10c_corrected_addit -v
+          python -m unittest tests.prep10.test_audit_prep10c_plough_conservation -v
+      - name: Validate PREP10C machine-readable evidence when present
+        run: |
+          shopt -s nullglob
+          for file in integration/animo-prep/PREP10C_*.json; do
+            python -m json.tool "$file" >/dev/null
+          done
