@@ -1,0 +1,6 @@
+finding_id,evidence_owner,evidence_head,parent_tcd,route,atom_id,classification,new_top_level_tcd,canonical_register_append,admission,notes
+UBQ01-EXACT-ZERO-OWNER-AND-LIMIT,ANIMO-UBQ01,6895b67799f26888025eced7188e7190b2a0d07d,TCD-042,CHILD_ATOM,TCD-042-B1,B_LOCAL_ALGEBRA_ZERO_FLOW_LIMIT,false,false,false,Existing upper reservoir owner; exact Flux=0 limit qualified; route/review still pending
+UBQ02-FINITE-POSITIVE-REACHABILITY,ANIMO-UBQ02,bb572bb5d431f91d780018a1acbb345fbcfced37,TCD-042,CHILD_ATOM,TCD-042-E1,E_NUMERICAL_POLICY,false,false,false,1238 natural activations across six executable cases
+UBQ02-BINARY64-CANCELLATION,ANIMO-UBQ02,bb572bb5d431f91d780018a1acbb345fbcfced37,TCD-042,CHILD_ATOM,TCD-042-E1,E_NUMERICAL_POLICY,false,false,false,Direct 1-exp(-P) collapses to zero in 1189 of 1238 natural records
+UBQ02-NATURAL-N-MATERIALITY,ANIMO-UBQ02,bb572bb5d431f91d780018a1acbb345fbcfced37,TCD-042,CHILD_ATOM,TCD-042-E1,E_NUMERICAL_POLICY,false,false,false,Four Ruurlo records carry nonzero mineral-N load; largest absolute single-record N residual 0.0067476693479999565 kg/ha
+UBQ02-STABLE-COMPARISON-CANDIDATE,ANIMO-UBQ02,bb572bb5d431f91d780018a1acbb345fbcfced37,TCD-042,CHILD_ATOM,TCD-042-E1,E_NUMERICAL_POLICY,false,false,false,Cancellation-safe comparison route exists but no production algorithm threshold series order or tolerance is selected
