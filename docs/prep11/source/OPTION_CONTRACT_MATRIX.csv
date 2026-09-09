@@ -1,0 +1,25 @@
+option,revision53_parser_contract,supplied_testbank_values,source_dispatch_summary,assessment,related_tcd
+HydrologicInput/Iwa,1..2,2:12,distinct aggregated Iwa=1 and detailed Iwa=2 routes,COVERAGE_GAP_IWA1_ONLY,
+PhosphorusCycle/Ipo,0..1,0:3;1:9,explicit P-disabled and P-enabled process guards,BOTH_VALUES_COVERED,
+SulphateSimulation/IoptSul,0..1,0:12,parser/output selector only; no source process implementation found,KNOWN_PARSER_VISIBLE_NON_OPERATIONAL_OPTION,TCD-022
+AerationModel/Ioptae,0..2,0:8;1:4,main dispatch is Ioptae==1 versus Ioptae/=1 and no explicit option-2 branch exists,CONFIRMED_OPTION2_SEMANTIC_ALIAS,TCD-030
+CropUptakeModel/Ioptcu,0..1,0:8;1:4,internal and external crop-uptake routes are separately dispatched,BOTH_VALUES_COVERED,
+MacroPoreOption/Ioptmp,0..1,0:12,macropore process routes exist but main ledger integration is incomplete and no supplied active case exists,KNOWN_CROSS_MODULE_AND_COVERAGE_GAP,TCD-007;TCD-025
+GreenHouseGasOption/IoptGHG,0..2,0:11;1:1,source distinguishes >=1 and option 2 specific subsidence/GHG behaviour,OPTION2_COVERAGE_GAP_AND_ACTIVE_OPTION1_LINEAGE_BLOCKED,TCD-008;TCD-013
+SoilTempFile/Ioptte,0..1,0:12,source distinguishes hydrology temperature versus separate-temperature-file route,OPTION1_COVERAGE_GAP,
+PClassOption/IoptPCl,0..1,0:1,source contains dedicated P-class input/state paths but supplied explicit coverage is only disabled,COVERAGE_GAP,
+GrassEvaporation/IoptGrEv,1..3,explicit modern value 2; older crop records use compatibility/default path,Grassprd contains separate explicit branches for 1 2 and 3,SOURCE_DISPATCH_COMPLETE_COVERAGE_NOT_FULLY_ENUMERATED,
+ManagementMaterialFormat/Optmf,0..2,0:5;1:3;2:1 across canonical case management files,Input_addit distinguishes 1 and 2 while 0 disables the variable-material route,ALL_PARSER_VALUES_PRESENT_IN_CANONICAL_TESTBANK,
+AggregatedHydrologyEvaporation/Evrose,0..1,not applicable because all supplied cases use Iwa=2,Hydro_aggregated has explicit Evrose=1 correction and zero is the unadjusted route,COVERAGE_GAP_IWA1_ONLY,
+AggregatedHydrologyPFHorizon/Optpfhn,0..1,not applicable because all supplied cases use Iwa=2,input shape and horizon handling distinguish option 1 from non-1,COVERAGE_GAP_IWA1_ONLY,
+SoilPAlFeMode/Optalfe,0..2,1:5;2:2 among canonical P-active soil files;0 absent,parser and Inicalc distinguish disabled AlFe mode explicit AlFe input and Al+Fe-derived mode,COVERAGE_GAP_VALUE0_NO_DISPATCH_MISMATCH,
+AggregatedHydrologyTimestep/Optst,1..2,not applicable because all supplied cases use Iwa=2,Input_hydro explicitly distinguishes fixed 1 and variable 2; internal Optst=3 is generated only by Inicalc for negative -10/-30 timestep sentinels and is not parser-admitted,NO_PARSER_ALIAS_INTERNAL_SENTINEL3_NOT_A_USER_OPTION,
+AggregatedHydrologyInitialMoisture/Inmo,0..1,not applicable because all supplied cases use Iwa=2,Inicalc and input validation distinguish initial-moisture modes,COVERAGE_GAP_IWA1_ONLY,
+Optcxfa,2..2,2:7,parser admits only Langmuir although helper source retains non-admitted branches for other constitutive forms,SINGLE_ADMITTED_CONSTITUTIVE_FORM_SOURCE_BRANCHES_DO_NOT_IMPLY_SUPPORT,
+Ncxfa,1..3,1:7,transport is site-indexed but management remains site-1 coupled,CONFIRMED_MULTISITE_MANAGEMENT_DEFECT,TCD-029
+Optcxsl,1..3,3:7,linear/Langmuir/Freundlich routes exist; Langmuir contains confirmed site-index defect,KNOWN_OPTION2_DEFECT_AND_COVERAGE_GAP,TCD-024
+Ncxsl,1..3,3:7,slow-site loops use configured site count,COVERAGE_GAP_SITE_COUNTS_1_2,
+Optpr,0..1,0:7,precipitation-disabled and enabled branches exist,OPTION1_COVERAGE_GAP,
+Optcxho,1..2,1:4;2:3,source distinguishes one horizon parameter set versus per-horizon route,BOTH_VALUES_COVERED,
+Optcobu,0..1,0:4;1:3,source distinguishes buffer-disabled and enabled initialization,BOTH_VALUES_COVERED,
+PInitialisationMode/Inpo,1..3,1:7 among canonical P-active initial files,parser and Inicalc contain explicit distinct branches for 1 2 and 3,COVERAGE_GAP_VALUES2_3_NO_DISPATCH_MISMATCH,
