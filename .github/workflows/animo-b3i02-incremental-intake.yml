@@ -1,0 +1,50 @@
+name: ANIMO-B3I02 incremental intake validation
+
+on:
+  push:
+    branches:
+      - work/animo-b3i02-post-b3i01-incremental-intake
+  pull_request:
+    paths:
+      - 'docs/b3/POST_B3I01_INCREMENTAL_INTAKE.md'
+      - 'integration/animo-b3/B3I02_LOCAL_FINDING_CROSSWALK.csv'
+      - 'integration/animo-b3/B3I02_TCD_RESERVATIONS.json'
+      - 'integration/animo-b3/ANIMO-B3I02_STATUS.json'
+      - 'tools/b3i02/validate_b3i02.py'
+      - '.github/workflows/animo-b3i02-incremental-intake.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate B3I02 artifacts
+        run: python3 tools/b3i02/validate_b3i02.py
+
+      - name: Enforce governance-only scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=383c7a83e84a578969f92113280dc715b7bdddb4
+          changed="$(git diff --name-only "$base"...HEAD)"
+          printf '%s\n' "$changed"
+
+          if printf '%s\n' "$changed" | grep -Eq '^(src/|reference/|docs/quality/THEORY_CODE_DISCREPANCY_REGISTER\.csv$)'; then
+            echo 'B3I02 must not modify production/reference source or the canonical TCD register.' >&2
+            exit 1
+          fi
+
+          allowed='^(docs/b3/POST_B3I01_INCREMENTAL_INTAKE\.md|integration/animo-b3/B3I02_LOCAL_FINDING_CROSSWALK\.csv|integration/animo-b3/B3I02_TCD_RESERVATIONS\.json|integration/animo-b3/ANIMO-B3I02_STATUS\.json|tools/b3i02/validate_b3i02\.py|\.github/workflows/animo-b3i02-incremental-intake\.yml)$'
+          unexpected="$(printf '%s\n' "$changed" | grep -Ev "$allowed" || true)"
+          if [ -n "$unexpected" ]; then
+            echo 'Unexpected B3I02 branch changes:' >&2
+            printf '%s\n' "$unexpected" >&2
+            exit 1
+          fi
