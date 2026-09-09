@@ -1,0 +1,88 @@
+{
+  "work_unit": "ANIMO-B3A03R",
+  "target": "TCD-018",
+  "record_type": "SECOND_LINE_TECHNICAL_REVIEW_RESULT",
+  "candidate_branch": "work/animo-b3a03-tcd018-class-a-admission-readiness",
+  "reviewed_candidate_head": "8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+  "review_branch": "work/animo-b3a03r-tcd018-second-line-review",
+  "technical_review_complete": true,
+  "reviewer_or_workunit": "ANIMO-B3A03R",
+  "independent_from_correction_authoring": false,
+  "independence_reason": "This continuation was executed by the same ChatGPT authoring context that prepared ANIMO-B3A03. A fresh source/evidence recheck was performed, but organizational reviewer independence cannot honestly be claimed.",
+  "review_results": {
+    "b0_identity_result": "PASS",
+    "source_seam_result": "PASS",
+    "atomicity_result": "PASS",
+    "causal_activation_result": "PASS",
+    "conservation_result": "PASS",
+    "noninterference_result": "PASS_TECHNICAL",
+    "output_whitelist_result": "PASS",
+    "residual_uncertainty_result": "PASS_RETAINED",
+    "route_result": "FAIL_PENDING_NO_VALID_ROUTE",
+    "reviewer_independence_result": "FAIL_NOT_INDEPENDENT",
+    "overall_second_line_gate_result": "FAIL_CLOSED_NOT_CREDITABLE_AS_INDEPENDENT_SECOND_LINE_REVIEW"
+  },
+  "independent_rechecks_performed_in_this_workunit": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "matches_frozen_b0": true,
+    "Hydro_detailed_for_sha256": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
+    "Outbal_calc_for_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+    "Init_for_sha256": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+    "source_observations": [
+      "Hydro_detailed.for line 14 receives Sic/Sict.",
+      "Hydro_detailed.for lines 241-243 subtract (Sict-Sic) in detailed whole-profile Badev.",
+      "Outbal_calc.for has zero Sic/Sict tokens and lines 302-310 omit interception storage while including interception evaporation.",
+      "Init.for line 348 promotes Sic=Sict only for Iopthyvs==1 and Hlpimp==11; TCD-018 does not change that lifecycle."
+    ]
+  },
+  "causal_and_conservation_review": {
+    "PREP01_natural_case": "LWKM_gras_1040.2021.2045",
+    "PREP01_selected_2008_legacy_Bawa_mm": -0.0601,
+    "PREP01_selected_2008_interception_storage_change_mm": -0.060000000000000005,
+    "PREP01_selected_2008_Hydro_detailed_Badev_sum_mm": -0.000052640587582358,
+    "raw_residual_used_as_tolerance": false,
+    "PREP06_identity": "external water in - external water out - delta(matrix water + snow + ponding + interception) = 0",
+    "SYNQ01_oracle": "SYNQ-O003",
+    "SYNQ01_oracle_result": "PASS_STRONGLY_INDEPENDENT_CONSERVATION_ORACLE_NOT_B2"
+  },
+  "new_isolated_runtime_evidence": {
+    "artifact": "integration/animo-b3/TCD018_ISOLATED_CLASS_A_NONINTERFERENCE.json",
+    "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "baseline_matches_PREP01": true,
+    "candidate_executable_sha256": "2ef9347fab024fe932304754811287c7a05e9722c11f6e1fb070afe8de73c1e7",
+    "cases_completed": 8,
+    "outputs_compared": 376,
+    "equal_after_declared_volatile_normalization": 370,
+    "whitelisted_differences": 6,
+    "unexpected_differences": 0,
+    "missing_or_extra": 0,
+    "only_active_case": "LWKM_gras_1040.2021.2045",
+    "whitelist": ["ani_waGP.Bal", "ani_waRP.Bal", "ani_waTP.Bal", "bawaGP.Out", "bawaRP.Out", "bawaTP.Out"],
+    "LWKM_total_profile_max_abs_BAWADV_baseline_mm": 0.0601,
+    "LWKM_total_profile_max_abs_BAWADV_candidate_mm": 0.000207,
+    "scientific_numeric_tolerance_applied": false,
+    "technical_noninterference_conclusion": "PASS"
+  },
+  "residual_uncertainty": {
+    "MASSQ01_CranGrass_TITO724_water_residual_mm": -0.0030198960466805147,
+    "classification": "UNEXPLAINED_RESIDUAL_RETAINED",
+    "effect": "No global water-closure claim is made and the residual is not attributed to TCD-018."
+  },
+  "live_route_recheck": {
+    "GOV02_branch": "work/animo-gov02-evidence-dag-reconciliation",
+    "GOV02_head": "db7add6f9561730bbf352aa7fd3f3968405cfaa3",
+    "PREP02R_branch": "work/animo-prep02r-historical-reference-recovery",
+    "PREP02R_head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+    "PREP02R_status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+    "external_request_sent": false,
+    "historical_reference_artifact_obtained": false,
+    "reference_qualified": false,
+    "NORMAL_B2_AVAILABLE": false,
+    "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_eligible": false
+  },
+  "technical_conclusion": "PASS_TCD018_CLASS_A_SCIENTIFIC_READINESS_TECHNICALLY_STRENGTHENED_BY_ISOLATED_NONINTERFERENCE_RUN",
+  "governance_conclusion": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_AND_VALID_ROUTE_STILL_REQUIRED",
+  "admitted": false,
+  "production_migration_admitted": false
+}
