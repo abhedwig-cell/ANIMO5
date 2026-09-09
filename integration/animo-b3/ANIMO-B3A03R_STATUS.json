@@ -5,10 +5,97 @@
   "candidate_branch": "work/animo-b3a03-tcd018-class-a-admission-readiness",
   "candidate_head": "8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
   "branch": "work/animo-b3a03r-tcd018-second-line-review",
-  "status": "IN_PROGRESS_REVIEW_CHECKPOINT",
+  "status": "TECHNICAL_REVIEW_PASS_BUT_INDEPENDENT_SECOND_LINE_AND_ROUTE_GATES_NOT_SATISFIED_TCD018_NOT_ADMITTED",
   "persisted": true,
-  "review_complete": false,
+  "tested": true,
+  "technical_review_complete": true,
+  "qualified_technical_review": true,
   "independent_second_line_gate_satisfied": false,
+  "valid_admission_route": false,
   "admitted": false,
-  "note": "Technical re-review may proceed in this workunit, but reviewer-independence credit must not be claimed unless independence from correction authoring is genuinely established."
+  "production_migration_admitted": false,
+  "new_runtime_executed_in_this_workunit": true,
+  "frozen_b0_recheck": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "matches_frozen_b0": true
+  },
+  "exact_source_recheck": {
+    "Hydro_detailed_for_sha256": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
+    "Outbal_calc_for_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+    "Init_for_sha256": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+    "source_seam_result": "PASS"
+  },
+  "isolated_tcd018_runtime": {
+    "baseline_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "baseline_exactly_matches_PREP01_identity": true,
+    "isolated_tcd018_executable_sha256": "2ef9347fab024fe932304754811287c7a05e9722c11f6e1fb070afe8de73c1e7",
+    "cases_attempted": 8,
+    "cases_completed": 8,
+    "outputs_compared": 376,
+    "equal_after_declared_volatile_normalization": 370,
+    "whitelisted_differences": 6,
+    "unexpected_differences": 0,
+    "missing_or_extra": 0,
+    "active_correction_cases": ["LWKM_gras_1040.2021.2045"],
+    "whitelist": [
+      "ani_waGP.Bal",
+      "ani_waRP.Bal",
+      "ani_waTP.Bal",
+      "bawaGP.Out",
+      "bawaRP.Out",
+      "bawaTP.Out"
+    ],
+    "scientific_numeric_tolerance_applied": false,
+    "LWKM_total_profile_max_abs_BAWADV_baseline_mm": 0.0601,
+    "LWKM_total_profile_max_abs_BAWADV_candidate_mm": 0.000207,
+    "decision": "PASS_ISOLATED_TCD018_B1_NONINTERFERENCE_AND_WHITELIST_DIAGNOSTIC_ONLY"
+  },
+  "technical_review_results": {
+    "b0_identity": "PASS",
+    "source_seam": "PASS",
+    "class_a_atomicity": "PASS",
+    "natural_causal_activation": "PASS",
+    "conservation_identity": "PASS",
+    "isolated_noninterference": "PASS_TECHNICAL",
+    "output_whitelist": "PASS",
+    "raw_0_0601_mm_as_tolerance": "NOT_USED",
+    "unrelated_residual_visibility": "PASS_RETAINED",
+    "technical_conclusion": "PASS_TCD018_CLASS_A_SCIENTIFIC_READINESS_TECHNICALLY_STRENGTHENED_BY_ISOLATED_NONINTERFERENCE_RUN"
+  },
+  "reviewer_independence": {
+    "independent_from_correction_authoring": false,
+    "reason": "ANIMO-B3A03R was executed in the same ChatGPT authoring context that prepared ANIMO-B3A03; a fresh technical recheck does not satisfy the governance requirement for a genuinely separate second-line reviewer.",
+    "gate_result": "FAIL_NOT_INDEPENDENT"
+  },
+  "live_route_state": {
+    "GOV02_branch": "work/animo-gov02-evidence-dag-reconciliation",
+    "GOV02_head": "db7add6f9561730bbf352aa7fd3f3968405cfaa3",
+    "PREP02R_branch": "work/animo-prep02r-historical-reference-recovery",
+    "PREP02R_head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+    "PREP02R_status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+    "external_request_sent": false,
+    "historical_reference_artifact_obtained": false,
+    "reference_qualified": false,
+    "NORMAL_B2_AVAILABLE": false,
+    "historical_uncertainty_route_eligible": false,
+    "gate_result": "FAIL_PENDING_NO_VALID_ROUTE"
+  },
+  "unresolved_visible_evidence": {
+    "MASSQ01_CranGrass_TITO724_water_residual_mm": -0.0030198960466805147,
+    "classification": "UNEXPLAINED_RESIDUAL_RETAINED",
+    "global_water_closure_claimed": false
+  },
+  "deliverables": {
+    "integration/animo-b3/ANIMO-B3A03R_STATUS.json": "COMPLETE",
+    "integration/animo-b3/TCD018_ISOLATED_CLASS_A_NONINTERFERENCE.json": "COMPLETE",
+    "integration/animo-b3/TCD018_SECOND_LINE_TECHNICAL_REVIEW_RESULT.json": "COMPLETE",
+    "docs/b3/TCD018_SECOND_LINE_TECHNICAL_REVIEW.md": "COMPLETE"
+  },
+  "next_required_conditions": [
+    "obtain a genuinely independent second-line reviewer/workunit and record PASS/FAIL against the prepared B3A03 review contract",
+    "open a GOV02-valid admission route through provenance-qualified B2 evidence or documented closure of reasonable B2 acquisition effort for the historical-uncertainty route",
+    "only after both gates pass may a separate B3 admission authority consider ADMIT_CORRECTED_LEGACY_BEHAVIOUR"
+  ],
+  "final_decision": "TECHNICAL_REVIEW_PASS_BUT_INDEPENDENT_SECOND_LINE_AND_ROUTE_GATES_NOT_SATISFIED_TCD018_NOT_ADMITTED"
 }
