@@ -1,38 +1,25 @@
-# ANIMO-IO01 Pilot B checkpoint: non-GHG MATERIAL core
+# ANIMO-IO01 Pilot B closeout: bounded non-GHG MATERIAL core
 
-Status: `STARTED_SOURCE_CONTRACT_RECONSTRUCTION`
+Status: `QUALIFIED_REPRESENTATION_ONLY_TTUTIL_ADAPTER_CANDIDATE_WITH_RUNTIME_HAZARD_EXCLUSIONS`
 
 ## Scope
 
-Pilot B is a bounded follow-on to the qualified DIRECT Pilot A. It is restricted to the revision-53 static `MATERIAL.INP` contract exercised by the natural non-GHG `RuurloGrass` case.
+Pilot B is a bounded follow-on to DIRECT Pilot A. It is restricted to the revision-53 static `MATERIAL.INP` contract exercised by the natural non-GHG `RuurloGrass` case with:
+
+- `PhosphorusCycle = 0`;
+- `AerationModel = 0`;
+- `GreenHouseGasOption = 0`;
+- `PClassOption = 0`;
+- `Nm = 11`;
+- `Nf = 14`.
 
 It does not include GHGMais, does not infer a cross-lineage GHG schema, does not change scientific equations and does not admit production migration.
 
-## Authority and frozen evidence
+Frozen B0 source and testbank bytes remain unchanged.
 
-The Pilot B analysis continues on `work/animo-io01-legacy-text-input-contracts` after DIRECT Pilot A.
+## Qualified parser surface
 
-Frozen B0 identities were rechecked before local inspection:
-
-- source archive SHA-256: `183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566`;
-- testbank SHA-256: `44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84`.
-
-No frozen bytes were modified.
-
-The active natural case has, in `GENERAL.INP`:
-
-- `PhosphorusCycle=0`;
-- `AerationModel=0`;
-- `GreenHouseGasOption=0`;
-- `PClassOption=0`.
-
-Its static material file is `RuurloGrass/Input/MATERIAL.INP`.
-
-## Revision-53 active MATERIAL sections for RuurloGrass
-
-Source: `input1.for`, MATERIAL block beginning near the `>defmat:` lookup.
-
-The case exercises these required `Findadr` sections:
+The active revision-53 sections are:
 
 1. `>defmat:`
 2. `>orgcom:`
@@ -45,57 +32,122 @@ The case exercises these required `Findadr` sections:
 9. `>defden:`
 10. `>matfra:`
 
-`>sonicg:` and `>sonic2:` are inactive because `Ioptae=0`. The post-`>matfra:` GHG validation is inactive because `IoptGHG=0`.
+`>sonicg:`, `>sonic2:` and post-`>matfra:` GHG validation are outside this pilot.
 
-All listed active sections are found with `Findadr`, so section order is not the semantic ordering constraint. Exact first-eight-character label lookup and first-duplicate-section-wins remain part of the legacy grammar.
+Legacy exact first-eight-character `Findadr` lookup and first-duplicate-section-wins remain compatibility semantics. The native TTUTIL v1 representation is a separate schema and does not inherit those quirks.
 
-## Natural dimensions
+The normalized target is `MaterialParameterSet/v1`.
 
-RuurloGrass declares:
+## Sparse FR / FRca semantics
 
-- `Nm = 11` materials;
-- `Nf = 14` organic fractions;
-- `IPO = 0` for the phosphorus cycle.
+Natural testbank lineage supplies both:
 
-`>matfra:` is sparse: each material declares `NuFR` followed by `NuFR` triples `(frno, FR, FRca)`, and the list-directed read may continue across multiple physical records.
+- `RuurloGrass/Input/MATERIAL_oud.INP`, with full 11 x 14 matrices;
+- `RuurloGrass/Input/MATERIAL.INP`, with sparse `>matfra:` triples.
 
-## Important parser-contract findings
+The persisted lineage audit proves:
 
-### 1. Conditional implied-DO fields leave trailing lexical values unused when IPO=0
+- 154 cells per matrix;
+- 24 explicitly represented sparse triples;
+- 130 omitted cells per `FR` matrix and 130 per `FRca` matrix;
+- filling omitted sparse cells with numeric zero makes the new `FR` matrix field-exact to the old full `FR` matrix;
+- the same is true for `FRca`;
+- the other cross-version fields recorded in the lineage evidence are also exact.
 
-Revision 53 reads `>defmat:` as:
+Therefore the intended normalized Ruurlo semantics are:
 
-`Mty, Mn, Fror(Mn), Frnh(Mn), Frni(Mn), (Frpo(Mn), j=1,IPO)`.
+`omitted sparse (material,fraction) entry -> 0`
 
-With `IPO=0`, no `Frpo` value belongs to the input list. The natural RuurloGrass rows nevertheless contain a trailing sixth value (`0.`). List-directed input satisfies the shorter input list and does not make that lexical value part of normalized `Frpo` state.
+This is input-lineage evidence. It does not qualify the legacy runtime storage mechanism that happened to back the omitted array cells.
 
-The same pattern occurs in `>deffra:`. Revision 53 reads `Pofr(Frno)` only through an implied DO from 1 to `IPO`, while RuurloGrass carries a trailing zero column with `IPO=0`.
+## IPO=0 presence semantics
 
-A native TTUTIL schema must not silently reinterpret these ignored legacy lexical residues as active phosphorus fields.
+For `IPO=0`, revision 53 consumes zero `Frpo` values from `>defmat:` and zero `Pofr` values from `>deffra:` through the conditional implied-DOs.
 
-### 2. Other phosphorus-named values are read unconditionally
+The trailing zero columns in natural Ruurlo are therefore lexical residue and do not become active phosphorus state.
 
-`pofrex` in `>defexu:` and `Pofrhuma` in `>defhum:` are read and range-checked regardless of `IPO`. They therefore remain part of the revision-53 parser contract even when phosphorus simulation is inactive. Scientific use and parser presence are separate questions.
+Pilot B normalizes:
 
-### 3. Sparse `FR` / `FRca` assignment exposes an initialization dependency
+- material `Frpo` as `FEATURE_INACTIVE_NULL`;
+- fraction `Pofr` as `FEATURE_INACTIVE_NULL`.
 
-After each sparse `>matfra:` row, revision 53 validates **all** `FR(Mn,Fn)` for `Fn=1..Nf`, sums all `FR(Mn,Fn)`, and then validates all `FRca(Mn,Fn)` for `Fn=1..Nf`.
+`Pofrex` and `Pofrhuma` remain explicit parsed fields because revision 53 reads them unconditionally from their own sections.
 
-The MATERIAL block itself does not initialize the unassigned entries to zero before these full-array reads. `FR` and `FRca` are main-program arrays passed into `Input1` and no explicit zero assignment has yet been found in the frozen source before the MATERIAL block.
+## TTUTIL numerical qualification
 
-This is not yet classified as a new defect. It is a runtime-semantics dependency candidate that must be reconciled with ANIMO-BUILDQ01 before Pilot B can claim exact legacy normalization for omitted sparse entries.
+A direct typed TTUTIL 4.27 DOUBLE route is not field-exact for the natural Ruurlo case. The persisted comparison contains 26 numeric leaves that differ by exactly one binary64 ULP, with maximum absolute difference `1.1102230246251565e-16`.
 
-BUILDQ01 already states that no migrated read may rely on compiler zero fill, prior storage contents or operating-system page state. PREP01's deterministic GNU diagnostic recipe uses `-fno-automatic`, but does not define scientific zero initialization.
+No epsilon or tolerance is used to hide this.
 
-Until the exact legacy meaning of unassigned `FR` / `FRca` entries is qualified, Pilot B must fail closed rather than invent zeros merely because a diagnostic executable happens to observe them.
+The admitted candidate instead uses TTUTIL only for name-based CHARACTER scalar/array token retrieval. The adapter then performs explicit `REAL(8)` list-directed numeric conversion. That route produces field-exact `MaterialParameterSet/v1` semantics for the bounded case.
 
-## Next qualification steps
+This keeps TTUTIL as parser infrastructure and prevents its numeric conversion implementation from becoming accidental ANIMO scientific authority.
 
-1. qualify the sparse `FR` / `FRca` initialization dependency against BUILDQ01 and diagnostic runtime evidence;
-2. define a narrow `MaterialParameterSet/v1` normalized schema with exact dimensions and source provenance;
-3. distinguish parsed-but-scientifically-dormant fields from feature-conditional absent fields;
-4. implement the revision-53 MATERIAL oracle for the RuurloGrass active schema;
-5. implement a separately versioned TTUTIL native MATERIAL v1 representation;
-6. compare every scalar, index, cardinality, sparse mapping and presence rule before model-output regression.
+## Runtime hazard exclusions
 
-No Pilot B representation claim is admitted by this checkpoint.
+Two revision-53 runtime/storage hazards remain excluded from the representation claim.
+
+### MAT-RH-001
+
+Revision 53 assigns only explicit sparse `FR` / `FRca` cells and subsequently reads all cells. No explicit source initialization of omitted cells has been identified before those reads.
+
+Disposition:
+
+- intended normalized omitted-cell value: `0`, qualified by natural old/new lineage;
+- legacy storage mechanism: `UNQUALIFIED`;
+- routing: `ANIMO-BUILDQ01/B3I01`;
+- migration rule: materialize zero explicitly rather than reproduce compiler or storage accidents.
+
+### MAT-RH-002
+
+At `IPO=0`, revision 53 reads no `Pofr(Frno)` input value but nevertheless range-checks `Pofr(Frno)`.
+
+Disposition:
+
+- normalized input presence: `FEATURE_INACTIVE_NULL`;
+- checked legacy runtime value: `NOT_INPUT_DEFINED`;
+- routing: `ANIMO-BUILDQ01/B3I01`;
+- migration rule: do not invent a persistent value to imitate undefined storage.
+
+No local canonical TCD number is assigned by IO01.
+
+## Evidence and implementation
+
+Persisted evidence:
+
+- `integration/animo-io/MATERIAL-RUURLO-LINEAGE-EQUIVALENCE.json`;
+- `integration/animo-io/MATERIAL-PILOT-B-QUALIFICATION.json`;
+- `integration/animo-io/MATERIAL-PILOT-B-STATUS.json`;
+- `docs/io/MATERIAL_PILOT_B_RUNTIME_HAZARD_ROUTING.md`.
+
+Implementation/qualification tooling:
+
+- `tools/audit_material_ruurlo_lineage.py`;
+- `tools/io01_material_pilot.py`;
+- `tools/ttutil_material_probe.f90`;
+- `tools/ttutil_material_probe_typed_double.f90`;
+- `tools/qualify_io01_material_pilot.py`;
+- `tests/io/test_io01_material_pilot.py`.
+
+The qualification runner was hardened at commit `75c74dd710ab5804444f2be484c0edf5124a568b`. It can now start from the user-supplied frozen SWAP 4.3.1 and ANIMO testbank ZIPs, verify their hashes, materialize and build the exact official TTUTIL 4.27 source, build both probes, and additionally compare every numeric lexeme in the natural Ruurlo MATERIAL file bitwise against GNU Fortran external list-directed `REAL(8)` conversion.
+
+GitHub Actions run `34336915868` passed for that hardened source-level qualification surface. The archive-dependent runtime reproduction is intentionally not run in GitHub CI because the frozen/user-supplied ZIP bytes are not vendored.
+
+The persisted `MATERIAL-PILOT-B-QUALIFICATION.json` remains the recorded v1 runtime observation. The hardened runner emits v2 evidence on a future clean rerun; changing the reproducer does not silently upgrade or replace the already-recorded evidence.
+
+## Admission boundary
+
+Pilot B is qualified only as:
+
+`QUALIFIED_REPRESENTATION_ONLY_TTUTIL_ADAPTER_CANDIDATE_WITH_RUNTIME_HAZARD_EXCLUSIONS`
+
+It does not admit:
+
+- generic MATERIAL migration;
+- GHG MATERIAL schema support;
+- model-output equivalence;
+- binary hydrology conversion;
+- production input migration;
+- B4.
+
+No further input-family pilot is required to satisfy the original IO01 objective. Additional families should be selected only through a separate bounded follow-on decision.
