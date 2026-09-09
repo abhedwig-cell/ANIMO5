@@ -1,0 +1,38 @@
+name: ANIMO B3Q02 child-atom disposition carrier
+
+on:
+  push:
+    branches:
+      - work/animo-b3q02-child-atom-disposition-carrier
+    paths:
+      - '.github/workflows/animo-b3q02-child-atom-carrier.yml'
+      - 'docs/governance/B3_CHILD_ATOM_DISPOSITION_CARRIER.md'
+      - 'integration/animo-b3/ANIMO-B3Q02_STATUS.json'
+      - 'integration/animo-b3/B3_CHILD_ATOM_DISPOSITION_CARRIER_SCHEMA.json'
+      - 'integration/animo-b3/TCD042_E1_CHILD_ATOM_CARRIER.json'
+      - 'tools/b3q02/**'
+  workflow_dispatch:
+
+jobs:
+  validate-b3q02:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history for scope guard
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install schema validator
+        run: python -m pip install --disable-pip-version-check jsonschema
+      - name: Parse carrier artifacts
+        run: |
+          python -m json.tool integration/animo-b3/B3_CHILD_ATOM_DISPOSITION_CARRIER_SCHEMA.json >/dev/null
+          python -m json.tool integration/animo-b3/TCD042_E1_CHILD_ATOM_CARRIER.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3Q02_STATUS.json >/dev/null
+      - name: Compile B3Q02 validator
+        run: python -m py_compile tools/b3q02/validate_b3q02.py
+      - name: Validate carrier schema, fixtures and scope
+        run: python tools/b3q02/validate_b3q02.py
