@@ -87,6 +87,19 @@
         }
       ],
       "new_tcd_count": 0
+    },
+    {
+      "work_unit": "ANIMO-RG03",
+      "branch": "work/animo-rg03-post-g5-gate-reconciliation",
+      "head": "b67a6cac325fe3f838aedc9df106e120fd5a3d0f",
+      "evidence": "qualified post-G5 canonical gate reconciliation",
+      "disposition": "GOVERNANCE_RECONCILIATION_NO_NEW_DISCREPANCY",
+      "qualified": true,
+      "tested": true,
+      "scientific_admission_performed": false,
+      "evidence_strength_increased": false,
+      "canonical_tcd_register_tail": "TCD-041",
+      "new_tcd_count": 0
     }
   ],
   "explicitly_excluded_in_progress_workunits": [
@@ -101,19 +114,22 @@
       "branch": "work/animo-stateq02-restricted-core-executable-split-run",
       "head": "0875f7f5c0976f8b0b3ae70d00fd2f48b31697d5",
       "reason": "PRE_EXECUTION_CHECKPOINT_NOT_COMPLETED_QUALIFICATION"
-    },
-    {
-      "work_unit": "ANIMO-RG03",
-      "branch": "work/animo-rg03-post-g5-gate-reconciliation",
-      "head": "f97303afb2e1b996807f262ef2edfcc9ea5424c6",
-      "reason": "RECONCILIATION_CHECKPOINT_NOT_COMPLETED_QUALIFICATION"
     }
   ],
+  "validation": {
+    "validator": "tools/b3i02/validate_b3i02.py",
+    "workflow": ".github/workflows/animo-b3i02-incremental-intake.yml",
+    "github_actions_conclusion": "PENDING"
+  },
   "deliverables": [
     "docs/b3/POST_B3I01_INCREMENTAL_INTAKE.md",
     "integration/animo-b3/B3I02_LOCAL_FINDING_CROSSWALK.csv",
     "integration/animo-b3/B3I02_TCD_RESERVATIONS.json",
     "integration/animo-b3/ANIMO-B3I02_STATUS.json"
+  ],
+  "additional_validation_artifacts": [
+    "tools/b3i02/validate_b3i02.py",
+    ".github/workflows/animo-b3i02-incremental-intake.yml"
   ],
   "canonical_register_append": "NOT_REQUIRED_NO_NEW_TCD",
   "scientific_admission_performed": false,
