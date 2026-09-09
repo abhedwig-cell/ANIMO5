@@ -1,0 +1,325 @@
+{
+  "binary_hydrology_admitted": false,
+  "decision": "QUALIFIED_BOUNDED_REV53_GENERAL_NORMALIZED_REPRESENTATION_WITH_EXPLICIT_LEGACY_HAZARD_EXCLUSIONS",
+  "equivalence_claim": "For admitted revision-53-compatible non-GHG GENERAL files, the representation preserves typed ModelConfiguration, SimulationWindow and DiagnosticsConfiguration parser semantics, source-observed defaults, ordered repeated structures, lexical provenance and feature conditions. It does not claim byte round-trip identity and does not normalize undefined legacy storage artifacts.",
+  "explicit_exclusions": [
+    "GrassPeat GENERAL with inserted WFPS= outsel field is not revision-53 sequence compatible",
+    "GHGMais GENERAL schema is not admitted",
+    "optional OutseLn(77:78) storage state when lines are omitted is not normalized to a fabricated zero",
+    "whole-profile OutseLn(37,43,48,54) storage state is not input-defined by the ReadTs calls that use idum",
+    "malformed ReadTs records without '=' are outside the bounded admitted grammar",
+    "negative PrintBalNoUpd values below -1 are not assigned normalized repeat semantics",
+    "uncontrolled runtime/EOF paths without explicit source error codes are not converted into scientific defaults"
+  ],
+  "frozen_identities": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "vfproj_sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a"
+  },
+  "ghg_natural_count_excluded": 1,
+  "ghg_schema_admitted": false,
+  "grammar_redesign_admitted": false,
+  "initial_restart_admitted": false,
+  "mutation_probes": {
+    "eof_at_required_readop": {
+      "line": 15,
+      "message": "EOF while ordered key ProgressToScreen= was required",
+      "observed_error": "9870",
+      "status": "PASS"
+    },
+    "ghg_schema_boundary": {
+      "finding": "GreenHouseGasOption>=1 routed, >outGHG payload not normalized",
+      "status": "PASS"
+    },
+    "hydro_year_negative_natural": {
+      "finding": "revision-53 parses it and accidentally range-checks IoptPCl instead",
+      "status": "PASS",
+      "value": -30
+    },
+    "intra_simopt_key_reorder": {
+      "line": 2,
+      "message": "expected ordered key HydrologicInput=, got 'PhosphorusCycle=       0! Phosphorus cycle to be simulated: 0=no; 1=yes'",
+      "observed_error": "9870",
+      "status": "PASS"
+    },
+    "leading_space_in_ordered_key": {
+      "line": 15,
+      "message": "expected ordered key ProgressToScreen=, got ' ProgressToScreen= 1! shifted key'",
+      "observed_error": "9870",
+      "status": "PASS"
+    },
+    "missing_label": {
+      "line": null,
+      "message": "label '>outscr:' not found",
+      "observed_error": "1995",
+      "status": "PASS"
+    },
+    "optional_last_outputs_omission": {
+      "file_output": 0,
+      "selected_compartment_output": "LEGACY_UNDEFINED_IF_OMITTED",
+      "status": "PASS_WITH_EXPLICIT_HAZARD"
+    },
+    "pclass_compatibility_default": {
+      "presence": "DEFAULTED",
+      "rule": "GEN-DEF-PCLASSOPTION-0",
+      "status": "PASS",
+      "value": 0
+    },
+    "printbal_label_mismatch": {
+      "line": 18,
+      "message": "PrintBalLabel mismatch causes Input1 RETURN without assigning Error",
+      "observed_error": "RETURN_WITHOUT_ERROR",
+      "status": "PASS"
+    },
+    "readts_scans_comment_for_first_0_to_3_digit": {
+      "normalized": {
+        "file_output": 1,
+        "selected_compartment_output": 1
+      },
+      "status": "PASS"
+    },
+    "repeated_balance_update_dates_source_sort": {
+      "lexical_order_preserved_separately": true,
+      "post_parser_value": [
+        100.0,
+        300.0
+      ],
+      "status": "PASS"
+    },
+    "simtim_date_key_name_not_validated": {
+      "finding": "date record identity is positional in revision-53, not key-validated",
+      "status": "PASS"
+    },
+    "top_level_section_physical_reorder": {
+      "finding": "Findadr rewind makes complete block physical order non-authoritative",
+      "status": "PASS"
+    }
+  },
+  "natural_testbank": {
+    "ANIMO_testbank/CranGrass/Input/GENERAL.INP": {
+      "legacy_storage_hazards": [
+        "OUTSEL_WHOLE_PROFILE_OUTSELN_37_43_48_54_NOT_ASSIGNED_BEFORE_GLOBAL_RANGE_CHECK",
+        "OPTIONAL_OUTSEL_77_78_OMISSION_LEAVES_OUTSELN_UNASSIGNED",
+        "READTS_LATE_OPTIONAL_MISMATCH_CAN_CLEAR_PRIOR_ERROR_9871"
+      ],
+      "record_count": 121,
+      "source_defaults": [
+        {
+          "consumed_line": 14,
+          "key": "PClassOption=",
+          "rule": "GEN-DEF-PCLASSOPTION-0"
+        },
+        {
+          "consumed_line": 17,
+          "key": "HydroYearSwitch=",
+          "rule": "GEN-DEF-HYDROYRSWITCH-0"
+        },
+        {
+          "consumed_line": 128,
+          "key": "AnnDOMNtotNO3_1mGWL=",
+          "rule": "READTS_OPTIONAL_OUTPUT_DEFAULT_DISABLED"
+        },
+        {
+          "consumed_line": 129,
+          "key": "DOMNtotNO3_1mGWL=",
+          "rule": "READTS_OPTIONAL_OUTPUT_DEFAULT_DISABLED"
+        }
+      ],
+      "status": "PASS_SOURCE_COMPATIBLE_BOUNDED_REPRESENTATION"
+    },
+    "ANIMO_testbank/CranMais/Input/GENERAL.INP": {
+      "legacy_storage_hazards": [
+        "OUTSEL_WHOLE_PROFILE_OUTSELN_37_43_48_54_NOT_ASSIGNED_BEFORE_GLOBAL_RANGE_CHECK",
+        "OPTIONAL_OUTSEL_77_78_OMISSION_LEAVES_OUTSELN_UNASSIGNED",
+        "READTS_LATE_OPTIONAL_MISMATCH_CAN_CLEAR_PRIOR_ERROR_9871"
+      ],
+      "record_count": 121,
+      "source_defaults": [
+        {
+          "consumed_line": 14,
+          "key": "PClassOption=",
+          "rule": "GEN-DEF-PCLASSOPTION-0"
+        },
+        {
+          "consumed_line": 17,
+          "key": "HydroYearSwitch=",
+          "rule": "GEN-DEF-HYDROYRSWITCH-0"
+        },
+        {
+          "consumed_line": 128,
+          "key": "AnnDOMNtotNO3_1mGWL=",
+          "rule": "READTS_OPTIONAL_OUTPUT_DEFAULT_DISABLED"
+        },
+        {
+          "consumed_line": 129,
+          "key": "DOMNtotNO3_1mGWL=",
+          "rule": "READTS_OPTIONAL_OUTPUT_DEFAULT_DISABLED"
+        }
+      ],
+      "status": "PASS_SOURCE_COMPATIBLE_BOUNDED_REPRESENTATION"
+    },
+    "ANIMO_testbank/GHGMais/Input/general.inp": {
+      "GreenHouseGasOption": 1,
+      "status": "EXCLUDED_GHG_SCHEMA_NOT_ADMITTED"
+    },
+    "ANIMO_testbank/GrassPeat/Input/GENERAL.INP": {
+      "error": "9871",
+      "line": 118,
+      "message": "expected ordered output selector O2_content=, got 'WFPS=                  1! water-filled pore space (End of TS)'",
+      "status": "REJECTED_BY_REV53_SEQUENCE_CONTRACT"
+    },
+    "ANIMO_testbank/LWKM_gras_1040.2021.2045/input/GENERAL.INP": {
+      "legacy_storage_hazards": [
+        "OUTSEL_WHOLE_PROFILE_OUTSELN_37_43_48_54_NOT_ASSIGNED_BEFORE_GLOBAL_RANGE_CHECK",
+        "OPTIONAL_OUTSEL_77_78_OMISSION_LEAVES_OUTSELN_UNASSIGNED",
+        "READTS_LATE_OPTIONAL_MISMATCH_CAN_CLEAR_PRIOR_ERROR_9871"
+      ],
+      "record_count": 131,
+      "source_defaults": [
+        {
+          "consumed_line": 10,
+          "key": "PClassOption=",
+          "rule": "GEN-DEF-PCLASSOPTION-0"
+        }
+      ],
+      "status": "PASS_SOURCE_COMPATIBLE_BOUNDED_REPRESENTATION"
+    },
+    "ANIMO_testbank/Puitmijn_Cranendonck_60/input/GENERAL.INP": {
+      "legacy_storage_hazards": [
+        "OUTSEL_WHOLE_PROFILE_OUTSELN_37_43_48_54_NOT_ASSIGNED_BEFORE_GLOBAL_RANGE_CHECK",
+        "OPTIONAL_OUTSEL_77_78_OMISSION_LEAVES_OUTSELN_UNASSIGNED",
+        "READTS_LATE_OPTIONAL_MISMATCH_CAN_CLEAR_PRIOR_ERROR_9871"
+      ],
+      "record_count": 161,
+      "source_defaults": [
+        {
+          "consumed_line": 21,
+          "key": "PClassOption=",
+          "rule": "GEN-DEF-PCLASSOPTION-0"
+        },
+        {
+          "consumed_line": 24,
+          "key": "HydroYearSwitch=",
+          "rule": "GEN-DEF-HYDROYRSWITCH-0"
+        },
+        {
+          "consumed_line": 176,
+          "key": "AnnDOMNtotNO3_1mGWL=",
+          "rule": "READTS_OPTIONAL_OUTPUT_DEFAULT_DISABLED"
+        },
+        {
+          "consumed_line": 177,
+          "key": "DOMNtotNO3_1mGWL=",
+          "rule": "READTS_OPTIONAL_OUTPUT_DEFAULT_DISABLED"
+        }
+      ],
+      "status": "PASS_SOURCE_COMPATIBLE_BOUNDED_REPRESENTATION"
+    },
+    "ANIMO_testbank/RuurloGrass/Input/GENERAL.INP": {
+      "legacy_storage_hazards": [
+        "OUTSEL_WHOLE_PROFILE_OUTSELN_37_43_48_54_NOT_ASSIGNED_BEFORE_GLOBAL_RANGE_CHECK",
+        "OPTIONAL_OUTSEL_77_78_OMISSION_LEAVES_OUTSELN_UNASSIGNED",
+        "READTS_LATE_OPTIONAL_MISMATCH_CAN_CLEAR_PRIOR_ERROR_9871"
+      ],
+      "record_count": 131,
+      "source_defaults": [
+        {
+          "consumed_line": 14,
+          "key": "HydroYearSwitch=",
+          "rule": "GEN-DEF-HYDROYRSWITCH-0"
+        },
+        {
+          "consumed_line": 135,
+          "key": "AnnDOMNtotNO3_1mGWL=",
+          "rule": "READTS_OPTIONAL_OUTPUT_DEFAULT_DISABLED"
+        },
+        {
+          "consumed_line": 136,
+          "key": "DOMNtotNO3_1mGWL=",
+          "rule": "READTS_OPTIONAL_OUTPUT_DEFAULT_DISABLED"
+        }
+      ],
+      "status": "PASS_SOURCE_COMPATIBLE_BOUNDED_REPRESENTATION"
+    },
+    "ANIMO_testbank/STONE_akk_0006.2001.2015/input/GENERAL.INP": {
+      "legacy_storage_hazards": [
+        "OUTSEL_WHOLE_PROFILE_OUTSELN_37_43_48_54_NOT_ASSIGNED_BEFORE_GLOBAL_RANGE_CHECK",
+        "OPTIONAL_OUTSEL_77_78_OMISSION_LEAVES_OUTSELN_UNASSIGNED",
+        "READTS_LATE_OPTIONAL_MISMATCH_CAN_CLEAR_PRIOR_ERROR_9871"
+      ],
+      "record_count": 131,
+      "source_defaults": [
+        {
+          "consumed_line": 10,
+          "key": "PClassOption=",
+          "rule": "GEN-DEF-PCLASSOPTION-0"
+        },
+        {
+          "consumed_line": 13,
+          "key": "HydroYearSwitch=",
+          "rule": "GEN-DEF-HYDROYRSWITCH-0"
+        }
+      ],
+      "status": "PASS_SOURCE_COMPATIBLE_BOUNDED_REPRESENTATION"
+    },
+    "ANIMO_testbank/Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA/Input/GENERAL.INP": {
+      "legacy_storage_hazards": [
+        "OUTSEL_WHOLE_PROFILE_OUTSELN_37_43_48_54_NOT_ASSIGNED_BEFORE_GLOBAL_RANGE_CHECK",
+        "OPTIONAL_OUTSEL_77_78_OMISSION_LEAVES_OUTSELN_UNASSIGNED",
+        "READTS_LATE_OPTIONAL_MISMATCH_CAN_CLEAR_PRIOR_ERROR_9871"
+      ],
+      "record_count": 111,
+      "source_defaults": [
+        {
+          "consumed_line": 10,
+          "key": "PClassOption=",
+          "rule": "GEN-DEF-PCLASSOPTION-0"
+        },
+        {
+          "consumed_line": 13,
+          "key": "HydroYearSwitch=",
+          "rule": "GEN-DEF-HYDROYRSWITCH-0"
+        },
+        {
+          "consumed_line": 134,
+          "key": "AnnDOMNtotNO3_1mGWL=",
+          "rule": "READTS_OPTIONAL_OUTPUT_DEFAULT_DISABLED"
+        },
+        {
+          "consumed_line": 135,
+          "key": "DOMNtotNO3_1mGWL=",
+          "rule": "READTS_OPTIONAL_OUTPUT_DEFAULT_DISABLED"
+        }
+      ],
+      "status": "PASS_SOURCE_COMPATIBLE_BOUNDED_REPRESENTATION"
+    }
+  },
+  "non_ghg_natural_count": 8,
+  "production_migration_admitted": false,
+  "qualified_natural_count": 7,
+  "schema": "ANIMO-IO02-Qualification/v1",
+  "source_contract_checks": {
+    "balance_sort": true,
+    "compiled_member_named_input1": true,
+    "findadr_exact_a8": true,
+    "findadr_rewinds": true,
+    "ghg_feature_gate": true,
+    "hydro_year_default_path": true,
+    "hydro_year_wrong_range_check_preserved": true,
+    "label_call_>outbal:": true,
+    "label_call_>outscr:": true,
+    "label_call_>outsel:": true,
+    "label_call_>outtot:": true,
+    "label_call_>simopt:": true,
+    "label_call_>simtim:": true,
+    "optional_readts_defaults": true,
+    "pclass_default_path": true,
+    "printbal_silent_return": true,
+    "readop_bang_delimited": true,
+    "readts_digit_scan": true,
+    "real_kind_8": true,
+    "revision_53_id": true,
+    "top_level_parser_call_order": true
+  },
+  "workunit": "ANIMO-IO02"
+}
