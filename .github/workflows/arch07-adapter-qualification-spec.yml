@@ -1,0 +1,19 @@
+name: ARCH07 adapter qualification specification audit
+
+on:
+  push:
+    branches:
+      - work/animo-arch07-adapter-qualification-spec
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run ARCH07 structural audit
+        run: python3 tools/audit_arch07_adapter_qualification_spec.py
