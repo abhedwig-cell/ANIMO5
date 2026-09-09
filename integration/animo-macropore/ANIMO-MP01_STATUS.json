@@ -1,0 +1,28 @@
+{
+  "work_unit": "ANIMO-MP01",
+  "title": "Macropore Activated-Path, Solute Exchange & Conservation Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-mp01-macropore-qualification",
+  "base_branch": "work/animo-th02-rev41-lineage-recovery",
+  "base_head": "f7f3722b14f65340dc6d67a8f80d74f5d0ebb158",
+  "status": "IN_PROGRESS_SOURCE_THEORY_AND_DIAGNOSTIC_PATH_QUALIFICATION",
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "production_migration_admitted": false,
+  "b3_admitted": false,
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "upstream_evidence_pins": {
+    "TH01": "a3360415364ef4a66a81d7b6715bcd400829df1b",
+    "TH02": "f7f3722b14f65340dc6d67a8f80d74f5d0ebb158",
+    "PREP06": "9b1f1ea51c24fb82823290193651830dc61ea3c8",
+    "TQ01": "5c43ee16df37a0a1357614fdec527f25e5ca8c16"
+  },
+  "known_constraints": [
+    "supplied historical testbank has zero naturally active macropore cases",
+    "synthetic descendants are diagnostic evidence only and cannot become B2 historical reference evidence",
+    "TCD-025 correction is not admitted before activated-path and theory qualification",
+    "production implementation is out of scope"
+  ]
+}
