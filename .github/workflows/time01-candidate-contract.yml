@@ -1,0 +1,25 @@
+name: TIME01 candidate contract audit
+
+on:
+  push:
+    branches:
+      - work/animo-time01-generic-time-transaction-contract
+  pull_request:
+    paths:
+      - 'docs/time01/**'
+      - 'integration/animo-time/**'
+      - 'tools/audit_time01_candidate_contract.py'
+      - '.github/workflows/time01-candidate-contract.yml'
+
+jobs:
+  structural-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit TIME01 candidate contract
+        run: |
+          python tools/audit_time01_candidate_contract.py . --output /tmp/TIME01_STRUCTURAL_AUDIT.json
+          cat /tmp/TIME01_STRUCTURAL_AUDIT.json
