@@ -1,0 +1,116 @@
+{
+  "evidence_id": "ANIMO-PREP09-ELEMENT-TRANSFER-SLOW-SORPTION-2026-09-09",
+  "evidence_class": "DIAGNOSTIC_NOT_REFERENCE",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep09-element-transfer-and-slow-sorption",
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "baseline_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+  "static_audit": {
+    "tool": "tools/audit_prep09_transfer_semantics.py",
+    "checks_passed": 20,
+    "checks_total": 20
+  },
+  "tcd030": {
+    "classification": "DIAGNOSTICALLY_CAUSAL_EXUDATE_HUMUS_ELEMENT_TRANSFER_LEDGER_SEQUENCING_DEFECT",
+    "probe_executable_sha256": "1f8f0241ce7f292157245cb710e04b9eb79f504aca0d7b9d78b18f9a9fd2da4d",
+    "synthetic_activation": true,
+    "first_plough_event": {
+      "tito": 2414.0,
+      "pl": 4,
+      "old_n_kg_m2": 0.04000000000000001,
+      "new_n_kg_m2": 0.034309421243672103,
+      "legacy_explicit_n_delta_kg_m2": -0.0050000000000000053,
+      "exact_n_delta_kg_m2": -0.0056905787563279048,
+      "n_mismatch_kg_m2": 0.00069057875632789947,
+      "n_mismatch_kg_ha": 6.9057875632789947,
+      "old_p_kg_m2": 0.0040000000000000001,
+      "new_p_kg_m2": 0.0034309421243672112,
+      "p_mismatch_kg_m2": 0.000069057875632788797,
+      "p_mismatch_kg_ha": 0.69057875632788797
+    },
+    "later_plough_event_max_abs_mismatch_kg_m2": 5.204170427930421e-18,
+    "interpretation": "mismatch is activated when pre- and post-redistribution element fractions differ and collapses after fractions are homogenized",
+    "production_correction_admitted": false
+  },
+  "slow_sorption": {
+    "candidate_tcd": "TCD-031",
+    "classification": "REVISION_SPECIFIC_SLOW_SORPTION_TILLAGE_POLICY_GAP_WITH_NATURAL_TRAJECTORY_MATERIALITY",
+    "natural_case": "LWKM_gras_1040.2021.2045",
+    "optcxsl": 3,
+    "ncxsl": 3,
+    "observed_plough_events": 4,
+    "observer_executable_sha256": "9a1dbb018b66ad61676bccb68ab883a39eda68ae23f46fe01a14989c69b3933f",
+    "first_event_areic_slow_p_kg_m2_by_site": [
+      0.0052826545565671668,
+      0.035673159976589597,
+      0.047716524066739791
+    ],
+    "first_event_concentration_ranges_kg_m3_by_site": [
+      [0.022191925953796602, 0.038709042802477715],
+      [0.16316986989212745, 0.20939701434076491],
+      [0.2121815464386653, 0.30056561869476833]
+    ],
+    "source_state": {
+      "accumulation_block_commented": true,
+      "negative_ledger_block_commented": true,
+      "redistribution_block_commented": true,
+      "positive_ledger_block_commented": true,
+      "comment_marker": "!-19-10-2010",
+      "commented_redistribution_loop": "Do J = I,Ncxsl",
+      "outbal_consumer_active": true,
+      "init_reset_active": true
+    },
+    "conservative_sensitivity": {
+      "executable_sha256": "8508313332cc95bd89cf5a0d188718e9d0cdb2a232cea92c196d88a16cca4afa",
+      "observer_executable_sha256": "f0b11f4b3bda03f15c95b5c6ad1f18730693c0cf4c1ea82140c73cf82b4c577b",
+      "changed_source_scope": "reenable four commented slow-sorption plough stages and use Do J=1,Ncxsl for site-complete redistribution",
+      "observed_event_site_combinations": 12,
+      "all_pre_post_slow_site_mass_deltas_exact_zero": true,
+      "normalized_changed_files": [
+        "PClassYearSwitch.out",
+        "ani_pGP.Bal",
+        "ani_pRP.Bal",
+        "ani_pTP.Bal",
+        "bappGP.Out",
+        "bappRP.Out",
+        "bappTP.Out",
+        "discharge.out",
+        "initial.out",
+        "pal-P.out",
+        "pw-P.out"
+      ],
+      "pal_p": {
+        "changed_records": 663,
+        "changed_cells": 3318,
+        "first_change_tito": 2414,
+        "max_abs_formatted_delta": 1.35
+      },
+      "pw_p": {
+        "changed_records": 663,
+        "changed_cells": 3293,
+        "first_change_tito": 2414,
+        "max_abs_formatted_delta": 0.99
+      },
+      "discharge_changed_columns": [
+        "RuPO4",
+        "Dis1PO4",
+        "Dis2PO4",
+        "Dis3PO4",
+        "Dis4PO4",
+        "Dis5PO4"
+      ],
+      "max_abs_discharge_formatted_delta": 0.000027092,
+      "bapp_final_cumulative_kg_ha_p": {
+        "RP": {"baseline": -0.253, "variant": -0.257},
+        "GP": {"baseline": -0.267, "variant": -0.271},
+        "TP": {"baseline": -0.273, "variant": -0.277}
+      },
+      "scientific_interpretation": "mass-preserving spatial-state policy sensitivity materially changes P trajectory; supplied evidence does not establish which tillage policy revision 53 intended"
+    },
+    "confirmed_code_defect": false,
+    "production_correction_admitted": false
+  },
+  "reference_qualified": false,
+  "production_migration_admitted": false
+}
