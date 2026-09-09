@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - work/animo-b3a04-tcd026-class-a-readiness
+    paths-ignore:
+      - integration/animo-b3/ANIMO-B3A04_STATUS.json
   workflow_dispatch:
 
 permissions:
