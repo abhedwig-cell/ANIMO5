@@ -3,19 +3,114 @@
   "title": "Independent Synthetic Scientific Oracles, Analytical Microcases & Metamorphic Qualification",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-synq01-independent-synthetic-oracles",
-  "status": "IN_PROGRESS_PERSISTED_BEFORE_ORACLE_QUALIFICATION",
+  "status": "QUALIFIED_INDEPENDENT_SYNTHETIC_ORACLE_EVIDENCE_LAYER_NO_HISTORICAL_REFERENCE_CLAIM",
   "persisted_early": true,
-  "tested": false,
-  "qualified": false,
+  "tested": true,
+  "qualified": true,
+  "work_unit_complete": true,
   "base_authority": {
     "branch": "work/animo-rg02-g5-independent-stream-attachment",
-    "head": "5c278152eacc33660f1c5870c7d419b8041b20a9",
-    "decision": "QUALIFIED_INDEPENDENT_STREAM_ATTACHMENT_NO_SCIENTIFIC_COLLAPSE"
+    "head": "5c278152eacc33660f1c5870c7d419b8041b20a9"
   },
-  "frozen_b0": {
+  "governance_references": {
+    "B3Q01": {
+      "branch": "work/animo-b3q01-scientific-admission-framework",
+      "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+    },
+    "B3I01_checkpoint": {
+      "branch": "work/animo-b3i01-post-g5-discrepancy-intake",
+      "head": "8199e993ec40c0442b1775c38f88c988de25368c"
+    },
+    "NQ02": {
+      "branch": "work/animo-nq02-tcd019-nonlinear-p-qualification",
+      "head": "40a41089020f78ee1d5181b8afc7bdb511af3193"
+    },
+    "TS01": {
+      "branch": "work/animo-ts01-temporal-semantics",
+      "head": "ed12a678cfba19ce851eb2f380e6da3f49203fe4"
+    },
+    "TIME01": {
+      "branch": "work/animo-time01-generic-time-transaction-contract",
+      "head": "246128dd14732173a6f27c15c923970d50c14e2a"
+    },
+    "MP02": {
+      "branch": "work/animo-mp02-whole-case-activation",
+      "head": "6b0f2e7470f13baeb6612b0bddb662a497dea528"
+    },
+    "PREP07": {
+      "branch": "work/animo-prep07-transfer-species-identity",
+      "head": "aefdbbcbd7aaac121831cf2dd522a152260594d0"
+    }
+  },
+  "B0": {
     "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
-    "hashes_rechecked_locally": true
+    "local_hash_recheck": "PASS"
+  },
+  "qualification_counts": {
+    "oracle_records_qualified": 12,
+    "exact_or_analytical_or_conservation_records": 7,
+    "independent_high_precision_numerical_records": 1,
+    "metamorphic_records": 4,
+    "strongly_independent_records": 9,
+    "partially_independent_records": 1,
+    "structurally_correlated_contract_records": 2,
+    "not_an_oracle_records": 0,
+    "priority_tcds_covered": 7
+  },
+  "priority_tcd_coverage": {
+    "TCD-015": "QUALIFIED_EXACT_LOCAL_CONSERVATION_ORACLE",
+    "TCD-017": "QUALIFIED_INTERNAL_REDISTRIBUTION_CONSERVATION_ORACLE",
+    "TCD-018": "QUALIFIED_INTERCEPTION_CONTROL_VOLUME_ORACLE",
+    "TCD-019": "QUALIFIED_NARROW_HIGH_PRECISION_LANGMUIR_STORAGE_ROOT_ORACLE_POLICY_STILL_OPEN",
+    "TCD-023": "QUALIFIED_SPECIES_PARTITION_AND_PERMUTATION_ORACLES",
+    "TCD-024": "QUALIFIED_UNEQUAL_SITE_ANALYTICAL_AND_INDEX_DOMAIN_ORACLES_HISTORICAL_PREVALENCE_OPEN",
+    "TCD-025": "QUALIFIED_LEDGER_TRANSFER_ORACLE_PROCESS_THEORY_RESTART_AND_B2_OPEN"
+  },
+  "temporal_microcases": {
+    "management_t0_t1": "PASS_CANDIDATE_CONTRACT_ONLY",
+    "harvest_t0_t1": "PASS_CANDIDATE_CONTRACT_ONLY",
+    "changed_t1_event_membership": "PASS_CANDIDATE_CONTRACT_ONLY",
+    "split_run_explicit_scalar_state": "PASS_SYNTHETIC_COMPLETE_STATE_ONLY",
+    "actual_animo_split_run": "NOT_CLAIMED"
+  },
+  "limiting_case_library": {
+    "cases": 12,
+    "all_pass": true,
+    "registered_as_separate_oracles": false
+  },
+  "test_results": {
+    "reference_self_test_groups_passed": 13,
+    "unittest_cases_passed": 10,
+    "unittest_cases_failed": 0,
+    "register_structural_audit": "PASS",
+    "forbidden_B2_records": 0
+  },
+  "remaining_theory_dependent_gaps": [
+    "TCD-019 fallback discrete closure and any production tolerance remain unqualified",
+    "TCD-019 fast-Freundlich and broad multi-site/general solver policy are not promoted by the narrow SYNQ-O009 oracle",
+    "TCD-025 exact revision-53 macropore solute-transfer theory remains only partially independently documented",
+    "actual ANIMO restart identity is unavailable where TCD-016 dry-solute, GHG hidden task state or macropore persistent solute state is incomplete",
+    "TCD-023 synthetic partition identity does not by itself qualify the wider stable-DOM process theory"
+  ],
+  "remaining_B2_only_questions": [
+    "what the independently trustworthy historical executable did on each target path",
+    "historical activation frequency and magnitude for TCD-023 and TCD-024",
+    "historical macropore positive-path behaviour and compiler effects",
+    "historical event-boundary and continuous-versus-split behaviour"
+  ],
+  "deliverables": {
+    "policy": "docs/synthetic/SYNTHETIC_ORACLE_QUALIFICATION_POLICY.md",
+    "analytical_catalogue": "docs/synthetic/ANALYTICAL_MICROCASE_CATALOGUE.md",
+    "metamorphic_catalogue": "docs/synthetic/METAMORPHIC_RELATION_CATALOGUE.md",
+    "register": "integration/animo-synthetic/SYNTHETIC_ORACLE_REGISTER.json",
+    "coverage": "integration/animo-synthetic/TCD_ORACLE_COVERAGE_MATRIX.csv",
+    "structural_audit": "integration/animo-synthetic/SYNTHETIC_ORACLE_STRUCTURAL_AUDIT.json",
+    "test_results": "integration/animo-synthetic/SYNTHETIC_ORACLE_TEST_RESULTS.json",
+    "reference_tool": "tools/reference/synthetic_oracles.py",
+    "audit_tool": "tools/reference/audit_synthetic_register.py",
+    "tests": "tests/synthetic/test_synthetic_oracles.py",
+    "workflow": ".github/workflows/synq01-synthetic-oracles.yml"
   },
   "evidence_boundary": {
     "B2_reference_created": false,
@@ -23,16 +118,5 @@
     "corrected_legacy_admitted": false,
     "production_migration_admitted": false,
     "B3_admission_performed": false
-  },
-  "priority_targets": ["TCD-015", "TCD-017", "TCD-018", "TCD-019", "TCD-023", "TCD-024", "TCD-025"],
-  "oracle_classes": [
-    "ANALYTICAL_ORACLE",
-    "CONSERVATION_ORACLE",
-    "METAMORPHIC_ORACLE",
-    "INDEPENDENT_NUMERICAL_ORACLE",
-    "HIGH_PRECISION_ORACLE",
-    "THEORY_DERIVED_ORACLE"
-  ],
-  "forbidden_classification": "B2_HISTORICAL_REFERENCE",
-  "checkpoint": "workunit branch and fail-closed evidence boundary persisted before detailed source/theory reconciliation and tests"
+  }
 }
