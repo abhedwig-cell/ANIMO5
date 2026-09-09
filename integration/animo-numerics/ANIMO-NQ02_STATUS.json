@@ -93,12 +93,35 @@
       "small_1e_8_bisections": 0,
       "small_1e_9_bisections": 2,
       "small_1e_10_bisections": 4,
-      "finding": "a stable pre-fallback convergence region exists; tightening beyond it changes control-path ownership because the legacy fallback starts to govern rare steps"
+      "finding": "a stable pre-fallback convergence region exists in LWKM; tightening beyond it changes control-path ownership because the legacy fallback starts to govern rare steps"
     },
     "signed_residual_stop_probe": {
       "material_effect_in_primary_case": false,
       "finding": "source asymmetry remains a numerical risk but is not causally material in the tested LWKM routes"
     }
+  },
+  "natural_multicase_extension": {
+    "executed": true,
+    "evidence_role": "B1_DIAGNOSTIC_ONLY",
+    "artifact": "integration/animo-numerics/TCD019_MULTICASE_EXTENSION.json",
+    "documentation": "docs/numerics/TCD019_MULTICASE_NATURAL_COVERAGE.md",
+    "additional_natural_cases": 5,
+    "cases": [
+      "CranGrass",
+      "GrassPeat",
+      "STONE_akk_0006.2001.2015",
+      "Puitmijn_Cranendonck_60",
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+    ],
+    "common_scope": "fast Langmuir one site plus slow Freundlich three sites",
+    "fast_langmuir_multicase_coverage_completed": true,
+    "fast_freundlich_natural_coverage_available": false,
+    "legacy_negative_drift_reproduced_in_all_five_additional_cases": true,
+    "fallback_naturally_active_in_legacy_puitmijn": 6,
+    "fallback_naturally_active_in_legacy_zuiderzeeland": 2,
+    "finding": "the TCD-019 mechanism is not LWKM-specific; exact storage plus solver refinement strongly reduces post-initial-step drift across the additional Langmuir cases, while fallback activation prevents a universal monotone Small-refinement argument",
+    "cran_grass_first_step_seam_separated": true,
+    "cran_grass_first_step_attributed_to_tcd014": false
   },
   "precision_study": {
     "executed": true,
@@ -129,12 +152,14 @@
     "candidate_route_classification": "CONVERGENT_POLICY_CANDIDATE",
     "candidate_route": "THRESHOLD_FREE_CANCELLATION_SAFE_EXACT_STORAGE_REPRESENTATION_PLUS_JOINTLY_QUALIFIED_NONLINEAR_AND_FALLBACK_POLICY",
     "route_level_convergence_candidate_qualified": true,
+    "fast_langmuir_natural_multicase_support": true,
+    "fallback_policy_must_be_jointly_qualified": true,
     "specific_production_small_qualified": false,
     "specific_fallback_tolerance_qualified": false,
     "global_numeric_tolerance_qualified": false,
     "historical_b2_equivalence_qualified": false,
     "independent_numerical_review_completed": false,
-    "natural_multicase_coverage_completed": false
+    "constitutive_family_coverage_complete": false
   },
   "state_dimensions": {
     "authority_pinned": true,
@@ -149,7 +174,8 @@
     "time_step_study_executed": true,
     "tcd024_interaction_executed": true,
     "convergence_policy_candidate_qualified": true,
-    "natural_multicase_coverage_completed": false,
+    "natural_fast_langmuir_multicase_coverage_completed": true,
+    "constitutive_family_coverage_completed": false,
     "independent_numerical_review_completed": false,
     "corrected_legacy_admitted": false,
     "b3_admitted": false,
@@ -158,8 +184,10 @@
   "artifacts": {
     "reconstruction": "docs/numerics/TCD019_NONLINEAR_P_NUMERICAL_RECONSTRUCTION.md",
     "convergence_study": "docs/numerics/TCD019_CONVERGENCE_STUDY.md",
+    "multicase_study": "docs/numerics/TCD019_MULTICASE_NATURAL_COVERAGE.md",
     "interaction": "docs/numerics/TCD019_TCD024_INTERACTION.md",
     "matrix": "integration/animo-numerics/TCD019_NUMERICAL_MATRIX.json",
+    "multicase_matrix": "integration/animo-numerics/TCD019_MULTICASE_EXTENSION.json",
     "status": "integration/animo-numerics/ANIMO-NQ02_STATUS.json"
   },
   "hard_rules": {
@@ -178,10 +206,10 @@
   "B3_admitted": false,
   "production_migration_admitted": false,
   "open_blockers": [
-    "natural multi-case activation and convergence coverage",
+    "constitutive-family completion beyond the supplied fast-Langmuir natural cases, especially fast Freundlich numerical policy",
     "independent numerical review",
     "B2 historical/reference characterization where obtainable",
     "joint nonlinear/fallback production policy qualification without tolerance invention"
   ],
-  "next_gate": "NATURAL_MULTICASE_TCD019_COVERAGE_AND_INDEPENDENT_NUMERICAL_REVIEW_BEFORE_ANY_B3_ADMISSION_WORKUNIT"
+  "next_gate": "COMPLETE_CONSTITUTIVE_FAMILY_AND_FALLBACK_POLICY_QUALIFICATION_AND_OBTAIN_INDEPENDENT_REVIEW_BEFORE_ANY_B3_ADMISSION_WORKUNIT"
 }
