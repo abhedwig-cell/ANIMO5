@@ -1,0 +1,44 @@
+name: ANIMO-B3B03R TCD-024 technical second-line review
+
+on:
+  push:
+    branches:
+      - work/animo-b3b03r-tcd024-second-line-review
+  pull_request:
+    paths:
+      - 'docs/b3/TCD024_SECOND_LINE_TECHNICAL_REVIEW.md'
+      - 'integration/animo-b3/ANIMO-B3B03R_STATUS.json'
+      - 'tools/validate_b3b03r_review.py'
+      - '.github/workflows/animo-b3b03r-tcd024-second-line.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse review status JSON
+        run: python -m json.tool integration/animo-b3/ANIMO-B3B03R_STATUS.json >/dev/null
+      - name: Re-run candidate and technical review validators
+        run: python tools/validate_b3b03r_review.py
+      - name: Guard second-line branch scope
+        run: |
+          python - <<'PY'
+          import subprocess
+          base = '446f57f3aeff6e7db56ce473f0724bdb58cad94f'
+          changed = subprocess.check_output(['git','diff','--name-only',base+'..HEAD'], text=True).splitlines()
+          allowed = {
+              'docs/b3/TCD024_SECOND_LINE_TECHNICAL_REVIEW.md',
+              'integration/animo-b3/ANIMO-B3B03R_STATUS.json',
+              'tools/validate_b3b03r_review.py',
+              '.github/workflows/animo-b3b03r-tcd024-second-line.yml',
+          }
+          unexpected = sorted(set(changed) - allowed)
+          if unexpected:
+              raise SystemExit('unexpected B3B03R changes: ' + ', '.join(unexpected))
+          print('B3B03R scope guard: PASS')
+          PY
