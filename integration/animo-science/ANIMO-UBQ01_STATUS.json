@@ -1,7 +1,7 @@
 {
   "work_unit": "ANIMO-UBQ01",
   "title": "TCD-042 Upper-Boundary Zero-Throughflow Solute Transaction and Owner Semantics Qualification",
-  "status": "EXACT_ZERO_CLASS_B_ATOM_EVIDENCE_PERSISTED_VALIDATION_REFRESH_PENDING",
+  "status": "QUALIFIED_TCD042_EXACT_ZERO_CLASS_B_ATOM_PARENT_NUMERICAL_SUBTHRESHOLD_ATOM_PENDING",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-ubq01-tcd042-upper-boundary-transaction",
   "base": {
@@ -16,7 +16,7 @@
   },
   "scope": {
     "target": "TCD-042",
-    "qualified_atom_candidate": "EXACT_FLUX_ZERO_ONLY",
+    "qualified_atom": "EXACT_FLUX_ZERO_ONLY",
     "finite_positive_subthreshold_flux_included": false,
     "physical_state_patch_admitted": false,
     "accounting_patch_admitted": false,
@@ -27,7 +27,7 @@
     "existing_upper_reservoir_owner_proven": true,
     "missing_state_class_C_rejected_for_exact_zero": true,
     "accounting_only_class_A_rejected_for_exact_zero": true,
-    "candidate_class": "B_LOCAL_ALGEBRA_ZERO_FLOW_LIMIT",
+    "qualified_candidate_class": "B_LOCAL_ALGEBRA_ZERO_FLOW_LIMIT",
     "positive_flow_equation": "Hetop*dC/dt=Load-Flux*C",
     "exact_zero_end_state": "C1=C0+Load*St/Hetop",
     "exact_zero_average_state": "Cavg=C0+Load*St/(2*Hetop)",
@@ -64,6 +64,7 @@
     "executed_cases": 8,
     "blocked_cases_without_trace": 1,
     "records_scanned_no_ponding": 15043,
+    "exact_zero_records": 5370,
     "finite_positive_subthreshold_records": 1238,
     "cases_with_finite_positive_subthreshold": 6,
     "provisional_class": "E_NUMERICAL_POLICY",
@@ -74,21 +75,26 @@
   "validation": {
     "validator": "tools/ubq01/validate_tcd042_zero_flow.py",
     "workflow": ".github/workflows/animo-ubq01-zero-flow-oracle.yml",
-    "prior_synthetic_oracle_run_id": 34362690102,
-    "prior_synthetic_oracle_conclusion": "success",
-    "integrated_evidence_validation": "PENDING_GITHUB_ACTIONS_AFTER_PERSIST"
+    "integrated_validated_head_before_closeout": "87171f13e2492e8f467bc456c2a90564b54ffe5c",
+    "integrated_github_actions_run_id": 34365508588,
+    "integrated_github_actions_conclusion": "success",
+    "validator_result": "PASS",
+    "comparison_policy": "EXACT_NO_TOLERANCE",
+    "scope_guard": "PASS_UBQ01_ONLY_NO_PRODUCTION_SOURCE_CHANGE"
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
+    "tested": true,
+    "qualified": true,
+    "qualification_scope": "EXACT_ZERO_CLASS_B_ATOM_ONLY",
     "work_unit_complete": false
   },
   "parent_tcd_state": {
-    "exact_zero_atom_ready_for_integrated_validation": true,
+    "exact_zero_atom_qualified": true,
     "finite_positive_subthreshold_atom_open": true,
-    "tcd042_fully_qualified": false
+    "tcd042_fully_qualified": false,
+    "tcd042_parent_admitted": false
   },
   "admission": {
     "b3_admitted": false,
@@ -96,8 +102,8 @@
     "production_migration_admitted": false
   },
   "required_followup": [
-    "Pass the integrated exact-zero natural/synthetic validator and scope guard.",
-    "Keep the reachable finite-positive subthreshold seam separate and qualify its numerical materiality/policy independently.",
+    "Qualify the reachable finite-positive subthreshold numerical seam independently for materiality and numerical policy; do not silently compose it with the exact-zero atom.",
+    "Route any new numerical child or TCD reservation through canonical incremental intake rather than allocating it inside UBQ01.",
     "Do not admit TCD-042 from UBQ01 without the applicable GOV02/B3Q01 route and independent review."
   ]
 }
