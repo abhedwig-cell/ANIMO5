@@ -14,7 +14,7 @@
   "nq01_authority": {
     "branch": "work/animo-nq01-numerical-qualification-architecture",
     "head": "e558dff12b127e0662cad62beea7527b42ad89ac",
-    "selection_basis": "live branch comparison showed this branch 33 commits ahead of the branches named final, copy, ignore, stop and packet-temp, all of which shared the older 438a8838 head",
+    "selection_basis": "live ancestry/content comparison; branch was 33 commits ahead of older final/copy/ignore/stop/packet-temp heads at NQ02 start",
     "nq01_status": "QUALIFIED_NUMERICAL_QUALIFICATION_ARCHITECTURE_AWAITING_INDEPENDENT_REFERENCE_DATA"
   },
   "target": {
@@ -36,6 +36,7 @@
     "primary_routine": "Transorp.for:C_unl",
     "fast_sorption_routine": "Transorp.for:Sorpfast",
     "analytical_coefficient_routine": "Transsub.for:Detcoef",
+    "coefficient_derivative_routine": "Transorp.for:Coefdc",
     "mass_check_routine": "Transgen.for",
     "unknowns": ["Rsc", "Avc"],
     "legacy_newton_small": 0.0001,
@@ -46,6 +47,7 @@
     "signed_residual_stopping_asymmetry_observed": true,
     "late_iteration_running_average_policy_observed": true,
     "fallback_reuses_recfso_from_newton_observed": true,
+    "fallback_imposes_midpoint_closure_Rsc_eq_2Avc_minus_Con": true,
     "fast_langmuir_cancellation_free_exact_secant_derived": true,
     "fast_freundlich_exact_secant_and_equal_state_derivative_derived": true,
     "tcd014_initialization_boundary_explicit": true
@@ -120,7 +122,7 @@
     "legacy_negative_drift_reproduced_in_all_five_additional_cases": true,
     "fallback_naturally_active_in_legacy_puitmijn": 6,
     "fallback_naturally_active_in_legacy_zuiderzeeland": 2,
-    "finding": "the TCD-019 mechanism is not LWKM-specific; exact storage plus solver refinement strongly reduces post-initial-step drift across the additional Langmuir cases, while fallback activation prevents a universal monotone Small-refinement argument",
+    "finding": "TCD-019 is not LWKM-specific; exact storage plus solver refinement strongly reduces post-initial drift across additional Langmuir cases, while fallback activation prevents a universal monotone Small-refinement argument",
     "cran_grass_first_step_seam_separated": true,
     "cran_grass_first_step_attributed_to_tcd014": false
   },
@@ -136,17 +138,14 @@
     "stable_exact_secant_route_numerically_supported": true,
     "isolated_constitutive_mechanism_qualified": true,
     "integrated_C_unl_convergence_qualified": false,
-    "finding": "for fast Freundlich, the legacy endpoint tangent is not the finite conserved storage secant and its Jacobian derivative tends to S'' rather than the exact-secant limit 0.5*S''; a stable exact secant closes the isolated constitutive residual to numerical floor, but integrated solver and natural-case qualification remain open"
+    "finding": "legacy fast-Freundlich endpoint tangent is not the finite conserved storage secant and its Jacobian derivative tends to S'' rather than the exact-secant 0.5*S'' limit; integrated solver qualification remains open"
   },
   "fallback_policy_study": {
     "executed": true,
     "evidence_role": "B1_DIAGNOSTIC_NATURAL_FALLBACK_SENSITIVITY_ONLY",
     "documentation": "docs/numerics/TCD019_FALLBACK_POLICY_STUDY.md",
     "matrix": "integration/animo-numerics/TCD019_FALLBACK_POLICY_MATRIX.json",
-    "cases": [
-      "Puitmijn_Cranendonck_60",
-      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
-    ],
+    "cases": ["Puitmijn_Cranendonck_60", "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"],
     "fixed_constitutive_route": "cancellation_safe_fast_langmuir_exact_secant",
     "fixed_newton_small": 1e-7,
     "bisection_thresholds_tested": [1e-6, 1e-7, 1e-8],
@@ -156,8 +155,32 @@
     "initialization_interaction_observed": true,
     "smaller_fallback_residual_not_sufficient_for_scientific_acceptance": true,
     "fallback_policy_classification": "FALLBACK_POLICY_CAUSALLY_MATERIAL_BUT_NOT_YET_QUALIFIED",
-    "specific_fallback_tolerance_qualified": false,
-    "finding": "fallback cannot be treated as an ordinary tolerance knob; tighter scalar Df acceptance improves post-initial residuals but can select a materially different first-step solution, so residual, bracket, root selection, inherited Recfso and initialization semantics require joint qualification"
+    "specific_fallback_tolerance_qualified": false
+  },
+  "newton_fallback_equation_relation": {
+    "executed": true,
+    "documentation": "docs/numerics/TCD019_NEWTON_FALLBACK_EQUATION_RELATION.md",
+    "matrix": "integration/animo-numerics/TCD019_NEWTON_FALLBACK_RELATION.json",
+    "fallback_is_scalarized_original_newton_system": false,
+    "fallback_uses_distinct_midpoint_time_closure": true,
+    "fallback_accepted_states_can_have_material_two_variable_newton_residual": true,
+    "inherited_recfso_path_dependence_naturally_activated": true,
+    "smaller_Df_does_not_imply_smaller_two_variable_equation_residual": true,
+    "classification": "DISTINCT_FALLBACK_DISCRETE_CLOSURE_WITH_NATURALLY_ACTIVATED_HISTORY_DEPENDENT_RATE_BRANCH_POLICY_NOT_QUALIFIED"
+  },
+  "fallback_rate_branch_causality": {
+    "executed": true,
+    "evidence_role": "B1_DIAGNOSTIC_ONE_FACTOR_CAUSALITY_ONLY",
+    "documentation": "docs/numerics/TCD019_FALLBACK_RECFSO_CAUSALITY.md",
+    "matrix": "integration/animo-numerics/TCD019_FALLBACK_RECFSO_CAUSAL.json",
+    "changed_factor_only": "fallback Recfso and slow equilibrium branch recomputed from each fallback trial state",
+    "puitmijn_control_invariant": true,
+    "zuiderzeeland_loose_fallback_aggregate_invariant": true,
+    "zuiderzeeland_tight_fallback_material_root_change": true,
+    "zuiderzeeland_inherited_1e8_cumulative_R_cons_kg_ha": -0.025252972774996354,
+    "zuiderzeeland_state_local_1e8_cumulative_R_cons_kg_ha": 0.00018363583594392793,
+    "smaller_mass_residual_proves_policy_correct": false,
+    "classification": "HISTORY_DEPENDENT_FALLBACK_RATE_BRANCH_CAUSALLY_MATERIAL_POLICY_NOT_QUALIFIED"
   },
   "precision_study": {
     "executed": true,
@@ -166,7 +189,7 @@
     "observed_delta_C": -7.487398559231223e-16,
     "subtractive_binary64_secant_relative_error_approx": -5.96e-6,
     "cancellation_free_binary64_secant_relative_error_approx": 9.44e-17,
-    "finding": "naively forcing the direct exact quotient would exchange constitutive bias for cancellation error at observed tiny increments; the cancellation-free Langmuir identity avoids both"
+    "finding": "naively forcing the direct exact quotient exchanges constitutive bias for cancellation error at observed tiny increments; cancellation-free Langmuir identity avoids both"
   },
   "time_step_study": {
     "executed": true,
@@ -179,9 +202,25 @@
     "executed": true,
     "evidence_role": "SYNTHETIC_B1_INTERACTION_ONLY",
     "variants": ["LEGACY_BOTH", "TCD024_ONLY", "TCD019_ONLY", "COMBINED_DIAGNOSTIC"],
-    "finding": "TCD-024 dominates the activated unequal-site slow-Langmuir stress case; TCD-019-only leaves the wrong-index residual, while the combined diagnostic reaches the local equation/floating floor",
+    "finding": "TCD-024 dominates the activated unequal-site slow-Langmuir stress case; TCD-019-only leaves the wrong-index residual, while combined diagnostic reaches the local equation/floating floor",
     "defects_merged": false,
     "composition_admitted": false
+  },
+  "cross_cutting_numerical_dependencies": {
+    "iflsol4_detcoef_coefdc_cancellation": {
+      "local_key": "NQ02-LCL-IFLSOL4-DETCOEF-CANCELLATION",
+      "canonical_tcd": null,
+      "canonical_allocation_state": "PENDING_B3_GOVERNANCE_AUTHORITY_ASSIGNMENT",
+      "documentation": "docs/numerics/IFLSOL4_DETCOEF_CANCELLATION_DEPENDENCY.md",
+      "matrix": "integration/animo-numerics/NQ02_IFLSOL4_DETCOEF_CANCELLATION_DEPENDENCY.json",
+      "source_bound_cancellation_confirmed": true,
+      "natural_state_high_precision_check_executed": true,
+      "natural_case_trajectory_materiality_observed": true,
+      "uniform_tcd019_mass_balance_improvement": false,
+      "must_remain_separate_from_tcd019": true,
+      "classification": "NEW_DISCREPANCY_CANDIDATE_PENDING_REGISTRY_AUTHORITY_ASSIGNMENT",
+      "governance_basis": "RG02 records central B3 register ending at TCD-027 and post-027 preparatory identifiers as local/collision-prone"
+    }
   },
   "qualification_outcome": {
     "legacy_policy_classification": "LEGACY_NUMERICAL_POLICY_NONCONVERGENT_OR_BIASED",
@@ -192,6 +231,8 @@
     "fast_freundlich_constitutive_mechanism_support": true,
     "fast_freundlich_integrated_solver_support": false,
     "fallback_policy_causally_material": true,
+    "fallback_distinct_closure_confirmed": true,
+    "fallback_history_dependent_rate_branch_causal": true,
     "fallback_policy_qualified": false,
     "fallback_policy_must_be_jointly_qualified": true,
     "specific_production_small_qualified": false,
@@ -200,7 +241,8 @@
     "historical_b2_equivalence_qualified": false,
     "independent_numerical_review_completed": false,
     "constitutive_family_local_mechanism_coverage_complete": true,
-    "constitutive_family_integrated_solver_coverage_complete": false
+    "constitutive_family_integrated_solver_coverage_complete": false,
+    "cross_cutting_coefficient_semantics_pinned_for_b3": false
   },
   "state_dimensions": {
     "authority_pinned": true,
@@ -219,7 +261,10 @@
     "fast_freundlich_isolated_constitutive_probe_completed": true,
     "fast_freundlich_integrated_solver_qualification_completed": false,
     "fallback_natural_sensitivity_executed": true,
+    "newton_fallback_equation_relation_executed": true,
+    "fallback_rate_branch_causality_executed": true,
     "fallback_policy_qualified": false,
+    "iflsol4_cross_cutting_dependency_registered_locally": true,
     "independent_numerical_review_completed": false,
     "corrected_legacy_admitted": false,
     "b3_admitted": false,
@@ -231,11 +276,17 @@
     "multicase_study": "docs/numerics/TCD019_MULTICASE_NATURAL_COVERAGE.md",
     "fast_freundlich_study": "docs/numerics/TCD019_FAST_FREUNDLICH_CONSTITUTIVE_QUALIFICATION.md",
     "fallback_study": "docs/numerics/TCD019_FALLBACK_POLICY_STUDY.md",
+    "newton_fallback_relation_study": "docs/numerics/TCD019_NEWTON_FALLBACK_EQUATION_RELATION.md",
+    "fallback_recfso_causality_study": "docs/numerics/TCD019_FALLBACK_RECFSO_CAUSALITY.md",
+    "iflsol4_dependency_study": "docs/numerics/IFLSOL4_DETCOEF_CANCELLATION_DEPENDENCY.md",
     "interaction": "docs/numerics/TCD019_TCD024_INTERACTION.md",
     "matrix": "integration/animo-numerics/TCD019_NUMERICAL_MATRIX.json",
     "multicase_matrix": "integration/animo-numerics/TCD019_MULTICASE_EXTENSION.json",
     "fast_freundlich_matrix": "integration/animo-numerics/TCD019_FAST_FREUNDLICH_PROBE.json",
     "fallback_matrix": "integration/animo-numerics/TCD019_FALLBACK_POLICY_MATRIX.json",
+    "newton_fallback_relation_matrix": "integration/animo-numerics/TCD019_NEWTON_FALLBACK_RELATION.json",
+    "fallback_recfso_causality_matrix": "integration/animo-numerics/TCD019_FALLBACK_RECFSO_CAUSAL.json",
+    "iflsol4_dependency_matrix": "integration/animo-numerics/NQ02_IFLSOL4_DETCOEF_CANCELLATION_DEPENDENCY.json",
     "status": "integration/animo-numerics/ANIMO-NQ02_STATUS.json"
   },
   "hard_rules": {
@@ -243,22 +294,25 @@
     "legacy_residual_must_not_define_tolerance": true,
     "better_mass_balance_is_not_solution_correctness": true,
     "tcd019_and_tcd024_admission_must_remain_separate": true,
+    "cross_cutting_iflsol4_dependency_must_not_be_silently_composed_with_tcd019": true,
     "b1_must_not_be_relabelled_b2": true,
     "production_change_forbidden": true,
     "frozen_source_modification_forbidden": true,
     "diagnostic_descendants_must_be_hashed": true
   },
   "tolerance_status": "TOLERANCE_NOT_YET_QUALIFIED",
-  "status": "QUALIFIED_TCD019_NUMERICAL_CAUSALITY_CONSTITUTIVE_MECHANISMS_AND_ROUTE_LEVEL_CANDIDATE_FALLBACK_AND_INTEGRATED_POLICY_OPEN_B3_ADMISSION_NOT_YET_OPEN",
+  "status": "QUALIFIED_TCD019_CAUSALITY_AND_ROUTE_LEVEL_CANDIDATE_FALLBACK_CLOSURE_AND_RATE_BRANCH_CAUSALITY_CONFIRMED_CROSS_CUTTING_COEFFICIENT_DEPENDENCY_OPEN_B3_ADMISSION_NOT_YET_OPEN",
   "corrected_legacy_admitted": false,
   "B3_admitted": false,
   "production_migration_admitted": false,
   "open_blockers": [
     "integrated C_unl fast-Freundlich convergence and control-path qualification; no natural fast-Freundlich case is available in the supplied P-active testbank",
-    "joint Newton/fallback governing residual, bracketing and root-selection policy qualification",
-    "separate initialization/state-consistency resolution for the first-step fallback interaction",
+    "joint Newton/fallback governing residual, bracketing, root-selection and state-local kinetic-branch policy qualification",
+    "separate initialization/state-consistency resolution for first-step interactions",
+    "pin or separately qualify Iflsol=4 analytical coefficient evaluation semantics before using them as a B3 comparison surface",
+    "canonical discrepancy allocation for the cross-cutting Iflsol=4 cancellation candidate belongs to B3 governance, not NQ02",
     "independent numerical review",
     "B2 historical/reference characterization where obtainable"
   ],
-  "next_gate": "QUALIFY_INTEGRATED_FAST_FREUNDLICH_AND_JOINT_NEWTON_FALLBACK_ROOT_SELECTION_OR_EXPLICITLY_NARROW_THE_B3_CLAIM_SCOPE_BEFORE_ANY_B3_ADMISSION_WORKUNIT"
+  "next_gate": "QUALIFY_OR_NARROW_INTEGRATED_FAST_FREUNDLICH_AND_JOINT_NEWTON_FALLBACK_POLICY_AND_PIN_CROSS_CUTTING_COEFFICIENT_SEMANTICS_BEFORE_ANY_B3_ADMISSION_WORKUNIT"
 }
