@@ -6,22 +6,81 @@
   "qualified_closeout_head": "61d1f077406533f65941e39e977dbb8471bb4443",
   "post_close_verification_commit": "5415ab292890bdd8f7d07ec57e7d9fefc5bc7ec4",
   "architecture_feedback_commit": "2cfc787a4ecd25821ae3015053865143f92b8984",
+  "scheduler_spec_commit": "474e50eb25f6ad3ca1dec20c2dbecaf8191ba763",
+  "scheduler_matrix_commit": "1f0ffa395873e5bc0741b6b2a8c45447586553a9",
+  "scheduler_audit_tool_commit": "232f4da736237ccd5372e510cb0b3b6b9c71823b",
+  "arch07_crosswalk_doc_commit": "6eeb6601cc0248416079ea69cabc0718325eaef0",
+  "arch07_crosswalk_matrix_commit": "9838d25f749edd75b31b13d9777fc9f9c9780f0b",
+  "scheduler_spec_audit_commit": "9169c2da417f90028dc9ad85129b31019d5c7042",
   "qualification_decision": "QUALIFIED_SOURCE_BOUND_TEMPORAL_SEMANTICS_PREPARATORY_EVIDENCE",
   "qualification_changed": false,
   "historical_reference_qualified": false,
   "canonical_time_admitted": false,
   "production_migration": "NOT_ADMITTED",
   "new_evidence": {
-    "exact_persisted_static_tool_blob_reexecuted": true,
-    "audit_result": "PASS",
+    "exact_persisted_static_source_tool_reexecuted": true,
+    "source_order_audit_result": "PASS",
     "frozen_source_hash_match": true,
     "b2_evidence_generated": false,
-    "architecture_migration_feedback_persisted": true
+    "architecture_migration_feedback_persisted": true,
+    "scheduler_adapter_qualification_spec_persisted": true,
+    "scheduler_sentinel_rows": 26,
+    "scheduler_sentinel_structural_audit": "PASS",
+    "scheduler_matrix_git_blob_sha": "f214de825d5fa33252d817d55b73881c592cb532",
+    "scheduler_audit_tool_git_blob_sha": "f98d5b73107a5094ca049430cbbcde0e4f32c82a",
+    "arch07_temporal_crosswalk_persisted": true,
+    "arch07_authoritative_head_used": "7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6"
   },
+  "scheduler_evidence_tiers": [
+    "SOURCE_STATIC",
+    "SYNTHETIC_CAUSAL",
+    "ARCH_CONTRACT",
+    "REFERENCE_BEHAVIOR",
+    "SCIENTIFIC_ADMISSION"
+  ],
+  "reference_behavior_sentinels_blocked": [
+    "TS01-S21",
+    "TS01-S22",
+    "TS01-S23",
+    "TS01-S24",
+    "TS01-S25"
+  ],
   "new_artifacts": [
     "integration/animo-temporal/TS01_POST_CLOSE_VERIFICATION.json",
-    "docs/temporal/ARCHG01_TEMPORAL_FEEDBACK.md"
+    "docs/temporal/ARCHG01_TEMPORAL_FEEDBACK.md",
+    "docs/temporal/SCHEDULER_ADAPTER_QUALIFICATION_SPEC.md",
+    "integration/animo-temporal/TS01_SCHEDULER_SENTINELS.csv",
+    "tools/audit_ts01_scheduler_spec.py",
+    "integration/animo-temporal/TS01_SCHEDULER_SPEC_AUDIT.json",
+    "docs/temporal/ARCH07_TEMPORAL_CROSSWALK.md",
+    "integration/animo-temporal/TS01_ARCH07_CROSSWALK.csv"
   ],
+  "crosswalk_findings": {
+    "arch07_strong_coverage": [
+      "TS01-S14 crop uptake linkage via C005/C006",
+      "TS01-S20 hydrology interval/generation binding via H001/H009/H011/T001",
+      "TS01-S22 generic clean split-run framework via T008",
+      "TS01-S26 reject/replay atomicity via T002/T009"
+    ],
+    "arch07_partial_coverage": [
+      "potential journal exclusion",
+      "report observer/reset nonownership",
+      "final checkpoint generation and serializer purity",
+      "management/crop/year split-run boundary cases"
+    ],
+    "scheduler_owned_not_arch07": [
+      "clock-before-staging",
+      "result-to-start staging",
+      "event endpoint predicates",
+      "add-before-plough ordering",
+      "potential-before-actual process chain",
+      "Resp_miner previous-neighbour reads",
+      "Sqnu sequential transport",
+      "NH4-to-NO3 dependency chain",
+      "per-layer coupled phosphorus solve",
+      "year closeout/new-year initialization ordering"
+    ]
+  },
   "remaining_blockers_unchanged": [
     "independent B2 historical reference remains unavailable",
     "continuous-versus-split restart behaviour remains unqualified",
@@ -30,8 +89,9 @@
     "discrepancy-specific B3 and numerical-policy work remains separate"
   ],
   "recommended_next": [
-    "use the TS01 scheduler sentinels when a process-scheduler or adapter qualification harness is opened",
-    "feed this TS01 feedback into a future authoritative ARCHG01 follow-up or governance consolidation rather than silently editing ARCHG01 conclusions",
-    "execute split-run and order-sentinel behavioural qualification only after PREP02R obtains independently trustworthy reference evidence"
+    "use TS01_SCHEDULER_SENTINELS.csv as the single temporal-source baseline when a scheduler or management-event adapter qualification workunit is opened",
+    "extend a future ARCH07 runtime fixture set by reference to TS01 sentinel IDs rather than duplicating temporal assumptions",
+    "design a separate canonical TIME candidate only after distinguishing source-equivalence requirements from future transaction/retry policy",
+    "execute split-run and order/event behavioural qualification only after PREP02R obtains independently trustworthy reference evidence"
   ]
 }
