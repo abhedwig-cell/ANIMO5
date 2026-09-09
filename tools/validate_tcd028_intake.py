@@ -19,6 +19,7 @@ B3_STATUS = ROOT / "integration/animo-b3/ANIMO-B3Q01_STATUS.json"
 RESERVATION = ROOT / "integration/animo-b3/TCD-028_RESERVATION.json"
 APPEND_RECON = ROOT / "integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_RECONCILIATION.json"
 APPEND_RECON_SUPP1 = ROOT / "integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_SUPPLEMENT_01_RECONCILIATION.json"
+APPEND_RECON_SUPP2 = ROOT / "integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_SUPPLEMENT_02_RECONCILIATION.json"
 
 EXPECTED_GOVERNANCE_HEAD = "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
 EXPECTED_REGISTER_SHA = "224acc350fde69d3c4aebed8628c0f945e0b3367"
@@ -56,10 +57,25 @@ def validate_first_append() -> dict:
     return recon
 
 
+def validate_supplement(path: Path, tail_before: str, tail_after: str, ids_expected: list[str], label: str) -> None:
+    if not path.is_file():
+        raise AssertionError(f"{label} registered IDs but append reconciliation is missing")
+    recon = json.loads(path.read_text(encoding="utf-8"))
+    canonical = recon.get("canonical_register", {})
+    if canonical.get("tail_before") != tail_before or canonical.get("tail_after") != tail_after:
+        raise AssertionError(f"{label} append reconciliation has unexpected register tails")
+    if canonical.get("append_only") is not True or canonical.get("existing_rows_changed") is not False:
+        raise AssertionError(f"{label} TCD registration is not proven append-only")
+    if recon.get("registered_not_admitted") != ids_expected:
+        raise AssertionError(f"{label} append reconciliation has unexpected registered IDs")
+    assert_recon_non_admission(recon, f"{label} append reconciliation")
+
+
 def validate_register_phase(register_ids: list[str]) -> str:
     pre_append_ids = [f"TCD-{i:03d}" for i in range(1, 28)]
     first_append_ids = [f"TCD-{i:03d}" for i in range(1, 38)]
     supplement_1_ids = [f"TCD-{i:03d}" for i in range(1, 40)]
+    supplement_2_ids = [f"TCD-{i:03d}" for i in range(1, 41)]
 
     if register_ids == pre_append_ids:
         return "PRE_APPEND_RESERVATION_PHASE"
@@ -70,18 +86,14 @@ def validate_register_phase(register_ids: list[str]) -> str:
 
     if register_ids == supplement_1_ids:
         validate_first_append()
-        if not APPEND_RECON_SUPP1.is_file():
-            raise AssertionError("TCD-038/039 are registered but supplemental append reconciliation is missing")
-        recon = json.loads(APPEND_RECON_SUPP1.read_text(encoding="utf-8"))
-        canonical = recon.get("canonical_register", {})
-        if canonical.get("tail_before") != "TCD-037" or canonical.get("tail_after") != "TCD-039":
-            raise AssertionError("supplemental append reconciliation has unexpected register tails")
-        if canonical.get("append_only") is not True or canonical.get("existing_rows_changed") is not False:
-            raise AssertionError("supplemental TCD registration is not proven append-only")
-        if recon.get("registered_not_admitted") != ["TCD-038", "TCD-039"]:
-            raise AssertionError("supplemental append reconciliation has unexpected registered IDs")
-        assert_recon_non_admission(recon, "supplemental append reconciliation")
+        validate_supplement(APPEND_RECON_SUPP1, "TCD-037", "TCD-039", ["TCD-038", "TCD-039"], "supplement-01")
         return "POST_APPEND_REGISTERED_NOT_ADMITTED_PHASE_TCD039"
+
+    if register_ids == supplement_2_ids:
+        validate_first_append()
+        validate_supplement(APPEND_RECON_SUPP1, "TCD-037", "TCD-039", ["TCD-038", "TCD-039"], "supplement-01")
+        validate_supplement(APPEND_RECON_SUPP2, "TCD-039", "TCD-040", ["TCD-040"], "supplement-02")
+        return "POST_APPEND_REGISTERED_NOT_ADMITTED_PHASE_TCD040"
 
     raise AssertionError(f"unexpected canonical register sequence for TCD-028 intake: {register_ids}")
 
