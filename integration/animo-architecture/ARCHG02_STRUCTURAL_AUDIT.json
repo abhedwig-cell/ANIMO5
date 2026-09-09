@@ -1,0 +1,26 @@
+{
+  "work_unit": "ANIMO-ARCHG02",
+  "audit_type": "FINAL_TS01_TIME01_CANDIDATE_ARCHITECTURE_REVALIDATION_STRUCTURAL_AUDIT",
+  "result": "PASS",
+  "tested_head": "47501962f2d0c3d1977971471744113e8b93392e",
+  "github_actions_run_id": 34319321710,
+  "github_actions_job_id": 102362254769,
+  "checks": [
+    {"check": "required_artifacts_present", "result": "PASS", "count": 4},
+    {"check": "authoritative_input_heads_pinned", "result": "PASS", "count": 4},
+    {"check": "exact_temporal_revalidation_coverage", "result": "PASS", "rows": 21},
+    {"check": "critical_temporal_dispositions_locked", "result": "PASS"},
+    {"check": "migration_seams_remain_nonproduction", "result": "PASS", "seams": 13},
+    {"check": "architecture_revalidation_guards_present", "result": "PASS"},
+    {"check": "qualification_boundary_locked", "result": "PASS"}
+  ],
+  "historical_reference_qualified": false,
+  "canonical_state_admitted": false,
+  "canonical_time_admitted": false,
+  "b3_scientific_admission": false,
+  "b4_baseline_admitted": false,
+  "production_migration_admitted": false,
+  "runtime_scheduler_executed": false,
+  "legacy_source_modified": false,
+  "historical_testcase_modified": false
+}
