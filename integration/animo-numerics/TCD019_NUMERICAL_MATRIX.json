@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0.0",
+  "work_unit": "ANIMO-NQ02",
+  "target": "TCD-019",
+  "evidence_role": "B1_DIAGNOSTIC_ONLY",
+  "pins": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "natural_case": "LWKM_gras_1040.2021.2045",
+    "natural_case_manifest_sha256": "2a5bfc4ffafc53cda50f03a74a16b5aa8e83efd8633b23e8efbc792ed1dc3338",
+    "natural_case_chempar_sha256": "b591c59110ce33dfc0ff7ad55e57431b7335d9c4834b4a283a0c8d26ae275c3d",
+    "frozen_transorp_sha256": "65ab0f70ed7cc4f1c0012ca95bcdddeb5c26dd21b09df0ec61b7b269e51cd0ad",
+    "frozen_transgen_sha256": "cd5efa76c1a4840b50901ee5015940b74c5fe4df79aca43d53a4a4cb77b9fecb",
+    "nq01_authority_head": "e558dff12b127e0662cad62beea7527b42ad89ac",
+    "b3q01_head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "natural_activation": {
+    "OPTCXFA": 2,
+    "fast": "Langmuir",
+    "NCXFA": 1,
+    "OPTCXSL": 3,
+    "slow": "Freundlich",
+    "NCXSL": 3,
+    "tcd024_active": false
+  },
+  "canonical_diagnostic_precision": {
+    "compiler": "GNU Fortran 14.2.0",
+    "default_real_bits": 64,
+    "flags": ["-ffree-form", "-ffree-line-length-none", "-fallow-argument-mismatch", "-std=legacy", "-fdefault-real-8", "-fdefault-double-8", "-fno-automatic"],
+    "uninstrumented_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "reference_qualified": false
+  },
+  "reference_residual": {
+    "name": "exact_constitutive_local_P_conservation_residual",
+    "scope": "accepted states evaluated with exact fast constitutive storage and source kinetic slow-storage equation, independent of Sorpfast small-delta tangent bookkeeping",
+    "baseline_max_abs": 1.0007604587941588e-06,
+    "baseline_mean_abs": 1.9857497039147934e-08
+  },
+  "high_precision_tangent_decomposition": {
+    "precision_decimal_digits": 80,
+    "legacy_tangent_branch_calls": 25923,
+    "sum_exact_minus_tangent_kg_ha": 0.2546290594721548,
+    "max_local_abs_kg_ha": 0.0005011328758797566,
+    "float64_sum_kg_ha": 0.2546290594721141,
+    "difference_80digit_minus_float64_kg_ha": 4.07e-14
+  },
+  "legacy_threshold_matrix": [
+    {"id":"tangent_1e-6","tangent_switch":"1e-6","Small":"1e-4","source_sha256":"eb8e1e1a3a27fe1606f926640877e9410341da8d60e05a706318024f5e04b54c","exe_sha256":"8f31d9a1571ece6d6813536ad54e19208e89fa3be46c8caf11223bdd0c41155a","paths":{"newton":27000},"iter_mean":1.2423333333,"iter_max":3,"eq_max":1.0007604588e-6,"eq_mean":1.9857497039e-8,"P_cum_kg_ha":-0.27254515116348993,"P_max_local_kg_ha":0.0005011328758918021},
+    {"id":"tangent_1e-7","tangent_switch":"1e-7","Small":"1e-4","source_sha256":"4b27c52f8c5d8966af0293f8a8366144723946fc5dfd44b7410db37c93af5186","exe_sha256":"2ccad460d75d9392d3dcda06524ea0668374a3e3b4781eeb6ca95925d5a25976","paths":{"newton":27000},"iter_mean":1.2422962963,"iter_max":3,"eq_max":4.7266736963e-7,"eq_mean":1.1651905397e-9,"P_cum_kg_ha":-0.01962823676380751,"P_max_local_kg_ha":0.0002569152023412644},
+    {"id":"tangent_1e-8","tangent_switch":"1e-8","Small":"1e-4","source_sha256":"628525a6f62f452f44185c54e05f4494cdee4d3200dd2f6d065416e920b6bd55","exe_sha256":"f8da828fc29a8db003f67846bf531d906aabd9d9a3d37257c39c34957323e795","paths":{"newton":27000},"iter_mean":1.2422962963,"iter_max":3,"eq_max":4.7267114806e-7,"eq_mean":1.0400305764e-9,"P_cum_kg_ha":-0.01797424729186776,"P_max_local_kg_ha":0.0002569152032477569},
+    {"id":"tangent_1e-9","tangent_switch":"1e-9","Small":"1e-4","source_sha256":"33e893179d75db47d83a0571a51e4eeae04f9cdd46d813a7255e3cf52775173c","exe_sha256":"d9aac00accf91383acbf22b1d5705b2d225b43e80c8f212542f684e8faabf318","paths":{"newton":27000},"iter_mean":1.2422962963,"iter_max":3,"eq_max":4.7267114797e-7,"eq_mean":1.0400129912e-9,"P_cum_kg_ha":-0.017973962837645012,"P_max_local_kg_ha":0.0002569152032477569},
+    {"id":"tangent_1e-10","tangent_switch":"1e-10","Small":"1e-4","source_sha256":"b8ac838e358778ea6422e2cf47d413b7298bf7da8c7a48924fa3a75070e4f30e","exe_sha256":"c116c26803fdf9fd02d08e43b1a7b9f0ab358bb864ad72fcfd11c3671de2565a","paths":{"newton":27000},"iter_mean":1.2422962963,"iter_max":3,"eq_max":4.7267114797e-7,"eq_mean":1.0400129912e-9,"P_cum_kg_ha":-0.017973962837645012,"P_max_local_kg_ha":0.0002569152032477569},
+    {"id":"tangent_1e-12","tangent_switch":"1e-12","Small":"1e-4","source_sha256":"cdd1bb3b1504c3177fc14a243f40d4ae02bb70ef0e3aee502ee16c90b6f39314","exe_sha256":"2dde637b8dee52d61a77f652733912914ab2fef5edb7f7da72fe351be58755fa","paths":{"newton":27000},"iter_mean":1.2422962963,"iter_max":3,"eq_max":4.7267114797e-7,"eq_mean":1.0400129912e-9,"P_cum_kg_ha":-0.017973962837645012,"P_max_local_kg_ha":0.0002569152032477569},
+    {"id":"Small_1e-5","tangent_switch":"1e-6","Small":"1e-5","source_sha256":"aaf0c6ac832669d1bed5e1d91c5fabccd6cc3a17b8e3b5e088ef325d10efbb5e","exe_sha256":"f8cb67f6b5825f1f2822d75cb048b6b0bffa03cc934559991e4aba91013e2102","paths":{"newton":27000},"iter_mean":1.6448888889,"iter_max":3,"eq_max":1.0007604844e-6,"P_cum_kg_ha":-0.25792346126013543},
+    {"id":"Small_1e-6","tangent_switch":"1e-6","Small":"1e-6","source_sha256":"f61501cebfdaeffeb3d0e48e5ffd16243abd1fe703a6e202be0c4a68748bdf97","exe_sha256":"87639fe668ed163b8bb171ed52572db51e604e6913f771c488d640a58790309e","paths":{"newton":27000},"iter_mean":1.9248518519,"iter_max":3,"eq_max":1.0007604846e-6,"P_cum_kg_ha":-0.25507062538142666},
+    {"id":"Small_1e-7","tangent_switch":"1e-6","Small":"1e-7","source_sha256":"3b0e57f92cbf1e0c7945ecb6032a749c15916f95b3618bd8b980bee7b6320b5e","exe_sha256":"6dfaee68fc1c0c6eefac82507dc4b6163d40da4cef0384b5c9ab21b0c31fd06e","paths":{"newton":27000},"iter_mean":2.0502592593,"iter_max":4,"eq_max":1.0007604846e-6,"P_cum_kg_ha":-0.2548945926053637},
+    {"id":"Small_1e-8","tangent_switch":"1e-6","Small":"1e-8","source_sha256":"79673f06300c34163ef363e74e438e1965d4ca60db62c0c3673c85aa20ecef3b","exe_sha256":"17528cc2487e67b5405c75e60daa314d1dc3abf2ca36221f14269cc2cb82cf75","paths":{"newton":27000},"iter_mean":2.0740370370,"iter_max":11,"eq_max":1.0007604845e-6,"P_cum_kg_ha":-0.25489423322790195},
+    {"id":"Small_1e-10","tangent_switch":"1e-6","Small":"1e-10","source_sha256":"966cbb776828452f94fada61790f46054411f54c8f015d430fd8971531a2c3e0","exe_sha256":"28d8e919010b4750f9e114256213ee949c0dbcc95549e37e7ecb4ada14d5a824","paths":{"newton":26995,"bisection":5},"iter_mean":2.2595555556,"iter_max":9,"eq_max":1.0007604945e-6,"P_cum_kg_ha":-0.2548966453723643},
+    {"id":"combined_Small_1e-5","tangent_switch":"1e-12","Small":"1e-5","source_sha256":"f63f01f8557ecbf428b56fa9e104a6a37cca0775b3a3945c155c81f7e04be958","exe_sha256":"7c76c960d0d81adcbbcf7f904c8f20a038023fdc3a297e8bc6e359216e974bcd","paths":{"newton":27000},"iter_mean":1.6481111111,"iter_max":3,"eq_max":9.6845802183e-8,"P_cum_kg_ha":-0.0032439496050659785},
+    {"id":"combined_Small_1e-6","tangent_switch":"1e-12","Small":"1e-6","source_sha256":"fe0bbb7682aa587f0ba8f11b385c125b50a05643c07af6e617dc4baa39a8086d","exe_sha256":"a705d0b3032793bf9e92f7d44a5b93460baaf8ea1bc4e988180bf872f17c6e31","paths":{"newton":27000},"iter_mean":1.9809629630,"iter_max":3,"eq_max":3.3393498966e-8,"P_cum_kg_ha":-0.00016934665472093373},
+    {"id":"combined_Small_1e-7","tangent_switch":"1e-12","Small":"1e-7","source_sha256":"41ac6756dad0dbc9cdb1c90b550336e362a9b8d6c9b3ae07ff93c621b597ffa2","exe_sha256":"12e94cb2d1bb0a660516e4ba2bad8aea2b0054aa45dadd229e45e2a7d5b88229","paths":{"newton":27000},"iter_mean":2.1687037037,"iter_max":4,"eq_max":3.3393499244e-8,"P_cum_kg_ha":-4.5670806142893613e-7,"P_max_local_kg_ha":5.1841773501e-7},
+    {"id":"combined_Small_1e-8","tangent_switch":"1e-12","Small":"1e-8","source_sha256":"33a45c2f4592ab72dedd9ab21b3dfa93153155fbddddf03ba85f1096f63fe64b","exe_sha256":"17d4e5d8e48bce29927b88e30e55820e4dc82081d1100e3210cbe428fe649a4e","paths":{"newton":26999,"bisection":1},"iter_mean":2.2118888889,"iter_max":19,"eq_max":3.3393498966e-8,"P_cum_kg_ha":9.633743430599514e-6},
+    {"id":"combined_Small_1e-10","tangent_switch":"1e-12","Small":"1e-10","source_sha256":"d58cca474eca26e71058052f5a48351ab1d20ac06442d13226c564f95c5103d8","exe_sha256":"93b8b5e5b8c0aa2920fb58d0868069475e5f9963f3563bd1432930c82d42e1bb","paths":{"newton":26995,"bisection":5},"iter_mean":2.5159259259,"iter_max":20,"eq_max":3.3393499077e-8,"P_cum_kg_ha":6.406829101607285e-6}
+  ],
+  "threshold_free_constitutive_secant": [
+    {"Small":"1e-4","source_sha256":"b2b5f106eb916ac5b3c228dbb9937451cea4fc38d1bf2e0161869168ba9f7609","exe_sha256":"b71b985078260acf65fa219d411bb31bca67efbb59ad9f77ebd48e9d4039206a","paths":{"newton":27000},"P_cum_kg_ha":-0.017890744282408444,"eq_max":4.7248914489e-7},
+    {"Small":"1e-5","source_sha256":"5574de6919b8727ed72ccdab76a09f523b82dd5524cdfccced0898f2244359df","exe_sha256":"7fb5559fb3cfd4e6cf4388a185a8c5f4e0d206c4814f0e69004fb927dcf585c5","paths":{"newton":27000},"P_cum_kg_ha":-0.003294471702073513,"eq_max":9.6845053310e-8},
+    {"Small":"1e-6","source_sha256":"d147779723e3eb360d97f2575b27431d90f97ba7fa25af54cde2686a8ddd9b49","exe_sha256":"4370bb2a5ac44c255950baeff872774a9bcfecbe9c8f0f26547a618369ab2302","paths":{"newton":27000},"P_cum_kg_ha":-0.00044164215535776405,"eq_max":8.7572293084e-8},
+    {"Small":"1e-7","source_sha256":"cb3c51e6ee34699428b7b23b6f1689cd06d7afbc5c4395d1994e6458d881c69f","exe_sha256":"e3dbba8da71af149d2838708cfb99c367b42d6405ef7eed051c2ac2728f6d5a1","paths":{"newton":27000},"P_cum_kg_ha":-0.000265610150063999,"eq_max":8.7572293084e-8},
+    {"Small":"1e-8","source_sha256":"09edc89af0c4836670a350a0e029ce6db3d1e952e77c16a480d018fa592bedab","exe_sha256":"2a5f61381ba6b1f263f0f390dc2e69f8ebe7829eca4d60319a2efba208eb69ae","paths":{"newton":27000},"P_cum_kg_ha":-0.0002652507279743156,"eq_max":8.7572293139e-8},
+    {"Small":"1e-10","source_sha256":"35ec65c2b8d0b9599758adf93786d945e848557e1bfe693b097b168345d973bb","exe_sha256":"833168c3899af72ad7e5ad88465f124fa4f04deddf26b05ba0668c3905a5fe6e","paths":{"newton":26997,"bisection":3},"P_cum_kg_ha":-0.00026684419964385084,"eq_max":8.7572293139e-8}
+  ],
+  "actual_stored_state_secant_counterexample": {
+    "result_invariant_across_tested_Small": {"paths":{"bisection":27000},"iter_mean":16.4727407407,"iter_max":30,"P_cum_kg_ha":-37.49636812314591,"P_max_local_kg_ha":0.22171143932915705,"eq_max":0.0004434228786582839},
+    "variants": [
+      {"Small":"1e-4","source_sha256":"75a0188702492e95ab7e75de9d7d093c879ebf2304c862054a027fb46cf3a3a9","exe_sha256":"0b8a5d706eb66094fa6441b3c957d009569e902d001fe92247f20bacd7509dd6"},
+      {"Small":"1e-5","source_sha256":"0d1091d80e3a400f7725223751eddd7a42049b4f9d5f34834a1a8e4121804392","exe_sha256":"578a3cd8ab10e1c4afcf620d6ef8df3c35fa70c6ccd797351043730de69df59e"},
+      {"Small":"1e-6","source_sha256":"d39c989e808d845011c4e35cd527169f90aa8389d135a4b0f5ec261f6457c3fa","exe_sha256":"4934ef355af3bb79377a5134d7e5875ee82030613ab6c5333a92e7842d4280b9"},
+      {"Small":"1e-7","source_sha256":"109f644e7fcb3e77c10def0cc7394179f55c32e2632fa25b31c7299f522d992e","exe_sha256":"66b95af290dd318409837c9f7cc21dfd85fc9af161748ff576a829879f3f55bd"},
+      {"Small":"1e-8","source_sha256":"822696e24d0f2768f8f3534463d3879edeb0baa65bd34cbbb3ba952696ea4b9d","exe_sha256":"4d35571e6d208db6bff58c3bc4aa92a9b01c0478350425fd445abf2804dda076"},
+      {"Small":"1e-10","source_sha256":"ce8ed44d2bc6706e90bbcc2fd9f85a3dca2f29e6ecb338d175a6fe36f9ebd39a","exe_sha256":"f44580a1d34c41223d3cc0dde7a79c6ed601f7cd12c9138eefcd8e6da8eaa7b6"}
+    ]
+  },
+  "trajectory_refinement": {
+    "tangent_1e-7_to_1e-8": {"max_abs_delta_Rsc":7.052536001484096e-10,"max_abs_delta_Avc":7.052048370714999e-10},
+    "tangent_1e-8_to_1e-9": {"max_abs_delta_Rsc":2.055065644566978e-13,"max_abs_delta_Avc":1.3683711180486908e-11},
+    "tangent_1e-9_to_1e-10": {"max_abs_delta_Rsc":0.0,"max_abs_delta_Avc":0.0},
+    "tangent_1e-10_to_1e-12": {"max_abs_delta_Rsc":0.0,"max_abs_delta_Avc":0.0},
+    "combined_1e-6_to_1e-7": {"max_abs_delta_Rsc":1.8816560695645787e-11,"max_abs_delta_Avc":1.8375150925446565e-11},
+    "constitutive_secant_1e-7_to_1e-8": {"max_abs_delta_Rsc":1.6833923306962956e-13,"max_abs_delta_Avc":5.652869014896589e-12}
+  },
+  "initialization_partition_kg_ha": {
+    "baseline": {"first_timestep":-0.000529308480052769,"after_first":-0.27201584268343715},
+    "combined_Small_1e-7": {"first_timestep":8.082670032506048e-7,"after_first":-1.264975064679541e-6},
+    "constitutive_secant_Small_1e-7": {"first_timestep":-0.00026434521232024925,"after_first":-1.2649377437496832e-6}
+  },
+  "precision_sensitivity": {
+    "r8": "PASS_DIAGNOSTIC",
+    "r4": "INVALID_FOR_PROCESS_COMPARISON_INPUT_BINARY_INTERFACE_FAILURE_BEFORE_SOLVER",
+    "r4_executable_sha256": "a20680a80a5d4328bebbc38cad370582e10cc025bfce1b783e2a6d3da0207b65",
+    "independent_80digit_math": "PASS"
+  },
+  "time_step_refinement": "NOT_EXECUTED_NO_QUALIFIED_FORCING_SUBDIVISION_CONTRACT",
+  "initial_guess_refinement": "NOT_EXECUTED_NO_SOURCE_BOUND_ALTERNATIVE_INITIAL_GUESS_POLICY",
+  "tcd024_interaction": {
+    "evidence_role": "B1_SYNTHETIC_INTERACTION_ONLY",
+    "input_manifest_sha256": "bbacab1a4761ff286778533dc46ac09ce41bcc54390a45698d6c9a937eb1d45e",
+    "chempar_sha256": "884bad9603b5c511dd438ca3a7f468a7d1d5582ab240bffbd8e73754bf17dc60",
+    "metadata_sha256": "a1d478a0a0f74c2de0d989979a71ca396aba136f3a6f28fb4077f2130fa28d54",
+    "variants": [
+      {"id":"legacy","source_sha256":"6ffe89a48e32fd527b915fefa90ab5b6e291194d8802b4853bf6823e2383335e","exe_sha256":"2b646b1c6b49f236ed498fd48aee66d110467dd3bacceae51bc6523df26d090d","paths":{"newton":26644,"retry_return":65},"P_cum_kg_ha":-25607.380380632887,"eq_max":0.008384599538629578},
+      {"id":"tcd024_only","source_sha256":"9b21544b5b8c91939c594885c1403c0fd79c49d690a79917e134cdeed4970ee3","exe_sha256":"a3a5dd9deed62ce2dfabee127b7a26be0d12193155ce47a3cf1c708aeaaa8fa5","paths":{"newton":27000},"P_cum_kg_ha":-2.493197715569813,"eq_max":7.73625504851827e-7},
+      {"id":"tcd019_policy_only","source_sha256":"3cdcd2c20cfeb25968e009fadebbbf15abe253e3b237541994077daa8ecab11d","exe_sha256":"cbb74b3b32244e6c1c3d0a47bd105cd10f2483e9eb164ff2e852ecf6e6509eee","paths":{"newton":26531,"bisection":23,"retry_return":2},"P_cum_kg_ha":-27138.53641374927,"eq_max":0.010065943386188714},
+      {"id":"combined","source_sha256":"4553191fc34b0422c9107decc8cd72cfd40cfc0a89fded74c90d89fea0fb58b6","exe_sha256":"06337ebe65d86c2a4788c6c64e421e1326f64920a40cce0937d0bbbdfccd1cdd","paths":{"newton":26978,"bisection":22},"P_cum_kg_ha":19.055956824205026,"eq_max":0.000380101537903757}
+    ],
+    "outcome": "INTERACTION_NONADDITIVE_ADDITIONAL_SLOW_LANGMUIR_NUMERICAL_SEAMS_DETECTED_NO_COMPOSITION_ADMISSION"
+  },
+  "decision": {
+    "legacy": "LEGACY_NUMERICAL_POLICY_NONCONVERGENT_OR_BIASED",
+    "candidate": "CONVERGENT_POLICY_CANDIDATE_WITH_TCD014_INITIALIZATION_BOUNDARY",
+    "tolerance": "TOLERANCE_NOT_YET_QUALIFIED",
+    "corrected_legacy_admitted": false,
+    "B3_admitted": false,
+    "production_migration_admitted": false
+  }
+}
