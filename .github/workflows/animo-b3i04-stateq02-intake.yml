@@ -1,0 +1,46 @@
+name: ANIMO-B3I04 STATEQ02 incremental intake validation
+
+on:
+  push:
+    branches:
+      - work/animo-b3i04-stateq02-incremental-intake
+  pull_request:
+    paths:
+      - 'docs/b3/POST_STATEQ02_INCREMENTAL_STATE_INTAKE.md'
+      - 'integration/animo-b3/ANIMO-B3I04_STATUS.json'
+      - 'integration/animo-b3/B3I04_STATEQ02_FINDING_CROSSWALK.csv'
+      - 'integration/animo-b3/B3I04_TCD_RESERVATIONS.json'
+      - 'tools/b3i04/validate_b3i04.py'
+      - '.github/workflows/animo-b3i04-stateq02-intake.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate B3I04 intake
+        run: python tools/b3i04/validate_b3i04.py
+
+      - name: Enforce governance-only scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=814ea660d367494432beb63ea78298d1f6cd73d7
+          git diff --name-only "$base..HEAD" | tee /tmp/b3i04_changed.txt
+          if grep -E '^(src/|reference/|docs/quality/THEORY_CODE_DISCREPANCY_REGISTER\.csv$)' /tmp/b3i04_changed.txt; then
+            echo 'B3I04 may not modify production source, frozen references, or the canonical TCD register.' >&2
+            exit 1
+          fi
+          unexpected=$(grep -Ev '^(docs/b3/POST_STATEQ02_INCREMENTAL_STATE_INTAKE\.md|integration/animo-b3/ANIMO-B3I04_STATUS\.json|integration/animo-b3/B3I04_STATEQ02_FINDING_CROSSWALK\.csv|integration/animo-b3/B3I04_TCD_RESERVATIONS\.json|tools/b3i04/validate_b3i04\.py|\.github/workflows/animo-b3i04-stateq02-intake\.yml)$' /tmp/b3i04_changed.txt || true)
+          if [ -n "$unexpected" ]; then
+            echo 'Unexpected B3I04 changed paths:' >&2
+            echo "$unexpected" >&2
+            exit 1
+          fi
