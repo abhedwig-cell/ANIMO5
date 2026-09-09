@@ -1,0 +1,55 @@
+{
+  "work_unit": "ANIMO-B3A03",
+  "target": "TCD-018",
+  "record_type": "SOURCE_SEAM_PIN_NO_ADMISSION",
+  "local_archive_recheck": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "matches_frozen_b0": true
+  },
+  "source_files": {
+    "Hydro_detailed.for": {
+      "sha256": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
+      "argument_surface_lines": "10-19",
+      "argument_observation": "Sic and Sict are explicit Hydro_detailed arguments at line 14.",
+      "whole_profile_balance_lines": "235-247",
+      "exact_storage_observation": "For Iopthyvs==1, Badev subtracts (Sict-Sic), (Pnt-Pn), (Snt-Snla), then adds layer matrix-water begin-minus-end storage.",
+      "exact_interception_term_lines": "241-243"
+    },
+    "Outbal_calc.for": {
+      "sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+      "argument_surface_lines": "10-45 and continuation beyond",
+      "sic_sict_token_count": 0,
+      "sic_sict_argument_present": false,
+      "bawa_finalization_lines": "286-332",
+      "storage_terms_present": [
+        "Stpn_e-Stpn_b",
+        "Stsn_e-Stsn_b",
+        "Stsm_e-Stsm_b"
+      ],
+      "interception_flux_present": "Bawa(Eint) is subtracted at line 304.",
+      "interception_storage_term_present": false,
+      "causal_interface_claim": "The Bawa report observes interception evaporation but cannot observe interception begin/end storage because Sic/Sict are absent from the Outbal_calc interface."
+    },
+    "Init.for": {
+      "sha256": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+      "promotion_lines": "339-350",
+      "exact_interception_promotion": "If(Iopthyvs .Eq. 1 .and. Hlpimp==11) Sic = Sict",
+      "line": 348,
+      "qualification_note": "The readiness claim does not broaden this promotion condition. Any corrected ledger must observe the existing lifecycle exactly as implemented."
+    }
+  },
+  "atomic_causal_chain": [
+    "Sic/Sict are existing physical interception storage state owned by the detailed hydrology path.",
+    "Hydro_detailed whole-profile closure already contains -(Sict-Sic).",
+    "Outbal_calc subtracts interception evaporation but has no Sic/Sict arguments and no interception storage term.",
+    "Therefore the TCD-018 correction surface is the reporting/ledger interface, not hydrology physics or state representation."
+  ],
+  "prohibited_inferences": [
+    "The line-level source pin does not qualify historical Intel execution.",
+    "The line-level source pin does not prove global water closure.",
+    "The line-level source pin does not convert the observed 0.0601 mm residual into a tolerance.",
+    "The line-level source pin does not complete independent second-line review.",
+    "The line-level source pin does not admit TCD-018."
+  ]
+}
