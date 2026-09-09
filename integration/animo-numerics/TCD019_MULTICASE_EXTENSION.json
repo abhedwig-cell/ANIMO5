@@ -1,0 +1,180 @@
+{
+  "work_unit": "ANIMO-NQ02",
+  "target": "TCD-019",
+  "evidence_class": "B1_DIAGNOSTIC_NATURAL_MULTICASE_EXTENSION_ONLY",
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "runner_sha256": "28104f4e8e131d7cfcf1794f4504aac5fa7eca10ca9285630a91d37b90836958",
+  "runner_persisted_in_repository": false,
+  "common_sorption_scope": {
+    "optcxfa": 2,
+    "ncxfa": 1,
+    "fast_sorption": "Langmuir",
+    "optcxsl": 3,
+    "ncxsl": 3,
+    "slow_sorption": "Freundlich",
+    "tcd024_naturally_active": false
+  },
+  "diagnostic_descendants": {
+    "observer_transgen_sha256": "28a223e5f9007bb52bcb5e97871f1c952b4d61146fea5ff5ea2d32b2e6557ab1",
+    "baseline": {
+      "transorp_sha256": "bdd7067972ce73489c348503793842f266401adcb910d4c7107f1b9fd19f4601",
+      "executable_sha256": "b2afce3c12b994ca073dd1bca3874dc68ae731cf73c0f28ee0af6f84e9e2548a"
+    },
+    "exact_storage_small_1e6": {
+      "transorp_sha256": "b5791e143578327793330763f1a7a9ae5da755b69517a36c5af507a8df229dd4",
+      "executable_sha256": "86782af83b4f1ba536864316cce8e48623e850f0047cb9b8a59322f1b5e880d3"
+    },
+    "exact_storage_small_1e7": {
+      "transorp_sha256": "2a6e5d4065f9d18025b808aa43571d09b2f29d7810990b0cbd5802219fed366f",
+      "executable_sha256": "eadfab62d27533488d28ebafe5586aaf353f651ca867ecb694d4366b9262aca4"
+    },
+    "exact_storage_small_1e8": {
+      "transorp_sha256": "10b1bfc3022303546c59490ed962a218ea801272102712794a1adb6c9649109e",
+      "executable_sha256": "925c6e6e00778e758ea3dd22c5540ad924986baed3e8ced35d412fb480e10e79"
+    }
+  },
+  "cases": {
+    "CranGrass": {
+      "baseline": {
+        "records": 64284,
+        "cumulative_R_cons_kg_ha": -0.7658941622476643,
+        "sum_abs_R_cons_kg_ha": 0.8340663872254988,
+        "first_timestep_R_cons_kg_ha": -0.7235825146784507,
+        "post_first_timestep_R_cons_kg_ha": -0.04231164756921361,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.04231703066141595,
+        "max_R_eq_L1": 1.290648116347685e-08,
+        "bisections": 0
+      },
+      "exact_storage_small_1e6": {
+        "cumulative_R_cons_kg_ha": -0.7235800569524753,
+        "post_first_timestep_R_cons_kg_ha": -1.1649386829136372e-05,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 1.866008014346068e-05,
+        "max_R_eq_L1": 1.0875670471506915e-10,
+        "bisections": 0
+      },
+      "exact_storage_small_1e7": {
+        "cumulative_R_cons_kg_ha": -0.7235682812602482,
+        "post_first_timestep_R_cons_kg_ha": 1.2630552006284987e-07,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 6.884101474302501e-06,
+        "max_R_eq_L1": 1.8971545179128036e-10,
+        "bisections": 0
+      },
+      "exact_storage_small_1e8": {
+        "cumulative_R_cons_kg_ha": -0.72363111215612,
+        "post_first_timestep_R_cons_kg_ha": -6.270459086526401e-05,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.00025871227097842636,
+        "max_R_eq_L1": 1.8973671857523814e-11,
+        "bisections": 10
+      },
+      "interpretation": "A first-step residual dominates the whole-run total and is almost invariant to TCD-019 refinement. Excluding that step, exact storage plus 1e-7 removes nearly all systematic drift. The first-step signal is retained for separate initialization/state-consistency qualification."
+    },
+    "GrassPeat": {
+      "baseline": {
+        "records": 11880,
+        "cumulative_R_cons_kg_ha": -0.020708157241347384,
+        "sum_abs_R_cons_kg_ha": 0.023189027028900005,
+        "post_first_timestep_R_cons_kg_ha": -0.018991988939746702,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.018995433608753314,
+        "max_R_eq_L1": 3.143955944477354e-07,
+        "bisections": 0
+      },
+      "exact_storage_small_1e7": {
+        "cumulative_R_cons_kg_ha": -0.0019335112473253208,
+        "sum_abs_R_cons_kg_ha": 0.00447036998414209,
+        "post_first_timestep_R_cons_kg_ha": -0.00024269921337041604,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.00029707147501270857,
+        "max_R_eq_L1": 4.958255150619752e-10,
+        "bisections": 2
+      },
+      "exact_storage_small_1e8": {
+        "cumulative_R_cons_kg_ha": -0.0016462896898390021,
+        "sum_abs_R_cons_kg_ha": 0.00510417800611172,
+        "max_R_eq_L1": 3.1668381896360746e-11,
+        "bisections": 6
+      }
+    },
+    "STONE_akk_0006.2001.2015": {
+      "baseline": {
+        "records": 11880,
+        "cumulative_R_cons_kg_ha": -0.03327468373739555,
+        "sum_abs_R_cons_kg_ha": 0.03920607649934554,
+        "post_first_timestep_R_cons_kg_ha": -0.03571358368986504,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.03571435472457828,
+        "max_R_eq_L1": 1.6479160811816938e-09,
+        "bisections": 0
+      },
+      "exact_storage_small_1e7": {
+        "cumulative_R_cons_kg_ha": 0.002840419209292865,
+        "sum_abs_R_cons_kg_ha": 0.0036875836315779908,
+        "post_first_timestep_R_cons_kg_ha": 0.00027425247630519836,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.0002853279253215161,
+        "max_R_eq_L1": 5.5455710181096384e-11,
+        "bisections": 1
+      },
+      "exact_storage_small_1e8": {
+        "cumulative_R_cons_kg_ha": 0.0029209328896528386,
+        "sum_abs_R_cons_kg_ha": 0.0037611738300672797,
+        "max_R_eq_L1": 1.2552853265453048e-12,
+        "bisections": 2
+      }
+    },
+    "Puitmijn_Cranendonck_60": {
+      "baseline": {
+        "records": 100809,
+        "cumulative_R_cons_kg_ha": -0.07602187823182346,
+        "sum_abs_R_cons_kg_ha": 0.081007962023185,
+        "post_first_timestep_R_cons_kg_ha": -0.07582298611747258,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.08076992769573277,
+        "max_R_eq_L1": 1.591060243633722e-08,
+        "bisections": 6
+      },
+      "exact_storage_small_1e7": {
+        "cumulative_R_cons_kg_ha": 0.0018121039901993128,
+        "sum_abs_R_cons_kg_ha": 0.0050570109451064365,
+        "max_R_eq_L1": 7.779497186751606e-11,
+        "bisections": 12
+      },
+      "exact_storage_small_1e8": {
+        "cumulative_R_cons_kg_ha": -0.0011831167031035117,
+        "sum_abs_R_cons_kg_ha": 0.004571648509932165,
+        "max_R_eq_L1": 4.159465508345199e-13,
+        "bisections": 23
+      }
+    },
+    "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA": {
+      "baseline": {
+        "records": 24112,
+        "cumulative_R_cons_kg_ha": -0.06485622131133316,
+        "sum_abs_R_cons_kg_ha": 0.06521597706669474,
+        "post_first_timestep_R_cons_kg_ha": -0.038865149849909256,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.03886627349330033,
+        "max_R_eq_L1": 1.0852741417729162e-08,
+        "bisections": 2
+      },
+      "exact_storage_small_1e7": {
+        "cumulative_R_cons_kg_ha": 0.0032703492633138534,
+        "sum_abs_R_cons_kg_ha": 0.012044790404298528,
+        "max_R_eq_L1": 7.702275362451397e-10,
+        "bisections": 15
+      },
+      "exact_storage_small_1e8": {
+        "cumulative_R_cons_kg_ha": 0.0015685056777331413,
+        "sum_abs_R_cons_kg_ha": 0.018037551809346276,
+        "max_R_eq_L1": 5.866780256391102e-11,
+        "bisections": 48
+      }
+    }
+  },
+  "qualification": {
+    "natural_fast_langmuir_multicase_coverage": "EXECUTED",
+    "fast_freundlich_natural_coverage": "NOT_AVAILABLE_IN_INSPECTED_SUPPLIED_P_ACTIVE_CASES",
+    "fallback_policy_natural_activation": "CONFIRMED",
+    "candidate_route": "CONVERGENT_POLICY_CANDIDATE",
+    "fallback_policy_must_be_jointly_qualified": true,
+    "specific_small_qualified": false,
+    "tolerance_status": "TOLERANCE_NOT_YET_QUALIFIED",
+    "B3_admitted": false,
+    "production_migration_admitted": false
+  }
+}
