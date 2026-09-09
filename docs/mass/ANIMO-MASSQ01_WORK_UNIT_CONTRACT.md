@@ -1,6 +1,6 @@
 # ANIMO-MASSQ01 work-unit contract
 
-Status: `IN_PROGRESS_PERSISTED_BEFORE_RUNTIME_QUALIFICATION`.
+Status: `QUALIFIED_MASSLEDGER_OBSERVER_PROJECTION_B1_NONREFERENCE_MASS_GATE_NOT_ADMITTED`.
 
 Purpose: build and qualify an observer-only MassLedger projection above the existing B1 diagnostic execution surface. The projection reconstructs conserved storage and boundary/source transfers from source-bound state and transfer identities; legacy balance accumulators are comparison/report evidence only and never authoritative physical storage.
 
@@ -40,5 +40,7 @@ Required residual classes:
 A new unexplained residual is a MASSQ01-local finding only. This workunit has no authority to allocate a canonical TCD identifier.
 
 Target success status: `QUALIFIED_MASSLEDGER_OBSERVER_PROJECTION_B1_NONREFERENCE_MASS_GATE_NOT_ADMITTED`.
+
+Closeout: the target success status was reached for the B1 nonreference observer projection after quantity-specific transaction-boundary qualification, eight-case runtime execution, observer-on/off non-interference comparison, known-TCD visibility checks, synthetic MP02 mapping and explicit GHG coverage limitation. The closeout does not admit a canonical MASS implementation or corrected legacy reference.
 
 Production migration, B3 admission and canonical MASS admission remain outside scope.
