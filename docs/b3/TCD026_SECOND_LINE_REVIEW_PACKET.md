@@ -2,130 +2,234 @@
 
 Request: `ANIMO-B3A04-TCD026-SECOND-LINE-REVIEW`
 
-This packet is a handoff only. The ANIMO-B3A04 authoring activity, including its additional model-produced-state replay, is not an independent review and must not be recorded as one.
+This is a handoff, not a completed review. ANIMO-B3A04 authoring, execution and evidence production do not count as independent second-line review.
 
-## Review target
+## 1. Review target
 
-Review exactly one claim:
+Review exactly one Class-A claim:
 
-`Ex(Ln)` is an existing restartable root-exudate organic-matter store. Revision 53 observes its result state `Rsex(Ln)` in final `Bfom` storage but omits `Ex(Ln)` from beginning `Bfom` storage. The only candidate Class-A correction is:
+`Ex(Ln)` is existing root-exudate organic-matter state. Revision 53 includes result state `Rsex(Ln)` in final fresh-OM storage but omits `Ex(Ln)` from beginning `Bfom` storage. The only candidate correction is:
 
 ```fortran
 Bfom(Inip_x,Ly) = Bfom(Inip_x,Ly) + Ex(Ln) * P
 ```
 
-Do not review or admit any other organic-matter discrepancy in this packet.
+Do not compose any other organic-matter discrepancy.
 
-## Pinned evidence
+## 2. Pinned basis
 
-Review against these authorities:
+- canonical base `work/animo-b3i01-canonical-register-append@383c7a83e84a578969f92113280dc715b7bdddb4`
+- B0 source SHA-256 `183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566`
+- B0 testbank SHA-256 `44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84`
+- PREP06 `work/animo-prep06-conserved-state-ledger@9b1f1ea51c24fb82823290193651830dc61ea3c8`
+- PREP06 defect blob `bbb7cd88c2beaa758e786e14e234a975b361b387`
+- PREP06 machine evidence blob `0e60d8aaf526c0b0127da1143b68c9c8235e9fe3`
+- PREP06 state inventory blob `838f224fc67a72371437c6d5b6e75cd03f5c8d51`
+- B3Q01 `846e0f4d02a38b9e02cc1419b1ca87e63aaedb54`
+- GOV02 `db7add6f9561730bbf352aa7fd3f3968405cfaa3`
+- SYNQ01 `842f72300fd03ede0b9024537a7ee6126722a121`
+- STATEQ02 `cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6`
+- latest PREP02R observed before final closeout `a2fda49871ee3c7104daf7e06cd8dffdac06b125`
 
-- canonical base `work/animo-b3i01-canonical-register-append` at `383c7a83e84a578969f92113280dc715b7bdddb4`;
-- frozen B0 source SHA-256 `183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566`;
-- frozen B0 testbank SHA-256 `44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84`;
-- PREP06 head `9b1f1ea51c24fb82823290193651830dc61ea3c8`;
-- PREP06 defect evidence `docs/prep06/EXUDATE_INITIAL_STORAGE_LEDGER_DEFECT.md` blob `bbb7cd88c2beaa758e786e14e234a975b361b387`;
-- PREP06 machine evidence `integration/animo-prep/PREP06_EXUDATE_INITIAL_STORAGE_DEFECT.json` blob `0e60d8aaf526c0b0127da1143b68c9c8235e9fe3`;
-- PREP06 conserved-state inventory blob `838f224fc67a72371437c6d5b6e75cd03f5c8d51`;
-- B3Q01 head `846e0f4d02a38b9e02cc1419b1ca87e63aaedb54`;
-- GOV02 head `db7add6f9561730bbf352aa7fd3f3968405cfaa3`;
-- SYNQ01 head `842f72300fd03ede0b9024537a7ee6126722a121`;
-- live PREP02R head observed by ANIMO-B3A04: `a2fda49871ee3c7104daf7e06cd8dffdac06b125`;
-- B3A04 model-produced-state replay: `integration/animo-b3/TCD026_MODEL_PRODUCED_STATE_REPLAY.json`.
+B3A04 evidence files:
 
-Before recording a final review result, recheck any authority whose live state can affect admission, especially PREP02R.
+- `integration/animo-b3/TCD026_EXPECTED_DIFFERENCE.json`
+- `integration/animo-b3/TCD026_CLASS_A_READINESS.json`
+- `integration/animo-b3/TCD026_MODEL_PRODUCED_STATE_REPLAY.json`
+- `integration/animo-b3/TCD026_CHRONOLOGICAL_RESTART_PROBE.json`
+- `integration/animo-b3/TCD026_CHRONOLOGICAL_RESTART_PROBE_PLAN.json`
 
-## Review questions
+Recheck live authorities before recording a final review outcome.
 
-Record PASS, FAIL or INCOMPLETE for every item.
+## 3. Core source and conservation checks
 
-| Gate | Question |
+Record PASS, FAIL or INCOMPLETE for each:
+
+| Gate | Required check |
 | --- | --- |
-| B0 identity | Do source and testbank hashes match the frozen baseline? |
-| canonical scope | Does the canonical register still define TCD-026 as the initial exudate/fresh-OM ledger omission only? |
-| atomicity | Is the proposed change limited to one Bfom beginning-storage term? |
-| physical owner | Is `Ex` the accepted current state and `Rsex` the result state, with `Init: Ex=Rsex` and restart persistence? |
-| ending storage | Does current `Bfom(Finp_x,Ly)` include `Rsex(Ln)*Z`? |
-| beginning omission | Does current `Bfom(Inip_x,Ly)` omit `Ex(Ln)*P`? |
-| N/P negative control | Do Bano and Bapo already include initial Ex via Nifrex/Pofrex, so they must not be modified? |
-| causal discriminator | Does the PREP06 single-input 10 kg/ha Ex probe produce a legacy residual of -10 kg/ha? |
-| model-produced activation | Does ordinary CranMais execution produce the persisted nonzero Ex restart-format state recorded by B3A04, and does replay of those exact bytes activate the same omission? |
-| replay provenance | Is producer `INITIAL.OUT` SHA-256 `254fa48dfd1349f6b0d2079b6dc0ca8ec16c35ea80bcd5b8eb464bd60b770a86`, with 5989.6594 kg/ha Ex across layers 1-9? |
-| replay causal effect | Does legacy replay show the approximately -5.99E+03 kg/ha printed fresh-OM deviation while the Bfom-only candidate changes beginning storage by the printed 5989.66 kg/ha and reduces the printed deviation to -7.28E-12 kg/ha? |
-| replay scope boundary | Is the replay correctly treated as model-produced restart-format state activation, not a chronological split-run, continuation-equivalence proof or B2 reference? |
-| ledger-only effect | Does adding only `Ex(Ln)*P` remove the deterministic omission without changing physical trajectories? |
-| no tolerance | Are the approximately 1e-10 to 1e-12 kg/ha residuals and the printed 5989.66 versus exact 5989.6594 difference treated as floating/reporting effects only, never as tolerances? |
-| state non-interference | Is every physical state outside the candidate write set, with PREP06 and replay output evidence consistent with this? |
-| restart-state non-interference | Are legacy and candidate replay `Output/initial.out` byte-identical at SHA-256 `f1a3d8f600675d4f6ac3da4039b3625f416d7bbfb699152a092f4f2c4df3bc9b`? |
-| flux non-interference | Are all process fluxes outside the candidate write set and unchanged in the evidence? |
-| total mass non-interference | Is physical OM mass unchanged because the candidate observes an already-existing store only? |
-| output whitelist | Are only Bfom-derived fresh-OM balance/report surfaces allowed to change? |
-| replay whitelist | After known volatile normalization, are the only replay changes `ani_omMP.Bal`, `ani_omTP.Bal`, `baomMP.Out`, `baomTP.Out`, with no unexpected surface? |
-| zero-Ex negative control | Is the candidate exactly inert when initial Ex is zero? |
-| ordinary natural start | Is ordinary supplied B1 start non-activation correctly classified as structural zero-initial-Ex unreachability rather than silently called a natural PASS? |
-| SYNQ01 | Does current SYNQ01 still have no TCD-026-specific oracle? |
-| route | Is corrected-legacy admission kept blocked unless GOV02 route requirements are actually satisfied? |
-| independence | Is the reviewer genuinely separate from ANIMO-B3A04 authoring and replay execution? |
-| non-composition | Are all other OM ledger, physics and numerical issues excluded? |
+| B0 identity | Frozen source/testbank hashes match. |
+| canonical scope | TCD-026 remains the initial Ex/fresh-OM ledger omission only. |
+| atomicity | Candidate is exactly one beginning `Bfom` observation. |
+| physical owner | `Ex` is accepted/start state, `Rsex` result state, `Init` promotes `Ex=Rsex`, restart persists `Rsex`. |
+| final ledger | Current final `Bfom` includes `Rsex(Ln)*Z`. |
+| beginning ledger | Current initial `Bfom` omits `Ex(Ln)*P`. |
+| N/P control | Bano/Bapo already observe initial Ex through Nifrex/Pofrex and must remain unchanged. |
+| conservation | Beginning and ending C-EX storage represent the same persistent store across the accepted boundary. |
 
-## Expected-difference contract
+## 4. PREP06 causal discriminator
 
-Use `integration/animo-b3/TCD026_EXPECTED_DIFFERENCE.json` as the predeclared output contract.
+Independent reviewer should verify:
 
-PREP06's Ruurlo synthetic comparison observed exactly six changed organic-matter balance files:
+- controlled `Ex(1)=1e-3 kg/m2` equals `10 kg/ha`;
+- frozen legacy first fresh-OM residual is exactly `-10 kg/ha`;
+- adding only `Ex(Ln)*P` removes that deterministic residual to recorded floating-scale values;
+- those small residuals are not a tolerance;
+- PREP06 72-output comparison changes only the six recorded fresh-OM balance files.
 
-- `ani_omGP.Bal`
-- `ani_omRP.Bal`
-- `ani_omTP.Bal`
-- `baomGP.Out`
-- `baomRP.Out`
-- `baomTP.Out`
+## 5. Model-produced state replay
 
-The later CranMais model-produced-state replay has only two configured relevant balance profiles and observed exactly four normalized changed surfaces:
+Review the earlier CranMais replay separately from the chronological probe.
+
+Expected evidence:
+
+- producer `INITIAL.OUT` SHA-256 `254fa48dfd1349f6b0d2079b6dc0ca8ec16c35ea80bcd5b8eb464bd60b770a86`;
+- model-produced Ex total `5989.6594 kg/ha`, layers 1 through 9 nonzero;
+- legacy replay first fresh-OM deviation approximately `-5.99E+03 kg/ha`;
+- candidate beginning FOM increment `5989.66 kg/ha`;
+- candidate deviation `-7.28e-12 kg/ha`;
+- legacy/candidate resulting `Output/initial.out` byte-identical;
+- after known volatile normalization only `ani_omMP.Bal`, `ani_omTP.Bal`, `baomMP.Out`, `baomTP.Out` change.
+
+Required scope classification:
+
+`MODEL_PRODUCED_RESTART_FORMAT_STATE_REPLAY_NOT_CHRONOLOGICAL_SPLIT_RUN`
+
+If it is presented as chronological split-run or B2, review must fail that claim.
+
+## 6. Chronological 1974 to 1975 probe
+
+This is the strongest naturalistic TCD-026 activation in B3A04 and must be reviewed carefully.
+
+### Segment A
+
+- case `CranMais`
+- period `1974-01-01` through `1974-12-31`
+- frozen testbank archive unchanged
+- execution-copy management bounded to the first 1974 management period
+- successful completion
+- generated `INITIAL.OUT` SHA-256 `6578e35e7b5bd39927569ff4f004afbe164d2ce20c98a6d75dc75b7ab536764b`
+- model-produced Ex total `642.718929 kg/ha`, layers 1 through 9 nonzero
+
+### Segment B
+
+- period `1975-01-01` through `1975-12-31`
+- `INITIAL.INP` byte-identical to Segment-A `INITIAL.OUT`
+- hydrology payload unchanged from prepared frozen case
+- material payload unchanged from prepared frozen case
+- management execution-copy retains original 1975 maize/addition chronology
+- original 1975 additions are rebased from absolute-simulation days 469, 479, 482 to local days 104, 114, 117 after removing completed 365-day Segment A
+- frozen testbank archive unchanged
+
+The reviewer must verify that this is a bounded execution-copy chronology transformation, not a physical or scientific-input modification to the frozen archive.
+
+### Ledger discriminator
+
+Expected printed values:
+
+- legacy beginning fresh OM `12209.622 kg/ha`
+- candidate beginning fresh OM `12852.341 kg/ha`
+- increment `642.719 kg/ha`
+- model-produced Ex `642.718929 kg/ha`
+
+The increment must be interpreted as the same mass subject only to legacy report formatting, not a fitted tolerance.
+
+Expected first-period deviation:
+
+- legacy detailed balance approximately `-642.7 kg/ha`
+- legacy scientific report approximately `-643 kg/ha`
+- candidate `1.82e-12 kg/ha`
+
+### Candidate non-interference
+
+Legacy and candidate final `INITIAL.OUT` SHA-256 must both be:
+
+`e6c240ae46edfb7d0a4577dfb70106fb10e37b78982f93d2a116130f9685ca42`
+
+Twenty-three scientific/model outputs were compared after only known timestamp/CPU normalization:
+
+- 19 identical;
+- exactly four changed;
+- zero unexpected changes.
+
+Allowed changed surfaces in this probe:
 
 - `ani_omMP.Bal`
 - `ani_omTP.Bal`
 - `baomMP.Out`
 - `baomTP.Out`
 
-Those file lists are evidence for the respective diagnostic runs. The durable whitelist remains semantic: only affected `Bfom` fresh-OM balance/report surfaces may change. Any physical, N, P, water or ordinary state/process difference fails the Class-A claim.
+Any candidate-caused state/process/N/P/water/unrelated-OM difference fails Class A.
 
-## Natural activation boundary
+## 7. Formatted restart negative result
 
-Do not turn zero ordinary start coverage into a false natural PASS. PREP06 found all supplied initial `>orgexu:` values equal to zero, so the beginning-storage omission cannot affect ordinary supplied start-of-run balances.
+The same chronological campaign compared continuous 1974 to 1975 execution against the legacy formatted restart path.
 
-B3A04 now adds a different type of evidence: ANIMO itself generated a nonzero persisted exudate state in CranMais. The exact output state was replayed through the normal initial-state parser and activated TCD-026 without manually specifying an Ex value. This strengthens applicability/path evidence.
+Expected result:
 
-It still is not chronological restart qualification. The replay uses original hydrology and management chronology. Do not infer `run -> checkpoint -> restore -> continue` identity, accepted-boundary continuation or historical restart behaviour from it.
+- final formatted restart state not byte-identical;
+- 564 printed numeric tokens compared;
+- 32 differ;
+- maximum absolute printed difference `1.0e-6`.
 
-## SYNQ01 boundary
+This is deliberately retained as a negative control and scope boundary.
 
-The current SYNQ01 TCD coverage matrix does not list TCD-026. Do not substitute `SYNQ-O003` merely because it also concerns a storage identity. O003 is an interception-water control-volume oracle and is not independent evidence for exudate organic matter.
+Do not:
 
-The B3A04 replay is also not an independent oracle because it was authored/executed within the same work unit.
+- call legacy formatted restart exact;
+- introduce a tolerance to force equality;
+- infer the precise cause without separate evidence.
 
-## Route boundary
+Permitted interpretation is only that the formatted path is not an exact whole-model checkpoint in this probe. The small drift may be consistent with formatted serialization and/or other legacy restart-surface limitations, but B3A04 did not isolate it.
 
-At the latest ANIMO-B3A04 live check, PREP02R still stated:
+## 8. STATEQ02 cross-stream evidence
 
-- normal B2 reference unavailable;
-- historical-uncertainty route ineligible;
-- historical reference not qualified.
+STATEQ02 independently qualified restricted-core exact checkpoint semantics at splits 66, 67, 68, 71 and 72 with exact bitwise comparisons and no tolerance. Split 67 reproduced all 833 remaining accepted records exactly.
 
-Therefore a scientific review PASS may complete the review gate but still may not imply admission. Admission remains a separate fail-closed B3 action after a valid route exists.
+Its persistent-state matrix classifies `ORG-004 root exudate organic mass` as a core C/N/P accepted owner, mandatory for checkpointing and exact restore.
 
-## Required review record
+Allowed use in this review:
 
-The independent reviewer/workunit should record:
+`independent support for C-EX physical ownership and continuation relevance`.
+
+Disallowed use:
+
+- TCD-026 beginning-ledger oracle;
+- B2 historical reference;
+- substitute for review independence;
+- proof that legacy formatted `INITIAL.OUT/IN` is exact.
+
+STATEQ02's qualification-only exact checkpoint and B3A04's legacy formatted restart probe are different restart mechanisms and are not contradictory.
+
+## 9. Natural activation classification
+
+The final classification must preserve all three layers:
+
+1. supplied ordinary model starts: `STRUCTURALLY_UNREACHABLE_ZERO_INITIAL_EX`;
+2. PREP06 synthetic causal activation: PASS;
+3. model-produced chronological formatted restart activation: PASS for the TCD-026 ledger path only.
+
+Do not promote item 3 to whole-model split-run identity.
+
+## 10. SYNQ01 boundary
+
+Current SYNQ01 does not register a TCD-026 oracle. Do not substitute `SYNQ-O003`, which is an interception-water control-volume oracle.
+
+No B3A04-authored experiment is an independent SYNQ01 oracle.
+
+## 11. Route boundary
+
+At the latest B3A04 check PREP02R still had:
+
+- `normal_B2_reference_available=false`
+- `historical_uncertainty_route_eligible=false`
+- `reference_qualified=false`
+
+A scientific second-line PASS therefore cannot itself admit corrected legacy behaviour. Route eligibility must be rechecked live.
+
+## 12. Independence and final outcome
+
+The reviewer must record:
 
 - reviewer/workunit identity;
-- exact reviewed B3A04 branch head;
-- exact authority heads rechecked;
-- PASS/FAIL/INCOMPLETE per table row;
-- any contradictory evidence;
-- whether the model-produced-state replay was independently reproduced or only source/evidence reviewed;
-- whether any true chronological restart test was additionally executed, clearly separated from this packet's existing evidence;
-- route state at review time;
-- final review value exactly one of `PASS_INDEPENDENT_REVIEW`, `FAIL_INDEPENDENT_REVIEW` or `INCOMPLETE_REVIEW`.
+- exact B3A04 head reviewed;
+- authority heads rechecked;
+- PASS/FAIL/INCOMPLETE for every required gate;
+- whether the chronological probe was independently reproduced or evidence-reviewed only;
+- any contradiction or unresolved provenance concern;
+- live route state;
+- exactly one outcome:
+  - `PASS_INDEPENDENT_REVIEW`
+  - `FAIL_INDEPENDENT_REVIEW`
+  - `INCOMPLETE_REVIEW`
 
-A review PASS must not set `admitted=true` in ANIMO-B3A04. It only satisfies the independent-review prerequisite for a later admission authority.
+A review PASS satisfies only the second-line prerequisite. It must not set `admitted=true`, create a production correction or compose another TCD.
