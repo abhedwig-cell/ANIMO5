@@ -1,0 +1,81 @@
+{
+  "decision": "QUALIFIED_REPRESENTATION_ONLY_TTUTIL_ADAPTER_CANDIDATE_WITH_RUNTIME_HAZARD_EXCLUSIONS",
+  "exact_numeric_native_adapter": {
+    "adapter_id": "TTUTILNativeMaterialAdapter/v1",
+    "field_exact_equivalent": true,
+    "native_key_count": 33,
+    "numeric_tolerance_used": false,
+    "transport": "TTUTIL CHARACTER scalar/array tokens plus explicit REAL(8) numeric conversion"
+  },
+  "legacy_contract_evidence": {
+    "ipo0_Frpo_Pofr_input_presence": "FEATURE_INACTIVE_NULL",
+    "ipo0_trailing_defmat_deffra_columns": "LEXICAL_RESIDUE_NOT_ACTIVE_P_FIELDS",
+    "sparse_omitted_FR_FRca_normalization": "ZERO_BY_EXACT_RUURLO_OLD_NEW_LINEAGE_EQUIVALENCE"
+  },
+  "non_admissions": {
+    "B4": false,
+    "GHG_schema": false,
+    "binary_hydrology": false,
+    "model_output_equivalence": false,
+    "production_migration": false
+  },
+  "result": "PASS",
+  "runtime_hazard_exclusions": [
+    "revision-53 sparse FR/FRca omitted cells are read without explicit source initialization; intended zero semantics are lineage-qualified but legacy storage mechanism is not",
+    "revision-53 Pofr(Frno) is range-checked when IPO=0 after a zero-element implied-DO input, so the checked runtime value is not input-defined"
+  ],
+  "schema": "ANIMO-IO01/MATERIALPilotQualification/v1",
+  "scope": {
+    "GHG_admitted": false,
+    "IPO": 0,
+    "IoptGHG": 0,
+    "Ioptae": 0,
+    "case": "RuurloGrass",
+    "family": "MATERIAL",
+    "normalized_schema": "MaterialParameterSet/v1",
+    "physics_executed": false
+  },
+  "source_identity": {
+    "exact_probe_sha256": "e53fe81a737eee5883968dc187aae49396e51dfca07f0b091f15846dc0f96212",
+    "ruurlo_material_member_sha256": "03857e4681cc83fe84c054ac1b1e1cd3df91c9b5204f7f8bc70962d14033c507",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "ttutil_version": "4.27",
+    "ttutil_zip_sha256": "ee40b4bc20b158163318a4a77a1294e0d9430f5cb73641fcf4a2f3c773d01193",
+    "typed_probe_sha256": "f01b5c5eec993dc3f182aa9b6dd450b7ef043aab4037770bb5d082e6cf46b528"
+  },
+  "typed_ttutil_double_comparison": {
+    "decision": "REJECT_TYPED_DOUBLE_FOR_FIELD_EXACT_REPRESENTATION",
+    "field_exact_equivalent": false,
+    "max_absolute_difference": 1.1102230246251565e-16,
+    "max_ulp_distance": 1,
+    "mismatches": [
+      {"absolute_difference": 1.3877787807814457e-17, "legacy": 0.078, "native": 0.07800000000000001, "path": "/materials/0/fror", "ulp_distance": 1},
+      {"absolute_difference": 2.168404344971009e-19, "legacy": 0.00192, "native": 0.0019200000000000003, "path": "/materials/0/frnh", "ulp_distance": 1},
+      {"absolute_difference": 4.336808689942018e-19, "legacy": 0.0024, "native": 0.0024000000000000002, "path": "/materials/2/frnh", "ulp_distance": 1},
+      {"absolute_difference": 1.3877787807814457e-17, "legacy": 0.077, "native": 0.07700000000000001, "path": "/materials/4/fror", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/0/hufros", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.6, "native": 0.6000000000000001, "path": "/fractions/1/recfav", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/1/hufros", "ulp_distance": 1},
+      {"absolute_difference": 1.3877787807814457e-17, "legacy": 0.12, "native": 0.12000000000000001, "path": "/fractions/2/recfav", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/2/hufros", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/3/hufros", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/4/hufros", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/5/hufros", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/6/hufros", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/7/hufros", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/8/hufros", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/9/hufros", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/10/hufros", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/11/hufros", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/12/hufros", "ulp_distance": 1},
+      {"absolute_difference": 1.1102230246251565e-16, "legacy": 0.75, "native": 0.7500000000000001, "path": "/fractions/13/hufros", "ulp_distance": 1},
+      {"absolute_difference": 5.551115123125783e-17, "legacy": 0.384, "native": 0.38400000000000006, "path": "/fr/0/2", "ulp_distance": 1},
+      {"absolute_difference": 5.551115123125783e-17, "legacy": 0.412, "native": 0.41200000000000003, "path": "/fr/1/2", "ulp_distance": 1},
+      {"absolute_difference": 2.7755575615628914e-17, "legacy": 0.174, "native": 0.17400000000000002, "path": "/fr/3/0", "ulp_distance": 1},
+      {"absolute_difference": 5.551115123125783e-17, "legacy": 0.326, "native": 0.32600000000000007, "path": "/fr/3/2", "ulp_distance": 1},
+      {"absolute_difference": 5.551115123125783e-17, "legacy": 0.416, "native": 0.41600000000000004, "path": "/fr/4/2", "ulp_distance": 1},
+      {"absolute_difference": 2.7755575615628914e-17, "legacy": 0.174, "native": 0.17400000000000002, "path": "/frca/3/0", "ulp_distance": 1}
+    ],
+    "numeric_mismatch_count": 26
+  }
+}
