@@ -15,8 +15,9 @@ ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = ROOT / "integration/animo-b3/TCD024_READINESS_FIXTURE.json"
 EXPECTED = ROOT / "integration/animo-b3/TCD024_EXPECTED_DIFFERENCE.json"
 STATUS = ROOT / "integration/animo-b3/ANIMO-B3B03_STATUS.json"
+UPSTREAM = ROOT / "integration/animo-b3/TCD024_UPSTREAM_EVIDENCE.json"
 SOURCE_EVIDENCE = ROOT / "docs/prep05/SLOW_LANGMUIR_SITE_INDEX_DEFECT.md"
-INTERACTION_EVIDENCE = ROOT / "docs/numerics/TCD019_TCD024_INTERACTION.md"
+TCD_REGISTER = ROOT / "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
 
 
 def load(path: Path):
@@ -45,6 +46,7 @@ def main() -> None:
     fixture = load(FIXTURE)
     expected = load(EXPECTED)
     status = load(STATUS)
+    upstream = load(UPSTREAM)
 
     assert status["target_tcd"] == "TCD-024"
     assert status["class"] == "B_LOCAL_ALGEBRA_INDEX_SPECIES"
@@ -63,11 +65,25 @@ def main() -> None:
     assert "All six supplied cases with active phosphorus use" in source_text
     assert "OPTCXSL = 3" in source_text
 
-    interaction_text = INTERACTION_EVIDENCE.read_text(encoding="utf-8")
-    assert "FOUR_WAY_SYNTHETIC_INTERACTION_CHARACTERIZED_NO_COMPOSITION_ADMISSION" in interaction_text
-    assert "TCD-019 is Class E" in interaction_text
-    assert "TCD-024 is Class B" in interaction_text
-    assert "TCD-024 still needs its Class B evidence" in interaction_text
+    register_text = TCD_REGISTER.read_text(encoding="utf-8")
+    tcd024_lines = [line for line in register_text.splitlines() if line.startswith("TCD-024,")]
+    assert len(tcd024_lines) == 1
+    assert "CONFIRMED_LEGACY_WRONG_INDEX_DEFECT_AND_LATENT_BOUNDS_RISK" in tcd024_lines[0]
+    assert "Parcxsl(3,I)" in tcd024_lines[0]
+
+    pins = upstream["pinned_evidence"]
+    assert pins["canonical_tcd_register"]["blob_sha"] == "224acc350fde69d3c4aebed8628c0f945e0b3367"
+    assert pins["SYNQ01_TCD024"]["oracle_ids"] == ["SYNQ-O006", "SYNQ-O007"]
+    nq02 = pins["NQ02_TCD019_TCD024_interaction"]
+    assert nq02["head"] == "40a41089020f78ee1d5181b8afc7bdb511af3193"
+    assert nq02["blob_sha"] == "9ca37e90115faab9604a3f3051a8246b5e3a0813"
+    assert nq02["status"] == "FOUR_WAY_SYNTHETIC_INTERACTION_CHARACTERIZED_NO_COMPOSITION_ADMISSION"
+    assert "TCD-019 remains Class E" in nq02["admission_separation"]
+    prep02r = pins["PREP02R_live_checked_status"]
+    assert prep02r["reference_qualified"] is False
+    assert prep02r["external_request_sent"] is False
+    assert upstream["route_consequence"]["historical_prevalence"] == "UNKNOWN"
+    assert upstream["route_consequence"]["B3_admission_performed"] is False
 
     assert expected["atomic_change"] == "Parcxsl(3,I) -> Parcxsl(3,J) only in the slow-Langmuir kinetic exponent"
     unchanged = "\n".join(expected["expected_unchanged"])
@@ -99,16 +115,16 @@ def main() -> None:
     assert [str(x) for x in mutant] == active["expected_wrong_K1_qnew_80"]
     assert [a != b for a, b in zip(correct, mutant)] == active["expected_selector_discriminator"]
 
-    # SYNQ01 publishes shorter decimal strings; require exact textual prefix agreement,
-    # not a numeric tolerance comparison.
+    # SYNQ01 publishes shorter decimal strings. Require exact textual prefix
+    # agreement as a provenance consistency check, never as a numeric tolerance.
     oracle = fixture["synq_oracle"]
     for actual, prefix in zip(correct, oracle["published_expected_qnew_prefixes"]):
         assert str(actual).startswith(prefix)
     for actual, prefix in zip(mutant, oracle["published_wrong_K1_prefixes"]):
         assert str(actual).startswith(prefix)
 
-    # Closed multi-site internal transfer identity. The solution counter-transfer is
-    # defined as the exact negative of site storage gain; no tolerance is involved.
+    # Closed multi-site internal transfer identity. The dissolved-state
+    # counter-transfer is the exact negative of total slow-site storage gain.
     with localcontext() as ctx:
         ctx.prec = 80
         dq = [correct[i] - D(sites[i]["qold"]) for i in range(len(sites))]
