@@ -1,0 +1,7 @@
+{
+  "execution_state": "APPEND_ROWS_PREPARED_SOURCE_REGISTER_NOT_YET_MUTATED",
+  "prepared_rows": "integration/animo-b3/B3I01_REGISTER_APPEND_ROWS.csv",
+  "target_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+  "target_blob_before": "224acc350fde69d3c4aebed8628c0f945e0b3367",
+  "next_step": "append prepared rows to exact existing register bytes and verify contiguous top-level IDs"
+}
