@@ -12,7 +12,7 @@
     "records"
   ],
   "properties": {
-    "schema_version": {"const": "1.0.0"},
+    "schema_version": {"const": "1.1.0"},
     "evidence_role": {
       "enum": [
         "B1_DIAGNOSTIC",
@@ -174,13 +174,24 @@
         "scientific_context": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["state_id", "transfer_id", "ledger_id", "cumulative"],
+          "required": [
+            "state_id",
+            "transfer_id",
+            "ledger_id",
+            "cumulative",
+            "ledger_member_id",
+            "ledger_sign",
+            "index_mapping_id"
+          ],
           "properties": {
             "state_id": {"type": ["string", "null"]},
             "transfer_id": {"type": ["string", "null"]},
             "ledger_id": {"type": ["string", "null"]},
             "cumulative": {"type": "boolean"},
-            "boundary": {"type": ["string", "null"]}
+            "boundary": {"type": ["string", "null"]},
+            "ledger_member_id": {"type": ["string", "null"]},
+            "ledger_sign": {"type": ["integer", "null"], "enum": [-1, 0, 1, null]},
+            "index_mapping_id": {"type": ["string", "null"]}
           }
         },
         "execution_context": {
