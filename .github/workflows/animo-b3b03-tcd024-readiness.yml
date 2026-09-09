@@ -1,0 +1,50 @@
+name: ANIMO-B3B03 TCD-024 readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3b03-tcd024-slow-langmuir-index-readiness
+  pull_request:
+    paths:
+      - 'docs/b3/TCD024_*'
+      - 'integration/animo-b3/ANIMO-B3B03_STATUS.json'
+      - 'integration/animo-b3/TCD024_*'
+      - 'tools/validate_b3b03_tcd024.py'
+      - '.github/workflows/animo-b3b03-tcd024-readiness.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse B3B03 JSON evidence
+        run: |
+          python -m json.tool integration/animo-b3/ANIMO-B3B03_STATUS.json >/dev/null
+          python -m json.tool integration/animo-b3/TCD024_EXPECTED_DIFFERENCE.json >/dev/null
+          python -m json.tool integration/animo-b3/TCD024_READINESS_FIXTURE.json >/dev/null
+          python -m json.tool integration/animo-b3/TCD024_UPSTREAM_EVIDENCE.json >/dev/null
+      - name: Run exact TCD-024 readiness validator
+        run: python tools/validate_b3b03_tcd024.py
+      - name: Guard atomic readiness scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=846e0f4d02a38b9e02cc1419b1ca87e63aaedb54
+          changed="$(git diff --name-only "$base" HEAD)"
+          printf '%s\n' "$changed"
+          bad="$(printf '%s\n' "$changed" | grep -Ev '^(docs/b3/TCD024_.*|integration/animo-b3/(ANIMO-B3B03_STATUS\.json|TCD024_.*\.json)|tools/validate_b3b03_tcd024\.py|\.github/workflows/animo-b3b03-tcd024-readiness\.yml)$' || true)"
+          if [ -n "$bad" ]; then
+            echo 'Unexpected path outside atomic B3B03 readiness scope:'
+            printf '%s\n' "$bad"
+            exit 1
+          fi
+          if printf '%s\n' "$changed" | grep -Eq '^(src/|reference/|ANIMO_4\.1\.5\.53/|production/)'; then
+            echo 'Production or frozen-reference path changed.'
+            exit 1
+          fi
+          echo 'Atomic readiness scope guard: PASS'
