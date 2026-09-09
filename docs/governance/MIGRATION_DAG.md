@@ -1,65 +1,105 @@
-# Initial ANIMO5 migration dependency DAG
+# ANIMO5 migration dependency DAG
 
-This is a first dependency map, not an authorization to start production migration.
+This dependency map is not an authorization to start production migration.
+
+Canonical baseline semantics are defined in:
+
+`docs/governance/ANIMO5_EVIDENCE_BASELINE_MODEL.md`
+
+The earlier use of `B0` for a reproducible build is retired. `B0` now consistently means the immutable historical artifact baseline, matching the project's controlled B0 retention terminology.
 
 ```mermaid
 flowchart TD
-    P1[PREP01 evidence and governance baseline]
-    S0[Authoritative source ingest and freeze]
-    D0[Authoritative documentation ingest and freeze]
-    T0[Testbank freeze and provenance]
-    B0[Reproducible legacy build]
-    TA[Compiler and interface audit]
-    IO[I/O and dataflow audit]
-    TC[Testcase execution and capture]
-    TH[Theory-code discrepancy analysis]
-    CR[Corrected legacy reference]
-    QM[Qualified migration baseline]
-    STATE[Canonical state/data ownership]
+    P1[Preparatory evidence and governance]
+    B0[B0 historical artifact baseline]
+    D0[Documentation and theory evidence]
+    B1[B1 reproducible diagnostic legacy observation]
+    B2A[B2 historical reference acquisition]
+    B2[B2 independent historical behavioural reference]
+    B2F[Historical reference not recoverable after documented effort]
+    TH[Theory code behaviour reconciliation]
+    DISP[Explicit discrepancy dispositions]
+    FBACK[Independent scientific admission with historical uncertainty]
+    B3[B3 qualified scientific legacy baseline by admitted process scope]
+    STATE[Canonical state and data ownership]
     TIME[Generic time and transaction contract]
     MASS[Mass accounting contract]
-    EX[SWAP/WOFOST exchange contracts]
+    EX[SWAP WOFOST exchange contracts]
     PROC[Process migrations on admitted contracts]
     INT[Integrated qualification]
+    B4[B4 ANIMO5 canonical admission baseline]
     A[Status A]
     AA[Status AA maturation]
 
-    P1 --> S0
+    P1 --> B0
     P1 --> D0
-    P1 --> T0
-    S0 --> B0
-    S0 --> TA
-    S0 --> IO
-    T0 --> TC
-    B0 --> TC
+    B0 --> B1
+    B0 --> B2A
     D0 --> TH
-    S0 --> TH
-    TC --> TH
-    TH --> CR
-    CR --> QM
-    QM --> STATE
+    B0 --> TH
+    B1 --> TH
+    B2A --> B2
+    B2 --> TH
+    B2A --> B2F
+    B2F --> FBACK
+    TH --> DISP
+    DISP --> B3
+    FBACK --> B3
+    B3 --> STATE
     STATE --> TIME
     TIME --> MASS
     MASS --> EX
     EX --> PROC
     PROC --> INT
-    INT --> A
+    INT --> B4
+    B4 --> A
     A --> AA
 ```
 
-## Parallel candidates after missing evidence is ingested
+## Meaning of the graph
 
-- documentation inventory/reconciliation preparation;
-- compiler/interface audit tooling;
+B0 establishes identity and provenance, not correctness.
+
+B1 provides reproducible diagnostic observation, not independent historical truth.
+
+B2 provides independent historical behaviour where it can be recovered. B2 does not automatically establish scientific correctness.
+
+B3 is constructed by explicit reconciliation and discrepancy disposition. It may be established incrementally by process scope, but a process cannot be migrated merely because a B1 diagnostic run exists.
+
+B4 is the first admitted modern ANIMO5 canonical baseline within the qualified scope.
+
+## Historical-reference fallback
+
+The fallback path from failed B2 acquisition to B3 is deliberately stricter than ordinary behavioural comparison.
+
+It is allowed only after a documented reasonable historical-reference acquisition effort and requires the evidence contract defined for `INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY`.
+
+This fallback does not authorize poorly documented physics changes, arbitrary tolerances or broad numerical-policy changes.
+
+## Parallel candidates before B3 production admission
+
+The following may proceed when ownership is disjoint:
+
+- documentation inventory and revision reconciliation;
+- compiler and interface audit tooling;
 - testcase harness development;
-- process/dataflow inventory;
+- B1 diagnostic execution and causal probes;
+- B2 historical reference recovery;
+- process and dataflow inventory;
+- conserved-state and transfer-ledger audit;
+- corrected-legacy qualification-case preparation without correction admission;
+- GHGMais provenance recovery;
 - Status A/AA gap analysis.
 
 ## Serial shared-semantic gates
 
-- source freeze before behavioural correction;
-- corrected reference before migration qualification;
+- B0 source identity before behavioural correction claims;
+- explicit B3 admission strategy for a process before production migration of that process;
 - canonical state ownership before broad process migration;
-- time/transaction semantics before coupled trial execution;
+- time and transaction semantics before coupled trial execution;
 - mass accounting before coupled qualification;
-- shared exchange interfaces before SWAP/WOFOST integration.
+- shared exchange interfaces before SWAP/WOFOST integration;
+- integrated qualification before B4 admission;
+- B4 before Status A claims for migrated production scope.
+
+The project may prepare B3 evidence while B2 acquisition is open. It may not relabel B1 as B2 or B3 to bypass the reference problem.
