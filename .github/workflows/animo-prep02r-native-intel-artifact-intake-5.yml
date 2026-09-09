@@ -1,0 +1,35 @@
+name: ANIMO-PREP02R-I5 native Intel artifact intake validation
+
+on:
+  push:
+    branches:
+      - work/animo-prep02r-native-intel-artifact-intake-5
+    paths:
+      - 'docs/prep02r/NATIVE_INTEL_ARTIFACT_INTAKE_5.md'
+      - 'integration/animo-prep/PREP02R_INTAKE5_PROJECT_RECEIPT.json'
+      - 'integration/animo-prep/PREP02R_INTAKE5_EXE_RECEIPT.json'
+      - 'integration/animo-prep/PREP02R_INTAKE5_LINEAGE_EVIDENCE.json'
+      - 'integration/animo-prep/PREP02R_NATIVE_INTEL_ARTIFACT_INTAKE_5_STATUS.json'
+      - 'tools/prep02r/validate_native_intel_artifact_intake_5.py'
+      - '.github/workflows/animo-prep02r-native-intel-artifact-intake-5.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse PREP02R-I5 JSON evidence
+        run: |
+          python -m json.tool integration/animo-prep/PREP02R_INTAKE5_PROJECT_RECEIPT.json >/dev/null
+          python -m json.tool integration/animo-prep/PREP02R_INTAKE5_EXE_RECEIPT.json >/dev/null
+          python -m json.tool integration/animo-prep/PREP02R_INTAKE5_LINEAGE_EVIDENCE.json >/dev/null
+          python -m json.tool integration/animo-prep/PREP02R_NATIVE_INTEL_ARTIFACT_INTAKE_5_STATUS.json >/dev/null
+      - name: Validate receipt, lineage and admission guards
+        run: python tools/prep02r/validate_native_intel_artifact_intake_5.py
