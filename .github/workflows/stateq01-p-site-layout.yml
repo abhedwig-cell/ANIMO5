@@ -1,0 +1,24 @@
+name: STATEQ01 P-site layout qualification
+
+on:
+  push:
+    branches:
+      - work/animo-stateq01-canonical-state-readiness
+    paths:
+      - tools/stateq01/p_site_layout_restore_harness.py
+      - tests/stateq01/test_p_site_layout_restore_harness.py
+      - docs/state/P_SITE_LAYOUT_RESTORE_QUALIFICATION.md
+      - integration/animo-state/P_SITE_LAYOUT_RESTORE_SENTINEL_STATUS.json
+      - .github/workflows/stateq01-p-site-layout.yml
+  workflow_dispatch:
+
+jobs:
+  p-site-layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run RC-R7 exact layout fail-closed sentinels
+        run: python -m unittest tests/stateq01/test_p_site_layout_restore_harness.py -v
