@@ -1,0 +1,59 @@
+{
+  "work_unit": "ANIMO-ARCH04",
+  "test_id": "ARCH04-FEATURE-ALLOCATION-STRUCTURAL-AUDIT",
+  "date": "2026-09-09",
+  "result": "PASS",
+  "method": "GitHub Actions checkout of the persisted branch followed by direct execution of tools/audit_arch04_feature_allocation.py",
+  "workflow": {
+    "name": "ARCH04 feature allocation structural audit",
+    "run_id": 34304477332,
+    "job_id": 102318181341,
+    "tested_head": "b9019790b1a84d516476bebfa0309951f7e90f04",
+    "status": "completed",
+    "conclusion": "success",
+    "run_arch04_structural_audit_step": "success"
+  },
+  "registry_blobs": {
+    "features": "ca023a63df71a27cfa56be2d8dcd13eb963f4433",
+    "state_allocation": "3f44bb39bad71a231e2936164bc3e1b4c4c382c8",
+    "feature_interactions": "5be8b157f35d12a48c59402bf93b5180a94368b8",
+    "layout_schema": "5c48cda3fd5660f00752eb5ac207da24ca20991f"
+  },
+  "counts": {
+    "arch01_state_families": 53,
+    "arch04_state_allocation_rows": 53,
+    "feature_rows": 13,
+    "feature_interactions": 13,
+    "layout_schema_fields": 27
+  },
+  "checks": {
+    "arch01_state_family_coverage_exact": true,
+    "candidate_field_alignment_exact": true,
+    "feature_ids_unique_and_exact": true,
+    "allocation_classes_valid_and_all_classes_exercised": true,
+    "feature_interaction_references_resolve": true,
+    "layout_schema_fields_unique_and_exact": true,
+    "dormant_surface_stable_dom_forbidden": true,
+    "ghg_persistent_state_requires_feature_admission": true,
+    "macropore_persistent_state_requires_feature_admission": true,
+    "crop_persistent_state_only_in_animo_owner_mode": true,
+    "diagnostic_observer_rows_are_nonphysical": true,
+    "external_hydrology_coordinates_have_external_owner": true,
+    "physical_and_observer_layout_scopes_separated": true,
+    "precision_policy_is_referenced_but_not_defined": true,
+    "hydrology_modes_are_explicitly_exclusive": true
+  },
+  "not_tested": [
+    "runtime allocation sizes or memory consumption",
+    "production allocator implementation",
+    "feature-dependent scientific equations",
+    "behavioural equivalence of active versus inactive feature paths",
+    "checkpoint restore across a real runtime instance",
+    "GHG scientific admission",
+    "active macropore behaviour",
+    "multi-site phosphorus corrected behaviour",
+    "numerical precision policy"
+  ],
+  "reference_evidence": false,
+  "production_evidence": false
+}
