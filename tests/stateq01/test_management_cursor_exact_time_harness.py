@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import importlib.util
+import sys
 import unittest
 
 
@@ -14,6 +15,7 @@ MODULE_PATH = (
 SPEC = importlib.util.spec_from_file_location("management_cursor_exact_time_harness", MODULE_PATH)
 assert SPEC and SPEC.loader
 MODULE = importlib.util.module_from_spec(SPEC)
+sys.modules[SPEC.name] = MODULE
 SPEC.loader.exec_module(MODULE)
 
 ExactTime = MODULE.ExactTime
