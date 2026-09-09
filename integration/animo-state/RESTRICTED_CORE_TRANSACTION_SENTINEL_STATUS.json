@@ -2,14 +2,32 @@
   "workunit": "ANIMO-STATEQ01",
   "artifact": "restricted-core qualification transaction harness",
   "profile": "CORE_CNP_SUBSURFACE_ONLY",
-  "status": "PERSISTED_NOT_YET_EXECUTED",
+  "status": "QUALIFICATION_TRANSACTION_SENTINELS_RC_R10_RC_R11_PASSED_FULL_SPLIT_RUN_STILL_OPEN",
   "production_code": false,
   "physics_change": false,
   "canonical_state_admission": "NOT_ADMITTED",
-  "purpose": "qualification-only ordering harness for integrated RC-R10 and RC-R11 fail-before-mutate sentinels",
+  "purpose": "qualification-only ordering harness for RC-R10 and RC-R11 fail-before-mutate sentinels",
   "harness_module": "tools/stateq01/restricted_core_transaction_harness.py",
   "test_module": "tests/stateq01/test_restricted_core_transaction_harness.py",
-  "tested": false,
-  "qualified": false,
-  "next": "execute harness tests after persistence; do not treat a harness pass as full ANIMO split-run admission"
+  "test_execution": {
+    "runtime": "CPython 3.13.5 GCC 14.2.0",
+    "tests_run_total_with_guard_suite": 21,
+    "harness_tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "result": "PASS"
+  },
+  "rc_r10": {
+    "status": "QUALIFICATION_HARNESS_PASS",
+    "evidence": "positive aggregated ponding, subnormal positive ponding, and detailed positive snow all raise before chemistry/management callback execution"
+  },
+  "rc_r11": {
+    "status": "QUALIFICATION_HARNESS_PASS",
+    "evidence": "nonzero layer0 NH4 restart state raises before restored accepted-state construction callback execution"
+  },
+  "non_mutation": "rejected candidate input mappings remain unchanged",
+  "qualification_boundary": "The harness proves ordering of the qualification guard relative to mutation/construction callbacks. It does not execute revision-53 physics and does not establish uninterrupted-versus-split trajectory equivalence for RC-R1 through RC-R9 or RC-R12.",
+  "tested": true,
+  "qualified": true,
+  "next": "proceed to event-adjacent and clean-boundary split-run qualification while retaining RC-R10/RC-R11 as fail-closed preconditions"
 }
