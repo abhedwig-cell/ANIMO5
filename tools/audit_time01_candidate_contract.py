@@ -86,7 +86,7 @@ def main() -> int:
             "SAME_TRIAL_UPSTREAM",
             "Sqnu",
             "actual NH4 transport",
-            "per-layer transport/phase coupling",
+            "coupled per layer",
             "one transfer identity",
             "balance/report boundary used as commit",
         ]:
