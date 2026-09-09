@@ -19,11 +19,12 @@
   "target_tcd": "TCD-017",
   "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
   "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
-  "state": "IN_PROGRESS_PERSISTED_ADMISSION_RECORD_VALIDATION_PENDING",
-  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "state": "QUALIFIED_TCD017_ATOMIC_B3_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_NO_PRODUCTION_MIGRATION",
+  "decision": "ADMIT_TCD017_ATOMIC_CLASS_A_SCIENTIFIC_ACCOUNTING_CORRECTION_WITH_HISTORICAL_UNCERTAINTY",
   "intended_final_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "admission": {
     "scientific_b3_admission_intended": true,
+    "scientific_b3_admission_qualified": true,
     "historical_behaviour_status": "UNKNOWN",
     "historical_fidelity_claimed": false,
     "whole_model_equivalence_claimed": false,
@@ -43,19 +44,20 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "validation": {
     "validator": "tools/validate_b3d02_tcd017_admission.py",
     "workflow": ".github/workflows/animo-b3d02-tcd017-admission.yml",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_job_id": null,
-    "github_actions_conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "51c5820613466e9b1fcd9b354b6bdf9f72f4edb9",
+    "github_actions_run_id": 34394266202,
+    "github_actions_job_id": 102609943594,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS_B3D02_TCD017_ADMISSION",
+    "scope_guard": "PASS_B3D02_ADMISSION_SCOPE_GUARD",
+    "note": "Run 34394190389 failed only because the initial validator expected shorter whitelist labels than the persisted admission record. The validator was corrected without changing the scientific/admission record; run 34394266202 then passed validator and scope guard."
   },
   "deliverables": [
     "integration/animo-b3/TCD017_B3_ADMISSION_CLOSEOUT.json",
@@ -63,5 +65,12 @@
     "docs/b3/TCD017_B3_ADMISSION_CLOSEOUT.md",
     "tools/validate_b3d02_tcd017_admission.py",
     ".github/workflows/animo-b3d02-tcd017-admission.yml"
-  ]
+  ],
+  "project_effect": {
+    "tcd017_first_atomic_b3_scientific_admission": true,
+    "b3_whole_model_baseline_complete": false,
+    "historical_uncertainty_propagates_forward": true,
+    "production_migration_still_closed": true,
+    "next_required_step": "integrate the admitted TCD-017 disposition into the project-regie/admission inventory without authorizing production code changes"
+  }
 }
