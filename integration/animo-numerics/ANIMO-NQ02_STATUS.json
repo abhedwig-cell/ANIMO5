@@ -7,12 +7,14 @@
   "source_base": {
     "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
-    "local_b0_hash_recheck_passed": true
+    "local_b0_hash_recheck_passed": true,
+    "frozen_source_modified": false,
+    "frozen_testbank_modified": false
   },
   "nq01_authority": {
     "branch": "work/animo-nq01-numerical-qualification-architecture",
     "head": "e558dff12b127e0662cad62beea7527b42ad89ac",
-    "selection_basis": "live branch comparison shows this branch 33 commits ahead of the branches named final, copy, ignore, stop and packet-temp, with those branches sharing the older 438a8838 head",
+    "selection_basis": "live branch comparison showed this branch 33 commits ahead of the branches named final, copy, ignore, stop and packet-temp, all of which shared the older 438a8838 head",
     "nq01_status": "QUALIFIED_NUMERICAL_QUALIFICATION_ARCHITECTURE_AWAITING_INDEPENDENT_REFERENCE_DATA"
   },
   "target": {
@@ -26,6 +28,7 @@
     "tcd": "TCD-024",
     "b3_class": "B",
     "finding": "CONFIRMED_LEGACY_WRONG_INDEX_DEFECT_AND_LATENT_BOUNDS_RISK",
+    "four_way_synthetic_interaction_characterized": true,
     "combined_admission": false
   },
   "source_reconstruction": {
@@ -43,7 +46,7 @@
     "signed_residual_stopping_asymmetry_observed": true,
     "late_iteration_running_average_policy_observed": true,
     "fallback_reuses_recfso_from_newton_observed": true,
-    "fast_langmuir_exact_cancellation_free_secant_derived": true,
+    "fast_langmuir_cancellation_free_exact_secant_derived": true,
     "tcd014_initialization_boundary_explicit": true
   },
   "primary_case": {
@@ -53,20 +56,85 @@
     "optcxsl": 3,
     "ncxsl": 3,
     "tcd019_activated": true,
-    "tcd024_activated": false
-  },
-  "existing_b1_evidence": {
-    "baseline_cumulative_P_residual_kg_ha": -0.27254515116349,
-    "delta_switch_1e_12_cumulative_P_residual_kg_ha": -0.017973962837645,
-    "small_1e_8_cumulative_P_residual_kg_ha_approx": -0.2548942332,
-    "combined_probe_cumulative_P_residual_kg_ha_approx": 0.0000096337434306,
-    "interpretation": "causal localization only; not convergence qualification and not tolerance evidence"
+    "tcd024_activated": false,
+    "layer_timestep_records": 27000
   },
   "residual_contract": {
     "R_eq_defined": true,
     "R_cons_defined": true,
     "R_constitutive_defined": true,
-    "legacy_warning_threshold_used_as_acceptance": false
+    "legacy_warning_threshold_used_as_acceptance": false,
+    "better_mass_balance_is_not_solution_correctness": true
+  },
+  "executed_b1_evidence": {
+    "baseline": {
+      "cumulative_R_cons_kg_ha": -0.27254515116348993,
+      "sum_abs_R_cons_kg_ha": 0.27285079493861103,
+      "max_abs_R_cons_kg_ha": 0.0005011328758918021,
+      "max_R_eq_L1": 1.045143528519657e-9,
+      "max_abs_R_constitutive": 1.0022657517523265e-6,
+      "bisections": 0
+    },
+    "small_refinement_legacy_constitutive": {
+      "small_1e_8_cumulative_R_cons_kg_ha": -0.25489423322790195,
+      "small_1e_10_cumulative_R_cons_kg_ha": -0.2548966453723643,
+      "small_1e_10_bisections": 5,
+      "finding": "solver residual refines but systematic conservation bias remains because the constitutive tangent approximation remains"
+    },
+    "exact_storage_legacy_small": {
+      "cumulative_R_cons_kg_ha": -0.017973962838665782,
+      "max_abs_R_constitutive": 1.2177894326628747e-16,
+      "finding": "threshold-free exact storage removes the formulation-driven constitutive mismatch but legacy nonlinear stopping still leaves a material conservation residual"
+    },
+    "exact_storage_plus_refinement": {
+      "small_1e_7_cumulative_R_cons_kg_ha": -4.5669276943535745e-7,
+      "small_1e_8_cumulative_R_cons_kg_ha": -5.071063764773603e-7,
+      "small_1e_7_bisections": 0,
+      "small_1e_8_bisections": 0,
+      "small_1e_9_bisections": 2,
+      "small_1e_10_bisections": 4,
+      "finding": "a stable pre-fallback convergence region exists; tightening beyond it changes control-path ownership because the legacy fallback starts to govern rare steps"
+    },
+    "signed_residual_stop_probe": {
+      "material_effect_in_primary_case": false,
+      "finding": "source asymmetry remains a numerical risk but is not causally material in the tested LWKM routes"
+    }
+  },
+  "precision_study": {
+    "executed": true,
+    "canonical_precision": "GNU diagnostic binary64-default path",
+    "independent_high_precision_digits": 100,
+    "observed_delta_C": -7.487398559231223e-16,
+    "subtractive_binary64_secant_relative_error_approx": -5.96e-6,
+    "cancellation_free_binary64_secant_relative_error_approx": 9.44e-17,
+    "finding": "naively forcing the direct exact quotient would exchange constitutive bias for cancellation error at observed tiny increments; the cancellation-free Langmuir identity avoids both"
+  },
+  "time_step_study": {
+    "executed": true,
+    "evidence_role": "SYNTHETIC_B1_NOT_HISTORICAL_REFERENCE",
+    "scope": "one-layer fast-Langmuir-only probe with fixed integrated source and 1 to 128 equal substeps",
+    "finding": "legacy stopping shows time-splitting residual dependence; exact storage plus Small=1e-8 is stable to approximately binary64 floor in the synthetic probe",
+    "production_tolerance_inferred": false
+  },
+  "tcd024_interaction": {
+    "executed": true,
+    "evidence_role": "SYNTHETIC_B1_INTERACTION_ONLY",
+    "variants": ["LEGACY_BOTH", "TCD024_ONLY", "TCD019_ONLY", "COMBINED_DIAGNOSTIC"],
+    "finding": "TCD-024 dominates the activated unequal-site slow-Langmuir stress case; TCD-019-only leaves the wrong-index residual, while the combined diagnostic reaches the local equation/floating floor",
+    "defects_merged": false,
+    "composition_admitted": false
+  },
+  "qualification_outcome": {
+    "legacy_policy_classification": "LEGACY_NUMERICAL_POLICY_NONCONVERGENT_OR_BIASED",
+    "candidate_route_classification": "CONVERGENT_POLICY_CANDIDATE",
+    "candidate_route": "THRESHOLD_FREE_CANCELLATION_SAFE_EXACT_STORAGE_REPRESENTATION_PLUS_JOINTLY_QUALIFIED_NONLINEAR_AND_FALLBACK_POLICY",
+    "route_level_convergence_candidate_qualified": true,
+    "specific_production_small_qualified": false,
+    "specific_fallback_tolerance_qualified": false,
+    "global_numeric_tolerance_qualified": false,
+    "historical_b2_equivalence_qualified": false,
+    "independent_numerical_review_completed": false,
+    "natural_multicase_coverage_completed": false
   },
   "state_dimensions": {
     "authority_pinned": true,
@@ -74,11 +142,15 @@
     "source_algorithm_reconstructed": true,
     "reference_quality_residuals_defined": true,
     "controlled_matrix_designed": true,
-    "diagnostic_matrix_executed": false,
-    "precision_study_executed": false,
-    "time_step_study_executed": false,
-    "tcd024_interaction_executed": false,
-    "convergence_policy_candidate_qualified": false,
+    "diagnostic_matrix_executed": true,
+    "diagnostic_descendants_hashed": true,
+    "observer_noninterference_control_passed": true,
+    "precision_study_executed": true,
+    "time_step_study_executed": true,
+    "tcd024_interaction_executed": true,
+    "convergence_policy_candidate_qualified": true,
+    "natural_multicase_coverage_completed": false,
+    "independent_numerical_review_completed": false,
     "corrected_legacy_admitted": false,
     "b3_admitted": false,
     "production_migration_admitted": false
@@ -101,9 +173,15 @@
     "diagnostic_descendants_must_be_hashed": true
   },
   "tolerance_status": "TOLERANCE_NOT_YET_QUALIFIED",
-  "status": "SOURCE_BOUND_RECONSTRUCTION_AND_DIAGNOSTIC_MATRIX_READY_B1_EXECUTION_PENDING",
+  "status": "QUALIFIED_TCD019_NUMERICAL_CAUSALITY_AND_ROUTE_LEVEL_CONVERGENCE_POLICY_CANDIDATE_B3_ADMISSION_NOT_YET_OPEN",
   "corrected_legacy_admitted": false,
   "B3_admitted": false,
   "production_migration_admitted": false,
-  "next_gate": "EXECUTE_HASHED_B1_CONVERGENCE_MATRIX_WITH_UNROUNDED_RESIDUAL_AND_SOLVER_PATH_CAPTURE"
+  "open_blockers": [
+    "natural multi-case activation and convergence coverage",
+    "independent numerical review",
+    "B2 historical/reference characterization where obtainable",
+    "joint nonlinear/fallback production policy qualification without tolerance invention"
+  ],
+  "next_gate": "NATURAL_MULTICASE_TCD019_COVERAGE_AND_INDEPENDENT_NUMERICAL_REVIEW_BEFORE_ANY_B3_ADMISSION_WORKUNIT"
 }
