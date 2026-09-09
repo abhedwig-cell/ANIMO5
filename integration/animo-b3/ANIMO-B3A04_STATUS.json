@@ -54,6 +54,22 @@
     "reference_qualified": false,
     "route_effect": "CORRECTED_LEGACY_ADMISSION_BLOCKED"
   },
+  "branch_scope_guard": {
+    "compared_against_base": "383c7a83e84a578969f92113280dc715b7bdddb4",
+    "comparison_status": "PASS",
+    "production_files_changed": 0,
+    "physical_source_files_changed": 0,
+    "testcase_files_changed": 0,
+    "evidence_files_added": 6,
+    "paths": [
+      "docs/b3/TCD026_CLASS_A_ADMISSION_READINESS.md",
+      "docs/b3/TCD026_SECOND_LINE_REVIEW_PACKET.md",
+      "integration/animo-b3/ANIMO-B3A04_STATUS.json",
+      "integration/animo-b3/TCD026_CLASS_A_READINESS.json",
+      "integration/animo-b3/TCD026_EXPECTED_DIFFERENCE.json",
+      "integration/animo-b3/TCD026_SECOND_LINE_REVIEW_REQUEST.json"
+    ]
+  },
   "independent_review": {
     "packet_prepared": true,
     "packet": "docs/b3/TCD026_SECOND_LINE_REVIEW_PACKET.md",
