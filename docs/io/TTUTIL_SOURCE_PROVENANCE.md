@@ -6,7 +6,7 @@ This note records the source-provenance state for the TTUTIL dependency consider
 
 ## Materialized SWAP/WUR distribution
 
-The user-supplied `SWAP_4.3.1.zip` is now available in the qualification runtime and its SHA-256 is:
+The user-supplied `SWAP_4.3.1.zip` is available in the qualification runtime and its SHA-256 is:
 
 `2b48353db6cdf00246a1e5c0dcaafc2c61858729fad18446a1dc66359ec2a360`
 
@@ -20,7 +20,7 @@ Its exact SHA-256 is:
 
 `ee40b4bc20b158163318a4a77a1294e0d9430f5cb73641fcf4a2f3c773d01193`
 
-The independently materialized `/mnt/data/ttutil_official/TTUTIL.ZIP` has the same SHA-256, so it is byte-identical to the embedded archive.
+The independently materialized TTUTIL archive has the same SHA-256, so it is byte-identical to the embedded archive.
 
 The embedded source expands to 168 files:
 
@@ -32,6 +32,8 @@ The embedded source expands to 168 files:
 The 153 Fortran compilation units therefore match the previously expected TTUTIL source extent. `ttuver.for` declares `CUR_V=4.27`, so the embedded source baseline is TTUTIL 4.27.
 
 A per-file SHA-256 manifest is recorded in `integration/animo-io/TTUTIL-4.27-SHA256SUMS.txt`.
+
+The exact source can be materialized only from a user-supplied package that matches both the outer package hash and embedded TTUTIL archive hash using `tools/materialize_ttutil427.py`. The tool performs no network download, registration or license acceptance.
 
 ## Distribution license evidence
 
@@ -48,7 +50,7 @@ A public repository exists at:
 - source version declared by its `ttuver.for`: 4.27;
 - build metadata version: 4.2.7.
 
-Its README explicitly calls the repository **unofficial**, and byte comparison now proves that it is not an exact substitute for the SWAP 4.3.1 embedded source.
+Its README explicitly calls the repository **unofficial**, and byte comparison proves that it is not an exact substitute for the SWAP 4.3.1 embedded source.
 
 Known byte-level differences include:
 
@@ -62,27 +64,40 @@ Therefore the mirror remains useful as public context and build-system reference
 
 The exact extracted official source was compiled locally with GNU Fortran 14.2.0 using legacy-compatible flags. All 153 Fortran compilation units compiled and were archived into a static library.
 
-Local build result:
+An initial smoke program executed `RDINIT` plus `RDSINT` on a native TTUTIL file containing `X = 42` and returned `TTUTIL_SMOKE_X=42`.
 
-- objects: 153;
-- library: `libttutil427_gfortran.a`;
-- local library SHA-256: `3b623a668582776bf6b2d4930fe3199c9b59b9b6e7299f6896793a003ca031e6`.
+A later clean Pilot-A rebuild again compiled all 153 official TTUTIL units and linked `tools/ttutil_direct_probe.f90` successfully. Static-library byte hashes are intentionally not used as canonical dependency identities because they can vary with build path, object metadata and archive construction even when the exact source and compiler are unchanged. The source-package and per-file source hashes are the canonical provenance anchors.
 
-A parser smoke program then executed `RDINIT` plus `RDSINT` on a native TTUTIL file containing `X = 42` and returned `TTUTIL_SMOKE_X=42`.
+## DIRECT Pilot A runtime qualification
 
-The static-library hash is evidence for this local compiler/build invocation only; it is not a cross-platform canonical artifact identity.
+`tools/qualify_io01_direct_pilot.py` reproduces the bounded runtime qualification from the two user-supplied frozen archives. It:
+
+1. verifies the SWAP 4.3.1 package hash;
+2. materializes and verifies all 168 TTUTIL 4.27 files;
+3. compiles all 153 Fortran units;
+4. links the native DIRECT probe;
+5. verifies the frozen ANIMO testbank hash;
+6. reads all 10 natural `animo.ini` routing files with the revision-53 compatibility normalizer;
+7. emits a separate, deliberately reordered `TTUTILNativeTextAdapter/v1` representation;
+8. executes the actual TTUTIL 4.27 reader;
+9. compares `LegacyInputBinding/v1` semantic projections field-exactly.
+
+Result: 10/10 natural routing cases are field-exact equivalent. The committed machine-readable evidence is `integration/animo-io/DIRECT-PILOT-QUALIFICATION.json`.
+
+This qualification also records one explicit revision-53 runtime-undefined `Strip` edge. Empty or whitespace-only quoted payloads can make the source form `Fname(0:Ilast)`. That case is `FAIL_CLOSED_NOT_NORMALIZED`, not silently converted into a deterministic compatibility rule.
 
 ## Qualification consequence
 
-The former IO01 dependency-provenance blocker is now resolved at source level:
+The former IO01 dependency-provenance blocker is resolved at source level, and Pilot A now has bounded runtime equivalence evidence for the DIRECT routing object:
 
-1. the exact SWAP 4.3.1 package bytes are present and match the previously pinned package SHA-256;
+1. the exact SWAP 4.3.1 package bytes match the pinned package SHA-256;
 2. the exact embedded TTUTIL archive is independently pinned;
 3. TTUTIL version 4.27 is source-confirmed;
 4. all 168 embedded files are individually hash-manifested;
-5. the official source compiles with GNU Fortran 14.2.0 and passes a native parser smoke test;
-6. the public mirror has been proven non-identical and is not used as authoritative source.
+5. the official source compiles with GNU Fortran 14.2.0 and passes runtime reads;
+6. the public mirror is proven non-identical and is not used as authoritative source;
+7. `LegacyRevision53TextAdapter` and `TTUTILNativeTextAdapter/v1` produce 10/10 field-exact equivalent `LegacyInputBinding/v1` routing objects on the natural testbank.
 
-This does **not** by itself qualify an ANIMO representation-only adapter. The remaining admission condition is behavioural: the strict revision-53 legacy grammar and its historical accept/reject/default semantics must remain explicit, while any native TTUTIL representation must be separately versioned.
+This supports `QUALIFIED_REPRESENTATION_ONLY_TTUTIL_ADAPTER_CANDIDATE` for Pilot A only. It does not qualify TTUTIL as a general replacement parser for other input families.
 
-No binary hydrology input is converted to TTUTIL. No GHG lineage is normalized. No production migration or B4 admission follows from this source qualification alone.
+No binary hydrology input is converted to TTUTIL. No GHG lineage is normalized. No production migration or B4 admission follows from this source and Pilot-A qualification.
