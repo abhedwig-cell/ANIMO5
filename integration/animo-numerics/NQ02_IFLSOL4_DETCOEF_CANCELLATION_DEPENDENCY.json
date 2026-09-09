@@ -1,0 +1,139 @@
+{
+  "work_unit": "ANIMO-NQ02",
+  "local_key": "NQ02-LCL-IFLSOL4-DETCOEF-CANCELLATION",
+  "canonical_tcd": null,
+  "canonical_allocation_state": "PENDING_B3_GOVERNANCE_AUTHORITY_ASSIGNMENT",
+  "classification": "NEW_DISCREPANCY_CANDIDATE_PENDING_REGISTRY_AUTHORITY_ASSIGNMENT",
+  "evidence_class": "B1_CROSS_CUTTING_NUMERICAL_DEPENDENCY_DIAGNOSTIC_ONLY",
+  "scope": [
+    "Transsub.for:Detcoef Iflsol=4",
+    "Transorp.for:Coefdc Iflsol=4"
+  ],
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "b0_hash_check_passed": true,
+  "driver_sha256": "778bbe8e54420a7fbbce01134fa51bfefb4381fdfbec737c90aaa23203060c0c",
+  "diagnostic_descendant": {
+    "scientific_transsub_sha256": "4bcc5afbb6013ea80491668e421996fc8c3f31b0494d75daf17ab0a845b53470",
+    "scientific_transorp_sha256": "3db1c7c7bfb7e5aace7b848e32ee3b9ae2475a326583105ffec930f617ef49ef",
+    "observer_transorp_sha256": "b14c2a39f0a7316e5e647910af223c7e4fc0cc0290dad49a8d0bba1db523ff9a",
+    "observer_transgen_sha256": "28a223e5f9007bb52bcb5e97871f1c952b4d61146fea5ff5ea2d32b2e6557ab1",
+    "executable_sha256": "7cac3cb74a695baf527cb45d8f30f1e66b626c307301d29fa246ae4185d40844"
+  },
+  "source_reconstruction": {
+    "D": "Mto + Rhbd*Avsocf",
+    "x": "Hv*T/D",
+    "legacy_A2": "log((D+Hv*T)/D)/Hv",
+    "legacy_B2": "A2*(D+Hv*T)/(Hv*T) - 1/Hv",
+    "legacy_B2dc": "1/(Hv^2*T)*(log((D+Hv*T)/D)-Hv*T/D)*Rhbd*Avadcodc",
+    "conditioning": "B2 and B2dc are finite as x approaches zero but revision-53 evaluates them through cancellation of nearly equal terms"
+  },
+  "diagnostic_evaluation": {
+    "method_switch": "abs(x) < sqrt(epsilon(1.0d0))",
+    "switch_role": "floating_point_evaluation_method_crossover_not_scientific_tolerance",
+    "A2_series": "T/D*(1-x/2+x^2/3-x^3/4+x^4/5)",
+    "B2_series": "T/D*(1/2-x/6+x^2/12-x^3/20+x^4/30)",
+    "A2dc_series": "-T/D^2*(1-x+x^2-x^3+x^4)*Rhbd*Avadcodc",
+    "B2dc_series": "-T/D^2*(1/2-x/3+x^2/4-x^3/5+x^4/6)*Rhbd*Avadcodc",
+    "production_policy_admitted": false
+  },
+  "representative_natural_state": {
+    "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+    "Tito": 1,
+    "layer": 6,
+    "Iflsol": 4,
+    "Con": 0.000035693099999999999,
+    "Hv": -4.9999999995886668e-7,
+    "Hv1": 0.0,
+    "Hv2": 5.2106985615000466e-7,
+    "Mto": 0.5278366,
+    "Rhbd": 1244.0,
+    "T": 1.0,
+    "Avadco_high_precision": "0.92175052996048542592879888566329029216601631563624...",
+    "D_high_precision": "1147.1854958708438698454258137651331234545...",
+    "x_high_precision": "-4.35849304021500015057705567635551272522e-10",
+    "B2_high_precision": "0.0004358493041206774114731931601363924813...",
+    "B2_binary64_legacy_expression": 0.2685923078097403,
+    "B2dc_high_precision": "0.4727949932184278516318466510092017928...",
+    "B2dc_binary64_legacy_expression": -290.4145135735744
+  },
+  "natural_case_sensitivity": {
+    "fixed_tcd019_observation_point": "exact_fast_langmuir_storage_plus_Newton_Small_1e-7",
+    "cases": {
+      "LWKM": {
+        "cumulative_R_cons_kg_ha": -0.0002656101995167309,
+        "sum_abs_R_cons_kg_ha": 0.0006046022485115978,
+        "newton_accepts": 27000,
+        "bisection_accepts": 0,
+        "max_newton_R_eq_L1": 5.317854679747303e-12,
+        "mass_diag_sha256": "bedf607d2be72c0fe3fc34d03eb0dd01e3c27274af28085a0f41bde6c4ee1d26",
+        "solver_diag_sha256": "e89e6100501e3bd9110d412b33ccca9ab51fb1466303f745f7252247bccaccd9",
+        "run_output_sha256": "3bdd0d0a76c00e06b98915e7416231faf5c188cafa868e6442d658a44e8176ec"
+      },
+      "CranGrass": {
+        "cumulative_R_cons_kg_ha": -0.7235682812602482,
+        "sum_abs_R_cons_kg_ha": 0.791746913677539,
+        "first_timestep_R_cons_kg_ha": -0.7235684075657682,
+        "post_first_timestep_R_cons_kg_ha": 1.2630552004289086e-7,
+        "bisection_accepts": 0,
+        "mass_diag_sha256": "4bb647a1fafc8bee048477ced8c381dc0b3074f7cf9b6deeb2f2d9e5847df7b4",
+        "solver_diag_sha256": "9d2b38aa4f265d7193af495b14cb99b3b3f2a53536e530fca5100bc8d13fa6a7",
+        "run_output_sha256": "b9fbb3ab2922b405921334b6f448d4ac6d4ccd25a559541833ce9457fae2a106"
+      },
+      "GrassPeat": {
+        "cumulative_R_cons_kg_ha": -0.0019335112473253208,
+        "sum_abs_R_cons_kg_ha": 0.00447036998414209,
+        "bisection_accepts": 2,
+        "mass_diag_sha256": "0e0d63065df2435cd5a347ac4a9a4d9a05a2d99348e2aa4b4000816da3ae8b61",
+        "solver_diag_sha256": "0383a61fc09dee81f765eca61f48ff1a8e0a910169881db7c30f8c2a4c88a0a3",
+        "run_output_sha256": "7a365bb4fa0b3ee5df97c5e23100dcb3165b9dae24ae2e5d46d2614147279e76"
+      },
+      "STONE_akk_0006.2001.2015": {
+        "cumulative_R_cons_kg_ha": 0.002840419209292865,
+        "sum_abs_R_cons_kg_ha": 0.0036875836315779908,
+        "bisection_accepts": 1,
+        "mass_diag_sha256": "5ecfdb7bf386812dfe402597fc37968f533253f7b5f2418be6b9f5f672dfcd36",
+        "solver_diag_sha256": "47955d37468e33d5509f7d72147d846559db41ea1f5a714412bf1881e4378f11",
+        "run_output_sha256": "3bdd0d0a76c00e06b98915e7416231faf5c188cafa868e6442d658a44e8176ec"
+      },
+      "Puitmijn_Cranendonck_60": {
+        "cumulative_R_cons_kg_ha": 0.0012179585372876845,
+        "sum_abs_R_cons_kg_ha": 0.005178546894290078,
+        "first_timestep_R_cons_kg_ha": -0.00019774630824713338,
+        "post_first_timestep_R_cons_kg_ha": 0.0014157048455348178,
+        "bisection_accepts": 13,
+        "mass_diag_sha256": "c9c49d70ed98258c3bbf374825741c3efdfcf006ea8ded4ed0790e462ff4ab08",
+        "solver_diag_sha256": "263368807e8ed248501613e2d44adc82650bcc7d6bfe6d13ce18a79834328b2e",
+        "run_output_sha256": "4a6bc55c3c5ac9e79f615c18d20a5ee5f5b8e392e77c75bf82fa67d533574b5a"
+      },
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA": {
+        "cumulative_R_cons_kg_ha": 0.005572450840979992,
+        "sum_abs_R_cons_kg_ha": 0.01024818835468299,
+        "first_timestep_R_cons_kg_ha": 0.00012524908207035414,
+        "post_first_timestep_R_cons_kg_ha": 0.005447201758909638,
+        "bisection_accepts": 16,
+        "mass_diag_sha256": "d6b5c51f177189eec50edd10ffe2c083418081ef959b5d82f142376eefdbe50e",
+        "solver_diag_sha256": "650785c7c1845a70f3e65b0ceece51a242a760773036f52d5ea0cd3184b06045",
+        "run_output_sha256": "0bbb0d2243a17e1b0ed7485459e813b0a7b589ef33488813c0e228b4c4ee861b"
+      }
+    },
+    "uniform_tcd019_mass_balance_improvement": false,
+    "ordinary_scientific_trajectory_materiality_observed": true
+  },
+  "separation_from_tcd019": {
+    "is_tcd019_atomic_claim": false,
+    "reason": "generic analytical transport coefficient evaluation is upstream and cross-cutting; changing it changes the equation surface used to assess TCD-019",
+    "must_not_be_silently_composed_with_tcd019": true
+  },
+  "governance": {
+    "rg02_central_register_snapshot_ends_at": "TCD-027",
+    "post_027_branch_local_identifiers_collision_prone": true,
+    "new_canonical_tcd_assigned_by_nq02": false
+  },
+  "admission": {
+    "stable_series_policy_admitted": false,
+    "corrected_legacy_admitted": false,
+    "B3_admitted": false,
+    "production_migration_admitted": false
+  }
+}
