@@ -48,8 +48,8 @@
       "set": {},
       "expected": {
         "feature_set_id": "sha256:17907952f8269b5a927ad0b1778b0f9996daed6b25f3208f2b2c463906383770",
-        "physical_layout_id": "sha256:3baa46982fc431e1e088bc6d7d339e693f35fd3b2a6288ac0ce6ae74cfd084d3",
-        "exchange_binding_id": "sha256:16cbe5410ea28c3c802171c80806732eaa14ea24d62466b8e2f3edf5bb2fd753",
+        "physical_layout_id": "sha256:355690fc9a0b9f4967d7f7807e0ad5e029277ad4c19df1efeb96c2d1f15a8ff8",
+        "exchange_binding_id": "sha256:4d9d391af5899a3e0c22a3c0e2aac8c10f1f7a289c7c51110039dfd53dbc61e7",
         "configuration_identity": "sha256:fb62ae499a6661ce5473ab5bdc43adb3c6d98111b7abb8066c102cbeb8546d2c",
         "observer_configuration_id": "sha256:45569ece9a95b07f0079f1f513d95e83d71b528cc656bbe0bd47f088053d64f9"
       }
@@ -62,8 +62,8 @@
       },
       "expected": {
         "feature_set_id": "sha256:17907952f8269b5a927ad0b1778b0f9996daed6b25f3208f2b2c463906383770",
-        "physical_layout_id": "sha256:3baa46982fc431e1e088bc6d7d339e693f35fd3b2a6288ac0ce6ae74cfd084d3",
-        "exchange_binding_id": "sha256:16cbe5410ea28c3c802171c80806732eaa14ea24d62466b8e2f3edf5bb2fd753",
+        "physical_layout_id": "sha256:355690fc9a0b9f4967d7f7807e0ad5e029277ad4c19df1efeb96c2d1f15a8ff8",
+        "exchange_binding_id": "sha256:4d9d391af5899a3e0c22a3c0e2aac8c10f1f7a289c7c51110039dfd53dbc61e7",
         "configuration_identity": "sha256:fb62ae499a6661ce5473ab5bdc43adb3c6d98111b7abb8066c102cbeb8546d2c",
         "observer_configuration_id": "sha256:8311dd080e55e5547ee08d2367a704bba421f557e46157f0a92b016efcbf6ce6"
       }
@@ -73,8 +73,8 @@
       "set": {"parameter_set_id": "parameters:example-core-B"},
       "expected": {
         "feature_set_id": "sha256:17907952f8269b5a927ad0b1778b0f9996daed6b25f3208f2b2c463906383770",
-        "physical_layout_id": "sha256:3baa46982fc431e1e088bc6d7d339e693f35fd3b2a6288ac0ce6ae74cfd084d3",
-        "exchange_binding_id": "sha256:16cbe5410ea28c3c802171c80806732eaa14ea24d62466b8e2f3edf5bb2fd753",
+        "physical_layout_id": "sha256:355690fc9a0b9f4967d7f7807e0ad5e029277ad4c19df1efeb96c2d1f15a8ff8",
+        "exchange_binding_id": "sha256:4d9d391af5899a3e0c22a3c0e2aac8c10f1f7a289c7c51110039dfd53dbc61e7",
         "configuration_identity": "sha256:e951f66aafc4dc8b9d9d2fd65a56b3d118dfca09aa4e77c76396e7ccc5f1f926",
         "observer_configuration_id": "sha256:45569ece9a95b07f0079f1f513d95e83d71b528cc656bbe0bd47f088053d64f9"
       }
@@ -89,8 +89,8 @@
       },
       "expected": {
         "feature_set_id": "sha256:c1ddbb911bb27e1de7bf134643cd28e3016959f0c598885d637cb6a88863c8ac",
-        "physical_layout_id": "sha256:87e6cd26bb2f18179144c01a3b1015ec3f18ec9b1da2b25e98bc294ce343a890",
-        "exchange_binding_id": "sha256:92ab29e6e4389cd494d54a431128b0031976d31fb4864bde7857987ab5b6ed8e",
+        "physical_layout_id": "sha256:97311634ac11aa54e7446db9993f2b9945717a6e7706dd7b427217a716085ade",
+        "exchange_binding_id": "sha256:6abff5276aeea1e5dd2dd40480fa216ef5cd8f47376dd00a95b14490fdc144ee",
         "configuration_identity": "sha256:ba105c153e8928098e0fc75244c9aa244d068d44fc115b2478756c550c3108c7",
         "observer_configuration_id": "sha256:45569ece9a95b07f0079f1f513d95e83d71b528cc656bbe0bd47f088053d64f9"
       }
