@@ -1,0 +1,59 @@
+{
+  "work_unit": "ANIMO-B3I05",
+  "title": "Post-UBQ01/UBQ02 TCD-042 Mechanism Atomization and Canonical Child Routing",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i05-tcd042-atomization-routing",
+  "status": "IN_PROGRESS_PERSISTED_BEFORE_CHILD_ROUTING_VALIDATION",
+  "base": {
+    "work_unit": "ANIMO-B3I04",
+    "head": "400b7cd79f89043e091751707dfa96537587dcf6",
+    "canonical_register_tail": "TCD-042",
+    "canonical_register_path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
+  },
+  "authoritative_evidence_inputs": {
+    "UBQ01": {
+      "branch": "work/animo-ubq01-tcd042-upper-boundary-transaction",
+      "head": "6895b67799f26888025eced7188e7190b2a0d07d",
+      "scope": "EXACT_FLUX_ZERO_ONLY",
+      "result": "QUALIFIED_TCD042_EXACT_ZERO_CLASS_B_ATOM_PARENT_NUMERICAL_SUBTHRESHOLD_ATOM_PENDING"
+    },
+    "UBQ02": {
+      "branch": "work/animo-ubq02-tcd042-subthreshold-numerical-seam",
+      "head": "bb572bb5d431f91d780018a1acbb345fbcfced37",
+      "scope": "0<Flux<1.0d-8_WITH_FLPN0_ONLY",
+      "result": "QUALIFIED_TCD042_FINITE_POSITIVE_SUBTHRESHOLD_CLASS_E_SEAM_NUMERICAL_POLICY_PENDING"
+    },
+    "stale_parallel_checkpoint_not_authority": {
+      "branch": "work/animo-ubq02-subthreshold-upper-boundary-numerics",
+      "head": "26df0a89bc44e011db395f91b1afad58bfa7b623",
+      "reason": "checkpoint-only branch; branch name is not authority and it predates completed UBQ02 evidence"
+    }
+  },
+  "routing": {
+    "parent": "TCD-042",
+    "parent_register_row_changed": false,
+    "parent_status": "OPEN_REQUIRES_ATOMIZATION_NO_ADMISSION",
+    "new_numeric_tcd_reserved": false,
+    "tcd_043_reserved": false,
+    "canonical_child_records_planned": ["TCD-042-B1", "TCD-042-E1"],
+    "register_append_planned": false
+  },
+  "invariants": {
+    "scientific_admission_performed": false,
+    "corrected_legacy_admitted": false,
+    "numerical_policy_admitted": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "production_code_modified": false,
+    "evidence_strength_increased_by_intake": false,
+    "synthetic_or_diagnostic_evidence_promoted_to_B2": false,
+    "last_writer_wins_authority_used": false
+  },
+  "work_status": {
+    "realized": false,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  }
+}
