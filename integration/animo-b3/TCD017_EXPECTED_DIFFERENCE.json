@@ -1,0 +1,128 @@
+{
+  "work_unit": "ANIMO-B3A02",
+  "target_tcd": "TCD-017",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "record_purpose": "predeclare the only admissible difference surface for a later TCD-017 correction qualification",
+  "atomicity": "ATOMIC_LEDGER_CLAIM",
+  "b0": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "source_scope": {
+    "physical_producer": "Addit.for",
+    "reporting_consumer": "Outbal_calc.for",
+    "source_loss_expression": "Addiorpotoppl(I) = - Sudiorpo",
+    "source_loss_origin": "Sudiorpo = Codiorpotop * Hetop before plough redistribution",
+    "destination_accounting_expression": "Addiorpopl(I,Ln) = post_plough_layer_DOP_store - pre_plough_layer_DOP_store",
+    "current_public_ledger_expression": "Bapo(Redi,Ly) = Bapo(Redi,Ly) + Addiorpopl(I,Ln)*Z",
+    "omitted_public_ledger_term": "Addiorpotoppl(I)*Z",
+    "proposed_atomic_ledger_expression": "Bapo(Redi,Ly) = Bapo(Redi,Ly) + Addiorpotoppl(I)*Z",
+    "proposed_location": "Outbal_calc.for existing phosphorus-enabled ploughing block, Ln.Eq.0 branch",
+    "physical_source_patch": false,
+    "ploughing_physics_change": false
+  },
+  "conservation_identity": {
+    "identity": "top_reservoir_DOP_source_loss + sum(ploughed_layer_DOP_net_changes) = 0 for an encompassing control volume",
+    "prep06_transfer": "PLOUGH-DOM",
+    "synq01_oracle": "SYNQ-O002",
+    "natural_case": "LWKM_gras_1040.2021.2045",
+    "natural_measured_top_loss_kg_ha_P": -0.15380316471773922,
+    "natural_measured_layer_gain_kg_ha_P": 0.15380316471773947,
+    "natural_measured_stable_DOP_contribution_kg_ha_P": 0.0,
+    "natural_measured_combined_residual_kg_ha_P": 2.5e-16,
+    "physical_net_redistribution": "ZERO_TO_FLOATING_REPRESENTATION_NOISE"
+  },
+  "expected_to_change": {
+    "physical_states": [],
+    "process_fluxes": [],
+    "ledgers": [
+      "Bapo(Redi,Ly) only where the TCD-017 top-reservoir ploughing transfer is active"
+    ],
+    "reports": [
+      "organic-P balance fields derived from Bapo(Redi,Ly)",
+      "organic-P balance deviation derived from the corrected redistribution ledger",
+      "bapo<balance-label>.Out surfaces for affected balance profiles, including natural LWKM RP/GP/TP where active"
+    ]
+  },
+  "expected_unchanged": {
+    "physical_states": [
+      "Codiorpotop",
+      "Codiorpo(Ln)",
+      "all other dissolved, fresh, stable and humus organic-P states",
+      "PO4 and sorbed/precipitated P states",
+      "hydrology state",
+      "crop state",
+      "management and continuation state"
+    ],
+    "producer_accounting_arrays": [
+      "Addiorpotoppl",
+      "Addiorpopl"
+    ],
+    "process_fluxes": [
+      "all transport fluxes",
+      "all reaction and transformation fluxes",
+      "all hydrological fluxes",
+      "all crop uptake/loss fluxes",
+      "all management physical transfers"
+    ],
+    "reporting_surfaces": [
+      "all non-organic-P balance families",
+      "Bapp and inorganic-P balance surfaces",
+      "ordinary state-output files",
+      "ordinary process-output files",
+      "Bafop detailed organic-P redistribution/transformation accumulators"
+    ]
+  },
+  "output_whitelist": {
+    "rule": "Any observed difference outside this whitelist fails TCD-017 atomic qualification",
+    "allowed": [
+      "Bapo(Redi,Ly) for active top-reservoir ploughing events",
+      "Bapo-derived organic-P balance deviation/report fields",
+      "bapo<balance-label>.Out fields causally derived from that redistribution term"
+    ],
+    "explicitly_forbidden": [
+      "physical-state differences",
+      "process-flux differences",
+      "Bafop differences",
+      "other balance-family differences",
+      "input or management differences",
+      "TCD-027 surfaces",
+      "TCD-028 surfaces",
+      "AdStdiorpopl-related correction effects",
+      "Adhuexpopl-related correction effects"
+    ]
+  },
+  "natural_activation_expected_delta": {
+    "case": "LWKM_gras_1040.2021.2045",
+    "legacy_GP_period_1997_kg_ha_P": 0.0441,
+    "top_term_probe_GP_period_1997_kg_ha_P": 5.07e-13,
+    "legacy_GP_period_1998_kg_ha_P": 0.0494,
+    "top_term_probe_GP_period_1998_kg_ha_P": 4.61e-10,
+    "legacy_final_cumulative_kg_ha_P_approx": 0.154,
+    "top_term_probe_final_cumulative_kg_ha_P_approx": 2.78e-8,
+    "top_term_probe_max_abs_period_residual_kg_ha_P": {
+      "RP": 2.33e-10,
+      "GP": 4.06e-8,
+      "TP": 6.54e-7
+    },
+    "interpretation": "diagnostic causal evidence only; residual magnitudes are not tolerances or admission thresholds"
+  },
+  "non_composition": {
+    "is_composition": false,
+    "excluded_tcds": [
+      "TCD-027",
+      "TCD-028"
+    ],
+    "excluded_other_organic_P_findings": [
+      "AdStdiorpopl stable-DOP ledger extension",
+      "Adhuexpopl exudate-humus-P ledger extension",
+      "Bafop detailed accumulator corrections",
+      "stable-DOM plough accumulator lifecycle corrections"
+    ]
+  },
+  "admission": {
+    "admitted": false,
+    "route_status": "PENDING",
+    "independent_review_status": "PENDING"
+  }
+}
