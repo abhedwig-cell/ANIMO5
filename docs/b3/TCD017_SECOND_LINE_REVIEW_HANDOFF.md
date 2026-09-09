@@ -84,37 +84,46 @@ The latest checked PREP02R branch is:
 
 Head:
 
-`a877eb3f1d1e7a440b45805bbc46fc8e9acfe7ce`
+`9912001a8848bfdafcaef050d7458136564bc3c6`
 
 Its machine-readable status is:
 
-`PARTIAL_RECOVERY_BUILD_CONTRACT_STRONGLY_IMPROVED_MODERN_NATIVE_REBUILD_IDENTIFIED_HISTORICAL_REFERENCE_STILL_BLOCKED`
+`PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED`
 
-The newly supplied artifacts materially improve the build-contract evidence:
+The currently supplied artifacts materially improve the build-contract evidence:
 
 - `animo41.vfproj` and `animo41.sln` recover the Visual Studio/Intel Fortran project configuration, including 8-byte default REAL, SAVE/static local storage, FPS-compatible I/O settings, source floating-point model and CVF calling convention;
 - all project-selected source units are present in frozen B0, with `input1_1.for` and `Outselorg.for` excluded from the project selection;
-- the supplied `animo41.exe` has SHA-256 `40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d`.
+- the supplied `animo41.exe` has SHA-256 `40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d` and remains classified as `MODERN_NATIVE_REBUILD_NOT_HISTORICAL_REFERENCE`;
+- the frozen `RuurloGrass` native input surface is pinned;
+- PREP02R now has a fail-closed genuine-Windows capture harness and an execution handoff ready for two clean native diagnostic runs.
 
-However, PREP02R has classified that executable as:
-
-`MODERN_NATIVE_REBUILD_NOT_HISTORICAL_REFERENCE`
-
-Static evidence includes a 2026 PE timestamp, an x64 Debug PDB path, a modern linker signature and post-2011 Intel runtime evidence. It therefore cannot substitute for the missing historical B2 executable or executable-linked historical output.
+Static executable evidence still includes a 2026 PE timestamp, an x64 Debug PDB path, a modern linker signature and post-2011 Intel runtime evidence. The candidate therefore cannot substitute for the missing historical B2 executable or executable-linked historical output.
 
 At the checked PREP02R head:
 
-- the external archival request is still prepared but not sent;
-- project/build metadata has been obtained;
-- a native candidate executable has been obtained but is nonhistorical;
+- the external archival/provenance request is still not sent;
 - no provenance-qualified historical reference artifact has been obtained;
-- no native candidate execution has been completed in the controlled environment;
-- no native reference run has been completed;
+- the modern native candidate has not yet been executed in a genuine Windows capture;
+- no native historical reference run has been completed;
 - no native-vs-GNU comparison has been completed;
 - no historical or equivalent reference has been qualified;
 - the historical-uncertainty route is not yet eligible because bounded acquisition is not closed.
 
-Therefore the B3A02 route gate remains pending regardless of the second-line review result. The modern native rebuild may support cross-runtime diagnostics, but must not be cited as historical B2 evidence.
+Therefore the B3A02 route gate remains pending regardless of the second-line review result.
+
+## Future cross-runtime diagnostic evidence
+
+If the prepared Windows harness is later executed, its result may be useful to the TCD-017 dossier only as explicitly labelled cross-runtime corroboration. It may strengthen confidence that the observed ledger-only difference and unchanged ordinary outputs are not a GNU-specific compiler/runtime artifact.
+
+It must not be used as:
+
+- historical B2 evidence;
+- proof of revision-53 release behaviour;
+- a route-gate substitute;
+- an excuse to weaken the expected-difference whitelist or non-interference requirements.
+
+Even exact modern-native/GNU agreement leaves the route gate unchanged unless GOV02's independent route requirements are satisfied separately.
 
 ## Allowed review disposition
 
