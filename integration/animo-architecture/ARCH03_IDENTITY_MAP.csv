@@ -1,0 +1,24 @@
+identity_id,quantity_id,primary_control_volume,observer_channel,canonical_role,known_discrepancy_ids,qualification_note
+ID-WATER-PROFILE,water,CV-HYDRO-PROFILE,closure_residual,profile closure,TCD-018;TCD-025,complete detailed view requires interception and any admitted macropore storage
+ID-INTERNAL-INTERFACE-CANCEL,water,CV-HYDRO-PROFILE,internal_transfer_total,internal cancellation,,same typed event projects to opposing layer views
+ID-SOLUTE-LAYER,nitrogen,CV-SOIL-N,closure_residual,layer/detail closure,TCD-015;TCD-016,local solver identities remain separate diagnostic evidence
+ID-SOLUTE-PROFILE,nitrogen,CV-SOIL-N,closure_residual,profile closure,TCD-015;TCD-016,internal vertical interfaces cancel
+ID-MATERIAL-ADDITION,nitrogen,CV-SOIL-N,reaction_bundle_nonclosure,management composition bundle,,retained addition plus explicit loss must equal typed material quantity
+ID-CROP-N,nitrogen,CV-SOIL-CROP-N,closure_residual,nested control-volume projection,,uptake external in soil-only and internal in soil+crop
+ID-CROP-P,phosphorus,CV-SOIL-CROP-P,closure_residual,nested control-volume projection,,uptake external in soil-only and internal in soil+crop
+ID-CROP-RESIDUE,crop_dry_matter,CV-CROP-DM,reaction_bundle_nonclosure,crop residue/export bundle,,conversion to soil OM requires explicit conversion contract
+ID-CROP-HARVEST,crop_dry_matter,CV-CROP-DM,closure_residual,crop external removal,,harvest export external to crop view
+ID-CROP-GRAZING,crop_dry_matter,CV-CROP-DM,closure_residual,crop external removal,,grazing export external unless returned by explicit event
+ID-REDISTRIBUTION,phosphorus,CV-SOIL-P,internal_transfer_total,internal redistribution,TCD-017;TCD-028,reporting defects do not alter internal classification
+ID-ORG-TRANSFORM,organic_matter_mass,CV-SOIL-OM,reaction_bundle_nonclosure,reaction bundle,TCD-028,elemental C not inferred
+ID-STABLE-DOM-P,phosphorus,CV-SOIL-P,reaction_bundle_nonclosure,reaction bundle,TCD-023,P bundle legs must be derived from P transfer quantity
+ID-N-MINERALIZATION,nitrogen,CV-SOIL-N,reaction_bundle_nonclosure,reaction bundle,,organic N and mineral N are same conserved quantity
+ID-P-MINERALIZATION,phosphorus,CV-SOIL-P,reaction_bundle_nonclosure,reaction bundle,TCD-023,organic P and mineral P are same conserved quantity
+ID-NITRIFICATION,nitrogen,CV-SOIL-N,reaction_bundle_nonclosure,reaction bundle,,GHG extension remains theory blocked
+ID-DENITRIFICATION,nitrogen,CV-SOIL-N,reaction_bundle_nonclosure,reaction plus external loss,,N2/N2O partition requires explicit gas treatment when active
+ID-P-SORPTION,phosphorus,CV-SOIL-P,internal_transfer_total,internal phase transfer,TCD-019;TCD-024;TCD-029,site-resolved stores required
+ID-P-INITIAL,phosphorus,CV-SOIL-P,initialization_nonclosure,initialization projection,TCD-014,separate from first runtime interval
+ID-DRYDOWN,nitrogen,CV-SOIL-N,constraint_nonclosure,numerical constraint diagnostic,TCD-016,zeroing is not a physical sink
+ID-MACROPORE-WATER,water,CV-HYDRO-PROFILE,closure_residual,conditional combined-domain closure,TCD-025,feature blocked pending active qualification
+ID-MACROPORE-SOLUTE,nitrogen,CV-MATRIX-MACROPORE-N,closure_residual,conditional combined-domain closure,TCD-025,repeat by species/quantity when feature admitted
+ID-REPORT-ACCUM,phosphorus,CV-SOIL-P,observer_integrity_status,reporting integrity,TCD-027;TCD-028,not a physical conservation equation
