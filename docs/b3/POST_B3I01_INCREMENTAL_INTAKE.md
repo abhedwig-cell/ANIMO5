@@ -23,19 +23,21 @@ The key consequence is that two nominal B3I02 targets are already canonically ro
 
 Allocating either phenomenon again would violate the incremental-only rule and the no-reuse rule.
 
-## 2. Incremental scan boundary
+## 2. Incremental scan boundary and live refresh
 
-The authoritative B3I01 head was established after its Supplement 04 append of `TCD-041`. Workunit heads were checked live around that boundary.
+The authoritative B3I01 head was established after its Supplement 04 append of `TCD-041`. Workunit heads were checked live around that boundary and again after the first B3I02 closeout checkpoint.
 
-The only completed evidence addition found after that authority cutoff in the runtime/state/mass scope is the later STATEQ01 external-crop split-run evidence at head `4adae99576eb56978da71f7c8a250e4445fd3bc4`.
+Completed evidence additions relevant to this intake are:
 
-Three newer branches are not treated as completed evidence in this intake:
+- STATEQ01 external-crop split-run evidence at head `4adae99576eb56978da71f7c8a250e4445fd3bc4`;
+- RG03 post-G5 gate reconciliation at head `b67a6cac325fe3f838aedc9df106e120fd5a3d0f`, which closed after the initial B3I02 scan.
 
-- `work/animo-massq02-residual-causality-typed-events` is at a start checkpoint;
-- `work/animo-stateq02-restricted-core-executable-split-run` is at a pre-execution checkpoint;
-- `work/animo-rg03-post-g5-gate-reconciliation` is at a reconciliation checkpoint.
+RG03 is consumed here only as governance evidence. Its closeout is tested and qualified, but explicitly increases no evidence strength, performs no scientific admission, changes no production source and keeps the canonical TCD authority at B3I01 head `383c7a83e84a578969f92113280dc715b7bdddb4` with tail `TCD-041`. It therefore creates no new runtime, state or mass discrepancy for B3I02 and no new TCD reservation.
 
-They are therefore excluded from canonical disposition until they publish completed qualification evidence.
+Two newer branches remain excluded because they are not completed qualification evidence at the refreshed scan point:
+
+- `work/animo-massq02-residual-causality-typed-events` remains at a start checkpoint;
+- `work/animo-stateq02-restricted-core-executable-split-run` remains at a pre-execution checkpoint.
 
 MASSQ01 predates the final B3I01 authority head, but its unresolved residual register is explicitly included because B3I02 was asked to disposition every `UNEXPLAINED_RESIDUAL`. BUILDQ03 and BUILDQ04 are likewise retained as explicit handoff checks, even where B3I01 already absorbed their result.
 
@@ -149,7 +151,28 @@ Both receive:
 
 They are not split into canonical atoms and do not receive `TCD-042`. Doing so now would turn a behavioural symptom into a canonical causal claim without evidence.
 
-## 8. Collision scan and reservation result
+## 8. RG03 reconciliation result
+
+RG03 closed after the first B3I02 scan with:
+
+`QUALIFIED_POST_G5_CANONICAL_GATE_RECONCILIATION_NO_SCIENTIFIC_ADMISSIONS`
+
+Its relevant consequences for this workunit are negative but useful:
+
+- the canonical TCD authority remains B3I01 at tail `TCD-041`;
+- no last-writer-wins register update occurred;
+- no scientific, STATE, TIME, MASS or corrected-legacy admission occurred;
+- integration did not increase evidence strength;
+- MASS remains `B1_OBSERVER_READINESS_QUALIFIED_ADMISSION_BLOCKED`;
+- feature-scoped STATE/runtime work remains separate from canonical admission.
+
+RG03 therefore does not supply a new causal phenomenon to classify. B3I02 records its disposition as:
+
+`GOVERNANCE_RECONCILIATION_NO_NEW_DISCREPANCY`
+
+This refresh does not alter any B3I02 TCD decision.
+
+## 9. Collision scan and reservation result
 
 The authoritative canonical register ends at `TCD-041`. `TCD-042` was not present in the live authoritative register when checked.
 
@@ -163,7 +186,7 @@ Because no post-B3I01 incremental finding meets both the causal and atomicity th
 
 No canonical register append is required in B3I02.
 
-## 9. Final disposition
+## 10. Final disposition
 
 B3I02 changes no scientific admission state, no corrected-legacy admission state and no production migration state.
 
@@ -174,6 +197,7 @@ The incremental results are:
 - BUILDQ03 hidden lifetime handoff: existing `TCD-011` where canonical routing is needed, otherwise scoped runtime context without a new scientific TCD;
 - MASSQ01 unexplained residuals: fifteen local observer findings pending causality;
 - later STATEQ01 split divergences: insufficient evidence pending causal isolation;
+- RG03 closeout: governance reconciliation only, no new discrepancy and no evidence-strength promotion;
 - new TCD reservations: zero;
 - canonical register append: not required;
 - admissions: zero.
