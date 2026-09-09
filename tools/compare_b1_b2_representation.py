@@ -68,6 +68,8 @@ def validate_capture(capture: dict[str, Any], *, side: str) -> list[str]:
         errors.append("representation_observations is required for representation comparison")
     elif not isinstance(observations, list):
         errors.append("representation_observations must be an array")
+    elif not observations:
+        errors.append("representation_observations must contain at least one observation")
     else:
         for index, item in enumerate(observations):
             if not isinstance(item, dict):
