@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-TIME02",
+  "evidence_class": "SYNTHETIC_CONTRACT_VECTORS_NON_B2",
+  "calendar_contract_id": "ANIMO_PG_86400_NOLEAPSECONDS_V1",
+  "coordinate_schema": {
+    "day_index": "decimal integer string, 0001-01-01T00:00:00 = 0",
+    "subday_numerator": "decimal non-negative integer string",
+    "subday_denominator": "decimal positive integer string, reduced fraction of one day"
+  },
+  "exact_second": {"subday_numerator": "1", "subday_denominator": "86400"},
+  "vectors": [
+    {"id":"T02-CAL-001","class":"calendar_round_trip","input_civil":"2000-02-29T00:00:00","expected_coordinate":{"day_index":"730178","subday_numerator":"0","subday_denominator":"1"},"expected":"ACCEPT_VALID_LEAP_DATE"},
+    {"id":"T02-CAL-002","class":"calendar_validation","input_civil":"1900-02-29T00:00:00","expected":"REJECT_INVALID_GREGORIAN_DATE"},
+    {"id":"T02-CAL-003","class":"year_transition","t0":{"day_index":"730118","subday_numerator":"0","subday_denominator":"1"},"t1":{"day_index":"730119","subday_numerator":"0","subday_denominator":"1"},"expected":["PRIOR_YEAR_CLOSEOUT_AFTER_PHYSICAL_T1","NEXT_INTERVAL_NEW_YEAR_START_AT_SAME_EXACT_T1"]},
+    {"id":"T02-MGT-001","class":"management_endpoint","t0":{"day_index":"730119","subday_numerator":"0","subday_denominator":"1"},"t1":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"event":{"day_index":"730119","subday_numerator":"0","subday_denominator":"1"},"predicate":"t0 < E <= t1","expected_selected":false},
+    {"id":"T02-MGT-002","class":"management_endpoint","t0":{"day_index":"730119","subday_numerator":"0","subday_denominator":"1"},"t1":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"event":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"predicate":"t0 < E <= t1","expected_selected":true},
+    {"id":"T02-MGT-003","class":"management_just_before_t1","t0":{"day_index":"730119","subday_numerator":"0","subday_denominator":"1"},"t1":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"event":{"day_index":"730119","subday_numerator":"86399","subday_denominator":"86400"},"predicate":"t0 < E <= t1","expected_selected":true},
+    {"id":"T02-MGT-004","class":"management_just_after_t1","t0":{"day_index":"730119","subday_numerator":"0","subday_denominator":"1"},"t1":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"event":{"day_index":"730120","subday_numerator":"1","subday_denominator":"86400"},"predicate":"t0 < E <= t1","expected_selected":false},
+    {"id":"T02-HRV-001","class":"harvest_endpoint","t0":{"day_index":"730119","subday_numerator":"0","subday_denominator":"1"},"t1":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"event":{"day_index":"730119","subday_numerator":"0","subday_denominator":"1"},"predicate":"t0 <= H < t1","expected_selected":true},
+    {"id":"T02-HRV-002","class":"harvest_endpoint","t0":{"day_index":"730119","subday_numerator":"0","subday_denominator":"1"},"t1":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"event":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"predicate":"t0 <= H < t1","expected_selected":false},
+    {"id":"T02-HRV-003","class":"harvest_just_before_t1","t0":{"day_index":"730119","subday_numerator":"0","subday_denominator":"1"},"t1":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"event":{"day_index":"730119","subday_numerator":"86399","subday_denominator":"86400"},"predicate":"t0 <= H < t1","expected_selected":true},
+    {"id":"T02-SPLIT-001","class":"split_restart_boundary","split":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"events":[{"event_class":"management","at_split":true,"expected_owner":"INTERVAL_ENDING_AT_SPLIT"},{"event_class":"harvest","at_split":true,"expected_owner":"INTERVAL_STARTING_AT_SPLIT"}],"expected":"NO_REPLAY_NO_SKIP_AFTER_RESTORE","b2_evidence":false},
+    {"id":"T02-RETRY-001","class":"changed_t1_retry","accepted_t0":{"day_index":"730119","subday_numerator":"0","subday_denominator":"1"},"original_t1":{"day_index":"730121","subday_numerator":"0","subday_denominator":"1"},"retry_t1":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"expected":["NEW_INTERVAL_ID","FRESH_TRIAL_ID","REBIND_ALL_INTERVAL_SCOPED_FRAMES","RECOMPUTE_EVENT_MEMBERSHIP"]},
+    {"id":"T02-HYD-001","class":"hydrology_frame_exact_match","interval_t0":{"day_index":"730119","subday_numerator":"0","subday_denominator":"1"},"interval_t1":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"frame_t0":{"day_index":"730119","subday_numerator":"0","subday_denominator":"1"},"frame_t1":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"expected":"BIND_ALLOWED_IF_OTHER_IDENTITIES_MATCH"},
+    {"id":"T02-HYD-002","class":"hydrology_frame_t1_mismatch","interval_t1":{"day_index":"730120","subday_numerator":"0","subday_denominator":"1"},"frame_t1":{"day_index":"730119","subday_numerator":"86399","subday_denominator":"86400"},"difference":"exactly one second","expected":"REJECT_BEFORE_PROCESS_EXECUTION","floating_tolerance_allowed":false},
+    {"id":"T02-HYD-003","class":"hydrology_calendar_contract_mismatch","interval_calendar_contract_id":"ANIMO_PG_86400_NOLEAPSECONDS_V1","frame_calendar_contract_id":"OTHER_CALENDAR","expected":"REJECT_BEFORE_PROCESS_EXECUTION"},
+    {"id":"T02-MAP-001","class":"legacy_management_integer_day_mapping","simulation_start":{"civil":"2000-01-01T00:00:00","day_index":"730119"},"legacy_Tinead_input":"1.0","mapping":"Judami + Tinead - 1/2 day","expected_coordinate":{"day_index":"730119","subday_numerator":"1","subday_denominator":"2"},"expected_civil":"2000-01-01T12:00:00"},
+    {"id":"T02-MAP-002","class":"legacy_crop_date_mapping","legacy_field":"Tiha","input_date":"2000-02-29","expected_coordinate":{"day_index":"730178","subday_numerator":"1","subday_denominator":"2"},"expected_civil":"2000-02-29T12:00:00"}
+  ],
+  "qualification_note": "All vectors are synthetic/source-contract qualification vectors. None is B2 historical behaviour evidence."
+}
