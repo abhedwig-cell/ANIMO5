@@ -1,0 +1,48 @@
+{
+  "work_unit": "ANIMO-PREP02R",
+  "subscope": "NATIVE_TO_GNU_RUURLO_CROSS_RUNTIME_COMPARISON",
+  "date": "2026-09-09",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "comparison machinery readiness only; no real native capture compared yet",
+  "native_capture_available": false,
+  "native_vs_gnu_comparison_completed": false,
+  "historical_reference_qualified": false,
+  "normal_B2_reference_available": false,
+  "production_migration_admitted": false,
+  "gnu_surface": "integration/animo-prep/PREP02R_GNU_RUURLO_FILE_SURFACE_20260909.json",
+  "gnu_surface_content_set_sha256": "6230855d66fab5ca278d7aa6ca1f712ff7a8e58bfd6c7508c05ae3d10ebe01f5",
+  "comparison_tool": "tools/prep02r_compare_native_capture_to_gnu_surface.py",
+  "test_file": "tests/test_prep02r_compare_native_capture_to_gnu_surface.py",
+  "local_unit_tests": {
+    "executed": true,
+    "passed": 5,
+    "failed": 0,
+    "covered": [
+      "surface content-set self-validation",
+      "declared volatile-only match",
+      "scientific numeric difference fails closed",
+      "extra native output path fails closed",
+      "missing native output path fails closed"
+    ]
+  },
+  "comparison_policy": {
+    "native_capture_integrity_must_pass_first": true,
+    "native_repeat_must_be_exact_or_declared_volatile_only": true,
+    "both_native_runs_compared_to_gnu_surface": true,
+    "file_set_must_match": true,
+    "normalized_size_must_match": true,
+    "normalized_sha256_must_match": true,
+    "scientific_numeric_tolerance_applied": false,
+    "cross_runtime_match_may_be_relabelled_as_historical_B2": false
+  },
+  "possible_runtime_decisions": [
+    "CROSS_RUNTIME_MATCH_ON_EXPLICIT_GNU_SURFACE_NOT_HISTORICAL_REFERENCE",
+    "CROSS_RUNTIME_DIFFERENT_FAIL_CLOSED_NOT_HISTORICAL_REFERENCE",
+    "COMPARISON_BLOCKED_FAIL_CLOSED",
+    "COMPARISON_INPUT_FAIL_CLOSED"
+  ],
+  "decision": "QUALIFIED_CROSS_RUNTIME_COMPARISON_MACHINERY_READY_NATIVE_CAPTURE_PENDING"
+}
