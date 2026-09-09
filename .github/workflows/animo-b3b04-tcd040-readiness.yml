@@ -1,0 +1,38 @@
+name: ANIMO-B3B04 TCD-040 readiness validation
+
+on:
+  push:
+    branches:
+      - work/animo-b3b04-tcd040-layer0-restart-readiness
+    paths:
+      - 'docs/b3/TCD040_LAYER0_RESTART_IDENTITY_QUALIFICATION.md'
+      - 'integration/animo-b3/ANIMO-B3B04_STATUS.json'
+      - 'integration/animo-b3/B3B04_TCD040_RESTART_IDENTITY_EVIDENCE.json'
+      - 'tools/b3b04/validate_b3b04.py'
+      - '.github/workflows/animo-b3b04-tcd040-readiness.yml'
+  pull_request:
+    paths:
+      - 'docs/b3/TCD040_LAYER0_RESTART_IDENTITY_QUALIFICATION.md'
+      - 'integration/animo-b3/ANIMO-B3B04_STATUS.json'
+      - 'integration/animo-b3/B3B04_TCD040_RESTART_IDENTITY_EVIDENCE.json'
+      - 'tools/b3b04/validate_b3b04.py'
+      - '.github/workflows/animo-b3b04-tcd040-readiness.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse B3B04 evidence
+        run: |
+          python -m json.tool integration/animo-b3/ANIMO-B3B04_STATUS.json >/dev/null
+          python -m json.tool integration/animo-b3/B3B04_TCD040_RESTART_IDENTITY_EVIDENCE.json >/dev/null
+      - name: Validate atomic TCD-040 readiness evidence
+        run: python tools/b3b04/validate_b3b04.py
