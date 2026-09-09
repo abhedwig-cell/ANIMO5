@@ -162,7 +162,7 @@ Minimum comparison checkpoints, where relevant to the quantity, are:
 
 Representation observations and scientific records share the capture envelope but remain separate evidence classes.
 
-## Gate 8: comparison-surface selection
+## Gate 8: scientific comparison-surface selection
 
 Use the predefined source-bound registry:
 
@@ -191,9 +191,29 @@ For `EXACT_ACCOUNTING_IDENTITY`, additionally declare:
 
 A matching numeric value does not excuse a different ledger member, sign or index mapping.
 
-## Gate 9: structured representation comparison
+## Gate 9: representation observability disposition
 
-Run:
+Use the predefined registry:
+
+`integration/animo-numerics/FIRST_REFERENCE_REPRESENTATION_SURFACE.json`
+
+Before representation comparison, disposition every predefined subject as either:
+
+- jointly observed; or
+- omitted with one allowed reason class and a concrete rationale.
+
+Allowed omission reasons are:
+
+- `NOT_APPLICABLE_TO_CASE`;
+- `NOT_JOINTLY_OBSERVABLE`;
+- `OBSERVER_NOT_ADMITTED`;
+- `HISTORICAL_BUILD_METADATA_UNAVAILABLE`.
+
+Do not add new representation subjects after inspecting B2 differences. Do not leave a predefined subject undispositioned. An omission is an evidence limitation rather than evidence of equality.
+
+## Gate 10: structured representation comparison
+
+If one or more predefined subjects are jointly observed, run:
 
 `tools/compare_b1_b2_representation.py <b2-capture.json> <b1-capture.json> --json <representation-comparison.json>`
 
@@ -212,11 +232,11 @@ Possible top-level results are:
 - `DIFFERENT_REPRESENTATION_FAIL_CLOSED`;
 - `SCHEMA_OR_PROVENANCE_FAILURE`.
 
+An empty observation set cannot produce an exact match. If no subject is jointly observable, record `NOT_RUN_NO_STRUCTURED_REPRESENTATION_CAPTURE` in the packet after completing the omission dispositions.
+
 A representation difference is not automatically accepted as harmless. If a later disposition declares it representation-only, retain the exact rule and evidence that justify that classification.
 
-If structured representation observations do not exist, record `NOT_RUN_NO_STRUCTURED_REPRESENTATION_CAPTURE` in the packet. If observer structured captures do exist, the packet validator requires this comparison layer to be run.
-
-## Gate 10: structured scientific B2 versus B1 comparison
+## Gate 11: structured scientific B2 versus B1 comparison
 
 Run:
 
@@ -237,9 +257,9 @@ Expected categories include:
 
 A difference in captured `branch_id` or `fallback_id` fails even when the resulting scientific value matches.
 
-Formatting and other representation observations are handled by Gate 9 rather than being silently accepted inside scientific comparison.
+Formatting and other representation observations are handled by Gate 10 rather than being silently accepted inside scientific comparison.
 
-## Gate 11: first-comparison packet validation
+## Gate 12: first-comparison packet validation
 
 Populate:
 
@@ -251,11 +271,13 @@ Validate with:
 
 The packet schema version is:
 
-`1.1.0`.
+`1.2.0`.
+
+The validator checks that every representation subject in the predefined registry is either jointly observed or explicitly omitted with rationale.
 
 `PACKET_COMPLETE` means only that the required evidence chain is present. It may legitimately contain a fail-closed raw-tree, representation or scientific comparison.
 
-## Gate 12: first-comparison disposition
+## Gate 13: first-comparison disposition
 
 Retain every comparison artifact as evidence. Do not convert any comparator result directly into an admission decision.
 
@@ -318,6 +340,7 @@ The first comparison packet should contain at minimum:
 - observer non-interference evidence if observer capture is used;
 - B2 structured capture when available;
 - B1 structured capture when available;
+- complete representation observability disposition against the predefined registry;
 - structured representation comparison result or explicit unavailable classification;
 - structured scientific comparison result or explicit no-unrounded-capture classification;
 - difference classification record;
