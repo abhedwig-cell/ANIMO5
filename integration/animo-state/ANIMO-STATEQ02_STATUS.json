@@ -1,0 +1,30 @@
+{
+  "workunit": "ANIMO-STATEQ02",
+  "title": "Restricted-Core Executable Split-Run, Checkpoint Completeness & Accepted-Boundary Qualification",
+  "branch": "work/animo-stateq02-restricted-core-executable-split-run",
+  "base_branch": "work/animo-stateq01-canonical-state-readiness",
+  "base_head": "4adae99576eb56978da71f7c8a250e4445fd3bc4",
+  "external_b3i01_authority": "work/animo-b3i01-canonical-register-append@383c7a83e84a578969f92113280dc715b7bdddb4",
+  "status": "IN_PROGRESS_PERSISTED_BEFORE_LONG_EXECUTION",
+  "source_hash": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_hash": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "canonical_state_admission": "NOT_ADMITTED",
+  "whole_model_state_claim": false,
+  "production_implementation": "NONE",
+  "execution_started": false,
+  "profile": "RESTRICTED_CORE_CNP_SURFACE_EXCLUDED",
+  "excluded": [
+    "GHG",
+    "MACROPORES",
+    "TCD-016-C1_DRY_SOLUTE_TRANSITION",
+    "TCD-040_NONZERO_LAYER0_AQUEOUS_RESTART_PATH",
+    "UNRESOLVED_INTERNAL_CROP_RESTART_STATE",
+    "REPORT_ACCUMULATORS_AS_PHYSICAL_STATE"
+  ],
+  "deliverables": [
+    "docs/state/RESTRICTED_CORE_SPLIT_RUN_QUALIFICATION.md",
+    "integration/animo-state/STATEQ02_SPLIT_RUN_MATRIX.json",
+    "integration/animo-state/STATEQ02_CHECKPOINT_DIFFS.csv",
+    "integration/animo-state/ANIMO-STATEQ02_STATUS.json"
+  ]
+}
