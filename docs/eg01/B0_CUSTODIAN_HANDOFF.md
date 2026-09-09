@@ -76,7 +76,7 @@ Return only non-secret evidence suitable for the public repository:
 - custodian approval/reference;
 - any restriction or retention-policy identifier that can safely be disclosed.
 
-Use `integration/evidence/ANIMO_B0_STORAGE_PROOF_SCHEMA.json` for the machine-readable return record.
+Use `integration/evidence/ANIMO_B0_STORAGE_PROOF_SCHEMA.json` as the structural machine-readable return contract. Structural schema conformance alone is not an admission decision, because schema-valid metadata still has to be reconciled to the canonical B0 register and the external proof references still have to be reviewed.
 
 Before any status promotion, run the fail-closed semantic gate from the repository root:
 
@@ -86,7 +86,7 @@ python tools/validate_b0_storage_proof.py <returned-proof.json>
 
 Exit code `0` means the public proof metadata is internally consistent with the canonical B0 register and contains all three expected evidence IDs, exact B0 digests, primary/secondary verification flags, restore results and non-placeholder proof references. Any other exit code blocks promotion.
 
-Schema conformance or a machine-gate pass is not sufficient evidence by itself. The gate cannot authenticate a custodian, storage authority or proof reference. An authorized human reviewer must still inspect those external claims before the stronger status is admitted.
+A machine-gate pass is still not sufficient evidence by itself. The gate cannot authenticate a custodian, storage authority or proof reference. An authorized human reviewer must inspect those external claims before the stronger status is admitted.
 
 ## Legal handling
 
