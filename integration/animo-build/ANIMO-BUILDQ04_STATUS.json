@@ -75,13 +75,27 @@
     "recommended_disposition": "NEW_CANONICAL_TCD_CANDIDATE_PENDING_CENTRAL_COLLISION_CHECK_AND_RESERVATION",
     "canonical_id_allocated_by_buildq04": false
   },
+  "executable_validation": {
+    "tested": true,
+    "qualified": true,
+    "validated_head": "268a0c007b4c9eff5cbf1dcbd7eeb4389554d3ed",
+    "successful_ci_runs": [34339338513],
+    "workflow": "ANIMO-BUILDQ04 GHG bottom-boundary qualification",
+    "runner_reproduced_artifact_validation": true,
+    "runner_reproduced_boundary_sensitivity_matrix": true,
+    "runner_reproduced_uninitialized_first_read_exposure": true
+  },
   "deliverables": [
     "docs/build/ANIMO-BUILDQ04_WORK_UNIT_CONTRACT.md",
     "docs/build/GHG_BOTTOM_BOUNDARY_INITIALIZATION_QUALIFICATION.md",
+    "docs/build/BUILDQ04_B3_HANDOFF.md",
     "integration/animo-build/BUILDQ04_GHG_BOTTOM_BOUNDARY_MATRIX.json",
     "integration/animo-build/ANIMO-BUILDQ04_STATUS.json",
     "tools/buildq04/buildq04_uninitialized_first_read_probe.f90",
-    "tools/buildq04/buildq04_boundary_sensitivity_probe.f90"
+    "tools/buildq04/buildq04_boundary_sensitivity_probe.f90",
+    "tools/buildq04/README.md",
+    "tools/validate_buildq04.py",
+    ".github/workflows/animo-buildq04-ghg-bottom-boundary.yml"
   ],
   "corrected_legacy_admitted": false,
   "b3_scientific_admitted": false,
