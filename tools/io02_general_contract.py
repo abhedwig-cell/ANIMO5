@@ -973,17 +973,17 @@ class General41Parser:
                 feature_condition="IntMedOutputTS=0",
                 parser_path="ReadOp",
             )
-            ln, values, lexical = self._read_ints(
+            ln, intmed_values, lexical = self._read_ints(
                 c, "IntMedOutFromStart=", count
             )
-            if any(not 0 <= value <= 9999 for value in values):
+            if any(not 0 <= value <= 9999 for value in intmed_values):
                 raise LegacyGrammarError(
                     "1990/1991", "IntMedOutFromStart outside 0..9999", ln
                 )
             self._add(
                 "outtot",
                 "IntMedOutFromStart=",
-                values,
+                intmed_values,
                 "INTEGER_ARRAY",
                 "DiagnosticsConfiguration",
                 "intermediate.from_start",
