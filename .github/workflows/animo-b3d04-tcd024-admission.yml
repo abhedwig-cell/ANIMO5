@@ -1,0 +1,50 @@
+name: ANIMO-B3D04 TCD024 admission closeout
+
+on:
+  push:
+    branches:
+      - work/animo-b3d04-tcd024-admission-closeout
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-b3d04:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Validate TCD-024 admission closeout
+        run: python tools/validate_b3d04_tcd024_admission.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              "integration/animo-b3/TCD024_B3_ADMISSION_CLOSEOUT.json",
+              "integration/animo-b3/ANIMO-B3D04_STATUS.json",
+              "docs/b3/TCD024_B3_ADMISSION_CLOSEOUT.md",
+              "tools/validate_b3d04_tcd024_admission.py",
+              ".github/workflows/animo-b3d04-tcd024-admission.yml",
+          }
+          base = "a3e194573b3a7ce95d5ef15fc179ddb3a613d8a6"
+          changed = set(subprocess.check_output(
+              ["git", "diff", "--name-only", f"{base}..HEAD"], text=True
+          ).splitlines())
+          unexpected = changed - allowed
+          missing = allowed - changed
+          if unexpected:
+              raise SystemExit("FAIL_SCOPE_GUARD unexpected files: " + ", ".join(sorted(unexpected)))
+          if missing:
+              raise SystemExit("FAIL_SCOPE_GUARD missing admission files: " + ", ".join(sorted(missing)))
+          print("PASS_B3D04_ADMISSION_SCOPE_GUARD")
+          PY
