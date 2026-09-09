@@ -4,30 +4,135 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-rg02-branch-authority-integration",
   "governance_parent": "662bca8aff40f4dca1f6ccdde6bef6274c6bede2",
-  "decision": "IN_PROGRESS_LIVE_INVENTORY_PERSISTED_NO_MERGES",
+  "decision": "BLOCKED_UNRESOLVED_PARALLEL_LINEAGE_COLLISIONS",
   "implemented": true,
   "persisted": true,
-  "tested": false,
+  "tested": true,
   "qualified": false,
-  "blocked": false,
-  "inventory_snapshot": {
-    "relevant_work_animo_branches_observed": 45,
+  "blocked": true,
+  "testing_scope": "repository-governance validation only: live branch and PR re-query, ancestry comparisons, status/PR evidence cross-checks, and persisted artifact readback; no legacy runtime, scientific, numerical or production test is claimed",
+  "live_inventory_snapshot": {
+    "work_animo_branches_observed": 51,
     "baseline_branches_observed": 2,
     "pull_requests_observed_total": 12,
     "pull_requests_open": 9,
     "pull_requests_closed_unmerged": 3,
     "default_branch": "main",
-    "main_head_at_initial_inventory": "0fb4758bdaa55eab28a3bf521fa2a5cffb1aa9b2"
+    "main_head": "0fb4758bdaa55eab28a3bf521fa2a5cffb1aa9b2",
+    "rg01_closeout": "662bca8aff40f4dca1f6ccdde6bef6274c6bede2"
   },
-  "early_observations": [
-    "EB01 copy/pr/review refs currently point at the same commit as the primary EB01 ref and therefore do not independently establish authority",
-    "NQ01 final/ignore/copy/packet-temp/stop refs currently point at a common non-authoritative placeholder lineage distinct from the active NQ01 architecture ref",
-    "TQ01 shadow refs share a common head distinct from the current qualified TQ01 primary head",
-    "PREP07, PREP08, PREP09 and PREP10 identifiers have parallel divergent lineages and require explicit reconciliation",
-    "B3Q01 freezes the canonical discrepancy register through TCD-027 while later preparatory branches contain local post-TCD027 numbering; silent register union is prohibited",
-    "PR 14 explicitly re-anchors PREP10C onto the PREP10 plough-accumulator branch and records older PREP10C histories as non-merge ancestry"
+  "authority_decisions": {
+    "PREP07": {
+      "authoritative": "work/animo-prep07-transfer-edge-audit",
+      "supplemental": ["work/animo-prep07-transfer-species-identity"]
+    },
+    "PREP08": {
+      "authoritative": "work/animo-prep08-causal-management-probes",
+      "supplemental": ["work/animo-prep08-transfer-probes"],
+      "superseded_do_not_merge": ["work/animo-prep08-restart-state-continuity"]
+    },
+    "PREP09": {
+      "authoritative": "work/animo-prep09-element-transfer-and-slow-sorption",
+      "supplemental_renumber_required": ["work/animo-prep09-option-contract-audit"]
+    },
+    "PREP10": {
+      "authoritative": "work/animo-prep10-stable-dom-plough-accumulators",
+      "supplemental": [
+        "work/animo-prep10-stable-dom-causal-activation",
+        "work/animo-prep10-restart-state-continuity"
+      ],
+      "restart_line_requires_new_workunit_id": true
+    },
+    "PREP10C": {
+      "authoritative_review_surface": "work/animo-prep10c-stable-dom-event-reset-authoritative",
+      "superseded_do_not_merge": [
+        "work/animo-prep10c-stable-dom-event-reset-candidate",
+        "work/animo-prep10c-stable-dom-reset-readiness"
+      ]
+    },
+    "NQ01": {
+      "authoritative": "work/animo-nq01-numerical-qualification-architecture",
+      "superseded_do_not_merge": [
+        "work/animo-nq01-final",
+        "work/animo-nq01-ignore",
+        "work/animo-nq01-numerical-qualification-architecture-copy",
+        "work/animo-nq01-packet-temp",
+        "work/animo-nq01-stop"
+      ]
+    },
+    "TQ01": {
+      "authoritative": "work/animo-tq01-testcase-qualification",
+      "superseded_do_not_merge": [
+        "work/animo-tq01-testcase-qualification-shadow",
+        "work/animo-tq01-testcase-qualification-shadow2",
+        "work/animo-tq01-testcase-qualification-shadow3"
+      ]
+    },
+    "EB01": {
+      "authoritative": "work/animo-eb01-evidence-baseline-model",
+      "superseded_identical_aliases": [
+        "work/animo-eb01-evidence-baseline-model-copy",
+        "work/animo-eb01-evidence-baseline-model-pr",
+        "work/animo-eb01-evidence-baseline-model-review"
+      ]
+    },
+    "TH02": {
+      "authoritative": "work/animo-th02-rev41-lineage-recovery",
+      "superseded_do_not_merge": ["work/animo-th02-release-lineage-recovery"]
+    },
+    "unresolved_reservation_refs": [
+      "work/animo-archg01-candidate-architecture-consolidation",
+      "work/animo-mp01-macropore-qualification"
+    ]
+  },
+  "canonical_artifact_policy": {
+    "canonical_TCD_register_owner": "ANIMO-B3 governance",
+    "canonical_TCD_tail_at_B3Q01_snapshot": "TCD-027",
+    "canonical_TCD_register_blob_at_B3Q01": "224acc350fde69d3c4aebed8628c0f945e0b3367",
+    "TCD028_reserved_by": "work/animo-b3-tcd028-stable-dom-intake",
+    "TCD028_reservation_admitted": false,
+    "post_TCD027_preparatory_ids_are_canonical": false,
+    "silent_last_writer_wins_allowed": false,
+    "migration_DAG_owner": "RG governance series after explicit EB/EG reconciliation",
+    "Status_A_AA_register_owner": "RG governance series",
+    "B3_classification_owner": "ANIMO-B3Q01",
+    "architecture_contracts_are_candidate_only": true
+  },
+  "integration_DAG_gate": {
+    "G0_branch_authority_register": "SUBSTANTIALLY_COMPLETE",
+    "G1_local_to_canonical_TCD_reconciliation": "BLOCKED",
+    "G2_duplicate_PREP07_PREP10_evidence_transplant_under_unique_ids": "BLOCKED",
+    "G3_governance_artifact_consolidation": "PLANNED_NOT_EXECUTED",
+    "G4_canonical_preparatory_evidence_aggregate": "NOT_READY",
+    "G5_independent_theory_testing_numerical_temporal_science_stream_attachment": "PLANNED",
+    "G6_B2_reference_acquisition_and_comparison": "BLOCKED_BY_PREP02R",
+    "G7_B3_scientific_admission": "NOT_ESTABLISHED",
+    "G8_candidate_architecture_scientific_qualification": "NOT_ADMITTED",
+    "G9_B4_canonical_ANIMO5_baseline": "NOT_ADMITTED",
+    "G10_production_migration": "NOT_ADMITTED"
+  },
+  "remaining_blockers": [
+    "post-TCD027 local discrepancy IDs collide across divergent preparatory branches and require an explicit local-to-canonical mapping before canonical register convergence",
+    "unique supplemental PREP07 to PREP10 evidence must be transplanted under non-colliding work-unit identities rather than merged wholesale",
+    "same-path PREP07 PREP08 PREP09 and PREP10 status/register artifacts make direct branch merge unsafe",
+    "ARCHG01 and MP01 refs were observed without independent persisted work-unit status and cannot receive authority from their names",
+    "PREP02R still has no independently trustworthy historical B2 reference; B3 and B4 remain separate blocked or uncompleted gates"
   ],
+  "deliverables": {
+    "work_unit_contract": "docs/governance/ANIMO_RG02_WORK_UNIT_CONTRACT.md",
+    "branch_authority_model": "docs/governance/ANIMO_BRANCH_AUTHORITY_MODEL.md",
+    "canonical_integration_DAG": "docs/governance/ANIMO_CANONICAL_INTEGRATION_DAG.md",
+    "branch_inventory": "integration/animo-reg/ANIMO_BRANCH_INVENTORY.csv",
+    "PR_inventory": "integration/animo-reg/ANIMO_PR_INVENTORY.csv",
+    "artifact_collision_audit": "integration/animo-reg/ANIMO_ARTIFACT_COLLISION_AUDIT.json",
+    "workunit_authority_register": "integration/animo-reg/ANIMO_WORKUNIT_AUTHORITY_REGISTER.json",
+    "status": "integration/animo-reg/ANIMO-RG02_STATUS.json"
+  },
   "merge_performed": false,
+  "legacy_source_modified": false,
+  "testcase_modified": false,
+  "physics_changed": false,
+  "numerical_policy_changed": false,
   "scientific_baseline_changed": false,
   "corrected_legacy_admitted": false,
   "production_migration_admitted": false
