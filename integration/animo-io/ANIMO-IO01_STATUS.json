@@ -13,7 +13,7 @@
   "qualified": true,
   "audit_qualified": true,
   "ttutil_runtime_adapter_qualified": false,
-  "pilot_status": "SELECTED_NOT_IMPLEMENTED_TTUTIL_DEPENDENCY_AND_LEGACY_STRICTNESS_CONTRACT_NOT_PINNED",
+  "pilot_status": "SELECTED_NOT_IMPLEMENTED_OFFICIAL_TTUTIL_SOURCE_BYTES_NOT_MATERIALIZED_AND_LEGACY_STRICTNESS_CONTRACT_NOT_PINNED",
   "production_migration": "NOT_ADMITTED",
   "authority_basis": {
     "RG02_G5_head_at_start": "12ae76b23728d75fc6ca746ca1c67aa26e0ec005",
@@ -30,6 +30,21 @@
     "local_source_hash_verified": true,
     "local_testbank_hash_verified": true,
     "frozen_bytes_modified": false
+  },
+  "ttutil_dependency_provenance": {
+    "official_distribution": "SWAP 4.3.1 development release, June 2026",
+    "official_distribution_source_page": "https://swap.wur.nl/downloads.html",
+    "official_distribution_package_sha256_from_prior_project_evidence": "2b48353db6cdf00246a1e5c0dcaafc2c61858729fad18446a1dc66359ec2a360",
+    "bundled_ttutil_version": "4.27",
+    "official_download_requires_registration_and_license_acceptance": true,
+    "official_package_bytes_available_in_current_runtime": false,
+    "official_ttutil_subtree_individually_manifested": false,
+    "candidate_public_mirror": "SWAP-model/ttutil",
+    "candidate_public_mirror_commit": "bd8601dca3cfb449a79accddd39a566811f1a75e",
+    "candidate_public_mirror_source_version": "4.27",
+    "candidate_public_mirror_authority": "NON_AUTHORITATIVE_UNTIL_BYTE_EQUIVALENCE_PROVED",
+    "source_vendored_into_animo5": false,
+    "provenance_note": "docs/io/TTUTIL_SOURCE_PROVENANCE.md"
   },
   "verification": {
     "input_family_contract_rows": 15,
@@ -54,13 +69,15 @@
     "INITIAL and restart state remain specialized state adapters",
     "external crop and soil-temperature time series remain specialized forcing/exchange adapters",
     "binary hydrology remains outside TTUTIL and maps only semantically to ARCH05 hydrology exchange",
-    "GHGMais is rejected under the revision-53 adapter until a provenance-qualified versioned lineage exists"
+    "GHGMais is rejected under the revision-53 adapter until a provenance-qualified versioned lineage exists",
+    "official SWAP distribution identity and bundled TTUTIL 4.27 version are now pinned, but official TTUTIL source bytes are not currently materialized for per-file hashing",
+    "SWAP-model/ttutil is a useful 4.27 candidate mirror but its own README calls it unofficial, so it is not admitted as official source without byte-equivalence evidence"
   ],
   "pilot_selection": {
     "pilot_A": "DIRECT/animo.ini routing contract",
     "pilot_B_candidate": "MAT non-GHG static core after Pilot A",
     "pilot_implementation_committed": false,
-    "reason": "TTUTIL source/version/dependency provenance and strict legacy compatibility policy are not yet pinned"
+    "reason": "official TTUTIL 4.27 distribution identity is pinned, but the official source subtree is not yet materialized/manifested and the strict legacy compatibility policy is not yet pinned"
   },
   "non_admissions": {
     "legacy_scientific_semantics_changed": false,
@@ -72,7 +89,9 @@
     "B4_admitted": false
   },
   "next_safe_steps": [
-    "pin an exact TTUTIL source/version/license provenance without vendoring it by accident",
+    "make the official SWAP_4.3.1 package bytes available again and verify SHA-256 2b48353db6cdf00246a1e5c0dcaafc2c61858729fad18446a1dc66359ec2a360",
+    "extract only the bundled TTUTIL 4.27 source subtree and create a per-file source manifest before vendoring or compiling it in ANIMO5",
+    "compare the official TTUTIL source manifest with SWAP-model/ttutil@bd8601dca3cfb449a79accddd39a566811f1a75e and record any differences",
     "build an exact legacy-parser normalization dump oracle for DIRECT then MAT",
     "execute positive and negative parser-only equivalence fixtures against the frozen B0 cases and synthetic descendants",
     "only then implement a bounded TTUTIL-backed prototype and classify it separately from this audit"
