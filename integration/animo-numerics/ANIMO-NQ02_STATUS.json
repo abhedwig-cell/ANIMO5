@@ -1,0 +1,109 @@
+{
+  "work_unit": "ANIMO-NQ02",
+  "title": "TCD-019 Nonlinear Phosphorus Sorption Conservation, Convergence & Numerical Policy Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-nq02-tcd019-nonlinear-p-qualification",
+  "date": "2026-09-09",
+  "source_base": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "local_b0_hash_recheck_passed": true
+  },
+  "nq01_authority": {
+    "branch": "work/animo-nq01-numerical-qualification-architecture",
+    "head": "e558dff12b127e0662cad62beea7527b42ad89ac",
+    "selection_basis": "live branch comparison shows this branch 33 commits ahead of the branches named final, copy, ignore, stop and packet-temp, with those branches sharing the older 438a8838 head",
+    "nq01_status": "QUALIFIED_NUMERICAL_QUALIFICATION_ARCHITECTURE_AWAITING_INDEPENDENT_REFERENCE_DATA"
+  },
+  "target": {
+    "tcd": "TCD-019",
+    "b3_class": "E",
+    "finding": "CONFIRMED_LEGACY_NUMERICAL_CONSERVATION_POLICY_DEFECT",
+    "atomicity": "ATOMIC_NUMERICAL_POLICY_CLAIM",
+    "b3_admitted": false
+  },
+  "separate_interaction_risk": {
+    "tcd": "TCD-024",
+    "b3_class": "B",
+    "finding": "CONFIRMED_LEGACY_WRONG_INDEX_DEFECT_AND_LATENT_BOUNDS_RISK",
+    "combined_admission": false
+  },
+  "source_reconstruction": {
+    "completed": true,
+    "primary_routine": "Transorp.for:C_unl",
+    "fast_sorption_routine": "Transorp.for:Sorpfast",
+    "analytical_coefficient_routine": "Transsub.for:Detcoef",
+    "mass_check_routine": "Transgen.for",
+    "unknowns": ["Rsc", "Avc"],
+    "legacy_newton_small": 0.0001,
+    "legacy_fast_sorption_delta_switch": 0.000001,
+    "legacy_newton_iteration_cap": 20,
+    "legacy_fallback_iteration_cap": 50,
+    "legacy_fallback_abs_Df_acceptance": 0.000001,
+    "signed_residual_stopping_asymmetry_observed": true,
+    "late_iteration_running_average_policy_observed": true,
+    "fallback_reuses_recfso_from_newton_observed": true,
+    "fast_langmuir_exact_cancellation_free_secant_derived": true,
+    "tcd014_initialization_boundary_explicit": true
+  },
+  "primary_case": {
+    "name": "LWKM_gras_1040.2021.2045",
+    "optcxfa": 2,
+    "ncxfa": 1,
+    "optcxsl": 3,
+    "ncxsl": 3,
+    "tcd019_activated": true,
+    "tcd024_activated": false
+  },
+  "existing_b1_evidence": {
+    "baseline_cumulative_P_residual_kg_ha": -0.27254515116349,
+    "delta_switch_1e_12_cumulative_P_residual_kg_ha": -0.017973962837645,
+    "small_1e_8_cumulative_P_residual_kg_ha_approx": -0.2548942332,
+    "combined_probe_cumulative_P_residual_kg_ha_approx": 0.0000096337434306,
+    "interpretation": "causal localization only; not convergence qualification and not tolerance evidence"
+  },
+  "residual_contract": {
+    "R_eq_defined": true,
+    "R_cons_defined": true,
+    "R_constitutive_defined": true,
+    "legacy_warning_threshold_used_as_acceptance": false
+  },
+  "state_dimensions": {
+    "authority_pinned": true,
+    "b0_hashes_rechecked": true,
+    "source_algorithm_reconstructed": true,
+    "reference_quality_residuals_defined": true,
+    "controlled_matrix_designed": true,
+    "diagnostic_matrix_executed": false,
+    "precision_study_executed": false,
+    "time_step_study_executed": false,
+    "tcd024_interaction_executed": false,
+    "convergence_policy_candidate_qualified": false,
+    "corrected_legacy_admitted": false,
+    "b3_admitted": false,
+    "production_migration_admitted": false
+  },
+  "artifacts": {
+    "reconstruction": "docs/numerics/TCD019_NONLINEAR_P_NUMERICAL_RECONSTRUCTION.md",
+    "convergence_study": "docs/numerics/TCD019_CONVERGENCE_STUDY.md",
+    "interaction": "docs/numerics/TCD019_TCD024_INTERACTION.md",
+    "matrix": "integration/animo-numerics/TCD019_NUMERICAL_MATRIX.json",
+    "status": "integration/animo-numerics/ANIMO-NQ02_STATUS.json"
+  },
+  "hard_rules": {
+    "arbitrary_tolerances_forbidden": true,
+    "legacy_residual_must_not_define_tolerance": true,
+    "better_mass_balance_is_not_solution_correctness": true,
+    "tcd019_and_tcd024_admission_must_remain_separate": true,
+    "b1_must_not_be_relabelled_b2": true,
+    "production_change_forbidden": true,
+    "frozen_source_modification_forbidden": true,
+    "diagnostic_descendants_must_be_hashed": true
+  },
+  "tolerance_status": "TOLERANCE_NOT_YET_QUALIFIED",
+  "status": "SOURCE_BOUND_RECONSTRUCTION_AND_DIAGNOSTIC_MATRIX_READY_B1_EXECUTION_PENDING",
+  "corrected_legacy_admitted": false,
+  "B3_admitted": false,
+  "production_migration_admitted": false,
+  "next_gate": "EXECUTE_HASHED_B1_CONVERGENCE_MATRIX_WITH_UNROUNDED_RESIDUAL_AND_SOLVER_PATH_CAPTURE"
+}
