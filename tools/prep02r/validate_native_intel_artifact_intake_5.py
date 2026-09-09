@@ -9,6 +9,8 @@ project = json.loads((I / "PREP02R_INTAKE5_PROJECT_RECEIPT.json").read_text())
 exe = json.loads((I / "PREP02R_INTAKE5_EXE_RECEIPT.json").read_text())
 ev = json.loads((I / "PREP02R_INTAKE5_LINEAGE_EVIDENCE.json").read_text())
 status = json.loads((I / "PREP02R_NATIVE_INTEL_ARTIFACT_INTAKE_5_STATUS.json").read_text())
+prep = json.loads((I / "PREP02R_STATUS.json").read_text())
+registry = json.loads((I / "PREP02R_REFERENCE_CANDIDATES.json").read_text())
 
 assert project["evidence_class"] == "RECEIPT_MANIFEST_NOT_REFERENCE_ADMISSION"
 assert exe["evidence_class"] == "RECEIPT_MANIFEST_NOT_REFERENCE_ADMISSION"
@@ -53,4 +55,28 @@ assert status["scope"]["native_execution_admission"] is False
 assert status["scope"]["B2_admission"] is False
 assert status["scope"]["production_migration"] is False
 
-print("PASS PREP02R-I5 receipt, lineage and scope guards")
+assert prep["status"] == "BLOCKED_HISTORICAL_REFERENCE_PROVENANCE_NOT_ESTABLISHED_RECEIVED_2026_REBUILD_CANDIDATE"
+assert prep["state_dimensions"]["received_project_metadata_artifact"] is True
+assert prep["state_dimensions"]["received_executable_artifact"] is True
+assert prep["state_dimensions"]["native_reconstruction_candidate_obtained"] is True
+assert prep["state_dimensions"]["historical_reference_artifact_obtained"] is False
+assert prep["supplied_artifact_scan"]["received_animo_executable_sha256"] == exe["artifact"]["sha256"]
+assert prep["supplied_artifact_scan"]["received_animo_executable_classification"] == la["received_executable_classification"]
+assert prep["supplied_artifact_scan"]["received_project_build_contract"]["RealKIND_all_configs"] == "realKIND8"
+assert prep["supplied_artifact_scan"]["received_project_build_contract"]["LocalVariableStorage_all_configs"] == "localStorageSave"
+assert prep["native_admission"]["received_2026_executable_historical_reference"] is False
+assert prep["native_admission"]["received_2026_executable_native_reconstruction_candidate"] is True
+
+by_id = {c["id"]: c for c in registry["candidates"]}
+assert by_id["PREP02R-C02"]["sha256"] == exe["artifact"]["sha256"]
+assert by_id["PREP02R-C02"]["bytes_available"] is True
+assert by_id["PREP02R-C02"]["trust_classification"] == "RECENT_2026_NATIVE_REBUILD_CANDIDATE_NOT_HISTORICAL_REFERENCE"
+assert by_id["PREP02R-C02"]["reference_admitted"] is False
+assert by_id["PREP02R-C10"]["content_set_sha256"] == project["artifact"]["content_set_sha256"]
+assert by_id["PREP02R-C10"]["trust_classification"] == "DIRECT_BUILD_CONFIGURATION_EVIDENCE_WITH_UNVERIFIED_ORIGINAL_PROVENANCE"
+assert by_id["PREP02R-C10"]["reference_admitted"] is False
+assert registry["qualifying_reference_artifact_obtained"] is False
+assert registry["native_reconstruction_candidate_obtained"] is True
+assert registry["native_reference_run_completed"] is False
+
+print("PASS PREP02R-I5 receipt, lineage, canonical reconciliation and admission guards")
