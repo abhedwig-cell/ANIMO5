@@ -1,0 +1,60 @@
+name: ANIMO-B3I02-SUP01 TCD-042 canonical append validation
+
+on:
+  push:
+    branches:
+      - work/animo-b3i02-sup01-tcd042-canonical-append
+  pull_request:
+    paths:
+      - 'docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv'
+      - 'integration/animo-b3/B3I02_REGISTER_APPEND_SUPPLEMENT_01_ROWS.csv'
+      - 'integration/animo-b3/ANIMO-B3I02_SUPPLEMENT_01_STATUS.json'
+      - 'integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_B3I02_SUPPLEMENT_01_RECONCILIATION.json'
+      - 'tools/b3i02_sup01/validate_tcd042_append.py'
+      - '.github/workflows/animo-b3i02-sup01-tcd042-append.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate TCD-042 registration state
+        run: python3 tools/b3i02_sup01/validate_tcd042_append.py
+
+      - name: Enforce supplement-only scope and append-only register mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=4da9ec0af5ccb902e456c861a548afa00bd43c2a
+          changed="$(git diff --name-only "$base"...HEAD)"
+          printf '%s\n' "$changed"
+
+          if printf '%s\n' "$changed" | grep -Eq '^(src/|reference/)'; then
+            echo 'B3I02-SUP01 must not modify production source or frozen reference/testbank paths.' >&2
+            exit 1
+          fi
+
+          allowed='^(docs/quality/THEORY_CODE_DISCREPANCY_REGISTER\.csv|integration/animo-b3/B3I02_REGISTER_APPEND_SUPPLEMENT_01_ROWS\.csv|integration/animo-b3/ANIMO-B3I02_SUPPLEMENT_01_STATUS\.json|integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_B3I02_SUPPLEMENT_01_RECONCILIATION\.json|tools/b3i02_sup01/validate_tcd042_append\.py|\.github/workflows/animo-b3i02-sup01-tcd042-append\.yml)$'
+          unexpected="$(printf '%s\n' "$changed" | grep -Ev "$allowed" || true)"
+          if [ -n "$unexpected" ]; then
+            echo 'Unexpected B3I02-SUP01 branch changes:' >&2
+            printf '%s\n' "$unexpected" >&2
+            exit 1
+          fi
+
+          if git diff --quiet "$base"...HEAD -- docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv; then
+            echo 'Canonical register not yet modified: pre-append checkpoint.'
+          else
+            read -r added deleted _ < <(git diff --numstat "$base"...HEAD -- docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv)
+            if [ "$added" != "1" ] || [ "$deleted" != "0" ]; then
+              echo "Canonical register mutation must be exactly +1/-0, got +$added/-$deleted" >&2
+              exit 1
+            fi
+          fi
