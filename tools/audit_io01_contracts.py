@@ -9,6 +9,7 @@ STATUS = ROOT / "integration/animo-io/ANIMO-IO01_STATUS.json"
 DIRECT = ROOT / "integration/animo-io/DIRECT-PILOT-QUALIFICATION.json"
 MAT_LINEAGE = ROOT / "integration/animo-io/MATERIAL-RUURLO-LINEAGE-EQUIVALENCE.json"
 MAT_QUAL = ROOT / "integration/animo-io/MATERIAL-PILOT-B-QUALIFICATION.json"
+MAT_STATUS = ROOT / "integration/animo-io/MATERIAL-PILOT-B-STATUS.json"
 
 required_families = {
     "DIRECT","GEN","MAT","PLA","SOI","BOU","INI","MAN","CHE",
@@ -118,7 +119,37 @@ for key in ("production_migration", "GHG_schema", "binary_hydrology", "model_out
 if len(mat.get("runtime_hazard_exclusions", [])) < 2:
     fail("MATERIAL Pilot B runtime-hazard exclusions missing")
 
+# The dedicated Pilot B status must agree with the persisted qualification.
+# This guards against a stale STARTED/qualified=false file surviving after closeout.
+mat_status = load_json(MAT_STATUS)
+if mat_status.get("qualified") is not True:
+    fail("MATERIAL Pilot B status is stale or not qualified")
+if mat_status.get("status") != expected_mat_decision:
+    fail("MATERIAL Pilot B status classification disagrees with qualification evidence")
+if mat_status.get("qualification", {}).get("result") != "PASS":
+    fail("MATERIAL Pilot B status does not record PASS")
+if mat_status.get("qualification", {}).get("field_exact_equivalent") is not True:
+    fail("MATERIAL Pilot B status lost field-exact qualification")
+if mat_status.get("qualification", {}).get("numeric_tolerance_used") is not False:
+    fail("MATERIAL Pilot B status may not admit a numeric tolerance")
+if mat_status.get("evidence", {}).get("qualification") != "integration/animo-io/MATERIAL-PILOT-B-QUALIFICATION.json":
+    fail("MATERIAL Pilot B status qualification evidence pointer mismatch")
+if len(mat_status.get("runtime_hazards", [])) < 2:
+    fail("MATERIAL Pilot B status lost runtime-hazard routing")
+for key in (
+    "GHGMais_included", "GHG_lineage_normalized", "legacy_science_changed",
+    "frozen_bytes_modified", "production_migration_admitted",
+    "model_output_equivalence_claimed", "binary_hydrology_converted_to_ttutil",
+    "B4_admitted",
+):
+    if mat_status.get("non_admissions", {}).get(key) is not False:
+        fail(f"MATERIAL Pilot B status non-admission {key} must remain false")
+
 status = load_json(STATUS)
+if status.get("material_pilot_representation_candidate_qualified") is not True:
+    fail("ANIMO-IO01 status disagrees with qualified MATERIAL Pilot B status")
+if status.get("material_pilot", {}).get("classification") != expected_mat_decision:
+    fail("ANIMO-IO01 MATERIAL classification disagrees with Pilot B evidence")
 for key in (
     "legacy_scientific_semantics_changed","frozen_source_modified","frozen_testcase_modified",
     "binary_hydrology_converted_to_ttutil","GHGMais_silently_normalized",
@@ -129,5 +160,5 @@ for key in (
 print(
     f"PASS: {len(rows)} input-family contracts, "
     f"{len(cases['negative_cases'])} negative cases, DIRECT Pilot A, "
-    "Ruurlo MATERIAL lineage, MATERIAL Pilot B"
+    "Ruurlo MATERIAL lineage, MATERIAL Pilot B, status reconciliation"
 )
