@@ -6,7 +6,7 @@
   "source_baseline_branch": "baseline/animo-prep01-05-evidence",
   "source_baseline_head": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
   "date": "2026-09-09",
-  "status": "PARTIAL_RECOVERY_BUILD_CONTRACT_STRONGLY_IMPROVED_MODERN_NATIVE_REBUILD_IDENTIFIED_HISTORICAL_REFERENCE_STILL_BLOCKED",
+  "status": "PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED",
   "source_identities": {
     "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
@@ -53,6 +53,12 @@
     "native_run_manifest_template_ready": true,
     "project_build_metadata_obtained": true,
     "native_candidate_executable_obtained": true,
+    "ruurlo_frozen_input_surface_pinned": true,
+    "native_executable_runtime_dependency_review_complete": true,
+    "windows_native_capture_harness_implemented": true,
+    "windows_native_capture_harness_persisted": true,
+    "windows_native_capture_harness_executed_in_this_linux_environment": false,
+    "windows_native_execution_handoff_ready": true,
     "historical_reference_artifact_obtained": false,
     "native_candidate_execution_completed": false,
     "native_reference_run_completed": false,
@@ -126,17 +132,43 @@
     "embedded_runtime_catalog": "Intel Fortran RTL Message Catalog V20.0-001 Jan 10 2019",
     "embedded_tag": "file:///V:/svn_Animo/tags/animo4.1.5",
     "embedded_source_selection_matches_vfproj": true,
+    "pe_imported_dlls": ["KERNEL32.dll", "imagehlp.dll"],
+    "external_intel_fortran_runtime_dll_imported": false,
+    "pe_security_directory_present": false,
     "exact_B0_source_byte_identity_proven": false,
     "historical_release_binary": false,
     "classification": "MODERN_NATIVE_REBUILD_NOT_HISTORICAL_REFERENCE",
     "why_not_historical": "The 2026 PE timestamp, src_develop_for_20260519 source path, x64 Debug PDB path, modern linker signature and post-2011 Intel RTL evidence are incompatible with treating this file as the missing original 4.1-era release executable."
   },
+  "ruurlo_native_input_pin": {
+    "artifact": "integration/animo-prep/PREP02R_RUURLO_NATIVE_INPUT_PIN_20260909.json",
+    "case_content_set_sha256": "0f12d19f74e6640b6d17f8f401ac9c294e35ae13064205ed4d1821d6a15c9ac9",
+    "historical_runner_sha256": "b425e6e15750a3fec24202f90ceca4ad8423c9124c7382f5960a95a3bfe4772c",
+    "historical_invocation": "..\\animo41.exe Animo.ini",
+    "animo_ini_sha256": "5d1f62faf62747b7d91d3e9199e33954e3038ddd005259f32a8bca95f0c82bb8",
+    "swatre_unf_sha256": "36d8dbeee7a46c769026c7441ea607160a715768571ba3e048b32ee2ace74d13",
+    "input_content_transformation_allowed": false
+  },
+  "windows_capture_preparation": {
+    "harness": "tools/prep02r_capture_ruurlo_native.ps1",
+    "handoff": "docs/prep02r/RUURLO_NATIVE_EXECUTION_HANDOFF.md",
+    "two_clean_runs_required": true,
+    "executable_hash_checked_before_launch": true,
+    "testbank_hash_checked_before_launch": true,
+    "case_content_set_checked_before_launch": true,
+    "raw_changed_output_hash_capture": true,
+    "scientific_numeric_tolerance_applied": false,
+    "transfer_bundle_contains_executable": false,
+    "runtime_test_status": "NOT_EXECUTED_CURRENT_ENVIRONMENT_HAS_NO_WINDOWS_OR_WINE",
+    "classification": "READY_FOR_GENUINE_WINDOWS_EXECUTION"
+  },
   "reference_effect": {
     "build_contract_recovery": "MATERIALLY_STRENGTHENED",
+    "cross_runtime_diagnostic_readiness": "READY_FOR_WINDOWS_EXECUTION",
     "historical_behavioural_truth": "STILL_MISSING",
     "normal_B2_reference_available": false,
     "historical_uncertainty_route_eligible": false,
-    "reason_historical_uncertainty_route_not_yet_eligible": "Historical acquisition effort is not closed: the prepared external archival request has still not been sent, and no provenance-qualified historical output or executable has been obtained.",
+    "reason_historical_uncertainty_route_not_yet_eligible": "GOV02 requires documented B2 acquisition closure for the no-B2 Class-A route. Historical acquisition effort remains open: the narrowed WUR archival/provenance request has not been sent and no provenance-qualified historical output or executable has been obtained.",
     "candidate_native_rebuild_may_be_used_for_cross_runtime_diagnostics": true,
     "candidate_native_rebuild_may_substitute_for_historical_B2": false
   },
@@ -145,12 +177,12 @@
     "received_executable_hash_must_be_rechecked_before_launch": true,
     "silent_testcase_translation_allowed": false,
     "native_input_content_transformation_default": false,
-    "native_repeat_determinism_required_when_practical": true,
+    "native_repeat_determinism_required": true,
     "formatted_tree_comparator_available": true,
     "global_tolerance_defined": false,
     "observer_capture_blocked_until_ordinary_native_contract": true,
     "execution_completed_in_current_environment": false,
-    "execution_blocker": "Current controlled runtime is Linux and has no Windows/Wine execution layer. A pseudo-native transformed run is not accepted."
+    "execution_blocker": "Current controlled runtime is Linux and has no Windows/Wine execution layer. A pseudo-native transformed run is not accepted. A fail-closed genuine-Windows capture harness is now persisted instead."
   },
   "public_and_external_acquisition": {
     "trustworthy_public_revision_53_executable_found": false,
@@ -159,7 +191,8 @@
     "official_wur_current_agreement_version": "4.0",
     "external_request_draft": "docs/prep02r/WUR_ARCHIVAL_REQUEST_DRAFT.md",
     "external_request_sent": false,
-    "request_purpose_after_new_artifacts": "Historical executable/output provenance remains needed; compiler/project-option recovery is no longer the primary unknown."
+    "request_updated_after_new_artifacts": true,
+    "request_purpose_after_new_artifacts": "Historical executable/output provenance and provenance clarification for the received project files remain needed; compiler/project-option recovery is no longer the primary unknown."
   },
   "artifacts": {
     "work_unit_contract": "docs/prep02r/WORK_UNIT_CONTRACT.md",
@@ -176,14 +209,18 @@
     "received_executable_receipt": "integration/animo-prep/PREP02R_RECEIPT_ANIMO41_EXE_20260909.json",
     "received_build_metadata_receipt": "integration/animo-prep/PREP02R_RECEIPT_ANIMO41_BUILD_METADATA_20260909.json",
     "received_native_provenance_review": "integration/animo-prep/PREP02R_NATIVE_CANDIDATE_PROVENANCE_REVIEW_20260909.json",
-    "received_native_review_document": "docs/prep02r/SUPPLIED_NATIVE_ARTIFACT_REVIEW_20260909.md"
+    "received_native_review_document": "docs/prep02r/SUPPLIED_NATIVE_ARTIFACT_REVIEW_20260909.md",
+    "ruurlo_frozen_input_pin": "integration/animo-prep/PREP02R_RUURLO_NATIVE_INPUT_PIN_20260909.json",
+    "executable_runtime_dependency_review": "integration/animo-prep/PREP02R_EXECUTABLE_RUNTIME_DEPENDENCY_REVIEW_20260909.json",
+    "windows_native_capture_harness": "tools/prep02r_capture_ruurlo_native.ps1",
+    "windows_native_execution_handoff": "docs/prep02r/RUURLO_NATIVE_EXECUTION_HANDOFF.md"
   },
   "preferred_next": [
-    "execute the received candidate on an unmodified frozen RuurloGrass execution copy in a genuine Windows runtime and capture a raw native output bundle under hash control",
-    "compare that modern native Intel-family result against the GNU diagnostic result as cross-runtime evidence without calling it historical truth",
-    "send or otherwise submit the prepared WUR archival request for provenance-qualified historical 4.1.x executable/output evidence",
+    "execute the persisted harness with the exact received executable and frozen testbank on a genuine Windows x64 runtime and return the capture ZIP without executable bytes",
+    "ingest and hash-control the capture, classify two-run determinism and compare the modern native Intel-family result against the GNU diagnostic result without calling it historical truth",
+    "send or otherwise submit the narrowed WUR archival/provenance request to close or advance the B2 acquisition gate",
     "if an exact or near historical artifact is received, hash and classify it before execution and then reassess B2 admission"
   ],
-  "decision": "PARTIAL_RECOVERY_BUILD_CONTRACT_STRONGLY_IMPROVED_MODERN_NATIVE_REBUILD_IDENTIFIED_HISTORICAL_REFERENCE_STILL_BLOCKED",
-  "why_blocked": "Useful project/build metadata and a native x64 Debug executable have now been obtained, but the executable is demonstrably a 2026 development rebuild rather than the missing historical release binary. The exact historical behavioural oracle remains absent, the received executable is not byte-linked to frozen B0 source content, no native Windows execution has yet been captured, and the external historical acquisition route has not been closed."
+  "decision": "PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED",
+  "why_blocked": "The received project/build metadata materially strengthen the reconstructed Intel contract and the modern native executable is now fully pinned for controlled Windows cross-runtime capture. However, the executable is demonstrably a 2026 development rebuild rather than the missing historical release binary, the exact historical behavioural oracle remains absent, native Windows execution has not yet been captured, and GOV02 acquisition closure remains open."
 }
