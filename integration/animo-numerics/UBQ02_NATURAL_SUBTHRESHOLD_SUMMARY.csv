@@ -1,0 +1,10 @@
+case,run_status,subthreshold_records,St_min_d,St_max_d,Hetop_min_m,Hetop_max_m,Flux_min_m_d,Flux_max_m_d,P_min,P_max,nonzero_C_N_load_records,evidence_note
+CranGrass,EXECUTED,188,1,1,0.02,0.02,8.470329472543003e-22,4.518539999955572e-09,4.2351647362715017e-20,2.2592699999777859e-07,0,B0-hash-pinned qualification trace
+CranMais,EXECUTED,299,1,1,0.02,0.02,3.3881317890172014e-21,4.336808689942018e-19,1.6940658945086007e-19,2.168404344971009e-17,0,B0-hash-pinned qualification trace
+GHGMais,BLOCKED_GHG_INPUT_OUTPUT_CONTRACT,0,,,,,,,,,0,no absence claim
+GrassPeat,EXECUTED,0,,,,,,,,,0,baseline executed but did not enter finite-positive subthreshold branch
+LWKM_gras_1040.2021.2045,EXECUTED,12,10,11,0.02,0.02,1.0164395367051604e-20,2.699999918738191e-13,5.590417451878382e-18,1.3499999593690956e-10,0,B0-hash-pinned qualification trace
+Puitmijn_Cranendonck_60,EXECUTED,490,1,1,0.02,0.02,8.470329472543003e-22,7.702040000599949e-09,4.2351647362715017e-20,3.8510200002999744e-07,0,B0-hash-pinned qualification trace
+RuurloGrass,EXECUTED,191,1,1,0.02,0.02,1.6940658945086007e-21,5.120000001035798e-09,8.470329472543003e-20,2.560000000517899e-07,4,four records carry nonzero NH4 and NO3 loads
+STONE_akk_0006.2001.2015,EXECUTED,0,,,,,,,,,0,baseline executed but did not enter finite-positive subthreshold branch
+Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA,EXECUTED,58,1,1,0.02,0.02,2.752857078576476e-21,3.9999999943167094e-10,1.376428539288238e-19,1.9999999971583547e-08,0,B0-hash-pinned qualification trace
