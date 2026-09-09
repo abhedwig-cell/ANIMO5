@@ -9,6 +9,10 @@ on:
       - 'docs/io/**'
       - 'integration/animo-io/**'
       - 'tools/audit_io01_contracts.py'
+      - 'tools/io01_direct_pilot.py'
+      - 'tools/materialize_ttutil427.py'
+      - 'tools/qualify_io01_direct_pilot.py'
+      - 'tools/ttutil_direct_probe.f90'
       - 'tests/io/**'
       - '.github/workflows/io01-contract-audit.yml'
 
