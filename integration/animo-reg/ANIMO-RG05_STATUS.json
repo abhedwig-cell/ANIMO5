@@ -5,7 +5,7 @@
   "branch": "work/animo-rg05-late-wave-authority-refresh",
   "starting_parent": "cf9975ded20fa64bb8125b3241f2609cbb5b51b3",
   "starting_work_unit": "ANIMO-RG04",
-  "reconciliation_revision": "POST_CLOSEOUT_DELTA_1_HETOP_ZERO_CHILD_DOMAIN",
+  "reconciliation_revision": "POST_CLOSEOUT_DELTA_2_HETOP_ZERO_AND_IO02_QUALIFICATION",
   "state": "IN_PROGRESS_PERSISTED_POST_CLOSEOUT_DELTA_REVALIDATION_PENDING",
   "decision": "PENDING_FAIL_CLOSED_REVALIDATION",
   "governance_only": true,
@@ -62,7 +62,7 @@
     "ARCH05": "99b6098a19db405ce34928af89bb78b856dce7cd",
     "NQ03": "8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6",
     "NQ03R": "0153779e9045c6527b7c31156f2295ff44b57eeb",
-    "IO02_IN_PROGRESS": "fdf6a27feefcb1d1afb9faff0aaab2f5363073c9",
+    "IO02": "302d53050d51dacfb68e1ea8d1cc7dd64e985cf3",
     "B3A04": "1192ee77eda47149af1e31a752e09d343edd9273",
     "B3B02": "412bf889ce959d85c651c3b9180dec0a6ff9bb61",
     "B3B03": "446f57f3aeff6e7db56ce473f0724bdb58cad94f",
@@ -115,9 +115,9 @@
     "B3E01_TCD042_E1": "PARTIAL_POSITIVE_HETOP_READINESS_FULL_CHILD_DOMAIN_AND_ROUTE_FAIL_CLOSED",
     "B3E01_latest_workflow_run_id": 34385155661,
     "B3E01_latest_workflow_conclusion": "success",
-    "IO02_GENERAL": "IN_PROGRESS_PERSISTED_SOURCE_CONTRACT_EXTRACTION_VALIDATION_FAILING",
-    "IO02_latest_workflow_run_id": 34383556997,
-    "IO02_latest_workflow_conclusion": "failure"
+    "IO02_GENERAL": "QUALIFIED_BOUNDED_REV53_GENERAL_NORMALIZED_REPRESENTATION_WITH_EXPLICIT_LEGACY_HAZARD_EXCLUSIONS",
+    "IO02_latest_workflow_run_id": 34385801249,
+    "IO02_latest_workflow_conclusion": "success"
   },
   "validation": {
     "validator": "tools/validate_rg05_governance.py",
