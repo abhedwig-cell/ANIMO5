@@ -1,0 +1,27 @@
+record_id,interval,control_volume,element,store,transfer_identity,source_owner,destination_owner,sign,quantity,units,evidence_source
+OBS-CG1-W-B,TITO=1,CV-HYDRO-PROFILE,water,CV_HYDRO_PROFILE_TOTAL,BEGIN_STORAGE,CV-HYDRO-PROFILE,CV-HYDRO-PROFILE,+1,1290.824918894316,mm,massq01_start.dat read-only owner-state projection
+OBS-CG1-W-I,TITO=1,CV-HYDRO-PROFILE,water,,AGG_EXTERNAL_INPUT,EXTERNAL_HYDRO_BOUNDARY,CV-HYDRO-PROFILE,+1,0.0,mm,massq01_step.dat source-bound hydrology terms
+OBS-CG1-W-O,TITO=1,CV-HYDRO-PROFILE,water,,AGG_EXTERNAL_OUTPUT,CV-HYDRO-PROFILE,EXTERNAL_HYDRO_BOUNDARY,-1,0.8263255299999994,mm,massq01_step.dat source-bound hydrology terms
+OBS-CG1-W-E,TITO=1,CV-HYDRO-PROFILE,water,CV_HYDRO_PROFILE_TOTAL,END_STORAGE,CV-HYDRO-PROFILE,CV-HYDRO-PROFILE,-1,1289.99859396386,mm,massq01_step.dat read-only result-state projection
+OBS-CG1-N-B,TITO=1,CV-SOIL-N,N,CV_SOIL_N_TOTAL,BEGIN_STORAGE,CV-SOIL-N,CV-SOIL-N,+1,15419.883756302026,kg/ha N,massq01_chem_start.dat process-start owner-state projection
+OBS-CG1-N-I,TITO=1,CV-SOIL-N,N,,AGG_EXTERNAL_INPUT,EXTERNAL_N_BOUNDARY,CV-SOIL-N,+1,0.21165208988365117,kg/ha N,massq01_step.dat source-bound deposition/material/crop/boundary terms
+OBS-CG1-N-S,TITO=1,CV-SOIL-N,N,,AGG_SOURCE_TERM,INTERNAL_OR_REACTION_SOURCE,CV-SOIL-N,+1,0.0,kg/ha N,massq01_step.dat explicit source-term slot
+OBS-CG1-N-O,TITO=1,CV-SOIL-N,N,,AGG_EXTERNAL_OUTPUT,CV-SOIL-N,EXTERNAL_N_BOUNDARY,-1,0.13201985750998965,kg/ha N,massq01_step.dat source-bound uptake/transport/denitrification terms
+OBS-CG1-N-E,TITO=1,CV-SOIL-N,N,CV_SOIL_N_TOTAL,END_STORAGE,CV-SOIL-N,CV-SOIL-N,-1,15419.9633885344,kg/ha N,massq01_step.dat read-only result-state projection
+OBS-CG1-P-B,TITO=1,CV-SOIL-P,P,CV_SOIL_P_TOTAL,BEGIN_STORAGE,CV-SOIL-P,CV-SOIL-P,+1,7418.866746665801,kg/ha P,massq01_chem_start.dat process-start owner-state projection
+OBS-CG1-P-I,TITO=1,CV-SOIL-P,P,,AGG_EXTERNAL_INPUT,EXTERNAL_P_BOUNDARY,CV-SOIL-P,+1,0.0368615287938909,kg/ha P,massq01_step.dat source-bound deposition/material/crop/boundary terms
+OBS-CG1-P-S,TITO=1,CV-SOIL-P,P,,AGG_SOURCE_TERM,INTERNAL_OR_REACTION_SOURCE,CV-SOIL-P,+1,0.0,kg/ha P,massq01_step.dat explicit source-term slot
+OBS-CG1-P-O,TITO=1,CV-SOIL-P,P,,AGG_EXTERNAL_OUTPUT,CV-SOIL-P,EXTERNAL_P_BOUNDARY,-1,0.0012893128398065784,kg/ha P,massq01_step.dat source-bound uptake/transport terms
+OBS-CG1-P-E,TITO=1,CV-SOIL-P,P,CV_SOIL_P_TOTAL,END_STORAGE,CV-SOIL-P,CV-SOIL-P,-1,7419.6259013964345,kg/ha P,massq01_step.dat read-only result-state projection
+OBS-CG1-O-B,TITO=1,CV-SOIL-OM,organic_matter_mass,CV_SOIL_OM_TOTAL,BEGIN_STORAGE,CV-SOIL-OM,CV-SOIL-OM,+1,409979.2834367321,kg/ha OM,massq01_chem_start.dat process-start owner-state projection
+OBS-CG1-O-I,TITO=1,CV-SOIL-OM,organic_matter_mass,,AGG_EXTERNAL_INPUT,EXTERNAL_OM_BOUNDARY,CV-SOIL-OM,+1,20.63915385996131,kg/ha OM,massq01_step.dat source-bound material/crop/boundary terms
+OBS-CG1-O-S,TITO=1,CV-SOIL-OM,organic_matter_mass,,AGG_SOURCE_TERM,INTERNAL_OR_REACTION_SOURCE,CV-SOIL-OM,+1,0.0,kg/ha OM,massq01_step.dat explicit source-term slot
+OBS-CG1-O-O,TITO=1,CV-SOIL-OM,organic_matter_mass,,AGG_EXTERNAL_OUTPUT,CV-SOIL-OM,EXTERNAL_OM_BOUNDARY,-1,17.673436578336396,kg/ha OM,massq01_step.dat source-bound transport/mineralization terms
+OBS-CG1-O-E,TITO=1,CV-SOIL-OM,organic_matter_mass,CV_SOIL_OM_TOTAL,END_STORAGE,CV-SOIL-OM,CV-SOIL-OM,-1,409982.24915401376,kg/ha OM,massq01_step.dat read-only result-state projection
+OBS-CG1-C-B,TITO=1,CV-SOIL-ORGANIC-C,C,CV_SOIL_ORGANIC_C_TOTAL,BEGIN_STORAGE,CV-SOIL-ORGANIC-C,CV-SOIL-ORGANIC-C,+1,237787.9843933046,kg/ha C,Cfracom=0.58 times massq01_chem_start OM projection
+OBS-CG1-C-I,TITO=1,CV-SOIL-ORGANIC-C,C,,AGG_EXTERNAL_INPUT,EXTERNAL_ORGANIC_C_BOUNDARY,CV-SOIL-ORGANIC-C,+1,11.970709238777559,kg/ha C,Cfracom=0.58 times massq01_step OM input
+OBS-CG1-C-S,TITO=1,CV-SOIL-ORGANIC-C,C,,AGG_SOURCE_TERM,INTERNAL_OR_REACTION_SOURCE,CV-SOIL-ORGANIC-C,+1,0.0,kg/ha C,Cfracom=0.58 times explicit OM source-term slot
+OBS-CG1-C-O,TITO=1,CV-SOIL-ORGANIC-C,C,,AGG_EXTERNAL_OUTPUT,CV-SOIL-ORGANIC-C,EXTERNAL_ORGANIC_C_BOUNDARY,-1,10.250593215435108,kg/ha C,Cfracom=0.58 times massq01_step OM output
+OBS-CG1-C-E,TITO=1,CV-SOIL-ORGANIC-C,C,CV_SOIL_ORGANIC_C_TOTAL,END_STORAGE,CV-SOIL-ORGANIC-C,CV-SOIL-ORGANIC-C,-1,237789.70450932797,kg/ha C,Cfracom=0.58 times result-state OM projection
+OBS-MP02-EX-W,TITO=1,CV-MATRIX-MACROPORE-WATER,water,,MATRIX_TO_MACROPORE_EXCHANGE,matrix_layer_2,macropore_domain_2,0,0.02,mm,MP02 synthetic B1 transform manifest plus complete-case execution
+OBS-MP02-DD-W,TITO=1,CV-MATRIX-MACROPORE-WATER,water,macropore_domain_1,MACROPORE_DIRECT_DRAINAGE,macropore_domain_1,external_drainage,-1,0.02,mm,MP02 synthetic B1 transform manifest plus complete-case execution
