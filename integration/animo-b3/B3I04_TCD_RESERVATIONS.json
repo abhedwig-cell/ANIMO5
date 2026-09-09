@@ -1,0 +1,49 @@
+{
+  "work_unit": "ANIMO-B3I04",
+  "title": "Post-STATEQ02 Incremental State Evidence Reservation Reconciliation",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i04-stateq02-incremental-intake",
+  "authority": {
+    "base_branch": "work/animo-b3i03-canonical-register-append",
+    "base_head": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "canonical_register_tail": "TCD-042",
+    "stateq02_branch": "work/animo-stateq02-restricted-core-executable-split-run",
+    "stateq02_head": "ada93a409aa054f9aebac32728e79f80468215a7"
+  },
+  "collision_scan": {
+    "existing_tail": "TCD-042",
+    "next_observed_unallocated_candidate": "TCD-043",
+    "reservation_created_for_tcd_043": false,
+    "reason": "NO_STATEQ02_FINDING_CROSSES_NEW_CANONICAL_SCIENTIFIC_DISCREPANCY_IDENTITY_THRESHOLD"
+  },
+  "reservations": [],
+  "existing_routes_reused": [
+    {
+      "tcd_id": "TCD-040",
+      "finding_key": "STATEQ02-GUARD-282-TCD040-ACTIVE-SENTINEL",
+      "reason": "STATEQ02 executable guard evidence strengthens the existing layer-0 aqueous restart initialization boundary without introducing a new mechanism."
+    }
+  ],
+  "reclassified_local_findings": [
+    {
+      "finding_key": "STATEQ01-LCL-EXTCROP-FIRST-POSTRESTART-PN-DIVERGENCE",
+      "disposition": "RUNTIME_HAZARD_NO_SCIENTIFIC_TCD"
+    }
+  ],
+  "pending_local_findings": [
+    {
+      "finding_key": "STATEQ01-LCL-EXTCROP-FINAL-STATE-DIVERGENCE",
+      "disposition": "INSUFFICIENT_EVIDENCE_PENDING_CAUSAL_ISOLATION"
+    }
+  ],
+  "guards": {
+    "canonical_register_append_performed": false,
+    "scientific_admission_performed": false,
+    "corrected_legacy_admitted": false,
+    "canonical_state_admitted": false,
+    "production_migration_admitted": false,
+    "whole_model_state_claim": false,
+    "hidden_tolerance_introduced": false,
+    "production_code_modified": false
+  }
+}
