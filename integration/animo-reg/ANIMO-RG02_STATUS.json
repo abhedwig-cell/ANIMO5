@@ -10,7 +10,7 @@
   "tested": true,
   "qualified": false,
   "blocked": true,
-  "testing_scope": "repository-governance validation only: live branch and PR re-query, ancestry comparisons, status/PR evidence cross-checks, local post-027 register comparison, path-level branch comparisons and persisted artifact readback; no legacy runtime, scientific, numerical or production test is claimed",
+  "testing_scope": "repository-governance validation only: live branch and PR inventory, ancestry comparisons, status and PR evidence cross-checks, local post-027 identity reconciliation, source-target blob readback for EB01/EG01 governance transplants, and semantic review of composed cross-cutting governance files; no legacy runtime, scientific, numerical or production test is claimed",
   "live_inventory_snapshot": {
     "work_animo_branches_observed": 51,
     "baseline_branches_observed": 2,
@@ -22,73 +22,16 @@
     "rg01_closeout": "662bca8aff40f4dca1f6ccdde6bef6274c6bede2"
   },
   "authority_decisions": {
-    "PREP07": {
-      "authoritative": "work/animo-prep07-transfer-edge-audit",
-      "supplemental": ["work/animo-prep07-transfer-species-identity"]
-    },
-    "PREP08": {
-      "authoritative": "work/animo-prep08-causal-management-probes",
-      "supplemental": ["work/animo-prep08-transfer-probes"],
-      "superseded_do_not_merge": ["work/animo-prep08-restart-state-continuity"]
-    },
-    "PREP09": {
-      "authoritative": "work/animo-prep09-element-transfer-and-slow-sorption",
-      "supplemental_rehome": {
-        "source": "work/animo-prep09-option-contract-audit",
-        "reserved_target_workunit": "ANIMO-PREP11",
-        "target_state": "RG02_RESERVED_NOT_STARTED"
-      }
-    },
-    "PREP10": {
-      "authoritative": "work/animo-prep10-stable-dom-plough-accumulators",
-      "supplemental": ["work/animo-prep10-stable-dom-causal-activation"],
-      "restart_rehome": {
-        "source": "work/animo-prep10-restart-state-continuity",
-        "reserved_target_workunit": "ANIMO-PREP12",
-        "target_state": "RG02_RESERVED_NOT_STARTED"
-      }
-    },
-    "PREP10C": {
-      "authoritative_review_surface": "work/animo-prep10c-stable-dom-event-reset-authoritative",
-      "superseded_do_not_merge": [
-        "work/animo-prep10c-stable-dom-event-reset-candidate",
-        "work/animo-prep10c-stable-dom-reset-readiness"
-      ]
-    },
-    "NQ01": {
-      "authoritative": "work/animo-nq01-numerical-qualification-architecture",
-      "superseded_do_not_merge": [
-        "work/animo-nq01-final",
-        "work/animo-nq01-ignore",
-        "work/animo-nq01-numerical-qualification-architecture-copy",
-        "work/animo-nq01-packet-temp",
-        "work/animo-nq01-stop"
-      ]
-    },
-    "TQ01": {
-      "authoritative": "work/animo-tq01-testcase-qualification",
-      "superseded_do_not_merge": [
-        "work/animo-tq01-testcase-qualification-shadow",
-        "work/animo-tq01-testcase-qualification-shadow2",
-        "work/animo-tq01-testcase-qualification-shadow3"
-      ]
-    },
-    "EB01": {
-      "authoritative": "work/animo-eb01-evidence-baseline-model",
-      "superseded_identical_aliases": [
-        "work/animo-eb01-evidence-baseline-model-copy",
-        "work/animo-eb01-evidence-baseline-model-pr",
-        "work/animo-eb01-evidence-baseline-model-review"
-      ]
-    },
-    "TH02": {
-      "authoritative": "work/animo-th02-rev41-lineage-recovery",
-      "superseded_do_not_merge": ["work/animo-th02-release-lineage-recovery"]
-    },
-    "unresolved_reservation_refs": [
-      "work/animo-archg01-candidate-architecture-consolidation",
-      "work/animo-mp01-macropore-qualification"
-    ]
+    "PREP07": {"authoritative": "work/animo-prep07-transfer-edge-audit", "supplemental": ["work/animo-prep07-transfer-species-identity"]},
+    "PREP08": {"authoritative": "work/animo-prep08-causal-management-probes", "supplemental": ["work/animo-prep08-transfer-probes"], "superseded_do_not_merge": ["work/animo-prep08-restart-state-continuity"]},
+    "PREP09": {"authoritative": "work/animo-prep09-element-transfer-and-slow-sorption", "supplemental_rehome": {"source": "work/animo-prep09-option-contract-audit", "reserved_target_workunit": "ANIMO-PREP11", "target_state": "RG02_RESERVED_NOT_STARTED"}},
+    "PREP10": {"authoritative": "work/animo-prep10-stable-dom-plough-accumulators", "supplemental": ["work/animo-prep10-stable-dom-causal-activation"], "restart_rehome": {"source": "work/animo-prep10-restart-state-continuity", "reserved_target_workunit": "ANIMO-PREP12", "target_state": "RG02_RESERVED_NOT_STARTED"}},
+    "PREP10C": {"authoritative_review_surface": "work/animo-prep10c-stable-dom-event-reset-authoritative", "superseded_do_not_merge": ["work/animo-prep10c-stable-dom-event-reset-candidate", "work/animo-prep10c-stable-dom-reset-readiness"]},
+    "NQ01": {"authoritative": "work/animo-nq01-numerical-qualification-architecture", "superseded_do_not_merge": ["work/animo-nq01-final", "work/animo-nq01-ignore", "work/animo-nq01-numerical-qualification-architecture-copy", "work/animo-nq01-packet-temp", "work/animo-nq01-stop"]},
+    "TQ01": {"authoritative": "work/animo-tq01-testcase-qualification", "superseded_do_not_merge": ["work/animo-tq01-testcase-qualification-shadow", "work/animo-tq01-testcase-qualification-shadow2", "work/animo-tq01-testcase-qualification-shadow3"]},
+    "EB01": {"authoritative": "work/animo-eb01-evidence-baseline-model", "superseded_identical_aliases": ["work/animo-eb01-evidence-baseline-model-copy", "work/animo-eb01-evidence-baseline-model-pr", "work/animo-eb01-evidence-baseline-model-review"]},
+    "TH02": {"authoritative": "work/animo-th02-rev41-lineage-recovery", "superseded_do_not_merge": ["work/animo-th02-release-lineage-recovery"]},
+    "unresolved_at_authority_snapshot": ["work/animo-archg01-candidate-architecture-consolidation", "work/animo-mp01-macropore-qualification"]
   },
   "canonical_artifact_policy": {
     "canonical_TCD_register_owner": "ANIMO-B3 governance",
@@ -100,7 +43,7 @@
     "rg02_new_canonical_tcd_ids_allocated": 0,
     "local_identity_reconciliation_artifact": "integration/animo-reg/ANIMO_LOCAL_TCD_RECONCILIATION.json",
     "silent_last_writer_wins_allowed": false,
-    "migration_DAG_owner": "RG governance series after explicit EB/EG reconciliation",
+    "migration_DAG_owner": "RG governance series",
     "Status_A_AA_register_owner": "RG governance series",
     "B3_classification_owner": "ANIMO-B3Q01",
     "architecture_contracts_are_candidate_only": true
@@ -108,32 +51,32 @@
   "local_id_reconciliation": {
     "state": "COMPLETE_FOR_OBSERVED_POST_027_PREPARATORY_LINEAGES",
     "stable_rg02_local_keys": 8,
-    "direct_numeric_collisions_resolved_as_identity_not_renumbering": [
-      "local TCD-028 transfer-lineage finding versus central TCD-028 stable-DOM reservation",
-      "local TCD-030 exudate-humus fraction sequencing versus local TCD-030 aeration option-2 alias",
-      "local TCD-032 macropore restart writer omission versus superseded PREP10C local TCD-032 stable-DOM reset proposal"
-    ],
     "canonical_register_modified": false
+  },
+  "governance_consolidation": {
+    "state": "COMPLETE_GOVERNANCE_ONLY",
+    "plan_and_verification": "integration/animo-reg/ANIMO_GOVERNANCE_CONSOLIDATION_PLAN.json",
+    "EB01_disjoint_paths_transplanted_with_exact_blob_identity": true,
+    "EG01_disjoint_paths_transplanted_with_exact_blob_identity": true,
+    "development_governance_semantically_composed_under_RG_owner": true,
+    "migration_DAG_B0_B4_semantics_reconciled_under_RG_owner": true,
+    "branch_merge_performed": false,
+    "current_rg02_ci_claimed": false,
+    "prior_EG01_CI_carried_only_by_exact_blob_identity": true
   },
   "supplemental_transplant": {
     "plan": "integration/animo-reg/ANIMO_SUPPLEMENTAL_EVIDENCE_TRANSPLANT_PLAN.json",
     "state": "PLANNED_NOT_EXECUTED",
-    "supplemental_packet_ids": [
-      "RG02-SUPP-P07-SPECIES-001",
-      "RG02-SUPP-P08-TRANSFER-001"
-    ],
-    "reserved_rehome_workunits": [
-      "ANIMO-PREP11",
-      "ANIMO-PREP12"
-    ],
+    "supplemental_packet_ids": ["RG02-SUPP-P07-SPECIES-001", "RG02-SUPP-P08-TRANSFER-001"],
+    "reserved_rehome_workunits": ["ANIMO-PREP11", "ANIMO-PREP12"],
     "prep11_branch_created": false,
     "prep12_branch_created": false
   },
   "integration_DAG_gate": {
     "G0_branch_authority_register": "SUBSTANTIALLY_COMPLETE",
     "G1_local_to_canonical_TCD_reconciliation": "COMPLETE_FOR_OBSERVED_POST_027_PREPARATORY_LINEAGES",
+    "G3_governance_artifact_consolidation": "COMPLETE_GOVERNANCE_ONLY",
     "G2_duplicate_PREP07_PREP10_evidence_transplant_under_unique_ids": "PLANNED_NOT_EXECUTED",
-    "G3_governance_artifact_consolidation": "PLANNED_NOT_EXECUTED",
     "G4_canonical_preparatory_evidence_aggregate": "NOT_READY",
     "G5_independent_theory_testing_numerical_temporal_science_stream_attachment": "PLANNED",
     "G6_B2_reference_acquisition_and_comparison": "BLOCKED_BY_PREP02R",
@@ -143,18 +86,20 @@
     "G10_production_migration": "NOT_ADMITTED"
   },
   "remaining_blockers": [
-    "unique supplemental PREP07/PREP08 evidence and substantive PREP09/PREP10 duplicate-lineage evidence have not yet been rehomed path-by-path",
-    "PREP11 and PREP12 are reserved by RG02 but not yet instantiated from a governance-approved canonical evidence base",
-    "same-path legacy status/register artifacts still make direct source-branch merge unsafe even though the local TCD identity collision is now mapped",
-    "ARCHG01 and MP01 refs were observed without independent persisted work-unit status at the RG02 authority snapshot and cannot receive authority from their names",
+    "G2 has not yet rehomed the unique PREP07/PREP08 supplemental evidence and the substantive reused PREP09/PREP10 lineages path-by-path",
+    "PREP11 and PREP12 are reserved but not yet instantiated from the now governance-converged RG02 base",
+    "the physical discrepancy-register file inherited on RG02 is not promoted to the canonical B3 register; canonical TCD authority remains on B3Q01 and later register convergence must be explicit",
+    "ARCHG01 and MP01 lacked independent persisted work-unit status at the RG02 authority snapshot; later progress requires a live refresh rather than retroactive name-based authority",
     "PREP02R still has no independently trustworthy historical B2 reference; B3 and B4 remain separate blocked or uncompleted gates"
   ],
+  "next_safe_gate": "G2_SUPPLEMENTAL_EVIDENCE_REHOME_FROM_GOVERNANCE_CONVERGED_RG02_BASE",
   "deliverables": {
     "work_unit_contract": "docs/governance/ANIMO_RG02_WORK_UNIT_CONTRACT.md",
     "branch_authority_model": "docs/governance/ANIMO_BRANCH_AUTHORITY_MODEL.md",
     "canonical_integration_DAG": "docs/governance/ANIMO_CANONICAL_INTEGRATION_DAG.md",
     "local_tcd_reconciliation_document": "docs/governance/ANIMO_LOCAL_TCD_RECONCILIATION.md",
     "local_tcd_reconciliation": "integration/animo-reg/ANIMO_LOCAL_TCD_RECONCILIATION.json",
+    "governance_consolidation": "integration/animo-reg/ANIMO_GOVERNANCE_CONSOLIDATION_PLAN.json",
     "supplemental_transplant_plan": "integration/animo-reg/ANIMO_SUPPLEMENTAL_EVIDENCE_TRANSPLANT_PLAN.json",
     "branch_inventory": "integration/animo-reg/ANIMO_BRANCH_INVENTORY.csv",
     "PR_inventory": "integration/animo-reg/ANIMO_PR_INVENTORY.csv",
