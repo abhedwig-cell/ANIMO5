@@ -1,0 +1,48 @@
+{
+  "work_unit": "ANIMO-RG02",
+  "gate": "G4",
+  "record_type": "CANONICAL_PREPARATORY_EVIDENCE_AGGREGATE_STATUS",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-rg02-g4-canonical-preparatory-evidence-aggregate",
+  "base": {
+    "branch": "work/animo-rg02-branch-authority-integration",
+    "head": "e510a3fa905375ce210298ea10d54f970d4eb098",
+    "role": "qualified RG02 branch-authority and governance-convergence base"
+  },
+  "decision": "IN_PROGRESS_CANONICAL_PREPARATORY_EVIDENCE_AGGREGATION_NO_SCIENTIFIC_ADMISSION",
+  "implemented": true,
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "blocked": false,
+  "scope": "assemble one provenance-resolved preparatory evidence surface from authoritative PREP lineages and qualified RG02 rehomes without changing source evidence strength, importing divergent canonical registers or admitting any scientific correction",
+  "authoritative_inputs": {
+    "PREP01_to_PREP06": "inherited from qualified RG02 governance base and its stabilized preparatory ancestry",
+    "PREP07": {"branch": "work/animo-prep07-transfer-edge-audit", "head": "c4fe28b7878f6e8155560754b87b7ae115dd6473"},
+    "PREP08": {"branch": "work/animo-prep08-causal-management-probes", "head": "933795e2e9bf72a78b5fcf5412510f057d0ab869"},
+    "PREP09": {"branch": "work/animo-prep09-element-transfer-and-slow-sorption", "head": "e3c3b0dfa8daabe345c51be8c4f29f2731d65c47"},
+    "PREP10": {"branch": "work/animo-prep10-stable-dom-plough-accumulators", "head": "65cd4a65a3ea27cd4ce004f505d5022fdb08b9ab"},
+    "G2_supplemental": {"branch": "work/animo-rg02-g2-supplemental-evidence-transplant", "head": "cfe9995aa52649577eb258845f517b69aa13d435"},
+    "PREP11": {"branch": "work/animo-prep11-option-contract-rehome", "head": "20e77dd7617c68e56e9e7436c06d9df13d22bf5e"},
+    "PREP12": {"branch": "work/animo-prep12-restart-state-continuity-rehome", "head": "3d86de057247adcfeefb82c11d7cf7d5b2cbdf73"}
+  },
+  "aggregation_policy": {
+    "copy_mode": "EXACT_BLOB_REUSE_TO_AGGREGATE_SCOPED_PATHS",
+    "source_status_files": "REFERENCE_BY_BRANCH_HEAD_AND_BLOB_NOT_CANONICALIZED",
+    "source_workunit_contracts": "REFERENCE_ONLY_UNLESS_REQUIRED_AS_EVIDENCE",
+    "source_discrepancy_registers_import_allowed": false,
+    "canonical_tcd_allocation_allowed": false,
+    "corrected_legacy_candidate_paths_allowed": false,
+    "PREP10C_included": false,
+    "tool_activation_in_canonical_namespace": false,
+    "scientific_reinterpretation_allowed": false,
+    "evidence_strength_upgrade_allowed": false
+  },
+  "canonical_register_boundary": {
+    "rg02_physical_register_path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "expected_rg02_blob": "e6c2dec78f718f9ffb70af8910f0ec483e676e63",
+    "promoted_as_B3_canonical_register": false,
+    "canonical_B3_owner": "ANIMO-B3 governance"
+  },
+  "next": "persist exact aggregate manifest, materialize PREP07-PREP10 authoritative evidence and G2/PREP11/PREP12 references or packet blobs under collision-free aggregate namespaces, then perform blob and exclusion readback"
+}
