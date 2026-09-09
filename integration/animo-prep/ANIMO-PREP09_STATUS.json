@@ -1,0 +1,85 @@
+{
+  "work_unit": "ANIMO-PREP09",
+  "title": "Element Transfer Sequencing and Slow-Sorption Tillage Policy Audit",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep09-element-transfer-and-slow-sorption",
+  "date": "2026-09-09",
+  "starting_head": "340db9d91e71c906143efe877313149c5af36a24",
+  "decision": "QUALIFIED_DIAGNOSTIC_TCD030_CAUSALITY_AND_TCD031_POLICY_MATERIALITY_REFERENCE_ADMISSION_BLOCKED",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "source-bound static audit and diagnostic-only causal/sensitivity probes; not reference evidence",
+  "blocked": true,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "legacy_source_modified": false,
+  "testbank_modified": false,
+  "reference_qualified": false,
+  "corrected_legacy_production_change": false,
+  "production_migration_admitted": false,
+  "verification": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "baseline_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "static_checks": "20/20",
+    "tcd030_first_event_n_mismatch_kg_ha": 6.905787563278995,
+    "tcd030_first_event_p_mismatch_kg_ha": 0.690578756327888,
+    "slow_sorption_observed_plough_events": 4,
+    "slow_sorption_sites": 3,
+    "slow_sorption_event_site_mass_checks": "12/12 exact zero delta in conservative diagnostic sensitivity",
+    "slow_sorption_normalized_changed_output_files": 11
+  },
+  "findings": [
+    {
+      "id": "TCD-030",
+      "classification": "DIAGNOSTICALLY_CAUSAL_EXUDATE_HUMUS_ELEMENT_TRANSFER_LEDGER_SEQUENCING_DEFECT",
+      "nature": "explicit element-transfer accounting sequencing defect",
+      "synthetic_activation": true,
+      "production_correction_admitted": false
+    },
+    {
+      "id": "TCD-031",
+      "classification": "REVISION_SPECIFIC_SLOW_SORPTION_TILLAGE_POLICY_GAP_WITH_NATURAL_TRAJECTORY_MATERIALITY",
+      "confirmed_legacy_code_defect": false,
+      "natural_testbank_activation": true,
+      "diagnostic_conservative_sensitivity_locally_mass_conservative": true,
+      "trajectory_material": true,
+      "production_policy_selected": false
+    }
+  ],
+  "deliverables": {
+    "analysis": "docs/prep09/ELEMENT_TRANSFER_AND_SLOW_SORPTION_AUDIT.md",
+    "working_checkpoint": "docs/prep09/WORKING_FINDINGS.md",
+    "audit_tool": "tools/audit_prep09_transfer_semantics.py",
+    "machine_evidence": "integration/animo-prep/PREP09_ELEMENT_TRANSFER_SLOW_SORPTION.json",
+    "canonical_discrepancy_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
+  },
+  "architectural_constraints": [
+    "derive internal element-transfer ledger quantities from explicit pre-state and post-state element amounts when fractions can change during an event",
+    "management operations must explicitly declare which state families are redistributed and which remain immobile",
+    "preserve sorption-site identity independently of management-event and solver-iteration indices",
+    "do not retain live ledger interfaces for disabled producers without explicit policy or feature-state semantics",
+    "synthetic diagnostic magnitudes are not acceptance tolerances"
+  ],
+  "remaining_blockers": [
+    "PREP02 historical or independently trusted reference remains unavailable",
+    "exact revision-53 slow-sorption tillage intent and 2010 change provenance remain unresolved",
+    "TCD-030 corrected-reference equivalence remains unqualified",
+    "TCD-031 requires trusted reference or matching 4.1.x theory before selecting immobile versus redistributed slow-sorption behaviour",
+    "controlled immutable B0 retention still needs formalization"
+  ],
+  "recommended_next": {
+    "parallel_now": [
+      "audit stable-DOM ploughing accumulators for event-local initialization and compiler-storage dependence",
+      "continue parser-option to process-path isolation for revision-53 features",
+      "prepare corrected-reference composition rules for Class-A ledger candidates without applying them"
+    ],
+    "serial_when_reference_available": [
+      "qualify a minimal TCD-030 post-state-minus-pre-state ledger correction",
+      "resolve TCD-031 tillage policy against trusted historical behaviour and matching formulation evidence",
+      "qualify composed corrected-ledger changes independently before ANIMO5 migration"
+    ]
+  }
+}
