@@ -2,21 +2,30 @@
   "work_unit": "ANIMO-IO01",
   "pilot": "B",
   "family": "MAT",
-  "scope": "revision-53 non-GHG static MATERIAL core using natural RuurloGrass",
-  "status": "STARTED_SOURCE_CONTRACT_RECONSTRUCTION",
-  "qualified": false,
+  "scope": "revision-53 non-GHG static MATERIAL core using natural RuurloGrass with IPO=0, Ioptae=0 and IoptGHG=0",
+  "status": "QUALIFIED_REPRESENTATION_ONLY_TTUTIL_ADAPTER_CANDIDATE_WITH_RUNTIME_HAZARD_EXCLUSIONS",
+  "qualified": true,
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
   "production_migration": "NOT_ADMITTED",
   "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
   "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
   "case": {
     "name": "RuurloGrass",
     "material_file": "ANIMO_testbank/RuurloGrass/Input/MATERIAL.INP",
+    "material_file_sha256": "03857e4681cc83fe84c054ac1b1e1cd3df91c9b5204f7f8bc70962d14033c507",
     "PhosphorusCycle": 0,
     "AerationModel": 0,
     "GreenHouseGasOption": 0,
     "PClassOption": 0,
     "Nm": 11,
     "Nf": 14
+  },
+  "adapters": {
+    "legacy": "LegacyRevision53MaterialAdapter/Ruurlo-v1",
+    "native": "TTUTILNativeMaterialAdapter/v1",
+    "normalized_schema": "MaterialParameterSet/v1"
   },
   "active_sections": [
     ">defmat:",
@@ -30,33 +39,92 @@
     ">defden:",
     ">matfra:"
   ],
-  "inactive_sections": [">sonicg:", ">sonic2:", "post-matfra GHG validation"],
-  "findings": [
-    "defmat and deffra use IPO-conditioned implied-DO phosphorus reads; with IPO=0 the natural trailing zero columns are lexical residue rather than normalized Frpo/Pofr values",
-    "pofrex and Pofrhuma are parsed and range-checked unconditionally even when IPO=0",
-    "matfra uses sparse list-directed assignment that can span physical records",
-    "revision-53 subsequently reads and validates all FR/Frca entries for each material, while the MATERIAL block itself does not explicitly initialize unassigned entries"
+  "inactive_sections": [
+    ">sonicg:",
+    ">sonic2:",
+    "post-matfra GHG validation"
   ],
-  "open_dependency": {
-    "id": "IO01-PB-RUNTIME-INIT-001",
-    "description": "legacy meaning of unassigned sparse FR/Frca entries",
-    "routing": "ANIMO-BUILDQ01 runtime/storage semantics",
-    "classification": "UNQUALIFIED_RUNTIME_SEMANTICS_DEPENDENCY_CANDIDATE",
-    "fail_closed": true
+  "evidence": {
+    "lineage": "integration/animo-io/MATERIAL-RUURLO-LINEAGE-EQUIVALENCE.json",
+    "qualification": "integration/animo-io/MATERIAL-PILOT-B-QUALIFICATION.json",
+    "runtime_hazard_routing": "docs/io/MATERIAL_PILOT_B_RUNTIME_HAZARD_ROUTING.md",
+    "qualification_runner": "tools/qualify_io01_material_pilot.py",
+    "exact_probe": "tools/ttutil_material_probe.f90",
+    "typed_double_probe": "tools/ttutil_material_probe_typed_double.f90"
   },
-  "next_steps": [
-    "qualify sparse FR/Frca initialization semantics",
-    "define MaterialParameterSet/v1 normalized schema",
-    "implement legacy MATERIAL normalization oracle",
-    "implement separate TTUTIL native MATERIAL v1 representation",
-    "perform parser-level field/cardinality/presence equivalence before model regression"
+  "qualification": {
+    "result": "PASS",
+    "field_exact_equivalent": true,
+    "numeric_tolerance_used": false,
+    "native_numeric_transport": "TTUTIL CHARACTER scalar/array tokens plus adapter-owned REAL(8) list-directed conversion",
+    "typed_ttutil_double": {
+      "decision": "REJECT_TYPED_DOUBLE_FOR_FIELD_EXACT_REPRESENTATION",
+      "field_exact_equivalent": false,
+      "numeric_mismatch_count": 26,
+      "max_ulp_distance": 1,
+      "max_absolute_difference": 1.1102230246251565e-16
+    }
+  },
+  "sparse_semantics": {
+    "full_matrix_cells_each": 154,
+    "explicit_sparse_triplets": 24,
+    "omitted_cells_each": 130,
+    "omitted_cell_normalization": "ZERO_BY_EXACT_NATURAL_RUURLO_OLD_NEW_LINEAGE_EQUIVALENCE",
+    "legacy_storage_mechanism": "UNQUALIFIED_AND_SEPARATELY_ROUTED"
+  },
+  "ipo0_presence": {
+    "Frpo": "FEATURE_INACTIVE_NULL",
+    "Pofr": "FEATURE_INACTIVE_NULL",
+    "trailing_defmat_deffra_zero_columns": "LEXICAL_RESIDUE_NOT_ACTIVE_P_FIELDS",
+    "Pofrex": "EXPLICIT_PARSED_FIELD",
+    "Pofrhuma": "EXPLICIT_PARSED_FIELD"
+  },
+  "runtime_hazards": [
+    {
+      "id": "MAT-RH-001",
+      "description": "revision-53 reads omitted sparse FR/FRca cells without an identified explicit source initialization",
+      "normalized_semantics": "omitted cells are explicit zero for the qualified Ruurlo lineage",
+      "runtime_mechanism": "UNQUALIFIED",
+      "routing": "ANIMO-BUILDQ01/B3I01",
+      "fail_closed": true
+    },
+    {
+      "id": "MAT-RH-002",
+      "description": "revision-53 range-checks Pofr(Frno) at IPO=0 after a zero-element implied-DO input",
+      "normalized_semantics": "Pofr is FEATURE_INACTIVE_NULL",
+      "runtime_mechanism": "CHECKED_VALUE_NOT_INPUT_DEFINED",
+      "routing": "ANIMO-BUILDQ01/B3I01",
+      "fail_closed": true
+    }
   ],
+  "reproducer_hardening": {
+    "status": "COMMITTED_SOURCE_LEVEL_CI_PASS",
+    "commit": "75c74dd710ab5804444f2be484c0edf5124a568b",
+    "github_actions_run_id": 34336915868,
+    "github_actions_result": "PASS",
+    "runner_behavior": [
+      "verifies user-supplied SWAP 4.3.1 and ANIMO testbank hashes",
+      "materializes exact embedded TTUTIL 4.27 against the committed per-file manifest",
+      "builds all 153 TTUTIL Fortran units and both MATERIAL probes",
+      "can bit-compare natural Ruurlo numeric lexemes against GNU Fortran external list-directed REAL(8) conversion",
+      "rechecks exact CHARACTER-token equivalence and preserves typed DOUBLE as negative evidence"
+    ],
+    "github_ci_runtime_archive_note": "GitHub CI does not run the archive-dependent runtime reproducer because frozen/user-supplied SWAP and ANIMO ZIP bytes are not vendored in the repository"
+  },
   "non_admissions": {
     "GHGMais_included": false,
     "GHG_lineage_normalized": false,
     "legacy_science_changed": false,
     "frozen_bytes_modified": false,
     "production_migration_admitted": false,
+    "model_output_equivalence_claimed": false,
+    "binary_hydrology_converted_to_ttutil": false,
     "B4_admitted": false
-  }
+  },
+  "next_steps": [
+    "keep MAT-RH-001 and MAT-RH-002 routed to BUILDQ01/B3I01 without assigning a local TCD number",
+    "treat Pilot B as a bounded representation candidate only, not generic MATERIAL admission",
+    "close IO01 or hand off before selecting any additional input-family pilot",
+    "do not generalize this result to GHG, GENERAL, SOIL, PLANT, management, restart or binary hydrology"
+  ]
 }
