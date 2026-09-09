@@ -1,0 +1,62 @@
+{
+  "work_unit": "ANIMO-GOV03",
+  "evidence_type": "PROJECT_OWNER_ATTESTATION_WITH_NAMED_EXTERNAL_EXPERT_ARCHIVE_SEARCH_AND_EXPERT_CONCURRENCE",
+  "recorded_date": "2026-09-09",
+  "acquisition_completion_date": "2026-09-09",
+  "scope": "Historical ANIMO executable/output/archive material capable of supporting a provenance-qualified B2 behavioural reference for revision-53-era claims",
+  "project_owner_attestation": {
+    "summary": "The project owner reports that a targeted archive search was conducted over several days with multiple directly involved ANIMO experts and was completed on 2026-09-09.",
+    "contacts": [
+      {
+        "name": "Piet Groenendijk",
+        "route": "direct expert contact and personal/archive search",
+        "result": "No additional usable historical ANIMO reference artifacts were recovered beyond the already known problematic executable and available Fortran source material.",
+        "expert_concurrence": "Proceeding from the available Fortran code and using a rebuild made from that source is the correct route."
+      },
+      {
+        "name": "Leo Renaud",
+        "route": "direct expert contact and personal/archive search",
+        "result": "No additional usable historical ANIMO reference artifacts were recovered."
+      },
+      {
+        "name": "Marius Heinen",
+        "route": "direct expert contact and personal/archive search",
+        "result": "No additional usable historical ANIMO reference artifacts were recovered."
+      }
+    ],
+    "duration": "several days",
+    "material_recovered": [
+      "existing Fortran source repository/code material",
+      "already known historical executable that did not provide a usable reference path"
+    ],
+    "material_not_recovered": [
+      "provenance-qualified historical executable suitable as a B2 oracle",
+      "official or preserved historical testcase output bundle suitable as a B2 oracle",
+      "additional archival release package that closes behavioural provenance"
+    ],
+    "current_practical_reference": "rebuild from the available frozen Fortran source under explicit provenance and hash control"
+  },
+  "inherited_search_record": {
+    "PREP02R": "a2fda49871ee3c7104daf7e06cd8dffdac06b125",
+    "GOV02": "db7add6f9561730bbf352aa7fd3f3968405cfaa3",
+    "note": "PREP02R already records the internal/public repository and artifact search history. GOV03 adds the completed named expert/archive acquisition that was not yet represented in repository governance."
+  },
+  "gov02_reasonable_effort_mapping": {
+    "criterion_1_targeted_WUR_or_institutional_route_executed": "PASS_BY_NAMED_DIRECT_EXPERT_ARCHIVE_CONTACTS",
+    "criterion_2_response_or_negative_evidence_trail_persisted": "PASS_PROJECT_OWNER_ATTESTATION_WITH_NAMED_RESULTS_PERSISTED_HERE",
+    "criterion_3_additional_plausible_route_attempted": "PASS_MULTIPLE_DIRECT_EXPERT_ARCHIVE_ROUTES",
+    "criterion_4_public_search_history_terms_repositories_dates_persisted": "PASS_INHERITED_PREP02R_PLUS_GOV03_COMPLETION_DATE",
+    "criterion_5_stopping_rationale": "PASS_PRIMARY_EXPERT_ARCHIVES_SEARCHED_NO_USABLE_B2_ARTIFACT_RECOVERED_AND_EXPECTED_VALUE_OF_MORE_SEARCH_LOW",
+    "criterion_6_independent_reviewer_approves_stopping_rationale": "PASS_NAMED_EXTERNAL_EXPERT_CONCURRENCE_PIET_GROENENDIJK",
+    "criterion_7_no_known_high_probability_route_deliberately_unexplored": "PASS_PROJECT_OWNER_ATTESTATION_AFTER_MULTI_EXPERT_ARCHIVE_SEARCH"
+  },
+  "evidence_strength_limits": {
+    "historical_B2_artifact_obtained": false,
+    "historical_behaviour_proven": false,
+    "problematic_executable_promoted_to_B2": false,
+    "rebuild_promoted_to_historical_B2": false,
+    "source_code_promoted_to_behavioural_oracle": false,
+    "expert_concurrence_is_historical_output_evidence": false
+  },
+  "proposed_closure_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT"
+}
