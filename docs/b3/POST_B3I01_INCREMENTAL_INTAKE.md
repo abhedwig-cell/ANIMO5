@@ -10,42 +10,39 @@ Production migration: `NONE`
 
 B3I02 is an incremental intake only. It does not reopen the full B3I01 register and it does not assign a new identifier to a phenomenon already absorbed by the authoritative B3I01 branch.
 
-The live authority consumed here is:
+The authoritative base remains:
 
 - branch: `work/animo-b3i01-canonical-register-append`;
 - head: `383c7a83e84a578969f92113280dc715b7bdddb4`;
-- canonical register tail: `TCD-041`.
+- canonical register tail observed at the base: `TCD-041`.
 
-The key consequence is that two nominal B3I02 targets are already canonically routed by B3I01 supplements:
+Existing canonical routes preserved by B3I02 are:
 
-- the STATEQ01 layer-0 aqueous restart initialization zeroing is `TCD-040`;
-- the BUILDQ04 `Flair(Nl+1)` lower GHG air-boundary initialization omission is `TCD-041`.
+- STATEQ01 layer-0 aqueous restart initialization zeroing -> `TCD-040`;
+- BUILDQ04 `Flair(Nl+1)` lower GHG air-boundary initialization omission -> `TCD-041`;
+- BUILDQ03 hidden cross-call/storage-duration dependency -> existing `TCD-011` where canonical routing is required.
 
-Allocating either phenomenon again would violate the incremental-only rule and the no-reuse rule.
+TCD-028 through TCD-037 remain unavailable for reuse by unrelated phenomena.
 
-## 2. Incremental scan boundary and live refresh
+## 2. Incremental evidence refresh
 
-The authoritative B3I01 head was established after its Supplement 04 append of `TCD-041`. Workunit heads were checked live around that boundary and again after the first B3I02 closeout checkpoint.
+Completed post-B3I01 evidence consumed by the current B3I02 head is:
 
-Completed evidence additions relevant to this intake are:
+- STATEQ01 external-crop split-run evidence at `4adae99576eb56978da71f7c8a250e4445fd3bc4`;
+- RG03 post-G5 gate reconciliation at `b67a6cac325fe3f838aedc9df106e120fd5a3d0f`;
+- MASSQ02 residual causality reconciliation and typed-event projection at `56a11b524d03c33ee4ab9b1cd13b2cd523d543fc`.
 
-- STATEQ01 external-crop split-run evidence at head `4adae99576eb56978da71f7c8a250e4445fd3bc4`;
-- RG03 post-G5 gate reconciliation at head `b67a6cac325fe3f838aedc9df106e120fd5a3d0f`, which closed after the initial B3I02 scan.
+STATEQ02 remains excluded because its branch is still at the pre-execution checkpoint `0875f7f5c0976f8b0b3ae70d00fd2f48b31697d5`.
 
-RG03 is consumed here only as governance evidence. Its closeout is tested and qualified, but explicitly increases no evidence strength, performs no scientific admission, changes no production source and keeps the canonical TCD authority at B3I01 head `383c7a83e84a578969f92113280dc715b7bdddb4` with tail `TCD-041`. It therefore creates no new runtime, state or mass discrepancy for B3I02 and no new TCD reservation.
+MASSQ02 closes with:
 
-Two newer branches remain excluded because they are not completed qualification evidence at the refreshed scan point:
+`QUALIFIED_TYPED_MASS_EVENT_PROJECTION_AND_RESIDUAL_RECONCILIATION_MASS_ADMISSION_PENDING`
 
-- `work/animo-massq02-residual-causality-typed-events` remains at a start checkpoint;
-- `work/animo-stateq02-restricted-core-executable-split-run` remains at a pre-execution checkpoint.
-
-MASSQ01 predates the final B3I01 authority head, but its unresolved residual register is explicitly included because B3I02 was asked to disposition every `UNEXPLAINED_RESIDUAL`. BUILDQ03 and BUILDQ04 are likewise retained as explicit handoff checks, even where B3I01 already absorbed their result.
+It classifies all fifteen formerly unexplained MASSQ01 residuals as source/process-local `NEW_CAUSAL_FINDING`, with `UNEXPLAINED = 0`. B3I02 nevertheless keeps a stricter canonical-identity threshold: source localization is necessary but does not by itself prove an atomic discrepancy mechanism or identity with an existing TCD.
 
 ## 3. BUILDQ04 lower GHG air boundary
 
-BUILDQ04 qualified the source identity of `Flair(Nl+1)` beyond a generic compiler hazard. The connected GHG source establishes a closed lower advective air boundary with value zero, while `GHGasses` performs a Task-1 first read of `Flair(Nl+1)` without assigning that slot. Controlled probes showed potential flux, state and output materiality. BUILDQ04 also established that this is not missing physical state, not a numerical-policy change and not a case where compiler initialization should define the model semantics.
-
-That evidence supports an atomic Class-B discrepancy. B3I01 Supplement 04 already performed the central collision scan and registered it as:
+BUILDQ04 qualified the `Flair(Nl+1)` first-use omission against the connected closed lower-air-boundary contract. B3I01 Supplement 04 already registered the phenomenon as:
 
 `TCD-041`
 
@@ -53,9 +50,7 @@ Atomic scope:
 
 `ONE_LOWER_EXTERNAL_AIR_INTERFACE_INITIALIZATION_OMISSION`
 
-The derived `Flaiio(Nl)` and `Flaiou(Nl)` effects are downstream consequences of the same omitted boundary coordinate. They do not justify separate species or flux TCDs.
-
-B3I02 disposition:
+B3I02 disposition remains:
 
 `EXISTING_TCD = TCD-041`
 
@@ -63,7 +58,7 @@ No new identifier is allocated.
 
 ## 4. STATEQ01 layer-0 aqueous restart zeroing
 
-STATEQ01 source evidence shows that revision 53 represents layer-0 dissolved restart coordinates but `Inicalc.for` subsequently zeroes:
+STATEQ01 shows that `Inicalc.for` zeroes represented layer-0 restart coordinates:
 
 - `Conh(0)`;
 - `Coni(0)`;
@@ -71,137 +66,147 @@ STATEQ01 source evidence shows that revision 53 represents layer-0 dissolved res
 - `Codiorni(0)`;
 - `Codiorpo(0)`.
 
-The first four are naturally reachable in the supplied `GrassPeat` evidence. The phosphorus coordinate follows the same initialization mechanism. The causal operation is one initialization transaction, not five independent species-specific mechanisms.
-
-B3I01 Supplement 02 already registered this as:
+B3I01 Supplement 02 already registered one shared initialization transaction as:
 
 `TCD-040`
 
-with atomicity:
+Atomicity:
 
 `ONE_CAUSAL_INITIALIZATION_TRANSACTION_MULTI_COORDINATE_SCOPE`
 
-It remains distinct from the TCD-016 low-storage NH4 continuation-state problem. TCD-016 concerns runtime wet-to-low-storage conservation and missing continuation representation. TCD-040 concerns explicit restart state being erased during initialization.
-
-B3I02 disposition:
-
-`EXISTING_TCD = TCD-040`
-
-No species-specific atoms and no new TCD are created.
+The mechanism remains distinct from TCD-016 wet-to-dry dissolved-solute continuation loss. No species-specific child atoms are created here.
 
 ## 5. BUILDQ03 runtime handoff
 
-BUILDQ03 separated hidden task, solver and phase continuation from accepted persistent physical state. Its explicit-context qualification shows that these local-lifetime families should become scoped runtime context rather than blanket checkpoint fields. The associated hidden-lifetime dependency was routed to the existing build/storage-duration discrepancy `TCD-011`.
+BUILDQ03 separates hidden task, solver and phase continuation from accepted persistent physical state. Runtime context families remain scoped runtime context, not blanket checkpoint state.
 
-B3I02 therefore makes two distinctions:
+B3I02 preserves:
 
-1. the existing cross-call/storage-duration dependency remains under `TCD-011`;
-2. the qualified runtime context families themselves are `RUNTIME_HAZARD_WITHOUT_NEW_SCIENTIFIC_TCD` and are not promoted into new scientific discrepancies merely because legacy compiler lifetime mattered.
+- existing canonical relation `TCD-011` for the cross-call/storage-duration dependency;
+- `RUNTIME_HAZARD_WITHOUT_NEW_SCIENTIFIC_TCD` for qualified runtime-context families that do not establish a separate scientific discrepancy.
 
-The separate `Flair(Nl+1)` first-use omission is not folded into TCD-011 because BUILDQ04 subsequently established a distinct connected-source boundary contract. That phenomenon is already `TCD-041`.
+The separate `Flair(Nl+1)` source-contract omission remains TCD-041 and is not folded into TCD-011.
 
-## 6. MASSQ01 unexplained residual intake
+## 6. MASSQ02 reconciliation of the fifteen formerly unexplained residuals
 
-MASSQ01 has fifteen records classified `UNEXPLAINED_RESIDUAL`, from `MASSQ01-R010` through `MASSQ01-R024`.
+MASSQ02 materially strengthens the evidence. The fifteen rows are no longer merely unexplained observer residuals. Each is localized to a source/process surface. B3I02 then performs a second decision: whether the exact mechanism is bounded enough for existing-TCD identity, child-atom identity or a new top-level TCD.
 
-None satisfies the B3I02 threshold for a new canonical defect. The reason is not that the residuals are numerically small. Several are not small. The reason is causal: MASSQ01 intentionally stopped before assigning a source mechanism for these exact residuals.
+The resulting canonical intake is intentionally narrower than the MASSQ02 `NEW_CAUSAL_FINDING` class.
 
-The following relations are retained only as context:
+### 6.1 Fourteen findings remain below canonical identity threshold
 
-- `MASSQ01-LCL-N003`, `N004` and `N007` have `TCD-015` candidate context, but exact event-level TCD-015 algebra was not established for those rows;
-- `MASSQ01-LCL-N005` contains a known TCD-016 NH4 component, but the remainder of the total-N residual is unresolved;
-- `MASSQ01-LCL-P002` occurs in a run affected cumulatively by TCD-019, but the exact interval was not separately attributed;
-- `MASSQ01-LCL-P005` is initialization-associated and has TCD-014 candidate context, but lacks case-specific causal qualification.
-
-The remaining unexplained N, P, water and organic-C rows likewise have no source-localized cause.
-
-Every one of the fifteen rows is therefore retained as:
-
-`LOCAL_OBSERVER_FINDING_PENDING_CAUSALITY`
-
-A reproduced legacy nonclosure can rule out a simple MassLedger observer-construction artifact in some rows, but it still does not identify the scientific or implementation cause. B3I02 introduces no epsilon, no balancing correction and no defect classification from magnitude alone.
-
-MASSQ02 is the appropriate follow-on for causal isolation. Its current branch is only at a start checkpoint, so B3I02 does not consume future conclusions from it.
-
-## 7. New STATEQ01 external-crop split evidence
-
-STATEQ01 later completed a real revision-53 external-crop split probe on `LWKM_gras_1040.2021.2045`.
-
-The management continuation is strong evidence: all 312 post-split management events match exactly after the expected local time-origin shift.
-
-The behavioural state equivalence still fails in two observed ways.
-
-First, the first post-restart surface frame differs:
-
-- uninterrupted `Pn = 0.0 m`;
-- restarted `Pn = 5.0e-5 m`.
-
-The remaining 465 compared surface records match exactly. STATEQ01 identifies a hydrology t0/t1 or frame-positioning seam as the next investigation target, but does not prove the precise source cause.
-
-Second, the final legacy restart outputs differ in six parsed blocks: `ammoni`, `humorg`, `inipho`, `nitrat`, `orgfsh` and `orgsol`. The largest observed absolute difference is approximately `1.0e-5` in `orgfsh`. STATEQ01 explicitly states that a single cause is not proven and that serializer or restore precision remains an independent candidate contributor alongside the first-frame mismatch.
-
-B3I02 therefore records two local observations:
-
-- `STATEQ01-LCL-EXTCROP-FIRST-POSTRESTART-PN-DIVERGENCE`;
-- `STATEQ01-LCL-EXTCROP-FINAL-STATE-DIVERGENCE`.
-
-Both receive:
+Fourteen rows are retained as:
 
 `INSUFFICIENT_EVIDENCE_PENDING_CAUSAL_ISOLATION`
 
-They are not split into canonical atoms and do not receive `TCD-042`. Doing so now would turn a behavioural symptom into a canonical causal claim without evidence.
+This does not undo MASSQ02 causality. It means the available evidence identifies a local nonclosure surface but not yet an atomic canonical mechanism or exact existing-TCD identity.
+
+The retained cases are:
+
+- CranGrass TITO=724 water: the observer residual is reproduced by `Hydro_detailed.for:235-247` as `Badev`, but reproducing the whole-profile balance equation does not isolate which accepted storage or boundary term creates the nonclosure;
+- CranGrass TITO=726 N: mixed DON/NH4/NO3 `TRANSPORT` nonclosure is reproduced locally, but the precise `Transsub` mechanism is not isolated;
+- CranMais TITO=1036, GrassPeat TITO=5224, LWKM TITO=8531, STONE TITO=2382 and Zuiderzeeland TITO=637: nitrate-local nonclosures overlap the TCD-015 process family but do not prove activation of the exact duplicated-`Hv` mechanism;
+- Puitmijn TITO=1490 N: the known NH4 component remains TCD-016, while the additional layer-0 NO3 component is localized but has no canonical mechanism yet;
+- GrassPeat TITO=10, STONE TITO=10 and Zuiderzeeland TITO=1 P: first-step P partition/`Transgen` evidence overlaps the TCD-014 family, but parent identity versus a separate child atom is not yet proven;
+- LWKM TITO=4503 and Puitmijn TITO=1490 P: local PO4 `Transgen` nonclosure is reproduced, but the documented TCD-019 probe does not establish identity for the target events;
+- LWKM TITO=3073 bounded soil-organic-C: dissolved-organic-matter transport reproduces the source-defined `Cfracom=0.58` projection scale, but no exact branch mechanism is isolated and no whole-system elemental-C claim is made.
+
+No numerical magnitude, repeated symptom or common routine name is used as a shortcut to canonical identity.
+
+### 6.2 RuurloGrass TITO=1915 crosses the causal and atomicity threshold
+
+MASSQ02 R016 provides stronger evidence than the other fourteen rows.
+
+At RuurloGrass TITO=1915:
+
+- `Iopthyvs = 0`;
+- `Flib(1) = 0`;
+- `Rurv = 0`;
+- `Flux = Max(0, Flib(1)+Rurv) = 0`;
+- the `UBoundconc.for:110-132` zero-throughflow branch therefore uses `A1=1`, `A2=0`;
+- incoming NH4/NO3 `Load` terms do not enter the represented top-reservoir concentration update;
+- `Outbal_calc.for:766-784` nevertheless books precipitation/deposition input of `0.005069031338 kg/ha NH4-N` and `0.00168034188 kg/ha NO3-N`;
+- the booked total `0.006749373218 kg/ha N` matches the MassLedger residual `0.0067493732130969875 kg/ha N` without an acceptance epsilon.
+
+This is one cross-interface discrepancy mechanism, not separate NH4 and NO3 defects. Both species are affected by the same zero-throughflow branch and the same external-input/state-transfer mismatch.
+
+B3I02 atomicity:
+
+`ONE_ZERO_TOP_THROUGHFLOW_EXTERNAL_N_INPUT_STATE_TRANSFER_SEAM_MULTI_SPECIES_SCOPE`
+
+Live collision checks found no TCD-042 in the authoritative B3I01 register and no competing B3I branch/commit allocation at the reservation point. B3I02 therefore reserves:
+
+`TCD-042`
+
+Provisional correction-class interpretation is deliberately not admitted. The primary concern is Class C style missing/incomplete retained physical-state semantics at zero throughflow, while a narrower Class A ledger-input interpretation remains a possible alternative until the intended external-input semantics are scientifically qualified. The discrepancy identity is reserved; the correction is not selected.
+
+Disposition:
+
+`NEW_TCD_RESERVED_PENDING_CANONICAL_REGISTER_APPEND`
+
+No canonical register row is appended in this reservation checkpoint.
+
+## 7. New STATEQ01 external-crop split evidence
+
+STATEQ01 external-crop split evidence still has two behavioural observations:
+
+- first post-restart `Pn = 5e-5 m` versus uninterrupted `Pn = 0.0 m`, with later compared surface records matching;
+- final restart-state differences in `ammoni`, `humorg`, `inipho`, `nitrat`, `orgfsh` and `orgsol`.
+
+STATEQ01 explicitly does not prove one source cause. B3I02 therefore retains both as:
+
+`INSUFFICIENT_EVIDENCE_PENDING_CAUSAL_ISOLATION`
+
+No TCD is allocated from those symptoms.
 
 ## 8. RG03 reconciliation result
 
-RG03 closed after the first B3I02 scan with:
+RG03 closed with:
 
 `QUALIFIED_POST_G5_CANONICAL_GATE_RECONCILIATION_NO_SCIENTIFIC_ADMISSIONS`
 
-Its relevant consequences for this workunit are negative but useful:
-
-- the canonical TCD authority remains B3I01 at tail `TCD-041`;
-- no last-writer-wins register update occurred;
-- no scientific, STATE, TIME, MASS or corrected-legacy admission occurred;
-- integration did not increase evidence strength;
-- MASS remains `B1_OBSERVER_READINESS_QUALIFIED_ADMISSION_BLOCKED`;
-- feature-scoped STATE/runtime work remains separate from canonical admission.
-
-RG03 therefore does not supply a new causal phenomenon to classify. B3I02 records its disposition as:
+B3I02 records:
 
 `GOVERNANCE_RECONCILIATION_NO_NEW_DISCREPANCY`
 
-This refresh does not alter any B3I02 TCD decision.
+RG03 does not promote evidence strength, perform scientific admission or create a discrepancy identity.
 
 ## 9. Collision scan and reservation result
 
-The authoritative canonical register ends at `TCD-041`. `TCD-042` was not present in the live authoritative register when checked.
+The authoritative B3I01 register still ends at TCD-041. Before reservation, TCD-042 was absent from that register. A live B3I branch/commit collision check likewise found no competing TCD-042 allocation.
 
-That absence does not itself reserve `TCD-042`.
+The completed MASSQ02 intake now provides one finding that meets both the causal and atomicity threshold.
 
-Because no post-B3I01 incremental finding meets both the causal and atomicity threshold for a new discrepancy, B3I02 creates no reservations:
+Current reservation result:
 
-`reservations = []`
+`reservations = [TCD-042]`
 
-`TCD-042` remains merely the next observed unallocated candidate identifier and may be claimed only by a later central collision scan when a qualified new phenomenon actually requires it.
+Reservation status:
 
-No canonical register append is required in B3I02.
+`RESERVED_PENDING_CANONICAL_REGISTER_APPEND_NOT_ADMITTED`
 
-## 10. Final disposition
+The reservation is not a repository-wide transactional lock and does not itself append the canonical register. A later append step must re-check the collision immediately before writing the canonical row.
 
-B3I02 changes no scientific admission state, no corrected-legacy admission state and no production migration state.
+No TCD-043 reservation is made by this workunit.
 
-The incremental results are:
+## 10. Admission boundary and final disposition
 
-- BUILDQ04 lower GHG boundary omission: existing `TCD-041`;
-- STATEQ01 layer-0 restart zeroing: existing `TCD-040`, one multi-coordinate atom;
-- BUILDQ03 hidden lifetime handoff: existing `TCD-011` where canonical routing is needed, otherwise scoped runtime context without a new scientific TCD;
-- MASSQ01 unexplained residuals: fifteen local observer findings pending causality;
-- later STATEQ01 split divergences: insufficient evidence pending causal isolation;
-- RG03 closeout: governance reconciliation only, no new discrepancy and no evidence-strength promotion;
-- new TCD reservations: zero;
-- canonical register append: not required;
-- admissions: zero.
+B3I02 changes no scientific admission state, corrected-legacy admission state or production migration state.
 
-Final status:
+Current results are:
+
+- existing TCD routes retained: TCD-011, TCD-040 and TCD-041;
+- MASSQ02 formerly unexplained residuals consumed: 15;
+- new top-level reservation: TCD-042 for the RuurloGrass zero-top-throughflow external-N input/state-transfer seam;
+- remaining MASSQ02 findings below canonical identity threshold: 14;
+- new child atoms: zero;
+- STATEQ01 external-crop behavioural symptoms: still pending causal isolation;
+- canonical register append for TCD-042: required but not yet performed;
+- scientific admissions: zero;
+- corrected-legacy admissions: zero;
+- production changes: zero;
+- acceptance tolerance introduced: zero.
+
+Final status remains:
 
 `QUALIFIED_INCREMENTAL_CANONICAL_DISCREPANCY_INTAKE_NO_ADMISSIONS`
