@@ -1,5 +1,5 @@
 {
-  "packet_schema_version": "1.1.0",
+  "packet_schema_version": "1.2.0",
   "work_unit": "ANIMO-NQ01",
   "testcase_id": "RuurloGrass",
   "inputs": {
@@ -35,6 +35,11 @@
     "observer_patch_sha256": null,
     "b2_structured_capture": null,
     "b1_structured_capture": null
+  },
+  "representation_scope": {
+    "registry": "integration/animo-numerics/FIRST_REFERENCE_REPRESENTATION_SURFACE.json",
+    "jointly_observed_subjects": [],
+    "omitted_subjects": []
   },
   "representation_comparison": {
     "result_artifact": null,
