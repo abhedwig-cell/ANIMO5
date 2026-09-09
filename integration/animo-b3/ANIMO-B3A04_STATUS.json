@@ -25,8 +25,9 @@
     "process_flux_non_interference": "PASS_FOR_READINESS",
     "total_physical_mass_non_interference": "PASS_FOR_READINESS",
     "changed_output_whitelist": "PASS",
-    "natural_activation": "STRUCTURALLY_UNREACHABLE_IN_SUPPLIED_NATURAL_B1_BECAUSE_INITIAL_EX_IS_ZERO",
+    "ordinary_supplied_natural_start_activation": "STRUCTURALLY_UNREACHABLE_BECAUSE_INITIAL_EX_IS_ZERO",
     "dedicated_causal_activation": "PASS_PREP06_SYNTHETIC",
+    "model_produced_restart_format_state_activation": "PASS_CRANMAIS_REPLAY_NOT_CHRONOLOGICAL_SPLIT_RUN",
     "negative_controls": "PASS_FOR_READINESS",
     "applicable_SYNQ01_oracle": "NONE_REGISTERED",
     "valid_admission_route": "PENDING_BLOCKED",
@@ -45,6 +46,30 @@
       "baomTP.Out"
     ]
   },
+  "B3A04_model_produced_state_replay": {
+    "artifact": "integration/animo-b3/TCD026_MODEL_PRODUCED_STATE_REPLAY.json",
+    "producer_case": "CranMais",
+    "producer_initial_out_sha256": "254fa48dfd1349f6b0d2079b6dc0ca8ec16c35ea80bcd5b8eb464bd60b770a86",
+    "model_produced_Ex_total_kg_ha": 5989.6594,
+    "nonzero_layers": [1,2,3,4,5,6,7,8,9],
+    "legacy_first_period_fresh_om_deviation_kg_ha_printed": -5990.0,
+    "candidate_first_period_fresh_om_deviation_kg_ha_printed": -7.28e-12,
+    "legacy_begin_fresh_om_kg_ha_printed": 10943.275,
+    "candidate_begin_fresh_om_kg_ha_printed": 16932.935,
+    "printed_begin_store_increment_kg_ha": 5989.66,
+    "legacy_and_candidate_output_initial_byte_identical": true,
+    "scientific_surfaces_compared_after_known_volatile_normalization": 22,
+    "changed_surfaces": [
+      "ani_omMP.Bal",
+      "ani_omTP.Bal",
+      "baomMP.Out",
+      "baomTP.Out"
+    ],
+    "unexpected_changed_surfaces": [],
+    "chronological_split_run_claimed": false,
+    "historical_reference_claimed": false,
+    "independent_review_claimed": false
+  },
   "live_route_recheck": {
     "PREP02R_branch": "work/animo-prep02r-historical-reference-recovery",
     "PREP02R_head": "a2fda49871ee3c7104daf7e06cd8dffdac06b125",
@@ -56,17 +81,18 @@
   },
   "branch_scope_guard": {
     "compared_against_base": "383c7a83e84a578969f92113280dc715b7bdddb4",
-    "comparison_status": "PASS",
+    "comparison_status": "PASS_PENDING_FINAL_RECHECK_AFTER_EVIDENCE_APPEND",
     "production_files_changed": 0,
     "physical_source_files_changed": 0,
     "testcase_files_changed": 0,
-    "evidence_files_added": 6,
+    "evidence_files_added_or_updated": 7,
     "paths": [
       "docs/b3/TCD026_CLASS_A_ADMISSION_READINESS.md",
       "docs/b3/TCD026_SECOND_LINE_REVIEW_PACKET.md",
       "integration/animo-b3/ANIMO-B3A04_STATUS.json",
       "integration/animo-b3/TCD026_CLASS_A_READINESS.json",
       "integration/animo-b3/TCD026_EXPECTED_DIFFERENCE.json",
+      "integration/animo-b3/TCD026_MODEL_PRODUCED_STATE_REPLAY.json",
       "integration/animo-b3/TCD026_SECOND_LINE_REVIEW_REQUEST.json"
     ]
   },
@@ -87,21 +113,23 @@
     "production_migration": false
   },
   "deliverables": {
-    "docs/b3/TCD026_CLASS_A_ADMISSION_READINESS.md": "COMPLETE",
+    "docs/b3/TCD026_CLASS_A_ADMISSION_READINESS.md": "COMPLETE_UPDATE_PENDING",
     "integration/animo-b3/TCD026_EXPECTED_DIFFERENCE.json": "COMPLETE",
-    "integration/animo-b3/TCD026_CLASS_A_READINESS.json": "COMPLETE",
-    "docs/b3/TCD026_SECOND_LINE_REVIEW_PACKET.md": "COMPLETE",
-    "integration/animo-b3/TCD026_SECOND_LINE_REVIEW_REQUEST.json": "COMPLETE",
-    "integration/animo-b3/ANIMO-B3A04_STATUS.json": "COMPLETE"
+    "integration/animo-b3/TCD026_CLASS_A_READINESS.json": "COMPLETE_UPDATED_WITH_MODEL_STATE_REPLAY",
+    "integration/animo-b3/TCD026_MODEL_PRODUCED_STATE_REPLAY.json": "COMPLETE",
+    "docs/b3/TCD026_SECOND_LINE_REVIEW_PACKET.md": "COMPLETE_UPDATE_PENDING",
+    "integration/animo-b3/TCD026_SECOND_LINE_REVIEW_REQUEST.json": "COMPLETE_UPDATE_PENDING",
+    "integration/animo-b3/ANIMO-B3A04_STATUS.json": "IN_PROGRESS_PERSISTED_MODEL_STATE_REPLAY_RECONCILIATION"
   },
   "admitted": false,
   "production_patch_present": false,
   "production_migration_admitted": false,
   "next_required_conditions": [
+    "Update the narrative and second-line review handoff to include the model-produced state replay without misclassifying it as chronological split-run or B2 evidence.",
+    "Re-run the branch scope guard after those evidence-only updates.",
     "An independent second-line reviewer/workunit executes the prepared TCD-026 packet and records PASS, FAIL or INCOMPLETE.",
     "GOV02/PREP02R reaches a route state valid for B3 admission.",
-    "A separate B3 admission authority records any later corrected-legacy disposition fail-closed.",
-    "A model-produced restart activation may be added as stronger naturalistic path evidence, but is not claimed by this workunit."
+    "A separate B3 admission authority records any later corrected-legacy disposition fail-closed."
   ],
   "decision": "QUALIFIED_TCD026_CLASS_A_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING"
 }
