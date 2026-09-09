@@ -1,0 +1,16 @@
+{
+  "work_unit": "ANIMO-B3B03R",
+  "target_tcd": "TCD-024",
+  "review_branch": "review/animo-b3b03r-tcd024-independent-second-line",
+  "candidate_branch": "work/animo-b3b03-tcd024-slow-langmuir-index-readiness",
+  "candidate_head": "446f57f3aeff6e7db56ce473f0724bdb58cad94f",
+  "class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "review_status": "REQUEST_PREPARED_NOT_COMPLETED",
+  "independent_reviewer_required": true,
+  "independent_review_completed": false,
+  "B3_admitted": false,
+  "production_patch": false,
+  "production_migration_admitted": false,
+  "historical_prevalence": "UNKNOWN",
+  "packet": "docs/b3/TCD024_SECOND_LINE_REVIEW_PACKET.md"
+}
