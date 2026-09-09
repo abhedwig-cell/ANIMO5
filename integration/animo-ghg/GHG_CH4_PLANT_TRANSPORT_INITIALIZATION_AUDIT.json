@@ -1,0 +1,38 @@
+{
+  "work_unit": "ANIMO-GHG01",
+  "artifact": "GHG_CH4_PLANT_TRANSPORT_INITIALIZATION_AUDIT",
+  "status": "SOURCE_CONFIRMED_ACTIVE_CH4_PLANT_TRANSPORT_USE_BEFORE_DEFINITION_REFERENCE_UNEXERCISED",
+  "source_branch": "work/animo-ghg01-ghg-qualification",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_file_sha256": {
+    "ghg_ch4.for": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98"
+  },
+  "finding": {
+    "local_key": "GHG01-LCL-CH4-PLANT-GROWTH-TEMPERATURE-INDEX",
+    "classification": "SOURCE_CONFIRMED_USE_BEFORE_DEFINITION_IN_ACTIVE_CH4_PLANT_TRANSPORT_PATH_REFERENCE_UNEXERCISED",
+    "source_location": "ghg_ch4.for:68-73,110-120,122-164,179-181,232-250",
+    "local_index": "Ln",
+    "use_before_definition": "Te50=Te(Ln) occurs before the first source assignment to local Ln",
+    "growth_factor": "fGrow is derived from Te50 and Tegr",
+    "downstream_state": "K1plant(Ln)=Kpl*FvegCH4*fRoot*fGrow",
+    "downstream_fluxes": [
+      "plant-mediated CH4 transport through GHGtransport",
+      "QOxCH4Plt",
+      "QEmCH4Plt"
+    ],
+    "historical_runtime_magnitude": "REFERENCE_BLOCKED",
+    "compiler_storage_can_resolve_scientific_intent": false,
+    "intended_temperature_location": "UNRESOLVED",
+    "correction_admitted": false
+  },
+  "required_closure": [
+    "recover detailed ANIMO GHG derivation or source history defining the intended plant-growth temperature state",
+    "obtain revision-53-compatible activated GHG case",
+    "instrument first-read Ln, Te50, fGrow, K1plant, QOxCH4Plt and QEmCH4Plt under a qualified build contract",
+    "treat compiler/runtime diagnostics as B1 causal evidence only",
+    "qualify any correction against scientific state intent rather than merely removing the uninitialized read"
+  ],
+  "b3_admitted": false,
+  "production_migration_admitted": false,
+  "historical_revision53_behaviour_established": false
+}
