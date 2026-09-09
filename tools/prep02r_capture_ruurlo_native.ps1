@@ -109,7 +109,9 @@ for ($run = 1; $run -le 2; $run++) {
     $caseRoot = Join-Path $runRoot 'RuurloGrass'
     New-Item -ItemType Directory -Path $runRoot | Out-Null
     Copy-Item -LiteralPath $sourceCase -Destination $caseRoot -Recurse
-    Copy-Item -LiteralPath $ExecutablePath -Destination (Join-Path $runRoot 'animo41.exe')
+    $stagedExe = Join-Path $runRoot 'animo41.exe'
+    Copy-Item -LiteralPath $ExecutablePath -Destination $stagedExe
+    if ((Get-Sha256 $stagedExe) -ne $ExpectedExeSha256) { throw "Run $run executable staging hash mismatch" }
 
     $preInventory = Get-Inventory $caseRoot
     $preContentSet = Get-ContentSetSha256 $preInventory
@@ -121,7 +123,7 @@ for ($run = 1; $run -le 2; $run++) {
     $sw = [Diagnostics.Stopwatch]::StartNew()
     Push-Location $caseRoot
     try {
-        & (Join-Path $runRoot 'animo41.exe') 'Animo.ini' 1> $stdoutPath 2> $stderrPath
+        & $stagedExe 'Animo.ini' 1> $stdoutPath 2> $stderrPath
         $exitCode = $LASTEXITCODE
     } finally {
         Pop-Location
@@ -147,6 +149,10 @@ for ($run = 1; $run -le 2; $run++) {
         changed_or_new_case_files = $changed
         changed_or_new_content_set_sha256 = $changedContentSet
     }
+
+    # Preserve only hashes/provenance in the transferable capture bundle.
+    # The supplied executable itself is deliberately removed to avoid redistribution.
+    Remove-Item -LiteralPath $stagedExe -Force
 }
 
 $repeatClass = if ($runRecords[0].changed_or_new_content_set_sha256 -eq $runRecords[1].changed_or_new_content_set_sha256) {
@@ -166,6 +172,7 @@ $manifest = [ordered]@{
         filename = 'animo41.exe'
         sha256 = $exeHash
         classification = 'MODERN_NATIVE_REBUILD_NOT_HISTORICAL_REFERENCE'
+        bytes_in_transfer_bundle = $false
         native_execution_attempt_admitted = $true
         historical_reference_admitted = $false
     }
@@ -203,6 +210,9 @@ $manifest = [ordered]@{
 
 $manifestPath = Join-Path $CaptureRoot 'PREP02R_RUURLO_NATIVE_CAPTURE.json'
 $manifest | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $manifestPath -Encoding UTF8
+
+# The temporary extraction copy is not part of the transfer artifact.
+Remove-Item -LiteralPath $extractRoot -Recurse -Force
 
 $archivePath = "$CaptureRoot.zip"
 Compress-Archive -Path (Join-Path $CaptureRoot '*') -DestinationPath $archivePath
