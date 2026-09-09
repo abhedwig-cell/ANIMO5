@@ -2,7 +2,7 @@
   "workunit": "ANIMO-STATEQ01",
   "artifact": "TIME02 exact-time management cursor RC-R2 harness",
   "profile": "CORE_CNP_SUBSURFACE_ONLY",
-  "status": "PERSISTED_NOT_YET_EXECUTED",
+  "status": "PASS_SYNTHETIC_CANDIDATE_CONTRACT_NON_B2_CANONICAL_ADMISSION_UNCHANGED",
   "production_code": false,
   "physics_change": false,
   "canonical_state_admission": "NOT_ADMITTED",
@@ -24,10 +24,42 @@
     "accepted time alone is insufficient and time-only restore is rejected",
     "event exactly at split belongs to interval ending at split",
     "post-restore interval cannot replay the event consumed at split",
+    "just-before and just-after coordinates are distinguished exactly",
     "no floating tolerance participates in canonical event identity"
   ],
   "evidence_class": "SYNTHETIC_CANDIDATE_CONTRACT_NON_B2",
-  "tested": false,
-  "qualified": false,
-  "next": "execute persisted harness in GitHub Actions and record exact result without promoting canonical TIME or STATE"
+  "execution": {
+    "tested_head": "d84b15ce61e20666dbe7d194238c4a498a59df83",
+    "workflow": ".github/workflows/stateq01-management-cursor.yml",
+    "successful_run_id": 34334358185,
+    "successful_job_id": 102410148985,
+    "python": "CPython 3.12.14",
+    "tests_run": 10,
+    "tests_passed": 10,
+    "tests_failed": 0,
+    "conclusion": "success",
+    "comparison_mode": "EXACT_RATIONAL_NO_FLOAT_TOLERANCE"
+  },
+  "initial_infrastructure_run": {
+    "run_id": 34334285404,
+    "head": "ac97d19ae8a7df45418f88dfb6e5a697f1c1de70",
+    "conclusion": "failure",
+    "classification": "TEST_LOADER_INFRASTRUCTURE_FAILURE_BEFORE_CONTRACT_TEST_EXECUTION",
+    "cause": "importlib-loaded dataclass module was not registered in sys.modules under Python 3.12",
+    "correction_commit": "d84b15ce61e20666dbe7d194238c4a498a59df83",
+    "semantic_test_failure": false
+  },
+  "rc_r2_result": {
+    "status": "PASS_SYNTHETIC_CANDIDATE_CONTRACT_NON_B2",
+    "split_rule": "management event E=S is consumed by interval ending at S",
+    "checkpoint_cursor_after_split_event": "next explicit event identity",
+    "post_restore_replay": false,
+    "post_restore_skip": false,
+    "time_only_cursor_reconstruction_used": false,
+    "next_event_time_serialized_as_independent_owner": false
+  },
+  "tested": true,
+  "qualified": true,
+  "qualification_boundary": "This proves only STATEQ01/TIME02 candidate-contract cursor mechanics in a synthetic qualification harness. It does not execute revision-53 physics, does not provide B2 historical split-run evidence, and does not admit canonical TIME or STATE.",
+  "next": "retain RC-R2 as synthetic readiness evidence; execute behavioural split-run on an admitted/profile-clean executable case when available"
 }
