@@ -1,0 +1,245 @@
+{
+  "work_unit": "ANIMO-PREP10",
+  "subscope": "stable-DOM plough accumulator controlled causal activation",
+  "branch": "work/animo-prep10-stable-dom-plough-accumulators",
+  "decision": "QUALIFIED_GNU_DIAGNOSTIC_CAUSAL_ACCUMULATOR_CARRYOVER_CONFIRMED_CONTROLLED_INPUT_DESCENDANTS_HISTORICAL_INTEL_OPEN",
+  "evidence_class": "DIAGNOSTIC_CAUSALITY_EVIDENCE_NOT_REFERENCE",
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "addit_for_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d"
+  },
+  "authoring_execution_environment": {
+    "compiler": "GNU Fortran (Debian 14.2.0-19) 14.2.0",
+    "diagnostic_compile_flags": [
+      "-ffree-form",
+      "-ffree-line-length-none",
+      "-fallow-argument-mismatch",
+      "-std=legacy",
+      "-fdefault-real-8",
+      "-fdefault-double-8",
+      "-fno-automatic"
+    ],
+    "link_flags": ["-Wl,--build-id=none"],
+    "normal_completion_stop_code": 100,
+    "normalization_scope": "declared volatile creation/run timestamps and elapsed CPU seconds only; no scientific numerical tolerance was applied"
+  },
+  "diagnostic_builds": {
+    "baseline": {
+      "addit_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+      "executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+      "executable_size_bytes": 1327760
+    },
+    "observer": {
+      "addit_sha256": "b1e7b7f4b18a4052b375344091ad07b26e4f761e7a0dc4f96e9403d8a5857e98",
+      "executable_sha256": "d179aba23e0a0ef90b118437c2817a0c3a0ec6f227be555598ba393c31d7a501",
+      "executable_size_bytes": 1327760,
+      "semantic_change": "write SuStdiorma, SuStdiorni and SuStdiorpo immediately before and after the plough accumulation loop without assigning model state"
+    },
+    "event_reset_counterfactual": {
+      "addit_sha256": "a1993aa2d22c8f2c13fc169e78f9121587c8f14a122ef7d3f757cc24a58a54ae",
+      "executable_sha256": "f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db",
+      "executable_size_bytes": 1327760,
+      "semantic_change": "set the three stable-DOM plough accumulators to zero at the beginning of each plough event; diagnostic counterfactual only"
+    }
+  },
+  "input_transform_contract": {
+    "tool": "tools/make_prep10_sdomin_activation.py",
+    "indices_0_based": [0, 1, 2],
+    "replacement_values": {
+      "stable_dom": "1.000000E-04",
+      "stable_don": "1.000000E-05",
+      "stable_dop": "1.000000E-06"
+    },
+    "selected_parent_tokens_required_zero": true,
+    "byte_length_preserved": true,
+    "scientific_realism_claimed": false,
+    "purpose": "causal observability of accumulator carryover across repeated plough events"
+  },
+  "cases": [
+    {
+      "case": "CranMais",
+      "phosphorus_cycle": false,
+      "parent_initial_member": "ANIMO_testbank/CranMais/Input/Initial.inp",
+      "parent_initial_sha256": "8df3d78e830f344bc315d4dff2ae4c1ee4d6e959a07ba7d112e4105e6fbbb201",
+      "parent_initial_size_bytes": 6599,
+      "descendant_initial_sha256": "a5acb3333207d0ed65814abf4d9b097bd752830cbf27f212aface3f1810f25f2",
+      "descendant_initial_size_bytes": 6599,
+      "sdomin_lines_1_based": {
+        "stable_dom": 107,
+        "stable_don": 108,
+        "stable_dop": 109
+      },
+      "run_completion": {
+        "baseline": true,
+        "observer": true,
+        "event_reset_counterfactual": true
+      },
+      "observed_plough_events": 9,
+      "observer_carryover": {
+        "event_1_before": {
+          "SuStdiorma": 0.0,
+          "SuStdiorni": 0.0,
+          "SuStdiorpo": 0.0
+        },
+        "event_1_after": {
+          "SuStdiorma": 2.167093371709238e-08,
+          "SuStdiorni": 2.167093371709237e-09,
+          "SuStdiorpo": 0.0
+        },
+        "event_2_before": {
+          "SuStdiorma": 2.167093371709238e-08,
+          "SuStdiorni": 2.167093371709237e-09,
+          "SuStdiorpo": 0.0
+        },
+        "event_9_before": {
+          "SuStdiorma": 2.167104490795968e-08,
+          "SuStdiorni": 2.167104490795967e-09,
+          "SuStdiorpo": 0.0
+        },
+        "event_9_after": {
+          "SuStdiorma": 2.167104491074427e-08,
+          "SuStdiorni": 2.167104491074426e-09,
+          "SuStdiorpo": 0.0
+        },
+        "interpretation": "the event-1 accumulated C/N values are still present immediately before event 2 and remain carried across later events under the current GNU diagnostic contract"
+      },
+      "observer_nonintrusiveness": {
+        "generated_files": 23,
+        "raw_equal": 18,
+        "equal_after_declared_volatile_normalization": 5,
+        "scientific_or_structural_differences": 0
+      },
+      "baseline_vs_event_reset": {
+        "generated_files": 23,
+        "scientific_or_structural_differences": 12,
+        "signed_zero_format_only_differences": 4,
+        "scientific_or_structural_difference_paths": [
+          "Output/initial.out",
+          "banhMP.Out",
+          "banhTP.Out",
+          "baniMP.Out",
+          "baniTP.Out",
+          "banoMP.Out",
+          "banoTP.Out",
+          "baomMP.Out",
+          "baomTP.Out",
+          "discharge.out",
+          "miner-N.out",
+          "nitrate.out"
+        ],
+        "signed_zero_only_paths": [
+          "ani_nMP.Bal",
+          "ani_nTP.Bal",
+          "ani_omMP.Bal",
+          "ani_omTP.Bal"
+        ],
+        "baseline_generated_manifest_sha256": "602420ec5e568a600d9d84e0c3d65b0b240e2a20fa28172fcdf1f40f1bc9b7df",
+        "observer_generated_manifest_sha256": "773aad6e097024347b3133dccda1dad607c8ea80199ff57cb65911d73bb5238d",
+        "reset_generated_manifest_sha256": "47e397cbfe5efc258b70c76f7daf5a77da184b281fd304718a72920c4ff8acfd"
+      }
+    },
+    {
+      "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+      "phosphorus_cycle": true,
+      "parent_initial_member": "ANIMO_testbank/Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA/Input/INITIAL.INP",
+      "parent_initial_sha256": "f47dcbc7905f1d9d4b8b36def6e993e5f5ab31ebfd419b57a758e1f63c3e3937",
+      "parent_initial_size_bytes": 15728,
+      "descendant_initial_sha256": "7dddf3a6b5724866dc3dd06bf6a64941db15f4ccc0fd9abfa1c79490156a0550",
+      "descendant_initial_size_bytes": 15728,
+      "sdomin_lines_1_based": {
+        "stable_dom": 40,
+        "stable_don": 41,
+        "stable_dop": 42
+      },
+      "run_completion": {
+        "baseline": true,
+        "observer": true,
+        "event_reset_counterfactual": true
+      },
+      "observed_plough_events": 3,
+      "observer_carryover": {
+        "event_1_before": {
+          "SuStdiorma": 0.0,
+          "SuStdiorni": 0.0,
+          "SuStdiorpo": 0.0
+        },
+        "event_1_after": {
+          "SuStdiorma": 1.3089539571491048e-07,
+          "SuStdiorni": 1.3089539571491032e-08,
+          "SuStdiorpo": 1.3089539571491044e-09
+        },
+        "event_2_before": {
+          "SuStdiorma": 1.3089539571491048e-07,
+          "SuStdiorni": 1.3089539571491032e-08,
+          "SuStdiorpo": 1.3089539571491044e-09
+        },
+        "event_3_before": {
+          "SuStdiorma": 1.3109486624928062e-07,
+          "SuStdiorni": 1.3109486624928045e-08,
+          "SuStdiorpo": 1.3109486624928057e-09
+        },
+        "event_3_after": {
+          "SuStdiorma": 1.3168764610179191e-07,
+          "SuStdiorni": 1.3168764610179175e-08,
+          "SuStdiorpo": 1.3168764610179186e-09
+        },
+        "interpretation": "C, N and conditional P accumulator values created at event 1 are retained immediately before event 2 and continue to carry across event 3"
+      },
+      "observer_nonintrusiveness": {
+        "generated_files": 16,
+        "raw_equal": 13,
+        "equal_after_declared_volatile_normalization": 3,
+        "scientific_or_structural_differences": 0
+      },
+      "baseline_vs_event_reset": {
+        "generated_files": 16,
+        "scientific_or_structural_differences": 8,
+        "signed_zero_format_only_differences": 2,
+        "scientific_or_structural_difference_paths": [
+          "ani_nTP.Bal",
+          "banhTP.Out",
+          "baniTP.Out",
+          "banoTP.Out",
+          "baomTP.Out",
+          "bapoTP.Out",
+          "discharge.out",
+          "initial.out"
+        ],
+        "signed_zero_only_paths": [
+          "ani_omTP.Bal",
+          "ani_pTP.Bal"
+        ],
+        "baseline_generated_manifest_sha256": "f007793189bb0bf0fb93e3003f18d4b0ea8191c33add431547cd4d91d8ab52b6",
+        "observer_generated_manifest_sha256": "c57c9739ddc0ee8b47a3b26ead7af04f97363e0cbfdf78be034a6c7770cbe458",
+        "reset_generated_manifest_sha256": "5cb5aea3e7b9d262c9bfa6ef69e700f475969d42314f3f94e9afe02f13f876fa"
+      }
+    }
+  ],
+  "qualified_interpretation": {
+    "source_level_use_before_definition_still_confirmed": true,
+    "current_gnu_accumulator_carryover_caused_by_missing_event_reset_confirmed": true,
+    "controlled_input_descendants_discriminate_baseline_vs_event_reset": true,
+    "carbon_and_nitrogen_carryover_confirmed": true,
+    "conditional_phosphorus_carryover_confirmed_in_phosphorus_enabled_case": true,
+    "observer_nonintrusive_for_compared_generated_outputs": true,
+    "scientific_tolerance_defined": false,
+    "historical_intel_manifestation_qualified": false,
+    "general_real_world_magnitude_qualified": false,
+    "conclusion": "Under the current GNU diagnostic contract, the missing event-local reset is causally active when stable DOM/DON/DOP is deliberately made nonzero in B0-derived diagnostic input descendants. The first event creates nonzero accumulator values, those values are still present before the next plough event, and an explicit event-reset counterfactual changes generated model outputs. The phosphorus-enabled Zuiderzeeland descendant independently demonstrates the conditional P accumulator path. This is B1-style diagnostic causality evidence, not B2 historical-reference evidence and not scientific admission of the reset as corrected legacy."
+  },
+  "open_gates": [
+    "obtain and run a provenance-qualified historical Intel/native reference to determine historical manifestation",
+    "qualify realistic scientific magnitude and affected process/state boundaries separately from this activation experiment",
+    "submit any proposed reset correction to corrected-legacy/B3 admission governance before migration"
+  ],
+  "non_admissions": [
+    "controlled descendants are not B0",
+    "activation amplitudes are not asserted to be realistic field states",
+    "no historical Intel reference execution",
+    "no numerical acceptance tolerance",
+    "no reference-output admission",
+    "no corrected-legacy admission",
+    "no ANIMO5 production migration admission"
+  ]
+}
