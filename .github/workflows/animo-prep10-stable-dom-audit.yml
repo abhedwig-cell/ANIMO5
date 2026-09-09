@@ -12,11 +12,13 @@ on:
       - 'tools/probe_prep10_local_storage_semantics.py'
       - 'tools/make_prep10_addit_variants.py'
       - 'tools/make_prep10_causal_initial.py'
+      - 'tools/make_prep10_lwkm_p_causal_initial.py'
       - 'tests/prep10/**'
       - 'integration/animo-prep/ANIMO-PREP10_STATUS.json'
       - 'integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json'
       - 'integration/animo-prep/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json'
       - 'integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION.json'
+      - 'integration/animo-prep/PREP10_STABLE_DOP_CAUSAL_ACTIVATION.json'
       - 'docs/prep10/**'
       - '.github/workflows/animo-prep10-stable-dom-audit.yml'
 
@@ -38,6 +40,7 @@ jobs:
           python -m py_compile tools/probe_prep10_local_storage_semantics.py
           python -m py_compile tools/make_prep10_addit_variants.py
           python -m py_compile tools/make_prep10_causal_initial.py
+          python -m py_compile tools/make_prep10_lwkm_p_causal_initial.py
       - name: Run PREP10 scanner unit tests
         run: python -m unittest discover -s tests/prep10 -v
       - name: Validate machine-readable audit JSON
@@ -48,6 +51,9 @@ jobs:
           fi
           if [ -f integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION.json ]; then
             python -m json.tool integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION.json >/dev/null
+          fi
+          if [ -f integration/animo-prep/PREP10_STABLE_DOP_CAUSAL_ACTIVATION.json ]; then
+            python -m json.tool integration/animo-prep/PREP10_STABLE_DOP_CAUSAL_ACTIVATION.json >/dev/null
           fi
           if [ -f integration/animo-prep/ANIMO-PREP10_STATUS.json ]; then
             python -m json.tool integration/animo-prep/ANIMO-PREP10_STATUS.json >/dev/null
