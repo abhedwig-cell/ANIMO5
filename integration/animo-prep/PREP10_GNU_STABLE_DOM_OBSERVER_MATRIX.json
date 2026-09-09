@@ -1,0 +1,204 @@
+{
+  "work_unit": "ANIMO-PREP10",
+  "subscope": "stable-DOM plough accumulator dynamic diagnostic matrix",
+  "branch": "work/animo-prep10-stable-dom-plough-accumulators",
+  "decision": "FROZEN_PLOUGH_CASES_NONDISCRIMINATING_FOR_STABLE_DOM_ACCUMULATOR_RESET_UNDER_CURRENT_GNU_DIAGNOSTIC",
+  "evidence_class": "DIAGNOSTIC_OUTPUT_NOT_REFERENCE",
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "addit_for_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d"
+  },
+  "authoring_execution_environment": {
+    "compiler": "GNU Fortran (Debian 14.2.0-19) 14.2.0",
+    "diagnostic_compile_flags": [
+      "-ffree-form",
+      "-ffree-line-length-none",
+      "-fallow-argument-mismatch",
+      "-std=legacy",
+      "-fdefault-real-8",
+      "-fdefault-double-8",
+      "-fno-automatic"
+    ],
+    "link_flags": ["-Wl,--build-id=none"],
+    "build_tool": "tools/build_gnu_diagnostic.py",
+    "case_adapter": "tools/prepare_gnu_case.py",
+    "output_comparator": "tools/compare_legacy_output_trees.py",
+    "normalization_scope": "declared volatile creation/run timestamps and elapsed CPU seconds only; scientific numbers are not tolerance-filtered"
+  },
+  "diagnostic_builds": {
+    "baseline": {
+      "classification": "DIAGNOSTIC_NOT_REFERENCE",
+      "executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+      "executable_size_bytes": 1327760,
+      "source_change": "none beyond the existing documented GNU compatibility transform contract"
+    },
+    "observer": {
+      "classification": "DIAGNOSTIC_WORKING_COPY_TRANSFORM",
+      "variant_tool": "tools/make_prep10_addit_variants.py",
+      "addit_variant_sha256": "b1e7b7f4b18a4052b375344091ad07b26e4f761e7a0dc4f96e9403d8a5857e98",
+      "addit_variant_size_bytes": 35776,
+      "addit_variant_crlf_count": 737,
+      "executable_sha256": "d179aba23e0a0ef90b118437c2817a0c3a0ec6f227be555598ba393c31d7a501",
+      "executable_size_bytes": 1327760,
+      "semantic_change": "write the three accumulator values immediately before and after the plough accumulation loop; no model-state assignment added"
+    },
+    "event_reset_counterfactual": {
+      "classification": "DIAGNOSTIC_COUNTERFACTUAL_NOT_CORRECTED_LEGACY",
+      "variant_tool": "tools/make_prep10_addit_variants.py",
+      "addit_variant_sha256": "a1993aa2d22c8f2c13fc169e78f9121587c8f14a122ef7d3f757cc24a58a54ae",
+      "addit_variant_size_bytes": 35719,
+      "addit_variant_crlf_count": 738,
+      "executable_sha256": "f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db",
+      "executable_size_bytes": 1327760,
+      "semantic_change": "set SuStdiorma, SuStdiorni and conditionally SuStdiorpo to zero at the start of each plough event"
+    }
+  },
+  "run_contract": {
+    "executable_argument": "animo.ini",
+    "legacy_normal_completion_stop_code": 100,
+    "success_evidence": "legacy run text/message reports Successful completion of simulation; STOP 100 is treated as normal legacy termination rather than an error",
+    "frozen_testcase_modified": false,
+    "case_adapter_output_class": "DIAGNOSTIC_NOT_REFERENCE"
+  },
+  "observer_case_matrix": [
+    {
+      "case": "CranGrass",
+      "successful_completion": true,
+      "prep10_marker_lines": 0,
+      "observed_plough_events": 0
+    },
+    {
+      "case": "CranMais",
+      "successful_completion": true,
+      "prep10_marker_lines": 18,
+      "observed_plough_events": 9,
+      "all_before_values_zero": true,
+      "all_after_values_zero": true
+    },
+    {
+      "case": "GHGMais",
+      "successful_completion": false,
+      "process_return_code": 203,
+      "prep10_marker_lines": 0,
+      "excluded_from_successful_plough_matrix": true
+    },
+    {
+      "case": "GrassPeat",
+      "successful_completion": true,
+      "prep10_marker_lines": 0,
+      "observed_plough_events": 0
+    },
+    {
+      "case": "LWKM_gras_1040.2021.2045",
+      "successful_completion": true,
+      "prep10_marker_lines": 8,
+      "observed_plough_events": 4,
+      "all_before_values_zero": true,
+      "all_after_values_zero": true
+    },
+    {
+      "case": "Puitmijn_Cranendonck_60",
+      "successful_completion": true,
+      "prep10_marker_lines": 0,
+      "observed_plough_events": 0
+    },
+    {
+      "case": "RuurloGrass",
+      "successful_completion": true,
+      "prep10_marker_lines": 0,
+      "observed_plough_events": 0
+    },
+    {
+      "case": "STONE_akk_0006.2001.2015",
+      "successful_completion": true,
+      "prep10_marker_lines": 30,
+      "observed_plough_events": 15,
+      "all_before_values_zero": true,
+      "all_after_values_zero": true
+    },
+    {
+      "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+      "successful_completion": true,
+      "prep10_marker_lines": 6,
+      "observed_plough_events": 3,
+      "all_before_values_zero": true,
+      "all_after_values_zero": true
+    }
+  ],
+  "successful_plough_active_summary": {
+    "cases": [
+      "CranMais",
+      "LWKM_gras_1040.2021.2045",
+      "STONE_akk_0006.2001.2015",
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+    ],
+    "case_count": 4,
+    "total_observed_plough_events": 31,
+    "all_three_accumulators_zero_before_every_observed_event": true,
+    "all_three_accumulators_zero_after_every_observed_event": true
+  },
+  "observer_nonintrusiveness_comparison": [
+    {
+      "case": "CranMais",
+      "generated_files_compared": 22,
+      "different_after_declared_volatile_normalization": 0
+    },
+    {
+      "case": "LWKM_gras_1040.2021.2045",
+      "generated_files_compared": 72,
+      "different_after_declared_volatile_normalization": 0
+    },
+    {
+      "case": "STONE_akk_0006.2001.2015",
+      "generated_files_compared": 64,
+      "different_after_declared_volatile_normalization": 0
+    },
+    {
+      "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+      "generated_files_compared": 15,
+      "different_after_declared_volatile_normalization": 0
+    }
+  ],
+  "event_reset_counterfactual_comparison": [
+    {
+      "case": "CranMais",
+      "generated_files_compared": 22,
+      "different_after_declared_volatile_normalization": 0
+    },
+    {
+      "case": "LWKM_gras_1040.2021.2045",
+      "generated_files_compared": 72,
+      "different_after_declared_volatile_normalization": 0
+    },
+    {
+      "case": "STONE_akk_0006.2001.2015",
+      "generated_files_compared": 64,
+      "different_after_declared_volatile_normalization": 0
+    },
+    {
+      "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+      "generated_files_compared": 15,
+      "different_after_declared_volatile_normalization": 0
+    }
+  ],
+  "interpretation": {
+    "source_defect_disproved": false,
+    "frozen_testbank_exposes_nonzero_numerical_consequence_under_current_gnu_diagnostic": false,
+    "frozen_testbank_discriminates_baseline_vs_event_reset_under_current_gnu_diagnostic": false,
+    "conclusion": "The revision-53 use-before-definition finding remains a qualified source defect. In the four frozen cases that actually reached the plough branch successfully under the current GNU diagnostic, all observed stable-DOM/DON/DOP accumulator values were zero at all 31 plough events. The observer did not change normalized model outputs, and the explicit event-reset counterfactual also produced no normalized output difference. The supplied frozen testbank is therefore non-discriminating for this defect/fix under this diagnostic environment; this is evidence of diagnostic dormancy in these cases, not evidence that the source defect is harmless in general."
+  },
+  "open_gates": [
+    "create a controlled diagnostic input descendant with nonzero stable DOM/DON at a plough event and an explicit transform manifest",
+    "run baseline/observer/event-reset comparison on that controlled activation to establish causal numerical divergence or non-divergence",
+    "establish historical Intel manifestation if a provenance-qualified native build or build environment becomes available",
+    "admit any correction only through a separate corrected-legacy gate"
+  ],
+  "non_admissions": [
+    "no historical native reference execution",
+    "no reference-output admission",
+    "no claim of general harmlessness",
+    "no corrected-legacy admission",
+    "no ANIMO5 production migration admission"
+  ]
+}
