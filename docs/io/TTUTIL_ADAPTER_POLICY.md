@@ -4,7 +4,7 @@
 
 TTUTIL 4.27 is **not** a replacement parser for the revision-53 ANIMO text grammar.
 
-ANIMO5 shall keep two explicitly versioned representation paths:
+ANIMO5 keeps two explicitly versioned representation paths:
 
 1. `LegacyRevision53TextAdapter`
 2. `TTUTILNativeTextAdapter/v1`
@@ -13,18 +13,20 @@ Both may normalize to the same narrow configuration objects, but they do not sha
 
 ## LegacyRevision53TextAdapter
 
-This adapter owns historical revision-53 compatibility. For the DIRECT/`animo.ini` pilot it must preserve the observed source behaviour:
+This adapter owns historical revision-53 compatibility. For the DIRECT/`animo.ini` pilot it preserves the defined source behaviour:
 
 - first seven characters must be exactly `Animo40` or `Animo41`;
 - selector records are interpreted as fixed `A4,A80` records;
-- filename extraction follows legacy `Strip` behaviour, including the requirement for a closing double quote;
+- filename extraction follows legacy `Strip` semantics where those semantics are defined;
 - unknown four-character selectors are ignored in legacy mode, with provenance/diagnostic recording in the normalized dump;
 - duplicate known selectors use the last assignment;
-- `MES=` with an empty normalized filename is an immediate parser error;
+- a defined blank `MES=` result is an immediate parser error 1016;
 - absent `MES=` selects the legacy `message.Out` default;
 - `CHE=` records the phosphorus-file binding and the legacy `Flipo` presence flag;
 - `STE=` records the soil-temperature binding and activates the corresponding option;
 - required binding validation remains feature-dependent and occurs before physics.
+
+The adapter does not invent deterministic semantics for a revision-53 runtime-undefined edge. If a payload is empty or whitespace-only but quoted, `Strip` can leave `Istart=0` while `Ilast>0`, after which the source forms `Fname(0:Ilast)` even though `Fname` is declared with indices starting at 1. This is classified `FAIL_CLOSED_NOT_NORMALIZED`; it must not be rewritten as a guaranteed legacy error code or accepted value.
 
 The legacy adapter does not call TTUTIL merely to make the implementation look uniform. Doing so would risk widening historical syntax and would not improve the DIRECT grammar.
 
@@ -43,16 +45,20 @@ The native representation must:
 
 ## Equivalence claim
 
-A representation-only claim means that, for the same intended configuration, both adapters produce field-exact normalized objects with the same units, presence flags, defaults and feature bindings. It does **not** mean that the two input grammars accept the same malformed or ambiguous text.
+A representation-only claim means that, for the same intended configuration, both adapters produce field-exact normalized objects with the same presence flags, defaults and feature bindings. It does **not** mean that the two input grammars accept the same malformed or ambiguous text.
 
-For legacy input, historical accept/reject behaviour remains authoritative. For native TTUTIL input, the v1 schema contract is authoritative.
+For legacy input, defined historical behaviour remains authoritative. Runtime-undefined legacy behaviour is explicitly excluded and fails closed. For native TTUTIL input, the v1 schema contract is authoritative.
 
-## Admission sequence
+## Pilot A qualification
 
-1. qualify exact legacy DIRECT normalization and negative cases;
-2. qualify a native TTUTIL DIRECT fixture using the pinned official TTUTIL 4.27 source;
-3. compare normalized `LegacyInputBinding` dumps field by field;
-4. only then classify Pilot A as a representation-only adapter candidate;
-5. proceed to Pilot B MATERIAL only after Pilot A closes.
+Pilot A has completed the bounded admission sequence:
 
-No science semantics, binary hydrology representation, GHG lineage or production migration is admitted by this policy.
+1. legacy DIRECT normalization and negative cases are implemented and tested;
+2. the exact official TTUTIL 4.27 source is hash-pinned and materialized from the supplied SWAP 4.3.1 distribution;
+3. a native TTUTIL DIRECT probe is compiled against that source;
+4. all 10 natural `animo.ini` cases in the frozen testbank produce field-exact equivalent `LegacyInputBinding/v1` semantic projections;
+5. the undefined quoted-empty `Strip` edge is explicitly excluded rather than normalized.
+
+Pilot A is therefore classified `QUALIFIED_REPRESENTATION_ONLY_TTUTIL_ADAPTER_CANDIDATE` for the DIRECT routing object only.
+
+Pilot B MATERIAL may proceed as a separate bounded qualification. No science semantics, binary hydrology representation, GHG lineage or production migration is admitted by this policy.
