@@ -1,0 +1,28 @@
+{
+  "work_unit": "ANIMO-PREP11",
+  "record_type": "PROVENANCE_PRESERVING_REHOME_MANIFEST",
+  "source_branch": "work/animo-prep09-option-contract-audit",
+  "source_head": "0ae0e2180cf0569f8ea22319aa9ccb54ebca3210",
+  "source_tree": "463e8c00f2d69381a10ebff5c77e2c766ae4eca4",
+  "target_branch": "work/animo-prep11-option-contract-rehome",
+  "local_identity": "RG02-LCL-AERATION-OPTION2-ALIAS",
+  "canonical_tcd_id": null,
+  "copy_mode": "EXACT_BLOB_REUSE_NO_CONTENT_REWRITE",
+  "files": [
+    {"source_path": "docs/prep09/PARSER_OPTION_CONTRACT_AUDIT.md", "source_blob_sha": "cae4c55158e607b445bb0fe357e732c606706340", "target_path": "docs/prep11/source/PARSER_OPTION_CONTRACT_AUDIT.md"},
+    {"source_path": "docs/prep09/OPTION_CONTRACT_MATRIX.csv", "source_blob_sha": "dd39e8ef147ea1ea47e61040ddadf7a2d975c828", "target_path": "docs/prep11/source/OPTION_CONTRACT_MATRIX.csv"},
+    {"source_path": "docs/prep09/AERATION_OPTION2_LWKM_REPLICATION.md", "source_blob_sha": "b19907be614bd828371ca604046899366f4696e4", "target_path": "docs/prep11/source/AERATION_OPTION2_LWKM_REPLICATION.md"},
+    {"source_path": "integration/animo-prep/PREP09_OPTION_CONTRACT_AUDIT.json", "source_blob_sha": "ae7e855ae32fda61bc833b40af041ff53d788f5e", "target_path": "integration/animo-prep11/source/PREP09_OPTION_CONTRACT_AUDIT.json"},
+    {"source_path": "integration/animo-prep/PREP09_EXTENDED_OPTION_DISPATCH_AUDIT.json", "source_blob_sha": "d314548372435cd5c9dbed6026c706d5ef636b39", "target_path": "integration/animo-prep11/source/PREP09_EXTENDED_OPTION_DISPATCH_AUDIT.json"},
+    {"source_path": "tools/audit_option_contracts.py", "source_blob_sha": "a74a1c89d3a6e022a4fa16dc7655c9bd40ed30e1", "target_path": "tools/audit_option_contracts.py"},
+    {"source_path": "tools/audit_option_dispatch_contracts.py", "source_blob_sha": "7e51b399c09cbca2c5659644288e6a31f389e119", "target_path": "tools/audit_option_dispatch_contracts.py"},
+    {"source_path": "tests/test_option_dispatch_contracts.py", "source_blob_sha": "ed337dd9af71261afb822cd1ab8cf84f1cb648ea", "target_path": "tests/test_option_dispatch_contracts.py"}
+  ],
+  "excluded_source_paths": [
+    "integration/animo-prep/ANIMO-PREP09_STATUS.json",
+    "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
+  ],
+  "scientific_reinterpretation": false,
+  "requalification_claimed": false,
+  "production_migration_admitted": false
+}
