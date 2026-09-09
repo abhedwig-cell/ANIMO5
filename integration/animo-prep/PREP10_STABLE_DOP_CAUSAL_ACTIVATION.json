@@ -1,0 +1,125 @@
+{
+  "work_unit": "ANIMO-PREP10",
+  "subscope": "stable-DOP plough accumulator causal activation",
+  "decision": "QUALIFIED_CURRENT_GNU_CAUSAL_ACTIVATION_FOR_STABLE_DOP_PLOUGH_ACCUMULATOR_RESET_DEFECT",
+  "evidence_class": "DIAGNOSTIC_CAUSALITY_EXPERIMENT_NOT_REFERENCE",
+  "branch": "work/animo-prep10-stable-dom-causal-activation",
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "addit_member_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+    "testcase": "LWKM_gras_1040.2021.2045",
+    "initial_member": "ANIMO_testbank/LWKM_gras_1040.2021.2045/input/INITIAL.INP",
+    "initial_member_sha256": "0e6bb1d30c46c3aa8c7dcd077c06845afebcb6bd8b576c0df24e037382dfa483",
+    "general_member": "ANIMO_testbank/LWKM_gras_1040.2021.2045/input/GENERAL.INP",
+    "general_member_sha256": "e511f8a222f2e12959683429fb31008a420856aa476e578a1fe2e6b525914120",
+    "management_member": "ANIMO_testbank/LWKM_gras_1040.2021.2045/input/Management.inp",
+    "management_member_sha256": "bbfa83721eaaa7deb23d4d09f7f263964ba842a917ef6d4d58454e56f7309493"
+  },
+  "testcase_activation_basis": {
+    "phosphorus_cycle": 1,
+    "observed_plough_event_count": 4,
+    "observer_event_i": 6,
+    "observer_event_pl": 4,
+    "initial_sdomin_row_value_count": 31,
+    "frozen_initial_stable_dop_values_all_zero": true
+  },
+  "diagnostic_input_descendant": {
+    "tool": "tools/make_prep10_lwkm_p_causal_initial.py",
+    "parent_sha256": "0e6bb1d30c46c3aa8c7dcd077c06845afebcb6bd8b576c0df24e037382dfa483",
+    "output_sha256": "1efe16d5e8c3e685ad22168132da4ffa789c4f982e8c178640a97fff14fd4e48",
+    "size_bytes": 21248,
+    "changed_vector": "CoStdiorpo",
+    "changed_compartment_indices": [1, 2],
+    "value": 0.0001,
+    "stable_dom_changed": false,
+    "stable_don_changed": false,
+    "physical_representativeness_claimed": false,
+    "b0_modified": false
+  },
+  "diagnostic_builds": {
+    "compiler": "GNU Fortran (Debian 14.2.0-19) 14.2.0",
+    "relevant_contract_flag": "-fno-automatic",
+    "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "observer_executable_sha256": "d179aba23e0a0ef90b118437c2817a0c3a0ec6f227be555598ba393c31d7a501",
+    "reset_counterfactual_executable_sha256": "f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db"
+  },
+  "runs": {
+    "baseline_completed": true,
+    "observer_completed": true,
+    "reset_counterfactual_completed": true,
+    "legacy_success_exit_code": 100
+  },
+  "observer_carryover": {
+    "first_event_before": {
+      "SuStdiorma": 0.0,
+      "SuStdiorni": 0.0,
+      "SuStdiorpo": 0.0
+    },
+    "first_event_after": {
+      "SuStdiorma": 0.0,
+      "SuStdiorni": 0.0,
+      "SuStdiorpo": 3.0585643629036948e-12
+    },
+    "second_event_before": {
+      "SuStdiorma": 0.0,
+      "SuStdiorni": 0.0,
+      "SuStdiorpo": 3.0585643629036948e-12
+    },
+    "second_event_after_SuStdiorpo": 3.5563272381304947e-12,
+    "third_event_before_SuStdiorpo": 3.5563272381304947e-12,
+    "fourth_event_before_SuStdiorpo": 3.5563492869739857e-12,
+    "fourth_event_after_SuStdiorpo": 3.5767526546204863e-12,
+    "inter_event_carryover_observed": true
+  },
+  "observer_noninterference": {
+    "compared_generated_files": 55,
+    "raw_equal": 47,
+    "equal_after_declared_volatile_only_normalization": 8,
+    "scientifically_different": 0
+  },
+  "baseline_vs_reset_counterfactual": {
+    "compared_generated_files": 55,
+    "raw_equal": 36,
+    "equal_after_declared_volatile_only_normalization": 8,
+    "scientifically_different_count": 11,
+    "scientifically_different_files": [
+      "ani_pGP.Bal",
+      "ani_pRP.Bal",
+      "ani_pTP.Bal",
+      "bapoGP.Out",
+      "bapoRP.Out",
+      "bapoTP.Out",
+      "discharge.out",
+      "initial.out",
+      "transfopGP.Out",
+      "transfopRP.Out",
+      "transfopTP.Out"
+    ],
+    "baseline_initial_out_sha256": "6dc4a7edbd8dbc59063d387f60176ddc2a44dfed88c126a1484c9e847a97dc43",
+    "reset_initial_out_sha256": "d279d7527d769e60128254ebe8e582492d456bb9909a90b45bb67f49fe822684",
+    "numerical_tolerance_used_for_acceptance": false,
+    "declared_volatile_metadata_only_normalization": true
+  },
+  "final_restart_stable_dop": {
+    "sum_baseline": 1.7192446562370895e-08,
+    "sum_reset": 1.7191897420234135e-08,
+    "baseline_minus_reset": 5.491421367604038e-13,
+    "baseline_to_reset_ratio": 1.000031941915621,
+    "max_absolute_layer_difference": 1.5200000000006317e-13
+  },
+  "qualification": {
+    "source_level_use_before_definition_qualified": true,
+    "current_gnu_stable_dop_causal_effect_qualified": true,
+    "historical_intel_effect_qualified": false,
+    "reference_output_admitted": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false
+  },
+  "interpretation": "In a phosphorus-enabled, provenance-pinned frozen testcase descendant, a DOP-only diagnostic activation makes SuStdiorpo nonzero after the first plough event and the exact value is retained before the second event under the current GNU diagnostic contract. Event-reset and baseline runs then differ in phosphorus balance, phosphorus transformation, discharge and restart outputs after declared volatile-only normalization. This closes current-GNU causal activation for SuStdiorpo but does not establish historical Intel behavior or admit a correction.",
+  "open_gates": [
+    "repeat causal activation against a provenance-qualified historical native build if recovered",
+    "qualify a minimal event-reset correction as corrected legacy in a separate workunit",
+    "reconcile the correction candidate against conserved-state and transfer-ledger evidence before migration"
+  ]
+}
