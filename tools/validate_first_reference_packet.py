@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 
 
-PACKET_SCHEMA_VERSION = "1.0.0"
+PACKET_SCHEMA_VERSION = "1.1.0"
 FROZEN_TESTBANK_SHA256 = "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
 PINNED_B1_EXECUTABLE_SHA256 = "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e"
 PREFERRED_FIRST_CASE = "RuurloGrass"
@@ -34,6 +34,14 @@ FORMATTED_DECISIONS = {
     "MATCH_AFTER_DECLARED_VOLATILE_NORMALIZATION",
     "DIFFERENT_FAIL_CLOSED",
 }
+
+REPRESENTATION_DECISIONS = {
+    "MATCH_EXACT_REPRESENTATION_OBSERVATIONS",
+    "DIFFERENT_REPRESENTATION_FAIL_CLOSED",
+    "SCHEMA_OR_PROVENANCE_FAILURE",
+}
+
+REPRESENTATION_NOT_RUN = "NOT_RUN_NO_STRUCTURED_REPRESENTATION_CAPTURE"
 
 STRUCTURED_DECISIONS = {
     "MATCH_EXACT_COMPARISON_EVIDENCE",
@@ -78,9 +86,7 @@ def validate_packet(packet: dict[str, Any]) -> dict[str, Any]:
     warnings: list[str] = []
 
     if packet.get("packet_schema_version") != PACKET_SCHEMA_VERSION:
-        errors.append(
-            f"packet_schema_version must be {PACKET_SCHEMA_VERSION!r}"
-        )
+        errors.append(f"packet_schema_version must be {PACKET_SCHEMA_VERSION!r}")
 
     if packet.get("work_unit") != "ANIMO-NQ01":
         errors.append("work_unit must be 'ANIMO-NQ01'")
@@ -159,6 +165,25 @@ def validate_packet(packet: dict[str, Any]) -> dict[str, Any]:
         if observer.get("ordinary_output_non_interference_passed") is True:
             warnings.append("observer non-interference is marked passed although observer.used is false")
 
+    representation = _obj(packet.get("representation_comparison"))
+    representation_decision = representation.get("decision")
+    if representation_decision == REPRESENTATION_NOT_RUN:
+        if representation.get("result_artifact") not in {None, ""}:
+            errors.append(
+                "representation_comparison.result_artifact must be null when representation comparison was not run"
+            )
+        if observer_used is True:
+            errors.append(
+                "observer structured captures exist, so representation comparison must be run rather than marked unavailable"
+            )
+    elif representation_decision in REPRESENTATION_DECISIONS:
+        if not _nonempty_string(representation.get("result_artifact")):
+            errors.append(
+                "representation_comparison.result_artifact is required when representation comparison was run"
+            )
+    else:
+        errors.append("representation_comparison.decision is missing or unknown")
+
     structured = _obj(packet.get("structured_comparison"))
     if observer_used is True:
         if not _nonempty_string(structured.get("result_artifact")):
@@ -168,12 +193,17 @@ def validate_packet(packet: dict[str, Any]) -> dict[str, Any]:
     else:
         if structured.get("decision") not in {None, "NOT_RUN_NO_UNROUNDED_CAPTURE"}:
             errors.append("structured comparison cannot claim a result without observer/unrounded capture")
+        if structured.get("decision") == "NOT_RUN_NO_UNROUNDED_CAPTURE" and structured.get("result_artifact") not in {None, ""}:
+            errors.append(
+                "structured_comparison.result_artifact must be null when unrounded comparison was not run"
+            )
 
     policy = _obj(packet.get("policy_assertions"))
     required_false = (
         "global_numeric_tolerance_applied",
         "legacy_residual_used_as_tolerance",
         "rounded_report_treated_as_unrounded_oracle",
+        "representation_difference_auto_accepted",
         "b1_classified_as_independent_reference",
         "production_migration_admitted",
     )
@@ -202,6 +232,7 @@ def validate_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "errors": errors,
         "warnings": warnings,
         "comparison_may_still_be_fail_closed": True,
+        "representation_difference_auto_accepted": False,
         "numerical_equivalence_qualified_by_this_tool": False,
         "b2_reference_qualified_by_this_tool": False,
         "production_migration_admitted": False,
@@ -223,6 +254,7 @@ def main() -> int:
             "packet_complete": False,
             "errors": [str(exc)],
             "warnings": [],
+            "representation_difference_auto_accepted": False,
             "numerical_equivalence_qualified_by_this_tool": False,
             "b2_reference_qualified_by_this_tool": False,
             "production_migration_admitted": False,
