@@ -6,14 +6,32 @@
   "source_baseline_branch": "baseline/animo-prep01-05-evidence",
   "source_baseline_head": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
   "date": "2026-09-09",
-  "status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+  "status": "PARTIAL_RECOVERY_BUILD_CONTRACT_STRONGLY_IMPROVED_MODERN_NATIVE_REBUILD_IDENTIFIED_HISTORICAL_REFERENCE_STILL_BLOCKED",
   "source_identities": {
     "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
     "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
     "diagnostic_gnu_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e"
   },
-  "live_prep02_starting_decision": "BLOCKED_HISTORICAL_REFERENCE_ENVIRONMENT_REQUIRED",
+  "new_supplied_artifacts_20260909": {
+    "animo41_exe": {
+      "sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+      "size": 6778368,
+      "receipt_manifest": "integration/animo-prep/PREP02R_RECEIPT_ANIMO41_EXE_20260909.json",
+      "classification": "MODERN_NATIVE_REBUILD_NOT_HISTORICAL_REFERENCE"
+    },
+    "animo41_sln": {
+      "sha256": "206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2",
+      "size": 1233
+    },
+    "animo41_vfproj": {
+      "sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+      "size": 9829,
+      "receipt_manifest": "integration/animo-prep/PREP02R_RECEIPT_ANIMO41_BUILD_METADATA_20260909.json",
+      "classification": "STRONG_BUILD_CONTRACT_EVIDENCE_NOT_HISTORICAL_BEHAVIOURAL_REFERENCE"
+    },
+    "provenance_review": "integration/animo-prep/PREP02R_NATIVE_CANDIDATE_PROVENANCE_REVIEW_20260909.json"
+  },
   "state_dimensions": {
     "implemented": true,
     "persisted": true,
@@ -22,8 +40,8 @@
     "supplied_archives_rescanned": true,
     "public_acquisition_search_run": true,
     "official_distribution_route_deepened": true,
-    "source_lineage_keyword_heterogeneity_reconciled_into_request": true,
     "candidate_registry_persisted": true,
+    "candidate_registry_increment_persisted": true,
     "acquisition_packet_persisted": true,
     "external_request_draft_ready": true,
     "external_request_sent": false,
@@ -31,10 +49,12 @@
     "artifact_receipt_tool_implemented": true,
     "artifact_receipt_tool_persisted": true,
     "artifact_receipt_tool_local_unit_tests_passed": 4,
-    "artifact_receipt_tool_ci_run": false,
     "native_ruurlo_capture_contract_ready": true,
     "native_run_manifest_template_ready": true,
+    "project_build_metadata_obtained": true,
+    "native_candidate_executable_obtained": true,
     "historical_reference_artifact_obtained": false,
+    "native_candidate_execution_completed": false,
     "native_reference_run_completed": false,
     "native_vs_gnu_comparison_completed": false,
     "reference_qualified": false,
@@ -45,99 +65,101 @@
   "source_bound_release_identity": {
     "archive_self_identification_tag": "file:///V:/svn_Animo/tags/animo4.1.5",
     "archive_self_identification_revision": "53",
-    "compiler_string": "Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]",
+    "compiler_string_in_frozen_Version_inc": "Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]",
     "file_level_headurl_observation": "53_observed_HeadURL_values_point_to_tags/animo4.1.4",
     "canonical_homogeneous_svn_tag_provenance_proven": false,
-    "interpretation": "exact supplied archive bytes are pinned; archive self-identifies as 4.1.5 revision 53; canonical homogeneous SVN checkout identity remains unresolved"
+    "interpretation": "Exact supplied B0 archive bytes remain pinned and self-identify as 4.1.5 revision 53, but homogeneous canonical SVN checkout identity remains unresolved."
   },
-  "supplied_artifact_scan": {
-    "historical_animo_executable_found": false,
-    "historical_animo_dll_found": false,
-    "visual_fortran_project_found": false,
-    "visual_studio_solution_found": false,
-    "historical_build_log_found": false,
-    "runner_reference_to_animo41_exe_found": true,
-    "runner_reference_cases": [
-      "CranGrass",
-      "CranMais",
-      "GrassPeat",
-      "RuurloGrass"
+  "recovered_project_build_contract": {
+    "solution": "Visual Studio 2010 format 11.00",
+    "project_creator": "Intel Fortran",
+    "project_keyword": "Console Application - Converted from CVF",
+    "project_version": "11.0",
+    "platforms": ["Win32", "x64"],
+    "configurations": ["Debug|Win32", "Release|Win32", "Debug|x64", "Release|x64"],
+    "common_settings": {
+      "SourceFileFormat": "fileFormatFree",
+      "FPS4IOFormat": true,
+      "FPS4LDIOSpacing": true,
+      "FPS4General": true,
+      "RealKIND": "realKIND8",
+      "LocalVariableStorage": "localStorageSave",
+      "FloatingPointExceptionHandling": "fpe0",
+      "FloatingPointModel": "source",
+      "CallingConvention": "callConventionCVF",
+      "Traceback": true,
+      "BoundsCheck": true
+    },
+    "Debug_x64_specific": {
+      "LocalSavedScalarsZero": true,
+      "Optimization": "optimizeDisabled",
+      "DebugInformationFormat": "debugEnabled",
+      "RuntimeLibrary": "rtMultiThreadedDebug"
+    },
+    "Release_Win32_specific": {
+      "FPS4Logicals": true
+    },
+    "source_selection": {
+      "project_fortran_units": 58,
+      "all_selected_units_present_in_frozen_B0": true,
+      "frozen_B0_fortran_units": 60,
+      "B0_units_not_selected": ["input1_1.for", "Outselorg.for"],
+      "matches_PREP01_GNU_selected_units": true
+    },
+    "directly_resolves_prior_runtime_hypotheses": [
+      "8-byte default REAL project setting",
+      "SAVE/static local-variable storage"
     ],
-    "ghgmais_runner_identity": "ANIMO animo.ini",
-    "ghgmais_runner_relation_to_r53": "AMBIGUOUS_DISTINCT_OR_INCOMPLETE_LINEAGE_NOT_REFERENCE_FIRST_CASE",
-    "unattributed_restart_outputs": [
-      {
-        "path": "Puitmijn_Cranendonck_60/input/initial.out",
-        "sha256": "1dba5ba4b644dc8aecb34fed22995d6c550c0ea994cbb1af85866d26ae35e209",
-        "classification": "UNATTRIBUTED_OUTPUT_NOT_REFERENCE"
-      },
-      {
-        "path": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA/Input/initial.out",
-        "sha256": "f2983dd7648f98081ba66a88b5426808e387521e07e237e27c9fa408481807ed",
-        "classification": "UNATTRIBUTED_OUTPUT_NOT_REFERENCE"
-      }
+    "still_not_proven_from_project_alone": [
+      "exact historical compiler binary/version used for revision-53 release",
+      "exact DOUBLE PRECISION semantics implied by the project setting",
+      "that these project bytes are the original historical release project rather than a preserved/converted descendant"
     ]
   },
-  "public_search": {
-    "trustworthy_public_revision_53_executable_found": false,
-    "trustworthy_public_4_1_x_executable_found": false,
-    "trustworthy_public_visual_fortran_project_found": false,
-    "executable_linked_ruurlo_output_found": false,
-    "official_wur_executable_on_request_route_found": true,
-    "official_wur_current_agreement_version": "4.0",
-    "official_wur_current_agreement_establishes_4_1_x_distribution": false,
-    "official_wur_program_availability_contact": "Leo Renaud",
-    "official_wur_current_experts": [
-      "Piet Groenendijk",
-      "Leo Renaud"
-    ],
-    "leo_renaud_current_wur_profile_found": true,
-    "leo_renaud_current_profile_phone": "+31 317 486454",
-    "leo_renaud_historical_email": "leo.renaud@wur.nl",
-    "leo_renaud_historical_email_current_status_proven": false,
-    "piet_groenendijk_current_email_publicly_observed": "piet.groenendijk@wur.nl",
-    "official_general_terms_third_party_redistribution_requires_prior_written_permission": true,
-    "historical_4_0_20_binary_identity_documented": true,
-    "historical_4_0_20_binary_reference_admitted": false,
-    "animo4_1_process_description_citation_found": true,
-    "animo4_1_cited_report_recovered": false,
-    "negative_search_is_proof_of_nonexistence": false
+  "received_native_executable_review": {
+    "sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+    "format": "PE32+ Windows console x86-64",
+    "pe_timestamp_utc": "2026-05-27T13:41:28Z",
+    "linker_version": "14.35",
+    "pdb_path": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\x64\\Debug\\animo41.pdb",
+    "embedded_source_root": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\src_develop_for_20260519\\",
+    "embedded_runtime_catalog": "Intel Fortran RTL Message Catalog V20.0-001 Jan 10 2019",
+    "embedded_tag": "file:///V:/svn_Animo/tags/animo4.1.5",
+    "embedded_source_selection_matches_vfproj": true,
+    "exact_B0_source_byte_identity_proven": false,
+    "historical_release_binary": false,
+    "classification": "MODERN_NATIVE_REBUILD_NOT_HISTORICAL_REFERENCE",
+    "why_not_historical": "The 2026 PE timestamp, src_develop_for_20260519 source path, x64 Debug PDB path, modern linker signature and post-2011 Intel RTL evidence are incompatible with treating this file as the missing original 4.1-era release executable."
   },
-  "acquisition_policy": {
-    "generic_current_animo_request_sufficient": false,
-    "must_request_historical_4_1_x_explicitly": true,
-    "current_version_4_0_distribution_must_remain_distinct_lineage": true,
-    "requested_release_provenance_should_include_source_checkout_or_manifest": true,
-    "binary_public_redistribution_assumed_permitted": false,
-    "controlled_retention_preferred": true,
-    "external_send_requires_human_action": true
+  "reference_effect": {
+    "build_contract_recovery": "MATERIALLY_STRENGTHENED",
+    "historical_behavioural_truth": "STILL_MISSING",
+    "normal_B2_reference_available": false,
+    "historical_uncertainty_route_eligible": false,
+    "reason_historical_uncertainty_route_not_yet_eligible": "Historical acquisition effort is not closed: the prepared external archival request has still not been sent, and no provenance-qualified historical output or executable has been obtained.",
+    "candidate_native_rebuild_may_be_used_for_cross_runtime_diagnostics": true,
+    "candidate_native_rebuild_may_substitute_for_historical_B2": false
   },
-  "receipt_and_native_readiness": {
-    "receipt_evidence_class": "RECEIPT_MANIFEST_NOT_REFERENCE_ADMISSION",
-    "receipt_default_trust_classification": "UNASSESSED_RECEIVED_ARTIFACT",
-    "hash_before_execution_required": true,
-    "absolute_controlled_storage_path_omitted_from_public_manifest": true,
-    "native_first_case": "RuurloGrass",
+  "native_execution_readiness": {
+    "preferred_first_case": "RuurloGrass",
+    "received_executable_hash_must_be_rechecked_before_launch": true,
+    "silent_testcase_translation_allowed": false,
     "native_input_content_transformation_default": false,
     "native_repeat_determinism_required_when_practical": true,
     "formatted_tree_comparator_available": true,
     "global_tolerance_defined": false,
-    "observer_capture_blocked_until_ordinary_native_contract": true
+    "observer_capture_blocked_until_ordinary_native_contract": true,
+    "execution_completed_in_current_environment": false,
+    "execution_blocker": "Current controlled runtime is Linux and has no Windows/Wine execution layer. A pseudo-native transformed run is not accepted."
   },
-  "preferred_next_acquisition": [
-    "send or otherwise submit the prepared WUR archival request through a verified current institutional contact route",
-    "exact ANIMO 4.1.5 revision-53 animo41.exe with executable and source-checkout provenance",
-    "original Intel Visual Fortran project/build metadata or archived build environment",
-    "complete historical RuurloGrass output tied to a known executable",
-    "nearest provenance-qualified ANIMO 4.1.x executable as explicitly distinct lineage"
-  ],
-  "native_admission": {
-    "preferred_first_case": "RuurloGrass",
-    "silent_testcase_translation_allowed": false,
-    "rounded_report_output_sufficient_as_oracle": false,
-    "global_numerical_tolerance_defined": false,
-    "observer_only_unrounded_capture_admitted": false,
-    "observer_blocker": "requires provenance-qualified native build/reference contract first"
+  "public_and_external_acquisition": {
+    "trustworthy_public_revision_53_executable_found": false,
+    "trustworthy_public_4_1_x_executable_found": false,
+    "official_wur_executable_on_request_route_found": true,
+    "official_wur_current_agreement_version": "4.0",
+    "external_request_draft": "docs/prep02r/WUR_ARCHIVAL_REQUEST_DRAFT.md",
+    "external_request_sent": false,
+    "request_purpose_after_new_artifacts": "Historical executable/output provenance remains needed; compiler/project-option recovery is no longer the primary unknown."
   },
   "artifacts": {
     "work_unit_contract": "docs/prep02r/WORK_UNIT_CONTRACT.md",
@@ -147,11 +169,21 @@
     "wur_archival_request_draft": "docs/prep02r/WUR_ARCHIVAL_REQUEST_DRAFT.md",
     "reference_artifact_receipt_protocol": "docs/prep02r/REFERENCE_ARTIFACT_RECEIPT_PROTOCOL.md",
     "artifact_receipt_tool": "tools/capture_reference_artifact_manifest.py",
-    "artifact_receipt_tool_tests": "tests/test_capture_reference_artifact_manifest.py",
     "native_ruurlo_capture_contract": "docs/prep02r/NATIVE_RUURLO_CAPTURE_CONTRACT.md",
     "native_run_manifest_template": "integration/animo-prep/PREP02R_NATIVE_RUN_MANIFEST_TEMPLATE.json",
-    "candidate_registry": "integration/animo-prep/PREP02R_REFERENCE_CANDIDATES.json"
+    "candidate_registry": "integration/animo-prep/PREP02R_REFERENCE_CANDIDATES.json",
+    "candidate_registry_increment_20260909": "integration/animo-prep/PREP02R_REFERENCE_CANDIDATES_20260909_SUPPLEMENT.json",
+    "received_executable_receipt": "integration/animo-prep/PREP02R_RECEIPT_ANIMO41_EXE_20260909.json",
+    "received_build_metadata_receipt": "integration/animo-prep/PREP02R_RECEIPT_ANIMO41_BUILD_METADATA_20260909.json",
+    "received_native_provenance_review": "integration/animo-prep/PREP02R_NATIVE_CANDIDATE_PROVENANCE_REVIEW_20260909.json",
+    "received_native_review_document": "docs/prep02r/SUPPLIED_NATIVE_ARTIFACT_REVIEW_20260909.md"
   },
-  "decision": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
-  "why_blocked": "No independently trustworthy historical ANIMO 4.1.x executable, exact native build metadata, or executable-linked historical output has yet been obtained. Receipt and native-capture tooling are now ready, but readiness cannot replace independent historical evidence. The current official WUR agreement names Version 4.0, so the official request route does not itself close the historical 4.1.x independence gap. A targeted archival request is prepared but not sent. GNU determinism cannot close the independence gap either."
+  "preferred_next": [
+    "execute the received candidate on an unmodified frozen RuurloGrass execution copy in a genuine Windows runtime and capture a raw native output bundle under hash control",
+    "compare that modern native Intel-family result against the GNU diagnostic result as cross-runtime evidence without calling it historical truth",
+    "send or otherwise submit the prepared WUR archival request for provenance-qualified historical 4.1.x executable/output evidence",
+    "if an exact or near historical artifact is received, hash and classify it before execution and then reassess B2 admission"
+  ],
+  "decision": "PARTIAL_RECOVERY_BUILD_CONTRACT_STRONGLY_IMPROVED_MODERN_NATIVE_REBUILD_IDENTIFIED_HISTORICAL_REFERENCE_STILL_BLOCKED",
+  "why_blocked": "Useful project/build metadata and a native x64 Debug executable have now been obtained, but the executable is demonstrably a 2026 development rebuild rather than the missing historical release binary. The exact historical behavioural oracle remains absent, the received executable is not byte-linked to frozen B0 source content, no native Windows execution has yet been captured, and the external historical acquisition route has not been closed."
 }
