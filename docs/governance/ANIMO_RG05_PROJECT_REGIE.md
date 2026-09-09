@@ -43,6 +43,8 @@ RG05 explicitly forbids reclassifying this as `B2_REFERENCE_UNAVAILABLE_AFTER_RE
 
 `STATEQ02@cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6` qualifies exact continuous-versus-split checkpoint semantics for the restricted C/N/P external-crop profile. Five accepted boundaries pass exact bitwise comparison, with up to 833 post-restore records. GHG, macropores, TCD-016-C1, the nonzero TCD-040 path, unresolved internal-crop continuation state, active stable-DOM state and active PCLASS state remain excluded. Canonical STATE is not admitted.
 
+The later B3B04 qualification does not silently broaden STATEQ02. It qualifies an atomic restart identity for TCD-040 only and explicitly leaves whole-model checkpoint/canonical STATE admission false.
+
 `TIME02@b4d78cf32cb149cf50aa2b0a0fbefee571eee6b8` remains a qualified exact-rational civil-time candidate. Canonical TIME is not admitted.
 
 `MASSQ02@56a11b524d03c33ee4ab9b1cd13b2cd523d543fc` retains zero unexplained records in the current nonzero-residual evidence set and a qualified candidate typed-event projection. That projection is not an implemented/admitted runtime journal, so canonical MASS is not admitted.
@@ -102,9 +104,11 @@ Parent `TCD-042` remains `WAITING_ON_CHILDREN`. It cannot be admitted, composed 
 
 `B3B03` remains qualified TCD-024 readiness at `446f57f3aeff6e7db56ce473f0724bdb58cad94f`. A technical second-line workunit at `02ce1f49582d2b8cb794c3bfb9d674481a2eea1e` reconfirmed the atomic readiness with green validation, but it came from the same ChatGPT authoring context and explicitly does not satisfy reviewer independence. The separate handoff branch `review/animo-b3b03r-tcd024-independent-second-line@11db97289ffafdd6281b83f0aa0e96b544d6eb5a` remains `REQUEST_PREPARED_NOT_COMPLETED`.
 
-`B3B04@c87ed020a8b4a4685e76f701364b560c8f9c7aef` remains in progress for TCD-040. STATEQ02 split 282 remains only activation/rejection evidence and is not TCD-040 qualification.
+`B3B04@19e38ae0dfc211e88fe782b4b7d6e42b1b7f5865` is now qualified for TCD-040 atomic restart identity readiness, with workflow `34386371066` successful. It demonstrates exact raw IEEE754 identity for the corrected restore path across 1800 full-trace records, with first legacy post-restore divergence at step 283 phase 0 layer 0 for NH4, NO3, DOM, DON and DOP. The qualified contract is restart-only preservation/restoration of exact accepted owner bytes while retaining cold-start semantics.
 
-`IO02@302d53050d51dacfb68e1ea8d1cc7dd64e985cf3` is now qualified after the contract-test repair, with workflow `34385801249` successful. Its bounded decision is:
+This does not qualify STATEQ02 split 282 itself as TCD-040 evidence, does not qualify unconditional deletion of `Inicalc.for:125-129`, does not qualify a broad restart redesign, does not admit canonical STATE, does not make a historical-fidelity claim and does not admit TCD-040 into B3. The absence of an explicit cold-start/restart discriminator in the destructive legacy zeroing path remains an implementation constraint.
+
+`IO02@302d53050d51dacfb68e1ea8d1cc7dd64e985cf3` is qualified after the contract-test repair, with workflow `34385801249` successful. Its bounded decision is:
 
 `QUALIFIED_BOUNDED_REV53_GENERAL_NORMALIZED_REPRESENTATION_WITH_EXPLICIT_LEGACY_HAZARD_EXCLUSIONS`
 
@@ -118,8 +122,8 @@ The main queue consequences of the post-closeout reconciliation are:
 
 - TCD-024 remains `WAITING_ON_ROUTE_AND_REVIEW`; technical reconfirmation does not satisfy independence.
 - TCD-026 remains `WAITING_ON_ROUTE_AND_REVIEW`; the stronger model-produced state replay does not create B2 or admission.
-- TCD-040 remains `IN_PROGRESS_ADMISSION_READINESS`.
-- TCD-042 remains `WAITING_ON_CHILDREN`, but both child records now surface `Hetop=0` as an upstream domain blocker.
+- TCD-040 has moved from active readiness work to `WAITING_ON_ROUTE_AND_REVIEW` after B3B04 qualified the atomic restart identity only.
+- TCD-042 remains `WAITING_ON_CHILDREN`, but both child records surface `Hetop=0` as an upstream domain blocker.
 - `TCD-042-B1` is no longer represented as full qualified readiness. Only its positive-Hetop subdomain is qualified.
 - `TCD-042-E1` has a qualified and independently reconstructed positive-Hetop policy, plus qualified partial B3E01 readiness, but the full child domain is not ready.
 
@@ -133,7 +137,9 @@ Shared semantic owners require explicit serialization. B3B02 and B3E01 share par
 
 NQ02 and B3B03 share the phosphorus/sorption subsystem, but TCD-019 and TCD-024 cannot be composed for admission and one defect's improved residual cannot define the other's acceptance policy.
 
-IO02 is now a completed bounded representation qualification and may be used as input-contract evidence within its declared scope. Any production parser migration, broader `ModelConfiguration` integration, GHG GENERAL support or excluded legacy-hazard semantics remains a separate serialized qualification problem rather than an implicit extension of IO02.
+B3B04 has moved into the completed-readiness review pool. Its atomic restore identity may be reviewed in parallel with other readiness dossiers, but any later production restart implementation must serialize with canonical STATE/restart ownership. The qualified readiness is not permission to delete the legacy zeroing unconditionally.
+
+IO02 is a completed bounded representation qualification and may be used as input-contract evidence within its declared scope. Any production parser migration, broader `ModelConfiguration` integration, GHG GENERAL support or excluded legacy-hazard semantics remains a separate serialized qualification problem rather than an implicit extension of IO02.
 
 Canonical STATE, TIME, MASS and EX admissions are serialized owning-gate decisions. TCD-042 parent disposition is serialized after the shared domain and both child-specific gates close. B4 is serialized after every included scientific and canonical gate is admitted. Production remains downstream of B4.
 
@@ -158,7 +164,7 @@ The detailed rules are in `integration/animo-reg/RG05_PARALLELISM_MATRIX.csv`.
 ## Recommended next wave
 
 1. Open a dedicated bounded zero-thickness semantic qualification for `Hetop=0` that owns both TCD-042 children. Do not silently exclude zero or add a production guard.
-2. Complete B3B04 TCD-040 restore-identity qualification without broadening canonical STATE.
+2. Move TCD-040 into the common post-readiness route/review process. Preserve its cold-start/restart discriminator constraint and do not broaden canonical STATE from the B3B04 evidence.
 3. Continue genuinely independent B3 reviews for the qualified readiness dossiers. NQ03R is a passed numerical review, not a substitute for every later B3 disposition review.
 4. Define a formal atomic B3 disposition carrier for B3I05 child keys without reserving `TCD-043` and without collapsing a child into the parent.
 5. Execute the real external archival/provenance acquisition action if progress on G6U is desired.
