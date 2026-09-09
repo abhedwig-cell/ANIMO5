@@ -1,5 +1,5 @@
 {
-  "packet_schema_version": "1.0.0",
+  "packet_schema_version": "1.1.0",
   "work_unit": "ANIMO-NQ01",
   "testcase_id": "RuurloGrass",
   "inputs": {
@@ -36,6 +36,10 @@
     "b2_structured_capture": null,
     "b1_structured_capture": null
   },
+  "representation_comparison": {
+    "result_artifact": null,
+    "decision": "NOT_RUN_NO_STRUCTURED_REPRESENTATION_CAPTURE"
+  },
   "structured_comparison": {
     "result_artifact": null,
     "decision": "NOT_RUN_NO_UNROUNDED_CAPTURE"
@@ -44,6 +48,7 @@
     "global_numeric_tolerance_applied": false,
     "legacy_residual_used_as_tolerance": false,
     "rounded_report_treated_as_unrounded_oracle": false,
+    "representation_difference_auto_accepted": false,
     "b1_classified_as_independent_reference": false,
     "numerical_equivalence_qualified_by_packet": false,
     "production_migration_admitted": false
