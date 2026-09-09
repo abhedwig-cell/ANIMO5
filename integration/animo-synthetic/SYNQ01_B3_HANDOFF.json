@@ -18,6 +18,18 @@
     "new_tcd_allocation_required_for_synq01": false,
     "reason": "SYNQ01 qualifies evidence for existing TCD-015, TCD-017, TCD-018, TCD-019, TCD-023, TCD-024 and TCD-025; it does not identify a distinct new discrepancy phenomenon"
   },
+  "historical_reference_dependency": {
+    "work_unit": "ANIMO-PREP02R",
+    "branch": "work/animo-prep02r-historical-reference-recovery",
+    "head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+    "status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+    "external_request_sent": false,
+    "historical_reference_artifact_obtained": false,
+    "reference_qualified": false,
+    "historical_uncertainty_route_currently_eligible": false,
+    "effect_on_synq01_targets": "SYNQ01 evidence can improve readiness but cannot close the B2 route. Until PREP02R obtains and qualifies a historical reference, or completes a documented failed acquisition effort sufficient for the stricter historical-uncertainty route, corrected-legacy admission must remain fail-closed for targets whose class contract requires that route.",
+    "no_substitution_rule": "GNU B1 reproducibility and SYNQ01 synthetic oracles must not be substituted for independent B2 historical evidence."
+  },
   "evidence_routes": [
     {
       "tcd": "TCD-015",
@@ -74,6 +86,32 @@
       "usable_as": ["matrix/macropore internal-transfer cancellation identity", "direct-drain external-transfer ledger oracle"],
       "still_required": ["revision-53 macropore process qualification", "persistent state completeness", "active historical B2 case or valid uncertainty route", "state and flux non-interference evidence"],
       "admission_effect": "NONE"
+    }
+  ],
+  "downstream_readiness_order": [
+    {
+      "priority": 1,
+      "targets": ["TCD-017", "TCD-018"],
+      "reason": "Class A accounting-only candidates with closed synthetic control-volume identities. Their remaining work is dominated by non-interference, route evidence and independent review rather than unresolved numerical or physical-state policy.",
+      "action_now": "READINESS_WORK_MAY_PROCEED_BUT_ADMISSION_REMAINS_BLOCKED_BY_ROUTE"
+    },
+    {
+      "priority": 2,
+      "targets": ["TCD-015", "TCD-023", "TCD-024"],
+      "reason": "Local algebra, species or index defects have strong discriminating oracles but still need qualified path relevance, non-interference and historical-route handling.",
+      "action_now": "PREPARE_ATOMIC_READINESS_ONLY"
+    },
+    {
+      "priority": 3,
+      "targets": ["TCD-025"],
+      "reason": "Ledger oracle is strong, but macropore process theory and persistent restart state remain additional prerequisites.",
+      "action_now": "WAIT_FOR_PROCESS_AND_STATE_DEPENDENCIES_BEFORE_ADMISSION"
+    },
+    {
+      "priority": 4,
+      "targets": ["TCD-019"],
+      "reason": "Class E numerical-policy item. The narrow high-precision oracle is useful but cannot select fallback policy, convergence envelope or production tolerance.",
+      "action_now": "CONTINUE_SEPARATE_NUMERICAL_QUALIFICATION"
     }
   ],
   "temporal_oracles": {
