@@ -1,0 +1,32 @@
+--- ghgtranssub_reference.for
++++ ghgtranssub_explicit_context.for
+@@ -10,7 +10,8 @@
+       Subroutine GHGtranssub
+      &(Itask,Ln1,Nl,FlTopUns,C_atm,C0,DfcfAv,Flaiib,Flaiio,Flaiou,
+      & Flib,Flio,Flou,He,HeAv,K1plant,Mofr,Mofro,Mofrsa,Mofrt,
+-     & Reki,Reko,ReBu0,ReBuAv,ReBuT,St,  AvC,Rsc)
++     & Reki,Reko,ReBu0,ReBuAv,ReBuT,St,P1,P2,Y1,Y2,Y3,Hv,Hv2,
++     & Hvnil,AlfBuAv1,AvC,Rsc)
+@@ -90,18 +91,20 @@
+       Integer :: Ierror,Iflsol, Ln
+ 
+-      real :: AlfBu01,AlfBuAv1,AlfBuAv2,AlfBudl
++      real :: AlfBu01,AlfBuAv2,AlfBudl
++      Real :: AlfBuAv1
+ 
+       Real :: A(0:Manl),A1,A2,A1ar(0:Manl),A2ar(0:Manl)
+       Real :: Avc(0:Manl),AvChlp1,AvChlp2,B(0:Manl),B1,B2,C(0:Manl)
+       Real :: C_atm,C0(0:Manl),Dble_trunc,DfcfAv(0:Manl),Flaiib(0:Manl)
+       Real :: Flaiio(0:Manl),Flaiou(0:Manl),Flib(0:Manl+1),Flio(0:Manl)
+-      Real :: Flou(0:Manl),He(0:Manl),HeAv(0:Manl),Hv(0:Manl)
+-      Real :: Hv1,Hv2(0:Manl),K1plant(0:Manl),Mofr(0:Manl),Mofrdl
+-      Real :: Mofro(0:Manl),Mofrsa(0:Manl),Mofrt(0:Manl),One,P1(0:Manl),P2(0:Manl)
++      Real :: Flou(0:Manl),He(0:Manl),HeAv(0:Manl)
++      Real :: Hv1,K1plant(0:Manl),Mofr(0:Manl),Mofrdl
++      Real :: Mofro(0:Manl),Mofrsa(0:Manl),Mofrt(0:Manl),One
+       Real :: R(0:Manl),ReBu0(0:Manl),ReBuAv(0:Manl),ReBuDl,ReBuT(0:Manl)
+       Real :: Reki(0:Manl),Reko(0:Manl),Rsc(0:Manl),Small,St,U(0:Manl)
+-      Real :: Y1(0:Manl),Y2(0:Manl),Y3(0:Manl),Zero
++      Real :: P1(0:Manl),P2(0:Manl),Y1(0:Manl),Y2(0:Manl),Y3(0:Manl)
++      Real :: Hv(0:Manl),Hv2(0:Manl),Zero
+       Logical :: Hv1nil,Hvnil(0:Manl)
