@@ -1,0 +1,44 @@
+{
+  "work_unit": "ANIMO-TS01",
+  "audit_type": "SCHEDULER_SENTINEL_SPEC_STRUCTURAL_AUDIT",
+  "result": "PASS",
+  "rows": 26,
+  "checks": [
+    {
+      "check": "exact_sentinel_coverage",
+      "result": "PASS",
+      "rows": 26
+    },
+    {
+      "check": "tier_and_b2_consistency",
+      "result": "PASS"
+    },
+    {
+      "check": "critical_temporal_rules_locked",
+      "result": "PASS"
+    },
+    {
+      "check": "reference_tests_remain_blocked",
+      "result": "PASS",
+      "sentinels": [
+        "TS01-S21",
+        "TS01-S22",
+        "TS01-S23",
+        "TS01-S24",
+        "TS01-S25"
+      ]
+    },
+    {
+      "check": "no_scientific_admission_claim",
+      "result": "PASS"
+    }
+  ],
+  "matrix_git_blob_sha": "f214de825d5fa33252d817d55b73881c592cb532",
+  "audit_tool_git_blob_sha": "f98d5b73107a5094ca049430cbbcde0e4f32c82a",
+  "execution": "equivalent fail-closed checks executed locally against connector-fetched persisted matrix content after the specification and audit tool had been persisted",
+  "repository_tool_direct_checkout_execution": false,
+  "historical_reference_qualified": false,
+  "canonical_time_admitted": false,
+  "production_implementation": false,
+  "b2_evidence_generated": false
+}
