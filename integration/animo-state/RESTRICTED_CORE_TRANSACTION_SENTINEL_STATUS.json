@@ -1,0 +1,15 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "artifact": "restricted-core qualification transaction harness",
+  "profile": "CORE_CNP_SUBSURFACE_ONLY",
+  "status": "PERSISTED_NOT_YET_EXECUTED",
+  "production_code": false,
+  "physics_change": false,
+  "canonical_state_admission": "NOT_ADMITTED",
+  "purpose": "qualification-only ordering harness for integrated RC-R10 and RC-R11 fail-before-mutate sentinels",
+  "harness_module": "tools/stateq01/restricted_core_transaction_harness.py",
+  "test_module": "tests/stateq01/test_restricted_core_transaction_harness.py",
+  "tested": false,
+  "qualified": false,
+  "next": "execute harness tests after persistence; do not treat a harness pass as full ANIMO split-run admission"
+}
