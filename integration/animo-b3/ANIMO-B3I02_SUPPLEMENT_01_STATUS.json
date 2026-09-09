@@ -1,56 +1,31 @@
 {
   "work_unit": "ANIMO-B3I02-SUPPLEMENT-01",
-  "title": "TCD-042 Canonical Register Append Qualification",
-  "repository": "abhedwig-cell/ANIMO5",
+  "status": "SUPERSEDED_BY_B3I03_TCD042_CANONICAL_REGISTRATION_DO_NOT_MERGE",
   "branch": "work/animo-b3i02-sup01-tcd042-canonical-append",
-  "base": {
-    "work_unit": "ANIMO-B3I02",
-    "head": "4da9ec0af5ccb902e456c861a548afa00bd43c2a",
-    "status": "QUALIFIED_INCREMENTAL_CANONICAL_DISCREPANCY_INTAKE_NO_ADMISSIONS"
+  "superseded": true,
+  "authoritative_b3i02_boundary": {
+    "branch": "work/animo-b3i02-post-b3i01-incremental-intake",
+    "head": "c1a69c00a02aa0e32ca60580c3d0ebee96442c17",
+    "status": "QUALIFIED_INCREMENTAL_CANONICAL_DISCREPANCY_INTAKE_NO_ADMISSIONS",
+    "new_tcd_reservations": 0
   },
-  "status": "IN_PROGRESS_REGISTER_APPENDED_EXACT_BYTE_TRANSFORM_PENDING_CLOSEOUT",
-  "implemented": true,
-  "persisted": true,
-  "tested": false,
-  "qualified": false,
-  "work_unit_complete": false,
-  "target": "TCD-042",
-  "source_finding": {
-    "work_unit": "ANIMO-MASSQ02",
-    "head": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
-    "record": "R016",
-    "crosswalk_key": "MASSQ01-LCL-N006"
+  "authoritative_owner": {
+    "intake_branch": "work/animo-b3i03-massq02-causal-intake",
+    "intake_head": "6a015587807130b4ce12c9f1518c1ddac4e5d624",
+    "intake_status": "QUALIFIED_POST_MASSQ02_INCREMENTAL_CAUSAL_INTAKE_TCD042_RESERVED_NO_ADMISSIONS",
+    "canonical_append_branch": "work/animo-b3i03-canonical-register-append",
+    "canonical_append_head": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "registered_id": "TCD-042",
+    "scientific_followup_branch": "work/animo-ubq01-tcd042-upper-boundary-transaction"
   },
-  "atomicity": "ONE_ZERO_TOP_THROUGHFLOW_EXTERNAL_N_INPUT_STATE_TRANSFER_SEAM_MULTI_SPECIES_SCOPE",
-  "collision_scan": {
-    "authoritative_register_tail_before": "TCD-041",
-    "authoritative_register_blob_before": "c057fdc5a9b2199dde07a19f0d70213cfaab235b",
-    "tcd_042_present_before": false,
-    "branch_name_collision_for_tcd042": false,
-    "other_pull_request_collision_for_tcd042": false,
-    "current_b3i02_pr_23_reservation_is_expected": true,
-    "fresh_recheck_performed_immediately_before_append": true
-  },
-  "prepared_row": "integration/animo-b3/B3I02_REGISTER_APPEND_SUPPLEMENT_01_ROWS.csv",
-  "append_execution": {
-    "canonical_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
-    "append_commit": "73b7431e32116e99924a38b3d94a5f17c901f0b6",
-    "register_blob_after": "2039cadc8e0e6d463ca1a82e8453afb11b7b4f8e",
-    "tail_after": "TCD-042",
-    "semantic_rows_added": 1,
-    "existing_content_bytes_preserved_as_prefix": true,
-    "terminal_newline_normalized": true,
-    "git_compare_additions": 2,
-    "git_compare_deletions": 1,
-    "git_numstat_reason": "The B3I02 base register ends at TCD-041 without a final newline. Appending a valid CSV row therefore appears to Git as replacement of the unterminated tail plus two added terminated lines. The validator requires the current register bytes to equal the exact base bytes plus one delimiter LF plus the frozen TCD-042 row plus final LF.",
-    "exact_byte_transform_validation": "PENDING_CI"
-  },
-  "admission_boundary": {
+  "this_branch_cleanup": {
+    "canonical_register_mutation_reverted": true,
+    "prepared_tcd042_row_withdrawn": true,
+    "append_validator_retired": true,
+    "append_workflow_retired": true,
     "scientific_admission": false,
     "corrected_legacy_admission": false,
-    "b3_baseline_established": false,
-    "production_migration_admitted": false,
-    "correction_semantics_selected": false
+    "production_migration_admitted": false
   },
-  "next_step": "run fail-closed exact-byte validator then persist append reconciliation and final no-admission closeout"
+  "reason": "B3I03 independently completed the MASSQ02 causal intake and canonical TCD-042 registration. The B3I03 registration is authoritative. This redundant B3I02 supplement is retained only as an explicit tombstone and must not be merged or used as a TCD ownership source."
 }
