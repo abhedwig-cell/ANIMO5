@@ -1,0 +1,118 @@
+{
+  "work_unit": "ANIMO-B3A04",
+  "target_tcd": "TCD-026",
+  "evidence_type": "MODEL_PRODUCED_RESTART_FORMAT_STATE_REPLAY_NOT_CHRONOLOGICAL_SPLIT_RUN",
+  "purpose": "Strengthen path activation without manually inventing exudate mass by feeding model-produced INITIAL.OUT state back through the ordinary INITIAL.INP parser and comparing legacy against the atomic Bfom-only diagnostic observation.",
+  "scope_boundary": {
+    "historical_B2_reference": false,
+    "chronological_restart_continuation": false,
+    "split_run_identity": false,
+    "production_patch": false,
+    "physical_state_patch": false,
+    "initialization_physics_change": false,
+    "admission": false
+  },
+  "frozen_identities": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "diagnostic_build": {
+    "gnu_fortran": "14.2.0",
+    "legacy_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "matches_PREP01_deterministic_GNU_diagnostic_hash": true,
+    "candidate_diagnostic_executable_sha256": "b438ba7eae77bb0a7e9030f74388f4d77541ea4a9d3a438197a0d0d607c64785",
+    "candidate_only_source_change": "Outbal_Init.for adds Bfom(Inip_x,Ly) = Bfom(Inip_x,Ly) + Ex(Ln) * P",
+    "candidate_class": "TEMPORARY_LEDGER_ONLY_DIAGNOSTIC_NOT_REFERENCE"
+  },
+  "producer_run": {
+    "case": "CranMais",
+    "prepared_from_frozen_testbank": true,
+    "runtime_adaptations": [
+      "Windows path separators changed only in execution copy",
+      "case-insensitive file aliases materialized in execution copy",
+      "quoted PrintBalLabel payloads unquoted without changing labels",
+      "PowerStation sequential-unformatted record framing converted while preserving logical payload bytes"
+    ],
+    "completion": "SUCCESSFUL_COMPLETION",
+    "model_produced_initial_out_sha256": "254fa48dfd1349f6b0d2079b6dc0ca8ec16c35ea80bcd5b8eb464bd60b770a86",
+    "orgexu_kg_m2_layers_1_to_22": [
+      0.1380727,
+      0.1324993,
+      0.09261948,
+      0.07449781,
+      0.05737335,
+      0.0423799,
+      0.04709068,
+      0.01335932,
+      0.0010734,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "nonzero_orgexu_layers": [1,2,3,4,5,6,7,8,9],
+    "model_produced_orgexu_total_kg_ha": 5989.6594
+  },
+  "state_replay": {
+    "input_method": "Exact model-produced INITIAL.OUT bytes copied to execution-copy Input/initial.inp",
+    "legacy_replay_initial_input_sha256": "254fa48dfd1349f6b0d2079b6dc0ca8ec16c35ea80bcd5b8eb464bd60b770a86",
+    "candidate_replay_initial_input_sha256": "254fa48dfd1349f6b0d2079b6dc0ca8ec16c35ea80bcd5b8eb464bd60b770a86",
+    "same_initial_state_bytes_for_legacy_and_candidate": true,
+    "legacy_completion": "SUCCESSFUL_COMPLETION",
+    "candidate_completion": "SUCCESSFUL_COMPLETION",
+    "caveat": "The hydrology/management chronology is replayed from the original case start. This is therefore parser/state-path activation using model-produced restart-format state, not a true accepted-boundary chronological continuation."
+  },
+  "first_period_results": {
+    "profiles": ["MP","TP"],
+    "legacy": {
+      "begin_fresh_om_kg_ha_printed": 10943.275,
+      "end_fresh_om_kg_ha_printed": 16253.814,
+      "fresh_om_period_deviation_kg_ha_printed": -5990.0,
+      "fresh_om_cumulative_deviation_kg_ha_printed": -5990.0,
+      "interpretation": "Printed legacy deviation is the rounded form of the omitted 5989.6594 kg/ha model-produced initial Ex store."
+    },
+    "candidate": {
+      "begin_fresh_om_kg_ha_printed": 16932.935,
+      "end_fresh_om_kg_ha_printed": 16253.814,
+      "fresh_om_period_deviation_kg_ha_printed": -7.28e-12,
+      "fresh_om_cumulative_deviation_kg_ha_printed": -7.28e-12,
+      "printed_begin_store_increment_kg_ha": 5989.66,
+      "interpretation": "Beginning Bfom gains only the model-produced Ex store; physical end state is unchanged. Difference between 5989.66 printed increment and 5989.6594 exact replay input is report rounding, not a tolerance."
+    }
+  },
+  "non_interference": {
+    "output_initial_sha256_legacy": "f1a3d8f600675d4f6ac3da4039b3625f416d7bbfb699152a092f4f2c4df3bc9b",
+    "output_initial_sha256_candidate": "f1a3d8f600675d4f6ac3da4039b3625f416d7bbfb699152a092f4f2c4df3bc9b",
+    "output_initial_byte_identical": true,
+    "scientific_surfaces_compared_after_only_known_timestamp_cpu_normalization": 22,
+    "unchanged_surfaces": 18,
+    "changed_surfaces": [
+      "ani_omMP.Bal",
+      "ani_omTP.Bal",
+      "baomMP.Out",
+      "baomTP.Out"
+    ],
+    "unexpected_changed_surfaces": [],
+    "physical_state_non_interference": "PASS_FOR_READINESS",
+    "process_flux_non_interference": "PASS_FOR_READINESS",
+    "total_physical_mass_non_interference": "PASS_FOR_READINESS"
+  },
+  "negative_control": {
+    "ordinary_CranMais_start_initial_orgexu": "ALL_ZERO_IN_FROZEN_INPUT",
+    "ordinary_CranMais_first_period_fresh_om_deviation_kg_ha_printed": -1.46e-11,
+    "candidate_term_when_initial_Ex_zero": "EXACT_ZERO",
+    "interpretation": "Ordinary zero-Ex start does not expose TCD-026; the model-produced state replay does."
+  },
+  "result": "PASS_MODEL_PRODUCED_RESTART_FORMAT_STATE_ACTIVATION_FOR_TCD026_CLASS_A_READINESS",
+  "what_this_adds": "Demonstrates that ANIMO itself can produce a nonzero persisted Rsex/EX restart-format state which, when consumed as initial state, activates exactly the TCD-026 ledger omission. The atomic Bfom-only diagnostic removes that omission without changing restart output bytes or non-whitelisted scientific outputs.",
+  "what_this_does_not_add": "No historical reference, no chronological split-run qualification, no independent second-line review, no corrected-legacy admission and no production migration."
+}
