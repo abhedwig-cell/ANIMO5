@@ -1,0 +1,19 @@
+{
+  "work_unit": "ANIMO-PREP10",
+  "purpose": "reserve globally unique discrepancy identifiers on the canonical lineage after the PREP08/PREP09 collision reconciliation",
+  "canonical_register_tail_observed": "TCD-031",
+  "reservations": [
+    {
+      "id": "TCD-032",
+      "finding": "persistent macropore solute restart writer omission",
+      "classification": "SOURCE_CONFIRMED_PERSISTENT_MACROPORE_SOLUTE_RESTART_WRITER_OMISSION_TESTBANK_UNEXERCISED",
+      "evidence": [
+        "docs/prep10/MACROPORE_SOLUTE_RESTART_WRITER_OMISSION.md",
+        "integration/animo-prep/PREP10_MACROPORE_RESTART_WRITER_OMISSION.json"
+      ]
+    }
+  ],
+  "central_register_updated_for_TCD032": false,
+  "reservation_rule": "new PREP10 findings must use the next unreserved canonical identifier; sibling branch-local IDs are not canonical until reconciled",
+  "production_migration_admitted": false
+}
