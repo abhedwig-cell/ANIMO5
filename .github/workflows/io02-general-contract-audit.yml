@@ -9,8 +9,10 @@ on:
       - 'docs/io/ANIMO-IO02*'
       - 'docs/io/GENERAL_INPUT_CONTRACT.md'
       - 'integration/animo-io/ANIMO-IO02-QUALIFICATION.json'
+      - 'integration/animo-io/GENERAL-REV53-GRAMMAR.json'
       - 'tools/io02_general_contract.py'
       - 'tools/qualify_io02_general.py'
+      - 'tools/audit_io02_qualification.py'
       - 'tests/io/test_io02_general_contract.py'
       - '.github/workflows/io02-general-contract-audit.yml'
 
@@ -26,5 +28,7 @@ jobs:
           python -m py_compile
           tools/io02_general_contract.py
           tools/qualify_io02_general.py
+          tools/audit_io02_qualification.py
           tests/io/test_io02_general_contract.py
       - run: python -m unittest discover -s tests/io -p 'test_io02_general_contract.py' -v
+      - run: python tools/audit_io02_qualification.py
