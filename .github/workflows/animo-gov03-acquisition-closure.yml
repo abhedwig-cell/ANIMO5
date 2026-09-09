@@ -1,0 +1,51 @@
+name: ANIMO-GOV03 historical B2 acquisition closure
+
+on:
+  push:
+    branches:
+      - work/animo-gov03-historical-b2-acquisition-closure
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-gov03:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Validate GOV03 closure invariants
+        run: python tools/validate_gov03_acquisition_closure.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=f127528e148b9106149daec02d48ad972581e6df
+          git cat-file -e "${BASE}^{commit}"
+          git diff --name-only "$BASE"...HEAD > /tmp/gov03_changed.txt
+          cat /tmp/gov03_changed.txt
+
+          allowed='^(integration/animo-governance/GOV03_ACQUISITION_EVIDENCE\.json|integration/animo-governance/ANIMO-GOV03_STATUS\.json|docs/governance/ANIMO_GOV03_HISTORICAL_B2_ACQUISITION_CLOSURE\.md|tools/validate_gov03_acquisition_closure\.py|\.github/workflows/animo-gov03-acquisition-closure\.yml)$'
+          unexpected=$(grep -Ev "$allowed" /tmp/gov03_changed.txt || true)
+          if [ -n "$unexpected" ]; then
+            echo "GOV03 scope violation. Unexpected changed paths:"
+            echo "$unexpected"
+            exit 1
+          fi
+
+          if grep -q '^docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv$' /tmp/gov03_changed.txt; then
+            echo "GOV03 must not modify the canonical TCD register"
+            exit 1
+          fi
+
+          echo "GOV03 scope guard PASS: governance-only closure surface"
