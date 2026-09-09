@@ -1,7 +1,7 @@
 {
   "work_unit": "ANIMO-UBQ01",
   "title": "TCD-042 Upper-Boundary Zero-Throughflow Solute Transaction and Owner Semantics Qualification",
-  "status": "IN_PROGRESS_CHECKPOINT",
+  "status": "EXACT_ZERO_ATOM_CLASS_B_SOURCE_THEORY_PERSISTED_EXECUTABLE_VALIDATION_PENDING",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-ubq01-tcd042-upper-boundary-transaction",
   "base": {
@@ -9,19 +9,71 @@
     "head": "814ea660d367494432beb63ea78298d1f6cd73d7",
     "canonical_tcd": "TCD-042"
   },
+  "frozen_identity": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
+  },
   "scope": {
     "target": "TCD-042",
-    "select_corrected_semantics_only_after_source_theory_and_runtime_analysis": true,
+    "qualified_atom": "EXACT_FLUX_ZERO_ONLY",
+    "finite_positive_subthreshold_flux_included": false,
     "physical_state_patch_admitted": false,
     "accounting_patch_admitted": false,
     "algebra_patch_admitted": false,
     "production_source_change": false
   },
+  "atomization": {
+    "existing_upper_reservoir_owner_proven": true,
+    "missing_state_class_C_rejected_for_exact_zero": true,
+    "accounting_only_class_A_rejected_for_exact_zero": true,
+    "candidate_class": "B_LOCAL_ALGEBRA_ZERO_FLOW_LIMIT",
+    "positive_flow_equation": "Hetop*dC/dt=Load-Flux*C",
+    "exact_zero_end_state": "C1=C0+Load*St/Hetop",
+    "exact_zero_average_state": "Cavg=C0+Load*St/(2*Hetop)",
+    "exact_zero_conservation": "Hetop*C1=Hetop*C0+St*Load",
+    "legacy_exact_zero_defect": "A2=0 and B2=0 omit St*Load from represented end storage when Load is nonzero",
+    "source_theory_document": "docs/science/TCD042_ZERO_THROUGHFLOW_ATOMIZATION.md",
+    "machine_record": "integration/animo-science/TCD042_ZERO_FLOW_ATOMIZATION.json"
+  },
+  "natural_witness": {
+    "case": "RuurloGrass",
+    "interval": "TITO=1915",
+    "source": "MASSQ02-R016",
+    "Flux": 0.0,
+    "booked_total_N_kg_ha": 0.006749373218,
+    "observer_residual_kg_ha_N": 0.0067493732130969875,
+    "Hetop_m": 0.02
+  },
+  "finite_positive_subthreshold": {
+    "range": "0<Flux<1.0d-8",
+    "status": "FAIL_CLOSED_REACHABILITY_AND_NUMERICAL_POLICY_NOT_YET_QUALIFIED",
+    "silent_composition_with_exact_zero_atom": false
+  },
+  "validation": {
+    "validator": "tools/ubq01/validate_tcd042_zero_flow.py",
+    "workflow": ".github/workflows/animo-ubq01-zero-flow-oracle.yml",
+    "github_actions_run_id": null,
+    "github_actions_conclusion": "PENDING",
+    "synthetic_exact_zero_oracle": "PENDING"
+  },
   "work_status": {
-    "realized": false,
+    "realized": true,
     "persisted": true,
     "tested": false,
     "qualified": false,
     "work_unit_complete": false
-  }
+  },
+  "admission": {
+    "b3_admitted": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false
+  },
+  "required_followup": [
+    "Run and pass the exact-zero synthetic oracle and scope guard.",
+    "Execute a natural Ruurlo exact-zero correction probe against frozen B0 and predeclare affected surfaces.",
+    "Run exact zero-load and positive-flow non-interference controls.",
+    "Scan reachability of 0<Flux<1.0d-8 and keep any finite-positive numerical-policy seam separate from the exact-zero atom.",
+    "Do not admit TCD-042 from UBQ01 without the applicable GOV02/B3Q01 route and independent review."
+  ]
 }
