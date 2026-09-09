@@ -1,0 +1,86 @@
+{
+  "work_unit": "ANIMO-PREP10",
+  "subscope": "stable-DOM plough accumulators",
+  "branch": "work/animo-prep10-stable-dom-plough-accumulators",
+  "source_parent": "e3c3b0dfa8daabe345c51be8c4f29f2731d65c47",
+  "decision": "QUALIFIED_SOURCE_LEVEL_USE_BEFORE_DEFINITION_FROZEN_PLOUGH_INPUT_PRESENT_RUNTIME_MAGNITUDE_OPEN",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "source_level_finding_qualified": true,
+  "historical_native_runtime_tested": false,
+  "runtime_numerical_magnitude_qualified": false,
+  "reference_output_admitted": false,
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false,
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "source_audit": {
+    "tool": "tools/audit_stable_dom_plough_accumulators.py",
+    "classification": "CONFIRMED_SOURCE_LEVEL_USE_BEFORE_DEFINITION",
+    "member": "ANIMO_4.1.5.53/Addit.for",
+    "member_size_bytes": 35615,
+    "member_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+    "plough_event_branch_line": 449,
+    "targets": [
+      {
+        "name": "SuStdiorma",
+        "first_self_read_assignment_line": 475,
+        "explicit_definition_before_first_self_read": false,
+        "explicit_zero_assignment_found": false
+      },
+      {
+        "name": "SuStdiorni",
+        "first_self_read_assignment_line": 477,
+        "explicit_definition_before_first_self_read": false,
+        "explicit_zero_assignment_found": false
+      },
+      {
+        "name": "SuStdiorpo",
+        "first_self_read_assignment_line": 479,
+        "explicit_definition_before_first_self_read": false,
+        "explicit_zero_assignment_found": false
+      }
+    ]
+  },
+  "frozen_testbank_activation_audit": {
+    "tool": "tools/audit_stable_dom_plough_activation.py",
+    "classification": "FROZEN_CRANMAIS_REPEATED_PLOUGH_INPUT_PRESENT_INITIAL_STABLE_DOM_ZERO",
+    "management_member": "ANIMO_testbank/CranMais/Input/MANAGEMENT.INP",
+    "management_member_sha256": "61458d7e849fd5e181133d62d0abc8f9b0eb2dbe0b0d45bdb3adf03e488446da",
+    "plough_request_count": 9,
+    "plough_request_lines": [66, 93, 107, 121, 135, 149, 159, 169, 179],
+    "initial_member": "ANIMO_testbank/CranMais/Input/Initial.inp",
+    "initial_member_sha256": "8df3d78e830f344bc315d4dff2ae4c1ee4d6e959a07ba7d112e4105e6fbbb201",
+    "sdomin_marker_line": 106,
+    "sdomin_value_lines": [107, 108, 109],
+    "sdomin_value_count": 69,
+    "all_initial_sdomin_values_zero": true,
+    "interpretation": "The frozen CranMais input requests the plough operation repeatedly. This establishes a concrete frozen-input path to the Addit.for plough branch, but it is not evidence that a provenance-qualified historical executable actually ran the case. Initial stable DOM/DON/DOP values are zero; the source-level undefined self-read remains present independently of the operand values, while the numerical manifestation remains compiler/runtime dependent."
+  },
+  "verification": {
+    "exact_source_archive_audit_passed_in_authoring_environment": true,
+    "exact_testbank_activation_audit_passed_in_authoring_environment": true,
+    "synthetic_unit_tests_passed": 7,
+    "unit_test_command": "python -m unittest discover -s tests/prep10 -v",
+    "unit_test_scope": "four source-scanner cases and three frozen-input scanner cases",
+    "raw_source_or_testbank_bytes_added_to_git": false
+  },
+  "open_gates": [
+    "run an observer-only diagnostic on a working copy under an explicit compiler/build contract",
+    "test compiler/storage-semantics sensitivity of the undefined local accumulators",
+    "quantify whether and how the finding changes stable DOM/DON/DOP redistribution and downstream balances",
+    "compare against a provenance-qualified historical native reference if one becomes available",
+    "if correction is proposed, qualify it as corrected legacy before any migrated ANIMO5 admission"
+  ],
+  "non_admissions": [
+    "no historical native reference execution",
+    "no numerical magnitude claim",
+    "no reference-output promotion",
+    "no frozen-source correction",
+    "no corrected-legacy admission",
+    "no ANIMO5 production migration admission"
+  ]
+}
