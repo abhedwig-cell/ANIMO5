@@ -1,0 +1,21 @@
+{
+  "work_unit": "ANIMO-PREP02R",
+  "title": "Historical Reference Environment Recovery & Reference Admission",
+  "repository": "abhedwig-cell/ANIMO5",
+  "source_branch": "baseline/animo-prep01-05-evidence",
+  "source_head": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
+  "branch": "work/animo-prep02r-historical-reference-recovery",
+  "date": "2026-09-09",
+  "state": "RESERVED_REFERENCE_RECOVERY_ONLY",
+  "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+  "diagnostic_gnu_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+  "diagnostic_gnu_reference_admitted": false,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "corrected_legacy_change": false,
+  "legacy_source_modified": false,
+  "production_migration_admitted": false,
+  "checkpoint": "docs/prep02r/WORK_UNIT_CONTRACT.md"
+}
