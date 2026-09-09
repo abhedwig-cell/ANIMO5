@@ -1,0 +1,17 @@
+{
+  "work_unit": "ANIMO-B3B01",
+  "title": "TCD-015 NO3 Transport Algebra Correction Scientific Admission Readiness",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3b01-tcd015-class-b-admission-readiness",
+  "base_branch": "work/animo-b3q01-scientific-admission-framework",
+  "base_head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "target_tcd": "TCD-015",
+  "b3_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "status": "IN_PROGRESS_EVIDENCE_RECONCILIATION",
+  "implemented": false,
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "admitted": false,
+  "hard_rule": "No B3 admission is permitted unless the applicable B2 or historical-uncertainty route is valid and an independent second-line review is complete."
+}
