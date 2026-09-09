@@ -32,6 +32,7 @@
     "legacy_formatted_restart_exact_whole_model_identity": "NOT_QUALIFIED_NEGATIVE_CROSSCHECK_RETAINED",
     "STATEQ02_cross_stream_support": "PASS_FOR_CEX_STATE_OWNERSHIP_AND_CONTINUATION_RELEVANCE_ONLY",
     "negative_controls": "PASS_FOR_READINESS",
+    "structural_validator": "PASS_GITHUB_ACTIONS",
     "applicable_SYNQ01_oracle": "NONE_REGISTERED",
     "valid_admission_route": "PENDING_BLOCKED",
     "independent_second_line_review": "REQUEST_PREPARED_NOT_COMPLETED"
@@ -99,6 +100,27 @@
     "TCD026_ledger_oracle": false,
     "B2_reference": false
   },
+  "structural_validation": {
+    "validator": "tools/b3a04/validate_b3a04.py",
+    "workflow": ".github/workflows/animo-b3a04-tcd026-readiness.yml",
+    "classification": "STRUCTURAL_PERSISTED_EVIDENCE_VALIDATION_NOT_SCIENTIFIC_REEXECUTION_NOT_INDEPENDENT_REVIEW",
+    "latest_green_run_id": 34386912522,
+    "latest_green_run_number": 2,
+    "validated_head": "1e3a3dcc5d23f2db6d4c4df44ce33e5b68caf289",
+    "conclusion": "SUCCESS",
+    "checks": [
+      "frozen identities",
+      "atomic candidate expression",
+      "chronological evidence hashes and causal witnesses",
+      "no-tolerance restart negative control",
+      "STATEQ02 scope boundary",
+      "route and review gates",
+      "hard constraints",
+      "branch changed-path allowlist"
+    ],
+    "status_only_pushes_ignored_to_avoid_validation_recursion": true,
+    "counts_as_independent_second_line_review": false
+  },
   "live_route_recheck": {
     "PREP02R_branch": "work/animo-prep02r-historical-reference-recovery",
     "PREP02R_head": "a2fda49871ee3c7104daf7e06cd8dffdac06b125",
@@ -121,12 +143,13 @@
   "branch_scope_guard": {
     "compared_against_base": "383c7a83e84a578969f92113280dc715b7bdddb4",
     "comparison_status_before_final_status_commit": "PASS",
-    "comparison_ahead_by_before_final_status_commit": 21,
+    "comparison_ahead_by_before_final_status_commit": 26,
     "production_files_changed": 0,
     "physical_source_files_changed": 0,
     "testcase_files_changed": 0,
-    "evidence_or_documentation_files_added": 9,
+    "evidence_documentation_or_validation_files_added": 11,
     "paths": [
+      ".github/workflows/animo-b3a04-tcd026-readiness.yml",
       "docs/b3/TCD026_CLASS_A_ADMISSION_READINESS.md",
       "docs/b3/TCD026_SECOND_LINE_REVIEW_PACKET.md",
       "integration/animo-b3/ANIMO-B3A04_STATUS.json",
@@ -135,7 +158,8 @@
       "integration/animo-b3/TCD026_CLASS_A_READINESS.json",
       "integration/animo-b3/TCD026_EXPECTED_DIFFERENCE.json",
       "integration/animo-b3/TCD026_MODEL_PRODUCED_STATE_REPLAY.json",
-      "integration/animo-b3/TCD026_SECOND_LINE_REVIEW_REQUEST.json"
+      "integration/animo-b3/TCD026_SECOND_LINE_REVIEW_REQUEST.json",
+      "tools/b3a04/validate_b3a04.py"
     ]
   },
   "independent_review": {
@@ -157,6 +181,7 @@
     "production_migration": false
   },
   "deliverables": {
+    ".github/workflows/animo-b3a04-tcd026-readiness.yml": "COMPLETE_GREEN",
     "docs/b3/TCD026_CLASS_A_ADMISSION_READINESS.md": "COMPLETE",
     "docs/b3/TCD026_SECOND_LINE_REVIEW_PACKET.md": "COMPLETE",
     "integration/animo-b3/TCD026_EXPECTED_DIFFERENCE.json": "COMPLETE",
@@ -165,7 +190,8 @@
     "integration/animo-b3/TCD026_CHRONOLOGICAL_RESTART_PROBE_PLAN.json": "COMPLETE",
     "integration/animo-b3/TCD026_CHRONOLOGICAL_RESTART_PROBE.json": "COMPLETE",
     "integration/animo-b3/TCD026_SECOND_LINE_REVIEW_REQUEST.json": "COMPLETE",
-    "integration/animo-b3/ANIMO-B3A04_STATUS.json": "COMPLETE"
+    "integration/animo-b3/ANIMO-B3A04_STATUS.json": "COMPLETE",
+    "tools/b3a04/validate_b3a04.py": "COMPLETE_GREEN"
   },
   "admitted": false,
   "production_patch_present": false,
