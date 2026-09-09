@@ -1,0 +1,103 @@
+{
+  "work_unit": "ANIMO-NQ02",
+  "target": "TCD-019",
+  "evidence_class": "B1_DIAGNOSTIC_FALLBACK_RELATION_OBSERVER_ONLY",
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "observer_script_sha256": "015304cc2ec471311e40750afd7b321e0ce05a66ef0753063673a2cef104639d",
+  "aggregate_summary_sha256": "e8dc15cbbf85ec239e51a39fa0feb710938f747cb841dd78c5a48ecba3ed43ba",
+  "source_reconstruction": {
+    "newton_equation_role": "two-variable analytical-solution closure for Rsc and Avc with constant represented fast-storage coefficient and slow-sorption source term during the step",
+    "integrated_conservation_identity": "(Mto+Hv*St)*Rsc - Mto*Con + Rhbd*(Sfast_end-Sfast_start) + (Hv1-Hv)*St*Avc - Hv2*St - sum(Rhbd*(1-exp(-Recfso*St))*(Amp_slow-Eq_slow(Avc))) = 0 for the linear/Freundlich slow branch when fast storage is represented exactly",
+    "fallback_midpoint_constraint": "Rsc = 2*Avc - Con",
+    "fallback_scalar_equation": "the integrated conservation identity after imposing the midpoint constraint, not a scalar root of the original two-variable analytical-solution equations",
+    "slow_langmuir_additional_difference": "the Newton branch uses exp(-Recfso*(1+Parcxsl(3)*Avc)*St) while the fallback slow-Langmuir term uses exp(-Recfso*St), so Optcxsl=2 adds another equation difference beyond the midpoint closure",
+    "inherited_rate_branch": "fallback Rhs and Lhs use Recfso inherited from the unsuccessful Newton history rather than a branch recomputed as a function of each fallback trial state"
+  },
+  "observer_descendants": {
+    "fallback_1e-6": {
+      "scientific_parent_transorp_sha256": "2a6e5d4065f9d18025b808aa43571d09b2f29d7810990b0cbd5802219fed366f",
+      "observer_transorp_sha256": "cb1a97456a5b1e567cebb5a06e3c0277b335a210566a76419f16e23bf389869c",
+      "observer_executable_sha256": "9cc47ddbea2f705caee83f7c238b03d23c1952003323fb38a6a234d6ae91870c"
+    },
+    "fallback_1e-8": {
+      "scientific_parent_transorp_sha256": "8969d33f787fc886d0d3008e7ad845b5dd613d08e6f8ac1ec3db50ceefbfddad",
+      "observer_transorp_sha256": "91bcb04eb94f3f5b00d3f49adf5e009aa2d266057c8014d63187caf7be5349f9",
+      "observer_executable_sha256": "555ae348efab44b7454ef8eee34a040ca6548fc6e7316d45d0491fa3e4b9d070"
+    }
+  },
+  "runs": {
+    "Puitmijn_bis_1e-6": {
+      "relation_output_sha256": "d5d5b9c6cdc1f80c27e00c5838b2cf6e8c517bb0fced3783f50b87b50276df3c",
+      "fallback_accepts": 12,
+      "fallback_events_with_inherited_vs_state_local_Recfso_mismatch": 0,
+      "max_newton_equation_residual_L1_at_fallback_state_using_inherited_branch": 2.8728925801940878e-5,
+      "max_newton_equation_residual_L1_at_fallback_state_using_state_local_branch": 2.8728925801940878e-5
+    },
+    "Puitmijn_bis_1e-8": {
+      "relation_output_sha256": "54d2291597fd8b94f600973346cf7b5f018e9252382b572167aba32f5715ab33",
+      "fallback_accepts": 19,
+      "fallback_events_with_inherited_vs_state_local_Recfso_mismatch": 0,
+      "max_newton_equation_residual_L1_at_fallback_state_using_inherited_branch": 1.0071584552844378e-5,
+      "max_newton_equation_residual_L1_at_fallback_state_using_state_local_branch": 1.0071584552844378e-5
+    },
+    "Zuiderzeeland_bis_1e-6": {
+      "relation_output_sha256": "fcf2d9d7d468342a77a35017d725312ecbbecf5f6675af4ff42532b47a8e1acc",
+      "fallback_accepts": 15,
+      "fallback_events_with_inherited_vs_state_local_Recfso_mismatch": 3,
+      "max_site_branch_mismatches_in_one_event": 2,
+      "max_newton_equation_residual_L1_at_fallback_state_using_inherited_branch": 1.4534093697252782e-7,
+      "max_newton_equation_residual_L1_at_fallback_state_using_state_local_branch": 4.498104452042002e-7,
+      "first_step_layer6": {
+        "Df": -3.0266854696842094e-7,
+        "newton_residual_inherited_L1": 1.4534093697252782e-7,
+        "newton_residual_state_local_L1": 4.498104452042002e-7,
+        "branch_mismatches": 2,
+        "site1_inherited_Recfso": 0.0003,
+        "site1_state_local_Recfso": 1.1755,
+        "site2_inherited_Recfso": 0.00006,
+        "site2_state_local_Recfso": 0.0334
+      }
+    },
+    "Zuiderzeeland_bis_1e-8": {
+      "relation_output_sha256": "a53ff740b8d95149dab2198c69881658fd4a4884b867bfafc8761de76efd43b5",
+      "fallback_accepts": 13,
+      "fallback_events_with_inherited_vs_state_local_Recfso_mismatch": 3,
+      "max_site_branch_mismatches_in_one_event": 2,
+      "max_newton_equation_residual_L1_at_fallback_state_using_inherited_branch": 9.571893417700426e-7,
+      "max_newton_equation_residual_L1_at_fallback_state_using_state_local_branch": 5.481064977176444e-7,
+      "first_step_layer6": {
+        "Df": -8.256707956233456e-10,
+        "newton_residual_inherited_L1": 1.748997604159198e-7,
+        "newton_residual_state_local_L1": 5.481064977176444e-7,
+        "branch_mismatches": 2,
+        "site1_inherited_Recfso": 0.0003,
+        "site1_state_local_Recfso": 1.1755,
+        "site2_inherited_Recfso": 0.00006,
+        "site2_state_local_Recfso": 0.0334
+      },
+      "first_step_layer5": {
+        "Df": 6.138915681352941e-9,
+        "newton_residual_inherited_L1": 9.571893417700426e-7,
+        "newton_residual_state_local_L1": 2.3542028788224727e-7,
+        "branch_mismatches": 1,
+        "site1_inherited_Recfso": 1.1755,
+        "site1_state_local_Recfso": 0.0003
+      }
+    }
+  },
+  "qualification": {
+    "fallback_is_scalarized_original_newton_system": false,
+    "fallback_uses_distinct_midpoint_time_closure": true,
+    "fallback_accepted_states_can_have_material_two_variable_newton_residual": true,
+    "inherited_Recfso_path_dependence_naturally_activated": true,
+    "inherited_Recfso_path_dependence_case_specific": true,
+    "smaller_Df_does_not_imply_smaller_two_variable_equation_residual": true,
+    "joint_newton_fallback_policy_required": true,
+    "fallback_policy_qualified": false,
+    "specific_tolerance_qualified": false,
+    "tolerance_status": "TOLERANCE_NOT_YET_QUALIFIED",
+    "B3_admitted": false,
+    "production_migration_admitted": false
+  }
+}
