@@ -5,7 +5,7 @@
   "branch": "work/animo-eg01-controlled-b0-retention",
   "parent_branch": "work/animo-rg01-baseline-stabilization",
   "parent_sha": "662bca8aff40f4dca1f6ccdde6bef6274c6bede2",
-  "evaluated_candidate_head_before_status_record": "aa5e4509e4c830d65e0759df469ae24c1fc8cbf8",
+  "evaluated_candidate_head_before_status_record": "60170f70ccc84e5e8229e38189493e69ede39567",
   "decision": "QUALIFIED_B0_RETENTION_CONTRACT_IMPLEMENTATION_PENDING_EXTERNAL_CONTROLLED_STORAGE",
   "implemented": true,
   "persisted": true,
@@ -16,7 +16,7 @@
   "reference_admitted": false,
   "corrected_legacy_admitted": false,
   "production_migration_admitted": false,
-  "scope": "evidence-governance contract, public B0 metadata register, run-lineage schema, external custodian handoff and controlled-storage proof interface only",
+  "scope": "evidence-governance contract, public B0 metadata register, run-lineage schema, external custodian handoff, controlled-storage proof interface and fail-closed semantic proof gate only",
   "deliverables": [
     "docs/eg01/WORK_UNIT_CONTRACT.md",
     "docs/eg01/B0_RETENTION_AND_LINEAGE_POLICY.md",
@@ -25,6 +25,9 @@
     "integration/evidence/ANIMO_RUN_LINEAGE_SCHEMA.json",
     "integration/evidence/ANIMO_B0_STORAGE_PROOF_SCHEMA.json",
     "integration/evidence/ANIMO_B0_STORAGE_PROOF_TEMPLATE.json",
+    "tools/validate_b0_storage_proof.py",
+    "tests/eg01/test_validate_b0_storage_proof.py",
+    ".github/workflows/animo-eg01-b0-proof-gate.yml",
     "docs/governance/DEVELOPMENT_GOVERNANCE.md"
   ],
   "frozen_artifacts": [
@@ -72,6 +75,24 @@
     "external_custodian_handoff_prepared": true,
     "storage_proof_schema_prepared": true,
     "storage_proof_template_prepared_with_pending_state": true,
+    "semantic_b0_proof_gate_implemented": true,
+    "semantic_gate_compares_proof_hashes_to_canonical_register": true,
+    "semantic_gate_rejects_duplicate_or_missing_b0_evidence_ids": true,
+    "semantic_gate_rejects_pending_or_placeholder_proof": true,
+    "semantic_gate_requires_primary_secondary_and_restore_hash_identity": true,
+    "semantic_gate_requires_human_review_after_machine_pass": true,
+    "semantic_gate_unit_tests_passed_in_authoring_environment": true,
+    "semantic_gate_unit_test_count": 6,
+    "semantic_gate_test_cases": [
+      "synthetic complete metadata record passes the machine consistency gate",
+      "INCOMPLETE proof status fails closed",
+      "wrong primary retained-byte digest fails",
+      "duplicate evidence ID fails",
+      "missing restore execution fails",
+      "placeholder approval reference fails"
+    ],
+    "github_actions_workflow_added": true,
+    "github_actions_workflow_run_observed_at_status_update": false,
     "storage_proof_schema_external_positive_proof_not_available": true,
     "raw_zip_or_pdf_added_to_public_git": false,
     "legacy_source_changed": false,
@@ -79,7 +100,7 @@
     "documentation_bytes_changed": false,
     "runtime_or_scientific_execution_tested": false,
     "controlled_storage_restore_tested": false,
-    "testing_scope_note": "TESTED means cryptographic identity revalidation of the supplied bytes plus the previously validated JSON/run-lineage and branch-diff contract checks. The newly prepared storage-proof interface does not itself prove external retention. No historical ANIMO execution, scientific reference qualification or controlled-storage restore testing is claimed."
+    "testing_scope_note": "TESTED means cryptographic identity revalidation of the supplied bytes, JSON/run-lineage contract checks, and six fail-closed semantic proof-gate unit tests executed in the authoring environment. No GitHub Actions run was observed at this status update. Synthetic unit-test proof references are explicitly not real storage evidence. No historical ANIMO execution, scientific reference qualification or controlled-storage restore testing is claimed."
   },
   "external_implementation_pending": {
     "required": true,
@@ -87,6 +108,7 @@
     "handoff_document": "docs/eg01/B0_CUSTODIAN_HANDOFF.md",
     "proof_schema": "integration/evidence/ANIMO_B0_STORAGE_PROOF_SCHEMA.json",
     "proof_template": "integration/evidence/ANIMO_B0_STORAGE_PROOF_TEMPLATE.json",
+    "semantic_gate": "tools/validate_b0_storage_proof.py",
     "actions": [
       "establish legal/redistribution handling basis for each raw artifact",
       "provision an authoritative immutable primary storage target",
@@ -97,7 +119,9 @@
       "verify the independent secondary copy",
       "perform and record a restore test followed by byte-hash verification",
       "return only non-secret custody and immutability proof references using the storage-proof schema",
-      "update the B0 evidence register only after the proof record is reviewed"
+      "run the fail-closed semantic proof gate against the canonical B0 register",
+      "have an authorized human reviewer inspect the storage authority, custody and proof references",
+      "update the B0 evidence register only after the proof record is machine-consistent and human-reviewed"
     ]
   },
   "stronger_status_gate": {
@@ -110,18 +134,22 @@
       "post-ingest SHA-256 verification passed for all required B0 objects",
       "secondary-copy SHA-256 verification passed for all required B0 objects",
       "restore test passed with matching restored SHA-256 for all required B0 objects",
-      "custodian approval/proof references recorded"
+      "custodian approval/proof references recorded",
+      "semantic proof gate passes against the canonical B0 evidence register",
+      "external custody and storage claims are explicitly human-reviewed"
     ]
   },
   "prep_blockers": {
     "PREP01_B0_blocker_lifted": false,
     "PREP02_B0_blocker_lifted": false,
-    "reason": "EG01 qualifies the retention contract and implementation handoff only. Actual controlled immutable storage is not proven."
+    "reason": "EG01 qualifies the retention contract, implementation handoff and proof-validation machinery only. Actual controlled immutable storage is not proven."
   },
   "non_admissions": [
     "no raw proprietary or restricted artifact was copied into public Git",
     "no legal redistribution permission is inferred",
     "no external storage platform or custodian is assumed from this repository state",
+    "no synthetic test proof is treated as real storage evidence",
+    "no machine proof-gate pass can substitute for human review of external custody evidence",
     "no historical reference environment is qualified",
     "no diagnostic output is promoted to reference output",
     "no corrected-legacy source is admitted",
