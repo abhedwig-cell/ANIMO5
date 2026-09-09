@@ -1,34 +1,68 @@
 {
   "workunit": "ANIMO-STATEQ01",
-  "test_id": "RC-R5-source",
-  "status": "PASS_FROZEN_SOURCE_COMPONENT_RECONSTRUCTION_DIAGNOSTIC_CONTINUITY_FULL_MODEL_SPLIT_RUN_OPEN",
+  "test_id": "RC-R5",
+  "status": "PASS_FROZEN_SOURCE_COMPONENT_RECONSTRUCTION_CONTINUITY_FULL_MODEL_SPLIT_RUN_OPEN",
   "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
   "required_source_fragments_checked": 7,
   "all_required_source_fragments_present": true,
   "direct_rscxnh_assignment_sites": [
-    {"file": "Init.for", "line": 229, "role": "initial/reset lifecycle"}
+    {
+      "file": "Init.for",
+      "line": 229,
+      "role": "initial/reset lifecycle"
+    }
   ],
   "unexpected_direct_process_assignments": [],
   "accepted_boundary_relation": "Rscxnh(Ln)=He(Ln)*Rhbd(Ln)*Socfnh(Ln)*Rsconh(Ln)",
   "checkpoint_disposition": "DERIVED_RECOMPUTABLE_PHYSICAL_STORAGE_VIEW",
   "physical_n_storage_retained_in_control_volume": true,
   "independent_checkpoint_owner_required_by_source": false,
-  "source_component_execution": {
-    "status": "PASS",
-    "artifact": "integration/animo-state/NH4_ADSORBED_RECONSTRUCTION_SOURCE_PROBE.json",
-    "original_source_executed": "TRANSPORT.FOR",
-    "builds": ["GNU_DEFAULT_REAL", "GNU_DEFAULT_REAL_8_DOUBLE_8_COMPAT"],
-    "exact_reconstruction_within_each_build": true,
-    "reconstructed_path_preserves_transport_balance_diagnostic": true,
-    "omitted_reconstruction_changes_transport_balance_diagnostic": true,
-    "transsub_dependency": "neutral pass-through stub",
-    "macropore_dependency": "disabled/unreachable stub"
+  "component_evidence": {
+    "primary_original_transport_and_transsub": {
+      "status": "PASS_FROZEN_SOURCE_COMPONENT_RECONSTRUCTION_CONTINUITY_FULL_MODEL_SPLIT_RUN_OPEN",
+      "artifact": "integration/animo-state/NH4_ADSORBED_SOURCE_PROBE.json",
+      "runner": "tools/stateq01/run_rc5_nh4_adsorption_source_probe.py",
+      "fixture": "tests/stateq01/fixtures/stateq01_rc5_nh4_adsorption_probe.f90",
+      "original_source_executed": [
+        "TRANSPORT.FOR",
+        "Transsub.for"
+      ],
+      "build_contract": "PREP01_DETERMINISTIC_GNU_DIAGNOSTIC_REAL8_STATIC_LOCALS",
+      "exact_reconstruction_within_build": true,
+      "nontrivial_step1_aqueous_change": true,
+      "next_component_outputs_equal_uninterrupted_vs_reconstructed_exact_within_build": true,
+      "omitting_reconstruction_changes_component_physical_outputs": false,
+      "omitting_reconstruction_changes_original_transport_balance_diagnostic": true,
+      "historical_reference_b2": false
+    },
+    "supplemental_isolated_rscx_balance_seam": {
+      "status": "PASS_FROZEN_SOURCE_COMPONENT_RECONSTRUCTION_DIAGNOSTIC_CONTINUITY_FULL_MODEL_SPLIT_RUN_OPEN",
+      "artifact": "integration/animo-state/NH4_ADSORBED_RECONSTRUCTION_SOURCE_PROBE.json",
+      "runner": "tools/stateq01/run_rc5_nh4_adsorbed_reconstruction_probe.py",
+      "fixture": "tests/stateq01/fixtures/stateq01_rc5_nh4_adsorbed_reconstruction_probe.f90",
+      "original_source_executed": "TRANSPORT.FOR",
+      "transsub_dependency": "neutral pass-through stub",
+      "builds": [
+        "GNU_DEFAULT_REAL_SEAM_ONLY",
+        "GNU_DEFAULT_REAL_8_DOUBLE_8_COMPAT_SEAM_ONLY"
+      ],
+      "exact_reconstruction_within_each_build": true,
+      "reconstructed_path_preserves_transport_balance_diagnostic": true,
+      "omitted_reconstruction_changes_transport_balance_diagnostic": true,
+      "interpretation_limit": "default-REAL seam execution does not override PREP01 finding that the complete revision-53 GNU default-REAL build is unstable and is not a qualified model build"
+    }
   },
-  "physical_trajectory_split_run_qualified": false,
-  "canonical_serializer_precision_qualified": false,
-  "historical_reference_b2": false,
-  "canonical_state_admission": "NOT_ADMITTED",
+  "evidence_reconciliation": {
+    "primary_evidence_for_rc_r5": "NH4_ADSORBED_SOURCE_PROBE.json because it executes original TRANSPORT.FOR plus original Transsub.for under the deterministic PREP01 diagnostic build contract",
+    "supplemental_evidence_role": "NH4_ADSORBED_RECONSTRUCTION_SOURCE_PROBE.json isolates assignment and balance-ledger semantics and is retained as structural seam evidence",
+    "duplicate_checkpoint_owner_supported": false,
+    "adsorbed_mass_may_be_omitted_from_control_volume": false,
+    "full_physical_trajectory_split_run_qualified": false,
+    "canonical_serializer_precision_qualified": false,
+    "canonical_numerical_policy_admitted": false,
+    "canonical_state_admission": "NOT_ADMITTED"
+  },
   "production_change": false,
   "physics_change": false,
-  "next": "retain Rscxnh as derived checkpoint view; execute a full profile-clean ANIMO split when an admissible fixture and comparison policy exist"
+  "next": "retain Rscxnh as a derived/recomputable physical-storage view; execute a full profile-clean ANIMO accepted-boundary split when an admissible fixture and comparison policy exist"
 }
