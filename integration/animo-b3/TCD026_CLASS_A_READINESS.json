@@ -24,7 +24,6 @@
       "defect_doc_blob": "bbb7cd88c2beaa758e786e14e234a975b361b387",
       "machine_evidence": "integration/animo-prep/PREP06_EXUDATE_INITIAL_STORAGE_DEFECT.json",
       "machine_evidence_blob": "0e60d8aaf526c0b0127da1143b68c9c8235e9fe3",
-      "state_inventory": "docs/prep06/CONSERVED_STATE_INVENTORY.csv",
       "state_inventory_blob": "838f224fc67a72371437c6d5b6e75cd03f5c8d51"
     },
     "B3Q01": {
@@ -56,10 +55,28 @@
       "applicable_TCD026_oracle": null,
       "use": "NO_APPLICABLE_INDEPENDENT_ORACLE_CURRENTLY_REGISTERED"
     },
+    "STATEQ02": {
+      "branch": "work/animo-stateq02-restricted-core-executable-split-run",
+      "head": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+      "status": "QUALIFIED_RESTRICTED_CORE_EXECUTABLE_CHECKPOINT_SEMANTICS_CANONICAL_STATE_ADMISSION_PENDING",
+      "status_blob": "88df49ccb86bdb9d2553693c1ef1ef06de1e4025",
+      "split_matrix_blob": "35544f0c69ff3ba700cfc30e3ab520bf009310be",
+      "qualification_doc_blob": "0f56c4fa75d75a6b4e4fe48020c633fcd0d23f27",
+      "relevant_state": "ORG-004 root exudate organic mass is a core CNP accepted owner with mandatory exact checkpoint restore",
+      "use": "INDEPENDENT_CROSS_STREAM_STATE_OWNERSHIP_AND_CONTINUATION_SUPPORT_ONLY",
+      "tcd026_ledger_oracle": false,
+      "B2_reference": false
+    },
     "B3A04_model_produced_state_replay": {
       "path": "integration/animo-b3/TCD026_MODEL_PRODUCED_STATE_REPLAY.json",
       "classification": "MODEL_PRODUCED_RESTART_FORMAT_STATE_REPLAY_NOT_CHRONOLOGICAL_SPLIT_RUN",
-      "use": "stronger path activation and non-interference evidence only; not B2 and not split-run qualification"
+      "use": "path activation and non-interference evidence only"
+    },
+    "B3A04_chronological_restart_probe": {
+      "path": "integration/animo-b3/TCD026_CHRONOLOGICAL_RESTART_PROBE.json",
+      "classification": "B0_HASH_PINNED_DIAGNOSTIC_CHRONOLOGICAL_FORMATTED_RESTART_NOT_B2",
+      "status": "PASS_TCD026_CHRONOLOGICAL_FORMATTED_RESTART_ACTIVATION_FULL_SPLIT_IDENTITY_NOT_CLAIMED",
+      "use": "chronological naturalistic activation and Class-A non-interference evidence only"
     }
   },
   "physical_owner": {
@@ -84,10 +101,9 @@
     "accepted_boundary": "Ex_next(Ln)=Rsex_previous(Ln)",
     "beginning_store": "existing_begin_terms + sum(Ex(Ln)*P)",
     "ending_store": "existing_end_terms + sum(Rsex(Ln)*Z)",
-    "defect_signature": "when only initial Ex is introduced, legacy fresh-OM residual equals negative omitted beginning mass"
+    "defect_signature": "when beginning Ex is nonzero, legacy fresh-OM residual contains the negative omitted beginning Ex mass"
   },
-  "causal_probe": {
-    "source": "PREP06",
+  "PREP06_causal_probe": {
     "base_case": "RuurloGrass",
     "only_input_change": "Ex(1)=1.0e-3 kg/m2",
     "introduced_mass_kg_ha": 10.0,
@@ -114,34 +130,53 @@
     "chronological_split_run_claimed": false,
     "historical_reference_claimed": false
   },
+  "chronological_formatted_restart_activation": {
+    "case": "CranMais",
+    "segment_A_period": "1974-01-01 through 1974-12-31",
+    "segment_B_period": "1975-01-01 through 1975-12-31",
+    "segment_A_initial_out_sha256": "6578e35e7b5bd39927569ff4f004afbe164d2ce20c98a6d75dc75b7ab536764b",
+    "segment_B_initial_in_byte_identical_to_segment_A_initial_out": true,
+    "model_produced_Ex_total_kg_ha": 642.718929,
+    "nonzero_layers": [1,2,3,4,5,6,7,8,9],
+    "legacy_begin_fresh_om_kg_ha_printed": 12209.622,
+    "candidate_begin_fresh_om_kg_ha_printed": 12852.341,
+    "printed_begin_store_increment_kg_ha": 642.719,
+    "legacy_first_period_fresh_om_deviation_kg_ha_detailed": -642.7,
+    "legacy_first_period_fresh_om_deviation_kg_ha_scientific": -643.0,
+    "candidate_first_period_fresh_om_deviation_kg_ha": 1.82e-12,
+    "small_candidate_residual_is_tolerance": false,
+    "legacy_final_initial_out_sha256": "e6c240ae46edfb7d0a4577dfb70106fb10e37b78982f93d2a116130f9685ca42",
+    "candidate_final_initial_out_sha256": "e6c240ae46edfb7d0a4577dfb70106fb10e37b78982f93d2a116130f9685ca42",
+    "final_restart_state_byte_identical": true,
+    "normalized_outputs_compared": 23,
+    "normalized_identical_outputs": 19,
+    "changed_outputs": ["ani_omMP.Bal", "ani_omTP.Bal", "baomMP.Out", "baomTP.Out"],
+    "unexpected_changed_outputs": [],
+    "management_tail": "deterministic execution-copy rebase preserving the original 1975 maize/addition chronology; frozen testbank archive unchanged",
+    "hydrology_payload_unchanged": true,
+    "material_payload_unchanged": true,
+    "full_continuous_vs_formatted_restart_identity": false,
+    "continuous_vs_split_numeric_tokens_compared": 564,
+    "continuous_vs_split_printed_numeric_tokens_different": 32,
+    "continuous_vs_split_max_abs_printed_numeric_difference": 1.0e-6,
+    "interpretation": "Chronological formatted restart activates TCD-026 and preserves the candidate's Class-A non-interference surfaces, but legacy formatted restart is not promoted to an exact whole-model checkpoint. No tolerance is used to erase the observed small whole-model restart drift."
+  },
   "natural_activation": {
     "supplied_B0_B1_initial_exudate_nonzero_case": false,
     "all_supplied_orgexu_initial_values_zero": true,
     "ordinary_start_classification": "STRUCTURALLY_UNREACHABLE_ZERO_INITIAL_EX_IN_SUPPLIED_NATURAL_TESTBANK",
-    "synthetic_causal_activation_available": true,
-    "model_produced_restart_format_state_activation_executed_here": true,
-    "model_produced_activation_case": "CranMais",
-    "model_produced_activation_classification": "PASS_MODEL_PRODUCED_RESTART_FORMAT_STATE_REPLAY_NOT_CHRONOLOGICAL_SPLIT_RUN"
+    "synthetic_causal_activation": "PASS_PREP06_SYNTHETIC",
+    "model_produced_restart_format_state_replay": "PASS_CRANMAIS_REPLAY_NOT_CHRONOLOGICAL_SPLIT_RUN",
+    "chronological_formatted_restart_activation": "PASS_CRANMAIS_1974_TO_1975_TCD026_ACTIVATION_FULL_SPLIT_IDENTITY_NOT_CLAIMED"
   },
   "non_interference": {
     "physical_state": "PASS_FOR_READINESS",
     "process_flux": "PASS_FOR_READINESS",
     "total_physical_mass": "PASS_FOR_READINESS",
-    "basis": "PREP06 temporary Bfom-only diagnostic compared 72 outputs with six whitelisted fresh-OM balance files changed; B3A04 additionally replayed model-produced CranMais restart-format state and found identical Output/initial.out bytes plus 22 normalized scientific surfaces with only four fresh-OM balance surfaces changed and no unexpected differences.",
-    "PREP06_observed_changed_files": [
-      "ani_omGP.Bal",
-      "ani_omRP.Bal",
-      "ani_omTP.Bal",
-      "baomGP.Out",
-      "baomRP.Out",
-      "baomTP.Out"
-    ],
-    "B3A04_replay_changed_files": [
-      "ani_omMP.Bal",
-      "ani_omTP.Bal",
-      "baomMP.Out",
-      "baomTP.Out"
-    ],
+    "basis": "PREP06, B3A04 model-produced replay and B3A04 chronological formatted restart all constrain the candidate write set to Bfom-derived reporting. In the chronological probe, legacy and candidate final INITIAL.OUT are byte-identical and only four declared fresh-OM balance/report surfaces change after known volatile normalization.",
+    "PREP06_changed_files": ["ani_omGP.Bal", "ani_omRP.Bal", "ani_omTP.Bal", "baomGP.Out", "baomRP.Out", "baomTP.Out"],
+    "B3A04_replay_changed_files": ["ani_omMP.Bal", "ani_omTP.Bal", "baomMP.Out", "baomTP.Out"],
+    "B3A04_chronological_changed_files": ["ani_omMP.Bal", "ani_omTP.Bal", "baomMP.Out", "baomTP.Out"],
     "unintended_changed_outputs": 0
   },
   "negative_controls": {
@@ -150,7 +185,8 @@
     "Bano_unchanged": "REQUIRED_AND_SOURCE_SUPPORTED",
     "Bapo_unchanged": "REQUIRED_AND_SOURCE_SUPPORTED",
     "other_organic_stores_unchanged": "REQUIRED",
-    "ordinary_state_process_outputs_unchanged": "PASS_PREP06_AND_B3A04_MODEL_PRODUCED_STATE_REPLAY"
+    "ordinary_state_process_outputs_unchanged": "PASS_PREP06_REPLAY_AND_CHRONOLOGICAL_PROBE",
+    "formatted_restart_exact_identity_negative_control": "FAIL_AS_WHOLE_MODEL_IDENTITY_AND_RETAINED_AS_EXPLICIT_SCOPE_LIMIT"
   },
   "output_contract": "integration/animo-b3/TCD026_EXPECTED_DIFFERENCE.json",
   "gates": {
@@ -161,8 +197,8 @@
     "begin_end_storage_identity": "PASS",
     "exact_omitted_ledger_term": "PASS",
     "closed_conservation_identity": "PASS_FOR_ATOMIC_COMPONENT",
-    "causal_activation": "PASS_SYNTHETIC_AND_MODEL_PRODUCED_STATE_REPLAY",
-    "natural_activation_or_structural_unreachability": "PASS_STRUCTURAL_ZERO_ORDINARY_START_PLUS_MODEL_PRODUCED_RESTART_FORMAT_STATE_ACTIVATION",
+    "causal_activation": "PASS_SYNTHETIC_MODEL_PRODUCED_REPLAY_AND_CHRONOLOGICAL_FORMATTED_RESTART",
+    "natural_activation_or_structural_unreachability": "PASS_STRUCTURAL_ZERO_ORDINARY_START_PLUS_MODEL_PRODUCED_CHRONOLOGICAL_RESTART_ACTIVATION",
     "physical_state_non_interference": "PASS_FOR_READINESS",
     "process_flux_non_interference": "PASS_FOR_READINESS",
     "total_physical_mass_non_interference": "PASS_FOR_READINESS",
@@ -179,8 +215,11 @@
     "initialization_physics_change": false,
     "organic_matter_TCD_composition": false,
     "numerical_tolerance_added": false,
+    "legacy_formatted_restart_promoted_to_exact_whole_model_checkpoint": false,
+    "STATEQ02_promoted_to_TCD026_ledger_oracle": false,
     "corrected_legacy_admission_performed": false,
-    "production_migration_performed": false
+    "production_migration_performed": false,
+    "own_authoring_counted_as_independent_review": false
   },
   "readiness_decision": {
     "narrow_claim_supported": true,
