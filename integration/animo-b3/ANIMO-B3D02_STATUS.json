@@ -1,0 +1,67 @@
+{
+  "work_unit": "ANIMO-B3D02",
+  "title": "TCD-017 B3 Admission Closeout Under GOV03 Historical-Uncertainty Route",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d02-tcd017-admission-closeout",
+  "base": {
+    "work_unit": "ANIMO-B3D01",
+    "head": "6ada2522101587ab74974a70f980b50e64cf9b86",
+    "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03"
+  },
+  "review_authority": {
+    "work_unit": "ANIMO-B3A02R",
+    "head": "8b38b03ac489c349192ae9fa55a8fe51cea183cb",
+    "result": "PASS_TCD017_INDEPENDENT_SECOND_LINE_READINESS_REVIEW",
+    "workflow_run": 34393646704,
+    "issue": 25,
+    "issue_result_comment": 5607318730
+  },
+  "target_tcd": "TCD-017",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "state": "IN_PROGRESS_PERSISTED_ADMISSION_RECORD_VALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "intended_final_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "admission": {
+    "scientific_b3_admission_intended": true,
+    "historical_behaviour_status": "UNKNOWN",
+    "historical_fidelity_claimed": false,
+    "whole_model_equivalence_claimed": false,
+    "b4_admitted": false,
+    "production_patch_authorized": false,
+    "production_migration_admitted": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_source_modified": false,
+    "frozen_testbank_modified": false,
+    "canonical_tcd_register_modified": false,
+    "composition_admitted": false,
+    "historical_b2_fabricated": false,
+    "rebuild_promoted_to_b2": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "validation": {
+    "validator": "tools/validate_b3d02_tcd017_admission.py",
+    "workflow": ".github/workflows/animo-b3d02-tcd017-admission.yml",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_job_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "deliverables": [
+    "integration/animo-b3/TCD017_B3_ADMISSION_CLOSEOUT.json",
+    "integration/animo-b3/ANIMO-B3D02_STATUS.json",
+    "docs/b3/TCD017_B3_ADMISSION_CLOSEOUT.md",
+    "tools/validate_b3d02_tcd017_admission.py",
+    ".github/workflows/animo-b3d02-tcd017-admission.yml"
+  ]
+}
