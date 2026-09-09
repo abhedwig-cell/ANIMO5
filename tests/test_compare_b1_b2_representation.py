@@ -86,12 +86,21 @@ class RepresentationComparatorTests(unittest.TestCase):
             "PRECISION_REPRESENTATION_DIFFERENCE",
         )
 
-    def test_missing_representation_observation_fails_closed(self):
+    def test_empty_representation_observations_are_schema_failure(self):
+        report = mod.compare_captures(
+            capture("B2_HISTORICAL_REFERENCE_QUALIFIED", []),
+            capture("B1_DIAGNOSTIC", []),
+        )
+        self.assertEqual(report["decision"], "SCHEMA_OR_PROVENANCE_FAILURE")
+        self.assertTrue(report["b2_validation_errors"])
+        self.assertTrue(report["b1_validation_errors"])
+
+    def test_missing_representation_observation_is_not_treated_as_empty_match(self):
         b2 = capture("B2_HISTORICAL_REFERENCE_QUALIFIED", [observation()])
         b1 = capture("B1_DIAGNOSTIC", [])
         report = mod.compare_captures(b2, b1)
-        self.assertEqual(report["decision"], "DIFFERENT_REPRESENTATION_FAIL_CLOSED")
-        self.assertEqual(len(report["observation_set"]["missing_in_b1"]), 1)
+        self.assertEqual(report["decision"], "SCHEMA_OR_PROVENANCE_FAILURE")
+        self.assertTrue(report["b1_validation_errors"])
 
     def test_b2_cannot_use_b1_role(self):
         report = mod.compare_captures(
