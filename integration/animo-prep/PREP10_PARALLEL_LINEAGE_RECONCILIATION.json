@@ -1,0 +1,29 @@
+{
+  "work_unit": "ANIMO-PREP10",
+  "purpose": "reconcile parallel PREP08/PREP09 discrepancy numbering before further serial work",
+  "status": "RECONCILED_WITHOUT_HISTORY_REWRITE",
+  "canonical_lineage_parent": "0ae0e2180cf0569f8ea22319aa9ccb54ebca3210",
+  "parallel_collision": {
+    "identifier": "TCD-030",
+    "sibling_branch": "work/animo-prep08-transfer-probes",
+    "sibling_closeout": "340db9d91e71c906143efe877313149c5af36a24",
+    "sibling_meaning": "exudate-humus N/P element-fraction redistribution sequencing gap",
+    "canonical_prep09_meaning": "AerationModel=2 semantic alias to option 0"
+  },
+  "resolution": {
+    "canonical_TCD_030": "aeration option 2 semantic alias to option 0",
+    "canonical_TCD_031": "exudate-humus N/P element-fraction redistribution sequencing gap",
+    "historical_alias": "work/animo-prep08-transfer-probes:TCD-030 -> canonical:TCD-031",
+    "closed_branch_history_rewritten": false
+  },
+  "imported_evidence": {
+    "source_branch": "work/animo-prep08-transfer-probes",
+    "analysis_blob_sha": "fc8b02659bf9aa08f8ba6e84cb8123286aa8eac7",
+    "machine_evidence_blob_sha": "82176353810bf72697544a0406003d7864b18bda",
+    "evidence_class": "SOURCE_BOUND_PLUS_DIAGNOSTIC_NOT_REFERENCE",
+    "behavioural_magnitude_measured_for_TCD031": false
+  },
+  "next_required_for_TCD031": "controlled non-uniform pre-plough Nifrhu/Pofrhu probe comparing exact pre/post Huex*N and Huex*P storage with ledger transfer terms",
+  "reference_qualified": false,
+  "production_migration_admitted": false
+}
