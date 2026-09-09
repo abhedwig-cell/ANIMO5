@@ -13,9 +13,10 @@ This supplement extends the original B3I01 checkpoint with authoritative work th
 - `ANIMO-TIME02` at `b4d78cf32cb149cf50aa2b0a0fbefee571eee6b8`;
 - `ANIMO-MASSQ01` at `79f8f806b293ce9e249e59fe4835ff6866026c4f`;
 - `ANIMO-SYNQ01` at `95ae5b8d4627f8c12f732dd8116ba2fb50ef0f50`;
-- `ANIMO-GOV02` at `474e4e2b5198c0ecaf3c03d519d5270f88852327`.
+- `ANIMO-GOV02` at `474e4e2b5198c0ecaf3c03d519d5270f88852327`;
+- `ANIMO-IO01` at `38a576135d5f63b2561b4dbe180f7121fa3f336a`.
 
-TIME02 supplies a concrete-time candidate but no new discrepancy allocation request at the checked head. MASSQ01 is still a persisted in-progress checkpoint and therefore contributes no completed intake candidate yet. SYNQ01 strengthens oracle evidence for existing TCDs without introducing a new phenomenon. GOV02 strengthens admission rules, not the discrepancy set.
+TIME02 supplies a concrete-time candidate but no new discrepancy allocation request at the checked head. MASSQ01 is still a persisted in-progress checkpoint and therefore contributes no completed intake candidate yet. SYNQ01 strengthens oracle evidence for existing TCDs without introducing a new phenomenon. GOV02 strengthens admission rules, not the discrepancy set. IO01 qualifies the revision-53 text-input contract and TTUTIL suitability boundary, but does not qualify a runtime TTUTIL adapter and introduces no new post-G5 defect candidate. Its GHGMais, parser compatibility and provenance constraints remain within already known input/provenance governance rather than constituting a new canonical TCD.
 
 ## PREP12 local-number reconciliation
 
@@ -63,6 +64,7 @@ Register presence is canonical identity and routing only. It is not B3 admission
 | plant potential uptake restart representation | `NEW_CANONICAL_TCD_CANDIDATE` -> TCD-039 | C provisional | proposed ANIMO-STATEQ02 |
 | MAPOHYDRO `LnBoMpMx` lifetime | `MAP_TO_EXISTING_TCD` -> TCD-011 | not scientific B3 class | proposed ANIMO-BUILDQ02 |
 | MAPOHYDRO index-0 bounds order | `BUILD_RUNTIME_HAZARD_NOT_TCD` | not scientific B3 class | proposed ANIMO-BUILDQ02 |
+| IO01 parser and TTUTIL contract findings | no new allocation | not applicable | ANIMO-IO follow-up |
 
 No source, testcase or production implementation is changed by this supplement.
 
