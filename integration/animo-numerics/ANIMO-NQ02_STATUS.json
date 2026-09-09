@@ -47,6 +47,7 @@
     "late_iteration_running_average_policy_observed": true,
     "fallback_reuses_recfso_from_newton_observed": true,
     "fast_langmuir_cancellation_free_exact_secant_derived": true,
+    "fast_freundlich_exact_secant_and_equal_state_derivative_derived": true,
     "tcd014_initialization_boundary_explicit": true
   },
   "primary_case": {
@@ -123,6 +124,20 @@
     "cran_grass_first_step_seam_separated": true,
     "cran_grass_first_step_attributed_to_tcd014": false
   },
+  "fast_freundlich_constitutive_probe": {
+    "executed": true,
+    "evidence_role": "B1_SYNTHETIC_ISOLATED_SOURCE_ROUTINE_PROBE_ONLY",
+    "documentation": "docs/numerics/TCD019_FAST_FREUNDLICH_CONSTITUTIVE_QUALIFICATION.md",
+    "matrix": "integration/animo-numerics/TCD019_FAST_FREUNDLICH_PROBE.json",
+    "natural_fast_freundlich_case_available": false,
+    "legacy_small_delta_constitutive_bias_confirmed": true,
+    "legacy_equal_state_jacobian_factor_error": 2.0,
+    "naive_direct_exact_quotient_cancellation_risk_confirmed": true,
+    "stable_exact_secant_route_numerically_supported": true,
+    "isolated_constitutive_mechanism_qualified": true,
+    "integrated_C_unl_convergence_qualified": false,
+    "finding": "for fast Freundlich, the legacy endpoint tangent is not the finite conserved storage secant and its Jacobian derivative tends to S'' rather than the exact-secant limit 0.5*S''; a stable exact secant closes the isolated constitutive residual to numerical floor, but integrated solver and natural-case qualification remain open"
+  },
   "fallback_policy_study": {
     "executed": true,
     "evidence_role": "B1_DIAGNOSTIC_NATURAL_FALLBACK_SENSITIVITY_ONLY",
@@ -174,6 +189,8 @@
     "candidate_route": "THRESHOLD_FREE_CANCELLATION_SAFE_EXACT_STORAGE_REPRESENTATION_PLUS_JOINTLY_QUALIFIED_NONLINEAR_AND_FALLBACK_POLICY",
     "route_level_convergence_candidate_qualified": true,
     "fast_langmuir_natural_multicase_support": true,
+    "fast_freundlich_constitutive_mechanism_support": true,
+    "fast_freundlich_integrated_solver_support": false,
     "fallback_policy_causally_material": true,
     "fallback_policy_qualified": false,
     "fallback_policy_must_be_jointly_qualified": true,
@@ -182,7 +199,8 @@
     "global_numeric_tolerance_qualified": false,
     "historical_b2_equivalence_qualified": false,
     "independent_numerical_review_completed": false,
-    "constitutive_family_coverage_complete": false
+    "constitutive_family_local_mechanism_coverage_complete": true,
+    "constitutive_family_integrated_solver_coverage_complete": false
   },
   "state_dimensions": {
     "authority_pinned": true,
@@ -198,9 +216,10 @@
     "tcd024_interaction_executed": true,
     "convergence_policy_candidate_qualified": true,
     "natural_fast_langmuir_multicase_coverage_completed": true,
+    "fast_freundlich_isolated_constitutive_probe_completed": true,
+    "fast_freundlich_integrated_solver_qualification_completed": false,
     "fallback_natural_sensitivity_executed": true,
     "fallback_policy_qualified": false,
-    "constitutive_family_coverage_completed": false,
     "independent_numerical_review_completed": false,
     "corrected_legacy_admitted": false,
     "b3_admitted": false,
@@ -210,10 +229,12 @@
     "reconstruction": "docs/numerics/TCD019_NONLINEAR_P_NUMERICAL_RECONSTRUCTION.md",
     "convergence_study": "docs/numerics/TCD019_CONVERGENCE_STUDY.md",
     "multicase_study": "docs/numerics/TCD019_MULTICASE_NATURAL_COVERAGE.md",
+    "fast_freundlich_study": "docs/numerics/TCD019_FAST_FREUNDLICH_CONSTITUTIVE_QUALIFICATION.md",
     "fallback_study": "docs/numerics/TCD019_FALLBACK_POLICY_STUDY.md",
     "interaction": "docs/numerics/TCD019_TCD024_INTERACTION.md",
     "matrix": "integration/animo-numerics/TCD019_NUMERICAL_MATRIX.json",
     "multicase_matrix": "integration/animo-numerics/TCD019_MULTICASE_EXTENSION.json",
+    "fast_freundlich_matrix": "integration/animo-numerics/TCD019_FAST_FREUNDLICH_PROBE.json",
     "fallback_matrix": "integration/animo-numerics/TCD019_FALLBACK_POLICY_MATRIX.json",
     "status": "integration/animo-numerics/ANIMO-NQ02_STATUS.json"
   },
@@ -228,16 +249,16 @@
     "diagnostic_descendants_must_be_hashed": true
   },
   "tolerance_status": "TOLERANCE_NOT_YET_QUALIFIED",
-  "status": "QUALIFIED_TCD019_NUMERICAL_CAUSALITY_AND_ROUTE_LEVEL_CONVERGENCE_POLICY_CANDIDATE_FALLBACK_MATERIAL_B3_ADMISSION_NOT_YET_OPEN",
+  "status": "QUALIFIED_TCD019_NUMERICAL_CAUSALITY_CONSTITUTIVE_MECHANISMS_AND_ROUTE_LEVEL_CANDIDATE_FALLBACK_AND_INTEGRATED_POLICY_OPEN_B3_ADMISSION_NOT_YET_OPEN",
   "corrected_legacy_admitted": false,
   "B3_admitted": false,
   "production_migration_admitted": false,
   "open_blockers": [
-    "constitutive-family completion beyond the supplied fast-Langmuir natural cases, especially fast Freundlich numerical policy",
+    "integrated C_unl fast-Freundlich convergence and control-path qualification; no natural fast-Freundlich case is available in the supplied P-active testbank",
     "joint Newton/fallback governing residual, bracketing and root-selection policy qualification",
     "separate initialization/state-consistency resolution for the first-step fallback interaction",
     "independent numerical review",
     "B2 historical/reference characterization where obtainable"
   ],
-  "next_gate": "QUALIFY_FAST_FREUNDLICH_CONSTITUTIVE_POLICY_AND_JOINT_NEWTON_FALLBACK_ROOT_SELECTION_BEFORE_ANY_B3_ADMISSION_WORKUNIT"
+  "next_gate": "QUALIFY_INTEGRATED_FAST_FREUNDLICH_AND_JOINT_NEWTON_FALLBACK_ROOT_SELECTION_OR_EXPLICITLY_NARROW_THE_B3_CLAIM_SCOPE_BEFORE_ANY_B3_ADMISSION_WORKUNIT"
 }
