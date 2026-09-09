@@ -5,18 +5,19 @@
   "candidates": [
     {
       "id": "PREP02R-C01",
-      "artifact_identity": "ANIMO 4.1.5 revision 53 frozen source lineage",
+      "artifact_identity": "ANIMO_4.1.5.53(3).zip frozen supplied source archive",
       "artifact_type": "source_archive_identity",
-      "version": "4.1.5",
-      "revision": "53",
+      "version": "4.1.5_self_identified",
+      "revision": "53_self_identified",
       "source_tag": "file:///V:/svn_Animo/tags/animo4.1.5",
       "toolchain_evidence": "Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]",
       "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
       "bytes_available": true,
-      "provenance_strength": "strong_source_bound",
-      "relation_to_revision_53": "exact_source_identity",
+      "provenance_strength": "strong_exact_supplied_bytes_archive_self_identification_with_internal_svn_keyword_heterogeneity",
+      "relation_to_revision_53": "exact_supplied_archive_bytes_self_identify_as_4.1.5_revision_53_but_homogeneous_canonical_svn_tag_provenance_unresolved",
       "trust_classification": "B0_SOURCE_NOT_EXECUTABLE_REFERENCE",
-      "reference_admitted": false
+      "reference_admitted": false,
+      "notes": "PREP01 found all 53 observed file-level HeadURL values pointing to tags/animo4.1.4 while Version.inc points to tags/animo4.1.5 revision 53. Byte identity is pinned; canonical homogeneous tag provenance is not proven."
     },
     {
       "id": "PREP02R-C02",
@@ -50,10 +51,10 @@
       "sha256": null,
       "bytes_available": false,
       "provenance_strength": "strong_official_institutional_route",
-      "relation_to_revision_53": "unknown_until_WUR_confirms_retained_release",
+      "relation_to_revision_53": "unknown_until_WUR_confirms_retained_historical_release",
       "trust_classification": "OFFICIAL_ACQUISITION_ROUTE_NOT_ARTIFACT",
       "reference_admitted": false,
-      "notes": "Current WUR product page states executable available upon request and directs programme-code/model-availability inquiries to Leo Renaud. Page wording is not revision-53 provenance."
+      "notes": "Current WUR product page states executable available upon request. The current linked ANIMO agreement explicitly names Version 4.0, so a generic request cannot be treated as evidence that 4.1.x or revision 53 is the current distributed artifact. Historical 4.1.x must be requested explicitly."
     },
     {
       "id": "PREP02R-C04",
@@ -131,6 +132,39 @@
       "relation_to_revision_53": "source_bound_but_not_independent_historical_truth",
       "trust_classification": "DIAGNOSTIC_NOT_REFERENCE",
       "reference_admitted": false
+    },
+    {
+      "id": "PREP02R-C08",
+      "artifact_identity": "WUR Agreement Animo 2026",
+      "artifact_type": "official_current_administrative_distribution_document",
+      "version": "4.0",
+      "revision": null,
+      "date": "2026",
+      "toolchain": null,
+      "sha256": null,
+      "bytes_available": false,
+      "provenance_strength": "strong_official_current_document",
+      "relation_to_revision_53": "current_public_distribution_agreement_explicitly_names_4.0_and_does_not_establish_4.1.x_retention",
+      "trust_classification": "OFFICIAL_DISTRIBUTION_SCOPE_EVIDENCE_NOT_REFERENCE",
+      "reference_admitted": false,
+      "source_url": "https://backend.wur.nl/sites/default/files/2026-01/Agreement%20Animo%202026.pdf"
+    },
+    {
+      "id": "PREP02R-C09",
+      "artifact_identity": "WUR General Terms and Conditions as to the Making Available of Computer Software",
+      "artifact_type": "official_distribution_conditions",
+      "version": "revised_November_2017",
+      "revision": null,
+      "date": "current_link_checked_2026-09-09",
+      "toolchain": null,
+      "sha256": null,
+      "bytes_available": false,
+      "provenance_strength": "strong_official_current_document",
+      "relation_to_revision_53": "governs_acquisition_and_redistribution_conditions_not_behavioural_lineage",
+      "trust_classification": "CONTROLLED_RETENTION_POLICY_EVIDENCE_NOT_REFERENCE",
+      "reference_admitted": false,
+      "notes": "Terms prohibit making WENR software available to third parties without prior written WENR permission; PREP02R should retain received binaries under controlled access and publish only hashes/provenance unless permission says otherwise.",
+      "source_url": "https://backend.wur.nl/sites/default/files/2025-10/GENERAL-TERMS-CONDITIONS-ENG.pdf"
     }
   ],
   "qualifying_reference_artifact_obtained": false,
