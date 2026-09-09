@@ -2,9 +2,10 @@
   "work_unit": "ANIMO-B3A04",
   "target_tcd": "TCD-026",
   "purpose": "Strengthen naturalistic activation evidence with a bounded chronological restart probe while preserving the Class-A accounting-only scope.",
-  "status": "PLANNED_NOT_YET_EXECUTED",
+  "status": "EXECUTED_PASS_TCD026_ACTIVATION_FULL_SPLIT_IDENTITY_NOT_CLAIMED",
   "branch": "work/animo-b3a04-tcd026-class-a-readiness",
   "starting_head": "1192ee77eda47149af1e31a752e09d343edd9273",
+  "result_artifact": "integration/animo-b3/TCD026_CHRONOLOGICAL_RESTART_PROBE.json",
   "frozen_B0": {
     "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
@@ -16,24 +17,40 @@
     "hydrology_subperiod_support": "input1.for can position SWATRE.UNF to an ANIMO start date inside the hydrology period"
   },
   "probe_design": {
-    "segment_A": "Run frozen diagnostic CranMais from original start to a selected accepted chronological boundary and capture model-produced INITIAL.OUT.",
-    "segment_B": "Start a second execution at that chronological boundary using segment-A INITIAL.OUT as INITIAL.INP and the same frozen hydrology stream positioned to the new start date.",
-    "comparison": "Evaluate only the TCD-026 restart-state and beginning-ledger identity surfaces required for Class-A readiness; do not infer whole-model split-run identity unless independently proven.",
+    "segment_A": "Run frozen diagnostic CranMais from 1974-01-01 through 1974-12-31 and capture model-produced INITIAL.OUT.",
+    "segment_B": "Restart on 1975-01-01 using segment-A INITIAL.OUT byte-for-byte as INITIAL.INP, unchanged hydrology payload positioned by the legacy reader, and a deterministic execution-copy management tail preserving the original 1975 crop/addition chronology.",
+    "comparison": "Evaluate only the TCD-026 restart-state and beginning-ledger identity surfaces required for Class-A readiness; retain a separate continuous-vs-formatted-restart crosscheck without promoting it to exact checkpoint identity.",
     "candidate_ledger_observation": "Bfom(Inip_x,Ly) += Ex(Ln)*P"
   },
-  "required_checks": [
-    "Segment-A generated INITIAL.OUT contains nonzero model-produced Ex/Rsex.",
-    "Segment-B reads the model-produced >orgexu: values without manual Ex synthesis.",
-    "Legacy segment-B first fresh-OM balance residual matches the omitted beginning Ex mass subject only to report-format rounding.",
-    "Ledger-only candidate removes that deterministic residual without changing restart state or ordinary state/process outputs.",
-    "No tolerance is introduced.",
-    "No physical source, testcase, initialization physics, production migration, corrected-legacy admission or other organic-matter TCD is modified."
-  ],
+  "required_checks": {
+    "segment_A_nonzero_model_produced_Ex": "PASS_642.718929_KG_HA",
+    "segment_B_uses_exact_segment_A_initial_out": "PASS_BYTE_IDENTICAL_SHA256_6578e35e7b5bd39927569ff4f004afbe164d2ce20c98a6d75dc75b7ab536764b",
+    "legacy_residual_matches_omitted_beginning_Ex": "PASS_SUBJECT_ONLY_TO_LEGACY_REPORT_ROUNDING",
+    "ledger_only_candidate_removes_residual": "PASS_1.82E-12_NOT_A_TOLERANCE",
+    "candidate_restart_state_unchanged": "PASS_BYTE_IDENTICAL_FINAL_INITIAL_OUT",
+    "ordinary_state_process_outputs_unchanged": "PASS_19_OF_23_NORMALIZED_IDENTICAL_WITH_ONLY_4_DECLARED_OM_BALANCE_SURFACES_CHANGED",
+    "no_tolerance": "PASS",
+    "hard_scope": "PASS"
+  },
+  "continuous_vs_split_crosscheck": {
+    "exact_whole_model_identity": false,
+    "numeric_tokens_compared": 564,
+    "printed_numeric_tokens_different": 32,
+    "max_abs_printed_numeric_difference": 1.0e-6,
+    "interpretation": "Legacy formatted restart is not promoted to an exact canonical checkpoint. This limitation is retained rather than hidden by tolerance."
+  },
+  "stateq02_crosscheck": {
+    "head": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "restricted_core_checkpoint_semantics": "QUALIFIED",
+    "root_exudate_state_ORG004": "CORE_CNP_MANDATORY_ACCEPTED_OWNER",
+    "tcd026_ledger_oracle": false,
+    "B2_reference": false
+  },
   "explicit_nonclaims": [
-    "This plan does not predeclare a full continuous-vs-split trajectory identity qualification.",
-    "This plan does not qualify management continuation completeness.",
-    "This plan does not create B2 historical-reference evidence.",
-    "This plan does not constitute independent second-line review."
+    "This probe does not qualify full continuous-vs-split whole-model trajectory identity through legacy formatted INITIAL.OUT/IN.",
+    "This probe does not qualify all management continuation semantics generally; it uses a bounded deterministic 1975 execution-copy tail.",
+    "This probe does not create B2 historical-reference evidence.",
+    "This probe does not constitute independent second-line review."
   ],
   "fail_closed": true
 }
