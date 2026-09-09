@@ -47,7 +47,10 @@
       "classification": "DOCUMENT_SOURCE_SIGN_CONFLICT_UNRESOLVED",
       "canonical_tcd": null,
       "root_finding": "peer-reviewed ANIMO-specific 2011 Appendix A17 uses a positive Q10 exponent while revision-53 FracN2Onitr uses 2**(-(Te-Terf)/10)",
+      "evidence_update": "Maag & Vinther 1996, cited by the revision-53 source, reports that the N2O-N percentage from nitrification decreases as temperature increases; this supports the source direction and makes the printed Appendix A17 sign suspect without proving a publication error",
+      "disposition": "PUBLICATION_EQUATION_SIGN_SUSPECT_SOURCE_DIRECTION_SUPPORTED_BY_CITED_EMPIRICAL_STUDY",
       "code_defect_admitted": false,
+      "publication_typo_admitted": false,
       "recommended_action": "recover detailed Hendriks GHG derivation or authoritative Report 2054 bytes and source/change history before disposition"
     },
     {
@@ -55,18 +58,25 @@
       "classification": "DOCUMENT_SOURCE_AERATION_FACTOR_PLACEMENT_CONFLICT_REQUIRES_DETAILED_AUTHORITY",
       "canonical_tcd": null,
       "root_finding": "peer-reviewed ANIMO-specific 2011 Appendix A11 omits fae from the printed N2O-reduction numerator while revision 53 folds aeration into RatFacN2O used by the reduction partition",
+      "algebraic_isolation": "for the OM-limited branch and otherwise identical mapped variables, revision-53 local instantaneous N2O reduction equals fae times the printed Appendix A11 reduction expression",
+      "whole_timestep_factor_claim": false,
       "code_defect_admitted": false,
-      "recommended_action": "independent algebra/unit review plus detailed-authority and source-history recovery before disposition"
+      "recommended_action": "detailed-authority and source-history recovery before disposition"
     }
   ],
   "theory_authority_recovery": {
     "artifact": "integration/animo-ghg/GHG_THEORY_AUTHORITY_RECOVERY_2011.json",
+    "algebra_crosswalk": "integration/animo-ghg/GHG_N2O_EQUATION_ALGEBRA_RECONCILIATION.json",
     "stolk_2011_vadose_zone_journal_peer_reviewed": true,
     "stolk_2011_biogeosciences_peer_reviewed": true,
     "original_animo_n2o_equations_recovered": true,
+    "a10_om_limited_production": "EXACT_ALGEBRAIC_MATCH_AFTER_STOICHIOMETRIC_MAPPING",
+    "a11_reduction": "ISOLATED_EXTRA_FAE_FACTOR_IN_REV53_NUMERATOR_RELATIVE_TO_PRINTED_PUBLICATION_UNRESOLVED",
+    "a17_temperature": "PUBLICATION_SIGN_SUSPECT_SOURCE_DIRECTION_SUPPORTED_BY_MAAG_VINTHER_1996_UNRESOLVED",
     "tcd008_n2o_gap_narrowed": true,
     "tcd008_closed": false,
-    "detailed_hendriks_report_2054": "PUBLICATION_EXISTENCE_AND_REPORT_NUMBER_LEAD_NOT_FROZEN"
+    "detailed_hendriks_report_2054": "PUBLICATION_EXISTENCE_AND_REPORT_NUMBER_LEAD_NOT_FROZEN",
+    "public_source_history_search": "NO_PUBLIC_SOURCE_CODE_HIT_RECOVERED_FOR_TARGETED_INTERNAL_SYMBOLS"
   },
   "activated_case_minimum_evidence": [
     "GHGasses task 1 and task 2 reachability",
