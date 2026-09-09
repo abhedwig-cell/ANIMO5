@@ -2,7 +2,7 @@
   "work_unit": "ANIMO-UBQ01",
   "target": "TCD-042",
   "scope": "EXACT_ZERO_THROUGHFLOW_ATOM_ONLY",
-  "status": "EXECUTABLE_EVIDENCE_PERSISTED_VALIDATION_REFRESH_PENDING",
+  "status": "QUALIFIED_EXACT_ZERO_CLASS_B_ATOM_PARENT_NUMERICAL_SUBTHRESHOLD_ATOM_PENDING",
   "frozen_identity": {
     "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
@@ -86,6 +86,12 @@
     "reason": "The existing positive-flow reservoir equation has a unique exact zero-flow limit; no new state or process is required."
   },
   "executable_evidence": {
+    "integrated_validation": {
+      "workflow_run_id": 34365508588,
+      "validated_head": "87171f13e2492e8f467bc456c2a90564b54ffe5c",
+      "conclusion": "success",
+      "validator_result": "PASS"
+    },
     "synthetic_exact_zero_oracle": {
       "workflow_run_id": 34362690102,
       "head": "656bc7fe073a6e7636e73f88940e98bf023db9b7",
@@ -119,6 +125,11 @@
     "tolerance_or_threshold_change_admitted": false,
     "new_tcd_reserved": false,
     "canonical_child_created": false
+  },
+  "qualification": {
+    "exact_zero_atom_qualified": true,
+    "parent_tcd_fully_qualified": false,
+    "parent_blocker": "FINITE_POSITIVE_SUBTHRESHOLD_NUMERICAL_ATOM_OPEN"
   },
   "admission": {
     "b3_admitted": false,
