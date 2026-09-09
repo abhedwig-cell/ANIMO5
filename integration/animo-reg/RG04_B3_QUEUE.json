@@ -1,0 +1,298 @@
+{
+  "work_unit": "ANIMO-RG04",
+  "snapshot_date": "2026-09-09",
+  "decision_boundary": "GOVERNANCE_RECONCILIATION_ONLY_NO_SCIENTIFIC_ADMISSIONS",
+  "canonical_register": {
+    "branch": "work/animo-b3i03-canonical-register-append",
+    "head": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "tail": "TCD-042",
+    "append_only": true,
+    "register_presence_is_admission": false
+  },
+  "route_state": {
+    "G6H": "PARTIAL_RECOVERY_HISTORICAL_B2_NOT_PASSED",
+    "G6U": "NOT_ELIGIBLE_ACQUISITION_NOT_EXHAUSTED",
+    "PREP02R_head": "60f3c57a3299a1890b4cdd66befd5a120a306383",
+    "PREP02R_external_request_sent": false,
+    "historical_reference_artifact_obtained": false,
+    "modern_native_rebuild_obtained": true,
+    "modern_native_rebuild_is_historical_B2": false,
+    "readiness_can_proceed_independently": true
+  },
+  "allowed_states": [
+    "READY_FOR_ADMISSION_READINESS",
+    "WAITING_ON_ROUTE_AND_REVIEW",
+    "WAITING_ON_THEORY",
+    "WAITING_ON_NUMERICS",
+    "WAITING_ON_STATE",
+    "WAITING_ON_RUNTIME",
+    "WAITING_ON_ATOMIZATION",
+    "NOT_READY"
+  ],
+  "entries": [
+    {
+      "tcd": "TCD-015",
+      "process": "NO3 negative-concentration transport mass conservation",
+      "b3_class": "B",
+      "queue_state": "WAITING_ON_ROUTE_AND_REVIEW",
+      "owners": ["B3B01"],
+      "blockers": ["G6H not passed and G6U not eligible", "genuinely independent second-line review not completed"],
+      "next_action": "Preserve the qualified Class-B readiness dossier and obtain independent review plus a valid claim-scoped route; do not redo readiness work.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-016",
+      "process": "NH4 surface-layer dry-down continuation state",
+      "b3_class": "C with dependent E child",
+      "queue_state": "WAITING_ON_THEORY",
+      "owners": ["SQ01", "STATEQ01"],
+      "blockers": ["physical dry-phase identity not theory-qualified", "dry-hold/remobilization law unresolved", "independent scientific review not performed"],
+      "next_action": "Close TCD-016-C1 scientific state semantics before resuming the numerical transition child.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-017",
+      "process": "organic-P plough redistribution balance",
+      "b3_class": "A",
+      "queue_state": "WAITING_ON_ROUTE_AND_REVIEW",
+      "owners": ["B3A02"],
+      "blockers": ["G6H not passed and G6U not eligible", "genuinely independent second-line review not completed"],
+      "next_action": "Use the prepared second-line handoff; preserve the qualified accounting-only readiness dossier and keep TCD-027/TCD-028 separate.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-018",
+      "process": "water interception storage balance interface",
+      "b3_class": "A",
+      "queue_state": "WAITING_ON_ROUTE_AND_REVIEW",
+      "owners": ["B3A03", "B3A03R"],
+      "blockers": ["G6H not passed and G6U not eligible", "B3A03R technical recheck is explicitly not independent"],
+      "next_action": "Execute the prepared independent second-line handoff in a genuinely separate review context; keep hydrology state and flux unchanged.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-019",
+      "process": "nonlinear phosphorus sorption numerical conservation policy",
+      "b3_class": "E",
+      "queue_state": "WAITING_ON_NUMERICS",
+      "owners": ["NQ02", "SYNQ01"],
+      "blockers": ["joint Newton/fallback policy unresolved", "specific tolerance unqualified", "TCD-029 coefficient semantics separate", "independent numerical review incomplete"],
+      "next_action": "Finish the nonlinear/fallback policy and keep TCD-029 separate before admission-readiness work.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-023",
+      "process": "stable-DOM P SDO-to-humus cross-species partition",
+      "b3_class": "B",
+      "queue_state": "READY_FOR_ADMISSION_READINESS",
+      "owners": ["SYNQ01", "B3Q01"],
+      "blockers": ["no atomic readiness workunit completed", "wider stable-DOM theory must not be silently admitted"],
+      "next_action": "Open a narrowly scoped Class-B readiness workunit for the species-partition identity only.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-024",
+      "process": "slow Langmuir sorption site indexing",
+      "b3_class": "B",
+      "queue_state": "READY_FOR_ADMISSION_READINESS",
+      "owners": ["SYNQ01", "NQ02", "B3Q01"],
+      "blockers": ["no dedicated atomic readiness workunit", "historical prevalence unknown"],
+      "next_action": "Open Class-B readiness with unequal-site coverage and unrounded P trajectory/non-interference checks.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-025",
+      "process": "macropore main balance integration",
+      "b3_class": "A",
+      "queue_state": "WAITING_ON_STATE",
+      "owners": ["MP01", "MP02", "STATEQ01", "MASSQ02"],
+      "blockers": ["persistent macropore solute restart state incomplete under TCD-031", "active-feature ledger closure absent"],
+      "next_action": "Resolve active macropore persistent state and control-volume ownership before ledger-correction readiness.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-026",
+      "process": "fresh organic matter initial exudate storage ledger omission",
+      "b3_class": "A",
+      "queue_state": "READY_FOR_ADMISSION_READINESS",
+      "owners": ["B3Q01", "PREP06"],
+      "blockers": ["no atomic Class-A readiness record"],
+      "next_action": "Open atomic Class-A readiness with state/flux non-interference and a changed-output whitelist.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-027",
+      "process": "organic-P detailed redistribution accumulator",
+      "b3_class": "A",
+      "queue_state": "WAITING_ON_ROUTE_AND_REVIEW",
+      "owners": ["B3A01"],
+      "blockers": ["G6H not passed and G6U not eligible", "independent second-line review remains required"],
+      "next_action": "Preserve completed readiness; obtain a valid route and independent review before any disposition record.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-028",
+      "process": "stable-DOM plough redistribution accumulator lifecycle",
+      "b3_class": "B provisional",
+      "queue_state": "WAITING_ON_RUNTIME",
+      "owners": ["PREP10", "PREP10C", "BUILDQ01", "B3I01"],
+      "blockers": ["historical/local storage-duration semantics unresolved", "runtime lifetime must be separated from scientific transfer semantics"],
+      "next_action": "Qualify event-local lifetime under explicit context/storage semantics, then open Class-B readiness.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-029",
+      "process": "Iflsol4 analytical transport coefficient cancellation",
+      "b3_class": "E provisional",
+      "queue_state": "WAITING_ON_NUMERICS",
+      "owners": ["NQ02", "B3I01"],
+      "blockers": ["cancellation-safe equivalence/precision envelope not fully qualified", "independent numerical review absent"],
+      "next_action": "Continue separate numerical qualification without composing it into TCD-019.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-030",
+      "process": "macropore initial NO3 validation wrong-species check",
+      "b3_class": "B provisional",
+      "queue_state": "READY_FOR_ADMISSION_READINESS",
+      "owners": ["MP01", "B3I01"],
+      "blockers": ["positive/negative branch contract coverage not yet qualified"],
+      "next_action": "Open atomic Class-B input-contract readiness with valid/invalid NO3 and NH4 separation cases.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-031",
+      "process": "macropore persistent solute restart state",
+      "b3_class": "C provisional",
+      "queue_state": "WAITING_ON_STATE",
+      "owners": ["MP01", "MP02", "STATEQ01"],
+      "blockers": ["complete persistent owner set not admitted", "continuous-versus-split active macropore equivalence unavailable"],
+      "next_action": "Define and qualify the full active macropore solute checkpoint state before correction readiness.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-032",
+      "process": "GHG methanogenesis source-pool transfers",
+      "b3_class": "B provisional",
+      "queue_state": "WAITING_ON_THEORY",
+      "owners": ["GHG01", "B3I01"],
+      "blockers": ["revision-specific source allocation authority incomplete", "closed carbon transfer identity not scientifically fixed"],
+      "next_action": "Recover and qualify source-allocation theory and the closed carbon-transfer identity first.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-033",
+      "process": "CH4 production component partition",
+      "b3_class": "B provisional",
+      "queue_state": "WAITING_ON_THEORY",
+      "owners": ["GHG01", "B3I01"],
+      "blockers": ["authoritative component equation/partition semantics unresolved"],
+      "next_action": "Qualify the authoritative partition equation and partial-anaerobiosis identity before readiness.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-034",
+      "process": "CH4 plant-mediated transport growth temperature indexing",
+      "b3_class": "B provisional",
+      "queue_state": "WAITING_ON_THEORY",
+      "owners": ["GHG01", "B3I01"],
+      "blockers": ["intended temperature-layer state semantics unresolved"],
+      "next_action": "Resolve intended temperature state from theory/design evidence, then qualify local correction behaviour.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-035",
+      "process": "GHG restart phase partition continuity",
+      "b3_class": "C provisional",
+      "queue_state": "WAITING_ON_STATE",
+      "owners": ["GHG01", "STATEQ01"],
+      "blockers": ["checkpoint phase owner not admitted", "split-run GHG reference unavailable"],
+      "next_action": "Define checkpoint phase ownership/reconstruction under GSTATE before B3 readiness.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-036",
+      "process": "GHG ponding layer0 restart continuity",
+      "b3_class": "C provisional",
+      "queue_state": "WAITING_ON_STATE",
+      "owners": ["GHG01", "STATEQ01"],
+      "blockers": ["layer0 GHG owner/reconstruction not admitted", "pre-existing ponding split-run equivalence absent"],
+      "next_action": "Qualify explicit layer0 GHG state ownership under GSTATE first.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-037",
+      "process": "GHG balance observer working-array interface",
+      "b3_class": "A provisional",
+      "queue_state": "WAITING_ON_RUNTIME",
+      "owners": ["GHG01", "BUILDQ01", "MASSQ02"],
+      "blockers": ["active producer and lifetime not established", "observer non-interference cannot yet be demonstrated"],
+      "next_action": "Resolve explicit runtime producer/lifetime, then apply Class-A observer non-interference readiness.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-038",
+      "process": "crop actual uptake restart initialization direction",
+      "b3_class": "B provisional",
+      "queue_state": "READY_FOR_ADMISSION_READINESS",
+      "owners": ["STATEQ01", "B3I01"],
+      "blockers": ["no atomic restore-identity readiness record"],
+      "next_action": "Open atomic Class-B restore-identity readiness while keeping canonical STATE admission separate.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-039",
+      "process": "crop potential uptake restart continuation state",
+      "b3_class": "C provisional",
+      "queue_state": "WAITING_ON_STATE",
+      "owners": ["STATEQ01", "B3I01"],
+      "blockers": ["owner versus deterministic reconstruction not admitted for the unresolved internal-crop profile"],
+      "next_action": "Resolve the Class-C continuation-state problem under GSTATE; STATEQ02 only qualifies the external-crop restricted profile.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-040",
+      "process": "layer0 aqueous restart initialization erasure",
+      "b3_class": "B provisional",
+      "queue_state": "READY_FOR_ADMISSION_READINESS",
+      "owners": ["STATEQ01", "STATEQ02", "B3I01"],
+      "blockers": ["atomic downstream consequence/readiness record incomplete"],
+      "next_action": "Open atomic Class-B restore-identity readiness using the nonzero-path evidence; STATEQ02's exact rejection sentinel must not be mistaken for qualification of that path.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-041",
+      "process": "GHG lower air boundary initialization",
+      "b3_class": "B provisional",
+      "queue_state": "READY_FOR_ADMISSION_READINESS",
+      "owners": ["BUILDQ04", "BUILDQ03", "GHG01", "B3I01"],
+      "blockers": ["activated GHG non-interference/admission record not yet completed", "historical Intel effect unknown"],
+      "next_action": "Open atomic Class-B readiness using the zero-boundary contract and active GHG unrounded comparisons.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    },
+    {
+      "tcd": "TCD-042",
+      "process": "upper-boundary precipitation/deposition solute transaction at zero top throughflow",
+      "b3_class": "C strictest provisional pending atomization",
+      "queue_state": "WAITING_ON_ATOMIZATION",
+      "owners": ["B3I03", "MASSQ02", "UBQ01"],
+      "blockers": ["Class A versus Class C versus possible Class B semantics not selected", "source/theory/runtime atomization incomplete", "UBQ01 is only an in-progress checkpoint"],
+      "next_action": "Continue UBQ01 and select no corrected semantics until owner and transaction identity are qualified for zero and nonzero throughflow.",
+      "admission_route_state": "NO_ROUTE_OPEN"
+    }
+  ],
+  "counts": {
+    "entries": 25,
+    "READY_FOR_ADMISSION_READINESS": 7,
+    "WAITING_ON_ROUTE_AND_REVIEW": 4,
+    "WAITING_ON_THEORY": 4,
+    "WAITING_ON_NUMERICS": 2,
+    "WAITING_ON_STATE": 5,
+    "WAITING_ON_RUNTIME": 2,
+    "WAITING_ON_ATOMIZATION": 1,
+    "NOT_READY": 0,
+    "scientific_admissions": 0
+  },
+  "scientific_admissions": [],
+  "production_migration": "NOT_ADMITTED"
+}
