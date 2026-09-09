@@ -1,0 +1,76 @@
+{
+  "work_unit": "ANIMO-NQ02",
+  "target": "TCD-019",
+  "title": "Nonlinear Phosphorus Sorption Conservation, Convergence & Numerical Policy Qualification",
+  "evidence_class": "B1_DIAGNOSTIC_MATRIX_ONLY",
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "nq01_authority": {
+    "branch": "work/animo-nq01-numerical-qualification-architecture",
+    "head": "e558dff12b127e0662cad62beea7527b42ad89ac"
+  },
+  "primary_case": {
+    "name": "LWKM_gras_1040.2021.2045",
+    "optcxfa": 2,
+    "ncxfa": 1,
+    "optcxsl": 3,
+    "ncxsl": 3,
+    "tcd024_naturally_active": false
+  },
+  "residuals": {
+    "R_eq": "independent evaluation of accepted C_unl governing-equation residual components",
+    "R_cons": "Transgen Bapd-Batr before warning filtering",
+    "R_constitutive": "Rhbd*(Avadco*(Rsc-Con)-(Rsampocxfa-Ampocxfa)) per fast site"
+  },
+  "experiments": [
+    {"id":"NQ02-LWKM-000","family":"baseline","factor":"none","value":"legacy","status":"PLANNED"},
+    {"id":"NQ02-LWKM-D1","family":"fast_sorption_delta_switch","factor":"delta_switch","value":1e-5,"status":"PLANNED"},
+    {"id":"NQ02-LWKM-D2","family":"fast_sorption_delta_switch","factor":"delta_switch","value":1e-6,"status":"PLANNED","legacy":true},
+    {"id":"NQ02-LWKM-D3","family":"fast_sorption_delta_switch","factor":"delta_switch","value":1e-7,"status":"PLANNED"},
+    {"id":"NQ02-LWKM-D4","family":"fast_sorption_delta_switch","factor":"delta_switch","value":1e-8,"status":"PLANNED"},
+    {"id":"NQ02-LWKM-D5","family":"fast_sorption_delta_switch","factor":"delta_switch","value":1e-10,"status":"PLANNED"},
+    {"id":"NQ02-LWKM-D6","family":"fast_sorption_delta_switch","factor":"delta_switch","value":1e-12,"status":"PLANNED"},
+    {"id":"NQ02-LWKM-S1","family":"newton_small","factor":"Small","value":1e-3,"status":"PLANNED"},
+    {"id":"NQ02-LWKM-S2","family":"newton_small","factor":"Small","value":1e-4,"status":"PLANNED","legacy":true},
+    {"id":"NQ02-LWKM-S3","family":"newton_small","factor":"Small","value":1e-5,"status":"PLANNED"},
+    {"id":"NQ02-LWKM-S4","family":"newton_small","factor":"Small","value":1e-6,"status":"PLANNED"},
+    {"id":"NQ02-LWKM-S5","family":"newton_small","factor":"Small","value":1e-8,"status":"PLANNED"},
+    {"id":"NQ02-LWKM-S6","family":"newton_small","factor":"Small","value":1e-10,"status":"PLANNED"},
+    {"id":"NQ02-LWKM-E1","family":"exact_constitutive_representation","factor":"small_delta_langmuir_representation","value":"cancellation_free_exact_secant_with_exact_derivative","legacy_small":"1e-4","status":"PLANNED","tcd014_guard_required":true},
+    {"id":"NQ02-LWKM-R1","family":"residual_stop_structure","factor":"signed_residual_acceptance","value":"magnitude_checked_diagnostic","status":"PLANNED"},
+    {"id":"NQ02-TCD024-L","family":"interaction","variant":"LEGACY_BOTH","status":"BLOCKED_ACTIVATED_CASE_SELECTION"},
+    {"id":"NQ02-TCD024-B","family":"interaction","variant":"TCD024_ONLY","status":"BLOCKED_ACTIVATED_CASE_SELECTION"},
+    {"id":"NQ02-TCD024-E","family":"interaction","variant":"TCD019_ONLY","status":"BLOCKED_ACTIVATED_CASE_SELECTION"},
+    {"id":"NQ02-TCD024-C","family":"interaction","variant":"COMBINED_DIAGNOSTIC","status":"BLOCKED_ACTIVATED_CASE_SELECTION"}
+  ],
+  "capture_fields": [
+    "diagnostic_source_hash",
+    "compiler_identity",
+    "compile_flags",
+    "executable_hash",
+    "case_adapter_hash_or_metadata",
+    "iteration_count",
+    "newton_exit_reason",
+    "fallback_path",
+    "R_eq_F1",
+    "R_eq_F2",
+    "R_cons",
+    "R_constitutive",
+    "Rsc",
+    "Avc",
+    "fast_sorbed_P",
+    "slow_sorbed_P",
+    "precipitated_P",
+    "external_P_fluxes",
+    "cumulative_P_ledgers"
+  ],
+  "hard_rules": {
+    "arbitrary_tolerance_forbidden": true,
+    "legacy_residual_as_tolerance_forbidden": true,
+    "b1_as_b2_forbidden": true,
+    "production_change_forbidden": true,
+    "frozen_source_modification_forbidden": true,
+    "tcd019_tcd024_combined_admission_forbidden": true
+  },
+  "tolerance_status": "TOLERANCE_NOT_YET_QUALIFIED"
+}
