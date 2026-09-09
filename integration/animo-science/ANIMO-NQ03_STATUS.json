@@ -3,7 +3,7 @@
   "title": "TCD-042-E1 Finite-Positive Upper-Reservoir Numerical Evaluation Policy Qualification",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-nq03-tcd042-e1-numerical-policy",
-  "status": "IN_PROGRESS_PERSISTED_NUMERICAL_STUDY_PENDING",
+  "status": "QUALIFIED_RESTRICTED_TCD042_E1_NATURAL_ENVELOPE_NUMERICAL_POLICY_INDEPENDENT_REVIEW_PENDING",
   "target": "TCD-042-E1",
   "class": "E_NUMERICAL_POLICY",
   "trigger": "Flpn=0 AND 0<Flux<1.0d-8",
@@ -18,11 +18,52 @@
     "UBQ01_role": "EXACT_ZERO_BOUNDARY_REFERENCE_ONLY",
     "UBQ02_head": "bb572bb5d431f91d780018a1acbb345fbcfced37",
     "UBQ02_status": "QUALIFIED_TCD042_FINITE_POSITIVE_SUBTHRESHOLD_CLASS_E_SEAM_NUMERICAL_POLICY_PENDING",
-    "B3I05_recheck_required_before_closeout": true
+    "B3I05_live_recheck_head": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+    "B3I05_live_recheck_status": "QUALIFIED_TCD042_CANONICAL_CHILD_ROUTING_NO_NEW_TCD_NO_ADMISSIONS",
+    "B3I05_live_recheck_work_unit_complete": true,
+    "B3I05_recheck_required_before_closeout": true,
+    "B3I05_recheck_satisfied": true
   },
   "frozen_identity": {
     "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "selected_policy": {
+    "name": "NQ03_RESTRICTED_NATURAL_ENVELOPE_QUADRATIC_DIMENSIONLESS_POLICY",
+    "applicability": "Flpn=0, 0<Flux<1.0d-8, Hetop>0, 0<P<=3.8510200002999744e-7",
+    "precision": "binary64",
+    "A1": "exp(-P)",
+    "f": "1-P/2+P^2/6",
+    "g": "1/2-P/6+P^2/24",
+    "A2": "(St/Hetop)*f",
+    "B1": "f",
+    "B2": "(St/Hetop)*g",
+    "outside_envelope": "NOT_QUALIFIED_FAIL_CLOSED"
+  },
+  "qualification_basis": {
+    "high_precision_oracle_digits": 100,
+    "dense_envelope_probe_points": 2008,
+    "natural_records": 1238,
+    "natural_cases": 6,
+    "P_min": 4.2351647362715017e-20,
+    "P_max": 3.8510200002999744e-7,
+    "degree_2_f_truncation_bound_at_Pmax": 2.3796664117094745e-21,
+    "degree_2_g_truncation_bound_at_Pmax": 4.759332823418949e-22,
+    "binary64_unit_roundoff": 1.1102230246251565e-16,
+    "series2_binary64_matches_rounded_100_digit_reference_on_dense_envelope": true,
+    "expm1_alone_complete_policy": false,
+    "binary32_canonical": false,
+    "exact_zero_continuity_matches_TCD042_B1": true,
+    "conservation_tolerance_derived_from_residual": false
+  },
+  "validation": {
+    "tested_head": "106977675d5722fc354c752be107e30114c3db7d",
+    "github_actions_run_id": 34382504188,
+    "job_id": 102570562834,
+    "workflow_conclusion": "success",
+    "high_precision_oracle_step": "PASS",
+    "validator_step": "PASS",
+    "scope_guard_step": "PASS"
   },
   "scope_guards": {
     "production_patch": false,
@@ -34,11 +75,39 @@
     "balance_residual_derived_tolerance_allowed": false,
     "hidden_epsilon_allowed": false
   },
+  "admission": {
+    "numerical_policy_admitted_to_B3": false,
+    "corrected_legacy_admitted": false,
+    "parent_TCD042_admitted": false,
+    "production_implementation_authorized": false
+  },
+  "review": {
+    "independent_numerical_review_required": true,
+    "independent_numerical_review_completed": false,
+    "handoff": "docs/numerics/TCD042_E1_INDEPENDENT_REVIEW_HANDOFF.md"
+  },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
-  }
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
+  },
+  "deliverables": [
+    "docs/numerics/TCD042_E1_NUMERICAL_POLICY_QUALIFICATION.md",
+    "docs/numerics/TCD042_E1_INDEPENDENT_REVIEW_HANDOFF.md",
+    "integration/animo-science/NQ03_TCD042_E1_POLICY.json",
+    "integration/animo-science/NQ03_NATURAL_ENVELOPE_MATRIX.csv",
+    "integration/animo-science/NQ03_PRECISION_MATRIX.csv",
+    "integration/animo-science/NQ03_SERIES_TRUNCATION_MATRIX.csv",
+    "integration/animo-science/NQ03_TIMESTEP_SENSITIVITY.csv",
+    "tools/nq03/tcd042_e1_high_precision_oracle.py",
+    "tools/nq03/validate_nq03.py",
+    ".github/workflows/animo-nq03-tcd042-e1-policy.yml"
+  ],
+  "recommended_next": [
+    "Perform the independent numerical review using the persisted handoff before any admission-readiness work.",
+    "If policy coverage beyond the observed P envelope is required, open a separate broader Class-E conditioning qualification rather than silently extending NQ03.",
+    "Keep TCD-042-B1 and parent TCD-042 unchanged until their separate admission gates are satisfied."
+  ]
 }
