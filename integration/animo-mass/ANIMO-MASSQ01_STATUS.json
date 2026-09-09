@@ -1,7 +1,7 @@
 {
   "work_unit": "ANIMO-MASSQ01",
   "title": "B1 MassLedger Projection, Observer Non-Interference & Control-Volume Qualification",
-  "status": "IN_PROGRESS_PERSISTED_BEFORE_RUNTIME_QUALIFICATION",
+  "status": "QUALIFIED_MASSLEDGER_OBSERVER_PROJECTION_B1_NONREFERENCE_MASS_GATE_NOT_ADMITTED",
   "branch": "work/animo-massq01-b1-massledger-projection",
   "base_authority": {
     "branch": "work/animo-rg02-g5-independent-stream-attachment",
@@ -9,12 +9,79 @@
   },
   "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
   "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "evidence_class": "B1_DIAGNOSTIC_OBSERVER_NOT_REFERENCE",
   "observer_only": true,
   "physical_state_mutation_allowed": false,
   "legacy_balance_authoritative": false,
   "residual_tolerance_defined": false,
   "b2_reference_claim": false,
   "mass_gate_admitted": false,
+  "b3_admitted": false,
   "production_migration_admitted": false,
-  "checkpoint": "contract persisted; runtime evidence pending"
+  "transaction_boundary": {
+    "water_begin": "massq01_start.dat after Init before hydrology/process mutation",
+    "chemical_begin": "massq01_chem_start.dat after hydrology/crop preparation before Addit",
+    "reason": "revision-53 promotes matrix moisture and chemical layer-0 state at different orchestration seams; a universal post-Init chemical snapshot creates fictitious layer-0 wet/dry residuals",
+    "rejected_artifacts_promoted_to_tcd": false
+  },
+  "natural_b1_execution": {
+    "compatible_cases": 8,
+    "completed": 8,
+    "all_cfracom": 0.58
+  },
+  "observer_non_interference": {
+    "cases_compared": 8,
+    "physical_outputs_compared": 379,
+    "equal_raw": 279,
+    "equal_after_declared_volatile_normalization": 100,
+    "different": 0,
+    "missing_or_extra": 0,
+    "scientific_numeric_tolerance_applied": false,
+    "decision": "PASS_NO_PHYSICAL_OUTPUT_DIFFERENCE_AFTER_DECLARED_VOLATILE_NORMALIZATION"
+  },
+  "analyzer_tests": {
+    "passed": 6,
+    "total": 6,
+    "fail_closed_missing_snapshot": true,
+    "cfracom_validation": true
+  },
+  "known_tcd_visibility": [
+    "TCD-014",
+    "TCD-015",
+    "TCD-016",
+    "TCD-017",
+    "TCD-018",
+    "TCD-019",
+    "TCD-025_SYNTHETIC_B1"
+  ],
+  "residual_policy": {
+    "expected_known_tcd": "retained visibly without correction",
+    "legacy_reporting_only_difference": "retained as observer/report semantic difference",
+    "observer_closure_pass": "only exact zero under recorded arithmetic; no epsilon",
+    "unexplained_residual": "retained as MASSQ01-local finding; no canonical TCD allocation"
+  },
+  "coverage": {
+    "water": "QUALIFIED_B1_OBSERVER_PROJECTION",
+    "nitrogen": "QUALIFIED_B1_OBSERVER_PROJECTION_WITH_UNEXPLAINED_RESIDUALS_RETAINED",
+    "phosphorus": "QUALIFIED_B1_OBSERVER_PROJECTION_WITH_KNOWN_AND_UNEXPLAINED_RESIDUALS_RETAINED",
+    "organic_matter_mass": "QUALIFIED_B1_OBSERVER_PROJECTION",
+    "soil_organic_carbon": "BOUNDED_PROJECTION_USING_SOURCE_CFRACOM_NOT_WHOLE_SYSTEM_C",
+    "surface_reservoirs": "MAPPED_AND_OBSERVED",
+    "crop_external_owner": "SOIL_ONLY_BOUNDARY_OBSERVED_NESTED_SOIL_CROP_CLOSURE_NOT_CLAIMED",
+    "macropore": "SYNTHETIC_B1_MP02_ONLY",
+    "ghg": "INCOMPLETE_NO_COMPATIBLE_NATURAL_ACTIVE_B1_CASE"
+  },
+  "deliverables": {
+    "docs/mass/MASSLEDGER_B1_PROJECTION.md": "COMPLETE",
+    "docs/mass/CONTROL_VOLUME_RUNTIME_MAPPING.md": "COMPLETE",
+    "integration/animo-mass/MASSLEDGER_CASE_MATRIX.csv": "COMPLETE",
+    "integration/animo-mass/MASSLEDGER_RESIDUAL_REGISTER.csv": "COMPLETE",
+    "integration/animo-mass/ANIMO-MASSQ01_STATUS.json": "COMPLETE",
+    "integration/animo-mass/MASSLEDGER_OBSERVER_RECORDS.csv": "COMPLETE_ADDITIONAL",
+    "integration/animo-mass/MASSLEDGER_OBSERVER_VERIFICATION.json": "COMPLETE_ADDITIONAL",
+    "tools/analyze_massledger_b1_sidecars.py": "COMPLETE_ADDITIONAL",
+    "tests/test_analyze_massledger_b1_sidecars.py": "COMPLETE_ADDITIONAL"
+  },
+  "qualification_boundary": "observer projection qualified for B1 diagnostic evidence only; it does not explain or accept every legacy residual and does not create a canonical typed-event ledger",
+  "checkpoint": "qualification evidence persisted; MASS, B2, B3 and production remain closed"
 }
