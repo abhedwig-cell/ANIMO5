@@ -1,166 +1,116 @@
 # ANIMO-RG02 G5 independent stream attachment
 
-Status: `CANDIDATE_G5_ATTACHMENT_READY_FOR_STRUCTURAL_QUALIFICATION`.
+Status: `QUALIFIED_INDEPENDENT_STREAM_ATTACHMENT_NO_SCIENTIFIC_COLLAPSE`.
 
-Work unit: `ANIMO-RG02-G5 — Independent Theory, Testing, Numerical, Temporal & Scientific Stream Attachment`.
+Work unit: `ANIMO-RG02-G5 - Independent Theory, Testing, Numerical, Temporal & Scientific Stream Attachment`.
 
-This gate attaches independently qualified workstreams to the RG02 integration DAG by explicit live branch/head/status references. It does not merge their scientific claims, upgrade evidence classes, or authorize production migration.
+This gate attaches independently governed ANIMO5 evidence streams to the RG02 integration DAG by explicit branch, head and persisted status references. It does not merge scientific claims, upgrade evidence classes, allocate canonical TCD identifiers, or authorize production migration.
 
 ## 1. Governing principle: attachment without collapse
 
-G5 treats every stream as an independently governed evidence producer. A qualified stream can therefore be attached while remaining blocked for B2, B3, a canonical architecture gate, or production.
+A qualified stream may be attached while remaining blocked for B2, B3, canonical STATE/TIME, architecture admission or production. Attachment means that RG02 records the selected live work surface, the owning workunit's own decision and the unresolved limits that downstream gates must preserve.
 
-The attachment relation means only:
-
-- RG02 knows the stream's selected live work surface and observed head;
-- RG02 records the owning workunit's own qualification decision;
-- downstream gates can point to the stream without copying its claims into a stronger evidence class;
-- unresolved limitations remain attached to the evidence.
-
-It does not mean that all attached streams agree scientifically or jointly form a qualified migration baseline.
+It does not mean that all attached streams jointly constitute one qualified scientific truth or migration baseline.
 
 The machine-readable register is `integration/animo-reg/g5/ANIMO_RG02_G5_STREAM_REGISTER.csv`.
 
 ## 2. Theory and release lineage
 
-`TH01` at `a3360415364ef4a66a81d7b6715bcd400829df1b` is attached as qualified revision-53 theory/provenance inventory with explicit unresolved gaps. Its own status says revision-53 theory is not fully qualified and downstream B3 admission remains blocked.
+`TH01@a3360415364ef4a66a81d7b6715bcd400829df1b` remains qualified revision-53 theory/provenance inventory with explicit unresolved gaps.
 
-`TH02` at `f7f3722b14f65340dc6d67a8f80d74f5d0ebb158` is the RG02-authoritative release-lineage branch. Its partial 4.1.x lineage qualification is retained together with unresolved release mapping. The duplicate `work/animo-th02-release-lineage-recovery` remains superseded and is not reintroduced by G5.
-
-Neither theory stream supplies independent behavioural B2 evidence.
+`TH02@f7f3722b14f65340dc6d67a8f80d74f5d0ebb158` remains the selected 4.1.x release-lineage work surface. Its partial lineage qualification does not remove the unresolved release mapping or provide independent behavioural B2.
 
 ## 3. Testcase evidence
 
-`TQ01` at `5c43ee16df37a0a1357614fdec527f25e5ca8c16` is attached under the existing RG02 authority decision.
+`TQ01@5c43ee16df37a0a1357614fdec527f25e5ca8c16` remains preparatory testcase qualification. The supplied cases remain historical input evidence and diagnostic coverage according to their established B0/B1 roles. Eight known compatible runs are B1 observations, not independent B2. `GHGMais` remains a lineage exception and the original supplied bank contains no naturally active macropore case.
 
-Its evidence boundary is preserved:
-
-- nine supplied historical cases remain B0 input evidence;
-- eight known revision-53-compatible runs are B1 observations, not B2 references;
-- `GHGMais` remains a lineage exception;
-- no supplied natural active macropore case exists;
-- synthetic descendants never become historical B2.
-
-G5 therefore routes testcase selection into G6 but cannot open G6 by itself.
+G5 therefore uses TQ01 for scoped future reference selection but does not promote testcase execution to B2.
 
 ## 4. Numerical qualification
 
-`NQ01` at `e558dff12b127e0662cad62beea7527b42ad89ac` remains the authoritative fail-closed numerical qualification architecture. It has no independent reference data and explicitly does not qualify numerical equivalence.
+`NQ01@e558dff12b127e0662cad62beea7527b42ad89ac` remains the fail-closed numerical qualification architecture. Numerical equivalence remains unqualified while independent B2 data are absent.
 
-For `NQ02`, G5 attaches the live self-identifying TCD-019 work surface `work/animo-nq02-tcd019-nonlinear-p-qualification` at `e180f7d4898530f704652cb0cfa3834d4de16966`. That branch pins the authoritative NQ01 head and reports a qualified route-level convergence-policy candidate for TCD-019 while keeping B3, historical equivalence, production tolerances and production migration unadmitted.
+For TCD-019, G5 attaches `work/animo-nq02-tcd019-nonlinear-p-qualification@e180f7d4898530f704652cb0cfa3834d4de16966` as the local NQ02 work surface because its own status pins NQ01 and qualifies a route-level convergence-policy candidate. This is not a global NQ02 branch-authority reassignment. It does not qualify a production tolerance, historical equivalence, B3 admission or composition with TCD-024.
 
-This G5 selection is local to stream attachment. It is **not** a global NQ02 branch-authority reassignment and does not silently supersede other NQ02-named exploratory refs. If RG governance later needs a repository-wide NQ02 authority decision, it must make that decision explicitly.
+MP02 also contributes a numerical/build handoff: on the active GNU diagnostic route a `MAPOTRANSPORT` balance-warning guard can raise an invalid floating operation. MP02 explicitly does not establish the historical Intel effect. G5 preserves that uncertainty and routes the seam to numerical/build governance rather than historical behaviour.
 
-TCD-019 also remains separate from TCD-024. G5 does not compose the two discrepancies into one correction.
+## 5. Temporal evidence, TIME01 and TIMEQ01
 
-MP02 adds one numerical/build handoff without changing NQ ownership. On the active GNU diagnostic route, `MAPOTRANSPORT` can evaluate `Abs(BaDev/BaMx)` in a balance-warning guard when `BaMx=0`, raising `IEEE_INVALID_FLAG`. MP02 explicitly classifies this as GNU diagnostic behaviour whose historical Intel effect is unproven. G5 therefore routes it to numerical/build governance and forbids projecting it onto historical behaviour or treating it as a production correction candidate without separate qualification.
+`TS01@ed12a678cfba19ce851eb2f380e6da3f49203fe4` is qualified source-bound temporal-semantics preparatory evidence. It establishes ordering and generation constraints such as event endpoint asymmetry, add-before-plough ordering, provisional versus actual process generations, explicit previous-neighbour reads, `Sqnu` dependencies, per-layer phosphorus coupling and restart-generation asymmetry. These are not B2 behavioural equivalence.
 
-## 5. Temporal evidence and TIME01
+`TIME01@246128dd14732173a6f27c15c923970d50c14e2a` is a qualified candidate generic time, transaction and scheduler contract. It defines interval/trial identity, accepted and trial generations, reject/retry boundaries, external-frame binding, coupled acceptance and accepted-boundary checkpoint semantics. `canonical_time_admitted = false` remains unchanged.
 
-`TS01` is attached at `ed12a678cfba19ce851eb2f380e6da3f49203fe4` as `QUALIFIED_SOURCE_BOUND_TEMPORAL_SEMANTICS_PREPARATORY_EVIDENCE`.
+`TIMEQ01@ddd5de478165d51a53352033bc92c55ce672d3aa` now adds executable candidate runtime contract evidence. Its GitHub Actions run `34320268768` executed the synthetic transaction fixture on Python 3.12.14 and passed 19 of 19 contract tests. The tests cover identity binding, accepted-state immutability, reject atomicity, retry identity, frame immutability, stale-generation rejection, explicit generation views, provisional/report noncommit, checkpoint boundaries, coupled commit barriers, synthetic replay, topology guards, endpoint classifiers, crop-uptake identity, `Sqnu` trace order and per-layer phosphorus trace coupling.
 
-Its source-bound constraints include event endpoint asymmetry, same-row add-before-plough ordering, provisional versus actual process generations, previous-step neighbour reads in `Resp_miner`, `Sqnu` dependencies, P per-layer coupling, reporting as observer state, and restart-generation asymmetry. These are preparatory/source-bound findings, not B2 behaviour.
+TIMEQ01 is deliberately `ARCH_RUNTIME_SYNTHETIC`. It executes no ANIMO chemistry, hydrology, crop, GHG, macropore or numerical process kernel. Synthetic replay equality is not historical split-run evidence. It also does not execute a real SWAP/WOFOST or other external-owner adapter. Consequently:
 
-`TIME01` is attached at `246128dd14732173a6f27c15c923970d50c14e2a` as `QUALIFIED_CANDIDATE_GENERIC_TIME_TRANSACTION_AND_SCHEDULER_CONTRACT`.
+- candidate runtime transaction fixture evidence now exists;
+- historical behavioural B2 still does not exist;
+- canonical STATE remains unadmitted;
+- canonical TIME remains unadmitted;
+- MASS and EX remain unadmitted;
+- B3, B4 and production remain unadmitted.
 
-TIME01 removes an **unspecified candidate-architecture seam** by defining candidate interval/trial identities, generation views, reject/retry boundaries, external-frame binding, coupled acceptance and accepted-boundary checkpoint semantics. It does not remove the canonical TIME gate. Its own status remains explicit:
+The machine-readable TIMEQ01 attachment is `integration/animo-reg/g5/ANIMO_RG02_G5_TIMEQ01_ATTACHMENT.json`.
 
-- `canonical_time_admitted = false`;
-- `historical_reference_qualified = false`;
-- runtime scheduler/adapter execution is absent;
-- concrete canonical time encoding is unselected;
-- production migration is unadmitted.
+## 6. Candidate architecture revalidation is complete, admission is not
 
-Therefore `TS01 qualified + TIME01 candidate qualified` must never be summarized as `canonical TIME qualified`.
+The historical ARCHG01 snapshot had required explicit temporal revalidation after TS01 closeout and TIME01. That requirement has now been resolved by `ARCHG02@db8183802631902f41aa5bec518a3c2e63e03ab7`, whose qualified decision is `QUALIFIED_CANDIDATE_ARCHITECTURE_REVALIDATED_AGAINST_FINAL_TS01_TIME01_PRODUCTION_NOT_ADMITTED`.
 
-## 6. ARCHG01 revalidation finding
+TIMEQ01 then demonstrates that the core transaction and scheduler distinctions can be represented and enforced in an executable synthetic fixture. This strengthens candidate runtime-contract evidence but does not establish actual ANIMO migration behaviour.
 
-The live `ARCHG01` branch has advanced to `5cef7969ee921acd2044521cc7636d388aa02efe`, so RG02's historical authority snapshot is no longer sufficient to describe its current existence.
+Therefore the current architecture relation is:
 
-G5 can attach the branch as the live consolidated candidate-architecture work surface, but its persisted `ANIMO-ARCHG01_STATUS.json` and `ANIMO5_TS01_HANDOFF_AND_REVALIDATION.md` still encode an interim temporal snapshot: they refer to TS01 while it was in progress and explicitly request revalidation after TS01 closeout. They also predate the completed TIME01 candidate contract.
+`ARCHG01 candidate architecture + final TS01 + TIME01 + qualified ARCHG02 temporal revalidation + TIMEQ01 synthetic runtime evidence -> G8 still NOT_ADMITTED`.
 
-This creates a governance requirement, not a scientific contradiction:
-
-`ARCHG01 live candidate architecture + completed TS01 + TIME01 -> explicit authoritative architecture revalidation required`.
-
-G5 deliberately does not edit ARCHG01 conclusions from this branch. Silent cross-branch correction would violate RG02 authority governance. Until a separate architecture-governance reconciliation consumes the final TS01/TIME01 inputs, G8 remains `NOT_ADMITTED`.
+G8 remains fail-closed because canonical STATE/TIME, B2 restart/reference evidence, actual ANIMO process-kernel transaction evidence, real external adapter execution, MASS/EX and discrepancy/feature-science gates remain unresolved.
 
 ## 7. Scientific discrepancy and feature streams
 
 ### SQ01 / TCD-016
 
-`SQ01` at `16ca38663b0c72a06b5787d1f4addcde1429f5b8` is attached as blocked scientific evidence. It preserves TCD-016 as primarily Class C, missing physical state/incomplete model. The proposed non-aqueous continuation state is review-ready but not scientifically admitted. Phase identity, dry-hold chemistry, remobilization law and independent scientific review remain open.
+The live SQ01 closeout is `26d0c74aa440bd73c23709d313e24ea8af2a0bcd`. Internal evidence work is complete for the current scope, but TCD-016 remains `UNRESOLVED_NOT_ADMITTED`, primarily Class C. The proposed non-aqueous continuation mass remains a review-ready model-evolution hypothesis, not qualified corrected legacy physics.
 
-G5 therefore cannot recast TCD-016 as a ledger-only fix or use conservation improvement as admission evidence.
+SQ01 should resume only on new authoritative ANIMO theory, independent scientific review, materially new historical runtime evidence, or explicit governance authority to enter a model-evolution qualification route. Conservation improvement alone does not admit the state model.
 
-### MP01
+### MP01 and MP02
 
-`MP01` at `7b5979dd6301b9d55d23e8c22948a0dba24b229b` resolves the earlier RG02 question of whether substantive independent macropore work exists. It is attached with its own decision: source/theory and specialized-kernel synthetic diagnostic activated-path evidence qualified, historical reference open.
+`MP01@7b5979dd6301b9d55d23e8c22948a0dba24b229b` remains qualified source/theory and specialized-kernel diagnostic macropore evidence with historical reference open.
 
-The important non-admissions remain:
+`MP02@6b0f2e7470f13baeb6612b0bddb662a497dea528` advances the macropore evidence to complete ANIMO orchestration B1 for B0-derived active-path descendants. It confirms a complete-case TCD-025 symptom and the persistent macropore solute restart omission, but remains synthetic B1 rather than historical B2.
 
-- no supplied naturally active macropore case;
-- no independently trusted active historical B2;
-- incomplete persistent macropore restart serialization;
-- TCD-025 main/public ledger control-volume gap uncorrected;
-- no B3 or production admission.
-
-### MP02
-
-`MP02` at `6b0f2e7470f13baeb6612b0bddb662a497dea528` is a qualified child workunit of MP01 and advances the evidence boundary from isolated specialized-kernel B1 to complete ANIMO orchestration B1 for active macropore paths.
-
-Its six complete B0-derived diagnostic runs all reached successful completion. Active complete-case paths exercised DOC, DON, NH4, NO3, DOP and PO4 over the configured simulation. This remains `B1_COMPLETE_CASE_SYNTHETIC_DIAGNOSTIC_ONLY` and does not become historical B2.
-
-MP02 strengthens TCD-025 to complete-case symptom evidence: specialized macropore balances remain internally closed while the main/public control volume does not fully represent macropore storage and direct-drain consequences. The resulting classification remains explicitly historical-magnitude-open and no correction is admitted.
-
-MP02 also confirms the persistent restart omission in a complete active run: normal `initial.out` output lacks the macropore solute restart blocks. Therefore a continuous-versus-split active macropore equivalence test is not meaningful until a complete persistent restart state is specified.
-
-Two handoffs must remain outside MP02 correction scope:
-
-1. the GNU `MAPOTRANSPORT` balance-warning invalid-operation seam belongs to numerical/build governance and has no proven historical Intel effect;
-2. the MP01 `CoMpNi` versus `CoMpNh` initial nitrate validation seam belongs to canonical discrepancy governance. G5 allocates no TCD number for it and does not modify the canonical discrepancy register.
-
-The machine-readable attachment is `integration/animo-reg/g5/ANIMO_RG02_G5_MP02_ATTACHMENT.json`.
+The main/public macropore control-volume gap remains uncorrected. The initial `CoMpNi` versus `CoMpNh` validation seam remains a canonical discrepancy-governance handoff. G5 allocates no TCD number for it.
 
 ### GHG01
 
-`GHG01` at `f952bf28c03de911f331762d56613c394529c25a` is attached as qualified theory/source/input-lineage evidence with historical reference gaps.
+The live GHG01 handoff head is `9791188672066cf8c0d97cb4dee68d8cdf2e1f4f`. Its decision remains qualified GHG theory/source/input-lineage evidence with historical reference gaps and no B3 admission.
 
-The broad CH4/N2O scientific intent and a substantial N2O equation subset are supported, but revision-53 release-specific provenance remains incomplete, the supplied GHG-active case is not revision-53 compatible, full C/N ledger closure is incomplete and document/source equation conflicts remain. GHG01 itself prohibits B3 and production promotion.
+Post-closeout work has strengthened the source-side handoff with a hidden task-state/build-contract dependency across active GHG routines, alongside earlier C/N ledger and equation-provenance gaps. The historical Intel storage semantics remain unresolved, so G5 does not project diagnostic compiler behaviour onto historical runtime behaviour and allocates no canonical TCD.
 
 ## 8. B3 authority remains singular
 
-`B3Q01` at `846e0f4d02a38b9e02cc1419b1ca87e63aaedb54` is attached as the canonical B3 classification/admission framework owner.
+`B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54` remains the canonical B3 classification and admission framework owner.
 
-Its qualification does not mean a B3 baseline exists. Its own status states:
+Its framework is qualified, but `b3_baseline_established = false`. G5 does not admit corrected legacy behaviour, does not allow B1 or synthetic runtime evidence to substitute for B2, and does not turn Class C or Class E findings into simpler classes because a diagnostic closes conservation.
 
-- `b3_baseline_established = false`;
-- no corrected legacy behaviour is admitted;
-- B1 cannot substitute for B2;
-- synthetic cases cannot substitute for B2;
-- Class E requires separate numerical qualification;
-- unresolved Class C physical-state work cannot be reduced to accounting.
+## 9. Gate consequences after TIMEQ01 attachment
 
-G5 allocates no new canonical TCD IDs and makes no scientific admission decision owned by B3Q01.
+G0 through G4 remain previously qualified governance/preparatory gates. G5 remains qualified as an independent attachment/provenance gate.
 
-## 9. Gate consequences
+G6 is still blocked by PREP02R because an independently trustworthy historical reference artifact has not been obtained. TIMEQ01 cannot satisfy G6 because it is synthetic candidate runtime evidence.
 
-After G5 attachment the integration DAG has a clearer state but not a stronger scientific baseline:
+G7 remains not established because B3Q01 is a framework rather than an admitted B3 scientific baseline and workunit-specific science/numerical blockers remain.
 
-- G0 to G4 remain the previously qualified authority/governance/preparatory gates;
-- G5 can become qualified as an attachment/provenance gate;
-- G6 remains blocked because PREP02R has no independently trustworthy historical reference artifact;
-- G7 remains not established because B3Q01 is a framework, not an admitted B3 baseline;
-- G8 remains not admitted because candidate architecture needs final temporal/scientific revalidation and canonical STATE/TIME prerequisites;
-- G9 B4 remains not admitted;
-- G10 production migration remains not admitted.
+G8 remains not admitted. ARCHG02 has completed temporal revalidation and TIMEQ01 supplies executable synthetic transaction evidence, but canonical STATE/TIME, B2 behavioural qualification, real process and adapter runtime evidence, MASS/EX and feature/discrepancy science are still open.
+
+G9 B4 remains not admitted. G10 production migration remains not admitted.
 
 The gate matrix is `integration/animo-reg/g5/ANIMO_RG02_G5_GATE_MATRIX.csv`.
 
 ## 10. Qualification boundary
 
-A successful G5 structural audit can qualify only:
+G5 remains qualified only as:
 
 `QUALIFIED_INDEPENDENT_STREAM_ATTACHMENT_NO_SCIENTIFIC_COLLAPSE`.
 
-It cannot qualify behavioural equivalence, numerical tolerance, scientific correction, canonical TIME, B3 baseline, B4 baseline or production migration.
+No attachment in this document changes the scientific baseline. No legacy source or historical testcase is modified. No physics or numerical policy is changed. No B2, B3, canonical STATE, canonical TIME, MASS, EX, B4 or production admission is created by this refresh.
