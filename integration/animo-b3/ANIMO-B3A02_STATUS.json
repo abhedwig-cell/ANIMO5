@@ -72,6 +72,9 @@
     "second_line_B3_review_complete": false,
     "review_handoff_prepared": true,
     "review_handoff": "docs/b3/TCD017_SECOND_LINE_REVIEW_HANDOFF.md",
+    "review_request_issue_opened": true,
+    "review_request_issue_number": 25,
+    "review_request_title": "ANIMO-B3A02R — Independent second-line review of TCD-017 Class-A readiness",
     "frozen_review_object_head": "3ff8f4bda77c631b82110b83317c6a9b42b867ad",
     "authoring_context_counts_as_independent_review": false,
     "gate": "PENDING"
