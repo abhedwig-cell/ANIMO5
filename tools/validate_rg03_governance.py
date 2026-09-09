@@ -92,7 +92,7 @@ def main() -> None:
     by_wu = {r["workunit"]: r for r in authority}
     require(by_wu["PREP02R"]["qualified"] == "False", "PREP02R must not be marked qualified B2")
     require("NON_B2" in by_wu["SYNQ01"]["evidence_class"], "SYNQ01 must remain explicitly non-B2")
-    require("NOT_ADMITTED" in by_wu["MASSQ01"]["production_effect"], "MASSQ01 must not admit canonical MASS")
+    require("not admitted" in by_wu["MASSQ01"]["production_effect"].lower(), "MASSQ01 must not admit canonical MASS")
 
     gate_ids = [r["gate"] for r in gates]
     require(len(gate_ids) == len(set(gate_ids)), "duplicate gate rows")
