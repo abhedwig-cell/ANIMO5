@@ -1,7 +1,7 @@
 {
   "work_unit": "ANIMO-UBQ02",
   "title": "TCD-042 Finite-Positive Subthreshold Upper-Reservoir Numerical Seam Characterization",
-  "status": "IN_PROGRESS_PERSISTED_BEFORE_MATERIALITY_QUALIFICATION",
+  "status": "QUALIFIED_TCD042_FINITE_POSITIVE_SUBTHRESHOLD_CLASS_E_SEAM_NUMERICAL_POLICY_PENDING",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-ubq02-tcd042-subthreshold-numerical-seam",
   "base": {
@@ -12,40 +12,74 @@
   "scope": {
     "target_parent": "TCD-042",
     "range": "0<Flux<1.0d-8 with Flpn=0",
-    "purpose": "characterize reachability, materiality, floating-point cancellation and candidate cancellation-safe evaluation without selecting or admitting numerical policy",
-    "provisional_class": "E_NUMERICAL_POLICY",
+    "qualified_seam_class": "E_NUMERICAL_POLICY",
     "exact_zero_atom_reopened": false,
+    "parent_tcd_fully_qualified": false,
     "new_tcd_reserved": false,
     "canonical_child_created": false,
     "threshold_change_admitted": false,
     "tolerance_admitted": false,
     "production_source_change": false
   },
-  "inherited_evidence": {
-    "no_ponding_records_scanned": 15043,
-    "finite_positive_subthreshold_records": 1238,
-    "cases_with_finite_positive_subthreshold": 6,
-    "source": "integration/animo-science/TCD042_SUBTHRESHOLD_REACHABILITY.json"
+  "evidence": {
+    "characterization": "integration/animo-science/TCD042_SUBTHRESHOLD_NUMERICAL_CHARACTERIZATION.json",
+    "science_note": "docs/science/TCD042_SUBTHRESHOLD_NUMERICAL_SEAM.md",
+    "natural_records": 1238,
+    "natural_cases": 6,
+    "dimensionless_P_min": 4.2351647362715017e-20,
+    "dimensionless_P_max": 3.8510200002999744e-7,
+    "direct_binary64_one_minus_exp_zero_records": 1189,
+    "natural_nonzero_mineral_N_load_records": 4,
+    "RuurloGrass_max_abs_single_record_N_residual_kg_ha": 0.0067476693479999565,
+    "cancellation_safe_comparison_candidate_exists": true,
+    "comparison_candidate_is_selected_production_policy": false
+  },
+  "classification": {
+    "provisional_class": "E_NUMERICAL_POLICY",
+    "qualified_as_seam_characterization": true,
+    "class_A_accounting_only": "REJECTED",
+    "class_C_missing_state": "REJECTED_EXISTING_OWNER",
+    "exact_zero_class_B_atom_remains_qualified": true,
+    "recommended_canonical_route": "incremental intake should decide TCD-042 child representation before Class-E admission work",
+    "recommended_candidate_child": "TCD-042-E1",
+    "candidate_child_is_canonical": false
+  },
+  "numerical_policy_boundary": {
+    "legacy_flux_threshold_admitted": false,
+    "replacement_threshold_admitted": false,
+    "P_switch_value_admitted": false,
+    "series_order_admitted": false,
+    "expm1_implementation_admitted": false,
+    "global_tolerance_admitted": false,
+    "preferred_future_conditioning_coordinate": "P=St*Flux/Hetop",
+    "NQ01_no_tolerance_rule_preserved": true
+  },
+  "validation": {
+    "validator": "tools/ubq02/validate_tcd042_subthreshold.py",
+    "workflow": ".github/workflows/animo-ubq02-subthreshold-numerics.yml",
+    "tested_head_before_status_closeout": "e455e4d2f34eed8a56cc0ea58d39776791c0b91b",
+    "github_actions_run_id": 34369770688,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS",
+    "scope_guard": "PASS_UBQ02_ONLY_NO_PRODUCTION_SOURCE_CHANGE"
   },
   "work_status": {
-    "realized": false,
+    "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
-  "planned_axes": [
-    "dimensionless P=St*Flux/Hetop distribution on natural reachable records",
-    "legacy fallback versus mathematically exact positive-flow reservoir response",
-    "binary64 cancellation in A2/B1/B2 direct formulas",
-    "cancellation-safe expm1/series candidates as comparison methods only",
-    "natural nonzero-load materiality for N/P/DOM where observable",
-    "policy boundary and whether canonical incremental intake is required"
-  ],
   "admission": {
     "b3_admitted": false,
     "corrected_legacy_admitted": false,
     "numerical_policy_admitted": false,
     "production_migration_admitted": false
-  }
+  },
+  "required_followup": [
+    "Route the separate finite-positive Class-E mechanism through canonical incremental intake; UBQ02 does not allocate the child itself.",
+    "Open a dedicated numerical-policy workunit only after that routing, using the observed P envelope, high-precision comparison axis, binary32/binary64 precision axis and conservation evidence.",
+    "Do not choose a threshold or tolerance because it reproduces B1 outputs.",
+    "Do not admit parent TCD-042 until both the exact-zero Class-B atom and the finite-positive Class-E atom satisfy their applicable GOV02/B3Q01 route and independent review."
+  ]
 }
