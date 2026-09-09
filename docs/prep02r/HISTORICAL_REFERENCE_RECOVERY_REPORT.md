@@ -36,7 +36,7 @@ The supplied local bytes were re-hashed on 2026-09-09.
 
 The source archive contains no `.exe`, `.dll`, `.sln`, `.vfproj`, `.vcxproj`, makefile or historical build log.
 
-## 3. Exact source-bound release clues
+## 3. Source-bound release clues and provenance limit
 
 `Version.inc` in the frozen source states:
 
@@ -46,7 +46,17 @@ Rcsrev='53'
 Built='Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]'
 ```
 
-The source therefore gives an exact tag/revision identity and compiler lineage string, but not the project settings or executable bytes required for independent behavioural admission.
+This is the strongest archive-level self-identification available.
+
+However PREP01 also established internal SVN-keyword heterogeneity:
+
+- 53 observed file-level `$HeadURL` values all point to `file:///V:/svn_Animo/tags/animo4.1.4/...`;
+- parseable file-level revisions range from 7 to 53;
+- file-level dates range from 2013-02-28 through 2016-08-26.
+
+The exact supplied archive bytes are therefore strongly pinned, and the archive self-identifies as ANIMO 4.1.5 revision 53, but an exact homogeneous canonical `animo4.1.5` SVN checkout is not proven.
+
+This distinction matters for reference acquisition. A historical executable should preferably be accompanied by a release manifest, source checkout identity, archived build directory or other evidence tying the executable to the source tree actually used.
 
 The current build-contract reconstruction remains a hypothesis, not historical proof. In particular:
 
@@ -67,30 +77,68 @@ These are `CranGrass`, `CranMais`, `GrassPeat` and `RuurloGrass`.
 
 The executable itself is not present in the supplied testbank. Runner naming is therefore useful provenance evidence for the expected historical release family, but it is not enough to identify the exact executable revision.
 
+`GHGMais/runanimo.bat` instead invokes:
+
+```text
+ANIMO animo.ini
+```
+
+Combined with the already established GHG input-contract mismatch, this is additional evidence that GHGMais should remain outside the first revision-53 reference-admission case. It does not by itself identify the GHGMais executable or exact source lineage.
+
 Two `initial.out` files are present as historical-looking restart/state artifacts:
 
 - `Puitmijn_Cranendonck_60/input/initial.out`, SHA-256 `1dba5ba4b644dc8aecb34fed22995d6c550c0ea994cbb1af85866d26ae35e209`;
 - `Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA/Input/initial.out`, SHA-256 `f2983dd7648f98081ba66a88b5426808e387521e07e237e27c9fa408481807ed`.
 
-No retained executable identity, run log or complete output tree ties either file to revision 53. They are therefore classified `UNATTRIBUTED_OUTPUT_NOT_REFERENCE`.
-
-`GHGMais` remains excluded from first reference admission because the supplied input contract demonstrably belongs to a different or incomplete source lineage relative to revision 53.
+No retained executable identity, run log or complete output tree ties either file to revision 53. They remain `UNATTRIBUTED_OUTPUT_NOT_REFERENCE`.
 
 ## 5. Public historical search
 
-A new targeted public search was performed for exact `animo41.exe`, ANIMO 4.1.5/revision-53 artifacts, project metadata and ANIMO4.1 documentation.
+Targeted public searches were performed for exact `animo41.exe`, ANIMO 4.1.5/revision-53 artifacts, ANIMO 4.1.x binaries, Visual Fortran project metadata, executable-linked Ruurlo output and ANIMO4.1 documentation.
 
-No trustworthy public copy of the exact revision-53 executable, an Intel Visual Fortran project/build file, or an executable-linked Ruurlo output bundle was found.
+No trustworthy public copy of the exact revision-53 executable, a provenance-qualified 4.1.x executable, an Intel Visual Fortran project/build file, or an executable-linked Ruurlo output bundle was found.
 
 This negative result is only a search observation. It is not evidence that institutional or private historical archives do not contain the artifacts.
 
 ### Official WUR acquisition route
 
-The current WUR ANIMO product page states that an executable is available upon request and that information on program code or model availability is obtainable via Leo Renaud. The page also presents Piet Groenendijk and Leo Renaud as current ANIMO experts.
+The current WUR ANIMO product page states that:
 
-This is the strongest public acquisition route found. It is not itself proof that revision 4.1.5 revision 53 is retained.
+- an executable is available upon request;
+- releases are available for internal and external use;
+- the model is normally made available as an executable release;
+- obtaining the model uses WUR general software terms and an ANIMO agreement;
+- Piet Groenendijk and Leo Renaud are current ANIMO experts.
 
-The page contains historical platform wording that does not line up cleanly with the frozen revision-53 Intel64 build string. For PREP02R it is therefore treated as an institutional contact/acquisition route, not as authoritative revision-53 platform metadata.
+This remains the strongest public institutional acquisition route.
+
+The product page itself is not version-specific and contains old platform wording that conflicts with the supplied revision-53 Intel64 build string. It is therefore not revision-53 platform provenance.
+
+### Current WUR agreement narrows the interpretation
+
+The current `Agreement Animo 2026.pdf`, linked directly from the WUR product page, explicitly identifies:
+
+```text
+ANIMO
+Version 4.0
+P. Groenendijk, L.V. Renaud
+```
+
+This is a significant acquisition finding. The fact that WUR currently offers an executable on request does **not** establish that a normal request would yield ANIMO 4.1.x or revision 53. The public administrative route currently points to Version 4.0.
+
+PREP02R must therefore ask specifically for historical archived 4.1.x material and must not silently treat a current Version 4.0 distribution as the requested fallback.
+
+See:
+
+`docs/prep02r/OFFICIAL_DISTRIBUTION_ROUTE_AUDIT.md`
+
+### Distribution/retention conditions
+
+The current WUR general software terms, revised November 2017, state that WENR software remains WENR property and may not be made available to third parties without prior written WENR permission.
+
+PREP02R therefore assumes controlled retention of any received executable and public Git persistence only of hashes and provenance unless redistribution permission is explicit.
+
+This does not block scientific qualification. It changes where the executable bytes may be retained.
 
 ### Older native binary lineage evidence
 
@@ -104,9 +152,9 @@ A 2013 Alterra/STOWA report cites:
 
 `Groenendijk, P., R.F.A. Hendriks and L.V. Renaud, 2013. Prediction of nutrient leaching to groundwater and surface waters and greenhouse gas emissions from soil. Process descriptions of the ANIMO4.1 model. Wageningen, Alterra, Report in prep.`
 
-This is useful evidence that an explicit ANIMO4.1 documentation lineage existed by 2013. The cited report itself was not recovered in the targeted public search, and it contains no executable provenance in the citation alone.
+This is useful evidence that an explicit ANIMO4.1 documentation lineage existed by 2013. The cited report itself was not recovered in the targeted public search, and the citation alone contains no executable provenance.
 
-## 6. Historical documentation contact route
+## 6. Historical and current contact route
 
 The supplied ANIMO 4.0 User's Guide names:
 
@@ -114,7 +162,9 @@ The supplied ANIMO 4.0 User's Guide names:
 - L.V. Renaud for program code or model availability;
 - H.P. Oosterom for program code or model availability.
 
-The current WUR product page still points program-code/model-availability inquiries to Leo Renaud. This continuity makes WUR/WENR the preferred first acquisition route before attempting unsupported compiler reconstruction from third-party material.
+The current WUR product page identifies Leo Renaud and Piet Groenendijk as ANIMO experts. This continuity makes WUR/WENR the preferred first acquisition route before unsupported third-party binary/compiler reconstruction.
+
+The request packet has now been sharpened to ask explicitly for archived 4.1.x material and for source-checkout/build provenance because the current agreement names Version 4.0 and the supplied source contains unresolved 4.1.4/4.1.5 SVN-keyword heterogeneity.
 
 ## 7. First native qualification remains blocked
 
@@ -137,12 +187,14 @@ Doing any of those with an untrusted or reconstructed executable and then callin
 
 Request in this order:
 
-1. exact ANIMO 4.1.5 revision-53 executable, likely historical runner name `animo41.exe`, with release/archive provenance;
-2. any retained `.sln`, `.vfproj`, project properties, build log, compiler/link command or archived VM/build machine from that release;
+1. exact ANIMO 4.1.5 revision-53 executable, likely historical runner name `animo41.exe`, with release/archive and source-checkout provenance;
+2. any retained `.sln`, `.vfproj`, project properties, build log, compiler/link command, release manifest or archived VM/build machine from that release;
 3. complete `RuurloGrass` output tree plus run log or other evidence tying it to a known executable;
 4. if exact revision 53 is unavailable, nearest retained provenance-qualified 4.1.x executable with exact version/revision identification.
 
 A nearby 4.1.x executable remains a separate lineage until a version-delta qualification chain establishes what it can and cannot anchor.
+
+The ordinary current Version 4.0 distribution is also a separate lineage and is not the requested 4.1.x fallback.
 
 ## 9. Current decision
 
