@@ -1,0 +1,10 @@
+case,hydrologic_input,p_cycle,crop_ownership_route,macropore,ghg,observer_status,records,max_start_surface_m,max_end_surface_m,strict_nonzero_records,legacy_flpn_active_records,full_run_restricted_surface_envelope
+CranGrass,2,1,internal,0,0,SUCCESS_OBSERVED,2922,0.002,0.002,196,86,false
+CranMais,2,0,internal,0,0,SUCCESS_OBSERVED,3287,0.002,0.002,2,2,false
+GHGMais,2,0,external,0,1,NO_OBSERVER_RECORDS,0,,,,,
+GrassPeat,2,1,external,0,0,SUCCESS_OBSERVED,540,0.02800853,0.02800853,102,79,false
+LWKM_gras_1040.2021.2045,2,1,external,0,0,SUCCESS_OBSERVED,900,0.001674652,0.001674652,2,2,false
+Puitmijn_Cranendonck_60,2,1,internal,0,0,SUCCESS_OBSERVED,4383,0.03934478,0.03934478,227,212,false
+RuurloGrass,2,0,internal,0,0,SUCCESS_OBSERVED,1947,0.0,0.0,0,0,true
+STONE_akk_0006.2001.2015,2,1,external,0,0,SUCCESS_OBSERVED,540,0.0184504,0.007957911,48,40,false
+Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA,2,1,internal,0,0,SUCCESS_OBSERVED,1096,0.0031159,0.0031159,174,151,false
