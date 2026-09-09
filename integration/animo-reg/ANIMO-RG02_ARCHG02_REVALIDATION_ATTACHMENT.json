@@ -1,0 +1,45 @@
+{
+  "work_unit": "ANIMO-RG02",
+  "status_type": "POST_G5_ARCHG02_REVALIDATION_ATTACHMENT",
+  "date": "2026-09-09",
+  "host_branch": "work/animo-rg02-g5-independent-stream-attachment",
+  "prior_rg02_decision": "QUALIFIED_BRANCH_AUTHORITY_GOVERNANCE_CONVERGENCE_PREPARATORY_AGGREGATE_AND_G5_STREAM_ATTACHMENT",
+  "archg02": {
+    "branch": "work/animo-archg02-temporal-revalidation",
+    "qualified_head": "db8183802631902f41aa5bec518a3c2e63e03ab7",
+    "decision": "QUALIFIED_CANDIDATE_ARCHITECTURE_REVALIDATED_AGAINST_FINAL_TS01_TIME01_PRODUCTION_NOT_ADMITTED",
+    "closeout_ci_run_id": 34319423226,
+    "closeout_ci_conclusion": "success"
+  },
+  "rg02_consequence": {
+    "g5_archg01_temporal_revalidation_requirement": "RESOLVED",
+    "g6_b2": "BLOCKED_BY_PREP02R",
+    "g7_b3": "NOT_ESTABLISHED",
+    "g8_candidate_architecture_scientific_qualification": "NOT_ADMITTED_TEMPORAL_REVALIDATION_COMPLETE_OTHER_GATES_OPEN",
+    "g9_b4": "NOT_ADMITTED",
+    "g10_production": "NOT_ADMITTED"
+  },
+  "why_g8_remains_unadmitted": [
+    "canonical STATE and TIME are not admitted",
+    "runtime scheduler/reject/retry/coupled transaction evidence is absent",
+    "B2 restart/reference evidence is absent",
+    "discrepancy-specific B3 science and numerical gates remain open",
+    "GHG and macropore feature-scientific gates remain open",
+    "MASS and EX remain downstream unadmitted gates"
+  ],
+  "authority_effect": "REFERENCE_ATTACHMENT_ONLY_NO_BRANCH_MERGE",
+  "evidence_strength_upgraded": false,
+  "b2_reference_qualified": false,
+  "b3_scientific_admission": false,
+  "canonical_state_admitted": false,
+  "canonical_time_admitted": false,
+  "b4_baseline_admitted": false,
+  "production_migration_admitted": false,
+  "legacy_source_modified": false,
+  "historical_testcase_modified": false,
+  "next_safe_parallel_work": [
+    "prepare non-production runtime transaction qualification fixtures under the TIME01/ARCHG02 contracts",
+    "continue PREP02R independent historical reference recovery",
+    "continue discrepancy-specific B3, numerical, GHG and macropore qualification under their owning workunits"
+  ]
+}
