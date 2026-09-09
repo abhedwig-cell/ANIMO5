@@ -1,0 +1,105 @@
+{
+  "work_unit": "ANIMO-MASSQ01",
+  "evidence_class": "B1_DIAGNOSTIC_OBSERVER_TRANSACTION_BOUNDARY_NOT_REFERENCE",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "finding": "For chemical conserved storage after the first runtime interval, the accepted beginning mass is the previous result-state projection immediately before Init. A snapshot immediately after Init can be a transient staging representation and can create artificial residuals, especially through the layer-0 carrier-water coordinate before hydrology reconstructs Mofro(0).",
+  "source_basis": {
+    "Init.for": [
+      "copies result concentrations and solid stores into current/start variables",
+      "copies Mofrt to Mofro only for layers 1..Nl",
+      "does not promote Mofro(0) in that loop"
+    ],
+    "Hydro_detailed.for": "reconstructs Mofro(0) from current ponding/snow state before chemistry execution",
+    "Hydro_aggregated.for": "reconstructs Mofro(0) from current surface-water state before chemistry execution"
+  },
+  "runtime_reconciliation": [
+    {
+      "case": "GrassPeat",
+      "tito": 1704,
+      "quantity": "N",
+      "pre_Init_result_storage_kg_ha": 551444.4549412944,
+      "post_Init_current_storage_kg_ha": 551436.1787763387,
+      "pre_Addit_current_storage_kg_ha": 551444.4549412944,
+      "post_Init_artificial_residual_kg_ha": -8.276164955692366,
+      "pre_Init_boundary_residual_kg_ha": 0.0
+    },
+    {
+      "case": "GrassPeat",
+      "tito": 1704,
+      "quantity": "P",
+      "pre_Init_result_storage_kg_ha": 62237.72866309302,
+      "post_Init_current_storage_kg_ha": 62237.09793633553,
+      "pre_Addit_current_storage_kg_ha": 62237.72866309302,
+      "post_Init_artificial_residual_kg_ha": -0.6307652791874716,
+      "pre_Init_boundary_residual_kg_ha": -0.000038521699025295675,
+      "note": "remaining small P residual is separate from the boundary artefact"
+    },
+    {
+      "case": "GrassPeat",
+      "tito": 1704,
+      "quantity": "organic_matter_mass",
+      "pre_Init_result_storage_kg_ha": 27702343.101734214,
+      "post_Init_current_storage_kg_ha": 27702340.860944945,
+      "pre_Addit_current_storage_kg_ha": 27702343.101734214,
+      "post_Init_artificial_residual_kg_ha": -2.240789260715246,
+      "pre_Init_boundary_residual_kg_ha": 7.450580596923828e-09
+    },
+    {
+      "case": "STONE_akk_0006.2001.2015",
+      "tito": 1530,
+      "quantity": "N",
+      "pre_Init_result_storage_kg_ha": 57082.38659721723,
+      "post_Init_current_storage_kg_ha": 57077.477738378446,
+      "pre_Addit_current_storage_kg_ha": 57082.38659721723,
+      "post_Init_artificial_residual_kg_ha": -4.908858838774904,
+      "pre_Init_boundary_residual_kg_ha": 7.275957614183426e-12
+    },
+    {
+      "case": "STONE_akk_0006.2001.2015",
+      "tito": 1530,
+      "quantity": "P",
+      "pre_Init_result_storage_kg_ha": 33142.08716579588,
+      "post_Init_current_storage_kg_ha": 33141.3485850854,
+      "pre_Addit_current_storage_kg_ha": 33142.08716579588,
+      "post_Init_artificial_residual_kg_ha": -0.7386178465530975,
+      "pre_Init_boundary_residual_kg_ha": -0.0000371360729332082
+    },
+    {
+      "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+      "tito": 473,
+      "quantity": "N",
+      "pre_Init_result_storage_kg_ha": 375150.9753348568,
+      "post_Init_current_storage_kg_ha": 375148.6607244448,
+      "pre_Addit_current_storage_kg_ha": 375150.9753348568,
+      "post_Init_artificial_residual_kg_ha": -2.3146104118204676,
+      "pre_Init_boundary_residual_kg_ha": 1.7462298274040222e-10
+    },
+    {
+      "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+      "tito": 473,
+      "quantity": "P",
+      "pre_Init_result_storage_kg_ha": 50182.73744678168,
+      "post_Init_current_storage_kg_ha": 50182.522351672684,
+      "pre_Addit_current_storage_kg_ha": 50182.73744678168,
+      "post_Init_artificial_residual_kg_ha": -0.21522170615935465,
+      "pre_Init_boundary_residual_kg_ha": -0.00012659716594498605
+    },
+    {
+      "case": "CranMais",
+      "tito": 2229,
+      "quantity": "N",
+      "pre_Init_result_storage_kg_ha": 14327.838871055785,
+      "post_Init_current_storage_kg_ha": 14327.768490717293,
+      "post_Init_artificial_residual_kg_ha": -0.07038033849312342,
+      "pre_Init_boundary_residual_kg_ha": -1.8189894035458565e-12
+    }
+  ],
+  "first_interval_rule": "The pre-Init result arrays are initialization scratch/zero state before the first simulated interval and are not the first accepted beginning state. The first interval continues to use the initialized start snapshot after model initialization.",
+  "classification": "MASSQ01_OBSERVER_BOUNDARY_ARTIFACT_NOT_NEW_PHYSICAL_DEFECT",
+  "canonical_tcd_allocated": false,
+  "observer_consequence": "Use initialized accepted start state for the first interval; for subsequent N, P and organic-matter/organic-C storage use the previous result-state projection immediately before Init. Water can remain projected from its explicit surface and matrix owner coordinates because the water observer does not use Mofro(0) as an independent store.",
+  "reference_qualified": false,
+  "mass_gate_admitted": false,
+  "production_migration_admitted": false
+}
