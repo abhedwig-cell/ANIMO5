@@ -6,7 +6,7 @@ Status: `READY_AWAITING_INDEPENDENT_B2_DATA`.
 
 This contract defines the minimum evidence packet that must exist around the first independent PREP02R B2-versus-B1 comparison.
 
-The packet is deliberately distinct from numerical admission. A packet may be complete while its formatted-tree or structured comparison result is `DIFFERENT_FAIL_CLOSED`. Completeness means the evidence chain is present and traceable. It does not mean the compared implementations are equivalent.
+The packet is deliberately distinct from numerical admission. A packet may be complete while its raw-tree, representation or scientific comparison result fails closed. Completeness means the evidence chain is present and traceable. It does not mean the compared implementations are equivalent.
 
 The first packet is currently bound to `RuurloGrass` because PREP02R still identifies that case as the preferred first native reference exercise.
 
@@ -15,6 +15,10 @@ The first packet is currently bound to `RuurloGrass` because PREP02R still ident
 Schema:
 
 `integration/animo-numerics/FIRST_REFERENCE_PACKET_SCHEMA.json`
+
+Current packet schema version:
+
+`1.1.0`
 
 Template:
 
@@ -38,7 +42,8 @@ It does not mean:
 
 - B2 provenance is qualified by the validator;
 - B1 and B2 are numerically equivalent;
-- a non-exact difference is acceptable;
+- a representation difference is harmless;
+- a non-exact scientific difference is acceptable;
 - B3 is established;
 - production migration is admitted.
 
@@ -84,9 +89,9 @@ Filesystem staging, historical directory recreation or drive mapping may be reco
 
 The packet must identify both the complete staged input tree and the hydrology input identity or manifest.
 
-## Ordinary output comparison
+## Layer 1: ordinary output-tree comparison
 
-The packet always records the formatted/raw-tree comparison artifact and its decision.
+The packet always records the raw/formatted-tree comparison artifact and its decision.
 
 Recognized decisions are:
 
@@ -96,7 +101,7 @@ Recognized decisions are:
 
 A fail-closed tree comparison does not make the packet incomplete. It becomes evidence that must be dispositioned.
 
-## Observer and unrounded capture
+## Observer and structured capture
 
 Observer capture is optional at packet level because an ordinary B2 run may exist before an observer-capable historical build exists.
 
@@ -105,20 +110,47 @@ When observer capture is used, the packet requires:
 - observer patch SHA-256;
 - successful ordinary-output non-interference gate;
 - B2 structured capture;
-- B1 structured capture;
-- structured comparison artifact and decision.
+- B1 structured capture.
 
 An observer packet cannot be complete if ordinary-output non-interference has not passed.
 
-When no unrounded observer capture exists yet, the structured-comparison decision must remain:
+The structured capture can carry both representation observations and unrounded scientific records. Those two evidence classes are compared separately.
+
+## Layer 2: representation comparison
+
+The dedicated representation comparator is:
+
+`tools/compare_b1_b2_representation.py`.
+
+The packet records its result independently from scientific comparison.
+
+Recognized decisions are:
+
+- `MATCH_EXACT_REPRESENTATION_OBSERVATIONS`;
+- `DIFFERENT_REPRESENTATION_FAIL_CLOSED`;
+- `SCHEMA_OR_PROVENANCE_FAILURE`.
+
+When no structured representation capture exists, the packet records:
+
+`NOT_RUN_NO_STRUCTURED_REPRESENTATION_CAPTURE`.
+
+If observer structured captures do exist, representation comparison may not remain marked as unavailable. The packet validator fails closed until that layer has been run.
+
+A representation difference can remain in a complete packet as fail-closed evidence. It is not automatically accepted as harmless formatting or compiler variation.
+
+## Layer 3: unrounded scientific comparison
+
+The scientific comparator is:
+
+`tools/compare_b1_b2_reference.py`.
+
+When no unrounded observer capture exists yet, the scientific comparison decision must remain:
 
 `NOT_RUN_NO_UNROUNDED_CAPTURE`.
 
 This records an evidence gap rather than pretending rounded report output is sufficient.
 
-## Structured comparison outcomes
-
-The packet may contain any genuine comparator result, including:
+When unrounded capture exists, the packet may contain any genuine scientific comparator result, including:
 
 - `MATCH_EXACT_COMPARISON_EVIDENCE`;
 - `MATCH_EXACT_B2_CANDIDATE_NOT_QUALIFIED`;
@@ -135,6 +167,7 @@ Every first-reference packet must explicitly state that:
 - no global numerical tolerance was applied;
 - no historical residual was used to derive a tolerance;
 - rounded report output was not treated as an unrounded oracle;
+- representation differences were not automatically accepted;
 - B1 was not classified as an independent reference;
 - the packet itself did not qualify numerical equivalence;
 - production migration was not admitted.
@@ -155,7 +188,7 @@ That status comes from PREP02R or its successor governance decision, not from th
 
 Every packet must also record a concrete next action, for example:
 
-- classify remaining formatted differences;
+- classify remaining representation differences;
 - obtain observer-capable source/build lineage;
 - investigate first state-trajectory divergence;
 - perform numerical-policy qualification for a named discrepancy;
@@ -166,7 +199,7 @@ Every packet must also record a concrete next action, for example:
 Three statements must remain separate:
 
 1. `PACKET_COMPLETE`: the required evidence chain is present.
-2. `COMPARISON_MATCHES` or `DIFFERENT_FAIL_CLOSED`: what the comparator observed.
+2. A comparator decision: what a specific evidence layer observed.
 3. `QUALIFIED_NUMERICAL_EQUIVALENCE`: a later admission conclusion requiring actual B2 evidence and qualified acceptance criteria.
 
 NQ01 currently establishes only the architecture for statements 1 and 2.
