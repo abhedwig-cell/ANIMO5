@@ -1,0 +1,26 @@
+{
+  "work_unit": "ANIMO-RG02-G5",
+  "audit_type": "INDEPENDENT_STREAM_ATTACHMENT_STRUCTURAL_AUDIT",
+  "result": "PASS",
+  "tested_head": "b0ca88e347891a5d4d5b475abe94b62b1fbbe954",
+  "github_actions_run_id": 34318580160,
+  "github_actions_job_id": 102359991573,
+  "checks": [
+    {"check": "required_artifacts_present", "result": "PASS", "count": 4},
+    {"check": "exact_stream_branch_head_attachment", "result": "PASS", "streams": 12},
+    {"check": "no_evidence_strength_promotion", "result": "PASS"},
+    {"check": "authority_scope_and_revalidation_guards", "result": "PASS"},
+    {"check": "downstream_gates_fail_closed", "result": "PASS"},
+    {"check": "governance_guards_present", "result": "PASS"},
+    {"check": "qualification_boundary_locked", "result": "PASS"}
+  ],
+  "b2_reference_qualified": false,
+  "b3_scientific_admission": false,
+  "canonical_time_admitted": false,
+  "b4_baseline_admitted": false,
+  "production_migration_admitted": false,
+  "runtime_animo_executed": false,
+  "historical_testcase_executed": false,
+  "legacy_source_modified": false,
+  "historical_testcase_modified": false
+}
