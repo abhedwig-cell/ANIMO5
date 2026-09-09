@@ -1,0 +1,100 @@
+{
+  "work_unit": "ANIMO-MP02",
+  "evidence_class": "SYNTHETIC_DIAGNOSTIC_ONLY_EXCEPT_NEGATIVE_CONTROL",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "parent_case": "CranGrass",
+  "parent_p_active": true,
+  "frozen_artifacts_modified": false,
+  "common_positive_transform": {
+    "GENERAL.INP": "MacroPoreOption 0 -> 1",
+    "SOIL.INP": ">MPfrac: FrMpRuRv=0, FrMpDrSo=0",
+    "INITIAL.INP": ">MPnitr, >MPorgs and >MPphos records appended",
+    "hydrology": "Hlpimp 1 -> 2 and deterministic two-domain macropore geometry/storage/flux records injected",
+    "domain1_initial_storage_m": 0.00005,
+    "domain2_initial_storage_m": 0.000025,
+    "domain1_static_volume_m": 0.0001,
+    "domain2_static_volume_m": 0.000025,
+    "event_flux_m_d": 0.00002,
+    "positive_hydrology_logical_records": 49697,
+    "parent_hydrology_logical_records": 23393,
+    "simulated_timesteps": 2922,
+    "default_real_encoding": "8-byte little-endian under qualified GNU diagnostic build"
+  },
+  "runtime_adaptation": "existing GNU diagnostic execution-copy adaptations only: path separators, case-insensitive aliases, PrintBalLabel compatibility, and PowerStation logical-payload to GNU sequential-unformatted framing",
+  "cases": {
+    "NO-MP": {
+      "evidence_class": "B0_NEGATIVE_CONTROL_WITH_RUNTIME_ADAPTATION",
+      "scientific_changes": [],
+      "hlpimp": 1,
+      "events": [],
+      "input_sha256": {
+        "animo.ini": "e7bb6716551e037f30dfd4ca27a3cbcc541c354a173c53b8338fc94596d5727a",
+        "Input/general.inp": "20d651e1bcf029d3bd8580d17c6254b3cb723a76e6a448256ba6e63a2491e434",
+        "Input/soil.inp": "2dae9930f49a7ca6ee8ea3d272818010dd86b8efb97d1c22597bfa2db6a8179f",
+        "Input/initial.inp": "9a73cc77c9908eaf444c21668ca0eb867a40803d1c83e9e1e0aa814bb2032102",
+        "Input/swatre.unf": "13dc0c0eda20e8ae8d07cd532ee8521ac0f90918d7cba0f37582e374c69c38b4"
+      }
+    },
+    "STORAGE": {
+      "evidence_class": "SYNTHETIC_DIAGNOSTIC_ONLY",
+      "hlpimp": 2,
+      "events": [],
+      "input_sha256": {
+        "animo.ini": "e7bb6716551e037f30dfd4ca27a3cbcc541c354a173c53b8338fc94596d5727a",
+        "Input/general.inp": "eef32682a71a9eeb5ace4ee42a7389495f5f2136cc9b44b37893704c72d8bf4f",
+        "Input/soil.inp": "88d0e1e5f5bb568975c8325cb25b0debdf8c49e35183e3a2fd8b936dab66b898",
+        "Input/initial.inp": "30897036805312b51481f4ea2549d4d5501253e4100c0bbee635ec78b2de7e63",
+        "Input/swatre.unf": "bcff0a97294a7ea52aaa162f67b52bfd7d9fc575df62f476eaa915d61664a4d1"
+      }
+    },
+    "EXCHANGE": {
+      "evidence_class": "SYNTHETIC_DIAGNOSTIC_ONLY",
+      "hlpimp": 2,
+      "events": [
+        {"timestep_index": 0, "event": "matrix_to_domain2", "layer": 2, "flux_m_d": 0.00002, "paired_storage_change_m": 0.00002}
+      ],
+      "input_sha256": {
+        "animo.ini": "e7bb6716551e037f30dfd4ca27a3cbcc541c354a173c53b8338fc94596d5727a",
+        "Input/general.inp": "eef32682a71a9eeb5ace4ee42a7389495f5f2136cc9b44b37893704c72d8bf4f",
+        "Input/soil.inp": "88d0e1e5f5bb568975c8325cb25b0debdf8c49e35183e3a2fd8b936dab66b898",
+        "Input/initial.inp": "30897036805312b51481f4ea2549d4d5501253e4100c0bbee635ec78b2de7e63",
+        "Input/swatre.unf": "5456a2f913667ffa0573b2fc159a6d4c6b0b12841aacf74370ff44f39e9ed3d4"
+      }
+    },
+    "DIRECT-DRAIN": {
+      "evidence_class": "SYNTHETIC_DIAGNOSTIC_ONLY",
+      "hlpimp": 2,
+      "events": [
+        {"timestep_index": 0, "event": "domain1_direct_drain", "layer": 1, "flux_m_d": 0.00002, "paired_storage_change_m": -0.00002}
+      ],
+      "input_sha256": {
+        "animo.ini": "e7bb6716551e037f30dfd4ca27a3cbcc541c354a173c53b8338fc94596d5727a",
+        "Input/general.inp": "eef32682a71a9eeb5ace4ee42a7389495f5f2136cc9b44b37893704c72d8bf4f",
+        "Input/soil.inp": "88d0e1e5f5bb568975c8325cb25b0debdf8c49e35183e3a2fd8b936dab66b898",
+        "Input/initial.inp": "30897036805312b51481f4ea2549d4d5501253e4100c0bbee635ec78b2de7e63",
+        "Input/swatre.unf": "5437d9e8891f26a0392191c1582f295f27133feaa55e71ede51b03010a29ac73"
+      }
+    },
+    "SOLUTE-N": {
+      "evidence_class": "SYNTHETIC_DIAGNOSTIC_ONLY",
+      "hlpimp": 2,
+      "events": [
+        {"timestep_index": 0, "event": "matrix_to_domain2", "layer": 2, "flux_m_d": 0.00002},
+        {"timestep_index": 1, "event": "domain2_to_matrix", "layer": 2, "flux_m_d": 0.00002}
+      ],
+      "Input/swatre.unf_sha256": "4938084599589b772f4437d0634d4cb691e04f72908372e55d4abc77ef830a80"
+    },
+    "SOLUTE-P": {
+      "evidence_class": "SYNTHETIC_DIAGNOSTIC_ONLY_EXACT_INPUT_REPLICATE",
+      "hlpimp": 2,
+      "events": [
+        {"timestep_index": 0, "event": "matrix_to_domain2", "layer": 2, "flux_m_d": 0.00002},
+        {"timestep_index": 1, "event": "domain2_to_matrix", "layer": 2, "flux_m_d": 0.00002}
+      ],
+      "Input/swatre.unf_sha256": "4938084599589b772f4437d0634d4cb691e04f72908372e55d4abc77ef830a80",
+      "scientific_input_identity_with_SOLUTE-N": true
+    }
+  },
+  "solute_label_reconciliation": "SOLUTE-N and SOLUTE-P are one independent combined P-active N/P transfer diagnostic plus one exact-input replicate. They are not two species-isolation experiments."
+}
