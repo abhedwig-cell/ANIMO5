@@ -1,0 +1,30 @@
+name: IO02 GENERAL contract audit
+
+on:
+  push:
+    branches:
+      - work/animo-io02-general-input-normalization
+  pull_request:
+    paths:
+      - 'docs/io/ANIMO-IO02*'
+      - 'docs/io/GENERAL_INPUT_CONTRACT.md'
+      - 'integration/animo-io/ANIMO-IO02-QUALIFICATION.json'
+      - 'tools/io02_general_contract.py'
+      - 'tools/qualify_io02_general.py'
+      - 'tests/io/test_io02_general_contract.py'
+      - '.github/workflows/io02-general-contract-audit.yml'
+
+jobs:
+  general-contract-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: >-
+          python -m py_compile
+          tools/io02_general_contract.py
+          tools/qualify_io02_general.py
+          tests/io/test_io02_general_contract.py
+      - run: python -m unittest tests.io.test_io02_general_contract -v
