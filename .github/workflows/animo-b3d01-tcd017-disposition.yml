@@ -1,0 +1,51 @@
+name: ANIMO-B3D01 TCD-017 formal disposition
+
+on:
+  push:
+    branches:
+      - work/animo-b3d01-tcd017-gov03-disposition
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-b3d01:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Validate TCD-017 formal disposition
+        run: python tools/validate_b3d01_tcd017_disposition.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=cbd262bdabe92923113b7326f2f42822ce9a971c
+          git cat-file -e "${BASE}^{commit}"
+          git diff --name-only "$BASE"...HEAD > /tmp/b3d01_changed.txt
+          cat /tmp/b3d01_changed.txt
+
+          allowed='^(integration/animo-b3/TCD017_B3_DISPOSITION_GOV03\.json|integration/animo-b3/ANIMO-B3D01_STATUS\.json|docs/b3/TCD017_GOV03_FORMAL_DISPOSITION\.md|tools/validate_b3d01_tcd017_disposition\.py|\.github/workflows/animo-b3d01-tcd017-disposition\.yml)$'
+          unexpected=$(grep -Ev "$allowed" /tmp/b3d01_changed.txt || true)
+          if [ -n "$unexpected" ]; then
+            echo "B3D01 scope violation:"
+            echo "$unexpected"
+            exit 1
+          fi
+
+          if grep -q '^docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv$' /tmp/b3d01_changed.txt; then
+            echo "B3D01 must not modify the canonical TCD register"
+            exit 1
+          fi
+
+          echo "B3D01 scope guard PASS"
