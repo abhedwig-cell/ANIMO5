@@ -1,0 +1,111 @@
+{
+  "work_unit": "ANIMO-B3A03R",
+  "target": "TCD-018",
+  "record_type": "ISOLATED_TCD018_DIAGNOSTIC_NONINTERFERENCE",
+  "evidence_class": "B1_DIAGNOSTIC_CORRECTED_LEGACY_NOT_REFERENCE_NOT_ADMISSION",
+  "frozen_identity": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "source_archive_modified": false,
+    "testbank_archive_modified": false
+  },
+  "compiler_contract": {
+    "compiler": "GNU Fortran 14.2.0",
+    "flags": [
+      "-ffree-form",
+      "-ffree-line-length-none",
+      "-fallow-argument-mismatch",
+      "-std=legacy",
+      "-fdefault-real-8",
+      "-fdefault-double-8",
+      "-fno-automatic"
+    ],
+    "link_flags": ["-Wl,--build-id=none"],
+    "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "baseline_matches_PREP01_diagnostic_executable": true,
+    "isolated_tcd018_executable_sha256": "2ef9347fab024fe932304754811287c7a05e9722c11f6e1fb070afe8de73c1e7"
+  },
+  "temporary_execution_copy_correction": {
+    "frozen_source_modified": false,
+    "physical_state_modified": false,
+    "hydrology_flux_modified": false,
+    "testcase_modified_scientifically": false,
+    "mechanism": [
+      "Pass existing Sic and Sict into Outbal_calc on the temporary execution copy.",
+      "For each top-profile balance, accumulate (Sict-Sic)*1000 in a reporting-only period accumulator.",
+      "At Optout finalization subtract the accumulated interception storage change from Bawa(Ddev).",
+      "Reset only the reporting accumulator after that balance finalization."
+    ],
+    "scope": "reporting interface only; no SWAP hydrology, interception physics, state promotion or process equation changed"
+  },
+  "runtime": {
+    "cases_attempted": 8,
+    "cases_completed": 8,
+    "successful_completion_message_present_baseline": 8,
+    "successful_completion_message_present_candidate": 8,
+    "active_correction_cases": ["LWKM_gras_1040.2021.2045"],
+    "inactive_cases_with_any_scientific_output_difference": 0
+  },
+  "comparison_contract": {
+    "surface": "generated .Out/.out/.Bal/.bal artifacts outside testcase input directories",
+    "volatile_normalization_only": [
+      "File created on timestamp line",
+      "ANIMO40-run started on timestamp line",
+      "ANIMO run start timestamp line",
+      "ANIMO run End timestamp line",
+      "Elapsed seconds line"
+    ],
+    "scientific_numeric_tolerance_applied": false,
+    "allowed_difference_whitelist": [
+      "ani_waGP.Bal",
+      "ani_waRP.Bal",
+      "ani_waTP.Bal",
+      "bawaGP.Out",
+      "bawaRP.Out",
+      "bawaTP.Out"
+    ]
+  },
+  "case_results": {
+    "CranGrass": {"compared": 31, "equal": 31, "allowed_different": [], "unexpected_different": [], "missing_or_extra": []},
+    "CranMais": {"compared": 23, "equal": 23, "allowed_different": [], "unexpected_different": [], "missing_or_extra": []},
+    "GrassPeat": {"compared": 60, "equal": 60, "allowed_different": [], "unexpected_different": [], "missing_or_extra": []},
+    "LWKM_gras_1040.2021.2045": {
+      "compared": 53,
+      "equal": 47,
+      "allowed_different": ["ani_waGP.Bal", "ani_waRP.Bal", "ani_waTP.Bal", "bawaGP.Out", "bawaRP.Out", "bawaTP.Out"],
+      "unexpected_different": [],
+      "missing_or_extra": []
+    },
+    "Puitmijn_Cranendonck_60": {"compared": 77, "equal": 77, "allowed_different": [], "unexpected_different": [], "missing_or_extra": []},
+    "RuurloGrass": {"compared": 72, "equal": 72, "allowed_different": [], "unexpected_different": [], "missing_or_extra": []},
+    "STONE_akk_0006.2001.2015": {"compared": 44, "equal": 44, "allowed_different": [], "unexpected_different": [], "missing_or_extra": []},
+    "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA": {"compared": 16, "equal": 16, "allowed_different": [], "unexpected_different": [], "missing_or_extra": []}
+  },
+  "totals": {
+    "outputs_compared": 376,
+    "equal_after_declared_volatile_normalization": 370,
+    "whitelisted_differences": 6,
+    "unexpected_differences": 0,
+    "missing_or_extra": 0
+  },
+  "lwkm_water_balance": {
+    "baseline_max_abs_BAWADV_mm": {
+      "bawaGP.Out": 0.06,
+      "bawaRP.Out": 0.06,
+      "bawaTP.Out": 0.0601
+    },
+    "isolated_tcd018_max_abs_BAWADV_mm": {
+      "bawaGP.Out": 0.0000465,
+      "bawaRP.Out": 0.0000493,
+      "bawaTP.Out": 0.000207
+    },
+    "largest_corrected_total_profile_record": {"year": 2005, "BAWADV_mm": 0.000207},
+    "raw_0_0601_mm_used_as_tolerance": false,
+    "interpretation": "The characteristic interception-storage residual is removed on the isolated TCD-018 execution copy while the remaining water residual stays at the independently observed detailed-hydrology closure scale."
+  },
+  "decision": "PASS_ISOLATED_TCD018_B1_NONINTERFERENCE_AND_WHITELIST_DIAGNOSTIC_ONLY",
+  "b2_reference_claim": false,
+  "independent_second_line_review_claim": false,
+  "b3_admitted": false,
+  "production_migration_admitted": false
+}
