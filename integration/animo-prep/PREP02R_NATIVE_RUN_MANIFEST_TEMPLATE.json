@@ -1,0 +1,106 @@
+{
+  "schema": "animo-prep02r-native-run-capture-v1",
+  "evidence_class": "NATIVE_RUN_CAPTURE_NOT_REFERENCE_ADMISSION",
+  "work_unit": "ANIMO-PREP02R",
+  "case": "RuurloGrass",
+  "artifact_receipt_manifest": null,
+  "executable": {
+    "filename": null,
+    "sha256": null,
+    "claimed_version": null,
+    "claimed_revision": null,
+    "lineage_classification": null,
+    "provenance_summary": null,
+    "native_execution_attempt_admitted": false
+  },
+  "build_contract": {
+    "supplied_binary": null,
+    "source_identity": null,
+    "compiler_identity": null,
+    "compiler_command": null,
+    "linker_command": null,
+    "project_file_hashes": [],
+    "default_real_semantics": null,
+    "double_precision_semantics": null,
+    "local_storage_policy": null,
+    "unformatted_record_convention": null,
+    "optimization": null,
+    "floating_point_model": null,
+    "runtime_library_assumptions": []
+  },
+  "runtime_environment": {
+    "os": null,
+    "os_build": null,
+    "architecture": null,
+    "native_or_vm": null,
+    "vm_or_machine_label": null,
+    "locale": null,
+    "code_page": null,
+    "timezone": null,
+    "runtime_library_hashes": []
+  },
+  "input": {
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "case_tree_content_set_sha256": null,
+    "hydrology_file": null,
+    "hydrology_sha256": null,
+    "file_inventory": [],
+    "path_or_filesystem_staging": [],
+    "input_content_transformed": false,
+    "compatibility_transformation_classification": null
+  },
+  "execution": {
+    "command": null,
+    "working_directory_layout": null,
+    "started_at": null,
+    "ended_at": null,
+    "exit_status": null,
+    "stdout_sha256": null,
+    "stderr_sha256": null,
+    "warnings": [],
+    "stop_messages": [],
+    "runtime_seconds": null
+  },
+  "outputs": {
+    "raw_tree_preserved": false,
+    "content_set_sha256": null,
+    "file_count": null,
+    "file_inventory": []
+  },
+  "repeat_determinism": {
+    "repeat_run_performed": false,
+    "classification": null,
+    "second_output_content_set_sha256": null,
+    "declared_volatile_only": null
+  },
+  "native_vs_gnu": {
+    "comparison_performed": false,
+    "gnu_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "formatted_tree_comparator": "tools/compare_legacy_output_trees.py",
+    "comparator_report": null,
+    "difference_classes": {
+      "lexical_formatting": null,
+      "file_path_semantics": null,
+      "binary_io_compatibility": null,
+      "floating_point_representation": null,
+      "numerical_state": null,
+      "flux": null,
+      "mass_balance": null,
+      "process_trajectory": null
+    },
+    "global_numerical_tolerance_defined": false
+  },
+  "observer": {
+    "observer_build_attempted": false,
+    "ordinary_native_contract_established_first": false,
+    "unrounded_reference_capture_admitted": false
+  },
+  "reference_admission": {
+    "historical_reference_environment_qualified": false,
+    "independent_equivalent_reference_build_contract_qualified": false,
+    "scope": null,
+    "decision": "NOT_EVALUATED"
+  },
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false
+}
