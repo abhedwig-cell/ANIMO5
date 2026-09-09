@@ -2,22 +2,39 @@
   "workunit": "ANIMO-STATEQ01",
   "artifact": "restricted-core fail-before-mutate guard",
   "profile": "CORE_CNP_SUBSURFACE_ONLY",
-  "status": "PERSISTED_NOT_YET_EXECUTED",
+  "status": "QUALIFICATION_GUARD_UNIT_SENTINEL_PASSED_INTEGRATION_SENTINEL_STILL_OPEN",
   "production_code": false,
   "physics_change": false,
   "canonical_state_admission": "NOT_ADMITTED",
   "purpose": "qualification-only executable sentinel for the source-qualified zero-surface and zero-layer0 application envelope",
   "guard_module": "tools/stateq01/restricted_core_guard.py",
   "test_module": "tests/stateq01/test_restricted_core_guard.py",
-  "assertions": [
-    "accepted and candidate surface storage must satisfy exact restricted-core zero predicates",
-    "all in-scope layer0 restart solute coordinates must be exactly zero",
-    "no hidden epsilon or tolerance is used",
-    "non-finite and negative physical storage coordinates fail closed",
-    "unsupported hydrology modes and incomplete state mappings fail closed",
-    "guard evaluation must not mutate input state"
+  "test_execution": {
+    "runtime": "CPython 3.13.5 GCC 14.2.0",
+    "platform": "Linux x86_64 glibc 2.41",
+    "tests_run": 14,
+    "failures": 0,
+    "errors": 0,
+    "result": "PASS"
+  },
+  "assertions_passed": [
+    "aggregated accepted/candidate ponding exact zero accepts",
+    "detailed ponding+snow exact zero accepts",
+    "positive accepted surface storage fails closed",
+    "positive candidate surface storage fails closed",
+    "positive detailed snow storage fails closed",
+    "nonzero layer0 NH4 fails closed",
+    "nonzero P-active layer0 DOP fails closed",
+    "subnormal positive surface storage is not epsilon-accepted",
+    "NaN surface storage fails closed",
+    "infinite layer0 state fails closed",
+    "negative physical surface storage fails closed",
+    "unknown hydrology mode fails closed",
+    "missing required layer0 coordinate fails closed",
+    "guard does not mutate accepted candidate or restart input mappings"
   ],
-  "tested": false,
-  "qualified": false,
-  "next": "execute the standalone sentinel tests after persistence and record exact result"
+  "qualification_boundary": "This proves the standalone guard logic and fail-closed predicate implementation only. It does not yet prove that a full ANIMO execution invokes the guard before chemistry/management mutation or that RC-R10/RC-R11 pass as integrated split-run sentinels.",
+  "tested": true,
+  "qualified": true,
+  "next": "bind the guard into a qualification-only transaction harness and execute integrated RC-R10/RC-R11 before any broader split-run admission claim"
 }
