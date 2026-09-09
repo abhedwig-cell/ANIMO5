@@ -5,7 +5,7 @@
   "local_intake_key": "PREP10-SDOM-PLOUGH-ACCUMULATOR-RESET",
   "canonical_tcd_id": null,
   "canonical_tcd_assignment": "PENDING_CENTRAL_REGISTRY",
-  "why_no_tcd_id_assigned_here": "the inspected B3Q01 canonical input register is frozen through TCD-027 and PREP10 is later parallel evidence; central registry allocation must avoid collisions",
+  "why_no_tcd_id_assigned_here": "the qualified B3Q01 canonical input register remains frozen through TCD-027 and PREP10 is later parallel evidence; central registry allocation must avoid collisions",
   "current_disposition": "UNRESOLVED_NOT_ADMITTED",
   "admitted": false,
   "provisional_b3_class": "B",
@@ -35,6 +35,7 @@
     "source_audit": "integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json",
     "frozen_observer_matrix": "integration/animo-prep/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json",
     "controlled_activation_matrix": "integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json",
+    "parallel_causal_reconciliation": "integration/animo-prep/PREP10_PARALLEL_CAUSAL_EVIDENCE_RECONCILIATION.json",
     "frozen_plough_active_cases": 4,
     "frozen_observed_plough_events": 31,
     "frozen_cases_discriminated_reset": false,
@@ -45,6 +46,9 @@
     "nitrogen_carryover_confirmed": true,
     "conditional_phosphorus_carryover_confirmed": true,
     "observer_nonintrusive_for_compared_generated_outputs": true,
+    "isolated_species_parallel_corroboration_available": true,
+    "phosphorus_disabled_negative_control_available": true,
+    "parallel_corroboration_counts_as_independent_second_line_review": false,
     "synthetic_or_controlled_descendants_are_b2": false
   },
   "b2": {
@@ -88,14 +92,25 @@
   ],
   "b3_governance_basis": {
     "branch": "work/animo-b3q01-scientific-admission-framework",
-    "observed_head": "cbaceff9b0133d1f5255f4fa233f0c75b4e13786",
+    "observed_head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "decision": "QUALIFIED_B3_SCIENTIFIC_ADMISSION_FRAMEWORK_NO_LEGACY_CORRECTIONS_ADMITTED",
+    "qualified": true,
     "framework": "docs/governance/B3_SCIENTIFIC_ADMISSION_FRAMEWORK.md",
     "classes": "docs/governance/B3_QUALIFICATION_CLASSES.md",
+    "schema": "integration/animo-b3/B3_DISPOSITION_SCHEMA.json",
     "existing_classification": "integration/animo-b3/B3_EXISTING_TCD_CLASSIFICATION.csv",
-    "existing_register_upper_bound_observed": "TCD-027"
+    "existing_register_upper_bound_observed": "TCD-027",
+    "b3_baseline_established_by_b3q01": false,
+    "legacy_corrections_admitted_by_b3q01": []
+  },
+  "central_intake_issue": {
+    "number": 8,
+    "title": "B3 intake: PREP10 stable-DOM plough accumulator reset defect",
+    "status": "OPEN"
   },
   "next_valid_action": "central B3 intake, canonical identifier allocation, class confirmation and independent qualification",
   "prohibited_inferences": [
+    "qualified B3 governance is not a B3 admission of this defect",
     "GNU causal evidence is not B2 historical reference evidence",
     "the reset counterfactual is not corrected-legacy admission",
     "controlled activation amplitudes are not field-realism claims",
