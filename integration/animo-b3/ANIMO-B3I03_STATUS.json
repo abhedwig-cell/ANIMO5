@@ -1,7 +1,7 @@
 {
   "work_unit": "ANIMO-B3I03",
-  "title": "Post-MASSQ02 Incremental Causal Discrepancy Intake",
-  "status": "IN_PROGRESS_CHECKPOINT",
+  "title": "Post-MASSQ02 Incremental Causal Discrepancy Intake, Atomicity & Reservation Reconciliation",
+  "status": "QUALIFIED_POST_MASSQ02_INCREMENTAL_CAUSAL_INTAKE_TCD042_RESERVED_NO_ADMISSIONS",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3i03-massq02-causal-intake",
   "base": {
@@ -12,21 +12,97 @@
   "evidence": {
     "MASSQ02_branch": "work/animo-massq02-residual-causality-typed-events",
     "MASSQ02_head": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "MASSQ02_status": "QUALIFIED_TYPED_MASS_EVENT_PROJECTION_AND_RESIDUAL_RECONCILIATION_MASS_ADMISSION_PENDING",
     "new_causal_findings": 15,
-    "unexplained": 0
+    "unexplained": 0,
+    "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
   },
   "hard_rules": {
     "incremental_only": true,
     "no_correction_admission": true,
     "no_production_source_change": true,
     "no_tcd_from_residual_magnitude_only": true,
-    "collision_scan_before_new_reservation": true
+    "collision_scan_before_new_reservation": true,
+    "reservation_is_not_admission": true,
+    "canonical_register_append_is_separate": true
+  },
+  "intake": {
+    "source_findings": 15,
+    "new_fail_closed_reservations": [
+      "TCD-042"
+    ],
+    "new_reservation_count": 1,
+    "existing_parent_context_rows": 3,
+    "existing_parent_context": "TCD-014",
+    "composite_existing_component_rows": 1,
+    "composite_existing_component": "TCD-016 plus unassigned NO3 component",
+    "insufficient_evidence_without_new_id": 10,
+    "canonical_register_append_performed": false,
+    "canonical_register_tail_after_work": "TCD-041"
+  },
+  "tcd_042": {
+    "phenomenon": "upper-boundary precipitation/deposition solute transaction at zero top throughflow",
+    "source_local_key": "MASSQ02-R016",
+    "case": "RuurloGrass",
+    "interval": "TITO=1915",
+    "source_coordinates": [
+      "UBoundconc.for:110-132",
+      "Outbal_calc.for:766-784"
+    ],
+    "observer_residual_kg_ha_N": 0.0067493732130969875,
+    "booked_precipitation_deposition_N_kg_ha": 0.006749373218,
+    "atomicity": "REQUIRES_ATOMIZATION_BEFORE_ADMISSION",
+    "provisional_parent_class": "C_STRICTEST_UNTIL_BOUNDARY_SEMANTICS_ARE_ATOMIZED",
+    "candidate_semantics": [
+      "A accounting-boundary timing",
+      "C persistent surface/top solute ownership",
+      "B local transfer algebra only if an existing owner and exact identity are proven"
+    ],
+    "relation_to_SQ01_UBoundconc_1mm": "RELATED_BOUNDARY_FAMILY_NOT_SILENTLY_IDENTIFIED_WITH_ANCILLARY_THRESHOLD_FINDING",
+    "admitted": false
+  },
+  "routing_guards": {
+    "R012_R014_R017_R018": "TCD-015_CANDIDATE_CONTEXT_ONLY_EXACT_HV_DOUBLE_COUNT_NOT_PROVEN",
+    "R019_R022_R023": "TCD-014_PARENT_CONTEXT_EXISTING_ATOMIZATION_REQUIREMENT_PRESERVED",
+    "R015": "ONLY_NH4_COMPONENT_MAPS_TO_TCD-016_NO3_COMPONENT_REMAINS_UNASSIGNED",
+    "R020": "DOCUMENTED_TCD-019_PROBE_NEGATIVE_FOR_TARGET_EVENT_NO_SILENT_MERGE",
+    "R010": "HYDRO_DETAILED_RESIDUAL_OWNER_KNOWN_BUT_LOCAL_DEFECT_IDENTITY_NOT_PROVEN",
+    "R024": "BOUNDED_SOIL_ORGANIC_C_ONLY_NO_WHOLE_SYSTEM_C_TCD_CLAIM"
   },
   "work_status": {
-    "realized": false,
+    "realized": true,
     "persisted": true,
     "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
-  }
+    "qualified": true,
+    "work_unit_complete": true
+  },
+  "validation": {
+    "validator": "tools/b3i03/validate_b3i03.py",
+    "workflow": ".github/workflows/animo-b3i03-massq02-intake.yml",
+    "github_actions_conclusion": "PENDING"
+  },
+  "deliverables": [
+    "docs/b3/POST_MASSQ02_INCREMENTAL_CAUSAL_INTAKE.md",
+    "integration/animo-b3/B3I03_MASSQ02_FINDING_CROSSWALK.csv",
+    "integration/animo-b3/B3I03_TCD_RESERVATIONS.json",
+    "integration/animo-b3/ANIMO-B3I03_STATUS.json"
+  ],
+  "additional_validation_artifacts": [
+    "tools/b3i03/validate_b3i03.py",
+    ".github/workflows/animo-b3i03-massq02-intake.yml"
+  ],
+  "admission_state": {
+    "scientific_admission_performed": false,
+    "corrected_legacy_admitted": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "production_code_modified": false
+  },
+  "recommended_next_work": [
+    "focused TCD-042 upper-boundary transaction and owner-semantics qualification",
+    "TCD-015 exact branch reachability for nitrate residual family",
+    "TCD-014 child atomization using new natural slow-site initialization evidence",
+    "mechanism decomposition for remaining local MASSQ02 findings"
+  ]
 }
