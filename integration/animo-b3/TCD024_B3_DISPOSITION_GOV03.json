@@ -1,0 +1,115 @@
+{
+  "record_id": "B3D03-TCD024-GOV03-DISPOSITION",
+  "record_version": 1,
+  "tcd_ids": ["TCD-024"],
+  "atomicity": "ATOMIC",
+  "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "disposition": "UNRESOLVED_NOT_ADMITTED",
+  "scope": {
+    "process": "slow Langmuir sorption site-index binding",
+    "code_path": "Transorp.for Conc_unl slow-Langmuir kinetic exponent",
+    "legacy_expression": "Yy = One + Parcxsl(3,I) * Avc",
+    "candidate_atomic_correction": "Yy = One + Parcxsl(3,J) * Avc",
+    "claim": "the site-specific slow-Langmuir affinity parameter must be indexed by slow-sorption site J, not nonlinear trial counter I"
+  },
+  "authorities": {
+    "RG05A": "a4eb1bb1632a573c93b7d44186f7d200a862c6e7",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3B03": "446f57f3aeff6e7db56ce473f0724bdb58cad94f",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "review_handoff": "review/animo-b3b03r-tcd024-independent-second-line@07e440bb42d58facad6b4e5408dd57a0d8f82daf"
+  },
+  "historical_route": {
+    "b2_available": false,
+    "b2_status": "UNAVAILABLE_AFTER_DOCUMENTED_ACQUISITION_ATTEMPT",
+    "historical_prevalence": "UNKNOWN",
+    "historical_fidelity_claimed": false,
+    "G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS"
+  },
+  "readiness_reconciliation": {
+    "frozen_B0_identity": "PASS",
+    "canonical_TCD024_binding": "PASS",
+    "exact_wrong_index_expression": "PASS",
+    "exact_corrected_site_index": "PASS",
+    "unequal_site_active_fixture": "PASS",
+    "unrounded_P_site_state_comparison": "PASS",
+    "unrounded_P_site_transfer_comparison": "PASS",
+    "multi_site_internal_conservation_identity": "PASS_EXACT_NO_TOLERANCE",
+    "inactive_site_control": "PASS_EXACT",
+    "inactive_Freundlich_route_control": "PASS_55_OF_55_NORMALIZED_MODEL_OUTPUTS_IDENTICAL",
+    "SYNQ01_index_domain_oracle": "PASS",
+    "TCD019_separation": "PASS",
+    "predeclared_expected_difference_surface": "PASS",
+    "non_interference_outside_targeted_surface": "PASS_WITHIN_QUALIFIED_DIAGNOSTIC_SCOPE",
+    "production_source_unchanged": "PASS"
+  },
+  "coverage": {
+    "natural_positive_Optcxsl2_activation": false,
+    "natural_positive_activation_limitation": "All six supplied active-P cases use OPTCXSL=3 Freundlich slow sorption.",
+    "natural_negative_control": "PASS",
+    "synthetic_active_unequal_site_discriminator": "PASS",
+    "scope_consequence": "Any later admission must remain restricted to the atomic Optcxsl=2 site-index identity and must not claim natural historical prevalence."
+  },
+  "expected_difference": {
+    "trigger": "Optcxsl == 2 and Conc_unl reaches slow-site kinetic update",
+    "immediate_changed": [
+      "site-J slow-Langmuir relaxation factor Yy when Parcxsl(3,J) differs from Parcxsl(3,I)",
+      "updated slow-sorbed P state for affected active site J",
+      "site-local slow-sorption P transfer implied by qnew(J)-qold(J)"
+    ],
+    "downstream_changed_when_activated": [
+      "dissolved PO4-P state through conservation coupling",
+      "slow-sorbed P site states",
+      "P balance and P-derived output surfaces where the changed trajectory propagates"
+    ],
+    "required_unchanged": [
+      "Optcxsl selection and constitutive option triggers",
+      "nonlinear trial loop I=1..20 and ordering",
+      "site loop J=1..Ncxsl and ordering",
+      "Recf(J) site-specific rate selection",
+      "all input parameter values",
+      "TCD-019 fast-sorption finite-change and convergence policy",
+      "all solver tolerances and clipping thresholds",
+      "Optcxsl=1 linear slow-sorption route",
+      "Optcxsl=3 Freundlich slow-sorption route",
+      "inactive zero-rate site identity",
+      "hydrological forcing, states and water fluxes",
+      "C and N families outside existing P coupling"
+    ]
+  },
+  "gates": {
+    "b0_identity": "PASS",
+    "b1_evidence": "PASS",
+    "b2_route": "PASS_GOV03_HISTORICAL_UNCERTAINTY_ROUTE",
+    "theory_or_exact_identity": "PASS_LOCAL_INDEX_AND_MULTI_SITE_CONSERVATION_IDENTITY",
+    "causal": "PASS",
+    "conservation": "PASS_EXACT_NO_TOLERANCE",
+    "expected_difference": "PASS",
+    "non_interference": "PASS_WITHIN_QUALIFIED_DIAGNOSTIC_SCOPE",
+    "coverage": "PASS_RESTRICTED_SYNTHETIC_ACTIVE_PLUS_NATURAL_NEGATIVE_CONTROL",
+    "class_specific": "PASS_FOR_READINESS",
+    "residual_uncertainty": "PASS_EXPLICIT",
+    "independent_review": "FAIL_PENDING_NOT_COMPLETED",
+    "composition_if_applicable": "PASS_NOT_APPLICABLE"
+  },
+  "independent_review": {
+    "handoff_branch": "review/animo-b3b03r-tcd024-independent-second-line",
+    "handoff_head": "07e440bb42d58facad6b4e5408dd57a0d8f82daf",
+    "review_status_at_reconciliation": "PENDING_INDEPENDENT_REVIEW",
+    "same_authoring_context_may_count": false,
+    "gate": "BLOCKING"
+  },
+  "residual_uncertainty": [
+    "No qualified B2 behavioural reference exists and historical prevalence of the Optcxsl=2 defect remains unknown.",
+    "The frozen supplied natural active-P testbank does not positively activate Optcxsl=2; positive discrimination is synthetic and exact.",
+    "TCD-019 remains a separate numerical-policy item and is not composed into TCD-024.",
+    "A genuinely independent second-line review is still required before any B3 admission."
+  ],
+  "admission_decision": {
+    "admitted": false,
+    "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03",
+    "production_patch_authorized": false,
+    "production_migration_admitted": false
+  }
+}
