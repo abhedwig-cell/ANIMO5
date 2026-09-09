@@ -1,0 +1,56 @@
+{
+  "work_unit": "ANIMO-PREP10C",
+  "title": "Stable-DOM plough accumulator reset corrected-legacy readiness",
+  "evidence_class": "CORRECTED_LEGACY_CANDIDATE_CONTRACT_NOT_ADMISSION",
+  "branch": "work/animo-prep10c-stable-dom-reset-readiness",
+  "parent_sha": "5c927c2f9c218eb740080817203f4962034e5846",
+  "proposed_discrepancy_id": "TCD-032",
+  "proposed_discrepancy_name": "stable-DOM plough event-local accumulator reset",
+  "classification": "CONFIRMED_LEGACY_EVENT_TRANSACTION_STATE_DEFECT_CURRENT_GNU_CAUSAL_HISTORICAL_NATIVE_OPEN",
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "addit_for_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d"
+  },
+  "qualified_parent_evidence": {
+    "prep10_decision": "QUALIFIED_GNU_DIAGNOSTIC_CAUSAL_ACCUMULATOR_CARRYOVER_CONFIRMED_CONTROLLED_INPUT_DESCENDANTS_HISTORICAL_INTEL_OPEN",
+    "source_use_before_definition": true,
+    "current_gnu_carbon_carryover": true,
+    "current_gnu_nitrogen_carryover": true,
+    "current_gnu_conditional_phosphorus_carryover": true,
+    "historical_intel_manifestation_qualified": false,
+    "causal_matrix": "integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json"
+  },
+  "minimal_candidate": {
+    "target_member": "ANIMO_4.1.5.53/Addit.for",
+    "insertion_scope": "start of each Pl(I)>0 event before the stable-DOM accumulation loop",
+    "assignments": [
+      "SuStdiorma = 0.0",
+      "SuStdiorni = 0.0",
+      "If (Ipo.Eq.1) SuStdiorpo = 0.0"
+    ],
+    "diagnostic_counterfactual_addit_sha256": "a1993aa2d22c8f2c13fc169e78f9121587c8f14a122ef7d3f757cc24a58a54ae",
+    "candidate_semantics_equal_to_qualified_counterfactual": true,
+    "raw_corrected_source_published": false,
+    "corrected_legacy_lineage_started": false
+  },
+  "required_future_admission_checks": [
+    "historical or independently admitted reference contract available for affected behavior",
+    "B0 parent hash verified immediately before transformation",
+    "corrected descendant hash and deterministic recipe recorded",
+    "frozen plough-active testbank cases demonstrate noninterference where PREP10 found dormant behavior",
+    "controlled causal descendants converge to qualified event-reset counterfactual outputs",
+    "C N and conditional P conservation-ledger reconciliation passes",
+    "restart and repeated-event continuity passes",
+    "no unrelated source changes",
+    "dedicated corrected-legacy admission status is issued"
+  ],
+  "current_blocker": "HISTORICAL_OR_INDEPENDENTLY_ADMITTED_REFERENCE_CONTRACT_REQUIRED_BEFORE_CORRECTED_LEGACY_LINEAGE",
+  "admissions": {
+    "candidate_contract_defined": true,
+    "candidate_implementation_admitted": false,
+    "corrected_legacy_admitted": false,
+    "reference_output_admitted": false,
+    "production_migration_admitted": false
+  }
+}
