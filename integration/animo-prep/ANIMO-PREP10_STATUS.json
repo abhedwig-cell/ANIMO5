@@ -3,17 +3,17 @@
   "title": "Stable-DOM plough accumulator audit and causal activation",
   "branch": "work/animo-prep10-stable-dom-causal-activation",
   "parent_checkpoint": "d728496cd72ba1a2e20a5f0cd731b3800b72f4a6",
-  "decision": "QUALIFIED_SOURCE_DEFECT_AND_CURRENT_GNU_CAUSAL_EFFECT_FOR_STABLE_DOM_AND_DON_HISTORICAL_NATIVE_AND_DOP_OPEN",
+  "decision": "QUALIFIED_SOURCE_DEFECT_AND_CURRENT_GNU_CAUSAL_EFFECT_FOR_STABLE_DOM_DON_AND_DOP_HISTORICAL_NATIVE_OPEN",
   "state_dimensions": {
     "implemented": true,
     "persisted": true,
     "source_level_use_before_definition_qualified": true,
-    "frozen_repeated_plough_path_qualified": true,
-    "frozen_testbank_numerically_discriminating": false,
-    "controlled_diagnostic_input_descendant_created": true,
+    "frozen_repeated_plough_paths_qualified": true,
+    "unmodified_frozen_testbank_numerically_discriminating": false,
+    "controlled_diagnostic_input_descendants_created": true,
     "current_gnu_dom_causal_effect_qualified": true,
     "current_gnu_don_causal_effect_qualified": true,
-    "current_gnu_dop_causal_effect_qualified": false,
+    "current_gnu_dop_causal_effect_qualified": true,
     "historical_native_runtime_effect_qualified": false,
     "reference_output_admitted": false,
     "corrected_legacy_admitted": false,
@@ -22,8 +22,9 @@
   "frozen_identity": {
     "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "addit_member_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
     "cranmais_initial_member_sha256": "8df3d78e830f344bc315d4dff2ae4c1ee4d6e959a07ba7d112e4105e6fbbb201",
-    "addit_member_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d"
+    "lwkm_initial_member_sha256": "0e6bb1d30c46c3aa8c7dcd077c06845afebcb6bd8b576c0df24e037382dfa483"
   },
   "qualified_source_finding": {
     "variables": ["SuStdiorma", "SuStdiorni", "SuStdiorpo"],
@@ -36,39 +37,48 @@
     "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
     "observer_executable_sha256": "d179aba23e0a0ef90b118437c2817a0c3a0ec6f227be555598ba393c31d7a501",
     "reset_counterfactual_executable_sha256": "f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db",
-    "observer_first_event_after_dom": 2.1670933665864016e-06,
-    "observer_second_event_before_dom": 2.1670933665864016e-06,
-    "observer_first_event_after_don": 2.1670933665864018e-07,
-    "observer_second_event_before_don": 2.1670933665864018e-07,
-    "dom_final_restart_sum_baseline": 6.136175457677e-05,
-    "dom_final_restart_sum_reset": 1.3633400418508182e-05,
-    "dom_baseline_to_reset_ratio": 4.500840046733142,
-    "don_final_restart_sum_baseline": 6.136069957677e-06,
-    "don_final_restart_sum_reset": 1.3632378235187933e-06,
-    "don_baseline_to_reset_ratio": 4.501100139547595,
-    "scientifically_different_files_after_declared_volatile_only_normalization": 16,
+    "cranmais_dom_don": {
+      "observer_first_event_after_dom": 2.1670933665864016e-06,
+      "observer_second_event_before_dom": 2.1670933665864016e-06,
+      "observer_first_event_after_don": 2.1670933665864018e-07,
+      "observer_second_event_before_don": 2.1670933665864018e-07,
+      "dom_final_restart_sum_baseline": 6.136175457677e-05,
+      "dom_final_restart_sum_reset": 1.3633400418508182e-05,
+      "dom_baseline_to_reset_ratio": 4.500840046733142,
+      "don_final_restart_sum_baseline": 6.136069957677e-06,
+      "don_final_restart_sum_reset": 1.3632378235187933e-06,
+      "don_baseline_to_reset_ratio": 4.501100139547595,
+      "scientifically_different_files_after_declared_volatile_only_normalization": 16
+    },
+    "lwkm_stable_dop": {
+      "phosphorus_cycle": 1,
+      "plough_event_count": 4,
+      "diagnostic_descendant_sha256": "1efe16d5e8c3e685ad22168132da4ffa789c4f982e8c178640a97fff14fd4e48",
+      "observer_first_event_after_dop": 3.0585643629036948e-12,
+      "observer_second_event_before_dop": 3.0585643629036948e-12,
+      "final_restart_sum_baseline": 1.7192446562370895e-08,
+      "final_restart_sum_reset": 1.7191897420234135e-08,
+      "baseline_minus_reset": 5.491421367604038e-13,
+      "baseline_to_reset_ratio": 1.000031941915621,
+      "scientifically_different_files_after_declared_volatile_only_normalization": 11
+    },
     "numerical_tolerance_used_for_acceptance": false
-  },
-  "negative_control": {
-    "probe": "DOP-only CranMais diagnostic descendant",
-    "scientific_outputs_match_after_declared_volatile_only_normalization": true,
-    "reason": "CranMais has PhosphorusCycle=0, so this testcase cannot qualify SuStdiorpo runtime behavior."
   },
   "verification": {
     "authoring_environment_b0_bytes_rehashed_before_use": true,
-    "diagnostic_transform_tool": "tools/make_prep10_causal_initial.py",
-    "causal_evidence": "integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION.json",
-    "github_actions_run_id": 34303844330,
-    "github_actions_head": "1adcb12443a9a113a4f2f8daec8a1ed29a0b1b56",
-    "github_actions_conclusion": "success",
-    "github_actions_unit_tests_passed": 13,
+    "cranmais_diagnostic_transform_tool": "tools/make_prep10_causal_initial.py",
+    "lwkm_p_diagnostic_transform_tool": "tools/make_prep10_lwkm_p_causal_initial.py",
+    "cranmais_causal_evidence": "integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION.json",
+    "lwkm_p_causal_evidence": "integration/animo-prep/PREP10_STABLE_DOP_CAUSAL_ACTIVATION.json",
+    "latest_confirmed_github_actions_run_before_dop_tooling": 34303995492,
+    "latest_confirmed_github_actions_head_before_dop_tooling": "4332bf97894f05afd7adebb1f57c2d5151f88f18",
+    "latest_confirmed_github_actions_conclusion_before_dop_tooling": "success",
     "github_actions_private_b0_runtime_reexecution": false,
     "raw_source_or_testbank_bytes_added_to_git": false
   },
   "open_gates": [
-    "qualify SuStdiorpo causal behavior in a provenance-pinned phosphorus-enabled diagnostic path",
-    "repeat the causal experiment under a provenance-qualified historical native build if recovered",
-    "qualify any reset correction in a separate corrected-legacy workunit with conservation-ledger reconciliation before migration"
+    "repeat DOM, DON and DOP causal experiments under a provenance-qualified historical native build if recovered",
+    "qualify any event-reset correction in a separate corrected-legacy workunit with conservation-ledger reconciliation before migration"
   ],
   "non_admissions": [
     "diagnostic activation values are not claimed physically representative",
