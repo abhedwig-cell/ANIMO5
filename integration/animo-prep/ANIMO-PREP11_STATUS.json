@@ -11,32 +11,50 @@
   "source_evidence": {
     "branch": "work/animo-prep09-option-contract-audit",
     "head": "0ae0e2180cf0569f8ea22319aa9ccb54ebca3210",
+    "source_tree": "463e8c00f2d69381a10ebff5c77e2c766ae4eca4",
     "historical_workunit_label": "ANIMO-PREP09",
     "requalification_claimed": false
   },
-  "decision": "IN_PROGRESS_EVIDENCE_REHOME_NO_REQUALIFICATION",
+  "decision": "QUALIFIED_PROVENANCE_PRESERVING_OPTION_CONTRACT_EVIDENCE_REHOME",
   "implemented": true,
   "persisted": true,
-  "tested": false,
-  "qualified": false,
+  "tested": true,
+  "qualified": true,
   "blocked": false,
+  "qualification_scope": "repository provenance and identity preservation only; the source PREP09 scientific/diagnostic qualification is preserved as historical evidence but is neither repeated nor upgraded",
   "local_finding_identity": {
     "source_local_label": "TCD-030",
     "rg02_reconciliation_key": "RG02-LCL-AERATION-OPTION2-ALIAS",
     "canonical_tcd_id": null,
     "canonical_allocation_owner": "ANIMO-B3 governance"
   },
+  "verification": {
+    "rehome_commit": "27e283f392b14389f129fceca837d76db823eff1",
+    "selected_source_blobs": 8,
+    "exact_blob_reuse": true,
+    "scientific_content_rewritten": false,
+    "source_prep09_status_present_on_target": false,
+    "source_discrepancy_register_blob": "d1f64eb212e4088ab8cc48057a3ec99da8164f6e",
+    "target_inherited_rg02_discrepancy_register_blob": "e6c2dec78f718f9ffb70af8910f0ec483e676e63",
+    "source_discrepancy_register_imported": false,
+    "tool_blobs_preserved": true,
+    "test_blob_preserved": true,
+    "current_branch_tool_tests_reexecuted": false,
+    "testing_interpretation": "TESTED means exact source-to-target blob identity and exclusion/readback checks for this rehome. It does not claim a fresh scientific or runtime execution."
+  },
+  "rehome_manifest": "integration/animo-prep/PREP11_REHOME_MANIFEST.json",
   "hard_rules": {
     "legacy_source_modified": false,
     "testcase_modified": false,
     "physics_changed": false,
     "numerical_policy_changed": false,
     "corrected_legacy_admitted": false,
+    "reference_qualified_by_rehome": false,
     "B3_admitted": false,
     "B4_admitted": false,
     "production_migration_admitted": false,
     "source_prep09_status_import_allowed": false,
     "source_discrepancy_register_import_allowed": false
   },
-  "next": "transplant selected source evidence with exact blob provenance and verify exclusions"
+  "next": "RG02 may bind this qualified rehome as the authoritative PREP11 evidence container while keeping scientific admission and canonical TCD allocation external"
 }
