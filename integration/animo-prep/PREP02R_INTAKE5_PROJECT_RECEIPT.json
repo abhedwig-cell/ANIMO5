@@ -1,0 +1,40 @@
+{
+  "artifact": {
+    "artifact_class": "project_build_metadata",
+    "claimed_revision": null,
+    "claimed_version": "4.1.x / project named animo41",
+    "container_type": "directory",
+    "content_set_sha256": "3dc760141d9047d86e07f9490c5e591ac1d6298b3c47882177d8ed9dec53e2b6",
+    "file_count": 2,
+    "files": [
+      {
+        "relative_path": "animo41.sln",
+        "sha256": "206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2",
+        "size": 1233
+      },
+      {
+        "relative_path": "animo41.vfproj",
+        "sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+        "size": 9829
+      }
+    ],
+    "label": "user-supplied animo41 Visual Studio/Intel Fortran project metadata",
+    "provenance_note": "Supplied by user in ChatGPT project on 2026-09-09; sender/original archive provenance not independently established.",
+    "sha256": null,
+    "total_size": 11062
+  },
+  "captured_at_utc": "2026-09-09T18:07:57.025131+00:00",
+  "evidence_class": "RECEIPT_MANIFEST_NOT_REFERENCE_ADMISSION",
+  "native_execution_admitted": false,
+  "note": "Receipt and hashing only. Provenance and lineage must be reviewed before any native execution or reference-admission decision.",
+  "receipt_checks": {
+    "artifact_copied_by_this_tool": false,
+    "artifact_executed_by_this_tool": false,
+    "bytes_hashed_before_execution": true,
+    "expected_sha256_matched": null,
+    "expected_sha256_supplied": false
+  },
+  "reference_admitted": false,
+  "schema": "animo-prep02r-reference-artifact-receipt-v1",
+  "trust_classification": "UNASSESSED_RECEIVED_ARTIFACT"
+}
