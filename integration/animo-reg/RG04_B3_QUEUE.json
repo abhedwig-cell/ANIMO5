@@ -12,7 +12,7 @@
   "route_state": {
     "G6H": "PARTIAL_RECOVERY_HISTORICAL_B2_NOT_PASSED",
     "G6U": "NOT_ELIGIBLE_ACQUISITION_NOT_EXHAUSTED",
-    "PREP02R_head": "60f3c57a3299a1890b4cdd66befd5a120a306383",
+    "PREP02R_head": "286205cb58455236ba749d1898c490aca0c50179",
     "PREP02R_external_request_sent": false,
     "historical_reference_artifact_obtained": false,
     "modern_native_rebuild_obtained": true,
