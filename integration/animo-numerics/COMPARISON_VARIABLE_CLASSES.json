@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0.0",
+  "work_unit": "ANIMO-NQ01",
+  "policy": "fail_closed_no_unqualified_numeric_tolerances",
+  "global_numeric_tolerance": null,
+  "rules": {
+    "rounded_output_is_unrounded_oracle": false,
+    "largest_legacy_residual_may_define_tolerance": false,
+    "non_exact_floating_acceptance_requires_qualified_policy": true,
+    "b1_is_independent_reference": false,
+    "missing_record_is_difference": true,
+    "unexpected_record_is_difference": true
+  },
+  "classes": [
+    {
+      "id": "ARTIFACT_IDENTITY",
+      "value_domain": "bytes_or_hash",
+      "scientific_role": "provenance",
+      "default_comparison": "SHA256_EXACT",
+      "approximate_acceptance": "FORBIDDEN",
+      "difference_category": "file_path_compatibility",
+      "tolerance": null
+    },
+    {
+      "id": "BINARY_RECORD_REPRESENTATION",
+      "value_domain": "bytes_or_declared_record_metadata",
+      "scientific_role": "exchange_representation",
+      "default_comparison": "EXACT_UNLESS_EXPLICITLY_CLASSIFIED_REPRESENTATION_ONLY",
+      "approximate_acceptance": "NOT_APPLICABLE",
+      "difference_category": "binary_record_representation",
+      "tolerance": null
+    },
+    {
+      "id": "DISCRETE_CONTROL_FLOW",
+      "value_domain": "enum_boolean_branch_id",
+      "scientific_role": "behavioural_path",
+      "default_comparison": "EXACT",
+      "approximate_acceptance": "FORBIDDEN",
+      "difference_category": "control_flow_branch",
+      "tolerance": null
+    },
+    {
+      "id": "INTEGER_OPTION_STATE",
+      "value_domain": "integer_enum",
+      "scientific_role": "configuration_and_index_state",
+      "default_comparison": "EXACT",
+      "approximate_acceptance": "FORBIDDEN",
+      "difference_category": "control_flow_branch",
+      "tolerance": null
+    },
+    {
+      "id": "EXACT_ACCOUNTING_IDENTITY",
+      "value_domain": "identity_definition_plus_floating_evaluation",
+      "scientific_role": "conservation_and_ledger_structure",
+      "default_comparison": "EXACT_TERM_SIGN_INDEX_MAPPING_AND_UNROUNDED_EVALUATION",
+      "approximate_acceptance": "REQUIRES_SEPARATE_QUALIFIED_FLOATING_POLICY_FOR_EVALUATION_ONLY",
+      "difference_category": "ledger_trajectory",
+      "tolerance": null,
+      "notes": "The ledger identity, member set, sign convention, indices and units are exact. A floating evaluation of closure is not assigned a tolerance by this file."
+    },
+    {
+      "id": "PHYSICAL_STORAGE_STATE",
+      "value_domain": "floating",
+      "scientific_role": "conserved_or_physical_state",
+      "default_comparison": "UNROUNDED_NUMERIC_EXACT_IF_EQUAL_ELSE_UNQUALIFIED_DIFFERENCE",
+      "approximate_acceptance": "QUALIFIED_VARIABLE_SPECIFIC_POLICY_REQUIRED",
+      "difference_category": "state_trajectory",
+      "tolerance": null
+    },
+    {
+      "id": "INTERNAL_TRANSFER_FLUX",
+      "value_domain": "floating",
+      "scientific_role": "internal_mass_transfer",
+      "default_comparison": "UNROUNDED_NUMERIC_EXACT_IF_EQUAL_ELSE_UNQUALIFIED_DIFFERENCE",
+      "approximate_acceptance": "QUALIFIED_VARIABLE_SPECIFIC_POLICY_REQUIRED",
+      "difference_category": "flux_trajectory",
+      "tolerance": null
+    },
+    {
+      "id": "EXTERNAL_BOUNDARY_FLUX",
+      "value_domain": "floating",
+      "scientific_role": "system_boundary_transfer",
+      "default_comparison": "UNROUNDED_NUMERIC_EXACT_IF_EQUAL_ELSE_UNQUALIFIED_DIFFERENCE",
+      "approximate_acceptance": "QUALIFIED_VARIABLE_SPECIFIC_POLICY_REQUIRED",
+      "difference_category": "flux_trajectory",
+      "tolerance": null
+    },
+    {
+      "id": "CUMULATIVE_LEDGER",
+      "value_domain": "floating",
+      "scientific_role": "period_or_run_accumulation",
+      "default_comparison": "UNROUNDED_TRAJECTORY_ALIGNED_EXACT_IF_EQUAL_ELSE_UNQUALIFIED_DIFFERENCE",
+      "approximate_acceptance": "QUALIFIED_LEDGER_SPECIFIC_POLICY_REQUIRED",
+      "difference_category": "ledger_trajectory",
+      "tolerance": null
+    },
+    {
+      "id": "NONLINEAR_SOLVER_STATE",
+      "value_domain": "floating_plus_discrete",
+      "scientific_role": "numerical_method_path",
+      "default_comparison": "DISCRETE_FIELDS_EXACT_FLOAT_FIELDS_UNROUNDED",
+      "approximate_acceptance": "QUALIFIED_NUMERICAL_POLICY_REQUIRED",
+      "difference_category": "control_flow_branch",
+      "tolerance": null,
+      "notes": "Iteration count, fallback choice and branch identifiers are exact observations. Floating iterates and residuals require unrounded capture."
+    },
+    {
+      "id": "DIAGNOSTIC_RESIDUAL",
+      "value_domain": "floating",
+      "scientific_role": "diagnostic_not_acceptance_by_itself",
+      "default_comparison": "UNROUNDED_REPORT_DIFFERENCE_NO_AUTOMATIC_ACCEPTANCE",
+      "approximate_acceptance": "QUALIFIED_NUMERICAL_POLICY_REQUIRED",
+      "difference_category": "precision_representation",
+      "tolerance": null
+    },
+    {
+      "id": "FORMATTED_REPORT_VALUE",
+      "value_domain": "text_or_rounded_numeric",
+      "scientific_role": "reporting_surface",
+      "default_comparison": "LEXICAL_OR_PARSED_REPORT_COMPARISON_ONLY",
+      "approximate_acceptance": "MAY_CLASSIFY_FORMATTING_ONLY_BUT_MUST_NOT_ESTABLISH_UNROUNDED_EQUIVALENCE",
+      "difference_category": "formatting",
+      "tolerance": null
+    },
+    {
+      "id": "TIMING_OR_NONSCIENTIFIC_METADATA",
+      "value_domain": "text_integer_floating",
+      "scientific_role": "volatile_or_non_scientific_metadata",
+      "default_comparison": "NORMALIZE_ONLY_BY_DECLARED_RULE",
+      "approximate_acceptance": "NOT_A_SCIENTIFIC_ACCEPTANCE_SURFACE",
+      "difference_category": "formatting",
+      "tolerance": null
+    }
+  ],
+  "temporal_checkpoints": [
+    "INITIAL_STATE",
+    "PRE_PROCESS_STATE",
+    "POST_PROCESS_STATE",
+    "ACCEPTED_END_OF_STEP_STATE",
+    "CUMULATIVE_PERIOD_BALANCE",
+    "FINAL_STATE"
+  ],
+  "difference_categories": [
+    "file_path_compatibility",
+    "formatting",
+    "binary_record_representation",
+    "precision_representation",
+    "state_trajectory",
+    "flux_trajectory",
+    "ledger_trajectory",
+    "control_flow_branch"
+  ]
+}
