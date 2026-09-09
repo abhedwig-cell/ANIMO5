@@ -1,4 +1,4 @@
-name: ANIMO-NQ01 comparator qualification
+name: ANIMO-NQ01 numerical qualification architecture
 
 on:
   push:
@@ -6,28 +6,40 @@ on:
       - work/animo-nq01-numerical-qualification-architecture
     paths:
       - tools/compare_b1_b2_reference.py
+      - tools/validate_first_reference_packet.py
       - tests/test_compare_b1_b2_reference.py
+      - tests/test_validate_first_reference_packet.py
       - integration/animo-numerics/REFERENCE_CAPTURE_SCHEMA.json
+      - integration/animo-numerics/FIRST_REFERENCE_PACKET_SCHEMA.json
+      - integration/animo-numerics/FIRST_REFERENCE_PACKET_TEMPLATE.json
       - .github/workflows/animo-nq01.yml
   pull_request:
     paths:
       - tools/compare_b1_b2_reference.py
+      - tools/validate_first_reference_packet.py
       - tests/test_compare_b1_b2_reference.py
+      - tests/test_validate_first_reference_packet.py
       - integration/animo-numerics/REFERENCE_CAPTURE_SCHEMA.json
+      - integration/animo-numerics/FIRST_REFERENCE_PACKET_SCHEMA.json
+      - integration/animo-numerics/FIRST_REFERENCE_PACKET_TEMPLATE.json
       - .github/workflows/animo-nq01.yml
 
 permissions:
   contents: read
 
 jobs:
-  comparator-tests:
+  qualification-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Compile comparator
-        run: python -m py_compile tools/compare_b1_b2_reference.py
-      - name: Run synthetic fail-closed tests
+      - name: Compile numerical qualification tools
+        run: |
+          python -m py_compile tools/compare_b1_b2_reference.py
+          python -m py_compile tools/validate_first_reference_packet.py
+      - name: Run synthetic fail-closed comparator tests
         run: python -m unittest tests/test_compare_b1_b2_reference.py
+      - name: Run first-reference packet validator tests
+        run: python -m unittest tests/test_validate_first_reference_packet.py
