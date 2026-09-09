@@ -14,6 +14,8 @@ QFILE = BASE / "ARCH03_LEDGER_QUANTITIES.csv"
 CVFILE = BASE / "ARCH03_CONTROL_VOLUMES.csv"
 SCHEMAFILE = BASE / "ARCH03_OBSERVER_SCHEMA.csv"
 IDFILE = BASE / "ARCH03_IDENTITY_MAP.csv"
+PFILE = BASE / "ARCH03_STATE_LEDGER_PROJECTION.csv"
+ARCH01_STATE = BASE / "ARCH01_STATE_OWNERSHIP.csv"
 
 REQUIRED_QUANTITIES = {
     "water",
@@ -92,6 +94,13 @@ REQUIRED_IDENTITIES = {
     "ID-REPORT-ACCUM",
 }
 
+EXCLUDED_LEDGER_ROLES = {
+    "DERIVED_EXCLUDE",
+    "DORMANT_EXCLUDE",
+    "SCRATCH_EXCLUDE",
+    "DIAGNOSTIC_EXCLUDE",
+}
+
 
 def read_csv(path: Path) -> list[dict[str, str]]:
     if not path.is_file():
@@ -109,26 +118,36 @@ def unique(rows: list[dict[str, str]], key: str) -> set[str]:
     return set(values)
 
 
+def split_refs(value: str) -> set[str]:
+    return set(filter(None, value.split(";")))
+
+
 def main() -> int:
     qrows = read_csv(QFILE)
     cvrows = read_csv(CVFILE)
     srows = read_csv(SCHEMAFILE)
     irows = read_csv(IDFILE)
+    prows = read_csv(PFILE)
+    arows = read_csv(ARCH01_STATE)
 
     qids = unique(qrows, "quantity_id")
     cvids = unique(cvrows, "control_volume_id")
     fields = unique(srows, "field_id")
     identities = unique(irows, "identity_id")
+    pids = unique(prows, "legacy_state_id")
+    arch01_ids = unique(arows, "legacy_state_id")
 
     assert qids == REQUIRED_QUANTITIES, (qids, REQUIRED_QUANTITIES)
     assert cvids == REQUIRED_CVS, (cvids, REQUIRED_CVS)
     assert fields == REQUIRED_SCHEMA_FIELDS, (fields, REQUIRED_SCHEMA_FIELDS)
     assert identities == REQUIRED_IDENTITIES, (identities, REQUIRED_IDENTITIES)
+    assert pids == arch01_ids
+    assert len(prows) == 53
 
     for row in qrows:
         assert row["default_control_volume"] in cvids
         assert row["closure_identity"] == "R=S_end-S_begin-I_external+O_external"
-        event_classes = set(filter(None, row["admitted_event_classes"].split(";")))
+        event_classes = split_refs(row["admitted_event_classes"])
         assert "TT-OBSERVE" not in event_classes
         assert "TT-CONSTRAINT" not in event_classes
 
@@ -148,6 +167,18 @@ def main() -> int:
             "observer_integrity_status",
         }
 
+    for row in prows:
+        quantities = split_refs(row["quantity_ids"])
+        volumes = split_refs(row["control_volume_ids"])
+        assert quantities <= qids
+        assert volumes <= cvids
+        if row["ledger_role"] in EXCLUDED_LEDGER_ROLES:
+            assert not quantities
+            assert not volumes
+        else:
+            assert quantities
+            assert volumes
+
     tol = next(r for r in srows if r["field_id"] == "closure_tolerance")
     assert tol["required"] == "NO"
     assert tol["physical_role"] == "not_defined_by_ARCH03"
@@ -163,7 +194,8 @@ def main() -> int:
     print(
         "ARCH03 PASS: "
         f"quantities={len(qrows)} control_volumes={len(cvrows)} "
-        f"schema_fields={len(srows)} identities={len(irows)}"
+        f"schema_fields={len(srows)} identities={len(irows)} "
+        f"state_projections={len(prows)}"
     )
     return 0
 
