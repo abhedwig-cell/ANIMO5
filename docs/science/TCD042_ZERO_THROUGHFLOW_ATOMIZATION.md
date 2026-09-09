@@ -6,7 +6,7 @@ Target: `TCD-042`
 
 Branch: `work/animo-ubq01-tcd042-upper-boundary-transaction`
 
-Status: `EXACT_ZERO_CLASS_B_ATOM_EXECUTABLE_EVIDENCE_PERSISTED_VALIDATION_REFRESH_PENDING`
+Status: `QUALIFIED_EXACT_ZERO_CLASS_B_ATOM_PARENT_NUMERICAL_SUBTHRESHOLD_ATOM_PENDING`
 
 ## Scope
 
@@ -113,6 +113,8 @@ For `RuurloGrass`:
 
 The machine-readable record is `integration/animo-science/TCD042_NATURAL_EXACT_ZERO_PROBE.json`. Comparison policy is `EXACT_BITWISE_NO_TOLERANCE`.
 
+The integrated validator covering source/theory identity, the synthetic exact-zero oracle contract, the isolated natural first difference, both non-interference controls and finite-positive reachability passed on GitHub Actions run `34365508588` at head `87171f13e2492e8f467bc456c2a90564b54ffe5c`.
+
 This evidence supports a local causal first difference rather than an accounting-only repair or new-state interpretation.
 
 ## Atomization decision for exact zero
@@ -154,6 +156,6 @@ Materiality, a cancellation-safe evaluation and any threshold/numerical policy r
 
 ## Current boundary
 
-The exact-zero atom now has source, theory, synthetic-oracle and isolated natural executable evidence. The parent TCD-042 is not fully closed because the finite-positive sub-threshold atom remains open and because GOV02/B3Q01 route and independent admission review are separate gates.
+The exact-zero atom is qualified as Class-B readiness evidence from source, theory, synthetic oracle and isolated natural executable evidence. The parent TCD-042 is not fully closed because the finite-positive sub-threshold atom remains open and because GOV02/B3Q01 route and independent admission review are separate gates.
 
 UBQ01 authorizes no production source change, no corrected-legacy admission, no B3 baseline and no production migration.
