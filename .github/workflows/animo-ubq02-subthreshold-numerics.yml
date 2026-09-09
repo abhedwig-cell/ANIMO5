@@ -1,0 +1,44 @@
+name: ANIMO-UBQ02 subthreshold numerical seam
+
+on:
+  push:
+    branches:
+      - work/animo-ubq02-tcd042-subthreshold-numerical-seam
+  workflow_dispatch:
+
+jobs:
+  validate-ubq02:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Validate persisted characterization
+        run: python tools/ubq02/validate_tcd042_subthreshold.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=6895b67799f26888025eced7188e7190b2a0d07d
+          git cat-file -e "${BASE}^{commit}"
+          git diff --name-only "$BASE"...HEAD > /tmp/ubq02_changed.txt
+          cat /tmp/ubq02_changed.txt
+
+          allowed='^(.github/workflows/animo-ubq02-subthreshold-numerics\.yml|docs/science/TCD042_SUBTHRESHOLD_NUMERICAL_SEAM\.md|integration/animo-science/TCD042_SUBTHRESHOLD_NUMERICAL_CHARACTERIZATION\.json|integration/animo-science/ANIMO-UBQ02_STATUS\.json|tools/ubq02/validate_tcd042_subthreshold\.py)$'
+
+          unexpected=$(grep -Ev "$allowed" /tmp/ubq02_changed.txt || true)
+          if [ -n "$unexpected" ]; then
+            echo "UBQ02 scope violation. Unexpected changed paths:"
+            echo "$unexpected"
+            exit 1
+          fi
+
+          echo "UBQ02 scope guard PASS"
