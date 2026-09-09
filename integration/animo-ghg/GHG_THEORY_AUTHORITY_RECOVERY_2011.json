@@ -1,0 +1,141 @@
+{
+  "work_unit": "ANIMO-GHG01",
+  "artifact": "GHG_THEORY_AUTHORITY_RECOVERY_2011",
+  "status": "ANIMO_SPECIFIC_N2O_EQUATION_AUTHORITY_RECOVERED_WITH_TWO_DOCUMENT_SOURCE_CONFLICTS",
+  "source_branch": "work/animo-ghg01-ghg-qualification",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_file_sha256": {
+    "ghg_n2o.for": "493bf88d4b321df64817a7c0eaa2725ad614a45df0a0f16cefa96ac348254175",
+    "ghgtransport.for": "d86e420952c43aaa6e730235f5820802310dd14a0019dc890537d9acd95fcff6",
+    "Aeration_original.for": "cc02a097df98cfe36abd64403522fc6cf2b14addcc36cee2d4749916a21bd169"
+  },
+  "independent_authorities": [
+    {
+      "citation": "Stolk et al. (2011), Simulation of Daily Nitrous Oxide Emissions from Managed Peat Soils, Vadose Zone Journal 10(1), 156-168",
+      "doi": "10.2136/vzj2010.0029",
+      "peer_reviewed": true,
+      "authority": "ANIMO-specific N2O production, consumption, transport and appendix equations"
+    },
+    {
+      "citation": "Stolk, Hendriks, Jacobs, Moors & Kabat (2011), Modelling the effect of aggregates on N2O emission from denitrification in an agricultural peat soil, Biogeosciences 8, 2649-2663",
+      "doi": "10.5194/bg-8-2649-2011",
+      "peer_reviewed": true,
+      "open_access": true,
+      "authority": "Original ANIMO N2O concept and Appendix A governing equations"
+    }
+  ],
+  "detailed_report_lead": {
+    "authors": "Hendriks, Groenendijk, Stolk, van den Akker & Renaud",
+    "title": "Modelling of greenhouse gas emissions with ANIMO 4.0",
+    "year_cited": 2011,
+    "possible_report_number": "Alterra report 2054",
+    "status": "PUBLICATION_EXISTENCE_AND_REPORT_NUMBER_LEAD_NOT_FROZEN",
+    "reason": "peer-reviewed papers cite the work while another October 2011 Alterra report cites it as in preparation; authoritative final bytes were not recovered"
+  },
+  "version_boundary": {
+    "independent_equations_are_revision53_release_specification": false,
+    "ghg_n2o_source_metadata": "SVN revision 11, 2013-02-28, tags/animo4.1.4",
+    "archive_identity": "ANIMO 4.1.5 revision 53",
+    "allowed_inference": "equation-level independent authority where source and publication match",
+    "prohibited_inference": "all revision-53 coefficients or historical behaviour are proven by the 2011 publications"
+  },
+  "reconciled_relations": [
+    {
+      "relation": "N2O gas-water equilibrium system state",
+      "publication_equation": "original concept Eq. 2",
+      "source_location": "ghgtransport.for:190-196",
+      "result": "EXACT_CONCEPTUAL_MATCH",
+      "provenance": "INDEPENDENT_THEORY"
+    },
+    {
+      "relation": "N2O conservation and transport structure",
+      "publication_equation": "original concept Eq. 1",
+      "source_location": "GHGtransport plus GHG_NitrousOxide",
+      "result": "STRUCTURAL_MATCH",
+      "provenance": "INDEPENDENT_THEORY"
+    },
+    {
+      "relation": "effective simultaneous gas-water diffusion",
+      "publication_equation": "original concept Eq. 3 / Appendix A19",
+      "source_location": "ghgtransport.for:372-393",
+      "result": "MATCH_WITH_SOURCE_ELABORATION",
+      "provenance": "INDEPENDENT_THEORY",
+      "source_only_remainder": "gas-diffusion cap and exact temperature-dependent free-diffusion functions"
+    },
+    {
+      "relation": "N2O production by nitrification",
+      "publication_equation": "Appendix A15",
+      "source_location": "ghg_n2o.for:88-95",
+      "result": "STRUCTURAL_AND_SIGN_CONVENTION_MATCH",
+      "provenance": "INDEPENDENT_THEORY"
+    },
+    {
+      "relation": "nitrification WFPS response",
+      "publication_equation": "Appendix A16/A18",
+      "source_location": "ghg_n2o.for:703-715",
+      "result": "ALGEBRAIC_MATCH",
+      "provenance": "INDEPENDENT_THEORY"
+    },
+    {
+      "relation": "nitrification temperature response",
+      "publication_equation": "Appendix A17",
+      "source_location": "ghg_n2o.for:717-720",
+      "result": "DOCUMENT_SOURCE_SIGN_CONFLICT",
+      "provenance": "UNRESOLVED",
+      "local_key": "GHG01-LCL-N2O-NITRIFICATION-TEMPERATURE-SIGN-DOC-SOURCE"
+    },
+    {
+      "relation": "denitrification pH response",
+      "publication_equation": "Appendix A13",
+      "source_location": "ghg_n2o.for:263-264",
+      "result": "EXACT_ALGEBRAIC_MATCH",
+      "provenance": "INDEPENDENT_THEORY"
+    },
+    {
+      "relation": "relative N2O/NO3 denitrification temperature response",
+      "publication_equation": "Appendix A12 and Table A1",
+      "source_location": "ghg_n2o.for:266-268",
+      "result": "EXACT_ALGEBRAIC_AND_PARAMETER_MATCH_Q10_2_6",
+      "provenance": "INDEPENDENT_THEORY"
+    },
+    {
+      "relation": "relative denitrification aeration response",
+      "publication_equation": "Appendix A14",
+      "source_location": "ghg_n2o.for:270-282",
+      "result": "ALGEBRAIC_MATCH_AFTER_VARIABLE_MAPPING",
+      "provenance": "INDEPENDENT_THEORY"
+    },
+    {
+      "relation": "denitrification N2O production competition",
+      "publication_equation": "Appendix A9/A10",
+      "source_location": "ghg_n2o.for:547-561",
+      "result": "STRONG_ALGEBRAIC_STRUCTURE_MATCH",
+      "provenance": "INDEPENDENT_THEORY",
+      "remaining_work": "exact unit and stoichiometry derivation"
+    },
+    {
+      "relation": "N2O reduction aeration-factor placement",
+      "publication_equation": "Appendix A11",
+      "source_location": "ghg_n2o.for:279-282 and 558-561",
+      "result": "DOCUMENT_SOURCE_AERATION_FACTOR_PLACEMENT_CONFLICT",
+      "provenance": "UNRESOLVED",
+      "local_key": "GHG01-LCL-N2O-REDUCTION-AERATION-FACTOR-DOC-SOURCE"
+    },
+    {
+      "relation": "N2O atmosphere emission mechanisms",
+      "publication_equation": "original concept description and Appendix A",
+      "source_location": "revision-53 GHG transport/output",
+      "result": "PROCESS_MATCH",
+      "provenance": "INDEPENDENT_THEORY"
+    }
+  ],
+  "new_local_reconciliation_keys": [
+    "GHG01-LCL-N2O-NITRIFICATION-TEMPERATURE-SIGN-DOC-SOURCE",
+    "GHG01-LCL-N2O-REDUCTION-AERATION-FACTOR-DOC-SOURCE"
+  ],
+  "ch4_exact_kinetics_authority": "STILL_SUBSTANTIALLY_SOURCE_ONLY",
+  "historical_revision53_behaviour_established": false,
+  "b3_admitted": false,
+  "production_migration_admitted": false,
+  "final_qualification_unchanged": "QUALIFIED_GHG_THEORY_SOURCE_AND_INPUT_LINEAGE_EVIDENCE_WITH_HISTORICAL_REFERENCE_GAPS"
+}
