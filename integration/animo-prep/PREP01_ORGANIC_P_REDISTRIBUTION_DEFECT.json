@@ -1,0 +1,47 @@
+{
+  "evidence_id": "ANIMO-PREP01-ORGANIC-P-REDISTRIBUTION-BALANCE-DEFECT-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_CAUSAL_BALANCE_BOOKKEEPING_DEFECT_EVIDENCE_NOT_REFERENCE_CORRECTION",
+  "case": "LWKM_gras_1040.2021.2045",
+  "balance": "organic P",
+  "file": "bapoGP.Out",
+  "observed": {
+    "period_1997_kg_ha_p": 0.0441,
+    "period_1998_kg_ha_p": 0.0494,
+    "cumulative_late_run_kg_ha_p_rounded": 0.154,
+    "soluble_organic_p_transport_1998_net_local_nonclosure_kg_ha_p": 1.453497900372971e-7
+  },
+  "source_cause": {
+    "producer": "Addit.for",
+    "consumer": "Outbal_calc.for",
+    "top_reservoir_term": "Addiorpotoppl",
+    "layer_term": "Addiorpopl",
+    "legacy_balance_behavior": "Bapo(Redi) includes layer Addiorpopl but omits top-reservoir Addiorpotoppl",
+    "classification": "CONFIRMED_LEGACY_BALANCE_BOOKKEEPING_DEFECT"
+  },
+  "instrumented_cumulative_redistribution_kg_ha_p": {
+    "top_reservoir": -0.15380316471773922,
+    "layer_labile_dop": 0.15380316471773947,
+    "layer_stable_dop": 0.0,
+    "conservative_combined": 2.498001805406602e-16
+  },
+  "causal_probe": {
+    "temporary_source_only": true,
+    "change": "add Addiorpotoppl(I)*Z to Bapo(Redi,Ly) when Ln==0",
+    "physics_changed": false,
+    "model_state_changed": false,
+    "testcase_changed": false,
+    "period_1997_before_kg_ha_p": 0.0441,
+    "period_1997_after_kg_ha_p": 5.07e-13,
+    "period_1998_before_kg_ha_p": 0.0494,
+    "period_1998_after_kg_ha_p": 4.61e-10,
+    "final_cumulative_before_kg_ha_p_rounded": 0.154,
+    "final_cumulative_after_kg_ha_p": 2.78e-8,
+    "largest_remaining_period_deviation_kg_ha_p": 4.06e-8,
+    "qualified_reference_correction": false
+  },
+  "additional_open_interface_items": [
+    "AdStdiorpopl is passed into Outbal_calc but not incorporated analogously to AdStdiornipl in the organic-N redistribution ledger",
+    "Adhuexpopl is passed into Outbal_calc but the organic-P redistribution block reconstructs humus P from Adhuexpl times current Pofrhu instead of using the exact P-specific delta"
+  ],
+  "production_migration_admitted": false
+}

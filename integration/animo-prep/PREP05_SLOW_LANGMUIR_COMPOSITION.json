@@ -1,0 +1,53 @@
+{
+  "evidence_id": "ANIMO-PREP05-SLOW-LANGMUIR-COMPOSITION-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_COMPOSITION_AND_BRANCH_NONINTERFERENCE_NOT_REFERENCE_ADMISSION",
+  "findings": ["TCD-019", "TCD-024"],
+  "synthetic_optcxsl_2_matrix": {
+    "frozen_synthetic_baseline": {
+      "GP_final_cumulative_kg_ha_p": -158.0,
+      "TP_final_cumulative_kg_ha_p": -329.0,
+      "RP_final_cumulative_kg_ha_p": -54.4
+    },
+    "TCD_019_only": {
+      "GP_final_cumulative_kg_ha_p": -157.0,
+      "TP_final_cumulative_kg_ha_p": -328.0,
+      "RP_final_cumulative_kg_ha_p": -54.1
+    },
+    "TCD_024_only": {
+      "GP_final_cumulative_kg_ha_p": -0.432,
+      "TP_final_cumulative_kg_ha_p": -0.726,
+      "RP_final_cumulative_kg_ha_p": -0.254
+    },
+    "TCD_019_plus_TCD_024": {
+      "GP_final_cumulative_kg_ha_p": 0.0148,
+      "TP_final_cumulative_kg_ha_p": 0.349,
+      "RP_final_cumulative_kg_ha_p": -0.0000211,
+      "GP_max_abs_period_kg_ha_p": 0.0148,
+      "TP_max_abs_period_kg_ha_p": 0.0803,
+      "RP_max_abs_period_kg_ha_p": 0.0000211,
+      "GP_final_period_kg_ha_p": -5.05e-8,
+      "TP_final_period_kg_ha_p": 9.38e-9,
+      "RP_final_period_kg_ha_p": 4.08e-11
+    }
+  },
+  "interpretation": {
+    "TCD_019_alone_resolves_TCD_024": false,
+    "TCD_024_dominates_synthetic_slow_langmuir_nonclosure": true,
+    "TCD_019_removes_most_remaining_recurrent_drift_after_TCD_024": true,
+    "findings_are_distinct": true,
+    "combined_remaining_offsets_are_acceptance_tolerance": false
+  },
+  "supplied_freundlich_noninterference": {
+    "case": "LWKM_gras_1040.2021.2045",
+    "OPTCXSL": 3,
+    "model_outputs_compared": 55,
+    "normalized_differences": 0,
+    "missing_model_outputs": 0,
+    "extra_model_outputs": 0,
+    "ignored_local_harness_files": ["diag_stdout.txt", "diag_stderr.txt"],
+    "normalization": "declared volatile run/file timestamps and elapsed CPU time only"
+  },
+  "historical_reference_qualified": false,
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false
+}

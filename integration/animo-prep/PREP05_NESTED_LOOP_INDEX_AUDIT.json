@@ -1,0 +1,32 @@
+{
+  "evidence_id": "ANIMO-PREP05-NESTED-LOOP-INDEX-AUDIT-2026-09-08",
+  "evidence_class": "SOURCE_BOUND_STATIC_INDEX_AUDIT_NOT_DEFECT_ADMISSION_BY_ITSELF",
+  "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "tool": "tools/audit_nested_loop_indices.py",
+  "test": "tests/test_nested_loop_index_audit.py",
+  "fortran_files_scanned": 60,
+  "candidate_count": 1,
+  "candidates": [
+    {
+      "file": "Transorp.for",
+      "inner_loop": {
+        "variable": "J",
+        "label": "1050",
+        "start_line": 813,
+        "end_line": 835
+      },
+      "outer_loop_variable": "I",
+      "array": "parcxsl",
+      "argument_position": 2,
+      "inner_index_uses": 5,
+      "outer_index_uses": 1,
+      "outlier_line": 829,
+      "outlier_expression": "Yy = One + Parcxsl(3,I) * Avc",
+      "classification": "SAME_ARRAY_ARGUMENT_POSITION_SWITCHES_BETWEEN_INNER_AND_OUTER_LOOP_INDEX",
+      "mapped_discrepancy": "TCD-024"
+    }
+  ],
+  "interpretation": "under the deliberately narrow same-array same-argument-position heuristic the frozen revision-53 archive yields exactly one candidate and it is the independently causally confirmed TCD-024 finding",
+  "qualified_reference_admission": false,
+  "production_migration_admitted": false
+}

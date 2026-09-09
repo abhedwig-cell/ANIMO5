@@ -1,0 +1,116 @@
+{
+  "workunit": "ANIMO-PREP02",
+  "title": "Legacy Reference Build and Behavioural Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep01-bootstrap",
+  "status": "BLOCKED_HISTORICAL_REFERENCE_ENVIRONMENT_REQUIRED",
+  "provenance_head_before_status": "d421e41f742add25b1023b1c2546c4e47ff8a8ef",
+  "source_identities": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "user_guide_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "diagnostic_gnu_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e"
+  },
+  "state_dimensions": {
+    "realized": true,
+    "persisted": true,
+    "tested": true,
+    "reference_qualified": false,
+    "corrected_legacy_qualified": false,
+    "production_migration_admitted": false
+  },
+  "gates": {
+    "P2_G0_controlled_B0_availability": {
+      "status": "SESSION_ARTIFACTS_HASH_VERIFIED_DURABLE_CONTROL_NOT_YET_PROVEN",
+      "durable_controlled_runner_retention_qualified": false
+    },
+    "P2_G1_historical_build_contract": {
+      "status": "TARGET_AND_ACQUISITION_ROUTE_SPECIFIC_NATIVE_EXECUTION_NOT_RUN",
+      "compiler_lineage": "Intel Visual Fortran Composer XE 12.1.0.233 Intel 64",
+      "compiler_build_date_evidence": "Build 20110811",
+      "package_id_evidence": "w_fcompxe_2011.6.233",
+      "installer_name_evidence": "w_fcompxe_2011.6.233.exe",
+      "candidate_semantics": [
+        "eight-byte default REAL, plausibly /4R8 or /Qautodouble",
+        "PowerStation-compatible I/O, plausibly /fpscomp:ioformat",
+        "Intel default local storage before any /Qsave sensitivity variant"
+      ],
+      "acquisition_plan": "docs/prep02/HISTORICAL_REFERENCE_ENVIRONMENT_ACQUISITION.md",
+      "environment_acquired": false,
+      "exact_historical_project_or_command_available": false
+    },
+    "P2_G2_minimal_native_Ruurlo": {
+      "status": "BLOCKED_NO_NATIVE_EXECUTABLE_OR_INTEL_ENVIRONMENT",
+      "primary_case": "RuurloGrass",
+      "native_run_completed": false
+    },
+    "P2_G3_native_vs_GNU_equivalence": {
+      "status": "TOOLING_READY_NO_NATIVE_COMPARAND",
+      "formatted_output_comparator": "tools/compare_legacy_output_trees.py",
+      "comparator_tests": "tests/test_compare_legacy_output_trees.py",
+      "global_scientific_tolerance_invented": false
+    },
+    "P2_G4_unrounded_native_observer": {
+      "status": "BLOCKED_UNTIL_NATIVE_BUILD_CONTRACT_ESTABLISHED"
+    },
+    "P2_G5_reference_coverage_expansion": {
+      "status": "BLOCKED_UNTIL_MINIMAL_NATIVE_REFERENCE_EXISTS"
+    }
+  },
+  "supplied_native_artifact_search": {
+    "source_archive_native_executable_count": 0,
+    "source_archive_project_file_count": 0,
+    "testbank_native_executable_count": 0,
+    "public_web_trusted_animo_4_1_5_executable_found": false,
+    "public_web_trusted_animo_project_file_found": false,
+    "note": "public-search negatives are observations, not proof of nonexistence in institutional/private archives"
+  },
+  "class_A_progress": {
+    "corrections": ["TCD-017", "TCD-018"],
+    "status": "DIAGNOSTIC_ACCOUNTING_ONLY_NONINTERFERENCE_SUPPORTED_ACROSS_EIGHT_COMPATIBLE_CASES_NOT_REFERENCE_QUALIFIED",
+    "clean_probe_executable_sha256": "733dd2750e819cebe3c41b425a065ef899fe1d6929660d3ef3a24518022fd94e",
+    "observer_instrumentation_present": false,
+    "cases_attempted": 8,
+    "cases_completed": 8,
+    "outputs_compared": 379,
+    "equal_after_declared_volatile_normalization": 367,
+    "intended_ledger_differences": 12,
+    "unintended_differences": 0,
+    "missing_candidate_outputs": 0,
+    "extra_candidate_outputs": 0,
+    "measurable_correction_activation_cases": ["LWKM_gras_1040.2021.2045"],
+    "matrix": "integration/animo-prep/PREP02_CLASS_A_EIGHT_CASE_MATRIX.json",
+    "human_record": "docs/prep02/CLASS_A_LEDGER_EIGHT_CASE_MATRIX.md",
+    "reference_qualified": false
+  },
+  "non_class_A_known_work": {
+    "TCD_014": "INITIALIZATION_POLICY_NOT_ADMITTED",
+    "TCD_015": "LOCAL_ALGEBRAIC_TRANSPORT_DEFECT_CAUSALLY_CORRECTED_DIAGNOSTIC_ONLY",
+    "TCD_016": "STATE_MODEL_GAP_REQUIRES_THEORY_QUALIFIED_DRY_SOLUTE_STATE",
+    "TCD_019": "NUMERICAL_CONSERVATION_POLICY_DEFECT_CAUSALLY_LOCALIZED_NOT_ACCOUNTING_ONLY"
+  },
+  "qualification_tooling": {
+    "reference_output_comparator": {
+      "implemented": true,
+      "persisted": true,
+      "tested": true,
+      "reference_admission_power": false
+    }
+  },
+  "primary_blocker": {
+    "code": "HISTORICAL_REFERENCE_ENVIRONMENT_REQUIRED",
+    "needed_next": [
+      "trusted historical ANIMO 4.1/4.1.5 executable with provenance, or",
+      "verified Intel Visual Fortran Composer XE 2011 Update 6 / 12.1.0.233 Intel64 environment plus recoverable build settings"
+    ],
+    "preferred_acquisition_order": [
+      "WUR/Alterra development archive or archived VM/build machine",
+      "trusted historical ANIMO executable/release artifact",
+      "Intel entitlement and Online Service Center route",
+      "isolated reconstructed Windows qualification VM"
+    ],
+    "why_tooling_cannot_resolve_it": "deterministic GNU agreement cannot independently establish historical behavioural truth"
+  },
+  "decision": "BLOCKED_HISTORICAL_REFERENCE_ENVIRONMENT_REQUIRED",
+  "production_migration_admitted": false
+}

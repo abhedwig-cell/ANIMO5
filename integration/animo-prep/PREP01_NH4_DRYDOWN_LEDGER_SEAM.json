@@ -1,0 +1,57 @@
+{
+  "evidence_id": "ANIMO-PREP01-NH4-DRYDOWN-LEDGER-SEAM-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_CAUSAL_DEFECT_EVIDENCE_NOT_REFERENCE_CORRECTION",
+  "case": "Puitmijn_Cranendonck_60",
+  "substance": "AMMONIUM",
+  "event": {
+    "tito": 1490,
+    "layer": 0,
+    "call": "MAIN-ANIMO",
+    "iflsol": 2,
+    "co_kg_m3": 0.12767937602481674,
+    "mto_m3_m3": 0.0005435585,
+    "mt_m3_m3": 0.00001628217,
+    "layer_thickness_m": 0.2,
+    "timestep_d": 1.0,
+    "fu_m_d": 4.1184400265397315e-10,
+    "fev_m_d": 0.000105455,
+    "remaining_solution_mass_kg_m2": 0.000013880242022597072,
+    "remaining_solution_mass_kg_ha": 0.13880242022597072,
+    "baseline_bapd_kg_m2": 0.0,
+    "baseline_batr_kg_m2": -0.000013880242022597072,
+    "baseline_local_residual_kg_m2": 0.000013880242022597072
+  },
+  "baseline_annual_balance": {
+    "file": "banhL1.Out",
+    "year": 2006,
+    "period_deviation_kg_ha_n": 0.139
+  },
+  "source_cause": {
+    "routine": "Transsub",
+    "branch": "surface-layer wet-to-dry Iflsol 1/2 branch",
+    "condition": "remaining mass is exported only when Ln==0 and Fu>1e-6; otherwise Iflsol==2 sets Avc=0 while Rsc=0",
+    "classification": "CONFIRMED_LEGACY_CODE_DEFECT_LOCAL_MASS_CONSERVATION"
+  },
+  "retention_probe": {
+    "temporary_source_only": true,
+    "event_specific": true,
+    "action": "retain Mto*Co mass in Rsc at TITO 1490",
+    "tito_1490_transport_closure": "PASS",
+    "next_timestep_observation": "mass is lost at TITO 1491 when Mt becomes zero because no dry-solute state exists",
+    "production_fix_admitted": false
+  },
+  "outflow_probe": {
+    "temporary_source_only": true,
+    "event_specific": true,
+    "action": "use existing Ln0 export formula for any positive Fu at TITO 1490",
+    "avc_kg_m3": 33702.6688094305,
+    "exported_mass_kg_m2": 0.000013880242022597072,
+    "local_residual_kg_m2": 0.0,
+    "annual_2006_period_deviation_kg_ha_n": -6.62e-10,
+    "legacy_nh4_mass_warning_remaining": false,
+    "interpretation": "causally confirms the Fu threshold as the immediate accounting loss, but produces a pathological flux concentration and is not admitted as the ANIMO5 correction policy"
+  },
+  "architectural_requirement": "represent conserved solute mass across complete surface-layer dry-down with an explicit dry/residual phase or other theory-qualified conservative state",
+  "qualified_reference_correction": false,
+  "production_migration_admitted": false
+}

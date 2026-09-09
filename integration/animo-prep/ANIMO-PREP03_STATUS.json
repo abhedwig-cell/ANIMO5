@@ -1,0 +1,106 @@
+{
+  "work_unit": "ANIMO-PREP03",
+  "title": "4.0-to-4.1.5 Theory-Code Reconciliation and Semantic Interface Ownership Audit",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep01-bootstrap",
+  "date": "2026-09-08",
+  "evaluated_evidence_head": "799bcbf871188cb61824f5138822063bcfc93d82",
+  "decision": "QUALIFIED_AS_PREPARATORY_EVIDENCE_REFERENCE_AND_PROCESS_MIGRATION_STILL_BLOCKED",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "documentation/source reconciliation and architecture-preparation evidence only",
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "legacy_source_modified": false,
+  "production_migration_admitted": false,
+  "reference_qualification_changed": false,
+  "deliverables": {
+    "reconciliation_document": "docs/prep03/FOUR_ZERO_TO_4_1_5_RECONCILIATION.md",
+    "large_interface_audit": "docs/prep03/LARGE_ARGUMENT_INTERFACE_AUDIT.md",
+    "machine_evidence": "integration/animo-prep/PREP03_THEORY_INTERFACE_EVIDENCE.json",
+    "discrepancy_register_updated_through": "TCD-022"
+  },
+  "source_bound_checks": {
+    "selected_routines_scanned": 137,
+    "largest_formal_argument_count": 352,
+    "routines_at_least_100_arguments": 10,
+    "testbank_animo40_steering_files": 0,
+    "testbank_animo41_steering_files": 10,
+    "guide_documented_outse_count": 37,
+    "revision53_animo41_validated_output_indices": 78,
+    "revision53_animo40_simopt_integer_count": 6,
+    "guide_documented_animo40_simopt_switch_count": 5,
+    "ioptsul_downstream_uses_outside_input_parsers": 0,
+    "outbal_write_sulphate_selector_branch_observed": false
+  },
+  "new_discrepancies": [
+    {
+      "id": "TCD-020",
+      "classification": "PARSER_BACKWARD_COMPATIBILITY_GAP",
+      "status": "OPEN"
+    },
+    {
+      "id": "TCD-021",
+      "classification": "DOCUMENTATION_VERSION_GAP",
+      "status": "OPEN"
+    },
+    {
+      "id": "TCD-022",
+      "classification": "PARSER_VISIBLE_NON_OPERATIONAL_OPTION",
+      "status": "OPEN"
+    }
+  ],
+  "architecture_findings": {
+    "mechanical_argument_shortening_rejected": true,
+    "mega_state_replacement_rejected": true,
+    "module_global_replacement_rejected": true,
+    "candidate_owned_domains": [
+      "ProfileGeometry",
+      "TimeStepContext",
+      "HydrologyExchange",
+      "CarbonPools",
+      "MineralNitrogenState",
+      "PhosphorusState",
+      "DissolvedOrganicState",
+      "CropState",
+      "CropDemand",
+      "ManagementEvent",
+      "AerationRedoxState",
+      "GHGState",
+      "GHGFluxes",
+      "MacroporeState",
+      "MassLedger",
+      "DiagnosticsView"
+    ]
+  },
+  "scientific_scope_findings": {
+    "four_zero_guide_usable_as_inherited_core_terminology": true,
+    "four_zero_guide_sufficient_for_revision53_scientific_qualification": false,
+    "ghg_requires_separate_theory_qualification": true,
+    "stable_dom_requires_separate_theory_qualification": true,
+    "p_class_requires_separate_policy_qualification": true,
+    "macropore_requires_separate_theory_and_testcase_qualification": true,
+    "sulphate_supported_by_supplied_revision53_source": false
+  },
+  "remaining_serial_blockers": [
+    "historical or independently trusted native reference environment required by PREP02",
+    "controlled immutable B0 retention still needs formalization",
+    "revision-53 extension theory/change provenance is incomplete",
+    "GHGMais source/testcase lineage remains unresolved"
+  ],
+  "recommended_next": {
+    "serial_when_reference_available": [
+      "run frozen RuurloGrass under the native reference",
+      "qualify GNU equivalent behaviour by variable class",
+      "capture observer-only unrounded reference values"
+    ],
+    "parallel_now": [
+      "perform process-by-process ownership/mutation audit beginning with transport and mass ledger",
+      "derive an explicit conserved-state inventory for C N P DOM/stable-DOM and surface reservoir states",
+      "prepare corrected-legacy local qualification harnesses without admitting fixes",
+      "continue GHGMais provenance recovery"
+    ]
+  }
+}

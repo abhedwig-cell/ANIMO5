@@ -1,0 +1,132 @@
+{
+  "work_unit": "ANIMO-RG01",
+  "title": "Preparatory Evidence Baseline Stabilization & Branch Separation",
+  "repository": "abhedwig-cell/ANIMO5",
+  "date": "2026-09-09",
+  "stabilization_branch": "work/animo-rg01-baseline-stabilization",
+  "source_branch": "work/animo-prep01-bootstrap",
+  "source_head_at_pin": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
+  "baseline_evidence_head": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
+  "baseline_anchor_branch": "baseline/animo-prep01-05-evidence",
+  "baseline_anchor_technical_protection": false,
+  "baseline_selection_reason": "This is the live head after the final PREP05 cross-species symmetry evidence commits. PREP06 reservation metadata is present in the tree because the reservation was interleaved before the final PREP05 audit commits, but PREP06 execution is excluded from baseline membership.",
+  "stabilization_status": "QUALIFIED_PREPARATORY_BASELINE_STABILIZED_PRODUCTION_MIGRATION_STILL_BLOCKED",
+  "production_migration_admitted": false,
+  "reference_admitted": false,
+  "corrected_legacy_admitted": false,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "legacy_source_modified": false,
+  "testcase_content_modified": false,
+  "included_workunits": [
+    {
+      "work_unit": "ANIMO-PREP01",
+      "decision": "BLOCKED_REFERENCE_QUALIFICATION_CONTROLLED_B0_RETENTION_AND_GHG_PROVENANCE_REQUIRED",
+      "qualified": false,
+      "qualification_scope": "repository/evidence identity, source-bound archaeology and deterministic GNU diagnostic execution only; not a qualified legacy reference"
+    },
+    {
+      "work_unit": "ANIMO-PREP02",
+      "decision": "BLOCKED_HISTORICAL_REFERENCE_ENVIRONMENT_REQUIRED",
+      "qualified": false,
+      "qualification_scope": "reference qualification preparation and diagnostic runtime-contract narrowing only; historical/equivalent reference admission not achieved"
+    },
+    {
+      "work_unit": "ANIMO-PREP03",
+      "decision": "QUALIFIED_AS_PREPARATORY_EVIDENCE_REFERENCE_AND_PROCESS_MIGRATION_STILL_BLOCKED",
+      "qualified": true,
+      "qualification_scope": "documentation/source reconciliation and architecture-preparation evidence only"
+    },
+    {
+      "work_unit": "ANIMO-PREP04",
+      "decision": "QUALIFIED_DIAGNOSTIC_DEFECT_CAUSALITY_REFERENCE_ADMISSION_STILL_BLOCKED",
+      "qualified": true,
+      "qualification_scope": "source-bound and GNU diagnostic causal defect evidence only"
+    },
+    {
+      "work_unit": "ANIMO-PREP05",
+      "decision": "QUALIFIED_DIAGNOSTIC_DEFECT_CAUSALITY_COMPOSITION_AND_BRANCH_NONINTERFERENCE_REFERENCE_ADMISSION_STILL_BLOCKED",
+      "qualified": true,
+      "qualification_scope": "source-bound GNU diagnostic synthetic causal defect plus TCD-019 composition and supplied Freundlich non-interference evidence only"
+    }
+  ],
+  "excluded_from_baseline_membership": [
+    {
+      "work_unit": "ANIMO-PREP06",
+      "state": "RESERVED_SOURCE_BOUND_AUDIT_ONLY",
+      "reason": "reservation/checkpoint only; no PREP06 audit execution is admitted into this PREP01-PREP05 evidence baseline"
+    }
+  ],
+  "frozen_evidence_hashes": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "local_supplied_bytes_reverified": true
+  },
+  "reference_status": {
+    "evidence_class": "DIAGNOSTIC_NOT_REFERENCE",
+    "historical_reference_environment_qualified": false,
+    "equivalent_reference_admitted": false,
+    "qualified_reference_cases": 0,
+    "trusted_unrounded_reference_output_available": false,
+    "GHGMais_lineage_resolved": false
+  },
+  "open_blockers": [
+    "controlled immutable B0 byte retention is not yet established",
+    "historical Intel or independently qualified equivalent reference environment is not yet established",
+    "no frozen testcase has completed under a qualified legacy reference executable",
+    "trusted unrounded native/reference output is not available",
+    "GHGMais source/testcase lineage and revision provenance remain unresolved",
+    "revision-53 theory/change provenance remains incomplete, including GHG and extension-specific semantics",
+    "corrected-legacy changes remain unadmitted",
+    "production migration remains unadmitted"
+  ],
+  "branch_and_pr_decision": {
+    "old_bootstrap_branch": "closed_for_new_work_by_policy_after_baseline_pin",
+    "baseline_anchor": "baseline/animo-prep01-05-evidence",
+    "rg01_work_branch": "work/animo-rg01-baseline-stabilization",
+    "future_workunit_policy": "new workunits branch from an explicitly named preparatory or admitted anchor and declare the exact parent SHA; do not continue stacking onto work/animo-prep01-bootstrap",
+    "retrospective_history_split": false,
+    "retrospective_history_rewrite": false,
+    "pr_1": {
+      "number": 1,
+      "state": "closed",
+      "merged": false,
+      "decision": "CLOSED_UNMERGED_AS_SUPERSEDED"
+    },
+    "successor_pr": {
+      "number": 3,
+      "state": "open",
+      "draft": true,
+      "decision": "ACCURATELY_SCOPED_PREPARATORY_BASELINE_INTEGRATION_SURFACE_KEEP_DRAFT"
+    },
+    "main_branch_protected": false,
+    "required_status_checks_present": false,
+    "merge_performed": false
+  },
+  "reconciliations": {
+    "status_a_aa_gap_register": "updated to current PREP01-PREP05 evidence without changing scientific admission gates",
+    "readme": "updated from PREP01-only bootstrap wording to the stabilized preparatory baseline boundary",
+    "migration_dag": "supplemented by ANIMO-RG01 serial/parallel gate DAG"
+  },
+  "dependency_policy": {
+    "serial": [
+      "controlled immutable B0 retention",
+      "historical or independently qualified equivalent reference qualification",
+      "trusted frozen reference-case execution and unrounded capture",
+      "reference admission",
+      "corrected-legacy admission",
+      "qualified migration baseline",
+      "production migration"
+    ],
+    "parallel_allowed_before_reference_admission": [
+      "source-bound ownership audits",
+      "ledger/state audits",
+      "theory/code reconciliation",
+      "path-coverage specifications",
+      "corrected-legacy harness preparation without source admission",
+      "GHGMais provenance recovery",
+      "Status A/AA evidence-gap maintenance"
+    ]
+  }
+}

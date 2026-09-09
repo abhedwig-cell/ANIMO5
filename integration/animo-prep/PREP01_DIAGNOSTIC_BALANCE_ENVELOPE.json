@@ -1,0 +1,131 @@
+{
+  "evidence_id": "ANIMO-PREP01-DIAGNOSTIC-BALANCE-ENVELOPE-2026-09-08",
+  "evidence_class": "DIAGNOSTIC_OUTPUT_RESIDUAL_ENVELOPE_NOT_ACCEPTANCE_THRESHOLD",
+  "source_execution_evidence": "integration/animo-prep/PREP01_DIAGNOSTIC_EXECUTION.json",
+  "diagnostic_reference_admitted": false,
+  "acceptance_threshold_defined": false,
+  "cases": [
+    "CranGrass",
+    "CranMais",
+    "GrassPeat",
+    "LWKM_gras_1040.2021.2045",
+    "Puitmijn_Cranendonck_60",
+    "RuurloGrass",
+    "STONE_akk_0006.2001.2015",
+    "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+  ],
+  "independent_execution_tree_comparison": {
+    "performed": true,
+    "result": "EXACT_BALANCE_ENVELOPE_MATCH",
+    "note": "The residual audit was independently repeated against a second deterministic diagnostic execution tree and produced the same balance-envelope evidence."
+  },
+  "balances": {
+    "water": {
+      "units": "mm",
+      "file_count": 24,
+      "record_count": 5687,
+      "nonfinite_record_count": 0,
+      "max_abs_period_deviation": 0.0601,
+      "max_abs_cumulative_deviation": 0.0601,
+      "max_period_location": "LWKM_gras_1040.2021.2045/bawaTP.Out, year 2008, TITO 6575, TIYR 366, period -0.0601 mm"
+    },
+    "fresh_organic_matter": {
+      "units": "kg/ha organic matter",
+      "file_count": 18,
+      "record_count": 5615,
+      "nonfinite_record_count": 0,
+      "max_abs_period_deviation": 1.12e-08,
+      "max_abs_cumulative_deviation": 1.12e-08
+    },
+    "humus": {
+      "units": "kg/ha organic matter",
+      "file_count": 18,
+      "record_count": 5615,
+      "nonfinite_record_count": 0,
+      "max_abs_period_deviation": 1.86e-09,
+      "max_abs_cumulative_deviation": 3.84e-09
+    },
+    "dissolved_organic_matter": {
+      "units": "kg/ha organic matter",
+      "file_count": 18,
+      "record_count": 5615,
+      "nonfinite_record_count": 0,
+      "max_abs_period_deviation": 0.00011,
+      "max_abs_cumulative_deviation": 0.000164
+    },
+    "nh4_n": {
+      "units": "kg/ha N",
+      "file_count": 24,
+      "record_count": 5687,
+      "nonfinite_record_count": 0,
+      "max_abs_period_deviation": 0.139,
+      "max_abs_cumulative_deviation": 0.141,
+      "max_period_location": "Puitmijn_Cranendonck_60/banhL1.Out, year 2006, TITO 1826, TIYR 365, period +0.139 kg/ha N"
+    },
+    "no3_n": {
+      "units": "kg/ha N",
+      "file_count": 24,
+      "record_count": 5687,
+      "nonfinite_record_count": 0,
+      "max_abs_period_deviation": 0.576,
+      "max_abs_cumulative_deviation": 1.13,
+      "max_period_location": "LWKM_gras_1040.2021.2045/baniGP.Out, year 1997, TITO 2557, TIYR 365, period +0.576 kg/ha N"
+    },
+    "organic_n": {
+      "units": "kg/ha N",
+      "file_count": 24,
+      "record_count": 5687,
+      "nonfinite_record_count": 0,
+      "max_abs_period_deviation": 0.000418,
+      "max_abs_cumulative_deviation": 0.000418
+    },
+    "po4_p": {
+      "units": "kg/ha P",
+      "file_count": 19,
+      "record_count": 3710,
+      "nonfinite_record_count": 0,
+      "max_abs_period_deviation": 0.724,
+      "max_abs_cumulative_deviation": 0.766,
+      "max_period_location": "CranGrass/bappTP.Out, first simulated balance record, year 1992, TITO 1, TIYR 1, period -0.724 kg/ha P",
+      "initialization_seam_candidate": true,
+      "observation": "The next CranGrass TP PO4 records fall to micro-scale residuals while cumulative deviation retains the first-record offset; this pattern must be investigated before any tolerance is defined."
+    },
+    "organic_p": {
+      "units": "kg/ha P",
+      "file_count": 19,
+      "record_count": 3710,
+      "nonfinite_record_count": 0,
+      "max_abs_period_deviation": 0.0494,
+      "max_abs_cumulative_deviation": 0.154,
+      "max_period_location": "LWKM_gras_1040.2021.2045/bapoGP.Out, year 1998, TITO 2922, TIYR 365, period +0.0494 kg/ha P"
+    }
+  },
+  "interpretation": {
+    "machine_scale_closure_observed_for": [
+      "fresh organic matter",
+      "humus"
+    ],
+    "very_small_raw_residuals_observed_for": [
+      "dissolved organic matter",
+      "organic nitrogen"
+    ],
+    "nontrivial_raw_residual_envelopes_observed_for": [
+      "water",
+      "NH4-N",
+      "NO3-N",
+      "PO4-P",
+      "organic P"
+    ],
+    "scientific_conclusion": "NOT_YET_ALLOWED",
+    "reason": "No qualified historical reference or documented numerical mass-closure tolerance is available, and some maxima may be tied to initialization/reset or omitted later ledger terms rather than steady numerical drift."
+  },
+  "next_required": [
+    "localize the first-record CranGrass PO4 residual to initialization/storage terms",
+    "localize the largest NH4-N and NO3-N residual records to individual ledger terms",
+    "distinguish initialization/reset discontinuities from recurring process nonclosure",
+    "reconcile GHG and later 4.1.x mass-ledger terms with theory before defining tolerances",
+    "derive acceptance thresholds only from qualified reference evidence and explicit conservation policy"
+  ],
+  "qualified": false,
+  "production_migration_admitted": false
+}

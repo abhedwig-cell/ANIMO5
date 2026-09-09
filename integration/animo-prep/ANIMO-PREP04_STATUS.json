@@ -1,0 +1,84 @@
+{
+  "work_unit": "ANIMO-PREP04",
+  "title": "Stable-DOM Phosphorus Partition Causal Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep01-bootstrap",
+  "date": "2026-09-08",
+  "evaluated_evidence_head": "dd8b9dfcd71f2999bd8ea312fd8cce1f2459e12a",
+  "decision": "QUALIFIED_DIAGNOSTIC_DEFECT_CAUSALITY_REFERENCE_ADMISSION_STILL_BLOCKED",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "source-bound and GNU diagnostic causal defect evidence only",
+  "blocked": true,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "legacy_source_modified": false,
+  "corrected_legacy_production_change": false,
+  "reference_qualified": false,
+  "production_migration_admitted": false,
+  "finding": {
+    "id": "TCD-023",
+    "classification": "CONFIRMED_LEGACY_CROSS_SPECIES_ALGEBRA_DEFECT_LOW_RATE_STATE_COUPLING",
+    "corrected_legacy_class": "B_LOCAL_ALGEBRAIC_CONSERVATION_AND_SPECIES_CORRECTION",
+    "affected_routine": "Resp_miner",
+    "affected_branch": "Case(2)",
+    "affected_supplied_case": "Puitmijn_Cranendonck_60",
+    "actual_affected_events": 9658,
+    "source_correction_admitted": false
+  },
+  "causal_evidence": {
+    "local_cross_species_mismatch_kg_ha_P": 1.0806894643265774e-7,
+    "bapoLO_baseline_final_cumulative_kg_ha_P": -1.08e-7,
+    "bapoLO_corrected_final_cumulative_kg_ha_P": 2.31e-11,
+    "bapoTP_baseline_final_cumulative_kg_ha_P": -1.05e-7,
+    "bapoTP_corrected_final_cumulative_kg_ha_P": 2.74e-9,
+    "max_abs_Tomnpo_delta_kg_m-2_per_step": 1.0228664519933892e-14,
+    "max_abs_Rekopo_delta_kg_m-3_d-1": 9.327856586446364e-15
+  },
+  "regression": {
+    "compatible_supplied_cases_rerun": 8,
+    "successful_completions": 8,
+    "unaffected_cases_with_zero_normalized_output_differences": 7,
+    "affected_case_normalized_changed_files": [
+      "ani_pLO.Bal",
+      "ani_pTP.Bal",
+      "bapoLO.Out",
+      "bapoTP.Out",
+      "message.out"
+    ],
+    "ordinary_nonbalance_formatted_output_change_observed": false
+  },
+  "deliverables": {
+    "analysis": "docs/prep04/STABLE_DOM_P_PARTITION_DEFECT.md",
+    "machine_evidence": "integration/animo-prep/PREP04_STABLE_DOM_P_PARTITION.json",
+    "canonical_discrepancy_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "corrected_legacy_plan": "docs/prep02/CORRECTED_LEGACY_CANDIDATE_PLAN.md",
+    "corrected_legacy_work_unit": "CL-05"
+  },
+  "important_interpretation": [
+    "the correction is not ledger-only because it changes Tomnpo and derived Rekopo",
+    "the supplied affected case exercises the bug only at very low effective stable-DOM rates",
+    "small observed magnitude is not evidence that the cross-species algebra is scientifically acceptable",
+    "the diagnostic correction cannot be production-admitted before the historical-reference gate"
+  ],
+  "remaining_blockers": [
+    "PREP02 historical or independently trusted native reference is still unavailable",
+    "revision-53 stable-DOM theory/change documentation remains incomplete",
+    "unrounded native P-state behaviour around the affected branch is unavailable",
+    "controlled immutable B0 retention still needs formalization"
+  ],
+  "recommended_next": {
+    "parallel_now": [
+      "scan other C/N/P transformation branches for cross-species and partition-identity violations",
+      "construct the conserved-state and transfer-ledger inventory for transport and transformations",
+      "prepare a corrected-legacy Class-B local test for TCD-023 without applying it to production source"
+    ],
+    "serial_when_reference_available": [
+      "reproduce TCD-023 under the qualified frozen reference",
+      "compare unrounded native and corrected P source/state trajectories",
+      "admit or reject the two-line correction independently before composing it with other P corrections"
+    ]
+  }
+}

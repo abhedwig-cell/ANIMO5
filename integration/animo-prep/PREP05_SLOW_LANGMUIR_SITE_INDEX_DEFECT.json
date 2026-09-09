@@ -1,0 +1,87 @@
+{
+  "evidence_id": "ANIMO-PREP05-SLOW-LANGMUIR-SITE-INDEX-DEFECT-2026-09-08",
+  "evidence_class": "SOURCE_BOUND_SYNTHETIC_CAUSAL_DEFECT_EVIDENCE_NOT_REFERENCE_CORRECTION",
+  "finding_id": "TCD-024",
+  "routine": "Transorp.for/Conc_unl",
+  "affected_option": "OPTCXSL=2 slow Langmuir sorption",
+  "supplied_testbank_coverage": {
+    "active_p_cases": 6,
+    "optcxsl_2_cases": 0,
+    "observed_active_option": "OPTCXSL=3 Freundlich"
+  },
+  "source_defect": {
+    "outer_trial_index": "I=1..20",
+    "inner_sorption_site_index": "J=1..Ncxsl",
+    "legacy_expression": "Yy = One + Parcxsl(3,I) * Avc",
+    "corrected_expression_probe": "Yy = One + Parcxsl(3,J) * Avc",
+    "site_dimension_Macx": 3,
+    "classification": "CONFIRMED_LEGACY_WRONG_INDEX_DEFECT_AND_LATENT_BOUNDS_RISK"
+  },
+  "synthetic_case": {
+    "base_case": "LWKM_gras_1040.2021.2045",
+    "temporary_input_changes": {
+      "OPTCXSL": 2,
+      "NCXSL": 3,
+      "Parcxsl_3_site_values": [500.0, 1000.0, 2000.0]
+    },
+    "frozen_testcase_modified": false,
+    "baseline_completed": true,
+    "indexfix_completed": true,
+    "bounds_checking_used_for_Transorp": true
+  },
+  "output_tree_comparison": {
+    "files_compared": 55,
+    "normalized_equal": 44,
+    "changed": 11,
+    "missing": 0,
+    "extra": 0,
+    "normalization": "declared run/file timestamps and elapsed CPU time only",
+    "changed_files": [
+      "PClassYearSwitch.out",
+      "ani_pGP.Bal",
+      "ani_pRP.Bal",
+      "ani_pTP.Bal",
+      "bappGP.Out",
+      "bappRP.Out",
+      "bappTP.Out",
+      "discharge.out",
+      "initial.out",
+      "pal-P.out",
+      "pw-P.out"
+    ],
+    "message_out_equal_after_normalization": true,
+    "animointermediate_out_equal_after_normalization": true
+  },
+  "phosphorus_balance": {
+    "GP": {
+      "baseline_final_cumulative_kg_ha_p": -158.0,
+      "indexfix_final_cumulative_kg_ha_p": -0.432,
+      "baseline_max_abs_period_kg_ha_p": 6.92,
+      "indexfix_max_abs_period_kg_ha_p": 0.0244
+    },
+    "TP": {
+      "baseline_final_cumulative_kg_ha_p": -329.0,
+      "indexfix_final_cumulative_kg_ha_p": -0.726,
+      "baseline_max_abs_period_kg_ha_p": 15.1,
+      "indexfix_max_abs_period_kg_ha_p": 0.0457
+    },
+    "RP": {
+      "baseline_final_cumulative_kg_ha_p": -54.4,
+      "indexfix_final_cumulative_kg_ha_p": -0.254,
+      "baseline_max_abs_period_kg_ha_p": 2.53,
+      "indexfix_max_abs_period_kg_ha_p": 0.0152
+    }
+  },
+  "interpretation": {
+    "causal": true,
+    "accounting_only": false,
+    "physics_model_changed_by_candidate": false,
+    "parameter_binding_corrected": true,
+    "state_trajectory_changes": true,
+    "remaining_p_drift_interacts_with_TCD_019": true,
+    "historical_reference_available": false,
+    "qualified_reference_correction": false
+  },
+  "corrected_legacy_class": "B_LOCAL_ALGEBRAIC_INDEX_CORRECTION_WITH_STATE_TRAJECTORY_CHANGE",
+  "production_migration_admitted": false
+}

@@ -1,0 +1,102 @@
+{
+  "evidence_id": "ANIMO-PREP01-REFERENCE-BUILD-CONTRACT-2026-09-08",
+  "status": "CONCRETE_HYPOTHESIS_NOT_HISTORICALLY_PROVEN",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep01-bootstrap",
+  "source": {
+    "archive": "ANIMO_4.1.5.53(3).zip",
+    "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "file_count": 65,
+    "embedded_tag": "file:///V:/svn_Animo/tags/animo4.1.5",
+    "embedded_revision": "53",
+    "embedded_toolchain": "Intel Visual Fortran Composer XE 12.1.0.233 [Intel(R) 64]",
+    "project_or_build_files_present": false,
+    "compiler_option_tokens_present_in_source": false
+  },
+  "candidate_contract": {
+    "compiler": "Intel Visual Fortran Composer XE 12.1.0.233 Intel64",
+    "default_real": {
+      "required_semantics": "8-byte default REAL",
+      "candidate_windows_options": ["/4R8", "/Qautodouble"],
+      "classification": "BUILD_CONTRACT_HYPOTHESIS_STRONGLY_SUPPORTED",
+      "historically_proven": false
+    },
+    "unformatted_io": {
+      "required_semantics": "Fortran PowerStation-compatible sequential-unformatted record framing",
+      "candidate_windows_option": "/fpscomp:ioformat",
+      "classification": "BUILD_CONTRACT_HYPOTHESIS_VERY_STRONGLY_SUPPORTED",
+      "historically_proven": false
+    },
+    "local_storage": {
+      "baseline": "Intel default local-storage semantics",
+      "qsave_assumed": false,
+      "qsave_role": "sensitivity variant only if native reproduction requires it",
+      "classification": "BUILD_CONTRACT_DEPENDENCY_WITH_DEFAULT_INTEL_EXPLANATION"
+    }
+  },
+  "gnu_diagnostic_correspondence": {
+    "compiler": "GNU Fortran 14.2.0",
+    "flags": [
+      "-ffree-form",
+      "-ffree-line-length-none",
+      "-fallow-argument-mismatch",
+      "-std=legacy",
+      "-fdefault-real-8",
+      "-fdefault-double-8",
+      "-fno-automatic"
+    ],
+    "note": "GNU flags are diagnostic emulation aids and are not asserted to be one-to-one historical Intel options",
+    "successful_deterministic_cases": 8,
+    "qualified_reference_cases": 0
+  },
+  "qualification_matrix": [
+    {
+      "id": "I12-A",
+      "purpose": "establish Intel 12.1 default behaviour and fail points",
+      "options": "minimal compile-required options only",
+      "reference_candidate": false
+    },
+    {
+      "id": "I12-B",
+      "purpose": "test eight-byte default REAL semantics",
+      "adds": "/4R8 or directly equivalent project setting",
+      "reference_candidate": false
+    },
+    {
+      "id": "I12-C",
+      "purpose": "test direct frozen hydrology read with PowerStation I/O semantics",
+      "adds": "/fpscomp:ioformat",
+      "reference_candidate": true
+    },
+    {
+      "id": "I12-D",
+      "purpose": "storage-duration sensitivity only if I12-C exposes retention differences",
+      "adds": "/Qsave",
+      "reference_candidate": false
+    }
+  ],
+  "unknowns": [
+    "optimization level",
+    "floating-point model",
+    "integer-size options",
+    "alignment and calling convention",
+    "exception and underflow handling",
+    "preprocessing/include settings",
+    "debug/runtime-check settings",
+    "exact source-unit selection provenance",
+    "linker settings and runtime libraries",
+    "other fpscomp suboptions",
+    "direct historical executable equivalence"
+  ],
+  "admission_requires": [
+    "exact source provenance",
+    "exact compiler and complete project/command settings",
+    "direct frozen hydrology read or separately qualified equivalent exchange path",
+    "deterministic repeated execution",
+    "unrounded output capture",
+    "runtime warning and mass-balance reconciliation",
+    "independent trusted historical comparison or explicit governance admission of reconstructed build"
+  ],
+  "reference_admitted": false,
+  "production_migration_admitted": false
+}

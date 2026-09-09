@@ -1,0 +1,39 @@
+{
+  "evidence_id": "ANIMO-PREP01-PO4-INITIALIZATION-LEDGER-SEAM-2026-09-08",
+  "evidence_class": "CAUSALLY_LOCALIZED_DIAGNOSTIC_NOT_REFERENCE",
+  "case": "CranGrass",
+  "balance": "PO4-P",
+  "balance_profile_layers": [0, 22],
+  "first_step": {
+    "source_outbal_residual_kg_ha_p": -0.7235825146799,
+    "transgen_profile_mismatch_kg_ha_p": 0.7235825146784385,
+    "absolute_opposite_sign_agreement_kg_ha_p": 1.4615e-12,
+    "initial_fast_sorption_inconsistency_kg_ha_p": 0.7236806065522924,
+    "initial_inconsistency_minus_transgen_mismatch_kg_ha_p": 0.0000980918738539,
+    "largest_layer_transgen_mismatch_kg_ha_p": 0.09584577676073533
+  },
+  "legacy_checks": {
+    "inicalc_fast_sorption_message_threshold_kg_m3": 0.0001,
+    "transgen_absolute_mass_check_floor_kg_m2": 0.00001,
+    "transgen_absolute_mass_check_floor_equivalent_kg_ha_per_layer": 0.1,
+    "all_22_first_step_layer_mismatches_below_absolute_floor": true
+  },
+  "causal_control": {
+    "change_scope": "temporary testcase copy only; source unchanged; original testcase unchanged",
+    "change": "replace 22 supplied fast-sorption initial values with exact revision-53 Fast(...) values at the supplied initial Copo",
+    "residual_fast_sorption_initial_inconsistency_kg_ha_p": 1.12177628297505e-10,
+    "first_step_outbal_residual_kg_ha_p": 0.00009808290724322,
+    "absolute_residual_reduction_percent": 99.9864448207007
+  },
+  "classification": "INITIAL_STATE_CONSISTENCY_AND_MASS_LEDGER_SEAM",
+  "confirmed_scientific_defect": false,
+  "qualified_reference_evidence": false,
+  "interpretation": "The large original first-step PO4 residual is causally attributable almost entirely to accepted inconsistency between supplied initial fast-sorption storage and the source sorption relation, accumulated over layers below local warning thresholds.",
+  "required_before_corrected_legacy_change": [
+    "qualify a historical or independently equivalent legacy reference build",
+    "determine intended legacy semantics for INPO=1 inconsistent coupled initial states",
+    "decide whether reconciliation is validation, projection, or an explicit initialization-ledger term",
+    "qualify any correction against unrounded reference mass evidence"
+  ],
+  "production_migration_admitted": false
+}
