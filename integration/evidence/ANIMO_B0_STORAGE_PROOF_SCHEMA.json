@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/abhedwig-cell/ANIMO5/integration/evidence/ANIMO_B0_STORAGE_PROOF_SCHEMA.json",
+  "title": "ANIMO5 controlled B0 storage proof",
+  "description": "Public, non-secret proof record returned by an authorized B0 Evidence Custodian after external controlled immutable retention has been implemented and restore-qualified.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "work_unit",
+    "proof_status",
+    "storage_authority",
+    "evidence_objects",
+    "custodian_approval"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "work_unit": {
+      "const": "ANIMO-EG01"
+    },
+    "proof_status": {
+      "type": "string",
+      "enum": [
+        "INCOMPLETE",
+        "PROVEN_CONTROLLED_IMMUTABLE"
+      ]
+    },
+    "storage_authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "custodian_role",
+        "primary_storage_control",
+        "secondary_failure_domain_independent",
+        "least_privilege_access",
+        "auditability_statement"
+      ],
+      "properties": {
+        "organization_or_authority": {
+          "type": ["string", "null"]
+        },
+        "custodian_role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "primary_storage_control": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Non-secret description of WORM/object-lock/retention or equivalent enforced immutability."
+        },
+        "secondary_failure_domain_independent": {
+          "type": "boolean"
+        },
+        "least_privilege_access": {
+          "type": "boolean"
+        },
+        "auditability_statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retention_policy_reference": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "evidence_objects": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "evidence_id",
+          "expected_sha256",
+          "primary_storage_record_id",
+          "secondary_storage_record_id",
+          "immutability_proof_reference",
+          "post_ingest_sha256",
+          "post_ingest_sha256_match",
+          "secondary_sha256",
+          "secondary_sha256_match",
+          "restore_test",
+          "retention_status"
+        ],
+        "properties": {
+          "evidence_id": {
+            "type": "string",
+            "enum": [
+              "ANIMO-B0-SRC-41553-R53",
+              "ANIMO-B0-TB-202609",
+              "ANIMO-B0-DOC-UG40-2005"
+            ]
+          },
+          "expected_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "primary_storage_record_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Opaque non-secret identifier only. Do not publish a sensitive storage path or credential-bearing URL."
+          },
+          "secondary_storage_record_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "immutability_proof_reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ingest_timestamp": {
+            "type": ["string", "null"],
+            "format": "date-time"
+          },
+          "post_ingest_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "post_ingest_sha256_match": {
+            "type": "boolean"
+          },
+          "secondary_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "secondary_sha256_match": {
+            "type": "boolean"
+          },
+          "restore_test": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "performed",
+              "restored_sha256",
+              "sha256_match"
+            ],
+            "properties": {
+              "performed": {
+                "type": "boolean"
+              },
+              "timestamp": {
+                "type": ["string", "null"],
+                "format": "date-time"
+              },
+              "restored_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "sha256_match": {
+                "type": "boolean"
+              },
+              "proof_reference": {
+                "type": ["string", "null"]
+              }
+            }
+          },
+          "retention_status": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "PROVEN_CONTROLLED_IMMUTABLE"
+            ]
+          }
+        }
+      }
+    },
+    "custodian_approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "approved",
+        "approval_reference"
+      ],
+      "properties": {
+        "approved": {
+          "type": "boolean"
+        },
+        "approval_reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approval_timestamp": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "proof_status": {
+            "const": "PROVEN_CONTROLLED_IMMUTABLE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "storage_authority": {
+            "properties": {
+              "secondary_failure_domain_independent": {"const": true},
+              "least_privilege_access": {"const": true}
+            }
+          },
+          "evidence_objects": {
+            "items": {
+              "properties": {
+                "post_ingest_sha256_match": {"const": true},
+                "secondary_sha256_match": {"const": true},
+                "restore_test": {
+                  "properties": {
+                    "performed": {"const": true},
+                    "sha256_match": {"const": true}
+                  }
+                },
+                "retention_status": {"const": "PROVEN_CONTROLLED_IMMUTABLE"}
+              }
+            }
+          },
+          "custodian_approval": {
+            "properties": {
+              "approved": {"const": true}
+            }
+          }
+        }
+      }
+    }
+  ]
+}

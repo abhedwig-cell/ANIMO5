@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-EG01",
+  "proof_status": "INCOMPLETE",
+  "storage_authority": {
+    "organization_or_authority": null,
+    "custodian_role": "B0 Evidence Custodian",
+    "primary_storage_control": "TO_BE_COMPLETED_BY_AUTHORIZED_CUSTODIAN",
+    "secondary_failure_domain_independent": false,
+    "least_privilege_access": false,
+    "auditability_statement": "TO_BE_COMPLETED_BY_AUTHORIZED_CUSTODIAN",
+    "retention_policy_reference": null
+  },
+  "evidence_objects": [
+    {
+      "evidence_id": "ANIMO-B0-SRC-41553-R53",
+      "expected_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "primary_storage_record_id": "PENDING",
+      "secondary_storage_record_id": "PENDING",
+      "immutability_proof_reference": "PENDING",
+      "ingest_timestamp": null,
+      "post_ingest_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "post_ingest_sha256_match": false,
+      "secondary_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "secondary_sha256_match": false,
+      "restore_test": {
+        "performed": false,
+        "timestamp": null,
+        "restored_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+        "sha256_match": false,
+        "proof_reference": null
+      },
+      "retention_status": "PENDING"
+    },
+    {
+      "evidence_id": "ANIMO-B0-TB-202609",
+      "expected_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "primary_storage_record_id": "PENDING",
+      "secondary_storage_record_id": "PENDING",
+      "immutability_proof_reference": "PENDING",
+      "ingest_timestamp": null,
+      "post_ingest_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "post_ingest_sha256_match": false,
+      "secondary_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "secondary_sha256_match": false,
+      "restore_test": {
+        "performed": false,
+        "timestamp": null,
+        "restored_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+        "sha256_match": false,
+        "proof_reference": null
+      },
+      "retention_status": "PENDING"
+    },
+    {
+      "evidence_id": "ANIMO-B0-DOC-UG40-2005",
+      "expected_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+      "primary_storage_record_id": "PENDING",
+      "secondary_storage_record_id": "PENDING",
+      "immutability_proof_reference": "PENDING",
+      "ingest_timestamp": null,
+      "post_ingest_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+      "post_ingest_sha256_match": false,
+      "secondary_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+      "secondary_sha256_match": false,
+      "restore_test": {
+        "performed": false,
+        "timestamp": null,
+        "restored_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+        "sha256_match": false,
+        "proof_reference": null
+      },
+      "retention_status": "PENDING"
+    }
+  ],
+  "custodian_approval": {
+    "approved": false,
+    "approval_reference": "PENDING",
+    "approval_timestamp": null,
+    "notes": [
+      "Do not replace PENDING fields with credentials, secret paths, encryption keys or unrestricted download URLs."
+    ]
+  }
+}

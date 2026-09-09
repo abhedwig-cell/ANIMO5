@@ -20,6 +20,12 @@ A corrected legacy reference is behavioural evidence. It is not automatically pr
 
 Keep source, documentation/theory, and testcase behaviour independent until reconciliation evidence justifies a stronger claim.
 
+ANIMO-EG01 defines the controlled-retention classes used across the programme:
+
+`B0_RAW_IMMUTABLE`, `B0_MANIFEST`, `WORKING_COPY`, `COMPATIBILITY_TRANSFORM`, `DIAGNOSTIC_OUTPUT`, `REFERENCE_OUTPUT`, `CORRECTED_LEGACY`, `MIGRATED_ANIMO5`.
+
+The public repository may retain provenance metadata and hashes, but Git history or Git object hashes are not the sole preservation mechanism for B0. Raw B0 bytes whose redistribution basis is absent, restricted or uncertain remain outside public Git in controlled storage.
+
 ## Work-unit contract
 
 Every medium work unit must declare before modification:
@@ -58,6 +64,12 @@ Shared semantic foundations such as canonical state architecture, time contract,
 ## Frozen legacy rule
 
 Frozen source, documentation, and testcase artifacts are immutable evidence. Corrections are separate descendants with explicit rationale and tests.
+
+Controlled immutable B0 retention is an explicit gate. A B0 blocker may not be lifted merely because an artifact hash or manifest exists in Git. The exact raw bytes must be retained under an authorized storage authority with write protection, access control, independently recoverable backup, post-ingest checksum verification and a demonstrated restore/revalidation path.
+
+Compatibility transforms must receive their own identity and digest, record their parent B0 identity and transformation recipe/tool, and must never replace or inherit the raw B0 identity.
+
+Every persisted diagnostic, reference, corrected-legacy or migrated run that can influence scientific qualification must record machine-readable input lineage. `REFERENCE_OUTPUT` requires a dedicated admission gate; diagnostic output is not promoted by naming convention or test success alone.
 
 ## Scientific change rule
 
