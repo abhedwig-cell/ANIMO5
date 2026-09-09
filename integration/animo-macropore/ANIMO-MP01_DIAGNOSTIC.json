@@ -1,0 +1,181 @@
+{
+  "work_unit": "ANIMO-MP01",
+  "evidence_class": "SYNTHETIC_DIAGNOSTIC_ONLY",
+  "b1_classification": "B1_CAUSALLY_EXERCISED_FROZEN_REV53_SOURCE_KERNELS",
+  "historical_reference": false,
+  "b2": false,
+  "b3_admission": false,
+  "production_evidence": false,
+  "frozen_source": {
+    "artifact": "ANIMO_4.1.5.53(3).zip",
+    "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "modified": false
+  },
+  "frozen_testbank": {
+    "artifact": "ANIMO_testbank.zip",
+    "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "modified": false,
+    "natural_macropore_active_cases": 0,
+    "selected_b0_parent_for_future_whole_case_descendants": "CranGrass",
+    "parent_member_hashes": {
+      "animo.ini": "5d1f62faf62747b7d91d3e9199e33954e3038ddd005259f32a8bca95f0c82bb8",
+      "Input/GENERAL.INP": "fee38c975061ea187747f05e7c599d8313717739c1ed084a9225ad8942b3567b",
+      "Input/SOIL.INP": "2dae9930f49a7ca6ee8ea3d272818010dd86b8efb97d1c22597bfa2db6a8179f",
+      "Input/Swatre.unf": "350d3a3715e313d6fd19167fc34f6186f7ab8752fbf7570db05bfc0e7b8add80"
+    },
+    "parent_activation": {
+      "HydrologicInput": 2,
+      "MacroPoreOption": 0,
+      "SWATRE_HLPIMP": 1
+    }
+  },
+  "compiler": "GNU Fortran (Debian 14.2.0-19) 14.2.0",
+  "compile_flags": [
+    "-ffree-form",
+    "-ffree-line-length-none",
+    "-fallow-argument-mismatch",
+    "-std=legacy",
+    "-fdefault-real-8",
+    "-fdefault-double-8",
+    "-fno-automatic"
+  ],
+  "source_members": {
+    "MAPOHYDRO.FOR": "86659aaac3e48439252c37490d44f214945dfe8f1d49d14876a40abc03e3722a",
+    "MAPOTRANSPORT.FOR": "735b3f86497a6968c24d2dbce2ad23ae350b4eed573da421baa1a7557a0615da",
+    "mapoinput.for": "081c671d2f576ab0608350cbb0083eab157c586a6783522cda3534b141244065",
+    "input1.for": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+    "Input_hydro.for": "5f07ce68969d749308595d6b4f9f789b6b3646ae226c233e2f8e49565a7dad64",
+    "Hydro_detailed.for": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
+    "Hydro_aggregated.for": "55a5f54a571b6461c7d45c9f4ac80ffb708f4ff79807d37c9c3878d3f88f0b36",
+    "Init.for": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+    "Output_Init.for": "6452c175dcd7c6e80983c1176467735d07f75595cf8341526b115b70121b6a2f",
+    "Outbal_calc.for": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+    "TRANSPORT.FOR": "3f597b896ab5514e0b836f5547b342e317b03c8e3e58e053e113bd1c17e2f998",
+    "Transca.for": "7f31150050bd41aef203587818cde94cf689e6288094b2ad84aea34732b07ff9",
+    "Transgen.for": "cd5efa76c1a4840b50901ee5015940b74c5fe4df79aca43d53a4a4cb77b9fecb"
+  },
+  "diagnostic_method": {
+    "water": "Compile and call the frozen MAPOHYDRO routine directly. Run TaskMp=1 to construct macropore flux classes and TaskMp=3 to execute the routine's own profile balance check. Independently evaluate the same control-volume identity from returned fluxes and old/new SrWaMp.",
+    "solute": "Compile and call the frozen MPTRANSP kernel in MAPOTRANSPORT.FOR directly. Run task 1 to solve concentration/transfer and task 3 to execute the routine's own macropore balance check. Independently reconstruct old storage, inputs, matrix transfers, direct drainage and new storage.",
+    "scope_limit": "These are isolated source-kernel diagnostics. They prove causal execution of the frozen routines and their local conservation identities. They are not full ANIMO case runs, not historical B2 references and not proof of parameter realism."
+  },
+  "water_cases": [
+    {
+      "case": "storage_only",
+      "inflow_m": 0.0,
+      "outflow_m": 0.0,
+      "storage_change_m": 0.0,
+      "residual_m": 0.0,
+      "MAPOHYDRO_warning_bytes": 0
+    },
+    {
+      "case": "matrix_exchange",
+      "inflow_m": 0.002,
+      "outflow_m": 0.002,
+      "storage_change_m": 0.0,
+      "residual_m": 0.0,
+      "direct_drain_m": 0.0,
+      "MAPOHYDRO_warning_bytes": 0
+    },
+    {
+      "case": "direct_drainage",
+      "inflow_m": 0.0,
+      "outflow_m": 0.005,
+      "storage_change_m": -0.005,
+      "residual_m": 0.0,
+      "direct_drain_m": 0.005,
+      "MAPOHYDRO_warning_bytes": 0
+    },
+    {
+      "case": "precip_storage",
+      "inflow_m": 0.005,
+      "outflow_m": 0.0,
+      "storage_change_m": 0.004999999999999999,
+      "residual_m": 8.673617379884035e-19,
+      "MAPOHYDRO_warning_bytes": 0
+    }
+  ],
+  "solute_cases": [
+    {
+      "case": "storage_only",
+      "old_storage": 0.02,
+      "external_or_matrix_inputs": 0.0,
+      "matrix_out": 0.0,
+      "direct_drain_out": 0.0,
+      "new_storage": 0.02,
+      "residual": 0.0,
+      "MAPOTRANSPORT_warning_bytes": 0
+    },
+    {
+      "case": "matrix_exchange_internal_catchment_domain",
+      "old_storage": 0.02,
+      "matrix_in": 0.002,
+      "matrix_out": 0.003812692469220182,
+      "direct_drain_out": 0.0,
+      "new_storage": 0.01818730753077982,
+      "residual": -3.469446951953614e-18,
+      "average_concentration_domain_2": 1.906346234610091,
+      "result_concentration_domain_2": 1.8187307530779817,
+      "MAPOTRANSPORT_warning_bytes": 0
+    },
+    {
+      "case": "direct_drainage_main_bypass_domain",
+      "old_storage": 0.02,
+      "direct_drain_out": 0.01,
+      "new_storage": 0.01,
+      "residual": 0.0,
+      "MAPOTRANSPORT_warning_bytes": 0
+    },
+    {
+      "case": "solute_input_storage",
+      "old_storage": 0.0,
+      "top_input": 0.015,
+      "new_storage": 0.015,
+      "residual": 0.0,
+      "MAPOTRANSPORT_warning_bytes": 0
+    },
+    {
+      "case": "solute_input_to_matrix",
+      "old_storage": 0.01,
+      "top_input": 0.006,
+      "matrix_out": 0.0023746150615596364,
+      "new_storage": 0.013625384938440364,
+      "residual": 0.0,
+      "average_concentration_domain_1": 1.1873075307798182,
+      "result_concentration_domain_1": 1.3625384938440364,
+      "MAPOTRANSPORT_warning_bytes": 0
+    }
+  ],
+  "species_scope": {
+    "shared_solver_B1": "The MPTRANSP kernel is species-generic.",
+    "source_orchestration": [
+      "DOM through Transca/Transport",
+      "DON through Transca/Transport",
+      "DOP through Transca/Transport when phosphorus is active",
+      "NH4-N through Transport",
+      "NO3-N through Transport",
+      "PO4-P through Transgen"
+    ],
+    "qualification_limit": "The causal numerical kernel was exercised generically. Individual full orchestration paths were source-traced, not each executed as a complete ANIMO simulation."
+  },
+  "negative_control": {
+    "source": "TQ01 plus local frozen-testbank reinspection",
+    "result": "All nine active GENERAL.INP members selected by their case animo.ini have MacroPoreOption=0.",
+    "interpretation": "The supplied B0 testbank gives no positive macropore behavioural evidence. Successful ordinary runs are negative-control/non-interference evidence only."
+  },
+  "whole_case_b0_descendants": {
+    "status": "DESIGNED_NOT_EXECUTED_AS_FULL_ANIMO_CASES",
+    "evidence_role": "future controlled reachability diagnostics only",
+    "parent": "CranGrass",
+    "reason_for_parent": "It is a supplied B0 case with detailed SWAP hydrology. Its hydrology header is SWAP3-style and has HLPIMP=1, making the exact activation delta explicit.",
+    "required_common_transform": [
+      "set MacroPoreOption from 0 to 1 in an execution copy",
+      "set SWATRE HLPIMP from 1 to 2",
+      "insert the macropore geometry, initial-water and per-timestep dynamic records required by mapoinput",
+      "add >MPfrac: to SOIL.INP",
+      "add >MPnitr: and >MPorgs: to INITIAL.INP, and >MPphos: when phosphorus is active",
+      "record every changed member and hash; never alter frozen B0 bytes"
+    ]
+  },
+  "decision": "B1_MACROPORE_WATER_AND_SOLUTE_KERNEL_CONSERVATION_CAUSALLY_EXERCISED_FULL_HISTORICAL_AND_FULL_CASE_REFERENCE_OPEN"
+}
