@@ -1,0 +1,41 @@
+{
+  "work_unit": "ANIMO-PREP02R",
+  "subscope": "GNU_RUURLO_FILE_LEVEL_COMPARISON_SURFACE",
+  "date": "2026-09-09",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "cross-runtime diagnostic comparison surface only",
+  "historical_reference_qualified": false,
+  "normal_B2_reference_available": false,
+  "production_migration_admitted": false,
+  "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "gnu_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+  "compiler": "GNU Fortran 14.2.0",
+  "case": "RuurloGrass",
+  "clean_runs": 2,
+  "legacy_successful_completion_path": true,
+  "process_exit_status_each_run": 100,
+  "successful_completion_text_present_each_run": true,
+  "changed_or_new_case_files_each_run": 72,
+  "deleted_case_files_each_run": 0,
+  "raw_repeat_different_files": 35,
+  "normalized_repeat_different_files": 0,
+  "scientific_numeric_tolerance_applied": false,
+  "normalized_surface_content_set_sha256": "6230855d66fab5ca278d7aa6ca1f712ff7a8e58bfd6c7508c05ae3d10ebe01f5",
+  "artifacts": {
+    "surface": "integration/animo-prep/PREP02R_GNU_RUURLO_FILE_SURFACE_20260909.json",
+    "documentation": "docs/prep02r/GNU_RUURLO_FILE_LEVEL_COMPARISON_SURFACE.md"
+  },
+  "legacy_PREP01_aggregate": {
+    "recorded_generated_output_file_count": 73,
+    "recorded_normalized_output_bundle_sha256": "df0ec1c5995272e8f663762e4432c2ccf13480f03527cde956f506363d2eefd8",
+    "same_capture_boundary_proven": false,
+    "same_aggregation_algorithm_proven": false,
+    "scientific_difference_inferred": false
+  },
+  "next_use": "after genuine Windows capture ingestion, compare the validated native changed/new output surface path-by-path against this explicit GNU surface under the declared volatile normalization only",
+  "decision": "QUALIFIED_GNU_RUURLO_FILE_LEVEL_SURFACE_FOR_CROSS_RUNTIME_DIAGNOSTIC_USE_ONLY"
+}
