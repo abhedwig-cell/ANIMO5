@@ -10,7 +10,7 @@
   "qualified": true,
   "blocked": false,
   "qualification_scope": "explicit authority/provenance attachment of independent theory, testcase, numerical, temporal, candidate architecture and discrepancy/feature science streams to the RG02 integration DAG while preserving each owning workunit's evidence strength and non-admissions",
-  "stream_count": 12,
+  "stream_count": 13,
   "attached_streams": {
     "TH01": {"branch": "work/animo-th01-rev53-theory-provenance", "head": "a3360415364ef4a66a81d7b6715bcd400829df1b"},
     "TH02": {"branch": "work/animo-th02-rev41-lineage-recovery", "head": "f7f3722b14f65340dc6d67a8f80d74f5d0ebb158"},
@@ -22,6 +22,7 @@
     "ARCHG01": {"branch": "work/animo-archg01-candidate-architecture-consolidation", "head": "5cef7969ee921acd2044521cc7636d388aa02efe", "historical_candidate_base": true},
     "SQ01": {"branch": "work/animo-sq01-tcd016-dry-solute-state", "head": "16ca38663b0c72a06b5787d1f4addcde1429f5b8"},
     "MP01": {"branch": "work/animo-mp01-macropore-qualification", "head": "7b5979dd6301b9d55d23e8c22948a0dba24b229b"},
+    "MP02": {"branch": "work/animo-mp02-whole-case-activation", "head": "6b0f2e7470f13baeb6612b0bddb662a497dea528", "attachment": "integration/animo-reg/g5/ANIMO_RG02_G5_MP02_ATTACHMENT.json"},
     "GHG01": {"branch": "work/animo-ghg01-ghg-qualification", "head": "f952bf28c03de911f331762d56613c394529c25a"},
     "B3Q01": {"branch": "work/animo-b3q01-scientific-admission-framework", "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"}
   },
@@ -50,6 +51,11 @@
     "ARCHG02_does_not_admit_G8": true,
     "SQ01_TCD016_class_C_block_preserved": true,
     "MP01_historical_reference_and_TCD025_blocks_preserved": true,
+    "MP02_complete_case_B1_attached_without_B2_or_B3_promotion": true,
+    "MP02_TCD025_complete_case_symptom_evidence_preserved_without_correction": true,
+    "MP02_persistent_restart_omission_preserved_as_blocker": true,
+    "MP02_GNU_FPE_seam_routed_to_numerical_build_governance_without_historical_projection": true,
+    "MP01_initial_NO3_validation_seam_routed_to_canonical_discrepancy_governance_without_TCD_allocation": true,
     "GHG01_historical_reference_and_ledger_blocks_preserved": true,
     "B3Q01_retained_as_canonical_admission_framework_owner": true,
     "new_canonical_TCD_ids_allocated": 0,
@@ -67,11 +73,12 @@
   "verification": {
     "audit_tool": "tools/audit_rg02_g5_stream_attachment.py",
     "audit_artifact": "integration/animo-reg/g5/ANIMO_RG02_G5_STRUCTURAL_AUDIT.json",
-    "audit_result": "PASS",
+    "audit_result": "PENDING_POST_MP02_REFRESH_CI",
     "github_actions_workflow": ".github/workflows/rg02-g5-stream-attachment.yml",
     "qualified_g5_closeout_run_id": 34318799877,
     "archg02_closeout_run_id": 34319423226,
-    "archg02_closeout_head": "db8183802631902f41aa5bec518a3c2e63e03ab7"
+    "archg02_closeout_head": "db8183802631902f41aa5bec518a3c2e63e03ab7",
+    "mp02_attachment_refresh_required_ci": true
   },
   "evidence_boundaries": {
     "b2_reference_qualified": false,
@@ -98,6 +105,7 @@
     "stream_register": "integration/animo-reg/g5/ANIMO_RG02_G5_STREAM_REGISTER.csv",
     "gate_matrix": "integration/animo-reg/g5/ANIMO_RG02_G5_GATE_MATRIX.csv",
     "archg02_attachment": "integration/animo-reg/g5/ANIMO_RG02_G5_ARCHG02_ATTACHMENT.json",
+    "mp02_attachment": "integration/animo-reg/g5/ANIMO_RG02_G5_MP02_ATTACHMENT.json",
     "audit_tool": "tools/audit_rg02_g5_stream_attachment.py",
     "workflow": ".github/workflows/rg02-g5-stream-attachment.yml",
     "audit": "integration/animo-reg/g5/ANIMO_RG02_G5_STRUCTURAL_AUDIT.json",
@@ -111,8 +119,12 @@
     "MASS and EX remain downstream unadmitted gates",
     "TCD-016 remains blocked on physical phase theory and independent scientific review",
     "TCD-019 remains a numerical-policy candidate without B3 admission, independent numerical review or production tolerance",
-    "macropore historical active reference, restart and TCD-025 ledger gaps remain open",
+    "macropore historical active reference remains absent",
+    "persistent macropore solute restart serialization is incomplete",
+    "TCD-025 main/public ledger control volume remains uncorrected and historically unreferenced",
+    "MP01 macropore initial NO3 validation seam awaits canonical discrepancy-governance disposition",
+    "MP02 GNU MAPOTRANSPORT invalid-operation warning guard awaits numerical/build-governance disposition and historical compiler qualification",
     "GHG historical reference, release-specific equation provenance and C/N ledger gaps remain open"
   ],
-  "next_safe_gate": "G6_REMAINS_BLOCKED; ARCHG02_TEMPORAL_REVALIDATION_IS_COMPLETE_BUT_G8_REMAINS_UNADMITTED; PARALLEL_SAFE_WORK_IS_RUNTIME_TRANSACTION_FIXTURE_PREPARATION_AND_REFERENCE_RECOVERY_WITHOUT_B2_B3_B4_PROMOTION"
+  "next_safe_gate": "G6_REMAINS_BLOCKED; MP02_IS_NOW_ATTACHED_AS_COMPLETE_CASE_B1_ONLY; PARALLEL_SAFE_WORK_IS_REFERENCE_RECOVERY_PLUS_CANONICAL_DISCREPANCY_INTAKE_FOR_MACROPORE_NO3_VALIDATION_AND_NUMERICAL_BUILD_DISPOSITION_FOR_THE_GNU_MAPOTRANSPORT_GUARD; DO_NOT_OPEN_TCD025_CORRECTION_ADMISSION_YET"
 }
