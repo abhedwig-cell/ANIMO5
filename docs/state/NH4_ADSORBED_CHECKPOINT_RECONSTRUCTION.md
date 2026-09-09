@@ -1,6 +1,6 @@
 # ANIMO-STATEQ01 NH4 adsorbed-state checkpoint reconstruction qualification
 
-Status: `SOURCE_RECONSTRUCTION_CONTRACT_QUALIFIED_SPLIT_RUN_STILL_OPEN`
+Status: `PASS_FROZEN_SOURCE_COMPONENT_RECONSTRUCTION_DIAGNOSTIC_CONTINUITY_FULL_MODEL_SPLIT_RUN_OPEN`
 
 Canonical STATE admission: `NOT_ADMITTED`
 
@@ -10,7 +10,7 @@ Production migration: `NOT_ADMITTED`
 
 STATEQ01 classifies adsorbed NH4 as real nitrogen storage but proposes not to serialize it as a second independent checkpoint owner if it is deterministically reconstructable from accepted aqueous NH4 and the exact soil/sorption coordinates.
 
-This note qualifies that source-level reconstruction contract. It does not claim portable restart equivalence.
+This note qualifies the source-level reconstruction contract and adds a hash-pinned execution of the relevant frozen `TRANSPORT.FOR` state/balance seam. It still does not claim portable full-model restart equivalence.
 
 ## Source invariant
 
@@ -56,18 +56,58 @@ Cxnh_restored(Ln) = He(Ln) * Rhbd(Ln) * Socfnh(Ln) * Conh_restored(Ln)
 
 This must occur after the exact accepted aqueous state and configuration/layout are bound and before any process mutation.
 
-## What is not admitted
+## Frozen-source component execution
 
-This source invariant does not by itself prove that a complete uninterrupted trajectory and a split trajectory are equivalent. RC-R5 therefore remains open behaviorally until a split-run or equivalent accepted-boundary replay test demonstrates that reconstruction under the admitted numerical policy reproduces the promised continuation.
+The B0 source archive was rechecked at:
 
-Failure of that future test would require reconsidering the checkpoint representation or arithmetic policy. It would not justify silently serializing two independently mutable NH4 owners.
+`183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566`
 
-## Reproducible audit
+The source probe compiles the original revision-53 `TRANSPORT.FOR` and isolates its adsorbed-state/result and balance-diagnostic seam. `Transsub` is replaced by a neutral pass-through that leaves the aqueous concentration unchanged; `MapoTransport` is an unreachable link stub because macropores are disabled. This is deliberate. The test is about the `Rscx` ownership/reconstruction seam, not about numerical transport-solver qualification.
 
-`tools/stateq01/audit_nh4_adsorbed_reconstruction.py` verifies the exact frozen source identity, the required source assignments, and the absence of unexpected direct `Rscxnh` process assignments.
+Two GNU Fortran 14.2.0 builds were executed locally against the hash-pinned archive:
+
+- default REAL with `-O0`;
+- default REAL 8 / DOUBLE 8 compatibility with `-O0 -fdefault-real-8 -fdefault-double-8`.
+
+Within each build:
+
+1. original `TRANSPORT.FOR` produced `Rsco` and `Rscx`;
+2. uninterrupted continuation used the legacy-equivalent `Cx <- Rscx` handoff;
+3. split continuation omitted `Rscx` from the checkpoint and reconstructed `Cx` from `Rsco`, `He`, `Rhbd` and `Socf` using the same source expression;
+4. the reconstructed value was exactly equal to the prior `Rscx` within that build;
+5. the uninterrupted and reconstructed paths both left the Transport balance diagnostic empty;
+6. deliberately replacing the restored `Cx` by zero produced the expected balance-deviation diagnostic.
+
+The execution record is:
+
+`integration/animo-state/NH4_ADSORBED_RECONSTRUCTION_SOURCE_PROBE.json`
+
+Reusable driver:
+
+`tests/stateq01/fixtures/stateq01_rc5_nh4_adsorbed_reconstruction_probe.f90`
+
+Reproduction runner:
+
+`tools/stateq01/run_rc5_nh4_adsorbed_reconstruction_probe.py`
+
+## Interpretation boundary
+
+This adds stronger evidence than the earlier source audit, but the claim must stay narrow.
+
+The probe demonstrates that `Rscxnh` can be omitted as a duplicate checkpoint owner and exactly reconstructed for the exercised source component when the accepted aqueous state and immutable sorption/layout inputs are restored at the same arithmetic policy. It also demonstrates that reconstruction matters for legacy Transport balance diagnostics.
+
+It does **not** show that beginning adsorbed NH4 changes the next aqueous physical trajectory in this routine. In revision-53 `TRANSPORT.FOR`, `Cx` enters the balance check but is not passed into `Transsub`. It therefore would be incorrect to present this probe as full physical trajectory split-run evidence.
+
+Still open:
+
+- full ANIMO uninterrupted-versus-split continuation;
+- interaction with management and other process ordering at the split;
+- canonical serializer precision policy;
+- B2 historical-reference qualification;
+- canonical STATE admission.
 
 Final classification:
 
-`NH4_ADSORBED_PHYSICAL_STORAGE_DERIVED_RECOMPUTABLE_AT_ACCEPTED_BOUNDARY_SOURCE_CONTRACT_QUALIFIED`
+`NH4_ADSORBED_PHYSICAL_STORAGE_DERIVED_RECOMPUTABLE_AT_ACCEPTED_BOUNDARY_SOURCE_COMPONENT_QUALIFIED`
 
-`RC-R5 = PARTIAL_SOURCE_QUALIFICATION_ONLY`
+`RC-R5 = PASS_FROZEN_SOURCE_COMPONENT_RECONSTRUCTION_DIAGNOSTIC_CONTINUITY_FULL_MODEL_SPLIT_RUN_OPEN`
