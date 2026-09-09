@@ -1,0 +1,149 @@
+{
+  "work_unit": "ANIMO-EB01",
+  "title": "ANIMO5 Evidence and Baseline Model",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-eb01-evidence-baseline-model",
+  "source_bound_starting_head": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
+  "decision": "QUALIFIED_GOVERNANCE_MODEL_PRODUCTION_MIGRATION_STILL_BLOCKED",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "project evidence semantics and baseline governance only",
+  "validation": {
+    "type": "STATIC_GOVERNANCE_CONSISTENCY_REVIEW",
+    "canonical_document_read_back": true,
+    "machine_readable_model_read_back": true,
+    "development_governance_aligned": true,
+    "migration_dag_aligned": true,
+    "previous_B0_naming_collision_removed": true,
+    "runtime_scientific_tests_required": false,
+    "source_or_testcase_runtime_claim_made": false
+  },
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "legacy_source_modified": false,
+  "testcase_modified": false,
+  "production_migration_admitted": false,
+  "baseline_levels": {
+    "B0": {
+      "name": "HISTORICAL_ARTIFACT_BASELINE",
+      "role": "immutable original evidence identity and provenance",
+      "scientific_correctness_implied": false,
+      "behavioural_correctness_implied": false,
+      "state": "IDENTITY_FROZEN_CONTROLLED_IMMUTABLE_EXTERNAL_RETENTION_OPEN"
+    },
+    "B1": {
+      "name": "REPRODUCIBLE_DIAGNOSTIC_LEGACY_OBSERVATION_BASELINE",
+      "role": "deterministic observation, probing and causal analysis",
+      "historical_reference_implied": false,
+      "scientific_correctness_implied": false,
+      "state": "ESTABLISHED_DIAGNOSTIC_NOT_REFERENCE"
+    },
+    "B2": {
+      "name": "INDEPENDENT_HISTORICAL_BEHAVIOURAL_REFERENCE",
+      "role": "independent evidence of actual historical executable behaviour",
+      "scientific_correctness_implied": false,
+      "state": "NOT_ESTABLISHED"
+    },
+    "B3": {
+      "name": "QUALIFIED_SCIENTIFIC_LEGACY_BASELINE",
+      "role": "explicitly reconciled legacy scientific behaviour intended for preservation",
+      "state": "NOT_ESTABLISHED_PREPARATORY_EVIDENCE_EXISTS"
+    },
+    "B4": {
+      "name": "ANIMO5_CANONICAL_ADMISSION_BASELINE",
+      "role": "first modern admitted canonical ANIMO5 implementation within qualified scope",
+      "state": "NOT_STARTED"
+    }
+  },
+  "frozen_evidence": {
+    "source": {
+      "artifact": "ANIMO_4.1.5.53(3).zip",
+      "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "embedded_version": "animo4.1.5",
+      "embedded_revision": "53"
+    },
+    "testbank": {
+      "artifact": "ANIMO_testbank.zip",
+      "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+    },
+    "documentation": {
+      "artifact": "ANIMO 4.0 User's Guide, Alterra Report 224, 2005",
+      "sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+      "exact_revision_53_documentation": false
+    }
+  },
+  "current_B1": {
+    "compiler": "GNU Fortran 14.2.0",
+    "diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "successful_supplied_cases": 8,
+    "blocked_case": "GHGMais",
+    "classification": "DIAGNOSTIC_NOT_REFERENCE"
+  },
+  "current_B2": {
+    "exact_revision_53_reference_executable_obtained": false,
+    "native_unrounded_oracle_obtained": false,
+    "historical_build_metadata_obtained": false,
+    "state": "BLOCKED_HISTORICAL_REFERENCE_ENVIRONMENT_REQUIRED"
+  },
+  "current_B3_preparatory_findings": [
+    "TCD-014",
+    "TCD-015",
+    "TCD-016",
+    "TCD-017",
+    "TCD-018",
+    "TCD-019",
+    "TCD-023",
+    "TCD-024"
+  ],
+  "allowed_B3_dispositions": [
+    "PRESERVE_HISTORICAL_BEHAVIOUR",
+    "ADMIT_CORRECTED_LEGACY_BEHAVIOUR",
+    "REPRESENTATION_CHANGE_ONLY",
+    "NUMERICAL_POLICY_CHANGE_REQUIRES_SEPARATE_QUALIFICATION",
+    "PHYSICS_CHANGE_REQUIRES_SEPARATE_SCIENTIFIC_ADMISSION",
+    "UNRESOLVED_NOT_ADMITTED"
+  ],
+  "prohibited_implications": [
+    "REPRODUCIBLE_IMPLIES_REFERENCE",
+    "REFERENCE_IMPLIES_SCIENTIFICALLY_CORRECT",
+    "DIAGNOSTIC_DEFECT_CAUSALITY_IMPLIES_CORRECTED_LEGACY_ADMISSION",
+    "CORRECTED_LEGACY_ADMISSION_IMPLIES_ANIMO5_MIGRATION",
+    "TESTED_IMPLIES_QUALIFIED",
+    "SMALL_MAGNITUDE_IMPLIES_SCIENTIFIC_ACCEPTABILITY",
+    "ROUNDED_OUTPUT_AGREEMENT_IMPLIES_UNROUNDED_EQUIVALENCE"
+  ],
+  "historical_reference_unavailable_fallback": {
+    "name": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "enabled": true,
+    "precondition": "documented reasonable historical-reference acquisition effort failed",
+    "cannot_waive": [
+      "poorly documented physics uncertainty",
+      "arbitrary numerical tolerances",
+      "broad numerical-policy changes"
+    ],
+    "minimum_evidence": [
+      "exact B0 source identity",
+      "causal source-level argument",
+      "authoritative theory or closed conservation identity",
+      "dedicated tests",
+      "expected-difference declaration",
+      "non-interference evidence where applicable",
+      "explicit historical uncertainty record",
+      "independent review or equivalent second-line qualification"
+    ]
+  },
+  "project_gate": {
+    "production_migration": "BLOCKED_PENDING_PROCESS_SCOPED_B3_ADMISSION_STRATEGY_AND_SHARED_SERIAL_GATES",
+    "parallel_allowed": [
+      "source-bound analysis",
+      "test construction",
+      "ownership audits",
+      "conservation and transfer-ledger audits",
+      "theory-code reconciliation",
+      "historical reference recovery"
+    ]
+  },
+  "canonical_document": "docs/governance/ANIMO5_EVIDENCE_BASELINE_MODEL.md"
+}
