@@ -1,0 +1,54 @@
+{
+  "work_unit": "ANIMO-NQ02",
+  "title": "TCD-019 Nonlinear Phosphorus Sorption Conservation, Convergence & Numerical Policy Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-nq02-tcd019-numerical-qualification",
+  "date": "2026-09-09",
+  "state": "IN_PROGRESS_DIAGNOSTIC_EVIDENCE_PERSISTED",
+  "evidence_pins": {
+    "b0_source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "b0_testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "lwkm_case_manifest_sha256": "2a5bfc4ffafc53cda50f03a74a16b5aa8e83efd8633b23e8efbc792ed1dc3338",
+    "lwkm_chempar_sha256": "b591c59110ce33dfc0ff7ad55e57431b7335d9c4834b4a283a0c8d26ae275c3d",
+    "frozen_transorp_sha256": "65ab0f70ed7cc4f1c0012ca95bcdddeb5c26dd21b09df0ec61b7b269e51cd0ad",
+    "frozen_transgen_sha256": "cd5efa76c1a4840b50901ee5015940b74c5fe4df79aca43d53a4a4cb77b9fecb",
+    "nq01_authority_branch": "work/animo-nq01-numerical-qualification-architecture",
+    "nq01_authority_head": "e558dff12b127e0662cad62beea7527b42ad89ac",
+    "b3q01_branch": "work/animo-b3q01-scientific-admission-framework",
+    "b3q01_head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "target": {
+    "tcd": "TCD-019",
+    "class": "E",
+    "classification": "NUMERICAL_POLICY_CHANGE",
+    "b3_admitted": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false
+  },
+  "separation_rules": {
+    "tcd024_separate": true,
+    "b1_is_not_b2": true,
+    "arbitrary_tolerance_forbidden": true,
+    "legacy_residual_is_not_tolerance": true,
+    "frozen_source_modified": false,
+    "frozen_testbank_modified": false
+  },
+  "checkpoint_findings": {
+    "natural_case": "LWKM_gras_1040.2021.2045",
+    "natural_fast_sorption": "Langmuir",
+    "natural_slow_sorption": "Freundlich",
+    "tcd024_active_in_natural_case": false,
+    "baseline_cumulative_p_residual_kg_ha": -0.27254515116348993,
+    "baseline_local_checks": 27000,
+    "dominant_tangent_mismatch_high_precision_kg_ha": 0.2546290594721548,
+    "tangent_refinement_plateau_observed": true,
+    "combined_refinement_near_zero_conservation_observed": true,
+    "tolerance_qualified": false
+  },
+  "next": [
+    "persist mathematical reconstruction and solver-independent residual definition",
+    "persist controlled convergence and precision matrix",
+    "persist TCD019/TCD024 interaction analysis",
+    "finalize fail-closed qualification status"
+  ]
+}
