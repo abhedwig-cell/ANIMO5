@@ -3,7 +3,7 @@
   "title": "TCD-024 Slow Langmuir Sorption Site Indexing Admission Readiness",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3b03-tcd024-slow-langmuir-index-readiness",
-  "status": "IN_PROGRESS_PERSISTED_EVIDENCE_VALIDATION_PENDING",
+  "status": "QUALIFIED_TCD024_CLASS_B_ADMISSION_READINESS_HISTORICAL_ROUTE_BLOCKED_SECOND_LINE_REVIEW_PENDING",
   "target_tcd": "TCD-024",
   "class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
   "atomic_claim": "Within Transorp.for Conc_unl slow-Langmuir kinetics, the site-specific affinity parameter must be indexed by slow-sorption site J rather than nonlinear trial counter I.",
@@ -33,26 +33,61 @@
     "production_patch": false,
     "B3_admission": false
   },
+  "technical_readiness_gates": {
+    "frozen_B0_identity": "PASS",
+    "canonical_TCD024_binding": "PASS",
+    "exact_wrong_index_expression": "PASS",
+    "exact_corrected_site_index": "PASS",
+    "unequal_site_active_fixture": "PASS",
+    "unrounded_P_site_state_comparison": "PASS",
+    "unrounded_P_site_transfer_comparison": "PASS",
+    "multi_site_internal_conservation_identity": "PASS_EXACT_NO_TOLERANCE",
+    "inactive_site_control": "PASS_EXACT",
+    "inactive_Freundlich_route_control": "PASS_55_OF_55_NORMALIZED_MODEL_OUTPUTS_IDENTICAL",
+    "SYNQ01_index_domain_oracle": "PASS",
+    "NQ02_TCD019_separation": "PASS",
+    "predeclared_expected_difference_surface": "PASS",
+    "non_interference_outside_targeted_surface": "PASS_WITHIN_QUALIFIED_DIAGNOSTIC_SCOPE",
+    "atomic_scope_guard": "PASS",
+    "production_source_unchanged": "PASS"
+  },
+  "natural_activation": {
+    "positive_Optcxsl2_activation_in_frozen_supplied_testbank": false,
+    "reason": "All six supplied active-P cases use OPTCXSL=3 Freundlich slow sorption.",
+    "natural_negative_control_available": true,
+    "natural_negative_control_result": "PASS"
+  },
+  "synq01_numeric_reconciliation": {
+    "oracle_ids": ["SYNQ-O006", "SYNQ-O007"],
+    "equation_and_discriminator_used": true,
+    "index_domain_oracle_used": true,
+    "short_displayed_O006_numbers_used_as_acceptance_values": false,
+    "finding": "Three shorter SYNQ01 register values differ from independent 80-digit recomputation by one unit in the last displayed decimal place. This representation inconsistency is persisted and is not converted into a tolerance.",
+    "effect_on_TCD024_wrong_index_claim": "NONE"
+  },
   "historical_reference": {
     "B2_qualified_for_target_path": false,
     "historical_prevalence": "UNKNOWN",
     "historical_fidelity_claim": false,
+    "PREP02R_live_status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
     "GOV02_historical_uncertainty_route_active": false,
     "reason": "Live PREP02R evidence still lacks a qualified historical reference and GOV02 requires completed bounded acquisition before the uncertainty route can open."
   },
-  "required_evidence": [
-    "canonical TCD-024 source-bound defect record",
-    "SYNQ01 TCD-024 per-site analytical oracle and index-domain oracle",
-    "NQ02 four-way TCD-019/TCD-024 interaction evidence without composing corrections for admission",
-    "unequal-site active fixture",
-    "inactive-site control",
-    "inactive constitutive-route control",
-    "multi-site conservation identity",
-    "unrounded P state and transfer comparison",
-    "predeclared expected-difference surface",
-    "non-interference outside targeted slow-site indexing"
-  ],
-  "natural_activation_policy": "Use natural B1 activation only where present. The frozen supplied active-P cases use OPTCXSL=3 and therefore do not naturally activate TCD-024; this absence must remain explicit.",
+  "admission_gates": {
+    "normal_B2_route": "BLOCKED_NO_QUALIFIED_B2_FOR_TARGET_PATH",
+    "historical_uncertainty_route": "BLOCKED_GOV02_ENTRY_CONDITION_NOT_MET",
+    "independent_second_line_review": "PENDING",
+    "B3_admission": "NOT_PERFORMED"
+  },
+  "artifacts": {
+    "dossier": "docs/b3/TCD024_CLASS_B_ADMISSION_READINESS.md",
+    "expected_difference": "integration/animo-b3/TCD024_EXPECTED_DIFFERENCE.json",
+    "active_and_inactive_fixture": "integration/animo-b3/TCD024_READINESS_FIXTURE.json",
+    "upstream_evidence_pins": "integration/animo-b3/TCD024_UPSTREAM_EVIDENCE.json",
+    "validator": "tools/validate_b3b03_tcd024.py",
+    "workflow": ".github/workflows/animo-b3b03-tcd024-readiness.yml"
+  },
+  "decision": "QUALIFIED_TCD024_CLASS_B_ADMISSION_READINESS_HISTORICAL_ROUTE_BLOCKED_SECOND_LINE_REVIEW_PENDING",
   "admitted": false,
   "production_migration_admitted": false
 }
