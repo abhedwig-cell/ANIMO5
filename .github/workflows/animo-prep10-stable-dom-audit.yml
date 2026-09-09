@@ -15,6 +15,7 @@ on:
       - 'integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json'
       - 'integration/animo-prep/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json'
       - 'integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json'
+      - 'integration/animo-prep/PREP10_STABLE_DOM_B3_HANDOFF.json'
       - 'docs/prep10/**'
       - '.github/workflows/animo-prep10-stable-dom-audit.yml'
 
@@ -43,6 +44,7 @@ jobs:
           python -m json.tool integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json >/dev/null
           python -m json.tool integration/animo-prep/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json >/dev/null
           python -m json.tool integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json >/dev/null
+          python -m json.tool integration/animo-prep/PREP10_STABLE_DOM_B3_HANDOFF.json >/dev/null
       - name: Probe GNU diagnostic-contract local storage semantics
         run: |
           python tools/probe_prep10_local_storage_semantics.py --json /tmp/prep10-storage-probe.json
