@@ -3,16 +3,27 @@
   "title": "TCD-042-E1 Independent Numerical Review",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "review/animo-nq03r-tcd042-e1-independent-numerical",
-  "status": "IN_PROGRESS_PERSISTED_INDEPENDENT_RECONSTRUCTION_PENDING",
+  "status": "INDEPENDENT_REVIEW_PASS_RESTRICTED_POLICY_NO_ADMISSION_IMPLEMENTATION_ORDER_CONSTRAINT_CARRIED",
+  "review_outcome": "INDEPENDENT_REVIEW_PASS_RESTRICTED_POLICY",
   "target": "TCD-042-E1",
   "review_target": "NQ03_RESTRICTED_NATURAL_ENVELOPE_QUADRATIC_DIMENSIONLESS_POLICY",
   "base": {
     "work_unit": "ANIMO-NQ03",
     "head": "8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6",
-    "status": "QUALIFIED_RESTRICTED_TCD042_E1_NATURAL_ENVELOPE_NUMERICAL_POLICY_INDEPENDENT_REVIEW_PENDING"
+    "status": "QUALIFIED_RESTRICTED_TCD042_E1_NATURAL_ENVELOPE_NUMERICAL_POLICY_INDEPENDENT_REVIEW_PENDING",
+    "live_head_rechecked": true,
+    "live_head_at_closeout": "8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6"
+  },
+  "b3i05_closeout_recheck": {
+    "branch": "work/animo-b3i05-ubq02-numerical-seam-intake",
+    "live_head": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+    "status": "QUALIFIED_TCD042_CANONICAL_CHILD_ROUTING_NO_NEW_TCD_NO_ADMISSIONS",
+    "work_unit_complete": true,
+    "qualified": true
   },
   "review_contract": {
     "methodological_independence": "RECONSTRUCT_EQUATIONS_ORACLE_AND_ERROR_BOUNDS_WITHOUT_USING_NQ03_CANDIDATE_IMPLEMENTATION_AS_AUTHORITY",
+    "methodological_independence_satisfied": true,
     "organizational_independence_claimed": false,
     "production_patch": false,
     "b3_admission": false,
@@ -20,11 +31,62 @@
     "new_tcd_reservation": false,
     "tcd042_b1_modified": false
   },
+  "review_validation": {
+    "tested_head": "8e04c0bffeb8436f2579b566155101e6c5a73ef1",
+    "github_actions_run_id": 34383816992,
+    "job_id": 102574921651,
+    "workflow_conclusion": "success",
+    "compile_validator_step": "PASS",
+    "independent_review_validator_step": "PASS"
+  },
+  "independent_reconstruction": {
+    "oracle_decimal_digits": 120,
+    "probe_points_unique": 2008,
+    "governing_equation_verified": true,
+    "P_conditioning_coordinate_verified": true,
+    "natural_envelope_verified": true,
+    "direct_binary64_rejected": true,
+    "expm1_only_rejected_as_complete_policy": true,
+    "degree2_minimal_under_declared_truncation_criterion": true,
+    "horner_degree2_matches_rounded_120_digit_oracle_all_probes": true,
+    "binary32_sensitivity_only": true,
+    "conservation_identity_verified": true,
+    "equal_subinterval_semigroup_reviewed": true,
+    "exact_zero_continuity_to_UBQ01_verified": true
+  },
+  "implementation_order_finding": {
+    "severity": "NON_BLOCKING_FOR_RESTRICTED_POLICY_BLOCKING_BEFORE_BITWISE_PRODUCTION_BINDING",
+    "literal_order_f_mismatch_points": 67,
+    "literal_order_g_mismatch_points": 73,
+    "unique_points_with_any_literal_order_mismatch": 129,
+    "max_relative_difference_scale": "approximately one binary64 unit roundoff",
+    "required_downstream_constraint": "Freeze coefficient evaluation order and FP contraction/reassociation semantics before bitwise production binding, or qualify the selected implementation against an equation-derived ulp bound.",
+    "hidden_epsilon_created": false,
+    "balance_residual_tolerance_created": false
+  },
+  "scope": {
+    "applicability": "Flpn=0, 0<Flux<1.0d-8, Hetop>0, 0<P<=3.8510200002999744e-7, binary64",
+    "outside_envelope": "NOT_QUALIFIED_FAIL_CLOSED",
+    "production_source_modified": false,
+    "canonical_tcd_register_modified": false,
+    "tcd042_b1_artifact_modified": false,
+    "b3_admission_modified": false,
+    "new_tcd_reserved": false
+  },
+  "deliverables": [
+    "docs/numerics/TCD042_E1_INDEPENDENT_NUMERICAL_REVIEW.md",
+    "integration/animo-science/NQ03R_INDEPENDENT_REVIEW.json",
+    "integration/animo-science/ANIMO-NQ03R_STATUS.json",
+    "tools/nq03r/validate_nq03r.py",
+    ".github/workflows/animo-nq03r-independent-review.yml"
+  ],
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "work_unit_complete": false
-  }
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "work_unit_complete": true
+  },
+  "next_gate": "SEPARATE_TCD042_E1_ADMISSION_READINESS_OR_PRODUCTION_BINDING_WORKUNIT_ONLY_AFTER_GOVERNANCE_ROUTE_CHECK; THIS REVIEW ITSELF ADMITS NOTHING"
 }
