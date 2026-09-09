@@ -5,7 +5,7 @@
   "branch": "work/animo-prep02r-native-intel-artifact-intake-5",
   "base": "work/animo-prep02r-native-intel-artifact-intake-4@e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
   "date": "2026-09-09",
-  "status": "IN_PROGRESS_RECEIPT_PERSISTED_BEFORE_VALIDATION",
+  "status": "QUALIFIED_RECEIPT_AND_BUILD_CONTRACT_EVIDENCE_RECENT_2026_REBUILD_NOT_HISTORICAL_REFERENCE",
   "scope": {
     "receipt_and_lineage_classification_only": true,
     "historical_reference_admission": false,
@@ -17,6 +17,59 @@
     "animo41.sln",
     "animo41.vfproj",
     "animo41.exe"
+  ],
+  "qualification": {
+    "receipt_hashes_persisted": true,
+    "project_build_configuration_evidence_qualified_for_received_artifact": true,
+    "received_executable_lineage_classified": "RECENT_2026_NATIVE_REBUILD_CANDIDATE_NOT_HISTORICAL_REFERENCE",
+    "default_real_kind_evidence": "RealKIND=realKIND8 in all four received vfproj configurations",
+    "local_storage_evidence": "LocalVariableStorage=localStorageSave in all four received vfproj configurations",
+    "debug_x64_saved_scalar_zero_evidence": true,
+    "project_to_frozen_source_member_relation": "63 project members; no project-only files; frozen source extras input1_1.for and Outselorg.for",
+    "historical_reference_obtained": false,
+    "native_reconstruction_candidate_obtained": true,
+    "historical_fidelity_claim": false
+  },
+  "canonical_reconciliation": {
+    "PREP02R_STATUS_updated": true,
+    "PREP02R_REFERENCE_CANDIDATES_updated": true,
+    "overall_PREP02R_status": "BLOCKED_HISTORICAL_REFERENCE_PROVENANCE_NOT_ESTABLISHED_RECEIVED_2026_REBUILD_CANDIDATE",
+    "candidate_C02": "received executable now byte-pinned and classified as recent rebuild candidate",
+    "candidate_C10": "received project build metadata registered"
+  },
+  "validation": {
+    "workflow": "ANIMO-PREP02R-I5 native Intel artifact intake validation",
+    "run_id": 34387736285,
+    "tested_head_before_status_closeout": "74e318df2e7eef9cbf2292478dc0388e54bc07fa",
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS_NO_HISTORICAL_REFERENCE_NO_NATIVE_EXECUTION_NO_B2_NO_PRODUCTION_MIGRATION"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": true,
+    "qualified": true,
+    "workunit_complete": true
+  },
+  "deliverables": [
+    "docs/prep02r/NATIVE_INTEL_ARTIFACT_INTAKE_5.md",
+    "integration/animo-prep/PREP02R_INTAKE5_PROJECT_RECEIPT.json",
+    "integration/animo-prep/PREP02R_INTAKE5_EXE_RECEIPT.json",
+    "integration/animo-prep/PREP02R_INTAKE5_LINEAGE_EVIDENCE.json",
+    "integration/animo-prep/PREP02R_STATUS.json",
+    "integration/animo-prep/PREP02R_REFERENCE_CANDIDATES.json",
+    "tools/prep02r/validate_native_intel_artifact_intake_5.py",
+    ".github/workflows/animo-prep02r-native-intel-artifact-intake-5.yml"
+  ],
+  "explicit_non_admissions": [
+    "The received animo41.exe is not an original historical revision-53 reference",
+    "Static Version.inc compiler metadata is not treated as actual build provenance",
+    "The received vfproj does not by itself prove original historical project provenance",
+    "No native execution is admitted by this intake",
+    "No B2 historical reference is admitted",
+    "No corrected-legacy behaviour is admitted",
+    "No production migration is admitted"
   ],
   "hard_guard": "A received executable or project file is not historical reference evidence until provenance and lineage are independently qualified."
 }
