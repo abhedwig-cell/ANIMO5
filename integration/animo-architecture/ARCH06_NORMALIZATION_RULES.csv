@@ -1,0 +1,24 @@
+rule_id,applies_to,rule,fail_closed_reason
+NR-UNKNOWN-FIELD,manifest,reject fields absent from ARCH06_MANIFEST_FIELDS,unknown configuration semantics cannot participate silently
+NR-REQUIRED,manifest,all required fields must be present,defaults would make identity depend on parser behaviour
+NR-NULL-CONDITIONAL,conditional_fields,inactive conditional fields normalize to null and active conditional fields must be non-null,omission versus empty versus inherited default would be ambiguous
+NR-BOOL,boolean,serialize only literal true or false,language-specific boolean spellings are not canonical
+NR-INT,integer,base-10 ASCII with no plus sign and no leading zeros except zero,numeric text variants must hash identically only after normalization
+NR-ENUM,enum,serialize exact lower-case registered token,case aliases are forbidden after normalization
+NR-STRING,string,UTF-8 NFC nonempty with JSON escaping for canonical record value,text normalization must be deterministic
+NR-NULL,nullable,null serializes as JSON null,null must differ from empty string
+NR-ORDER,manifest,canonical records sorted ascending by field_id,input order must not affect identity
+NR-RECORD,manifest,serialize each selected field as field_id=canonical_json_scalar followed by LF,unambiguous domain input required
+NR-DOMAIN,identity,prepend ANIMO5_ARCH06 identity name version and LF before selected records,different identity domains must not collide semantically
+NR-HASH,identity,SHA-256 over exact UTF-8 canonical bytes and render as sha256 colon lowercase hex,identity algorithm must be explicit
+NR-NO-FLOAT,manifest,no floating-point scientific values allowed in ARCH06 manifest,ARCH06 must not invent scientific numeric serialization or tolerances
+NR-PARAMETER-REFERENCE,parameters,parameter values represented only by parameter_set_id plus schema id,parameter semantics and numeric formatting belong to separate qualified contract
+NR-FORCING-REFERENCE,forcing,interval forcing values excluded; static forcing and management sources bound by schema and binding ids,trial-specific values belong to immutable ARCH05 frames
+NR-DIAGNOSTIC-SEPARATION,diagnostics,diagnostic fields excluded from feature_set physical_layout exchange_binding and configuration identities,observer settings must not alter physical behaviour identity
+NR-TRIAL-SEPARATION,transaction,interval_id trial_id t0 t1 snapshot ids and frame ids are forbidden in static manifest,trial generation is not model configuration
+NR-GHG,qualification,ghg_enabled true requires ghg_admission_id and ghg_schema_id; false requires both null,configuration switch alone cannot admit blocked feature
+NR-MACROPORE,qualification,macropore_enabled true requires macropore_admission_id and macropore_schema_id and detailed hydrology; false requires admission and schema null,TCD-025 feature cannot be enabled accidentally
+NR-CROP-ANIMO,crop,crop_mode animo requires crop_state_schema_id and requires crop exchange/external producer fields null,one persistent crop owner only
+NR-CROP-EXTERNAL,crop,crop_mode external requires crop_exchange_schema_id crop_external_schema_id and crop_producer_contract_id and requires crop_state_schema_id null,no duplicate crop ownership
+NR-CROP-NONE,crop,crop_mode none requires all crop schema and producer conditional fields null,disabled crop must leave no hidden coupling binding
+NR-DORMANT-SURFACE,feature,surface_stable_dom_enabled must be false,parser-visible dormant state is not supported runtime feature
