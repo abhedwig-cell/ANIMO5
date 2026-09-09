@@ -27,4 +27,4 @@ jobs:
           tools/io02_general_contract.py
           tools/qualify_io02_general.py
           tests/io/test_io02_general_contract.py
-      - run: python -m unittest tests.io.test_io02_general_contract -v
+      - run: python -m unittest discover -s tests/io -p 'test_io02_general_contract.py' -v
