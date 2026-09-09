@@ -10,6 +10,8 @@ on:
       - 'integration/animo-prep/PREP02R_INTAKE5_EXE_RECEIPT.json'
       - 'integration/animo-prep/PREP02R_INTAKE5_LINEAGE_EVIDENCE.json'
       - 'integration/animo-prep/PREP02R_NATIVE_INTEL_ARTIFACT_INTAKE_5_STATUS.json'
+      - 'integration/animo-prep/PREP02R_STATUS.json'
+      - 'integration/animo-prep/PREP02R_REFERENCE_CANDIDATES.json'
       - 'tools/prep02r/validate_native_intel_artifact_intake_5.py'
       - '.github/workflows/animo-prep02r-native-intel-artifact-intake-5.yml'
   workflow_dispatch:
@@ -31,5 +33,7 @@ jobs:
           python -m json.tool integration/animo-prep/PREP02R_INTAKE5_EXE_RECEIPT.json >/dev/null
           python -m json.tool integration/animo-prep/PREP02R_INTAKE5_LINEAGE_EVIDENCE.json >/dev/null
           python -m json.tool integration/animo-prep/PREP02R_NATIVE_INTEL_ARTIFACT_INTAKE_5_STATUS.json >/dev/null
+          python -m json.tool integration/animo-prep/PREP02R_STATUS.json >/dev/null
+          python -m json.tool integration/animo-prep/PREP02R_REFERENCE_CANDIDATES.json >/dev/null
       - name: Validate receipt, lineage and admission guards
         run: python tools/prep02r/validate_native_intel_artifact_intake_5.py
