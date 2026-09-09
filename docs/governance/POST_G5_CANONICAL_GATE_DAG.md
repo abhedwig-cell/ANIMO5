@@ -82,7 +82,7 @@ The actual external request has not been sent, so a failed/exhausted acquisition
 
 `G7 = atomic process-scoped B3 qualification`
 
-G7 consumes the B3Q01 class contract, B3I01 canonical identity/routing, and evidence specific to one atomic discrepancy or process scope. Later incremental intake such as B3I02/B3I03 may reserve or route findings but cannot create admission by itself.
+G7 consumes the B3Q01 class contract, canonical TCD identity/routing, and evidence specific to one atomic discrepancy or process scope. Incremental intake such as B3I02/B3I03 and append-only register follow-ups may create or extend canonical identity, but neither identity nor reservation creates admission.
 
 G7 has two distinct concepts:
 
@@ -135,7 +135,11 @@ Current state: `CONCRETE_CANDIDATE_QUALIFIED_ADMISSION_BLOCKED`.
 
 MASSQ01 proves an observer-only B1 projection can be attached without physical-output interference across its qualified case set. MASSQ02 then reconciles the current residual evidence set without correcting residuals: 23 nonzero records are classified, 15 are new causal findings and zero remain unexplained. It also qualifies a candidate typed-event projection with explicit source/destination owners and no legacy balance accumulator as authoritative physical state or event owner.
 
-The MASSQ02 candidate is not a canonical runtime event journal. B3I03 conservatively routes the 15 new causal findings and reserves only `TCD-042`; it performs no register append and no admission. Existing mass-relevant TCDs, nested soil/crop closure, active macropore/GHG feature closure and whole-system elemental-C completeness remain open.
+The MASSQ02 candidate is not a canonical runtime event journal. B3I03 conservatively routes the 15 new causal findings and reserves one new parent, `TCD-042`. A separate append-only B3I03 follow-up subsequently appends `TCD-042` to the canonical discrepancy register, moving the tail from `TCD-041` to `TCD-042` without changing prior rows or creating admission. The canonical identity is now established, but its atomic semantics remain unresolved.
+
+`TCD-042` covers the upper-boundary precipitation/deposition solute transaction at zero top throughflow. Its reservation explicitly requires atomization among an accounting-boundary timing interpretation, a persistent surface/top-solute ownership interpretation, and only conditionally a local algebraic interpretation. The dedicated `ANIMO-UBQ01` workunit is now in progress for that atomization and owner-semantics qualification. Until UBQ01 closes, TCD-042 is canonical but not admission-ready.
+
+Existing mass-relevant TCDs, nested soil/crop closure, active macropore/GHG feature closure, canonical runtime-event journaling and whole-system elemental-C completeness remain open.
 
 GMASS therefore requires canonical active state owners and admitted transfer/process identities. It must include active feature control volumes. GHG and macropore ledger gaps cannot be hidden by choosing a smaller observer volume while still claiming those features.
 
@@ -188,11 +192,18 @@ Current state: `NOT_ADMITTED`.
 
 ## Canonical discrepancy routing
 
-The B3I01 canonical append surface still ends at `TCD-041` at this RG03 refresh. Appends were reconciled as append-only identity/routing updates. They create no scientific admission.
+The canonical append surface is now the append-only sequence ending on `work/animo-b3i03-canonical-register-append@814ea660d367494432beb63ea78298d1f6cd73d7`, with register tail `TCD-042`.
 
-B3I03 is later incremental causal intake over MASSQ02. It reserves `TCD-042` fail-closed for the upper-boundary precipitation/deposition solute transaction at zero top throughflow and explicitly requires atomization before admission. B3I03 performs no canonical append, so the authoritative register tail remains `TCD-041`. RG03 tracks the TCD-042 reservation separately and does not insert it into the canonical queue prematurely.
+The B3I01 append authority remains the exact authority for the pre-existing register through `TCD-041`. The B3I03 append follow-up adds only the previously fail-closed reserved `TCD-042`. Its validation states:
 
-RG03 therefore routes TCD-028 through TCD-041 from the canonical register, even where the initial B3I01 closeout only reserved TCD-028 through TCD-037. Later state and runtime supplements are treated as additional canonical identity evidence, not as retrospective strengthening of the original findings.
+- tail before: `TCD-041`;
+- tail after: `TCD-042`;
+- prior logical rows unchanged;
+- identifiers contiguous through `TCD-042`;
+- register presence is not B3 admission;
+- no correction, B3 baseline or production migration admitted.
+
+RG03 therefore routes TCD-028 through TCD-042 from the canonical register. TCD-042 is included in the canonical queue with a fail-closed `NOT_READY` state until UBQ01 resolves atomicity and boundary/owner semantics.
 
 ## Fail-closed invariants
 
@@ -203,6 +214,7 @@ RG03 requires all of the following:
 - B1 and synthetic evidence cannot be relabelled B2.
 - B3 readiness is not B3 admission.
 - a fail-closed TCD reservation is not a canonical register append and not an admission.
+- a canonical TCD append establishes identity only and does not create scientific admission.
 - canonical STATE, TIME, MASS and EX remain separate gates.
 - Class C state gaps cannot be repaired as reporting-only fixes.
 - Class E numerical policy cannot be selected from smaller residual alone.
