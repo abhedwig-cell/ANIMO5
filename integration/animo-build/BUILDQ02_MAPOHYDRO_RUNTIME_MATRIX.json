@@ -1,0 +1,146 @@
+{
+  "work_unit": "ANIMO-BUILDQ02",
+  "target": "TCD-011 local storage duration with MAPOHYDRO runtime-hazard follow-up",
+  "evidence_class": "B1_CONTROLLED_DIAGNOSTIC_NOT_HISTORICAL_REFERENCE",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "compiler": "GNU Fortran 14.2.0",
+  "base_semantics": [
+    "-ffree-form",
+    "-ffree-line-length-none",
+    "-std=legacy",
+    "-fdefault-real-8",
+    "-fdefault-double-8"
+  ],
+  "diagnostic_variant_policy": {
+    "frozen_source_modified": false,
+    "temporary_copy_only": true,
+    "production_correction": false,
+    "candidate_context_change": "Task 4 recomputes LnBoMpMx as Max(LnBoMp(1),LnBoMp(2)) instead of relying on retained procedure-local lifetime",
+    "candidate_bounds_changes": [
+      "test LnBoMp(Dn)>=1 before accessing FrHeWeMpWl(Dn,LnBoMp(Dn))",
+      "test Ln>=1 before accessing FrHeWeMpWl(2,Ln) in the domain-2 top search",
+      "test K>=KBegMpReko before evaluating the Task-2 backward scan and treat Ln=0 as having no FlMpInEf coordinate",
+      "split Ln/=0 and Ln=0 CoStat branches so FlMpInEf is never indexed at zero"
+    ]
+  },
+  "storage_duration_four_case_probe": {
+    "cases": 4,
+    "expected_task4_reset": "temporary FlMpOuSoTo additions are exactly removed from Flid",
+    "original_static_O0": {
+      "result": "PASS_ALL_ACTIVE_CASES",
+      "case1_flid": [1.0, 1.0],
+      "case2_flid": [1.0, 1.0],
+      "case3_flid": [1.0, 1.0]
+    },
+    "original_automatic_O0": {
+      "result": "DIVERGES",
+      "case1_flid": [1.3, 1.12],
+      "case2_flid": [1.0, 1.0],
+      "case3_flid": [1.0, 1.0],
+      "note": "some cases happen to recover; this is not semantic stability"
+    },
+    "original_automatic_O2": {
+      "result": "DIVERGES",
+      "case1_flid": [1.3, 1.12],
+      "case2_flid": [1.14, 1.0],
+      "case3_flid": [1.04, 1.06]
+    },
+    "explicit_context_automatic_O0": {
+      "result": "PASS_ALL_ACTIVE_CASES",
+      "case1_flid": [1.0, 1.0],
+      "case2_flid": [1.0, 1.0],
+      "case3_flid": [1.0, 1.0]
+    },
+    "explicit_context_automatic_O2": {
+      "result": "PASS_ALL_ACTIVE_CASES",
+      "case1_flid": [1.0, 1.0],
+      "case2_flid": [1.0, 1.0],
+      "case3_flid": [1.0, 1.0]
+    }
+  },
+  "task1_lower_bound_probe": {
+    "original_static_with_bounds_check": {
+      "case1": "PASS",
+      "case2": "FAIL_MAPOHYDRO_LINE_78_INDEX0_BELOW_LOWER_BOUND_1",
+      "case3": "FAIL_MAPOHYDRO_LINE_78_INDEX0_BELOW_LOWER_BOUND_1",
+      "case4": "FAIL_MAPOHYDRO_LINE_78_INDEX0_BELOW_LOWER_BOUND_1"
+    },
+    "structurally_ordered_candidate_with_bounds_check": {
+      "case1": "PASS",
+      "case2": "PASS",
+      "case3": "PASS",
+      "case4": "PASS"
+    }
+  },
+  "task2_modflux_coupled_probe": {
+    "call_order": ["MAPOHYDRO Task 1", "MODFLUX", "MAPOHYDRO Task 2"],
+    "flpn": 1,
+    "nl": 2,
+    "modflux_generated_sqnu": [1, 0, 2],
+    "zero_macropore_outgoing_flux_case": {
+      "original_static_bounds": "FAIL_MAPOHYDRO_LINE_250_FLMPINEF_INDEX0",
+      "original_automatic_bounds": "FAIL_MAPOHYDRO_LINE_250_FLMPINEF_INDEX0",
+      "safe_candidate_automatic_bounds": "PASS",
+      "safe_candidate_KBegMpReko": 2,
+      "safe_candidate_KEndMpReko": 1
+    },
+    "outgoing_flux_in_both_layers_case": {
+      "original_static_bounds": "FAIL_MAPOHYDRO_LINE_264_FLMPINEF_INDEX0",
+      "safe_candidate_automatic_bounds": "PASS",
+      "safe_candidate_KBegMpReko": 0,
+      "safe_candidate_KEndMpReko": 2
+    },
+    "interpretation": "the Task-2 index-zero hazard is reachable through the actual Hydro_detailed seam in which Modflux constructs Sqnu before MAPOHYDRO Task 2; it is not merely a hand-written impossible permutation"
+  },
+  "in_domain_equivalence_matrix": {
+    "cases": 64,
+    "tasks_per_active_case": [1, 2, 3, 4],
+    "flpn": 0,
+    "purpose": "compare only states where the original source remains inside declared array bounds",
+    "captured_surface": [
+      "LnBoMp",
+      "LnTpMpSr",
+      "Nd",
+      "Badev",
+      "Flid",
+      "Flou",
+      "MpWfps",
+      "FlMpOuDrTo",
+      "Pr",
+      "FlMpHlp",
+      "SrWaMp",
+      "CoStat",
+      "legacy warning text"
+    ],
+    "output_lines": 256,
+    "normalized_or_filtered": false,
+    "sha256": "16dc28adce374a956e77dc17420d814b64bf112ae3ff5524afe2422cb29433e3",
+    "variants_with_exact_same_output_hash": [
+      "original -O0 -fno-automatic",
+      "original -O2 -fno-automatic",
+      "diagnostic explicit-context and ordered-bounds variant -O0 -fautomatic",
+      "diagnostic explicit-context and ordered-bounds variant -O2 -fautomatic",
+      "original -O0 -fno-automatic -fcheck=bounds",
+      "diagnostic variant -O0 -fautomatic -fcheck=bounds",
+      "diagnostic variant -O0 -fautomatic -finit-real=snan -fcheck=bounds",
+      "diagnostic variant -O2 -fautomatic -finit-real=snan -fcheck=bounds"
+    ],
+    "byte_identical_across_all_listed_variants": true
+  },
+  "qualified_findings": {
+    "LnBoMpMx_owner": "DERIVABLE_MAPOHYDRO_TIMESTEP_TASK_CONTEXT_NOT_PERSISTENT_MODEL_STATE",
+    "explicit_reconstruction_candidate": "DIAGNOSTIC_EQUIVALENCE_SUPPORTED_IN_QUALIFIED_MATRIX",
+    "blanket_static_storage": "NOT_SEMANTICALLY_QUALIFIED_AS_PRODUCTION_SOLUTION",
+    "task1_bounds_order": "SOURCE_AND_GNU_BOUNDS_CHECK_CONFIRMED_RUNTIME_HAZARD",
+    "task2_index0_bounds_order": "SOURCE_MODFLUX_COUPLED_AND_GNU_BOUNDS_CHECK_CONFIRMED_RUNTIME_HAZARD",
+    "historical_intel_behavior": "UNKNOWN",
+    "new_scientific_tcd": false
+  },
+  "admission": {
+    "tcd011_closed": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false,
+    "b3_scientific_admission": false
+  }
+}
