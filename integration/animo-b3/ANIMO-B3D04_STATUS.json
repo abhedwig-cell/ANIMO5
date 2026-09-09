@@ -20,11 +20,12 @@
   "target_tcd": "TCD-024",
   "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
   "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
-  "state": "IN_PROGRESS_PERSISTED_ADMISSION_RECORD_VALIDATION_PENDING",
-  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "state": "QUALIFIED_TCD024_ATOMIC_B3_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_NO_PRODUCTION_MIGRATION",
+  "decision": "ADMIT_TCD024_ATOMIC_CLASS_B_SCIENTIFIC_INDEX_CORRECTION_WITH_HISTORICAL_UNCERTAINTY",
   "intended_final_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "admission": {
     "scientific_b3_admission_intended": true,
+    "scientific_b3_admission_qualified": true,
     "historical_behaviour_status": "UNKNOWN",
     "historical_prevalence": "UNKNOWN",
     "historical_fidelity_claimed": false,
@@ -48,19 +49,20 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "validation": {
     "validator": "tools/validate_b3d04_tcd024_admission.py",
     "workflow": ".github/workflows/animo-b3d04-tcd024-admission.yml",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_job_id": null,
-    "github_actions_conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "cd5c87bd4e6f7fbc87502e576b9a505483e86577",
+    "github_actions_run_id": 34397087944,
+    "github_actions_job_id": 102619359165,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS_B3D04_TCD024_ADMISSION",
+    "scope_guard": "PASS_B3D04_ADMISSION_SCOPE_GUARD",
+    "closeout_note": "Run 34397087944 validates the complete persisted B3D04 package before the status closeout commit; the closeout commit must pass the same workflow independently."
   },
   "deliverables": [
     "integration/animo-b3/TCD024_B3_ADMISSION_CLOSEOUT.json",
@@ -68,5 +70,13 @@
     "docs/b3/TCD024_B3_ADMISSION_CLOSEOUT.md",
     "tools/validate_b3d04_tcd024_admission.py",
     ".github/workflows/animo-b3d04-tcd024-admission.yml"
-  ]
+  ],
+  "project_effect": {
+    "tcd024_atomic_b3_scientific_admission": true,
+    "tcd019_remains_separate": true,
+    "b3_whole_model_baseline_complete": false,
+    "historical_uncertainty_propagates_forward": true,
+    "production_migration_still_closed": true,
+    "next_required_step": "integrate the admitted TCD-024 disposition into the central admission inventory without authorizing production code changes"
+  }
 }
