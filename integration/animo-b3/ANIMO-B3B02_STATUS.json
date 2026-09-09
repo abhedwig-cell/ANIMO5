@@ -7,12 +7,23 @@
   "target": "TCD-042-B1",
   "parent_tcd": "TCD-042",
   "class": "B_LOCAL_ALGEBRA_ZERO_FLOW_LIMIT",
-  "trigger": "Flpn = 0 AND Flux = 0",
-  "status": "QUALIFIED_TCD042_B1_ATOMIC_CLASS_B_READINESS_ROUTE_AND_REVIEW_FAIL_CLOSED",
+  "requested_trigger": "Flpn = 0 AND Flux = 0",
+  "status": "PARTIAL_TCD042_B1_CLASS_B_READINESS_HETOP_ZERO_DOMAIN_UNRESOLVED_ROUTE_AND_REVIEW_FAIL_CLOSED",
+  "supersedes_status": "QUALIFIED_TCD042_B1_ATOMIC_CLASS_B_READINESS_ROUTE_AND_REVIEW_FAIL_CLOSED",
+  "supersession_reason": "closeout source recheck found that frozen revision-53 input validation accepts Hetop=0, while the proposed zero-flow limit contains division by Hetop",
   "base": {
     "branch": "work/animo-b3i05-ubq02-numerical-seam-intake",
     "head": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
     "reason": "latest qualified canonical TCD-042 child routing"
+  },
+  "canonical_routing": {
+    "parent": "TCD-042",
+    "children": [
+      "TCD-042-B1",
+      "TCD-042-E1"
+    ],
+    "tcd_043_reserved": false,
+    "parent_admitted": false
   },
   "frozen_b0": {
     "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
@@ -24,7 +35,11 @@
     "UBQ01": {
       "branch": "work/animo-ubq01-tcd042-upper-boundary-transaction",
       "head": "6895b67799f26888025eced7188e7190b2a0d07d",
-      "role": "completed exact-zero B1/scientific evidence, not B2"
+      "role": "exact-zero source, analytical, synthetic and natural B1 evidence; not B2",
+      "integrated_workflow_run": 34365508588,
+      "integrated_workflow_conclusion": "success",
+      "validator": "PASS",
+      "scope_guard": "PASS"
     },
     "B3Q01": {
       "branch": "work/animo-b3q01-scientific-admission-framework",
@@ -39,6 +54,11 @@
       "head": "842f72300fd03ede0b9024537a7ee6126722a121",
       "direct_tcd042_oracle_registered": false,
       "treatment": "no direct SYNQ01 TCD-042 evidence claimed"
+    },
+    "B3I05": {
+      "branch": "work/animo-b3i05-ubq02-numerical-seam-intake",
+      "head": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+      "status": "QUALIFIED_TCD042_CANONICAL_CHILD_ROUTING_NO_NEW_TCD_NO_ADMISSIONS"
     }
   },
   "legacy_algebra": {
@@ -60,7 +80,8 @@
       "B2": "0"
     }
   },
-  "unique_exact_zero_limit": {
+  "positive_Hetop_exact_zero_limit": {
+    "domain": "Hetop > 0",
     "A1": "1",
     "A2": "St/Hetop",
     "B1": "1",
@@ -68,17 +89,34 @@
     "C1": "C0 + Load*St/Hetop",
     "Cavg": "C0 + Load*St/(2*Hetop)",
     "conservation": "Hetop*C1 = Hetop*C0 + St*Load",
-    "same_step_export": "St*Flux*Cavg = 0 exactly"
+    "same_step_export": "St*Flux*Cavg = 0 exactly",
+    "classification": "UNIQUE_MATHEMATICAL_LIMIT_FOR_POSITIVE_HETOP"
+  },
+  "domain_precondition": {
+    "required_for_candidate_formula": "Hetop > 0",
+    "legacy_input_accepts_Hetop_zero": true,
+    "input_source": "input1.for:1826-1829",
+    "input_lower_bound": 0.0,
+    "input_upper_bound": 0.2,
+    "checkrea_lower_bound_semantics": "rejects only Value.Lt.Low at input1.for:4068-4074, so equality at zero is accepted",
+    "zero_Hetop_equation_at_Flux_zero": "0 = Load",
+    "zero_Hetop_nonzero_load": "INCONSISTENT_FINITE_CONCENTRATION_STORAGE_BALANCE",
+    "zero_Hetop_zero_load": "CONCENTRATION_EVOLUTION_UNDETERMINED_BY_RECOVERED_ODE",
+    "candidate_division_by_zero_at_Hetop_zero": true,
+    "full_requested_trigger_domain_resolved": false,
+    "treatment": "FAIL_CLOSED_UNRESOLVED"
   },
   "atomic_candidate": {
-    "semantic_change": "apply unique zero-flow coefficients only when Flpn=0 AND Flux=0",
+    "semantic_change_positive_Hetop_subdomain": "apply the unique zero-flow coefficients only for the scientifically qualified positive-Hetop exact-zero case",
+    "full_trigger_candidate_ready": false,
     "production_source_patch": false,
     "threshold_change": false,
     "tolerance_added": false,
     "finite_positive_policy_change": false,
-    "general_upper_boundary_redesign": false
+    "general_upper_boundary_redesign": false,
+    "silent_Hetop_guard_authorized": false
   },
-  "affected_surfaces": {
+  "affected_surfaces_positive_Hetop": {
     "direct": [
       "loaded upper-reservoir accepted end concentration Rs*top",
       "loaded upper-reservoir step-average concentration Av*top"
@@ -89,12 +127,12 @@
     ],
     "same_step_flux_change": false
   },
-  "expected_unchanged_surfaces": [
+  "expected_unchanged_surfaces_positive_Hetop": [
     "records before first exact-zero non-zero-load activation",
     "hydrology and forcing",
     "Load, St, Hetop and beginning C0 at activation",
     "same-step reservoir solute export at Flux=0",
-    "exact-zero zero-load behavior",
+    "exact-zero zero-load behavior in the exercised positive-Hetop control",
     "ordinary positive-flow behavior",
     "all finite-positive 0<Flux<1.0d-8 behavior in this workunit",
     "Flpn!=0 behavior",
@@ -109,11 +147,8 @@
       "TITO": 1915,
       "Flpn": 0,
       "Flux": 0.0,
-      "Pr_m_per_d": 0.0002000407,
       "St_d": 1.0,
       "Hetop_m": 0.02,
-      "Coprnhyn_kg_per_m3": 0.002534,
-      "Coprniyn_kg_per_m3": 0.00084,
       "NH4_Load_kg_per_m2_d": 5.069031338e-7,
       "NO3_Load_kg_per_m2_d": 1.68034188e-7,
       "booked_mineral_N_kg_per_ha_d": 0.006749373218,
@@ -126,7 +161,14 @@
       "NO3_average_increment_kg_per_m3": 4.2008547e-6,
       "formula_prediction": "BITWISE_MATCH"
     },
-    "coverage_limit": "natural execution directly exercises NH4 and NO3 only; source-bound algebra is species-generic but all-species natural execution is not claimed"
+    "coverage_limit": "natural execution directly exercises NH4 and NO3 at Hetop=0.02; it does not cover Hetop=0"
+  },
+  "testbank_domain_observation": {
+    "observed_Hetop_m": [
+      0.02
+    ],
+    "zero_Hetop_case_observed": false,
+    "interpretation": "existing UBQ01/testbank evidence supports positive-Hetop readiness only and cannot resolve zero-thickness semantics"
   },
   "negative_controls": {
     "pre_activation_through_TITO_1914": "BITWISE_IDENTICAL",
@@ -141,19 +183,22 @@
   },
   "readiness_gates": {
     "atomicity": "PASS",
-    "exact_trigger": "PASS",
+    "exact_trigger_identified": "PASS",
     "legacy_expression": "PASS",
-    "unique_limit": "PASS",
-    "conservation_identity": "PASS",
-    "atomic_correction_contract": "PASS",
-    "affected_surface_mapping": "PASS",
-    "expected_unchanged_surface_mapping": "PASS",
-    "natural_B1_activation": "PASS_MINERAL_N_SCOPE",
+    "existing_owner": "PASS",
+    "unique_limit": "PASS_FOR_HETOP_GT_0_ONLY",
+    "conservation_identity": "PASS_FOR_HETOP_GT_0_ONLY",
+    "atomic_correction_contract": "PARTIAL_POSITIVE_HETOP_SUBDOMAIN_ONLY",
+    "affected_surface_mapping": "PASS_FOR_HETOP_GT_0",
+    "expected_unchanged_surface_mapping": "PASS_FOR_HETOP_GT_0",
+    "natural_B1_activation": "PASS_MINERAL_N_HETOP_0_02_SCOPE",
     "negative_controls": "PASS",
-    "local_non_interference": "PASS_EXERCISED_MINERAL_N_SCOPE",
+    "local_non_interference": "PASS_EXERCISED_MINERAL_N_POSITIVE_HETOP_SCOPE",
     "threshold_unchanged": "PASS",
     "tolerance_absent": "PASS",
     "finite_positive_seam_excluded": "PASS",
+    "legacy_input_domain_coverage": "FAIL_CLOSED_HETOP_ZERO_ACCEPTED_BUT_UNQUALIFIED",
+    "zero_thickness_semantics": "FAIL_CLOSED_UNRESOLVED",
     "historical_B2_route": "FAIL_CLOSED_UNAVAILABLE",
     "historical_uncertainty_route": "FAIL_CLOSED_NOT_ELIGIBLE",
     "independent_second_line_review": "FAIL_CLOSED_PENDING"
@@ -171,28 +216,43 @@
   "independent_review": {
     "performed": false,
     "reviewer": null,
-    "decision": "FAIL_CLOSED_PENDING"
+    "decision": "FAIL_CLOSED_PENDING",
+    "additional_review_requirement": "review must explicitly assess Hetop=0 parser admissibility and semantic treatment"
   },
+  "residual_uncertainty": [
+    "revision-53 parser accepts Hetop=0",
+    "the recovered reservoir ODE does not provide a finite exact-zero concentration update at Hetop=0",
+    "no authoritative higher-level contract has yet been qualified that excludes Hetop=0 despite parser acceptance",
+    "no zero-thickness semantic policy is admitted",
+    "historical B2 remains unavailable",
+    "independent second-line review remains pending"
+  ],
   "scope_exclusions": {
     "TCD_042_E1_finite_positive": true,
     "threshold_change": true,
     "tolerance": true,
     "upper_boundary_redesign": true,
     "production_patch": true,
+    "silent_Hetop_guard": true,
     "corrected_legacy_admission": true,
     "parent_TCD_042_admission": true,
-    "B2_claim_from_UBQ01_or_UBQ02": true
+    "B2_claim_from_UBQ01_or_UBQ02": true,
+    "new_top_level_TCD_reservation": true
   },
   "admission": {
-    "readiness_qualified": true,
+    "readiness_qualified_for_full_requested_trigger": false,
+    "positive_Hetop_subdomain_readiness_qualified": true,
     "corrected_legacy_admitted": false,
     "parent_tcd_admitted": false,
     "production_migration_admitted": false,
-    "reason": "B2/GOV02 route and independent review remain fail closed"
+    "reason": "full trigger remains fail closed on accepted Hetop=0 domain; B2/GOV02 route and independent review also remain fail closed"
   },
   "artifacts": {
-    "readiness_dossier": "docs/b3/TCD042_B1_CLASS_B_ADMISSION_READINESS.md",
+    "initial_readiness_dossier": "docs/b3/TCD042_B1_CLASS_B_ADMISSION_READINESS.md",
+    "authoritative_domain_refined_dossier": "docs/b3/TCD042_B1_CLASS_B_ADMISSION_READINESS_V2.md",
+    "expected_difference": "integration/animo-b3/TCD042_B1_EXPECTED_DIFFERENCE.json",
+    "scope_guard": "integration/animo-b3/ANIMO-B3B02_SCOPE_GUARD.json",
     "status": "integration/animo-b3/ANIMO-B3B02_STATUS.json"
   },
-  "decision": "QUALIFIED_TCD042_B1_ATOMIC_CLASS_B_READINESS_ROUTE_AND_REVIEW_FAIL_CLOSED"
+  "decision": "PARTIAL_TCD042_B1_CLASS_B_READINESS_HETOP_ZERO_DOMAIN_UNRESOLVED_ROUTE_AND_REVIEW_FAIL_CLOSED"
 }
