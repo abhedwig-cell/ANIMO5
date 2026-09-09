@@ -33,9 +33,15 @@ def validate_cross_file(carrier: dict, base_validator: Draft202012Validator, ato
     atoms = {item["atom_id"]: item for item in atomization["atoms"]}
     atom_id = carrier["atom_id"]
     parent = carrier["parent_tcd_id"]
+    routing = carrier["canonical_routing"]
+
     require(atomization["parent_tcd"] == parent, "carrier parent does not match canonical atomization parent")
-    require(atom_id in atoms, "carrier atom is not canonically routed")
-    require(atoms[atom_id]["parent_tcd"] == parent, "atom parent mismatch")
+    require(atom_id in atoms, "carrier atom is not canonically routed under the cited parent")
+    atom = atoms[atom_id]
+    require(atom["class"].startswith(carrier["qualification_class"] + "_"), "carrier qualification class does not match canonical child class")
+    require(routing["work_unit"] == "ANIMO-B3I05", "carrier cites unexpected canonical routing workunit")
+    require(routing["status_ref"] == "integration/animo-b3/ANIMO-B3I05_STATUS.json", "carrier B3I05 status ref changed")
+    require(routing["atomization_ref"] == "integration/animo-b3/B3I05_TCD042_ATOMIZATION.json", "carrier atomization ref changed")
     require(atomization["allocation_decision"]["child_atom_keys_are_top_level_register_rows"] is False, "child atom promoted to top-level TCD")
     require(atomization["allocation_decision"]["tcd_043_reserved"] is False, "TCD-043 unexpectedly reserved")
 
