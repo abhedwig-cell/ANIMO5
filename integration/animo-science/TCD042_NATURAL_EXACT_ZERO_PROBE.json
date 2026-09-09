@@ -1,0 +1,115 @@
+{
+  "work_unit": "ANIMO-UBQ01",
+  "target": "TCD-042",
+  "evidence_class": "B0_HASH_PINNED_DIAGNOSTIC_EXECUTION_NOT_B2",
+  "scope": "EXACT_ZERO_THROUGHFLOW_MINERAL_N_ATOM_NATURAL_ISOLATED_PROBE",
+  "frozen_identity": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "build": {
+    "compiler": "GNU Fortran 14.2.0",
+    "baseline_executable_sha256": "3b3cfbe8d16ba273593bfa415f6c02242bfbf9fab226ab7ab59c522dc4388e2f",
+    "isolated_tito1915_executable_sha256": "50ee6ebd8f34841c38fa352490b39ff76d140374b4fdc626835216de744e5a33",
+    "compile_contract": "PREP01 diagnostic flags plus deterministic link; qualification-only unrounded binary trace",
+    "production_source_modified": false,
+    "candidate_patch_scope": "qualification copy only; exact Flux==0 zero-limit coefficients activated only at TITO=1915 to isolate the natural witness"
+  },
+  "case": {
+    "name": "RuurloGrass",
+    "records": 1947,
+    "baseline_trace_sha256": "7cc422cd6b80b0ecec386ccb4bc7cee7c92ef3481ea963fbd86538dde786e732",
+    "isolated_probe_trace_sha256": "69c49b858efe04ceb098dd9c89d25fa8239a0e08f006424cbf5c155cbbeef8f6",
+    "records_before_first_difference": 1914,
+    "first_difference_record_index_zero_based": 1914,
+    "first_difference_TITO": 1915.0,
+    "all_prior_trace_records_bitwise_equal": true
+  },
+  "predeclared_direct_surfaces": [
+    "Rsconhtop",
+    "Rsconitop",
+    "Avconhtop",
+    "Avconitop"
+  ],
+  "first_difference": {
+    "actual_different_coordinates": [
+      "Rsconhtop",
+      "Rsconitop",
+      "Avconhtop",
+      "Avconitop"
+    ],
+    "only_predeclared_direct_surfaces_differ": true,
+    "forcing_and_hydrology_trace_coordinates_equal": true,
+    "preexisting_top_state_equal": true,
+    "layer1_state_equal_at_immediate_post_UBoundconc_trace": true,
+    "baseline_values": {
+      "Rsconhtop": 0.002706255054251122,
+      "Rsconitop": 0.0008971087494338374,
+      "Avconhtop": 0.002706255054251122,
+      "Avconitop": 0.0008971087494338374
+    },
+    "corrected_values": {
+      "Rsconhtop": 0.002731600210941122,
+      "Rsconitop": 0.0009055104588338375,
+      "Avconhtop": 0.002718927632596122,
+      "Avconitop": 0.0009013096041338375
+    },
+    "binary64_formula_prediction": {
+      "Rsconhtop": 0.002731600210941122,
+      "Rsconitop": 0.0009055104588338375,
+      "Avconhtop": 0.002718927632596122,
+      "Avconitop": 0.0009013096041338375
+    },
+    "formula_prediction_bitwise_equal": {
+      "Rsconhtop": true,
+      "Rsconitop": true,
+      "Avconhtop": true,
+      "Avconitop": true
+    },
+    "all_formula_predictions_bitwise_equal": true,
+    "NH4_load_kg_m2_d_binary64": 5.069031338e-07,
+    "NO3_load_kg_m2_d_binary64": 1.6803418800000003e-07
+  },
+  "causal_descendant_onset": {
+    "TITO_1916_different_coordinates": [
+      "Conhtop",
+      "Conitop",
+      "Rsconhtop",
+      "Rsconitop",
+      "Avconhtop",
+      "Avconitop"
+    ],
+    "TITO_1917_different_coordinates": [
+      "Conhtop",
+      "Conitop",
+      "Rsconhtop",
+      "Rsconitop",
+      "Avconhtop",
+      "Avconitop",
+      "Conh1",
+      "Coni1",
+      "Cxnh1"
+    ],
+    "interpretation": "first difference is local top-reservoir end/average state; beginning top state differs next interval; layer-1 chemistry differs only later as a causal descendant"
+  },
+  "negative_controls": {
+    "exact_zero_zero_load": {
+      "TITO": 10.0,
+      "Flux": 0.0,
+      "Pr": 0.0,
+      "Runinu": 0.0,
+      "trace_record_bitwise_equal": true
+    },
+    "ordinary_positive_flow": {
+      "TITO": 1.0,
+      "Flux": 0.0024002409999999996,
+      "trace_record_bitwise_equal": true
+    }
+  },
+  "comparison_policy": "EXACT_BITWISE_NO_TOLERANCE",
+  "admission": {
+    "b3_admitted": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false
+  }
+}
