@@ -17,7 +17,7 @@ Existing canonical GHG discrepancies remain distinct:
 
 `TCD-011` is also relevant as an existing build-contract dependency for local storage, but GHG01 does not silently broaden it. The active GHG finding extends beyond `Outbal_write` formatting state into scientific process, transport and temporary physical-state restoration.
 
-Neither identifier is broadened here to absorb newly found conservation, observer, initialization, hidden-state or equation-reconciliation findings.
+Neither identifier is broadened here to absorb newly found conservation, observer, initialization, restart, hidden-state or equation-reconciliation findings.
 
 ## GHG01 local candidate findings
 
@@ -87,6 +87,36 @@ A controlled B1 source-fragment probe of exact `GHGponding` task logic demonstra
 
 Recommended B3 treatment: do not apply a blanket `SAVE` or `/Qsave` repair. First reconcile the historical Intel storage contract and then decide whether this should broaden `TCD-011` or receive a distinct GHG canonical discrepancy. ANIMO5 migration must represent persistent scientific task state explicitly or recompute it deterministically.
 
+### `GHG01-LCL-GHG-RESTART-PHASE-PARTITION`
+
+Classification: `SOURCE_CONFIRMED_RESTART_PHASE_STATE_RECONSTRUCTION_DISCONTINUITY_REFERENCE_UNEXERCISED`
+
+`INITIAL.OUT` serializes total CH4 and N2O system concentration as `RsCsCH4/RsCsN2O`. On normal uninterrupted continuation, `Init.for` accepts dissolved result concentrations directly as `CoCH4=RsCoCH4` and `CoN2O=RsCoN2O`. On a new run from the serialized initial-state file, `Inicalc.for` instead reconstructs `CoCH4/CoN2O` from `CsCH4/CsN2O` using Bunsen partitioning evaluated at the fixed input reference temperature `Terf`.
+
+For an unsaturated layer, if `r_prev` is the reciprocal Bunsen coefficient associated with the accepted checkpoint state and `r_ref` is the coefficient at `Terf`, then:
+
+`Co_cont = Cs/(theta+r_prev*a)`
+
+`Co_restart = Cs/(theta+r_ref*a)`
+
+with `a=theta_sat-theta`. The two dissolved states are identical only when `r_prev=r_ref`, the layer is saturated, or the gas state is zero.
+
+This does not establish immediate total gas-mass loss. The source-confirmed finding is that equal serialized total system concentration does not guarantee equal dissolved/gas phase state or equal next-step behaviour.
+
+Recommended B3/ARCH02 treatment: candidate restart discrepancy. A restart checkpoint must reconstruct GHG phase views from the accepted checkpoint-time thermodynamic and hydrological coordinates, not merely from a fixed reference temperature.
+
+### `GHG01-LCL-GHG-PONDING-RESTART-LAYER0`
+
+Classification: `SOURCE_CONFIRMED_PONDING_GHG_LAYER0_RESTART_STATE_RECONSTRUCTION_GAP_REFERENCE_UNEXERCISED`
+
+`Output_Init` serializes and `input1` reads the layer-0 total GHG states, but `Inicalc` reconstructs `CoCH4` and `CoN2O` only for soil layers `1..Nl`. It copies reciprocal Bunsen state to index 0 but does not reconstruct either layer-0 dissolved GHG concentration from the serialized layer-0 system state.
+
+Shared `GHGtransport` only overwrites `Co(0)` for a newly detected ponding event with `Pn<1e-4`. Under already existing ponding the saved layer-0 state therefore lacks a source-confirmed deterministic mapping to the runtime dissolved state before active GHG transport uses the ponding compartment.
+
+Historical runtime manifestation remains `REFERENCE_BLOCKED`. No specific undefined historical value is asserted.
+
+Recommended B3/ARCH02 treatment: require explicit layer-0 GHG ownership or deterministic reconstruction for active ponding restart. This is separate from the soil-layer `Terf` partition issue.
+
 ### `GHG01-LCL-GHG-OUTBAL-WORKING-ARRAYS`
 
 Classification: `SOURCE_CONFIRMED_BALANCE_OBSERVER_INTERFACE_DEFECT`
@@ -137,6 +167,18 @@ The Biogeosciences paper explicitly distinguishes the original equilibrium ANIMO
 
 This narrows TCD-008 materially for N2O, but does not close the release-specific documentation gap. It also exposes the two relation-level conflicts above, which must not be hidden inside a generic `SOURCE_ONLY` label.
 
+## Restart architecture consequence
+
+ARCH02 candidate head `work/animo-arch02-restart-checkpoint-sufficiency@a079d93c965f6073586c55ee4b3544dd8873b723` correctly treats GHG aqueous phase views as recomputed state rather than a second owner copy. GHG01 now makes the sufficiency condition explicit: recomputation must use the accepted checkpoint thermodynamic and hydrological state, including an explicit or deterministically reconstructable active ponding compartment.
+
+The required ANIMO5 invariants are:
+
+`GHG_PHASE_VIEW_RECONSTRUCTION_USES_ACCEPTED_CHECKPOINT_THERMODYNAMIC_AND_HYDROLOGY_STATE`
+
+`ACTIVE_PONDING_GHG_STATE_HAS_EXPLICIT_LAYER0_OWNER_OR_DETERMINISTIC_RECONSTRUCTION`
+
+The detailed source audit is in `GHG_RESTART_STATE_CONTINUITY_AUDIT.md`.
+
 ## Required activated-case evidence
 
 Before source defects are admitted to corrected-legacy or production work, obtain a revision-53-compatible GHG case without silently translating GHGMais and record at minimum:
@@ -148,10 +190,12 @@ Before source defects are admitted to corrected-legacy or production work, obtai
 5. first-read `Ln`, `Te50`, `fGrow`, `K1plant`, plant oxidation and plant emission on the active CH4 route;
 6. exact ponding state before task 1, during GHG processing, and after task 2/task 3 restoration;
 7. explicit capture or deterministic recomputation of phase-coupling, CH4 oxidation, N2O iteration and shared transport task state;
-8. CH4 oxidation and the diffusion, air-flow, ebullition and plant-mediated emission components;
-9. N2O nitrification production, denitrification production, N2O reduction and emission components;
-10. ordinary C/N balance terms plus GHG-specific observer terms;
-11. unrounded model-wide C and N residuals reconstructed from explicit state and transfers.
+8. a split-run restart at an accepted point with nonzero GHG state, an unsaturated layer and `Te != Terf`, comparing pre-checkpoint `RsCs/RsCo` with restored `Cs/Co` before aggregate output;
+9. a separate pre-existing ponding restart with nonzero layer-0 CH4/N2O state;
+10. CH4 oxidation and the diffusion, air-flow, ebullition and plant-mediated emission components;
+11. N2O nitrification production, denitrification production, N2O reduction and emission components;
+12. ordinary C/N balance terms plus GHG-specific observer terms;
+13. unrounded model-wide C and N residuals reconstructed from explicit state and transfers.
 
 A synthetic or compatibility-derived case may establish causal reachability but cannot become B0 or B2 historical evidence. Historical behaviour remains reference-blocked until a qualified historical runner or equivalent admitted oracle exists.
 
@@ -164,6 +208,7 @@ GHG01 closes theory/source/input-lineage qualification only to the declared leve
 - source-confirmed CH4 source-pool transfer and component-partition nonclosure;
 - unresolved fresh-OM weighting-index intent and active plant-growth temperature use-before-definition;
 - build-contract dependent hidden scientific state throughout the active GHG task architecture;
+- source-confirmed restart phase-state discontinuity and ponding layer-0 reconstruction gap;
 - source-confirmed balance-observer findings and incomplete model-wide gas-store control volume;
 - two N2O document-source equation conflicts requiring scientific disposition;
 - absence of a qualified historical reference runner/output oracle.
