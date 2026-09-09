@@ -1,21 +1,52 @@
 # ANIMO-PREP02R — Native Ruurlo Reference Capture Contract
 
-Status: `READY_IF_PROVENANCE_QUALIFIED_NATIVE_ARTIFACT_IS_OBTAINED`.
+Status: `DIAGNOSTIC_NATIVE_C10_READY_IF_WINDOWS_RUNTIME_AVAILABLE_REFERENCE_NATIVE_STILL_PROVENANCE_BLOCKED`.
 
 ## Purpose
 
-Define the exact evidence surface for the first native ANIMO reference attempt. The preferred first case is `RuurloGrass`. This contract is preparation only. It does not admit execution of an untrusted artifact and does not qualify a reference by itself.
+Define the exact evidence surface for native ANIMO execution. The preferred first case is `RuurloGrass`.
+
+Two execution purposes are now distinguished:
+
+1. `REFERENCE_NATIVE_ATTEMPT`: requires a provenance-qualified historical or explicitly governance-admitted equivalent reference artifact;
+2. `CROSS_RUNTIME_DIAGNOSTIC_NATIVE`: may use a clearly classified nonhistorical native rebuild to learn about compiler/runtime behaviour, but can never be relabelled as historical B2 evidence.
+
+The received `PREP02R-C10` executable is eligible only for the second purpose.
 
 ## Preconditions
 
-Native execution is permitted only after all of the following are explicitly reviewed:
+Every native execution requires:
 
-- received executable or build artifact has a receipt manifest and SHA-256 identity;
-- lineage is classified as exact revision-53 candidate, provenance-qualified nearby 4.1.x candidate, or another explicitly named lineage;
-- provenance is strong enough to justify a controlled qualification attempt;
-- the artifact remains unmodified from receipt;
-- the frozen testcase bytes to be used are identified before execution;
-- no corrected-legacy source or translated testcase is substituted.
+- executable receipt manifest and SHA-256 identity;
+- explicit lineage classification;
+- artifact bytes unchanged from receipt;
+- frozen testcase bytes identified before execution;
+- no corrected-legacy source or translated scientific testcase substituted;
+- execution purpose declared before launch.
+
+A `REFERENCE_NATIVE_ATTEMPT` additionally requires provenance strong enough for the claimed reference route.
+
+A `CROSS_RUNTIME_DIAGNOSTIC_NATIVE` may proceed with a nonhistorical candidate only when its nonreference classification is recorded up front and all generated evidence remains labelled diagnostic.
+
+## Received diagnostic candidate C10
+
+The supplied native executable received on 2026-09-09 is:
+
+`animo41.exe`
+
+SHA-256:
+
+`40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d`
+
+Classification:
+
+`MODERN_NATIVE_REBUILD_NOT_HISTORICAL_REFERENCE`
+
+Static evidence identifies it as a 2026 x64 Debug rebuild. Its use is therefore limited to:
+
+`CROSS_RUNTIME_DIAGNOSTIC_NATIVE`.
+
+Before every launch the executable hash must be recomputed and must match exactly.
 
 ## Frozen first case
 
@@ -27,22 +58,38 @@ Frozen testbank archive SHA-256:
 
 `44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84`
 
-Known historical runner form:
+The supplied historical-style runner is:
 
 ```text
 ..\animo41.exe Animo.ini
+copy *.bal Output\*.bal
+copy *.out Output\*.out
+del *.bal
+del *.out
+pause
 ```
 
-The native run should use the original case bytes and historical hydrology bytes directly whenever the native runtime supports them. Any filesystem-only staging, drive mapping or compatibility environment must be recorded. Input-content transformation is not allowed silently.
+For qualification capture, do **not** execute the post-processing runner as the first action. It copies and deletes generated root-level output and would destroy the raw pre-postprocessing tree.
+
+The first controlled invocation should therefore run the executable directly from the untouched extracted `RuurloGrass` working directory with:
+
+```text
+<absolute-or-staged-path>\animo41.exe animo.ini
+```
+
+The raw generated tree must be captured before optionally reproducing the historical runner's copy/delete behaviour as a separate filesystem-semantics check.
+
+The native run should use the original case bytes and original `SWATRE.UNF` bytes directly. Windows case-insensitive filename resolution and backslash paths are part of the native runtime contract, not testcase changes.
 
 ## Capture before execution
 
 Record:
 
+- declared purpose: `REFERENCE_NATIVE_ATTEMPT` or `CROSS_RUNTIME_DIAGNOSTIC_NATIVE`;
 - executable filename and SHA-256;
 - receipt-manifest identity;
 - claimed version/revision and provenance source;
-- lineage classification and admission rationale for attempting the run;
+- lineage classification;
 - operating-system version/build and architecture;
 - native or VM environment identity;
 - locale, code page and timezone when they may affect formatted output;
@@ -53,7 +100,7 @@ Record:
 - whether any filename/path compatibility staging was needed;
 - explicit `input_content_transformed = false` for the preferred native path.
 
-If the executable is reconstructed from historical source rather than supplied as a binary, additionally capture:
+If the executable is reconstructed from source rather than supplied as a binary, additionally capture:
 
 - exact source archive or checkout identity;
 - compiler identity and complete compiler command line;
@@ -71,15 +118,22 @@ Capture without filtering:
 
 - invocation start and end timestamps;
 - process exit status;
-- stdout and stderr bytes and SHA-256;
+- stdout and stderr capture;
 - all warnings and STOP messages;
-- complete generated output tree;
-- byte size and SHA-256 for every output file;
+- complete generated output tree before runner post-processing;
+- byte size and SHA-256 for every generated output file;
 - files created, missing or unexpectedly retained;
-- output timestamps as metadata, while keeping scientific bytes untouched;
-- runtime duration as diagnostic information only.
+- output timestamps as metadata while keeping scientific bytes untouched;
+- runtime duration as diagnostic information only;
+- complete input-tree hashes again after execution to prove input nonmutation.
 
 The raw output tree must be preserved before any normalization or comparison.
+
+The ANIMO 4.0 user guide documents the normal successful-completion text as:
+
+`Successful completion of simulation`
+
+Presence of that text is a completion indicator, not by itself a scientific qualification result.
 
 ## Repeat determinism
 
@@ -110,6 +164,12 @@ Use `tools/compare_legacy_output_trees.py` for fail-closed formatted-tree compar
 
 No global numerical tolerance is defined. Any non-exact numerical difference must first be classified by variable, unit, output precision, scale and likely compiler/runtime mechanism.
 
+For `PREP02R-C10`, even exact native/GNU agreement would mean only:
+
+`CROSS_RUNTIME_CORROBORATION_FOR_A_2026_NATIVE_REBUILD`.
+
+It would not prove historical revision-53 execution.
+
 ## Observer boundary
 
 Observer-only high-precision capture remains blocked until an ordinary native build/reference contract has first been established. The observer build must reproduce ordinary native legacy output before its additional unrounded quantities are trusted.
@@ -120,4 +180,4 @@ Use:
 
 `integration/animo-prep/PREP02R_NATIVE_RUN_MANIFEST_TEMPLATE.json`
 
-The template deliberately defaults all admission fields to `false` and leaves evidence fields null until a real native artifact exists.
+The template deliberately defaults all admission fields to `false` and leaves evidence fields null until a real native run exists.
