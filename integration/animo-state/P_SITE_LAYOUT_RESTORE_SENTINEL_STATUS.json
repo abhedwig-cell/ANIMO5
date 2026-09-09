@@ -2,13 +2,22 @@
   "workunit": "ANIMO-STATEQ01",
   "artifact": "RC-R7 P-site physical-layout restore sentinel",
   "profile": "CORE_CNP_SUBSURFACE_ONLY",
-  "status": "PERSISTED_NOT_YET_EXECUTED",
-  "evidence_class": "SYNTHETIC_LAYOUT_CONTRACT_NON_B2",
+  "status": "PASS_SYNTHETIC_LAYOUT_FAIL_BEFORE_STATE_CONSUMPTION_NON_B2",
+  "evidence_class": "SYNTHETIC_EXECUTABLE_LAYOUT_CONTRACT_NON_B2",
   "production_code": false,
   "physics_change": false,
   "canonical_state_admission": "NOT_ADMITTED",
   "harness_module": "tools/stateq01/p_site_layout_restore_harness.py",
   "test_module": "tests/stateq01/test_p_site_layout_restore_harness.py",
+  "workflow": {
+    "run_id": 34336596224,
+    "job_id": 102417321898,
+    "tested_head": "8e27106962ae49543c0a4b78f004df5adfb5e4c6",
+    "python": "3.12.14",
+    "tests_run": 15,
+    "tests_passed": 15,
+    "tests_failed": 0
+  },
   "contract": {
     "logical_fast_p_site_count_must_match_exactly": true,
     "logical_slow_p_site_count_must_match_exactly": true,
@@ -28,8 +37,20 @@
     "phosphorus_active",
     "precision_policy_id"
   ],
-  "tested": false,
-  "qualified": false,
+  "sentinel_results": {
+    "exact_match_consumes_state_once": true,
+    "fast_site_increase_rejected_before_consume": true,
+    "fast_site_decrease_rejected_before_consume": true,
+    "slow_site_increase_rejected_before_consume": true,
+    "slow_site_decrease_rejected_before_consume": true,
+    "geometry_mismatch_rejected_before_consume": true,
+    "layer_count_mismatch_rejected_before_consume": true,
+    "organic_fraction_count_mismatch_rejected_before_consume": true,
+    "state_schema_mismatch_rejected_before_consume": true,
+    "precision_policy_mismatch_rejected_before_consume": true
+  },
+  "tested": true,
+  "qualified": true,
   "qualification_boundary": "synthetic fail-before-consume layout guard only; no revision-53 full checkpoint split-run and no state migration procedure",
-  "next": "execute persisted sentinel in GitHub Actions and update RC-R7 only if all mismatch-ordering tests pass"
+  "next": "retain exact layout guard as restore precondition; exercise it in a profile-clean executable checkpoint campaign when available"
 }
