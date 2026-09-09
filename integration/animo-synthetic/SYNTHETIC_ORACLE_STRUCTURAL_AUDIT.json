@@ -1,0 +1,8 @@
+{
+  "audit": "ANIMO-SYNQ01 synthetic register structural audit",
+  "record_count": 12,
+  "unique_oracle_ids": 12,
+  "forbidden_B2_records": 0,
+  "errors": [],
+  "result": "PASS"
+}
