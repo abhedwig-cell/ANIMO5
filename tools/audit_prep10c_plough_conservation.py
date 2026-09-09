@@ -23,12 +23,18 @@ def normalized_lines(data: bytes) -> list[str]:
     return [re.sub(r"\s+", " ", line.strip()).lower() for line in data.decode("latin1").splitlines()]
 
 
-def require_once(lines: list[str], needle: str) -> int:
+def matching_lines(lines: list[str], needle: str) -> list[int]:
     needle = re.sub(r"\s+", " ", needle.strip()).lower()
-    hits = [i + 1 for i, line in enumerate(lines) if line == needle]
-    if len(hits) != 1:
-        raise ValueError(f"expected exactly one line {needle!r}, found {hits}")
-    return hits[0]
+    return [i + 1 for i, line in enumerate(lines) if line == needle]
+
+
+def require_hit(lines: list[str], needle: str, *, expected_count: int = 1, select: int = 0) -> int:
+    hits = matching_lines(lines, needle)
+    if len(hits) != expected_count:
+        raise ValueError(
+            f"expected {expected_count} occurrence(s) of {needle!r}, found {hits}"
+        )
+    return hits[select]
 
 
 def audit(source_zip: Path) -> dict:
@@ -52,32 +58,46 @@ def audit(source_zip: Path) -> dict:
     i = normalized_lines(inicalc)
 
     facts = {
-        "bo_zero_line": require_once(i, "Bo(0) = 0.0"),
-        "bo_cumulative_line": require_once(i, "Bo(Ln) = Bo(Ln-1) + He(Ln)"),
-        "plough_branch_line": require_once(a, "If (Pl(I) .Gt. 0) Then"),
-        "current_mass_loop_line": require_once(a, "Do Ln = 0,Pl(I)"),
-        "stable_dom_accumulation_line": require_once(
+        "bo_zero_line": require_hit(i, "Bo(0) = 0.0"),
+        "bo_cumulative_line": require_hit(i, "Bo(Ln) = Bo(Ln-1) + He(Ln)"),
+        "plough_branch_line": require_hit(a, "If (Pl(I) .Gt. 0) Then"),
+        "current_mass_loop_line": require_hit(a, "Do Ln = 0,Pl(I)"),
+        "stable_dom_accumulation_line": require_hit(
             a, "SuStdiorma = SuStdiorma + CoStdiorma(Ln)*He(Ln)* &"
         ),
-        "stable_don_accumulation_line": require_once(
+        "stable_don_accumulation_line": require_hit(
             a, "SuStdiorni = SuStdiorni + CoStdiorni(Ln)*He(Ln)* &"
         ),
-        "stable_dop_accumulation_line": require_once(
+        "stable_dop_accumulation_line": require_hit(
             a, "If(Ipo.Eq.1) SuStdiorpo = SuStdiorpo + CoStdiorpo(Ln) &"
         ),
-        "redistribution_loop_line": require_once(a, "Do Ln = 1,Pl(I)"),
-        "stable_help_line": require_once(a, "Help = He(Ln)/bo(Pl(I)) / &"),
-        "stable_dom_redistribution_line": require_once(a, "CoStdiorma(Ln) = Help * SuStdiorma"),
-        "stable_don_redistribution_line": require_once(a, "CoStdiorni(Ln) = Help * SuStdiorni"),
-        "stable_dop_redistribution_line": require_once(
+        "redistribution_loop_line": require_hit(
+            a, "Do Ln = 1,Pl(I)", expected_count=2, select=1
+        ),
+        "stable_help_line": require_hit(
+            a, "Help = He(Ln)/bo(Pl(I)) / &", expected_count=2, select=1
+        ),
+        "stable_dom_redistribution_line": require_hit(
+            a, "CoStdiorma(Ln) = Help * SuStdiorma"
+        ),
+        "stable_don_redistribution_line": require_hit(
+            a, "CoStdiorni(Ln) = Help * SuStdiorni"
+        ),
+        "stable_dop_redistribution_line": require_hit(
             a, "If (Ipo.Eq.1) CoStdiorpo(Ln) = Help * SuStdiorpo"
         )
     }
 
     for variable in ("sustdiorma", "sustdiorni", "sustdiorpo"):
-        zero_hits = [n + 1 for n, line in enumerate(a) if re.search(rf"\b{variable}\s*=\s*0(?:\.0*)?\b", line)]
+        zero_hits = [
+            n + 1
+            for n, line in enumerate(a)
+            if re.search(rf"\b{variable}\s*=\s*0(?:\.0*)?\b", line)
+        ]
         if zero_hits:
-            raise ValueError(f"frozen Addit.for unexpectedly contains explicit zero reset for {variable}: {zero_hits}")
+            raise ValueError(
+                f"frozen Addit.for unexpectedly contains explicit zero reset for {variable}: {zero_hits}"
+            )
 
     return {
         "work_unit": "ANIMO-PREP10C",
@@ -97,8 +117,8 @@ def audit(source_zip: Path) -> dict:
             "candidate_reset_case": "S_prior=0 before summation, so redistributed total equals current-event mass only"
         },
         "classification": "EVENT_RESET_RESTORES_CLOSED_CURRENT_EVENT_REDISTRIBUTION_IDENTITY",
-        "physics_model_changed_by_identity": false,
-        "numerical_policy_changed_by_identity": false
+        "physics_model_changed_by_identity": False,
+        "numerical_policy_changed_by_identity": False
     }
 
 
