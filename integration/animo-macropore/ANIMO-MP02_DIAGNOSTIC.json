@@ -1,0 +1,121 @@
+{
+  "work_unit": "ANIMO-MP02",
+  "evidence_class": "B1_COMPLETE_CASE_SYNTHETIC_DIAGNOSTIC_ONLY",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "build": {
+    "class": "GNU_DIAGNOSTIC_NOT_REFERENCE",
+    "compiler": "GNU Fortran 14.2.0",
+    "executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "selected_legacy_units": 58,
+    "outsel_runtime_compatibility_substitutions": 14
+  },
+  "execution": {
+    "case_labels": ["NO-MP", "STORAGE", "EXCHANGE", "DIRECT-DRAIN", "SOLUTE-N", "SOLUTE-P"],
+    "complete_case_runs": 6,
+    "successful_completion_runs": 6,
+    "positive_labels": 5,
+    "simulated_timesteps_each": 2922,
+    "positive_iteration_hits": {
+      "DOC": 2922,
+      "DON": 2922,
+      "NH4": 2922,
+      "NO3": 2922,
+      "DOP": 2922,
+      "PO4": 2922,
+      "iteration_number": 1
+    },
+    "specialized_macropore_water_balance_warning_runs": 0,
+    "specialized_macropore_solute_balance_warning_runs": 0
+  },
+  "public_water_observer": {
+    "bawaTP_Out_sha256_all_cases": "a23846a183acd9a0c97efcd79a84fb0315d130799277787f504c99d2e25c0742",
+    "ani_waTP_Bal_sha256_all_cases": "e9e17d995a4aaf97f531cf3ce03023a0f4ed649411e687c99a0e8e67373cd2fa",
+    "byte_identical_across_all_six_cases": true,
+    "first_step_water_residual_mm_all_cases": -0.0000006,
+    "interpretation": "public water balance is insensitive to the designed macropore storage, exchange and direct-drain events in these diagnostics even though the specialized active path executes without a macropore balance warning"
+  },
+  "first_step_public_residuals": {
+    "STORAGE": {
+      "water_mm": -0.0000006,
+      "labile_dom_kg_ha": -1.37e-14,
+      "nh4_n_kg_ha": -2.20e-15,
+      "no3_n_kg_ha": -3.41e-15,
+      "don_n_kg_ha": 3.64e-12,
+      "po4_p_kg_ha": -0.724,
+      "dop_p_kg_ha": 4.55e-13
+    },
+    "EXCHANGE": {
+      "water_mm": -0.0000006,
+      "labile_dom_kg_ha": 0.00559,
+      "nh4_n_kg_ha": 0.000582,
+      "no3_n_kg_ha": 0.000507,
+      "don_n_kg_ha": 0.0000936,
+      "po4_p_kg_ha": -0.723,
+      "dop_p_kg_ha": 0.0000143
+    },
+    "EXCHANGE_minus_STORAGE_approx": {
+      "water_mm": 0.0,
+      "labile_dom_kg_ha": 0.00559,
+      "nh4_n_kg_ha": 0.000582,
+      "no3_n_kg_ha": 0.000507,
+      "don_n_kg_ha": 0.0000936,
+      "po4_p_kg_ha": 0.001,
+      "dop_p_kg_ha": 0.0000143
+    },
+    "po4_caveat": "the differential is superposed on the known CranGrass first-step P initialization residual; do not attribute the absolute PO4 residual to TCD-025 alone"
+  },
+  "tcd025": {
+    "classification": "COMPLETE_CASE_B1_SYMPTOM_CONFIRMED_MACROPORE_MAIN_LEDGER_CONTROL_VOLUME_GAP_HISTORICAL_MAGNITUDE_OPEN",
+    "specialized_route_closed_without_warning": true,
+    "public_macropore_water_storage_complete": false,
+    "public_water_direct_drain_complete": false,
+    "public_dom_direct_drain_complete": false,
+    "public_n_Dra4_population_source_present": true,
+    "public_n_Dra4_in_Ddev_formulas": false,
+    "public_p_direct_drain_complete": false,
+    "correction_implemented": false,
+    "correction_admitted": false
+  },
+  "solute_case_reconciliation": {
+    "SOLUTE-N_and_SOLUTE-P_scientific_inputs_identical": true,
+    "independent_transfer_diagnostics": 1,
+    "role_of_second_label": "exact-input replicate",
+    "interpretation": "one combined P-active N/P transfer diagnostic, not independent N-only and P-only qualification"
+  },
+  "replication": {
+    "prepared_case": "combined solute transfer",
+    "fresh_rebuild_from_frozen_parent_runs": 2,
+    "normalized_output_bundle_sha256_run_a": "04915574e59fb36b49a38bdcc80f9ae062e6c4a452c5833e60acf19f033453bf",
+    "normalized_output_bundle_sha256_run_b": "04915574e59fb36b49a38bdcc80f9ae062e6c4a452c5833e60acf19f033453bf",
+    "normalization": "run-start, run-end, elapsed-time and file-created timestamps only",
+    "result": "PASS"
+  },
+  "gnu_diagnostic_fpe_seam": {
+    "ordinary_positive_runs_with_IEEE_INVALID_FLAG": 5,
+    "negative_control_with_IEEE_INVALID_FLAG": false,
+    "trap_flags_added": ["-g", "-fbacktrace", "-ffpe-trap=invalid,zero,overflow"],
+    "trap_executable_sha256": "2c3e454d544876374035a86d1778cd02b10b6b41d27700751f06bc1c44ccbba2",
+    "active_storage_trap": "SIGFPE at MAPOTRANSPORT.FOR:670 in MpTransp",
+    "negative_control_trap": "no SIGFPE; normal legacy STOP 100 after successful completion",
+    "source_expression": "If (Abs(BaDev).Gt.1.d-5 .And. Abs(BaDev/BaMx).Gt.0.005) ...",
+    "classification": "GNU_DIAGNOSTIC_ACTIVE_ROUTE_INVALID_FLAG_FROM_BALANCE_WARNING_GUARD_HISTORICAL_COMPILER_EFFECT_UNPROVEN",
+    "historical_intel_effect_proven": false,
+    "scientific_output_nondeterminism_observed": false
+  },
+  "restart": {
+    "active_Output_initial_out_contains_MPnitr": false,
+    "active_Output_initial_out_contains_MPorgs": false,
+    "active_Output_initial_out_contains_MPphos": false,
+    "source_Output_Init_macropore_writer_block": "commented",
+    "classification": "SOURCE_AND_COMPLETE_CASE_CONFIRMED_PERSISTENT_MACROPORE_SOLUTE_RESTART_OMISSION",
+    "continuous_vs_split_active_test_executed": false
+  },
+  "non_admissions": [
+    "no historical B2 reference",
+    "no B3 admission",
+    "no historical numerical tolerance",
+    "no TCD-025 correction",
+    "no production implementation"
+  ]
+}
