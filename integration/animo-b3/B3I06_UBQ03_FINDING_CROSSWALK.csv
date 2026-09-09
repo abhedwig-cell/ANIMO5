@@ -1,0 +1,2 @@
+finding_id,evidence_owner,phenomenon,relation_to_existing_tcd,canonical_disposition,new_top_level_tcd,tcd_043_reserved,admission
+UBQ03-HETOP-0001,ANIMO-UBQ03,"HETOP=0 documented/parser-admissible while multiple production paths divide by HETOP and no global zero-thickness semantics are defined","TCD-042-B1/E1 domain constraint only; broader than TCD-042 upper-boundary fallback mechanism","RUNTIME_INPUT_DOMAIN_HAZARD_PENDING_AUTHORITATIVE_ZERO_THICKNESS_MODEL_SEMANTICS",false,false,false
