@@ -55,19 +55,19 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "validation": {
     "validator": "tools/validate_b3d01_tcd017_disposition.py",
     "workflow": ".github/workflows/animo-b3d01-tcd017-disposition.yml",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_job_id": null,
-    "github_actions_conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "71d3b2c96eefc2427eaea00af85cb63a13da6ea1",
+    "github_actions_run_id": 34391981473,
+    "github_actions_job_id": 102602253012,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS",
+    "scope_guard": "PASS"
   },
   "deliverables": [
     "integration/animo-b3/TCD017_B3_DISPOSITION_GOV03.json",
