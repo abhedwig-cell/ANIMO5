@@ -1,0 +1,125 @@
+{
+  "work_unit": "ANIMO-B3A04",
+  "target_tcd": "TCD-026",
+  "evidence_class": "B0_HASH_PINNED_DIAGNOSTIC_CHRONOLOGICAL_FORMATTED_RESTART_NOT_B2",
+  "status": "PASS_TCD026_CHRONOLOGICAL_FORMATTED_RESTART_ACTIVATION_FULL_SPLIT_IDENTITY_NOT_CLAIMED",
+  "branch": "work/animo-b3a04-tcd026-class-a-readiness",
+  "frozen_B0": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "executables": {
+    "legacy_diagnostic_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "legacy_classification": "PREP01_DETERMINISTIC_GNU_DIAGNOSTIC_NOT_REFERENCE",
+    "ledger_only_tcd026_probe_sha256": "b438ba7eae77bb0a7e9030f74388f4d77541ea4a9d3a438197a0d0d607c64785",
+    "candidate_change": "Outbal_Init Bfom beginning ledger adds Ex(Ln)*P only",
+    "production_executable": false
+  },
+  "case": "CranMais",
+  "chronology": {
+    "segment_A": {
+      "start_date": "1974-01-01",
+      "end_date": "1974-12-31",
+      "general_execution_copy_sha256": "6905808147b7721f71e48954f7035848891c5b989f7b31ad5b93900c70b7efac",
+      "management_execution_copy_sha256": "53cab6328824481fc77c6ee93386a18accf09b9907e2a872a03190b505ed6219",
+      "management_transform": "Bound >lmanag: to the first 1974 management period only; frozen testbank archive unchanged.",
+      "successful_completion": true,
+      "model_produced_initial_out_sha256": "6578e35e7b5bd39927569ff4f004afbe164d2ce20c98a6d75dc75b7ab536764b",
+      "model_produced_orgexu": {
+        "nonzero_layers": [1,2,3,4,5,6,7,8,9],
+        "values_kg_m2": [0.0169934,0.01204026,0.009938511,0.00799397,0.006156433,0.004547565,0.005053054,0.001433519,0.0001151809],
+        "sum_kg_m2": 0.0642718929,
+        "sum_kg_ha": 642.718929
+      }
+    },
+    "segment_B": {
+      "start_date": "1975-01-01",
+      "end_date": "1975-12-31",
+      "general_execution_copy_sha256": "421f0cf6628ea10f6611f5e8ca47b60f10288a0444265e0eb6e50ec60be3835a",
+      "management_execution_copy_sha256": "f4e5ac952e48ed997da842247146ff7286479ace4ab0510a6e5c298440471618",
+      "initial_in_sha256": "6578e35e7b5bd39927569ff4f004afbe164d2ce20c98a6d75dc75b7ab536764b",
+      "initial_in_byte_identical_to_segment_A_initial_out": true,
+      "hydrology_sha256": "6de3a50b1e8444ee5d0973ffa984d67325b8f9e3aa09f967793721d0d2dcd36e",
+      "hydrology_same_as_prepared_frozen_case_payload": true,
+      "material_sha256": "25dcaf867e640dab57c60259c469dd925a30d53fa65d7a16886d078546f8bafb",
+      "material_same_as_prepared_frozen_case_payload": true,
+      "management_tail_transform": {
+        "purpose": "Preserve the 1975 management chronology after changing the simulation origin to 1975-01-01.",
+        "landuse_period": "Original 1975 maize period retained and renumbered as local management period 1.",
+        "addition_sequence": "Original 1975 additions corresponding to old add004/add005/add006 retained as local add001/add002/add003.",
+        "relative_day_rebase": "Original absolute-simulation addition times 469, 479 and 482 become local times 104, 114 and 117 by subtracting the completed 365-day 1974 segment.",
+        "frozen_testbank_archive_modified": false
+      },
+      "legacy_successful_completion": true,
+      "candidate_successful_completion": true
+    }
+  },
+  "tcd026_discriminator": {
+    "segment_B_beginning_model_produced_Ex_kg_ha": 642.718929,
+    "legacy_begin_fresh_om_kg_ha_printed": 12209.622,
+    "candidate_begin_fresh_om_kg_ha_printed": 12852.341,
+    "printed_begin_store_increment_kg_ha": 642.719,
+    "increment_matches_formatted_restart_Ex_subject_to_report_rounding": true,
+    "legacy_first_period_fresh_om_deviation_kg_ha_compact_report": -642.7,
+    "legacy_first_period_fresh_om_deviation_kg_ha_scientific_report": -643.0,
+    "candidate_first_period_fresh_om_deviation_kg_ha": 1.82e-12,
+    "small_candidate_residual_is_tolerance": false,
+    "result": "EXACT_CAUSAL_LEDGER_SIGNATURE_SUBJECT_ONLY_TO_LEGACY_REPORT_FORMATTING"
+  },
+  "candidate_non_interference": {
+    "legacy_final_initial_out_sha256": "e6c240ae46edfb7d0a4577dfb70106fb10e37b78982f93d2a116130f9685ca42",
+    "candidate_final_initial_out_sha256": "e6c240ae46edfb7d0a4577dfb70106fb10e37b78982f93d2a116130f9685ca42",
+    "final_restart_state_byte_identical": true,
+    "generated_scientific_or_model_outputs_compared": 23,
+    "volatile_normalization": "Only known run timestamps and elapsed CPU metadata were normalized.",
+    "normalized_identical_outputs": 19,
+    "changed_outputs": [
+      "ani_omMP.Bal",
+      "ani_omTP.Bal",
+      "baomMP.Out",
+      "baomTP.Out"
+    ],
+    "unexpected_changed_outputs": [],
+    "physical_state_non_interference": "PASS",
+    "ordinary_process_output_non_interference": "PASS",
+    "changed_output_whitelist": "PASS"
+  },
+  "continuous_vs_formatted_restart_crosscheck": {
+    "continuous_reference_period": "1974-01-01 through 1975-12-31",
+    "continuous_general_execution_copy_sha256": "68c9b1db725f4129e878f2ad2fa80d922634de80576a184223d0d23050eb1ece",
+    "continuous_management_execution_copy_sha256": "508ff4b9ebf87be30e5b127c3b260fa1aa5164262eefcec304259566d6742426",
+    "continuous_final_initial_out_sha256": "1b2f404434f2f35019f60cd5192a9c31358302d24fa49d917ba329a0a0adad64",
+    "split_final_initial_out_sha256": "e6c240ae46edfb7d0a4577dfb70106fb10e37b78982f93d2a116130f9685ca42",
+    "byte_identical": false,
+    "numeric_tokens_compared": 564,
+    "printed_numeric_tokens_different": 32,
+    "max_abs_printed_numeric_difference": 1.0e-6,
+    "interpretation": "The formatted INITIAL.OUT/INITIAL.INP path is not an exact whole-model checkpoint. The small drift is consistent with finite formatted serialization and/or other legacy restart-surface limitations, but this probe does not isolate that cause and does not use a tolerance to promote split-run identity.",
+    "whole_model_split_run_identity_claimed": false
+  },
+  "stateq02_cross_authority": {
+    "branch": "work/animo-stateq02-restricted-core-executable-split-run",
+    "head": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "status": "QUALIFIED_RESTRICTED_CORE_EXECUTABLE_CHECKPOINT_SEMANTICS_CANONICAL_STATE_ADMISSION_PENDING",
+    "status_blob": "88df49ccb86bdb9d2553693c1ef1ef06de1e4025",
+    "split_matrix_blob": "35544f0c69ff3ba700cfc30e3ab520bf009310be",
+    "qualification_doc_blob": "0f56c4fa75d75a6b4e4fe48020c633fcd0d23f27",
+    "persistent_state_matrix_evidence": "ORG-004 root exudate organic mass is a core CNP accepted owner, MANDATORY checkpoint coordinate, exact accepted areic mass restore.",
+    "relevance": "Independent cross-stream support that root-exudate organic state belongs to chronological continuation state.",
+    "limitation": "STATEQ02 uses an exact qualification-only checkpoint and resumes after restore; it is not a TCD-026 Outbal_Init ledger oracle and is not B2."
+  },
+  "hard_constraints": {
+    "frozen_source_modified": false,
+    "frozen_testbank_archive_modified": false,
+    "production_source_modified": false,
+    "physical_state_patch": false,
+    "initialization_physics_change": false,
+    "other_organic_matter_tcd_composed": false,
+    "numerical_tolerance_added": false,
+    "historical_reference_claimed": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false,
+    "independent_review_claimed": false
+  },
+  "decision": "The same TCD-026 omitted beginning Ex mass is activated by a genuinely earlier model segment and chronological year-boundary formatted restart. This strengthens naturalistic activation and non-interference evidence. It does not qualify the legacy formatted restart as an exact whole-model checkpoint and does not alter the blocked admission or independent-review gates."
+}
