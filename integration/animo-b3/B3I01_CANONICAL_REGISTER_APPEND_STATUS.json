@@ -1,0 +1,42 @@
+{
+  "work_unit": "ANIMO-B3I01",
+  "followup": "CANONICAL_REGISTER_APPEND",
+  "branch": "work/animo-b3i01-canonical-register-append",
+  "issue": 17,
+  "status": "QUALIFIED_CANONICAL_REGISTER_APPEND_TCD028_THROUGH_TCD037_NO_ADMISSIONS",
+  "decision": "QUALIFIED_CANONICAL_REGISTER_APPEND_TCD028_THROUGH_TCD037_NO_ADMISSIONS",
+  "base_head": "7b2be9d9742aaad78128c0531591d8e38d7e8450",
+  "registered_ids": ["TCD-028","TCD-029","TCD-030","TCD-031","TCD-032","TCD-033","TCD-034","TCD-035","TCD-036","TCD-037"],
+  "canonical_register": {
+    "path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "blob_before": "224acc350fde69d3c4aebed8628c0f945e0b3367",
+    "blob_after_append": "b7d444d9a5bd45e04e4814d3cf54f66613837b4b",
+    "tail_before": "TCD-027",
+    "tail_after": "TCD-037",
+    "append_only": true
+  },
+  "verification": {
+    "validator": "tools/validate_b3i01_post_g5_intake.py",
+    "workflow": ".github/workflows/animo-b3i01-post-g5-intake.yml",
+    "workflow_run_id": 34327826721,
+    "workflow_head": "2d74cfad216d96f6b3c232626ef03ac7972fd082",
+    "workflow_conclusion": "success",
+    "contiguous_ids_tcd001_through_tcd037": true,
+    "prepared_append_rows_equal_registered_rows": true,
+    "child_atoms_absent_as_top_level_ids": true,
+    "existing_rows_001_027_changed": false
+  },
+  "invariants": {
+    "register_presence_is_not_b3_admission": true,
+    "b3q01_classification_snapshot_modified": false,
+    "new_corrections_admitted": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "production_code_modified": false,
+    "source_correction": false,
+    "evidence_strength_increased": false
+  },
+  "tested": true,
+  "qualified": true,
+  "work_unit_complete": true
+}

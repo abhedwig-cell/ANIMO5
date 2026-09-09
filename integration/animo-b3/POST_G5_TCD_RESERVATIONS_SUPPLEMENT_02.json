@@ -1,0 +1,60 @@
+{
+  "record_type": "CANONICAL_TCD_RESERVATION_SUPPLEMENT_NOT_B3_DISPOSITION",
+  "work_unit": "ANIMO-B3I01",
+  "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_02",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i01-canonical-register-append",
+  "reservation_status": "RESERVED_FAIL_CLOSED_PENDING_CANONICAL_REGISTER_APPEND_NOT_ADMITTED",
+  "authority": {
+    "canonical_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "canonical_register_blob_observed": "264ea7d0dd5764d837b40f19d6ba70152be2e743",
+    "canonical_register_tail_observed": "TCD-039",
+    "b3_owner": "ANIMO-B3 governance",
+    "source_workunit": "ANIMO-STATEQ01",
+    "source_head": "5a5e0785b6f4a9cb4f67d1fa10d79b184d7d41e9",
+    "source_local_key": "RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING"
+  },
+  "collision_audit": {
+    "canonical_register_tail_before_reservation": "TCD-039",
+    "tcd_040_default_branch_code_search_matches": 0,
+    "tcd_040_issue_search_matches": 0,
+    "tcd_040_commit_search_matches": 0,
+    "tcd_040_matching_branch_refs": 0,
+    "observation_scope": "live GitHub canonical register, default-branch code search, issue search, commit search and matching branch refs immediately before reservation; not a transactional repository lock"
+  },
+  "reservations": [
+    {
+      "tcd_id": "TCD-040",
+      "source_local_key": "RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING",
+      "source_workunit": "ANIMO-STATEQ01",
+      "phenomenon": "explicitly represented layer0 aqueous restart coordinates are read and written by the restart surface but several are unconditionally erased by Inicalc before the first timestep without a preservation handoff",
+      "affected_coordinates": ["Conh(0)", "Coni(0)", "Codiorma(0)", "Codiorni(0)", "Codiorpo(0)"],
+      "natural_reachability_proven_coordinates": ["Conh(0)", "Coni(0)", "Codiorma(0)", "Codiorni(0)"],
+      "explicit_exclusion": "Copo(0) is not zeroed by the cited unconditional Inicalc block and is not part of TCD-040",
+      "existing_tcd_relation": {
+        "TCD-016": "DISTINCT: runtime low-storage NH4 continuation lacks an admitted non-aqueous owner; TCD-040 is restart initialization erasure of an already represented aqueous owner",
+        "TCD-014": "DISTINCT: PO4 coupled initial-state accounting/partition seam; Copo(0) is explicitly excluded from this zeroing phenomenon",
+        "TCD-038": "DISTINCT: crop actual-uptake restart direction defect",
+        "TCD-039": "DISTINCT: crop potential-uptake continuation is absent from restart representation"
+      },
+      "atomicity": "ONE_RESTART_INITIALIZATION_ERASURE_PHENOMENON_WITH_MULTI_COORDINATE_SCOPE",
+      "atomicity_rationale": "the canonical phenomenon is one unconditional initialization transaction that erases several coordinates governed by the same layer0 aqueous accepted-owner restore contract. Per-coordinate coverage and downstream effects must be qualified separately inside the record, but separate top-level IDs would duplicate the same causal mechanism unless later evidence establishes species-specific intent or a different trigger.",
+      "provisional_b3_class": "B",
+      "class_rationale": "the affected states already have explicit reader, writer and accepted-owner representation. Qualification therefore targets a local initialization operation rather than adding or redefining a physical state. Reclassify only if later science shows that any affected coordinate requires a new state representation or numerical policy.",
+      "qualification_owner": "PROPOSED_ANIMO-STATEQ02",
+      "admitted": false
+    }
+  ],
+  "required_qualification": [
+    "prove the accepted restart read-to-owner identity for each affected coordinate",
+    "retain the supplied GrassPeat natural reachability evidence without modifying B0 bytes",
+    "execute fail-before-mutate and split-run probes with nonzero layer0 aqueous state",
+    "compare unrounded affected state and downstream flux trajectories",
+    "keep Copo(0) and TCD-016-C1 outside the correction scope",
+    "obtain independent B3 review before any corrected behavior is admitted"
+  ],
+  "new_corrections_admitted": false,
+  "b3_baseline_established": false,
+  "production_migration_admitted": false,
+  "evidence_strength_increased_by_reservation": false
+}

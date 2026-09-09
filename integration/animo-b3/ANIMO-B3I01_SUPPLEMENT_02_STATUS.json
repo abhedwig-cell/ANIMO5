@@ -1,0 +1,50 @@
+{
+  "work_unit": "ANIMO-B3I01",
+  "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_02",
+  "title": "STATEQ01 Layer0 Aqueous Restart Initialization Intake",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i01-canonical-register-append",
+  "status": "COMPLETE_TESTED_QUALIFIED_TCD040_REGISTERED_NOT_ADMITTED",
+  "persisted_early": true,
+  "tested": true,
+  "qualified": true,
+  "validated_head": "d2fe4eb3793a1ffc6c09197d7db01c3e3fe33f88",
+  "successful_ci_runs": [34331711485, 34331711492, 34331711503],
+  "source_authority": {
+    "workunit": "ANIMO-STATEQ01",
+    "head": "5a5e0785b6f4a9cb4f67d1fa10d79b184d7d41e9",
+    "local_key": "RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING"
+  },
+  "canonical_register": {
+    "tail_before_supplement": "TCD-039",
+    "tail_after_supplement": "TCD-040",
+    "blob_before_supplement": "264ea7d0dd5764d837b40f19d6ba70152be2e743",
+    "blob_after_supplement": "fb44f54aabcf9cd9ee8a8a52bbec78e5cdf06c25",
+    "reservation_commit": "4d3c73696560d5729c3d1a0533d54ed2eab69c84",
+    "append_commit": "1a3d881654d6b9918fa9e7e7f02fc7317ab6aa1e",
+    "append_only_compare_verified": true,
+    "append_only_compare_changes": "1 addition 0 deletions"
+  },
+  "canonical_id": {
+    "TCD-040": {
+      "phenomenon": "layer0 aqueous restart initialization erases explicitly represented accepted state",
+      "class": "B",
+      "class_state": "PROVISIONAL_PENDING_QUALIFICATION",
+      "owner": "PROPOSED_ANIMO-STATEQ02",
+      "admitted": false
+    }
+  },
+  "scope": {
+    "affected_coordinates": ["Conh(0)", "Coni(0)", "Codiorma(0)", "Codiorni(0)", "Codiorpo(0)"],
+    "natural_reachability_proven_coordinates": ["Conh(0)", "Coni(0)", "Codiorma(0)", "Codiorni(0)"],
+    "excluded_coordinate": "Copo(0)",
+    "distinct_from": ["TCD-014", "TCD-016", "TCD-038", "TCD-039"]
+  },
+  "atomicity": "ONE_CAUSAL_INITIALIZATION_TRANSACTION_MULTI_COORDINATE_SCOPE",
+  "new_corrections_admitted": false,
+  "b3_baseline_established": false,
+  "production_migration_admitted": false,
+  "production_code_modified": false,
+  "source_correction": false,
+  "checkpoint": "supplement-02 intake persisted, tested and qualified as canonical identity/routing governance evidence; TCD-040 remains not admitted"
+}

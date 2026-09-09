@@ -1,0 +1,44 @@
+{
+  "work_unit": "ANIMO-B3I01",
+  "followup": "CANONICAL_REGISTER_APPEND",
+  "branch": "work/animo-b3i01-canonical-register-append",
+  "base_closeout_head": "7b2be9d9742aaad78128c0531591d8e38d7e8450",
+  "canonical_register": {
+    "path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "blob_before": "224acc350fde69d3c4aebed8628c0f945e0b3367",
+    "tail_before": "TCD-027",
+    "blob_after_append": "b7d444d9a5bd45e04e4814d3cf54f66613837b4b",
+    "tail_after": "TCD-037",
+    "existing_rows_changed": false,
+    "append_only": true
+  },
+  "registered_not_admitted": [
+    "TCD-028",
+    "TCD-029",
+    "TCD-030",
+    "TCD-031",
+    "TCD-032",
+    "TCD-033",
+    "TCD-034",
+    "TCD-035",
+    "TCD-036",
+    "TCD-037"
+  ],
+  "historical_intake_artifacts": {
+    "routing_register": "integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER.json",
+    "reservation_batch": "integration/animo-b3/POST_G5_TCD_RESERVATIONS.json",
+    "tcd028_reservation": "integration/animo-b3/TCD-028_RESERVATION.json",
+    "interpretation": "These remain evidence snapshots of the pre-append reservation state. Their phrases such as NOT_REGISTER_ROW or append_pending_review describe the state at reservation time and are not current register-state assertions."
+  },
+  "child_atoms_not_top_level_ids": [
+    "TCD-016-C1",
+    "TCD-016-E1",
+    "TCD-009-GHG-GAS-STORE"
+  ],
+  "admission_state": {
+    "new_corrections_admitted": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "evidence_strength_increased_by_register_append": false
+  }
+}

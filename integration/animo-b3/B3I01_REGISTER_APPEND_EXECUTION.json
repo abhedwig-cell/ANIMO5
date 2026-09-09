@@ -1,0 +1,19 @@
+{
+  "execution_state": "APPEND_COMPLETED_AND_VALIDATED_FAIL_CLOSED",
+  "prepared_rows": "integration/animo-b3/B3I01_REGISTER_APPEND_ROWS.csv",
+  "target_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+  "target_blob_before": "224acc350fde69d3c4aebed8628c0f945e0b3367",
+  "target_blob_after_append": "b7d444d9a5bd45e04e4814d3cf54f66613837b4b",
+  "tail_before": "TCD-027",
+  "tail_after": "TCD-037",
+  "append_only": true,
+  "existing_rows_changed": false,
+  "validator": "tools/validate_b3i01_post_g5_intake.py",
+  "workflow": ".github/workflows/animo-b3i01-post-g5-intake.yml",
+  "workflow_run_id": 34327826721,
+  "workflow_head": "2d74cfad216d96f6b3c232626ef03ac7972fd082",
+  "workflow_conclusion": "success",
+  "new_corrections_admitted": false,
+  "b3_baseline_established": false,
+  "production_migration_admitted": false
+}
