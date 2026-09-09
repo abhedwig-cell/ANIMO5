@@ -6,16 +6,16 @@
   "starting_parent": "cf9975ded20fa64bb8125b3241f2609cbb5b51b3",
   "starting_work_unit": "ANIMO-RG04",
   "reconciliation_revision": "FINAL_LIVE_FREEZE_POST_B3Q02_UBQ03_B3I06_B3A04R",
-  "state": "IN_PROGRESS_PERSISTED_POST_CLOSEOUT_DELTA_REVALIDATION_PENDING",
-  "decision": "PENDING_FAIL_CLOSED_REVALIDATION",
+  "state": "QUALIFIED_POST_RG04_LATE_WAVE_AUTHORITY_REFRESH_ATOMIC_QUEUE_RESET_NO_ADMISSIONS",
+  "decision": "QUALIFIED_POST_RG04_LATE_WAVE_AUTHORITY_REFRESH_ATOMIC_QUEUE_RESET_NO_ADMISSIONS",
   "governance_only": true,
   "authority_rule": "CONTENT_AND_ANCESTRY_PLUS_EXPLICIT_STATUS_NOT_BRANCH_NAME_NOT_LAST_WRITER_WINS",
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "admission_state": {
     "scientific_admission_performed": false,
@@ -129,12 +129,12 @@
     "workflow": ".github/workflows/animo-rg05-governance.yml",
     "previous_qualified_head": "1b74c5b23c0a772273457e4998259c41d961d2a8",
     "previous_closeout_run_id": 34387129808,
-    "post_closeout_delta_validation": "PENDING_FINAL_LIVE_FREEZE",
-    "github_actions_run_id": null,
-    "github_actions_head": null,
-    "github_actions_conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING"
+    "post_closeout_delta_validation": "PASS_FINAL_LIVE_FREEZE",
+    "github_actions_run_id": 34389828149,
+    "github_actions_head": "1db11e21a0bfd485aef5ca5616fb7e84b6183c51",
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS",
+    "scope_guard": "PASS"
   },
   "deliverables": [
     "docs/governance/ANIMO_RG05_PROJECT_REGIE.md",
