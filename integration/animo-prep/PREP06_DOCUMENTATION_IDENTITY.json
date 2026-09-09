@@ -1,0 +1,40 @@
+{
+  "evidence_id": "ANIMO-PREP06-DOCUMENTATION-IDENTITY-2026-09-09",
+  "work_unit": "ANIMO-PREP06",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-prep06-conserved-state-ledger",
+  "documentation": {
+    "title": "ANIMO 4.0 User's guide of the ANIMO 4.0 nutrient leaching model",
+    "authors": [
+      "L.V. Renaud",
+      "J. Roelsma",
+      "P. Groenendijk"
+    ],
+    "publisher": "Alterra, Wageningen",
+    "report": "Alterra-Report 224",
+    "year": 2005,
+    "sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "role_in_prep06": "inherited ANIMO 4.0 core concepts, input/output nomenclature and public balance semantics only",
+    "revision53_implementation_authority": false,
+    "raw_bytes_committed_to_public_repository": false
+  },
+  "frozen_source": {
+    "archive": "ANIMO_4.1.5.53(3).zip",
+    "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "role_in_prep06": "authoritative evidence for actual revision-53 implementation and state/transfer ownership",
+    "raw_bytes_committed_to_public_repository": false
+  },
+  "testbank": {
+    "archive": "ANIMO_testbank.zip",
+    "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "role_in_prep06": "path-coverage and diagnostic evidence only; not a trusted historical numerical oracle",
+    "raw_bytes_committed_to_public_repository": false
+  },
+  "scope_guard": {
+    "documentation_is_exact_revision53_theory": false,
+    "reference_qualified": false,
+    "production_migration_admitted": false,
+    "legacy_source_modified": false,
+    "testcase_modified": false
+  }
+}
