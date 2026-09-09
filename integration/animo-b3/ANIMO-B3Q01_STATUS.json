@@ -1,0 +1,47 @@
+{
+  "work_unit": "ANIMO-B3Q01",
+  "title": "Qualified Scientific Legacy Admission Contracts & Discrepancy Disposition Framework",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3q01-scientific-admission-framework",
+  "date": "2026-09-09",
+  "starting_base_branch": "work/animo-prep06-conserved-state-ledger",
+  "decision": "IN_PROGRESS_B3_SCIENTIFIC_ADMISSION_FRAMEWORK_PERSISTED_BEFORE_VALIDATION",
+  "implemented": true,
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "blocked": true,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "legacy_source_modified": false,
+  "testcase_modified": false,
+  "production_code_modified": false,
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false,
+  "source_evidence": {
+    "eb01_canonical_governance_branch": "work/animo-eb01-evidence-baseline-model",
+    "eb01_canonical_document_blob_sha": "8b7c6f4197ecc953740e740e64610c3ae3196392",
+    "eb01_machine_model_blob_sha": "5360e14d30b1c0b823540506701df83703f4e70f",
+    "prep06_status_blob_sha": "27b469da0b8351d80989515d0a88aa58bbf85f98",
+    "canonical_tcd_register_blob_sha": "224acc350fde69d3c4aebed8628c0f945e0b3367",
+    "canonical_tcd_register_tail": "TCD-027"
+  },
+  "frozen_evidence": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
+  },
+  "scope": {
+    "governance_only": true,
+    "legacy_corrections_admitted": [],
+    "production_migration": "NOT_ADMITTED"
+  },
+  "planned_deliverables": [
+    "docs/governance/B3_SCIENTIFIC_ADMISSION_FRAMEWORK.md",
+    "docs/governance/B3_QUALIFICATION_CLASSES.md",
+    "docs/governance/B3_COMPOSITION_RULES.md",
+    "integration/animo-b3/B3_DISPOSITION_SCHEMA.json",
+    "integration/animo-b3/B3_EXISTING_TCD_CLASSIFICATION.csv",
+    "integration/animo-b3/ANIMO-B3Q01_STATUS.json"
+  ]
+}
