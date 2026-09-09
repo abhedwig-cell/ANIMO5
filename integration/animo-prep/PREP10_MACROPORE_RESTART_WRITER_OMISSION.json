@@ -1,0 +1,47 @@
+{
+  "work_unit": "ANIMO-PREP10",
+  "finding_id": "TCD-032",
+  "title": "Macropore solute restart writer omission",
+  "evidence_class": "SOURCE_BOUND_NOT_HISTORICAL_REFERENCE",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "classification": "SOURCE_CONFIRMED_PERSISTENT_MACROPORE_SOLUTE_RESTART_WRITER_OMISSION_TESTBANK_UNEXERCISED",
+  "restart_reader": {
+    "source": "mapoinput.for",
+    "mode": "Nupa=4",
+    "blocks": [">MPnitr:", ">MPorgs:", ">MPphos:"],
+    "states": [
+      "CoMpNh(1:2)",
+      "CoMpNi(1:2)",
+      "CoMpDiorMa(1:2)",
+      "CoMpDiorNi(1:2)",
+      "CoMpPo(1:2)",
+      "CoMpDiorPo(1:2)"
+    ]
+  },
+  "accepted_result_state_carry": {
+    "source": "Init.for",
+    "active_when": "IoptMp=1",
+    "result_to_accepted_pairs": 6
+  },
+  "restart_writer": {
+    "source": "Output_Init.for",
+    "expected_blocks_present_as_comments": true,
+    "active_writer_lines": 0,
+    "writer_complete": false
+  },
+  "testbank": {
+    "active_macropore_cases": 0,
+    "behavioural_split_run_magnitude_measured": false
+  },
+  "distinct_from": {
+    "TCD-025": "macropore public/main balance integration gap"
+  },
+  "related_not_promoted": {
+    "candidate": "mapoinput nitrate validation checks ammonium values twice",
+    "folded_into_TCD032": false
+  },
+  "production_correction_admitted": false,
+  "reference_qualified": false,
+  "production_migration_admitted": false
+}
