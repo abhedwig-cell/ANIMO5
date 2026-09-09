@@ -1,0 +1,27 @@
+name: ARCHG02 temporal revalidation audit
+
+on:
+  push:
+    branches:
+      - work/animo-archg02-temporal-revalidation
+    paths:
+      - 'docs/architecture/ANIMO_ARCHG02_*'
+      - 'docs/architecture/ANIMO5_FINAL_TEMPORAL_REVALIDATION.md'
+      - 'integration/animo-architecture/ARCHG02_*'
+      - 'integration/animo-architecture/ANIMO-ARCHG02_STATUS.json'
+      - 'tools/audit_archg02_temporal_revalidation.py'
+      - '.github/workflows/archg02-temporal-revalidation.yml'
+  workflow_dispatch:
+
+jobs:
+  structural-audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit ARCHG02 temporal revalidation
+        run: |
+          python tools/audit_archg02_temporal_revalidation.py . --output /tmp/ARCHG02_STRUCTURAL_AUDIT.json
+          cat /tmp/ARCHG02_STRUCTURAL_AUDIT.json
