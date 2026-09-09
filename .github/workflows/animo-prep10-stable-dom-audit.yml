@@ -13,6 +13,7 @@ on:
       - 'tools/make_prep10_addit_variants.py'
       - 'tools/make_prep10_causal_initial.py'
       - 'tests/prep10/**'
+      - 'integration/animo-prep/ANIMO-PREP10_STATUS.json'
       - 'integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json'
       - 'integration/animo-prep/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json'
       - 'integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION.json'
@@ -47,6 +48,9 @@ jobs:
           fi
           if [ -f integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION.json ]; then
             python -m json.tool integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION.json >/dev/null
+          fi
+          if [ -f integration/animo-prep/ANIMO-PREP10_STATUS.json ]; then
+            python -m json.tool integration/animo-prep/ANIMO-PREP10_STATUS.json >/dev/null
           fi
       - name: Probe GNU diagnostic-contract local storage semantics
         run: |
