@@ -1,7 +1,7 @@
 {
   "work_unit": "ANIMO-B3I01",
   "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_01",
-  "title": "Live Post-G5 Intake for PREP12, STATEQ01 and BUILDQ01",
+  "title": "Live Post-G5 Intake for PREP12, STATEQ01, BUILDQ01 and newer authoritative streams",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3i01-canonical-register-append",
   "status": "IN_PROGRESS_PERSISTED_CANONICAL_TCD038_TCD039_APPEND_AWAITING_FINAL_CI",
@@ -38,7 +38,9 @@
     "BUILDQ01_MAPOHYDRO_LnBoMpMx": "MAP_TO_EXISTING_TCD-011",
     "BUILDQ01_MAPOHYDRO_INDEX0_BOUNDS_ORDER": "BUILD_RUNTIME_HAZARD_NOT_TCD"
   },
-  "checked_no_new_allocation": ["ANIMO-TIME02", "ANIMO-MASSQ01", "ANIMO-SYNQ01", "ANIMO-GOV02"],
+  "checked_no_new_allocation": ["ANIMO-TIME02", "ANIMO-MASSQ01", "ANIMO-SYNQ01", "ANIMO-GOV02", "ANIMO-IO01"],
+  "io01_checked_head": "38a576135d5f63b2561b4dbe180f7121fa3f336a",
+  "io01_disposition": "QUALIFIED_INPUT_CONTRACT_AUDIT_NO_NEW_TCD_CANDIDATE",
   "new_corrections_admitted": false,
   "b3_baseline_established": false,
   "production_migration_admitted": false,
