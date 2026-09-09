@@ -1,11 +1,13 @@
 {
   "work_unit": "ANIMO-SQ01",
   "title": "TCD-016 Dry-Solute Continuation State, Phase Ownership & Conservation Qualification",
-  "status": "IN_PROGRESS_EVIDENCE_RECONSTRUCTION_PERSISTED",
+  "status": "BLOCKED_TCD016_INSUFFICIENT_THEORY_FOR_CORRECTED_LEGACY_ADMISSION",
+  "scientific_route": "PHYSICS_MODEL_EXTENSION_REQUIRED",
   "production_migration": "NOT_ADMITTED",
   "target_discrepancy": "TCD-016",
-  "primary_class": "C",
-  "secondary_class": "E",
+  "primary_class": "C_MISSING_PHYSICAL_STATE_OR_INCOMPLETE_STATE_MODEL",
+  "secondary_class": "E_NUMERICAL_POLICY_CHANGE",
+  "atomicity": "REQUIRES_ATOMIZATION_BEFORE_ADMISSION",
   "admitted": false,
   "branch": "work/animo-sq01-tcd016-dry-solute-state",
   "base": {
@@ -19,22 +21,65 @@
     "source_modified": false,
     "testbank_modified": false
   },
-  "live_evidence_heads": {
+  "live_evidence_heads_at_qualification": {
     "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
     "TH01": "a3360415364ef4a66a81d7b6715bcd400829df1b",
     "TH02_rev41": "f7f3722b14f65340dc6d67a8f80d74f5d0ebb158",
     "PREP06_observed": "9b1f1ea51c24fb82823290193651830dc61ea3c8"
   },
-  "checkpoint": {
-    "legacy_loss_mechanism_reconfirmed": true,
-    "synthetic_experiments_complete": false,
-    "candidate_matrix_complete": false,
-    "theory_provenance_complete": false,
-    "class_c_gates_complete": false
+  "legacy_diagnostic": {
+    "case": "Puitmijn_Cranendonck_60",
+    "time": 1490.0,
+    "layer": 0,
+    "mass_lost_kg_N_m2": 0.000013880242022597072,
+    "mass_lost_kg_N_ha": 0.13880242022597072,
+    "frozen_Transsub_reproduction": "CONFIRMED_RSC_0_AVC_0_WITH_UNMODIFIED_SOURCE",
+    "counterfactual_tiny_outflow": "REJECTED_PATHOLOGICAL_CONCENTRATION"
   },
+  "candidate_decision": {
+    "preferred": "A_EXPLICIT_DRY_OR_IMMOBILE_SURFACE_SOLUTE_STORE",
+    "preferred_status": "PREFERRED_PROPOSED_MODEL_EXTENSION_NOT_ADMITTED",
+    "candidate_B": "REJECTED_AS_CORRECTED_LEGACY_CANDIDATE",
+    "candidate_C": "REJECTED_WITH_CURRENT_ANIMO_HYDROLOGY",
+    "candidate_D": "REJECTED_SEMANTIC_ALIASING"
+  },
+  "class_c_gates": {
+    "legacy_state_and_phase_reconstruction": "PASS",
+    "state_variable_definition_units_and_owner_for_preferred_candidate": "PROPOSED_NOT_THEORY_QUALIFIED",
+    "initialization_and_restart_contract": "DEFINED_FOR_QUALIFICATION",
+    "wet_to_dry_transfer_contract": "DEFINED_FOR_QUALIFICATION",
+    "dry_to_wet_transfer_contract": "FORM_DEFINED_KINETICS_UNQUALIFIED",
+    "local_conservation_closure": "PASS_DIAGNOSTIC_FOR_CANDIDATE_A",
+    "appearance_disappearance_edge_sequence": "PASS_DIAGNOSTIC_FOR_CANDIDATE_A",
+    "authoritative_theory_for_missing_phase": "BLOCKED",
+    "authoritative_rewetting_law": "BLOCKED",
+    "independent_scientific_review": "NOT_PERFORMED",
+    "physical_application_envelope_non_interference": "NOT_RUN_BECAUSE_SCIENTIFIC_SEMANTICS_NOT_FIXED",
+    "all_class_c_gates_complete": false
+  },
+  "theory_evidence": {
+    "ANIMO40_user_guide": "establishes ponding layer, liquid concentration state, soil NH4 sorption and separate additions reservoir, but no dry-solute continuation phase or remobilization law was found",
+    "TH01": "no dry-solute continuation authority recovered",
+    "TH02": "release-lineage evidence only, not phase theory",
+    "Report983": "official WUR publication record confirmed; full text was not available in the admitted SQ01 evidence set, so SQ01 makes no negative claim about its detailed contents"
+  },
+  "deliverables": [
+    "docs/science/TCD016_DRY_SOLUTE_STATE_RECONSTRUCTION.md",
+    "docs/science/TCD016_CONTINUATION_STATE_CANDIDATES.md",
+    "docs/science/TCD016_CONSERVATION_AND_REWETTING_CONTRACT.md",
+    "integration/animo-science/TCD016_CANDIDATE_MATRIX.json",
+    "integration/animo-science/ANIMO-SQ01_STATUS.json"
+  ],
+  "next_required_actions": [
+    "recover and inspect authoritative ANIMO process theory that can define or reject a dry continuation phase, especially the full process description lineage around Alterra Report 983 and any later ANIMO release documentation",
+    "obtain independent scientific review of the phase ownership and rewetting semantics",
+    "if no legacy theory is recovered, treat Candidate A explicitly as model evolution and open a separate scientific admission route rather than corrected-legacy B3 admission",
+    "after semantics are fixed, qualify process ordering, restart equivalence, physical-envelope trajectories and non-interference"
+  ],
   "notes": [
-    "This is a qualification branch only. No production implementation is permitted.",
-    "The branch is based on the authoritative B3Q01 classification head rather than merging parallel theory or preparatory branches.",
-    "External theory and state-audit branches are treated as pinned evidence until branch-convergence governance resolves integration authority."
+    "No production implementation was created.",
+    "No frozen source or historical testcase was modified.",
+    "No concentration cap, mass deletion, mass creation or invented external outflow is admitted as a solution.",
+    "Conservation closure of Candidate A is necessary evidence but is not treated as proof of ANIMO-specific intended physics."
   ]
 }
