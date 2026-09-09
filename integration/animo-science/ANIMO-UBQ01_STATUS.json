@@ -1,7 +1,7 @@
 {
   "work_unit": "ANIMO-UBQ01",
   "title": "TCD-042 Upper-Boundary Zero-Throughflow Solute Transaction and Owner Semantics Qualification",
-  "status": "EXACT_ZERO_ATOM_CLASS_B_SOURCE_THEORY_PERSISTED_EXECUTABLE_VALIDATION_PENDING",
+  "status": "EXACT_ZERO_CLASS_B_ATOM_EVIDENCE_PERSISTED_VALIDATION_REFRESH_PENDING",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-ubq01-tcd042-upper-boundary-transaction",
   "base": {
@@ -16,7 +16,7 @@
   },
   "scope": {
     "target": "TCD-042",
-    "qualified_atom": "EXACT_FLUX_ZERO_ONLY",
+    "qualified_atom_candidate": "EXACT_FLUX_ZERO_ONLY",
     "finite_positive_subthreshold_flux_included": false,
     "physical_state_patch_admitted": false,
     "accounting_patch_admitted": false,
@@ -36,26 +36,47 @@
     "source_theory_document": "docs/science/TCD042_ZERO_THROUGHFLOW_ATOMIZATION.md",
     "machine_record": "integration/animo-science/TCD042_ZERO_FLOW_ATOMIZATION.json"
   },
-  "natural_witness": {
-    "case": "RuurloGrass",
-    "interval": "TITO=1915",
-    "source": "MASSQ02-R016",
-    "Flux": 0.0,
-    "booked_total_N_kg_ha": 0.006749373218,
-    "observer_residual_kg_ha_N": 0.0067493732130969875,
-    "Hetop_m": 0.02
+  "executable_evidence": {
+    "synthetic_exact_zero_oracle": {
+      "run_id": 34362690102,
+      "head": "656bc7fe073a6e7636e73f88940e98bf023db9b7",
+      "conclusion": "success",
+      "no_tolerance": true
+    },
+    "natural_isolated_probe": {
+      "artifact": "integration/animo-science/TCD042_NATURAL_EXACT_ZERO_PROBE.json",
+      "case": "RuurloGrass",
+      "interval": "TITO=1915",
+      "records_before_first_difference": 1914,
+      "all_prior_records_bitwise_equal": true,
+      "only_predeclared_direct_coordinates_differ_at_first_difference": true,
+      "direct_coordinates": ["Rsconhtop", "Rsconitop", "Avconhtop", "Avconitop"],
+      "formula_predictions_bitwise_equal": true,
+      "zero_load_control_bitwise_equal": true,
+      "positive_flow_control_bitwise_equal": true,
+      "comparison_policy": "EXACT_BITWISE_NO_TOLERANCE"
+    }
   },
   "finite_positive_subthreshold": {
     "range": "0<Flux<1.0d-8",
-    "status": "FAIL_CLOSED_REACHABILITY_AND_NUMERICAL_POLICY_NOT_YET_QUALIFIED",
-    "silent_composition_with_exact_zero_atom": false
+    "status": "REACHABLE_SEPARATE_NUMERICAL_POLICY_ATOM_MATERIALITY_AND_POLICY_PENDING",
+    "artifact": "integration/animo-science/TCD042_SUBTHRESHOLD_REACHABILITY.json",
+    "executed_cases": 8,
+    "blocked_cases_without_trace": 1,
+    "records_scanned_no_ponding": 15043,
+    "finite_positive_subthreshold_records": 1238,
+    "cases_with_finite_positive_subthreshold": 6,
+    "provisional_class": "E_NUMERICAL_POLICY",
+    "silent_composition_with_exact_zero_atom": false,
+    "new_tcd_reserved": false,
+    "canonical_child_created": false
   },
   "validation": {
     "validator": "tools/ubq01/validate_tcd042_zero_flow.py",
     "workflow": ".github/workflows/animo-ubq01-zero-flow-oracle.yml",
-    "github_actions_run_id": null,
-    "github_actions_conclusion": "PENDING",
-    "synthetic_exact_zero_oracle": "PENDING"
+    "prior_synthetic_oracle_run_id": 34362690102,
+    "prior_synthetic_oracle_conclusion": "success",
+    "integrated_evidence_validation": "PENDING_GITHUB_ACTIONS_AFTER_PERSIST"
   },
   "work_status": {
     "realized": true,
@@ -64,16 +85,19 @@
     "qualified": false,
     "work_unit_complete": false
   },
+  "parent_tcd_state": {
+    "exact_zero_atom_ready_for_integrated_validation": true,
+    "finite_positive_subthreshold_atom_open": true,
+    "tcd042_fully_qualified": false
+  },
   "admission": {
     "b3_admitted": false,
     "corrected_legacy_admitted": false,
     "production_migration_admitted": false
   },
   "required_followup": [
-    "Run and pass the exact-zero synthetic oracle and scope guard.",
-    "Execute a natural Ruurlo exact-zero correction probe against frozen B0 and predeclare affected surfaces.",
-    "Run exact zero-load and positive-flow non-interference controls.",
-    "Scan reachability of 0<Flux<1.0d-8 and keep any finite-positive numerical-policy seam separate from the exact-zero atom.",
+    "Pass the integrated exact-zero natural/synthetic validator and scope guard.",
+    "Keep the reachable finite-positive subthreshold seam separate and qualify its numerical materiality/policy independently.",
     "Do not admit TCD-042 from UBQ01 without the applicable GOV02/B3Q01 route and independent review."
   ]
 }
