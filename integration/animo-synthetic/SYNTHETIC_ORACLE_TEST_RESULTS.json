@@ -1,0 +1,20 @@
+{
+  "work_unit": "ANIMO-SYNQ01",
+  "execution_environment": "local isolated Python standard-library reference harness",
+  "python_version": "3.13.5",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "reference_self_test_groups_passed": 13,
+  "unittest_cases_passed": 10,
+  "unittest_cases_failed": 0,
+  "register_structural_audit": "PASS",
+  "register_records": 12,
+  "limiting_case_sentinels": 12,
+  "forbidden_B2_records": 0,
+  "animo_runtime_executed_by_synq01": false,
+  "legacy_source_imported_by_reference_tool": false,
+  "legacy_control_flow_reused": false,
+  "arbitrary_production_tolerance_defined": false,
+  "github_actions_verification": "PENDING_AT_LOCAL_TEST_CHECKPOINT",
+  "result": "PASS_LOCAL"
+}
