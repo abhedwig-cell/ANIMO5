@@ -47,7 +47,7 @@ class Gov02EvidenceDagTests(unittest.TestCase):
             "b3_class": "B",
             "claim_type": "HISTORICAL_FIDELITY_CLAIM",
             "route": "B2_BACKED_RECONCILIATION",
-            "evidence": [{"class": "B2", "source_kind": "INDEPENDENT_HISTORICAL_REFERENCE"}],
+            "evidence": [{"class": "B2", "source_kind": "INDEPENDENT_HISTORICAL_REFERENCE", "qualified": True}],
         }
         allowed, reasons = mod.evaluate(case)
         self.assertTrue(allowed, reasons)
