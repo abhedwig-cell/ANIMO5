@@ -1,0 +1,156 @@
+{
+  "record_id": "B3D04-TCD024-GOV03-ADMISSION",
+  "record_version": 1,
+  "tcd_ids": ["TCD-024"],
+  "atomicity": "ATOMIC",
+  "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "scope": {
+    "process": "slow Langmuir sorption site-index binding",
+    "code_path": "Transorp.for Conc_unl slow-Langmuir kinetic exponent",
+    "legacy_expression": "Yy = One + Parcxsl(3,I) * Avc",
+    "candidate_atomic_correction": "Yy = One + Parcxsl(3,J) * Avc",
+    "claim": "the site-specific slow-Langmuir affinity parameter must be indexed by slow-sorption site J, not nonlinear trial counter I"
+  },
+  "authorities": {
+    "B3D03": "a3e194573b3a7ce95d5ef15fc179ddb3a613d8a6",
+    "B3B03": "446f57f3aeff6e7db56ce473f0724bdb58cad94f",
+    "B3B03R": "b36aedb4406c3f92d6ee7cd2fa4231ed872620ec",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "SYNQ01": "842f72300fd03ede0b9024537a7ee6126722a121",
+    "NQ02": "40a41089020f78ee1d5181b8afc7bdb511af3193"
+  },
+  "identities": {
+    "b0": {
+      "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "source_member": "ANIMO_4.1.5.53/Transorp.for",
+      "source_member_sha256": "65ab0f70ed7cc4f1c0012ca95bcdddeb5c26dd21b09df0ec61b7b269e51cd0ad"
+    },
+    "b1": {
+      "status": "DIAGNOSTIC_NOT_REFERENCE",
+      "evidence_identity": "B3B03 exact synthetic active/inactive controls plus natural Optcxsl=3 negative control",
+      "diagnostic_limitations": "Positive Optcxsl=2 discrimination is synthetic; no natural positive activation exists in the supplied frozen testbank and no B1 evidence is promoted to B2."
+    },
+    "b2": {
+      "status": "UNAVAILABLE_AFTER_DOCUMENTED_ACQUISITION_ATTEMPT",
+      "acquisition_effort_ref": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+    }
+  },
+  "evidence": {
+    "exact_identity_and_causality": {
+      "status": "PRESENT",
+      "summary": "The legacy expression binds the site-specific Langmuir affinity to nonlinear trial counter I. The bounded correction binds the same parameter dimension to slow-site index J.",
+      "refs": ["ANIMO-B3B03@446f57f3aeff6e7db56ce473f0724bdb58cad94f", "ANIMO-B3B03R@b36aedb4406c3f92d6ee7cd2fa4231ed872620ec"]
+    },
+    "conservation": {
+      "status": "PRESENT",
+      "summary": "The independently recomputed active unequal-site fixture closes the isolated multi-site slow-site storage gain against the solution counter-transfer exactly, with zero residual.",
+      "refs": ["B3B03 readiness fixture", "SYNQ01 oracle register", "ANIMO-B3B03R@b36aedb4406c3f92d6ee7cd2fa4231ed872620ec"]
+    },
+    "coverage": {
+      "natural_positive_Optcxsl2_activation": false,
+      "natural_positive_activation_limitation": "All supplied active-P natural cases use OPTCXSL=3 Freundlich slow sorption.",
+      "natural_negative_control": "PASS",
+      "synthetic_active_unequal_site_discriminator": "PASS",
+      "inactive_site_control": "PASS_EXACT",
+      "scope_consequence": "Admission is claim-scoped to the Optcxsl=2 local site-index identity and does not claim natural historical prevalence."
+    },
+    "expected_difference": {
+      "trigger": "Optcxsl == 2 and Conc_unl reaches slow-site kinetic update",
+      "changed_immediate": [
+        "site-J slow-Langmuir relaxation factor Yy when Parcxsl(3,J) differs from Parcxsl(3,I)",
+        "updated slow-sorbed P state for affected active site J",
+        "site-local slow-sorption P transfer implied by qnew(J)-qold(J)"
+      ],
+      "changed_downstream_when_activated": [
+        "dissolved PO4-P state through conservation coupling",
+        "slow-sorbed P site states",
+        "P balance residuals and cumulative P balance fields caused by the corrected affinity binding",
+        "P-derived outputs where the changed trajectory propagates"
+      ],
+      "required_unchanged": [
+        "Optcxsl selection and constitutive option triggers",
+        "nonlinear trial loop I=1..20 and its ordering",
+        "site loop J=1..Ncxsl and its ordering",
+        "Recf(J) site-specific rate selection",
+        "all input parameter values",
+        "TCD-019 fast-sorption finite-change policy",
+        "TCD-019 C_unl stopping or convergence policy",
+        "all solver tolerances and clipping thresholds",
+        "Optcxsl=1 linear slow-sorption route",
+        "Optcxsl=3 Freundlich slow-sorption route",
+        "inactive zero-rate site identity",
+        "hydrological forcing, hydrological states and water fluxes",
+        "C and N families outside existing P coupling"
+      ]
+    },
+    "non_interference": {
+      "status": "PRESENT",
+      "summary": "The atomic correction changes only the slow-Langmuir affinity selector at one local expression. It does not alter TCD-019 numerical policy, loop structure, solver tolerances, option triggers or other constitutive routes.",
+      "refs": ["TCD024_EXPECTED_DIFFERENCE.json@B3B03", "ANIMO-B3B03R@b36aedb4406c3f92d6ee7cd2fa4231ed872620ec"]
+    },
+    "independent_review": {
+      "status": "COMPLETE",
+      "reviewer_or_workunit": "ANIMO-B3B03R@b36aedb4406c3f92d6ee7cd2fa4231ed872620ec",
+      "independent_from_correction_authoring": true,
+      "scope": "separate-ChatGPT-context second-line review; no organizational or human independence claimed",
+      "result": "PASS",
+      "workflow_run": 34396595546,
+      "issue": 26,
+      "issue_result_comment": 5607701626
+    },
+    "historical_uncertainty": {
+      "historical_prevalence": "UNKNOWN",
+      "uncertainty_statement": "Historical revision-53 prevalence and behavioural effect of the Optcxsl=2 indexing defect remain unknown because no qualified B2 behavioural reference exists and the supplied frozen natural testbank has no positive Optcxsl=2 activation.",
+      "scope_limitations": "This admission establishes only the atomic scientific index correction. It does not establish historical fidelity, natural-case prevalence, whole-model equivalence, B4 readiness or production migration."
+    }
+  },
+  "class_specific_evidence": {
+    "wrong_index_owner_demonstrated": "PASS",
+    "correct_index_owner_demonstrated": "PASS",
+    "unequal_site_positive_discriminator": "PASS",
+    "unrounded_site_state_transfer_evidence": "PASS",
+    "multi_site_conservation_identity": "PASS_EXACT_NO_TOLERANCE",
+    "active_and_inactive_controls": "PASS",
+    "TCD019_separation": "PASS",
+    "expected_difference_non_interference": "PASS",
+    "natural_positive_activation_limitation_retained": "PASS",
+    "independent_second_line": "PASS"
+  },
+  "gates": {
+    "b0_identity": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Frozen source/testbank and exact Transorp.for member identities are pinned."},
+    "b1_evidence": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Diagnostic synthetic and natural-negative evidence is present and is not promoted to B2."},
+    "b2_route": {"status": "PASS", "applicability": "APPLICABLE", "justification": "GOV03 qualifies B2 unavailability after reasonable acquisition effort and opens the strict historical-uncertainty route."},
+    "theory_or_exact_identity": {"status": "PASS", "applicability": "APPLICABLE", "justification": "The parameter ownership and index-domain identity are locally exact and independently reviewed."},
+    "causal": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Unequal-site active fixtures discriminate I-versus-J binding and isolate the atomic selector error."},
+    "conservation": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Independent multi-site storage/counter-transfer identity closes exactly with zero residual."},
+    "expected_difference": {"status": "PASS", "applicability": "APPLICABLE", "justification": "The expected-difference surface is predeclared and independently reviewed."},
+    "non_interference": {"status": "PASS", "applicability": "APPLICABLE", "justification": "TCD-019, solver policy, alternative sorption routes and hydrology remain outside the atomic change."},
+    "coverage": {"status": "PASS", "applicability": "APPLICABLE_WITH_EXPLICIT_LIMITATION", "justification": "Synthetic positive unequal-site activation plus exact inactive controls and natural Optcxsl=3 negative controls qualify the local claim; no natural positive prevalence claim is made."},
+    "independent_review": {"status": "PASS", "applicability": "APPLICABLE", "justification": "ANIMO-B3B03R independently rechecked all fail-closed review gates in a separate ChatGPT context and passed."},
+    "residual_uncertainty": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Historical prevalence, historical fidelity and absence of natural positive Optcxsl=2 activation remain explicitly bounded uncertainties."},
+    "class_specific": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Class-B local algebra/index/species ownership, discrimination, conservation and non-interference requirements are satisfied."},
+    "composition_if_applicable": {"status": "PASS", "applicability": "NOT_APPLICABLE", "justification": "This is one atomic TCD-024 claim only; TCD-019 remains separate."}
+  },
+  "residual_uncertainty": [
+    "No qualified B2 behavioural reference exists; historical prevalence remains UNKNOWN.",
+    "The supplied frozen natural testbank does not positively activate Optcxsl=2, so positive discrimination is synthetic rather than a natural historical replay.",
+    "The independent second-line review is context-independent from correction authoring but does not claim organizational or human independence.",
+    "The frozen raw Transorp.for bytes are hash-pinned; the review used exact source-bound manifests/evidence and did not republish licensed raw source bytes.",
+    "This admission does not authorize TCD-019 composition, B4 migration, production source modification or whole-model historical-equivalence claims."
+  ],
+  "composition": {
+    "is_composition": false,
+    "component_record_ids": []
+  },
+  "admission_decision": {
+    "admitted": true,
+    "decision": "ADMIT_TCD024_ATOMIC_CLASS_B_SCIENTIFIC_INDEX_CORRECTION_WITH_HISTORICAL_UNCERTAINTY",
+    "decision_scope": "TCD-024 atomic slow-Langmuir site-index correction only",
+    "production_patch_authorized": false,
+    "production_migration_admitted": false
+  }
+}
