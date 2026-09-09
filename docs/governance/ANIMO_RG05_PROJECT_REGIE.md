@@ -104,7 +104,11 @@ Parent `TCD-042` remains `WAITING_ON_CHILDREN`. It cannot be admitted, composed 
 
 `B3B04@c87ed020a8b4a4685e76f701364b560c8f9c7aef` remains in progress for TCD-040. STATEQ02 split 282 remains only activation/rejection evidence and is not TCD-040 qualification.
 
-`IO02@fdf6a27feefcb1d1afb9faff0aaab2f5363073c9` remains fail closed. Its observer/test code compiles, but workflow `34383556997` fails in the unittest step. GENERAL.INP therefore remains unqualified.
+`IO02@302d53050d51dacfb68e1ea8d1cc7dd64e985cf3` is now qualified after the contract-test repair, with workflow `34385801249` successful. Its bounded decision is:
+
+`QUALIFIED_BOUNDED_REV53_GENERAL_NORMALIZED_REPRESENTATION_WITH_EXPLICIT_LEGACY_HAZARD_EXCLUSIONS`
+
+The qualification covers admitted revision-53-compatible non-GHG `GENERAL.INP` files while preserving ordered parser semantics, source-observed defaults, repeated structures, lexical provenance and feature conditions. It explicitly does not claim byte round-trip identity and does not manufacture meanings for undefined legacy storage state. GHGMais GENERAL, the non-revision-53-compatible GrassPeat WFPS insertion, optional/whole-profile undefined `OutseLn` storage artifacts, malformed uncontrolled paths, binary hydrology, INITIAL/restart parsing and production migration remain outside the qualified scope.
 
 ## Atomic B3 queue reset
 
@@ -123,11 +127,13 @@ The full queue is `integration/animo-reg/RG05_B3_QUEUE.json`.
 
 ## Parallel workstream governance
 
-Readiness, numerical work, input-contract qualification, independent review and the PREP02R external acquisition action may proceed in parallel when atomic ownership is preserved.
+Readiness, numerical work, bounded input-contract qualification, independent review and the PREP02R external acquisition action may proceed in parallel when atomic ownership is preserved.
 
 Shared semantic owners require explicit serialization. B3B02 and B3E01 share parent TCD-042 and now also share the unresolved `Hetop=0` semantic domain. Positive-Hetop evidence may proceed independently. Any zero-thickness semantic decision, new guard, domain refinement or parent composition must be serialized under that shared owner.
 
 NQ02 and B3B03 share the phosphorus/sorption subsystem, but TCD-019 and TCD-024 cannot be composed for admission and one defect's improved residual cannot define the other's acceptance policy.
+
+IO02 is now a completed bounded representation qualification and may be used as input-contract evidence within its declared scope. Any production parser migration, broader `ModelConfiguration` integration, GHG GENERAL support or excluded legacy-hazard semantics remains a separate serialized qualification problem rather than an implicit extension of IO02.
 
 Canonical STATE, TIME, MASS and EX admissions are serialized owning-gate decisions. TCD-042 parent disposition is serialized after the shared domain and both child-specific gates close. B4 is serialized after every included scientific and canonical gate is admitted. Production remains downstream of B4.
 
@@ -156,7 +162,7 @@ The detailed rules are in `integration/animo-reg/RG05_PARALLELISM_MATRIX.csv`.
 3. Continue genuinely independent B3 reviews for the qualified readiness dossiers. NQ03R is a passed numerical review, not a substitute for every later B3 disposition review.
 4. Define a formal atomic B3 disposition carrier for B3I05 child keys without reserving `TCD-043` and without collapsing a child into the parent.
 5. Execute the real external archival/provenance acquisition action if progress on G6U is desired.
-6. Fix IO02's failing contract tests and keep its work representation-only until the grammar, negative probes, natural projection and validation are green.
+6. Keep IO02's qualified scope bounded. Open separate work only for excluded GENERAL families/hazards or later production binding rather than broadening IO02 silently.
 7. Keep B4 composition and production migration closed.
 
 ## RG05 non-admissions
