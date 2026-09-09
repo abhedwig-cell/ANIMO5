@@ -1,6 +1,6 @@
 # ANIMO-STATEQ01 checkpoint projection purity qualification
 
-Status: `QUALIFICATION_HARNESS_PERSISTED_EXECUTION_OPEN`
+Status: `PASS_SYNTHETIC_CHECKPOINT_PROJECTION_PURITY_NON_B2`
 
 Canonical STATE admission: `NOT_ADMITTED`
 
@@ -8,7 +8,7 @@ Production migration: `NOT_ADMITTED`
 
 ## Scope
 
-This addendum targets two remaining restricted-core readiness tests:
+This addendum targets two restricted-core readiness tests:
 
 - `RC-R8`: final-interval checkpoint serializer observational purity;
 - `RC-R9`: report-period split physical-only continuation.
@@ -50,7 +50,19 @@ The executable sentinel checks:
 
 The same harness changes report-period values while holding accepted physical and continuation state fixed. The physical checkpoint payload must remain exactly unchanged and contain no report accumulator fields.
 
-A pass is only synthetic observer/projection evidence. It does not yet prove that a full revision-53 split run across a report boundary is behaviourally identical when diagnostic continuation is dropped. That real split test remains open.
+## Executed result
+
+GitHub Actions run `34337101316`, job `102418954860`, completed successfully.
+
+Result:
+
+- 9 tests run;
+- 9 passed;
+- 0 failed;
+- RC-R8 synthetic observational projection contract passed;
+- RC-R9 synthetic report-independence contract passed.
+
+The pass remains non-B2. It does not prove that a full revision-53 split run across a final or report boundary is behaviourally identical when diagnostic continuation is omitted. That behavioural split remains open.
 
 ## Files
 
@@ -61,3 +73,7 @@ Harness:
 Tests:
 
 `tests/stateq01/test_checkpoint_projection_purity_harness.py`
+
+Machine-readable result:
+
+`integration/animo-state/CHECKPOINT_PROJECTION_PURITY_SENTINEL_STATUS.json`
