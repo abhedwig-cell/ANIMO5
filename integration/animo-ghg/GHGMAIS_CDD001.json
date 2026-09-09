@@ -1,0 +1,44 @@
+{
+  "artifact_class": "COMPATIBILITY_DIAGNOSTIC_DESCENDANT",
+  "id": "GHG01-CDD-001",
+  "b0": false,
+  "b2": false,
+  "reference_qualified": false,
+  "historical_behaviour_claim_permitted": false,
+  "parent": {
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "case": "GHGMais",
+    "frozen_general_sha256": "0210c9529ae90178412154aa40cf74b44872129a646ad933857650448220224f",
+    "frozen_material_sha256": "65bd1870d42b33008b45edd1d928a6f42d9b10bd9a01acca535f0af891745804"
+  },
+  "runtime_adapter": {
+    "evidence_class": "DIAGNOSTIC_NOT_REFERENCE",
+    "scientific_input_values_changed": false,
+    "runtime_adapted_general_before_transform_sha256": "a803ed49fdf16cb295924bbd3f52f3d5aea9cc58d0b3ac022101e53593753b66"
+  },
+  "transformation": {
+    "target": "Input/general.inp",
+    "kind": "APPEND_OUTGHG_FROM_VALUES_ALREADY_PRESENT_UNDER_DEFGHG",
+    "source": "Input/material.inp >defGHG:",
+    "appended_text": "\n>outGHG: --------------- GHG compatibility diagnostic metadata ----------------\n6\n11 12 13 14 15 16\n25.0 298.0\n",
+    "meaning": "Make only the first observed revision-53 parser requirement available at its required label by copying already-present GHGMais GHG metadata. The original >defGHG: block is retained.",
+    "scientific_parameters_invented": false,
+    "orgcom_added": false,
+    "deffra_rewritten": false,
+    "other_schema_mismatches_changed": false
+  },
+  "descendant": {
+    "general_sha256": "bf6c33dfab1c0c53dce3c79120be12a23c392dbf24dcc19336d62bb53236c8b0",
+    "manifest_local_sha256_at_run": "05a73c61cc436369e1692bd7eb576418e902636d7b9614bf62ab3371310a22b3"
+  },
+  "diagnostic_execution": {
+    "runner_class": "DETERMINISTIC_GNU_DIAGNOSTIC_NOT_REFERENCE",
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "first_parent_failure": "GENERAL >outGHG: missing",
+    "descendant_result": "STOP_AT_SECOND_INDEPENDENT_SCHEMA_MISMATCH",
+    "second_failure": "MATERIAL >orgcom: missing",
+    "ghg_process_branch_reached": false,
+    "ghg_state_mutation_observed": false,
+    "ghg_scientific_output_observed": false
+  }
+}
