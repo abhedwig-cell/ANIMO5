@@ -77,6 +77,24 @@
       "historical_runtime_magnitude": "REFERENCE_BLOCKED"
     },
     {
+      "key": "GHG01-LCL-GHG-RESTART-PHASE-PARTITION",
+      "classification": "SOURCE_CONFIRMED_RESTART_PHASE_STATE_RECONSTRUCTION_DISCONTINUITY_REFERENCE_UNEXERCISED",
+      "canonical_tcd": null,
+      "root_finding": "INITIAL.OUT carries total RsCs gas state, while uninterrupted continuation accepts RsCo directly and restart reconstructs Co from Cs with Bunsen partitioning at fixed Terf rather than proven checkpoint-time thermodynamic state",
+      "instant_total_mass_loss_claim": false,
+      "behavioural_restart_equivalence_established": false,
+      "arch02_requirement": "GHG phase views must reconstruct from accepted checkpoint thermodynamic and hydrology state",
+      "historical_runtime_magnitude": "REFERENCE_BLOCKED"
+    },
+    {
+      "key": "GHG01-LCL-GHG-PONDING-RESTART-LAYER0",
+      "classification": "SOURCE_CONFIRMED_PONDING_GHG_LAYER0_RESTART_STATE_RECONSTRUCTION_GAP_REFERENCE_UNEXERCISED",
+      "canonical_tcd": null,
+      "root_finding": "INITIAL.OUT serializes layer0 CH4/N2O system state but Inicalc reconstructs dissolved GHG concentrations only for layers 1..Nl; pre-existing ponding does not trigger the new-ponding Co(0) overwrite in GHGtransport",
+      "arch02_requirement": "active ponding GHG state must have explicit layer0 owner or deterministic reconstruction",
+      "historical_runtime_magnitude": "REFERENCE_BLOCKED"
+    },
+    {
       "key": "GHG01-LCL-GHG-OUTBAL-WORKING-ARRAYS",
       "classification": "SOURCE_CONFIRMED_BALANCE_OBSERVER_INTERFACE_DEFECT",
       "canonical_tcd": null,
@@ -132,6 +150,17 @@
     "historical_intel_storage_policy_proven": false,
     "animo5_requirement": "persistent scientific task state explicit or deterministically recomputed"
   },
+  "restart_state_continuity": {
+    "artifact": "integration/animo-ghg/GHG_RESTART_STATE_CONTINUITY_AUDIT.json",
+    "arch02_head_observed": "a079d93c965f6073586c55ee4b3544dd8873b723",
+    "soil_layer_phase_partition_continuity_proven": false,
+    "ponding_layer0_reconstruction_proven": false,
+    "instant_total_mass_loss_claim": false,
+    "strengthened_arch02_invariants": [
+      "GHG_PHASE_VIEW_RECONSTRUCTION_USES_ACCEPTED_CHECKPOINT_THERMODYNAMIC_AND_HYDROLOGY_STATE",
+      "ACTIVE_PONDING_GHG_STATE_HAS_EXPLICIT_LAYER0_OWNER_OR_DETERMINISTIC_RECONSTRUCTION"
+    ]
+  },
   "activated_case_minimum_evidence": [
     "GHGasses task 1 and task 2 reachability",
     "CH4 and N2O start/end gas system storage",
@@ -140,6 +169,8 @@
     "first-read Ln, Te50, fGrow, K1plant, QOxCH4Plt and QEmCH4Plt",
     "exact ponding state before temporary GHG transformation and after restoration",
     "explicit capture or deterministic recomputation of GHG phase, oxidation, N2O iteration and shared transport task state",
+    "split-run restart with nonzero GHG state, unsaturated layer and Te different from Terf, comparing accepted RsCs/RsCo with restored Cs/Co before aggregate output",
+    "pre-existing ponding restart with nonzero layer0 GHG state",
     "CH4 oxidation and all emission mechanisms",
     "N2O nitrification production, denitrification production, reduction and emission",
     "ordinary C/N balances plus GHG observer terms",
@@ -159,6 +190,8 @@
     "GHG01_CH4_FRESH_OM_WEIGHTING_INDEX_INTENT_UNRESOLVED",
     "GHG01_CH4_PLANT_GROWTH_TEMPERATURE_USE_BEFORE_DEFINITION",
     "GHG01_ACTIVE_GHG_HIDDEN_TASK_STATE_BUILD_CONTRACT_DEPENDENCY",
+    "GHG01_GHG_RESTART_PHASE_STATE_CONTINUITY_NOT_ESTABLISHED",
+    "GHG01_PONDING_LAYER0_RESTART_STATE_RECONSTRUCTION_GAP",
     "GHG01_SOURCE_CONFIRMED_BALANCE_OBSERVER_AND_CONTROL_VOLUME_FINDINGS",
     "GHG01_N2O_DOCUMENT_SOURCE_EQUATION_CONFLICTS",
     "QUALIFIED_HISTORICAL_REFERENCE_RUNNER_OR_EQUIVALENT_ORACLE"
