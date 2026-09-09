@@ -1,0 +1,33 @@
+{
+  "work_unit": "ANIMO-GHG01",
+  "title": "Greenhouse-Gas Lineage, Input Contract, Process Activation & Scientific Qualification",
+  "status": "IN_PROGRESS_PERSISTED",
+  "production_migration": "NOT_ADMITTED",
+  "b3_admitted": false,
+  "branch": "work/animo-ghg01-ghg-qualification",
+  "base_commit": "f7f3722b14f65340dc6d67a8f80d74f5d0ebb158",
+  "upstream_evidence": {
+    "TH01": "a3360415364ef4a66a81d7b6715bcd400829df1b",
+    "TH02": "f7f3722b14f65340dc6d67a8f80d74f5d0ebb158",
+    "TQ01": "5c43ee16df37a0a1357614fdec527f25e5ca8c16",
+    "PREP06": "9b1f1ea51c24fb82823290193651830dc61ea3c8"
+  },
+  "frozen_evidence": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "hard_rules": {
+    "translate_GHGMais": false,
+    "compatibility_descendant_can_be_B0": false,
+    "compatibility_descendant_can_be_B2": false,
+    "source_only_scientific_qualification": false,
+    "current_version_as_rev53_lineage": false
+  },
+  "deliverables": {
+    "GHG_REV53_PROCESS_RECONSTRUCTION.md": "PENDING",
+    "GHG_INPUT_LINEAGE_RECONCILIATION.md": "PENDING",
+    "GHGMAIS_COMPATIBILITY_ANALYSIS.md": "PENDING",
+    "GHG_LEDGER_RECONCILIATION.md": "PENDING"
+  },
+  "target_closeout": "QUALIFIED_GHG_THEORY_SOURCE_AND_INPUT_LINEAGE_EVIDENCE_WITH_HISTORICAL_REFERENCE_GAPS"
+}
