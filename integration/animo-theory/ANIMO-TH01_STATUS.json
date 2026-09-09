@@ -1,15 +1,33 @@
 {
   "work_unit": "ANIMO-TH01",
   "title": "Revision-53 Theory, Extension Provenance & Scientific Intent Qualification",
-  "status": "IN_PROGRESS_SOURCE_BOUND_THEORY_PROVENANCE_AUDIT",
+  "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-th01-rev53-theory-provenance",
   "base_branch": "work/animo-eb01-evidence-baseline-model",
   "base_head": "52411b9d2d6d80717914bc6642544290a54ded21",
+  "status": "QUALIFICATION_CANDIDATE_PERSISTED_AWAITING_VERIFICATION",
+  "decision_candidate": "QUALIFIED_REV53_THEORY_PROVENANCE_INVENTORY_WITH_EXPLICIT_UNRESOLVED_GAPS",
+  "implemented": true,
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "blocked": true,
+  "rev53_theory_fully_qualified": false,
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "legacy_source_modified": false,
+  "testcase_modified": false,
+  "production_code_modified": false,
+  "production_migration_admitted": false,
   "frozen_source": {
     "artifact": "ANIMO_4.1.5.53(3).zip",
     "version": "4.1.5",
     "revision": "53",
     "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566"
+  },
+  "testbank": {
+    "artifact": "ANIMO_testbank.zip",
+    "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
   },
   "supplied_documentation": {
     "artifact": "ANIMO 4.0 User's Guide",
@@ -28,14 +46,92 @@
     "PREP01_to_PREP05_common_source": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
     "PREP06": "9b1f1ea51c24fb82823290193651830dc61ea3c8"
   },
-  "deliverables": {
-    "work_unit_contract": "persisted",
-    "extension_reconciliation": "pending",
-    "provenance_register": "pending",
-    "ghg_qualification": "pending",
-    "macropore_qualification": "pending",
-    "p_sorption_qualification": "pending",
-    "theory_code_discrepancy_register_update": "pending_if_supported"
+  "process_assessment": {
+    "inherited_core_CNP": {
+      "evidence_strength": "HIGH",
+      "reconciliation": "THEORY_CONFIRMED_AT_PROCESS_LEVEL",
+      "b3": "THEORY_BASIS_USABLE_BEHAVIOURAL_REFERENCE_STILL_REQUIRED"
+    },
+    "GHG_CH4_N2O": {
+      "evidence_strength": "MEDIUM_BROAD_INTENT_LOWER_EXACT_REV53_EQUATIONS",
+      "reconciliation": "THEORY_PARTIALLY_RECONSTRUCTED",
+      "b3": "BLOCKED_VERSION_SPECIFIC_THEORY_AND_REFERENCE_LINEAGE"
+    },
+    "macropores": {
+      "evidence_strength": "MEDIUM_HIGH_HYDROLOGY_MEDIUM_LOW_ANIMO_SOLUTE",
+      "reconciliation": "THEORY_PARTIALLY_RECONSTRUCTED",
+      "b3": "BLOCKED_ANIMO_SOLUTE_THEORY_ACTIVE_REFERENCE_CASE_AND_TCD025"
+    },
+    "stable_DOM": {
+      "evidence_strength": "MEDIUM_HIGH_CARBON_TOPOLOGY_MEDIUM_LOW_TO_MEDIUM_NP",
+      "reconciliation": "THEORY_PARTIALLY_RECONSTRUCTED_WITH_VERSION_LABEL_CONFLICT",
+      "b3": "BLOCKED_VERSION_LINEAGE_NP_EXTENSION_AND_TCD023"
+    },
+    "P_fast_Langmuir": {
+      "evidence_strength": "HIGH",
+      "reconciliation": "THEORY_CONFIRMED",
+      "b3": "THEORY_READY_TCD019_NUMERICAL_QUALIFICATION_REMAINS"
+    },
+    "P_slow_Freundlich": {
+      "evidence_strength": "HIGH",
+      "reconciliation": "THEORY_CONFIRMED",
+      "b3": "THEORY_READY_BEHAVIOURAL_REFERENCE_STILL_REQUIRED"
+    },
+    "P_slow_Langmuir": {
+      "evidence_strength": "MEDIUM_HIGH_INHERITED_OPTION_AUTHORITY",
+      "reconciliation": "THEORY_CODE_CONFLICT",
+      "b3": "BLOCKED_TCD024_AND_HISTORICAL_REFERENCE"
+    },
+    "P_instantaneous_precipitation": {
+      "evidence_strength": "HIGH_INHERITED_CORE",
+      "reconciliation": "THEORY_CONFIRMED",
+      "b3": "THEORY_READY_BEHAVIOURAL_REFERENCE_STILL_REQUIRED"
+    },
+    "P_kinetic_precipitation": {
+      "evidence_strength": "LOW_TO_MEDIUM_VERSION_SPECIFIC",
+      "reconciliation": "CODE_DEFINED_THEORY_UNCONFIRMED",
+      "b3": "BLOCKED_VERSION_SPECIFIC_AUTHORITY"
+    },
+    "P_class_crop_forcing": {
+      "evidence_strength": "LOW_TO_MEDIUM",
+      "reconciliation": "CODE_DEFINED_THEORY_UNCONFIRMED",
+      "b3": "BLOCKED_INDEPENDENT_SCIENTIFIC_PROVENANCE"
+    },
+    "sulphate_parser_surface": {
+      "evidence_strength": "INSUFFICIENT_FOR_PROCESS",
+      "reconciliation": "INSUFFICIENT_EVIDENCE",
+      "b3": "NOT_A_QUALIFIED_PROCESS"
+    }
   },
+  "deliverables": {
+    "work_unit_contract": "docs/theory/ANIMO-TH01_WORK_UNIT_CONTRACT.md",
+    "extension_reconciliation": "docs/theory/REV53_EXTENSION_THEORY_RECONCILIATION.md",
+    "provenance_register": "docs/theory/REV53_THEORY_PROVENANCE_REGISTER.csv",
+    "ghg_qualification": "docs/theory/GHG_THEORY_QUALIFICATION.md",
+    "macropore_qualification": "docs/theory/MACROPORE_THEORY_QUALIFICATION.md",
+    "stable_dom_qualification": "docs/theory/STABLE_DOM_THEORY_QUALIFICATION.md",
+    "p_sorption_qualification": "docs/theory/P_SORPTION_THEORY_QUALIFICATION.md",
+    "tcd_reconciliation": "docs/theory/THEORY_CODE_DISCREPANCY_RECONCILIATION.md",
+    "canonical_tcd_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "canonical_tcd_register_synced_through": "TCD-027",
+    "status": "integration/animo-theory/ANIMO-TH01_STATUS.json"
+  },
+  "canonical_tcd_decision": {
+    "synced_with_prep06": true,
+    "existing_tcd_closed_by_th01": false,
+    "new_defect_tcd_opened_by_th01": false,
+    "reason": "TH01 strengthened theory/provenance interpretation for existing findings but did not obtain evidence sufficient to close them or to invent a new defect solely from missing theory"
+  },
+  "remaining_blockers": [
+    "no exact revision-53 theory/change specification covering all post-4.0 extensions",
+    "GHG source/testcase input-contract lineage mismatch remains unresolved",
+    "no active supplied macropore testcase and no independent ANIMO solute-transport reference",
+    "stable-DOM exact release numbering and N/P extension authority remain unresolved",
+    "TCD-023 stable-DOM P partition correction is not B3 admitted",
+    "TCD-024 slow-Langmuir corrected behavior lacks independent historical reference",
+    "TCD-019 nonlinear P numerical policy requires separate numerical qualification",
+    "P-class crop-forcing theory and parameter provenance remain source-defined",
+    "B2 historical behavioural reference remains required where available before B3/B4 admission"
+  ],
   "production_migration": "NOT_ADMITTED"
 }
