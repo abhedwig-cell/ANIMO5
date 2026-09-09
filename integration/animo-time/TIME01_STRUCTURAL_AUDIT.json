@@ -1,0 +1,63 @@
+{
+  "work_unit": "ANIMO-TIME01",
+  "audit_type": "CANDIDATE_TIME_TRANSACTION_CONTRACT_STRUCTURAL_AUDIT",
+  "result": "PASS",
+  "tested_head": "691bf4ceedd8403a7977ef01a4c3988814e221d9",
+  "github_actions": {
+    "workflow": ".github/workflows/time01-candidate-contract.yml",
+    "run_id": 34317072876,
+    "job_id": 102355426123,
+    "conclusion": "success",
+    "python_version": "3.12"
+  },
+  "checks": [
+    {
+      "check": "required_documents_present",
+      "result": "PASS",
+      "count": 5
+    },
+    {
+      "check": "exact_ts01_to_time01_coverage",
+      "result": "PASS",
+      "rows": 26
+    },
+    {
+      "check": "reference_behaviour_remains_b2_blocked",
+      "result": "PASS"
+    },
+    {
+      "check": "critical_transaction_and_generation_rules_locked",
+      "result": "PASS"
+    },
+    {
+      "check": "critical_source_order_rules_locked",
+      "result": "PASS"
+    },
+    {
+      "check": "retry_reject_checkpoint_rules_locked",
+      "result": "PASS"
+    },
+    {
+      "check": "identity_fail_closed_rules_locked",
+      "result": "PASS"
+    },
+    {
+      "check": "qualification_boundary_locked",
+      "result": "PASS"
+    }
+  ],
+  "ts01_sentinel_rows": 26,
+  "reference_behaviour_sentinels": [
+    "TS01-S21",
+    "TS01-S22",
+    "TS01-S23",
+    "TS01-S24",
+    "TS01-S25"
+  ],
+  "historical_reference_qualified": false,
+  "canonical_time_admitted": false,
+  "runtime_scheduler_executed": false,
+  "runtime_adapter_executed": false,
+  "production_implemented": false,
+  "note": "The audit is specification-structural only. Earlier CI attempts 34316951271 and 34317012486 failed on checker wording alignment; the contract remained fail-closed until the repository checker and contract wording matched. The successful run executed the persisted repository tool from a GitHub Actions checkout."
+}
