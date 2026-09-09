@@ -1,0 +1,100 @@
+{
+  "work_unit": "ANIMO-BUILDQ02",
+  "title": "TCD-011 Storage-Duration Runtime Contract Qualification",
+  "status": "QUALIFIED_MAPOHYDRO_TCD011_EXPLICIT_CONTEXT_EQUIVALENCE_AND_BOUNDS_ORDER_RUNTIME_HAZARD_HISTORICAL_REFERENCE_OPEN",
+  "branch": "work/animo-buildq02-tcd011-storage-runtime-qualification",
+  "base": {
+    "branch": "work/animo-buildq01-runtime-semantics",
+    "commit": "5e5c4c2bc678a11e87f358ac6163ba13409ee565"
+  },
+  "canonical_routing_authority": {
+    "branch": "work/animo-b3i01-canonical-register-append",
+    "head_checked": "d2fe4eb3793a1ffc6c09197d7db01c3e3fe33f88",
+    "storage_finding": {
+      "local_key": "BUILDQ01-LCL-MAPOHYDRO-LNBOMPMX-CROSS-TASK-LIFETIME",
+      "canonical_tcd": "TCD-011",
+      "disposition": "MAP_TO_EXISTING_TCD"
+    },
+    "bounds_finding": {
+      "local_key": "BUILDQ01-LCL-MAPOHYDRO-INDEX0-BOUNDS-ORDER",
+      "canonical_tcd": null,
+      "disposition": "BUILD_RUNTIME_HAZARD_NOT_TCD"
+    }
+  },
+  "frozen_evidence": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "source_modified": false,
+    "testbank_modified": false,
+    "diagnostic_compiler": "GNU Fortran 14.2.0"
+  },
+  "tcd011_result": {
+    "target_local": "MAPOHYDRO LnBoMpMx",
+    "legacy_mechanism": "unsaved scalar INTEGER retained across Task 1 to Task 4 procedure returns",
+    "runtime_materiality": ["CONTROL_FLOW_MATERIAL", "STATE_MATERIAL"],
+    "semantic_owner": "DERIVABLE_MACROPORE_HYDROLOGY_TIMESTEP_TASK_CONTEXT",
+    "persistent_model_state_candidate": false,
+    "exact_reconstruction": "LnBoMpMx = Max(LnBoMp(1),LnBoMp(2))",
+    "explicit_context_equivalence": "SUPPORTED_BY_CONTROLLED_B1_MATRIX",
+    "historical_intel_behavior": "UNKNOWN",
+    "tcd011_closed": false
+  },
+  "storage_probe": {
+    "four_cases": true,
+    "original_static_O0_pass": true,
+    "original_automatic_O0_stable": false,
+    "original_automatic_O2_stable": false,
+    "explicit_context_automatic_O0_pass": true,
+    "explicit_context_automatic_O2_pass": true
+  },
+  "in_domain_equivalence": {
+    "cases": 64,
+    "full_task_protocol": [1,2,3,4],
+    "output_lines": 256,
+    "output_sha256": "16dc28adce374a956e77dc17420d814b64bf112ae3ff5524afe2422cb29433e3",
+    "byte_identical_variants": 8,
+    "includes_original_static_O0_O2": true,
+    "includes_candidate_automatic_O0_O2": true,
+    "includes_bounds_check": true,
+    "includes_signalling_nan_initialization": true,
+    "normalization_used": false
+  },
+  "bounds_runtime_result": {
+    "canonical_disposition": "BUILD_RUNTIME_HAZARD_NOT_TCD",
+    "scope": [
+      "Task 1 FrHeWeMpWl bottom search index zero",
+      "Task 1 FrHeWeMpWl domain-2 top search index zero",
+      "Task 2 backward scan FlMpInEf index zero after Modflux-generated Sqnu",
+      "Task 2 CoStat classification FlMpInEf index zero after Modflux-generated Sqnu"
+    ],
+    "task1_gnu_bounds_check_confirmed": true,
+    "task2_modflux_coupled_reachability_confirmed": true,
+    "modflux_generated_sqnu": [1,0,2],
+    "historical_intel_effect": "UNKNOWN",
+    "scientific_state_or_flux_discrepancy_established": false,
+    "new_tcd_requested": false
+  },
+  "qualification_outcome": {
+    "mapohydro_hidden_lifetime_semantics_qualified_for_migration_design": true,
+    "blanket_save_policy_qualified": false,
+    "blanket_static_storage_policy_qualified": false,
+    "historical_reference_storage_contract_qualified": false,
+    "all_tcd011_families_qualified": false,
+    "reentrancy_thread_safety_admitted": false,
+    "corrected_legacy_admitted": false,
+    "b3_scientific_admitted": false,
+    "production_migration_admitted": false
+  },
+  "deliverables": [
+    "docs/build/ANIMO-BUILDQ02_WORK_UNIT_CONTRACT.md",
+    "docs/build/TCD011_MAPOHYDRO_STORAGE_DURATION_QUALIFICATION.md",
+    "docs/build/MAPOHYDRO_BOUNDS_EVALUATION_ORDER_QUALIFICATION.md",
+    "integration/animo-build/BUILDQ02_MAPOHYDRO_RUNTIME_MATRIX.json",
+    "integration/animo-build/ANIMO-BUILDQ02_STATUS.json"
+  ],
+  "next_routing": {
+    "B3I01": "consume as evidence strengthening for existing TCD-011 and expanded scope of existing BUILD_RUNTIME_HAZARD_NOT_TCD; allocate no new TCD",
+    "future_BUILD": "remaining active GHG and macropore hidden solver/task contexts require separate explicit-context qualification",
+    "historical_reference": "recover or independently qualify Intel local-storage project semantics before any historical equivalence claim"
+  }
+}
