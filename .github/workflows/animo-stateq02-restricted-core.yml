@@ -1,0 +1,29 @@
+name: ANIMO STATEQ02 restricted-core qualification
+
+on:
+  push:
+    branches:
+      - work/animo-stateq02-restricted-core-executable-split-run
+  pull_request:
+    paths:
+      - 'docs/state/RESTRICTED_CORE_SPLIT_RUN_QUALIFICATION.md'
+      - 'integration/animo-state/ANIMO-STATEQ02_STATUS.json'
+      - 'integration/animo-state/STATEQ02_SPLIT_RUN_MATRIX.json'
+      - 'integration/animo-state/STATEQ02_CHECKPOINT_DIFFS.csv'
+      - 'tools/stateq02/validate_stateq02.py'
+      - '.github/workflows/animo-stateq02-restricted-core.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-stateq02-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate persisted STATEQ02 evidence and scope
+        run: python3 tools/stateq02/validate_stateq02.py
