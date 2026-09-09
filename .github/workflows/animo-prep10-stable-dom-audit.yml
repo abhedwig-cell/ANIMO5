@@ -1,0 +1,34 @@
+name: ANIMO-PREP10 stable-DOM audit
+
+on:
+  push:
+    branches:
+      - work/animo-prep10-stable-dom-plough-accumulators
+  pull_request:
+    paths:
+      - 'tools/audit_stable_dom_plough_accumulators.py'
+      - 'tools/audit_stable_dom_plough_activation.py'
+      - 'tests/prep10/**'
+      - 'integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json'
+      - 'docs/prep10/**'
+      - '.github/workflows/animo-prep10-stable-dom-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  scanner-unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile audit tools
+        run: |
+          python -m py_compile tools/audit_stable_dom_plough_accumulators.py
+          python -m py_compile tools/audit_stable_dom_plough_activation.py
+      - name: Run PREP10 scanner unit tests
+        run: python -m unittest discover -s tests/prep10 -v
+      - name: Validate machine-readable audit JSON
+        run: python -m json.tool integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json >/dev/null
