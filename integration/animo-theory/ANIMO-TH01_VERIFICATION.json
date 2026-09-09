@@ -1,0 +1,79 @@
+{
+  "work_unit": "ANIMO-TH01",
+  "verification_type": "DOCUMENTARY_SCOPE_AND_MACHINE_REGISTER_VERIFICATION",
+  "candidate_head": "d1f55b3a7af60bff807301f7674e538397f52989",
+  "base_head": "52411b9d2d6d80717914bc6642544290a54ded21",
+  "compare_status": "ahead",
+  "ahead_by": 18,
+  "behind_by": 0,
+  "changed_files_before_verification_artifact": 11,
+  "scope_check": {
+    "only_docs_quality_docs_theory_and_integration_animo_theory_changed": true,
+    "legacy_source_paths_changed": false,
+    "testcase_paths_changed": false,
+    "production_code_paths_changed": false,
+    "physics_change": false,
+    "numerical_policy_change": false
+  },
+  "provenance_register_check": {
+    "path": "docs/theory/REV53_THEORY_PROVENANCE_REGISTER.csv",
+    "header_fields": 13,
+    "extension_rows": 12,
+    "required_fields_present": [
+      "extension_id",
+      "process_domain",
+      "first_known_implementation_lineage",
+      "revision53_source_routines",
+      "animo40_coverage",
+      "later_documentation_evidence",
+      "publication_report_evidence",
+      "source_only_evidence",
+      "evidence_class",
+      "theory_confidence",
+      "reconciliation_state",
+      "unresolved_questions",
+      "b3_readiness"
+    ],
+    "minimum_priority_scope_covered": [
+      "GHG methane",
+      "GHG nitrous oxide",
+      "macropore water and nutrient transport",
+      "stable dissolved organic matter C/N/P",
+      "phosphorus fast equilibrium sorption",
+      "phosphorus slow non-equilibrium Langmuir",
+      "phosphorus slow non-equilibrium Freundlich",
+      "phosphorus precipitation/dissolution",
+      "P-class-dependent crop forcing",
+      "sulphate parser surface",
+      "soil-temperature input option"
+    ],
+    "stable_dom_version_label_conflict_explicit": true,
+    "slow_langmuir_inherited_option_semantics_explicit": true
+  },
+  "qualification_documents_present": [
+    "docs/theory/REV53_EXTENSION_THEORY_RECONCILIATION.md",
+    "docs/theory/GHG_THEORY_QUALIFICATION.md",
+    "docs/theory/MACROPORE_THEORY_QUALIFICATION.md",
+    "docs/theory/STABLE_DOM_THEORY_QUALIFICATION.md",
+    "docs/theory/P_SORPTION_THEORY_QUALIFICATION.md",
+    "docs/theory/THEORY_CODE_DISCREPANCY_RECONCILIATION.md"
+  ],
+  "canonical_tcd_register": {
+    "path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "synced_from_qualified_PREP06_register": true,
+    "synced_through": "TCD-027",
+    "new_defect_tcd_added_by_th01": false,
+    "existing_tcd_closed_by_th01": false,
+    "strengthened_theory_context_recorded_in": "docs/theory/THEORY_CODE_DISCREPANCY_RECONCILIATION.md"
+  },
+  "hard_rule_check": {
+    "undocumented_code_behavior_promoted_to_intended_theory": false,
+    "source_only_equations_labelled_implementation_derived": true,
+    "public_sources_coupled_to_rev53_only_with_explicit_provenance_limits": true,
+    "conflicting_external_version_label_treated_as_conflicting_evidence": true,
+    "scientific_tolerances_invented": false,
+    "corrected_legacy_patch_applied": false,
+    "production_migration_admitted": false
+  },
+  "result": "PASS"
+}
