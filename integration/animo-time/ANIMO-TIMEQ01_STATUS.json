@@ -1,0 +1,122 @@
+{
+  "work_unit": "ANIMO-TIMEQ01",
+  "title": "Candidate Runtime Transaction, Retry, Coupled Barrier & Scheduler Trace Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-timeq01-runtime-transaction-qualification",
+  "date": "2026-09-09",
+  "starting_head": "db8183802631902f41aa5bec518a3c2e63e03ab7",
+  "status_evidence_head_before_closeout": "fd0ce784fb1f63640103ee342134c2968c9860ea",
+  "decision": "QUALIFIED_CANDIDATE_RUNTIME_TRANSACTION_AND_SCHEDULER_TRACE_FIXTURE_NON_B2_NONPRODUCTION",
+  "implemented": true,
+  "persisted": true,
+  "tested": true,
+  "qualified": true,
+  "blocked": false,
+  "qualification_scope": "executable synthetic state-machine and scheduler-trace evidence for the candidate TIME01/ARCHG02 transaction contract only; no ANIMO scientific process, historical reference behaviour, canonical TIME or production adapter is implemented or qualified",
+  "authoritative_contract_inputs": {
+    "ARCHG02": {
+      "branch": "work/animo-archg02-temporal-revalidation",
+      "head": "db8183802631902f41aa5bec518a3c2e63e03ab7",
+      "decision": "QUALIFIED_CANDIDATE_ARCHITECTURE_REVALIDATED_AGAINST_FINAL_TS01_TIME01_PRODUCTION_NOT_ADMITTED"
+    },
+    "TIME01": {
+      "branch": "work/animo-time01-generic-time-transaction-contract",
+      "head": "246128dd14732173a6f27c15c923970d50c14e2a",
+      "decision": "QUALIFIED_CANDIDATE_GENERIC_TIME_TRANSACTION_AND_SCHEDULER_CONTRACT"
+    },
+    "TS01": {
+      "branch": "work/animo-ts01-temporal-semantics",
+      "head": "ed12a678cfba19ce851eb2f380e6da3f49203fe4",
+      "decision": "QUALIFIED_SOURCE_BOUND_TEMPORAL_SEMANTICS_PREPARATORY_EVIDENCE"
+    },
+    "ARCH07_qualification_commit": "7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6"
+  },
+  "runtime_fixture": {
+    "model": "docs/timeq01/RUNTIME_TRANSACTION_FIXTURE_MODEL.md",
+    "implementation": "tools/timeq01_runtime_fixture.py",
+    "tests": "tools/test_timeq01_runtime_fixture.py",
+    "case_register": "integration/animo-time/TIMEQ01_TEST_CASES.csv",
+    "result": "integration/animo-time/TIMEQ01_RUNTIME_RESULT.json",
+    "scientific_process_equations_present": false,
+    "physical_hydrology_present": false,
+    "crop_model_present": false,
+    "ghg_model_present": false,
+    "macropore_model_present": false,
+    "numerical_solver_present": false,
+    "production_adapter_present": false
+  },
+  "verification": {
+    "tested_head": "45808314900be0f8e10c31bb6662b02a6afc5f7b",
+    "github_actions_workflow": ".github/workflows/timeq01-runtime-transaction.yml",
+    "github_actions_run_id": 34320268768,
+    "github_actions_job_id": 102365125690,
+    "github_actions_conclusion": "success",
+    "python_version": "3.12.14",
+    "python_compile": "PASS",
+    "tests_total": 19,
+    "tests_passed": 19,
+    "tests_failed": 0
+  },
+  "qualified_runtime_contract_evidence": {
+    "begin_trial_identity_binding": true,
+    "accepted_state_immutable_during_trial": true,
+    "reject_atomicity": true,
+    "fresh_trial_id_on_retry": true,
+    "changed_t1_requires_new_interval_id": true,
+    "external_frame_identity_immutable": true,
+    "stale_generation_frame_rejected": true,
+    "same_step_management_generation_representable": true,
+    "previous_neighbor_generation_representable": true,
+    "provisional_events_excluded_from_physical_commit": true,
+    "report_only_records_excluded_from_physical_commit": true,
+    "checkpoint_only_at_accepted_boundary": true,
+    "coupled_accept_barrier_no_partial_advance": true,
+    "synthetic_reject_replay_deterministic": true,
+    "mid_trial_topology_change_rejected": true,
+    "management_and_harvest_endpoint_asymmetry_representable_exactly": true,
+    "single_physical_crop_uptake_identity_enforced": true,
+    "sqnu_trace_order_enforced": true,
+    "p_transport_phase_per_layer_trace_enforced": true
+  },
+  "evidence_boundaries": {
+    "evidence_class": "ARCH_RUNTIME_SYNTHETIC",
+    "source_constraint_traceability": true,
+    "historical_reference_qualified": false,
+    "b2_reference_available": false,
+    "legacy_behavioral_equivalence_qualified": false,
+    "scientific_correctness_qualified": false,
+    "numerical_equivalence_qualified": false,
+    "canonical_state_admitted": false,
+    "canonical_time_admitted": false,
+    "mass_admitted": false,
+    "external_exchange_admitted": false,
+    "b3_scientific_admission": false,
+    "b4_baseline_admitted": false,
+    "production_migration_admitted": false
+  },
+  "change_boundary": {
+    "legacy_source_modified": false,
+    "historical_testcase_modified": false,
+    "production_code_modified": false,
+    "physics_changed": false,
+    "numerical_policy_changed": false,
+    "scientific_baseline_changed": false,
+    "branch_merge_performed": false
+  },
+  "remaining_blockers": [
+    "PREP02R still lacks an independently trustworthy historical B2 reference environment",
+    "continuous-versus-split and event-boundary behavioural equivalence remains unqualified",
+    "the fixture is an abstract transaction engine and has not been connected to actual ANIMO process kernels",
+    "no real SWAP/WOFOST or hydrology/crop external-owner adapter has been executed",
+    "canonical STATE and TIME remain unadmitted",
+    "MASS and EX remain unadmitted downstream gates",
+    "discrepancy-specific B3 and numerical-policy gates remain open",
+    "GHG and macropore feature-scientific gates remain open"
+  ],
+  "next_safe_work": [
+    "attach TIMEQ01 to RG02/ARCH governance as candidate runtime contract evidence without changing G8 admission",
+    "define a separate non-production adapter transaction fixture only if it reuses ARCH07/TIME01 identities and does not implement production coupling",
+    "continue PREP02R historical reference recovery independently",
+    "defer any canonical TIME admission until B2 split-run/event-boundary evidence and migration-DAG prerequisites exist"
+  ]
+}
