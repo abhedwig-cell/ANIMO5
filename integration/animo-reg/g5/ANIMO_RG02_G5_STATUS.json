@@ -1,0 +1,43 @@
+{
+  "work_unit": "ANIMO-RG02-G5",
+  "title": "Independent Theory, Testing, Numerical, Temporal & Scientific Stream Attachment",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-rg02-g5-independent-stream-attachment",
+  "base": {
+    "branch": "work/animo-rg02-branch-authority-integration",
+    "head": "ec8709cd6a37c985ab7452bc0f2e6e64a430db6a"
+  },
+  "decision": "IN_PROGRESS_LIVE_AUTHORITY_REFRESH_AND_REFERENCE_ATTACHMENT",
+  "implemented": true,
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "blocked": false,
+  "attachment_mode": "IMMUTABLE_BRANCH_HEAD_STATUS_REFERENCE_NO_BRANCH_MERGE",
+  "g4_input": {
+    "branch": "work/animo-rg02-g4-canonical-preparatory-evidence-aggregate",
+    "head": "3d0a6c8b3f77337a0688734b113cb424ce1cff11",
+    "role": "provenance-qualified preparatory evidence aggregate, not scientific baseline"
+  },
+  "hard_rules": {
+    "branch_merge_performed": false,
+    "canonical_register_mutation_allowed": false,
+    "canonical_tcd_allocation_allowed": false,
+    "evidence_strength_upgrade_allowed": false,
+    "scientific_reclassification_owned_by_g5": false,
+    "legacy_source_modified": false,
+    "historical_testcase_modified": false,
+    "scientific_baseline_changed": false,
+    "corrected_legacy_admitted": false,
+    "b3_scientific_admission": false,
+    "b4_baseline_admitted": false,
+    "production_migration_admitted": false
+  },
+  "live_refresh_findings": {
+    "MP01_old_rg02_snapshot_is_current": false,
+    "ARCHG01_old_rg02_snapshot_is_current": false,
+    "NQ02_parallel_lineages_require_explicit_authority_disposition": true,
+    "PREP02R_b2_reference_available": false
+  },
+  "next": "persist stream register and gate matrix from live branch/head/status evidence, verify all references remain stable, then qualify G5 without scientific collapse"
+}
