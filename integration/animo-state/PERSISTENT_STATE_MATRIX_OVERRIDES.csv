@@ -1,0 +1,24 @@
+state_id,overridden_field,new_value,reason,evidence_refs
+ADD-001,class,CORE_STATE_READY_CANDIDATE,upper-boundary NH4 reservoir evolves and feeds first active transport compartment even when Flpn=0,PREP06;PREP12;STATEQ01_LAYER0_ACTIVATION
+ADD-001,canonical_owner,ANIMO upper-boundary reservoir owner,not an optional management-only feature,UBoundconc;TRANSPORT
+ADD-001,feature_guard,core_upper_boundary,required in restricted core when present,UBoundconc;TRANSPORT
+ADD-002,class,CORE_STATE_READY_CANDIDATE,upper-boundary NO3 reservoir evolves and feeds first active transport compartment even when Flpn=0,PREP06;PREP12;STATEQ01_LAYER0_ACTIVATION
+ADD-002,canonical_owner,ANIMO upper-boundary reservoir owner,not an optional management-only feature,UBoundconc;TRANSPORT
+ADD-002,feature_guard,core_upper_boundary,required in restricted core when present,UBoundconc;TRANSPORT
+ADD-003,class,CORE_STATE_READY_CANDIDATE,upper-boundary DOM reservoir evolves and feeds first active transport compartment even when Flpn=0,PREP06;PREP12;STATEQ01_LAYER0_ACTIVATION
+ADD-003,canonical_owner,ANIMO upper-boundary reservoir owner,not an optional management-only feature,UBoundconc;TRANSPORT
+ADD-003,feature_guard,core_upper_boundary,required in restricted core when present,UBoundconc;TRANSPORT
+ADD-004,class,CORE_STATE_READY_CANDIDATE,upper-boundary DON reservoir evolves and feeds first active transport compartment even when Flpn=0,PREP06;PREP12;STATEQ01_LAYER0_ACTIVATION
+ADD-004,canonical_owner,ANIMO upper-boundary reservoir owner,not an optional management-only feature,UBoundconc;TRANSPORT
+ADD-004,feature_guard,core_upper_boundary,required in restricted core when present,UBoundconc;TRANSPORT
+ADD-005,class,CORE_STATE_READY_CANDIDATE,upper-boundary PO4 reservoir evolves and feeds first active transport compartment even when Flpn=0,PREP06;PREP12;STATEQ01_LAYER0_ACTIVATION
+ADD-005,canonical_owner,ANIMO upper-boundary reservoir owner,not an optional management-only feature,UBoundconc;TRANSPORT
+ADD-005,feature_guard,core_upper_boundary;p_cycle=on,required in restricted core when P is active,UBoundconc;TRANSPORT
+ADD-006,class,CORE_STATE_READY_CANDIDATE,upper-boundary DOP reservoir evolves and feeds first active transport compartment even when Flpn=0,PREP06;PREP12;STATEQ01_LAYER0_ACTIVATION
+ADD-006,canonical_owner,ANIMO upper-boundary reservoir owner,not an optional management-only feature,UBoundconc;TRANSPORT
+ADD-006,feature_guard,core_upper_boundary;p_cycle=on,required in restricted core when P is active,UBoundconc;TRANSPORT
+SURFAQ-001,b3_status,BLOCKED_TCD016_AND_LOCAL_RESTART_FINDING,TCD-016-C1 and explicit layer0 restart initialization zeroing are independent blockers,SQ01;STATEQ01_LAYER0_RESTART
+SURFAQ-002,b3_status,BLOCKED_LOCAL_RESTART_FINDING_PENDING_B3_INTAKE,explicit nonzero layer0 NO3 input is read then zeroed before first timestep,STATEQ01_LAYER0_RESTART
+SURFAQ-003,b3_status,BLOCKED_LOCAL_RESTART_FINDING_PENDING_B3_INTAKE,explicit nonzero layer0 labile DOM input is read then zeroed before first timestep,STATEQ01_LAYER0_RESTART
+SURFAQ-004,b3_status,BLOCKED_LOCAL_RESTART_FINDING_PENDING_B3_INTAKE,explicit nonzero layer0 DON input is read then zeroed before first timestep,STATEQ01_LAYER0_RESTART
+SURFAQ-006,b3_status,BLOCKED_LOCAL_RESTART_FINDING_PENDING_B3_INTAKE,layer0 DOP input coordinate is also unconditionally zeroed by Inicalc; natural nonzero supplied-case reachability not yet separately quantified,STATEQ01_LAYER0_RESTART

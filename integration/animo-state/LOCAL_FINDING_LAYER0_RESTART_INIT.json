@@ -1,0 +1,38 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "local_finding_key": "RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING",
+  "canonical_tcd_id": null,
+  "canonical_allocation_owner": "ANIMO B3 governance",
+  "classification": "SOURCE_CONFIRMED_NATURALLY_REACHABLE_LAYER0_DISSOLVED_RESTART_INITIALIZATION_ZEROING",
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "source_evidence": [
+    "input1.for:3197-3218 reads Conh(0)/Coni(0)",
+    "input1.for:3263-3287 reads Codiorma(0)/Codiorni(0)",
+    "Inicalc.for:125-129 unconditionally zeroes Conh(0), Coni(0), Codiorma(0), Codiorni(0), Codiorpo(0)",
+    "Init.for:227-245 zeroes first-step result arrays rather than restoring input layer0 values",
+    "Output_Init.for:82-105 serializes Rsconh(0), Rsconi(0), Rscodiorma(0), Rscodiorni(0)"
+  ],
+  "natural_reachability": {
+    "case": "GrassPeat",
+    "input_binding": "animo.ini -> Input\\initial.inp",
+    "nonzero_values": {
+      "Conh(0)": 0.006885736,
+      "Coni(0)": 0.0005743774,
+      "Codiorma(0)": 0.09904185,
+      "Codiorni(0)": 0.005673512
+    }
+  },
+  "distinct_from": [
+    "TCD-016 runtime wet-to-low-storage NH4 continuation and missing physical state science",
+    "PREP12 RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION",
+    "PREP12 RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE"
+  ],
+  "not_claimed": [
+    "canonical TCD allocation",
+    "historical-reference behavioural magnitude",
+    "accepted correction",
+    "all-species scientific identity"
+  ],
+  "routing": "B3I01 canonical intake and atomicity reconciliation"
+}

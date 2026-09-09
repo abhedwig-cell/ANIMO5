@@ -10,34 +10,27 @@ Production migration: `NOT_ADMITTED`
 
 ## 1. Scope and decision
 
-STATEQ01 defines a feature- and application-envelope-scoped readiness model for persistent ANIMO5 state at an accepted transaction boundary. It does not admit canonical STATE, change physics, repair legacy restart behaviour or implement production state containers.
+STATEQ01 defines a state-readiness and checkpoint-completeness model for ANIMO5 accepted boundaries. It does not admit canonical STATE, change physics, repair legacy restart behaviour or implement production state containers.
 
-The current conclusion is deliberately narrower than the first STATEQ01 closeout. A restricted `CORE_CNP_SUBSURFACE_ONLY` profile can be specified as a readiness candidate only if layer-0 aqueous solute activation is explicitly outside the application envelope and that invariant is enforceable fail-closed. General `CORE_CNP`, in which layer-0 aqueous state may activate, is not state-complete while TCD-016-C1 remains scientifically unresolved.
+The first executable candidate is deliberately narrow: `CORE_CNP_SUBSURFACE_ONLY`. That profile is valid only under a source-qualified fail-closed envelope with exactly zero layer-0 surface storage at accepted and candidate boundaries and exactly zero layer-0 restart state.
 
-Optional crop, stable-DOM, macropore and GHG profiles remain independently guarded. The matrix architecture is qualified as a readiness model only. No profile has B3 STATE admission.
+General `CORE_CNP` remains blocked. It includes layer-0 surface transport and therefore inherits both the unresolved TCD-016-C1 scientific continuation gap and the independent layer-0 restart initialization zeroing finding.
 
 ## 2. Evidence basis
 
-STATEQ01 reconciles, without evidence-strength upgrade, the following streams:
+STATEQ01 reconciles RG02-G5, PREP06, PREP12, ARCH01, ARCH02, ARCH04, TS01, TIME01, ARCHG01/02, MP02, GHG01 and SQ01 without increasing their evidence strength.
 
-- RG02-G5 independent-stream attachment;
-- PREP06 conserved-state inventory and observer separation;
-- PREP12 provenance-preserving restart-continuity rehome;
-- ARCH01 state ownership;
-- ARCH02 checkpoint sufficiency;
-- ARCH04 feature/state allocation;
-- TS01 legacy temporal semantics;
-- TIME01 accepted-boundary transaction semantics;
-- ARCHG01/ARCHG02 architecture reconciliation;
-- MP02 complete-case macropore evidence;
-- GHG01 GHG state/restart qualification;
-- SQ01 TCD-016 scientific-state qualification.
+PREP12 source-local labels `TCD-032`, `TCD-033` and `TCD-034` are not canonical TCD allocations. STATEQ01 consumes their RG02 reconciliation keys only.
 
-PREP12 source-local labels `TCD-032`, `TCD-033` and `TCD-034` are not canonical TCD allocations. STATEQ01 consumes only their RG02 reconciliation keys and leaves canonical allocation to B3 governance.
+A new local source finding produced by STATEQ01 is likewise not allocated a canonical TCD:
+
+`RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING`.
+
+Its canonical disposition belongs to B3 governance.
 
 ## 3. State classes
 
-The machine-readable matrix uses these readiness classes:
+The readiness model uses:
 
 - `CORE_STATE_READY_CANDIDATE`;
 - `OPTIONAL_FEATURE_STATE_READY_CANDIDATE`;
@@ -48,119 +41,143 @@ The machine-readable matrix uses these readiness classes:
 - `DIAGNOSTIC_ONLY`;
 - `UNRESOLVED_SCIENTIFIC_STATE`.
 
-A readiness class is not an admission class.
+These are architecture/readiness labels, not admission labels.
 
 ## 4. Accepted-boundary semantics
 
-TIME01 supplies the governing transaction boundary. Accepted state at `t0` is immutable while a modern trial executes. Same-step management mutation belongs to the trial, potential-pass results are provisional and only the completed actual result can become the next accepted generation.
+TIME01 supplies the modern transaction boundary: accepted state is immutable during a trial, trial mutation is isolated and only the completed actual result can become the next accepted generation.
 
-TS01 shows that revision 53 implements this only implicitly. Middle-step continuation is staged by the next `Init`, while the final interval is serialized directly from result fields without another ordinary `Init`. STATEQ01 therefore defines acceptance logically: after the actual interval result satisfies the acceptance barrier, it is the candidate accepted state at `t1`; checkpoint serialization merely observes that accepted state.
+TS01 shows that revision 53 implements analogous generations implicitly. Middle-step continuation is staged by the next `Init`; the final result is serialized without another ordinary `Init`. STATEQ01 therefore treats serialization as observation of an already accepted logical boundary, not as the operation that creates acceptance.
 
-## 5. Core soil state and external hydrology ownership
+## 5. Core soil and hydrology ownership
 
-PREP06/PREP12 support persistent soil-layer ownership for fresh organic matter, humus, exudate-derived humus, exudate organic matter, labile dissolved organic C/N/P, aqueous mineral N, aqueous/site-resolved mineral P and precipitated P.
+PREP06/PREP12 support persistent soil-layer state for organic matter, dissolved organic C/N/P, aqueous mineral N and site-resolved mineral P. Hydrological water, ponding, snow/interception and required temperature coordinates remain external-owner state bound by exact accepted frame identity.
 
-Hydrological quantities such as soil water, ponding, snow, interception and required temperature coordinates are external-owner state. ANIMO checkpoints bind the exact compatible accepted hydrology/thermodynamic frame rather than creating competing physical ownership.
+Adsorbed NH4 remains physical nitrogen storage, but PREP12 supports candidate deterministic reconstruction from accepted aqueous NH4 plus the admitted sorption/hydrology/configuration inputs. Its omission from the independent checkpoint payload remains subject to split-run qualification.
 
-Adsorbed NH4 is physical nitrogen storage but PREP12 shows it need not be serialized as an independent checkpoint coordinate if deterministic reconstruction from accepted aqueous NH4, hydrology/soil state and the admitted sorption relation is later split-run qualified. STATEQ01 therefore records it as `DERIVED_RECOMPUTABLE` for checkpoint representation, not as absent from the nitrogen control volume.
+Site-resolved P is the candidate checkpoint representation. Legacy `Inpo=2/3` origins canonicalized to explicit `Inpo=1` restart state remain unqualified until split-run evidence exists.
 
-Site-resolved P state remains the candidate canonical coordinate. Legacy `Output_Init` canonicalizes P initialization origins to explicit `Inpo=1`; trajectories originating from `Inpo=2/3` still require separate split-run qualification.
+## 6. Layer-0 activation is now source-qualified
 
-## 6. Surface-state topology correction
+For aggregated hydrology, revision 53 sets `Flpn=1` if current or end ponding exceeds `1.0d-4`.
 
-The first STATEQ01 matrix incorrectly conflated two different revision-53 families:
+For detailed hydrology, `Flpn=1` if either `Pn+Snla` or `Pnt+Snt` exceeds `1.0d-4`; snow therefore participates in the surface transport compartment definition.
 
-1. virtual management/addition reservoirs `Con*top/Rscon*top`;
-2. actual layer-0 aqueous coordinates in the normal dissolved-state arrays.
+`MODFLUX` and the standard transport routines start at compartment `1-Flpn`. Thus `Flpn=1` includes layer 0 in ordinary dissolved-solute transport and `Flpn=0` starts at soil layer 1.
 
-SQ01 shows that TCD-016 concerns the second family. The natural finding is a layer-0 aqueous NH4 wet-to-low-storage transition for which no admitted dry/non-aqueous continuation owner exists. The artificial addition reservoir cannot be reused as that owner because its provenance and release semantics differ.
+The restricted core uses a stronger envelope than the legacy threshold:
 
-STATEQ01 therefore separates:
+```text
+aggregated: Pn == 0 and Pnt == 0
 
-- soil dissolved state, layers `1..Nl`;
-- layer-0 aqueous state, activated by surface hydrology;
-- management/addition reservoir state, `Con*top/Rscon*top`.
+detailed:   Pn + Snla == 0 and Pnt + Snt == 0
+```
 
-The proposed SQ01 `M_surface_NH4_non_aqueous_continuation` remains `UNRESOLVED_SCIENTIFIC_STATE`. It is not created, initialized, restored or treated as canonical.
+This prevents positive low-storage surface state from being hidden below the legacy activation threshold.
 
-This correction means general `CORE_CNP` is blocked on TCD-016-C1. A narrower `CORE_CNP_SUBSURFACE_ONLY` remains a readiness candidate only under an explicit no-layer0-activation envelope.
+## 7. Upper-boundary reservoirs are core continuation
 
-## 7. Crop state and continuation
+The `Conhtop`, `Conitop`, `Codiormatop`, `Codiornitop`, and P-active `Copotop/Codiorpotop` families are not an optional management-only feature.
 
-ANIMO-owned crop root/shoot dry matter and cumulative actual N/P are persistent crop-owner candidates when `crop_mode=animo`.
+`UBoundconc` evolves them when `Flpn=0`, and the standard transport path uses their average concentration as the upper boundary for soil layer 1. They therefore remain core persistent state even in `CORE_CNP_SUBSURFACE_ONLY`.
 
-PREP12 sharpens the restart blockers:
+The earlier candidate profile `CORE_CNP_WITH_ADDITION_RESERVOIRS` is withdrawn.
 
-- `RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION`: actual uptake is present in `>orgpla:` but the restart initialization dataflow overwrites the restart value in the wrong direction;
-- `RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE`: cumulative potential N/P is carried between ordinary timesteps and used by later demand logic, but has no restart representation and is reset to zero.
+## 8. Local layer-0 restart initialization finding
 
-Potential uptake is not a conserved crop stock, but it is continuation-critical accepted state. Additional crop demand/deficit/stage/rotation continuation identified by TS01 still requires minimization and source qualification.
+Revision 53 explicitly reads layer-0 NH4, NO3, labile DOM and DON from `INITIAL.INP` and serializes corresponding layer-0 result fields in `INITIAL.OUT`.
 
-The crop profile therefore remains blocked. Source-local PREP12 TCD numbers are not promoted to canonical TCDs.
+However `Inicalc.for` unconditionally sets:
 
-## 8. Management continuation
+```text
+Conh(0)
+Coni(0)
+Codiorma(0)
+Codiorni(0)
+Codiorpo(0)
+```
 
-The event schedule identity is immutable configuration. Progress through it is accepted continuation metadata. TS01 shows that reader/cursor quantities such as `Adnr` and `Tinead` are not represented in `INITIAL.OUT`, while same-row event order is temporally material.
+to zero before the first timestep.
 
-A canonical checkpoint must therefore either serialize an exact next-event identity/cursor or use a deterministic reconstruction rule that is independently split-run qualified. Event replay or event skipping on restore is a hard failure.
+The supplied `GrassPeat` initial file naturally contains nonzero layer-0 NH4, NO3, DOM and DON, so this is not merely a hypothetical parser path.
 
-## 9. Macropores
+Current classification:
 
-Macropore water is hydrology-owned external state. Macropore solutes are ANIMO persistent process state when the feature is active.
+`SOURCE_CONFIRMED_NATURALLY_REACHABLE_LAYER0_DISSOLVED_RESTART_INITIALIZATION_ZEROING`.
 
-Two blockers must remain distinct:
+It is separate from TCD-016 and has no canonical TCD allocation yet.
 
-- TCD-025: main/public macropore control-volume and transfer/direct-drainage integration gap;
-- `RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER`: persistent macropore solute state is read and carried between timesteps, but the corresponding `Output_Init` writer blocks are commented out.
+## 9. Surface science boundary
 
-The second finding is PREP12 source-local `TCD-032`, not a canonical allocation. `CORE_CNP_WITH_MACROPORES` fails closed on both blocker families.
+TCD-016-C1 remains the unresolved runtime wet-to-low-storage NH4 continuation problem. The SQ01 proposed non-aqueous continuation mass remains `UNRESOLVED_SCIENTIFIC_STATE` and is forbidden as a canonical field until scientifically admitted.
 
-## 10. GHG state
+General `CORE_CNP` is therefore blocked by two independent seams:
 
-GHG01 supports total `CsCH4` and `CsN2O` as owner coordinates, but matching restart labels do not establish sufficient restart semantics. Legacy restoration reconstructs phase partition using `Terf`, has a layer-0 ponding gap and contains hidden cross-call task locals whose intended persistence remains unresolved.
+1. missing/unfinished low-storage NH4 state science;
+2. explicit layer-0 restart initialization zeroing.
 
-STATEQ01 therefore keeps GHG owner state feature-blocked. Dissolved/gas phase views may be `DERIVED_RECOMPUTABLE` only after an admitted deterministic reconstruction contract exists. Hidden task locals are not canonized as physical state.
+## 10. Crop continuation
 
-## 11. `INITIAL.OUT` is evidence, not the canonical checkpoint
+Crop root/shoot dry matter and cumulative actual N/P are owner candidates when `crop_mode=animo`.
 
-Legacy `INITIAL.OUT` serializes many end-state fields, but it does not bind schema, configuration, layout, external owner generations or complete continuation metadata. It omits active macropore restart state, does not establish complete crop continuation, and GHG restoration is not behaviourally qualified.
+PREP12 identifies:
 
-`Output_Init` also has a negative crop-P clamp that can mutate the result before writing. A canonical checkpoint serializer must be observationally pure.
+- `RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION`;
+- `RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE`.
 
-## 12. Diagnostic continuation
+Potential uptake is continuation-critical even though it is not a conserved stock. Additional crop demand/deficit/stage/rotation continuation still needs minimization. Crop checkpoint admission remains blocked.
 
-Balance/report accumulators remain `DIAGNOSTIC_ONLY`. They do not own physical state and cannot repair a missing physical store or transfer.
+## 11. Management continuation
 
-Exact mid-report-period output continuation may add a separate versioned observer section. Report rollover does not define a physical acceptance boundary.
+Event schedule identity is immutable configuration. Progress through that schedule is accepted continuation metadata.
 
-## 13. Feature/application profiles
+A checkpoint must serialize exact next-event identity/cursor state or use a deterministic reconstruction rule that is separately split-run qualified. Event replay or skipping is a hard failure.
 
-The corrected profile matrix contains at least:
+## 12. Macropores
 
-- `CORE_CNP_SUBSURFACE_ONLY`: restricted readiness candidate under an enforceable no-layer0 aqueous activation envelope;
-- `CORE_CNP`: general surface-capable core, blocked on TCD-016-C1;
-- `CORE_CNP_WITH_ADDITION_RESERVOIRS`: structurally adds separate `TOP-*` reservoir state but inherits the general-core surface blocker;
-- `CORE_CNP_WITH_CROP`: blocked by explicit PREP12 crop restart findings plus unresolved continuation minimization;
-- `CORE_CNP_WITH_EXTERNAL_CROP`: restricted-core candidate requiring exact external crop frame admission;
-- `CORE_CNP_WITH_STABLE_DOM`: blocked on stable-DOM science/discrepancy qualification;
-- `CORE_CNP_WITH_MACROPORES`: fail closed on TCD-025 plus the independent PREP12 restart-writer finding;
-- `CORE_CNP_WITH_GHG`: fail closed on GHG restart/phase/task-state blockers;
-- `CORE_CNP_WITH_REPORT_CONTINUITY`: restricted physical profile plus separate optional observer continuation.
+Macropore water is external hydrology-owner state; macropore solutes are ANIMO persistent state when active.
 
-Profile names are declarative readiness envelopes, not claims that revision 53 exposes identical feature switches.
+Two blockers remain distinct:
 
-## 14. Admission consequence
+- TCD-025: public/main macropore control-volume and transfer/direct-drainage integration gap;
+- `RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER`: persistent solute restart writer omission.
 
-Canonical STATE remains `NOT_ADMITTED` because at minimum:
+The second is PREP12 source-local `TCD-032`, not a canonical allocation.
 
-1. no B3-admitted uninterrupted-versus-split portable restart exists for even the restricted core profile;
-2. the restricted core requires a formally enforceable no-layer0 activation envelope;
-3. general core is blocked on TCD-016-C1;
-4. management continuation reconstruction/cursor semantics are not split-run qualified;
-5. P `Inpo=2/3` origin to explicit-state restart is unqualified when those modes are in scope;
-6. crop restart and continuation blockers remain open;
-7. stable DOM, macropore and GHG feature profiles remain independently blocked;
-8. PREP12 local findings still require B3 canonical intake/allocation.
+## 13. GHG state
+
+GHG total CH4/N2O owner coordinates are source-supported, but restart phase reconstruction, layer-0 ponding restoration and hidden cross-call task-state semantics remain unadmitted. GHG profile admission therefore fails closed.
+
+## 14. `INITIAL.OUT` is evidence, not the canonical checkpoint
+
+Legacy `INITIAL.OUT` serializes many final result fields but does not bind complete schema/configuration/layout/external-frame/continuation identity and does not prove portable split-run equivalence.
+
+`Output_Init` also contains a negative crop-P clamp that mutates result state before writing. Canonical checkpoint serialization must be observationally pure.
+
+## 15. Current profiles
+
+Current profile set:
+
+- `CORE_CNP_SUBSURFACE_ONLY`: source guard qualified, executable fail-closed sentinel and split-run suite still missing;
+- `CORE_CNP`: blocked on TCD-016-C1 plus `RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING`;
+- `CORE_CNP_WITH_CROP`: blocked by crop restart/continuation findings;
+- `CORE_CNP_WITH_EXTERNAL_CROP`: restricted-core candidate requiring external crop frame admission;
+- `CORE_CNP_WITH_STABLE_DOM`: blocked on stable-DOM science/discrepancy work;
+- `CORE_CNP_WITH_MACROPORES`: blocked on TCD-025 plus independent restart-writer finding;
+- `CORE_CNP_WITH_GHG`: blocked on GHG restart/phase/task-state semantics;
+- `CORE_CNP_WITH_REPORT_CONTINUITY`: physical restricted core plus separate observer continuation.
+
+## 16. Admission consequence
+
+Canonical STATE remains `NOT_ADMITTED` because:
+
+1. restricted-core fail-closed executable sentinels have not been run;
+2. no uninterrupted-versus-split B3-admitted checkpoint equivalence exists;
+3. management continuation is not qualified;
+4. P `Inpo=2/3` origin conversion remains unqualified when those modes are in scope;
+5. general core surface state remains blocked on science and restart continuity;
+6. optional feature profiles retain independent blockers;
+7. local findings still require B3 canonical intake.
 
 Final disposition:
 

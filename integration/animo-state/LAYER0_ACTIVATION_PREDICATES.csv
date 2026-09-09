@@ -1,0 +1,10 @@
+predicate_id,hydrology_mode,source_predicate,layer0_effect,restricted_core_rule,source_ref
+L0-P1,aggregated,"Pn=-min(Wale,0); Pnt=-min(Walet,0); Flpn=1 iff Pn>1e-4 or Pnt>1e-4",Flpn=1 includes layer0 in transport,"require Pn==0 and Pnt==0 at accepted start and candidate end",Hydro_aggregated.for:74-84
+L0-P2,detailed,"Flpn=1 iff (Pn+Snla)>1e-4 or (Pnt+Snt)>1e-4",Flpn=1 includes layer0 in transport,"require Pn+Snla==0 and Pnt+Snt==0 at accepted start and candidate end",Hydro_detailed.for:111-118
+L0-P3,all,"Ln=1-Flpn",defines first compartment in solute sequence,"Flpn must remain 0 inside restricted profile",MODFLUX.FOR:69-75
+L0-P4,all,"K1=1-Flpn; Cob(K1)=Cotop",defines first active standard transport compartment and upper-boundary input,"Flpn must remain 0; Con*top still required as core continuation",TRANSPORT.FOR:129-134
+L0-P5,all,"Wyad=0 and Pn>1e-4",routes dissolved additions directly to layer0,"zero surface-storage rule prevents direct layer0 addition route",Addit.for:342-366
+L0-P6,all,"Flpn=1 and Pn+Snla>=1e-3",routes dry NH4/NO3 deposition to layer0,"zero surface-storage rule prevents layer0 dry-deposition route",UBoundconc.for:62-69
+L0-P7,all,"Flpn=0 evolves Rscon*top/Avcon*top; Flpn=1 flushes Rscon*top to zero and exposes reservoir+loads through Avcon*top",upper-boundary reservoir remains dynamic in both surface states,"Con*top/Rscon*top are core checkpoint coordinates not optional feature state",UBoundconc.for:110-168
+L0-P8,restart,"INITIAL.INP reads Conh(0) Coni(0) DOM(0) DON(0) and related fields",layer0 state is explicit input representation,"restricted profile must reject nonzero layer0 restart state rather than zero it",input1.for:3197-3218;3263-3287
+L0-P9,restart,"Inicalc sets Conh(0) Coni(0) Codiorma(0) Codiorni(0) Codiorpo(0) to zero",destroys explicit layer0 restart values before first timestep,"general core blocked; restricted core requires zero input layer0 state",Inicalc.for:125-129

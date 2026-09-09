@@ -1,6 +1,6 @@
 # ANIMO-STATEQ01 restricted-core application-envelope qualification specification
 
-Status: `CANDIDATE_TEST_SPEC_NOT_B3_ADMISSION`
+Status: `SOURCE_GUARD_QUALIFIED_TEST_SPEC_NOT_B3_ADMISSION`
 
 Canonical STATE admission: `NOT_ADMITTED`
 
@@ -8,99 +8,109 @@ Production migration: `NOT_ADMITTED`
 
 ## Purpose
 
-This specification defines what must be proven before `CORE_CNP_SUBSURFACE_ONLY` may be used as the first executable checkpoint-admission candidate. It does not create a production feature switch and does not change revision-53 physics.
+This specification defines what must be proven before `CORE_CNP_SUBSURFACE_ONLY` can be used as the first executable checkpoint-admission candidate. It does not create a production feature switch and does not change revision-53 physics.
 
-The restricted profile exists only to isolate a state-complete application envelope that excludes the unresolved layer-0 aqueous continuation seam. It is valid only if that exclusion is explicit, machine-checkable and fail-closed.
+The restricted profile exists only to isolate a state-complete application envelope that excludes layer-0 surface transport and the unresolved general-core surface continuation seams.
 
-## Envelope invariant
+## Source-qualified envelope invariant
 
-For every accepted interval and every trial that could be committed under `CORE_CNP_SUBSURFACE_ONLY`:
+The central legacy transport gate is `Flpn`. `MODFLUX` and the standard transport routines start at compartment `1-Flpn`; therefore layer 0 participates when `Flpn=1`.
+
+The restricted profile is deliberately stricter than merely requiring `Flpn=0`, because revision 53 permits physically positive surface storage below its `1.0d-4` activation threshold.
+
+At every accepted start boundary and every candidate hydrology end frame:
+
+### Aggregated hydrology
 
 ```text
-no layer-0 aqueous C/N/P solute coordinate may become physically active
+Pn  == 0
+Pnt == 0
 ```
 
-This is stronger than checking that the initial layer-0 concentration is zero. It requires proving that the hydrology/event/configuration combination cannot activate layer-0 aqueous storage or route solute mass through that compartment.
+### Detailed hydrology
 
-The profile must fail before physical mutation if the invariant cannot be established.
+```text
+Pn + Snla == 0
+Pnt + Snt  == 0
+```
 
-## Evidence needed to define the guard
+In addition, every layer-0 restart/input solute coordinate in scope must be exactly zero before restore is admitted.
 
-The eventual guard must be source-bound to the exact conditions that activate layer-0 aqueous transport/storage in revision 53. STATEQ01 does not guess those predicates.
+These equalities define an application envelope. They do not replace the legacy `1.0d-4` process threshold.
 
-Qualification must determine at minimum:
+## Upper-boundary reservoirs remain core
 
-1. which hydrology state variables make layer 0 physically present;
-2. whether ponding, surface water depth, management addition water or boundary routing can activate it;
-3. whether `Con*top` addition reservoirs can feed layer 0 even when initial layer-0 storage is absent;
-4. whether rainfall/infiltration or same-step management can create a transient layer-0 aqueous state inside an otherwise dry accepted boundary;
-5. whether P, DOM/DON/DOP and mineral N use identical activation predicates;
-6. whether any option combination bypasses the ordinary layer-0 activation path.
+`Conhtop`, `Conitop`, `Codiormatop`, `Codiornitop`, and P-active `Copotop/Codiorpotop` are not an optional add-on to the restricted profile.
 
-Until these predicates are source-qualified, `CORE_CNP_SUBSURFACE_ONLY` is a readiness candidate only, not an executable admitted profile.
+`UBoundconc` evolves these reservoirs when `Flpn=0`, and the standard transport path uses their average concentration as the upper boundary for soil layer 1. They therefore remain continuation-critical core state even when layer 0 is excluded.
 
-## Fail-closed contract
+The former `CORE_CNP_WITH_ADDITION_RESERVOIRS` distinction is withdrawn.
 
-An implementation candidate may enter the restricted profile only after configuration normalization and external hydrology binding establish the envelope invariant.
+## Restore zero-state requirement
 
-The following are hard failures:
+The restricted profile must reject, not normalize, a checkpoint/input containing nonzero layer-0 dissolved state.
 
-- unknown or unsupported surface-hydrology option;
-- missing external hydrology fields needed to determine layer-0 activation;
-- accepted ponding/surface-water state inconsistent with the restricted envelope;
-- a management event capable of creating an aqueous surface compartment under the admitted legacy schedule;
-- a trial-time transition into layer-0 aqueous activation;
-- an attempt to continue by discarding or synthesizing layer-0 mass.
+This is necessary because revision 53 explicitly reads layer-0 NH4/NO3/DOM/DON and related coordinates but `Inicalc` unconditionally zeroes several of them before the first timestep. That local finding is tracked as:
 
-A trial that would violate the envelope is rejected before it can become the next accepted generation. The run must then either terminate or move through a separately admitted profile-transition contract. STATEQ01 defines no such transition contract.
+`RG02-LCL-LAYER0-AQUEOUS-RESTART-INIT-ZEROING`
+
+A restricted-profile restore can avoid that defect only by proving that the incoming layer-0 state is exactly zero.
+
+## Fail-before-mutate contract
+
+The restricted profile may be entered only after configuration normalization and exact external hydrology binding establish all envelope predicates.
+
+Hard failures include:
+
+- unsupported or unknown hydrology mode;
+- missing accepted/candidate surface-storage coordinates needed by the guard;
+- nonzero `Pn`, `Pnt`, or detailed-hydrology `Pn+Snla` / `Pnt+Snt`;
+- nonzero layer-0 restart/input C/N/P state;
+- a candidate hydrology frame that would create positive layer-0 storage;
+- any attempt to continue by discarding, clipping, projecting or remapping layer-0 mass;
+- any attempt to use the unadmitted SQ01 dry-continuation proposal as an implicit restore field.
+
+The guard is evaluated before chemistry or management mutation. A violating candidate interval can never become accepted state under this profile.
 
 ## Restricted-core split-run qualification matrix
-
-The first split-run qualification should use only cases proven to remain inside the envelope.
 
 Required test classes:
 
 | ID | Boundary | Required assertion |
 |---|---|---|
-| RC-R1 | clean non-event accepted boundary | uninterrupted and split trajectories have equivalent continuation-critical state and event sequence |
-| RC-R2 | immediately before and after management event that does not activate layer 0 | event is neither replayed nor skipped; state round-trip remains equivalent |
+| RC-R1 | clean non-event accepted boundary | uninterrupted and split trajectories have equivalent continuation-critical core state and event sequence |
+| RC-R2 | immediately before/after management event within the zero-surface envelope | event is neither replayed nor skipped; upper-boundary reservoir state round-trips |
 | RC-R3 | year boundary | scheduler/year continuation and state remain equivalent |
 | RC-R4 | P-active explicit `Inpo=1` case | site-resolved P state and site cardinality restore exactly |
-| RC-R5 | NH4 sorption-active case | deterministic adsorbed-N reconstruction matches uninterrupted continuation under the admitted numerical policy |
-| RC-R6 | external hydrology frame rebind | exact frame identity is accepted; incompatible frame is rejected before mutation |
+| RC-R5 | NH4 sorption-active case | deterministic adsorbed-N reconstruction matches uninterrupted continuation under admitted policy |
+| RC-R6 | external hydrology frame rebind | exact frame is accepted; incompatible frame rejected before mutation |
 | RC-R7 | geometry/site-cardinality mismatch | restore fails before mutation |
 | RC-R8 | final interval checkpoint serialization | serializer is observationally pure |
-| RC-R9 | report-period split when physical-only continuation is promised | physical state equivalence does not depend on report accumulators |
-| RC-R10 | deliberate envelope-violation sentinel | any layer-0 activation attempt fails closed and never becomes accepted state |
+| RC-R9 | report-period split when physical-only continuation is promised | physical continuation does not depend on report accumulators |
+| RC-R10 | deliberate positive-surface-storage sentinel | candidate interval fails before chemistry mutation and is never accepted |
+| RC-R11 | deliberate nonzero layer-0 restart-state sentinel | restore fails before accepted-state construction; no zeroing normalization is allowed |
+| RC-R12 | nonzero `Con*top` with `Flpn=0` | upper-boundary reservoir continuity is preserved and feeds layer 1 identically after split |
 
-No tolerance policy is defined here. Exact/semantic comparison rules must come from the admitted numerical and B2/B3 qualification policy rather than being invented locally.
+No local tolerance policy is invented here. Comparison policy must come from the admitted numerical and B2/B3 qualification framework.
 
 ## Management continuation dependency
 
-The restricted profile remains blocked until management schedule continuation is either:
-
-- serialized explicitly as next-event identity/cursor state; or
-- deterministically reconstructed from accepted time plus immutable schedule identity under a separately qualified rule.
-
-The split-run suite must include a boundary where a nearby event makes replay/skip observable.
+The restricted profile remains blocked until management progression is either serialized as exact next-event identity/cursor state or reconstructed under a separately qualified deterministic rule. RC-R2 must make replay/skip observable.
 
 ## P initialization-origin boundary
 
-The first restricted-core admission campaign should use `Inpo=1` only unless the 2/3-to-explicit restart conversion has already been independently qualified.
-
-If `Inpo=2/3` origins are later admitted, add a dedicated test proving that conversion to explicit site-resolved restart state preserves the promised trajectory semantics.
+The first campaign should use `Inpo=1` unless `Inpo=2/3` origin to explicit-state restart has already been independently qualified.
 
 ## NH4 adsorbed reconstruction boundary
 
-Adsorbed NH4 may remain outside the serialized owner payload only if RC-R5 proves deterministic reconstruction from the complete accepted input set. Failure of that proof means the checkpoint representation must be reconsidered. It does not justify silently adding duplicate mutable ownership.
+Adsorbed NH4 may remain outside the serialized independent owner payload only if RC-R5 proves deterministic reconstruction from the complete accepted input set. Failure requires reconsidering checkpoint representation, not silently creating duplicate mutable ownership.
 
 ## Admission result categories
 
-The qualification campaign must report one of:
+The campaign reports one of:
 
-- `ENVELOPE_NOT_SOURCE_QUALIFIED`;
-- `ENVELOPE_SOURCE_QUALIFIED_SPLIT_RUN_NOT_EXECUTED`;
+- `GUARD_SOURCE_QUALIFIED_EXECUTABLE_SENTINEL_NOT_RUN`;
 - `SPLIT_RUN_EXECUTED_DISCREPANCY_OPEN`;
 - `RESTRICTED_CORE_CHECKPOINT_EVIDENCE_READY_FOR_B3_REVIEW`.
 
-None of these labels by itself grants canonical STATE admission. Final admission remains a governance decision after evidence review.
+None of these labels grants canonical STATE admission by itself.
