@@ -29,7 +29,9 @@
     "GHG_INPUT_LINEAGE_RECONCILIATION.md": "COMPLETE",
     "GHGMAIS_COMPATIBILITY_ANALYSIS.md": "COMPLETE",
     "GHG_LEDGER_RECONCILIATION.md": "COMPLETE",
-    "GHGMAIS_CDD001.json": "COMPLETE"
+    "GHGMAIS_CDD001.json": "COMPLETE",
+    "GHG_B3_DISCREPANCY_HANDOFF.md": "COMPLETE",
+    "GHG_B3_DISCREPANCY_HANDOFF.json": "COMPLETE"
   },
   "theory_qualification": {
     "broad_CH4_scientific_intent": "THEORY_READY",
@@ -123,6 +125,23 @@
     "exact_revision53_GHG_parameter_and_equation_set": [
       "INSUFFICIENT_EVIDENCE"
     ]
+  },
+  "post_closeout_handoff": {
+    "status": "PERSISTED",
+    "rg02_branch_observed": "work/animo-rg02-branch-authority-integration",
+    "rg02_head_observed": "27231ac9e52380c4ec10c9cf8e1cff5b72711e96",
+    "canonical_tcd_allocation_performed": false,
+    "existing_canonical_links": [
+      "TCD-008",
+      "TCD-013"
+    ],
+    "local_candidate_keys": [
+      "GHG01-LCL-METHANOGENESIS-SOURCE-POOL-TRANSFER",
+      "GHG01-LCL-GHG-OUTBAL-WORKING-ARRAYS",
+      "GHG01-LCL-GAS-STORE-CN-CONTROL-VOLUME"
+    ],
+    "handoff_markdown": "docs/ghg/GHG_B3_DISCREPANCY_HANDOFF.md",
+    "handoff_json": "integration/animo-ghg/GHG_B3_DISCREPANCY_HANDOFF.json"
   },
   "remaining_blockers": [
     "EXACT_GHGMAIS_CONSUMING_LINEAGE_NOT_IDENTIFIED",
