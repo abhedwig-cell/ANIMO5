@@ -1,0 +1,102 @@
+{
+  "record_id": "B3D05-TCD018-GOV03-DISPOSITION",
+  "record_version": 1,
+  "tcd_ids": ["TCD-018"],
+  "atomicity": "ATOMIC",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "disposition": "UNRESOLVED_NOT_ADMITTED",
+  "scope": {
+    "process": "canopy interception water-storage reporting interface",
+    "code_path": "Hydro_detailed / Outbal_calc Bawa water-ledger interface",
+    "claim": "the already-existing interception storage change Sict-Sic must be observed in the selected Bawa water control volume without changing hydrology state, fluxes, forcing or state-promotion semantics",
+    "accounting_relation": "Bawa_Ddev_corrected = Bawa_Ddev_legacy - sum((Sict-Sic)*1000) over the active reporting period"
+  },
+  "authorities": {
+    "RG05B": "c353c3179f213c1bf24c48b3c06f8065c760d3e2",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3A03": "8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+    "B3A03R_TECH": "0876e6e1b6ce33ee5e7b812ab4107f54760d6b27",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "SYNQ01": "842f72300fd03ede0b9024537a7ee6126722a121"
+  },
+  "historical_route": {
+    "b2_available": false,
+    "b2_status": "UNAVAILABLE_AFTER_DOCUMENTED_ACQUISITION_ATTEMPT",
+    "historical_behaviour": "UNKNOWN",
+    "historical_fidelity_claimed": false,
+    "G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS"
+  },
+  "readiness_reconciliation": {
+    "frozen_B0_identity": "PASS",
+    "canonical_TCD018_binding": "PASS",
+    "sic_sict_physical_ownership": "PASS",
+    "begin_end_storage_identity": "PASS",
+    "detailed_hydrology_closure": "PASS",
+    "bawa_interface_omission": "PASS",
+    "natural_LWKM_activation": "PASS",
+    "SYNQ_O003_conservation_oracle": "PASS_STRONGLY_INDEPENDENT_NOT_B2",
+    "isolated_eight_case_noninterference": "PASS_TECHNICAL_8_CASES_376_OUTPUTS_0_UNEXPECTED_DIFFERENCES",
+    "water_only_expected_difference_surface": "PASS",
+    "unrelated_MASSQ01_residual_retained": "PASS",
+    "raw_0_0601_mm_not_used_as_tolerance": "PASS",
+    "production_source_unchanged": "PASS"
+  },
+  "expected_difference": {
+    "changed_surfaces": [
+      "bawaGP.Out",
+      "bawaRP.Out",
+      "bawaTP.Out",
+      "ani_waGP.Bal",
+      "ani_waRP.Bal",
+      "ani_waTP.Bal"
+    ],
+    "difference_condition": "selected Bawa control volume active and net interception storage changes over the reporting period",
+    "required_unchanged": [
+      "Sic and Sict physical trajectories",
+      "all hydrological states",
+      "all hydrological and management fluxes",
+      "forcing and testcase inputs",
+      "SWAP/SWATRE payload",
+      "all non-water reporting families",
+      "unrelated water residual classifications"
+    ]
+  },
+  "gates": {
+    "b0_identity": "PASS",
+    "b1_evidence": "PASS",
+    "b2_route": "PASS_GOV03_HISTORICAL_UNCERTAINTY_ROUTE",
+    "theory_or_exact_identity": "PASS_CONTROL_VOLUME_STORAGE_IDENTITY",
+    "causal": "PASS",
+    "conservation": "PASS",
+    "expected_difference": "PASS",
+    "non_interference": "PASS_TECHNICALLY_STRENGTHENED_BY_ISOLATED_EIGHT_CASE_RUN",
+    "coverage": "PASS_NATURAL_LWKM_PLUS_INDEPENDENT_SYNTHETIC_ORACLE_AND_ISOLATED_NEGATIVE_CONTROLS",
+    "class_specific": "PASS_FOR_READINESS",
+    "residual_uncertainty": "PASS_EXPLICIT",
+    "independent_review": "FAIL_PENDING_NOT_COMPLETED",
+    "composition_if_applicable": "PASS_NOT_APPLICABLE"
+  },
+  "independent_review": {
+    "required": true,
+    "same_authoring_context_may_count": false,
+    "technical_review_head": "0876e6e1b6ce33ee5e7b812ab4107f54760d6b27",
+    "technical_review_independent": false,
+    "clean_review_branch": "review/animo-b3a03r-tcd018-independent-second-line",
+    "review_status_at_reconciliation": "PENDING_INDEPENDENT_REVIEW",
+    "gate": "BLOCKING"
+  },
+  "residual_uncertainty": [
+    "No qualified B2 behavioural reference exists; historical revision-53 behaviour remains UNKNOWN.",
+    "The unrelated MASSQ01 CranGrass TITO=724 residual of -0.0030198960466805147 mm remains unexplained and outside TCD-018.",
+    "The same-context B3A03R technical review strengthens non-interference evidence but cannot satisfy the independent second-line gate.",
+    "No global water-closure claim is made.",
+    "No production implementation, B4 migration or whole-model equivalence is authorized."
+  ],
+  "admission_decision": {
+    "admitted": false,
+    "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03",
+    "production_patch_authorized": false,
+    "production_migration_admitted": false
+  }
+}
