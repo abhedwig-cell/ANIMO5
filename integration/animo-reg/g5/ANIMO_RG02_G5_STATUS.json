@@ -19,11 +19,23 @@
     "NQ02": {"branch": "work/animo-nq02-tcd019-nonlinear-p-qualification", "head": "e180f7d4898530f704652cb0cfa3834d4de16966", "authority_scope": "G5_ATTACHMENT_WORK_SURFACE_ONLY_NOT_GLOBAL_BRANCH_AUTHORITY_REASSIGNMENT"},
     "TS01": {"branch": "work/animo-ts01-temporal-semantics", "head": "ed12a678cfba19ce851eb2f380e6da3f49203fe4"},
     "TIME01": {"branch": "work/animo-time01-generic-time-transaction-contract", "head": "246128dd14732173a6f27c15c923970d50c14e2a"},
-    "ARCHG01": {"branch": "work/animo-archg01-candidate-architecture-consolidation", "head": "5cef7969ee921acd2044521cc7636d388aa02efe", "revalidation_required": true},
+    "ARCHG01": {"branch": "work/animo-archg01-candidate-architecture-consolidation", "head": "5cef7969ee921acd2044521cc7636d388aa02efe", "historical_candidate_base": true},
     "SQ01": {"branch": "work/animo-sq01-tcd016-dry-solute-state", "head": "16ca38663b0c72a06b5787d1f4addcde1429f5b8"},
     "MP01": {"branch": "work/animo-mp01-macropore-qualification", "head": "7b5979dd6301b9d55d23e8c22948a0dba24b229b"},
     "GHG01": {"branch": "work/animo-ghg01-ghg-qualification", "head": "f952bf28c03de911f331762d56613c394529c25a"},
     "B3Q01": {"branch": "work/animo-b3q01-scientific-admission-framework", "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"}
+  },
+  "post_g5_architecture_revalidation": {
+    "work_unit": "ANIMO-ARCHG02",
+    "branch": "work/animo-archg02-temporal-revalidation",
+    "qualified_head": "db8183802631902f41aa5bec518a3c2e63e03ab7",
+    "decision": "QUALIFIED_CANDIDATE_ARCHITECTURE_REVALIDATED_AGAINST_FINAL_TS01_TIME01_PRODUCTION_NOT_ADMITTED",
+    "closeout_ci_run_id": 34319423226,
+    "closeout_ci_conclusion": "success",
+    "attachment": "integration/animo-reg/g5/ANIMO_RG02_G5_ARCHG02_ATTACHMENT.json",
+    "archg01_temporal_revalidation_requirement_resolved": true,
+    "canonical_time_admitted": false,
+    "g8_admitted": false
   },
   "key_reconciliation_results": {
     "theory_streams_attached_without_behavioural_upgrade": true,
@@ -34,7 +46,8 @@
     "TIME01_candidate_contract_attached_without_canonical_TIME_admission": true,
     "ARCHG01_live_branch_refreshed": true,
     "ARCHG01_persisted_temporal_snapshot_predates_TS01_closeout_and_TIME01": true,
-    "ARCHG01_authoritative_revalidation_required": true,
+    "ARCHG01_authoritative_temporal_revalidation_completed_by_ARCHG02": true,
+    "ARCHG02_does_not_admit_G8": true,
     "SQ01_TCD016_class_C_block_preserved": true,
     "MP01_historical_reference_and_TCD025_blocks_preserved": true,
     "GHG01_historical_reference_and_ledger_blocks_preserved": true,
@@ -47,7 +60,7 @@
     "G5_independent_stream_attachment": "QUALIFIED",
     "G6_B2_reference_acquisition_and_comparison": "BLOCKED_BY_PREP02R",
     "G7_B3_scientific_admission": "NOT_ESTABLISHED",
-    "G8_candidate_architecture_scientific_qualification": "NOT_ADMITTED_REVALIDATION_REQUIRED",
+    "G8_candidate_architecture_scientific_qualification": "NOT_ADMITTED_TEMPORAL_REVALIDATION_COMPLETE_OTHER_GATES_OPEN",
     "G9_B4_canonical_ANIMO5_baseline": "NOT_ADMITTED",
     "G10_production_migration": "NOT_ADMITTED"
   },
@@ -56,10 +69,9 @@
     "audit_artifact": "integration/animo-reg/g5/ANIMO_RG02_G5_STRUCTURAL_AUDIT.json",
     "audit_result": "PASS",
     "github_actions_workflow": ".github/workflows/rg02-g5-stream-attachment.yml",
-    "github_actions_run_id": 34318580160,
-    "github_actions_job_id": 102359991573,
-    "tested_head": "b0ca88e347891a5d4d5b475abe94b62b1fbbe954",
-    "github_actions_conclusion": "success"
+    "qualified_g5_closeout_run_id": 34318799877,
+    "archg02_closeout_run_id": 34319423226,
+    "archg02_closeout_head": "db8183802631902f41aa5bec518a3c2e63e03ab7"
   },
   "evidence_boundaries": {
     "b2_reference_qualified": false,
@@ -77,13 +89,15 @@
     "production_code_modified": false,
     "physics_changed": false,
     "numerical_policy_changed": false,
-    "scientific_baseline_changed": false
+    "scientific_baseline_changed": false,
+    "branch_merge_performed": false
   },
   "deliverables": {
     "contract": "docs/governance/ANIMO_RG02_G5_WORK_UNIT_CONTRACT.md",
     "stream_attachment": "docs/governance/ANIMO_RG02_G5_STREAM_ATTACHMENT.md",
     "stream_register": "integration/animo-reg/g5/ANIMO_RG02_G5_STREAM_REGISTER.csv",
     "gate_matrix": "integration/animo-reg/g5/ANIMO_RG02_G5_GATE_MATRIX.csv",
+    "archg02_attachment": "integration/animo-reg/g5/ANIMO_RG02_G5_ARCHG02_ATTACHMENT.json",
     "audit_tool": "tools/audit_rg02_g5_stream_attachment.py",
     "workflow": ".github/workflows/rg02-g5-stream-attachment.yml",
     "audit": "integration/animo-reg/g5/ANIMO_RG02_G5_STRUCTURAL_AUDIT.json",
@@ -92,12 +106,13 @@
   "remaining_blockers": [
     "PREP02R has no independently trustworthy historical B2 reference artifact, so G6 remains blocked",
     "B3Q01 is a qualified admission framework but no B3 scientific baseline is established",
-    "ARCHG01 requires explicit authoritative revalidation against completed TS01 and TIME01 before G8 can advance",
-    "canonical STATE and TIME remain unadmitted",
+    "canonical STATE and TIME remain unadmitted even though ARCHG02 completed candidate temporal revalidation",
+    "runtime scheduler reject retry coupled-commit and adapter evidence remains absent",
+    "MASS and EX remain downstream unadmitted gates",
     "TCD-016 remains blocked on physical phase theory and independent scientific review",
     "TCD-019 remains a numerical-policy candidate without B3 admission, independent numerical review or production tolerance",
     "macropore historical active reference, restart and TCD-025 ledger gaps remain open",
     "GHG historical reference, release-specific equation provenance and C/N ledger gaps remain open"
   ],
-  "next_safe_gate": "G6_REMAINS_BLOCKED; PARALLEL_SAFE_ACTION_IS_ARCHITECTURE_REVALIDATION_AND_CONTINUED_REFERENCE_RECOVERY_WITHOUT_B2_B3_B4_PROMOTION"
+  "next_safe_gate": "G6_REMAINS_BLOCKED; ARCHG02_TEMPORAL_REVALIDATION_IS_COMPLETE_BUT_G8_REMAINS_UNADMITTED; PARALLEL_SAFE_WORK_IS_RUNTIME_TRANSACTION_FIXTURE_PREPARATION_AND_REFERENCE_RECOVERY_WITHOUT_B2_B3_B4_PROMOTION"
 }
