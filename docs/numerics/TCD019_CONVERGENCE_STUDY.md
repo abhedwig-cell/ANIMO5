@@ -15,9 +15,9 @@ Frozen identities were rechecked before execution:
 - source SHA-256: `183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566`;
 - testbank SHA-256: `44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84`.
 
-Canonical B1 compiler path: GNU Fortran 14.2.0 with `-ffree-form -ffree-line-length-none -fallow-argument-mismatch -std=legacy -fdefault-real-8 -fdefault-double-8 -fno-automatic` and linker build-id disabled. Every scientific diagnostic source descendant and executable used in the matrix is SHA-256 registered in `TCD019_NUMERICAL_MATRIX.json`.
+Canonical B1 compiler path: GNU Fortran 14.2.0 with `-ffree-form -ffree-line-length-none -fallow-argument-mismatch -std=legacy -fdefault-real-8 -fdefault-double-8 -fno-automatic` and linker build-id disabled. Every scientific diagnostic source descendant and executable used in the primary matrix is SHA-256 registered in `TCD019_NUMERICAL_MATRIX.json`.
 
-The observer instrumentation writes unrounded `ES26.17E3` records for accepted nonlinear state, path, residuals and P stores. An observer/non-observer control on the same B1 source logic found no ordinary scientific-output difference after normalizing only run timestamps and elapsed-time fields. Observer output is therefore treated as diagnostic observation, not as an altered physical model route.
+The observer instrumentation writes unrounded scientific records for accepted nonlinear state, path, residuals and P stores. An observer/non-observer control on the same B1 source logic found no ordinary scientific-output difference after normalizing only run timestamps and elapsed-time fields. Observer output is therefore treated as diagnostic observation, not as an altered physical model route.
 
 ## Residuals
 
@@ -90,7 +90,7 @@ the cancellation-free secant is
 [S(C)-S(C0)]/(C-C0) = a / ((1+b*C)*(1+b*C0)).
 ```
 
-The diagnostic exact-storage descendant uses the exact finite change relative to the actual stored start state, with the off-relation part explicitly retained and captured. Significant off-relation initialization remains TCD-014 and is not normalized away.
+The diagnostic exact-storage descendant retains any material off-relation start-state inconsistency rather than using TCD-019 to normalize it away. Significant off-relation initialization remains a separate TCD-014 concern.
 
 With legacy `Small=1e-4`, the exact storage representation gives cumulative `R_cons = -1.7973962838665782e-2 kg/ha P` and reduces maximum `|R_constitutive|` to `1.2177894326628747e-16`. Its LWKM trajectory is nearly identical to the `delta_switch=1e-12` diagnostic: maximum `Rsc` difference `7.77e-15`, maximum fast-store difference `4.39e-12`. This confirms that the earlier threshold-lowering probe was approximating the exact-storage route, rather than identifying `1e-12` as a meaningful threshold.
 
@@ -106,7 +106,7 @@ With legacy `Small=1e-4`, the exact storage representation gives cumulative `R_c
 | `1e-9` | `8.791209410558785e-6` | `9.058543114419888e-5` | `1.014888896290749e-5` | `5.515097073579880e-11` | `2.29611` | `2` |
 | `1e-10` | `3.066615331962126e-6` | `8.315892595562731e-5` | `1.530710211463175e-6` | `7.878809408256549e-12` | `2.51415` | `4` |
 
-There is a clear stable region before fallback activation. `1e-7` and `1e-8` give almost the same cumulative conservation result and closely aligned trajectories. From exact `1e-6` to exact `1e-8`, the maximum `Rsc` change is `1.89e-11`, maximum fast-store change `9.86e-9`, maximum slow-store change `6.97e-9`, and maximum changes in the captured transport terms are of order `2e-13`.
+There is a clear stable region before fallback activation in LWKM. `1e-7` and `1e-8` give almost the same cumulative conservation result and closely aligned trajectories. From exact `1e-6` to exact `1e-8`, the maximum `Rsc` change is `1.89e-11`, maximum fast-store change `9.86e-9`, maximum slow-store change `6.97e-9`, and maximum changes in the captured transport terms are of order `2e-13`.
 
 This does not qualify `1e-7` or `1e-8` as a production threshold. It establishes a convergence envelope and exposes a second policy boundary: once the Newton threshold is tighter than the fallback's own acceptance/control semantics, the fallback begins to govern rare steps and monotone refinement breaks.
 
@@ -135,7 +135,7 @@ For source-bound Langmuir parameters `a = 0.8400301920000034`, `b = 1129.0000000
 - binary64 cancellation-free exact secant: `0.8001350946256465`, relative error about `9.44e-17`;
 - binary64 tangent: `0.8001350946263066`, close numerically but not exactly conservative for the finite storage change.
 
-A naive 'always use the exact quotient' formulation would therefore trade the legacy constitutive bias for cancellation error at observed tiny increments. The cancellation-free exact expression avoids both failure modes for Langmuir.
+A naive `always use the direct exact quotient` formulation would therefore trade the legacy constitutive bias for cancellation error at observed tiny increments. The cancellation-free exact expression avoids both failure modes for Langmuir.
 
 ## Synthetic time-step refinement
 
@@ -145,13 +145,25 @@ With the legacy stopping policy, the mass residual after 2, 4, 8, ..., 128 subst
 
 With exact storage plus `Small=1e-8`, final concentration is stable to roughly the last binary64 digits across all refinements and the mass residual stays at about `1e-16` to `1.6e-15`. This supports, but does not by itself admit, the combined route.
 
+## Natural multi-case coverage
+
+Five additional supplied natural cases with the same fast-Langmuir/slow-Freundlich option family were executed under the same frozen B0 hash controls: CranGrass, GrassPeat, STONE, Puitmijn and Zuiderzeeland.
+
+All five reproduce a negative legacy cumulative P drift. The exact-storage plus refined-solver route strongly reduces post-initial-step drift across the set. CranGrass is especially diagnostic: a first-step residual of about `-0.72357 kg/ha` remains almost unchanged, but excluding that step the cumulative residual changes from `-0.04231 kg/ha` in the baseline to approximately `+1.3e-7 kg/ha` at exact storage plus `Small=1e-7`. NQ02 therefore keeps the first-step term separate rather than tuning TCD-019 against it.
+
+The extension also shows that fallback is naturally active outside LWKM. Puitmijn uses 6 bisection fallbacks in the unchanged baseline and Zuiderzeeland uses 2. At the common diagnostic `Small=1e-7`, the counts increase to 12 and 15. At `1e-8`, they rise to 23 and 48. Whole-run absolute conservation does not improve monotonically with this tightening in every case even though the Newton equation residual becomes smaller.
+
+This is evidence against any policy rule based only on `Small`. Newton and fallback acceptance must be qualified as one route.
+
+Detailed values and descendant hashes are in `docs/numerics/TCD019_MULTICASE_NATURAL_COVERAGE.md` and `integration/animo-numerics/TCD019_MULTICASE_EXTENSION.json`.
+
 ## Qualification finding
 
 The evidence supports two separate conclusions.
 
-1. Legacy TCD-019 is `LEGACY_NUMERICAL_POLICY_NONCONVERGENT_OR_BIASED`, specifically because the small-delta constitutive representation is biased with respect to exact storage conservation, while the solver stopping policy determines how much residual remains after that formulation bias is removed.
+1. Legacy TCD-019 is `LEGACY_NUMERICAL_POLICY_NONCONVERGENT_OR_BIASED`, specifically because the small-delta constitutive representation is biased with respect to exact storage conservation, while nonlinear/fallback acceptance determines how much residual remains after that formulation bias is removed.
 2. A route consisting of threshold-free, cancellation-safe exact storage representation plus a jointly qualified nonlinear/fallback convergence policy is a `CONVERGENT_POLICY_CANDIDATE`.
 
-The second statement is route-level, not a tolerance choice. Current evidence does not establish a production `Small`, a new fallback threshold, or a global comparison tolerance. Multi-case natural activation and independent B2/numerical review remain open before B3 admission.
+The second statement is route-level, not a tolerance choice. Natural multi-case support is now established for the supplied fast-Langmuir family, but the work still does not establish a production `Small`, a new fallback threshold, a global comparison tolerance, or integrated fast-Freundlich qualification. Independent B2 evidence where obtainable and independent numerical review remain open before B3 admission.
 
 `TOLERANCE_NOT_YET_QUALIFIED`.
