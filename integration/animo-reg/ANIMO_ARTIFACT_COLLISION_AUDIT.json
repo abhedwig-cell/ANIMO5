@@ -1,0 +1,149 @@
+{
+  "work_unit": "ANIMO-RG02",
+  "scope": "cross-branch canonical and same-path artifact collision audit",
+  "decision": "BLOCKED_UNRESOLVED_PARALLEL_LINEAGE_COLLISIONS",
+  "silent_last_writer_wins_allowed": false,
+  "collisions": [
+    {
+      "artifact": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+      "severity": "CRITICAL",
+      "collision_state": "CONFIRMED_DIVERGENT_POST_TCD027_LOCAL_NUMBERING",
+      "canonical_owner": "ANIMO-B3 governance line, with B3Q01 as the qualified framework snapshot owner",
+      "qualified_canonical_snapshot": {
+        "owner_head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+        "blob_sha": "224acc350fde69d3c4aebed8628c0f945e0b3367",
+        "tail": "TCD-027"
+      },
+      "observed_parallel_risk": [
+        "PREP07 transfer-edge uses local TCD-028 and TCD-029",
+        "later PREP08/PREP09 lines reuse post-027 labels for different findings",
+        "PREP09 option-contract uses local TCD-030 for the aeration option-2 alias",
+        "PREP09 element-transfer/slow-sorption uses local TCD-030 and TCD-031 for different findings",
+        "PREP10 restart-state-continuity uses later local TCD labels including TCD-032 through TCD-034",
+        "older PREP10C reset-readiness proposed provisional TCD-032",
+        "B3 intake PR #10 separately reserves canonical TCD-028 for the stable-DOM plough accumulator defect"
+      ],
+      "required_action": "Create an explicit local-to-canonical discrepancy-ID reconciliation ledger. Preserve branch-local IDs as provenance only. Do not union or overwrite divergent CSVs. Canonical allocation from TCD-028 onward must be performed by the B3 governance owner."
+    },
+    {
+      "artifact": "integration/animo-prep/ANIMO-PREP07_STATUS.json",
+      "severity": "HIGH",
+      "collision_state": "CONFIRMED_SAME_PATH_DIFFERENT_WORK_CONTENT",
+      "canonical_owner": "authoritative PREP07 integration lineage",
+      "branches": [
+        "work/animo-prep07-transfer-edge-audit",
+        "work/animo-prep07-transfer-species-identity"
+      ],
+      "required_action": "Keep transfer-edge status as PREP07 authority. Transplant unique species-identity evidence under a new supplemental identity without importing its PREP07 status artifact."
+    },
+    {
+      "artifact": "integration/animo-prep/ANIMO-PREP08_STATUS.json",
+      "severity": "HIGH",
+      "collision_state": "CONFIRMED_SAME_WORKUNIT_DIVERGENCE",
+      "canonical_owner": "authoritative PREP08 integration lineage",
+      "branches": [
+        "work/animo-prep08-causal-management-probes",
+        "work/animo-prep08-transfer-probes"
+      ],
+      "related_reservation": "work/animo-prep08-restart-state-continuity",
+      "required_action": "Retain causal-management status as PREP08 authority. Transplant transfer-probe evidence separately. Do not reactivate the restart reservation as PREP08."
+    },
+    {
+      "artifact": "integration/animo-prep/ANIMO-PREP09_STATUS.json",
+      "severity": "HIGH",
+      "collision_state": "CONFIRMED_SAME_PATH_DIFFERENT_QUALIFIED_AUDITS",
+      "canonical_owner": "authoritative PREP09 integration lineage",
+      "branches": [
+        "work/animo-prep09-element-transfer-and-slow-sorption",
+        "work/animo-prep09-option-contract-audit"
+      ],
+      "required_action": "Retain element-transfer/slow-sorption as PREP09 authority because the active PREP10 lineage consumes it. Re-number the option-contract work unit before transplant and reconcile its local TCD labels."
+    },
+    {
+      "artifact_family": "PREP10 status, workflow and docs/prep10 namespace",
+      "severity": "HIGH",
+      "collision_state": "CONFIRMED_PARALLEL_WORKUNIT_REUSE",
+      "canonical_owner": "work/animo-prep10-stable-dom-plough-accumulators",
+      "branches": [
+        "work/animo-prep10-stable-dom-plough-accumulators",
+        "work/animo-prep10-stable-dom-causal-activation",
+        "work/animo-prep10-restart-state-continuity"
+      ],
+      "required_action": "Do not merge competing PREP10 histories. The causal branch is already reconciled as supplemental by authoritative PREP10. Restart/state-continuity evidence must receive a new work-unit identifier and be transplanted path-by-path."
+    },
+    {
+      "artifact_family": "PREP10C status and candidate artifacts",
+      "severity": "HIGH",
+      "collision_state": "CONFIRMED_SUPERSEDED_PARALLEL_HISTORY",
+      "canonical_owner": "work/animo-prep10c-stable-dom-event-reset-authoritative for review lineage only",
+      "branches": [
+        "work/animo-prep10c-stable-dom-event-reset-authoritative",
+        "work/animo-prep10c-stable-dom-event-reset-candidate",
+        "work/animo-prep10c-stable-dom-reset-readiness"
+      ],
+      "required_action": "Use only the re-anchored PREP10C review lineage. Older PREP10C branches are do-not-merge. Their unique historical evidence may be referenced, not used to overwrite current PREP10C artifacts or TCD allocation."
+    },
+    {
+      "artifact_family": "B3 classification and disposition registers",
+      "severity": "MEDIUM",
+      "collision_state": "NO_CURRENT_SILENT_MUTATION_ADMITTED_SINGLE_OWNER_REQUIRED",
+      "canonical_owner": "ANIMO-B3Q01 governance",
+      "evidence": [
+        "B3Q01 owns the qualified classification schema and snapshot through the current canonical TCD set",
+        "B3A01 is readiness only",
+        "TCD-028 intake PR #10 explicitly leaves the canonical register and B3Q01 classification snapshot unchanged"
+      ],
+      "required_action": "Future B3 intake branches submit disposition proposals. Only the B3 governance owner mutates canonical classification/disposition registers after admission gates close."
+    },
+    {
+      "artifact": "docs/governance/MIGRATION_DAG.md",
+      "severity": "MEDIUM",
+      "collision_state": "PARALLEL_STALE_COPY_AND_SEMANTIC_DRIFT_RISK",
+      "canonical_owner": "RG governance series after reconciliation with EB01 semantics",
+      "evidence": [
+        "EB01 corrected the project-level B0-B4 terminology in governance artifacts",
+        "RG01 and later branches descend from different governance anchors and can carry stale copies"
+      ],
+      "required_action": "Consolidate governance once on the RG integration line. Other streams may propose changes but must not independently own the canonical migration DAG."
+    },
+    {
+      "artifact": "docs/governance/DEVELOPMENT_GOVERNANCE.md",
+      "severity": "MEDIUM",
+      "collision_state": "CROSS_CUTTING_GOVERNANCE_OWNERSHIP_RISK",
+      "canonical_owner": "RG governance series with EB/EG requirements incorporated by explicit transplant",
+      "required_action": "Use reviewed governance-only reconciliation. Do not choose the newest branch copy as authority by timestamp."
+    },
+    {
+      "artifact": "docs/quality/STATUS_A_AA_GAP_REGISTER.csv",
+      "severity": "MEDIUM",
+      "collision_state": "PARALLEL_STALE_COPY_RISK",
+      "canonical_owner": "RG governance series",
+      "required_action": "Centralize future mutations on the governance integration line. Evidence and architecture work units should submit proposed gap updates instead of parallel canonical rewrites."
+    },
+    {
+      "artifact_family": "ARCH01 through ARCH07 contracts and registries",
+      "severity": "LOW",
+      "collision_state": "SEQUENTIAL_NAMESPACED_CANDIDATE_CHAIN_NO_CONFIRMED_SAME_PATH_COLLISION",
+      "canonical_owner": "each ARCH work unit for its candidate-design namespace; future ARCHG consolidation for aggregate candidate architecture",
+      "required_action": "Persist an ARCHG work-unit contract before treating the existing ARCHG01 ref as a consolidation surface. Candidate architecture remains non-canonical until scientific and migration gates are admitted."
+    },
+    {
+      "artifact_family": "EB01 copy/pr/review refs, TQ01 shadows and NQ01 alias refs",
+      "severity": "LOW",
+      "collision_state": "REDUNDANT_OR_STALE_ALIAS_REFS",
+      "canonical_owner": "respective primary work-unit branch",
+      "required_action": "Mark aliases SUPERSEDED_DO_NOT_MERGE. No content transplant is needed where the alias is byte-identical or a strict ancestor of the primary line."
+    }
+  ],
+  "global_rules": [
+    "No canonical register is resolved by last writer wins.",
+    "No branch name confers artifact authority.",
+    "A same-path status collision across divergent branches blocks wholesale merge.",
+    "Unique evidence from a non-authoritative branch is transplanted without its stale canonical-register or same-workunit status copies.",
+    "Canonical TCD allocation is centralized in B3 governance from TCD-028 onward.",
+    "Cross-cutting governance files have a single governance owner after RG02 consolidation."
+  ],
+  "scientific_baseline_changed": false,
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false
+}
