@@ -1,0 +1,47 @@
+{
+  "work_unit": "ANIMO-B3A01",
+  "title": "TCD-027 Class A Corrected-Legacy Admission Readiness",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3a01-tcd027-class-a-readiness",
+  "date": "2026-09-09",
+  "framework_base_commit": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "target_tcd": "TCD-027",
+  "decision": "IN_PROGRESS_TCD027_CLASS_A_READINESS_PERSISTED_BEFORE_VALIDATION",
+  "implemented": true,
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "blocked": true,
+  "qualification_scope": "Class A B3 admission readiness only; no corrected-legacy admission",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "current_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "b3_admission_record_created": false,
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false,
+  "production_migration": "NOT_ADMITTED",
+  "physics_change": false,
+  "numerical_policy_change": false,
+  "legacy_source_modified": false,
+  "testcase_modified": false,
+  "production_code_modified": false,
+  "route_state": {
+    "normal_b2_available": false,
+    "historical_uncertainty_route_eligible": false,
+    "reason": "PREP02R has not obtained a historical reference artifact and its prepared archival request has not yet been sent, so neither admission route is complete."
+  },
+  "deliverables": [
+    "docs/b3a01/WORK_UNIT_CONTRACT.md",
+    "docs/b3a01/TCD027_CLASS_A_ADMISSION_READINESS.md",
+    "integration/animo-b3/TCD027_CLASS_A_READINESS.json",
+    "integration/animo-b3/ANIMO-B3A01_STATUS.json"
+  ],
+  "planned_validation": [
+    "machine-readable readiness JSON parse",
+    "TCD identity and class consistency",
+    "B0 identity consistency",
+    "B1 evidence binding",
+    "B2 blocker consistency",
+    "Class A changed/unchanged surface assertions",
+    "fail-closed non-admission assertions"
+  ]
+}
