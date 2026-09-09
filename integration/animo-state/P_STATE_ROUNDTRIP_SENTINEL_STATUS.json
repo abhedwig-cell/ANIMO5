@@ -1,0 +1,33 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "artifact": "RC-R4 site-resolved phosphorus state roundtrip sentinel",
+  "profile": "CORE_CNP_SUBSURFACE_ONLY",
+  "status": "PERSISTED_NOT_YET_EXECUTED",
+  "evidence_class": "SYNTHETIC_PERSISTENT_STATE_CONTRACT_NON_B2",
+  "production_code": false,
+  "physics_change": false,
+  "canonical_state_admission": "NOT_ADMITTED",
+  "initialization_fixture": "INPO1_EXPLICIT_P_STATE",
+  "harness_module": "tools/stateq01/p_state_roundtrip_harness.py",
+  "test_module": "tests/stateq01/test_p_state_roundtrip_harness.py",
+  "persistent_owners": [
+    "aqueous_po4[soil_layer]",
+    "fast_sorbed[soil_layer;fast_site]",
+    "slow_sorbed[soil_layer;slow_site]",
+    "precipitated[soil_layer]"
+  ],
+  "derived_nonowners": [
+    "total_mineral_p",
+    "summed_sorbed_p"
+  ],
+  "rules": {
+    "site_order_preserved": true,
+    "missing_site_zero_fill": "FORBIDDEN",
+    "extra_site_truncation": "FORBIDDEN",
+    "inpo2_or_inpo3_projection_qualified_here": false
+  },
+  "tested": false,
+  "qualified": false,
+  "qualification_boundary": "synthetic exact site-resolved state roundtrip only; no revision-53 P-process split-run and no Inpo2/3 canonicalization",
+  "next": "execute persisted sentinel in GitHub Actions"
+}
