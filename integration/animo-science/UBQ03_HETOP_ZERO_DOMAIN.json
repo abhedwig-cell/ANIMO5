@@ -1,0 +1,88 @@
+{
+  "work_unit": "ANIMO-UBQ03",
+  "title": "HETOP Zero-Thickness Upper-Reservoir Domain and Runtime Semantics Characterization",
+  "date": "2026-09-09",
+  "base_head": "1db63b17cb5f48cbd8ae28116a2e716b4bdaadf3",
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
+  },
+  "source_members": {
+    "input1.for": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+    "Addit.for": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+    "UBoundconc.for": "b9a7ec980d40c0f76279077852190788e36cd976d185b12683a38da0c7dfecf7",
+    "Uptpar_Grass.for": "538a84b5e4b8f9dd770d0f959bfea37a4fe2e67ddd59ce86b8f9515098bfd18d",
+    "Uptpar_Plant.for": "c7bfbc7c7e74c8a19e996d6f28de5aa60d580618fda61a2b18994553ad1d946a",
+    "Animo.for": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7"
+  },
+  "documentation_contract": {
+    "reference": "Alterra Report 224 (2005), Table 6, SOIL.INP geometry",
+    "description": "Thickness of the virtual reservoir where fertilizer additions are leached from proportional to cumulative precipitation since the fertilization event",
+    "unit": "m",
+    "declared_range": "[0.0 ... 0.2]",
+    "special_semantics_at_exact_zero_identified": false
+  },
+  "parser_contract": {
+    "source": "input1.for:1826-1829 and Checkrea at 4068-4079",
+    "read": "Read(Uiso,*,Err=7000) Hetop, He(0)",
+    "lower_bound": 0.0,
+    "upper_bound": 0.2,
+    "lower_rejection_condition": "Value.Lt.Low",
+    "upper_rejection_condition": "Value.Gt.High",
+    "hetop_zero_accepted": true
+  },
+  "direct_division_sites": [
+    {"file":"Addit.for","line":361,"expression":"Conitop = Conitop + Frni(Mn)*Qumt(I)*1.d-4 /hetop","activation":"Wyad(I)=0 AND Pn<=1.0d-4 AND addition event"},
+    {"file":"Addit.for","line":363,"expression":"Conhtop increment /hetop","activation":"Wyad(I)=0 AND Pn<=1.0d-4 AND addition event"},
+    {"file":"Addit.for","line":365,"expression":"Copotop increment /hetop","activation":"Wyad(I)=0 AND Pn<=1.0d-4 AND IPO=1 AND addition event"},
+    {"file":"Addit.for","line":367,"expression":"Help = Frca(Mn,Fn)*Amormt /hetop","activation":"Wyad(I)=0 AND Pn<=1.0d-4 AND addition event"},
+    {"file":"UBoundconc.for","line":114,"expression":"P = St*Flux/hetop","activation":"Flpn=0 AND Flux>=1.0d-8"},
+    {"file":"Uptpar_Grass.for","line":92,"expression":"Help = Flab(1)/hetop","activation":"Ioptplant=2 routine execution"},
+    {"file":"Uptpar_Grass.for","line":194,"expression":"Help = Flab(1)/hetop","activation":"Ioptplant=2 AND IPO=1"},
+    {"file":"Uptpar_Plant.for","line":110,"expression":"Help = Flab(1)/hetop","activation":"Ioptplant=1 AND Comani>1.d-10"},
+    {"file":"Uptpar_Plant.for","line":283,"expression":"Help = Flab(1)/hetop","activation":"Plantpo called under Ioptplant=1 AND IPO=1 within active uptake path"}
+  ],
+  "direct_division_site_count": 9,
+  "explicit_zero_thickness_guard_for_division_sites_found": false,
+  "call_order": {
+    "source": "Animo.for:456-547",
+    "sequence": ["Input_addit when due", "Addit", "UBoundconc", "Uptpar_Plant if Ioptplant=1", "Uptpar_Grass if Ioptplant=2", "Uptpar_extern if Ioptplant=3"],
+    "interpretation": "A zero HETOP configuration can encounter a division site before or after UBoundconc depending on management and crop mode; zero is therefore not a generally implemented zero-capacity reservoir policy."
+  },
+  "upper_boundary_path_matrix": [
+    {"condition":"Flpn=0 AND Flux>=1.0d-8 AND Hetop=0","legacy_UBoundconc_direct_division":true,"classification":"UNDEFINED_OR_EXCEPTIONAL_NUMERIC_OPERATION"},
+    {"condition":"Flpn=0 AND 0<Flux<1.0d-8 AND Hetop=0","legacy_UBoundconc_direct_division":false,"classification":"LEGACY_FALLBACK_ITSELF_AVOIDS_DIVISION_BUT_OTHER_RUNTIME_DIVISION_SITES_REMAIN_CONDITIONAL"},
+    {"condition":"Flpn=0 AND Flux=0 AND Hetop=0","legacy_UBoundconc_direct_division":false,"classification":"LEGACY_FALLBACK_ITSELF_AVOIDS_DIVISION_BUT_NO_FINITE_STORAGE_LIMIT_FOR_NONZERO_LOAD_IS_DEFINED"},
+    {"condition":"Flpn=1 AND Hetop=0","legacy_UBoundconc_direct_division":false,"classification":"PONDING_FORM_USES_HETOP_MULTIPLICATIVELY_BUT_OTHER_RUNTIME_DIVISION_SITES_MAY_STILL_EXECUTE"}
+  ],
+  "testbank_domain": {
+    "soil_input_files_checked": 9,
+    "observed_Hetop_values_m": [0.02],
+    "Hetop_zero_case_present": false,
+    "cases": ["CranGrass","CranMais","GHGMais","GrassPeat","LWKM_gras_1040.2021.2045","Puitmijn_Cranendonck_60","RuurloGrass","STONE_akk_0006.2001.2015","Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"]
+  },
+  "tcd042_effect": {
+    "B1_positive_Hetop_limit_invalidated": false,
+    "E1_positive_Hetop_policy_invalidated": false,
+    "full_raw_child_trigger_domain_covered": false,
+    "reason": "Both proposed corrected coefficient families require positive HETOP. Exact zero is parser/documentation-admissible but does not have a single source-implemented zero-thickness reservoir semantics.",
+    "silent_Hetop_positive_guard_authorized": false,
+    "input_lower_bound_change_authorized": false
+  },
+  "runtime_claim_boundary": {
+    "historical_B2_execution_at_Hetop_zero_available": false,
+    "exact_historical_exception_or_nan_behavior_claimed": false,
+    "why": "Source-level divisions are proven, but exact historical floating-point exception behaviour is not established by a historical B2 executable.",
+    "global_claim_that_every_Hetop_zero_run_fails": false,
+    "qualified_claim": "HETOP=0 is accepted at input level while multiple reachable production paths require division by HETOP and no general zero-thickness semantics or guard is defined."
+  },
+  "canonical_disposition": {
+    "new_top_level_tcd_reserved": false,
+    "tcd_043_reserved": false,
+    "scientific_admission": false,
+    "production_change": false,
+    "recommended_intake": "Treat HETOP=0 as a separate input-domain/runtime-contract hazard or child qualification question before widening TCD-042-B1/E1 beyond Hetop>0."
+  },
+  "decision": "QUALIFIED_CHARACTERIZATION_HETOP_ZERO_PARSER_ADMISSIBLE_CONDITIONALLY_UNDEFINED_NO_GLOBAL_ZERO_THICKNESS_POLICY"
+}
