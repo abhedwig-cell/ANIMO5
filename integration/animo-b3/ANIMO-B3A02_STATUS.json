@@ -16,6 +16,9 @@
     "integration/animo-b3/TCD017_CLASS_A_READINESS.json",
     "integration/animo-b3/ANIMO-B3A02_STATUS.json"
   ],
+  "supplementary_deliverables": [
+    "docs/b3/TCD017_SECOND_LINE_REVIEW_HANDOFF.md"
+  ],
   "required_evidence_result": {
     "Addiorpotoppl_source_loss": "QUALIFIED",
     "Addiorpopl_destination_gain": "QUALIFIED",
@@ -40,11 +43,27 @@
     "normal_B2_available": false,
     "historical_uncertainty_route_eligible": false,
     "current_GOV02_PREP02R_state": "B2_ACQUISITION_STILL_ACTIVE",
+    "live_PREP02R": {
+      "branch": "work/animo-prep02r-historical-reference-recovery",
+      "head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+      "status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+      "external_request_sent": false,
+      "historical_reference_artifact_obtained": false,
+      "native_reference_run_completed": false,
+      "native_vs_gnu_comparison_completed": false,
+      "reference_qualified": false,
+      "receipt_and_native_capture_readiness": true,
+      "effect_on_B3A02_route": "NONE_ROUTE_STILL_PENDING"
+    },
     "gate": "PENDING"
   },
   "independent_review": {
     "SYNQ_O002_independent_conservation_oracle_available": true,
     "second_line_B3_review_complete": false,
+    "review_handoff_prepared": true,
+    "review_handoff": "docs/b3/TCD017_SECOND_LINE_REVIEW_HANDOFF.md",
+    "frozen_review_object_head": "3ff8f4bda77c631b82110b83317c6a9b42b867ad",
+    "authoring_context_counts_as_independent_review": false,
     "gate": "PENDING"
   },
   "execution": {
