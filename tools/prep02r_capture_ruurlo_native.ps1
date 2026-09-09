@@ -202,7 +202,7 @@ $repeatClass = if (
 
 $codePage = (& cmd /c chcp 2>&1 | Out-String).Trim()
 $manifest = [ordered]@{
-    schema = 'animo-prep02r-native-run-capture-v2'
+    schema = 'animo-prep02r-ruurlo-native-harness-capture-v1'
     evidence_class = 'CROSS_RUNTIME_DIAGNOSTIC_NATIVE_NOT_REFERENCE_ADMISSION'
     work_unit = 'ANIMO-PREP02R'
     case = 'RuurloGrass'
