@@ -12,9 +12,9 @@ Production migration: `NOT_ADMITTED`
 
 ## Purpose and authority rule
 
-RG05 is a governance-only reconciliation checkpoint. It refreshes RG04 after the PREP02R internal-recovery stop decision, STATEQ02/B3I04 closure, TCD-042 atomization through B3I05, and later atomic/numerical/input work that advanced while RG05 was being assembled.
+RG05 is a governance-only reconciliation checkpoint. It refreshes RG04 after the PREP02R internal-recovery stop decision, STATEQ02/B3I04 closure, MASSQ02/B3I03, TCD-042 atomization through B3I05, and later atomic, numerical, review and input work that continued while RG05 was being assembled.
 
-Authority is selected by content, ancestry, explicit status/decision records and validation evidence. Branch names, timestamps and last-writer-wins ordering are not authority. RG05 does not merge work branches and does not promote evidence strength by integration.
+Authority is selected by content, ancestry, explicit status/decision records and validation evidence. Branch names, timestamps and last-writer-wins ordering are not authority. A later branch may supersede an earlier conclusion only when its content explicitly does so. RG05 does not merge work branches and does not promote evidence strength by integration.
 
 Frozen B0 remains:
 
@@ -26,7 +26,7 @@ RG05 modifies none of those bytes, no revision-53 source and no canonical TCD ro
 
 ## Historical fidelity and G6
 
-Latest PREP02R authority is `a2fda49871ee3c7104daf7e06cd8dffdac06b125`, with planning decision:
+Latest PREP02R authority remains `a2fda49871ee3c7104daf7e06cd8dffdac06b125`, with planning decision:
 
 `STOP_FURTHER_INTERNAL_REFERENCE_RECOVERY_AND_PROCEED_WITH_AVAILABLE_EVIDENCE_WITHIN_EXISTING_GOV02_SCOPE`
 
@@ -55,32 +55,69 @@ RG05 explicitly forbids reclassifying this as `B2_REFERENCE_UNAVAILABLE_AFTER_RE
 
 Canonical discrepancy identity remains append-only at `work/animo-b3i03-canonical-register-append@814ea660d367494432beb63ea78298d1f6cd73d7`, tail `TCD-042`. No `TCD-043` is reserved.
 
-UBQ01 qualified the exact-zero mechanism as Class B. UBQ02 separately qualified the finite-positive `0 < Flux < 1.0d-8` seam as Class E. B3I05 is closed at `7fa0162415e02a6f0167e71b48ae38177a9e06e0` with:
+UBQ01 qualified the exact-zero mechanism as Class B evidence. UBQ02 separately qualified the finite-positive `0 < Flux < 1.0d-8` seam as Class E. B3I05 is closed at `7fa0162415e02a6f0167e71b48ae38177a9e06e0` with:
 
 `QUALIFIED_TCD042_CANONICAL_CHILD_ROUTING_NO_NEW_TCD_NO_ADMISSIONS`
 
 The children remain qualification identities under the existing parent:
 
 - `TCD-042-B1`, exact zero, Class B;
-- `TCD-042-E1`, finite positive subthreshold, Class E.
+- `TCD-042-E1`, finite-positive subthreshold, Class E.
 
-Later work has now qualified both child-specific pre-admission packages without admitting either child. `B3B02@c4eb36e5ece7ab2354b628192662ab8ce80b12fd` records qualified atomic Class-B readiness for B1, with route and independent review fail closed. `NQ03@8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6` qualifies a restricted natural-envelope binary64 policy for E1, with independent numerical review still pending and no B3 policy admission.
+### B1 supersession and zero-thickness domain
 
-NQ03's selected scope is `Flpn=0`, `0<Flux<1e-8`, `Hetop>0`, and `0<P<=3.8510200002999744e-7`, with `P=St*Flux/Hetop`. Its qualification does not silently extend beyond that envelope and does not modify B1.
+The earlier RG05 snapshot still treated `B3B02@c4eb36e5ece7ab2354b628192662ab8ce80b12fd` as full atomic B1 readiness. That conclusion has now been explicitly superseded by the domain-refined closeout at `B3B02@412bf889ce959d85c651c3b9180dec0a6ff9bb61`.
 
-Parent TCD-042 therefore remains `WAITING_ON_CHILDREN`: the mechanistic work is qualified, but the applicable child review/route gates are not complete. Parent admission and B4 use remain forbidden.
+The reason is substantive. Frozen revision-53 input validation accepts `Hetop = 0`. The positive-Hetop exact-zero limit contains division by `Hetop`. B3B02 therefore retains qualification only for the subdomain `Hetop > 0` and withdraws full readiness for the requested trigger `Flpn = 0 AND Flux = 0`.
+
+Current B1 decision:
+
+`PARTIAL_TCD042_B1_CLASS_B_READINESS_HETOP_ZERO_DOMAIN_UNRESOLVED_ROUTE_AND_REVIEW_FAIL_CLOSED`
+
+The positive-Hetop exact-zero limit and its conservation identity remain qualified evidence. The complete child domain is not admission-ready. RG05 does not silently add `Hetop > 0` as a new input guard and does not reinterpret parser acceptance as a typo.
+
+### E1 numerical review and Class-E readiness
+
+`NQ03@8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6` qualified a restricted binary64 policy only for `Flpn=0`, `0<Flux<1e-8`, `Hetop>0` and `0<P<=3.8510200002999744e-7`, where `P=St*Flux/Hetop`.
+
+`NQ03R@0153779e9045c6527b7c31156f2295ff44b57eeb` then completed a methodologically independent 120-digit reconstruction and passed the restricted policy. This is a numerical second-line review. Organizational independence is explicitly not claimed. NQ03R also found that literal coefficient evaluation order differs at roundoff scale on 129 probe points, so bitwise production binding still requires a frozen evaluation order or a separately qualified equation-derived ulp bound.
+
+`B3E01@41e43c6a6888aac5b5b52041bcdd088c7afc68f1` carries that reviewed policy into Class-E readiness and remains deliberately partial:
+
+`PARTIAL_TCD042_E1_CLASS_E_READINESS_POSITIVE_HETOP_POLICY_QUALIFIED_FULL_CHILD_DOMAIN_AND_ADMISSION_ROUTE_FAIL_CLOSED`
+
+The frozen user guide confirms that `HETOP` has documented range `[0.0, 0.2]`. Thus zero is not merely parser-admissible, it is also inside the pinned documented range. No reviewed documentation has yet supplied a qualified special transport rule for zero thickness. The full E1 child trigger is therefore not covered by the positive-Hetop numerical policy.
+
+B3E01 also records two governance blockers independent of the numerical method: the current formal B3 disposition schema does not directly encode child keys such as `TCD-042-E1`, and the claim-scoped B2 route remains closed. Parent-only substitution is not allowed.
+
+### Shared semantic owner
+
+The parser-admissible and documented `Hetop = 0` case is now a shared semantic owner for both TCD-042 children. B1 and E1 may continue independent evidence work on their positive-Hetop subdomains, but any decision about zero-thickness meaning must be serialized across both children. RG05 therefore adds a distinct `TCD-042_HETOP_ZERO_DOMAIN` owner to the parallelism matrix.
+
+Parent `TCD-042` remains `WAITING_ON_CHILDREN`. It cannot be admitted, composed into B4 or replaced by a parent-only disposition while either child domain remains unresolved.
+
+## Other late-wave reconciliation
+
+`B3A04` advanced after the first RG05 closeout to `1192ee77eda47149af1e31a752e09d343edd9273`. TCD-026 remains qualified Class-A readiness, now with a model-produced CranMais restart-format state replay that strongly exercises the nonzero exudate storage ledger. That replay is explicitly not a chronological split-run and not historical B2. Route and genuinely independent review remain pending.
+
+`B3B03` remains qualified TCD-024 readiness at `446f57f3aeff6e7db56ce473f0724bdb58cad94f`. A technical second-line workunit at `02ce1f49582d2b8cb794c3bfb9d674481a2eea1e` reconfirmed the atomic readiness with green validation, but it came from the same ChatGPT authoring context and explicitly does not satisfy reviewer independence. The separate handoff branch `review/animo-b3b03r-tcd024-independent-second-line@11db97289ffafdd6281b83f0aa0e96b544d6eb5a` remains `REQUEST_PREPARED_NOT_COMPLETED`.
+
+`B3B04@c87ed020a8b4a4685e76f701364b560c8f9c7aef` remains in progress for TCD-040. STATEQ02 split 282 remains only activation/rejection evidence and is not TCD-040 qualification.
+
+`IO02@fdf6a27feefcb1d1afb9faff0aaab2f5363073c9` remains fail closed. Its observer/test code compiles, but workflow `34383556997` fails in the unittest step. GENERAL.INP therefore remains unqualified.
 
 ## Atomic B3 queue reset
 
-RG05 retains 25 top-level entries and zero scientific admissions.
+RG05 retains 25 top-level entries and zero scientific admissions. The canonical top-level tail remains TCD-042.
 
-Material changes from RG04 are:
+The main queue consequences of the post-closeout reconciliation are:
 
-- TCD-024 now has qualified Class-B readiness under `B3B03@446f57f3aeff6e7db56ce473f0724bdb58cad94f`; its historical route remains blocked, historical prevalence is `UNKNOWN`, and independent second-line review is pending;
-- TCD-026 now has qualified Class-A readiness under `B3A04@2097e1e1c83c60b683d850d7c944e8da795ca8ac`; route and independent review remain pending;
-- TCD-040 has an active `B3B04@c87ed020a8b4a4685e76f701364b560c8f9c7aef` restore-identity workunit, but qualification is still pending; STATEQ02 split 282 is not reinterpreted as TCD-040 qualification;
-- TCD-042 is atomized and both child qualification packages have advanced, but both remain non-admissions;
-- TCD-015, TCD-017, TCD-018 and TCD-027 remain completed readiness packages that should not be redone merely because route/review gates are closed.
+- TCD-024 remains `WAITING_ON_ROUTE_AND_REVIEW`; technical reconfirmation does not satisfy independence.
+- TCD-026 remains `WAITING_ON_ROUTE_AND_REVIEW`; the stronger model-produced state replay does not create B2 or admission.
+- TCD-040 remains `IN_PROGRESS_ADMISSION_READINESS`.
+- TCD-042 remains `WAITING_ON_CHILDREN`, but both child records now surface `Hetop=0` as an upstream domain blocker.
+- `TCD-042-B1` is no longer represented as full qualified readiness. Only its positive-Hetop subdomain is qualified.
+- `TCD-042-E1` has a qualified and independently reconstructed positive-Hetop policy, plus qualified partial B3E01 readiness, but the full child domain is not ready.
 
 The full queue is `integration/animo-reg/RG05_B3_QUEUE.json`.
 
@@ -88,20 +125,13 @@ The full queue is `integration/animo-reg/RG05_B3_QUEUE.json`.
 
 Readiness, numerical work, input-contract qualification, independent review and the PREP02R external acquisition action may proceed in parallel when atomic ownership is preserved.
 
-Shared semantic owners require explicit separation. B3B02 and NQ03 share parent TCD-042 but remain distinct atoms. NQ02 and B3B03 share the phosphorus/sorption subsystem, but TCD-019 and TCD-024 cannot be composed for admission and one defect's improved residual cannot define the other's acceptance policy.
+Shared semantic owners require explicit serialization. B3B02 and B3E01 share parent TCD-042 and now also share the unresolved `Hetop=0` semantic domain. Positive-Hetop evidence may proceed independently. Any zero-thickness semantic decision, new guard, domain refinement or parent composition must be serialized under that shared owner.
 
-Canonical STATE, TIME, MASS and EX admissions are serialized owning-gate decisions. TCD-042 parent disposition is serialized after both children satisfy their applicable review/route gates. B4 is serialized after every included scientific and canonical gate is admitted. Production remains downstream of B4.
+NQ02 and B3B03 share the phosphorus/sorption subsystem, but TCD-019 and TCD-024 cannot be composed for admission and one defect's improved residual cannot define the other's acceptance policy.
+
+Canonical STATE, TIME, MASS and EX admissions are serialized owning-gate decisions. TCD-042 parent disposition is serialized after the shared domain and both child-specific gates close. B4 is serialized after every included scientific and canonical gate is admitted. Production remains downstream of B4.
 
 The detailed rules are in `integration/animo-reg/RG05_PARALLELISM_MATRIX.csv`.
-
-## Remaining active work at this snapshot
-
-RG05 observes but does not promote:
-
-- `B3B04@c87ed020a8b4a4685e76f701364b560c8f9c7aef`: TCD-040 evidence persisted, qualification pending;
-- `IO02@fdf6a27feefcb1d1afb9faff0aaab2f5363073c9`: strict GENERAL.INP representation observer and contract tests are persisted, but qualification remains fail closed. Workflow `34383556997` compiled the observer/test code successfully and then failed in the unittest step. The authoritative IO02 checkpoint therefore remains `IN_PROGRESS_PERSISTED_SOURCE_CONTRACT_EXTRACTION` and `NOT_YET_QUALIFIED`.
-
-Later advances after this snapshot require another explicit content/state reconciliation. They are not silently part of RG05.
 
 ## Gate reading
 
@@ -115,18 +145,19 @@ Later advances after this snapshot require another explicit content/state reconc
 | GMASS | `TYPED_EVENT_AND_RESIDUAL_CAUSALITY_QUALIFIED_ADMISSION_PENDING` |
 | GEX | `SYNTHETIC_CONTRACT_FIXTURE_QUALIFIED_REAL_ADAPTER_BLOCKED` |
 | GARCH | `QUALIFIED_CANDIDATE_ARCHITECTURE_REVALIDATED` |
+| TCD042_PARENT | `WAITING_ON_CHILDREN` |
 | B4 | `NOT_ADMITTED` |
 | PRODUCTION | `NOT_ADMITTED` |
 
 ## Recommended next wave
 
-1. Complete B3B04 TCD-040 restore-identity qualification without broadening canonical STATE.
-2. Run genuinely independent reviews for TCD-015, TCD-017, TCD-018, TCD-024, TCD-026, TCD-027, TCD-042-B1 and the NQ03 TCD-042-E1 numerical policy. Keep all admission decisions fail closed while claim-scoped route requirements are unmet.
-3. Execute the real external archival/provenance acquisition action if progress on G6U is desired.
-4. Fix IO02's failing contract tests and continue representation-only qualification until its full grammar, negative probes, natural projection and validation are green.
-5. Open TCD-023, TCD-030, TCD-038 and TCD-041 atomic readiness work as capacity allows.
-6. Continue NQ02/TCD-019 and TCD-029 as separate numerical-policy work.
-7. Do not start B4 composition or production migration from readiness-only evidence.
+1. Open a dedicated bounded zero-thickness semantic qualification for `Hetop=0` that owns both TCD-042 children. Do not silently exclude zero or add a production guard.
+2. Complete B3B04 TCD-040 restore-identity qualification without broadening canonical STATE.
+3. Continue genuinely independent B3 reviews for the qualified readiness dossiers. NQ03R is a passed numerical review, not a substitute for every later B3 disposition review.
+4. Define a formal atomic B3 disposition carrier for B3I05 child keys without reserving `TCD-043` and without collapsing a child into the parent.
+5. Execute the real external archival/provenance acquisition action if progress on G6U is desired.
+6. Fix IO02's failing contract tests and keep its work representation-only until the grammar, negative probes, natural projection and validation are green.
+7. Keep B4 composition and production migration closed.
 
 ## RG05 non-admissions
 
