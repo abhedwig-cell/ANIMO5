@@ -1,0 +1,58 @@
+{
+  "work_unit": "ANIMO-B3B03R",
+  "title": "TCD-024 Slow Langmuir Site Indexing Technical Second-Line Review",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3b03r-tcd024-second-line-review",
+  "reviewed_branch": "work/animo-b3b03-tcd024-slow-langmuir-index-readiness",
+  "reviewed_head": "446f57f3aeff6e7db56ce473f0724bdb58cad94f",
+  "target_tcd": "TCD-024",
+  "class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "technical_review_status": "IN_PROGRESS_PERSISTED_VALIDATION_PENDING",
+  "independent_second_line_gate_satisfied": false,
+  "independence_reason": "This technical review is performed from the same ChatGPT authoring context as ANIMO-B3B03. Methodological re-reading does not establish reviewer independence.",
+  "review_scope": {
+    "legacy_expression": "Yy = One + Parcxsl(3,I) * Avc",
+    "candidate_atomic_expression": "Yy = One + Parcxsl(3,J) * Avc",
+    "modify_TCD019": false,
+    "joint_TCD019_TCD024_admission": false,
+    "solver_redesign": false,
+    "tolerance": false,
+    "production_patch": false,
+    "B3_admission": false
+  },
+  "evidence_rechecked": {
+    "B3B03_final_ci_run": 34382965948,
+    "B3B03_final_ci_conclusion": "success",
+    "B3B03_validator": "PASS",
+    "B3B03_scope_guard": "PASS",
+    "canonical_TCD_register_blob": "224acc350fde69d3c4aebed8628c0f945e0b3367",
+    "SYNQ01_register_blob": "4c215d19844614de8868380fb03f93268ea4c5d8",
+    "NQ02_pinned_interaction_head": "40a41089020f78ee1d5181b8afc7bdb511af3193",
+    "NQ02_pinned_interaction_blob": "9ca37e90115faab9604a3f3051a8246b5e3a0813",
+    "GOV02_policy_blob": "dd6b29432d836189a8beb98759a4f93d74777f6c",
+    "PREP02R_status_blob": "eb3c8e877d82f402415061cfd39c3d2bcbe550a7"
+  },
+  "route_state": {
+    "normal_B2_available": false,
+    "historical_uncertainty_route_available": false,
+    "historical_prevalence": "UNKNOWN",
+    "historical_fidelity_claim": false
+  },
+  "technical_gates": {
+    "B0_and_source_identity": "PASS",
+    "atomic_wrong_index_claim": "PASS",
+    "unequal_site_discriminator": "PASS",
+    "active_and_inactive_site_controls": "PASS",
+    "multi_site_conservation_identity": "PASS",
+    "unrounded_state_and_flux_evidence": "PASS",
+    "inactive_Freundlich_route_non_interference": "PASS",
+    "TCD019_separation": "PASS",
+    "expected_difference_surface": "PASS",
+    "SYNQ01_display_value_issue_retained": "PASS_WITH_RECORDED_REPRESENTATION_INCONSISTENCY",
+    "natural_positive_activation": "NOT_AVAILABLE_IN_SUPPLIED_FROZEN_TESTBANK"
+  },
+  "technical_disposition": "PENDING_VALIDATION",
+  "governance_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "admitted": false,
+  "production_migration_admitted": false
+}
