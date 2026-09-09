@@ -1,0 +1,20 @@
+{
+  "work_unit": "ANIMO-B3A03",
+  "target": "TCD-018",
+  "class": "A_ACCOUNTING_REPORTING_ONLY",
+  "branch": "work/animo-b3a03-tcd018-class-a-admission-readiness",
+  "base_branch": "work/animo-rg02-g5-independent-stream-attachment",
+  "base_commit": "5c278152eacc33660f1c5870c7d419b8041b20a9",
+  "status": "STARTED_EVIDENCE_RECONCILIATION",
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "admitted": false,
+  "hard_constraints": {
+    "swap_hydrology_modification": false,
+    "water_state_representation_change": false,
+    "raw_0_0601_mm_used_as_tolerance": false,
+    "admission_without_valid_route": false,
+    "admission_without_second_line_review": false
+  }
+}
