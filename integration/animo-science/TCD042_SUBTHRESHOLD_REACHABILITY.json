@@ -1,0 +1,129 @@
+{
+  "work_unit": "ANIMO-UBQ01",
+  "target": "TCD-042",
+  "evidence_class": "B0_HASH_PINNED_DIAGNOSTIC_REACHABILITY_SCAN_NOT_B2",
+  "range": "0<Flux<1.0d-8",
+  "formula": "Flux=max(0,Flib(1)+Rurv) when Flpn=0",
+  "source_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "cases": [
+    {
+      "case": "CranGrass",
+      "status": "EXECUTED",
+      "records": 2922,
+      "no_ponding_records": 2836,
+      "exact_zero_records": 1236,
+      "finite_positive_subthreshold_records": 188,
+      "positive_ge_1e_minus_8_records": 1412,
+      "min_positive_flux": 8.470329472543003e-22,
+      "max_flux": 0.0778570888,
+      "trace_sha256": "e09d619f6c91a8858b47c6b33ad75590f569c31551b85ad0a04e79775fb0f641"
+    },
+    {
+      "case": "CranMais",
+      "status": "EXECUTED",
+      "records": 3287,
+      "no_ponding_records": 3285,
+      "exact_zero_records": 1360,
+      "finite_positive_subthreshold_records": 299,
+      "positive_ge_1e_minus_8_records": 1626,
+      "min_positive_flux": 3.3881317890172014e-21,
+      "max_flux": 0.083523864,
+      "trace_sha256": "1700155184170ad104c5aa49418d7873b30900284a5a098a68911afa035e96b6"
+    },
+    {
+      "case": "GHGMais",
+      "status": "NO_TRACE_GHG_INPUT_OUTPUT_CONTRACT_BLOCK",
+      "finite_positive_subthreshold_records": null,
+      "claim_of_absence": false
+    },
+    {
+      "case": "GrassPeat",
+      "status": "EXECUTED",
+      "records": 540,
+      "no_ponding_records": 461,
+      "exact_zero_records": 0,
+      "finite_positive_subthreshold_records": 0,
+      "positive_ge_1e_minus_8_records": 461,
+      "min_positive_flux": 5.5007099999996006e-08,
+      "max_flux": 0.0087527467,
+      "trace_sha256": "4b2b8ecabfb393410dcb478f2bdfe2fa87a46bff0d9b8b02f20938563b202be0"
+    },
+    {
+      "case": "LWKM_gras_1040.2021.2045",
+      "status": "EXECUTED",
+      "records": 900,
+      "no_ponding_records": 898,
+      "exact_zero_records": 17,
+      "finite_positive_subthreshold_records": 12,
+      "positive_ge_1e_minus_8_records": 869,
+      "min_positive_flux": 1.0164395367051604e-20,
+      "max_flux": 0.01048571741235294,
+      "trace_sha256": "f442cd3ccef9dce62320b6f8fdb6c05d37438e14f62014508b7cbb7507fa848c"
+    },
+    {
+      "case": "Puitmijn_Cranendonck_60",
+      "status": "EXECUTED",
+      "records": 4383,
+      "no_ponding_records": 4171,
+      "exact_zero_records": 1507,
+      "finite_positive_subthreshold_records": 490,
+      "positive_ge_1e_minus_8_records": 2174,
+      "min_positive_flux": 8.470329472543003e-22,
+      "max_flux": 0.049191337,
+      "trace_sha256": "f91f0e188751b7c12b1217ba2c1a59610a033c5da16f351073d0d5b2b93c6e74"
+    },
+    {
+      "case": "RuurloGrass",
+      "status": "EXECUTED",
+      "records": 1947,
+      "no_ponding_records": 1947,
+      "exact_zero_records": 942,
+      "finite_positive_subthreshold_records": 191,
+      "positive_ge_1e_minus_8_records": 814,
+      "min_positive_flux": 1.6940658945086007e-21,
+      "max_flux": 0.03980083326470589,
+      "trace_sha256": "7cc422cd6b80b0ecec386ccb4bc7cee7c92ef3481ea963fbd86538dde786e732"
+    },
+    {
+      "case": "STONE_akk_0006.2001.2015",
+      "status": "EXECUTED",
+      "records": 540,
+      "no_ponding_records": 500,
+      "exact_zero_records": 1,
+      "finite_positive_subthreshold_records": 0,
+      "positive_ge_1e_minus_8_records": 499,
+      "min_positive_flux": 3.399999999999866e-07,
+      "max_flux": 0.0089645899,
+      "trace_sha256": "a6393cd2b6e5abd0208c4f21aad04d5737f9df5695ef872a89cbf25a02583a5a"
+    },
+    {
+      "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+      "status": "EXECUTED",
+      "records": 1096,
+      "no_ponding_records": 945,
+      "exact_zero_records": 307,
+      "finite_positive_subthreshold_records": 58,
+      "positive_ge_1e_minus_8_records": 580,
+      "min_positive_flux": 2.752857078576476e-21,
+      "max_flux": 0.022726677060000002,
+      "trace_sha256": "abab216b03d67a155269d8a6b0a3ec3236bbc271f115002bdb9ef1f2c9922839"
+    }
+  ],
+  "summary": {
+    "testbank_cases_total": 9,
+    "executed_cases_with_trace": 8,
+    "blocked_cases_without_trace": 1,
+    "no_ponding_records_scanned": 15043,
+    "exact_zero_records": 5370,
+    "finite_positive_subthreshold_records": 1238,
+    "cases_with_finite_positive_subthreshold": 6,
+    "conclusion": "FINITE_POSITIVE_SUBTHRESHOLD_BRANCH_IS_NATURALLY_REACHABLE_AND_MUST_REMAIN_SEPARATE_FROM_EXACT_ZERO_CLASS_B_ATOM"
+  },
+  "classification": {
+    "reachable": true,
+    "provisional_class": "E_NUMERICAL_POLICY",
+    "included_in_exact_zero_class_B_atom": false,
+    "new_tcd_reserved": false,
+    "canonical_child_created": false
+  }
+}
