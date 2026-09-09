@@ -25,10 +25,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Validate TCD-042 registration state
+      - name: Validate TCD-042 registration state and exact byte transform
         run: python3 tools/b3i02_sup01/validate_tcd042_append.py
 
-      - name: Enforce supplement-only scope and append-only register mutation
+      - name: Enforce supplement-only scope and register mutation envelope
         shell: bash
         run: |
           set -euo pipefail
@@ -53,8 +53,9 @@ jobs:
             echo 'Canonical register not yet modified: pre-append checkpoint.'
           else
             read -r added deleted _ < <(git diff --numstat "$base"...HEAD -- docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv)
-            if [ "$added" != "1" ] || [ "$deleted" != "0" ]; then
-              echo "Canonical register mutation must be exactly +1/-0, got +$added/-$deleted" >&2
+            if [ "$added" != "2" ] || [ "$deleted" != "1" ]; then
+              echo "Expected Git numstat +2/-1 because the historical TCD-041 tail lacks an EOF newline; got +$added/-$deleted" >&2
               exit 1
             fi
+            echo 'Git numstat +2/-1 accepted only because the Python validator proves exact base-byte prefix preservation plus one delimiter LF plus the frozen TCD-042 row.'
           fi
