@@ -2,14 +2,23 @@
   "workunit": "ANIMO-STATEQ01",
   "artifact": "RC-R6 exact external hydrology frame rebind sentinel",
   "profile": "CORE_CNP_SUBSURFACE_ONLY",
-  "status": "PERSISTED_NOT_YET_EXECUTED",
-  "evidence_class": "SYNTHETIC_TIME02_EXTERNAL_FRAME_CONTRACT_NON_B2",
+  "status": "PASS_SYNTHETIC_EXACT_EXTERNAL_FRAME_REBIND_NON_B2",
+  "evidence_class": "SYNTHETIC_EXECUTABLE_TIME02_EXTERNAL_FRAME_CONTRACT_NON_B2",
   "production_code": false,
   "physics_change": false,
   "canonical_state_admission": "NOT_ADMITTED",
   "canonical_time_admission": "NOT_ADMITTED",
   "harness_module": "tools/stateq01/external_hydrology_frame_rebind_harness.py",
   "test_module": "tests/stateq01/test_external_hydrology_frame_rebind_harness.py",
+  "workflow": {
+    "run_id": 34336854061,
+    "job_id": 102418159010,
+    "tested_head": "d2c181a1b1bdf44b5d6cd2d73769f45cf6fb573c",
+    "python": "3.12.14",
+    "tests_run": 14,
+    "tests_passed": 14,
+    "tests_failed": 0
+  },
   "exact_bound_fields": [
     "t0",
     "t1",
@@ -29,8 +38,20 @@
     "schema_or_geometry_mismatch": "REJECT_BEFORE_PROCESS_STATE_CONSTRUCTION",
     "implicit_frame_truncation_or_extension": "NOT_ADMITTED"
   },
-  "tested": false,
-  "qualified": false,
-  "qualification_boundary": "synthetic exact rebind guard only; no real hydrology producer adapter or profile-clean revision-53 split-run",
-  "next": "execute persisted sentinel in GitHub Actions"
+  "sentinel_results": {
+    "exact_match_consumes_frame_once": true,
+    "t0_mismatch_rejected_before_consume": true,
+    "t1_one_second_mismatch_rejected_before_consume": true,
+    "future_t1_mismatch_rejected_before_consume": true,
+    "stale_generation_rejected_before_consume": true,
+    "geometry_mismatch_rejected_before_consume": true,
+    "schema_mismatch_rejected_before_consume": true,
+    "configuration_mismatch_rejected_before_consume": true,
+    "floating_coordinate_rejected": true,
+    "nonreduced_rational_coordinate_rejected": true
+  },
+  "tested": true,
+  "qualified": true,
+  "qualification_boundary": "synthetic exact rebind guard only; no real hydrology producer adapter or profile-clean revision-53 split-run; frame-ID/content immutability registry remains adapter/provenance work",
+  "next": "retain exact rebind guard as checkpoint precondition; execute behavioural restore with a profile-clean producer frame when available"
 }
