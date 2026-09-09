@@ -1,0 +1,39 @@
+{
+  "work_unit": "ANIMO-MP02",
+  "verification_head_before_closeout": "8d3dd9e5c48eedc436bb6bfb871e6df7814b7c49",
+  "result": "PASS_WITH_OPEN_GNU_DIAGNOSTIC_FPE_SEAM",
+  "checks": {
+    "frozen_source_sha256_match": true,
+    "frozen_testbank_sha256_match": true,
+    "diagnostic_executable_sha256_matches_prior_reproducible_build": true,
+    "complete_case_runs": 6,
+    "successful_completion_runs": 6,
+    "positive_active_route_labels": 5,
+    "positive_active_macropore_iteration_hits_per_species": 2922,
+    "specialized_macropore_balance_warning_runs": 0,
+    "public_water_output_byte_identical_across_all_cases": true,
+    "combined_solute_exact_input_replication": "PASS",
+    "normalized_replication_bundle_sha256": "04915574e59fb36b49a38bdcc80f9ae062e6c4a452c5833e60acf19f033453bf",
+    "active_gnu_ieee_invalid_flag_localized": true,
+    "active_gnu_fpe_source_line": "MAPOTRANSPORT.FOR:670",
+    "negative_control_fpe_trap": false,
+    "persistent_macropore_solute_restart_labels_written": false,
+    "legacy_source_modified": false,
+    "frozen_testcase_modified": false,
+    "production_code_modified": false,
+    "tcd025_correction_implemented": false,
+    "b2_historical_reference_admitted": false,
+    "b3_admitted": false,
+    "production_migration_admitted": false
+  },
+  "branch_diff_from_mp01_base": {
+    "base": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "ahead_by_before_verification_commit": 6,
+    "behind_by": 0,
+    "changed_scope": [
+      "docs/macropore",
+      "integration/animo-macropore"
+    ]
+  },
+  "qualification_boundary": "complete-case B1 activation and TCD-025 symptom qualification only; synthetic descendants are not historical B2 evidence"
+}
