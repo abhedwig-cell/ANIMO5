@@ -1,0 +1,24 @@
+name: STATEQ01 exact management cursor qualification
+
+on:
+  push:
+    branches:
+      - work/animo-stateq01-canonical-state-readiness
+    paths:
+      - tools/stateq01/management_cursor_exact_time_harness.py
+      - tests/stateq01/test_management_cursor_exact_time_harness.py
+      - docs/state/TIME02_MANAGEMENT_CURSOR_RECONCILIATION.md
+      - integration/animo-state/MANAGEMENT_CURSOR_EXACT_TIME_SENTINEL_STATUS.json
+      - .github/workflows/stateq01-management-cursor.yml
+  workflow_dispatch:
+
+jobs:
+  exact-management-cursor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact-time management cursor sentinels
+        run: python -m unittest tests/stateq01/test_management_cursor_exact_time_harness.py -v

@@ -1,0 +1,33 @@
+{
+  "workunit": "ANIMO-STATEQ01",
+  "artifact": "TIME02 exact-time management cursor RC-R2 harness",
+  "profile": "CORE_CNP_SUBSURFACE_ONLY",
+  "status": "PERSISTED_NOT_YET_EXECUTED",
+  "production_code": false,
+  "physics_change": false,
+  "canonical_state_admission": "NOT_ADMITTED",
+  "canonical_time_admission": "NOT_ADMITTED",
+  "time02_input": {
+    "branch": "work/animo-time02-concrete-time-coordinate",
+    "head": "b4d78cf32cb149cf50aa2b0a0fbefee571eee6b8",
+    "calendar_contract_id": "ANIMO_PG_86400_NOLEAPSECONDS_V1",
+    "representation": "NORMALIZED_EXACT_RATIONAL_CIVIL_DAY_COORDINATE"
+  },
+  "harness_module": "tools/stateq01/management_cursor_exact_time_harness.py",
+  "test_module": "tests/stateq01/test_management_cursor_exact_time_harness.py",
+  "documentation": "docs/state/TIME02_MANAGEMENT_CURSOR_RECONCILIATION.md",
+  "qualification_target": "RC-R2 candidate-contract exact split at management t1 with explicit next_event_id and no replay/skip",
+  "assertions": [
+    "management endpoint membership is exact t0 < E <= t1",
+    "checkpoint stores exact schedule identity and explicit next event identity",
+    "next event boundary is derived from bound schedule and is not a duplicate mutable checkpoint owner",
+    "accepted time alone is insufficient and time-only restore is rejected",
+    "event exactly at split belongs to interval ending at split",
+    "post-restore interval cannot replay the event consumed at split",
+    "no floating tolerance participates in canonical event identity"
+  ],
+  "evidence_class": "SYNTHETIC_CANDIDATE_CONTRACT_NON_B2",
+  "tested": false,
+  "qualified": false,
+  "next": "execute persisted harness in GitHub Actions and record exact result without promoting canonical TIME or STATE"
+}
