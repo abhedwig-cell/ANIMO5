@@ -1,0 +1,76 @@
+{
+  "record_type": "POST_G5_CANONICAL_ROUTING_SUPPLEMENT_NO_ADMISSION",
+  "work_unit": "ANIMO-B3I01",
+  "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_03",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i01-canonical-register-append",
+  "prior_head": "8e3ce76a3b842814d3f1e3bbebdcbf84e77768f3",
+  "source_authority": {
+    "workunit": "ANIMO-BUILDQ03",
+    "branch": "work/animo-buildq03-ghg-task-context-qualification",
+    "head": "8b1e4006be86eea344cf9f7da978218261ee1a15",
+    "handoff": "docs/build/BUILDQ03_B3_HANDOFF.md"
+  },
+  "existing_tcd_evidence_strengthening": [
+    {
+      "canonical_key": "TCD-011",
+      "source_local_key": "GHG01-LCL-GHG-HIDDEN-TASK-STATE-PERSISTENCE",
+      "source_workunit": "ANIMO-BUILDQ03",
+      "disposition": "STRENGTHEN_EXISTING_TCD_EVIDENCE_ONLY",
+      "qualification": "six active GHG cross-call hidden-local families have controlled explicit-context equivalence and explicit nonpersistent owners",
+      "qualified_families": [
+        "GHGponding",
+        "CH4oxid",
+        "N2Oproreduc_NO3N2OReduc",
+        "GHGtransport",
+        "GHGtranssub",
+        "GHGasses"
+      ],
+      "owner_result": "SCOPED_TRANSACTION_PHASE_OR_SOLVER_CONTEXT_NOT_PERSISTENT_MODELSTATE",
+      "runtime_materiality": "PHYSICAL_AND_SOLVER_VISIBLE_GNU_STORAGE_DURATION_MATERIALITY_CONFIRMED",
+      "historical_intel_equivalence": false,
+      "tcd_closed": false,
+      "admitted": false
+    }
+  ],
+  "runtime_routing_additions": [
+    {
+      "local_key": "BUILDQ03-LCL-GHGASSES-FLAIR-NLPLUS1-UNINITIALIZED",
+      "routine": "GHGasses",
+      "phenomenon": "Flair(Nl+1) may be read in the bottom-layer air-flow transformation when La < Nl without a source assignment to that slot",
+      "disposition": "BUILD_RUNTIME_INITIALIZATION_HAZARD_NOT_TCD_PENDING_BOUNDARY_SEMANTICS",
+      "canonical_tcd": null,
+      "b3_class": null,
+      "reason": "the causal mechanism is conditional first-read initialization rather than cross-call storage duration; intended bottom-boundary value and historical state/flux effect are not yet qualified",
+      "source_evidence": {
+        "source_confirmed": true,
+        "gnu_controlled_probe": true,
+        "gnu_O0": "NaN in affected bottom-layer air-flow terms under diagnostic automatic-local execution",
+        "gnu_O2": "retained/static-like values happened to occur in the controlled probe",
+        "downstream_path": "Flaiio/Flaiou -> GHGtransport/GHGtranssub -> air-flow-dependent transport coefficients including Y2/Y3",
+        "historical_intel": "UNKNOWN"
+      },
+      "diagnostic_control_not_semantics": "Flair(Nl+1)=0.0 was used only to isolate BUILDQ03 phase-context equivalence and is not admitted as a boundary condition or correction",
+      "owner": "PROPOSED_ANIMO-BUILDQ04_WITH_GHG_SCIENCE_REVIEW",
+      "required_next_evidence": [
+        "recover or derive the intended bottom air-flow boundary semantics from revision-specific source/theory",
+        "prove activation envelope for La < Nl in qualified GHG cases",
+        "measure unrounded state/flux materiality independently of compiler accident",
+        "reconcile with historical Intel execution if recoverable",
+        "only then decide whether the item remains a runtime contract hazard, maps to an existing TCD, or warrants a new scientific TCD"
+      ],
+      "admitted": false
+    }
+  ],
+  "canonical_register_action": {
+    "append_required": false,
+    "register_tail_unchanged": "TCD-040",
+    "new_top_level_tcd_allocated": false
+  },
+  "admission_state": {
+    "new_corrections_admitted": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "evidence_strength_increased_by_routing": false
+  }
+}
