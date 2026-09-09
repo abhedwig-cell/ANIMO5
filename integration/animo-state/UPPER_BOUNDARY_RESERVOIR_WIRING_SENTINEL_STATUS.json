@@ -2,7 +2,7 @@
   "workunit": "ANIMO-STATEQ01",
   "artifact": "RC-R12 exact zero-flux nonzero-reservoir wiring sentinel",
   "profile": "CORE_CNP_SUBSURFACE_ONLY",
-  "status": "PERSISTED_NOT_YET_EXECUTED",
+  "status": "PASS_SYNTHETIC_EXACT_WIRING_NON_B2_NONZERO_FLUX_OPEN",
   "evidence_class": "SYNTHETIC_SOURCE_BRANCH_CONTRACT_NON_B2",
   "source_basis": "UBoundconc.for Flux<1e-8 branch narrowed to exact Flux=0 and zero load, where Rs*top=Av*top=Con*top",
   "production_code": false,
@@ -20,8 +20,35 @@
     "geometry identity, Hetop and phosphorus activation mismatches fail before restore",
     "synthetic sentinel uses exact Fraction arithmetic and no floating tolerance"
   ],
-  "tested": false,
-  "qualified": false,
-  "qualification_boundary": "does not exercise the nonzero-flux exponential update and is not revision-53 executable split-run evidence",
-  "next": "execute persisted sentinel in GitHub Actions and record result"
+  "execution": {
+    "tested_head": "d19cc018dc67636b9d3501a88e63cc7499bbf6c2",
+    "workflow": ".github/workflows/stateq01-upper-boundary-reservoir.yml",
+    "run_id": 34335620989,
+    "job_id": 102414197663,
+    "python": "CPython 3.12.14",
+    "tests_run": 10,
+    "tests_passed": 10,
+    "tests_failed": 0,
+    "conclusion": "success",
+    "comparison_mode": "EXACT_FRACTION_NO_FLOAT_TOLERANCE"
+  },
+  "result": {
+    "rc_r12_exact_zero_flux_wiring": "PASS_SYNTHETIC",
+    "nonzero_reservoir_roundtrip": true,
+    "first_active_compartment": 1,
+    "duplicate_start_alias_owner": false,
+    "duplicate_interval_average_owner": false,
+    "geometry_mismatch_fail_closed": true,
+    "hetop_mismatch_fail_closed": true,
+    "p_activation_mismatch_fail_closed": true,
+    "input_or_payload_mutation": false
+  },
+  "tested": true,
+  "qualified": true,
+  "qualification_boundary": "This proves source-derived lifecycle wiring only in the exact zero-flux zero-load branch. It does not exercise the nonzero-flux exponential reservoir update, revision-53 executable split-run behaviour, or B2 historical equivalence.",
+  "remaining": [
+    "nonzero-flux exponential update split equivalence under admitted numerical comparison policy",
+    "profile-clean revision-53 or otherwise admitted executable split-run",
+    "canonical STATE admission"
+  ]
 }
