@@ -10,10 +10,14 @@
     {"check":"all_macropores_off","passed":true,"observed":[0,0,0,0,0,0,0,0,0]},
     {"check":"p_active_sorption_signature","passed":true,"observed":"all six P-active cases use Optcxfa=2,Ncxfa=1,Optcxsl=3,Ncxsl=3,Optpr=0"},
     {"check":"stable_dom_schema_all","passed":true,"observed":"all nine canonical initial/material pairs contain >sdomin and >defsdo"},
-    {"check":"plough_observer_total","passed":true,"observed":{"CranMais":9,"LWKM_gras_1040.2021.2045":4,"STONE_akk_0006.2001.2015":15,"Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA":3,"total":31}}
+    {"check":"plough_observer_total","passed":true,"observed":{"CranMais":9,"LWKM_gras_1040.2021.2045":4,"STONE_akk_0006.2001.2015":15,"Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA":3,"total":31}},
+    {"check":"option_matrix_expanded","passed":true,"observed":{"rows":23,"includes":["ManagementMaterialFormat/Optmf","SoilPAlFeMode/Optalfe","PInitialisationMode/Inpo","AggregatedHydrologyTimestep/Optst"]}},
+    {"check":"ordered_gap_register","passed":true,"observed":{"rows":17,"highest_priority":"REFERENCE_OUTPUT_MISSING"}},
+    {"check":"macropore_evidence_boundary","passed":true,"observed":"no natural active Ioptmp=1 case; source-bound findings are not relabelled as synthetic active coverage"},
+    {"check":"zuiderzeeland_crop_resolution","passed":true,"observed":">lmanag selects crop record 3 and supplied Plant.INP >crop03 has CN=6, selecting the ANIMO grassland branch despite the directory name"}
   ],
-  "passed": 9,
-  "total": 9,
+  "passed": 13,
+  "total": 13,
   "decision": "PASS",
-  "qualification_boundary": "verification supports B0/B1 testcase-lineage and path-coverage inventory only; no B2/B3/B4 promotion"
+  "qualification_boundary": "verification supports B0/B1 testcase-lineage, process/option coverage and gap inventory only; no B2/B3/B4 promotion"
 }
