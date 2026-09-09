@@ -10,7 +10,7 @@
   "tested": true,
   "qualified": false,
   "blocked": true,
-  "testing_scope": "repository-governance validation only: live branch and PR re-query, ancestry comparisons, status/PR evidence cross-checks, and persisted artifact readback; no legacy runtime, scientific, numerical or production test is claimed",
+  "testing_scope": "repository-governance validation only: live branch and PR re-query, ancestry comparisons, status/PR evidence cross-checks, local post-027 register comparison, path-level branch comparisons and persisted artifact readback; no legacy runtime, scientific, numerical or production test is claimed",
   "live_inventory_snapshot": {
     "work_animo_branches_observed": 51,
     "baseline_branches_observed": 2,
@@ -33,15 +33,20 @@
     },
     "PREP09": {
       "authoritative": "work/animo-prep09-element-transfer-and-slow-sorption",
-      "supplemental_renumber_required": ["work/animo-prep09-option-contract-audit"]
+      "supplemental_rehome": {
+        "source": "work/animo-prep09-option-contract-audit",
+        "reserved_target_workunit": "ANIMO-PREP11",
+        "target_state": "RG02_RESERVED_NOT_STARTED"
+      }
     },
     "PREP10": {
       "authoritative": "work/animo-prep10-stable-dom-plough-accumulators",
-      "supplemental": [
-        "work/animo-prep10-stable-dom-causal-activation",
-        "work/animo-prep10-restart-state-continuity"
-      ],
-      "restart_line_requires_new_workunit_id": true
+      "supplemental": ["work/animo-prep10-stable-dom-causal-activation"],
+      "restart_rehome": {
+        "source": "work/animo-prep10-restart-state-continuity",
+        "reserved_target_workunit": "ANIMO-PREP12",
+        "target_state": "RG02_RESERVED_NOT_STARTED"
+      }
     },
     "PREP10C": {
       "authoritative_review_surface": "work/animo-prep10c-stable-dom-event-reset-authoritative",
@@ -92,16 +97,42 @@
     "TCD028_reserved_by": "work/animo-b3-tcd028-stable-dom-intake",
     "TCD028_reservation_admitted": false,
     "post_TCD027_preparatory_ids_are_canonical": false,
+    "rg02_new_canonical_tcd_ids_allocated": 0,
+    "local_identity_reconciliation_artifact": "integration/animo-reg/ANIMO_LOCAL_TCD_RECONCILIATION.json",
     "silent_last_writer_wins_allowed": false,
     "migration_DAG_owner": "RG governance series after explicit EB/EG reconciliation",
     "Status_A_AA_register_owner": "RG governance series",
     "B3_classification_owner": "ANIMO-B3Q01",
     "architecture_contracts_are_candidate_only": true
   },
+  "local_id_reconciliation": {
+    "state": "COMPLETE_FOR_OBSERVED_POST_027_PREPARATORY_LINEAGES",
+    "stable_rg02_local_keys": 8,
+    "direct_numeric_collisions_resolved_as_identity_not_renumbering": [
+      "local TCD-028 transfer-lineage finding versus central TCD-028 stable-DOM reservation",
+      "local TCD-030 exudate-humus fraction sequencing versus local TCD-030 aeration option-2 alias",
+      "local TCD-032 macropore restart writer omission versus superseded PREP10C local TCD-032 stable-DOM reset proposal"
+    ],
+    "canonical_register_modified": false
+  },
+  "supplemental_transplant": {
+    "plan": "integration/animo-reg/ANIMO_SUPPLEMENTAL_EVIDENCE_TRANSPLANT_PLAN.json",
+    "state": "PLANNED_NOT_EXECUTED",
+    "supplemental_packet_ids": [
+      "RG02-SUPP-P07-SPECIES-001",
+      "RG02-SUPP-P08-TRANSFER-001"
+    ],
+    "reserved_rehome_workunits": [
+      "ANIMO-PREP11",
+      "ANIMO-PREP12"
+    ],
+    "prep11_branch_created": false,
+    "prep12_branch_created": false
+  },
   "integration_DAG_gate": {
     "G0_branch_authority_register": "SUBSTANTIALLY_COMPLETE",
-    "G1_local_to_canonical_TCD_reconciliation": "BLOCKED",
-    "G2_duplicate_PREP07_PREP10_evidence_transplant_under_unique_ids": "BLOCKED",
+    "G1_local_to_canonical_TCD_reconciliation": "COMPLETE_FOR_OBSERVED_POST_027_PREPARATORY_LINEAGES",
+    "G2_duplicate_PREP07_PREP10_evidence_transplant_under_unique_ids": "PLANNED_NOT_EXECUTED",
     "G3_governance_artifact_consolidation": "PLANNED_NOT_EXECUTED",
     "G4_canonical_preparatory_evidence_aggregate": "NOT_READY",
     "G5_independent_theory_testing_numerical_temporal_science_stream_attachment": "PLANNED",
@@ -112,16 +143,19 @@
     "G10_production_migration": "NOT_ADMITTED"
   },
   "remaining_blockers": [
-    "post-TCD027 local discrepancy IDs collide across divergent preparatory branches and require an explicit local-to-canonical mapping before canonical register convergence",
-    "unique supplemental PREP07 to PREP10 evidence must be transplanted under non-colliding work-unit identities rather than merged wholesale",
-    "same-path PREP07 PREP08 PREP09 and PREP10 status/register artifacts make direct branch merge unsafe",
-    "ARCHG01 and MP01 refs were observed without independent persisted work-unit status and cannot receive authority from their names",
+    "unique supplemental PREP07/PREP08 evidence and substantive PREP09/PREP10 duplicate-lineage evidence have not yet been rehomed path-by-path",
+    "PREP11 and PREP12 are reserved by RG02 but not yet instantiated from a governance-approved canonical evidence base",
+    "same-path legacy status/register artifacts still make direct source-branch merge unsafe even though the local TCD identity collision is now mapped",
+    "ARCHG01 and MP01 refs were observed without independent persisted work-unit status at the RG02 authority snapshot and cannot receive authority from their names",
     "PREP02R still has no independently trustworthy historical B2 reference; B3 and B4 remain separate blocked or uncompleted gates"
   ],
   "deliverables": {
     "work_unit_contract": "docs/governance/ANIMO_RG02_WORK_UNIT_CONTRACT.md",
     "branch_authority_model": "docs/governance/ANIMO_BRANCH_AUTHORITY_MODEL.md",
     "canonical_integration_DAG": "docs/governance/ANIMO_CANONICAL_INTEGRATION_DAG.md",
+    "local_tcd_reconciliation_document": "docs/governance/ANIMO_LOCAL_TCD_RECONCILIATION.md",
+    "local_tcd_reconciliation": "integration/animo-reg/ANIMO_LOCAL_TCD_RECONCILIATION.json",
+    "supplemental_transplant_plan": "integration/animo-reg/ANIMO_SUPPLEMENTAL_EVIDENCE_TRANSPLANT_PLAN.json",
     "branch_inventory": "integration/animo-reg/ANIMO_BRANCH_INVENTORY.csv",
     "PR_inventory": "integration/animo-reg/ANIMO_PR_INVENTORY.csv",
     "artifact_collision_audit": "integration/animo-reg/ANIMO_ARTIFACT_COLLISION_AUDIT.json",
