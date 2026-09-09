@@ -45,13 +45,16 @@
     "current_GOV02_PREP02R_state": "B2_ACQUISITION_STILL_ACTIVE",
     "live_PREP02R": {
       "branch": "work/animo-prep02r-historical-reference-recovery",
-      "head": "a877eb3f1d1e7a440b45805bbc46fc8e9acfe7ce",
-      "status": "PARTIAL_RECOVERY_BUILD_CONTRACT_STRONGLY_IMPROVED_MODERN_NATIVE_REBUILD_IDENTIFIED_HISTORICAL_REFERENCE_STILL_BLOCKED",
+      "head": "9912001a8848bfdafcaef050d7458136564bc3c6",
+      "status": "PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED",
       "external_request_sent": false,
       "project_build_metadata_obtained": true,
       "native_candidate_executable_obtained": true,
       "native_candidate_classification": "MODERN_NATIVE_REBUILD_NOT_HISTORICAL_REFERENCE",
       "native_candidate_sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+      "ruurlo_frozen_input_surface_pinned": true,
+      "windows_native_capture_harness_ready": true,
+      "windows_native_execution_handoff_ready": true,
       "historical_reference_artifact_obtained": false,
       "native_candidate_execution_completed": false,
       "native_reference_run_completed": false,
@@ -59,7 +62,8 @@
       "reference_qualified": false,
       "equivalent_reference_build_qualified": false,
       "build_contract_recovery": "MATERIALLY_STRENGTHENED",
-      "effect_on_B3A02_route": "NONE_ROUTE_STILL_PENDING_MODERN_NATIVE_REBUILD_CANNOT_SUBSTITUTE_FOR_HISTORICAL_B2"
+      "cross_runtime_diagnostic_readiness": "READY_FOR_WINDOWS_EXECUTION",
+      "effect_on_B3A02_route": "NONE_ROUTE_STILL_PENDING_MODERN_NATIVE_REBUILD_AND_CAPTURE_READINESS_CANNOT_SUBSTITUTE_FOR_HISTORICAL_B2"
     },
     "gate": "PENDING"
   },
@@ -71,6 +75,13 @@
     "frozen_review_object_head": "3ff8f4bda77c631b82110b83317c6a9b42b867ad",
     "authoring_context_counts_as_independent_review": false,
     "gate": "PENDING"
+  },
+  "future_cross_runtime_diagnostic_relevance": {
+    "may_strengthen_non_interference_if_executed": true,
+    "may_strengthen_compiler_runtime_corroboration": true,
+    "may_serve_as_historical_B2": false,
+    "may_close_route_gate_by_itself": false,
+    "required_label": "CROSS_RUNTIME_DIAGNOSTIC_NOT_HISTORICAL_REFERENCE"
   },
   "execution": {
     "new_executable_patch": false,
