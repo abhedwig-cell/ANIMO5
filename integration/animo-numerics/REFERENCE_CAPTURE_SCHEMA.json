@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/abhedwig-cell/ANIMO5/integration/animo-numerics/REFERENCE_CAPTURE_SCHEMA.json",
+  "title": "ANIMO-NQ01 observer-only unrounded reference capture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "evidence_role",
+    "run_identity",
+    "capture_contract",
+    "records"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "evidence_role": {
+      "enum": [
+        "B1_DIAGNOSTIC",
+        "B2_HISTORICAL_REFERENCE_CANDIDATE",
+        "B2_HISTORICAL_REFERENCE_QUALIFIED",
+        "B3_QUALIFICATION_CANDIDATE"
+      ]
+    },
+    "run_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id",
+        "testcase_id",
+        "executable_sha256",
+        "testcase_archive_sha256",
+        "input_tree_sha256_or_manifest",
+        "environment_id"
+      ],
+      "properties": {
+        "run_id": {"type": "string", "minLength": 1},
+        "testcase_id": {"type": "string", "minLength": 1},
+        "executable_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "source_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "testcase_archive_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "input_tree_sha256_or_manifest": {"type": "string", "minLength": 1},
+        "environment_id": {"type": "string", "minLength": 1},
+        "compiler_or_runtime_identity": {"type": ["string", "null"]},
+        "command_line": {"type": ["string", "null"]},
+        "working_directory_layout_id": {"type": ["string", "null"]},
+        "input_content_transformed": {"type": "boolean", "default": false}
+      }
+    },
+    "capture_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observer_only",
+        "ordinary_output_reproduced_before_observer_trust",
+        "rounded_report_only",
+        "precision_capture_method"
+      ],
+      "properties": {
+        "observer_only": {"type": "boolean"},
+        "ordinary_output_reproduced_before_observer_trust": {"type": "boolean"},
+        "rounded_report_only": {"type": "boolean"},
+        "precision_capture_method": {
+          "enum": [
+            "INTEGER_OR_DISCRETE_EXACT",
+            "IEEE_BINARY_BITS",
+            "ROUND_TRIP_DECIMAL",
+            "LEGACY_FORMATTED_DECIMAL_ONLY",
+            "RAW_BINARY_RECORD",
+            "MIXED_DECLARED_PER_RECORD"
+          ]
+        },
+        "observer_patch_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "ordinary_output_tree_manifest": {"type": ["string", "null"]},
+        "observer_output_tree_manifest": {"type": ["string", "null"]}
+      }
+    },
+    "representation_observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["domain", "subject", "classification"],
+        "properties": {
+          "domain": {
+            "enum": [
+              "file_path_compatibility",
+              "formatting",
+              "binary_record_representation",
+              "precision_representation"
+            ]
+          },
+          "subject": {"type": "string"},
+          "classification": {"type": "string"},
+          "reference_text": {"type": ["string", "null"]},
+          "notes": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/capture_record"}
+    }
+  },
+  "$defs": {
+    "capture_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "variable_class",
+        "quantity_name",
+        "units",
+        "temporal",
+        "location",
+        "scientific_context",
+        "execution_context",
+        "value"
+      ],
+      "properties": {
+        "record_id": {"type": "string", "minLength": 1},
+        "variable_class": {
+          "enum": [
+            "ARTIFACT_IDENTITY",
+            "BINARY_RECORD_REPRESENTATION",
+            "DISCRETE_CONTROL_FLOW",
+            "INTEGER_OPTION_STATE",
+            "EXACT_ACCOUNTING_IDENTITY",
+            "PHYSICAL_STORAGE_STATE",
+            "INTERNAL_TRANSFER_FLUX",
+            "EXTERNAL_BOUNDARY_FLUX",
+            "CUMULATIVE_LEDGER",
+            "NONLINEAR_SOLVER_STATE",
+            "DIAGNOSTIC_RESIDUAL",
+            "FORMATTED_REPORT_VALUE",
+            "TIMING_OR_NONSCIENTIFIC_METADATA"
+          ]
+        },
+        "quantity_name": {"type": "string", "minLength": 1},
+        "units": {"type": "string", "minLength": 1},
+        "temporal": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["checkpoint", "step_index"],
+          "properties": {
+            "checkpoint": {
+              "enum": [
+                "INITIAL_STATE",
+                "PRE_PROCESS_STATE",
+                "POST_PROCESS_STATE",
+                "ACCEPTED_END_OF_STEP_STATE",
+                "CUMULATIVE_PERIOD_BALANCE",
+                "FINAL_STATE",
+                "TRIAL_STATE"
+              ]
+            },
+            "simulation_year": {"type": ["integer", "null"]},
+            "simulation_time_day": {"type": ["number", "null"]},
+            "step_index": {"type": "integer", "minimum": 0},
+            "period_id": {"type": ["string", "null"]}
+          }
+        },
+        "location": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["layer", "compartment", "species"],
+          "properties": {
+            "layer": {"type": ["integer", "null"], "minimum": 0},
+            "compartment": {"type": ["integer", "null"], "minimum": 0},
+            "species": {"type": ["string", "null"]},
+            "site_or_fraction": {"type": ["integer", "string", "null"]}
+          }
+        },
+        "scientific_context": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state_id", "transfer_id", "ledger_id", "cumulative"],
+          "properties": {
+            "state_id": {"type": ["string", "null"]},
+            "transfer_id": {"type": ["string", "null"]},
+            "ledger_id": {"type": ["string", "null"]},
+            "cumulative": {"type": "boolean"},
+            "boundary": {"type": ["string", "null"]}
+          }
+        },
+        "execution_context": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_routine",
+            "call_context",
+            "accepted_state",
+            "trial_state"
+          ],
+          "properties": {
+            "source_routine": {"type": ["string", "null"]},
+            "call_context": {"type": ["string", "null"]},
+            "accepted_state": {"type": "boolean"},
+            "trial_state": {"type": "boolean"},
+            "iteration_index": {"type": ["integer", "null"], "minimum": 0},
+            "branch_id": {"type": ["string", "null"]},
+            "fallback_id": {"type": ["string", "null"]}
+          }
+        },
+        "precision": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["storage_kind", "bits", "capture_is_round_trip"],
+          "properties": {
+            "storage_kind": {
+              "enum": [
+                "INTEGER",
+                "LOGICAL",
+                "CHARACTER",
+                "REAL32",
+                "REAL64",
+                "UNKNOWN_LEGACY_REAL",
+                "RAW_BYTES"
+              ]
+            },
+            "bits": {"type": ["integer", "null"], "minimum": 1},
+            "decimal_digits_emitted": {"type": ["integer", "null"], "minimum": 1},
+            "capture_is_round_trip": {"type": "boolean"},
+            "compiler_default_kind_dependency": {"type": ["boolean", "null"]}
+          }
+        },
+        "value": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["encoding", "text"],
+          "properties": {
+            "encoding": {
+              "enum": [
+                "integer_decimal",
+                "boolean_text",
+                "character_text",
+                "decimal_text",
+                "ieee_binary32_hex",
+                "ieee_binary64_hex",
+                "raw_hex"
+              ]
+            },
+            "text": {"type": "string"},
+            "decimal_text": {"type": ["string", "null"]},
+            "binary_hex": {"type": ["string", "null"]},
+            "formatted_source_text": {"type": ["string", "null"]}
+          }
+        },
+        "notes": {"type": ["string", "null"]}
+      }
+    }
+  }
+}
