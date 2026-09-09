@@ -15,7 +15,15 @@
     "document": "docs/governance/ANIMO5_EVIDENCE_BASELINE_MODEL.md",
     "role": "canonical_B0_B4_evidence_model_reference"
   },
-  "prep02r_live_observation_at_start": {
+  "prep06_reference": {
+    "branch": "work/animo-prep06-conserved-state-ledger",
+    "head_observed": "9b1f1ea51c24fb82823290193651830dc61ea3c8",
+    "decision": "QUALIFIED_CONSERVED_STATE_AND_TRANSFER_LEDGER_PREPARATORY_EVIDENCE",
+    "state_rows_reported": 53,
+    "transfer_rows_reported": 124,
+    "role": "source_bound_semantic_basis_for_first_reference_capture_surface"
+  },
+  "prep02r_live_observation": {
     "head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
     "status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
     "preferred_first_case": "RuurloGrass",
@@ -31,6 +39,8 @@
     "tested": true,
     "ci_tested": true,
     "qualified": true,
+    "first_reference_packet_ready": true,
+    "first_reference_capture_surface_predefined": true,
     "independent_reference_data_available": false,
     "numerical_equivalence_qualified": false,
     "production_migration_admitted": false
@@ -53,18 +63,24 @@
     "convergence_evidence_requirements_defined": true,
     "prep02r_first_comparison_checklist_defined": true,
     "prep02r_first_comparison_runbook_persisted": true,
+    "first_reference_packet_schema_defined": true,
+    "first_reference_packet_template_defined": true,
+    "first_reference_packet_validator_implemented": true,
+    "first_reference_capture_surface_source_bound_to_prep06": true,
     "structured_fail_closed_comparator_implemented": true,
     "global_numeric_tolerance_defined": false
   },
   "test_evidence": {
-    "scope": "synthetic comparator inputs only; no B2 scientific data",
-    "workflow_name": "ANIMO-NQ01 comparator qualification",
-    "workflow_run_id": 34305127825,
-    "workflow_head": "a19f26acbf732b591849802cb81fdef26fc35752",
+    "scope": "synthetic fail-closed comparator and first-reference packet validation only; no B2 scientific data",
+    "workflow_name": "ANIMO-NQ01 numerical qualification architecture",
+    "workflow_run_id": 34305665896,
+    "workflow_head": "26733eb227a23c635eadb4aec6fd3e07c8760a15",
     "workflow_conclusion": "success",
     "python_version": "3.12.14",
     "python_compile_passed": true,
-    "unit_tests_passed": 13,
+    "comparator_unit_tests_passed": 13,
+    "packet_validator_unit_tests_passed": 8,
+    "unit_tests_passed_total": 21,
     "unit_tests_failed": 0,
     "covered_behaviour": [
       "exact scientific comparison does not itself qualify equivalence",
@@ -79,12 +95,37 @@
       "rounded-report-only capture cannot masquerade as an unrounded scientific oracle",
       "accounting sign mismatch fails even when the floating term value matches",
       "missing scientific record fails closed",
-      "exact match to a B2 candidate does not upgrade the candidate to qualified reference"
-    ],
-    "current_comparator_blob_sha": "bb8c517b6d56911fdff6fa267ac049d5ffc3ce89",
-    "current_test_blob_sha": "8e44eb8636b076930188ddb5db312c66d2b29c1b",
-    "current_schema_blob_sha": "64d411073e9784cc2747eb475757f192a4ca1adf",
-    "code_blobs_unchanged_after_ci_run": true
+      "exact match to a B2 candidate does not upgrade the candidate to qualified reference",
+      "a complete evidence packet may legitimately contain a fail-closed comparison",
+      "wrong B1 executable identity invalidates the first-reference packet",
+      "transformed frozen input invalidates the preferred first-reference packet",
+      "observer capture requires successful ordinary-output non-interference",
+      "observer packet may remain complete while the structured comparison itself fails closed",
+      "any global tolerance claim invalidates the NQ01 packet",
+      "native repeat omission requires an explicit rationale"
+    ]
+  },
+  "capture_surface": {
+    "artifact": "integration/animo-numerics/FIRST_REFERENCE_CAPTURE_SURFACE.json",
+    "documentation": "docs/numerics/FIRST_REFERENCE_CAPTURE_SURFACE.md",
+    "preferred_case": "RuurloGrass",
+    "ruurlo_process_activation_claimed": false,
+    "active_surface_requires_activation_evidence": true,
+    "core_state_surface_predefined": true,
+    "core_transfer_surface_predefined": true,
+    "core_ledger_surface_predefined": true,
+    "defect_sensitive_diagnostics_predefined": true,
+    "tolerance_defined_by_surface": false
+  },
+  "first_reference_packet": {
+    "schema": "integration/animo-numerics/FIRST_REFERENCE_PACKET_SCHEMA.json",
+    "template": "integration/animo-numerics/FIRST_REFERENCE_PACKET_TEMPLATE.json",
+    "contract": "docs/numerics/FIRST_REFERENCE_PACKET_CONTRACT.md",
+    "validator": "tools/validate_first_reference_packet.py",
+    "validator_tests": "tests/test_validate_first_reference_packet.py",
+    "packet_complete_does_not_imply_comparison_match": true,
+    "packet_complete_does_not_imply_numerical_equivalence": true,
+    "packet_complete_does_not_imply_b2_qualification": true
   },
   "hard_rules": {
     "arbitrary_tolerances_forbidden": true,
@@ -102,10 +143,17 @@
     "unrounded_capture_contract": "docs/numerics/UNROUNDED_REFERENCE_CAPTURE_CONTRACT.md",
     "numerical_policy_change_qualification": "docs/numerics/NUMERICAL_POLICY_CHANGE_QUALIFICATION.md",
     "first_reference_comparison_runbook": "docs/numerics/PREP02R_FIRST_REFERENCE_COMPARISON_RUNBOOK.md",
+    "first_reference_packet_contract": "docs/numerics/FIRST_REFERENCE_PACKET_CONTRACT.md",
+    "first_reference_capture_surface_document": "docs/numerics/FIRST_REFERENCE_CAPTURE_SURFACE.md",
     "comparison_variable_classes": "integration/animo-numerics/COMPARISON_VARIABLE_CLASSES.json",
     "reference_capture_schema": "integration/animo-numerics/REFERENCE_CAPTURE_SCHEMA.json",
+    "first_reference_packet_schema": "integration/animo-numerics/FIRST_REFERENCE_PACKET_SCHEMA.json",
+    "first_reference_packet_template": "integration/animo-numerics/FIRST_REFERENCE_PACKET_TEMPLATE.json",
+    "first_reference_capture_surface": "integration/animo-numerics/FIRST_REFERENCE_CAPTURE_SURFACE.json",
     "structured_comparator": "tools/compare_b1_b2_reference.py",
     "structured_comparator_tests": "tests/test_compare_b1_b2_reference.py",
+    "first_reference_packet_validator": "tools/validate_first_reference_packet.py",
+    "first_reference_packet_validator_tests": "tests/test_validate_first_reference_packet.py",
     "ci_workflow": ".github/workflows/animo-nq01.yml"
   },
   "qualification_basis": [
@@ -116,7 +164,9 @@
     "captured branch/fallback and accounting identity semantics cannot be hidden by matching floating values",
     "precision is mandatory capture metadata and floating scientific records require proven round-trip capture",
     "B1 and B2 evidence roles are explicitly separated",
-    "GitHub Actions compile and 13 synthetic fail-closed tests pass on the persisted comparator, tests and schema",
+    "the first-reference evidence packet is machine-checkable without confusing evidence completeness with numerical acceptance",
+    "the first scientific capture surface is predefined from qualified PREP06 state and transfer identities rather than selected after seeing B2 output",
+    "GitHub Actions compile both NQ01 tools and pass 21 synthetic fail-closed tests",
     "actual historical numerical equivalence remains untested because PREP02R has not obtained independent reference data"
   ],
   "status": "QUALIFIED_NUMERICAL_QUALIFICATION_ARCHITECTURE_AWAITING_INDEPENDENT_REFERENCE_DATA",
