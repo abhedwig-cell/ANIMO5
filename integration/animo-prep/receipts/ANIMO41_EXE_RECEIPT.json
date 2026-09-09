@@ -1,0 +1,35 @@
+{
+  "artifact": {
+    "artifact_class": "historical_executable",
+    "claimed_revision": null,
+    "claimed_version": "4.1",
+    "container_type": "file",
+    "content_set_sha256": "398f343dc42a124064b23de47bf6105245b9edfbbe3ffbfaf4cfea1f65d14904",
+    "file_count": 1,
+    "files": [
+      {
+        "relative_path": "animo41.exe",
+        "sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+        "size": 6778368
+      }
+    ],
+    "label": "received animo41.exe",
+    "provenance_note": "Supplied by project user in ChatGPT on 2026-09-09; filename matches frozen testbank launchers. No independent historical provenance statement supplied.",
+    "sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+    "total_size": 6778368
+  },
+  "captured_at_utc": "2026-09-09T12:46:00+00:00",
+  "evidence_class": "RECEIPT_MANIFEST_NOT_REFERENCE_ADMISSION",
+  "native_execution_admitted": false,
+  "note": "Receipt and hashing only. Provenance and lineage must be reviewed before any native execution or reference-admission decision.",
+  "receipt_checks": {
+    "artifact_copied_by_this_tool": false,
+    "artifact_executed_by_this_tool": false,
+    "bytes_hashed_before_execution": true,
+    "expected_sha256_matched": null,
+    "expected_sha256_supplied": false
+  },
+  "reference_admitted": false,
+  "schema": "animo-prep02r-reference-artifact-receipt-v1",
+  "trust_classification": "UNASSESSED_RECEIVED_ARTIFACT"
+}

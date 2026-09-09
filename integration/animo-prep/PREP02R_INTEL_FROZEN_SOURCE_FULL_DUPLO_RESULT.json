@@ -1,0 +1,79 @@
+{
+  "workunit": "ANIMO-PREP02R",
+  "evidence_type": "FROZEN_SOURCE_INTEL_FULL_DUPLO_QUALIFICATION",
+  "date": "2026-09-09",
+  "status": "QUALIFIED_CURRENT_FROZEN_SOURCE_INTEL_EXECUTABLE_BASELINE_REPEAT_DETERMINISTIC_8_CASES",
+  "frozen_testbank": {
+    "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "executable": {
+    "sha256": "da51093a9da7bd99caee9898c713ab78eda972e3ce6e4bf5b2b2cb66bdab9e0e",
+    "role": "LEADING_CURRENT_FROZEN_SOURCE_INTEL_EXECUTABLE_QUALIFICATION_BASELINE",
+    "historical_b2": false
+  },
+  "run_archives": {
+    "run1_sha256": "116e5d41c18281618a4c8684eb32b9f844c48c7b7e64f4a5824d1eff9ec70d06",
+    "run2_sha256": "40acbff9d192353cd33077929ea8c1494ead3789643fc6ade763f84f1a324903",
+    "files_each": 524
+  },
+  "qualified_cases": [
+    "CranGrass",
+    "CranMais",
+    "GrassPeat",
+    "LWKM_gras_1040.2021.2045",
+    "Puitmijn_Cranendonck_60",
+    "RuurloGrass",
+    "STONE_akk_0006.2001.2015",
+    "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+  ],
+  "excluded_cases": {
+    "GHGMais": "KNOWN_REVISION53_TESTCASE_INPUT_CONTRACT_MISMATCH"
+  },
+  "execution": {
+    "requested_runs": 16,
+    "exit_100": 16,
+    "other_exit": 0,
+    "successful_completion_message_all": true,
+    "stderr_empty_all": true,
+    "paired_stdout_stderr_raw_byte_identical_between_repeats": true
+  },
+  "repeat_comparison": {
+    "same_relative_archive_file_set": true,
+    "animo_testbank_files_each": 499,
+    "animo_testbank_raw_byte_equal": 399,
+    "animo_testbank_metadata_only_different": 100,
+    "animo_testbank_equal_after_declared_metadata_normalization": 499,
+    "normalized_tree_sha256": "ee179425c21ced7a7773174b6f793a1e5adf464a8519dc889bad50926840c5cc",
+    "normalized_metadata_line_families": [
+      "ANIMO40-run started on",
+      "File created on",
+      "ANIMO run start",
+      "ANIMO run End",
+      "Elapsed"
+    ],
+    "numerical_tolerance_used": false,
+    "scientific_value_normalization_used": false
+  },
+  "per_directory": {
+    "CranGrass": {"files": 45, "raw_equal": 38, "metadata_only_different": 7, "normalized_equal": 45},
+    "CranMais": {"files": 35, "raw_equal": 30, "metadata_only_different": 5, "normalized_equal": 35},
+    "GHGMais_UNEXECUTED": {"files": 11, "raw_equal": 11, "metadata_only_different": 0, "normalized_equal": 11},
+    "GrassPeat": {"files": 73, "raw_equal": 59, "metadata_only_different": 14, "normalized_equal": 73},
+    "LWKM_gras_1040.2021.2045": {"files": 67, "raw_equal": 59, "metadata_only_different": 8, "normalized_equal": 67},
+    "Puitmijn_Cranendonck_60": {"files": 95, "raw_equal": 75, "metadata_only_different": 20, "normalized_equal": 95},
+    "RuurloGrass": {"files": 84, "raw_equal": 49, "metadata_only_different": 35, "normalized_equal": 84},
+    "STONE_akk_0006.2001.2015": {"files": 59, "raw_equal": 51, "metadata_only_different": 8, "normalized_equal": 59},
+    "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA": {"files": 29, "raw_equal": 26, "metadata_only_different": 3, "normalized_equal": 29}
+  },
+  "received_executable_disposition": {
+    "sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+    "role": "NON_AUTHORITATIVE_PROVENANCE_CONFLICTING_ARTIFACT",
+    "reason": "SOURCE_BUILD_PROVENANCE_NOT_FROZEN_R53_AND_RUURLOGRASS_BEHAVIOUR_DIFFERS_FROM_FROZEN_SOURCE_INTEL_REBUILD"
+  },
+  "tcd015": {
+    "observer_parent_baseline_qualified": true,
+    "tcd015_admitted": false,
+    "historical_b2_qualified": false,
+    "next_step": "OBSERVER_ONLY_DERIVATIVE_ON_LWKM_WITH_ORDINARY_OUTPUT_NON_INTERFERENCE"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "workunit": "ANIMO-PREP02R",
+  "evidence_type": "FROZEN_SOURCE_INTEL_REBUILD_VALIDATION",
+  "date": "2026-09-09",
+  "status": "FROZEN_SOURCE_INTEL_REBUILD_VALIDATED_ON_LWKM_RUURLO_RECEIVED_BINARY_DISCREPANCY_LOCALIZED",
+  "frozen_testbank": {
+    "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "received_executable": {
+    "sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+    "size_bytes": 6778368,
+    "pe_timestamp_utc": "2026-05-27T13:41:28Z",
+    "embedded_source_root": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\src_develop_for_20260519",
+    "ruurlo_exit": 1410
+  },
+  "frozen_source_rebuild": {
+    "sha256": "da51093a9da7bd99caee9898c713ab78eda972e3ce6e4bf5b2b2cb66bdab9e0e",
+    "size_bytes": 8536064,
+    "pe_timestamp_utc": "2026-09-09T14:19:47Z",
+    "embedded_pdb": "R:\\AbV\\intel_base\\ANIMO_4.1.5.53\\x64\\Debug\\animo41.pdb",
+    "model_identity_strings": [
+      "ANIMO: 4.1",
+      "file:///V:/svn_Animo/tags/animo4.1.5"
+    ],
+    "intel_rtl_catalog": "V20.0-001 Jan 10 2019",
+    "linker_version": "14.35",
+    "imports": [
+      "KERNEL32.dll",
+      "imagehlp.dll"
+    ]
+  },
+  "validation_zip": {
+    "sha256": "5ee49ff81ebde22f41fb2db6daae24331371968f44388212ea597bef0e83b2b5"
+  },
+  "cases": {
+    "RuurloGrass": {
+      "rebuild_exit": 100,
+      "received_executable_exit": 1410,
+      "received_failure_day": 1,
+      "received_flab0_deviation_m_per_d": 0.002400241,
+      "classification": "RECEIVED_EXECUTABLE_VS_FROZEN_SOURCE_REBUILD_DISCREPANCY",
+      "intel_vs_gnu_generic_claim_retracted": true
+    },
+    "LWKM_gras_1040.2021.2045": {
+      "rebuild_exit": 100,
+      "received_executable_exit": 100,
+      "complete_case_file_count_each": 67,
+      "raw_byte_equal_files": 59,
+      "metadata_only_different_files": 8,
+      "equal_after_metadata_only_normalization_files": 67,
+      "numerical_tolerance_used": false,
+      "scientific_value_normalization_used": false,
+      "metadata_only_files": [
+        "Animoinputs.Out",
+        "ammonium.out",
+        "animointermediate.Out",
+        "message.out",
+        "miner-N.out",
+        "nitrate.out",
+        "pal-P.out",
+        "pw-P.out"
+      ],
+      "ordinary_output_equivalent_to_received_intel": true,
+      "tcd015_relevance": "STRONG_SUPPORT_FOR_DERIVED_UNROUNDED_OBSERVER_ROUTE"
+    }
+  },
+  "hydro_runinu_hazard": {
+    "source_present": true,
+    "near_zero_ru_branch_assigns_runinu": false,
+    "runinu_consumed_after_branch": true,
+    "proven_root_cause_of_received_ruurlo_stop": false,
+    "classification": "BUILD_PROVENANCE_SENSITIVE_RUNTIME_HAZARD_CAUSAL_HYPOTHESIS"
+  },
+  "admission": {
+    "historical_b2_qualified": false,
+    "reference_qualified": false,
+    "tcd015_admitted": false,
+    "observer_route_better_founded": true
+  },
+  "prohibitions": {
+    "no_global_numerical_tolerance": true,
+    "no_tcd015_physical_correction": true,
+    "no_clipping_policy_change": true,
+    "no_transport_physics_change": true
+  }
+}
