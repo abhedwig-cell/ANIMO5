@@ -1,0 +1,53 @@
+{
+  "work_unit": "ANIMO-B3B03",
+  "target_tcd": "TCD-024",
+  "declaration_phase": "BEFORE_B3B03_ACCEPTANCE_VALIDATION",
+  "trigger": "Optcxsl == 2 and Conc_unl reaches slow-site kinetic update",
+  "atomic_change": "Parcxsl(3,I) -> Parcxsl(3,J) only in the slow-Langmuir kinetic exponent",
+  "expected_changed": {
+    "immediate": [
+      "site-J slow-Langmuir relaxation factor Yy when Parcxsl(3,J) differs from Parcxsl(3,I)",
+      "updated slow-sorbed P state for affected active site J",
+      "site-local slow-sorption P transfer implied by qnew(J)-qold(J)"
+    ],
+    "coupled_downstream_when_activated": [
+      "dissolved PO4-P state through conservation coupling",
+      "slow-sorbed P site states",
+      "P balance residuals and cumulative P balance fields caused by the wrong affinity binding",
+      "P-derived output surfaces including PClassYearSwitch, P balance files, discharge P, restart P state, PAL-P and PW-P where the changed trajectory propagates"
+    ]
+  },
+  "expected_unchanged": [
+    "Optcxsl selection and all constitutive option triggers",
+    "nonlinear trial loop I=1..20 and its iteration ordering",
+    "site loop J=1..Ncxsl and its ordering",
+    "Recf(J) site-specific rate selection",
+    "all Qmax, affinity, adsorption-rate and desorption-rate input values",
+    "TCD-019 fast-sorption finite-change policy",
+    "TCD-019 C_unl stopping or convergence policy",
+    "all solver tolerances and clipping thresholds",
+    "linear slow-sorption route Optcxsl=1",
+    "Freundlich slow-sorption route Optcxsl=3",
+    "a slow-Langmuir site with zero active kinetic rate for the tested direction",
+    "hydrological forcing, hydrological states and water fluxes",
+    "C and N state, flux and balance families outside existing P coupling",
+    "all production source bytes"
+  ],
+  "site_controls": {
+    "active_unequal_site_control": "At least two active sites must have unequal K_j so I-versus-J binding produces an exact nonzero discriminator.",
+    "inactive_site_control": "A site with selected kinetic rate exactly zero must remain qnew_j == qold_j exactly under both selectors.",
+    "identical_site_control": "When compared sites have identical K, selector substitution is intentionally non-discriminating and must not be used as positive evidence."
+  },
+  "route_controls": {
+    "inactive_natural_route": "Supplied active-P B0 cases use Optcxsl=3; TCD-024 candidate must be exactly inert there.",
+    "TCD019_separation": "No TCD-019 policy change may be included in the B3B03 candidate or used to define its pass condition."
+  },
+  "comparison_policy": {
+    "rounded_report_only_is_sufficient": false,
+    "unrounded_site_state_required": true,
+    "unrounded_site_transfer_required": true,
+    "numerical_tolerance_allowed": false,
+    "exact_decimal_or_exact_relation_required_for_synthetic_oracle": true
+  },
+  "admission_effect": "NONE_READINESS_ONLY"
+}
