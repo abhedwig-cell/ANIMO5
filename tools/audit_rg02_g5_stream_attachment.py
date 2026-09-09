@@ -22,6 +22,7 @@ EXPECTED = {
     "ARCHG01": ("work/animo-archg01-candidate-architecture-consolidation", "5cef7969ee921acd2044521cc7636d388aa02efe"),
     "SQ01": ("work/animo-sq01-tcd016-dry-solute-state", "16ca38663b0c72a06b5787d1f4addcde1429f5b8"),
     "MP01": ("work/animo-mp01-macropore-qualification", "7b5979dd6301b9d55d23e8c22948a0dba24b229b"),
+    "MP02": ("work/animo-mp02-whole-case-activation", "6b0f2e7470f13baeb6612b0bddb662a497dea528"),
     "GHG01": ("work/animo-ghg01-ghg-qualification", "f952bf28c03de911f331762d56613c394529c25a"),
     "B3Q01": ("work/animo-b3q01-scientific-admission-framework", "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"),
 }
@@ -46,10 +47,11 @@ def main() -> int:
         gate_path = root / "integration/animo-reg/g5/ANIMO_RG02_G5_GATE_MATRIX.csv"
         doc_path = root / "docs/governance/ANIMO_RG02_G5_STREAM_ATTACHMENT.md"
         contract_path = root / "docs/governance/ANIMO_RG02_G5_WORK_UNIT_CONTRACT.md"
-        for p in [register_path, gate_path, doc_path, contract_path]:
+        mp02_attachment_path = root / "integration/animo-reg/g5/ANIMO_RG02_G5_MP02_ATTACHMENT.json"
+        for p in [register_path, gate_path, doc_path, contract_path, mp02_attachment_path]:
             if not p.is_file():
                 raise AssertionError(f"missing required G5 artifact: {p.relative_to(root)}")
-        checks.append({"check": "required_artifacts_present", "result": "PASS", "count": 4})
+        checks.append({"check": "required_artifacts_present", "result": "PASS", "count": 5})
 
         with register_path.open(newline="", encoding="utf-8") as f:
             rows = list(csv.DictReader(f))
@@ -76,6 +78,8 @@ def main() -> int:
             raise AssertionError("TIME01 must remain noncanonical")
         if by_id["B3Q01"]["b3_status"] != "FRAMEWORK_ONLY_NO_BASELINE":
             raise AssertionError("B3Q01 must remain framework-only in G5")
+        if by_id["MP02"]["b2_status"] != "NOT_QUALIFIED" or by_id["MP02"]["b3_status"] != "NOT_ADMITTED":
+            raise AssertionError("MP02 complete-case B1 must not be promoted to B2 or B3")
         checks.append({"check": "no_evidence_strength_promotion", "result": "PASS"})
 
         arch_note = by_id["ARCHG01"]["notes"]
@@ -84,6 +88,10 @@ def main() -> int:
         nq02_note = by_id["NQ02"]["notes"]
         if "not a global NQ02 branch-authority reassignment" not in nq02_note:
             raise AssertionError("NQ02 local G5 authority scope not explicit")
+        mp02_note = by_id["MP02"]["notes"]
+        for fragment in ["complete-case synthetic B1", "not proven historical Intel behaviour", "no B2/B3 promotion"]:
+            if fragment not in mp02_note:
+                raise AssertionError(f"MP02 evidence-boundary guard missing: {fragment}")
         checks.append({"check": "authority_scope_and_revalidation_guards", "result": "PASS"})
 
         with gate_path.open(newline="", encoding="utf-8") as f:
@@ -94,6 +102,8 @@ def main() -> int:
         for gid in ["G6_B2", "G7_B3", "G8_ARCHITECTURE", "G9_B4", "G10_PRODUCTION"]:
             if gates[gid]["g5_state"] not in {"BLOCKED", "NOT_ESTABLISHED", "NOT_ADMITTED"}:
                 raise AssertionError(f"downstream gate improperly advanced: {gid}={gates[gid]['g5_state']}")
+        if "MP02" not in gates["MACROPORE"]["input_streams"] or "MP02" not in gates["NUMERICAL"]["input_streams"]:
+            raise AssertionError("MP02 must be represented in both macropore and numerical handoff gates")
         checks.append({"check": "downstream_gates_fail_closed", "result": "PASS"})
 
         doc = doc_path.read_text(encoding="utf-8")
@@ -105,6 +115,9 @@ def main() -> int:
             "b3_baseline_established = false",
             "G10 production migration remains not admitted",
             "QUALIFIED_INDEPENDENT_STREAM_ATTACHMENT_NO_SCIENTIFIC_COLLAPSE",
+            "MP02",
+            "complete ANIMO orchestration B1",
+            "GNU diagnostic behaviour whose historical Intel effect is unproven",
         ]:
             if fragment not in doc:
                 raise AssertionError(f"missing governance guard in attachment document: {fragment}")
@@ -120,6 +133,20 @@ def main() -> int:
             if fragment not in contract:
                 raise AssertionError(f"missing qualification boundary in G5 contract: {fragment}")
         checks.append({"check": "qualification_boundary_locked", "result": "PASS"})
+
+        mp02_attachment = json.loads(mp02_attachment_path.read_text(encoding="utf-8"))
+        if mp02_attachment.get("head") != EXPECTED["MP02"][1]:
+            raise AssertionError("MP02 attachment head mismatch")
+        if mp02_attachment.get("b2_historically_referenced") is not False:
+            raise AssertionError("MP02 attachment must preserve B2=false")
+        if mp02_attachment.get("b3_admitted") is not False:
+            raise AssertionError("MP02 attachment must preserve B3=false")
+        if mp02_attachment.get("tcd025", {}).get("correction_admitted") is not False:
+            raise AssertionError("MP02 attachment must not admit TCD025 correction")
+        handoffs = mp02_attachment.get("new_governance_handoffs", [])
+        if len(handoffs) != 2 or any(h.get("canonical_tcd_allocated_here") is not False for h in handoffs):
+            raise AssertionError("MP02 handoffs must preserve canonical TCD ownership")
+        checks.append({"check": "mp02_attachment_boundaries", "result": "PASS"})
 
         result = {
             "work_unit": "ANIMO-RG02-G5",
