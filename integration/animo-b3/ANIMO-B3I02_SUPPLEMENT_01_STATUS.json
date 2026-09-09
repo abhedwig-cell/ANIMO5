@@ -1,0 +1,51 @@
+{
+  "work_unit": "ANIMO-B3I02-SUPPLEMENT-01",
+  "title": "TCD-042 Canonical Register Append Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i02-sup01-tcd042-canonical-append",
+  "base": {
+    "work_unit": "ANIMO-B3I02",
+    "head": "4da9ec0af5ccb902e456c861a548afa00bd43c2a",
+    "status": "QUALIFIED_INCREMENTAL_CANONICAL_DISCREPANCY_INTAKE_NO_ADMISSIONS"
+  },
+  "status": "IN_PROGRESS_APPEND_ROW_FROZEN_COLLISION_SCAN_PASS_REGISTER_NOT_YET_MODIFIED",
+  "implemented": true,
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "work_unit_complete": false,
+  "target": "TCD-042",
+  "source_finding": {
+    "work_unit": "ANIMO-MASSQ02",
+    "head": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "record": "R016",
+    "crosswalk_key": "MASSQ01-LCL-N006"
+  },
+  "atomicity": "ONE_ZERO_TOP_THROUGHFLOW_EXTERNAL_N_INPUT_STATE_TRANSFER_SEAM_MULTI_SPECIES_SCOPE",
+  "collision_scan": {
+    "authoritative_register_tail_before": "TCD-041",
+    "authoritative_register_blob_before": "c057fdc5a9b2199dde07a19f0d70213cfaab235b",
+    "tcd_042_present_before": false,
+    "branch_name_collision_for_tcd042": false,
+    "other_pull_request_collision_for_tcd042": false,
+    "current_b3i02_pr_23_reservation_is_expected": true,
+    "fresh_recheck_required_immediately_before_append": true
+  },
+  "prepared_row": "integration/animo-b3/B3I02_REGISTER_APPEND_SUPPLEMENT_01_ROWS.csv",
+  "planned_append": {
+    "canonical_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "expected_tail_after": "TCD-042",
+    "expected_compare_additions": 1,
+    "expected_compare_deletions": 0,
+    "existing_rows_changed_allowed": false,
+    "register_append_increases_evidence_strength": false
+  },
+  "admission_boundary": {
+    "scientific_admission": false,
+    "corrected_legacy_admission": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "correction_semantics_selected": false
+  },
+  "next_step": "perform fresh collision scan then append exactly the frozen TCD-042 row and validate one addition zero deletions"
+}
