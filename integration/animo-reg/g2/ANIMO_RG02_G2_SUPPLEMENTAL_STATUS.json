@@ -8,24 +8,30 @@
     "branch": "work/animo-rg02-branch-authority-integration",
     "head": "67104b7253d5ebc963ee2a801f4e07a23552572a"
   },
-  "decision": "IN_PROGRESS_PROVENANCE_PRESERVING_G2_EXECUTION",
+  "decision": "QUALIFIED_PROVENANCE_PRESERVING_G2_SUPPLEMENTAL_AND_REHOME_EXECUTION",
   "persisted": true,
-  "tested": false,
-  "qualified": false,
+  "tested": true,
+  "qualified": true,
+  "qualification_scope": "repository-governance qualification only: exact Git blob identity, packet-scoped paths, source branch/head/tree binding, exclusion readback, and exact references to independently qualified PREP11/PREP12 rehomes; no source diagnostics were rerun and no scientific, B2, B3, B4 or production qualification is claimed",
+  "supplemental_transplant_commit": "ab31dd97155d62e25c6c998b55b04dae84916d4e",
+  "supplemental_transplant_tree": "2460a4bec1510fd6ced5d13bd208777f9ec6ac1e",
+  "packet_manifest": "integration/animo-reg/g2/ANIMO_RG02_G2_PACKET_MANIFEST.json",
   "packets": [
     {
       "packet_id": "RG02-SUPP-P07-SPECIES-001",
       "source_branch": "work/animo-prep07-transfer-species-identity",
       "source_head": "aefdbbcbd7aaac121831cf2dd522a152260594d0",
       "source_tree": "ecbec0cd25c8fe3bee4d6d4acaee6f7831ad9cd7",
-      "state": "READY_FOR_EXACT_BLOB_TRANSPLANT"
+      "exact_blob_files": 11,
+      "state": "QUALIFIED_REHOME_PACKET_NO_REQUALIFICATION"
     },
     {
       "packet_id": "RG02-SUPP-P08-TRANSFER-001",
       "source_branch": "work/animo-prep08-transfer-probes",
       "source_head": "340db9d91e71c906143efe877313149c5af36a24",
       "source_tree": "2f6a8d6a5288ea0d29dc24101d2949b8d3c4a04f",
-      "state": "READY_FOR_EXACT_BLOB_TRANSPLANT"
+      "exact_blob_files": 2,
+      "state": "QUALIFIED_REHOME_PACKET_NO_REQUALIFICATION"
     },
     {
       "packet_id": "RG02-REHOME-PREP11-OPTION-CONTRACT",
@@ -40,6 +46,18 @@
       "state": "QUALIFIED_REHOME_REFERENCE_ONLY"
     }
   ],
+  "readback": {
+    "p07_target_paths_present": true,
+    "p07_target_blob_identities_match_source": true,
+    "p08_target_paths_present": true,
+    "p08_target_blob_identities_match_source": true,
+    "source_p07_status_imported_into_packet": false,
+    "source_p08_status_imported_into_packet": false,
+    "source_discrepancy_register_imported": false,
+    "rg02_canonical_discrepancy_register_retained": true,
+    "rg02_canonical_discrepancy_register_blob": "e6c2dec78f718f9ffb70af8910f0ec483e676e63",
+    "legacy_source_or_testcase_path_added": false
+  },
   "hard_rules": {
     "wholesale_branch_merge": false,
     "legacy_source_paths_allowed": false,
@@ -52,5 +70,6 @@
     "corrected_legacy_admitted": false,
     "production_migration_admitted": false
   },
-  "next": "transplant P07 and P08 packets into packet-scoped supplemental namespaces using exact source blobs, then verify path/blob identity and exclusions"
+  "g2_ready_for_rg02_closure": true,
+  "next": "update RG02 governance status and transplant plan by exact G2 branch/head references; keep G4 canonical preparatory aggregate as a separate gate"
 }
