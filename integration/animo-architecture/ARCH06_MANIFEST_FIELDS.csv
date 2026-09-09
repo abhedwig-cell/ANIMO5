@@ -5,7 +5,7 @@ parameter_schema_id,parameters,string,YES,,configuration,parameter_contract,none
 parameter_set_id,parameters,string,YES,,configuration,parameter_contract,content_identity_string
 geometry_schema_id,geometry,string,YES,,physical_layout;configuration,geometry_contract,nonempty_utf8_nfc
 geometry_id,geometry,string,YES,,physical_layout;configuration;exchange_binding,ARCH04;ARCH05,content_identity_string
-feature_contract_schema_id,features,string,YES,,feature_set;configuration,ARCH04,nonempty_utf8_nfc
+feature_contract_schema_id,features,string,YES,,feature_set;physical_layout;exchange_binding;configuration,ARCH04,nonempty_utf8_nfc
 hydrology_mode,features,enum_detailed_aggregated,YES,,feature_set;physical_layout;exchange_binding,ARCH04;ARCH05,lowercase_enum
 snow_enabled,features,boolean,YES,,feature_set;physical_layout;exchange_binding,ARCH04;ARCH05,canonical_boolean
 surface_reservoir_enabled,features,boolean,YES,,feature_set;physical_layout,ARCH04,canonical_boolean
