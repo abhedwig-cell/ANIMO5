@@ -25,6 +25,8 @@
     "source_lineage_keyword_heterogeneity_reconciled_into_request": true,
     "candidate_registry_persisted": true,
     "acquisition_packet_persisted": true,
+    "external_request_draft_ready": true,
+    "external_request_sent": false,
     "historical_reference_artifact_obtained": false,
     "native_reference_run_completed": false,
     "native_vs_gnu_comparison_completed": false,
@@ -82,6 +84,11 @@
       "Piet Groenendijk",
       "Leo Renaud"
     ],
+    "leo_renaud_current_wur_profile_found": true,
+    "leo_renaud_current_profile_phone": "+31 317 486454",
+    "leo_renaud_historical_email": "leo.renaud@wur.nl",
+    "leo_renaud_historical_email_current_status_proven": false,
+    "piet_groenendijk_current_email_publicly_observed": "piet.groenendijk@wur.nl",
     "official_general_terms_third_party_redistribution_requires_prior_written_permission": true,
     "historical_4_0_20_binary_identity_documented": true,
     "historical_4_0_20_binary_reference_admitted": false,
@@ -95,9 +102,11 @@
     "current_version_4_0_distribution_must_remain_distinct_lineage": true,
     "requested_release_provenance_should_include_source_checkout_or_manifest": true,
     "binary_public_redistribution_assumed_permitted": false,
-    "controlled_retention_preferred": true
+    "controlled_retention_preferred": true,
+    "external_send_requires_human_action": true
   },
   "preferred_next_acquisition": [
+    "send or otherwise submit the prepared WUR archival request through a verified current institutional contact route",
     "exact ANIMO 4.1.5 revision-53 animo41.exe with executable and source-checkout provenance",
     "original Intel Visual Fortran project/build metadata or archived build environment",
     "complete historical RuurloGrass output tied to a known executable",
@@ -116,8 +125,9 @@
     "recovery_report": "docs/prep02r/HISTORICAL_REFERENCE_RECOVERY_REPORT.md",
     "official_distribution_route_audit": "docs/prep02r/OFFICIAL_DISTRIBUTION_ROUTE_AUDIT.md",
     "reference_artifact_request": "docs/prep02r/REFERENCE_ARTIFACT_REQUEST.md",
+    "wur_archival_request_draft": "docs/prep02r/WUR_ARCHIVAL_REQUEST_DRAFT.md",
     "candidate_registry": "integration/animo-prep/PREP02R_REFERENCE_CANDIDATES.json"
   },
   "decision": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
-  "why_blocked": "No independently trustworthy historical ANIMO 4.1.x executable, exact native build metadata, or executable-linked historical output has yet been obtained. The current official WUR agreement names Version 4.0, so the official request route does not itself close the historical 4.1.x independence gap. GNU determinism cannot close that gap either."
+  "why_blocked": "No independently trustworthy historical ANIMO 4.1.x executable, exact native build metadata, or executable-linked historical output has yet been obtained. The current official WUR agreement names Version 4.0, so the official request route does not itself close the historical 4.1.x independence gap. A targeted archival request is prepared but not sent. GNU determinism cannot close the independence gap either."
 }
