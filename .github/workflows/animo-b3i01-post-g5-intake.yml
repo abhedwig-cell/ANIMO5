@@ -7,6 +7,7 @@ on:
   pull_request:
     paths:
       - 'docs/b3/POST_G5_DISCREPANCY_INTAKE.md'
+      - 'docs/b3/POST_G5_DISCREPANCY_INTAKE_SUPPLEMENT_01.md'
       - 'docs/b3/B3I01_CANONICAL_REGISTER_APPEND.md'
       - 'docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv'
       - 'integration/animo-b3/ANIMO-B3I01_STATUS.json'
