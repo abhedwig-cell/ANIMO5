@@ -1,0 +1,27 @@
+{
+  "work_unit": "ANIMO-UBQ01",
+  "title": "TCD-042 Upper-Boundary Zero-Throughflow Solute Transaction and Owner Semantics Qualification",
+  "status": "IN_PROGRESS_CHECKPOINT",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-ubq01-tcd042-upper-boundary-transaction",
+  "base": {
+    "branch": "work/animo-b3i03-canonical-register-append",
+    "head": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "canonical_tcd": "TCD-042"
+  },
+  "scope": {
+    "target": "TCD-042",
+    "select_corrected_semantics_only_after_source_theory_and_runtime_analysis": true,
+    "physical_state_patch_admitted": false,
+    "accounting_patch_admitted": false,
+    "algebra_patch_admitted": false,
+    "production_source_change": false
+  },
+  "work_status": {
+    "realized": false,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  }
+}
