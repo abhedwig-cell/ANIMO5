@@ -3,12 +3,41 @@
   "title": "HETOP Zero-Thickness Upper-Reservoir Domain and Runtime Semantics Characterization",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-ubq03-hetop-zero-thickness-semantics",
-  "status": "IN_PROGRESS_PERSISTED_VALIDATION_PENDING",
+  "status": "QUALIFIED_CHARACTERIZATION_HETOP_ZERO_PARSER_ADMISSIBLE_CONDITIONALLY_UNDEFINED_NO_GLOBAL_ZERO_THICKNESS_POLICY",
   "base": {
     "work_unit": "ANIMO-B3Q02",
     "head": "1db63b17cb5f48cbd8ae28116a2e716b4bdaadf3"
   },
   "target": "HETOP=0 parser/documentation domain relevant to TCD-042-B1 and TCD-042-E1",
+  "qualified_findings": {
+    "documentation_allows_zero": true,
+    "parser_allows_zero": true,
+    "frozen_source_direct_division_sites": 9,
+    "general_zero_thickness_guard_present": false,
+    "natural_testbank_zero_case_present": false,
+    "legacy_E1_subthreshold_UBoundconc_fallback_itself_divides_by_Hetop": false,
+    "legacy_B1_exact_zero_UBoundconc_fallback_itself_divides_by_Hetop": false,
+    "ordinary_no_ponding_Flux_ge_1e_8_UBoundconc_divides_by_Hetop": true,
+    "global_every_Hetop_zero_run_fails_claimed": false,
+    "historical_exact_FPE_outcome_claimed": false,
+    "B1_positive_Hetop_result_preserved": true,
+    "E1_positive_Hetop_result_preserved": true,
+    "full_parser_domain_qualified_for_B1_or_E1": false
+  },
+  "validation": {
+    "tested_head": "39de451bdc69afd48da50c2b9ae20d55bceef903",
+    "github_actions_run_id": 34387907492,
+    "job_id": 102588732278,
+    "workflow_conclusion": "success",
+    "parse_persisted_json": "PASS",
+    "compile_validator": "PASS",
+    "characterization_and_scope_validator": "PASS",
+    "prior_failed_run": {
+      "run_id": 34387818081,
+      "cause": "document-phrase assertion was narrower than the persisted wording",
+      "classification": "VALIDATOR_WORDING_DEFECT_FIXED_NO_EVIDENCE_OR_SCOPE_CHANGE"
+    }
+  },
   "scope_guards": {
     "production_source_modified": false,
     "input_validation_modified": false,
@@ -22,8 +51,14 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
-  }
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
+  },
+  "decision": "QUALIFIED_CHARACTERIZATION_HETOP_ZERO_PARSER_ADMISSIBLE_CONDITIONALLY_UNDEFINED_NO_GLOBAL_ZERO_THICKNESS_POLICY",
+  "recommended_next": [
+    "Feed the HETOP=0 finding into a separate canonical input-domain/runtime discrepancy intake without automatically reserving a new top-level TCD.",
+    "Do not widen TCD-042-B1 or TCD-042-E1 beyond Hetop>0 unless zero-thickness semantics or an authoritative exclusion is separately qualified.",
+    "Do not silently change the SOIL.INP lower bound or add a Hetop>0 production guard as part of B1/E1."
+  ]
 }
