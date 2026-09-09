@@ -1,8 +1,10 @@
 # ANIMO-GHG01 — Greenhouse-Gas Lineage, Input Contract, Process Activation & Scientific Qualification
 
-Status: `IN_PROGRESS_PERSISTED`
+Status: `QUALIFIED_GHG_THEORY_SOURCE_AND_INPUT_LINEAGE_EVIDENCE_WITH_HISTORICAL_REFERENCE_GAPS`
 
 Production migration: `NOT_ADMITTED`
+
+B3 admission: `NOT_ADMITTED`
 
 ## Scope
 
@@ -29,14 +31,28 @@ Hard boundaries:
 - revision-53 source archive SHA-256: `183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566`
 - supplied testbank SHA-256: `44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84`
 
-## Required deliverables
+## Deliverables
+
+Completed:
 
 - `GHG_REV53_PROCESS_RECONSTRUCTION.md`
 - `GHG_INPUT_LINEAGE_RECONCILIATION.md`
 - `GHGMAIS_COMPATIBILITY_ANALYSIS.md`
 - `GHG_LEDGER_RECONCILIATION.md`
+- `integration/animo-ghg/GHGMAIS_CDD001.json`
 - `integration/animo-ghg/ANIMO-GHG01_STATUS.json`
 
-Target closeout when evidence permits:
+## Closeout boundary
+
+The work unit closes at evidence qualification, not model admission.
+
+The broad CH4/N2O process intent and revision-53 source route are reconstructable, but exact equation authority remains partial, the supplied GHGMais contract does not match revision 53, no supplied case reaches the GHG branch without scientific-schema interpretation, no historical behavioural reference is qualified, and source-bound C/N conservation and output-ledger gaps were identified.
+
+Closeout:
 
 `QUALIFIED_GHG_THEORY_SOURCE_AND_INPUT_LINEAGE_EVIDENCE_WITH_HISTORICAL_REFERENCE_GAPS`
+
+Explicit non-promotions:
+
+- `B3_ADMITTED`: false;
+- `PRODUCTION_READY`: false.
