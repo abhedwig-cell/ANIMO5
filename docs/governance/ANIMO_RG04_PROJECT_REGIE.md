@@ -19,7 +19,7 @@ RG04 reconciles, without increasing evidence strength:
 - `ANIMO-STATEQ02` restricted-core executable split-run qualification;
 - `ANIMO-MASSQ02` residual causality reconciliation and typed-event projection;
 - `ANIMO-B3I03` post-MASSQ02 intake and the append-only canonical registration of `TCD-042`;
-- the current `ANIMO-PREP02R` recovery state after receipt of the supplied Intel project metadata and native executable;
+- the current `ANIMO-PREP02R` recovery state after receipt of the supplied Intel project metadata and native executable, including the completed Windows-native capture preparation;
 - current TCD-015, TCD-017, TCD-018 and TCD-027 admission-readiness states;
 - `ANIMO-B3A03R` as a technical review recheck that explicitly fails the independence gate and prepares a separate handoff;
 - the newly opened `ANIMO-UBQ01` TCD-042 atomization workunit.
@@ -46,23 +46,26 @@ PREP02R is no longer accurately described as merely lacking all native/build evi
 
 Current authority:
 
-`work/animo-prep02r-historical-reference-recovery@60f3c57a3299a1890b4cdd66befd5a120a306383`
+`work/animo-prep02r-historical-reference-recovery@286205cb58455236ba749d1898c490aca0c50179`
 
 Current decision:
 
-`PARTIAL_RECOVERY_BUILD_CONTRACT_STRONGLY_IMPROVED_MODERN_NATIVE_REBUILD_IDENTIFIED_HISTORICAL_REFERENCE_STILL_BLOCKED`
+`PARTIAL_RECOVERY_WINDOWS_NATIVE_CAPTURE_READY_HISTORICAL_REFERENCE_STILL_BLOCKED`
 
 The supplied artifacts materially improve the build contract:
 
 - `animo41.vfproj` identifies Intel Fortran project settings including eight-byte default REAL and SAVE/static local storage;
 - `animo41.exe` is a PE32+ x64 Windows console executable and is useful for cross-runtime diagnostics;
-- the executable is demonstrably a 2026 development rebuild, not the missing historical 4.1-era release oracle.
+- the executable is demonstrably a 2026 development rebuild, not the missing historical 4.1-era release oracle;
+- the frozen Ruurlo input surface is hash-pinned and a fail-closed PowerShell capture harness plus Windows handoff are persisted;
+- that harness has not been executed in the current Linux environment, so no native trajectory evidence is claimed yet.
 
 Therefore:
 
 - `G6H` remains not passed;
 - the modern native executable may not substitute for historical B2;
-- `G6U` remains ineligible because the prepared archival/external request has still not been sent and the acquisition effort is not closed.
+- `G6U` remains ineligible because the prepared archival/external request has still not been sent and the acquisition effort is not closed;
+- a genuine Windows cross-runtime diagnostic is now operationally ready, but remains diagnostic rather than historical truth.
 
 This is progress in provenance and runtime-contract knowledge, not progress to historical behavioural truth.
 
@@ -140,7 +143,7 @@ The remaining direct readiness queue remains TCD-023, TCD-024, TCD-026, TCD-030,
 
 | Gate | RG04 state | Meaning |
 |---|---|---|
-| G6H | PARTIAL_RECOVERY_HISTORICAL_B2_NOT_PASSED | Build/runtime contract evidence improved; historical behavioural oracle still absent. |
+| G6H | PARTIAL_RECOVERY_HISTORICAL_B2_NOT_PASSED | Build/runtime contract and Windows capture readiness improved; historical behavioural oracle still absent. |
 | G6U | NOT_ELIGIBLE_ACQUISITION_NOT_EXHAUSTED | External archival request remains unsent. |
 | G7 | NO_ATOMIC_SCIENTIFIC_ADMISSIONS_YET | Four readiness dossiers complete; route/review pending; TCD-042 atomization open. |
 | GSTATE | RESTRICTED_CORE_EXECUTABLE_SPLIT_RUN_QUALIFIED_ADMISSION_PENDING | Exact split-run semantics qualified for a declared restricted profile only. |
@@ -156,9 +159,10 @@ The remaining direct readiness queue remains TCD-023, TCD-024, TCD-026, TCD-030,
 The current highest-leverage non-conflicting work is:
 
 1. continue UBQ01 until TCD-042 is atomized or fails closed;
-2. execute the real PREP02R archival acquisition action; the modern native rebuild does not remove that need;
-3. preserve and independently review the four completed readiness dossiers instead of redoing them;
-4. open remaining atomic readiness work where capacity exists;
-5. keep feature-scoped state and mass admission work separate from whole-model claims.
+2. run the prepared genuine-Windows PREP02R diagnostic when that environment is available, without relabelling it historical B2;
+3. execute the real PREP02R archival acquisition action; the modern native rebuild does not remove that need;
+4. preserve and independently review the four completed readiness dossiers instead of redoing them;
+5. open remaining atomic readiness work where capacity exists;
+6. keep feature-scoped state and mass admission work separate from whole-model claims.
 
 RG04 itself must not admit any correction or canonical gate.
