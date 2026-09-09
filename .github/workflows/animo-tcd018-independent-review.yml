@@ -1,0 +1,30 @@
+name: ANIMO TCD018 independent review
+
+on:
+  push:
+    branches:
+      - 'review/animo-b3a03r-tcd018-independent-second-line'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate review record
+        run: python3 tools/validate_tcd018_independent_review.py
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=3096c4dfa6a2cee72504445a71fc211842feb9cd
+          allowed='^(docs/b3/TCD018_INDEPENDENT_SECOND_LINE_REVIEW\.md|integration/animo-b3/TCD018_INDEPENDENT_REVIEW_RESULT\.json|tools/validate_tcd018_independent_review\.py|\.github/workflows/animo-tcd018-independent-review\.yml)$'
+          changed="$(git diff --name-only "$base" HEAD)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -Ev "$allowed" | grep -q .; then
+            echo 'FAIL_TCD018_INDEPENDENT_REVIEW_SCOPE_GUARD'
+            exit 1
+          fi
+          echo 'PASS_TCD018_INDEPENDENT_REVIEW_SCOPE_GUARD'
