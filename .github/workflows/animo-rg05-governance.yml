@@ -1,0 +1,57 @@
+name: ANIMO-RG05 governance reconciliation
+
+on:
+  push:
+    branches:
+      - work/animo-rg05-late-wave-authority-refresh
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-rg05:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Validate RG05 governance invariants
+        run: python tools/validate_rg05_governance.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=cf9975ded20fa64bb8125b3241f2609cbb5b51b3
+          git cat-file -e "${BASE}^{commit}"
+          git diff --name-only "$BASE"...HEAD > /tmp/rg05_changed.txt
+          cat /tmp/rg05_changed.txt
+
+          allowed='^(docs/governance/ANIMO_RG05_PROJECT_REGIE\.md|integration/animo-reg/RG05_WORKUNIT_AUTHORITY\.csv|integration/animo-reg/RG05_GATE_MATRIX\.csv|integration/animo-reg/RG05_B3_QUEUE\.json|integration/animo-reg/RG05_PARALLELISM_MATRIX\.csv|integration/animo-reg/ANIMO-RG05_STATUS\.json|tools/validate_rg05_governance\.py|\.github/workflows/animo-rg05-governance\.yml)$'
+
+          unexpected=$(grep -Ev "$allowed" /tmp/rg05_changed.txt || true)
+          if [ -n "$unexpected" ]; then
+            echo "RG05 scope violation. Unexpected changed paths:"
+            echo "$unexpected"
+            exit 1
+          fi
+
+          if grep -q '^docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv$' /tmp/rg05_changed.txt; then
+            echo "RG05 must not mutate the canonical TCD register"
+            exit 1
+          fi
+
+          if grep -Eq '(^|/)(ANIMO_4\.1\.5\.53\.zip|ANIMO_testbank\.zip)$' /tmp/rg05_changed.txt; then
+            echo "RG05 must not modify frozen archives"
+            exit 1
+          fi
+
+          echo "RG05 scope guard PASS: governance-only surface"
