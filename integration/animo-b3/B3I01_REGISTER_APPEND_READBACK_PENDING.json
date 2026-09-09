@@ -1,0 +1,5 @@
+{
+  "register_readback_required": true,
+  "prepared_append_rows_readback_required": true,
+  "final_diff_required": true
+}
