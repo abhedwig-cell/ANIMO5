@@ -114,6 +114,7 @@
         "location",
         "scientific_context",
         "execution_context",
+        "precision",
         "value"
       ],
       "properties": {
