@@ -1,0 +1,28 @@
+field_id,scope,required,value_kind,compatibility_role,rule
+layout_schema_id,all,YES,string,schema_identity,pins ARCH04 layout-manifest schema
+state_schema_id,physical,YES,string,state_identity,pins candidate/canonical state-field schema
+feature_set_id,all,YES,string,configuration_identity,hash or immutable id of normalized feature configuration
+hydrology_mode,physical,YES,enum,external_state_topology,exactly one of detailed or aggregated
+snow_enabled,physical,YES,boolean,external_state_topology,changes required external hydrology coordinate set
+surface_reservoir_enabled,physical,YES,boolean,state_presence,changes top-reservoir persistent state presence
+stable_dom_enabled,physical,YES,boolean,state_presence,changes stable DOM/DON/DOP persistent state presence
+crop_mode,physical,YES,enum_none_animo_external,owner_identity,changes crop persistent owner versus external exchange contract
+ghg_enabled,physical,YES,boolean,state_presence,may be true only if feature admission id permits it
+ghg_admission_id,physical,CONDITIONAL,string,qualification_identity,required when ghg_enabled=true
+macropore_enabled,physical,YES,boolean,state_presence,may be true only if feature admission id permits it
+macropore_admission_id,physical,CONDITIONAL,string,qualification_identity,required when macropore_enabled=true
+fast_p_site_count,physical,YES,integer_ge_0,state_shape,changes site-resolved fast-P state shape
+slow_p_site_count,physical,YES,integer_ge_0,state_shape,changes site-resolved slow-P state shape
+layer_count,physical,YES,integer_gt_0,state_shape,changes layer-resolved state shape
+organic_fraction_count,physical,YES,integer_gt_0,state_shape,changes FOM state shape
+geometry_id,physical,YES,string,spatial_compatibility,pins layer/domain geometry rather than relying on counts alone
+hydrology_exchange_schema_id,physical,YES,string,exchange_compatibility,pins externally coordinated hydrology fields and units
+crop_exchange_schema_id,physical,CONDITIONAL,string,exchange_compatibility,required when crop_mode=external
+crop_state_schema_id,physical,CONDITIONAL,string,state_compatibility,required when crop_mode=animo
+ghg_schema_id,physical,CONDITIONAL,string,state_compatibility,required when ghg_enabled=true
+macropore_schema_id,physical,CONDITIONAL,string,state_compatibility,required when macropore_enabled=true
+precision_policy_ref,physical,YES,string,numerical_layout_compatibility,reference only; ARCH04 does not define precision
+physical_layout_id,physical,YES,string,checkpoint_compatibility,derived from all physical/state/owner/shape compatibility fields
+diagnostics_mode,observer,YES,enum_off_basic_detailed,observer_allocation,does not alter physical_layout_id
+observer_schema_id,observer,CONDITIONAL,string,observer_compatibility,required when diagnostics_mode!=off
+observer_layout_id,observer,YES,string,diagnostic_checkpoint_compatibility,derived separately from physical layout and observer configuration
