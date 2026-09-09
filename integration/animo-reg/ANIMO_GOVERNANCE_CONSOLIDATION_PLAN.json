@@ -1,0 +1,95 @@
+{
+  "work_unit": "ANIMO-RG02",
+  "record_type": "GOVERNANCE_ARTIFACT_CONSOLIDATION_PLAN",
+  "status": "QUALIFIED_PATH_PLAN_BEFORE_EXECUTION",
+  "target_branch": "work/animo-rg02-branch-authority-integration",
+  "purpose": "converge RG, EB and EG governance without branch merge, scientific reinterpretation or last-writer-wins replacement",
+  "authority_sources": {
+    "RG01": {
+      "branch": "work/animo-rg01-baseline-stabilization",
+      "head": "662bca8aff40f4dca1f6ccdde6bef6274c6bede2",
+      "role": "repository stabilization and Status A/AA governance base"
+    },
+    "EB01": {
+      "branch": "work/animo-eb01-evidence-baseline-model",
+      "head": "52411b9d2d6d80717914bc6642544290a54ded21",
+      "role": "canonical B0-B4 evidence semantics"
+    },
+    "EG01": {
+      "branch": "work/animo-eg01-controlled-b0-retention",
+      "head": "a818b5a37b80ed92aded0b9c404990d356eb2300",
+      "role": "controlled B0 retention contract and proof machinery"
+    },
+    "RG02": {
+      "branch": "work/animo-rg02-branch-authority-integration",
+      "role": "cross-stream integration ownership and branch/register policy"
+    }
+  },
+  "observed_path_collisions": [
+    {
+      "path": "docs/governance/DEVELOPMENT_GOVERNANCE.md",
+      "writers": ["EB01", "EG01", "RG01/RG02 inherited base"],
+      "resolution": "MANUAL_SEMANTIC_COMPOSITION",
+      "owner_after_rg02": "RG governance series",
+      "required_content": [
+        "EB01 B0-B4 evidence semantics and prohibited implications",
+        "EB01 B2-unavailable fallback boundary",
+        "EG01 controlled immutable B0 retention and run-lineage requirements",
+        "RG persist-early and serial-versus-parallel ownership rules"
+      ]
+    },
+    {
+      "path": "docs/governance/MIGRATION_DAG.md",
+      "writers": ["EB01", "RG01/RG02 inherited base"],
+      "resolution": "EB01_SEMANTICS_ADOPTED_UNDER_RG_OWNERSHIP",
+      "owner_after_rg02": "RG governance series",
+      "reason": "RG02 inherited the pre-EB01 B0=reproducible-build terminology while EB01 explicitly retired that naming collision"
+    }
+  ],
+  "disjoint_eb01_paths_to_transplant": [
+    "docs/governance/ANIMO5_EVIDENCE_BASELINE_MODEL.md",
+    "integration/animo-governance/ANIMO_EVIDENCE_BASELINE_MODEL.json"
+  ],
+  "disjoint_eg01_paths_to_transplant": [
+    ".github/workflows/animo-eg01-b0-proof-gate.yml",
+    "docs/eg01/B0_CUSTODIAN_HANDOFF.md",
+    "docs/eg01/B0_RETENTION_AND_LINEAGE_POLICY.md",
+    "docs/eg01/WORK_UNIT_CONTRACT.md",
+    "integration/animo-eg/ANIMO-EG01_STATUS.json",
+    "integration/evidence/ANIMO_B0_EVIDENCE_REGISTER.json",
+    "integration/evidence/ANIMO_B0_STORAGE_PROOF_SCHEMA.json",
+    "integration/evidence/ANIMO_B0_STORAGE_PROOF_TEMPLATE.json",
+    "integration/evidence/ANIMO_RUN_LINEAGE_SCHEMA.json",
+    "tests/eg01/test_validate_b0_storage_proof.py",
+    "tools/validate_b0_storage_proof.py"
+  ],
+  "explicit_exclusions": [
+    "no branch merge of EB01 or EG01",
+    "no raw B0 ZIP or PDF bytes",
+    "no legacy source or testcase mutation",
+    "no scientific discrepancy register mutation",
+    "no B3 classification mutation",
+    "no corrected-legacy source",
+    "no production implementation"
+  ],
+  "execution_order": [
+    "persist this plan",
+    "transplant EB01 disjoint canonical evidence-model artifacts byte-for-byte",
+    "transplant EG01 disjoint retention artifacts byte-for-byte",
+    "compose DEVELOPMENT_GOVERNANCE under RG ownership",
+    "replace stale pre-EB01 MIGRATION_DAG with EB01 B0-B4 semantics under RG ownership",
+    "read back source identities and target blobs",
+    "mark G3 complete only after path presence and cross-cutting semantic checks"
+  ],
+  "dependency_correction": {
+    "previous_order": "G1 -> G2 -> G3",
+    "revised_order": "G1 -> G3 -> G2",
+    "reason": "PREP11/PREP12 rehome execution requires a governance-approved evidence base; therefore governance convergence must precede creation of those rehome branches",
+    "scientific_effect": "NONE"
+  },
+  "non_admissions": {
+    "scientific_baseline_changed": false,
+    "corrected_legacy_admitted": false,
+    "production_migration_admitted": false
+  }
+}
