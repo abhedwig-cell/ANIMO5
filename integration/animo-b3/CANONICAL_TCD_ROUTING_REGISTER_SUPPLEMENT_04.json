@@ -1,0 +1,100 @@
+{
+  "record_type": "POST_G5_CANONICAL_ROUTING_SUPPLEMENT_NO_ADMISSION",
+  "work_unit": "ANIMO-B3I01",
+  "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_04",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i01-canonical-register-append",
+  "prior_head": "91bedfcfdc2af7b0183a3d4898d5f638b1bce4a4",
+  "reservation_artifact": "integration/animo-b3/POST_G5_TCD_RESERVATIONS_SUPPLEMENT_04.json",
+  "source_authority": {
+    "workunit": "ANIMO-BUILDQ04",
+    "branch": "work/animo-buildq04-ghg-bottom-boundary-initialization",
+    "head": "0ae1e58f80ca01c1b6eced7ac0d6e5c031827676",
+    "status": "QUALIFIED_ZERO_BOTTOM_AIR_ADVECTIVE_BOUNDARY_CONTRACT_LOCAL_INITIALIZATION_DEFECT_CANDIDATE_HISTORICAL_INTEL_OPEN",
+    "handoff": "docs/build/BUILDQ04_B3_HANDOFF.md"
+  },
+  "canonical_routing_additions": [
+    {
+      "canonical_key": "TCD-041",
+      "canonical_id_state": "RESERVED_BY_B3I01_SUPPLEMENT_04_PENDING_REGISTER_APPEND",
+      "phenomenon": "GHGasses lower external air-interface Flair(Nl+1) is first-read without assignment despite the connected closed zero lower advective air-boundary contract",
+      "b3_class": "B",
+      "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+      "source_key": "BUILDQ03-LCL-GHGASSES-FLAIR-NLPLUS1-UNINITIALIZED",
+      "source_workunit": "ANIMO-BUILDQ04",
+      "qualified_identity": "FLAIR_NLPLUS1_EQUALS_ZERO_FOR_CLOSED_LOWER_GHG_AIR_BOUNDARY",
+      "first_read_scope": "UNCONDITIONAL_TASK1_FIRST_READ_WITHOUT_SOURCE_ASSIGNMENT_FOR_NL_GE_1",
+      "materiality": [
+        "FLUX_MATERIAL",
+        "STATE_MATERIAL",
+        "OUTPUT_MATERIAL_POTENTIAL",
+        "HISTORICAL_EFFECT_UNKNOWN"
+      ],
+      "qualification_owner": "PROPOSED_ANIMO-BUILDQ05_OR_LOCAL_CLASS_B_ADMISSION_UNIT_WITH_GHG_REVIEW",
+      "dependencies": [
+        "activated qualified GHG case",
+        "minimal correction branch coverage",
+        "unrounded lower-boundary gas flux and state trajectory comparison",
+        "non-interference outside lower GHG air-advection boundary",
+        "historical Intel characterization if recoverable",
+        "independent B3 review"
+      ],
+      "admitted": false
+    }
+  ],
+  "prior_runtime_route_reconciliation": {
+    "source_supplement": "CANONICAL_TCD_ROUTING_REGISTER_SUPPLEMENT_03.json",
+    "local_key": "BUILDQ03-LCL-GHGASSES-FLAIR-NLPLUS1-UNINITIALIZED",
+    "prior_disposition": "BUILD_RUNTIME_INITIALIZATION_HAZARD_NOT_TCD_PENDING_BOUNDARY_SEMANTICS",
+    "new_disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+    "reason": "BUILDQ04 closes the previously missing boundary semantics with a connected-source zero lower air-boundary identity and demonstrates controlled flux/state materiality; the evidence state therefore changes rather than contradicting supplement-03"
+  },
+  "existing_tcd_boundaries": [
+    {
+      "tcd": "TCD-011",
+      "relation": "DISTINCT",
+      "reason": "cross-call storage duration versus same-call first-use omission of an external interface boundary coordinate"
+    },
+    {
+      "tcd": "TCD-032",
+      "relation": "DISTINCT",
+      "reason": "methanogenesis source-pool transfer path"
+    },
+    {
+      "tcd": "TCD-033",
+      "relation": "DISTINCT",
+      "reason": "CH4 production component partition"
+    },
+    {
+      "tcd": "TCD-034",
+      "relation": "DISTINCT",
+      "reason": "CH4 plant-growth temperature indexing"
+    },
+    {
+      "tcd": "TCD-035",
+      "relation": "DISTINCT",
+      "reason": "GHG restart phase partition"
+    },
+    {
+      "tcd": "TCD-036",
+      "relation": "DISTINCT",
+      "reason": "GHG ponding layer0 restart continuity"
+    },
+    {
+      "tcd": "TCD-037",
+      "relation": "DISTINCT",
+      "reason": "GHG balance observer working-array interface"
+    }
+  ],
+  "atomicity_decision": {
+    "top_level_ids_allocated": 1,
+    "boundary_coordinate_split": false,
+    "reason": "Flair(Nl+1) first-use omission and its derived Flaiio/Flaiou effects are one lower external interface initialization mechanism"
+  },
+  "admission_state": {
+    "new_corrections_admitted": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "evidence_strength_increased_by_routing": false
+  }
+}
