@@ -33,7 +33,7 @@
     "authority_selection_by_branch_name": false
   },
   "post_closeout_refresh": {
-    "state": "PERSISTED_BEFORE_REFRESH_VALIDATION",
+    "state": "QUALIFIED_REFRESH_NO_ADMISSIONS",
     "B3B01": {"head":"d65ecddfba2b87ad9e97900c946a82b580c19571","qualified":true,"tested":true,"admitted":false},
     "B3A02": {"head":"3ff8f4bda77c631b82110b83317c6a9b42b867ad","qualified":true,"tested":true,"admitted":false},
     "B3A03": {"head":"8eaaca34e4f0d906c2d8245f0df232586efe8ff3","qualified":true,"tested":false,"live_ci_observed":false,"admitted":false},
@@ -45,7 +45,13 @@
     "canonical_register_tail_changed": false,
     "scientific_admission_performed": false,
     "evidence_strength_increased": false,
-    "refresh_validation": "PENDING"
+    "refresh_validation": {
+      "tested_head": "08e44fedadf878a63ea13992742abaf22e01fe52",
+      "github_actions_run_id": 34350280909,
+      "conclusion": "success",
+      "validator_result": "PASS",
+      "scope_guard": "PASS_NO_PRODUCTION_OR_FROZEN_SOURCE_PATHS_CHANGED"
+    }
   },
   "gate_reconciliation": {
     "G6H": "ACTIVE_B2_ACQUISITION_NOT_PASSED",
@@ -85,8 +91,11 @@
     "initial_closeout_run_id": 34348072677,
     "initial_closeout_head": "b67a6cac325fe3f838aedc9df106e120fd5a3d0f",
     "initial_closeout_conclusion": "success",
-    "post_closeout_refresh_validation": "PENDING",
-    "scope_guard": "NO_PRODUCTION_OR_FROZEN_SOURCE_PATHS_INTENDED"
+    "post_closeout_refresh_run_id": 34350280909,
+    "post_closeout_refresh_head": "08e44fedadf878a63ea13992742abaf22e01fe52",
+    "post_closeout_refresh_conclusion": "success",
+    "validator_result": "PASS",
+    "scope_guard": "PASS_NO_PRODUCTION_OR_FROZEN_SOURCE_PATHS_CHANGED"
   },
   "deliverables": [
     "docs/governance/ANIMO_RG03_PROJECT_REGIE.md",
