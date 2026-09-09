@@ -1,0 +1,91 @@
+{
+  "work_unit": "ANIMO-TS01",
+  "artifact_type": "SOURCE_BOUND_INPUT_TO_FUTURE_TIME_GATE",
+  "date": "2026-09-09",
+  "qualification_effect": "NONE",
+  "canonical_time_admitted": false,
+  "production_migration": "NOT_ADMITTED",
+  "source_authority_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "scheduler_sentinel_matrix": {
+    "path": "integration/animo-temporal/TS01_SCHEDULER_SENTINELS.csv",
+    "git_blob_sha": "f214de825d5fa33252d817d55b73881c592cb532",
+    "rows": 26,
+    "structural_audit": "PASS"
+  },
+  "categories": {
+    "SOURCE_EQUIVALENCE_CONSTRAINT": [
+      "TS01-S01",
+      "TS01-S02",
+      "TS01-S03",
+      "TS01-S04",
+      "TS01-S05",
+      "TS01-S06",
+      "TS01-S07",
+      "TS01-S08",
+      "TS01-S10",
+      "TS01-S11",
+      "TS01-S12",
+      "TS01-S13",
+      "TS01-S15",
+      "TS01-S16",
+      "TS01-S17",
+      "TS01-S18"
+    ],
+    "FUTURE_TRANSACTION_POLICY": [
+      "TS01-S09",
+      "TS01-S14",
+      "TS01-S19",
+      "TS01-S20",
+      "TS01-S26"
+    ],
+    "REFERENCE_BEHAVIOR_REQUIRED": [
+      "TS01-S21",
+      "TS01-S22",
+      "TS01-S23",
+      "TS01-S24",
+      "TS01-S25"
+    ]
+  },
+  "future_time_policy_must_define": [
+    "explicit trial begin boundary",
+    "immutable accepted-state meaning",
+    "same-step event mutation visibility in trial state",
+    "accept boundary",
+    "reject rollback and physical-journal discard semantics",
+    "retry identity and substep policy",
+    "coupled acceptance barrier",
+    "canonical t0/t1 and calendar representation",
+    "external frame generation and interval binding",
+    "checkpointable accepted boundaries",
+    "runtime topology transition fail-closed rule",
+    "reporting continuation versus physical continuation"
+  ],
+  "not_defined_by_ts01": [
+    "canonical floating point precision",
+    "comparison tolerance",
+    "scientific permission to reorder processes",
+    "scientific correction of event endpoint asymmetry",
+    "generic numerical convergence policy",
+    "mid-trial checkpoint implementation",
+    "corrected disposition of open TCDs",
+    "full GHG temporal contract",
+    "full macropore temporal contract"
+  ],
+  "minimum_acceptance_evidence": [
+    "canonical or explicitly candidate state ownership identity",
+    "exact disposition for all applicable TS01 scheduler sentinels",
+    "event class endpoint policy",
+    "accepted/trial/reject/retry contract",
+    "external frame interval/generation identity contract",
+    "report reset separated from physical commit",
+    "independent reference split-run evidence when historical equivalence is claimed",
+    "NQ-controlled comparison policy for non-bitwise comparisons",
+    "B3/scientific admission for intentional source-observed differences"
+  ],
+  "blocked_by": [
+    "independent B2/reference behaviour unavailable",
+    "canonical STATE gate not yet admitted in migration DAG",
+    "generic TIME transaction/retry policy not yet designed/admitted",
+    "open discrepancy-specific scientific and numerical work"
+  ]
+}
