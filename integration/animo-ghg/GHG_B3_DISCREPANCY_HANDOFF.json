@@ -6,7 +6,7 @@
   "ghg01_qualification": "QUALIFIED_GHG_THEORY_SOURCE_AND_INPUT_LINEAGE_EVIDENCE_WITH_HISTORICAL_REFERENCE_GAPS",
   "governance_snapshot": {
     "rg02_branch": "work/animo-rg02-branch-authority-integration",
-    "rg02_head_observed": "27231ac9e52380c4ec10c9cf8e1cff5b72711e96",
+    "rg02_head_observed_at_initial_handoff": "27231ac9e52380c4ec10c9cf8e1cff5b72711e96",
     "qualified_b3q01_canonical_register_tail": "TCD-027",
     "later_canonical_reservation_observed": "TCD-028",
     "canonical_id_allocation_performed_here": false
@@ -41,8 +41,33 @@
       "legacy_defect_claim": "NOT_AUTOMATICALLY_ADMITTED",
       "animo5_requirement": "model-wide MassLedger must include gas storage and explicit atmosphere-boundary transfers",
       "recommended_action": "B3 governance to decide whether this warrants a canonical TCD or remains an architecture/control-volume requirement"
+    },
+    {
+      "key": "GHG01-LCL-N2O-NITRIFICATION-TEMPERATURE-SIGN-DOC-SOURCE",
+      "classification": "DOCUMENT_SOURCE_SIGN_CONFLICT_UNRESOLVED",
+      "canonical_tcd": null,
+      "root_finding": "peer-reviewed ANIMO-specific 2011 Appendix A17 uses a positive Q10 exponent while revision-53 FracN2Onitr uses 2**(-(Te-Terf)/10)",
+      "code_defect_admitted": false,
+      "recommended_action": "recover detailed Hendriks GHG derivation or authoritative Report 2054 bytes and source/change history before disposition"
+    },
+    {
+      "key": "GHG01-LCL-N2O-REDUCTION-AERATION-FACTOR-DOC-SOURCE",
+      "classification": "DOCUMENT_SOURCE_AERATION_FACTOR_PLACEMENT_CONFLICT_REQUIRES_DETAILED_AUTHORITY",
+      "canonical_tcd": null,
+      "root_finding": "peer-reviewed ANIMO-specific 2011 Appendix A11 omits fae from the printed N2O-reduction numerator while revision 53 folds aeration into RatFacN2O used by the reduction partition",
+      "code_defect_admitted": false,
+      "recommended_action": "independent algebra/unit review plus detailed-authority and source-history recovery before disposition"
     }
   ],
+  "theory_authority_recovery": {
+    "artifact": "integration/animo-ghg/GHG_THEORY_AUTHORITY_RECOVERY_2011.json",
+    "stolk_2011_vadose_zone_journal_peer_reviewed": true,
+    "stolk_2011_biogeosciences_peer_reviewed": true,
+    "original_animo_n2o_equations_recovered": true,
+    "tcd008_n2o_gap_narrowed": true,
+    "tcd008_closed": false,
+    "detailed_hendriks_report_2054": "PUBLICATION_EXISTENCE_AND_REPORT_NUMBER_LEAD_NOT_FROZEN"
+  },
   "activated_case_minimum_evidence": [
     "GHGasses task 1 and task 2 reachability",
     "CH4 and N2O start/end gas system storage",
@@ -60,9 +85,10 @@
     "production_patch_specification": false
   },
   "b3_blockers": [
-    "TCD-008_EXACT_REV53_GHG_EQUATION_PARAMETER_AUTHORITY",
+    "TCD-008_REMAINING_RELEASE_SPECIFIC_GHG_EQUATION_PARAMETER_AUTHORITY",
     "TCD-013_MATCHING_HISTORICAL_GHG_INPUT_LINEAGE",
     "GHG01_SOURCE_CONFIRMED_CONSERVATION_PATH_AND_OBSERVER_FINDINGS",
+    "GHG01_N2O_DOCUMENT_SOURCE_EQUATION_CONFLICTS",
     "QUALIFIED_HISTORICAL_REFERENCE_RUNNER_OR_EQUIVALENT_ORACLE"
   ]
 }
