@@ -12,10 +12,15 @@ on:
       - 'integration/animo-b3/ANIMO-B3I01_STATUS.json'
       - 'integration/animo-b3/B3I01_CANONICAL_REGISTER_APPEND_STATUS.json'
       - 'integration/animo-b3/B3I01_REGISTER_APPEND_ROWS.csv'
+      - 'integration/animo-b3/B3I01_REGISTER_APPEND_SUPPLEMENT_01_ROWS.csv'
       - 'integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER.json'
+      - 'integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER_SUPPLEMENT_01.json'
       - 'integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_RECONCILIATION.json'
+      - 'integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_SUPPLEMENT_01_RECONCILIATION.json'
       - 'integration/animo-b3/POST_G5_LOCAL_FINDING_CROSSWALK.csv'
+      - 'integration/animo-b3/POST_G5_LOCAL_FINDING_CROSSWALK_SUPPLEMENT_01.csv'
       - 'integration/animo-b3/POST_G5_TCD_RESERVATIONS.json'
+      - 'integration/animo-b3/POST_G5_TCD_RESERVATIONS_SUPPLEMENT_01.json'
       - 'integration/animo-b3/TCD-028_RESERVATION.json'
       - 'tools/validate_b3i01_post_g5_intake.py'
       - 'tools/validate_tcd028_intake.py'
@@ -41,10 +46,13 @@ jobs:
           python -m json.tool integration/animo-b3/ANIMO-B3I01_STATUS.json >/dev/null
           python -m json.tool integration/animo-b3/B3I01_CANONICAL_REGISTER_APPEND_STATUS.json >/dev/null
           python -m json.tool integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER.json >/dev/null
+          python -m json.tool integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER_SUPPLEMENT_01.json >/dev/null
           python -m json.tool integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_RECONCILIATION.json >/dev/null
+          python -m json.tool integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_SUPPLEMENT_01_RECONCILIATION.json >/dev/null
           python -m json.tool integration/animo-b3/POST_G5_TCD_RESERVATIONS.json >/dev/null
+          python -m json.tool integration/animo-b3/POST_G5_TCD_RESERVATIONS_SUPPLEMENT_01.json >/dev/null
           python -m json.tool integration/animo-b3/TCD-028_RESERVATION.json >/dev/null
-      - name: Validate canonical intake and register append
+      - name: Validate canonical intake and register appends through TCD-039
         run: python tools/validate_b3i01_post_g5_intake.py
       - name: Validate TCD-028 reservation across register phases
         run: python tools/validate_tcd028_intake.py
