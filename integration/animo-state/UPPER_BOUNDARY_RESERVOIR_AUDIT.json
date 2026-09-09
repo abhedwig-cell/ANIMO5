@@ -2,7 +2,7 @@
   "workunit": "ANIMO-STATEQ01",
   "artifact": "upper-boundary reservoir continuation source audit",
   "profile": "CORE_CNP_SUBSURFACE_ONLY",
-  "status": "SOURCE_QUALIFIED_ACCEPTED_BOUNDARY_OWNER_AND_TRANSPORT_FEED_RC_R12_EXECUTION_OPEN",
+  "status": "SOURCE_QUALIFIED_SYNTHETIC_EXACT_RC_R12_WIRING_PASS_NONZERO_FLUX_REAL_SPLIT_OPEN",
   "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
   "production_code": false,
   "physics_change": false,
@@ -79,9 +79,25 @@
     "source_owner_qualified": true,
     "source_transport_feed_qualified": true,
     "source_restart_mapping_qualified": true,
-    "synthetic_exact_wiring_sentinel_run": false,
+    "synthetic_exact_wiring_sentinel_run": true,
+    "synthetic_exact_wiring_sentinel": {
+      "status": "PASS_SYNTHETIC_EXACT_WIRING_NON_B2",
+      "tested_head": "d19cc018dc67636b9d3501a88e63cc7499bbf6c2",
+      "workflow_run": 34335620989,
+      "job_id": 102414197663,
+      "python": "3.12.14",
+      "tests_run": 10,
+      "tests_passed": 10,
+      "tests_failed": 0,
+      "nonzero_cnp_roundtrip": true,
+      "first_active_compartment": 1,
+      "no_duplicate_start_or_average_owner": true,
+      "geometry_binding_fail_closed": true,
+      "floating_tolerance_used": false
+    },
     "real_profile_split_run_qualified": false,
+    "nonzero_flux_exponential_split_qualified": false,
     "full_nonzero_flux_comparison_policy": "USE_ADMITTED_NUMERICAL_POLICY_DO_NOT_INVENT_LOCAL_TOLERANCE"
   },
-  "next": "persist and execute an exact no-flux nonzero-reservoir synthetic wiring sentinel; keep full nonzero-flux split equivalence open"
+  "next": "qualify nonzero-flux exponential update continuity under admitted numerical policy and execute a profile-clean admitted split run when available"
 }
