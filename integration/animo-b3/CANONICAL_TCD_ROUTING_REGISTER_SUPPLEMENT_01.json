@@ -1,0 +1,117 @@
+{
+  "record_type": "POST_G5_CANONICAL_ROUTING_SUPPLEMENT_NO_ADMISSION",
+  "work_unit": "ANIMO-B3I01",
+  "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_01",
+  "repository": "abhedwig-cell/ANIMO5",
+  "base_routing_register": "integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER.json",
+  "reservation_artifact": "integration/animo-b3/POST_G5_TCD_RESERVATIONS_SUPPLEMENT_01.json",
+  "authority_heads": {
+    "BUILDQ01": "bf5c932753518c883d868c372c6c26bcdcacec68",
+    "PREP12": "3d86de057247adcfeefb82c11d7cf7d5b2cbdf73",
+    "PREP10_RESTART_SOURCE": "761db23269b45ba79df3be97ea85289682e57106",
+    "STATEQ01": "5a5e0785b6f4a9cb4f67d1fa10d79b184d7d41e9",
+    "TIME02": "b4d78cf32cb149cf50aa2b0a0fbefee571eee6b8",
+    "MASSQ01": "79f8f806b293ce9e249e59fe4835ff6866026c4f",
+    "SYNQ01": "95ae5b8d4627f8c12f732dd8116ba2fb50ef0f50",
+    "GOV02": "474e4e2b5198c0ecaf3c03d519d5270f88852327"
+  },
+  "canonical_routing_additions": [
+    {
+      "canonical_key": "TCD-031",
+      "canonical_id_state": "EXISTING_CANONICAL_TCD",
+      "new_evidence_key": "RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER",
+      "source_local_label": "PREP12 source-local TCD-032",
+      "disposition": "MAP_TO_EXISTING_TCD",
+      "reason": "same persistent macropore solute restart-writer omission already owned by TCD-031; local numeric label is noncanonical",
+      "qualification_owner": "PROPOSED_ANIMO-MP04",
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-038",
+      "canonical_id_state": "RESERVED_BY_B3I01_SUPPLEMENT_NOT_YET_REGISTER_ROW",
+      "phenomenon": "actual plant cumulative uptake restart initialization direction defect",
+      "b3_class": "B",
+      "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+      "source_key": "RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION",
+      "qualification_owner": "PROPOSED_ANIMO-STATEQ02",
+      "dependencies": [
+        "crop restart read-to-accepted identity",
+        "natural branch coverage retained from PREP10 evidence",
+        "unrounded affected crop state comparison",
+        "historical split-run characterization if recoverable",
+        "independent review"
+      ],
+      "admitted": false
+    },
+    {
+      "canonical_key": "TCD-039",
+      "canonical_id_state": "RESERVED_BY_B3I01_SUPPLEMENT_NOT_YET_REGISTER_ROW",
+      "phenomenon": "potential plant N and P uptake accepted-boundary continuation is absent from restart representation",
+      "b3_class": "C",
+      "class_state": "PROVISIONAL_PENDING_RECONSTRUCTION_TEST",
+      "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
+      "source_key": "RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE",
+      "qualification_owner": "PROPOSED_ANIMO-STATEQ02",
+      "dependencies": [
+        "scientific continuation identity",
+        "explicit owner versus deterministic reconstruction decision",
+        "restart initialization semantics",
+        "continuous-versus-split equivalence",
+        "crop demand non-interference and expected-difference envelope",
+        "independent state-model review"
+      ],
+      "admitted": false
+    }
+  ],
+  "runtime_routing_additions": [
+    {
+      "local_key": "BUILDQ01-LCL-MAPOHYDRO-LNBOMPMX-CROSS-TASK-LIFETIME",
+      "disposition": "MAP_TO_EXISTING_TCD",
+      "existing_tcd": "TCD-011",
+      "b3_class": null,
+      "owner": "PROPOSED_ANIMO-BUILDQ02",
+      "reason": "same compiler storage-duration contract family; BUILDQ01 demonstrates runtime materiality but identifies the local as derivable task context rather than scientific state"
+    },
+    {
+      "local_key": "BUILDQ01-LCL-MAPOHYDRO-INDEX0-BOUNDS-ORDER",
+      "disposition": "BUILD_RUNTIME_HAZARD_NOT_TCD",
+      "b3_class": null,
+      "owner": "PROPOSED_ANIMO-BUILDQ02",
+      "reason": "out-of-domain index-zero read is a language/runtime evaluation-order seam; no scientific-equation discrepancy or qualified historical state/flux effect is established"
+    }
+  ],
+  "checked_streams_without_new_allocation": [
+    {
+      "workunit": "ANIMO-TIME02",
+      "disposition": "NO_NEW_TCD_CANDIDATE_PRESENT_AT_CHECKED_HEAD",
+      "note": "qualified concrete-time candidate remains non-admitted and preserves management/harvest endpoint asymmetry without requesting discrepancy allocation"
+    },
+    {
+      "workunit": "ANIMO-MASSQ01",
+      "disposition": "NO_COMPLETED_TCD_CANDIDATE_YET",
+      "note": "current checked head is an in-progress persisted pre-runtime checkpoint"
+    },
+    {
+      "workunit": "ANIMO-SYNQ01",
+      "disposition": "EVIDENCE_STRENGTHENING_ONLY_NO_NEW_PHENOMENON",
+      "note": "synthetic oracle layer strengthens evidence for existing TCDs and explicitly performs no B3 admission"
+    },
+    {
+      "workunit": "ANIMO-GOV02",
+      "disposition": "GOVERNANCE_RULE_STRENGTHENING_ONLY",
+      "note": "strengthens fail-closed admission requirements and introduces no scientific discrepancy allocation"
+    }
+  ],
+  "source_local_label_reconciliation": {
+    "PREP12_source_local_TCD-032": "TCD-031",
+    "PREP12_source_local_TCD-033": "TCD-038",
+    "PREP12_source_local_TCD-034": "TCD-039",
+    "rule": "mapping is by phenomenon and evidence identity, never by source-local number"
+  },
+  "admission_state": {
+    "new_corrections_admitted": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "evidence_strength_increased_by_routing": false
+  }
+}
