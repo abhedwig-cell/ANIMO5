@@ -1,0 +1,54 @@
+legacy_state_id,quantity_ids,control_volume_ids,ledger_role,storage_projection_rule,condition,open_evidence
+W-INTERCEPTION,water,CV-HYDRO-PROFILE,EXTERNAL_COORDINATED_STORAGE,hydrology.interception accepted coordinate,detailed_hydrology,TCD-018
+W-SNOW,water,CV-HYDRO-PROFILE,EXTERNAL_COORDINATED_STORAGE,hydrology.snow accepted coordinate,snow_active,
+W-POND,water,CV-HYDRO-PROFILE,EXTERNAL_COORDINATED_STORAGE,hydrology.ponding accepted coordinate,detailed_hydrology,
+W-SURFACE-AGG,,,DERIVED_EXCLUDE,recompute aggregate surface representation,aggregated_hydrology,
+W-MATRIX,water,CV-HYDRO-PROFILE,EXTERNAL_COORDINATED_STORAGE,matrix water storage from accepted hydrology coordinate and geometry,always_for_transport,
+W-MACROPORE,water,CV-HYDRO-PROFILE,CONDITIONAL_STORAGE,include macropore water only when feature admitted,macropore_option,TCD-025
+TOP-NH4,nitrogen,CV-SOIL-N,STORAGE,surface-reservoir water volume times NH4 concentration,surface_reservoir,
+TOP-NO3,nitrogen,CV-SOIL-N,STORAGE,surface-reservoir water volume times NO3 concentration,surface_reservoir,
+TOP-DOM-C,organic_matter_mass,CV-SOIL-OM,STORAGE,surface-reservoir water volume times labile DOM concentration,surface_reservoir,
+TOP-DON,nitrogen,CV-SOIL-N,STORAGE,surface-reservoir water volume times DON concentration,surface_reservoir,
+TOP-PO4,phosphorus,CV-SOIL-P,STORAGE,surface-reservoir water volume times PO4 concentration,surface_reservoir,
+TOP-DOP,phosphorus,CV-SOIL-P,STORAGE,surface-reservoir water volume times DOP concentration,surface_reservoir,
+TOP-SDOM-DORMANT,,,DORMANT_EXCLUDE,not projected into supported runtime ledger,none_in_revision53,PREP06_DORMANT_SURFACE
+OM-FOM,organic_matter_mass;nitrogen;phosphorus,CV-SOIL-OM;CV-SOIL-N;CV-SOIL-P,STORAGE_MULTIQUANTITY,OM mass plus explicit N/P composition projections,organic_processes,
+OM-HUMUS,organic_matter_mass;nitrogen;phosphorus,CV-SOIL-OM;CV-SOIL-N;CV-SOIL-P,STORAGE_MULTIQUANTITY,OM mass plus explicit N/P composition projections,organic_processes,
+OM-HUMUS-EX,organic_matter_mass;nitrogen;phosphorus,CV-SOIL-OM;CV-SOIL-N;CV-SOIL-P,STORAGE_MULTIQUANTITY,OM mass plus explicit N/P composition projections,organic_processes,
+OM-EXUDATE,organic_matter_mass;nitrogen;phosphorus,CV-SOIL-OM;CV-SOIL-N;CV-SOIL-P,STORAGE_MULTIQUANTITY,OM mass plus explicit N/P composition projections,root_exudate,TCD-026
+DOM-L-C,organic_matter_mass,CV-SOIL-OM,STORAGE,aqueous plus source-defined instantaneous sorbed storage,dom,
+DOM-L-N,nitrogen,CV-SOIL-N,STORAGE,aqueous plus source-defined instantaneous sorbed storage,dom,
+DOM-L-P,phosphorus,CV-SOIL-P,STORAGE,aqueous plus source-defined instantaneous sorbed storage,dom,
+DOM-S-C,organic_matter_mass,CV-SOIL-OM,STORAGE,aqueous plus source-defined instantaneous sorbed storage,stable_dom,TCD-021
+DOM-S-N,nitrogen,CV-SOIL-N,STORAGE,aqueous plus source-defined instantaneous sorbed storage,stable_dom,TCD-021
+DOM-S-P,phosphorus,CV-SOIL-P,STORAGE,aqueous plus source-defined instantaneous sorbed storage,stable_dom,TCD-021;TCD-023
+N-NH4-AQ,nitrogen,CV-SOIL-N,STORAGE,aqueous NH4 storage from concentration water and geometry,mineral_n,TCD-016
+N-NH4-ADS,nitrogen,CV-SOIL-N,STORAGE,adsorbed NH4 state directly,mineral_n,
+N-NO3,nitrogen,CV-SOIL-N,STORAGE,aqueous NO3 storage from concentration water and geometry,mineral_n,TCD-015
+P-PO4-AQ,phosphorus,CV-SOIL-P,STORAGE,aqueous PO4 storage from concentration water and geometry,mineral_p,TCD-014;TCD-019
+P-FAST,phosphorus,CV-SOIL-P,STORAGE_SITE_RESOLVED,sum admitted site-resolved fast sorption state for profile views,fast_sorption,TCD-029
+P-SLOW,phosphorus,CV-SOIL-P,STORAGE_SITE_RESOLVED,sum admitted site-resolved slow sorption state for profile views,slow_sorption,TCD-024
+P-PRECIP,phosphorus,CV-SOIL-P,STORAGE,precipitated P state directly,mineral_p,
+CROP-SHOOT-DM,crop_dry_matter,CV-CROP-DM,CONDITIONAL_OWNER_STORAGE,shoot dry matter when crop compartment is active and ownership admitted,crop_active,
+CROP-ROOT-DM,crop_dry_matter,CV-CROP-DM,CONDITIONAL_OWNER_STORAGE,root dry matter when crop compartment is active and ownership admitted,crop_active,
+CROP-N-ACT,nitrogen,CV-SOIL-CROP-N,CONDITIONAL_OWNER_STORAGE,actual crop N when crop is included in control volume,crop_active,
+CROP-P-ACT,phosphorus,CV-SOIL-CROP-P,CONDITIONAL_OWNER_STORAGE,actual crop P when crop is included in control volume,crop_active,
+CROP-N-POT,,,DERIVED_EXCLUDE,demand/reference state is not conserved storage,crop_active,
+CROP-P-POT,,,DERIVED_EXCLUDE,demand/reference state is not conserved storage,crop_active,
+GHG-CH4-SYS,carbon_as_CH4_C,CV-GHG-C,CONDITIONAL_STORAGE,system CH4-C storage when GHG feature admitted,ghg_active,TCD-008
+GHG-CH4-WATER,,,DERIVED_EXCLUDE,aqueous CH4 phase view reconstructed from system state,ghg_active,TCD-008
+GHG-N2O-SYS,nitrogen_as_N2O_N,CV-GHG-N,CONDITIONAL_STORAGE,system N2O-N storage when GHG feature admitted,ghg_active,TCD-008
+GHG-N2O-WATER,,,DERIVED_EXCLUDE,aqueous N2O phase view reconstructed from system state,ghg_active,TCD-008
+MP-DOM-C,organic_matter_mass,CV-MATRIX-MACROPORE-OM,CONDITIONAL_STORAGE,macropore water times macropore dissolved OM concentration,macropore_option,TCD-025
+MP-DON,nitrogen,CV-MATRIX-MACROPORE-N,CONDITIONAL_STORAGE,macropore water times macropore DON concentration,macropore_option,TCD-025
+MP-DOP,phosphorus,CV-MATRIX-MACROPORE-P,CONDITIONAL_STORAGE,macropore water times macropore DOP concentration,macropore_option,TCD-025
+MP-NH4,nitrogen,CV-MATRIX-MACROPORE-N,CONDITIONAL_STORAGE,macropore water times macropore NH4 concentration,macropore_option,TCD-025
+MP-NO3,nitrogen,CV-MATRIX-MACROPORE-N,CONDITIONAL_STORAGE,macropore water times macropore NO3 concentration,macropore_option,TCD-025
+MP-PO4,phosphorus,CV-MATRIX-MACROPORE-P,CONDITIONAL_STORAGE,macropore water times macropore PO4 concentration,macropore_option,TCD-025
+DERIVED-P-FAST-TOTAL,,,DERIVED_EXCLUDE,recompute from site-resolved P-FAST,fast_sorption,
+DERIVED-P-SLOW-TOTAL,,,DERIVED_EXCLUDE,recompute from site-resolved P-SLOW,slow_sorption,
+RATE-N-MIN,,,SCRATCH_EXCLUDE,step-local rate never projected as storage,organic_processes,
+RATE-P-MIN,,,SCRATCH_EXCLUDE,step-local rate never projected as storage,organic_processes,TCD-023
+REPORT-MAIN-BAL,,,DIAGNOSTIC_EXCLUDE,observer output never projected as physical storage,diagnostics,TCD-017;TCD-018;TCD-026
+REPORT-DETAILED-TRANS,,,DIAGNOSTIC_EXCLUDE,observer output never projected as physical storage,diagnostics,TCD-027;TCD-028
+REPORT-AVERAGE-CONC,,,DERIVED_EXCLUDE,average concentration is a view not storage owner,transport,
