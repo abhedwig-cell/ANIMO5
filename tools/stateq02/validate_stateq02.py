@@ -129,7 +129,7 @@ def main() -> None:
     for token in (
         FINAL,
         "833 remaining accepted records",
-        "exit code `95`",
+        "code `95`",
         "canonical STATE admission = PENDING",
         "whole-model STATE claim = false",
         "production implementation = NONE",
