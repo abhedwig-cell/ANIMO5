@@ -1,0 +1,86 @@
+{
+  "record_type": "CANONICAL_TCD_RESERVATION_SUPPLEMENT_NOT_B3_DISPOSITION",
+  "work_unit": "ANIMO-B3I01",
+  "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_01",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i01-canonical-register-append",
+  "reservation_status": "RESERVED_FAIL_CLOSED_PENDING_CANONICAL_REGISTER_APPEND_NOT_ADMITTED",
+  "authority": {
+    "canonical_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "canonical_register_blob_observed": "b7d444d9a5bd45e04e4814d3cf54f66613837b4b",
+    "canonical_register_tail_observed": "TCD-037",
+    "b3_owner": "ANIMO-B3 governance",
+    "rg02_rule": "local or source-workunit TCD labels are noncanonical unless allocated by B3 governance"
+  },
+  "live_evidence_heads": {
+    "PREP12": "3d86de057247adcfeefb82c11d7cf7d5b2cbdf73",
+    "PREP10_RESTART_SOURCE": "761db23269b45ba79df3be97ea85289682e57106",
+    "STATEQ01": "5a5e0785b6f4a9cb4f67d1fa10d79b184d7d41e9",
+    "BUILDQ01": "bf5c932753518c883d868c372c6c26bcdcacec68"
+  },
+  "collision_audit": {
+    "canonical_register_tail_before_reservation": "TCD-037",
+    "tcd_038_default_branch_code_search_matches": 0,
+    "tcd_039_default_branch_code_search_matches": 0,
+    "tcd_038_issue_search_matches": 0,
+    "tcd_039_issue_search_matches": 0,
+    "branch_inventory_contains_tcd_038_or_tcd_039": false,
+    "prior_b3i01_reservation_batch_ends_at": "TCD-037",
+    "observation_scope": "live GitHub register, branch inventory, issue search, code search and prior reservation artifact immediately before reservation; not a transactional repository lock"
+  },
+  "reservations": [
+    {
+      "tcd_id": "TCD-038",
+      "source_local_label": "PREP12 source-local TCD-033",
+      "rg02_reconciliation_key": "RG02-LCL-PLANT-ACTUAL-UPTAKE-RESTART-DIRECTION",
+      "source_workunits": ["ANIMO-PREP10 restart source evidence", "ANIMO-PREP12 provenance rehome", "ANIMO-STATEQ01 readiness reconciliation"],
+      "phenomenon": "restart initialization of cumulative actual plant N and P uptake copies the accepted variable toward the restart variable instead of restoring accepted state from the nonzero restart value",
+      "provisional_b3_class": "B",
+      "class_rationale": "the source and causal probes identify a local initialization-direction defect; no new physical state definition is required for the actual-uptake coordinates already represented by the restart interface",
+      "qualification_owner": "PROPOSED_ANIMO-STATEQ02",
+      "admitted": false
+    },
+    {
+      "tcd_id": "TCD-039",
+      "source_local_label": "PREP12 source-local TCD-034",
+      "rg02_reconciliation_key": "RG02-LCL-PLANT-POTENTIAL-UPTAKE-RESTART-STATE",
+      "source_workunits": ["ANIMO-PREP10 restart source evidence", "ANIMO-PREP12 provenance rehome", "ANIMO-STATEQ01 readiness reconciliation"],
+      "phenomenon": "scientifically active cumulative potential plant N and P uptake persists across ordinary accepted timesteps and affects later demand but has no restart representation and is reset during restart initialization",
+      "provisional_b3_class": "C",
+      "class_rationale": "qualification must determine an explicit accepted-boundary continuation owner or prove deterministic reconstruction; the legacy restart state model cannot currently represent the future-influencing quantity",
+      "qualification_owner": "PROPOSED_ANIMO-STATEQ02",
+      "admitted": false
+    }
+  ],
+  "deduplicated_live_findings": [
+    {
+      "source_local_label": "PREP12 source-local TCD-032",
+      "rg02_reconciliation_key": "RG02-LCL-MACROPORE-SOLUTE-RESTART-WRITER",
+      "canonical_disposition": "MAP_TO_EXISTING_TCD",
+      "canonical_tcd": "TCD-031",
+      "reason": "same persistent macropore solute restart-writer omission already deduplicated from MP01 and MP02 by B3I01"
+    }
+  ],
+  "runtime_routes_without_new_tcd": [
+    {
+      "local_key": "BUILDQ01-LCL-MAPOHYDRO-LNBOMPMX-CROSS-TASK-LIFETIME",
+      "canonical_disposition": "MAP_TO_EXISTING_TCD",
+      "canonical_tcd": "TCD-011",
+      "reason": "compiler storage-duration semantics control a non-SAVEd cross-task local; BUILDQ01 classifies it as derivable task context rather than scientific state"
+    },
+    {
+      "local_key": "BUILDQ01-LCL-MAPOHYDRO-INDEX0-BOUNDS-ORDER",
+      "canonical_disposition": "BUILD_RUNTIME_HAZARD_NOT_TCD",
+      "canonical_tcd": null,
+      "reason": "bounds/evaluation-order runtime-language seam is confirmed under GNU bounds checking but is not a scientific equation discrepancy and historical Intel/model-state materiality is unresolved"
+    }
+  ],
+  "checked_no_new_allocation": [
+    "ANIMO-TIME02 provides a qualified time-coordinate candidate but no new local discrepancy allocation request",
+    "ANIMO-MASSQ01 is still an in-progress persisted checkpoint and supplies no completed discrepancy candidate for this intake supplement"
+  ],
+  "new_corrections_admitted": false,
+  "b3_baseline_established": false,
+  "production_migration_admitted": false,
+  "evidence_strength_increased_by_reservation": false
+}

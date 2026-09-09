@@ -1,0 +1,115 @@
+{
+  "record_type": "CANONICAL_TCD_RESERVATION_BATCH_NOT_B3_DISPOSITION",
+  "work_unit": "ANIMO-B3I01",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i01-post-g5-discrepancy-intake",
+  "reservation_status": "RESERVED_FAIL_CLOSED_PENDING_CANONICAL_REGISTER_APPEND_NOT_ADMITTED",
+  "authority": {
+    "canonical_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "canonical_register_tail_observed": "TCD-027",
+    "existing_reservation": "TCD-028",
+    "b3_owner": "ANIMO-B3Q01",
+    "rg02_rule": "post-TCD-027 local identifiers are noncanonical unless allocated by B3 governance"
+  },
+  "collision_audit": {
+    "tcd_029_code_search_matches": 0,
+    "tcd_029_branch_search_matches": 0,
+    "tcd_030_to_039_code_prefix_search_matches": 0,
+    "tcd_030_to_039_branch_prefix_search_matches": 0,
+    "observation_scope": "live GitHub repository code and branch searches immediately before this reservation; not a transactional repository lock"
+  },
+  "reservations": [
+    {
+      "tcd_id": "TCD-029",
+      "local_key": "NQ02-LCL-IFLSOL4-DETCOEF-CANCELLATION",
+      "source_workunit": "ANIMO-NQ02",
+      "phenomenon": "Iflsol=4 analytical coefficient cancellation across Detcoef and Coefdc materially changes transport coefficients at small differences",
+      "provisional_b3_class": "E",
+      "qualification_owner": "PROPOSED_ANIMO-NQ03",
+      "admitted": false
+    },
+    {
+      "tcd_id": "TCD-030",
+      "local_key": "MP01-LCL-INITIAL-NO3-VALIDATION",
+      "source_workunit": "ANIMO-MP01",
+      "phenomenon": "macropore initial NO3 range validation checks the NH4 values instead of the NO3 values",
+      "provisional_b3_class": "B",
+      "qualification_owner": "PROPOSED_ANIMO-MP03",
+      "admitted": false
+    },
+    {
+      "tcd_id": "TCD-031",
+      "local_key": "MP01-MP02-LCL-MACROPORE-SOLUTE-RESTART-PERSISTENCE",
+      "source_workunit": "ANIMO-MP01_AND_ANIMO-MP02",
+      "phenomenon": "active macropore solute state is promoted in memory but omitted from persistent restart serialization",
+      "provisional_b3_class": "C",
+      "qualification_owner": "PROPOSED_ANIMO-MP04",
+      "admitted": false
+    },
+    {
+      "tcd_id": "TCD-032",
+      "local_key": "GHG01-LCL-METHANOGENESIS-SOURCE-POOL-TRANSFER",
+      "source_workunit": "ANIMO-GHG01",
+      "phenomenon": "CH4 production source-family withdrawals are incomplete because comprehensive GHG_Miner source-pool transfers are inactive while production draws on those pools",
+      "provisional_b3_class": "B",
+      "qualification_owner": "PROPOSED_ANIMO-GHG02",
+      "admitted": false
+    },
+    {
+      "tcd_id": "TCD-033",
+      "local_key": "GHG01-LCL-CH4-PRODUCTION-COMPONENT-PARTITION",
+      "source_workunit": "ANIMO-GHG01",
+      "phenomenon": "CH4 production component sum does not close to total production under partial anaerobiosis because component scaling differs from total scaling",
+      "provisional_b3_class": "B",
+      "qualification_owner": "PROPOSED_ANIMO-GHG02",
+      "admitted": false
+    },
+    {
+      "tcd_id": "TCD-034",
+      "local_key": "GHG01-LCL-CH4-PLANT-GROWTH-TEMPERATURE-INDEX",
+      "source_workunit": "ANIMO-GHG01",
+      "phenomenon": "CH4 plant transport growth factor reads Te(Ln) before local Ln is defined",
+      "provisional_b3_class": "B",
+      "qualification_owner": "PROPOSED_ANIMO-GHG02",
+      "admitted": false
+    },
+    {
+      "tcd_id": "TCD-035",
+      "local_key": "GHG01-LCL-GHG-RESTART-PHASE-PARTITION",
+      "source_workunit": "ANIMO-GHG01",
+      "phenomenon": "restart reconstructs GHG phase partition from serialized total gas state using fixed reference temperature rather than proven checkpoint thermodynamic state",
+      "provisional_b3_class": "C",
+      "qualification_owner": "PROPOSED_ANIMO-GHG03",
+      "admitted": false
+    },
+    {
+      "tcd_id": "TCD-036",
+      "local_key": "GHG01-LCL-GHG-PONDING-RESTART-LAYER0",
+      "source_workunit": "ANIMO-GHG01",
+      "phenomenon": "pre-existing ponding layer0 GHG state lacks a complete deterministic restart reconstruction path",
+      "provisional_b3_class": "C",
+      "qualification_owner": "PROPOSED_ANIMO-GHG03",
+      "admitted": false
+    },
+    {
+      "tcd_id": "TCD-037",
+      "local_key": "GHG01-LCL-GHG-OUTBAL-WORKING-ARRAYS",
+      "source_workunit": "ANIMO-GHG01",
+      "phenomenon": "GHG balance observer consumes AmCH4 and AmN2Odeni without an identified active producer or explicit interface input",
+      "provisional_b3_class": "A",
+      "qualification_owner": "PROPOSED_ANIMO-GHG04",
+      "admitted": false
+    }
+  ],
+  "non_reservations": [
+    "TCD-016-C1 and TCD-016-E1 remain child qualification atoms under existing TCD-016",
+    "TCD-009-GHG-GAS-STORE remains an atomization target under existing TCD-009",
+    "GHG hidden task-state persistence maps to existing TCD-011 build-contract family",
+    "MP02 GNU invalid-operation warning guard is a build/runtime hazard and receives no TCD reservation",
+    "GHG N2O document-source conflicts remain theory/provenance gaps under TCD-008",
+    "GHG fresh-OM weighting selector remains insufficiently evidenced for canonical allocation"
+  ],
+  "new_corrections_admitted": false,
+  "b3_baseline_established": false,
+  "production_migration_admitted": false
+}

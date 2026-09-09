@@ -1,0 +1,72 @@
+name: ANIMO-B3I01 post-G5 intake validation
+
+on:
+  push:
+    branches:
+      - work/animo-b3i01-canonical-register-append
+  pull_request:
+    paths:
+      - 'docs/b3/POST_G5_DISCREPANCY_INTAKE.md'
+      - 'docs/b3/POST_G5_DISCREPANCY_INTAKE_SUPPLEMENT_01.md'
+      - 'docs/b3/POST_G5_DISCREPANCY_INTAKE_SUPPLEMENT_02.md'
+      - 'docs/b3/B3I01_CANONICAL_REGISTER_APPEND.md'
+      - 'docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv'
+      - 'integration/animo-b3/ANIMO-B3I01_STATUS.json'
+      - 'integration/animo-b3/ANIMO-B3I01_SUPPLEMENT_01_STATUS.json'
+      - 'integration/animo-b3/ANIMO-B3I01_SUPPLEMENT_02_STATUS.json'
+      - 'integration/animo-b3/B3I01_CANONICAL_REGISTER_APPEND_STATUS.json'
+      - 'integration/animo-b3/B3I01_REGISTER_APPEND_ROWS.csv'
+      - 'integration/animo-b3/B3I01_REGISTER_APPEND_SUPPLEMENT_01_ROWS.csv'
+      - 'integration/animo-b3/B3I01_REGISTER_APPEND_SUPPLEMENT_02_ROWS.csv'
+      - 'integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER.json'
+      - 'integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER_SUPPLEMENT_01.json'
+      - 'integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER_SUPPLEMENT_02.json'
+      - 'integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_RECONCILIATION.json'
+      - 'integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_SUPPLEMENT_01_RECONCILIATION.json'
+      - 'integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_SUPPLEMENT_02_RECONCILIATION.json'
+      - 'integration/animo-b3/POST_G5_LOCAL_FINDING_CROSSWALK.csv'
+      - 'integration/animo-b3/POST_G5_LOCAL_FINDING_CROSSWALK_SUPPLEMENT_01.csv'
+      - 'integration/animo-b3/POST_G5_LOCAL_FINDING_CROSSWALK_SUPPLEMENT_02.csv'
+      - 'integration/animo-b3/POST_G5_TCD_RESERVATIONS.json'
+      - 'integration/animo-b3/POST_G5_TCD_RESERVATIONS_SUPPLEMENT_01.json'
+      - 'integration/animo-b3/POST_G5_TCD_RESERVATIONS_SUPPLEMENT_02.json'
+      - 'integration/animo-b3/TCD-028_RESERVATION.json'
+      - 'tools/validate_b3i01_post_g5_intake.py'
+      - 'tools/validate_tcd028_intake.py'
+      - '.github/workflows/animo-b3i01-post-g5-intake.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile validators
+        run: |
+          python -m py_compile tools/validate_b3i01_post_g5_intake.py
+          python -m py_compile tools/validate_tcd028_intake.py
+      - name: Parse B3I01 JSON artifacts
+        run: |
+          python -m json.tool integration/animo-b3/ANIMO-B3I01_STATUS.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3I01_SUPPLEMENT_01_STATUS.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3I01_SUPPLEMENT_02_STATUS.json >/dev/null
+          python -m json.tool integration/animo-b3/B3I01_CANONICAL_REGISTER_APPEND_STATUS.json >/dev/null
+          python -m json.tool integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER.json >/dev/null
+          python -m json.tool integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER_SUPPLEMENT_01.json >/dev/null
+          python -m json.tool integration/animo-b3/CANONICAL_TCD_ROUTING_REGISTER_SUPPLEMENT_02.json >/dev/null
+          python -m json.tool integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_RECONCILIATION.json >/dev/null
+          python -m json.tool integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_SUPPLEMENT_01_RECONCILIATION.json >/dev/null
+          python -m json.tool integration/animo-b3/CANONICAL_TCD_REGISTER_APPEND_SUPPLEMENT_02_RECONCILIATION.json >/dev/null
+          python -m json.tool integration/animo-b3/POST_G5_TCD_RESERVATIONS.json >/dev/null
+          python -m json.tool integration/animo-b3/POST_G5_TCD_RESERVATIONS_SUPPLEMENT_01.json >/dev/null
+          python -m json.tool integration/animo-b3/POST_G5_TCD_RESERVATIONS_SUPPLEMENT_02.json >/dev/null
+          python -m json.tool integration/animo-b3/TCD-028_RESERVATION.json >/dev/null
+      - name: Validate canonical intake and register appends through TCD-040
+        run: python tools/validate_b3i01_post_g5_intake.py
+      - name: Validate TCD-028 reservation across register phases
+        run: python tools/validate_tcd028_intake.py

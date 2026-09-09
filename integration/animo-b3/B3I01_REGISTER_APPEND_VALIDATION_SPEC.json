@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "header unchanged",
+    "TCD-001 through TCD-027 remain in original order",
+    "TCD-028 through TCD-037 each appear exactly once",
+    "top-level IDs are contiguous TCD-001 through TCD-037",
+    "no child atom key is present as a top-level row",
+    "every appended row remains OPEN and non-admission language only",
+    "no source, testbank, or production-code paths changed"
+  ]
+}

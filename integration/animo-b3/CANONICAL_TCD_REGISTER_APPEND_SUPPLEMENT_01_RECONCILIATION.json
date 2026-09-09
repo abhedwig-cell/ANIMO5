@@ -1,0 +1,41 @@
+{
+  "record_type": "CANONICAL_TCD_REGISTER_APPEND_SUPPLEMENT_RECONCILIATION_NO_ADMISSION",
+  "work_unit": "ANIMO-B3I01",
+  "supplement": "POST_G5_LIVE_INTAKE_SUPPLEMENT_01",
+  "repository": "abhedwig-cell/ANIMO5",
+  "canonical_register": {
+    "path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "blob_before": "b7d444d9a5bd45e04e4814d3cf54f66613837b4b",
+    "blob_after": "264ea7d0dd5764d837b40f19d6ba70152be2e743",
+    "tail_before": "TCD-037",
+    "tail_after": "TCD-039",
+    "append_only": true,
+    "existing_rows_changed": false,
+    "compare_base": "5fad3e1421f7d66fa962e9f43b3131fb77302158",
+    "append_commit": "6514b227dfd7c68d23860679991a2d02e87002ee",
+    "compare_result": "2 additions 0 deletions in canonical register"
+  },
+  "reservation_precondition": {
+    "artifact": "integration/animo-b3/POST_G5_TCD_RESERVATIONS_SUPPLEMENT_01.json",
+    "reservation_commit": "e99f19e247a398d052f6500f34ee56014e583bec",
+    "reserved_before_append": true,
+    "ids": ["TCD-038", "TCD-039"]
+  },
+  "prepared_rows": "integration/animo-b3/B3I01_REGISTER_APPEND_SUPPLEMENT_01_ROWS.csv",
+  "registered_not_admitted": ["TCD-038", "TCD-039"],
+  "source_local_label_reconciliation": {
+    "PREP12 source-local TCD-032": "canonical TCD-031",
+    "PREP12 source-local TCD-033": "canonical TCD-038",
+    "PREP12 source-local TCD-034": "canonical TCD-039"
+  },
+  "runtime_non_tcd_routes": [
+    "BUILDQ01 MAPOHYDRO LnBoMpMx maps to existing TCD-011 build-contract family",
+    "BUILDQ01 MAPOHYDRO index0 bounds/evaluation-order seam remains BUILD_RUNTIME_HAZARD_NOT_TCD"
+  ],
+  "admission_state": {
+    "new_corrections_admitted": false,
+    "b3_baseline_established": false,
+    "production_migration_admitted": false,
+    "evidence_strength_increased_by_register_append": false
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "source_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+  "source_register_blob_sha": "224acc350fde69d3c4aebed8628c0f945e0b3367",
+  "append_ids": ["TCD-028","TCD-029","TCD-030","TCD-031","TCD-032","TCD-033","TCD-034","TCD-035","TCD-036","TCD-037"],
+  "preserve_existing_rows": true,
+  "append_only": true,
+  "admission_effect": "NONE"
+}
