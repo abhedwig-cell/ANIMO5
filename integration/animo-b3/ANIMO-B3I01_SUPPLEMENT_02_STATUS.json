@@ -4,10 +4,12 @@
   "title": "STATEQ01 Layer0 Aqueous Restart Initialization Intake",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3i01-canonical-register-append",
-  "status": "IN_PROGRESS_PERSISTED_TCD040_REGISTERED_NOT_ADMITTED_AWAITING_VALIDATOR_AND_CI_REFRESH",
+  "status": "COMPLETE_TESTED_QUALIFIED_TCD040_REGISTERED_NOT_ADMITTED",
   "persisted_early": true,
-  "tested": false,
-  "qualified": false,
+  "tested": true,
+  "qualified": true,
+  "validated_head": "d2fe4eb3793a1ffc6c09197d7db01c3e3fe33f88",
+  "successful_ci_runs": [34331711485, 34331711492, 34331711503],
   "source_authority": {
     "workunit": "ANIMO-STATEQ01",
     "head": "5a5e0785b6f4a9cb4f67d1fa10d79b184d7d41e9",
@@ -44,5 +46,5 @@
   "production_migration_admitted": false,
   "production_code_modified": false,
   "source_correction": false,
-  "checkpoint": "reservation, routing, prepared row, canonical append and append reconciliation persisted; validator/workflow refresh and CI still pending"
+  "checkpoint": "supplement-02 intake persisted, tested and qualified as canonical identity/routing governance evidence; TCD-040 remains not admitted"
 }
