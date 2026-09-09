@@ -5,13 +5,99 @@
   "branch": "work/animo-b3b01-tcd015-class-b-admission-readiness",
   "base_branch": "work/animo-b3q01-scientific-admission-framework",
   "base_head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "evaluated_candidate_head_before_closeout_record": "7c36561054f2e4df812d28ca7c65ae30e213f9d8",
   "target_tcd": "TCD-015",
   "b3_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
-  "status": "IN_PROGRESS_EVIDENCE_RECONCILIATION",
-  "implemented": false,
+  "atomicity": "ATOMIC_LOCAL_ALGEBRA_CLAIM",
+  "status": "QUALIFIED_TCD015_CLASS_B_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING",
+  "decision": "QUALIFIED_TCD015_CLASS_B_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING",
+  "implemented": true,
+  "readiness_dossier_implemented": true,
+  "source_correction_implemented": false,
   "persisted": true,
-  "tested": false,
-  "qualified": false,
+  "tested": true,
+  "qualified": true,
   "admitted": false,
-  "hard_rule": "No B3 admission is permitted unless the applicable B2 or historical-uncertainty route is valid and an independent second-line review is complete."
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false,
+  "admission_blocked": true,
+  "causal_claim": "The nitrate negative-concentration reconstruction double-counts the moisture-storage contribution because Hv1 already contains Hv while the explicit storage term already contains the full moisture storage change.",
+  "candidate_atomic_change": "For the TCD-015 nitrate path only, replace Avc*Hv1 by Avc*(Hv1-Hv) in the second negative-concentration Reko reconstruction. No clipping, tolerance, solver or broader transport-policy change is included.",
+  "B0": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "Transsub_member_sha256": "c548e5d372ffbc7f4d4e4d8d86609cf1f34cf70ea513d345e3c7fada5cf6b552",
+    "byte_identity_rechecked": true,
+    "controlled_immutable_external_storage_proven": false
+  },
+  "evidence": {
+    "PREP01_exact_causal_reconciliation": "PASS",
+    "natural_LWKM_activation": "PASS",
+    "local_conservation_identity": "PASS",
+    "SYNQ01_oracle": "PASS_SYNQ_O001_STRONGLY_INDEPENDENT_NO_B2_CLAIM",
+    "expected_difference_predeclared_before_broad_matrix": "PASS",
+    "additional_B1_non_interference": "PASS_CURRENT_CORE_NON_GHG_SCOPE",
+    "historical_reference": "NOT_QUALIFIED",
+    "independent_second_line_review": "PENDING"
+  },
+  "additional_B1_matrix": {
+    "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "species_scoped_probe_executable_sha256": "10686a76d914e661badeb8ba36057d43f23c5dbffd39e8b95ce367db24525b94",
+    "natural_cases_completed_baseline": 8,
+    "natural_cases_completed_candidate": 8,
+    "compared_files_excluding_stdout": 550,
+    "raw_equal": 430,
+    "equal_after_declared_volatile_normalization": 99,
+    "scientifically_different": 21,
+    "scientific_differences_outside_predeclared_surface": 0,
+    "numerical_tolerance_applied": false,
+    "activated_cases_with_scientific_differences": [
+      "GrassPeat",
+      "LWKM_gras_1040.2021.2045",
+      "STONE_akk_0006.2001.2015"
+    ],
+    "LWKM_nitrate_massbalance_warnings_baseline": 3,
+    "LWKM_nitrate_massbalance_warnings_candidate": 0
+  },
+  "route": {
+    "PREP02R_status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+    "normal_B2_route_available": false,
+    "historical_uncertainty_route_eligible": false,
+    "external_request_sent": false,
+    "historical_reference_artifact_obtained": false,
+    "reference_qualified": false,
+    "route_gate": "FAIL_CURRENTLY_INELIGIBLE"
+  },
+  "independent_review": {
+    "required": true,
+    "complete": false,
+    "self_certified": false,
+    "result": "NOT_REVIEWED"
+  },
+  "feature_scope": {
+    "qualified_readiness_scope": "core nitrate transport with GreenHouseGasOption=0",
+    "GHG_enabled_scope": "NOT_QUALIFIED_BY_THIS_WORKUNIT",
+    "macropore_interaction_scope": "NOT_QUALIFIED_BY_THIS_WORKUNIT"
+  },
+  "residual_uncertainty": [
+    "Historical Intel/Windows behaviour on the affected path remains unknown until B2 is qualified or the GOV02 historical-uncertainty route becomes valid.",
+    "The generic Transsub expression is shared by non-nitrate substances; this readiness package is nitrate-scoped and does not admit a generic correction.",
+    "GHG-enabled downstream response to changed effective denitrification bookkeeping is not naturally qualified because GHGMais is revision-53 contract-incompatible.",
+    "External controlled immutable B0 storage proof remains pending under EG01."
+  ],
+  "deliverables": [
+    "docs/b3/TCD015_CLASS_B_ADMISSION_READINESS.md",
+    "integration/animo-b3/TCD015_EXPECTED_DIFFERENCE.json",
+    "integration/animo-b3/TCD015_CLASS_B_READINESS.json",
+    "integration/animo-b3/ANIMO-B3B01_STATUS.json"
+  ],
+  "hard_rules_verified": {
+    "clipping_policy_redesign": false,
+    "tolerance_change": false,
+    "transport_physics_change_outside_atomic_claim": false,
+    "B2_claim_from_SYNQ01": false,
+    "admission_without_valid_route": false,
+    "admission_without_independent_second_line_review": false
+  }
 }
