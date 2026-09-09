@@ -69,7 +69,7 @@ def main() -> int:
             "crlf_count": reset.count(b"\r\n"),
             "semantic_change": "sets the three stable-DOM plough accumulators to zero at the start of each plough event; diagnostic counterfactual only, not corrected-legacy admission"
         },
-        "frozen_source_modified": false
+        "frozen_source_modified": False
     }
     print(json.dumps(result, indent=2) + "\n")
     return 0
