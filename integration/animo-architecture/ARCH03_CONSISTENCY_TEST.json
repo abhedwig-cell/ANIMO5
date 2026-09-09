@@ -3,27 +3,32 @@
   "test_id": "ARCH03-MASS-LEDGER-STRUCTURAL-CONSISTENCY",
   "date": "2026-09-09",
   "result": "PASS",
-  "method": "fail-closed checks equivalent to tools/audit_arch03_mass_ledger.py executed against the exact registry text read back from GitHub connector after persistence",
+  "method": "fail-closed checks equivalent to tools/audit_arch03_mass_ledger.py executed against the exact registry text read back from GitHub connector after persistence; ARCH01 state IDs were checked for exact 53-row projection coverage",
   "audit_tool_persisted": true,
   "audit_tool_executed_from_repository_checkout": false,
   "equivalent_checks_executed_against_connector_fetched_registry_bytes": true,
   "registry_blobs": {
     "quantities": "4284f95a0b54bcb99e0be740395aa1d62e31ed3d",
-    "control_volumes": "4ae2d4674bf617e0c477cedfb84cfc60c3f1ec9f",
+    "control_volumes": "5cf3aa79039bb9365aa8a42c93ef740a610b1302",
     "observer_schema": "77a71e723b668be0525b62696da004ff4f5e222b",
-    "identity_map": "121ac65486c396fa1cb502f2d407e811fb516e4c"
+    "identity_map": "121ac65486c396fa1cb502f2d407e811fb516e4c",
+    "state_ledger_projection": "78d9aa1126cf32278ce9fea6e51f1931f3ca216e",
+    "arch01_state_ownership": "1d374520ffc844857d1f633768c24d90d62b47c5"
   },
   "counts": {
     "quantities": 7,
-    "control_volumes": 11,
+    "control_volumes": 12,
     "observer_schema_fields": 23,
-    "mapped_prep06_identities": 23
+    "mapped_prep06_identities": 23,
+    "arch01_state_nonstate_families": 53,
+    "arch03_state_ledger_projection_rows": 53
   },
   "checks": {
     "quantity_ids_unique_and_exact": true,
     "control_volume_ids_unique_and_exact": true,
     "observer_schema_fields_unique_and_exact": true,
     "prep06_identity_ids_unique_and_exact_for_arch03_scope": true,
+    "arch03_projection_ids_exactly_match_arch01_state_ids": true,
     "all_quantity_default_control_volumes_exist": true,
     "all_closure_identities_use_canonical_residual_convention": true,
     "physical_quantity_event_classes_exclude_reporting_observation": true,
@@ -33,6 +38,10 @@
     "all_identity_map_quantities_exist": true,
     "all_identity_map_control_volumes_exist": true,
     "all_identity_map_observer_channels_are_declared": true,
+    "all_state_projection_quantity_references_exist": true,
+    "all_state_projection_control_volume_references_exist": true,
+    "excluded_derived_scratch_diagnostic_and_dormant_rows_have_no_physical_projection": true,
+    "all_nonexcluded_projection_rows_have_quantity_and_control_volume": true,
     "closure_tolerance_is_optional_and_not_defined_by_arch03": true,
     "begin_and_end_storage_are_owner_state_derived": true,
     "closure_residual_formula_matches_contract": true
