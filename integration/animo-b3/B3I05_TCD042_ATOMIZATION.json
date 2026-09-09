@@ -1,0 +1,89 @@
+{
+  "work_unit": "ANIMO-B3I05",
+  "parent_tcd": "TCD-042",
+  "canonical_register": {
+    "branch": "work/animo-b3i03-canonical-register-append",
+    "head": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "tail_before": "TCD-042",
+    "tail_after": "TCD-042",
+    "append_performed": false
+  },
+  "authority": {
+    "prior_incremental_intake": {
+      "work_unit": "ANIMO-B3I04",
+      "head": "400b7cd79f89043e091751707dfa96537587dcf6"
+    },
+    "ubq01": {
+      "head": "6895b67799f26888025eced7188e7190b2a0d07d",
+      "qualified_exact_zero_atom": true
+    },
+    "ubq02": {
+      "head": "bb572bb5d431f91d780018a1acbb345fbcfced37",
+      "status": "QUALIFIED_TCD042_FINITE_POSITIVE_SUBTHRESHOLD_CLASS_E_SEAM_NUMERICAL_POLICY_PENDING",
+      "workflow_run_id": 34369848923,
+      "workflow_conclusion": "success"
+    }
+  },
+  "allocation_decision": {
+    "new_top_level_tcd_reserved": false,
+    "tcd_043_reserved": false,
+    "reason_no_new_top_level_tcd": "The exact-zero and finite-positive mechanisms are distinct qualification atoms within the same canonical upper-reservoir fallback phenomenon already represented by TCD-042.",
+    "child_atom_keys_are_top_level_register_rows": false,
+    "parent_state": "ATOMIZED_B1_EXACT_ZERO_PLUS_E1_FINITE_POSITIVE_NO_ADMISSION"
+  },
+  "atoms": [
+    {
+      "atom_id": "TCD-042-B1",
+      "title": "exact-zero upper-reservoir load-transfer algebra",
+      "scope": "Flpn=0 AND Flux=0",
+      "class": "B_LOCAL_ALGEBRA_ZERO_FLOW_LIMIT",
+      "evidence_owner": "ANIMO-UBQ01",
+      "evidence_head": "6895b67799f26888025eced7188e7190b2a0d07d",
+      "causal_identity_qualified": true,
+      "numerical_policy_selection_required": false,
+      "state_owner_change_required": false,
+      "accounting_only": false,
+      "admitted": false,
+      "queue_state": "ATOM_QUALIFIED_ADMISSION_ROUTE_AND_INDEPENDENT_REVIEW_PENDING",
+      "next_work": "dedicated Class-B admission-readiness / independent review under GOV02/B3Q01"
+    },
+    {
+      "atom_id": "TCD-042-E1",
+      "title": "finite-positive subthreshold upper-reservoir numerical evaluation policy",
+      "scope": "Flpn=0 AND 0<Flux<1.0d-8",
+      "class": "E_NUMERICAL_POLICY",
+      "evidence_owner": "ANIMO-UBQ02",
+      "evidence_head": "bb572bb5d431f91d780018a1acbb345fbcfced37",
+      "causal_identity_qualified": true,
+      "numerical_seam_characterized": true,
+      "selected_numerical_policy": false,
+      "tolerance_admitted": false,
+      "threshold_admitted": false,
+      "state_owner_change_required": false,
+      "admitted": false,
+      "queue_state": "ATOM_CHARACTERIZED_NUMERICAL_POLICY_QUALIFICATION_REQUIRED",
+      "next_work": "ANIMO-NQ03 candidate: select and qualify numerical policy under NQ01/B3Q01"
+    }
+  ],
+  "ubq02_facts_preserved": {
+    "natural_subthreshold_records": 1238,
+    "natural_cases": 6,
+    "P_min": 4.2351647362715017e-20,
+    "P_max": 3.8510200002999744e-7,
+    "binary64_direct_one_minus_exp_zero_records": 1189,
+    "natural_nonzero_mineral_N_load_records": 4,
+    "RuurloGrass_max_abs_single_record_N_residual_kg_ha": 0.0067476693479999565,
+    "stable_comparison_candidate_is_production_policy": false
+  },
+  "invariants": {
+    "parent_tcd_fully_qualified": false,
+    "parent_tcd_admitted": false,
+    "new_tcd_count": 0,
+    "canonical_register_changed": false,
+    "scientific_admission_performed": false,
+    "numerical_policy_admitted": false,
+    "production_source_modified": false,
+    "production_migration_admitted": false,
+    "evidence_strength_promoted": false
+  }
+}
