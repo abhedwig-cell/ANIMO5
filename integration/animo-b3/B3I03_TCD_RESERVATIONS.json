@@ -1,0 +1,108 @@
+{
+  "work_unit": "ANIMO-B3I03",
+  "record_type": "FAIL_CLOSED_INCREMENTAL_TCD_RESERVATIONS_NO_ADMISSION",
+  "repository": "abhedwig-cell/ANIMO5",
+  "authority": {
+    "base_branch": "work/animo-b3i02-post-b3i01-incremental-intake",
+    "base_head": "c1a69c00a02aa0e32ca60580c3d0ebee96442c17",
+    "canonical_register_path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "canonical_register_tail_observed": "TCD-041",
+    "source_evidence_branch": "work/animo-massq02-residual-causality-typed-events",
+    "source_evidence_head": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc"
+  },
+  "policy": {
+    "reservation_is_admission": false,
+    "reservation_mutates_canonical_csv": false,
+    "new_id_requires_collision_scan": true,
+    "local_residual_magnitude_is_not_sufficient": true,
+    "compound_parent_requires_atomization_before_admission": true
+  },
+  "collision_scan": {
+    "existing_top_level_range": "TCD-001..TCD-041",
+    "TCD_042_present_before_reservation": false,
+    "closest_existing_or_local_relations": [
+      {
+        "key": "SQ01-LCL-UBOUNDCONC-DRY-DEPOSITION-1MM",
+        "status": "NONCANONICAL_LOCAL_FINDING",
+        "relation": "same UBoundconc boundary family but SQ01 concerned an ancillary 1 mm threshold whose causal relevance was not established; MASSQ02 R016 establishes a zero-throughflow accepted-interval mass-transfer mismatch and is not silently equated with the threshold finding"
+      },
+      {
+        "key": "TCD-016",
+        "status": "EXISTING_CANONICAL_TCD",
+        "relation": "distinct mechanism: TCD-016 is wet-to-dry NH4 continuation-state loss inside Transsub, while R016 is external precipitation/deposition N boundary ownership at zero UBoundconc throughflow"
+      },
+      {
+        "key": "TCD-018",
+        "status": "EXISTING_CANONICAL_TCD",
+        "relation": "distinct mechanism: TCD-018 is reporting-only interception storage omission with intact hydrology state, while R016 has missing represented N transfer or disputed boundary-crossing timing"
+      }
+    ],
+    "collision_result": "NO_EXISTING_CANONICAL_TCD_MATCHES_THE_R016_ATOMIC_BOUNDARY_PHENOMENON"
+  },
+  "reservations": [
+    {
+      "tcd_id": "TCD-042",
+      "canonical_id_state": "FAIL_CLOSED_RESERVED_NOT_YET_APPENDED_TO_CANONICAL_REGISTER",
+      "phenomenon": "upper-boundary precipitation/deposition solute transaction at zero top throughflow",
+      "source_local_key": "MASSQ02-R016",
+      "natural_case": "RuurloGrass",
+      "interval": "TITO=1915",
+      "element": "N",
+      "source_coordinates": [
+        "UBoundconc.for:110-132",
+        "Outbal_calc.for:766-784",
+        "Conhtop/Rsconhtop/Avconhtop",
+        "Conitop/Rsconitop/Avconitop",
+        "Pr/Coprnhyn/Coprniyn"
+      ],
+      "runtime_identity": {
+        "Iopthyvs": 0,
+        "Flib_1": 0.0,
+        "Rurv": 0.0,
+        "Flux": 0.0,
+        "A1": 1.0,
+        "A2": 0.0,
+        "observer_residual_kg_ha_N": 0.0067493732130969875,
+        "booked_precipitation_deposition_N_kg_ha": 0.006749373218
+      },
+      "causal_statement": "On the accepted interval the external precipitation/deposition N amount is booked as system input, while the zero-throughflow UBoundconc branch retains previous top concentrations and applies zero weight to the incoming load. The booked input and independent observer nonclosure coincide to source/runtime precision.",
+      "atomicity": "REQUIRES_ATOMIZATION_BEFORE_ADMISSION",
+      "provisional_parent_class": "C_STRICTEST_UNTIL_BOUNDARY_SEMANTICS_ARE_ATOMIZED",
+      "candidate_atoms_not_yet_canonical_children": [
+        {
+          "candidate": "A1_ACCOUNTING_BOUNDARY_TIMING",
+          "class": "A",
+          "hypothesis": "the physical external crossing has not yet occurred at zero throughflow, so the public/observer input booking is premature and should be delayed without changing physical state or flux"
+        },
+        {
+          "candidate": "C1_SURFACE_SOLUTE_OWNERSHIP",
+          "class": "C",
+          "hypothesis": "the external input crosses immediately and therefore requires a represented persistent surface/top solute owner when throughflow is zero"
+        },
+        {
+          "candidate": "B1_LOCAL_TRANSFER_ALGEBRA",
+          "class": "B",
+          "hypothesis": "only if an already represented owner should receive the load and an unambiguous local algebraic transfer identity can be proven without new state or policy"
+        }
+      ],
+      "qualification_requirements": [
+        "define the exact ANIMO system boundary for precipitation and deposition at zero top throughflow",
+        "determine whether the incoming mass has physically crossed that boundary on the accepted interval",
+        "prove existing versus missing owner state",
+        "separate accounting-only, state-model and local-algebra correction candidates",
+        "exercise zero and nonzero throughflow branches with unrounded N state and transfer evidence",
+        "prove conservation and non-interference for the selected atom",
+        "retain frozen historical behaviour as evidence",
+        "apply B2 or governed historical-uncertainty route according to the selected class"
+      ],
+      "admitted": false,
+      "production_migration_admitted": false
+    }
+  ],
+  "allocation_summary": {
+    "new_fail_closed_reservations": ["TCD-042"],
+    "new_reservation_count": 1,
+    "canonical_register_append_performed": false,
+    "new_corrections_admitted": false
+  }
+}
