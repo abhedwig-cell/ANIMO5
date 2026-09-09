@@ -1,0 +1,112 @@
+{
+  "work_unit": "ANIMO-NQ02",
+  "target": "TCD-019",
+  "subscope": "FAST_FREUNDLICH_SMALL_DELTA_CONSTITUTIVE_POLICY",
+  "evidence_class": "B1_SYNTHETIC_ISOLATED_SOURCE_ROUTINE_PROBE_ONLY",
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "natural_fast_freundlich_case_available_in_supplied_testbank": false,
+  "source_routine": "Transorp.for:Sorpfast",
+  "source_model": "S(C)=K*C^n with K=Parcxfa(4)/Rhbd and n=Parcxfa(5)",
+  "synthetic_parameters": {
+    "C0": 2.1813092841667838e-5,
+    "Parcxfa4": 1.187e-5,
+    "Parcxfa5": 0.5357,
+    "Rhbd": 1650.0,
+    "parameter_provenance": "Parcxfa4/5 use a source-scale Freundlich parameter pair present in the supplied LWKM slow-sorption input; activation as fast Freundlich is synthetic B1"
+  },
+  "diagnostic_identity": {
+    "legacy_transorp_sha256": "65ab0f70ed7cc4f1c0012ca95bcdddeb5c26dd21b09df0ec61b7b269e51cd0ad",
+    "candidate_transorp_sha256": "b4384a2e409348569506780d2b932fd0aad3b5f56ada90bd6910d9d5922dcafa",
+    "harness_sha256": "03c88ecc691e0317e6b01e9eb302a19b3e3a30481dd0a2020fb4df31b651073e",
+    "legacy_executable_sha256": "aa7985dfc2a8ea03d82a832c073666e8f4626a079b4f408e9364199bfb07898a",
+    "candidate_executable_sha256": "486e91f9289475e9cfaa31b7b6fc1dde117257a015225e8d2a0d67fa293fe472",
+    "legacy_output_sha256": "eacb488f20b909e8c736de29b9659ba856738fe23af259fed5f3ba7936ab5d31",
+    "candidate_output_sha256": "1ad8c37eec54a86db47c66994dfc7e984b248c1140897c675aacc6b99f206b36",
+    "candidate_generator_sha256": "49895b98e6bf80d86b76c13dce1da23e58ce55f676c8deeed73d83941dbcdf09",
+    "aggregate_summary_sha256": "849b0fa4296df2539ff1f5fe088ae1f98aa3e4456dc0eafb14f47cc42615db90"
+  },
+  "reference_mathematics": {
+    "exact_secant": "K*(C^n-C0^n)/(C-C0)",
+    "exact_secant_derivative": "(n*K*C^(n-1)-exact_secant)/(C-C0)",
+    "equal_state_limit_secant": "n*K*C0^(n-1)",
+    "equal_state_limit_derivative": "0.5*n*(n-1)*K*C0^(n-2)",
+    "legacy_equal_state_derivative": "n*(n-1)*K*C0^(n-2)",
+    "legacy_equal_state_jacobian_factor_error": 2.0,
+    "candidate_stable_evaluation": "relative-change binomial series near C=C0 and exact secant outside the series region",
+    "probe_series_switch": "epsilon(binary64)^(1/4)",
+    "probe_series_switch_is_production_tolerance": false
+  },
+  "selected_results": [
+    {
+      "delta_C": 5e-7,
+      "legacy_R_constitutive": -2.4153228524776607e-12,
+      "candidate_R_constitutive": 1.666074231826777e-25,
+      "legacy_Avadco_relative_error": -0.00523227796797518,
+      "candidate_Avadco_relative_error": 1.518330351101171e-15,
+      "legacy_Avadcodc_relative_error": 0.9780615102179713,
+      "candidate_Avadcodc_relative_error": 3.002349162377207e-13
+    },
+    {
+      "delta_C": 1e-7,
+      "legacy_R_constitutive": -9.833716096957203e-14,
+      "candidate_R_constitutive": 8.632347113652488e-24,
+      "legacy_Avadco_relative_error": -0.0010606525456369374,
+      "candidate_Avadco_relative_error": 1.5310228641059696e-14,
+      "legacy_Avadcodc_relative_error": 0.9955425214618827,
+      "candidate_Avadcodc_relative_error": 1.4035623271983673e-11
+    },
+    {
+      "delta_C": 1e-8,
+      "legacy_R_constitutive": -9.87331663830445e-16,
+      "candidate_R_constitutive": -9.553894423131674e-25,
+      "legacy_Avadco_relative_error": -0.00010639061814396898,
+      "candidate_Avadco_relative_error": -4.763581118150932e-13,
+      "legacy_Avadcodc_relative_error": 0.9995526494496143,
+      "candidate_Avadcodc_relative_error": -4.4803454493080555e-9
+    },
+    {
+      "delta_C": 7.487398559231223e-16,
+      "legacy_Avadco_relative_error": -7.968181632668453e-12,
+      "candidate_Avadco_relative_error": 5.756211613638085e-18,
+      "legacy_Avadcodc_relative_error": 0.9999999999664926,
+      "candidate_Avadcodc_relative_error": 1.7411976757395033e-15,
+      "naive_binary64_exact_secant_relative_error": -3.519262568606729e-6
+    },
+    {
+      "delta_C": 0.0,
+      "legacy_Avadcodc_relative_error": 1.0000000000000013,
+      "candidate_Avadcodc_relative_error": 1.6241968094946303e-15
+    },
+    {
+      "delta_C": -5e-7,
+      "legacy_R_constitutive": -2.5258868675331744e-12,
+      "candidate_R_constitutive": 1.1246001064830744e-23,
+      "legacy_Avadco_relative_error": 0.0054138591399306825,
+      "candidate_Avadco_relative_error": -2.998044429287392e-15,
+      "legacy_Avadcodc_relative_error": 1.0228334507991066,
+      "candidate_Avadcodc_relative_error": 5.365429029424799e-13
+    }
+  ],
+  "qualification": {
+    "legacy_small_delta_tangent_is_exact_finite_storage_change": false,
+    "legacy_constitutive_bias_confirmed": true,
+    "legacy_jacobian_limit_inconsistent_with_exact_secant": true,
+    "naive_direct_exact_quotient_cancellation_risk_confirmed": true,
+    "stable_exact_secant_route_numerically_supported": true,
+    "isolated_constitutive_family_mechanism_qualified": true,
+    "integrated_C_unl_fast_freundlich_convergence_qualified": false,
+    "natural_fast_freundlich_coverage_qualified": false,
+    "candidate_classification": "CONVERGENT_CONSTITUTIVE_FORMULATION_CANDIDATE_INTEGRATED_SOLVER_QUALIFICATION_PENDING",
+    "specific_production_implementation_admitted": false,
+    "specific_numeric_switch_admitted": false,
+    "tolerance_status": "TOLERANCE_NOT_YET_QUALIFIED",
+    "B3_admitted": false,
+    "production_migration_admitted": false
+  },
+  "interaction_boundaries": {
+    "off_relation_start_state": "TCD-014",
+    "fallback_policy": "TCD-019 joint nonlinear/fallback policy still open",
+    "tcd024": "not active in this isolated fast-Freundlich constitutive probe"
+  }
+}
