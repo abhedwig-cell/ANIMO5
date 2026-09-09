@@ -1,0 +1,90 @@
+{
+  "work_unit": "ANIMO-B3I05",
+  "parent_tcd": "TCD-042",
+  "decision": "CANONICAL_CHILD_ROUTING_WITHOUT_NEW_NUMERIC_TCD_OR_ADMISSION",
+  "canonical_register": {
+    "path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+    "base_head": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "tail_before": "TCD-042",
+    "tail_after": "TCD-042",
+    "parent_row_changed": false,
+    "append_performed": false,
+    "next_numeric_candidate": "TCD-043",
+    "tcd_043_reserved": false
+  },
+  "parent": {
+    "status": "OPEN_REQUIRES_ATOMIZATION_NO_ADMISSION",
+    "fully_qualified": false,
+    "admitted": false,
+    "reason": "B3Q01 requires compound discrepancies to be split by atomic correction mechanism; UBQ01 and UBQ02 establish distinct Class-B and Class-E mechanisms."
+  },
+  "children": [
+    {
+      "id": "TCD-042-B1",
+      "title": "Exact-zero upper-boundary reservoir load-response algebra",
+      "trigger": "Flpn=0 AND Flux=0",
+      "qualification_class": "B_LOCAL_ALGEBRA_ZERO_FLOW_LIMIT",
+      "evidence_authority": {
+        "work_unit": "ANIMO-UBQ01",
+        "branch": "work/animo-ubq01-tcd042-upper-boundary-transaction",
+        "head": "6895b67799f26888025eced7188e7190b2a0d07d",
+        "status": "QUALIFIED_TCD042_EXACT_ZERO_CLASS_B_ATOM_PARENT_NUMERICAL_SUBTHRESHOLD_ATOM_PENDING"
+      },
+      "qualification_state": "QUALIFIED_READINESS_EVIDENCE_NOT_ADMITTED",
+      "mechanism": "legacy exact-zero fallback uses A2=B2=0 although the existing reservoir equation has the unique zero-flow limits A2=St/Hetop and B2=St/(2*Hetop)",
+      "new_state_required": false,
+      "numerical_policy_selected": false,
+      "b2_evidence_present": false,
+      "synthetic_or_diagnostic_evidence_is_b2": false,
+      "admission": false,
+      "next_gate": "G7_CLASS_B_ADMISSION_REVIEW_AFTER_APPLICABLE_G6H_OR_G6U_ROUTE_AND_SECOND_LINE_REVIEW"
+    },
+    {
+      "id": "TCD-042-E1",
+      "title": "Finite-positive subthreshold upper-reservoir numerical evaluation policy",
+      "trigger": "Flpn=0 AND 0<Flux<1.0d-8",
+      "qualification_class": "E_NUMERICAL_POLICY",
+      "evidence_authority": {
+        "work_unit": "ANIMO-UBQ02",
+        "branch": "work/animo-ubq02-tcd042-subthreshold-numerical-seam",
+        "head": "bb572bb5d431f91d780018a1acbb345fbcfced37",
+        "status": "QUALIFIED_TCD042_FINITE_POSITIVE_SUBTHRESHOLD_CLASS_E_SEAM_NUMERICAL_POLICY_PENDING"
+      },
+      "qualification_state": "QUALIFIED_SEAM_CHARACTERIZATION_NUMERICAL_POLICY_NOT_SELECTED_NOT_ADMITTED",
+      "mechanism": "legacy fixed Flux threshold replaces a finite-positive reservoir solution by a zero-like fallback while the literal positive-flow formulas are cancellation-unsafe for the naturally reached small-P envelope",
+      "preferred_future_conditioning_coordinate": "P=St*Flux/Hetop",
+      "stable_comparison_candidate_is_policy": false,
+      "threshold_selected": false,
+      "tolerance_selected": false,
+      "b2_evidence_present": false,
+      "synthetic_or_diagnostic_evidence_is_b2": false,
+      "admission": false,
+      "next_gate": "DEDICATED_CLASS_E_NUMERICAL_POLICY_QUALIFICATION_THEN_G7_AFTER_APPLICABLE_G6H_OR_G6U_ROUTE_AND_INDEPENDENT_NUMERICAL_REVIEW"
+    }
+  ],
+  "child_identifier_semantics": {
+    "children_are_qualification_records_under_existing_parent": true,
+    "children_are_new_top_level_tcd_rows": false,
+    "children_consume_next_numeric_tcd_id": false,
+    "naming_precedent": "TCD-016-C1/TCD-016-E1 atomization convention",
+    "register_contiguity_preserved": true
+  },
+  "authority_reconciliation": {
+    "completed_ubq02_authority_selected_by_branch_name": false,
+    "completed_ubq02_authority_basis": "pinned completed head plus qualified status plus green closeout CI plus internally consistent source/numerical evidence",
+    "stale_parallel_checkpoint": {
+      "branch": "work/animo-ubq02-subthreshold-upper-boundary-numerics",
+      "head": "26df0a89bc44e011db395f91b1afad58bfa7b623",
+      "classification": "STALE_CHECKPOINT_NON_AUTHORITY",
+      "effect": "NONE"
+    },
+    "last_writer_wins_used": false
+  },
+  "historical_and_scientific_tracks": {
+    "historical_fidelity_G6H_satisfied_by_this_intake": false,
+    "historical_uncertainty_G6U_satisfied_by_this_intake": false,
+    "scientific_G7_admission_performed": false,
+    "UBQ01_or_UBQ02_diagnostic_evidence_promoted_to_B2": false
+  },
+  "production_effect": "NONE"
+}
