@@ -80,6 +80,8 @@ Classify only as:
 - `NATIVE_REPEAT_DECLARED_VOLATILE_ONLY`;
 - `NATIVE_REPEAT_DIFFERENT_FAIL_CLOSED`.
 
+If a repeat cannot be performed, record `NOT_RUN_WITH_RATIONALE` in the first-reference packet and preserve the reason.
+
 Do not invent a tolerance for native repeat differences.
 
 ## Gate 4: corresponding B1 run
@@ -99,7 +101,7 @@ B1 remains `DIAGNOSTIC_NOT_REFERENCE` even if every compared value agrees with B
 
 ## Gate 5: raw and formatted-tree comparison
 
-Before any structured unrounded comparison:
+Before any structured comparison:
 
 1. compare file sets and path semantics;
 2. compare raw hashes where exact identity is meaningful;
@@ -158,11 +160,17 @@ Minimum comparison checkpoints, where relevant to the quantity, are:
 
 `TRIAL_STATE` is additional diagnostic evidence and must never be confused with accepted physical state.
 
+Representation observations and scientific records share the capture envelope but remain separate evidence classes.
+
 ## Gate 8: comparison-surface selection
 
-Do not invent source variable names simply to populate the schema.
+Use the predefined source-bound registry:
 
-Select comparison records only when their scientific meaning is established from source-bound inventories, PREP06 state/transfer-ledger work, process ownership evidence, documentation or explicit observer mapping.
+`integration/animo-numerics/FIRST_REFERENCE_CAPTURE_SURFACE.json`
+
+Do not select variables after inspecting B2 differences.
+
+The registry does not claim that every listed process is active in `RuurloGrass`. Establish activation separately and record evidence for any omitted required-if-active surface.
 
 For each selected quantity declare:
 
@@ -183,7 +191,32 @@ For `EXACT_ACCOUNTING_IDENTITY`, additionally declare:
 
 A matching numeric value does not excuse a different ledger member, sign or index mapping.
 
-## Gate 9: structured B2 versus B1 comparison
+## Gate 9: structured representation comparison
+
+Run:
+
+`tools/compare_b1_b2_representation.py <b2-capture.json> <b1-capture.json> --json <representation-comparison.json>`
+
+This layer compares only declared representation observations and applies no normalization or numerical tolerance.
+
+The four domains are:
+
+- `file_path_compatibility`;
+- `formatting`;
+- `binary_record_representation`;
+- `precision_representation`.
+
+Possible top-level results are:
+
+- `MATCH_EXACT_REPRESENTATION_OBSERVATIONS`;
+- `DIFFERENT_REPRESENTATION_FAIL_CLOSED`;
+- `SCHEMA_OR_PROVENANCE_FAILURE`.
+
+A representation difference is not automatically accepted as harmless. If a later disposition declares it representation-only, retain the exact rule and evidence that justify that classification.
+
+If structured representation observations do not exist, record `NOT_RUN_NO_STRUCTURED_REPRESENTATION_CAPTURE` in the packet. If observer structured captures do exist, the packet validator requires this comparison layer to be run.
+
+## Gate 10: structured scientific B2 versus B1 comparison
 
 Run:
 
@@ -194,33 +227,50 @@ The comparator is fail-closed and contains no numerical tolerance.
 Expected categories include:
 
 - exact match;
-- declared non-scientific representation-only difference;
-- formatted-report difference requiring classification;
 - unqualified numerical difference;
 - control-flow difference;
 - accounting-identity difference;
-- precision-representation difference;
+- precision-representation problem on a scientific record;
 - unit mismatch;
 - missing or unexpected record;
 - schema or provenance failure.
 
-A difference in captured `branch_id` or `fallback_id` fails even when the resulting value matches.
+A difference in captured `branch_id` or `fallback_id` fails even when the resulting scientific value matches.
 
-## Gate 10: first-comparison disposition
+Formatting and other representation observations are handled by Gate 9 rather than being silently accepted inside scientific comparison.
 
-Retain the comparison as evidence. Do not convert it directly into an admission decision.
+## Gate 11: first-comparison packet validation
 
-Possible immediate outcomes are:
+Populate:
 
-- exact or representation-only comparison evidence with a qualified B2 reference;
+`integration/animo-numerics/FIRST_REFERENCE_PACKET_TEMPLATE.json`
+
+Validate with:
+
+`tools/validate_first_reference_packet.py <packet.json> --json <packet-validation.json>`
+
+The packet schema version is:
+
+`1.1.0`.
+
+`PACKET_COMPLETE` means only that the required evidence chain is present. It may legitimately contain a fail-closed raw-tree, representation or scientific comparison.
+
+## Gate 12: first-comparison disposition
+
+Retain every comparison artifact as evidence. Do not convert any comparator result directly into an admission decision.
+
+Possible immediate outcomes include:
+
+- exact comparison evidence with a provenance-qualified B2 reference;
 - exact match to a B2 candidate whose provenance still remains unqualified;
+- representation differences requiring explicit classification;
 - one or more unqualified numerical differences requiring cause analysis;
 - control-flow divergence requiring historical and numerical interpretation;
 - insufficient unrounded capture;
 - failed observer non-interference;
 - provenance or testcase mismatch.
 
-No outcome from the comparator alone establishes B3.
+No outcome from these comparators alone establishes B3.
 
 ## Numerical-difference rule
 
@@ -261,16 +311,18 @@ The first comparison packet should contain at minimum:
 - PREP02R B2 receipt/provenance manifest;
 - frozen testcase/input manifest;
 - native ordinary run manifest;
-- native repeat result if performed;
+- native repeat result or explicit rationale if not performed;
 - B1 run manifest;
 - both raw output-tree manifests;
 - formatted-tree comparator result;
 - observer non-interference evidence if observer capture is used;
-- B2 structured capture;
-- B1 structured capture;
-- structured comparison result;
+- B2 structured capture when available;
+- B1 structured capture when available;
+- structured representation comparison result or explicit unavailable classification;
+- structured scientific comparison result or explicit no-unrounded-capture classification;
 - difference classification record;
-- explicit statement of whether B2 itself is candidate or qualified;
+- explicit statement of whether B2 itself is candidate or provenance-qualified;
+- explicit statement that representation differences were not automatically accepted;
 - explicit statement that numerical equivalence remains unqualified unless separately admitted.
 
 ## Current exit state
