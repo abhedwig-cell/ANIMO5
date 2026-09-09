@@ -109,6 +109,8 @@ The numerical policy itself remains species-independent because `A1`, `A2`, `B1`
 
 A live source-bound peer recheck in ANIMO-B3B02 identified a fact that is also material to E1: frozen revision-53 input validation accepts `Hetop = 0`. The input read at `input1.for:1826-1829` uses lower bound zero, and the legacy `Checkrea` semantics reject values below the bound rather than equality with it.
 
+This is independently supported by the pinned ANIMO 4.0 user's guide, SHA-256 `ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301`. Alterra Report 224 (2005), Table 6 on report page 42 defines `HETOP` as the thickness of the virtual reservoir from which fertilizer additions leach proportional to cumulative precipitation and gives the documented range `[0.0 ... 0.2] m`. Zero is therefore not merely an accidental parser edge inferred from source. The reviewed documentation does not supply a separately qualified zero-thickness transport rule that would resolve E1.
+
 NQ03 intentionally requires
 
 `Hetop > 0`.
@@ -135,7 +137,7 @@ This creates a precise scope mismatch:
 
 - B3I05 routes E1 as `Flpn=0 AND 0<Flux<1.0d-8`;
 - NQ03/NQ03R qualify only the positive-`Hetop` subset of that child trigger;
-- the frozen parser admits `Hetop=0`;
+- source validation and the pinned user guide both admit/document `Hetop=0`;
 - therefore the complete routed child trigger is not covered by the qualified policy.
 
 B3E01 does not silently add `Hetop>0` as a production guard. Such a guard would encode an unresolved policy for an accepted zero-thickness configuration. Either an authoritative model contract must exclude `Hetop=0`, or zero-thickness semantics must be qualified separately, or the canonical child scope must be explicitly refined through governance. Until then the full E1 child domain fails closed.
@@ -236,8 +238,9 @@ No organizational-independence claim is made for NQ03R.
 | independent numerical review | PASS |
 | natural E1 reachability | PASS |
 | natural loaded-event materiality | PASS for mineral N, limitation recorded |
+| documented `HETOP` input range | PASS, `[0.0 ... 0.2] m` confirms zero is in documented range |
 | implementation order frozen for production | FAIL_CLOSED |
-| complete routed child domain | FAIL_CLOSED, `Hetop=0` accepted but unqualified |
+| complete routed child domain | FAIL_CLOSED, `Hetop=0` accepted/documented but unqualified |
 | zero-thickness semantics | FAIL_CLOSED_UNRESOLVED |
 | normal B2 route | FAIL_CLOSED_UNAVAILABLE |
 | GOV02 historical-uncertainty route | FAIL_CLOSED_NOT_ELIGIBLE |
@@ -254,7 +257,7 @@ The complete TCD-042-E1 child is nevertheless not B3 admission-ready. The curren
 
 The blockers are independent of each other:
 
-1. the routed child trigger still contains parser-admissible `Hetop=0`, outside the NQ03 qualified domain;
+1. the routed child trigger still contains source-accepted and documentation-listed `Hetop=0`, outside the NQ03 qualified domain;
 2. historical B2 is unavailable and GOV02 acquisition closure is not complete, so neither admission route is open;
 3. the existing formal B3 disposition schema does not directly encode the B3I05 child atom key without losing atomicity;
 4. any future B3 disposition still needs its own independent second-line review;
