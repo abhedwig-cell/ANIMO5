@@ -1,0 +1,139 @@
+{
+  "work_unit": "ANIMO-GHG01",
+  "artifact": "GHG_TASK_STATE_PERSISTENCE_AUDIT",
+  "status": "SOURCE_CONFIRMED_BUILD_CONTRACT_DEPENDENT_HIDDEN_SCIENTIFIC_STATE_ACROSS_ACTIVE_GHG_TASK_CALLS",
+  "source_branch": "work/animo-ghg01-ghg-qualification",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_file_sha256": {
+    "Animo.for": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
+    "ghgasses.for": "4bf5906f571a586d4312d8e7b0d57f6df3b4b6c2073410335616f3d3c042da93",
+    "ghg_ch4.for": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98",
+    "ghg_n2o.for": "493bf88d4b321df64817a7c0eaa2725ad614a45df0a0f16cefa96ac348254175",
+    "ghgtransport.for": "d86e420952c43aaa6e730235f5820802310dd14a0019dc890537d9acd95fcff6",
+    "ghgtranssub.for": "48d5e45d0b68b87c1d32bc16a867fe36f2f440e0d2c0ca8c95bf605f9f24ea6c"
+  },
+  "umbrella_local_key": "GHG01-LCL-GHG-HIDDEN-TASK-STATE-PERSISTENCE",
+  "classification": "SOURCE_CONFIRMED_BUILD_CONTRACT_DEPENDENT_HIDDEN_SCIENTIFIC_STATE_ACROSS_ACTIVE_GHG_TASK_CALLS",
+  "relation_to_existing_tcd011": {
+    "tcd011_scope": "Outbal_write local storage build-contract dependency",
+    "ghg_finding_is_scientific_process_state": true,
+    "silently_absorbed_into_tcd011": false,
+    "governance_action": "B3 must decide whether to broaden TCD-011 or allocate distinct GHG discrepancy identity"
+  },
+  "subfindings": [
+    {
+      "key": "GHG01-LCL-GHGPONDING-HIDDEN-RESTORE-STATE",
+      "routine": "GHGponding",
+      "classification": "SOURCE_CONFIRMED_UNSAVED_CROSS_CALL_HYDROLOGICAL_RESTORE_STATE",
+      "task1_local_state": ["He0", "Mofr0", "Mofro0", "Mofrt0", "Mofrsa0"],
+      "later_use": "tasks 2 and 3 restore caller-visible ponding hydrology",
+      "explicit_save": false,
+      "all_hidden_state_scalars": true
+    },
+    {
+      "key": "GHG01-LCL-GHGASSES-HIDDEN-PHASE-STATE",
+      "routine": "GHGasses",
+      "classification": "SOURCE_CONFIRMED_UNSAVED_CROSS_CALL_GHG_PHASE_COUPLING_STATE",
+      "task1_local_state": ["Floux", "Mofrx", "Mofrsax", "Flaiib", "Flaiio", "Flaiou", "Flair", "FlaiAtmos"],
+      "later_use": "task 2 final N2O call after definitive nitrate transport",
+      "explicit_save": false,
+      "scalar_state": ["FlaiAtmos"]
+    },
+    {
+      "key": "GHG01-LCL-CH4-OXIDATION-HIDDEN-TASK-STATE",
+      "routine": "CH4oxid",
+      "classification": "SOURCE_CONFIRMED_UNSAVED_CROSS_CALL_HIDDEN_STATE_IN_ACTIVE_CH4_OXIDATION_ITERATION",
+      "task1_local_state": ["Nlox", "AmO2", "AvCoCH4Old", "OxDmndOmNit", "R0CH4oxAct"],
+      "later_use": "task 2 nonlinear oxidation iteration and task 3 final oxidation/oxygen-deficit adjustment",
+      "explicit_save": false,
+      "scalar_state": ["Nlox"]
+    },
+    {
+      "key": "GHG01-LCL-N2O-PROREDUC-HIDDEN-TASK-STATE",
+      "routine": "N2Oproreduc",
+      "classification": "SOURCE_CONFIRMED_UNSAVED_CROSS_CALL_HIDDEN_STATE_IN_ACTIVE_N2O_ITERATION_AND_CORRECTION",
+      "task1_local_state": ["AvCoN2Oold", "AvCoNO3", "FrDenAct_Pot", "RatFacN2O", "RekiNO3", "FlInit"],
+      "later_use": "task 2 iteration and task 3 nitrate/oxygen-state reset or final reduction",
+      "explicit_save": false
+    },
+    {
+      "key": "GHG01-LCL-NO3N2OREDUC-HIDDEN-CORRECTION-STATE",
+      "routine": "NO3N2OReduc",
+      "classification": "SOURCE_CONFIRMED_UNSAVED_CROSS_CALL_HIDDEN_STATE_IN_ACTIVE_N2O_ITERATION_AND_CORRECTION",
+      "local_state": ["FlExcd", "QPrN2OdenMax"],
+      "initialization_condition": "FlInit true",
+      "later_use": "subsequent calls with FlInit false during correction iteration",
+      "explicit_save": false
+    },
+    {
+      "key": "GHG01-LCL-GHGTRANSPORT-HIDDEN-TASK-STATE",
+      "routine": "GHGtransport",
+      "classification": "SOURCE_CONFIRMED_UNSAVED_CROSS_CALL_SCALAR_STATE_IN_SHARED_GHG_TRANSPORT",
+      "task1_local_state": ["Ln1", "FlTopUns", "Co1Old"],
+      "later_use": "task 2 shared CH4/N2O nonlinear transport iterations",
+      "explicit_save": false,
+      "scalar_state": ["Ln1", "FlTopUns", "Co1Old"],
+      "excluded_from_hidden_claim": ["DfcfAv", "HeAv"],
+      "exclusion_reason": "they are dummy arguments despite misleading source comment placement"
+    },
+    {
+      "key": "GHG01-LCL-GHGTRANSSUB-HIDDEN-CTE-STATE",
+      "routine": "GHGtranssub",
+      "classification": "SOURCE_CONFIRMED_UNSAVED_CROSS_CALL_HIDDEN_CTE_COEFFICIENT_STATE",
+      "task1_local_state_examples": ["P1", "P2", "Y1", "Y2", "Y3", "Hv", "Hv2", "Hvnil", "AlfBu01", "AlfBuAv1", "AlfBuAv2"],
+      "later_use": "task 2 while Reki/Reko change during nonlinear iterations",
+      "explicit_save": false
+    }
+  ],
+  "build_contract_reconciliation": {
+    "historical_intel_compiler": "Intel Visual Fortran Composer XE 12.1.0.233 Intel64 from Version.inc",
+    "historical_project_settings_recovered": false,
+    "prep01_default_storage_hypothesis": "Intel default /Qauto-scalar is first candidate; do not assume /Qsave",
+    "character_specific_tcd011_explanation_sufficient_for_ghg": false,
+    "reason": "active GHG hidden state includes scalar INTEGER, REAL and LOGICAL variables in addition to arrays",
+    "historical_runtime_effect": "REFERENCE_BLOCKED"
+  },
+  "storage_sensitivity_probe": {
+    "class": "B1_SYNTHETIC_STORAGE_SENSITIVITY_CAUSAL_CONFIRMATION_NOT_REFERENCE",
+    "compiler": "GNU Fortran 14.2.0",
+    "scope": "exact GHGponding task logic copied into minimal harness",
+    "probe_source_sha256": "26bcac0b2ddb621af9c82e83b43d944e58b2e8c04068a7026ad22d95bccd3f32",
+    "initial_state": {
+      "He": 0.02,
+      "Mofr": 0.5,
+      "Mofro": 0.4,
+      "Mofrsa": 0.7,
+      "Mofrt": 0.6
+    },
+    "automatic_run": {
+      "flags": "-O0 -fautomatic -finit-real=snan",
+      "task1_temporary_state": [0.01, 1.0, 0.8, 1.0, 1.2],
+      "task2_restored_state": ["NaN", "NaN", "NaN", "NaN", "NaN"]
+    },
+    "static_run": {
+      "flags": "-O0 -fno-automatic -finit-real=snan",
+      "task1_temporary_state": [0.01, 1.0, 0.8, 1.0, 1.2],
+      "task2_restored_state": [0.02, 0.5, 0.4, 0.7, 0.6]
+    },
+    "historical_reference_claim": false
+  },
+  "animo5_requirements": [
+    "ponding temporary-state save/restore is transaction-owned",
+    "GHG phase-1 to phase-2 hydrology and air-flow coupling is explicit state or deterministically recomputed",
+    "CH4 oxidation nonlinear state is explicit trial-solver state",
+    "N2O production/reduction and correction state is explicit trial-solver state",
+    "shared GHG transport branch and CTE coefficient state is explicit trial state or deterministically recomputed",
+    "restart and rollback distinguish persistent physical state from within-step solver scratch state"
+  ],
+  "required_closure": [
+    "include hidden-state inventory in historical Intel build-contract qualification",
+    "obtain revision-53-compatible activated GHG case",
+    "compare historically evidenced storage policy with explicit-state diagnostics without promoting diagnostics to B2",
+    "verify repeated deterministic CH4/N2O outputs and exact ponding-state restoration",
+    "reconstruct C/N conservation from explicit state and transfers",
+    "B3 governance decides canonical discrepancy allocation"
+  ],
+  "b3_admitted": false,
+  "production_migration_admitted": false,
+  "historical_revision53_behaviour_established": false
+}
