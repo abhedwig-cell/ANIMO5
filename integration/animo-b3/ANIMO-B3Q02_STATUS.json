@@ -3,13 +3,71 @@
   "title": "Canonical Child-Atom Disposition Carrier and Schema Adapter Qualification",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3q02-child-atom-disposition-carrier",
-  "status": "IN_PROGRESS_PERSISTED_CHILD_ATOM_SCHEMA_QUALIFICATION_PENDING",
+  "status": "QUALIFIED_ADDITIVE_CANONICAL_CHILD_ATOM_DISPOSITION_CARRIER_NO_ADMISSION",
   "base": {
     "work_unit": "ANIMO-B3E01",
     "head": "41e43c6a6888aac5b5b52041bcdd088c7afc68f1",
     "decision": "PARTIAL_TCD042_E1_CLASS_E_READINESS_POSITIVE_HETOP_POLICY_QUALIFIED_FULL_CHILD_DOMAIN_AND_ADMISSION_ROUTE_FAIL_CLOSED"
   },
   "goal": "Define an additive formal disposition carrier for canonical child atoms such as TCD-042-E1 without reserving a new top-level TCD, weakening B3Q01 atomicity, or admitting any correction.",
+  "qualified_contract": {
+    "carrier_schema": "integration/animo-b3/B3_CHILD_ATOM_DISPOSITION_CARRIER_SCHEMA.json",
+    "validator": "tools/b3q02/validate_b3q02.py",
+    "current_readiness_binding": "integration/animo-b3/TCD042_E1_CHILD_ATOM_CARRIER.json",
+    "lineage_parent_field": "parent_tcd_id",
+    "atomic_target_field": "atom_id",
+    "readiness_mode": "READINESS_ONLY",
+    "formal_mode": "FORMAL_DISPOSITION",
+    "legacy_b3q01_schema_modified": false,
+    "formal_embedded_tcd_ids_semantics": "LINEAGE_PARENT_IDS_ONLY_WITHIN_CHILD_CARRIER",
+    "formal_atomic_target_semantics": "CANONICAL_CHILD_ATOM:<atom_id>",
+    "parent_admission_implied": false,
+    "new_top_level_tcd_implied": false,
+    "production_migration_implied": false
+  },
+  "canonical_routing": {
+    "work_unit": "ANIMO-B3I05",
+    "parent": "TCD-042",
+    "children": [
+      "TCD-042-B1",
+      "TCD-042-E1"
+    ],
+    "child_keys_are_top_level_tcd_rows": false,
+    "tcd_043_reserved": false
+  },
+  "tcd042_e1_current_binding": {
+    "carrier_mode": "READINESS_ONLY",
+    "parent_tcd_id": "TCD-042",
+    "atom_id": "TCD-042-E1",
+    "qualification_class": "E",
+    "route_state": "NO_ADMISSION_ROUTE_CURRENTLY_AVAILABLE",
+    "atom_admitted": false,
+    "parent_admitted": false,
+    "residual_scientific_and_route_blockers_preserved": true
+  },
+  "validation": {
+    "tested_head": "aca5012492851bb88628a7ef8418133ffec82f95",
+    "github_actions_run_id": 34386832039,
+    "job_id": 102585107377,
+    "workflow_conclusion": "success",
+    "parse_carrier_artifacts": "PASS",
+    "compile_validator": "PASS",
+    "carrier_schema_fixtures_and_scope": "PASS",
+    "failure_history": [
+      {
+        "run_id": 34385715022,
+        "head": "8135c5d0e20fc0c37c2bbfc0156181acfb8bc510",
+        "cause": "validator incorrectly expected parent_tcd on each B3I05 child object rather than using the atomization envelope parent",
+        "classification": "VALIDATOR_DEFECT_FIXED_NO_GOVERNANCE_CONTRACT_CHANGE"
+      },
+      {
+        "run_id": 34386702653,
+        "head": "a8ffc36bb703bb04bb6fc888fa45df66097e8487",
+        "cause": "repository root absent from Python import path when importing the existing B3Q01 self-test helper",
+        "classification": "VALIDATOR_EXECUTION_ENVIRONMENT_DEFECT_FIXED_NO_GOVERNANCE_CONTRACT_CHANGE"
+      }
+    ]
+  },
   "scope_guards": {
     "existing_B3_DISPOSITION_SCHEMA_modified": false,
     "canonical_tcd_register_modified": false,
@@ -20,11 +78,24 @@
     "TCD042_E1_admitted": false,
     "TCD042_B1_modified": false
   },
+  "nonclaims": [
+    "B3Q02 does not open a B2 or historical-uncertainty admission route.",
+    "B3Q02 does not resolve the TCD-042-E1 Hetop=0 domain gap.",
+    "B3Q02 does not perform independent second-line review of a scientific B3 disposition.",
+    "B3Q02 does not freeze TCD-042-E1 production floating-point evaluation order.",
+    "B3Q02 does not admit TCD-042-E1, TCD-042-B1, parent TCD-042, or production migration."
+  ],
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
-  }
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
+  },
+  "decision": "QUALIFIED_ADDITIVE_CANONICAL_CHILD_ATOM_DISPOSITION_CARRIER_NO_ADMISSION",
+  "recommended_next": [
+    "Use this carrier for any future formal child disposition only after a genuine B3Q01/GOV02 admission route is open.",
+    "Keep current TCD-042-E1 binding in READINESS_ONLY mode while B3E01 blockers remain.",
+    "Do not reserve TCD-043 solely to serialize a child disposition."
+  ]
 }
