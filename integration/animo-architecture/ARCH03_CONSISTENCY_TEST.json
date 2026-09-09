@@ -1,0 +1,50 @@
+{
+  "work_unit": "ANIMO-ARCH03",
+  "test_id": "ARCH03-MASS-LEDGER-STRUCTURAL-CONSISTENCY",
+  "date": "2026-09-09",
+  "result": "PASS",
+  "method": "fail-closed checks equivalent to tools/audit_arch03_mass_ledger.py executed against the exact registry text read back from GitHub connector after persistence",
+  "audit_tool_persisted": true,
+  "audit_tool_executed_from_repository_checkout": false,
+  "equivalent_checks_executed_against_connector_fetched_registry_bytes": true,
+  "registry_blobs": {
+    "quantities": "4284f95a0b54bcb99e0be740395aa1d62e31ed3d",
+    "control_volumes": "4ae2d4674bf617e0c477cedfb84cfc60c3f1ec9f",
+    "observer_schema": "77a71e723b668be0525b62696da004ff4f5e222b",
+    "identity_map": "121ac65486c396fa1cb502f2d407e811fb516e4c"
+  },
+  "counts": {
+    "quantities": 7,
+    "control_volumes": 11,
+    "observer_schema_fields": 23,
+    "mapped_prep06_identities": 23
+  },
+  "checks": {
+    "quantity_ids_unique_and_exact": true,
+    "control_volume_ids_unique_and_exact": true,
+    "observer_schema_fields_unique_and_exact": true,
+    "prep06_identity_ids_unique_and_exact_for_arch03_scope": true,
+    "all_quantity_default_control_volumes_exist": true,
+    "all_closure_identities_use_canonical_residual_convention": true,
+    "physical_quantity_event_classes_exclude_reporting_observation": true,
+    "physical_quantity_event_classes_exclude_numerical_constraint_events": true,
+    "all_control_volume_quantity_scopes_exist": true,
+    "all_control_volumes_define_endpoint_derived_event_classification": true,
+    "all_identity_map_quantities_exist": true,
+    "all_identity_map_control_volumes_exist": true,
+    "all_identity_map_observer_channels_are_declared": true,
+    "closure_tolerance_is_optional_and_not_defined_by_arch03": true,
+    "begin_and_end_storage_are_owner_state_derived": true,
+    "closure_residual_formula_matches_contract": true
+  },
+  "not_tested": [
+    "runtime event emission",
+    "frozen-source behavioural closure",
+    "split-run or checkpoint behavioural equivalence",
+    "numerical tolerance policy",
+    "GHG whole-system elemental-C or N reconciliation",
+    "active macropore closure"
+  ],
+  "reference_evidence": false,
+  "production_evidence": false
+}
