@@ -15,12 +15,26 @@
     "historical_workunit_label": "ANIMO-PREP10",
     "requalification_claimed": false
   },
-  "decision": "IN_PROGRESS_EVIDENCE_REHOME_NO_REQUALIFICATION",
+  "decision": "QUALIFIED_PROVENANCE_PRESERVING_EVIDENCE_REHOME_NO_SCIENTIFIC_REQUALIFICATION",
   "implemented": true,
   "persisted": true,
-  "tested": false,
-  "qualified": false,
+  "tested": true,
+  "qualified": true,
   "blocked": false,
+  "qualification_scope": "repository and provenance qualification only: exact source blob reuse at packet-scoped target paths, source branch/head/tree binding, and exclusion readback; no legacy runtime, scientific, numerical, B2, B3 or production qualification is claimed",
+  "rehome_commit": "6e3bfaf5d6c74a8ef7cfab22a3f4edfa694eb754",
+  "rehome_tree": "3470b4214bed4c125e46d85a0413bb6a9fa46c5f",
+  "rehome_manifest": "integration/animo-prep/PREP12_REHOME_MANIFEST.json",
+  "exact_blob_files": 8,
+  "readback": {
+    "selected_target_paths_present": true,
+    "selected_target_blob_identities_match_source": true,
+    "source_prep10_status_imported": false,
+    "source_prep10_contract_imported": false,
+    "source_local_discrepancy_reservations_imported": false,
+    "source_divergent_discrepancy_register_imported": false,
+    "rg02_canonical_discrepancy_register_retained": true
+  },
   "local_finding_identities": [
     {
       "source_local_label": "TCD-032",
@@ -44,6 +58,7 @@
     "testcase_modified": false,
     "physics_changed": false,
     "numerical_policy_changed": false,
+    "scientific_baseline_changed": false,
     "corrected_legacy_admitted": false,
     "B3_admitted": false,
     "B4_admitted": false,
@@ -52,5 +67,5 @@
     "source_discrepancy_reservations_import_allowed": false,
     "source_discrepancy_register_import_allowed": false
   },
-  "next": "transplant selected restart evidence with exact blob provenance and verify exclusions"
+  "next": "consume this rehome by exact branch/head reference from RG02 G2 closure; scientific findings retain source evidence strength until separately admitted by B3 governance"
 }
