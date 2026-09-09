@@ -53,6 +53,8 @@ This G5 selection is local to stream attachment. It is **not** a global NQ02 bra
 
 TCD-019 also remains separate from TCD-024. G5 does not compose the two discrepancies into one correction.
 
+MP02 adds one numerical/build handoff without changing NQ ownership. On the active GNU diagnostic route, `MAPOTRANSPORT` can evaluate `Abs(BaDev/BaMx)` in a balance-warning guard when `BaMx=0`, raising `IEEE_INVALID_FLAG`. MP02 explicitly classifies this as GNU diagnostic behaviour whose historical Intel effect is unproven. G5 therefore routes it to numerical/build governance and forbids projecting it onto historical behaviour or treating it as a production correction candidate without separate qualification.
+
 ## 5. Temporal evidence and TIME01
 
 `TS01` is attached at `ed12a678cfba19ce851eb2f380e6da3f49203fe4` as `QUALIFIED_SOURCE_BOUND_TEMPORAL_SEMANTICS_PREPARATORY_EVIDENCE`.
@@ -93,7 +95,7 @@ G5 therefore cannot recast TCD-016 as a ledger-only fix or use conservation impr
 
 ### MP01
 
-`MP01` at `7b5979dd6301b9d55d23e8c22948a0dba24b229b` resolves the earlier RG02 question of whether substantive independent macropore work exists. It is attached with its own decision: source/theory and synthetic diagnostic activated-path evidence qualified, historical reference open.
+`MP01` at `7b5979dd6301b9d55d23e8c22948a0dba24b229b` resolves the earlier RG02 question of whether substantive independent macropore work exists. It is attached with its own decision: source/theory and specialized-kernel synthetic diagnostic activated-path evidence qualified, historical reference open.
 
 The important non-admissions remain:
 
@@ -102,6 +104,23 @@ The important non-admissions remain:
 - incomplete persistent macropore restart serialization;
 - TCD-025 main/public ledger control-volume gap uncorrected;
 - no B3 or production admission.
+
+### MP02
+
+`MP02` at `6b0f2e7470f13baeb6612b0bddb662a497dea528` is a qualified child workunit of MP01 and advances the evidence boundary from isolated specialized-kernel B1 to complete ANIMO orchestration B1 for active macropore paths.
+
+Its six complete B0-derived diagnostic runs all reached successful completion. Active complete-case paths exercised DOC, DON, NH4, NO3, DOP and PO4 over the configured simulation. This remains `B1_COMPLETE_CASE_SYNTHETIC_DIAGNOSTIC_ONLY` and does not become historical B2.
+
+MP02 strengthens TCD-025 to complete-case symptom evidence: specialized macropore balances remain internally closed while the main/public control volume does not fully represent macropore storage and direct-drain consequences. The resulting classification remains explicitly historical-magnitude-open and no correction is admitted.
+
+MP02 also confirms the persistent restart omission in a complete active run: normal `initial.out` output lacks the macropore solute restart blocks. Therefore a continuous-versus-split active macropore equivalence test is not meaningful until a complete persistent restart state is specified.
+
+Two handoffs must remain outside MP02 correction scope:
+
+1. the GNU `MAPOTRANSPORT` balance-warning invalid-operation seam belongs to numerical/build governance and has no proven historical Intel effect;
+2. the MP01 `CoMpNi` versus `CoMpNh` initial nitrate validation seam belongs to canonical discrepancy governance. G5 allocates no TCD number for it and does not modify the canonical discrepancy register.
+
+The machine-readable attachment is `integration/animo-reg/g5/ANIMO_RG02_G5_MP02_ATTACHMENT.json`.
 
 ### GHG01
 
