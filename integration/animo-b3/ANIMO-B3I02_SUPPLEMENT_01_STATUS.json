@@ -8,7 +8,7 @@
     "head": "4da9ec0af5ccb902e456c861a548afa00bd43c2a",
     "status": "QUALIFIED_INCREMENTAL_CANONICAL_DISCREPANCY_INTAKE_NO_ADMISSIONS"
   },
-  "status": "IN_PROGRESS_APPEND_ROW_FROZEN_COLLISION_SCAN_PASS_REGISTER_NOT_YET_MODIFIED",
+  "status": "IN_PROGRESS_REGISTER_APPENDED_EXACT_BYTE_TRANSFORM_PENDING_CLOSEOUT",
   "implemented": true,
   "persisted": true,
   "tested": false,
@@ -29,16 +29,21 @@
     "branch_name_collision_for_tcd042": false,
     "other_pull_request_collision_for_tcd042": false,
     "current_b3i02_pr_23_reservation_is_expected": true,
-    "fresh_recheck_required_immediately_before_append": true
+    "fresh_recheck_performed_immediately_before_append": true
   },
   "prepared_row": "integration/animo-b3/B3I02_REGISTER_APPEND_SUPPLEMENT_01_ROWS.csv",
-  "planned_append": {
+  "append_execution": {
     "canonical_register": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
-    "expected_tail_after": "TCD-042",
-    "expected_compare_additions": 1,
-    "expected_compare_deletions": 0,
-    "existing_rows_changed_allowed": false,
-    "register_append_increases_evidence_strength": false
+    "append_commit": "73b7431e32116e99924a38b3d94a5f17c901f0b6",
+    "register_blob_after": "2039cadc8e0e6d463ca1a82e8453afb11b7b4f8e",
+    "tail_after": "TCD-042",
+    "semantic_rows_added": 1,
+    "existing_content_bytes_preserved_as_prefix": true,
+    "terminal_newline_normalized": true,
+    "git_compare_additions": 2,
+    "git_compare_deletions": 1,
+    "git_numstat_reason": "The B3I02 base register ends at TCD-041 without a final newline. Appending a valid CSV row therefore appears to Git as replacement of the unterminated tail plus two added terminated lines. The validator requires the current register bytes to equal the exact base bytes plus one delimiter LF plus the frozen TCD-042 row plus final LF.",
+    "exact_byte_transform_validation": "PENDING_CI"
   },
   "admission_boundary": {
     "scientific_admission": false,
@@ -47,5 +52,5 @@
     "production_migration_admitted": false,
     "correction_semantics_selected": false
   },
-  "next_step": "perform fresh collision scan then append exactly the frozen TCD-042 row and validate one addition zero deletions"
+  "next_step": "run fail-closed exact-byte validator then persist append reconciliation and final no-admission closeout"
 }
