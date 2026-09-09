@@ -1,0 +1,70 @@
+{
+  "work_unit": "ANIMO-GHG01",
+  "artifact": "GHG_N2O_EQUATION_ALGEBRA_RECONCILIATION",
+  "status": "A10_EXACTLY_RECONCILED_A11_AERATION_FACTOR_CONFLICT_SHARPENED",
+  "source_branch": "work/animo-ghg01-ghg-qualification",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_file_sha256": {
+    "ghg_n2o.for": "493bf88d4b321df64817a7c0eaa2725ad614a45df0a0f16cefa96ac348254175",
+    "Aeration_original.for": "cc02a097df98cfe36abd64403522fc6cf2b14addcc36cee2d4749916a21bd169"
+  },
+  "independent_authority": {
+    "citation": "Stolk, Hendriks, Jacobs, Moors & Kabat (2011), Biogeosciences 8, 2649-2663",
+    "doi": "10.5194/bg-8-2649-2011",
+    "equations": ["A8", "A9", "A10", "A11", "A12", "A13", "A14", "A17"]
+  },
+  "mapping": {
+    "N": "cw_NO3 / AvCoNO3",
+    "Z": "cw_N2O / AvCoN2O",
+    "P": "fpH * fT_den * fae * Eaf",
+    "G": "fpH * fT_den * Eaf",
+    "C": "Cfracom",
+    "R": "anaerobic organic-matter respiration / Respoman",
+    "RatFacN2O": "P/4",
+    "StoichNO3": "(14/12)*C",
+    "StoichN2O": "(14/3)*C",
+    "Rpr_el_an": "(C/3)*R"
+  },
+  "a10_reconciliation": {
+    "publication_reduced": "[N/(N+(P/4)*Z)]*(14/12)*C*R",
+    "revision53_reduced": "[N/(N+(P/4)*Z)]*(14/12)*C*R",
+    "layer_thickness_handling": "He is an expected volumetric-to-areal conversion and cancels from conceptual equation comparison",
+    "result": "N2O_DENITRIFICATION_PRODUCTION_A10_EXACT_ALGEBRAIC_MATCH_FOR_OM_LIMITED_BRANCH",
+    "provenance": "INDEPENDENT_THEORY"
+  },
+  "a11_reconciliation": {
+    "publication_reduced": "[14*G*Z/(4*N+P*Z)]*(C/3)*R",
+    "revision53_reduced": "[14*fae*G*Z/(4*N+P*Z)]*(C/3)*R",
+    "isolated_difference": "revision53 reduction numerator contains one additional multiplicative fae factor relative to the printed Appendix A11 equation",
+    "local_instantaneous_relation": "REV53_REDUCTION_RATE = fae * APPENDIX_A11_REDUCTION_RATE under otherwise identical mapped variables",
+    "whole_timestep_factor_claim": false,
+    "result": "DOCUMENT_SOURCE_A11_EXTRA_AERATION_FACTOR_IN_REV53_REDUCTION_NUMERATOR",
+    "provenance": "UNRESOLVED",
+    "local_key": "GHG01-LCL-N2O-REDUCTION-AERATION-FACTOR-DOC-SOURCE"
+  },
+  "nitrification_temperature_reconciliation": {
+    "publication": "Appendix A17 prints positive Q10 exponent",
+    "revision53": "2**(-(Te-Terf)/10)",
+    "cited_empirical_direction": "Maag & Vinther (1996) reports the N2O-N percentage from nitrification decreased as temperature increased",
+    "result": "PUBLICATION_EQUATION_SIGN_SUSPECT_SOURCE_DIRECTION_SUPPORTED_BY_CITED_EMPIRICAL_STUDY",
+    "provenance": "UNRESOLVED",
+    "local_key": "GHG01-LCL-N2O-NITRIFICATION-TEMPERATURE-SIGN-DOC-SOURCE"
+  },
+  "nitrate_limited_branch": {
+    "result": "CONCEPTUAL_TWO_LIMIT_STRUCTURE_SUPPORTED_EXACT_ITERATIVE_CROSSWALK_NOT_COMPLETED",
+    "contradiction_claimed": false
+  },
+  "authority_boundary": {
+    "code_defect_admitted_for_a11": false,
+    "publication_typo_admitted_for_a17": false,
+    "historical_revision53_behaviour_established": false,
+    "production_patch_specified": false,
+    "canonical_tcd_allocated": false
+  },
+  "required_closure": [
+    "recover detailed Hendriks ANIMO GHG derivation or authoritative Report 2054 bytes",
+    "recover source/change history spanning published formulation and frozen source",
+    "independently review exact A11 variable definitions and units",
+    "exercise only after a revision-53-compatible activated GHG case is available"
+  ]
+}
