@@ -1,0 +1,88 @@
+--- MAPOHYDRO.FOR
++++ MAPOHYDRO_SAFE_DIAGNOSTIC.FOR
+@@ -75,10 +75,13 @@
+       Do 100 Dn = 1, 2
+          LnBoMp(Dn) = Nl
+          If (Dn.Eq.2 .And. LnBoMp(1).Gt.0) LnBoMp(2) = LnBoMp(1)
+-         Do 97 While (FrHeWeMpWl(Dn,LnBoMp(Dn)).Lt.1.d-7 .And.          &
+-     &                LnBoMp(Dn).Ge.1) 
+-            LnBoMp(Dn) = LnBoMp(Dn) - 1
+   97     Continue
++         If (LnBoMp(Dn).Ge.1) Then
++            If (FrHeWeMpWl(Dn,LnBoMp(Dn)).Lt.1.d-7) Then
++               LnBoMp(Dn) = LnBoMp(Dn) - 1
++               Goto 97
++            Endif
++         Endif
+ !
+          If (LnBoMp(Dn).Gt.0) Then 
+             If (Dn.Eq.1) Then
+@@ -89,9 +92,13 @@
+ !
+             Elseif (Dn.Eq.2) Then
+                Ln = LnBoMp(2) - 1
+-               Do 99 While (FrHeWeMpWl(2,Ln).Gt.1.d-7 .And. Ln.Ge.1) 
+-                  Ln = Ln - 1
+   99           Continue
++               If (Ln.Ge.1) Then
++                  If (FrHeWeMpWl(2,Ln).Gt.1.d-7) Then
++                     Ln = Ln - 1
++                     Goto 99
++                  Endif
++               Endif
+                LnTpMpSr(2)= Ln + 1
+             Endif
+          Else
+@@ -246,13 +253,21 @@
+       KBegMpReko = K  ! first sequence number with MP domain outgoing fluxes
+ !
+       K  = Nl
+-      Ln = Sqnu(K)
+-      Do 170 While (FlMpOuSoTo(1,Ln).Lt.1.d-7 .And. FlMpInEf(1,Ln).Lt.  &
+-     &              1.d-7 .And. FlMpOuSoTo(2,Ln).Lt.1.d-7 .And.         &
+-     &              FlMpInEf(2,Ln).Lt.1.d-7 .And. K.Ge.KBegMpReko)
+-         K  = K - 1
+-         Ln = Sqnu(K)
+  170  Continue
++      If (K.Ge.KBegMpReko) Then
++         Ln = Sqnu(K)
++         If (FlMpOuSoTo(1,Ln).Lt.1.d-7 .And.                            &
++     &       FlMpOuSoTo(2,Ln).Lt.1.d-7) Then
++            If (Ln.Eq.0) Then
++               K = K - 1
++               Goto 170
++            Elseif (FlMpInEf(1,Ln).Lt.1.d-7 .And.                      &
++     &              FlMpInEf(2,Ln).Lt.1.d-7) Then
++               K = K - 1
++               Goto 170
++            Endif
++         Endif
++      Endif
+       KEndMpReko = K  ! last sequence number with MP domain fluxes
+ 
+       Do 180 Ln = 1-Flpn, Nl
+@@ -261,10 +276,13 @@
+ !
+       Do 190 K = KBegMpReko, KEndMpReko
+          Ln = Sqnu(K)
+-         If (Ln.Ne.0 .And. FlMpInEf(1,Ln)+FlMpInEf(2,Ln).Gt.1.d-6)      &
++         If (Ln.Ne.0) Then
++            If (FlMpInEf(1,Ln)+FlMpInEf(2,Ln).Gt.1.d-6)                 &
+      &                                               CoStat(Ln)= .False.
+-         If (Ln.Eq.0 .And. FlMpInRuRv(1)+FlMpInRuRv(2).Gt.1.d-6)        &
++         Else
++            If (FlMpInRuRv(1)+FlMpInRuRv(2).Gt.1.d-6)                  &
+      &                                               CoStat(Ln)= .False.
++         Endif
+  190  Continue
+ !
+ !--- Adjusting of terms of the water balance per soil compartment for checking 
+@@ -313,6 +331,8 @@
+  4000 Continue
+ !
+ !--- Reset tempory fluxes FLid: correct for FlMpOuSoTo 
++! Diagnostic BUILDQ02 variant: reconstruct derivable task context explicitly.
++      LnBoMpMx = Max(LnBoMp(1),LnBoMp(2))
+       Do 300 Ln= 1, LnBoMpMx
+          Flid(Ln)= Flid(Ln) - FlMpOuSoTo(1,Ln) - FlMpOuSoTo(2,Ln)
+  300  Continue
