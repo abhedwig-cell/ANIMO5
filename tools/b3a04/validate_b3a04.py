@@ -125,8 +125,14 @@ def main() -> None:
             "chronological probe plan/result state drift")
     require(plan["fail_closed"] is True, "chronological plan must remain fail closed")
 
-    require(replay["chronological_split_run_claimed"] is False, "non-chronological replay scope drift")
-    require(replay["historical_reference_claimed"] is False, "replay must not become historical reference")
+    require(replay["scope_boundary"]["chronological_restart_continuation"] is False,
+            "non-chronological replay must not become chronological continuation")
+    require(replay["scope_boundary"]["split_run_identity"] is False,
+            "non-chronological replay must not become split-run identity")
+    require(replay["scope_boundary"]["historical_B2_reference"] is False,
+            "replay must not become historical B2 reference")
+    require(replay["scope_boundary"]["admission"] is False,
+            "replay must not become admission")
 
     stateq = readiness["authorities"]["STATEQ02"]
     require(stateq["tcd026_ledger_oracle"] is False, "STATEQ02 must not become TCD-026 ledger oracle")
