@@ -1,0 +1,44 @@
+{
+  "work_unit": "ANIMO-IO01",
+  "title": "Legacy Text Input Contract Audit, TTUTIL Suitability & Adapter Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-io01-legacy-text-input-contracts",
+  "starting_head": "12ae76b23728d75fc6ca746ca1c67aa26e0ec005",
+  "date": "2026-09-09",
+  "state": "IN_PROGRESS_AUTHORITY_AND_B0_IDENTITY_PINNED",
+  "implemented": false,
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "authority_basis": {
+    "RG02_G5_head_at_start": "12ae76b23728d75fc6ca746ca1c67aa26e0ec005",
+    "PREP01_05": "9df84bd0ab9bc4ef8e214f01da616aa257a24b13",
+    "TQ01": "5c43ee16df37a0a1357614fdec527f25e5ca8c16",
+    "ARCH05": "99b6098a19db405ce34928af89bb78b856dce7cd",
+    "ARCH06": "ce3ea8089902dbc4bcbe3ff0224d30c2f8daf3a4",
+    "ARCH07": "7e6f7bcb492cd36bf7a852235e93b796a6d2a8f6"
+  },
+  "b0_identity": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "local_source_hash_verified": true,
+    "local_testbank_hash_verified": true,
+    "frozen_bytes_modified": false
+  },
+  "duplicate_workunit_check": {
+    "io01_branch_found_before_start": false,
+    "ttutil_branch_found_before_start": false,
+    "ttutil_commit_found_before_start": false
+  },
+  "scope": "audit revision-53 legacy input contracts, separate parser/normalization/scientific semantics, classify TTUTIL suitability, define normalized parser-equivalence evidence and select bounded pilots; no broad production replacement",
+  "non_admissions": {
+    "legacy_scientific_semantics_changed": false,
+    "frozen_source_modified": false,
+    "frozen_testcase_modified": false,
+    "binary_hydrology_converted_to_ttutil": false,
+    "GHGMais_silently_normalized": false,
+    "production_migration_admitted": false,
+    "B4_admitted": false
+  }
+}
