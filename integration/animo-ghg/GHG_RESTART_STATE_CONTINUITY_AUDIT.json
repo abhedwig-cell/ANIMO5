@@ -84,6 +84,18 @@
     "serialize_both_Cs_and_Co_required": false,
     "required_sufficiency": "canonical GHG owner state plus exact accepted thermodynamic/hydrology coordinates or an equivalent deterministic reconstruction contract"
   },
+  "prep12_reconciliation": {
+    "branch": "work/animo-prep12-restart-state-continuity-rehome",
+    "head_observed": "3d86de057247adcfeefb82c11d7cf7d5b2cbdf73",
+    "contract_status": "QUALIFIED_PROVENANCE_PRESERVING_RESTART_CONTINUITY_EVIDENCE_REHOME",
+    "preserved_baseline": "docs/prep12/source/RESTART_STATE_CONTINUITY_BASELINE.md",
+    "preserved_inventory": "docs/prep12/source/RESTART_STATE_INVENTORY.csv",
+    "prior_ghg_classification": "STRUCTURAL_SYMMETRY_GHG_REFERENCE_BLOCKED",
+    "prior_split_run_qualification": false,
+    "ghg01_consequence": "label-level read/write symmetry is insufficient because accepted dissolved state, serialized total system state, and restart reconstruction use different representations",
+    "prep12_modified_by_ghg01": false,
+    "recommended_future_reconciliation": "consume GHG01 restart local keys without creating competing identifiers"
+  },
   "required_split_run_qualification": [
     "revision-53-compatible activated GHG case",
     "accepted checkpoint with at least one unsaturated GHG-active layer and Te not equal to Terf",
