@@ -1,0 +1,119 @@
+{
+  "work_unit": "ANIMO-PREP10",
+  "subscope": "parallel causal evidence reconciliation",
+  "status": "CORROBORATING_EVIDENCE_RECONCILED_NO_BRANCH_MERGE",
+  "authoritative_prep10_branch": "work/animo-prep10-stable-dom-plough-accumulators",
+  "authoritative_branch_head_at_reconciliation": "b16102dbf3ca8d9c3b40227722639d0f55c3929e",
+  "superseded_parallel_branch": "work/animo-prep10-stable-dom-causal-activation",
+  "superseded_parallel_head": "0a174fcee84865f027abab3dde491470c7a04afa",
+  "closed_draft_pr": 7,
+  "closed_draft_pr_merged": false,
+  "closure_reason": "superseded by broader concurrent progress on the authoritative PREP10 target branch; duplicate status/workflow artifacts were intentionally not merged",
+  "parallel_workflow_verification": {
+    "run_id": 34304494823,
+    "head": "0a174fcee84865f027abab3dde491470c7a04afa",
+    "conclusion": "success"
+  },
+  "pinned_parallel_artifacts": [
+    {
+      "path": "integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION.json",
+      "blob_sha": "61d02a90cad93848d0683c931e439fa4c34b06c5",
+      "decision": "QUALIFIED_CURRENT_GNU_CAUSAL_ACTIVATION_FOR_STABLE_DOM_AND_DON_PLOUGH_ACCUMULATOR_RESET_DEFECT"
+    },
+    {
+      "path": "integration/animo-prep/PREP10_STABLE_DOP_CAUSAL_ACTIVATION.json",
+      "blob_sha": "4b8dc6334f0d953486a04144a97adc4c7c8fd4cb",
+      "decision": "QUALIFIED_CURRENT_GNU_CAUSAL_ACTIVATION_FOR_STABLE_DOP_PLOUGH_ACCUMULATOR_RESET_DEFECT"
+    }
+  ],
+  "common_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "addit_for_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+    "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "observer_executable_sha256": "d179aba23e0a0ef90b118437c2817a0c3a0ec6f227be555598ba393c31d7a501",
+    "event_reset_counterfactual_executable_sha256": "f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db"
+  },
+  "authoritative_matrix_summary": {
+    "artifact": "integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json",
+    "activation_style": "combined selected C/N/P activation in two B0-derived descendants",
+    "cranmais": {
+      "phosphorus_cycle": false,
+      "observed_events": 9,
+      "carbon_carryover": true,
+      "nitrogen_carryover": true,
+      "baseline_vs_reset_scientific_or_structural_difference_files": 12
+    },
+    "zuiderzeeland": {
+      "phosphorus_cycle": true,
+      "observed_events": 3,
+      "carbon_carryover": true,
+      "nitrogen_carryover": true,
+      "phosphorus_carryover": true,
+      "baseline_vs_reset_scientific_or_structural_difference_files": 8
+    }
+  },
+  "unique_parallel_corroboration": {
+    "isolated_dom_axis": {
+      "case": "CranMais",
+      "only_vector_changed": "CoStdiorma",
+      "indices": [1, 2],
+      "activation_value": 0.01,
+      "scientifically_different_files_baseline_vs_reset": 16,
+      "final_restart_baseline_to_reset_ratio": 4.500840046733142
+    },
+    "isolated_don_axis": {
+      "case": "CranMais",
+      "only_vector_changed": "CoStdiorni",
+      "indices": [1, 2],
+      "activation_value": 0.001,
+      "scientifically_different_files_baseline_vs_reset": 16,
+      "final_restart_baseline_to_reset_ratio": 4.501100139547595
+    },
+    "phosphorus_disabled_negative_control": {
+      "case": "CranMais",
+      "only_vector_changed": "CoStdiorpo",
+      "indices": [1, 2],
+      "activation_value": 0.0001,
+      "phosphorus_cycle": false,
+      "scientifically_different_files_baseline_vs_reset": 0,
+      "interpretation": "the P-disabled configuration correctly fails to activate a DOP causal effect despite the diagnostic input edit"
+    },
+    "isolated_dop_axis": {
+      "case": "LWKM_gras_1040.2021.2045",
+      "phosphorus_cycle": true,
+      "only_vector_changed": "CoStdiorpo",
+      "indices": [1, 2],
+      "activation_value": 0.0001,
+      "observed_plough_events": 4,
+      "first_event_after_SuStdiorpo": 3.0585643629036948e-12,
+      "second_event_before_SuStdiorpo": 3.0585643629036948e-12,
+      "inter_event_carryover_observed": true,
+      "scientifically_different_files_baseline_vs_reset": 11,
+      "final_restart_baseline_minus_reset": 5.491421367604038e-13,
+      "final_restart_baseline_to_reset_ratio": 1.000031941915621
+    }
+  },
+  "reconciliation": {
+    "source_defect_claim_consistent": true,
+    "gnu_inter_event_carryover_claim_consistent": true,
+    "carbon_causality_corroborated_by_species_isolation": true,
+    "nitrogen_causality_corroborated_by_species_isolation": true,
+    "phosphorus_causality_corroborated_by_independent_phosphorus_enabled_case": true,
+    "phosphorus_disabled_negative_control_behaves_as_expected": true,
+    "activation_magnitude_independence_partially_supported": true,
+    "reason_for_partial_only": "the experiments use several deliberately chosen diagnostic amplitudes and cases, not a systematic scientific response-envelope study",
+    "branch_merge_required": false,
+    "authoritative_status_overwritten": false
+  },
+  "evidence_semantics": {
+    "classification": "SUPPLEMENTAL_B1_CAUSAL_CORROBORATION",
+    "counts_as_b2_historical_reference": false,
+    "counts_as_independent_second_line_review": false,
+    "counts_as_scientific_realism_evidence": false,
+    "counts_as_corrected_legacy_admission": false,
+    "counts_as_production_migration_admission": false,
+    "reason_not_independent_review": "the parallel branch was produced within the same PREP10 authoring activity; orthogonal experimental design is useful corroboration but not organizationally independent review"
+  },
+  "recommended_b3_use": "cite the isolated species axes and the phosphorus-disabled negative control as supplemental B1 causal cross-checks while preserving the authoritative PREP10 closeout and requiring separate independent B3 review"
+}

@@ -1,0 +1,120 @@
+{
+  "work_unit": "ANIMO-PREP10",
+  "subscope": "stable-DOM plough accumulator reset disposition handoff",
+  "status": "READY_FOR_B3_INTAKE_NOT_ADMITTED",
+  "local_intake_key": "PREP10-SDOM-PLOUGH-ACCUMULATOR-RESET",
+  "canonical_tcd_id": null,
+  "canonical_tcd_assignment": "PENDING_CENTRAL_REGISTRY",
+  "why_no_tcd_id_assigned_here": "the qualified B3Q01 canonical input register remains frozen through TCD-027 and PREP10 is later parallel evidence; central registry allocation must avoid collisions",
+  "current_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "admitted": false,
+  "provisional_b3_class": "B",
+  "class_confirmation_required": true,
+  "class_rationale": "the candidate is an atomic local event-accumulator initialization/reset correction that changes downstream state/output trajectories when activated, without adding physical state or changing numerical solver/tolerance policy",
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "addit_for_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d"
+  },
+  "atomic_causal_claim": {
+    "routine": "Addit.for",
+    "trigger": "Pl(I) > 0",
+    "accumulators": ["SuStdiorma", "SuStdiorni", "SuStdiorpo"],
+    "source_use_before_definition_confirmed": true,
+    "explicit_event_reset_present_in_b0": false,
+    "current_gnu_carryover_confirmed": true,
+    "candidate_mechanism": "set the three event-local accumulators to the additive identity zero at the beginning of each plough event; preserve existing conditional P semantics",
+    "candidate_scope_excludes": [
+      "all unrelated Addit.for changes",
+      "numerical-policy changes",
+      "new physical state",
+      "ledger cleanup unrelated to the stable-DOM plough redistribution path"
+    ]
+  },
+  "b1_evidence": {
+    "source_audit": "integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json",
+    "frozen_observer_matrix": "integration/animo-prep/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json",
+    "controlled_activation_matrix": "integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json",
+    "parallel_causal_reconciliation": "integration/animo-prep/PREP10_PARALLEL_CAUSAL_EVIDENCE_RECONCILIATION.json",
+    "frozen_plough_active_cases": 4,
+    "frozen_observed_plough_events": 31,
+    "frozen_cases_discriminated_reset": false,
+    "controlled_descendants_discriminated_reset": true,
+    "cranmais_scientific_or_structural_difference_files": 12,
+    "zuiderzeeland_phosphorus_enabled_scientific_or_structural_difference_files": 8,
+    "carbon_carryover_confirmed": true,
+    "nitrogen_carryover_confirmed": true,
+    "conditional_phosphorus_carryover_confirmed": true,
+    "observer_nonintrusive_for_compared_generated_outputs": true,
+    "isolated_species_parallel_corroboration_available": true,
+    "phosphorus_disabled_negative_control_available": true,
+    "parallel_corroboration_counts_as_independent_second_line_review": false,
+    "synthetic_or_controlled_descendants_are_b2": false
+  },
+  "b2": {
+    "preferred_route": "NORMAL_B2_AVAILABLE",
+    "current_status": "NOT_ESTABLISHED",
+    "historical_uncertainty_route_invoked": false,
+    "historical_uncertainty_route_precondition": "documented reasonable B2 acquisition effort must be formally exhausted before fallback is considered"
+  },
+  "expected_difference_contract": {
+    "may_change": [
+      "stable dissolved-organic C/N/P plough redistribution values",
+      "downstream state fed by the changed redistribution",
+      "dependent balance/report outputs",
+      "later fluxes only when causally downstream of changed state"
+    ],
+    "must_remain_unchanged_except_demonstrable_downstream_floating_point_propagation": [
+      "management event timing and selection",
+      "processes outside the plough/stable-DOM dependency surface",
+      "B0 source and testcase identity",
+      "numerical solver and tolerance policy",
+      "unrelated ledger definitions"
+    ],
+    "unrounded_comparison_required_when_report_precision_can_hide_effect": true,
+    "global_arbitrary_tolerance_allowed": false
+  },
+  "local_identity_requirement": {
+    "event_starts_from_additive_identity_zero": true,
+    "post_loop_accumulator_contains_current_event_contribution_only": true,
+    "prior_event_contribution_must_not_enter_current_event_redistribution": true,
+    "species_paths_checked_separately": ["C", "N", "conditional P"],
+    "whole_case_element_conservation_check_required": true
+  },
+  "independent_review_required": true,
+  "review_must_confirm": [
+    "Class B classification",
+    "event-local rather than intentionally cumulative model intent",
+    "reset placement and phosphorus conditional semantics",
+    "expected changed and unchanged surfaces",
+    "conservation evidence",
+    "B2 or historical-uncertainty route prerequisites"
+  ],
+  "b3_governance_basis": {
+    "branch": "work/animo-b3q01-scientific-admission-framework",
+    "observed_head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "decision": "QUALIFIED_B3_SCIENTIFIC_ADMISSION_FRAMEWORK_NO_LEGACY_CORRECTIONS_ADMITTED",
+    "qualified": true,
+    "framework": "docs/governance/B3_SCIENTIFIC_ADMISSION_FRAMEWORK.md",
+    "classes": "docs/governance/B3_QUALIFICATION_CLASSES.md",
+    "schema": "integration/animo-b3/B3_DISPOSITION_SCHEMA.json",
+    "existing_classification": "integration/animo-b3/B3_EXISTING_TCD_CLASSIFICATION.csv",
+    "existing_register_upper_bound_observed": "TCD-027",
+    "b3_baseline_established_by_b3q01": false,
+    "legacy_corrections_admitted_by_b3q01": []
+  },
+  "central_intake_issue": {
+    "number": 8,
+    "title": "B3 intake: PREP10 stable-DOM plough accumulator reset defect",
+    "status": "OPEN"
+  },
+  "next_valid_action": "central B3 intake, canonical identifier allocation, class confirmation and independent qualification",
+  "prohibited_inferences": [
+    "qualified B3 governance is not a B3 admission of this defect",
+    "GNU causal evidence is not B2 historical reference evidence",
+    "the reset counterfactual is not corrected-legacy admission",
+    "controlled activation amplitudes are not field-realism claims",
+    "lower residual or changed outputs alone do not admit the correction",
+    "no B4 or production migration follows from this handoff"
+  ]
+}

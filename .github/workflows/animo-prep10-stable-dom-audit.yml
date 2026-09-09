@@ -1,0 +1,53 @@
+name: ANIMO-PREP10 stable-DOM audit
+
+on:
+  push:
+    branches:
+      - work/animo-prep10-stable-dom-plough-accumulators
+  pull_request:
+    paths:
+      - 'tools/audit_stable_dom_plough_accumulators.py'
+      - 'tools/audit_stable_dom_plough_activation.py'
+      - 'tools/probe_prep10_local_storage_semantics.py'
+      - 'tools/make_prep10_addit_variants.py'
+      - 'tools/make_prep10_sdomin_activation.py'
+      - 'tests/prep10/**'
+      - 'integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json'
+      - 'integration/animo-prep/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json'
+      - 'integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json'
+      - 'integration/animo-prep/PREP10_STABLE_DOM_B3_HANDOFF.json'
+      - 'integration/animo-prep/PREP10_PARALLEL_CAUSAL_EVIDENCE_RECONCILIATION.json'
+      - 'docs/prep10/**'
+      - '.github/workflows/animo-prep10-stable-dom-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  scanner-unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile audit tools
+        run: |
+          python -m py_compile tools/audit_stable_dom_plough_accumulators.py
+          python -m py_compile tools/audit_stable_dom_plough_activation.py
+          python -m py_compile tools/probe_prep10_local_storage_semantics.py
+          python -m py_compile tools/make_prep10_addit_variants.py
+          python -m py_compile tools/make_prep10_sdomin_activation.py
+      - name: Run PREP10 scanner unit tests
+        run: python -m unittest discover -s tests/prep10 -v
+      - name: Validate machine-readable audit JSON
+        run: |
+          python -m json.tool integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json >/dev/null
+          python -m json.tool integration/animo-prep/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json >/dev/null
+          python -m json.tool integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json >/dev/null
+          python -m json.tool integration/animo-prep/PREP10_STABLE_DOM_B3_HANDOFF.json >/dev/null
+          python -m json.tool integration/animo-prep/PREP10_PARALLEL_CAUSAL_EVIDENCE_RECONCILIATION.json >/dev/null
+      - name: Probe GNU diagnostic-contract local storage semantics
+        run: |
+          python tools/probe_prep10_local_storage_semantics.py --json /tmp/prep10-storage-probe.json
+          python -m json.tool /tmp/prep10-storage-probe.json >/dev/null
