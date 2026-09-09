@@ -1,0 +1,223 @@
+{
+  "work_unit": "ANIMO-B3B01",
+  "record_type": "CLASS_B_ADMISSION_READINESS_NOT_ADMISSION",
+  "target_tcd": "TCD-015",
+  "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "atomicity": "ATOMIC_LOCAL_ALGEBRA_CLAIM",
+  "status": "QUALIFIED_TCD015_CLASS_B_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING",
+  "admitted": false,
+  "corrected_legacy_admitted": false,
+  "production_migration_admitted": false,
+  "scope": {
+    "process": "NO3 negative-concentration transport mass conservation",
+    "code_path": "Transsub.for second negative-concentration reconstruction after Rsc is set to Vsmall, reached naturally by LWKM nitrate at TITO 2312 layer 1",
+    "causal_claim": "Hv is counted twice because Hv1 already contains Hv while (Mt*Rsc-Mto*Co)/St already represents the complete storage change.",
+    "excluded_changes": [
+      "clipping policy redesign",
+      "tolerance change",
+      "solver or analytical-branch policy change",
+      "transport physics change outside the duplicated storage term",
+      "non-NITRATE policy change"
+    ],
+    "current_feature_scope": "core nitrate transport with GreenHouseGasOption=0; GHG-enabled downstream consequences are residual uncertainty and are not claimed by this readiness record"
+  },
+  "identities": {
+    "B0": {
+      "source_evidence_id": "ANIMO-B0-SRC-41553-R53",
+      "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+      "source_member": "ANIMO_4.1.5.53/Transsub.for",
+      "source_member_sha256": "c548e5d372ffbc7f4d4e4d8d86609cf1f34cf70ea513d345e3c7fada5cf6b552",
+      "local_hash_recheck_2026_09_09": "PASS",
+      "controlled_immutable_storage_proven": false,
+      "retention_note": "EG01 has a qualified retention/proof contract, but external controlled immutable storage proof is still pending. This does not alter the byte identity used in this readiness workunit."
+    },
+    "B1": {
+      "status": "DIAGNOSTIC_NOT_REFERENCE",
+      "baseline_gnu_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+      "reproduced_in_this_workunit": true,
+      "compiler": "GNU Fortran 14.2.0",
+      "limitations": "Diagnostic GNU execution is causal and non-interference evidence only. It is not B2 and is not evidence of historical Intel behaviour."
+    },
+    "B2": {
+      "qualified_reference_available": false,
+      "historical_behavior_status": "UNKNOWN",
+      "PREP02R_status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
+      "external_request_sent": false,
+      "historical_reference_artifact_obtained": false,
+      "reference_qualified": false,
+      "historical_uncertainty_route_currently_eligible": false
+    }
+  },
+  "governance_pins": {
+    "B3Q01": {
+      "branch": "work/animo-b3q01-scientific-admission-framework",
+      "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+      "framework_blob": "878ec3033eccf11ff278afa76bd6ddc9809fe769",
+      "class_contract_blob": "b67b46eff837ae03732e97dd43a3d6e1f1c220ed",
+      "classification_blob": "5cc126298bb7ce04e0dba5b64de07e0a51f50938",
+      "disposition_schema_blob": "c62c0f03654af3c98369f89f25b3e40db151288c"
+    },
+    "GOV02": {
+      "branch": "work/animo-gov02-evidence-dag-reconciliation",
+      "head": "db7add6f9561730bbf352aa7fd3f3968405cfaa3",
+      "B2_requirement_scope_blob": "7602faf85d425775b7d50c43596c5e13fa5a3421",
+      "historical_uncertainty_policy_blob": "dd6b29432d836189a8beb98759a4f93d74777f6c"
+    },
+    "PREP02R": {
+      "branch": "work/animo-prep02r-historical-reference-recovery",
+      "head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
+      "status_blob": "eb3c8e877d82f402415061cfd39c3d2bcbe550a7"
+    },
+    "SYNQ01": {
+      "branch": "work/animo-synq01-independent-synthetic-oracles",
+      "head": "842f72300fd03ede0b9024537a7ee6126722a121",
+      "status_blob": "ab07c3fd505a7af7cb59ace34cb90581538d7aff",
+      "oracle_register_blob": "4c215d19844614de8868380fb03f93268ea4c5d8",
+      "B3_handoff_blob": "23f7f9a5616c0567d468befcca5fb0fdb457fcb8"
+    }
+  },
+  "source_and_algebra": {
+    "exact_legacy_expression": "Reko = (Mt*rsc-Mto*Co)/St - (-Avc*Hv1 + Flo*Con/ld + Flb*Cb/ld + Fid*Coid/ld)",
+    "Hv": "(Mt-Mto)/st",
+    "Hv1": "Fu/ld + Rd*Fev/ld + Reki*Half*(Mt+Mto) + Hv",
+    "candidate_nitrate_expression": "Reko = (Mt*rsc-Mto*Co)/St - (-Avc*(Hv1-Hv) + Flo*Con/ld + Flb*Cb/ld + Fid*Coid/ld)",
+    "candidate_delta_reko": "-Avc*Hv",
+    "candidate_implementation_rule": "Preserve non-NITRATE legacy behaviour unless a broader generic correction is separately classified and admitted."
+  },
+  "scientific_basis": {
+    "documentation": "ANIMO 4.0 User's Guide, Alterra Report 224, section 2.3, defines the conservation and transport equation for dissolved substances including NO3-N. It does not specify the revision-53 clipping algebra.",
+    "source_equation": "Transsub documents its conservation equation and explicitly defines Hv as moisture change and Hv1 as disappearance plus Hv.",
+    "local_identity": "process mass = transport plus storage mass for one nitrate layer and interval",
+    "duplicate_mass": "Avc*Hv*St*Ld",
+    "tolerance_used": false
+  },
+  "PREP01_causal_evidence": {
+    "evidence_blob": "febaef508c4682b8ee5cb24ea72e47704fa7dc80",
+    "case": "LWKM_gras_1040.2021.2045",
+    "year": 1997,
+    "annual_residual_kg_ha_N": 0.5760503022407,
+    "dominant_event": {
+      "TITO": 2312,
+      "layer": 1,
+      "substance": "NITRATE",
+      "Iflsol": 1,
+      "BAPD_kg_m2": -0.00084267311478156,
+      "BATR_kg_m2": -0.00090054430498043,
+      "residual_kg_m2": 0.000057871190198869,
+      "equivalent_kg_ha_N": 0.5787119019887,
+      "Hv_d_1": 0.0034507,
+      "Hv1_d_1": 0.064698353471977,
+      "legacy_Reko_kg_m3_d": -0.0016853462295631
+    },
+    "exact_explanation": "Avc*Hv*St*Ld equals the local BAPD-BATR residual to floating-point roundoff.",
+    "existing_execution_only_probe": {
+      "corrected_Reko_kg_m3_d": -0.0018010886099609,
+      "corrected_BAPD_kg_m2": -0.00090054430498043,
+      "corrected_BATR_kg_m2": -0.00090054430498043,
+      "corrected_local_residual_kg_m2": -1.08e-19,
+      "LWKM_1997_GP_residual_after_probe_kg_ha_N": 2.28e-7,
+      "baseline_nitrate_transport_warnings": 3,
+      "corrected_probe_nitrate_transport_warnings": 0,
+      "admission_effect": "NONE"
+    }
+  },
+  "SYNQ01_oracle": {
+    "oracle_id": "SYNQ-O001",
+    "qualification": "QUALIFIED_EXACT_LOCAL_CONSERVATION_ORACLE",
+    "evidence_class": "CONSERVATION_ORACLE",
+    "independence": "STRONGLY_INDEPENDENT",
+    "formulation": "Hv appears once; duplicated storage term = Avc*Hv*St*Ld.",
+    "synthetic_inputs": {
+      "Avc_kg_m3": 0.2,
+      "Hv_d_1": 0.1,
+      "St_d": 2,
+      "Ld_m": 0.1
+    },
+    "expected": {
+      "conservative_residual_kg_m2": 0,
+      "duplicated_Hv_residual_kg_m2": 0.004
+    },
+    "pass": true,
+    "B2_created": false,
+    "historical_behaviour_claimed": false
+  },
+  "additional_B1_non_interference": {
+    "performed_in_ANIMO_B3B01": true,
+    "probe_type": "execution-only species-scoped nitrate algebra probe over all eight PREP01-compatible natural B1 cases",
+    "frozen_source_modified": false,
+    "frozen_testbank_modified": false,
+    "candidate_probe_executable_sha256": "10686a76d914e661badeb8ba36057d43f23c5dbffd39e8b95ce367db24525b94",
+    "candidate_probe_Transsub_sha256": "2e28838db0b03ab6571694e386c20eca0eb7ea2bb9d414a1facbb25dbd2f149b",
+    "comparison": {
+      "declared_volatile_metadata_only": true,
+      "numerical_tolerance": null,
+      "total_compared_files_excluding_stdout": 550,
+      "equal_raw": 430,
+      "equal_after_declared_volatile_normalization": 99,
+      "scientifically_different": 21,
+      "all_scientific_differences_within_predeclared_surface": true
+    },
+    "cases": {
+      "CranGrass": {"completed": true, "scientific_difference_files": []},
+      "CranMais": {"completed": true, "scientific_difference_files": []},
+      "GrassPeat": {"completed": true, "scientific_difference_files": ["ani_nGP.Bal", "ani_nRP.Bal", "ani_nST.Bal", "ani_nTP.Bal", "baniGP.Out", "baniRP.Out", "baniST.Out", "baniTP.Out"]},
+      "LWKM_gras_1040.2021.2045": {"completed": true, "scientific_difference_files": ["ani_nGP.Bal", "ani_nRP.Bal", "ani_nTP.Bal", "baniGP.Out", "baniRP.Out", "baniTP.Out", "message.out"], "nitrate_massbalance_warnings_baseline": 3, "nitrate_massbalance_warnings_candidate": 0},
+      "RuurloGrass": {"completed": true, "scientific_difference_files": []},
+      "STONE_akk_0006.2001.2015": {"completed": true, "scientific_difference_files": ["ani_nGP.Bal", "ani_nRP.Bal", "ani_nTP.Bal", "baniGP.Out", "baniRP.Out", "baniTP.Out"]},
+      "Puitmijn_Cranendonck_60": {"completed": true, "scientific_difference_files": []},
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA": {"completed": true, "scientific_difference_files": []}
+    },
+    "tight_surface_check": "For every changed formatted bani*.Out line in the three activated cases, only record-1 residual/cumulative-residual fields or the final record-3 denitrification field changed. Beginning/end storage, other input/output terms and all non-balance state outputs remained exact after declared volatile normalization.",
+    "generic_vs_species_scoped_probe": "The unguarded Hv1-to-Hv1-Hv execution probe and the species-scoped nitrate probe were scientifically identical across the same eight natural cases after declared volatile normalization. This is natural-suite evidence only and does not authorize a generic non-NITRATE correction."
+  },
+  "gate_readiness": {
+    "B0_identity": "PASS",
+    "B1_causal_evidence": "PASS",
+    "theory_or_local_mathematical_identity": "PASS",
+    "causal_cross_check": "PASS",
+    "conservation": "PASS",
+    "expected_difference_predeclared_before_broad_matrix": "PASS",
+    "non_interference_core_non_GHG": "PASS",
+    "natural_activation": "PASS",
+    "synthetic_oracle": "PASS",
+    "class_B_scientific_package": "PASS",
+    "B2_or_historical_uncertainty_route": "FAIL_CURRENTLY_INELIGIBLE",
+    "independent_second_line_review": "FAIL_PENDING",
+    "B3_admission": "FAIL_CLOSED"
+  },
+  "route_evaluation": {
+    "NORMAL_B2_AVAILABLE": "NOT_AVAILABLE",
+    "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY": "NOT_ELIGIBLE_WHILE_PREP02R_ACQUISITION_IS_STILL_ACTIVE",
+    "disposition_schema_note": "A B3 disposition record cannot validly select either B2 identity state yet. Current PREP02R is neither an available qualified reference nor an unavailable-after-documented-acquisition result.",
+    "required_next_route_event": "PREP02R must either qualify a relevant historical reference or reach the GOV02-approved unavailable-after-reasonable-acquisition state with independent approval of stopping."
+  },
+  "independent_review": {
+    "status": "PENDING",
+    "independent_from_correction_authoring": null,
+    "result": "NOT_REVIEWED",
+    "required_scope": [
+      "verify source/algebra decomposition independently",
+      "verify PREP01 natural-event causal arithmetic",
+      "verify SYNQ-O001 independence and scope",
+      "verify expected changed/unchanged surfaces and the eight-case B1 matrix",
+      "verify route state at review time",
+      "verify no clipping, tolerance or broader transport-policy change is admitted"
+    ]
+  },
+  "residual_uncertainty": [
+    "Historical Intel/Windows behaviour on the affected path remains unknown because B2 is not qualified.",
+    "The revision-53 generic Transsub expression is shared by substances other than nitrate. The TCD-015 admission candidate therefore remains species-scoped unless broader behaviour is separately classified and reviewed.",
+    "GHG-enabled downstream response can use Rekonide after CORRECTION(2). The supplied GHGMais case is not revision-53 contract-compatible, so this workunit does not claim GHG-feature admission.",
+    "Optional macropore interaction is outside the current natural TCD-015 non-interference matrix.",
+    "Controlled immutable external B0 storage proof remains pending under EG01 although byte identity is cryptographically fixed and rechecked here."
+  ],
+  "final_decision": {
+    "readiness_qualified": true,
+    "admission_route_valid": false,
+    "independent_second_line_review_complete": false,
+    "admitted": false,
+    "decision": "QUALIFIED_TCD015_CLASS_B_ADMISSION_READINESS_ROUTE_AND_INDEPENDENT_REVIEW_PENDING"
+  }
+}

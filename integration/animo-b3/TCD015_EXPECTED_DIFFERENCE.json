@@ -1,0 +1,70 @@
+{
+  "work_unit": "ANIMO-B3B01",
+  "target_tcd": "TCD-015",
+  "b3_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "record_type": "PREDECLARED_EXPECTED_DIFFERENCE_CONTRACT",
+  "source_identity": {
+    "evidence_id": "ANIMO-B0-SRC-41553-R53",
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "member": "ANIMO_4.1.5.53/Transsub.for",
+    "member_sha256": "c548e5d372ffbc7f4d4e4d8d86609cf1f34cf70ea513d345e3c7fada5cf6b552",
+    "source_self_identification": "ANIMO 4.1.5 revision 53"
+  },
+  "causal_claim": "Only the TCD-015 nitrate negative-concentration reconstruction is in scope: after Rsc is clipped to Vsmall, the zero-order reconstruction double-counts the moisture-storage contribution because Hv1 already contains Hv while the explicit storage term (Mt*Rsc-Mto*Co)/St already accounts for the full storage change.",
+  "exact_legacy_source_expression": "Reko = (Mt*rsc-Mto*Co)/St - (-Avc*Hv1 + Flo*Con/ld + Flb*Cb/ld + Fid*Coid/ld)",
+  "source_context": {
+    "file": "Transsub.for",
+    "legacy_lines": "304-305 in the frozen revision-53 member",
+    "Hv_definition": "Hv = (Mt-Mto)/st",
+    "Hv1_definition": "Hv1 = Fu/ld + Rd*Fev/ld + Reki*Half*(Mt+Mto) + Hv"
+  },
+  "proposed_atomic_algebraic_change": {
+    "semantic_scope": "NITRATE calls entering the exact second negative-concentration reconstruction only",
+    "candidate_expression": "Reko = (Mt*rsc-Mto*Co)/St - (-Avc*(Hv1-Hv) + Flo*Con/ld + Flb*Cb/ld + Fid*Coid/ld)",
+    "delta_reko_corrected_minus_legacy": "-Avc*Hv",
+    "implementation_constraint": "A future admitted implementation must preserve legacy behaviour for non-NITRATE call paths unless those paths are separately classified and admitted. A generic unguarded Transsub edit is therefore evidence-probe material, not automatically the TCD-015 production patch."
+  },
+  "conservation_identity": {
+    "local_control_volume": "one Transsub soil-layer interval for nitrate",
+    "identity": "process mass = transport plus storage mass",
+    "legacy_duplicate_mass_term": "Avc*Hv*St*Ld",
+    "corrected_local_residual": "0 for the duplicated-Hv component",
+    "no_tolerance": true
+  },
+  "expected_changed_surfaces": [
+    "NITRATE zero-order term Reko for an activated second negative-concentration reconstruction",
+    "the corresponding TRANSPORT process-side BAPD term",
+    "NO3 local and aggregated mass-balance residuals caused by this duplicated-Hv term",
+    "mass-balance warnings caused solely by this duplicated-Hv term",
+    "the downstream effective denitrification bookkeeping term Rekonide when CORRECTION(2) transfers a changed Rekoni by more than its existing legacy threshold",
+    "NO3 balance/report fields derived from that changed effective process bookkeeping"
+  ],
+  "expected_unchanged_surfaces": [
+    "clipping trigger and Optneg policy",
+    "Vsmall and all clipping/tolerance constants",
+    "Ttry selection and analytical-solution branch selection",
+    "Rsc and Avc already computed before the Reko reconstruction at the activated event",
+    "water states and water fluxes",
+    "NO3 transport inputs and boundary concentrations",
+    "all non-NITRATE call paths under the admission candidate",
+    "all call paths that do not enter the exact second negative-concentration reconstruction",
+    "transport physics outside the single storage-term bookkeeping correction"
+  ],
+  "feature_scope_for_current_readiness": {
+    "included": ["core nitrate transport", "natural B1 cases with GreenHouseGasOption=0"],
+    "excluded_pending_separate_evidence": ["GHG-enabled downstream response to changed effective denitrification bookkeeping"],
+    "reason": "The supplied GHGMais testcase is not revision-53 contract-compatible and cannot be used as natural B1 evidence for this workunit."
+  },
+  "acceptance_rules_for_additional_B1_non_interference_evaluation": [
+    "state and concentration trajectories must be byte-identical after normalization of run timestamps/elapsed-time text for paths where only the Reko reconstruction is changed",
+    "non-NITRATE scientific outputs must remain unchanged under a species-scoped TCD-015 probe",
+    "any changed NO3 balance/process field must be causally attributable to the predeclared delta -Avc*Hv and its existing CORRECTION(2) bookkeeping propagation",
+    "no tolerance, clipping constant, branch threshold or solver selection may change",
+    "a non-NITRATE scientific difference under the species-scoped candidate is a fail-closed result",
+    "a physical NO3 state difference not explained by a separately declared downstream dependency is a fail-closed result"
+  ],
+  "historical_fidelity_claim": false,
+  "B2_claim_from_synthetic_evidence": false,
+  "admission_performed": false,
+  "predeclaration_note": "This contract is persisted before the broad eight-case B1 non-interference matrix. PREP01 had already performed a narrower execution-only correction probe; that earlier probe is causal evidence, not this workunit's independent admission evaluation."
+}
