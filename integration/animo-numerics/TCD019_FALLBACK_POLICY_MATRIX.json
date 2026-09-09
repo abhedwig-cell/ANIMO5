@@ -1,0 +1,131 @@
+{
+  "work_unit": "ANIMO-NQ02",
+  "target": "TCD-019",
+  "evidence_class": "B1_DIAGNOSTIC_NATURAL_FALLBACK_SENSITIVITY_ONLY",
+  "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "observer_transgen_sha256": "28a223e5f9007bb52bcb5e97871f1c952b4d61146fea5ff5ea2d32b2e6557ab1",
+  "fixed_policy": {
+    "fast_sorption": "Langmuir",
+    "storage_representation": "cancellation_safe_exact_secant",
+    "newton_small": 1e-7,
+    "changed_factor_only": "bisection_abs_Df_acceptance"
+  },
+  "diagnostic_descendants": {
+    "bisection_1e-6": {
+      "transorp_sha256": "2a6e5d4065f9d18025b808aa43571d09b2f29d7810990b0cbd5802219fed366f",
+      "executable_sha256": "eadfab62d27533488d28ebafe5586aaf353f651ca867ecb694d4366b9262aca4",
+      "role": "legacy_fallback_threshold_with_exact_storage_and_newton_small_1e7"
+    },
+    "bisection_1e-7": {
+      "transorp_sha256": "ecf6d781490968258efddd3d53b95a72797f8b3571305793ef1748737960897d",
+      "executable_sha256": "9eb40b43d42a3086d832a10652c4bf66270cf78697ec62da6078a72ac2b94058"
+    },
+    "bisection_1e-8": {
+      "transorp_sha256": "8969d33f787fc886d0d3008e7ad845b5dd613d08e6f8ac1ec3db50ceefbfddad",
+      "executable_sha256": "6a32ac8758204012bab94edf5d2e689fa91fe5bde9bd85a747a9862f258d3d43"
+    }
+  },
+  "cases": {
+    "Puitmijn_Cranendonck_60": {
+      "bisection_1e-6": {
+        "metrics_json_sha256": "cd18f2fb7c54c88152cd63ad8889d4fc21ad85c02a62352f354206c14732e245",
+        "cumulative_R_cons_kg_ha": 0.0018121039901993128,
+        "sum_abs_R_cons_kg_ha": 0.0050570109451064365,
+        "first_timestep_R_cons_kg_ha": -0.00019774630824713338,
+        "first_timestep_sum_abs_R_cons_kg_ha": 0.0002368977529210864,
+        "post_first_timestep_R_cons_kg_ha": 0.0020098502984464465,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.00482011319218535,
+        "bisection_accepts": 12,
+        "max_accepted_abs_Df": 9.627677197976414e-7,
+        "run_output_sha256": "4a6bc55c3c5ac9e79f615c18d20a5ee5f5b8e392e77c75bf82fa67d533574b5a"
+      },
+      "bisection_1e-7": {
+        "metrics_json_sha256": "4d08693b3ba6d374c42bbe16523ec14917b06579bdef31328616c84dfc6b0c81",
+        "cumulative_R_cons_kg_ha": -0.00008729487274905477,
+        "sum_abs_R_cons_kg_ha": 0.0009663994917709151,
+        "first_timestep_R_cons_kg_ha": -0.00019774630824713338,
+        "first_timestep_sum_abs_R_cons_kg_ha": 0.0002368977529210864,
+        "post_first_timestep_R_cons_kg_ha": 0.00011045143549807862,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.0007295017388498288,
+        "bisection_accepts": 19,
+        "max_accepted_abs_Df": 8.80083644988483e-8,
+        "run_output_sha256": "4a6bc55c3c5ac9e79f615c18d20a5ee5f5b8e392e77c75bf82fa67d533574b5a"
+      },
+      "bisection_1e-8": {
+        "metrics_json_sha256": "41580114804887b047c6553a7d7050a98d1729a04c09dc970b51a431fdd955a9",
+        "cumulative_R_cons_kg_ha": -0.00018371581432759552,
+        "sum_abs_R_cons_kg_ha": 0.0003205814865975566,
+        "first_timestep_R_cons_kg_ha": -0.00019774630824713338,
+        "first_timestep_sum_abs_R_cons_kg_ha": 0.0002368977529210864,
+        "post_first_timestep_R_cons_kg_ha": 0.000014030493919537897,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.00008368373367647021,
+        "bisection_accepts": 19,
+        "max_accepted_abs_Df": 9.614993481954492e-9,
+        "run_output_sha256": "4a6bc55c3c5ac9e79f615c18d20a5ee5f5b8e392e77c75bf82fa67d533574b5a"
+      },
+      "interpretation": "post-initial residual converges strongly under fallback refinement; first timestep is invariant across these three runs"
+    },
+    "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA": {
+      "bisection_1e-6": {
+        "metrics_json_sha256": "674039269fd46713cbc3e3cee224b37041a6e167391016768d4f51ecc5cfc95c",
+        "cumulative_R_cons_kg_ha": 0.0032703492633138534,
+        "sum_abs_R_cons_kg_ha": 0.012044790404298528,
+        "first_timestep_R_cons_kg_ha": -0.0014688924080409073,
+        "first_timestep_sum_abs_R_cons_kg_ha": 0.002021209044200922,
+        "post_first_timestep_R_cons_kg_ha": 0.004739241671354761,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.010023581360097606,
+        "bisection_accepts": 15,
+        "max_accepted_abs_Df": 6.680124661484488e-7,
+        "run_output_sha256": "0bbb0d2243a17e1b0ed7485459e813b0a7b589ef33488813c0e228b4c4ee861b"
+      },
+      "bisection_1e-7": {
+        "metrics_json_sha256": "5fa438cebbd6cbc522dd8bb07d401a14dda48b0a956f38065b1ce727b02a681d",
+        "cumulative_R_cons_kg_ha": -0.02644465163880946,
+        "sum_abs_R_cons_kg_ha": 0.02721409167958347,
+        "first_timestep_R_cons_kg_ha": -0.02525754971168191,
+        "first_timestep_sum_abs_R_cons_kg_ha": 0.025809866347827313,
+        "post_first_timestep_R_cons_kg_ha": -0.0011871019271275478,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.0014042253317561551,
+        "largest_first_timestep_layer_R_cons_kg_ha": -0.023790749525785918,
+        "largest_first_timestep_layer": 5,
+        "bisection_accepts": 16,
+        "max_accepted_abs_Df": 6.739082089590731e-8,
+        "run_output_sha256": "0bbb0d2243a17e1b0ed7485459e813b0a7b589ef33488813c0e228b4c4ee861b"
+      },
+      "bisection_1e-8": {
+        "metrics_json_sha256": "1aab392e705b4ef9f208fae776d09d2ac5444dbe6f7d8dd6e918eadbe858663d",
+        "cumulative_R_cons_kg_ha": -0.025252972774996354,
+        "sum_abs_R_cons_kg_ha": 0.025910382512428002,
+        "first_timestep_R_cons_kg_ha": -0.02526056285746824,
+        "first_timestep_sum_abs_R_cons_kg_ha": 0.025812879493605063,
+        "post_first_timestep_R_cons_kg_ha": 0.000007590082471883756,
+        "post_first_timestep_sum_abs_R_cons_kg_ha": 0.00009750301882293674,
+        "largest_first_timestep_layer_R_cons_kg_ha": -0.023862165718663418,
+        "largest_first_timestep_layer": 5,
+        "bisection_accepts": 13,
+        "max_accepted_abs_Df": 9.631830277800901e-9,
+        "run_output_sha256": "0bbb0d2243a17e1b0ed7485459e813b0a7b589ef33488813c0e228b4c4ee861b"
+      },
+      "interpretation": "post-initial residual converges under fallback refinement, but tighter fallback acceptance selects a materially different first-step root/state in layers 5 and 6; this interaction must remain separated from pure TCD-019 attribution"
+    }
+  },
+  "qualification": {
+    "fallback_natural_activation": true,
+    "fallback_policy_causally_material": true,
+    "fallback_threshold_as_ordinary_accuracy_knob_rejected": true,
+    "root_or_branch_selection_materiality_observed": true,
+    "initialization_interaction_observed": true,
+    "fallback_policy_classification": "FALLBACK_POLICY_CAUSALLY_MATERIAL_BUT_NOT_YET_QUALIFIED",
+    "specific_fallback_tolerance_qualified": false,
+    "tolerance_status": "TOLERANCE_NOT_YET_QUALIFIED",
+    "B3_admitted": false,
+    "production_migration_admitted": false
+  },
+  "hard_rules": {
+    "arbitrary_tolerance_forbidden": true,
+    "better_mass_balance_is_not_solution_correctness": true,
+    "b1_as_b2_forbidden": true,
+    "frozen_source_modification_forbidden": true
+  }
+}
