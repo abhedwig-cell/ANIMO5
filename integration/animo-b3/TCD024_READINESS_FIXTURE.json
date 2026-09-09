@@ -13,16 +13,33 @@
     "oracle_ids": ["SYNQ-O006", "SYNQ-O007"],
     "authority_branch": "work/animo-synq01-independent-synthetic-oracles",
     "authority_head": "124364c008cdca511f024b3b7d7677572c6ac0c7",
-    "published_expected_qnew_prefixes": [
+    "published_expected_qnew": [
       "0.01338249703757970376432360100",
       "0.1475396964503997007310583129",
       "0.05240993271465228432371740819"
     ],
-    "published_wrong_K1_prefixes": [
+    "published_wrong_K1": [
       "0.01338249703757970376432360100",
       "0.07723179301663063224564232867",
       "0.007645585949326259218924871008"
-    ]
+    ],
+    "displayed_numeric_values_used_as_B3B03_acceptance_oracle": false,
+    "reason": "B3B03 80-digit re-evaluation found last-displayed-unit inconsistencies in three SYNQ01 register values. The SYNQ01 equations, unequal-site discriminator and index-domain oracle remain used; the displayed shorter values are retained only as provenance evidence.",
+    "exact_28_significant_digit_recheck": {
+      "correct_recomputed": [
+        "0.01338249703757970376432360100",
+        "0.1475396964503997007310583129",
+        "0.05240993271465228432371740818"
+      ],
+      "correct_published_minus_recomputed": ["0", "0", "1E-29"],
+      "wrong_K1_recomputed": [
+        "0.01338249703757970376432360100",
+        "0.07723179301663063224564232868",
+        "0.007645585949326259218924871007"
+      ],
+      "wrong_K1_published_minus_recomputed": ["0", "-1E-29", "1E-30"],
+      "interpretation": "Representation inconsistency only. No tolerance is introduced and none of these shorter displayed numbers is used as the pass threshold."
+    }
   },
   "active_unequal_sites": {
     "concentration": "0.04",
