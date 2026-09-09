@@ -1,0 +1,166 @@
+{
+  "workunit": "ANIMO-B3B04",
+  "target": "TCD-040",
+  "class": "B_LOCAL_RESTORE_INITIALIZATION_IDENTITY",
+  "evidence_status": "QUALIFIED_ATOMIC_READINESS_EVIDENCE",
+  "frozen_b0": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "source_path": {
+    "input_reads": {
+      "NH4": "input1.for:3201",
+      "NO3": "input1.for:3213",
+      "DOM": "input1.for:3267",
+      "DON": "input1.for:3277",
+      "DOP": "input1.for:3390"
+    },
+    "startup_call": "Animo.for:143-169 Call Inicalc",
+    "destructive_initialization": {
+      "NH4": "Inicalc.for:125 Conh(0)=0.0",
+      "NO3": "Inicalc.for:126 Coni(0)=0.0",
+      "DOM": "Inicalc.for:127 Codiorma(0)=0.0",
+      "DON": "Inicalc.for:128 Codiorni(0)=0.0",
+      "DOP": "Inicalc.for:129 Codiorpo(0)=0.0"
+    },
+    "ordinary_restore": {
+      "NH4": "Init.for:353 Conh(Ln)=Rsconh(Ln), Ln=0:Nl",
+      "NO3": "Init.for:358 Coni(Ln)=Rsconi(Ln), Ln=0:Nl",
+      "DOM": "Init.for:362 Codiorma(Ln)=Rscodiorma(Ln), Ln=0:Nl",
+      "DON": "Init.for:363 Codiorni(Ln)=Rscodiorni(Ln), Ln=0:Nl",
+      "DOP": "Init.for:364 Codiorpo(Ln)=Rscodiorpo(Ln), Ln=0:Nl"
+    },
+    "restart_output": {
+      "NH4": "Output_Init.for:84 Rsconh(0:Nl)",
+      "NO3": "Output_Init.for:87 Rsconi(0:Nl)",
+      "DOM": "Output_Init.for:104 Rscodiorma(0:Nl)",
+      "DON": "Output_Init.for:105 Rscodiorni(0:Nl)",
+      "DOP": "Output_Init.for:134 Rscodiorpo(0:Nl)"
+    }
+  },
+  "owners": {
+    "NH4": ["Conh(0)", "Rsconh(0)"],
+    "NO3": ["Coni(0)", "Rsconi(0)"],
+    "DOM": ["Codiorma(0)", "Rscodiorma(0)"],
+    "DON": ["Codiorni(0)", "Rscodiorni(0)"],
+    "DOP": ["Codiorpo(0)", "Rscodiorpo(0)"],
+    "PO4_control": ["Copo(0)", "Rscopo(0)"]
+  },
+  "cold_start_restart": {
+    "explicit_discriminator_at_zeroing": false,
+    "guide_contract": "INITIAL.OUT state can initialize another simulation run",
+    "unconditional_line_deletion_qualified": false
+  },
+  "natural_GrassPeat": {
+    "before": {
+      "Pn": 0.0,
+      "Snla": 0.0034548,
+      "NH4": 0.006885736,
+      "NO3": 0.0005743774,
+      "DOM": 0.09904185,
+      "DON": 0.005673512,
+      "DOP": 0.0005456775,
+      "PO4": 0.003703004
+    },
+    "after": {
+      "Pn": 0.0,
+      "Snla": 0.0034548,
+      "NH4": 0.0,
+      "NO3": 0.0,
+      "DOM": 0.0,
+      "DON": 0.0,
+      "DOP": 0.0,
+      "PO4": 0.003703004
+    },
+    "five_targets_exact_positive_zero_after": true,
+    "PO4_raw_unchanged": true
+  },
+  "harness": {
+    "evidence_class": "B0_DERIVED_REPLAY_BACKED_SEPARATE_PROCESS_QUALIFICATION_ONLY",
+    "compiler": "GNU Fortran (Debian 14.2.0-19) 14.2.0",
+    "flags": ["-ffree-form", "-ffree-line-length-none", "-fallow-argument-mismatch", "-std=legacy", "-fdefault-real-8", "-fdefault-double-8", "-fno-automatic"],
+    "exe_sha256": {
+      "A282": "a7fa9fe3090a43a4fa1628bdfd4a07dbfe23f9b25f4c11ccf18792ffef1ad500",
+      "B282restore": "34f8aa3db1f779303ce99bafd9db0141483c5fb0c8c87bd8459e43b9df74d173",
+      "B282legacy": "b412b7b9c899209bf98551d4ddc4b1d823ed621176097a4b7a90838edda7cd74",
+      "A67": "05523669424c84429aaad1b9eed905d5ed8e4ab359a17f1e970c0a42f7a58580",
+      "B67legacy": "875eb33d2d96ed1cf5ca0329f0db5b220b8cf95cecec5439aa7110dbdadb8bb0"
+    }
+  },
+  "split282": {
+    "stageA_exit": 94,
+    "stageB_restore_exit": 100,
+    "stageB_legacy_exit": 100,
+    "stageA_records": 564,
+    "stageA_exact_continuous_prefix": true,
+    "checkpoint_file_sha256": "833363cc2f8457a617b450bfa283842532efcb8d321a57eca5e05584b0224b2e",
+    "checkpoint_values": {
+      "NH4": 0.0008977310061221382,
+      "NO3": 8.767359689234193e-06,
+      "DOM": 0.004381575788713558,
+      "DON": 0.00012267733059957502,
+      "DOP": 1.2267733059957505e-05
+    },
+    "checkpoint_raw_hex": {
+      "NH4": "d154eca7b66a4d3f",
+      "NO3": "9cea8abdf062e23e",
+      "DOM": "f8c17a4b6af2713f",
+      "DON": "b4e1ea3e5e14203f",
+      "DOP": "bb02ab6430bae93e"
+    },
+    "checkpoint_matches_pre_owner_bytes": true,
+    "checkpoint_write_noninterference": true,
+    "restore_pre_checkpoint_exact": true,
+    "restore_post_checkpoint_exact": true,
+    "restore_pre_post_exact": true,
+    "continuous_trace_sha256": "29055b1be962d9550781b87f56ab34cd44630965439e21b6e5375954a6144a48",
+    "restored_trace_sha256": "29055b1be962d9550781b87f56ab34cd44630965439e21b6e5375954a6144a48",
+    "restored_full_1800_records_exact": true,
+    "legacy_trace_sha256": "920cc04388d812e5668edab3e654b7e006926522bbe61923b1a202b346cf4e38",
+    "legacy_post_targets_exact_positive_zero": true,
+    "PO4_layer0_boundary_unchanged": true,
+    "first_divergence": {
+      "record_index": 564,
+      "step": 283,
+      "phase": 0,
+      "coordinates": [["NH4", 0], ["NO3", 0], ["DOM", 0], ["DON", 0], ["DOP", 0]]
+    },
+    "changed_records": 1236,
+    "changed_layers": {"NH4": "0:30", "NO3": "0:30", "DOM": "0:30", "DON": "0:30", "DOP": "0:30", "PO4": "1:29"},
+    "max_abs_difference": {
+      "NH4": 0.0008977310061221382,
+      "NO3": 8.767359689234193e-06,
+      "DOM": 0.004381575788713558,
+      "DON": 0.00012267733059957502,
+      "DOP": 1.2267733059957505e-05,
+      "PO4": 1.4751153212333792e-10
+    }
+  },
+  "split67_zero_control": {
+    "checkpoint_all_targets_exact_positive_zero": true,
+    "continuous_trace_sha256": "29055b1be962d9550781b87f56ab34cd44630965439e21b6e5375954a6144a48",
+    "legacy_trace_sha256": "29055b1be962d9550781b87f56ab34cd44630965439e21b6e5375954a6144a48",
+    "full_1800_records_exact": true
+  },
+  "comparison_policy": "EXACT_RAW_IEEE754_BYTES_NO_TOLERANCE",
+  "atomic_correction": {
+    "restart_only": true,
+    "preserve_or_restore_exact_accepted_owners": true,
+    "retain_cold_start_semantics": true,
+    "modify_PO4": false,
+    "new_state": false,
+    "tolerance": false,
+    "TCD016_composition": false,
+    "internal_crop_composition": false,
+    "broad_restart_redesign": false,
+    "production_patch": false
+  },
+  "decision": {
+    "atomic_class_B_readiness": true,
+    "canonical_STATE_admission": false,
+    "B3_admission": false,
+    "historical_fidelity_or_prevalence_claim": false,
+    "production_patch": false,
+    "status": "QUALIFIED_ATOMIC_CLASS_B_RESTART_IDENTITY_READINESS_ONLY"
+  }
+}
