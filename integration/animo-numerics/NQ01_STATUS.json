@@ -6,7 +6,7 @@
   "date": "2026-09-09",
   "source_base": {
     "branch": "work/animo-prep02r-historical-reference-recovery",
-    "head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7"
+    "head_at_start": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7"
   },
   "governance_reference": {
     "work_unit": "ANIMO-EB01",
@@ -15,7 +15,7 @@
     "document": "docs/governance/ANIMO5_EVIDENCE_BASELINE_MODEL.md",
     "role": "canonical_B0_B4_evidence_model_reference"
   },
-  "prep02r_live_observation": {
+  "prep02r_live_observation_at_start": {
     "head": "e29aa75f782a17e1cca6b0c2791ba04077e8bde7",
     "status": "BLOCKED_HISTORICAL_REFERENCE_ARTIFACT_NOT_YET_OBTAINED",
     "preferred_first_case": "RuurloGrass",
@@ -28,21 +28,76 @@
   "state_dimensions": {
     "implemented": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
+    "tested": true,
+    "qualified": true,
     "independent_reference_data_available": false,
     "numerical_equivalence_qualified": false,
     "production_migration_admitted": false
   },
-  "status": "IN_PROGRESS_ARCHITECTURE_PERSISTED_BEFORE_TESTING",
-  "target_status": "QUALIFIED_NUMERICAL_QUALIFICATION_ARCHITECTURE_AWAITING_INDEPENDENT_REFERENCE_DATA",
-  "production_migration": "NOT_ADMITTED",
+  "architecture": {
+    "comparison_variable_classes_defined": true,
+    "exact_vs_approximate_semantics_defined": true,
+    "observer_only_capture_contract_defined": true,
+    "unrounded_capture_schema_defined": true,
+    "precision_metadata_mandatory_per_capture_record": true,
+    "b1_b2_difference_domains_defined": true,
+    "temporal_comparison_checkpoints_defined": true,
+    "numerical_policy_change_contract_defined": true,
+    "convergence_evidence_requirements_defined": true,
+    "prep02r_first_comparison_checklist_defined": true,
+    "structured_fail_closed_comparator_implemented": true,
+    "global_numeric_tolerance_defined": false
+  },
+  "test_evidence": {
+    "scope": "synthetic comparator inputs only; no B2 scientific data",
+    "python_compile_passed": true,
+    "unit_tests_passed": 8,
+    "unit_tests_failed": 0,
+    "covered_behaviour": [
+      "exact scientific comparison does not itself qualify equivalence",
+      "nonexact floating scientific value fails closed without tolerance",
+      "control-flow difference requires exact equality",
+      "declared non-scientific metadata difference may remain representation-only",
+      "B1 evidence role cannot be supplied as B2",
+      "missing precision metadata fails schema-level comparator validation",
+      "missing scientific record fails closed",
+      "exact match to a B2 candidate does not upgrade the candidate to qualified reference"
+    ],
+    "remote_tool_blob_matches_tested_local_blob": true,
+    "remote_test_blob_matches_tested_local_blob": true,
+    "remote_tool_blob_sha": "af52166e97d7b6235ca549592544e4e35148a4f0",
+    "remote_test_blob_sha": "c99eec1bb1a910dad8705af45523e010af2589d0"
+  },
   "hard_rules": {
     "arbitrary_tolerances_forbidden": true,
     "legacy_residual_must_not_define_tolerance": true,
     "rounded_report_must_not_be_sole_unrounded_oracle": true,
     "solver_changes_forbidden_in_this_work_unit": true,
     "precision_policy_changes_forbidden_in_this_work_unit": true,
-    "gnu_b1_must_not_be_classified_as_independent_reference": true
-  }
+    "production_migration_forbidden_in_this_work_unit": true,
+    "gnu_b1_must_not_be_classified_as_independent_reference": true,
+    "nonexact_scientific_difference_fails_closed_until_qualified_policy_exists": true
+  },
+  "artifacts": {
+    "comparison_policy": "docs/numerics/NUMERICAL_REFERENCE_COMPARISON_POLICY.md",
+    "unrounded_capture_contract": "docs/numerics/UNROUNDED_REFERENCE_CAPTURE_CONTRACT.md",
+    "numerical_policy_change_qualification": "docs/numerics/NUMERICAL_POLICY_CHANGE_QUALIFICATION.md",
+    "comparison_variable_classes": "integration/animo-numerics/COMPARISON_VARIABLE_CLASSES.json",
+    "reference_capture_schema": "integration/animo-numerics/REFERENCE_CAPTURE_SCHEMA.json",
+    "structured_comparator": "tools/compare_b1_b2_reference.py",
+    "structured_comparator_tests": "tests/test_compare_b1_b2_reference.py"
+  },
+  "qualification_basis": [
+    "architecture and contracts are persisted before independent B2 data",
+    "comparison semantics are class-specific and contain no arbitrary numerical thresholds",
+    "structured comparator is fail-closed for every nonexact scientific floating difference",
+    "precision is mandatory capture metadata",
+    "B1 and B2 evidence roles are explicitly separated",
+    "synthetic comparator tests pass and tested local tool/test bytes match persisted GitHub blobs",
+    "actual historical numerical equivalence remains untested because PREP02R has not obtained independent reference data"
+  ],
+  "status": "QUALIFIED_NUMERICAL_QUALIFICATION_ARCHITECTURE_AWAITING_INDEPENDENT_REFERENCE_DATA",
+  "numerical_equivalence_status": "NOT_QUALIFIED_NO_INDEPENDENT_B2_DATA",
+  "production_migration": "NOT_ADMITTED",
+  "next_gate": "PREP02R_PROVENANCE_QUALIFIED_NATIVE_REFERENCE_AND_FIRST_RUURLOGRASS_CAPTURE"
 }
