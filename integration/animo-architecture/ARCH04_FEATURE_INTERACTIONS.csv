@@ -1,0 +1,14 @@
+interaction_id,left_feature,right_feature,relation,condition,result,fail_closed_reason,open_evidence
+INT-HYDRO-MODE,FT-HYDRO-DETAILED,FT-HYDRO-AGGREGATED,EXCLUSIVE,always,exactly one hydrology mode must be selected,simultaneous or missing mode makes state/layout semantics ambiguous,
+INT-SNOW-HYDRO,FT-SNOW,FT-HYDRO-DETAILED,REQUIRES,snow_enabled=true,detailed hydrology contract must expose snow coordinate,snow cannot own hidden ANIMO water state,
+INT-SURFACE-CORE,FT-SURFACE-RESERVOIR,FT-CORE-SOIL-CHEMISTRY,REQUIRES,surface_reservoir_enabled=true,top-reservoir species state is allocated only with active chemistry kernel,orphan surface state has no process/ledger owner,
+INT-STABLEDOM-CORE,FT-STABLE-DOM-SOIL,FT-CORE-SOIL-CHEMISTRY,REQUIRES,stable_dom_enabled=true,soil stable DOM state joins owner and ledger layout,unsupported theory seams remain visible,TCD-021;TCD-023
+INT-CROP-CORE,FT-CROP,FT-CORE-SOIL-CHEMISTRY,REQUIRES,crop_mode!=none,crop exchange or owner state must bind to soil chemistry transfer contract,soil-crop transfer cannot exist without soil conserved quantities,
+INT-CROP-OWNER,FT-CROP,FT-CROP,OWNER_MODE,crop_mode=animo OR crop_mode=external,ANIMO mode allocates crop persistent state; external mode allocates exchange only,duplicate state ownership is forbidden,
+INT-GHG-CORE,FT-GHG,FT-CORE-SOIL-CHEMISTRY,REQUIRES,ghg_enabled=true,activation is invalid until GHG scientific admission permits state/reaction bundle,blocked theory-ledger feature must not become supported by configuration alone,TCD-008
+INT-MACRO-HYDRO,FT-MACROPORE,FT-HYDRO-DETAILED,REQUIRES,macropore_enabled=true,macropore feature requires compatible detailed hydrology and admitted active case,aggregated hydrology lacks admitted macropore state/exchange contract,TCD-025
+INT-MACRO-LEDGER,FT-MACROPORE,FT-DIAGNOSTICS,TOPOLOGY,macropore_enabled=true,MassLedger layout must use combined-domain views when requested,main public ledger incompleteness must not be reproduced,TCD-025
+INT-PFAST-CORE,FT-P-FAST-SITES,FT-CORE-SOIL-CHEMISTRY,DIMENSION,fast_p_site_count>=0,site count becomes explicit feature-layout dimension,site-count change invalidates checkpoint/layout identity,TCD-029
+INT-PSLOW-CORE,FT-P-SLOW-SITES,FT-CORE-SOIL-CHEMISTRY,DIMENSION,slow_p_site_count>=0,site count becomes explicit feature-layout dimension,site-count change invalidates checkpoint/layout identity,TCD-024
+INT-DIAG-PHYS,FT-DIAGNOSTICS,FT-CORE-SOIL-CHEMISTRY,OBSERVER_ONLY,diagnostics_mode!=off,observer allocation may change without changing physical owner state,diagnostics must never become hidden physical persistence,TCD-017;TCD-018;TCD-026;TCD-027;TCD-028
+INT-DORMANT-SURFACE,FT-SURFACE-STABLE-DOM-DORMANT,FT-SURFACE-RESERVOIR,FORBIDDEN,surface_stable_dom_enabled=true,configuration rejected,dormant parser visibility is not runtime support,PREP06_DORMANT_SURFACE
