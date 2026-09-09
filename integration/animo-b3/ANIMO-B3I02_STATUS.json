@@ -1,14 +1,14 @@
 {
   "work_unit": "ANIMO-B3I02",
   "title": "Post-B3I01 Incremental Runtime, State & Mass Discrepancy Intake",
-  "status": "IN_PROGRESS_MASSQ02_SUPPLEMENT_PERSISTED_PENDING_VALIDATION",
+  "status": "QUALIFIED_INCREMENTAL_CANONICAL_DISCREPANCY_INTAKE_NO_ADMISSIONS",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3i02-post-b3i01-incremental-intake",
   "implemented": true,
   "persisted": true,
-  "tested": false,
-  "qualified": false,
-  "work_unit_complete": false,
+  "tested": true,
+  "qualified": true,
+  "work_unit_complete": true,
   "base_authority": {
     "branch": "work/animo-b3i01-canonical-register-append",
     "head": "383c7a83e84a578969f92113280dc715b7bdddb4",
@@ -155,10 +155,13 @@
   "current_supplement_validation": {
     "validator": "tools/b3i02/validate_b3i02.py",
     "workflow": ".github/workflows/animo-b3i02-incremental-intake.yml",
-    "state": "PENDING_AFTER_PERSIST",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_conclusion": null
+    "state": "PASS",
+    "tested_head_before_status_closeout": "74666295704a2668070e168039ce7c9fe7f21dda",
+    "b3i02_github_actions_run_id": 34353050589,
+    "b3i02_github_actions_conclusion": "success",
+    "b3q01_github_actions_run_id": 34353050593,
+    "b3q01_github_actions_conclusion": "success",
+    "scope_guard": "PASS_GOVERNANCE_ONLY_NO_PRODUCTION_REFERENCE_OR_CANONICAL_REGISTER_CHANGE"
   },
   "deliverables": [
     "docs/b3/POST_B3I01_INCREMENTAL_INTAKE.md",
