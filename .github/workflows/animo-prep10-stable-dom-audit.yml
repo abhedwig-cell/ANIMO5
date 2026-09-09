@@ -8,6 +8,7 @@ on:
     paths:
       - 'tools/audit_stable_dom_plough_accumulators.py'
       - 'tools/audit_stable_dom_plough_activation.py'
+      - 'tools/probe_prep10_local_storage_semantics.py'
       - 'tests/prep10/**'
       - 'integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json'
       - 'docs/prep10/**'
@@ -28,7 +29,12 @@ jobs:
         run: |
           python -m py_compile tools/audit_stable_dom_plough_accumulators.py
           python -m py_compile tools/audit_stable_dom_plough_activation.py
+          python -m py_compile tools/probe_prep10_local_storage_semantics.py
       - name: Run PREP10 scanner unit tests
         run: python -m unittest discover -s tests/prep10 -v
       - name: Validate machine-readable audit JSON
         run: python -m json.tool integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json >/dev/null
+      - name: Probe GNU diagnostic-contract local storage semantics
+        run: |
+          python tools/probe_prep10_local_storage_semantics.py --json /tmp/prep10-storage-probe.json
+          python -m json.tool /tmp/prep10-storage-probe.json >/dev/null
