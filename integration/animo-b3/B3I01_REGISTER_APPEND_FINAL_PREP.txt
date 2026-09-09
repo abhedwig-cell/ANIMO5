@@ -1,1 +1,0 @@
-Prepared rows exist. Next operation is canonical CSV append and readback.
