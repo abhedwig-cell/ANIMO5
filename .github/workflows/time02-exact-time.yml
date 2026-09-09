@@ -1,0 +1,33 @@
+name: ANIMO-TIME02 exact time vector qualification
+
+on:
+  push:
+    branches:
+      - work/animo-time02-concrete-time-coordinate
+    paths:
+      - 'tools/validate_time02_vectors.py'
+      - 'integration/animo-time/TIME02_TEST_VECTORS.json'
+      - 'integration/animo-time/ANIMO-TIME02_STATUS.json'
+      - 'docs/time02/**'
+      - '.github/workflows/time02-exact-time.yml'
+  pull_request:
+    paths:
+      - 'tools/validate_time02_vectors.py'
+      - 'integration/animo-time/TIME02_TEST_VECTORS.json'
+      - 'integration/animo-time/ANIMO-TIME02_STATUS.json'
+      - 'docs/time02/**'
+      - '.github/workflows/time02-exact-time.yml'
+  workflow_dispatch:
+
+jobs:
+  exact-time-contract:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile TIME02 validator
+        run: python -m py_compile tools/validate_time02_vectors.py
+      - name: Validate exact rational calendar and boundary vectors
+        run: python tools/validate_time02_vectors.py integration/animo-time/TIME02_TEST_VECTORS.json
