@@ -1,0 +1,43 @@
+{
+  "schema": "animo-prep02r-frozen-native-input-pin-v1",
+  "work_unit": "ANIMO-PREP02R",
+  "case": "RuurloGrass",
+  "evidence_class": "FROZEN_INPUT_IDENTITY_NOT_REFERENCE_ADMISSION",
+  "testbank_archive": {
+    "filename": "ANIMO_testbank.zip",
+    "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "case_root_in_archive": "ANIMO_testbank/RuurloGrass",
+  "case_file_content_set_sha256": "0f12d19f74e6640b6d17f8f401ac9c294e35ae13064205ed4d1821d6a15c9ac9",
+  "historical_runner": {
+    "path": "RunRuurloGrass.cmd",
+    "sha256": "b425e6e15750a3fec24202f90ceca4ad8423c9124c7382f5960a95a3bfe4772c",
+    "invocation": "..\\animo41.exe Animo.ini"
+  },
+  "direct_file": {
+    "path": "animo.ini",
+    "sha256": "5d1f62faf62747b7d91d3e9199e33954e3038ddd005259f32a8bca95f0c82bb8"
+  },
+  "hydrology": {
+    "path": "Input/SWATRE.UNF",
+    "size": 888148,
+    "sha256": "36d8dbeee7a46c769026c7441ea607160a715768571ba3e048b32ee2ace74d13"
+  },
+  "files": [
+    {"path":"Input/BOUNDARY.INP","size":2037,"sha256":"d5f441cc439aacad72faf2e720cbdb6408e63932bb7c8cf27292542632cdd915"},
+    {"path":"Input/GENERAL.INP","size":10020,"sha256":"5b7e202fb314761c613f2ef71ae56966fa83bc2108252424c8e8cca3b1d1708d"},
+    {"path":"Input/GENERAL_4.0.INP","size":3354,"sha256":"19d973de813d60f15316a1c3adaa2252ea9d60da56214c04b46b04c5c169b8e0"},
+    {"path":"Input/INITIAL.INP","size":6099,"sha256":"6c54217498b02d339b07461b15058d019d9c324701445e3faadb8ee137616c9a"},
+    {"path":"Input/MANAGEMENT.INP","size":3324,"sha256":"b1856c7793bb66271108dd3363252dd4c04cb3023b8b55df0a3b188702efa094"},
+    {"path":"Input/MATERIAL.INP","size":4193,"sha256":"03857e4681cc83fe84c054ac1b1e1cd3df91c9b5204f7f8bc70962d14033c507"},
+    {"path":"Input/MATERIAL_oud.INP","size":10732,"sha256":"7c3258ba50fbf8757e0f3d6f62b670d66ef0ca031f4e8dce0899ea6c3e1427d4"},
+    {"path":"Input/PLANT.INP","size":2937,"sha256":"9c5f359f355f3b1c6d745fc788e1e51c48a9ff362873954aa6239de7fe9e8027"},
+    {"path":"Input/SOIL.INP","size":3284,"sha256":"97881a83a8da46c6ac28694bfc6e2a5540584b1af9d753603e66d1c4deb36da4"},
+    {"path":"Input/SWATRE.UNF","size":888148,"sha256":"36d8dbeee7a46c769026c7441ea607160a715768571ba3e048b32ee2ace74d13"},
+    {"path":"RunRuurloGrass.cmd","size":113,"sha256":"b425e6e15750a3fec24202f90ceca4ad8423c9124c7382f5960a95a3bfe4772c"},
+    {"path":"animo.ini","size":364,"sha256":"5d1f62faf62747b7d91d3e9199e33954e3038ddd005259f32a8bca95f0c82bb8"}
+  ],
+  "input_content_transformation_allowed": false,
+  "reference_admitted": false,
+  "production_migration_admitted": false
+}
