@@ -2,17 +2,19 @@
   "work_unit": "ANIMO-B3B02",
   "target": "TCD-042-B1",
   "class": "B_LOCAL_ALGEBRA_ZERO_FLOW_LIMIT",
-  "trigger": "Flpn = 0 AND Flux = 0",
+  "requested_trigger": "Flpn = 0 AND Flux = 0",
+  "qualified_subdomain": "Flpn = 0 AND Flux = 0 AND Hetop > 0",
+  "unresolved_domain": "Hetop = 0",
   "comparison_policy": "exact where UBQ01 provides bitwise evidence; no tolerance introduced",
   "direct_difference_rule": {
-    "condition": "Load != 0",
+    "condition": "Hetop > 0 AND Load != 0",
     "end_state_increment": "Load*St/Hetop",
     "average_state_increment": "Load*St/(2*Hetop)",
     "same_step_export_increment": "0 because Flux=0"
   },
   "expected_no_difference": [
-    "all records before first qualifying activation",
-    "Flpn=0 AND Flux=0 AND Load=0",
+    "all records before first qualifying positive-Hetop activation",
+    "Flpn=0 AND Flux=0 AND Hetop>0 AND Load=0 in the exercised control",
     "hydrology and forcing at the activation step",
     "Load, St, Hetop and beginning upper-reservoir state",
     "immediate layer-1 state at the Ruurlo activation witness",
@@ -30,6 +32,7 @@
     "later layer chemistry and outputs only after retained mass reaches them through existing model processes"
   ],
   "ruurlo_witness": {
+    "Hetop_m": 0.02,
     "first_difference_TITO": 1915,
     "NH4_end_increment_kg_per_m3": 2.534515669e-5,
     "NO3_end_increment_kg_per_m3": 8.4017094e-6,
@@ -41,7 +44,15 @@
     "ordinary_positive_flow_control_TITO_1": "BITWISE_IDENTICAL",
     "first_observed_layer1_difference_TITO": 1917
   },
+  "zero_thickness_domain": {
+    "legacy_input_accepts_Hetop_zero": true,
+    "input_source": "input1.for:1826-1829 with Checkrea lower-bound comparison at 4068-4074",
+    "positive_Hetop_limit_defined": false,
+    "expected_difference_declared": false,
+    "treatment": "FAIL_CLOSED_UNRESOLVED_NO_BEHAVIOUR_ADMITTED"
+  },
   "forbidden_difference": [
+    "any behaviour claim for Hetop=0 attributable to the positive-Hetop formula",
     "any finite-positive 0<Flux<1.0d-8 behavior attributable to B3B02",
     "threshold change",
     "tolerance or epsilon introduction",
@@ -50,6 +61,8 @@
     "direct same-step layer-1 rewrite",
     "general upper-boundary redesign"
   ],
-  "scope_note": "Natural execution directly exercises NH4 and NO3. Species-generic direct algebra is source-bound; all-species natural execution is not claimed.",
+  "scope_note": "Natural execution directly exercises NH4 and NO3 with Hetop=0.02. Species-generic direct algebra is source-bound for positive Hetop; all-species natural execution and zero-thickness semantics are not claimed.",
+  "readiness_full_requested_trigger": false,
+  "readiness_positive_Hetop_subdomain": true,
   "admission": false
 }
