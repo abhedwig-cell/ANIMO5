@@ -1,0 +1,96 @@
+{
+  "work_unit": "ANIMO-PREP10",
+  "evidence_class": "DIAGNOSTIC_NOT_REFERENCE_PLUS_SOURCE_BOUND",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "baseline_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+  "observer_executable_sha256": "05b13666dd4ba4c99a13954e8d286a62461c8557b021c412f84c1a236a00ae78",
+  "TCD_033": {
+    "classification": "CONFIRMED_LEGACY_PLANT_ACTUAL_UPTAKE_RESTART_INITIALIZATION_DIRECTION_DEFECT",
+    "source_mechanism": "input1 reads Rsampl*_act but Inicalc does not assign nontrivial restart values to Ampl*_act before copying Ampl*_act back over Rsampl*_act",
+    "natural_case_replication": [
+      {
+        "case": "LWKM_gras_1040.2021.2045",
+        "initial_Rsamplni_act_kg_m2_N": 0.0666813,
+        "initial_Rsamplpo_act_kg_m2_P": 0.0088759,
+        "post_Inicalc_Amplni_act": 0.0,
+        "post_Inicalc_Amplpo_act": 0.0
+      },
+      {
+        "case": "GrassPeat",
+        "initial_Rsamplni_act_kg_m2_N": 0.0632935,
+        "initial_Rsamplpo_act_kg_m2_P": 0.00675465,
+        "post_Inicalc_Amplni_act": 0.0,
+        "post_Inicalc_Amplpo_act": 0.0
+      },
+      {
+        "case": "STONE_akk_0006.2001.2015",
+        "initial_Rsamplni_act_kg_m2_N": 0.0195003,
+        "initial_Rsamplpo_act_kg_m2_P": 0.00295112,
+        "post_Inicalc_Amplni_act": 0.0,
+        "post_Inicalc_Amplpo_act": 0.0
+      },
+      {
+        "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+        "initial_Rsamplni_act_kg_m2_N": 0.0235216,
+        "initial_Rsamplpo_act_kg_m2_P": 0.00322743,
+        "post_Inicalc_Amplni_act": 0.0,
+        "post_Inicalc_Amplpo_act": 0.0
+      }
+    ],
+    "minimal_probe": "assign Amplni_act=Rsamplni_act and Amplpo_act=Rsamplpo_act before existing threshold logic",
+    "probe_executable_sha256": "ad6b32062c458f6e9eda061e7a02e1143eaaad23c920687c3f06a7b5e5f7ec64",
+    "LWKM_post_Inicalc_probe": {
+      "Amplni_act_kg_m2_N": 0.0666813,
+      "Rsamplni_act_kg_m2_N": 0.0666813,
+      "Amplpo_act_kg_m2_P": 0.0088759,
+      "Rsamplpo_act_kg_m2_P": 0.0088759
+    },
+    "LWKM_probe_tree_comparison": {
+      "common_generated_outputs": 55,
+      "normalized_different": 26,
+      "missing": 0,
+      "extra": 0,
+      "interpretation": "state-changing restart correction, not accounting-only; differences are diagnostic magnitudes and are not acceptance tolerances"
+    },
+    "state_trajectory_may_change": true,
+    "production_correction_admitted": false
+  },
+  "TCD_034": {
+    "classification": "CONFIRMED_LEGACY_PLANT_POTENTIAL_UPTAKE_RESTART_STATE_OMISSION",
+    "source_mechanism": "Rsampl*_pot is persistent and scientifically used between timesteps but absent from input1/Output_Init orgpla serialization and Inicalc resets accepted potential state to zero",
+    "natural_nonzero_pre_Output_Init_replication": [
+      {
+        "case": "LWKM_gras_1040.2021.2045",
+        "plant_mode": 3,
+        "Rsamplni_pot_kg_m2_N": 0.06634733,
+        "Rsamplpo_pot_kg_m2_P": 0.007806854
+      },
+      {
+        "case": "GrassPeat",
+        "plant_mode": 3,
+        "Rsamplni_pot_kg_m2_N": 0.06759374,
+        "Rsamplpo_pot_kg_m2_P": 0.009396654
+      },
+      {
+        "case": "STONE_akk_0006.2001.2015",
+        "plant_mode": 3,
+        "Rsamplni_pot_kg_m2_N": 0.021070089005,
+        "Rsamplpo_pot_kg_m2_P": 0.0028565385393
+      }
+    ],
+    "LWKM_emitted_orgpla": {
+      "actual_N_written": true,
+      "actual_P_written": true,
+      "potential_N_written": false,
+      "potential_P_written": false
+    },
+    "potential_state_used_by_later_demand_logic": true,
+    "split_run_behavioural_magnitude_measured": false,
+    "production_correction_admitted": false
+  },
+  "frozen_source_modified": false,
+  "frozen_testbank_modified": false,
+  "reference_qualified": false,
+  "production_migration_admitted": false
+}

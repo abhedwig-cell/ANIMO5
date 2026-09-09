@@ -1,0 +1,24 @@
+state_family,input_surface,accepted_state,result_state,commit_surface,restart_output_surface,continuity_assessment,notes
+soil moisture,>moistf:,Mofro,Mofrt,hydrology/init lifecycle,>moistf:,STRUCTURAL_SYMMETRY_SPLIT_RUN_NOT_QUALIFIED,read may be dummy under detailed Iwa=2 because hydrology controls moisture
+NH4 solution,>ammoni:,Conhtop+Conh,Rsconhtop+Rsconh,Init/transport state copy,>ammoni:,STRUCTURAL_SYMMETRY_SPLIT_RUN_NOT_QUALIFIED,
+NO3 solution,>nitrat:,Conitop+Coni,Rsconitop+Rsconi,Init/transport state copy,>nitrat:,STRUCTURAL_SYMMETRY_SPLIT_RUN_NOT_QUALIFIED,
+exudate OM,>orgexu:,Ex,Rsex,Init accepted copy,>orgexu:,STRUCTURAL_SYMMETRY_SPLIT_RUN_NOT_QUALIFIED,TCD-026 concerns balance initial coverage not restart writer symmetry
+humus from exudates,>humexu:,Huex,Rshuex,Init accepted copy,>humexu:,STRUCTURAL_SYMMETRY_SPLIT_RUN_NOT_QUALIFIED,TCD-028 concerns management ledger double count
+fresh OM fractions,>orgfsh:,Os,Rsos,Init accepted copy,>orgfsh:,STRUCTURAL_SYMMETRY_SPLIT_RUN_NOT_QUALIFIED,
+humus OM,>humorg:,Huos,Rshuos,Init accepted copy,>humorg:,STRUCTURAL_SYMMETRY_SPLIT_RUN_NOT_QUALIFIED,
+labile DOM/DON,>orgsol:,Codiormatop+Codiorma+Codiornitop+Codiorni,Rscodiormatop+Rscodiorma+Rscodiornitop+Rscodiorni,Init/transport accepted copy,>orgsol:,STRUCTURAL_SYMMETRY_SPLIT_RUN_NOT_QUALIFIED,
+stable DOM/DON/DOP,>sdomin:,CoStdiorma+CoStdiorni+CoStdiorpo,RsCoStdiorma+RsCoStdiorni+RsCoStdiorpo,Init accepted copy,>sdomin:,STRUCTURAL_SYMMETRY_SPLIT_RUN_NOT_QUALIFIED,stable layer0 dynamically dormant in revision53 PREP06 evidence
+plant root/shoot state,>orgpla:,Rsamplro+Rsamplsh,Rsamplro+Rsamplsh,Init carries result state,>orgpla:,STRUCTURAL_SYMMETRY_SPLIT_RUN_NOT_QUALIFIED,root/shoot continuity still requires split-run verification
+plant cumulative actual N/P uptake,>orgpla:,Amplni_act+Amplpo_act,Rsamplni_act+Rsamplpo_act,Init copies result to accepted in applicable plant modes,>orgpla:,CONFIRMED_RESTART_INITIALIZATION_DIRECTION_DEFECT_TCD033,unmodified supplied LWKM starts with nonzero actual N/P uptake but frozen Inicalc zeroes both before first timestep; minimal restart-to-accepted assignment probe preserves exact values
+plant cumulative potential N/P uptake,none,Amplni_pot+Amplpo_pot,Rsamplni_pot+Rsamplpo_pot,Init copies result to accepted in applicable plant modes,none,CONFIRMED_RESTART_STATE_OMISSION_TCD034,unmodified LWKM ends with nonzero potential N/P state immediately before Output_Init but orgpla serializes actual uptake only; Uptpar uses potential-minus-actual in later demand logic
+P solution,>inipho:,Copotop+Copo,Rscopotop+Rscopo,Init/transport accepted copy,>inipho:,CANONICALIZED_RESTART_SPLIT_RUN_NOT_QUALIFIED,Output_Init forces Inpo=1
+P fast sorption sites,>inipho:,Amcxfa(1:Ncxfa),Rsamcxfa(1:Ncxfa),Init/transport accepted copy,>inipho:,CANONICALIZED_RESTART_SPLIT_RUN_NOT_QUALIFIED,all configured sites written
+P slow sorption sites,>inipho:,Amcxsl(1:Ncxsl),Rsamcxsl(1:Ncxsl),Init/transport accepted copy,>inipho:,CANONICALIZED_RESTART_SPLIT_RUN_NOT_QUALIFIED,all configured sites written
+P precipitated,>inipho:,Ampopr,Rsampopr,Init/transport accepted copy,>inipho:,CANONICALIZED_RESTART_SPLIT_RUN_NOT_QUALIFIED,
+DOP,>inipho:,Codiorpotop+Codiorpo,Rscodiorpotop+Rscodiorpo,Init/transport accepted copy,>inipho:,CANONICALIZED_RESTART_SPLIT_RUN_NOT_QUALIFIED,
+macropore NH4/NO3,>MPnitr:,CoMpNh+CoMpNi,RsCoMpNh+RsCoMpNi,Init explicit result-to-accepted copy,commented >mpnitr: block,CONFIRMED_PERSISTENT_STATE_WRITER_OMISSION_TCD032,all supplied MacroPoreOption values are 0 so behavioural split-run magnitude is not measured
+macropore DOM/DON,>MPorgs:,CoMpDiorMa+CoMpDiorNi,RsCoMpDiorMa+RsCoMpDiorNi,Init explicit result-to-accepted copy,commented >mporgs: block,CONFIRMED_PERSISTENT_STATE_WRITER_OMISSION_TCD032,all supplied MacroPoreOption values are 0 so behavioural split-run magnitude is not measured
+macropore PO4/DOP,>MPphos:,CoMpPo+CoMpDiorPo,RsCoMpPo+RsCoMpDiorPo,Init explicit result-to-accepted copy,commented >mpphos: block,CONFIRMED_PERSISTENT_STATE_WRITER_OMISSION_TCD032,P-dependent and supplied testbank unexercised
+GHG CH4 concentration,>methan:,CoCH4,RsCsCH4,GHG/init lifecycle,>methan:,STRUCTURAL_SYMMETRY_GHG_REFERENCE_BLOCKED,GHG testcase lineage mismatch remains
+GHG N2O concentration,>nitoxi:,CoN2O,RsCsN2O,GHG/init lifecycle,>nitoxi:,STRUCTURAL_SYMMETRY_GHG_REFERENCE_BLOCKED,GHG testcase lineage mismatch remains
+GHG CO2-associated humus auxiliary,none,Huos_CO2/Frhu_CO2,Rshuos_CO2/Frhu_CO2,Init carries Rshuos_CO2 to Huos_CO2; ghgasses reconstructs/updates,none,RECONSTRUCTION_SEMANTICS_UNRESOLVED,no direct restart field and no compatible supplied GHG reference case
