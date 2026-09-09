@@ -13,7 +13,8 @@
     "TIME02": "b4d78cf32cb149cf50aa2b0a0fbefee571eee6b8",
     "MASSQ01": "79f8f806b293ce9e249e59fe4835ff6866026c4f",
     "SYNQ01": "95ae5b8d4627f8c12f732dd8116ba2fb50ef0f50",
-    "GOV02": "474e4e2b5198c0ecaf3c03d519d5270f88852327"
+    "GOV02": "474e4e2b5198c0ecaf3c03d519d5270f88852327",
+    "IO01": "38a576135d5f63b2561b4dbe180f7121fa3f336a"
   },
   "canonical_routing_additions": [
     {
@@ -28,7 +29,7 @@
     },
     {
       "canonical_key": "TCD-038",
-      "canonical_id_state": "RESERVED_BY_B3I01_SUPPLEMENT_NOT_YET_REGISTER_ROW",
+      "canonical_id_state": "REGISTERED_RESERVED_NOT_ADMITTED",
       "phenomenon": "actual plant cumulative uptake restart initialization direction defect",
       "b3_class": "B",
       "disposition": "NEW_CANONICAL_TCD_CANDIDATE",
@@ -45,7 +46,7 @@
     },
     {
       "canonical_key": "TCD-039",
-      "canonical_id_state": "RESERVED_BY_B3I01_SUPPLEMENT_NOT_YET_REGISTER_ROW",
+      "canonical_id_state": "REGISTERED_RESERVED_NOT_ADMITTED",
       "phenomenon": "potential plant N and P uptake accepted-boundary continuation is absent from restart representation",
       "b3_class": "C",
       "class_state": "PROVISIONAL_PENDING_RECONSTRUCTION_TEST",
@@ -100,6 +101,11 @@
       "workunit": "ANIMO-GOV02",
       "disposition": "GOVERNANCE_RULE_STRENGTHENING_ONLY",
       "note": "strengthens fail-closed admission requirements and introduces no scientific discrepancy allocation"
+    },
+    {
+      "workunit": "ANIMO-IO01",
+      "disposition": "QUALIFIED_INPUT_CONTRACT_AUDIT_NO_NEW_TCD_CANDIDATE",
+      "note": "IO01 qualifies revision-53 input contracts and TTUTIL suitability, keeps runtime adapter qualification open, rejects silent GHGMais normalization and admits no production migration; its principal findings are parser/provenance/adapter boundaries already governed by existing input and GHG provenance discrepancies rather than a new post-G5 defect"
     }
   ],
   "source_local_label_reconciliation": {
