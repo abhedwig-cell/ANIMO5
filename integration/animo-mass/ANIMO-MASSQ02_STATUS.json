@@ -1,0 +1,28 @@
+{
+  "work_unit": "ANIMO-MASSQ02",
+  "title": "Residual Causality Reconciliation, Typed Transfer Projection & MASS Gate Readiness",
+  "status": "IN_PROGRESS_CHECKPOINT_PERSISTED",
+  "branch": "work/animo-massq02-residual-causality-typed-events",
+  "base": {
+    "branch": "work/animo-massq01-b1-massledger-projection",
+    "head": "6ccddd631a8dcc21f06b1384baf2561e81179e75"
+  },
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "hard_rules": {
+    "physical_state_mutation": false,
+    "residual_correction": false,
+    "tolerance": false,
+    "known_tcd_masking": false,
+    "new_tcd_allocation": false,
+    "whole_system_carbon_from_cfracom": false
+  },
+  "planned_outputs": [
+    "docs/mass/MASSQ02_RESIDUAL_RECONCILIATION.md",
+    "docs/mass/TYPED_TRANSFER_EVENT_CANDIDATE.md",
+    "integration/animo-mass/MASSQ02_RESIDUAL_CLASSIFICATION.csv",
+    "integration/animo-mass/TYPED_EVENT_PROJECTION.json",
+    "integration/animo-mass/ANIMO-MASSQ02_STATUS.json"
+  ],
+  "checkpoint": "branch created from MASSQ01 closeout and qualification work started; no admission claim yet"
+}
