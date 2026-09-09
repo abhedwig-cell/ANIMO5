@@ -1,0 +1,30 @@
+{
+  "work_unit": "ANIMO-MP02",
+  "title": "B0-derived Whole-Case Macropore Activation Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-mp02-whole-case-activation",
+  "base_branch": "work/animo-mp01-macropore-qualification",
+  "base_head": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+  "status": "IN_PROGRESS_WHOLE_CASE_B1_DIAGNOSTIC_QUALIFICATION",
+  "persisted": true,
+  "tested": false,
+  "qualified": false,
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "parent_case": "CranGrass",
+  "evidence_class": "SYNTHETIC_DIAGNOSTIC_ONLY",
+  "b2_historically_referenced": false,
+  "b3_ready": false,
+  "b3_admitted": false,
+  "production_migration_admitted": false,
+  "legacy_source_modified": false,
+  "frozen_testcase_modified": false,
+  "planned_cases": [
+    "MP02-NO-MP",
+    "MP02-STORAGE",
+    "MP02-EXCHANGE",
+    "MP02-DIRECT-DRAIN",
+    "MP02-SOLUTE-N",
+    "MP02-SOLUTE-P"
+  ]
+}
