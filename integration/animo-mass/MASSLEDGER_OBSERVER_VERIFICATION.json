@@ -1,7 +1,7 @@
 {
   "work_unit": "ANIMO-MASSQ01",
   "evidence_class": "B1_DIAGNOSTIC_OBSERVER_VERIFICATION_NOT_REFERENCE",
-  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6f1cb9cc5b63568",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
   "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
   "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
   "analyzer_tests": {
