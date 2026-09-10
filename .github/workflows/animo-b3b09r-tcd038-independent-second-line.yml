@@ -1,0 +1,25 @@
+name: ANIMO-B3B09R TCD-038 independent second-line
+
+on:
+  push:
+    branches:
+      - review/animo-b3b09r-tcd038-independent-second-line
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate independent Tier-C review evidence
+        run: python tools/validate_b3b09r_tcd038_review.py
+
+      - name: Validate fail-closed review scope
+        run: python tools/validate_b3b09r_scope.py
