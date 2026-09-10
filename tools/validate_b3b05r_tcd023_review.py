@@ -9,6 +9,8 @@ READINESS = "e76345bf984c58ff0b30a24b39dc8e037a2f4fd6"
 SOURCE_SHA = "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566"
 TESTBANK_SHA = "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
 MEMBER_SHA = "938d35c043bd3e1f14c20ec1c0b2395e9944beb2797746bc4e7cdfb38bb98106"
+GOV04 = "1bbe4c211197590f346803106e45dca5faae79fc"
+GOV04_MATRIX_BLOB = "845db982f9a72e7cf271b74e948f46ce81dec028"
 
 
 def load(path):
@@ -25,12 +27,15 @@ prep04 = load("integration/animo-prep/PREP04_STABLE_DOM_P_PARTITION.json")
 prep05 = load("integration/animo-prep/PREP05_CROSS_SPECIES_SYMMETRY_AUDIT.json")
 recheck = load("integration/animo-b3/TCD023_INDEPENDENT_RECHECK.json")
 expected = load("integration/animo-b3/TCD023_EXPECTED_DIFFERENCE.json")
+upstream = load("integration/animo-b3/TCD023_UPSTREAM_EVIDENCE.json")
 synq = load("integration/animo-synthetic/SYNTHETIC_ORACLE_REGISTER.json")
-gov04 = load("integration/animo-governance/GOV04_REVIEW_INTENSITY_MATRIX.json")
 
 require(result["semantic_result"] == "PASS", "semantic result is not PASS")
 require(result["reviewed_readiness"]["head"] == READINESS, "readiness pin changed")
 require(result["reviewed_readiness"]["actions_conclusion_rechecked"] == "success", "readiness Actions not green")
+require(result["live_authorities"]["GOV04"] == "ANIMO-GOV04@" + GOV04, "GOV04 review pin changed")
+require(upstream["pinned_authorities"]["risk_tier_governance"]["head"] == GOV04, "readiness GOV04 pin changed")
+require(upstream["pinned_authorities"]["risk_tier_governance"]["matrix_blob_sha"] == GOV04_MATRIX_BLOB, "GOV04 matrix blob pin changed")
 require(result["frozen_B0"]["source_archive_sha256"] == SOURCE_SHA, "source archive pin mismatch")
 require(result["frozen_B0"]["testbank_archive_sha256"] == TESTBANK_SHA, "testbank pin mismatch")
 require(result["frozen_B0"]["source_member_sha256"] == MEMBER_SHA, "resp_miner pin mismatch")
@@ -114,10 +119,10 @@ require(reg["extra_candidate_outputs"] == [], "extra candidate outputs")
 require(reg["comparison_has_scientific_numeric_tolerance"] is False, "scientific numeric tolerance introduced")
 require(reg["volatile_metadata_normalization_only"] is True, "normalization scope widened")
 
-B = gov04["risk_tiers"]["B"]
-require("B_LOCAL_ALGEBRA_INDEX_SPECIES" in B["default_qualification_classes"], "GOV04 Tier-B class mapping changed")
-require(B["independent_second_line_required"] is True, "GOV04 independent review requirement changed")
+require(result["risk"]["qualification_class"] == "B_LOCAL_ALGEBRA_INDEX_SPECIES", "review qualification class changed")
 require(result["risk"]["GOV04_tier"] == "B", "review tier is not B")
+require(result["risk"]["independent_review_required"] is True, "Tier-B independent review flag lost")
+require(result["risk"]["tier_C_or_D_trigger_found"] is False, "higher-tier trigger unresolved")
 require(result["downstream_effect"]["tier_A_available"] is False, "review incorrectly allows Tier A")
 require(result["historical_behavior"]["revision_53_behavior"] == "UNKNOWN", "historical UNKNOWN not preserved")
 require(result["historical_behavior"]["qualified_B2_found"] is False, "unexpected B2 claim")
@@ -148,6 +153,6 @@ print("SYNQ-O004/O005 boundary: PASS_NOT_B2")
 print("natural activation: 9658 unique events, layers 17..23")
 print("downstream nonzero Tomnpo/Rekopo effect: CONFIRMED_TIER_A_EXCLUDED")
 print("eight-case regression surface: PASS")
-print("GOV04 risk tier: B")
+print("GOV04 risk tier: B, live policy reviewed at pinned sibling authority")
 print("historical revision-53 behaviour: UNKNOWN")
 print("scope guard: PASS_REVIEW_ONLY_NO_ADMISSION_NO_PRODUCTION_CHANGE")
