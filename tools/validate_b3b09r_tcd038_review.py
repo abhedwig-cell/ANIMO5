@@ -3,18 +3,20 @@
 
 import csv
 import json
+import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REVIEW_PATH = ROOT / "integration/animo-b3/TCD038_INDEPENDENT_SECOND_LINE_REVIEW.json"
 HUMAN_PATH = ROOT / "docs/b3/TCD038_INDEPENDENT_SECOND_LINE_REVIEW.md"
-PREP10_PATH = ROOT / "integration/animo-prep12/source/PREP10_PLANT_UPTAKE_RESTART_CONTINUITY.json"
 REGISTER_PATH = ROOT / "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
 B0_HASH_PATH = ROOT / "reference/source/ANIMO_4.1.5.53.zip.sha256"
 
 EXPECTED_START = "1b47d6b2e422463b557a48355ad8b4f5bed70ebc"
 EXPECTED_AGGREGATE = "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6"
+PREP12_SHA = "3d86de057247adcfeefb82c11d7cf7d5b2cbdf73"
+PREP12_EVIDENCE_PATH = "integration/animo-prep12/source/PREP10_PLANT_UPTAKE_RESTART_CONTINUITY.json"
 EXPECTED_SOURCE_HASH = "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566"
 EXPECTED_TESTBANK_HASH = "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
 
@@ -34,6 +36,24 @@ def load_json(path: Path):
         return json.loads(path.read_text(encoding="utf-8"))
     except Exception as exc:  # pragma: no cover - fail-closed diagnostic
         fail(f"cannot parse {path.relative_to(ROOT)}: {exc}")
+
+
+def git_show_json(commit: str, path: str):
+    """Read a pinned authority directly from repository history, not from review-tree copies."""
+    proc = subprocess.run(
+        ["git", "show", f"{commit}:{path}"],
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    if proc.returncode != 0:
+        fail(f"cannot read pinned authority {commit}:{path}: {proc.stderr.strip()}")
+    try:
+        return json.loads(proc.stdout)
+    except Exception as exc:  # pragma: no cover
+        fail(f"cannot parse pinned authority {commit}:{path}: {exc}")
 
 
 review = load_json(REVIEW_PATH)
@@ -170,8 +190,11 @@ require(strength.get("historical_revision_53_behavior") == "UNKNOWN_WITHOUT_B2",
 require(strength.get("qualified_B2_found_for_TCD038") is False, "unexpected qualified B2 claimed")
 require(strength.get("gnu_diagnostic_treated_as_historical_B2") is False, "GNU diagnostic evidence treated as historical B2")
 
-# Verify the primary PREP10/PREP12 machine evidence independently remains bounded.
-prep = load_json(PREP10_PATH)
+# Verify the primary rehomed PREP10 evidence at the exact PREP12 authority. The
+# review tree need not duplicate that artifact; checkout fetch-depth 0 makes the
+# pinned authority directly auditable through git history.
+prep = git_show_json(PREP12_SHA, PREP12_EVIDENCE_PATH)
+require(review.get("authorities", {}).get("PREP12") == PREP12_SHA, "review PREP12 pin differs from validator authority")
 require(prep.get("evidence_class") == "DIAGNOSTIC_NOT_REFERENCE_PLUS_SOURCE_BOUND", "PREP10/PREP12 source evidence class changed")
 require(prep.get("source_archive_sha256") == EXPECTED_SOURCE_HASH, "PREP10 source hash mismatch")
 require(prep.get("testbank_sha256") == EXPECTED_TESTBANK_HASH, "PREP10 testbank hash mismatch")
