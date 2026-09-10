@@ -1,0 +1,85 @@
+{
+  "work_unit": "ANIMO-B3I07",
+  "title": "TCD-037 GHG Balance Observer Child-Atom Routing & Tier-A Readiness Partition",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i07-tcd037-ghg-balance-observer-routing",
+  "status": "PERSISTED_VALIDATION_PENDING",
+  "base": {
+    "work_unit": "ANIMO-B3I06",
+    "head": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
+    "canonical_register_tail": "TCD-042"
+  },
+  "evidence": {
+    "runtimeq03_head": "a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "runtimeq03_status": "QUALIFIED_ACCOUNTING_SEMANTIC_SPLIT_PARENT_ATOMIZATION_REQUIRED",
+    "runtimeq03_workflow_run_id": 34535837734,
+    "runtimeq03_workflow_conclusion": "success",
+    "synthetic_strength": "B1_ONLY_NOT_INDEPENDENT_B2",
+    "natural_active_ghg_case": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+    "historical_behavior": "UNKNOWN"
+  },
+  "authorities": {
+    "aggregate": "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "intake": {
+    "parent_tcd": "TCD-037",
+    "parent_state": "ATOMIZED_A1_A2_A3_A4_ACCOUNTING_OBSERVER_CHILDREN_NO_ADMISSION",
+    "child_atoms": [
+      "TCD-037-A1",
+      "TCD-037-A2",
+      "TCD-037-A3",
+      "TCD-037-A4"
+    ],
+    "child_class": "A_ACCOUNTING_REPORTING_ONLY",
+    "child_risk_state": "TIER_A_CANDIDATE_WAIVER_NOT_YET_AVAILABLE",
+    "new_top_level_tcd_reservations": [],
+    "new_top_level_tcd_count": 0,
+    "tcd_043_reserved": false,
+    "canonical_register_append_performed": false,
+    "canonical_register_tail_after_work": "TCD-042",
+    "parent_admitted": false,
+    "child_admission_count": 0
+  },
+  "readiness_routes": {
+    "TCD-037-A1": "ANIMO-B3A05",
+    "TCD-037-A2": "ANIMO-B3A06",
+    "TCD-037-A3": "ANIMO-B3A07",
+    "TCD-037-A4": "ANIMO-B3A08"
+  },
+  "tier_a_waiver": {
+    "granted": false,
+    "state": "NOT_AVAILABLE_READINESS_GATES_PENDING",
+    "blocking_gates": [
+      "correction-specific accounting identity not yet demonstrated on a correction path",
+      "correction-specific validator and scope guard not yet qualified",
+      "natural active-GHG revision-53 case unavailable",
+      "same-context RUNTIMEQ03 synthetic B1 probe is not independently qualified activation evidence"
+    ],
+    "escalation": "NONE_AT_ROUTING_STAGE_REEVALUATE_STRICTEST_APPLICABLE_RISK_IN_CHILD_READINESS"
+  },
+  "scope_guards": {
+    "production_source_modified": false,
+    "canonical_tcd_register_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "scientific_admission": false,
+    "corrected_legacy_admission": false,
+    "production_migration_admitted": false,
+    "b4_opened": false,
+    "rg05h_updated": false,
+    "tcd032_036_composition": false,
+    "historical_behavior_promoted": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "recommended_next": [
+    "Start ANIMO-B3A05 for TCD-037-A1 from this canonical routing authority, unless a later central routing authority supersedes B3I07 before start.",
+    "Keep B3A06, B3A07 and B3A08 as separate sibling readiness lanes and do not infer sibling admission from any one PASS."
+  ]
+}
