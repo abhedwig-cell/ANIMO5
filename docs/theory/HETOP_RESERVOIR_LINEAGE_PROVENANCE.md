@@ -10,7 +10,7 @@ ANIMO-UBQ04 established that the available ANIMO 4.0 user documentation and revi
 
 The official WUR catalogue identifies Groenendijk and Kroes (1999), *Modelling the nitrogen and phosphorus leaching to groundwater and surface water with ANIMO 3.5*, Report 144, with official document locator `https://edepot.wur.nl/363774`.
 
-The official PDF endpoint was not retrievable through the execution environment. Paragraph-level reconstruction was therefore checked against an accessible secondary full-text mirror, `https://paperzz.com/doc/8968173/0-jul-2000---wageningen-ur-e`. This distinction is retained explicitly: WUR supplies bibliographic identity and official provenance, while the mirror supplies the accessible text for the cited section.
+Direct opening of the official PDF endpoint remained blocked in the execution environment. However, during TH03 closeout strengthening, the WUR edepot search index itself exposed the relevant Section 2.1.3 paragraph text. The same passage was cross-checked against the previously located secondary full-text mirror. The process reconstruction below therefore has WUR-hosted paragraph-level support; the secondary mirror is corroboration only, not the sole textual source.
 
 Section 2.1.3, *Upper soil storage and surface runoff*, establishes the following model concept in ANIMO 3.5:
 
