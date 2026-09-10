@@ -165,17 +165,19 @@
   "validation": {
     "validator": "tools/b3b04r/validate_b3b04r.py",
     "workflow": ".github/workflows/animo-b3b04r-tcd040-second-line.yml",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "768ea86c685d2206ac43410c6d78b1c1eae92b96",
+    "github_actions_run_id": 34451325831,
+    "github_actions_job_id": 102787508263,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS_B3B04R_REVIEW_PACKAGE_FAIL_CLOSED",
+    "scope_guard": "PASS_B3B04R_SCOPE_GUARD",
+    "closeout_note": "Run 34451325831 validates the persisted review package. This status-only closeout records that run; the closeout head must pass the same workflow independently."
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "qualified": true,
+    "workunit_complete": true
   }
 }
