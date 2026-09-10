@@ -23,7 +23,7 @@
     "current_gov03_authority": "cbd262bdabe92923113b7326f2f42822ce9a971c",
     "current_scientific_admission_count": 5,
     "current_admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026", "TCD-015"],
-    "newer_rg05f_found_at_reconciliation": false,
+    "newer_rg05f_found_at_final_recheck": false,
     "reconciliation_note": "GOV04 was created from the then-current RG05D authority. RG05E qualified concurrently and is now the current central-regie authority. GOV04 retains RG05D as its immutable authoring base and consumes RG05E prospectively without rewriting historical snapshots."
   },
   "governance_only": true,
@@ -52,15 +52,17 @@
     },
     "TCD-027": {
       "risk_tier": "A_CANDIDATE_CONDITIONAL",
-      "decision": "ONE_BOUNDED_GOV04_TIER_A_TECHNICAL_ADMISSION_WORKUNIT_MAY_REPLACE_NEW_SECOND_LINE_ONLY_IF_ALL_WAIVER_GATES_PASS",
+      "decision": "PARK_EXISTING_R2_HANDOFF_AND_USE_ONE_BOUNDED_GOV04_TIER_A_TECHNICAL_ADMISSION_WORKUNIT_ONLY_IF_ALL_WAIVER_GATES_PASS",
       "existing_review": "ANIMO-B3A01R@510c9313926457cd9bfd8e71a551255297bdfbb3:INCOMPLETE_EVIDENCE_INSUFFICIENCY",
       "qualified_evidence_remediation": "ANIMO-B3A01E@5232ef5fa6daafa2296401b19fd9e866a34152bd",
+      "existing_r2_handoff": "ANIMO-B3A01R2@428e0212082bbf80a2b07683d5b58588e7645095:HANDOFF_ONLY_NO_REVIEW_PERFORMED",
       "remediated_source_checks": [
         "EXACT_LOCAL_DUM_CONSTRUCTION_AND_MEANING",
         "EXACT_OUTBAL_WRITE_SLOT_24_TO_27_MAPPING",
         "EXACT_ORGANIC_P_SLOT_25_26_27_SELF_ACCUMULATORS"
       ],
       "new_separate_second_line_required_if_all_tier_a_waiver_gates_pass": false,
+      "r2_resume_condition": "ANY_TIER_A_WAIVER_GATE_FALSE_OR_UNKNOWN_OR_SCOPE_ESCALATION",
       "automatic_admission_ready": false,
       "admitted_here": false
     },
@@ -95,13 +97,13 @@
   "validation": {
     "validator": "tools/validate_gov04_review_policy.py",
     "workflow": ".github/workflows/animo-gov04-risk-tiered-review-policy.yml",
-    "tested_head": "278fe98c32015810bd55fa35ef9ffb9f8362fa3d",
-    "github_actions_run_id": 34459809106,
-    "github_actions_job_id": 102814682601,
+    "tested_head": "db5233d4237bf2e329e9c76294232aa81f81dba5",
+    "github_actions_run_id": 34460943316,
+    "github_actions_job_id": 102818366959,
     "github_actions_conclusion": "success",
     "validator_result": "PASS_GOV04_RISK_TIERED_REVIEW_POLICY",
     "scope_guard": "PASS_GOV04_SCOPE_GUARD",
-    "closeout_note": "Run 34459809106 validated the pre-reconciliation GOV04 closeout. The reconciled closeout commit is qualified only when the same fail-closed workflow also passes after this status update; that non-recursive final run is verified externally rather than embedded by another self-changing status commit."
+    "closeout_note": "Run 34460943316 validates the complete GOV04 policy, matrix and final transition choice through head db5233d4237bf2e329e9c76294232aa81f81dba5. This status-only closeout commit must pass the identical fail-closed workflow; that final non-recursive run is verified externally and is not embedded by another self-changing status commit."
   },
   "work_status": {
     "realized": true,
