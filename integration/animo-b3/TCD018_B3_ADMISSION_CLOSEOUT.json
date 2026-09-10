@@ -1,0 +1,183 @@
+{
+  "record_id": "B3D06-TCD018-GOV03-ADMISSION",
+  "record_version": 1,
+  "tcd_ids": ["TCD-018"],
+  "atomicity": "ATOMIC",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "scope": {
+    "process": "canopy interception water-storage reporting interface",
+    "code_path": "Hydro_detailed / Outbal_calc Bawa water-ledger interface",
+    "claim": "the already-existing interception storage change Sict-Sic must be observed in the selected Bawa water control volume without changing hydrology state, hydrology/process fluxes, forcing, interception physics or state-promotion semantics",
+    "candidate_accounting_relation": "Bawa_Ddev_corrected = Bawa_Ddev_legacy - sum((Sict-Sic)*1000) over the active reporting period/control volume"
+  },
+  "authorities": {
+    "B3D05": "2f06cc86225637f8dadfdd969fe48dcf851b9ee2",
+    "B3A03": "8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+    "B3A03R_TECH": "0876e6e1b6ce33ee5e7b812ab4107f54760d6b27",
+    "B3A03E": "4c92b27ed5bbcaadb0e703e622e8c3f690458fa8",
+    "B3A03R2": "fc4a53c2e2e32dee27062959c7ecba7b605cf398",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "PREP06": "9b1f1ea51c24fb82823290193651830dc61ea3c8",
+    "SYNQ01": "842f72300fd03ede0b9024537a7ee6126722a121",
+    "MASSQ01": "6ccddd631a8dcc21f06b1384baf2561e81179e75",
+    "RG05B": "c353c3179f213c1bf24c48b3c06f8065c760d3e2"
+  },
+  "identities": {
+    "b0": {
+      "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+    },
+    "b1": {
+      "status": "DIAGNOSTIC_NOT_REFERENCE",
+      "evidence_identity": "natural LWKM activation plus isolated eight-case qualification evidence and independent synthetic conservation oracle",
+      "diagnostic_limitations": "No B1 evidence is promoted to B2."
+    },
+    "b2": {
+      "status": "UNAVAILABLE_AFTER_DOCUMENTED_ACQUISITION_ATTEMPT",
+      "acquisition_effort_ref": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+    }
+  },
+  "evidence": {
+    "exact_identity_and_causality": {
+      "status": "PRESENT",
+      "summary": "Sic and Sict are existing interception-storage states observed by detailed hydrology; the selected Bawa ledger omits their reporting-period storage change.",
+      "refs": [
+        "ANIMO-B3A03@8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+        "ANIMO-B3A03R2@fc4a53c2e2e32dee27062959c7ecba7b605cf398"
+      ]
+    },
+    "conservation": {
+      "status": "PRESENT",
+      "summary": "The accounting correction observes an already-existing storage term in the selected control-volume ledger and does not alter physical water state or fluxes.",
+      "refs": [
+        "ANIMO-PREP06@9b1f1ea51c24fb82823290193651830dc61ea3c8",
+        "SYNQ-O003 via ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+        "ANIMO-B3A03R2@fc4a53c2e2e32dee27062959c7ecba7b605cf398"
+      ]
+    },
+    "coverage": {
+      "natural_LWKM_activation": true,
+      "period_reconciliation_rows": 25,
+      "period_years": "1991-2015",
+      "detailed_hydrology_probe_records": 900,
+      "isolated_cases": 8,
+      "baseline_candidate_run_records": 16,
+      "output_digest_rows": 376,
+      "raw_equal": 270,
+      "equal_after_declared_volatile_normalization_only": 100,
+      "whitelisted_differences": 6,
+      "unexpected_differences": 0,
+      "missing_or_extra": 0
+    },
+    "expected_difference": {
+      "changed_surfaces": [
+        "bawaGP.Out",
+        "bawaRP.Out",
+        "bawaTP.Out",
+        "ani_waGP.Bal",
+        "ani_waRP.Bal",
+        "ani_waTP.Bal"
+      ],
+      "difference_condition": "selected Bawa control volume active and net interception storage changes over the reporting period",
+      "required_unchanged": [
+        "Sic and Sict physical trajectories",
+        "all hydrological states",
+        "all hydrological and management/process fluxes",
+        "forcing and testcase scientific inputs",
+        "interception physics",
+        "state-promotion semantics",
+        "SWAP/SWATRE payload",
+        "all non-water reporting families",
+        "unrelated water residual classifications"
+      ]
+    },
+    "non_interference": {
+      "status": "PRESENT",
+      "primary_basis": "bounded static candidate write set independently reviewed in B3A03R2",
+      "corroboration": "376-row output digest ledger with only six predeclared water-ledger differences",
+      "candidate_added_writes": [
+        "Tcd018IcCu reporting accumulator",
+        "Bawa(Ddev) reporting deviation"
+      ],
+      "candidate_assigns_Sic_or_Sict": false,
+      "candidate_modifies_hydrology_or_process_flux_assignment": false,
+      "output_equality_used_as_sole_state_or_flux_proof": false
+    },
+    "independent_review": {
+      "status": "COMPLETE",
+      "reviewer_or_workunit": "ANIMO-B3A03R2@fc4a53c2e2e32dee27062959c7ecba7b605cf398",
+      "independent_from_correction_authoring": true,
+      "scope": "new separate ChatGPT context from B3A03/B3A03E/B3D05 authoring; no organizational or human independence claimed",
+      "result": "PASS_TCD018_INDEPENDENT_SECOND_LINE_R2_READINESS_REVIEW",
+      "final_workflow_run": 34443743545,
+      "issue": 27,
+      "issue_result_comment": 5613977329,
+      "previous_fail_retained": "FAIL_TCD018_INDEPENDENT_SECOND_LINE_READINESS_REVIEW",
+      "previous_fail_head": "57cfdfb3a7fb982f6692b0b32f8c8aa044c57fd7"
+    },
+    "historical_uncertainty": {
+      "historical_revision53_behaviour": "UNKNOWN",
+      "qualified_B2_exists": false,
+      "uncertainty_statement": "Historical revision-53 behaviour remains unknown because no qualified B2 behavioural reference exists.",
+      "scope_limitations": "This admission establishes only the atomic scientific accounting correction. It does not establish historical fidelity, global water closure, whole-model equivalence, B4 readiness or production migration."
+    },
+    "residual_boundary": {
+      "LWKM_approximately_0_0601_mm": "CAUSAL_EVIDENCE_NOT_TOLERANCE",
+      "MASSQ01_CranGrass_TITO724_mm": -0.0030198960466805147,
+      "MASSQ01_CranGrass_TITO724_class": "UNEXPLAINED_RESIDUAL_OUTSIDE_TCD018",
+      "global_water_closure_claimed": false
+    }
+  },
+  "class_specific_evidence": {
+    "physical_storage_owner_demonstrated": "PASS",
+    "begin_end_storage_identity": "PASS",
+    "ledger_omission_demonstrated": "PASS",
+    "reporting_only_write_set": "PASS",
+    "physical_state_non_interference": "PASS",
+    "process_flux_non_interference": "PASS",
+    "water_only_expected_difference_surface": "PASS",
+    "natural_activation_and_period_reconciliation": "PASS",
+    "independent_second_line_R2": "PASS"
+  },
+  "gates": {
+    "b0_identity": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Frozen source and testbank identities are pinned."},
+    "b1_evidence": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Natural LWKM and isolated qualification evidence are present and remain diagnostic, not B2."},
+    "b2_route": {"status": "PASS", "applicability": "APPLICABLE", "justification": "GOV03 qualifies B2 unavailability after reasonable acquisition effort and opens the historical-uncertainty route."},
+    "theory_or_exact_identity": {"status": "PASS", "applicability": "APPLICABLE", "justification": "The existing interception-storage term and selected Bawa control-volume omission are independently reviewed."},
+    "causal": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Natural LWKM period evidence isolates the characteristic omitted storage contribution."},
+    "conservation": {"status": "PASS", "applicability": "APPLICABLE", "justification": "PREP06 and SYNQ-O003 support the storage-observation control-volume identity without changing physical state."},
+    "expected_difference": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Only the six predeclared water-ledger outputs may change."},
+    "non_interference": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Independent R2 review passes bounded state/flux non-interference from the static write set, corroborated by the 376-row digest ledger."},
+    "coverage": {"status": "PASS", "applicability": "APPLICABLE", "justification": "25 annual LWKM periods, 900 detailed-hydrology probe records and eight isolated cases cover the bounded claim."},
+    "independent_review": {"status": "PASS", "applicability": "APPLICABLE", "justification": "ANIMO-B3A03R2 passes all 19 review gates in a new separate ChatGPT context."},
+    "residual_uncertainty": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Historical behaviour remains UNKNOWN and the unrelated MASSQ01 residual remains visible outside TCD-018; no global closure claim is made."},
+    "class_specific": {"status": "PASS", "applicability": "APPLICABLE", "justification": "Class-A accounting-only ownership, omission, non-interference and output-whitelist requirements are satisfied."},
+    "composition_if_applicable": {"status": "PASS", "applicability": "NOT_APPLICABLE", "justification": "This is one atomic TCD-018 accounting claim only."}
+  },
+  "residual_uncertainty": [
+    "No qualified B2 behavioural reference exists; historical revision-53 behaviour remains UNKNOWN.",
+    "The previous independent FAIL remains historically valid for the earlier evidence packet and is not overwritten by R2.",
+    "The MASSQ01 CranGrass TITO=724 residual of -0.0030198960466805147 mm remains unexplained and outside TCD-018.",
+    "0.0601 mm is causal evidence and is not an acceptance tolerance.",
+    "No global water-closure claim is made.",
+    "The independent R2 review is separate-ChatGPT-context review and does not claim organizational or human independence.",
+    "This admission does not authorize B4, production source modification, production migration or whole-model historical equivalence."
+  ],
+  "composition": {
+    "is_composition": false,
+    "component_record_ids": []
+  },
+  "admission_decision": {
+    "admitted": true,
+    "decision": "ADMIT_TCD018_ATOMIC_CLASS_A_SCIENTIFIC_ACCOUNTING_CORRECTION_WITH_HISTORICAL_UNCERTAINTY",
+    "decision_scope": "TCD-018 atomic interception-storage Bawa accounting interface only",
+    "historical_fidelity_claimed": false,
+    "global_water_closure_claimed": false,
+    "production_patch_authorized": false,
+    "production_migration_admitted": false,
+    "b4_admitted": false
+  }
+}
