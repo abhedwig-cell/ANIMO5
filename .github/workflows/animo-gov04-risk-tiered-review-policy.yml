@@ -1,0 +1,53 @@
+name: ANIMO-GOV04 risk-tiered review policy
+
+on:
+  push:
+    branches:
+      - work/animo-gov04-risk-tiered-review-policy
+
+jobs:
+  validate-gov04:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Fetch pinned governance authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin \
+            refs/heads/work/animo-b3q01-scientific-admission-framework:refs/remotes/origin/work/animo-b3q01-scientific-admission-framework \
+            refs/heads/work/animo-gov03-historical-b2-acquisition-closure:refs/remotes/origin/work/animo-gov03-historical-b2-acquisition-closure \
+            refs/heads/work/animo-rg05d-fourth-b3-admission-integration:refs/remotes/origin/work/animo-rg05d-fourth-b3-admission-integration
+          git cat-file -e 846e0f4d02a38b9e02cc1419b1ca87e63aaedb54^{commit}
+          git cat-file -e cbd262bdabe92923113b7326f2f42822ce9a971c^{commit}
+          git cat-file -e f3d6b9780631bd627f8bca0658a8e3878746e666^{commit}
+
+      - name: Validate GOV04 review policy
+        run: python tools/validate_gov04_review_policy.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=f3d6b9780631bd627f8bca0658a8e3878746e666
+          allowed='^(docs/governance/ANIMO_GOV04_RISK_TIERED_REVIEW_POLICY\.md|integration/animo-governance/GOV04_REVIEW_INTENSITY_MATRIX\.json|integration/animo-governance/ANIMO-GOV04_STATUS\.json|tools/validate_gov04_review_policy\.py|\.github/workflows/animo-gov04-risk-tiered-review-policy\.yml)$'
+          git diff --name-only "$base" HEAD | tee /tmp/gov04-changed.txt
+          bad=$(grep -Ev "$allowed" /tmp/gov04-changed.txt || true)
+          if [ -n "$bad" ]; then
+            echo "Unexpected changed paths:"
+            echo "$bad"
+            exit 1
+          fi
+          test "$(wc -l < /tmp/gov04-changed.txt)" -eq 5
+          if grep -Eq '(^|/)(src|source|legacy|production)(/|$)|\.(for|f|f90|f95|c|cpp|h)$' /tmp/gov04-changed.txt; then
+            echo "Production or model source touched"
+            exit 1
+          fi
+          echo PASS_GOV04_SCOPE_GUARD
