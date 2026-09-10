@@ -1,0 +1,70 @@
+{
+  "work_unit": "ANIMO-RG05G",
+  "snapshot_date": "2026-09-10",
+  "base_aggregate": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+  "integration_rule": "APPLY_EXACTLY_THREE_QUALIFIED_POST_RG05F_ATOMIC_ADMISSION_DELTAS_TCD030_TCD023_TCD028_NO_OTHER_PROMOTION",
+  "governance_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "tcd_deltas": [
+    {
+      "tcd": "TCD-030",
+      "to_state": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+      "admission_authority": "ANIMO-B3D15@22e48f7e2c1eaa1245f034de2d909191d9cfa227",
+      "risk_tier": "B",
+      "historical_behaviour": "UNKNOWN_WITHOUT_B2"
+    },
+    {
+      "tcd": "TCD-023",
+      "to_state": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+      "admission_authority": "ANIMO-B3D16@8650ea9e716336520d8d7df5f9ea2b393d17ab98",
+      "risk_tier": "B",
+      "historical_behaviour": "UNKNOWN_WITHOUT_B2"
+    },
+    {
+      "tcd": "TCD-028",
+      "to_state": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+      "admission_authority": "ANIMO-B3D18@796c6f78ff863a2237e163d00cf4b5d15c04fc17",
+      "formal_disposition_authority": "ANIMO-B3D17@ad1701e72ac51f61f81cc4e9a1857ab14bb8d8d8",
+      "risk_tier": "C",
+      "historical_behaviour": "UNKNOWN_WITHOUT_B2"
+    }
+  ],
+  "admission_counts": {
+    "pre_delta_scientific_admissions": 7,
+    "new_atomic_admissions": 3,
+    "post_delta_scientific_admissions": 10
+  },
+  "canonical_queue_cardinality": {
+    "global_canonical_queue_count_recomputed": false,
+    "reason": "Post-RG05F canonical/routing authority evolved independently through B3I03-B3I06; subtracting admissions from RG05F's old queue cardinality would fabricate a stale global count.",
+    "canonical_register_or_routing_files_modified_here": false,
+    "observed_later_routing_authorities": [
+      "ANIMO-B3I03@814ea660d367494432beb63ea78298d1f6cd73d7",
+      "ANIMO-B3I04@400b7cd79f89043e091751707dfa96537587dcf6",
+      "ANIMO-B3I05@7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+      "ANIMO-B3I06@8f01f0cb366dfa8cc63a184d6f885100899a8cd9"
+    ],
+    "later_routing_top_level_append_after_b3i03_observed": false,
+    "observed_canonical_tail": "TCD-042"
+  },
+  "admitted_tcds": [
+    "TCD-017",
+    "TCD-018",
+    "TCD-024",
+    "TCD-026",
+    "TCD-015",
+    "TCD-027",
+    "TCD-041",
+    "TCD-030",
+    "TCD-023",
+    "TCD-028"
+  ],
+  "unchanged_high_level_boundaries": {
+    "B3_whole_model_baseline_complete": false,
+    "B4": "NOT_ADMITTED",
+    "PRODUCTION": "NOT_ADMITTED",
+    "canonical_tcd_register_modified": false,
+    "routing_register_modified": false,
+    "composition_admitted": false
+  },
+  "other_queue_entries": "NOT_RECOUNTED_OR_RECLASSIFIED_BY_RG05G; USE_CURRENT ROUTING/CANONICAL AUTHORITIES FOR FUTURE INTAKE AND QUALIFICATION."
+}

@@ -1,0 +1,21 @@
+name: ANIMO-RG05G second GOV04 batch
+
+on:
+  push:
+    branches:
+      - work/animo-rg05g-second-gov04-batched-admission-integration
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate RG05G batched atomic admission integration
+        run: python tools/validate_rg05g_second_gov04_batch.py

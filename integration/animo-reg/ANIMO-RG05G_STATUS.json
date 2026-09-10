@@ -1,0 +1,43 @@
+{
+  "work_unit": "ANIMO-RG05G",
+  "title": "Second GOV04 Batched Atomic Admission Integration",
+  "branch": "work/animo-rg05g-second-gov04-batched-admission-integration",
+  "state": "AGGREGATE_PACKAGE_PERSISTED_PENDING_MACHINE_VALIDATION",
+  "decision": "QUALIFIED_SECOND_GOV04_BATCHED_ATOMIC_ADMISSION_INTEGRATION_THREE_POST_RG05F_ADMISSIONS_NO_PRODUCTION",
+  "source_aggregate": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+  "new_atomic_admissions": [
+    "ANIMO-B3D15@22e48f7e2c1eaa1245f034de2d909191d9cfa227:TCD-030",
+    "ANIMO-B3D16@8650ea9e716336520d8d7df5f9ea2b393d17ab98:TCD-023",
+    "ANIMO-B3D18@796c6f78ff863a2237e163d00cf4b5d15c04fc17:TCD-028"
+  ],
+  "scientific_admission_count": 10,
+  "historical_uncertainty_admission_count": 10,
+  "normal_batch_threshold_reached": true,
+  "early_batch": false,
+  "b3_complete": false,
+  "b4_open": false,
+  "production_open": false,
+  "global_canonical_queue_count_recomputed": false,
+  "hard_boundaries": {
+    "scientific_readmission_performed": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "routing_register_modified": false,
+    "composition_admitted": false,
+    "b4_admitted": false,
+    "production_migration_admitted": false,
+    "historical_fidelity_claimed": false
+  },
+  "validation": {
+    "machine_validated": false,
+    "workflow": "ANIMO-RG05G second GOV04 batch",
+    "run_id": null,
+    "job_id": null,
+    "evidence_head": null,
+    "conclusion": "PENDING",
+    "validator": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "next_if_validated": "USE_ANIMO_RG05G_AS_CURRENT_AGGREGATE_AUTHORITY_AND_CONTINUE_ATOMIC_B3_QUALIFICATION_QUEUE"
+}
