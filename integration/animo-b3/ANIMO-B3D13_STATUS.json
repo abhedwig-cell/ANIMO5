@@ -12,14 +12,14 @@
   "prior_review": "ANIMO-B3A01R@510c9313926457cd9bfd8e71a551255297bdfbb3:INCOMPLETE_RETAINED",
   "evidence_remediation": "ANIMO-B3A01E@5232ef5fa6daafa2296401b19fd9e866a34152bd",
   "parked_r2_handoff": "ANIMO-B3A01R2@428e0212082bbf80a2b07683d5b58588e7645095:HANDOFF_ONLY_NOT_PERFORMED",
-  "state": "IN_PROGRESS_PERSISTED_TCD027_GOV04_TIER_A_ADMISSION_VALIDATION_PENDING",
-  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "state": "QUALIFIED_TCD027_ATOMIC_B3_ADMISSION_GOV04_TIER_A_WAIVER_HISTORICAL_UNCERTAINTY_NO_PRODUCTION_MIGRATION",
+  "decision": "ADMIT_TCD027_ATOMIC_CLASS_A_REPORTING_CORRECTION_UNDER_GOV04_TIER_A_WAIVER_WITH_HISTORICAL_UNCERTAINTY",
   "waiver_decision": "GOV04_TIER_A_WAIVER_ALL_CONDITIONS_PASS",
   "independent_second_line_required": false,
   "independent_second_line_performed": false,
   "historical_behaviour": "UNKNOWN",
   "historical_fidelity_claimed": false,
-  "scientific_b3_admitted": false,
+  "scientific_b3_admitted": true,
   "production_patch_authorized": false,
   "production_migration_admitted": false,
   "b4_admitted": false,
@@ -29,20 +29,21 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "qualified": true,
+    "workunit_complete": true
   },
   "validation": {
     "validator": "tools/validate_b3d13_tcd027_gov04_tier_a.py",
     "workflow": ".github/workflows/animo-b3d13-tcd027-gov04-tier-a.yml",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_job_id": null,
-    "github_actions_conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "source_evidence_revalidation": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "859e16fae59b26d0ae7731e8b6979e9f7d1c684a",
+    "github_actions_run_id": 34468675272,
+    "github_actions_job_id": 102843191826,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS_B3D13_TCD027_GOV04_TIER_A_ADMISSION",
+    "source_evidence_revalidation": "PASS_B3A01E_COMMITTED_FROZEN_SOURCE_NEIGHBOURHOOD_BYTES_AND_PACKET",
+    "scope_guard": "PASS_B3D13_SCOPE_GUARD",
+    "closeout_note": "Run 34468675272 validates the complete six-file substantive B3D13 package at head 859e16fae59b26d0ae7731e8b6979e9f7d1c684a. This status-only closeout commit must pass the same fail-closed workflow independently; that final run is verified externally and is not embedded recursively in another status mutation."
   },
   "deliverables": [
     "integration/animo-b3/TCD027_GOV04_TIER_A_WAIVER_AUDIT.json",
@@ -52,5 +53,5 @@
     "tools/validate_b3d13_tcd027_gov04_tier_a.py",
     ".github/workflows/animo-b3d13-tcd027-gov04-tier-a.yml"
   ],
-  "next_if_qualified": "Treat TCD-027 atomic B3 admission as authoritative immediately under GOV04; do not create a new RG05 snapshot until normal batch or an early-integration trigger is reached."
+  "next_if_qualified": "TCD-027 is authoritative as an atomic B3 admission under GOV04. Keep RG05E as the latest aggregate snapshot until the GOV04 normal batch threshold or an explicit early-integration trigger is reached."
 }
