@@ -1,0 +1,80 @@
+{
+  "work_unit": "ANIMO-B3B07R",
+  "record_type": "INDEPENDENT_SECOND_LINE_REVIEW_HANDOFF_NO_ADMISSION",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "review/animo-b3b07r-tcd041-independent-second-line",
+  "target": "TCD-041",
+  "review_date": "2026-09-10",
+  "starting_handoff": "ANIMO-B3B07@6523c8a4dbf7a742b61e0c236af0ef5093b534aa",
+  "review_document": "docs/b3/TCD041_INDEPENDENT_SECOND_LINE_REVIEW.md",
+  "review_document_commit": "45886fbd7748f97dad22b6f3fbc0c5f9d31babce",
+  "review_record": "integration/animo-b3/TCD041_INDEPENDENT_SECOND_LINE_REVIEW.json",
+  "review_record_commit": "ba76d976f0cb539cace82da7627ecbcef1e76dcf",
+  "final_live_recheck_before_handoff": {
+    "issue": 44,
+    "issue_comments": 0,
+    "tcd041_branches": [
+      "work/animo-b3b07-tcd041-ghg-lower-air-boundary-readiness",
+      "review/animo-b3b07r-tcd041-independent-second-line"
+    ],
+    "new_competing_tcd041_review_or_admission_found": false,
+    "later_b3d_branch_after_b3d13_found": false
+  },
+  "authority_snapshot": {
+    "aggregate_central_regie": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
+    "post_aggregate_atomic_admission": "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "BUILDQ04": "ANIMO-BUILDQ04@0ae1e58f80ca01c1b6eced7ac0d6e5c031827676",
+    "BUILDQ03": "ANIMO-BUILDQ03@5e06473bc2bb1df6cf4e449d8d6aa04da35c7d47",
+    "GHG01": "ANIMO-GHG01@dac7b7b5c591b781b82ec968896edb5957664c88",
+    "B3I01_TCD041_routing": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4",
+    "later_routing_checked_through": "ANIMO-B3I06@8f01f0cb366dfa8cc63a184d6f885100899a8cd9"
+  },
+  "scientific_scope": {
+    "risk_tier": "B",
+    "risk_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "atomic_claim": "Define the revision-53 GHG lower external advective air boundary coordinate Flair(Nl+1) as the already source-implied closed-boundary value zero before its same-call first use.",
+    "persistent_state_initialization": false,
+    "restart_or_checkpoint_semantics": false,
+    "runtime_branching_semantics_change": false,
+    "numerical_policy_change": false,
+    "solver_or_tolerance_change": false,
+    "exact_zero_numerical_policy_change": false,
+    "composition": false
+  },
+  "review_outcome": "PASS_TIER_B_READY_FOR_POST_REVIEW_DISPOSITION",
+  "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
+  "residual_uncertainty_carried_forward": [
+    "historical Intel manifestation and magnitude unknown",
+    "no provenance-compatible natural revision-53 GHG testcase",
+    "synthetic activation is B1 causal/coverage evidence only",
+    "exact discrete zero boundary remains primarily connected-source authority",
+    "no whole-GHG equivalence or full GHG ledger closure claim"
+  ],
+  "permitted_next_step": {
+    "action": "POST_REVIEW_FORMAL_DISPOSITION",
+    "condition": "claim, source pins, GOV03 route, GOV04 tier and evidence scope remain unchanged",
+    "may_combine_disposition_and_atomic_admission_closeout_under_gov04_tier_b": true,
+    "suggested_work_unit_if_name_remains_free": "ANIMO-B3D14",
+    "work_unit_created_here": false
+  },
+  "forbidden_by_this_handoff": {
+    "production_source_change": true,
+    "composition": true,
+    "b4": true,
+    "production_migration": true,
+    "central_rg05_update": true,
+    "admission_decision_in_b3b07r": true,
+    "historical_fidelity_claim": true
+  },
+  "work_status": {
+    "review_realized": true,
+    "review_persisted": true,
+    "evidence_pinned": true,
+    "second_line_decision_complete": true,
+    "admission_performed": false,
+    "work_unit_complete": true
+  }
+}
