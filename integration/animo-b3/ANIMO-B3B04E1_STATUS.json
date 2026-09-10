@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "workunit": "ANIMO-B3B04E1",
+  "title": "TCD-040 Provenance-Pinned Independent Replay Evidence Bundle",
+  "branch": "work/animo-b3b04e1-tcd040-replay-evidence",
+  "base": "bb001129578457ca8435e39deb2b8586e7ebc6a2",
+  "target": "TCD-040",
+  "scope": "EVIDENCE_REPLAYABILITY_ONLY",
+  "status": "FAIL_CLOSED_INDEPENDENT_REPLAY_BUNDLE_NOT_QUALIFIED",
+  "decision": "EVIDENCE_REPLAYABILITY_NOT_QUALIFIED",
+  "canonical_tcd_status": "UNRESOLVED_NOT_ADMITTED",
+  "blockers": [
+    {
+      "code": "B0_CONTROLLED_IMMUTABLE_ACQUISITION_NOT_PROVEN",
+      "detail": "The current B0 evidence register still has null controlled-storage record identifiers, no immutability proof reference, no post-ingest and secondary-copy verification, and no passed restore test for source, testbank, or user guide. Transient supplied bytes were hash-matched locally but are explicitly not controlled-retention proof."
+    },
+    {
+      "code": "PUBLIC_GIT_RAW_REPUBLICATION_PROHIBITED",
+      "detail": "Repository governance prohibits publishing the raw source archive, raw testcase archive, the copyrighted user-guide PDF, or functionally equivalent unpacked copies without explicit redistribution authorization. This workunit therefore cannot solve the acquisition blocker by committing those bytes to the public repository."
+    },
+    {
+      "code": "PRIOR_EXECUTABLE_REPLAY_HARNESS_AND_PAYLOADS_NOT_PERSISTED",
+      "detail": "The immutable B3B04 tree contains its validator and summary evidence but not the Stage-A/Stage-B replay implementation, raw checkpoint payload, continuous trace, defective trace, corrected trace, or split-67 trace. Reconstructing new scientific evidence would exceed this remediation workunit's instruction to make the existing evidence independently reproducible without silently creating a replacement claim object."
+    },
+    {
+      "code": "CI_CANNOT_INDEPENDENTLY_ACQUIRE_REQUIRED_B0_BYTES",
+      "detail": "No governance-approved non-secret immutable acquisition reference is available to GitHub Actions. An actual independent executable replay in CI is therefore not presently possible without violating provenance or redistribution policy."
+    }
+  ],
+  "completed_checks": {
+    "live_duplicate_workunit_search": true,
+    "clean_branch_created_from_review_closeout": true,
+    "authoring_environment_source_sha256_match": true,
+    "authoring_environment_testbank_sha256_match": true,
+    "authoring_environment_user_guide_sha256_match": true,
+    "natural_GrassPeat_original_layer0_values_inspected_from_hash_pinned_testbank": true,
+    "five_split282_binary64_little_endian_encodings_recomputed": true,
+    "documentation_restart_contract_inspected": true,
+    "documentation_raw_checkpoint_distinction_preserved": true
+  },
+  "not_completed": {
+    "independent_B0_acquisition": true,
+    "standalone_stageA_stageB_executable_replay": true,
+    "trajectory_regeneration": true,
+    "checkpoint_payload_regeneration": true,
+    "independent_trace_hash_derivation": true,
+    "successful_replay_CI": true,
+    "evidence_bundle_closeout": true,
+    "independent_second_line_reconsideration_handoff": true
+  },
+  "scope_guards": {
+    "tcd040_admitted": false,
+    "production_source_patched": false,
+    "B4_started": false,
+    "canonical_STATE_admission_claimed": false,
+    "TCD016_composed": false,
+    "crop_restart_architecture_expanded": false,
+    "central_regie_modified": false,
+    "GOV03_historical_UNKNOWN_modified": false,
+    "independent_second_line_review_performed": false,
+    "new_scientific_claim_object_created": false
+  },
+  "resume_condition": "Resume B3B04E1 only after a B0 Evidence Custodian supplies governance-approved immutable acquisition references for the exact source, testbank, and user guide, and the original B3B04 replay implementation plus required payloads are made available or explicitly authorized for provenance-pinned reconstruction. Then execute the bundle validator in full replay mode. Do not create a reconsideration review branch before that gate passes.",
+  "handoff_created": false
+}
