@@ -11,6 +11,9 @@ TESTBANK_SHA = "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84
 MEMBER_SHA = "938d35c043bd3e1f14c20ec1c0b2395e9944beb2797746bc4e7cdfb38bb98106"
 GOV04 = "1bbe4c211197590f346803106e45dca5faae79fc"
 GOV04_MATRIX_BLOB = "845db982f9a72e7cf271b74e948f46ce81dec028"
+SYNQ01 = "842f72300fd03ede0b9024537a7ee6126722a121"
+SYNQ_REGISTER_BLOB = "4c215d19844614de8868380fb03f93268ea4c5d8"
+CURRENT_AGGREGATE = "7c61a5031f41d602e996310df6f3958cbd1b511e"
 
 
 def load(path):
@@ -28,12 +31,13 @@ prep05 = load("integration/animo-prep/PREP05_CROSS_SPECIES_SYMMETRY_AUDIT.json")
 recheck = load("integration/animo-b3/TCD023_INDEPENDENT_RECHECK.json")
 expected = load("integration/animo-b3/TCD023_EXPECTED_DIFFERENCE.json")
 upstream = load("integration/animo-b3/TCD023_UPSTREAM_EVIDENCE.json")
-synq = load("integration/animo-synthetic/SYNTHETIC_ORACLE_REGISTER.json")
 
 require(result["semantic_result"] == "PASS", "semantic result is not PASS")
 require(result["reviewed_readiness"]["head"] == READINESS, "readiness pin changed")
 require(result["reviewed_readiness"]["actions_conclusion_rechecked"] == "success", "readiness Actions not green")
+require(result["live_authorities"]["aggregate_central_regie"] == "ANIMO-RG05F@" + CURRENT_AGGREGATE, "current aggregate pin not reconciled to RG05F")
 require(result["live_authorities"]["GOV04"] == "ANIMO-GOV04@" + GOV04, "GOV04 review pin changed")
+require(result["live_authorities"]["SYNQ01"] == "ANIMO-SYNQ01@" + SYNQ01, "SYNQ01 review pin changed")
 require(upstream["pinned_authorities"]["risk_tier_governance"]["head"] == GOV04, "readiness GOV04 pin changed")
 require(upstream["pinned_authorities"]["risk_tier_governance"]["matrix_blob_sha"] == GOV04_MATRIX_BLOB, "GOV04 matrix blob pin changed")
 require(result["frozen_B0"]["source_archive_sha256"] == SOURCE_SHA, "source archive pin mismatch")
@@ -79,13 +83,18 @@ neg = prep05["tests"]["negative_controls"]
 require("reciprocal N/P coupling is not promoted" in neg, "PREP05 reciprocal N/P negative control missing")
 require("isolated N/P ratio relationship is not promoted" in neg, "PREP05 N/P ratio negative control missing")
 
-oracles = {o["oracle_id"]: o for o in synq["oracles"]}
-for oid in ("SYNQ-O004", "SYNQ-O005"):
-    require(oid in oracles, f"{oid} missing")
-    require(oracles[oid]["target_tcd"] == "TCD-023", f"{oid} target changed")
-    require(oracles[oid]["pass_fail"] == "PASS", f"{oid} not PASS")
-    require(oracles[oid]["independence_classification"] == "STRONGLY_INDEPENDENT", f"{oid} independence changed")
-require(synq["evidence_boundary"]["B2_reference_created"] is False, "SYNQ improperly promoted to B2")
+# SYNQ01 is a sibling authority, intentionally not copied into this review branch.
+# The second-line review inspected the live pinned register. CI verifies that the
+# readiness evidence still binds exactly that authority/blob and its TCD-023 semantics.
+synq_pin = upstream["pinned_authorities"]["synthetic_oracles"]
+require(synq_pin["head"] == SYNQ01, "SYNQ01 authority pin changed")
+require(synq_pin["register_blob_sha"] == SYNQ_REGISTER_BLOB, "SYNQ register blob pin changed")
+require(synq_pin["applicable_oracle_ids"] == ["SYNQ-O004", "SYNQ-O005"], "TCD-023 SYNQ oracle set changed")
+orec = upstream["synthetic_oracle_reconciliation"]
+for key in ("SYNQ_O004", "SYNQ_O005"):
+    require(orec[key]["applicable"] is True, f"{key} no longer applicable")
+    require(orec[key]["independence_class"] == "STRONGLY_INDEPENDENT", f"{key} independence class changed")
+    require("B2 historical behaviour" in orec[key]["does_not_prove"], f"{key} historical boundary lost")
 
 nat = recheck["natural_activation_independent_replay"]
 require(nat["phosphorus_cycle_active"] is True, "natural case phosphorus not active")
@@ -146,13 +155,14 @@ require("docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv" not in changed, "can
 print("ANIMO-B3B05R independent TCD-023 review validator: PASS")
 print("semantic result: PASS")
 print("reviewed readiness:", READINESS)
+print("current aggregate live reconciliation: ANIMO-RG05F@" + CURRENT_AGGREGATE)
 print("frozen B0/source member identity: PASS")
 print("Case(2) species-local partition identity: PASS_EXACT_NO_TOLERANCE")
 print("PREP05 legitimate N/P coupling negative controls: PASS")
-print("SYNQ-O004/O005 boundary: PASS_NOT_B2")
+print("SYNQ-O004/O005 boundary: PASS_PINNED_SIBLING_NOT_B2")
 print("natural activation: 9658 unique events, layers 17..23")
 print("downstream nonzero Tomnpo/Rekopo effect: CONFIRMED_TIER_A_EXCLUDED")
 print("eight-case regression surface: PASS")
-print("GOV04 risk tier: B, live policy reviewed at pinned sibling authority")
+print("GOV04 risk tier: B")
 print("historical revision-53 behaviour: UNKNOWN")
 print("scope guard: PASS_REVIEW_ONLY_NO_ADMISSION_NO_PRODUCTION_CHANGE")
