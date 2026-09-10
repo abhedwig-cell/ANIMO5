@@ -1,0 +1,25 @@
+name: ANIMO-B3D14 TCD-041 Tier-B admission
+
+on:
+  push:
+    branches:
+      - work/animo-b3d14-tcd041-gov04-tier-b-admission
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate TCD-041 disposition and admission
+        run: python tools/validate_b3d14_tcd041_admission.py
+
+      - name: Validate atomic workunit scope
+        run: python tools/validate_b3d14_scope.py
