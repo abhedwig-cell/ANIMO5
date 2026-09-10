@@ -1,0 +1,33 @@
+{
+  "work_unit": "ANIMO-TH03",
+  "title": "HETOP Reservoir Lineage and Zero-Endpoint Provenance Recovery",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-th03-hetop-reservoir-lineage",
+  "issue": 29,
+  "status": "IN_PROGRESS_PERSISTED_PROVENANCE_RECONCILIATION_PENDING",
+  "base": {
+    "work_unit": "ANIMO-UBQ04",
+    "head": "bbdb61be30f08951ba78926a745719cfcb1b64a8",
+    "decision": "QUALIFIED_HETOP_ZERO_SEMANTIC_NONUNIQUENESS_NO_MODEL_POLICY_SELECTED"
+  },
+  "goal": "Recover the documented lineage of the ANIMO surface/addition reservoir and test whether pre-4.0 theory uniquely resolves HETOP=0 semantics. Fail closed if the endpoint remains undocumented or non-unique.",
+  "scope_guards": {
+    "production_source_modified": false,
+    "input_validation_modified": false,
+    "canonical_tcd_register_modified": false,
+    "new_tcd_reserved": false,
+    "TCD042_B1_modified_or_admitted": false,
+    "TCD042_E1_modified_or_admitted": false,
+    "parent_TCD042_admitted": false,
+    "zero_thickness_policy_selected": false,
+    "historical_behavior_claimed_without_artifact": false,
+    "production_migration_admitted": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  }
+}
