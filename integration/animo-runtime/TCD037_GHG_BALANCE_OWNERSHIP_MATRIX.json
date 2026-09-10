@@ -1,0 +1,201 @@
+{
+  "schema": "ANIMO_RUNTIME_OWNERSHIP_MATRIX_V1",
+  "work_unit": "ANIMO-RUNTIMEQ02",
+  "tcd": "TCD-037",
+  "title": "GHG Balance Working-Array Producer, Lifetime & Observer Ownership Qualification",
+  "authoring_base": {
+    "authority": "ANIMO-RG05G",
+    "sha": "4551b6b4c3f987b1247571d59f8489b2f1a71ba6"
+  },
+  "authorities": {
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "GHG01": "dac7b7b5c591b781b82ec968896edb5957664c88",
+    "BUILDQ01": "5e5c4c2bc678a11e87f358ac6163ba13409ee565",
+    "BUILDQ02": "e7c675c6654026d5c12836f36f2fd347e9d547c2",
+    "BUILDQ03": "5e06473bc2bb1df6cf4e449d8d6aa04da35c7d47",
+    "BUILDQ04": "0ae1e58f80ca01c1b6eced7ac0d6e5c031827676",
+    "MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc"
+  },
+  "routing_heads_observed": {
+    "B3I01_CANONICAL_APPEND": "383c7a83e84a578969f92113280dc715b7bdddb4",
+    "B3I01_POST_G5_INTAKE": "7b2be9d9742aaad78128c0531591d8e38d7e8450",
+    "B3I02_POST_B3I01_INTAKE": "a19f0de99abfb8e85a04181b480ccfceb7d1f31b",
+    "B3I02_SUP01_TCD042_APPEND": "eb73eb2c7e0ffa486c5b406f0a8e7634b3d6d9cd",
+    "B3I03_CANONICAL_APPEND": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "B3I03_MASSQ02_INTAKE": "6a015587807130b4ce12c9f1518c1ddac4e5d624",
+    "B3I04_STATEQ02_INTAKE": "400b7cd79f89043e091751707dfa96537587dcf6",
+    "B3I05_TCD042_ROUTING": "1f94a6e08db5d73e8935fb095de9ef9798f6544c",
+    "B3I05_UBQ02_ROUTING": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+    "B3I06_CURRENT": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9"
+  },
+  "issue_evidence": {
+    "umbrella_intake_issue": 17,
+    "dedicated_tcd037_issue_found": false,
+    "dedicated_search_terms": [
+      "AmCH4",
+      "AmN2Odeni",
+      "GHG balance"
+    ]
+  },
+  "frozen_b0": {
+    "evidence_id": "ANIMO-B0-SRC-41553-R53",
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "outbal_calc_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "controlled_immutable_retention_status": "IMPLEMENTATION_PENDING_EXTERNAL_CONTROLLED_STORAGE"
+  },
+  "call_surface": {
+    "routine": "Outbal_calc",
+    "definition": "Outbal_calc.for:10-52",
+    "main_call": "Animo.for:987-1032",
+    "ghg_arguments_at_interface": [
+      "IoptGHG",
+      "Btom",
+      "Cfracom",
+      "FrNitrN2O"
+    ],
+    "missing_working_arrays_are_formal_arguments": false,
+    "physical_ghg_production_arrays_are_passed_to_outbal_calc": false,
+    "suspect_reads_guard": "IoptGHG >= 1"
+  },
+  "symbols": {
+    "AmCH4": {
+      "declaration": "Outbal_calc.for:140",
+      "scope": "PROCEDURE_LOCAL",
+      "active_writers": [],
+      "active_readers": [
+        "Outbal_calc.for:636",
+        "Outbal_calc.for:653"
+      ],
+      "first_write_before_first_read": false,
+      "valid_source_lifetime": "NONE_UNDEFINED_ON_ENTRY_NO_SOURCE_PRODUCER",
+      "persistent_model_state": false,
+      "checkpoint_state": false,
+      "consumer_role": "CH4_AND_CO2_BALANCE_REPORTING"
+    },
+    "AmN2Odeni": {
+      "declaration": "Outbal_calc.for:140",
+      "scope": "PROCEDURE_LOCAL",
+      "active_writers": [],
+      "active_readers": [
+        "Outbal_calc.for:1133",
+        "Outbal_calc.for:1135"
+      ],
+      "first_write_before_first_read": false,
+      "valid_source_lifetime": "NONE_UNDEFINED_ON_ENTRY_NO_SOURCE_PRODUCER",
+      "persistent_model_state": false,
+      "checkpoint_state": false,
+      "consumer_role": "DENITRIFICATION_N2O_BALANCE_REPORTING"
+    },
+    "AmN2Onitr": {
+      "declaration": "Outbal_calc.for:141",
+      "scope": "PROCEDURE_LOCAL",
+      "active_writers": [
+        "Outbal_calc.for:186",
+        "Outbal_calc.for:188",
+        "Outbal_calc.for:191"
+      ],
+      "active_readers": [
+        "Outbal_calc.for:188-189",
+        "Outbal_calc.for:1132",
+        "Outbal_calc.for:1135"
+      ],
+      "first_write_before_first_read": true,
+      "valid_source_lifetime": "ACTIVE_OUTBAL_CALL_LOCAL_TIMESTEP_AMOUNT_SCRATCH",
+      "persistent_model_state": false,
+      "checkpoint_state": false,
+      "consumer_role": "NITRIFICATION_N2O_BALANCE_REPORTING"
+    }
+  },
+  "ownership_graph": [
+    {
+      "symbol": "AmCH4",
+      "producer": "NONE_IN_ACTIVE_REV53_SOURCE",
+      "lifetime": "NO_VALID_VALUE_LIFETIME",
+      "consumers": [
+        "Bfom(CH4f)",
+        "Bahu(CH4f)",
+        "Bdom(CH4f)",
+        "Btom(CH4e)",
+        "Btom(CO2e)"
+      ]
+    },
+    {
+      "symbol": "AmN2Odeni",
+      "producer": "NONE_IN_ACTIVE_REV53_SOURCE",
+      "lifetime": "NO_VALID_VALUE_LIFETIME",
+      "consumers": [
+        "Bani(N2Od)",
+        "Bani(N2Oe)"
+      ]
+    },
+    {
+      "symbol": "AmN2Onitr",
+      "producer": "OUTBAL_CALC_CURRENT_TIMESTEP_RECONSTRUCTION",
+      "lifetime": "CURRENT_OUTBAL_CALL",
+      "consumers": [
+        "Banh(N2On)",
+        "Bani(N2Oe)"
+      ]
+    }
+  ],
+  "candidate_physical_owners_not_yet_mapped": [
+    "QPrCH4",
+    "QPrN2Oden",
+    "QPrN2Onit",
+    "QRdN2O",
+    "QEmCH4Dif",
+    "QEmCH4Ebl",
+    "QEmCH4Flw",
+    "QEmCH4Plt",
+    "QEmN2ODif",
+    "QEmN2OFlw"
+  ],
+  "runtime_evidence": {
+    "natural_active_ghg": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+    "inactive_ghg_control": "PASS",
+    "synthetic_source_shaped_activation": "PASS_B1_CAUSAL_ONLY",
+    "multi_call_lifetime_discriminator": "PASS",
+    "counterfactual_persistence_stale_reuse_discriminator": "PASS",
+    "o0_o2_probe_output_identity": "REQUIRED_BY_CI",
+    "historical_intel_behavior": "UNKNOWN"
+  },
+  "observer_non_interference": {
+    "physical_state_change_from_tcd037_working_arrays": false,
+    "process_flux_change_from_tcd037_working_arrays": false,
+    "balance_accumulator_mutation": true,
+    "result": "SCOPED_OBSERVER_NON_INTERFERENCE_PASS"
+  },
+  "accounting_semantics": {
+    "per_layer_candidate_relationships_exist": true,
+    "index0_and_emission_mapping_qualified": false,
+    "exact_accounting_owner": "UNRESOLVED_INDEX0_AND_EMISSION_MAPPING",
+    "silent_qpr_times_st_substitution_allowed": false
+  },
+  "expected_difference_contract": {
+    "this_qualification_branch": "NO_PRODUCTION_DIFFERENCE",
+    "future_tcd037_correction": "BLOCKED_PENDING_ACCOUNTING_SEMANTICS_AND_EXACT_WHITELIST"
+  },
+  "gov04": {
+    "risk_tier": "C",
+    "classification": "GOV04_TIER_C_RUNTIME_SOURCE_OWNERSHIP_AMBIGUITY",
+    "tier_a_waiver_available": false,
+    "tier_a_blockers": [
+      "EXACT_ACCOUNTING_OWNERSHIP_UNRESOLVED",
+      "INDEX0_AND_EMISSION_SEMANTICS_UNRESOLVED",
+      "EXPECTED_DIFFERENCE_WHITELIST_NOT_YET_FREEZABLE"
+    ],
+    "independent_second_line_required_before_admission": true
+  },
+  "admission": {
+    "runtime_ownership_qualified": true,
+    "tcd037_admission_readiness": false,
+    "scientific_admission_performed": false,
+    "production_patch_performed": false,
+    "b4_opened": false,
+    "rg05h_updated": false,
+    "composed_tcds": []
+  },
+  "next_work_unit": "ANIMO-RUNTIMEQ03 — TCD-037 GHG Balance Observer Accounting-Semantics & Index-0 Producer Mapping Qualification"
+}
