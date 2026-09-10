@@ -3,7 +3,7 @@
   "title": "TCD-030 Macropore Initial NO3 Validation GOV04 Tier-B Disposition and Atomic Admission",
   "branch": "work/animo-b3d15-tcd030-gov04-tier-b-admission",
   "target": "TCD-030",
-  "status": "ADMISSION_DECISION_PERSISTED_MACHINE_VALIDATION_PENDING",
+  "status": "QUALIFIED_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_B",
   "risk_tier": "B",
   "risk_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
   "formal_decision": "QUALIFIED_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_B",
@@ -35,7 +35,15 @@
   "central_integration_pending": true,
   "post_rg05f_atomic_admission_ordinal": 1,
   "persisted": true,
-  "machine_validated": false,
-  "ci_validation": null,
-  "next_permitted_action": "RUN_B3D15_FAIL_CLOSED_VALIDATION_AND_CLOSEOUT"
+  "machine_validated": true,
+  "ci_validation": {
+    "evidence_head": "b0a3e473f36756b64ccf154b2ebb2926d30efa7f",
+    "workflow": "ANIMO-B3D15 TCD-030 Tier-B admission",
+    "run_id": 34484236778,
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34484236778 validates the complete substantive B3D15 package at evidence head b0a3e473f36756b64ccf154b2ebb2926d30efa7f. This status closeout and the admission-closeout update must pass the same fail-closed workflow on the final branch head."
+  },
+  "next_permitted_action": "RETAIN_ATOMIC_AUTHORITY_PENDING_NORMAL_GOV04_BATCHED_CENTRAL_REGIE_INTEGRATION_UNLESS_EARLY_TRIGGER_APPLIES"
 }
