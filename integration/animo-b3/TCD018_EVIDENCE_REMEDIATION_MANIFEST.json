@@ -1,0 +1,139 @@
+{
+  "work_unit": "ANIMO-B3A03E",
+  "title": "TCD-018 Independent-Review Evidence Remediation",
+  "target": "TCD-018",
+  "class": "A_ACCOUNTING_REPORTING_ONLY",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3a03e-tcd018-independent-review-evidence-remediation",
+  "base_review": {
+    "work_unit": "ANIMO-B3A03R",
+    "branch": "review/animo-b3a03r-tcd018-independent-second-line",
+    "head": "57cfdfb3a7fb982f6692b0b32f8c8aa044c57fd7",
+    "result": "FAIL_TCD018_INDEPENDENT_SECOND_LINE_READINESS_REVIEW"
+  },
+  "formal_route_authority": {
+    "work_unit": "ANIMO-B3D05",
+    "head": "2f06cc86225637f8dadfdd969fe48dcf851b9ee2",
+    "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "historical_behaviour": "UNKNOWN",
+    "admitted": false
+  },
+  "purpose": "Remediate only the persisted-evidence gaps identified by the failed independent review. This workunit does not re-review or admit TCD-018.",
+  "frozen_identity": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "frozen_source_modified": false,
+    "frozen_testbank_modified": false
+  },
+  "execution_environment": {
+    "compiler": "GNU Fortran 14.2.0",
+    "compile_flags": [
+      "-ffree-form",
+      "-ffree-line-length-none",
+      "-fallow-argument-mismatch",
+      "-std=legacy",
+      "-fdefault-real-8",
+      "-fdefault-double-8",
+      "-fno-automatic"
+    ],
+    "link_flags": ["-Wl,--build-id=none"],
+    "baseline_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "fresh_candidate_executable_sha256": "c1e281d5ceaa45952dc7ee21041454fbfab5bee34aa8aee09d59604b75826bbe",
+    "candidate_builder": "tools/build_tcd018_reporting_candidate.py",
+    "candidate_evidence_class": "B1_DIAGNOSTIC_CORRECTED_LEGACY_NOT_REFERENCE_NOT_ADMISSION"
+  },
+  "candidate_scope": {
+    "physical_state_modified": false,
+    "hydrology_flux_modified": false,
+    "forcing_modified": false,
+    "interception_physics_modified": false,
+    "state_promotion_modified": false,
+    "swap_swat_payload_modified": false,
+    "testcase_scientific_inputs_modified": false,
+    "mechanism": [
+      "Pass existing Sic and Sict into Outbal_calc in the temporary qualification execution copy.",
+      "Accumulate (Sict-Sic)*1000 only for the top-profile reporting control volume.",
+      "Subtract that reporting accumulator from Bawa(Ddev) at balance finalization.",
+      "Reset only the reporting accumulator after finalization."
+    ]
+  },
+  "period_reconciliation": {
+    "artifact": "integration/animo-b3/TCD018_25_PERIOD_RECONCILIATION.csv",
+    "rows": 25,
+    "years": "1991-2015",
+    "fresh_hydrology_probe_records_used": 900,
+    "records_per_period": 36,
+    "final_tito": 9131,
+    "contains_for_each_period": [
+      "legacy formatted Bawa deviation",
+      "raw summed Hydro_detailed Badev",
+      "raw summed interception storage change",
+      "reconstructed legacy value",
+      "fresh candidate Bawa deviation"
+    ],
+    "acceptance_tolerance_defined": false,
+    "raw_0_0601_mm_used_as_tolerance": false
+  },
+  "eight_case_noninterference": {
+    "run_ledger": "integration/animo-b3/TCD018_EIGHT_CASE_RUN_LEDGER.json",
+    "output_digest_ledger_parts": [
+      "integration/animo-b3/tcd018_output_digest_ledger/CranGrass.csv",
+      "integration/animo-b3/tcd018_output_digest_ledger/part2.csv",
+      "integration/animo-b3/tcd018_output_digest_ledger/part3.csv",
+      "integration/animo-b3/tcd018_output_digest_ledger/part4.csv"
+    ],
+    "cases": 8,
+    "run_records": 16,
+    "outputs_compared": 376,
+    "equal_raw": 270,
+    "equal_after_declared_volatile_normalization_only": 100,
+    "whitelisted_differences": 6,
+    "unexpected_differences": 0,
+    "missing_or_extra": 0,
+    "scientific_numeric_tolerance_applied": false,
+    "active_case": "LWKM_gras_1040.2021.2045",
+    "exact_whitelist": [
+      "ani_waGP.Bal",
+      "ani_waRP.Bal",
+      "ani_waTP.Bal",
+      "bawaGP.Out",
+      "bawaRP.Out",
+      "bawaTP.Out"
+    ],
+    "case_output_counts": {
+      "CranGrass": 31,
+      "CranMais": 23,
+      "GrassPeat": 60,
+      "LWKM_gras_1040.2021.2045": 53,
+      "Puitmijn_Cranendonck_60": 77,
+      "RuurloGrass": 72,
+      "STONE_akk_0006.2001.2015": 44,
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA": 16
+    }
+  },
+  "failed_review_gate_remediation": {
+    "gate_8_full_25_period_record": "REMEDIATED_BY_PERSISTED_25_ROW_PERIOD_LEDGER",
+    "gate_10_isolated_run_replayability": "REMEDIATED_BY_PERSISTED_376_ROW_PER_OUTPUT_DIGEST_LEDGER_PLUS_16_RUN_COMPLETION_RECORDS_AND_PINNED_CANDIDATE_BUILDER",
+    "gate_11_reported_counts": "EVIDENCE_NOW_PERSISTED_FOR_NEW_INDEPENDENT_REVIEW_NOT_SELF_CERTIFIED",
+    "gate_13_state_noninterference": "EVIDENCE_NOW_PERSISTED_FOR_NEW_INDEPENDENT_REVIEW_NOT_SELF_CERTIFIED",
+    "gate_14_flux_noninterference": "EVIDENCE_NOW_PERSISTED_FOR_NEW_INDEPENDENT_REVIEW_NOT_SELF_CERTIFIED",
+    "gate_15_nonwater_reporting": "EVIDENCE_NOW_PERSISTED_FOR_NEW_INDEPENDENT_REVIEW_NOT_SELF_CERTIFIED"
+  },
+  "residual_boundaries": {
+    "LWKM_approximately_0_0601_mm": "CAUSAL_EVIDENCE_NOT_TOLERANCE",
+    "MASSQ01_CranGrass_TITO724_mm": -0.0030198960466805147,
+    "MASSQ01_CranGrass_TITO724_class": "UNEXPLAINED_RESIDUAL_RETAINED_OUTSIDE_TCD018",
+    "global_water_closure_claimed": false
+  },
+  "hard_boundaries": {
+    "independent_second_line_pass_claimed": false,
+    "B3_admission_performed": false,
+    "historical_fidelity_claimed": false,
+    "B2_reference_claimed": false,
+    "production_source_modified": false,
+    "canonical_tcd_register_modified": false,
+    "B4_admitted": false,
+    "production_migration_admitted": false
+  },
+  "next_required_step": "A new genuinely separate independent second-line review must re-evaluate the remediated evidence. The previous FAIL is not overwritten and this remediation is not itself a PASS."
+}
