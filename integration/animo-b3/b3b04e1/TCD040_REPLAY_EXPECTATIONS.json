@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "workunit": "ANIMO-B3B04E1",
+  "target": "TCD-040",
+  "evidence_role": "REPLAY_TARGETS_NOT_INDEPENDENT_PROOF",
+  "authority_pins": {
+    "readiness": "19e38ae0dfc211e88fe782b4b7d6e42b1b7f5865",
+    "formal_route_discriminator_disposition": "4cc782986faf3d3af829f2e16142dd7f8622c6ac",
+    "independent_second_line_review": "bb001129578457ca8435e39deb2b8586e7ebc6a2",
+    "central_regie": "f3d6b9780631bd627f8bca0658a8e3878746e666"
+  },
+  "frozen_b0": {
+    "source": {
+      "evidence_id": "ANIMO-B0-SRC-41553-R53",
+      "filename": "ANIMO_4.1.5.53(3).zip",
+      "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566"
+    },
+    "testbank": {
+      "evidence_id": "ANIMO-B0-TB-202609",
+      "filename": "ANIMO_testbank.zip",
+      "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+    },
+    "user_guide": {
+      "evidence_id": "ANIMO-B0-DOC-UG40-2005",
+      "filename": "animo_users_guide_of_the_animo_nutrient_leaching_-wageningen_university_and_research_20340(2).pdf",
+      "sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
+    }
+  },
+  "source_member_identity": {
+    "Inicalc.for": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1",
+    "input1.for": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+    "Init.for": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+    "Output_Init.for": "6452c175dcd7c6e80983c1176467735d07f75595cf8341526b115b70121b6a2f",
+    "Animo.for": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7"
+  },
+  "natural_grasspeat": {
+    "archive_member": "ANIMO_testbank/GrassPeat/Input/INITIAL.INP",
+    "member_sha256": "969301b01c1d5e08aec70c9ad7f30a6a2d24555f4e2d8ea1acb1b557adc97753",
+    "layer0_input_values": {
+      "Conh(0)": 0.006885736,
+      "Coni(0)": 0.0005743774,
+      "Codiorma(0)": 0.09904185,
+      "Codiorni(0)": 0.005673512,
+      "Codiorpo(0)": 0.0005456775,
+      "Copo(0)": 0.003703004
+    },
+    "negative_control": "Copo(0)"
+  },
+  "split_282": {
+    "split_step": 282,
+    "records_per_step": 2,
+    "stage_a_records": 564,
+    "full_trace_records": 1800,
+    "checkpoint_sha256_reported_by_b3b04": "833363cc2f8457a617b450bfa283842532efcb8d321a57eca5e05584b0224b2e",
+    "checkpoint_values": {
+      "Conh(0)": 0.0008977310061221382,
+      "Coni(0)": 0.000008767359689234193,
+      "Codiorma(0)": 0.004381575788713558,
+      "Codiorni(0)": 0.00012267733059957502,
+      "Codiorpo(0)": 0.000012267733059957505
+    },
+    "checkpoint_binary64_little_endian_hex": {
+      "Conh(0)": "d154eca7b66a4d3f",
+      "Coni(0)": "9cea8abdf062e23e",
+      "Codiorma(0)": "f8c17a4b6af2713f",
+      "Codiorni(0)": "b4e1ea3e5e14203f",
+      "Codiorpo(0)": "bb02ab6430bae93e"
+    },
+    "continuous_trace_sha256": "29055b1be962d9550781b87f56ab34cd44630965439e21b6e5375954a6144a48",
+    "corrected_restore_trace_sha256": "29055b1be962d9550781b87f56ab34cd44630965439e21b6e5375954a6144a48",
+    "defective_restart_trace_sha256": "920cc04388d812e5668edab3e654b7e006926522bbe61923b1a202b346cf4e38",
+    "first_defective_divergence": {
+      "reported_record_index": 564,
+      "step": 283,
+      "phase": 0,
+      "layer": 0,
+      "coordinates": ["Conh(0)", "Coni(0)", "Codiorma(0)", "Codiorni(0)", "Codiorpo(0)"]
+    },
+    "corrected_full_trace_exact_reported": true
+  },
+  "split_67_zero_control": {
+    "split_step": 67,
+    "checkpoint_target_values": "EXACT_POSITIVE_ZERO",
+    "full_trace_records": 1800,
+    "continuous_trace_sha256": "29055b1be962d9550781b87f56ab34cd44630965439e21b6e5375954a6144a48",
+    "legacy_restart_trace_sha256": "29055b1be962d9550781b87f56ab34cd44630965439e21b6e5375954a6144a48",
+    "full_trace_exact_reported": true
+  },
+  "comparison_policy": "EXACT_RAW_IEEE754_BYTES_NO_TOLERANCE",
+  "documentation_contract": {
+    "INITIAL.OUT": "FORMATTED_RESTART_STYLE_REPRESENTATION",
+    "B3B04_atomic_checkpoint_fixture": "RAW_BYTE_IDENTITY_EVIDENCE",
+    "INITIAL.OUT_is_raw_byte_checkpoint": false
+  }
+}
