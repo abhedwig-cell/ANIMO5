@@ -48,11 +48,12 @@
     "workflow": ".github/workflows/animo-b3a05-tcd037-a1.yml",
     "validator": "tools/validate_b3a05_tcd037_a1.py",
     "exact_final_head_must_pass": true,
-    "run_id": null,
-    "job_id": null,
-    "tested_head": null,
-    "conclusion": "PENDING_EXACT_HEAD_CI",
-    "scope_guard": "PENDING_EXACT_HEAD_CI"
+    "run_id": 34538858339,
+    "job_id": 103076650964,
+    "tested_head": "ba9a8b6587657e2aacd954f59e4aff98223b0845",
+    "conclusion": "success",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34538858339 validates the complete pre-closeout B3A05 package at ba9a8b6587657e2aacd954f59e4aff98223b0845. This status-only closeout must pass the same workflow on its exact final head before B3A05 is consumed as qualified readiness authority."
   },
   "scope_guards": {
     "scientific_admission": false,
@@ -70,9 +71,9 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "next_if_exact_head_ci_green": "ANIMO-B3D21 — TCD-037-A1 CH4 Layer Formation Observer GOV04 Tier-A Atomic Admission Decision"
 }
