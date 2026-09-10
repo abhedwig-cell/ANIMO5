@@ -1,0 +1,129 @@
+{
+  "work_unit": "ANIMO-SYNQ02",
+  "target": "TCD-037-A1",
+  "title": "CH4 Layer Formation Observer Independent Synthetic Activation",
+  "evidence_role": "PURPOSE_BUILT_SYNTHETIC_ACTIVATION_FOR_CAUSALITY_AND_SCOPE",
+  "evidence_strength": "B1_SYNTHETIC_NOT_B2",
+  "independence": {
+    "classification": "INDEPENDENT_IMPLEMENTATION_AND_ALGEBRAIC_ORACLE_FOR_CAUSALITY_AND_SCOPE",
+    "semantic_contract_external_to_probe": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "source_shaped_target": "tools/synq02/tcd037_a1_source_shaped_probe.f90",
+    "independent_oracle": "tools/synq02/validate_tcd037_a1_synthetic.py",
+    "oracle_arithmetic": "EXACT_RATIONAL_FRACTION",
+    "oracle_reuses_fhlp_control_flow": false,
+    "oracle_reuses_animo_source_code": false,
+    "historical_reference_claim": false
+  },
+  "authorities": {
+    "aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "runtime_semantics": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "synthetic_policy": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc"
+  },
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "outbal_calc_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981"
+  },
+  "accounting_contract": {
+    "layer_amount": "QPrCH4(Ln) * St",
+    "organic_matter_equivalent_kg_ha": "10000 * QPrCH4(Ln) * St / Cfracom",
+    "active_nondegenerate_partition": {
+      "Btot": "Ffom + Fahu + Fdom",
+      "CH4_i": "F_i / Btot * M_CH4",
+      "CO2_i": "F_i - CH4_i"
+    },
+    "identities": [
+      "sum_i(CH4_i) = M_CH4",
+      "sum_i(CH4_i + CO2_i) = Btot"
+    ],
+    "legacy_branch_domain": "IoptGHG>=1 AND Btot>1e-9",
+    "numerical_acceptance": "EXACT_BINARY64_FOR_CHOSEN_DYADIC_SYNTHETIC_VALUES_NO_EMPIRICAL_TOLERANCE"
+  },
+  "allowed_difference_surface": [
+    "Bfom(CH4f)",
+    "Bahu(CH4f)",
+    "Bdom(CH4f)",
+    "Bfom(CO2f)",
+    "Bahu(CO2f)",
+    "Bdom(CO2f)"
+  ],
+  "forbidden_difference_domains": [
+    "physical_state",
+    "process_flux",
+    "restart_state",
+    "solver_or_numerical_policy",
+    "unrelated_observer_fields",
+    "TCD-037-A2",
+    "TCD-037-A3",
+    "TCD-037-A4",
+    "TCD-032_through_TCD-036"
+  ],
+  "synthetic_inputs": {
+    "nl": 3,
+    "Z": 10000,
+    "Cfracom": "1/2",
+    "St_active": "1/4",
+    "QPrCH4_active": [
+      "1/16384",
+      "1/8192",
+      "3/16384"
+    ],
+    "Ffom": [8, 4, 4],
+    "Fahu": [4, 8, 4],
+    "Fdom": [4, 4, 8],
+    "Btot_each_layer": 16,
+    "baseline_CH4_fields": [10, 20, 30],
+    "baseline_CO2_fields": [40, 50, 60],
+    "physical_state_sentinels": [11, 22, 33],
+    "process_flux_sentinels": [7, 13],
+    "unrelated_observer_sentinel": 77
+  },
+  "cases": [
+    {
+      "id": "ACTIVE",
+      "purpose": "activate nonzero A1 layer formation and exact six-field observer partition"
+    },
+    {
+      "id": "ZERO_CH4",
+      "purpose": "active GHG branch with zero CH4 formation; CH4 increment zero and CO2 complement equals ordinary dissimilation"
+    },
+    {
+      "id": "PERMUTED",
+      "purpose": "permuted asymmetric layers must permute results and preserve aggregate accounting"
+    },
+    {
+      "id": "RATE_TIME_EQUIVALENT",
+      "purpose": "half rate and double timestep preserves QPrCH4*St and therefore preserves A1 observer output"
+    },
+    {
+      "id": "INACTIVE",
+      "purpose": "nonzero source values with inactive GHG observer branch must leave all A1 fields at baseline"
+    }
+  ],
+  "natural_case": {
+    "state": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+    "translation_performed": false
+  },
+  "historical_behavior": "UNKNOWN",
+  "gov04_activation_predicate": {
+    "natural_activation_reasonably_available": false,
+    "absence_documented": true,
+    "purpose_built_synthetic_activation": true,
+    "independently_qualified_for_causality_and_scope": "PENDING_CI",
+    "tier_a_waiver_granted": false
+  },
+  "scope": {
+    "scientific_admission": false,
+    "tier_a_waiver": false,
+    "production_source_change": false,
+    "canonical_tcd_register_change": false,
+    "new_top_level_tcd": false,
+    "b4": false,
+    "aggregate_update": false,
+    "production_migration": false,
+    "historical_fidelity": false
+  },
+  "next_work_unit_if_qualified": "ANIMO-B3A05 — TCD-037-A1 CH4 Layer Formation Observer Tier-A Readiness"
+}
