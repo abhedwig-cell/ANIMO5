@@ -2,7 +2,7 @@
   "work_unit": "ANIMO-RG05G",
   "title": "Second GOV04 Batched Atomic Admission Integration",
   "branch": "work/animo-rg05g-second-gov04-batched-admission-integration",
-  "state": "AGGREGATE_PACKAGE_PERSISTED_PENDING_MACHINE_VALIDATION",
+  "state": "QUALIFIED_SECOND_GOV04_BATCHED_ATOMIC_ADMISSION_INTEGRATION_THREE_POST_RG05F_ADMISSIONS_NO_PRODUCTION",
   "decision": "QUALIFIED_SECOND_GOV04_BATCHED_ATOMIC_ADMISSION_INTEGRATION_THREE_POST_RG05F_ADMISSIONS_NO_PRODUCTION",
   "source_aggregate": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
   "new_atomic_admissions": [
@@ -30,14 +30,15 @@
     "historical_fidelity_claimed": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-RG05G second GOV04 batch",
-    "run_id": null,
-    "job_id": null,
-    "evidence_head": null,
-    "conclusion": "PENDING",
-    "validator": "PENDING",
-    "scope_guard": "PENDING"
+    "run_id": 34526349656,
+    "job_id": 103036082641,
+    "evidence_head": "bbc85430f4c59cc545910c4c15546383e0bfcb3d",
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34526349656 validates the complete six-file RG05G aggregate package at evidence head bbc85430f4c59cc545910c4c15546383e0bfcb3d. This status-only closeout must pass the same fail-closed workflow on its final head."
   },
   "next_if_validated": "USE_ANIMO_RG05G_AS_CURRENT_AGGREGATE_AUTHORITY_AND_CONTINUE_ATOMIC_B3_QUALIFICATION_QUEUE"
 }
