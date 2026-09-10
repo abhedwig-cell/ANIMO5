@@ -1,0 +1,172 @@
+{
+  "work_unit": "ANIMO-B3I07",
+  "parent_tcd": "TCD-037",
+  "canonical_predecessor": {
+    "work_unit": "ANIMO-B3I06",
+    "branch": "work/animo-b3i06-ubq03-hetop-zero-intake",
+    "head": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9"
+  },
+  "evidence_authority": {
+    "work_unit": "ANIMO-RUNTIMEQ03",
+    "branch": "work/animo-runtimeq03-tcd037-ghg-balance-accounting-semantics",
+    "head": "a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "status": "QUALIFIED_ACCOUNTING_SEMANTIC_SPLIT_PARENT_ATOMIZATION_REQUIRED",
+    "workflow_run_id": 34535837734,
+    "workflow_conclusion": "success"
+  },
+  "governance": {
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "aggregate": "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+    "risk_rule": "STRICTEST_APPLICABLE_RISK_TRIGGER_WINS"
+  },
+  "allocation_decision": {
+    "new_top_level_tcd_reserved": false,
+    "tcd_043_reserved": false,
+    "child_atom_keys_are_top_level_register_rows": false,
+    "canonical_register_append_performed": false,
+    "canonical_register_tail_before": "TCD-042",
+    "canonical_register_tail_after": "TCD-042",
+    "parent_atomic": false,
+    "parent_state": "ATOMIZED_A1_A2_A3_A4_ACCOUNTING_OBSERVER_CHILDREN_NO_ADMISSION",
+    "reason_no_new_top_level_tcd": "All four atomic correction claims are separable accounting/reporting repairs inside the already registered TCD-037 disconnected and overloaded GHG balance-observer interface phenomenon."
+  },
+  "atoms": [
+    {
+      "atom_id": "TCD-037-A1",
+      "title": "CH4 layer formation observer input",
+      "class": "A_ACCOUNTING_REPORTING_ONLY",
+      "risk_tier": "TIER_A_CANDIDATE",
+      "risk_state": "TIER_A_CANDIDATE_WAIVER_NOT_YET_AVAILABLE",
+      "atomic_claim": "CH4 layer formation amount used by CH4f/CO2f reporting partition is QPrCH4(Ln)*St for Ln=1..Nl.",
+      "source_owner": "QPrCH4(Ln)*St",
+      "allowed_observer_fields": [
+        "Bfom(CH4f)",
+        "Bahu(CH4f)",
+        "Bdom(CH4f)",
+        "Bfom(CO2f)",
+        "Bahu(CO2f)",
+        "Bdom(CO2f)"
+      ],
+      "forbidden_difference_domains": [
+        "physical_state",
+        "process_flux",
+        "restart_state",
+        "solver_or_numerical_policy",
+        "non_GHG_process_outputs"
+      ],
+      "natural_activation": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+      "historical_behavior": "UNKNOWN",
+      "admitted": false,
+      "tier_a_waiver_granted": false,
+      "next_work_unit": "ANIMO-B3A05 — TCD-037-A1 CH4 Layer Formation Observer Tier-A Readiness"
+    },
+    {
+      "atom_id": "TCD-037-A2",
+      "title": "CH4 index-0 formation versus atmosphere-emission semantic split",
+      "class": "A_ACCOUNTING_REPORTING_ONLY",
+      "risk_tier": "TIER_A_CANDIDATE",
+      "risk_state": "TIER_A_CANDIDATE_WAIVER_NOT_YET_AVAILABLE",
+      "atomic_claim": "CH4 total formation and total atmosphere emission are distinct observer quantities and must not share one overloaded AmCH4(0) owner.",
+      "source_owners": {
+        "formation_total": "sum(QPrCH4(1:Nl)*St)",
+        "atmosphere_emission": "(QEmCH4Dif+QEmCH4Ebl+QEmCH4Flw+QEmCH4Plt)*St"
+      },
+      "allowed_observer_fields": [
+        "Btom(CH4e)",
+        "Btom(CO2e) formation-side dissimilation complement only"
+      ],
+      "wider_ghg_carbon_ledger_claim": false,
+      "forbidden_difference_domains": [
+        "physical_state",
+        "process_flux",
+        "restart_state",
+        "solver_or_numerical_policy"
+      ],
+      "natural_activation": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+      "historical_behavior": "UNKNOWN",
+      "admitted": false,
+      "tier_a_waiver_granted": false,
+      "next_work_unit": "ANIMO-B3A06 — TCD-037-A2 CH4 Index-0 Formation/Emission Split Tier-A Readiness"
+    },
+    {
+      "atom_id": "TCD-037-A3",
+      "title": "N2O denitrification layer formation observer input",
+      "class": "A_ACCOUNTING_REPORTING_ONLY",
+      "risk_tier": "TIER_A_CANDIDATE",
+      "risk_state": "TIER_A_CANDIDATE_WAIVER_NOT_YET_AVAILABLE",
+      "atomic_claim": "N2O denitrification formation amount used by N2Od is QPrN2Oden(Ln)*St for Ln=1..Nl.",
+      "source_owner": "QPrN2Oden(Ln)*St",
+      "allowed_observer_fields": [
+        "Bani(N2Od)"
+      ],
+      "forbidden_difference_domains": [
+        "physical_state",
+        "process_flux",
+        "restart_state",
+        "solver_or_numerical_policy"
+      ],
+      "natural_activation": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+      "historical_behavior": "UNKNOWN",
+      "admitted": false,
+      "tier_a_waiver_granted": false,
+      "next_work_unit": "ANIMO-B3A07 — TCD-037-A3 N2O Denitrification Formation Observer Tier-A Readiness"
+    },
+    {
+      "atom_id": "TCD-037-A4",
+      "title": "N2O total atmosphere-emission observer input",
+      "class": "A_ACCOUNTING_REPORTING_ONLY",
+      "risk_tier": "TIER_A_CANDIDATE",
+      "risk_state": "TIER_A_CANDIDATE_WAIVER_NOT_YET_AVAILABLE",
+      "atomic_claim": "N2Oe total atmosphere emission is owned by QEmN2ODif plus QEmN2OFlw times St, not by a sum of N2O production totals.",
+      "source_owner": "(QEmN2ODif+QEmN2OFlw)*St",
+      "allowed_observer_fields": [
+        "Bani(N2Oe)"
+      ],
+      "explicit_exclusions": [
+        "Banh(N2On) per-layer production accounting",
+        "existing nitrification reporting threshold",
+        "QRdN2O reduction sink"
+      ],
+      "forbidden_difference_domains": [
+        "physical_state",
+        "process_flux",
+        "restart_state",
+        "solver_or_numerical_policy"
+      ],
+      "natural_activation": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+      "historical_behavior": "UNKNOWN",
+      "admitted": false,
+      "tier_a_waiver_granted": false,
+      "next_work_unit": "ANIMO-B3A08 — TCD-037-A4 N2O Atmosphere Emission Observer Tier-A Readiness"
+    }
+  ],
+  "tier_a_readiness_common_gates": {
+    "source_seam_pinned": true,
+    "accounting_ownership_resolved_at_child_scope": true,
+    "physical_owner_state_noninterference_direction_qualified": true,
+    "process_flux_noninterference_direction_qualified": true,
+    "numerical_policy_change_expected": false,
+    "restart_or_initialization_change_expected": false,
+    "composition_present": false,
+    "structural_expected_difference_surface_pinned": true,
+    "correction_specific_identity_demonstrated": false,
+    "correction_specific_validator_passed": false,
+    "independently_qualified_synthetic_activation_if_needed": false,
+    "natural_active_ghg_case_available": false,
+    "tier_a_waiver_complete": false
+  },
+  "invariants": {
+    "parent_tcd_admitted": false,
+    "child_admission_count": 0,
+    "new_tcd_count": 0,
+    "canonical_register_changed": false,
+    "scientific_admission_performed": false,
+    "production_source_modified": false,
+    "production_migration_admitted": false,
+    "b4_opened": false,
+    "rg05h_updated": false,
+    "tcd032_036_composition": false,
+    "evidence_strength_promoted": false
+  }
+}
