@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "workunit": "ANIMO-B3B04E1",
   "title": "TCD-040 Provenance-Pinned Independent Replay Evidence Bundle",
   "branch": "work/animo-b3b04e1-tcd040-replay-evidence",
@@ -13,7 +13,17 @@
     "readiness": "19e38ae0dfc211e88fe782b4b7d6e42b1b7f5865",
     "formal_route_discriminator_disposition": "4cc782986faf3d3af829f2e16142dd7f8622c6ac",
     "independent_second_line_review": "bb001129578457ca8435e39deb2b8586e7ebc6a2",
+    "reconstruction_governance_authorization": "01e6df610d236bac19d17f16d109a4e0e676ccfa",
     "central_regie": "f3d6b9780631bd627f8bca0658a8e3878746e666"
+  },
+  "reconstruction_governance": {
+    "workunit": "ANIMO-B3B04E2",
+    "head": "01e6df610d236bac19d17f16d109a4e0e676ccfa",
+    "decision": "AUTHORIZED_DISTINCT_PROVENANCE_PINNED_REPLAY_RECONSTRUCTION",
+    "status": "QUALIFIED_RECONSTRUCTION_AUTHORIZATION_ONLY",
+    "github_actions_run_id": 34458829364,
+    "github_actions_conclusion": "success",
+    "resume_effect": "The explicit governance-authorization alternative for reconstruction is satisfied. Controlled immutable B0 acquisition remains unsatisfied, so the ordinary B3B04E1 evidence gate remains closed."
   },
   "current_blockers": [
     {
@@ -34,7 +44,7 @@
   "resolved_remediation_blockers": [
     {
       "code": "PRIOR_EXECUTABLE_REPLAY_HARNESS_NOT_PERSISTED",
-      "resolution": "The original B3B04 authoring harness was not recovered. B3B04E1 now persists a transparent reconstruction harness at tools/b3b04e1/replay_tcd040.py. It is explicitly classified as a reconstruction of the existing bounded claim, not as the original harness and not as a new scientific claim."
+      "resolution": "The original B3B04 authoring harness was not recovered. B3B04E1 now persists a transparent reconstruction harness at tools/b3b04e1/replay_tcd040.py. It is explicitly classified as a reconstruction of the existing bounded claim, not as the original harness and not as a new scientific claim. This reconstruction route is explicitly authorized by ANIMO-B3B04E2@01e6df610d236bac19d17f16d109a4e0e676ccfa."
     },
     {
       "code": "REPLAY_PAYLOADS_NOT_PERSISTED",
@@ -52,6 +62,7 @@
     "documentation_restart_contract_inspected": true,
     "documentation_physical_pdf_page_59_section_3_3_locator_verified": true,
     "documentation_raw_checkpoint_distinction_preserved": true,
+    "explicit_reconstruction_governance_authorization_qualified": true,
     "standalone_reconstructed_stageA_stageB_replay_harness_persisted": true,
     "local_reconstruction_executed_against_hash_pinned_B0": true,
     "local_split282_checkpoint_regenerated": true,
