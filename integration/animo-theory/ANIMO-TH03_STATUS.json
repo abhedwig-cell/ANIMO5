@@ -4,13 +4,38 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-th03-hetop-reservoir-lineage",
   "issue": 29,
-  "status": "IN_PROGRESS_PERSISTED_PROVENANCE_RECONCILIATION_PENDING",
+  "status": "QUALIFIED_HETOP_RESERVOIR_CONCEPT_LINEAGE_TO_ANIMO35_ZERO_ENDPOINT_UNRESOLVED",
   "base": {
     "work_unit": "ANIMO-UBQ04",
     "head": "bbdb61be30f08951ba78926a745719cfcb1b64a8",
     "decision": "QUALIFIED_HETOP_ZERO_SEMANTIC_NONUNIQUENESS_NO_MODEL_POLICY_SELECTED"
   },
   "goal": "Recover the documented lineage of the ANIMO surface/addition reservoir and test whether pre-4.0 theory uniquely resolves HETOP=0 semantics. Fail closed if the endpoint remains undocumented or non-unique.",
+  "qualified_findings": {
+    "surface_addition_reservoir_present_in_ANIMO35_process_theory": true,
+    "addition_immediately_dissolved_in_reservoir": true,
+    "reservoir_transport_described_as_piston_flow": true,
+    "depletion_after_cumulative_precipitation_equals_reservoir_volume": true,
+    "release_rate_controlled_by_reservoir_thickness": true,
+    "remaining_store_maintained_by_bookkeeping": true,
+    "reservoir_concept_predates_ANIMO40": true,
+    "HETOP_supported_as_capacity_or_release_timescale_parameter": true,
+    "HETOP_supported_as_feature_flag_or_zero_sentinel": false,
+    "ANIMO35_HETOP_zero_endpoint_explicitly_defined": false,
+    "ANIMO35_inclusive_zero_input_bound_recovered": false,
+    "zero_endpoint_uniquely_resolved": false,
+    "positive_HETOP_B1_and_E1_results_preserved": true,
+    "NQ03_extended_to_HETOP_zero": false
+  },
+  "validation": {
+    "tested_head": "7384b740baa8cb485fdd97bdb889727b907ad256",
+    "github_actions_run_id": 34450078873,
+    "job_id": 102783592212,
+    "workflow_conclusion": "success",
+    "parse_persisted_json": "PASS",
+    "compile_validator": "PASS",
+    "provenance_reconstruction_and_scope_validator": "PASS"
+  },
   "scope_guards": {
     "production_source_modified": false,
     "input_validation_modified": false,
@@ -26,8 +51,22 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
-  }
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
+  },
+  "decision": "QUALIFIED_HETOP_RESERVOIR_CONCEPT_LINEAGE_TO_ANIMO35_ZERO_ENDPOINT_UNRESOLVED",
+  "deliverables": [
+    "docs/theory/HETOP_RESERVOIR_LINEAGE_PROVENANCE.md",
+    "integration/animo-theory/TH03_HETOP_RESERVOIR_LINEAGE.json",
+    "integration/animo-theory/ANIMO-TH03_STATUS.json",
+    "tools/th03/validate_th03.py",
+    ".github/workflows/animo-th03-hetop-lineage.yml"
+  ],
+  "recommended_next": [
+    "Recover a trustworthy ANIMO 3.5 SOIL.INP input-table rendering for the historical lower bound of the reservoir-thickness parameter.",
+    "Inspect the full text of Alterra Report 983 around upper-reservoir equations and changes from ANIMO 3.5.",
+    "Search older ANIMO source, example input, release notes or maintenance records for an executed or explicitly defined HETOP=0 case.",
+    "Absent stronger endpoint evidence, keep HETOP=0 outside B3/B4 admission and do not invent an input rejection or zero-capacity passthrough policy."
+  ]
 }
