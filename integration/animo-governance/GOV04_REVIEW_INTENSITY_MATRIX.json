@@ -372,6 +372,13 @@
         "EXACT_OUTBAL_WRITE_SLOT_24_TO_27_MAPPING",
         "EXACT_ORGANIC_P_SLOT_25_26_27_SELF_ACCUMULATORS"
       ],
+      "existing_r2_handoff": "ANIMO-B3A01R2_HANDOFF@428e0212082bbf80a2b07683d5b58588e7645095",
+      "r2_handoff_scope": "HANDOFF_METADATA_ONLY",
+      "r2_persisted_review_performed": false,
+      "r2_unique_changes_from_b3a01e": ["docs/b3/TCD027_INDEPENDENT_SECOND_LINE_REREVIEW_CONTRACT.md"],
+      "transition_choice": "PARK_R2_HANDOFF_PENDING_GOV04_TIER_A_WAIVER_EVALUATION",
+      "transition_reason": "NO_PERSISTED_R2_REVIEW_RESULT_OR_REVIEW_EVIDENCE_EXISTS_SO_SWITCHING_BEFORE_REVIEW_EXECUTION_AVOIDS_DUPLICATE_FULL_REVIEW_WITHOUT_REMOVING_ANY_TIER_A_GATE",
+      "fallback_if_any_tier_a_waiver_gate_false_or_unknown": "RESUME_B3A01R2_FROM_EXACT_HANDOFF_HEAD_OR_ESCALATE_BY_STRICTEST_RISK_TRIGGER",
       "next_review_action": "VERIFY_ALL_GOV04_TIER_A_WAIVER_GATES_IN_ONE_BOUNDED_TECHNICAL_ADMISSION_WORKUNIT",
       "new_separate_second_line_required_if_tier_a_waiver_passes": false,
       "automatic_admission_ready": false,
