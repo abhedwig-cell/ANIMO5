@@ -1,0 +1,106 @@
+{
+  "work_unit": "ANIMO-B3D21",
+  "target_parent_tcd": "TCD-037",
+  "target_child_atom": "TCD-037-A1",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "strictest_applicable_gov04_risk_tier": "A",
+  "authorities": {
+    "admission_base": "ANIMO-B3A05@5915333feed06e0c03280cb8fdfeff8dd1be9e9a",
+    "admission_base_exact_final_ci_run": 34538944794,
+    "aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "runtime_semantics": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "synthetic_activation": "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc",
+    "synthetic_activation_exact_final_ci_run": 34538344680,
+    "synthetic_policy": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "b3q02": "ANIMO-B3Q02@1db63b17cb5f48cbd8ae28116a2e716b4bdaadf3"
+  },
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "outbal_calc_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981"
+  },
+  "atomic_claim": {
+    "atomic": true,
+    "source_owner": "QPrCH4(Ln) * St",
+    "meaning": "accepted-timestep CH4 formation amount for one soil layer used by the layer CH4/CO2 formation-partition observer",
+    "allowed_observer_fields": [
+      "Bfom(CH4f)",
+      "Bahu(CH4f)",
+      "Bdom(CH4f)",
+      "Bfom(CO2f)",
+      "Bahu(CO2f)",
+      "Bdom(CO2f)"
+    ],
+    "parent_admission_implied": false,
+    "sibling_admission_implied": false,
+    "composition_present": false
+  },
+  "tier_a_conditions": {
+    "exact_source_seam_pinned": "PASS",
+    "physical_and_accounting_ownership_unambiguous": "PASS",
+    "claim_atomic": "PASS",
+    "exact_conservation_or_accounting_identity_stated_and_satisfied": "PASS",
+    "expected_difference_contract_pinned_before_qualification": "PASS",
+    "physical_state_non_interference_demonstrated": "PASS",
+    "process_flux_non_interference_demonstrated": "PASS",
+    "no_numerical_policy_change": "PASS",
+    "no_solver_or_tolerance_change": "PASS",
+    "no_restart_initialization_or_state_semantic_change": "PASS",
+    "no_composition": "PASS",
+    "no_unresolved_scientific_or_source_meaning_ambiguity": "PASS",
+    "reproducible_validator_exists_and_passed": "PASS",
+    "scope_guard_exists_and_passed": "PASS",
+    "natural_or_independently_qualified_synthetic_activation": "PASS",
+    "historical_behaviour_exactly_unknown_without_b2": "PASS",
+    "gov03_historical_uncertainty_route_conditions_satisfied": "PASS",
+    "no_production_source_canonical_register_b4_or_finalized_governance_snapshot_modified": "PASS"
+  },
+  "activation_evidence": {
+    "natural_active_ghg_case": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+    "natural_case_absence_documented": true,
+    "testcase_translation_performed": false,
+    "synthetic_activation": "PURPOSE_BUILT_AND_INDEPENDENTLY_QUALIFIED_FOR_CAUSALITY_AND_SCOPE",
+    "synthetic_evidence_strength": "B1_SYNTHETIC_NOT_B2",
+    "historical_behavior": "UNKNOWN"
+  },
+  "non_interference": {
+    "physical_state": "UNCHANGED",
+    "process_flux": "UNCHANGED",
+    "restart_checkpoint_state": "UNCHANGED",
+    "solver_or_numerical_policy": "UNCHANGED",
+    "unrelated_observer_fields": "UNCHANGED"
+  },
+  "waiver_decision": {
+    "all_conditions_explicit_pass": true,
+    "independent_second_line_review_required": false,
+    "independent_second_line_review_waived_under_gov04": true,
+    "final_tier_a_waiver_granted_for_this_atomic_admission_object": true,
+    "waiver_scope": "CANONICAL_CHILD_ATOM:TCD-037-A1",
+    "waiver_does_not_apply_to_parent_or_siblings": true,
+    "waiver_invalid_if_any_pin_scope_claim_or_evidence_changes": true
+  },
+  "historical_uncertainty": {
+    "qualified_b2_available": false,
+    "historical_revision53_behavior": "UNKNOWN",
+    "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "synthetic_evidence_promoted_to_b2": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "finalized_governance_snapshot_modified": false,
+    "parent_tcd_admitted": false,
+    "sibling_atom_admitted": false,
+    "composition_performed": false,
+    "b4_opened": false,
+    "production_migration_authorized": false,
+    "aggregate_updated": false,
+    "historical_fidelity_claimed": false
+  },
+  "decision": "PASS_GOV04_TIER_A_WAIVER_FOR_TCD037_A1_ATOMIC_ADMISSION_OBJECT"
+}
