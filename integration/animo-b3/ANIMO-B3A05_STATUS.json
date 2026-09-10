@@ -1,0 +1,78 @@
+{
+  "work_unit": "ANIMO-B3A05",
+  "title": "TCD-037-A1 CH4 Layer Formation Observer Tier-A Readiness",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3a05-tcd037-a1-tier-a-readiness",
+  "base": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+  "target_parent_tcd": "TCD-037",
+  "target_child_atom": "TCD-037-A1",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "risk_tier": "A",
+  "state": "QUALIFIED_TCD037_A1_TIER_A_ADMISSION_READINESS_WAIVER_PREDICATE_PASS_NO_ADMISSION",
+  "decision": "QUALIFIED_TCD037_A1_TIER_A_ADMISSION_READINESS_WAIVER_PREDICATE_PASS_NO_ADMISSION",
+  "authorities": {
+    "aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "runtime_semantics": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "synthetic_activation": "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc",
+    "synthetic_activation_exact_final_ci_run": 34538344680,
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "route": {
+    "b2_available": false,
+    "historical_behavior": "UNKNOWN",
+    "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "gov03_g6u_eligible": true
+  },
+  "readiness": {
+    "atomicity": "PASS",
+    "source_and_accounting_ownership": "PASS",
+    "exact_accounting_identity": "PASS",
+    "expected_difference_contract": "PASS",
+    "physical_state_non_interference": "PASS",
+    "process_flux_non_interference": "PASS",
+    "qualified_synthetic_activation_alternative": "PASS",
+    "historical_uncertainty_explicit": "PASS",
+    "b3q01_child_schema_compatibility": "PASS_NO_SCHEMA_CHANGE",
+    "tier_a_waiver_predicate": "PASS_AT_READINESS",
+    "admission_possible_in_next_atomic_workunit_if_rechecked_unchanged": true
+  },
+  "tier_a_waiver": {
+    "predicate_pass_at_readiness": true,
+    "final_waiver_granted": false,
+    "reason": "B3A05 is readiness-only. Final waiver applicability is rechecked and, if still valid, recorded in the atomic admission workunit."
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-b3a05-tcd037-a1.yml",
+    "validator": "tools/validate_b3a05_tcd037_a1.py",
+    "exact_final_head_must_pass": true,
+    "run_id": null,
+    "job_id": null,
+    "tested_head": null,
+    "conclusion": "PENDING_EXACT_HEAD_CI",
+    "scope_guard": "PENDING_EXACT_HEAD_CI"
+  },
+  "scope_guards": {
+    "scientific_admission": false,
+    "corrected_legacy_admission": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "sibling_admission": false,
+    "tcd032_036_composition": false,
+    "b4_opened": false,
+    "aggregate_updated": false,
+    "historical_fidelity_claimed": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "next_if_exact_head_ci_green": "ANIMO-B3D21 — TCD-037-A1 CH4 Layer Formation Observer GOV04 Tier-A Atomic Admission Decision"
+}
