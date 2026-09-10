@@ -206,9 +206,15 @@ def main() -> None:
     require(synq, "assert n.duplicated_storage_term() == D(\"0.004\")")
     require(synq, "assert_exact_zero(n.conservative_residual(), \"TCD015 conservative residual\")")
 
-    # Fail closed on comparator policy. No scientific number may be normalized or
-    # tolerance-filtered.
-    require(comparator, "Scientific numbers are never tolerance-filtered by this tool")
+    # Fail closed on comparator behavior. Validate executable classification and
+    # fail-closed logic rather than prose formatting in the comparator docstring.
+    require(comparator, 'if left_raw == right_raw:')
+    require(comparator, 'result["classification"] = "EQUAL_RAW"')
+    require(comparator, 'if left == right:')
+    require(comparator, 'result["classification"] = "EQUAL_DECLARED_VOLATILE_NORMALIZATION_ONLY"')
+    require(comparator, 'result["classification"] = "DIFFERENT"')
+    require(comparator, 'fail_closed = bool(missing_reference or missing_candidate or extra_candidate or different)')
+    require(comparator, 'decision = "DIFFERENT_FAIL_CLOSED"')
     for rule in (
         "file_creation_timestamp",
         "output_run_start_timestamp",
