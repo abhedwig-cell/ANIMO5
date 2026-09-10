@@ -145,14 +145,12 @@ def validate_probe(rows) -> None:
                 exact_float(flux[j], FLUX[j], f"{case}/L{layer}/flux_sentinel_{j+1}")
             exact_float(other, OTHER, f"{case}/L{layer}/unrelated_observer")
 
-    # Metamorphic and lifetime/amount checks use the independently validated raw outputs.
     active = [vals for _, vals in sorted(by_case["ACTIVE"])]
     perm = [vals for _, vals in sorted(by_case["PERMUTED"])]
     rate_time = [vals for _, vals in sorted(by_case["RATE_TIME_EQUIVALENT"])]
     inactive = [vals for _, vals in sorted(by_case["INACTIVE"])]
     zero = [vals for _, vals in sorted(by_case["ZERO_CH4"])]
 
-    # Output slots only, excluding echoed inputs and forbidden-domain sentinels.
     out_slice = slice(6, 12)
     require(tuple(active[2][out_slice]) == tuple(perm[0][out_slice]), "PERMUTED L1 must equal ACTIVE L3 observer result")
     require(tuple(active[0][out_slice]) == tuple(perm[1][out_slice]), "PERMUTED L2 must equal ACTIVE L1 observer result")
@@ -180,7 +178,7 @@ def validate_authorities_and_scope() -> None:
 
     rq = show_json(RUNTIMEQ03, "integration/animo-runtime/ANIMO-RUNTIMEQ03_STATUS.json")
     require(rq["status"] == "QUALIFIED_ACCOUNTING_SEMANTIC_SPLIT_PARENT_ATOMIZATION_REQUIRED", "RUNTIMEQ03 status changed")
-    require(rq["source_owner_map"]["ch4_layer_formation"] == "QPrCH4(Ln) * St", "A1 source owner changed")
+    require(rq["semantic_qualification"]["ch4_layer_formation_owner"] == "QPrCH4(Ln)*St", "A1 source owner changed")
     require(rq["natural_active_ghg_case"] == "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH", "natural active GHG case state changed")
     require(rq["historical_intel_behavior"] == "UNKNOWN", "historical behavior promoted")
 
