@@ -1,0 +1,81 @@
+{
+  "work_unit": "ANIMO-B3D21",
+  "title": "TCD-037-A1 CH4 Layer Formation Observer GOV04 Tier-A Atomic Admission Decision",
+  "branch": "work/animo-b3d21-tcd037-a1-gov04-tier-a-admission",
+  "target_parent_tcd": "TCD-037",
+  "target_child_atom": "TCD-037-A1",
+  "state": "PERSISTED_VALIDATION_PENDING",
+  "decision": "PERSISTED_VALIDATION_PENDING",
+  "target_state_after_green_final_head": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+  "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "b3_qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "gov04_risk_tier": "A",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "admission_base": "ANIMO-B3A05@5915333feed06e0c03280cb8fdfeff8dd1be9e9a",
+  "aggregate_at_start": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+  "routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+  "synthetic_evidence_authority": "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc",
+  "gov04_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "gov03_authority": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+  "b3q01_authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "b3q02_authority": "ANIMO-B3Q02@1db63b17cb5f48cbd8ae28116a2e716b4bdaadf3",
+  "tier_a_waiver": {
+    "all_predicates_pass": true,
+    "final_waiver_granted_for_exact_atomic_object": true,
+    "independent_second_line_required": false,
+    "independent_review_evidence_result": "NOT_REVIEWED",
+    "independent_review_gate": "PASS_NOT_APPLICABLE",
+    "scope": "CANONICAL_CHILD_ATOM:TCD-037-A1"
+  },
+  "admission_effect": {
+    "child_atom_admitted": true,
+    "parent_tcd_admitted": false,
+    "sibling_atoms_admitted": [],
+    "historical_revision53_behavior": "UNKNOWN",
+    "synthetic_evidence_strength": "B1_SYNTHETIC_NOT_B2",
+    "production_authorized": false
+  },
+  "aggregate_policy": {
+    "pending_atomic_admissions_after_rg05h_if_qualified": 1,
+    "normal_batch_threshold_reached": false,
+    "real_project_gate_changed": false,
+    "aggregate_update_required_now": false,
+    "rg05i_created": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "parent_tcd_admitted": false,
+    "sibling_atom_admitted": false,
+    "tcd032_036_composition_performed": false,
+    "b4_opened": false,
+    "production_migration_authorized": false,
+    "central_regie_updated": false,
+    "historical_fidelity_claimed": false,
+    "synthetic_evidence_promoted_to_b2": false
+  },
+  "validation": {
+    "machine_validated": false,
+    "workflow": ".github/workflows/animo-b3d21-tcd037-a1.yml",
+    "validator": "tools/validate_b3d21_tcd037_a1.py",
+    "precloseout_run_id": null,
+    "precloseout_job_id": null,
+    "precloseout_tested_head": null,
+    "final_exact_head_run_id": null,
+    "final_exact_head_job_id": null,
+    "final_exact_head": null,
+    "conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "next_after_qualified_admission": "LIVE_RECHECK_TCD037_A2_EVIDENCE_AND_ROUTING_BEFORE_STARTING_NEXT_SIBLING_LANE"
+}
