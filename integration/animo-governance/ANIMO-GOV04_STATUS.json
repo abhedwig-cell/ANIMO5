@@ -1,0 +1,100 @@
+{
+  "work_unit": "ANIMO-GOV04",
+  "title": "Risk-Tiered Scientific Review & Admission Governance Simplification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-gov04-risk-tiered-review-policy",
+  "date": "2026-09-10",
+  "base": {
+    "work_unit": "ANIMO-RG05D",
+    "head": "f3d6b9780631bd627f8bca0658a8e3878746e666"
+  },
+  "authorities": {
+    "central_regie": "ANIMO-RG05D@f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "b3_framework": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "historical_uncertainty_route": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+  },
+  "live_discovery": {
+    "existing_gov04_or_later_review_governance_found": false,
+    "current_central_regie_head": "f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "current_b3q01_authority": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "current_gov03_authority": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "newer_rg05e_found": false,
+    "rg05d_scientific_admission_count": 4,
+    "rg05d_admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026"]
+  },
+  "governance_only": true,
+  "state": "IN_PROGRESS_PERSISTED_RISK_TIERED_REVIEW_POLICY_VALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "policy": {
+    "principle": "RISK_TIERED_REVIEW_INTENSITY",
+    "scientific_gate_reduction": false,
+    "risk_tiers": ["A", "B", "C", "D"],
+    "review_reuse": "VERIFY_AND_REUSE",
+    "review_fail_reset_policy": "REVIEW_FAIL != AUTOMATIC_FULL_REVIEW_RESET",
+    "central_regie_mode": "AGGREGATED_ATOMIC_ADMISSION_INTEGRATION",
+    "normal_rg_batch_min": 3,
+    "normal_rg_batch_max": 5
+  },
+  "transition_decisions": {
+    "TCD-015": {
+      "risk_tier": "B",
+      "decision": "REUSE_EXISTING_INDEPENDENT_PASS_THEN_COMBINED_POST_REVIEW_DISPOSITION_ADMISSION_CLOSEOUT_ALLOWED_IF_PINS_AND_ROUTE_REMAIN_VALID",
+      "review_authority": "ANIMO-B3B01R@a6880282e9ed743f97a3435b55e4fb54f7d55a44",
+      "admitted_here": false
+    },
+    "TCD-027": {
+      "risk_tier": "A_CANDIDATE_CONDITIONAL",
+      "decision": "NO_NEW_SEPARATE_SECOND_LINE_REQUIRED_ONLY_IF_ALL_GOV04_TIER_A_WAIVER_GATES_PASS_IN_A_FUTURE_BOUNDED_WORKUNIT",
+      "existing_review": "ANIMO-B3A01R@510c9313926457cd9bfd8e71a551255297bdfbb3:INCOMPLETE_EVIDENCE_INSUFFICIENCY",
+      "automatic_admission_ready": false,
+      "admitted_here": false
+    },
+    "TCD-040": {
+      "risk_tier": "C",
+      "decision": "KEEP_INDEPENDENT_REVIEW_TARGETED_REREVIEW_ONLY_AFTER_EVIDENCE_REMEDIATION_IF_PRIOR_PASS_PINS_AND_SCOPE_REMAIN_IMMUTABLE",
+      "existing_review": "ANIMO-B3B04R@bb001129578457ca8435e39deb2b8586e7ebc6a2:FAIL_CLOSED_INDEPENDENT_EVIDENCE_REPLAY_INCOMPLETE",
+      "scientific_falsification": false,
+      "admitted_here": false
+    }
+  },
+  "historical_boundaries": {
+    "historical_behaviour_without_b2": "UNKNOWN",
+    "b2_fabricated": false,
+    "existing_reviews_rewritten": false,
+    "existing_admissions_withdrawn": false,
+    "historical_rg_snapshots_modified": false
+  },
+  "project_boundaries": {
+    "scientific_tcd_admissions_performed": 0,
+    "b4_opened": false,
+    "production_migration_opened": false,
+    "production_code_modified": false,
+    "canonical_tcd_register_modified": false,
+    "frozen_source_modified": false,
+    "frozen_testcase_modified": false
+  },
+  "validation": {
+    "validator": "tools/validate_gov04_review_policy.py",
+    "workflow": ".github/workflows/animo-gov04-risk-tiered-review-policy.yml",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_job_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "deliverables": [
+    "docs/governance/ANIMO_GOV04_RISK_TIERED_REVIEW_POLICY.md",
+    "integration/animo-governance/GOV04_REVIEW_INTENSITY_MATRIX.json",
+    "integration/animo-governance/ANIMO-GOV04_STATUS.json",
+    "tools/validate_gov04_review_policy.py",
+    ".github/workflows/animo-gov04-risk-tiered-review-policy.yml"
+  ]
+}
