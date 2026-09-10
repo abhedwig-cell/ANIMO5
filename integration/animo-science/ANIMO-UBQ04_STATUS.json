@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-UBQ04",
+  "title": "HETOP Zero-Thickness Intended Model Semantics and Applicability Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-ubq04-hetop-zero-model-semantics",
+  "status": "IN_PROGRESS_PERSISTED_THEORY_RECONCILIATION_PENDING",
+  "base": {
+    "work_unit": "ANIMO-B3I06",
+    "head": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
+    "decision": "QUALIFIED_UBQ03_INCREMENTAL_INTAKE_RUNTIME_INPUT_DOMAIN_HAZARD_NO_NEW_TCD_NO_ADMISSION"
+  },
+  "goal": "Determine whether the available ANIMO 4.0 documentation, revision-53 source and supplied testbank uniquely define HETOP=0 as an intended model state, a conditional sentinel, or an invalid endpoint. Fail closed if intent is not uniquely recoverable.",
+  "scope_guards": {
+    "production_source_modified": false,
+    "input_validation_modified": false,
+    "canonical_tcd_register_modified": false,
+    "new_tcd_reserved": false,
+    "TCD042_B1_modified_or_admitted": false,
+    "TCD042_E1_modified_or_admitted": false,
+    "parent_TCD042_admitted": false,
+    "zero_thickness_policy_selected": false,
+    "production_migration_admitted": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  }
+}
