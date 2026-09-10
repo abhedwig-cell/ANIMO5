@@ -1,0 +1,87 @@
+{
+  "work_unit": "ANIMO-B3B05",
+  "target_tcd": "TCD-023",
+  "contract": "EXPECTED_DIFFERENCE_PREDECLARED_BEFORE_INDEPENDENT_SECOND_LINE_REVIEW",
+  "candidate_change": {
+    "source": "resp_miner.for",
+    "routine": "Resp_miner",
+    "case": 2,
+    "legacy": [
+      "Transfop(19,Ln) = (1.0-AsfaSDO) * Transfon(17,Ln)",
+      "Transfop(20,Ln) = AsfaSDO * Transfon(17,Ln)"
+    ],
+    "candidate": [
+      "Transfop(19,Ln) = (1.0-AsfaSDO) * Transfop(17,Ln)",
+      "Transfop(20,Ln) = AsfaSDO * Transfop(17,Ln)"
+    ],
+    "production_source_edit_authorized": false
+  },
+  "expected_to_change_when_P_active_Case2_is_discriminating": [
+    "Transfop(19,Ln)",
+    "Transfop(20,Ln)",
+    "ReleasedP contribution derived from Transfop(19,Ln)",
+    "ImmP contribution derived from Transfop(20,Ln)",
+    "Tomnpo(Ln)",
+    "Rekopo(Ln)",
+    "downstream unrounded mineral-P trajectory only to the extent causally driven by the changed Rekopo source",
+    "organic-P detailed/balance quantities that directly consume the changed transfer terms"
+  ],
+  "expected_unchanged": [
+    "Case(2) selector thresholds and branch ordering",
+    "Transfom(17/19/20) carbon transformation values",
+    "Transfon(17/19/20) nitrogen transformation values",
+    "all other Resp_miner Case(2) equations",
+    "all other stable-DOM cases",
+    "stable-DOM state definition and ownership",
+    "initialization semantics",
+    "restart/checkpoint semantics",
+    "solver algorithms",
+    "solver tolerances",
+    "numerical precision policy",
+    "TCD-019 nonlinear sorption policy",
+    "TCD-024 slow-Langmuir indexing",
+    "TCD-027 reporting accumulator",
+    "all other TCD corrections",
+    "frozen B0 source and testbank bytes",
+    "canonical TCD register",
+    "production source",
+    "central-regie aggregate"
+  ],
+  "natural_Puitmijn_reference_surface_from_PREP04": {
+    "case": "Puitmijn_Cranendonck_60",
+    "expected_normalized_changed_files": [
+      "ani_pLO.Bal",
+      "ani_pTP.Bal",
+      "bapoLO.Out",
+      "bapoTP.Out",
+      "message.out"
+    ],
+    "ordinary_formatted_nonbalance_outputs_expected_changed": false,
+    "unrounded_Tomnpo_and_Rekopo_expected_changed": true,
+    "other_seven_PREP02_compatible_cases_expected_normalized_differences": 0,
+    "no_extra_or_missing_outputs_expected": true
+  },
+  "conservation_contract": {
+    "required_identity": "Transfop(19)+Transfop(20)=Transfop(17)",
+    "candidate_expected_residual": "exact zero in algebraic fixture",
+    "legacy_expected_residual": "Transfon(17)-Transfop(17)",
+    "whole_case_residual_zero_required": false,
+    "reason_whole_case_zero_not_required": "other independently scoped P residual mechanisms may remain; TCD-023 may only remove its own causal contribution"
+  },
+  "comparison_policy": {
+    "scientific_numeric_tolerance": null,
+    "rounded_output_used_as_equivalence_proof": false,
+    "unrounded_affected_source_or_state_comparison_required": true,
+    "allowed_normalization": [
+      "volatile timestamp text",
+      "elapsed-time text"
+    ],
+    "unexpected_scientific_difference_action": "FAIL_CLOSED_OR_ESCALATE_SCOPE_BEFORE_ANY_ADMISSION"
+  },
+  "scope_escalation": {
+    "state_or_restart_semantics_found": "ESCALATE_FROM_GOV04_TIER_B",
+    "numerical_policy_or_solver_change_found": "ESCALATE_FROM_GOV04_TIER_B",
+    "composition_with_other_TCD_found": "ESCALATE_TO_GOV04_TIER_D",
+    "production_bound_change_found": "ESCALATE_TO_GOV04_TIER_D"
+  }
+}
