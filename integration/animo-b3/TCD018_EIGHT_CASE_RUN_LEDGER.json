@@ -1,0 +1,114 @@
+[
+  {
+    "case": "CranGrass",
+    "variant": "baseline",
+    "success_message_present": true,
+    "success_message_paths": ["Output/message.out"],
+    "runner_stdout_sha256": "b9fbb3ab2922b405921334b6f448d4ac6d4ccd25a559541833ce9457fae2a106"
+  },
+  {
+    "case": "CranGrass",
+    "variant": "candidate",
+    "success_message_present": true,
+    "success_message_paths": ["Output/message.out"],
+    "runner_stdout_sha256": "b9fbb3ab2922b405921334b6f448d4ac6d4ccd25a559541833ce9457fae2a106"
+  },
+  {
+    "case": "CranMais",
+    "variant": "baseline",
+    "success_message_present": true,
+    "success_message_paths": ["Output/message.out"],
+    "runner_stdout_sha256": "082469e5f6d1c4daee4ffefedde2cf4703d3106aaf017d0fc4f6a3cb814d4333"
+  },
+  {
+    "case": "CranMais",
+    "variant": "candidate",
+    "success_message_present": true,
+    "success_message_paths": ["Output/message.out"],
+    "runner_stdout_sha256": "082469e5f6d1c4daee4ffefedde2cf4703d3106aaf017d0fc4f6a3cb814d4333"
+  },
+  {
+    "case": "GrassPeat",
+    "variant": "baseline",
+    "success_message_present": true,
+    "success_message_paths": ["Output/message.out"],
+    "runner_stdout_sha256": "7a365bb4fa0b3ee5df97c5e23100dcb3165b9dae24ae2e5d46d2614147279e76"
+  },
+  {
+    "case": "GrassPeat",
+    "variant": "candidate",
+    "success_message_present": true,
+    "success_message_paths": ["Output/message.out"],
+    "runner_stdout_sha256": "7a365bb4fa0b3ee5df97c5e23100dcb3165b9dae24ae2e5d46d2614147279e76"
+  },
+  {
+    "case": "LWKM_gras_1040.2021.2045",
+    "variant": "baseline",
+    "success_message_present": true,
+    "success_message_paths": ["message.out"],
+    "runner_stdout_sha256": "3bdd0d0a76c00e06b98915e7416231faf5c188cafa868e6442d658a44e8176ec"
+  },
+  {
+    "case": "LWKM_gras_1040.2021.2045",
+    "variant": "candidate",
+    "success_message_present": true,
+    "success_message_paths": ["message.out"],
+    "runner_stdout_sha256": "3bdd0d0a76c00e06b98915e7416231faf5c188cafa868e6442d658a44e8176ec"
+  },
+  {
+    "case": "Puitmijn_Cranendonck_60",
+    "variant": "baseline",
+    "success_message_present": true,
+    "success_message_paths": ["message.out"],
+    "runner_stdout_sha256": "4a6bc55c3c5ac9e79f615c18d20a5ee5f5b8e392e77c75bf82fa67d533574b5a"
+  },
+  {
+    "case": "Puitmijn_Cranendonck_60",
+    "variant": "candidate",
+    "success_message_present": true,
+    "success_message_paths": ["message.out"],
+    "runner_stdout_sha256": "4a6bc55c3c5ac9e79f615c18d20a5ee5f5b8e392e77c75bf82fa67d533574b5a"
+  },
+  {
+    "case": "RuurloGrass",
+    "variant": "baseline",
+    "success_message_present": true,
+    "success_message_paths": ["Output/message.out"],
+    "runner_stdout_sha256": "57bc073075e941333058ee56db5a4ae4966aac56899ad3ff4b936b78a38d8e0d"
+  },
+  {
+    "case": "RuurloGrass",
+    "variant": "candidate",
+    "success_message_present": true,
+    "success_message_paths": ["Output/message.out"],
+    "runner_stdout_sha256": "57bc073075e941333058ee56db5a4ae4966aac56899ad3ff4b936b78a38d8e0d"
+  },
+  {
+    "case": "STONE_akk_0006.2001.2015",
+    "variant": "baseline",
+    "success_message_present": true,
+    "success_message_paths": ["message.out"],
+    "runner_stdout_sha256": "3bdd0d0a76c00e06b98915e7416231faf5c188cafa868e6442d658a44e8176ec"
+  },
+  {
+    "case": "STONE_akk_0006.2001.2015",
+    "variant": "candidate",
+    "success_message_present": true,
+    "success_message_paths": ["message.out"],
+    "runner_stdout_sha256": "3bdd0d0a76c00e06b98915e7416231faf5c188cafa868e6442d658a44e8176ec"
+  },
+  {
+    "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+    "variant": "baseline",
+    "success_message_present": true,
+    "success_message_paths": ["message.out"],
+    "runner_stdout_sha256": "9a93509bff63effe607064b4c4aa0b3705152709d2603823da6ae59f408adb5a"
+  },
+  {
+    "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+    "variant": "candidate",
+    "success_message_present": true,
+    "success_message_paths": ["message.out"],
+    "runner_stdout_sha256": "9a93509bff63effe607064b4c4aa0b3705152709d2603823da6ae59f408adb5a"
+  }
+]
