@@ -1,0 +1,85 @@
+{
+  "work_unit": "ANIMO-B3B06",
+  "target": "TCD-030",
+  "record_type": "FROZEN_B0_SOURCE_EVIDENCE",
+  "authority_pins": {
+    "aggregate_regie": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
+    "post_aggregate_tcd027_admission": "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4",
+    "gov04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "mp01": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "mp02": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "b3i01_routing": "7b2be9d9742aaad78128c0531591d8e38d7e8450",
+    "b3i03_later_routing_observation": "6a015587807130b4ce12c9f1518c1ddac4e5d624",
+    "b3i03_canonical_register_append": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "frozen_b0_retention": "ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300"
+  },
+  "frozen_b0": {
+    "archive": "ANIMO_4.1.5.53(3).zip",
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "mapoinput_path": "ANIMO_4.1.5.53/mapoinput.for",
+    "mapoinput_sha256": "081c671d2f576ab0608350cbb0083eab157c586a6783522cda3534b141244065",
+    "input1_path": "ANIMO_4.1.5.53/input1.for",
+    "input1_sha256": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+    "identity_status": "MATCHES_EG01_ARCHIVE_AND_SOURCE_MANIFEST"
+  },
+  "exact_seam": {
+    "routine": "MaPoInput",
+    "mapoinput_lines": "116-133",
+    "trigger": "Nupa.EQ.4",
+    "caller_path": "input1.for:3460-3465",
+    "caller_gate": "Ioptmp.Eq.1",
+    "label": ">MPnitr:",
+    "read_order": [
+      "CoMpnh(1)",
+      "CoMpnh(2)",
+      "CoMpni(1)",
+      "CoMpni(2)"
+    ],
+    "lower_bound": 0.0,
+    "high_argument": 999.0,
+    "high_argument_semantics": "NO_HIGH_LIMIT_SENTINEL",
+    "faulty_calls": [
+      {
+        "line": 130,
+        "diagnostic_name": "CoMpni(1)",
+        "checked_value_legacy": "CoMpnh(1)",
+        "checked_value_intended": "CoMpni(1)"
+      },
+      {
+        "line": 132,
+        "diagnostic_name": "CoMpni(2)",
+        "checked_value_legacy": "CoMpnh(2)",
+        "checked_value_intended": "CoMpni(2)"
+      }
+    ]
+  },
+  "checkrea_contract": {
+    "source": "input1.for:4042-4086",
+    "low_guard": "Abs(Low-999.).Gt.Nihil .And. Value.Lt.Low",
+    "low_failure_error": 1992,
+    "high_guard": "Abs(High-999.).Gt.Nihil .And. Value.Gt.High",
+    "high_failure_error": 1993,
+    "sentinel": 999.0,
+    "sentinel_effect_for_tcd030": "rarg2=999 disables the high check; zero is accepted because only Value.Lt.Low fails"
+  },
+  "ownership": {
+    "nh4": ["CoMpnh(1)", "CoMpnh(2)"],
+    "no3": ["CoMpni(1)", "CoMpni(2)"],
+    "physical_initialization_assignment": "the Read statement already assigns NO3 to CoMpni; the defect is only which value is passed to the labelled NO3 Checkrea calls",
+    "persistent_state_semantics_changed": false
+  },
+  "diagnostic_path": {
+    "range_failure": "Checkrea writes the label and variable name, writes SIMULATION INTERRUPTED, sets Error=1992 for the active lower-bound violation, and returns",
+    "caller_propagation": "input1.for returns when Error.Ne.0 after MaPoInput",
+    "read_failure": "MaPoInput label 8500 is a separate parse/read error path and is outside TCD-030"
+  },
+  "canonical_identity": {
+    "b3i01_key": "MP01-LCL-INITIAL-NO3-VALIDATION",
+    "tcd": "TCD-030",
+    "class": "B",
+    "later_canonical_register_row_present": true,
+    "admitted": false
+  }
+}
