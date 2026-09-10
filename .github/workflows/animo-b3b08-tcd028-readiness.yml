@@ -1,0 +1,25 @@
+name: ANIMO-B3B08 TCD-028 Tier-C readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3b08-tcd028-stable-dom-event-reset-readiness
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate TCD-028 readiness and risk route
+        run: python tools/validate_b3b08_tcd028_readiness.py
+
+      - name: Validate atomic readiness scope
+        run: python tools/validate_b3b08_scope.py
