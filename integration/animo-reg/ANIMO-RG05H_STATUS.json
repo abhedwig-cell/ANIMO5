@@ -1,0 +1,69 @@
+{
+  "work_unit": "ANIMO-RG05H",
+  "title": "Post-RG05G Canonical Routing Refresh & TCD-038 Admission Integration",
+  "branch": "work/animo-rg05h-b3i07-routing-tcd038-admission-integration",
+  "state": "PERSISTED_VALIDATION_PENDING",
+  "decision": "PERSISTED_VALIDATION_PENDING",
+  "source_aggregate": "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+  "aggregate_trigger": "CANONICAL_ROUTING_CHANGED_AND_CURRENT_CENTRAL_SNAPSHOT_WOULD_OTHERWISE_BE_MISLEADING",
+  "batch_policy": {
+    "new_atomic_admissions": 1,
+    "normal_threshold_reached": false,
+    "early_batch": true
+  },
+  "new_atomic_admissions": [
+    "ANIMO-B3D20@4f0a352bd354c971db0d972967296bf64505da5b:TCD-038"
+  ],
+  "current_routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+  "routing_change": {
+    "parent": "TCD-037",
+    "parent_state": "ATOMIZED_A1_A2_A3_A4_ACCOUNTING_OBSERVER_CHILDREN_NO_ADMISSION",
+    "children": [
+      "TCD-037-A1",
+      "TCD-037-A2",
+      "TCD-037-A3",
+      "TCD-037-A4"
+    ],
+    "child_class": "A_ACCOUNTING_REPORTING_ONLY",
+    "child_risk_state": "TIER_A_CANDIDATE_WAIVER_NOT_YET_AVAILABLE",
+    "tier_a_waiver_granted": false,
+    "child_admission_count": 0
+  },
+  "scientific_admission_count": 11,
+  "historical_uncertainty_admission_count": 11,
+  "normal_b2_admission_count": 0,
+  "b3_complete": false,
+  "b4_open": false,
+  "production_open": false,
+  "global_canonical_queue_count_recomputed": false,
+  "hard_boundaries": {
+    "scientific_readmission_performed": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "composition_admitted": false,
+    "tier_a_waiver_granted": false,
+    "b4_admitted": false,
+    "production_migration_admitted": false,
+    "historical_fidelity_claimed": false
+  },
+  "validation": {
+    "machine_validated": false,
+    "workflow": "ANIMO-RG05H routing refresh and TCD-038 admission integration",
+    "run_id": null,
+    "job_id": null,
+    "tested_head": null,
+    "conclusion": null,
+    "validator": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "next_if_validated": "USE_ANIMO_RG05H_AS_CURRENT_AGGREGATE_AUTHORITY_THEN_START_TCD037_CHILD_READINESS_FROM_B3I07_WITHOUT_ASSUMING_TIER_A_WAIVER"
+}
