@@ -1,0 +1,102 @@
+{
+  "work_unit": "ANIMO-TH03",
+  "target": "HETOP surface/addition reservoir lineage and zero-endpoint semantics",
+  "sources": [
+    {
+      "id": "ANIMO35_PROCESS_REPORT_144",
+      "title": "Modelling the nitrogen and phosphorus leaching to groundwater and surface water with ANIMO 3.5",
+      "authors": ["P. Groenendijk", "J.G. Kroes"],
+      "year": 1999,
+      "publisher": "Winand Staring Centre",
+      "official_metadata": "https://research.wur.nl/en/publications/modelling-the-nitrogen-and-phosphorus-leaching-to-groundwater-and/",
+      "official_document": "https://edepot.wur.nl/363774",
+      "full_text_access_used_for_section_reconstruction": "https://paperzz.com/doc/8968173/0-jul-2000---wageningen-ur-e",
+      "evidence_role": "PRE_4_0_PROCESS_THEORY_LINEAGE",
+      "authority_note": "Bibliographic identity and official document locator are WUR-hosted. The accessible paragraph-level reconstruction was cross-read from a secondary full-text mirror because the official PDF endpoint returned access errors in this execution environment."
+    },
+    {
+      "id": "ANIMO40_PROCESS_REPORT_983",
+      "title": "Prediction of nitrogen and phosphorus leaching to groundwater and surface waters; process descriptions of the animo4.0 model",
+      "authors": ["P. Groenendijk", "L.V. Renaud", "J. Roelsma"],
+      "year": 2005,
+      "publisher": "Alterra",
+      "report_number": 983,
+      "official_metadata": "https://research.wur.nl/en/publications/prediction-of-nitrogen-and-phosphorus-leaching-to-groundwater-and/",
+      "official_document": "https://edepot.wur.nl/35121",
+      "evidence_role": "ANIMO_4_0_PROCESS_REPORT_IDENTITY_AND_CHANGE_CONTEXT",
+      "full_text_retrieved_in_this_workunit": false
+    },
+    {
+      "id": "ANIMO40_USER_GUIDE_224",
+      "title": "ANIMO 4.0 User's guide of the ANIMO 4.0 nutrient leaching model",
+      "year": 2005,
+      "official_document": "https://edepot.wur.nl/20340",
+      "evidence_role": "ANIMO_4_0_INPUT_CONTRACT_AND_TERMINOLOGY"
+    },
+    {
+      "id": "ANIMO35_USER_GUIDE_TD46",
+      "title": "ANIMO 3.5; user's guide for the ANIMO version 3.5 nutrient leaching model",
+      "authors": ["J.G. Kroes", "J. Roelsma"],
+      "year": "1997/1998 bibliographic variants",
+      "evidence_role": "LINEAGE_EXISTENCE_ONLY",
+      "HETOP_table_row_recovered_in_this_workunit": false
+    }
+  ],
+  "recovered_ANIMO35_process_theory": {
+    "section": "2.1.3 Upper soil storage and surface runoff",
+    "surface_addition_reservoir_exists": true,
+    "all_additions_immediately_dissolved_in_reservoir": true,
+    "solute_migration_characterized_as_piston_flow": true,
+    "depletion_condition": "The stored addition is depleted after cumulative precipitation equals the reservoir volume.",
+    "release_rate_control": "The release rate is manipulated by the chosen reservoir thickness.",
+    "bookkeeping_store": true,
+    "surface_runoff_uses_surface_reservoir_concentration": true,
+    "endpoint_HETOP_zero_explicitly_defined": false,
+    "zero_as_disable_sentinel_explicitly_defined": false,
+    "zero_as_instantaneous_release_explicitly_defined": false,
+    "zero_as_invalid_input_explicitly_defined": false
+  },
+  "ANIMO40_user_guide_contract": {
+    "mnemonic": "HETOP",
+    "description": "Thickness of the virtual reservoir where fertilizer additions are leached from proportional to cumulative precipitation since the fertilization event.",
+    "unit": "m",
+    "published_range": "[0.0 ... 0.2]",
+    "endpoint_zero_semantics_explicit": false
+  },
+  "lineage_reconciliation": {
+    "reservoir_concept_predates_ANIMO40": true,
+    "reservoir_concept_present_in_ANIMO35_process_theory": true,
+    "HETOP_is_supported_as_capacity_or_release_timescale_parameter": true,
+    "HETOP_supported_as_feature_flag_or_sentinel": false,
+    "evidence_that_ANIMO40_intentionally_changed_this_reservoir_model": false,
+    "note_on_ANIMO40_report_983": "The accessible official abstract highlights changes since ANIMO 3.5 in soil-moisture effects on mineralization/denitrification and external daily crop uptake. That is supporting context only, not an exhaustive proof that the upper-reservoir formulation was unchanged.",
+    "zero_endpoint_uniquely_resolved": false
+  },
+  "endpoint_hypotheses": [
+    {
+      "hypothesis": "HETOP=0 is invalid input despite the inclusive published range",
+      "supported": "POSSIBLE_NOT_PROVEN",
+      "reason": "The positive-volume reservoir theory is naturally formulated with a nonzero depth, but no recovered authority states that zero is invalid."
+    },
+    {
+      "hypothesis": "HETOP=0 is a sentinel disabling delayed release",
+      "supported": "NOT_SUPPORTED_BY_RECOVERED_THEORY",
+      "reason": "No recovered ANIMO 3.5/4.0 theory or source sentinel branch defines zero this way."
+    },
+    {
+      "hypothesis": "HETOP=0 means zero-capacity instantaneous passthrough",
+      "supported": "MATHEMATICALLY_PLAUSIBLE_FOR_SOME_POSITIVE_FLOW_LIMITS_NOT_GLOBALLY_PROVEN",
+      "reason": "The reservoir-volume interpretation suggests a zero-volume limiting idea, but existing concentration/storage equations and zero-flow/loading combinations are singular or require additional routing semantics."
+    }
+  ],
+  "qualified_boundary": {
+    "positive_HETOP_B1_and_E1_results_invalidated": false,
+    "NQ03_extended_to_HETOP_zero": false,
+    "input_lower_bound_change_authorized": false,
+    "zero_capacity_passthrough_authorized": false,
+    "new_TCD_authorized": false,
+    "scientific_admission_authorized": false,
+    "production_change_authorized": false
+  },
+  "decision": "QUALIFY_RESERVOIR_CONCEPT_LINEAGE_TO_ANIMO35_KEEP_ZERO_ENDPOINT_UNRESOLVED"
+}
