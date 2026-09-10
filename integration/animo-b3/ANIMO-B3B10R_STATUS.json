@@ -4,33 +4,141 @@
   "tcd": "TCD-031",
   "branch": "review/animo-b3b10r-tcd031-independent-second-line",
   "exact_starting_head": "eccba6712f65455161d05fa9cdf6aa142f823dd4",
-  "review_status": "IN_PROGRESS_FAIL_CLOSED_PENDING_INDEPENDENT_RECONSTRUCTION",
-  "review_disposition": "NOT_YET_DECIDED",
-  "risk_tier_under_review": "GOV04_TIER_C",
-  "persist_early_checkpoint": true,
-  "live_checks_at_checkpoint": {
-    "review_branch_exact_start_verified": true,
-    "aggregate_RG05G_head": "4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
-    "no_later_B3B10R_branch_found": true,
-    "no_TCD031_issue_found_by_repository_issue_search": true,
-    "later_canonical_routing_than_B3I06_detected": "B3I07_REQUIRES_INSPECTION"
-  },
-  "independent_evidence_checks_completed": {
-    "frozen_source_manifest_identity_crosscheck": true,
-    "STATEQ04_runner_source_hash_pinning_inspected": true,
-    "STATEQ04_driver_lifecycle_inspected": true,
-    "STATEQ04_result_species_and_exact_comparison_inspected": true
-  },
-  "pending_before_disposition": [
-    "live authority heads GOV04 GOV03 B3Q01 MP01 MP02 STATEQ01 STATEQ02 STATEQ03 STATEQ04 B3B10 MASSQ02 B3I03-through-latest frozen-B0",
-    "independent source-level verification of mapoinput Output_Init Animo.for Init.for claims from source-bound evidence",
-    "GOV04 tier-policy reconstruction",
-    "GOV03 historical-uncertainty compatibility",
-    "active historical B2-reference recheck",
-    "MP02 whole-model reachability boundary",
-    "TCD-025 boundary",
-    "atomicity and final fail-closed disposition"
+  "review_status": "COMPLETE_FAIL_CLOSED",
+  "review_disposition": "REMEDIATION_REQUIRED",
+  "failure_classification": [
+    "EVIDENCE_INSUFFICIENCY",
+    "PROVENANCE_INSUFFICIENCY"
   ],
+  "scientific_falsification": false,
+  "gov04_risk_tier": "TIER_C",
+  "atomic_correction_identity": "COMPLETE_ACCEPTED_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY",
+  "persist_early_checkpoint_commit": "4f1e18cc70b3509dae0e2c25d38f37ede1ece011",
+  "live_authorities": {
+    "aggregate_RG05G": "4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "MP01": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "MP02": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "STATEQ01": "4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "STATEQ02": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "STATEQ03": "10c50e65d1369d5f3b26736c4b12d3a482379eb5",
+    "STATEQ04": "ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+    "B3B10": "eccba6712f65455161d05fa9cdf6aa142f823dd4",
+    "MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "B3I03": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "B3I04": "400b7cd79f89043e091751707dfa96537587dcf6",
+    "B3I05": "1f94a6e08db5d73e8935fb095de9ef9798f6544c",
+    "B3I06": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
+    "latest_routing_B3I07": "54679c7555a963133dfd686648af334f479c5808",
+    "frozen_B0_retention": "a818b5a37b80ed92aded0b9c404990d356eb2300"
+  },
+  "live_discovery": {
+    "later_B3B10R_independent_review_found": false,
+    "tcd031_issue_count": 0,
+    "tcd031_pull_request_mentions": [19],
+    "pull_request_19_role": "HISTORICAL_CANONICAL_ROUTING_ONLY_NOT_INDEPENDENT_REVIEW",
+    "new_routing_since_handoff": "B3I07_TCD037_ONLY_NO_TCD031_SCOPE_CHANGE"
+  },
+  "frozen_source": {
+    "revision": "4.1.5.53",
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "raw_archive_publicly_repository_visible": false,
+    "reason": "NO_SOURCE_REDISTRIBUTION_LICENCE_ESTABLISHED",
+    "member_hash_identity_available": true
+  },
+  "persistent_state_candidate": {
+    "p_off": [
+      "CoMpDiorMa(1:2)",
+      "CoMpDiorNi(1:2)",
+      "CoMpNh(1:2)",
+      "CoMpNi(1:2)"
+    ],
+    "p_off_scalar_count": 8,
+    "p_on_additional": [
+      "CoMpDiorPo(1:2)",
+      "CoMpPo(1:2)"
+    ],
+    "p_on_scalar_count": 12,
+    "domains": 2,
+    "exact_native_symbol_mapping_independently_primary_source_replayed": false,
+    "kernel_contract_support": "STRONG"
+  },
+  "ownership_contract_review": {
+    "accepted_CoMp": "ANIMO_SOLUTE_OWNED_PERSISTENT_CONTINUATION_STATE",
+    "RsCoMp": "RESULT_END_ALIAS_SAME_PHYSICAL_OWNER_NOT_SECOND_CHECKPOINT_COORDINATE",
+    "SrWaMpOld_SrWaMp": "EXTERNAL_HYDROLOGY_OWNED_PERSISTENT_DEPENDENCY",
+    "SrWaMpCp_SrWaMpCpOld": "EXTERNAL_HYDROLOGY_OWNED_PERSISTENT_DEPENDENCY",
+    "AvCoMp": "EPHEMERAL_CURRENT_INTERVAL_WORKSPACE",
+    "AvCoML": "EPHEMERAL_CURRENT_INTERVAL_WORKSPACE",
+    "MpReKo": "EPHEMERAL_CURRENT_INTERVAL_TRANSFER_WORKSPACE",
+    "ItRec": "DERIVED_DIAGNOSTIC",
+    "contract_level_consistent": true,
+    "complete_native_source_level_producer_consumer_replay": false
+  },
+  "review_gates": {
+    "persistent_state_structural_count": "PASS_WITH_SOURCE_LEVEL_SYMBOL_REPLAY_LIMITATION",
+    "complete_source_level_ownership": "FAIL_CLOSED_PRIMARY_SOURCE_REPLAY_UNAVAILABLE",
+    "native_mapoinput_loader": "FAIL_CLOSED_PRIMARY_SOURCE_REPLAY_UNAVAILABLE",
+    "native_Output_Init_serialization_omission": "FAIL_CLOSED_PRIMARY_SOURCE_REPLAY_UNAVAILABLE",
+    "native_Animo_Output_Init_call_surface": "FAIL_CLOSED_PRIMARY_SOURCE_REPLAY_UNAVAILABLE",
+    "native_Init_restore_direction_and_timing": "FAIL_CLOSED_PRIMARY_SOURCE_REPLAY_UNAVAILABLE",
+    "native_RsCoMp_pre_promotion_initialization": "FAIL_CLOSED_PRIMARY_SOURCE_REPLAY_UNAVAILABLE",
+    "candidate_restore_transaction_kernel_semantics": "PASS",
+    "both_domains_causally_required_kernel_level": "PASS",
+    "six_species_kernel_coverage": "PASS",
+    "conditional_phosphorus_families_covered": "PASS",
+    "exact_bytewise_no_tolerance": "PASS",
+    "fresh_process_stageB": "PASS",
+    "native_bad_emulation_causal_divergence": "PASS",
+    "domain_1_drop_causal_divergence": "PASS",
+    "domain_2_drop_causal_divergence": "PASS",
+    "whole_model_active_macropore_reachability_MP02": "PASS_B1_SCOPE_ONLY",
+    "whole_model_active_production_split_equivalence": "NOT_PROVEN",
+    "historical_active_macropore_B2": "ABSENT",
+    "historical_revision53_active_macropore_restart_behaviour": "UNKNOWN",
+    "evidence_boundary_not_overclaimed": "PASS",
+    "atomicity": "PASS_CONTRACT_LEVEL",
+    "gov04_tier": "PASS_TIER_C"
+  },
+  "stateq04": {
+    "reopen_required": false,
+    "evidence_scope": "FROZEN_SOURCE_KERNEL_REMEDIATION_QUALIFICATION_NOT_WHOLE_MODEL",
+    "existing_ci_run_id": 34536146367,
+    "existing_ci_conclusion": "success",
+    "ci_interpretation": "VALIDATES_PERSISTED_EVIDENCE_AND_HARNESS_SYNTAX_NOT_FRESH_FROZEN_ARCHIVE_KERNEL_REEXECUTION"
+  },
+  "required_remediation": {
+    "target": "TCD031_SOURCE_EVIDENCE_EXPOSURE_OR_CONTROLLED_REPLAY",
+    "must_verify": [
+      "mapoinput.for MPnitr MPorgs conditional MPphos loader behaviour",
+      "Output_Init.for native writer activity/comment status",
+      "Animo.for active Output_Init macropore argument call surface",
+      "Init.for result-to-accepted promotion direction and lifecycle timing",
+      "RsCoMp native initialization before first resumed promotion",
+      "native producer-consumer roles for CoMp RsCoMp AvCoMp AvCoML MpReKo ItRec and SrWaMp families"
+    ],
+    "acceptable_form": "LICENSE_SAFE_MECHANICALLY_HASH_BOUND_SOURCE_PROBE_OUTPUT_OR_CONTROLLED_SOURCE_SLICES",
+    "next_review": "TARGETED_INDEPENDENT_REREVIEW_OF_FAILED_SOURCE_PROVENANCE_GATES_PLUS_REGRESSION_GUARDS_IF_ALL_REUSED_PASS_PINS_REMAIN_IMMUTABLE"
+  },
+  "whole_model_evidence_policy": {
+    "required_to_repair_current_independent_source_blocker": false,
+    "required_before_whole_model_production_restart_equivalence_or_migration_claim": true
+  },
+  "tcd025_boundary": {
+    "executed_here": false,
+    "composition_here": false,
+    "may_consume_TCD031_as_certified_dependency_now": false,
+    "formal_class_A_ledger_readiness_advancement": "BLOCKED_PENDING_TCD031_INDEPENDENT_REVIEW_PASS",
+    "exploratory_analysis_without_TCD031_PASS_ASSUMPTION": "LOGICALLY_SEPARABLE_ONLY"
+  },
+  "admission": {
+    "atomic_B3_admission_may_open": false,
+    "admission_branch_created": false,
+    "B3D_number_lookup_required": false,
+    "reason": "INDEPENDENT_TIER_C_REVIEW_GATE_NOT_PASS"
+  },
   "scope_guards": {
     "production_source_patch": false,
     "frozen_B0_change": false,
@@ -42,5 +150,6 @@
     "new_numerical_tolerance": false,
     "historical_intent_inference_without_evidence": false,
     "B3_admission": false
-  }
+  },
+  "review_document": "docs/b3/ANIMO_B3B10R_TCD031_INDEPENDENT_SECOND_LINE_REVIEW.md"
 }
