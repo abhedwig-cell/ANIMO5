@@ -4,7 +4,8 @@
   "policy_name": "RISK_TIERED_REVIEW_INTENSITY",
   "repository": "abhedwig-cell/ANIMO5",
   "authorities": {
-    "central_regie": "ANIMO-RG05D@f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "authoring_base_central_regie": "ANIMO-RG05D@f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "current_central_regie": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
     "b3_framework": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
     "historical_uncertainty_route": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
   },
@@ -314,6 +315,7 @@
   },
   "central_regie_integration": {
     "mode": "AGGREGATED_ATOMIC_ADMISSION_INTEGRATION",
+    "starting_aggregate_snapshot": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
     "normal_batch_min": 3,
     "normal_batch_max": 5,
     "aggregate_before_exceeding_pending_count": 5,
@@ -342,7 +344,7 @@
     "existing_finalized_reviews_remain_valid": true,
     "existing_admissions_remain_valid": true,
     "existing_fail_or_incomplete_records_rewritten": false,
-    "historical_rg_snapshots_immutable": ["RG05", "RG05A", "RG05B", "RG05C", "RG05D"],
+    "historical_rg_snapshots_immutable": ["RG05", "RG05A", "RG05B", "RG05C", "RG05D", "RG05E"],
     "open_workunits_may_apply_gov04_only_after_gov04_qualified": true,
     "running_independent_reviews_may_continue": true,
     "switching_allowed_only_without_scientific_gate_loss": true
@@ -352,8 +354,10 @@
       "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
       "risk_tier": "B",
       "independent_review": "PASS_AT_ANIMO-B3B01R@a6880282e9ed743f97a3435b55e4fb54f7d55a44",
-      "next_review_action": "VERIFY_AND_REUSE_EXISTING_PASS",
-      "next_workunit": "COMBINED_POST_REVIEW_DISPOSITION_AND_ADMISSION_CLOSEOUT_ALLOWED_IF_ALL_PINS_AND_ROUTE_REMAIN_VALID",
+      "atomic_admission": "ANIMO-B3D12@5e33c195174e41ea949d5a828d30bb7b9e313a5d",
+      "central_integration": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
+      "transition_state": "COMPLETED_CONCURRENTLY_NO_GOV04_REOPEN",
+      "historical_behaviour": "UNKNOWN",
       "admitted_by_gov04": false
     },
     "TCD-027": {
@@ -362,13 +366,15 @@
       "existing_second_line": "INCOMPLETE_AT_ANIMO-B3A01R@510c9313926457cd9bfd8e71a551255297bdfbb3",
       "failure_class": "EVIDENCE_INSUFFICIENCY",
       "scientific_falsification": false,
-      "next_review_action": "TIER_A_WAIVER_ALLOWED_ONLY_AFTER_ALL_STRENGTHENED_LOW_RISK_SOURCE_AND_NON_INTERFERENCE_GATES_PASS",
-      "unresolved_checks_to_close": [
+      "qualified_evidence_remediation": "ANIMO-B3A01E@5232ef5fa6daafa2296401b19fd9e866a34152bd",
+      "remediated_checks": [
         "EXACT_LOCAL_DUM_CONSTRUCTION_AND_MEANING",
         "EXACT_OUTBAL_WRITE_SLOT_24_TO_27_MAPPING",
         "EXACT_ORGANIC_P_SLOT_25_26_27_SELF_ACCUMULATORS"
       ],
+      "next_review_action": "VERIFY_ALL_GOV04_TIER_A_WAIVER_GATES_IN_ONE_BOUNDED_TECHNICAL_ADMISSION_WORKUNIT",
       "new_separate_second_line_required_if_tier_a_waiver_passes": false,
+      "automatic_admission_ready": false,
       "admitted_by_gov04": false
     },
     "TCD-040": {
@@ -378,6 +384,8 @@
       "independent_review": "FAIL_CLOSED_INDEPENDENT_EVIDENCE_REPLAY_INCOMPLETE_AT_ANIMO-B3B04R@bb001129578457ca8435e39deb2b8586e7ebc6a2",
       "failure_class": "EVIDENCE_INSUFFICIENCY",
       "scientific_falsification": false,
+      "live_evidence_remediation": "ANIMO-B3B04E1@b3f509806119ea2c2aaf0694c08d4a5bb13e6ca3",
+      "live_remediation_state": "FAIL_CLOSED_LOCAL_RECONSTRUCTION_PASS_CONTROLLED_B0_ACQUISITION_UNPROVEN",
       "independent_review_still_required": true,
       "targeted_rereview_after_remediation_allowed": true,
       "targeted_rereview_condition": "CLAIM_AND_PRIOR_PASS_GATES_AND_SOURCE_IDENTITIES_IMMUTABLE_AND_FAILED_EVIDENCE_GATES_ISOLATABLE",
