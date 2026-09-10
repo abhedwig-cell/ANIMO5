@@ -1,0 +1,25 @@
+name: ANIMO-B3A01R TCD027 independent second-line review
+
+on:
+  push:
+    branches:
+      - review/animo-b3a01r-tcd027-independent-second-line
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-independent-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact review head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate semantic review result
+        run: python tools/validate_b3a01r_tcd027_review.py
+
+      - name: Enforce review-only scope
+        run: python tools/check_b3a01r_tcd027_scope.py --base f348d0509ddfbb60473d41a7fe25e67d8e088e7f
