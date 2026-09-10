@@ -1,0 +1,103 @@
+{
+  "work_unit": "ANIMO-B3D15",
+  "record_type": "ATOMIC_B3_ADMISSION_CLOSEOUT",
+  "target": "TCD-030",
+  "title": "Macropore Initial NO3 Wrong-Species Validation",
+  "branch": "work/animo-b3d15-tcd030-gov04-tier-b-admission",
+  "decision": "QUALIFIED_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_B",
+  "admitted": true,
+  "atomic_claim": "In revision 53 macropore initial-input validation, keep the existing >MPnitr: read ownership unchanged and change only the two NO3-labelled Checkrea value selectors from CoMpnh(1) and CoMpnh(2) to the corresponding NO3 values CoMpni(1) and CoMpni(2).",
+  "risk": {
+    "tier": "B",
+    "class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "strictest_applicable_trigger_wins": true,
+    "tier_c_trigger_applicable": false,
+    "requalification_rule": "ANY_LATER_APPLICABLE_TIER_C_TRIGGER_OR_SCOPE_EXPANSION_INVALIDATES_THIS_ADMISSION"
+  },
+  "authorities": {
+    "aggregate_central_regie": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+    "readiness": "ANIMO-B3B06@98235bad7d7fb25b5053e9101c52c0ee3226692a",
+    "independent_review": "ANIMO-B3B06R@e64f6ef936a08c8975a2c53000408b67dd03881d",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "MP01": "ANIMO-MP01@7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "MP02": "ANIMO-MP02@6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "canonical_register": "ANIMO-B3I03@814ea660d367494432beb63ea78298d1f6cd73d7",
+    "frozen_b0": "ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300"
+  },
+  "independent_second_line_gate": {
+    "required": true,
+    "required_count": 1,
+    "realized_count": 1,
+    "separate_context": true,
+    "review_outcome": "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
+    "review_admission_decision_performed": false,
+    "review_ci_success_run": 34482752015,
+    "gate": "PASS"
+  },
+  "scientific_identity": {
+    "routine": "MaPoInput",
+    "routine_branch": "Nupa.EQ.4",
+    "caller_gate": "Ioptmp.Eq.1",
+    "label": ">MPnitr:",
+    "selector_corrections": [
+      {"legacy": "CoMpnh(1)", "corrected": "CoMpni(1)", "diagnostic": "CoMpni(1)"},
+      {"legacy": "CoMpnh(2)", "corrected": "CoMpni(2)", "diagnostic": "CoMpni(2)"}
+    ],
+    "physical_read_ownership_unchanged": true,
+    "validation_only": true,
+    "persistent_state_change": false,
+    "restart_checkpoint_change": false
+  },
+  "validation_semantics": {
+    "low": 0.0,
+    "high": 999.0,
+    "high_is_sentinel": true,
+    "zero_accepted": true,
+    "above_999_accepted": true,
+    "negative_error": 1992,
+    "error_1993_reachable_on_tcd030_path": false,
+    "read_error_8500_in_scope": false
+  },
+  "expected_difference": {
+    "allowed": ["INPUT_ACCEPTANCE_REJECTION", "DIRECT_VALIDATION_DIAGNOSTIC_AND_ERROR_RETURN"],
+    "active_divergence_domain": "Ioptmp=1 with NH4>=0 and at least one NO3<0",
+    "common_accepted_domain_state_change": false,
+    "transport_algebra_change": false,
+    "trajectory_equivalence_claimed_for_divergence_domain": false
+  },
+  "evidence": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "mapoinput_sha256": "081c671d2f576ab0608350cbb0083eab157c586a6783522cda3534b141244065",
+    "input1_sha256": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+    "matrix_cases_required": ["valid_unequal", "invalid_no3_d1", "invalid_no3_d2", "zero_boundary", "just_below_zero", "above_999", "invalid_nh4_control", "inactive"]
+  },
+  "historical_uncertainty": {
+    "b2_reference": "UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
+    "historical_fidelity_claimed": false
+  },
+  "composition": {
+    "TCD-025": false,
+    "TCD-031": false
+  },
+  "authorization": {
+    "production_source_patch": false,
+    "production_migration": false,
+    "b4": false,
+    "composition": false,
+    "canonical_tcd_register_change": false,
+    "central_rg05_update": false
+  },
+  "central_integration": {
+    "included_in_current_rg05f": false,
+    "post_rg05f_atomic_admission_ordinal": 1,
+    "normal_batch_cadence": "3_TO_5_NEW_ATOMIC_ADMISSIONS",
+    "required_later": true,
+    "next_action": "RETAIN_AS_ATOMIC_AUTHORITY_PENDING_NORMAL_GOV04_BATCHED_CENTRAL_REGIE_INTEGRATION_UNLESS_EARLY_TRIGGER_APPLIES"
+  },
+  "validation_state": "PENDING_B3D15_MACHINE_GATE",
+  "ci_validation": null
+}
