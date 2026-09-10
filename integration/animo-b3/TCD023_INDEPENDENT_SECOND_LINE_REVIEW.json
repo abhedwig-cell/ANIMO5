@@ -9,16 +9,20 @@
   "reviewed_readiness": {
     "work_unit": "ANIMO-B3B05",
     "head": "e76345bf984c58ff0b30a24b39dc8e037a2f4fd6",
+    "immutable_authoring_base": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
     "actions_run": 34480049339,
     "actions_job": 102880280314,
     "actions_conclusion_rechecked": "success"
   },
   "live_authorities": {
-    "aggregate_central_regie": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
+    "aggregate_central_regie": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+    "aggregate_reconciliation": "RG05F appeared during this review and was rechecked before closeout; it integrates only TCD-027 and TCD-041 and does not supersede or mutate TCD-023 evidence, GOV04, the canonical TCD-023 register row, or this review scope.",
     "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
     "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
     "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
-    "SYNQ01": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121"
+    "SYNQ01": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+    "later_TCD023_disposition_or_admission_found": false,
+    "later_ANIMO_B3B05R_result_found_before_persisting_this_review": false
   },
   "frozen_B0": {
     "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
@@ -127,9 +131,17 @@
     "B3 admission",
     "formal disposition"
   ],
+  "review_validation": {
+    "validator": "tools/validate_b3b05r_tcd023_review.py",
+    "workflow": ".github/workflows/animo-b3b05r-tcd023-independent-review.yml",
+    "initial_run": 34482646736,
+    "initial_run_result": "FAIL_TOOLING_SCOPE_LOOKUP_ONLY",
+    "initial_failure_cause": "validator attempted to load the SYNQ01 sibling register as a local branch file; scientific assertions were not falsified",
+    "remediation": "validate the already-live-reviewed immutable SYNQ01 head/blob/semantics through pinned upstream evidence without copying the sibling authority into review scope",
+    "required_closeout_state": "FINAL_REVIEW_HEAD_WORKFLOW_SUCCESS_AND_SCOPE_GUARD_PASS"
+  },
   "independent_review_gate_satisfied": true,
   "admission_performed": false,
   "production_modification_performed": false,
-  "next_allowed_workunit": "SEPARATE_COMBINED_GOV04_TIER_B_FORMAL_DISPOSITION_AND_B3_ADMISSION_CLOSEOUT_FOR_TCD023",
-  "validator_expected": "PASS"
+  "next_allowed_workunit": "SEPARATE_COMBINED_GOV04_TIER_B_FORMAL_DISPOSITION_AND_B3_ADMISSION_CLOSEOUT_FOR_TCD023"
 }
