@@ -61,12 +61,14 @@
   },
   "review_handoff": {
     "required": true,
-    "planned_work_unit": "ANIMO-B3B01R",
-    "planned_branch": "review/animo-b3b01r-tcd015-independent-second-line",
+    "work_unit": "ANIMO-B3B01R",
+    "branch": "review/animo-b3b01r-tcd015-independent-second-line",
+    "initial_handoff_head": "c05486e76993d26771f62f32842508479d14fdde",
+    "issue": 32,
+    "review_contract": "docs/b3/TCD015_INDEPENDENT_SECOND_LINE_REVIEW_CONTRACT.md",
     "same_context_review_allowed": false,
     "existing_PR21_same_account_COMMENTED_review_counts": false,
-    "issue": null,
-    "handoff_head": null
+    "review_executed": false
   },
   "deliverables": [
     "integration/animo-b3/TCD015_B3_DISPOSITION_GOV03.json",
@@ -78,8 +80,8 @@
   "validation": {
     "workflow": "ANIMO-B3D09 TCD015 GOV03 disposition",
     "validator": "tools/validate_b3d09_tcd015_disposition.py",
-    "tested_head": "a130d5b7d8144c6b55fe87ce992168854e077443",
-    "github_actions_run_id": 34449498764,
+    "tested_head": "2a5abc00a779baaa3fb3fa28b3c051231c286132",
+    "github_actions_run_id": 34449558494,
     "github_actions_conclusion": "success",
     "validator_result": "PASS",
     "scope_guard": "PASS_B3D09_SCOPE_GUARD"
@@ -97,5 +99,5 @@
     "testcase_modified": false,
     "independent_review_executed_in_this_context": false
   },
-  "next_action": "Create the clean ANIMO-B3B01R independent-review handoff branch from this qualified disposition and create the fail-closed review issue. Do not execute the independent review in this context."
+  "next_action": "Run ANIMO-B3B01R only in a separate ChatGPT context against issue #32 and the clean review branch. A PASS remains review evidence only; admission requires a later separate closeout."
 }
