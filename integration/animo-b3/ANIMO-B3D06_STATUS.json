@@ -1,0 +1,87 @@
+{
+  "work_unit": "ANIMO-B3D06",
+  "title": "TCD-018 B3 Admission Closeout Under GOV03 Historical-Uncertainty Route",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d06-tcd018-admission-closeout",
+  "base": {
+    "work_unit": "ANIMO-B3D05",
+    "head": "2f06cc86225637f8dadfdd969fe48dcf851b9ee2",
+    "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03"
+  },
+  "review_authority": {
+    "work_unit": "ANIMO-B3A03R2",
+    "head": "fc4a53c2e2e32dee27062959c7ecba7b605cf398",
+    "result": "PASS_TCD018_INDEPENDENT_SECOND_LINE_R2_READINESS_REVIEW",
+    "workflow_run": 34443743545,
+    "issue": 27,
+    "issue_result_comment": 5613977329,
+    "independence_scope": "SEPARATE_CHATGPT_CONTEXT_ONLY_NO_ORGANIZATIONAL_OR_HUMAN_INDEPENDENCE_CLAIM",
+    "previous_fail_retained": true
+  },
+  "evidence_remediation_authority": {
+    "work_unit": "ANIMO-B3A03E",
+    "head": "4c92b27ed5bbcaadb0e703e622e8c3f690458fa8"
+  },
+  "target_tcd": "TCD-018",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "state": "IN_PROGRESS_PERSISTED_TCD018_ADMISSION_VALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "intended_final_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "admission": {
+    "scientific_b3_admission_intended": true,
+    "scientific_b3_admission_qualified": false,
+    "historical_behaviour_status": "UNKNOWN",
+    "historical_fidelity_claimed": false,
+    "global_water_closure_claimed": false,
+    "b4_admitted": false,
+    "production_patch_authorized": false,
+    "production_migration_admitted": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_source_modified": false,
+    "frozen_testbank_modified": false,
+    "canonical_tcd_register_modified": false,
+    "hydrology_physics_modified": false,
+    "hydrology_state_modified": false,
+    "hydrology_flux_modified": false,
+    "forcing_modified": false,
+    "state_promotion_modified": false,
+    "swap_swat_payload_modified": false,
+    "composition_admitted": false,
+    "historical_b2_fabricated": false,
+    "rebuild_promoted_to_b2": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "validation": {
+    "validator": "tools/validate_b3d06_tcd018_admission.py",
+    "workflow": ".github/workflows/animo-b3d06-tcd018-admission.yml",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_job_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "deliverables": [
+    "integration/animo-b3/TCD018_B3_ADMISSION_CLOSEOUT.json",
+    "integration/animo-b3/ANIMO-B3D06_STATUS.json",
+    "docs/b3/TCD018_B3_ADMISSION_CLOSEOUT.md",
+    "tools/validate_b3d06_tcd018_admission.py",
+    ".github/workflows/animo-b3d06-tcd018-admission.yml"
+  ],
+  "project_effect": {
+    "tcd018_atomic_b3_scientific_admission": false,
+    "b3_whole_model_baseline_complete": false,
+    "historical_uncertainty_propagates_forward": true,
+    "production_migration_still_closed": true,
+    "next_required_step": "validate this admission package fail closed before qualifying TCD-018"
+  }
+}
