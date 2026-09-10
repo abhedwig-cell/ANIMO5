@@ -1,0 +1,42 @@
+name: ANIMO-B3B01R independent TCD-015 second-line review
+
+on:
+  push:
+    branches:
+      - review/animo-b3b01r-tcd015-independent-second-line
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Parse independent review result JSON
+        run: python -m json.tool integration/animo-b3/TCD015_INDEPENDENT_REVIEW_RESULT.json >/dev/null
+
+      - name: Validate fail-closed independent review
+        run: python tools/validate_b3b01r_tcd015_review.py
+
+      - name: Guard independent-review scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --name-only c05486e76993d26771f62f32842508479d14fdde..HEAD > /tmp/changed.txt
+          cat /tmp/changed.txt
+          while IFS= read -r f; do
+            case "$f" in
+              docs/b3/TCD015_INDEPENDENT_SECOND_LINE_REVIEW.md|integration/animo-b3/TCD015_INDEPENDENT_REVIEW_RESULT.json|tools/validate_b3b01r_tcd015_review.py|.github/workflows/animo-b3b01r-tcd015-independent-review.yml)
+                ;;
+              *)
+                echo "Unexpected file outside ANIMO-B3B01R independent-review scope: $f" >&2
+                exit 1
+                ;;
+            esac
+          done < /tmp/changed.txt
