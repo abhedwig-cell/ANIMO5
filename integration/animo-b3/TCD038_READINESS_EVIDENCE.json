@@ -1,0 +1,317 @@
+{
+  "work_unit": "ANIMO-B3B09",
+  "requested_work_unit": "ANIMO-B3B08",
+  "requested_id_collision": {
+    "detected": true,
+    "existing_work_unit": "ANIMO-B3B08",
+    "existing_target": "TCD-028",
+    "observed_head": "215f3800df5afa5811c1105cec2fb4f77a5548c2",
+    "resolution": "ALLOCATE_NEXT_FREE_WORKUNIT_ANIMO_B3B09_NO_OVERWRITE"
+  },
+  "record_type": "TCD038_ADMISSION_READINESS_EVIDENCE",
+  "target": "TCD-038",
+  "title": "Crop Actual Uptake Restart Initialization Direction Qualification",
+  "branch": "work/animo-b3b09-tcd038-crop-actual-uptake-restart-readiness",
+  "authoring_base": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+  "authority_snapshot": {
+    "aggregate_central_regie": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+    "post_rg05f_atomic_admissions_observed": [
+      "ANIMO-B3D15@22e48f7e2c1eaa1245f034de2d909191d9cfa227:TCD-030",
+      "ANIMO-B3D16@8650ea9e716336520d8d7df5f9ea2b393d17ab98:TCD-023"
+    ],
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "B3I01_routing": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4",
+    "B3I03_canonical_register": "ANIMO-B3I03@814ea660d367494432beb63ea78298d1f6cd73d7",
+    "B3I04_incremental_state_intake": "ANIMO-B3I04@400b7cd79f89043e091751707dfa96537587dcf6",
+    "STATEQ01": "ANIMO-STATEQ01@4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "STATEQ02": "ANIMO-STATEQ02@ada93a409aa054f9aebac32728e79f80468215a7",
+    "PREP12": "ANIMO-PREP12@3d86de057247adcfeefb82c11d7cf7d5b2cbdf73",
+    "PREP10": "ANIMO-PREP10@761db23269b45ba79df3be97ea85289682e57106"
+  },
+  "collision_check": {
+    "dedicated_tcd038_readiness_found_before_creation": false,
+    "dedicated_tcd038_review_found_before_creation": false,
+    "later_tcd038_workunit_found_before_creation": false,
+    "rg05g_found_before_creation": false,
+    "b3d17_or_later_atomic_admission_found_before_creation": false
+  },
+  "canonical_register_state": {
+    "authority": "ANIMO-B3I03@814ea660d367494432beb63ea78298d1f6cd73d7",
+    "id": "TCD-038",
+    "process": "crop actual uptake restart initialization",
+    "classification": "RESERVED_POST_G5_LOCAL_RESTART_INITIALIZATION_DIRECTION_DEFECT",
+    "status": "OPEN",
+    "canonical_decision": "qualify the local read-to-accepted identity branch coverage unrounded crop-state effects and historical split-run behavior before any correction"
+  },
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "source_members": {
+      "Inicalc.for": {
+        "sha256": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1",
+        "size_bytes": 42272,
+        "line_count": 1078
+      },
+      "input1.for": {
+        "sha256": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+        "size_bytes": 183440,
+        "line_count": 4353
+      },
+      "Output_Init.for": {
+        "sha256": "6452c175dcd7c6e80983c1176467735d07f75595cf8341526b115b70121b6a2f",
+        "size_bytes": 8326,
+        "line_count": 185
+      },
+      "Init.for": {
+        "sha256": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+        "size_bytes": 27228,
+        "line_count": 624
+      },
+      "Upintg_Plant.for": {
+        "sha256": "d6a6afd6bbc2515697e9bb294ea6bb06ce8a552760f99c2686442d78d19274af",
+        "size_bytes": 4277
+      },
+      "Upintg_Extern.for": {
+        "sha256": "d4f4ae0730e6ea0556c339a98268ed5b94262634c5aecce2e19aed058929069e",
+        "size_bytes": 3006
+      }
+    }
+  },
+  "source_seam": {
+    "member": "ANIMO_4.1.5.53/Inicalc.for",
+    "trigger_line": 394,
+    "trigger": "Kicr(1).Ne.6 .Or. (Kicr(1).Eq.6 .And. Ioptcu.Eq.1)",
+    "nitrogen_threshold_line": 395,
+    "nitrogen_wrong_direction_line": 396,
+    "potential_n_reset_line": 397,
+    "phosphorus_guard_line": 398,
+    "phosphorus_threshold_line": 399,
+    "phosphorus_wrong_direction_line": 400,
+    "potential_p_reset_line": 401,
+    "source_line_pins_verified_against_frozen_archive": true
+  },
+  "restart_state_contract": {
+    "contract_state": "QUALIFIED_CLAIM_SCOPED_TIER_C_RESTART_HANDOFF_CONTRACT",
+    "state_quantities": [
+      {
+        "quantity": "cumulative actual crop nitrogen uptake",
+        "accepted_alias": "Amplni_act",
+        "result_and_serialized_alias": "Rsamplni_act",
+        "unit": "kg N m-2",
+        "serialization": ">orgpla:",
+        "always_in_scope_when_trigger_active": true
+      },
+      {
+        "quantity": "cumulative actual crop phosphorus uptake",
+        "accepted_alias": "Amplpo_act",
+        "result_and_serialized_alias": "Rsamplpo_act",
+        "unit": "kg P m-2",
+        "serialization": ">orgpla:",
+        "feature_guard": "Ipo.Eq.1"
+      }
+    ],
+    "ownership_interpretation": "ONE_PERSISTENT_LIFECYCLE_COORDINATE_WITH_ACCEPTED_AND_RESULT_SERIALIZATION_ALIASES",
+    "ownership_ambiguity_remaining": false,
+    "input_read_direction": "serialized Rsampl*_act -> accepted Ampl*_act",
+    "ordinary_accepted_step_direction": "Rsampl*_act -> Ampl*_act in Init.for",
+    "ordinary_result_direction": "Ampl*_act -> Rsampl*_act then add interval uptake in Upintg_Plant/Upintg_Extern",
+    "writer_direction": "Rsampl*_act -> existing >orgpla fields",
+    "checkpoint_representation_changed_by_candidate": false,
+    "checkpoint_restore_semantics_changed_by_candidate": true,
+    "separate_restart_discriminator_present_on_orgpla_initialization_path": false,
+    "small_value_policy_retained": "Rsampl*_act < 1.0d-4 maps accepted actual uptake to zero",
+    "p_guard_retained": true,
+    "internal_grass_excluded_by_existing_trigger": true,
+    "potential_uptake_in_scope": false,
+    "potential_uptake_owner": "TCD-039 separate canonical discrepancy"
+  },
+  "legacy_failure": {
+    "mechanism": "input1 reads Rsampl*_act but Inicalc copies Ampl*_act back over Rsampl*_act before a nontrivial read-to-accepted restore",
+    "nonzero_restart_state_can_be_erased_before_first_timestep": true,
+    "immediate_failure_is_before_solver_or_transport": true
+  },
+  "candidate_identity": {
+    "production_candidate_applied": false,
+    "conceptual_insertions_only": [
+      "Amplni_act = Rsamplni_act before the existing nitrogen threshold statement",
+      "Amplpo_act = Rsamplpo_act inside Ipo.Eq.1 before the existing phosphorus threshold statement"
+    ],
+    "existing_trigger_retained": true,
+    "existing_threshold_retained": true,
+    "existing_p_guard_retained": true,
+    "serialization_layout_changed": false,
+    "new_state_introduced": false,
+    "numerical_policy_changed": false,
+    "solver_changed": false,
+    "tolerance_changed": false,
+    "precision_policy_changed": false,
+    "tcd039_composed": false
+  },
+  "b1_causal_evidence": {
+    "source": "ANIMO-PREP12@3d86de057247adcfeefb82c11d7cf7d5b2cbdf73:integration/animo-prep12/source/PREP10_PLANT_UPTAKE_RESTART_CONTINUITY.json",
+    "evidence_class": "DIAGNOSTIC_NOT_REFERENCE_PLUS_SOURCE_BOUND",
+    "natural_case_count": 4,
+    "natural_cases": [
+      {
+        "case": "LWKM_gras_1040.2021.2045",
+        "input_n": 0.0666813,
+        "input_p": 0.0088759,
+        "legacy_post_inicalc_n": 0.0,
+        "legacy_post_inicalc_p": 0.0
+      },
+      {
+        "case": "GrassPeat",
+        "input_n": 0.0632935,
+        "input_p": 0.00675465,
+        "legacy_post_inicalc_n": 0.0,
+        "legacy_post_inicalc_p": 0.0
+      },
+      {
+        "case": "STONE_akk_0006.2001.2015",
+        "input_n": 0.0195003,
+        "input_p": 0.00295112,
+        "legacy_post_inicalc_n": 0.0,
+        "legacy_post_inicalc_p": 0.0
+      },
+      {
+        "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+        "input_n": 0.0235216,
+        "input_p": 0.00322743,
+        "legacy_post_inicalc_n": 0.0,
+        "legacy_post_inicalc_p": 0.0
+      }
+    ],
+    "minimal_probe": "assign accepted Ampl*_act from represented Rsampl*_act before existing threshold logic",
+    "probe_executable_sha256": "ad6b32062c458f6e9eda061e7a02e1143eaaad23c920687c3f06a7b5e5f7ec64",
+    "lwkm_probe_post_inicalc": {
+      "Amplni_act": 0.0666813,
+      "Rsamplni_act": 0.0666813,
+      "Amplpo_act": 0.0088759,
+      "Rsamplpo_act": 0.0088759
+    },
+    "downstream_diagnostic_outputs_can_change": true,
+    "diagnostic_differences_are_acceptance_tolerances": false,
+    "b2_strength_claimed": false
+  },
+  "first_post_restore_discriminator": {
+    "location": "immediately after Inicalc and before first simulation interval",
+    "active_above_threshold_expected_identity": "Ampl*_act == imported Rsampl*_act and result alias remains equal after existing copy",
+    "subthreshold_expected_identity": "Ampl*_act == 0 and result alias == 0 under existing threshold policy",
+    "phosphorus_applicability": "only Ipo.Eq.1",
+    "trigger_false_expected_difference": "none"
+  },
+  "split_run_evidence": {
+    "tcd038_specific_split_run_discriminator": "NOT_CAUSALLY_ISOLATED",
+    "stateq01_external_crop_route": "EXECUTABLE_SPLIT_ROUTE_CONFIRMED_BEHAVIOURAL_EQUIVALENCE_FAILED_WITH_OTHER_SEAMS_NOT_ISOLATED",
+    "stateq01_used_as_tcd038_admission_proof": false,
+    "stateq02_restricted_core_exact_split_available": true,
+    "stateq02_excludes_unresolved_internal_crop_restart_state": true,
+    "stateq02_used_to_retire_or_admit_tcd038": false,
+    "whole_trajectory_equivalence_claimed": false,
+    "full_split_magnitude_qualified": false
+  },
+  "b3_qualification": {
+    "class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "basis": "bounded local assignment-direction correction with no new state representation, physics, numerical policy, solver or tolerance change",
+    "class_is_not_risk_tier": true
+  },
+  "gov04_risk": {
+    "principle": "STRICTEST_APPLICABLE_RISK_TRIGGER_WINS",
+    "selected_tier": "C",
+    "tier_b_permitted": false,
+    "tier_b_rejection_reason": "candidate changes persistent initialization/restart restore semantics even though source edit is local",
+    "forced_tier_c_triggers": {
+      "RESTART_OR_COLD_START_DISCRIMINATION": true,
+      "INITIALIZATION_SEMANTICS": true,
+      "CANONICAL_STATE_OWNERSHIP": false,
+      "CHECKPOINT_SEMANTICS": true,
+      "MISSING_OR_REDEFINED_PHYSICAL_STATE": false,
+      "NUMERICAL_POLICY": false,
+      "SOLVER_OR_TOLERANCE_CHANGE": false,
+      "RUNTIME_BRANCHING_WITH_BEHAVIOURAL_EFFECT": false,
+      "EXACT_ZERO_OR_SINGULAR_DOMAIN_SEMANTICS": false,
+      "AMBIGUOUS_DOMAIN_CONTRACT": false,
+      "SCIENTIFIC_STATE_OR_SOURCE_OWNERSHIP_AMBIGUITY": false
+    },
+    "formal_classification": "GOV04_TIER_C__B3_CLASS_B_LOCAL_RESTART_INITIALIZATION_DIRECTION",
+    "independent_second_line_required": true,
+    "required_independent_review_count": 1,
+    "separate_context_required": true,
+    "separate_disposition_and_admission_preferred": true
+  },
+  "tier_c_pre_review_gates": {
+    "B0_IDENTITY": "PASS",
+    "B1_CAUSAL_EVIDENCE_WHERE_APPLICABLE": "PASS_DIAGNOSTIC_SOURCE_BOUND_NOT_B2",
+    "B2_ROUTE_OR_GOV03_HISTORICAL_UNCERTAINTY_ROUTE": "PASS_GOV03_G6U",
+    "AUTHORITATIVE_THEORY_OR_EXACT_DOMAIN_CONTRACT": "PASS_EXACT_SOURCE_LIFECYCLE_CONTRACT",
+    "STATE_OWNERSHIP_AND_UNITS_WHERE_APPLICABLE": "PASS",
+    "INITIALIZATION_AND_RESTART_SEMANTICS_WHERE_APPLICABLE": "PASS_CLAIM_SCOPED",
+    "NUMERICAL_POLICY_AND_CONVERGENCE_EVIDENCE_WHERE_APPLICABLE": "NOT_APPLICABLE_NO_NUMERICAL_CHANGE",
+    "FAILURE_AND_FALLBACK_BEHAVIOUR_WHERE_APPLICABLE": "PASS_EXISTING_THRESHOLD_AND_GUARDS_RETAINED",
+    "EXPECTED_DIFFERENCE_PREDECLARED": "PASS",
+    "CONSERVATION": "PASS_NOT_SEPARATE_TRANSFER_OR_STORAGE_IDENTITY_AT_ASSIGNMENT",
+    "NON_INTERFERENCE": "PASS_STRUCTURAL_CLAIM_SCOPED_NO_WHOLE_MODEL_EQUIVALENCE",
+    "EDGE_AND_BOUNDARY_CASE_COVERAGE": "PASS_SOURCE_GUARD_THRESHOLD_P_GUARD_PLUS_FOUR_NATURAL_NONZERO_CASES",
+    "RESIDUAL_UNCERTAINTY_EXPLICIT": "PASS",
+    "HISTORICAL_UNKNOWN_PRESERVED_WITHOUT_B2": "PASS",
+    "NO_PRODUCTION_AUTHORIZATION": "PASS"
+  },
+  "expected_difference_contract": {
+    "first_required_difference": "for active above-threshold represented actual uptake, first accepted post-Inicalc Ampl*_act changes from erased legacy value to imported continuation value",
+    "may_change_downstream": [
+      "actual crop uptake continuation state",
+      "causally dependent crop nutrient-demand calculations",
+      "causally dependent N/P uptake fluxes",
+      "causally dependent crop and nutrient state trajectories",
+      "dependent balances and reports"
+    ],
+    "must_not_change_as_part_of_tcd038": [
+      "crop-route trigger predicate",
+      "1.0d-4 small-value policy",
+      "Ipo phosphorus activation guard",
+      "potential uptake representation or reconstruction",
+      "TCD-039 semantics",
+      "checkpoint serialization layout",
+      "management semantics",
+      "hydrology semantics",
+      "GHG or macropore semantics",
+      "stable-DOM semantics",
+      "numerical policy",
+      "solver or tolerance policy",
+      "precision policy",
+      "canonical TCD register",
+      "canonical STATE admission",
+      "B4 or production migration"
+    ],
+    "global_tolerance_defined": false,
+    "field_prevalence_claimed": false,
+    "whole_model_equivalence_claimed": false
+  },
+  "historical_route": {
+    "qualified_b2_available": false,
+    "gov03_acquisition_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "route": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "historical_revision53_native_behaviour": "UNKNOWN_WITHOUT_B2",
+    "current_gnu_diagnostic_is_b2": false,
+    "historical_fidelity_claimed": false
+  },
+  "residual_uncertainties": [
+    "No qualified historical Intel/native TCD-038 split-run is available.",
+    "The existing STATEQ01 external-crop split route does not causally isolate TCD-038 from other restart and serializer seams.",
+    "The downstream full-horizon magnitude after preserving actual uptake is not a qualified tolerance or prevalence estimate.",
+    "TCD-039 can independently alter crop continuation and is explicitly excluded from this atomic workunit."
+  ],
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "canonical_state_admitted": false,
+    "tcd039_composed": false,
+    "b4_opened": false,
+    "production_migration_opened": false,
+    "rg05g_updated": false,
+    "independent_review_performed_in_authoring_context": false
+  }
+}
