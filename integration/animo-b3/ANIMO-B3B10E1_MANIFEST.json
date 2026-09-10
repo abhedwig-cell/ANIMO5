@@ -8,36 +8,12 @@
   ],
   "exact_starting_head": "36aad892cac546105dfec0fe43aa34a18e23bcad",
   "failed_gate_evidence": {
-    "complete_source_level_ownership": [
-      "OWNERSHIP_MAP.json",
-      "SRC-RSCOMP-001",
-      "SRC-HYDRO-001",
-      "SRC-HYDRO-002",
-      "SRC-HYDRO-003",
-      "SRC-ITREC-001",
-      "SRC-ITREC-002"
-    ],
-    "native_Animo_Output_Init_call_surface": [
-      "SRC-ANIMO-001"
-    ],
-    "native_Init_restore_direction_and_timing": [
-      "SRC-INIT-001",
-      "SRC-INIT-002"
-    ],
-    "native_Output_Init_serialization_omission": [
-      "SRC-OUTINIT-001",
-      "SRC-OUTINIT-002"
-    ],
-    "native_RsCoMp_pre_promotion_initialization": [
-      "SRC-RSCOMP-001",
-      "SRC-RSCOMP-002"
-    ],
-    "native_mapoinput_loader": [
-      "SRC-MAPO-001",
-      "SRC-MAPO-002",
-      "SRC-MAPO-003",
-      "SRC-MAPO-004"
-    ]
+    "complete_source_level_ownership": ["OWNERSHIP_MAP.json", "SRC-RSCOMP-001", "SRC-HYDRO-001", "SRC-HYDRO-002", "SRC-HYDRO-003", "SRC-ITREC-001", "SRC-ITREC-002"],
+    "native_Animo_Output_Init_call_surface": ["SRC-ANIMO-001"],
+    "native_Init_restore_direction_and_timing": ["SRC-INIT-001", "SRC-INIT-002"],
+    "native_Output_Init_serialization_omission": ["SRC-OUTINIT-001", "SRC-OUTINIT-002"],
+    "native_RsCoMp_pre_promotion_initialization": ["SRC-RSCOMP-001", "SRC-RSCOMP-002"],
+    "native_mapoinput_loader": ["SRC-MAPO-001", "SRC-MAPO-002", "SRC-MAPO-003", "SRC-MAPO-004"]
   },
   "frozen_source_archive": {
     "committed": false,
@@ -51,10 +27,10 @@
     "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
   },
   "generated_artifacts": {
-    "OWNERSHIP_MAP.json": "90d48d92d7d6bd0f3336424982315b8d97020f5990c7f571bf170e13455d0037",
-    "PROBE_OUTPUT.json": "f95f41283993cf9217938c5efef722c846461a09f56ecdde31bd562a8b403e9f",
-    "REPLAY_INSTRUCTIONS.json": "9131075f0db1f4c8dde9a7c829a1c627c182db71a4f1d1204b8069517a8dbb3b",
-    "SOURCE_MEMBER_INDEX.json": "32105b39da49d72d75cb6c4456317b3012ab34b342df50574d64823c03c82d2b"
+    "OWNERSHIP_MAP.json": "685998c28740c0be5369aedb4246de088836c703e7a4108da9d7dba254f2ba6d",
+    "PROBE_OUTPUT.json": "9f248108e409c762ebef752e85329e6d1586d2a439c38c72c626b5414b51cf8e",
+    "REPLAY_INSTRUCTIONS.json": "da7327c84d651b61aa9e47e24069c322f6ae8ff16ee51402618327d2bd3df3a7",
+    "SOURCE_MEMBER_INDEX.json": "be4182c7438650f86399f912c57bbad42adf71fc362b694537f2db4d64c816fc"
   },
   "independent_replay_boundary": "A reviewer with lawful local access to the exact archive can regenerate and byte-compare the proof outputs. Without that archive, the committed hashes and package integrity remain checkable, but source-level claims are not independently reproducible.",
   "live_authorities_at_open": {
@@ -122,17 +98,14 @@
     "whole_model_active_split_executed": false
   },
   "structural_contract": {
-    "domains": [
-      1,
-      2
-    ],
+    "domains": [1,2],
     "persistent_state_scalar_count_p_off": 8,
     "persistent_state_scalar_count_p_on": 12,
     "phosphorus_condition": "Ipo.EQ.1"
   },
   "tcd": "TCD-031",
   "tool_sha256": {
-    "tools/b3b10e1/generate_tcd031_source_provenance.py": "8780f9797e6a3488957c4500510f3c5c8ff3c95c182dec314cde202c5e340aff",
+    "tools/b3b10e1/generate_tcd031_source_provenance.py": "9b4305bc2ce4f3c23cce21b1cb216e6c317865e5da6a9dda8a29f6a6af198dba",
     "tools/b3b10e1/validate_b3b10e1.py": "3e91c130c47e97129952306ca8e756d1911e83727a3ab95e13bc49b54d7ebdea"
   },
   "workunit": "ANIMO-B3B10E1"
