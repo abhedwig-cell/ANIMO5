@@ -31,7 +31,7 @@ over the active reporting period/control volume.
 
 This remains an `A_ACCOUNTING_REPORTING_ONLY` admission. No hydrology state, hydrology/process flux, forcing, interception physics, state-promotion semantics, SWAP/SWATRE payload or testcase scientific input is changed by the scientific claim.
 
-The first independent review FAIL remains historically valid for its earlier evidence packet. It identified evidence-granularity insufficiency rather than scientific falsification. B3A03E supplied the missing 25-period and per-output audit material, and R2 independently passed the remediated packet. RG05C does not erase or reinterpret that history.
+The previous independent review FAIL remains historically valid for its earlier evidence packet. It identified evidence-granularity insufficiency rather than scientific falsification. B3A03E supplied the missing 25-period and per-output audit material, and R2 independently passed the remediated packet. RG05C does not erase or reinterpret that history.
 
 The characteristic LWKM `0.0601 mm` signal remains causal evidence and is never an acceptance tolerance. The unrelated MASSQ01 CranGrass `TITO=724` residual of `-0.0030198960466805147 mm` remains `UNEXPLAINED_RESIDUAL` outside TCD-018. No global water-closure claim is made.
 
