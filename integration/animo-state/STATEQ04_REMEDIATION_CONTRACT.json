@@ -1,0 +1,62 @@
+{
+  "workunit": "ANIMO-STATEQ04",
+  "tcd": "TCD-031",
+  "scope": "qualification-only candidate checkpoint and restore transaction for active macropore persistent solute state",
+  "risk_tier": "GOV04_TIER_C",
+  "b3_class": "CLASS_C_STATE_RESTART_SEMANTICS",
+  "parent_qualification": "ANIMO-STATEQ03@10c50e65d1369d5f3b26736c4b12d3a482379eb5",
+  "aggregate_authority": "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+  "checkpoint_boundary": "ACCEPTED_BOUNDARY_ONLY",
+  "owner": "ANIMO_MACROPORE_SOLUTE",
+  "domain_count": 2,
+  "domain_semantics": {
+    "1": "Main Bypass Flow",
+    "2": "Internal Catchment"
+  },
+  "persistent_coordinates": {
+    "p_off": [
+      "CoMpDiorMa(1)", "CoMpDiorMa(2)",
+      "CoMpDiorNi(1)", "CoMpDiorNi(2)",
+      "CoMpNh(1)", "CoMpNh(2)",
+      "CoMpNi(1)", "CoMpNi(2)"
+    ],
+    "p_on_additional": [
+      "CoMpDiorPo(1)", "CoMpDiorPo(2)",
+      "CoMpPo(1)", "CoMpPo(2)"
+    ],
+    "p_off_scalar_count": 8,
+    "p_on_scalar_count": 12
+  },
+  "accepted_mass_identity": "sum_domain(SrWaMpOld(domain) * CoMpX(domain))",
+  "result_mass_identity": "sum_domain(SrWaMp(domain) * RsCoMpX(domain))",
+  "external_bindings": [
+    "accepted macropore hydrology frame containing SrWaMpOld/domain geometry",
+    "future hydrology frames and exchange/direct-drain fluxes",
+    "matrix aqueous state used by current-interval exchange"
+  ],
+  "restore_transaction": [
+    "validate profile, species topology, domain count, time and external hydrology binding before mutation",
+    "load accepted CoMp coordinates exactly",
+    "initialize the non-independent RsCoMp runtime result alias from the restored accepted CoMp coordinate before any legacy result-to-start promotion can execute",
+    "initialize current-interval workspace afresh; do not deserialize AvCoMp, AvCoML or MpReKo",
+    "resume the next physical interval only after accepted owner state and compatible hydrology frame are established"
+  ],
+  "restore_forbidden": [
+    "zero-fill any enabled CoMp coordinate",
+    "treat native revision-53 Output_Init as complete macropore serialization",
+    "execute chemistry or transport during restore",
+    "promote an unrestored RsCoMp value over restored accepted CoMp",
+    "infer missing macropore concentration from matrix concentration"
+  ],
+  "deterministic_reconstruction": {
+    "RsCoMp_runtime_alias_at_accepted_restore": "QUALIFIED_CANDIDATE_FROM_CoMp",
+    "AvCoMp": "RECOMPUTE_CURRENT_INTERVAL",
+    "AvCoML": "RECOMPUTE_CURRENT_INTERVAL",
+    "MpReKo": "RECOMPUTE_CURRENT_INTERVAL",
+    "CoMp_persistent_owner": "NOT_RECONSTRUCTIBLE_GLOBALLY"
+  },
+  "production_patch": false,
+  "canonical_state_admission": false,
+  "tcd025_composition": false,
+  "new_tolerance": false
+}
