@@ -1,0 +1,114 @@
+{
+  "work_unit": "ANIMO-B3D14",
+  "record_type": "POST_REVIEW_FORMAL_DISPOSITION",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d14-tcd041-gov04-tier-b-admission",
+  "target": "TCD-041",
+  "claim": "Define the revision-53 GHG lower external advective air-boundary coordinate Flair(Nl+1) as the already source-implied closed-boundary value zero before its same-call first use.",
+  "starting_review_handoff": "ANIMO-B3B07R@3587c7a94a992f3779034c4c1e5f4134192d54f3",
+  "readiness_authority": "ANIMO-B3B07@6523c8a4dbf7a742b61e0c236af0ef5093b534aa",
+  "authority_snapshot": {
+    "aggregate_central_regie": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
+    "post_aggregate_atomic_admission": "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "BUILDQ04": "ANIMO-BUILDQ04@0ae1e58f80ca01c1b6eced7ac0d6e5c031827676",
+    "BUILDQ03": "ANIMO-BUILDQ03@5e06473bc2bb1df6cf4e449d8d6aa04da35c7d47",
+    "GHG01": "ANIMO-GHG01@dac7b7b5c591b781b82ec968896edb5957664c88",
+    "B3I01_TCD041_routing": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4"
+  },
+  "independent_review": {
+    "work_unit": "ANIMO-B3B07R",
+    "head": "3587c7a94a992f3779034c4c1e5f4134192d54f3",
+    "separate_chatgpt_context": true,
+    "required_count": 1,
+    "realized_count": 1,
+    "outcome": "PASS_TIER_B_READY_FOR_POST_REVIEW_DISPOSITION",
+    "admission_performed_by_review": false
+  },
+  "gov04": {
+    "principle": "STRICTEST_APPLICABLE_RISK_TRIGGER_WINS",
+    "risk_tier": "B",
+    "risk_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "formal_result": "GOV04_TIER_B__B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "tier_c_trigger_applicable": false,
+    "persistent_state_initialization": false,
+    "restart_or_checkpoint_semantics": false,
+    "runtime_branching_semantics_change": false,
+    "numerical_policy_change": false,
+    "solver_or_tolerance_change": false,
+    "exact_zero_numerical_policy_change": false,
+    "fail_closed_escalation": "ANY_LATER_APPLICABLE_TIER_C_TRIGGER_INVALIDATES_TIER_B_ADMISSION"
+  },
+  "scientific_contract": {
+    "quantity": "lower external advective air flux of modeled GHG soil column",
+    "coordinate": "Flair(Nl+1)",
+    "unit": "m d^-1 == m3 air m^-2 soil d^-1",
+    "sign": "downward positive",
+    "owner": "GHGasses Task-1 temporary air-flow projection scratch",
+    "required_boundary_value": 0.0,
+    "boundary_identity": "FLAIR_NLPLUS1_EQUALS_ZERO_FOR_CLOSED_LOWER_GHG_AIR_BOUNDARY",
+    "persistent_model_state": false,
+    "cross_call_state": false,
+    "checkpoint_or_restart_coordinate": false,
+    "first_consumer": "GHGasses bottom-layer Min/Max transformation to Flaiio(Nl)/Flaiou(Nl)"
+  },
+  "causal_defect": {
+    "nl_domain": "Nl >= 1",
+    "la_after_decrement_invariant": "0 <= La <= Nl-1",
+    "maximum_assigned_flair_index_before_transform": "Nl",
+    "bottom_first_read": "Flair(Nl+1)",
+    "result": "UNCONDITIONAL_TASK1_FIRST_READ_WITHOUT_SOURCE_ASSIGNMENT_FOR_NL_GE_1"
+  },
+  "evidence_pins": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "ghgasses_sha256": "4bf5906f571a586d4312d8e7b0d57f6df3b4b6c2073410335616f3d3c042da93",
+    "ghgtransport_sha256": "d86e420952c43aaa6e730235f5820802310dd14a0019dc890537d9acd95fcff6",
+    "ghgtranssub_sha256": "48d5e45d0b68b87c1d32bc16a867fe36f2f440e0d2c0ca8c95bf605f9f24ea6c"
+  },
+  "activation": {
+    "source_guard": "IoptGHG >= 1",
+    "active_values": [1, 2],
+    "inactive_negative_control": 0,
+    "natural_revision53_ghg_case_available": false,
+    "synthetic_evidence_class": "B1_CAUSAL_AND_COVERAGE_ONLY_NOT_B2"
+  },
+  "historical_route": {
+    "b2_status": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
+    "historical_fidelity_claimed": false
+  },
+  "expected_difference": {
+    "direct_changed_surface": [
+      "Flaiio(Nl) lower-boundary contribution",
+      "Flaiou(Nl) lower-boundary contribution",
+      "bottom advective gas-transfer contribution",
+      "bottom disappearance-coefficient contribution"
+    ],
+    "causal_descendants_may_change": [
+      "GHG state trajectories",
+      "GHG flux trajectories",
+      "GHG outputs"
+    ],
+    "whole_ghg_equivalence_claimed": false
+  },
+  "conservation": {
+    "scope": "LOWER_EXTERNAL_AIR_ADVECTIVE_BOUNDARY_ONLY",
+    "identity": "q_b = 0 implies exactly zero advective gas exchange across the lower external face",
+    "full_ghg_carbon_or_nitrogen_ledger_closure_claimed": false
+  },
+  "tcd032_037": {
+    "dependency_required": false,
+    "composition_required": false
+  },
+  "formal_disposition": "QUALIFY_FOR_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_B",
+  "production_source_modified": false,
+  "composition_performed": false,
+  "b4_opened": false,
+  "production_migration_opened": false,
+  "canonical_tcd_register_modified": false,
+  "central_rg05_updated": false
+}
