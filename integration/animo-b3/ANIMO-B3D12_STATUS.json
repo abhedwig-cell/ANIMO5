@@ -1,0 +1,93 @@
+{
+  "work_unit": "ANIMO-B3D12",
+  "title": "TCD-015 B3 Admission Closeout Under GOV03 Historical-Uncertainty Route",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d12-tcd015-admission-closeout",
+  "base": {
+    "work_unit": "ANIMO-B3D09",
+    "head": "cf3e2746351c5c75d236e1b63fb0623daa8e7372",
+    "scientific_disposition_head": "2a5abc00a779baaa3fb3fa28b3c051231c286132",
+    "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03"
+  },
+  "review_authority": {
+    "work_unit": "ANIMO-B3B01R",
+    "head": "a6880282e9ed743f97a3435b55e4fb54f7d55a44",
+    "result": "PASS_TCD015_ATOMIC_CLASS_B_SECOND_LINE_REVIEW_NO_ADMISSION",
+    "semantic_result": "PASS",
+    "workflow_run": 34455556365,
+    "issue": 32,
+    "issue_result_comment": 5615602144,
+    "independence_scope": "SEPARATE_CHATGPT_CONTEXT_ONLY_NO_ORGANIZATIONAL_OR_HUMAN_INDEPENDENCE_CLAIM"
+  },
+  "target_tcd": "TCD-015",
+  "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "state": "IN_PROGRESS_PERSISTED_TCD015_ADMISSION_VALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "intended_final_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "intended_admission_decision": "ADMIT_TCD015_ATOMIC_CLASS_B_SCIENTIFIC_NITRATE_TRANSPORT_ALGEBRA_CORRECTION_WITH_HISTORICAL_UNCERTAINTY",
+  "admission": {
+    "scientific_b3_admission_intended": true,
+    "scientific_b3_admission_qualified": false,
+    "historical_behaviour_status": "UNKNOWN",
+    "historical_prevalence": "UNKNOWN",
+    "historical_fidelity_claimed": false,
+    "nitrate_only": true,
+    "GreenHouseGasOption_0_only": true,
+    "GHG_enabled_downstream_qualified": false,
+    "whole_model_equivalence_claimed": false,
+    "b4_admitted": false,
+    "production_patch_authorized": false,
+    "production_migration_admitted": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_source_modified": false,
+    "frozen_testbank_modified": false,
+    "canonical_tcd_register_modified": false,
+    "generic_Transsub_change_authorized": false,
+    "clipping_policy_modified": false,
+    "Optneg_modified": false,
+    "Vsmall_modified": false,
+    "solver_or_tolerance_policy_modified": false,
+    "GHG_enabled_scope_admitted": false,
+    "macropore_scope_admitted": false,
+    "composition_admitted": false,
+    "historical_b2_fabricated": false,
+    "historical_fidelity_claimed": false,
+    "central_RG05D_modified": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "validation": {
+    "validator": "tools/validate_b3d12_tcd015_admission.py",
+    "workflow": ".github/workflows/animo-b3d12-tcd015-admission.yml",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_job_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "deliverables": [
+    "integration/animo-b3/TCD015_B3_ADMISSION_CLOSEOUT.json",
+    "integration/animo-b3/ANIMO-B3D12_STATUS.json",
+    "docs/b3/TCD015_B3_ADMISSION_CLOSEOUT.md",
+    "tools/validate_b3d12_tcd015_admission.py",
+    ".github/workflows/animo-b3d12-tcd015-admission.yml"
+  ],
+  "project_effect": {
+    "tcd015_atomic_b3_scientific_admission_pending_validation": true,
+    "b3_whole_model_baseline_complete": false,
+    "historical_uncertainty_propagates_forward": true,
+    "production_migration_still_closed": true,
+    "central_regie_update_required_after_qualification": true,
+    "central_regie_authority_at_start": "ANIMO-RG05D@f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "expected_next_regie_increment_if_no_newer_authority": "ANIMO-RG05E fifth atomic B3 admission integration"
+  }
+}
