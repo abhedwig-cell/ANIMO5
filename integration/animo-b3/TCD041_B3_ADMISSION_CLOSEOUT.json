@@ -85,5 +85,11 @@
     "required_next": true,
     "next_action": "SEPARATE_CENTRAL_REGIE_ADMISSION_INTEGRATION_AFTER_VALIDATED_B3D14_CLOSEOUT"
   },
-  "validation_state": "PERSISTED_PENDING_B3D14_MACHINE_VALIDATION"
+  "validation_state": "VALIDATED_BY_B3D14_MACHINE_GATE",
+  "ci_validation": {
+    "evidence_head": "ec6e013fda57916bfeeaf0a4b50afdad2c4468dc",
+    "workflow": "ANIMO-B3D14 TCD-041 Tier-B admission",
+    "run_id": 34481010782,
+    "conclusion": "success"
+  }
 }
