@@ -1,0 +1,41 @@
+{
+  "work_unit": "ANIMO-B3D15",
+  "title": "TCD-030 Macropore Initial NO3 Validation GOV04 Tier-B Disposition and Atomic Admission",
+  "branch": "work/animo-b3d15-tcd030-gov04-tier-b-admission",
+  "target": "TCD-030",
+  "status": "ADMISSION_DECISION_PERSISTED_MACHINE_VALIDATION_PENDING",
+  "risk_tier": "B",
+  "risk_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "formal_decision": "QUALIFIED_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_B",
+  "starting_review_head": "e64f6ef936a08c8975a2c53000408b67dd03881d",
+  "readiness_head": "98235bad7d7fb25b5053e9101c52c0ee3226692a",
+  "aggregate_authority_at_start": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+  "rg05f_integrated_admissions": [
+    "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4:TCD-027",
+    "ANIMO-B3D14@d672992bbc32d40d7e0fbdf03f3fa9bc4cd5a522:TCD-041"
+  ],
+  "independent_review": {
+    "work_unit": "ANIMO-B3B06R",
+    "head": "e64f6ef936a08c8975a2c53000408b67dd03881d",
+    "required": 1,
+    "realized": 1,
+    "separate_context": true,
+    "outcome": "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
+    "successful_ci_run": 34482752015
+  },
+  "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
+  "production_source_modified": false,
+  "composition_performed": false,
+  "tcd025_composed": false,
+  "tcd031_composed": false,
+  "b4_opened": false,
+  "production_migration_opened": false,
+  "canonical_tcd_register_modified": false,
+  "central_rg05_updated": false,
+  "central_integration_pending": true,
+  "post_rg05f_atomic_admission_ordinal": 1,
+  "persisted": true,
+  "machine_validated": false,
+  "ci_validation": null,
+  "next_permitted_action": "RUN_B3D15_FAIL_CLOSED_VALIDATION_AND_CLOSEOUT"
+}
