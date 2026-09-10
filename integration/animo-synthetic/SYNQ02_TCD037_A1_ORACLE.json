@@ -111,8 +111,18 @@
     "natural_activation_reasonably_available": false,
     "absence_documented": true,
     "purpose_built_synthetic_activation": true,
-    "independently_qualified_for_causality_and_scope": "PENDING_CI",
+    "independently_qualified_for_causality_and_scope": "PASS",
     "tier_a_waiver_granted": false
+  },
+  "qualification": {
+    "tested_head": "2be8efc989078bca2a4fed4afaac58978023fc99",
+    "workflow_run_id": 34538237220,
+    "job_id": 103074720176,
+    "workflow_conclusion": "success",
+    "o0_exact_oracle": "PASS",
+    "o2_exact_oracle": "PASS",
+    "o0_o2_byte_identity": "PASS",
+    "scope_guard": "PASS"
   },
   "scope": {
     "scientific_admission": false,
