@@ -141,16 +141,6 @@ TCD-027 is therefore not admitted. A clean independent review handoff is authori
 
 ## Hard boundaries
 
-This workunit does not:
-
-- compose TCD-027 with TCD-017, TCD-026, TCD-028 or any other correction;
-- change organic-P physics;
-- change frozen source or testcases;
-- apply a production patch;
-- establish B4;
-- update central regie;
-- claim historical revision-53 behaviour is known;
-- perform or self-certify the independent review;
-- admit corrected legacy behaviour.
+This workunit does not compose TCD-027 with TCD-017, TCD-026, TCD-028 or any other correction. It does not change organic-P physics, frozen source or testcases, production code, B4, central regie or any admission state. It does not claim that historical revision-53 behaviour is known, and it does not perform or self-certify the independent review.
 
 A later credible historical artifact immediately reopens B2 qualification for this scope. A passing independent review would be review evidence only and would still require a separate admission-closeout workunit.
