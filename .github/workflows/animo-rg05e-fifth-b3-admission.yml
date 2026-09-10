@@ -1,0 +1,74 @@
+name: ANIMO-RG05E fifth B3 admission integration
+
+on:
+  push:
+    branches:
+      - work/animo-rg05e-fifth-b3-admission-integration
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-rg05e:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch and verify exact integration authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --prune origin '+refs/heads/*:refs/remotes/origin/*'
+          for sha in \
+            5e33c195174e41ea949d5a828d30bb7b9e313a5d \
+            f3d6b9780631bd627f8bca0658a8e3878746e666 \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            2a5abc00a779baaa3fb3fa28b3c051231c286132 \
+            a6880282e9ed743f97a3435b55e4fb54f7d55a44 \
+            b982242949aecab32b9067cf7910ad75abfc2b19 \
+            846e0f4d02a38b9e02cc1419b1ca87e63aaedb54
+          do
+            git cat-file -e "${sha}^{commit}"
+          done
+
+      - name: Parse RG05E JSON
+        run: |
+          python -m json.tool integration/animo-reg/RG05E_B3_ADMISSION_INVENTORY.json >/dev/null
+          python -m json.tool integration/animo-reg/RG05E_B3_QUEUE_DELTA.json >/dev/null
+          python -m json.tool integration/animo-reg/ANIMO-RG05E_STATUS.json >/dev/null
+
+      - name: Validate fifth B3 admission integration
+        run: python tools/validate_rg05e_fifth_b3_admission.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              "docs/governance/ANIMO_RG05E_FIFTH_B3_ADMISSION_REGIE.md",
+              "integration/animo-reg/RG05E_B3_ADMISSION_INVENTORY.json",
+              "integration/animo-reg/RG05E_B3_QUEUE_DELTA.json",
+              "integration/animo-reg/ANIMO-RG05E_STATUS.json",
+              "tools/validate_rg05e_fifth_b3_admission.py",
+              ".github/workflows/animo-rg05e-fifth-b3-admission.yml",
+          }
+          base = "5e33c195174e41ea949d5a828d30bb7b9e313a5d"
+          changed = set(subprocess.check_output(
+              ["git", "diff", "--name-only", f"{base}..HEAD"], text=True
+          ).splitlines())
+          unexpected = changed - allowed
+          missing = allowed - changed
+          if unexpected:
+              raise SystemExit("FAIL_RG05E_SCOPE_GUARD unexpected files: " + ", ".join(sorted(unexpected)))
+          if missing:
+              raise SystemExit("FAIL_RG05E_SCOPE_GUARD missing integration files: " + ", ".join(sorted(missing)))
+          print("PASS_RG05E_SCOPE_GUARD")
+          PY
