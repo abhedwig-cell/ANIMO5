@@ -1,0 +1,143 @@
+{
+  "record_type": "TCD041_ATOMIC_READINESS_EVIDENCE_MATRIX",
+  "work_unit": "ANIMO-B3B07",
+  "target": "TCD-041",
+  "frozen_identity": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "ghgasses_sha256": "4bf5906f571a586d4312d8e7b0d57f6df3b4b6c2073410335616f3d3c042da93",
+    "ghgtransport_sha256": "d86e420952c43aaa6e730235f5820802310dd14a0019dc890537d9acd95fcff6",
+    "ghgtranssub_sha256": "48d5e45d0b68b87c1d32bc16a867fe36f2f440e0d2c0ca8c95bf605f9f24ea6c"
+  },
+  "source_contract": {
+    "routine": "GHGasses",
+    "coordinate": "Flair(Nl+1)",
+    "quantity": "lower external advective air flux through the modeled soil column",
+    "unit": "m/d (m3 air m-2 d-1)",
+    "direction": "DOWNWARD_POSITIVE",
+    "scientific_owner": "GHGasses Task 1 temporary derived air-flow field",
+    "transport_consumers": [
+      "GHGasses bottom-layer Flaiio/Flaiou transformation",
+      "GHGtransport",
+      "GHGtranssub"
+    ],
+    "required_value": 0.0,
+    "required_contract": "FLAIR_NLPLUS1_EQUALS_ZERO_FOR_CLOSED_LOWER_GHG_AIR_BOUNDARY",
+    "first_read_scope": "UNCONDITIONAL_TASK1_FIRST_READ_WITHOUT_SOURCE_ASSIGNMENT_FOR_NL_GE_1",
+    "first_read": "GHGasses Task 1 bottom-layer transformation reads Flair(Ln+1) at Ln=Nl",
+    "write_gap": "After La=Max(0,La-1), 0 <= La <= Nl-1. Existing Task 1 zeroing and recurrence therefore assign no index above Flair(Nl) before the Flair(Nl+1) read.",
+    "persistent_model_state": false,
+    "restart_serialized": false,
+    "checkpoint_coordinate": false,
+    "recomputed_each_active_task1": true
+  },
+  "causal_defect": {
+    "classification": "LOCAL_BOUNDARY_INDEX_INITIALIZATION_OMISSION",
+    "mechanism": "same-call first-use omission of the lower external air-interface coordinate",
+    "positive_residual_effect": "acts as unconfigured bottom advective gas outflow/sink and changes the bottom transport disappearance coefficient",
+    "negative_residual_effect": "is transformed to lower inflow even though the bottom equation has no modeled lower-neighbour gas concentration source",
+    "compiler_or_stack_value_is_scientific_semantics": false
+  },
+  "activation": {
+    "source_guard": "IoptGHG >= 1",
+    "active_controls": ["IoptGHG = 1", "IoptGHG = 2"],
+    "inactive_control": "IoptGHG = 0",
+    "evidence_class": "B1_SYNTHETIC_SOURCE_SEAM_ACTIVATION_NOT_B2",
+    "probe": "tools/b3b07/tcd041_activation_probe.py",
+    "scope": "only the qualified lower-boundary first-use seam and direct bottom transport coefficients",
+    "natural_revision53_compatible_ghg_case_available": false,
+    "natural_case_gap": "GHG01 records that the supplied historical GHG case does not reach the revision-53 GHG branch because its parser contract is incompatible.",
+    "qualification_interpretation": "Purpose-built seam activation is used to avoid composition with unresolved TCD-032 through TCD-037. It is causal and coverage evidence only, never historical B2."
+  },
+  "boundary_sensitivity": {
+    "buildq04_values_m_per_d": [-0.001, -0.000001, 0.0, 0.000001, 0.001],
+    "buildq04_nl_cases": [1, 2, 3, 4],
+    "buildq04_topology_cases": 3,
+    "buildq04_rows": 60,
+    "buildq04_O0_O2_byte_identical": true,
+    "buildq04_output_sha256": "fb98a0d17f3e9295f919c60f2decf7bde584a4f8fdccee85ce0501b5240ce756",
+    "positive_q_identity": {
+      "delta_ToFl_relative_to_closed_boundary": "-AvCa(Nl) * q_b * St",
+      "delta_Y3_relative_to_closed_boundary": "ReBuAv(Nl) * q_b / He(Nl)"
+    },
+    "negative_q_identity": {
+      "Flaiio_Nl": "-q_b",
+      "lower_neighbour_solver_coupling": 0.0
+    }
+  },
+  "expected_difference_surface": {
+    "direct_changed_when_first_use_residual_is_positive": [
+      "Flaiou(Nl) lower-boundary component",
+      "bottom advective gas transfer contribution ToFl",
+      "bottom GHGtranssub disappearance coefficient Y3"
+    ],
+    "direct_changed_when_first_use_residual_is_negative": [
+      "Flaiio(Nl) unsupported lower-inflow component"
+    ],
+    "direct_unchanged": [
+      "GHG activation guard IoptGHG",
+      "hydrology forcing and layer geometry",
+      "atmosphere-soil gas boundary",
+      "gas production and reaction source equations",
+      "solver tolerances and iteration policy",
+      "restart/checkpoint representation",
+      "TCD-032 through TCD-037 scientific mechanisms"
+    ],
+    "allowed_later_changes": "Only causal descendants of removal of the spurious lower GHG air-boundary exchange.",
+    "zero_residual_case": "If the undefined legacy storage happens to expose 0.0 in a process image, the bounded correction has no local numerical difference while still making first use defined."
+  },
+  "conservation": {
+    "applicability": "LOCAL_EXTERNAL_EXCHANGE_IDENTITY_ONLY",
+    "identity": "A closed lower air boundary has q_b = 0, therefore advective gas exchange through that external face is exactly zero for any gas concentration.",
+    "full_ghg_carbon_ledger_claimed_closed": false,
+    "full_ghg_nitrogen_ledger_claimed_closed": false,
+    "reason_full_ledgers_out_of_scope": "GHG01 records independent unresolved source, restart, observer, and task-state findings. TCD-041 neither resolves nor composes them."
+  },
+  "non_interference": {
+    "scope": "outside the lower GHG air-advection boundary and its causal descendants",
+    "no_generic_ghg_redesign": true,
+    "no_production_source_change": true,
+    "no_solver_change": true,
+    "no_restart_change": true,
+    "no_checkpoint_change": true,
+    "no_tcd_032_to_037_composition": true
+  },
+  "first_use_safety": {
+    "candidate": "write Flair(Nl+1)=0.0 before the bottom transformation, or equivalently extend the existing zeroing coverage through the lower external face",
+    "source_change_performed_here": false,
+    "proof_obligation": "Every active GHGasses Task 1 invocation reaches the bottom transformation with Flair(Nl+1) defined as the qualified closed-boundary value."
+  },
+  "dependencies_on_tcd_032_to_037": [],
+  "explicit_distinctions": {
+    "TCD-032": "methanogenesis source-pool transfer",
+    "TCD-033": "CH4 production component partition",
+    "TCD-034": "CH4 plant-growth temperature indexing",
+    "TCD-035": "GHG restart phase partition",
+    "TCD-036": "GHG ponding layer0 restart continuity",
+    "TCD-037": "GHG balance observer working-array interface"
+  },
+  "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
+  "historical_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_ELIGIBLE_SUBJECT_TO_CLAIM_SCOPED_GATES",
+  "readiness_gates": {
+    "B0_IDENTITY": "PASS",
+    "B1_CAUSAL_EVIDENCE": "PASS",
+    "GOV03_HISTORICAL_UNCERTAINTY_ROUTE_ELIGIBILITY": "PASS",
+    "ATOMICITY": "PASS",
+    "EXACT_CAUSAL_CODE_PATH_AND_TRIGGER": "PASS",
+    "BOUNDARY_IDENTITY_AND_UNITS": "PASS",
+    "ACTIVE_GHG_SEAM_ACTIVATION": "PASS",
+    "INACTIVE_GHG_CONTROL": "PASS",
+    "BOUNDARY_VALUE_SENSITIVITY": "PASS",
+    "STATE_AND_FLUX_CONSEQUENCE": "PASS",
+    "EXPECTED_DIFFERENCE_PREDECLARED": "PASS",
+    "CONSERVATION_WHERE_APPLICABLE": "PASS",
+    "NON_INTERFERENCE": "PASS",
+    "FIRST_USE_SAFETY": "PASS",
+    "NO_HIDDEN_TCD032_TO_TCD037_DEPENDENCE": "PASS",
+    "NO_STATE_RESTART_RUNTIME_NUMERICAL_SCOPE_CREEP": "PASS",
+    "RESIDUAL_UNCERTAINTY_EXPLICIT": "PASS",
+    "HISTORICAL_UNKNOWN_PRESERVED_WITHOUT_B2": "PASS"
+  },
+  "independent_second_line_review": "PENDING_SEPARATE_CONTEXT",
+  "admitted": false
+}

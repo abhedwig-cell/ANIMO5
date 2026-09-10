@@ -1,0 +1,21 @@
+name: ANIMO-B3B07 TCD-041 risk and readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3b07-tcd041-ghg-lower-air-boundary-readiness
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Bounded TCD-041 synthetic activation
+        run: python tools/b3b07/tcd041_activation_probe.py --self-test
+      - name: Validate risk classification and readiness contract
+        run: python tools/validate_b3b07_tcd041.py
+      - name: Enforce bounded scope
+        run: python tools/validate_b3b07_scope.py --base 383c7a83e84a578969f92113280dc715b7bdddb4

@@ -1,0 +1,67 @@
+{
+  "record_type": "GOV04_REQUIRED_INDEPENDENT_SECOND_LINE_REVIEW_HANDOFF",
+  "prepared_by": "ANIMO-B3B07",
+  "review_work_unit": "ANIMO-B3B07R",
+  "suggested_branch": "review/animo-b3b07r-tcd041-independent-second-line",
+  "target": "TCD-041",
+  "risk_tier": "B",
+  "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "review_required": true,
+  "required_review_count": 1,
+  "review_performed_in_b3b07": false,
+  "same_context_may_approve": false,
+  "authorities": {
+    "aggregate_central_regie": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
+    "post_aggregate_atomic_admission": "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "BUILDQ04": "ANIMO-BUILDQ04@0ae1e58f80ca01c1b6eced7ac0d6e5c031827676",
+    "BUILDQ03": "ANIMO-BUILDQ03@5e06473bc2bb1df6cf4e449d8d6aa04da35c7d47",
+    "GHG01": "ANIMO-GHG01@dac7b7b5c591b781b82ec968896edb5957664c88",
+    "B3I01_TCD041_routing": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4"
+  },
+  "review_inputs": [
+    "docs/b3/TCD041_GHG_LOWER_AIR_BOUNDARY_RISK_AND_READINESS.md",
+    "integration/animo-b3/TCD041_RISK_CLASSIFICATION.json",
+    "integration/animo-b3/TCD041_EVIDENCE_MATRIX.json",
+    "integration/animo-b3/ANIMO-B3B07_STATUS.json",
+    "ANIMO-BUILDQ04 pinned evidence and successful CI",
+    "ANIMO-GHG01 pinned process/state ownership evidence",
+    "ANIMO-B3I01 canonical TCD-041 routing"
+  ],
+  "mandatory_independent_checks": [
+    "Reconstruct the exact Flair(Nl+1) first-read/write ordering from pinned frozen source evidence rather than trusting B3B07 conclusions.",
+    "Verify quantity, sign convention, units, local ownership, required zero value, and bottom transport consumers.",
+    "Independently test GOV04 strictest-trigger classification. If this changes persistent state initialization, restart, checkpoint, runtime branch semantics, solver policy, or exact-zero numerical-domain semantics, fail the Tier B route and require Tier C.",
+    "Verify that zero here is a fixed closed-boundary condition and not a new numerical exact-zero policy or singular-domain rule.",
+    "Verify active IoptGHG >= 1 seam activation and IoptGHG = 0 negative control, including the limitations of synthetic B1 evidence.",
+    "Verify BUILDQ04 boundary sensitivity identities and expected-difference surface with unrounded values.",
+    "Verify local closed-boundary external-exchange conservation and that no claim of full GHG C or N ledger closure is made.",
+    "Verify non-interference and absence of composition or hidden dependence on TCD-032 through TCD-037.",
+    "Verify GOV03 historical-uncertainty route applicability and preserve historical revision-53 behaviour as UNKNOWN without B2.",
+    "Verify no superseding TCD-041 evidence, issue, route, or authority has appeared before signing the review."
+  ],
+  "fail_closed_conditions": [
+    "ANY_GOV04_TIER_C_TRIGGER_APPLIES",
+    "BOUNDARY_OWNER_OR_UNITS_AMBIGUOUS",
+    "SOURCE_ZERO_IDENTITY_NOT_REPRODUCED",
+    "ACTIVE_GHG_SEAM_NOT_QUALIFIED",
+    "SYNTHETIC_B1_PROMOTED_TO_B2",
+    "TCD032_TO_TCD037_DEPENDENCY_REQUIRED",
+    "EXPECTED_DIFFERENCE_OR_NON_INTERFERENCE_NOT_REPRODUCED",
+    "AUTHORITY_OR_FROZEN_IDENTITY_MISMATCH",
+    "SUPERSEDING_OR_CONTRADICTORY_EVIDENCE_FOUND"
+  ],
+  "allowed_review_outcomes": [
+    "PASS_TIER_B_READY_FOR_POST_REVIEW_DISPOSITION",
+    "FAIL_CLOSED_EVIDENCE_OR_PROVENANCE_INCOMPLETE",
+    "FAIL_CLOSED_ESCALATE_TO_TIER_C",
+    "SCIENTIFIC_FALSIFICATION"
+  ],
+  "historical_behaviour": "UNKNOWN_WITHOUT_B2",
+  "may_admit": false,
+  "may_modify_production_source": false,
+  "may_open_b4": false,
+  "may_update_rg05": false
+}

@@ -1,0 +1,84 @@
+{
+  "record_type": "GOV04_RISK_CLASSIFICATION",
+  "work_unit": "ANIMO-B3B07",
+  "target": "TCD-041",
+  "policy": "ANIMO-GOV04",
+  "policy_head": "1bbe4c211197590f346803106e45dca5faae79fc",
+  "strictest_applicable_risk_trigger_wins": true,
+  "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "risk_tier": "B",
+  "decision": "TIER_B_LOCAL_BOUNDARY_WIRING_NOT_PERSISTENT_STATE_INITIALIZATION",
+  "decision_basis": {
+    "coordinate": "Flair(Nl+1)",
+    "quantity": "lower external advective air flux through the modeled GHG column boundary",
+    "unit": "m/d (m3 air m-2 d-1)",
+    "direction": "DOWNWARD_POSITIVE",
+    "required_value": 0.0,
+    "owner": "GHGasses Task 1 temporary derived air-flow boundary field",
+    "first_use": "same GHGasses Task 1 invocation, bottom-layer Flair to Flaiio/Flaiou transformation",
+    "lifecycle": "derived scratch is reconstructed on each active Task 1 call and is not a restart or checkpoint coordinate",
+    "candidate_semantics": "make the already source-implied closed lower boundary value explicit before first use",
+    "persistent_state_changed": false,
+    "restart_semantics_changed": false,
+    "checkpoint_semantics_changed": false,
+    "solver_or_tolerance_changed": false,
+    "numerical_policy_changed": false,
+    "runtime_branch_added_or_redefined": false,
+    "new_physics_introduced": false
+  },
+  "gov04_tier_c_forced_triggers": {
+    "RESTART_OR_COLD_START_DISCRIMINATION": {
+      "applicable": false,
+      "rationale": "Flair(Nl+1) is not serialized, restored, or used to discriminate restart from cold start."
+    },
+    "INITIALIZATION_SEMANTICS": {
+      "applicable": false,
+      "rationale": "The word initialization in TCD-041 refers to first-use assignment of a derived local boundary coordinate. It does not alter initialization of persistent physical or internal model state."
+    },
+    "CANONICAL_STATE_OWNERSHIP": {
+      "applicable": false,
+      "rationale": "The coordinate is temporary GHGasses air-flow scratch with an unambiguous local owner and is not proposed as canonical state."
+    },
+    "CHECKPOINT_SEMANTICS": {
+      "applicable": false,
+      "rationale": "The coordinate is absent from restart and checkpoint surfaces and is deterministically reconstructed in Task 1."
+    },
+    "MISSING_OR_REDEFINED_PHYSICAL_STATE": {
+      "applicable": false,
+      "rationale": "BUILDQ04 explicitly qualified missing_physical_state=false. The candidate supplies a boundary input value already implied by the connected source contract."
+    },
+    "NUMERICAL_POLICY": {
+      "applicable": false,
+      "rationale": "No tolerance, precision, clipping, iteration, or numerical approximation policy is changed."
+    },
+    "SOLVER_OR_TOLERANCE_CHANGE": {
+      "applicable": false,
+      "rationale": "No solver equation, convergence rule, or tolerance is changed."
+    },
+    "RUNTIME_BRANCHING_WITH_BEHAVIOURAL_EFFECT": {
+      "applicable": false,
+      "rationale": "The bounded candidate is an explicit boundary assignment, not a new behavioural branch. Existing GHG activation remains IoptGHG >= 1."
+    },
+    "EXACT_ZERO_OR_SINGULAR_DOMAIN_SEMANTICS": {
+      "applicable": false,
+      "rationale": "Zero is the fixed closed-boundary value qualified from the source contract. The candidate does not introduce an exact-zero trigger, limiting procedure, division by zero, singular-domain branch, epsilon, or threshold policy."
+    },
+    "AMBIGUOUS_DOMAIN_CONTRACT": {
+      "applicable": false,
+      "rationale": "BUILDQ04 qualifies the coordinate meaning, sign, layer domain Nl >= 1, and closed lower-boundary value. A future nonzero deep-gas boundary is explicitly outside TCD-041."
+    },
+    "SCIENTIFIC_STATE_OR_SOURCE_OWNERSHIP_AMBIGUITY": {
+      "applicable": false,
+      "rationale": "GHGasses Task 1 owns construction of the temporary air-flow field and GHGtransport/GHGtranssub consume its transformed bottom coefficients. No persistent-state owner is reassigned."
+    }
+  },
+  "tier_b_preconditions": {
+    "bounded_local_boundary_wiring_correction": true,
+    "persistent_state_semantics_unchanged": true,
+    "restart_semantics_unchanged": true,
+    "runtime_semantics_beyond_direct_boundary_effect_unchanged": true,
+    "qualification_scope_must_not_expand": true
+  },
+  "fail_closed_escalation_rule": "If review or later evidence makes any GOV04 Tier C forced trigger applicable, TCD-041 must be reclassified Tier C before admission and this Tier B handoff is invalidated.",
+  "admission": false
+}
