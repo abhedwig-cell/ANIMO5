@@ -1,0 +1,135 @@
+{
+  "work_unit": "ANIMO-UBQ04",
+  "target": "HETOP=0 intended model semantics",
+  "evidence_boundary": {
+    "source_archive": "ANIMO_4.1.5.53(3).zip",
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive": "ANIMO_testbank.zip",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation": "Renaud, Roelsma and Groenendijk (2005), ANIMO 4.0 User's Guide, Alterra Report 224",
+    "documentation_role": "AUTHORITATIVE_INHERITED_ANIMO40_GUIDE_NOT_COMPLETE_REV53_CHANGE_AUTHORITY",
+    "process_reference_identified": "Groenendijk, Renaud and Roelsma (2005), Alterra Report 983",
+    "process_reference_full_text_available_in_controlled_evidence": false
+  },
+  "documentation_findings": {
+    "table_6_HETOP_definition": "Thickness of the virtual reservoir where fertilizer additions are leached from proportional to the cumulative precipitation since the fertilization event",
+    "table_6_unit": "m",
+    "table_6_range": "[0.0 ... 0.2]",
+    "chapter_2_3_model_statement": "ANIMO has an extra artificial reservoir on top of the compartment division for manure and fertilizer additions; additions can leach into the soil proportional to cumulated precipitation since the fertilization event",
+    "zero_value_semantics_explicitly_defined": false,
+    "zero_value_declared_as_disable_switch": false,
+    "zero_value_declared_as_instantaneous_passthrough": false,
+    "zero_value_declared_invalid": false,
+    "example_input_order_conflict": {
+      "table_order": ["HETOP", "HE(0)"],
+      "example_values": [0.02, 0.2],
+      "example_narrative_assigns_first_value_to_top_soil_or_ponding_compartment_and_second_to_addition_reservoir": true,
+      "internal_documentation_consistency": "CONFLICTING",
+      "interpretation": "The guide cannot be used to infer a unique endpoint meaning from the example narrative."
+    }
+  },
+  "revision53_source_findings": {
+    "parser": {
+      "file": "input1.for",
+      "read_order": "Hetop, He(0)",
+      "Hetop_range": [0.0, 0.2],
+      "zero_accepted": true
+    },
+    "explicit_Hetop_value_branch_found": false,
+    "zero_sentinel_implementation_found": false,
+    "sites": [
+      {
+        "file": "Addit.for",
+        "lines": "361-367",
+        "role": "addition mass converted to top-reservoir concentration by division by HETOP when Wyad=0 and Pn<=1e-4",
+        "zero_limit": "positive added mass gives unbounded concentration unless a separate immediate-routing rule is introduced"
+      },
+      {
+        "file": "UBoundconc.for",
+        "lines": "110-132",
+        "role": "no-ponding top-reservoir analytical transport for positive throughflow",
+        "zero_limit": "for fixed Flux>0 and finite Load, HETOP->0+ gives C_end and C_avg -> Load/Flux"
+      },
+      {
+        "file": "UBoundconc.for",
+        "lines": "151-168",
+        "role": "ponding branch uses initial top mass C*HETOP plus step load divided by water-throughput denominator",
+        "zero_limit": "branch expression can remain finite when its throughput denominator is positive, but this does not define global HETOP=0 semantics"
+      },
+      {
+        "file": "Uptpar_Grass.for",
+        "lines": "92,194",
+        "role": "crop-uptake helper Flab(1)/HETOP",
+        "zero_limit": "requires an explicit limiting evaluation policy; direct source expression is undefined at zero"
+      },
+      {
+        "file": "Uptpar_Plant.for",
+        "lines": "110,283",
+        "role": "crop-uptake helper Flab(1)/HETOP",
+        "zero_limit": "requires an explicit limiting evaluation policy; direct source expression is undefined at zero"
+      }
+    ]
+  },
+  "mathematical_reconstruction": {
+    "positive_Hetop_no_ponding_equation": "HETOP*dC/dt = Load - Flux*C",
+    "dimensionless_coordinate": "P = St*Flux/HETOP",
+    "positive_flux_zero_capacity_limit": {
+      "condition": "Flux>0, finite Load, fixed St>0",
+      "C_end_limit": "Load/Flux",
+      "C_avg_limit": "Load/Flux",
+      "initial_stored_mass_limit": 0,
+      "unique_for_this_restricted_condition": true
+    },
+    "zero_flux_limit": {
+      "condition": "Flux=0",
+      "equation": "HETOP*dC/dt = Load",
+      "if_Load_positive": "C diverges as HETOP->0+ while areic mass can remain finite",
+      "if_Load_zero": "finite concentration has zero areic mass and concentration is not physically identifiable from storage",
+      "finite_global_concentration_semantics_unique": false
+    },
+    "relation_to_TCD042_E1": {
+      "NQ03_small_P_policy_extendable_to_Hetop_zero": false,
+      "reason": "For any fixed finite-positive Flux, P grows without bound as HETOP approaches zero, which leaves the NQ03 qualified small-P envelope."
+    }
+  },
+  "candidate_interpretations": [
+    {
+      "candidate": "INPUT_ENDPOINT_INVALID",
+      "meaning": "Treat documented/parser HETOP=0 as an accidental inclusive lower bound and require HETOP>0.",
+      "support": "Avoids all direct zero divisions and preserves the positive-thickness model.",
+      "blocking_counterevidence": "The authoritative ANIMO 4.0 input table explicitly publishes 0.0 inside the valid range; no version-specific authority found says zero is invalid.",
+      "qualified": false
+    },
+    {
+      "candidate": "ZERO_CAPACITY_INSTANTANEOUS_PASSTHROUGH",
+      "meaning": "HETOP=0 denotes absence of storage delay, with finite-positive throughflow evaluated by the HETOP->0+ limit.",
+      "support": "The positive-flow analytical reservoir has a unique zero-capacity limit Load/Flux.",
+      "blocking_counterevidence": "No-flow positive-load and addition transactions do not possess a finite concentration limit without introducing new routing/state semantics; documentation never defines zero as this sentinel.",
+      "qualified": false
+    },
+    {
+      "candidate": "CONDITIONALLY_ADMISSIBLE_ZERO",
+      "meaning": "HETOP=0 is allowed only for feature combinations that never require positive top-reservoir storage or division by HETOP.",
+      "support": "Would reconcile the inclusive input range with some algebraic paths that multiply by HETOP or bypass the positive-flow formula.",
+      "blocking_counterevidence": "Revision-53 has unconditional or pre-guard HETOP divisions in crop-uptake paths and no documented feature contract enumerating a safe zero subset.",
+      "qualified": false
+    }
+  ],
+  "qualification_result": {
+    "semantic_nonuniqueness_proven": true,
+    "zero_thickness_policy_selected": false,
+    "input_rejection_authorized": false,
+    "instantaneous_passthrough_authorized": false,
+    "conditional_zero_domain_authorized": false,
+    "positive_Hetop_B1_or_E1_invalidated": false,
+    "new_TCD_reserved": false,
+    "scientific_admission": false,
+    "production_change": false,
+    "decision": "QUALIFIED_HETOP_ZERO_SEMANTIC_NONUNIQUENESS_NO_MODEL_POLICY_SELECTED"
+  },
+  "required_external_authority": [
+    "version-specific ANIMO 3.5/4.0 process description or source lineage that explicitly defines the zero endpoint",
+    "historical input-contract/change specification that explains why the lower bound is inclusive",
+    "or authoritative maintainer/scientific-owner clarification with enough detail to define storage, addition, no-flow and crop-uptake semantics"
+  ]
+}
