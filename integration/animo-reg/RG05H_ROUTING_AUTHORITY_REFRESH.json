@@ -1,0 +1,61 @@
+{
+  "work_unit": "ANIMO-RG05H",
+  "refresh_kind": "CANONICAL_ROUTING_AUTHORITY_REFRESH",
+  "source_aggregate": "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+  "previous_latest_routing_authority_observed_by_aggregate": "ANIMO-B3I06@8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
+  "new_latest_routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+  "new_latest_routing_status": "QUALIFIED_TCD037_CANONICAL_CHILD_ROUTING_TIER_A_CANDIDATES_NO_ADMISSION",
+  "routing_ci": {
+    "run_id": 34537171952,
+    "conclusion": "success"
+  },
+  "governance_trigger": {
+    "authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "trigger": "CANONICAL_ROUTING_CHANGED",
+    "early_aggregate_allowed": true,
+    "normal_three_admission_threshold_reached": false,
+    "ambiguity_reduction": "RG05G names B3I06 as the latest observed routing authority; B3I07 is now qualified and changes downstream atomic eligibility for TCD-037."
+  },
+  "tcd037": {
+    "top_level_parent": "TCD-037",
+    "top_level_parent_admitted": false,
+    "parent_atomic": false,
+    "parent_state": "ATOMIZED_A1_A2_A3_A4_ACCOUNTING_OBSERVER_CHILDREN_NO_ADMISSION",
+    "canonical_child_keys": [
+      "TCD-037-A1",
+      "TCD-037-A2",
+      "TCD-037-A3",
+      "TCD-037-A4"
+    ],
+    "child_keys_are_top_level_tcd_rows": false,
+    "child_class": "A_ACCOUNTING_REPORTING_ONLY",
+    "child_risk_state": "TIER_A_CANDIDATE_WAIVER_NOT_YET_AVAILABLE",
+    "tier_a_waiver_granted": false,
+    "child_admission_count": 0,
+    "readiness_routes": {
+      "TCD-037-A1": "ANIMO-B3A05",
+      "TCD-037-A2": "ANIMO-B3A06",
+      "TCD-037-A3": "ANIMO-B3A07",
+      "TCD-037-A4": "ANIMO-B3A08"
+    },
+    "evidence_limits": {
+      "natural_active_ghg_case": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+      "synthetic_evidence": "B1_ONLY_NOT_INDEPENDENT_B2",
+      "historical_behavior": "UNKNOWN",
+      "correction_specific_tier_a_waiver_complete": false
+    }
+  },
+  "canonical_top_level_register": {
+    "modified": false,
+    "tail": "TCD-042",
+    "tcd_043_reserved": false
+  },
+  "nonclaims": {
+    "scientific_admission_performed_by_refresh": false,
+    "production_source_modified": false,
+    "b4_opened": false,
+    "production_migration_opened": false,
+    "composition_performed": false,
+    "historical_behavior_promoted": false
+  }
+}
