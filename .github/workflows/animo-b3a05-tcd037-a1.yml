@@ -1,0 +1,50 @@
+name: ANIMO-B3A05 TCD-037-A1 Tier-A readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3a05-tcd037-a1-tier-a-readiness
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact evidence and governance authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in \
+            3e4247928bb43f30def951fa8804560636affbef \
+            54679c7555a963133dfd686648af334f479c5808 \
+            a3e822f8e97fe1312a7dfa73601a49ae7375163e \
+            1975eda3586d79033be6af745994bb6181a825fc \
+            842f72300fd03ede0b9024537a7ee6126722a121 \
+            1bbe4c211197590f346803106e45dca5faae79fc \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            846e0f4d02a38b9e02cc1419b1ca87e63aaedb54
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+            git cat-file -e "${sha}^{commit}"
+          done
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Parse readiness records
+        run: |
+          python -m json.tool integration/animo-b3/TCD037_A1_TIER_A_READINESS.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3A05_STATUS.json >/dev/null
+
+      - name: Validate authorities, Tier-A predicate and scope
+        run: python tools/validate_b3a05_tcd037_a1.py
