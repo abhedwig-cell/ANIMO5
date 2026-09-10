@@ -1,0 +1,132 @@
+{
+  "work_unit": "ANIMO-B3D15",
+  "record_type": "POST_REVIEW_FORMAL_DISPOSITION",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d15-tcd030-gov04-tier-b-admission",
+  "target": "TCD-030",
+  "claim": "In revision 53 macropore initial-input validation, keep the existing >MPnitr: read ownership unchanged and change only the two NO3-labelled Checkrea value selectors from CoMpnh(1) and CoMpnh(2) to the corresponding NO3 values CoMpni(1) and CoMpni(2).",
+  "starting_review_handoff": "ANIMO-B3B06R@e64f6ef936a08c8975a2c53000408b67dd03881d",
+  "readiness_authority": "ANIMO-B3B06@98235bad7d7fb25b5053e9101c52c0ee3226692a",
+  "authority_snapshot": {
+    "aggregate_central_regie": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+    "rg05f_integrated_atomic_admissions": [
+      "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4:TCD-027",
+      "ANIMO-B3D14@d672992bbc32d40d7e0fbdf03f3fa9bc4cd5a522:TCD-041"
+    ],
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "MP01": "ANIMO-MP01@7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "MP02": "ANIMO-MP02@6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "B3I03_register_append": "ANIMO-B3I03@814ea660d367494432beb63ea78298d1f6cd73d7",
+    "frozen_B0_retention": "ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300"
+  },
+  "live_recheck": {
+    "rg05g_found": false,
+    "preexisting_b3d15_found": false,
+    "other_tcd030_disposition_admission_branch_found": false,
+    "tcd030_issue_count": 0
+  },
+  "independent_review": {
+    "work_unit": "ANIMO-B3B06R",
+    "head": "e64f6ef936a08c8975a2c53000408b67dd03881d",
+    "separate_chatgpt_context": true,
+    "required_count": 1,
+    "realized_count": 1,
+    "outcome": "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
+    "review_ci": {
+      "successful_run_id": 34482752015,
+      "successful_evidence_head": "687e3af8aa3f950db787eb4c61eb4dafaab0658f",
+      "validator": "PASS",
+      "scope_guard": "PASS"
+    },
+    "prior_fail_closed_tooling_run": {
+      "run_id": 34482162963,
+      "classification": "TOOLING_VALIDATOR_FAILURE",
+      "scientific_falsification": false,
+      "remediated_and_retested": true
+    },
+    "admission_performed_by_review": false
+  },
+  "gov04": {
+    "principle": "STRICTEST_APPLICABLE_RISK_TRIGGER_WINS",
+    "risk_tier": "B",
+    "risk_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "formal_result": "GOV04_TIER_B__B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "tier_c_trigger_applicable": false,
+    "persistent_state_initialization_semantics_change": false,
+    "restart_or_checkpoint_semantics_change": false,
+    "state_reconstruction_required": false,
+    "runtime_architecture_change": false,
+    "numerical_policy_change": false,
+    "solver_or_tolerance_change": false,
+    "fail_closed_escalation": "ANY_LATER_APPLICABLE_TIER_C_TRIGGER_OR_SCOPE_EXPANSION_INVALIDATES_TIER_B_ADMISSION"
+  },
+  "scientific_contract": {
+    "routine": "MaPoInput",
+    "routine_branch": "Nupa.EQ.4",
+    "caller_gate": "Ioptmp.Eq.1",
+    "label": ">MPnitr:",
+    "read_value_sequence": ["CoMpnh(1)", "CoMpnh(2)", "CoMpni(1)", "CoMpni(2)"],
+    "nh4_owner": ["CoMpnh(1)", "CoMpnh(2)"],
+    "no3_owner": ["CoMpni(1)", "CoMpni(2)"],
+    "physical_assignment_already_correct": true,
+    "effect_class": "VALIDATION_ONLY",
+    "selector_corrections": [
+      {"diagnostic_label": "CoMpni(1)", "legacy_value_selector": "CoMpnh(1)", "corrected_value_selector": "CoMpni(1)"},
+      {"diagnostic_label": "CoMpni(2)", "legacy_value_selector": "CoMpnh(2)", "corrected_value_selector": "CoMpni(2)"}
+    ]
+  },
+  "checkrea_contract": {
+    "lower_guard": "Abs(Low-999.).Gt.Nihil .And. Value.Lt.Low",
+    "upper_guard": "Abs(High-999.).Gt.Nihil .And. Value.Gt.High",
+    "low_argument": 0.0,
+    "high_argument": 999.0,
+    "high_999_is_sentinel": true,
+    "effective_domain": "VALUE_GE_0_WITH_NO_ACTIVE_UPPER_BOUND",
+    "zero_accepted": true,
+    "greater_than_999_accepted": true,
+    "negative_error": 1992,
+    "upper_error_1993_reachable_on_tcd030_path": false,
+    "read_error_8500_part_of_tcd030": false
+  },
+  "expected_difference": {
+    "common_accepted_domain": "Ioptmp=1 with NH4>=0 and NO3>=0, plus inactive Ioptmp=0",
+    "divergence_domain": "Ioptmp=1 with NH4>=0 and at least one NO3<0",
+    "allowed_differences": ["INPUT_ACCEPTANCE_REJECTION", "DIRECT_VALIDATION_DIAGNOSTIC_AND_ERROR_RETURN"],
+    "physical_state_assignment_change": false,
+    "transport_algebra_change": false,
+    "persistent_state_change": false,
+    "restart_change": false,
+    "solver_or_numerical_policy_change": false,
+    "trajectory_equivalence_claimed_for_divergence_domain": false
+  },
+  "control_flow_nuance": {
+    "nh4_checks_execute_before_no3_labelled_checks": true,
+    "invalid_nh4_already_rejected_before_tcd030_seam": true,
+    "newly_accepted_whole_routine_case_created_by_correction": false,
+    "observable_new_behavior": "ACTIVE_VALID_NH4_PLUS_NEGATIVE_NO3_IS_REJECTED_INSTEAD_OF_ERRONEOUSLY_ACCEPTED"
+  },
+  "evidence_pins": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "mapoinput_sha256": "081c671d2f576ab0608350cbb0083eab157c586a6783522cda3534b141244065",
+    "input1_sha256": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95"
+  },
+  "historical_route": {
+    "b2_status": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
+    "historical_fidelity_claimed": false
+  },
+  "composition": {
+    "TCD-025": false,
+    "TCD-031": false
+  },
+  "formal_disposition": "QUALIFY_FOR_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_B",
+  "production_source_modified": false,
+  "composition_performed": false,
+  "b4_opened": false,
+  "production_migration_opened": false,
+  "canonical_tcd_register_modified": false,
+  "central_rg05_updated": false
+}
