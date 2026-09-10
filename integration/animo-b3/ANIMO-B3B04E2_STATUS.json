@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "workunit": "ANIMO-B3B04E2",
+  "title": "TCD-040 Provenance-Pinned Replay Reconstruction Governance",
+  "branch": "work/animo-b3b04e2-tcd040-replay-reconstruction-governance",
+  "base": "9f3e1e9b583d540e5d7048de31e62701747ab69d",
+  "target": "TCD-040",
+  "scope": "GOVERNANCE_ONLY_REPLAY_RECONSTRUCTION_AUTHORIZATION",
+  "decision": "AUTHORIZED_DISTINCT_PROVENANCE_PINNED_REPLAY_RECONSTRUCTION",
+  "status": "QUALIFIED_RECONSTRUCTION_AUTHORIZATION_ONLY",
+  "canonical_tcd_status": "UNRESOLVED_NOT_ADMITTED",
+  "authorities": {
+    "B3B04": "19e38ae0dfc211e88fe782b4b7d6e42b1b7f5865",
+    "B3D11": "4cc782986faf3d3af829f2e16142dd7f8622c6ac",
+    "B3B04R": "bb001129578457ca8435e39deb2b8586e7ebc6a2",
+    "B3B04E1": "9f3e1e9b583d540e5d7048de31e62701747ab69d",
+    "EG01": "a818b5a37b80ed92aded0b9c404990d356eb2300",
+    "RG05D": "f3d6b9780631bd627f8bca0658a8e3878746e666"
+  },
+  "frozen_b0": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "source_size_bytes": 350696,
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "testbank_size_bytes": 7659314,
+    "user_guide_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "user_guide_size_bytes": 1169499,
+    "authoring_environment_hashes_rechecked": true,
+    "controlled_immutable_storage_proven": false
+  },
+  "authorization": {
+    "reconstruction_allowed": true,
+    "reconstruction_is_distinct_remediation_artifact": true,
+    "reconstruction_is_original_B3B04_harness": false,
+    "retroactive_original_evidence_claim_allowed": false,
+    "expected_B3B04_results_are_comparison_targets_only": true,
+    "expected_results_may_be_generator_inputs": false,
+    "hidden_chat_state_allowed": false,
+    "unversioned_scripts_allowed": false,
+    "manual_output_editing_allowed": false,
+    "public_republication_of_raw_B0_authorized": false
+  },
+  "required_replay_topology": {
+    "continuous_path": true,
+    "stageA_atomic_checkpoint": true,
+    "stageB_corrected_restore": true,
+    "stageB_defective_five_coordinate_erasure": true,
+    "split67_exact_zero_negative_control": true,
+    "separate_process_boundary_required": true,
+    "Copo0_excluded_control": true
+  },
+  "required_persisted_material": [
+    "complete reconstructed harness source",
+    "exact compiler and build contract",
+    "compatibility-transform identities",
+    "deterministic execution instructions",
+    "checkpoint serialization specification",
+    "trajectory record schema",
+    "generated artifact manifest",
+    "generated checkpoint and trace hashes",
+    "first-divergence derivation",
+    "negative-control derivation"
+  ],
+  "b3b04e1_resume_effect": {
+    "explicit_governance_reconstruction_authorization_satisfied": true,
+    "controlled_immutable_B0_acquisition_satisfied": false,
+    "ordinary_B3B04E1_evidence_gate_open": false,
+    "independent_second_line_reconsideration_allowed": false
+  },
+  "remaining_external_dependency": {
+    "workunit": "ANIMO-EG01",
+    "issue": 5,
+    "requirement": "governance-approved controlled immutable B0 retention and acquisition proof"
+  },
+  "hard_boundaries": {
+    "production_source_patched": false,
+    "TCD040_admitted": false,
+    "canonical_STATE_admitted": false,
+    "whole_model_checkpoint_qualified": false,
+    "TCD016_composed": false,
+    "crop_state_composed": false,
+    "restart_architecture_redesigned": false,
+    "numerical_policy_changed": false,
+    "historical_fidelity_claimed": false,
+    "central_regie_updated": false,
+    "second_line_reconsideration_performed": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "workunit_complete": false
+  }
+}
