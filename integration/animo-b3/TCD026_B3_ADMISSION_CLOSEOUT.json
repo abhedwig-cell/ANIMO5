@@ -1,0 +1,86 @@
+{
+  "work_unit": "ANIMO-B3D08",
+  "target_tcd": "TCD-026",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d08-tcd026-admission-closeout",
+  "formal_disposition_authority": "ANIMO-B3D07@21766eaf3443bcf432f05fbf6ba89d365bc70988",
+  "readiness_authority": "ANIMO-B3A04@5eaf02298603b85f802d8e35d6a63941d0878879",
+  "independent_review_authority": {
+    "work_unit": "ANIMO-B3A04R2",
+    "head": "767779127d092c54a298e2f76a21d544e9af9895",
+    "result": "PASS",
+    "workflow_run": 34446939959,
+    "workflow_job": 102773677475,
+    "issue": 28,
+    "issue_result_comment": 5614382650,
+    "independence_scope": "SEPARATE_CHATGPT_CONTEXT_ONLY_NO_ORGANIZATIONAL_OR_HUMAN_INDEPENDENCE_CLAIM"
+  },
+  "historical_route": {
+    "authority": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "qualified_B2_exists": false,
+    "closure": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "historical_behaviour": "UNKNOWN",
+    "historical_fidelity_claimed": false
+  },
+  "atomic_claim": {
+    "candidate": "Bfom(Inip_x,Ly) = Bfom(Inip_x,Ly) + Ex(Ln) * P",
+    "meaning": "Observe the already-existing initial root-exudate organic-matter state Ex(Ln) in the fresh-organic-matter beginning-storage ledger only.",
+    "excluded_changes": [
+      "initialization physics",
+      "physical state",
+      "process fluxes",
+      "restart state",
+      "forcing",
+      "numerical policy",
+      "other organic-matter TCDs"
+    ]
+  },
+  "gate_reconciliation": {
+    "b0_identity": "PASS",
+    "b1_evidence": "PASS",
+    "historical_route": "PASS_GOV03_G6U",
+    "theory_or_exact_identity": "PASS",
+    "causal": "PASS",
+    "conservation": "PASS_FOR_ATOMIC_COMPONENT",
+    "expected_difference": "PASS",
+    "non_interference": "PASS_FOR_READINESS_AND_INDEPENDENT_REVIEW",
+    "coverage": "PASS_SYNTHETIC_PLUS_MODEL_PRODUCED_AND_CHRONOLOGICAL_RESTART_ACTIVATION",
+    "class_specific": "PASS",
+    "residual_uncertainty": "PASS_RETAINED",
+    "independent_second_line": "PASS",
+    "composition_if_applicable": "PASS_NOT_APPLICABLE"
+  },
+  "admission": {
+    "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "decision": "ADMIT_TCD026_ATOMIC_CLASS_A_SCIENTIFIC_ACCOUNTING_CORRECTION_WITH_HISTORICAL_UNCERTAINTY",
+    "disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+    "scientific_b3_admission": true,
+    "whole_model_b3_complete": false,
+    "b4_admitted": false,
+    "production_patch_authorized": false,
+    "production_migration_admitted": false
+  },
+  "hard_boundaries": {
+    "legacy_source_modified": false,
+    "frozen_testbank_modified": false,
+    "canonical_tcd_register_modified": false,
+    "physical_state_patch": false,
+    "initialization_physics_change": false,
+    "process_flux_change": false,
+    "restart_state_change": false,
+    "numerical_tolerance_added": false,
+    "whole_model_formatted_restart_identity_claimed": false,
+    "SYNQ01_promoted_to_TCD026_oracle": false,
+    "STATEQ02_promoted_to_ledger_or_B2_oracle": false,
+    "composition_with_other_organic_matter_TCDs": false,
+    "production_code_modified": false
+  },
+  "project_effect": {
+    "atomic_b3_admission_increment": 1,
+    "central_regie_update_required": true,
+    "central_regie_target_if_no_newer_authority": "ANIMO-RG05D",
+    "production_migration_still_closed": true
+  }
+}
