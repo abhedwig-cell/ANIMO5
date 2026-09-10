@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Review-scope guard persisted after workflow installation to trigger final-head validation.
 import subprocess
 
 BASE = "71340e036504695ba7177f31c0be9345895680b3"
