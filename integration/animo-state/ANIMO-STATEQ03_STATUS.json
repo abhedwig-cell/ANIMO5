@@ -1,0 +1,107 @@
+{
+  "workunit": "ANIMO-STATEQ03",
+  "title": "TCD-031 Active Macropore Persistent Solute Restart-State Ownership & Split-Run Qualification",
+  "branch": "work/animo-stateq03-tcd031-macropore-persistent-solute-state",
+  "base_head": "4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+  "status": "FAIL_CLOSED_TCD031_NATIVE_ACTIVE_MACROPORE_RESTART_STATE_INCOMPLETE",
+  "risk_tier": "GOV04_TIER_C",
+  "b3_qualification_class": "CLASS_C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL",
+  "authorities": {
+    "aggregate_RG05G": "4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "MP01": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "MP02": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "STATEQ01": "4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "STATEQ02": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "B3I03": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "B3I04": "400b7cd79f89043e091751707dfa96537587dcf6",
+    "B3I05": "1f94a6e08db5d73e8935fb095de9ef9798f6544c",
+    "B3I06": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
+    "frozen_B0_retention": "a818b5a37b80ed92aded0b9c404990d356eb2300"
+  },
+  "live_recheck": {
+    "dedicated_STATEQ03_or_later_equivalent_existed_before_branch_creation": false,
+    "dedicated_TCD031_github_issue_found": false,
+    "latest_canonical_routing_checked_through": "ANIMO-B3I06@8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
+    "TCD031_register_status_at_latest_routing": "OPEN / not started"
+  },
+  "persistent_state_inventory": {
+    "p_off_required_scalars": 8,
+    "p_on_required_scalars": 12,
+    "owner": "ANIMO_MACROPORE_SOLUTE",
+    "domain_count": 2,
+    "globally_deterministic_reconstruction_available": false
+  },
+  "native_restart": {
+    "input_support": true,
+    "output_serialization_complete": false,
+    "first_resumed_timestep_restore_direction_qualified": false,
+    "continuous_vs_split_pass": false
+  },
+  "qualified_evidence_preserved": [
+    "MP01 specialized kernel storage/exchange/direct-drain source+B1 evidence",
+    "MP02 synthetic complete-case active path evidence and restart omission",
+    "STATEQ01 checkpoint ownership/completeness contract",
+    "STATEQ02 exact restricted-core split-run evidence with macropores excluded",
+    "MASSQ02 owner-state/event-source observer rules"
+  ],
+  "exact_missing_requirements": [
+    "A checkpoint serializer/projection that persists all enabled ANIMO-owned macropore solute concentrations for both domains at an accepted boundary.",
+    "A restore transaction/lifecycle rule that places the restored accepted concentrations into CoMp without first-timestep overwrite from an unrestored RsCoMp alias.",
+    "Executable active-macropore continuous-versus-split evidence after those two correction contracts exist, using an explicit comparison policy and no invented tolerance.",
+    "GOV04 Tier-C independent second-line review before any atomic B3 admission."
+  ],
+  "tcd031_atomic_tier_c_b3_readiness": "NOT_READY",
+  "tcd025_dependency_decision": {
+    "storage_owner_ambiguity": "REMOVED_AT_SOURCE_OWNERSHIP_LEVEL",
+    "qualified_storage_identity": "begin = sum_domain(SrWaMpOld * CoMpX); end = sum_domain(SrWaMp * RsCoMpX), per species",
+    "owner_boundary": "macropore water is external hydrology-owned; concentration/mass identity is ANIMO macropore-solute-owned; public ledgers are observers, not owners",
+    "blockers_removed_if_STATEQ03_passed": [
+      "complete persistent solute state inventory",
+      "accepted-boundary start/end storage identity",
+      "species/domain ownership needed to source ledger storage terms"
+    ],
+    "blockers_not_removed_by_STATEQ03": [
+      "TCD-025 direct-drain/Dra4 integration gaps",
+      "historical B2 active-reference absence",
+      "Class-A unchanged-state/unchanged-flux non-interference proof for a future ledger correction",
+      "required independent review/admission governance"
+    ],
+    "current_TCD025_class_A_ledger_readiness": "NOT_OPENED_BECAUSE_STATEQ03_DID_NOT_PASS_AND_TCD025_RETAINS_INDEPENDENT_BLOCKERS"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": "SOURCE_AND_EVIDENCE_VALIDATION_ONLY; NATIVE_ACTIVE_SPLIT_BLOCKED_BEFORE_COMPARISON",
+    "qualified": false,
+    "fail_closed": true,
+    "canonical_state_admitted": false,
+    "production_migration_admitted": false
+  },
+  "scope_guards": {
+    "production_patch": false,
+    "canonical_STATE_admission": false,
+    "TCD025_composition": false,
+    "B4": false,
+    "central_regie_update": false,
+    "new_tolerance": false
+  },
+  "deliverables": [
+    "docs/state/ANIMO_STATEQ03_TCD031_MACROPORE_RESTART_QUALIFICATION.md",
+    "integration/animo-state/STATEQ03_MACROPORE_SOLUTE_OWNERSHIP.json",
+    "integration/animo-state/STATEQ03_SPLIT_RUN_EVIDENCE.json",
+    "integration/animo-state/ANIMO-STATEQ03_STATUS.json",
+    "tools/stateq03/validate_stateq03.py",
+    ".github/workflows/animo-stateq03-tcd031.yml"
+  ],
+  "ci": {
+    "validator": "tools/stateq03/validate_stateq03.py",
+    "workflow": ".github/workflows/animo-stateq03-tcd031.yml",
+    "purpose": "validate persisted evidence and scope guards; does not convert fail-closed scientific result into a pass",
+    "b0_active_split_reexecuted_in_ci": false
+  },
+  "downstream_decision": "STOP_AFTER_FAIL_CLOSED_STATE_QUALIFICATION; NO_TCD025_READINESS_OPENING"
+}
