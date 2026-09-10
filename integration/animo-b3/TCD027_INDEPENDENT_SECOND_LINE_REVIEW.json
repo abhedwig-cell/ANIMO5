@@ -1,0 +1,121 @@
+{
+  "record_id": "ANIMO-B3A01R-TCD027-INDEPENDENT-SECOND-LINE",
+  "record_version": 1,
+  "work_unit": "ANIMO-B3A01R",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "review/animo-b3a01r-tcd027-independent-second-line",
+  "tcd_ids": ["TCD-027"],
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "result": "INCOMPLETE",
+  "review_evidence_only": true,
+  "admitted": false,
+  "review_scope": {
+    "routine": "Outbal_calc.for",
+    "channel": "detailed organic-P reporting accumulator slot 24 redis_EXP",
+    "legacy_expression": "Bafop(24,Ly)=Bafop(25,Ly)+Dum",
+    "candidate_expression": "Bafop(24,Ly)=Bafop(24,Ly)+Dum",
+    "production_physics_in_scope": false,
+    "composition_in_scope": false
+  },
+  "independence": {
+    "separate_chatgpt_context": true,
+    "human_independence_claimed": false,
+    "organizational_independence_claimed": false,
+    "b3d10_authoring_source_recheck_is_supporting_only": true,
+    "b3d10_authoring_source_recheck_satisfies_independent_gate": false
+  },
+  "reviewed_heads": {
+    "review_handoff": "f348d0509ddfbb60473d41a7fe25e67d8e088e7f",
+    "ANIMO-B3A01": "b2bac82512fef0fa232e759f0c68b472567c11d5",
+    "ANIMO-B3D10": "a7b11b334f8b2604d5036edc04365006800944e0",
+    "ANIMO-GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "ANIMO-B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "ANIMO-PREP06_evidence_head": "9b1f1ea51c24fb82823290193651830dc61ea3c8"
+  },
+  "evidence_identities": {
+    "frozen_b0_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "frozen_b0_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "Outbal_calc_for_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+    "Outbal_write_for_sha256": "cdc0a9738216d8a97d3c35f9862b78fc94fec385aaf0691d6778a73031ac74ea",
+    "review_contract_blob_sha": "6a31e6ae33c1c12d889f6b05cba009eba5e42466",
+    "PREP06_TCD027_diagnostic_blob_sha": "5bc14b350b1b60f870ab568d4c8a127275ca8a84",
+    "PREP06_source_reverification_blob_sha": "bd0ec232f3de269c0f4251c30761b528a8d28e65",
+    "PREP06_transfer_ledger_blob_sha": "9caf62061ffbfefd28940b9ac170d6ae12b4d638",
+    "GOV03_acquisition_evidence_blob_sha": "160eda7632235cc1558f1dde89ea4d7fd5e2e380",
+    "GOV03_status_blob_sha": "b85af297731f8bd84feddaf3aa23685549129496",
+    "documentation_readme_blob_sha": "473cb61c2baa4ddf70c1d9806a2211a53b1ed08f"
+  },
+  "independent_source_access": {
+    "frozen_source_bytes_available_in_public_repository": false,
+    "repository_policy": "hashes_and_manifests_retained_source_archive_not_published",
+    "consequence": "exact source neighbourhood can only be independently accepted where a source-bound derivative retains the required facts",
+    "b3d10_substitution_for_missing_source_derivative_allowed": false
+  },
+  "checks": [
+    {"id": 1, "result": "PASS", "claim": "exact frozen B0 source and testbank identities", "basis": "repository hash pins plus PREP06 source-reverification identity match"},
+    {"id": 2, "result": "INCOMPLETE", "claim": "exact legacy/candidate expressions including local meaning and construction of Dum", "basis": "PREP06 independently retains the frozen cross-slot legacy statement; candidate text is declared consistently; exact local Dum construction is not retained in an independent source extract and raw frozen source bytes are unavailable"},
+    {"id": 3, "result": "INCOMPLETE", "claim": "exact Outbal_write.for mapping for slots 24 through 27", "basis": "mapping is recorded by B3D10 authoring-context recheck but no independent source-bound extract is accessible for this gate"},
+    {"id": 4, "result": "PASS", "claim": "Bafop at the seam is a detailed reporting accumulator, not physical organic-P state owner", "basis": "PREP06 transfer-ledger ownership classification"},
+    {"id": 5, "result": "INCOMPLETE", "claim": "analogue accumulator expressions and P slots 25 through 27 self-accumulate", "basis": "OM/N analogues are retained and PREP06 reports one cross-slot assignment among 77; exact P25/P26/P27 source statements are not independently retained"},
+    {"id": 6, "result": "PASS", "claim": "natural LWKM_gras_1040.2021.2045 activation in period 1997", "basis": "PREP06 bounded B1 diagnostic evidence"},
+    {"id": 7, "result": "PASS", "claim": "legacy redis_EXP approximately -7.0644 kg/ha P versus candidate 0.0 kg/ha P", "basis": "treated only as diagnostic discriminator, not tolerance or historical oracle"},
+    {"id": 8, "result": "PASS", "claim": "changed-output whitelist", "basis": ["transfopGP.Out", "transfopRP.Out", "transfopTP.Out"]},
+    {"id": 9, "result": "PASS", "claim": "physical state trajectory unchanged", "basis": "retained B1 non-interference evidence"},
+    {"id": 10, "result": "PASS", "claim": "process flux trajectory unchanged", "basis": "retained B1 non-interference evidence"},
+    {"id": 11, "result": "PASS", "claim": "total organic-P balance unchanged", "basis": "retained B1 diagnostic evidence"},
+    {"id": 12, "result": "PASS", "claim": "total mass balance unchanged", "basis": "retained B1 diagnostic evidence"},
+    {"id": 13, "result": "PASS", "claim": "redis_OP unchanged", "basis": "retained B1 diagnostic evidence"},
+    {"id": 14, "result": "PASS", "claim": "redis_DOP unchanged", "basis": "retained B1 diagnostic evidence"},
+    {"id": 15, "result": "PASS", "claim": "redis_HUP unchanged", "basis": "retained B1 diagnostic evidence"},
+    {"id": 16, "result": "PASS", "claim": "ordinary non-reporting outputs unchanged across 58 common top-level outputs", "basis": "retained B1 comparison evidence, only three whitelisted reporting outputs changed"},
+    {"id": 17, "result": "PASS", "claim": "GOV03 route remains live and valid", "basis": "live GOV03 branch resolves to qualified authority cbd262bd and retains G6U eligibility with no B2/no admission"},
+    {"id": 18, "result": "PASS", "claim": "no qualified B2 appeared since B3D10", "basis": "live GOV03 unchanged; B2 branch search and issue search found no newer qualified historical B2 or TCD-027 B2 replacement"},
+    {"id": 19, "result": "PASS", "claim": "historical revision-53 behaviour remains UNKNOWN", "basis": "GOV03 route effect"},
+    {"id": 20, "result": "INCOMPLETE", "claim": "B3Q01 historical-uncertainty route requirements sufficiently met for this atomic Class-A second-line gate", "basis": "route acquisition/causal/conservation/non-interference elements are present, but required independent source checks 2, 3 and 5 remain unresolved"},
+    {"id": 21, "result": "PASS", "claim": "PREP06 and B3A01 remain B1 diagnostic/readiness and are never promoted to B2", "basis": "explicit non-reference boundaries in PREP06, B3A01 and GOV03"},
+    {"id": 22, "result": "PASS", "claim": "ANIMO 4.0 user guide is not exact revision-53 slot-algebra authority", "basis": "reference/documentation/README.md explicitly denies exact revision-53 specification role"},
+    {"id": 23, "result": "PASS", "claim": "TCD-017, TCD-026, TCD-028 and all other organic-P/stable-DOM corrections remain outside scope", "basis": "review scope guard and report boundaries"},
+    {"id": 24, "result": "PASS", "claim": "no composition, production patch, B4, central-regie update or admission is performed", "basis": "review-only file whitelist enforced by scope guard"}
+  ],
+  "b3q01_reassessment": {
+    "historical_uncertainty_route_live": true,
+    "GOV03_acquisition_closure_sufficient_for_route_eligibility": true,
+    "historical_behaviour": "UNKNOWN",
+    "qualified_B2_available": false,
+    "bounded_class_A_evidence_materially_more_than_residual_improvement": true,
+    "independent_second_line_fully_closed": false,
+    "reason": "source-bound checks 2, 3 and 5 cannot be completed independently from accessible GitHub evidence",
+    "admission_conclusion": "NOT_EVALUATED_OR_PERFORMED_BY_THIS_REVIEW"
+  },
+  "diagnostic_boundary": {
+    "case": "LWKM_gras_1040.2021.2045",
+    "period": 1997,
+    "legacy_redis_EXP_kg_ha_P_approx": -7.0644,
+    "candidate_redis_EXP_kg_ha_P": 0.0,
+    "is_tolerance": false,
+    "is_historical_oracle": false,
+    "common_top_level_outputs_compared": 58,
+    "changed_outputs": ["transfopGP.Out", "transfopRP.Out", "transfopTP.Out"],
+    "unchanged": ["physical state trajectory", "process flux trajectory", "total organic-P balance", "total mass balance", "redis_OP", "redis_DOP", "redis_HUP", "ordinary non-reporting outputs"]
+  },
+  "residual_uncertainties": [
+    "Exact local Dum construction and semantic provenance at the TCD-027 statement are not independently verified in this separate context.",
+    "Exact frozen Outbal_write.for slot-24 through slot-27 source statements are not independently verified in this separate context.",
+    "Exact frozen organic-P slot-25, slot-26 and slot-27 self-accumulator statements are not independently verified in this separate context.",
+    "Historical revision-53 behaviour remains UNKNOWN because no qualified B2 exists.",
+    "Controlled immutable B0 retention remains a wider repository governance limitation and is not upgraded by this review."
+  ],
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_source_modified": false,
+    "frozen_testcases_modified": false,
+    "composition_performed": false,
+    "B4_performed": false,
+    "central_regie_updated": false,
+    "admission_performed": false,
+    "production_patch_authorized": false,
+    "other_tcd_scientific_disposition_performed": false
+  },
+  "required_followup_for_pass": "Provide the exact hash-matching frozen source bytes to a genuinely separate review context, or provide independently generated identity-bound source extracts that expose the local Dum construction, exact Outbal_write slot mapping, and exact P25/P26/P27 accumulator statements; then rerun the second-line review.",
+  "semantic_boundary": "INCOMPLETE is review evidence only and does not admit TCD-027."
+}
