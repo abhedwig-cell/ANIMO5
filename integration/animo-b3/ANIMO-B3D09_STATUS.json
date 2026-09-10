@@ -16,14 +16,14 @@
   },
   "target": "TCD-015",
   "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
-  "state": "IN_PROGRESS_PERSISTED_TCD015_FORMAL_DISPOSITION_VALIDATION_PENDING",
-  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "state": "QUALIFIED_TCD015_FORMAL_DISPOSITION_ROUTE_OPEN_INDEPENDENT_REVIEW_PENDING_NO_ADMISSION",
+  "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03",
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "route": {
     "selected": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
@@ -78,11 +78,11 @@
   "validation": {
     "workflow": "ANIMO-B3D09 TCD015 GOV03 disposition",
     "validator": "tools/validate_b3d09_tcd015_disposition.py",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "a130d5b7d8144c6b55fe87ce992168854e077443",
+    "github_actions_run_id": 34449498764,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS",
+    "scope_guard": "PASS_B3D09_SCOPE_GUARD"
   },
   "hard_boundaries": {
     "historical_B2_recovered": false,
@@ -97,5 +97,5 @@
     "testcase_modified": false,
     "independent_review_executed_in_this_context": false
   },
-  "next_action": "After validation, create the clean ANIMO-B3B01R independent-review handoff branch and issue. Do not execute the independent review in this context."
+  "next_action": "Create the clean ANIMO-B3B01R independent-review handoff branch from this qualified disposition and create the fail-closed review issue. Do not execute the independent review in this context."
 }
