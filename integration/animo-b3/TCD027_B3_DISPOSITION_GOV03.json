@@ -1,0 +1,279 @@
+{
+  "record_id": "B3D10-TCD027-GOV03-DISPOSITION",
+  "record_version": 1,
+  "tcd_ids": [
+    "TCD-027"
+  ],
+  "atomicity": "ATOMIC",
+  "qualification_class": "A",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "disposition": "UNRESOLVED_NOT_ADMITTED",
+  "scope": {
+    "process": "detailed organic-P transformation reporting accumulator slot 24 (redis_EXP)",
+    "code_path": "Outbal_calc.for Bafop(24,Ly) accumulation to Outbal_write.for transfop<profile>.Out",
+    "claimed_change": "replace cross-seeding of Bafop slot 24 from slot 25 with self-accumulation of slot 24 only",
+    "control_volume": "detailed organic-P reporting accumulator only; no physical organic-P control volume is changed"
+  },
+  "identities": {
+    "b0": {
+      "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "testcase_status": "FROZEN_CASE_IDENTIFIED",
+      "testcase_identity": "LWKM_gras_1040.2021.2045 natural B1 activation, period 1997",
+      "documentation_or_theory_identity": "frozen Outbal_calc.for and Outbal_write.for reporting identity; ANIMO 4.0 guide is contextual output documentation but not revision-53 slot-algebra authority"
+    },
+    "b1": {
+      "status": "DIAGNOSTIC_NOT_REFERENCE",
+      "evidence_identity": "ANIMO-PREP06 TCD-027 detailed organic-P accumulator evidence as frozen by ANIMO-B3A01@b2bac82512fef0fa232e759f0c68b472567c11d5",
+      "diagnostic_limitations": "The GNU one-expression probe establishes causality, natural path activation and bounded non-interference but is not qualified historical B2 behaviour."
+    },
+    "b2": {
+      "status": "UNAVAILABLE_AFTER_DOCUMENTED_ACQUISITION_ATTEMPT",
+      "acquisition_effort_ref": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+    }
+  },
+  "evidence": {
+    "theory": {
+      "status": "PRESENT",
+      "summary": "The exact reporting contract maps Bafop slot 24 to redis_EXP, and the local accumulator identity requires slot 24 to retain its own prior value rather than slot 25 history.",
+      "refs": [
+        "frozen B0 Outbal_write.for detailed organic-P header and writer",
+        "frozen B0 Outbal_calc.for slot-24 and neighbouring accumulator statements",
+        "ANIMO-B3A01@b2bac82512fef0fa232e759f0c68b472567c11d5"
+      ]
+    },
+    "causal": {
+      "status": "PRESENT",
+      "summary": "Natural LWKM 1997 activation changes redis_EXP from approximately -7.0644 kg/ha P in legacy to 0.0 kg/ha P under the one-expression candidate probe.",
+      "refs": [
+        "integration/animo-prep/PREP06_ORGANIC_P_DETAILED_ACCUMULATOR_DEFECT.json@5bc14b350b1b60f870ab568d4c8a127275ca8a84",
+        "ANIMO-B3A01@b2bac82512fef0fa232e759f0c68b472567c11d5"
+      ]
+    },
+    "conservation": {
+      "status": "PRESENT",
+      "summary": "The candidate modifies only detailed reporting. Physical state, process flux, total organic-P balance and total mass balance are unchanged in the bounded diagnostic comparison; the local report identity is restored by self-accumulation.",
+      "refs": [
+        "integration/animo-prep/PREP06_ORGANIC_P_DETAILED_ACCUMULATOR_DEFECT.json@5bc14b350b1b60f870ab568d4c8a127275ca8a84"
+      ]
+    },
+    "expected_difference": {
+      "changed_states": [],
+      "changed_fluxes": [],
+      "changed_ledgers_or_reports": [
+        "transfopGP.Out: detailed organic-P redis_EXP reporting",
+        "transfopRP.Out: detailed organic-P redis_EXP reporting",
+        "transfopTP.Out: detailed organic-P redis_EXP reporting"
+      ],
+      "unchanged_surfaces": [
+        "physical organic-P state trajectory",
+        "all process flux trajectories",
+        "total organic-P balance outputs",
+        "total mass balance",
+        "redis_OP",
+        "redis_DOP",
+        "redis_HUP",
+        "ordinary non-reporting model outputs",
+        "all other TCD correction surfaces"
+      ]
+    },
+    "non_interference": {
+      "status": "PRESENT",
+      "summary": "PREP06 compared 58 common top-level outputs; only the three declared transfop profile files changed, with no physical-state, process-flux or total-balance change reported.",
+      "refs": [
+        "integration/animo-prep/PREP06_ORGANIC_P_DETAILED_ACCUMULATOR_DEFECT.json@5bc14b350b1b60f870ab568d4c8a127275ca8a84"
+      ]
+    },
+    "coverage": {
+      "natural_case_coverage": "LWKM_gras_1040.2021.2045, period 1997, profiles GP/RP/TP",
+      "synthetic_case_coverage": "not required for route opening because a natural supplied-case discriminator exists; no synthetic result is promoted to historical evidence",
+      "branch_activation_proven": true,
+      "refs": [
+        "ANIMO-B3A01@b2bac82512fef0fa232e759f0c68b472567c11d5",
+        "integration/animo-prep/PREP06_ORGANIC_P_DETAILED_ACCUMULATOR_DEFECT.json@5bc14b350b1b60f870ab568d4c8a127275ca8a84"
+      ]
+    },
+    "independent_review": {
+      "status": "INCOMPLETE",
+      "reviewer_or_workunit": "ANIMO-B3A01R_PENDING",
+      "independent_from_correction_authoring": false,
+      "scope": "independent second-line review of exact slot semantics, Class-A atomicity, natural causal discriminator, output whitelist, non-interference, GOV03 route and residual uncertainty",
+      "result": "NOT_REVIEWED"
+    },
+    "historical_uncertainty": {
+      "acquisition_effort_ref": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+      "stopping_rationale": "GOV03 records completed multi-expert/archive acquisition effort without recovery of a usable provenance-qualified historical B2 behavioural reference.",
+      "scientific_basis_ref": "frozen B0 Outbal_calc.for self-accumulation identity plus Outbal_write.for slot-24 redis_EXP mapping",
+      "independent_cross_check_ref": "orthogonal source cross-check using organic-matter and organic-N slot-24 self-accumulators plus organic-P slots 25-27 self-accumulation; to be independently re-evaluated by the second-line reviewer",
+      "second_line_review_ref": "PENDING_ANIMO-B3A01R_INDEPENDENT_SECOND_LINE",
+      "uncertainty_statement": "No qualified B2 exists and exact historical revision-53 behaviour for TCD-027 remains UNKNOWN.",
+      "scope_limitations": "Only detailed organic-P reporting accumulator slot 24 is considered; no organic-P physics, numerical policy, production migration, B4 or composition is included."
+    }
+  },
+  "class_specific_evidence": {
+    "physical_state_trajectory_unchanged": true,
+    "process_flux_trajectory_unchanged": true,
+    "intended_ledger_or_report_only": true,
+    "conservation_or_report_identity_restored": "new_slot24 = old_slot24 + current_redis_EXP_increment",
+    "legacy_violation": "Bafop(24,Ly) is seeded from Bafop(25,Ly)",
+    "legacy_expression": "Bafop(24,Ly)=Bafop(25,Ly)+Dum",
+    "candidate_expression": "Bafop(24,Ly)=Bafop(24,Ly)+Dum",
+    "slot_semantics": {
+      "24": "redis_EXP",
+      "25": "redis_OP",
+      "26": "redis_DOP",
+      "27": "redis_HUP"
+    },
+    "analogue_accumulators": [
+      "Bafom(24,Ly)=Bafom(24,Ly)+Adexpl(I,Ln)*Z",
+      "Bafon(24,Ly)=Bafon(24,Ly)+Dum"
+    ],
+    "natural_discriminator": {
+      "case": "LWKM_gras_1040.2021.2045",
+      "period": 1997,
+      "legacy_redis_EXP_kg_ha_P": -7.0644,
+      "candidate_redis_EXP_kg_ha_P": 0.0
+    },
+    "changed_reporting_surfaces": [
+      "transfopGP.Out",
+      "transfopRP.Out",
+      "transfopTP.Out"
+    ],
+    "unchanged_physical_and_reporting_surfaces": [
+      "physical state trajectory",
+      "process flux trajectory",
+      "total organic-P balance",
+      "total mass balance",
+      "redis_OP",
+      "redis_DOP",
+      "redis_HUP",
+      "ordinary non-reporting outputs"
+    ]
+  },
+  "gates": {
+    "b0_identity": {
+      "status": "PASS",
+      "applicability": "APPLICABLE",
+      "justification": "Frozen source and testbank identities are fixed and rechecked.",
+      "evidence_refs": [
+        "ANIMO-B3A01@b2bac82512fef0fa232e759f0c68b472567c11d5"
+      ]
+    },
+    "b1_evidence": {
+      "status": "PASS",
+      "applicability": "APPLICABLE",
+      "justification": "PREP06 provides a dedicated natural causal probe and bounded non-interference evidence.",
+      "evidence_refs": [
+        "PREP06_ORGANIC_P_DETAILED_ACCUMULATOR_DEFECT@5bc14b350b1b60f870ab568d4c8a127275ca8a84"
+      ]
+    },
+    "b2_route": {
+      "status": "PASS",
+      "applicability": "APPLICABLE",
+      "justification": "No B2 exists, but GOV03 qualifies the historical-uncertainty route after documented reasonable acquisition effort.",
+      "evidence_refs": [
+        "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+      ]
+    },
+    "theory": {
+      "status": "PASS",
+      "applicability": "APPLICABLE",
+      "justification": "Exact source-bound reporting identity and output-slot mapping are unambiguous for this narrow Class-A claim.",
+      "evidence_refs": [
+        "frozen B0 Outbal_calc.for",
+        "frozen B0 Outbal_write.for"
+      ]
+    },
+    "causal": {
+      "status": "PASS",
+      "applicability": "APPLICABLE",
+      "justification": "The one-expression probe causally removes the natural LWKM 1997 redis_EXP artefact.",
+      "evidence_refs": [
+        "ANIMO-B3A01@b2bac82512fef0fa232e759f0c68b472567c11d5"
+      ]
+    },
+    "conservation": {
+      "status": "PASS",
+      "applicability": "APPLICABLE",
+      "justification": "Physical and total-balance surfaces remain unchanged while the local detailed reporting identity is corrected.",
+      "evidence_refs": [
+        "PREP06_ORGANIC_P_DETAILED_ACCUMULATOR_DEFECT@5bc14b350b1b60f870ab568d4c8a127275ca8a84"
+      ]
+    },
+    "expected_difference": {
+      "status": "PASS",
+      "applicability": "APPLICABLE",
+      "justification": "The changed surface is predeclared as exactly three detailed organic-P transfop outputs.",
+      "evidence_refs": [
+        "ANIMO-B3A01@b2bac82512fef0fa232e759f0c68b472567c11d5"
+      ]
+    },
+    "non_interference": {
+      "status": "PASS",
+      "applicability": "APPLICABLE",
+      "justification": "No physical state, process flux, total organic-P balance, redis_OP, redis_DOP, redis_HUP or ordinary non-reporting change is observed in the bounded diagnostic comparison.",
+      "evidence_refs": [
+        "PREP06_ORGANIC_P_DETAILED_ACCUMULATOR_DEFECT@5bc14b350b1b60f870ab568d4c8a127275ca8a84"
+      ]
+    },
+    "coverage": {
+      "status": "PASS",
+      "applicability": "APPLICABLE",
+      "justification": "The exact path is naturally activated in the supplied LWKM case in 1997.",
+      "evidence_refs": [
+        "ANIMO-B3A01@b2bac82512fef0fa232e759f0c68b472567c11d5"
+      ]
+    },
+    "independent_review": {
+      "status": "FAIL",
+      "applicability": "APPLICABLE",
+      "justification": "A genuinely separate second-line review has not yet been performed and remains the blocking gate.",
+      "evidence_refs": [
+        "PENDING_ANIMO-B3A01R"
+      ]
+    },
+    "residual_uncertainty": {
+      "status": "PASS",
+      "applicability": "APPLICABLE",
+      "justification": "Historical behaviour is explicitly UNKNOWN and all route, evidence and scope limitations are retained.",
+      "evidence_refs": [
+        "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+        "ANIMO-B3A01@b2bac82512fef0fa232e759f0c68b472567c11d5"
+      ]
+    },
+    "class_specific": {
+      "status": "PASS",
+      "applicability": "APPLICABLE",
+      "justification": "Class-A state/flux non-interference, reporting-only intent and local reporting identity are present for route opening.",
+      "evidence_refs": [
+        "ANIMO-B3A01@b2bac82512fef0fa232e759f0c68b472567c11d5"
+      ]
+    },
+    "composition_if_applicable": {
+      "status": "PASS",
+      "applicability": "NOT_APPLICABLE",
+      "justification": "TCD-027 is handled atomically and no composition is allowed in this workunit.",
+      "evidence_refs": [
+        "ANIMO-B3D10 atomic scope"
+      ]
+    }
+  },
+  "residual_uncertainty": [
+    "No qualified B2 behavioural reference exists; historical revision-53 behaviour remains UNKNOWN.",
+    "The ANIMO 4.0 user guide documents detailed organic-transformation output conceptually but does not define the exact revision-53 Bafop slot-24 algebra.",
+    "PREP06 and B3A01 are diagnostic/readiness evidence, not historical B2.",
+    "The source-bound authoring recheck and analogue cross-check do not satisfy the required independent second-line review.",
+    "A later credible historical artifact reopens B2 qualification for this scope.",
+    "No production implementation, B4 migration, central-regie update or composition is authorized."
+  ],
+  "composition": {
+    "is_composition": false,
+    "component_record_ids": []
+  },
+  "admission_decision": {
+    "admitted": false,
+    "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03",
+    "decision_scope": "TCD-027 detailed organic-P reporting accumulator slot 24 only",
+    "decision_evidence_ref": "ANIMO-B3D10 formal GOV03 disposition"
+  }
+}
