@@ -1,12 +1,1 @@
-{
-  "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
-  "command": "python tools/b3b10e1/generate_tcd031_source_provenance.py /path/to/ANIMO_4.1.5.53(3).zip --output-dir /tmp/b3b10e1",
-  "comparison": "Compare SHA-256 of all three generated JSON files with the committed manifest. Any mismatch is FAIL_CLOSED.",
-  "outputs": {
-    "OWNERSHIP_MAP.json": "90d48d92d7d6bd0f3336424982315b8d97020f5990c7f571bf170e13455d0037",
-    "PROBE_OUTPUT.json": "f95f41283993cf9217938c5efef722c846461a09f56ecdde31bd562a8b403e9f",
-    "SOURCE_MEMBER_INDEX.json": "32105b39da49d72d75cb6c4456317b3012ab34b342df50574d64823c03c82d2b"
-  },
-  "source_exposure": "No frozen source text is emitted or required to be committed.",
-  "workunit": "ANIMO-B3B10E1"
-}
+{"archive_sha256":"183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566","command":"python tools/b3b10e1/generate_tcd031_source_provenance.py /path/to/ANIMO_4.1.5.53(3).zip --output-dir /tmp/b3b10e1","comparison":"Compare SHA-256 of all three generated JSON files with the committed manifest. Any mismatch is FAIL_CLOSED.","outputs":{"OWNERSHIP_MAP.json":"685998c28740c0be5369aedb4246de088836c703e7a4108da9d7dba254f2ba6d","PROBE_OUTPUT.json":"9f248108e409c762ebef752e85329e6d1586d2a439c38c72c626b5414b51cf8e","SOURCE_MEMBER_INDEX.json":"be4182c7438650f86399f912c57bbad42adf71fc362b694537f2db4d64c816fc"},"source_exposure":"No frozen source text is emitted or required to be committed.","workunit":"ANIMO-B3B10E1"}
