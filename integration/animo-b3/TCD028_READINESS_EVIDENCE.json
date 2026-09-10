@@ -1,0 +1,178 @@
+{
+  "work_unit": "ANIMO-B3B08",
+  "record_type": "TCD028_ADMISSION_READINESS_EVIDENCE",
+  "target": "TCD-028",
+  "title": "Stable-DOM plough redistribution accumulator lifecycle",
+  "branch": "work/animo-b3b08-tcd028-stable-dom-event-reset-readiness",
+  "authoring_base": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+  "authority_snapshot": {
+    "aggregate_central_regie": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+    "post_rg05f_atomic_admissions_observed": [
+      "ANIMO-B3D15@22e48f7e2c1eaa1245f034de2d909191d9cfa227:TCD-030",
+      "ANIMO-B3D16@8650ea9e716336520d8d7df5f9ea2b393d17ab98:TCD-023"
+    ],
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "B3I01_routing": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4",
+    "B3I03_canonical_register_append": "ANIMO-B3I03@814ea660d367494432beb63ea78298d1f6cd73d7",
+    "PREP10": "ANIMO-PREP10@65cd4a65a3ea27cd4ce004f505d5022fdb08b9ab",
+    "PREP10C_authoritative": "ANIMO-PREP10C@549545921dc8175f01d86c283647acd470c14290"
+  },
+  "collision_and_supersession_check": {
+    "dedicated_b3b08_found_before_branch_creation": false,
+    "later_tcd028_readiness_or_review_found": false,
+    "existing_intake_issue": 8,
+    "canonical_tcd_id": "TCD-028",
+    "deprecated_parallel_prep10c_tcd032_proposal_authoritative": false,
+    "deprecated_parallel_branch": "work/animo-prep10c-stable-dom-reset-readiness",
+    "deprecated_parallel_head": "f88b8a4ca65bff4a3d9c4132a7f384c2ae698087",
+    "supersession_rule": "DO_NOT_MERGE_OR_USE_TCD032_PROPOSAL_FOR_THIS_CANDIDATE"
+  },
+  "canonical_register_state": {
+    "authority": "ANIMO-B3I03@814ea660d367494432beb63ea78298d1f6cd73d7",
+    "status": "OPEN",
+    "classification": "RESERVED_POST_G5_LOCAL_EVENT_ACCUMULATOR_DEFECT",
+    "claim": "stable DOM redistribution must conserve event-local transferred mass",
+    "historical_semantics": "EXACT_REVISION53_EVENT_ACCUMULATOR_SEMANTICS_NOT_INDEPENDENTLY_DOCUMENTED"
+  },
+  "b3_qualification": {
+    "class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "class_basis": "local event-accumulator additive-identity correction with no new physical state and no solver/tolerance or numerical-policy change",
+    "class_is_not_risk_tier": true
+  },
+  "gov04_risk": {
+    "principle": "STRICTEST_APPLICABLE_RISK_TRIGGER_WINS",
+    "selected_tier": "C",
+    "tier_b_default_overridden": true,
+    "forced_tier_c_triggers": {
+      "INITIALIZATION_SEMANTICS": true,
+      "SCIENTIFIC_STATE_OR_SOURCE_OWNERSHIP_AMBIGUITY": true,
+      "RESTART_OR_COLD_START_DISCRIMINATION": false,
+      "CANONICAL_STATE_OWNERSHIP": false,
+      "CHECKPOINT_SEMANTICS": false,
+      "MISSING_OR_REDEFINED_PHYSICAL_STATE": false,
+      "NUMERICAL_POLICY": false,
+      "SOLVER_OR_TOLERANCE_CHANGE": false,
+      "RUNTIME_BRANCHING_WITH_BEHAVIOURAL_EFFECT": false,
+      "EXACT_ZERO_OR_SINGULAR_DOMAIN_SEMANTICS": false,
+      "AMBIGUOUS_DOMAIN_CONTRACT": false
+    },
+    "reason": "The correction initializes quantities whose intended lifetime is the scientific question: event-local scratch versus cumulative cross-event storage. GOV04 therefore forces Tier C even though the B3 qualification class remains Class B. The candidate can also change downstream restart state because redistributed physical state changes, while restart serialization semantics themselves are not edited.",
+    "independent_second_line_required": true,
+    "separate_disposition_and_admission_preferred": true
+  },
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "addit_for_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+    "addit_for_size_bytes": 35615
+  },
+  "candidate_identity": {
+    "candidate_addit_sha256": "a1993aa2d22c8f2c13fc169e78f9121587c8f14a122ef7d3f757cc24a58a54ae",
+    "candidate_executable_sha256_current_gnu": "f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db",
+    "trigger": "Pl(I) > 0",
+    "insertions_at_beginning_of_each_plough_event": [
+      "SuStdiorma = 0.0",
+      "SuStdiorni = 0.0",
+      "If (Ipo.Eq.1) SuStdiorpo = 0.0"
+    ],
+    "preserves_conditional_p_semantics": true,
+    "production_candidate_applied": false
+  },
+  "source_bound_causal_seam": {
+    "member": "ANIMO_4.1.5.53/Addit.for",
+    "plough_event_branch_line": 449,
+    "first_self_reads": {
+      "SuStdiorma": 475,
+      "SuStdiorni": 477,
+      "SuStdiorpo": 479
+    },
+    "explicit_definition_before_first_self_read": false,
+    "explicit_event_reset_present_in_b0": false,
+    "source_level_use_before_definition": true
+  },
+  "scientific_identity": {
+    "event_accumulator_identity": "S_event starts at additive identity zero and after summation contains current-event contribution only",
+    "redistribution_identity": "sum_l He(l)/Bo(Pl(I)) = 1 over the redistributed layer set",
+    "legacy_carryover_form": "S_event = S_prior + S_current when stale local storage persists",
+    "candidate_form": "S_event = 0 + S_current",
+    "prior_event_mass_must_not_be_redistributed_again": true,
+    "species_paths": ["C", "N", "conditional P"]
+  },
+  "b1_evidence_reused_under_gov04": {
+    "mode": "VERIFY_AND_REUSE_WITH_HIGH_RISK_SCOPE_CHECK",
+    "prep10_source_audit": "integration/animo-prep/PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_AUDIT.json",
+    "prep10_observer_matrix": "integration/animo-prep/PREP10_GNU_STABLE_DOM_OBSERVER_MATRIX.json",
+    "prep10_causal_activation_matrix": "integration/animo-prep/PREP10_STABLE_DOM_CAUSAL_ACTIVATION_MATRIX.json",
+    "prep10_parallel_corroboration": "integration/animo-prep/PREP10_PARALLEL_CAUSAL_EVIDENCE_RECONCILIATION.json",
+    "frozen_successful_plough_active_cases": 4,
+    "frozen_observed_plough_events": 31,
+    "frozen_cases_discriminate_reset": false,
+    "controlled_descendants_discriminate_reset": true,
+    "cranmais_changed_scientific_or_structural_files": 12,
+    "zuiderzeeland_p_enabled_changed_scientific_or_structural_files": 8,
+    "carbon_carryover_confirmed": true,
+    "nitrogen_carryover_confirmed": true,
+    "conditional_phosphorus_carryover_confirmed": true,
+    "phosphorus_disabled_negative_control_available": true,
+    "controlled_or_synthetic_evidence_is_b2": false
+  },
+  "candidate_noninterference": {
+    "successful_frozen_cases_compared": 8,
+    "common_files_compared": 550,
+    "raw_equal_files": 450,
+    "volatile_only_equal_files": 100,
+    "scientific_or_structural_differences": 0,
+    "missing_candidate_files": 0,
+    "unexpected_candidate_files": 0,
+    "scientific_numeric_tolerance_used": false,
+    "interpretation": "supporting non-interference only; frozen successful plough cases are non-discriminating for the defect"
+  },
+  "expected_difference_contract": {
+    "may_change": [
+      "stable dissolved-organic C/N/P plough redistribution values",
+      "physical state causally fed by the changed redistribution",
+      "restart output/state only as a downstream image of changed physical state",
+      "dependent process fluxes",
+      "dependent balance and report outputs"
+    ],
+    "must_not_change_as_part_of_tcd028": [
+      "management event timing or selection",
+      "plough trigger definition",
+      "process ordering outside the stable-DOM plough dependency surface",
+      "restart serialization or checkpoint representation semantics",
+      "numerical solver or tolerance policy",
+      "precision policy",
+      "unrelated ledger definitions",
+      "B0 source or testcase identity"
+    ],
+    "whole_model_equivalence_claimed": false,
+    "global_arbitrary_tolerance_allowed": false
+  },
+  "historical_route": {
+    "qualified_b2_available": false,
+    "gov03_acquisition_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "route": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
+    "historical_storage_manifestation": "UNKNOWN_WITHOUT_B2",
+    "historical_fidelity_claimed": false,
+    "current_gnu_storage_semantics_are_historical_reference": false
+  },
+  "residual_uncertainties": [
+    "Historical Intel/native manifestation of uninitialized local accumulator storage remains unknown without B2.",
+    "Frozen successful plough cases are non-discriminating because their stable-DOM event accumulators remain zero under the diagnostic contract.",
+    "Controlled activation establishes causality and conservation scope, not field prevalence or realistic magnitude.",
+    "Independent Tier-C review must decide event-local scientific intent rather than inheriting PREP10/PREP10C author interpretation."
+  ],
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "composition_performed": false,
+    "b4_opened": false,
+    "production_migration_opened": false,
+    "central_rg05_updated": false,
+    "independent_review_performed_in_authoring_context": false
+  }
+}
