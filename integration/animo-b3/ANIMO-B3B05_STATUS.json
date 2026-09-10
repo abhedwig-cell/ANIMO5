@@ -1,0 +1,111 @@
+{
+  "work_unit": "ANIMO-B3B05",
+  "title": "TCD-023 Stable-DOM P Cross-Species Partition Admission Readiness",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3b05-tcd023-stable-dom-p-partition-readiness",
+  "target_tcd": "TCD-023",
+  "state": "QUALIFIED_CLASS_B_ADMISSION_READINESS_HANDOFF_PENDING_GREEN_VALIDATION",
+  "readiness_qualified": true,
+  "b3_admitted": false,
+  "production_authorized": false,
+  "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "GOV04_risk_tier": "B",
+  "Tier_A_waiver_used": false,
+  "authoring_base": {
+    "authority": "ANIMO-RG05E",
+    "head": "eed822037ed8d906a2ab424220597cffac9cca73"
+  },
+  "authorities": {
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "SYNQ01": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121"
+  },
+  "atomic_candidate": {
+    "routine": "Resp_miner",
+    "source_member": "resp_miner.for",
+    "case": 2,
+    "legacy": [
+      "Transfop(19,Ln) = (1.0-AsfaSDO) * Transfon(17,Ln)",
+      "Transfop(20,Ln) = AsfaSDO * Transfon(17,Ln)"
+    ],
+    "candidate": [
+      "Transfop(19,Ln) = (1.0-AsfaSDO) * Transfop(17,Ln)",
+      "Transfop(20,Ln) = AsfaSDO * Transfop(17,Ln)"
+    ],
+    "required_identity": "Transfop(19)+Transfop(20)=Transfop(17)"
+  },
+  "evidence": {
+    "upstream_pins": "integration/animo-b3/TCD023_UPSTREAM_EVIDENCE.json",
+    "independent_fixture": "integration/animo-b3/TCD023_READINESS_FIXTURE.json",
+    "expected_difference": "integration/animo-b3/TCD023_EXPECTED_DIFFERENCE.json",
+    "independent_authoring_recheck": "integration/animo-b3/TCD023_INDEPENDENT_RECHECK.json",
+    "human_report": "docs/b3/TCD023_CLASS_B_ADMISSION_READINESS.md"
+  },
+  "readiness_gates": {
+    "B0_IDENTITY": "PASS",
+    "B1_CAUSAL_EVIDENCE": "PASS",
+    "B2_ROUTE_OR_GOV03_HISTORICAL_UNCERTAINTY_ROUTE": "PASS_GOV03_G6U_HISTORICAL_UNKNOWN",
+    "ATOMICITY": "PASS",
+    "EXACT_CAUSAL_CODE_PATH_AND_TRIGGER": "PASS",
+    "MATHEMATICAL_OR_SPECIES_IDENTITY": "PASS",
+    "EXPECTED_DIFFERENCE_PREDECLARED": "PASS",
+    "BRANCH_ACTIVATION": "PASS",
+    "CONSERVATION_WHERE_APPLICABLE": "PASS",
+    "NON_INTERFERENCE": "PASS_WITH_PREDECLARED_LOCAL_PROCESS_EFFECT",
+    "RESIDUAL_UNCERTAINTY_EXPLICIT": "PASS",
+    "HISTORICAL_UNKNOWN_PRESERVED_WITHOUT_B2": "PASS",
+    "NO_NUMERICAL_STATE_RESTART_OR_PRODUCTION_SCOPE_CREEP": "PASS",
+    "ONE_GENUINELY_INDEPENDENT_SECOND_LINE_REVIEW": "PENDING_NOT_EXECUTED"
+  },
+  "natural_activation": {
+    "case": "Puitmijn_Cranendonck_60",
+    "unique_Case2_events": 9658,
+    "layers": [17, 18, 19, 20, 21, 22, 23]
+  },
+  "observed_process_effect": {
+    "max_abs_delta_Tomnpo_kg_m_minus_2_per_step": 1.0228664519933892e-14,
+    "max_abs_delta_Rekopo_kg_m_minus_3_d_minus_1": 9.327856586446364e-15,
+    "exactly_zero": false,
+    "Tier_A_excluded": true
+  },
+  "regression_surface": {
+    "eight_cases_successful": true,
+    "cases_with_normalized_scientific_differences": 1,
+    "affected_case": "Puitmijn_Cranendonck_60",
+    "expected_changed_files": ["ani_pLO.Bal", "ani_pTP.Bal", "bapoLO.Out", "bapoTP.Out", "message.out"],
+    "unexpected_changed_files": [],
+    "other_seven_cases_differences": 0
+  },
+  "historical_revision_53_behaviour": "UNKNOWN",
+  "historical_fidelity_claimed": false,
+  "scope": {
+    "TCD019": "EXCLUDED",
+    "TCD024": "EXCLUDED",
+    "TCD027": "EXCLUDED",
+    "other_stable_DOM_or_P_corrections": "EXCLUDED",
+    "production_source_modification": false,
+    "frozen_B0_modification": false,
+    "canonical_TCD_register_modification": false,
+    "B4": false,
+    "production_migration": false,
+    "central_RG05_update": false
+  },
+  "validation": {
+    "validator": "tools/validate_b3b05_tcd023.py",
+    "workflow": ".github/workflows/animo-b3b05-tcd023-readiness.yml",
+    "green_GitHub_Actions_required_before_review_handoff": true,
+    "green_GitHub_Actions_observed_for_current_status_head": false,
+    "green_workflow_run_id": null
+  },
+  "independent_review_handoff": {
+    "required_count": 1,
+    "issue_number": null,
+    "review_workunit": "ANIMO-B3B05R",
+    "state": "PLANNED_PENDING_GREEN",
+    "executed_in_this_context": false,
+    "same_authoring_context_may_sign": false
+  },
+  "next_after_independent_PASS": "PREFER_COMBINED_GOV04_TIER_B_DISPOSITION_AND_ADMISSION_CLOSEOUT_WORKUNIT",
+  "decision": "QUALIFIED_CLASS_B_ADMISSION_READINESS_NOT_ADMITTED"
+}
