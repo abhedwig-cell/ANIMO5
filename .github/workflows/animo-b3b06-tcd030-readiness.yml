@@ -1,0 +1,23 @@
+name: ANIMO-B3B06 TCD-030 readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3b06-tcd030-macropore-no3-validation-readiness
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify-readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate TCD-030 readiness evidence and branch matrix
+        run: python3 tools/validate_b3b06_tcd030.py
+      - name: Enforce atomic B3B06 scope
+        run: python3 tools/check_b3b06_tcd030_scope.py
