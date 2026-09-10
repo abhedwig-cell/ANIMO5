@@ -1,0 +1,193 @@
+{
+  "work_unit": "ANIMO-B3A03R2",
+  "review_type": "GENUINELY_SEPARATE_CHATGPT_CONTEXT_SECOND_LINE_R2",
+  "repository": "abhedwig-cell/ANIMO5",
+  "review_branch": "review/animo-b3a03r2-tcd018-independent-second-line",
+  "review_start_head": "4c92b27ed5bbcaadb0e703e622e8c3f690458fa8",
+  "target_tcd": "TCD-018",
+  "classification": "A_ACCOUNTING_REPORTING_ONLY",
+  "overall_result": "PASS_TCD018_INDEPENDENT_SECOND_LINE_R2_READINESS_REVIEW",
+  "separate_chatgpt_context_from_B3A03_B3A03E_B3D05_authoring": true,
+  "organizational_or_human_independence_claimed": false,
+  "review_evidence_only": true,
+  "B3_admission_performed": false,
+  "atomic_claim": "Bawa_Ddev_corrected = Bawa_Ddev_legacy - sum((Sict-Sic)*1000) over the active reporting period/control volume",
+  "reviewed_heads": {
+    "ANIMO-B3A03": "8eaaca34e4f0d906c2d8245f0df232586efe8ff3",
+    "ANIMO-B3A03R_same_context_evidence_only": "0876e6e1b6ce33ee5e7b812ab4107f54760d6b27",
+    "ANIMO-B3D05": "2f06cc86225637f8dadfdd969fe48dcf851b9ee2",
+    "previous_independent_review": "57cfdfb3a7fb982f6692b0b32f8c8aa044c57fd7",
+    "ANIMO-B3A03E": "4c92b27ed5bbcaadb0e703e622e8c3f690458fa8",
+    "ANIMO-GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "ANIMO-RG05B": "c353c3179f213c1bf24c48b3c06f8065c760d3e2",
+    "ANIMO-PREP06": "9b1f1ea51c24fb82823290193651830dc61ea3c8",
+    "ANIMO-SYNQ01": "842f72300fd03ede0b9024537a7ee6126722a121",
+    "ANIMO-MASSQ01": "6ccddd631a8dcc21f06b1384baf2561e81179e75"
+  },
+  "previous_review_history": {
+    "result": "FAIL_TCD018_INDEPENDENT_SECOND_LINE_READINESS_REVIEW",
+    "head": "57cfdfb3a7fb982f6692b0b32f8c8aa044c57fd7",
+    "historically_valid_for_previous_packet": true,
+    "overwritten_by_R2": false,
+    "scientific_falsification": false,
+    "failure_basis": "EVIDENCE_GRANULARITY_INSUFFICIENCY"
+  },
+  "frozen_B0": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "identity_gate": "PASS"
+  },
+  "artifact_blob_shas": {
+    "integration/animo-b3/TCD018_25_PERIOD_RECONCILIATION.csv": "a8513296e856c716ee1c53d839920d089f92492f",
+    "integration/animo-b3/TCD018_EIGHT_CASE_RUN_LEDGER.json": "49e0fb498a1e6324290c533aad20485be07d27d5",
+    "integration/animo-b3/tcd018_output_digest_ledger/CranGrass.csv": "52b99da183c20b517a26bd9059da8bc4bc10bd5a",
+    "integration/animo-b3/tcd018_output_digest_ledger/part2.csv": "bd238a6c8c3d20c607535d959be4849d860bcfa3",
+    "integration/animo-b3/tcd018_output_digest_ledger/part3.csv": "749c9a2ad62325702a1578da1db602cf2e554a2a",
+    "integration/animo-b3/tcd018_output_digest_ledger/part4.csv": "59450584b6339c4c001f6d39f98f6f2a7fa3604d",
+    "integration/animo-b3/TCD018_EVIDENCE_REMEDIATION_MANIFEST.json": "e2500475578f6bbd6034c268774ac5f606a91bbd",
+    "integration/animo-b3/ANIMO-B3A03E_STATUS.json": "e931dacc6d22c4dc2eb3478f739b92a041c8b81a",
+    "tools/build_tcd018_reporting_candidate.py": "e52cb88299236aa06ba4b7fd7d8f20705cf7ec14",
+    "integration/animo-b3/TCD018_SOURCE_SEAM_PIN.json": "cbc68024db6b649370ffe55a55b2a2de346ac2d2",
+    "docs/prep06/CONSERVED_STATE_INVENTORY.csv": "838f224fc67a72371437c6d5b6e75cd03f5c8d51",
+    "docs/prep06/PROCESS_CONSERVATION_IDENTITIES.md": "f0e9bfe0432cc7651f3421eccaef472111f36721",
+    "integration/animo-synthetic/SYNTHETIC_ORACLE_REGISTER.json": "4c215d19844614de8868380fb03f93268ea4c5d8",
+    "integration/animo-mass/MASSLEDGER_RESIDUAL_REGISTER.csv": "356cea3db7818905a8fb173af7df6fb0d42fa494",
+    "tools/compare_legacy_output_trees.py": "0b5928184ffef38caf1f8040f47fa4ea5366c62f",
+    "integration/animo-b3/TCD018_INDEPENDENT_REVIEW_RESULT.json": "a98b2d094890f9f88587b0b6c196d850ed5fe88f"
+  },
+  "independent_period_audit": {
+    "rows": 25,
+    "first_year": 1991,
+    "last_year": 2015,
+    "contiguous": true,
+    "records_per_period": 36,
+    "total_hydrology_probe_records": 900,
+    "final_tito": 9131,
+    "arithmetic_recomputed_from_rows": true,
+    "scientific_acceptance_tolerance_used": false,
+    "discriminator_2008": {
+      "start_tito_exclusive": 6209,
+      "end_tito": 6575,
+      "legacy_bawadv_formatted_mm": -0.060100000000000001,
+      "hydro_badev_sum_raw_mm": -5.2640587582358024e-05,
+      "interception_storage_change_sum_raw_mm": -0.059999999999999984,
+      "reconstructed_legacy_raw_mm": -0.060052640587582341,
+      "fresh_candidate_bawadv_formatted_mm": -5.2599999999999998e-05
+    }
+  },
+  "independent_eight_case_audit": {
+    "cases": 8,
+    "run_records": 16,
+    "all_run_completion_records_successful": true,
+    "unique_case_path_rows": 376,
+    "classification_totals": {
+      "EQUAL_RAW": 270,
+      "EQUAL_DECLARED_VOLATILE_NORMALIZATION_ONLY": 100,
+      "DIFFERENT_WHITELISTED": 6,
+      "unexpected": 0
+    },
+    "case_output_counts": {
+      "CranGrass": 31,
+      "CranMais": 23,
+      "GrassPeat": 60,
+      "LWKM_gras_1040.2021.2045": 53,
+      "Puitmijn_Cranendonck_60": 77,
+      "RuurloGrass": 72,
+      "STONE_akk_0006.2001.2015": 44,
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA": 16
+    },
+    "different_case": "LWKM_gras_1040.2021.2045",
+    "exact_whitelist": [
+      "ani_waGP.Bal",
+      "ani_waRP.Bal",
+      "ani_waTP.Bal",
+      "bawaGP.Out",
+      "bawaRP.Out",
+      "bawaTP.Bal_DOES_NOT_EXIST"
+    ],
+    "exact_whitelist_canonical": [
+      "ani_waGP.Bal",
+      "ani_waRP.Bal",
+      "ani_waTP.Bal",
+      "bawaGP.Out",
+      "bawaRP.Out",
+      "bawaTP.Out"
+    ],
+    "scientific_numeric_tolerance_applied": false,
+    "normalization_scope": [
+      "file_creation_timestamp",
+      "output_run_start_timestamp",
+      "message_run_start_timestamp",
+      "message_run_end_timestamp",
+      "elapsed_cpu_seconds"
+    ],
+    "candidate_executable_sha256": "c1e281d5ceaa45952dc7ee21041454fbfab5bee34aa8aee09d59604b75826bbe"
+  },
+  "noninterference_basis": {
+    "state_trajectory": "PASS_BOUNDED_STATIC_WRITE_SET_PRIMARY_DIGEST_CORROBORATION_SECONDARY",
+    "flux_trajectory": "PASS_BOUNDED_STATIC_WRITE_SET_PRIMARY_DIGEST_CORROBORATION_SECONDARY",
+    "not_inferred_from_output_equality_alone": true,
+    "candidate_added_writes": [
+      "Tcd018IcCu reporting accumulator",
+      "Bawa(Ddev) reporting deviation"
+    ],
+    "candidate_assigns_Sic_or_Sict": false,
+    "candidate_modifies_hydrology_or_process_flux_assignment": false
+  },
+  "gates": {
+    "1_frozen_B0_identity": "PASS",
+    "2_Sic_Sict_ownership_lifecycle": "PASS",
+    "3_Hydro_detailed_storage_term": "PASS",
+    "4_Outbal_calc_Bawa_omission": "PASS",
+    "5_atomic_Class_A_reporting_only": "PASS",
+    "6_natural_LWKM_activation": "PASS",
+    "7_PREP06_conservation_identity": "PASS",
+    "8_SYNQ_O003_oracle_only_never_B2": "PASS",
+    "9_0_0601_mm_evidence_not_tolerance": "PASS",
+    "10_MASSQ01_CranGrass_TITO724_residual_visible_outside_TCD018": "PASS",
+    "11_no_global_water_closure_claim": "PASS",
+    "12_historical_revision53_behaviour_UNKNOWN": "PASS",
+    "13_GOV03_B3D05_route_live": "PASS",
+    "14_former_gate8_full_25_period_reconciliation": "PASS",
+    "15_former_gate10_isolated_run_provenance_and_digest_semantics": "PASS",
+    "16_former_gate11_counts_independently_auditable": "PASS",
+    "17_former_gate13_physical_state_trajectory_noninterference": "PASS",
+    "18_former_gate14_process_hydrology_flux_trajectory_noninterference": "PASS",
+    "19_former_gate15_nonwater_reporting_unchanged": "PASS"
+  },
+  "residual_boundaries": {
+    "LWKM_approximately_0_0601_mm": "CAUSAL_EVIDENCE_NOT_TOLERANCE",
+    "MASSQ01_CranGrass_TITO724_mm": -0.0030198960466805147,
+    "MASSQ01_CranGrass_TITO724_class": "UNEXPLAINED_RESIDUAL",
+    "global_water_closure_claimed": false
+  },
+  "historical_route": {
+    "qualified_B2_exists": false,
+    "historical_revision53_behaviour": "UNKNOWN",
+    "GOV03_G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "TCD018_admitted": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "canonical_tcd_register_modified": false,
+    "hydrology_physics_modified": false,
+    "hydrology_state_modified": false,
+    "hydrology_flux_modified": false,
+    "forcing_modified": false,
+    "state_promotion_modified": false,
+    "swap_swat_payload_modified": false,
+    "testcase_scientific_inputs_modified": false,
+    "B4_admitted": false,
+    "production_migration_admitted": false,
+    "B3_admission_performed": false
+  },
+  "validation": {
+    "validator": "tools/validate_tcd018_independent_r2_review.py",
+    "workflow": ".github/workflows/animo-tcd018-independent-r2-review.yml",
+    "state": "PENDING",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "conclusion": null,
+    "scope_guard": "PENDING"
+  }
+}
