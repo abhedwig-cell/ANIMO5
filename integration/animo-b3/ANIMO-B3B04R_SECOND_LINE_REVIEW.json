@@ -1,0 +1,181 @@
+{
+  "workunit": "ANIMO-B3B04R",
+  "title": "Independent Second-Line Review of TCD-040 Layer-0 Aqueous Restart Identity",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "review/animo-b3b04r-tcd040-independent-second-line",
+  "target": "TCD-040",
+  "class": "B_LOCAL_RESTORE_INITIALIZATION_IDENTITY",
+  "review_kind": "GENUINELY_INDEPENDENT_SECOND_LINE_FAIL_CLOSED",
+  "starting_head_verified": "4cc782986faf3d3af829f2e16142dd7f8622c6ac",
+  "authorities": {
+    "B3B04": "19e38ae0dfc211e88fe782b4b7d6e42b1b7f5865",
+    "B3D11": "4cc782986faf3d3af829f2e16142dd7f8622c6ac",
+    "RG05D": "f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "STATEQ01": "4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "STATEQ02": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "B3I04": "400b7cd79f89043e091751707dfa96537587dcf6",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c"
+  },
+  "issue35": {
+    "read_before_writing": true,
+    "comments_read_before_writing": true,
+    "comment_count_at_review_start": 0
+  },
+  "frozen_b0": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "hash_files_rechecked": true,
+    "raw_source_archive_accessible_in_repository": false,
+    "raw_testbank_archive_accessible_in_repository": false,
+    "raw_b0_bytes_newly_reinspected_in_this_review": false
+  },
+  "atomic_scope": {
+    "coordinates": [
+      ["Conh(0)", "Rsconh(0)"],
+      ["Coni(0)", "Rsconi(0)"],
+      ["Codiorma(0)", "Rscodiorma(0)"],
+      ["Codiorni(0)", "Rscodiorni(0)"],
+      ["Codiorpo(0)", "Rscodiorpo(0)"]
+    ],
+    "Copo0_negative_control_excluded": true,
+    "TCD016_out_of_scope": true
+  },
+  "independent_checks": {
+    "source_ownership_call_order": {
+      "result": "PASS_PRE_B3_INDEPENDENT_SOURCE_AUDIT_CROSSCHECK",
+      "pre_b3_evidence": [
+        "docs/prep01/PROCESS_DATAFLOW_INVENTORY.md",
+        "docs/state/LAYER0_RESTART_INITIALIZATION_FINDING.md",
+        "docs/state/CHECKPOINT_COMPLETENESS_CONTRACT.md"
+      ],
+      "destructive_seam": "Inicalc.for:125-129",
+      "five_assignments_exactly_bounded": true,
+      "raw_b0_byte_reinspection_available": false
+    },
+    "natural_grasspeat_activation": {
+      "result": "PARTIAL_BLOCKED",
+      "independently_crosschecked_nonzero": ["Conh(0)", "Coni(0)", "Codiorma(0)", "Codiorni(0)", "Copo(0)"],
+      "Codiorpo0_nonzero_only_available_from_B3B04_summary_in_this_repository_context": true,
+      "all_five_target_raw_testcase_values_independently_reinspected": false,
+      "blocker": "raw testbank ZIP is not retained in GitHub"
+    },
+    "split282": {
+      "result": "PARTIAL_BLOCKED",
+      "recorded_accepted_values": {
+        "NH4": 0.0008977310061221382,
+        "NO3": 0.000008767359689234193,
+        "DOM": 0.004381575788713558,
+        "DON": 0.00012267733059957502,
+        "DOP": 0.000012267733059957505
+      },
+      "independently_regenerated_little_endian_ieee754_hex": {
+        "NH4": "d154eca7b66a4d3f",
+        "NO3": "9cea8abdf062e23e",
+        "DOM": "f8c17a4b6af2713f",
+        "DON": "b4e1ea3e5e14203f",
+        "DOP": "bb02ab6430bae93e"
+      },
+      "raw_hex_mapping_match": true,
+      "independent_trace_arithmetic": {
+        "records_per_step": 2,
+        "split": 282,
+        "accepted_prefix_records": 564,
+        "records_total_claimed": 1800,
+        "post_split_records": 1236,
+        "arithmetic_consistent": true
+      },
+      "STATEQ02_zero_path_crosscheck": {
+        "split67_exact_remaining_records": 833,
+        "split282_rejected_before_checkpoint": true,
+        "split282_is_not_TCD040_qualification": true
+      },
+      "B3B04_workflow_artifacts_count": 0,
+      "B3B04_replay_harness_persisted": false,
+      "checkpoint_payload_persisted": false,
+      "full_trace_payloads_persisted": false,
+      "full_1800_record_nonzero_path_reexecuted": false,
+      "first_divergence_step283_phase0_layer0_independently_replayed": false,
+      "corrected_restore_full_trace_exactness_independently_replayed": false,
+      "split67_1800_record_zero_control_independently_replayed": false,
+      "blocker": "summary metadata can be cross-checked, but underlying nonzero-path executable evidence is not retained for independent replay"
+    },
+    "formatted_restart_contract": {
+      "result": "PARTIAL_BLOCKED",
+      "user_guide_pdf_directly_reinspected": false,
+      "user_guide_pdf_not_republished_in_repository": true,
+      "formatted_vs_raw_boundary_independently_supported": true,
+      "INITIAL_OUT_is_raw_byte_atomic_checkpoint": false,
+      "blocker": "direct cited user-guide contract cannot be newly inspected through the repository"
+    },
+    "GOV03_route": {
+      "result": "PASS",
+      "B2_status": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+      "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+      "historical_behaviour": "UNKNOWN",
+      "historical_fidelity_claimed": false,
+      "historical_prevalence_claimed": false,
+      "historical_intent_claimed": false
+    },
+    "restore_discriminator": {
+      "result": "PASS_SEMANTIC_TWO_STATE_CONTROL_PLANE_INTENT",
+      "allowed_semantic_states": ["COLD_START", "RESTORE_ACCEPTED_LAYER0_AQUEOUS_STATE"],
+      "semantic_partition_sufficient": true,
+      "semantic_partition_minimal_for_atomic_seam": true,
+      "exact_enum_spelling_claimed_as_only_possible_API_encoding": false,
+      "restore_capable_entrypoint_requires_explicit_recognized_value": true,
+      "physical_state_coordinate_required": false,
+      "heuristic_inference_allowed": false,
+      "forbidden_inference_inputs": ["nonzero state", "filename", "date", "ponding", "scientific input", "physical/model state"]
+    },
+    "atomic_seam": {
+      "result": "PASS_BOUNDED_SEAM_NO_SCIENTIFIC_DEPENDENCY_EXPANSION",
+      "seam": "Inicalc.for:125-129 five destructive assignments only",
+      "COLD_START": "retain existing five zero assignments exactly",
+      "RESTORE_ACCEPTED_LAYER0_AQUEOUS_STATE": "preserve the five already restored current-owner values across this seam",
+      "other_Inicalc_initialization_conditionalized": false,
+      "Copo0_changed": false,
+      "unconditional_zero_assignment_deletion_qualified": false,
+      "whole_model_checkpoint_dependency_required_for_atomic_semantics": false,
+      "new_physical_state_required": false
+    },
+    "dependency_expansion": {
+      "result": "PASS_NO_REQUIRED_SCIENTIFIC_SCOPE_EXPANSION",
+      "required_dependencies": [],
+      "not_required_for_atomic_semantics": ["additional model state", "whole-model checkpoint completeness", "crop state", "TCD-016", "PO4", "hydrology", "macropores", "GHG", "numerical policy", "broader restart redesign"],
+      "invocation_precondition": "caller provides the five accepted current-owner values and explicit restore intent"
+    }
+  },
+  "review_disposition": "FAIL_CLOSED_INDEPENDENT_EVIDENCE_REPLAY_INCOMPLETE",
+  "review_pass": false,
+  "scientific_claim_rejected_as_false": false,
+  "canonical_disposition_after_review": "UNRESOLVED_NOT_ADMITTED",
+  "recommend_formal_admission_workunit": false,
+  "exact_blocker": "Required second-line checks of the nonzero split-282 campaign and direct documentation contract cannot be independently replayed from GitHub: raw B0 archives are absent, B3B04 persists no checkpoint/trace artifacts or regeneration harness, its Actions run has zero artifacts, and the cited user-guide PDF is not repository-accessible.",
+  "reconsideration_condition": "make a provenance-pinned independently runnable TCD-040 evidence bundle available and repeat the second-line review",
+  "hard_boundaries": {
+    "production_source_patched": false,
+    "B4_started": false,
+    "other_TCDs_composed": false,
+    "whole_model_checkpoint_qualified": false,
+    "canonical_STATE_admitted": false,
+    "central_regie_updated": false,
+    "historical_UNKNOWN_converted_to_fidelity": false
+  },
+  "validation": {
+    "validator": "tools/b3b04r/validate_b3b04r.py",
+    "workflow": ".github/workflows/animo-b3b04r-tcd040-second-line.yml",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "workunit_complete": false
+  }
+}

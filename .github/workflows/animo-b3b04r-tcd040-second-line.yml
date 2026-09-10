@@ -1,0 +1,49 @@
+name: ANIMO-B3B04R TCD040 independent second-line review
+
+on:
+  push:
+    branches:
+      - review/animo-b3b04r-tcd040-independent-second-line
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-b3b04r:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate fail-closed second-line review package
+        run: python tools/b3b04r/validate_b3b04r.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              "docs/b3/TCD040_INDEPENDENT_SECOND_LINE_REVIEW.md",
+              "integration/animo-b3/ANIMO-B3B04R_SECOND_LINE_REVIEW.json",
+              "tools/b3b04r/validate_b3b04r.py",
+              ".github/workflows/animo-b3b04r-tcd040-second-line.yml",
+          }
+          base = "4cc782986faf3d3af829f2e16142dd7f8622c6ac"
+          changed = set(subprocess.check_output(
+              ["git", "diff", "--name-only", f"{base}..HEAD"], text=True
+          ).splitlines())
+          unexpected = changed - allowed
+          missing = allowed - changed
+          if unexpected:
+              raise SystemExit("FAIL_B3B04R_SCOPE_GUARD unexpected files: " + ", ".join(sorted(unexpected)))
+          if missing:
+              raise SystemExit("FAIL_B3B04R_SCOPE_GUARD missing review files: " + ", ".join(sorted(missing)))
+          print("PASS_B3B04R_SCOPE_GUARD")
+          PY
