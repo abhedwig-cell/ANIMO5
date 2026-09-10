@@ -3,15 +3,15 @@
   "title": "TCD-038 Crop Actual Uptake Restart Initialization Atomic B3 Admission",
   "branch": "work/animo-b3d20-tcd038-gov04-tier-c-admission",
   "target": "TCD-038",
-  "state": "PENDING_FINAL_HEAD_MACHINE_VALIDATION",
+  "state": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
   "decision": "ADMIT_TCD038_ATOMIC_CROP_ACTUAL_UPTAKE_RESTART_INITIALIZATION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_C",
   "target_state_after_green_final_head": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
   "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "b3_qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
   "gov04_risk_tier": "C",
   "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
-  "admitted": false,
-  "qualified": false,
+  "admitted": true,
+  "qualified": true,
   "production_authorized": false,
   "aggregate_at_start": "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
   "readiness_authority": "ANIMO-B3B09@1b47d6b2e422463b557a48355ad8b4f5bed70ebc",
@@ -34,15 +34,15 @@
     "historical_fidelity_claimed": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-B3D20 TCD-038 Tier-C atomic B3 admission",
-    "run_id": null,
-    "job_id": null,
-    "evidence_head": null,
-    "conclusion": null,
-    "validator": null,
-    "scope_guard": null,
-    "closeout_note": "The admission decision is persisted but is not a qualified B3 admission until the complete package is green and the resulting status-only final head passes the same workflow."
+    "run_id": 34533327281,
+    "job_id": 103059030041,
+    "evidence_head": "8d4b9239adbc8d6bd8c29a36db0e8e42448de9cd",
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34533327281 validates the complete B3D20 admission package at evidence head 8d4b9239adbc8d6bd8c29a36db0e8e42448de9cd. This status-only closeout must pass the same workflow on its own exact final head before the admission is treated as qualified."
   },
   "stop_condition": "STOP_AFTER_FINAL_QUALIFIED_ATOMIC_ADMISSION_NO_RG05H"
 }
