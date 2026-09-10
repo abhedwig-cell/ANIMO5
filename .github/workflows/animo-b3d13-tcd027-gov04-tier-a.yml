@@ -1,0 +1,60 @@
+name: ANIMO-B3D13 TCD027 GOV04 Tier-A admission
+
+on:
+  push:
+    branches:
+      - work/animo-b3d13-tcd027-gov04-tier-a-admission
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-b3d13:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reverify committed frozen source evidence
+        run: python tools/extract_verify_tcd027_frozen_b0.py
+
+      - name: Revalidate B3A01E source-evidence packet
+        run: python tools/validate_b3a01e_tcd027_evidence.py
+
+      - name: Validate GOV04 Tier-A waiver and TCD-027 admission
+        run: python tools/validate_b3d13_tcd027_gov04_tier_a.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=5232ef5fa6daafa2296401b19fd9e866a34152bd
+          git cat-file -e "${base}^{commit}"
+          mapfile -t changed < <(git diff --name-only "${base}...HEAD")
+          printf 'B3D13 changed files:\n%s\n' "${changed[*]}"
+          allowed='^(docs/b3/TCD027_GOV04_TIER_A_TECHNICAL_ADMISSION\.md|integration/animo-b3/TCD027_GOV04_TIER_A_WAIVER_AUDIT\.json|integration/animo-b3/TCD027_B3_ADMISSION_CLOSEOUT_GOV04\.json|integration/animo-b3/ANIMO-B3D13_STATUS\.json|tools/validate_b3d13_tcd027_gov04_tier_a\.py|\.github/workflows/animo-b3d13-tcd027-gov04-tier-a\.yml)$'
+          bad=0
+          for path in "${changed[@]}"; do
+            if [[ ! "$path" =~ $allowed ]]; then
+              echo "UNEXPECTED_B3D13_PATH: $path"
+              bad=1
+            fi
+          done
+          if [[ ${#changed[@]} -ne 6 ]]; then
+            echo "EXPECTED_EXACTLY_6_B3D13_DELIVERABLES_GOT_${#changed[@]}"
+            bad=1
+          fi
+          if git diff --name-only "${base}...HEAD" | grep -Eq '(^|/)(src|source|production)/|CANONICAL_TCD|TCD_REGISTER|\.for$'; then
+            echo 'Production/frozen Fortran source or canonical TCD register change detected'
+            bad=1
+          fi
+          if [[ $bad -ne 0 ]]; then
+            exit 1
+          fi
+          echo PASS_B3D13_SCOPE_GUARD
