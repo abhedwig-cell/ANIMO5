@@ -9,8 +9,8 @@
     "ancestor_rg05c": "2d3cc363599ed32b6537f318462c27db5ffaa7c2"
   },
   "governance_only": true,
-  "state": "IN_PROGRESS_PERSISTED_FOURTH_B3_ADMISSION_INTEGRATION_VALIDATION_PENDING",
-  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "state": "QUALIFIED_POST_RG05C_FOURTH_ATOMIC_B3_ADMISSION_INTEGRATION_NO_PRODUCTION_MIGRATION",
+  "decision": "QUALIFIED_POST_RG05C_FOURTH_ATOMIC_B3_ADMISSION_INTEGRATION_NO_PRODUCTION_MIGRATION",
   "authority": {
     "RG05C": "2d3cc363599ed32b6537f318462c27db5ffaa7c2",
     "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
@@ -56,19 +56,20 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "validation": {
     "validator": "tools/validate_rg05d_fourth_b3_admission.py",
     "workflow": ".github/workflows/animo-rg05d-fourth-b3-admission.yml",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_job_id": null,
-    "github_actions_conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "305e95b73386496970118ea2c3862fb0e9936955",
+    "github_actions_run_id": 34448169918,
+    "github_actions_job_id": 102777504476,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS_RG05D_FOURTH_B3_ADMISSION_INTEGRATION",
+    "scope_guard": "PASS_RG05D_SCOPE_GUARD",
+    "closeout_note": "Run 34448169918 validates the complete persisted RG05D package before this status closeout commit; this closeout commit must pass the same workflow independently."
   },
   "deliverables": [
     "docs/governance/ANIMO_RG05D_FOURTH_B3_ADMISSION_REGIE.md",
