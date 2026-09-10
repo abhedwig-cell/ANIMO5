@@ -1,0 +1,81 @@
+{
+  "work_unit": "ANIMO-RG05D",
+  "title": "Post-RG05C Fourth Atomic B3 Admission Integration",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-rg05d-fourth-b3-admission-integration",
+  "base": {
+    "work_unit": "ANIMO-B3D08",
+    "head": "cc280b630d6dc0d6bc1b8b0783ccfa4f91e15624",
+    "ancestor_rg05c": "2d3cc363599ed32b6537f318462c27db5ffaa7c2"
+  },
+  "governance_only": true,
+  "state": "IN_PROGRESS_PERSISTED_FOURTH_B3_ADMISSION_INTEGRATION_VALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "authority": {
+    "RG05C": "2d3cc363599ed32b6537f318462c27db5ffaa7c2",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3D08": "cc280b630d6dc0d6bc1b8b0783ccfa4f91e15624",
+    "B3A04R2": "767779127d092c54a298e2f76a21d544e9af9895",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "canonical_tcd_register_tail": "TCD-042"
+  },
+  "admission_state": {
+    "scientific_admissions": 4,
+    "admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026"],
+    "tcd026_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+    "tcd026_decision": "ADMIT_TCD026_ATOMIC_CLASS_A_SCIENTIFIC_ACCOUNTING_CORRECTION_WITH_HISTORICAL_UNCERTAINTY",
+    "b3_whole_model_baseline_complete": false,
+    "b4_baseline_admitted": false,
+    "production_migration_admitted": false,
+    "production_code_modified": false,
+    "legacy_source_modified": false,
+    "frozen_testcase_modified": false,
+    "canonical_tcd_register_modified": false,
+    "evidence_strength_promoted_by_integration": false
+  },
+  "queue_state": {
+    "canonical_tcd_entries": 25,
+    "active_queue_entries": 21,
+    "scientific_admissions": 4,
+    "READY_FOR_ADMISSION_READINESS": 4,
+    "IN_PROGRESS_ADMISSION_READINESS": 0,
+    "WAITING_ON_ROUTE_AND_REVIEW": 3,
+    "WAITING_ON_THEORY": 4,
+    "WAITING_ON_NUMERICS": 2,
+    "WAITING_ON_STATE": 5,
+    "WAITING_ON_RUNTIME": 2,
+    "WAITING_ON_CHILDREN": 1,
+    "NOT_READY": 0
+  },
+  "gate_snapshot": {
+    "G7": "FOUR_ATOMIC_SCIENTIFIC_ADMISSIONS_B3_INCOMPLETE",
+    "TCD026": "ADMITTED_ATOMIC_CLASS_A_WITH_HISTORICAL_UNCERTAINTY",
+    "B4": "NOT_ADMITTED",
+    "PRODUCTION": "NOT_ADMITTED"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "validation": {
+    "validator": "tools/validate_rg05d_fourth_b3_admission.py",
+    "workflow": ".github/workflows/animo-rg05d-fourth-b3-admission.yml",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_job_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "deliverables": [
+    "docs/governance/ANIMO_RG05D_FOURTH_B3_ADMISSION_REGIE.md",
+    "integration/animo-reg/RG05D_B3_ADMISSION_INVENTORY.json",
+    "integration/animo-reg/RG05D_B3_QUEUE_DELTA.json",
+    "integration/animo-reg/ANIMO-RG05D_STATUS.json",
+    "tools/validate_rg05d_fourth_b3_admission.py",
+    ".github/workflows/animo-rg05d-fourth-b3-admission.yml"
+  ]
+}
