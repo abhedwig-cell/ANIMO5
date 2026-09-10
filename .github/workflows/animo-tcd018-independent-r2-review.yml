@@ -1,0 +1,59 @@
+name: ANIMO TCD018 independent R2 review
+
+on:
+  push:
+    branches:
+      - review/animo-b3a03r2-tcd018-independent-second-line
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate independent R2 review
+        run: python3 tools/validate_tcd018_independent_r2_review.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=4c92b27ed5bbcaadb0e703e622e8c3f690458fa8
+          mapfile -t changed < <(git diff --name-only "${base}..HEAD")
+          printf '%s\n' "${changed[@]}"
+
+          allowed() {
+            case "$1" in
+              docs/b3/TCD018_INDEPENDENT_SECOND_LINE_R2_REVIEW.md) return 0 ;;
+              integration/animo-b3/TCD018_INDEPENDENT_R2_REVIEW_RESULT.json) return 0 ;;
+              tools/validate_tcd018_independent_r2_review.py) return 0 ;;
+              .github/workflows/animo-tcd018-independent-r2-review.yml) return 0 ;;
+              *) return 1 ;;
+            esac
+          }
+
+          for path in "${changed[@]}"; do
+            if ! allowed "$path"; then
+              echo "FAIL_R2_SCOPE_GUARD unexpected path: $path" >&2
+              exit 1
+            fi
+            case "$path" in
+              src/*|source/*|production/*)
+                echo "FAIL_R2_SCOPE_GUARD production/source path: $path" >&2
+                exit 1
+                ;;
+            esac
+            upper=$(printf '%s' "$path" | tr '[:lower:]' '[:upper:]')
+            if [[ "$upper" == *TCD_REGISTER* ]]; then
+              echo "FAIL_R2_SCOPE_GUARD canonical TCD register path: $path" >&2
+              exit 1
+            fi
+          done
+
+          echo PASS_TCD018_INDEPENDENT_SECOND_LINE_R2_SCOPE_GUARD
