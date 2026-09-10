@@ -3,13 +3,34 @@
   "title": "HETOP Zero-Thickness Intended Model Semantics and Applicability Qualification",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-ubq04-hetop-zero-model-semantics",
-  "status": "IN_PROGRESS_PERSISTED_THEORY_RECONCILIATION_PENDING",
+  "status": "QUALIFIED_HETOP_ZERO_SEMANTIC_NONUNIQUENESS_NO_MODEL_POLICY_SELECTED",
   "base": {
     "work_unit": "ANIMO-B3I06",
     "head": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
     "decision": "QUALIFIED_UBQ03_INCREMENTAL_INTAKE_RUNTIME_INPUT_DOMAIN_HAZARD_NO_NEW_TCD_NO_ADMISSION"
   },
   "goal": "Determine whether the available ANIMO 4.0 documentation, revision-53 source and supplied testbank uniquely define HETOP=0 as an intended model state, a conditional sentinel, or an invalid endpoint. Fail closed if intent is not uniquely recoverable.",
+  "qualified_findings": {
+    "ANIMO40_table_defines_HETOP_as_virtual_addition_reservoir_thickness": true,
+    "documented_range_includes_zero": true,
+    "zero_endpoint_semantics_explicitly_defined": false,
+    "worked_example_narrative_conflicts_with_table_input_order": true,
+    "revision53_parser_reads_Hetop_then_He0": true,
+    "revision53_explicit_zero_sentinel_branch_found": false,
+    "positive_flow_zero_capacity_limit_unique": true,
+    "global_zero_thickness_concentration_semantics_unique": false,
+    "NQ03_small_P_policy_extendable_to_Hetop_zero": false,
+    "zero_thickness_policy_selected": false
+  },
+  "validation": {
+    "tested_head": "6a6a700248e85ba7ac0251ca834ff67718d379a2",
+    "github_actions_run_id": 34449208844,
+    "job_id": 102780793754,
+    "workflow_conclusion": "success",
+    "parse_persisted_json": "PASS",
+    "compile_validator": "PASS",
+    "qualification_and_scope_validator": "PASS"
+  },
   "scope_guards": {
     "production_source_modified": false,
     "input_validation_modified": false,
@@ -24,8 +45,21 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
-  }
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
+  },
+  "decision": "QUALIFIED_HETOP_ZERO_SEMANTIC_NONUNIQUENESS_NO_MODEL_POLICY_SELECTED",
+  "deliverables": [
+    "docs/numerics/HETOP_ZERO_MODEL_SEMANTICS_QUALIFICATION.md",
+    "integration/animo-science/UBQ04_HETOP_ZERO_SEMANTICS.json",
+    "integration/animo-science/ANIMO-UBQ04_STATUS.json",
+    "tools/ubq04/validate_ubq04.py",
+    ".github/workflows/animo-ubq04-hetop-zero-semantics.yml"
+  ],
+  "recommended_next": [
+    "Acquire controlled full text of Alterra Report 983 and inspect it specifically for addition-reservoir equations and zero-thickness semantics.",
+    "Recover ANIMO 3.5 or early 4.0 source/input lineage to determine whether the inclusive zero lower bound was intentional, inherited or accidental.",
+    "If no authoritative endpoint semantics can be recovered, keep HETOP=0 outside B3/B4 admission rather than inventing a production policy."
+  ]
 }
