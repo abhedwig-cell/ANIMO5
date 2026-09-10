@@ -1,0 +1,36 @@
+name: ANIMO-B3B05 TCD-023 readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3b05-tcd023-stable-dom-p-partition-readiness
+  pull_request:
+    paths:
+      - 'docs/b3/TCD023_CLASS_B_ADMISSION_READINESS.md'
+      - 'integration/animo-b3/ANIMO-B3B05_STATUS.json'
+      - 'integration/animo-b3/TCD023_*.json'
+      - 'tools/validate_b3b05_tcd023.py'
+      - 'tools/guard_b3b05_tcd023_scope.py'
+      - '.github/workflows/animo-b3b05-tcd023-readiness.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse ANIMO-B3B05 JSON evidence
+        run: |
+          python -m json.tool integration/animo-b3/ANIMO-B3B05_STATUS.json >/dev/null
+          python -m json.tool integration/animo-b3/TCD023_UPSTREAM_EVIDENCE.json >/dev/null
+          python -m json.tool integration/animo-b3/TCD023_READINESS_FIXTURE.json >/dev/null
+          python -m json.tool integration/animo-b3/TCD023_EXPECTED_DIFFERENCE.json >/dev/null
+          python -m json.tool integration/animo-b3/TCD023_INDEPENDENT_RECHECK.json >/dev/null
+      - name: Run fail-closed TCD-023 readiness validator
+        run: python tools/validate_b3b05_tcd023.py
+      - name: Guard atomic TCD-023 readiness scope
+        run: python tools/guard_b3b05_tcd023_scope.py
