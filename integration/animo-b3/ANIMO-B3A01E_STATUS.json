@@ -10,32 +10,34 @@
   "formal_disposition_head": "a7b11b334f8b2604d5036edc04365006800944e0",
   "gov03_head": "cbd262bdabe92923113b7326f2f42822ce9a971c",
   "b3q01_head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
-  "state": "PERSISTED_TCD027_FROZEN_B0_SOURCE_EVIDENCE_REMEDIATION_VALIDATION_PENDING",
-  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "state": "QUALIFIED_TCD027_FROZEN_B0_SOURCE_EVIDENCE_REMEDIATION_READY_FOR_NEW_SECOND_LINE_NO_ADMISSION",
+  "decision": "QUALIFIED_TCD027_FROZEN_B0_SOURCE_EVIDENCE_REMEDIATION_READY_FOR_NEW_SECOND_LINE_NO_ADMISSION",
   "historical_behaviour": "UNKNOWN",
   "evidence_remediation": {
-    "R1_DUM_LOCAL_CONSTRUCTION": "PERSISTED_PENDING_VALIDATION",
-    "R2_OUTBAL_WRITE_SLOT24_27_MAPPING": "PERSISTED_PENDING_VALIDATION",
-    "R3_P_SLOT25_26_27_SELF_ACCUMULATORS": "PERSISTED_PENDING_VALIDATION",
-    "scope_minimized_exact_source_neighbourhood_bytes": "PERSISTED_IN_MANIFEST_BASE64_PENDING_VALIDATION"
+    "R1_DUM_LOCAL_CONSTRUCTION": "PERSISTED_AND_STRUCTURALLY_VALIDATED",
+    "R2_OUTBAL_WRITE_SLOT24_27_MAPPING": "PERSISTED_AND_STRUCTURALLY_VALIDATED",
+    "R3_P_SLOT25_26_27_SELF_ACCUMULATORS": "PERSISTED_AND_STRUCTURALLY_VALIDATED",
+    "scope_minimized_exact_source_neighbourhood_bytes": "PERSISTED_AND_STRUCTURALLY_VALIDATED"
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "validation": {
     "extract_verify_tool": "tools/extract_verify_tcd027_frozen_b0.py",
     "validator": "tools/validate_b3a01e_tcd027_evidence.py",
     "workflow": ".github/workflows/animo-b3a01e-tcd027-evidence-remediation.yml",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_conclusion": "PENDING",
-    "source_evidence_verifier_result": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "6d644766ad43fd931a6f857e5ddfc089f85fffe4",
+    "github_actions_run_id": 34459645368,
+    "github_actions_conclusion": "success",
+    "source_evidence_verifier_result": "PASS_B3A01E_COMMITTED_FROZEN_SOURCE_NEIGHBOURHOOD_BYTES",
+    "validator_result": "PASS_B3A01E_TCD027_FROZEN_B0_SOURCE_EVIDENCE_REMEDIATION",
+    "scope_guard": "PASS_B3A01E_SCOPE_GUARD",
+    "github_actions_job_id": 102814146265,
+    "closeout_note": "Run 34459645368 validates the complete persisted B3A01E evidence-remediation package at head 6d644766ad43fd931a6f857e5ddfc089f85fffe4 before this status closeout commit; this closeout commit must pass the same workflow independently."
   },
   "boundaries": {
     "independent_rereview_performed": false,
@@ -55,5 +57,5 @@
     ".github/workflows/animo-b3a01e-tcd027-evidence-remediation.yml",
     "integration/animo-b3/ANIMO-B3A01E_STATUS.json"
   ],
-  "next_required": "After this evidence-remediation package is qualified, execute a NEW genuinely separate ANIMO-B3A01R2 re-review. The retained ANIMO-B3A01R result remains INCOMPLETE; B3A01E is not reviewer PASS and does not admit TCD-027."
+  "next_required": "Execute a NEW genuinely separate ANIMO-B3A01R2 re-review against this qualified remediation packet. ANIMO-B3A01R remains INCOMPLETE; B3A01E is evidence remediation only and does not admit TCD-027."
 }
