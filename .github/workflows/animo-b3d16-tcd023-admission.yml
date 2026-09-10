@@ -1,0 +1,25 @@
+name: ANIMO-B3D16 TCD-023 Tier-B admission
+
+on:
+  push:
+    branches:
+      - work/animo-b3d16-tcd023-gov04-tier-b-admission
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate TCD-023 disposition and admission
+        run: python tools/validate_b3d16_tcd023_admission.py
+
+      - name: Validate atomic workunit scope
+        run: python tools/validate_b3d16_scope.py
