@@ -1,9 +1,18 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "workunit": "ANIMO-B3B04E1",
   "target": "TCD-040",
   "bundle_mode": "DETERMINISTIC_RECONSTRUCTION_GENERATOR_PLUS_CRYPTOGRAPHIC_HASHES",
   "scope": "EVIDENCE_REPLAYABILITY_ONLY",
+  "reconstruction_governance": {
+    "authority": "ANIMO-B3B04E2",
+    "head": "01e6df610d236bac19d17f16d109a4e0e676ccfa",
+    "decision": "AUTHORIZED_DISTINCT_PROVENANCE_PINNED_REPLAY_RECONSTRUCTION",
+    "status": "QUALIFIED_RECONSTRUCTION_AUTHORIZATION_ONLY",
+    "github_actions_run_id": 34458829364,
+    "github_actions_conclusion": "success",
+    "effect": "Authorizes the reconstructed harness only as a distinct remediation artifact. It does not qualify B3B04E1, waive controlled B0 custody, perform second-line reconsideration, or admit TCD-040."
+  },
   "generator": {
     "path": "tools/b3b04e1/replay_tcd040.py",
     "introduced_at": "3b6a762bc677f53514ba3dc2ae8713931adc551f",
@@ -83,6 +92,7 @@
   "qualification_gate": {
     "deterministic_generator_bundle_complete": true,
     "local_reconstruction_passed": true,
+    "explicit_reconstruction_governance_authorization_satisfied": true,
     "controlled_immutable_B0_acquisition_proven": false,
     "independent_replay_qualified": false,
     "canonical_tcd_status": "UNRESOLVED_NOT_ADMITTED"
