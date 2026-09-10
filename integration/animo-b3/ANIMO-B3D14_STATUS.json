@@ -3,7 +3,7 @@
   "title": "TCD-041 GHG Lower-Air Boundary GOV04 Tier-B Disposition and Atomic Admission",
   "branch": "work/animo-b3d14-tcd041-gov04-tier-b-admission",
   "target": "TCD-041",
-  "status": "ADMISSION_DECISION_PERSISTED_MACHINE_VALIDATION_PENDING",
+  "status": "QUALIFIED_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_B",
   "risk_tier": "B",
   "risk_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
   "formal_decision": "QUALIFIED_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_B",
@@ -28,7 +28,12 @@
   "central_rg05_updated": false,
   "central_integration_pending": true,
   "persisted": true,
-  "machine_validated": false,
-  "ci_validation": null,
-  "next_permitted_action": "RUN_B3D14_FAIL_CLOSED_VALIDATION_AND_CLOSEOUT"
+  "machine_validated": true,
+  "ci_validation": {
+    "evidence_head": "ec6e013fda57916bfeeaf0a4b50afdad2c4468dc",
+    "workflow": "ANIMO-B3D14 TCD-041 Tier-B admission",
+    "run_id": 34481010782,
+    "conclusion": "success"
+  },
+  "next_permitted_action": "SEPARATE_CENTRAL_REGIE_ADMISSION_INTEGRATION"
 }
