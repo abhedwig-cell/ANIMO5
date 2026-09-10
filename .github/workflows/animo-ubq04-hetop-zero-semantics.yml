@@ -1,0 +1,32 @@
+name: ANIMO UBQ04 HETOP zero semantics qualification
+
+on:
+  push:
+    branches:
+      - work/animo-ubq04-hetop-zero-model-semantics
+  workflow_dispatch:
+
+jobs:
+  validate-ubq04:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history for scope guard
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Parse persisted JSON
+        run: |
+          python -m json.tool integration/animo-science/UBQ04_HETOP_ZERO_SEMANTICS.json >/dev/null
+          python -m json.tool integration/animo-science/ANIMO-UBQ04_STATUS.json >/dev/null
+
+      - name: Compile validator
+        run: python -m py_compile tools/ubq04/validate_ubq04.py
+
+      - name: Validate qualification and scope
+        run: python tools/ubq04/validate_ubq04.py
