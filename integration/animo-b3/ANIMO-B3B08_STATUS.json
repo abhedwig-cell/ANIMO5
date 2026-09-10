@@ -1,0 +1,61 @@
+{
+  "work_unit": "ANIMO-B3B08",
+  "title": "TCD-028 Stable-DOM Plough Event-Accumulator Admission Readiness",
+  "branch": "work/animo-b3b08-tcd028-stable-dom-event-reset-readiness",
+  "target": "TCD-028",
+  "state": "READINESS_PACKAGE_PERSISTED_PENDING_MACHINE_VALIDATION",
+  "decision": "QUALIFIED_CLASS_B_ADMISSION_READINESS_GOV04_TIER_C_HISTORICAL_UNCERTAINTY_REVIEW_REQUIRED",
+  "readiness_qualified": false,
+  "b3_admitted": false,
+  "production_authorized": false,
+  "b3_qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "gov04_risk_tier": "C",
+  "tier_c_forced_by": [
+    "INITIALIZATION_SEMANTICS",
+    "SCIENTIFIC_STATE_OR_SOURCE_OWNERSHIP_AMBIGUITY"
+  ],
+  "authoring_base": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+  "current_post_rg05f_atomic_authorities_observed": [
+    "ANIMO-B3D15@22e48f7e2c1eaa1245f034de2d909191d9cfa227:TCD-030",
+    "ANIMO-B3D16@8650ea9e716336520d8d7df5f9ea2b393d17ab98:TCD-023"
+  ],
+  "authority_pins": {
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "B3I01": "383c7a83e84a578969f92113280dc715b7bdddb4",
+    "B3I03": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "PREP10": "65cd4a65a3ea27cd4ce004f505d5022fdb08b9ab",
+    "PREP10C": "549545921dc8175f01d86c283647acd470c14290"
+  },
+  "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
+  "historical_uncertainty_route": "ELIGIBLE_SUBJECT_TO_CLAIM_SCOPED_TIER_C_REVIEW_AND_B3_GATES",
+  "independent_review": {
+    "required": true,
+    "required_count": 1,
+    "tier": "C",
+    "status": "PENDING_NOT_EXECUTED",
+    "authoring_context_may_sign_gate": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "composition_performed": false,
+    "b4_opened": false,
+    "production_migration_opened": false,
+    "central_rg05_updated": false,
+    "independent_review_performed": false
+  },
+  "validation": {
+    "machine_validated": false,
+    "workflow": "ANIMO-B3B08 TCD-028 Tier-C readiness",
+    "run_id": null,
+    "job_id": null,
+    "evidence_head": null,
+    "conclusion": "PENDING",
+    "validator": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "next_if_validated": "PREPARE_EXACTLY_ONE_SEPARATE_TIER_C_INDEPENDENT_SECOND_LINE_REVIEW_HANDOFF"
+}
