@@ -18,6 +18,24 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Fetch and verify exact reviewed commit objects
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --prune origin '+refs/heads/*:refs/remotes/origin/*'
+          for sha in \
+            c05486e76993d26771f62f32842508479d14fdde \
+            b982242949aecab32b9067cf7910ad75abfc2b19 \
+            2a5abc00a779baaa3fb3fa28b3c051231c286132 \
+            cf3e2746351c5c75d236e1b63fb0623daa8e7372 \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            846e0f4d02a38b9e02cc1419b1ca87e63aaedb54 \
+            f3d6b9780631bd627f8bca0658a8e3878746e666 \
+            842f72300fd03ede0b9024537a7ee6126722a121
+          do
+            git cat-file -e "${sha}^{commit}"
+          done
+
       - name: Parse independent review result JSON
         run: python -m json.tool integration/animo-b3/TCD015_INDEPENDENT_REVIEW_RESULT.json >/dev/null
 
