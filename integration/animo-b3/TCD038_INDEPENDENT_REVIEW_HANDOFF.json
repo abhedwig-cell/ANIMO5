@@ -1,0 +1,47 @@
+{
+  "work_unit": "ANIMO-B3B09",
+  "target": "TCD-038",
+  "handoff_type": "GOV04_TIER_C_GENUINELY_INDEPENDENT_SECOND_LINE_REVIEW",
+  "source_readiness_decision": "QUALIFIED_CLASS_B_ADMISSION_READINESS_GOV04_TIER_C_RESTART_SEMANTICS_INDEPENDENT_REVIEW_REQUIRED",
+  "validated_readiness_evidence_head": "9a9a834ea02d34d7f91099e20223c560e6abbc77",
+  "validated_workflow_run_id": 34524387266,
+  "validated_job_id": 103029570277,
+  "validated_machine_conclusion": "success",
+  "review_required_count": 1,
+  "review_tier": "C",
+  "review_branch": "review/animo-b3b09r-tcd038-independent-second-line",
+  "review_branch_start_rule": "start from the final machine-validated B3B09 closeout head; independently reconstruct source, lifecycle ownership, GOV04 tier, cold-start/restart semantics and evidence strength",
+  "independence_requirement": "SEPARATE_CHATGPT_CONTEXT_PROCESS_INDEPENDENCE",
+  "authoring_context_may_sign_review": false,
+  "review_performed": false,
+  "review_result": "PENDING_NOT_EXECUTED",
+  "mandatory_independent_questions": [
+    "Does frozen revision-53 establish one lifecycle coordinate with accepted Ampl*_act and result/serialized Rsampl*_act aliases?",
+    "Is the required read-to-accepted direction Rsampl*_act -> Ampl*_act independently supported by input1, Output_Init, Init and uptake integration dataflow?",
+    "Does the existing Inicalc direction erase represented above-threshold actual uptake before first process execution?",
+    "Does GOV04 strictest-trigger logic independently force Tier C despite B3 Class B local-correction classification?",
+    "Are cold-start and restart semantics correctly bounded given the shared >orgpla initialization surface and absence of a dedicated discriminator?",
+    "Are the existing 1.0d-4 threshold, crop trigger and Ipo guard preserved without widening scope?",
+    "Is TCD-039 completely excluded from the proposed TCD-038 correction and review claim?",
+    "Are STATEQ01 and STATEQ02 evidence kept at their qualified strength and not used as a causally isolated TCD-038 split-run proof?",
+    "Are expected differences, downstream consequences, non-interference bounds and residual uncertainties stated without invented tolerances or historical claims?",
+    "Does any contradictory or superseding TCD-038 evidence exist at review time?"
+  ],
+  "fail_closed_conditions": [
+    "restore direction or lifecycle owner is scientifically ambiguous",
+    "Tier C prerequisites cannot be independently verified",
+    "candidate requires TCD-039 composition or a new state representation",
+    "candidate changes numerical policy, solver, tolerance or checkpoint representation",
+    "evidence strength is promoted beyond PREP10/PREP12/STATEQ01/STATEQ02 scope",
+    "new contradictory or superseding evidence changes the claim"
+  ],
+  "review_may_not": [
+    "perform production patching",
+    "admit canonical STATE",
+    "compose TCD-039",
+    "open B4 or production migration",
+    "update RG05G",
+    "treat current GNU diagnostic evidence as historical B2"
+  ],
+  "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2"
+}
