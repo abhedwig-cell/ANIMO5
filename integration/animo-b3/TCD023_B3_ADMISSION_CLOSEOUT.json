@@ -123,5 +123,14 @@
     "required_later": true,
     "next_action": "RETAIN_ATOMIC_AUTHORITY_PENDING_NORMAL_GOV04_BATCHED_CENTRAL_REGIE_INTEGRATION_UNLESS_EARLY_TRIGGER_APPLIES"
   },
-  "validation_state": "PENDING_B3D16_MACHINE_GATE"
+  "validation_state": "VALIDATED_BY_B3D16_MACHINE_GATE",
+  "ci_validation": {
+    "evidence_head": "44801f4b999b7f1a9b696333d38d1b29f141d6dc",
+    "workflow": "ANIMO-B3D16 TCD-023 Tier-B admission",
+    "run_id": 34485232681,
+    "job_id": 102897715205,
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS"
+  }
 }
