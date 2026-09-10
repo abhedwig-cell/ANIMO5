@@ -39,8 +39,7 @@ def changed_paths() -> list[str]:
 
 
 def runtimeq03_status() -> dict:
-    text = run("git", "show", f"{RUNTIMEQ03}:integration/animo-runtime/ANIMO-RUNTIMEQ03_STATUS.json")
-    return json.loads(text)
+    return json.loads(run("git", "show", f"{RUNTIMEQ03}:integration/animo-runtime/ANIMO-RUNTIMEQ03_STATUS.json"))
 
 
 def main() -> None:
@@ -51,8 +50,7 @@ def main() -> None:
         rows = list(csv.DictReader(handle))
 
     rq = runtimeq03_status()
-    require(rq["work_unit"] == "ANIMO-RUNTIMEQ03", "wrong external evidence owner")
-    require(rq["tcd"] == "TCD-037", "RUNTIMEQ03 target changed")
+    require(rq["work_unit"] == "ANIMO-RUNTIMEQ03" and rq["tcd"] == "TCD-037", "wrong RUNTIMEQ03 evidence target")
     require(rq["status"] == "QUALIFIED_ACCOUNTING_SEMANTIC_SPLIT_PARENT_ATOMIZATION_REQUIRED", "RUNTIMEQ03 status changed")
     require(rq["parent_atomic"] is False and rq["parent_atomization_required"] is True, "RUNTIMEQ03 atomicity changed")
     require(rq["canonical_child_atoms_allocated"] is False, "RUNTIMEQ03 unexpectedly allocated canonical children")
@@ -63,8 +61,7 @@ def main() -> None:
     require(rq["historical_intel_behavior"] == "UNKNOWN", "historical behaviour promoted")
     require(rq["scientific_admission"] is False and rq["production_patch"] is False, "RUNTIMEQ03 scope unexpectedly widened")
 
-    require(atom["work_unit"] == "ANIMO-B3I07", "wrong atomization owner")
-    require(atom["parent_tcd"] == "TCD-037", "wrong parent")
+    require(atom["work_unit"] == "ANIMO-B3I07" and atom["parent_tcd"] == "TCD-037", "wrong atomization owner/parent")
     alloc = atom["allocation_decision"]
     require(alloc["new_top_level_tcd_reserved"] is False, "new top-level TCD reserved")
     require(alloc["tcd_043_reserved"] is False, "TCD-043 reserved")
@@ -81,8 +78,7 @@ def main() -> None:
         require(child["class"] == "A_ACCOUNTING_REPORTING_ONLY", f"{cid} wrong B3 class")
         require(child["risk_tier"] == "TIER_A_CANDIDATE", f"{cid} risk promoted or changed")
         require(child["risk_state"] == "TIER_A_CANDIDATE_WAIVER_NOT_YET_AVAILABLE", f"{cid} waiver state changed")
-        require(child["admitted"] is False, f"{cid} admitted in routing workunit")
-        require(child["tier_a_waiver_granted"] is False, f"{cid} waiver granted in routing workunit")
+        require(child["admitted"] is False and child["tier_a_waiver_granted"] is False, f"{cid} prematurely admitted/waived")
         require(child["historical_behavior"] == "UNKNOWN", f"{cid} historical behaviour promoted")
         require(child["natural_activation"] == "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH", f"{cid} natural activation invented")
         require(child["next_work_unit"].startswith(EXPECTED_ROUTES[cid] + " "), f"{cid} next owner mismatch")
@@ -100,8 +96,16 @@ def main() -> None:
     require(gates["natural_active_ghg_case_available"] is False, "natural active GHG case fabricated")
     require(gates["tier_a_waiver_complete"] is False, "Tier-A waiver prematurely completed")
 
-    for key, value in atom["invariants"].items():
-        require(value is False or (key == "evidence_strength_promoted" and value is False), f"atomization invariant violated: {key}")
+    inv = atom["invariants"]
+    require(inv["parent_tcd_admitted"] is False, "parent admitted")
+    require(inv["child_admission_count"] == 0, "child admission count nonzero")
+    require(inv["new_tcd_count"] == 0, "new top-level TCD count nonzero")
+    for key in [
+        "canonical_register_changed", "scientific_admission_performed", "production_source_modified",
+        "production_migration_admitted", "b4_opened", "rg05h_updated", "tcd032_036_composition",
+        "evidence_strength_promoted"
+    ]:
+        require(inv[key] is False, f"atomization invariant violated: {key}")
 
     require(status["work_unit"] == "ANIMO-B3I07", "wrong status owner")
     require(status["base"]["head"] == BASE, "wrong canonical predecessor")
@@ -112,12 +116,10 @@ def main() -> None:
     require(status["readiness_routes"] == EXPECTED_ROUTES, "readiness route partition mismatch")
     require(status["tier_a_waiver"]["granted"] is False, "status grants Tier-A waiver")
     require(status["tier_a_waiver"]["state"] == "NOT_AVAILABLE_READINESS_GATES_PENDING", "unexpected waiver state")
-    require(status["intake"]["new_top_level_tcd_count"] == 0, "status allocates new TCD")
-    require(status["intake"]["tcd_043_reserved"] is False, "status reserves TCD-043")
+    require(status["intake"]["new_top_level_tcd_count"] == 0 and status["intake"]["tcd_043_reserved"] is False, "status allocates top-level TCD")
     require(status["intake"]["canonical_register_append_performed"] is False, "status appends register")
     require(status["intake"]["parent_admitted"] is False and status["intake"]["child_admission_count"] == 0, "status claims admission")
     require(status["status"] in {"PERSISTED_VALIDATION_PENDING", "QUALIFIED_TCD037_CANONICAL_CHILD_ROUTING_TIER_A_CANDIDATES_NO_ADMISSION"}, "unexpected status lifecycle")
-
     for key, value in status["scope_guards"].items():
         require(value is False, f"status scope guard violated: {key}")
 
@@ -139,14 +141,14 @@ def main() -> None:
     for cid, route in EXPECTED_ROUTES.items():
         require(cid in doc and route in doc, f"document missing route for {cid}")
 
-    allowed = (
+    allowed = {
         ".github/workflows/animo-b3i07-tcd037-routing.yml",
         "docs/b3/POST_RUNTIMEQ03_TCD037_GHG_BALANCE_OBSERVER_ROUTING.md",
         "integration/animo-b3/B3I07_RUNTIMEQ03_FINDING_CROSSWALK.csv",
         "integration/animo-b3/B3I07_TCD037_ATOMIZATION.json",
         "integration/animo-b3/ANIMO-B3I07_STATUS.json",
         "tools/b3i07/validate_b3i07.py",
-    )
+    }
     changed = changed_paths()
     require(changed, "no B3I07 artifacts")
     for path in changed:
