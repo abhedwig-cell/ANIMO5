@@ -1,0 +1,105 @@
+{
+  "work_unit": "ANIMO-RUNTIMEQ03",
+  "tcd": "TCD-037",
+  "source_identity": {
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "files": {
+      "Outbal_calc.for": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+      "Outbal_write.for": "cdc0a9738216d8a97d3c35f9862b78fc94fec385aaf0691d6778a73031ac74ea",
+      "Outsel.for": "b058b88aef464183aa35bdb0377315e3755192e5ee70bb88db6522cf1311ec9d",
+      "ghg_ch4.for": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98",
+      "ghg_n2o.for": "493bf88d4b321df64817a7c0eaa2725ad614a45df0a0f16cefa96ac348254175",
+      "outbal2.inc": "dcf8458f3609af685f1058a378df4c4fab5a23406c573913cbd882a0a06921aa",
+      "Animo.for": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
+      "Animo.inc": "0f8b58e522ac2cdae95e8ae727dbf3ecea942e39c4d117b6bcae955d80fb69a2"
+    }
+  },
+  "semantic_owners": {
+    "CH4_FORM_LAYER": "QPrCH4(Ln)*St",
+    "CH4_FORM_TOTAL": "sum(QPrCH4(1:Nl)*St)",
+    "CH4_EMIT_TOTAL": "(QEmCH4Dif+QEmCH4Ebl+QEmCH4Flw+QEmCH4Plt)*St",
+    "N2O_DENI_FORM_LAYER": "QPrN2Oden(Ln)*St",
+    "N2O_NITR_FORM_LAYER": "QPrN2Onit(Ln)*St before existing Outbal_calc reporting threshold",
+    "N2O_EMIT_TOTAL": "(QEmN2ODif+QEmN2OFlw)*St",
+    "QRdN2O": "SEPARATE_N2O_REDUCTION_SINK_NOT_TCD037_OBSERVER_PRODUCER"
+  },
+  "semantic_collisions": {
+    "CH4_INDEX0_FORMATION_VS_EMISSION_OVERLOAD": true,
+    "N2O_INDEX0_PRODUCTION_VS_EMISSION_CONSUMER_MISMATCH": true,
+    "single_array_single_owner_contract_valid": false
+  },
+  "proposed_children": [
+    {
+      "atom_id": "TCD-037-A1",
+      "parent_tcd": "TCD-037",
+      "canonical": false,
+      "claim": "CH4 layer formation amount producer for CH4f/CO2f partition",
+      "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+      "gov04_risk": "TIER_A_CANDIDATE",
+      "allowed_observer_differences": [
+        "Bfom(CH4f)",
+        "Bahu(CH4f)",
+        "Bdom(CH4f)",
+        "Bfom(CO2f)",
+        "Bahu(CO2f)",
+        "Bdom(CO2f)"
+      ]
+    },
+    {
+      "atom_id": "TCD-037-A2",
+      "parent_tcd": "TCD-037",
+      "canonical": false,
+      "claim": "Separate CH4 formation-total and atmosphere-emission semantics at index 0",
+      "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+      "gov04_risk": "TIER_A_CANDIDATE",
+      "allowed_observer_differences": [
+        "Btom(CH4e)",
+        "Btom(CO2e)"
+      ]
+    },
+    {
+      "atom_id": "TCD-037-A3",
+      "parent_tcd": "TCD-037",
+      "canonical": false,
+      "claim": "N2O denitrification layer formation amount producer for N2Od",
+      "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+      "gov04_risk": "TIER_A_CANDIDATE",
+      "allowed_observer_differences": [
+        "Bani(N2Od)"
+      ]
+    },
+    {
+      "atom_id": "TCD-037-A4",
+      "parent_tcd": "TCD-037",
+      "canonical": false,
+      "claim": "Total N2O atmosphere-emission owner for N2Oe rejecting production-total substitution",
+      "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+      "gov04_risk": "TIER_A_CANDIDATE",
+      "allowed_observer_differences": [
+        "Bani(N2Oe)"
+      ]
+    }
+  ],
+  "expected_difference_contract": {
+    "physical_state": "NONE",
+    "process_flux": "NONE",
+    "restart_state": "NONE",
+    "solver_or_numerical_policy": "NONE",
+    "scope": "OBSERVER_ACCOUNTING_FIELDS_ONLY"
+  },
+  "activation_evidence": {
+    "natural_active_ghg": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+    "synthetic_probe": "PASS_B1_CAUSAL_ONLY",
+    "synthetic_probe_sha256": "e0da47422092896c7f3b2ab6b81070fb25e9907424ca51808b6a906ae76c0a47",
+    "expected_output_sha256": "e734b3f90a7a86e7708a34ee309a71f2cd6d677f360e6cb87b0d394e44e2114b",
+    "historical_intel_behavior": "UNKNOWN"
+  },
+  "routing": {
+    "parent_atomic": false,
+    "parent_atomization_required": true,
+    "canonical_child_atoms_allocated": false,
+    "new_top_level_tcd": false,
+    "parent_tier_a_waiver": "NOT_AVAILABLE_AT_PARENT_SCOPE_ATOMIZATION_REQUIRED",
+    "next_work_unit": "ANIMO-B3I07 — TCD-037 GHG Balance Observer Child-Atom Routing & Tier-A Readiness Partition"
+  }
+}
