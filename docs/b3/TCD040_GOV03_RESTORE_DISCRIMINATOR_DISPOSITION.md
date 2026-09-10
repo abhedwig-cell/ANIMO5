@@ -1,6 +1,6 @@
 # ANIMO-B3D11 TCD-040 GOV03 disposition and restore discriminator qualification
 
-Status: `PERSISTED_ROUTE_OPEN_DISCRIMINATOR_QUALIFIED_VALIDATION_PENDING_NO_ADMISSION`
+Status: `QUALIFIED_ROUTE_OPEN_RESTORE_DISCRIMINATOR_QUALIFIED_INDEPENDENT_REVIEW_PENDING_NO_ADMISSION`
 
 Target: `TCD-040`
 
@@ -110,10 +110,14 @@ Canonical disposition remains:
 
 `UNRESOLVED_NOT_ADMITTED`
 
-Workunit decision after successful validation:
+Workunit decision:
 
 `UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_AND_RESTORE_DISCRIMINATOR_QUALIFIED_BY_GOV03`
 
 The route is open, but TCD-040 is not admitted. Independent review must separately verify source ownership, atomicity, the two-state control discriminator, the seam sufficiency, the non-interference boundary and the distinction from TCD-016.
+
+## Validation
+
+The complete persisted B3D11 package at `93d545ee635fcff69993c9d0961d1dbcdce7bf12` passed `ANIMO-B3D11 TCD040 GOV03 discriminator disposition` run `34449487450`, job `102781714433`. Both the fail-closed disposition validator and the RG05D-relative five-file scope guard passed. This document update does not broaden the allowed surface and must pass the same workflow independently.
 
 Hard boundaries remain unchanged: no production patch, no B4, no composition, no canonical STATE admission, no whole-model checkpoint qualification, no historical-fidelity claim and no central regie update.
