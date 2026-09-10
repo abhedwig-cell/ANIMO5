@@ -1,0 +1,44 @@
+{
+  "work_unit": "ANIMO-B3B10",
+  "target": "TCD-031",
+  "review_kind": "GOV04_TIER_C_GENUINELY_INDEPENDENT_SECOND_LINE",
+  "review_branch": "review/animo-b3b10r-tcd031-independent-second-line",
+  "review_start_rule": "CREATE_FROM_FINAL_MACHINE_VALIDATED_B3B10_CLOSEOUT_HEAD_ONLY",
+  "authoring_context_may_sign_gate": false,
+  "review_question": "Does the pinned evidence independently support the bounded proposition that every enabled accepted CoMp macropore-solute concentration in both domains is mandatory persistent restart state and that restore must load CoMp before establishing the RsCoMp result alias, without physical-process execution or reconstruction from matrix state?",
+  "required_reconstruction": [
+    "Reconstruct the two-domain macropore solute control volume from frozen source.",
+    "Verify species membership and P-conditional state cardinality independently.",
+    "Verify that CoMp is an independent accepted coordinate for nonzero SrWaMpOld.",
+    "Verify Output_Init omission and the first-resumed Init alias overwrite path independently.",
+    "Replay or independently inspect the STATEQ04 exact split discriminator and both negative-control families.",
+    "Confirm that MP02 supplies only synthetic complete-model active reachability, not B2 or split-run admission evidence.",
+    "Confirm that external hydrology remains externally owned and exactly bound across restart.",
+    "Apply GOV03 historical uncertainty without fabricating historical agreement.",
+    "Fail closed on any source, lifecycle, species, domain or evidence-identity ambiguity."
+  ],
+  "required_authorities": {
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "STATEQ03": "10c50e65d1369d5f3b26736c4b12d3a482379eb5",
+    "STATEQ04": "ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+    "MP02": "6b0f2e7470f13baeb6612b0bddb662a497dea528"
+  },
+  "prohibited_shortcuts": [
+    "DO_NOT_TREAT_B3B10_AUTHORING_CONCLUSION_AS_REVIEW_EVIDENCE",
+    "DO_NOT_INFER_B2_FROM_SYNTHETIC_MP02",
+    "DO_NOT_ACCEPT_WRITER_ONLY_FIX",
+    "DO_NOT_ACCEPT_RESTORE_ONLY_FIX",
+    "DO_NOT_PROMOTE_WORKSPACE_TO_PERSISTENT_STATE_BY_STORAGE_LOCATION",
+    "DO_NOT_INVENT_NUMERICAL_TOLERANCE",
+    "DO_NOT_ADMIT_TCD025_HERE",
+    "DO_NOT_SIGN_PRODUCTION_IMPLEMENTATION"
+  ],
+  "possible_review_outcomes": [
+    "PASS_BOUNDED_TCD031_TIER_C_SECOND_LINE",
+    "FAIL_CLOSED_EVIDENCE_INCOMPLETE",
+    "FAIL_CLOSED_STATE_OWNERSHIP_OR_LIFECYCLE_NOT_ESTABLISHED",
+    "FAIL_CLOSED_SCOPE_REQUIRES_ATOMIZATION_OR_EXPANSION"
+  ]
+}
