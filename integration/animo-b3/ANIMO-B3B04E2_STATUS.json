@@ -71,6 +71,15 @@
     "issue": 5,
     "requirement": "governance-approved controlled immutable B0 retention and acquisition proof"
   },
+  "validation": {
+    "workflow": ".github/workflows/animo-b3b04e2-tcd040-reconstruction-governance.yml",
+    "tested_head": "972011d8da2d4dc1644ada29234ef89b76e7339a",
+    "github_actions_run_id": 34458686774,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS_B3B04E2_PROVENANCE_PINNED_RECONSTRUCTION_AUTHORIZATION",
+    "scope_guard": "PASS_B3B04E2_SCOPE_GUARD",
+    "closeout_note": "Run 34458686774 validates the persisted governance package. This status-only closeout commit must pass the same workflow independently."
+  },
   "hard_boundaries": {
     "production_source_patched": false,
     "TCD040_admitted": false,
@@ -87,8 +96,8 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "qualified": true,
+    "workunit_complete": true
   }
 }
