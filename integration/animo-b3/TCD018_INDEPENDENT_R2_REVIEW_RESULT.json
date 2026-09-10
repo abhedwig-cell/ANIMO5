@@ -103,14 +103,6 @@
       "ani_waTP.Bal",
       "bawaGP.Out",
       "bawaRP.Out",
-      "bawaTP.Bal_DOES_NOT_EXIST"
-    ],
-    "exact_whitelist_canonical": [
-      "ani_waGP.Bal",
-      "ani_waRP.Bal",
-      "ani_waTP.Bal",
-      "bawaGP.Out",
-      "bawaRP.Out",
       "bawaTP.Out"
     ],
     "scientific_numeric_tolerance_applied": false,
