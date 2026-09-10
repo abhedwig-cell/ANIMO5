@@ -1,0 +1,51 @@
+{
+  "work_unit": "ANIMO-RUNTIMEQ03",
+  "tcd": "TCD-037",
+  "branch": "work/animo-runtimeq03-tcd037-ghg-balance-accounting-semantics",
+  "status": "QUALIFIED_ACCOUNTING_SEMANTIC_SPLIT_PARENT_ATOMIZATION_REQUIRED",
+  "authoring_base": "ANIMO-RUNTIMEQ02@45e8073fa95035b3565bd8b373ac327915cf1af5",
+  "aggregate_authority": "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+  "canonical_routing_authority": "ANIMO-B3I06@8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
+  "gov04_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "b3q01_authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "semantic_qualification": {
+    "ch4_layer_formation_owner": "QPrCH4(Ln)*St",
+    "ch4_total_formation_owner": "sum(QPrCH4(1:Nl)*St)",
+    "ch4_atmosphere_emission_owner": "(QEmCH4Dif+QEmCH4Ebl+QEmCH4Flw+QEmCH4Plt)*St",
+    "n2o_denitrification_layer_formation_owner": "QPrN2Oden(Ln)*St",
+    "n2o_nitrification_layer_formation_owner": "QPrN2Onit(Ln)*St before existing Outbal_calc reporting threshold",
+    "n2o_atmosphere_emission_owner": "(QEmN2ODif+QEmN2OFlw)*St",
+    "n2o_reduction_role": "SEPARATE_N2O_REDUCTION_SINK_NOT_TCD037_OBSERVER_PRODUCER",
+    "ch4_index0_overloaded": true,
+    "n2o_index0_consumer_mismatch": true
+  },
+  "parent_atomic": false,
+  "parent_atomization_required": true,
+  "canonical_child_atoms_allocated": false,
+  "proposed_child_count": 4,
+  "proposed_child_ids": [
+    "TCD-037-A1",
+    "TCD-037-A2",
+    "TCD-037-A3",
+    "TCD-037-A4"
+  ],
+  "proposed_child_risk_tier": "TIER_A_CANDIDATE",
+  "parent_tier_a_waiver": "NOT_AVAILABLE_AT_PARENT_SCOPE_ATOMIZATION_REQUIRED",
+  "natural_active_ghg_case": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+  "synthetic_evidence": "B1_ONLY_NOT_INDEPENDENT_B2",
+  "historical_intel_behavior": "UNKNOWN",
+  "expected_difference": {
+    "physical_state": "NONE",
+    "process_flux": "NONE",
+    "restart_state": "NONE",
+    "solver_or_numerical_policy": "NONE",
+    "observer_only": true
+  },
+  "scientific_admission": false,
+  "production_patch": false,
+  "b4": false,
+  "rg05h_update": false,
+  "new_top_level_tcd": false,
+  "composition": [],
+  "next_work_unit": "ANIMO-B3I07 — TCD-037 GHG Balance Observer Child-Atom Routing & Tier-A Readiness Partition"
+}
