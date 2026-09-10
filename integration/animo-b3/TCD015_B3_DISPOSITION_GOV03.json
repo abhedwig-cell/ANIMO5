@@ -1,0 +1,235 @@
+{
+  "record_id": "B3D09-TCD015-GOV03-DISPOSITION",
+  "record_version": 1,
+  "tcd_ids": ["TCD-015"],
+  "atomicity": "ATOMIC",
+  "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "disposition": "UNRESOLVED_NOT_ADMITTED",
+  "scope": {
+    "process": "NO3 negative-concentration transport mass conservation",
+    "code_path": "ANIMO_4.1.5.53/Transsub.for second negative-concentration Reko reconstruction after Rsc is forced to Vsmall and Avc is recomputed",
+    "legacy_expression": "Reko = (Mt*rsc-Mto*Co)/St - (-Avc*Hv1 + Flo*Con/ld + Flb*Cb/ld + Fid*Coid/ld)",
+    "Hv": "(Mt-Mto)/st",
+    "Hv1": "Fu/ld + Rd*Fev/ld + Reki*Half*(Mt+Mto) + Hv",
+    "candidate_nitrate_expression": "Reko = (Mt*rsc-Mto*Co)/St - (-Avc*(Hv1-Hv) + Flo*Con/ld + Flb*Cb/ld + Fid*Coid/ld)",
+    "candidate_delta_reko": "-Avc*Hv",
+    "species_scope": "NITRATE_ONLY",
+    "feature_scope": "CORE_NITRATE_TRANSPORT_GREENHOUSEGASOPTION_0",
+    "claim": "Within TCD-015 only, the second negative-concentration nitrate Reko reconstruction must not count the moisture-storage derivative twice. Hv1 already contains Hv while (Mt*rsc-Mto*Co)/St already represents the complete moisture-storage change.",
+    "implementation_boundary": "Any later implementation must be nitrate-scoped. The shared Transsub algebra for non-NITRATE substances remains legacy unless separately classified, qualified, independently reviewed and admitted."
+  },
+  "authorities": {
+    "RG05D": "f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3B01": "b982242949aecab32b9067cf7910ad75abfc2b19",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "SYNQ01": "842f72300fd03ede0b9024537a7ee6126722a121",
+    "PREP02R_CURRENT_RECOVERY_HEAD": "a2fda49871ee3c7104daf7e06cd8dffdac06b125"
+  },
+  "identities": {
+    "b0": {
+      "source_evidence_id": "ANIMO-B0-SRC-41553-R53",
+      "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+      "source_member": "ANIMO_4.1.5.53/Transsub.for",
+      "source_member_sha256": "c548e5d372ffbc7f4d4e4d8d86609cf1f34cf70ea513d345e3c7fada5cf6b552",
+      "authoring_environment_raw_archive_hash_recheck": "PASS_2026_09_10",
+      "authoring_environment_source_member_hash_recheck": "PASS_2026_09_10",
+      "controlled_immutable_storage_proven": false
+    },
+    "b1": {
+      "status": "DIAGNOSTIC_NOT_REFERENCE",
+      "evidence_identity": "ANIMO-B3B01 natural LWKM activation, eight-case non-interference matrix and IFLSOL branch-coverage supplement",
+      "limitations": "B1 establishes causal, conservation, coverage and scoped non-interference evidence only. It is not historical B2 and does not establish historical Intel behaviour."
+    },
+    "b2": {
+      "status": "UNAVAILABLE_AFTER_DOCUMENTED_ACQUISITION_ATTEMPT",
+      "acquisition_effort_ref": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+      "historical_behaviour": "UNKNOWN"
+    }
+  },
+  "historical_route": {
+    "pre_GOV03_readiness_route_state": "INELIGIBLE_WHILE_B2_ACQUISITION_ACTIVE",
+    "pre_GOV03_state_superseded_for_route_eligibility": true,
+    "B2_available": false,
+    "GOV03_closure_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "b2_route_gate": "PASS",
+    "historical_behaviour": "UNKNOWN",
+    "historical_fidelity_claimed": false
+  },
+  "source_recheck": {
+    "raw_source_rechecked_directly": true,
+    "Transsub_Hv_line": "Hv = (Mt-Mto)/st",
+    "Transsub_Hv1_line": "Hv1 = Fu/ld + Rd*Fev/ld + Reki*Half*(Mt+Mto) + Hv",
+    "target_reconstruction_line": "Reko = (Mt*rsc-Mto*Co)/St - (-Avc*Hv1 + Flo*Con/ld + Flb*Cb/ld + Fid*Coid/ld)",
+    "generic_shared_routine_confirmed": true,
+    "nitrate_call_binding": "ANIMO_4.1.5.53/Animo.for MAIN-ANIMO calls Transport with Substname NITRATE; Transport forwards Substname to the generic Transsub routine",
+    "scope_consequence": "The source seam is generic, so TCD-015 cannot authorize changing the shared expression for all substances."
+  },
+  "causal_reconciliation": {
+    "case": "LWKM_gras_1040.2021.2045",
+    "year": 1997,
+    "annual_NO3_residual_kg_ha_N": 0.5760503022407,
+    "dominant_event": {
+      "TITO": 2312,
+      "layer": 1,
+      "substance": "NITRATE",
+      "Iflsol": 1,
+      "BAPD_kg_m2": -0.00084267311478156,
+      "BATR_kg_m2": -0.00090054430498043,
+      "BAPD_minus_BATR_kg_m2": 0.000057871190198869,
+      "equivalent_kg_ha_N": 0.5787119019887,
+      "Hv_d_1": 0.0034507,
+      "Hv1_d_1": 0.064698353471977,
+      "legacy_Reko_kg_m3_d": -0.0016853462295631,
+      "candidate_Reko_kg_m3_d": -0.0018010886099609,
+      "candidate_local_residual_kg_m2": -1.08e-19
+    },
+    "duplicate_mass_identity": "Avc*Hv*St*Ld",
+    "duplicate_mass_matches_local_residual": "PASS_TO_FLOATING_POINT_ROUNDOFF",
+    "LWKM_1997_GP_residual_after_execution_only_probe_kg_ha_N": 2.28e-7,
+    "baseline_nitrate_transport_warnings": 3,
+    "candidate_probe_nitrate_transport_warnings": 0,
+    "tolerance_used_for_claim": false
+  },
+  "SYNQ_O001": {
+    "oracle_id": "SYNQ-O001",
+    "qualification": "QUALIFIED_EXACT_LOCAL_CONSERVATION_ORACLE",
+    "independence": "STRONGLY_INDEPENDENT",
+    "formulation": "Hv appears once; duplicated storage term = Avc*Hv*St*Ld.",
+    "synthetic_inputs": {
+      "Avc_kg_m3": 0.2,
+      "Hv_d_1": 0.1,
+      "St_d": 2.0,
+      "Ld_m": 0.1
+    },
+    "expected_conservative_residual_kg_m2": 0.0,
+    "expected_duplicated_Hv_residual_kg_m2": 0.004,
+    "pass": true,
+    "B2_created": false,
+    "historical_behaviour_claimed": false
+  },
+  "additional_B1_non_interference": {
+    "matrix_cases": 8,
+    "all_cases_completed": true,
+    "total_compared_files_excluding_stdout": 550,
+    "equal_raw": 430,
+    "equal_after_declared_volatile_metadata_normalization": 99,
+    "scientifically_different": 21,
+    "all_scientific_differences_within_predeclared_surface": true,
+    "numerical_tolerance": null,
+    "activated_cases": [
+      "GrassPeat",
+      "LWKM_gras_1040.2021.2045",
+      "STONE_akk_0006.2001.2015"
+    ],
+    "unchanged_cases": [
+      "CranGrass",
+      "CranMais",
+      "RuurloGrass",
+      "Puitmijn_Cranendonck_60",
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+    ],
+    "generic_probe_observation": "An unguarded generic Hv1-to-Hv1-Hv diagnostic probe happened to be scientifically identical to the nitrate-scoped probe across this eight-case natural suite.",
+    "generic_probe_policy_consequence": "NONE; natural-suite non-discrimination does not authorize a generic shared-substance correction."
+  },
+  "branch_coverage": {
+    "natural_target_reconstruction_entries": 508,
+    "natural_non_nitrate_entries": 0,
+    "Iflsol_1_natural": 486,
+    "Iflsol_3_natural": 22,
+    "Iflsol_3_role": "EXACT_ZERO_DELTA_CONTROL_BECAUSE_Hv_EQUALS_0",
+    "Iflsol_4_isolated_harness": "PASS_REACHABLE_NONZERO_DELTA",
+    "Iflsol_2_target_reconstruction": "STRUCTURALLY_UNREACHABLE_FOR_VALID_POSITIVE_STORAGE_DENOMINATOR_AFTER_FROZEN_PRE_ADJUSTMENT",
+    "Iflsol_5_target_reconstruction": "STRUCTURALLY_UNREACHABLE_FOR_VALID_POSITIVE_STORAGE_DENOMINATOR_AFTER_FROZEN_PRE_ADJUSTMENT",
+    "reachable_target_modes_covered": [1, 3, 4],
+    "coverage_gate": "PASS"
+  },
+  "readiness_reconciliation": {
+    "frozen_B0_identity": "PASS",
+    "canonical_TCD015_binding": "PASS",
+    "exact_source_seam": "PASS",
+    "exact_Hv_Hv1_storage_decomposition": "PASS",
+    "natural_LWKM_activation": "PASS_TITO_2312_LAYER_1_NITRATE_IFLSOL_1",
+    "local_conservation": "PASS_EXACT_DUPLICATED_MASS_IDENTITY_NO_TOLERANCE",
+    "SYNQ_O001_scope": "PASS_INDEPENDENT_CONSERVATION_ORACLE_NOT_B2",
+    "predeclared_expected_difference": "PASS",
+    "additional_B1_non_interference": "PASS_8_CASE_550_FILE_MATRIX",
+    "IFLSOL_branch_coverage": "PASS_REACHABLE_1_3_4_STRUCTURAL_UNREACHABILITY_2_5",
+    "nitrate_only_scope": "PASS",
+    "GHG0_qualified_boundary": "PASS_CORE_SCOPE_ONLY_GHG_ENABLED_DOWNSTREAM_REMAINS_UNQUALIFIED",
+    "generic_shared_substance_correction": "PASS_NOT_AUTHORIZED",
+    "clipping_policy_redesign": "PASS_NONE",
+    "tolerance_change": "PASS_NONE",
+    "solver_change": "PASS_NONE",
+    "production_source_unchanged": "PASS"
+  },
+  "expected_difference": {
+    "immediate_changed_when_target_activates": [
+      "nitrate Reko reconstructed at the exact second negative-concentration seam",
+      "nitrate process/source accounting derived from that Reko",
+      "NO3 local and accumulated balance residual/error surfaces",
+      "legacy nitrate mass-balance warnings attributable to the duplicated storage term"
+    ],
+    "possible_existing_downstream_changed_within_core_scope": [
+      "Rekonide bookkeeping where existing CORRECTION(2) propagates changed nitrate process accounting",
+      "derived NO3 balance/reporting surfaces"
+    ],
+    "required_unchanged": [
+      "negative-concentration trigger and Optneg policy",
+      "Vsmall and all clipping constants",
+      "Ttry calculation and analytical solution selection",
+      "all solver and convergence tolerances",
+      "hydrological forcing, water states and water fluxes",
+      "nitrate input and boundary data",
+      "all non-NITRATE Transsub paths under the species-scoped candidate",
+      "all paths not entering the target second reconstruction",
+      "all transport physics outside removal of the duplicated moisture-storage contribution",
+      "GreenHouseGasOption-enabled behaviour is not claimed",
+      "macropore interaction remains outside the qualified natural matrix"
+    ]
+  },
+  "gates": {
+    "b0_identity": "PASS",
+    "b1_evidence": "PASS",
+    "b2_route": "PASS_GOV03_HISTORICAL_UNCERTAINTY_ROUTE",
+    "theory_or_exact_identity": "PASS_LOCAL_CONSERVATION_AND_SOURCE_ALGEBRA_IDENTITY",
+    "causal": "PASS",
+    "conservation": "PASS_EXACT_NO_TOLERANCE",
+    "expected_difference": "PASS",
+    "non_interference": "PASS_WITHIN_QUALIFIED_CORE_NON_GHG_SCOPE",
+    "coverage": "PASS_REACHABLE_TARGET_BRANCHES",
+    "class_specific": "PASS_FOR_READINESS",
+    "residual_uncertainty": "PASS_EXPLICIT",
+    "independent_review": "FAIL_PENDING_NOT_COMPLETED",
+    "composition_if_applicable": "PASS_NOT_APPLICABLE"
+  },
+  "independent_review": {
+    "required": true,
+    "same_authoring_context_may_count": false,
+    "existing_PR21_same_account_COMMENTED_handoff_is_independent": false,
+    "review_status_at_reconciliation": "PENDING_INDEPENDENT_REVIEW",
+    "planned_handoff_branch": "review/animo-b3b01r-tcd015-independent-second-line",
+    "gate": "BLOCKING"
+  },
+  "residual_uncertainty": [
+    "No qualified historical B2 behavioural reference exists; historical revision-53 behaviour remains UNKNOWN.",
+    "The generic Transsub expression is shared by substances other than nitrate. TCD-015 remains nitrate-scoped and does not authorize a generic shared-substance correction.",
+    "GreenHouseGasOption-enabled downstream consequences are not qualified by this disposition; the admitted evidence boundary is GreenHouseGasOption=0 only.",
+    "Optional macropore interaction is outside the current natural TCD-015 non-interference matrix.",
+    "Controlled immutable external B0 storage proof remains pending under EG01; exact byte identities are nevertheless pinned and were rechecked in the authoring environment.",
+    "No production implementation, B4 migration, composition or whole-model historical-equivalence claim is authorized."
+  ],
+  "admission_decision": {
+    "admitted": false,
+    "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03",
+    "historical_fidelity_claimed": false,
+    "production_patch_authorized": false,
+    "production_migration_admitted": false,
+    "B4_admitted": false,
+    "composition_admitted": false
+  }
+}
