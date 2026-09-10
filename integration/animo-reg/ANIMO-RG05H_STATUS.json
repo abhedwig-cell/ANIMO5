@@ -2,8 +2,8 @@
   "work_unit": "ANIMO-RG05H",
   "title": "Post-RG05G Canonical Routing Refresh & TCD-038 Admission Integration",
   "branch": "work/animo-rg05h-b3i07-routing-tcd038-admission-integration",
-  "state": "PERSISTED_VALIDATION_PENDING",
-  "decision": "PERSISTED_VALIDATION_PENDING",
+  "state": "QUALIFIED_EARLY_AGGREGATE_ROUTING_REFRESH_PLUS_ONE_POST_RG05G_ATOMIC_ADMISSION_NO_PRODUCTION",
+  "decision": "QUALIFIED_EARLY_AGGREGATE_ROUTING_REFRESH_PLUS_ONE_POST_RG05G_ATOMIC_ADMISSION_NO_PRODUCTION",
   "source_aggregate": "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
   "aggregate_trigger": "CANONICAL_ROUTING_CHANGED_AND_CURRENT_CENTRAL_SNAPSHOT_WOULD_OTHERWISE_BE_MISLEADING",
   "batch_policy": {
@@ -49,21 +49,22 @@
     "historical_fidelity_claimed": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-RG05H routing refresh and TCD-038 admission integration",
-    "run_id": null,
-    "job_id": null,
-    "tested_head": null,
-    "conclusion": null,
-    "validator": "PENDING",
-    "scope_guard": "PENDING"
+    "run_id": 34537520086,
+    "job_id": 103072474578,
+    "tested_head": "c3ae713da03a5225219900ddd57f8896e4a79ef0",
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34537520086 validates the full RG05H aggregate package at tested head c3ae713da03a5225219900ddd57f8896e4a79ef0. This status-only closeout must pass the same workflow on its exact final head before RG05H is treated as current aggregate authority."
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "next_if_validated": "USE_ANIMO_RG05H_AS_CURRENT_AGGREGATE_AUTHORITY_THEN_START_TCD037_CHILD_READINESS_FROM_B3I07_WITHOUT_ASSUMING_TIER_A_WAIVER"
 }
