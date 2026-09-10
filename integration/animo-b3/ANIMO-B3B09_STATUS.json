@@ -4,9 +4,9 @@
   "title": "TCD-038 Crop Actual Uptake Restart Initialization Direction Qualification",
   "branch": "work/animo-b3b09-tcd038-crop-actual-uptake-restart-readiness",
   "target": "TCD-038",
-  "state": "QUALIFIED_CLASS_B_ADMISSION_READINESS_GOV04_TIER_C_REVIEW_HANDOFF_PENDING_MACHINE_GATE",
+  "state": "QUALIFIED_CLASS_B_ADMISSION_READINESS_GOV04_TIER_C_REVIEW_HANDOFF_PREPARED",
   "decision": "QUALIFIED_CLASS_B_ADMISSION_READINESS_GOV04_TIER_C_RESTART_SEMANTICS_INDEPENDENT_REVIEW_REQUIRED",
-  "readiness_qualified_subject_to_machine_gate": true,
+  "readiness_qualified": true,
   "b3_admitted": false,
   "production_authorized": false,
   "requested_id_collision": {
@@ -65,16 +65,20 @@
     "tier": "C",
     "status": "PENDING_NOT_EXECUTED",
     "authoring_context_may_sign_gate": false,
-    "handoff_prepared": false
+    "handoff_prepared": true,
+    "handoff_artifact": "integration/animo-b3/TCD038_INDEPENDENT_REVIEW_HANDOFF.json",
+    "review_branch": "review/animo-b3b09r-tcd038-independent-second-line"
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-B3B09 TCD-038 Tier-C readiness",
-    "github_actions_run_id": null,
-    "evidence_head": null,
-    "conclusion": "PENDING",
-    "validator": "PENDING",
-    "scope_guard": "PENDING"
+    "github_actions_run_id": 34524387266,
+    "github_actions_job_id": 103029570277,
+    "evidence_head": "9a9a834ea02d34d7f91099e20223c560e6abbc77",
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34524387266 validates the substantive B3B09 readiness package at evidence head 9a9a834ea02d34d7f91099e20223c560e6abbc77. The final closeout head must pass the same fail-closed workflow before review branch creation."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -87,5 +91,5 @@
     "rg05g_updated": false,
     "independent_review_performed": false
   },
-  "next_if_machine_validated": "PREPARE_EXACTLY_ONE_SEPARATE_GOV04_TIER_C_INDEPENDENT_SECOND_LINE_REVIEW_HANDOFF"
+  "next_if_final_head_validated": "CREATE_EXACTLY_ONE_CLEAN_GOV04_TIER_C_REVIEW_BRANCH_FROM_FINAL_B3B09_CLOSEOUT_HEAD_AND_STOP"
 }
