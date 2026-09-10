@@ -4,7 +4,7 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3b05-tcd023-stable-dom-p-partition-readiness",
   "target_tcd": "TCD-023",
-  "state": "QUALIFIED_CLASS_B_ADMISSION_READINESS_HANDOFF_PENDING_GREEN_VALIDATION",
+  "state": "QUALIFIED_CLASS_B_ADMISSION_READINESS_VALIDATED_REVIEW_HANDOFF_PREPARED",
   "readiness_qualified": true,
   "b3_admitted": false,
   "production_authorized": false,
@@ -93,16 +93,25 @@
   },
   "validation": {
     "validator": "tools/validate_b3b05_tcd023.py",
+    "scope_guard": "tools/guard_b3b05_tcd023_scope.py",
     "workflow": ".github/workflows/animo-b3b05-tcd023-readiness.yml",
     "green_GitHub_Actions_required_before_review_handoff": true,
-    "green_GitHub_Actions_observed_for_current_status_head": false,
-    "green_workflow_run_id": null
+    "validated_readiness_head": "e76345bf984c58ff0b30a24b39dc8e037a2f4fd6",
+    "green_GitHub_Actions_observed_for_validated_readiness_head": true,
+    "green_workflow_run_id": 34480049339,
+    "green_job_id": 102880280314,
+    "green_conclusion": "success"
   },
   "independent_review_handoff": {
     "required_count": 1,
-    "issue_number": null,
+    "issue_number": 45,
+    "issue_url": "https://github.com/abhedwig-cell/ANIMO5/issues/45",
     "review_workunit": "ANIMO-B3B05R",
-    "state": "PLANNED_PENDING_GREEN",
+    "review_branch": "review/animo-b3b05r-tcd023-independent-second-line",
+    "review_candidate_readiness_head": "e76345bf984c58ff0b30a24b39dc8e037a2f4fd6",
+    "review_handoff_head": "284afb6ebe8047087f3444d198d55e633bdbc617",
+    "review_contract": "docs/b3/TCD023_INDEPENDENT_SECOND_LINE_REVIEW_CONTRACT.md",
+    "state": "PREPARED_PENDING_INDEPENDENT_REVIEW",
     "executed_in_this_context": false,
     "same_authoring_context_may_sign": false
   },
