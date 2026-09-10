@@ -1,0 +1,109 @@
+{
+  "work_unit": "ANIMO-B3B06",
+  "target": "TCD-030",
+  "record_type": "PREDECLARED_VALIDATION_AND_EXPECTED_DIFFERENCE_MATRIX",
+  "comparison_domain": {
+    "equivalence_domain": "Ioptmp=1 inputs for which both NH4 and NO3 macropore initial concentrations are >= 0, plus Ioptmp=0 where the MPnitr path is not called",
+    "divergence_domain": "Ioptmp=1 inputs with NH4 >= 0 and at least one NO3 < 0",
+    "trajectory_equivalence_claimed_for_divergence_domain": false,
+    "reason": "the corrected validation is expected to stop before model execution where legacy currently continues"
+  },
+  "expected_difference_contract": {
+    "allowed": [
+      "INPUT_ACCEPTANCE_REJECTION",
+      "DIRECT_VALIDATION_DIAGNOSTIC"
+    ],
+    "forbidden": [
+      "PHYSICAL_TRANSPORT_ALGEBRA",
+      "PERSISTENT_STATE_LAYOUT_OR_SEMANTICS",
+      "RESTART_SEMANTICS",
+      "NUMERICAL_POLICY",
+      "SOLVER_OR_TOLERANCE",
+      "TCD025_LEDGER_COMPOSITION",
+      "TCD031_PERSISTENT_STATE_COMPOSITION"
+    ],
+    "planned_source_change": [
+      "mapoinput.for:130 Checkrea value argument CoMpnh(1) -> CoMpni(1)",
+      "mapoinput.for:132 Checkrea value argument CoMpnh(2) -> CoMpni(2)"
+    ],
+    "production_patch_in_this_workunit": false
+  },
+  "cases": [
+    {
+      "id": "ACTIVE_VALID_DISTINCT_SPECIES",
+      "ioptmp": 1,
+      "nh4": [1.0, 2.0],
+      "no3": [3.0, 4.0],
+      "legacy": {"accepted": true, "error": 0, "diagnostic_variable": null},
+      "candidate": {"accepted": true, "error": 0, "diagnostic_variable": null},
+      "purpose": "positive valid NO3 with NH4 and NO3 deliberately different"
+    },
+    {
+      "id": "ACTIVE_INVALID_NO3_DOMAIN1",
+      "ioptmp": 1,
+      "nh4": [1.0, 2.0],
+      "no3": [-1.0, 4.0],
+      "legacy": {"accepted": true, "error": 0, "diagnostic_variable": null},
+      "candidate": {"accepted": false, "error": 1992, "diagnostic_variable": "CoMpni(1)"},
+      "purpose": "negative invalid NO3 domain 1 cannot hide behind valid NH4"
+    },
+    {
+      "id": "ACTIVE_INVALID_NO3_DOMAIN2",
+      "ioptmp": 1,
+      "nh4": [1.0, 2.0],
+      "no3": [3.0, -1.0],
+      "legacy": {"accepted": true, "error": 0, "diagnostic_variable": null},
+      "candidate": {"accepted": false, "error": 1992, "diagnostic_variable": "CoMpni(2)"},
+      "purpose": "negative invalid NO3 domain 2 cannot hide behind valid NH4"
+    },
+    {
+      "id": "ACTIVE_LOWER_BOUNDARY_ZERO_DOMAIN1",
+      "ioptmp": 1,
+      "nh4": [1.0, 2.0],
+      "no3": [0.0, 4.0],
+      "legacy": {"accepted": true, "error": 0, "diagnostic_variable": null},
+      "candidate": {"accepted": true, "error": 0, "diagnostic_variable": null},
+      "purpose": "exact lower boundary is inclusive"
+    },
+    {
+      "id": "ACTIVE_JUST_BELOW_LOWER_BOUNDARY",
+      "ioptmp": 1,
+      "nh4": [1.0, 2.0],
+      "no3": [-0.000001, 4.0],
+      "legacy": {"accepted": true, "error": 0, "diagnostic_variable": null},
+      "candidate": {"accepted": false, "error": 1992, "diagnostic_variable": "CoMpni(1)"},
+      "purpose": "boundary sensitivity without conflating zero with invalid input"
+    },
+    {
+      "id": "ACTIVE_HIGH_SENTINEL_IS_NOT_BOUND",
+      "ioptmp": 1,
+      "nh4": [1.0, 2.0],
+      "no3": [1000.0, 1000000.0],
+      "legacy": {"accepted": true, "error": 0, "diagnostic_variable": null},
+      "candidate": {"accepted": true, "error": 0, "diagnostic_variable": null},
+      "purpose": "guard against misreading 999 as an upper limit"
+    },
+    {
+      "id": "ACTIVE_INVALID_NH4_CONTROL",
+      "ioptmp": 1,
+      "nh4": [-1.0, 2.0],
+      "no3": [3.0, 4.0],
+      "legacy": {"accepted": false, "error": 1992, "diagnostic_variable": "CoMpnh(1)"},
+      "candidate": {"accepted": false, "error": 1992, "diagnostic_variable": "CoMpnh(1)"},
+      "purpose": "NH4 ownership and its earlier validation remain unchanged"
+    },
+    {
+      "id": "INACTIVE_MACROPORE_OPTION",
+      "ioptmp": 0,
+      "nh4": [-1.0, 2.0],
+      "no3": [-1.0, 4.0],
+      "legacy": {"accepted": true, "error": 0, "diagnostic_variable": null, "path": "MPNITR_NOT_CALLED"},
+      "candidate": {"accepted": true, "error": 0, "diagnostic_variable": null, "path": "MPNITR_NOT_CALLED"},
+      "purpose": "inactive path has no TCD-030 validation effect"
+    }
+  ],
+  "control_flow_observation": {
+    "overall_parser_newly_accepts_any_case_due_to_tcd030_fix": false,
+    "explanation": "the correct NH4 checks run before the faulty NO3-labelled checks, so a negative NH4 already causes Error=1992 before those calls; the observable routine-level correction only closes invalid negative NO3 acceptance"
+  }
+}
