@@ -9,8 +9,8 @@
   "readiness_authority": "ANIMO-B3B04@19e38ae0dfc211e88fe782b4b7d6e42b1b7f5865",
   "GOV03_authority": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
   "B3_framework": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
-  "state": "IN_PROGRESS_PERSISTED_TCD040_ROUTE_AND_DISCRIMINATOR_VALIDATION_PENDING",
-  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "state": "QUALIFIED_TCD040_FORMAL_DISPOSITION_ROUTE_OPEN_RESTORE_DISCRIMINATOR_QUALIFIED_INDEPENDENT_REVIEW_PENDING_NO_ADMISSION",
+  "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_AND_RESTORE_DISCRIMINATOR_QUALIFIED_BY_GOV03",
   "admitted": false,
   "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
   "historical_behaviour": "UNKNOWN",
@@ -34,19 +34,20 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "qualified": true,
+    "workunit_complete": true
   },
   "validation": {
     "validator": "tools/validate_b3d11_tcd040_disposition.py",
     "workflow": ".github/workflows/animo-b3d11-tcd040-disposition.yml",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_job_id": null,
-    "github_actions_conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "a347bacb6344de11a24fc6d4eb65807c092fcb45",
+    "github_actions_run_id": 34449596739,
+    "github_actions_job_id": 102782070397,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS_B3D11_TCD040_GOV03_RESTORE_DISCRIMINATOR_DISPOSITION",
+    "scope_guard": "PASS_B3D11_SCOPE_GUARD",
+    "closeout_note": "Run 34449596739 validates the complete persisted B3D11 package before this status-only closeout commit. The closeout commit must pass the same workflow independently."
   },
   "deliverables": [
     "docs/b3/TCD040_GOV03_RESTORE_DISCRIMINATOR_DISPOSITION.md",
