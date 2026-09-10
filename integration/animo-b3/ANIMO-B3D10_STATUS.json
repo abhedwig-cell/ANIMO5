@@ -13,7 +13,7 @@
   "b3_framework": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
   "historical_route_authority": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
   "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
-  "state": "PENDING_VALIDATION_TCD027_FORMAL_DISPOSITION_ROUTE_OPEN_REVIEW_PENDING_NO_ADMISSION",
+  "state": "QUALIFIED_TCD027_FORMAL_DISPOSITION_ROUTE_OPEN_INDEPENDENT_REVIEW_PENDING_NO_ADMISSION",
   "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03",
   "route_reconciliation": {
     "historical_B2_available": false,
@@ -88,20 +88,20 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "validation": {
     "validator": "tools/validate_b3d10_tcd027_disposition.py",
     "workflow": ".github/workflows/animo-b3d10-tcd027-disposition.yml",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_job_id": null,
-    "github_actions_conclusion": null,
-    "validator_result": null,
-    "scope_guard": null,
-    "closeout_note": null
+    "tested_head": "6a3d0643319f572b4f3767731d2f6e40441cd89a",
+    "github_actions_run_id": 34449455753,
+    "github_actions_job_id": 102781611790,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS_B3D10_TCD027_GOV03_DISPOSITION",
+    "scope_guard": "PASS_B3D10_SCOPE_GUARD",
+    "closeout_note": "This status commit follows the successful substantive-head workflow. The same workflow must also pass on this final closeout head before the independent review branch is created."
   },
   "deliverables": [
     "integration/animo-b3/TCD027_B3_DISPOSITION_GOV03.json",
@@ -111,7 +111,7 @@
     ".github/workflows/animo-b3d10-tcd027-disposition.yml"
   ],
   "recommended_next": [
-    "After successful validation, create a clean ANIMO-B3A01R independent-review branch from the qualified B3D10 head.",
+    "After successful validation of this final closeout head, create a clean ANIMO-B3A01R independent-review branch from that exact qualified B3D10 head.",
     "Persist a fail-closed TCD-027 independent second-line review contract and open a dedicated GitHub review issue.",
     "Execute the review only in a separate ChatGPT context.",
     "If and only if the independent review passes, use a later separate admission-closeout workunit.",
