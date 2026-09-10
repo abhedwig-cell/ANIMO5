@@ -61,6 +61,8 @@
   },
   "review_handoff": {
     "required": true,
+    "planned_work_unit": "ANIMO-B3B01R",
+    "planned_branch": "review/animo-b3b01r-tcd015-independent-second-line",
     "work_unit": "ANIMO-B3B01R",
     "branch": "review/animo-b3b01r-tcd015-independent-second-line",
     "initial_handoff_head": "c05486e76993d26771f62f32842508479d14fdde",
