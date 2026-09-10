@@ -1,0 +1,16 @@
+{
+  "workunit": "ANIMO-B3B10E1",
+  "tcd": "TCD-031",
+  "branch": "work/animo-b3b10e1-tcd031-source-provenance-remediation",
+  "exact_starting_head": "36aad892cac546105dfec0fe43aa34a18e23bcad",
+  "scope": "SOURCE_PROVENANCE_REMEDIATION",
+  "scientific_admission": false,
+  "production_patch": false,
+  "expected_frozen_source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "archive_redistribution_permitted": false,
+  "status": "PERSISTED_REMEDIATION_CHECKPOINT_EVIDENCE_GENERATION_PENDING",
+  "stateq04_reopen_required": false,
+  "tcd025_composition": false,
+  "b3_admission": false,
+  "central_regie_update": false
+}
