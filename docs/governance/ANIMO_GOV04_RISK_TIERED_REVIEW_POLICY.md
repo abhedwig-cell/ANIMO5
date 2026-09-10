@@ -4,13 +4,21 @@ Work unit: `ANIMO-GOV04`
 
 Branch: `work/animo-gov04-risk-tiered-review-policy`
 
-Central regie authority: `ANIMO-RG05D@f3d6b9780631bd627f8bca0658a8e3878746e666`
+Authoring base: `ANIMO-RG05D@f3d6b9780631bd627f8bca0658a8e3878746e666`
+
+Current central regie at closeout: `ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73`
 
 B3 framework authority: `ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54`
 
 Historical uncertainty route authority: `ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c`
 
 Scope: governance only. GOV04 admits no TCD, opens no B4 work, changes no production source and does not rewrite any historical review, admission or RG05 snapshot.
+
+## Concurrent central-regie advance
+
+GOV04 was branched from the then-current RG05D authority. During authoring, `ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73` qualified the fifth atomic B3 admission integration for TCD-015. GOV04 therefore retains RG05D as immutable authoring base but treats RG05E as the current central-regie authority at closeout. No rebase or historical rewrite is required because GOV04 changes only five governance files and validates RG05E as an external pinned authority.
+
+RG05E records five atomic scientific admissions, `TCD-017`, `TCD-018`, `TCD-024`, `TCD-026` and `TCD-015`. B3 remains incomplete, B4 remains closed and production migration remains closed.
 
 ## Decision principle
 
@@ -199,7 +207,7 @@ until the next aggregate integration has incorporated that admission.
 
 Every admitted atomic object is authoritative from its own qualified admission record. Pending aggregate integration must retain at least the exact admission workunit, commit identity, admission record identity, disposition, historical-uncertainty state and the last aggregate-regie snapshot. Central batching may delay aggregate reporting. It may not delay or erase atomic traceability.
 
-Historical `RG05`, `RG05A`, `RG05B`, `RG05C` and `RG05D` snapshots remain immutable.
+The qualified RG05E snapshot is the final pre-GOV04 atomic-by-atomic integration snapshot and becomes the starting aggregate-regie reference for future GOV04-controlled admissions. Historical `RG05`, `RG05A`, `RG05B`, `RG05C`, `RG05D` and finalized `RG05E` remain immutable.
 
 ## Transitional rules
 
@@ -211,23 +219,29 @@ Open workunits may use GOV04 only after GOV04 itself is qualified. An independen
 
 GOV03 remains authoritative for historical-reference acquisition closure. Where no qualified B2 exists, historical behaviour remains `UNKNOWN`. GOV04 does not fabricate B2 and does not convert historical uncertainty to historical fidelity.
 
-## Live transition decisions at GOV04 authoring
+## Live transition decisions at GOV04 closeout
 
 ### TCD-015
 
-TCD-015 remains risk Tier B. The live independent second-line review at `ANIMO-B3B01R@a6880282e9ed743f97a3435b55e4fb54f7d55a44` records PASS. That review can be `VERIFY_AND_REUSE` input for a single post-review disposition and admission closeout, provided its pins, scope and GOV03 route remain valid. No second independent review is required merely because admission occurs later.
+TCD-015 remains risk Tier B, but its lane completed concurrently with GOV04. `ANIMO-B3D12@5e33c195174e41ea949d5a828d30bb7b9e313a5d` admitted the atomic nitrate-only, GHG-off correction with historical behaviour `UNKNOWN`, using the qualified independent review `ANIMO-B3B01R@a6880282e9ed743f97a3435b55e4fb54f7d55a44`. `ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73` then integrated that fifth admission centrally. GOV04 performs no further TCD-015 action and does not reopen it.
+
+For future Tier B cases, this chain can be shorter: retain one genuinely independent second-line review, then combine post-review disposition and admission closeout when pins and route are unchanged. Central regie need not update after each such atomic admission.
 
 ### TCD-027
 
-TCD-027 remains a Class A candidate and is eligible for the Tier A path, but GOV04 does not declare it admitted or automatically admission-ready. The existing second-line result at `ANIMO-B3A01R@510c9313926457cd9bfd8e71a551255297bdfbb3` is `INCOMPLETE`, specifically because exact source-bound neighbourhood evidence could not be independently closed. That result is not scientific falsification and remains immutable.
+TCD-027 remains a Class A candidate and is eligible for the Tier A path, but GOV04 does not admit it. The existing second-line result `ANIMO-B3A01R@510c9313926457cd9bfd8e71a551255297bdfbb3` remains `INCOMPLETE` due to evidence insufficiency, not scientific falsification.
 
-After GOV04 qualification, a bounded combined technical-review and admission workunit may proceed without a new separate second-line context only if it closes every Tier A waiver predicate, including the exact source seam, local term ownership and reporting-slot mapping that remained unresolved in the earlier independent context. If any source meaning, ownership, state or flux non-interference question remains ambiguous, TCD-027 escalates and the waiver is unavailable.
+The concurrent remediation `ANIMO-B3A01E@5232ef5fa6daafa2296401b19fd9e866a34152bd` has now persisted and structurally validated the three missing frozen-source neighbourhoods: local `Dum` construction, Outbal_write slot 24 to 27 mapping and organic-P slot 25/26/27 self-accumulators. It explicitly did not perform a new independent review and did not admit TCD-027.
+
+Under GOV04, the old instruction in B3A01E to start a new B3A01R2 is superseded prospectively only if a new bounded Tier A qualification/admission workunit verifies all GOV04 waiver predicates against B3A01, B3D10 and B3A01E with compatible immutable pins. If every Tier A condition passes, no separate B3A01R2 context is required. If source meaning, ownership, state or flux non-interference remains ambiguous, the waiver fails and TCD-027 escalates.
 
 ### TCD-040
 
-TCD-040 is risk Tier C because its scientific surface is restart and initialization semantics, regardless of its local legacy class label. Its independent review at `ANIMO-B3B04R@bb001129578457ca8435e39deb2b8586e7ebc6a2` correctly remains fail closed with `FAIL_CLOSED_INDEPENDENT_EVIDENCE_REPLAY_INCOMPLETE`; the scientific claim was not falsified. Current remediation is therefore an evidence/provenance repair path, not a scientific reset.
+TCD-040 is risk Tier C because its scientific surface is restart and initialization semantics, regardless of its local legacy class label. Its independent review `ANIMO-B3B04R@bb001129578457ca8435e39deb2b8586e7ebc6a2` remains fail closed with `FAIL_CLOSED_INDEPENDENT_EVIDENCE_REPLAY_INCOMPLETE`; the scientific claim was not falsified.
 
-After the evidence bundle is repaired, targeted independent re-review may focus on the failed replay and provenance gates plus regression guards only if the prior PASS gates, claim and source identities are unchanged. Otherwise TCD-040 requires full independent re-review. No Tier A waiver applies.
+The live evidence-remediation lane `ANIMO-B3B04E1@b3f509806119ea2c2aaf0694c08d4a5bb13e6ca3` has a local reconstructed replay PASS but still fails closed because controlled immutable B0 acquisition and independent CI replay are not proven. The E3 branch is still only a reservation at the E2 head and has no unique E3 work yet.
+
+Tier C therefore remains unchanged: independent review is required. After controlled B0 evidence remediation succeeds, targeted independent re-review may focus on the failed replay/provenance gates plus regression guards only if prior PASS gates, claim scope and source identities are unchanged. Otherwise full re-review is required.
 
 ## Hard invariants
 
