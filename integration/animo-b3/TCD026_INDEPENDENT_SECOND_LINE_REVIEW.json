@@ -1,0 +1,269 @@
+{
+  "work_unit": "ANIMO-B3A04R2",
+  "title": "TCD-026 Fresh-Organic-Matter Initial Exudate Storage Ledger Independent Second-Line Review",
+  "repository": "abhedwig-cell/ANIMO5",
+  "review_branch": "review/animo-b3a04r2-tcd026-independent-second-line",
+  "reviewed_handoff_head": "bd19ee247ba910eee234c67ec74def28d376c779",
+  "target_tcd": "TCD-026",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "result": "PASS",
+  "result_scope": "Independent second-line review evidence only. This record does not perform B3 admission.",
+  "independence": {
+    "separate_chatgpt_context_from_b3a04_b3a04r_b3d07_authoring": true,
+    "organizational_or_human_independence_claimed": false
+  },
+  "reviewed_authorities": {
+    "readiness": "ANIMO-B3A04@5eaf02298603b85f802d8e35d6a63941d0878879",
+    "same_context_technical_review_evidence_only": "ANIMO-B3A04R@27b1700a330959d1b5eae23a2094cad579630f14",
+    "formal_route_reconciliation": "ANIMO-B3D07@21766eaf3443bcf432f05fbf6ba89d365bc70988",
+    "historical_route": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3_framework": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "stateq02_support_boundary": "ANIMO-STATEQ02@cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "synq01": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+    "review_contract": "docs/b3/TCD026_INDEPENDENT_SECOND_LINE_REVIEW_CONTRACT.md@bd19ee247ba910eee234c67ec74def28d376c779"
+  },
+  "live_head_checks_before_write": {
+    "review_branch": "bd19ee247ba910eee234c67ec74def28d376c779",
+    "review_branch_parent": "21766eaf3443bcf432f05fbf6ba89d365bc70988",
+    "b3d07_branch": "21766eaf3443bcf432f05fbf6ba89d365bc70988",
+    "gov03_branch": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "issue_28_comments_before_review": 0
+  },
+  "frozen_B0": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "source_sidecar_blob": "d8a46d461d3bfaf38a084ab7bf99f22b04bb30b6",
+    "testbank_sidecar_blob": "f45d412d805353900d34a6d9d934c632b055ea7e"
+  },
+  "source_bound_evidence": {
+    "prep06_defect": {
+      "path": "integration/animo-prep/PREP06_EXUDATE_INITIAL_STORAGE_DEFECT.json",
+      "blob": "0e60d8aaf526c0b0127da1143b68c9c8235e9fe3",
+      "authority": "ANIMO-B3A04@5eaf02298603b85f802d8e35d6a63941d0878879"
+    },
+    "prep06_source_reverification": {
+      "path": "integration/animo-prep/PREP06_SOURCE_REVERIFICATION.json",
+      "blob": "bd0ec232f3de269c0f4251c30761b528a8d28e65",
+      "authority": "ANIMO-B3A04@5eaf02298603b85f802d8e35d6a63941d0878879"
+    },
+    "prep06_state_inventory": {
+      "path": "integration/animo-prep/PREP06_CONSERVED_STATE_INVENTORY.csv",
+      "blob": "7893a1567a1c38eeadd08aaf4b571c1cf639bfa8",
+      "authority": "ANIMO-B3A04@5eaf02298603b85f802d8e35d6a63941d0878879"
+    },
+    "source_audit_tool": {
+      "path": "tools/audit_transfer_ledger_symmetry.py",
+      "blob": "5a07994d14979e23f6be8696e6c9f2391473c4d0",
+      "authority": "ANIMO-B3A04@5eaf02298603b85f802d8e35d6a63941d0878879"
+    },
+    "class_definition": {
+      "path": "docs/governance/B3_QUALIFICATION_CLASSES.md",
+      "blob": "b67b46eff837ae03732e97dd43a3d6e1f1c220ed",
+      "authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+    },
+    "synq01_oracle_register": {
+      "blob": "4c215d19844614de8868380fb03f93268ea4c5d8",
+      "oracle_count": 12,
+      "tcd026_matches": 0
+    },
+    "stateq02_status_blob": "88df49ccb86bdb9d2553693c1ef1ef06de1e4025",
+    "stateq02_qualification_doc_blob": "0f56c4fa75d75a6b4e4fe48020c633fcd0d23f27",
+    "b3a04r_status_blob": "69208a014b90d56d963f43763d8efab3f3582998",
+    "b3d07_disposition_blob": "9bc79b746aec21f541ead7db744623f666e57ba0",
+    "b3d07_status_blob": "d46c4ea7b0cd0744537a3908039bafa2e44477a5",
+    "gov03_status_blob": "b85af297731f8bd84feddaf3aa23685549129496"
+  },
+  "atomic_claim": {
+    "candidate": "Bfom(Inip_x,Ly) = Bfom(Inip_x,Ly) + Ex(Ln) * P",
+    "claim": "The already-existing initial root-exudate organic-matter state Ex(Ln) contributes Ex(Ln)*P to Bfom(Inip_x,Ly).",
+    "excluded_changes": [
+      "initialization physics",
+      "physical state",
+      "process fluxes",
+      "restart state",
+      "forcing",
+      "numerical policy",
+      "other organic-matter TCDs"
+    ]
+  },
+  "independent_checks": [
+    {
+      "id": 1,
+      "name": "exact_frozen_B0_source_and_testbank_identity",
+      "status": "PASS",
+      "finding": "The GitHub sidecars reproduce exactly the required source and testbank SHA-256 identities. PREP06 source reverification is bound to the same source archive and reports identity_match=true."
+    },
+    {
+      "id": 2,
+      "name": "ex_physical_ownership_and_lifecycle",
+      "status": "PASS",
+      "finding": "Ex(:)->Rsex(:) is a PHYSICAL_STORAGE root-exudate organic-matter state in kg OM m-2. INITIAL orgexu supplies Ex; Root/Addit/Resp_miner mutate the physical state; Init commits Ex(Ln)=Rsex(Ln); restart output persists Rsex."
+    },
+    {
+      "id": 3,
+      "name": "bfom_begin_storage_ownership",
+      "status": "PASS",
+      "finding": "Bfom(Inip_x,Ly) is the fresh-organic-matter beginning-storage ledger surface. The corresponding final storage Bfom(Finp_x,Ly) already includes Rsex(Ln)*Z. Organic-N and organic-P beginning ledgers already include Ex through Nifrex and Pofrex composition."
+    },
+    {
+      "id": 4,
+      "name": "exact_omitted_term",
+      "status": "PASS",
+      "finding": "The hash-bound source audit directly parses Outbal_Init.for and Outbal_calc.for: initial Bfom has no Ex(Ln), final Bfom has Rsex(Ln), while Bano/Bapo beginning storage includes Ex. The atomic omitted fresh-OM beginning term is Ex(Ln)*P."
+    },
+    {
+      "id": 5,
+      "name": "class_A_reporting_only_atomicity",
+      "status": "PASS",
+      "finding": "The correction is confined to an omitted beginning-storage ledger term for an already represented physical state. No state, process flux, initialization, restart or numerical-policy mutation is required, matching B3Q01 Class A."
+    },
+    {
+      "id": 6,
+      "name": "prep06_synthetic_10_kg_ha_discriminator",
+      "status": "PASS",
+      "finding": "With only Ex(1)=1.0e-3 kg m-2, PREP06 introduces exactly 10.0 kg ha-1. Legacy fresh-OM residual is -10.0 kg ha-1; adding only Ex(Ln)*P removes the discriminator to floating-point roundoff. The small residual is not treated as a tolerance."
+    },
+    {
+      "id": 7,
+      "name": "model_produced_cranmais_restart_activation",
+      "status": "PASS",
+      "finding": "A model-produced CranMais INITIAL.OUT supplies nonzero Ex in layers 1..9 totaling 5989.6594 kg ha-1. Legacy and candidate start from identical restart bytes; the candidate adds the matching beginning store and changes only four declared balance/report surfaces. Final restart output is byte-identical between candidate and legacy."
+    },
+    {
+      "id": 8,
+      "name": "chronological_cranmais_1974_1975_formatted_restart_activation",
+      "status": "PASS",
+      "finding": "The 1974 model-produced INITIAL.OUT is fed byte-identically into the 1975 segment, activating 642.718929 kg ha-1 Ex over layers 1..9. Candidate-vs-legacy final restart state is byte-identical and only the four declared restart-case balance/report surfaces change."
+    },
+    {
+      "id": 9,
+      "name": "candidate_vs_legacy_restart_state_identity_interpretation",
+      "status": "PASS",
+      "finding": "For identical formatted restart input, the candidate ledger observation does not change restart state: legacy and candidate final INITIAL.OUT hashes are identical. This establishes candidate non-interference only; it is not a claim that formatted restart is an exact representation of uninterrupted execution."
+    },
+    {
+      "id": 10,
+      "name": "continuous_vs_formatted_restart_negative_scope_boundary",
+      "status": "PASS",
+      "finding": "Uninterrupted versus formatted-restart CranMais is not byte-identical: 32 of 564 compared numeric tokens differ, with maximum printed absolute difference 1.0e-6. This remains a negative scope boundary and is not promoted to a tolerance or whole-model identity claim."
+    },
+    {
+      "id": 11,
+      "name": "expected_difference_whitelist_and_non_interference",
+      "status": "PASS",
+      "finding": "The global PREP06 discriminator changes exactly ani_omGP.Bal, ani_omRP.Bal, ani_omTP.Bal, baomGP.Out, baomRP.Out and baomTP.Out. The restart activations change the declared subset ani_omMP.Bal, ani_omTP.Bal, baomMP.Out and baomTP.Out. No unexpected scientific output changes were observed; physical state, process flux, restart state, forcing and unrelated ledgers remain outside the write set."
+    },
+    {
+      "id": 12,
+      "name": "no_tcd026_specific_SYNQ01_oracle",
+      "status": "PASS",
+      "finding": "The full qualified SYNQ01 register contains 12 oracles and no TCD-026 target. No synthetic oracle is falsely claimed for TCD-026."
+    },
+    {
+      "id": 13,
+      "name": "STATEQ02_support_boundary",
+      "status": "PASS",
+      "finding": "STATEQ02 is used only to support physical continuation-state ownership/restart relevance. It is not used as a TCD-026 ledger oracle, whole-model restart oracle, historical B2 reference or admission evidence."
+    },
+    {
+      "id": 14,
+      "name": "same_context_B3A04R_not_counted_as_independent",
+      "status": "PASS",
+      "finding": "B3A04R identifies itself as TECHNICAL_REVIEW_SAME_AUTHORING_CONTEXT_NOT_INDEPENDENT_SECOND_LINE and independent_second_line_qualified=false. Its technical PASS is input evidence only."
+    },
+    {
+      "id": 15,
+      "name": "GOV03_and_B3D07_live_validity",
+      "status": "PASS",
+      "finding": "Live branch checks place B3D07 exactly at 21766eaf3443bcf432f05fbf6ba89d365bc70988 and GOV03 exactly at cbd262bdabe92923113b7326f2f42822ce9a971c. GOV03 keeps B2 unavailable and opens only the claim-scoped historical-uncertainty route; B3D07 remains UNRESOLVED_NOT_ADMITTED with independent review blocking."
+    },
+    {
+      "id": 16,
+      "name": "historical_revision53_behaviour_remains_UNKNOWN",
+      "status": "PASS",
+      "finding": "No qualified B2 historical behavioural reference exists. Historical revision-53 behaviour therefore remains UNKNOWN under GOV03."
+    },
+    {
+      "id": 17,
+      "name": "no_historical_fidelity_claim",
+      "status": "PASS",
+      "finding": "Neither this review nor the accepted evidence converts hash-pinned source semantics, synthetic activation or diagnostic execution into a claim of historical executable fidelity."
+    },
+    {
+      "id": 18,
+      "name": "no_composition_B4_production_patch_or_migration",
+      "status": "PASS",
+      "finding": "The reviewed atomic claim is not composed with other organic-matter TCDs. No B4 action, production source patch or production migration is performed or authorized by this review."
+    },
+    {
+      "id": 19,
+      "name": "review_performs_no_admission",
+      "status": "PASS",
+      "finding": "ANIMO-B3A04R2 records independent second-line review evidence only. B3 admission remains a separate future closeout and is not executed here."
+    }
+  ],
+  "expected_difference": {
+    "global_synthetic_allowed_changed_outputs": [
+      "ani_omGP.Bal",
+      "ani_omRP.Bal",
+      "ani_omTP.Bal",
+      "baomGP.Out",
+      "baomRP.Out",
+      "baomTP.Out"
+    ],
+    "restart_activation_allowed_changed_subset": [
+      "ani_omMP.Bal",
+      "ani_omTP.Bal",
+      "baomMP.Out",
+      "baomTP.Out"
+    ],
+    "required_unchanged": [
+      "physical state trajectories",
+      "process flux trajectories",
+      "initialization physics",
+      "candidate-versus-legacy restart state from identical restart input",
+      "forcing and scientific testcase payload",
+      "numerical tolerances and policies",
+      "Bano and Bapo",
+      "unrelated organic-matter ledger terms and TCDs",
+      "all non-whitelisted outputs"
+    ],
+    "unexpected_difference_policy": "FAIL_CLOSED",
+    "tolerance_used_for_scope_or_non_interference": false
+  },
+  "historical_uncertainty": {
+    "qualified_B2_exists": false,
+    "GOV03_closure": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "historical_revision53_behaviour": "UNKNOWN",
+    "historical_fidelity_claimed": false,
+    "synthetic_or_diagnostic_evidence_promoted_to_B2": false
+  },
+  "boundaries": {
+    "initialization_physics_changed": false,
+    "physical_state_changed": false,
+    "process_flux_changed": false,
+    "restart_state_changed_by_candidate": false,
+    "forcing_changed": false,
+    "numerical_policy_changed": false,
+    "other_organic_matter_tcds_composed": false,
+    "whole_model_continuous_vs_formatted_restart_identity_claimed": false,
+    "production_source_modified": false,
+    "production_patch_authorized": false,
+    "B3_admission_performed": false,
+    "B4_admission_performed": false,
+    "production_migration_performed": false
+  },
+  "residual_uncertainty": [
+    "The licensed frozen source archive is hash-pinned but raw source bytes are not republished in GitHub. This GitHub-only review independently inspects the exact hash-bound source-audit implementation and persisted source-reverification result; it does not claim a new raw-byte parse in this chat.",
+    "No qualified B2 exists, so historical revision-53 executable behaviour and historical fidelity remain UNKNOWN.",
+    "Continuous CranMais execution and the formatted-restart path show small but real printed-state differences. Their cause is outside TCD-026 and no tolerance or whole-model checkpoint equivalence is inferred.",
+    "There is no TCD-026-specific SYNQ01 oracle; PREP06 and the two CranMais activations remain diagnostic causal/non-interference evidence, not B2."
+  ],
+  "review_decision": {
+    "review_passed": true,
+    "review_evidence_only": true,
+    "B3_admitted": false,
+    "next_step_authorized_by_this_review": "NONE_WITHIN_ANIMO-B3A04R2; any admission requires a separate workunit"
+  }
+}
