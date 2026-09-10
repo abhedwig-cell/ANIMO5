@@ -1,0 +1,60 @@
+{
+  "work_unit": "ANIMO-B3A03E",
+  "title": "TCD-018 Independent-Review Evidence Remediation",
+  "target": "TCD-018",
+  "class": "A_ACCOUNTING_REPORTING_ONLY",
+  "branch": "work/animo-b3a03e-tcd018-independent-review-evidence-remediation",
+  "base_review_head": "57cfdfb3a7fb982f6692b0b32f8c8aa044c57fd7",
+  "failed_review_result_retained": "FAIL_TCD018_INDEPENDENT_SECOND_LINE_READINESS_REVIEW",
+  "formal_route_head": "2f06cc86225637f8dadfdd969fe48dcf851b9ee2",
+  "state": "IN_PROGRESS_PERSISTED_TCD018_EVIDENCE_REMEDIATION_VALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "historical_behaviour": "UNKNOWN",
+  "evidence_remediation": {
+    "full_25_period_record": "PERSISTED",
+    "per_output_digest_ledger": "PERSISTED_376_ROWS",
+    "run_completion_ledger": "PERSISTED_16_RECORDS",
+    "replayable_candidate_builder": "PERSISTED",
+    "former_review_gate_8": "EVIDENCE_REMEDIATED_PENDING_NEW_INDEPENDENT_REVIEW",
+    "former_review_gate_10": "EVIDENCE_REMEDIATED_PENDING_NEW_INDEPENDENT_REVIEW",
+    "former_review_gates_11_13_14_15": "EVIDENCE_AVAILABLE_PENDING_NEW_INDEPENDENT_REVIEW"
+  },
+  "independent_second_line_pass": false,
+  "tcd018_admitted": false,
+  "production_source_modified": false,
+  "canonical_tcd_register_modified": false,
+  "B4_admitted": false,
+  "production_migration_admitted": false,
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "validation": {
+    "validator": "tools/validate_b3a03e_tcd018_evidence.py",
+    "workflow": ".github/workflows/animo-b3a03e-tcd018-evidence-remediation.yml",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_job_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "deliverables": [
+    "docs/b3/TCD018_EVIDENCE_REMEDIATION.md",
+    "integration/animo-b3/TCD018_EVIDENCE_REMEDIATION_MANIFEST.json",
+    "integration/animo-b3/TCD018_25_PERIOD_RECONCILIATION.csv",
+    "integration/animo-b3/TCD018_EIGHT_CASE_RUN_LEDGER.json",
+    "integration/animo-b3/tcd018_output_digest_ledger/CranGrass.csv",
+    "integration/animo-b3/tcd018_output_digest_ledger/part2.csv",
+    "integration/animo-b3/tcd018_output_digest_ledger/part3.csv",
+    "integration/animo-b3/tcd018_output_digest_ledger/part4.csv",
+    "tools/build_tcd018_reporting_candidate.py",
+    "tools/validate_b3a03e_tcd018_evidence.py",
+    ".github/workflows/animo-b3a03e-tcd018-evidence-remediation.yml",
+    "integration/animo-b3/ANIMO-B3A03E_STATUS.json"
+  ],
+  "next_required": "After this remediation package is validated, execute a new genuinely separate independent second-line re-review. Do not overwrite the previous FAIL and do not admit TCD-018 in this workunit."
+}
