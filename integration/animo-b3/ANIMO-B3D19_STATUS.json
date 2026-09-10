@@ -3,7 +3,7 @@
   "title": "TCD-038 GOV04 Tier-C Formal Disposition",
   "branch": "work/animo-b3d19-tcd038-gov04-tier-c-disposition",
   "target": "TCD-038",
-  "state": "TIER_C_FORMAL_DISPOSITION_AWAITING_MACHINE_VALIDATION",
+  "state": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_B3_ADMISSION_DECISION",
   "decision": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_B3_ADMISSION_DECISION",
   "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "b3_qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
@@ -28,14 +28,15 @@
     "b3_admission_performed": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-B3D19 TCD-038 Tier-C formal disposition",
-    "run_id": null,
-    "job_id": null,
-    "evidence_head": null,
-    "conclusion": null,
-    "validator": null,
-    "scope_guard": null
+    "run_id": 34531415711,
+    "job_id": 103052759702,
+    "evidence_head": "a94e5c9564587b6b52480730cf186f4121cc674c",
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34531415711 validates the complete disposition package at evidence head a94e5c9564587b6b52480730cf186f4121cc674c. This status-only closeout must pass the same workflow on its own final head."
   },
   "next_if_validated": "SEPARATE_TIER_C_B3_ADMISSION_DECISION_FOR_TCD038"
 }
