@@ -1,0 +1,57 @@
+name: ANIMO-B3A01E TCD027 frozen-B0 source evidence remediation
+
+on:
+  push:
+    branches:
+      - work/animo-b3a01e-tcd027-independent-review-evidence-remediation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-b3a01e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify committed frozen source-member bytes
+        run: python tools/extract_verify_tcd027_frozen_b0.py
+
+      - name: Validate TCD-027 source-evidence remediation packet
+        run: python tools/validate_b3a01e_tcd027_evidence.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=510c9313926457cd9bfd8e71a551255297bdfbb3
+          git cat-file -e "${base}^{commit}"
+          mapfile -t changed < <(git diff --name-only "${base}...HEAD")
+          printf 'B3A01E changed files:\n%s\n' "${changed[*]}"
+          allowed='^(docs/b3/TCD027_FROZEN_B0_SOURCE_EVIDENCE_REMEDIATION\.md|integration/animo-b3/TCD027_FROZEN_B0_SOURCE_EVIDENCE_MANIFEST\.json|integration/animo-b3/ANIMO-B3A01E_STATUS\.json|tools/extract_verify_tcd027_frozen_b0\.py|tools/validate_b3a01e_tcd027_evidence\.py|\.github/workflows/animo-b3a01e-tcd027-evidence-remediation\.yml)$'
+          bad=0
+          for path in "${changed[@]}"; do
+            if [[ ! "$path" =~ $allowed ]]; then
+              echo "UNEXPECTED_B3A01E_PATH: $path"
+              bad=1
+            fi
+          done
+          if [[ ${#changed[@]} -ne 6 ]]; then
+            echo "EXPECTED_EXACTLY_6_B3A01E_DELIVERABLES_GOT_${#changed[@]}"
+            bad=1
+          fi
+          if [[ $bad -ne 0 ]]; then
+            exit 1
+          fi
+          if git diff --name-only "${base}...HEAD" | grep -Eq '(^|/)(src|source|production)/|CANONICAL_TCD|TCD_REGISTER|\.for$'; then
+            echo 'Production/frozen source or canonical TCD change detected'
+            exit 1
+          fi
+          echo PASS_B3A01E_SCOPE_GUARD
