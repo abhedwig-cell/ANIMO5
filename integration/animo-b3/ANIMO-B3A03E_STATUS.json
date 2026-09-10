@@ -7,14 +7,14 @@
   "base_review_head": "57cfdfb3a7fb982f6692b0b32f8c8aa044c57fd7",
   "failed_review_result_retained": "FAIL_TCD018_INDEPENDENT_SECOND_LINE_READINESS_REVIEW",
   "formal_route_head": "2f06cc86225637f8dadfdd969fe48dcf851b9ee2",
-  "state": "IN_PROGRESS_PERSISTED_TCD018_EVIDENCE_REMEDIATION_VALIDATION_PENDING",
-  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "state": "QUALIFIED_TCD018_INDEPENDENT_REVIEW_EVIDENCE_REMEDIATION_READY_FOR_NEW_SECOND_LINE_NO_ADMISSION",
+  "decision": "QUALIFIED_TCD018_INDEPENDENT_REVIEW_EVIDENCE_REMEDIATION_READY_FOR_NEW_SECOND_LINE_NO_ADMISSION",
   "historical_behaviour": "UNKNOWN",
   "evidence_remediation": {
-    "full_25_period_record": "PERSISTED",
-    "per_output_digest_ledger": "PERSISTED_376_ROWS",
-    "run_completion_ledger": "PERSISTED_16_RECORDS",
-    "replayable_candidate_builder": "PERSISTED",
+    "full_25_period_record": "PERSISTED_AND_STRUCTURALLY_VALIDATED",
+    "per_output_digest_ledger": "PERSISTED_376_ROWS_AND_STRUCTURALLY_VALIDATED",
+    "run_completion_ledger": "PERSISTED_16_RECORDS_AND_STRUCTURALLY_VALIDATED",
+    "replayable_candidate_builder": "PERSISTED_AND_PINNED",
     "former_review_gate_8": "EVIDENCE_REMEDIATED_PENDING_NEW_INDEPENDENT_REVIEW",
     "former_review_gate_10": "EVIDENCE_REMEDIATED_PENDING_NEW_INDEPENDENT_REVIEW",
     "former_review_gates_11_13_14_15": "EVIDENCE_AVAILABLE_PENDING_NEW_INDEPENDENT_REVIEW"
@@ -28,19 +28,20 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "validation": {
     "validator": "tools/validate_b3a03e_tcd018_evidence.py",
     "workflow": ".github/workflows/animo-b3a03e-tcd018-evidence-remediation.yml",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_job_id": null,
-    "github_actions_conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "c2ae7f32c77fece1c73a40c944e816e36ae5fe19",
+    "github_actions_run_id": 34441498020,
+    "github_actions_job_id": 102757301426,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS_B3A03E_TCD018_EVIDENCE_REMEDIATION",
+    "scope_guard": "PASS_B3A03E_SCOPE_GUARD",
+    "closeout_note": "Run 34441498020 validates the complete persisted B3A03E evidence-remediation package before this status closeout commit; this closeout commit must pass the same workflow independently."
   },
   "deliverables": [
     "docs/b3/TCD018_EVIDENCE_REMEDIATION.md",
@@ -56,5 +57,5 @@
     ".github/workflows/animo-b3a03e-tcd018-evidence-remediation.yml",
     "integration/animo-b3/ANIMO-B3A03E_STATUS.json"
   ],
-  "next_required": "After this remediation package is validated, execute a new genuinely separate independent second-line re-review. Do not overwrite the previous FAIL and do not admit TCD-018 in this workunit."
+  "next_required": "Execute a new genuinely separate independent second-line re-review against this remediated packet. The previous FAIL is retained; this remediation is not itself reviewer PASS and does not admit TCD-018."
 }
