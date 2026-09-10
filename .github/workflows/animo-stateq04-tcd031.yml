@@ -1,0 +1,30 @@
+name: ANIMO STATEQ04 TCD031 remediation qualification
+
+on:
+  push:
+    branches:
+      - work/animo-stateq04-tcd031-macropore-restart-remediation
+  pull_request:
+    paths:
+      - 'docs/state/ANIMO_STATEQ04_TCD031_REMEDIATION_QUALIFICATION.md'
+      - 'integration/animo-state/STATEQ04_REMEDIATION_CONTRACT.json'
+      - 'integration/animo-state/STATEQ04_KERNEL_SPLIT_RESULT.json'
+      - 'integration/animo-state/ANIMO-STATEQ04_STATUS.json'
+      - 'tools/stateq04/**'
+      - '.github/workflows/animo-stateq04-tcd031.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Validate STATEQ04 evidence and scope
+        run: python3 tools/stateq04/validate_stateq04.py
+      - name: Syntax-check reproducibility harness
+        run: python3 -m py_compile tools/stateq04/run_stateq04_kernel.py tools/stateq04/validate_stateq04.py
