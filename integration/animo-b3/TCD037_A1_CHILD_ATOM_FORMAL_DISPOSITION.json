@@ -1,0 +1,299 @@
+{
+  "carrier_id": "ANIMO-B3D21-TCD037-A1-CARRIER",
+  "carrier_version": 1,
+  "carrier_mode": "FORMAL_DISPOSITION",
+  "parent_tcd_id": "TCD-037",
+  "atom_id": "TCD-037-A1",
+  "qualification_class": "A",
+  "canonical_routing": {
+    "work_unit": "ANIMO-B3I07",
+    "status_ref": "integration/animo-b3/ANIMO-B3I07_STATUS.json",
+    "atomization_ref": "integration/animo-b3/B3I07_TCD037_ATOMIZATION.json",
+    "parent_is_top_level_tcd": true,
+    "atom_is_top_level_tcd": false
+  },
+  "target_binding": {
+    "target_kind": "CANONICAL_CHILD_ATOM",
+    "parent_role": "TOP_LEVEL_LINEAGE_PARENT_ONLY",
+    "atom_role": "ATOMIC_DISPOSITION_TARGET",
+    "embedded_tcd_ids_role": "LINEAGE_PARENT_IDS_NOT_DISPOSITION_TARGET",
+    "new_top_level_tcd_reserved": false
+  },
+  "route_state": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "b3_disposition": {
+    "record_id": "ANIMO-B3D21-TCD037-A1",
+    "record_version": 1,
+    "tcd_ids": [
+      "TCD-037"
+    ],
+    "atomicity": "ATOMIC",
+    "qualification_class": "A",
+    "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+    "scope": {
+      "process": "GHG balance observer CH4 layer formation accounting",
+      "code_path": "Outbal_calc active GHG layer CH4f/CO2f formation-partition observer",
+      "claimed_change": "Use the source-owned accepted-timestep layer CH4 formation amount QPrCH4(Ln)*St as the observer input for the bounded CH4f/CO2f partition; no physical-process, state or flux change.",
+      "control_volume": "Per-soil-layer organic-matter dissimilation accounting partition only; excludes index-0 atmosphere emission and whole-GHG carbon-ledger closure."
+    },
+    "identities": {
+      "b0": {
+        "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+        "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+        "testcase_status": "FROZEN_CASE_IDENTIFIED",
+        "testcase_identity": "Frozen revision-53 testbank identified; no compatible natural active-GHG case is available for this atom because supplied GHGMais lineage does not satisfy the revision-53 parser contract; no translation was performed.",
+        "documentation_or_theory_identity": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e plus ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc exact accounting identity"
+      },
+      "b1": {
+        "status": "DIAGNOSTIC_NOT_REFERENCE",
+        "evidence_identity": "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc; exact-final GitHub Actions run 34538344680",
+        "diagnostic_limitations": "Purpose-built independently qualified synthetic activation for causality and scope only; not B2 historical reference evidence and does not establish historical revision-53 behaviour."
+      },
+      "b2": {
+        "status": "UNAVAILABLE_AFTER_DOCUMENTED_ACQUISITION_ATTEMPT",
+        "acquisition_effort_ref": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+      }
+    },
+    "evidence": {
+      "theory": {
+        "status": "PRESENT",
+        "summary": "Source ownership and accounting semantics identify QPrCH4(Ln)*St as the accepted-timestep per-layer CH4 formation amount for this observer atom; no atmosphere-emission meaning is assigned to A1.",
+        "refs": [
+          "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+          "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808"
+        ]
+      },
+      "causal": {
+        "status": "PRESENT",
+        "summary": "The legacy local AmCH4 layer consumer has no fresh source producer, while the physical CH4 production owner exists as QPrCH4; SYNQ02 independently activates the bounded source-shaped A1 path.",
+        "refs": [
+          "ANIMO-RUNTIMEQ02@45e8073fa95035b3565bd8b373ac327915cf1af5",
+          "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+          "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc"
+        ]
+      },
+      "conservation": {
+        "status": "PRESENT",
+        "summary": "For M_CH4=10000*QPrCH4(Ln)*St/Cfracom and Btot=Ffom+Fahu+Fdom, the qualified observer partition satisfies sum_i(CH4_i)=M_CH4 and sum_i(CH4_i+CO2_i)=Btot in the active non-degenerate domain.",
+        "refs": [
+          "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc:integration/animo-synthetic/SYNQ02_TCD037_A1_ORACLE.json"
+        ]
+      },
+      "expected_difference": {
+        "changed_states": [],
+        "changed_fluxes": [],
+        "changed_ledgers_or_reports": [
+          "Bfom(CH4f)",
+          "Bahu(CH4f)",
+          "Bdom(CH4f)",
+          "Bfom(CO2f)",
+          "Bahu(CO2f)",
+          "Bdom(CO2f)"
+        ],
+        "unchanged_surfaces": [
+          "physical model state",
+          "GHG process flux trajectory",
+          "restart/checkpoint state",
+          "solver and numerical policy",
+          "unrelated observer fields",
+          "TCD-037-A2/A3/A4 surfaces",
+          "TCD-032 through TCD-036 surfaces"
+        ]
+      },
+      "non_interference": {
+        "status": "PRESENT",
+        "summary": "A1 is observer-only. RUNTIMEQ03 pins no physical-state/process-flux/restart/solver differences and SYNQ02 independently verifies sentinels and an unrelated observer surface remain unchanged.",
+        "refs": [
+          "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+          "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc"
+        ]
+      },
+      "coverage": {
+        "natural_case_coverage": "No compatible natural active-GHG revision-53 case is reasonably available; absence is documented as BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH and no testcase translation was performed.",
+        "synthetic_case_coverage": "SYNQ02 independently qualifies ACTIVE, ZERO_CH4, PERMUTED, RATE_TIME_EQUIVALENT and INACTIVE cases with an exact-rational oracle and O0/O2 checks.",
+        "branch_activation_proven": true,
+        "refs": [
+          "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc",
+          "GitHub Actions run 34538344680"
+        ]
+      },
+      "independent_review": {
+        "status": "INCOMPLETE",
+        "reviewer_or_workunit": "GOV04_TIER_A_WAIVER_RECORDED_BY_ANIMO-B3D21",
+        "independent_from_correction_authoring": false,
+        "scope": "Separate independent second-line review is not applicable because every GOV04 Tier-A waiver predicate is machine-verified for exact child atom TCD-037-A1; this field records the waived requirement and does not claim a review occurred.",
+        "result": "NOT_REVIEWED"
+      },
+      "historical_uncertainty": {
+        "acquisition_effort_ref": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+        "stopping_rationale": "GOV03 qualified B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT; no qualified historical executable reference is available.",
+        "scientific_basis_ref": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e and ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc",
+        "independent_cross_check_ref": "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc exact-rational independent oracle, final run 34538344680",
+        "second_line_review_ref": "NOT_APPLICABLE_UNDER_GOV04_TIER_A_WAIVER: ANIMO-B3D21 TCD037_A1_TIER_A_WAIVER_AUDIT.json",
+        "uncertainty_statement": "Historical revision-53 executable behaviour for the disconnected AmCH4 layer local remains UNKNOWN; synthetic B1 evidence is not B2.",
+        "scope_limitations": "Admission is restricted to TCD-037-A1 layer CH4 formation observer accounting only. It does not admit parent TCD-037, A2/A3/A4, index-0 CH4 emission semantics, whole-GHG ledger closure, production code, B4 or composition."
+      }
+    },
+    "class_specific_evidence": {
+      "physical_state_trajectory_unchanged": true,
+      "process_flux_trajectory_unchanged": true,
+      "intended_ledger_or_report_only": true,
+      "conservation_identity_ref": "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc:integration/animo-synthetic/SYNQ02_TCD037_A1_ORACLE.json",
+      "changed_reporting_surfaces": [
+        "Bfom(CH4f)",
+        "Bahu(CH4f)",
+        "Bdom(CH4f)",
+        "Bfom(CO2f)",
+        "Bahu(CO2f)",
+        "Bdom(CO2f)"
+      ],
+      "unchanged_physical_surfaces": [
+        "physical model state",
+        "GHG process flux trajectory",
+        "restart/checkpoint state",
+        "solver and numerical policy"
+      ],
+      "gov04_risk_tier": "A",
+      "gov04_tier_a_waiver_ref": "integration/animo-b3/TCD037_A1_TIER_A_WAIVER_AUDIT.json",
+      "canonical_child_atom": "TCD-037-A1"
+    },
+    "gates": {
+      "b0_identity": {
+        "status": "PASS",
+        "applicability": "APPLICABLE",
+        "justification": "Frozen source archive, testbank and Outbal_calc identities are pinned and unchanged.",
+        "evidence_refs": [
+          "ANIMO-B3A05@5915333feed06e0c03280cb8fdfeff8dd1be9e9a"
+        ]
+      },
+      "b1_evidence": {
+        "status": "PASS",
+        "applicability": "APPLICABLE",
+        "justification": "SYNQ02 provides dedicated causal activation and exact independent cross-check at B1 synthetic strength.",
+        "evidence_refs": [
+          "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc"
+        ]
+      },
+      "b2_route": {
+        "status": "PASS",
+        "applicability": "APPLICABLE",
+        "justification": "No B2 exists; GOV03 has qualified the historical-uncertainty route after reasonable acquisition effort.",
+        "evidence_refs": [
+          "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+        ]
+      },
+      "theory": {
+        "status": "PASS",
+        "applicability": "APPLICABLE",
+        "justification": "RUNTIMEQ03 resolves source/accounting ownership and SYNQ02 independently cross-checks the exact accounting identity.",
+        "evidence_refs": [
+          "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+          "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc"
+        ]
+      },
+      "causal": {
+        "status": "PASS",
+        "applicability": "APPLICABLE",
+        "justification": "Missing fresh producer and exact replacement owner are source-qualified and independently activated synthetically.",
+        "evidence_refs": [
+          "ANIMO-RUNTIMEQ02@45e8073fa95035b3565bd8b373ac327915cf1af5",
+          "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+          "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc"
+        ]
+      },
+      "conservation": {
+        "status": "PASS",
+        "applicability": "APPLICABLE",
+        "justification": "Exact layer accounting partition identities are satisfied by the independent rational oracle.",
+        "evidence_refs": [
+          "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc"
+        ]
+      },
+      "expected_difference": {
+        "status": "PASS",
+        "applicability": "APPLICABLE",
+        "justification": "Exact six-field observer-only difference surface was pinned before B3A05/B3D21 admission evaluation.",
+        "evidence_refs": [
+          "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+          "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808"
+        ]
+      },
+      "non_interference": {
+        "status": "PASS",
+        "applicability": "APPLICABLE",
+        "justification": "Physical state, process flux, restart state, solver/numerical policy and unrelated observer surfaces remain outside A1 change scope.",
+        "evidence_refs": [
+          "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+          "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc"
+        ]
+      },
+      "coverage": {
+        "status": "PASS",
+        "applicability": "APPLICABLE",
+        "justification": "Natural activation is not reasonably available and that absence is documented; SYNQ02 satisfies GOV04's independently-qualified purpose-built synthetic activation alternative.",
+        "evidence_refs": [
+          "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc",
+          "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc"
+        ]
+      },
+      "independent_review": {
+        "status": "PASS",
+        "applicability": "NOT_APPLICABLE",
+        "justification": "GOV04 Tier-A independent-review waiver applies because every strengthened Tier-A condition is explicitly PASS for this exact atomic admission object.",
+        "evidence_refs": [
+          "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+          "integration/animo-b3/TCD037_A1_TIER_A_WAIVER_AUDIT.json"
+        ]
+      },
+      "residual_uncertainty": {
+        "status": "PASS",
+        "applicability": "APPLICABLE",
+        "justification": "Historical behaviour and natural active-GHG coverage limitations are retained explicitly and do not expand the admitted scientific scope.",
+        "evidence_refs": [
+          "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+          "ANIMO-B3A05@5915333feed06e0c03280cb8fdfeff8dd1be9e9a"
+        ]
+      },
+      "class_specific": {
+        "status": "PASS",
+        "applicability": "APPLICABLE",
+        "justification": "Class A state/flux non-interference, report-only scope and exact accounting identity are all qualified.",
+        "evidence_refs": [
+          "ANIMO-B3A05@5915333feed06e0c03280cb8fdfeff8dd1be9e9a",
+          "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc"
+        ]
+      },
+      "composition_if_applicable": {
+        "status": "PASS",
+        "applicability": "NOT_APPLICABLE",
+        "justification": "TCD-037-A1 is an isolated atomic child admission with no sibling or cross-TCD composition.",
+        "evidence_refs": [
+          "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808"
+        ]
+      }
+    },
+    "residual_uncertainty": [
+      "Historical revision-53 executable behaviour for the disconnected AmCH4 layer local is UNKNOWN because no qualified B2 exists.",
+      "No compatible natural active-GHG revision-53 testcase is available; the supplied GHGMais lineage mismatch is not repaired by translation.",
+      "This admission does not establish parent TCD-037, sibling A2/A3/A4, index-0 emission semantics, whole-GHG ledger closure, production implementation or B4 readiness."
+    ],
+    "composition": {
+      "is_composition": false,
+      "component_record_ids": []
+    },
+    "admission_decision": {
+      "admitted": true,
+      "decision": "ADMIT_TCD037_A1_CH4_LAYER_FORMATION_OBSERVER_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_A_WAIVER",
+      "decision_scope": "CANONICAL_CHILD_ATOM:TCD-037-A1",
+      "decision_evidence_ref": "integration/animo-b3/TCD037_A1_TIER_A_WAIVER_AUDIT.json"
+    }
+  },
+  "admission_effect": {
+    "atom_admitted": true,
+    "parent_admitted": false,
+    "new_top_level_tcd_reserved": false,
+    "canonical_register_append": false,
+    "production_migration_admitted": false
+  },
+  "residual_blockers": []
+}
