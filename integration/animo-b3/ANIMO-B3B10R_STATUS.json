@@ -1,0 +1,46 @@
+{
+  "workunit": "ANIMO-B3B10R",
+  "title": "Independent Second-Line Review of TCD-031 Active Macropore Persistent Solute Restart State",
+  "tcd": "TCD-031",
+  "branch": "review/animo-b3b10r-tcd031-independent-second-line",
+  "exact_starting_head": "eccba6712f65455161d05fa9cdf6aa142f823dd4",
+  "review_status": "IN_PROGRESS_FAIL_CLOSED_PENDING_INDEPENDENT_RECONSTRUCTION",
+  "review_disposition": "NOT_YET_DECIDED",
+  "risk_tier_under_review": "GOV04_TIER_C",
+  "persist_early_checkpoint": true,
+  "live_checks_at_checkpoint": {
+    "review_branch_exact_start_verified": true,
+    "aggregate_RG05G_head": "4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+    "no_later_B3B10R_branch_found": true,
+    "no_TCD031_issue_found_by_repository_issue_search": true,
+    "later_canonical_routing_than_B3I06_detected": "B3I07_REQUIRES_INSPECTION"
+  },
+  "independent_evidence_checks_completed": {
+    "frozen_source_manifest_identity_crosscheck": true,
+    "STATEQ04_runner_source_hash_pinning_inspected": true,
+    "STATEQ04_driver_lifecycle_inspected": true,
+    "STATEQ04_result_species_and_exact_comparison_inspected": true
+  },
+  "pending_before_disposition": [
+    "live authority heads GOV04 GOV03 B3Q01 MP01 MP02 STATEQ01 STATEQ02 STATEQ03 STATEQ04 B3B10 MASSQ02 B3I03-through-latest frozen-B0",
+    "independent source-level verification of mapoinput Output_Init Animo.for Init.for claims from source-bound evidence",
+    "GOV04 tier-policy reconstruction",
+    "GOV03 historical-uncertainty compatibility",
+    "active historical B2-reference recheck",
+    "MP02 whole-model reachability boundary",
+    "TCD-025 boundary",
+    "atomicity and final fail-closed disposition"
+  ],
+  "scope_guards": {
+    "production_source_patch": false,
+    "frozen_B0_change": false,
+    "canonical_STATE_admission": false,
+    "canonical_TCD_register_update": false,
+    "TCD025_composition": false,
+    "B4": false,
+    "central_regie_RG05_update": false,
+    "new_numerical_tolerance": false,
+    "historical_intent_inference_without_evidence": false,
+    "B3_admission": false
+  }
+}
