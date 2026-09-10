@@ -1,0 +1,38 @@
+name: ANIMO STATEQ03 TCD031 qualification
+
+on:
+  push:
+    branches:
+      - work/animo-stateq03-tcd031-macropore-persistent-solute-state
+    paths:
+      - docs/state/ANIMO_STATEQ03_TCD031_MACROPORE_RESTART_QUALIFICATION.md
+      - integration/animo-state/STATEQ03_MACROPORE_SOLUTE_OWNERSHIP.json
+      - integration/animo-state/STATEQ03_SPLIT_RUN_EVIDENCE.json
+      - integration/animo-state/ANIMO-STATEQ03_STATUS.json
+      - tools/stateq03/**
+      - .github/workflows/animo-stateq03-tcd031.yml
+  pull_request:
+    paths:
+      - docs/state/ANIMO_STATEQ03_TCD031_MACROPORE_RESTART_QUALIFICATION.md
+      - integration/animo-state/STATEQ03_MACROPORE_SOLUTE_OWNERSHIP.json
+      - integration/animo-state/STATEQ03_SPLIT_RUN_EVIDENCE.json
+      - integration/animo-state/ANIMO-STATEQ03_STATUS.json
+      - tools/stateq03/**
+      - .github/workflows/animo-stateq03-tcd031.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate STATEQ03 evidence and scope
+        run: python tools/stateq03/validate_stateq03.py
