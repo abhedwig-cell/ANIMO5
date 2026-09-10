@@ -1,0 +1,91 @@
+{
+  "work_unit": "ANIMO-B3B09",
+  "requested_work_unit": "ANIMO-B3B08",
+  "title": "TCD-038 Crop Actual Uptake Restart Initialization Direction Qualification",
+  "branch": "work/animo-b3b09-tcd038-crop-actual-uptake-restart-readiness",
+  "target": "TCD-038",
+  "state": "QUALIFIED_CLASS_B_ADMISSION_READINESS_GOV04_TIER_C_REVIEW_HANDOFF_PENDING_MACHINE_GATE",
+  "decision": "QUALIFIED_CLASS_B_ADMISSION_READINESS_GOV04_TIER_C_RESTART_SEMANTICS_INDEPENDENT_REVIEW_REQUIRED",
+  "readiness_qualified_subject_to_machine_gate": true,
+  "b3_admitted": false,
+  "production_authorized": false,
+  "requested_id_collision": {
+    "existing_work_unit": "ANIMO-B3B08",
+    "existing_target": "TCD-028",
+    "resolution": "ANIMO-B3B09"
+  },
+  "b3_qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "gov04_risk_tier": "C",
+  "formal_risk_classification": "GOV04_TIER_C__B3_CLASS_B_LOCAL_RESTART_INITIALIZATION_DIRECTION",
+  "tier_c_forced_by": [
+    "RESTART_OR_COLD_START_DISCRIMINATION",
+    "INITIALIZATION_SEMANTICS",
+    "CHECKPOINT_SEMANTICS"
+  ],
+  "ownership_ambiguity_remaining": false,
+  "authoring_base": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+  "current_post_rg05f_atomic_authorities_observed": [
+    "ANIMO-B3D15@22e48f7e2c1eaa1245f034de2d909191d9cfa227:TCD-030",
+    "ANIMO-B3D16@8650ea9e716336520d8d7df5f9ea2b393d17ab98:TCD-023"
+  ],
+  "authority_pins": {
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "B3I01": "383c7a83e84a578969f92113280dc715b7bdddb4",
+    "B3I03": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "B3I04": "400b7cd79f89043e091751707dfa96537587dcf6",
+    "STATEQ01": "4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "STATEQ02": "ada93a409aa054f9aebac32728e79f80468215a7",
+    "PREP12": "3d86de057247adcfeefb82c11d7cf7d5b2cbdf73",
+    "PREP10": "761db23269b45ba79df3be97ea85289682e57106"
+  },
+  "restart_state_contract": {
+    "qualified_claim_scoped": true,
+    "accepted_aliases": ["Amplni_act", "Amplpo_act when Ipo.Eq.1"],
+    "result_serialized_aliases": ["Rsamplni_act", "Rsamplpo_act when Ipo.Eq.1"],
+    "required_restore_direction": "Rsampl*_act -> Ampl*_act",
+    "checkpoint_representation_changed": false,
+    "checkpoint_restore_semantics_changed": true,
+    "separate_restart_discriminator_present": false,
+    "small_value_policy_changed": false,
+    "potential_uptake_in_scope": false
+  },
+  "split_run": {
+    "tcd038_specific_discriminator": "NOT_CAUSALLY_ISOLATED",
+    "stateq01_promoted_beyond_scope": false,
+    "stateq02_promoted_beyond_scope": false,
+    "full_split_run_magnitude_qualified": false
+  },
+  "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
+  "historical_uncertainty_route": "ELIGIBLE_SUBJECT_TO_CLAIM_SCOPED_TIER_C_REVIEW_AND_B3_GATES",
+  "independent_review": {
+    "required": true,
+    "required_count": 1,
+    "tier": "C",
+    "status": "PENDING_NOT_EXECUTED",
+    "authoring_context_may_sign_gate": false,
+    "handoff_prepared": false
+  },
+  "validation": {
+    "machine_validated": false,
+    "workflow": "ANIMO-B3B09 TCD-038 Tier-C readiness",
+    "github_actions_run_id": null,
+    "evidence_head": null,
+    "conclusion": "PENDING",
+    "validator": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "canonical_state_admitted": false,
+    "tcd039_composed": false,
+    "b4_opened": false,
+    "production_migration_opened": false,
+    "rg05g_updated": false,
+    "independent_review_performed": false
+  },
+  "next_if_machine_validated": "PREPARE_EXACTLY_ONE_SEPARATE_GOV04_TIER_C_INDEPENDENT_SECOND_LINE_REVIEW_HANDOFF"
+}
