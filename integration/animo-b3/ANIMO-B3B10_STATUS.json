@@ -1,0 +1,90 @@
+{
+  "work_unit": "ANIMO-B3B10",
+  "title": "TCD-031 Active Macropore Persistent Solute Restart-State Tier-C Admission Readiness",
+  "branch": "work/animo-b3b10-tcd031-macropore-restart-state-readiness",
+  "target": "TCD-031",
+  "authoring_base": "ANIMO-STATEQ04@ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+  "state": "QUALIFIED_CLASS_C_ADMISSION_READINESS_GOV04_TIER_C_REVIEW_HANDOFF_PENDING_MACHINE_GATE",
+  "decision": "QUALIFIED_CLASS_C_ADMISSION_READINESS_GOV04_TIER_C_INDEPENDENT_REVIEW_REQUIRED",
+  "readiness_qualified_subject_to_machine_gate": true,
+  "b3_admitted": false,
+  "production_authorized": false,
+  "b3_qualification_class": "C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL",
+  "gov04_risk_tier": "C",
+  "formal_risk_classification": "GOV04_TIER_C__B3_CLASS_C_MACROPORE_PERSISTENT_RESTART_STATE",
+  "tier_c_forced_by": [
+    "PERSISTENT_STATE_OWNERSHIP",
+    "RESTART_SERIALIZATION",
+    "RESTORE_DIRECTION",
+    "CHECKPOINT_LIFECYCLE"
+  ],
+  "authority_pins": {
+    "RG05G": "4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "MP01": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "MP02": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "STATEQ01": "4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "STATEQ02": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "STATEQ03": "10c50e65d1369d5f3b26736c4b12d3a482379eb5",
+    "STATEQ04": "ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+    "MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "B3I06": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9"
+  },
+  "atomic_scope": {
+    "identity": "COMPLETE_ACCEPTED_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY",
+    "persistent_owner": "CoMp species x two domains",
+    "p_off_scalars": 8,
+    "p_on_scalars": 12,
+    "result_alias": "RsCoMp initialized from restored accepted CoMp under restore transaction",
+    "workspace_serialized": false,
+    "external_hydrology_exact_binding_required": true,
+    "writer_and_restore_halves_separate_admissions": false
+  },
+  "evidence": {
+    "STATEQ03_native_failure": "FAIL_CLOSED_TCD031_NATIVE_ACTIVE_MACROPORE_RESTART_STATE_INCOMPLETE",
+    "STATEQ04_candidate": "QUALIFIED_CANDIDATE_RESTORE_CONTRACT_READY_FOR_TIER_C_READINESS_NOT_ADMITTED",
+    "STATEQ04_all_six_species_exact": true,
+    "STATEQ04_native_bad_controls_diverge": true,
+    "STATEQ04_domain_drop_controls_diverge": true,
+    "comparison_policy": "EXACT_BYTEWISE_NO_TOLERANCE",
+    "MP02_complete_model_active_reachability": true,
+    "whole_model_active_split_for_production": false,
+    "historical_active_B2": false,
+    "historical_revision53_behaviour": "UNKNOWN"
+  },
+  "independent_review": {
+    "required": true,
+    "required_count": 1,
+    "tier": "C",
+    "status": "PENDING_NOT_EXECUTED",
+    "authoring_context_may_sign_gate": false,
+    "handoff_prepared": true,
+    "handoff_artifact": "integration/animo-b3/TCD031_INDEPENDENT_REVIEW_HANDOFF.json",
+    "review_branch": "review/animo-b3b10r-tcd031-independent-second-line"
+  },
+  "validation": {
+    "machine_validated": false,
+    "workflow": "ANIMO-B3B10 TCD-031 Tier-C readiness",
+    "github_actions_run_id": null,
+    "github_actions_job_id": null,
+    "evidence_head": null,
+    "conclusion": "PENDING",
+    "validator": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "canonical_state_admitted": false,
+    "tcd025_composed": false,
+    "b4_opened": false,
+    "production_migration_opened": false,
+    "rg05g_updated": false,
+    "independent_review_performed": false,
+    "new_tolerance": false
+  },
+  "next_if_machine_validated": "CREATE_EXACTLY_ONE_CLEAN_GOV04_TIER_C_REVIEW_BRANCH_FROM_FINAL_B3B10_CLOSEOUT_HEAD_AND_STOP"
+}
