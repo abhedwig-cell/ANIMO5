@@ -1,0 +1,85 @@
+name: ANIMO-RUNTIMEQ03 TCD-037 accounting-semantics qualification
+
+on:
+  push:
+    branches:
+      - work/animo-runtimeq03-tcd037-ghg-balance-accounting-semantics
+  pull_request:
+    paths:
+      - 'docs/runtime/ANIMO-RUNTIMEQ03_WORK_UNIT_CONTRACT.md'
+      - 'docs/runtime/TCD037_GHG_BALANCE_ACCOUNTING_SEMANTICS_QUALIFICATION.md'
+      - 'integration/animo-runtime/ANIMO-RUNTIMEQ03_STATUS.json'
+      - 'integration/animo-runtime/TCD037_ACCOUNTING_SEMANTICS_MATRIX.json'
+      - 'tools/runtimeq03/runtimeq03_accounting_semantics_probe.f90'
+      - 'tools/validate_runtimeq03.py'
+      - '.github/workflows/animo-runtimeq03-tcd037-ghg-balance-accounting-semantics.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install GNU Fortran
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gfortran
+          gfortran --version
+      - name: Validate persisted qualification
+        run: |
+          python -m py_compile tools/validate_runtimeq03.py
+          python -m json.tool integration/animo-runtime/ANIMO-RUNTIMEQ03_STATUS.json >/dev/null
+          python -m json.tool integration/animo-runtime/TCD037_ACCOUNTING_SEMANTICS_MATRIX.json >/dev/null
+          python tools/validate_runtimeq03.py
+      - name: Enforce RUNTIMEQ03 scope guard
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              'docs/runtime/ANIMO-RUNTIMEQ03_WORK_UNIT_CONTRACT.md',
+              'docs/runtime/TCD037_GHG_BALANCE_ACCOUNTING_SEMANTICS_QUALIFICATION.md',
+              'integration/animo-runtime/ANIMO-RUNTIMEQ03_STATUS.json',
+              'integration/animo-runtime/TCD037_ACCOUNTING_SEMANTICS_MATRIX.json',
+              'tools/runtimeq03/runtimeq03_accounting_semantics_probe.f90',
+              'tools/validate_runtimeq03.py',
+              '.github/workflows/animo-runtimeq03-tcd037-ghg-balance-accounting-semantics.yml',
+          }
+          base = '45e8073fa95035b3565bd8b373ac327915cf1af5'
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only', base, 'HEAD'], text=True).splitlines())
+          unexpected = sorted(changed - allowed)
+          if unexpected:
+              raise SystemExit('RUNTIMEQ03 scope guard FAIL: ' + ', '.join(unexpected))
+          required = allowed - {'.github/workflows/animo-runtimeq03-tcd037-ghg-balance-accounting-semantics.yml'}
+          missing = sorted(required - changed)
+          if missing:
+              raise SystemExit('RUNTIMEQ03 expected artifacts missing from branch diff: ' + ', '.join(missing))
+          print('RUNTIMEQ03 scope guard PASS')
+          PY
+      - name: Verify probe source identity
+        run: |
+          echo 'e0da47422092896c7f3b2ab6b81070fb25e9907424ca51808b6a906ae76c0a47  tools/runtimeq03/runtimeq03_accounting_semantics_probe.f90' | sha256sum -c -
+      - name: Reproduce accounting semantic discriminator at O0
+        run: |
+          gfortran -O0 tools/runtimeq03/runtimeq03_accounting_semantics_probe.f90 -o runtimeq03_O0.exe
+          ./runtimeq03_O0.exe > runtimeq03_O0.out
+          grep -q '^CH4_LAYER_FORMATION_OWNER T$' runtimeq03_O0.out
+          grep -q '^CH4_INDEX0_FORMATION_VS_EMISSION_SPLIT T$' runtimeq03_O0.out
+          grep -q '^N2O_DENI_LAYER_FORMATION_OWNER T$' runtimeq03_O0.out
+          grep -q '^N2O_PRODUCTION_VS_EMISSION_SPLIT T$' runtimeq03_O0.out
+          grep -q '^N2O_NITR_LAYER_CURRENT_SEMANTICS T$' runtimeq03_O0.out
+          grep -q '^OBSERVER_PHYSICAL_NONINTERFERENCE T$' runtimeq03_O0.out
+          grep -q '^PARENT_REQUIRES_SEMANTIC_ATOMIZATION T$' runtimeq03_O0.out
+          echo 'e734b3f90a7a86e7708a34ee309a71f2cd6d677f360e6cb87b0d394e44e2114b  runtimeq03_O0.out' | sha256sum -c -
+      - name: Reproduce discriminator at O2 and require identical evidence
+        run: |
+          gfortran -O2 tools/runtimeq03/runtimeq03_accounting_semantics_probe.f90 -o runtimeq03_O2.exe
+          ./runtimeq03_O2.exe > runtimeq03_O2.out
+          cmp runtimeq03_O0.out runtimeq03_O2.out
+          echo 'e734b3f90a7a86e7708a34ee309a71f2cd6d677f360e6cb87b0d394e44e2114b  runtimeq03_O2.out' | sha256sum -c -
