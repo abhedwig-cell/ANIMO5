@@ -1,0 +1,89 @@
+{
+  "work_unit": "ANIMO-RG05E",
+  "title": "Post-RG05D Fifth Atomic B3 Admission Integration",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-rg05e-fifth-b3-admission-integration",
+  "base": {
+    "work_unit": "ANIMO-B3D12",
+    "head": "5e33c195174e41ea949d5a828d30bb7b9e313a5d",
+    "ancestor_rg05d": "f3d6b9780631bd627f8bca0658a8e3878746e666"
+  },
+  "governance_only": true,
+  "state": "IN_PROGRESS_PERSISTED_FIFTH_B3_ADMISSION_INTEGRATION_VALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "authority": {
+    "RG05D": "f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3D12": "5e33c195174e41ea949d5a828d30bb7b9e313a5d",
+    "B3D09": "2a5abc00a779baaa3fb3fa28b3c051231c286132",
+    "B3B01R": "a6880282e9ed743f97a3435b55e4fb54f7d55a44",
+    "B3B01": "b982242949aecab32b9067cf7910ad75abfc2b19",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "canonical_tcd_register_tail": "TCD-042"
+  },
+  "admission_state": {
+    "scientific_admissions": 5,
+    "admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026", "TCD-015"],
+    "tcd015_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+    "tcd015_decision": "ADMIT_TCD015_ATOMIC_CLASS_B_SCIENTIFIC_NITRATE_TRANSPORT_ALGEBRA_CORRECTION_WITH_HISTORICAL_UNCERTAINTY",
+    "tcd015_historical_behaviour": "UNKNOWN",
+    "tcd015_nitrate_only": true,
+    "tcd015_GreenHouseGasOption_0_only": true,
+    "generic_Transsub_change_authorized": false,
+    "b3_whole_model_baseline_complete": false,
+    "b4_baseline_admitted": false,
+    "production_migration_admitted": false,
+    "production_code_modified": false,
+    "legacy_source_modified": false,
+    "frozen_testcase_modified": false,
+    "canonical_tcd_register_modified": false,
+    "evidence_strength_promoted_by_integration": false,
+    "composition_admitted": false
+  },
+  "queue_state": {
+    "canonical_tcd_entries": 25,
+    "active_queue_entries": 20,
+    "scientific_admissions": 5,
+    "READY_FOR_ADMISSION_READINESS": 4,
+    "IN_PROGRESS_ADMISSION_READINESS": 0,
+    "WAITING_ON_ROUTE_AND_REVIEW": 2,
+    "WAITING_ON_THEORY": 4,
+    "WAITING_ON_NUMERICS": 2,
+    "WAITING_ON_STATE": 5,
+    "WAITING_ON_RUNTIME": 2,
+    "WAITING_ON_CHILDREN": 1,
+    "NOT_READY": 0
+  },
+  "gate_snapshot": {
+    "G7": "FIVE_ATOMIC_SCIENTIFIC_ADMISSIONS_B3_INCOMPLETE",
+    "TCD015": "ADMITTED_ATOMIC_CLASS_B_NITRATE_ONLY_GHG0_WITH_HISTORICAL_UNCERTAINTY",
+    "B4": "NOT_ADMITTED",
+    "PRODUCTION": "NOT_ADMITTED"
+  },
+  "parallel_authority_boundary": "Only the explicit B3D12 TCD-015 admission delta is integrated over RG05D. Other post-RG05D sibling workunits are not promoted by branch recency and require separate explicit central integration.",
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "validation": {
+    "validator": "tools/validate_rg05e_fifth_b3_admission.py",
+    "workflow": ".github/workflows/animo-rg05e-fifth-b3-admission.yml",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_job_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "deliverables": [
+    "docs/governance/ANIMO_RG05E_FIFTH_B3_ADMISSION_REGIE.md",
+    "integration/animo-reg/RG05E_B3_ADMISSION_INVENTORY.json",
+    "integration/animo-reg/RG05E_B3_QUEUE_DELTA.json",
+    "integration/animo-reg/ANIMO-RG05E_STATUS.json",
+    "tools/validate_rg05e_fifth_b3_admission.py",
+    ".github/workflows/animo-rg05e-fifth-b3-admission.yml"
+  ]
+}
