@@ -3,7 +3,7 @@
   "title": "TCD-037-A1 Independent Synthetic Activation Qualification",
   "target": "TCD-037-A1",
   "branch": "work/animo-synq02-tcd037-a1-independent-ghg-observer-activation",
-  "state": "PERSISTED_VALIDATION_PENDING",
+  "state": "QUALIFIED_TCD037_A1_INDEPENDENT_SYNTHETIC_CAUSALITY_AND_SCOPE_NOT_B2",
   "aggregate_authority": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
   "routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
   "runtime_semantics_authority": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
@@ -37,13 +37,13 @@
     "Bdom(CO2f)"
   ],
   "forbidden_difference_results": {
-    "physical_state": "UNCHANGED_REQUIRED",
-    "process_flux": "UNCHANGED_REQUIRED",
+    "physical_state": "UNCHANGED",
+    "process_flux": "UNCHANGED",
     "restart_state": "NO_CHANGE_IN_SCOPE",
     "solver_or_numerical_policy": "NO_CHANGE_IN_SCOPE",
-    "unrelated_observer": "UNCHANGED_REQUIRED"
+    "unrelated_observer": "UNCHANGED"
   },
-  "gov04_activation_predicate": "PENDING_CI",
+  "gov04_activation_predicate": "PASS_AT_EVIDENCE_LEVEL_REQUIRES_REEVALUATION_IN_B3A05",
   "tier_a_waiver_granted": false,
   "scientific_admission": false,
   "parent_or_sibling_admission": false,
@@ -55,23 +55,24 @@
   "production_migration": false,
   "historical_fidelity_claimed": false,
   "validation": {
-    "machine_validated": false,
-    "run_id": null,
-    "job_id": null,
-    "tested_head": null,
-    "conclusion": null,
-    "o0": "PENDING",
-    "o2": "PENDING",
-    "o0_o2_byte_identity": "PENDING",
-    "exact_rational_oracle": "PENDING",
-    "scope_guard": "PENDING"
+    "machine_validated": true,
+    "run_id": 34538237220,
+    "job_id": 103074720176,
+    "tested_head": "2be8efc989078bca2a4fed4afaac58978023fc99",
+    "conclusion": "success",
+    "o0": "PASS",
+    "o2": "PASS",
+    "o0_o2_byte_identity": "PASS",
+    "exact_rational_oracle": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "The pre-closeout evidence package passed at 2be8efc989078bca2a4fed4afaac58978023fc99. The exact final closeout head must pass the same workflow before this status is consumed as qualified evidence."
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "next_if_qualified": "ANIMO-B3A05 — TCD-037-A1 CH4 Layer Formation Observer Tier-A Readiness"
 }
