@@ -1,0 +1,51 @@
+{
+  "work_unit": "ANIMO-RG05E",
+  "inventory_kind": "ATOMIC_B3_SCIENTIFIC_ADMISSIONS",
+  "snapshot_date": "2026-09-10",
+  "authority_rule": "ONLY_EXPLICIT_B3Q01_COMPLIANT_ADMISSION_RECORDS_WITH_ALL_MANDATORY_GATES_PASS_COUNT_AS_ADMISSIONS",
+  "source_regie_snapshot": {
+    "RG05D": "f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "prior_scientific_admissions": 4,
+    "prior_admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026"]
+  },
+  "new_admission": {
+    "tcd": "TCD-015",
+    "class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "process": "NO3 negative-concentration transport mass-conservation reconstruction",
+    "admission_authority": "ANIMO-B3D12@5e33c195174e41ea949d5a828d30bb7b9e313a5d",
+    "formal_disposition_authority": "ANIMO-B3D09@2a5abc00a779baaa3fb3fa28b3c051231c286132",
+    "review_authority": "ANIMO-B3B01R@a6880282e9ed743f97a3435b55e4fb54f7d55a44",
+    "readiness_authority": "ANIMO-B3B01@b982242949aecab32b9067cf7910ad75abfc2b19",
+    "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+    "decision": "ADMIT_TCD015_ATOMIC_CLASS_B_SCIENTIFIC_NITRATE_TRANSPORT_ALGEBRA_CORRECTION_WITH_HISTORICAL_UNCERTAINTY",
+    "atomic_claim": "NITRATE-only removal of the duplicated Hv moisture-storage contribution from the second post-clipping Reko reconstruction: Avc*Hv1 becomes Avc*(Hv1-Hv), candidate-minus-legacy = -Avc*Hv",
+    "qualified_feature_scope": "GreenHouseGasOption=0 core nitrate transport only",
+    "historical_behaviour": "UNKNOWN",
+    "historical_prevalence": "UNKNOWN",
+    "historical_fidelity_claimed": false,
+    "generic_Transsub_change_authorized": false,
+    "ghg_enabled_downstream_qualified": false,
+    "composition_admitted": false,
+    "b4_admitted": false,
+    "production_patch_authorized": false,
+    "production_migration_admitted": false
+  },
+  "admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026", "TCD-015"],
+  "counts": {
+    "scientific_admissions": 5,
+    "atomic_admissions": 5,
+    "historical_uncertainty_admissions": 5,
+    "normal_b2_route_admissions": 0,
+    "b4_admissions": 0,
+    "production_migrations": 0
+  },
+  "project_boundary": {
+    "B3_complete": false,
+    "B4_open": false,
+    "production_open": false,
+    "canonical_tcd_register_tail": "TCD-042",
+    "TCD043_reserved": false
+  },
+  "parallel_authority_boundary": "RG05E integrates only the qualified TCD-015 B3D12 admission delta over RG05D. Other parallel post-RG05D workunits are not silently promoted, admitted, composed or reclassified by this snapshot."
+}
