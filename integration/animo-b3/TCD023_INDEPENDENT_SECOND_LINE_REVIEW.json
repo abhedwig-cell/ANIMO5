@@ -1,0 +1,135 @@
+{
+  "work_unit": "ANIMO-B3B05R",
+  "target_tcd": "TCD-023",
+  "review_type": "GENUINELY_INDEPENDENT_SECOND_LINE_PROCESS_REVIEW",
+  "semantic_result": "PASS",
+  "repository": "abhedwig-cell/ANIMO5",
+  "review_branch": "review/animo-b3b05r-tcd023-independent-second-line",
+  "review_handoff_head": "284afb6ebe8047087f3444d198d55e633bdbc617",
+  "reviewed_readiness": {
+    "work_unit": "ANIMO-B3B05",
+    "head": "e76345bf984c58ff0b30a24b39dc8e037a2f4fd6",
+    "actions_run": 34480049339,
+    "actions_job": 102880280314,
+    "actions_conclusion_rechecked": "success"
+  },
+  "live_authorities": {
+    "aggregate_central_regie": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "SYNQ01": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121"
+  },
+  "frozen_B0": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "source_member": "ANIMO_4.1.5.53/resp_miner.for",
+    "source_member_sha256": "938d35c043bd3e1f14c20ec1c0b2395e9944beb2797746bc4e7cdfb38bb98106",
+    "source_member_size_bytes": 62997,
+    "source_object_unambiguously_pinned": true
+  },
+  "scientific_findings": {
+    "case2_selector": "Recfhu < 1e-12 AND RecfHUSDO < 1e-12 AND recfSDO >= 1e-12",
+    "Transfon17_owner_units": "N; kg N m-2 per interval",
+    "Transfop17_owner_units": "P; kg P m-2 per interval",
+    "Transfop19_20_owner_units": "P; kg P m-2 per interval",
+    "intended_N_to_P_conversion_at_atomic_seam_found": false,
+    "required_identity": "Transfop(19)+Transfop(20)=Transfop(17)",
+    "legacy_identity": "Transfop(19)+Transfop(20)=Transfon(17)",
+    "candidate_identity_exact": true,
+    "numeric_tolerance_required_for_identity": false,
+    "SYNQ_O004_applicable": true,
+    "SYNQ_O005_applicable": true,
+    "SYNQ_oracles_are_B2": false,
+    "PREP05_negative_controls_checked": true
+  },
+  "natural_activation": {
+    "case": "Puitmijn_Cranendonck_60",
+    "phosphorus_active": true,
+    "unique_actual_nonpotential_case2_events": 9658,
+    "affected_layers": [17, 18, 19, 20, 21, 22, 23],
+    "evidence_crosscheck": "PREP04 diagnostic record and later B3B05 replay agree at the same frozen B0 identity; B3B05 replay additionally records raw observer rows and byte-identical deduplication policy"
+  },
+  "causality": {
+    "legacy_accumulated_local_P_mismatch_kg_m_minus_2": 1.0806894643265774e-11,
+    "legacy_accumulated_local_P_mismatch_kg_ha_minus_1": 1.0806894643265774e-7,
+    "largest_single_event_mismatch_kg_m_minus_2": 1.0228664519933875e-14,
+    "local_residual_formula": "Transfon(17)-Transfop(17)",
+    "cross_species_parent_selection_causally_explains_mismatch": true,
+    "candidate_removes_TCD023_causal_contribution": true,
+    "whole_case_P_residual_exact_zero_required": false
+  },
+  "downstream_effect": {
+    "max_abs_delta_Tomnpo_kg_m_minus_2_per_step": 1.0228664519933892e-14,
+    "max_abs_delta_Rekopo_kg_m_minus_3_d_minus_1": 9.327856586446364e-15,
+    "genuinely_nonzero": true,
+    "tier_A_available": false
+  },
+  "regression_surface": {
+    "cases": [
+      "CranGrass",
+      "CranMais",
+      "GrassPeat",
+      "LWKM_gras_1040.2021.2045",
+      "Puitmijn_Cranendonck_60",
+      "RuurloGrass",
+      "STONE_akk_0006.2001.2015",
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+    ],
+    "successful_completions": 8,
+    "affected_case": "Puitmijn_Cranendonck_60",
+    "normalized_scientific_differences": ["ani_pLO.Bal", "ani_pTP.Bal", "bapoLO.Out", "bapoTP.Out", "message.out"],
+    "other_seven_normalized_scientific_differences": 0,
+    "missing_outputs": [],
+    "extra_outputs": [],
+    "unexpected_differences": [],
+    "scientific_numeric_tolerance_used": false,
+    "volatile_metadata_normalization_only": true
+  },
+  "risk": {
+    "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "GOV04_tier": "B",
+    "independent_review_required": true,
+    "tier_C_or_D_trigger_found": false,
+    "state_ownership_changed": false,
+    "restart_or_initialization_changed": false,
+    "checkpoint_semantics_changed": false,
+    "solver_changed": false,
+    "numerical_policy_changed": false,
+    "tolerances_changed": false,
+    "ambiguous_domain_contract_found": false,
+    "composition_found": false,
+    "production_bound_expansion_found": false
+  },
+  "historical_behavior": {
+    "qualified_B2_found": false,
+    "revision_53_behavior": "UNKNOWN",
+    "GNU_diagnostic_is_historical_reference": false
+  },
+  "residual_uncertainties": [
+    "No qualified historical B2 exists, so historical fidelity remains UNKNOWN.",
+    "Natural supplied-case activation is demonstrated in one P-active case at very low Case(2) rates; field-scale prevalence or magnitude is not claimed.",
+    "The broader stable-DOM theory/documentation gap is outside this atomic seam.",
+    "Other P residual mechanisms remain outside scope; whole-case TP exact closure is not claimed."
+  ],
+  "scope_exclusions": [
+    "TCD-019",
+    "TCD-024",
+    "TCD-027",
+    "all other stable-DOM corrections",
+    "all other phosphorus corrections",
+    "production source modification",
+    "frozen-B0 modification",
+    "canonical TCD-register modification",
+    "B4",
+    "production migration",
+    "central RG05 update",
+    "B3 admission",
+    "formal disposition"
+  ],
+  "independent_review_gate_satisfied": true,
+  "admission_performed": false,
+  "production_modification_performed": false,
+  "next_allowed_workunit": "SEPARATE_COMBINED_GOV04_TIER_B_FORMAL_DISPOSITION_AND_B3_ADMISSION_CLOSEOUT_FOR_TCD023",
+  "validator_expected": "PASS"
+}
