@@ -1,0 +1,46 @@
+{
+  "work_unit": "ANIMO-RG05D",
+  "inventory_kind": "ATOMIC_B3_SCIENTIFIC_ADMISSIONS",
+  "snapshot_date": "2026-09-10",
+  "authority_rule": "ONLY_EXPLICIT_B3Q01_COMPLIANT_ADMISSION_RECORDS_WITH_ALL_MANDATORY_GATES_PASS_COUNT_AS_ADMISSIONS",
+  "source_regie_snapshot": {
+    "RG05C": "2d3cc363599ed32b6537f318462c27db5ffaa7c2",
+    "prior_scientific_admissions": 3,
+    "prior_admitted_tcds": ["TCD-017", "TCD-018", "TCD-024"]
+  },
+  "new_admission": {
+    "tcd": "TCD-026",
+    "class": "A_ACCOUNTING_REPORTING_ONLY",
+    "process": "fresh-organic-matter initial root-exudate beginning-storage ledger",
+    "admission_authority": "ANIMO-B3D08@cc280b630d6dc0d6bc1b8b0783ccfa4f91e15624",
+    "review_authority": "ANIMO-B3A04R2@767779127d092c54a298e2f76a21d544e9af9895",
+    "readiness_authority": "ANIMO-B3A04@5eaf02298603b85f802d8e35d6a63941d0878879",
+    "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+    "decision": "ADMIT_TCD026_ATOMIC_CLASS_A_SCIENTIFIC_ACCOUNTING_CORRECTION_WITH_HISTORICAL_UNCERTAINTY",
+    "atomic_claim": "observe the already-existing initial root-exudate organic-matter state Ex(Ln) as Ex(Ln)*P in Bfom(Inip_x,Ly) only",
+    "historical_behaviour": "UNKNOWN",
+    "historical_fidelity_claimed": false,
+    "whole_model_restart_identity_claimed": false,
+    "composition_admitted": false,
+    "b4_admitted": false,
+    "production_patch_authorized": false,
+    "production_migration_admitted": false
+  },
+  "admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026"],
+  "counts": {
+    "scientific_admissions": 4,
+    "atomic_admissions": 4,
+    "historical_uncertainty_admissions": 4,
+    "normal_b2_route_admissions": 0,
+    "b4_admissions": 0,
+    "production_migrations": 0
+  },
+  "project_boundary": {
+    "B3_complete": false,
+    "B4_open": false,
+    "production_open": false,
+    "canonical_tcd_register_tail": "TCD-042",
+    "TCD043_reserved": false
+  }
+}
