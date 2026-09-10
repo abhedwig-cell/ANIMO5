@@ -25,12 +25,12 @@
   "target_tcd": "TCD-018",
   "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
   "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
-  "state": "IN_PROGRESS_PERSISTED_TCD018_ADMISSION_VALIDATION_PENDING",
-  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "state": "QUALIFIED_TCD018_ATOMIC_B3_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_NO_PRODUCTION_MIGRATION",
+  "decision": "ADMIT_TCD018_ATOMIC_CLASS_A_SCIENTIFIC_ACCOUNTING_CORRECTION_WITH_HISTORICAL_UNCERTAINTY",
   "intended_final_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "admission": {
     "scientific_b3_admission_intended": true,
-    "scientific_b3_admission_qualified": false,
+    "scientific_b3_admission_qualified": true,
     "historical_behaviour_status": "UNKNOWN",
     "historical_fidelity_claimed": false,
     "global_water_closure_claimed": false,
@@ -56,19 +56,20 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "validation": {
     "validator": "tools/validate_b3d06_tcd018_admission.py",
     "workflow": ".github/workflows/animo-b3d06-tcd018-admission.yml",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_job_id": null,
-    "github_actions_conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "460e53e013a9a6b58ae8c6f1e5812af229e206c2",
+    "github_actions_run_id": 34444371356,
+    "github_actions_job_id": 102765852402,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS_B3D06_TCD018_ADMISSION",
+    "scope_guard": "PASS_B3D06_ADMISSION_SCOPE_GUARD",
+    "closeout_note": "Run 34444371356 validates the complete persisted B3D06 package before this status closeout commit; this closeout commit must pass the same workflow independently."
   },
   "deliverables": [
     "integration/animo-b3/TCD018_B3_ADMISSION_CLOSEOUT.json",
@@ -78,10 +79,10 @@
     ".github/workflows/animo-b3d06-tcd018-admission.yml"
   ],
   "project_effect": {
-    "tcd018_atomic_b3_scientific_admission": false,
+    "tcd018_atomic_b3_scientific_admission": true,
     "b3_whole_model_baseline_complete": false,
     "historical_uncertainty_propagates_forward": true,
     "production_migration_still_closed": true,
-    "next_required_step": "validate this admission package fail closed before qualifying TCD-018"
+    "next_required_step": "integrate admitted TCD-018 into the central admission inventory without authorizing production code changes"
   }
 }
