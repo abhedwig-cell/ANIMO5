@@ -1,0 +1,29 @@
+{
+  "work_unit": "ANIMO-B3B06R",
+  "record_type": "INDEPENDENT_SECOND_LINE_REVIEW_HANDOFF_ONLY",
+  "target": "TCD-030",
+  "branch": "review/animo-b3b06r-tcd030-independent-second-line",
+  "handoff_base": "ANIMO-B3B06@98235bad7d7fb25b5053e9101c52c0ee3226692a",
+  "readiness_ci": {
+    "run_id": 34474895406,
+    "conclusion": "success"
+  },
+  "gov04_risk_tier_presented_by_readiness": "B",
+  "independent_review_required": true,
+  "independent_review_performed_in_handoff_context": false,
+  "independent_review_result": "NOT_REVIEWED",
+  "reviewer_must_reclassify_tier_from_evidence": true,
+  "historical_behavior": "UNKNOWN",
+  "required_scope": "TWO_NO3_CHECKREA_VALUE_ARGUMENT_SELECTORS_ONLY",
+  "fail_closed_on_source_identity_uncertainty": true,
+  "fail_closed_on_state_restart_runtime_or_numerical_scope_expansion": true,
+  "prohibited_actions": [
+    "production source edit",
+    "canonical TCD edit",
+    "B4 opening",
+    "production migration",
+    "central regie update",
+    "self-approval of independent review"
+  ],
+  "downstream_only_after_independent_pass": "COMBINED_TCD030_DISPOSITION_AND_ADMISSION_IF_CLAIM_ROUTE_PINS_AND_SCOPE_REMAIN_UNCHANGED"
+}
