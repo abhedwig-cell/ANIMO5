@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import csv
+import io
 import json
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -8,11 +10,16 @@ STATUS = ROOT / "integration/animo-b3/ANIMO-B3B06R_STATUS.json"
 EVIDENCE = ROOT / "integration/animo-b3/TCD030_INDEPENDENT_REVIEW_EVIDENCE.json"
 UPSTREAM = ROOT / "integration/animo-b3/TCD030_SOURCE_EVIDENCE.json"
 MANIFEST = ROOT / "reference/source/source_manifest.csv"
-REGISTER = ROOT / "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
+REGISTER_COMMIT = "814ea660d367494432beb63ea78298d1f6cd73d7"
+REGISTER_PATH = "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
 
 
 def load_json(path):
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def git_show_text(commit, path):
+    return subprocess.check_output(["git", "show", f"{commit}:{path}"], text=True)
 
 
 def checkrea(name, value, low, high, nihil=1.0e-30):
@@ -45,16 +52,21 @@ def main():
     src = load_json(UPSTREAM)
 
     assert st["work_unit"] == "ANIMO-B3B06R"
-    assert st["decision"] == "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B"
     assert st["gov04_risk_tier"] == "B"
     assert st["historical_behavior"] == "UNKNOWN"
     assert st["historical_b2_qualified"] is False
+    assert st["scientific_disposition_candidate"] == "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B"
+    assert st["decision"] in {
+        "PENDING_FAIL_CLOSED_RETEST_AFTER_TOOLING_VALIDATOR_REMEDIATION",
+        "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
+    }
     for key in (
         "admission_performed", "production_patch_performed", "canonical_register_modified",
         "central_regie_modified", "b4_performed", "migration_performed",
     ):
         assert st[key] is False, key
     assert st["composition"] == {"TCD-025": False, "TCD-031": False}
+    assert st["current_aggregate_authority"] == "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e"
 
     # Recheck the pinned source-bound transcript. This validates facts, not
     # the B3B06 readiness decision.
@@ -105,8 +117,10 @@ def main():
     assert "ANIMO_4.1.5.53/input1.for" in manifest
     assert ev["frozen_b0"]["input1_sha256"] in manifest
 
-    with REGISTER.open(encoding="utf-8", newline="") as f:
-        rows = {row["ID"]: row for row in csv.DictReader(f)}
+    # TCD-030 is not present in the inherited branch-local register snapshot.
+    # Parse the exact separately pinned canonical B3I03 register authority.
+    register_text = git_show_text(REGISTER_COMMIT, REGISTER_PATH)
+    rows = {row["ID"]: row for row in csv.DictReader(io.StringIO(register_text))}
     for tcd in ("TCD-025", "TCD-030", "TCD-031"):
         assert tcd in rows
     assert "validation" in rows["TCD-030"]["process"].lower()
@@ -120,7 +134,8 @@ def main():
     assert ev["historical_evidence"]["behavior"] == "UNKNOWN"
     assert ev["gov04"]["selected_tier"] == "B"
     assert ev["gov04"]["tier_c_escalation"] is False
-    assert ev["review_result"] == st["decision"]
+    assert ev["scientific_disposition_candidate"] == st["scientific_disposition_candidate"]
+    assert ev["authority_pins"]["current_aggregate_regie"] == "7c61a5031f41d602e996310df6f3958cbd1b511e"
 
     print("PASS ANIMO-B3B06R independent TCD-030 Tier-B second-line review validator")
 

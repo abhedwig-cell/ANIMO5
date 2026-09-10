@@ -2,7 +2,9 @@
 
 Date: 2026-09-10
 
-Review outcome: `PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B`
+Current review state: `PENDING_FAIL_CLOSED_RETEST_AFTER_TOOLING_VALIDATOR_REMEDIATION`
+
+Scientific disposition candidate: `PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B`
 
 This is a separate-context second-line review. It does not admit TCD-030, patch production source, edit the canonical TCD register, open B4, start migration, update central regie, or compose TCD-030 with TCD-025 or TCD-031.
 
@@ -18,10 +20,17 @@ The readiness branch still pointed to:
 
 and readiness CI run `34474895406` was `success`.
 
-The live review pins are:
+A second live authority check during review found that RG05F had been created after the initial review snapshot. The current aggregate authority is therefore:
 
-- aggregate central regie: `ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73`;
-- post-RG05E atomic TCD-027 admission: `ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4`;
+`ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e`
+
+RG05F integrates the two post-RG05E atomic admissions:
+
+- `ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4` for TCD-027;
+- `ANIMO-B3D14@d672992bbc32d40d7e0fbdf03f3fa9bc4cd5a522` for TCD-041.
+
+No RG05G or B3D15 branch was found at the recheck. The remaining review pins are:
+
 - GOV04: `1bbe4c211197590f346803106e45dca5faae79fc`;
 - GOV03: `cbd262bdabe92923113b7326f2f42822ce9a971c`;
 - B3Q01: `846e0f4d02a38b9e02cc1419b1ca87e63aaedb54`;
@@ -33,7 +42,7 @@ The live review pins are:
 - later routing observations B3I04 `400b7cd79f89043e091751707dfa96537587dcf6`, B3I05 `1f94a6e08db5d73e8935fb095de9ef9798f6544c` and `7fa0162415e02a6f0167e71b48ae38177a9e06e0`, and B3I06 `8f01f0cb366dfa8cc63a184d6f885100899a8cd9`;
 - frozen B0 retention: `ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300`.
 
-The later B3I workunits concern other routed hazards and do not supersede the canonical TCD-030 identity. Live lexical GitHub searches found no TCD-030 issue and no TCD-030 pull request.
+The later aggregate and sibling admissions do not supersede TCD-030. A renewed live lexical GitHub search found no TCD-030 issue. Earlier issue/PR searches likewise returned no TCD-030 item.
 
 ## Source-review boundary and frozen identity
 
@@ -138,10 +147,10 @@ GOV03 closes the historical acquisition route with no qualified B2 reference. MP
 
 Synthetic or source-only evidence is not promoted to historical truth.
 
-## Fail-closed conclusion
+## First review-CI failure and remediation
 
-No scientific falsification, scope ambiguity, Tier-C trigger, tooling defect, or TCD-030-specific provenance contradiction was found within the established source-bound review boundary.
+The first review CI run, `34482162963`, failed in the review validator before the scope guard. The failure was not a scientific mismatch. The validator accidentally parsed the register snapshot inherited on the review branch, while TCD-030 lives in the separately pinned B3I03 canonical-register append. It therefore failed at `assert tcd in rows`.
 
-`PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B`
+This is classified fail-closed as a tooling-validator defect. The remediation changes the validator to parse the register with `git show 814ea660d367494432beb63ea78298d1f6cd73d7:docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv`, so CI checks the exact canonical authority rather than a stale branch-local snapshot.
 
-This PASS is review-only. A downstream formal disposition/admission workunit may be opened only if claim, route, pins, source identity, and atomic scope remain unchanged.
+Until that remediation passes CI, the final review outcome is deliberately withheld. The scientific disposition candidate remains Tier B and is not changed by the tooling defect.

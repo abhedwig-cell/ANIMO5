@@ -5,29 +5,41 @@
   "branch": "review/animo-b3b06r-tcd030-independent-second-line",
   "review_handoff_head": "baf54f57b3c94701d85d73336b7afd3e94a4b3d9",
   "readiness_authority": "ANIMO-B3B06@98235bad7d7fb25b5053e9101c52c0ee3226692a",
-  "readiness_ci": {
-    "run_id": 34474895406,
-    "conclusion": "success"
-  },
+  "readiness_ci": {"run_id": 34474895406, "conclusion": "success"},
+  "current_aggregate_authority": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+  "post_rg05e_atomic_admissions": [
+    "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4:TCD-027",
+    "ANIMO-B3D14@d672992bbc32d40d7e0fbdf03f3fa9bc4cd5a522:TCD-041"
+  ],
   "review_independence": "SEPARATE_CHATGPT_CONTEXT_INDEPENDENT_REEVALUATION",
   "source_review_boundary": "SOURCE_BOUND_REPLAY; RAW_LICENSED_B0_ZIP_NOT_REPUBLISHED_IN_GITHUB",
   "gov04_risk_tier": "B",
   "historical_behavior": "UNKNOWN",
   "historical_b2_qualified": false,
-  "decision": "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
+  "scientific_disposition_candidate": "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
+  "decision": "PENDING_FAIL_CLOSED_RETEST_AFTER_TOOLING_VALIDATOR_REMEDIATION",
+  "tested": false,
+  "qualified": false,
   "admission_performed": false,
   "production_patch_performed": false,
   "canonical_register_modified": false,
   "central_regie_modified": false,
   "b4_performed": false,
   "migration_performed": false,
-  "composition": {
-    "TCD-025": false,
-    "TCD-031": false
-  },
+  "composition": {"TCD-025": false, "TCD-031": false},
   "validation": {
     "validator": "tools/validate_b3b06r_tcd030_review.py",
     "workflow": ".github/workflows/animo-b3b06r-tcd030-independent-review.yml",
-    "ci_required": true
+    "ci_required": true,
+    "attempts": [
+      {
+        "run_id": 34482162963,
+        "head": "6a4c0c1dbfb156e0453ed21590c3cea40d75668d",
+        "conclusion": "failure",
+        "classification": "TOOLING_VALIDATOR_FAILURE",
+        "reason": "Validator read the stale review-branch register snapshot instead of the pinned B3I03 canonical register."
+      }
+    ],
+    "remediation": "Read canonical register with git show at pinned B3I03 commit 814ea660d367494432beb63ea78298d1f6cd73d7; retest required."
   }
 }

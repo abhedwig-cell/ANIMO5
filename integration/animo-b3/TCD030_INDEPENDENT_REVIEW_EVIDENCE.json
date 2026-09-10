@@ -1,12 +1,17 @@
 {
   "work_unit": "ANIMO-B3B06R",
   "target": "TCD-030",
-  "review_result": "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
+  "review_state": "PENDING_FAIL_CLOSED_RETEST_AFTER_TOOLING_VALIDATOR_REMEDIATION",
+  "scientific_disposition_candidate": "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
   "authority_pins": {
     "review_handoff": "baf54f57b3c94701d85d73336b7afd3e94a4b3d9",
     "readiness": "98235bad7d7fb25b5053e9101c52c0ee3226692a",
-    "aggregate_regie": "eed822037ed8d906a2ab424220597cffac9cca73",
-    "post_rg05e_atomic_admission_tcd027": "b20841eb71c338cad21abd8164fa025d8efc75c4",
+    "current_aggregate_regie": "7c61a5031f41d602e996310df6f3958cbd1b511e",
+    "aggregate_base_rg05e": "eed822037ed8d906a2ab424220597cffac9cca73",
+    "post_rg05e_atomic_admissions": [
+      "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4:TCD-027",
+      "ANIMO-B3D14@d672992bbc32d40d7e0fbdf03f3fa9bc4cd5a522:TCD-041"
+    ],
     "gov04": "1bbe4c211197590f346803106e45dca5faae79fc",
     "gov03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
     "b3q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
@@ -21,6 +26,7 @@
     "b3i06": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
     "frozen_b0_retention": "a818b5a37b80ed92aded0b9c404990d356eb2300"
   },
+  "authority_recheck": {"rg05g_found": false, "b3d15_found": false, "tcd030_issue_count": 0},
   "frozen_b0": {
     "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "mapoinput_path": "ANIMO_4.1.5.53/mapoinput.for",
@@ -78,16 +84,7 @@
     "tcd025": {"present": false, "reason": "Separate macropore main-ledger storage/direct-drainage integration gap."},
     "tcd031": {"present": false, "reason": "Separate persistent macropore solute restart-state representation gap."}
   },
-  "historical_evidence": {
-    "qualified_b2": false,
-    "behavior": "UNKNOWN",
-    "gov03_route": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT"
-  },
-  "issue_pr_recheck": {
-    "tcd030_issue_count": 0,
-    "tcd030_pr_count": 0,
-    "note": "Live lexical GitHub issue/PR searches returned no TCD-030 items."
-  },
+  "historical_evidence": {"qualified_b2": false, "behavior": "UNKNOWN", "gov03_route": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT"},
   "matrix": [
     {"id":"valid_unequal","ioptmp":1,"nh4":[1,2],"no3":[3,4],"legacy":{"status":"ACCEPT","error":0,"diag":null},"candidate":{"status":"ACCEPT","error":0,"diag":null}},
     {"id":"invalid_no3_d1","ioptmp":1,"nh4":[1,2],"no3":[-1,4],"legacy":{"status":"ACCEPT","error":0,"diag":null},"candidate":{"status":"REJECT","error":1992,"diag":"CoMpni(1)"}},
@@ -108,5 +105,12 @@
     "tier_c_escalation": false,
     "rationale": "Atomic wrong-species value selector in input validation. The already-read physical NO3 state, persistent/restart state, runtime architecture, solver, tolerance and numerical policy are unchanged. Initialization timing alone does not create a Tier C state-semantics change.",
     "strictest_trigger_found": "TIER_B_LOCAL_SPECIES_VALIDATION"
+  },
+  "review_ci": {
+    "attempts": [
+      {"run_id":34482162963,"head":"6a4c0c1dbfb156e0453ed21590c3cea40d75668d","conclusion":"failure","classification":"TOOLING_VALIDATOR_FAILURE"}
+    ],
+    "remediation": "Use git show at canonical B3I03 register commit instead of inherited branch-local register snapshot.",
+    "retest_required": true
   }
 }
