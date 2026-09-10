@@ -1,0 +1,32 @@
+name: ANIMO-B3B10 TCD-031 Tier-C readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3b10-tcd031-macropore-restart-state-readiness
+  pull_request:
+    paths:
+      - 'docs/b3/ANIMO_B3B10_TCD031_TIER_C_READINESS.md'
+      - 'integration/animo-b3/TCD031_TIER_C_READINESS_EVIDENCE.json'
+      - 'integration/animo-b3/TCD031_INDEPENDENT_REVIEW_HANDOFF.json'
+      - 'integration/animo-b3/ANIMO-B3B10_STATUS.json'
+      - 'tools/b3b10/validate_b3b10.py'
+      - '.github/workflows/animo-b3b10-tcd031.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Validate B3B10 readiness and scope
+        run: python3 tools/b3b10/validate_b3b10.py
