@@ -34,6 +34,12 @@
   "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
   "status": "READY_FOR_GOV04_TIER_B_INDEPENDENT_SECOND_LINE_REVIEW_NO_ADMISSION",
   "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
+  "ci_validation": {
+    "evidence_head": "dd0eef5796e10bc48294f3962831d6e304e7cb93",
+    "workflow": "ANIMO-B3B07 TCD-041 risk and readiness",
+    "run_id": 34475162036,
+    "conclusion": "success"
+  },
   "required_independent_review_count": 1,
   "independent_reviews_performed_here": 0,
   "review_handoff": "integration/animo-b3/TCD041_INDEPENDENT_REVIEW_HANDOFF.json",
