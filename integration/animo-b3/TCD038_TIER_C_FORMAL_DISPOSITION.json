@@ -1,0 +1,126 @@
+{
+  "work_unit": "ANIMO-B3D19",
+  "target": "TCD-038",
+  "title": "TCD-038 GOV04 Tier-C Formal Disposition",
+  "branch": "work/animo-b3d19-tcd038-gov04-tier-c-disposition",
+  "authoring_base": "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+  "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "gov04_risk_tier": "C",
+  "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "decision": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_B3_ADMISSION_DECISION",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "admitted": false,
+  "authorities": {
+    "aggregate": "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "B3I03": "ANIMO-B3I03@814ea660d367494432beb63ea78298d1f6cd73d7",
+    "readiness": "ANIMO-B3B09@1b47d6b2e422463b557a48355ad8b4f5bed70ebc",
+    "validated_readiness_evidence": "9a9a834ea02d34d7f91099e20223c560e6abbc77",
+    "independent_review": "ANIMO-B3B09R@c6fcd47f4fb4c0277fa27860ee66dc83a449a038"
+  },
+  "collision_and_live_state": {
+    "b3d19_preexisting_before_creation": false,
+    "later_tcd038_disposition_or_admission_found_before_creation": false,
+    "newer_aggregate_than_rg05g_found_before_creation": false,
+    "review_issue": 47,
+    "review_issue_closed_completed": true,
+    "review_issue_result_comment_id": 5625237199,
+    "canonical_tcd038_state_at_b3i03": "OPEN"
+  },
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "inicalc_sha256": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1"
+  },
+  "review_gate": {
+    "semantic_result": "PASS",
+    "review_head": "c6fcd47f4fb4c0277fa27860ee66dc83a449a038",
+    "workflow_run": 34528522077,
+    "workflow_job": 103043260093,
+    "workflow_conclusion": "success",
+    "independent_gate_satisfied": true,
+    "independence_strength": "PROCESS_INDEPENDENCE_ONLY"
+  },
+  "scientific_disposition": {
+    "persistent_coordinate": "CUMULATIVE_ACTUAL_CROP_UPTAKE",
+    "accepted_aliases": ["Amplni_act", "Amplpo_act when Ipo.Eq.1"],
+    "serialized_result_aliases": ["Rsamplni_act", "Rsamplpo_act when Ipo.Eq.1"],
+    "required_restore_direction": "Rsampl*_act -> Ampl*_act",
+    "legacy_direction_is_scientifically_wrong_for_represented_above_threshold_state": true,
+    "candidate_insertions": [
+      "Amplni_act = Rsamplni_act before the existing nitrogen threshold statement",
+      "Amplpo_act = Rsamplpo_act inside Ipo.Eq.1 before the existing phosphorus threshold statement"
+    ],
+    "crop_trigger_retained": "Kicr(1).Ne.6 .Or. (Kicr(1).Eq.6 .And. Ioptcu.Eq.1)",
+    "small_value_threshold_retained": "1.0d-4",
+    "phosphorus_guard_retained": "Ipo.Eq.1",
+    "checkpoint_representation_changed": false,
+    "checkpoint_restore_semantics_changed": true,
+    "new_state_introduced": false,
+    "potential_uptake_in_scope": false,
+    "tcd039_composed": false
+  },
+  "gov04_disposition": {
+    "tier": "C",
+    "tier_c_triggers": [
+      "RESTART_OR_COLD_START_DISCRIMINATION",
+      "INITIALIZATION_SEMANTICS",
+      "CHECKPOINT_SEMANTICS"
+    ],
+    "tier_d_trigger_found": false,
+    "new_physical_state_required": false,
+    "numerical_policy_change": false,
+    "solver_or_tolerance_change": false,
+    "composition": false,
+    "separate_admission_decision_required_by_this_workunit_contract": true
+  },
+  "historical_uncertainty": {
+    "qualified_b2_available": false,
+    "gov03_acquisition_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "gov03_route_state": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "historical_revision53_manifestation": "UNKNOWN_WITHOUT_B2",
+    "gnu_diagnostic_is_b2": false,
+    "historical_fidelity_claimed": false
+  },
+  "expected_difference_surface": {
+    "may_change": [
+      "above-threshold imported cumulative actual N uptake retained into accepted Amplni_act",
+      "above-threshold imported cumulative actual P uptake retained into accepted Amplpo_act when Ipo.Eq.1",
+      "causally downstream crop uptake and nutrient demand",
+      "causally downstream nutrient state, fluxes, balances and outputs"
+    ],
+    "must_not_change_semantics": [
+      "crop trigger definition",
+      "1.0d-4 small-value policy",
+      "Ipo.Eq.1 phosphorus applicability",
+      "potential uptake state owned by TCD-039",
+      "checkpoint serialization representation",
+      "numerical precision policy",
+      "solver/tolerance policy",
+      "frozen B0 identities"
+    ],
+    "whole_model_equivalence_claimed": false,
+    "global_arbitrary_tolerance_allowed": false
+  },
+  "residual_uncertainties": [
+    "historical Intel/native manifestation of the revision-53 restore direction",
+    "absence of a TCD-038-specific causally isolated full continuous-versus-split trajectory",
+    "full-horizon magnitude and prevalence of downstream differences",
+    "independent TCD-039 potential-uptake restart continuity remains unresolved outside this scope"
+  ],
+  "hard_boundaries": {
+    "b3_admission_performed": false,
+    "production_source_modified": false,
+    "corrected_legacy_source_promoted": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "canonical_state_admitted": false,
+    "tcd039_composition_performed": false,
+    "b4_opened": false,
+    "production_migration_opened": false,
+    "central_regie_updated": false
+  },
+  "next_allowed_workunit": "SEPARATE_TIER_C_B3_ADMISSION_DECISION_FOR_TCD038"
+}
