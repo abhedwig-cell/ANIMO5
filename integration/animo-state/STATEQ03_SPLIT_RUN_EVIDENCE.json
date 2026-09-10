@@ -1,0 +1,90 @@
+{
+  "workunit": "ANIMO-STATEQ03",
+  "tcd": "TCD-031",
+  "base_head": "4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+  "requested_discriminator": "ACTIVE_MACROPORE_CONTINUOUS_VS_SPLIT",
+  "natural_active_case_search": {
+    "frozen_testbank_cases_scanned": 9,
+    "cases": [
+      "CranGrass",
+      "CranMais",
+      "GHGMais",
+      "GrassPeat",
+      "LWKM_gras_1040.2021.2045",
+      "Puitmijn_Cranendonck_60",
+      "RuurloGrass",
+      "STONE_akk_0006.2001.2015",
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+    ],
+    "MacroPoreOption_values": [0,0,0,0,0,0,0,0,0],
+    "natural_active_case_available": false
+  },
+  "positive_active_evidence_reused_exact_pin": {
+    "authority": "ANIMO-MP02@6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "case_basis": "synthetic P-active CranGrass complete-case descendants",
+    "successful_complete_case_runs": 6,
+    "positive_labels": 5,
+    "timesteps_each": 2922,
+    "all_six_species_active_iteration_hits_each_positive_run": true,
+    "specialized_macropore_balance_warning_runs": 0,
+    "restart_output_contains_MPnitr": false,
+    "restart_output_contains_MPorgs": false,
+    "restart_output_contains_MPphos": false,
+    "active_continuous_vs_split_executed_by_MP02": false,
+    "evidence_class": "B1_COMPLETE_CASE_SYNTHETIC_DIAGNOSTIC_ONLY"
+  },
+  "independent_local_reproduction": {
+    "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "gnu_fortran": "14.2.0",
+    "selected_legacy_units": 58,
+    "outsel_compatibility_substitutions": 14,
+    "qualification_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e",
+    "matches_MP02_executable_sha256": true,
+    "frozen_artifacts_modified": false
+  },
+  "native_checkpoint_inventory": {
+    "required_p_off_records": [
+      "MPnitr: CoMpNh(1:2), CoMpNi(1:2)",
+      "MPorgs: CoMpDiorMa(1:2), CoMpDiorNi(1:2)"
+    ],
+    "additional_p_on_record": [
+      "MPphos: CoMpPo(1:2), CoMpDiorPo(1:2)"
+    ],
+    "required_p_off_scalars": 8,
+    "required_p_on_scalars": 12,
+    "revision53_native_Output_Init_serialized_scalars": 0,
+    "missing_p_off_scalars": 8,
+    "missing_p_on_scalars": 12
+  },
+  "restore_direction_precondition": {
+    "input_loader_supports_CoMp": true,
+    "first_timestep_Init_promotes_RsCoMp_to_CoMp_unconditionally_when_IoptMp_1": true,
+    "RsCoMp_native_restart_loader_or_initialization_before_that_promotion_found": false,
+    "result": "FAIL_BEFORE_FIRST_POST_RESTORE_COMPARISON",
+    "interpretation": "A value loaded into CoMp from INITIAL.INP is not protected as the accepted restart coordinate on the first resumed timestep. The native lifecycle overwrites it from a result alias that has no restart representation on that path."
+  },
+  "deterministic_reconstruction_test": {
+    "global_reconstruction_possible": false,
+    "proof_basis": "MAPOTRANSPORT conservation identity contains SrWaMpOld * CoMp for nonzero old storage. Holding matrix state, hydrology and forcing fixed while varying CoMp changes old stored solute mass, so CoMp is an independent state coordinate.",
+    "zero_old_storage_special_branch_is_global_restart_law": false
+  },
+  "continuous_vs_split": {
+    "status": "NOT_EXECUTABLE_AS_NATIVE_EQUIVALENCE_QUALIFICATION",
+    "split_at_scientifically_active_time": "BLOCKED_BY_MISSING_NATIVE_CHECKPOINT_AND_RESTORE_DIRECTION",
+    "exact_checkpoint_inventory": "FAIL_0_OF_REQUIRED_8_OR_12_SOLUTE_SCALARS_SERIALIZED",
+    "first_post_restore_comparison": "NOT_REACHED",
+    "bounded_trajectory_comparison": "NOT_REACHED",
+    "species_separated_controls": "NOT_REACHED",
+    "comparison_policy": "NO_TOLERANCE_DEFINED_BECAUSE_RESTORE_PRECONDITION_FAILS",
+    "tolerance_introduced": false,
+    "qualification_only_source_patch_created": false,
+    "reason_not_to_patch": "This workunit is qualifying revision-53 ownership and restart sufficiency. A new checkpoint/lifecycle implementation would be a candidate correction to qualify later, not evidence that the existing native restart already preserves the state."
+  },
+  "negative_controls": {
+    "MP02_inactive_NO_MP_complete_case": "PASS, pinned to MP02; demonstrates inactive route does not require macropore solute restart state",
+    "STATEQ02_macropore_excluded_split": "PASS_EXACT_BITWISE, pinned to STATEQ02; demonstrates restricted-core checkpoint machinery can be exact when the macropore feature is outside the profile",
+    "claim_boundary": "These are supporting negative controls, not a paired active STATEQ03 split-run pass."
+  },
+  "final_split_evidence_decision": "FAIL_CLOSED_NATIVE_ACTIVE_MACROPORE_RESTART_STATE_INCOMPLETE"
+}
