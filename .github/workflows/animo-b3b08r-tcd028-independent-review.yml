@@ -1,0 +1,25 @@
+name: ANIMO-B3B08R TCD-028 independent Tier-C review
+
+on:
+  push:
+    branches:
+      - review/animo-b3b08r-tcd028-independent-second-line
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-independent-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout review branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate review result
+        run: python3 tools/validate_b3b08r_tcd028_review.py
+
+      - name: Guard atomic review scope
+        run: python3 tools/guard_b3b08r_tcd028_scope.py

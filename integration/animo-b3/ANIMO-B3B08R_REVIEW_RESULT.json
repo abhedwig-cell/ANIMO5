@@ -1,0 +1,155 @@
+{
+  "work_unit": "ANIMO-B3B08R",
+  "target": "TCD-028",
+  "review_type": "INDEPENDENT_TIER_C_SECOND_LINE_SCIENTIFIC_REVIEW",
+  "semantic_result": "PASS",
+  "review_branch": "review/animo-b3b08r-tcd028-independent-second-line",
+  "review_contract_head": "71340e036504695ba7177f31c0be9345895680b3",
+  "reviewed_object": {
+    "readiness_authority": "ANIMO-B3B08@310d7117da739d19eebb718129ac9494cac854a1",
+    "readiness_head": "310d7117da739d19eebb718129ac9494cac854a1",
+    "validated_substantive_evidence_head": "0145b80e7e308d82995f783cc4febb3b4c9da6ad",
+    "later_readiness_status_only_head_observed": "215f3800df5afa5811c1105cec2fb4f77a5548c2",
+    "readiness_ci_run": 34490160286,
+    "readiness_ci_job": 102914502580,
+    "readiness_ci_conclusion": "success"
+  },
+  "live_authorities": {
+    "aggregate_central_regie": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+    "post_rg05f_atomic_admissions": [
+      "ANIMO-B3D15@22e48f7e2c1eaa1245f034de2d909191d9cfa227:TCD-030",
+      "ANIMO-B3D16@8650ea9e716336520d8d7df5f9ea2b393d17ab98:TCD-023"
+    ],
+    "newer_post_rg05f_atomic_admission_found": false,
+    "newer_aggregate_than_rg05f_found": false,
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "b3i01": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4",
+    "b3i03": "ANIMO-B3I03@814ea660d367494432beb63ea78298d1f6cd73d7",
+    "prep10": "ANIMO-PREP10@65cd4a65a3ea27cd4ce004f505d5022fdb08b9ab",
+    "prep10c": "ANIMO-PREP10C@549545921dc8175f01d86c283647acd470c14290",
+    "canonical_tcd028_state": "OPEN",
+    "newer_tcd028_authority_found": false
+  },
+  "source_and_candidate_pins": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "frozen_addit_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+    "inicalc_sha256": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1",
+    "candidate_addit_sha256": "a1993aa2d22c8f2c13fc169e78f9121587c8f14a122ef7d3f757cc24a58a54ae",
+    "candidate_gnu_executable_sha256": "f3518bbca36989960fbe02785d64cca873d5e45494baa4e0c0a9a7c026a717db",
+    "candidate_change": [
+      "SuStdiorma = 0.0",
+      "SuStdiorni = 0.0",
+      "If (Ipo.Eq.1) SuStdiorpo = 0.0"
+    ]
+  },
+  "independent_scientific_determination": {
+    "ownership": "CURRENT_PLOUGH_EVENT_TRANSACTION_ACCUMULATORS",
+    "cumulative_cross_event_storage_intended": false,
+    "event_start_additive_identity_required": true,
+    "c_reset_required_every_active_plough_event": true,
+    "n_reset_required_every_active_plough_event": true,
+    "p_reset_required_when_phosphorus_path_enabled": true,
+    "current_event_summation_domain": "Ln=0..Pl(I)",
+    "redistribution_domain": "Ln=1..Pl(I)",
+    "bo_control_volume": "CURRENT_PLOUGH_DEPTH_CUMULATIVE_LAYER_THICKNESS",
+    "redistribution_fractions_close_current_control_volume": true,
+    "stale_prior_is_redistributed_again_if_present": true,
+    "zero_initialization_removes_only_stale_prior_term": true,
+    "decision_basis": "The prior transaction total has already been materialized in CoStdiorma/CoStdiorni/conditional CoStdiorpo state. A surviving local transaction total therefore has no separate physical owner and is double-counted when added to the next current-state reduction."
+  },
+  "causal_evidence": {
+    "strength": "B1_DIAGNOSTIC_CAUSALITY_NOT_B2",
+    "current_gnu_c_carryover": true,
+    "current_gnu_n_carryover": true,
+    "current_gnu_conditional_p_carryover": true,
+    "phosphorus_disabled_negative_control": "PASS_ZERO_SCIENTIFIC_DIFFERENCES",
+    "controlled_cranmais_scientific_or_structural_diff_files": 12,
+    "controlled_p_enabled_zuiderzeeland_scientific_or_structural_diff_files": 8,
+    "synthetic_activation_field_realism_claimed": false,
+    "historical_native_strength_claimed": false
+  },
+  "frozen_testbank_non_interference": {
+    "completing_cases": 8,
+    "common_generated_files": 550,
+    "raw_equal": 450,
+    "equal_after_declared_volatile_normalization": 100,
+    "scientific_or_structural_differences": 0,
+    "missing_candidate_files": 0,
+    "unexpected_candidate_files": 0,
+    "scientific_number_tolerance_used": false,
+    "plough_active_successful_cases": 4,
+    "observed_plough_events": 31,
+    "interpretation": "SUPPORTING_NON_INTERFERENCE_ONLY_NON_DISCRIMINATING_FOR_TCD028"
+  },
+  "classification": {
+    "b3_qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "gov04_risk_tier": "C",
+    "tier_c_triggers": [
+      "INITIALIZATION_SEMANTICS",
+      "SCIENTIFIC_STATE_OR_SOURCE_OWNERSHIP_AMBIGUITY"
+    ],
+    "stronger_gov04_trigger_found": false,
+    "tier_d_trigger_found": false,
+    "new_physical_state_required": false,
+    "numerical_policy_change": false,
+    "solver_or_tolerance_change": false,
+    "composition": false,
+    "production_bound_scope": false
+  },
+  "historical_uncertainty": {
+    "gov03_acquisition_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "route": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "qualified_b2_available": false,
+    "historical_revision53_manifestation": "UNKNOWN_WITHOUT_B2",
+    "current_gnu_persistence_is_b2": false,
+    "current_gnu_persistence_is_historical_intel_native_evidence": false,
+    "historical_fidelity_claimed": false
+  },
+  "expected_difference_surface": {
+    "may_change": [
+      "stable DOM/DON/conditional DOP redistribution at affected repeated plough events",
+      "causally downstream physical state",
+      "causally downstream process fluxes",
+      "dependent C/N/P balances and reports",
+      "restart output/state only as downstream image of changed physical state"
+    ],
+    "must_not_change_semantics": [
+      "management event timing",
+      "plough trigger definition",
+      "restart serialization/checkpoint representation",
+      "numerical precision policy",
+      "solver/tolerance policy",
+      "unrelated ledger definitions",
+      "unrelated process ordering",
+      "frozen B0 identities",
+      "non-plough source semantics"
+    ],
+    "zero_affected_accumulator_expectation": "SCIENTIFIC_OUTPUT_EQUALITY"
+  },
+  "residual_uncertainties": [
+    "historical Intel/native manifestation of the undefined local lifecycle",
+    "realistic field frequency and magnitude of nonzero affected stable pools at repeated plough events",
+    "future B2 evidence if a credible historical artifact is discovered",
+    "whole-model production composition outside this atomic review"
+  ],
+  "scope_and_non_actions": {
+    "b3_admission_performed": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "tcd_composition_performed": false,
+    "b4_opened": false,
+    "production_migration_opened": false,
+    "central_regie_updated": false
+  },
+  "validation_contract": {
+    "validator": "tools/validate_b3b08r_tcd028_review.py",
+    "scope_guard": "tools/guard_b3b08r_tcd028_scope.py",
+    "workflow": ".github/workflows/animo-b3b08r-tcd028-independent-review.yml",
+    "validation_required_on_review_result_head": true
+  },
+  "next_if_validated_pass": "SEPARATE_TIER_C_FORMAL_DISPOSITION_WORKUNIT_NO_DISPOSITION_IN_THIS_REVIEW"
+}
