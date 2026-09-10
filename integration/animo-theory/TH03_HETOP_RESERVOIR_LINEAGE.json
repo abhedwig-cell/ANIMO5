@@ -10,9 +10,10 @@
       "publisher": "Winand Staring Centre",
       "official_metadata": "https://research.wur.nl/en/publications/modelling-the-nitrogen-and-phosphorus-leaching-to-groundwater-and/",
       "official_document": "https://edepot.wur.nl/363774",
-      "full_text_access_used_for_section_reconstruction": "https://paperzz.com/doc/8968173/0-jul-2000---wageningen-ur-e",
+      "official_search_index_section_recovered": "2.1.3 Upper soil storage and surface runoff",
+      "secondary_full_text_corroboration": "https://paperzz.com/doc/8968173/0-jul-2000---wageningen-ur-e",
       "evidence_role": "PRE_4_0_PROCESS_THEORY_LINEAGE",
-      "authority_note": "Bibliographic identity and official document locator are WUR-hosted. The accessible paragraph-level reconstruction was cross-read from a secondary full-text mirror because the official PDF endpoint returned access errors in this execution environment."
+      "authority_note": "Bibliographic identity and document locator are WUR-hosted. During TH03 closeout strengthening, the WUR edepot search index itself exposed the relevant Section 2.1.3 text. A secondary full-text mirror remains corroboration only; it is no longer the sole paragraph-level source for the reconstructed reservoir concept. Direct PDF opening remained blocked in the execution environment."
     },
     {
       "id": "ANIMO40_PROCESS_REPORT_983",
@@ -37,8 +38,9 @@
       "id": "ANIMO35_USER_GUIDE_TD46",
       "title": "ANIMO 3.5; user's guide for the ANIMO version 3.5 nutrient leaching model",
       "authors": ["J.G. Kroes", "J. Roelsma"],
-      "year": "1997/1998 bibliographic variants",
-      "evidence_role": "LINEAGE_EXISTENCE_ONLY",
+      "year": 1998,
+      "official_metadata": "https://research.wur.nl/en/publications/animo-35-users-guide-for-the-animo-version-35-nutrient-leaching-m/",
+      "evidence_role": "LINEAGE_EXISTENCE_AND_SOIL_INP_TABLE_EXISTENCE",
       "HETOP_table_row_recovered_in_this_workunit": false
     }
   ],
