@@ -1,0 +1,40 @@
+{
+  "work_unit": "ANIMO-B3D17",
+  "title": "TCD-028 GOV04 Tier-C Formal Disposition",
+  "branch": "work/animo-b3d17-tcd028-gov04-tier-c-disposition",
+  "target": "TCD-028",
+  "state": "FORMAL_DISPOSITION_PACKAGE_PERSISTED_PENDING_MACHINE_VALIDATION",
+  "decision": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_B3_ADMISSION_DECISION",
+  "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "b3_qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "gov04_risk_tier": "C",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "admitted": false,
+  "production_authorized": false,
+  "authoring_base": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+  "readiness_authority": "ANIMO-B3B08@310d7117da739d19eebb718129ac9494cac854a1",
+  "independent_review_authority": "ANIMO-B3B08R@3281f98feef7af4822e85a0f011ede0b779de07b",
+  "independent_review_result": "PASS",
+  "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "composition_performed": false,
+    "b4_opened": false,
+    "production_migration_opened": false,
+    "central_regie_updated": false,
+    "b3_admission_performed": false
+  },
+  "validation": {
+    "machine_validated": false,
+    "workflow": "ANIMO-B3D17 TCD-028 Tier-C formal disposition",
+    "run_id": null,
+    "job_id": null,
+    "evidence_head": null,
+    "conclusion": "PENDING",
+    "validator": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "next_if_validated": "SEPARATE_TIER_C_B3_ADMISSION_DECISION_FOR_TCD028"
+}

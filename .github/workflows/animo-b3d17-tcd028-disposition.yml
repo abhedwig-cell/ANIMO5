@@ -1,0 +1,23 @@
+name: ANIMO-B3D17 TCD-028 Tier-C formal disposition
+
+on:
+  push:
+    branches:
+      - work/animo-b3d17-tcd028-gov04-tier-c-disposition
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate TCD-028 Tier-C formal disposition
+        run: python tools/validate_b3d17_tcd028_disposition.py
+      - name: Validate disposition-only scope
+        run: python tools/guard_b3d17_tcd028_scope.py
