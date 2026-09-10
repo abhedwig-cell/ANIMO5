@@ -1,0 +1,273 @@
+{
+  "work_unit": "ANIMO-B3B05",
+  "target_tcd": "TCD-023",
+  "evidence_role": "ATOMIC_CLASS_B_ADMISSION_READINESS_INPUT_NOT_ADMISSION",
+  "authoring_date": "2026-09-10",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3b05-tcd023-stable-dom-p-partition-readiness",
+  "immutable_authoring_base": {
+    "work_unit": "ANIMO-RG05E",
+    "head": "eed822037ed8d906a2ab424220597cffac9cca73",
+    "role": "CURRENT_AGGREGATE_CENTRAL_REGIE_AT_BRANCH_CREATION"
+  },
+  "live_discovery_before_branch_creation": {
+    "dedicated_ANIMO_B3B05_found": false,
+    "dedicated_TCD023_readiness_branch_found": false,
+    "later_TCD023_readiness_or_review_workunit_found": false,
+    "existing_TCD023_review_issue_found": false,
+    "newer_RG05F_or_RG06_aggregate_found": false,
+    "current_aggregate_central_regie": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
+    "post_RG05E_sibling_detected_but_excluded_from_base": "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4",
+    "post_RG05E_sibling_target": "TCD-027",
+    "post_RG05E_sibling_merged_into_this_workunit": false
+  },
+  "pinned_authorities": {
+    "risk_tier_governance": {
+      "work_unit": "ANIMO-GOV04",
+      "head": "1bbe4c211197590f346803106e45dca5faae79fc",
+      "matrix_path": "integration/animo-governance/GOV04_REVIEW_INTENSITY_MATRIX.json",
+      "matrix_blob_sha": "845db982f9a72e7cf271b74e948f46ce81dec028"
+    },
+    "historical_uncertainty_route": {
+      "work_unit": "ANIMO-GOV03",
+      "head": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+      "state": "QUALIFIED_HISTORICAL_B2_ACQUISITION_CLOSURE_G6U_ELIGIBLE_NO_B2_NO_ADMISSIONS",
+      "qualified_closure_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+      "qualified_G6U_state": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS"
+    },
+    "b3_framework": {
+      "work_unit": "ANIMO-B3Q01",
+      "head": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+      "framework_path": "docs/governance/B3_SCIENTIFIC_ADMISSION_FRAMEWORK.md",
+      "framework_blob_sha": "878ec3033eccf11ff278afa76bd6ddc9809fe769",
+      "classes_path": "docs/governance/B3_QUALIFICATION_CLASSES.md",
+      "classes_blob_sha": "b67b46eff837ae03732e97dd43a3d6e1f1c220ed"
+    },
+    "synthetic_oracles": {
+      "work_unit": "ANIMO-SYNQ01",
+      "head": "842f72300fd03ede0b9024537a7ee6126722a121",
+      "register_path": "integration/animo-synthetic/SYNTHETIC_ORACLE_REGISTER.json",
+      "register_blob_sha": "4c215d19844614de8868380fb03f93268ea4c5d8",
+      "applicable_oracle_ids": ["SYNQ-O004", "SYNQ-O005"]
+    },
+    "prep04": {
+      "role": "SOURCE_BOUND_B1_DIAGNOSTIC_CAUSALITY_INPUT_NOT_AUTOMATIC_CONCLUSION",
+      "machine_path": "integration/animo-prep/PREP04_STABLE_DOM_P_PARTITION.json",
+      "machine_blob_sha": "2a6086134517c1d0fa309447cd7ff14976ae9a15",
+      "human_path": "docs/prep04/STABLE_DOM_P_PARTITION_DEFECT.md",
+      "human_blob_sha": "142888d54a598aef2c503a78a1bcdc53f3bc08db"
+    },
+    "prep05_cross_species_symmetry": {
+      "path": "integration/animo-prep/PREP05_CROSS_SPECIES_SYMMETRY_AUDIT.json",
+      "blob_sha": "4eaaf156ffa4b34108407a6ecc28afedfa2b6bce",
+      "role": "ORTHOGONAL_SOURCE_STRUCTURE_CROSS_CHECK_NOT_B2"
+    },
+    "canonical_tcd_register": {
+      "path": "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv",
+      "aggregate_head": "eed822037ed8d906a2ab424220597cffac9cca73",
+      "blob_sha": "e6c2dec78f718f9ffb70af8910f0ec483e676e63",
+      "target_row_status": "OPEN",
+      "target_row_classification": "CONFIRMED_LEGACY_CROSS_SPECIES_ALGEBRA_DEFECT_LOW_RATE_STATE_COUPLING"
+    }
+  },
+  "frozen_B0": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "source_hash_reference_path": "reference/source/ANIMO_4.1.5.53.zip.sha256",
+    "testbank_hash_reference_path": "reference/testcases/ANIMO_testbank.zip.sha256",
+    "source_manifest_path": "reference/source/source_manifest.csv",
+    "source_manifest_blob_sha": "2b876e28fb3dd2fb316502b77030abbf4e5111ab",
+    "source_member": "ANIMO_4.1.5.53/resp_miner.for",
+    "source_member_sha256": "938d35c043bd3e1f14c20ec1c0b2395e9944beb2797746bc4e7cdfb38bb98106",
+    "source_member_size_bytes": 62997,
+    "local_archive_recheck": "PASS_EXACT_ARCHIVE_AND_MEMBER_SHA256_MATCH",
+    "local_recheck_scope": "raw source and testbank archives supplied to this work context; raw archives are not committed to the repository"
+  },
+  "canonical_register_entry": {
+    "process": "stable DOM phosphorus SDO-to-humus partition",
+    "theory_claim": "stable DOM P transformation partitions must use phosphorus-specific transformed mass",
+    "legacy_summary": "revision-53 Resp_miner Case(2) computes Transfop17 from P but Transfop19/20 from Transfon17; these terms feed Tomnpo Rekopo and Outbal_calc",
+    "impact": "causes local P nonconservation and tiny process-source changes",
+    "decision": "retain frozen defect evidence; treat correction as Class B and qualify before migration",
+    "historical_revision_53_behaviour_without_B2": "UNKNOWN"
+  },
+  "exact_source_seam": {
+    "routine": "Resp_miner",
+    "source_member": "resp_miner.for",
+    "case": 2,
+    "case_comment": "no decay of humus pool; transfer from SDO to HU pool",
+    "branch_condition": {
+      "Recfhu_lt_d_minus_1": "1e-12",
+      "RecfHUSDO_lt_d_minus_1": "1e-12",
+      "recfSDO_ge_d_minus_1": "1e-12"
+    },
+    "raw_archive_line_locations": {
+      "case_selector_neighbourhood": "444-474",
+      "Case2_start": 518,
+      "Transfom_parent": 550,
+      "Transfon_parent": 556,
+      "Transfop_parent": 563,
+      "legacy_P_daughter_19": 564,
+      "legacy_P_daughter_20": 565,
+      "Tomnpo_downstream_neighbourhood": "1032-1042",
+      "Rekopo_assignment": 1270
+    },
+    "legacy": [
+      "Transfop(19,Ln) = (1.0-AsfaSDO) * Transfon(17,Ln)",
+      "Transfop(20,Ln) = AsfaSDO * Transfon(17,Ln)"
+    ],
+    "candidate_atomic_correction": [
+      "Transfop(19,Ln) = (1.0-AsfaSDO) * Transfop(17,Ln)",
+      "Transfop(20,Ln) = AsfaSDO * Transfop(17,Ln)"
+    ],
+    "source_recheck_method": "independent raw-member extraction from the supplied archive after exact SHA-256 match to frozen B0"
+  },
+  "species_and_units": {
+    "Hest_definition": "He(Ln) * St",
+    "Hest_units": "m d",
+    "recfSDO_units": "d-1",
+    "AvcoStdiorni_units": "kg N m-3",
+    "AvcoStdiorpo_units": "kg P m-3",
+    "Transfon17_semantic_units": "kg N m-2 per interval",
+    "Transfop17_semantic_units": "kg P m-2 per interval",
+    "AsfaSDO_units": "dimensionless",
+    "Transfop19_20_owner": "phosphorus transformation arrays, kg P m-2 per interval",
+    "legacy_species_mismatch": "a nitrogen-owned transformed mass is numerically assigned into phosphorus-owned daughter transfers"
+  },
+  "no_implicit_NP_conversion": {
+    "qualified_for_atomic_seam": true,
+    "grounds": [
+      "Case(2) constructs separate C, N and P parents from their species-specific stable-DOM concentrations with the same local rate and geometry factors.",
+      "Carbon daughters partition Transfom(17) and nitrogen daughters partition Transfon(17); the P parent Transfop(17) is already calculated immediately before the two disputed P daughter lines.",
+      "The analogous active stable-DOM phosphorus branches in the same routine partition Transfop(17), not Transfon(17).",
+      "PREP05 cross-species symmetry scanning isolates these two TCD-023 statements while retaining known explicit legitimate N/P couplings elsewhere as negative controls.",
+      "No N:P ratio, stoichiometric coefficient, conversion function or other conversion factor occurs in the disputed assignment or its local Case(2) construction."
+    ],
+    "boundary": "This qualifies absence of an intended implicit conversion at the atomic Case(2) partition seam only; it does not qualify the broader undocumented stable-DOM model family."
+  },
+  "local_identity": {
+    "required": "Transfop(19) + Transfop(20) = Transfop(17)",
+    "candidate_derivation": "((1-AsfaSDO) + AsfaSDO) * Transfop(17) = Transfop(17)",
+    "legacy_derivation": "Transfop(19) + Transfop(20) = Transfon(17)",
+    "tolerance_required": false
+  },
+  "synthetic_oracle_reconciliation": {
+    "SYNQ_O004": {
+      "applicable": true,
+      "type": "ANALYTICAL_ORACLE",
+      "independence_class": "STRONGLY_INDEPENDENT",
+      "relation": "per species X: X17=m*k*C_X*H; X19=(1-a)X17; X20=aX17",
+      "discriminator": "deliberately asymmetric N and P parent masses make the cross-species substitution observable",
+      "proves": "species-local daughter partition identity",
+      "does_not_prove": ["historical prevalence", "full stable-DOM physics", "B3 admission", "B2 historical behaviour"]
+    },
+    "SYNQ_O005": {
+      "applicable": true,
+      "type": "METAMORPHIC_ORACLE",
+      "independence_class": "STRONGLY_INDEPENDENT",
+      "relation": "permuting species labels and corresponding inputs must permute the species-local partition outputs identically",
+      "discriminator": "revision-53 Case(2) breaks the relation when N and P parent values differ",
+      "proves": "cross-species selector violation independent of the field-case magnitude",
+      "does_not_prove": ["historical prevalence", "field realism", "B3 admission", "B2 historical behaviour"]
+    },
+    "shared_assumption_boundary": "Both oracles assume no intended hidden cross-species stoichiometric conversion; that assumption is independently checked at the source seam by PREP05 structure and the absence of any local conversion factor."
+  },
+  "natural_activation_and_causality": {
+    "case": "Puitmijn_Cranendonck_60",
+    "phosphorus_active": true,
+    "actual_nonpotential_Case2_events": 9658,
+    "affected_layers": [17, 18, 19, 20, 21, 22, 23],
+    "Recfhu_range_d_minus_1": [8.33707622733057e-15, 9.996862028415146e-13],
+    "recfSDO_range_d_minus_1": [1.0004491472796685e-12, 1.1996234434098174e-10],
+    "recfSDO_to_Recfhu_ratio": 120.0,
+    "legacy_accumulated_local_P_mismatch_kg_m_minus_2": 1.0806894643265774e-11,
+    "legacy_accumulated_local_P_mismatch_kg_ha_minus_1": 1.0806894643265774e-7,
+    "largest_single_event_mismatch_kg_m_minus_2": 1.0228664519933875e-14,
+    "causal_relation": "the legacy daughter sum closes to the N parent rather than the P parent; the observed accumulated local mismatch matches the organic-P whole-case residual to displayed precision and collapses under the two-line execution-copy candidate"
+  },
+  "candidate_closure_and_state_effect": {
+    "bapoLO": {
+      "legacy_final_cumulative_kg_ha_P": -1.08e-7,
+      "candidate_final_cumulative_kg_ha_P": 2.31e-11,
+      "legacy_max_abs_period_kg_ha_P": 1.40e-8,
+      "candidate_max_abs_period_kg_ha_P": 5.59e-12
+    },
+    "bapoTP": {
+      "legacy_final_cumulative_kg_ha_P": -1.05e-7,
+      "candidate_final_cumulative_kg_ha_P": 2.74e-9,
+      "legacy_max_abs_period_kg_ha_P": 1.36e-8,
+      "candidate_max_abs_period_kg_ha_P": 1.36e-9,
+      "remaining_residual_attributed_to_TCD023": false
+    },
+    "max_abs_delta_Tomnpo_kg_m_minus_2_per_step": 1.0228664519933892e-14,
+    "max_abs_delta_Rekopo_kg_m_minus_3_d_minus_1": 9.327856586446364e-15,
+    "physical_or_process_effect_is_exactly_zero": false,
+    "ordinary_formatted_nonbalance_outputs_changed_in_natural_case": false,
+    "interpretation": "the correction is process-relevant and changes the P source trajectory at unrounded precision; this excludes Tier A but does not redefine state ownership, restart semantics or numerical policy"
+  },
+  "eight_case_regression_surface": {
+    "cases": [
+      "CranGrass",
+      "CranMais",
+      "GrassPeat",
+      "LWKM_gras_1040.2021.2045",
+      "Puitmijn_Cranendonck_60",
+      "RuurloGrass",
+      "STONE_akk_0006.2001.2015",
+      "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA"
+    ],
+    "TCD023_candidate_successful_completions": 8,
+    "cases_with_normalized_scientific_differences": 1,
+    "affected_case": "Puitmijn_Cranendonck_60",
+    "normalized_changed_files": ["ani_pLO.Bal", "ani_pTP.Bal", "bapoLO.Out", "bapoTP.Out", "message.out"],
+    "other_seven_cases_normalized_differences": 0,
+    "normalization_boundary": "declared volatile timestamps and elapsed-time material only; no scientific numeric tolerance"
+  },
+  "risk_classification": {
+    "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "GOV04_risk_tier": "B",
+    "tier_A_waiver_used": false,
+    "tier_A_rejected_because": "Tomnpo and Rekopo change at unrounded precision, so physical/process trajectory non-interference is false.",
+    "tier_C_escalation_required": false,
+    "tier_C_recheck": {
+      "state_or_restart_semantics_changed": false,
+      "initialization_semantics_changed": false,
+      "canonical_state_ownership_changed": false,
+      "missing_or_redefined_physical_state": false,
+      "numerical_policy_changed": false,
+      "solver_or_tolerance_changed": false,
+      "exact_zero_or_singular_domain_semantics_changed": false,
+      "ambiguous_domain_contract_introduced": false
+    },
+    "interpretation": "A downstream state/process consequence of a local species correction is expected Class-B behaviour; it is not by itself a state-semantics change. Escalate if independent review finds broader semantics or scope."
+  },
+  "historical_route": {
+    "qualified_B2_for_TCD023": false,
+    "historical_revision_53_behaviour": "UNKNOWN",
+    "historical_fidelity_claimed": false,
+    "GOV03_G6U_eligible": true,
+    "B3Q01_historical_uncertainty_basis": [
+      "unambiguous local species/conservation identity",
+      "source-bound natural causal evidence",
+      "independent analytical oracle SYNQ-O004",
+      "independent metamorphic oracle SYNQ-O005",
+      "orthogonal PREP05 source-structure cross-check",
+      "strong branch activation and eight-case non-interference surface",
+      "mandatory independent second-line review still pending"
+    ]
+  },
+  "hard_scope_boundaries": {
+    "compose_TCD019": false,
+    "compose_TCD024": false,
+    "compose_TCD027": false,
+    "compose_other_stable_DOM_or_P_correction": false,
+    "production_source_modified": false,
+    "frozen_B0_modified": false,
+    "canonical_TCD_register_modified": false,
+    "B4_opened": false,
+    "production_migration_opened": false,
+    "central_RG05_updated": false,
+    "historical_fidelity_claimed": false,
+    "independent_second_line_executed_in_authoring_context": false
+  }
+}
