@@ -1,0 +1,77 @@
+name: ANIMO-B3D21 TCD-037-A1 Tier-A atomic admission
+
+on:
+  push:
+    branches:
+      - work/animo-b3d21-tcd037-a1-gov04-tier-a-admission
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact admission authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in \
+            5915333feed06e0c03280cb8fdfeff8dd1be9e9a \
+            3e4247928bb43f30def951fa8804560636affbef \
+            54679c7555a963133dfd686648af334f479c5808 \
+            a3e822f8e97fe1312a7dfa73601a49ae7375163e \
+            1975eda3586d79033be6af745994bb6181a825fc \
+            842f72300fd03ede0b9024537a7ee6126722a121 \
+            1bbe4c211197590f346803106e45dca5faae79fc \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            846e0f4d02a38b9e02cc1419b1ca87e63aaedb54 \
+            1db63b17cb5f48cbd8ae28116a2e716b4bdaadf3
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+            git cat-file -e "${sha}^{commit}"
+          done
+
+      - name: Verify exact prior qualification workflow identities
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          verify_run () {
+            run_id="$1"
+            expected_sha="$2"
+            actual_sha="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${run_id}" --jq '.head_sha')"
+            status="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${run_id}" --jq '.status')"
+            conclusion="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${run_id}" --jq '.conclusion')"
+            test "$actual_sha" = "$expected_sha"
+            test "$status" = "completed"
+            test "$conclusion" = "success"
+          }
+          verify_run 34538944794 5915333feed06e0c03280cb8fdfeff8dd1be9e9a
+          verify_run 34538344680 1975eda3586d79033be6af745994bb6181a825fc
+          verify_run 34537563430 3e4247928bb43f30def951fa8804560636affbef
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install schema validator
+        run: python -m pip install --disable-pip-version-check jsonschema
+
+      - name: Parse B3D21 JSON records
+        run: |
+          python -m json.tool integration/animo-b3/TCD037_A1_TIER_A_WAIVER_AUDIT.json >/dev/null
+          python -m json.tool integration/animo-b3/TCD037_A1_CHILD_ATOM_FORMAL_DISPOSITION.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3D21_STATUS.json >/dev/null
+
+      - name: Validate Tier-A waiver, B3Q01 disposition, B3Q02 carrier and scope
+        run: python tools/validate_b3d21_tcd037_a1.py
