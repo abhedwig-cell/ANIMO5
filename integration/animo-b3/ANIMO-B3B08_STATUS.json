@@ -3,9 +3,9 @@
   "title": "TCD-028 Stable-DOM Plough Event-Accumulator Admission Readiness",
   "branch": "work/animo-b3b08-tcd028-stable-dom-event-reset-readiness",
   "target": "TCD-028",
-  "state": "READINESS_PACKAGE_PERSISTED_PENDING_MACHINE_VALIDATION",
+  "state": "QUALIFIED_CLASS_B_ADMISSION_READINESS_GOV04_TIER_C_REVIEW_HANDOFF_ALLOWED",
   "decision": "QUALIFIED_CLASS_B_ADMISSION_READINESS_GOV04_TIER_C_HISTORICAL_UNCERTAINTY_REVIEW_REQUIRED",
-  "readiness_qualified": false,
+  "readiness_qualified": true,
   "b3_admitted": false,
   "production_authorized": false,
   "b3_qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
@@ -48,14 +48,15 @@
     "independent_review_performed": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-B3B08 TCD-028 Tier-C readiness",
-    "run_id": null,
-    "job_id": null,
-    "evidence_head": null,
-    "conclusion": "PENDING",
-    "validator": "PENDING",
-    "scope_guard": "PENDING"
+    "run_id": 34490074634,
+    "job_id": 102914205994,
+    "evidence_head": "0145b80e7e308d82995f783cc4febb3b4c9da6ad",
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34490074634 validates the substantive B3B08 readiness package at evidence head 0145b80e7e308d82995f783cc4febb3b4c9da6ad. This status closeout must pass the same fail-closed workflow on the final branch head."
   },
   "next_if_validated": "PREPARE_EXACTLY_ONE_SEPARATE_TIER_C_INDEPENDENT_SECOND_LINE_REVIEW_HANDOFF"
 }
