@@ -1,0 +1,32 @@
+{
+  "atomic_b3_admission_blocked": true,
+  "ci_interpretation": "CI validates package integrity and replay-contract completeness only; it is not a scientific review PASS.",
+  "disposition": "QUALIFIED_SOURCE_PROVENANCE_REMEDIATION_READY_FOR_TARGETED_INDEPENDENT_REREVIEW",
+  "final_head_pin_policy": "Use the exact final branch head whose ANIMO-B3B10E1 workflow concludes success; the SHA is intentionally not self-embedded.",
+  "gov04_risk_tier": "TIER_C",
+  "historical_b2_recovered": false,
+  "review_status_affected": "B3B10R remains COMPLETE_FAIL_CLOSED until a genuinely independent targeted rereview changes it",
+  "scientific_admission": false,
+  "scientific_falsification": false,
+  "scope": "SOURCE_PROVENANCE_REMEDIATION",
+  "scope_guards": {
+    "b3_admission": false,
+    "b4": false,
+    "canonical_state_admission": false,
+    "canonical_tcd_register_update": false,
+    "frozen_artifact_modified": false,
+    "historical_intent_inference": false,
+    "new_numerical_tolerance": false,
+    "production_source_file_modified": false,
+    "rg05_update": false,
+    "tcd025_composition": false,
+    "whole_model_active_split_executed": false
+  },
+  "stateq04_reopen_required": false,
+  "targeted_independent_rereview_ready_after_exact_head_ci_success": true,
+  "tcd": "TCD-031",
+  "tcd025": "BLOCKED_PENDING_TCD031_INDEPENDENT_TIER_C_REVIEW_PASS",
+  "whole_model_active_split_required_to_repair_current_independent_source_blocker": false,
+  "whole_model_production_restart_equivalence_still_required_before_production_or_migration_claim": true,
+  "workunit": "ANIMO-B3B10E1"
+}
