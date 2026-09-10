@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "workunit": "ANIMO-B3B04E3",
+  "target": "TCD-040",
+  "upstream_authorization": "ANIMO-B3B04E2@01e6df610d236bac19d17f16d109a4e0e676ccfa",
+  "harness_source_commit": "73b705924f4932dcca65aaa0a1eef90097aba0b6",
+  "harness_content_sha256": {
+    "tools/b3b04e3/run_reconstructed_replay.py": "a09c1f98bc67ff45412afb27d7549d71664bc867391147cf413161f8fa75fdee",
+    "tools/b3b04e3/compare_reconstructed_replay.py": "6cd4704040eca68a5be37ed4d4546d12e014a58ff9d909c4da2679839a807a7e",
+    "docs/b3/TCD040_RECONSTRUCTED_REPLAY_E3.md": "0bd839d715d36ea4f97b00292f565132a2212be3f9ae32769508c527fa957139"
+  },
+  "authoring_execution": {
+    "evidence_class": "SESSION_LOCAL_HASH_VERIFIED_AUTHORING_REPLAY_NOT_CONTROLLED_CUSTODY_PROOF",
+    "result_report": "integration/animo-b3/b3b04e3/TCD040_RECONSTRUCTED_REPLAY_RESULT.json",
+    "post_generation_comparison": "integration/animo-b3/b3b04e3/TCD040_RECONSTRUCTED_REPLAY_COMPARISON.json",
+    "controlled_immutable_B0_storage_proven": false,
+    "independent_replay_qualified": false
+  },
+  "generated_artifacts_not_republished": {
+    "continuous/b3trace.bin": {"sha256":"c73df6a35ccff5af39a4497aba4f1bc8f38b160a25d0cfe29e962285026d0163","size_bytes":3204000},
+    "stageA282/b3trace.bin": {"sha256":"1617ccffc386ae759a423bdb803bd72960881f713b79829e61a8bc89e60456a7","size_bytes":1003920},
+    "restore282/b3trace.bin": {"sha256":"c73df6a35ccff5af39a4497aba4f1bc8f38b160a25d0cfe29e962285026d0163","size_bytes":3204000},
+    "defect282/b3trace.bin": {"sha256":"fd4048b934736ca5fa9abdb1f915318c6c549c5d48d15207434519083ed2c568","size_bytes":3204000},
+    "stageA67/b3trace.bin": {"sha256":"d9a69489eba129ed8952590b2d06a98516e66ef4db39b86f9d56e727f1a96372","size_bytes":238520},
+    "defect67/b3trace.bin": {"sha256":"c73df6a35ccff5af39a4497aba4f1bc8f38b160a25d0cfe29e962285026d0163","size_bytes":3204000},
+    "stageA282/b3checkpoint.bin": {"sha256":"833363cc2f8457a617b450bfa283842532efcb8d321a57eca5e05584b0224b2e","size_bytes":48},
+    "stageA67/b3checkpoint.bin": {"sha256":"32bdf5749fde9e0553f2efa3c55d0b329e1ab5beafdcf6eb1d86db6e19aabd94","size_bytes":48}
+  },
+  "original_B3B04_full_trace_bytes_reconstructed": false,
+  "original_B3B04_trace_serializer_schema_recovered": false,
+  "production_source_modified": false,
+  "TCD040_B3_admitted": false,
+  "canonical_STATE_admitted": false,
+  "remaining_blocker": "ANIMO-EG01 controlled immutable B0 primary/secondary custody and restore verification"
+}

@@ -1,0 +1,83 @@
+name: ANIMO-B3B04E3 TCD-040 reconstructed replay package
+
+on:
+  push:
+    branches:
+      - work/animo-b3b04e3-tcd040-reconstructed-replay-harness
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-reconstruction-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compile Python tooling
+        run: |
+          python -m py_compile \
+            tools/b3b04e3/run_reconstructed_replay.py \
+            tools/b3b04e3/compare_reconstructed_replay.py \
+            tools/b3b04e3/validate_b3b04e3.py
+
+      - name: Validate E3 package and evidence boundaries
+        run: python tools/b3b04e3/validate_b3b04e3.py
+
+      - name: Re-run post-generation semantic comparator
+        run: |
+          python tools/b3b04e3/compare_reconstructed_replay.py \
+            integration/animo-b3/b3b04e3/TCD040_RECONSTRUCTED_REPLAY_RESULT.json \
+            integration/animo-b3/b3b04e1/TCD040_REPLAY_EXPECTATIONS.json \
+            --output /tmp/TCD040_RECONSTRUCTED_REPLAY_COMPARISON.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          got = json.loads(Path('/tmp/TCD040_RECONSTRUCTED_REPLAY_COMPARISON.json').read_text())
+          frozen = json.loads(Path('integration/animo-b3/b3b04e3/TCD040_RECONSTRUCTED_REPLAY_COMPARISON.json').read_text())
+          assert got == frozen, 'persisted post-generation comparison differs from re-run comparator'
+          print('PASS_B3B04E3_POST_GENERATION_COMPARISON_REPLAY')
+          PY
+
+      - name: Enforce E3 scope guard
+        run: |
+          python - <<'PY'
+          import subprocess
+          base = '01e6df610d236bac19d17f16d109a4e0e676ccfa'
+          allowed = {
+              '.github/workflows/animo-b3b04e3-tcd040-reconstructed-replay.yml',
+              'docs/b3/TCD040_RECONSTRUCTED_REPLAY_E3.md',
+              'integration/animo-b3/ANIMO-B3B04E3_STATUS.json',
+              'integration/animo-b3/b3b04e3/TCD040_RECONSTRUCTED_REPLAY_RESULT.json',
+              'integration/animo-b3/b3b04e3/TCD040_RECONSTRUCTED_REPLAY_COMPARISON.json',
+              'integration/animo-b3/b3b04e3/TCD040_RECONSTRUCTED_REPLAY_MANIFEST.json',
+              'tools/b3b04e3/run_reconstructed_replay.py',
+              'tools/b3b04e3/compare_reconstructed_replay.py',
+              'tools/b3b04e3/validate_b3b04e3.py',
+          }
+          changed = set(subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{base}..HEAD'], text=True
+          ).splitlines())
+          extra = sorted(changed - allowed)
+          missing_core = sorted({
+              'docs/b3/TCD040_RECONSTRUCTED_REPLAY_E3.md',
+              'integration/animo-b3/ANIMO-B3B04E3_STATUS.json',
+              'integration/animo-b3/b3b04e3/TCD040_RECONSTRUCTED_REPLAY_RESULT.json',
+              'integration/animo-b3/b3b04e3/TCD040_RECONSTRUCTED_REPLAY_COMPARISON.json',
+              'integration/animo-b3/b3b04e3/TCD040_RECONSTRUCTED_REPLAY_MANIFEST.json',
+              'tools/b3b04e3/run_reconstructed_replay.py',
+              'tools/b3b04e3/compare_reconstructed_replay.py',
+              'tools/b3b04e3/validate_b3b04e3.py',
+          } - changed)
+          assert not extra, f'out-of-scope files changed: {extra}'
+          assert not missing_core, f'required E3 files absent from branch delta: {missing_core}'
+          print('PASS_B3B04E3_SCOPE_GUARD')
+          PY
+
+      - name: State CI replay limitation
+        run: |
+          echo 'No fresh B0 replay is executed here because controlled immutable B0 archives are not stored in the repository.'
+          echo 'This workflow validates the persisted reconstruction package and post-generation semantic comparison only.'

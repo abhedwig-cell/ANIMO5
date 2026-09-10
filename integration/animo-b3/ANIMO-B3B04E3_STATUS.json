@@ -1,0 +1,49 @@
+{
+  "workunit": "ANIMO-B3B04E3",
+  "target": "TCD-040",
+  "branch": "work/animo-b3b04e3-tcd040-reconstructed-replay-harness",
+  "base": "ANIMO-B3B04E2@01e6df610d236bac19d17f16d109a4e0e676ccfa",
+  "harness_source_commit": "73b705924f4932dcca65aaa0a1eef90097aba0b6",
+  "state": "REPLAY_PACKAGE_PERSISTED_LOCAL_SEMANTIC_MATCH_CI_VALIDATION_PENDING",
+  "decision": "RECONSTRUCTED_REPLAY_IMPLEMENTED_SESSION_LOCAL_SEMANTIC_MATCH_CONTROLLED_B0_CUSTODY_PENDING",
+  "evidence": {
+    "session_local_B0_hash_verified": true,
+    "reconstructed_generator_persisted": true,
+    "post_generation_comparator_persisted": true,
+    "result_manifest_persisted": true,
+    "checkpoint_sha_reproduced_exactly": true,
+    "split282_semantic_match": true,
+    "split67_zero_control_match": true,
+    "original_full_trace_serializer_recovered": false,
+    "controlled_immutable_B0_storage_proven": false,
+    "independent_replay_qualified": false
+  },
+  "qualification_boundaries": {
+    "TCD040_B3_admitted": false,
+    "production_patch": false,
+    "B4_started": false,
+    "canonical_STATE_admitted": false,
+    "whole_model_checkpoint_qualified": false,
+    "TCD016_composed": false,
+    "internal_crop_composed": false,
+    "restart_redesign": false,
+    "historical_fidelity_claim": false,
+    "central_regie_updated": false,
+    "second_line_reconsideration_started": false
+  },
+  "ci": {
+    "fresh_B0_replay_in_public_CI": false,
+    "reason": "B0 archives are intentionally not republished to the repository; EG01 controlled-custody restore input is unavailable to this workflow.",
+    "package_validation_run": null,
+    "package_validation_conclusion": "PENDING"
+  },
+  "remaining_blocker": "ANIMO-EG01 controlled immutable B0 primary/secondary custody and restore verification",
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "locally_tested": true,
+    "package_CI_tested": false,
+    "independent_replay_qualified": false,
+    "workunit_complete": false
+  }
+}
