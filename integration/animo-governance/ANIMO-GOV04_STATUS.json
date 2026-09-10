@@ -23,8 +23,8 @@
     "rg05d_admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026"]
   },
   "governance_only": true,
-  "state": "IN_PROGRESS_PERSISTED_RISK_TIERED_REVIEW_POLICY_VALIDATION_PENDING",
-  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "state": "QUALIFIED_RISK_TIERED_SCIENTIFIC_REVIEW_POLICY_NO_SCIENTIFIC_GATE_REDUCTION",
+  "decision": "QUALIFIED_RISK_TIERED_SCIENTIFIC_REVIEW_POLICY_NO_SCIENTIFIC_GATE_REDUCTION",
   "policy": {
     "principle": "RISK_TIERED_REVIEW_INTENSITY",
     "scientific_gate_reduction": false,
@@ -76,19 +76,20 @@
   "validation": {
     "validator": "tools/validate_gov04_review_policy.py",
     "workflow": ".github/workflows/animo-gov04-risk-tiered-review-policy.yml",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_job_id": null,
-    "github_actions_conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "894c748a1a0819a18dba93661e0413e37abdb789",
+    "github_actions_run_id": 34459738480,
+    "github_actions_job_id": 102814450012,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS_GOV04_RISK_TIERED_REVIEW_POLICY",
+    "scope_guard": "PASS_GOV04_SCOPE_GUARD",
+    "closeout_note": "Run 34459738480 validated the complete persisted GOV04 package before this status closeout commit. The closeout commit must pass the same workflow independently."
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "deliverables": [
     "docs/governance/ANIMO_GOV04_RISK_TIERED_REVIEW_POLICY.md",
