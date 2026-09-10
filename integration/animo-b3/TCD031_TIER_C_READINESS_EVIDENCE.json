@@ -1,0 +1,118 @@
+{
+  "work_unit": "ANIMO-B3B10",
+  "target": "TCD-031",
+  "branch": "work/animo-b3b10-tcd031-macropore-restart-state-readiness",
+  "authoring_base": "ANIMO-STATEQ04@ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+  "risk": {
+    "b3_class": "C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL",
+    "gov04_tier": "C",
+    "forced_by": [
+      "PERSISTENT_STATE_OWNERSHIP",
+      "RESTART_SERIALIZATION",
+      "RESTORE_DIRECTION",
+      "CHECKPOINT_LIFECYCLE"
+    ]
+  },
+  "authorities": {
+    "RG05G": "4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "MP01": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "MP02": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "STATEQ01": "4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "STATEQ02": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "STATEQ03": "10c50e65d1369d5f3b26736c4b12d3a482379eb5",
+    "STATEQ04": "ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+    "MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "B3I06": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9"
+  },
+  "frozen_b0": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "revision": "4.1.5.53",
+    "naturally_active_macropore_case_available": false
+  },
+  "atomic_correction_identity": {
+    "name": "COMPLETE_ACCEPTED_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY",
+    "transaction_halves": [
+      "SERIALIZE_ALL_ENABLED_ACCEPTED_CoMp_SPECIES_X_DOMAIN_COORDINATES",
+      "RESTORE_CoMp_THEN_ESTABLISH_RsCoMp_ALIAS_FROM_RESTORED_ACCEPTED_OWNER_BEFORE_ORDINARY_PROMOTION"
+    ],
+    "halves_are_separable_admissions": false,
+    "reason": "Neither half alone preserves the accepted physical owner across restart."
+  },
+  "persistent_owner": {
+    "owner": "ANIMO_MACROPORE_SOLUTE",
+    "domains": 2,
+    "p_off_scalars": 8,
+    "p_on_scalars": 12,
+    "species": [
+      "DOM",
+      "DON",
+      "NH4-N",
+      "NO3-N",
+      "DOP-P_IF_P_ACTIVE",
+      "PO4-P_IF_P_ACTIVE"
+    ],
+    "accepted_alias": "CoMp*",
+    "result_alias": "RsCoMp*",
+    "result_alias_independent_checkpoint_coordinate": false,
+    "globally_deterministic_reconstruction": false,
+    "external_hydrology_binding_required": true
+  },
+  "stateq03_native_failure": {
+    "native_output_serialization_complete": false,
+    "p_off_serialized_required_scalars": "0/8",
+    "p_on_serialized_required_scalars": "0/12",
+    "first_resumed_restore_direction_qualified": false,
+    "failure_phase": "BEFORE_FIRST_POST_RESTORE_COMPARISON"
+  },
+  "stateq04_candidate_evidence": {
+    "qualification_only": true,
+    "production_source_modified": false,
+    "frozen_kernel": "MAPOTRANSPORT",
+    "species_discriminated": 6,
+    "split_after_accepted_step": 5,
+    "post_restore_steps_compared": 5,
+    "comparison_policy": "EXACT_BYTEWISE_NO_TOLERANCE",
+    "candidate_restore_all_species_exact": true,
+    "native_bad_alias_control_all_species_diverge": true,
+    "domain_drop_control_all_species_diverge": true,
+    "whole_model_active_split": false
+  },
+  "whole_model_support": {
+    "MP02_complete_model_active_reachability": true,
+    "MP02_evidence_class": "B1_COMPLETE_CASE_SYNTHETIC_DIAGNOSTIC_ONLY",
+    "MP02_historical_B2": false,
+    "MP02_active_continuous_vs_split": false
+  },
+  "historical_uncertainty": {
+    "trusted_active_B2_restart_reference": false,
+    "historical_revision53_behaviour": "UNKNOWN",
+    "route": "GOV03_HISTORICAL_UNCERTAINTY_RETAINED"
+  },
+  "readiness_gates": {
+    "atomic_scope_bounded": true,
+    "ownership_complete": true,
+    "units_and_domains_reconstructed": true,
+    "serialization_gap_reproduced": true,
+    "restore_direction_gap_reproduced": true,
+    "candidate_transaction_executable_discriminator": true,
+    "species_separated_controls": true,
+    "domain_necessity_controls": true,
+    "tolerance_invented": false,
+    "production_patch_present": false,
+    "canonical_state_admission_present": false,
+    "independent_review_required": true
+  },
+  "not_claimed": [
+    "HISTORICAL_ACTIVE_B2_REFERENCE",
+    "PRODUCTION_CHECKPOINT_IMPLEMENTATION",
+    "WHOLE_MODEL_ACTIVE_SPLIT_FOR_PRODUCTION_IMPLEMENTATION",
+    "CANONICAL_STATE_ADMISSION",
+    "TCD025_LEDGER_ADMISSION",
+    "B3_ADMISSION"
+  ],
+  "decision": "QUALIFIED_CLASS_C_ADMISSION_READINESS_GOV04_TIER_C_INDEPENDENT_REVIEW_REQUIRED"
+}
