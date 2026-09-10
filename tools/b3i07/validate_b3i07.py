@@ -137,7 +137,7 @@ def main() -> None:
 
     require("TIER_A_CANDIDATE_WAIVER_NOT_YET_AVAILABLE" in doc, "document must preserve no-waiver state")
     require("TCD-043 remains unreserved" in doc, "document must keep TCD-043 unreserved")
-    require("same-context synthetic B1" in doc, "document must preserve synthetic-evidence limitation")
+    require("RUNTIMEQ03 synthetic B1 discriminator" in doc and "not an independently qualified substitute" in doc, "document must preserve synthetic-evidence limitation")
     for cid, route in EXPECTED_ROUTES.items():
         require(cid in doc and route in doc, f"document missing route for {cid}")
 
