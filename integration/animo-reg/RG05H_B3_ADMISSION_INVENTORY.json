@@ -1,0 +1,106 @@
+{
+  "work_unit": "ANIMO-RG05H",
+  "inventory_kind": "EARLY_GOV04_AGGREGATE_WITH_ROUTING_REFRESH",
+  "source_aggregate": {
+    "work_unit": "ANIMO-RG05G",
+    "head": "4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+    "scientific_admissions": 10,
+    "historical_uncertainty_admissions": 10,
+    "admitted_tcds": [
+      "TCD-017",
+      "TCD-018",
+      "TCD-024",
+      "TCD-026",
+      "TCD-015",
+      "TCD-027",
+      "TCD-041",
+      "TCD-030",
+      "TCD-023",
+      "TCD-028"
+    ]
+  },
+  "governance_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "historical_uncertainty_authority": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+  "batch_policy": {
+    "normal_new_admission_min": 3,
+    "normal_new_admission_max": 5,
+    "new_admissions_in_this_refresh": 1,
+    "normal_threshold_reached": false,
+    "early_batch": true,
+    "early_trigger": "CANONICAL_ROUTING_CHANGED_AND_CURRENT_CENTRAL_SNAPSHOT_WOULD_OTHERWISE_BE_MISLEADING",
+    "basis": "B3I07 advances canonical routing beyond the B3I06 authority named by RG05G; GOV04 permits and requires earlier aggregate integration when a real project gate such as canonical routing changes."
+  },
+  "new_admissions": [
+    {
+      "tcd": "TCD-038",
+      "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+      "risk_tier": "C",
+      "process": "crop actual uptake restart initialization",
+      "admission_authority": "ANIMO-B3D20@4f0a352bd354c971db0d972967296bf64505da5b",
+      "admission_state": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+      "decision": "ADMIT_TCD038_ATOMIC_CROP_ACTUAL_UPTAKE_RESTART_INITIALIZATION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_C",
+      "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+      "readiness_authority": "ANIMO-B3B09@1b47d6b2e422463b557a48355ad8b4f5bed70ebc",
+      "independent_review_authority": "ANIMO-B3B09R@c6fcd47f4fb4c0277fa27860ee66dc83a449a038",
+      "formal_disposition_authority": "ANIMO-B3D19@8deb1f45c58a9fa3151abc6422aa4f0e55d73a35",
+      "historical_behaviour": "UNKNOWN_WITHOUT_B2",
+      "final_head_workflow_run": 34533388180,
+      "final_head_workflow_conclusion": "success",
+      "historical_fidelity_claimed": false,
+      "composition_admitted": false,
+      "b4_admitted": false,
+      "production_patch_authorized": false,
+      "production_migration_admitted": false
+    }
+  ],
+  "admitted_tcds": [
+    "TCD-017",
+    "TCD-018",
+    "TCD-024",
+    "TCD-026",
+    "TCD-015",
+    "TCD-027",
+    "TCD-041",
+    "TCD-030",
+    "TCD-023",
+    "TCD-028",
+    "TCD-038"
+  ],
+  "counts": {
+    "scientific_admissions": 11,
+    "atomic_admissions": 11,
+    "historical_uncertainty_admissions": 11,
+    "normal_b2_route_admissions": 0,
+    "b4_admissions": 0,
+    "production_migrations": 0
+  },
+  "routing_authority_after_refresh": {
+    "work_unit": "ANIMO-B3I07",
+    "head": "54679c7555a963133dfd686648af334f479c5808",
+    "parent_tcd": "TCD-037",
+    "parent_state": "ATOMIZED_A1_A2_A3_A4_ACCOUNTING_OBSERVER_CHILDREN_NO_ADMISSION",
+    "canonical_children": [
+      "TCD-037-A1",
+      "TCD-037-A2",
+      "TCD-037-A3",
+      "TCD-037-A4"
+    ],
+    "child_risk_state": "TIER_A_CANDIDATE_WAIVER_NOT_YET_AVAILABLE",
+    "child_admission_count": 0,
+    "canonical_top_level_tail": "TCD-042",
+    "tcd_043_reserved": false
+  },
+  "queue_policy": {
+    "global_canonical_queue_count_recomputed": false,
+    "reason": "Distributed later routing and readiness authorities make simple subtraction from an older aggregate queue snapshot unsafe."
+  },
+  "project_boundary": {
+    "B3_complete": false,
+    "B4_open": false,
+    "production_open": false,
+    "canonical_tcd_register_modified": false,
+    "scientific_readmission_performed": false,
+    "composition_admitted": false,
+    "historical_fidelity_claimed": false
+  }
+}
