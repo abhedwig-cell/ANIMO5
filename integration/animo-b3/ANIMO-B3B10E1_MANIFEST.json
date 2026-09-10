@@ -28,8 +28,8 @@
   },
   "generated_artifacts": {
     "OWNERSHIP_MAP.json": "685998c28740c0be5369aedb4246de088836c703e7a4108da9d7dba254f2ba6d",
-    "PROBE_OUTPUT.json": "9f248108e409c762ebef752e85329e6d1586d2a439c38c72c626b5414b51cf8e",
-    "REPLAY_INSTRUCTIONS.json": "da7327c84d651b61aa9e47e24069c322f6ae8ff16ee51402618327d2bd3df3a7",
+    "PROBE_OUTPUT.json": "99c48d925181694a6fd39a17f54bfc0f94b67bbb0013861503335dfd1f9e6290",
+    "REPLAY_INSTRUCTIONS.json": "9c81a5a2f55124e9a85d364310cbd78e2fc375cd9a69cd50aa4202b797af5977",
     "SOURCE_MEMBER_INDEX.json": "be4182c7438650f86399f912c57bbad42adf71fc362b694537f2db4d64c816fc"
   },
   "independent_replay_boundary": "A reviewer with lawful local access to the exact archive can regenerate and byte-compare the proof outputs. Without that archive, the committed hashes and package integrity remain checkable, but source-level claims are not independently reproducible.",
@@ -105,7 +105,7 @@
   },
   "tcd": "TCD-031",
   "tool_sha256": {
-    "tools/b3b10e1/generate_tcd031_source_provenance.py": "9b4305bc2ce4f3c23cce21b1cb216e6c317865e5da6a9dda8a29f6a6af198dba",
+    "tools/b3b10e1/generate_tcd031_source_provenance.py": "fb2ee7277e94c77ecead73fbb0b0c322fb9ece02d95fc6b170e8e90084b4ef3f",
     "tools/b3b10e1/validate_b3b10e1.py": "3e91c130c47e97129952306ca8e756d1911e83727a3ab95e13bc49b54d7ebdea"
   },
   "workunit": "ANIMO-B3B10E1"
