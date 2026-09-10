@@ -1,0 +1,34 @@
+name: ANIMO-B3D08 TCD026 admission closeout
+
+on:
+  push:
+    branches:
+      - work/animo-b3d08-tcd026-admission-closeout
+
+jobs:
+  validate-b3d08:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Validate TCD-026 admission closeout
+        run: python tools/validate_b3d08_tcd026_admission.py
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=21766eaf3443bcf432f05fbf6ba89d365bc70988
+          allowed='^(integration/animo-b3/TCD026_B3_ADMISSION_CLOSEOUT.json|integration/animo-b3/ANIMO-B3D08_STATUS.json|docs/b3/TCD026_B3_ADMISSION_CLOSEOUT.md|tools/validate_b3d08_tcd026_admission.py|\.github/workflows/animo-b3d08-tcd026-admission.yml)$'
+          git diff --name-only "$base" HEAD | tee /tmp/changed.txt
+          bad=$(grep -Ev "$allowed" /tmp/changed.txt || true)
+          if [ -n "$bad" ]; then
+            echo "Unexpected changed paths:"
+            echo "$bad"
+            exit 1
+          fi
+          test "$(wc -l < /tmp/changed.txt)" -eq 5
+          echo PASS_B3D08_ADMISSION_SCOPE_GUARD
