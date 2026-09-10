@@ -1,29 +1,21 @@
 #!/usr/bin/env python3
 """Fail-closed validator for ANIMO-B3B01R independent TCD-015 review.
 
-This validator checks persistence, pins, arithmetic, evidence boundaries and review
-scope. A validator PASS is not itself scientific proof and does not perform B3
-admission or authorize a production correction.
+The review branch intentionally does not copy all readiness/evidence objects into
+its own tree. This validator reads each external review object from its exact
+pinned Git commit with ``git show``. A validator PASS is not scientific proof and
+does not perform B3 admission or authorize a production correction.
 """
 from __future__ import annotations
 
 import json
+import subprocess
 from decimal import Decimal as D, getcontext
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / "docs/b3/TCD015_INDEPENDENT_SECOND_LINE_REVIEW.md"
 RESULT = ROOT / "integration/animo-b3/TCD015_INDEPENDENT_REVIEW_RESULT.json"
-READINESS = ROOT / "integration/animo-b3/TCD015_CLASS_B_READINESS.json"
-EXPECTED = ROOT / "integration/animo-b3/TCD015_EXPECTED_DIFFERENCE.json"
-COVERAGE = ROOT / "integration/animo-b3/TCD015_BRANCH_COVERAGE_SUPPLEMENT.json"
-SOURCE_MANIFEST = ROOT / "reference/source/source_manifest.csv"
-NITROGEN = ROOT / "docs/prep01/NITROGEN_BALANCE_DIAGNOSTICS.md"
-NH4 = ROOT / "docs/prep01/NH4_DRYDOWN_LEDGER_SEAM.md"
-GHG = ROOT / "docs/prep01/GHG_TESTCASE_PROVENANCE.md"
-SYNQ = ROOT / "tools/reference/synthetic_oracles.py"
-COMPARATOR = ROOT / "tools/compare_legacy_output_trees.py"
-GOV03 = ROOT / "integration/animo-governance/GOV03_ACQUISITION_EVIDENCE.json"
 
 EXPECTED_REVIEW_START = "c05486e76993d26771f62f32842508479d14fdde"
 EXPECTED_B3B01 = "b982242949aecab32b9067cf7910ad75abfc2b19"
@@ -82,23 +74,43 @@ def load(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def git_text(ref: str, path: str) -> str:
+    proc = subprocess.run(
+        ["git", "show", f"{ref}:{path}"],
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    assert proc.returncode == 0, f"cannot read pinned evidence {ref}:{path}: {proc.stderr}"
+    return proc.stdout
+
+
+def git_json(ref: str, path: str):
+    return json.loads(git_text(ref, path))
+
+
 def require(text: str, needle: str) -> None:
     assert needle in text, f"missing required evidence text: {needle}"
 
 
 def main() -> None:
     result = load(RESULT)
-    readiness = load(READINESS)
-    expected = load(EXPECTED)
-    coverage = load(COVERAGE)
-    gov03 = load(GOV03)
     report = REPORT.read_text(encoding="utf-8")
-    manifest = SOURCE_MANIFEST.read_text(encoding="utf-8")
-    nitrogen = NITROGEN.read_text(encoding="utf-8")
-    nh4 = NH4.read_text(encoding="utf-8")
-    ghg = GHG.read_text(encoding="utf-8")
-    synq = SYNQ.read_text(encoding="utf-8")
-    comparator = COMPARATOR.read_text(encoding="utf-8")
+
+    # Read external evidence from the exact reviewed heads, never from whatever
+    # happens to be present in the review branch tree.
+    readiness = git_json(EXPECTED_B3B01, "integration/animo-b3/TCD015_CLASS_B_READINESS.json")
+    expected = git_json(EXPECTED_B3B01, "integration/animo-b3/TCD015_EXPECTED_DIFFERENCE.json")
+    coverage = git_json(EXPECTED_B3B01, "integration/animo-b3/TCD015_BRANCH_COVERAGE_SUPPLEMENT.json")
+    manifest = git_text(EXPECTED_REVIEW_START, "reference/source/source_manifest.csv")
+    nitrogen = git_text(EXPECTED_REVIEW_START, "docs/prep01/NITROGEN_BALANCE_DIAGNOSTICS.md")
+    nh4 = git_text(EXPECTED_REVIEW_START, "docs/prep01/NH4_DRYDOWN_LEDGER_SEAM.md")
+    ghg = git_text(EXPECTED_REVIEW_START, "docs/prep01/GHG_TESTCASE_PROVENANCE.md")
+    synq = git_text(EXPECTED_SYNQ01, "tools/reference/synthetic_oracles.py")
+    comparator = git_text(EXPECTED_B3B01, "tools/compare_legacy_output_trees.py")
+    gov03 = git_json(EXPECTED_GOV03, "integration/animo-governance/GOV03_ACQUISITION_EVIDENCE.json")
 
     assert result["work_unit"] == "ANIMO-B3B01R"
     assert result["target_tcd"] == "TCD-015"
@@ -129,10 +141,18 @@ def main() -> None:
     require(manifest, "ANIMO_4.1.5.53/Transsub.for")
     require(manifest, EXPECTED_TRANSSUB_SHA)
 
+    assert readiness["work_unit"] == "ANIMO-B3B01"
+    assert readiness["target_tcd"] == "TCD-015"
     atomic = result["atomic_claim"]
     assert atomic["scope"] == "NITRATE_ONLY_SECOND_NEGATIVE_CONCENTRATION_RECONSTRUCTION"
     assert atomic["candidate_minus_legacy"] == "-Avc*Hv"
     assert atomic["local_duplicated_storage_mass"] == "Avc*Hv*St*Ld"
+    assert expected["proposed_atomic_algebraic_change"]["delta_reko_corrected_minus_legacy"] == "-Avc*Hv"
+    assert expected["conservation_identity"]["legacy_duplicate_mass_term"] == "Avc*Hv*St*Ld"
+    assert expected["conservation_identity"]["no_tolerance"] is True
+    assert "NITRATE calls" in expected["proposed_atomic_algebraic_change"]["semantic_scope"]
+    assert "all non-NITRATE call paths under the admission candidate" in expected["expected_unchanged_surfaces"]
+
     require(report, EXPECTED_DISPOSITION)
     require(report, "No organizational, institutional or human independence is claimed")
     require(report, "This review does not admit TCD-015")
@@ -172,10 +192,10 @@ def main() -> None:
     assert D(numeric["duplicated_mass_kg_ha"]) == ledger * D("10000")
 
     # Source-bound natural event and generic-use corroboration.
-    require(nitrogen, "TITO 2312")
-    require(nitrogen, "NITRATE")
+    require(nitrogen, "TITO: `2312`")
+    require(nitrogen, "substance: `NITRATE`")
     require(nitrogen, "Iflsol=1")
-    require(nitrogen, "Avc*(Hv1-Hv)")
+    require(nitrogen, "Avc * (Hv1 - Hv)")
     require(nh4, "AMMONIUM")
     require(nh4, "Transsub")
     require(nh4, "Iflsol = 2")
@@ -206,18 +226,18 @@ def main() -> None:
     assert ni["scientific_differences_outside_predeclared_surface"] == 0
     assert ni["numerical_acceptance_tolerance"] is None
 
-    # The persisted contracts must explicitly preserve the no-tolerance and
-    # nitrate-only boundaries.
-    expected_text = json.dumps(expected, sort_keys=True)
-    readiness_text = json.dumps(readiness, sort_keys=True)
-    coverage_text = json.dumps(coverage, sort_keys=True)
-    require(expected_text, "NITRATE")
-    require(expected_text, "numerical_tolerance")
-    require(readiness_text, "GreenHouseGasOption=0")
-    require(coverage_text, "508")
-    require(coverage_text, "Iflsol")
-    require(coverage_text, "NITRATE")
-    require(coverage_text, "structurally")
+    natural = coverage["natural_B1_branch_observer"]["aggregate"]
+    assert natural["nitrate_hits"] == 508
+    assert natural["Iflsol_counts"] == {"1": 486, "3": 22}
+    assert natural["non_nitrate_hits"] == 0
+    isolated = coverage["isolated_frozen_source_harness"]["cases"]
+    assert isolated["Iflsol_3"]["derived"]["Hv"] == 0.0
+    assert isolated["Iflsol_3"]["candidate_minus_baseline_Reko"] == 0.0
+    assert isolated["Iflsol_4"]["effect"] == "EXPECTED_NONZERO"
+    reachability = coverage["structural_reachability"]
+    assert reachability["Iflsol_2"]["negative_reconstruction_reachable_for_positive_final_storage_denominator"] is False
+    assert reachability["Iflsol_5"]["negative_reconstruction_reachable_for_positive_storage_denominator"] is False
+    require(reachability["coverage_conclusion"], "All reachable modes")
 
     bc = result["branch_coverage"]
     assert bc["natural_target_hits"] == 508
@@ -226,6 +246,8 @@ def main() -> None:
     assert bc["natural_Iflsol_3_hits"] == 22
     assert bc["hidden_reachable_target_mode_found"] is False
 
+    feature_scope = expected["feature_scope_for_current_readiness"]
+    assert "natural B1 cases with GreenHouseGasOption=0" in feature_scope["included"]
     require(ghg, "GHGMais")
     require(ghg, "revision-53")
     boundaries = result["feature_and_policy_boundaries"]
