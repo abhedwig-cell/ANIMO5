@@ -1,0 +1,125 @@
+{
+  "record_id": "ANIMO-B3D18-TCD028-TIER-C-ADMISSION",
+  "work_unit": "ANIMO-B3D18",
+  "target": "TCD-028",
+  "branch": "work/animo-b3d18-tcd028-gov04-tier-c-admission",
+  "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "gov04_risk_tier": "C",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "decision": "ADMIT_TCD028_ATOMIC_CLASS_B_STABLE_DOM_EVENT_ACCUMULATOR_RESET_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_C",
+  "admitted": true,
+  "base": {
+    "formal_disposition": "ANIMO-B3D17@ad1701e72ac51f61f81cc4e9a1857ab14bb8d8d8",
+    "aggregate_at_start": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e"
+  },
+  "authorities": {
+    "readiness": "ANIMO-B3B08@310d7117da739d19eebb718129ac9494cac854a1",
+    "validated_readiness_evidence": "0145b80e7e308d82995f783cc4febb3b4c9da6ad",
+    "independent_review": "ANIMO-B3B08R@3281f98feef7af4822e85a0f011ede0b779de07b",
+    "formal_disposition": "ANIMO-B3D17@ad1701e72ac51f61f81cc4e9a1857ab14bb8d8d8",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "B3I03": "ANIMO-B3I03@814ea660d367494432beb63ea78298d1f6cd73d7",
+    "PREP10": "ANIMO-PREP10@65cd4a65a3ea27cd4ce004f505d5022fdb08b9ab",
+    "PREP10C": "ANIMO-PREP10C@549545921dc8175f01d86c283647acd470c14290"
+  },
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "frozen_addit_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+    "candidate_addit_sha256": "a1993aa2d22c8f2c13fc169e78f9121587c8f14a122ef7d3f757cc24a58a54ae"
+  },
+  "admitted_scope": {
+    "process": "stable DOM/DON/conditional DOP redistribution during active plough events",
+    "trigger": "Pl(I) > 0",
+    "ownership": "CURRENT_PLOUGH_EVENT_TRANSACTION_ACCUMULATORS",
+    "candidate_insertions": [
+      "SuStdiorma = 0.0",
+      "SuStdiorni = 0.0",
+      "If (Ipo.Eq.1) SuStdiorpo = 0.0"
+    ],
+    "placement": "at the start of the existing active plough-event transaction before current stable-pool accumulation",
+    "preserves_existing_current_event_summation": true,
+    "preserves_existing_redistribution_equations": true,
+    "preserves_conditional_p_semantics": true,
+    "new_physical_state": false,
+    "restart_serialization_or_checkpoint_representation_changed": false,
+    "numerical_policy_changed": false,
+    "solver_or_tolerance_changed": false
+  },
+  "gates": {
+    "b0_identity": "PASS",
+    "b1_causal_evidence": "PASS_DIAGNOSTIC_NOT_B2",
+    "historical_route": "PASS_GOV03_G6U_ELIGIBLE",
+    "exact_scientific_ownership": "PASS",
+    "event_start_identity": "PASS",
+    "conservation": "PASS",
+    "expected_difference": "PASS",
+    "non_interference": "PASS_SUPPORTING_NON_DISCRIMINATING_FROZEN_MATRIX_PLUS_CONTROLLED_ACTIVATION",
+    "independent_second_line": "PASS_ANIMO_B3B08R",
+    "residual_uncertainty": "PASS_EXPLICIT",
+    "formal_disposition": "PASS_ANIMO_B3D17",
+    "composition": "NOT_APPLICABLE_ATOMIC_ONLY"
+  },
+  "historical_uncertainty": {
+    "qualified_b2_available": false,
+    "historical_revision53_manifestation": "UNKNOWN_WITHOUT_B2",
+    "current_gnu_persistence_is_b2": false,
+    "historical_fidelity_claimed": false,
+    "uncertainty_propagates_forward": true
+  },
+  "expected_difference_surface": {
+    "may_change": [
+      "stable DOM/DON/conditional DOP redistribution at affected repeated plough events",
+      "causally downstream physical state",
+      "causally downstream process fluxes",
+      "dependent C/N/P balances and reports",
+      "restart output only as downstream image of changed physical state"
+    ],
+    "must_not_change_semantics": [
+      "management event timing",
+      "plough trigger definition",
+      "restart serialization/checkpoint representation",
+      "numerical precision policy",
+      "solver/tolerance policy",
+      "unrelated process ordering",
+      "unrelated ledger definitions",
+      "frozen B0 identities",
+      "non-plough source semantics"
+    ],
+    "global_arbitrary_tolerance_allowed": false,
+    "whole_model_equivalence_claimed": false
+  },
+  "residual_uncertainty": [
+    "historical Intel/native manifestation remains unknown without B2",
+    "realistic field frequency and magnitude of activated repeated-plough stable pools remain unqualified",
+    "future B2 evidence would require route reconciliation without erasing this admission history",
+    "whole-model composition and production behavior remain outside this atomic admission"
+  ],
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "corrected_legacy_source_promoted": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "composition_admitted": false,
+    "b4_admitted": false,
+    "production_patch_authorized": false,
+    "production_migration_admitted": false,
+    "central_regie_updated": false,
+    "historical_fidelity_claimed": false
+  },
+  "post_rg05f_atomic_admissions_after_this_workunit": [
+    "ANIMO-B3D15@22e48f7e2c1eaa1245f034de2d909191d9cfa227:TCD-030",
+    "ANIMO-B3D16@8650ea9e716336520d8d7df5f9ea2b393d17ab98:TCD-023",
+    "ANIMO-B3D18:TCD-028"
+  ],
+  "aggregate_policy_effect": {
+    "normal_batch_min": 3,
+    "pending_atomic_admission_count_after_this_workunit": 3,
+    "normal_aggregate_integration_threshold_reached": true,
+    "aggregate_integration_performed_here": false,
+    "next_if_validated": "SEPARATE_RG05G_AGGREGATE_ATOMIC_ADMISSION_INTEGRATION_IF_NO_NEWER_AUTHORITY"
+  }
+}
