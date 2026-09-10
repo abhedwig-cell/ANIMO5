@@ -1,0 +1,26 @@
+name: ANIMO-B3A04R2 TCD-026 independent second-line review
+
+on:
+  push:
+    branches:
+      - review/animo-b3a04r2-tcd026-independent-second-line
+    paths:
+      - docs/b3/TCD026_INDEPENDENT_SECOND_LINE_REVIEW.md
+      - integration/animo-b3/TCD026_INDEPENDENT_SECOND_LINE_REVIEW.json
+      - tools/validate_b3a04r2_tcd026_review.py
+      - .github/workflows/animo-b3a04r2-tcd026-independent-second-line.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full review history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate independent review record and scope
+        run: python3 tools/validate_b3a04r2_tcd026_review.py
