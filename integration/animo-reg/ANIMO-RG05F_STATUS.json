@@ -1,0 +1,63 @@
+{
+  "work_unit": "ANIMO-RG05F",
+  "title": "First GOV04 Batched Atomic B3 Admission Integration",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-rg05f-first-gov04-batched-admission-integration",
+  "authoring_base": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
+  "governance_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "state": "PERSISTED_PENDING_MACHINE_VALIDATION",
+  "decision": "INTEGRATE_TCD027_AND_TCD041_AS_FIRST_GOV04_BATCHED_POST_RG05E_AGGREGATE",
+  "governance_only": true,
+  "batch": {
+    "normal_cadence": "3_TO_5_NEW_ATOMIC_ADMISSIONS",
+    "new_admissions": 2,
+    "normal_threshold_reached": false,
+    "early_update_allowed": true,
+    "early_update_reason": "Two qualified post-RG05E atomic admissions of different GOV04 risk tiers were authoritative but absent from the current aggregate; explicit early integration materially reduces authority ambiguity."
+  },
+  "integrated_admissions": [
+    {
+      "tcd": "TCD-027",
+      "authority": "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4",
+      "risk_tier": "A",
+      "decision": "ADMIT_TCD027_ATOMIC_CLASS_A_REPORTING_CORRECTION_UNDER_GOV04_TIER_A_WAIVER_WITH_HISTORICAL_UNCERTAINTY",
+      "historical_behaviour": "UNKNOWN"
+    },
+    {
+      "tcd": "TCD-041",
+      "authority": "ANIMO-B3D14@d672992bbc32d40d7e0fbdf03f3fa9bc4cd5a522",
+      "risk_tier": "B",
+      "review": "ANIMO-B3B07R@3587c7a94a992f3779034c4c1e5f4134192d54f3",
+      "historical_behaviour": "UNKNOWN_WITHOUT_B2"
+    }
+  ],
+  "aggregate_state": {
+    "scientific_admissions": 7,
+    "admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026", "TCD-015", "TCD-027", "TCD-041"],
+    "active_queue_entries": 18,
+    "B3_complete": false,
+    "B4_admitted": false,
+    "production_migration_admitted": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "legacy_source_modified": false,
+    "frozen_testcase_modified": false,
+    "canonical_tcd_register_modified": false,
+    "evidence_strength_promoted": false,
+    "scientific_review_performed": false,
+    "new_scientific_admission_created": false,
+    "composition_admitted": false,
+    "b4_opened": false,
+    "production_migration_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "validation": null,
+  "next_if_qualified": "Treat RG05F as the current aggregate central-regie snapshot. Future atomic admissions remain authoritative independently and should normally batch 3 to 5 post-RG05F admissions before the next aggregate unless an earlier GOV04 trigger applies."
+}

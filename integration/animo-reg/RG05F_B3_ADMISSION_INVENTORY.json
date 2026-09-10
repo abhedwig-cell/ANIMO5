@@ -1,0 +1,78 @@
+{
+  "work_unit": "ANIMO-RG05F",
+  "inventory_kind": "GOV04_BATCHED_ATOMIC_B3_SCIENTIFIC_ADMISSIONS",
+  "snapshot_date": "2026-09-10",
+  "authority_rule": "ONLY_EXPLICIT_QUALIFIED_ATOMIC_B3_ADMISSION_RECORDS_COUNT_AS_ADMISSIONS; AGGREGATION DOES_NOT_REVIEW_OR_READMIT",
+  "source_aggregate": {
+    "work_unit": "ANIMO-RG05E",
+    "head": "eed822037ed8d906a2ab424220597cffac9cca73",
+    "scientific_admissions": 5,
+    "admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026", "TCD-015"]
+  },
+  "governance_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "batch_policy": {
+    "normal_new_admission_min": 3,
+    "normal_new_admission_max": 5,
+    "new_admissions_in_this_batch": 2,
+    "normal_threshold_reached": false,
+    "early_batch": true,
+    "early_batch_basis": "GOV04 explicitly permits earlier aggregate integration when it materially reduces ambiguity; two authoritative post-RG05E admissions of different review tiers were absent from the latest aggregate."
+  },
+  "new_admissions": [
+    {
+      "tcd": "TCD-027",
+      "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+      "risk_tier": "A",
+      "process": "detailed organic-P redis_EXP reporting accumulator",
+      "admission_authority": "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4",
+      "decision": "ADMIT_TCD027_ATOMIC_CLASS_A_REPORTING_CORRECTION_UNDER_GOV04_TIER_A_WAIVER_WITH_HISTORICAL_UNCERTAINTY",
+      "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+      "disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+      "independent_second_line_required": false,
+      "gov04_tier_a_waiver": "PASS_ALL_CONDITIONS",
+      "historical_behaviour": "UNKNOWN",
+      "historical_fidelity_claimed": false,
+      "composition_admitted": false,
+      "b4_admitted": false,
+      "production_patch_authorized": false,
+      "production_migration_admitted": false
+    },
+    {
+      "tcd": "TCD-041",
+      "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+      "risk_tier": "B",
+      "process": "GHG lower external advective air-boundary coordinate initialization",
+      "admission_authority": "ANIMO-B3D14@d672992bbc32d40d7e0fbdf03f3fa9bc4cd5a522",
+      "readiness_authority": "ANIMO-B3B07@6523c8a4dbf7a742b61e0c236af0ef5093b534aa",
+      "review_authority": "ANIMO-B3B07R@3587c7a94a992f3779034c4c1e5f4134192d54f3",
+      "review_outcome": "PASS_TIER_B_READY_FOR_POST_REVIEW_DISPOSITION",
+      "decision": "QUALIFIED_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_B",
+      "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+      "atomic_claim": "Define Flair(Nl+1) as the already source-implied closed lower GHG air-boundary value zero before same-call first use.",
+      "historical_behaviour": "UNKNOWN_WITHOUT_B2",
+      "historical_fidelity_claimed": false,
+      "tcd032_037_dependency": false,
+      "composition_admitted": false,
+      "b4_admitted": false,
+      "production_patch_authorized": false,
+      "production_migration_admitted": false
+    }
+  ],
+  "admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026", "TCD-015", "TCD-027", "TCD-041"],
+  "counts": {
+    "scientific_admissions": 7,
+    "atomic_admissions": 7,
+    "historical_uncertainty_admissions": 7,
+    "normal_b2_route_admissions": 0,
+    "b4_admissions": 0,
+    "production_migrations": 0
+  },
+  "project_boundary": {
+    "B3_complete": false,
+    "B4_open": false,
+    "production_open": false,
+    "canonical_tcd_register_modified": false,
+    "composition_admitted": false
+  },
+  "parallel_authority_boundary": "RG05F integrates exactly B3D13/TCD-027 and B3D14/TCD-041 over RG05E. No other post-RG05E workunit is promoted by branch recency or proximity."
+}

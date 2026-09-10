@@ -1,0 +1,23 @@
+name: ANIMO-RG05F first GOV04 batched admission integration
+
+on:
+  push:
+    branches:
+      - work/animo-rg05f-first-gov04-batched-admission-integration
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Validate RG05F aggregate and scope
+        run: python tools/validate_rg05f_first_gov04_batch.py

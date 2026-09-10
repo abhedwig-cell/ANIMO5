@@ -1,0 +1,65 @@
+{
+  "work_unit": "ANIMO-RG05F",
+  "snapshot_date": "2026-09-10",
+  "base_aggregate": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
+  "integration_rule": "APPLY_EXACTLY_TWO_QUALIFIED_POST_RG05E_ATOMIC_ADMISSION_DELTAS_TCD027_AND_TCD041_NO_OTHER_PROMOTION",
+  "governance_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "tcd_deltas": [
+    {
+      "tcd": "TCD-027",
+      "from_queue_state": "WAITING_ON_ROUTE_AND_REVIEW",
+      "to_state": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+      "admission_authority": "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4",
+      "risk_tier": "A",
+      "historical_behaviour": "UNKNOWN",
+      "next_action": "Do not reopen TCD-027 admission. Any production patch, composition, B4 step or production migration requires separate downstream authorization."
+    },
+    {
+      "tcd": "TCD-041",
+      "from_queue_state": "READY_FOR_ADMISSION_READINESS",
+      "to_state": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+      "admission_authority": "ANIMO-B3D14@d672992bbc32d40d7e0fbdf03f3fa9bc4cd5a522",
+      "risk_tier": "B",
+      "review_authority": "ANIMO-B3B07R@3587c7a94a992f3779034c4c1e5f4134192d54f3",
+      "historical_behaviour": "UNKNOWN_WITHOUT_B2",
+      "next_action": "Do not reopen TCD-041 readiness or second-line review. Any implementation, TCD-032..037 composition, B4 step or production migration requires separate downstream authorization."
+    }
+  ],
+  "pre_delta_counts": {
+    "canonical_tcd_entries": 25,
+    "active_queue_entries": 20,
+    "READY_FOR_ADMISSION_READINESS": 4,
+    "IN_PROGRESS_ADMISSION_READINESS": 0,
+    "WAITING_ON_ROUTE_AND_REVIEW": 2,
+    "WAITING_ON_THEORY": 4,
+    "WAITING_ON_NUMERICS": 2,
+    "WAITING_ON_STATE": 5,
+    "WAITING_ON_RUNTIME": 2,
+    "WAITING_ON_CHILDREN": 1,
+    "NOT_READY": 0,
+    "scientific_admissions": 5
+  },
+  "post_delta_counts": {
+    "canonical_tcd_entries": 25,
+    "active_queue_entries": 18,
+    "READY_FOR_ADMISSION_READINESS": 3,
+    "IN_PROGRESS_ADMISSION_READINESS": 0,
+    "WAITING_ON_ROUTE_AND_REVIEW": 1,
+    "WAITING_ON_THEORY": 4,
+    "WAITING_ON_NUMERICS": 2,
+    "WAITING_ON_STATE": 5,
+    "WAITING_ON_RUNTIME": 2,
+    "WAITING_ON_CHILDREN": 1,
+    "NOT_READY": 0,
+    "scientific_admissions": 7
+  },
+  "admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026", "TCD-015", "TCD-027", "TCD-041"],
+  "unchanged_high_level_boundaries": {
+    "B3_whole_model_baseline_complete": false,
+    "B4": "NOT_ADMITTED",
+    "PRODUCTION": "NOT_ADMITTED",
+    "canonical_tcd_register_modified": false,
+    "composition_admitted": false
+  },
+  "other_queue_entries": "UNCHANGED_FOR_THIS_BATCHED_AGGREGATE. PENDING_OR_FUTURE ATOMIC WORKUNITS REQUIRE THEIR OWN QUALIFICATION OR ADMISSION AND LATER EXPLICIT AGGREGATION."
+}
