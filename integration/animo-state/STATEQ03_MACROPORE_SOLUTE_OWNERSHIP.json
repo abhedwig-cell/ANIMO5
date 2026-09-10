@@ -1,0 +1,245 @@
+{
+  "workunit": "ANIMO-STATEQ03",
+  "tcd": "TCD-031",
+  "risk_tier": "GOV04_TIER_C",
+  "b3_class": "CLASS_C_STATE_RESTART_SEMANTICS",
+  "branch": "work/animo-stateq03-tcd031-macropore-persistent-solute-state",
+  "base_head": "4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+  "authorities": {
+    "aggregate_RG05G": "4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "MP01": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "MP02": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "STATEQ01": "4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "STATEQ02": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "B3I03": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "B3I04": "400b7cd79f89043e091751707dfa96537587dcf6",
+    "B3I05": "1f94a6e08db5d73e8935fb095de9ef9798f6544c",
+    "B3I06": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
+    "frozen_B0_retention": "a818b5a37b80ed92aded0b9c404990d356eb2300"
+  },
+  "frozen_B0": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "revision": "4.1.5.53"
+  },
+  "active_profile": {
+    "domains": 2,
+    "p_off_persistent_solute_scalars": 8,
+    "p_on_persistent_solute_scalars": 12,
+    "independent_layer_resolved_solute_coordinates": 0
+  },
+  "classification_vocabulary": [
+    "PERSISTENT_STATE",
+    "DETERMINISTIC_RECONSTRUCTION",
+    "EPHEMERAL_WORKSPACE",
+    "DERIVED_DIAGNOSTIC"
+  ],
+  "deterministic_reconstruction_contracts": [],
+  "global_reconstruction_judgement": "NO_ADMITTED_DETERMINISTIC_RECONSTRUCTION_FOR_ANY_REQUIRED_MACROPORE_SOLUTE_CONCENTRATION",
+  "source_evidence": {
+    "hashes": {
+      "mapoinput.for": "081c671d2f576ab0608350cbb0083eab157c586a6783522cda3534b141244065",
+      "Init.for": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+      "Output_Init.for": "6452c175dcd7c6e80983c1176467735d07f75595cf8341526b115b70121b6a2f",
+      "MAPOTRANSPORT.FOR": "735b3f86497a6968c24d2dbce2ad23ae350b4eed573da421baa1a7557a0615da",
+      "Animo.for": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
+      "Transca.for": "7f31150050bd41aef203587818cde94cf689e6288094b2ad84aea34732b07ff9",
+      "Transgen.for": "cd5efa76c1a4840b50901ee5015940b74c5fe4df79aca43d53a4a4cb77b9fecb",
+      "input1.for": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+      "Hydro_detailed.for": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d"
+    },
+    "anchors": [
+      {
+        "file": "input1.for",
+        "lines": "3458-3465",
+        "finding": "Nupa=4 loads macropore initial concentrations from INITIAL.INP when IoptMp=1"
+      },
+      {
+        "file": "mapoinput.for",
+        "lines": "116-183",
+        "finding": "MPnitr, MPorgs and conditional MPphos read CoMp accepted/start concentrations for both domains; units are concentration in macropore/soil solution"
+      },
+      {
+        "file": "Init.for",
+        "lines": "185-186,501-532",
+        "finding": "first-step branch exists, but the macropore result-to-start promotion block is outside it and therefore also executes on the first timestep"
+      },
+      {
+        "file": "MAPOTRANSPORT.FOR",
+        "lines": "510-533,652-660",
+        "finding": "CoMp and RsCoMp are start/end concentration aliases of conserved domain solute mass; old/new masses are SrWaMpOld*CoMp and SrWaMp*RsCoMp"
+      },
+      {
+        "file": "Output_Init.for",
+        "lines": "137-153",
+        "finding": "all legacy macropore restart writer records are commented out"
+      },
+      {
+        "file": "Animo.for",
+        "lines": "1099-1109",
+        "finding": "macropore arguments to Output_Init are commented out"
+      }
+    ]
+  },
+  "ownership_decision": "STRUCTURALLY_RECONSTRUCTED_BUT_NATIVE_RESTART_NOT_QUALIFIED",
+  "shared_scientific_contract": {
+    "domain_semantics": {
+      "1": "Main Bypass Flow",
+      "2": "Internal Catchment"
+    },
+    "accepted_storage_identity": "SrWaMpOld[domain] * CoMpX[domain]",
+    "result_storage_identity": "SrWaMp[domain] * RsCoMpX[domain]",
+    "owner": "ANIMO_MACROPORE_SOLUTE",
+    "matrix_dependencies": [
+      "matrix aqueous concentration for current-interval exchange",
+      "matrix transport state during current interval"
+    ],
+    "hydrology_dependencies": [
+      "SrWaMpOld",
+      "SrWaMp",
+      "macropore inflow/outflow/exchange fluxes",
+      "active-domain geometry"
+    ],
+    "global_reconstruction_reason": "For nonzero old macropore storage, CoMp is an independent conserved-mass coordinate. Matrix state and hydrology do not determine it uniquely."
+  },
+  "role_contracts": {
+    "accepted_start": {
+      "classification": "PERSISTENT_STATE",
+      "scientific_meaning": "accepted/start concentration in domain macropore water",
+      "compartment_control_volume": "one of two domain-level macropore water stores",
+      "owner": "ANIMO_MACROPORE_SOLUTE",
+      "producer": "initial/restart loader on first accepted generation; thereafter accepted promotion from corresponding result_end",
+      "consumers": [
+        "MAPOTRANSPORT old stored-mass term",
+        "MAPOTRANSPORT continuation solve"
+      ],
+      "update_frequency": "once per accepted timestep boundary",
+      "restart_serialization_status": "input supported; revision-53 Output_Init missing",
+      "restore_direction": "checkpoint -> accepted_start; restore runs no physical process",
+      "deterministic_reconstructibility": "NO"
+    },
+    "result_end": {
+      "classification": "PERSISTENT_STATE",
+      "scientific_meaning": "end-of-current-interval concentration, result alias of the same physical owner",
+      "compartment_control_volume": "same domain-level macropore water store",
+      "owner": "ANIMO_MACROPORE_SOLUTE",
+      "producer": "MAPOTRANSPORT current interval",
+      "consumers": [
+        "specialized end-storage balance",
+        "accepted-boundary promotion",
+        "checkpoint projection only after interval acceptance"
+      ],
+      "update_frequency": "each enabled species transport solve",
+      "restart_serialization_status": "not an independent checkpoint coordinate",
+      "restore_direction": "do not treat as a second owner; runtime may initialize alias from accepted owner under an explicit transaction contract",
+      "deterministic_reconstructibility": "NO_AS_INDEPENDENT_PHYSICAL_RESULT"
+    },
+    "average_domain": {
+      "classification": "EPHEMERAL_WORKSPACE",
+      "scientific_meaning": "current-interval average domain concentration",
+      "compartment_control_volume": "domain macropore transport workspace",
+      "owner": "CURRENT_INTERVAL_TRANSPORT_WORKSPACE",
+      "producer": "MAPOTRANSPORT",
+      "consumers": [
+        "matrix exchange",
+        "domain-1 direct-drain solute flux path"
+      ],
+      "update_frequency": "current interval species solve",
+      "restart_serialization_status": "not required",
+      "restore_direction": "recompute after restore",
+      "deterministic_reconstructibility": "YES_FROM_ACCEPTED_STATE_AND_CURRENT_FORCING"
+    },
+    "average_domain_layer": {
+      "classification": "EPHEMERAL_WORKSPACE",
+      "scientific_meaning": "current-interval domain-by-layer average concentration",
+      "compartment_control_volume": "domain/layer transfer workspace, not independent stored solute",
+      "owner": "CURRENT_INTERVAL_TRANSPORT_WORKSPACE",
+      "producer": "MAPOTRANSPORT",
+      "consumers": [
+        "matrix/macropore exchange source terms"
+      ],
+      "update_frequency": "current interval species solve",
+      "restart_serialization_status": "not required",
+      "restore_direction": "recompute after restore",
+      "deterministic_reconstructibility": "YES_FROM_ACCEPTED_STATE_AND_CURRENT_FORCING"
+    }
+  },
+  "solute_families": [
+    {"species":"DOM","unit":"kg organic matter m-3 macropore water","p_active_only":false,"variables":{"accepted_start":"CoMpDiorMa","result_end":"RsCoMpDiorMa","average_domain":"AvCoMpDiorMa","average_domain_layer":"AvCoMLDiorMa"}},
+    {"species":"DON","unit":"kg N m-3 macropore water","p_active_only":false,"variables":{"accepted_start":"CoMpDiorNi","result_end":"RsCoMpDiorNi","average_domain":"AvCoMpDiorNi","average_domain_layer":"AvCoMLDiorNi"}},
+    {"species":"NH4-N","unit":"kg N m-3 macropore water","p_active_only":false,"variables":{"accepted_start":"CoMpNh","result_end":"RsCoMpNh","average_domain":"AvCoMpNh","average_domain_layer":"AvCoMLNh"}},
+    {"species":"NO3-N","unit":"kg N m-3 macropore water","p_active_only":false,"variables":{"accepted_start":"CoMpNi","result_end":"RsCoMpNi","average_domain":"AvCoMpNi","average_domain_layer":"AvCoMLNi"}},
+    {"species":"DOP","unit":"kg P m-3 macropore water","p_active_only":true,"variables":{"accepted_start":"CoMpDiorPo","result_end":"RsCoMpDiorPo","average_domain":"AvCoMpDiorPo","average_domain_layer":"AvCoMLDiorPo"}},
+    {"species":"PO4-P","unit":"kg P m-3 macropore water","p_active_only":true,"variables":{"accepted_start":"CoMpPo","result_end":"RsCoMpPo","average_domain":"AvCoMpPo","average_domain_layer":"AvCoMLPo"}}
+  ],
+  "other_candidates": [
+    {
+      "variables": ["MpReKo","MpReKoLn"],
+      "classification": "EPHEMERAL_WORKSPACE",
+      "scientific_meaning": "current-interval macropore-to-matrix source rate",
+      "species": "generic per enabled solute",
+      "unit": "species mass rate per matrix volume/time",
+      "compartment_control_volume": "matrix/macropore transfer interface",
+      "owner": "CURRENT_INTERVAL_TRANSPORT_WORKSPACE",
+      "producer": "MAPOTRANSPORT",
+      "consumers": ["matrix transport solve"],
+      "update_frequency": "current interval/iteration",
+      "restart_serialization_status": "not required",
+      "restore_direction": "recompute",
+      "deterministic_reconstructibility": "YES",
+      "matrix_dependencies": ["current matrix concentration","accepted macropore state","current hydrology"]
+    },
+    {
+      "variables": ["ItRec"],
+      "classification": "DERIVED_DIAGNOSTIC",
+      "scientific_meaning": "transport-iteration count observer",
+      "species": "six solute labels",
+      "unit": "count",
+      "compartment_control_volume": "none",
+      "owner": "DIAGNOSTIC_OBSERVER",
+      "producer": "IterRecord",
+      "consumers": ["diagnostic reporting"],
+      "update_frequency": "iteration reporting",
+      "restart_serialization_status": "not required for physical continuation",
+      "restore_direction": "do not restore into physical state",
+      "deterministic_reconstructibility": "NOT_A_PHYSICAL_STATE_COORDINATE",
+      "matrix_dependencies": []
+    },
+    {
+      "variables": ["SrWaMpOld","SrWaMp"],
+      "classification": "PERSISTENT_STATE",
+      "scientific_meaning": "accepted/start and result/end macropore water storage",
+      "species": "water",
+      "unit": "m3 water m-2 soil surface",
+      "compartment_control_volume": "domain-level macropore water",
+      "owner": "EXTERNAL_HYDROLOGY_OWNER_REFERENCE",
+      "producer": "hydrology frame plus accepted-boundary lifecycle",
+      "consumers": ["MAPOHYDRO","MAPOTRANSPORT storage identities"],
+      "update_frequency": "hydrology frame/accepted boundary",
+      "restart_serialization_status": "external binding required",
+      "restore_direction": "bind/replay exact compatible accepted hydrology frame",
+      "deterministic_reconstructibility": "NO_FROM_ANIMO_SOLUTE_STATE",
+      "matrix_dependencies": []
+    },
+    {
+      "variables": ["SrWaMpCp","SrWaMpCpOld"],
+      "classification": "PERSISTENT_STATE",
+      "scientific_meaning": "layer-resolved macropore hydrology state",
+      "species": "water",
+      "unit": "m3 water m-2 soil surface",
+      "compartment_control_volume": "domain x layer / accepted combined layer storage",
+      "owner": "EXTERNAL_HYDROLOGY_OWNER_REFERENCE",
+      "producer": "hydrology frame",
+      "consumers": ["macropore transport geometry and exchange routing"],
+      "update_frequency": "hydrology frame",
+      "restart_serialization_status": "external binding required",
+      "restore_direction": "bind/replay exact compatible accepted hydrology frame",
+      "deterministic_reconstructibility": "NO_FROM_ANIMO_SOLUTE_STATE",
+      "matrix_dependencies": []
+    }
+  ]
+}
