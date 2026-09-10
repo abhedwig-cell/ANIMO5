@@ -1,0 +1,145 @@
+{
+  "work_unit": "ANIMO-B3D16",
+  "record_type": "POST_REVIEW_FORMAL_DISPOSITION",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d16-tcd023-gov04-tier-b-admission",
+  "target": "TCD-023",
+  "claim": "In Resp_miner Case(2), change only the two phosphorus daughter-transfer parent selectors so Transfop(19,Ln) and Transfop(20,Ln) partition Transfop(17,Ln) rather than Transfon(17,Ln).",
+  "starting_review_handoff": "ANIMO-B3B05R@4e277cfe98bf815b09e4d40d4e9f4af61e11a7fb",
+  "readiness_authority": "ANIMO-B3B05@e76345bf984c58ff0b30a24b39dc8e037a2f4fd6",
+  "authority_snapshot": {
+    "aggregate_central_regie": "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e",
+    "latest_post_aggregate_atomic_admission": "ANIMO-B3D15@22e48f7e2c1eaa1245f034de2d909191d9cfa227",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "SYNQ01": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121"
+  },
+  "independent_review": {
+    "work_unit": "ANIMO-B3B05R",
+    "head": "4e277cfe98bf815b09e4d40d4e9f4af61e11a7fb",
+    "semantic_result": "PASS",
+    "separate_chatgpt_context": true,
+    "required_count": 1,
+    "realized_count": 1,
+    "review_actions_run": 34483286125,
+    "review_actions_job": 102891135467,
+    "review_actions_conclusion": "success",
+    "independent_review_gate_satisfied": true,
+    "admission_performed_by_review": false
+  },
+  "gov04": {
+    "principle": "STRICTEST_APPLICABLE_RISK_TRIGGER_WINS",
+    "risk_tier": "B",
+    "risk_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "formal_result": "GOV04_TIER_B__B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "tier_a_available": false,
+    "tier_c_trigger_applicable": false,
+    "tier_d_trigger_applicable": false,
+    "persistent_state_ownership_change": false,
+    "initialization_semantics_change": false,
+    "restart_or_checkpoint_semantics_change": false,
+    "state_reconstruction_required": false,
+    "runtime_architecture_change": false,
+    "branch_threshold_change": false,
+    "numerical_policy_change": false,
+    "solver_or_tolerance_change": false,
+    "exact_zero_policy_change": false,
+    "ambiguous_domain_contract": false,
+    "fail_closed_escalation": "ANY_LATER_APPLICABLE_TIER_C_OR_TIER_D_TRIGGER_INVALIDATES_THIS_TIER_B_ADMISSION"
+  },
+  "scientific_contract": {
+    "routine": "Resp_miner",
+    "case": "Case(2)",
+    "selector": "Recfhu < 1e-12 AND RecfHUSDO < 1e-12 AND recfSDO >= 1e-12",
+    "legacy_assignments": [
+      "Transfop(19,Ln) = (1.0-AsfaSDO) * Transfon(17,Ln)",
+      "Transfop(20,Ln) = AsfaSDO * Transfon(17,Ln)"
+    ],
+    "candidate_assignments": [
+      "Transfop(19,Ln) = (1.0-AsfaSDO) * Transfop(17,Ln)",
+      "Transfop(20,Ln) = AsfaSDO * Transfop(17,Ln)"
+    ],
+    "required_identity": "Transfop(19)+Transfop(20)=Transfop(17)",
+    "candidate_identity_exact": true,
+    "scientific_numeric_tolerance_required": false,
+    "Transfon17_owner_units": "N; kg N m-2 per interval",
+    "Transfop17_owner_units": "P; kg P m-2 per interval",
+    "Transfop19_20_owner_units": "P; kg P m-2 per interval",
+    "intended_N_to_P_conversion_at_atomic_seam": false
+  },
+  "evidence_pins": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "resp_miner_sha256": "938d35c043bd3e1f14c20ec1c0b2395e9944beb2797746bc4e7cdfb38bb98106",
+    "resp_miner_size_bytes": 62997,
+    "PREP04_machine_blob": "2a6086134517c1d0fa309447cd7ff14976ae9a15",
+    "PREP05_cross_species_blob": "4eaaf156ffa4b34108407a6ecc28afedfa2b6bce"
+  },
+  "synthetic_oracles": {
+    "SYNQ_O004_applicable": true,
+    "SYNQ_O005_applicable": true,
+    "SYNQ_oracles_are_B2": false,
+    "PREP05_legitimate_NP_negative_controls_retained": true
+  },
+  "natural_activation": {
+    "case": "Puitmijn_Cranendonck_60",
+    "phosphorus_active": true,
+    "unique_actual_nonpotential_case2_events": 9658,
+    "affected_layers": [17, 18, 19, 20, 21, 22, 23]
+  },
+  "causality": {
+    "legacy_accumulated_local_P_mismatch_kg_m_minus_2": 1.0806894643265774e-11,
+    "legacy_accumulated_local_P_mismatch_kg_ha_minus_1": 1.0806894643265774e-7,
+    "largest_single_event_mismatch_kg_m_minus_2": 1.0228664519933875e-14,
+    "local_residual_formula": "Transfon(17)-Transfop(17)",
+    "cross_species_parent_selection_causally_explains_mismatch": true,
+    "candidate_removes_TCD023_causal_contribution": true,
+    "whole_case_P_residual_exact_zero_claimed": false
+  },
+  "downstream_effect": {
+    "max_abs_delta_Tomnpo_kg_m_minus_2_per_step": 1.0228664519933892e-14,
+    "max_abs_delta_Rekopo_kg_m_minus_3_d_minus_1": 9.327856586446364e-15,
+    "genuinely_nonzero": true,
+    "tier_A_accounting_only_route_available": false
+  },
+  "regression_surface": {
+    "case_count": 8,
+    "affected_case": "Puitmijn_Cranendonck_60",
+    "normalized_scientific_differences": [
+      "ani_pLO.Bal",
+      "ani_pTP.Bal",
+      "bapoLO.Out",
+      "bapoTP.Out",
+      "message.out"
+    ],
+    "other_seven_normalized_scientific_differences": 0,
+    "missing_outputs": [],
+    "extra_outputs": [],
+    "unexpected_differences": [],
+    "scientific_numeric_tolerance_used": false,
+    "volatile_metadata_normalization_only": true
+  },
+  "historical_route": {
+    "qualified_B2_found": false,
+    "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
+    "GNU_diagnostic_is_historical_reference": false,
+    "historical_fidelity_claimed": false
+  },
+  "non_composition": {
+    "TCD-019": false,
+    "TCD-024": false,
+    "TCD-027": false,
+    "TCD-030": false,
+    "other_stable_DOM_or_P_corrections": false
+  },
+  "formal_disposition": "QUALIFY_FOR_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_B",
+  "production_source_modified": false,
+  "frozen_B0_modified": false,
+  "composition_performed": false,
+  "b4_opened": false,
+  "production_migration_opened": false,
+  "canonical_tcd_register_modified": false,
+  "central_rg05_updated": false
+}
