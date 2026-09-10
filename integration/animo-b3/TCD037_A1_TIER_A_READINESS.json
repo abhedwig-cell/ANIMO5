@@ -1,0 +1,159 @@
+{
+  "schema": "ANIMO-B3A05-TCD037-A1-TIER-A-READINESS-v1",
+  "work_unit": "ANIMO-B3A05",
+  "target_parent_tcd": "TCD-037",
+  "target_child_atom": "TCD-037-A1",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "risk_tier_at_readiness": "A",
+  "admission_route_if_later_admitted": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "authorities": {
+    "aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "runtime_semantics": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "synthetic_activation": "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc",
+    "synthetic_activation_exact_final_ci_run": 34538344680,
+    "synthetic_policy": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "outbal_calc_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981"
+  },
+  "atomic_claim": {
+    "parent": "TCD-037",
+    "child": "TCD-037-A1",
+    "atomic": true,
+    "source_owner": "QPrCH4(Ln) * St",
+    "meaning": "accepted-timestep CH4 formation amount for one soil layer",
+    "consumer_scope": "active GHG layer CH4/CO2 formation-partition observer only",
+    "siblings_in_scope": [],
+    "tcd032_036_in_scope": []
+  },
+  "accounting_identity": {
+    "organic_matter_equivalent_kg_ha": "10000 * QPrCH4(Ln) * St / Cfracom",
+    "btot": "Ffom + Fahu + Fdom",
+    "ch4_partition": "CH4_i = F_i / Btot * M_CH4",
+    "co2_complement": "CO2_i = F_i - CH4_i",
+    "exact_identities": [
+      "sum_i(CH4_i) = M_CH4",
+      "sum_i(CH4_i + CO2_i) = Btot"
+    ],
+    "qualified_domain": "IoptGHG>=1 AND Btot>1e-9",
+    "oracle": "ANIMO-SYNQ02 exact-rational Fraction oracle",
+    "numerical_acceptance": "EXACT_BINARY64_FOR_CHOSEN_DYADIC_SYNTHETIC_VALUES_NO_EMPIRICAL_TOLERANCE"
+  },
+  "expected_difference": {
+    "predeclared_before_b3a05": true,
+    "allowed_observer_fields": [
+      "Bfom(CH4f)",
+      "Bahu(CH4f)",
+      "Bdom(CH4f)",
+      "Bfom(CO2f)",
+      "Bahu(CO2f)",
+      "Bdom(CO2f)"
+    ],
+    "physical_state": "NONE",
+    "process_flux": "NONE",
+    "restart_state": "NONE",
+    "solver_or_numerical_policy": "NONE",
+    "unrelated_observer_fields": "NONE",
+    "sibling_atoms": "NONE"
+  },
+  "coverage": {
+    "natural_active_ghg": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+    "natural_case_translation_performed": false,
+    "synthetic_evidence_strength": "B1_SYNTHETIC_NOT_B2",
+    "synthetic_independence": "INDEPENDENT_IMPLEMENTATION_AND_ALGEBRAIC_ORACLE_FOR_CAUSALITY_AND_SCOPE",
+    "synthetic_cases": [
+      "ACTIVE",
+      "ZERO_CH4",
+      "PERMUTED",
+      "RATE_TIME_EQUIVALENT",
+      "INACTIVE"
+    ],
+    "synthetic_activation_predicate": "PASS",
+    "historical_behavior": "UNKNOWN"
+  },
+  "gov03": {
+    "b2_status": "UNAVAILABLE_AFTER_DOCUMENTED_ACQUISITION_ATTEMPT",
+    "closure_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "g6u": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "historical_behavior": "UNKNOWN",
+    "route_ready_for_claim_scoped_disposition": true
+  },
+  "gov04_tier_a_waiver_predicate": {
+    "EXACT_SOURCE_SEAM_PINNED": "PASS",
+    "PHYSICAL_AND_ACCOUNTING_OWNERSHIP_UNAMBIGUOUS": "PASS",
+    "ATOMIC_CLAIM": "PASS",
+    "EXACT_CONSERVATION_OR_ACCOUNTING_IDENTITY": "PASS",
+    "EXPECTED_DIFFERENCE_PINNED_BEFORE_QUALIFICATION": "PASS",
+    "PHYSICAL_STATE_NON_INTERFERENCE": "PASS",
+    "PROCESS_FLUX_NON_INTERFERENCE": "PASS",
+    "NO_NUMERICAL_POLICY_CHANGE": "PASS",
+    "NO_SOLVER_OR_TOLERANCE_CHANGE": "PASS",
+    "NO_RESTART_INITIALIZATION_OR_STATE_SEMANTIC_CHANGE": "PASS",
+    "NO_COMPOSITION": "PASS",
+    "NO_UNRESOLVED_SCIENTIFIC_OR_SOURCE_MEANING_AMBIGUITY": "PASS",
+    "REPRODUCIBLE_VALIDATOR": "PASS",
+    "SCOPE_GUARD": "PASS_IF_EXACT_B3A05_CI_GREEN",
+    "NATURAL_OR_INDEPENDENTLY_QUALIFIED_SYNTHETIC_ACTIVATION": "PASS",
+    "HISTORICAL_UNKNOWN_PRESERVED_WITHOUT_B2": "PASS",
+    "GOV03_ROUTE_CONDITIONS_RETAINED": "PASS",
+    "NO_PRODUCTION_REGISTER_B4_OR_FINALIZED_GOVERNANCE_SNAPSHOT_MUTATION": "PASS",
+    "readiness_result": "TIER_A_WAIVER_PREDICATE_PASS_AT_READINESS",
+    "final_waiver_granted": false,
+    "final_waiver_grant_deferred_to_admission_workunit": true
+  },
+  "b3q01_child_schema_binding": {
+    "schema_change_required": false,
+    "later_disposition_tcd_ids": [
+      "TCD-037"
+    ],
+    "canonical_atomic_child_identity": "TCD-037-A1",
+    "child_identity_locations": [
+      "record_id",
+      "scope",
+      "class_specific_evidence"
+    ],
+    "parent_or_sibling_admission_implied": false
+  },
+  "readiness_gates": {
+    "B0_IDENTITY": "PASS",
+    "ATOMICITY": "PASS",
+    "CLASS_A_CLASSIFICATION": "PASS",
+    "B1_CAUSAL_EVIDENCE": "PASS",
+    "B2_OR_HISTORICAL_UNCERTAINTY_ROUTE": "PASS_GOV03_G6U",
+    "SCIENTIFIC_OR_ACCOUNTING_BASIS": "PASS",
+    "CAUSAL_MECHANISM": "PASS",
+    "CONSERVATION_OR_ACCOUNTING_IDENTITY": "PASS",
+    "EXPECTED_DIFFERENCE": "PASS",
+    "NON_INTERFERENCE": "PASS",
+    "COVERAGE": "PASS_QUALIFIED_SYNTHETIC_ALTERNATIVE",
+    "RESIDUAL_UNCERTAINTY": "PASS_EXPLICIT_UNKNOWN_HISTORY_AND_NATURAL_CASE_GAP",
+    "INDEPENDENT_SECOND_LINE_REVIEW": "NOT_YET_APPLICABLE_READINESS_TIER_A_WAIVER_PREDICATE_PASS",
+    "ADMISSION": "NOT_PERFORMED"
+  },
+  "residual_uncertainty": [
+    "Historical revision-53 executable behavior for the disconnected AmCH4 local remains UNKNOWN because no B2 exists.",
+    "No compatible natural active-GHG revision-53 testcase is available; the supplied GHGMais lineage is incompatible and was not translated.",
+    "The later admission workunit must re-evaluate all GOV04 Tier-A predicates and fail closed if any authority, scope, identity or evidence changes."
+  ],
+  "scope_guards": {
+    "scientific_admission": false,
+    "corrected_legacy_admission": false,
+    "tier_a_final_waiver": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "composition": false,
+    "b4_opened": false,
+    "aggregate_updated": false,
+    "historical_fidelity_claimed": false
+  },
+  "decision": "QUALIFIED_TCD037_A1_TIER_A_ADMISSION_READINESS_WAIVER_PREDICATE_PASS_NO_ADMISSION",
+  "next_work_unit": "ANIMO-B3D21 — TCD-037-A1 CH4 Layer Formation Observer GOV04 Tier-A Atomic Admission Decision"
+}
