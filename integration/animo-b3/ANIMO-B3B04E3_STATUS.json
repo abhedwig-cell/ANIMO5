@@ -4,7 +4,7 @@
   "branch": "work/animo-b3b04e3-tcd040-reconstructed-replay-harness",
   "base": "ANIMO-B3B04E2@01e6df610d236bac19d17f16d109a4e0e676ccfa",
   "harness_source_commit": "73b705924f4932dcca65aaa0a1eef90097aba0b6",
-  "state": "REPLAY_PACKAGE_PERSISTED_LOCAL_SEMANTIC_MATCH_CI_VALIDATION_PENDING",
+  "state": "CLOSED_RECONSTRUCTED_REPLAY_PACKAGE_VALIDATED_CONTROLLED_B0_CUSTODY_PENDING",
   "decision": "RECONSTRUCTED_REPLAY_IMPLEMENTED_SESSION_LOCAL_SEMANTIC_MATCH_CONTROLLED_B0_CUSTODY_PENDING",
   "evidence": {
     "session_local_B0_hash_verified": true,
@@ -34,16 +34,19 @@
   "ci": {
     "fresh_B0_replay_in_public_CI": false,
     "reason": "B0 archives are intentionally not republished to the repository; EG01 controlled-custody restore input is unavailable to this workflow.",
-    "package_validation_run": null,
-    "package_validation_conclusion": "PENDING"
+    "package_validation_run": 34463606316,
+    "package_validation_job": 102826922770,
+    "package_validation_head": "f4676e9976f793335e6144dadea85e9cd0ebcfea",
+    "package_validation_conclusion": "SUCCESS",
+    "closeout_validation_contract": "The final status-only closeout commit must pass the same ANIMO-B3B04E3 workflow and scope guard."
   },
   "remaining_blocker": "ANIMO-EG01 controlled immutable B0 primary/secondary custody and restore verification",
   "work_status": {
     "realized": true,
     "persisted": true,
     "locally_tested": true,
-    "package_CI_tested": false,
+    "package_CI_tested": true,
     "independent_replay_qualified": false,
-    "workunit_complete": false
+    "workunit_complete": true
   }
 }
