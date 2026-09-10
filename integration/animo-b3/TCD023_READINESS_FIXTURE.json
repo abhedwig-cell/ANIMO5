@@ -1,0 +1,58 @@
+{
+  "fixture_id": "ANIMO-B3B05-TCD023-INDEPENDENT-ALGEBRA-DISCRIMINATOR",
+  "target_tcd": "TCD-023",
+  "purpose": "independently discriminate species-local phosphorus partition from the frozen cross-species legacy expression",
+  "not_B2": true,
+  "not_field_calibration": true,
+  "arithmetic": "exact decimal",
+  "normalized_case2_inputs": {
+    "mofr": "0.42",
+    "recfSDO_d_minus_1": "0.07",
+    "Hest_m_d": "0.18",
+    "AvcoStdiorni_kg_N_m_minus_3": "0.31",
+    "AvcoStdiorpo_kg_P_m_minus_3": "0.047",
+    "AsfaSDO": "0.24"
+  },
+  "parent_formula": "species17 = mofr * recfSDO * species_concentration * Hest",
+  "expected_parents": {
+    "Transfon17_kg_N_m_minus_2": "0.00164052",
+    "Transfop17_kg_P_m_minus_2": "0.000248724"
+  },
+  "candidate_expected": {
+    "Transfop19_kg_P_m_minus_2": "0.00018903024",
+    "Transfop20_kg_P_m_minus_2": "0.00005969376",
+    "daughter_sum_kg_P_m_minus_2": "0.000248724",
+    "daughter_sum_minus_Transfop17": "0"
+  },
+  "legacy_cross_species_expected": {
+    "Transfop19_numeric_from_Transfon17": "0.0012467952",
+    "Transfop20_numeric_from_Transfon17": "0.0003937248",
+    "daughter_sum_numeric": "0.00164052",
+    "daughter_sum_minus_Transfop17_numeric": "0.0013917960"
+  },
+  "negative_controls": {
+    "AsfaSDO_zero": {
+      "relation": "P19=P17 and P20=0",
+      "candidate_identity_still_closes": true
+    },
+    "AsfaSDO_one": {
+      "relation": "P19=0 and P20=P17",
+      "candidate_identity_still_closes": true
+    },
+    "equal_N_and_P_parent_numeric_values": {
+      "purpose": "shows why asymmetric species states are required for a discriminating test",
+      "expected_discriminator": false
+    },
+    "P_parent_zero_N_parent_nonzero": {
+      "candidate_P_daughters": "both zero",
+      "legacy_cross_species_P_daughters": "nonzero numeric contamination",
+      "expected_discriminator": true
+    }
+  },
+  "acceptance": {
+    "candidate_identity_must_close_exactly": true,
+    "legacy_must_fail_against_P_parent_for_asymmetric_fixture": true,
+    "numeric_tolerance_allowed": false,
+    "historical_prevalence_inferred": false
+  }
+}
