@@ -176,10 +176,13 @@
   "validation": {
     "validator": "tools/validate_tcd018_independent_r2_review.py",
     "workflow": ".github/workflows/animo-tcd018-independent-r2-review.yml",
-    "state": "PENDING",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "conclusion": null,
-    "scope_guard": "PENDING"
+    "state": "VALIDATED_R2_PASS_RECORD",
+    "tested_head": "9749dffad296277637590e66a26b88f0ae72b76e",
+    "github_actions_run_id": 34443661329,
+    "github_actions_job_id": 102763710269,
+    "conclusion": "success",
+    "validator_result": "PASS_TCD018_INDEPENDENT_SECOND_LINE_R2_RECORD_VALIDATOR",
+    "scope_guard": "PASS_TCD018_INDEPENDENT_SECOND_LINE_R2_SCOPE_GUARD",
+    "closeout_note": "Run 34443661329 validated the persisted R2 package before this validation-metadata closeout commit; this closeout commit must pass the same workflow independently."
   }
 }
