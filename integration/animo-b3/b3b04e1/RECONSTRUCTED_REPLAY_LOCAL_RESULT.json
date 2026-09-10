@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0",
+  "workunit": "ANIMO-B3B04E1",
+  "target": "TCD-040",
+  "evidence_class": "RECONSTRUCTED_REPLAY_HARNESS_FOR_EXISTING_CLAIM_LOCAL_EXECUTION",
+  "qualification_status": "LOCAL_RECONSTRUCTION_PASS_NOT_INDEPENDENTLY_PROVENANCED",
+  "new_scientific_claim_created": false,
+  "production_source_modified": false,
+  "frozen_b0_modified": false,
+  "execution_context": "Transient user-supplied frozen B0 bytes available in the B3B04E1 authoring environment. This is a cryptographically pinned local execution, not proof of controlled immutable retention or independent acquisition.",
+  "frozen_b0": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "case": "LWKM_gras_1040.2021.2045"
+  },
+  "toolchain": {
+    "compiler": "GNU Fortran (Debian 14.2.0-19) 14.2.0",
+    "compile_flags": [
+      "-ffree-form",
+      "-ffree-line-length-none",
+      "-fallow-argument-mismatch",
+      "-std=legacy",
+      "-fdefault-real-8",
+      "-fdefault-double-8",
+      "-fno-automatic"
+    ],
+    "link_flags": ["-Wl,--build-id=none"],
+    "base_diagnostic_executable_sha256": "0cfb020136d58b1f03fb75db0ec166b3c5f05021b5020b96bd36a7e48056417e"
+  },
+  "trace_contract": {
+    "byte_order": "little-endian",
+    "comparison": "EXACT_BYTES_NO_TOLERANCE",
+    "records_per_step": 2,
+    "full_steps": 900,
+    "full_records": 1800,
+    "nl": 30,
+    "record_size_bytes": 3036,
+    "phase_0": "post-Init, before ordinary process calculations; after the qualification-only restore/defect action when present",
+    "phase_1": "after ordinary timestep process calculations and Outsel",
+    "fields": [
+      "int32 Sttot",
+      "int32 phase",
+      "int32 Nl",
+      "binary64 Pn",
+      "binary64 Pnt",
+      "binary64 Snla",
+      "binary64 Snt",
+      "binary64 Wale",
+      "binary64 Walet",
+      "binary64 Conh(0:Nl)",
+      "binary64 Coni(0:Nl)",
+      "binary64 Codiorma(0:Nl)",
+      "binary64 Codiorni(0:Nl)",
+      "binary64 Codiorpo(0:Nl)",
+      "binary64 Copo(0:Nl)",
+      "binary64 Rsconh(0:Nl)",
+      "binary64 Rsconi(0:Nl)",
+      "binary64 Rscodiorma(0:Nl)",
+      "binary64 Rscodiorni(0:Nl)",
+      "binary64 Rscodiorpo(0:Nl)",
+      "binary64 Rscopo(0:Nl)"
+    ]
+  },
+  "split_282": {
+    "stage_a_exit_code": 94,
+    "stage_a_records": 564,
+    "stage_a_trace_size_bytes": 1712304,
+    "stage_a_trace_sha256": "57b0ed486197d5a594678c66aac898234ac5f78d24215f6d6692bbaff5b5fbe4",
+    "stage_a_exact_continuous_prefix": true,
+    "checkpoint_size_bytes": 48,
+    "checkpoint_format": "one GNU sequential-unformatted record: int32 little-endian marker 40, five binary64 values, int32 little-endian marker 40",
+    "checkpoint_sha256": "833363cc2f8457a617b450bfa283842532efcb8d321a57eca5e05584b0224b2e",
+    "checkpoint_reproduces_prior_B3B04_sha256": true,
+    "checkpoint_values": {
+      "Conh(0)": 0.0008977310061221382,
+      "Coni(0)": 0.000008767359689234193,
+      "Codiorma(0)": 0.004381575788713558,
+      "Codiorni(0)": 0.00012267733059957502,
+      "Codiorpo(0)": 0.000012267733059957505
+    },
+    "checkpoint_raw_little_endian_hex": {
+      "Conh(0)": "d154eca7b66a4d3f",
+      "Coni(0)": "9cea8abdf062e23e",
+      "Codiorma(0)": "f8c17a4b6af2713f",
+      "Codiorni(0)": "b4e1ea3e5e14203f",
+      "Codiorpo(0)": "bb02ab6430bae93e"
+    },
+    "continuous_trace_size_bytes": 5464800,
+    "continuous_trace_sha256": "6089d7191c01cf09da3a84cec5d73bbe6a13b4d5ac13c73e92321dd9a1db69e3",
+    "corrected_restore_trace_size_bytes": 5464800,
+    "corrected_restore_trace_sha256": "6089d7191c01cf09da3a84cec5d73bbe6a13b4d5ac13c73e92321dd9a1db69e3",
+    "corrected_restore_full_trace_exact": true,
+    "defective_restart_trace_size_bytes": 5464800,
+    "defective_restart_trace_sha256": "d93ec85c00c9f026d1d215d5aea250192d250775ee1433a7b3754cb090590388",
+    "first_defective_divergence": {
+      "record_index_zero_based": 564,
+      "step": 283,
+      "phase": 0,
+      "layer": 0,
+      "differences": [
+        {"coordinate": "Conh(0)", "continuous_raw_hex": "d154eca7b66a4d3f", "defective_raw_hex": "0000000000000000"},
+        {"coordinate": "Coni(0)", "continuous_raw_hex": "9cea8abdf062e23e", "defective_raw_hex": "0000000000000000"},
+        {"coordinate": "Codiorma(0)", "continuous_raw_hex": "f8c17a4b6af2713f", "defective_raw_hex": "0000000000000000"},
+        {"coordinate": "Codiorni(0)", "continuous_raw_hex": "b4e1ea3e5e14203f", "defective_raw_hex": "0000000000000000"},
+        {"coordinate": "Codiorpo(0)", "continuous_raw_hex": "bb02ab6430bae93e", "defective_raw_hex": "0000000000000000"}
+      ],
+      "all_other_traced_coordinates_exact_at_first_divergence": true,
+      "Copo_control_exact_at_first_divergence": true
+    }
+  },
+  "split_67_zero_control": {
+    "stage_a_exit_code": 94,
+    "stage_a_records": 134,
+    "stage_a_trace_size_bytes": 406824,
+    "stage_a_trace_sha256": "fa8be848791941fa09f5864864a44d34cefe25b087788b5b1825537521deb637",
+    "stage_a_exact_continuous_prefix": true,
+    "checkpoint_size_bytes": 48,
+    "checkpoint_sha256": "32bdf5749fde9e0553f2efa3c55d0b329e1ab5beafdcf6eb1d86db6e19aabd94",
+    "five_target_checkpoint_values_exact_positive_zero": true,
+    "legacy_zeroing_trace_size_bytes": 5464800,
+    "legacy_zeroing_trace_sha256": "6089d7191c01cf09da3a84cec5d73bbe6a13b4d5ac13c73e92321dd9a1db69e3",
+    "continuous_trace_sha256": "6089d7191c01cf09da3a84cec5d73bbe6a13b4d5ac13c73e92321dd9a1db69e3",
+    "full_1800_record_exact_negative_control": true
+  },
+  "reconstructed_executable_sha256": {
+    "continuous282": "e5960be94b0f80c5233780341c132caefb9c83c72c64336955191a77b7162f17",
+    "stageA282": "84093f04c86b04ae45fd8f85fe7df09d5aa30a1b4d449740d2cf7bfbd166b82f",
+    "restore282": "c15c49726034370bca872d73575814472da7c23dce2c9e2d78858554da26e450",
+    "legacy282": "6b3e525c3be6acba7654420c52eaf26a6351bb2f341c0b1db5b39ba3619daf96",
+    "stageA67": "80b056bcd6228a7216ce6736a5f90688d52e51ba5570425626c9b6d4a879baf9",
+    "legacy67": "e335baf9937916dbaf9cf340a98298591ebc5b248fc841e2ea970711f87b1b59"
+  },
+  "important_distinction": {
+    "prior_B3B04_trace_hashes": "Targets from the original authoring campaign; the original trace serialization was not retained and is not reconstructed by assumption.",
+    "B3B04E1_trace_hashes": "Hashes of the new transparent trace contract generated by the reconstructed harness from the same frozen B0 trajectory.",
+    "checkpoint_hash": "The split-282 checkpoint hash reproduces the prior B3B04 checkpoint exactly because its record format is independently recoverable from the reported values and generated bytes."
+  },
+  "remaining_blocker": "Independent replay qualification still requires governance-approved controlled immutable acquisition of the exact source, testbank and user-guide bytes. The local reconstruction result does not satisfy that provenance requirement."
+}
