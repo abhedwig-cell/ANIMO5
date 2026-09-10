@@ -3,7 +3,7 @@
   "title": "TCD-037 GHG Balance Observer Child-Atom Routing & Tier-A Readiness Partition",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3i07-tcd037-ghg-balance-observer-routing",
-  "status": "PERSISTED_VALIDATION_PENDING",
+  "status": "QUALIFIED_TCD037_CANONICAL_CHILD_ROUTING_TIER_A_CANDIDATES_NO_ADMISSION",
   "base": {
     "work_unit": "ANIMO-B3I06",
     "head": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
@@ -59,6 +59,14 @@
     ],
     "escalation": "NONE_AT_ROUTING_STAGE_REEVALUATE_STRICTEST_APPLICABLE_RISK_IN_CHILD_READINESS"
   },
+  "validation": {
+    "tested_head": "1a90182cbc6f0617c55eda47470ec252ef6ba9ca",
+    "github_actions_run_id": 34537061711,
+    "job_id": 103071035495,
+    "workflow_conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS"
+  },
   "scope_guards": {
     "production_source_modified": false,
     "canonical_tcd_register_modified": false,
@@ -74,12 +82,14 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
+  "decision": "QUALIFIED_TCD037_CANONICAL_CHILD_ROUTING_TIER_A_CANDIDATES_NO_ADMISSION",
   "recommended_next": [
-    "Start ANIMO-B3A05 for TCD-037-A1 from this canonical routing authority, unless a later central routing authority supersedes B3I07 before start.",
+    "Before downstream child readiness consumes this routing change, reconcile the canonical-routing advance into the next central aggregate authority as required by GOV04, unless a then-live authority has already done so.",
+    "After aggregate reconciliation, start ANIMO-B3A05 for TCD-037-A1 from the latest routing/aggregate authority.",
     "Keep B3A06, B3A07 and B3A08 as separate sibling readiness lanes and do not infer sibling admission from any one PASS."
   ]
 }
