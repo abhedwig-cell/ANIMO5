@@ -1,0 +1,198 @@
+{
+  "work_unit": "ANIMO-B3B09R",
+  "title": "Independent Second-Line Review of TCD-038 Crop Actual Uptake Restart Initialization",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "review/animo-b3b09r-tcd038-independent-second-line",
+  "review_type": "GOV04_TIER_C_INDEPENDENT_SECOND_LINE",
+  "independence": {
+    "separate_review_context": true,
+    "independence_strength": "PROCESS_INDEPENDENCE_ONLY",
+    "human_or_organizational_independence_claimed": false
+  },
+  "live_prewrite_recheck": {
+    "starting_head_expected": "1b47d6b2e422463b557a48355ad8b4f5bed70ebc",
+    "starting_head_observed": "1b47d6b2e422463b557a48355ad8b4f5bed70ebc",
+    "starting_head_match": true,
+    "issue_47_comments_at_recheck": 0,
+    "later_dedicated_tcd038_branch_or_issue_found": false,
+    "current_aggregate_authority": "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6"
+  },
+  "authorities": {
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "B3I01_canonical_append": "383c7a83e84a578969f92113280dc715b7bdddb4",
+    "B3I01_post_G5_routing": "7b2be9d9742aaad78128c0531591d8e38d7e8450",
+    "B3I03": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "B3I04": "400b7cd79f89043e091751707dfa96537587dcf6",
+    "B3I05_relevant_check": "1f94a6e08db5d73e8935fb095de9ef9798f6544c",
+    "B3I06_relevant_check": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
+    "STATEQ01": "4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "STATEQ02_handoff_pin": "ada93a409aa054f9aebac32728e79f80468215a7",
+    "STATEQ02_live_closeout": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "PREP10": "761db23269b45ba79df3be97ea85289682e57106",
+    "PREP12": "3d86de057247adcfeefb82c11d7cf7d5b2cbdf73"
+  },
+  "readiness_validation": {
+    "run_id": 34524511092,
+    "job_id": 103029989632,
+    "head": "1b47d6b2e422463b557a48355ad8b4f5bed70ebc",
+    "conclusion": "success",
+    "used_as": "READINESS_PACKAGE_INTEGRITY_ONLY_NOT_SECOND_LINE_CONCLUSION"
+  },
+  "frozen_b0": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "modified_by_review": false,
+    "relevant_member_sha256": {
+      "Inicalc.for": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1",
+      "Init.for": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+      "input1.for": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+      "Output_Init.for": "6452c175dcd7c6e80983c1176467735d07f75595cf8341526b115b70121b6a2f",
+      "Upintg_Plant.for": "d6a6afd6bbc2515697e9bb294ea6bb06ce8a552760f99c2686442d78d19274af",
+      "Upintg_Extern.for": "d4f4ae0730e6ea0556c339a98268ed5b94262634c5aecce2e19aed058929069e"
+    }
+  },
+  "canonical_target": {
+    "id": "TCD-038",
+    "status": "OPEN",
+    "process": "crop actual uptake restart initialization",
+    "separate_neighbor": "TCD-039",
+    "tcd039_composed": false
+  },
+  "independent_findings": {
+    "lifecycle_ownership": {
+      "result": "PASS",
+      "accepted_aliases": [
+        "Amplni_act",
+        "Amplpo_act when Ipo.Eq.1"
+      ],
+      "result_serialized_aliases": [
+        "Rsamplni_act",
+        "Rsamplpo_act when Ipo.Eq.1"
+      ],
+      "contract": "serialized/result Rsampl*_act -> accepted Ampl*_act -> next result Rsampl*_act -> serialized Rsampl*_act",
+      "independent_owner_count": 1
+    },
+    "restore_direction": {
+      "result": "PASS",
+      "direction": "Rsampl*_act -> Ampl*_act",
+      "basis": "input1 reads result-side aliases from >orgpla; ordinary Init maps result to accepted; Output_Init serializes result-side aliases; uptake integration advances result state from accepted state"
+    },
+    "legacy_erase_mechanism": {
+      "result": "PASS",
+      "legacy_sequence": "threshold may set Ampl*_act to zero, then Inicalc copies Ampl*_act -> Rsampl*_act before any above-threshold restore",
+      "natural_nonzero_cases": 4,
+      "post_Inicalc_actual_uptake_erased_to_zero": true,
+      "evidence_strength": "B1_SOURCE_BOUND_DIAGNOSTIC_NOT_B2"
+    },
+    "risk_tier": {
+      "result": "PASS",
+      "b3_qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+      "gov04_risk_tier": "C",
+      "strictest_trigger_wins": true,
+      "tier_c_triggers": [
+        "RESTART_OR_COLD_START_DISCRIMINATION",
+        "INITIALIZATION_SEMANTICS",
+        "CHECKPOINT_SEMANTICS"
+      ]
+    },
+    "cold_start_restart_semantics": {
+      "result": "PASS",
+      "shared_surface": ">orgpla:",
+      "dedicated_discriminator": false,
+      "representation_change": false,
+      "restore_semantics_change": true,
+      "bounded_rule": "zero/sub-threshold inputs retain existing zeroing; represented above-threshold actual uptake is restored instead of erased on the applicable crop path"
+    },
+    "guards_preserved": {
+      "result": "PASS",
+      "threshold": "1.0d-4",
+      "crop_trigger": "Kicr(1).Ne.6 .Or. (Kicr(1).Eq.6 .And. Ioptcu.Eq.1)",
+      "p_guard": "Ipo.Eq.1",
+      "guard_widening": false
+    },
+    "tcd039_exclusion": {
+      "result": "PASS",
+      "potential_uptake_state_added": false,
+      "checkpoint_fields_added": false,
+      "composition_required": false
+    },
+    "state_evidence_strength": {
+      "result": "PASS",
+      "STATEQ01": "ROUTE_AND_STATE_CONTEXT_ONLY_NOT_TCD038_CAUSAL_SPLIT_RUN_PROOF",
+      "STATEQ02": "RESTRICTED_CORE_EXACT_SPLIT_RUN_WITH_EXTERNAL_CROP_SURFACE_AND_UNRESOLVED_INTERNAL_CROP_RESTART_STATE_EXCLUDED",
+      "STATEQ02_later_closeout_effect": "NO_STRENGTH_PROMOTION_FOR_TCD038",
+      "whole_trajectory_equivalence_claimed": false
+    },
+    "expected_differences": {
+      "result": "PASS",
+      "first_difference": "above-threshold imported actual uptake survives into accepted Ampl*_act instead of being erased before first process execution",
+      "possible_downstream": [
+        "crop uptake",
+        "nutrient demand",
+        "dependent nutrient state/flux/output"
+      ],
+      "qualified_full_horizon_magnitude": false,
+      "new_tolerance_defined": false
+    },
+    "non_interference": {
+      "result": "PASS",
+      "production_source_modified": false,
+      "frozen_b0_modified": false,
+      "canonical_state_admitted": false,
+      "canonical_tcd_register_modified": false,
+      "aggregate_modified": false,
+      "b4_or_production_opened": false,
+      "numerical_policy_changed": false,
+      "solver_changed": false,
+      "tolerance_changed": false,
+      "checkpoint_representation_changed": false
+    },
+    "superseding_or_contradictory_evidence": {
+      "result": "PASS",
+      "material_contradiction_found": false,
+      "later_tcd038_work_found": false,
+      "later_routing_checked": [
+        "B3I04",
+        "B3I05",
+        "B3I06",
+        "RG05G"
+      ],
+      "later_routing_changes_claim": false
+    }
+  },
+  "evidence_strength_bounds": {
+    "PREP10": "DIAGNOSTIC_NOT_REFERENCE_PLUS_SOURCE_BOUND",
+    "PREP12": "PROVENANCE_PRESERVING_REHOME_ONLY_NO_NEW_SCIENTIFIC_STRENGTH",
+    "STATEQ01": "QUALIFICATION_CONTEXT_WITH_TCD038_SPECIFIC_SPLIT_CAUSALITY_NOT_ESTABLISHED",
+    "STATEQ02": "RESTRICTED_CORE_QUALIFICATION_ONLY_CROP_RESTART_OUTSIDE_SCOPE",
+    "historical_revision_53_behavior": "UNKNOWN_WITHOUT_B2",
+    "qualified_B2_found_for_TCD038": false,
+    "gnu_diagnostic_treated_as_historical_B2": false
+  },
+  "residual_uncertainty": [
+    "No qualified historical Intel/native TCD-038 split-run authority was found.",
+    "No TCD-038-specific causally isolated full continuous-versus-split trajectory is qualified.",
+    "Downstream full-horizon magnitude is not an admitted tolerance or prevalence estimate.",
+    "TCD-039 can independently affect crop restart continuity and remains outside this review."
+  ],
+  "decision": {
+    "outcome": "PASS",
+    "meaning": "INDEPENDENT_REVIEW_EVIDENCE_ONLY_NO_B3_ADMISSION",
+    "tier": "GOV04_TIER_C",
+    "admission_performed": false,
+    "production_authorized": false,
+    "composition_authorized": false,
+    "central_integration_authorized": false,
+    "next_gate": "SEPARATE_TIER_C_DISPOSITION_AND_ADMISSION_DECISION_IF_CENTRAL_REGIE_PROCEEDS"
+  },
+  "validation_contract": {
+    "validator": "tools/validate_b3b09r_tcd038_review.py",
+    "scope_guard": "tools/validate_b3b09r_scope.py",
+    "workflow": ".github/workflows/animo-b3b09r-tcd038-independent-second-line.yml",
+    "starting_base": "1b47d6b2e422463b557a48355ad8b4f5bed70ebc",
+    "green_run_required_on_exact_final_head": true,
+    "final_run_identifiers_recorded_in_issue_47_comment": true
+  }
+}
