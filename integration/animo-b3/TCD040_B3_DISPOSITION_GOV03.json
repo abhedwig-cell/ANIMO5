@@ -1,0 +1,136 @@
+{
+  "workunit": "ANIMO-B3D11",
+  "target": "TCD-040",
+  "class": "B_LOCAL_RESTORE_INITIALIZATION_IDENTITY",
+  "canonical_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_AND_RESTORE_DISCRIMINATOR_QUALIFIED_BY_GOV03",
+  "admitted": false,
+  "central_regie_authority": "ANIMO-RG05D@f3d6b9780631bd627f8bca0658a8e3878746e666",
+  "readiness_authority": "ANIMO-B3B04@19e38ae0dfc211e88fe782b4b7d6e42b1b7f5865",
+  "supporting_authorities": {
+    "STATEQ02": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "B3I04": "400b7cd79f89043e091751707dfa96537587dcf6",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c"
+  },
+  "frozen_b0": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "rehash_confirmed_in_B3D11": true
+  },
+  "live_collision_check": {
+    "B3D11_preexisting": false,
+    "later_TCD040_disposition_or_review_found": false,
+    "only_TCD040_work_branch_found": "work/animo-b3b04-tcd040-layer0-restart-readiness"
+  },
+  "atomic_scope": {
+    "coordinates": [
+      {"species": "NH4", "current_owner": "Conh(0)", "accepted_owner": "Rsconh(0)"},
+      {"species": "NO3", "current_owner": "Coni(0)", "accepted_owner": "Rsconi(0)"},
+      {"species": "DOM", "current_owner": "Codiorma(0)", "accepted_owner": "Rscodiorma(0)"},
+      {"species": "DON", "current_owner": "Codiorni(0)", "accepted_owner": "Rscodiorni(0)"},
+      {"species": "DOP", "current_owner": "Codiorpo(0)", "accepted_owner": "Rscodiorpo(0)"}
+    ],
+    "PO4_control_excluded": true,
+    "TCD016_composition": false,
+    "internal_crop_composition": false,
+    "whole_model_checkpoint_qualification": false,
+    "canonical_STATE_admission": false
+  },
+  "source_recheck": {
+    "startup_call": "Animo.for:143-169 Call Inicalc after input",
+    "destructive_block": "Inicalc.for:125-129",
+    "destructive_assignments_unconditional": true,
+    "legacy_explicit_restart_discriminator_present": false,
+    "ordinary_later_timestep_owner_restore": "Init.for:352-364",
+    "first_timestep_result_zeroing": "Init.for:227-245",
+    "first_timestep_result_zeroing_erases_current_target_owners": false,
+    "restart_style_writer": "Output_Init.for:84,87,104,105,134"
+  },
+  "natural_GrassPeat_recheck": {
+    "NH4_layer0": 0.006885736,
+    "NO3_layer0": 0.0005743774,
+    "DOM_layer0": 0.09904185,
+    "DON_layer0": 0.005673512,
+    "DOP_layer0": 0.0005456775,
+    "PO4_layer0_control": 0.003703004,
+    "natural_nonzero_activation_confirmed": true
+  },
+  "B3B04_evidence_recheck": {
+    "split": 282,
+    "accepted_values": {
+      "NH4": 0.0008977310061221382,
+      "NO3": 8.767359689234193e-06,
+      "DOM": 0.004381575788713558,
+      "DON": 0.00012267733059957502,
+      "DOP": 1.2267733059957505e-05
+    },
+    "raw_little_endian_ieee754_hex": {
+      "NH4": "d154eca7b66a4d3f",
+      "NO3": "9cea8abdf062e23e",
+      "DOM": "f8c17a4b6af2713f",
+      "DON": "b4e1ea3e5e14203f",
+      "DOP": "bb02ab6430bae93e"
+    },
+    "raw_hex_independently_reproduced": true,
+    "records_total": 1800,
+    "accepted_prefix_records": 564,
+    "changed_records_defective": 1236,
+    "arithmetic_564_plus_1236_equals_1800": true,
+    "first_defective_divergence": "step 283 phase 0 layer 0 on NH4, NO3, DOM, DON, DOP",
+    "continuous_trace_sha256": "29055b1be962d9550781b87f56ab34cd44630965439e21b6e5375954a6144a48",
+    "corrected_restore_trace_sha256": "29055b1be962d9550781b87f56ab34cd44630965439e21b6e5375954a6144a48",
+    "defective_trace_sha256": "920cc04388d812e5668edab3e654b7e006926522bbe61923b1a202b346cf4e38",
+    "split67_zero_control_trace_sha256": "29055b1be962d9550781b87f56ab34cd44630965439e21b6e5375954a6144a48",
+    "B3B04_validation_run_id": 34386299961,
+    "B3B04_validation_run_rechecked_success": true,
+    "full_1800_record_harness_reexecuted_in_B3D11": false
+  },
+  "formatted_restart_boundary": {
+    "INITIAL_OUT_can_feed_initialization": true,
+    "INITIAL_OUT_is_raw_byte_checkpoint": false,
+    "formatted_roundtrip_exact_whole_model_identity_claimed": false,
+    "TCD040_claim": "do not destructively erase the five values supplied to an explicit restore seam"
+  },
+  "restore_discriminator": {
+    "qualified": true,
+    "kind": "EXPLICIT_CONTROL_PLANE_INITIALIZATION_INTENT",
+    "allowed_values": [
+      "COLD_START",
+      "RESTORE_ACCEPTED_LAYER0_AQUEOUS_STATE"
+    ],
+    "inferred_from_state_or_filename": false,
+    "legacy_entrypoint_without_restore_capability": "COLD_START",
+    "restore_capable_entrypoint_requires_explicit_recognized_value": true,
+    "invalid_or_unavailable_selector": "FAIL_CLOSED_NO_RESTORE_ADMISSION",
+    "serialized_as_canonical_physical_state": false
+  },
+  "atomic_implementation_seam": {
+    "qualified_semantic_seam": "Inicalc.for:125-129 after input read and before first post-initialization process execution",
+    "COLD_START": "execute the existing five zero assignments unchanged",
+    "RESTORE_ACCEPTED_LAYER0_AQUEOUS_STATE": "do not apply the five zero assignments; preserve the five restore-supplied current-owner values",
+    "other_Inicalc_initialization_changed": false,
+    "Copo_changed": false,
+    "new_physical_state": false,
+    "restart_architecture_redesign": false,
+    "production_source_syntax_selected": false,
+    "unconditional_deletion_qualified": false
+  },
+  "GOV03_route": {
+    "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "B2_status": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "G6U_status": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "historical_behaviour": "UNKNOWN",
+    "historical_fidelity_claimed": false,
+    "route_open_for_independent_second_line": true,
+    "independent_second_line_complete": false
+  },
+  "hard_boundaries": {
+    "production_patch": false,
+    "B4": false,
+    "composition": false,
+    "canonical_STATE_admission": false,
+    "central_regie_update": false,
+    "TCD040_admission": false
+  }
+}
