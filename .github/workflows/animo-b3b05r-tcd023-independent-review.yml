@@ -1,0 +1,25 @@
+name: ANIMO-B3B05R TCD-023 independent review
+
+on:
+  push:
+    branches:
+      - review/animo-b3b05r-tcd023-independent-second-line
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse machine-readable review result
+        run: python -m json.tool integration/animo-b3/TCD023_INDEPENDENT_SECOND_LINE_REVIEW.json >/dev/null
+      - name: Run fail-closed independent TCD-023 review validator and scope guard
+        run: python tools/validate_b3b05r_tcd023_review.py
