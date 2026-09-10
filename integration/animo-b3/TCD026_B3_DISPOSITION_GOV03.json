@@ -1,0 +1,129 @@
+{
+  "record_id": "B3D07-TCD026-GOV03-DISPOSITION",
+  "record_version": 1,
+  "tcd_ids": ["TCD-026"],
+  "atomicity": "ATOMIC",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "disposition": "UNRESOLVED_NOT_ADMITTED",
+  "scope": {
+    "process": "fresh-organic-matter initial root-exudate storage reporting ledger",
+    "code_path": "initial fresh-organic-matter Bfom(Inip_x,Ly) reporting/storage ledger",
+    "claim": "the already-existing initial root-exudate organic-matter state Ex(Ln) must contribute Ex(Ln)*P to Bfom(Inip_x,Ly) without changing initialization physics, physical state, process fluxes, restart state or numerical policy",
+    "candidate_atomic_observation": "Bfom(Inip_x,Ly) = Bfom(Inip_x,Ly) + Ex(Ln) * P"
+  },
+  "authorities": {
+    "RG05C": "2d3cc363599ed32b6537f318462c27db5ffaa7c2",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3A04": "5eaf02298603b85f802d8e35d6a63941d0878879",
+    "B3A04R_TECH": "27b1700a330959d1b5eae23a2094cad579630f14",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "STATEQ02": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "SYNQ01": "842f72300fd03ede0b9024537a7ee6126722a121"
+  },
+  "identities": {
+    "b0": {
+      "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+    },
+    "b1": {
+      "status": "DIAGNOSTIC_NOT_REFERENCE",
+      "evidence_identity": "B3A04 PREP06 synthetic activation, model-produced restart replay and chronological CranMais 1974-to-1975 activation",
+      "diagnostic_limitations": "These data establish causal activation and reporting-only non-interference within the bounded claim; they are not a qualified historical behavioural reference."
+    },
+    "b2": {
+      "status": "UNAVAILABLE_AFTER_DOCUMENTED_ACQUISITION_ATTEMPT",
+      "acquisition_effort_ref": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+    }
+  },
+  "historical_route": {
+    "B2_available": false,
+    "GOV03_closure_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "b2_route_gate": "PASS",
+    "historical_behaviour": "UNKNOWN",
+    "historical_fidelity_claimed": false
+  },
+  "readiness_reconciliation": {
+    "frozen_B0_identity": "PASS",
+    "canonical_TCD026_binding": "PASS",
+    "exact_physical_owner": "PASS",
+    "begin_end_storage_identity": "PASS_FOR_ATOMIC_COMPONENT",
+    "exact_omitted_ledger_term": "PASS",
+    "PREP06_synthetic_causal_discriminator": "PASS_10_KG_HA",
+    "model_produced_restart_activation": "PASS_5989_6594_KG_HA",
+    "chronological_restart_activation": "PASS_642_718929_KG_HA",
+    "candidate_state_non_interference": "PASS_FOR_READINESS",
+    "candidate_process_flux_non_interference": "PASS_FOR_READINESS",
+    "candidate_total_mass_non_interference": "PASS_FOR_READINESS",
+    "changed_output_whitelist": "PASS",
+    "formatted_restart_negative_control_retained": "PASS",
+    "SYNQ01_specific_TCD026_oracle": "NONE_REGISTERED_NO_FALSE_ORACLE_CLAIM",
+    "STATEQ02_scope_boundary": "PASS_CONTINUATION_STATE_OWNERSHIP_SUPPORT_ONLY_NOT_LEDGER_ORACLE_NOT_B2",
+    "same_context_technical_review": "PASS_TECHNICAL_NOT_INDEPENDENT",
+    "production_source_unchanged": "PASS"
+  },
+  "expected_difference": {
+    "changed_surfaces": [
+      "ani_omGP.Bal",
+      "ani_omRP.Bal",
+      "ani_omTP.Bal",
+      "baomGP.Out",
+      "baomRP.Out",
+      "baomTP.Out"
+    ],
+    "restart_specific_observed_subset": [
+      "ani_omMP.Bal",
+      "ani_omTP.Bal",
+      "baomMP.Out",
+      "baomTP.Out"
+    ],
+    "required_unchanged": [
+      "all physical state trajectories",
+      "all process flux trajectories",
+      "initialization physics",
+      "restart state bytes for candidate versus legacy from identical restart input",
+      "forcing and testcase scientific inputs",
+      "all numerical tolerances and policies",
+      "non-whitelisted outputs",
+      "other organic-matter TCDs"
+    ]
+  },
+  "gates": {
+    "b0_identity": "PASS",
+    "b1_evidence": "PASS",
+    "b2_route": "PASS_GOV03_HISTORICAL_UNCERTAINTY_ROUTE",
+    "theory_or_exact_identity": "PASS_INITIAL_STORAGE_LEDGER_IDENTITY",
+    "causal": "PASS",
+    "conservation": "PASS_FOR_ATOMIC_COMPONENT",
+    "expected_difference": "PASS",
+    "non_interference": "PASS_FOR_READINESS",
+    "coverage": "PASS_SYNTHETIC_PLUS_MODEL_PRODUCED_AND_CHRONOLOGICAL_RESTART_ACTIVATION",
+    "class_specific": "PASS_FOR_READINESS",
+    "residual_uncertainty": "PASS_EXPLICIT",
+    "independent_review": "FAIL_PENDING_NOT_COMPLETED",
+    "composition_if_applicable": "PASS_NOT_APPLICABLE"
+  },
+  "independent_review": {
+    "required": true,
+    "same_authoring_context_may_count": false,
+    "technical_review_head": "27b1700a330959d1b5eae23a2094cad579630f14",
+    "technical_review_independent": false,
+    "review_status_at_reconciliation": "PENDING_INDEPENDENT_REVIEW",
+    "gate": "BLOCKING"
+  },
+  "residual_uncertainty": [
+    "No qualified B2 behavioural reference exists; historical revision-53 behaviour remains UNKNOWN.",
+    "No TCD-026-specific SYNQ01 oracle is registered; PREP06 synthetic and restart activations remain the causal/conservation evidence and must not be relabelled as B2.",
+    "The chronological formatted restart probe activates TCD-026 but does not qualify exact whole-model continuous-versus-formatted-restart identity.",
+    "STATEQ02 supports CEX continuation-state ownership relevance only and is neither a TCD-026 ledger oracle nor B2.",
+    "The same-context B3A04R technical PASS cannot satisfy the independent second-line gate.",
+    "No production implementation, B4 migration, composition or whole-model historical-equivalence claim is authorized."
+  ],
+  "admission_decision": {
+    "admitted": false,
+    "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03",
+    "production_patch_authorized": false,
+    "production_migration_admitted": false
+  }
+}
