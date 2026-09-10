@@ -1,0 +1,51 @@
+{
+  "work_unit": "ANIMO-RG05D",
+  "snapshot_date": "2026-09-10",
+  "base_queue": "ANIMO-RG05C@2d3cc363599ed32b6537f318462c27db5ffaa7c2:integration/animo-reg/RG05C_B3_QUEUE_DELTA.json",
+  "integration_rule": "PRESERVE_RG05_THROUGH_RG05C_AS_HISTORICAL_SNAPSHOTS_APPLY_ONLY_EXPLICIT_POST_RG05C_AUTHORITY_DELTAS",
+  "route_state": {
+    "G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "historical_uncertainty_route_eligible": true,
+    "authority": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+  },
+  "tcd_deltas": [
+    {
+      "tcd": "TCD-026",
+      "from_queue_state": "WAITING_ON_ROUTE_AND_REVIEW",
+      "to_state": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+      "removed_blockers": [
+        "historical route reconciliation pending under the old pre-GOV03 state",
+        "genuinely independent second-line review pending"
+      ],
+      "route_reconciliation_authority": "ANIMO-B3D07@21766eaf3443bcf432f05fbf6ba89d365bc70988",
+      "review_authority": "ANIMO-B3A04R2@767779127d092c54a298e2f76a21d544e9af9895",
+      "admission_authority": "ANIMO-B3D08@cc280b630d6dc0d6bc1b8b0783ccfa4f91e15624",
+      "disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+      "historical_behaviour": "UNKNOWN",
+      "next_action": "Do not reopen TCD-026 readiness. Any implementation, composition, B4 step or production migration requires separate downstream authorization."
+    }
+  ],
+  "post_delta_counts": {
+    "canonical_tcd_entries": 25,
+    "active_queue_entries": 21,
+    "READY_FOR_ADMISSION_READINESS": 4,
+    "IN_PROGRESS_ADMISSION_READINESS": 0,
+    "WAITING_ON_ROUTE_AND_REVIEW": 3,
+    "WAITING_ON_THEORY": 4,
+    "WAITING_ON_NUMERICS": 2,
+    "WAITING_ON_STATE": 5,
+    "WAITING_ON_RUNTIME": 2,
+    "WAITING_ON_CHILDREN": 1,
+    "NOT_READY": 0,
+    "scientific_admissions": 4
+  },
+  "admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026"],
+  "unchanged_high_level_boundaries": {
+    "canonical_tcd_register_tail": "TCD-042",
+    "TCD043_reserved": false,
+    "B3_whole_model_baseline_complete": false,
+    "B4": "NOT_ADMITTED",
+    "PRODUCTION": "NOT_ADMITTED"
+  },
+  "other_queue_entries": "UNCHANGED_FROM_RG05C_UNLESS_SUPERSEDED_BY_A_LATER_EXPLICIT_AUTHORITY_NOT_IN_SCOPE_OF_RG05D"
+}
