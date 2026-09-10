@@ -1,0 +1,400 @@
+{
+  "policy_id": "ANIMO-GOV04",
+  "policy_version": 1,
+  "policy_name": "RISK_TIERED_REVIEW_INTENSITY",
+  "repository": "abhedwig-cell/ANIMO5",
+  "authorities": {
+    "central_regie": "ANIMO-RG05D@f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "b3_framework": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "historical_uncertainty_route": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+  },
+  "governance_semantics": {
+    "qualification_class_is_not_risk_tier": true,
+    "strictest_applicable_risk_trigger_wins": true,
+    "scientific_gate_reduction_allowed": false,
+    "review_workunit_reduction_allowed_only_by": [
+      "BETTER_RISK_ALLOCATION",
+      "VERIFY_AND_REUSE",
+      "AUTOMATION",
+      "CLEAR_ESCALATION_RULES"
+    ],
+    "historical_behaviour_without_qualified_b2": "UNKNOWN"
+  },
+  "review_stages": [
+    "EVIDENCE_QUALIFICATION",
+    "TECHNICAL_REVIEW",
+    "GENUINELY_INDEPENDENT_SECOND_LINE_REVIEW",
+    "ADMISSION_DECISION",
+    "CENTRAL_PROJECT_REGIE_INTEGRATION"
+  ],
+  "risk_tiers": {
+    "A": {
+      "name": "LOW_RISK_ACCOUNTING_REPORTING_ONLY",
+      "default_qualification_classes": ["A_ACCOUNTING_REPORTING_ONLY"],
+      "required_gates": [
+        "B0_IDENTITY",
+        "B1_CAUSAL_EVIDENCE",
+        "B2_ROUTE_OR_GOV03_HISTORICAL_UNCERTAINTY_ROUTE",
+        "EXACT_SOURCE_SEAM",
+        "UNAMBIGUOUS_PHYSICAL_AND_ACCOUNTING_OWNERSHIP",
+        "ATOMICITY",
+        "EXACT_CONSERVATION_OR_ACCOUNTING_IDENTITY",
+        "EXPECTED_DIFFERENCE_PREDECLARED",
+        "PHYSICAL_STATE_NON_INTERFERENCE",
+        "PROCESS_FLUX_NON_INTERFERENCE",
+        "NO_NUMERICAL_POLICY_CHANGE",
+        "NO_SOLVER_OR_TOLERANCE_CHANGE",
+        "NO_RESTART_INITIALIZATION_OR_STATE_SEMANTIC_CHANGE",
+        "NO_COMPOSITION",
+        "NO_UNRESOLVED_SCIENTIFIC_OR_SOURCE_MEANING_AMBIGUITY",
+        "REPRODUCIBLE_VALIDATOR",
+        "SCOPE_GUARD",
+        "NATURAL_OR_QUALIFIED_SYNTHETIC_ACTIVATION",
+        "RESIDUAL_UNCERTAINTY_EXPLICIT",
+        "HISTORICAL_UNKNOWN_PRESERVED_WITHOUT_B2",
+        "NO_PRODUCTION_OR_B4_OR_CANONICAL_REGISTER_CHANGE"
+      ],
+      "independent_second_line_required": false,
+      "independent_review_waiver_mode": "ALL_TIER_A_WAIVER_CONDITIONS_MUST_PASS",
+      "allowed_review_reuse": "VERIFY_AND_REUSE",
+      "remediation_review_scope": "TARGETED_WHEN_PRIOR_PASS_GATES_IMMUTABLE_OTHERWISE_ESCALATE",
+      "admission_workunit_combination_allowed": true,
+      "allowed_combined_stages": [
+        "EVIDENCE_QUALIFICATION",
+        "TECHNICAL_REVIEW",
+        "DISPOSITION",
+        "ADMISSION_CLOSEOUT"
+      ],
+      "escalation_triggers": [
+        "ANY_WAIVER_GATE_FALSE_OR_UNKNOWN",
+        "STATE_OWNERSHIP_AMBIGUITY",
+        "RESTART_OR_INITIALIZATION_SEMANTICS",
+        "NUMERICAL_POLICY",
+        "SOLVER_OR_TOLERANCE_CHANGE",
+        "RUNTIME_BEHAVIOUR_CHANGE",
+        "COMPOSITION",
+        "PRODUCTION_BOUND_SCOPE"
+      ]
+    },
+    "B": {
+      "name": "LOCAL_ALGEBRA_INDEX_SPECIES",
+      "default_qualification_classes": ["B_LOCAL_ALGEBRA_INDEX_SPECIES"],
+      "required_gates": [
+        "B0_IDENTITY",
+        "B1_CAUSAL_EVIDENCE",
+        "B2_ROUTE_OR_GOV03_HISTORICAL_UNCERTAINTY_ROUTE",
+        "ATOMICITY",
+        "EXACT_CAUSAL_CODE_PATH_AND_TRIGGER",
+        "MATHEMATICAL_OR_SPECIES_IDENTITY",
+        "EXPECTED_DIFFERENCE_PREDECLARED",
+        "BRANCH_ACTIVATION",
+        "CONSERVATION_WHERE_APPLICABLE",
+        "NON_INTERFERENCE",
+        "ONE_GENUINELY_INDEPENDENT_SECOND_LINE_REVIEW",
+        "RESIDUAL_UNCERTAINTY_EXPLICIT",
+        "HISTORICAL_UNKNOWN_PRESERVED_WITHOUT_B2",
+        "NO_NUMERICAL_STATE_RESTART_OR_PRODUCTION_SCOPE_CREEP"
+      ],
+      "independent_second_line_required": true,
+      "required_independent_review_count": 1,
+      "allowed_review_reuse": "VERIFY_AND_REUSE",
+      "remediation_review_scope": "FAILED_GATES_PLUS_REGRESSION_GUARDS_WHEN_PRIOR_PASS_GATES_IMMUTABLE",
+      "admission_workunit_combination_allowed": true,
+      "allowed_combined_stages_after_independent_pass": ["DISPOSITION", "ADMISSION_CLOSEOUT"],
+      "full_rereview_after_evidence_remediation_required": false,
+      "escalation_triggers": [
+        "CLAIM_SCOPE_MUTATION",
+        "STATE_OR_RESTART_SEMANTICS",
+        "NUMERICAL_POLICY",
+        "SOLVER_OR_TOLERANCE_CHANGE",
+        "AMBIGUOUS_DOMAIN_CONTRACT",
+        "COMPOSITION",
+        "PRODUCTION_BOUND_SCOPE"
+      ]
+    },
+    "C": {
+      "name": "HIGH_RISK_STATE_RESTART_RUNTIME_NUMERICAL_SEMANTICS",
+      "default_qualification_classes": [
+        "MISSING_PHYSICAL_STATE_OR_INCOMPLETE_STATE_MODEL",
+        "NUMERICAL_POLICY_CHANGE",
+        "PHYSICS_MODEL_EVOLUTION",
+        "REPRESENTATION_ONLY_MODERNIZATION_WITH_STATE_OR_RUNTIME_RISK"
+      ],
+      "required_gates": [
+        "B0_IDENTITY",
+        "B1_CAUSAL_EVIDENCE_WHERE_APPLICABLE",
+        "B2_ROUTE_OR_GOV03_HISTORICAL_UNCERTAINTY_ROUTE",
+        "AUTHORITATIVE_THEORY_OR_EXACT_DOMAIN_CONTRACT",
+        "STATE_OWNERSHIP_AND_UNITS_WHERE_APPLICABLE",
+        "INITIALIZATION_AND_RESTART_SEMANTICS_WHERE_APPLICABLE",
+        "NUMERICAL_POLICY_AND_CONVERGENCE_EVIDENCE_WHERE_APPLICABLE",
+        "FAILURE_AND_FALLBACK_BEHAVIOUR_WHERE_APPLICABLE",
+        "EXPECTED_DIFFERENCE_PREDECLARED",
+        "CONSERVATION",
+        "NON_INTERFERENCE",
+        "EDGE_AND_BOUNDARY_CASE_COVERAGE",
+        "GENUINELY_INDEPENDENT_SECOND_LINE_REVIEW",
+        "RESIDUAL_UNCERTAINTY_EXPLICIT",
+        "HISTORICAL_UNKNOWN_PRESERVED_WITHOUT_B2",
+        "NO_PRODUCTION_AUTHORIZATION"
+      ],
+      "independent_second_line_required": true,
+      "required_independent_review_count": 1,
+      "allowed_review_reuse": "VERIFY_AND_REUSE_WITH_HIGH_RISK_SCOPE_CHECK",
+      "remediation_review_scope": "TARGETED_ONLY_IF_FAILED_GATES_ISOLATABLE_AND_ALL_REUSED_PASS_GATES_IMMUTABLE_OTHERWISE_FULL_REVIEW",
+      "admission_workunit_combination_allowed": "CONDITIONAL_NOT_DEFAULT",
+      "separate_disposition_admission_preferred_for": [
+        "STATE",
+        "RESTART",
+        "CHECKPOINT",
+        "NUMERICAL_POLICY",
+        "SOLVER"
+      ],
+      "forced_tier_triggers": [
+        "RESTART_OR_COLD_START_DISCRIMINATION",
+        "INITIALIZATION_SEMANTICS",
+        "CANONICAL_STATE_OWNERSHIP",
+        "CHECKPOINT_SEMANTICS",
+        "MISSING_OR_REDEFINED_PHYSICAL_STATE",
+        "NUMERICAL_POLICY",
+        "SOLVER_OR_TOLERANCE_CHANGE",
+        "RUNTIME_BRANCHING_WITH_BEHAVIOURAL_EFFECT",
+        "EXACT_ZERO_OR_SINGULAR_DOMAIN_SEMANTICS",
+        "AMBIGUOUS_DOMAIN_CONTRACT",
+        "SCIENTIFIC_STATE_OR_SOURCE_OWNERSHIP_AMBIGUITY"
+      ]
+    },
+    "D": {
+      "name": "COMPOSITION_MULTI_TCD_PRODUCTION_BOUND",
+      "default_qualification_classes": [
+        "COMPOSITION",
+        "MULTI_TCD",
+        "CROSS_MODULE_COUPLING",
+        "B4",
+        "WHOLE_MODEL_BASELINE",
+        "PRODUCTION_MIGRATION"
+      ],
+      "required_gates": [
+        "ALL_COMPONENT_ADMISSIONS_PINNED",
+        "NO_CONTRADICTORY_ASSUMPTIONS",
+        "NO_DOUBLE_CORRECTION",
+        "NO_CANCELLATION_MASKING",
+        "EXPECTED_COMBINED_DIFFERENCE_PREDECLARED",
+        "COMBINED_CONSERVATION",
+        "COMBINED_NON_INTERFERENCE",
+        "INTERACTION_AND_ORDERING_COVERAGE",
+        "UNCERTAINTY_PROPAGATION",
+        "GENUINELY_INDEPENDENT_REVIEW",
+        "COMPOSITION_QUALIFICATION",
+        "INTEGRATION_QUALIFICATION",
+        "EXPLICIT_PRODUCTION_AUTHORIZATION_WHEN_PRODUCTION_BOUND"
+      ],
+      "independent_second_line_required": true,
+      "allowed_review_reuse": "VERIFY_AND_REUSE_COMPONENT_EVIDENCE_ONLY_COMPOSITION_ITSELF_MUST_BE_QUALIFIED",
+      "remediation_review_scope": "CASE_SPECIFIC_FAIL_CLOSED",
+      "admission_workunit_combination_allowed": false,
+      "automatic_promotion_from_atomic_admission": false,
+      "forced_tier_triggers": [
+        "COMPOSITION_OF_MULTIPLE_ADMITTED_TCDS",
+        "MULTI_TCD_CHANGE",
+        "CROSS_MODULE_COUPLING",
+        "PRODUCTION_SOURCE_MIGRATION",
+        "B4_QUALIFICATION_OR_AUTHORIZATION",
+        "WHOLE_MODEL_BASELINE_CLAIM",
+        "PRODUCTION_BOUND_CHANGE"
+      ]
+    }
+  },
+  "qualification_class_defaults": {
+    "A_ACCOUNTING_REPORTING_ONLY": "A",
+    "B_LOCAL_ALGEBRA_INDEX_SPECIES": "B",
+    "MISSING_PHYSICAL_STATE_OR_INCOMPLETE_STATE_MODEL": "C",
+    "NUMERICAL_POLICY_CHANGE": "C",
+    "PHYSICS_MODEL_EVOLUTION": "C",
+    "REPRESENTATION_ONLY_MODERNIZATION": "C_DEFAULT_B_IF_STRICT_EQUIVALENCE_AND_NO_HIGH_RISK_TRIGGER"
+  },
+  "tier_a_independent_review_waiver_conditions": {
+    "logic": "ALL_MUST_PASS",
+    "conditions": [
+      "EXACT_SOURCE_SEAM",
+      "UNAMBIGUOUS_PHYSICAL_AND_ACCOUNTING_OWNERSHIP",
+      "ATOMICITY",
+      "EXACT_CONSERVATION_OR_ACCOUNTING_IDENTITY",
+      "EXPECTED_DIFFERENCE_PREDECLARED",
+      "PHYSICAL_STATE_NON_INTERFERENCE",
+      "PROCESS_FLUX_NON_INTERFERENCE",
+      "NO_NUMERICAL_POLICY_CHANGE",
+      "NO_SOLVER_OR_TOLERANCE_CHANGE",
+      "NO_RESTART_INITIALIZATION_OR_STATE_SEMANTIC_CHANGE",
+      "NO_COMPOSITION",
+      "NO_UNRESOLVED_SCIENTIFIC_OR_SOURCE_MEANING_AMBIGUITY",
+      "REPRODUCIBLE_VALIDATOR",
+      "SCOPE_GUARD",
+      "NATURAL_OR_QUALIFIED_SYNTHETIC_ACTIVATION",
+      "HISTORICAL_UNKNOWN_PRESERVED_WITHOUT_B2",
+      "GOV03_ROUTE_CONDITIONS_RETAINED_WHEN_APPLICABLE",
+      "NO_PRODUCTION_OR_B4_OR_CANONICAL_REGISTER_CHANGE"
+    ],
+    "on_false_or_unknown": "WAIVER_DENIED_ESCALATE_BY_STRICTEST_TRIGGER"
+  },
+  "b3q01_schema_compatibility": {
+    "b3q01_schema_modified_by_gov04": false,
+    "schema_authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54:integration/animo-b3/B3_DISPOSITION_SCHEMA.json",
+    "tier_a_waived_independent_review_encoding": {
+      "evidence_independent_review_status": "COMPLETE",
+      "evidence_independent_review_result": "NOT_REVIEWED",
+      "independent_from_correction_authoring": false,
+      "gate_status": "PASS",
+      "gate_applicability": "NOT_APPLICABLE",
+      "mandatory_justification": "GOV04_TIER_A_WAIVER_ALL_CONDITIONS_PASS"
+    },
+    "interpretation": "PASS_NOT_APPLICABLE_MEANS_APPLICABILITY_GATE_SATISFIED_NOT_INDEPENDENT_REVIEW_PERFORMED",
+    "admitted_tier_a_not_reviewed_without_verified_waiver": "FAIL_CLOSED"
+  },
+  "review_reuse": {
+    "mode": "VERIFY_AND_REUSE",
+    "reperform_everything_default": false,
+    "reuse_conditions": [
+      "EXACT_SAME_SOURCE_AND_TESTCASE_IDENTITY",
+      "CLAIM_SCOPE_UNCHANGED_AND_NOT_WIDENED",
+      "EVIDENCE_ARTIFACT_IMMUTABLE_AND_PINNED",
+      "PROVENANCE_FULLY_PINNED",
+      "NO_SUPERSEDING_OR_CONTRADICTORY_EVIDENCE"
+    ],
+    "mandatory_downstream_checks": [
+      "VERIFY_PIN",
+      "VERIFY_SCOPE_COMPATIBILITY",
+      "VERIFY_NO_SUPERSEDING_EVIDENCE"
+    ],
+    "evidence_strength_promotion_allowed": false
+  },
+  "remediation_policy": {
+    "principle": "REVIEW_FAIL != AUTOMATIC_FULL_REVIEW_RESET",
+    "failure_classes": {
+      "SCIENTIFIC_FALSIFICATION": {
+        "targeted_rereview_allowed": false,
+        "full_substantive_reassessment_required": true
+      },
+      "EVIDENCE_INSUFFICIENCY": {
+        "targeted_rereview_allowed": true,
+        "full_substantive_reassessment_required": false
+      },
+      "PROVENANCE_INSUFFICIENCY": {
+        "targeted_rereview_allowed": true,
+        "full_substantive_reassessment_required": false
+      },
+      "TOOLING_VALIDATOR_FAILURE": {
+        "targeted_rereview_allowed": true,
+        "full_substantive_reassessment_required": false,
+        "green_validator_is_not_scientific_pass": true
+      },
+      "SCOPE_AMBIGUITY": {
+        "targeted_rereview_allowed_only_if_resolved_scope_is_identical": true,
+        "scope_mutation_requires_full_substantive_reassessment": true
+      }
+    },
+    "targeted_rereview_preconditions": [
+      "FAILED_GATES_IDENTIFIED",
+      "ALL_REUSED_PRIOR_PASS_GATES_IMMUTABLE",
+      "VERIFY_PIN",
+      "VERIFY_SCOPE_COMPATIBILITY",
+      "VERIFY_NO_SUPERSEDING_EVIDENCE",
+      "REGRESSION_GUARDS_INCLUDED"
+    ],
+    "reviewer_may_require_full_review": true
+  },
+  "independence_policy": {
+    "separate_chatgpt_context_means": "PROCESS_INDEPENDENCE_ONLY",
+    "organizational_or_human_independence_implied": false,
+    "tier_a_separate_context_required_when_waiver_passes": false,
+    "tier_b_separate_context_required": true,
+    "tier_c_separate_context_required": true,
+    "tier_d_independent_review_required": true,
+    "same_authoring_context_may_sign_required_independent_gate": false
+  },
+  "central_regie_integration": {
+    "mode": "AGGREGATED_ATOMIC_ADMISSION_INTEGRATION",
+    "normal_batch_min": 3,
+    "normal_batch_max": 5,
+    "aggregate_before_exceeding_pending_count": 5,
+    "early_integration_triggers": [
+      "B3_COMPLETENESS_CHANGES",
+      "B4_ELIGIBILITY_CHANGES",
+      "PRODUCTION_ELIGIBILITY_CHANGES",
+      "CANONICAL_ROUTING_CHANGES",
+      "CROSS_TCD_DEPENDENCY_CHANGES_DOWNSTREAM_ELIGIBILITY",
+      "GOVERNANCE_AUTHORITY_CHANGE_REQUIRED_IMMEDIATELY_DOWNSTREAM"
+    ],
+    "atomic_admission_authority_equals_latest_aggregate_regie_snapshot": false,
+    "atomic_admission_is_authoritative_before_aggregate_integration": true,
+    "pending_atomic_admission_traceability_required_fields": [
+      "ADMISSION_WORKUNIT",
+      "ADMISSION_COMMIT_IDENTITY",
+      "ADMISSION_RECORD_IDENTITY",
+      "DISPOSITION",
+      "HISTORICAL_UNCERTAINTY_STATE",
+      "LAST_AGGREGATE_REGIE_SNAPSHOT"
+    ],
+    "information_loss_allowed": false
+  },
+  "transitional_rules": {
+    "retroactive_invalidation": false,
+    "existing_finalized_reviews_remain_valid": true,
+    "existing_admissions_remain_valid": true,
+    "existing_fail_or_incomplete_records_rewritten": false,
+    "historical_rg_snapshots_immutable": ["RG05", "RG05A", "RG05B", "RG05C", "RG05D"],
+    "open_workunits_may_apply_gov04_only_after_gov04_qualified": true,
+    "running_independent_reviews_may_continue": true,
+    "switching_allowed_only_without_scientific_gate_loss": true
+  },
+  "live_transition_decisions": {
+    "TCD-015": {
+      "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+      "risk_tier": "B",
+      "independent_review": "PASS_AT_ANIMO-B3B01R@a6880282e9ed743f97a3435b55e4fb54f7d55a44",
+      "next_review_action": "VERIFY_AND_REUSE_EXISTING_PASS",
+      "next_workunit": "COMBINED_POST_REVIEW_DISPOSITION_AND_ADMISSION_CLOSEOUT_ALLOWED_IF_ALL_PINS_AND_ROUTE_REMAIN_VALID",
+      "admitted_by_gov04": false
+    },
+    "TCD-027": {
+      "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+      "risk_tier": "A_CANDIDATE_CONDITIONAL",
+      "existing_second_line": "INCOMPLETE_AT_ANIMO-B3A01R@510c9313926457cd9bfd8e71a551255297bdfbb3",
+      "failure_class": "EVIDENCE_INSUFFICIENCY",
+      "scientific_falsification": false,
+      "next_review_action": "TIER_A_WAIVER_ALLOWED_ONLY_AFTER_ALL_STRENGTHENED_LOW_RISK_SOURCE_AND_NON_INTERFERENCE_GATES_PASS",
+      "unresolved_checks_to_close": [
+        "EXACT_LOCAL_DUM_CONSTRUCTION_AND_MEANING",
+        "EXACT_OUTBAL_WRITE_SLOT_24_TO_27_MAPPING",
+        "EXACT_ORGANIC_P_SLOT_25_26_27_SELF_ACCUMULATORS"
+      ],
+      "new_separate_second_line_required_if_tier_a_waiver_passes": false,
+      "admitted_by_gov04": false
+    },
+    "TCD-040": {
+      "qualification_class_live_label": "B_LOCAL_RESTORE_INITIALIZATION_IDENTITY",
+      "risk_tier": "C",
+      "risk_promotion_reason": "RESTART_AND_INITIALIZATION_SEMANTICS",
+      "independent_review": "FAIL_CLOSED_INDEPENDENT_EVIDENCE_REPLAY_INCOMPLETE_AT_ANIMO-B3B04R@bb001129578457ca8435e39deb2b8586e7ebc6a2",
+      "failure_class": "EVIDENCE_INSUFFICIENCY",
+      "scientific_falsification": false,
+      "independent_review_still_required": true,
+      "targeted_rereview_after_remediation_allowed": true,
+      "targeted_rereview_condition": "CLAIM_AND_PRIOR_PASS_GATES_AND_SOURCE_IDENTITIES_IMMUTABLE_AND_FAILED_EVIDENCE_GATES_ISOLATABLE",
+      "admitted_by_gov04": false
+    }
+  },
+  "hard_invariants": {
+    "scientific_gates_removed": false,
+    "b2_fabricated": false,
+    "historical_uncertainty_promoted_to_fidelity": false,
+    "existing_fails_rewritten": false,
+    "existing_admissions_withdrawn": false,
+    "b4_opened": false,
+    "production_migration_opened": false,
+    "canonical_tcd_register_modified": false,
+    "production_source_modified": false,
+    "open_scientific_blockers_administratively_removed": false,
+    "tcd_admission_performed_by_gov04": false
+  }
+}
