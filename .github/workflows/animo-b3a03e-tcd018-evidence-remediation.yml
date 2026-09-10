@@ -1,0 +1,47 @@
+name: ANIMO-B3A03E TCD018 evidence remediation
+
+on:
+  push:
+    branches:
+      - work/animo-b3a03e-tcd018-independent-review-evidence-remediation
+  workflow_dispatch:
+
+jobs:
+  validate-b3a03e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate remediated TCD-018 evidence packet
+        run: python tools/validate_b3a03e_tcd018_evidence.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=57cfdfb3a7fb982f6692b0b32f8c8aa044c57fd7
+          git cat-file -e "${base}^{commit}"
+          mapfile -t changed < <(git diff --name-only "${base}...HEAD")
+          printf 'B3A03E changed files:\n%s\n' "${changed[*]}"
+          allowed='^(docs/b3/TCD018_EVIDENCE_REMEDIATION\.md|integration/animo-b3/TCD018_EVIDENCE_REMEDIATION_MANIFEST\.json|integration/animo-b3/TCD018_25_PERIOD_RECONCILIATION\.csv|integration/animo-b3/TCD018_EIGHT_CASE_RUN_LEDGER\.json|integration/animo-b3/ANIMO-B3A03E_STATUS\.json|integration/animo-b3/tcd018_output_digest_ledger/(CranGrass|part2|part3|part4)\.csv|tools/build_tcd018_reporting_candidate\.py|tools/validate_b3a03e_tcd018_evidence\.py|\.github/workflows/animo-b3a03e-tcd018-evidence-remediation\.yml)$'
+          bad=0
+          for path in "${changed[@]}"; do
+            if [[ ! "$path" =~ $allowed ]]; then
+              echo "UNEXPECTED_B3A03E_PATH: $path"
+              bad=1
+            fi
+          done
+          if [[ $bad -ne 0 ]]; then
+            exit 1
+          fi
+          if git diff --name-only "${base}...HEAD" | grep -Eq '(^|/)(src|source|production)/|CANONICAL_TCD|TCD_REGISTER'; then
+            echo 'Production/canonical-source change detected'
+            exit 1
+          fi
+          echo PASS_B3A03E_SCOPE_GUARD
