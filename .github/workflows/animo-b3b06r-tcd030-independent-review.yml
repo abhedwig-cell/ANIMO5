@@ -1,0 +1,45 @@
+name: ANIMO-B3B06R TCD-030 independent review
+
+on:
+  push:
+    branches:
+      - review/animo-b3b06r-tcd030-independent-second-line
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  independent-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout review branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run independent TCD-030 review validator
+        run: python3 tools/validate_b3b06r_tcd030_review.py
+
+      - name: Fail closed on review scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=baf54f57b3c94701d85d73336b7afd3e94a4b3d9
+          git diff --name-only "$base"...HEAD > /tmp/review_paths.txt
+          cat /tmp/review_paths.txt
+          while IFS= read -r path; do
+            case "$path" in
+              docs/b3/TCD030_INDEPENDENT_SECOND_LINE_REVIEW.md|\
+              integration/animo-b3/ANIMO-B3B06R_STATUS.json|\
+              integration/animo-b3/TCD030_INDEPENDENT_REVIEW_EVIDENCE.json|\
+              tools/validate_b3b06r_tcd030_review.py|\
+              .github/workflows/animo-b3b06r-tcd030-independent-review.yml)
+                ;;
+              *)
+                echo "FAIL_SCOPE_AMBIGUITY unexpected review path: $path" >&2
+                exit 1
+                ;;
+            esac
+          done < /tmp/review_paths.txt
+          echo "PASS review-only scope"

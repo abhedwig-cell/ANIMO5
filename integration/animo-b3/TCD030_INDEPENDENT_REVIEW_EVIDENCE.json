@@ -1,0 +1,112 @@
+{
+  "work_unit": "ANIMO-B3B06R",
+  "target": "TCD-030",
+  "review_result": "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
+  "authority_pins": {
+    "review_handoff": "baf54f57b3c94701d85d73336b7afd3e94a4b3d9",
+    "readiness": "98235bad7d7fb25b5053e9101c52c0ee3226692a",
+    "aggregate_regie": "eed822037ed8d906a2ab424220597cffac9cca73",
+    "post_rg05e_atomic_admission_tcd027": "b20841eb71c338cad21abd8164fa025d8efc75c4",
+    "gov04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "mp01": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "mp02": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "b3i01": "7b2be9d9742aaad78128c0531591d8e38d7e8450",
+    "b3i03_routing": "6a015587807130b4ce12c9f1518c1ddac4e5d624",
+    "b3i03_register_append": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "b3i04": "400b7cd79f89043e091751707dfa96537587dcf6",
+    "b3i05_tcd042": "1f94a6e08db5d73e8935fb095de9ef9798f6544c",
+    "b3i05_ubq02": "7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+    "b3i06": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
+    "frozen_b0_retention": "a818b5a37b80ed92aded0b9c404990d356eb2300"
+  },
+  "frozen_b0": {
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "mapoinput_path": "ANIMO_4.1.5.53/mapoinput.for",
+    "mapoinput_sha256": "081c671d2f576ab0608350cbb0083eab157c586a6783522cda3534b141244065",
+    "input1_path": "ANIMO_4.1.5.53/input1.for",
+    "input1_sha256": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+    "raw_zip_reopened_by_reviewer": false,
+    "reason": "Raw licensed archive is intentionally not republished in public GitHub.",
+    "review_method": "Independent source-bound replay against pinned member hashes, prior MP01 source finding, EG01 identity records, and B3B06 source transcript; no readiness conclusion is taken as authoritative."
+  },
+  "source_reconstruction": {
+    "routine": "MaPoInput",
+    "routine_branch": "Nupa.EQ.4",
+    "caller_gate": "Ioptmp.Eq.1",
+    "caller_location": "input1.for:3460-3465",
+    "seam_location": "mapoinput.for:116-133",
+    "label": ">MPnitr:",
+    "read_value_sequence": ["CoMpnh(1)", "CoMpnh(2)", "CoMpni(1)", "CoMpni(2)"],
+    "full_read_statement_syntax_republished_in_git": false,
+    "full_read_statement_claim": "NOT_STRENGTHENED_BEYOND_SOURCE_BOUND_TRANSCRIPT; exact species/value sequence is pinned, unit/format/ERR syntax is not fabricated.",
+    "no3_checks": [
+      {"line": 130, "diagnostic_label": "CoMpni(1)", "legacy_value_argument": "CoMpnh(1)", "corrected_value_selector": "CoMpni(1)"},
+      {"line": 132, "diagnostic_label": "CoMpni(2)", "legacy_value_argument": "CoMpnh(2)", "corrected_value_selector": "CoMpni(2)"}
+    ],
+    "checkrea": {
+      "source_location": "input1.for:4042-4086",
+      "lower_guard": "Abs(Low-999.).Gt.Nihil .And. Value.Lt.Low",
+      "upper_guard": "Abs(High-999.).Gt.Nihil .And. Value.Gt.High",
+      "lower_error": 1992,
+      "upper_error": 1993,
+      "tcd030_low_argument": 0.0,
+      "tcd030_high_argument": 999.0,
+      "sentinel_semantics": "999.0 disables that bound; therefore TCD-030 has an active lower bound only.",
+      "zero_boundary": "ACCEPTED",
+      "greater_than_999": "ACCEPTED_ON_TCD030_PATH",
+      "upper_error_reachability_on_tcd030_path": "UNREACHABLE_WITH_HIGH_999_SENTINEL"
+    },
+    "diagnostics": {
+      "lower_violation": "Checkrea reports the variable label, writes SIMULATION INTERRUPTED, sets Error=1992 and returns.",
+      "upper_violation_generic": "Checkrea sets Error=1993 when a non-sentinel upper bound is active and exceeded.",
+      "caller": "input1.for returns when Error.Ne.0 after MaPoInput.",
+      "read_error_8500": "SEPARATE_PARSE_PATH_OUTSIDE_TCD030"
+    },
+    "ownership": {
+      "nh4": ["CoMpnh(1)", "CoMpnh(2)"],
+      "no3": ["CoMpni(1)", "CoMpni(2)"],
+      "physical_assignment": "READ already assigns NO3 into CoMpni before Checkrea validation.",
+      "effect_class": "VALIDATION_ONLY",
+      "persistent_state_change": false,
+      "restart_change": false,
+      "solver_or_numerical_policy_change": false
+    }
+  },
+  "composition": {
+    "tcd025": {"present": false, "reason": "Separate macropore main-ledger storage/direct-drainage integration gap."},
+    "tcd031": {"present": false, "reason": "Separate persistent macropore solute restart-state representation gap."}
+  },
+  "historical_evidence": {
+    "qualified_b2": false,
+    "behavior": "UNKNOWN",
+    "gov03_route": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT"
+  },
+  "issue_pr_recheck": {
+    "tcd030_issue_count": 0,
+    "tcd030_pr_count": 0,
+    "note": "Live lexical GitHub issue/PR searches returned no TCD-030 items."
+  },
+  "matrix": [
+    {"id":"valid_unequal","ioptmp":1,"nh4":[1,2],"no3":[3,4],"legacy":{"status":"ACCEPT","error":0,"diag":null},"candidate":{"status":"ACCEPT","error":0,"diag":null}},
+    {"id":"invalid_no3_d1","ioptmp":1,"nh4":[1,2],"no3":[-1,4],"legacy":{"status":"ACCEPT","error":0,"diag":null},"candidate":{"status":"REJECT","error":1992,"diag":"CoMpni(1)"}},
+    {"id":"invalid_no3_d2","ioptmp":1,"nh4":[1,2],"no3":[3,-1],"legacy":{"status":"ACCEPT","error":0,"diag":null},"candidate":{"status":"REJECT","error":1992,"diag":"CoMpni(2)"}},
+    {"id":"zero_boundary","ioptmp":1,"nh4":[1,2],"no3":[0,4],"legacy":{"status":"ACCEPT","error":0,"diag":null},"candidate":{"status":"ACCEPT","error":0,"diag":null}},
+    {"id":"just_below_zero","ioptmp":1,"nh4":[1,2],"no3":[-0.000001,4],"legacy":{"status":"ACCEPT","error":0,"diag":null},"candidate":{"status":"REJECT","error":1992,"diag":"CoMpni(1)"}},
+    {"id":"above_999","ioptmp":1,"nh4":[1,2],"no3":[1000,1000000],"legacy":{"status":"ACCEPT","error":0,"diag":null},"candidate":{"status":"ACCEPT","error":0,"diag":null}},
+    {"id":"invalid_nh4_control","ioptmp":1,"nh4":[-1,2],"no3":[3,4],"legacy":{"status":"REJECT","error":1992,"diag":"CoMpnh(1)"},"candidate":{"status":"REJECT","error":1992,"diag":"CoMpnh(1)"}},
+    {"id":"inactive","ioptmp":0,"nh4":[-1,-2],"no3":[-3,-4],"legacy":{"status":"ACCEPT","error":0,"diag":null},"candidate":{"status":"ACCEPT","error":0,"diag":null}}
+  ],
+  "independent_semantic_probes": [
+    {"id":"generic_lower_error","value":-1.0,"low":0.0,"high":999.0,"expected_error":1992},
+    {"id":"generic_upper_error","value":2.0,"low":0.0,"high":1.0,"expected_error":1993},
+    {"id":"sentinel_high","value":1000000.0,"low":0.0,"high":999.0,"expected_error":0}
+  ],
+  "gov04": {
+    "selected_tier": "B",
+    "tier_c_escalation": false,
+    "rationale": "Atomic wrong-species value selector in input validation. The already-read physical NO3 state, persistent/restart state, runtime architecture, solver, tolerance and numerical policy are unchanged. Initialization timing alone does not create a Tier C state-semantics change.",
+    "strictest_trigger_found": "TIER_B_LOCAL_SPECIES_VALIDATION"
+  }
+}

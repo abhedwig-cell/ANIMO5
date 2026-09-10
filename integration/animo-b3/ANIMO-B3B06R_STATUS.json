@@ -1,0 +1,33 @@
+{
+  "work_unit": "ANIMO-B3B06R",
+  "title": "Independent Second-Line Review of TCD-030 Macropore Initial NO3 Validation",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "review/animo-b3b06r-tcd030-independent-second-line",
+  "review_handoff_head": "baf54f57b3c94701d85d73336b7afd3e94a4b3d9",
+  "readiness_authority": "ANIMO-B3B06@98235bad7d7fb25b5053e9101c52c0ee3226692a",
+  "readiness_ci": {
+    "run_id": 34474895406,
+    "conclusion": "success"
+  },
+  "review_independence": "SEPARATE_CHATGPT_CONTEXT_INDEPENDENT_REEVALUATION",
+  "source_review_boundary": "SOURCE_BOUND_REPLAY; RAW_LICENSED_B0_ZIP_NOT_REPUBLISHED_IN_GITHUB",
+  "gov04_risk_tier": "B",
+  "historical_behavior": "UNKNOWN",
+  "historical_b2_qualified": false,
+  "decision": "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
+  "admission_performed": false,
+  "production_patch_performed": false,
+  "canonical_register_modified": false,
+  "central_regie_modified": false,
+  "b4_performed": false,
+  "migration_performed": false,
+  "composition": {
+    "TCD-025": false,
+    "TCD-031": false
+  },
+  "validation": {
+    "validator": "tools/validate_b3b06r_tcd030_review.py",
+    "workflow": ".github/workflows/animo-b3b06r-tcd030-independent-review.yml",
+    "ci_required": true
+  }
+}
