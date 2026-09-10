@@ -3,7 +3,7 @@
   "title": "TCD-028 GOV04 Tier-C B3 Admission Closeout",
   "branch": "work/animo-b3d18-tcd028-gov04-tier-c-admission",
   "target": "TCD-028",
-  "state": "ADMISSION_PACKAGE_PERSISTED_PENDING_MACHINE_VALIDATION",
+  "state": "QUALIFIED_TCD028_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_C_NO_PRODUCTION",
   "decision": "ADMIT_TCD028_ATOMIC_CLASS_B_STABLE_DOM_EVENT_ACCUMULATOR_RESET_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_C",
   "disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "b3_qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
@@ -31,14 +31,15 @@
     "normal_rg05_aggregate_batch_threshold_reached": true
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-B3D18 TCD-028 Tier-C admission",
-    "run_id": null,
-    "job_id": null,
-    "evidence_head": null,
-    "conclusion": "PENDING",
-    "validator": "PENDING",
-    "scope_guard": "PENDING"
+    "run_id": 34525421003,
+    "job_id": 103033007245,
+    "evidence_head": "4c658e80be033e66953e154bdef769a5f59b2e66",
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34525421003 validates the complete admission package at evidence head 4c658e80be033e66953e154bdef769a5f59b2e66. This status-only closeout must pass the same workflow on its own final head."
   },
   "next_if_validated": "SEPARATE_RG05G_AGGREGATE_ATOMIC_ADMISSION_INTEGRATION_IF_NO_NEWER_AUTHORITY"
 }
