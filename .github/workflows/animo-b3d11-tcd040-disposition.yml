@@ -1,0 +1,50 @@
+name: ANIMO-B3D11 TCD040 GOV03 discriminator disposition
+
+on:
+  push:
+    branches:
+      - work/animo-b3d11-tcd040-gov03-disposition
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-b3d11:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Validate TCD-040 GOV03 disposition and restore discriminator
+        run: python tools/validate_b3d11_tcd040_disposition.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              "docs/b3/TCD040_GOV03_RESTORE_DISCRIMINATOR_DISPOSITION.md",
+              "integration/animo-b3/TCD040_B3_DISPOSITION_GOV03.json",
+              "integration/animo-b3/ANIMO-B3D11_STATUS.json",
+              "tools/validate_b3d11_tcd040_disposition.py",
+              ".github/workflows/animo-b3d11-tcd040-disposition.yml",
+          }
+          base = "f3d6b9780631bd627f8bca0658a8e3878746e666"
+          changed = set(subprocess.check_output(
+              ["git", "diff", "--name-only", f"{base}..HEAD"], text=True
+          ).splitlines())
+          unexpected = changed - allowed
+          missing = allowed - changed
+          if unexpected:
+              raise SystemExit("FAIL_B3D11_SCOPE_GUARD unexpected files: " + ", ".join(sorted(unexpected)))
+          if missing:
+              raise SystemExit("FAIL_B3D11_SCOPE_GUARD missing disposition files: " + ", ".join(sorted(missing)))
+          print("PASS_B3D11_SCOPE_GUARD")
+          PY
