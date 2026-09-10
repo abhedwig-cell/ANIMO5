@@ -6,21 +6,25 @@
   "date": "2026-09-10",
   "base": {
     "work_unit": "ANIMO-RG05D",
-    "head": "f3d6b9780631bd627f8bca0658a8e3878746e666"
+    "head": "f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "role": "IMMUTABLE_AUTHORING_BASE"
   },
   "authorities": {
-    "central_regie": "ANIMO-RG05D@f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "authoring_base_central_regie": "ANIMO-RG05D@f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "current_central_regie": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
     "b3_framework": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
     "historical_uncertainty_route": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
   },
   "live_discovery": {
-    "existing_gov04_or_later_review_governance_found": false,
-    "current_central_regie_head": "f3d6b9780631bd627f8bca0658a8e3878746e666",
+    "existing_gov04_or_later_review_governance_found_before_branch_creation": false,
+    "concurrent_rg05e_detected": true,
+    "current_central_regie_head": "eed822037ed8d906a2ab424220597cffac9cca73",
     "current_b3q01_authority": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
     "current_gov03_authority": "cbd262bdabe92923113b7326f2f42822ce9a971c",
-    "newer_rg05e_found": false,
-    "rg05d_scientific_admission_count": 4,
-    "rg05d_admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026"]
+    "current_scientific_admission_count": 5,
+    "current_admitted_tcds": ["TCD-017", "TCD-018", "TCD-024", "TCD-026", "TCD-015"],
+    "newer_rg05f_found_at_reconciliation": false,
+    "reconciliation_note": "GOV04 was created from the then-current RG05D authority. RG05E qualified concurrently and is now the current central-regie authority. GOV04 retains RG05D as its immutable authoring base and consumes RG05E prospectively without rewriting historical snapshots."
   },
   "governance_only": true,
   "state": "QUALIFIED_RISK_TIERED_SCIENTIFIC_REVIEW_POLICY_NO_SCIENTIFIC_GATE_REDUCTION",
@@ -32,28 +36,42 @@
     "review_reuse": "VERIFY_AND_REUSE",
     "review_fail_reset_policy": "REVIEW_FAIL != AUTOMATIC_FULL_REVIEW_RESET",
     "central_regie_mode": "AGGREGATED_ATOMIC_ADMISSION_INTEGRATION",
+    "starting_aggregate_snapshot": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
     "normal_rg_batch_min": 3,
     "normal_rg_batch_max": 5
   },
   "transition_decisions": {
     "TCD-015": {
       "risk_tier": "B",
-      "decision": "REUSE_EXISTING_INDEPENDENT_PASS_THEN_COMBINED_POST_REVIEW_DISPOSITION_ADMISSION_CLOSEOUT_ALLOWED_IF_PINS_AND_ROUTE_REMAIN_VALID",
-      "review_authority": "ANIMO-B3B01R@a6880282e9ed743f97a3435b55e4fb54f7d55a44",
+      "decision": "COMPLETED_CONCURRENTLY_NO_GOV04_REOPEN",
+      "independent_review_authority": "ANIMO-B3B01R@a6880282e9ed743f97a3435b55e4fb54f7d55a44",
+      "atomic_admission_authority": "ANIMO-B3D12@5e33c195174e41ea949d5a828d30bb7b9e313a5d",
+      "central_integration_authority": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
+      "historical_behaviour": "UNKNOWN",
       "admitted_here": false
     },
     "TCD-027": {
       "risk_tier": "A_CANDIDATE_CONDITIONAL",
-      "decision": "NO_NEW_SEPARATE_SECOND_LINE_REQUIRED_ONLY_IF_ALL_GOV04_TIER_A_WAIVER_GATES_PASS_IN_A_FUTURE_BOUNDED_WORKUNIT",
+      "decision": "ONE_BOUNDED_GOV04_TIER_A_TECHNICAL_ADMISSION_WORKUNIT_MAY_REPLACE_NEW_SECOND_LINE_ONLY_IF_ALL_WAIVER_GATES_PASS",
       "existing_review": "ANIMO-B3A01R@510c9313926457cd9bfd8e71a551255297bdfbb3:INCOMPLETE_EVIDENCE_INSUFFICIENCY",
+      "qualified_evidence_remediation": "ANIMO-B3A01E@5232ef5fa6daafa2296401b19fd9e866a34152bd",
+      "remediated_source_checks": [
+        "EXACT_LOCAL_DUM_CONSTRUCTION_AND_MEANING",
+        "EXACT_OUTBAL_WRITE_SLOT_24_TO_27_MAPPING",
+        "EXACT_ORGANIC_P_SLOT_25_26_27_SELF_ACCUMULATORS"
+      ],
+      "new_separate_second_line_required_if_all_tier_a_waiver_gates_pass": false,
       "automatic_admission_ready": false,
       "admitted_here": false
     },
     "TCD-040": {
       "risk_tier": "C",
-      "decision": "KEEP_INDEPENDENT_REVIEW_TARGETED_REREVIEW_ONLY_AFTER_EVIDENCE_REMEDIATION_IF_PRIOR_PASS_PINS_AND_SCOPE_REMAIN_IMMUTABLE",
+      "decision": "KEEP_INDEPENDENT_REVIEW_TARGETED_REREVIEW_ONLY_AFTER_EVIDENCE_REMEDIATION_IF_PRIOR_PASS_PINS_SCOPE_AND_SOURCE_IDENTITIES_REMAIN_IMMUTABLE",
       "existing_review": "ANIMO-B3B04R@bb001129578457ca8435e39deb2b8586e7ebc6a2:FAIL_CLOSED_INDEPENDENT_EVIDENCE_REPLAY_INCOMPLETE",
+      "live_evidence_remediation": "ANIMO-B3B04E1@b3f509806119ea2c2aaf0694c08d4a5bb13e6ca3",
+      "live_remediation_state": "FAIL_CLOSED_LOCAL_RECONSTRUCTION_PASS_CONTROLLED_B0_ACQUISITION_UNPROVEN",
       "scientific_falsification": false,
+      "independent_review_still_required": true,
       "admitted_here": false
     }
   },
@@ -62,7 +80,8 @@
     "b2_fabricated": false,
     "existing_reviews_rewritten": false,
     "existing_admissions_withdrawn": false,
-    "historical_rg_snapshots_modified": false
+    "historical_rg_snapshots_modified": false,
+    "finalized_snapshots_immutable": ["RG05", "RG05A", "RG05B", "RG05C", "RG05D", "RG05E"]
   },
   "project_boundaries": {
     "scientific_tcd_admissions_performed": 0,
@@ -76,13 +95,13 @@
   "validation": {
     "validator": "tools/validate_gov04_review_policy.py",
     "workflow": ".github/workflows/animo-gov04-risk-tiered-review-policy.yml",
-    "tested_head": "894c748a1a0819a18dba93661e0413e37abdb789",
-    "github_actions_run_id": 34459738480,
-    "github_actions_job_id": 102814450012,
+    "tested_head": "278fe98c32015810bd55fa35ef9ffb9f8362fa3d",
+    "github_actions_run_id": 34459809106,
+    "github_actions_job_id": 102814682601,
     "github_actions_conclusion": "success",
     "validator_result": "PASS_GOV04_RISK_TIERED_REVIEW_POLICY",
     "scope_guard": "PASS_GOV04_SCOPE_GUARD",
-    "closeout_note": "Run 34459738480 validated the complete persisted GOV04 package before this status closeout commit. The closeout commit must pass the same workflow independently."
+    "closeout_note": "Run 34459809106 validated the pre-reconciliation GOV04 closeout. The reconciled closeout commit is qualified only when the same fail-closed workflow also passes after this status update; that non-recursive final run is verified externally rather than embedded by another self-changing status commit."
   },
   "work_status": {
     "realized": true,
