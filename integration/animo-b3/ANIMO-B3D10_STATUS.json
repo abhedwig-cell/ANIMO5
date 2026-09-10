@@ -1,0 +1,120 @@
+{
+  "work_unit": "ANIMO-B3D10",
+  "title": "TCD-027 Organic-P Detailed Accumulator GOV03 Disposition and Independent-Review Handoff",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d10-tcd027-gov03-disposition",
+  "base": {
+    "work_unit": "ANIMO-RG05D",
+    "head": "f3d6b9780631bd627f8bca0658a8e3878746e666"
+  },
+  "target_tcd": "TCD-027",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "readiness_authority": "ANIMO-B3A01@b2bac82512fef0fa232e759f0c68b472567c11d5",
+  "b3_framework": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "historical_route_authority": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "state": "PENDING_VALIDATION_TCD027_FORMAL_DISPOSITION_ROUTE_OPEN_REVIEW_PENDING_NO_ADMISSION",
+  "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03",
+  "route_reconciliation": {
+    "historical_B2_available": false,
+    "GOV03_closure_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "b2_route_gate": "PASS",
+    "historical_behaviour": "UNKNOWN",
+    "historical_fidelity_claimed": false
+  },
+  "scientific_gates": {
+    "b0_identity": "PASS",
+    "b1_evidence": "PASS",
+    "b2_route": "PASS_GOV03_HISTORICAL_UNCERTAINTY_ROUTE",
+    "exact_reporting_identity": "PASS",
+    "causal": "PASS_NATURAL_LWKM_1997",
+    "conservation": "PASS_REPORTING_ONLY_NON_INTERFERENCE",
+    "expected_difference": "PASS_THREE_TRANSFOP_FILES_ONLY",
+    "non_interference": "PASS_FOR_READINESS",
+    "coverage": "PASS_NATURAL_LWKM_1997",
+    "class_specific": "PASS_FOR_ROUTE_OPEN_READINESS",
+    "residual_uncertainty": "PASS_EXPLICIT",
+    "independent_review": "FAIL_PENDING_NOT_COMPLETED",
+    "composition_if_applicable": "PASS_NOT_APPLICABLE"
+  },
+  "source_recheck": {
+    "slot_24": "redis_EXP",
+    "slot_25": "redis_OP",
+    "slot_26": "redis_DOP",
+    "slot_27": "redis_HUP",
+    "legacy_expression": "Bafop(24,Ly)=Bafop(25,Ly)+Dum",
+    "candidate_expression": "Bafop(24,Ly)=Bafop(24,Ly)+Dum",
+    "analogue_om": "Bafom(24,Ly)=Bafom(24,Ly)+Adexpl(I,Ln)*Z",
+    "analogue_n": "Bafon(24,Ly)=Bafon(24,Ly)+Dum",
+    "authoring_recheck_is_independent_second_line": false
+  },
+  "natural_discriminator": {
+    "case": "LWKM_gras_1040.2021.2045",
+    "period": 1997,
+    "legacy_redis_EXP_kg_ha_P": -7.0644,
+    "candidate_redis_EXP_kg_ha_P": 0.0,
+    "changed_outputs": [
+      "transfopGP.Out",
+      "transfopRP.Out",
+      "transfopTP.Out"
+    ],
+    "common_top_level_outputs_compared": 58
+  },
+  "required_unchanged": [
+    "physical state trajectory",
+    "process flux trajectory",
+    "total organic-P balance",
+    "total mass balance",
+    "redis_OP",
+    "redis_DOP",
+    "redis_HUP",
+    "ordinary non-reporting model outputs"
+  ],
+  "independent_review": {
+    "review_status": "PENDING_INDEPENDENT_REVIEW",
+    "planned_work_unit": "ANIMO-B3A01R",
+    "same_authoring_context_may_count": false,
+    "gate": "BLOCKING"
+  },
+  "admission": {
+    "admitted": false,
+    "production_patch_authorized": false,
+    "production_migration_admitted": false,
+    "b4_admitted": false,
+    "central_regie_updated": false,
+    "composition_admitted": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "validation": {
+    "validator": "tools/validate_b3d10_tcd027_disposition.py",
+    "workflow": ".github/workflows/animo-b3d10-tcd027-disposition.yml",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_job_id": null,
+    "github_actions_conclusion": null,
+    "validator_result": null,
+    "scope_guard": null,
+    "closeout_note": null
+  },
+  "deliverables": [
+    "integration/animo-b3/TCD027_B3_DISPOSITION_GOV03.json",
+    "integration/animo-b3/ANIMO-B3D10_STATUS.json",
+    "docs/b3/TCD027_GOV03_FORMAL_DISPOSITION.md",
+    "tools/validate_b3d10_tcd027_disposition.py",
+    ".github/workflows/animo-b3d10-tcd027-disposition.yml"
+  ],
+  "recommended_next": [
+    "After successful validation, create a clean ANIMO-B3A01R independent-review branch from the qualified B3D10 head.",
+    "Persist a fail-closed TCD-027 independent second-line review contract and open a dedicated GitHub review issue.",
+    "Execute the review only in a separate ChatGPT context.",
+    "If and only if the independent review passes, use a later separate admission-closeout workunit.",
+    "Do not compose TCD-027 with TCD-017, TCD-026, TCD-028 or any other correction."
+  ]
+}
