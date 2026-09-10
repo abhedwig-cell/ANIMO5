@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "workunit": "ANIMO-B3B04E1",
+  "target": "TCD-040",
+  "scope": "EVIDENCE_REPLAYABILITY_ONLY",
+  "dependency": {
+    "workunit": "ANIMO-EG01",
+    "issue": 5,
+    "current_authority_head": "a818b5a37b80ed92aded0b9c404990d356eb2300",
+    "current_decision": "QUALIFIED_B0_RETENTION_CONTRACT_IMPLEMENTATION_PENDING_EXTERNAL_CONTROLLED_STORAGE",
+    "current_controlled_immutable_storage_proven": false,
+    "required_terminal_decision": "QUALIFIED_CONTROLLED_IMMUTABLE_B0_RETENTION",
+    "required_terminal_controlled_immutable_storage_proven": true
+  },
+  "interface_pins": {
+    "eg01_status": {
+      "path": "integration/animo-eg/ANIMO-EG01_STATUS.json",
+      "git_blob_sha": "49798ff3d0a7bc85014b35239159c616dffbd888"
+    },
+    "b0_evidence_register": {
+      "path": "integration/evidence/ANIMO_B0_EVIDENCE_REGISTER.json",
+      "git_blob_sha": "a53bb0cc695aa2ba7c8b2096e86b4e4aacf13a1e"
+    },
+    "storage_proof_schema": {
+      "path": "integration/evidence/ANIMO_B0_STORAGE_PROOF_SCHEMA.json",
+      "git_blob_sha": "795ba2fc027e6ca918d152c2e449cd0aa03787fe"
+    },
+    "semantic_proof_gate": {
+      "path": "tools/validate_b0_storage_proof.py",
+      "git_blob_sha": "c739ea62977e170f19e97b7fd1cd47c60c0a22d9"
+    },
+    "custodian_handoff": {
+      "path": "docs/eg01/B0_CUSTODIAN_HANDOFF.md",
+      "git_blob_sha": "8961a45b674a666fad9415fa034fa375982d2b8a"
+    }
+  },
+  "required_evidence_objects": {
+    "ANIMO-B0-SRC-41553-R53": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "ANIMO-B0-TB-202609": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "ANIMO-B0-DOC-UG40-2005": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
+  },
+  "resume_acceptance_sequence": [
+    "EG01 returns a public-safe storage proof for exactly the three frozen evidence IDs",
+    "tools/validate_b0_storage_proof.py passes against the canonical B0 register",
+    "an authorized human reviewer accepts custodian identity, storage controls and proof references",
+    "EG01 reaches QUALIFIED_CONTROLLED_IMMUTABLE_B0_RETENTION and records controlled_immutable_storage_proven=true",
+    "the exact retained or restored B0 bytes are acquired through the governance-approved route and re-hashed locally",
+    "ANIMO-B3B04E1 runs its persisted reconstructed replay and default evidence gate against those exact bytes",
+    "only a successful exact replay gate may permit a new independent second-line reconsideration handoff"
+  ],
+  "fail_closed_rules": {
+    "machine_proof_gate_alone_is_sufficient": false,
+    "transient_hash_matching_bytes_are_controlled_custody_proof": false,
+    "synthetic_proof_is_real_storage_evidence": false,
+    "raw_b0_public_republication_authorized": false,
+    "future_eg01_interface_drift_may_be_consumed_silently": false,
+    "future_eg01_interface_drift_requires_explicit_reinspection_and_repin": true,
+    "tcd040_may_be_admitted_by_this_dependency_contract": false,
+    "second_line_reconsideration_may_start_before_full_b3b04e1_gate_pass": false
+  },
+  "current_state": "BLOCKED_WAITING_FOR_EXTERNAL_CONTROLLED_B0_CUSTODY_PROOF"
+}
