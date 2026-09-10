@@ -1,0 +1,73 @@
+name: ANIMO-B3D12 TCD015 admission closeout
+
+on:
+  push:
+    branches:
+      - work/animo-b3d12-tcd015-admission-closeout
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-b3d12:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch and verify exact admission authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --prune origin '+refs/heads/*:refs/remotes/origin/*'
+          for sha in \
+            cf3e2746351c5c75d236e1b63fb0623daa8e7372 \
+            2a5abc00a779baaa3fb3fa28b3c051231c286132 \
+            b982242949aecab32b9067cf7910ad75abfc2b19 \
+            a6880282e9ed743f97a3435b55e4fb54f7d55a44 \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            846e0f4d02a38b9e02cc1419b1ca87e63aaedb54 \
+            842f72300fd03ede0b9024537a7ee6126722a121 \
+            f3d6b9780631bd627f8bca0658a8e3878746e666
+          do
+            git cat-file -e "${sha}^{commit}"
+          done
+
+      - name: Parse TCD-015 admission JSON
+        run: |
+          python -m json.tool integration/animo-b3/TCD015_B3_ADMISSION_CLOSEOUT.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3D12_STATUS.json >/dev/null
+
+      - name: Validate TCD-015 admission closeout
+        run: python tools/validate_b3d12_tcd015_admission.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              "integration/animo-b3/TCD015_B3_ADMISSION_CLOSEOUT.json",
+              "integration/animo-b3/ANIMO-B3D12_STATUS.json",
+              "docs/b3/TCD015_B3_ADMISSION_CLOSEOUT.md",
+              "tools/validate_b3d12_tcd015_admission.py",
+              ".github/workflows/animo-b3d12-tcd015-admission.yml",
+          }
+          base = "cf3e2746351c5c75d236e1b63fb0623daa8e7372"
+          changed = set(subprocess.check_output(
+              ["git", "diff", "--name-only", f"{base}..HEAD"], text=True
+          ).splitlines())
+          unexpected = changed - allowed
+          missing = allowed - changed
+          if unexpected:
+              raise SystemExit("FAIL_B3D12_SCOPE_GUARD unexpected files: " + ", ".join(sorted(unexpected)))
+          if missing:
+              raise SystemExit("FAIL_B3D12_SCOPE_GUARD missing admission files: " + ", ".join(sorted(missing)))
+          print("PASS_B3D12_ADMISSION_SCOPE_GUARD")
+          PY
