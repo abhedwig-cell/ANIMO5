@@ -5,7 +5,7 @@
   "branch": "work/animo-rg05f-first-gov04-batched-admission-integration",
   "authoring_base": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
   "governance_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
-  "state": "PERSISTED_PENDING_MACHINE_VALIDATION",
+  "state": "QUALIFIED_FIRST_GOV04_BATCHED_POST_RG05E_AGGREGATE_NO_PRODUCTION_MIGRATION",
   "decision": "INTEGRATE_TCD027_AND_TCD041_AS_FIRST_GOV04_BATCHED_POST_RG05E_AGGREGATE",
   "governance_only": true,
   "batch": {
@@ -54,10 +54,19 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
-  "validation": null,
+  "validation": {
+    "validator": "tools/validate_rg05f_first_gov04_batch.py",
+    "workflow": ".github/workflows/animo-rg05f-first-gov04-batch.yml",
+    "tested_head": "00a7776d8eb95a956165aac304ba81116fd7c6df",
+    "github_actions_run_id": 34482316335,
+    "conclusion": "success",
+    "validator_result": "PASS_RG05F_FIRST_GOV04_BATCHED_ADMISSION_INTEGRATION",
+    "scope_guard": "PASS_RG05F_SCOPE_GUARD",
+    "closeout_note": "Run 34482316335 validates the complete substantive RG05F aggregate package at head 00a7776d8eb95a956165aac304ba81116fd7c6df. This status-only closeout commit must pass the same fail-closed workflow independently."
+  },
   "next_if_qualified": "Treat RG05F as the current aggregate central-regie snapshot. Future atomic admissions remain authoritative independently and should normally batch 3 to 5 post-RG05F admissions before the next aggregate unless an earlier GOV04 trigger applies."
 }
