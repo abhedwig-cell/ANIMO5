@@ -1,0 +1,24 @@
+name: ANIMO-B3B10E1 source provenance package validation
+
+on:
+  push:
+    branches:
+      - work/animo-b3b10e1-tcd031-source-provenance-remediation
+  workflow_dispatch:
+
+jobs:
+  validate-license-safe-evidence-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax-check replay and validation tools
+        run: python -m py_compile tools/b3b10e1/generate_tcd031_source_provenance.py tools/b3b10e1/validate_b3b10e1.py
+      - name: Validate committed evidence package
+        run: python tools/b3b10e1/validate_b3b10e1.py --repo-root .
+      - name: State CI interpretation
+        run: echo 'This workflow validates evidence-package integrity and replay contract completeness. It is not a scientific review PASS.'
