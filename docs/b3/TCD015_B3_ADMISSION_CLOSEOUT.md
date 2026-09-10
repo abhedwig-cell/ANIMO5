@@ -112,6 +112,6 @@ All mandatory Class-B and historical-uncertainty-route gates are explicitly PASS
 
 ## Hard boundary
 
-This B3 admission **does not authorize** a production patch, production migration, B4, generic `Transsub` modification, clipping-policy redesign, tolerance change, solver change, canonical TCD register modification, composition with another correction or central RG05D modification in this workunit.
+This B3 admission does **not** authorize a production patch, production migration, B4, generic `Transsub` modification, clipping-policy redesign, tolerance change, solver change, canonical TCD register modification, composition with another correction or central RG05D modification in this workunit.
 
 The next project step after validated B3D12 closeout is a separate central-regie admission integration, expected to become the fifth atomic B3 admission if no newer central admission authority supersedes RG05D. Production remains closed.
