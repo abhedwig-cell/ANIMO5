@@ -1,0 +1,19 @@
+name: ANIMO-B3B10R TCD-031 independent review record
+
+on:
+  push:
+    branches:
+      - review/animo-b3b10r-tcd031-independent-second-line
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-review-record:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate fail-closed review record
+        run: python3 tools/validate_b3b10r_tcd031_review.py
