@@ -1,0 +1,25 @@
+name: ANIMO-B3D20 TCD-038 Tier-C atomic B3 admission
+
+on:
+  push:
+    branches:
+      - work/animo-b3d20-tcd038-gov04-tier-c-admission
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full repository history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate Tier-C atomic admission
+        run: python tools/validate_b3d20_tcd038_admission.py
+
+      - name: Guard atomic admission scope
+        run: python tools/guard_b3d20_tcd038_scope.py
