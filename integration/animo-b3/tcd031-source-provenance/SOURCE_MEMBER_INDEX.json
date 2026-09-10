@@ -1,0 +1,317 @@
+[
+  {
+    "byte_count": 35615,
+    "member_sha256": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+    "source_member": "ANIMO_4.1.5.53/Addit.for"
+  },
+  {
+    "byte_count": 19881,
+    "member_sha256": "cc02a097df98cfe36abd64403522fc6cf2b14addcc36cee2d4749916a21bd169",
+    "source_member": "ANIMO_4.1.5.53/Aeration_original.for"
+  },
+  {
+    "byte_count": 6107,
+    "member_sha256": "80cfe1c26cdde5bc2423a152ac0949e13fe2efb41e6c0dd02b34d47ee1c0585e",
+    "source_member": "ANIMO_4.1.5.53/AERATION_SONICG.FOR"
+  },
+  {
+    "byte_count": 71354,
+    "member_sha256": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
+    "source_member": "ANIMO_4.1.5.53/Animo.for"
+  },
+  {
+    "byte_count": 24305,
+    "member_sha256": "0f8b58e522ac2cdae95e8ae727dbf3ecea942e39c4d117b6bcae955d80fb69a2",
+    "source_member": "ANIMO_4.1.5.53/Animo.inc"
+  },
+  {
+    "byte_count": 1577,
+    "member_sha256": "a3e865f47e5cbb5721840b377584aea37343a9c6d0f86882e000a9f37a8757ff",
+    "source_member": "ANIMO_4.1.5.53/CORRECTION.FOR"
+  },
+  {
+    "byte_count": 2864,
+    "member_sha256": "d4232485cf4dcb755f9a070509d74f5bf1ae22835c2e29df5502d2f307b97e3c",
+    "source_member": "ANIMO_4.1.5.53/Denitr.for"
+  },
+  {
+    "byte_count": 1591,
+    "member_sha256": "be9cf1d496a996df68969eb973384734db98689194ed2457125bce5a2b8bb16d",
+    "source_member": "ANIMO_4.1.5.53/FRACPNT.FOR"
+  },
+  {
+    "byte_count": 29190,
+    "member_sha256": "8d18e2558b43d38382033ed43a77bf00a71995804a20db0253f3a9795d748e59",
+    "source_member": "ANIMO_4.1.5.53/Function.for"
+  },
+  {
+    "byte_count": 26809,
+    "member_sha256": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98",
+    "source_member": "ANIMO_4.1.5.53/ghg_ch4.for"
+  },
+  {
+    "byte_count": 31174,
+    "member_sha256": "493bf88d4b321df64817a7c0eaa2725ad614a45df0a0f16cefa96ac348254175",
+    "source_member": "ANIMO_4.1.5.53/ghg_n2o.for"
+  },
+  {
+    "byte_count": 30245,
+    "member_sha256": "4bf5906f571a586d4312d8e7b0d57f6df3b4b6c2073410335616f3d3c042da93",
+    "source_member": "ANIMO_4.1.5.53/ghgasses.for"
+  },
+  {
+    "byte_count": 16724,
+    "member_sha256": "d86e420952c43aaa6e730235f5820802310dd14a0019dc890537d9acd95fcff6",
+    "source_member": "ANIMO_4.1.5.53/ghgtransport.for"
+  },
+  {
+    "byte_count": 17098,
+    "member_sha256": "48d5e45d0b68b87c1d32bc16a867fe36f2f440e0d2c0ca8c95bf605f9f24ea6c",
+    "source_member": "ANIMO_4.1.5.53/ghgtranssub.for"
+  },
+  {
+    "byte_count": 8036,
+    "member_sha256": "d946240ead1e9ec8ed6850b12a91074eaf22088dd23decdd377983483fd052fb",
+    "source_member": "ANIMO_4.1.5.53/grass_init.for"
+  },
+  {
+    "byte_count": 29515,
+    "member_sha256": "c1aeaa0646ac52c82ebd38c4773a9bbc7314884b955e997b5b55c534c6073713",
+    "source_member": "ANIMO_4.1.5.53/Grassprd.for"
+  },
+  {
+    "byte_count": 2398,
+    "member_sha256": "131204ee3270dff984bd29ed06a4f63dd9d1e87a621902018cafb38b25807626",
+    "source_member": "ANIMO_4.1.5.53/Grassup3.for"
+  },
+  {
+    "byte_count": 43570,
+    "member_sha256": "55a5f54a571b6461c7d45c9f4ac80ffb708f4ff79807d37c9c3878d3f88f0b36",
+    "source_member": "ANIMO_4.1.5.53/Hydro_aggregated.for"
+  },
+  {
+    "byte_count": 13561,
+    "member_sha256": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
+    "source_member": "ANIMO_4.1.5.53/Hydro_detailed.for"
+  },
+  {
+    "byte_count": 42272,
+    "member_sha256": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1",
+    "source_member": "ANIMO_4.1.5.53/Inicalc.for"
+  },
+  {
+    "byte_count": 27228,
+    "member_sha256": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+    "source_member": "ANIMO_4.1.5.53/Init.for"
+  },
+  {
+    "byte_count": 183440,
+    "member_sha256": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+    "source_member": "ANIMO_4.1.5.53/input1.for"
+  },
+  {
+    "byte_count": 182053,
+    "member_sha256": "9eb5bbe809611d766ad9c8864b402d413baa9951eef5385f8f6e06c4521b6bb3",
+    "source_member": "ANIMO_4.1.5.53/input1_1.for"
+  },
+  {
+    "byte_count": 9308,
+    "member_sha256": "83b15da4ecefb73559dc99f4f82d4fb2b21f72a35fa03bb53a2dd11b9a450989",
+    "source_member": "ANIMO_4.1.5.53/Input_addit.for"
+  },
+  {
+    "byte_count": 17044,
+    "member_sha256": "736a90c397b035b47da67449e98f41af55a5897034199ec98dccf05bc9e3d9dc",
+    "source_member": "ANIMO_4.1.5.53/Input_cropext.for"
+  },
+  {
+    "byte_count": 32953,
+    "member_sha256": "bcf92ae87fc06402871a2eea8e8ec9d8833cc0fb2da0c812a2a4f138f256ebe1",
+    "source_member": "ANIMO_4.1.5.53/Input_Echo.for"
+  },
+  {
+    "byte_count": 10646,
+    "member_sha256": "5f07ce68969d749308595d6b4f9f789b6b3646ae226c233e2f8e49565a7dad64",
+    "source_member": "ANIMO_4.1.5.53/Input_hydro.for"
+  },
+  {
+    "byte_count": 1419,
+    "member_sha256": "ff7966e42be37929c1a765a9c11c03a43e9cc6dd480e4c9c08d04e4c60e028e1",
+    "source_member": "ANIMO_4.1.5.53/Input_SoilTemp.for"
+  },
+  {
+    "byte_count": 13112,
+    "member_sha256": "86659aaac3e48439252c37490d44f214945dfe8f1d49d14876a40abc03e3722a",
+    "source_member": "ANIMO_4.1.5.53/MAPOHYDRO.FOR"
+  },
+  {
+    "byte_count": 9658,
+    "member_sha256": "081c671d2f576ab0608350cbb0083eab157c586a6783522cda3534b141244065",
+    "source_member": "ANIMO_4.1.5.53/mapoinput.for"
+  },
+  {
+    "byte_count": 31743,
+    "member_sha256": "735b3f86497a6968c24d2dbce2ad23ae350b4eed573da421baa1a7557a0615da",
+    "source_member": "ANIMO_4.1.5.53/MAPOTRANSPORT.FOR"
+  },
+  {
+    "byte_count": 7271,
+    "member_sha256": "0c0909922e88ee59233cabc307fb18243ea86023b4722879f6301259780de93d",
+    "source_member": "ANIMO_4.1.5.53/MODFLUX.FOR"
+  },
+  {
+    "byte_count": 354,
+    "member_sha256": "dd86c860df34a165435834f3e63cfeb4a317d55801925b4d76789138ff1894a7",
+    "source_member": "ANIMO_4.1.5.53/outbal1.inc"
+  },
+  {
+    "byte_count": 1805,
+    "member_sha256": "dcf8458f3609af685f1058a378df4c4fab5a23406c573913cbd882a0a06921aa",
+    "source_member": "ANIMO_4.1.5.53/outbal2.inc"
+  },
+  {
+    "byte_count": 85845,
+    "member_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+    "source_member": "ANIMO_4.1.5.53/Outbal_calc.for"
+  },
+  {
+    "byte_count": 6806,
+    "member_sha256": "95c0d7aad6cb863fcbb5dd41563674af3ab0819387212d27d5f6f04b4a788cc8",
+    "source_member": "ANIMO_4.1.5.53/Outbal_Init.for"
+  },
+  {
+    "byte_count": 124202,
+    "member_sha256": "cdc0a9738216d8a97d3c35f9862b78fc94fec385aaf0691d6778a73031ac74ea",
+    "source_member": "ANIMO_4.1.5.53/Outbal_write.for"
+  },
+  {
+    "byte_count": 38367,
+    "member_sha256": "43324bba410a7c8bbb1a715bc639e9cfe7c90f62bb881b7ebd4385d4cf29c7d4",
+    "source_member": "ANIMO_4.1.5.53/Output2.for"
+  },
+  {
+    "byte_count": 8326,
+    "member_sha256": "6452c175dcd7c6e80983c1176467735d07f75595cf8341526b115b70121b6a2f",
+    "source_member": "ANIMO_4.1.5.53/Output_Init.for"
+  },
+  {
+    "byte_count": 2991,
+    "member_sha256": "a2f344e318f2dc6d1f72a06d9c4986be22bb582f439b3bd2ea7cd6097513e190",
+    "source_member": "ANIMO_4.1.5.53/output_initPCl.for"
+  },
+  {
+    "byte_count": 99957,
+    "member_sha256": "b058b88aef464183aa35bdb0377315e3755192e5ee70bb88db6522cf1311ec9d",
+    "source_member": "ANIMO_4.1.5.53/Outsel.for"
+  },
+  {
+    "byte_count": 95751,
+    "member_sha256": "a3df987ca375cf2891f7d864d34831cfb8f3105208b387c4a890ec9c03222ca7",
+    "source_member": "ANIMO_4.1.5.53/Outselorg.for"
+  },
+  {
+    "byte_count": 15603,
+    "member_sha256": "4bd4a2e279fc3d383918b6b369e821b428bbae91080b9580ac0a7f0bfaf6da94",
+    "source_member": "ANIMO_4.1.5.53/OXYDEM.FOR"
+  },
+  {
+    "byte_count": 2127,
+    "member_sha256": "20d85ed8bca9e0060d3b51c2f800ff02fdf0bc3ebb8c834baf4afca870a33475",
+    "source_member": "ANIMO_4.1.5.53/Param.inc"
+  },
+  {
+    "byte_count": 13995,
+    "member_sha256": "7a1a8aee4715d85b9b7e9e172f83756e4aee8b8278386c804210ef77dc2a857a",
+    "source_member": "ANIMO_4.1.5.53/Rates.for"
+  },
+  {
+    "byte_count": 62997,
+    "member_sha256": "938d35c043bd3e1f14c20ec1c0b2395e9944beb2797746bc4e7cdfb38bb98106",
+    "source_member": "ANIMO_4.1.5.53/resp_miner.for"
+  },
+  {
+    "byte_count": 5024,
+    "member_sha256": "063a754fac2fe1b1c4b60fab1e395b8b65a9a03a5d89ace03e08868e1774f0e9",
+    "source_member": "ANIMO_4.1.5.53/root_extern.for"
+  },
+  {
+    "byte_count": 4136,
+    "member_sha256": "cad5cc713e72b7fac01cbba63caa25560fcabd243c73d9fc06ab7130de4d0661",
+    "source_member": "ANIMO_4.1.5.53/root_grass.for"
+  },
+  {
+    "byte_count": 6391,
+    "member_sha256": "07adda92e78a21bde08e137d1cb09bb40d9c63c4f19dcdeeef0d3e263b107816",
+    "source_member": "ANIMO_4.1.5.53/root_plant.for"
+  },
+  {
+    "byte_count": 2058,
+    "member_sha256": "643e4460a897ec629068dc97ab4589a745304b8fa7adb7597dfadc1a9a9d41e5",
+    "source_member": "ANIMO_4.1.5.53/Temper.for"
+  },
+  {
+    "byte_count": 10967,
+    "member_sha256": "7f31150050bd41aef203587818cde94cf689e6288094b2ad84aea34732b07ff9",
+    "source_member": "ANIMO_4.1.5.53/Transca.for"
+  },
+  {
+    "byte_count": 23951,
+    "member_sha256": "cd5efa76c1a4840b50901ee5015940b74c5fe4df79aca43d53a4a4cb77b9fecb",
+    "source_member": "ANIMO_4.1.5.53/Transgen.for"
+  },
+  {
+    "byte_count": 104527,
+    "member_sha256": "65ab0f70ed7cc4f1c0012ca95bcdddeb5c26dd21b09df0ec61b7b269e51cd0ad",
+    "source_member": "ANIMO_4.1.5.53/Transorp.for"
+  },
+  {
+    "byte_count": 14484,
+    "member_sha256": "3f597b896ab5514e0b836f5547b342e317b03c8e3e58e053e113bd1c17e2f998",
+    "source_member": "ANIMO_4.1.5.53/TRANSPORT.FOR"
+  },
+  {
+    "byte_count": 16373,
+    "member_sha256": "c548e5d372ffbc7f4d4e4d8d86609cf1f34cf70ea513d345e3c7fada5cf6b552",
+    "source_member": "ANIMO_4.1.5.53/Transsub.for"
+  },
+  {
+    "byte_count": 8009,
+    "member_sha256": "b9a7ec980d40c0f76279077852190788e36cd976d185b12683a38da0c7dfecf7",
+    "source_member": "ANIMO_4.1.5.53/UBoundconc.for"
+  },
+  {
+    "byte_count": 3006,
+    "member_sha256": "d4f4ae0730e6ea0556c339a98268ed5b94262634c5aecce2e19aed058929069e",
+    "source_member": "ANIMO_4.1.5.53/Upintg_Extern.for"
+  },
+  {
+    "byte_count": 3257,
+    "member_sha256": "66e5e42d80fd563be9e8daa5d260118c2eb157ba3fa5d5b382abc14d9ab0476e",
+    "source_member": "ANIMO_4.1.5.53/Upintg_Grass.for"
+  },
+  {
+    "byte_count": 4277,
+    "member_sha256": "d6a6afd6bbc2515697e9bb294ea6bb06ce8a552760f99c2686442d78d19274af",
+    "source_member": "ANIMO_4.1.5.53/Upintg_Plant.for"
+  },
+  {
+    "byte_count": 3509,
+    "member_sha256": "7b594f9416a0c30cdaeee5868850cf7a3523032984af51333f88c7a93bae82a6",
+    "source_member": "ANIMO_4.1.5.53/Uptpar_Extern.for"
+  },
+  {
+    "byte_count": 10168,
+    "member_sha256": "538a84b5e4b8f9dd770d0f959bfea37a4fe2e67ddd59ce86b8f9515098bfd18d",
+    "source_member": "ANIMO_4.1.5.53/Uptpar_Grass.for"
+  },
+  {
+    "byte_count": 14128,
+    "member_sha256": "c7bfbc7c7e74c8a19e996d6f28de5aa60d580618fda61a2b18994553ad1d946a",
+    "source_member": "ANIMO_4.1.5.53/Uptpar_Plant.for"
+  },
+  {
+    "byte_count": 702,
+    "member_sha256": "eb5a183fae1bfd1342e44547e546f1058a186b15879fc6eb673fca8f66313175",
+    "source_member": "ANIMO_4.1.5.53/Version.inc"
+  }
+]
