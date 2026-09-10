@@ -4,9 +4,9 @@
   "branch": "work/animo-b3b10-tcd031-macropore-restart-state-readiness",
   "target": "TCD-031",
   "authoring_base": "ANIMO-STATEQ04@ef9a5998cafae433deeba701a8e9a8a08eacc92f",
-  "state": "QUALIFIED_CLASS_C_ADMISSION_READINESS_GOV04_TIER_C_REVIEW_HANDOFF_PENDING_MACHINE_GATE",
+  "state": "QUALIFIED_CLASS_C_ADMISSION_READINESS_GOV04_TIER_C_REVIEW_HANDOFF_PREPARED",
   "decision": "QUALIFIED_CLASS_C_ADMISSION_READINESS_GOV04_TIER_C_INDEPENDENT_REVIEW_REQUIRED",
-  "readiness_qualified_subject_to_machine_gate": true,
+  "readiness_qualified": true,
   "b3_admitted": false,
   "production_authorized": false,
   "b3_qualification_class": "C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL",
@@ -65,14 +65,15 @@
     "review_branch": "review/animo-b3b10r-tcd031-independent-second-line"
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-B3B10 TCD-031 Tier-C readiness",
-    "github_actions_run_id": null,
-    "github_actions_job_id": null,
-    "evidence_head": null,
-    "conclusion": "PENDING",
-    "validator": "PENDING",
-    "scope_guard": "PENDING"
+    "github_actions_run_id": 34536638747,
+    "github_actions_job_id": 103069683398,
+    "evidence_head": "3e9dd5c696727bd12ad4e99a78841281256e2e62",
+    "conclusion": "success",
+    "validator": "PASS_B3B10_TCD031_TIER_C_READINESS",
+    "scope_guard": "PASS_B3B10_SCOPE_GUARD",
+    "closeout_note": "Run 34536638747 validates the substantive B3B10 readiness package at evidence head 3e9dd5c696727bd12ad4e99a78841281256e2e62. This status closeout must pass the same fail-closed workflow before the clean review branch is created."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -86,5 +87,5 @@
     "independent_review_performed": false,
     "new_tolerance": false
   },
-  "next_if_machine_validated": "CREATE_EXACTLY_ONE_CLEAN_GOV04_TIER_C_REVIEW_BRANCH_FROM_FINAL_B3B10_CLOSEOUT_HEAD_AND_STOP"
+  "next_if_final_head_validated": "CREATE_EXACTLY_ONE_CLEAN_GOV04_TIER_C_REVIEW_BRANCH_FROM_FINAL_B3B10_CLOSEOUT_HEAD_AND_STOP"
 }
