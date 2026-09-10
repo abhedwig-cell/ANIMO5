@@ -25,16 +25,21 @@
     "ANIMO35_inclusive_zero_input_bound_recovered": false,
     "zero_endpoint_uniquely_resolved": false,
     "positive_HETOP_B1_and_E1_results_preserved": true,
-    "NQ03_extended_to_HETOP_zero": false
+    "NQ03_extended_to_HETOP_zero": false,
+    "official_WUR_indexed_section_text_recovered": true,
+    "secondary_mirror_required_as_sole_paragraph_source": false
   },
   "validation": {
-    "tested_head": "7384b740baa8cb485fdd97bdb889727b907ad256",
-    "github_actions_run_id": 34450078873,
-    "job_id": 102783592212,
+    "initial_tested_head": "7384b740baa8cb485fdd97bdb889727b907ad256",
+    "initial_github_actions_run_id": 34450078873,
+    "strengthened_tested_head": "eb4b2cd2711821791d5e8fcfce67e38101397fd0",
+    "strengthened_github_actions_run_id": 34450464863,
+    "strengthened_job_id": 102784792300,
     "workflow_conclusion": "success",
     "parse_persisted_json": "PASS",
     "compile_validator": "PASS",
-    "provenance_reconstruction_and_scope_validator": "PASS"
+    "provenance_reconstruction_and_scope_validator": "PASS",
+    "authority_strengthening": "OFFICIAL_WUR_EDEPOT_SEARCH_INDEX_EXPOSED_SECTION_2_1_3_TEXT_SECONDARY_MIRROR_CORROBORATION_ONLY"
   },
   "scope_guards": {
     "production_source_modified": false,
