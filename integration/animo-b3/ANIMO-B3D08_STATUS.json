@@ -21,12 +21,12 @@
   "target_tcd": "TCD-026",
   "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
   "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
-  "state": "IN_PROGRESS_PERSISTED_TCD026_ADMISSION_CLOSEOUT_VALIDATION_PENDING",
-  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "state": "QUALIFIED_TCD026_ATOMIC_B3_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_NO_PRODUCTION_MIGRATION",
+  "decision": "ADMIT_TCD026_ATOMIC_CLASS_A_SCIENTIFIC_ACCOUNTING_CORRECTION_WITH_HISTORICAL_UNCERTAINTY",
   "intended_final_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "admission": {
     "scientific_b3_admission_intended": true,
-    "scientific_b3_admission_qualified": false,
+    "scientific_b3_admission_qualified": true,
     "historical_behaviour_status": "UNKNOWN",
     "historical_fidelity_claimed": false,
     "whole_model_formatted_restart_identity_claimed": false,
@@ -51,19 +51,20 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "validation": {
     "validator": "tools/validate_b3d08_tcd026_admission.py",
     "workflow": ".github/workflows/animo-b3d08-tcd026-admission.yml",
-    "tested_head": null,
-    "github_actions_run_id": null,
-    "github_actions_job_id": null,
-    "github_actions_conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "37cad3a863eadff7d6e8c1905fb87aebb5784f7d",
+    "github_actions_run_id": 34447821815,
+    "github_actions_job_id": 102776420507,
+    "github_actions_conclusion": "success",
+    "validator_result": "PASS_B3D08_TCD026_ADMISSION",
+    "scope_guard": "PASS_B3D08_ADMISSION_SCOPE_GUARD",
+    "closeout_note": "Run 34447821815 validates the complete persisted B3D08 package before this status closeout commit; this closeout commit must pass the same workflow independently."
   },
   "deliverables": [
     "integration/animo-b3/TCD026_B3_ADMISSION_CLOSEOUT.json",
