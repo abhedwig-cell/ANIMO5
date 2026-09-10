@@ -1,0 +1,52 @@
+name: ANIMO-B3B04E2 TCD-040 reconstruction governance
+
+on:
+  push:
+    branches:
+      - work/animo-b3b04e2-tcd040-replay-reconstruction-governance
+  pull_request:
+    paths:
+      - 'docs/b3/TCD040_REPLAY_RECONSTRUCTION_GOVERNANCE.md'
+      - 'integration/animo-b3/ANIMO-B3B04E2_STATUS.json'
+      - 'tools/b3b04e2/validate_b3b04e2.py'
+      - '.github/workflows/animo-b3b04e2-tcd040-reconstruction-governance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse B3B04E2 status
+        run: python -m json.tool integration/animo-b3/ANIMO-B3B04E2_STATUS.json >/dev/null
+      - name: Validate reconstruction authorization
+        run: python tools/b3b04e2/validate_b3b04e2.py
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=9f3e1e9b583d540e5d7048de31e62701747ab69d
+          allowed=$(cat <<'EOF'
+          .github/workflows/animo-b3b04e2-tcd040-reconstruction-governance.yml
+          docs/b3/TCD040_REPLAY_RECONSTRUCTION_GOVERNANCE.md
+          integration/animo-b3/ANIMO-B3B04E2_STATUS.json
+          tools/b3b04e2/validate_b3b04e2.py
+          EOF
+          )
+          changed=$(git diff --name-only "$base"...HEAD | sort)
+          printf '%s\n' "$changed"
+          unexpected=$(comm -23 <(printf '%s\n' "$changed") <(printf '%s\n' "$allowed" | sort))
+          if [ -n "$unexpected" ]; then
+            echo "Unexpected files outside B3B04E2 scope:"
+            printf '%s\n' "$unexpected"
+            exit 1
+          fi
+          echo PASS_B3B04E2_SCOPE_GUARD
