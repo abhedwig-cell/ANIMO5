@@ -29,11 +29,8 @@ At disposition start, no `ANIMO-B3D09` branch, later TCD-015 disposition branch,
 The authoring environment rehashed the supplied raw B0 archives before relying on the readiness wording:
 
 - source archive SHA-256: `183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566`;
-- testbank archive SHA-256: `44e375510150ff4e9c4f94e47c0c2a12b98bb84` is **not** the B0 identity and is intentionally rejected;
-- qualified testbank SHA-256: `44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84`;
+- testbank archive SHA-256: `44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84`;
 - `ANIMO_4.1.5.53/Transsub.for` SHA-256: `c548e5d372ffbc7f4d4e4d8d86609cf1f34cf70ea513d345e3c7fada5cf6b552`.
-
-The deliberately shown rejected short testbank-like string above is not used by any machine-readable record or validator. It documents that the disposition does not accept near-matching identities. The exact qualified identity is the 64-hex value on the next line.
 
 Direct inspection of the frozen `Transsub.for` confirms:
 
