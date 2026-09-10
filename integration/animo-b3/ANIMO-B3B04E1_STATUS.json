@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "workunit": "ANIMO-B3B04E1",
   "title": "TCD-040 Provenance-Pinned Independent Replay Evidence Bundle",
   "branch": "work/animo-b3b04e1-tcd040-replay-evidence",
@@ -7,24 +7,36 @@
   "target": "TCD-040",
   "scope": "EVIDENCE_REPLAYABILITY_ONLY",
   "status": "FAIL_CLOSED_INDEPENDENT_REPLAY_BUNDLE_NOT_QUALIFIED",
-  "decision": "EVIDENCE_REPLAYABILITY_NOT_QUALIFIED",
+  "decision": "EVIDENCE_REPLAYABILITY_NOT_QUALIFIED_PENDING_CONTROLLED_B0_ACQUISITION",
   "canonical_tcd_status": "UNRESOLVED_NOT_ADMITTED",
   "blockers": [
     {
       "code": "B0_CONTROLLED_IMMUTABLE_ACQUISITION_NOT_PROVEN",
-      "detail": "The current B0 evidence register still has null controlled-storage record identifiers, no immutability proof reference, no post-ingest and secondary-copy verification, and no passed restore test for source, testbank, or user guide. Transient supplied bytes were hash-matched locally but are explicitly not controlled-retention proof."
-    },
-    {
-      "code": "PUBLIC_GIT_RAW_REPUBLICATION_PROHIBITED",
-      "detail": "Repository governance prohibits publishing the raw source archive, raw testcase archive, the copyrighted user-guide PDF, or functionally equivalent unpacked copies without explicit redistribution authorization. This workunit therefore cannot solve the acquisition blocker by committing those bytes to the public repository."
-    },
-    {
-      "code": "PRIOR_EXECUTABLE_REPLAY_HARNESS_AND_PAYLOADS_NOT_PERSISTED",
-      "detail": "The immutable B3B04 tree contains its validator and summary evidence but not the Stage-A/Stage-B replay implementation, raw checkpoint payload, continuous trace, defective trace, corrected trace, or split-67 trace. Reconstructing new scientific evidence would exceed this remediation workunit's instruction to make the existing evidence independently reproducible without silently creating a replacement claim object."
+      "detail": "The current B0 evidence register still lacks proven controlled immutable retention for the exact source, testbank and user-guide bytes. Transient user-supplied bytes have been hash-matched and used for a local reconstruction, but that is not independent acquisition or controlled-retention proof."
     },
     {
       "code": "CI_CANNOT_INDEPENDENTLY_ACQUIRE_REQUIRED_B0_BYTES",
-      "detail": "No governance-approved non-secret immutable acquisition reference is available to GitHub Actions. An actual independent executable replay in CI is therefore not presently possible without violating provenance or redistribution policy."
+      "detail": "GitHub Actions has no governance-approved non-secret immutable acquisition reference for the three frozen B0 artifacts, so the persisted replay generator cannot yet be executed there as an independently provenance-qualified replay."
+    }
+  ],
+  "constraints_not_blockers": [
+    {
+      "code": "PUBLIC_GIT_RAW_REPUBLICATION_PROHIBITED_WITHOUT_AUTHORIZATION",
+      "detail": "The raw source archive, testcase archive and copyrighted user guide are not copied into the public repository. The deterministic replay harness consumes caller-supplied hash-pinned B0 bytes instead."
+    }
+  ],
+  "resolved_blockers": [
+    {
+      "code": "REPLAY_IMPLEMENTATION_NOT_PERSISTED",
+      "resolution": "A transparent provenance-pinned reconstruction harness for the existing bounded claim is persisted at tools/b3b04e1/replay_tcd040.py from commit 3b6a762bc677f53514ba3dc2ae8713931adc551f. It does not claim to be the lost original B3B04 authoring harness."
+    },
+    {
+      "code": "REPLAY_OUTPUT_DERIVATION_NOT_REPRODUCIBLE",
+      "resolution": "The harness deterministically regenerates checkpoint and trace payloads from the frozen source/testbank and records cryptographic hashes. A local hash-pinned execution was persisted at 47f4d332f53ea9bf47c5c2e4c03a926372c813c7."
+    },
+    {
+      "code": "DIRECT_PAYLOAD_PERSISTENCE_REQUIRED",
+      "resolution": "The workunit uses the allowed deterministic-generator-plus-cryptographic-hashes route instead of committing multi-megabyte trace payloads. The canonical bundle manifest is integration/animo-b3/b3b04e1/REPLAY_MANIFEST.json."
     }
   ],
   "completed_checks": {
@@ -36,15 +48,42 @@
     "natural_GrassPeat_original_layer0_values_inspected_from_hash_pinned_testbank": true,
     "five_split282_binary64_little_endian_encodings_recomputed": true,
     "documentation_restart_contract_inspected": true,
-    "documentation_raw_checkpoint_distinction_preserved": true
+    "documentation_raw_checkpoint_distinction_preserved": true,
+    "deterministic_reconstruction_harness_persisted": true,
+    "local_reconstruction_executed_against_hash_pinned_B0": true,
+    "split282_checkpoint_regenerated": true,
+    "split282_checkpoint_prior_hash_reproduced": true,
+    "split282_stageA_prefix_exact": true,
+    "split282_continuous_trace_regenerated": true,
+    "split282_defective_trace_regenerated": true,
+    "split282_corrected_restore_trace_regenerated": true,
+    "split282_first_divergence_step283_phase0_layer0_reproduced": true,
+    "split282_Copo_negative_control_exact_at_first_divergence": true,
+    "split282_corrected_full_trace_exact": true,
+    "split67_zero_path_checkpoint_regenerated": true,
+    "split67_full_trace_negative_control_exact": true,
+    "deterministic_replay_manifest_persisted": true
+  },
+  "reconstruction_evidence": {
+    "generator_path": "tools/b3b04e1/replay_tcd040.py",
+    "generator_introduced_at": "3b6a762bc677f53514ba3dc2ae8713931adc551f",
+    "local_result_path": "integration/animo-b3/b3b04e1/RECONSTRUCTED_REPLAY_LOCAL_RESULT.json",
+    "local_result_introduced_at": "47f4d332f53ea9bf47c5c2e4c03a926372c813c7",
+    "manifest_path": "integration/animo-b3/b3b04e1/REPLAY_MANIFEST.json",
+    "local_result_status": "LOCAL_RECONSTRUCTION_PASS_NOT_INDEPENDENTLY_PROVENANCED",
+    "checkpoint_split282_sha256": "833363cc2f8457a617b450bfa283842532efcb8d321a57eca5e05584b0224b2e",
+    "checkpoint_split282_reproduces_prior_B3B04_hash": true,
+    "transparent_trace_contract": "B3B04E1_TRANSPARENT_BINARY_TRACE_V1",
+    "continuous_trace_sha256": "6089d7191c01cf09da3a84cec5d73bbe6a13b4d5ac13c73e92321dd9a1db69e3",
+    "corrected_restore_trace_sha256": "6089d7191c01cf09da3a84cec5d73bbe6a13b4d5ac13c73e92321dd9a1db69e3",
+    "defective_restart_trace_sha256": "d93ec85c00c9f026d1d215d5aea250192d250775ee1433a7b3754cb090590388",
+    "split67_legacy_zeroing_trace_sha256": "6089d7191c01cf09da3a84cec5d73bbe6a13b4d5ac13c73e92321dd9a1db69e3",
+    "trace_hash_caveat": "These trace hashes belong to the explicit B3B04E1 transparent trace serialization. They are not claimed to reproduce the lost original B3B04 trace serialization hashes."
   },
   "not_completed": {
     "independent_B0_acquisition": true,
-    "standalone_stageA_stageB_executable_replay": true,
-    "trajectory_regeneration": true,
-    "checkpoint_payload_regeneration": true,
-    "independent_trace_hash_derivation": true,
-    "successful_replay_CI": true,
+    "independent_replay_from_controlled_B0": true,
+    "successful_replay_CI_with_controlled_B0": true,
     "evidence_bundle_closeout": true,
     "independent_second_line_reconsideration_handoff": true
   },
@@ -60,6 +99,6 @@
     "independent_second_line_review_performed": false,
     "new_scientific_claim_object_created": false
   },
-  "resume_condition": "Resume B3B04E1 only after a B0 Evidence Custodian supplies governance-approved immutable acquisition references for the exact source, testbank, and user guide, and the original B3B04 replay implementation plus required payloads are made available or explicitly authorized for provenance-pinned reconstruction. Then execute the bundle validator in full replay mode. Do not create a reconsideration review branch before that gate passes.",
+  "resume_condition": "Resume qualification when a B0 Evidence Custodian supplies governance-approved immutable acquisition references for the exact source ZIP, testbank ZIP and user-guide PDF and the B0 controlled-storage proof gate passes. Then run the persisted deterministic reconstruction harness from those controlled bytes, run the ordinary B3B04E1 validator in full gate mode, persist the resulting replay hashes, and only if that gate passes create a new clean genuinely independent second-line reconsideration handoff.",
   "handoff_created": false
 }
