@@ -17,17 +17,21 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Fetch pinned governance authorities
+      - name: Verify pinned governance and transition authorities
         shell: bash
         run: |
           set -euo pipefail
-          git fetch origin \
-            refs/heads/work/animo-b3q01-scientific-admission-framework:refs/remotes/origin/work/animo-b3q01-scientific-admission-framework \
-            refs/heads/work/animo-gov03-historical-b2-acquisition-closure:refs/remotes/origin/work/animo-gov03-historical-b2-acquisition-closure \
-            refs/heads/work/animo-rg05d-fourth-b3-admission-integration:refs/remotes/origin/work/animo-rg05d-fourth-b3-admission-integration
-          git cat-file -e 846e0f4d02a38b9e02cc1419b1ca87e63aaedb54^{commit}
-          git cat-file -e cbd262bdabe92923113b7326f2f42822ce9a971c^{commit}
-          git cat-file -e f3d6b9780631bd627f8bca0658a8e3878746e666^{commit}
+          for sha in \
+            f3d6b9780631bd627f8bca0658a8e3878746e666 \
+            eed822037ed8d906a2ab424220597cffac9cca73 \
+            846e0f4d02a38b9e02cc1419b1ca87e63aaedb54 \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            5e33c195174e41ea949d5a828d30bb7b9e313a5d \
+            5232ef5fa6daafa2296401b19fd9e866a34152bd \
+            b3f509806119ea2c2aaf0694c08d4a5bb13e6ca3
+          do
+            git cat-file -e "$sha^{commit}"
+          done
 
       - name: Validate GOV04 review policy
         run: python tools/validate_gov04_review_policy.py
