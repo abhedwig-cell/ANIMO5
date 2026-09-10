@@ -1,0 +1,89 @@
+{
+  "work_unit": "ANIMO-B3D14",
+  "record_type": "ATOMIC_B3_ADMISSION_CLOSEOUT",
+  "target": "TCD-041",
+  "title": "GHG Lower-Air Boundary Initialization",
+  "branch": "work/animo-b3d14-tcd041-gov04-tier-b-admission",
+  "decision": "QUALIFIED_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_GOV04_TIER_B",
+  "admitted": true,
+  "atomic_claim": "Define the revision-53 GHG lower external advective air-boundary coordinate Flair(Nl+1) as the already source-implied closed-boundary value zero before its same-call first use.",
+  "risk": {
+    "tier": "B",
+    "class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "strictest_applicable_trigger_wins": true,
+    "tier_c_trigger_applicable": false,
+    "requalification_rule": "ANY_LATER_APPLICABLE_TIER_C_TRIGGER_INVALIDATES_THIS_ADMISSION"
+  },
+  "authorities": {
+    "aggregate_central_regie": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
+    "latest_pre_b3d14_atomic_admission": "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4",
+    "readiness": "ANIMO-B3B07@6523c8a4dbf7a742b61e0c236af0ef5093b534aa",
+    "independent_review": "ANIMO-B3B07R@3587c7a94a992f3779034c4c1e5f4134192d54f3",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "BUILDQ04": "ANIMO-BUILDQ04@0ae1e58f80ca01c1b6eced7ac0d6e5c031827676",
+    "BUILDQ03": "ANIMO-BUILDQ03@5e06473bc2bb1df6cf4e449d8d6aa04da35c7d47",
+    "GHG01": "ANIMO-GHG01@dac7b7b5c591b781b82ec968896edb5957664c88",
+    "canonical_routing": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4"
+  },
+  "independent_second_line_gate": {
+    "required": true,
+    "required_count": 1,
+    "realized_count": 1,
+    "separate_context": true,
+    "review_outcome": "PASS_TIER_B_READY_FOR_POST_REVIEW_DISPOSITION",
+    "review_admission_decision_performed": false,
+    "gate": "PASS"
+  },
+  "scientific_identity": {
+    "coordinate": "Flair(Nl+1)",
+    "quantity": "lower external advective air flux of modeled GHG soil column",
+    "unit": "m d^-1 == m3 air m^-2 soil d^-1",
+    "sign": "downward positive",
+    "owner": "GHGasses Task-1 temporary air-flow projection scratch",
+    "required_value": 0.0,
+    "boundary_contract": "FLAIR_NLPLUS1_EQUALS_ZERO_FOR_CLOSED_LOWER_GHG_AIR_BOUNDARY",
+    "persistent_state": false,
+    "restart_checkpoint_coordinate": false
+  },
+  "evidence": {
+    "source_first_read_defect": "UNCONDITIONAL_TASK1_FIRST_READ_WITHOUT_SOURCE_ASSIGNMENT_FOR_NL_GE_1",
+    "active_ghg_values": [1, 2],
+    "inactive_control": 0,
+    "synthetic_activation_is_b2": false,
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "ghgasses_sha256": "4bf5906f571a586d4312d8e7b0d57f6df3b4b6c2073410335616f3d3c042da93",
+    "ghgtransport_sha256": "d86e420952c43aaa6e730235f5820802310dd14a0019dc890537d9acd95fcff6",
+    "ghgtranssub_sha256": "48d5e45d0b68b87c1d32bc16a867fe36f2f440e0d2c0ca8c95bf605f9f24ea6c"
+  },
+  "historical_uncertainty": {
+    "b2_reference": "UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
+    "historical_intel_manifestation_and_magnitude": "UNKNOWN",
+    "historical_fidelity_claimed": false
+  },
+  "bounded_claims": {
+    "lower_boundary_conservation_identity_qualified": true,
+    "full_ghg_cn_ledger_closure_claimed": false,
+    "whole_ghg_equivalence_claimed": false,
+    "tcd032_037_dependency": false,
+    "tcd032_037_composition": false
+  },
+  "authorization": {
+    "production_source_patch": false,
+    "production_migration": false,
+    "b4": false,
+    "composition": false,
+    "canonical_tcd_register_change": false,
+    "central_rg05_update": false
+  },
+  "central_integration": {
+    "included_in_current_rg05e": false,
+    "required_next": true,
+    "next_action": "SEPARATE_CENTRAL_REGIE_ADMISSION_INTEGRATION_AFTER_VALIDATED_B3D14_CLOSEOUT"
+  },
+  "validation_state": "PERSISTED_PENDING_B3D14_MACHINE_VALIDATION"
+}
