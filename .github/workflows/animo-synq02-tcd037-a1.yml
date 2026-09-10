@@ -1,0 +1,53 @@
+name: ANIMO-SYNQ02 TCD-037-A1 independent synthetic activation
+
+on:
+  push:
+    branches:
+      - work/animo-synq02-tcd037-a1-independent-ghg-observer-activation
+  pull_request:
+    paths:
+      - 'docs/synthetic/TCD037_A1_INDEPENDENT_SYNTHETIC_ACTIVATION.md'
+      - 'integration/animo-synthetic/ANIMO-SYNQ02_STATUS.json'
+      - 'integration/animo-synthetic/SYNQ02_TCD037_A1_ORACLE.json'
+      - 'tools/synq02/**'
+      - '.github/workflows/animo-synq02-tcd037-a1.yml'
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch exact evidence and policy authorities
+        run: |
+          git fetch --no-tags origin work/animo-b3i07-tcd037-ghg-balance-observer-routing
+          git fetch --no-tags origin work/animo-runtimeq03-tcd037-ghg-balance-accounting-semantics
+          git fetch --no-tags origin work/animo-synq01-independent-synthetic-oracles
+          git fetch --no-tags origin work/animo-gov04-risk-tiered-review-policy
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install GNU Fortran
+        run: sudo apt-get update -qq && sudo apt-get install -y gfortran
+      - name: Parse persisted JSON and compile validator
+        run: |
+          python -m json.tool integration/animo-synthetic/ANIMO-SYNQ02_STATUS.json >/dev/null
+          python -m json.tool integration/animo-synthetic/SYNQ02_TCD037_A1_ORACLE.json >/dev/null
+          python -m py_compile tools/synq02/validate_tcd037_a1_synthetic.py
+      - name: Freeze tool identities in log
+        run: sha256sum tools/synq02/tcd037_a1_source_shaped_probe.f90 tools/synq02/validate_tcd037_a1_synthetic.py
+      - name: Build and run source-shaped target at O0
+        run: |
+          gfortran -std=f2008 -Wall -Wextra -pedantic -O0 tools/synq02/tcd037_a1_source_shaped_probe.f90 -o /tmp/synq02_o0
+          /tmp/synq02_o0 > /tmp/synq02_o0.out
+          python tools/synq02/validate_tcd037_a1_synthetic.py /tmp/synq02_o0.out
+      - name: Build and run source-shaped target at O2
+        run: |
+          gfortran -std=f2008 -Wall -Wextra -pedantic -O2 tools/synq02/tcd037_a1_source_shaped_probe.f90 -o /tmp/synq02_o2
+          /tmp/synq02_o2 > /tmp/synq02_o2.out
+          python tools/synq02/validate_tcd037_a1_synthetic.py /tmp/synq02_o2.out
+      - name: Require byte-identical O0 and O2 evidence
+        run: cmp /tmp/synq02_o0.out /tmp/synq02_o2.out
