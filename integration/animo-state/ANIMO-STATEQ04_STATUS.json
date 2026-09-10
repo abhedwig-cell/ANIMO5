@@ -1,0 +1,81 @@
+{
+  "workunit": "ANIMO-STATEQ04",
+  "title": "TCD-031 Macropore Persistent-Solute Qualification-Only Checkpoint/Restore Remediation & Active Split-Run",
+  "branch": "work/animo-stateq04-tcd031-macropore-restart-remediation",
+  "base_head": "10c50e65d1369d5f3b26736c4b12d3a482379eb5",
+  "status": "QUALIFIED_CANDIDATE_RESTORE_CONTRACT_READY_FOR_TIER_C_READINESS_NOT_ADMITTED",
+  "risk_tier": "GOV04_TIER_C",
+  "b3_class": "CLASS_C_STATE_RESTART_SEMANTICS",
+  "authorities": {
+    "aggregate_RG05G": "4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "MP01": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "MP02": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "STATEQ01": "4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "STATEQ02": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "STATEQ03": "10c50e65d1369d5f3b26736c4b12d3a482379eb5",
+    "MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "B3I06": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9"
+  },
+  "candidate_checkpoint": {
+    "p_off_required_scalars": 8,
+    "p_on_required_scalars": 12,
+    "accepted_owner": "CoMp species x two domains",
+    "result_alias": "RsCoMp reconstructed from accepted CoMp at restore",
+    "current_interval_workspace_persistent": false,
+    "external_hydrology_binding_required": true
+  },
+  "kernel_split": {
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "driver_sha256": "be3cc92e8e7a53347624ce902017f0e9dc588ecc1ddc2089fe3d35903cf4de7a",
+    "executable_sha256": "d0ea3b40f1f41db478bbbb93ad0307ce33e33560787d2911fcdb8dd8a34f9f1f",
+    "species_count": 6,
+    "split_after_accepted_step": 5,
+    "post_restore_steps_compared": 5,
+    "comparison_policy": "EXACT_BYTEWISE_NO_TOLERANCE",
+    "all_species_exact": true,
+    "all_native_bad_controls_diverge": true,
+    "all_domain_drop_controls_diverge": true,
+    "whole_model_active_split": false,
+    "generated_runner_result_sha256": "ebbeb85b1aba67be8bf1cc5fe2055a1a9860868a0244e806ef93df78fabf2661",
+    "persisted_result_validation": "SEMANTIC_CONTENT_VALIDATED_BY_CI; serialization formatting not used as evidence identity"
+  },
+  "evidence_boundary": "FROZEN_SOURCE_KERNEL_REMEDIATION_QUALIFICATION_PLUS_PINNED_MP02_COMPLETE_MODEL_ACTIVE_REACHABILITY",
+  "tcd031_atomic_tier_c_readiness": "MAY_OPEN_SEPARATE_WORKUNIT",
+  "tcd025_class_a_ledger_readiness": "MAY_OPEN_SEPARATE_WORKUNIT",
+  "required_future_gates": [
+    "independent GOV04 Tier-C second-line review before TCD-031 admission",
+    "complete-model active-macropore split test for any production checkpoint implementation",
+    "TCD-025 observer-only unchanged-state/unchanged-flux and conservation qualification",
+    "historical-uncertainty route preserved where B2 active reference remains absent"
+  ],
+  "scope_guards": {
+    "production_patch": false,
+    "canonical_STATE_admission": false,
+    "TCD025_composition": false,
+    "B4": false,
+    "central_regie_update": false,
+    "new_tolerance": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": true,
+    "qualified": true,
+    "b3_admitted": false,
+    "production_migration_admitted": false
+  },
+  "deliverables": [
+    "docs/state/ANIMO_STATEQ04_TCD031_REMEDIATION_QUALIFICATION.md",
+    "integration/animo-state/STATEQ04_REMEDIATION_CONTRACT.json",
+    "integration/animo-state/STATEQ04_KERNEL_SPLIT_RESULT.json",
+    "integration/animo-state/ANIMO-STATEQ04_STATUS.json",
+    "tools/stateq04/stateq04_mptransp_driver.f90",
+    "tools/stateq04/run_stateq04_kernel.py",
+    "tools/stateq04/validate_stateq04.py",
+    ".github/workflows/animo-stateq04-tcd031.yml"
+  ],
+  "downstream_decision": "STOP_AFTER_REMEDIATION_QUALIFICATION; OPEN_READINESS_WORKUNITS_SEPARATELY"
+}
