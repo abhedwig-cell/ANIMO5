@@ -1,0 +1,50 @@
+name: ANIMO-B3D09 TCD015 GOV03 disposition
+
+on:
+  push:
+    branches:
+      - work/animo-b3d09-tcd015-gov03-disposition
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-b3d09:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Validate TCD-015 GOV03 disposition
+        run: python tools/validate_b3d09_tcd015_disposition.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              "integration/animo-b3/TCD015_B3_DISPOSITION_GOV03.json",
+              "integration/animo-b3/ANIMO-B3D09_STATUS.json",
+              "docs/b3/TCD015_GOV03_FORMAL_DISPOSITION.md",
+              "tools/validate_b3d09_tcd015_disposition.py",
+              ".github/workflows/animo-b3d09-tcd015-disposition.yml",
+          }
+          base = "f3d6b9780631bd627f8bca0658a8e3878746e666"
+          changed = set(subprocess.check_output(
+              ["git", "diff", "--name-only", f"{base}..HEAD"], text=True
+          ).splitlines())
+          unexpected = changed - allowed
+          missing = allowed - changed
+          if unexpected:
+              raise SystemExit("FAIL_SCOPE_GUARD unexpected files: " + ", ".join(sorted(unexpected)))
+          if missing:
+              raise SystemExit("FAIL_SCOPE_GUARD missing disposition files: " + ", ".join(sorted(missing)))
+          print("PASS_B3D09_SCOPE_GUARD")
+          PY
