@@ -1,0 +1,28 @@
+name: ANIMO TH03 HETOP reservoir lineage
+
+on:
+  push:
+    branches:
+      - work/animo-th03-hetop-reservoir-lineage
+  workflow_dispatch:
+
+jobs:
+  validate-th03:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history for scope guard
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse persisted JSON
+        run: |
+          python -m json.tool integration/animo-theory/ANIMO-TH03_STATUS.json >/dev/null
+          python -m json.tool integration/animo-theory/TH03_HETOP_RESERVOIR_LINEAGE.json >/dev/null
+      - name: Compile validator
+        run: python -m py_compile tools/th03/validate_th03.py
+      - name: Validate provenance reconstruction and scope
+        run: python tools/th03/validate_th03.py
