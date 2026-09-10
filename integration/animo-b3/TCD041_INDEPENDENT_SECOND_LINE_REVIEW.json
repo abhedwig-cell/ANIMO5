@@ -1,0 +1,214 @@
+{
+  "work_unit": "ANIMO-B3B07R",
+  "title": "Independent Second-Line Review of TCD-041 GHG Lower-Air Boundary Initialization",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "review/animo-b3b07r-tcd041-independent-second-line",
+  "review_date": "2026-09-10",
+  "target": "TCD-041",
+  "review_type": "GENUINELY_SEPARATE_SECOND_LINE_PROCESS_REVIEW",
+  "independence": {
+    "separate_chatgpt_context": true,
+    "process_independence": true,
+    "organizational_or_human_independence_claimed": false,
+    "authoring_conclusion_inherited": false
+  },
+  "starting_handoff": {
+    "work_unit": "ANIMO-B3B07",
+    "expected_head": "6523c8a4dbf7a742b61e0c236af0ef5093b534aa",
+    "live_verified_head_before_write": "6523c8a4dbf7a742b61e0c236af0ef5093b534aa",
+    "match": true
+  },
+  "live_authorities": {
+    "aggregate_central_regie": "ANIMO-RG05E@eed822037ed8d906a2ab424220597cffac9cca73",
+    "post_rg05e_atomic_admission": "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4",
+    "post_rg05e_atomic_target": "TCD-027",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "BUILDQ04": "ANIMO-BUILDQ04@0ae1e58f80ca01c1b6eced7ac0d6e5c031827676",
+    "BUILDQ03": "ANIMO-BUILDQ03@5e06473bc2bb1df6cf4e449d8d6aa04da35c7d47",
+    "GHG01": "ANIMO-GHG01@dac7b7b5c591b781b82ec968896edb5957664c88",
+    "B3I01_TCD041_routing": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4",
+    "B3I03": "814ea660d367494432beb63ea78298d1f6cd73d7",
+    "B3I05": "1f94a6e08db5d73e8935fb095de9ef9798f6544c",
+    "B3I06": "8f01f0cb366dfa8cc63a184d6f885100899a8cd9"
+  },
+  "live_collision_audit_before_write": {
+    "issue": 44,
+    "issue_comments": 0,
+    "review_branch_preexisted": false,
+    "other_active_tcd041_review_or_admission_found": false,
+    "superseded_pr_reference": 23,
+    "superseded_pr_is_authority": false
+  },
+  "canonical_routing": {
+    "append_commit": "d2cb81605372c81e9e158a7068ebe4b75f33a27b",
+    "reconciliation_head": "383c7a83e84a578969f92113280dc715b7bdddb4",
+    "append_only": true,
+    "additions": 1,
+    "deletions": 0,
+    "existing_rows_changed": false,
+    "registered_not_admitted": true,
+    "later_route_supersedes_tcd041": false
+  },
+  "evidence_reuse": {
+    "policy": "GOV04_VERIFY_AND_REUSE",
+    "source_zip_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_zip_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "ghgasses_sha256": "4bf5906f571a586d4312d8e7b0d57f6df3b4b6c2073410335616f3d3c042da93",
+    "ghgtransport_sha256": "d86e420952c43aaa6e730235f5820802310dd14a0019dc890537d9acd95fcff6",
+    "ghgtranssub_sha256": "48d5e45d0b68b87c1d32bc16a867fe36f2f440e0d2c0ca8c95bf605f9f24ea6c",
+    "exact_scope_match": true,
+    "pins_verified": true,
+    "superseding_evidence_found": false,
+    "raw_frozen_zip_reextracted_in_this_review": false,
+    "evidence_strength_promoted": false
+  },
+  "source_reconstruction": {
+    "nl_domain": "Nl >= 1",
+    "la_after_decrement_invariant": "0 <= La <= Nl-1",
+    "maximum_assigned_flair_index_before_transform": "Nl",
+    "bottom_first_read": "Flair(Nl+1)",
+    "first_read_result": "UNCONDITIONAL_TASK1_FIRST_READ_WITHOUT_SOURCE_ASSIGNMENT_FOR_NL_GE_1",
+    "quantity": "lower external advective air flux of modeled soil column",
+    "unit": "m d^-1 == m3 air m^-2 soil d^-1",
+    "sign": "downward positive",
+    "owner": "GHGasses Task-1 temporary air-flow projection scratch",
+    "persistent_model_state": false,
+    "cross_call_state": false,
+    "checkpoint_or_restart_coordinate": false,
+    "required_boundary_value": 0.0,
+    "boundary_contract": "FLAIR_NLPLUS1_EQUALS_ZERO_FOR_CLOSED_LOWER_GHG_AIR_BOUNDARY",
+    "first_consumer": "GHGasses bottom-layer Min/Max transformation to Flaiio(Nl)/Flaiou(Nl)"
+  },
+  "activation": {
+    "source_guard": "IoptGHG >= 1",
+    "active_values": [1, 2],
+    "inactive_negative_control": 0,
+    "natural_revision53_ghg_case_available": false,
+    "natural_case_blocker": "SUPPLIED_GHGMAIS_SOURCE_TESTCASE_CONTRACT_LINEAGE_MISMATCH",
+    "synthetic_activation_strength": "B1_CAUSAL_AND_COVERAGE_ONLY_NOT_B2"
+  },
+  "sensitivity": {
+    "nl_cases": [1, 2, 3, 4],
+    "topology_cases": 3,
+    "boundary_values": [-0.001, -0.000001, 0.0, 0.000001, 0.001],
+    "rows": 60,
+    "explicit_value_o0_o2_byte_identical": true,
+    "positive_q_identity_delta_tofl": "-AvCa(Nl)*q_b*St",
+    "positive_q_identity_delta_y3": "ReBuAv(Nl)*q_b/He(Nl)",
+    "negative_q_flaiio": "-q_b",
+    "negative_q_bottom_neighbour_concentration_coupling": 0.0,
+    "unrounded_flux_material": true,
+    "unrounded_state_material": true,
+    "historical_effect": "UNKNOWN"
+  },
+  "expected_difference": {
+    "direct_changed_surface": [
+      "Flaiio(Nl) lower-boundary contribution",
+      "Flaiou(Nl) lower-boundary contribution",
+      "bottom advective gas-transfer contribution",
+      "bottom disappearance-coefficient contribution"
+    ],
+    "causal_descendants_may_change": [
+      "GHG state trajectories",
+      "GHG flux trajectories",
+      "GHG outputs"
+    ],
+    "must_not_change_semantics": [
+      "IoptGHG activation guard",
+      "atmosphere-soil upper boundary",
+      "hydrology forcing",
+      "gas production and reaction equations",
+      "solver policy",
+      "tolerance policy",
+      "restart and checkpoint representation",
+      "persistent state ownership",
+      "TCD-032 through TCD-037 mechanisms"
+    ]
+  },
+  "conservation": {
+    "scope": "LOWER_EXTERNAL_AIR_ADVECTIVE_BOUNDARY_ONLY",
+    "closed_boundary_identity": "q_b = 0 implies exactly zero advective gas exchange across the lower external face",
+    "full_ghg_carbon_or_nitrogen_ledger_closure_claimed": false
+  },
+  "non_interference": {
+    "result": "PASS_FOR_DECLARED_LOCAL_SCOPE",
+    "whole_model_natural_ghg_equivalence_claimed": false,
+    "whole_model_natural_ghg_comparison_available": false,
+    "constraint": "unchanged surfaces are source-bounded; full GHG trajectory equivalence is outside TCD-041"
+  },
+  "tcd032_037_relation": {
+    "dependency_required": false,
+    "composition_required": false,
+    "whole_ghg_equivalence_claimed": false,
+    "reason": "separate CH4 process, restart/state and observer mechanisms do not define or own Flair(Nl+1)"
+  },
+  "gov04_risk_test": {
+    "principle": "STRICTEST_APPLICABLE_RISK_TRIGGER_WINS",
+    "hypothesis_tested": "GOV04_TIER_B__B_LOCAL_ALGEBRA_INDEX_SPECIES",
+    "tier_c_triggers": {
+      "RESTART_OR_COLD_START_DISCRIMINATION": false,
+      "INITIALIZATION_SEMANTICS": false,
+      "CANONICAL_STATE_OWNERSHIP": false,
+      "CHECKPOINT_SEMANTICS": false,
+      "MISSING_OR_REDEFINED_PHYSICAL_STATE": false,
+      "NUMERICAL_POLICY": false,
+      "SOLVER_OR_TOLERANCE_CHANGE": false,
+      "RUNTIME_BRANCHING_WITH_BEHAVIOURAL_EFFECT": false,
+      "EXACT_ZERO_OR_SINGULAR_DOMAIN_SEMANTICS": false,
+      "AMBIGUOUS_DOMAIN_CONTRACT": false,
+      "SCIENTIFIC_STATE_OR_SOURCE_OWNERSHIP_AMBIGUITY": false
+    },
+    "tier_c_interpretation": {
+      "local_initialization_word_is_state_initialization": false,
+      "reason": "same-call scratch coordinate definedness, not accepted physical/internal state initialization",
+      "zero_is_new_numerical_exact_zero_policy": false,
+      "zero_reason": "fixed closed physical boundary value; no exact-zero comparison, singular-domain rule, tolerance or solver branch is introduced",
+      "branching_semantics_changed": false,
+      "branching_reason": "existing Min/Max sign algebra is unchanged"
+    },
+    "result": "GOV04_TIER_B__B_LOCAL_ALGEBRA_INDEX_SPECIES"
+  },
+  "gov03_route": {
+    "b2_status": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "route_eligible_for_later_disposition": true,
+    "historical_revision53_behaviour": "UNKNOWN",
+    "historical_fidelity_claimed": false
+  },
+  "review_gates": {
+    "B0_IDENTITY": "PASS",
+    "ATOMICITY": "PASS",
+    "EXACT_CAUSAL_PATH": "PASS",
+    "BOUNDARY_QUANTITY_UNIT_SIGN_OWNER": "PASS",
+    "CLOSED_ZERO_BOUNDARY_IDENTITY": "PASS",
+    "ACTIVE_GHG_ACTIVATION": "PASS",
+    "INACTIVE_NEGATIVE_CONTROL": "PASS",
+    "BOUNDARY_VALUE_SENSITIVITY": "PASS",
+    "UNROUNDED_STATE_FLUX_CONSEQUENCES": "PASS",
+    "EXPECTED_DIFFERENCE_SURFACE": "PASS",
+    "BOUNDED_CONSERVATION": "PASS",
+    "NON_INTERFERENCE_DECLARED_LOCAL_SCOPE": "PASS",
+    "NO_TCD032_037_COMPOSITION": "PASS",
+    "GOV04_TIER_C_ESCALATION_SCAN": "PASS",
+    "GOV03_ROUTE_PRECONDITION": "PASS",
+    "HISTORICAL_BEHAVIOUR_UNKNOWN_PRESERVED": "PASS"
+  },
+  "residual_uncertainty": [
+    "No provenance-qualified historical B2 execution exists for this path; historical Intel manifestation and magnitude remain unknown.",
+    "No supplied revision-53-compatible natural GHG testcase is available; activation/materiality coverage remains source-bound plus synthetic B1.",
+    "The exact discrete lower-boundary zero is strongly constrained by connected revision-53 source rather than an independently recovered release-specific GHG specification.",
+    "Open GHG discrepancies prevent whole-GHG equivalence or ledger-closure claims from TCD-041 alone.",
+    "This review verified and reused immutable B0/source evidence under GOV04 and did not directly re-extract the frozen source ZIP through the connector."
+  ],
+  "outcome": "PASS_TIER_B_READY_FOR_POST_REVIEW_DISPOSITION",
+  "admission_decision_performed": false,
+  "production_source_modified": false,
+  "composition_performed": false,
+  "b4_opened": false,
+  "production_migration_opened": false,
+  "central_rg05_updated": false,
+  "next_permitted_action": "SEPARATE_POST_REVIEW_FORMAL_DISPOSITION_WITH_UNCHANGED_PINS_AND_SCOPE",
+  "next_action_is_admission_by_this_review": false
+}
