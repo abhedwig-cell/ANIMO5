@@ -1,0 +1,101 @@
+{
+  "work_unit": "ANIMO-B3D09",
+  "title": "TCD-015 NO3 Transport Algebra GOV03 Disposition & Independent-Review Handoff",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d09-tcd015-gov03-disposition",
+  "date": "2026-09-10",
+  "base": {
+    "work_unit": "ANIMO-RG05D",
+    "head": "f3d6b9780631bd627f8bca0658a8e3878746e666"
+  },
+  "authorities": {
+    "readiness": "ANIMO-B3B01@b982242949aecab32b9067cf7910ad75abfc2b19",
+    "B3_framework": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "historical_route": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "central_regie": "ANIMO-RG05D@f3d6b9780631bd627f8bca0658a8e3878746e666"
+  },
+  "target": "TCD-015",
+  "qualification_class": "B_LOCAL_ALGEBRA_INDEX_SPECIES",
+  "state": "IN_PROGRESS_PERSISTED_TCD015_FORMAL_DISPOSITION_VALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "route": {
+    "selected": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "old_pre_GOV03_route_state_superseded": true,
+    "GOV03_closure": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "G6U": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "route_gate": "PASS",
+    "historical_behaviour": "UNKNOWN",
+    "historical_fidelity_claimed": false
+  },
+  "scientific_gate_summary": {
+    "frozen_B0_identity": "PASS",
+    "exact_source_seam": "PASS",
+    "natural_LWKM_activation": "PASS",
+    "local_conservation": "PASS",
+    "SYNQ_O001_scope": "PASS",
+    "additional_B1_non_interference": "PASS",
+    "IFLSOL_branch_coverage": "PASS",
+    "nitrate_only_scope": "PASS",
+    "GHG0_boundary": "PASS",
+    "no_generic_shared_substance_correction": "PASS",
+    "no_clipping_policy_redesign": "PASS",
+    "no_tolerance_change": "PASS",
+    "no_solver_change": "PASS",
+    "independent_second_line_review": "FAIL_PENDING_NOT_COMPLETED"
+  },
+  "admission": {
+    "TCD015_admitted": false,
+    "corrected_legacy_admitted": false,
+    "production_patch_authorized": false,
+    "B4_admitted": false,
+    "central_RG05_updated": false,
+    "composition_admitted": false,
+    "production_migration_admitted": false
+  },
+  "review_handoff": {
+    "required": true,
+    "planned_work_unit": "ANIMO-B3B01R",
+    "planned_branch": "review/animo-b3b01r-tcd015-independent-second-line",
+    "same_context_review_allowed": false,
+    "existing_PR21_same_account_COMMENTED_review_counts": false,
+    "issue": null,
+    "handoff_head": null
+  },
+  "deliverables": [
+    "integration/animo-b3/TCD015_B3_DISPOSITION_GOV03.json",
+    "integration/animo-b3/ANIMO-B3D09_STATUS.json",
+    "docs/b3/TCD015_GOV03_FORMAL_DISPOSITION.md",
+    "tools/validate_b3d09_tcd015_disposition.py",
+    ".github/workflows/animo-b3d09-tcd015-disposition.yml"
+  ],
+  "validation": {
+    "workflow": "ANIMO-B3D09 TCD015 GOV03 disposition",
+    "validator": "tools/validate_b3d09_tcd015_disposition.py",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "hard_boundaries": {
+    "historical_B2_recovered": false,
+    "historical_equivalence_claimed": false,
+    "shared_Transsub_generic_correction_authorized": false,
+    "GreenHouseGasOption_enabled_qualified": false,
+    "clipping_policy_changed": false,
+    "numerical_tolerance_changed": false,
+    "solver_changed": false,
+    "production_source_modified": false,
+    "legacy_source_modified": false,
+    "testcase_modified": false,
+    "independent_review_executed_in_this_context": false
+  },
+  "next_action": "After validation, create the clean ANIMO-B3B01R independent-review handoff branch and issue. Do not execute the independent review in this context."
+}
