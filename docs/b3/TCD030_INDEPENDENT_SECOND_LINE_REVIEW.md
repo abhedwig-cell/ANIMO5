@@ -2,9 +2,7 @@
 
 Date: 2026-09-10
 
-Current review state: `PENDING_FAIL_CLOSED_RETEST_AFTER_TOOLING_VALIDATOR_REMEDIATION`
-
-Scientific disposition candidate: `PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B`
+Final review outcome: `PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B`
 
 This is a separate-context second-line review. It does not admit TCD-030, patch production source, edit the canonical TCD register, open B4, start migration, update central regie, or compose TCD-030 with TCD-025 or TCD-031.
 
@@ -54,7 +52,7 @@ Frozen source identity:
 - `ANIMO_4.1.5.53/mapoinput.for`: `081c671d2f576ab0608350cbb0083eab157c586a6783522cda3534b141244065`;
 - `ANIMO_4.1.5.53/input1.for`: `041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95`.
 
-The per-member hashes match the retained source manifest. MP01 independently predates B3B06 and already records the same source finding: `mapoinput` reads `CoMpNi` but the NO3-labelled range checks pass `CoMpNh` values. This is enough to treat the B3B06 source transcript as source-bound replay evidence rather than an unsupported readiness assertion.
+The per-member hashes match the retained source manifest. MP01 independently predates B3B06 and already records the same source finding: `mapoinput` reads `CoMpNi` but the NO3-labelled range checks pass `CoMpNh` values. This makes the B3B06 source transcript source-bound replay evidence rather than a self-authenticating readiness assertion.
 
 The global EG01 limitation remains: legally controlled immutable B0 byte retention is not yet fully proven. This review does not close that program-level retention gap and does not reinterpret it as historical B2 evidence.
 
@@ -73,7 +71,7 @@ Source-bound `>MPnitr:` read sequence:
 3. `CoMpni(1)`
 4. `CoMpni(2)`
 
-The complete licensed Fortran READ line is not republished in Git, so this review deliberately does not invent unit, format, or ERR-clause syntax that is absent from the transcript. The exact species/value sequence relevant to TCD-030 is pinned and independently checked.
+The complete licensed Fortran READ line is not republished in Git, so this review deliberately does not invent unit, format, or ERR-clause syntax absent from the source-bound transcript. The exact species/value sequence relevant to TCD-030 is pinned and independently checked.
 
 The two NO3-labelled checks are:
 
@@ -94,15 +92,15 @@ for the lower guard, setting `Error=1992`, and:
 
 for the upper guard, setting `Error=1993`.
 
-For TCD-030, `Low=0.0` and `High=999.0`. Thus:
+For TCD-030, `Low=0.0` and `High=999.0`. Therefore:
 
 - `0.0` is accepted because the lower test is strict `<`;
 - `999.0` is a sentinel that disables the corresponding bound;
 - values above `999.0` are accepted on this exact path;
 - `Error=1993` exists in generic `Checkrea` semantics but is unreachable on the TCD-030 path while `High=999.0`;
-- a negative active value reaches the lower failure, produces the associated diagnostic variable name, writes the interruption diagnostic, sets `Error=1992`, and returns;
+- a negative active value reaches the lower failure, reports the associated variable, writes the interruption diagnostic, sets `Error=1992`, and returns;
 - `input1.for` then returns when `Error.Ne.0`;
-- `MaPoInput` read-error label 8500 is a separate malformed-input path and is outside TCD-030.
+- `MaPoInput` read-error label 8500 is a separate malformed-input path outside TCD-030.
 
 ## Independent branch matrix
 
@@ -133,24 +131,34 @@ TCD-025 is a separate macropore main-ledger storage/direct-drainage integration 
 
 ## GOV04 risk tier
 
-The strictest applicable GOV04 trigger is Tier B: local algebra/index/species correction with a genuinely independent second-line review.
+The strictest applicable GOV04 trigger is Tier B: local algebra/index/species correction with one genuinely independent second-line review.
 
-Tier C is not triggered merely because the validation occurs while initial input is read. The nitrate state is already assigned to `CoMpni`; no state is reconstructed, added, re-owned, serialized, restored, or redefined. There is no numerical-policy, solver, tolerance, runtime-architecture, or exact-zero domain-policy change. The exact-zero boundary is already defined by the existing strict lower comparison.
+Tier C is not triggered merely because validation occurs while initial input is read. The nitrate state is already assigned to `CoMpni`; no state is reconstructed, added, re-owned, serialized, restored, or redefined. There is no numerical-policy, solver, tolerance, runtime-architecture, or exact-zero domain-policy change. The exact-zero boundary is already defined by the existing strict lower comparison.
 
 Any future candidate wider than the two value-selector substitutions loses this Tier-B review and must be reclassified.
 
 ## Historical behavior
 
-GOV03 closes the historical acquisition route with no qualified B2 reference. MP01 and MP02 likewise state that no active historical macropore B2 reference is available. Therefore historical behavior remains:
+GOV03 closes the historical acquisition route with no qualified B2 reference. MP01 and MP02 likewise state that no active historical macropore B2 reference is available. Historical behavior therefore remains:
 
 `UNKNOWN`
 
 Synthetic or source-only evidence is not promoted to historical truth.
 
-## First review-CI failure and remediation
+## Review-CI and tooling remediation
 
-The first review CI run, `34482162963`, failed in the review validator before the scope guard. The failure was not a scientific mismatch. The validator accidentally parsed the register snapshot inherited on the review branch, while TCD-030 lives in the separately pinned B3I03 canonical-register append. It therefore failed at `assert tcd in rows`.
+The first review CI run, `34482162963`, failed in the validator because it parsed the register snapshot inherited on the review branch, while TCD-030 resides in the separately pinned B3I03 canonical-register append. It failed at the register-presence assertion. This was classified fail-closed as `TOOLING_VALIDATOR_FAILURE`, not as scientific falsification.
 
-This is classified fail-closed as a tooling-validator defect. The remediation changes the validator to parse the register with `git show 814ea660d367494432beb63ea78298d1f6cd73d7:docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv`, so CI checks the exact canonical authority rather than a stale branch-local snapshot.
+The validator was remediated to parse the exact pinned canonical register using:
 
-Until that remediation passes CI, the final review outcome is deliberately withheld. The scientific disposition candidate remains Tier B and is not changed by the tooling defect.
+`git show 814ea660d367494432beb63ea78298d1f6cd73d7:docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv`
+
+The complete remediated review package at `687e3af8aa3f950db787eb4c61eb4dafaab0658f` passed GitHub Actions run `34482752015`. Both the independent scientific validator and the review-only scope guard passed.
+
+## Fail-closed conclusion
+
+No scientific falsification, evidence insufficiency, TCD-030-specific provenance contradiction, scope ambiguity, or Tier-C trigger remains within the established source-bound review boundary. The one tooling-validator failure was identified, persisted, remediated, and successfully retested.
+
+`PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B`
+
+This PASS is review-only. A downstream formal disposition/admission workunit may be opened only if claim, route, pins, source identity, and atomic scope remain unchanged.

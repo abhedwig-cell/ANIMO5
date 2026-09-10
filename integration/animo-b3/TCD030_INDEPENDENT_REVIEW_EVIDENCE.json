@@ -1,7 +1,8 @@
 {
   "work_unit": "ANIMO-B3B06R",
   "target": "TCD-030",
-  "review_state": "PENDING_FAIL_CLOSED_RETEST_AFTER_TOOLING_VALIDATOR_REMEDIATION",
+  "review_state": "QUALIFIED_COMPLETE",
+  "review_result": "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
   "scientific_disposition_candidate": "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
   "authority_pins": {
     "review_handoff": "baf54f57b3c94701d85d73336b7afd3e94a4b3d9",
@@ -108,9 +109,10 @@
   },
   "review_ci": {
     "attempts": [
-      {"run_id":34482162963,"head":"6a4c0c1dbfb156e0453ed21590c3cea40d75668d","conclusion":"failure","classification":"TOOLING_VALIDATOR_FAILURE"}
+      {"run_id":34482162963,"head":"6a4c0c1dbfb156e0453ed21590c3cea40d75668d","conclusion":"failure","classification":"TOOLING_VALIDATOR_FAILURE"},
+      {"run_id":34482752015,"head":"687e3af8aa3f950db787eb4c61eb4dafaab0658f","conclusion":"success","validator":"PASS","scope_guard":"PASS"}
     ],
     "remediation": "Use git show at canonical B3I03 register commit instead of inherited branch-local register snapshot.",
-    "retest_required": true
+    "retest_required": false
   }
 }

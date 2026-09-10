@@ -17,9 +17,9 @@
   "historical_behavior": "UNKNOWN",
   "historical_b2_qualified": false,
   "scientific_disposition_candidate": "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
-  "decision": "PENDING_FAIL_CLOSED_RETEST_AFTER_TOOLING_VALIDATOR_REMEDIATION",
-  "tested": false,
-  "qualified": false,
+  "decision": "PASS_INDEPENDENT_SECOND_LINE_REVIEW_TIER_B",
+  "tested": true,
+  "qualified": true,
   "admission_performed": false,
   "production_patch_performed": false,
   "canonical_register_modified": false,
@@ -38,8 +38,16 @@
         "conclusion": "failure",
         "classification": "TOOLING_VALIDATOR_FAILURE",
         "reason": "Validator read the stale review-branch register snapshot instead of the pinned B3I03 canonical register."
+      },
+      {
+        "run_id": 34482752015,
+        "head": "687e3af8aa3f950db787eb4c61eb4dafaab0658f",
+        "conclusion": "success",
+        "validator": "PASS",
+        "scope_guard": "PASS"
       }
     ],
-    "remediation": "Read canonical register with git show at pinned B3I03 commit 814ea660d367494432beb63ea78298d1f6cd73d7; retest required."
+    "remediation": "Canonical register is read with git show at pinned B3I03 commit 814ea660d367494432beb63ea78298d1f6cd73d7.",
+    "final_status": "PASS"
   }
 }
