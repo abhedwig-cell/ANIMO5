@@ -63,11 +63,12 @@ req(e["historical_route"]["current_gnu_storage_semantics_are_historical_referenc
 # Canonical identity is TCD-028 and remains OPEN; deprecated TCD-032 proposal is rejected.
 reg_text = git_show(B3I03, "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv")
 rows = list(csv.DictReader(io.StringIO(reg_text)))
-rows28 = [r for r in rows if r.get("id") == "TCD-028"]
+rows28 = [r for r in rows if r.get("ID") == "TCD-028"]
 req(len(rows28) == 1, "canonical register does not contain exactly one TCD-028")
 r28 = rows28[0]
 req(r28.get("status") == "OPEN", "TCD-028 is no longer OPEN at pinned canonical authority")
-req("stable DOM plough redistribution accumulator lifecycle" in r28.get("short_name", ""), "TCD-028 canonical short name drift")
+req(r28.get("process") == "stable DOM plough redistribution accumulator lifecycle", "TCD-028 canonical process name drift")
+req(r28.get("classification") == "RESERVED_POST_G5_LOCAL_EVENT_ACCUMULATOR_DEFECT", "TCD-028 canonical classification drift")
 req(e["collision_and_supersession_check"]["canonical_tcd_id"] == "TCD-028", "wrong canonical TCD identity")
 req(e["collision_and_supersession_check"]["deprecated_parallel_prep10c_tcd032_proposal_authoritative"] is False, "deprecated TCD-032 proposal promoted")
 
