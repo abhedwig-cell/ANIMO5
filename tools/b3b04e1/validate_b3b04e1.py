@@ -25,7 +25,10 @@ import zipfile
 from pathlib import Path
 
 BASE_SHA = "bb001129578457ca8435e39deb2b8586e7ebc6a2"
-STATUS = "FAIL_CLOSED_LOCAL_RECONSTRUCTION_PASS_CONTROLLED_B0_ACQUISITION_UNPROVEN"
+STATUS_BLOCKED = "FAIL_CLOSED_LOCAL_RECONSTRUCTION_PASS_CONTROLLED_B0_ACQUISITION_UNPROVEN"
+STATUS_QUALIFIED = "QUALIFIED_EVIDENCE_REPLAYABILITY_ONLY"
+DECISION_BLOCKED = "EVIDENCE_REPLAYABILITY_NOT_QUALIFIED"
+DECISION_QUALIFIED = "EVIDENCE_REPLAYABILITY_QUALIFIED"
 SOURCE_SHA = "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566"
 TESTBANK_SHA = "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
 GUIDE_SHA = "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
@@ -43,6 +46,7 @@ SOURCE_MEMBERS = {
 REQUIRED_REPLAY_PATHS = [
     "tools/b3b04e1/replay_tcd040.py",
     "integration/animo-b3/b3b04e1/RECONSTRUCTED_REPLAY_LOCAL_RESULT.json",
+    "integration/animo-b3/b3b04e1/REPLAY_MANIFEST.json",
 ]
 ALLOWED_CHANGE_PREFIXES = (
     ".github/workflows/animo-b3b04e1-",
@@ -186,6 +190,35 @@ def verify_expectations(expectations: dict, failures: list[dict[str, str]]) -> N
 def verify_replay_bundle_presence(repo_root: Path, failures: list[dict[str, str]]) -> None:
     for rel in REQUIRED_REPLAY_PATHS:
         check((repo_root / rel).is_file(), "REPLAY_BUNDLE_COMPONENT_ABSENT", rel, failures)
+
+
+def verify_manifest(manifest: dict, failures: list[dict[str, str]]) -> None:
+    check(manifest.get("bundle_mode") == "DETERMINISTIC_RECONSTRUCTION_GENERATOR_PLUS_CRYPTOGRAPHIC_HASHES",
+          "REPLAY_MANIFEST_MODE_MISMATCH", repr(manifest.get("bundle_mode")), failures)
+    check(manifest.get("scope") == "EVIDENCE_REPLAYABILITY_ONLY",
+          "REPLAY_MANIFEST_SCOPE_MISMATCH", repr(manifest.get("scope")), failures)
+    inputs = manifest.get("frozen_inputs", {})
+    check(inputs.get("source_archive_sha256") == SOURCE_SHA, "REPLAY_MANIFEST_SOURCE_SHA_MISMATCH", repr(inputs.get("source_archive_sha256")), failures)
+    check(inputs.get("testbank_archive_sha256") == TESTBANK_SHA, "REPLAY_MANIFEST_TESTBANK_SHA_MISMATCH", repr(inputs.get("testbank_archive_sha256")), failures)
+    check(inputs.get("user_guide_pdf_sha256") == GUIDE_SHA, "REPLAY_MANIFEST_GUIDE_SHA_MISMATCH", repr(inputs.get("user_guide_pdf_sha256")), failures)
+    split = manifest.get("split_282", {})
+    check(split.get("checkpoint_sha256") == CHECKPOINT_SHA and split.get("checkpoint_reproduces_prior_B3B04_hash") is True,
+          "REPLAY_MANIFEST_CHECKPOINT_MISMATCH", repr(split.get("checkpoint_sha256")), failures)
+    check(split.get("continuous_trace_sha256") == RECON_CONTINUOUS_SHA and split.get("corrected_restore_trace_sha256") == RECON_CONTINUOUS_SHA,
+          "REPLAY_MANIFEST_CORRECTED_TRACE_MISMATCH", json.dumps(split, sort_keys=True), failures)
+    check(split.get("defective_restart_trace_sha256") == RECON_DEFECTIVE_SHA,
+          "REPLAY_MANIFEST_DEFECTIVE_TRACE_MISMATCH", repr(split.get("defective_restart_trace_sha256")), failures)
+    zero = manifest.get("split_67_zero_control", {})
+    check(zero.get("continuous_trace_sha256") == RECON_CONTINUOUS_SHA and zero.get("legacy_zeroing_trace_sha256") == RECON_CONTINUOUS_SHA and zero.get("full_1800_record_exact_negative_control") is True,
+          "REPLAY_MANIFEST_SPLIT67_MISMATCH", json.dumps(zero, sort_keys=True), failures)
+    docs = manifest.get("documentation_contract", {})
+    check(docs.get("INITIAL.OUT") == "FORMATTED_RESTART_STYLE_REPRESENTATION" and docs.get("B3B04_atomic_checkpoint_fixture") == "RAW_BYTE_IDENTITY_EVIDENCE" and docs.get("INITIAL.OUT_is_raw_byte_checkpoint") is False,
+          "REPLAY_MANIFEST_DOCUMENTATION_BOUNDARY_MISMATCH", json.dumps(docs, sort_keys=True), failures)
+    gate = manifest.get("qualification_gate", {})
+    check(gate.get("deterministic_generator_bundle_complete") is True and gate.get("local_reconstruction_passed") is True,
+          "REPLAY_MANIFEST_LOCAL_GATE_INCOMPLETE", json.dumps(gate, sort_keys=True), failures)
+    check(gate.get("canonical_tcd_status") == "UNRESOLVED_NOT_ADMITTED",
+          "REPLAY_MANIFEST_TCD_STATUS_MISMATCH", repr(gate.get("canonical_tcd_status")), failures)
 
 
 def verify_local_reconstruction(local: dict, failures: list[dict[str, str]]) -> None:
@@ -348,16 +381,25 @@ def main() -> int:
     status = load_json(root / "integration/animo-b3/ANIMO-B3B04E1_STATUS.json")
     expectations = load_json(root / "integration/animo-b3/b3b04e1/TCD040_REPLAY_EXPECTATIONS.json")
     local = load_json(root / "integration/animo-b3/b3b04e1/RECONSTRUCTED_REPLAY_LOCAL_RESULT.json")
+    manifest = load_json(root / "integration/animo-b3/b3b04e1/REPLAY_MANIFEST.json")
     register = load_json(root / "integration/evidence/ANIMO_B0_EVIDENCE_REGISTER.json")
 
-    check(status.get("status") == STATUS, "STATUS_FAIL_CLOSED_REQUIRED", repr(status.get("status")), failures)
-    check(status.get("decision") == "EVIDENCE_REPLAYABILITY_NOT_QUALIFIED",
-          "DECISION_MUST_REMAIN_NOT_QUALIFIED", repr(status.get("decision")), failures)
+    status_value = status.get("status")
+    decision_value = status.get("decision")
+    valid_pair = (
+        (status_value == STATUS_BLOCKED and decision_value == DECISION_BLOCKED)
+        or (status_value == STATUS_QUALIFIED and decision_value == DECISION_QUALIFIED)
+    )
+    check(valid_pair, "STATUS_DECISION_PAIR_INVALID", f"{status_value!r} / {decision_value!r}", failures)
+    if args.audit_blocked_state:
+        check(status_value == STATUS_BLOCKED and decision_value == DECISION_BLOCKED,
+              "BLOCKED_AUDIT_REQUIRES_BLOCKED_STATUS", f"{status_value!r} / {decision_value!r}", failures)
     check(status.get("canonical_tcd_status") == "UNRESOLVED_NOT_ADMITTED",
           "TCD040_MUST_REMAIN_UNRESOLVED_NOT_ADMITTED", repr(status.get("canonical_tcd_status")), failures)
 
     verify_expectations(expectations, failures)
     verify_replay_bundle_presence(root, failures)
+    verify_manifest(manifest, failures)
     verify_local_reconstruction(local, failures)
     verify_documentation_provenance(root, failures)
     verify_scope(status, root, args.require_git_scope, failures)
@@ -381,11 +423,15 @@ def main() -> int:
         blocker_codes = {item["code"] for item in failures}
         b0_blocked = "B0_CONTROLLED_IMMUTABLE_ACQUISITION_NOT_PROVEN" in blocker_codes
         replay_missing = "REPLAY_BUNDLE_COMPONENT_ABSENT" in blocker_codes
-        local_replay_failure = any(
-            code.startswith("LOCAL_") or code.startswith("DOCUMENTATION_")
+        internal_replay_failure = any(
+            code.startswith("LOCAL_")
+            or code.startswith("REPLAY_MANIFEST_")
+            or code.startswith("DOCUMENTATION_")
+            or code.startswith("SCOPE_")
+            or code.startswith("GIT_SCOPE_")
             for code in blocker_codes
         )
-        ok = b0_blocked and not replay_missing and not local_replay_failure
+        ok = b0_blocked and not replay_missing and not internal_replay_failure
         report["audit_status"] = (
             "PASS_LOCAL_RECONSTRUCTION_COMPLETE_CONTROLLED_B0_STILL_BLOCKED"
             if ok
