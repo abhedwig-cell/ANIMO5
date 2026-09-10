@@ -1,0 +1,77 @@
+{
+  "work_unit": "ANIMO-SYNQ02",
+  "title": "TCD-037-A1 Independent Synthetic Activation Qualification",
+  "target": "TCD-037-A1",
+  "branch": "work/animo-synq02-tcd037-a1-independent-ghg-observer-activation",
+  "state": "PERSISTED_VALIDATION_PENDING",
+  "aggregate_authority": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+  "routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+  "runtime_semantics_authority": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+  "synthetic_policy_authority": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+  "gov04_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "risk_state": "TIER_A_CANDIDATE_WAIVER_NOT_YET_AVAILABLE",
+  "evidence_strength": "B1_SYNTHETIC_NOT_B2",
+  "independence_claim": "INDEPENDENT_IMPLEMENTATION_AND_ALGEBRAIC_ORACLE_FOR_CAUSALITY_AND_SCOPE",
+  "natural_active_ghg_case": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+  "historical_behavior": "UNKNOWN",
+  "accounting_identity": {
+    "layer_amount": "QPrCH4(Ln)*St",
+    "organic_matter_equivalent": "10000*QPrCH4(Ln)*St/Cfracom",
+    "partition_closure": "sum_i(CH4_i+CO2_i)=Btot",
+    "numerical_acceptance": "EXACT_BINARY64_FOR_CHOSEN_DYADIC_SYNTHETIC_VALUES_NO_EMPIRICAL_TOLERANCE"
+  },
+  "cases": [
+    "ACTIVE",
+    "ZERO_CH4",
+    "PERMUTED",
+    "RATE_TIME_EQUIVALENT",
+    "INACTIVE"
+  ],
+  "allowed_difference_surface": [
+    "Bfom(CH4f)",
+    "Bahu(CH4f)",
+    "Bdom(CH4f)",
+    "Bfom(CO2f)",
+    "Bahu(CO2f)",
+    "Bdom(CO2f)"
+  ],
+  "forbidden_difference_results": {
+    "physical_state": "UNCHANGED_REQUIRED",
+    "process_flux": "UNCHANGED_REQUIRED",
+    "restart_state": "NO_CHANGE_IN_SCOPE",
+    "solver_or_numerical_policy": "NO_CHANGE_IN_SCOPE",
+    "unrelated_observer": "UNCHANGED_REQUIRED"
+  },
+  "gov04_activation_predicate": "PENDING_CI",
+  "tier_a_waiver_granted": false,
+  "scientific_admission": false,
+  "parent_or_sibling_admission": false,
+  "production_source_modified": false,
+  "canonical_tcd_register_modified": false,
+  "new_top_level_tcd_reserved": false,
+  "b4_opened": false,
+  "aggregate_updated": false,
+  "production_migration": false,
+  "historical_fidelity_claimed": false,
+  "validation": {
+    "machine_validated": false,
+    "run_id": null,
+    "job_id": null,
+    "tested_head": null,
+    "conclusion": null,
+    "o0": "PENDING",
+    "o2": "PENDING",
+    "o0_o2_byte_identity": "PENDING",
+    "exact_rational_oracle": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "next_if_qualified": "ANIMO-B3A05 — TCD-037-A1 CH4 Layer Formation Observer Tier-A Readiness"
+}
