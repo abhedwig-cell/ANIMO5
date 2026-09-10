@@ -1,0 +1,82 @@
+{
+  "work_unit": "ANIMO-B3D08",
+  "title": "TCD-026 B3 Admission Closeout Under GOV03 Historical-Uncertainty Route",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d08-tcd026-admission-closeout",
+  "base": {
+    "work_unit": "ANIMO-B3D07",
+    "head": "21766eaf3443bcf432f05fbf6ba89d365bc70988",
+    "decision": "UNRESOLVED_NOT_ADMITTED_INDEPENDENT_SECOND_LINE_PENDING_ROUTE_NOW_QUALIFIED_BY_GOV03"
+  },
+  "review_authority": {
+    "work_unit": "ANIMO-B3A04R2",
+    "head": "767779127d092c54a298e2f76a21d544e9af9895",
+    "result": "PASS",
+    "workflow_run": 34446939959,
+    "workflow_job": 102773677475,
+    "issue": 28,
+    "issue_result_comment": 5614382650,
+    "independence_scope": "SEPARATE_CHATGPT_CONTEXT_ONLY_NO_ORGANIZATIONAL_OR_HUMAN_INDEPENDENCE_CLAIM"
+  },
+  "target_tcd": "TCD-026",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "state": "IN_PROGRESS_PERSISTED_TCD026_ADMISSION_CLOSEOUT_VALIDATION_PENDING",
+  "decision": "PENDING_FAIL_CLOSED_VALIDATION",
+  "intended_final_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "admission": {
+    "scientific_b3_admission_intended": true,
+    "scientific_b3_admission_qualified": false,
+    "historical_behaviour_status": "UNKNOWN",
+    "historical_fidelity_claimed": false,
+    "whole_model_formatted_restart_identity_claimed": false,
+    "b4_admitted": false,
+    "production_patch_authorized": false,
+    "production_migration_admitted": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_source_modified": false,
+    "frozen_testbank_modified": false,
+    "canonical_tcd_register_modified": false,
+    "initialization_physics_modified": false,
+    "physical_state_modified": false,
+    "process_flux_modified": false,
+    "restart_state_modified": false,
+    "forcing_modified": false,
+    "numerical_policy_modified": false,
+    "other_organic_matter_tcd_composition_admitted": false,
+    "historical_b2_fabricated": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "validation": {
+    "validator": "tools/validate_b3d08_tcd026_admission.py",
+    "workflow": ".github/workflows/animo-b3d08-tcd026-admission.yml",
+    "tested_head": null,
+    "github_actions_run_id": null,
+    "github_actions_job_id": null,
+    "github_actions_conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "deliverables": [
+    "integration/animo-b3/TCD026_B3_ADMISSION_CLOSEOUT.json",
+    "integration/animo-b3/ANIMO-B3D08_STATUS.json",
+    "docs/b3/TCD026_B3_ADMISSION_CLOSEOUT.md",
+    "tools/validate_b3d08_tcd026_admission.py",
+    ".github/workflows/animo-b3d08-tcd026-admission.yml"
+  ],
+  "project_effect_if_qualified": {
+    "tcd026_atomic_b3_scientific_admission": true,
+    "b3_whole_model_baseline_complete": false,
+    "historical_uncertainty_propagates_forward": true,
+    "production_migration_still_closed": true,
+    "next_required_step": "integrate admitted TCD-026 into central project regie without authorizing production code changes"
+  }
+}
