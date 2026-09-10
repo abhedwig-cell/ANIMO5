@@ -1,0 +1,48 @@
+{
+  "work_unit": "ANIMO-RUNTIMEQ02",
+  "tcd": "TCD-037",
+  "branch": "work/animo-runtimeq02-tcd037-ghg-balance-array-lifetime",
+  "status": "QUALIFIED_SOURCE_RUNTIME_OWNERSHIP_TIER_C_ACCOUNTING_SEMANTICS_PENDING",
+  "authoring_base": "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6",
+  "canonical_routing_authority": "ANIMO-B3I06@8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
+  "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "runtime_ownership_result": {
+    "AmCH4": "PROCEDURE_LOCAL_UNDEFINED_ON_ENTRY_WITH_NO_SOURCE_PRODUCER",
+    "AmN2Odeni": "PROCEDURE_LOCAL_UNDEFINED_ON_ENTRY_WITH_NO_SOURCE_PRODUCER",
+    "AmN2Onitr": "ACTIVE_OUTBAL_CALL_LOCAL_TIMESTEP_AMOUNT_SCRATCH",
+    "silent_persistence_is_valid_ownership": false,
+    "restart_checkpoint_state_involved": false,
+    "scoped_observer_non_interference": true
+  },
+  "evidence": {
+    "first_write_before_first_read_AmCH4": false,
+    "first_write_before_first_read_AmN2Odeni": false,
+    "first_write_before_first_read_AmN2Onitr": true,
+    "complete_writer_reader_inventory": true,
+    "control_flow_reachability": true,
+    "inactive_ghg_control": "PASS",
+    "natural_active_ghg_case": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+    "synthetic_active_ghg_discriminator": "PASS_B1_CAUSAL_ONLY",
+    "multi_step_lifetime_discriminator": "PASS",
+    "repeated_call_discriminator": "PASS",
+    "observer_non_interference": "PASS",
+    "historical_intel_behavior": "UNKNOWN"
+  },
+  "expected_difference": {
+    "qualification_branch": "NO_PRODUCTION_DIFFERENCE",
+    "future_correction_whitelist": "BLOCKED_PENDING_ACCOUNTING_SEMANTICS"
+  },
+  "gov04": {
+    "risk_tier": "C",
+    "tier_a_waiver": "NOT_AVAILABLE",
+    "reason": "Exact accounting ownership and index-0/emission mapping remain unresolved; GOV04 routes scientifically consequential source/ownership ambiguity to Tier C."
+  },
+  "admission_readiness": false,
+  "scientific_admission": false,
+  "production_patch": false,
+  "b4": false,
+  "rg05h_update": false,
+  "composition": [],
+  "next_work_unit": "ANIMO-RUNTIMEQ03 — TCD-037 GHG Balance Observer Accounting-Semantics & Index-0 Producer Mapping Qualification",
+  "tier_a_combination_safe_now": false
+}
