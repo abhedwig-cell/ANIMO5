@@ -40,8 +40,11 @@ jobs:
           python -m json.tool integration/animo-b3/b3b04e1/TCD040_REPLAY_EXPECTATIONS.json >/dev/null
           python -m json.tool integration/animo-b3/b3b04e1/RECONSTRUCTED_REPLAY_LOCAL_RESULT.json >/dev/null
           python -m json.tool integration/animo-b3/b3b04e1/REPLAY_MANIFEST.json >/dev/null
+          python -m json.tool integration/animo-b3/b3b04e1/EG01_DEPENDENCY_CONTRACT.json >/dev/null
       - name: Compile Python qualification tools
         run: python -m py_compile tools/b3b04e1/*.py
+      - name: Validate pinned EG01 dependency interface
+        run: python tools/b3b04e1/validate_eg01_dependency_contract.py
       - name: Audit complete reconstructed bundle and scope
         run: python tools/b3b04e1/validate_b3b04e1.py --audit-blocked-state --require-git-scope
       - name: Confirm ordinary evidence gate remains closed without controlled B0
