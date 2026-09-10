@@ -10,13 +10,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REVIEW_PATH = ROOT / "integration/animo-b3/TCD038_INDEPENDENT_SECOND_LINE_REVIEW.json"
 HUMAN_PATH = ROOT / "docs/b3/TCD038_INDEPENDENT_SECOND_LINE_REVIEW.md"
-REGISTER_PATH = ROOT / "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
 B0_HASH_PATH = ROOT / "reference/source/ANIMO_4.1.5.53.zip.sha256"
 
 EXPECTED_START = "1b47d6b2e422463b557a48355ad8b4f5bed70ebc"
 EXPECTED_AGGREGATE = "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6"
 PREP12_SHA = "3d86de057247adcfeefb82c11d7cf7d5b2cbdf73"
 PREP12_EVIDENCE_PATH = "integration/animo-prep12/source/PREP10_PLANT_UPTAKE_RESTART_CONTINUITY.json"
+B3I03_SHA = "814ea660d367494432beb63ea78298d1f6cd73d7"
+CANONICAL_REGISTER_PATH = "docs/quality/THEORY_CODE_DISCREPANCY_REGISTER.csv"
 EXPECTED_SOURCE_HASH = "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566"
 EXPECTED_TESTBANK_HASH = "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
 
@@ -38,8 +39,8 @@ def load_json(path: Path):
         fail(f"cannot parse {path.relative_to(ROOT)}: {exc}")
 
 
-def git_show_json(commit: str, path: str):
-    """Read a pinned authority directly from repository history, not from review-tree copies."""
+def git_show_text(commit: str, path: str) -> str:
+    """Read a pinned authority directly from repository history."""
     proc = subprocess.run(
         ["git", "show", f"{commit}:{path}"],
         cwd=ROOT,
@@ -50,8 +51,12 @@ def git_show_json(commit: str, path: str):
     )
     if proc.returncode != 0:
         fail(f"cannot read pinned authority {commit}:{path}: {proc.stderr.strip()}")
+    return proc.stdout
+
+
+def git_show_json(commit: str, path: str):
     try:
-        return json.loads(proc.stdout)
+        return json.loads(git_show_text(commit, path))
     except Exception as exc:  # pragma: no cover
         fail(f"cannot parse pinned authority {commit}:{path}: {exc}")
 
@@ -209,11 +214,13 @@ for case in cases:
     require(case.get("post_Inicalc_Amplni_act") == 0.0, "natural N witness no longer demonstrates immediate erase")
 require(prep.get("TCD_034", {}).get("production_correction_admitted") is False, "neighboring potential-uptake correction unexpectedly admitted")
 
-# Verify TCD-038 and TCD-039 remain separate rows in the canonical discrepancy register.
-with REGISTER_PATH.open(newline="", encoding="utf-8") as handle:
-    rows = {row["ID"]: row for row in csv.DictReader(handle)}
-require("TCD-038" in rows, "TCD-038 missing from canonical discrepancy register")
-require("TCD-039" in rows, "TCD-039 missing from canonical discrepancy register")
+# Canonical TCD-038/039 rows are later than the review tree's inherited register.
+# Validate them from the exact qualified B3I03 canonical-register authority.
+require(review.get("authorities", {}).get("B3I03") == B3I03_SHA, "review B3I03 pin differs from validator authority")
+register_text = git_show_text(B3I03_SHA, CANONICAL_REGISTER_PATH)
+rows = {row["ID"]: row for row in csv.DictReader(register_text.splitlines())}
+require("TCD-038" in rows, "TCD-038 missing from pinned canonical discrepancy register")
+require("TCD-039" in rows, "TCD-039 missing from pinned canonical discrepancy register")
 require(rows["TCD-038"]["process"] == "crop actual uptake restart initialization", "canonical TCD-038 process changed")
 require(rows["TCD-038"]["status"] == "OPEN", "canonical TCD-038 must remain OPEN after review")
 require(rows["TCD-039"]["process"] == "crop potential uptake restart continuation", "TCD-039 identity changed")
