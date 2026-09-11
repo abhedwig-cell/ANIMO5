@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB05D",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "collision_audit": {
+    "qualified_target_count": 12,
+    "target_ids_unique": true,
+    "collision_with_preexisting_central_registry": false,
+    "collision_across_TB04A_TB04B_TB05A_TB05B": false,
+    "gap_id_collision_with_central_registry": false,
+    "partial_consolidation_detected": false,
+    "result": "PASS"
+  },
+  "dependency_closure_audit": {
+    "ATB-STATE-003": [],
+    "ATB-STATE-004": ["ATB-STATE-001"],
+    "ATB-STATE-005": [],
+    "ATB-STATE-006": ["ATB-STATE-002"],
+    "ATB-BND-002": [],
+    "ATB-BND-005": [],
+    "ATB-SUB-003": [],
+    "ATB-SUB-004": ["ATB-SUB-003"],
+    "ATB-SUB-005": ["ATB-STATE-006"],
+    "ATB-SUB-008": [],
+    "ATB-SUB-009": [],
+    "ATB-SUB-010": ["ATB-BND-005"],
+    "missing_dependencies": [],
+    "dependency_on_gap": false,
+    "sibling_only_unresolved_dependency": false,
+    "result": "PASS"
+  },
+  "provenance_preservation_audit": {
+    "source_fragment_fields_preserved_exactly": true,
+    "source_identity_changed": false,
+    "expected_value_provenance_changed": false,
+    "comparison_policy_changed": false,
+    "applicability_pins_changed": false,
+    "failure_semantics_changed": false,
+    "permanence_changed": false,
+    "registry_metadata_additions_only": true,
+    "admission_effect_for_all_consolidated_entries": "NONE",
+    "result": "PASS"
+  },
+  "gap_preservation_audit": {
+    "ATB-STATE-007": "GAP",
+    "ATB-BND-003": "GAP",
+    "ATB-BND-004": "GAP",
+    "ATB-BND-006": "GAP",
+    "ATB-SUB-006": "GAP",
+    "ATB-SUB-007": "GAP",
+    "ATB-SUB-011": "GAP",
+    "ATB-SUB-012": "GAP",
+    "gap_entries_written_to_central_registry": false,
+    "result": "PASS"
+  },
+  "scope_preservation_audit": {
+    "restricted_core_restart_promoted_to_whole_model": false,
+    "macropore_kernel_restart_promoted_to_whole_model": false,
+    "exact_zero_boundary_widened_to_finite_positive_subthreshold": false,
+    "HETOP_zero_policy_invented": false,
+    "build_initialization_contract_promoted_to_production_fix": false,
+    "macropore_B1_diagnostic_promoted_to_historical_B2": false,
+    "macropore_route_reachability_promoted_to_behavioural_golden": false,
+    "GHG_source_accounting_promoted_to_full_CN_conservation": false,
+    "GHG_parent_TCD_admission_implied": false,
+    "subsystem_fragment_promoted_to_release_qualification": false,
+    "whole_model_golden_baseline_created": false,
+    "result": "PASS"
+  },
+  "registry_integrity_audit": {
+    "base_registry_blob": "4c78cdb542c5ff4ce898c033eb99dd7b2daa7c2c",
+    "result_registry_blob": "9b5078ea4c4f22f0215fead27a96580eeb613a9b",
+    "append_only_at_parsed_registry_level": true,
+    "preexisting_test_entries_modified": false,
+    "central_metadata_modified": false,
+    "result": "PASS"
+  },
+  "gov05_adversarial_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "alternative_hypotheses_checked": [
+      "a GAP entry could be pulled into the central registry while copying a sibling fragment",
+      "one of the twelve stable IDs could already exist under a different scientific meaning",
+      "a dependency could resolve only inside a sibling branch rather than in the serial registry",
+      "registry metadata normalization could silently overwrite source scientific fields",
+      "restricted-core or kernel restart evidence could be described as whole-model restart qualification",
+      "exact-zero upper-boundary evidence could be widened to finite-positive or HETOP=0 domains",
+      "macropore B1 diagnostic route evidence could be relabelled historical B2 or behavioural golden truth",
+      "GHG source and accounting contracts could be overstated as full C/N conservation or parent TCD admission",
+      "subsystem qualification could be misrepresented as release qualification",
+      "registry consolidation could create a whole-model golden baseline by implication"
+    ],
+    "dispositions": [
+      "centralize exactly the twelve TB05C-qualified IDs and no GAP IDs",
+      "reconstruct expected entries from exact pinned source fragments instead of hand-copying scientific fields",
+      "fail closed if any added registry key would overwrite a source fragment key",
+      "verify dependency closure against the resulting central registry",
+      "retain source applicability pins and failure semantics unchanged",
+      "retain admission_effect=NONE for every consolidated entry",
+      "retain all historical-B2, whole-model, production and release exclusions"
+    ],
+    "result": "PASS"
+  },
+  "overall_result": "PASS"
+}
