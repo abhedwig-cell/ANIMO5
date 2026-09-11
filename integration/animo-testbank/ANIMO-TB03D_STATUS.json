@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB03D",
+  "branch": "work/animo-tb03d-qualified-tb3-fragment-serial-registry-consolidation",
+  "state": "QUALIFIED_ANIMO_TB03D_SERIAL_REGISTRY_CONSOLIDATION",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "scope": "Serial central-registry consolidation of the eight TB03C-qualified TB03A/TB03B fragment entries only.",
+  "serial_base": "ANIMO-TB03C@a989541c265213bde0bae3f0e2db28fcaf9c0579",
+  "authorities": {
+    "TB01": "15a17bfa2c321d08f3ac89f334986c0ae8429045",
+    "TB02": "54a565c2f7f2a29817ae027cc18bee1613ce568d",
+    "TB03A": "a37f07b15ae50d6fbb526cef3215fb58702e85aa",
+    "TB03B": "48a3036501e9e871608ab920f46dde5570ebf369",
+    "TB03C": "a989541c265213bde0bae3f0e2db28fcaf9c0579"
+  },
+  "source_fragments": {
+    "TB03A": "integration/animo-testbank/fragments/ANIMO-TB03A_CNP_SPECIES_ORACLE_FRAGMENT.json@blob:aa11d224964bdc5f1d529d823f774afc18994bbd",
+    "TB03B": "integration/animo-testbank/fragments/ANIMO-TB03B_FRAGMENT.json@blob:4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+    "TB03C": "integration/animo-testbank/fragments/ANIMO-TB03C_CONVERGENCE_HANDOFF.json@blob:03de5deece36a28ad1610420d6756425b09711fe"
+  },
+  "registry": {
+    "path": "integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json",
+    "baseline_blob": "a5f279cfa334dc63d3e4e8759370279736d874a0",
+    "final_blob": "4c78cdb542c5ff4ce898c033eb99dd7b2daa7c2c",
+    "materialization_commit": "0ff4b385575d9d37687df3bda904743f4ad5e2ec",
+    "added_ids": [
+      "ATB-ORACLE-002",
+      "ATB-ORACLE-003",
+      "ATB-SPC-003",
+      "ATB-TRN-002",
+      "ATB-CONS-002",
+      "ATB-CONS-003",
+      "ATB-CONS-004",
+      "ATB-CONS-005"
+    ],
+    "preserved_nonqualified": {
+      "ATB-SPC-004": "CANDIDATE",
+      "ATB-SPC-005": "CANDIDATE",
+      "ATB-SPC-006": "CANDIDATE",
+      "ATB-SPC-007": "GAP"
+    }
+  },
+  "qualification": {
+    "tb02_exact_head_ci": {"run": 34557165449, "conclusion": "success"},
+    "tb03a_exact_head_ci": {"run": 34557800712, "conclusion": "success"},
+    "tb03b_exact_head_ci": {"run": 34557679150, "conclusion": "success"},
+    "tb03c_exact_head_ci": {"run": 34558388740, "conclusion": "success"},
+    "tb03d_materialization_ci": {"run": 34559762850, "head": "fadbf3a245f00431de50083d8f072e89e217828f", "conclusion": "success"},
+    "exact_final_head_ci_required": true,
+    "validator": "tools/validate_animo_tb03d.py",
+    "registry_materializer": "tools/consolidate_animo_tb03d_registry.py"
+  },
+  "audit_artifacts": {
+    "source_pins": "integration/animo-testbank/ANIMO-TB03D_SOURCE_PINS.json",
+    "registry_diff": "integration/animo-testbank/ANIMO-TB03D_REGISTRY_DIFF.json",
+    "audits": "integration/animo-testbank/ANIMO-TB03D_AUDITS.json"
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "tcd_admission_performed": false,
+    "b4_opened": false,
+    "whole_model_golden_baseline_created": false,
+    "historical_b2_created": false,
+    "frozen_b0_modified": false,
+    "scientific_fragment_authorities_changed": false,
+    "candidate_or_gap_promoted": false,
+    "whole_model_conservation_claim_created": false,
+    "tb04_modified": false
+  }
+}
