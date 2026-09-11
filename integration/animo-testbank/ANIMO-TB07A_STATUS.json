@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB07A",
+  "title": "Composed Regression Baseline Prerequisite Readiness Gate",
+  "branch": "work/animo-tb07a-composed-regression-baseline-readiness",
+  "state": "QUALIFIED_ANIMO_TB07A_PREREQUISITE_GATE_BLOCKED_B3_COMPOSITION_INCOMPLETE",
+  "decision": "DO_NOT_CREATE_COMPOSED_REGRESSION_BASELINE_UNTIL_SEPARATE_B3_COMPOSITION_COMPLETENESS_AUTHORITY_EXISTS",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "authorities": {
+    "testbank": "ANIMO-TB06C@104100f5ceeaf0c13b4bca6ec0a0d641824014a6",
+    "architecture": "ANIMO-TB01@15a17bfa2c321d08f3ac89f334986c0ae8429045",
+    "aggregate": "ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
+    "bounded_parent_composition": "ANIMO-B3D27@cb881d0cd3e3c50455614a93b562b32354f0f1a8",
+    "GOV05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808"
+  },
+  "composition_readiness": {
+    "TB01_TB7_prerequisite": "SEPARATE_SCIENTIFIC_AUTHORITY_SHOWING_B3_COMPOSITION_COMPLETENESS",
+    "B3_complete": false,
+    "current_aggregate_statement": "ANIMO-RG05J explicitly records b3_complete=false",
+    "bounded_parent_composition_scope": "BOUNDED_COMPOSED_GHG_OBSERVER_ACCOUNTING_CONTRACT",
+    "bounded_parent_composition_is_whole_model_composition_authority": false,
+    "separate_B3_composition_completeness_authority_found": false,
+    "TB7_baseline_authorized": false,
+    "blocker": "NO_QUALIFIED_B3_COMPOSITION_COMPLETENESS_AUTHORITY_AND_RG05J_EXPLICITLY_B3_INCOMPLETE"
+  },
+  "registry": {
+    "blob": "caf0ff601da27c9b810b992b923bfdac62f4f7d1",
+    "modified": false,
+    "entries_added": 0,
+    "entries_removed": 0,
+    "entries_modified": 0
+  },
+  "baseline_effect": {
+    "whole_model_output_captured": false,
+    "qualified_golden_case_created": false,
+    "composed_whole_model_golden_baseline_created": false,
+    "historical_B2_created": false
+  },
+  "qualification": {
+    "validator": "tools/validate_animo_tb07a.py",
+    "workflow": ".github/workflows/animo-tb07a-composed-regression-readiness.yml",
+    "candidate_green_run": {
+      "run_id": 34569878926,
+      "head": "a26d314df546ecb1d67632cd467a108e07d1a249",
+      "conclusion": "success"
+    },
+    "exact_final_head_ci_required": true,
+    "final_exact_head_evidence": "ESTABLISHED_BY_POST_CLOSEOUT_WORKFLOW"
+  },
+  "gov05_adversarial_self_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "result": "PASS_FAIL_CLOSED_PREREQUISITE_DECISION",
+    "bounded_parent_not_promoted_to_whole_model_composition": true,
+    "registry_qualification_not_promoted_to_composition_authority": true,
+    "no_baseline_created_without_prerequisite": true
+  },
+  "unblock_condition": "A separate exact-head-qualified scientific authority must explicitly establish B3 composition completeness at the scope needed for a composed whole-model regression baseline, followed by a fresh TB7 readiness decision.",
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": true,
+    "qualified": true,
+    "complete": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "whole_model_golden_baseline_created": false,
+    "historical_B2_fabricated": false,
+    "B4_opened": false,
+    "release_gate_opened": false,
+    "frozen_B0_modified": false,
+    "global_tolerance_created": false,
+    "scientific_authority_redefined": false
+  }
+}
