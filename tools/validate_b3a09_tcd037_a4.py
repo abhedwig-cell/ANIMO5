@@ -95,7 +95,8 @@ def main():
     req(a4["allowed_observer_fields"] == ["Bani(N2Oe)"], "B3I07 A4 surface drift")
     req(a4["historical_behavior"] == "UNKNOWN" and
         a4["natural_activation"] == "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH", "B3I07 evidence boundary drift")
-    req(a4["suggested_next_work_unit"] == "ANIMO-B3A08", "historical B3I07 route unexpectedly rewritten")
+    req(a4["next_work_unit"] == "ANIMO-B3A08 — TCD-037-A4 N2O Atmosphere Emission Observer Tier-A Readiness",
+        "historical B3I07 route unexpectedly rewritten")
 
     rq = show_json(RUNTIMEQ03, "integration/animo-runtime/ANIMO-RUNTIMEQ03_STATUS.json")
     req(rq["semantic_qualification"]["n2o_atmosphere_emission_owner"] == "(QEmN2ODif+QEmN2OFlw)*St",
