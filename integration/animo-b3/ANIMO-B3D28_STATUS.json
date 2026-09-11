@@ -4,8 +4,9 @@
   "branch": "work/animo-b3d28-tcd025-a1-water-gov05-tier-c-admission",
   "target_parent_tcd": "TCD-025",
   "target_child_atom": "TCD-025-A1",
-  "phase": "AUTHORING_FROZEN_PENDING_GOV05_TIER_C_ADVERSARIAL_REVIEW",
-  "state": "NOT_YET_ADMITTED",
+  "phase": "COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+  "decision": "ADMIT_TCD025_A1_RESTRICTED_WATER_LEDGER_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
   "candidate_decision": "ADMIT_TCD025_A1_RESTRICTED_WATER_LEDGER_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
   "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "b3_qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
@@ -13,15 +14,27 @@
   "base_authority": "ANIMO-B3I08@f4a3056087e5f7bac41b243be1f404739cde52b0",
   "aggregate_at_start": "ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
   "readiness_authority": "ANIMO-B3A10@872c78b6c020086280e31e1d9a7408e8b5a1afc7",
+  "control_volume_authority": "ANIMO-MASSQ03@68a8c202bd01bf55b31b7c944884fb2f78a6a8e8",
   "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
   "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
   "historical_behavior": "UNKNOWN_WITHOUT_B2",
-  "admission_effect_if_review_passes": {
+  "admitted": true,
+  "qualified": true,
+  "admitted_atomic_identity": "BOUNDED_PUBLIC_MAIN_WATER_MACROPORE_LEDGER_CORRECTION_ON_B3I08_ADMISSIBLE_INTERVALS",
+  "admission_effect": {
     "child_atom_admitted": true,
     "siblings_admitted": [],
     "parent_tcd_admitted": false,
     "A5_blocker_disposed": false,
+    "historical_revision53_behavior": "UNKNOWN_WITHOUT_B2",
     "production_authorized": false
+  },
+  "aggregate_policy": {
+    "post_RG05J_new_admissions_if_exact_final_green": 1,
+    "normal_batch_threshold_minimum": 3,
+    "normal_batch_threshold_reached": false,
+    "aggregate_update_required_now": false,
+    "RG05K_created_here": false
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -38,23 +51,31 @@
     "synthetic_evidence_promoted_to_b2": false
   },
   "review": {
-    "started": false,
-    "completed": false,
-    "reviewed_head": null,
+    "started": true,
+    "completed": true,
+    "reviewed_head": "88938162a0ab40a13ca24728ad147e12d8ed0a06",
     "genuinely_independent": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "outcome": "SELF_REVIEW_PASS_ADMIT_TCD025_A1_WITH_HISTORICAL_UNCERTAINTY",
     "artifact": "integration/animo-b3/ANIMO-B3D28_INTERNAL_ADVERSARIAL_REVIEW.json"
   },
   "validation": {
     "workflow": ".github/workflows/animo-b3d28-tcd025-a1.yml",
     "validator": "tools/validate_b3d28_tcd025_a1.py",
-    "exact_final_head_ci_required": true
+    "authoring_head": "88938162a0ab40a13ca24728ad147e12d8ed0a06",
+    "authoring_head_ci_run": 34572543691,
+    "authoring_head_ci_job": 103177603675,
+    "authoring_head_ci_conclusion": "success",
+    "exact_final_head_ci_required": true,
+    "conclusion": "EXACT_FINAL_HEAD_CI_REQUIRED_THIS_COMMIT_IS_AUTHORITATIVE_ONLY_IF_WORKFLOW_SUCCEEDS"
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
-  }
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
+  },
+  "next_after_exact_final_green": "LIVE_RECHECK_TCD025_A2_EVIDENCE_AND_ROUTING_BEFORE_STARTING_NEXT_SIBLING_LANE"
 }

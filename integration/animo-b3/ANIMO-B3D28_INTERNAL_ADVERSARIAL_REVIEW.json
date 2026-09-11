@@ -1,0 +1,105 @@
+{
+  "work_unit": "ANIMO-B3D28",
+  "target_parent_tcd": "TCD-025",
+  "target_child_atom": "TCD-025-A1",
+  "risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "reviewed_head": "88938162a0ab40a13ca24728ad147e12d8ed0a06",
+  "reviewed_head_ci": {
+    "run_id": 34572543691,
+    "job_id": 103177603675,
+    "conclusion": "success"
+  },
+  "review_boundary": {
+    "immutable_authoring_head_frozen_before_review": true,
+    "moving_tree_reviewed": false,
+    "substantive_changes_after_reviewed_head_allowed": false,
+    "production_implementation_reviewed_or_authorized": false
+  },
+  "evidence_reuse_checks": {
+    "B3A10_exact_pin": "PASS",
+    "B3A10_scope_compatibility": "PASS",
+    "B3I08_exact_pin": "PASS",
+    "B3I08_A1_routing_identity": "PASS",
+    "MASSQ03_predicate_preserved": "PASS",
+    "GOV05_exact_pin": "PASS",
+    "no_superseding_aggregate_or_B3D28_found_at_start": "PASS",
+    "evidence_strength_preserved": "PASS_NO_B1_OR_SYNTHETIC_PROMOTION_TO_B2"
+  },
+  "counter_hypotheses": [
+    {
+      "id": "CH1",
+      "alternative": "Because water storage is layer-resolved, admit A1 for arbitrary selected intervals and ignore the inherited saturated-reservoir predicate.",
+      "test": "Compare the proposed wider water surface with B3I08 canonical child routing and B3A10 shared readiness scope.",
+      "result": "REJECTED_AS_OUT_OF_SCOPE",
+      "reason": "B3I08 deliberately bounds A1 to the shared B3A10 admissible interval surface. B3D28 is an admission decision, not a new routing or scientific-scope expansion workunit."
+    },
+    {
+      "id": "CH2",
+      "alternative": "The beginning and end water-storage terms refer to incompatible owners because old storage is combined by layer while new storage is domain-resolved.",
+      "test": "Reconstruct lifecycle ownership from B3A10/MP01: SrWaMpCpOld is the accepted combined layer storage and sum_D SrWaMpCp is the current combined layer storage.",
+      "result": "REJECTED",
+      "reason": "They are the accepted/current representations of the same selected macropore-water control-volume coordinate, with the domain sum explicit on the current side."
+    },
+    {
+      "id": "CH3",
+      "alternative": "Use absolute values of FlMpVt at interval boundaries to simplify the observer.",
+      "test": "Check whether direction is part of the source-owned conservation identity.",
+      "result": "REJECTED",
+      "reason": "FlMpVt is a signed source-owned transfer. Absolute-value conversion would destroy inflow/outflow orientation and create a new accounting convention."
+    },
+    {
+      "id": "CH4",
+      "alternative": "Count both FlMpOuDrMp and FlMpOuDrSo as external macropore drainage in the corrected public water balance.",
+      "test": "Trace the direct Main-Bypass and soil-routed drainage paths.",
+      "result": "REJECTED",
+      "reason": "FlMpOuDrSo is routed into the soil system and becomes part of the matrix-side accounting path; a second external count would double count it."
+    },
+    {
+      "id": "CH5",
+      "alternative": "Treat matrix/macropore exchange as an additional external input/output to improve closure.",
+      "test": "Construct the combined matrix plus macropore control volume.",
+      "result": "REJECTED",
+      "reason": "The exchange is internal to the combined observer and must cancel. Reclassifying it as external would change the control volume rather than correct the public ledger."
+    },
+    {
+      "id": "CH6",
+      "alternative": "Green synthetic and causal checks are sufficient to claim historical revision-53 public-ledger behavior.",
+      "test": "Inspect the evidence ladder and supplied natural active-macropore coverage.",
+      "result": "REJECTED",
+      "reason": "No qualified active-macropore B2 reference exists. Historical behavior remains UNKNOWN_WITHOUT_B2 and the disposition must retain uncertainty."
+    },
+    {
+      "id": "CH7",
+      "alternative": "Admission of the water child is enough to admit parent TCD-025 or dispose the A5 blocker.",
+      "test": "Re-read B3I08 parent guards and sibling/blocker state.",
+      "result": "REJECTED",
+      "reason": "B3I08 forbids automatic parent admission. A2-A4 remain unadmitted and A5 remains BLOCKED_NOT_SOURCE_CLOSED."
+    }
+  ],
+  "tier_c_scientific_gates": {
+    "SOURCE_AND_EVIDENCE_PROVENANCE": "PASS",
+    "ATOMIC_SCOPE": "PASS_BOUNDED_CHILD_ATOM_ONLY",
+    "STATE_AND_CONTROL_VOLUME_OWNERSHIP": "PASS_FOR_INHERITED_BOUNDED_INTERVAL_SURFACE",
+    "INITIALIZATION_AND_RESTART_INTERACTION": "PASS_NO_NEW_STATE_AND_NO_REOPEN_OF_TCD031",
+    "NUMERICAL_AND_CONVERGENCE_POLICY": "PASS_NO_CHANGE",
+    "EXPECTED_DIFFERENCE": "PASS_LEDGER_ONLY",
+    "CONSERVATION": "PASS_SOURCE_OWNED_IDENTITY_PLUS_EXACT_RATIONAL_ORACLES",
+    "NON_INTERFERENCE": "PASS_SCIENTIFIC_ADMISSION_CHANGES_NO_STATE_OR_PROCESS_FLUX",
+    "COVERAGE": "PASS_FOR_SCIENTIFIC_IDENTITY_WITH_EXPLICIT_NON_B2_LIMITATION",
+    "NEGATIVE_CONTROLS": "PASS",
+    "HISTORICAL_UNCERTAINTY": "PASS_UNKNOWN_WITHOUT_B2",
+    "SIBLING_AND_PARENT_SEPARATION": "PASS",
+    "PRODUCTION_AUTHORIZATION_SEPARATION": "PASS"
+  },
+  "residual_uncertainty": [
+    "No qualified historical active-macropore B2 reference establishes historical magnitude or prevalence of the public water-ledger discrepancy.",
+    "The admitted scientific identity does not itself qualify a production implementation or observer-plumbing architecture.",
+    "A1 is conservatively restricted to the common B3I08 interval surface; a broader water-only selected-profile claim would require a separate routing/scientific qualification.",
+    "Same-agent adversarial review has lower independence assurance than a genuinely independent review."
+  ],
+  "outcome": "SELF_REVIEW_PASS_ADMIT_TCD025_A1_WITH_HISTORICAL_UNCERTAINTY"
+}
