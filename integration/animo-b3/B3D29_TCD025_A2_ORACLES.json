@@ -1,0 +1,14 @@
+{
+  "work_unit":"ANIMO-B3D29",
+  "target_child_atom":"TCD-025-A2",
+  "evidence_class":"EXACT_RATIONAL_B1_STYLE_NOT_B2",
+  "cases":[
+    {"id":"D01","old":20,"boundary_in":0,"boundary_out":0,"direct_drain":5,"new":15,"closed":true},
+    {"id":"D02","old":0,"boundary_in":7,"boundary_out":7,"direct_drain":0,"new":0,"closed":true},
+    {"id":"D03","matrix_side":-11,"macropore_side":11,"expect_sum":0},
+    {"id":"D04","FlMpOuDrSo":4,"second_external_loss":0},
+    {"id":"D05","relation":"partial_cut","expect_in_scope":false},
+    {"id":"D06","relation":"contains_all_S_D","expect_in_scope":true},
+    {"id":"D07","relation":"disjoint_from_S_D","expect_in_scope":true}
+  ]
+}
