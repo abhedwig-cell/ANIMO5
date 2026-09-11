@@ -3,9 +3,9 @@
   "target": "TCD-036",
   "title": "GHG Pre-existing Ponding Layer0 Restart Ownership Qualification",
   "branch": "work/animo-stateq07-tcd036-ghg-ponding-layer0-restart",
-  "phase": "SUBSTANTIVE_AUTHORING_COMPLETE_PENDING_FREEZE",
-  "state": "CANDIDATE_TCD036_PRE_EXISTING_PONDING_LAYER0_RESTART_OWNERSHIP",
-  "decision": "CREATE_IMMUTABLE_AUTHORING_FREEZE_AND_REQUIRE_GREEN_CI_BEFORE_GOV05_REVIEW",
+  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
+  "state": "FROZEN_TCD036_PRE_EXISTING_PONDING_LAYER0_RESTART_OWNERSHIP_CANDIDATE",
+  "decision": "REQUIRE_GREEN_CI_ON_EXACT_FROZEN_REVIEW_HEAD_THEN_RUN_GOV05_ADVERSARIAL_REVIEW",
   "base_authority": "ANIMO-B3D38@c6fe71cfd1822aea5d00a802862e4b3a4a991cd2",
   "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
   "queue_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
@@ -23,10 +23,10 @@
   "canonical_state_admitted": false,
   "full_model_split_run_claimed": false,
   "historical_behavior": "UNKNOWN_WITHOUT_B2",
-  "authoring_freeze": {"required": true, "completed": false, "post_freeze_substantive_changes_allowed": false},
+  "authoring_freeze": {"required": true, "completed": true, "substantive_package_head": "3ccca21e8f77762a499ccb7e955889e6764e24e5", "freeze_artifact_commit": "ff4c7169628717306cbc7078ec00306a48bcfa06", "post_freeze_substantive_changes_allowed": false},
   "review": {"required": true, "started": false, "completed": false, "same_agent": true, "genuinely_independent": false, "independence_claimed": false, "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT", "reviewed_head": null, "outcome": null},
-  "validation": {"workflow": ".github/workflows/animo-stateq07-tcd036-layer0-restart.yml", "validator": "tools/validate_stateq07_tcd036.py", "candidate_head": null, "candidate_run_id": null, "candidate_job_id": null, "candidate_conclusion": null, "exact_final_head_required": true},
+  "validation": {"workflow": ".github/workflows/animo-stateq07-tcd036-layer0-restart.yml", "validator": "tools/validate_stateq07_tcd036.py", "pre_freeze_green_run": 34644580302, "pre_freeze_green_job": 103412170725, "candidate_head": null, "candidate_run_id": null, "candidate_job_id": null, "candidate_conclusion": null, "exact_final_head_required": true},
   "hard_boundaries": {"production_source_modified": false, "frozen_b0_modified": false, "canonical_register_modified": false, "central_queue_modified": false, "new_top_level_tcd_reserved": false, "tcd035_reopened": false, "tcd032_034_modified_or_admitted": false, "canonical_state_admitted": false, "checkpoint_format_qualified": false, "dormant_layer0_state_created": false, "new_ponding_rule_changed": false, "historical_fidelity_claimed": false, "synthetic_evidence_promoted_to_b2": false, "b4_opened": false, "production_migration_authorized": false},
-  "work_status": {"realized": true, "persisted": true, "tested": false, "reviewed": false, "qualified": false, "work_unit_complete": false},
-  "next": "FREEZE_EXACT_SUBSTANTIVE_PACKAGE_THEN_REVIEW_ONLY_AFTER_GREEN_CI"
+  "work_status": {"realized": true, "persisted": true, "tested": true, "reviewed": false, "qualified": false, "work_unit_complete": false},
+  "next": "WAIT_FOR_GREEN_CI_ON_CURRENT_FROZEN_HEAD_THEN_REVIEW_WITH_GOV05"
 }
