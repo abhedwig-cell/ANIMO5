@@ -4,7 +4,9 @@ Work unit: `ANIMO-B3D23`
 
 Branch: `work/animo-b3d23-tcd031-gov05-tier-c-admission`
 
-Starting authority: `ANIMO-B3D22@744c42119ee8cd21de658ef6d9c0ecf4a3f7d2ca`, exact-head workflow run `34546812652`, conclusion `success`.
+Historical concurrent branch start: `ANIMO-B3D22@744c42119ee8cd21de658ef6d9c0ecf4a3f7d2ca`.
+
+Effective formal-disposition authority after non-destructive reconciliation: `ANIMO-B3D22@b68ebd807fbac2f8e8305417329e390fdab758d2`, exact-head workflow run `34547171960`, conclusion `success`.
 
 Current review governance: `ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904`, exact-head workflow run `34546470484`, conclusion `success`.
 
@@ -22,21 +24,23 @@ If and only if the GOV05 internal adversarial review passes on the exact immutab
 
 Before those gates pass, the candidate is not an effective admission.
 
-## Governance transition
+## Governance and branch reconciliation
 
-B3D22 started and completed under GOV04. Its formal disposition and the genuinely independent historical review B3B10R2 remain valid historical authorities and are not relabelled. B3D23 is a new prospective work unit after GOV05 qualification, so its mandatory second pass uses `SINGLE_AGENT_ADVERSARIAL_REVIEW`.
+B3D23 was initially authored concurrently from an intermediate B3D22 head while the B3D22 governance transition was still moving. That history is retained. It was not force-pushed or silently rewritten. The B3D23 branch was reconciled by merge commit `6fe7b43bbe209328b086058bfeefb907677aaa9b`, which preserves the concurrent B3D23 history and incorporates final B3D22 authority `b68ebd807fbac2f8e8305417329e390fdab758d2`.
 
-The same-agent assurance is exactly:
+The original checkpoint remains historical evidence of that concurrent start. `ANIMO-B3D23_RECONCILIATION.json` makes the effective upstream authority explicit. Because the effective authority changed after the original authoring freeze, the old freeze is not eligible for final review. A new immutable authoring head is required after this reconciliation.
+
+B3D22 was finalized under current GOV05 transition semantics. B3B10R2, however, completed before GOV05 qualification as a genuinely independent GOV04 targeted rereview. GOV05 is prospective and preserves that completed review as historical assurance without relabelling it.
+
+B3D23 itself uses `SINGLE_AGENT_ADVERSARIAL_REVIEW` and is not independent. The same-agent assurance is exactly:
 
 `PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT`
 
-This B3D23 review must never be called genuinely independent. The older B3B10R2 review remains genuinely independent history.
-
-The B3Q01 field name `independent_review` is a compatibility surface only under GOV05. Where consumed, it must not be interpreted as evidence that B3D23's same-agent review is independent.
+The B3Q01 field name `independent_review` is retained only as a compatibility surface where required by the unchanged schema. Under GOV05 it must not be interpreted as evidence that B3D23's same-agent review is independent.
 
 ## Pinned scientific basis
 
-The formal disposition is `ANIMO-B3D22@744c42119ee8cd21de658ef6d9c0ecf4a3f7d2ca`. It qualifies TCD-031 as `C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL`, risk tier C, with disposition `HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY` and exact atomic identity `COMPLETE_ACCEPTED_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY`.
+The effective formal disposition is `ANIMO-B3D22@b68ebd807fbac2f8e8305417329e390fdab758d2`. It qualifies TCD-031 as `C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL`, Tier C, with disposition `HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY` and exact atomic identity `COMPLETE_ACCEPTED_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY`.
 
 The relevant earlier pins remain:
 
@@ -100,6 +104,6 @@ TCD-025 is not composed or executed in B3D23. A qualified TCD-031 B3 admission m
 
 ## Qualification boundary
 
-The complete substantive authoring package must first be frozen at an immutable Git head. A same-agent adversarial review then reviews exactly that head. If the review finds a substantive defect, B3D23 fails closed or creates a new immutable authoring checkpoint and repeats the full applicable review. Only administrative closeout metadata may change after a PASS without restarting review.
+The reconciled substantive authoring package must be frozen at a new immutable Git head. A same-agent adversarial review then reviews exactly that head. If the review finds a substantive defect, B3D23 fails closed or creates a new immutable authoring checkpoint and repeats the applicable review. Only the review artifact and administrative closeout metadata may change after a PASS without restarting review.
 
 The final workflow must prove that no substantive authored file changed after the reviewed checkpoint and that all scope guards remain intact. B3D23 stops after the atomic B3 admission decision. It does not create an aggregate authority.
