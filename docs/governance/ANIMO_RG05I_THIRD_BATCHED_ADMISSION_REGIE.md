@@ -2,6 +2,13 @@
 
 Source aggregate: `ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef`.
 
+Exact governance/routing authorities consumed:
+
+- `ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904`;
+- retained Tier-A and central-regie policy `ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc`;
+- historical-uncertainty authority `ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c`;
+- canonical routing `ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808`.
+
 RG05I performs central-regie aggregation only. It does not re-admit any scientific object, modify production source, alter frozen B0, change canonical routing, open B4, authorize production, or claim historical fidelity.
 
 ## Trigger
