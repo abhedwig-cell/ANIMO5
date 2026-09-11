@@ -15,6 +15,11 @@
       "ANIMO-B3D24@0f85d7102945c7c4d77bc49885f9ecca688209e3:TCD-037-A2",
       "ANIMO-B3D23@6c9ab83952b53566b878b533c08e3cb10074f399:TCD-031"
     ],
+    "qualified_post_rg05i_atomic_admissions_observed_at_final_recheck": [
+      "ANIMO-B3D25@4da2dd067069944a5e3eeb5f532566a23402bd68:TCD-037-A3:TIER_A:CI_34549748497_SUCCESS"
+    ],
+    "later_aggregate_than_rg05i_found_at_final_recheck": false,
+    "branch_base_reconciliation": "RG05I_REMAINS_CURRENT_AGGREGATE; B3D25_IS_A_QUALIFIED_POST_AGGREGATE_SIBLING_ADMISSION_AND_DOES_NOT_REPLACE_THE_AGGREGATE_AS_TB01_BRANCH_BASE",
     "current_routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
     "GOV05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
     "GOV05_exact_final_ci_run": 34546470484,
@@ -80,6 +85,7 @@
     "raw_line_coverage_primary": false,
     "gov05_integration": "VERIFY_AND_REUSE"
   },
+  "inventory_snapshot_note": "The 60-asset migration inventory was frozen from the RG05I-centered evidence survey. B3D25 became qualified as a post-RG05I atomic admission during TB01 execution and is recorded in final authority reconciliation; its reusable A3 artifacts are to be admitted to the shared bank only through the same permanence criterion as other workunit-specific probes.",
   "expected_value_governance": {
     "taxonomy_preserved": [
       "ANALYTICAL",
