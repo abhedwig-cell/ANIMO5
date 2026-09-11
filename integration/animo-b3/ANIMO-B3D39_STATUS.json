@@ -3,9 +3,9 @@
   "target": "TCD-036",
   "title": "TCD-036 GHG Pre-existing Ponding Layer0 Restart Identity Atomic B3 Admission",
   "branch": "work/animo-b3d39-tcd036-gov05-tier-c-admission",
-  "phase": "SUBSTANTIVE_AUTHORING_COMPLETE_PENDING_FREEZE",
-  "state": "CANDIDATE_TCD036_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
-  "decision": "FREEZE_AND_VALIDATE_BEFORE_GOV05_TIER_C_ADVERSARIAL_REVIEW",
+  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
+  "state": "FROZEN_TCD036_ATOMIC_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_CANDIDATE",
+  "decision": "REQUIRE_GREEN_CI_ON_EXACT_FROZEN_REVIEW_HEAD_THEN_RUN_GOV05_TIER_C_ADVERSARIAL_REVIEW",
   "base_authority": "ANIMO-B3B13@202a2983d1cce07682eaa95825891fc33e4f6398",
   "state_authority": "ANIMO-STATEQ07@26f6e61da328a5578b9c4b332de04eb99a3ac04f",
   "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
@@ -22,10 +22,10 @@
   "whole_model_split_run_claimed": false,
   "b4_opened": false,
   "aggregate_policy": {"post_RG05M_before": 2, "post_RG05M_if_exact_final_green": 3, "normal_batch_threshold": 3, "aggregate_update_required_if_green": true, "next_aggregate_when_threshold_reached": "ANIMO-RG05N", "fourth_scientific_admission_before_RG05N": "FORBIDDEN"},
-  "authoring_freeze": {"required": true, "completed": false, "post_freeze_substantive_changes_allowed": false},
+  "authoring_freeze": {"required": true, "completed": true, "substantive_package_head": "ab77091324569b78d3330447b66c2aabd48fe5c9", "substantive_package_tree": "c3a7d090072cb1511ec780b7996eed95c2d61e6a", "freeze_artifact_commit": "077310eac69614254ae3cfa37f2eebce1ce42516", "pre_freeze_green_run": 34646215990, "pre_freeze_green_job": 103417522237, "post_freeze_substantive_changes_allowed": false},
   "review": {"required": true, "started": false, "completed": false, "same_agent": true, "genuinely_independent": false, "independence_claimed": false, "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT", "reviewed_head": null, "outcome": null},
   "validation": {"workflow": ".github/workflows/animo-b3d39-tcd036.yml", "validator": "tools/validate_b3d39_tcd036.py", "candidate_head": null, "candidate_run_id": null, "candidate_job_id": null, "candidate_conclusion": null, "exact_final_head_required": true},
   "hard_boundaries": {"production_source_modified": false, "frozen_b0_modified": false, "canonical_register_modified": false, "central_queue_modified": false, "new_top_level_tcd_reserved": false, "tcd035_reopened": false, "tcd032_034_modified_or_admitted": false, "canonical_state_admitted": false, "checkpoint_format_qualified": false, "dormant_layer0_state_created": false, "new_ponding_rule_changed": false, "historical_fidelity_claimed": false, "synthetic_evidence_promoted_to_b2": false, "b4_opened": false, "production_migration_authorized": false},
-  "work_status": {"realized": true, "persisted": true, "tested": false, "reviewed": false, "qualified": false, "workunit_complete": false},
-  "next": "FREEZE_SUBSTANTIVE_ADMISSION_PACKAGE_THEN_REQUIRE_GREEN_CI_BEFORE_GOV05_REVIEW"
+  "work_status": {"realized": true, "persisted": true, "tested": true, "reviewed": false, "qualified": false, "workunit_complete": false},
+  "next": "WAIT_FOR_GREEN_CI_ON_CURRENT_FROZEN_HEAD_THEN_REVIEW_WITH_GOV05"
 }
