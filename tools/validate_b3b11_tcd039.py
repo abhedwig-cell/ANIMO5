@@ -5,10 +5,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "c2b29f05b7726f3c57a39481b92f211e78dbee59"
+STATEQ01_HEAD = "4adae99576eb56978da71f7c8a250e4445fd3bc4"
+B3Q04_HEAD = "dcc0885f73de6241d5efa9324ddb9f41784f6f2d"
 STATEQ05 = ROOT / "integration/animo-state/ANIMO-STATEQ05_STATUS.json"
 STATEQ05_CONTRACT = ROOT / "integration/animo-state/TCD039_POTENTIAL_UPTAKE_CONTINUATION_CONTRACT.json"
-STATEQ01_MATRIX = ROOT / "integration/animo-state/PERSISTENT_STATE_MATRIX.csv"
-QUEUE = ROOT / "integration/animo-reg/RG05_B3_QUEUE.json"
 CONTRACT = ROOT / "integration/animo-b3/B3B11_TCD039_READINESS_CONTRACT.json"
 STATUS = ROOT / "integration/animo-b3/ANIMO-B3B11_STATUS.json"
 
@@ -30,6 +30,13 @@ def require(cond, msg):
 
 def load(path):
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def git_text(commit, path):
+    try:
+        return subprocess.check_output(["git", "show", f"{commit}:{path}"], text=True)
+    except subprocess.CalledProcessError as exc:
+        raise AssertionError(f"cannot load pinned upstream artifact {commit}:{path}") from exc
 
 
 def changed_files():
@@ -62,12 +69,12 @@ def validate_upstream():
     require(owners[1]["accepted_owner"] == "Rsamplpo_pot" and owners[1]["working_alias"] == "Amplpo_pot", "P owner pair mismatch")
     require(owners[1]["feature_guard"] == "Ipo == 1", "P feature guard missing")
 
-    matrix = STATEQ01_MATRIX.read_text(encoding="utf-8")
+    matrix = git_text(STATEQ01_HEAD, "integration/animo-state/PERSISTENT_STATE_MATRIX.csv")
     require("CROP-005,cumulative potential crop nitrogen uptake continuation,NUMERICAL_CONTINUATION" in matrix, "STATEQ01 CROP-005 missing")
     require("CROP-006,cumulative potential crop phosphorus uptake continuation,NUMERICAL_CONTINUATION" in matrix, "STATEQ01 CROP-006 missing")
     require("CROP-007,remaining crop demand deficit stage and rotation continuation,UNRESOLVED_SCIENTIFIC_STATE" in matrix, "STATEQ01 CROP-007 boundary missing")
 
-    queue = load(QUEUE)
+    queue = json.loads(git_text(B3Q04_HEAD, "integration/animo-reg/RG05_B3_QUEUE.json"))
     entries = {e["tcd"]: e for e in queue["entries"]}
     require("TCD-039" in entries, "TCD039 absent from canonical queue source")
     q = entries["TCD-039"]
