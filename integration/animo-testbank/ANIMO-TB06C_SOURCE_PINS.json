@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB06C",
+  "serial_base": {
+    "authority": "ANIMO-TB05D@e0d96fc279ef35966a0d5dd37462fa0cded2cc1e",
+    "exact_head_ci_run": 34568518599,
+    "exact_head_ci_conclusion": "success",
+    "central_registry_blob": "9b5078ea4c4f22f0215fead27a96580eeb613a9b"
+  },
+  "convergence": {
+    "authority": "ANIMO-TB06B@7666c016e77d3743210b6f3135e53e9db87d75cc",
+    "exact_head_ci_run": 34568404986,
+    "exact_head_ci_conclusion": "success",
+    "handoff_path": "integration/animo-testbank/fragments/ANIMO-TB06B_CONVERGENCE_HANDOFF.json",
+    "handoff_blob": "b67f35fd581383d7277c1661de48a2d6ecf2c6ed",
+    "original_registry_base": "ANIMO-TB05C@788247b4346bedbb79749d5ce5daef3f99283f8d"
+  },
+  "source_fragment": {
+    "work_unit": "ANIMO-TB06A",
+    "head": "1ae7afbe540f3e5b53331137016db2936ff79cae",
+    "ci_run": 34568216165,
+    "ci_conclusion": "success",
+    "fragment_path": "integration/animo-testbank/fragments/ANIMO-TB06A_NUMERICAL_COMPILER_RUNTIME_FRAGMENT.json",
+    "fragment_blob": "3ae41fd750dc6a3304d4a39eafd64fec983ad442",
+    "status_path": "integration/animo-testbank/ANIMO-TB06A_STATUS.json",
+    "status_blob": "97922bbcb37f124d9d8a7b9bfb0d1e6b504be80a"
+  },
+  "qualified_ids": ["ATB-NUM-002", "ATB-NUM-003", "ATB-NUM-004", "ATB-ARCH-003"],
+  "preserved_gaps": ["ATB-NUM-005", "ATB-ARCH-004"],
+  "rebase_check_required": true,
+  "rebase_target": "ANIMO-TB05D central registry",
+  "scientific_authority_changed": false,
+  "production_source_changed": false,
+  "historical_B2_created": false,
+  "whole_model_golden_created": false,
+  "TCD_admission_performed": false
+}
