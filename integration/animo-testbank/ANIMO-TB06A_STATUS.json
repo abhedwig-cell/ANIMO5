@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB06A",
+  "title": "Numerical, Compiler & Runtime Qualification Bank Adoption",
+  "branch": "work/animo-tb06a-numerical-compiler-runtime-bank-adoption",
+  "base_authority": "ANIMO-TB05B@fe0a5aae6382cf37e1ad233655f313f5fa60f874",
+  "tb02_authority": "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d",
+  "state": "QUALIFICATION_CANDIDATE_PENDING_EXACT_HEAD_CI",
+  "scope": [
+    "fail-closed numerical comparison policy",
+    "unrounded precision-aware reference capture",
+    "domain-bounded numerical-policy qualification pattern",
+    "runtime producer-consumer lifetime ownership",
+    "cross-compiler optimization qualification gap",
+    "whole-model runtime invariant gap"
+  ],
+  "authorities": {
+    "NQ01": "e558dff12b127e0662cad62beea7527b42ad89ac",
+    "NQ03R_review_head": "8e04c0bffeb8436f2579b566155101e6c5a73ef1",
+    "RUNTIMEQ02": "45e8073fa95035b3565bd8b373ac327915cf1af5"
+  },
+  "fragment": "integration/animo-testbank/fragments/ANIMO-TB06A_NUMERICAL_COMPILER_RUNTIME_FRAGMENT.json",
+  "qualified_entry_candidates": ["ATB-NUM-002", "ATB-NUM-003", "ATB-NUM-004", "ATB-ARCH-002"],
+  "gap_entries": ["ATB-NUM-005", "ATB-ARCH-003"],
+  "existing_registry_handling": "ATB-NUM-001 and ATB-ARCH-001 are not modified or redefined by this fragment.",
+  "scope_limit": "No global tolerance, no repository-wide cross-compiler equivalence, no whole-model runtime correctness, no TCD admission and no production numerical policy binding are established.",
+  "gov05_adversarial_self_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "result": "PASS_BOUNDED_NUMERICAL_COMPILER_RUNTIME_ADOPTION_SCOPE",
+    "questions": {
+      "does_fragment_create_global_tolerance": false,
+      "does_NQ03R_TCD_specific_policy_become_universal": false,
+      "does_runtimeq02_TCD_specific_accounting_mapping_become_general_science": false,
+      "does_isolated_O0_O2_evidence_become_repository_wide_equivalence": false,
+      "does_packet_completeness_become_numerical_equivalence": false,
+      "does_fragment_modify_central_registry": false,
+      "does_fragment_modify_production_source": false,
+      "does_fragment_perform_admission": false
+    }
+  },
+  "qualification": {
+    "validator": "tools/validate_animo_tb06a.py",
+    "workflow": ".github/workflows/animo-tb06a-numerical-compiler-runtime.yml",
+    "exact_final_head_ci_required": true,
+    "qualified_state_after_success": "QUALIFIED_TB06A_BOUNDED_NUMERICAL_COMPILER_RUNTIME_FRAGMENT_PACKAGE"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "complete": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "whole_model_golden_baseline_created": false,
+    "global_tolerance_created": false,
+    "whole_model_compiler_equivalence_qualified": false,
+    "whole_model_runtime_qualified": false,
+    "TCD_specific_probe_auto_promoted": false
+  }
+}

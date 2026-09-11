@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0",
+  "fragment_id": "ANIMO-TB06A-NUMERICAL-COMPILER-RUNTIME",
+  "producer_workunit": "ANIMO-TB06A",
+  "base_authority": "ANIMO-TB05B@fe0a5aae6382cf37e1ad233655f313f5fa60f874",
+  "tb02_authority": "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d",
+  "registry_integration": "SEPARATE_SERIAL_CONSOLIDATION_WORKUNIT_ONLY",
+  "central_registry_write": "FORBIDDEN_BY_FRAGMENT_PRODUCER",
+  "scope": "TB-L10 numerical/compiler qualification and TB-L11 bounded runtime ownership adoption only",
+  "entries": [
+    {
+      "test_id": "ATB-NUM-002",
+      "layer": "TB-L10",
+      "owner": "testbank-numerics",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-NQ01@e558dff12b127e0662cad62beea7527b42ad89ac",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "DOMAIN_SPECIFIC_NUMERICAL_CONTRACT",
+      "claim": "Scientific numerical comparison is fail-closed by variable class and evidence role: exact/discrete contracts require exact equality, nonexact floating scientific differences require a separately qualified numerical policy, and B1 evidence cannot be relabelled as independent B2 reference evidence.",
+      "applicability_pins": {
+        "global_numeric_tolerance_defined": false,
+        "rounded_report_only_oracle_rejected": true,
+        "formatted_difference_auto_accepted": false,
+        "scientific_difference_auto_accepted": false
+      },
+      "failure_semantics": "Any hidden tolerance, evidence-role relabelling, vacuous comparison or auto-acceptance of an unqualified scientific difference fails the contract.",
+      "permanence": "REUSABLE_CROSS_MODEL_NUMERICAL_COMPARISON_INVARIANT"
+    },
+    {
+      "test_id": "ATB-NUM-003",
+      "layer": "TB-L10",
+      "owner": "testbank-numerics",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-NQ01@e558dff12b127e0662cad62beea7527b42ad89ac",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_CAPTURE_METADATA_AND_FAIL_CLOSED_VALUE_POLICY",
+      "claim": "Scientific reference capture requires unrounded values with explicit precision metadata and floating round-trip evidence; representation and scientific comparison remain separate layers, and packet completeness does not imply numerical equivalence.",
+      "applicability_pins": {
+        "reference_capture_schema": "1.1.0",
+        "first_reference_packet_schema": "1.2.0",
+        "representation_subjects_predefined": true,
+        "post_hoc_subject_selection_forbidden": true
+      },
+      "failure_semantics": "Missing precision metadata, non-round-trip floating capture, post-hoc scope selection or rounded-report substitution fails the evidence contract.",
+      "permanence": "REUSABLE_REFERENCE_CAPTURE_AND_PRECISION_PROVENANCE_INVARIANT"
+    },
+    {
+      "test_id": "ATB-NUM-004",
+      "layer": "TB-L10",
+      "owner": "testbank-numerics",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-NQ03R restricted-policy review@8e04c0bffeb8436f2579b566155101e6c5a73ef1",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "DOMAIN_SPECIFIC_NUMERICAL_CONTRACT",
+      "claim": "A numerical policy is qualified only inside its explicitly derived domain and precision envelope; outside-envelope use fails closed, no hidden epsilon is created, and floating-point evaluation order or a justified equation-derived bound must be fixed before bitwise production binding.",
+      "applicability_pins": {
+        "NQ03R_used_as_methodological_exemplar_only": true,
+        "TCD042_specific_polynomial_promoted_to_general_oracle": false,
+        "TCD042_specific_threshold_promoted_to_general_policy": false,
+        "implementation_order_constraint_retained": true
+      },
+      "failure_semantics": "Applying a domain-bounded policy outside its qualified envelope, inventing a tolerance from residual magnitude, or claiming bitwise binding without FP-order qualification fails the contract.",
+      "permanence": "REUSABLE_NUMERICAL_POLICY_QUALIFICATION_PATTERN_NOT_TCD_SPECIFIC_PROBE"
+    },
+    {
+      "test_id": "ATB-ARCH-002",
+      "layer": "TB-L11",
+      "owner": "testbank-runtime",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-RUNTIMEQ02@45e8073fa95035b3565bd8b373ac327915cf1af5",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_PRODUCER_CONSUMER_LIFETIME_CONTRACT",
+      "claim": "A runtime working value consumed as current-call or current-step information requires an explicit valid producer before first read and an explicit lifetime class; silent stack persistence or incidental compiler behaviour is not valid ownership.",
+      "applicability_pins": {
+        "observer_non_interference_required": true,
+        "historical_compiler_behaviour_can_define_ownership": false,
+        "restart_state_inference_from_workspace_forbidden": true,
+        "TCD037_accounting_mapping_promoted_here": false
+      },
+      "failure_semantics": "Undefined first read, implicit persistence, ambiguous producer lifetime or observer mutation fails the runtime ownership invariant.",
+      "permanence": "REUSABLE_RUNTIME_PRODUCER_LIFETIME_INVARIANT_MINED_FROM_TCD037"
+    },
+    {
+      "test_id": "ATB-NUM-005",
+      "layer": "TB-L10",
+      "owner": "testbank-numerics",
+      "status": "GAP",
+      "source_identity": "ANIMO-TB01 major scientific coverage gap",
+      "expected_value_provenance": "UNKNOWN",
+      "comparison_policy": "NOT_YET_QUALIFIED",
+      "claim": "A shared cross-compiler and optimization qualification matrix for representative scientific and control-flow coordinates is not yet qualified.",
+      "applicability_pins": {
+        "required_axes": ["O0_vs_O2", "compiler_family", "floating_point_contraction_or_reassociation", "representative_active_scientific_cases"],
+        "existing_TCD_specific_compiler_probes_are_not_automatically_permanent": true
+      },
+      "failure_semantics": "Fail closed: no repository-wide compiler or optimization equivalence claim may be inferred from isolated workunit probes.",
+      "permanence": "GAP_TRACKER"
+    },
+    {
+      "test_id": "ATB-ARCH-003",
+      "layer": "TB-L11",
+      "owner": "testbank-runtime",
+      "status": "GAP",
+      "source_identity": "ANIMO-TB01 architecture/runtime coverage requirement plus bounded BUILDQ/RUNTIMEQ evidence",
+      "expected_value_provenance": "UNKNOWN",
+      "comparison_policy": "NOT_YET_QUALIFIED",
+      "claim": "Repository-wide runtime initialization, producer/consumer, lifetime and task-order invariants across all active subsystems are not yet comprehensively qualified.",
+      "applicability_pins": {
+        "bounded_existing_evidence": ["BUILDQ01", "BUILDQ02", "BUILDQ03", "BUILDQ04", "RUNTIMEQ02", "RUNTIMEQ03"],
+        "whole_model_runtime_claim": false
+      },
+      "failure_semantics": "Fail closed: subsystem-specific runtime evidence cannot be generalized to whole-model runtime correctness.",
+      "permanence": "GAP_TRACKER"
+    }
+  ],
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "whole_model_golden_baseline_created": false,
+    "global_tolerance_created": false,
+    "whole_model_compiler_equivalence_qualified": false,
+    "whole_model_runtime_qualified": false,
+    "TCD_specific_probe_auto_promoted": false
+  }
+}

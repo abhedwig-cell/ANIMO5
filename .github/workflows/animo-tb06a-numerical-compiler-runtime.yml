@@ -1,0 +1,40 @@
+name: ANIMO-TB06A numerical compiler runtime fragment qualification
+
+on:
+  push:
+    branches:
+      - work/animo-tb06a-numerical-compiler-runtime-bank-adoption
+  workflow_dispatch:
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate bounded fragment
+        run: python tools/validate_animo_tb06a.py
+      - name: Guard hard boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=fe0a5aae6382cf37e1ad233655f313f5fa60f874
+          git diff --name-only "$BASE"...HEAD > /tmp/tb06a_changed.txt
+          if grep -Eq '^(src/|source/|Source/|animo/|ANIMO/)' /tmp/tb06a_changed.txt; then
+            echo 'Production source path modified by TB06A'
+            cat /tmp/tb06a_changed.txt
+            exit 1
+          fi
+          if grep -Fxq 'integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json' /tmp/tb06a_changed.txt; then
+            echo 'Central testbank registry modified by fragment producer'
+            exit 1
+          fi
+      - name: Exact-head identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
