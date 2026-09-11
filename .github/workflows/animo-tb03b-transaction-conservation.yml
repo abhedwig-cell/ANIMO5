@@ -1,0 +1,41 @@
+name: ANIMO-TB03B transaction and conservation fragment qualification
+
+on:
+  push:
+    branches:
+      - work/animo-tb03b-transaction-mass-conservation-control-volume-bank
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate bounded fragment
+        run: python tools/validate_animo_tb03b.py
+      - name: Guard hard boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=54a565c2f7f2a29817ae027cc18bee1613ce568d
+          git diff --name-only "$BASE" HEAD > /tmp/tb03b_changed.txt
+          if grep -E '^(src/|source/|Source/|animo/|ANIMO/)' /tmp/tb03b_changed.txt; then
+            echo 'Production source changed in TB03B' >&2
+            exit 1
+          fi
+          if grep -Fx 'integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json' /tmp/tb03b_changed.txt; then
+            echo 'Central testbank registry changed in TB03B' >&2
+            exit 1
+          fi
+      - name: Exact-head identity
+        run: |
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+          echo "ANIMO-TB03B exact head ${GITHUB_SHA}"
