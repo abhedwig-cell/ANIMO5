@@ -1,0 +1,15 @@
+{
+  "work_unit": "ANIMO-B3D22",
+  "target": "TCD-031",
+  "title": "TCD-031 GOV04 Tier-C Formal Disposition",
+  "branch": "work/animo-b3d22-tcd031-gov04-tier-c-disposition",
+  "exact_starting_head": "7648e7b2813f3abc5904e4c34e36072d81d9844f",
+  "starting_authority": "ANIMO-B3B10R2@7648e7b2813f3abc5904e4c34e36072d81d9844f",
+  "starting_review_run": "34545898592:success",
+  "current_aggregate_at_open": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+  "governance_at_open": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "gov05_at_open": "UNQUALIFIED_CONCURRENT_WORKUNIT_NOT_AUTHORITY",
+  "purpose": "PERSIST_EARLY_BEFORE_TIER_C_FORMAL_DISPOSITION_QUALIFICATION",
+  "b3_admission_performed": false,
+  "production_source_modified": false
+}
