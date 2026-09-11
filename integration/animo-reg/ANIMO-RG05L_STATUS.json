@@ -2,8 +2,8 @@
   "work_unit":"ANIMO-RG05L",
   "title":"Sixth Batched B3 Admission Integration",
   "branch":"work/animo-rg05l-sixth-batched-admission-integration",
-  "state":"PERSISTED_VALIDATION_PENDING",
-  "decision":"PENDING_EXACT_HEAD_VALIDATION",
+  "state":"QUALIFIED_SIXTH_BATCHED_B3_ADMISSION_INTEGRATION_TCD025_A4_PARENT_AND_TCD042_B1_NO_PRODUCTION",
+  "decision":"QUALIFIED_SIXTH_BATCHED_B3_ADMISSION_INTEGRATION_TCD025_A4_PARENT_AND_TCD042_B1_NO_PRODUCTION",
   "source_aggregate":"ANIMO-RG05K@e5ccad78d7c85aaf2c68d844c5a496edf6d73db5",
   "source_aggregate_exact_final_ci":"34582143283:success",
   "aggregate_trigger":"NORMAL_BATCH_THRESHOLD_REACHED_THREE_EXACT_FINAL_QUALIFIED_POST_RG05K_B3_ADMISSIONS",
@@ -23,7 +23,7 @@
   "production_open":false,
   "global_canonical_queue_count_recomputed":false,
   "hard_boundaries":{"scientific_readmission_performed":false,"production_source_modified":false,"frozen_b0_modified":false,"canonical_tcd_register_modified":false,"new_top_level_tcd_reserved":false,"child_readmission_performed":false,"automatic_parent_admission_performed":false,"TCD025_A5_admitted":false,"TCD042_parent_admitted":false,"TCD042_E1_admitted":false,"Hetop_zero_admitted":false,"b4_admitted":false,"production_migration_admitted":false,"historical_fidelity_claimed":false,"synthetic_evidence_counted_as_b2":false},
-  "validation":{"machine_validated":false,"workflow":"ANIMO-RG05L sixth batched B3 admission integration","run_id":null,"job_id":null,"tested_head":null,"conclusion":"PENDING","validator":"PENDING","scope_guard":"PENDING","exact_final_head_required":true},
-  "work_status":{"realized":true,"persisted":true,"tested":false,"qualified":false,"work_unit_complete":false},
+  "validation":{"machine_validated":true,"workflow":"ANIMO-RG05L sixth batched B3 admission integration","candidate_run_id":34588633084,"candidate_job_id":103228546092,"tested_candidate_head":"1bcd6a0da47521916bd356c76c51a50da97ddb22","candidate_conclusion":"success","validator":"PASS","scope_guard":"PASS","exact_final_head_required":true,"closeout_note":"Candidate run 34588633084 validated the complete substantive RG05L package. This status-only closeout is authoritative only if the same workflow succeeds on this closeout commit's exact final head."},
+  "work_status":{"realized":true,"persisted":true,"tested":true,"qualified":true,"work_unit_complete":true},
   "next_if_validated":"USE_ANIMO_RG05L_AS_CURRENT_AGGREGATE_AUTHORITY_THEN_RECOMPUTE_GLOBAL_CANONICAL_B3_QUEUE_AND_REAUDIT_WHOLE_B3_COMPOSITION_COMPLETENESS; DO_NOT_OPEN_TB7_B4_OR_PRODUCTION"
 }
