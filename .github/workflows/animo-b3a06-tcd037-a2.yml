@@ -1,0 +1,58 @@
+name: ANIMO-B3A06 TCD-037-A2 Tier-A readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3a06-tcd037-a2-tier-a-readiness
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact evidence and governance authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in \
+            0ca6b31dc8d003ab2b86ced29a2ff8923496ee38 \
+            3e4247928bb43f30def951fa8804560636affbef \
+            331f6ed91d4a1c15a23ae0c1ad75d1b540f61858 \
+            54679c7555a963133dfd686648af334f479c5808 \
+            a3e822f8e97fe1312a7dfa73601a49ae7375163e \
+            842f72300fd03ede0b9024537a7ee6126722a121 \
+            1bbe4c211197590f346803106e45dca5faae79fc \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            846e0f4d02a38b9e02cc1419b1ca87e63aaedb54
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+            git cat-file -e "${sha}^{commit}"
+          done
+
+      - name: Verify exact workflow head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Parse readiness records
+        run: |
+          python -m json.tool integration/animo-b3/TCD037_A2_TIER_A_READINESS.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3A06_STATUS.json >/dev/null
+          python -m py_compile tools/validate_b3a06_tcd037_a2.py
+
+      - name: Validate authorities, Tier-A predicate and scope
+        run: python tools/validate_b3a06_tcd037_a2.py
