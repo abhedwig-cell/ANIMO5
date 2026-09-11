@@ -1,0 +1,60 @@
+name: ANIMO-TB01 scientific testbank architecture qualification
+
+on:
+  push:
+    branches:
+      - work/animo-tb01-scientific-verification-testbank-architecture
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  qualify-architecture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify exact workflow head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Verify exact authority commits exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in \
+            94afe7d649a8c60758a41996f0059de0acddd2fc \
+            f65a47724e4a4fca7f2d8b8d6de9eeee51867904 \
+            1bbe4c211197590f346803106e45dca5faae79fc \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            846e0f4d02a38b9e02cc1419b1ca87e63aaedb54 \
+            54679c7555a963133dfd686648af334f479c5808 \
+            842f72300fd03ede0b9024537a7ee6126722a121
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+            git cat-file -e "${sha}^{commit}"
+          done
+
+      - name: Parse testbank manifests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m json.tool integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json >/dev/null
+          python -m json.tool integration/animo-testbank/ANIMO_TESTBANK_COVERAGE_MATRIX.json >/dev/null
+          python -m json.tool integration/animo-testbank/ANIMO_TESTBANK_EXPECTATION_PROVENANCE.json >/dev/null
+          python -m json.tool integration/animo-testbank/ANIMO_TESTBANK_EXECUTION_PROFILES.json >/dev/null
+          python -m json.tool integration/animo-testbank/ANIMO-TB01_STATUS.json >/dev/null
+          python -m py_compile tools/validate_animo_tb01_architecture.py
+
+      - name: Validate architecture and scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/validate_animo_tb01_architecture.py
