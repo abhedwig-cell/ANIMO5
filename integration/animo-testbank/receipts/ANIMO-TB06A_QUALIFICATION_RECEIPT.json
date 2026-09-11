@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "receipt_type": "QUALIFICATION_RECEIPT",
+  "work_unit": "ANIMO-TB06A",
+  "fragment": "integration/animo-testbank/fragments/ANIMO-TB06A_NUMERICAL_COMPILER_RUNTIME_FRAGMENT.json",
+  "candidate_qualified_head": "2fce392212b188f9830bc0dfbe89fb9065b784e7",
+  "candidate_ci_run": 34568156692,
+  "candidate_ci_conclusion": "success",
+  "gov05_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "central_registry_modified": false,
+  "production_source_modified": false,
+  "scientific_admission_performed": false,
+  "final_exact_head_ci_required": true,
+  "note": "The closeout commit that records qualified state must itself pass the same exact-head workflow; that post-closeout run is the final authority."
+}

@@ -5,7 +5,7 @@
   "branch": "work/animo-tb06a-numerical-compiler-runtime-bank-adoption",
   "base_authority": "ANIMO-TB05B@fe0a5aae6382cf37e1ad233655f313f5fa60f874",
   "tb02_authority": "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d",
-  "state": "QUALIFICATION_CANDIDATE_PENDING_EXACT_HEAD_CI",
+  "state": "QUALIFIED_TB06A_BOUNDED_NUMERICAL_COMPILER_RUNTIME_FRAGMENT_PACKAGE",
   "scope": [
     "fail-closed numerical comparison policy",
     "unrounded precision-aware reference capture",
@@ -20,7 +20,7 @@
     "RUNTIMEQ02": "45e8073fa95035b3565bd8b373ac327915cf1af5"
   },
   "fragment": "integration/animo-testbank/fragments/ANIMO-TB06A_NUMERICAL_COMPILER_RUNTIME_FRAGMENT.json",
-  "qualified_entry_candidates": ["ATB-NUM-002", "ATB-NUM-003", "ATB-NUM-004", "ATB-ARCH-003"],
+  "qualified_entries": ["ATB-NUM-002", "ATB-NUM-003", "ATB-NUM-004", "ATB-ARCH-003"],
   "gap_entries": ["ATB-NUM-005", "ATB-ARCH-004"],
   "existing_registry_handling": "ATB-NUM-001, ATB-ARCH-001 and ATB-ARCH-002 are not modified or redefined by this fragment.",
   "scope_limit": "No global tolerance, no repository-wide cross-compiler equivalence, no whole-model runtime correctness, no TCD admission and no production numerical policy binding are established.",
@@ -41,15 +41,25 @@
   "qualification": {
     "validator": "tools/validate_animo_tb06a.py",
     "workflow": ".github/workflows/animo-tb06a-numerical-compiler-runtime.yml",
+    "candidate_green_run": {
+      "run_id": 34568156692,
+      "head": "2fce392212b188f9830bc0dfbe89fb9065b784e7",
+      "conclusion": "success"
+    },
+    "initial_failed_run": {
+      "run_id": 34568065232,
+      "head": "a8b33d349a1e787e397391ea28a3be9115bb1b12",
+      "classification": "FRAGMENT_ID_COLLISION_WITH_EXISTING_ATB_ARCH_002_FIXED_NO_SCIENTIFIC_SCOPE_CHANGE"
+    },
     "exact_final_head_ci_required": true,
-    "qualified_state_after_success": "QUALIFIED_TB06A_BOUNDED_NUMERICAL_COMPILER_RUNTIME_FRAGMENT_PACKAGE"
+    "final_exact_head_evidence": "ESTABLISHED_BY_POST_CLOSEOUT_WORKFLOW"
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "complete": false
+    "tested": true,
+    "qualified": true,
+    "complete": true
   },
   "hard_boundaries": {
     "production_source_modified": false,
