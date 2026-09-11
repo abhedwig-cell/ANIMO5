@@ -6,7 +6,9 @@ Target: `TCD-037-A2`
 
 ## Decision
 
-`TCD-037-A2` satisfies the GOV04 Tier-A waiver predicate at readiness scope, subject to this workunit's exact-final-head CI remaining green.
+`TCD-037-A2` satisfies the Tier-A waiver predicate at readiness scope, subject to this workunit's exact-final-head CI remaining green.
+
+Current review governance at closeout is `ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904`, whose exact-head workflow `34546470484` passed. GOV05 explicitly retains the GOV04 Tier-A waiver without weakening. Therefore the technical Tier-A predicate evaluated here is still the full GOV04 predicate, now consumed through GOV05 as current governance.
 
 This is **not** scientific admission and does not grant the final Tier-A waiver. A later atomic admission decision must re-evaluate all applicable predicates on the then-current authorities and exact evidence pins.
 
@@ -48,9 +50,9 @@ Natural active-GHG revision-53 coverage remains `BLOCKED_SOURCE_TESTCASE_LINEAGE
 
 Historical revision-53 executable behaviour remains exactly `UNKNOWN`. GOV03's historical-uncertainty route remains the only available route if A2 is later admitted.
 
-## GOV04 Tier-A predicate
+## Tier-A predicate under GOV05
 
-At readiness scope all strengthened Tier-A conditions are PASS:
+GOV05 retains the GOV04 Tier-A waiver without weakening and keeps `STRICTEST_APPLICABLE_RISK_TRIGGER_WINS`. At readiness scope all strengthened Tier-A conditions are PASS:
 
 - exact source seam pinned;
 - physical and accounting ownership unambiguous;
@@ -73,7 +75,7 @@ At readiness scope all strengthened Tier-A conditions are PASS:
 
 The readiness record therefore reports `TIER_A_WAIVER_PREDICATE_PASS_AT_READINESS`.
 
-B3A06 itself does not grant the final waiver. It also does not claim that an independent second-line review occurred. Under the Tier-A route, that review gate is not yet applicable at readiness because the waiver predicate is being prepared for the later admission decision.
+B3A06 itself does not grant the final waiver. It also does not claim that an independent second-line review occurred. Under GOV05 Tier A, no separate review phase is required only because every retained GOV04 Tier-A waiver predicate passes. This is an applicability decision, not an independence claim.
 
 ## B3Q01 child binding
 
@@ -83,11 +85,11 @@ The finalized B3Q01 top-level schema is not changed. A later child disposition m
 
 while the exact canonical child identity remains `TCD-037-A2` in the child-scoped record/disposition carrier. No parent or sibling admission is implied.
 
-## Governance observation
+## Governance transition consumed
 
-At B3A06 branch creation, `ANIMO-GOV05` existed at `82f3a6b089588ae64e9884492b145cef1f866128`, but its status was still `AUTHORING_PACKAGE_COMPLETE_PENDING_IMMUTABLE_HEAD_CAPTURE_AND_ADVERSARIAL_REVIEW`; it was not qualified and therefore was not an authority for this workunit. GOV04 remained controlling.
+At B3A06 branch creation, GOV05 was not yet qualified. Before closeout it advanced to `ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904` and exact-head run `34546470484` succeeded. B3A06 therefore consumes GOV05 as current governance rather than freezing the earlier start-of-work observation.
 
-If GOV05 becomes qualified before B3A06 closeout, its effect must be checked before this readiness authority is finalized. A governance advance may not be silently ignored.
+The transition does not change the A2 scientific gates: GOV05 states that scientific evidence gates are not reduced and Tier A continues to use the full GOV04 waiver predicate.
 
 ## Hard boundaries
 
@@ -95,4 +97,4 @@ B3A06 performs no admission, grants no final waiver, changes no production sourc
 
 ## Next workunit if qualified
 
-`ANIMO-B3D22 — TCD-037-A2 CH4 Index-0 Formation/Emission Split GOV04 Tier-A Atomic Admission Decision`
+`ANIMO-B3D22 — TCD-037-A2 CH4 Index-0 Formation/Emission Split Tier-A Atomic Admission Decision`
