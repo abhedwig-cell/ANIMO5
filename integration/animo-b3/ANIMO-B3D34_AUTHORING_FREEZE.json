@@ -1,0 +1,14 @@
+{
+  "work_unit":"ANIMO-B3D34",
+  "base_head":"c08b7bd398a79f776a1e296308e3f381ecd85922",
+  "base_authority":"ANIMO-B3E02 exact-final readiness",
+  "substantive_authoring_complete":true,
+  "immutable_authoring_head_semantics":"the commit containing this freeze record, admission contract, validator, workflow, status candidate and work-unit contract is the substantive authoring head",
+  "review_must_pin_exact_commit":true,
+  "substantive_change_resets_GOV05_review":true,
+  "post_review_allowed_changes":["integration/animo-b3/ANIMO-B3D34_INTERNAL_ADVERSARIAL_REVIEW.json","integration/animo-b3/ANIMO-B3D34_STATUS.json"],
+  "scope":"TCD-042-E1 only: Flpn=0 AND 0<Flux<1.0d-8 AND Hetop>0 AND 0<P<=3.8510200002999744e-7 AND binary64",
+  "production_source_changes_allowed":false,
+  "canonical_register_changes_allowed":false,
+  "aggregate_changes_allowed":false
+}
