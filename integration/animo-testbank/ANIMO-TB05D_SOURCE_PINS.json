@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB05D",
+  "serial_base": {
+    "authority": "ANIMO-TB05C@788247b4346bedbb79749d5ce5daef3f99283f8d",
+    "exact_head_ci_run": 34568169477,
+    "exact_head_ci_conclusion": "success",
+    "central_registry_blob": "4c78cdb542c5ff4ce898c033eb99dd7b2daa7c2c"
+  },
+  "source_fragments": {
+    "ANIMO-TB04A": {
+      "head": "ad9683716e1a41a6f6b3d32ff1012bfa215c27db",
+      "ci_run": 34558440547,
+      "ci_conclusion": "success",
+      "fragment_blob": "bdaede89e8c5c8ae0fcc2771d633e2b7e3130a8e",
+      "status_blob": "dd126a5f154d4e7c4830ccf080554fcf9dff1a2a"
+    },
+    "ANIMO-TB04B": {
+      "head": "82213ad143bd5f0fa5c500303a8a4f1d35dd3f0c",
+      "ci_run": 34558759237,
+      "ci_conclusion": "success",
+      "fragment_blob": "bd80094482b6aa7fb4de6536f2022dc03f2debcf",
+      "status_blob": "ffe5ac0e0459585908ef3df6254fe7c197c25ac1"
+    },
+    "ANIMO-TB05A": {
+      "head": "e3d537935104b4a7253a5287f8fbf7df7e7459e2",
+      "ci_run": 34558946870,
+      "ci_conclusion": "success",
+      "fragment_blob": "4930296207e8538e8fff4dd3223f82559805ab1d",
+      "status_blob": "8f5e1a87c7dd449eb7a47f689c2181765f43bf33"
+    },
+    "ANIMO-TB05B": {
+      "head": "fe0a5aae6382cf37e1ad233655f313f5fa60f874",
+      "ci_run": 34559155201,
+      "ci_conclusion": "success",
+      "fragment_blob": "525942a7aaa71ed1d231d54073e118a99b21fb40",
+      "status_blob": "eaf628b50fc4f0cc916b5efff8570ff3c8aef7d8"
+    }
+  },
+  "qualified_ids": [
+    "ATB-STATE-003",
+    "ATB-STATE-004",
+    "ATB-STATE-005",
+    "ATB-STATE-006",
+    "ATB-BND-002",
+    "ATB-BND-005",
+    "ATB-SUB-003",
+    "ATB-SUB-004",
+    "ATB-SUB-005",
+    "ATB-SUB-008",
+    "ATB-SUB-009",
+    "ATB-SUB-010"
+  ],
+  "preserved_gaps": [
+    "ATB-STATE-007",
+    "ATB-BND-003",
+    "ATB-BND-004",
+    "ATB-BND-006",
+    "ATB-SUB-006",
+    "ATB-SUB-007",
+    "ATB-SUB-011",
+    "ATB-SUB-012"
+  ],
+  "scientific_authority_changed": false,
+  "production_source_changed": false,
+  "frozen_B0_changed": false,
+  "historical_B2_created": false,
+  "whole_model_golden_created": false,
+  "TCD_admission_performed": false
+}
