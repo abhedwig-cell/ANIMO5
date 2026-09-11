@@ -1,0 +1,61 @@
+name: ANIMO-B3D35 TCD042 bounded parent composition
+on:
+  push:
+    branches: [work/animo-b3d35-tcd042-parent-composition-gov05-tier-d-admission]
+  workflow_dispatch:
+permissions: {contents: read, actions: read}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in \
+            22e4ec3bb88e2e13905ccbbb2f380a9bf235db55 \
+            8b2a4071d623bc2e3003dca8977e032d5c0d8c3c \
+            214062fe773618ea77c7c74867cc8d9a2a4eef6d \
+            67a87c6a650d503c1b0968ada2cc5eaa5155aa42 \
+            942f26fe32eaf91679e59a1968ae173a3703e22d \
+            7fa0162415e02a6f0167e71b48ae38177a9e06e0 \
+            4d7c42bb749ed5fbf1c884fba4a26a1a5b898505 \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            1bbe4c211197590f346803106e45dca5faae79fc \
+            f65a47724e4a4fca7f2d8b8d6de9eeee51867904
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+            git cat-file -e "${sha}^{commit}"
+          done
+      - name: Verify exact head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify exact-final authorities
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request
+          checks={
+            34594813244:"22e4ec3bb88e2e13905ccbbb2f380a9bf235db55",
+            34588335817:"8b2a4071d623bc2e3003dca8977e032d5c0d8c3c",
+            34588681709:"214062fe773618ea77c7c74867cc8d9a2a4eef6d",
+            34590598874:"67a87c6a650d503c1b0968ada2cc5eaa5155aa42",
+            34587001516:"942f26fe32eaf91679e59a1968ae173a3703e22d",
+            34586116849:"4d7c42bb749ed5fbf1c884fba4a26a1a5b898505",
+            34391300744:"cbd262bdabe92923113b7326f2f42822ce9a971c",
+            34462295879:"1bbe4c211197590f346803106e45dca5faae79fc",
+            34546470484:"f65a47724e4a4fca7f2d8b8d6de9eeee51867904"
+          }
+          for run,sha in checks.items():
+            req=urllib.request.Request(f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run}",headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}","Accept":"application/vnd.github+json"})
+            with urllib.request.urlopen(req) as f: d=json.load(f)
+            assert d["head_sha"]==sha and d["status"]=="completed" and d["conclusion"]=="success",(run,d.get("head_sha"),d.get("status"),d.get("conclusion"))
+          print("exact-final authorities verified")
+          PY
+      - run: python -m json.tool integration/animo-b3/B3D35_TCD042_PARENT_COMPOSITION_CONTRACT.json >/dev/null
+      - run: python -m json.tool integration/animo-b3/B3D35_TCD042_PARENT_COVERAGE.json >/dev/null
+      - run: python -m json.tool integration/animo-b3/B3D35_TCD042_PARENT_ORACLES.json >/dev/null
+      - run: python -m json.tool integration/animo-b3/ANIMO-B3D35_STATUS.json >/dev/null
+      - run: python -m json.tool integration/animo-b3/ANIMO-B3D35_AUTHORING_FREEZE.json >/dev/null
+      - run: python -m py_compile tools/validate_b3d35_tcd042_parent.py
+      - run: python tools/validate_b3d35_tcd042_parent.py

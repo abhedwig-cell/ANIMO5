@@ -1,0 +1,16 @@
+{
+  "work_unit":"ANIMO-B3D35",
+  "parent":"TCD-042",
+  "supported_parent_predicate":"Flpn=0 AND Hetop>0 AND (Flux=0 OR (0<Flux<1.0d-8 AND 0<P<=3.8510200002999744e-7 AND binary64))",
+  "coverage":[
+    {"child":"TCD-042-B1","authority":"ANIMO-B3D33@8b2a4071d623bc2e3003dca8977e032d5c0d8c3c","status":"EXACT_FINAL_ADMITTED","predicate":"Flpn=0 AND Flux=0 AND Hetop>0","role":"EXACT_ZERO_BRANCH"},
+    {"child":"TCD-042-E1","authority":"ANIMO-B3D34@22e4ec3bb88e2e13905ccbbb2f380a9bf235db55","status":"EXACT_FINAL_ADMITTED","predicate":"Flpn=0 AND 0<Flux<1.0d-8 AND Hetop>0 AND 0<P<=3.8510200002999744e-7 AND binary64","role":"FINITE_POSITIVE_QUALIFIED_ENVELOPE_BRANCH"}
+  ],
+  "excluded_remainders":[
+    {"surface":"Hetop=0","status":"EXPLICIT_REV53_SUPPORTED_SCOPE_EXCLUSION","globally_invalid_input":false,"scientific_semantics_resolved":false},
+    {"surface":"finite-positive subthreshold states outside 0<P<=3.8510200002999744e-7","status":"NOT_QUALIFIED_FAIL_CLOSED","globally_invalid_input":false,"scientific_semantics_resolved":"outside-envelope numerical policy not qualified"}
+  ],
+  "outside_atomized_parent_claim":["Flpn!=0","Flux<0","Flux>=1.0d-8"],
+  "overlap_gap_audit":{"B1_E1_overlap":false,"Flux_zero_double_ownership":false,"missing_state_inside_supported_parent_predicate":false,"excluded_remainder_silently_included":false,"scope_widened":false,"parent_composition_complete_for_supported_revision53_scope":true,"full_parser_domain_complete":false},
+  "production_binding_constraint_carried":true
+}

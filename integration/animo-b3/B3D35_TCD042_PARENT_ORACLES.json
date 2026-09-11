@@ -1,0 +1,16 @@
+{
+  "work_unit":"ANIMO-B3D35",
+  "kind":"SYNTHETIC_COMPOSITION_PARTITION_ORACLES_B1_DIAGNOSTIC_NOT_B2",
+  "P_max":3.8510200002999744e-7,
+  "cases":[
+    {"id":"C01","Flpn":0,"Flux":0.0,"Hetop":0.02,"P":0.0,"expected_owner":"TCD-042-B1","expected_in_supported_parent":true,"expected_child_count":1},
+    {"id":"C02","Flpn":0,"Flux":5e-9,"Hetop":0.02,"P":2e-7,"expected_owner":"TCD-042-E1","expected_in_supported_parent":true,"expected_child_count":1},
+    {"id":"C03","Flpn":0,"Flux":0.0,"Hetop":0.0,"P":null,"expected_owner":"NONE","expected_in_supported_parent":false,"reason":"HETOP_ZERO_EXCLUDED_UNRESOLVED"},
+    {"id":"C04","Flpn":0,"Flux":5e-9,"Hetop":0.02,"P":4e-7,"expected_owner":"NONE","expected_in_supported_parent":false,"reason":"P_ABOVE_NQ03_ENVELOPE_FAIL_CLOSED"},
+    {"id":"C05","Flpn":0,"Flux":5e-9,"Hetop":0.02,"P":0.0,"expected_owner":"NONE","expected_in_supported_parent":false,"reason":"P_NOT_STRICTLY_POSITIVE_FOR_E1"},
+    {"id":"C06","Flpn":1,"Flux":0.0,"Hetop":0.02,"P":0.0,"expected_owner":"NONE","expected_in_supported_parent":false,"reason":"FLPN_NONZERO_OUTSIDE_TCD042_ATOMIZED_SCOPE"},
+    {"id":"C07","Flpn":0,"Flux":1e-8,"Hetop":0.02,"P":3e-7,"expected_owner":"NONE","expected_in_supported_parent":false,"reason":"FLUX_THRESHOLD_NOT_SUBTHRESHOLD"},
+    {"id":"C08","Flpn":0,"Flux":-1e-9,"Hetop":0.02,"P":-1e-8,"expected_owner":"NONE","expected_in_supported_parent":false,"reason":"NEGATIVE_FLUX_OUTSIDE_SUPPORTED_ATOMIZED_SCOPE"}
+  ],
+  "invariants":{"B1_and_E1_disjoint":true,"exactly_one_child_owns_each_supported_case":true,"no_excluded_case_promoted":true,"no_numerical_sum_composition":true,"not_historical_reference":true}
+}
