@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB04A",
+  "title": "State & Restart Bank Adoption",
+  "branch": "work/animo-tb04a-state-restart-bank-adoption",
+  "base_authority": "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d",
+  "state": "QUALIFICATION_CANDIDATE_PENDING_EXACT_HEAD_CI",
+  "scope": [
+    "checkpoint projection purity",
+    "restricted-core executable split-run equivalence",
+    "exact year-boundary continuation ordering",
+    "narrow macropore persistent-solute restore contract",
+    "whole-model restart gap tracking"
+  ],
+  "source_authorities": {
+    "STATEQ01": "4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "STATEQ02": "cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "STATEQ04": "ef9a5998cafae433deeba701a8e9a8a08eacc92f"
+  },
+  "fragment": "integration/animo-testbank/fragments/ANIMO-TB04A_STATE_RESTART_FRAGMENT.json",
+  "qualified_entry_candidates": ["ATB-STATE-003", "ATB-STATE-004", "ATB-STATE-005", "ATB-STATE-006"],
+  "gap_entries": ["ATB-STATE-007"],
+  "gov05_adversarial_self_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "result": "PASS_BOUNDED_STATE_RESTART_ADOPTION_SCOPE",
+    "checks": {
+      "whole_model_claim_inferred_from_restricted_core": false,
+      "kernel_macropore_result_misrepresented_as_whole_model_split": false,
+      "synthetic_year_boundary_result_misrepresented_as_canonical_time_admission": false,
+      "stateq04_candidate_contract_misrepresented_as_tcd_admission": false,
+      "numerical_tolerance_promoted_to_scientific_truth": false,
+      "central_registry_mutated": false,
+      "production_source_modified": false,
+      "whole_model_golden_created": false
+    }
+  },
+  "qualification": {
+    "validator": "tools/validate_animo_tb04a.py",
+    "workflow": ".github/workflows/animo-tb04a-state-restart.yml",
+    "exact_final_head_ci_required": true,
+    "qualified_state_after_success": "QUALIFIED_TB04A_BOUNDED_STATE_AND_RESTART_FRAGMENT_PACKAGE"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "complete": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "whole_model_golden_baseline_created": false,
+    "whole_model_restart_qualified": false
+  }
+}

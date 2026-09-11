@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB04A",
+  "exact_head": "ESTABLISHED_BY_EXACT_HEAD_CI",
+  "manifest_identity": "integration/animo-testbank/fragments/ANIMO-TB04A_STATE_RESTART_FRAGMENT.json",
+  "selected_test_ids": ["ATB-STATE-003", "ATB-STATE-004", "ATB-STATE-005", "ATB-STATE-006", "ATB-STATE-007"],
+  "result": "PASS",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "receipt_semantics": "Qualification receipt is valid only together with successful exact-head GitHub Actions evidence and is not scientific admission."
+}

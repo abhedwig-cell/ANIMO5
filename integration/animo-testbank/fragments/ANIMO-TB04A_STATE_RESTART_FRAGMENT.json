@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "fragment_id": "ANIMO-TB04A-STATE-RESTART",
+  "producer_workunit": "ANIMO-TB04A",
+  "base_authority": "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d",
+  "registry_integration": "SEPARATE_SERIAL_CONSOLIDATION_WORKUNIT_ONLY",
+  "central_registry_write": "FORBIDDEN_BY_FRAGMENT_PRODUCER",
+  "scope": "TB-L5 state and restart adoption only",
+  "entries": [
+    {
+      "test_id": "ATB-STATE-003",
+      "layer": "TB-L5",
+      "owner": "testbank-state-restart",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-STATEQ01 checkpoint projection purity sentinel carried in STATEQ02@cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_STRUCTURAL_IDENTITY_NO_TOLERANCE",
+      "claim": "Checkpoint projection is observational only for the qualified synthetic CORE_CNP_SUBSURFACE_ONLY projection: input mutation and aliasing to accepted state are forbidden, repeated projection is idempotent, and report accumulators do not alter the physical checkpoint payload.",
+      "applicability_pins": {
+        "profile": "CORE_CNP_SUBSURFACE_ONLY",
+        "evidence_class": "SYNTHETIC_EXECUTABLE_CHECKPOINT_PROJECTION_CONTRACT_NON_B2",
+        "canonical_state_admission": false,
+        "legacy_Output_Init_purity_claim": false
+      },
+      "failure_semantics": "Any mutation, output aliasing, non-idempotence or report-accumulator dependence fails the invariant.",
+      "permanence": "REUSABLE_INVARIANT_NOT_TCD_DEBUG_PROBE"
+    },
+    {
+      "test_id": "ATB-STATE-004",
+      "layer": "TB-L5",
+      "owner": "testbank-state-restart",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-STATEQ02@cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_BITWISE_NO_TOLERANCE",
+      "claim": "For the qualified restricted-core C/N/P profile and accepted split boundaries 66, 67, 68, 71 and 72, restored accepted snapshots and future trajectories match the uninterrupted run exactly.",
+      "applicability_pins": {
+        "profile": "RESTRICTED_CORE_CNP_WITH_EXTERNAL_CROP_SURFACE_EXCLUDED",
+        "natural_case": "LWKM_gras_1040.2021.2045",
+        "qualified_split_boundaries": [66, 67, 68, 71, 72],
+        "whole_model_state_claim": false,
+        "excluded": ["GHG", "MACROPORES", "TCD-016-C1_DRY_SOLUTE_TRANSITION", "TCD-040_NONZERO_LAYER0_AQUEOUS_RESTART_PATH", "UNRESOLVED_INTERNAL_CROP_RESTART_STATE", "STABLE_DOM_ACTIVE_STATE", "PCLASS_ACTIVE_STATE"]
+      },
+      "failure_semantics": "Any non-exact accepted snapshot or post-restore trajectory mismatch fails within the pinned restricted-core scope.",
+      "permanence": "REUSABLE_RESTRICTED_CORE_SPLIT_RUN_CONTRACT"
+    },
+    {
+      "test_id": "ATB-STATE-005",
+      "layer": "TB-L5",
+      "owner": "testbank-state-restart",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-STATEQ01 exact year-boundary continuation sentinel carried in STATEQ02@cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_COORDINATE_AND_STATE_IDENTITY_NO_TOLERANCE",
+      "claim": "A checkpoint at an exact year boundary resumes from the same exact coordinate, does not replay prior-year closeout, and performs new-year initialization only on the next-interval side.",
+      "applicability_pins": {
+        "profile": "CORE_CNP_SUBSURFACE_ONLY",
+        "evidence_class": "SYNTHETIC_EXECUTABLE_TS01_TIME02_BOUNDARY_CONTRACT_NON_B2",
+        "canonical_time_admission": false,
+        "supplied_case_revision53_year_boundary_split": false
+      },
+      "failure_semantics": "Offset, floating or non-reduced boundary coordinates, closeout replay, or wrong-side new-year initialization fail the contract.",
+      "permanence": "REUSABLE_TIME_RESTART_ORDERING_INVARIANT"
+    },
+    {
+      "test_id": "ATB-STATE-006",
+      "layer": "TB-L5",
+      "owner": "testbank-state-restart",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-STATEQ04@ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_BYTEWISE_NO_TOLERANCE",
+      "claim": "The qualification-only TCD-031 macropore persistent-solute checkpoint contract preserves all six species across both accepted CoMp domains in the source-bound kernel split, with RsCoMp reconstructed from restored accepted CoMp and current-interval workspace excluded from persistent state.",
+      "applicability_pins": {
+        "risk_tier": "GOV04_TIER_C",
+        "evidence_boundary": "FROZEN_SOURCE_KERNEL_REMEDIATION_QUALIFICATION_PLUS_PINNED_MP02_COMPLETE_MODEL_ACTIVE_REACHABILITY",
+        "whole_model_active_split": false,
+        "canonical_state_admission": false,
+        "production_checkpoint_implementation": false
+      },
+      "failure_semantics": "Any species/domain loss or failure to reconstruct the result alias from accepted persistent owner state fails the narrow kernel contract.",
+      "permanence": "REUSABLE_NARROW_MACROPORE_RESTART_CONTRACT_NOT_ADMISSION"
+    },
+    {
+      "test_id": "ATB-STATE-007",
+      "layer": "TB-L5",
+      "owner": "testbank-state-restart",
+      "status": "GAP",
+      "source_identity": "ANIMO-TB01 architecture gap plus STATEQ02 and STATEQ04 scope exclusions",
+      "expected_value_provenance": "UNKNOWN",
+      "comparison_policy": "NOT_YET_QUALIFIED",
+      "claim": "Whole-model persistent-state completeness and executable restart equivalence across all active modules remain unqualified.",
+      "applicability_pins": {
+        "includes_future_need": ["GHG", "complete active macropore model", "internal crop restart state", "stable DOM active state", "PCLASS active state", "all continuation and management transitions"]
+      },
+      "failure_semantics": "Fail closed: no whole-model restart qualification may be inferred from narrower entries.",
+      "permanence": "GAP_TRACKER"
+    }
+  ],
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "whole_model_golden_baseline_created": false,
+    "whole_model_restart_qualified": false,
+    "new_tolerance_introduced": false
+  }
+}
