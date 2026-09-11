@@ -31,14 +31,18 @@
   "validation": {
     "workflow": ".github/workflows/animo-b3i08-tcd025-routing.yml",
     "validator": "tools/validate_b3i08_tcd025_routing.py",
+    "candidate_head": "c48791b8e2aecbbf33c28b5a50df1b88f5aa280c",
+    "candidate_ci_run": 34572185137,
+    "candidate_ci_job": 103176486897,
+    "candidate_ci_conclusion": "success",
     "exact_final_head_ci_required": true
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "qualified": true,
+    "workunit_complete": true
   },
   "recommended_next": [
     "After exact-final green, A1-A4 may enter separate bounded Tier-C admission decisions consuming B3A10 and B3I08 without widening scope.",
