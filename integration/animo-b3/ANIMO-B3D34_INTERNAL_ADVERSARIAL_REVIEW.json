@@ -1,0 +1,53 @@
+{
+  "work_unit":"ANIMO-B3D34",
+  "reviewed_head":"62db8d172cf7ea0ab6c6309c4aacdbe2eb510df5",
+  "reviewed_authoring_ci":{"run":34594689453,"job":103247598808,"conclusion":"success"},
+  "model":"MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "same_agent":true,
+  "genuinely_independent":false,
+  "independence_claimed":false,
+  "assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "risk_tier":"C_NUMERICAL_POLICY",
+  "risk_rule":"STRICTEST_APPLICABLE_RISK_TRIGGER_WINS",
+  "scientific_gate_reduction":false,
+  "target_scope":"TCD-042-E1: Flpn=0 AND 0<Flux<1.0d-8 AND Hetop>0 AND 0<P<=3.8510200002999744e-7 AND binary64",
+  "counter_hypotheses_tested":8,
+  "counter_hypotheses":[
+    {"id":"H1_BOUNDED_E1_IS_SILENT_FULL_DOMAIN_SUBSTITUTION","hypothesis":"Admitting only Hetop>0 and the qualified P envelope silently substitutes a narrower claim for the routed TCD-042-E1 object and is therefore invalid.","test":"Reconstruct B3I10, B3E02 and B3Q02 scope semantics and check whether the disposition target is explicitly a bounded canonical child claim rather than parent or full-domain admission.","result":"REJECTED_FOR_BOUNDED_CHILD_ADMISSION","basis":"B3I10 and B3E02 explicitly preserve Hetop=0 as excluded and scientifically unresolved. B3D34 binds only CANONICAL_CHILD_ATOM:TCD-042-E1 with an explicit positive-Hetop and P-envelope predicate, does not alter input validity and does not admit parent TCD-042."},
+    {"id":"H2_NQ03_POLICY_IS_EXTENDED_BEYOND_QUALIFIED_ENVELOPE","hypothesis":"The admission generalizes an observed numerical policy beyond the NQ03/NQ03R evidence envelope.","test":"Compare every B3D34 scope term and coefficient identity against exact NQ03 and NQ03R authorities.","result":"REJECTED","basis":"The admitted scope is exactly binary64, Flpn=0, finite-positive subthreshold Flux, Hetop>0 and 0<P<=3.8510200002999744e-7. States above the envelope remain NOT_QUALIFIED_FAIL_CLOSED."},
+    {"id":"H3_IMPLEMENTATION_ORDER_FINDING_INVALIDATES_SCIENTIFIC_POLICY","hypothesis":"NQ03R literal-evaluation mismatches mean the numerical policy itself is not sufficiently qualified for scientific B3 admission.","test":"Re-evaluate NQ03R severity, reconstructed oracle evidence and distinction between equation-level scientific policy and bitwise production implementation binding.","result":"REJECTED_WITH_MANDATORY_DOWNSTREAM_CONSTRAINT","basis":"NQ03R independently reconstructs the governing equation, 120-digit oracle, 2008-point envelope, conservation and continuity and classifies evaluation-order sensitivity as non-blocking for the restricted policy but blocking before bitwise production binding. B3D34 carries that block and authorizes no production implementation."},
+    {"id":"H4_NO_B2_MEANS_NO_ADMISSION_ROUTE","hypothesis":"Because historical revision-53 behavior is unavailable as qualified B2, E1 cannot be scientifically admitted.","test":"Apply current GOV03 G6U authority and verify that no historical fidelity claim is made.","result":"REJECTED","basis":"GOV03 explicitly qualifies the historical-uncertainty route subject to claim-scoped B3 evidence. B3D34 states historical behavior UNKNOWN_WITHOUT_B2 and uses HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY rather than historical equivalence."},
+    {"id":"H5_B1_AND_E1_ARE_IMPLICITLY_COMPOSED_OR_DOUBLE_ADMITTED","hypothesis":"E1 admission may accidentally absorb the already-admitted exact-zero B1 atom or treat zero flow as part of the finite-positive policy.","test":"Check strict Flux predicates and RG05L/B3I10 ownership boundaries.","result":"REJECTED","basis":"B1 remains the separately admitted Flux=0 child. B3D34 requires 0<Flux<1.0d-8 and records TCD042_B1_readmitted=false. Exact-zero continuity is evidence only, not composition or re-admission."},
+    {"id":"H6_CHILD_ADMISSION_AUTOMATICALLY_ADMITS_PARENT","hypothesis":"With B1 already admitted, admitting E1 automatically completes and admits top-level TCD-042.","test":"Apply B3Q02 child-carrier semantics, B3Q01 composition discipline and current TCD-042 residual scope.","result":"REJECTED","basis":"B3Q02 explicitly states child disposition does not imply parent admission. Hetop=0 remains outside supported child scope and parent composition requires a separate explicit workunit. B3D34 parent_tcd_admitted remains false."},
+    {"id":"H7_CURRENT_AGGREGATE_OR_QUEUE_HAS_MOVED","hypothesis":"A later aggregate or competing TCD-042 admission has superseded RG05L/B3Q03 and makes this candidate stale or conflicting.","test":"Recheck live branch namespace for RG05M and use exact RG05L/B3Q03/B3E02 lineage in CI.","result":"REJECTED_AT_REVIEW_TIME","basis":"No RG05M branch exists at review time. The exact-final RG05L, B3Q03 and B3E02 authorities all pass CI and no competing B3D34 branch existed when this workunit was opened."},
+    {"id":"H8_ADMISSION_AUTHORIZES_PRODUCTION_OR_NUMERICAL_TUNING","hypothesis":"Scientific B3 admission could be read as permission to patch source, choose compiler-dependent evaluation order, alter thresholds or open B4.","test":"Inspect diff scope, hard boundaries and NQ03R downstream implementation-order constraint.","result":"REJECTED","basis":"The frozen candidate changes only B3D34 governance/evidence artifacts. No src or reference file changes, no tolerance or solver change, no input validation change, no B4 opening and no production migration are authorized."}
+  ],
+  "gate_results":{
+    "atomic_child_identity":"PASS",
+    "B0_identity":"PASS",
+    "B3E02_readiness":"PASS",
+    "bounded_scope_identity":"PASS",
+    "NQ03_policy_identity":"PASS",
+    "NQ03_oracle_and_dense_probe_evidence":"PASS",
+    "NQ03R_numerical_review_reuse":"PASS_VERIFY_AND_REUSE",
+    "implementation_order_constraint":"PASS_CARRIED_BLOCKS_PRODUCTION_BINDING_ONLY",
+    "GOV03_historical_uncertainty_route":"PASS",
+    "B3Q02_child_carrier_semantics":"PASS",
+    "B1_noncomposition":"PASS",
+    "Hetop_zero_fail_closed_exclusion":"PASS",
+    "parent_nonadmission":"PASS",
+    "production_separation":"PASS",
+    "aggregate_cadence":"PASS_ONE_POST_RG05L_NO_AGGREGATE"
+  },
+  "residual_uncertainty":[
+    "Historical revision-53 behavior remains unknown because no qualified B2 reference exists.",
+    "Hetop=0 scientific semantics remain unresolved and outside the admitted child scope.",
+    "States with P above 3.8510200002999744e-7 remain unqualified fail-closed.",
+    "Coefficient evaluation order and floating-point contraction/reassociation semantics remain unresolved for bitwise production binding.",
+    "Parent TCD-042 is not admitted by this child decision and requires separate explicit composition qualification."
+  ],
+  "outcome":"SELF_REVIEW_PASS_ADMIT_TCD042_E1_POSITIVE_HETOP_WITH_HISTORICAL_UNCERTAINTY",
+  "scientific_admission_supported":true,
+  "parent_admission_supported_here":false,
+  "production_authorization_supported":false
+}
