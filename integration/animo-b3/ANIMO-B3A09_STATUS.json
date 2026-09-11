@@ -8,7 +8,7 @@
   "target_child_atom": "TCD-037-A4",
   "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
   "risk_tier": "A",
-  "state": "PERSISTED_VALIDATION_PENDING",
+  "state": "QUALIFIED_TCD037_A4_TIER_A_ADMISSION_READINESS_WAIVER_PREDICATE_PASS_NO_ADMISSION",
   "decision_after_green": "QUALIFIED_TCD037_A4_TIER_A_ADMISSION_READINESS_WAIVER_PREDICATE_PASS_NO_ADMISSION",
   "authorities": {
     "latest_atomic_admission": "ANIMO-B3D25@4da2dd067069944a5e3eeb5f532566a23402bd68",
@@ -38,7 +38,7 @@
     "qualified_synthetic_activation_alternative": "PASS",
     "signed_exchange": "PASS",
     "historical_uncertainty_explicit": "PASS",
-    "tier_a_waiver_predicate": "PASS_AT_READINESS_PENDING_EXACT_HEAD_CI"
+    "tier_a_waiver_predicate": "PASS_AT_READINESS"
   },
   "tier_a_waiver": {
     "predicate_pass_at_readiness": true,
@@ -61,16 +61,27 @@
     "normal_batch_threshold_reached": false,
     "aggregate_update_required_now": false
   },
+  "validator_remediation": {
+    "classification": "TOOLING_VALIDATOR_FAILURE",
+    "failed_run_id": 34550713601,
+    "failed_job_id": 103112844860,
+    "root_cause": "Validator referenced non-existent B3I07 key suggested_next_work_unit although pinned immutable B3I07 stores the historical route in next_work_unit.",
+    "semantic_evidence_omitted": false,
+    "readiness_artifact_changed": false,
+    "historical_b3i07_routing_rewritten": false,
+    "repair": "Read the immutable B3I07 next_work_unit field directly and require its full historical ANIMO-B3A08 route string.",
+    "scientific_predicates_changed": false
+  },
   "validation": {
     "workflow": ".github/workflows/animo-b3a09-tcd037-a4.yml",
     "validator": "tools/validate_b3a09_tcd037_a4.py",
     "exact_final_head_must_pass": true,
-    "run_id": null,
-    "job_id": null,
-    "tested_head": null,
-    "conclusion": "PENDING",
-    "scope_guard": "PENDING",
-    "closeout_note": null
+    "qualification_run_id": 34553473998,
+    "qualification_job_id": 103121028049,
+    "qualification_tested_head": "7fc2cfbc9d6eadeab6d3dfe42563d9ae39f84d39",
+    "qualification_conclusion": "success",
+    "scope_guard": "PASS",
+    "closeout_note": "A final exact-head CI run on this closeout commit is still required externally; no production, routing, register, B4, sibling or parent-admission change is included."
   },
   "scope_guards": {
     "scientific_admission": false,
@@ -92,9 +103,9 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "next_if_exact_head_ci_green": "LIVE_RECHECK_THEN_ANIMO-B3D26_TCD037_A4_TIER_A_ATOMIC_ADMISSION_DECISION_IF_IDENTIFIER_STILL_FREE"
 }
