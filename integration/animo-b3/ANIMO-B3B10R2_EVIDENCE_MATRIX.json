@@ -1,0 +1,221 @@
+{
+  "workunit": "ANIMO-B3B10R2",
+  "title": "Targeted Independent Rereview of TCD-031 Source Provenance & Restart-State Evidence",
+  "tcd": "TCD-031",
+  "review_branch": "review/animo-b3b10r2-tcd031-independent-second-line-rereview",
+  "exact_starting_head": "8522752f9941e6fd5b421cf5ac4ef839384d7ce7",
+  "persist_early_checkpoint": "a20325d819c92bc49aebafd720ad045c635fb5f1",
+  "targeted_rereview_disposition": "PASS_TARGETED_INDEPENDENT_REREVIEW_TCD031_SOURCE_PROVENANCE_GATES_CLOSED",
+  "review_scope": "ONLY_B3B10R_FAILED_SOURCE_PROVENANCE_GATES_PLUS_REQUIRED_REUSE_REGRESSION_GUARDS",
+  "independence": {
+    "method": "fresh targeted source/provenance reconstruction from the exact frozen archive plus exact pinned repository evidence",
+    "prior_conclusions_auto_accepted": false,
+    "archive_text_committed": false,
+    "source_redistribution_performed": false
+  },
+  "live_authorities": {
+    "aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "STATEQ03": "ANIMO-STATEQ03@10c50e65d1369d5f3b26736c4b12d3a482379eb5",
+    "STATEQ04": "ANIMO-STATEQ04@ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+    "B3B10": "ANIMO-B3B10@eccba6712f65455161d05fa9cdf6aa142f823dd4",
+    "B3B10R": "ANIMO-B3B10R@36aad892cac546105dfec0fe43aa34a18e23bcad",
+    "B3B10E1": "ANIMO-B3B10E1@8522752f9941e6fd5b421cf5ac4ef839384d7ce7",
+    "MP01": "ANIMO-MP01@7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "MP02": "ANIMO-MP02@6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "MASSQ02": "ANIMO-MASSQ02@56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "frozen_B0_retention": "ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300"
+  },
+  "live_discovery": {
+    "later_TCD031_targeted_rereview_found": false,
+    "dedicated_TCD031_issue_count": 0,
+    "TCD031_PR_mentions": [19],
+    "PR19_role": "ROUTING_ONLY",
+    "PR19_issue_comments": 0,
+    "PR19_reviews": 0,
+    "aggregate_change_since_B3B10R": "RG05H",
+    "aggregate_change_affects_TCD031_evidence_scope": false,
+    "superseding_or_contradictory_TCD031_evidence_found": false
+  },
+  "archive_provenance": {
+    "archive_filename_hint": "ANIMO_4.1.5.53(3).zip",
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "archive_sha256_independently_recomputed": true,
+    "source_member_count": 63,
+    "source_member_index_sha256": "be4182c7438650f86399f912c57bbad42adf71fc362b694537f2db4d64c816fc",
+    "source_member_index_independently_recomputed": true,
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "testbank_sha256_independently_recomputed": true,
+    "repository_visible_primary_source": false,
+    "redistribution_rights_established": false,
+    "controlled_local_archive_available_for_rereview": true,
+    "mechanical_binding_result": "PASS_ARCHIVE_HASH_TO_MEMBER_HASH_TO_NORMALIZED_SLICE_HASH_TO_PROBE_CLAIM",
+    "claim_records_depend_only_on_hand_transcription": false
+  },
+  "relevant_member_hashes": {
+    "mapoinput.for": "081c671d2f576ab0608350cbb0083eab157c586a6783522cda3534b141244065",
+    "Init.for": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+    "Output_Init.for": "6452c175dcd7c6e80983c1176467735d07f75595cf8341526b115b70121b6a2f",
+    "Animo.for": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
+    "MAPOTRANSPORT.FOR": "735b3f86497a6968c24d2dbce2ad23ae350b4eed573da421baa1a7557a0615da",
+    "Transca.for": "7f31150050bd41aef203587818cde94cf689e6288094b2ad84aea34732b07ff9",
+    "Transgen.for": "cd5efa76c1a4840b50901ee5015940b74c5fe4df79aca43d53a4a4cb77b9fecb",
+    "input1.for": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+    "Hydro_detailed.for": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d"
+  },
+  "normalized_probe_slice_replay": {
+    "SRC-MAPO-001": "853650e113b423f12f0687405a1b5f2d36287fbd089817896a2f5e8dc9db13e3",
+    "SRC-MAPO-002": "3118effca2e3a9722b985ff36624178418a45e3da21c58622f040c30ca612814",
+    "SRC-MAPO-003": "e1fbf2aa1a4ce8cd919f1f5d2c92d004ccdbfe6c5226c11898ea118b7fd72e29",
+    "SRC-MAPO-004": "eb7bdc6135625b364e7796cc6fde3d376e406d7059c6f88e94c87c4db5406a31",
+    "SRC-OUTINIT-001": "ee293a44f02f5855b672ae7513bc48bc0b95e0fe37fa53edecd2ac2ed62109bd",
+    "SRC-OUTINIT-002": "f1c9a3f9af7f7c0bff0fe1f47730f78de47d8d5e56cac971bacc939914eafad0",
+    "SRC-ANIMO-001": "98b75c3df574ba59b5289ae79ed6bd0726544492cd56c77d2918baf44b1a908a",
+    "SRC-INIT-001": "b2991f8d8cd14f1693debfbaabe4fb092560053001276b3573cdbcd5c10091fd",
+    "SRC-INIT-002": "11423510963b606e440f5d84232b2f1db4c061fe7655e87f221f5bf5fc86d055",
+    "SRC-RSCOMP-001": "eac197fdd0743cfc03a9ce48572e97be98276eb3bc6dc6e92a3bcf97f7e36b73",
+    "SRC-RSCOMP-002": "9c9c124e9ecfe645047938dff29c3deb91b5650a369737c0967e01633ee1100b",
+    "SRC-HYDRO-001": "9a99ae47de709488d4a11d272e677599c32134db9f0ccefff06db22a222555c1",
+    "SRC-HYDRO-002": "99c7bbbf11ef006929a3522c6da7fa064259c21a4978eaa71ad7c85ffa22076c",
+    "SRC-HYDRO-003": "5b615ff3b13dc8ab309d2d45e2490e574195478962d9cf0bb286b876b0a34ded",
+    "SRC-ITREC-001": "071a11250f76f05fc89c582c1c98b20474e73bcde2d16b6e19507671dca6cec2",
+    "SRC-ITREC-002": "03c6c03cef34481cfa77e6744f2b9b893de9e258cfb97fed0af3cbfd7d402aa6",
+    "all_committed_probe_slice_hashes_match_independent_replay": true
+  },
+  "failed_gate_rereview": {
+    "complete_source_level_ownership": {
+      "status": "PASS",
+      "finding": "Persistent CoMp state, RsCoMp result alias, interval workspaces, diagnostic and external hydrology dependencies have distinct producer-consumer and lifecycle roles in frozen source."
+    },
+    "native_mapoinput_loader": {
+      "status": "PASS",
+      "finding": "Nupa=4 reads >MPnitr into CoMpNh(1:2),CoMpNi(1:2); >MPorgs into CoMpDiorMa(1:2),CoMpDiorNi(1:2); and under Ipo.EQ.1 >MPphos into CoMpPo(1:2),CoMpDiorPo(1:2). input1 actively calls Mapoinput task 4 when Ioptmp=1."
+    },
+    "native_Output_Init_serialization_omission": {
+      "status": "PASS",
+      "finding": "Macropore writer code exists but its subroutine arguments and writer block are commented/inactive; persistent macropore solute end-state is omitted by the active Output_Init implementation."
+    },
+    "native_Animo_Output_Init_call_surface": {
+      "status": "PASS",
+      "finding": "Animo.for has an active Output_Init call but the macropore argument continuation is commented/inactive, independently corroborating the serialization omission."
+    },
+    "native_Init_restore_direction_and_timing": {
+      "status": "PASS",
+      "finding": "Init.for executes CoMp* <- RsCoMp* for both domains, with phosphorus conditional on IPO=1, after and outside the first-timestep special-case block. Animo calls Init before macropore transport producers, so the promotion reaches the first active timestep of a resumed run and can replace CoMp values loaded from INITIAL.INP."
+    },
+    "native_RsCoMp_pre_promotion_initialization": {
+      "status": "PASS",
+      "answer": "NO",
+      "finding": "A full scan of the 63 frozen .for/.inc members finds no active family-specific direct assignment, DATA initialization, SAVE initialization, restart load or active input reference that establishes RsCoMpDiorMa/RsCoMpDiorNi/RsCoMpDiorPo/RsCoMpNh/RsCoMpNi/RsCoMpPo before the first Init promotion. Production occurs later through generic MPTRANSP RsCoMp outputs."
+    }
+  },
+  "ownership_reconstruction": {
+    "persistent_ANIMO_solute_owner": [
+      "CoMpDiorMa(1:2)",
+      "CoMpDiorNi(1:2)",
+      "CoMpNh(1:2)",
+      "CoMpNi(1:2)",
+      "CoMpDiorPo(1:2) when IPO=1",
+      "CoMpPo(1:2) when IPO=1"
+    ],
+    "result_alias": "RsCoMp*",
+    "ephemeral_current_interval_workspace": ["AvCoMp*", "AvCoML*", "MpReKo*"],
+    "derived_diagnostic": "ItRec",
+    "external_hydrology_owned_dependency": ["SrWaMpOld", "SrWaMp", "SrWaMpCp", "SrWaMpCpOld"],
+    "ownership_ambiguity": false,
+    "result": "PASS"
+  },
+  "persistent_state_count": {
+    "domains": [1, 2],
+    "p_off_scalar_count": 8,
+    "p_on_scalar_count": 12,
+    "phosphorus_condition": "IPO.EQ.1",
+    "result": "PASS"
+  },
+  "atomic_correction": {
+    "identity": "COMPLETE_ACCEPTED_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY",
+    "result": "PASS",
+    "reason": "Serializer-only is insufficient because first-step Init can overwrite restored CoMp from an un-restored RsCoMp alias; restore-direction/lifecycle-only is insufficient because active Output_Init does not serialize the accepted macropore end-state. Both halves are one restart-state transfer correction."
+  },
+  "reused_prior_pass_gates": {
+    "reuse_policy": "VERIFY_AND_REUSE_WITH_HIGH_RISK_SCOPE_CHECK",
+    "source_and_testcase_identity_unchanged": true,
+    "claim_scope_unchanged": true,
+    "no_superseding_or_contradictory_evidence_found": true,
+    "pins": {
+      "ANIMO-B3B10": "eccba6712f65455161d05fa9cdf6aa142f823dd4",
+      "ANIMO-B3B10R": "36aad892cac546105dfec0fe43aa34a18e23bcad",
+      "ANIMO-B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+      "ANIMO-GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+      "ANIMO-GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+      "ANIMO-MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+      "ANIMO-MP01": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+      "ANIMO-MP02": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+      "ANIMO-STATEQ03": "10c50e65d1369d5f3b26736c4b12d3a482379eb5",
+      "ANIMO-STATEQ04": "ef9a5998cafae433deeba701a8e9a8a08eacc92f"
+    },
+    "gates": {
+      "STATEQ04_candidate_restore_transaction": "REUSED_PASS_EXACT_PIN_UNCHANGED",
+      "six_species_kernel_evidence": "REUSED_PASS_EXACT_PIN_UNCHANGED",
+      "both_domain_causal_controls": "REUSED_PASS_EXACT_PIN_UNCHANGED",
+      "native_bad_emulation_control": "REUSED_PASS_EXACT_PIN_UNCHANGED",
+      "exact_bytewise_no_tolerance_policy": "REUSED_PASS_EXACT_PIN_UNCHANGED",
+      "fresh_Stage_B_process": "REUSED_PASS_EXACT_PIN_UNCHANGED",
+      "MP02_active_complete_model_reachability": "REUSED_PASS_EXACT_PIN_UNCHANGED_B1_SCOPE_ONLY",
+      "whole_model_evidence_boundary": "REUSED_PASS_EXACT_PIN_UNCHANGED",
+      "atomicity_contract_evidence": "REUSED_PASS_EXACT_PIN_UNCHANGED_AND_SOURCE_CORROBORATED",
+      "Tier_C_classification": "REUSED_PASS_EXACT_PIN_UNCHANGED_AND_GOV04_RECHECKED"
+    }
+  },
+  "historical_B2": {
+    "active_macropore_B2_reference": "ABSENT",
+    "GOV03_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "historical_revision53_active_macropore_restart_behaviour": "UNKNOWN",
+    "historical_intent_inferred_from_source": false
+  },
+  "gov04": {
+    "risk_tier": "TIER_C",
+    "result": "PASS_TIER_C_RETAINED",
+    "reason": "Restart, initialization, canonical state ownership and checkpoint semantics are explicit Tier-C triggers. A later small patch does not by itself lower the tier."
+  },
+  "whole_model_boundary": {
+    "whole_model_active_production_split_equivalence": "NOT_PROVEN",
+    "production_restart_equivalence": false,
+    "migration_readiness": false,
+    "whole_model_checkpoint_validation": false,
+    "current_source_provenance_blocker_can_close_without_new_whole_model_split": true
+  },
+  "stateq04": {
+    "reopen_required": false,
+    "reason": "No substantive contradiction with frozen source was found; this rereview closes evidence/provenance insufficiency only."
+  },
+  "out_of_scope_observation": {
+    "mapoinput_NO3_Checkrea_wrong_species_argument_lines_130_132": true,
+    "affects_TCD031_loader_destination_read": false,
+    "handled_as_TCD031_blocker": false,
+    "note": "The active Read destination for CoMpNi is correct; the separate validation seam is outside this targeted restart-state rereview."
+  },
+  "tcd025_boundary": {
+    "executed_here": false,
+    "composition_here": false,
+    "TCD031_may_be_consumed_as_certified_dependency_after_this_pass": true,
+    "next_allowed_step": "SEPARATE_TCD025_CLASS_A_LEDGER_READINESS_WORKUNIT",
+    "admission_or_composition_implied": false
+  },
+  "scope_guards": {
+    "production_patch": false,
+    "frozen_B0_change": false,
+    "canonical_STATE_admission": false,
+    "canonical_TCD_register_update": false,
+    "TCD025_composition": false,
+    "B3_admission": false,
+    "B4": false,
+    "RG05_update": false,
+    "numerical_tolerance_change": false,
+    "historical_intent_fabrication": false,
+    "original_B3B10R_status_rewritten": false
+  }
+}
