@@ -1,0 +1,31 @@
+name: ANIMO-B3B11 TCD039 admission readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3b11-tcd039-potential-uptake-restart-readiness
+    paths:
+      - '.github/workflows/animo-b3b11-tcd039-readiness.yml'
+      - 'docs/b3b11/**'
+      - 'integration/animo-b3/ANIMO-B3B11_*.json'
+      - 'integration/animo-b3/B3B11_*.json'
+      - 'tools/validate_b3b11_tcd039.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Re-run inherited TCD039 source-shaped owner witnesses
+        run: python -m unittest discover -s tests/stateq05 -p 'test_*.py' -v
+      - name: Validate B3B11 readiness contract and scope
+        run: python tools/validate_b3b11_tcd039.py

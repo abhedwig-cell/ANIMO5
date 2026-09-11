@@ -1,0 +1,76 @@
+{
+  "work_unit": "ANIMO-B3B11",
+  "target": "TCD-039",
+  "base_authority": "ANIMO-STATEQ05@c2b29f05b7726f3c57a39481b92f211e78dbee59",
+  "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
+  "queue_recompute_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
+  "b3q01_authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "stateq01_authority": "ANIMO-STATEQ01@4adae99576eb56978da71f7c8a250e4445fd3bc4",
+  "classification": {
+    "prior_queue_class": "C provisional",
+    "resolved_b3_qualification_class": "B_LOCAL_RESTART_CHECKPOINT_OMISSION_EXISTING_CONTINUATION_OWNER",
+    "reclassification_basis": [
+      "STATEQ05 proves the continuation owners already exist in frozen revision-53 runtime state",
+      "no new physical storage or phase is added, split or redefined",
+      "no constitutive or transfer law is introduced",
+      "the local restart surface omits an existing future-influencing owner",
+      "cold-start zeroing is not the accepted continuation restore rule"
+    ],
+    "class_c_definition_triggered": false,
+    "risk_tier": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+    "strictest_risk_rule_applied": true,
+    "scientific_gate_reduced_by_reclassification": false
+  },
+  "admission_candidate": {
+    "identity": "TCD039_INTERNAL_CROP_POTENTIAL_UPTAKE_RESTART_CONTINUATION_OWNER_RESTORE_N_AND_CONDITIONAL_P",
+    "scope": "FROZEN_REV53_INTERNAL_CROP_Ioptplant_1",
+    "n_owner": "Rsamplni_pot",
+    "n_working_alias": "Amplni_pot",
+    "p_owner": "Rsamplpo_pot",
+    "p_working_alias": "Amplpo_pot",
+    "p_guard": "Ipo == 1",
+    "restore_requirement": "restore exact accepted owner before future demand calculation",
+    "zero_reset_at_arbitrary_restart": "FORBIDDEN",
+    "checkpoint_representation_implementation_defined_here": false
+  },
+  "causal_evidence_forms": [
+    {
+      "id": "FORM1_FROZEN_SOURCE_LIFECYCLE",
+      "strength": "B0_HASH_PINNED",
+      "claim": "Upintg_Plant advances accepted potential uptake, Uptpar_Plant consumes it, Init restores it, and Output_Init omits it from the legacy restart surface."
+    },
+    {
+      "id": "FORM2_PRIOR_STATE_AUTHORITY",
+      "strength": "QUALIFIED_PRIOR_AUTHORITY",
+      "claim": "STATEQ01 CROP-005/CROP-006 classify potential N/P uptake as accepted continuation state with mandatory exact restore and no unqualified zero reset."
+    },
+    {
+      "id": "FORM3_EXECUTABLE_NEGATIVE_CONTROL",
+      "strength": "B1_SOURCE_DERIVED_NOT_B2",
+      "claim": "STATEQ05 exact-owner split witness preserves the source-shaped continuation sequence while zeroing at the split changes the future result."
+    }
+  ],
+  "historical_disposition": {
+    "behavior": "UNKNOWN_WITHOUT_B2",
+    "b2_created": false,
+    "eligible_later_route": "SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_SUBJECT_TO_SEPARATE_GOV05_TIER_C_ADMISSION_DECISION"
+  },
+  "excluded_scope": [
+    "TCD-038 actual crop uptake",
+    "STATEQ01 CROP-007 broader crop continuation set",
+    "external crop mode",
+    "canonical STATE admission",
+    "full-model split-run equivalence",
+    "checkpoint file-format migration",
+    "production source implementation",
+    "B4"
+  ],
+  "readiness": {
+    "owner_vs_reconstruction_blocker_resolved_for_bounded_profile": true,
+    "atomic_candidate_defined": true,
+    "historical_uncertainty_preserved": true,
+    "ready_for_separate_tier_c_admission_decision": true,
+    "b3_admitted": false
+  }
+}
