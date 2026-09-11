@@ -1,22 +1,30 @@
 {
   "work_unit": "ANIMO-B3COMP01",
-  "authoring_phase": "FROZEN_FOR_GOV05_ADVERSARIAL_REVIEW",
+  "authoring_phase": "FROZEN_FOR_GOV05_ADVERSARIAL_REREVIEW_AFTER_CONCURRENCY_ADVANCE",
   "branch": "work/animo-b3comp01-composition-completeness-authority",
   "base_head": "0bec1968adbf77fd04c6f46819d704b86482d8b2",
+  "remediation_parent": "8a6699788d23179c08dd9417016731118b69aaf4",
   "substantive_files": [
     "docs/b3comp01/B3_COMPOSITION_COMPLETENESS_AUTHORITY.md",
     "integration/animo-b3/ANIMO-B3COMP01_SOURCE_PINS.json",
     "integration/animo-b3/ANIMO-B3COMP01_COMPLETENESS_AUDIT.json",
-    "tools/validate_b3comp01_composition_completeness.py",
-    ".github/workflows/animo-b3comp01-composition-completeness.yml"
+    "integration/animo-b3/ANIMO-B3COMP01_AUTHORING_FREEZE.json",
+    "tools/validate_b3comp01_composition_completeness.py"
   ],
-  "review_artifact_after_freeze": "integration/animo-b3/ANIMO-B3COMP01_INTERNAL_ADVERSARIAL_REVIEW.json",
+  "superseded_review_artifact": "integration/animo-b3/ANIMO-B3COMP01_INTERNAL_ADVERSARIAL_REVIEW.json",
+  "fresh_review_artifact_after_freeze": "integration/animo-b3/ANIMO-B3COMP01_INTERNAL_ADVERSARIAL_REREVIEW.json",
   "status_artifact": "integration/animo-b3/ANIMO-B3COMP01_STATUS.json",
-  "substantive_change_after_review_start_allowed": false,
-  "concurrent_workstream": {
+  "substantive_change_after_fresh_review_start_allowed": false,
+  "external_workstream_boundary": {
     "branch": "work/animo-b3i09-tcd025-a5-exclusion-parent-scope-routing",
-    "observed_head": "fcce3e5d3c465dbd618f1e36e1d5f259f74b2d2a",
-    "policy": "OBSERVE_AND_FAIL_CLOSED_ON_ADVANCE_DO_NOT_MUTATE"
+    "qualified_head": "44f29974a1f49cffd36f67857a1ed2c919978a07",
+    "exact_final_ci_run": 34585740977,
+    "policy": "PIN_AND_OBSERVE_DO_NOT_MUTATE_FAIL_CLOSED_ON_FURTHER_ADVANCE"
+  },
+  "prior_closeout_failure": {
+    "head": "8a6699788d23179c08dd9417016731118b69aaf4",
+    "run": 34585837911,
+    "reason": "B3I09 advanced after the first reviewed checkpoint"
   },
   "decision_candidate": "B3_COMPOSITION_COMPLETENESS_NOT_ESTABLISHED_TB7_REMAINS_BLOCKED"
 }

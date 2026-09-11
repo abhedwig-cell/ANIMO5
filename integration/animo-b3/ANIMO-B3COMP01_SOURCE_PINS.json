@@ -14,22 +14,22 @@
     "exact_final_ci_run": 34582143283,
     "conclusion": "success"
   },
-  "current_qualified_tcd025_routing": {
+  "prior_tcd025_routing": {
     "authority": "ANIMO-B3I08@f4a3056087e5f7bac41b243be1f404739cde52b0",
     "head": "f4a3056087e5f7bac41b243be1f404739cde52b0",
     "branch": "work/animo-b3i08-tcd025-restricted-ledger-routing",
     "exact_final_ci_run": 34572242797,
     "conclusion": "success"
   },
-  "concurrent_tcd025_scope_workstream": {
-    "work_unit": "ANIMO-B3I09",
-    "observed_head": "fcce3e5d3c465dbd618f1e36e1d5f259f74b2d2a",
+  "current_qualified_tcd025_parent_scope_routing": {
+    "authority": "ANIMO-B3I09@44f29974a1f49cffd36f67857a1ed2c919978a07",
+    "head": "44f29974a1f49cffd36f67857a1ed2c919978a07",
     "branch": "work/animo-b3i09-tcd025-a5-exclusion-parent-scope-routing",
-    "observed_ci_run": 34583549748,
-    "observed_ci_conclusion": "success",
-    "observed_status": "NOT_YET_QUALIFIED",
+    "exact_final_ci_run": 34585740977,
+    "conclusion": "success",
+    "state": "QUALIFIED_A5_EXCLUDED_RESTRICTED_PARENT_READY_FOR_SEPARATE_COMPOSITION_NO_ADMISSION",
     "mutated_by_b3comp01": false,
-    "live_head_must_remain_observed_head_through_final_qualification": true
+    "live_head_must_remain_pinned_through_final_qualification": true
   },
   "bounded_existing_parent_composition": {
     "authority": "ANIMO-B3D27@cb881d0cd3e3c50455614a93b562b32354f0f1a8",
@@ -49,6 +49,13 @@
     "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
     "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
     "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "superseded_b3comp01_checkpoint": {
+    "reviewed_head": "32b549c68e89a44fc7bc99cfc209d905b7010d46",
+    "review_ci_run": 34585689360,
+    "failed_closeout_head": "8a6699788d23179c08dd9417016731118b69aaf4",
+    "failed_closeout_ci_run": 34585837911,
+    "failure_reason": "B3I09 live head advanced before exact-final closeout; fail-closed re-audit required"
   },
   "authority_files": {
     "rg05k_status": "integration/animo-reg/ANIMO-RG05K_STATUS.json",

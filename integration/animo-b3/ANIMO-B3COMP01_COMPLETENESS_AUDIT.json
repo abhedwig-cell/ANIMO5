@@ -13,14 +13,14 @@
     "aggregate_global_canonical_queue_count_recomputed": false,
     "post_aggregate_b3d31_exact_final_green": true,
     "post_aggregate_b3d31_child": "TCD-025-A4",
+    "b3i09_exact_final_green": true,
+    "b3i09_A5_supported_parent_scope_state": "PERMANENTLY_EXCLUDED_FROM_SUPPORTED_PARENT_SCOPE_FOR_FROZEN_REVISION53",
+    "b3i09_A5_scientifically_source_closed": false,
+    "b3i09_A5_b3_admitted": false,
     "tcd025_parent_admitted": false,
-    "tcd025_A5_scientifically_source_closed": false,
     "qualified_routing_automatic_parent_admission_forbidden": true,
-    "concurrent_b3i09_observed": true,
-    "concurrent_b3i09_qualified": false,
-    "concurrent_b3i09_candidate_A5_exclusion_only": true,
-    "concurrent_b3i09_candidate_parent_admitted": false,
-    "concurrent_b3i09_candidate_separate_parent_composition_required": true,
+    "qualified_routing_separate_parent_composition_required": true,
+    "post_aggregate_authorities_reconciled": false,
     "whole_b3_composition_record_found": false,
     "whole_b3_composition_exact_final_authority_found": false,
     "bounded_tcd037_parent_composition_exists": true,
@@ -41,12 +41,12 @@
     {
       "id": "P3_POST_AGGREGATE_AUTHORITIES_RECONCILED_OR_EXACTLY_ENUMERATED",
       "status": "PARTIAL",
-      "evidence": "ANIMO-B3D31 is exact-final green and enumerated here, but concurrent B3I09 is not qualified and TCD-025 parent scope is not final"
+      "evidence": "ANIMO-B3D31 and ANIMO-B3I09 are exact-final green and enumerated, but both are post-RG05K and no superseding aggregate reconciles them"
     },
     {
       "id": "P4_TCD025_PARENT_CHILD_ATOMIZATION_CLOSED",
       "status": "FAIL",
-      "evidence": "B3D31 does not admit parent or dispose A5; B3I09 is not qualified and even its candidate requires a separate restricted parent composition decision"
+      "evidence": "ANIMO-B3I09 qualifies the A5 revision-53 scope exclusion but explicitly keeps the TCD-025 parent unadmitted and requires a separate restricted parent composition decision"
     },
     {
       "id": "P5_COMBINED_B3Q01_COMPOSITION_GATES_EVALUATED_ON_WHOLE_B3_OBJECT",
@@ -75,13 +75,18 @@
     "uncertainty_propagation": "NOT_YET_WHOLE_B3_QUALIFIED"
   },
   "required_closure_sequence": [
-    "Finish or dispose ANIMO-B3I09 without B3COMP01 modifying that concurrent branch.",
-    "If B3I09 qualifies the restricted TCD-025 parent scope, perform a separate Tier-D restricted parent composition qualification/admission preserving exact A1-A4 scopes and the A5 exclusion contract.",
-    "Reconcile resulting routing/parent project-gate changes into the aggregate authority.",
+    "Perform a separate Tier-D TCD-025 restricted parent composition qualification/admission preserving exact A1-A4 scopes and the qualified A5 revision-53 exclusion contract.",
+    "Reconcile B3D31, B3I09 and any resulting TCD-025 parent authority into a superseding aggregate authority.",
     "Recompute the global canonical B3 queue against current canonical routing/register and prove no unresolved required composition components remain.",
-    "Create and qualify a separate whole-B3 composition object under B3Q01/GOV05 with combined conservation, non-interference, overlap, interaction and ordering evidence.",
+    "Create and qualify a separate whole-B3 composition object under B3Q01/GOV05 with combined conservation, non-interference, overlap, interaction, ordering and uncertainty evidence.",
     "Only then issue a positive B3 composition-completeness authority and rerun TB7 readiness."
   ],
+  "concurrency_disposition": {
+    "prior_closeout_failed_closed_on_b3i09_advance": true,
+    "b3i09_reaudited_at_exact_final_head": true,
+    "b3i09_modified_by_b3comp01": false,
+    "separate_tcd025_parent_workstream_preempted": false
+  },
   "hard_boundaries": {
     "production_source_modified": false,
     "frozen_b0_modified": false,
@@ -93,6 +98,6 @@
     "production_migration_authorized": false,
     "historical_b2_created": false,
     "whole_model_golden_baseline_created": false,
-    "concurrent_b3i09_modified": false
+    "b3i09_modified": false
   }
 }
