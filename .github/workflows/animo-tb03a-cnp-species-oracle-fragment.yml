@@ -1,0 +1,85 @@
+name: ANIMO-TB03A CNP species and oracle fragment qualification
+
+on:
+  push:
+    branches:
+      - work/animo-tb03a-cnp-species-stoichiometry-atomic-oracle-adoption
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Revalidate inherited TB02 contract
+        run: python tools/validate_animo_tb02.py
+      - name: Run promoted cross-species structural guard
+        run: python tests/test_cross_species_symmetry_audit.py
+      - name: Validate bounded TB03A fragment and atomic relations
+        run: python tools/validate_animo_tb03a_fragment.py
+      - name: Guard production source, central registry and bounded write scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=54a565c2f7f2a29817ae027cc18bee1613ce568d
+          git diff --name-only "$BASE" HEAD > /tmp/tb03a_changed.txt
+          if grep -E '^(src/|source/|Source/|animo/|ANIMO/)' /tmp/tb03a_changed.txt; then
+            echo 'Production source changed in TB03A' >&2
+            exit 1
+          fi
+          if grep -Fx 'integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json' /tmp/tb03a_changed.txt; then
+            echo 'Central testbank registry changed in TB03A' >&2
+            exit 1
+          fi
+          while IFS= read -r path; do
+            case "$path" in
+              integration/animo-testbank/fragments/ANIMO-TB03A_CNP_SPECIES_ORACLE_FRAGMENT.json|tools/validate_animo_tb03a_fragment.py|.github/workflows/animo-tb03a-cnp-species-oracle-fragment.yml) ;;
+              *) echo "Out-of-scope TB03A path: $path" >&2; exit 1 ;;
+            esac
+          done < /tmp/tb03a_changed.txt
+      - name: Exact-head identity
+        run: |
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+          echo "ANIMO-TB03A exact head ${GITHUB_SHA}"
+      - name: Create exact-head qualification receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          p = Path('integration/animo-testbank/fragments/ANIMO-TB03A_CNP_SPECIES_ORACLE_FRAGMENT.json')
+          f = json.loads(p.read_text())
+          receipt = {
+              'schema_version': '1.0',
+              'work_unit': 'ANIMO-TB03A',
+              'exact_head': os.environ['GITHUB_SHA'],
+              'manifest_identity': 'sha256:' + hashlib.sha256(p.read_bytes()).hexdigest(),
+              'selected_test_ids': f['qualification']['qualified_entry_ids'],
+              'candidate_test_ids': f['qualification']['candidate_entry_ids'],
+              'gap_test_ids': f['qualification']['gap_entry_ids'],
+              'result': 'PASS',
+              'assurance': 'PROCESS_SELF_REVIEWED_NOT_INDEPENDENT',
+              'decision': 'QUALIFIED_ANIMO_TB03A_BOUNDED_FRAGMENT_PACKAGE',
+              'receipt_is_not_scientific_admission': True,
+              'central_registry_modified': False,
+              'production_source_modified': False,
+              'whole_model_golden_baseline_created': False
+          }
+          out = Path('/tmp/ANIMO-TB03A_QUALIFICATION_RECEIPT.json')
+          out.write_text(json.dumps(receipt, indent=2) + '\n')
+          print(out.read_text())
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: animo-tb03a-qualified-fragment-receipt
+          path: /tmp/ANIMO-TB03A_QUALIFICATION_RECEIPT.json
+          if-no-files-found: error
