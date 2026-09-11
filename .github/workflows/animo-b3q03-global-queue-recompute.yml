@@ -1,0 +1,41 @@
+name: ANIMO-B3Q03 global canonical B3 queue recompute closure
+
+on:
+  push:
+    branches:
+      - work/animo-b3q03-global-canonical-queue-recompute-closure
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch pinned authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin \
+            +refs/heads/work/animo-rg05l-sixth-batched-admission-integration:refs/remotes/origin/work/animo-rg05l-sixth-batched-admission-integration \
+            +refs/heads/work/animo-rg05k-fifth-batched-admission-integration:refs/remotes/origin/work/animo-rg05k-fifth-batched-admission-integration \
+            +refs/heads/work/animo-rg05j-fourth-batched-admission-integration:refs/remotes/origin/work/animo-rg05j-fourth-batched-admission-integration \
+            +refs/heads/work/animo-b3q01-scientific-admission-framework:refs/remotes/origin/work/animo-b3q01-scientific-admission-framework \
+            +refs/heads/work/animo-b3i10-tcd042-positive-hetop-routing:refs/remotes/origin/work/animo-b3i10-tcd042-positive-hetop-routing
+          for sha in \
+            214062fe773618ea77c7c74867cc8d9a2a4eef6d \
+            e5ccad78d7c85aaf2c68d844c5a496edf6d73db5 \
+            624bbad35add93de29ac89649155d9fa086a73af \
+            846e0f4d02a38b9e02cc1419b1ca87e63aaedb54 \
+            942f26fe32eaf91679e59a1968ae173a3703e22d; do
+            git cat-file -e "${sha}^{commit}"
+          done
+
+      - name: Validate fail-closed global B3 queue recompute
+        run: python3 tools/validate_animo_b3q03.py
