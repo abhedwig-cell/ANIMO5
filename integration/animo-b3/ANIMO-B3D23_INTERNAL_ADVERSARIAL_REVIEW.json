@@ -1,0 +1,164 @@
+{
+  "work_unit": "ANIMO-B3D23",
+  "target": "TCD-031",
+  "title": "GOV05 Single-Agent Adversarial Review of TCD-031 Tier-C Atomic B3 Admission Candidate",
+  "review_type": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "reviewed_authoring_head": "048855e7d0bbcb21b79b906b8c11ab09be98870a",
+  "governance_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "genuinely_independent": false,
+  "historical_independent_review_preserved": "ANIMO-B3B10R2@7648e7b2813f3abc5904e4c34e36072d81d9844f",
+  "historical_independent_review_ci": "34545898592:success",
+  "reviewed_candidate_decision": "ADMIT_TCD031_ATOMIC_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
+  "reviewed_atomic_identity": "COMPLETE_ACCEPTED_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY",
+  "review_method": {
+    "mode": "FAIL_CLOSED_ADVERSARIAL_RECONSTRUCTION_WITH_VERIFY_AND_REUSE_OF_IMMUTABLE_PINS",
+    "authoring_branch_delta_reconstructed": true,
+    "frozen_source_archive_locally_rehashed": true,
+    "selected_native_source_semantics_locally_rechecked": true,
+    "stateq04_active_and_negative_controls_rechecked_from_pinned_result": true,
+    "historical_review_conclusion_accepted_without_relabelling": true,
+    "scientific_gate_reduction": false
+  },
+  "local_frozen_source_replay": {
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "archive_identity_matches_candidate": true,
+    "source_member_count_fortran_and_include": 63,
+    "member_sha256_recomputed": {
+      "mapoinput.for": "081c671d2f576ab0608350cbb0083eab157c586a6783522cda3534b141244065",
+      "Output_Init.for": "6452c175dcd7c6e80983c1176467735d07f75595cf8341526b115b70121b6a2f",
+      "Animo.for": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
+      "Init.for": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058"
+    },
+    "semantic_rechecks": {
+      "mapoinput_loads_nitrogen_macropore_CoMp_two_domains": true,
+      "mapoinput_loads_organic_macropore_CoMp_two_domains": true,
+      "mapoinput_loads_phosphorus_macropore_CoMp_two_domains": true,
+      "phosphorus_loader_condition_is_IPO_EQ_1": true,
+      "Output_Init_has_no_active_macropore_species_serialization_labels": true,
+      "Animo_has_active_Output_Init_call": true,
+      "active_Animo_Output_Init_call_omits_macropore_CoMp_and_RsCoMp_arguments": true,
+      "Init_has_all_six_CoMp_from_RsCoMp_promotions": true,
+      "Init_promotion_lines_recomputed": [516, 517, 518, 519, 521, 522],
+      "no_family_specific_active_RsCoMp_direct_assignment_found_in_complete_fortran_include_scan": true,
+      "no_active_RsCoMp_reference_found_in_input1_or_mapoinput": true,
+      "first_active_Init_call_precedes_first_Transca_and_Transgen_calls": true,
+      "first_call_lines": {"Init": 264, "Transca": 591, "Transgen": 891}
+    },
+    "raw_source_redistributed_by_review": false,
+    "source_text_committed_by_review": false
+  },
+  "counter_hypotheses_tested": [
+    "Native restart serialization and restore already reconstruct every accepted CoMp persistent coordinate, so the atomic correction is unnecessary.",
+    "RsCoMp is independently initialized from restart input before Init promotes RsCoMp into CoMp, so restored accepted CoMp state cannot be overwritten by stale or uninitialized result aliases.",
+    "A one-domain or partial-species checkpoint is sufficient, making the two-domain 8-scalar P-off and 12-scalar P-on atomic payload overbroad.",
+    "Claim-scoped kernel evidence is insufficient for any B3 decision because whole-model production split equivalence is still unproven."
+  ],
+  "counter_hypothesis_results": [
+    {
+      "hypothesis_index": 1,
+      "result": "REJECTED_AT_CLAIM_SCOPE",
+      "basis": "Pinned B3B10R2 provenance plus local frozen-source recheck show the active Output_Init surface does not serialize the macropore CoMp/RsCoMp payload. Native complete restart reconstruction is therefore not supported."
+    },
+    {
+      "hypothesis_index": 2,
+      "result": "REJECTED_AT_CLAIM_SCOPE",
+      "basis": "The complete frozen Fortran/include scan found no family-specific active RsCoMp direct assignment and no active RsCoMp input reference in input1.for or mapoinput.for. Init executes before the first Transca/Transgen producer calls, while Init promotes CoMp from RsCoMp. A valid native pre-promotion restart initialization route is not present in the pinned source."
+    },
+    {
+      "hypothesis_index": 3,
+      "result": "REJECTED_BY_NEGATIVE_CONTROLS",
+      "basis": "STATEQ04 records exact good split equivalence for all six species while native-bad and both domain-drop controls diverge. The P condition remains IPO.EQ.1, so the two-domain 8/12-scalar contract is not reduced."
+    },
+    {
+      "hypothesis_index": 4,
+      "result": "PARTLY_ACCEPTED_AS_RESIDUAL_BOUNDARY_NOT_ADMISSION_BLOCKER",
+      "basis": "Whole-model active production split equivalence and production restart equivalence remain NOT_PROVEN. This prevents production or migration qualification, but B3D23 is deliberately limited to atomic scientific B3 admission and does not authorize implementation or production."
+    }
+  ],
+  "active_controls_checked": [
+    "STATEQ04 accepted candidate restore transaction preserves exact post-restore suffix for all six tested species under EXACT_BYTEWISE_NO_TOLERANCE"
+  ],
+  "negative_controls_checked": [
+    "STATEQ04 native-bad emulation diverges for all six tested species",
+    "STATEQ04 domain-1 drop diverges",
+    "STATEQ04 domain-2 drop diverges"
+  ],
+  "stateq04_evidence_recheck": {
+    "authority": "ANIMO-STATEQ04@ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+    "evidence_class": "FROZEN_SOURCE_KERNEL_REMEDIATION_QUALIFICATION_NOT_WHOLE_MODEL",
+    "source_zip_sha256_matches": true,
+    "species_count": 6,
+    "split_after_accepted_step": 5,
+    "post_restore_steps_compared": 5,
+    "comparison_policy": "EXACT_BYTEWISE_NO_TOLERANCE",
+    "all_species_exact": true,
+    "all_native_bad_controls_diverge": true,
+    "all_domain_drop_controls_diverge": true,
+    "whole_model_active_split": false
+  },
+  "comparison_policy_checked": "EXACT_BYTEWISE_NO_TOLERANCE",
+  "invented_tolerance_found": false,
+  "evidence_reuse_checks": {
+    "formal_disposition_exact_pin_unchanged": true,
+    "historical_B3B10R2_exact_pin_unchanged": true,
+    "frozen_source_identity_unchanged": true,
+    "frozen_testbank_identity_unchanged": true,
+    "claim_scope_compatible": true,
+    "evidence_strength_not_promoted": true,
+    "original_B3B10R_fail_closed_history_preserved": true,
+    "source_provenance_failure_classes_closed_by_B3B10R2": true
+  },
+  "ownership_and_restart_result": {
+    "accepted_persistent_owner": "CoMp species x two domains",
+    "result_alias": "RsCoMp reconstructed from restored accepted CoMp before native promotion",
+    "p_off_required_scalars": 8,
+    "p_on_required_scalars": 12,
+    "phosphorus_condition": "IPO.EQ.1",
+    "current_interval_workspace_is_persistent": false,
+    "external_hydrology_binding_required": true,
+    "serializer_only_sufficient": false,
+    "restore_only_sufficient": false,
+    "new_physical_state_introduced": false
+  },
+  "whole_model_active_production_split_equivalence": "NOT_PROVEN",
+  "production_restart_equivalence": "NOT_PROVEN",
+  "migration_readiness": "NOT_PROVEN",
+  "whole_model_checkpoint_validation": "NOT_PROVEN",
+  "historical_revision53_active_macropore_restart_behaviour": "UNKNOWN_WITHOUT_B2",
+  "historical_fidelity_claimed": false,
+  "scientific_falsification": false,
+  "superseding_or_contradictory_evidence_found": false,
+  "stateq04_reopen_required": false,
+  "b3q01_independent_review_compatibility": {
+    "status": "COMPLETE",
+    "independent_from_correction_authoring": false,
+    "result": "PASS",
+    "interpretation": "GOV05_PROCESS_GATE_ONLY_NOT_EVIDENCE_OF_INDEPENDENCE"
+  },
+  "gate_results": {
+    "authority_and_exact_head_pins": "PASS",
+    "class_c_state_owner_definition": "PASS",
+    "initialization_and_restart_semantics": "PASS",
+    "transition_semantics": "PASS",
+    "connected_conservation_and_non_interference": "PASS",
+    "source_provenance_and_first_write_lifecycle": "PASS",
+    "counter_hypothesis_active_and_negative_controls": "PASS",
+    "exact_comparison_no_tolerance": "PASS",
+    "historical_uncertainty_boundary": "PASS",
+    "scope_and_non_composition": "PASS"
+  },
+  "scope_review": {
+    "authoring_delta_from_B3D22_contains_only_B3D23_governance_documentation_status_candidate_validator_scope_guard_and_workflow": true,
+    "production_source_modified": false,
+    "frozen_B0_modified": false,
+    "canonical_TCD_register_modified": false,
+    "TCD025_composition_performed": false,
+    "B4_opened": false,
+    "production_authorized": false,
+    "central_regie_updated": false,
+    "numerical_tolerance_changed": false
+  },
+  "outcome": "SELF_REVIEW_PASS",
+  "review_rationale": "The strongest alternatives were actively tested against the exact immutable authoring package, the pinned genuinely independent B3B10R2 result, the STATEQ04 active and negative controls, and a fresh local rehash/semantic scan of the licensed frozen source archive. No contradiction or scientific falsification was found. The evidence supports only the atomic B3 scientific state-transfer admission with explicit historical uncertainty. It does not support whole-model production restart equivalence, migration readiness, historical fidelity, or production authorization. This is a same-agent GOV05 adversarial review and is not independent."
+}
