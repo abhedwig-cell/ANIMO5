@@ -1,0 +1,25 @@
+{
+  "work_unit":"ANIMO-B3I10",
+  "target":"TCD-042 child-scope routing",
+  "risk_tier":"C_AMBIGUOUS_SINGULAR_DOMAIN_SEMANTICS",
+  "model":"MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "same_agent":true,
+  "genuinely_independent":false,
+  "reviewed_head":"61373e130d151cd03c702a20f19a806c94b26150",
+  "reviewed_head_ci":{"run_id":34586931610,"job_id":103223197888,"conclusion":"success"},
+  "review_boundary":{"immutable_authoring_head_verified":true,"moving_tree_reviewed":false,"substantive_changes_after_reviewed_head_allowed":false,"production_or_input_policy_reviewed_or_authorized":false},
+  "authority_rechecks":{"B3D32_exact_final":"PASS","RG05K_exact_final":"PASS","B3I05_exact_final":"PASS","B3I06_exact_final":"PASS","UBQ04_exact_final":"PASS","B3B02_positive_Hetop_readiness":"PASS_EVIDENCE_ONLY_NO_EXACT_FINAL_CI_CLAIM","GOV03_G6U":"PASS","GOV04_TIER_C_TRIGGER":"PASS","GOV05_review_model":"PASS"},
+  "counter_hypotheses":[
+    {"id":"CH1","alternative":"Because the documented HETOP range includes zero, require B1 and E1 to support HETOP=0 before any bounded child admission.","result":"REJECTED_AS_UNSUPPORTED_SCOPE_CONFLATION","reason":"UBQ04 establishes that the endpoint is parser-admissible but model-level concentration semantics are not uniquely defined. B3I06 classifies this as a domain constraint, not a new child scientific identity."},
+    {"id":"CH2","alternative":"Declare HETOP=0 globally invalid input and solve the ambiguity by routing an input rejection.","result":"REJECTED_AS_NEW_MODEL_POLICY","reason":"The available revision-53 source and documentation do not uniquely establish global invalidity. B3I10 may exclude the endpoint from supported B3/B4 scope but cannot rewrite input semantics."},
+    {"id":"CH3","alternative":"Insert a hidden epsilon, silent guard, or zero-capacity sentinel so the existing child equations can execute at HETOP=0.","result":"REJECTED_AS_INVENTED_NUMERICAL_OR_PHYSICAL_POLICY","reason":"Such a device would select semantics not owned by the qualified source/theory evidence and would exceed routing scope."},
+    {"id":"CH4","alternative":"Create a third TCD-042 child dedicated to HETOP=0.","result":"REJECTED_FOR_CURRENT_EVIDENCE","reason":"B3I06 explicitly qualifies the endpoint issue as DOMAIN_CONSTRAINT_ONLY_NOT_NEW_CHILD; there is no atomic causal correction identity to register."},
+    {"id":"CH5","alternative":"Treat B3B02 positive-HETOP evidence as authority to admit B1 within this routing workunit.","result":"REJECTED_SCOPE_BOUNDARY","reason":"B3I10 is routing only. B1 requires a separate admission decision under current GOV03/GOV04/GOV05 authorities."},
+    {"id":"CH6","alternative":"Extend E1 to all positive HETOP finite-positive cases because zero has been excluded.","result":"REJECTED_SCOPE_WIDENING","reason":"E1 remains constrained by NQ03/NQ03R including the qualified P envelope and binary64 policy; B3I10 does not widen it."},
+    {"id":"CH7","alternative":"Infer parent TCD-042 admission from resolving the shared HETOP scope boundary.","result":"REJECTED","reason":"Neither child is admitted here and composition/parent admission requires separate gates."}
+  ],
+  "scientific_gates":{"SOURCE_AND_AUTHORITY_PROVENANCE":"PASS","B1_POSITIVE_HETOP_LIMIT_IDENTITY_PRESERVED":"PASS","HETOP_ZERO_NONUNIQUENESS_PRESERVED":"PASS","NO_GLOBAL_INVALID_INPUT_CLAIM":"PASS","NO_HIDDEN_GUARD_OR_EPSILON":"PASS","NO_NEW_CHILD":"PASS","E1_NQ03_SCOPE_PRESERVED":"PASS","PARENT_NOT_AUTO_ADMITTED":"PASS","GOV03_HISTORICAL_UNCERTAINTY_ROUTE_AVAILABLE_DOWNSTREAM":"PASS","NO_PRODUCTION_OR_B4":"PASS","SCIENTIFIC_GATE_REDUCTION":"PASS_FALSE"},
+  "residual_uncertainty":["HETOP=0 model-level semantics remain unresolved for frozen revision53.","B3B02 has no exact-final workflow on its latest status-only head; B3I10 reuses its pinned positive-HETOP scientific findings as evidence, not as a final admission authority.","B1 historical behaviour remains unknown without qualified B2 and must use the GOV03 route if admitted.","E1 remains a separate numerical-policy child with its own restrictions.","Same-agent adversarial review is not independent."],
+  "outcome":"SELF_REVIEW_PASS_TCD042_POSITIVE_HETOP_CHILD_SCOPE_ROUTING"
+}
