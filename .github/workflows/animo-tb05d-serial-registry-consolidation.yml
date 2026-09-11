@@ -1,0 +1,64 @@
+name: ANIMO-TB05D serial registry consolidation
+
+on:
+  push:
+    branches:
+      - work/animo-tb05d-qualified-tb4-tb5-fragment-serial-registry-consolidation
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch pinned authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin \
+            788247b4346bedbb79749d5ce5daef3f99283f8d \
+            ad9683716e1a41a6f6b3d32ff1012bfa215c27db \
+            82213ad143bd5f0fa5c500303a8a4f1d35dd3f0c \
+            e3d537935104b4a7253a5287f8fbf7df7e7459e2 \
+            fe0a5aae6382cf37e1ad233655f313f5fa60f874
+
+      - name: Materialize or verify twelve qualified registry entries
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/consolidate_animo_tb05d_registry.py --write
+
+      - name: Validate bounded materialization
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/validate_animo_tb05d.py --phase materialization
+
+      - name: Validate final closeout when present
+        if: ${{ hashFiles('integration/animo-testbank/ANIMO-TB05D_STATUS.json') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/validate_animo_tb05d.py --phase final
+
+      - name: Commit central registry materialization when required
+        shell: bash
+        run: |
+          set -euo pipefail
+          registry=integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json
+          if git diff --quiet -- "$registry"; then
+            echo "Central registry already exact; no materialization commit required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$registry"
+          git commit -m "registry(ANIMO-TB05D): consolidate twelve qualified TB4/TB5 fragment entries"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
