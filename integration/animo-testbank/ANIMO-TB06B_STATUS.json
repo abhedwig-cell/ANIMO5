@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB06B",
+  "title": "Qualified TB6 Fragment Convergence Readiness",
+  "branch": "work/animo-tb06b-tb6-fragment-convergence-readiness",
+  "base_authority": "ANIMO-TB05C@788247b4346bedbb79749d5ce5daef3f99283f8d",
+  "state": "QUALIFICATION_CANDIDATE_PENDING_EXACT_HEAD_CI",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "qualified_for_serial_consolidation": ["ATB-NUM-002", "ATB-NUM-003", "ATB-NUM-004", "ATB-ARCH-003"],
+  "preserved_gaps": {"ATB-NUM-005": "GAP", "ATB-ARCH-004": "GAP"},
+  "convergence_checks": {
+    "stable_id_uniqueness": "PENDING_CI",
+    "central_registry_collision": "PENDING_CI",
+    "dependency_closure": "PENDING_CI",
+    "source_identity_preserved": "PENDING_CI",
+    "expected_value_provenance_preserved": "PENDING_CI",
+    "comparison_policy_preserved": "PENDING_CI",
+    "applicability_bounds_preserved": "PENDING_CI",
+    "failure_semantics_preserved": "PENDING_CI",
+    "gap_promotion": "PASS_NONE",
+    "global_tolerance_creation": "PASS_NONE",
+    "TCD_specific_policy_promotion": "PASS_NONE",
+    "whole_model_compiler_claim": "PASS_NONE",
+    "whole_model_runtime_claim": "PASS_NONE"
+  },
+  "gov05_adversarial_self_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "result": "PASS_BOUNDED_TB6_CONVERGENCE_SCOPE",
+    "checked": [
+      "accidental GAP promotion",
+      "hidden duplicate IDs",
+      "broken dependency closure",
+      "provenance drift",
+      "scheduler metadata changing scientific meaning",
+      "TCD-042-specific numerical constants becoming general policy",
+      "RUNTIMEQ02 TCD-specific accounting becoming general science",
+      "isolated compiler evidence becoming repository-wide equivalence",
+      "global tolerance creation"
+    ]
+  },
+  "qualification": {
+    "validator": "tools/validate_animo_tb06b_convergence.py",
+    "workflow": ".github/workflows/animo-tb06b-fragment-convergence-readiness.yml",
+    "exact_final_head_ci_required": true,
+    "qualified_state_after_success": "QUALIFIED_ANIMO_TB06B_TB6_FRAGMENT_CONVERGENCE_READINESS"
+  },
+  "work_status": {"realized": true, "persisted": true, "tested": false, "qualified": false, "complete": false},
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "gap_promoted": false,
+    "global_tolerance_created": false,
+    "whole_model_compiler_equivalence_qualified": false,
+    "whole_model_runtime_qualified": false,
+    "whole_model_golden_baseline_created": false
+  },
+  "handoff": "SERIAL_REGISTRY_WRITER_MAY_PROCEED_ONLY_FROM_QUALIFIED_EXACT_HEAD"
+}

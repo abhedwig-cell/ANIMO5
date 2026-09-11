@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB06B",
+  "title": "Qualified TB6 Fragment Convergence Readiness",
+  "base_registry_authority": "ANIMO-TB05C@788247b4346bedbb79749d5ce5daef3f99283f8d",
+  "base_registry_lineage": "ANIMO-TB03D@abcfc9daeacbba4c7d56339fdeedae8f422288c5",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "registry_write": "FORBIDDEN_IN_TB06B",
+  "fragment_pins": {
+    "ANIMO-TB06A": {
+      "head": "1ae7afbe540f3e5b53331137016db2936ff79cae",
+      "ci_run": 34568216165,
+      "ci_conclusion": "success",
+      "fragment_path": "integration/animo-testbank/fragments/ANIMO-TB06A_NUMERICAL_COMPILER_RUNTIME_FRAGMENT.json",
+      "fragment_blob": "3ae41fd750dc6a3304d4a39eafd64fec983ad442",
+      "status_path": "integration/animo-testbank/ANIMO-TB06A_STATUS.json",
+      "status_blob": "97922bbcb37f124d9d8a7b9bfb0d1e6b504be80a"
+    }
+  },
+  "qualified_for_serial_consolidation": [
+    "ATB-NUM-002",
+    "ATB-NUM-003",
+    "ATB-NUM-004",
+    "ATB-ARCH-003"
+  ],
+  "preserve_without_promotion": {
+    "ATB-NUM-005": "GAP",
+    "ATB-ARCH-004": "GAP"
+  },
+  "dependency_plan": {
+    "ATB-NUM-002": ["ATB-NUM-001"],
+    "ATB-NUM-003": ["ATB-NUM-002"],
+    "ATB-NUM-004": ["ATB-NUM-002"],
+    "ATB-ARCH-003": []
+  },
+  "dependency_rationale": {
+    "ATB-NUM-002 -> ATB-NUM-001": "The permanent fail-closed numerical comparison contract extends the already registered NQ01 numerical-policy adapter without redefining it.",
+    "ATB-NUM-003 -> ATB-NUM-002": "Precision-aware capture is meaningful only under the same fail-closed evidence-role and comparison-policy contract.",
+    "ATB-NUM-004 -> ATB-NUM-002": "Domain-bounded numerical-policy qualification is a specialization of the fail-closed comparison architecture; TCD-042-specific constants remain excluded."
+  },
+  "registry_metadata_normalization": {
+    "ATB-NUM-002": {"level": "QG", "cost_class": "QUALIFICATION", "execution_profile": ["ADMISSION_QUALIFICATION", "DEEP_AUDIT"], "subsystem": ["CROSS_CUTTING"], "failure_class": "NUMERICAL_POLICY_FAILURE"},
+    "ATB-NUM-003": {"level": "QG", "cost_class": "FOCUSED", "execution_profile": ["SCIENTIFIC_FOCUSED", "DEEP_AUDIT"], "subsystem": ["CROSS_CUTTING"], "failure_class": "PROVENANCE_FAILURE"},
+    "ATB-NUM-004": {"level": "QG", "cost_class": "QUALIFICATION", "execution_profile": ["ADMISSION_QUALIFICATION", "DEEP_AUDIT"], "subsystem": ["CROSS_CUTTING", "TRANSPORT"], "failure_class": "NUMERICAL_POLICY_FAILURE"},
+    "ATB-ARCH-003": {"level": "INV", "cost_class": "FOCUSED", "execution_profile": ["DEVELOPER_FAST", "SCIENTIFIC_FOCUSED"], "subsystem": ["CROSS_CUTTING"], "failure_class": "ARCHITECTURE_INVARIANT_FAILURE"}
+  },
+  "normalization_semantics": {
+    "scientific_claim_redefinition": false,
+    "source_identity_redefinition": false,
+    "expected_value_provenance_redefinition": false,
+    "comparison_policy_redefinition": false,
+    "applicability_redefinition": false,
+    "failure_semantics_redefinition": false,
+    "TCD_specific_constants_promoted": false,
+    "global_tolerance_created": false,
+    "admission_effect_for_all_qualified_entries": "NONE",
+    "central_metadata_is_scheduler_and_registry_metadata_only": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "gap_promoted": false,
+    "global_tolerance_created": false,
+    "whole_model_compiler_equivalence_qualified": false,
+    "whole_model_runtime_qualified": false,
+    "whole_model_golden_baseline_created": false
+  },
+  "serial_writer_handoff": "READY_IF_TB06B_EXACT_HEAD_CI_SUCCEEDS"
+}

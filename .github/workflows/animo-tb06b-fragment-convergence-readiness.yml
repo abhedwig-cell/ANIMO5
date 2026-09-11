@@ -1,0 +1,40 @@
+name: ANIMO-TB06B TB6 fragment convergence readiness
+
+on:
+  push:
+    branches:
+      - work/animo-tb06b-tb6-fragment-convergence-readiness
+  workflow_dispatch:
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate TB6 convergence readiness
+        run: python tools/validate_animo_tb06b_convergence.py
+      - name: Guard hard boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=788247b4346bedbb79749d5ce5daef3f99283f8d
+          git diff --name-only "$BASE"...HEAD > /tmp/tb06b_changed.txt
+          if grep -Eq '^(src/|source/|Source/|animo/|ANIMO/)' /tmp/tb06b_changed.txt; then
+            echo 'Production source path modified by TB06B'
+            cat /tmp/tb06b_changed.txt
+            exit 1
+          fi
+          if grep -Fxq 'integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json' /tmp/tb06b_changed.txt; then
+            echo 'Central testbank registry modified in convergence-readiness workunit'
+            exit 1
+          fi
+      - name: Exact-head identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
