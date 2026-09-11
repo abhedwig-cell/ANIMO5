@@ -1,13 +1,18 @@
 {
   "work_unit":"ANIMO-B3B11",
   "freeze_kind":"GOV05_SUBSTANTIVE_AUTHORING_FREEZE",
-  "substantive_package_head":"e0739808ebf5eca4188dbc38b6ff89b8b624e95f",
-  "substantive_package_tree":"7df1e6b688f5c41810f61d37a982845116921b87",
+  "freeze_sequence":2,
+  "substantive_package_head":"883accbca0c6456ae9f54e922135a2606d3078dd",
+  "substantive_package_tree":"03cf9e5d85bdfe7eb8e1365afeff1e0df7791f33",
+  "supersedes_failed_freeze_head":"29a68b49d9d636e7c607af7d15c667ed89a38f9b",
+  "superseded_run":34621988158,
+  "superseded_job":103337946933,
   "base_authority":"ANIMO-STATEQ05@c2b29f05b7726f3c57a39481b92f211e78dbee59",
   "target":"TCD-039",
   "resolved_b3_qualification_class":"B_LOCAL_RESTART_CHECKPOINT_OMISSION_EXISTING_CONTINUATION_OWNER",
   "risk_tier":"C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
   "frozen_candidate_identity":"TCD039_INTERNAL_CROP_POTENTIAL_UPTAKE_RESTART_CONTINUATION_OWNER_RESTORE_N_AND_CONDITIONAL_P",
+  "remediation_from_freeze01":"Validator now reloads STATEQ01 and B3Q04 semantic evidence from exact pinned commits; scientific classification/readiness claim unchanged.",
   "frozen_substantive_paths":[
     "docs/b3b11/TCD039_POTENTIAL_UPTAKE_RESTART_READINESS.md",
     "integration/animo-b3/B3B11_TCD039_READINESS_CONTRACT.json",
@@ -21,5 +26,5 @@
   "same_agent_review_required":true,
   "genuinely_independent_review_claimed":false,
   "assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-  "instruction":"Require green CI on the exact freeze head before adversarial review. Reclassification from provisional C to B must not reduce Tier-C review risk or scientific evidence gates."
+  "instruction":"Require green CI on this exact freeze head before adversarial review. Reclassification from provisional C to B must not reduce Tier-C review risk or scientific evidence gates."
 }
