@@ -1,0 +1,10 @@
+case_id,selected_interval_relation_to_S_D,source_owned_boundary_status,qualified_result,scope_note
+CV01,contains all of S_D,domain reservoir enclosed,PASSES_THIS_BOUNDARY_GATE_ONLY,necessary condition only
+CV02,disjoint from S_D,no saturated reservoir cut,PASSES_THIS_BOUNDARY_GATE_ONLY,unsaturated boundary transfer must still use source-owned TpAm where applicable
+CV03,ends exactly at LnTpMpSr(D)-1,source-owned unsaturated-to-reservoir transfer exists,PASSES_THIS_BOUNDARY_GATE_ONLY,TpAm enters full reservoir outside selected interval
+CV04,begins exactly at LnTpMpSr(D) and ends at or below LnBoMp(D) only if full S_D enclosed,domain reservoir boundary used as unit,PASSES_THIS_BOUNDARY_GATE_ONLY,valid only when entire S_D included
+CV05,begins inside S_D and includes LnBoMp(D),internal saturated cut lacks source-owned species transfer,NOT_SOURCE_CLOSED,partial reservoir cut
+CV06,contains LnTpMpSr(D) but ends before LnBoMp(D),internal saturated cut lacks source-owned species transfer,NOT_SOURCE_CLOSED,partial reservoir cut
+CV07,strict subset inside S_D,two artificial saturated boundaries lack source-owned species transfer,NOT_SOURCE_CLOSED,partial reservoir cut
+CV08,whole profile,all active saturated reservoirs enclosed,PASSES_THIS_BOUNDARY_GATE_ONLY,does not itself prove all public observer terms complete
+CV09,no active macropore domain,S_D absent,NOT_APPLICABLE,no saturated macropore control-volume seam

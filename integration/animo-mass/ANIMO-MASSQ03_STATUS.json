@@ -1,0 +1,64 @@
+{
+  "work_unit": "ANIMO-MASSQ03",
+  "title": "TCD-025 Selected-Profile Macropore Control-Volume Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-massq03-tcd025-selected-profile-control-volume",
+  "base_authority": "ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
+  "consumed_readiness_authority": "ANIMO-B3A08@7a7309e913e8216a20ac134539470e3e5eb4302f",
+  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
+  "state": "QUALIFICATION_CANDIDATE_NOT_YET_FINAL",
+  "decision_candidate": "QUALIFIED_TCD025_SELECTED_PROFILE_MACROPORE_BOUNDARY_ADMISSIBILITY_PARTIAL_SATURATED_RESERVOIR_CUTS_NOT_SOURCE_CLOSED_NO_ADMISSION",
+  "risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
+  "qualified": false,
+  "b3_admitted": false,
+  "production_authorized": false,
+  "authoring_frozen": true,
+  "immutable_authoring_head": "RECORDED_BY_REVIEW_ARTIFACT_AFTER_COMMIT_CREATION",
+  "upstream_pins": {
+    "ANIMO-GOV05": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "ANIMO-GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "ANIMO-GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "ANIMO-MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "ANIMO-MP01": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "ANIMO-MP02": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "ANIMO-B3D23": "6c9ab83952b53566b878b533c08e3cb10074f399",
+    "ANIMO-B3A08": "7a7309e913e8216a20ac134539470e3e5eb4302f"
+  },
+  "qualified_finding_candidate": {
+    "public_balance_intervals_are_configurable": true,
+    "unsaturated_macropore_species_boundary_transfer_source_owned": true,
+    "saturated_macropore_species_state_domain_level": true,
+    "partial_saturated_reservoir_selected_profile_source_closed": false,
+    "residual_derived_boundary_completion_allowed": false,
+    "boundary_predicate_is_necessary_not_sufficient": true,
+    "universal_exact_TCD025_arbitrary_interval_claim_supported": false
+  },
+  "review_governance": {
+    "authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "genuinely_independent": false,
+    "review_started": false,
+    "review_completed": false,
+    "review_outcome": null
+  },
+  "scientific_gate_reduction": false,
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "persistent_state_added": false,
+    "numerical_policy_changed": false,
+    "solver_or_tolerance_changed": false,
+    "canonical_tcd_register_changed": false,
+    "b3_admission": false,
+    "b4": false,
+    "production_migration": false,
+    "historical_b2_claim": false,
+    "tcd031_reopened": false,
+    "whole_profile_only_claim_silently_substituted": false
+  },
+  "validation": {
+    "validator": "tools/massq03/validate_massq03.py",
+    "workflow": ".github/workflows/animo-massq03-tcd025-control-volume.yml",
+    "exact_final_head_ci_required": true
+  },
+  "next_if_review_passes": "Use the qualified boundary predicate in a separate TCD-025 correction/readiness workunit; either restrict exact claims to admissible intervals and prove remaining terms or separately qualify any new partial-reservoir observer/state contract."
+}

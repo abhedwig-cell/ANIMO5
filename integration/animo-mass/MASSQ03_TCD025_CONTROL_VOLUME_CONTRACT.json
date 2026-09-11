@@ -1,0 +1,45 @@
+{
+  "work_unit": "ANIMO-MASSQ03",
+  "target": "TCD-025",
+  "scope": "SELECTED_PROFILE_MACROPORE_CONTROL_VOLUME_SEMANTICS_ONLY",
+  "base_authority": "ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
+  "consumed_readiness_authority": "ANIMO-B3A08@7a7309e913e8216a20ac134539470e3e5eb4302f",
+  "risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
+  "definitions": {
+    "public_interval": "I=[max(1,BALNMI),BALNMA]",
+    "saturated_macropore_reservoir": "S_D=[LnTpMpSr(D),LnBoMp(D)] for each active domain D",
+    "partial_cut": "I intersects S_D but neither I intersection S_D is empty nor S_D is a subset of I"
+  },
+  "source_owned_topology": {
+    "public_balance_interval_is_configurable": true,
+    "unsaturated_species_transfer_is_layerwise": true,
+    "unsaturated_boundary_transfer_expression": "TpAm(D)=AvCoML(D,Ln)*FlMpVt(D,Ln+1)*St",
+    "saturated_species_state_is_domain_level_mixed_reservoir": true,
+    "saturated_layer_internal_species_transfer_owner_present": false,
+    "whole_domain_species_storage_expression": "SrWaMp(D)*RsCoMp(D)",
+    "whole_domain_begin_species_storage_expression": "SrWaMpOld(D)*CoMp(D)"
+  },
+  "qualified_predicate": {
+    "name": "SATURATED_MACROPORE_SPECIES_BOUNDARY_ADMISSIBILITY",
+    "expression": "for every active D: (I intersection S_D is empty) OR (S_D subset_of I)",
+    "necessary_for_exact_selected_profile_species_observer": true,
+    "sufficient_for_complete_TCD025_observer": false,
+    "partial_saturated_reservoir_cut": "NOT_SOURCE_CLOSED",
+    "full_enclosure_or_exclusion": "PASSES_THIS_BOUNDARY_GATE_ONLY"
+  },
+  "forbidden_inference": {
+    "residual_derived_missing_boundary_flux": false,
+    "reason": "would make the observer self-closing and therefore cease to be independent conservation evidence",
+    "geometric_mass_allocation_implies_transport_owner": false,
+    "silent_whole_profile_claim_substitution": false
+  },
+  "water_scope": {
+    "universal_water_partial_cut_impossibility_claimed": false,
+    "reason": "revision53 carries layer-resolved macropore water geometry, so a stronger water-only theorem requires a separate independently owned saturated-flow reconstruction",
+    "effect_on_TCD025": "the dissolved-species non-closure is already sufficient to reject a universal exact multi-ledger TCD025 claim"
+  },
+  "decision": "QUALIFIED_TCD025_SELECTED_PROFILE_MACROPORE_BOUNDARY_ADMISSIBILITY_PARTIAL_SATURATED_RESERVOIR_CUTS_NOT_SOURCE_CLOSED_NO_ADMISSION",
+  "b3_admitted": false,
+  "production_authorized": false,
+  "historical_behavior": "UNKNOWN_WITHOUT_B2"
+}

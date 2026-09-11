@@ -1,0 +1,71 @@
+{
+  "work_unit": "ANIMO-MASSQ03",
+  "frozen_source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "frozen_testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+  "member_hashes": {
+    "Outbal_calc.for": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+    "MAPOHYDRO.FOR": "86659aaac3e48439252c37490d44f214945dfe8f1d49d14876a40abc03e3722a",
+    "MAPOTRANSPORT.FOR": "735b3f86497a6968c24d2dbce2ad23ae350b4eed573da421baa1a7557a0615da",
+    "Init.for": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+    "Animo.inc": "0f8b58e522ac2cdae95e8ae727dbf3ecea942e39c4d117b6bcae955d80fb69a2"
+  },
+  "source_seams": [
+    {
+      "file": "Outbal_calc.for",
+      "lines": "229-230",
+      "finding": "each public balance selects Ln1=Balnmi(Ly) and Ln2=Balnma(Ly)"
+    },
+    {
+      "file": "MAPOHYDRO.FOR",
+      "lines": "71-116",
+      "finding": "LnBoMp(D) and LnTpMpSr(D) dynamically define each active stored macropore domain interval"
+    },
+    {
+      "file": "MAPOHYDRO.FOR",
+      "lines": "126-220",
+      "finding": "macropore exchange and whole-profile totals are source-owned; FlMpVt is explicitly propagated through the freely draining/unsaturated chain to the top of stored water"
+    },
+    {
+      "file": "MAPOHYDRO.FOR",
+      "lines": "287-303",
+      "finding": "water balance correction and macropore balance use whole-domain SrWaMp(D)-SrWaMpOld(D) storage changes"
+    },
+    {
+      "file": "MAPOTRANSPORT.FOR",
+      "lines": "470-490",
+      "finding": "unsaturated species transport is layerwise and exports TpAm(D)=AvCoML*FlMpVt(next)*St"
+    },
+    {
+      "file": "MAPOTRANSPORT.FOR",
+      "lines": "494-533",
+      "finding": "the saturated part aggregates all layer inflows/outflows and solves one domain-level mixed reservoir through Transsub"
+    },
+    {
+      "file": "MAPOTRANSPORT.FOR",
+      "lines": "540-542",
+      "finding": "all saturated layers receive the same AvCoMp(D); no independent internal saturated layer-transfer term is created"
+    },
+    {
+      "file": "MAPOTRANSPORT.FOR",
+      "lines": "637-659",
+      "finding": "source mass check closes domain-total inputs/outputs against SrWaMp*RsCoMp and SrWaMpOld*CoMp"
+    },
+    {
+      "file": "Init.for",
+      "lines": "505-529",
+      "finding": "solute concentration lifecycle is domain-level; retained per-layer old macropore water is combined geometry, not layer-resolved species mass state"
+    },
+    {
+      "file": "Animo.inc",
+      "lines": "777-818",
+      "finding": "revision53 declares domain-level AvCoMp/RsCoMp species arrays, layerwise AvCoML working arrays, FlMpVt, SrWaMp and SrWaMpCpOld"
+    }
+  ],
+  "documentation_corroboration": {
+    "user_guide_balance_compartments": "BALNMI-BALNMA define the spatial dimension of public balance series",
+    "role": "CORROBORATION_ONLY_NOT_OVERRIDE_OF_REVISION53_SOURCE"
+  },
+  "raw_source_redistributed": false,
+  "evidence_class": "LICENSE_SAFE_HASH_PINNED_SOURCE_SEAM_RECONSTRUCTION"
+}
