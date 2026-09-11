@@ -1,0 +1,69 @@
+{
+  "work_unit": "ANIMO-B3D38",
+  "target": "TCD-035",
+  "base_authority": "ANIMO-B3B12@b930d17d98cd6ec9f6dda1613a7f9aa68148a0d3",
+  "state_authority": "ANIMO-STATEQ06@7e4ee6ebdfe168b24414c97df39b2ca76940ea44",
+  "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "b3_qualification_class": "B_LOCAL_RESTART_RECONSTRUCTION_EXISTING_OWNER",
+  "review_risk_tier": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "candidate_decision": "ADMIT_TCD035_GHG_SOIL_LAYER_PHASE_VIEW_RECONSTRUCTION_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
+  "admitted_identity_if_green": "TCD035_GHG_SOIL_LAYER_PHASE_VIEW_RECONSTRUCT_FROM_ACCEPTED_CS_HYDROLOGY_AND_CHECKPOINT_TEMPERATURE",
+  "supported_scope": {
+    "revision": "ANIMO_4.1.5_revision_53",
+    "ghg_guard": "IoptGHG >= 1",
+    "layers": "1..Nl",
+    "species": ["CH4", "N2O"],
+    "accepted_owner": "gas-specific total gas-water system concentration Cs/RsCs",
+    "derived_view": "gas-specific aqueous concentration Co",
+    "required_coordinates": ["accepted Cs", "accepted theta", "accepted theta_sat", "accepted checkpoint soil temperature"],
+    "source_bunsen_relation_unchanged": true,
+    "legacy_Terf_general_equivalence_admitted": false,
+    "layer0_included": false
+  },
+  "exact_continuity_controls": [
+    "reciprocal_bunsen(gas,T_checkpoint) == reciprocal_bunsen(gas,Terf)",
+    "theta_sat == theta",
+    "Cs == 0"
+  ],
+  "evidence": {
+    "stateq06_exact_final": true,
+    "b3b12_exact_final": true,
+    "source_shaped_oracle_cases": 72,
+    "oracle_strength": "B1_SOURCE_DERIVED_SYNTHETIC_NOT_B2",
+    "historical_behavior": "UNKNOWN_WITHOUT_B2"
+  },
+  "admission_effect_if_green": {
+    "tcd035_top_level_admitted": true,
+    "tcd036_modified_or_admitted": false,
+    "tcd032_034_modified_or_admitted": false,
+    "canonical_state_admitted": false,
+    "checkpoint_format_qualified": false,
+    "production_authorized": false
+  },
+  "aggregate_policy": {
+    "post_RG05M_exact_final_admissions_before_candidate": 1,
+    "existing_post_RG05M_admission": "ANIMO-B3D37@8bd1d0a5e20e5fa1d15508e0fdf7c69a5150a84f:TCD-039",
+    "post_RG05M_exact_final_admissions_if_candidate_green": 2,
+    "normal_batch_threshold": 3,
+    "aggregate_update_required_if_green": false,
+    "next_aggregate_when_threshold_reached": "ANIMO-RG05N"
+  },
+  "excluded_scope": [
+    "TCD-036 ponding/layer0 GHG restart continuity",
+    "TCD-032 through TCD-034",
+    "BUILDQ03 hidden within-timestep solver context",
+    "continuous-run Bunsen update policy",
+    "canonical STATE admission",
+    "checkpoint serialization format migration",
+    "full-model GHG split-run equivalence",
+    "historical fidelity",
+    "production source implementation",
+    "B4"
+  ],
+  "historical_disposition": {
+    "formal": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+    "behavior": "UNKNOWN_WITHOUT_B2",
+    "b2_created": false
+  }
+}
