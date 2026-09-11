@@ -1,0 +1,22 @@
+{
+  "work_unit": "ANIMO-B3D23",
+  "target": "TCD-031",
+  "title": "TCD-031 GOV05 Tier-C Atomic B3 Admission Decision",
+  "branch": "work/animo-b3d23-tcd031-gov05-tier-c-admission",
+  "exact_starting_head": "744c42119ee8cd21de658ef6d9c0ecf4a3f7d2ca",
+  "starting_authority": "ANIMO-B3D22@744c42119ee8cd21de658ef6d9c0ecf4a3f7d2ca",
+  "starting_authority_exact_head_ci": "34546812652:success",
+  "governance_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "governance_authority_exact_head_ci": "34546470484:success",
+  "historical_review_authority": "ANIMO-B3B10R2@7648e7b2813f3abc5904e4c34e36072d81d9844f",
+  "aggregate_at_open": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+  "purpose": "PERSIST_EARLY_BEFORE_GOV05_TIER_C_ATOMIC_B3_ADMISSION_AUTHORING_AND_INTERNAL_ADVERSARIAL_REVIEW",
+  "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "same_agent_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "historical_independent_review_preserved": true,
+  "b3_admission_performed": false,
+  "production_source_modified": false,
+  "frozen_b0_modified": false,
+  "tcd025_composition_performed": false,
+  "production_authorized": false
+}
