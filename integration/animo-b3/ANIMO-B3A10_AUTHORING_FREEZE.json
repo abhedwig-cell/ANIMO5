@@ -2,6 +2,8 @@
   "work_unit": "ANIMO-B3A10",
   "purpose": "IMMUTABLE_SUBSTANTIVE_AUTHORING_BOUNDARY_FOR_GOV05_TIER_C_ADVERSARIAL_REVIEW",
   "base_head": "624bbad35add93de29ac89649155d9fa086a73af",
+  "superseded_freeze_head": "b74a949e8852e4dab73c2aec9bb243897f409e8e",
+  "superseded_freeze_reason": "GOV05 adversarial precheck found upstream semantic pins were not mechanically verified and selected-profile water ownership was underspecified",
   "authoring_complete": true,
   "review_must_pin_exact_commit_containing_this_marker": true,
   "exact_freeze_commit_sha": "RECORDED_BY_REVIEW_ARTIFACT_AFTER_COMMIT_CREATION",
@@ -15,5 +17,5 @@
     "tools/validate_b3a10_tcd025.py",
     ".github/workflows/animo-b3a10-tcd025-restricted-readiness.yml"
   ],
-  "rule": "after this commit, substantive authoring content is frozen; review/status closeout artifacts may be added, but any substantive change resets review"
+  "rule": "after this new freeze commit, substantive authoring content is frozen; review/status closeout artifacts may be added, but any substantive change resets review"
 }

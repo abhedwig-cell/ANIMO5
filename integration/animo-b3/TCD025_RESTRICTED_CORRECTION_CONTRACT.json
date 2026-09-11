@@ -24,12 +24,14 @@
     "gate_is_necessary_not_sufficient": true
   },
   "correction_terms": {
-    "water_storage": "source-owned accepted/current macropore water storage over the selected admissible control volume",
-    "water_vertical_boundary": "source-owned FlMpVt at selected interval boundaries",
-    "species_unsaturated_boundary": "TpAm(D)=AvCoML(D,Ln)*FlMpVt(D,Ln+1)*St where an admissible interval boundary crosses the unsaturated chain",
+    "water_storage_old_selected": "sum over Ln in I of SrWaMpCpOld(Ln)",
+    "water_storage_new_selected": "sum over Ln in I and active D of SrWaMpCp(D,Ln)",
+    "water_vertical_boundary": "source-owned signed FlMpVt crossing selected interval boundaries; preserve source orientation",
+    "species_unsaturated_boundary": "signed TpAm(D)=AvCoML(D,Ln)*FlMpVt(D,Ln+1)*St where an admissible interval boundary crosses the unsaturated chain",
     "species_saturated_storage_old": "SrWaMpOld(D)*CoMpX(D) only when complete S_D is enclosed",
     "species_saturated_storage_new": "SrWaMp(D)*RsCoMpX(D) only when complete S_D is enclosed",
-    "direct_external_drain": "FlMpOuDrMp with source-owned timestep concentration for Main Bypass",
+    "species_direct_external_drain": "sum over selected Ln of FlMpOuDrMp(Ln)*AvCoMpX(1)*St for Main Bypass",
+    "water_direct_external_drain": "selected layer sum of FlMpOuDrMp",
     "soil_routed_drain": "FlMpOuDrSo remains internal/routed and is not a second external loss",
     "matrix_macropore_exchange": "internal transfer; do not add as external input/output in the combined observer"
   },
@@ -41,14 +43,21 @@
     "DOP_PO4_separation_preserved": true
   },
   "units": {
-    "water": "areic water storage_or_transfer",
+    "water": "m3_m-2_areic_water_equivalent_to_m",
     "species": "concentration_times_areic_water_storage_or_transfer_equals_areic_mass",
     "atomic_weight_conversion_introduced": false,
     "tolerance_introduced": false
   },
+  "implementation_boundary": {
+    "transient_observer_plumbing_may_be_required": true,
+    "new_physical_state_required": false,
+    "new_persistent_state_required": false,
+    "production_implementation_qualified_here": false
+  },
   "forbidden_inferences": {
     "residual_derived_missing_flux": false,
     "geometric_fraction_of_mixed_saturated_species_storage": false,
+    "absolute_value_boundary_flux_reorientation": false,
     "double_count_FlMpOuDrSo": false,
     "collapse_NH4_and_NO3_before_species_identity": false,
     "whole_profile_only_silently_substituted_for_canonical_claim": false
