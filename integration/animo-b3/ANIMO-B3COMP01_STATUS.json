@@ -2,14 +2,22 @@
   "work_unit": "ANIMO-B3COMP01",
   "title": "Whole-B3 Composition Completeness Authority",
   "branch": "work/animo-b3comp01-composition-completeness-authority",
-  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
-  "state": "NOT_YET_QUALIFIED",
-  "decision_candidate": "B3_COMPOSITION_COMPLETENESS_NOT_ESTABLISHED_TB7_REMAINS_BLOCKED",
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_B3_COMPOSITION_COMPLETENESS_AUTHORITY_NEGATIVE_TB7_BLOCKED",
+  "decision": "B3_COMPOSITION_COMPLETENESS_NOT_ESTABLISHED_TB7_REMAINS_BLOCKED",
+  "decision_kind": "QUALIFIED_NEGATIVE_COMPOSITION_COMPLETENESS_AUTHORITY",
   "authoring_base": "ANIMO-B3D31@0bec1968adbf77fd04c6f46819d704b86482d8b2",
   "aggregate_authority": "ANIMO-RG05K@e5ccad78d7c85aaf2c68d844c5a496edf6d73db5",
   "current_qualified_routing": "ANIMO-B3I08@f4a3056087e5f7bac41b243be1f404739cde52b0",
   "concurrent_b3i09_observed_head": "fcce3e5d3c465dbd618f1e36e1d5f259f74b2d2a",
   "tb7_gate": "ANIMO-TB07A@6d77e92f5beb2a30deb7411d93890aa7a5559685",
+  "governance": {
+    "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "review_risk_tier": "D_COMPOSITION_WHOLE_MODEL_GATE",
+    "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT"
+  },
   "review_risk_tier": "D_COMPOSITION_WHOLE_MODEL_GATE",
   "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
   "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
@@ -17,13 +25,31 @@
   "tb7_authorized": false,
   "whole_model_golden_baseline_authorized": false,
   "scientific_admission": false,
+  "negative_authority_scope": "CURRENT_LIVE_B3_AUTHORITY_SET_ONLY_REAUDIT_REQUIRED_AFTER_ANY_RELEVANT_AUTHORITY_ADVANCE",
+  "blocking_findings": [
+    "ANIMO-RG05K explicitly records b3_complete=false.",
+    "ANIMO-RG05K explicitly records global_canonical_queue_count_recomputed=false.",
+    "ANIMO-B3D31 admits TCD-025-A4 only and explicitly leaves the TCD-025 parent unadmitted and A5 undisposed.",
+    "ANIMO-B3I09 was observed at an authoring head with status NOT_YET_QUALIFIED; even its candidate routing requires a separate restricted parent composition decision.",
+    "No whole-B3 composition object with its own exact-final authority exists; ANIMO-B3D27 is bounded to TCD-037 GHG observer accounting."
+  ],
   "review": {
-    "started": false,
-    "completed": false,
-    "reviewed_head": null,
+    "started": true,
+    "completed": true,
+    "reviewed_head": "32b549c68e89a44fc7bc99cfc209d905b7010d46",
     "genuinely_independent": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "outcome": "SELF_REVIEW_PASS_NEGATIVE_COMPLETENESS_AUTHORITY",
     "artifact": "integration/animo-b3/ANIMO-B3COMP01_INTERNAL_ADVERSARIAL_REVIEW.json"
   },
+  "required_closure_sequence": [
+    "Finish or dispose ANIMO-B3I09 under GOV05 without B3COMP01 mutating that concurrent branch.",
+    "If its restricted scope qualifies, perform a separate Tier-D TCD-025 restricted parent composition qualification/admission preserving A1-A4 exact scopes and the A5 exclusion contract.",
+    "Reconcile resulting routing/parent project-gate changes into the aggregate authority.",
+    "Recompute the global canonical B3 queue and prove that no unresolved required composition components remain.",
+    "Create and exact-head qualify a separate whole-B3 composition object under B3Q01/GOV05 with combined conservation, non-interference, overlap, interaction, ordering and uncertainty evidence.",
+    "Then issue a positive B3 composition-completeness authority and rerun TB7 readiness before any composed whole-model golden baseline."
+  ],
   "hard_boundaries": {
     "production_source_modified": false,
     "frozen_b0_modified": false,
@@ -40,17 +66,20 @@
   "validation": {
     "workflow": ".github/workflows/animo-b3comp01-composition-completeness.yml",
     "validator": "tools/validate_b3comp01_composition_completeness.py",
-    "authoring_head": null,
-    "authoring_head_ci_run": null,
-    "authoring_head_ci_conclusion": null,
-    "exact_final_head_ci_required": true
+    "authoring_head": "32b549c68e89a44fc7bc99cfc209d905b7010d46",
+    "authoring_head_ci_run": 34585689360,
+    "authoring_head_ci_job": 103219246371,
+    "authoring_head_ci_conclusion": "success",
+    "exact_final_head_ci_required": true,
+    "final_exact_head_ci": "ESTABLISHED_ONLY_BY_POST_CLOSEOUT_WORKFLOW"
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
-  }
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
+  },
+  "next": "DO_NOT_START_TB7_BASELINE; wait for a later positive B3 composition-completeness authority after the closure sequence above."
 }
