@@ -1,0 +1,131 @@
+{
+  "work_unit": "ANIMO-B3D36",
+  "risk_tier": "C",
+  "review_mode": "INTERNAL_ADVERSARIAL_REVIEW",
+  "assurance_label": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "reviewed_authoring_head": "8eb9b915e93296c290c56ef2b62afcf1ac899bbc",
+  "same_agent": true,
+  "independence_claimed": false,
+  "review_boundary": {
+    "complete_authoring_package_persisted": true,
+    "immutable_head_frozen_before_review": true,
+    "source_testbank_evidence_hashes_recorded_before_review": true,
+    "authoring_completed_before_review": true,
+    "authoring_head_matches_reviewed_head": true,
+    "moving_tree_reviewed": false
+  },
+  "evidence_reuse_checks": {
+    "pin_identity": "PASS",
+    "scope_compatibility": "PASS",
+    "immutable_provenance": "PASS",
+    "no_superseding_contradiction": "PASS",
+    "evidence_strength_preserved": "PASS"
+  },
+  "counter_hypothesis": {
+    "tested": true,
+    "alternative": "Because the qualified coefficient evaluation can materially change natural trajectories, TCD-029 should either remain blocked until a historical B2 is recovered or be broadened to include nearby TCD-019 solver behavior so the combined trajectory is judged as one numerical change.",
+    "test": "Apply GOV03 historical-uncertainty semantics, verify the exact-final NQ04 numerical-policy evidence and its bounded domain, reconstruct B3Q03/B3I01 target identity, and test whether any TCD-019 solver, fallback, tolerance, state, Coefdt, other-Iflsol or production assumption is required for the TCD-029 coefficient identity itself.",
+    "result": "ALTERNATIVE_REJECTED_BY_PINNED_EVIDENCE"
+  },
+  "active_controls": [
+    "ANIMO-NQ04 exact-final head bfd736b88b6fc4f2a66970b812172729c1923562 is the sole numerical-policy authority consumed by this admission",
+    "NQ04 4756-point high-precision oracle and natural NQ02 coefficient control are reused without evidence-strength promotion",
+    "canonical TCD-029 allocation and B3Q03 unadmitted queue identity are pinned",
+    "GOV03 historical uncertainty route preserves UNKNOWN_WITHOUT_B2"
+  ],
+  "negative_controls": [
+    "A smaller TCD-019 mass residual is not used as a TCD-029 admission criterion",
+    "TCD-019 nonlinear solver and fallback semantics remain unadmitted and unmodified",
+    "Coefdt and Iflsol branches other than 4 remain outside the admitted identity",
+    "The NQ04 128u equation-evaluation bound is not converted into a solver or model acceptance tolerance",
+    "Synthetic and high-precision oracle evidence is not promoted to B2",
+    "No production source, canonical register, aggregate, B4 or production migration authority is changed"
+  ],
+  "scientific_gates": {
+    "B0_IDENTITY": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "Frozen source and testbank SHA-256 identities are unchanged and inherited from exact-final NQ04."
+    },
+    "B1_CAUSAL_EVIDENCE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "NQ02 natural activation and NQ04 oracle controls establish coefficient-level cancellation and material numerical effect without relying on residual improvement."
+    },
+    "B2_ROUTE_OR_GOV03_HISTORICAL_UNCERTAINTY_ROUTE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "No qualified B2 exists; GOV03 explicitly permits claim-scoped admission with historical behavior retained as UNKNOWN_WITHOUT_B2."
+    },
+    "AUTHORITATIVE_EQUATION_OR_DOMAIN_CONTRACT": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "NQ04 qualifies an algebraically identical evaluation of the revision-53 Iflsol=4 analytical coefficient equations on a precise finite binary64 domain."
+    },
+    "NUMERICAL_POLICY_AND_CONVERGENCE_EVIDENCE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "NQ04 exact-final policy provides analytic limits, region-specific cancellation-safe evaluation and a deterministic high-precision oracle with predeclared equation-evaluation bounds."
+    },
+    "INITIALIZATION_AND_RESTART_SEMANTICS": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "TCD-029 changes only call-local coefficient evaluation and introduces no persistent or checkpointed state."
+    },
+    "CONSERVATION": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The admitted functions are algebraically identical and introduce no source or sink; NQ02 non-uniform residual response is retained as an anti-masking control."
+    },
+    "NON_INTERFERENCE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "No TCD-019 solver/fallback rule, global tolerance, state/restart contract, Coefdt path, other Iflsol branch, canonical register or production source is admitted or modified."
+    },
+    "EDGE_AND_BOUNDARY_CASE_COVERAGE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "NQ04 covers exact zero, the series/log1p crossover, x approaching -1 from above, subnormal-scale cancellation and large positive x, with fail-closed semantics outside the mathematical domain."
+    },
+    "NO_PRODUCTION_AUTHORIZATION": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "B3D36 is scientific admission only; compiler-level production binding, B4 and migration remain separate."
+    }
+  },
+  "adversarial_gates": {
+    "NO_SCOPE_WIDENING_FROM_NQ04": "PASS",
+    "NO_TCD019_COMPOSITION": "PASS",
+    "NO_CONSERVATION_MASKING": "PASS",
+    "NO_INVENTED_MODEL_TOLERANCE": "PASS",
+    "NO_SYNTHETIC_TO_B2_PROMOTION": "PASS",
+    "NO_PRODUCTION_OR_B4_PROMOTION": "PASS",
+    "AGGREGATE_CADENCE_RECOGNIZED": "PASS"
+  },
+  "tier_c_enhanced": {
+    "immutable_authoring_checkpoint": "PASS",
+    "complete_source_state_ownership_reconstruction": "PASS",
+    "first_read_first_write_or_restore_direction_analysis": "PASS",
+    "counter_hypothesis_test": "PASS",
+    "active_controls": "PASS",
+    "negative_controls": "PASS",
+    "split_run_or_restart_evidence": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "No persistent state or restart surface is changed by this numerical coefficient policy."
+    },
+    "exact_comparison_policy": "Admission scope must equal exact-final NQ04: finite binary64, D>0, T>0, x>-1, exact zero analytic limits, degree-24 series for abs(x)<=0.25, qualified log1p and large-x forms elsewhere in-domain; no widening is permitted.",
+    "no_invented_tolerance": true,
+    "regression_guard": "PASS",
+    "regression_surface_declared": true,
+    "exact_final_head_ci_required": true
+  },
+  "residual_uncertainty": [
+    "Historical revision-53 corrected behavior remains UNKNOWN_WITHOUT_B2.",
+    "TCD-019 solver and fallback semantics remain separately unresolved.",
+    "Coefdt and non-Iflsol=4 branches remain outside scope.",
+    "Future production implementation must independently bind compiler reassociation, contraction and intrinsic semantics.",
+    "This is same-agent adversarial review and therefore not genuinely independent."
+  ],
+  "outcome": "SELF_REVIEW_PASS"
+}
