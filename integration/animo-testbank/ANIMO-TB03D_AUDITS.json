@@ -2,15 +2,25 @@
   "schema_version": "1.0",
   "work_unit": "ANIMO-TB03D",
   "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-  "phase": "PREMATERIALIZATION",
+  "phase": "FINAL",
+  "materialization": {
+    "commit": "0ff4b385575d9d37687df3bda904743f4ad5e2ec",
+    "registry_blob_before": "a5f279cfa334dc63d3e4e8759370279736d874a0",
+    "registry_blob_after": "4c78cdb542c5ff4ce898c033eb99dd7b2daa7c2c",
+    "qualification_run": 34559762850,
+    "qualification_head": "fadbf3a245f00431de50083d8f072e89e217828f",
+    "qualification_conclusion": "success"
+  },
   "collision_audit": {
     "target_ids": ["ATB-ORACLE-002", "ATB-ORACLE-003", "ATB-SPC-003", "ATB-TRN-002", "ATB-CONS-002", "ATB-CONS-003", "ATB-CONS-004", "ATB-CONS-005"],
     "target_ids_unique": true,
     "tb03a_vs_tb03b_collision": false,
     "central_baseline_collision": false,
+    "post_tb03c_registry_write_detected_before_tb03d": false,
     "newer_tb_fragment_collision": false,
-    "post_tb03c_registry_write_detected": false,
-    "result": "PASS_PREWRITE"
+    "newer_tb_workunits_checked": ["ANIMO-TB04A", "ANIMO-TB04B", "ANIMO-TB05A", "ANIMO-TB05B"],
+    "newer_tb_fragment_id_families": ["ATB-STATE-003..007", "ATB-BND-002..006", "ATB-SUB-003..007", "ATB-SUB-008..012"],
+    "result": "PASS"
   },
   "dependency_closure_audit": {
     "ATB-ORACLE-002": [],
@@ -24,11 +34,11 @@
     "baseline_dependencies_present": ["ATB-TRN-001", "ATB-CONS-001", "ATB-SPC-001"],
     "cross_fragment_dependencies": ["ATB-ORACLE-003 -> ATB-ORACLE-002", "ATB-SPC-003 -> ATB-ORACLE-003", "ATB-CONS-002 -> ATB-TRN-002", "ATB-CONS-003 -> ATB-CONS-002", "ATB-CONS-004 -> ATB-TRN-002"],
     "sibling_only_unresolved_dependency": false,
-    "result": "PASS_PREWRITE"
+    "result": "PASS"
   },
   "provenance_preservation_audit": {
-    "tb03a_rule": "All source scientific fields are copied byte-for-value at parsed JSON level; only central-registry level/input and registry-origin metadata are added where TB01 requires them.",
-    "tb03b_rule": "All source entry fields are copied byte-for-value at parsed JSON level. TB03D adds only TB01-compatible central-registry schema/scheduling metadata, admission_effect=NONE, exact fragment origin, and the already-documented TB03B permanence decision.",
+    "tb03a_rule": "All source scientific fields are preserved at parsed JSON level; only central-registry level/input and registry-origin metadata are added where TB01 requires them.",
+    "tb03b_rule": "All source entry fields are preserved at parsed JSON level. TB03D adds only TB01-compatible central-registry schema/scheduling metadata, admission_effect=NONE, exact fragment origin, and the already-documented TB03B permanence decision.",
     "tb03b_failure_semantics_policy": "No new failure class is invented. Original assertions, residual equations, boundary signs and qualification_strength remain the authoritative failure semantics.",
     "tb03b_metadata_normalization": {
       "ATB-TRN-002": {"level": "QG", "cost_class": "FOCUSED", "execution_profile": ["SCIENTIFIC_FOCUSED"]},
@@ -42,7 +52,12 @@
     "expected_value_provenance_changed": false,
     "comparison_policy_changed": false,
     "source_identity_changed": false,
-    "result": "PASS_PREWRITE"
+    "source_fragment_pins": {
+      "TB03A": "ANIMO-TB03A@a37f07b15ae50d6fbb526cef3215fb58702e85aa:blob:aa11d224964bdc5f1d529d823f774afc18994bbd",
+      "TB03B": "ANIMO-TB03B@48a3036501e9e871608ab920f46dde5570ebf369:blob:4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+      "TB03C": "ANIMO-TB03C@a989541c265213bde0bae3f0e2db28fcaf9c0579:blob:03de5deece36a28ad1610420d6756425b09711fe"
+    },
+    "result": "PASS"
   },
   "candidate_gap_preservation_audit": {
     "ATB-SPC-004": "CANDIDATE",
@@ -52,7 +67,7 @@
     "centralize_nonqualified_entries": false,
     "nh4_no3_conservation_promotes_ATB-SPC-004": false,
     "reason": "ATB-CONS-004 preserves species-resolved aggregation semantics but does not supply the missing reusable executable NH4/NO3 ownership adapter required by ATB-SPC-004.",
-    "result": "PASS_PREWRITE"
+    "result": "PASS"
   },
   "scope_semantics_audit": {
     "local_conservation_promoted_to_whole_model": false,
@@ -64,7 +79,10 @@
     "production_source_changed": false,
     "frozen_b0_changed": false,
     "tb04_changed": false,
-    "result": "PASS_PREWRITE"
+    "coverage_matrix_changed": false,
+    "expectation_provenance_registry_changed": false,
+    "execution_profiles_changed": false,
+    "result": "PASS"
   },
   "gov05_adversarial_review": {
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
@@ -78,18 +96,20 @@
       "ATB-CONS-004 could be misused to promote ATB-SPC-004 despite its missing executable ownership adapter",
       "qualified synthetic oracle evidence could be relabelled as historical B2",
       "testbank registration could be misrepresented as TCD scientific admission",
-      "registry consolidation could accidentally create a whole-model golden baseline"
+      "registry consolidation could accidentally create a whole-model golden baseline",
+      "a newer TB04/TB05 fragment could have reused one of the eight target IDs or serially modified the central registry"
     ],
     "dispositions": [
-      "append exactly the eight TB03C-qualified IDs and no others",
-      "fail closed on any baseline-registry blob mismatch before first write",
-      "compare source fragment fields against exact sibling heads in CI",
-      "resolve dependencies against the union of unchanged baseline IDs and the eight consolidated IDs",
-      "preserve ATB-SPC-004/005/006 as CANDIDATE and ATB-SPC-007 as GAP outside the central registry",
-      "retain admission_effect=NONE for every consolidated entry",
-      "retain synthetic provenance and bounded conservation wording",
-      "do not alter coverage, provenance or execution-profile authorities"
+      "central registry contains exactly the eight TB03C-qualified additions and no TB03A candidate/GAP entries",
+      "the first write was guarded by the exact baseline registry blob",
+      "source fragment fields are compared against exact sibling heads in CI",
+      "dependencies resolve against the unchanged baseline IDs plus the eight consolidated IDs",
+      "ATB-SPC-004/005/006 remain CANDIDATE and ATB-SPC-007 remains GAP outside the central registry",
+      "admission_effect=NONE is retained for every consolidated entry",
+      "synthetic provenance and bounded conservation wording are retained",
+      "coverage, expectation-provenance and execution-profile authorities remain byte-identical",
+      "TB04A/TB04B/TB05A/TB05B remain separate fragment-only workunits and are not consolidated here"
     ],
-    "result": "PASS_PREMATERIALIZATION_SCOPE"
+    "result": "PASS"
   }
 }
