@@ -181,6 +181,18 @@ REVIEW_GATES = {
     "REGRESSION_SCOPE",
     "RESIDUAL_UNCERTAINTY",
 }
+REVIEW_SCIENTIFIC_GATES = {
+    "SCIENTIFIC_GATE_SET_PRESERVED",
+    "SOURCE_AND_EVIDENCE_PROVENANCE_ENFORCED",
+    "OWNERSHIP_UNITS_LIFECYCLE_ENFORCED_WHERE_APPLICABLE",
+    "EXPECTED_DIFFERENCE_ENFORCED",
+    "CONSERVATION_ENFORCED_WHERE_APPLICABLE",
+    "NON_INTERFERENCE_ENFORCED",
+    "STATE_RESTART_NUMERICAL_GATES_ENFORCED_WHERE_APPLICABLE",
+    "NEGATIVE_CONTROLS_AND_REGRESSION_ENFORCED",
+    "HISTORICAL_UNKNOWN_WITHOUT_B2_ENFORCED",
+    "PRODUCTION_AUTHORIZATION_SEPARATION_ENFORCED",
+}
 
 
 class ValidationError(RuntimeError):
@@ -235,8 +247,8 @@ def validate_matrix(m: dict) -> None:
         block = preserve.get(tier, {})
         require(block.get("gov04_required_gates") == expected, f"Tier {tier} GOV04 gate inventory changed")
         repl = block.get("review_process_gate_replacement", {})
-        require(repl.get("from") == old_gate and repl.get("to") == new_gate, f"Tier {tier} review process replacement wrong")
-        require(repl.get("scientific_evidence_gate_removed") is False, f"Tier {tier} claims a scientific gate was removed")
+        require(repl.get("from") == old_gate and repl.get("to") == new_gate, f"Tier {tier} review-process replacement wrong")
+        require(repl.get("scientific_evidence_gate_removed") is False, f"Tier {tier} claims a scientific evidence gate was removed")
         require(repl.get("independence_assurance_reduced") is True, f"Tier {tier} reduced independence not explicit")
 
     tiers = m.get("tiers", {})
@@ -258,6 +270,7 @@ def validate_matrix(m: dict) -> None:
     compat = m.get("b3q01_compatibility", {})
     require(compat.get("schema_rewritten") is False, "finalized B3Q01 schema rewritten")
     require(compat.get("same_agent_encoding_requires_independent_from_correction_authoring_false") is True, "B3Q01 compatibility could overclaim independence")
+    require(compat.get("pass_requires_pinned_gov05_internal_adversarial_review") is True, "B3Q01 compatibility does not require GOV05 review proof")
     require(compat.get("legacy_field_name_confers_independence") is False, "legacy field name confers independence")
 
     reuse = m.get("evidence_reuse", {})
@@ -296,8 +309,10 @@ def validate_status(s: dict, reviewed_head: str) -> None:
     require(ids.get("source_archive", {}).get("sha256") == EXPECTED_SOURCE, "source hash changed")
     require(ids.get("testbank", {}).get("sha256") == EXPECTED_TESTBANK, "testbank hash changed")
     require(ids.get("user_guide", {}).get("sha256") == EXPECTED_GUIDE, "guide hash changed")
-    require(s.get("review_boundary", {}).get("immutable_authoring_head") == reviewed_head, "status does not pin reviewed authoring head")
-    require(s.get("review_boundary", {}).get("review_started") is True, "status does not record completed review phase")
+    rb = s.get("review_boundary", {})
+    require(rb.get("immutable_authoring_head") == reviewed_head, "status does not pin reviewed authoring head")
+    require(rb.get("review_started") is True, "status does not record completed review phase")
+    require(rb.get("review_completed") is True, "status does not record completed review")
     require(s.get("decision") == "QUALIFIED_SINGLE_AGENT_ADVERSARIAL_REVIEW_GOVERNANCE_WITH_EXPLICITLY_REDUCED_INDEPENDENCE_ASSURANCE_NO_SCIENTIFIC_GATE_REDUCTION", "final GOV05 decision wrong")
     for key, value in s.get("hard_boundaries", {}).items():
         require(value is False, f"status hard boundary violated: {key}")
@@ -305,33 +320,59 @@ def validate_status(s: dict, reviewed_head: str) -> None:
     require(all(ws.get(k) is True for k in ("realized", "persisted", "tested", "qualified", "work_unit_complete")), "work status incomplete")
     val = s.get("validation", {})
     require(val.get("exact_final_head_ci_required") is True, "exact final head CI requirement missing")
+    require(val.get("conclusion") == "EXACT_FINAL_HEAD_CI_REQUIRED_THIS_COMMIT_IS_QUALIFIED_ONLY_IF_WORKFLOW_SUCCEEDS", "final validation boundary unclear")
+
+
+def validate_scientific_gate_records(gates: dict, allow_fail: bool) -> None:
+    require(isinstance(gates, dict) and gates, "scientific gates missing")
+    for name, gate in gates.items():
+        require(isinstance(gate, dict), f"scientific gate {name} is not structured")
+        applicability = gate.get("applicability")
+        result = gate.get("result")
+        require(bool(gate.get("justification")), f"scientific gate {name} justification missing")
+        require(applicability in {"APPLICABLE", "NOT_APPLICABLE"}, f"scientific gate {name} applicability invalid")
+        if applicability == "APPLICABLE":
+            require(result in ({"PASS", "FAIL"} if allow_fail else {"PASS"}), f"applicable scientific gate {name} did not pass")
+        else:
+            require(result == "NOT_APPLICABLE", f"not-applicable scientific gate {name} result mismatch")
 
 
 def validate_review(r: dict) -> str:
     require(r.get("work_unit") == "ANIMO-GOV05", "review work_unit wrong")
+    require(r.get("risk_tier") == "GOVERNANCE", "GOV05 self-review risk tier must be GOVERNANCE")
     require(r.get("review_mode") == "INTERNAL_ADVERSARIAL_REVIEW", "review mode wrong")
     require(r.get("assurance_label") == "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT", "review assurance wrong")
     require(r.get("same_agent") is True, "same-agent fact not recorded")
     require(r.get("independence_claimed") is False, "same-agent review claims independence")
     head = r.get("reviewed_authoring_head", "")
     require(len(head) == 40 and all(c in "0123456789abcdef" for c in head), "reviewed authoring head invalid")
+
     boundary = r.get("review_boundary", {})
-    require(boundary.get("complete_authoring_package_persisted") is True, "authoring package not persisted before review")
-    require(boundary.get("immutable_head_frozen_before_review") is True, "immutable head not frozen before review")
-    require(boundary.get("source_testbank_evidence_hashes_recorded_before_review") is True, "hashes not recorded before review")
-    require(boundary.get("authoring_completed_before_review") is True, "authoring not completed before review")
+    for key in ("complete_authoring_package_persisted", "immutable_head_frozen_before_review", "source_testbank_evidence_hashes_recorded_before_review", "authoring_completed_before_review", "authoring_head_matches_reviewed_head"):
+        require(boundary.get(key) is True, f"review boundary failed: {key}")
     require(boundary.get("moving_tree_reviewed") is False, "moving tree was reviewed")
+
     reuse = r.get("evidence_reuse_checks", {})
-    for key in ("pin_identity", "scope_compatibility", "no_superseding_contradiction", "evidence_strength_preserved"):
+    for key in ("pin_identity", "scope_compatibility", "immutable_provenance", "no_superseding_contradiction", "evidence_strength_preserved"):
         require(reuse.get(key) == "PASS", f"review reuse check failed: {key}")
+
+    counter = r.get("counter_hypothesis", {})
+    require(counter.get("tested") is True, "counter hypothesis not tested")
+    require(bool(counter.get("alternative")) and bool(counter.get("test")), "counter hypothesis is not substantive")
+    require(counter.get("result") == "ALTERNATIVE_HAS_HIGHER_INDEPENDENCE_ASSURANCE_BUT_IS_NOT_REQUIRED_BY_GOV05", "counter-hypothesis result must acknowledge higher GOV04 independence assurance")
+
+    require(isinstance(r.get("active_controls"), list) and r["active_controls"], "active controls missing")
+    require(isinstance(r.get("negative_controls"), list) and len(r["negative_controls"]) >= 5, "negative controls incomplete")
+
+    scientific = r.get("scientific_gates", {})
+    require(set(scientific) == REVIEW_SCIENTIFIC_GATES, "GOV05 review scientific gate inventory incomplete or widened")
+    validate_scientific_gate_records(scientific, allow_fail=False)
+
     gates = r.get("adversarial_gates", {})
     require(set(gates) == REVIEW_GATES, "review gate inventory incomplete or widened")
     require(all(value == "PASS" for value in gates.values()), "not every GOV05 adversarial gate passed")
     require(r.get("outcome") == "SELF_REVIEW_PASS", "review outcome is not SELF_REVIEW_PASS")
-    require(isinstance(r.get("residual_uncertainty"), list) and r["residual_uncertainty"], "residual uncertainty missing")
-    counter = r.get("counter_hypothesis", {})
-    require(counter.get("tested") is True and counter.get("result") == "REJECTED_AS_REQUIRED_MODEL", "strongest alternative was not tested")
-    require(isinstance(r.get("negative_controls"), list) and len(r["negative_controls"]) >= 4, "negative controls incomplete")
+    require(isinstance(r.get("residual_uncertainty"), list) and len(r["residual_uncertainty"]) >= 4, "residual uncertainty incomplete")
     return head
 
 
@@ -341,7 +382,7 @@ def validate_transition(t: dict) -> None:
     for needed in ("issue-44", "issue-12", "issue-8", "issue-42", "issue-5", "ANIMO-B3B10R2", "ANIMO-NQ03R"):
         require(needed in items, f"transition snapshot missing {needed}")
     require(items["issue-44"].get("not_required_under_gov05_cancellation") is False, "completed TCD-041 review was reclassified as GOV05 cancellation")
-    require(items["issue-12"].get("not_required_under_gov05_cancellation") is False, "completed TCD-028 lineage review was reclassified as GOV05 cancellation")
+    require(items["issue-12"].get("not_required_under_gov05_cancellation") is False, "completed TCD-028-lineage review was reclassified as GOV05 cancellation")
     require(items["issue-42"].get("old_fail_rewritten") is False, "TCD-040 historical FAIL rewritten")
     require("DO_NOT_INTERRUPT" in items["ANIMO-B3B10R2"].get("transition", ""), "in-flight GOV04 review not protected")
     future = t.get("future_default", {})
@@ -350,11 +391,30 @@ def validate_transition(t: dict) -> None:
 
 
 def validate_schema(s: dict) -> None:
+    required = set(s.get("required", []))
+    for key in ("risk_tier", "counter_hypothesis", "active_controls", "negative_controls", "scientific_gates", "adversarial_gates", "outcome"):
+        require(key in required, f"generic review schema does not require {key}")
     props = s.get("properties", {})
     require(props.get("same_agent", {}).get("const") is True, "schema does not force same_agent=true")
     require(props.get("independence_claimed", {}).get("const") is False, "schema permits independence claim")
-    require("PROCESS_SELF_REVIEWED_NOT_INDEPENDENT" in props.get("assurance_label", {}).get("enum", []), "schema missing same-agent assurance")
+    require(props.get("active_controls", {}).get("minItems") == 1, "schema permits no active control")
+    require(props.get("negative_controls", {}).get("minItems") == 1, "schema permits no negative control")
+    require("scientific_gates" in props and "tier_c_enhanced" in props and "tier_d_surface" in props, "schema lacks fail-closed tier structures")
     require(props.get("outcome", {}).get("enum") == ["SELF_REVIEW_PASS", "FAIL_CLOSED"], "schema outcome surface changed")
+    all_of = s.get("allOf", [])
+    require(len(all_of) >= 4, "schema conditional fail-closed rules incomplete")
+    text = json.dumps(s, sort_keys=True)
+    for token in (
+        "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+        "tier_c_enhanced",
+        "tier_d_surface",
+        "surface_not_collapsed",
+        "ordinary_authoring_authorizes_production",
+        "no_invented_tolerance",
+        "SELF_REVIEW_PASS",
+        '"const": "FAIL"',
+    ):
+        require(token in text, f"schema missing conditional safety token: {token}")
 
 
 def negative_control_self_tests(matrix: dict) -> None:
@@ -382,6 +442,31 @@ def negative_control_self_tests(matrix: dict) -> None:
         raise ValidationError(f"negative control unexpectedly passed: {label}")
 
 
+def review_negative_control_self_tests(review: dict) -> None:
+    tests = []
+    x = copy.deepcopy(review)
+    x["independence_claimed"] = True
+    tests.append((x, "same-agent independence claim"))
+    x = copy.deepcopy(review)
+    x["adversarial_gates"]["GOV04_GATE_PRESERVATION"] = "FAIL"
+    tests.append((x, "adversarial gate fail hidden by pass outcome"))
+    x = copy.deepcopy(review)
+    x["scientific_gates"]["NON_INTERFERENCE_ENFORCED"]["result"] = "FAIL"
+    tests.append((x, "scientific gate fail hidden by pass outcome"))
+    x = copy.deepcopy(review)
+    x["negative_controls"] = []
+    tests.append((x, "missing negative controls"))
+    x = copy.deepcopy(review)
+    x["counter_hypothesis"]["result"] = "ALTERNATIVE_REJECTED_BY_PINNED_EVIDENCE"
+    tests.append((x, "overstated counter-hypothesis rejection"))
+    for mutated, label in tests:
+        try:
+            validate_review(mutated)
+        except ValidationError:
+            continue
+        raise ValidationError(f"review negative control unexpectedly passed: {label}")
+
+
 def main() -> None:
     for path in (POLICY, MATRIX, STATUS, SCHEMA, TRANSITION, REVIEW, WORKFLOW):
         require(path.exists(), f"required artifact missing: {path.relative_to(ROOT)}")
@@ -398,6 +483,7 @@ def main() -> None:
     reviewed_head = validate_review(review)
     validate_status(status, reviewed_head)
     negative_control_self_tests(matrix)
+    review_negative_control_self_tests(review)
 
     current = git("rev-parse", "HEAD").stdout.strip()
     env_sha = os.environ.get("GITHUB_SHA")
@@ -433,7 +519,7 @@ def main() -> None:
         "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
         "lower independence assurance than the GOV04 separate-context process",
         "The scientific evidence gates themselves are not reduced",
-        "Historical behaviour remains `UNKNOWN`",
+        "historical revision-53 behaviour remains `UNKNOWN`",
         "Production authorization may not be collapsed",
     ):
         require(token in policy_text, f"policy text missing required assurance boundary: {token}")
