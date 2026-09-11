@@ -1,0 +1,16 @@
+{
+  "work_unit":"ANIMO-B3D31",
+  "target_child_atom":"TCD-025-A4",
+  "evidence_class":"EXACT_RATIONAL_B1_STYLE_NOT_B2",
+  "cases":[
+    {"id":"P01","species":{"DOP":{"old":6,"in":0,"out":2,"new":4},"PO4":{"old":10,"in":0,"out":4,"new":6}},"expect_each_closed":true,"expect_aggregate_closed":true},
+    {"id":"P02","species":{"DOP":{"old":0,"in":5,"out":2,"new":3},"PO4":{"old":7,"in":2,"out":4,"new":5}},"expect_each_closed":true,"expect_aggregate_closed":true},
+    {"id":"P03","matrix_side":-9,"macropore_side":9,"expect_sum":0},
+    {"id":"P04","FlMpOuDrSo":4,"second_external_loss":0},
+    {"id":"P05","relation":"partial_cut","expect_in_scope":false},
+    {"id":"P06","relation":"contains_all_S_D","expect_in_scope":true},
+    {"id":"P07","relation":"disjoint_from_S_D","expect_in_scope":true},
+    {"id":"P08","aggregation_order":"DOP,PO4 identities first then P sum","expect_species_separation":true},
+    {"id":"P09","stoichiometric_conversion":0,"atomic_weight_conversion":0,"expect_no_new_conversion":true}
+  ]
+}
