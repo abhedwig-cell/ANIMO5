@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB05D",
+  "base_authority": "ANIMO-TB05C@788247b4346bedbb79749d5ce5daef3f99283f8d",
+  "base_registry_blob": "4c78cdb542c5ff4ce898c033eb99dd7b2daa7c2c",
+  "result_registry_blob": "9b5078ea4c4f22f0215fead27a96580eeb613a9b",
+  "added_test_ids": [
+    "ATB-STATE-003",
+    "ATB-STATE-004",
+    "ATB-STATE-005",
+    "ATB-STATE-006",
+    "ATB-BND-002",
+    "ATB-BND-005",
+    "ATB-SUB-003",
+    "ATB-SUB-004",
+    "ATB-SUB-005",
+    "ATB-SUB-008",
+    "ATB-SUB-009",
+    "ATB-SUB-010"
+  ],
+  "removed_test_ids": [],
+  "modified_preexisting_test_ids": [],
+  "modified_central_metadata": [],
+  "preserved_outside_registry": {
+    "ATB-STATE-007": "GAP",
+    "ATB-BND-003": "GAP",
+    "ATB-BND-004": "GAP",
+    "ATB-BND-006": "GAP",
+    "ATB-SUB-006": "GAP",
+    "ATB-SUB-007": "GAP",
+    "ATB-SUB-011": "GAP",
+    "ATB-SUB-012": "GAP"
+  },
+  "change_semantics": "Append-only registration of the twelve TB05C-qualified fragment entries. Existing central testbank entries and metadata remain unchanged.",
+  "scientific_authority_change": "NONE",
+  "admission_effect": "NONE",
+  "whole_model_golden_baseline_created": false
+}
