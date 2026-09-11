@@ -2,8 +2,8 @@
   "work_unit": "ANIMO-RG05I",
   "title": "Third Batched Atomic B3 Admission Integration",
   "branch": "work/animo-rg05i-third-batched-admission-integration",
-  "state": "PERSISTED_VALIDATION_PENDING",
-  "decision": "PERSISTED_VALIDATION_PENDING",
+  "state": "QUALIFIED_THIRD_BATCHED_ATOMIC_ADMISSION_INTEGRATION_THREE_POST_RG05H_ADMISSIONS_NO_PRODUCTION",
+  "decision": "QUALIFIED_THIRD_BATCHED_ATOMIC_ADMISSION_INTEGRATION_THREE_POST_RG05H_ADMISSIONS_NO_PRODUCTION",
   "source_aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
   "aggregate_trigger": "NORMAL_BATCH_THRESHOLD_REACHED_THREE_EXACT_FINAL_QUALIFIED_POST_RG05H_ATOMIC_ADMISSIONS",
   "governance": {
@@ -64,23 +64,23 @@
     "synthetic_evidence_counted_as_admission": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-RG05I third batched atomic admission integration",
-    "run_id": null,
-    "job_id": null,
-    "tested_head": null,
-    "conclusion": "PENDING",
-    "validator": "PENDING",
-    "scope_guard": "PENDING",
-    "closeout_note": null,
+    "run_id": 34549046808,
+    "job_id": 103107852277,
+    "tested_head": "692e6151b9454b1459f580c4cd86d1b72a8e1b8b",
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34549046808 validates the complete substantive RG05I six-file aggregate package at 692e6151b9454b1459f580c4cd86d1b72a8e1b8b, including live API verification of the exact-final B3D21, B3D24, B3D23 and SYNQ04 workflows. This status-only closeout must pass the same workflow on its exact final head before RG05I is consumed as current aggregate authority.",
     "exact_final_head_required": true
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "next_if_validated": "USE_ANIMO_RG05I_AS_CURRENT_AGGREGATE_AUTHORITY_AND_CONTINUE_TCD037_A3_WITH_ANIMO-B3A07"
 }
