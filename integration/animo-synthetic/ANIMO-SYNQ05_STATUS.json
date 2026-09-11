@@ -3,7 +3,7 @@
   "title": "TCD-037-A4 Independent Synthetic N2O Atmosphere-Emission Observer Activation",
   "target": "TCD-037-A4",
   "branch": "work/animo-synq05-tcd037-a4-independent-n2o-emission-activation",
-  "state": "PERSISTED_VALIDATION_PENDING",
+  "state": "QUALIFIED_TCD037_A4_INDEPENDENT_SYNTHETIC_CAUSALITY_AND_SCOPE_NOT_B2",
   "base_authority": "ANIMO-B3D25@4da2dd067069944a5e3eeb5f532566a23402bd68",
   "base_exact_final_ci": "34549748497:success",
   "aggregate_authority": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
@@ -16,7 +16,7 @@
   "accounting_owner": "(QEmN2ODif+QEmN2OFlw)*St",
   "observer_identity": "Delta Bani(N2Oe)=10000*(QEmN2ODif+QEmN2OFlw)*St",
   "strongest_alternative": "FROZEN_PRODUCTION_TOTAL_CONSUMER_MISMATCH",
-  "planned_controls": [
+  "qualified_controls": [
     "EMISSION_NONZERO_PRODUCTION_ZERO",
     "PRODUCTION_NONZERO_EMISSION_ZERO",
     "COMPONENT_PERMUTED",
@@ -54,30 +54,39 @@
   "testcase_translation_performed": false,
   "b4_opened": false,
   "aggregate_update_performed": false,
+  "remediation_history": {
+    "first_run_id": 34550270954,
+    "first_tested_head": "4b0307a58fcd9a29ea2c209b99980bf8c99ca0a1",
+    "first_result": "FAIL_CLOSED_VALIDATOR_ORACLE_SCHEMA_KEY_MISMATCH",
+    "scientific_failure": false,
+    "scope_failure": false,
+    "remediation": "Added the explicit raw_source_redistributed=false provenance field already implied by the workunit contract; no accounting identity, test vector, source ownership claim or scope boundary changed.",
+    "remediated_head": "5e7933922892feebc6cf46c1db421110f2120fc3"
+  },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": ".github/workflows/animo-synq05-tcd037-a4.yml",
     "validator": "tools/synq05/validate_tcd037_a4_synthetic.py",
-    "run_id": null,
-    "job_id": null,
-    "tested_head": null,
-    "conclusion": "PENDING",
-    "o0": "PENDING",
-    "o2": "PENDING",
-    "o0_o2_byte_identity": "PENDING",
-    "exact_rational_oracle": "PENDING",
-    "causal_discriminator": "PENDING",
-    "signed_exchange": "PENDING",
-    "scope_guard": "PENDING",
+    "run_id": 34550382637,
+    "job_id": 103111857216,
+    "tested_head": "5e7933922892feebc6cf46c1db421110f2120fc3",
+    "conclusion": "PRE_CLOSEOUT_PASS_EXACT_FINAL_HEAD_REQUALIFICATION_REQUIRED",
+    "o0": "PASS",
+    "o2": "PASS",
+    "o0_o2_byte_identity": "PASS",
+    "exact_rational_oracle": "PASS",
+    "causal_discriminator": "PASS",
+    "signed_exchange": "PASS",
+    "scope_guard": "PASS",
     "final_exact_head_required": true,
-    "closeout_note": null
+    "closeout_note": "Run 34550382637 validates the complete substantive six-file SYNQ05 package at 5e7933922892feebc6cf46c1db421110f2120fc3. This status-only closeout is final evidence authority only if the same workflow succeeds on this closeout commit's exact head."
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "next_if_qualified": "LIVE_RECHECK_AND_ALLOCATE_FREE_TCD037_A4_TIER_A_READINESS_IDENTIFIER_B3A08_IS_ALREADY_OCCUPIED"
 }
