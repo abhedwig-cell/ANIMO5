@@ -1,0 +1,314 @@
+{
+  "schema_version": "1.0",
+  "fragment_id": "ANIMO-TB03A-CNP-SPECIES-ORACLE-FRAGMENT-v1",
+  "producer_workunit": "ANIMO-TB03A",
+  "title": "C/N/P Species, Stoichiometry & Atomic Oracle Bank Adoption",
+  "base_authority": "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d:CI_34557165449_SUCCESS",
+  "tb01_authority": "ANIMO-TB01@15a17bfa2c321d08f3ac89f334986c0ae8429045",
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "synq01_authority": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+  "source_evidence": {
+    "frozen_b0_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "animo_4_0_user_guide_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "user_guide_scientific_basis": [
+      "chapter 2.1: C/N/P cycles and organic-pool composition",
+      "chapter 2.3: transported substances and mass/unit definitions",
+      "chapter 2.4.1: separate NH4 and NO3 availability/uptake semantics",
+      "annex 2: species-separated mass-balance records"
+    ]
+  },
+  "fragment_scope": {
+    "layers": ["TB-L1", "TB-L2"],
+    "domains": ["ORACLE", "SPC"],
+    "included": [
+      "SYNQ01 stable-DOM species-local parent/daughter analytical oracle",
+      "SYNQ01 species-permutation metamorphic oracle",
+      "source-bound N/P cross-species sibling-assignment audit",
+      "NH4-N versus NO3-N ownership contract candidate",
+      "C/N/P phase and unit contract candidate",
+      "organic-pool stoichiometric ownership contract candidate",
+      "explicit residual gap for reaction-wide species ownership coverage"
+    ],
+    "excluded": [
+      "transaction and control-volume conservation adoption reserved for TB3B",
+      "TCD admission or disposition",
+      "production scientific source changes",
+      "whole-model golden/reference baseline",
+      "historical B2 creation",
+      "central registry mutation"
+    ]
+  },
+  "central_registry_write": "FORBIDDEN_BY_FRAGMENT_PRODUCER",
+  "registry_integration": "SEPARATE_SERIAL_CONSOLIDATION_WORKUNIT_ONLY",
+  "package_state_rule": "QUALIFIED_ANIMO_TB03A_BOUNDED_FRAGMENT_PACKAGE only after GitHub Actions success for the exact final branch head",
+  "entries": [
+    {
+      "test_id": "ATB-ORACLE-002",
+      "title": "Stable-DOM C/N/P species-local parent/daughter partition oracle",
+      "layer": "TB-L1",
+      "owner": "testbank/oracles",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121:SYNQ-O004",
+      "expected_value_provenance": "QUALIFIED_SYNTHETIC_ORACLE",
+      "comparison_policy": "DOMAIN_SPECIFIC_NUMERICAL_CONTRACT",
+      "subsystem": ["CARBON_ORGANIC_MATTER", "NITROGEN", "PHOSPHORUS", "DOM"],
+      "scientific_claims": [
+        "within the qualified stable-DOM partition scope, each C/N/P daughter is derived from its same-species parent",
+        "for species X: X17=m*k*C_X*H, X19=(1-a)*X17 and X20=a*X17",
+        "the daughter pair conserves its parent exactly in the isolated partition identity"
+      ],
+      "applicability": [
+        "stable-DOM species-local partition represented by SYNQ-O004",
+        "same partition fraction a across the three species",
+        "no intended cross-species stoichiometric conversion at this partition step"
+      ],
+      "expected_relation": {
+        "inputs": {"C_C": "2.0", "C_N": "0.2", "C_P": "0.05", "m": "0.35", "k": "0.08", "H": "0.2", "a": "0.3"},
+        "C_parent_d19_d20": ["0.011200", "0.0078400", "0.0033600"],
+        "N_parent_d19_d20": ["0.001120", "0.0007840", "0.0003360"],
+        "P_parent_d19_d20": ["0.0002800", "0.00019600", "0.00008400"],
+        "comparison": "decimal exact within the synthetic oracle representation"
+      },
+      "units_contract": "normalized species mass per area over interval, exactly as bounded by SYNQ-O004; no conversion to a broader ANIMO output unit is inferred",
+      "dependencies": [],
+      "failure_class": "SPECIES_OWNERSHIP_FAILURE",
+      "qualification_strength": "SCIENTIFIC_SCOPE_BOUNDED_ATOMIC_ORACLE",
+      "admission_effect": "NONE",
+      "permanence_review": {
+        "reusable_claim_beyond_originating_tcd": true,
+        "source_and_input_applicability_pinned": true,
+        "allowed_expectation_provenance_and_comparison_policy": true,
+        "unknown_expectation_absent": true,
+        "legacy_behaviour_not_mislabeled_scientific_truth": true,
+        "dependencies_and_failure_semantics_known": true,
+        "historical_evidence_not_rewritten": true,
+        "owner_and_maintenance_route_declared": true,
+        "cost_and_execution_profile_declared": true,
+        "future_decision_value_beyond_debug_probe": true
+      },
+      "cost_class": "FAST",
+      "execution_profile": ["DEVELOPER_FAST", "SCIENTIFIC_FOCUSED"]
+    },
+    {
+      "test_id": "ATB-ORACLE-003",
+      "title": "Stable-DOM species permutation metamorphic oracle",
+      "layer": "TB-L1",
+      "owner": "testbank/oracles",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121:SYNQ-O005",
+      "expected_value_provenance": "QUALIFIED_SYNTHETIC_ORACLE",
+      "comparison_policy": "DOMAIN_SPECIFIC_NUMERICAL_CONTRACT",
+      "subsystem": ["CARBON_ORGANIC_MATTER", "NITROGEN", "PHOSPHORUS", "DOM"],
+      "scientific_claims": [
+        "where the partition is species-local and contains no cross-species conversion, permuting C/N/P labels together with their matching inputs must permute outputs identically"
+      ],
+      "applicability": [
+        "stable-DOM species-local partition represented by SYNQ-O005",
+        "species labels and their inputs are permuted together",
+        "explicit stoichiometric conversion relations are excluded"
+      ],
+      "expected_relation": "F(PERMUTE(input)) = PERMUTE(F(input)) exactly",
+      "units_contract": "species-labelled mass relation; metamorphic comparison is unit-preserving",
+      "dependencies": ["ATB-ORACLE-002"],
+      "failure_class": "SPECIES_OWNERSHIP_FAILURE",
+      "qualification_strength": "SCIENTIFIC_SCOPE_BOUNDED_METAMORPHIC_ORACLE",
+      "admission_effect": "NONE",
+      "permanence_review": {
+        "reusable_claim_beyond_originating_tcd": true,
+        "source_and_input_applicability_pinned": true,
+        "allowed_expectation_provenance_and_comparison_policy": true,
+        "unknown_expectation_absent": true,
+        "legacy_behaviour_not_mislabeled_scientific_truth": true,
+        "dependencies_and_failure_semantics_known": true,
+        "historical_evidence_not_rewritten": true,
+        "owner_and_maintenance_route_declared": true,
+        "cost_and_execution_profile_declared": true,
+        "future_decision_value_beyond_debug_probe": true
+      },
+      "cost_class": "FAST",
+      "execution_profile": ["DEVELOPER_FAST", "SCIENTIFIC_FOCUSED"]
+    },
+    {
+      "test_id": "ATB-SPC-003",
+      "title": "N/P sibling-assignment ownership and symmetry applicability guard",
+      "layer": "TB-L2",
+      "owner": "testbank/species",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-PREP05-CROSS-SPECIES-SYMMETRY-AUDIT-2026-09-08; tests/test_cross_species_symmetry_audit.py@blob:5ce33964c2b3d93ee7038984f1e22c12668fb7f8; source-archive-sha256:183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "TEXT_NORMALIZED_EXACT",
+      "subsystem": ["NITROGEN", "PHOSPHORUS", "DOM"],
+      "scientific_claims": [
+        "nearby N/P sibling assignments may be compared only when a declared same-species ownership relation exists",
+        "reciprocal N/P uptake coupling and explicit N/P-ratio relations are not symmetry failures",
+        "a P sibling assignment that retains an N parent in the qualified same-species class is a species-ownership failure"
+      ],
+      "applicability": [
+        "narrow nearby high-symmetry N/P assignment class defined by PREP05",
+        "structural similarity threshold 0.90",
+        "reciprocal cross-coupling excluded",
+        "explicit stoichiometric ratio relations excluded"
+      ],
+      "dependencies": ["ATB-ORACLE-003"],
+      "failure_class": "SPECIES_OWNERSHIP_FAILURE",
+      "qualification_strength": "SOURCE_BOUND_STRUCTURAL_INVARIANT_WITH_NEGATIVE_CONTROLS",
+      "admission_effect": "NONE",
+      "permanence_review": {
+        "reusable_claim_beyond_originating_tcd": true,
+        "source_and_input_applicability_pinned": true,
+        "allowed_expectation_provenance_and_comparison_policy": true,
+        "unknown_expectation_absent": true,
+        "legacy_behaviour_not_mislabeled_scientific_truth": true,
+        "dependencies_and_failure_semantics_known": true,
+        "historical_evidence_not_rewritten": true,
+        "owner_and_maintenance_route_declared": true,
+        "cost_and_execution_profile_declared": true,
+        "future_decision_value_beyond_debug_probe": true
+      },
+      "cost_class": "FAST",
+      "execution_profile": ["DEVELOPER_FAST", "SCIENTIFIC_FOCUSED"]
+    },
+    {
+      "test_id": "ATB-SPC-004",
+      "title": "NH4-N versus NO3-N species-separation contract",
+      "layer": "TB-L2",
+      "owner": "testbank/species",
+      "status": "CANDIDATE",
+      "source_identity": "ANIMO 4.0 User Guide sha256:ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301 chapters 2.3, 2.4.1 and Annex 2",
+      "expected_value_provenance": "THEORY",
+      "comparison_policy": "DOMAIN_SPECIFIC_NUMERICAL_CONTRACT",
+      "subsystem": ["NITROGEN", "TRANSPORT", "PLANT_CROP_UPTAKE"],
+      "scientific_claims": [
+        "NH4-N and NO3-N are distinct transported nitrogen species and must not be silently merged in species ownership",
+        "crop availability and uptake treat nitrate and ammonium separately",
+        "mass-balance ownership is species-separated even though transformations such as nitrification couple the two ledgers"
+      ],
+      "units_contract": "aqueous concentrations kg m-3 in the transport formulation; balance outputs are species-labelled nitrogen mass per area",
+      "dependencies": ["ATB-SPC-001"],
+      "failure_class": "SPECIES_OWNERSHIP_FAILURE",
+      "qualification_strength": "SCIENTIFIC_CONTRACT_DEFINED_EXECUTABLE_ADAPTER_PENDING",
+      "admission_effect": "NONE",
+      "permanence_blocker": "no dedicated reusable executable NH4/NO3 ownership adapter is yet present on the TB02 base",
+      "cost_class": "FAST",
+      "execution_profile": ["DEVELOPER_FAST", "SCIENTIFIC_FOCUSED"]
+    },
+    {
+      "test_id": "ATB-SPC-005",
+      "title": "C/N/P phase and dimensional-unit ownership contract",
+      "layer": "TB-L2",
+      "owner": "testbank/species",
+      "status": "CANDIDATE",
+      "source_identity": "ANIMO 4.0 User Guide sha256:ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301 chapter 2.3 and Annex 2",
+      "expected_value_provenance": "THEORY",
+      "comparison_policy": "DOMAIN_SPECIFIC_NUMERICAL_CONTRACT",
+      "subsystem": ["CARBON_ORGANIC_MATTER", "NITROGEN", "PHOSPHORUS", "DOM", "TRANSPORT"],
+      "scientific_claims": [
+        "aqueous mass concentration c is kg m-3",
+        "solid-phase contents Xe, Xn and Xp are kg substance per kg dry soil",
+        "volumic source/sink rates are kg m-3 d-1",
+        "DOM, NH4-N, NO3-N, DON, PO4-P and DOP are distinct transported substance identities"
+      ],
+      "dependencies": [],
+      "failure_class": "SPECIES_OWNERSHIP_FAILURE",
+      "qualification_strength": "DIMENSIONAL_CONTRACT_DEFINED_EXECUTABLE_ADAPTER_PENDING",
+      "admission_effect": "NONE",
+      "permanence_blocker": "the scientific dimensional contract is documented but no dedicated dimension-check adapter is yet qualified",
+      "cost_class": "FAST",
+      "execution_profile": ["DEVELOPER_FAST"]
+    },
+    {
+      "test_id": "ATB-SPC-006",
+      "title": "Organic-pool C/N/P stoichiometric ownership contract",
+      "layer": "TB-L2",
+      "owner": "testbank/species",
+      "status": "CANDIDATE",
+      "source_identity": "ANIMO 4.0 User Guide sha256:ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301 chapter 2.1; PREP05 reviewed contextual N/P-ratio coupling",
+      "expected_value_provenance": "THEORY",
+      "comparison_policy": "DOMAIN_SPECIFIC_NUMERICAL_CONTRACT",
+      "subsystem": ["CARBON_ORGANIC_MATTER", "NITROGEN", "PHOSPHORUS"],
+      "scientific_claims": [
+        "fresh organic matter fractions may have distinct decomposition rate, nitrogen content and phosphorus content",
+        "scientifically explicit stoichiometric ratio relations are intentional cross-species coupling and must not be rejected by lexical symmetry rules",
+        "no universal C/N/P ratio is inferred by this fragment"
+      ],
+      "dependencies": ["ATB-SPC-003"],
+      "failure_class": "SPECIES_OWNERSHIP_FAILURE",
+      "qualification_strength": "STOICHIOMETRIC_APPLICABILITY_CONTRACT_DEFINED_EXECUTABLE_ADAPTER_PENDING",
+      "admission_effect": "NONE",
+      "permanence_blocker": "model-wide ratio owners and conversion equations have not yet been normalized into a reusable executable contract",
+      "cost_class": "FOCUSED",
+      "execution_profile": ["SCIENTIFIC_FOCUSED"]
+    },
+    {
+      "test_id": "ATB-SPC-007",
+      "title": "Reaction-wide C/N/P and NH4/NO3 ownership matrix",
+      "layer": "TB-L2",
+      "owner": "testbank/species",
+      "status": "GAP",
+      "source_identity": "ANIMO-TB01 identified systematic C/N/P and NH4/NO3 local transaction and stoichiometric coverage as incomplete",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "DOMAIN_SPECIFIC_NUMERICAL_CONTRACT",
+      "subsystem": ["CARBON_ORGANIC_MATTER", "NITROGEN", "PHOSPHORUS", "DOM", "PLANT_CROP_UPTAKE", "TRANSPORT"],
+      "scientific_claims": [
+        "full reaction-wide species ownership is not qualified by the three promoted TB03A entries",
+        "local stable-DOM and structural symmetry evidence must not be generalized to the whole C/N/P reaction network"
+      ],
+      "dependencies": [],
+      "failure_class": "SPECIES_OWNERSHIP_FAILURE",
+      "qualification_strength": "EXPLICIT_COVERAGE_GAP",
+      "admission_effect": "NONE",
+      "gap_reason": "complete executable coverage of all local C/N/P, NH4/NO3, phase and stoichiometric transactions remains future work",
+      "cost_class": "QUALIFICATION",
+      "execution_profile": ["DEEP_AUDIT"]
+    }
+  ],
+  "existing_seed_registry_relation": {
+    "ATB-ORACLE-001": "retained as the TB01 umbrella SYNQ01 adapter candidate; TB03A does not overwrite it",
+    "ATB-SPC-001": "retained as the balance species/index audit seed and referenced as dependency where applicable",
+    "ATB-SPC-002": "retained as the generic cross-species symmetry seed; TB03A adds a narrower permanence-qualified ownership/applicability guard instead of mutating the central entry"
+  },
+  "not_promoted_from_synq01": [
+    {"oracle_id": "SYNQ-O001", "reason": "NO3 clipping reconstruction is primarily a conservation/admission-specific discriminator; defer conservation-bank adoption to TB3B"},
+    {"oracle_id": "SYNQ-O002", "reason": "organic-P redistribution is a transaction/control-volume conservation oracle; defer to TB3B"},
+    {"oracle_id": "SYNQ-O003", "reason": "water interception is outside C/N/P species scope"},
+    {"oracle_id": "SYNQ-O006", "reason": "slow-Langmuir kinetic oracle belongs to sorption/numerical subsystem adoption"},
+    {"oracle_id": "SYNQ-O007", "reason": "index-domain oracle belongs to sorption/architecture adoption"},
+    {"oracle_id": "SYNQ-O008", "reason": "macropore ledger conservation belongs to macropore/conservation adoption"},
+    {"oracle_id": "SYNQ-O009", "reason": "high-precision root oracle belongs to numerical qualification"},
+    {"oracle_id": "SYNQ-O010..O012", "reason": "temporal/state oracles are outside TB03A species scope"}
+  ],
+  "gov05_adversarial_self_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "alternative_hypotheses_checked": [
+      "cross-species similarity can be scientifically intentional rather than a defect",
+      "a TCD-specific diagnostic can appear reusable while merely encoding one historical typo",
+      "synthetic oracle success can be mistaken for whole-model or historical validation",
+      "NH4 and NO3 can exchange mass through reactions without becoming one species identity",
+      "stoichiometric relationships can require deliberate cross-species coupling",
+      "unit labels in examples can be confused with universal internal representation"
+    ],
+    "disposition": [
+      "promote only SYNQ-O004, SYNQ-O005 and the narrow PREP05 structural guard as qualified fragment entries",
+      "retain NH4/NO3, dimensional and broader stoichiometric contracts as candidates until executable adapters exist",
+      "retain reaction-wide ownership as an explicit GAP",
+      "do not infer whole-model validity, historical B2, TCD admission or production readiness"
+    ],
+    "result": "PASS_BOUNDED_TB03A_FRAGMENT_SCOPE"
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "tcd_scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "whole_model_golden_baseline_created": false,
+    "historical_b2_created": false,
+    "historical_authority_rewritten": false
+  },
+  "qualification": {
+    "exact_final_head_ci_required": true,
+    "qualified_entry_ids": ["ATB-ORACLE-002", "ATB-ORACLE-003", "ATB-SPC-003"],
+    "candidate_entry_ids": ["ATB-SPC-004", "ATB-SPC-005", "ATB-SPC-006"],
+    "gap_entry_ids": ["ATB-SPC-007"],
+    "receipt_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "receipt_is_not_scientific_admission": true
+  }
+}
