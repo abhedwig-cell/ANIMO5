@@ -1,0 +1,90 @@
+name: ANIMO-B3D26 TCD-037-A4 Tier-A atomic admission
+
+on:
+  push:
+    branches:
+      - work/animo-b3d26-tcd037-a4-gov05-tier-a-admission
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact admission authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in \
+            840352e615b1ae4c7e30b922378655111dba9257 \
+            331f6ed91d4a1c15a23ae0c1ad75d1b540f61858 \
+            0f85d7102945c7c4d77bc49885f9ecca688209e3 \
+            4da2dd067069944a5e3eeb5f532566a23402bd68 \
+            94afe7d649a8c60758a41996f0059de0acddd2fc \
+            ca3b6fba99ddc70e1f063ac98088f8825f467c1a \
+            54679c7555a963133dfd686648af334f479c5808 \
+            a3e822f8e97fe1312a7dfa73601a49ae7375163e \
+            f65a47724e4a4fca7f2d8b8d6de9eeee51867904 \
+            1bbe4c211197590f346803106e45dca5faae79fc \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            846e0f4d02a38b9e02cc1419b1ca87e63aaedb54 \
+            1db63b17cb5f48cbd8ae28116a2e716b4bdaadf3
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+            git cat-file -e "${sha}^{commit}"
+          done
+
+      - name: Verify exact workflow head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Verify consumed exact-final workflows
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          checks = {
+              34553519234: "840352e615b1ae4c7e30b922378655111dba9257",
+              34550444642: "ca3b6fba99ddc70e1f063ac98088f8825f467c1a",
+              34549748497: "4da2dd067069944a5e3eeb5f532566a23402bd68",
+              34549097225: "94afe7d649a8c60758a41996f0059de0acddd2fc",
+              34546470484: "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+          }
+          token = os.environ["GH_TOKEN"]
+          for run_id, sha in checks.items():
+              req = urllib.request.Request(
+                  f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}",
+                  headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"},
+              )
+              with urllib.request.urlopen(req) as r:
+                  data = json.load(r)
+              assert data["head_sha"] == sha, (run_id, data["head_sha"], sha)
+              assert data["status"] == "completed" and data["conclusion"] == "success", (run_id, data["status"], data["conclusion"])
+          print("exact-final upstream workflows verified")
+          PY
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install schema validator
+        run: python -m pip install --quiet jsonschema
+
+      - name: Parse admission records and compile validator
+        run: |
+          python -m json.tool integration/animo-b3/TCD037_A4_TIER_A_WAIVER_AUDIT.json >/dev/null
+          python -m json.tool integration/animo-b3/TCD037_A4_CHILD_ATOM_FORMAL_DISPOSITION.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3D26_STATUS.json >/dev/null
+          python -m py_compile tools/validate_b3d26_tcd037_a4.py
+
+      - name: Validate Tier-A waiver VERIFY_AND_REUSE B3Q01 disposition B3Q02 carrier and scope
+        run: python tools/validate_b3d26_tcd037_a4.py
