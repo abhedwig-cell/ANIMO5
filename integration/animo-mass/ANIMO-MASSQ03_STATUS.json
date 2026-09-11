@@ -5,15 +5,15 @@
   "branch": "work/animo-massq03-tcd025-selected-profile-control-volume",
   "base_authority": "ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
   "consumed_readiness_authority": "ANIMO-B3A08@7a7309e913e8216a20ac134539470e3e5eb4302f",
-  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
-  "state": "QUALIFICATION_CANDIDATE_NOT_YET_FINAL",
-  "decision_candidate": "QUALIFIED_TCD025_SELECTED_PROFILE_MACROPORE_BOUNDARY_ADMISSIBILITY_PARTIAL_SATURATED_RESERVOIR_CUTS_NOT_SOURCE_CLOSED_NO_ADMISSION",
+  "phase": "CLOSED_QUALIFIED_CONTROL_VOLUME_SEMANTICS",
+  "state": "QUALIFIED_NO_B3_ADMISSION",
+  "decision": "QUALIFIED_TCD025_SELECTED_PROFILE_MACROPORE_BOUNDARY_ADMISSIBILITY_PARTIAL_SATURATED_RESERVOIR_CUTS_NOT_SOURCE_CLOSED_NO_ADMISSION",
   "risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
-  "qualified": false,
+  "qualified": true,
   "b3_admitted": false,
   "production_authorized": false,
   "authoring_frozen": true,
-  "immutable_authoring_head": "RECORDED_BY_REVIEW_ARTIFACT_AFTER_COMMIT_CREATION",
+  "immutable_authoring_head": "a528028612b5e9c5da9f3f0c3e7f87f552c82a8b",
   "upstream_pins": {
     "ANIMO-GOV05": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
     "ANIMO-GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
@@ -24,22 +24,27 @@
     "ANIMO-B3D23": "6c9ab83952b53566b878b533c08e3cb10074f399",
     "ANIMO-B3A08": "7a7309e913e8216a20ac134539470e3e5eb4302f"
   },
-  "qualified_finding_candidate": {
+  "qualified_finding": {
     "public_balance_intervals_are_configurable": true,
     "unsaturated_macropore_species_boundary_transfer_source_owned": true,
     "saturated_macropore_species_state_domain_level": true,
+    "boundary_admissibility_expression": "for every active D: (I intersection S_D is empty) OR (S_D subset_of I)",
     "partial_saturated_reservoir_selected_profile_source_closed": false,
     "residual_derived_boundary_completion_allowed": false,
     "boundary_predicate_is_necessary_not_sufficient": true,
-    "universal_exact_TCD025_arbitrary_interval_claim_supported": false
+    "universal_exact_TCD025_arbitrary_interval_claim_supported": false,
+    "universal_water_partial_cut_impossibility_claimed": false
   },
   "review_governance": {
     "authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
     "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
     "genuinely_independent": false,
-    "review_started": false,
-    "review_completed": false,
-    "review_outcome": null
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "review_started": true,
+    "review_completed": true,
+    "reviewed_head": "a528028612b5e9c5da9f3f0c3e7f87f552c82a8b",
+    "review_artifact": "integration/animo-mass/ANIMO-MASSQ03_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "review_outcome": "SELF_REVIEW_PASS_QUALIFIED_BOUNDARY_PREDICATE_NO_ADMISSION"
   },
   "scientific_gate_reduction": false,
   "hard_boundaries": {
@@ -58,7 +63,18 @@
   "validation": {
     "validator": "tools/massq03/validate_massq03.py",
     "workflow": ".github/workflows/animo-massq03-tcd025-control-volume.yml",
+    "authoring_head_ci_run": 34570525718,
+    "authoring_head_ci_job": 103171449050,
+    "authoring_head_ci_conclusion": "success",
     "exact_final_head_ci_required": true
   },
-  "next_if_review_passes": "Use the qualified boundary predicate in a separate TCD-025 correction/readiness workunit; either restrict exact claims to admissible intervals and prove remaining terms or separately qualify any new partial-reservoir observer/state contract."
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
+  },
+  "next": "Open a separate TCD-025 correction/readiness workunit from the then-current aggregate. It may restrict exact claims to intervals satisfying the qualified boundary predicate and must separately prove remaining observer terms, or it must first qualify any new partial-reservoir observer/state contract. No B3 admission is performed by MASSQ03."
 }

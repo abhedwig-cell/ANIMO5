@@ -1,0 +1,100 @@
+{
+  "work_unit": "ANIMO-MASSQ03",
+  "target": "TCD-025",
+  "reviewed_head": "a528028612b5e9c5da9f3f0c3e7f87f552c82a8b",
+  "reviewed_head_ci": {
+    "run_id": 34570525718,
+    "job_id": 103171449050,
+    "conclusion": "success"
+  },
+  "governance_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "review_boundary": {
+    "immutable_authoring_head_verified": true,
+    "authoring_ci_green_before_review": true,
+    "source_and_testbank_hashes_pinned_before_review": true,
+    "substantive_authoring_frozen_before_review": true,
+    "moving_tree_reviewed": false
+  },
+  "claim_reconstruction": {
+    "public_balance_surface": "BALNMI..BALNMA defines configurable selected layer intervals rather than only a whole-profile balance",
+    "unsaturated_macropore_species_topology": "layerwise transported mass is source-defined through TpAm and FlMpVt",
+    "saturated_macropore_species_topology": "each active domain owns one mixed-reservoir concentration/storage state over LnTpMpSr(D)..LnBoMp(D)",
+    "reviewed_predicate": "for every active domain D, the selected interval must either exclude S_D or contain all of S_D to pass the saturated-reservoir species-boundary gate",
+    "claim_strength": "necessary boundary-admissibility condition only; not sufficient complete TCD025 observer closure"
+  },
+  "counter_hypotheses": [
+    {
+      "id": "H1_LAYER_GEOMETRY_RESCUES_PARTIAL_CUT",
+      "alternative": "Use layer-resolved SrWaMpCp together with the mixed domain concentration to define selected-layer species storage and thereby treat a partial saturated-reservoir cut as source-closed.",
+      "test": "Separate geometric mass allocation from transport ownership and inspect whether revision53 owns an internal species transfer, timing and sign contract at the artificial selected-profile boundary.",
+      "result": "REJECTED_FOR_CURRENT_SOURCE_CONTRACT",
+      "reason": "The source owns domain-level species storage/concentration and no internal saturated layer-to-layer species transfer. Geometry can allocate stored mass but does not independently create the missing crossing transport term."
+    },
+    {
+      "id": "H2_AVCOML_IS_LAYER_STATE",
+      "alternative": "Treat AvCoML(D,Ln)=AvCoMp(D) in saturated layers as a layer-resolved species-state owner sufficient for partial control volumes.",
+      "test": "Check lifecycle and mass-balance ownership of AvCoML versus CoMp/RsCoMp and the whole-domain source mass check.",
+      "result": "REJECTED",
+      "reason": "AvCoML is an average working concentration assigned from the domain-average AvCoMp; persistent beginning/end solute state and source mass closure remain domain-level through CoMp/RsCoMp and SrWaMp."
+    },
+    {
+      "id": "H3_RESIDUAL_COMPLETION_IS_ACCEPTABLE_OBSERVER_PLUMBING",
+      "alternative": "Infer the missing internal boundary term as the amount required to make each selected public balance close.",
+      "test": "Apply the conservation-evidence independence requirement.",
+      "result": "REJECTED",
+      "reason": "A residual-derived term would make the observer its own closure oracle and cannot serve as independent conservation evidence."
+    },
+    {
+      "id": "H4_WHOLE_PROFILE_RESULT_CAN_SILENTLY_REPLACE_TCD025",
+      "alternative": "Because the whole profile encloses the mixed reservoirs, silently narrow TCD025 to whole-profile balances and treat the control-volume issue as resolved.",
+      "test": "Compare the narrowed claim with the source-supported public BALNMI..BALNMA reporting surface.",
+      "result": "REJECTED_AS_SCOPE_SUBSTITUTION",
+      "reason": "Whole-profile closure is materially narrower than the existing public selected-profile surface and requires an explicit later claim restriction, not silent substitution during qualification."
+    },
+    {
+      "id": "H5_NEGATIVE_SPECIES_RESULT_INSUFFICIENT_BECAUSE_WATER_MAY_BE_RECONSTRUCTABLE",
+      "alternative": "Do not reject the universal TCD025 interval claim unless the same impossibility is proved for water.",
+      "test": "Check whether TCD025 is a multi-ledger claim whose exactness requires all covered ledgers to have valid control-volume semantics.",
+      "result": "REJECTED",
+      "reason": "Failure of the dissolved-species control-volume contract is already sufficient to reject a universal exact multi-ledger claim. MASSQ03 correctly avoids overclaiming a stronger water-only impossibility theorem."
+    }
+  ],
+  "scientific_gates": {
+    "SOURCE_PROVENANCE_PINNED": "PASS",
+    "PUBLIC_INTERVAL_SEMANTICS_RECONSTRUCTED": "PASS",
+    "STATE_AND_CONTROL_VOLUME_OWNERSHIP_RECONSTRUCTED": "PASS",
+    "UNSATURATED_BOUNDARY_TRANSFER_IDENTITY": "PASS",
+    "SATURATED_MIXED_RESERVOIR_OWNERSHIP": "PASS",
+    "PARTIAL_SATURATED_CUT_SOURCE_CLOSED": "FAIL_CLOSED_NO",
+    "RESIDUAL_DERIVED_SELF_CLOSURE_FORBIDDEN": "PASS",
+    "BOUNDARY_PREDICATE_NOT_PROMOTED_TO_FULL_CLOSURE": "PASS",
+    "WATER_SCOPE_NOT_OVERCLAIMED": "PASS",
+    "HISTORICAL_UNKNOWN_WITHOUT_B2": "PASS",
+    "NO_PRODUCTION_OR_ADMISSION": "PASS",
+    "NO_SCIENTIFIC_GATE_REDUCTION": "PASS"
+  },
+  "negative_controls": [
+    "Changing a partial-cut matrix case to PASSES_THIS_BOUNDARY_GATE_ONLY must fail validation.",
+    "Changing the predicate from necessary to sufficient complete TCD025 closure must fail validation.",
+    "Allowing residual-derived missing boundary flux must fail validation.",
+    "Promoting historical behavior to known B2 must fail validation.",
+    "Any src/ or reference/ change must fail scope validation.",
+    "Any substantive file change after the reviewed head must invalidate this review."
+  ],
+  "residual_uncertainty": [
+    "A later model-evolution workunit could define a scientifically explicit partial-reservoir observer/state contract, but revision53 does not currently supply one.",
+    "Passing the boundary predicate does not prove that all remaining public water, DOM, N or P observer terms have been assembled correctly.",
+    "Historical active-case magnitude remains unknown because no qualified B2 historical active macropore reference is available.",
+    "Same-agent review retains correlated reasoning risk and is not independent."
+  ],
+  "outcome": "SELF_REVIEW_PASS_QUALIFIED_BOUNDARY_PREDICATE_NO_ADMISSION",
+  "decision_supported": "QUALIFIED_TCD025_SELECTED_PROFILE_MACROPORE_BOUNDARY_ADMISSIBILITY_PARTIAL_SATURATED_RESERVOIR_CUTS_NOT_SOURCE_CLOSED_NO_ADMISSION",
+  "scientific_gate_reduction": false,
+  "b3_admitted": false,
+  "production_authorized": false
+}
