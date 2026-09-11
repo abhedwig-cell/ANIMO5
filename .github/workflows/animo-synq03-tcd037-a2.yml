@@ -1,0 +1,80 @@
+name: ANIMO-SYNQ03 TCD-037-A2 independent synthetic activation
+
+on:
+  push:
+    branches:
+      - work/animo-synq03-tcd037-a2-independent-ghg-index0-activation
+  pull_request:
+    paths:
+      - 'docs/synthetic/TCD037_A2_INDEPENDENT_SYNTHETIC_ACTIVATION.md'
+      - 'integration/animo-synthetic/ANIMO-SYNQ03_STATUS.json'
+      - 'integration/animo-synthetic/SYNQ03_TCD037_A2_ORACLE.json'
+      - 'tools/synq03/**'
+      - '.github/workflows/animo-synq03-tcd037-a2.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact evidence and policy authorities
+        run: |
+          git fetch --no-tags origin work/animo-b3d21-tcd037-a1-gov04-tier-a-admission
+          git fetch --no-tags origin work/animo-rg05h-b3i07-routing-tcd038-admission-integration
+          git fetch --no-tags origin work/animo-b3i07-tcd037-ghg-balance-observer-routing
+          git fetch --no-tags origin work/animo-runtimeq03-tcd037-ghg-balance-accounting-semantics
+          git fetch --no-tags origin work/animo-synq01-independent-synthetic-oracles
+          git fetch --no-tags origin work/animo-gov04-risk-tiered-review-policy
+
+      - name: Verify exact authority heads
+        run: |
+          test "$(git rev-parse origin/work/animo-b3d21-tcd037-a1-gov04-tier-a-admission)" = "331f6ed91d4a1c15a23ae0c1ad75d1b540f61858"
+          test "$(git rev-parse origin/work/animo-rg05h-b3i07-routing-tcd038-admission-integration)" = "3e4247928bb43f30def951fa8804560636affbef"
+          test "$(git rev-parse origin/work/animo-b3i07-tcd037-ghg-balance-observer-routing)" = "54679c7555a963133dfd686648af334f479c5808"
+          test "$(git rev-parse origin/work/animo-runtimeq03-tcd037-ghg-balance-accounting-semantics)" = "a3e822f8e97fe1312a7dfa73601a49ae7375163e"
+          test "$(git rev-parse origin/work/animo-synq01-independent-synthetic-oracles)" = "842f72300fd03ede0b9024537a7ee6126722a121"
+          test "$(git rev-parse origin/work/animo-gov04-risk-tiered-review-policy)" = "1bbe4c211197590f346803106e45dca5faae79fc"
+          echo "SYNQ03 tested head: $(git rev-parse HEAD)"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install GNU Fortran
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y gfortran
+          gfortran --version
+
+      - name: Parse persisted evidence and compile validator
+        run: |
+          python -m json.tool integration/animo-synthetic/ANIMO-SYNQ03_STATUS.json >/dev/null
+          python -m json.tool integration/animo-synthetic/SYNQ03_TCD037_A2_ORACLE.json >/dev/null
+          python -m py_compile tools/synq03/validate_tcd037_a2_synthetic.py
+
+      - name: Freeze tool identities in log
+        run: |
+          sha256sum tools/synq03/tcd037_a2_source_shaped_probe.f90 tools/synq03/validate_tcd037_a2_synthetic.py
+
+      - name: Build and validate source-shaped target at O0
+        run: |
+          gfortran -std=f2008 -Wall -Wextra -pedantic -O0 tools/synq03/tcd037_a2_source_shaped_probe.f90 -o /tmp/synq03_o0
+          /tmp/synq03_o0 > /tmp/synq03_o0.out
+          python tools/synq03/validate_tcd037_a2_synthetic.py /tmp/synq03_o0.out
+
+      - name: Build and validate source-shaped target at O2
+        run: |
+          gfortran -std=f2008 -Wall -Wextra -pedantic -O2 tools/synq03/tcd037_a2_source_shaped_probe.f90 -o /tmp/synq03_o2
+          /tmp/synq03_o2 > /tmp/synq03_o2.out
+          python tools/synq03/validate_tcd037_a2_synthetic.py /tmp/synq03_o2.out
+
+      - name: Require byte-identical O0 and O2 evidence
+        run: cmp /tmp/synq03_o0.out /tmp/synq03_o2.out
