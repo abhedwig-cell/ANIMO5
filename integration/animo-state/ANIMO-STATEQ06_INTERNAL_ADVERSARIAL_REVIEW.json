@@ -1,0 +1,74 @@
+{
+  "work_unit": "ANIMO-STATEQ06",
+  "target": "TCD-035",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "reviewed_head": "51997ce452ae9a50cb85b937b18c182ef55f0c8a",
+  "reviewed_head_ci_run": 34643495221,
+  "reviewed_head_ci_job": 103408621305,
+  "reviewed_head_ci_conclusion": "success",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "risk_tier_reviewed": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "adversarial_questions": [
+    {
+      "question": "Does the proposed ownership model invent a new physical GHG store or make both Cs and Co independent checkpoint state?",
+      "finding": "NO. GHG01 identifies total gas-water system concentration Cs as the serialized owner representation, and ARCH02 explicitly states that serializing both Cs and Co is not required. Co remains a derived aqueous phase view."
+    },
+    {
+      "question": "Can revision-53 Terf reconstruction be considered equivalent merely because total Cs is preserved?",
+      "finding": "NO. In unsaturated nonzero-gas states the dissolved phase view depends on the reciprocal Bunsen coefficient. The 72-case oracle includes 24 nontrivial cases where substituting Terf changes Co while reconstruction with the accepted checkpoint temperature is exact."
+    },
+    {
+      "question": "Are the continuity exceptions complete enough to prevent an overbroad defect claim?",
+      "finding": "YES for the bounded algebraic identity. The package preserves the exact source-derived controls: equal reciprocal Bunsen ratio, zero gas-filled pore volume, or zero total gas state. It does not claim discontinuity when one of these controls applies."
+    },
+    {
+      "question": "Does the workunit silently assume ANIMO owns soil temperature persistently?",
+      "finding": "NO. STATEQ01 HYD-006 remains an external-owner reference. The qualification requires the exact accepted checkpoint thermodynamic coordinate to be rebound/restored; it does not duplicate temperature into ANIMO-owned physical state."
+    },
+    {
+      "question": "Is the prior Class-C provisional classification being reduced without resolving the missing-state question?",
+      "finding": "NO. The bounded soil-layer question is resolved by an existing owner plus deterministic phase reconstruction from accepted checkpoint coordinates. No physical storage, phase or transfer law is added. A later readiness decision may therefore use a local restart-reconstruction Class-B mechanism while retaining Tier-C review risk."
+    },
+    {
+      "question": "Does this qualification conflate checkpoint state with BUILDQ03 hidden GHG timestep context?",
+      "finding": "NO. BUILDQ03's GHG_TIMESTEP_PHASE_CONTEXT remains nonpersistent solver/context state and is excluded from this checkpoint ownership claim."
+    },
+    {
+      "question": "Does qualifying layers 1..Nl solve the layer0/ponding restart gap?",
+      "finding": "NO. Layer0 is explicitly excluded and TCD-036 remains unresolved. No inference from soil-layer reconstruction is extended to pre-existing ponding state."
+    },
+    {
+      "question": "Does the source-shaped oracle establish whole-model split-run equivalence or historical revision-53 impact?",
+      "finding": "NO. It is B1 causality/reconstruction evidence only. Historical behavior remains UNKNOWN_WITHOUT_B2 and full activated-GHG split-run equivalence remains unclaimed."
+    },
+    {
+      "question": "Does the package qualify a new Bunsen/Henry-law model or alter continuous-run temperature policy?",
+      "finding": "NO. It reuses the frozen revision-53 source relation only for restart reconstruction. Continuous-run Bunsen update behavior and other GHG science remain outside scope."
+    },
+    {
+      "question": "Does STATEQ06 itself perform B3 admission or authorize production migration?",
+      "finding": "NO. It is a state/reconstruction qualification only. B3 admission, canonical STATE admission, checkpoint format migration, B4 and production remain closed."
+    }
+  ],
+  "rejected_overclaims": [
+    "CO_IS_SECOND_INDEPENDENT_CHECKPOINT_OWNER",
+    "TERF_IS_GENERAL_EQUIVALENT_CHECKPOINT_TEMPERATURE",
+    "ANIMO_OWNS_PERSISTENT_SOIL_TEMPERATURE",
+    "NEW_PHYSICAL_GAS_PHASE_STATE_REQUIRED",
+    "REVIEW_RISK_BELOW_TIER_C",
+    "BUILDQ03_SOLVER_CONTEXT_IS_CHECKPOINT_STATE",
+    "TCD036_LAYER0_RESOLVED",
+    "FULL_MODEL_GHG_SPLIT_RUN_EQUIVALENCE",
+    "HISTORICAL_REV53_MAGNITUDE_ESTABLISHED",
+    "B1_PROMOTED_TO_B2",
+    "CONTINUOUS_RUN_GHG_TEMPERATURE_POLICY_QUALIFIED",
+    "B3_ADMISSION_PERFORMED",
+    "PRODUCTION_AUTHORIZED",
+    "B4_OPENED",
+    "GENUINELY_INDEPENDENT_REVIEW"
+  ],
+  "outcome": "SELF_REVIEW_PASS_TCD035_BOUNDED_GHG_PHASE_RESTART_RECONSTRUCTION_OWNERSHIP_TIER_C_RISK_PRESERVED"
+}
