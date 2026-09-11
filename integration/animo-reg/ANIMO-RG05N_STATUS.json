@@ -1,0 +1,97 @@
+{
+  "work_unit": "ANIMO-RG05N",
+  "title": "Eighth Batched B3 Admission Integration",
+  "branch": "work/animo-rg05n-eighth-batched-admission-integration",
+  "state": "PERSISTED_VALIDATION_PENDING",
+  "decision": "PENDING_EXACT_VALIDATION_OF_THREE_POST_RG05M_B3_ADMISSIONS",
+  "source_aggregate": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
+  "source_aggregate_exact_final_ci": "34610132079:success",
+  "aggregate_trigger": "NORMAL_BATCH_THRESHOLD_REACHED_THREE_EXACT_FINAL_QUALIFIED_POST_RG05M_B3_ADMISSIONS",
+  "governance": {
+    "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "routing": "ANIMO-B3I10@942f26fe32eaf91679e59a1968ae173a3703e22d",
+    "queue": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d"
+  },
+  "new_b3_admissions": [
+    "ANIMO-B3D37@8bd1d0a5e20e5fa1d15508e0fdf7c69a5150a84f:TCD-039",
+    "ANIMO-B3D38@c6fe71cfd1822aea5d00a802862e4b3a4a991cd2:TCD-035",
+    "ANIMO-B3D39@025bb9e5da84a6a1b55d29681de005fca784f543:TCD-036"
+  ],
+  "exact_final_admission_ci": {
+    "ANIMO-B3D37": "34642563837:success",
+    "ANIMO-B3D38": "34644248709:success",
+    "ANIMO-B3D39": "34646389629:success"
+  },
+  "scientific_admission_count": 29,
+  "historical_uncertainty_admission_count": 29,
+  "normal_b2_admission_count": 0,
+  "top_level_admitted_tcd_count": 19,
+  "admitted_child_atom_count": 10,
+  "current_routing_authority": "ANIMO-B3I10@942f26fe32eaf91679e59a1968ae173a3703e22d",
+  "current_queue_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
+  "tcd039_state": {
+    "top_level_admitted": true,
+    "admitted_identity": "TCD039_INTERNAL_CROP_POTENTIAL_UPTAKE_RESTART_CONTINUATION_OWNER_RESTORE_N_AND_CONDITIONAL_P",
+    "canonical_state_admitted": false,
+    "crop007_resolved": false,
+    "production_authorized": false
+  },
+  "tcd035_state": {
+    "top_level_admitted": true,
+    "admitted_identity": "TCD035_GHG_SOIL_LAYER_PHASE_VIEW_RECONSTRUCT_FROM_ACCEPTED_CS_HYDROLOGY_AND_CHECKPOINT_TEMPERATURE",
+    "layers": "1..Nl",
+    "tcd036_admitted_by_tcd035": false,
+    "canonical_state_admitted": false,
+    "production_authorized": false
+  },
+  "tcd036_state": {
+    "top_level_admitted": true,
+    "admitted_identity": "TCD036_PRE_EXISTING_ACTIVE_PONDING_LAYER0_GHG_RESTART_IDENTITY_FROM_SERIALIZED_TOTAL_SYSTEM_OWNER",
+    "layer": 0,
+    "ponding_scope": "ACTIVE_PRE_EXISTING_PONDING_ONLY",
+    "species": ["CH4", "N2O"],
+    "new_ponding_source_initialization_preserved": true,
+    "dormant_layer0_state_created": false,
+    "canonical_state_admitted": false,
+    "production_authorized": false
+  },
+  "b3_complete": false,
+  "b4_open": false,
+  "production_open": false,
+  "global_canonical_queue_count_recomputed": false,
+  "hard_boundaries": {
+    "scientific_readmission_performed": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "child_readmission_performed": false,
+    "automatic_parent_admission_performed": false,
+    "tcd035_reopened": false,
+    "tcd032_034_admitted": false,
+    "canonical_state_admitted": false,
+    "checkpoint_format_qualified": false,
+    "whole_model_split_run_claimed": false,
+    "new_ponding_rule_changed": false,
+    "dormant_layer0_state_created": false,
+    "b4_admitted": false,
+    "production_migration_admitted": false,
+    "historical_fidelity_claimed": false,
+    "synthetic_evidence_counted_as_b2": false
+  },
+  "validation": {
+    "machine_validated": false,
+    "workflow": "ANIMO-RG05N eighth batched B3 admission integration",
+    "candidate_run_id": null,
+    "candidate_job_id": null,
+    "tested_candidate_head": null,
+    "candidate_conclusion": null,
+    "validator": "PENDING",
+    "scope_guard": "PENDING",
+    "exact_final_head_required": true
+  },
+  "work_status": {"realized": true, "persisted": true, "tested": false, "qualified": false, "work_unit_complete": false},
+  "next_if_validated": "USE_ANIMO_RG05N_AS_CURRENT_AGGREGATE_AUTHORITY_THEN_RECOMPUTE_GLOBAL_CANONICAL_B3_QUEUE_AND_REAUDIT_WHOLE_B3_COMPOSITION_COMPLETENESS; DO_NOT OPEN TB7 B4 OR PRODUCTION"
+}
