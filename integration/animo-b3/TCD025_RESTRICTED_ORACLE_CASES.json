@@ -1,0 +1,15 @@
+{
+  "work_unit": "ANIMO-B3A10",
+  "oracle_class": "EXACT_RATIONAL_B1_STYLE_NOT_B2",
+  "cases": [
+    {"id":"R01","kind":"whole_reservoir_species_storage_direct_drain","old":20,"inputs":0,"outputs":5,"new":15,"expect_identity":true},
+    {"id":"R02","kind":"unsaturated_boundary_transfer","old":0,"inputs":7,"outputs":7,"new":0,"expect_identity":true},
+    {"id":"R03","kind":"nitrogen_species_separation","species":{"DON":{"old":6,"inputs":0,"outputs":2,"new":4},"NH4":{"old":8,"inputs":0,"outputs":3,"new":5},"NO3":{"old":10,"inputs":0,"outputs":4,"new":6}},"expect_each_identity":true,"expect_aggregate_identity":true},
+    {"id":"R04","kind":"phosphorus_species_separation","species":{"DOP":{"old":5,"inputs":1,"outputs":2,"new":4},"PO4":{"old":9,"inputs":0,"outputs":4,"new":5}},"expect_each_identity":true,"expect_aggregate_identity":true},
+    {"id":"R05","kind":"matrix_exchange_internal_cancellation","matrix_side":-11,"macropore_side":11,"expect_sum":0},
+    {"id":"R06","kind":"soil_routed_drain_double_count_guard","FlMpOuDrSo":4,"external_macropore_loss_from_this_term":0},
+    {"id":"R07","kind":"partial_saturated_reservoir_cut","relation":"partial_cut","expect_admissible":false},
+    {"id":"R08","kind":"complete_saturated_reservoir_enclosure","relation":"contains_all_S_D","expect_admissible":true},
+    {"id":"R09","kind":"saturated_reservoir_disjoint","relation":"disjoint_from_S_D","expect_admissible":true}
+  ]
+}

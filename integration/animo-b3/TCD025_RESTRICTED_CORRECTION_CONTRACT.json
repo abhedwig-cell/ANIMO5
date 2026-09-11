@@ -1,0 +1,63 @@
+{
+  "work_unit": "ANIMO-B3A10",
+  "target": "TCD-025",
+  "scope": "RESTRICTED_PUBLIC_MAIN_MACROPORE_LEDGER_CORRECTION_READINESS_ONLY",
+  "base_authority": "ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
+  "consumed_authorities": {
+    "ANIMO-B3A08": "7a7309e913e8216a20ac134539470e3e5eb4302f",
+    "ANIMO-MASSQ03": "68a8c202bd01bf55b31b7c944884fb2f78a6a8e8",
+    "ANIMO-GOV05": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "ANIMO-GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "ANIMO-GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "ANIMO-B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "ANIMO-MP01": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "ANIMO-MP02": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "ANIMO-MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "ANIMO-B3D23": "6c9ab83952b53566b878b533c08e3cb10074f399"
+  },
+  "risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
+  "interval_gate": {
+    "public_interval": "I=[max(1,BALNMI),BALNMA]",
+    "saturated_reservoir": "S_D=[LnTpMpSr(D),LnBoMp(D)]",
+    "required_expression": "for every active D: (I intersection S_D is empty) OR (S_D subset_of I)",
+    "partial_cut": "FORBIDDEN_NOT_SOURCE_CLOSED",
+    "gate_is_necessary_not_sufficient": true
+  },
+  "correction_terms": {
+    "water_storage": "source-owned accepted/current macropore water storage over the selected admissible control volume",
+    "water_vertical_boundary": "source-owned FlMpVt at selected interval boundaries",
+    "species_unsaturated_boundary": "TpAm(D)=AvCoML(D,Ln)*FlMpVt(D,Ln+1)*St where an admissible interval boundary crosses the unsaturated chain",
+    "species_saturated_storage_old": "SrWaMpOld(D)*CoMpX(D) only when complete S_D is enclosed",
+    "species_saturated_storage_new": "SrWaMp(D)*RsCoMpX(D) only when complete S_D is enclosed",
+    "direct_external_drain": "FlMpOuDrMp with source-owned timestep concentration for Main Bypass",
+    "soil_routed_drain": "FlMpOuDrSo remains internal/routed and is not a second external loss",
+    "matrix_macropore_exchange": "internal transfer; do not add as external input/output in the combined observer"
+  },
+  "species_mapping": {
+    "DOM": ["DiorMa"],
+    "N": ["DiorNi", "Nh", "Ni"],
+    "P": ["DiorPo", "Po"],
+    "NH4_NO3_separation_preserved": true,
+    "DOP_PO4_separation_preserved": true
+  },
+  "units": {
+    "water": "areic water storage_or_transfer",
+    "species": "concentration_times_areic_water_storage_or_transfer_equals_areic_mass",
+    "atomic_weight_conversion_introduced": false,
+    "tolerance_introduced": false
+  },
+  "forbidden_inferences": {
+    "residual_derived_missing_flux": false,
+    "geometric_fraction_of_mixed_saturated_species_storage": false,
+    "double_count_FlMpOuDrSo": false,
+    "collapse_NH4_and_NO3_before_species_identity": false,
+    "whole_profile_only_silently_substituted_for_canonical_claim": false
+  },
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "synthetic_oracle_class": "EXACT_RATIONAL_B1_STYLE_NOT_B2",
+  "parent_tcd025_admission_ready": false,
+  "restricted_candidate_scientifically_specified": true,
+  "next_required": "canonical routing/scoping decision or additional independently owned partial-reservoir observer/state contract",
+  "b3_admitted": false,
+  "production_authorized": false
+}

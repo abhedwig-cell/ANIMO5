@@ -1,0 +1,19 @@
+{
+  "work_unit": "ANIMO-B3A10",
+  "purpose": "IMMUTABLE_SUBSTANTIVE_AUTHORING_BOUNDARY_FOR_GOV05_TIER_C_ADVERSARIAL_REVIEW",
+  "base_head": "624bbad35add93de29ac89649155d9fa086a73af",
+  "authoring_complete": true,
+  "review_must_pin_exact_commit_containing_this_marker": true,
+  "exact_freeze_commit_sha": "RECORDED_BY_REVIEW_ARTIFACT_AFTER_COMMIT_CREATION",
+  "substantive_files": [
+    "docs/b3a10/WORK_UNIT_CONTRACT.md",
+    "docs/b3a10/TCD025_RESTRICTED_CORRECTION_READINESS.md",
+    "integration/animo-b3/TCD025_RESTRICTED_CORRECTION_CONTRACT.json",
+    "integration/animo-b3/TCD025_LEDGER_TERM_OWNERSHIP.json",
+    "integration/animo-b3/TCD025_RESTRICTED_ORACLE_CASES.json",
+    "integration/animo-b3/ANIMO-B3A10_STATUS.json",
+    "tools/validate_b3a10_tcd025.py",
+    ".github/workflows/animo-b3a10-tcd025-restricted-readiness.yml"
+  ],
+  "rule": "after this commit, substantive authoring content is frozen; review/status closeout artifacts may be added, but any substantive change resets review"
+}

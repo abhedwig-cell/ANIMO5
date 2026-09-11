@@ -1,0 +1,24 @@
+{
+  "work_unit": "ANIMO-B3A10",
+  "target": "TCD-025",
+  "terms": [
+    {"family":"water","term":"accepted/current macropore storage","owner":"macropore hydrology","source":"SrWaMpOld/SrWaMp and SrWaMpCp/SrWaMpCpOld","role":"storage","selected_profile_rule":"use only source-owned selected-volume storage; no residual completion"},
+    {"family":"water","term":"vertical macropore water transfer","owner":"MAPOHYDRO","source":"FlMpVt","role":"selected-control-volume boundary transfer","selected_profile_rule":"include signed transfer only at selected interval boundaries"},
+    {"family":"water","term":"Main Bypass direct drainage","owner":"MAPOHYDRO domain 1","source":"FlMpOuDrMp","role":"external output","selected_profile_rule":"external once"},
+    {"family":"water","term":"soil-routed macropore drainage","owner":"MAPOHYDRO domain 1 to soil route","source":"FlMpOuDrSo","role":"internal/routed transfer","selected_profile_rule":"do not count again as external macropore loss"},
+    {"family":"DOM","term":"saturated mixed storage","owner":"MAPOTRANSPORT domain reservoir","source":"SrWaMpOld*CoMpDiorMa -> SrWaMp*RsCoMpDiorMa","role":"storage","selected_profile_rule":"whole reservoir only"},
+    {"family":"DON","term":"saturated mixed storage","owner":"MAPOTRANSPORT domain reservoir","source":"SrWaMpOld*CoMpDiorNi -> SrWaMp*RsCoMpDiorNi","role":"storage","selected_profile_rule":"whole reservoir only"},
+    {"family":"NH4-N","term":"saturated mixed storage","owner":"MAPOTRANSPORT domain reservoir","source":"SrWaMpOld*CoMpNh -> SrWaMp*RsCoMpNh","role":"storage","selected_profile_rule":"whole reservoir only"},
+    {"family":"NO3-N","term":"saturated mixed storage","owner":"MAPOTRANSPORT domain reservoir","source":"SrWaMpOld*CoMpNi -> SrWaMp*RsCoMpNi","role":"storage","selected_profile_rule":"whole reservoir only"},
+    {"family":"DOP","term":"saturated mixed storage","owner":"MAPOTRANSPORT domain reservoir","source":"SrWaMpOld*CoMpDiorPo -> SrWaMp*RsCoMpDiorPo","role":"storage","selected_profile_rule":"whole reservoir only when P active"},
+    {"family":"PO4-P","term":"saturated mixed storage","owner":"MAPOTRANSPORT domain reservoir","source":"SrWaMpOld*CoMpPo -> SrWaMp*RsCoMpPo","role":"storage","selected_profile_rule":"whole reservoir only when P active"},
+    {"family":"all dissolved species","term":"unsaturated vertical boundary transfer","owner":"MAPOTRANSPORT","source":"TpAm=AvCoML*FlMpVt(next)*St","role":"selected-control-volume boundary transfer","selected_profile_rule":"source-owned transfer at admissible unsaturated boundaries"},
+    {"family":"all dissolved species","term":"Main Bypass direct drainage","owner":"MAPOTRANSPORT domain 1","source":"FlMpOuDrMp*AvCoMpX*St","role":"external output","selected_profile_rule":"preserve species identity before public-family aggregation"},
+    {"family":"all","term":"matrix/macropore exchange","owner":"coupled matrix and macropore transport","source":"equal-and-opposite coupled transfer","role":"internal transfer","selected_profile_rule":"must cancel in combined observer; never added as external flux"}
+  ],
+  "public_family_aggregation": {
+    "DOM": "DiorMa",
+    "N": "DiorNi + Nh + Ni after separate identities",
+    "P": "DiorPo + Po after separate identities"
+  }
+}
