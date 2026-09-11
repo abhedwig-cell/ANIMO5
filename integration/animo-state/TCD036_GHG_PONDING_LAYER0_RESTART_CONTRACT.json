@@ -1,0 +1,73 @@
+{
+  "work_unit": "ANIMO-STATEQ07",
+  "target": "TCD-036",
+  "title": "GHG Pre-existing Ponding Layer0 Restart Ownership Qualification",
+  "base_authority": "ANIMO-B3D38@c6fe71cfd1822aea5d00a802862e4b3a4a991cd2",
+  "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
+  "queue_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
+  "ghg_authority": "ANIMO-GHG01@dac7b7b5c591b781b82ec968896edb5957664c88",
+  "arch02_authority": "ANIMO-ARCH02@a079d93c965f6073586c55ee4b3544dd8873b723",
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_members": {
+    "ANIMO_4.1.5.53/ghgtransport.for": "d86e420952c43aaa6e730235f5820802310dd14a0019dc890537d9acd95fcff6",
+    "ANIMO_4.1.5.53/Inicalc.for": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1",
+    "ANIMO_4.1.5.53/Init.for": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+    "ANIMO_4.1.5.53/Output_Init.for": "6452c175dcd7c6e80983c1176467735d07f75595cf8341526b115b70121b6a2f",
+    "ANIMO_4.1.5.53/input1.for": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95"
+  },
+  "supported_scope": {
+    "revision": "ANIMO_4.1.5_revision_53",
+    "ghg_guard": "IoptGHG >= 1",
+    "layer": 0,
+    "species": ["CH4", "N2O"],
+    "ponding_state": "ACTIVE_PRE_EXISTING_PONDING",
+    "source_transport_condition": "Ln1 == 0 and NOT(Pn < 1.0d-4 new-ponding initialization)"
+  },
+  "owner_model": {
+    "accepted_checkpoint_owner": "gas-specific serialized total-system layer0 concentration Cs(0)/RsCs(0)",
+    "derived_aqueous_view": "gas-specific Co(0)/RsCo(0)",
+    "independent_second_checkpoint_owner_required": false,
+    "restart_reconstruction": "Co(0) = Cs(0); synchronize accepted dissolved alias to same accepted owner value before continuation",
+    "source_identity": "when ponding layer is active, RsCs(0) = RsCo(0) and AvCs(0) = AvCo(0)"
+  },
+  "lifecycle_partition": {
+    "pre_existing_ponding": "restart identity reconstruction applies",
+    "new_ponding_event": "existing source inflow initialization remains authoritative when Ln1==0 and Pn<1.0d-4",
+    "ponding_absent": "no dormant layer0 GHG store is created; transport result layer0 total state remains zero"
+  },
+  "revision53_restart_gap": {
+    "layer0_total_state_serialized": true,
+    "layer0_total_state_read": true,
+    "inicalc_reconstructs_layer0_aqueous_state": false,
+    "new_ponding_transport_overwrites_layer0_aqueous_state": true,
+    "pre_existing_ponding_transport_overwrites_layer0_aqueous_state": false
+  },
+  "classification_resolution": {
+    "prior_queue_class": "C provisional",
+    "missing_physical_state_required": false,
+    "new_phase_or_storage_required": false,
+    "deterministic_reconstruction_from_serialized_owner_qualified": true,
+    "candidate_b3_class_for_later_readiness": "B_LOCAL_RESTART_RECONSTRUCTION_EXISTING_OWNER",
+    "review_risk_floor": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+    "scientific_gate_reduced": false
+  },
+  "evidence_strength": {
+    "source": "B0_HASH_PINNED_SOURCE_SEMANTICS",
+    "oracle": "B1_SOURCE_DERIVED_SYNTHETIC_NOT_B2",
+    "historical_behavior": "UNKNOWN_WITHOUT_B2"
+  },
+  "excluded_scope": [
+    "TCD-035 soil-layer GHG restart phase reconstruction",
+    "dormant layer0 GHG storage when ponding is absent",
+    "replacement of new-ponding inflow initialization",
+    "TCD-032 through TCD-034",
+    "canonical STATE admission",
+    "checkpoint serialization format migration",
+    "full-model GHG split-run equivalence",
+    "production implementation",
+    "B4"
+  ],
+  "qualified_claim": "FOR_FROZEN_REVISION53_ACTIVE_PRE_EXISTING_PONDING_THE_SERIALIZED_GAS_SPECIFIC_LAYER0_TOTAL_SYSTEM_STATE_IS_THE_CHECKPOINT_OWNER_AND_THE_LAYER0_AQUEOUS_VIEW_IS_DETERMINISTICALLY_RECONSTRUCTED_BY_IDENTITY_CO0_EQUALS_CS0_WITHOUT_ADDING_A_NEW_PHYSICAL_STORE",
+  "b3_admission_performed": false
+}
