@@ -7,16 +7,18 @@
   "base_authority": "ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
   "consumed_readiness": "ANIMO-B3A08@7a7309e913e8216a20ac134539470e3e5eb4302f",
   "consumed_control_volume_qualification": "ANIMO-MASSQ03@68a8c202bd01bf55b31b7c944884fb2f78a6a8e8",
-  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
-  "decision": "PENDING_GOV05_TIER_C_ADVERSARIAL_REVIEW_AFTER_REMEDIATED_FREEZE",
+  "phase": "CLOSED_QUALIFIED_RESTRICTED_CORRECTION_READINESS",
+  "decision": "QUALIFIED_TCD025_RESTRICTED_LEDGER_CORRECTION_READY_FOR_SEPARATE_SCOPED_ADMISSION_WORKUNIT_PARENT_SCOPE_BLOCKED",
   "risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
-  "qualified": false,
+  "qualified": true,
   "b3_admitted": false,
   "production_authorized": false,
   "restricted_candidate_scientifically_specified": true,
+  "restricted_candidate_ready_for_separate_scoped_admission_workunit": true,
   "parent_tcd025_admission_ready": false,
   "partial_reservoir_cut_supported": false,
   "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "immutable_authoring_head": "f55098c0523c1b0019473b651d086e75f3537e3b",
   "adversarial_precheck_history": {
     "first_freeze_head": "b74a949e8852e4dab73c2aec9bb243897f409e8e",
     "first_freeze_ci_run": 34571674800,
@@ -27,17 +29,20 @@
       "validator checked existence of B3A08/MASSQ03 pinned commits but not the exact upstream semantic decisions consumed by the correction contract",
       "selected-profile water storage ownership was stated qualitatively rather than as the exact old/current layer sums exposed by revision53"
     ],
-    "remediation": "validator now loads exact upstream JSON from pinned commits and selected-profile water ownership/sign rules are explicit; full review restarts at the new immutable head"
+    "remediation": "validator reloads exact pinned upstream semantic artifacts; selected-profile water storage and signed boundary ownership are explicit; full review restarted from the remediated immutable head"
   },
   "review_governance": {
     "authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
     "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "review_started": false,
-    "review_completed": false,
     "genuinely_independent": false,
-    "reviewed_head": null
+    "review_started": true,
+    "review_completed": true,
+    "reviewed_head": "f55098c0523c1b0019473b651d086e75f3537e3b",
+    "review_artifact": "integration/animo-b3/ANIMO-B3A10_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "review_outcome": "SELF_REVIEW_PASS_RESTRICTED_CORRECTION_READY_PARENT_SCOPE_BLOCKED"
   },
+  "scientific_gate_reduction": false,
   "hard_boundaries": {
     "production_source_modified": false,
     "persistent_state_added": false,
@@ -53,15 +58,20 @@
   "validation": {
     "validator": "tools/validate_b3a10_tcd025.py",
     "workflow": ".github/workflows/animo-b3a10-tcd025-restricted-readiness.yml",
+    "first_freeze_ci_run": 34571674800,
+    "first_freeze_ci_job": 103174928898,
+    "remediated_authoring_head_ci_run": 34571824400,
+    "remediated_authoring_head_ci_job": 103175391975,
+    "remediated_authoring_head_ci_conclusion": "success",
     "exact_final_head_ci_required": true
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "after remediated immutable-head CI, restart GOV05 same-agent Tier-C adversarial review; if PASS, close restricted readiness while keeping parent TCD-025 admission blocked pending canonical scope partition or new partial-reservoir contract"
+  "next": "Open a separate canonical routing/scoping workunit. Do not admit parent TCD-025 as currently broad. Either define a bounded admission atom for intervals satisfying the qualified predicate or first establish an independently owned partial-reservoir observer/state contract."
 }

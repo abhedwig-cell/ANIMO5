@@ -1,0 +1,119 @@
+{
+  "work_unit": "ANIMO-B3A10",
+  "target": "TCD-025",
+  "risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "same_agent": true,
+  "reviewed_head": "f55098c0523c1b0019473b651d086e75f3537e3b",
+  "reviewed_head_ci": {
+    "run_id": 34571824400,
+    "job_id": 103175391975,
+    "conclusion": "success"
+  },
+  "review_boundary": {
+    "immutable_head_frozen_before_review": true,
+    "superseded_first_freeze_not_reused": true,
+    "substantive_change_after_review_allowed": false,
+    "production_source_in_review_scope": false,
+    "canonical_registry_in_review_scope": false
+  },
+  "evidence_reconstruction": {
+    "B3A08_exact_decision_reloaded_from_pinned_commit": true,
+    "MASSQ03_exact_status_reloaded_from_pinned_commit": true,
+    "MASSQ03_exact_control_volume_contract_reloaded_from_pinned_commit": true,
+    "MASSQ03_exact_source_seam_hashes_reloaded_from_pinned_commit": true,
+    "source_archive_identity_preserved": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "historical_B2_available": false,
+    "historical_behavior": "UNKNOWN_WITHOUT_B2"
+  },
+  "counter_hypotheses": [
+    {
+      "id": "CH1",
+      "alternative": "Treat the MASSQ03 saturated-reservoir predicate as sufficient for the complete TCD-025 observer.",
+      "test": "Re-read the exact MASSQ03 contract and status.",
+      "result": "REJECTED_FOR_THIS_CLAIM",
+      "reason": "MASSQ03 explicitly qualifies the predicate as necessary but not sufficient; B3A10 separately owns remaining water, boundary, drainage and species-family terms."
+    },
+    {
+      "id": "CH2",
+      "alternative": "Allocate a partial mixed saturated reservoir geometrically so arbitrary selected profiles can still be admitted.",
+      "test": "Compare revision53 state ownership with the proposed allocation.",
+      "result": "REJECTED",
+      "reason": "revision53 owns one domain-level mixed species reservoir and no source-owned internal saturated species transfer at arbitrary layer cuts; geometric partition would create new scientific state semantics."
+    },
+    {
+      "id": "CH3",
+      "alternative": "Recover the missing partial-reservoir transfer from the public residual.",
+      "test": "Check independence of the resulting conservation observer.",
+      "result": "REJECTED",
+      "reason": "a residual-derived term would make the observer self-closing and destroy independent conservation evidence."
+    },
+    {
+      "id": "CH4",
+      "alternative": "Count FlMpOuDrSo together with FlMpOuDrMp as external macropore drainage.",
+      "test": "Reconstruct the Main-Bypass drainage partition and downstream soil routing.",
+      "result": "REJECTED",
+      "reason": "FlMpOuDrSo is routed through soil; counting it again as external macropore loss double counts the same water/mass path."
+    },
+    {
+      "id": "CH5",
+      "alternative": "Collapse DON, NH4 and NO3 before checking species identities because only total N matters to the public balance.",
+      "test": "Compare source ownership and direct-drain/reporting identities.",
+      "result": "REJECTED",
+      "reason": "the source owns distinct accepted/result states and transfers for DON, NH4 and NO3; aggregation is valid only after each owned identity is preserved."
+    },
+    {
+      "id": "CH6",
+      "alternative": "Declare the whole-profile correction to be the canonical TCD-025 correction and ignore selected-profile configurations.",
+      "test": "Compare the public balance configuration surface with B3A10 scope.",
+      "result": "REJECTED",
+      "reason": "public balances are configurable by BALNMI/BALNMA; silently substituting whole-profile semantics would narrow the canonical claim without routing/scoping governance."
+    },
+    {
+      "id": "CH7",
+      "alternative": "Treat transient TpAm/FlMpVt observer access as a new physical or persistent state requirement.",
+      "test": "Distinguish source-owned transient transfer from newly invented state.",
+      "result": "NOT_REQUIRED_AS_NEW_STATE",
+      "reason": "TpAm and FlMpVt are already source-owned transfers; later production plumbing may be needed to expose them to an observer, but B3A10 does not create or qualify persistent state or production implementation."
+    }
+  ],
+  "active_controls": [
+    "Exact B3A08 and MASSQ03 semantic decisions are mechanically reloaded by the validator from their pinned commits.",
+    "MASSQ03 source archive and Outbal_calc/MAPOHYDRO/MAPOTRANSPORT member hashes are mechanically checked.",
+    "Selected-profile water old/current storage is bound to SrWaMpCpOld and SrWaMpCp layer sums rather than a residual-derived quantity.",
+    "Signed FlMpVt/TpAm boundary ownership is explicit; no absolute-value reorientation is allowed.",
+    "Synthetic exact-rational identities exercise species separation, family aggregation, internal exchange cancellation and double-count protection."
+  ],
+  "negative_controls": [
+    "Partial saturated-reservoir cut is persisted as inadmissible.",
+    "MASSQ03 boundary predicate is persisted as necessary but not sufficient.",
+    "FlMpOuDrSo contributes zero second external macropore loss.",
+    "NH4 and NO3 may not be collapsed before species identity.",
+    "Historical behavior remains UNKNOWN_WITHOUT_B2.",
+    "No production, canonical-register or new-TCD surface is in the permitted diff."
+  ],
+  "tier_c_gates": {
+    "SOURCE_AND_EVIDENCE_PROVENANCE": "PASS",
+    "STATE_AND_CONTROL_VOLUME_OWNERSHIP": "PASS_FOR_RESTRICTED_CANDIDATE_ONLY",
+    "SELECTED_PROFILE_BOUNDARY_SEMANTICS": "PASS_WITH_MASSQ03_PREDICATE_AND_PARTIAL_CUT_EXCLUSION",
+    "EXPECTED_DIFFERENCE_CONTRACT": "PASS_STRUCTURAL_NO_NUMERICAL_TOLERANCE",
+    "CONSERVATION_IDENTITY": "PASS_FOR_RESTRICTED_SOURCE_OWNED_TERMS_EXACT_RATIONAL_ORACLES_NOT_B2",
+    "SPECIES_IDENTITY_AND_AGGREGATION": "PASS",
+    "RESTART_STATE_INTERACTION": "PASS_NO_NEW_STATE_TCD031_BLOCKER_PREVIOUSLY_DISPOSED",
+    "NUMERICAL_POLICY": "PASS_NO_CHANGE",
+    "NON_INTERFERENCE": "PASS_AT_CONTRACT_LEVEL_NO_PRODUCTION_EXECUTION_CLAIM",
+    "NEGATIVE_CONTROLS": "PASS",
+    "HISTORICAL_BEHAVIOR": "PASS_UNKNOWN_WITHOUT_B2",
+    "PRODUCTION_SEPARATION": "PASS",
+    "CANONICAL_SCOPE_SEPARATION": "PASS_PARENT_ADMISSION_REMAINS_BLOCKED"
+  },
+  "residual_uncertainty": [
+    "No historical active-macropore B2 reference constrains magnitude or prevalence.",
+    "The restricted observer contract is not a production implementation qualification; transient transfer plumbing may still need an architecture-safe implementation route.",
+    "The unrestricted canonical TCD-025 claim remains unresolved for partial cuts through a saturated mixed reservoir.",
+    "Same-agent review retains correlated-reasoning risk and is not independent."
+  ],
+  "outcome": "SELF_REVIEW_PASS_RESTRICTED_CORRECTION_READY_PARENT_SCOPE_BLOCKED"
+}
