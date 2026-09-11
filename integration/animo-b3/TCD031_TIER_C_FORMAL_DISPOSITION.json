@@ -1,18 +1,21 @@
 {
   "work_unit": "ANIMO-B3D22",
   "target": "TCD-031",
-  "title": "TCD-031 GOV04 Tier-C Formal Disposition",
+  "title": "TCD-031 Tier-C Formal Disposition",
   "branch": "work/animo-b3d22-tcd031-gov04-tier-c-disposition",
   "authoring_base": "ANIMO-B3B10R2@7648e7b2813f3abc5904e4c34e36072d81d9844f",
   "current_aggregate_at_open": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+  "current_review_governance": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
   "qualification_class": "C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL",
-  "gov04_risk_tier": "C",
+  "gov04_risk_tier_retained_by_gov05": "C",
   "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "decision": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_B3_ADMISSION_DECISION",
   "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
   "admitted": false,
   "authorities": {
     "aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "GOV05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "GOV05_exact_head_CI": "34546470484:success",
     "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
     "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
     "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
@@ -27,6 +30,16 @@
     "MP02": "ANIMO-MP02@6b0f2e7470f13baeb6612b0bddb662a497dea528",
     "MASSQ02": "ANIMO-MASSQ02@56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
     "frozen_B0_retention": "ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300"
+  },
+  "governance_transition": {
+    "gov05_prospective_only": true,
+    "gov05_qualified_before_b3d22_authoring": true,
+    "b3b10r2_completed_before_gov05_qualification": true,
+    "b3b10r2_original_gov04_status_retained": true,
+    "b3b10r2_relabelled_as_same_agent_review": false,
+    "completed_gov04_independent_review_remains_valid_under_gov05": true,
+    "scientific_gate_reduction": false,
+    "independence_assurance_of_b3b10r2": "GOV04_PROCESS_INDEPENDENCE_RETAINED_AS_HISTORICAL_REVIEW_ASSURANCE"
   },
   "review_gate": {
     "result": "PASS_TARGETED_INDEPENDENT_REREVIEW_TCD031_SOURCE_PROVENANCE_GATES_CLOSED",
@@ -84,7 +97,7 @@
     "whole_model_production_split_required_for_this_formal_disposition": false,
     "whole_model_production_split_required_before_production_or_migration_equivalence_claim": true
   },
-  "gov04_disposition": {
+  "tier_c_disposition": {
     "tier": "C",
     "tier_c_triggers": [
       "PERSISTENT_STATE_OWNERSHIP",
@@ -92,6 +105,8 @@
       "INITIALIZATION_SEMANTICS",
       "CHECKPOINT_SEMANTICS"
     ],
+    "gov05_review_process_replacement_applied_to_completed_r2": false,
+    "gov05_completed_review_transition_applied": "KEEP_ORIGINAL_GOV04_REVIEW_STATUS_AND_ACCEPT_AS_VALID_COMPLETED_REVIEW",
     "tier_d_trigger_found": false,
     "numerical_policy_change": false,
     "solver_or_tolerance_change": false,

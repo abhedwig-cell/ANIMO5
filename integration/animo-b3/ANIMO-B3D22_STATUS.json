@@ -1,13 +1,13 @@
 {
   "work_unit": "ANIMO-B3D22",
-  "title": "TCD-031 Active Macropore Persistent Solute Restart State GOV04 Tier-C Formal Disposition",
+  "title": "TCD-031 Active Macropore Persistent Solute Restart State Tier-C Formal Disposition",
   "branch": "work/animo-b3d22-tcd031-gov04-tier-c-disposition",
   "target": "TCD-031",
   "state": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_B3_ADMISSION_DECISION",
   "decision": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_B3_ADMISSION_DECISION",
   "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "b3_qualification_class": "C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL",
-  "gov04_risk_tier": "C",
+  "gov04_risk_tier_retained_by_gov05": "C",
   "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
   "admitted": false,
   "qualified": true,
@@ -15,6 +15,8 @@
   "exact_starting_head": "7648e7b2813f3abc5904e4c34e36072d81d9844f",
   "persist_early_checkpoint": "8e972a18341b538cfc9ae1c95eb51f461d4748c0",
   "aggregate_at_start": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+  "current_review_governance": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "gov05_exact_head_ci": "34546470484:success",
   "readiness_authority": "ANIMO-B3B10@eccba6712f65455161d05fa9cdf6aa142f823dd4",
   "first_review_authority": "ANIMO-B3B10R@36aad892cac546105dfec0fe43aa34a18e23bcad",
   "source_remediation_authority": "ANIMO-B3B10E1@8522752f9941e6fd5b421cf5ac4ef839384d7ce7",
@@ -23,12 +25,37 @@
   "atomic_correction_identity": "COMPLETE_ACCEPTED_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY",
   "historical_revision53_behaviour": "UNKNOWN_WITHOUT_B2",
   "whole_model_active_production_split_equivalence": "NOT_PROVEN",
-  "governance_mode": "GOV04_VERIFY_AND_REUSE_WITH_HIGH_RISK_SCOPE_CHECK",
-  "concurrent_gov05": {
-    "observed_branch": "work/animo-gov05-single-agent-adversarial-review",
-    "observed_head_at_open": "c7a4064fd20b2978bdfb87bd8c8de20924ba87a4",
-    "qualified_as_authority_at_open": false,
-    "applied_here": false
+  "governance_transition": {
+    "gov05_qualified_before_b3d22_authoring": true,
+    "b3b10r2_completed_before_gov05_qualification": true,
+    "b3b10r2_original_gov04_status_retained": true,
+    "b3b10r2_relabelled_as_same_agent_review": false,
+    "completed_gov04_review_valid_under_gov05": true,
+    "scientific_gate_reduction": false,
+    "stale_initial_checkpoint_observation_corrected": true
+  },
+  "pre_transition_validation": [
+    {
+      "run_id": 34546662833,
+      "job_id": 103100664439,
+      "head": "91dfcf047d393e89b1e25dc01cd739cb2f20691e",
+      "conclusion": "success",
+      "authority_status": "SUPERSEDED_FOR_FINAL_AUTHORITY_BY_GOV05_TRANSITION_REMEDIATION"
+    },
+    {
+      "run_id": 34546710237,
+      "head": "1dbd728130c2d363b60a52fabd74fa6fa59d0caf",
+      "conclusion": "success",
+      "authority_status": "SUPERSEDED_FOR_FINAL_AUTHORITY_BY_GOV05_TRANSITION_REMEDIATION"
+    }
+  ],
+  "remediation_history": {
+    "first_gov05_aware_run": 34547037392,
+    "first_gov05_aware_run_result": "FAIL_CLOSED_VALIDATOR_SCHEMA_KEY_MISMATCH",
+    "failure_scientific": false,
+    "failure_governance_disposition": false,
+    "remediation": "Corrected validator to read historical_review_wording_rewritten from GOV05 terminology and reran exact evidence head.",
+    "remediated_evidence_head": "82604f1410148e6c6459f69375eb22946976a668"
   },
   "hard_boundaries": {
     "b3_admission_performed": false,
@@ -47,13 +74,13 @@
   "validation": {
     "machine_validated": true,
     "workflow": "ANIMO-B3D22 TCD-031 Tier-C formal disposition",
-    "run_id": 34546662833,
-    "job_id": 103100664439,
-    "evidence_head": "91dfcf047d393e89b1e25dc01cd739cb2f20691e",
+    "run_id": 34547126573,
+    "job_id": 103102072874,
+    "evidence_head": "82604f1410148e6c6459f69375eb22946976a668",
     "conclusion": "success",
     "validator": "PASS",
     "scope_guard": "PASS",
-    "closeout_note": "Run 34546662833 validates the complete substantive B3D22 disposition package at evidence head 91dfcf047d393e89b1e25dc01cd739cb2f20691e. This status-only closeout must pass the same workflow on its own exact final head before B3D22 is treated as final authority."
+    "closeout_note": "Run 34547126573 validates the complete GOV05-aware substantive B3D22 package at evidence head 82604f1410148e6c6459f69375eb22946976a668. This status-only closeout must pass the same workflow on its own exact final head before B3D22 is final authority."
   },
   "next_if_validated": "SEPARATE_TIER_C_B3_ADMISSION_DECISION_FOR_TCD031"
 }
