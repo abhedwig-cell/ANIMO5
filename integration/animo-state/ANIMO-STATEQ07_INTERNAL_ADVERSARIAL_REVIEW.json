@@ -1,0 +1,72 @@
+{
+  "work_unit": "ANIMO-STATEQ07",
+  "target": "TCD-036",
+  "review_framework": "ANIMO-GOV05",
+  "gov05_authority": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "reviewed_head": "37967b2b6236dd91a608474f9012f13a2f4b0803",
+  "reviewed_tree": "73400a928f03aa49ac2788bd3364b9489951acf7",
+  "reviewed_head_ci": {
+    "run_id": 34645237013,
+    "conclusion": "success"
+  },
+  "frozen_substantive_head": "3ccca21e8f77762a499ccb7e955889e6764e24e5",
+  "freeze_artifact_commit": "ff4c7169628717306cbc7078ec00306a48bcfa06",
+  "risk_tier": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "adversarial_checks": [
+    {
+      "attack": "INVENT_A_SECOND_PERSISTENT_LAYER0_AQUEOUS_CHECKPOINT_OWNER",
+      "result": "REJECTED",
+      "reason": "For active pre-existing ponding the frozen source identity is RsCs(0)=RsCo(0); serialized total-system Cs(0) already owns the accepted layer0 gas state, so Co(0) is a deterministic identity view rather than a second physical store."
+    },
+    {
+      "attack": "APPLY_RESTART_IDENTITY_TO_NEW_PONDING_AND_OVERRIDE_SOURCE_INFLOW_INITIALIZATION",
+      "result": "REJECTED",
+      "reason": "The qualified scope explicitly excludes the source-defined new-ponding event Pn<1e-4 from identity reconstruction and preserves the existing inflow initialization rule."
+    },
+    {
+      "attack": "CREATE_DORMANT_LAYER0_GHG_STORAGE_WHEN_PONDING_IS_ABSENT",
+      "result": "REJECTED",
+      "reason": "The lifecycle contract retains zero layer0 result state without ponding and creates no dormant CH4 or N2O store."
+    },
+    {
+      "attack": "CROSS_MAP_CH4_AND_N2O_DURING_LAYER0_RECONSTRUCTION",
+      "result": "REJECTED",
+      "reason": "CH4 and N2O retain gas-specific owners and the executable oracle carries them independently."
+    },
+    {
+      "attack": "CONFLATE_TCD035_SOIL_LAYER_PHASE_RECONSTRUCTION_WITH_TCD036_LAYER0_IDENTITY",
+      "result": "REJECTED",
+      "reason": "TCD-035 covers soil layers 1..Nl and remains closed; TCD-036 is bounded to layer0 active pre-existing ponding only."
+    },
+    {
+      "attack": "PROMOTE_SOURCE_DERIVED_B1_ORACLE_TO_HISTORICAL_B2_OR_FULL_SPLIT_RUN_EQUIVALENCE",
+      "result": "REJECTED",
+      "reason": "The package labels the oracle B1 source-derived synthetic evidence, leaves historical behavior UNKNOWN_WITHOUT_B2, and makes no whole-model activated-GHG split-run claim."
+    },
+    {
+      "attack": "LOWER_REVIEW_RISK_BECAUSE_B3_CLASS_RESOLVES_FROM_C_PROVISIONAL_TO_LOCAL_CLASS_B",
+      "result": "REJECTED",
+      "reason": "Restart semantics can alter future trajectories; the Tier-C review floor remains explicit even though the scientific classification is a local reconstruction of an existing owner."
+    },
+    {
+      "attack": "OPEN_CANONICAL_STATE_B4_OR_PRODUCTION_MIGRATION_FROM_THIS_QUALIFICATION",
+      "result": "REJECTED",
+      "reason": "STATEQ07 is state-ownership qualification only and explicitly preserves canonical-state, B4 and production boundaries."
+    }
+  ],
+  "positive_findings": [
+    "The source-confirmed serialization/read gap and lifecycle partition from GHG01 are consumed without inventing new physical state.",
+    "The identity Co(0)=Cs(0) is bounded to active pre-existing ponding where source total-system and aqueous layer0 concentrations are identical.",
+    "New-ponding and no-ponding controls prevent the qualified reconstruction from leaking into incompatible lifecycle states.",
+    "The executable negative control discriminates nonzero pre-existing ponding from a zero-reset continuation.",
+    "Historical uncertainty and B1-not-B2 evidence strength remain explicit."
+  ],
+  "outcome": "SELF_REVIEW_PASS_BOUNDED_TCD036_PONDING_LAYER0_RESTART_OWNER",
+  "qualification_recommendation": "QUALIFY_TCD036_PRE_EXISTING_ACTIVE_PONDING_LAYER0_RESTART_IDENTITY_FROM_SERIALIZED_TOTAL_SYSTEM_OWNER_ONLY",
+  "b3_admission_recommendation": "NO_ADMISSION_IN_STATEQ07_SEPARATE_READINESS_AND_ADMISSION_REQUIRED",
+  "production_authorized": false
+}
