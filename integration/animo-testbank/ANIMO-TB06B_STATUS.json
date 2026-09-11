@@ -4,19 +4,19 @@
   "title": "Qualified TB6 Fragment Convergence Readiness",
   "branch": "work/animo-tb06b-tb6-fragment-convergence-readiness",
   "base_authority": "ANIMO-TB05C@788247b4346bedbb79749d5ce5daef3f99283f8d",
-  "state": "QUALIFICATION_CANDIDATE_PENDING_EXACT_HEAD_CI",
+  "state": "QUALIFIED_ANIMO_TB06B_TB6_FRAGMENT_CONVERGENCE_READINESS",
   "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
   "qualified_for_serial_consolidation": ["ATB-NUM-002", "ATB-NUM-003", "ATB-NUM-004", "ATB-ARCH-003"],
   "preserved_gaps": {"ATB-NUM-005": "GAP", "ATB-ARCH-004": "GAP"},
   "convergence_checks": {
-    "stable_id_uniqueness": "PENDING_CI",
-    "central_registry_collision": "PENDING_CI",
-    "dependency_closure": "PENDING_CI",
-    "source_identity_preserved": "PENDING_CI",
-    "expected_value_provenance_preserved": "PENDING_CI",
-    "comparison_policy_preserved": "PENDING_CI",
-    "applicability_bounds_preserved": "PENDING_CI",
-    "failure_semantics_preserved": "PENDING_CI",
+    "stable_id_uniqueness": "PASS",
+    "central_registry_collision": "PASS_NONE",
+    "dependency_closure": "PASS",
+    "source_identity_preserved": "PASS",
+    "expected_value_provenance_preserved": "PASS",
+    "comparison_policy_preserved": "PASS",
+    "applicability_bounds_preserved": "PASS",
+    "failure_semantics_preserved": "PASS",
     "gap_promotion": "PASS_NONE",
     "global_tolerance_creation": "PASS_NONE",
     "TCD_specific_policy_promotion": "PASS_NONE",
@@ -41,10 +41,15 @@
   "qualification": {
     "validator": "tools/validate_animo_tb06b_convergence.py",
     "workflow": ".github/workflows/animo-tb06b-fragment-convergence-readiness.yml",
+    "candidate_green_run": {
+      "run_id": 34568376665,
+      "head": "2d7dd521b9a19f1068fcb17d7db623d002caebc4",
+      "conclusion": "success"
+    },
     "exact_final_head_ci_required": true,
-    "qualified_state_after_success": "QUALIFIED_ANIMO_TB06B_TB6_FRAGMENT_CONVERGENCE_READINESS"
+    "final_exact_head_evidence": "ESTABLISHED_BY_POST_CLOSEOUT_WORKFLOW"
   },
-  "work_status": {"realized": true, "persisted": true, "tested": false, "qualified": false, "complete": false},
+  "work_status": {"realized": true, "persisted": true, "tested": true, "qualified": true, "complete": true},
   "hard_boundaries": {
     "production_source_modified": false,
     "scientific_admission_performed": false,
@@ -55,5 +60,5 @@
     "whole_model_runtime_qualified": false,
     "whole_model_golden_baseline_created": false
   },
-  "handoff": "SERIAL_REGISTRY_WRITER_MAY_PROCEED_ONLY_FROM_QUALIFIED_EXACT_HEAD"
+  "handoff": "SERIAL_REGISTRY_WRITER_MAY_PROCEED_ONLY_FROM_THIS_QUALIFIED_HEAD_AFTER_EXACT_HEAD_CI_SUCCESS"
 }
