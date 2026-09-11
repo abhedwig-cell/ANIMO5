@@ -546,6 +546,482 @@
       "registry_metadata_normalization": "TB03B did not encode central level/cost/profile/input fields per entry; TB03D supplies only TB01-compatible scheduler/schema metadata and does not alter the source scientific contract.",
       "registry_source_fragment": "ANIMO-TB03B@48a3036501e9e871608ab920f46dde5570ebf369:integration/animo-testbank/fragments/ANIMO-TB03B_FRAGMENT.json@blob:4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
       "registry_consolidation": "ANIMO-TB03D"
+    },
+    {
+      "test_id": "ATB-STATE-003",
+      "layer": "TB-L5",
+      "owner": "testbank-state-restart",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-STATEQ01 checkpoint projection purity sentinel carried in STATEQ02@cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_STRUCTURAL_IDENTITY_NO_TOLERANCE",
+      "claim": "Checkpoint projection is observational only for the qualified synthetic CORE_CNP_SUBSURFACE_ONLY projection: input mutation and aliasing to accepted state are forbidden, repeated projection is idempotent, and report accumulators do not alter the physical checkpoint payload.",
+      "applicability_pins": {
+        "profile": "CORE_CNP_SUBSURFACE_ONLY",
+        "evidence_class": "SYNTHETIC_EXECUTABLE_CHECKPOINT_PROJECTION_CONTRACT_NON_B2",
+        "canonical_state_admission": false,
+        "legacy_Output_Init_purity_claim": false
+      },
+      "failure_semantics": "Any mutation, output aliasing, non-idempotence or report-accumulator dependence fails the invariant.",
+      "permanence": "REUSABLE_INVARIANT_NOT_TCD_DEBUG_PROBE",
+      "title": "Checkpoint projection purity invariant",
+      "level": "QG",
+      "input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned source fragment entry; TB05D infers no broader testcase identity.",
+      "dependencies": [],
+      "cost_class": "FAST",
+      "execution_profile": [
+        "DEVELOPER_FAST",
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "subsystem": [
+        "CROSS_CUTTING",
+        "TRANSPORT"
+      ],
+      "failure_class": "STATE_RESTART_FAILURE",
+      "qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+      "admission_effect": "NONE",
+      "registry_source_fragment": "ANIMO-TB04A@ad9683716e1a41a6f6b3d32ff1012bfa215c27db:integration/animo-testbank/fragments/ANIMO-TB04A_STATE_RESTART_FRAGMENT.json@blob:bdaede89e8c5c8ae0fcc2771d633e2b7e3130a8e",
+      "registry_consolidation": "ANIMO-TB05D"
+    },
+    {
+      "test_id": "ATB-STATE-004",
+      "layer": "TB-L5",
+      "owner": "testbank-state-restart",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-STATEQ02@cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_BITWISE_NO_TOLERANCE",
+      "claim": "For the qualified restricted-core C/N/P profile and accepted split boundaries 66, 67, 68, 71 and 72, restored accepted snapshots and future trajectories match the uninterrupted run exactly.",
+      "applicability_pins": {
+        "profile": "RESTRICTED_CORE_CNP_WITH_EXTERNAL_CROP_SURFACE_EXCLUDED",
+        "natural_case": "LWKM_gras_1040.2021.2045",
+        "qualified_split_boundaries": [
+          66,
+          67,
+          68,
+          71,
+          72
+        ],
+        "whole_model_state_claim": false,
+        "excluded": [
+          "GHG",
+          "MACROPORES",
+          "TCD-016-C1_DRY_SOLUTE_TRANSITION",
+          "TCD-040_NONZERO_LAYER0_AQUEOUS_RESTART_PATH",
+          "UNRESOLVED_INTERNAL_CROP_RESTART_STATE",
+          "STABLE_DOM_ACTIVE_STATE",
+          "PCLASS_ACTIVE_STATE"
+        ]
+      },
+      "failure_semantics": "Any non-exact accepted snapshot or post-restore trajectory mismatch fails within the pinned restricted-core scope.",
+      "permanence": "REUSABLE_RESTRICTED_CORE_SPLIT_RUN_CONTRACT",
+      "title": "Restricted-core C/N/P exact split-run equivalence",
+      "level": "QG",
+      "input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned source fragment entry; TB05D infers no broader testcase identity.",
+      "dependencies": [
+        "ATB-STATE-001"
+      ],
+      "cost_class": "QUALIFICATION",
+      "execution_profile": [
+        "ADMISSION_QUALIFICATION",
+        "DEEP_AUDIT"
+      ],
+      "subsystem": [
+        "NITROGEN",
+        "PHOSPHORUS",
+        "CARBON_ORGANIC_MATTER",
+        "TRANSPORT"
+      ],
+      "failure_class": "STATE_RESTART_FAILURE",
+      "qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+      "admission_effect": "NONE",
+      "registry_source_fragment": "ANIMO-TB04A@ad9683716e1a41a6f6b3d32ff1012bfa215c27db:integration/animo-testbank/fragments/ANIMO-TB04A_STATE_RESTART_FRAGMENT.json@blob:bdaede89e8c5c8ae0fcc2771d633e2b7e3130a8e",
+      "registry_consolidation": "ANIMO-TB05D"
+    },
+    {
+      "test_id": "ATB-STATE-005",
+      "layer": "TB-L5",
+      "owner": "testbank-state-restart",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-STATEQ01 exact year-boundary continuation sentinel carried in STATEQ02@cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_COORDINATE_AND_STATE_IDENTITY_NO_TOLERANCE",
+      "claim": "A checkpoint at an exact year boundary resumes from the same exact coordinate, does not replay prior-year closeout, and performs new-year initialization only on the next-interval side.",
+      "applicability_pins": {
+        "profile": "CORE_CNP_SUBSURFACE_ONLY",
+        "evidence_class": "SYNTHETIC_EXECUTABLE_TS01_TIME02_BOUNDARY_CONTRACT_NON_B2",
+        "canonical_time_admission": false,
+        "supplied_case_revision53_year_boundary_split": false
+      },
+      "failure_semantics": "Offset, floating or non-reduced boundary coordinates, closeout replay, or wrong-side new-year initialization fail the contract.",
+      "permanence": "REUSABLE_TIME_RESTART_ORDERING_INVARIANT",
+      "title": "Exact year-boundary restart ordering invariant",
+      "level": "QG",
+      "input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned source fragment entry; TB05D infers no broader testcase identity.",
+      "dependencies": [],
+      "cost_class": "FAST",
+      "execution_profile": [
+        "DEVELOPER_FAST",
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "subsystem": [
+        "CROSS_CUTTING"
+      ],
+      "failure_class": "STATE_RESTART_FAILURE",
+      "qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+      "admission_effect": "NONE",
+      "registry_source_fragment": "ANIMO-TB04A@ad9683716e1a41a6f6b3d32ff1012bfa215c27db:integration/animo-testbank/fragments/ANIMO-TB04A_STATE_RESTART_FRAGMENT.json@blob:bdaede89e8c5c8ae0fcc2771d633e2b7e3130a8e",
+      "registry_consolidation": "ANIMO-TB05D"
+    },
+    {
+      "test_id": "ATB-STATE-006",
+      "layer": "TB-L5",
+      "owner": "testbank-state-restart",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-STATEQ04@ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_BYTEWISE_NO_TOLERANCE",
+      "claim": "The qualification-only TCD-031 macropore persistent-solute checkpoint contract preserves all six species across both accepted CoMp domains in the source-bound kernel split, with RsCoMp reconstructed from restored accepted CoMp and current-interval workspace excluded from persistent state.",
+      "applicability_pins": {
+        "risk_tier": "GOV04_TIER_C",
+        "evidence_boundary": "FROZEN_SOURCE_KERNEL_REMEDIATION_QUALIFICATION_PLUS_PINNED_MP02_COMPLETE_MODEL_ACTIVE_REACHABILITY",
+        "whole_model_active_split": false,
+        "canonical_state_admission": false,
+        "production_checkpoint_implementation": false
+      },
+      "failure_semantics": "Any species/domain loss or failure to reconstruct the result alias from accepted persistent owner state fails the narrow kernel contract.",
+      "permanence": "REUSABLE_NARROW_MACROPORE_RESTART_CONTRACT_NOT_ADMISSION",
+      "title": "Macropore persistent-solute narrow restart contract",
+      "level": "QG",
+      "input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned source fragment entry; TB05D infers no broader testcase identity.",
+      "dependencies": [
+        "ATB-STATE-002"
+      ],
+      "cost_class": "QUALIFICATION",
+      "execution_profile": [
+        "ADMISSION_QUALIFICATION",
+        "DEEP_AUDIT"
+      ],
+      "subsystem": [
+        "MACROPORES",
+        "TRANSPORT"
+      ],
+      "failure_class": "STATE_RESTART_FAILURE",
+      "qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+      "admission_effect": "NONE",
+      "registry_source_fragment": "ANIMO-TB04A@ad9683716e1a41a6f6b3d32ff1012bfa215c27db:integration/animo-testbank/fragments/ANIMO-TB04A_STATE_RESTART_FRAGMENT.json@blob:bdaede89e8c5c8ae0fcc2771d633e2b7e3130a8e",
+      "registry_consolidation": "ANIMO-TB05D"
+    },
+    {
+      "test_id": "ATB-BND-002",
+      "layer": "TB-L6",
+      "owner": "testbank-boundaries",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-UBQ01@6895b67799f26888025eced7188e7190b2a0d07d",
+      "expected_value_provenance": "THEORY",
+      "comparison_policy": "EXACT_BITWISE_NO_TOLERANCE",
+      "claim": "For the qualified exact-zero-throughflow atom with Hetop>0, the upper reservoir retains incoming load in storage according to the zero-flow limit Hetop*C1 = Hetop*C0 + St*Load; the natural isolated probe preserves all prior records and confines first differences to predeclared upper-boundary coordinates.",
+      "applicability_pins": {
+        "target": "TCD-042",
+        "flux_domain": "Flux=0 EXACTLY",
+        "Hetop_domain": "Hetop>0",
+        "finite_positive_subthreshold_included": false,
+        "parent_TCD042_fully_qualified": false,
+        "b3_admitted": false
+      },
+      "boundary_sign_contract": "Load is positive into the upper-reservoir control volume; throughflow is exactly zero for this atom.",
+      "failure_semantics": "Loss of nonzero incoming load from represented end storage, or any difference outside the declared direct coordinates in the pinned natural probe, fails the narrow contract.",
+      "permanence": "REUSABLE_EXACT_ZERO_UPPER_BOUNDARY_CONTRACT",
+      "title": "Exact-zero upper-reservoir retention contract",
+      "level": "QG",
+      "input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned source fragment entry; TB05D infers no broader testcase identity.",
+      "dependencies": [],
+      "cost_class": "FOCUSED",
+      "execution_profile": [
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "subsystem": [
+        "TRANSPORT"
+      ],
+      "failure_class": "BOUNDARY_CONTRACT_FAILURE",
+      "qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+      "admission_effect": "NONE",
+      "registry_source_fragment": "ANIMO-TB04B@82213ad143bd5f0fa5c500303a8a4f1d35dd3f0c:integration/animo-testbank/fragments/ANIMO-TB04B_BOUNDARY_INITIALIZATION_FRAGMENT.json@blob:bd80094482b6aa7fb4de6536f2022dc03f2debcf",
+      "registry_consolidation": "ANIMO-TB05D"
+    },
+    {
+      "test_id": "ATB-BND-005",
+      "layer": "TB-L6",
+      "owner": "testbank-boundaries",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-BUILDQ04@268a0c007b4c9eff5cbf1dcbd7eeb4389554d3ed",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_BOUNDARY_VALUE_AND_STRUCTURAL_CONTRACT_NO_TOLERANCE",
+      "claim": "For the qualified GHG bottom-air boundary contract, the lower external advective air flux Flair(Nl+1) is zero for the closed lower GHG air boundary; compiler-provided uninitialized values are not model semantics.",
+      "applicability_pins": {
+        "routine": "GHGasses",
+        "coordinate": "Flair(Nl+1)",
+        "boundary_meaning": "LOWER_EXTERNAL_ADVECTIVE_AIR_FLUX_DOWNWARD_POSITIVE",
+        "qualified_boundary_value": 0.0,
+        "historical_intel_effect": "UNKNOWN",
+        "production_patch_admitted": false,
+        "b3_scientific_admitted": false
+      },
+      "boundary_sign_contract": "Downward external advective air flux is positive; the qualified closed lower boundary value is exactly zero.",
+      "failure_semantics": "Any dependence of the first boundary read on uninitialized compiler or stack state fails the initialization contract; this entry does not itself admit a production fix.",
+      "permanence": "REUSABLE_GHG_LOWER_BOUNDARY_INITIALIZATION_CONTRACT",
+      "title": "GHG closed lower-air boundary initialization contract",
+      "level": "QG",
+      "input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned source fragment entry; TB05D infers no broader testcase identity.",
+      "dependencies": [],
+      "cost_class": "FOCUSED",
+      "execution_profile": [
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "subsystem": [
+        "GHG"
+      ],
+      "failure_class": "BOUNDARY_CONTRACT_FAILURE",
+      "qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+      "admission_effect": "NONE",
+      "registry_source_fragment": "ANIMO-TB04B@82213ad143bd5f0fa5c500303a8a4f1d35dd3f0c:integration/animo-testbank/fragments/ANIMO-TB04B_BOUNDARY_INITIALIZATION_FRAGMENT.json@blob:bd80094482b6aa7fb4de6536f2022dc03f2debcf",
+      "registry_consolidation": "ANIMO-TB05D"
+    },
+    {
+      "test_id": "ATB-SUB-003",
+      "layer": "TB-L7",
+      "owner": "testbank-macropores",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "integration/animo-macropore/ANIMO-MP01_STATUS.json@blob:2f91fd50e6ecad4c846adac8766e5615c2bcc247",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_STRUCTURAL_CONTRACT_NO_TOLERANCE",
+      "claim": "The qualified revision-53 macropore activation contract requires Ioptmp=1 with detailed hydrology Hlpimp=2, dynamically reaches wet macropore domains, and keeps Main Bypass and Internal Catchment ownership distinct.",
+      "applicability_pins": {
+        "configuration_gate": "Ioptmp=1",
+        "hydrology_gate": "Hlpimp=2",
+        "aggregated_hydrology_with_macropores_qualified": false,
+        "molecular_diffusion_revision53": "DISABLED",
+        "historical_reference_qualified": false,
+        "b3_ready": false
+      },
+      "failure_semantics": "Configuration/hydrology mismatch, domain ownership collapse or promotion of diagnostic evidence to historical truth fails the contract.",
+      "permanence": "REUSABLE_MACROPORE_ACTIVATION_AND_OWNERSHIP_CONTRACT",
+      "title": "Macropore activation and domain-ownership contract",
+      "level": "QG",
+      "input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned source fragment entry; TB05D infers no broader testcase identity.",
+      "dependencies": [],
+      "cost_class": "BROAD",
+      "execution_profile": [
+        "CANONICAL_BROAD"
+      ],
+      "subsystem": [
+        "MACROPORES"
+      ],
+      "failure_class": "ARCHITECTURE_INVARIANT_FAILURE",
+      "qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+      "admission_effect": "NONE",
+      "registry_source_fragment": "ANIMO-TB05A@e3d537935104b4a7253a5287f8fbf7df7e7459e2:integration/animo-testbank/fragments/ANIMO-TB05A_MACROPORE_SUBSYSTEM_FRAGMENT.json@blob:4930296207e8538e8fff4dd3223f82559805ab1d",
+      "registry_consolidation": "ANIMO-TB05D"
+    },
+    {
+      "test_id": "ATB-SUB-004",
+      "layer": "TB-L7",
+      "owner": "testbank-macropores",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "integration/animo-macropore/ANIMO-MP02_STATUS.json@blob:953f631e4bff01490178b8748f34432b987811f7",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_ROUTE_AND_EVENT_IDENTITY_NO_TOLERANCE",
+      "claim": "B0-derived complete-case diagnostic descendants causally exercise active macropore storage, matrix/macropore exchange, Main Bypass direct drainage and combined P-active C/N/P solute transport for DOC, DON, NH4, NO3, DOP and PO4.",
+      "applicability_pins": {
+        "evidence_class": "B1_COMPLETE_CASE_SYNTHETIC_DIAGNOSTIC_ONLY",
+        "complete_case_runs": 6,
+        "active_species": [
+          "DOC",
+          "DON",
+          "NH4",
+          "NO3",
+          "DOP",
+          "PO4"
+        ],
+        "active_iteration_hits_per_species": 2922,
+        "historical_B2": false,
+        "behavioural_golden_reference": false,
+        "b3_ready": false
+      },
+      "failure_semantics": "Loss of declared route reachability or species coverage fails the B1 diagnostic contract; output agreement is not a golden-reference claim.",
+      "permanence": "REUSABLE_COMPLETE_CASE_ROUTE_REACHABILITY_CONTRACT",
+      "title": "Macropore complete-case route-reachability contract",
+      "level": "INV",
+      "input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned source fragment entry; TB05D infers no broader testcase identity.",
+      "dependencies": [
+        "ATB-SUB-003"
+      ],
+      "cost_class": "BROAD",
+      "execution_profile": [
+        "CANONICAL_BROAD"
+      ],
+      "subsystem": [
+        "MACROPORES",
+        "TRANSPORT",
+        "NITROGEN",
+        "PHOSPHORUS",
+        "DOM"
+      ],
+      "failure_class": "ARCHITECTURE_INVARIANT_FAILURE",
+      "qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+      "admission_effect": "NONE",
+      "registry_source_fragment": "ANIMO-TB05A@e3d537935104b4a7253a5287f8fbf7df7e7459e2:integration/animo-testbank/fragments/ANIMO-TB05A_MACROPORE_SUBSYSTEM_FRAGMENT.json@blob:4930296207e8538e8fff4dd3223f82559805ab1d",
+      "registry_consolidation": "ANIMO-TB05D"
+    },
+    {
+      "test_id": "ATB-SUB-005",
+      "layer": "TB-L7",
+      "owner": "testbank-macropores",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-STATEQ04@ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_BYTEWISE_NO_TOLERANCE",
+      "claim": "The narrow qualification-only persistent-solute restore contract preserves six macropore species across both accepted CoMp domains in the source-bound kernel split, while remaining short of a complete-model active split.",
+      "applicability_pins": {
+        "whole_model_active_split": false,
+        "production_checkpoint_implementation": false,
+        "canonical_state_admission": false,
+        "current_interval_workspace_persistent": false
+      },
+      "failure_semantics": "Any inference of complete-model restart coverage from the narrow kernel contract fails closed.",
+      "permanence": "REUSABLE_NARROW_SUBSYSTEM_RESTART_DEPENDENCY",
+      "title": "Macropore narrow persistent-solute restart dependency",
+      "level": "QG",
+      "input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned source fragment entry; TB05D infers no broader testcase identity.",
+      "dependencies": [
+        "ATB-STATE-006"
+      ],
+      "cost_class": "QUALIFICATION",
+      "execution_profile": [
+        "ADMISSION_QUALIFICATION",
+        "DEEP_AUDIT"
+      ],
+      "subsystem": [
+        "MACROPORES",
+        "TRANSPORT"
+      ],
+      "failure_class": "STATE_RESTART_FAILURE",
+      "qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+      "admission_effect": "NONE",
+      "registry_source_fragment": "ANIMO-TB05A@e3d537935104b4a7253a5287f8fbf7df7e7459e2:integration/animo-testbank/fragments/ANIMO-TB05A_MACROPORE_SUBSYSTEM_FRAGMENT.json@blob:4930296207e8538e8fff4dd3223f82559805ab1d",
+      "registry_consolidation": "ANIMO-TB05D"
+    },
+    {
+      "test_id": "ATB-SUB-008",
+      "layer": "TB-L7",
+      "owner": "testbank-ghg",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "integration/animo-ghg/ANIMO-GHG01_STATUS.json@blob:c691fbf8f70a096662f33b3f52fd1d5ac28b80e7",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_STRUCTURAL_CONTRACT_NO_TOLERANCE",
+      "claim": "The GHG subsystem has source-reachable CH4 and N2O process families with explicit qualified theory/source lineage boundaries, while exact revision-53 release specification, historical active behaviour and several release-specific equation details remain unresolved.",
+      "applicability_pins": {
+        "GHG_guard": "IoptGHG>=1",
+        "broad_CH4_scientific_intent": "THEORY_READY",
+        "broad_N2O_scientific_intent": "THEORY_READY",
+        "exact_revision53_equation_authority": "PARTIALLY_INDEPENDENTLY_RECONCILED_WITH_RELEASE_SPECIFIC_GAPS",
+        "supplied_historical_case_reaches_GHG_branch": false,
+        "b3_admitted": false,
+        "production_ready": false
+      },
+      "failure_semantics": "Any promotion of partial release-specific theory reconciliation or source reachability to complete revision-53 specification, historical behaviour or production readiness fails the contract.",
+      "permanence": "REUSABLE_GHG_THEORY_SOURCE_LINEAGE_BOUNDARY_CONTRACT",
+      "title": "GHG theory/source lineage boundary contract",
+      "level": "QG",
+      "input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned source fragment entry; TB05D infers no broader testcase identity.",
+      "dependencies": [],
+      "cost_class": "BROAD",
+      "execution_profile": [
+        "CANONICAL_BROAD"
+      ],
+      "subsystem": [
+        "GHG"
+      ],
+      "failure_class": "SCIENTIFIC_IDENTITY_FAILURE",
+      "qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+      "admission_effect": "NONE",
+      "registry_source_fragment": "ANIMO-TB05B@fe0a5aae6382cf37e1ad233655f313f5fa60f874:integration/animo-testbank/fragments/ANIMO-TB05B_GHG_SUBSYSTEM_FRAGMENT.json@blob:525942a7aaa71ed1d231d54073e118a99b21fb40",
+      "registry_consolidation": "ANIMO-TB05D"
+    },
+    {
+      "test_id": "ATB-SUB-009",
+      "layer": "TB-L7",
+      "owner": "testbank-ghg",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "integration/animo-runtime/ANIMO-RUNTIMEQ03_STATUS.json@blob:e1f501a5f700d1bf17cf43f6a4c79d61b292099e",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_ACCOUNTING_OWNERSHIP_CONTRACT_NO_TOLERANCE",
+      "claim": "TCD-037 accounting semantics distinguish CH4 layer/total formation and atmosphere emission, N2O nitrification/denitrification formation and atmosphere emission, with N2O reduction retained as a separate sink; parent TCD-037 is non-atomic and requires child-atom partitioning.",
+      "applicability_pins": {
+        "parent_atomic": false,
+        "parent_atomization_required": true,
+        "observer_only_expected_difference": true,
+        "natural_active_ghg_case": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+        "synthetic_evidence": "B1_ONLY_NOT_INDEPENDENT_B2",
+        "scientific_admission": false
+      },
+      "failure_semantics": "Conflating formation, emission or reduction ownership, or treating parent TCD-037 as a single atomic observer correction, fails the contract.",
+      "permanence": "REUSABLE_GHG_ACCOUNTING_OWNERSHIP_AND_ATOMIZATION_CONTRACT",
+      "title": "GHG accounting ownership and atomization contract",
+      "level": "QG",
+      "input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned source fragment entry; TB05D infers no broader testcase identity.",
+      "dependencies": [],
+      "cost_class": "FOCUSED",
+      "execution_profile": [
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "subsystem": [
+        "GHG",
+        "NITROGEN",
+        "CARBON_ORGANIC_MATTER"
+      ],
+      "failure_class": "SCIENTIFIC_IDENTITY_FAILURE",
+      "qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+      "admission_effect": "NONE",
+      "registry_source_fragment": "ANIMO-TB05B@fe0a5aae6382cf37e1ad233655f313f5fa60f874:integration/animo-testbank/fragments/ANIMO-TB05B_GHG_SUBSYSTEM_FRAGMENT.json@blob:525942a7aaa71ed1d231d54073e118a99b21fb40",
+      "registry_consolidation": "ANIMO-TB05D"
+    },
+    {
+      "test_id": "ATB-SUB-010",
+      "layer": "TB-L7",
+      "owner": "testbank-ghg",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-BUILDQ04@268a0c007b4c9eff5cbf1dcbd7eeb4389554d3ed",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_BOUNDARY_VALUE_AND_INITIALIZATION_CONTRACT_NO_TOLERANCE",
+      "claim": "The closed GHG lower external advective air boundary requires Flair(Nl+1)=0 and compiler-dependent uninitialized first-use values are not model semantics.",
+      "applicability_pins": {
+        "boundary_coordinate": "Flair(Nl+1)",
+        "boundary_value": 0.0,
+        "historical_intel_effect": "UNKNOWN",
+        "production_patch_admitted": false,
+        "b3_scientific_admitted": false
+      },
+      "failure_semantics": "Any dependence on stack/compiler initialization for the first lower-boundary read fails this contract, without implying production-patch admission.",
+      "permanence": "REUSABLE_GHG_LOWER_BOUNDARY_SUBSYSTEM_DEPENDENCY",
+      "title": "GHG lower-boundary initialization subsystem dependency",
+      "level": "QG",
+      "input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned source fragment entry; TB05D infers no broader testcase identity.",
+      "dependencies": [
+        "ATB-BND-005"
+      ],
+      "cost_class": "FOCUSED",
+      "execution_profile": [
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "subsystem": [
+        "GHG"
+      ],
+      "failure_class": "BOUNDARY_CONTRACT_FAILURE",
+      "qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+      "admission_effect": "NONE",
+      "registry_source_fragment": "ANIMO-TB05B@fe0a5aae6382cf37e1ad233655f313f5fa60f874:integration/animo-testbank/fragments/ANIMO-TB05B_GHG_SUBSYSTEM_FRAGMENT.json@blob:525942a7aaa71ed1d231d54073e118a99b21fb40",
+      "registry_consolidation": "ANIMO-TB05D"
     }
   ],
   "subsystem_registry": [
