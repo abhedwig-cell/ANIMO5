@@ -91,10 +91,14 @@ At B3A06 branch creation, GOV05 was not yet qualified. Before closeout it advanc
 
 The transition does not change the A2 scientific gates: GOV05 states that scientific evidence gates are not reduced and Tier A continues to use the full GOV04 waiver predicate.
 
+## Admission-workunit identifier check
+
+`ANIMO-B3D22` is already allocated to the separate TCD-031 Tier-C formal-disposition workunit. It is not reused here. A live collision check found no `ANIMO-B3D23` branch or open issue, so the next A2 admission-decision identifier is `ANIMO-B3D23`, subject to another live check when that workunit starts.
+
 ## Hard boundaries
 
 B3A06 performs no admission, grants no final waiver, changes no production source, changes no frozen B0 material, changes no canonical TCD register, reserves no new top-level TCD, admits no parent or sibling atom, composes no TCD-032..036 discrepancy, opens no B4, authorizes no production migration, updates no aggregate snapshot, claims no historical fidelity, promotes no B1 evidence to B2, translates no testcase and closes no full carbon ledger.
 
 ## Next workunit if qualified
 
-`ANIMO-B3D22 — TCD-037-A2 CH4 Index-0 Formation/Emission Split Tier-A Atomic Admission Decision`
+`ANIMO-B3D23 — TCD-037-A2 CH4 Index-0 Formation/Emission Split Tier-A Atomic Admission Decision`
