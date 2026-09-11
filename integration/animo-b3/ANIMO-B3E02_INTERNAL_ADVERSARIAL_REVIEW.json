@@ -1,0 +1,52 @@
+{
+  "work_unit":"ANIMO-B3E02",
+  "reviewed_head":"851df88d236b7e7ac872b28ba370d61a080d8bf9",
+  "reviewed_authoring_ci":{"run":34592083771,"job":103239449053,"conclusion":"success"},
+  "model":"MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "same_agent":true,
+  "genuinely_independent":false,
+  "independence_claimed":false,
+  "assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "risk_tier":"C_NUMERICAL_POLICY",
+  "scientific_gate_reduction":false,
+  "target_scope":"TCD-042-E1: Flpn=0 AND 0<Flux<1.0d-8 AND Hetop>0 AND 0<P<=3.8510200002999744e-7 AND binary64; readiness only, no admission",
+  "counter_hypotheses_tested":8,
+  "counter_hypotheses":[
+    {"id":"H1_SCOPE_NARROWING_IS_SILENT_SUBSTITUTION","hypothesis":"Excluding Hetop=0 silently replaces the documented TCD-042-E1 domain and therefore cannot support a fresh bounded readiness claim.","test":"Recheck B3I10 and B3E01 lineage and distinguish a bounded child claim from global input-domain semantics.","result":"REJECTED_FOR_BOUNDED_CHILD_READINESS","basis":"B3I10 explicitly qualifies the positive-HETOP child scope and explicitly preserves Hetop=0 as scientifically unresolved, without declaring zero globally invalid or changing input validation. B3E02 performs a fresh scope reassessment and does not reuse B3E01 full-trigger readiness."},
+    {"id":"H2_NQ03_POLICY_IS_OVERGENERALIZED_BEYOND_EVIDENCE","hypothesis":"The numerical policy is being promoted from an observed natural envelope to all finite-positive subthreshold states.","test":"Compare B3E02 supported scope exactly with NQ03 and NQ03R applicability and outside-envelope disposition.","result":"REJECTED","basis":"The candidate is limited to 0<P<=3.8510200002999744e-7 in binary64, exactly the NQ03/NQ03R qualified envelope. Outside-envelope behavior remains NOT_QUALIFIED_FAIL_CLOSED."},
+    {"id":"H3_IMPLEMENTATION_ORDER_FINDING_BLOCKS_SCIENTIFIC_READINESS","hypothesis":"NQ03R floating-point evaluation-order mismatches invalidate the policy itself and therefore block B3 readiness.","test":"Reinspect NQ03R severity classification and the distinction between equation-level restricted policy qualification and bitwise production binding.","result":"REJECTED_FOR_READINESS_CARRIED_AS_DOWNSTREAM_CONSTRAINT","basis":"NQ03R classifies the finding as non-blocking for the restricted policy but blocking before bitwise production binding. B3E02 authorizes no source patch or production binding and carries the constraint explicitly downstream."},
+    {"id":"H4_PRIOR_INDEPENDENT_NUMERICAL_REVIEW_CANNOT_BE_REUSED","hypothesis":"Because GOV05 replaced the prior review model, NQ03R cannot be reused as evidence and the numerical reconstruction must be repeated from scratch.","test":"Apply GOV04 verify-and-reuse conditions and GOV05 assurance semantics to the immutable NQ03/NQ03R scope.","result":"REJECTED","basis":"NQ03R is exact-head pinned, scope-compatible and not contradicted by later evidence. Reuse does not relabel it or upgrade its assurance. GOV05 still requires and receives a separate same-agent adversarial review for this readiness decision."},
+    {"id":"H5_HISTORICAL_ROUTE_REMAINS_BLOCKED_AS_IN_B3E01","hypothesis":"B3E01 found no open historical-uncertainty route, so B3E02 cannot become admission-ready without a new B2 reference.","test":"Recheck current GOV03 authority rather than freezing the older B3E01 governance state.","result":"REJECTED","basis":"Current GOV03 explicitly qualifies G6U as eligible for scientific admission with historical uncertainty subject to claim-scoped B3 requirements. Historical behavior remains UNKNOWN_WITHOUT_B2; no B2 equivalence or historical fidelity is claimed."},
+    {"id":"H6_CHILD_DISPOSITION_CARRIER_IS_STILL_MISSING","hypothesis":"The canonical schema still cannot serialize TCD-042-E1 without inventing TCD-043 or substituting parent TCD-042.","test":"Recheck B3Q02 formal child-atom carrier authority and parent-admission semantics.","result":"REJECTED","basis":"B3Q02 qualifies an additive FORMAL_DISPOSITION child carrier with parent lineage and atomic target fields, without modifying B3Q01, reserving a new top-level TCD, or implying parent admission."},
+    {"id":"H7_B1_AND_E1_ARE_BEING_COMPOSED","hypothesis":"Because TCD-042-B1 is already admitted, E1 readiness may implicitly compose B1, zero-thickness behavior, or parent TCD-042.","test":"Compare B3I10 routing and B3E02 hard boundaries with RG05L state.","result":"REJECTED","basis":"E1 remains a separate child with finite-positive Flux and positive Hetop. B1 is neither modified nor readmitted, Hetop=0 remains excluded, and parent TCD-042 remains unadmitted."},
+    {"id":"H8_READINESS_PREMATURELY_AUTHORIZES_PRODUCTION","hypothesis":"A positive readiness decision could be interpreted as permission to implement the numerical policy in production source.","test":"Inspect changed paths, hard boundaries and NQ03R implementation-order constraint.","result":"REJECTED","basis":"No src or reference paths are changed. Production source, input validation, numerical tolerances, B4 and migration remain unauthorized. Production evaluation order still requires separate qualification before bitwise binding."}
+  ],
+  "gate_results":{
+    "fresh_scope_reassessment":"PASS",
+    "B0_identity_and_pins":"PASS_REUSED_EXACT_AUTHORITIES",
+    "bounded_positive_Hetop_domain":"PASS",
+    "numerical_policy_scope_identity":"PASS",
+    "high_precision_oracle_and_dense_probe_evidence":"PASS",
+    "natural_activation_evidence":"PASS",
+    "independent_numerical_review_reuse":"PASS_VERIFY_AND_REUSE",
+    "implementation_order_constraint":"PASS_FOR_READINESS_BLOCKING_BEFORE_PRODUCTION_BINDING",
+    "historical_uncertainty_route":"PASS_WITH_HISTORICAL_BEHAVIOUR_UNKNOWN",
+    "child_disposition_carrier":"PASS",
+    "Hetop_zero_fail_closed_exclusion":"PASS",
+    "B1_noncomposition":"PASS",
+    "parent_nonadmission":"PASS",
+    "production_separation":"PASS"
+  },
+  "residual_uncertainty":[
+    "Historical revision-53 behavior remains unknown because no qualified B2 reference exists.",
+    "Hetop=0 semantics remain unresolved and outside the supported child scope.",
+    "States with P above the NQ03/NQ03R natural envelope remain unqualified fail-closed.",
+    "Floating-point coefficient evaluation order and contraction/reassociation semantics remain a downstream production-binding constraint.",
+    "This readiness decision does not itself admit TCD-042-E1 or parent TCD-042."
+  ],
+  "outcome":"SELF_REVIEW_PASS_TCD042_E1_POSITIVE_HETOP_READINESS",
+  "readiness_supported":true,
+  "scientific_admission_supported_here":false,
+  "parent_admission_supported":false,
+  "production_authorization_supported":false
+}
