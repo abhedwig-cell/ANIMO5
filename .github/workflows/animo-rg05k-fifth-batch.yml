@@ -1,0 +1,36 @@
+name: ANIMO-RG05K fifth batched B3 admission integration
+on:
+  push:
+    branches: [work/animo-rg05k-fifth-batched-admission-integration]
+  workflow_dispatch:
+permissions: {contents: read, actions: read}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in 624bbad35add93de29ac89649155d9fa086a73af f4a3056087e5f7bac41b243be1f404739cde52b0 ce602528d075fc962b0b78759ed0082d1ec78a51 97fd3274acd47bac74939d9dbd55b908043d1521 5da4e4f38ca94630ff857deb66e86f974425f30c f65a47724e4a4fca7f2d8b8d6de9eeee51867904 1bbe4c211197590f346803106e45dca5faae79fc cbd262bdabe92923113b7326f2f42822ce9a971c; do git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"; done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify consumed exact-final workflows
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request
+          checks={34568286088:"624bbad35add93de29ac89649155d9fa086a73af",34572242797:"f4a3056087e5f7bac41b243be1f404739cde52b0",34572641664:"ce602528d075fc962b0b78759ed0082d1ec78a51",34572919222:"97fd3274acd47bac74939d9dbd55b908043d1521",34573179762:"5da4e4f38ca94630ff857deb66e86f974425f30c"}
+          for n,h in checks.items():
+            q=urllib.request.Request(f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{n}",headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}","Accept":"application/vnd.github+json"})
+            with urllib.request.urlopen(q) as f:d=json.load(f)
+            assert d["head_sha"]==h and d["status"]=="completed" and d["conclusion"]=="success",(n,d.get("head_sha"),d.get("status"),d.get("conclusion"))
+          print("exact-final upstream workflows verified")
+          PY
+      - name: Parse records
+        run: |
+          python -m json.tool integration/animo-reg/RG05K_B3_ADMISSION_INVENTORY.json >/dev/null
+          python -m json.tool integration/animo-reg/RG05K_B3_QUEUE_DELTA.json >/dev/null
+          python -m json.tool integration/animo-reg/ANIMO-RG05K_STATUS.json >/dev/null
+          python -m py_compile tools/validate_rg05k_fifth_batch.py
+      - run: python tools/validate_rg05k_fifth_batch.py

@@ -1,0 +1,8 @@
+{
+  "work_unit":"ANIMO-RG05K",
+  "source_aggregate":"ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
+  "pre":{"scientific_admissions":17,"historical_uncertainty_admissions":17,"top_level_admitted_tcd_count":13,"admitted_child_atom_count":4,"tcd025_parent_admitted":false,"tcd025_admitted_children":[]},
+  "delta":{"scientific_admissions":3,"historical_uncertainty_admissions":3,"top_level_admitted_tcds":0,"child_atoms":3,"objects":["TCD-025-A1","TCD-025-A2","TCD-025-A3"]},
+  "post":{"scientific_admissions":20,"historical_uncertainty_admissions":20,"top_level_admitted_tcd_count":13,"admitted_child_atom_count":7,"tcd025_parent_admitted":false,"tcd025_admitted_children":["TCD-025-A1","TCD-025-A2","TCD-025-A3"],"tcd025_A4_admitted":false,"tcd025_A5_state":"BLOCKED_NOT_SOURCE_CLOSED"},
+  "guards":{"parent_auto_admission":false,"A4_inferred_admission":false,"A5_disposed":false,"historical_B2_created":false,"production_authorized":false,"B4_opened":false,"global_canonical_queue_count_recomputed":false}
+}
