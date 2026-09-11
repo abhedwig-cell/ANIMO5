@@ -1,0 +1,154 @@
+{
+  "work_unit": "ANIMO-SYNQ03",
+  "target": "TCD-037-A2",
+  "title": "CH4 Index-0 Formation/Emission Split Independent Synthetic Activation",
+  "evidence_role": "PURPOSE_BUILT_SYNTHETIC_ACTIVATION_FOR_CAUSALITY_AND_SCOPE",
+  "evidence_strength": "B1_SYNTHETIC_NOT_B2",
+  "independence": {
+    "classification": "INDEPENDENT_IMPLEMENTATION_AND_ALGEBRAIC_ORACLE_FOR_CAUSALITY_AND_SCOPE",
+    "semantic_contract_external_to_probe": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "source_shaped_target": "tools/synq03/tcd037_a2_source_shaped_probe.f90",
+    "independent_oracle": "tools/synq03/validate_tcd037_a2_synthetic.py",
+    "oracle_arithmetic": "EXACT_RATIONAL_FRACTION",
+    "oracle_reuses_animo_source_code": false,
+    "historical_reference_claim": false
+  },
+  "authorities": {
+    "base": "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858",
+    "aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "runtime_semantics": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "synthetic_policy": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc"
+  },
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "outbal_calc_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981"
+  },
+  "accounting_contract": {
+    "ch4_formation_total": "sum(QPrCH4(1:Nl)*St)",
+    "ch4_atmosphere_emission_total": "(QEmCH4Dif+QEmCH4Ebl+QEmCH4Flw+QEmCH4Plt)*St",
+    "btom_ch4e_increment": "10000*CH4_EMISSION_TOTAL/Cfracom",
+    "btom_co2e_increment": "D_OM-10000*CH4_FORMATION_TOTAL/Cfracom",
+    "btom_co2e_semantics": "EXISTING_LEGACY_FORMATION_SIDE_DISSIMILATION_COMPLEMENT_ONLY",
+    "full_model_co2_ledger_claim": false,
+    "identity_under_equal_amounts_only": "if CH4_FORMATION_TOTAL=CH4_EMISSION_TOTAL then the two CH4-equivalent scalars are numerically equal, without becoming the same semantic owner",
+    "numerical_acceptance": "EXACT_BINARY64_FOR_CHOSEN_DYADIC_SYNTHETIC_VALUES_NO_EMPIRICAL_TOLERANCE"
+  },
+  "allowed_difference_surface": [
+    "Btom(CH4e)",
+    "Btom(CO2e) formation-side dissimilation complement only"
+  ],
+  "forbidden_difference_domains": [
+    "physical_state",
+    "process_flux",
+    "restart_state",
+    "solver_or_numerical_policy",
+    "unrelated_observer_fields",
+    "TCD-037-A1",
+    "TCD-037-A3",
+    "TCD-037-A4",
+    "TCD-032_through_TCD-036"
+  ],
+  "synthetic_inputs": {
+    "nl": 3,
+    "Z": 10000,
+    "Cfracom": "1/2",
+    "D_OM": 16,
+    "St_active": "1/4",
+    "QPrCH4_active": [
+      "1/16384",
+      "1/8192",
+      "3/16384"
+    ],
+    "QEmCH4_active": {
+      "diffusion": "1/32768",
+      "ebullition": "1/16384",
+      "air_flow": "1/32768",
+      "plant": "0"
+    },
+    "formation_total_amount": "3/32768",
+    "emission_total_amount": "1/32768",
+    "formation_organic_matter_equivalent": "1875/1024",
+    "emission_organic_matter_equivalent": "625/1024",
+    "baseline_Btom_CH4e": 100,
+    "baseline_Btom_CO2e": 200,
+    "physical_state_sentinels": [11, 22, 33],
+    "process_flux_sentinels": [7, 13],
+    "TCD037_A1_observer_sentinel": 31,
+    "TCD037_A3_observer_sentinel": 41,
+    "TCD037_A4_observer_sentinel": 51,
+    "unrelated_observer_sentinel": 77
+  },
+  "cases": [
+    {
+      "id": "DIVERGENT_ACTIVE",
+      "purpose": "formation and atmosphere emission are both nonzero and deliberately unequal"
+    },
+    {
+      "id": "FORMATION_ONLY",
+      "purpose": "same formation as DIVERGENT_ACTIVE with zero atmosphere emission; CO2e must remain identical while CH4e changes"
+    },
+    {
+      "id": "EMISSION_ONLY",
+      "purpose": "same atmosphere emission as DIVERGENT_ACTIVE with zero formation; CH4e must remain identical while CO2e changes"
+    },
+    {
+      "id": "EQUAL_TOTALS_CONTROL",
+      "purpose": "formation and emission amounts deliberately equal; numerical coincidence must not collapse semantic ownership"
+    },
+    {
+      "id": "RATE_TIME_EQUIVALENT",
+      "purpose": "half all rates and double timestep preserves formation and emission amounts and therefore both observer outputs"
+    },
+    {
+      "id": "INACTIVE",
+      "purpose": "nonzero formation and emission inputs with inactive GHG observer branch leave both target observer fields and all sentinels at baseline"
+    }
+  ],
+  "causal_discriminators": [
+    "DIVERGENT_ACTIVE versus FORMATION_ONLY: identical formation implies identical Btom(CO2e), while changed atmosphere emission changes only Btom(CH4e)",
+    "DIVERGENT_ACTIVE versus EMISSION_ONLY: identical atmosphere emission implies identical Btom(CH4e), while changed formation changes only Btom(CO2e)",
+    "RATE_TIME_EQUIVALENT equals DIVERGENT_ACTIVE exactly because both source-owned timestep amounts are unchanged",
+    "all forbidden sentinels remain unchanged in every case"
+  ],
+  "natural_case": {
+    "state": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+    "translation_performed": false
+  },
+  "historical_behavior": "UNKNOWN",
+  "gov04_activation_predicate": {
+    "natural_activation_reasonably_available": false,
+    "absence_documented": true,
+    "purpose_built_synthetic_activation": true,
+    "independently_qualified_for_causality_and_scope": "PENDING_CI",
+    "tier_a_waiver_granted": false
+  },
+  "qualification": {
+    "tested_head": null,
+    "workflow_run_id": null,
+    "job_id": null,
+    "workflow_conclusion": "PENDING",
+    "o0_exact_oracle": "PENDING",
+    "o2_exact_oracle": "PENDING",
+    "o0_o2_byte_identity": "PENDING",
+    "causal_discriminator": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "scope": {
+    "scientific_admission": false,
+    "tier_a_waiver": false,
+    "production_source_change": false,
+    "canonical_tcd_register_change": false,
+    "new_top_level_tcd": false,
+    "b4": false,
+    "aggregate_update": false,
+    "production_migration": false,
+    "historical_fidelity": false,
+    "full_carbon_ledger_closure": false,
+    "tcd032_036_composition": false,
+    "testcase_translation": false
+  },
+  "next_work_unit_if_qualified": "ANIMO-B3A06 — TCD-037-A2 CH4 Index-0 Formation/Emission Split Tier-A Readiness"
+}
