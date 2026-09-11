@@ -1,0 +1,100 @@
+{
+  "work_unit": "ANIMO-B3D40",
+  "target": "TCD-033",
+  "risk_tier": "C",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "reviewed_authoring_head": "9d3a1e576eaa00a542e5c7dd72ae3fcd121f426b",
+  "reviewed_head_ci_run": 34655191669,
+  "reviewed_head_ci_job": 103445939542,
+  "reviewed_head_ci_conclusion": "success",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "candidate_decision": "ADMIT_TCD033_CH4_COMPONENT_PARENT_DAUGHTER_PARTITION_IDENTITY_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
+  "counter_hypotheses": [
+    {
+      "claim": "TCD-033 should remain unadmitted until TCD-032's comprehensive methanogenesis source-pool transfer path is solved, because the component arrays participate in source-pool depletion and are not scientifically independent.",
+      "test": "Separate the local identity being admitted from downstream transfer activation: ask whether the relation between the already-computed parent production Q and its named source-family daughter contributions can be defined and tested without asserting that all depletion pathways are active.",
+      "result": "REJECTED_FOR_THIS_ATOMIC_IDENTITY",
+      "reason": "The admitted claim is only that daughter production contributions partition the one parent Q while preserving existing source shares. It neither activates missing TCD-032 transfers nor claims whole-GHG carbon closure. The identity is locally testable and remains valid whether or not downstream transfer completeness is later admitted."
+    },
+    {
+      "claim": "The legacy revision-53 expression should be retained as authoritative historical behavior because it is frozen source, even though the components sum to Q/A under partial anaerobiosis.",
+      "test": "Apply GOV03 historical-uncertainty routing and GHG02 evidence. Historical B2 is unavailable, while the frozen source itself labels the daughter arrays as contributions to the total CH4 production rate with identical units and exposes deterministic parent/daughter nonclosure.",
+      "result": "REJECTED_AS_SCIENTIFIC_ADMISSION_TARGET_BUT_HISTORICAL_BEHAVIOR_REMAINS_UNKNOWN",
+      "reason": "Admission under GOV03/GOV05 may select a bounded scientifically qualified model-evolution identity when historical behavior is unknown, provided historical fidelity is not claimed."
+    }
+  ],
+  "active_controls": [
+    "Exact-final ANIMO-GHG02 authority 28306877152972a9a8ba1a19e1c61fda56b658a0 with CI 34654987849 qualifies the local partition identity and explicitly performs no B3 admission.",
+    "At A=1, the admitted Q_i=Q*S_i/S expression is algebraically identical to revision 53.",
+    "At 0<A<1 and S>0, the admitted daughter family closes exactly to parent Q in real arithmetic while preserving proportional source shares.",
+    "At A<1.0e-8 the existing source early-return semantics remain zero; at exactly 1.0e-8 the active branch remains covered.",
+    "At S=0 the empty daughter partition is explicitly zero, eliminating the legacy 0/0 component domain.",
+    "The 270-case high-precision GHG02 oracle passed with maximum observed equation error 2 ulp under a 64-ulp verification-only bound."
+  ],
+  "negative_controls": [
+    "Legacy partial-anaerobic component sum Q/A is retained as an expected-failure control and is not used as the admitted identity.",
+    "Whole-model carbon residuals are not used to accept this local equation identity.",
+    "TCD-032 missing transfer activation is not treated as repaired, modified or admitted.",
+    "TCD-034 temperature-index state semantics are not treated as repaired, modified or admitted.",
+    "No production source, total CH4 kinetics, Rdfaox logic or GHG transport is changed or authorized."
+  ],
+  "scientific_gates": {
+    "canonical_TCD_identity": "PASS",
+    "class_specific_B_evidence": "PASS_SOURCE_ALGEBRA_PLUS_GHG02_ORACLE",
+    "claim_scoped_GOV03_historical_uncertainty_route": "PASS",
+    "exact_source_identity": "PASS",
+    "parent_daughter_semantics": "PASS",
+    "units_and_stoichiometric_contract": "PASS",
+    "zero_and_boundary_domain": "PASS",
+    "legacy_negative_control": "PASS",
+    "sibling_noninterference": "PASS",
+    "historical_fidelity_claimed": false,
+    "production_authorized": false,
+    "whole_model_composition_complete_claimed": false
+  },
+  "tier_c_enhanced": {
+    "immutable_authoring_checkpoint": "PASS_9d3a1e576eaa00a542e5c7dd72ae3fcd121f426b",
+    "source_state_ownership_reconstruction": "PASS_LOCAL_RATE_PARENT_DAUGHTER_RELATION_NO_PERSISTENT_STATE_OWNER",
+    "first_read_write_or_restore_direction_analysis": "NOT_APPLICABLE_NO_RESTART_OR_PERSISTENT_STATE_SEAM",
+    "counter_hypothesis": "PASS_TESTED",
+    "active_controls": "PASS",
+    "negative_controls": "PASS",
+    "split_run_restart_applicability": "NOT_APPLICABLE_LOCAL_RATE_PARTITION_ONLY",
+    "exact_comparison_policy": "INHERIT_GHG02_100_DIGIT_EQUATION_ORACLE_WITH_64_ULP_BINARY64_VERIFICATION_BOUND_ONLY",
+    "no_invented_scientific_tolerance": true,
+    "model_tolerance_created": false,
+    "regression_surface": "GHG02_A_E_SOURCE_VECTOR_TO_PARENT_AND_DAUGHTER_PARTITION_MATRIX",
+    "admission_scope_is_strict_subset_of_whole_GHG_ledger": true,
+    "exact_final_CI_required": true
+  },
+  "aggregate_cadence": {
+    "post_RG05N_before": 0,
+    "post_RG05N_if_admitted": 1,
+    "normal_threshold": 3,
+    "threshold_reached": false,
+    "RG05O_required_now": false
+  },
+  "residual_uncertainties": [
+    "Historical revision-53 active-GHG behavior and intended component normalization remain UNKNOWN_WITHOUT_B2.",
+    "TCD-032 remains a separate unadmitted blocker for comprehensive methanogenesis source-pool transfer ownership and carbon-ledger closure.",
+    "TCD-034 remains a separate unadmitted blocker for plant-growth temperature indexing semantics.",
+    "The total CH4 production law is not newly admitted beyond the relative parent/daughter identity used here.",
+    "No production implementation or compiler behavior is bound by this B3 admission."
+  ],
+  "rejected_overclaims": [
+    "TCD032_ADMITTED",
+    "TCD034_ADMITTED",
+    "WHOLE_GHG_CARBON_LEDGER_CLOSED",
+    "HISTORICAL_REV53_FIDELITY_PROVEN",
+    "HISTORICAL_B2_CREATED",
+    "PRODUCTION_PATCH_AUTHORIZED",
+    "B4_OPENED",
+    "RG05O_REQUIRED_AFTER_FIRST_POST_RG05N_ADMISSION",
+    "GENUINELY_INDEPENDENT_REVIEW"
+  ],
+  "outcome": "SELF_REVIEW_PASS_ADMIT_TCD033_WITH_HISTORICAL_UNCERTAINTY"
+}
