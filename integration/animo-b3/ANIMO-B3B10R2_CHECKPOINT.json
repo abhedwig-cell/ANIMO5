@@ -1,0 +1,40 @@
+{
+  "workunit": "ANIMO-B3B10R2",
+  "tcd": "TCD-031",
+  "scope": "TARGETED_INDEPENDENT_REREVIEW_SOURCE_PROVENANCE_AND_RESTART_STATE_EVIDENCE",
+  "review_branch": "review/animo-b3b10r2-tcd031-independent-second-line-rereview",
+  "exact_starting_head": "8522752f9941e6fd5b421cf5ac4ef839384d7ce7",
+  "checkpoint_status": "IN_PROGRESS_FAIL_CLOSED",
+  "disposition": null,
+  "persist_early": true,
+  "live_authorities_at_checkpoint": {
+    "aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "STATEQ03": "ANIMO-STATEQ03@10c50e65d1369d5f3b26736c4b12d3a482379eb5",
+    "STATEQ04": "ANIMO-STATEQ04@ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+    "B3B10": "ANIMO-B3B10@eccba6712f65455161d05fa9cdf6aa142f823dd4",
+    "B3B10R": "ANIMO-B3B10R@36aad892cac546105dfec0fe43aa34a18e23bcad",
+    "B3B10E1": "ANIMO-B3B10E1@8522752f9941e6fd5b421cf5ac4ef839384d7ce7",
+    "MP01": "ANIMO-MP01@7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "MP02": "ANIMO-MP02@6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "MASSQ02": "ANIMO-MASSQ02@56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "frozen_B0_retention": "ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300"
+  },
+  "frozen_source_archive": {
+    "filename_hint": "ANIMO_4.1.5.53(3).zip",
+    "expected_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "repository_visible_primary_source": false
+  },
+  "scope_guards": {
+    "production_patch": false,
+    "b3_admission": false,
+    "canonical_state_admission": false,
+    "canonical_tcd_register_update": false,
+    "tcd025_composition": false,
+    "frozen_b0_modification": false,
+    "whole_model_active_split": false
+  }
+}
