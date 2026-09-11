@@ -1,0 +1,64 @@
+{
+  "work_unit": "ANIMO-B3D23",
+  "title": "TCD-031 GOV05 Tier-C Atomic B3 Admission Decision",
+  "branch": "work/animo-b3d23-tcd031-gov05-tier-c-admission",
+  "target": "TCD-031",
+  "phase": "AUTHORING_IN_PROGRESS_PENDING_IMMUTABLE_HEAD_AND_GOV05_INTERNAL_ADVERSARIAL_REVIEW",
+  "state": "NOT_YET_ADMITTED",
+  "candidate_decision": "ADMIT_TCD031_ATOMIC_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
+  "target_state_after_review_and_exact_final_head_green": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+  "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "qualification_class": "C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL",
+  "risk_tier": "C",
+  "starting_authority": "ANIMO-B3D22@744c42119ee8cd21de658ef6d9c0ecf4a3f7d2ca",
+  "governance_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "historical_independent_review_authority": "ANIMO-B3B10R2@7648e7b2813f3abc5904e4c34e36072d81d9844f",
+  "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "review_boundary": {
+    "complete_authoring_package_persisted": false,
+    "immutable_authoring_head": null,
+    "review_started": false,
+    "review_completed": false,
+    "review_outcome": null,
+    "review_artifact": "integration/animo-b3/ANIMO-B3D23_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "substantive_changes_after_reviewed_checkpoint_allowed": false
+  },
+  "historical_boundary": {
+    "qualified_b2_available": false,
+    "historical_revision53_active_macropore_restart_behaviour": "UNKNOWN_WITHOUT_B2",
+    "historical_fidelity_claimed": false
+  },
+  "unproven_boundaries": {
+    "whole_model_active_production_split_equivalence": "NOT_PROVEN",
+    "production_restart_equivalence": "NOT_PROVEN",
+    "migration_readiness": "NOT_PROVEN",
+    "whole_model_checkpoint_validation": "NOT_PROVEN"
+  },
+  "admitted": false,
+  "qualified": false,
+  "production_authorized": false,
+  "stateq04_reopen_required": false,
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "canonical_state_admitted": false,
+    "tcd025_composition_performed": false,
+    "b4_opened": false,
+    "production_patch_authorized": false,
+    "production_migration_opened": false,
+    "central_regie_updated": false,
+    "new_numerical_tolerance": false,
+    "historical_fidelity_claimed": false
+  },
+  "validation": {
+    "validator": "tools/validate_b3d23_tcd031_admission.py",
+    "scope_guard": "tools/guard_b3d23_tcd031_scope.py",
+    "workflow": ".github/workflows/animo-b3d23-tcd031-admission.yml",
+    "exact_final_head_ci_required": true,
+    "final_head": null,
+    "final_run_id": null,
+    "conclusion": "PENDING"
+  }
+}
