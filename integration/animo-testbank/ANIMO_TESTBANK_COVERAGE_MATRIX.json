@@ -1,0 +1,250 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB01",
+  "authority_base": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
+  "coverage_model": {
+    "primary_scientific_completeness_metric": "MULTIDIMENSIONAL_CLAIM_COVERAGE",
+    "source_code_line_coverage_is_primary": false,
+    "allowed_status": [
+      "COVERED_QUALIFIED",
+      "COVERED_DIAGNOSTIC_ONLY",
+      "PARTIAL",
+      "GAP",
+      "NOT_APPLICABLE"
+    ],
+    "dimensions": [
+      "process",
+      "species",
+      "element",
+      "state_owner",
+      "boundary",
+      "restart",
+      "branch_domain",
+      "numerical_policy",
+      "subsystem_interaction",
+      "admitted_tcd_regression"
+    ],
+    "supplemental_dimensions": [
+      "source_code_line_coverage"
+    ]
+  },
+  "rows": [
+    {
+      "subsystem": "NITROGEN",
+      "process": "PARTIAL",
+      "species": "PARTIAL",
+      "element": "PARTIAL",
+      "state_owner": "PARTIAL",
+      "boundary": "PARTIAL",
+      "restart": "PARTIAL",
+      "branch_domain": "PARTIAL",
+      "numerical_policy": "PARTIAL",
+      "subsystem_interaction": "GAP",
+      "admitted_tcd_regression": "PARTIAL",
+      "source_code_line_coverage": "NOT_APPLICABLE",
+      "evidence_examples": [
+        "ATB-SPC-001",
+        "ATB-SPC-002",
+        "ATB-CONS-001",
+        "ATB-ORACLE-001"
+      ],
+      "principal_gap": "No systematic reusable NH4/NO3 and organic-N transaction bank across all local reactions and transport boundaries."
+    },
+    {
+      "subsystem": "PHOSPHORUS",
+      "process": "PARTIAL",
+      "species": "PARTIAL",
+      "element": "PARTIAL",
+      "state_owner": "PARTIAL",
+      "boundary": "PARTIAL",
+      "restart": "PARTIAL",
+      "branch_domain": "PARTIAL",
+      "numerical_policy": "PARTIAL",
+      "subsystem_interaction": "GAP",
+      "admitted_tcd_regression": "PARTIAL",
+      "source_code_line_coverage": "NOT_APPLICABLE",
+      "evidence_examples": [
+        "ATB-SPC-001",
+        "ATB-SPC-002",
+        "ATB-BND-001",
+        "ATB-NUM-001"
+      ],
+      "principal_gap": "Sorption, desorption and precipitation options lack a complete analytical and transaction-conservation matrix."
+    },
+    {
+      "subsystem": "CARBON_ORGANIC_MATTER",
+      "process": "PARTIAL",
+      "species": "PARTIAL",
+      "element": "PARTIAL",
+      "state_owner": "PARTIAL",
+      "boundary": "PARTIAL",
+      "restart": "PARTIAL",
+      "branch_domain": "PARTIAL",
+      "numerical_policy": "GAP",
+      "subsystem_interaction": "GAP",
+      "admitted_tcd_regression": "PARTIAL",
+      "source_code_line_coverage": "NOT_APPLICABLE",
+      "evidence_examples": [
+        "ATB-CONS-001",
+        "ATB-TRN-001",
+        "ATB-ORACLE-001"
+      ],
+      "principal_gap": "Fresh OM, humus, exudate and gaseous-C transfers are not yet covered by a shared process-by-process transaction bank."
+    },
+    {
+      "subsystem": "DOM",
+      "process": "PARTIAL",
+      "species": "PARTIAL",
+      "element": "PARTIAL",
+      "state_owner": "PARTIAL",
+      "boundary": "PARTIAL",
+      "restart": "PARTIAL",
+      "branch_domain": "PARTIAL",
+      "numerical_policy": "GAP",
+      "subsystem_interaction": "GAP",
+      "admitted_tcd_regression": "PARTIAL",
+      "source_code_line_coverage": "NOT_APPLICABLE",
+      "evidence_examples": [
+        "ATB-ORACLE-001",
+        "ATB-SPC-002",
+        "ATB-BND-001"
+      ],
+      "principal_gap": "Stable-DOM event, reset, transport and C/N/P ownership probes are not yet consolidated into permanent shared tests."
+    },
+    {
+      "subsystem": "PLANT_CROP_UPTAKE",
+      "process": "PARTIAL",
+      "species": "PARTIAL",
+      "element": "PARTIAL",
+      "state_owner": "COVERED_QUALIFIED",
+      "boundary": "PARTIAL",
+      "restart": "COVERED_QUALIFIED",
+      "branch_domain": "PARTIAL",
+      "numerical_policy": "PARTIAL",
+      "subsystem_interaction": "PARTIAL",
+      "admitted_tcd_regression": "PARTIAL",
+      "source_code_line_coverage": "NOT_APPLICABLE",
+      "evidence_examples": [
+        "ATB-STATE-001"
+      ],
+      "qualification_scope_note": "COVERED_QUALIFIED applies only to the bounded STATEQ02/relevant admitted restart scopes, not to every crop mode or whole-model restart.",
+      "principal_gap": "A general crop-mode matrix for internal crop, grassland and external crop forcing is still missing."
+    },
+    {
+      "subsystem": "SORPTION",
+      "process": "PARTIAL",
+      "species": "PARTIAL",
+      "element": "PARTIAL",
+      "state_owner": "PARTIAL",
+      "boundary": "NOT_APPLICABLE",
+      "restart": "PARTIAL",
+      "branch_domain": "PARTIAL",
+      "numerical_policy": "PARTIAL",
+      "subsystem_interaction": "GAP",
+      "admitted_tcd_regression": "PARTIAL",
+      "source_code_line_coverage": "NOT_APPLICABLE",
+      "evidence_examples": [
+        "ATB-ORACLE-001",
+        "ATB-NUM-001"
+      ],
+      "principal_gap": "Active equilibrium and kinetic option domains need explicit limit cases, state ownership and justified numerical comparison contracts."
+    },
+    {
+      "subsystem": "TRANSPORT",
+      "process": "PARTIAL",
+      "species": "PARTIAL",
+      "element": "PARTIAL",
+      "state_owner": "PARTIAL",
+      "boundary": "PARTIAL",
+      "restart": "PARTIAL",
+      "branch_domain": "PARTIAL",
+      "numerical_policy": "PARTIAL",
+      "subsystem_interaction": "PARTIAL",
+      "admitted_tcd_regression": "PARTIAL",
+      "source_code_line_coverage": "NOT_APPLICABLE",
+      "evidence_examples": [
+        "ATB-TRN-001",
+        "ATB-STATE-001",
+        "ATB-BND-001"
+      ],
+      "principal_gap": "Layer-local and whole-profile control-volume balances do not yet form a systematic permanent matrix over all lateral, upper, lower and drainage paths."
+    },
+    {
+      "subsystem": "MACROPORES",
+      "process": "PARTIAL",
+      "species": "PARTIAL",
+      "element": "PARTIAL",
+      "state_owner": "COVERED_QUALIFIED",
+      "boundary": "PARTIAL",
+      "restart": "COVERED_QUALIFIED",
+      "branch_domain": "PARTIAL",
+      "numerical_policy": "PARTIAL",
+      "subsystem_interaction": "PARTIAL",
+      "admitted_tcd_regression": "COVERED_QUALIFIED",
+      "source_code_line_coverage": "NOT_APPLICABLE",
+      "evidence_examples": [
+        "ATB-STATE-002",
+        "ATB-SUB-001"
+      ],
+      "qualification_scope_note": "Qualified coverage is restricted to the TCD-031/STATEQ04 and admitted macropore scope. It is not a blanket macropore correctness claim.",
+      "principal_gap": "Permanent domain-conservation, exchange and small interpretable integrated cases remain to be built."
+    },
+    {
+      "subsystem": "GHG",
+      "process": "PARTIAL",
+      "species": "PARTIAL",
+      "element": "PARTIAL",
+      "state_owner": "PARTIAL",
+      "boundary": "PARTIAL",
+      "restart": "GAP",
+      "branch_domain": "PARTIAL",
+      "numerical_policy": "PARTIAL",
+      "subsystem_interaction": "PARTIAL",
+      "admitted_tcd_regression": "PARTIAL",
+      "source_code_line_coverage": "NOT_APPLICABLE",
+      "evidence_examples": [
+        "ATB-SUB-002"
+      ],
+      "principal_gap": "GHG has qualified observer, index, boundary and runtime ownership evidence, but no complete persistent-state/restart bank."
+    }
+  ],
+  "cross_cutting_gaps": [
+    {
+      "dimension": "provenance",
+      "status": "PARTIAL",
+      "gap": "EG01 external controlled immutable storage and restore proof remain incomplete."
+    },
+    {
+      "dimension": "integrated_scientific_cases",
+      "status": "GAP",
+      "gap": "No shared suite yet exists of small diagnostic multi-process cases with explicit interaction surfaces and element balances."
+    },
+    {
+      "dimension": "compiler_matrix",
+      "status": "PARTIAL",
+      "gap": "NQ/BUILDQ evidence exists, but a shared O0/O2 and cross-compiler qualification matrix has not yet been consolidated."
+    },
+    {
+      "dimension": "whole_model_restart",
+      "status": "GAP",
+      "gap": "Subsystem and restricted split-run evidence cannot be promoted to whole-model restart identity."
+    },
+    {
+      "dimension": "composed_scientific_reference",
+      "status": "GAP",
+      "gap": "B3 atomic admissions are not a scientifically qualified composed whole-model baseline."
+    },
+    {
+      "dimension": "release_qualification",
+      "status": "GAP",
+      "gap": "B4 and production release are closed and no release qualification suite is instantiated."
+    }
+  ],
+  "coverage_rules": {
+    "green_test_count_may_override_required_gap": false,
+    "whole_profile_balance_may_hide_local_compensating_errors": false,
+    "subsystem_restart_may_claim_whole_model_restart": false,
+    "admitted_tcd_regression_is_automatic_for_all_workunit_probes": false,
+    "source_code_line_coverage_may_be_used_as_supplemental_metadata": true
+  }
+}
