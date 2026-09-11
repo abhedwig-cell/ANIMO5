@@ -3,14 +3,14 @@
   "title": "TCD-031 Active Macropore Persistent Solute Restart State Tier-C Formal Disposition",
   "branch": "work/animo-b3d22-tcd031-gov04-tier-c-disposition",
   "target": "TCD-031",
-  "state": "REMEDIATED_GOV05_TRANSITION_PENDING_EXACT_HEAD_CI",
+  "state": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_B3_ADMISSION_DECISION",
   "decision": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_B3_ADMISSION_DECISION",
   "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "b3_qualification_class": "C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL",
   "gov04_risk_tier_retained_by_gov05": "C",
   "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
   "admitted": false,
-  "qualified": false,
+  "qualified": true,
   "production_authorized": false,
   "exact_starting_head": "7648e7b2813f3abc5904e4c34e36072d81d9844f",
   "persist_early_checkpoint": "8e972a18341b538cfc9ae1c95eb51f461d4748c0",
@@ -49,6 +49,14 @@
       "authority_status": "SUPERSEDED_FOR_FINAL_AUTHORITY_BY_GOV05_TRANSITION_REMEDIATION"
     }
   ],
+  "remediation_history": {
+    "first_gov05_aware_run": 34547037392,
+    "first_gov05_aware_run_result": "FAIL_CLOSED_VALIDATOR_SCHEMA_KEY_MISMATCH",
+    "failure_scientific": false,
+    "failure_governance_disposition": false,
+    "remediation": "Corrected validator to read historical_review_wording_rewritten from GOV05 terminology and reran exact evidence head.",
+    "remediated_evidence_head": "82604f1410148e6c6459f69375eb22946976a668"
+  },
   "hard_boundaries": {
     "b3_admission_performed": false,
     "production_source_modified": false,
@@ -64,15 +72,15 @@
     "historical_fidelity_claimed": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-B3D22 TCD-031 Tier-C formal disposition",
-    "run_id": null,
-    "job_id": null,
-    "evidence_head": null,
-    "conclusion": "PENDING",
-    "validator": "PENDING",
-    "scope_guard": "PENDING",
-    "closeout_note": "Governance transition remediation must pass the fail-closed workflow. Only a later exact-final-head success can establish B3D22 final authority."
+    "run_id": 34547126573,
+    "job_id": 103102072874,
+    "evidence_head": "82604f1410148e6c6459f69375eb22946976a668",
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34547126573 validates the complete GOV05-aware substantive B3D22 package at evidence head 82604f1410148e6c6459f69375eb22946976a668. This status-only closeout must pass the same workflow on its own exact final head before B3D22 is final authority."
   },
   "next_if_validated": "SEPARATE_TIER_C_B3_ADMISSION_DECISION_FOR_TCD031"
 }
