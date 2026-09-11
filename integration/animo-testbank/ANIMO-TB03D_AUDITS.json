@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB03D",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "phase": "PREMATERIALIZATION",
+  "collision_audit": {
+    "target_ids": ["ATB-ORACLE-002", "ATB-ORACLE-003", "ATB-SPC-003", "ATB-TRN-002", "ATB-CONS-002", "ATB-CONS-003", "ATB-CONS-004", "ATB-CONS-005"],
+    "target_ids_unique": true,
+    "tb03a_vs_tb03b_collision": false,
+    "central_baseline_collision": false,
+    "newer_tb_fragment_collision": false,
+    "post_tb03c_registry_write_detected": false,
+    "result": "PASS_PREWRITE"
+  },
+  "dependency_closure_audit": {
+    "ATB-ORACLE-002": [],
+    "ATB-ORACLE-003": ["ATB-ORACLE-002"],
+    "ATB-SPC-003": ["ATB-ORACLE-003"],
+    "ATB-TRN-002": ["ATB-TRN-001"],
+    "ATB-CONS-002": ["ATB-TRN-002", "ATB-CONS-001"],
+    "ATB-CONS-003": ["ATB-CONS-002"],
+    "ATB-CONS-004": ["ATB-SPC-001", "ATB-TRN-002"],
+    "ATB-CONS-005": ["ATB-SPC-001", "ATB-CONS-001"],
+    "baseline_dependencies_present": ["ATB-TRN-001", "ATB-CONS-001", "ATB-SPC-001"],
+    "cross_fragment_dependencies": ["ATB-ORACLE-003 -> ATB-ORACLE-002", "ATB-SPC-003 -> ATB-ORACLE-003", "ATB-CONS-002 -> ATB-TRN-002", "ATB-CONS-003 -> ATB-CONS-002", "ATB-CONS-004 -> ATB-TRN-002"],
+    "sibling_only_unresolved_dependency": false,
+    "result": "PASS_PREWRITE"
+  },
+  "provenance_preservation_audit": {
+    "tb03a_rule": "All source scientific fields are copied byte-for-value at parsed JSON level; only central-registry level/input and registry-origin metadata are added where TB01 requires them.",
+    "tb03b_rule": "All source entry fields are copied byte-for-value at parsed JSON level. TB03D adds only TB01-compatible central-registry schema/scheduling metadata, admission_effect=NONE, exact fragment origin, and the already-documented TB03B permanence decision.",
+    "tb03b_failure_semantics_policy": "No new failure class is invented. Original assertions, residual equations, boundary signs and qualification_strength remain the authoritative failure semantics.",
+    "tb03b_metadata_normalization": {
+      "ATB-TRN-002": {"level": "QG", "cost_class": "FOCUSED", "execution_profile": ["SCIENTIFIC_FOCUSED"]},
+      "ATB-CONS-002": {"level": "QG", "cost_class": "FOCUSED", "execution_profile": ["SCIENTIFIC_FOCUSED"]},
+      "ATB-CONS-003": {"level": "QG", "cost_class": "FOCUSED", "execution_profile": ["SCIENTIFIC_FOCUSED"]},
+      "ATB-CONS-004": {"level": "QG", "cost_class": "FOCUSED", "execution_profile": ["SCIENTIFIC_FOCUSED"]},
+      "ATB-CONS-005": {"level": "INV", "cost_class": "FAST", "execution_profile": ["DEVELOPER_FAST", "SCIENTIFIC_FOCUSED"]}
+    },
+    "normalization_is_scientific_redefinition": false,
+    "synthetic_oracle_relabelled_historical_b2": false,
+    "expected_value_provenance_changed": false,
+    "comparison_policy_changed": false,
+    "source_identity_changed": false,
+    "result": "PASS_PREWRITE"
+  },
+  "candidate_gap_preservation_audit": {
+    "ATB-SPC-004": "CANDIDATE",
+    "ATB-SPC-005": "CANDIDATE",
+    "ATB-SPC-006": "CANDIDATE",
+    "ATB-SPC-007": "GAP",
+    "centralize_nonqualified_entries": false,
+    "nh4_no3_conservation_promotes_ATB-SPC-004": false,
+    "reason": "ATB-CONS-004 preserves species-resolved aggregation semantics but does not supply the missing reusable executable NH4/NO3 ownership adapter required by ATB-SPC-004.",
+    "result": "PASS_PREWRITE"
+  },
+  "scope_semantics_audit": {
+    "local_conservation_promoted_to_whole_model": false,
+    "whole_profile_contract_promoted_to_whole_model_carbon": false,
+    "synthetic_oracle_promoted_to_historical_b2": false,
+    "testbank_qualification_implies_tcd_admission": false,
+    "whole_model_golden_baseline_created": false,
+    "scientific_authority_changed": false,
+    "production_source_changed": false,
+    "frozen_b0_changed": false,
+    "tb04_changed": false,
+    "result": "PASS_PREWRITE"
+  },
+  "gov05_adversarial_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "alternative_hypotheses_checked": [
+      "candidate/GAP entries could be silently promoted while copying sibling fragments",
+      "a stable ID could collide with the central seed registry or a newer TB fragment",
+      "dependencies could close only inside a sibling branch and fail in the serial registry",
+      "source identity, expectation provenance, comparison policy or applicability could drift during registry normalization",
+      "scheduler/schema metadata could accidentally rewrite the scientific claim",
+      "local or profile conservation could be overstated as whole-model conservation",
+      "ATB-CONS-004 could be misused to promote ATB-SPC-004 despite its missing executable ownership adapter",
+      "qualified synthetic oracle evidence could be relabelled as historical B2",
+      "testbank registration could be misrepresented as TCD scientific admission",
+      "registry consolidation could accidentally create a whole-model golden baseline"
+    ],
+    "dispositions": [
+      "append exactly the eight TB03C-qualified IDs and no others",
+      "fail closed on any baseline-registry blob mismatch before first write",
+      "compare source fragment fields against exact sibling heads in CI",
+      "resolve dependencies against the union of unchanged baseline IDs and the eight consolidated IDs",
+      "preserve ATB-SPC-004/005/006 as CANDIDATE and ATB-SPC-007 as GAP outside the central registry",
+      "retain admission_effect=NONE for every consolidated entry",
+      "retain synthetic provenance and bounded conservation wording",
+      "do not alter coverage, provenance or execution-profile authorities"
+    ],
+    "result": "PASS_PREMATERIALIZATION_SCOPE"
+  }
+}

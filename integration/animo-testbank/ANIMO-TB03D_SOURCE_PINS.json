@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB03D",
+  "live_check": {
+    "tb01_authority": {
+      "head": "15a17bfa2c321d08f3ac89f334986c0ae8429045",
+      "registry_blob": "a5f279cfa334dc63d3e4e8759370279736d874a0",
+      "coverage_matrix_blob": "0cd42a372e78af509ce600862ac04a688e5173c6",
+      "expectation_provenance_blob": "6d9722c5e04e28cbb97ce21fcd3140a1ff671c02",
+      "execution_profiles_blob": "5645035d56c43d3b3a231a0ecc40af4c3d3f38a5"
+    },
+    "tb02": {
+      "head": "54a565c2f7f2a29817ae027cc18bee1613ce568d",
+      "ci_run": 34557165449,
+      "ci_conclusion": "success"
+    },
+    "tb03a": {
+      "head": "a37f07b15ae50d6fbb526cef3215fb58702e85aa",
+      "ci_run": 34557800712,
+      "ci_conclusion": "success",
+      "fragment_path": "integration/animo-testbank/fragments/ANIMO-TB03A_CNP_SPECIES_ORACLE_FRAGMENT.json",
+      "fragment_blob": "aa11d224964bdc5f1d529d823f774afc18994bbd"
+    },
+    "tb03b": {
+      "head": "48a3036501e9e871608ab920f46dde5570ebf369",
+      "ci_run": 34557679150,
+      "ci_conclusion": "success",
+      "fragment_path": "integration/animo-testbank/fragments/ANIMO-TB03B_FRAGMENT.json",
+      "fragment_blob": "4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+      "permanence_document_blob": "ccebee70007680d061ff7e4dffd320fce87fe5a7"
+    },
+    "tb03c": {
+      "head": "a989541c265213bde0bae3f0e2db28fcaf9c0579",
+      "ci_run": 34558388740,
+      "ci_conclusion": "success",
+      "handoff_path": "integration/animo-testbank/fragments/ANIMO-TB03C_CONVERGENCE_HANDOFF.json",
+      "handoff_blob": "03de5deece36a28ad1610420d6756425b09711fe"
+    }
+  },
+  "newer_tb_workunits_checked": [
+    {
+      "work_unit": "ANIMO-TB04A",
+      "head": "ad9683716e1a41a6f6b3d32ff1012bfa215c27db",
+      "central_registry_blob": "a5f279cfa334dc63d3e4e8759370279736d874a0",
+      "fragment_blob": "bdaede89e8c5c8ae0fcc2771d633e2b7e3130a8e",
+      "ids": ["ATB-STATE-003", "ATB-STATE-004", "ATB-STATE-005", "ATB-STATE-006", "ATB-STATE-007"]
+    },
+    {
+      "work_unit": "ANIMO-TB04B",
+      "head": "82213ad143bd5f0fa5c500303a8a4f1d35dd3f0c",
+      "central_registry_blob": "a5f279cfa334dc63d3e4e8759370279736d874a0",
+      "fragment_blob": "bd80094482b6aa7fb4de6536f2022dc03f2debcf",
+      "ids": ["ATB-BND-002", "ATB-BND-003", "ATB-BND-004", "ATB-BND-005", "ATB-BND-006"]
+    },
+    {
+      "work_unit": "ANIMO-TB05A",
+      "head": "e3d537935104b4a7253a5287f8fbf7df7e7459e2",
+      "central_registry_blob": "a5f279cfa334dc63d3e4e8759370279736d874a0",
+      "fragment_blob": "4930296207e8538e8fff4dd3223f82559805ab1d",
+      "ids": ["ATB-SUB-003", "ATB-SUB-004", "ATB-SUB-005", "ATB-SUB-006", "ATB-SUB-007"]
+    }
+  ],
+  "live_check_conclusions": {
+    "tb03d_preexisted": false,
+    "post_tb03c_central_registry_write_detected": false,
+    "newer_fragment_target_id_collision_detected": false,
+    "serial_writer_base": "ANIMO-TB03C@a989541c265213bde0bae3f0e2db28fcaf9c0579",
+    "reason": "TB03C is the explicit serial-consolidation handoff and its central-registry baseline remains byte-identical at current TB01 and checked newer TB branches."
+  }
+}
