@@ -1,0 +1,51 @@
+name: ANIMO-B3Q05 global canonical B3 queue recompute closure
+on:
+  push:
+    branches: [work/animo-b3q05-global-canonical-queue-recompute-closure]
+  workflow_dispatch:
+permissions: {contents: read, actions: read}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in 8758bd30e302b75dd7854ac00fd2e29473669a13 dcc0885f73de6241d5efa9324ddb9f41784f6f2d 846e0f4d02a38b9e02cc1419b1ca87e63aaedb54 942f26fe32eaf91679e59a1968ae173a3703e22d f65a47724e4a4fca7f2d8b8d6de9eeee51867904; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify consumed exact-final workflows
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          checks = {
+              34646787915: "8758bd30e302b75dd7854ac00fd2e29473669a13",
+              34610684987: "dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
+          }
+          for run_id, head in checks.items():
+              req = urllib.request.Request(
+                  f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}",
+                  headers={"Authorization": f"Bearer {os.environ['GH_TOKEN']}", "Accept": "application/vnd.github+json"},
+              )
+              with urllib.request.urlopen(req) as response:
+                  data = json.load(response)
+              assert data["head_sha"] == head, (run_id, data.get("head_sha"))
+              assert data["status"] == "completed" and data["conclusion"] == "success", (run_id, data.get("status"), data.get("conclusion"))
+          print("exact-final upstream workflows verified")
+          PY
+      - name: Parse records
+        run: |
+          python -m json.tool integration/animo-b3/ANIMO-B3Q05_GLOBAL_QUEUE_RECOMPUTE.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3Q05_SOURCE_PINS.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3Q05_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3Q05_STATUS.json >/dev/null
+          if test -f integration/animo-b3/ANIMO-B3Q05_INTERNAL_ADVERSARIAL_REVIEW.json; then
+            python -m json.tool integration/animo-b3/ANIMO-B3Q05_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null
+          fi
+          python -m py_compile tools/validate_animo_b3q05.py
+      - name: Validate B3Q05 queue recompute and closure gate
+        run: python tools/validate_animo_b3q05.py
