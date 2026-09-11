@@ -3,7 +3,7 @@
   "title": "TCD-037-A3 Independent Synthetic Activation Qualification",
   "target": "TCD-037-A3",
   "branch": "work/animo-synq04-tcd037-a3-independent-n2o-deni-activation",
-  "state": "PERSISTED_VALIDATION_PENDING",
+  "state": "QUALIFIED_TCD037_A3_INDEPENDENT_SYNTHETIC_CAUSALITY_AND_SCOPE_NOT_B2",
   "base_authority": "ANIMO-B3D24@0f85d7102945c7c4d77bc49885f9ecca688209e3",
   "aggregate_authority": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
   "routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
@@ -44,7 +44,7 @@
     "QRdN2O": "UNCHANGED_BY_SCOPE",
     "unrelated_observer": "UNCHANGED"
   },
-  "gov05_activation_predicate": "PENDING_EXACT_HEAD_VALIDATION",
+  "gov05_activation_predicate": "PASS_AT_EVIDENCE_LEVEL_REQUIRES_REEVALUATION_IN_B3A07",
   "tier_a_waiver_granted": false,
   "scientific_admission": false,
   "parent_or_sibling_admission": false,
@@ -58,26 +58,26 @@
   "tcd032_036_composition": false,
   "testcase_translation_performed": false,
   "validation": {
-    "machine_validated": false,
-    "run_id": null,
-    "job_id": null,
-    "tested_head": null,
-    "conclusion": "PENDING",
-    "o0": "PENDING",
-    "o2": "PENDING",
-    "o0_o2_byte_identity": "PENDING",
-    "exact_rational_oracle": "PENDING",
-    "causal_discriminator": "PENDING",
-    "scope_guard": "PENDING",
+    "machine_validated": true,
+    "run_id": 34548513397,
+    "job_id": 103106247839,
+    "tested_head": "29d016dfdb8da8e0eac9c0e8bbca2c309f4de439",
+    "conclusion": "success",
+    "o0": "PASS",
+    "o2": "PASS",
+    "o0_o2_byte_identity": "PASS",
+    "exact_rational_oracle": "PASS",
+    "causal_discriminator": "PASS",
+    "scope_guard": "PASS",
     "final_exact_head_required": true,
-    "closeout_note": null
+    "closeout_note": "Run 34548513397 validates the substantive SYNQ04 package at 29d016dfdb8da8e0eac9c0e8bbca2c309f4de439. This administrative closeout must pass the same workflow on its exact final head before SYNQ04 is consumed as final evidence authority."
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "next_if_qualified": "ANIMO-B3A07 — TCD-037-A3 N2O Denitrification Formation Observer Tier-A Readiness"
 }
