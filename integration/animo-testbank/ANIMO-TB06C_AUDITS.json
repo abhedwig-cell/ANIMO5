@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB06C",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "collision_audit": {
+    "qualified_target_count": 4,
+    "target_ids_unique": true,
+    "collision_with_TB05D_serial_registry": false,
+    "gap_id_collision_with_TB05D_serial_registry": false,
+    "partial_consolidation_detected": false,
+    "result": "PASS"
+  },
+  "serial_rebase_audit": {
+    "convergence_original_base": "ANIMO-TB05C@788247b4346bedbb79749d5ce5daef3f99283f8d",
+    "serial_write_base": "ANIMO-TB05D@e0d96fc279ef35966a0d5dd37462fa0cded2cc1e",
+    "TB05D_added_entry_count": 12,
+    "TB05D_additions_disjoint_from_TB06_targets_and_gaps": true,
+    "target_collision_after_rebase": false,
+    "gap_collision_after_rebase": false,
+    "dependency_closure_after_rebase": true,
+    "scientific_requalification_required": false,
+    "reason": "The intervening TB05D change is registry-only append activity on disjoint stable IDs. TB06C rechecks collisions and dependency closure against the newer registry and copies TB06A scientific fields unchanged.",
+    "result": "PASS"
+  },
+  "dependency_closure_audit": {
+    "ATB-NUM-002": ["ATB-NUM-001"],
+    "ATB-NUM-003": ["ATB-NUM-002"],
+    "ATB-NUM-004": ["ATB-NUM-002"],
+    "ATB-ARCH-003": [],
+    "missing_dependencies": [],
+    "dependency_on_gap": false,
+    "sibling_only_unresolved_dependency": false,
+    "result": "PASS"
+  },
+  "provenance_preservation_audit": {
+    "source_fragment_fields_preserved_exactly": true,
+    "source_identity_changed": false,
+    "expected_value_provenance_changed": false,
+    "comparison_policy_changed": false,
+    "applicability_pins_changed": false,
+    "failure_semantics_changed": false,
+    "permanence_changed": false,
+    "registry_metadata_additions_only": true,
+    "admission_effect_for_all_consolidated_entries": "NONE",
+    "result": "PASS"
+  },
+  "gap_preservation_audit": {
+    "ATB-NUM-005": "GAP",
+    "ATB-ARCH-004": "GAP",
+    "gap_entries_written_to_central_registry": false,
+    "result": "PASS"
+  },
+  "scope_preservation_audit": {
+    "global_tolerance_created": false,
+    "unqualified_scientific_difference_auto_accepted": false,
+    "TCD042_polynomial_promoted_to_general_oracle": false,
+    "TCD042_threshold_promoted_to_general_policy": false,
+    "historical_compiler_behaviour_promoted_to_runtime_ownership": false,
+    "workspace_promoted_to_restart_state": false,
+    "TCD037_accounting_mapping_promoted_by_runtime_invariant": false,
+    "isolated_compiler_evidence_promoted_to_repository_wide_equivalence": false,
+    "bounded_runtime_evidence_promoted_to_whole_model_runtime_correctness": false,
+    "historical_B2_fabricated": false,
+    "TCD_scientific_admission_implied": false,
+    "whole_model_golden_baseline_created": false,
+    "result": "PASS"
+  },
+  "registry_integrity_audit": {
+    "base_registry_blob": "9b5078ea4c4f22f0215fead27a96580eeb613a9b",
+    "result_registry_blob": "caf0ff601da27c9b810b992b923bfdac62f4f7d1",
+    "append_only_at_parsed_registry_level": true,
+    "preexisting_test_entries_modified": false,
+    "central_metadata_modified": false,
+    "result": "PASS"
+  },
+  "gov05_adversarial_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "alternative_hypotheses_checked": [
+      "the intervening TB05D registry write could collide with a TB06 target or GAP ID",
+      "a dependency accepted by TB06B could fail after rebasing onto the newer serial registry",
+      "registry normalization could overwrite TB06A scientific fields",
+      "a TCD-042-specific numerical constant could be generalized during registration",
+      "a hidden global tolerance could be introduced by treating a methodological example as policy",
+      "RUNTIMEQ02-derived ownership reasoning could silently carry TCD-037 accounting semantics",
+      "isolated compiler evidence could be overstated as repository-wide compiler equivalence",
+      "bounded runtime evidence could be overstated as whole-model runtime qualification",
+      "GAP entries could be promoted by serial consolidation",
+      "registration could be misread as TCD admission or a whole-model golden baseline"
+    ],
+    "dispositions": [
+      "write exactly four TB06B-qualified IDs and no GAP IDs",
+      "perform collision and dependency checks against the current TB05D registry rather than relying only on the older TB06B base",
+      "reconstruct expected scientific fields from the exact pinned TB06A fragment",
+      "fail closed if registry metadata would overwrite a source fragment key",
+      "retain TCD-specific, compiler-wide, runtime-wide, historical-B2 and golden exclusions",
+      "retain admission_effect=NONE for every consolidated entry"
+    ],
+    "result": "PASS"
+  },
+  "overall_result": "PASS"
+}
