@@ -3,7 +3,7 @@
   "title": "Shared Testbank Runner, Fragment Manifest Resolver & Qualification Receipts",
   "branch": "work/animo-tb02-shared-runner-manifest-qualification-receipts",
   "base": "ANIMO-TB01@15a17bfa2c321d08f3ac89f334986c0ae8429045",
-  "state": "QUALIFICATION_CANDIDATE_PENDING_EXACT_HEAD_CI",
+  "state": "QUALIFIED_ANIMO_TB02_SHARED_TESTBANK_INFRASTRUCTURE_READY_FOR_BOUNDED_TB3_FRAGMENT_ADOPTION",
   "scope": [
     "shared fragment manifest contract",
     "deterministic dependency-aware selection contract",
@@ -42,13 +42,35 @@
     "validator": "tools/validate_animo_tb02.py",
     "workflow": ".github/workflows/animo-tb02-testbank-infrastructure.yml",
     "exact_final_head_ci_required": true,
-    "qualified_state_after_success": "QUALIFIED_ANIMO_TB02_SHARED_TESTBANK_INFRASTRUCTURE_READY_FOR_BOUNDED_TB3_FRAGMENT_ADOPTION"
+    "qualified_state_after_success": "QUALIFIED_ANIMO_TB02_SHARED_TESTBANK_INFRASTRUCTURE_READY_FOR_BOUNDED_TB3_FRAGMENT_ADOPTION",
+    "evidence": {
+      "qualification_head": "54a565c2f7f2a29817ae027cc18bee1613ce568d",
+      "workflow_run_id": 34557165449,
+      "workflow_run_conclusion": "success",
+      "workflow_run_event": "push",
+      "evidence_scope": "ANIMO_TB02_SHARED_TESTBANK_INFRASTRUCTURE_ONLY"
+    }
+  },
+  "reconciliation": {
+    "work_unit": "ANIMO-TB02R",
+    "type": "EXACT_HEAD_QUALIFICATION_STATUS_METADATA_RECONCILIATION",
+    "reconciles_only_prior_successful_ci": true,
+    "prior_qualification_head": "54a565c2f7f2a29817ae027cc18bee1613ce568d",
+    "prior_workflow_run_id": 34557165449,
+    "prior_workflow_run_conclusion": "success",
+    "new_scientific_claims": false,
+    "testbank_science_changed": false,
+    "other_workunits_retroactively_qualified": false,
+    "tcd_admission_implied": false,
+    "registry_consolidation_performed": false,
+    "runner_semantics_changed": false,
+    "fragment_contracts_changed": false
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   }
 }
