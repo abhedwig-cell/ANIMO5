@@ -1,0 +1,70 @@
+{
+  "work_unit": "ANIMO-STATEQ05",
+  "tcd": "TCD-039",
+  "title": "TCD-039 Internal-Crop Potential Uptake Continuation State Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-stateq05-tcd039-potential-crop-uptake-continuation",
+  "phase": "SUBSTANTIVE_AUTHORING_COMPLETE_PENDING_FREEZE",
+  "state": "CANDIDATE_TCD039_INTERNAL_CROP_CONTINUATION_OWNER_QUALIFICATION_NOT_ADMISSION",
+  "decision": "PENDING_IMMUTABLE_AUTHORING_FREEZE_CI_AND_GOV05_ADVERSARIAL_REVIEW",
+  "risk_tier": "C_PERSISTENT_CONTINUATION_STATE_RESTART_SEMANTICS",
+  "base_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
+  "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "stateq01_authority": "ANIMO-STATEQ01@4adae99576eb56978da71f7c8a250e4445fd3bc4",
+  "qualified_profile": "FROZEN_REV53_INTERNAL_CROP_Ioptplant_1_WITH_P_OWNER_ONLY_WHEN_Ipo_1",
+  "candidate_claim": "CUMULATIVE_POTENTIAL_N_UPTAKE_AND_CONDITIONAL_P_UPTAKE_ARE_PERSISTENT_ACCEPTED_CONTINUATION_OWNERS; NONZERO_ACCEPTED_VALUES_MUST_NOT_BE_ZERO_RESET_AT_RESTART",
+  "logical_owner_count": 2,
+  "runtime_coordinate_pairs": [
+    ["Rsamplni_pot", "Amplni_pot"],
+    ["Rsamplpo_pot", "Amplpo_pot"]
+  ],
+  "evidence": {
+    "source": "B0_HASH_PINNED_SOURCE_SEMANTICS",
+    "oracle": "B1_SOURCE_DERIVED_SYNTHETIC_NOT_B2",
+    "historical_behavior": "UNKNOWN_WITHOUT_B2",
+    "full_fortran_split_run": false
+  },
+  "scientific_admission_performed": false,
+  "canonical_state_admitted": false,
+  "production_source_modified": false,
+  "frozen_b0_modified": false,
+  "canonical_register_modified": false,
+  "queue_modified": false,
+  "tcd038_reopened": false,
+  "crop007_closed": false,
+  "whole_crop_checkpoint_sufficiency_claimed": false,
+  "historical_b2_created": false,
+  "b4_opened": false,
+  "production_authorized": false,
+  "review": {
+    "required": true,
+    "started": false,
+    "completed": false,
+    "same_agent": true,
+    "genuinely_independent": false,
+    "independence_claimed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "reviewed_head": null,
+    "outcome": null
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-stateq05-tcd039-continuation.yml",
+    "validator": "tools/validate_stateq05_tcd039.py",
+    "oracle_tests": "tests/stateq05/test_tcd039_continuation_oracle.py",
+    "candidate_head": null,
+    "candidate_run_id": null,
+    "candidate_job_id": null,
+    "candidate_conclusion": null,
+    "exact_final_head_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "next": "CREATE_IMMUTABLE_AUTHORING_FREEZE_THEN_REQUIRE_GREEN_CI_ON_THE_FROZEN_HEAD_BEFORE_GOV05_SAME_AGENT_ADVERSARIAL_REVIEW"
+}

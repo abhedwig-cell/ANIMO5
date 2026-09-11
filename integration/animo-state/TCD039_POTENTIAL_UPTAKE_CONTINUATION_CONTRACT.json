@@ -1,0 +1,74 @@
+{
+  "work_unit": "ANIMO-STATEQ05",
+  "tcd": "TCD-039",
+  "title": "Internal-Crop Potential Uptake Restart Continuation Ownership Qualification",
+  "base_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
+  "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
+  "governance_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "state_evidence_authority": "ANIMO-STATEQ01@4adae99576eb56978da71f7c8a250e4445fd3bc4",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_manifest": "reference/source/source_manifest.csv",
+  "source_files": {
+    "ANIMO_4.1.5.53/Upintg_Plant.for": "d6a6afd6bbc2515697e9bb294ea6bb06ce8a552760f99c2686442d78d19274af",
+    "ANIMO_4.1.5.53/Uptpar_Plant.for": "c7bfbc7c7e74c8a19e996d6f28de5aa60d580618fda61a2b18994553ad1d946a",
+    "ANIMO_4.1.5.53/Init.for": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+    "ANIMO_4.1.5.53/Inicalc.for": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1",
+    "ANIMO_4.1.5.53/Output_Init.for": "6452c175dcd7c6e80983c1176467735d07f75595cf8341526b115b70121b6a2f",
+    "ANIMO_4.1.5.53/Animo.for": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7"
+  },
+  "profile": {
+    "crop_mode": "INTERNAL_ANIMO_CROP",
+    "guard": "Ioptplant == 1",
+    "phosphorus_guard": "Ipo == 1 for P continuation",
+    "revision": "ANIMO_4.1.5_revision_53"
+  },
+  "logical_continuation_owners": [
+    {
+      "quantity": "cumulative potential crop nitrogen uptake",
+      "unit": "kg N m-2",
+      "accepted_owner": "Rsamplni_pot",
+      "working_alias": "Amplni_pot",
+      "checkpoint_requirement": "MANDATORY_FOR_APPLICABLE_INTERNAL_CROP_RESTART",
+      "restore_rule": "Amplni_pot = Rsamplni_pot before future demand calculation",
+      "future_dependency": "Demnide = Amplni_pot - Amplni_act",
+      "zero_reset_allowed": false
+    },
+    {
+      "quantity": "cumulative potential crop phosphorus uptake",
+      "unit": "kg P m-2",
+      "accepted_owner": "Rsamplpo_pot",
+      "working_alias": "Amplpo_pot",
+      "feature_guard": "Ipo == 1",
+      "checkpoint_requirement": "MANDATORY_WHEN_INTERNAL_CROP_AND_P_ACTIVE",
+      "restore_rule": "Amplpo_pot = Rsamplpo_pot before future demand calculation",
+      "future_dependency": "Dempode = Amplpo_pot - Amplpo_act",
+      "zero_reset_allowed": false
+    }
+  ],
+  "source_semantics": {
+    "advance": "accepted potential uptake is copied into result state and incremented by layer-wise potential uptake",
+    "shortage_history": "revision-53 shortage logic can reduce accumulated potential N and P uptake, so the accepted value carries process history",
+    "cold_start": "Inicalc zeroes potential working accumulators",
+    "legacy_restart_surface": "Output_Init writes actual uptake values but omits potential uptake continuation values",
+    "normal_continuation": "Init restores working potential uptake from accepted Rsampl*_pot backing values"
+  },
+  "deterministic_reconstruction_disposition": {
+    "status": "NO_SOURCE_DEFINED_RECONSTRUCTION_FROM_LEGACY_RESTART_CONFIGURATION_OR_TIME",
+    "claim_boundary": "This does not prove impossibility of every conceivable future migration transform. It establishes the frozen-source ownership contract and rejects zero/time/config-only reconstruction for the supported revision-53 profile."
+  },
+  "excluded_scope": [
+    "TCD-038 actual uptake ownership or admission",
+    "CROP-007 remaining crop demand deficit stage and rotation continuation",
+    "external crop mode",
+    "whole canonical STATE admission",
+    "full-model split-run equivalence",
+    "production implementation"
+  ],
+  "evidence_strength": {
+    "source": "B0_HASH_PINNED_SOURCE_SEMANTICS",
+    "oracle": "B1_SOURCE_DERIVED_SYNTHETIC_NOT_B2",
+    "historical_behavior": "UNKNOWN_WITHOUT_B2"
+  },
+  "qualified_claim": "FOR_FROZEN_REVISION53_INTERNAL_CROP_MODE_CUMULATIVE_POTENTIAL_N_UPTAKE_AND_CONDITIONAL_P_UPTAKE_ARE_PERSISTENT_ACCEPTED_CONTINUATION_OWNERS_AND_NONZERO_ACCEPTED_VALUES_MUST_NOT_BE_ZERO_RESET_AT_RESTART",
+  "admission_performed": false
+}

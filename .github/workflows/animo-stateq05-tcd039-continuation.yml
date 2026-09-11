@@ -1,0 +1,33 @@
+name: ANIMO-STATEQ05 TCD039 continuation ownership
+
+on:
+  push:
+    branches:
+      - work/animo-stateq05-tcd039-potential-crop-uptake-continuation
+    paths:
+      - '.github/workflows/animo-stateq05-tcd039-continuation.yml'
+      - 'docs/stateq05/**'
+      - 'integration/animo-state/ANIMO-STATEQ05_*.json'
+      - 'integration/animo-state/TCD039_*.json'
+      - 'tools/stateq05/**'
+      - 'tools/validate_stateq05_tcd039.py'
+      - 'tests/stateq05/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run bounded source-shaped oracle tests
+        run: python -m unittest tests.stateq05.test_tcd039_continuation_oracle -v
+      - name: Validate STATEQ05 scope and evidence contract
+        run: python tools/validate_stateq05_tcd039.py
