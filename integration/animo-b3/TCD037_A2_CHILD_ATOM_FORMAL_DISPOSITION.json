@@ -1,0 +1,159 @@
+{
+  "carrier_id": "ANIMO-B3D24-TCD037-A2-CARRIER",
+  "carrier_version": 1,
+  "carrier_mode": "FORMAL_DISPOSITION",
+  "parent_tcd_id": "TCD-037",
+  "atom_id": "TCD-037-A2",
+  "qualification_class": "A",
+  "canonical_routing": {
+    "work_unit": "ANIMO-B3I07",
+    "status_ref": "integration/animo-b3/ANIMO-B3I07_STATUS.json",
+    "atomization_ref": "integration/animo-b3/B3I07_TCD037_ATOMIZATION.json",
+    "parent_is_top_level_tcd": true,
+    "atom_is_top_level_tcd": false
+  },
+  "target_binding": {
+    "target_kind": "CANONICAL_CHILD_ATOM",
+    "parent_role": "TOP_LEVEL_LINEAGE_PARENT_ONLY",
+    "atom_role": "ATOMIC_DISPOSITION_TARGET",
+    "embedded_tcd_ids_role": "LINEAGE_PARENT_IDS_NOT_DISPOSITION_TARGET",
+    "new_top_level_tcd_reserved": false
+  },
+  "route_state": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "b3_disposition": {
+    "record_id": "ANIMO-B3D24-TCD037-A2",
+    "record_version": 1,
+    "tcd_ids": ["TCD-037"],
+    "atomicity": "ATOMIC",
+    "qualification_class": "A",
+    "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+    "scope": {
+      "process": "GHG balance observer CH4 index-0 formation/emission accounting split",
+      "code_path": "Outbal_calc active-GHG top-level CH4 emission observer and formation-side organic-matter dissimilation complement",
+      "claimed_change": "Use distinct source-owned accepted-timestep CH4 formation-total and atmosphere-emission-total quantities for their respective observer meanings rather than one overloaded index-0 scalar.",
+      "control_volume": "Observer accounting only: Btom(CH4e) atmosphere emission and Btom(CO2e) existing formation-side dissimilation complement; no model-wide CO2 ledger claim."
+    },
+    "identities": {
+      "b0": {
+        "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+        "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+        "testcase_status": "FROZEN_CASE_IDENTIFIED",
+        "testcase_identity": "Frozen revision-53 testbank identified; no compatible natural active-GHG case is available for A2 because supplied GHGMais lineage does not satisfy the revision-53 parser contract; no translation was performed.",
+        "documentation_or_theory_identity": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e plus ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38"
+      },
+      "b1": {
+        "status": "DIAGNOSTIC_NOT_REFERENCE",
+        "evidence_identity": "ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38; exact-final GitHub Actions run 34544980891",
+        "diagnostic_limitations": "Purpose-built independently qualified synthetic activation for causality and scope only; not B2 historical reference evidence and does not establish historical revision-53 behaviour."
+      },
+      "b2": {
+        "status": "UNAVAILABLE_AFTER_DOCUMENTED_ACQUISITION_ATTEMPT",
+        "acquisition_effort_ref": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+      }
+    },
+    "evidence": {
+      "theory": {
+        "status": "PRESENT",
+        "summary": "RUNTIMEQ03 establishes distinct source owners for CH4 formation total and atmosphere emission total; B3I07 canonically routes this semantic split as A2.",
+        "refs": ["ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e", "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808"]
+      },
+      "causal": {
+        "status": "PRESENT",
+        "summary": "SYNQ03 independently discriminates formation and emission causality with divergent, formation-only and emission-only controls while preserving forbidden sentinels.",
+        "refs": ["ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38", "GitHub Actions run 34544980891"]
+      },
+      "conservation": {
+        "status": "PRESENT",
+        "summary": "Exact accounting relations bind Btom(CH4e) to E_CH4 and the existing Btom(CO2e) formation-side dissimilation complement to F_CH4; exact-rational oracle cases satisfy these relations without empirical tolerance.",
+        "refs": ["ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38:integration/animo-synthetic/SYNQ03_TCD037_A2_ORACLE.json"]
+      },
+      "expected_difference": {
+        "changed_states": [],
+        "changed_fluxes": [],
+        "changed_ledgers_or_reports": ["Btom(CH4e)", "Btom(CO2e) formation-side dissimilation complement only"],
+        "unchanged_surfaces": ["physical model state", "GHG process flux trajectory", "restart/checkpoint state", "solver and numerical policy", "unrelated observer fields", "TCD-037-A1/A3/A4 surfaces", "TCD-032 through TCD-036 surfaces", "model-wide CO2 ledger"]
+      },
+      "non_interference": {
+        "status": "PRESENT",
+        "summary": "RUNTIMEQ03 pins observer-only effects and SYNQ03 verifies physical-state, process-flux, sibling-observer and unrelated-observer sentinels remain unchanged.",
+        "refs": ["ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e", "ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38"]
+      },
+      "coverage": {
+        "natural_case_coverage": "No compatible natural active-GHG revision-53 case is reasonably available; absence is documented as BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH and no translation was performed.",
+        "synthetic_case_coverage": "SYNQ03 independently qualifies DIVERGENT_ACTIVE, FORMATION_ONLY, EMISSION_ONLY, EQUAL_TOTALS_CONTROL, RATE_TIME_EQUIVALENT and INACTIVE cases with exact-rational oracle and O0/O2 checks.",
+        "branch_activation_proven": true,
+        "refs": ["ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38", "GitHub Actions run 34544980891"]
+      },
+      "independent_review": {
+        "status": "INCOMPLETE",
+        "reviewer_or_workunit": "GOV05_GOV04_TIER_A_WAIVER_RECORDED_BY_ANIMO-B3D24",
+        "independent_from_correction_authoring": false,
+        "scope": "Separate review phase is not applicable because every retained GOV04 Tier-A waiver predicate is machine-verified under GOV05 for exact child atom TCD-037-A2; this records the waived requirement and does not claim review independence.",
+        "result": "NOT_REVIEWED"
+      },
+      "historical_uncertainty": {
+        "acquisition_effort_ref": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+        "stopping_rationale": "GOV03 qualified B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT; no qualified historical executable reference is available.",
+        "scientific_basis_ref": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e and ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38",
+        "independent_cross_check_ref": "ANIMO-SYNQ03 exact-rational independent causality/scope oracle, exact-final run 34544980891",
+        "second_line_review_ref": "NOT_APPLICABLE_UNDER_GOV05_RETAINED_GOV04_TIER_A_WAIVER: integration/animo-b3/TCD037_A2_TIER_A_WAIVER_AUDIT.json",
+        "uncertainty_statement": "Historical revision-53 executable behaviour for the disconnected/overloaded AmCH4 index-0 observer path remains UNKNOWN; synthetic B1 evidence is not B2.",
+        "scope_limitations": "Admission is restricted to TCD-037-A2 observer accounting only. It does not admit parent TCD-037, A1/A3/A4, production code, B4, composition or model-wide CO2 ledger closure."
+      }
+    },
+    "class_specific_evidence": {
+      "physical_state_trajectory_unchanged": true,
+      "process_flux_trajectory_unchanged": true,
+      "intended_ledger_or_report_only": true,
+      "accounting_identity_ref": "ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38:integration/animo-synthetic/SYNQ03_TCD037_A2_ORACLE.json",
+      "changed_reporting_surfaces": ["Btom(CH4e)", "Btom(CO2e) formation-side dissimilation complement only"],
+      "unchanged_physical_surfaces": ["physical model state", "GHG process flux trajectory", "restart/checkpoint state", "solver and numerical policy"],
+      "gov05_risk_tier": "A",
+      "tier_a_waiver_ref": "integration/animo-b3/TCD037_A2_TIER_A_WAIVER_AUDIT.json",
+      "canonical_child_atom": "TCD-037-A2",
+      "full_model_co2_ledger_claim": false
+    },
+    "gates": {
+      "b0_identity": {"status":"PASS","applicability":"APPLICABLE","justification":"Frozen source and testbank identities are pinned and unchanged.","evidence_refs":["ANIMO-B3A06@466718167b22a643b26ee5035a18514987b6e289"]},
+      "b1_evidence": {"status":"PASS","applicability":"APPLICABLE","justification":"SYNQ03 provides dedicated independently qualified synthetic causality/scope evidence at B1 strength.","evidence_refs":["ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38"]},
+      "b2_route": {"status":"PASS","applicability":"APPLICABLE","justification":"No B2 exists; GOV03 qualified the historical-uncertainty route after reasonable acquisition effort.","evidence_refs":["ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"]},
+      "theory": {"status":"PASS","applicability":"APPLICABLE","justification":"RUNTIMEQ03 resolves source/accounting ownership and A2 semantic separation.","evidence_refs":["ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e"]},
+      "causal": {"status":"PASS","applicability":"APPLICABLE","justification":"SYNQ03 independently activates and discriminates the two source owners.","evidence_refs":["ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38"]},
+      "conservation": {"status":"PASS","applicability":"APPLICABLE","justification":"Exact accounting relations are satisfied by the independent rational oracle.","evidence_refs":["ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38"]},
+      "expected_difference": {"status":"PASS","applicability":"APPLICABLE","justification":"The two-field observer-only difference surface was pinned before admission evaluation.","evidence_refs":["ANIMO-B3A06@466718167b22a643b26ee5035a18514987b6e289"]},
+      "non_interference": {"status":"PASS","applicability":"APPLICABLE","justification":"Physical state, process flux, restart, solver/numerical policy, siblings and unrelated observers remain unchanged.","evidence_refs":["ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38"]},
+      "coverage": {"status":"PASS","applicability":"APPLICABLE","justification":"Natural activation is unavailable for documented lineage reasons; SYNQ03 satisfies the independently-qualified purpose-built synthetic activation alternative.","evidence_refs":["ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38","ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc"]},
+      "independent_review": {"status":"PASS","applicability":"NOT_APPLICABLE","justification":"GOV05 retains the GOV04 Tier-A review waiver and every strengthened Tier-A predicate is PASS for exact atom TCD-037-A2; no independent review is claimed.","evidence_refs":["ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904","integration/animo-b3/TCD037_A2_TIER_A_WAIVER_AUDIT.json"]},
+      "residual_uncertainty": {"status":"PASS","applicability":"APPLICABLE","justification":"Historical behaviour remains UNKNOWN; natural-case gap and no-full-CO2-ledger boundary are explicit.","evidence_refs":["ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c","ANIMO-B3A06@466718167b22a643b26ee5035a18514987b6e289"]},
+      "class_specific": {"status":"PASS","applicability":"APPLICABLE","justification":"Class-A observer-only, non-interference and exact accounting requirements are satisfied.","evidence_refs":["ANIMO-B3A06@466718167b22a643b26ee5035a18514987b6e289"]},
+      "composition_if_applicable": {"status":"PASS","applicability":"NOT_APPLICABLE","justification":"This admission is atomic and performs no composition.","evidence_refs":["ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808"]}
+    },
+    "residual_uncertainty": [
+      "Historical revision-53 executable behaviour for the A2 observer path remains UNKNOWN because no qualified B2 exists.",
+      "No compatible natural active-GHG revision-53 testcase is available; no testcase translation was performed.",
+      "A2 does not qualify or close a model-wide CO2 ledger.",
+      "Atomic admission does not authorize production migration, B4 or composition."
+    ],
+    "composition": {"is_composition": false, "component_record_ids": []},
+    "admission_decision": {
+      "admitted": true,
+      "decision": "ADMIT_TCD037_A2_CH4_INDEX0_FORMATION_EMISSION_SPLIT_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_A_WAIVER",
+      "decision_scope": "CANONICAL_CHILD_ATOM:TCD-037-A2",
+      "decision_evidence_ref": "ANIMO-B3D24 final Tier-A waiver audit and exact-head CI"
+    }
+  },
+  "admission_effect": {
+    "atom_admitted": true,
+    "parent_admitted": false,
+    "new_top_level_tcd_reserved": false,
+    "canonical_register_append": false,
+    "production_migration_admitted": false
+  },
+  "residual_blockers": [
+    "B4 remains closed.",
+    "Production migration remains unauthorized.",
+    "Historical revision-53 behaviour remains UNKNOWN without B2.",
+    "Model-wide CO2 ledger closure remains outside A2."
+  ]
+}
