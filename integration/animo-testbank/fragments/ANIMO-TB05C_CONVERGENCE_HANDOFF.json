@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB05C",
+  "title": "Qualified TB4/TB5 Fragment Convergence Readiness",
+  "base_registry_authority": "ANIMO-TB03D@abcfc9daeacbba4c7d56339fdeedae8f422288c5",
+  "base_registry_blob": "4c78cdb542c5ff4ce898c033eb99dd7b2daa7c2c",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "registry_write": "FORBIDDEN_IN_TB05C",
+  "fragment_pins": {
+    "ANIMO-TB04A": {
+      "head": "ad9683716e1a41a6f6b3d32ff1012bfa215c27db",
+      "ci_run": 34558440547,
+      "ci_conclusion": "success",
+      "fragment_path": "integration/animo-testbank/fragments/ANIMO-TB04A_STATE_RESTART_FRAGMENT.json",
+      "fragment_blob": "bdaede89e8c5c8ae0fcc2771d633e2b7e3130a8e",
+      "status_path": "integration/animo-testbank/ANIMO-TB04A_STATUS.json",
+      "status_blob": "dd126a5f154d4e7c4830ccf080554fcf9dff1a2a"
+    },
+    "ANIMO-TB04B": {
+      "head": "82213ad143bd5f0fa5c500303a8a4f1d35dd3f0c",
+      "ci_run": 34558759237,
+      "ci_conclusion": "success",
+      "fragment_path": "integration/animo-testbank/fragments/ANIMO-TB04B_BOUNDARY_INITIALIZATION_FRAGMENT.json",
+      "fragment_blob": "bd80094482b6aa7fb4de6536f2022dc03f2debcf",
+      "status_path": "integration/animo-testbank/ANIMO-TB04B_STATUS.json",
+      "status_blob": "ffe5ac0e0459585908ef3df6254fe7c197c25ac1"
+    },
+    "ANIMO-TB05A": {
+      "head": "e3d537935104b4a7253a5287f8fbf7df7e7459e2",
+      "ci_run": 34558946870,
+      "ci_conclusion": "success",
+      "fragment_path": "integration/animo-testbank/fragments/ANIMO-TB05A_MACROPORE_SUBSYSTEM_FRAGMENT.json",
+      "fragment_blob": "4930296207e8538e8fff4dd3223f82559805ab1d",
+      "status_path": "integration/animo-testbank/ANIMO-TB05A_STATUS.json",
+      "status_blob": "8f5e1a87c7dd449eb7a47f689c2181765f43bf33"
+    },
+    "ANIMO-TB05B": {
+      "head": "fe0a5aae6382cf37e1ad233655f313f5fa60f874",
+      "ci_run": 34559155201,
+      "ci_conclusion": "success",
+      "fragment_path": "integration/animo-testbank/fragments/ANIMO-TB05B_GHG_SUBSYSTEM_FRAGMENT.json",
+      "fragment_blob": "525942a7aaa71ed1d231d54073e118a99b21fb40",
+      "status_path": "integration/animo-testbank/ANIMO-TB05B_STATUS.json",
+      "status_blob": "eaf628b50fc4f0cc916b5efff8570ff3c8aef7d8"
+    }
+  },
+  "qualified_for_serial_consolidation": [
+    "ATB-STATE-003",
+    "ATB-STATE-004",
+    "ATB-STATE-005",
+    "ATB-STATE-006",
+    "ATB-BND-002",
+    "ATB-BND-005",
+    "ATB-SUB-003",
+    "ATB-SUB-004",
+    "ATB-SUB-005",
+    "ATB-SUB-008",
+    "ATB-SUB-009",
+    "ATB-SUB-010"
+  ],
+  "preserve_without_promotion": {
+    "ATB-STATE-007": "GAP",
+    "ATB-BND-003": "GAP",
+    "ATB-BND-004": "GAP",
+    "ATB-BND-006": "GAP",
+    "ATB-SUB-006": "GAP",
+    "ATB-SUB-007": "GAP",
+    "ATB-SUB-011": "GAP",
+    "ATB-SUB-012": "GAP"
+  },
+  "dependency_plan": {
+    "ATB-STATE-003": [],
+    "ATB-STATE-004": ["ATB-STATE-001"],
+    "ATB-STATE-005": [],
+    "ATB-STATE-006": ["ATB-STATE-002"],
+    "ATB-BND-002": [],
+    "ATB-BND-005": [],
+    "ATB-SUB-003": [],
+    "ATB-SUB-004": ["ATB-SUB-003"],
+    "ATB-SUB-005": ["ATB-STATE-006"],
+    "ATB-SUB-008": [],
+    "ATB-SUB-009": [],
+    "ATB-SUB-010": ["ATB-BND-005"]
+  },
+  "dependency_rationale": {
+    "ATB-STATE-004 -> ATB-STATE-001": "The new entry is the bounded reusable restricted-core split-run contract over the already registered STATEQ02 adapter surface; dependency is scheduling/provenance closure only and does not promote ATB-STATE-001.",
+    "ATB-STATE-006 -> ATB-STATE-002": "The new entry narrows and makes permanent the separately qualified STATEQ04 macropore persistent-solute restore contract already referenced by ATB-STATE-002; dependency does not widen to whole-model restart.",
+    "ATB-SUB-004 -> ATB-SUB-003": "Complete-case macropore route reachability presupposes the same fragment family's qualified activation/domain-ownership contract; dependency is structural and carries no behavioural-golden claim.",
+    "ATB-SUB-005 -> ATB-STATE-006": "The subsystem entry explicitly represents the same narrow macropore persistent-solute restart dependency and therefore closes on the corresponding state-bank entry.",
+    "ATB-SUB-010 -> ATB-BND-005": "The subsystem entry explicitly represents the same qualified GHG lower-boundary initialization contract and therefore closes on the corresponding boundary-bank entry."
+  },
+  "registry_metadata_normalization": {
+    "ATB-STATE-003": {"level": "QG", "cost_class": "FAST", "execution_profile": ["DEVELOPER_FAST", "SCIENTIFIC_FOCUSED"], "subsystem": ["CROSS_CUTTING", "TRANSPORT"], "failure_class": "STATE_RESTART_FAILURE"},
+    "ATB-STATE-004": {"level": "QG", "cost_class": "QUALIFICATION", "execution_profile": ["ADMISSION_QUALIFICATION", "DEEP_AUDIT"], "subsystem": ["NITROGEN", "PHOSPHORUS", "CARBON_ORGANIC_MATTER", "TRANSPORT"], "failure_class": "STATE_RESTART_FAILURE"},
+    "ATB-STATE-005": {"level": "QG", "cost_class": "FAST", "execution_profile": ["DEVELOPER_FAST", "SCIENTIFIC_FOCUSED"], "subsystem": ["CROSS_CUTTING"], "failure_class": "STATE_RESTART_FAILURE"},
+    "ATB-STATE-006": {"level": "QG", "cost_class": "QUALIFICATION", "execution_profile": ["ADMISSION_QUALIFICATION", "DEEP_AUDIT"], "subsystem": ["MACROPORES", "TRANSPORT"], "failure_class": "STATE_RESTART_FAILURE"},
+    "ATB-BND-002": {"level": "QG", "cost_class": "FOCUSED", "execution_profile": ["SCIENTIFIC_FOCUSED"], "subsystem": ["TRANSPORT"], "failure_class": "BOUNDARY_CONTRACT_FAILURE"},
+    "ATB-BND-005": {"level": "QG", "cost_class": "FOCUSED", "execution_profile": ["SCIENTIFIC_FOCUSED"], "subsystem": ["GHG"], "failure_class": "BOUNDARY_CONTRACT_FAILURE"},
+    "ATB-SUB-003": {"level": "QG", "cost_class": "BROAD", "execution_profile": ["CANONICAL_BROAD"], "subsystem": ["MACROPORES"], "failure_class": "ARCHITECTURE_INVARIANT_FAILURE"},
+    "ATB-SUB-004": {"level": "INV", "cost_class": "BROAD", "execution_profile": ["CANONICAL_BROAD"], "subsystem": ["MACROPORES", "TRANSPORT", "NITROGEN", "PHOSPHORUS", "DOM"], "failure_class": "ARCHITECTURE_INVARIANT_FAILURE"},
+    "ATB-SUB-005": {"level": "QG", "cost_class": "QUALIFICATION", "execution_profile": ["ADMISSION_QUALIFICATION", "DEEP_AUDIT"], "subsystem": ["MACROPORES", "TRANSPORT"], "failure_class": "STATE_RESTART_FAILURE"},
+    "ATB-SUB-008": {"level": "QG", "cost_class": "BROAD", "execution_profile": ["CANONICAL_BROAD"], "subsystem": ["GHG"], "failure_class": "SCIENTIFIC_IDENTITY_FAILURE"},
+    "ATB-SUB-009": {"level": "QG", "cost_class": "FOCUSED", "execution_profile": ["SCIENTIFIC_FOCUSED"], "subsystem": ["GHG", "NITROGEN", "CARBON_ORGANIC_MATTER"], "failure_class": "SCIENTIFIC_IDENTITY_FAILURE"},
+    "ATB-SUB-010": {"level": "QG", "cost_class": "FOCUSED", "execution_profile": ["SCIENTIFIC_FOCUSED"], "subsystem": ["GHG"], "failure_class": "BOUNDARY_CONTRACT_FAILURE"}
+  },
+  "normalization_semantics": {
+    "scientific_claim_redefinition": false,
+    "source_identity_redefinition": false,
+    "expected_value_provenance_redefinition": false,
+    "comparison_policy_redefinition": false,
+    "applicability_redefinition": false,
+    "failure_semantics_redefinition": false,
+    "admission_effect_for_all_qualified_entries": "NONE",
+    "central_metadata_is_scheduler_and_registry_metadata_only": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "gap_promoted": false,
+    "historical_B2_fabricated": false,
+    "whole_model_golden_baseline_created": false,
+    "whole_model_restart_qualified": false,
+    "whole_model_boundary_initialization_qualified": false,
+    "whole_model_conservation_qualified": false,
+    "subsystem_release_qualified": false
+  },
+  "serial_writer_handoff": "READY_IF_TB05C_EXACT_HEAD_CI_SUCCEEDS"
+}
