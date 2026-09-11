@@ -64,10 +64,14 @@ GOV05 leaves the GOV04 Tier-A waiver unchanged. Every Tier-A waiver predicate mu
 
 A readiness PASS still does not grant the final waiver. A later atomic admission decision must recheck the exact authorities, claim, evidence identities, expected-difference contract and all Tier-A predicates before granting any final waiver.
 
+## Identifier collision check
+
+During closeout, `ANIMO-B3D22` was found to be already allocated to the separate TCD-031 Tier-C formal-disposition workunit. B3A06 therefore does not reserve or reuse B3D22. `ANIMO-B3D23` was live-checked and had no branch or open issue at that time.
+
 ## Hard boundaries
 
 No production source modification. No frozen B0 modification. No canonical TCD register change. No new top-level TCD. No parent `TCD-037` admission. No A1/A3/A4 admission. No TCD-032..036 composition. No B4. No production migration. No aggregate update. No historical-fidelity claim. No B1-to-B2 promotion. No testcase translation. No full carbon-ledger closure claim.
 
 ## Next route if qualified
 
-`ANIMO-B3D22 — TCD-037-A2 CH4 Index-0 Formation/Emission Split Tier-A Atomic Admission Decision`
+`ANIMO-B3D23 — TCD-037-A2 CH4 Index-0 Formation/Emission Split Tier-A Atomic Admission Decision`
