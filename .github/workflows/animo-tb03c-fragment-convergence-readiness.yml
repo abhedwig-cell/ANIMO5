@@ -1,0 +1,99 @@
+name: ANIMO-TB03C TB3 fragment convergence readiness
+
+on:
+  push:
+    branches:
+      - work/animo-tb03c-tb3-fragment-convergence-readiness
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch and pin exact sibling fragment authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          A=a37f07b15ae50d6fbb526cef3215fb58702e85aa
+          B=48a3036501e9e871608ab920f46dde5570ebf369
+          git fetch --no-tags origin \
+            refs/heads/work/animo-tb03a-cnp-species-stoichiometry-atomic-oracle-adoption:refs/remotes/origin/tb03a-source
+          git fetch --no-tags origin \
+            refs/heads/work/animo-tb03b-transaction-mass-conservation-control-volume-bank:refs/remotes/origin/tb03b-source
+          test "$(git rev-parse refs/remotes/origin/tb03a-source)" = "$A"
+          test "$(git rev-parse refs/remotes/origin/tb03b-source)" = "$B"
+          git cat-file -e "$A^{commit}"
+          git cat-file -e "$B^{commit}"
+      - name: Revalidate inherited TB02 infrastructure contract
+        run: python tools/validate_animo_tb02.py
+      - name: Validate exact TB03A plus TB03B convergence handoff
+        run: python tools/validate_animo_tb03c_convergence.py
+      - name: Guard production source, central registry and bounded convergence write scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=54a565c2f7f2a29817ae027cc18bee1613ce568d
+          git diff --name-only "$BASE" HEAD > /tmp/tb03c_changed.txt
+          if grep -E '^(src/|source/|Source/|animo/|ANIMO/)' /tmp/tb03c_changed.txt; then
+            echo 'Production source changed in TB03C' >&2
+            exit 1
+          fi
+          if grep -Fx 'integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json' /tmp/tb03c_changed.txt; then
+            echo 'Central testbank registry changed in TB03C' >&2
+            exit 1
+          fi
+          while IFS= read -r path; do
+            case "$path" in
+              integration/animo-testbank/fragments/ANIMO-TB03C_CONVERGENCE_HANDOFF.json|tools/validate_animo_tb03c_convergence.py|.github/workflows/animo-tb03c-fragment-convergence-readiness.yml) ;;
+              *) echo "Out-of-scope TB03C path: $path" >&2; exit 1 ;;
+            esac
+          done < /tmp/tb03c_changed.txt
+          test "$(git rev-parse HEAD:integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json)" = "a5f279cfa334dc63d3e4e8759370279736d874a0"
+      - name: Exact-head identity
+        run: |
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+          echo "ANIMO-TB03C exact head ${GITHUB_SHA}"
+      - name: Create exact-head convergence qualification receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          p = Path('integration/animo-testbank/fragments/ANIMO-TB03C_CONVERGENCE_HANDOFF.json')
+          m = json.loads(p.read_text())
+          receipt = {
+              'schema_version': '1.0',
+              'work_unit': 'ANIMO-TB03C',
+              'exact_head': os.environ['GITHUB_SHA'],
+              'manifest_identity': 'sha256:' + hashlib.sha256(p.read_bytes()).hexdigest(),
+              'source_fragment_heads': {x['work_unit']: x['exact_head'] for x in m['source_fragments']},
+              'qualified_handoff_entry_ids': m['convergence_result']['qualified_handoff_entry_ids'],
+              'status_preserved_nonqualified_entry_ids': m['convergence_result']['status_preserved_nonqualified_entry_ids'],
+              'result': 'PASS',
+              'assurance': 'PROCESS_SELF_REVIEWED_NOT_INDEPENDENT',
+              'decision': 'QUALIFIED_ANIMO_TB03C_FRAGMENT_CONVERGENCE_HANDOFF_READY_FOR_SEPARATE_SERIAL_REGISTRY_CONSOLIDATION',
+              'central_registry_modified': False,
+              'new_scientific_test_claim_created': False,
+              'receipt_is_not_scientific_admission': True,
+              'production_source_modified': False,
+              'whole_model_golden_baseline_created': False
+          }
+          out = Path('/tmp/ANIMO-TB03C_QUALIFICATION_RECEIPT.json')
+          out.write_text(json.dumps(receipt, indent=2) + '\n')
+          print(out.read_text())
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: animo-tb03c-convergence-qualification-receipt
+          path: /tmp/ANIMO-TB03C_QUALIFICATION_RECEIPT.json
+          if-no-files-found: error
