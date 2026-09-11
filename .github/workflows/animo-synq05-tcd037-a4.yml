@@ -1,0 +1,101 @@
+name: ANIMO-SYNQ05 TCD-037-A4 independent synthetic activation
+
+on:
+  push:
+    branches:
+      - work/animo-synq05-tcd037-a4-independent-n2o-emission-activation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact evidence and policy authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in \
+            4da2dd067069944a5e3eeb5f532566a23402bd68 \
+            94afe7d649a8c60758a41996f0059de0acddd2fc \
+            54679c7555a963133dfd686648af334f479c5808 \
+            a3e822f8e97fe1312a7dfa73601a49ae7375163e \
+            842f72300fd03ede0b9024537a7ee6126722a121 \
+            f65a47724e4a4fca7f2d8b8d6de9eeee51867904 \
+            cbd262bdabe92923113b7326f2f42822ce9a971c
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+            git cat-file -e "${sha}^{commit}"
+          done
+
+      - name: Verify exact workflow head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Verify consumed exact-final workflows
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          checks = {
+              34549748497: "4da2dd067069944a5e3eeb5f532566a23402bd68",
+              34549097225: "94afe7d649a8c60758a41996f0059de0acddd2fc",
+              34546470484: "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+          }
+          token = os.environ["GH_TOKEN"]
+          for run_id, sha in checks.items():
+              req = urllib.request.Request(
+                  f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}",
+                  headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"},
+              )
+              with urllib.request.urlopen(req) as response:
+                  data = json.load(response)
+              assert data["head_sha"] == sha, (run_id, data["head_sha"], sha)
+              assert data["status"] == "completed" and data["conclusion"] == "success", (
+                  run_id, data["status"], data["conclusion"]
+              )
+          print("exact-final upstream workflows verified")
+          PY
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install GNU Fortran
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y gfortran
+          gfortran --version
+
+      - name: Parse persisted evidence and compile validator
+        run: |
+          python -m json.tool integration/animo-synthetic/ANIMO-SYNQ05_STATUS.json >/dev/null
+          python -m json.tool integration/animo-synthetic/SYNQ05_TCD037_A4_ORACLE.json >/dev/null
+          python -m py_compile tools/synq05/validate_tcd037_a4_synthetic.py
+
+      - name: Freeze public tool identities in log
+        run: sha256sum tools/synq05/tcd037_a4_source_shaped_probe.f90 tools/synq05/validate_tcd037_a4_synthetic.py
+
+      - name: Build and validate source-shaped target at O0
+        run: |
+          gfortran -std=f2008 -Wall -Wextra -pedantic -O0 tools/synq05/tcd037_a4_source_shaped_probe.f90 -o /tmp/synq05_o0
+          /tmp/synq05_o0 > /tmp/synq05_o0.out
+          python tools/synq05/validate_tcd037_a4_synthetic.py /tmp/synq05_o0.out
+
+      - name: Build and validate source-shaped target at O2
+        run: |
+          gfortran -std=f2008 -Wall -Wextra -pedantic -O2 tools/synq05/tcd037_a4_source_shaped_probe.f90 -o /tmp/synq05_o2
+          /tmp/synq05_o2 > /tmp/synq05_o2.out
+          python tools/synq05/validate_tcd037_a4_synthetic.py /tmp/synq05_o2.out
+
+      - name: Require byte-identical O0 and O2 evidence
+        run: cmp /tmp/synq05_o0.out /tmp/synq05_o2.out
