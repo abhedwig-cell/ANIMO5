@@ -1,0 +1,99 @@
+{
+  "work_unit": "ANIMO-NQ04",
+  "title": "TCD-029 Iflsol=4 Detcoef/Coefdc Cancellation-Safe Numerical Policy Qualification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-nq04-tcd029-iflsol4-coefficient-cancellation",
+  "phase": "AUTHORING_COMPLETE_PENDING_IMMUTABLE_HEAD_CI_AND_GOV05_REVIEW",
+  "state": "QUALIFIED_CANDIDATE_TCD029_IFLSOL4_CANCELLATION_SAFE_BINARY64_POLICY_REVIEW_PENDING",
+  "target": "TCD-029",
+  "qualification_class": "E_NUMERICAL_POLICY",
+  "review_risk_tier": "C_NUMERICAL_POLICY",
+  "aggregate_at_start": "ANIMO-RG05L@214062fe773618ea77c7c74867cc8d9a2a4eef6d",
+  "authorities": {
+    "GOV05": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "NQ02": "40a41089020f78ee1d5181b8afc7bdb511af3193",
+    "B3I01": "383c7a83e84a578969f92113280dc715b7bdddb4"
+  },
+  "frozen_identity": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "qualified_candidate": {
+    "identity": "IFLSOL4_DETCOEF_COEFDC_CANCELLATION_SAFE_BINARY64_EVALUATION",
+    "domain": "finite binary64; D>0; T>0; x=Hv*T/D>-1",
+    "series_region": "abs(x)<=0.25",
+    "series_degree": 24,
+    "moderate_region": "0.25<abs(x)<=1",
+    "large_region": "abs(x)>1",
+    "zero_policy": "analytic limits F=1 G=H=0.5",
+    "outside_domain": "FAIL_CLOSED_NOT_QUALIFIED"
+  },
+  "oracle": {
+    "deterministic_points": 4756,
+    "reference_precision": "Decimal high precision",
+    "verification_bound": "128u relative per dimensionless function",
+    "verification_bound_is_model_tolerance": false,
+    "natural_control_B2_policy": 0.0004358493041206774,
+    "natural_control_B2_legacy_approx": 0.2685923078097403,
+    "negative_control_B2dc_reference_positive": true,
+    "negative_control_B2dc_legacy_negative": true
+  },
+  "qualification_basis": [
+    "algebraic equivalence to revision-53 real-arithmetic coefficient equations",
+    "analytic zero limits",
+    "deterministic high-precision oracle over cancellation, crossover and large-x regions",
+    "naturally activated NQ02 control point",
+    "NQ02 natural trajectory materiality",
+    "negative control showing direct binary64 sign/magnitude failure",
+    "explicit rejection of mass-balance improvement as acceptance criterion"
+  ],
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "admission": {
+    "tcd029_b3_admitted": false,
+    "corrected_legacy_admitted": false,
+    "production_implementation_authorized": false
+  },
+  "review": {
+    "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "required": true,
+    "started": false,
+    "completed": false,
+    "assurance_if_pass": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+    "genuinely_independent": false
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-nq04-tcd029.yml",
+    "validator": "tools/nq04/validate_nq04.py",
+    "oracle": "tools/nq04/tcd029_coefficient_oracle.py",
+    "immutable_authoring_head": null,
+    "authoring_head_ci_run": null,
+    "authoring_head_ci_conclusion": "PENDING",
+    "exact_final_head_ci_required": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "b3_admission_performed": false,
+    "canonical_register_modified": false,
+    "tcd019_solver_or_fallback_qualified": false,
+    "other_iflsol_branches_qualified": false,
+    "Coefdt_qualified": false,
+    "residual_derived_tolerance_allowed": false,
+    "solver_changed": false,
+    "state_or_restart_semantics_changed": false,
+    "b4_opened": false,
+    "production_authorized": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "next": "FREEZE_AUTHORING_HEAD_RUN_CI_THEN_GOV05_TIER_C_ADVERSARIAL_REVIEW; IF_PASS_CLOSE_EXACT_FINAL_AND_ONLY_THEN_OPEN_SEPARATE_TCD029_B3_ADMISSION"
+}

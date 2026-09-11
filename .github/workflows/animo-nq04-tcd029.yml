@@ -1,0 +1,28 @@
+name: ANIMO-NQ04 TCD029 coefficient numerical qualification
+
+on:
+  push:
+    branches:
+      - work/animo-nq04-tcd029-iflsol4-coefficient-cancellation
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-nq04:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history for scope guard
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run deterministic high-precision coefficient oracle
+        run: python tools/nq04/tcd029_coefficient_oracle.py > /tmp/nq04-oracle.json
+      - name: Validate NQ04 qualification, review state and scope
+        run: python tools/nq04/validate_nq04.py

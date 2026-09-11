@@ -1,0 +1,23 @@
+{
+  "work_unit": "ANIMO-NQ04",
+  "artifact": "AUTHORING_FREEZE",
+  "base_head": "ANIMO-B3D35@9ca23f41dc3c28af686b1bc0bff8e7d66416d367",
+  "first_persisted_checkpoint": "e5028ba09c192b425a62be9725d4d59052255eff",
+  "substantive_scope": [
+    "docs/numerics/TCD029_IFLSOL4_COEFFICIENT_QUALIFICATION.md",
+    "integration/animo-science/NQ04_TCD029_POLICY.json",
+    "integration/animo-science/ANIMO-NQ04_STATUS.json",
+    "tools/nq04/tcd029_coefficient_oracle.py",
+    "tools/nq04/validate_nq04.py",
+    ".github/workflows/animo-nq04-tcd029.yml"
+  ],
+  "allowed_post_freeze_changes": [
+    "integration/animo-science/NQ04_GOV05_ADVERSARIAL_REVIEW.json",
+    "integration/animo-science/ANIMO-NQ04_STATUS.json"
+  ],
+  "production_source_changes_allowed": false,
+  "b3_admission_allowed": false,
+  "canonical_register_change_allowed": false,
+  "review_must_bind_exact_authoring_head": true,
+  "exact_final_head_ci_required": true
+}

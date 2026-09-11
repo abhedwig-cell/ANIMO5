@@ -1,0 +1,106 @@
+{
+  "work_unit": "ANIMO-NQ04",
+  "target": "TCD-029",
+  "qualification_class": "E_NUMERICAL_POLICY",
+  "risk_tier": "C",
+  "canonical_identity": "IFLSOL4_DETCOEF_COEFDC_CANCELLATION_SAFE_BINARY64_EVALUATION",
+  "frozen_identity": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "Transsub_for_sha256": "c548e5d372ffbc7f4d4e4d8d86609cf1f34cf70ea513d345e3c7fada5cf6b552",
+    "Transorp_for_sha256": "65ab0f70ed7cc4f1c0012ca95bcdddeb5c26dd21b09df0ec61b7b269e51cd0ad"
+  },
+  "authorities": {
+    "aggregate_at_start": "ANIMO-RG05L@214062fe773618ea77c7c74867cc8d9a2a4eef6d",
+    "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "nq02": "ANIMO-NQ02@40a41089020f78ee1d5181b8afc7bdb511af3193",
+    "canonical_allocation": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4"
+  },
+  "equations": {
+    "D_detcoef": "Mto + Rhbd*Avsocf",
+    "D_coefdc": "Mto + Rhbd*Avadco",
+    "x": "Hv*T/D",
+    "q": "Rhbd*Avadcodc",
+    "F": "log1p(x)/x",
+    "G": "((1+x)*log1p(x)-x)/x^2",
+    "H": "(x-log1p(x))/x^2",
+    "A2": "T/D*F",
+    "B2": "T/D*G",
+    "A2dc": "-T/D^2*q/(1+x)",
+    "B2dc": "-T/D^2*H*q"
+  },
+  "qualified_domain": {
+    "input_precision": "binary64",
+    "finite_inputs": true,
+    "D_gt_0": true,
+    "T_gt_0": true,
+    "x_gt_minus_1": true,
+    "x_eq_0": "ANALYTIC_LIMIT",
+    "outside_domain": "FAIL_CLOSED_NOT_QUALIFIED"
+  },
+  "evaluation_policy": {
+    "series_region": "abs(x) <= 0.25",
+    "series_degree": 24,
+    "series_method": "HORNER",
+    "series_F": "sum k=0..24 (-1)^k*x^k/(k+1)",
+    "series_G": "sum k=0..24 (-1)^k*x^k/((k+1)*(k+2))",
+    "series_H": "sum k=0..24 (-1)^k*x^k/(k+2)",
+    "moderate_region": "0.25 < abs(x) <= 1",
+    "moderate_method": "log1p_dimensionless_quotients",
+    "large_region": "abs(x) > 1",
+    "large_G": "((1+1/x)*log1p(x)-1)/x",
+    "large_H": "(1-log1p(x)/x)/x",
+    "A2dc": "cancellation_free_rational",
+    "crossover_role": "EVALUATION_METHOD_ONLY_NOT_SCIENTIFIC_THRESHOLD"
+  },
+  "oracle": {
+    "reference": "stdlib Decimal high precision",
+    "deterministic_points": 4756,
+    "unit_roundoff": "2^-53",
+    "relative_verification_bound_u": 128.0,
+    "observed_max_relative_error_u": {
+      "F_lt": 1.73,
+      "G_lt": 19.45,
+      "H_lt": 7.96
+    },
+    "degree24_truncation_bound_at_abs_x_0_25_u": {
+      "F_lt": 0.411,
+      "G_lt": 0.016,
+      "H_lt": 0.396
+    },
+    "verification_bound_role": "EQUATION_EVALUATION_ONLY_NOT_MODEL_ACCEPTANCE_TOLERANCE"
+  },
+  "natural_control": {
+    "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+    "x_approx": -4.358493040215e-10,
+    "B2_high_precision": "0.00043584930412067741147...",
+    "B2_policy_binary64": 0.0004358493041206774,
+    "B2_legacy_direct_approx": 0.2685923078097403,
+    "B2dc_high_precision_approx": 0.47279499321842783,
+    "B2dc_legacy_direct_approx": -290.4145135735744
+  },
+  "evidence_semantics": {
+    "NQ02_reuse": "PINNED_B1_SOURCE_AND_NATURAL_ACTIVATION_EVIDENCE",
+    "uniform_mass_balance_improvement_required": false,
+    "mass_balance_improvement_is_acceptance_criterion": false,
+    "historical_behavior": "UNKNOWN_WITHOUT_B2",
+    "synthetic_oracle_is_B2": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "b3_admission_performed": false,
+    "canonical_register_modified": false,
+    "tcd019_solver_or_fallback_qualified": false,
+    "other_iflsol_branches_qualified": false,
+    "Coefdt_qualified": false,
+    "residual_derived_tolerance_allowed": false,
+    "solver_changed": false,
+    "state_or_restart_semantics_changed": false,
+    "b4_opened": false,
+    "production_authorized": false
+  }
+}
