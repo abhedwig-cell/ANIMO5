@@ -1,14 +1,21 @@
 {
   "work_unit": "ANIMO-B3D22",
   "target": "TCD-031",
-  "title": "TCD-031 GOV04 Tier-C Formal Disposition",
+  "title": "TCD-031 Tier-C Formal Disposition",
   "branch": "work/animo-b3d22-tcd031-gov04-tier-c-disposition",
   "exact_starting_head": "7648e7b2813f3abc5904e4c34e36072d81d9844f",
   "starting_authority": "ANIMO-B3B10R2@7648e7b2813f3abc5904e4c34e36072d81d9844f",
   "starting_review_run": "34545898592:success",
   "current_aggregate_at_open": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
-  "governance_at_open": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
-  "gov05_at_open": "UNQUALIFIED_CONCURRENT_WORKUNIT_NOT_AUTHORITY",
+  "governance_live_recheck": {
+    "GOV05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "GOV05_exact_head_CI": "34546470484:success",
+    "GOV05_qualified_before_B3D22_authoring": true,
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "transition_effect": "GOV05_IS_CURRENT; COMPLETED_B3B10R2_GOV04_REVIEW_REMAINS_VALID_AND_IS_NOT_RELABELED"
+  },
+  "correction_note": "The first checkpoint text recorded GOV05 as unqualified from a stale pre-qualification observation. Live recheck showed GOV05 had already qualified before B3D22 authoring. This file corrects that governance fact without rewriting the original checkpoint commit in history.",
+  "first_checkpoint_commit_retained": "8e972a18341b538cfc9ae1c95eb51f461d4748c0",
   "purpose": "PERSIST_EARLY_BEFORE_TIER_C_FORMAL_DISPOSITION_QUALIFICATION",
   "b3_admission_performed": false,
   "production_source_modified": false
