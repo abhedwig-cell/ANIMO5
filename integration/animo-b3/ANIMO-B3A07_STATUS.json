@@ -1,0 +1,85 @@
+{
+  "work_unit": "ANIMO-B3A07",
+  "title": "TCD-037-A3 N2O Denitrification Formation Observer Tier-A Readiness",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3a07-tcd037-a3-tier-a-readiness",
+  "base": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
+  "target_parent_tcd": "TCD-037",
+  "target_child_atom": "TCD-037-A3",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "risk_tier": "A",
+  "state": "PERSISTED_VALIDATION_PENDING",
+  "decision": "PENDING_EXACT_HEAD_VALIDATION",
+  "authorities": {
+    "aggregate": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "runtime_semantics": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "synthetic_activation": "ANIMO-SYNQ04@31d4ac628edf43501b403f0844dd472bcc12644c",
+    "synthetic_activation_exact_final_ci_run": 34548605202,
+    "gov05_current": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "gov04_tier_a_predicate": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "route": {
+    "b2_available": false,
+    "historical_behavior": "UNKNOWN",
+    "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "gov03_g6u_eligible": true
+  },
+  "readiness": {
+    "atomicity": "PASS",
+    "source_and_accounting_ownership": "PASS",
+    "exact_accounting_identity": "PASS",
+    "expected_difference_contract": "PASS",
+    "physical_state_non_interference": "PASS",
+    "process_flux_non_interference": "PASS",
+    "qualified_synthetic_activation_alternative": "PASS",
+    "historical_uncertainty_explicit": "PASS",
+    "tier_a_waiver_predicate": "PASS_AT_READINESS_PENDING_EXACT_HEAD_CI"
+  },
+  "tier_a_waiver": {
+    "predicate_pass_at_readiness": true,
+    "final_waiver_granted": false,
+    "reason": "B3A07 is readiness-only. GOV05 retains the full GOV04 Tier-A waiver without weakening; final applicability must be rechecked in a later atomic admission workunit."
+  },
+  "identifier_collision_check": {
+    "ANIMO-B3D25": "FREE_AT_B3A07_START_CHECK_NOT_RESERVED_RECHECK_BEFORE_ADMISSION_BRANCH_CREATION"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-b3a07-tcd037-a3.yml",
+    "validator": "tools/validate_b3a07_tcd037_a3.py",
+    "exact_final_head_must_pass": true,
+    "run_id": null,
+    "job_id": null,
+    "tested_head": null,
+    "conclusion": "PENDING",
+    "scope_guard": "PENDING",
+    "closeout_note": null
+  },
+  "scope_guards": {
+    "scientific_admission": false,
+    "tier_a_final_waiver": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "routing_register_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "parent_tcd_admitted": false,
+    "sibling_admission": false,
+    "tcd032_036_composition": false,
+    "b4_opened": false,
+    "aggregate_updated": false,
+    "historical_fidelity_claimed": false,
+    "synthetic_evidence_promoted_to_b2": false,
+    "testcase_translation_performed": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "next_if_exact_head_ci_green": "LIVE_RECHECK_THEN_ANIMO-B3D25_TCD037_A3_TIER_A_ATOMIC_ADMISSION_DECISION"
+}
