@@ -18,6 +18,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Fetch exact qualified GOV05 authority
+        run: git fetch origin work/animo-gov05-single-agent-adversarial-review
+
+      - name: Assert exact GOV05 authority object available
+        run: git cat-file -e f65a47724e4a4fca7f2d8b8d6de9eeee51867904^{commit}
+
+      - name: Assert final B3D22 authority is ancestor
+        run: git merge-base --is-ancestor b68ebd807fbac2f8e8305417329e390fdab758d2 HEAD
+
       - name: Validate GOV05 Tier-C atomic admission
         run: python tools/validate_b3d23_tcd031_admission.py
 
@@ -28,4 +37,4 @@ jobs:
         run: |
           echo "B3D23 uses GOV05 single-agent adversarial review."
           echo "This same-agent review is PROCESS_SELF_REVIEWED_NOT_INDEPENDENT and must not be described as genuinely independent."
-          echo "Historical B3B10R2 remains genuinely independent review evidence."
+          echo "Historical B3B10R2 remains genuinely independent GOV04 review evidence."
