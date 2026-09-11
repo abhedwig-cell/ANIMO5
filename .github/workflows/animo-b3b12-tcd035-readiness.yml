@@ -1,0 +1,25 @@
+name: ANIMO-B3B12 TCD035 GHG phase restart readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3b12-tcd035-ghg-phase-restart-readiness
+
+jobs:
+  readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test dependency
+        run: python -m pip install pytest
+      - name: Re-run inherited STATEQ06 reconstruction witnesses
+        run: |
+          python tools/stateq06/tcd035_phase_reconstruction_oracle.py
+          python -m pytest -q tests/stateq06/test_tcd035_phase_reconstruction.py
+      - name: Validate B3B12 readiness contract and scope
+        run: python tools/validate_b3b12_tcd035.py
