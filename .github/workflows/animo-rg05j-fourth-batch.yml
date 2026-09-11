@@ -1,0 +1,76 @@
+name: ANIMO-RG05J fourth batched B3 admission integration
+
+on:
+  push:
+    branches:
+      - work/animo-rg05j-fourth-batched-admission-integration
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact aggregate admission and governance authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in \
+            94afe7d649a8c60758a41996f0059de0acddd2fc \
+            4da2dd067069944a5e3eeb5f532566a23402bd68 \
+            49e5ef141850296df17317da181a561def239117 \
+            cb881d0cd3e3c50455614a93b562b32354f0f1a8 \
+            54679c7555a963133dfd686648af334f479c5808 \
+            f65a47724e4a4fca7f2d8b8d6de9eeee51867904 \
+            1bbe4c211197590f346803106e45dca5faae79fc \
+            cbd262bdabe92923113b7326f2f42822ce9a971c
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+            git cat-file -e "${sha}^{commit}"
+          done
+
+      - name: Verify exact workflow head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Verify consumed exact-final workflow identities
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          checks = {
+              34549097225: "94afe7d649a8c60758a41996f0059de0acddd2fc",
+              34549748497: "4da2dd067069944a5e3eeb5f532566a23402bd68",
+              34554010568: "49e5ef141850296df17317da181a561def239117",
+              34560197591: "cb881d0cd3e3c50455614a93b562b32354f0f1a8",
+          }
+          token = os.environ["GH_TOKEN"]
+          for run_id, expected_sha in checks.items():
+              req = urllib.request.Request(
+                  f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}",
+                  headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"},
+              )
+              with urllib.request.urlopen(req) as r:
+                  data = json.load(r)
+              assert data["head_sha"] == expected_sha, (run_id, data["head_sha"], expected_sha)
+              assert data["status"] == "completed" and data["conclusion"] == "success", (run_id, data["status"], data["conclusion"])
+          print("exact-final upstream workflows verified")
+          PY
+
+      - name: Parse persisted aggregate records
+        run: |
+          python -m json.tool integration/animo-reg/RG05J_B3_ADMISSION_INVENTORY.json >/dev/null
+          python -m json.tool integration/animo-reg/RG05J_B3_QUEUE_DELTA.json >/dev/null
+          python -m json.tool integration/animo-reg/ANIMO-RG05J_STATUS.json >/dev/null
+          python -m py_compile tools/validate_rg05j_fourth_batch.py
+
+      - name: Validate exact fourth batched admission integration and scope
+        run: python tools/validate_rg05j_fourth_batch.py

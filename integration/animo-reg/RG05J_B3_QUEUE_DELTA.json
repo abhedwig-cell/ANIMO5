@@ -1,0 +1,60 @@
+{
+  "work_unit": "ANIMO-RG05J",
+  "source_aggregate": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
+  "admission_counts": {
+    "pre_delta_scientific_admissions": 14,
+    "new_b3_admissions": 3,
+    "new_atomic_child_admissions": 2,
+    "new_composed_parent_admissions": 1,
+    "post_delta_scientific_admissions": 17
+  },
+  "new_objects": [
+    "TCD-037-A3",
+    "TCD-037-A4",
+    "TCD-037"
+  ],
+  "top_level_delta": {
+    "new_top_level_admitted_tcds": [
+      "TCD-037"
+    ],
+    "new_child_atom_admissions": [
+      "TCD-037-A3",
+      "TCD-037-A4"
+    ],
+    "tcd037_parent_admitted": true,
+    "all_tcd037_children_admitted": true,
+    "parent_admission_source": "ANIMO-B3D27@cb881d0cd3e3c50455614a93b562b32354f0f1a8",
+    "parent_admission_was_automatic_from_child_completion": false
+  },
+  "tcd037_resolution": {
+    "child_authorities": {
+      "TCD-037-A1": "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858",
+      "TCD-037-A2": "ANIMO-B3D24@0f85d7102945c7c4d77bc49885f9ecca688209e3",
+      "TCD-037-A3": "ANIMO-B3D25@4da2dd067069944a5e3eeb5f532566a23402bd68",
+      "TCD-037-A4": "ANIMO-B3D26@49e5ef141850296df17317da181a561def239117"
+    },
+    "parent_authority": "ANIMO-B3D27@cb881d0cd3e3c50455614a93b562b32354f0f1a8",
+    "parent_risk_tier": "D",
+    "parent_review_mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "parent_review_independence_claimed": false,
+    "parent_scientific_scope": "BOUNDED_COMPOSED_GHG_OBSERVER_ACCOUNTING_CONTRACT",
+    "parent_does_not_claim_complete_ghg_conservation": true,
+    "parent_does_not_claim_historical_b2": true,
+    "parent_does_not_authorize_production": true
+  },
+  "canonical_queue_cardinality": {
+    "global_canonical_queue_count_recomputed": false,
+    "canonical_register_or_routing_files_modified_here": false,
+    "current_routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "observed_canonical_top_level_tail": "TCD-042",
+    "reason": "RG05J integrates exact admitted authorities only and does not fabricate a global queue cardinality while other B3 readiness and admission work remains outside this batch."
+  },
+  "project_gate_delta": {
+    "B3_complete_before": false,
+    "B3_complete_after": false,
+    "B4_open_before": false,
+    "B4_open_after": false,
+    "production_open_before": false,
+    "production_open_after": false
+  }
+}
