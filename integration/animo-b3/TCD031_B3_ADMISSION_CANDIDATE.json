@@ -4,7 +4,8 @@
   "target": "TCD-031",
   "title": "TCD-031 Active Macropore Persistent Solute Restart-State Atomic B3 Admission Candidate",
   "branch": "work/animo-b3d23-tcd031-gov05-tier-c-admission",
-  "exact_starting_head": "744c42119ee8cd21de658ef6d9c0ecf4a3f7d2ca",
+  "historical_branch_start": "744c42119ee8cd21de658ef6d9c0ecf4a3f7d2ca",
+  "effective_formal_disposition_authority": "ANIMO-B3D22@b68ebd807fbac2f8e8305417329e390fdab758d2",
   "qualification_class": "C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL",
   "risk_tier": "C",
   "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
@@ -21,7 +22,7 @@
     "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
     "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
     "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
-    "formal_disposition": "ANIMO-B3D22@744c42119ee8cd21de658ef6d9c0ecf4a3f7d2ca",
+    "formal_disposition": "ANIMO-B3D22@b68ebd807fbac2f8e8305417329e390fdab758d2",
     "readiness": "ANIMO-B3B10@eccba6712f65455161d05fa9cdf6aa142f823dd4",
     "first_fail_closed_review": "ANIMO-B3B10R@36aad892cac546105dfec0fe43aa34a18e23bcad",
     "source_remediation": "ANIMO-B3B10E1@8522752f9941e6fd5b421cf5ac4ef839384d7ce7",
@@ -34,9 +35,16 @@
     "frozen_B0_retention": "ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300"
   },
   "exact_head_ci_prerequisites": {
-    "B3D22": {"head": "744c42119ee8cd21de658ef6d9c0ecf4a3f7d2ca", "run_id": 34546812652, "conclusion": "success"},
+    "B3D22": {"head": "b68ebd807fbac2f8e8305417329e390fdab758d2", "run_id": 34547171960, "conclusion": "success"},
     "GOV05": {"head": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904", "run_id": 34546470484, "conclusion": "success"},
     "B3B10R2": {"head": "7648e7b2813f3abc5904e4c34e36072d81d9844f", "run_id": 34545898592, "conclusion": "success"}
+  },
+  "reconciliation": {
+    "artifact": "integration/animo-b3/ANIMO-B3D23_RECONCILIATION.json",
+    "merge_commit": "6fe7b43bbe209328b086058bfeefb907677aaa9b",
+    "original_checkpoint_rewritten": false,
+    "scientific_scope_changed": false,
+    "new_immutable_authoring_head_required_after_reconciliation": true
   },
   "frozen_identity": {
     "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
