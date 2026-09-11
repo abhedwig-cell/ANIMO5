@@ -1,0 +1,112 @@
+{
+  "workunit": "ANIMO-B3B10R2",
+  "title": "Targeted Independent Rereview of TCD-031 Source Provenance & Restart-State Evidence",
+  "tcd": "TCD-031",
+  "branch": "review/animo-b3b10r2-tcd031-independent-second-line-rereview",
+  "exact_starting_head": "8522752f9941e6fd5b421cf5ac4ef839384d7ce7",
+  "persist_early_checkpoint_commit": "a20325d819c92bc49aebafd720ad045c635fb5f1",
+  "review_status": "COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "review_disposition": "PASS_TARGETED_INDEPENDENT_REREVIEW_TCD031_SOURCE_PROVENANCE_GATES_CLOSED",
+  "scientific_falsification": false,
+  "failure_classification_closed": ["EVIDENCE_INSUFFICIENCY", "PROVENANCE_INSUFFICIENCY"],
+  "gov04_risk_tier": "TIER_C",
+  "independent_tier_c_review_gate": "PASSED",
+  "atomic_correction_identity": "COMPLETE_ACCEPTED_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY",
+  "live_authorities": {
+    "aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "STATEQ03": "ANIMO-STATEQ03@10c50e65d1369d5f3b26736c4b12d3a482379eb5",
+    "STATEQ04": "ANIMO-STATEQ04@ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+    "B3B10": "ANIMO-B3B10@eccba6712f65455161d05fa9cdf6aa142f823dd4",
+    "B3B10R": "ANIMO-B3B10R@36aad892cac546105dfec0fe43aa34a18e23bcad",
+    "B3B10E1": "ANIMO-B3B10E1@8522752f9941e6fd5b421cf5ac4ef839384d7ce7",
+    "MP01": "ANIMO-MP01@7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "MP02": "ANIMO-MP02@6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "MASSQ02": "ANIMO-MASSQ02@56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "frozen_B0_retention": "ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300"
+  },
+  "source_provenance": {
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "archive_identity_independently_replayed": true,
+    "requested_member_hashes_all_match": true,
+    "normalized_probe_slice_hashes_all_match": true,
+    "source_member_count": 63,
+    "source_member_index_sha256": "be4182c7438650f86399f912c57bbad42adf71fc362b694537f2db4d64c816fc",
+    "mechanical_binding_closed": true,
+    "raw_archive_committed": false,
+    "source_redistributed": false,
+    "redistribution_rights_established": false,
+    "source_access_or_licensing_still_blocks_this_rereview": false
+  },
+  "original_failed_gates": {
+    "complete_source_level_ownership": "PASS",
+    "native_mapoinput_loader": "PASS",
+    "native_Output_Init_serialization_omission": "PASS",
+    "native_Animo_Output_Init_call_surface": "PASS",
+    "native_Init_restore_direction_and_lifecycle_timing": "PASS",
+    "native_RsCoMp_pre_promotion_initialization": "PASS_WITH_ANSWER_NO",
+    "native_producer_consumer_roles": "PASS"
+  },
+  "native_RsCoMp_pre_promotion_answer": "NO_WITH_EXACT_PROOF",
+  "ownership_result": "PASS_UNAMBIGUOUS_AT_REQUIRED_TCD031_SCOPE",
+  "persistent_state": {
+    "domains": 2,
+    "p_off_scalars": 8,
+    "p_on_scalars": 12,
+    "phosphorus_condition": "IPO.EQ.1"
+  },
+  "reuse_regression_guards": {
+    "all_reused_evidence_pins_unchanged": true,
+    "frozen_source_identity_unchanged": true,
+    "frozen_testbank_identity_unchanged": true,
+    "claim_scope_unchanged": true,
+    "superseding_or_contradictory_TCD031_evidence_found": false,
+    "full_rereview_required": false
+  },
+  "stateq04_reopen_required": false,
+  "historical_b2": "ABSENT",
+  "historical_revision53_active_macropore_restart_behaviour": "UNKNOWN",
+  "whole_model_active_production_split_equivalence": "NOT_PROVEN",
+  "production_restart_equivalence": "NOT_PROVEN",
+  "migration_readiness": "NOT_PROVEN",
+  "whole_model_checkpoint_validation": "NOT_PROVEN",
+  "admission": {
+    "B3_admission_performed": false,
+    "atomic_B3_admission_may_open_after_exact_final_head_CI_success": true,
+    "admission_branch_created": false,
+    "B3D_number_lookup_deferred_until_final_CI": true
+  },
+  "tcd025_boundary": {
+    "executed_here": false,
+    "composition_here": false,
+    "may_consume_TCD031_as_certified_dependency_after_final_exact_head_CI": true,
+    "allowed_next_scope": "SEPARATE_CLASS_A_LEDGER_READINESS_WORKUNIT"
+  },
+  "ci": {
+    "validator": "tools/validate_b3b10r2_tcd031_rereview.py",
+    "workflow": ".github/workflows/animo-b3b10r2-tcd031-rereview.yml",
+    "exact_final_head_required": true,
+    "run_id_self_embedded": false,
+    "interpretation": "CI validates persisted rereview package consistency, immutable evidence pins and fail-closed scope guards. The independent local frozen-source replay is reviewer evidence and is not replaced by CI because the source archive is intentionally not committed."
+  },
+  "scope_guards": {
+    "production_source_patch": false,
+    "frozen_B0_change": false,
+    "full_source_archive_publication": false,
+    "canonical_STATE_admission": false,
+    "canonical_TCD_register_update": false,
+    "TCD025_composition": false,
+    "B3_admission": false,
+    "B4": false,
+    "RG05_central_regie_update": false,
+    "numerical_tolerance_change": false,
+    "historical_intent_fabrication": false,
+    "original_B3B10R_rewritten": false
+  },
+  "review_document": "docs/b3/ANIMO_B3B10R2_TCD031_TARGETED_INDEPENDENT_REREVIEW.md",
+  "evidence_matrix": "integration/animo-b3/ANIMO-B3B10R2_EVIDENCE_MATRIX.json",
+  "final_head_pin_policy": "Use the exact final branch head whose ANIMO-B3B10R2 workflow concludes success; the SHA is intentionally not self-embedded."
+}
