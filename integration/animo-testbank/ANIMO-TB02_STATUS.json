@@ -1,0 +1,54 @@
+{
+  "work_unit": "ANIMO-TB02",
+  "title": "Shared Testbank Runner, Fragment Manifest Resolver & Qualification Receipts",
+  "branch": "work/animo-tb02-shared-runner-manifest-qualification-receipts",
+  "base": "ANIMO-TB01@15a17bfa2c321d08f3ac89f334986c0ae8429045",
+  "state": "QUALIFICATION_CANDIDATE_PENDING_EXACT_HEAD_CI",
+  "scope": [
+    "shared fragment manifest contract",
+    "deterministic dependency-aware selection contract",
+    "fail-closed duplicate and missing-dependency semantics",
+    "qualification receipt contract",
+    "TB3+ bounded-fragment handoff contract"
+  ],
+  "gov05_adversarial_self_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "questions": {
+      "does_runner_invent_scientific_truth": false,
+      "can_fragment_writer_mutate_central_registry": false,
+      "can_empirical_tolerance_become_scientific_tolerance": false,
+      "can_receipt_be_misread_as_scientific_admission": false,
+      "can_missing_dependency_silently_pass": false,
+      "can_duplicate_test_id_silently_override": false,
+      "does_workunit_create_whole_model_golden_baseline": false,
+      "does_workunit_modify_production_source": false
+    },
+    "adversarial_result": "PASS_BOUNDED_INFRASTRUCTURE_SCOPE"
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "whole_model_golden_baseline_created": false,
+    "historical_authority_rewritten": false
+  },
+  "deliverables": [
+    "integration/animo-testbank/ANIMO-TB02_RUNNER_CONTRACT.json",
+    "integration/animo-testbank/ANIMO-TB02_STATUS.json",
+    "tools/validate_animo_tb02.py",
+    ".github/workflows/animo-tb02-testbank-infrastructure.yml"
+  ],
+  "qualification": {
+    "validator": "tools/validate_animo_tb02.py",
+    "workflow": ".github/workflows/animo-tb02-testbank-infrastructure.yml",
+    "exact_final_head_ci_required": true,
+    "qualified_state_after_success": "QUALIFIED_ANIMO_TB02_SHARED_TESTBANK_INFRASTRUCTURE_READY_FOR_BOUNDED_TB3_FRAGMENT_ADOPTION"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  }
+}
