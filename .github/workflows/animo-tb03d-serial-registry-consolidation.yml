@@ -1,0 +1,68 @@
+name: ANIMO-TB03D serial registry consolidation
+
+on:
+  push:
+    branches:
+      - work/animo-tb03d-qualified-tb3-fragment-serial-registry-consolidation
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch pinned sibling authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin \
+            15a17bfa2c321d08f3ac89f334986c0ae8429045 \
+            54a565c2f7f2a29817ae027cc18bee1613ce568d \
+            a37f07b15ae50d6fbb526cef3215fb58702e85aa \
+            48a3036501e9e871608ab920f46dde5570ebf369 \
+            a989541c265213bde0bae3f0e2db28fcaf9c0579 \
+            ad9683716e1a41a6f6b3d32ff1012bfa215c27db \
+            82213ad143bd5f0fa5c500303a8a4f1d35dd3f0c \
+            e3d537935104b4a7253a5287f8fbf7df7e7459e2
+
+      - name: Materialize or verify the bounded central-registry write
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/consolidate_animo_tb03d_registry.py --write
+
+      - name: Validate TB01 architecture and TB03D materialization
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/validate_animo_tb01_architecture.py
+          python tools/validate_animo_tb03d.py --phase materialization
+
+      - name: Validate final TB03D closeout when present
+        if: ${{ hashFiles('integration/animo-testbank/ANIMO-TB03D_STATUS.json') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/validate_animo_tb03d.py --phase final
+
+      - name: Commit registry materialization when required
+        shell: bash
+        run: |
+          set -euo pipefail
+          registry=integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json
+          if git diff --quiet -- "$registry"; then
+            echo "Central registry already exact; no materialization commit required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$registry"
+          git commit -m "registry(ANIMO-TB03D): consolidate eight qualified TB3 fragment entries"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
