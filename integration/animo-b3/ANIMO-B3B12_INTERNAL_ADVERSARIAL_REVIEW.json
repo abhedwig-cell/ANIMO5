@@ -1,0 +1,42 @@
+{
+  "work_unit": "ANIMO-B3B12",
+  "target": "TCD-035",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "reviewed_head": "e4e8d8d1403459ef13fa2d6c42b0564454f388bf",
+  "reviewed_head_ci_run": 34643859672,
+  "reviewed_head_ci_job": 103409817869,
+  "reviewed_head_ci_conclusion": "success",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "risk_tier_reviewed": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "adversarial_findings": [
+    {"question": "Is Class B justified, or is a missing physical phase still being hidden?", "finding": "Class B is justified for the bounded soil-layer mechanism because STATEQ06 identifies an existing total-system owner and deterministic aqueous reconstruction from accepted coordinates. No physical storage, phase, constitutive law or transfer law is added or redefined."},
+    {"question": "Does reclassification reduce the risk gate?", "finding": "No. Restart reconstruction affects future trajectories, so the strictest applicable review risk remains Tier C."},
+    {"question": "Is Co being admitted as a second checkpoint owner?", "finding": "No. Co remains a derived phase view; the candidate preserves Cs/RsCs as the accepted owner and requires checkpoint hydrology plus thermodynamic coordinates."},
+    {"question": "Does the candidate change the source Bunsen/Henry-law model?", "finding": "No. The frozen revision-53 relation and gas-specific coefficients are preserved. The correction concerns which accepted temperature coordinate is used at restart."},
+    {"question": "Are equality controls preserved instead of forcing a difference in all cases?", "finding": "Yes. Equal Bunsen ratio, zero gas-filled pore volume and zero gas state remain exact continuity controls."},
+    {"question": "Is layer0 silently included?", "finding": "No. TCD-036 ponding/layer0 restart continuity remains explicitly outside scope."},
+    {"question": "Does the source-shaped oracle prove historical prevalence or full-model split-run equivalence?", "finding": "No. It is B1 causality evidence only; historical behavior remains UNKNOWN_WITHOUT_B2 and whole-model split-run equivalence is unclaimed."},
+    {"question": "Does the candidate alter hidden GHG timestep context or other GHG TCDs?", "finding": "No. BUILDQ03 context and TCD-032/033/034 are separate and unchanged."},
+    {"question": "Is B3 admission being smuggled into readiness?", "finding": "No. B3B12 defines a bounded candidate and hands off to a separate Tier-C admission decision. Production, canonical STATE, B4 and migration remain closed."},
+    {"question": "Is this review genuinely independent?", "finding": "No. It is explicitly GOV05 same-agent adversarial review with PROCESS_SELF_REVIEWED_NOT_INDEPENDENT assurance."}
+  ],
+  "rejected_overclaims": [
+    "CLASS_C_STILL_REQUIRED_FOR_BOUNDED_SOIL_LAYER_MECHANISM",
+    "REVIEW_RISK_REDUCED_BELOW_TIER_C",
+    "CO_SECOND_CHECKPOINT_OWNER",
+    "NEW_BUNSEN_MODEL",
+    "ALL_RESTARTS_DIVERGE",
+    "TCD036_LAYER0_INCLUDED",
+    "FULL_MODEL_SPLIT_RUN_EQUIVALENCE",
+    "HISTORICAL_BEHAVIOR_ESTABLISHED",
+    "B1_IS_B2",
+    "OTHER_GHG_TCDS_RESOLVED",
+    "B3_ADMISSION_PERFORMED",
+    "PRODUCTION_AUTHORIZED",
+    "GENUINELY_INDEPENDENT_REVIEW"
+  ],
+  "outcome": "SELF_REVIEW_PASS_TCD035_BOUNDED_CLASS_B_READINESS_TIER_C_RISK_PRESERVED"
+}
