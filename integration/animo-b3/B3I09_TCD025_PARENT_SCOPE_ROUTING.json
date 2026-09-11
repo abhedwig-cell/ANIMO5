@@ -1,0 +1,17 @@
+{
+  "work_unit":"ANIMO-B3I09",
+  "parent_tcd":"TCD-025",
+  "kind":"PARENT_SCOPE_GOVERNANCE_AND_ROUTING_ONLY_NO_ADMISSION",
+  "base_authority":"ANIMO-B3D31@0bec1968adbf77fd04c6f46819d704b86482d8b2",
+  "aggregate_authority":"ANIMO-RG05K@e5ccad78d7c85aaf2c68d844c5a496edf6d73db5",
+  "prior_routing_authority":"ANIMO-B3I08@f4a3056087e5f7bac41b243be1f404739cde52b0",
+  "readiness_authority":"ANIMO-B3A10@872c78b6c020086280e31e1d9a7408e8b5a1afc7",
+  "control_volume_authority":"ANIMO-MASSQ03@68a8c202bd01bf55b31b7c944884fb2f78a6a8e8",
+  "exact_final_children":{"TCD-025-A1":"ANIMO-B3D28@ce602528d075fc962b0b78759ed0082d1ec78a51","TCD-025-A2":"ANIMO-B3D29@97fd3274acd47bac74939d9dbd55b908043d1521","TCD-025-A3":"ANIMO-B3D30@5da4e4f38ca94630ff857deb66e86f974425f30c","TCD-025-A4":"ANIMO-B3D31@0bec1968adbf77fd04c6f46819d704b86482d8b2"},
+  "supported_parent_scope":{"public_families":["water","DOM","N","P"],"boundary_predicate":"for every active D: (I intersection S_D is empty) OR (S_D subset_of I)","partial_saturated_reservoir_cut_supported":false,"scope_widening_allowed":false,"whole_profile_required":false},
+  "A5_disposition":{"id":"TCD-025-A5","prior_state":"BLOCKED_NOT_SOURCE_CLOSED","state":"PERMANENTLY_EXCLUDED_FROM_SUPPORTED_PARENT_SCOPE_FOR_FROZEN_REVISION53","scientifically_source_closed":false,"b3_admitted":false,"reason":"revision53 owns domain-level mixed saturated dissolved-species state and no independent internal species boundary transfer for arbitrary partial cuts","residual_derived_completion_allowed":false,"future_reopening":"ONLY_BY_SEPARATE_MODEL_EVOLUTION_WORKUNIT_WITH_EXPLICIT_SCIENTIFICALLY_OWNED_PARTIAL_RESERVOIR_OBSERVER_OR_STATE_CONTRACT"},
+  "parent":{"admitted":false,"automatic_admission_from_A1_A4_forbidden":true,"A5_disposition_complete_for_restricted_parent_scope":true,"ready_for_separate_restricted_parent_composition_decision":true,"composition_must_preserve_A1_A4_exact_scopes":true},
+  "canonical_register":{"new_top_level_tcd_reserved":false,"canonical_register_modified":false,"tail_remains":"TCD-042"},
+  "production_authorized":false,
+  "b4_opened":false
+}
