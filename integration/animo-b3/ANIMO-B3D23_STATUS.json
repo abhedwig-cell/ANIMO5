@@ -3,7 +3,7 @@
   "title": "TCD-031 GOV05 Tier-C Atomic B3 Admission Decision",
   "branch": "work/animo-b3d23-tcd031-gov05-tier-c-admission",
   "target": "TCD-031",
-  "phase": "RECONCILED_AUTHORING_PACKAGE_PENDING_NEW_IMMUTABLE_HEAD_AND_GOV05_INTERNAL_ADVERSARIAL_REVIEW",
+  "phase": "RECONCILED_AUTHORING_PACKAGE_COMPLETE_PENDING_GOV05_INTERNAL_ADVERSARIAL_REVIEW",
   "state": "NOT_YET_ADMITTED",
   "candidate_decision": "ADMIT_TCD031_ATOMIC_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
   "target_state_after_review_and_exact_final_head_green": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
@@ -26,12 +26,12 @@
     "historical_concurrent_authoring_preserved": true,
     "old_reviewed_authoring_head": "048855e7d0bbcb21b79b906b8c11ab09be98870a",
     "old_review_artifact_commit": "27c1d5320fe4765eacbe18666ad73ac74ef82453",
-    "old_review_superseded_for_final_admission": true,
-    "reason": "The effective upstream B3D22 authority changed after the original B3D23 authoring freeze. Final admission therefore requires a new immutable authoring head and a new GOV05 adversarial review."
+    "old_review_superseded_for_final_admission": true
   },
   "review_boundary": {
-    "complete_reconciled_authoring_package_persisted": false,
+    "complete_reconciled_authoring_package_persisted": true,
     "immutable_authoring_head": null,
+    "immutable_authoring_head_policy": "THE_EXACT_COMMIT_CREATED_BY_THIS_AUTHORING_COMPLETE_STATUS_UPDATE_IS_THE_REVIEW_HEAD;_SHA_NOT_SELF_EMBEDDED",
     "review_started": false,
     "review_completed": false,
     "review_outcome": null,
