@@ -1,0 +1,62 @@
+{
+  "work_unit": "ANIMO-B3D28",
+  "target_parent_tcd": "TCD-025",
+  "target_child_atom": "TCD-025-A1",
+  "title": "Restricted Water Public/Main Macropore Ledger Atomic B3 Admission",
+  "base_authority": "ANIMO-B3I08@f4a3056087e5f7bac41b243be1f404739cde52b0",
+  "aggregate_at_start": "ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
+  "readiness_authority": "ANIMO-B3A10@872c78b6c020086280e31e1d9a7408e8b5a1afc7",
+  "control_volume_authority": "ANIMO-MASSQ03@68a8c202bd01bf55b31b7c944884fb2f78a6a8e8",
+  "governance": {
+    "ANIMO-GOV05": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "ANIMO-GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "ANIMO-GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "ANIMO-B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "b3_qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "review_risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
+  "atomicity": "BOUNDED_CHILD_ATOM",
+  "formal_disposition_if_review_passes": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "admission_route": "SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_UNDER_GOV05",
+  "scope": {
+    "public_family": "water",
+    "selected_interval": "I=[max(1,BALNMI),BALNMA]",
+    "inherited_predicate": "for every active D: (I intersection S_D is empty) OR (S_D subset_of I)",
+    "scope_widening_allowed": false,
+    "partial_saturated_reservoir_cut_admitted": false
+  },
+  "source_owned_terms": {
+    "begin_storage": "sum(Ln in I) SrWaMpCpOld(Ln)",
+    "end_storage": "sum(Ln in I) sum(active D) SrWaMpCp(D,Ln)",
+    "vertical_boundary": "signed source-owned FlMpVt crossing I boundary with native orientation preserved",
+    "direct_external_drain": "selected-layer sum of FlMpOuDrMp",
+    "soil_routed_drain": "FlMpOuDrSo internal/routed; no second external count",
+    "matrix_macropore_exchange": "internal to combined observer; no external reclassification"
+  },
+  "expected_difference": {
+    "changed_states": [],
+    "changed_process_fluxes": [],
+    "changed_ledgers_or_reports": ["bounded public/main water balance observer for TCD-025-A1"],
+    "unchanged_surfaces": ["physical water state", "macropore hydrology", "matrix hydrology", "process flux trajectories", "restart state", "solver", "timestep policy", "numerical tolerance"]
+  },
+  "evidence_strength": {
+    "source_theory": "PRESENT",
+    "causal_water_kernel": "B1_CAUSALLY_EXERCISED_NOT_B2",
+    "exact_rational_observer_oracles": "B1_STYLE_NOT_B2",
+    "historical_active_macropore_B2": "UNAVAILABLE",
+    "natural_active_macropore_case_in_supplied_testbank": false
+  },
+  "forbidden_inferences": {
+    "residual_derived_flux": false,
+    "absolute_value_boundary_reorientation": false,
+    "double_count_FlMpOuDrSo": false,
+    "sibling_admission": false,
+    "parent_admission": false,
+    "production_authorization": false,
+    "historical_fidelity": false
+  },
+  "candidate_admitted": true,
+  "candidate_decision": "ADMIT_TCD025_A1_RESTRICTED_WATER_LEDGER_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
+  "review_required_before_final_authority": true
+}

@@ -1,0 +1,58 @@
+name: ANIMO-B3D28 TCD025-A1 water admission
+
+on:
+  push:
+    branches:
+      - work/animo-b3d28-tcd025-a1-water-gov05-tier-c-admission
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in \
+            f4a3056087e5f7bac41b243be1f404739cde52b0 \
+            624bbad35add93de29ac89649155d9fa086a73af \
+            872c78b6c020086280e31e1d9a7408e8b5a1afc7 \
+            68a8c202bd01bf55b31b7c944884fb2f78a6a8e8 \
+            f65a47724e4a4fca7f2d8b8d6de9eeee51867904 \
+            1bbe4c211197590f346803106e45dca5faae79fc \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            846e0f4d02a38b9e02cc1419b1ca87e63aaedb54
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+            git cat-file -e "${sha}^{commit}"
+          done
+      - name: Verify exact workflow head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify consumed exact-final workflows
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request
+          checks={34572242797:"f4a3056087e5f7bac41b243be1f404739cde52b0",34568286088:"624bbad35add93de29ac89649155d9fa086a73af",34571906586:"872c78b6c020086280e31e1d9a7408e8b5a1afc7",34570642773:"68a8c202bd01bf55b31b7c944884fb2f78a6a8e8",34546470484:"f65a47724e4a4fca7f2d8b8d6de9eeee51867904"}
+          for run,sha in checks.items():
+            req=urllib.request.Request(f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run}",headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}","Accept":"application/vnd.github+json"})
+            with urllib.request.urlopen(req) as f: d=json.load(f)
+            assert d["head_sha"]==sha and d["status"]=="completed" and d["conclusion"]=="success",(run,d.get("head_sha"),d.get("status"),d.get("conclusion"))
+          print("exact-final authorities verified")
+          PY
+      - name: Parse admission records
+        run: |
+          python -m json.tool integration/animo-b3/B3D28_TCD025_A1_ADMISSION_CONTRACT.json >/dev/null
+          python -m json.tool integration/animo-b3/B3D28_TCD025_A1_ORACLES.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3D28_STATUS.json >/dev/null
+          python -m py_compile tools/validate_b3d28_tcd025_a1.py
+      - name: Validate admission and exact scope
+        run: python tools/validate_b3d28_tcd025_a1.py

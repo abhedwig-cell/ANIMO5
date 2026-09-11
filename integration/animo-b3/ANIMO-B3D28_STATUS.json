@@ -1,0 +1,60 @@
+{
+  "work_unit": "ANIMO-B3D28",
+  "title": "TCD-025-A1 Restricted Water Main-Ledger Atomic B3 Admission Decision",
+  "branch": "work/animo-b3d28-tcd025-a1-water-gov05-tier-c-admission",
+  "target_parent_tcd": "TCD-025",
+  "target_child_atom": "TCD-025-A1",
+  "phase": "AUTHORING_FROZEN_PENDING_GOV05_TIER_C_ADVERSARIAL_REVIEW",
+  "state": "NOT_YET_ADMITTED",
+  "candidate_decision": "ADMIT_TCD025_A1_RESTRICTED_WATER_LEDGER_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
+  "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "b3_qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "review_risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
+  "base_authority": "ANIMO-B3I08@f4a3056087e5f7bac41b243be1f404739cde52b0",
+  "aggregate_at_start": "ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
+  "readiness_authority": "ANIMO-B3A10@872c78b6c020086280e31e1d9a7408e8b5a1afc7",
+  "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "admission_effect_if_review_passes": {
+    "child_atom_admitted": true,
+    "siblings_admitted": [],
+    "parent_tcd_admitted": false,
+    "A5_blocker_disposed": false,
+    "production_authorized": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_top_level_tcd_register_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "sibling_admitted": false,
+    "parent_tcd_admitted": false,
+    "A5_disposed": false,
+    "b4_opened": false,
+    "production_migration_authorized": false,
+    "central_regie_updated": false,
+    "historical_fidelity_claimed": false,
+    "synthetic_evidence_promoted_to_b2": false
+  },
+  "review": {
+    "started": false,
+    "completed": false,
+    "reviewed_head": null,
+    "genuinely_independent": false,
+    "artifact": "integration/animo-b3/ANIMO-B3D28_INTERNAL_ADVERSARIAL_REVIEW.json"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-b3d28-tcd025-a1.yml",
+    "validator": "tools/validate_b3d28_tcd025_a1.py",
+    "exact_final_head_ci_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  }
+}

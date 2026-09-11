@@ -1,0 +1,18 @@
+{
+  "work_unit": "ANIMO-B3D28",
+  "purpose": "IMMUTABLE_TIER_C_ADMISSION_AUTHORING_BOUNDARY_FOR_GOV05_ADVERSARIAL_REVIEW",
+  "base_head": "f4a3056087e5f7bac41b243be1f404739cde52b0",
+  "authoring_complete": true,
+  "review_must_pin_exact_commit_containing_this_marker": true,
+  "exact_freeze_commit_sha": "RECORDED_BY_REVIEW_ARTIFACT_AFTER_COMMIT_CREATION",
+  "substantive_files": [
+    "docs/b3d28/WORK_UNIT_CONTRACT.md",
+    "docs/b3d28/TCD025_A1_WATER_ADMISSION.md",
+    "integration/animo-b3/B3D28_TCD025_A1_ADMISSION_CONTRACT.json",
+    "integration/animo-b3/B3D28_TCD025_A1_ORACLES.json",
+    "integration/animo-b3/ANIMO-B3D28_STATUS.json",
+    "tools/validate_b3d28_tcd025_a1.py",
+    ".github/workflows/animo-b3d28-tcd025-a1.yml"
+  ],
+  "rule": "substantive changes after this checkpoint reset the GOV05 review"
+}

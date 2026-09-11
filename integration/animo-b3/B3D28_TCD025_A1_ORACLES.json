@@ -1,0 +1,16 @@
+{
+  "work_unit": "ANIMO-B3D28",
+  "target_child_atom": "TCD-025-A1",
+  "evidence_class": "EXACT_RATIONAL_B1_STYLE_NOT_B2",
+  "identity_form": "old_storage + boundary_in + other_owned_inputs = new_storage + boundary_out + direct_external_drain + other_owned_outputs",
+  "cases": [
+    {"id":"W01","name":"storage_to_direct_drain","old_storage":10,"boundary_in":0,"boundary_out":0,"direct_drain":3,"new_storage":7,"expect_closed":true},
+    {"id":"W02","name":"selected_interval_boundary_transfer","old_storage":5,"boundary_in":4,"boundary_out":1,"direct_drain":0,"new_storage":8,"expect_closed":true},
+    {"id":"W03","name":"boundary_plus_direct_drain","old_storage":12,"boundary_in":3,"boundary_out":2,"direct_drain":4,"new_storage":9,"expect_closed":true},
+    {"id":"W04","name":"soil_routed_drain_not_second_external_loss","FlMpOuDrSo":6,"second_external_loss":0,"expect_zero_second_count":true},
+    {"id":"W05","name":"matrix_macropore_exchange_internal","matrix_side":-9,"macropore_side":9,"expect_sum":0},
+    {"id":"W06","name":"partial_reservoir_cut_scope_guard","relation":"partial_cut","expect_in_child_scope":false},
+    {"id":"W07","name":"full_reservoir_enclosure_scope_guard","relation":"contains_all_S_D","expect_in_child_scope":true},
+    {"id":"W08","name":"disjoint_reservoir_scope_guard","relation":"disjoint_from_S_D","expect_in_child_scope":true}
+  ]
+}
