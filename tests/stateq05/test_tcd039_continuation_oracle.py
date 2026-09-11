@@ -12,8 +12,8 @@ from tools.stateq05.tcd039_continuation_oracle import (
 
 class TCD039ContinuationOracleTests(unittest.TestCase):
     def test_n_deficit_depends_on_potential_owner(self):
-        self.assertEqual(demand_deficit(0.0125, 0.0078125), 0.0046875)
-        self.assertNotEqual(demand_deficit(0.0, 0.0078125), 0.0046875)
+        self.assertEqual(demand_deficit(0.015625, 0.0078125), 0.0078125)
+        self.assertNotEqual(demand_deficit(0.0, 0.0078125), 0.0078125)
 
     def test_p_deficit_depends_on_potential_owner(self):
         self.assertEqual(demand_deficit(0.00390625, 0.001953125), 0.001953125)

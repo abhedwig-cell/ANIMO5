@@ -3,8 +3,8 @@
   "tcd": "TCD-039",
   "evidence_class": "B1_SOURCE_DERIVED_SYNTHETIC_NOT_B2",
   "cases": [
-    {"id":"S05-O1","purpose":"N deficit depends on potential continuation","kind":"demand","element":"N","potential":0.0125,"actual":0.0078125,"expected_deficit":0.0046875},
-    {"id":"S05-O2","purpose":"zero reset changes N future deficit","kind":"zero_reset_negative","element":"N","potential":0.0125,"actual":0.0078125},
+    {"id":"S05-O1","purpose":"N deficit depends on potential continuation","kind":"demand","element":"N","potential":0.015625,"actual":0.0078125,"expected_deficit":0.0078125},
+    {"id":"S05-O2","purpose":"zero reset changes N future deficit","kind":"zero_reset_negative","element":"N","potential":0.015625,"actual":0.0078125},
     {"id":"S05-O3","purpose":"P deficit depends on potential continuation when P active","kind":"demand","element":"P","ipo":1,"potential":0.00390625,"actual":0.001953125,"expected_deficit":0.001953125},
     {"id":"S05-O4","purpose":"potential N advances from prior accepted value","kind":"advance","element":"N","prior":0.0078125,"flev":[0.25,0.5],"coma":0.00390625,"st":0.5,"expected":0.00927734375},
     {"id":"S05-O5","purpose":"N shortage modifies accepted potential and therefore carries history","kind":"n_shortage","n_actual":0.0078125,"n_potential":0.015625,"p_potential":0.00390625,"miup":0.9},
@@ -13,6 +13,7 @@
     {"id":"S05-O8","purpose":"zeroing potential owners at split changes source-shaped continuation","kind":"split_zero_negative","ipo":1},
     {"id":"S05-O9","purpose":"P owner is conditional on P activation","kind":"p_guard","ipo":0,"p_owner":0.00390625}
   ],
+  "numeric_witness_policy": "EXACT_BINARY_FRACTIONS_FOR_EXACT_IDENTITY_ASSERTIONS_EXCEPT_SOURCE_CONSTANT_MIUP_0_90_WHICH_IS_USED_ONLY_FOR_BRANCH_AND_NONIDENTITY_WITNESSES",
   "nonclaims": [
     "not a frozen-Fortran execution",
     "not a historical B2 baseline",

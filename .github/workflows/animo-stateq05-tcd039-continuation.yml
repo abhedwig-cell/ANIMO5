@@ -28,6 +28,6 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run bounded source-shaped oracle tests
-        run: python -m unittest tests.stateq05.test_tcd039_continuation_oracle -v
+        run: python -m unittest discover -s tests/stateq05 -p 'test_*.py' -v
       - name: Validate STATEQ05 scope and evidence contract
         run: python tools/validate_stateq05_tcd039.py
