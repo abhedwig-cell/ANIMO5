@@ -1,0 +1,9 @@
+case_id,A,E,substrates,expected_policy,expected_legacy_control,role
+full_anaerobic,1.0,0.5,2.0;3.0,sum_components_equals_total,legacy_equals_policy,active_control
+partial_anaerobic,0.4,0.5,2.0;3.0,sum_components_equals_total,legacy_sum_equals_total_div_A,active_and_negative_control
+cutoff_exact,1.0e-8,0.5,2.0;3.0,sum_components_equals_total,legacy_sum_equals_total_div_A,boundary_control
+below_cutoff,9.999999e-9,0.5,2.0;3.0,all_zero,all_zero,boundary_control
+zero_substrate,0.4,0.5,0.0;0.0,all_zero,legacy_component_expression_undefined,negative_domain_control
+single_source,0.25,0.3,4.0,single_component_equals_total,legacy_sum_equals_total_div_A,active_and_negative_control
+zero_environment,0.4,0.0,2.0;3.0,all_zero,all_zero,active_control
+mixed_four_pool,0.67,0.123,0.2;1.7;3.1;5.0,sum_components_equals_total,legacy_sum_equals_total_div_A,active_and_negative_control
