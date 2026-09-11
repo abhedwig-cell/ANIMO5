@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB02",
+  "title": "Shared Testbank Runner, Fragment Manifest Resolver & Qualification Receipt Contract",
+  "base": "ANIMO-TB01@15a17bfa2c321d08f3ac89f334986c0ae8429045",
+  "purpose": "Provide infrastructure contracts for incremental TB3+ bank adoption without changing scientific production source or directly mutating the TB01 central registry.",
+  "fragment_contract": {
+    "required_fields": ["schema_version","fragment_id","producer_workunit","base_authority","entries"],
+    "entry_required_fields": ["test_id","layer","owner","status","source_identity","expected_value_provenance","comparison_policy"],
+    "allowed_status": ["CANDIDATE","QUALIFIED_FRAGMENT_ENTRY","HISTORICAL_EVIDENCE_ONLY","GAP"],
+    "central_registry_write": "FORBIDDEN_BY_FRAGMENT_PRODUCER",
+    "registry_integration": "SEPARATE_SERIAL_CONSOLIDATION_WORKUNIT_ONLY",
+    "id_collision_policy": "FAIL_CLOSED",
+    "unknown_field_policy": "ALLOW_BUT_DO_NOT_INFER_SCIENTIFIC_AUTHORITY"
+  },
+  "runner_contract": {
+    "selection_inputs": ["fragment_manifest","execution_profile","explicit_test_ids"],
+    "execution_order": "DEPENDENCY_TOPOLOGICAL_THEN_TEST_ID",
+    "missing_dependency": "FAIL_CLOSED",
+    "unknown_test_id": "FAIL_CLOSED",
+    "duplicate_test_id": "FAIL_CLOSED",
+    "qualification_receipt_required": true,
+    "runner_may_create_scientific_expected_values": false,
+    "runner_may_promote_empirical_tolerance": false,
+    "runner_may_create_whole_model_golden_baseline": false
+  },
+  "receipt_contract": {
+    "required_fields": ["schema_version","work_unit","exact_head","manifest_identity","selected_test_ids","result","assurance"],
+    "result_values": ["PASS","FAIL","BLOCKED"],
+    "assurance_values": ["PROCESS_SELF_REVIEWED_NOT_INDEPENDENT","MECHANICAL_VALIDATION_ONLY","SEPARATELY_REVIEWED"],
+    "exact_head_rule": "QUALIFIED is claimable only after GitHub Actions success for the exact final branch head",
+    "receipt_is_not_scientific_admission": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "whole_model_golden_baseline_created": false,
+    "historical_authority_rewritten": false
+  }
+}
