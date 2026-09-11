@@ -2,8 +2,8 @@
   "work_unit": "ANIMO-RG05J",
   "title": "Fourth Batched B3 Admission Integration",
   "branch": "work/animo-rg05j-fourth-batched-admission-integration",
-  "state": "PERSISTED_VALIDATION_PENDING",
-  "decision": "PERSISTED_VALIDATION_PENDING",
+  "state": "QUALIFIED_FOURTH_BATCHED_B3_ADMISSION_INTEGRATION_TWO_CHILD_ATOMS_ONE_PARENT_COMPOSITION_NO_PRODUCTION",
+  "decision": "QUALIFIED_FOURTH_BATCHED_B3_ADMISSION_INTEGRATION_TWO_CHILD_ATOMS_ONE_PARENT_COMPOSITION_NO_PRODUCTION",
   "source_aggregate": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
   "source_aggregate_exact_final_ci": "34549097225:success",
   "aggregate_trigger": "NORMAL_BATCH_THRESHOLD_REACHED_THREE_EXACT_FINAL_QUALIFIED_POST_RG05I_B3_ADMISSIONS",
@@ -74,23 +74,23 @@
     "synthetic_evidence_counted_as_b2": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-RG05J fourth batched B3 admission integration",
-    "run_id": null,
-    "job_id": null,
-    "tested_head": null,
-    "conclusion": "PENDING",
-    "validator": "PENDING",
-    "scope_guard": "PENDING",
-    "closeout_note": null,
+    "run_id": 34568244806,
+    "job_id": 103164678804,
+    "tested_head": "f1d0c832dac51c1ffd85f57224bef2dd0ef2f9d7",
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34568244806 validates the complete substantive six-file RG05J aggregate package at f1d0c832dac51c1ffd85f57224bef2dd0ef2f9d7, including exact-final upstream workflow identity checks and the fail-closed aggregate validator. This status-only closeout is authoritative only if the same workflow succeeds on this closeout commit's exact final head.",
     "exact_final_head_required": true
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "next_if_validated": "USE_ANIMO_RG05J_AS_CURRENT_AGGREGATE_AUTHORITY_TCD037_PARENT_AND_ALL_FOUR_CHILDREN_INTEGRATED_B3_REMAINS_INCOMPLETE_B4_AND_PRODUCTION_CLOSED"
 }
