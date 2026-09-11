@@ -17,6 +17,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Fetch qualified GOV05 authority
+        run: git fetch origin work/animo-gov05-single-agent-adversarial-review
+      - name: Assert exact GOV05 authority object available
+        run: git cat-file -e f65a47724e4a4fca7f2d8b8d6de9eeee51867904^{commit}
       - name: Validate TCD-031 Tier-C formal disposition
         run: python tools/validate_b3d22_tcd031_disposition.py
       - name: Validate disposition-only scope
