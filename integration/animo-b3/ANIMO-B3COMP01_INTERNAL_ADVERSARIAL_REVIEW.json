@@ -1,8 +1,8 @@
 {
-  "work_unit": "ANIMO-B3COMP01",
+  "work_unit": "ANIMO-B3COMP01R",
   "review_kind": "GOV05_SINGLE_AGENT_ADVERSARIAL_REVIEW",
-  "reviewed_head": "32b549c68e89a44fc7bc99cfc209d905b7010d46",
-  "reviewed_head_ci_run": 34585689360,
+  "reviewed_head": "bc46ccdc3c792935adb4f55a440bae89b38fc6ee",
+  "reviewed_head_ci_run": 34587939994,
   "reviewed_head_ci_conclusion": "success",
   "risk_tier": "D_COMPOSITION_WHOLE_MODEL_GATE",
   "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
@@ -11,68 +11,68 @@
   "candidate_decision": "B3_COMPOSITION_COMPLETENESS_NOT_ESTABLISHED_TB7_REMAINS_BLOCKED",
   "review_questions": [
     {
-      "question": "Could RG05K's b3_complete=false be treated as stale merely because B3D31 later admitted TCD-025-A4?",
-      "counter_hypothesis": "B3D31 may have removed the last blocker so the aggregate flag is only administratively stale.",
+      "question": "Does exact-final B3D32 closure of the restricted TCD-025 parent remove the earlier global completeness blocker?",
+      "counter_hypothesis": "TCD-025 was the last material parent blocker, so B3 may now be effectively complete.",
       "disposition": "REJECTED",
-      "reason": "B3D31 explicitly leaves the TCD-025 parent unadmitted and A5 undisposed. In addition, RG05K explicitly records that the global canonical queue was not recomputed. A single later child admission cannot establish global composition completeness."
+      "reason": "B3D32 closes only the restricted TCD-025 parent scope. RG05K still explicitly records b3_complete=false and the global canonical queue is not recomputed. Later TCD-042 routing also shows unresolved admission work."
     },
     {
-      "question": "Could the green B3I09 authoring workflow be treated as qualified routing and therefore close A5?",
-      "counter_hypothesis": "A successful workflow run may be enough to consume the B3I09 candidate semantics.",
+      "question": "Can exact-final B3I10 routing be treated as a TCD-042-B1 scientific admission?",
+      "counter_hypothesis": "A qualified child-routing decision may be sufficient to include the B1 correction in the composed B3 set.",
       "disposition": "REJECTED",
-      "reason": "The exact B3I09 status at the observed head is NOT_YET_QUALIFIED and states that GOV05 adversarial review is pending. Green authoring automation is not a scientific qualification decision."
+      "reason": "B3I10 explicitly records child_admitted_here=false, parent_tcd_admitted=false, and routes B1 to a separate bounded admission decision. Routing authority is not admission authority."
     },
     {
-      "question": "If B3I09 later qualifies A5 exclusion, would that alone make TCD-025 composition-complete?",
-      "counter_hypothesis": "Permanent exclusion of A5 may allow the admitted A1-A4 atoms to define the parent automatically.",
+      "question": "Can the seeded or staging B3D33 branches be treated as current scientific authority?",
+      "counter_hypothesis": "The existence of B3D33 authoring/freeze/review branches indicates the next admission is practically complete and may be anticipated.",
       "disposition": "REJECTED",
-      "reason": "Both B3I08 and the B3I09 candidate forbid automatic parent admission. B3I09 explicitly says the restricted parent must enter a separate composition decision preserving the exact child scopes."
+      "reason": "The canonical B3D33 branch remains exactly at the B3I10 seed head and has no B3D33 status artifact at that observed head. Noncanonical staging branches are active work, not qualified scientific authority. This review does not mutate or consume them."
     },
     {
-      "question": "Could B3D27 serve as the missing global composition authority by precedent or scope inheritance?",
-      "counter_hypothesis": "A qualified Tier-D parent composition may demonstrate that B3 composition has already been established in principle.",
+      "question": "Could post-RG05K exact-final B3D31/B3D32 authorities make the aggregate's b3_complete=false flag administratively stale rather than scientifically decisive?",
+      "counter_hypothesis": "The aggregate has simply not caught up with later admissions, while the effective scientific set may already be complete.",
+      "disposition": "REJECTED_AS_BASIS_FOR_POSITIVE_COMPLETENESS",
+      "reason": "A positive whole-B3 completeness authority requires explicit reconciliation and global queue recomputation. Post-aggregate advances cannot be inferred into a whole-model composition claim, especially while TCD-042 B1 remains unadmitted."
+    },
+    {
+      "question": "Could bounded parent compositions such as B3D27 or B3D32 be composed transitively into a whole-B3 authority without a separate global record?",
+      "counter_hypothesis": "If each difficult parent has its own qualified composition, global composition may follow by aggregation.",
       "disposition": "REJECTED",
-      "reason": "B3D27 is explicitly bounded to TCD-037 GHG observer accounting. It does not claim complete GHG conservation, a whole-model ledger, restart identity, a whole-B3 composition, historical B2 or production authorization. Scope inheritance would violate B3Q01."
+      "reason": "B3Q01 requires a separate composition record and qualification. Local parent composition does not establish cross-parent non-interference, overlap, cancellation masking, ordering, interaction coverage or uncertainty propagation for the whole B3 object."
     },
     {
-      "question": "Could the number of admitted objects be used as a practical completeness proxy?",
-      "counter_hypothesis": "Twenty aggregate admissions plus B3D31 may be enough to infer that the correction set is effectively complete.",
-      "disposition": "REJECTED",
-      "reason": "B3Q01 completeness is claim- and composition-gate-based, not count-based. RG05K intentionally does not recompute the global queue, and the canonical top-level tail remains TCD-042."
+      "question": "Could a whole-B3 composition authority already exist under another live branch name?",
+      "counter_hypothesis": "The naming convention may not include B3COMP or composition, so absence from the expected branch is inconclusive.",
+      "disposition": "NOT_SUPPORTED_BY_LIVE_SEARCH_WITH_RESIDUAL_NAMING_RISK",
+      "reason": "Fresh live composition branch search finds only B3COMP work and bounded parent-composition branches B3D27/B3D32. The validator also fails on later RG05, B3D and B3I authority numbers. This supports fail-closed negative status but is not a claim that every possible branch name has been independently audited."
     },
     {
-      "question": "Is B3COMP01 duplicative because TB07A already blocks TB7?",
-      "counter_hypothesis": "No separate negative authority is needed while TB07A is already fail-closed.",
-      "disposition": "REJECTED_AS_A_REASON_NOT_TO_QUALIFY_THE_NEGATIVE_AUTHORITY",
-      "reason": "TB07A identifies the prerequisite but does not own B3 composition science. B3COMP01 supplies a separate pinned B3-level audit, observes post-TB07A advances through B3D31/RG05K/B3I09, and defines the closure sequence without opening TB7."
-    },
-    {
-      "question": "Could an unseen concurrent branch have already created a positive whole-B3 composition authority?",
-      "counter_hypothesis": "Branch naming or timing may hide a later authority from the pinned set.",
-      "disposition": "NOT_SUPPORTED_BY_LIVE_SEARCH_WITH_RESIDUAL_CONCURRENCY_RISK",
-      "reason": "Live branch search for composition finds only B3COMP01 and bounded B3D27; no whole-B3 branch was found. The validator also fails on newer RG05, B3D or B3I branch numbers and on any movement of B3I09 from its observed head. This is process evidence, not a claim of organizational independence."
+      "question": "Does concurrent B3D33 work make this negative authority unsafe to close now?",
+      "counter_hypothesis": "Any active concurrent workstream should prevent a scientific authority from being issued.",
+      "disposition": "REJECTED_WITH_FAIL_CLOSED_CONCURRENCY_CONDITION",
+      "reason": "The authority is explicitly scoped to the pinned current qualified state. Final CI must fail if the canonical B3D33 branch advances, or if any B3D34+, B3I11+ or RG05L+ authority appears. Thus concurrent work is observed without being overwritten or anticipated."
     }
   ],
   "adversarial_findings": {
     "scientific_falsification_of_negative_decision_found": false,
     "scope_widening_found": false,
-    "positive_completeness_evidence_found": false,
-    "automation_misread_as_scientific_authority": false,
+    "routing_misread_as_admission": false,
+    "staging_branch_misread_as_authority": false,
     "bounded_parent_promoted_to_whole_model": false,
-    "child_completion_promoted_to_parent_admission": false,
-    "aggregate_count_used_as_completeness_proxy": false,
+    "aggregate_staleness_used_as_positive_completeness_proxy": false,
     "concurrent_workstream_modified": false,
     "historical_b2_fabricated": false,
     "whole_model_golden_created": false
   },
   "live_recheck_before_review_close": {
-    "b3i09_head_unchanged": true,
-    "b3i09_head": "fcce3e5d3c465dbd618f1e36e1d5f259f74b2d2a",
-    "b3d32_or_later_branch_found": false,
-    "b3i10_or_later_branch_found": false,
+    "b3d33_canonical_head_unchanged": true,
+    "b3d33_canonical_head": "942f26fe32eaf91679e59a1968ae173a3703e22d",
+    "b3d34_or_later_branch_found": false,
+    "b3i11_or_later_branch_found": false,
     "rg05l_or_later_branch_found": false,
-    "whole_b3_composition_branch_found": false
+    "whole_b3_composition_branch_found": false,
+    "active_noncanonical_b3d33_staging_branches_observed": true
   },
   "review_decision": "QUALIFY_NEGATIVE_B3_COMPOSITION_COMPLETENESS_AUTHORITY_KEEP_TB7_BLOCKED",
-  "required_future_recheck": "Any movement of B3I09, any later B3 admission/routing/aggregate authority, or any newly qualified whole-B3 composition object invalidates reuse of this live-state conclusion and requires a fresh completeness audit."
+  "required_future_recheck": "Any movement of canonical B3D33, any later B3 admission/routing/aggregate authority, or any newly qualified whole-B3 composition object invalidates reuse of this live-state conclusion and requires a fresh completeness audit."
 }
