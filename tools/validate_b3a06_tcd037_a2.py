@@ -157,8 +157,10 @@ def validate_records() -> None:
     req(rd["readiness_gates"]["ADMISSION"] == "NOT_PERFORMED", "admission performed")
     req(rd["b3q01_child_schema_binding"]["later_disposition_tcd_ids"] == ["TCD-037"], "parent binding wrong")
     req(rd["b3q01_child_schema_binding"]["canonical_atomic_child_identity"] == "TCD-037-A2", "child binding wrong")
+    req(rd["identifier_collision_check"]["ANIMO-B3D22"].startswith("ALLOCATED_TO_TCD031"), "B3D22 collision not recorded")
+    req(rd["identifier_collision_check"]["ANIMO-B3D23"].startswith("FREE_AT_B3A06_CLOSEOUT"), "B3D23 availability not recorded")
     req(rd["decision"] == "QUALIFIED_TCD037_A2_TIER_A_ADMISSION_READINESS_WAIVER_PREDICATE_PASS_NO_ADMISSION", "decision changed")
-    req(rd["next_work_unit"].startswith("ANIMO-B3D22"), "next route wrong")
+    req(rd["next_work_unit"].startswith("ANIMO-B3D23"), "next route wrong")
     for value in rd["scope_guards"].values():
         req(value is False, "readiness scope guard opened")
 
@@ -166,6 +168,8 @@ def validate_records() -> None:
     req(st["authorities"]["gov05_current"] == f"ANIMO-GOV05@{GOV05}", "status lacks GOV05")
     req(st["governance_transition"]["authority_consumed"] is True, "status does not consume GOV05")
     req(st["tier_a_waiver"]["final_waiver_granted"] is False, "status grants final waiver")
+    req(st["identifier_collision_check"]["ANIMO-B3D22"].startswith("ALLOCATED_TO_TCD031"), "status misses B3D22 collision")
+    req(st["next_if_exact_head_ci_green"].startswith("ANIMO-B3D23"), "status next route wrong")
     req(st["state"] in {"PERSISTED_VALIDATION_PENDING", "QUALIFIED_TCD037_A2_TIER_A_ADMISSION_READINESS_WAIVER_PREDICATE_PASS_NO_ADMISSION"}, "status lifecycle invalid")
     for value in st["scope_guards"].values():
         req(value is False, "status scope guard opened")
@@ -175,7 +179,8 @@ def validate_records() -> None:
     req("does not grant the final Tier-A waiver" in doc, "doc overclaims waiver")
     req("GOV05 explicitly retains the GOV04 Tier-A waiver without weakening" in doc, "doc misses GOV05 Tier-A rule")
     req("No model-wide CO2-ledger closure is claimed" in doc, "doc misses CO2 boundary")
-    req("ANIMO-B3D22" in doc and "ANIMO-B3D22" in contract, "next route missing")
+    req("ANIMO-B3D22` is already allocated" in doc, "doc misses B3D22 collision")
+    req("ANIMO-B3D23" in doc and "ANIMO-B3D23" in contract, "B3D23 next route missing")
 
 
 def validate_scope() -> None:
