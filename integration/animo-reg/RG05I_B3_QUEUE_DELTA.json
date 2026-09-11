@@ -1,0 +1,46 @@
+{
+  "work_unit": "ANIMO-RG05I",
+  "source_aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+  "admission_counts": {
+    "pre_delta_scientific_admissions": 11,
+    "new_atomic_admissions": 3,
+    "post_delta_scientific_admissions": 14
+  },
+  "new_objects": [
+    "TCD-037-A1",
+    "TCD-037-A2",
+    "TCD-031"
+  ],
+  "top_level_delta": {
+    "new_top_level_admitted_tcds": [
+      "TCD-031"
+    ],
+    "new_child_atom_admissions": [
+      "TCD-037-A1",
+      "TCD-037-A2"
+    ],
+    "tcd037_parent_admitted": false
+  },
+  "canonical_queue_cardinality": {
+    "global_canonical_queue_count_recomputed": false,
+    "canonical_register_or_routing_files_modified_here": false,
+    "current_routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "observed_canonical_top_level_tail": "TCD-042",
+    "reason": "RG05I integrates admission authorities only and does not invent a stale global queue cardinality while lateral readiness/evidence work continues."
+  },
+  "non_admission_continuation_observed": {
+    "authority": "ANIMO-SYNQ04@31d4ac628edf43501b403f0844dd472bcc12644c",
+    "target": "TCD-037-A3",
+    "state": "QUALIFIED_TCD037_A3_INDEPENDENT_SYNTHETIC_CAUSALITY_AND_SCOPE_NOT_B2",
+    "counts_as_admission": false,
+    "next_route": "ANIMO-B3A07"
+  },
+  "project_gate_delta": {
+    "B3_complete_before": false,
+    "B3_complete_after": false,
+    "B4_open_before": false,
+    "B4_open_after": false,
+    "production_open_before": false,
+    "production_open_after": false
+  }
+}
