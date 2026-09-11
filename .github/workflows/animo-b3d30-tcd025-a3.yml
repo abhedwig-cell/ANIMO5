@@ -1,0 +1,30 @@
+name: ANIMO-B3D30 TCD025-A3 N admission
+on:
+  push:
+    branches: [work/animo-b3d30-tcd025-a3-nitrogen-gov05-tier-c-admission]
+  workflow_dispatch:
+permissions: {contents: read, actions: read}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in f4a3056087e5f7bac41b243be1f404739cde52b0 872c78b6c020086280e31e1d9a7408e8b5a1afc7 ce602528d075fc962b0b78759ed0082d1ec78a51 97fd3274acd47bac74939d9dbd55b908043d1521 f65a47724e4a4fca7f2d8b8d6de9eeee51867904; do git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"; done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify exact-final authorities
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request
+          checks={34572242797:"f4a3056087e5f7bac41b243be1f404739cde52b0",34571906586:"872c78b6c020086280e31e1d9a7408e8b5a1afc7",34572641664:"ce602528d075fc962b0b78759ed0082d1ec78a51",34572919222:"97fd3274acd47bac74939d9dbd55b908043d1521",34546470484:"f65a47724e4a4fca7f2d8b8d6de9eeee51867904"}
+          for n,h in checks.items():
+            q=urllib.request.Request(f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{n}",headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}","Accept":"application/vnd.github+json"})
+            with urllib.request.urlopen(q) as f:d=json.load(f)
+            assert d["head_sha"]==h and d["status"]=="completed" and d["conclusion"]=="success"
+          PY
+      - run: python -m py_compile tools/validate_b3d30_tcd025_a3.py
+      - run: python tools/validate_b3d30_tcd025_a3.py

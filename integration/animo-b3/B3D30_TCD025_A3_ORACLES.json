@@ -1,0 +1,15 @@
+{
+  "work_unit":"ANIMO-B3D30",
+  "target_child_atom":"TCD-025-A3",
+  "evidence_class":"EXACT_RATIONAL_B1_STYLE_NOT_B2",
+  "cases":[
+    {"id":"N01","species":{"DON":{"old":6,"in":0,"out":2,"new":4},"NH4":{"old":8,"in":0,"out":3,"new":5},"NO3":{"old":10,"in":0,"out":4,"new":6}},"expect_each_closed":true,"expect_aggregate_closed":true},
+    {"id":"N02","species":{"DON":{"old":0,"in":5,"out":2,"new":3},"NH4":{"old":2,"in":4,"out":1,"new":5},"NO3":{"old":7,"in":1,"out":3,"new":5}},"expect_each_closed":true,"expect_aggregate_closed":true},
+    {"id":"N03","matrix_side":-13,"macropore_side":13,"expect_sum":0},
+    {"id":"N04","FlMpOuDrSo":5,"second_external_loss":0},
+    {"id":"N05","relation":"partial_cut","expect_in_scope":false},
+    {"id":"N06","relation":"contains_all_S_D","expect_in_scope":true},
+    {"id":"N07","relation":"disjoint_from_S_D","expect_in_scope":true},
+    {"id":"N08","aggregation_order":"DON,NH4,NO3 identities first then N sum","expect_species_separation":true}
+  ]
+}

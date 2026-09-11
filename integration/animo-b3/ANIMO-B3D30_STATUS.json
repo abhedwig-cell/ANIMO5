@@ -1,0 +1,22 @@
+{
+  "work_unit":"ANIMO-B3D30",
+  "target_parent_tcd":"TCD-025",
+  "target_child_atom":"TCD-025-A3",
+  "branch":"work/animo-b3d30-tcd025-a3-nitrogen-gov05-tier-c-admission",
+  "phase":"AUTHORING_FROZEN_PENDING_GOV05_TIER_C_ADVERSARIAL_REVIEW",
+  "state":"NOT_YET_ADMITTED",
+  "candidate_decision":"ADMIT_TCD025_A3_RESTRICTED_N_LEDGER_DON_NH4_NO3_SEPARATE_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
+  "formal_disposition":"HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "review_assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "historical_behavior":"UNKNOWN_WITHOUT_B2",
+  "aggregate_at_start":"ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
+  "prior_exact_final_admissions":["ANIMO-B3D28@ce602528d075fc962b0b78759ed0082d1ec78a51","ANIMO-B3D29@97fd3274acd47bac74939d9dbd55b908043d1521"],
+  "admitted":false,
+  "qualified":false,
+  "parent_tcd_admitted":false,
+  "siblings_admitted_here":[],
+  "production_authorized":false,
+  "review":{"started":false,"completed":false,"reviewed_head":null,"genuinely_independent":false,"artifact":"integration/animo-b3/ANIMO-B3D30_INTERNAL_ADVERSARIAL_REVIEW.json"},
+  "validation":{"workflow":".github/workflows/animo-b3d30-tcd025-a3.yml","validator":"tools/validate_b3d30_tcd025_a3.py","exact_final_head_ci_required":true},
+  "work_status":{"realized":true,"persisted":true,"tested":false,"reviewed":false,"qualified":false,"workunit_complete":false}
+}
