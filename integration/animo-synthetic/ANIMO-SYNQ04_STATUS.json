@@ -1,0 +1,83 @@
+{
+  "work_unit": "ANIMO-SYNQ04",
+  "title": "TCD-037-A3 Independent Synthetic Activation Qualification",
+  "target": "TCD-037-A3",
+  "branch": "work/animo-synq04-tcd037-a3-independent-n2o-deni-activation",
+  "state": "PERSISTED_VALIDATION_PENDING",
+  "base_authority": "ANIMO-B3D24@0f85d7102945c7c4d77bc49885f9ecca688209e3",
+  "aggregate_authority": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+  "routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+  "runtime_semantics_authority": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+  "synthetic_policy_authority": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "risk_state": "TIER_A_CANDIDATE_WAIVER_NOT_YET_AVAILABLE",
+  "evidence_strength": "B1_SYNTHETIC_NOT_B2",
+  "independence_claim": "INDEPENDENT_IMPLEMENTATION_AND_EXACT_RATIONAL_ORACLE_FOR_CAUSALITY_AND_SCOPE",
+  "natural_active_ghg_case": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+  "historical_behavior": "UNKNOWN",
+  "accounting_identity": {
+    "source_owner": "QPrN2Oden(Ln)*St",
+    "observer_increment": "10000*QPrN2Oden(Ln)*St",
+    "numerical_acceptance": "EXACT_BINARY64_FOR_CHOSEN_DYADIC_SYNTHETIC_VALUES_NO_EMPIRICAL_TOLERANCE"
+  },
+  "cases": [
+    "ACTIVE_NONZERO",
+    "ZERO_DENI",
+    "PERMUTED",
+    "RATE_TIME_EQUIVALENT",
+    "INACTIVE"
+  ],
+  "allowed_difference_surface": [
+    "Bani(N2Od)"
+  ],
+  "forbidden_difference_results": {
+    "physical_state": "UNCHANGED",
+    "process_flux": "UNCHANGED",
+    "restart_state": "NO_CHANGE_IN_SCOPE",
+    "solver_or_numerical_policy": "NO_CHANGE_IN_SCOPE",
+    "TCD-037-A1_observer": "UNCHANGED",
+    "TCD-037-A2_observer": "UNCHANGED",
+    "TCD-037-A4_observer": "UNCHANGED",
+    "N2Oe_observer": "UNCHANGED_BY_SCOPE",
+    "N2On_observer": "UNCHANGED_BY_SCOPE",
+    "QRdN2O": "UNCHANGED_BY_SCOPE",
+    "unrelated_observer": "UNCHANGED"
+  },
+  "gov05_activation_predicate": "PENDING_EXACT_HEAD_VALIDATION",
+  "tier_a_waiver_granted": false,
+  "scientific_admission": false,
+  "parent_or_sibling_admission": false,
+  "production_source_modified": false,
+  "canonical_tcd_register_modified": false,
+  "new_top_level_tcd_reserved": false,
+  "b4_opened": false,
+  "aggregate_updated": false,
+  "production_migration": false,
+  "historical_fidelity_claimed": false,
+  "tcd032_036_composition": false,
+  "testcase_translation_performed": false,
+  "validation": {
+    "machine_validated": false,
+    "run_id": null,
+    "job_id": null,
+    "tested_head": null,
+    "conclusion": "PENDING",
+    "o0": "PENDING",
+    "o2": "PENDING",
+    "o0_o2_byte_identity": "PENDING",
+    "exact_rational_oracle": "PENDING",
+    "causal_discriminator": "PENDING",
+    "scope_guard": "PENDING",
+    "final_exact_head_required": true,
+    "closeout_note": null
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "next_if_qualified": "ANIMO-B3A07 — TCD-037-A3 N2O Denitrification Formation Observer Tier-A Readiness"
+}
