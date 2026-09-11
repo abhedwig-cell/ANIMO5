@@ -1,0 +1,84 @@
+{
+  "work_unit": "ANIMO-STATEQ06",
+  "target": "TCD-035",
+  "title": "GHG Soil-Layer Restart Phase Reconstruction Ownership Qualification",
+  "base_authority": "ANIMO-B3D37@8bd1d0a5e20e5fa1d15508e0fdf7c69a5150a84f",
+  "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
+  "queue_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
+  "ghg_authority": "ANIMO-GHG01@dac7b7b5c591b781b82ec968896edb5957664c88",
+  "buildq03_authority": "ANIMO-BUILDQ03@5e06473bc2bb1df6cf4e449d8d6aa04da35c7d47",
+  "stateq01_authority": "ANIMO-STATEQ01@4adae99576eb56978da71f7c8a250e4445fd3bc4",
+  "arch02_authority": "ANIMO-ARCH02@a079d93c965f6073586c55ee4b3544dd8873b723",
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_members": {
+    "ANIMO_4.1.5.53/Inicalc.for": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1",
+    "ANIMO_4.1.5.53/ghgtransport.for": "d86e420952c43aaa6e730235f5820802310dd14a0019dc890537d9acd95fcff6",
+    "ANIMO_4.1.5.53/Output_Init.for": "6452c175dcd7c6e80983c1176467735d07f75595cf8341526b115b70121b6a2f"
+  },
+  "supported_scope": {
+    "revision": "ANIMO_4.1.5_revision_53",
+    "ghg_guard": "IoptGHG >= 1",
+    "layers": "1..Nl",
+    "species": ["CH4", "N2O"],
+    "layer0_included": false
+  },
+  "owner_model": {
+    "accepted_checkpoint_owner": "RsCs gas-specific total gas-water system concentration",
+    "working_total_view": "Cs",
+    "derived_aqueous_view": "Co",
+    "co_independent_checkpoint_owner": false,
+    "required_checkpoint_coordinates": [
+      "gas-specific Cs",
+      "accepted water-filled porosity theta",
+      "accepted saturated porosity theta_sat",
+      "accepted checkpoint soil temperature T_checkpoint"
+    ],
+    "restart_reconstruction": "Co = Cs / (theta + reciprocal_bunsen(gas,T_checkpoint) * (theta_sat-theta))"
+  },
+  "source_bunsen_contract": {
+    "thermodynamic_temperature": "max(273.15, T_C + 273.15)",
+    "formula": "alpha = KH0 * exp(ESdvR*(1/TK - 1/298.15)) * TK/12.2; reciprocal_bunsen = 1/alpha",
+    "CH4": {"KH0": 0.00134, "ESdvR": 1750.0},
+    "N2O": {"KH0": 0.0245, "ESdvR": 2600.0}
+  },
+  "revision53_restart_defect": {
+    "reconstruction_temperature": "Terf",
+    "accepted_checkpoint_temperature_used": false,
+    "qualified_as_equivalent_general_reconstruction": false,
+    "exact_continuity_conditions": [
+      "reciprocal_bunsen(gas,T_checkpoint) == reciprocal_bunsen(gas,Terf)",
+      "theta_sat == theta",
+      "Cs == 0"
+    ]
+  },
+  "classification_resolution": {
+    "prior_queue_class": "C provisional",
+    "missing_physical_state_required": false,
+    "new_phase_or_storage_required": false,
+    "deterministic_reconstruction_from_accepted_coordinates_qualified": true,
+    "candidate_b3_class_for_later_readiness": "B_LOCAL_RESTART_RECONSTRUCTION_EXISTING_OWNER",
+    "review_risk_floor": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+    "scientific_gate_reduced": false
+  },
+  "evidence_strength": {
+    "source": "B0_HASH_PINNED_SOURCE_SEMANTICS",
+    "oracle": "B1_SOURCE_DERIVED_SYNTHETIC_NOT_B2",
+    "historical_behavior": "UNKNOWN_WITHOUT_B2"
+  },
+  "excluded_scope": [
+    "TCD-036 ponding/layer0 restart continuity",
+    "BUILDQ03 within-timestep hidden solver/context state",
+    "TCD-032 methanogenesis source-pool transfers",
+    "TCD-033 CH4 production component partition",
+    "TCD-034 plant-mediated transport growth-temperature indexing",
+    "continuous-run Bunsen update approximation",
+    "canonical STATE admission",
+    "checkpoint serialization format migration",
+    "whole-model GHG split-run equivalence",
+    "production implementation",
+    "B4"
+  ],
+  "qualified_claim": "FOR_FROZEN_REVISION53_GHG_SOIL_LAYERS_1_TO_NL_THE_ACCEPTED_TOTAL_SYSTEM_GAS_CONCENTRATION_IS_THE_CHECKPOINT_OWNER_AND_THE_AQUEOUS_PHASE_VIEW_IS_DETERMINISTICALLY_RECONSTRUCTIBLE_FROM_ACCEPTED_CHECKPOINT_HYDROLOGY_AND_TEMPERATURE_USING_THE_SOURCE_BUNSEN_RELATION; TERF_IS_NOT_A_GENERAL_EQUIVALENT_RESTART_TEMPERATURE",
+  "b3_admission_performed": false
+}
