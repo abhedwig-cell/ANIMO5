@@ -3,9 +3,9 @@
   "title":"Global Canonical B3 Queue Recompute and Closure Gate after RG05M",
   "repository":"abhedwig-cell/ANIMO5",
   "branch":"work/animo-b3q04-global-canonical-queue-recompute-closure",
-  "phase":"AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
-  "state":"CANDIDATE_NEGATIVE_CLOSURE_GATE_PENDING_REVIEW",
-  "decision":"PENDING_GOV05_ADVERSARIAL_REVIEW_NO_B3_B4_OR_PRODUCTION_OPENING",
+  "phase":"COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state":"QUALIFIED_ANIMO_B3Q04_GLOBAL_QUEUE_RECOMPUTE_BLOCKED_NINE_TOP_LEVEL_UNADMITTED",
+  "decision":"B3_COMPOSITION_INCOMPLETE_DO_NOT_OPEN_TB7_B4_OR_PRODUCTION",
   "assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
   "kind":"GOVERNANCE_RECOMPUTE_ONLY_NO_SCIENTIFIC_ADMISSION",
   "current_aggregate_authority":"ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
@@ -22,9 +22,9 @@
   "b4_allowed":false,
   "production_allowed":false,
   "registry_or_queue_modified":false,
-  "review":{"required":true,"started":false,"completed":false,"reviewed_head":null,"same_agent":true,"genuinely_independent":false,"independence_claimed":false,"outcome":null},
-  "validation":{"workflow":".github/workflows/animo-b3q04-global-queue-recompute.yml","validator":"tools/validate_animo_b3q04.py","candidate_head":null,"candidate_run_id":null,"candidate_job_id":null,"candidate_conclusion":null,"exact_final_head_required":true},
+  "review":{"required":true,"started":true,"completed":true,"reviewed_head":"a90bf4d5e37b019b89560c668e39c66e52569802","model":"MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW","same_agent":true,"genuinely_independent":false,"independence_claimed":false,"assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT","outcome":"SELF_REVIEW_PASS_NEGATIVE_B3_CLOSURE_GATE_NINE_TOP_LEVEL_UNADMITTED","artifact":"integration/animo-b3/ANIMO-B3Q04_INTERNAL_ADVERSARIAL_REVIEW.json"},
+  "validation":{"workflow":".github/workflows/animo-b3q04-global-queue-recompute.yml","validator":"tools/validate_animo_b3q04.py","candidate_head":"a90bf4d5e37b019b89560c668e39c66e52569802","candidate_run_id":34610546175,"candidate_job_id":103299642258,"candidate_conclusion":"success","scope_guard":"PASS","queue_set_recompute":"PASS","aggregate_lineage_reconstruction":"PASS","B3Q01_composition_rule_check":"PASS","adversarial_review":"PASS_FOR_NEGATIVE_CLOSURE_GATE_ONLY","exact_final_head_required":true},
   "hard_boundaries":{"scientific_admission_performed":false,"production_source_modified":false,"frozen_b0_modified":false,"canonical_register_modified":false,"queue_membership_modified":false,"historical_b2_created":false,"child_admission_promoted_to_parent":false,"scope_exclusion_promoted_to_parent_admission":false,"positive_composition_authority_created":false,"whole_model_golden_baseline_created":false,"tb7_opened":false,"b4_opened":false,"production_migration_authorized":false,"scientific_authority_redefined":false},
-  "work_status":{"realized":true,"persisted":true,"tested":false,"reviewed":false,"qualified":false,"work_unit_complete":false},
-  "next_if_candidate_green":"PERFORM_GOV05_SINGLE_AGENT_ADVERSARIAL_REVIEW_OF_EXACT_CANDIDATE_HEAD_THEN_CLOSE_STATUS_ONLY_IF_REVIEW_PASSES"
+  "work_status":{"realized":true,"persisted":true,"tested":true,"reviewed":true,"qualified":true,"work_unit_complete":true},
+  "next_if_exact_head_green":"RETAIN_RG05M_AS_CURRENT_AGGREGATE_AND_B3Q04_AS_NEGATIVE_CLOSURE_AUTHORITY; CONTINUE ONLY WITH SEPARATELY QUALIFIED REMAINING B3 OBJECTS OR A LATER AGGREGATE; THEN RECOMPUTE CLOSURE. DO NOT CREATE TB7 BASELINE, OPEN B4, OR AUTHORIZE PRODUCTION FROM THIS WORKUNIT."
 }
