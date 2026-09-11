@@ -1,0 +1,15 @@
+name: ANIMO-B3D37 TCD039 atomic admission
+on:
+  push:
+    branches: [work/animo-b3d37-tcd039-gov05-tier-c-admission]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python tools/validate_b3d37_tcd039.py

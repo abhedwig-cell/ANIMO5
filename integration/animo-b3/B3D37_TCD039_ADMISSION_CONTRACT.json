@@ -1,0 +1,34 @@
+{
+  "work_unit":"ANIMO-B3D37",
+  "target":"TCD-039",
+  "branch":"work/animo-b3d37-tcd039-gov05-tier-c-admission",
+  "base_authority":"ANIMO-B3B11@6d8ba72ffd33eef4a16eb4dc693b1eaada772c4a",
+  "base_exact_final_ci":{"run":34630225955,"job":103364940173,"conclusion":"success"},
+  "aggregate_authority":"ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
+  "gov05_authority":"ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "b3q01_authority":"ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "b3_qualification_class":"B_LOCAL_RESTART_CHECKPOINT_OMISSION_EXISTING_CONTINUATION_OWNER",
+  "review_risk_tier":"C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "candidate_decision":"ADMIT_TCD039_INTERNAL_CROP_POTENTIAL_UPTAKE_RESTART_CONTINUATION_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
+  "admitted_identity":"TCD039_INTERNAL_CROP_POTENTIAL_UPTAKE_RESTART_CONTINUATION_OWNER_RESTORE_N_AND_CONDITIONAL_P",
+  "supported_scope":{
+    "revision":"ANIMO_4.1.5_revision_53",
+    "crop_mode":"INTERNAL_ANIMO_CROP",
+    "guard":"Ioptplant == 1",
+    "nitrogen":{"accepted_owner":"Rsamplni_pot","working_alias":"Amplni_pot","restore":"exact accepted owner before future demand calculation"},
+    "phosphorus":{"accepted_owner":"Rsamplpo_pot","working_alias":"Amplpo_pot","guard":"Ipo == 1","restore":"exact accepted owner before future demand calculation"},
+    "arbitrary_restart_zero_reset":"FORBIDDEN_FOR_NONZERO_ACCEPTED_OWNER"
+  },
+  "expected_admitted_effect":"post-restart crop demand, uptake and connected trajectories may differ from a legacy restart that omitted the accepted continuation owner; this is the bounded correction effect",
+  "checkpoint_representation":"NOT_DEFINED_BY_THIS_ADMISSION",
+  "historical_disposition":{"behavior":"UNKNOWN_WITHOUT_B2","normal_b2_available":false,"b1_promoted_to_b2":false,"admission_with_historical_uncertainty":true},
+  "evidence_consumed":[
+    "ANIMO-STATEQ05@c2b29f05b7726f3c57a39481b92f211e78dbee59",
+    "ANIMO-B3B11@6d8ba72ffd33eef4a16eb4dc693b1eaada772c4a",
+    "ANIMO-STATEQ01@4adae99576eb56978da71f7c8a250e4445fd3bc4"
+  ],
+  "excluded_scope":["TCD-038 actual crop uptake","CROP-007 broader crop continuation","external crop mode","canonical STATE admission","whole-model split-run equivalence","checkpoint file-format migration","production source implementation","B4"],
+  "admission_effect":{"tcd039_top_level_admitted":true,"canonical_state_admitted":false,"tcd038_reopened":false,"crop007_resolved":false,"production_authorized":false},
+  "aggregate_policy":{"post_RG05M_new_admissions_before_this_candidate":0,"post_RG05M_new_admissions_if_exact_final_green":1,"normal_batch_threshold_minimum":3,"aggregate_update_required_after_exact_final_green":false},
+  "hard_boundaries":{"production_source_modified":false,"frozen_b0_modified":false,"canonical_register_modified":false,"central_queue_modified":false,"historical_b2_created":false,"full_model_split_run_claimed":false,"b4_opened":false,"production_migration_authorized":false}
+}
