@@ -87,6 +87,465 @@
     },
     {
       "test_id":"ATB-ARCH-002","title":"Nested-loop index audit","level":"INV","layer":"TB-L11","subsystem":["CROSS_CUTTING"],"scientific_claims":["loop-index ownership and nesting satisfy registered structural invariants"],"risk_class":"HIGH","cost_class":"FAST","execution_profile":["DEVELOPER_FAST","SCIENTIFIC_FOCUSED"],"source_identity":"tests/test_nested_loop_index_audit.py@blob:b8b5177e8bede7d75b700b656ad7682d6ef89b5b","input_identity":"pinned source tree","expected_value_provenance":"INVARIANT","comparison_policy":"INTEGER_EXACT","dependencies":[],"outputs":["index findings"],"qualification_strength":"STRUCTURAL_INVARIANT","blocks":["TCD_READINESS","ADMISSION"],"owner":"testbank/architecture","status":"REUSABLE_NOW"
+    },
+    {
+      "test_id": "ATB-ORACLE-002",
+      "title": "Stable-DOM C/N/P species-local parent/daughter partition oracle",
+      "level": "QG",
+      "layer": "TB-L1",
+      "owner": "testbank/oracles",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121:SYNQ-O004",
+      "input_identity": "SYNQ-O004 pinned inputs preserved in expected_relation.inputs; source fragment ANIMO-TB03A@a37f07b15ae50d6fbb526cef3215fb58702e85aa@blob:aa11d224964bdc5f1d529d823f774afc18994bbd",
+      "expected_value_provenance": "QUALIFIED_SYNTHETIC_ORACLE",
+      "comparison_policy": "DOMAIN_SPECIFIC_NUMERICAL_CONTRACT",
+      "subsystem": [
+        "CARBON_ORGANIC_MATTER",
+        "NITROGEN",
+        "PHOSPHORUS",
+        "DOM"
+      ],
+      "scientific_claims": [
+        "within the qualified stable-DOM partition scope, each C/N/P daughter is derived from its same-species parent",
+        "for species X: X17=m*k*C_X*H, X19=(1-a)*X17 and X20=a*X17",
+        "the daughter pair conserves its parent exactly in the isolated partition identity"
+      ],
+      "applicability": [
+        "stable-DOM species-local partition represented by SYNQ-O004",
+        "same partition fraction a across the three species",
+        "no intended cross-species stoichiometric conversion at this partition step"
+      ],
+      "expected_relation": {
+        "inputs": {
+          "C_C": "2.0",
+          "C_N": "0.2",
+          "C_P": "0.05",
+          "m": "0.35",
+          "k": "0.08",
+          "H": "0.2",
+          "a": "0.3"
+        },
+        "C_parent_d19_d20": [
+          "0.011200",
+          "0.0078400",
+          "0.0033600"
+        ],
+        "N_parent_d19_d20": [
+          "0.001120",
+          "0.0007840",
+          "0.0003360"
+        ],
+        "P_parent_d19_d20": [
+          "0.0002800",
+          "0.00019600",
+          "0.00008400"
+        ],
+        "comparison": "decimal exact within the synthetic oracle representation"
+      },
+      "units_contract": "normalized species mass per area over interval, exactly as bounded by SYNQ-O004; no conversion to a broader ANIMO output unit is inferred",
+      "dependencies": [],
+      "failure_class": "SPECIES_OWNERSHIP_FAILURE",
+      "qualification_strength": "SCIENTIFIC_SCOPE_BOUNDED_ATOMIC_ORACLE",
+      "admission_effect": "NONE",
+      "permanence_review": {
+        "reusable_claim_beyond_originating_tcd": true,
+        "source_and_input_applicability_pinned": true,
+        "allowed_expectation_provenance_and_comparison_policy": true,
+        "unknown_expectation_absent": true,
+        "legacy_behaviour_not_mislabeled_scientific_truth": true,
+        "dependencies_and_failure_semantics_known": true,
+        "historical_evidence_not_rewritten": true,
+        "owner_and_maintenance_route_declared": true,
+        "cost_and_execution_profile_declared": true,
+        "future_decision_value_beyond_debug_probe": true
+      },
+      "cost_class": "FAST",
+      "execution_profile": [
+        "DEVELOPER_FAST",
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "registry_source_fragment": "ANIMO-TB03A@a37f07b15ae50d6fbb526cef3215fb58702e85aa:integration/animo-testbank/fragments/ANIMO-TB03A_CNP_SPECIES_ORACLE_FRAGMENT.json@blob:aa11d224964bdc5f1d529d823f774afc18994bbd",
+      "registry_consolidation": "ANIMO-TB03D"
+    },
+    {
+      "test_id": "ATB-ORACLE-003",
+      "title": "Stable-DOM species permutation metamorphic oracle",
+      "level": "QG",
+      "layer": "TB-L1",
+      "owner": "testbank/oracles",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121:SYNQ-O005",
+      "input_identity": "SYNQ-O005 species-label/input permutation bounded by the exact TB03A fragment pin",
+      "expected_value_provenance": "QUALIFIED_SYNTHETIC_ORACLE",
+      "comparison_policy": "DOMAIN_SPECIFIC_NUMERICAL_CONTRACT",
+      "subsystem": [
+        "CARBON_ORGANIC_MATTER",
+        "NITROGEN",
+        "PHOSPHORUS",
+        "DOM"
+      ],
+      "scientific_claims": [
+        "where the partition is species-local and contains no cross-species conversion, permuting C/N/P labels together with their matching inputs must permute outputs identically"
+      ],
+      "applicability": [
+        "stable-DOM species-local partition represented by SYNQ-O005",
+        "species labels and their inputs are permuted together",
+        "explicit stoichiometric conversion relations are excluded"
+      ],
+      "expected_relation": "F(PERMUTE(input)) = PERMUTE(F(input)) exactly",
+      "units_contract": "species-labelled mass relation; metamorphic comparison is unit-preserving",
+      "dependencies": [
+        "ATB-ORACLE-002"
+      ],
+      "failure_class": "SPECIES_OWNERSHIP_FAILURE",
+      "qualification_strength": "SCIENTIFIC_SCOPE_BOUNDED_METAMORPHIC_ORACLE",
+      "admission_effect": "NONE",
+      "permanence_review": {
+        "reusable_claim_beyond_originating_tcd": true,
+        "source_and_input_applicability_pinned": true,
+        "allowed_expectation_provenance_and_comparison_policy": true,
+        "unknown_expectation_absent": true,
+        "legacy_behaviour_not_mislabeled_scientific_truth": true,
+        "dependencies_and_failure_semantics_known": true,
+        "historical_evidence_not_rewritten": true,
+        "owner_and_maintenance_route_declared": true,
+        "cost_and_execution_profile_declared": true,
+        "future_decision_value_beyond_debug_probe": true
+      },
+      "cost_class": "FAST",
+      "execution_profile": [
+        "DEVELOPER_FAST",
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "registry_source_fragment": "ANIMO-TB03A@a37f07b15ae50d6fbb526cef3215fb58702e85aa:integration/animo-testbank/fragments/ANIMO-TB03A_CNP_SPECIES_ORACLE_FRAGMENT.json@blob:aa11d224964bdc5f1d529d823f774afc18994bbd",
+      "registry_consolidation": "ANIMO-TB03D"
+    },
+    {
+      "test_id": "ATB-SPC-003",
+      "title": "N/P sibling-assignment ownership and symmetry applicability guard",
+      "level": "INV",
+      "layer": "TB-L2",
+      "owner": "testbank/species",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-PREP05-CROSS-SPECIES-SYMMETRY-AUDIT-2026-09-08; tests/test_cross_species_symmetry_audit.py@blob:5ce33964c2b3d93ee7038984f1e22c12668fb7f8; source-archive-sha256:183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "input_identity": "PREP05 narrow nearby N/P sibling-assignment class and pinned source identities exactly as declared by TB03A",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "TEXT_NORMALIZED_EXACT",
+      "subsystem": [
+        "NITROGEN",
+        "PHOSPHORUS",
+        "DOM"
+      ],
+      "scientific_claims": [
+        "nearby N/P sibling assignments may be compared only when a declared same-species ownership relation exists",
+        "reciprocal N/P uptake coupling and explicit N/P-ratio relations are not symmetry failures",
+        "a P sibling assignment that retains an N parent in the qualified same-species class is a species-ownership failure"
+      ],
+      "applicability": [
+        "narrow nearby high-symmetry N/P assignment class defined by PREP05",
+        "structural similarity threshold 0.90",
+        "reciprocal cross-coupling excluded",
+        "explicit stoichiometric ratio relations excluded"
+      ],
+      "dependencies": [
+        "ATB-ORACLE-003"
+      ],
+      "failure_class": "SPECIES_OWNERSHIP_FAILURE",
+      "qualification_strength": "SOURCE_BOUND_STRUCTURAL_INVARIANT_WITH_NEGATIVE_CONTROLS",
+      "admission_effect": "NONE",
+      "permanence_review": {
+        "reusable_claim_beyond_originating_tcd": true,
+        "source_and_input_applicability_pinned": true,
+        "allowed_expectation_provenance_and_comparison_policy": true,
+        "unknown_expectation_absent": true,
+        "legacy_behaviour_not_mislabeled_scientific_truth": true,
+        "dependencies_and_failure_semantics_known": true,
+        "historical_evidence_not_rewritten": true,
+        "owner_and_maintenance_route_declared": true,
+        "cost_and_execution_profile_declared": true,
+        "future_decision_value_beyond_debug_probe": true
+      },
+      "cost_class": "FAST",
+      "execution_profile": [
+        "DEVELOPER_FAST",
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "registry_source_fragment": "ANIMO-TB03A@a37f07b15ae50d6fbb526cef3215fb58702e85aa:integration/animo-testbank/fragments/ANIMO-TB03A_CNP_SPECIES_ORACLE_FRAGMENT.json@blob:aa11d224964bdc5f1d529d823f774afc18994bbd",
+      "registry_consolidation": "ANIMO-TB03D"
+    },
+    {
+      "test_id": "ATB-TRN-002",
+      "title": "Typed transaction single-edge and boundary-XOR contract",
+      "level": "QG",
+      "layer": "TB-L3",
+      "owner": "testbank/conservation",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-MASSQ02@56a11b524d03c33ee4ab9b1cd13b2cd523d543fc:docs/mass/TYPED_TRANSFER_EVENT_CANDIDATE.md",
+      "input_identity": "exact TB03B transaction-contract fields pinned by fragment blob 4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "INTEGER_EXACT",
+      "element": "ANY_CONSERVED_QUANTITY",
+      "species": "EXPLICIT_SPECIES_OR_POOL_REQUIRED",
+      "storage": [
+        "source_owner",
+        "destination_owner"
+      ],
+      "inputs": [
+        "event with external source and internal destination"
+      ],
+      "outputs": [
+        "event with internal source and external destination"
+      ],
+      "internal_transfers": [
+        "single edge q>=0 with source delta -q and destination delta +q"
+      ],
+      "boundary_signs": {
+        "input": "+",
+        "output": "-",
+        "internal_source": "-",
+        "internal_destination": "+"
+      },
+      "residual_equation": "For a closed two-owner internal transfer: R = (-q) + (+q) = 0 exactly. For a system-external event exactly one endpoint is internal.",
+      "assertions": [
+        "amount_non_negative",
+        "source_ne_destination",
+        "external_event_endpoint_xor",
+        "internal_event_exact_cancellation",
+        "evidence_coordinate_required"
+      ],
+      "dependencies": [
+        "ATB-TRN-001"
+      ],
+      "qualification_strength": "CONTRACT_ONLY_NO_RUNTIME_JOURNAL_ADMISSION",
+      "cost_class": "FOCUSED",
+      "execution_profile": [
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "admission_effect": "NONE",
+      "permanence_decision": "PERMANENT_REUSABLE_CROSS_CASE_CONTRACT",
+      "permanence_source": "docs/testbank/ANIMO-TB03B_TRANSACTION_CONSERVATION_ADOPTION.md@blob:ccebee70007680d061ff7e4dffd320fce87fe5a7#Permanence decision",
+      "registry_metadata_normalization": "TB03B did not encode central level/cost/profile/input fields per entry; TB03D supplies only TB01-compatible scheduler/schema metadata and does not alter the source scientific contract.",
+      "registry_source_fragment": "ANIMO-TB03B@48a3036501e9e871608ab920f46dde5570ebf369:integration/animo-testbank/fragments/ANIMO-TB03B_FRAGMENT.json@blob:4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+      "registry_consolidation": "ANIMO-TB03D"
+    },
+    {
+      "test_id": "ATB-CONS-002",
+      "title": "Single-layer conserved-quantity control-volume residual contract",
+      "level": "QG",
+      "layer": "TB-L4",
+      "owner": "testbank/conservation",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-MASSQ02@56a11b524d03c33ee4ab9b1cd13b2cd523d543fc:docs/mass/MASSQ02_RESIDUAL_RECONCILIATION.md",
+      "input_identity": "exact TB03B single-layer control-volume contract fields pinned by fragment blob 4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "DOMAIN_SPECIFIC_NUMERICAL_CONTRACT",
+      "element": "C_OR_N_OR_P_AS_EXPLICITLY_QUALIFIED",
+      "species": "SPECIES_RESOLVED; NH4 and NO3 remain separate species even when both contribute to elemental N",
+      "storage": [
+        "begin physical owner storage in selected layer",
+        "end physical owner storage in selected layer"
+      ],
+      "inputs": [
+        "external inputs into layer",
+        "incoming inter-layer/interface edges"
+      ],
+      "outputs": [
+        "external outputs from layer",
+        "outgoing inter-layer/interface edges"
+      ],
+      "internal_transfers": [
+        "within-layer owner-to-owner transformations cancel only for an encompassing layer control volume"
+      ],
+      "boundary_signs": {
+        "into_layer": "+",
+        "out_of_layer": "-"
+      },
+      "residual_equation": "R_layer = S_begin + I_external + I_interfaces + T_internal_net - O_external - O_interfaces - S_end",
+      "assertions": [
+        "physical_state_not_legacy_balance_accumulator",
+        "species_explicit",
+        "interface_direction_explicit",
+        "nonzero_residual_never_accepted_by_magnitude"
+      ],
+      "dependencies": [
+        "ATB-TRN-002",
+        "ATB-CONS-001"
+      ],
+      "qualification_strength": "CONTROL_VOLUME_CONTRACT_ONLY",
+      "cost_class": "FOCUSED",
+      "execution_profile": [
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "admission_effect": "NONE",
+      "permanence_decision": "PERMANENT_REUSABLE_CROSS_CASE_CONTRACT",
+      "permanence_source": "docs/testbank/ANIMO-TB03B_TRANSACTION_CONSERVATION_ADOPTION.md@blob:ccebee70007680d061ff7e4dffd320fce87fe5a7#Permanence decision",
+      "registry_metadata_normalization": "TB03B did not encode central level/cost/profile/input fields per entry; TB03D supplies only TB01-compatible scheduler/schema metadata and does not alter the source scientific contract.",
+      "registry_source_fragment": "ANIMO-TB03B@48a3036501e9e871608ab920f46dde5570ebf369:integration/animo-testbank/fragments/ANIMO-TB03B_FRAGMENT.json@blob:4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+      "registry_consolidation": "ANIMO-TB03D"
+    },
+    {
+      "test_id": "ATB-CONS-003",
+      "title": "Whole-profile conserved-quantity control-volume residual contract",
+      "level": "QG",
+      "layer": "TB-L4",
+      "owner": "testbank/conservation",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-MASSQ02@56a11b524d03c33ee4ab9b1cd13b2cd523d543fc:docs/mass/MASSQ02_RESIDUAL_RECONCILIATION.md",
+      "input_identity": "exact TB03B whole-profile control-volume contract fields pinned by fragment blob 4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "DOMAIN_SPECIFIC_NUMERICAL_CONTRACT",
+      "element": "C_OR_N_OR_P_AS_EXPLICITLY_QUALIFIED",
+      "species": "SPECIES_RESOLVED with optional explicitly declared elemental aggregation",
+      "storage": [
+        "sum of begin physical owner storages inside profile",
+        "sum of end physical owner storages inside profile"
+      ],
+      "inputs": [
+        "top-boundary/deposition/material inputs",
+        "declared lateral or lower inflow when present"
+      ],
+      "outputs": [
+        "runoff/drainage/bottom export",
+        "crop uptake only when crop lies outside selected profile control volume",
+        "gas or other external export only when qualified"
+      ],
+      "internal_transfers": [
+        "all layer-to-layer edges",
+        "within-profile reaction transfers",
+        "soil-to-crop transfer only if crop is inside encompassing control volume"
+      ],
+      "boundary_signs": {
+        "external_input": "+",
+        "external_output": "-",
+        "profile_internal": "0 after exact edge cancellation"
+      },
+      "residual_equation": "R_profile = sum(S_begin) + sum(external_inputs) - sum(external_outputs) - sum(S_end); all internal edges cancel exactly once",
+      "assertions": [
+        "internal_edges_cancel_once",
+        "no_double_booked_interfaces",
+        "control_volume_membership_explicit",
+        "legacy_balance_arrays_observer_only"
+      ],
+      "dependencies": [
+        "ATB-CONS-002"
+      ],
+      "qualification_strength": "PROFILE_CONSERVATION_CONTRACT_ONLY_NO_WHOLE_MODEL_C_CLAIM",
+      "cost_class": "FOCUSED",
+      "execution_profile": [
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "admission_effect": "NONE",
+      "permanence_decision": "PERMANENT_REUSABLE_CROSS_CASE_CONTRACT",
+      "permanence_source": "docs/testbank/ANIMO-TB03B_TRANSACTION_CONSERVATION_ADOPTION.md@blob:ccebee70007680d061ff7e4dffd320fce87fe5a7#Permanence decision",
+      "registry_metadata_normalization": "TB03B did not encode central level/cost/profile/input fields per entry; TB03D supplies only TB01-compatible scheduler/schema metadata and does not alter the source scientific contract.",
+      "registry_source_fragment": "ANIMO-TB03B@48a3036501e9e871608ab920f46dde5570ebf369:integration/animo-testbank/fragments/ANIMO-TB03B_FRAGMENT.json@blob:4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+      "registry_consolidation": "ANIMO-TB03D"
+    },
+    {
+      "test_id": "ATB-CONS-004",
+      "title": "NH4/NO3 elemental-N aggregation without species erasure",
+      "level": "QG",
+      "layer": "TB-L3",
+      "owner": "testbank/conservation",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-MASSQ02@56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+      "input_identity": "exact TB03B species-resolved N aggregation contract fields pinned by fragment blob 4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "DOMAIN_SPECIFIC_NUMERICAL_CONTRACT",
+      "element": "N",
+      "species": "NH4-N and NO3-N separate",
+      "storage": [
+        "NH4-N physical stores",
+        "NO3-N physical stores"
+      ],
+      "inputs": [
+        "species-resolved N inputs"
+      ],
+      "outputs": [
+        "species-resolved N outputs"
+      ],
+      "internal_transfers": [
+        "nitrification NH4-N -> NO3-N is internal for total-N control volume and must not be counted as external input/output"
+      ],
+      "boundary_signs": {
+        "NH4_external_in": "+",
+        "NO3_external_in": "+",
+        "NH4_external_out": "-",
+        "NO3_external_out": "-",
+        "NH4_to_NO3_internal": "-NH4,+NO3,total_N_zero"
+      },
+      "residual_equation": "R_N = R_NH4 + R_NO3 + residuals of other explicitly included N pools; aggregation is permitted only after species-resolved ledgers are formed",
+      "assertions": [
+        "NH4_NO3_not_conflated",
+        "internal_species_conversion_total_N_zero",
+        "species_residuals_preserved"
+      ],
+      "dependencies": [
+        "ATB-SPC-001",
+        "ATB-TRN-002"
+      ],
+      "qualification_strength": "SPECIES_PRESERVING_AGGREGATION_CONTRACT",
+      "cost_class": "FOCUSED",
+      "execution_profile": [
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "admission_effect": "NONE",
+      "permanence_decision": "PERMANENT_REUSABLE_CROSS_CASE_CONTRACT",
+      "permanence_source": "docs/testbank/ANIMO-TB03B_TRANSACTION_CONSERVATION_ADOPTION.md@blob:ccebee70007680d061ff7e4dffd320fce87fe5a7#Permanence decision",
+      "registry_metadata_normalization": "TB03B did not encode central level/cost/profile/input fields per entry; TB03D supplies only TB01-compatible scheduler/schema metadata and does not alter the source scientific contract.",
+      "registry_source_fragment": "ANIMO-TB03B@48a3036501e9e871608ab920f46dde5570ebf369:integration/animo-testbank/fragments/ANIMO-TB03B_FRAGMENT.json@blob:4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+      "registry_consolidation": "ANIMO-TB03D"
+    },
+    {
+      "test_id": "ATB-CONS-005",
+      "title": "Balance deviation/index audit adoption gate",
+      "level": "INV",
+      "layer": "TB-L3",
+      "owner": "testbank/conservation",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "TB01 adapters ATB-SPC-001 and ATB-CONS-001 plus MASSQ02 residual classification",
+      "input_identity": "exact TB03B structural audit-gate fields pinned by fragment blob 4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "TEXT_NORMALIZED_EXACT",
+      "element": "N_AND_P",
+      "species": "index-resolved legacy species families",
+      "storage": [
+        "none; structural audit"
+      ],
+      "inputs": [
+        "pinned source/index map"
+      ],
+      "outputs": [
+        "classified audit findings"
+      ],
+      "internal_transfers": [
+        "none; structural audit"
+      ],
+      "boundary_signs": {
+        "not_applicable": "structural audit only"
+      },
+      "residual_equation": "not_applicable; this gate checks ownership/index consistency and known balance deviations before conservation tests are interpreted",
+      "assertions": [
+        "species_index_family_consistent",
+        "known_deviation_detected",
+        "audit_not_used_as_balancing_flux"
+      ],
+      "dependencies": [
+        "ATB-SPC-001",
+        "ATB-CONS-001"
+      ],
+      "qualification_strength": "STRUCTURAL_ADOPTION_GATE",
+      "cost_class": "FAST",
+      "execution_profile": [
+        "DEVELOPER_FAST",
+        "SCIENTIFIC_FOCUSED"
+      ],
+      "admission_effect": "NONE",
+      "permanence_decision": "PERMANENT_REUSABLE_CROSS_CASE_CONTRACT",
+      "permanence_source": "docs/testbank/ANIMO-TB03B_TRANSACTION_CONSERVATION_ADOPTION.md@blob:ccebee70007680d061ff7e4dffd320fce87fe5a7#Permanence decision",
+      "registry_metadata_normalization": "TB03B did not encode central level/cost/profile/input fields per entry; TB03D supplies only TB01-compatible scheduler/schema metadata and does not alter the source scientific contract.",
+      "registry_source_fragment": "ANIMO-TB03B@48a3036501e9e871608ab920f46dde5570ebf369:integration/animo-testbank/fragments/ANIMO-TB03B_FRAGMENT.json@blob:4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+      "registry_consolidation": "ANIMO-TB03D"
     }
   ],
   "subsystem_registry": [
