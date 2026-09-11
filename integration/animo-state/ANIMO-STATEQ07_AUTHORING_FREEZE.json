@@ -1,0 +1,32 @@
+{
+  "work_unit": "ANIMO-STATEQ07",
+  "freeze_kind": "GOV05_SUBSTANTIVE_AUTHORING_FREEZE",
+  "target": "TCD-036",
+  "substantive_package_head": "3ccca21e8f77762a499ccb7e955889e6764e24e5",
+  "substantive_package_tree": "1ab8585a8be0a71068cea539e76d0644b774cee0",
+  "base_authority": "ANIMO-B3D38@c6fe71cfd1822aea5d00a802862e4b3a4a991cd2",
+  "pre_freeze_validation": {
+    "green_run": 34644580302,
+    "green_job": 103412170725,
+    "conclusion": "success"
+  },
+  "frozen_candidate_identity": "TCD036_PRE_EXISTING_ACTIVE_PONDING_LAYER0_GHG_RESTART_IDENTITY_FROM_SERIALIZED_TOTAL_SYSTEM_OWNER",
+  "candidate_b3_class_after_state_resolution": "B_LOCAL_RESTART_RECONSTRUCTION_EXISTING_OWNER",
+  "risk_tier": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "frozen_substantive_paths": [
+    "docs/stateq07/TCD036_GHG_PONDING_LAYER0_RESTART.md",
+    "integration/animo-state/TCD036_GHG_PONDING_LAYER0_RESTART_CONTRACT.json",
+    "tools/stateq07/tcd036_ponding_layer0_oracle.py",
+    "tests/stateq07/test_tcd036_ponding_layer0.py",
+    "tools/validate_stateq07_tcd036.py",
+    ".github/workflows/animo-stateq07-tcd036-layer0-restart.yml"
+  ],
+  "post_freeze_allowed_changes": [
+    "integration/animo-state/ANIMO-STATEQ07_STATUS.json",
+    "integration/animo-state/ANIMO-STATEQ07_INTERNAL_ADVERSARIAL_REVIEW.json"
+  ],
+  "same_agent_review_required": true,
+  "genuinely_independent_review_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "instruction": "Require green CI on the exact frozen/reviewed head before adversarial review. Preserve TCD-035 separation, new-ponding source initialization, no-dormant-layer0 rule, B1-not-B2 status and all production/B4 boundaries."
+}
