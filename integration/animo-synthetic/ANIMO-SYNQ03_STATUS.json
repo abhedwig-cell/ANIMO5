@@ -3,7 +3,7 @@
   "title": "TCD-037-A2 Independent Synthetic Activation Qualification",
   "target": "TCD-037-A2",
   "branch": "work/animo-synq03-tcd037-a2-independent-ghg-index0-activation",
-  "state": "PERSISTED_VALIDATION_PENDING",
+  "state": "QUALIFIED_TCD037_A2_INDEPENDENT_SYNTHETIC_CAUSALITY_AND_SCOPE_NOT_B2",
   "base_authority": "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858",
   "aggregate_authority": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
   "routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
@@ -37,16 +37,16 @@
     "Btom(CO2e) formation-side dissimilation complement only"
   ],
   "forbidden_difference_results": {
-    "physical_state": "UNCHANGED_REQUIRED",
-    "process_flux": "UNCHANGED_REQUIRED",
+    "physical_state": "UNCHANGED",
+    "process_flux": "UNCHANGED",
     "restart_state": "NO_CHANGE_IN_SCOPE",
     "solver_or_numerical_policy": "NO_CHANGE_IN_SCOPE",
-    "TCD-037-A1_observer": "UNCHANGED_REQUIRED",
-    "TCD-037-A3_observer": "UNCHANGED_REQUIRED",
-    "TCD-037-A4_observer": "UNCHANGED_REQUIRED",
-    "unrelated_observer": "UNCHANGED_REQUIRED"
+    "TCD-037-A1_observer": "UNCHANGED",
+    "TCD-037-A3_observer": "UNCHANGED",
+    "TCD-037-A4_observer": "UNCHANGED",
+    "unrelated_observer": "UNCHANGED"
   },
-  "gov04_activation_predicate": "PENDING_CI",
+  "gov04_activation_predicate": "PASS_AT_EVIDENCE_LEVEL_REQUIRES_REEVALUATION_IN_B3A06",
   "tier_a_waiver_granted": false,
   "scientific_admission": false,
   "parent_or_sibling_admission": false,
@@ -61,24 +61,26 @@
   "tcd032_036_composition": false,
   "testcase_translation_performed": false,
   "validation": {
-    "machine_validated": false,
-    "run_id": null,
-    "job_id": null,
-    "tested_head": null,
-    "conclusion": null,
-    "o0": "PENDING",
-    "o2": "PENDING",
-    "o0_o2_byte_identity": "PENDING",
-    "exact_rational_oracle": "PENDING",
-    "causal_discriminator": "PENDING",
-    "scope_guard": "PENDING"
+    "machine_validated": true,
+    "run_id": 34544905147,
+    "job_id": 103095314187,
+    "tested_head": "f2259822ad17d2d7da0dcd46aa158210450ed7a6",
+    "conclusion": "success",
+    "o0": "PASS",
+    "o2": "PASS",
+    "o0_o2_byte_identity": "PASS",
+    "exact_rational_oracle": "PASS",
+    "causal_discriminator": "PASS",
+    "scope_guard": "PASS",
+    "final_exact_head_required": true,
+    "closeout_note": "Run 34544905147 validates the oracle-qualified SYNQ03 package at f2259822ad17d2d7da0dcd46aa158210450ed7a6. This status-only closeout must pass the same workflow on its own exact final head before SYNQ03 is consumed as qualified evidence."
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "next_if_qualified": "ANIMO-B3A06 — TCD-037-A2 CH4 Index-0 Formation/Emission Split Tier-A Readiness"
 }
