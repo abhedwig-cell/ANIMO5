@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB05B",
+  "title": "GHG Subsystem Bank Adoption",
+  "branch": "work/animo-tb05b-ghg-subsystem-bank-adoption",
+  "base_authority": "ANIMO-TB05A@e3d537935104b4a7253a5287f8fbf7df7e7459e2",
+  "tb02_authority": "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d",
+  "state": "QUALIFICATION_CANDIDATE_PENDING_EXACT_HEAD_CI",
+  "scope": [
+    "GHG theory/source lineage boundary",
+    "GHG accounting ownership and TCD-037 atomization contract",
+    "closed lower-air boundary subsystem dependency",
+    "GHG C/N ledger and restart gaps",
+    "historical-reference and release gaps"
+  ],
+  "authorities": {
+    "GHG01_status_blob": "c691fbf8f70a096662f33b3f52fd1d5ac28b80e7",
+    "RUNTIMEQ03_status_blob": "e1f501a5f700d1bf17cf43f6a4c79d61b292099e",
+    "BUILDQ04": "268a0c007b4c9eff5cbf1dcbd7eeb4389554d3ed"
+  },
+  "fragment": "integration/animo-testbank/fragments/ANIMO-TB05B_GHG_SUBSYSTEM_FRAGMENT.json",
+  "qualified_entry_candidates": ["ATB-SUB-008", "ATB-SUB-009", "ATB-SUB-010"],
+  "gap_entries": ["ATB-SUB-011", "ATB-SUB-012"],
+  "existing_registry_handling": "ATB-SUB-002 is not modified, redefined or promoted to release authority by this fragment.",
+  "scope_limit": "No full GHG C/N closure, no canonical GHG restart qualification, no historical B2 behavioural reference, no production repair and no subsystem release qualification are established.",
+  "gov05_adversarial_self_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "result": "PASS_BOUNDED_GHG_SUBSYSTEM_ADOPTION_SCOPE",
+    "questions": {
+      "does_partial_theory_reconciliation_become_complete_release_specification": false,
+      "does_source_reachability_become_historical_behaviour": false,
+      "does_runtime_accounting_semantics_become_parent_TCD_admission": false,
+      "does_BUILDQ04_dependency_become_production_fix": false,
+      "does_source_owned_GHG_state_become_full_CN_ledger_closure": false,
+      "does_fragment_claim_canonical_GHG_restart": false,
+      "does_fragment_modify_central_registry": false,
+      "does_fragment_create_behavioural_golden_or_tolerance": false
+    }
+  },
+  "qualification": {
+    "validator": "tools/validate_animo_tb05b.py",
+    "workflow": ".github/workflows/animo-tb05b-ghg-subsystem.yml",
+    "exact_final_head_ci_required": true,
+    "qualified_state_after_success": "QUALIFIED_TB05B_BOUNDED_GHG_SUBSYSTEM_FRAGMENT_PACKAGE"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "complete": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "historical_B2_fabricated": false,
+    "whole_model_golden_baseline_created": false,
+    "full_GHG_CN_ledger_claimed": false,
+    "canonical_GHG_restart_qualified": false,
+    "subsystem_release_qualified": false,
+    "new_tolerance_introduced": false
+  }
+}

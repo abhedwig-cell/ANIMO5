@@ -1,0 +1,46 @@
+name: ANIMO-TB05B GHG subsystem fragment qualification
+
+on:
+  push:
+    branches:
+      - work/animo-tb05b-ghg-subsystem-bank-adoption
+  workflow_dispatch:
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate bounded fragment
+        run: python tools/validate_animo_tb05b.py
+      - name: Guard hard boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=e3d537935104b4a7253a5287f8fbf7df7e7459e2
+          git diff --name-only "$BASE"...HEAD > /tmp/tb05b_changed.txt
+          if grep -Eq '^(src/|source/|Source/|animo/|ANIMO/)' /tmp/tb05b_changed.txt; then
+            echo 'Production source path changed' >&2
+            exit 1
+          fi
+          if grep -Fxq 'integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json' /tmp/tb05b_changed.txt; then
+            echo 'Central testbank registry changed' >&2
+            exit 1
+          fi
+          allowed='^(.github/workflows/animo-tb05b-ghg-subsystem.yml|tools/validate_animo_tb05b.py|docs/testbank/ANIMO-TB05B_GHG_SUBSYSTEM_ADOPTION.md|integration/animo-testbank/ANIMO-TB05B_STATUS.json|integration/animo-testbank/fragments/ANIMO-TB05B_GHG_SUBSYSTEM_FRAGMENT.json|integration/animo-testbank/receipts/ANIMO-TB05B_QUALIFICATION_RECEIPT.json)$'
+          bad=$(grep -Ev "$allowed" /tmp/tb05b_changed.txt || true)
+          if [ -n "$bad" ]; then
+            echo 'Out-of-scope files changed:' >&2
+            echo "$bad" >&2
+            exit 1
+          fi
+      - name: Exact-head identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"

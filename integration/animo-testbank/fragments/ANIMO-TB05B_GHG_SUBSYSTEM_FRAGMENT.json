@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "fragment_id": "ANIMO-TB05B-GHG-SUBSYSTEM",
+  "producer_workunit": "ANIMO-TB05B",
+  "base_authority": "ANIMO-TB05A@e3d537935104b4a7253a5287f8fbf7df7e7459e2",
+  "tb02_authority": "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d",
+  "registry_integration": "SEPARATE_SERIAL_CONSOLIDATION_WORKUNIT_ONLY",
+  "central_registry_write": "FORBIDDEN_BY_FRAGMENT_PRODUCER",
+  "scope": "TB-L7 GHG subsystem bank adoption only",
+  "existing_registry_note": "ATB-SUB-002 remains an untouched TB01 adapter candidate. This fragment records narrower reusable GHG contracts and explicit unresolved gaps without converting GHG01 or runtime diagnostics into release authority.",
+  "entries": [
+    {
+      "test_id": "ATB-SUB-008",
+      "layer": "TB-L7",
+      "owner": "testbank-ghg",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "integration/animo-ghg/ANIMO-GHG01_STATUS.json@blob:c691fbf8f70a096662f33b3f52fd1d5ac28b80e7",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_STRUCTURAL_CONTRACT_NO_TOLERANCE",
+      "claim": "The GHG subsystem has source-reachable CH4 and N2O process families with explicit qualified theory/source lineage boundaries, while exact revision-53 release specification, historical active behaviour and several release-specific equation details remain unresolved.",
+      "applicability_pins": {
+        "GHG_guard": "IoptGHG>=1",
+        "broad_CH4_scientific_intent": "THEORY_READY",
+        "broad_N2O_scientific_intent": "THEORY_READY",
+        "exact_revision53_equation_authority": "PARTIALLY_INDEPENDENTLY_RECONCILED_WITH_RELEASE_SPECIFIC_GAPS",
+        "supplied_historical_case_reaches_GHG_branch": false,
+        "b3_admitted": false,
+        "production_ready": false
+      },
+      "failure_semantics": "Any promotion of partial release-specific theory reconciliation or source reachability to complete revision-53 specification, historical behaviour or production readiness fails the contract.",
+      "permanence": "REUSABLE_GHG_THEORY_SOURCE_LINEAGE_BOUNDARY_CONTRACT"
+    },
+    {
+      "test_id": "ATB-SUB-009",
+      "layer": "TB-L7",
+      "owner": "testbank-ghg",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "integration/animo-runtime/ANIMO-RUNTIMEQ03_STATUS.json@blob:e1f501a5f700d1bf17cf43f6a4c79d61b292099e",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_ACCOUNTING_OWNERSHIP_CONTRACT_NO_TOLERANCE",
+      "claim": "TCD-037 accounting semantics distinguish CH4 layer/total formation and atmosphere emission, N2O nitrification/denitrification formation and atmosphere emission, with N2O reduction retained as a separate sink; parent TCD-037 is non-atomic and requires child-atom partitioning.",
+      "applicability_pins": {
+        "parent_atomic": false,
+        "parent_atomization_required": true,
+        "observer_only_expected_difference": true,
+        "natural_active_ghg_case": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+        "synthetic_evidence": "B1_ONLY_NOT_INDEPENDENT_B2",
+        "scientific_admission": false
+      },
+      "failure_semantics": "Conflating formation, emission or reduction ownership, or treating parent TCD-037 as a single atomic observer correction, fails the contract.",
+      "permanence": "REUSABLE_GHG_ACCOUNTING_OWNERSHIP_AND_ATOMIZATION_CONTRACT"
+    },
+    {
+      "test_id": "ATB-SUB-010",
+      "layer": "TB-L7",
+      "owner": "testbank-ghg",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-BUILDQ04@268a0c007b4c9eff5cbf1dcbd7eeb4389554d3ed",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_BOUNDARY_VALUE_AND_INITIALIZATION_CONTRACT_NO_TOLERANCE",
+      "claim": "The closed GHG lower external advective air boundary requires Flair(Nl+1)=0 and compiler-dependent uninitialized first-use values are not model semantics.",
+      "applicability_pins": {
+        "boundary_coordinate": "Flair(Nl+1)",
+        "boundary_value": 0.0,
+        "historical_intel_effect": "UNKNOWN",
+        "production_patch_admitted": false,
+        "b3_scientific_admitted": false
+      },
+      "failure_semantics": "Any dependence on stack/compiler initialization for the first lower-boundary read fails this contract, without implying production-patch admission.",
+      "permanence": "REUSABLE_GHG_LOWER_BOUNDARY_SUBSYSTEM_DEPENDENCY"
+    },
+    {
+      "test_id": "ATB-SUB-011",
+      "layer": "TB-L7",
+      "owner": "testbank-ghg",
+      "status": "GAP",
+      "source_identity": "ANIMO-GHG01 ledger and restart audits",
+      "expected_value_provenance": "UNKNOWN",
+      "comparison_policy": "NOT_YET_QUALIFIED",
+      "claim": "Full-model C/N GHG conservation, explicit persistent task-state ownership, restart phase continuity and ponding layer-0 reconstruction remain incomplete or unresolved.",
+      "applicability_pins": {
+        "full_model_C_ledger_closed": false,
+        "full_model_N_ledger_closed": false,
+        "GHG_restart_phase_state_continuity": "SOURCE_CONFIRMED_LEGACY_INITIAL_OUT_RESTORE_DISCONTINUITY",
+        "GHG_ponding_layer0_restart_reconstruction": "SOURCE_CONFIRMED_GAP",
+        "canonical_GHG_restart_qualified": false
+      },
+      "failure_semantics": "Fail closed: source-identified ownership and process reachability do not establish model-wide C/N closure or restart qualification.",
+      "permanence": "GAP_TRACKER_GHG_LEDGER_AND_RESTART"
+    },
+    {
+      "test_id": "ATB-SUB-012",
+      "layer": "TB-L7",
+      "owner": "testbank-ghg",
+      "status": "GAP",
+      "source_identity": "ANIMO-GHG01 historical/reference boundary plus RUNTIMEQ03 evidence boundary",
+      "expected_value_provenance": "UNKNOWN",
+      "comparison_policy": "NOT_YET_QUALIFIED",
+      "claim": "No supplied historical case reaches the GHG branch, the GHGMais compatibility descendant is diagnostic only, historical Intel behaviour is unknown, and no complete subsystem behavioural reference or release qualification exists.",
+      "applicability_pins": {
+        "historical_GHG_behaviour_claim": "NOT_ADMITTED",
+        "compatibility_descendant_can_be_B2": false,
+        "natural_active_GHG_reference": false,
+        "historical_Intel_behavior": "UNKNOWN",
+        "subsystem_release_qualified": false
+      },
+      "failure_semantics": "Fail closed: diagnostic descendants or synthetic B1 evidence must not be promoted to historical B2, behavioural golden or release truth.",
+      "permanence": "GAP_TRACKER_GHG_HISTORICAL_REFERENCE_AND_RELEASE"
+    }
+  ],
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "historical_B2_fabricated": false,
+    "whole_model_golden_baseline_created": false,
+    "full_GHG_CN_ledger_claimed": false,
+    "canonical_GHG_restart_qualified": false,
+    "subsystem_release_qualified": false,
+    "new_tolerance_introduced": false
+  }
+}

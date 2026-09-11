@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB05B",
+  "exact_head": "ESTABLISHED_BY_EXACT_HEAD_CI",
+  "manifest_identity": "integration/animo-testbank/fragments/ANIMO-TB05B_GHG_SUBSYSTEM_FRAGMENT.json",
+  "selected_test_ids": ["ATB-SUB-008", "ATB-SUB-009", "ATB-SUB-010", "ATB-SUB-011", "ATB-SUB-012"],
+  "result": "PASS",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "scientific_admission": false,
+  "registry_integration_performed": false
+}
