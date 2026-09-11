@@ -1,0 +1,25 @@
+{
+  "work_unit": "ANIMO-GHG02",
+  "target": "TCD-033",
+  "base_head": "997d867a2b107ec8e28efce530c82a204719de46",
+  "scope": "TCD033_CH4_COMPONENT_PARENT_DAUGHTER_PARTITION_IDENTITY_ONLY",
+  "substantive_authoring_complete_when_workflow_present": true,
+  "review_must_pin_exact_green_authoring_head": true,
+  "substantive_change_resets_GOV05_review": true,
+  "post_review_changes_allowed_only": [
+    "integration/animo-ghg/ANIMO-GHG02_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-ghg/ANIMO-GHG02_STATUS.json"
+  ],
+  "forbidden_scope": [
+    "production source",
+    "frozen B0",
+    "canonical TCD register",
+    "TCD-032",
+    "TCD-034",
+    "total CH4 production law",
+    "Rdfaox logic",
+    "GHG transport",
+    "B4",
+    "production migration"
+  ]
+}
