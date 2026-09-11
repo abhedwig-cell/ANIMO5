@@ -1,0 +1,41 @@
+name: ANIMO-TB02 shared testbank infrastructure qualification
+
+on:
+  push:
+    branches:
+      - work/animo-tb02-shared-runner-manifest-qualification-receipts
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate TB02 contracts
+        run: python tools/validate_animo_tb02.py
+      - name: Guard production source and central registry
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=15a17bfa2c321d08f3ac89f334986c0ae8429045
+          git diff --name-only "$BASE" HEAD > /tmp/tb02_changed.txt
+          if grep -E '^(src/|source/|Source/|animo/|ANIMO/)' /tmp/tb02_changed.txt; then
+            echo 'Production source changed in TB02' >&2
+            exit 1
+          fi
+          if grep -Fx 'integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json' /tmp/tb02_changed.txt; then
+            echo 'Central registry changed in TB02' >&2
+            exit 1
+          fi
+      - name: Exact-head identity
+        run: |
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+          echo "ANIMO-TB02 exact head ${GITHUB_SHA}"
