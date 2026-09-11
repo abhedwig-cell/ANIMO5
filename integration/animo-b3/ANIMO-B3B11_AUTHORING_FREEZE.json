@@ -1,0 +1,25 @@
+{
+  "work_unit":"ANIMO-B3B11",
+  "freeze_kind":"GOV05_SUBSTANTIVE_AUTHORING_FREEZE",
+  "substantive_package_head":"e0739808ebf5eca4188dbc38b6ff89b8b624e95f",
+  "substantive_package_tree":"7df1e6b688f5c41810f61d37a982845116921b87",
+  "base_authority":"ANIMO-STATEQ05@c2b29f05b7726f3c57a39481b92f211e78dbee59",
+  "target":"TCD-039",
+  "resolved_b3_qualification_class":"B_LOCAL_RESTART_CHECKPOINT_OMISSION_EXISTING_CONTINUATION_OWNER",
+  "risk_tier":"C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "frozen_candidate_identity":"TCD039_INTERNAL_CROP_POTENTIAL_UPTAKE_RESTART_CONTINUATION_OWNER_RESTORE_N_AND_CONDITIONAL_P",
+  "frozen_substantive_paths":[
+    "docs/b3b11/TCD039_POTENTIAL_UPTAKE_RESTART_READINESS.md",
+    "integration/animo-b3/B3B11_TCD039_READINESS_CONTRACT.json",
+    "tools/validate_b3b11_tcd039.py",
+    ".github/workflows/animo-b3b11-tcd039-readiness.yml"
+  ],
+  "post_freeze_allowed_changes":[
+    "integration/animo-b3/ANIMO-B3B11_STATUS.json",
+    "integration/animo-b3/ANIMO-B3B11_INTERNAL_ADVERSARIAL_REVIEW.json"
+  ],
+  "same_agent_review_required":true,
+  "genuinely_independent_review_claimed":false,
+  "assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "instruction":"Require green CI on the exact freeze head before adversarial review. Reclassification from provisional C to B must not reduce Tier-C review risk or scientific evidence gates."
+}
