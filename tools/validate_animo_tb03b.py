@@ -14,7 +14,7 @@ s = json.loads(status_path.read_text())
 assert m["fragment_id"] == "ANIMO-TB03B"
 assert m["base_authority"] == "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d"
 assert m["supporting_authorities"]["MASSQ02"] == "ANIMO-MASSQ02@56a11b524d03c33ee4ab9b1cd13b2cd523d543fc"
-assert "scientific tolerance" in " ".join(m["excluded"])
+assert "scientific residual tolerance" in m["excluded"]
 assert m["sign_contract"]["amount_rule"].startswith("q >= 0")
 assert "cannot convert a non-zero physical residual" in m["sign_contract"]["tolerance_policy"]
 
@@ -53,8 +53,7 @@ S1 = S0 + ext_in + int_in + internal_net - ext_out - int_out
 R_layer = S0 + ext_in + int_in + internal_net - ext_out - int_out - S1
 assert R_layer == 0
 
-# Whole profile: one interface appears once as +q in upper receiver and -q in lower source
-# at layer scale, but cancels from the combined profile boundary equation.
+# Whole profile: internal interfaces cancel from the combined profile equation.
 S0_profile, external_in, external_out = 20, 5, 8
 S1_profile = S0_profile + external_in - external_out
 R_profile = S0_profile + external_in - external_out - S1_profile
