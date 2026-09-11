@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB05D",
+  "title": "Qualified TB4/TB5 Fragment Serial Registry Consolidation",
+  "branch": "work/animo-tb05d-qualified-tb4-tb5-fragment-serial-registry-consolidation",
+  "base_authority": "ANIMO-TB05C@788247b4346bedbb79749d5ce5daef3f99283f8d",
+  "state": "QUALIFIED_ANIMO_TB05D_SERIAL_REGISTRY_CONSOLIDATION",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "qualified_entries": [
+    "ATB-STATE-003",
+    "ATB-STATE-004",
+    "ATB-STATE-005",
+    "ATB-STATE-006",
+    "ATB-BND-002",
+    "ATB-BND-005",
+    "ATB-SUB-003",
+    "ATB-SUB-004",
+    "ATB-SUB-005",
+    "ATB-SUB-008",
+    "ATB-SUB-009",
+    "ATB-SUB-010"
+  ],
+  "preserved_gaps": {
+    "ATB-STATE-007": "GAP",
+    "ATB-BND-003": "GAP",
+    "ATB-BND-004": "GAP",
+    "ATB-BND-006": "GAP",
+    "ATB-SUB-006": "GAP",
+    "ATB-SUB-007": "GAP",
+    "ATB-SUB-011": "GAP",
+    "ATB-SUB-012": "GAP"
+  },
+  "registry": {
+    "base_blob": "4c78cdb542c5ff4ce898c033eb99dd7b2daa7c2c",
+    "result_blob": "9b5078ea4c4f22f0215fead27a96580eeb613a9b",
+    "write_semantics": "APPEND_ONLY_TWELVE_QUALIFIED_FRAGMENT_ENTRIES",
+    "preexisting_entries_modified": false,
+    "central_metadata_modified": false
+  },
+  "qualification": {
+    "validator": "tools/validate_animo_tb05d.py",
+    "workflow": ".github/workflows/animo-tb05d-serial-registry-consolidation.yml",
+    "materialization_green_run": {
+      "run_id": 34568340819,
+      "head": "f64c9d5759e167f0169356af815d32634a2dd7f4",
+      "conclusion": "success",
+      "registry_commit": "c329a720ea5788d12d37cf40c73d3490db9b150f"
+    },
+    "exact_final_head_ci_required": true,
+    "final_exact_head_evidence": "ESTABLISHED_BY_POST_CLOSEOUT_WORKFLOW"
+  },
+  "gov05_adversarial_self_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "result": "PASS_BOUNDED_TB4_TB5_SERIAL_REGISTRY_CONSOLIDATION",
+    "no_gap_promotion": true,
+    "no_provenance_drift": true,
+    "no_dependency_breakage": true,
+    "no_scientific_meaning_change": true,
+    "no_whole_model_claim_inflation": true,
+    "no_TCD_admission_implication": true,
+    "no_historical_B2_promotion": true,
+    "no_whole_model_golden_creation": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": true,
+    "qualified": true,
+    "complete": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "gap_promoted": false,
+    "historical_B2_fabricated": false,
+    "whole_model_golden_baseline_created": false,
+    "whole_model_restart_qualified": false,
+    "whole_model_boundary_initialization_qualified": false,
+    "whole_model_conservation_qualified": false,
+    "subsystem_release_qualified": false,
+    "scientific_authority_redefined": false
+  }
+}
