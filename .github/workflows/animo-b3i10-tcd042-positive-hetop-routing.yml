@@ -1,0 +1,56 @@
+name: ANIMO-B3I10 TCD042 positive-HETOP child-scope routing
+on:
+  push:
+    branches: [work/animo-b3i10-tcd042-positive-hetop-child-scope-routing]
+  workflow_dispatch:
+permissions: {contents: read, actions: read}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in \
+            4d7c42bb749ed5fbf1c884fba4a26a1a5b898505 \
+            e5ccad78d7c85aaf2c68d844c5a496edf6d73db5 \
+            7fa0162415e02a6f0167e71b48ae38177a9e06e0 \
+            8f01f0cb366dfa8cc63a184d6f885100899a8cd9 \
+            bbdb61be30f08951ba78926a745719cfcb1b64a8 \
+            690868409aae11297c966eb55419f62ff977c619 \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            1bbe4c211197590f346803106e45dca5faae79fc \
+            f65a47724e4a4fca7f2d8b8d6de9eeee51867904
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+            git cat-file -e "${sha}^{commit}"
+          done
+      - name: Verify exact head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify exact-final authorities
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request
+          checks={
+            34586116849:"4d7c42bb749ed5fbf1c884fba4a26a1a5b898505",
+            34582143283:"e5ccad78d7c85aaf2c68d844c5a496edf6d73db5",
+            34380964508:"7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+            34388315894:"8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
+            34449259660:"bbdb61be30f08951ba78926a745719cfcb1b64a8",
+            34391300744:"cbd262bdabe92923113b7326f2f42822ce9a971c",
+            34462295879:"1bbe4c211197590f346803106e45dca5faae79fc",
+            34546470484:"f65a47724e4a4fca7f2d8b8d6de9eeee51867904"
+          }
+          for run,sha in checks.items():
+            req=urllib.request.Request(f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run}",headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}","Accept":"application/vnd.github+json"})
+            with urllib.request.urlopen(req) as f: d=json.load(f)
+            assert d["head_sha"]==sha and d["status"]=="completed" and d["conclusion"]=="success",(run,d.get("head_sha"),d.get("status"),d.get("conclusion"))
+          print("exact-final authorities verified")
+          PY
+      - run: python -m json.tool integration/animo-b3/B3I10_TCD042_CHILD_SCOPE_ROUTING.json >/dev/null
+      - run: python -m json.tool integration/animo-b3/ANIMO-B3I10_STATUS.json >/dev/null
+      - run: python -m py_compile tools/validate_b3i10_tcd042_routing.py
+      - run: python tools/validate_b3i10_tcd042_routing.py

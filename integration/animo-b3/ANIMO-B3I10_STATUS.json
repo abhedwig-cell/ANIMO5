@@ -1,0 +1,23 @@
+{
+  "work_unit":"ANIMO-B3I10",
+  "title":"TCD-042 Positive-HETOP Child Scope Routing",
+  "branch":"work/animo-b3i10-tcd042-positive-hetop-child-scope-routing",
+  "phase":"AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
+  "state":"NOT_YET_QUALIFIED",
+  "decision_candidate":"QUALIFY_TCD042_REV53_CHILD_SCOPES_HETOP_POSITIVE_ZERO_ENDPOINT_EXCLUDED_B1_READY_FOR_SEPARATE_ADMISSION_NO_ADMISSION",
+  "base_authority":"ANIMO-B3D32@4d7c42bb749ed5fbf1c884fba4a26a1a5b898505",
+  "aggregate_authority":"ANIMO-RG05K@e5ccad78d7c85aaf2c68d844c5a496edf6d73db5",
+  "review_risk_tier":"C_AMBIGUOUS_SINGULAR_DOMAIN_SEMANTICS",
+  "risk_rule":"STRICTEST_APPLICABLE_RISK_TRIGGER_WINS",
+  "review_model":"MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "qualified":false,
+  "scientific_admission":false,
+  "parent_tcd_admitted":false,
+  "child_admitted_here":false,
+  "production_authorized":false,
+  "review":{"started":false,"completed":false,"reviewed_head":null,"genuinely_independent":false,"artifact":"integration/animo-b3/ANIMO-B3I10_INTERNAL_ADVERSARIAL_REVIEW.json"},
+  "hard_boundaries":{"production_source_modified":false,"input_validation_modified":false,"frozen_b0_modified":false,"canonical_top_level_tcd_register_modified":false,"new_top_level_tcd_reserved":false,"Hetop_zero_semantics_invented":false,"hidden_epsilon_or_guard_added":false,"TCD042_parent_admitted":false,"TCD042_B1_admitted":false,"TCD042_E1_admitted":false,"b4_opened":false,"production_migration_authorized":false},
+  "validation":{"workflow":".github/workflows/animo-b3i10-tcd042-positive-hetop-routing.yml","validator":"tools/validate_b3i10_tcd042_routing.py","exact_final_head_ci_required":true},
+  "work_status":{"realized":true,"persisted":true,"tested":false,"reviewed":false,"qualified":false,"workunit_complete":false}
+}

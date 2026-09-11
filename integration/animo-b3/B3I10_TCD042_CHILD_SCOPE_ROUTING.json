@@ -1,0 +1,43 @@
+{
+  "work_unit":"ANIMO-B3I10",
+  "parent_tcd":"TCD-042",
+  "kind":"CHILD_SCOPE_GOVERNANCE_AND_ROUTING_ONLY_NO_ADMISSION",
+  "base_authority":"ANIMO-B3D32@4d7c42bb749ed5fbf1c884fba4a26a1a5b898505",
+  "aggregate_authority":"ANIMO-RG05K@e5ccad78d7c85aaf2c68d844c5a496edf6d73db5",
+  "prior_routing_authority":"ANIMO-B3I05@7fa0162415e02a6f0167e71b48ae38177a9e06e0",
+  "domain_intake_authority":"ANIMO-B3I06@8f01f0cb366dfa8cc63a184d6f885100899a8cd9",
+  "zero_semantics_authority":"ANIMO-UBQ04@bbdb61be30f08951ba78926a745719cfcb1b64a8",
+  "b1_readiness_evidence":"ANIMO-B3B02@690868409aae11297c966eb55419f62ff977c619",
+  "historical_uncertainty_authority":"ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+  "children":{
+    "TCD-042-B1":{
+      "class":"B_LOCAL_ALGEBRA_ZERO_FLOW_LIMIT",
+      "supported_revision53_scope":"Flpn=0 AND Flux=0 AND Hetop>0",
+      "Hetop_zero_supported":false,
+      "positive_Hetop_exact_limit_source_owned":true,
+      "ready_for_separate_bounded_admission_decision":true,
+      "scope_widening_allowed":false
+    },
+    "TCD-042-E1":{
+      "class":"E_NUMERICAL_POLICY",
+      "supported_revision53_scope":"Flpn=0 AND 0<Flux<1.0d-8 AND Hetop>0 subject to NQ03/NQ03R P envelope",
+      "Hetop_zero_supported":false,
+      "ready_for_admission_here":false,
+      "separate_child_preserved":true,
+      "scope_widening_allowed":false
+    }
+  },
+  "Hetop_zero_disposition":{
+    "state":"EXCLUDED_FROM_SUPPORTED_B3_B4_CHILD_SCOPE_FOR_FROZEN_REVISION53",
+    "global_input_invalidity_claimed":false,
+    "scientific_semantics_resolved":false,
+    "new_child_created":false,
+    "hidden_epsilon_or_guard_authorized":false,
+    "input_validation_change_authorized":false,
+    "future_reopening":"ONLY_BY_SEPARATE_MODEL_EVOLUTION_WORKUNIT_WITH_AUTHORITATIVE_ZERO_THICKNESS_SEMANTICS"
+  },
+  "parent":{"admitted":false,"automatic_admission_from_child_scope_routing_forbidden":true},
+  "canonical_register":{"modified":false,"new_top_level_tcd_reserved":false,"tail_remains":"TCD-042"},
+  "production_authorized":false,
+  "b4_opened":false
+}
