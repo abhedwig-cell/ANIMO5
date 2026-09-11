@@ -3,9 +3,9 @@
   "target": "TCD-035",
   "title": "TCD-035 GHG Soil-Layer Phase Restart Admission Readiness",
   "branch": "work/animo-b3b12-tcd035-ghg-phase-restart-readiness",
-  "phase": "SUBSTANTIVE_AUTHORING_COMPLETE_PENDING_FREEZE",
-  "state": "CANDIDATE_TCD035_CLASS_B_RESTART_RECONSTRUCTION_READINESS",
-  "decision": "CREATE_IMMUTABLE_AUTHORING_FREEZE_AND_REQUIRE_GREEN_CI_BEFORE_GOV05_REVIEW",
+  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
+  "state": "CANDIDATE_TCD035_CLASS_B_RESTART_RECONSTRUCTION_READINESS_FROZEN",
+  "decision": "REQUIRE_GREEN_CI_ON_EXACT_FROZEN_HEAD_BEFORE_GOV05_ADVERSARIAL_REVIEW",
   "base_authority": "ANIMO-STATEQ06@7e4ee6ebdfe168b24414c97df39b2ca76940ea44",
   "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
   "queue_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
@@ -21,10 +21,10 @@
   "full_model_split_run_claimed": false,
   "historical_b2_created": false,
   "b4_opened": false,
-  "authoring_freeze": {"required": true, "completed": false, "post_freeze_substantive_changes_allowed": false},
+  "authoring_freeze": {"required": true, "completed": true, "substantive_package_head": "4151b7da7db9a9debb76ff7a8ef4c0f5da48e9f8", "substantive_package_tree": "882d4cc83ffdad265676a00e63b1fb6ee145d459", "materialization_commit": "ab1b365f0d8874608a6c5396b24f7161dfb8c661", "pre_freeze_run": 34643769659, "pre_freeze_job": 103409527354, "post_freeze_substantive_changes_allowed": false},
   "review": {"required": true, "started": false, "completed": false, "same_agent": true, "genuinely_independent": false, "independence_claimed": false, "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT", "reviewed_head": null, "outcome": null},
   "validation": {"workflow": ".github/workflows/animo-b3b12-tcd035-readiness.yml", "validator": "tools/validate_b3b12_tcd035.py", "candidate_head": null, "candidate_run_id": null, "candidate_job_id": null, "candidate_conclusion": null, "exact_final_head_required": true},
   "hard_boundaries": {"production_source_modified": false, "frozen_b0_modified": false, "canonical_register_modified": false, "central_queue_modified": false, "new_top_level_tcd_reserved": false, "tcd036_modified_or_admitted": false, "tcd032_034_modified_or_admitted": false, "canonical_state_admitted": false, "checkpoint_format_qualified": false, "historical_fidelity_claimed": false, "synthetic_evidence_promoted_to_b2": false, "b4_opened": false, "production_migration_authorized": false},
-  "work_status": {"realized": true, "persisted": true, "tested": false, "reviewed": false, "qualified": false, "work_unit_complete": false},
-  "next": "FREEZE_EXACT_SUBSTANTIVE_PACKAGE_THEN_REVIEW_ONLY_AFTER_GREEN_CI"
+  "work_status": {"realized": true, "persisted": true, "tested": true, "reviewed": false, "qualified": false, "work_unit_complete": false},
+  "next": "REQUIRE_GREEN_CI_ON_THIS_EXACT_FROZEN_HEAD_THEN_PERFORM_GOV05_SINGLE_AGENT_ADVERSARIAL_REVIEW"
 }
