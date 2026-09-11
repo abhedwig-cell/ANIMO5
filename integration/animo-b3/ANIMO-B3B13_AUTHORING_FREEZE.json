@@ -1,0 +1,30 @@
+{
+  "work_unit": "ANIMO-B3B13",
+  "freeze_kind": "GOV05_SUBSTANTIVE_AUTHORING_FREEZE",
+  "target": "TCD-036",
+  "substantive_package_head": "1d6aaf46b3efb219350ab495bb973a67cfb94fe1",
+  "substantive_package_tree": "dd7fb2a0dbd4b9c9fa68098a8f4859e8a5547284",
+  "base_authority": "ANIMO-STATEQ07@26f6e61da328a5578b9c4b332de04eb99a3ac04f",
+  "pre_freeze_validation": {
+    "green_run": 34645632504,
+    "green_job": 103415610720,
+    "conclusion": "success"
+  },
+  "frozen_candidate_identity": "TCD036_PRE_EXISTING_ACTIVE_PONDING_LAYER0_GHG_RESTART_IDENTITY_FROM_SERIALIZED_TOTAL_SYSTEM_OWNER",
+  "b3_qualification_class": "B_LOCAL_RESTART_RECONSTRUCTION_EXISTING_OWNER",
+  "risk_tier": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "frozen_substantive_paths": [
+    "docs/b3b13/TCD036_GHG_PONDING_LAYER0_RESTART_READINESS.md",
+    "integration/animo-b3/B3B13_TCD036_READINESS_CONTRACT.json",
+    "tools/validate_b3b13_tcd036.py",
+    ".github/workflows/animo-b3b13-tcd036-readiness.yml"
+  ],
+  "post_freeze_allowed_changes": [
+    "integration/animo-b3/ANIMO-B3B13_STATUS.json",
+    "integration/animo-b3/ANIMO-B3B13_INTERNAL_ADVERSARIAL_REVIEW.json"
+  ],
+  "same_agent_review_required": true,
+  "genuinely_independent_review_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "instruction": "Require green CI on the exact frozen/reviewed head before GOV05 adversarial review. Preserve pre-existing-ponding-only scope, gas separation, Cs0 owner/Co0 identity view, new-ponding source initialization, no-dormant-layer0 rule, B1-not-B2 status and all production/B4 boundaries."
+}
