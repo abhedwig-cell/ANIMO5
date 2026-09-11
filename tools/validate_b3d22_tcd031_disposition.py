@@ -75,7 +75,7 @@ req(a["source_remediation"] == f"ANIMO-B3B10E1@{B3B10E1}", "source remediation p
 req(a["independent_targeted_rereview"] == f"ANIMO-B3B10R2@{R2}", "R2 pin drift")
 req(a["STATEQ04"] == f"ANIMO-STATEQ04@{STATEQ04}", "STATEQ04 pin drift")
 
-# GOV05 is current and prospective. It must preserve completed GOV04 reviews rather than relabel them.
+# GOV05 is current and prospective. It preserves completed GOV04 reviews and never calls same-agent review independent.
 g5s = git_show_json(GOV05, "integration/animo-governance/ANIMO-GOV05_STATUS.json")
 g5m = git_show_json(GOV05, "integration/animo-governance/GOV05_REVIEW_ASSURANCE_MATRIX.json")
 g5t = git_show_json(GOV05, "integration/animo-governance/GOV05_OPEN_REVIEW_TRANSITION.json")
@@ -86,7 +86,7 @@ req(g5m["prospective_only"] is True, "GOV05 no longer prospective-only")
 req(g5m["governance_semantics"]["scientific_gate_reduction_allowed"] is False, "GOV05 permits scientific gate reduction")
 req(g5m["governance_semantics"]["same_agent_review_is_independent"] is False, "GOV05 incorrectly calls same-agent review independent")
 req(g5m["transition"]["completed_independent_reviews_remain_valid"] is True, "GOV05 no longer preserves completed reviews")
-req(g5m["transition"]["historical_review_wording_rewritten"] is False, "GOV05 rewrites historical review wording")
+req(g5m["terminology"]["historical_review_wording_rewritten"] is False, "GOV05 rewrites historical review wording")
 items = [x for x in g5t["items"] if x.get("id") == "ANIMO-B3B10R2"]
 req(len(items) == 1, "GOV05 transition lacks unique B3B10R2 item")
 req("DO_NOT_INTERRUPT_OR_RELABEL" in items[0]["transition"], "GOV05 transition would relabel R2")
