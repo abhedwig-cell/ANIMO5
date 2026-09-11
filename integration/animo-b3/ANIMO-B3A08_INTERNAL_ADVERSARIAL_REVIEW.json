@@ -1,0 +1,61 @@
+{
+  "work_unit": "ANIMO-B3A08",
+  "target": "TCD-025",
+  "reviewed_head": "816912b996a7c0be23a5c3b8ef96acc39064955b",
+  "governance_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "same_agent": true,
+  "independence_claimed": false,
+  "review_boundary": {
+    "immutable_authoring_head_verified": true,
+    "authoring_head_is_exact_branch_head_at_review_start": true,
+    "substantive_authoring_frozen_before_review": true,
+    "review_did_not_modify_production_source": true,
+    "review_did_not_modify_canonical_tcd_register": true,
+    "review_did_not_perform_b3_admission": true
+  },
+  "reconstruction": {
+    "claim_under_review": "Whether TCD-025 can remain a Tier-A accounting-only admission-readiness claim for all public balance layer intervals after TCD-031 restart-state admission.",
+    "whole_profile_result": "The pinned evidence supports a structurally determinate whole-profile macropore-plus-matrix conservation identity using domain-total storage and genuine external macropore transfers.",
+    "selected_profile_result": "The general public balance surface is broader because Balnmi(Ly)..Balnma(Ly) may cut an interior layer interval through a saturated macropore domain-level mixed reservoir.",
+    "decisive_missing_contract": "No pinned source-owned exact saturated-domain solute transfer is established across every possible interior selected-profile boundary.",
+    "observer_guard": "A missing boundary term may not be defined from the residual itself because that would make the observer self-closing rather than independently test conservation."
+  },
+  "counter_hypothesis": {
+    "tested": true,
+    "alternative": "Retain Tier A by deriving selected-profile solute storage and interior transfer from layer-resolved macropore water state combined with the saturated-domain mixed concentration.",
+    "test": "Check whether the frozen source-bound evidence already pins an exact species-mass owner and time/sign convention for every interior selected-profile boundary, rather than merely providing ingredients from which an observer-specific term could be invented.",
+    "result": "NOT_ESTABLISHED_BY_PINNED_SOURCE_CONTRACT",
+    "reason": "Layer-resolved water storage plus a domain-level concentration does not by itself establish the exact transported species mass, concentration timing, sign convention and ownership at every arbitrary interior balance boundary. Treating that reconstruction as authoritative would add scientific control-volume semantics not yet qualified."
+  },
+  "scope_narrowing_check": {
+    "alternative": "Narrow TCD-025 to whole-profile balances only and grant Tier A on that narrower claim.",
+    "result": "NOT_A_VALID_RESCUE_OF_CURRENT_GENERAL_TCD025_SURFACE",
+    "reason": "The current TCD-025 readiness surface addresses the public balance mechanism whose supported intervals are configurable. A whole-profile-only claim would be a materially narrower scientific contract and must be qualified explicitly rather than silently substituted during review."
+  },
+  "adversarial_gates": {
+    "EXACT_SOURCE_AND_AUTHORITY_PINS": "PASS",
+    "TCD031_BLOCKER_RECHECK": "PASS_DISPOSED_FOR_RESTART_STATE_ONLY",
+    "WHOLE_PROFILE_CONSERVATION_DIRECTION": "PASS_STRUCTURAL_ONLY",
+    "SELECTED_PROFILE_CONTROL_VOLUME_OWNERSHIP": "FAIL_CLOSED_UNRESOLVED",
+    "INTERIOR_SOLUTE_BOUNDARY_FLUX_IDENTITY": "FAIL_CLOSED_UNRESOLVED",
+    "TIER_A_WAIVER": "FAIL_CLOSED_UNAVAILABLE",
+    "STRICTEST_RISK_TIER": "PASS_TIER_C",
+    "HISTORICAL_BEHAVIOUR_WITHOUT_B2": "PASS_REMAINS_UNKNOWN",
+    "NO_RESIDUAL_DERIVED_SELF_CLOSURE": "PASS",
+    "NO_PRODUCTION_OR_B3_ADMISSION": "PASS",
+    "NO_SCIENTIFIC_GATE_REDUCTION": "PASS"
+  },
+  "residual_uncertainty": [
+    "A source-owned exact selected-profile representation may still be recoverable from deeper transport/control-volume reconstruction, but it is not established by the reviewed readiness package.",
+    "A whole-profile-only correction may eventually remain accounting-only, but that narrower claim has not been substituted for the current general public-balance surface.",
+    "Historical active-case magnitude remains unknown because no qualified B2 historical reference exists."
+  ],
+  "required_next_work": "Dedicated Tier-C TCD-025 selected-profile macropore state/control-volume qualification before any B3 admission candidate is frozen.",
+  "outcome": "SELF_REVIEW_PASS_FAIL_CLOSED_TIER_C_ESCALATION",
+  "scientific_gate_reduction": false,
+  "b3_admitted": false,
+  "production_authorized": false
+}

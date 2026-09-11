@@ -4,26 +4,29 @@
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3a08-tcd025-macropore-main-ledger-readiness",
   "base_head": "94afe7d649a8c60758a41996f0059de0acddd2fc",
-  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
+  "phase": "CLOSED_QUALIFIED_READINESS_BLOCKED",
   "state": "NOT_READY_FOR_B3_ADMISSION",
-  "decision_candidate": "TIER_A_WAIVER_UNAVAILABLE_TCD025_SELECTED_PROFILE_CONTROL_VOLUME_REQUIRES_TIER_C_QUALIFICATION",
+  "decision": "QUALIFIED_TCD025_TIER_A_WAIVER_UNAVAILABLE_ESCALATE_TIER_C_SELECTED_PROFILE_CONTROL_VOLUME_QUALIFICATION",
   "b3_class": "A_ACCOUNTING_REPORTING_ONLY",
   "risk_tier_candidate": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
-  "qualified": false,
+  "qualified": true,
   "b3_admitted": false,
   "production_authorized": false,
   "authoring_frozen": true,
-  "immutable_authoring_head": "RECORDED_BY_REVIEW_ARTIFACT_AFTER_COMMIT_CREATION",
+  "immutable_authoring_head": "816912b996a7c0be23a5c3b8ef96acc39064955b",
   "review_governance": {
     "authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
     "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
     "genuinely_independent": false,
-    "review_started": false,
-    "review_completed": false,
-    "review_outcome": null
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "review_started": true,
+    "review_completed": true,
+    "reviewed_head": "816912b996a7c0be23a5c3b8ef96acc39064955b",
+    "review_artifact": "integration/animo-b3/ANIMO-B3A08_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "review_outcome": "SELF_REVIEW_PASS_FAIL_CLOSED_TIER_C_ESCALATION"
   },
   "scientific_gate_reduction": false,
-  "next": "GOV05 same-agent adversarial review of the exact immutable B3A08 authoring head; if the fail-closed classification survives, close B3A08 and route a dedicated TCD-025 Tier-C selected-profile state/control-volume qualification",
+  "next": "Open a dedicated TCD-025 Tier-C selected-profile macropore state/control-volume qualification from the then-current aggregate authority; do not perform B3 admission or production modification in B3A08.",
   "hard_boundaries": {
     "b3_admission": false,
     "production_patch": false,
@@ -35,5 +38,20 @@
     "numerical_tolerance": false,
     "historical_behavior_claim": false,
     "tcd031_reopen": false
+  },
+  "validation": {
+    "validator": "tools/validate_b3a08_tcd025.py",
+    "workflow": ".github/workflows/animo-b3a08-tcd025.yml",
+    "authoring_head_ci_run": 34550272757,
+    "authoring_head_ci_conclusion": "success",
+    "exact_final_head_ci_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "reviewed": true,
+    "tested": true,
+    "qualified": true,
+    "workunit_complete": true
   }
 }
