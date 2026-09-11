@@ -1,0 +1,13 @@
+{
+  "work_unit":"ANIMO-B3D33",
+  "arithmetic":"exact rational identities; no fitted tolerance",
+  "cases":[
+    {"id":"Z01","purpose":"nonzero-load exact-zero conservation","Flpn":0,"Flux":"0","Hetop":"1/50","St":"1","C0":"3/2","Load":"1/100","expected":{"A1":"1","A2":"50","B1":"1","B2":"25","C1":"2","Cavg":"7/4","old_storage":"3/100","input":"1/100","new_storage":"1/25","same_step_export":"0"},"expect_in_scope":true},
+    {"id":"Z02","purpose":"zero-load negative control","Flpn":0,"Flux":"0","Hetop":"1/20","St":"2","C0":"7/3","Load":"0","expected":{"C1":"7/3","Cavg":"7/3","same_step_export":"0"},"expect_bitwise_no_change_in_candidate_formula":true,"expect_in_scope":true},
+    {"id":"Z03","purpose":"species-generic NH4 and NO3 identities remain separate","Flpn":0,"Flux":"0","Hetop":"1/50","St":"1","species":{"NH4":{"C0":"1/2","Load":"1/1000","C1":"11/20","Cavg":"21/40","old_storage":"1/100","input":"1/1000","new_storage":"11/1000"},"NO3":{"C0":"3/4","Load":"1/2000","C1":"31/40","Cavg":"61/80","old_storage":"3/200","input":"1/2000","new_storage":"31/2000"}},"same_step_export":"0","expect_in_scope":true,"expect_species_separation":true},
+    {"id":"Z04","purpose":"zero-thickness endpoint excluded","Flpn":0,"Flux":"0","Hetop":"0","expect_in_scope":false,"expect_semantics_invented":false},
+    {"id":"Z05","purpose":"finite-positive E1 seam excluded","Flpn":0,"Flux":"1/1000000000","Hetop":"1/50","expect_in_scope":false,"owner":"TCD-042-E1"},
+    {"id":"Z06","purpose":"non-reservoir Flpn branch excluded","Flpn":1,"Flux":"0","Hetop":"1/50","expect_in_scope":false},
+    {"id":"Z07","purpose":"same-step export remains zero","Flpn":0,"Flux":"0","Hetop":"1/50","St":"7/4","Cavg":"999/17","expected_export":"0","expect_in_scope":true}
+  ]
+}
