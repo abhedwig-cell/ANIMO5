@@ -1,0 +1,27 @@
+{
+  "work_unit": "ANIMO-STATEQ05",
+  "freeze_kind": "GOV05_SUBSTANTIVE_AUTHORING_FREEZE",
+  "substantive_package_head": "6def940ced3b19a229bb097dda784d0ca4399768",
+  "substantive_package_tree": "a20653a5a22d304b7bbd90134d173e60797a576a",
+  "base_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
+  "risk_tier": "C_PERSISTENT_CONTINUATION_STATE_RESTART_SEMANTICS",
+  "frozen_claim": "FOR_FROZEN_REVISION53_INTERNAL_CROP_MODE_CUMULATIVE_POTENTIAL_N_UPTAKE_AND_CONDITIONAL_P_UPTAKE_ARE_PERSISTENT_ACCEPTED_CONTINUATION_OWNERS_AND_NONZERO_ACCEPTED_VALUES_MUST_NOT_BE_ZERO_RESET_AT_RESTART",
+  "frozen_substantive_paths": [
+    "docs/stateq05/TCD039_POTENTIAL_UPTAKE_CONTINUATION.md",
+    "docs/stateq05/WORK_UNIT_CONTRACT.md",
+    "integration/animo-state/TCD039_POTENTIAL_UPTAKE_CONTINUATION_CONTRACT.json",
+    "integration/animo-state/TCD039_POTENTIAL_UPTAKE_ORACLE_CASES.json",
+    "tools/stateq05/tcd039_continuation_oracle.py",
+    "tools/validate_stateq05_tcd039.py",
+    "tests/stateq05/test_tcd039_continuation_oracle.py",
+    ".github/workflows/animo-stateq05-tcd039-continuation.yml"
+  ],
+  "post_freeze_allowed_changes": [
+    "integration/animo-state/ANIMO-STATEQ05_STATUS.json",
+    "integration/animo-state/ANIMO-STATEQ05_INTERNAL_ADVERSARIAL_REVIEW.json"
+  ],
+  "same_agent_review_required": true,
+  "genuinely_independent_review_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "instruction": "Run CI on the exact commit containing this freeze. If green, review that exact head adversarially. Do not alter frozen substantive paths after this freeze."
+}

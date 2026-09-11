@@ -4,9 +4,9 @@
   "title": "TCD-039 Internal-Crop Potential Uptake Continuation State Qualification",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-stateq05-tcd039-potential-crop-uptake-continuation",
-  "phase": "SUBSTANTIVE_AUTHORING_COMPLETE_PENDING_FREEZE",
-  "state": "CANDIDATE_TCD039_INTERNAL_CROP_CONTINUATION_OWNER_QUALIFICATION_NOT_ADMISSION",
-  "decision": "PENDING_IMMUTABLE_AUTHORING_FREEZE_CI_AND_GOV05_ADVERSARIAL_REVIEW",
+  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
+  "state": "CANDIDATE_TCD039_INTERNAL_CROP_CONTINUATION_OWNER_QUALIFICATION_FROZEN",
+  "decision": "PENDING_GREEN_CI_ON_EXACT_FROZEN_HEAD_THEN_GOV05_ADVERSARIAL_REVIEW",
   "risk_tier": "C_PERSISTENT_CONTINUATION_STATE_RESTART_SEMANTICS",
   "base_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
   "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
@@ -24,6 +24,14 @@
     "oracle": "B1_SOURCE_DERIVED_SYNTHETIC_NOT_B2",
     "historical_behavior": "UNKNOWN_WITHOUT_B2",
     "full_fortran_split_run": false
+  },
+  "authoring_freeze": {
+    "required": true,
+    "completed": true,
+    "substantive_package_head": "6def940ced3b19a229bb097dda784d0ca4399768",
+    "substantive_package_tree": "a20653a5a22d304b7bbd90134d173e60797a576a",
+    "artifact": "integration/animo-state/ANIMO-STATEQ05_AUTHORING_FREEZE.json",
+    "post_freeze_substantive_changes_allowed": false
   },
   "scientific_admission_performed": false,
   "canonical_state_admitted": false,
@@ -66,5 +74,5 @@
     "qualified": false,
     "work_unit_complete": false
   },
-  "next": "CREATE_IMMUTABLE_AUTHORING_FREEZE_THEN_REQUIRE_GREEN_CI_ON_THE_FROZEN_HEAD_BEFORE_GOV05_SAME_AGENT_ADVERSARIAL_REVIEW"
+  "next": "REQUIRE_GREEN_CI_ON_THIS_EXACT_FROZEN_HEAD_THEN_PERFORM_GOV05_SINGLE_AGENT_ADVERSARIAL_REVIEW_WITHOUT_CHANGING_FROZEN_SUBSTANTIVE_PATHS"
 }
