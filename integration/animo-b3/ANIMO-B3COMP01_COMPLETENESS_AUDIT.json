@@ -1,103 +1,85 @@
 {
-  "work_unit": "ANIMO-B3COMP01",
-  "title": "Whole-B3 Composition Completeness Audit",
+  "work_unit": "ANIMO-B3COMP01R",
+  "title": "Whole-B3 Composition Completeness Live Re-audit",
   "scope": "CURRENT_QUALIFIED_B3_OBJECT_SET_AT_SCOPE_REQUIRED_FOR_TB7_COMPOSED_WHOLE_MODEL_REGRESSION_BASELINE",
   "risk_tier": "D_COMPOSITION_WHOLE_MODEL_GATE",
   "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
   "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-  "positive_authority_sought": "EXACT_HEAD_QUALIFIED_B3_COMPOSITION_COMPLETENESS_AT_WHOLE_MODEL_REGRESSION_SCOPE",
   "result": "B3_COMPOSITION_COMPLETENESS_NOT_ESTABLISHED",
   "tb7_effect": "BLOCKED",
   "observations": {
     "aggregate_b3_complete": false,
     "aggregate_global_canonical_queue_count_recomputed": false,
-    "post_aggregate_b3d31_exact_final_green": true,
-    "post_aggregate_b3d31_child": "TCD-025-A4",
-    "b3i09_exact_final_green": true,
-    "b3i09_A5_supported_parent_scope_state": "PERMANENTLY_EXCLUDED_FROM_SUPPORTED_PARENT_SCOPE_FOR_FROZEN_REVISION53",
-    "b3i09_A5_scientifically_source_closed": false,
-    "b3i09_A5_b3_admitted": false,
-    "tcd025_parent_admitted": false,
-    "qualified_routing_automatic_parent_admission_forbidden": true,
-    "qualified_routing_separate_parent_composition_required": true,
-    "post_aggregate_authorities_reconciled": false,
+    "tcd025_restricted_parent_admitted": true,
+    "tcd025_A5_revision53_scope_excluded": true,
+    "tcd042_positive_hetop_routing_qualified": true,
+    "tcd042_B1_admitted": false,
+    "tcd042_parent_admitted": false,
+    "concurrent_b3d33_seeded": true,
+    "concurrent_b3d33_scientific_admission_established": false,
     "whole_b3_composition_record_found": false,
     "whole_b3_composition_exact_final_authority_found": false,
-    "bounded_tcd037_parent_composition_exists": true,
-    "bounded_tcd037_parent_is_whole_b3_composition": false,
     "whole_model_golden_baseline_exists_or_created_here": false
   },
   "positive_predicates": [
     {
       "id": "P1_AGGREGATE_NO_LONGER_EXPLICITLY_B3_INCOMPLETE",
       "status": "FAIL",
-      "evidence": "ANIMO-RG05K records b3_complete=false"
+      "evidence": "ANIMO-RG05K remains the latest aggregate authority and records b3_complete=false."
     },
     {
       "id": "P2_GLOBAL_CANONICAL_B3_QUEUE_RECOMPUTED_AND_CLOSED",
       "status": "FAIL",
-      "evidence": "ANIMO-RG05K records global_canonical_queue_count_recomputed=false"
+      "evidence": "ANIMO-RG05K records global_canonical_queue_count_recomputed=false and no RG05L-or-later aggregate exists at the observed live state."
     },
     {
-      "id": "P3_POST_AGGREGATE_AUTHORITIES_RECONCILED_OR_EXACTLY_ENUMERATED",
-      "status": "PARTIAL",
-      "evidence": "ANIMO-B3D31 and ANIMO-B3I09 are exact-final green and enumerated, but both are post-RG05K and no superseding aggregate reconciles them"
+      "id": "P3_TCD025_PARENT_CHILD_ATOMIZATION_CLOSED",
+      "status": "PASS_BOUNDED_SCOPE",
+      "evidence": "ANIMO-B3D32 exact-final green admits the restricted TCD-025 parent over A1-A4 while preserving A5 exclusion and historical uncertainty."
     },
     {
-      "id": "P4_TCD025_PARENT_CHILD_ATOMIZATION_CLOSED",
+      "id": "P4_TCD042_REQUIRED_CURRENT_CHILD_ROUTING_AND_ADMISSION_CLOSED",
       "status": "FAIL",
-      "evidence": "ANIMO-B3I09 qualifies the A5 revision-53 scope exclusion but explicitly keeps the TCD-025 parent unadmitted and requires a separate restricted parent composition decision"
+      "evidence": "ANIMO-B3I10 qualifies positive-HETOP child routing but explicitly performs no B1 admission and no parent admission; ANIMO-B3D33 is only seeded at the observed head."
     },
     {
-      "id": "P5_COMBINED_B3Q01_COMPOSITION_GATES_EVALUATED_ON_WHOLE_B3_OBJECT",
+      "id": "P5_POST_AGGREGATE_AUTHORITIES_RECONCILED",
+      "status": "FAIL",
+      "evidence": "B3D31 and B3D32 are post-RG05K authorities, while B3I10 is a later routing authority; no newer aggregate reconciliation exists."
+    },
+    {
+      "id": "P6_COMBINED_B3Q01_COMPOSITION_GATES_EVALUATED_ON_WHOLE_B3_OBJECT",
       "status": "NOT_REACHED",
-      "evidence": "No eligible whole-B3 composition candidate exists yet"
+      "evidence": "No eligible whole-B3 composition candidate exists."
     },
     {
-      "id": "P6_WHOLE_B3_COMPOSITION_OBJECT_HAS_OWN_EXACT_FINAL_AUTHORITY",
+      "id": "P7_WHOLE_B3_COMPOSITION_OBJECT_HAS_OWN_EXACT_FINAL_AUTHORITY",
       "status": "FAIL",
-      "evidence": "No whole-B3 composition identifier/admission/qualification authority found; B3D27 is bounded TCD-037 GHG observer accounting only"
+      "evidence": "No whole-B3 composition identifier or exact-final qualification authority was found."
     },
     {
-      "id": "P7_TB7_BASELINE_MAY_START_ONLY_AFTER_POSITIVE_AUTHORITY",
+      "id": "P8_TB7_BASELINE_MAY_START_ONLY_AFTER_POSITIVE_AUTHORITY",
       "status": "PASS_FAIL_CLOSED",
-      "evidence": "ANIMO-TB07A remains blocked and no baseline is created here"
+      "evidence": "ANIMO-TB07A remains blocked and this re-audit creates no baseline."
     }
   ],
-  "b3q01_required_future_checks": {
-    "no_contradictory_assumptions": "NOT_YET_WHOLE_B3_QUALIFIED",
-    "no_double_correction": "NOT_YET_WHOLE_B3_QUALIFIED",
-    "no_cancellation_masking": "NOT_YET_WHOLE_B3_QUALIFIED",
-    "expected_combined_differences_predeclared": "NOT_YET_WHOLE_B3_QUALIFIED",
-    "combined_conservation": "NOT_YET_WHOLE_B3_QUALIFIED",
-    "combined_non_interference": "NOT_YET_WHOLE_B3_QUALIFIED",
-    "interaction_and_ordering_coverage": "NOT_YET_WHOLE_B3_QUALIFIED",
-    "uncertainty_propagation": "NOT_YET_WHOLE_B3_QUALIFIED"
-  },
   "required_closure_sequence": [
-    "Perform a separate Tier-D TCD-025 restricted parent composition qualification/admission preserving exact A1-A4 scopes and the qualified A5 revision-53 exclusion contract.",
-    "Reconcile B3D31, B3I09 and any resulting TCD-025 parent authority into a superseding aggregate authority.",
-    "Recompute the global canonical B3 queue against current canonical routing/register and prove no unresolved required composition components remain.",
-    "Create and qualify a separate whole-B3 composition object under B3Q01/GOV05 with combined conservation, non-interference, overlap, interaction, ordering and uncertainty evidence.",
+    "Allow the separate ANIMO-B3D33 TCD-042-B1 admission workstream to complete or dispose without B3COMP01R mutating it.",
+    "Reconcile all exact-final post-RG05K admissions and routing changes into a newer aggregate authority.",
+    "Recompute the global canonical B3 queue against current routing/register and prove no unresolved required composition components remain.",
+    "Create and exact-head qualify a separate whole-B3 composition object under B3Q01/GOV05 with combined conservation, non-interference, overlap, interaction, ordering and uncertainty evidence.",
     "Only then issue a positive B3 composition-completeness authority and rerun TB7 readiness."
   ],
-  "concurrency_disposition": {
-    "prior_closeout_failed_closed_on_b3i09_advance": true,
-    "b3i09_reaudited_at_exact_final_head": true,
-    "b3i09_modified_by_b3comp01": false,
-    "separate_tcd025_parent_workstream_preempted": false
-  },
   "hard_boundaries": {
     "production_source_modified": false,
     "frozen_b0_modified": false,
-    "scientific_tcd_admission_performed": false,
-    "tcd025_parent_admitted": false,
-    "central_aggregate_modified": false,
+    "scientific_tcd_admission_performed_here": false,
+    "concurrent_b3d33_modified": false,
+    "aggregate_modified": false,
     "canonical_tcd_register_modified": false,
     "b4_opened": false,
     "production_migration_authorized": false,
     "historical_b2_created": false,
-    "whole_model_golden_baseline_created": false,
-    "b3i09_modified": false
+    "whole_model_golden_baseline_created": false
   }
 }

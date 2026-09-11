@@ -1,30 +1,25 @@
 {
-  "work_unit": "ANIMO-B3COMP01",
-  "authoring_phase": "FROZEN_FOR_GOV05_ADVERSARIAL_REREVIEW_AFTER_CONCURRENCY_ADVANCE",
-  "branch": "work/animo-b3comp01-composition-completeness-authority",
-  "base_head": "0bec1968adbf77fd04c6f46819d704b86482d8b2",
-  "remediation_parent": "8a6699788d23179c08dd9417016731118b69aaf4",
+  "work_unit": "ANIMO-B3COMP01R",
+  "authoring_phase": "FROZEN_FOR_GOV05_ADVERSARIAL_REVIEW",
+  "branch": "work/animo-b3comp01-composition-completeness-authority-live-reaudit",
+  "base_head": "afcb1f85aed8d3f64898dd134986e65b712b56bf",
   "substantive_files": [
     "docs/b3comp01/B3_COMPOSITION_COMPLETENESS_AUTHORITY.md",
     "integration/animo-b3/ANIMO-B3COMP01_SOURCE_PINS.json",
     "integration/animo-b3/ANIMO-B3COMP01_COMPLETENESS_AUDIT.json",
     "integration/animo-b3/ANIMO-B3COMP01_AUTHORING_FREEZE.json",
-    "tools/validate_b3comp01_composition_completeness.py"
+    "integration/animo-b3/ANIMO-B3COMP01_STATUS.json",
+    "tools/validate_b3comp01_composition_completeness.py",
+    ".github/workflows/animo-b3comp01-composition-completeness.yml"
   ],
-  "superseded_review_artifact": "integration/animo-b3/ANIMO-B3COMP01_INTERNAL_ADVERSARIAL_REVIEW.json",
-  "fresh_review_artifact_after_freeze": "integration/animo-b3/ANIMO-B3COMP01_INTERNAL_ADVERSARIAL_REREVIEW.json",
-  "status_artifact": "integration/animo-b3/ANIMO-B3COMP01_STATUS.json",
-  "substantive_change_after_fresh_review_start_allowed": false,
-  "external_workstream_boundary": {
-    "branch": "work/animo-b3i09-tcd025-a5-exclusion-parent-scope-routing",
-    "qualified_head": "44f29974a1f49cffd36f67857a1ed2c919978a07",
-    "exact_final_ci_run": 34585740977,
-    "policy": "PIN_AND_OBSERVE_DO_NOT_MUTATE_FAIL_CLOSED_ON_FURTHER_ADVANCE"
+  "review_artifact_after_freeze": "integration/animo-b3/ANIMO-B3COMP01_INTERNAL_ADVERSARIAL_REVIEW.json",
+  "substantive_change_after_review_start_allowed": false,
+  "current_live_pins": {
+    "rg05k": "e5ccad78d7c85aaf2c68d844c5a496edf6d73db5",
+    "b3d32_tier_d": "4d7c42bb749ed5fbf1c884fba4a26a1a5b898505",
+    "b3i10": "942f26fe32eaf91679e59a1968ae173a3703e22d",
+    "b3d33_seed": "942f26fe32eaf91679e59a1968ae173a3703e22d"
   },
-  "prior_closeout_failure": {
-    "head": "8a6699788d23179c08dd9417016731118b69aaf4",
-    "run": 34585837911,
-    "reason": "B3I09 advanced after the first reviewed checkpoint"
-  },
+  "concurrent_workstream_policy": "OBSERVE_AND_FAIL_CLOSED_ON_ADVANCE_DO_NOT_MUTATE",
   "decision_candidate": "B3_COMPOSITION_COMPLETENESS_NOT_ESTABLISHED_TB7_REMAINS_BLOCKED"
 }

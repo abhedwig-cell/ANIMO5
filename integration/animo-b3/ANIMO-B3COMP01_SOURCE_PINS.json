@@ -1,11 +1,10 @@
 {
-  "work_unit": "ANIMO-B3COMP01",
-  "branch": "work/animo-b3comp01-composition-completeness-authority",
+  "work_unit": "ANIMO-B3COMP01R",
+  "title": "Whole-B3 Composition Completeness Live Re-audit",
+  "branch": "work/animo-b3comp01-composition-completeness-authority-live-reaudit",
   "authoring_base": {
     "authority": "ANIMO-B3D31@0bec1968adbf77fd04c6f46819d704b86482d8b2",
-    "head": "0bec1968adbf77fd04c6f46819d704b86482d8b2",
-    "exact_final_ci_run": 34583130973,
-    "conclusion": "success"
+    "head": "0bec1968adbf77fd04c6f46819d704b86482d8b2"
   },
   "current_aggregate": {
     "authority": "ANIMO-RG05K@e5ccad78d7c85aaf2c68d844c5a496edf6d73db5",
@@ -14,60 +13,38 @@
     "exact_final_ci_run": 34582143283,
     "conclusion": "success"
   },
-  "prior_tcd025_routing": {
-    "authority": "ANIMO-B3I08@f4a3056087e5f7bac41b243be1f404739cde52b0",
-    "head": "f4a3056087e5f7bac41b243be1f404739cde52b0",
-    "branch": "work/animo-b3i08-tcd025-restricted-ledger-routing",
-    "exact_final_ci_run": 34572242797,
+  "tcd025_parent_composition": {
+    "authority": "ANIMO-B3D32@4d7c42bb749ed5fbf1c884fba4a26a1a5b898505",
+    "head": "4d7c42bb749ed5fbf1c884fba4a26a1a5b898505",
+    "branch": "work/animo-b3d32-tcd025-restricted-parent-composition-gov05-tier-d-admission",
+    "exact_final_ci_run": 34586116849,
     "conclusion": "success"
   },
-  "current_qualified_tcd025_parent_scope_routing": {
-    "authority": "ANIMO-B3I09@44f29974a1f49cffd36f67857a1ed2c919978a07",
-    "head": "44f29974a1f49cffd36f67857a1ed2c919978a07",
-    "branch": "work/animo-b3i09-tcd025-a5-exclusion-parent-scope-routing",
-    "exact_final_ci_run": 34585740977,
-    "conclusion": "success",
-    "state": "QUALIFIED_A5_EXCLUDED_RESTRICTED_PARENT_READY_FOR_SEPARATE_COMPOSITION_NO_ADMISSION",
-    "mutated_by_b3comp01": false,
-    "live_head_must_remain_pinned_through_final_qualification": true
+  "tcd042_routing": {
+    "authority": "ANIMO-B3I10@942f26fe32eaf91679e59a1968ae173a3703e22d",
+    "head": "942f26fe32eaf91679e59a1968ae173a3703e22d",
+    "branch": "work/animo-b3i10-tcd042-positive-hetop-child-scope-routing",
+    "exact_final_ci_run": 34587001516,
+    "conclusion": "success"
   },
-  "bounded_existing_parent_composition": {
-    "authority": "ANIMO-B3D27@cb881d0cd3e3c50455614a93b562b32354f0f1a8",
-    "head": "cb881d0cd3e3c50455614a93b562b32354f0f1a8",
-    "exact_final_ci_run": 34560197591,
-    "scope": "BOUNDED_COMPOSED_GHG_OBSERVER_ACCOUNTING_CONTRACT"
+  "concurrent_tcd042_b1_admission_workstream": {
+    "work_unit": "ANIMO-B3D33",
+    "branch": "work/animo-b3d33-tcd042-b1-positive-hetop-gov05-tier-c-admission",
+    "observed_head": "942f26fe32eaf91679e59a1968ae173a3703e22d",
+    "observed_state": "SEEDED_FROM_B3I10_NO_B3D33_STATUS_AT_OBSERVED_HEAD",
+    "mutated_by_b3comp01r": false,
+    "live_head_must_remain_observed_head_through_qualification": true
   },
   "testbank_prerequisite_gate": {
     "authority": "ANIMO-TB07A@6d77e92f5beb2a30deb7411d93890aa7a5559685",
     "head": "6d77e92f5beb2a30deb7411d93890aa7a5559685",
-    "branch": "work/animo-tb07a-composed-regression-baseline-readiness",
     "exact_final_ci_run": 34569915070,
     "conclusion": "success"
   },
   "governance": {
     "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
-    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
-    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
     "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
   },
-  "superseded_b3comp01_checkpoint": {
-    "reviewed_head": "32b549c68e89a44fc7bc99cfc209d905b7010d46",
-    "review_ci_run": 34585689360,
-    "failed_closeout_head": "8a6699788d23179c08dd9417016731118b69aaf4",
-    "failed_closeout_ci_run": 34585837911,
-    "failure_reason": "B3I09 live head advanced before exact-final closeout; fail-closed re-audit required"
-  },
-  "authority_files": {
-    "rg05k_status": "integration/animo-reg/ANIMO-RG05K_STATUS.json",
-    "rg05k_inventory": "integration/animo-reg/RG05K_B3_ADMISSION_INVENTORY.json",
-    "b3d31_status": "integration/animo-b3/ANIMO-B3D31_STATUS.json",
-    "b3i08_status": "integration/animo-b3/ANIMO-B3I08_STATUS.json",
-    "b3i09_status": "integration/animo-b3/ANIMO-B3I09_STATUS.json",
-    "b3i09_routing": "integration/animo-b3/B3I09_TCD025_PARENT_SCOPE_ROUTING.json",
-    "b3d27_status": "integration/animo-b3/ANIMO-B3D27_STATUS.json",
-    "tb07a_status": "integration/animo-testbank/ANIMO-TB07A_STATUS.json",
-    "b3q01_status": "integration/animo-b3/ANIMO-B3Q01_STATUS.json",
-    "b3q01_composition_rules": "docs/governance/B3_COMPOSITION_RULES.md",
-    "gov05_status": "integration/animo-governance/ANIMO-GOV05_STATUS.json"
-  }
+  "supersedes_live_state_observation_in": "ANIMO-B3COMP01@8a6699788d23179c08dd9417016731118b69aaf4",
+  "reason_for_reaudit": "B3I09 advanced and qualified, B3D32 admitted the restricted TCD025 parent, and B3I10 qualified TCD042 positive-HETOP routing after the earlier B3COMP01 observation."
 }

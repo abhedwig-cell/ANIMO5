@@ -1,23 +1,10 @@
 {
-  "work_unit": "ANIMO-B3COMP01",
-  "title": "Whole-B3 Composition Completeness Authority",
-  "branch": "work/animo-b3comp01-composition-completeness-authority",
-  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REREVIEW",
+  "work_unit": "ANIMO-B3COMP01R",
+  "title": "Whole-B3 Composition Completeness Live Re-audit",
+  "branch": "work/animo-b3comp01-composition-completeness-authority-live-reaudit",
+  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
   "state": "NOT_YET_QUALIFIED",
-  "decision": "B3_COMPOSITION_COMPLETENESS_NOT_ESTABLISHED_TB7_REMAINS_BLOCKED",
-  "decision_kind": "NEGATIVE_COMPOSITION_COMPLETENESS_CANDIDATE_AFTER_CONCURRENCY_REAUDIT",
-  "authoring_base": "ANIMO-B3D31@0bec1968adbf77fd04c6f46819d704b86482d8b2",
-  "aggregate_authority": "ANIMO-RG05K@e5ccad78d7c85aaf2c68d844c5a496edf6d73db5",
-  "current_qualified_routing": "ANIMO-B3I09@44f29974a1f49cffd36f67857a1ed2c919978a07",
-  "current_routing_exact_final_ci": 34585740977,
-  "tb7_gate": "ANIMO-TB07A@6d77e92f5beb2a30deb7411d93890aa7a5559685",
-  "governance": {
-    "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
-    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
-    "review_risk_tier": "D_COMPOSITION_WHOLE_MODEL_GATE",
-    "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
-    "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT"
-  },
+  "decision_candidate": "B3_COMPOSITION_COMPLETENESS_NOT_ESTABLISHED_TB7_REMAINS_BLOCKED",
   "review_risk_tier": "D_COMPOSITION_WHOLE_MODEL_GATE",
   "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
   "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
@@ -25,24 +12,11 @@
   "tb7_authorized": false,
   "whole_model_golden_baseline_authorized": false,
   "scientific_admission": false,
-  "negative_authority_scope": "CURRENT_LIVE_B3_AUTHORITY_SET_ONLY_REAUDIT_REQUIRED_AFTER_ANY_RELEVANT_AUTHORITY_ADVANCE",
-  "blocking_findings": [
-    "ANIMO-RG05K explicitly records b3_complete=false.",
-    "ANIMO-RG05K explicitly records global_canonical_queue_count_recomputed=false.",
-    "ANIMO-B3D31 admits TCD-025-A4 only and does not admit the TCD-025 parent.",
-    "ANIMO-B3I09 is now exact-final qualified and resolves A5 only by permanent revision-53 scope exclusion; it explicitly keeps the TCD-025 parent unadmitted and routes to a separate restricted parent composition decision.",
-    "No whole-B3 composition object with its own exact-final authority exists; ANIMO-B3D27 remains bounded to TCD-037 GHG observer accounting."
-  ],
-  "concurrency_remediation": {
-    "first_reviewed_head": "32b549c68e89a44fc7bc99cfc209d905b7010d46",
-    "first_review_ci_run": 34585689360,
-    "failed_closeout_head": "8a6699788d23179c08dd9417016731118b69aaf4",
-    "failed_closeout_ci_run": 34585837911,
-    "failure_was_expected_fail_closed_on_external_advance": true,
-    "advanced_external_authority": "ANIMO-B3I09@44f29974a1f49cffd36f67857a1ed2c919978a07",
-    "advanced_external_authority_ci": 34585740977,
-    "external_workstream_modified_here": false,
-    "prior_review_superseded": true
+  "current_live_state": {
+    "aggregate": "ANIMO-RG05K@e5ccad78d7c85aaf2c68d844c5a496edf6d73db5",
+    "tcd025_parent": "ANIMO-B3D32@4d7c42bb749ed5fbf1c884fba4a26a1a5b898505",
+    "tcd042_routing": "ANIMO-B3I10@942f26fe32eaf91679e59a1968ae173a3703e22d",
+    "concurrent_b3d33_observed_head": "942f26fe32eaf91679e59a1968ae173a3703e22d"
   },
   "review": {
     "started": false,
@@ -50,37 +24,34 @@
     "reviewed_head": null,
     "genuinely_independent": false,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "outcome": "PENDING_FRESH_ADVERSARIAL_REREVIEW",
-    "artifact": "integration/animo-b3/ANIMO-B3COMP01_INTERNAL_ADVERSARIAL_REREVIEW.json"
+    "outcome": "PENDING"
   },
-  "required_closure_sequence": [
-    "Perform a separate Tier-D TCD-025 restricted parent composition qualification/admission preserving A1-A4 exact scopes and the qualified A5 revision-53 exclusion contract.",
-    "Reconcile B3D31, B3I09 and any resulting TCD-025 parent authority into a superseding aggregate authority.",
-    "Recompute the global canonical B3 queue and prove that no unresolved required composition components remain.",
-    "Create and exact-head qualify a separate whole-B3 composition object under B3Q01/GOV05 with combined conservation, non-interference, overlap, interaction, ordering and uncertainty evidence.",
-    "Then issue a positive B3 composition-completeness authority and rerun TB7 readiness before any composed whole-model golden baseline."
-  ],
+  "prior_b3comp01_closeout": {
+    "head": "8a6699788d23179c08dd9417016731118b69aaf4",
+    "exact_head_ci_run": 34585837911,
+    "conclusion": "failure",
+    "reason": "live B3I09 advanced after the reviewed checkpoint",
+    "authority_reusable": false
+  },
   "hard_boundaries": {
     "production_source_modified": false,
     "frozen_b0_modified": false,
     "scientific_tcd_admission_performed": false,
-    "tcd025_parent_admitted": false,
+    "concurrent_b3d33_modified": false,
     "central_aggregate_modified": false,
     "canonical_tcd_register_modified": false,
     "b4_opened": false,
     "production_migration_authorized": false,
     "historical_b2_created": false,
-    "whole_model_golden_baseline_created": false,
-    "b3i09_modified": false
+    "whole_model_golden_baseline_created": false
   },
   "validation": {
     "workflow": ".github/workflows/animo-b3comp01-composition-completeness.yml",
     "validator": "tools/validate_b3comp01_composition_completeness.py",
-    "remediated_authoring_head": null,
-    "remediated_authoring_head_ci_run": null,
-    "remediated_authoring_head_ci_conclusion": null,
-    "exact_final_head_ci_required": true,
-    "final_exact_head_ci": "PENDING"
+    "authoring_head": "PENDING_THIS_CHECKPOINT_COMMIT",
+    "authoring_head_ci_run": null,
+    "authoring_head_ci_conclusion": null,
+    "exact_final_head_ci_required": true
   },
   "work_status": {
     "realized": true,
@@ -90,5 +61,5 @@
     "qualified": false,
     "workunit_complete": false
   },
-  "next": "Run exact-head authoring CI, perform fresh GOV05 adversarial rereview, then close out only if the live authority set has not advanced."
+  "next": "Run exact-head authoring CI. If green and concurrent B3D33 remains at the observed seed head, perform GOV05 adversarial review, close the negative authority, then require exact-final CI."
 }
