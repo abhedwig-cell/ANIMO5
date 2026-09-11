@@ -1,0 +1,91 @@
+{
+  "work_unit": "ANIMO-B3D27",
+  "target": "TCD-037",
+  "audit": "PARENT_OVERLAP_GAP_DOUBLE_COUNT",
+  "overlap_cases": [
+    {
+      "id": "O1_CH4_LAYER_TO_TOTAL_FORMATION",
+      "participants": ["TCD-037-A1", "TCD-037-A2"],
+      "relationship": "A2 formation total is the profile sum of the A1 source-owned layer formation quantity",
+      "double_count": false,
+      "reason": "The reused formation amount serves distinct formation-partition observer statements; Btom(CH4e) remains atmosphere-exchange owned and does not receive the formation total."
+    },
+    {
+      "id": "O2_N2O_FORMATION_VS_ATMOSPHERE_EXCHANGE",
+      "participants": ["TCD-037-A3", "TCD-037-A4"],
+      "relationship": "same chemical species but different process/control-volume locations",
+      "double_count": false,
+      "reason": "A3 is denitrification formation inside soil layers; A4 is signed top-boundary exchange. Dynamic gas storage and reduction break any required timestep equality."
+    }
+  ],
+  "forbidden_collapses": [
+    "CH4 formation total must not replace CH4 atmosphere exchange",
+    "CH4 atmosphere exchange must not replace the CH4 formation term in Btom(CO2e)",
+    "N2O total production must not replace N2O atmosphere exchange",
+    "N2O atmosphere exchange must not replace denitrification formation",
+    "QRdN2O must not be added to N2Od or N2Oe as if it were production/emission",
+    "signed atmosphere exchange must not be absolute-valued or positivity-clamped",
+    "CH4 organic-matter-basis balance terms and N2O nitrogen-basis balance terms must not be cross-summed"
+  ],
+  "gap_cases": [
+    {
+      "id": "G1_N2O_NITRIFICATION",
+      "candidate_gap": "Banh(N2On)",
+      "result": "NOT_A_GAP",
+      "reason": "AmN2Onitr is rebuilt in the current Outbal_calc call and has source-equivalent QPrN2Onit*St meaning before the existing reporting threshold; threshold policy is not TCD-037."
+    },
+    {
+      "id": "G2_N2O_REDUCTION",
+      "candidate_gap": "QRdN2O",
+      "result": "NOT_A_GAP",
+      "reason": "explicitly separate reduction sink already reported outside the TCD-037 observer producer map"
+    },
+    {
+      "id": "G3_FULL_CH4_CARBON_LEDGER",
+      "candidate_gap": "full formation-storage-oxidation-emission closure",
+      "result": "OUTSIDE_PARENT_CLAIM_NOT_SILENTLY_CLOSED",
+      "reason": "TCD-037 is observer-accounting ownership only; complete GHG carbon closure is not admitted"
+    },
+    {
+      "id": "G4_RESTART_BALANCE_ACCUMULATOR_IDENTITY",
+      "candidate_gap": "arbitrary split-run identity of reporting accumulators",
+      "result": "OUTSIDE_PARENT_CLAIM_NOT_SILENTLY_CLOSED",
+      "reason": "TCD-037 adds no restart state and admits no split-run balance-accumulator theorem"
+    },
+    {
+      "id": "G5_TCD032_036",
+      "candidate_gap": "dependency on adjacent discrepancy corrections",
+      "result": "NO_DEPENDENCY_FOUND",
+      "reason": "all four child qualifications exclude TCD-032 through TCD-036 and parent reconstruction requires no term owned by those discrepancies"
+    }
+  ],
+  "units_and_sign_audit": {
+    "ch4": {
+      "rate_unit": "kg C m-2 d-1",
+      "amount_unit_after_St": "kg C m-2",
+      "balance_basis": "organic matter kg ha-1 after /Cfracom and *10000",
+      "signed_atmosphere_exchange": true,
+      "negative_means": "uptake by soil"
+    },
+    "n2o": {
+      "rate_unit": "kg N m-2 d-1",
+      "amount_unit_after_St": "kg N m-2",
+      "balance_basis": "kg N ha-1 after *10000",
+      "signed_atmosphere_exchange": true,
+      "negative_means": "uptake by soil"
+    },
+    "dimensional_cross_species_addition": "FORBIDDEN"
+  },
+  "state_and_lifetime_audit": {
+    "QPr_and_QEm_are_current_process_rates": true,
+    "TCD037_observer_inputs_persistent": false,
+    "new_checkpoint_state": false,
+    "physical_state_mutation": false,
+    "process_flux_mutation": false,
+    "legacy_AmCH4_valid_lifetime": false,
+    "legacy_AmN2Odeni_valid_lifetime": false,
+    "AmN2Onitr_current_call_lifetime": true
+  },
+  "result": "PASS_NO_PARENT_COMPOSITION_GAP_OR_DOUBLE_COUNT_WITHIN_BOUNDED_CLAIM",
+  "new_child_atom_required": false
+}

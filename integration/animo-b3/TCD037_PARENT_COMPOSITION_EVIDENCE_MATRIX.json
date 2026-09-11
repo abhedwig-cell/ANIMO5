@@ -1,0 +1,170 @@
+{
+  "work_unit": "ANIMO-B3D27",
+  "target": "TCD-037",
+  "surface": "PARENT_COMPOSITION_QUALIFICATION",
+  "state": "COMPOSITION_CANDIDATE_READY_FOR_GOV05_ADVERSARIAL_REVIEW",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d27-tcd037-parent-composition-gov05-tier-d-admission",
+  "base_head": "49e5ef141850296df17317da181a561def239117",
+  "live_authorities": {
+    "aggregate": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
+    "latest_b3_admission_at_start": "ANIMO-B3D26@49e5ef141850296df17317da181a561def239117",
+    "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "b3q02": "ANIMO-B3Q02@1db63b17cb5f48cbd8ae28116a2e716b4bdaadf3",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "routing_refresh": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "runtime_ownership": "ANIMO-RUNTIMEQ02@45e8073fa95035b3565bd8b373ac327915cf1af5",
+    "runtime_semantics": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e"
+  },
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "outbal_calc_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+    "outbal_write_sha256": "cdc0a9738216d8a97d3c35f9862b78fc94fec385aaf0691d6778a73031ac74ea",
+    "outsel_sha256": "b058b88aef464183aa35bdb0377315e3755192e5ee70bb88db6522cf1311ec9d",
+    "ghg_ch4_sha256": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98",
+    "ghg_n2o_sha256": "493bf88d4b321df64817a7c0eaa2725ad614a45df0a0f16cefa96ac348254175",
+    "outbal2_inc_sha256": "dcf8458f3609af685f1058a378df4c4fab5a23406c573913cbd882a0a06921aa",
+    "animo_for_sha256": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
+    "animo_inc_sha256": "0f8b58e522ac2cdae95e8ae727dbf3ecea942e39c4d117b6bcae955d80fb69a2"
+  },
+  "child_admissions": {
+    "TCD-037-A1": {
+      "authority": "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858",
+      "exact_final_ci_run": 34540047043,
+      "ci_conclusion": "success",
+      "synthetic_authority": "ANIMO-SYNQ02@1975eda3586d79033be6af745994bb6181a825fc"
+    },
+    "TCD-037-A2": {
+      "authority": "ANIMO-B3D24@0f85d7102945c7c4d77bc49885f9ecca688209e3",
+      "exact_final_ci_run": 34547891772,
+      "ci_conclusion": "success",
+      "synthetic_authority": "ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38"
+    },
+    "TCD-037-A3": {
+      "authority": "ANIMO-B3D25@4da2dd067069944a5e3eeb5f532566a23402bd68",
+      "exact_final_ci_run": 34549748497,
+      "ci_conclusion": "success",
+      "synthetic_authority": "ANIMO-SYNQ04@31d4ac628edf43501b403f0844dd472bcc12644c"
+    },
+    "TCD-037-A4": {
+      "authority": "ANIMO-B3D26@49e5ef141850296df17317da181a561def239117",
+      "exact_final_ci_run": 34554010568,
+      "ci_conclusion": "success",
+      "synthetic_authority": "ANIMO-SYNQ05@ca3b6fba99ddc70e1f063ac98088f8825f467c1a"
+    }
+  },
+  "verify_and_reuse": {
+    "method": "GOV05_VERIFY_AND_REUSE",
+    "exact_pins_verified": true,
+    "scope_compatibility_verified": true,
+    "immutable_provenance_verified": true,
+    "superseding_contradiction_found": false,
+    "evidence_strength_promoted": false,
+    "historical_b2_claimed": false,
+    "mechanical_child_reruns_required": false
+  },
+  "parent_claim": {
+    "qualification_class": "A_ACCOUNTING_REPORTING_ONLY_AT_CHILD_LEVEL_PARENT_IS_COMPOSITION_SENSITIVE",
+    "meaning": "Conjunction of four bounded source-owned GHG observer mappings with layer, profile-total and atmosphere-boundary semantics kept distinct.",
+    "ch4_layer_formation": "QPrCH4(Ln)*St for Ln=1..Nl feeds CH4f and associated CO2f formation partition observer fields",
+    "ch4_atmosphere_exchange": "(QEmCH4Dif+QEmCH4Ebl+QEmCH4Flw+QEmCH4Plt)*St feeds Btom(CH4e) with source sign preserved",
+    "ch4_formation_total": "sum(QPrCH4(1:Nl)*St) feeds the existing Btom(CO2e) formation-side dissimilation complement only",
+    "n2o_denitrification_formation": "QPrN2Oden(Ln)*St feeds Bani(N2Od)",
+    "n2o_atmosphere_exchange": "(QEmN2ODif+QEmN2OFlw)*St feeds Bani(N2Oe) with source sign preserved",
+    "n2o_nitrification": "Existing Banh(N2On) local production accounting remains unchanged and outside TCD-037 correction",
+    "n2o_reduction": "QRdN2O remains a separate sink and is not a TCD-037 observer producer",
+    "climate_co2_equivalent_claim": false,
+    "complete_ghg_carbon_ledger_claim": false,
+    "complete_n2o_mass_ledger_claim": false,
+    "formation_equals_emission_claim": false
+  },
+  "ownership_and_lifetime": {
+    "affected_inputs_are_current_timestep_rates": true,
+    "observer_amounts_are_rate_times_St": true,
+    "tcd037_inputs_are_persistent_state": false,
+    "tcd037_adds_checkpoint_state": false,
+    "legacy_AmCH4_valid_producer": false,
+    "legacy_AmN2Odeni_valid_producer": false,
+    "legacy_AmN2Onitr_current_call_producer": true,
+    "physical_state_difference_allowed": false,
+    "process_flux_difference_allowed": false,
+    "restart_state_difference_allowed": false,
+    "solver_policy_difference_allowed": false
+  },
+  "signed_exchange": {
+    "ch4_source_semantics": "negative atmosphere-emission rate means uptake by soil",
+    "n2o_source_semantics": "negative atmosphere-emission rate means uptake by soil",
+    "absolute_value_forbidden": true,
+    "positivity_clamp_forbidden": true,
+    "sign_preserved": true
+  },
+  "units": {
+    "ch4_rate": "kg C m-2 d-1",
+    "ch4_timestep_amount": "kg C m-2",
+    "ch4_balance_conversion": "divide by Cfracom then multiply by Z=10000 to organic-matter balance kg ha-1 basis",
+    "n2o_rate": "kg N m-2 d-1",
+    "n2o_timestep_amount": "kg N m-2",
+    "n2o_balance_conversion": "multiply by Z=10000 to kg N ha-1",
+    "cross_element_sum_allowed": false,
+    "CO2e_variable_is_climate_CO2e": false
+  },
+  "restart_and_state": {
+    "physical_restart_state_modified": false,
+    "new_serialized_state": false,
+    "arbitrary_split_run_balance_accumulator_identity_claimed": false,
+    "bounded_claim": "correct observer increments for accepted uninterrupted timesteps without changing physical or restart state"
+  },
+  "conservation_accounting": {
+    "formation_emission_instant_identity_required": false,
+    "dynamic_storage_allows_difference": true,
+    "ch4_oxidation_allows_difference": true,
+    "n2o_reduction_allows_difference": true,
+    "whole_model_golden_baseline": false,
+    "full_ledger_closure_claimed": false
+  },
+  "dependencies": {
+    "TCD_032_through_TCD_036_required_for_parent_claim": false,
+    "TCD_032_through_TCD_036_noninterference_exclusion": true,
+    "new_child_atom_required": false
+  },
+  "risk": {
+    "rule": "STRICTEST_APPLICABLE_RISK_TRIGGER_WINS",
+    "gov04_tier": "TIER_D",
+    "tier_a_available": false,
+    "trigger": "NON_ATOMIC_PARENT_COMPOSITION_OF_FOUR_ADMITTED_CHILD_ATOMS_WITH_SHARED_LAYER_PROFILE_BOUNDARY_ACCOUNTING_SEMANTICS",
+    "production_trigger": false,
+    "b4_trigger": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "child_admissions_reopened": false,
+    "canonical_tcd_register_modified": false,
+    "aggregate_modified": false,
+    "b4": false,
+    "production_migration": false,
+    "whole_model_golden_baseline": false,
+    "historical_b2_claim": false,
+    "global_Ly_equals_Ln_theorem": false,
+    "central_regie_rewrite": false
+  },
+  "composition_predicates": {
+    "parent_claim_reconstructed": "PASS",
+    "child_coverage_complete": "PASS",
+    "ownership_lifetime_compatible": "PASS",
+    "signed_exchange_semantics": "PASS",
+    "index_semantics": "PASS",
+    "units_dimensional_compatibility": "PASS",
+    "overlap_double_count_audit": "PASS",
+    "gap_audit": "PASS",
+    "restart_state_interaction": "PASS_BOUNDED_NONCLAIM",
+    "conservation_accounting_interaction": "PASS_BOUNDED_NONCLAIM",
+    "tcd032_036_dependency_audit": "PASS_NO_DEPENDENCY",
+    "new_parent_scientific_meaning": "PASS_CONJUNCTION_ONLY_NO_NEW_PHYSICS"
+  },
+  "disposition": "COMPOSITION_CANDIDATE_READY_FOR_GOV05_ADVERSARIAL_REVIEW"
+}

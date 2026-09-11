@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-B3D27",
+  "checkpoint": "C1_PARENT_COMPOSITION_AUTHORING",
+  "checkpoint_state": "READY_TO_FREEZE_AS_IMMUTABLE_AUTHORING_HEAD",
+  "target": "TCD-037",
+  "risk_tier": "GOV04_TIER_D",
+  "assurance_model": "GOV05_SINGLE_AGENT_ADVERSARIAL_REVIEW_REQUIRED_AFTER_FREEZE",
+  "same_agent_review_may_be_called_independent": false,
+  "composition_complete": true,
+  "scientific_admission_at_this_checkpoint": false,
+  "required_artifacts": [
+    "docs/b3/TCD037_PARENT_COMPOSITION_QUALIFICATION.md",
+    "integration/animo-b3/TCD037_PARENT_COMPOSITION_EVIDENCE_MATRIX.json",
+    "integration/animo-b3/TCD037_CHILD_TO_PARENT_COVERAGE_MATRIX.json",
+    "integration/animo-b3/TCD037_PARENT_OVERLAP_GAP_AUDIT.json"
+  ],
+  "review_questions": [
+    "Does the parent claim accidentally equate formation and atmosphere exchange?",
+    "Is signed uptake across the atmosphere boundary preserved?",
+    "Does CH4 index-0 composition keep formation-total and atmosphere-exchange ownership separate?",
+    "Does N2O composition keep denitrification formation, nitrification production, reduction and atmosphere exchange separate?",
+    "Are carbon/organic-matter and nitrogen units kept in separate ledgers?",
+    "Is any observer term double counted across child atoms?",
+    "Is a fifth child atom actually required?",
+    "Does the composition make an unsupported restart, conservation, historical, B4 or production claim?",
+    "Is TCD-032 through TCD-036 silently required?",
+    "Is the parent new meaning no more than a bounded conjunction of admitted atoms?"
+  ],
+  "fail_closed_if_any_review_question_unresolved": true,
+  "next_surface": "C2_GOV05_ADVERSARIAL_REVIEW_OF_EXACT_C1_HEAD"
+}

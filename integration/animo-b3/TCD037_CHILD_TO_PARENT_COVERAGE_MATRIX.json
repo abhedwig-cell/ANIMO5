@@ -1,0 +1,68 @@
+{
+  "work_unit": "ANIMO-B3D27",
+  "target": "TCD-037",
+  "matrix_type": "CHILD_TO_PARENT_COVERAGE",
+  "children": [
+    {
+      "atom": "TCD-037-A1",
+      "admission": "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858",
+      "parent_surface": "CH4_LAYER_FORMATION_PARTITION",
+      "source_owner": "QPrCH4(Ln)*St",
+      "index_domain": "Ln=1..Nl",
+      "observer_targets": ["Bfom(CH4f)", "Bahu(CH4f)", "Bdom(CH4f)", "Bfom(CO2f)", "Bahu(CO2f)", "Bdom(CO2f)"],
+      "semantic_role": "formation",
+      "coverage": "COMPLETE"
+    },
+    {
+      "atom": "TCD-037-A2",
+      "admission": "ANIMO-B3D24@0f85d7102945c7c4d77bc49885f9ecca688209e3",
+      "parent_surface": "CH4_PROFILE_TOTAL_SEMANTIC_SPLIT",
+      "source_owners": {
+        "Btom(CH4e)": "(QEmCH4Dif+QEmCH4Ebl+QEmCH4Flw+QEmCH4Plt)*St",
+        "Btom(CO2e)": "sum(QPrCH4(1:Nl)*St) as formation-side dissimilation complement"
+      },
+      "index_domain": "profile total / atmosphere boundary; legacy index-0 overload rejected",
+      "semantic_role": "atmosphere_exchange_and_separate_formation_total",
+      "coverage": "COMPLETE"
+    },
+    {
+      "atom": "TCD-037-A3",
+      "admission": "ANIMO-B3D25@4da2dd067069944a5e3eeb5f532566a23402bd68",
+      "parent_surface": "N2O_DENITRIFICATION_LAYER_FORMATION",
+      "source_owner": "QPrN2Oden(Ln)*St",
+      "index_domain": "Ln=1..Nl",
+      "observer_targets": ["Bani(N2Od)"],
+      "semantic_role": "formation_from_denitrification",
+      "coverage": "COMPLETE"
+    },
+    {
+      "atom": "TCD-037-A4",
+      "admission": "ANIMO-B3D26@49e5ef141850296df17317da181a561def239117",
+      "parent_surface": "N2O_TOTAL_ATMOSPHERE_EXCHANGE",
+      "source_owner": "(QEmN2ODif+QEmN2OFlw)*St",
+      "index_domain": "atmosphere boundary total",
+      "observer_targets": ["Bani(N2Oe)"],
+      "semantic_role": "atmosphere_exchange",
+      "coverage": "COMPLETE"
+    }
+  ],
+  "existing_context_not_missing_children": [
+    {
+      "surface": "Banh(N2On)",
+      "owner": "existing locally rebuilt AmN2Onitr(Ln), equivalent before current reporting threshold to QPrN2Onit(Ln)*St",
+      "reason": "valid current-call producer exists; threshold policy is outside TCD-037"
+    },
+    {
+      "surface": "QRdN2O",
+      "owner": "N2O reduction sink",
+      "reason": "separate physical sink, not production or atmosphere-exchange observer producer"
+    }
+  ],
+  "coverage_checks": {
+    "all_runtimeq03_disconnected_or_overloaded_surfaces_covered": true,
+    "new_child_required": false,
+    "parent_automatic_from_children": false,
+    "parent_composition_qualification_required": true
+  },
+  "parent_meaning": "The parent is the conjunction of the four orthogonal observer mappings. It adds no new process equation and no cross-element total."
+}
