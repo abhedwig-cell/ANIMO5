@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB03D",
+  "registry_path": "integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json",
+  "base_authority": "ANIMO-TB03C@a989541c265213bde0bae3f0e2db28fcaf9c0579",
+  "baseline_registry_blob": "a5f279cfa334dc63d3e4e8759370279736d874a0",
+  "materialization_commit": "0ff4b385575d9d37687df3bda904743f4ad5e2ec",
+  "final_registry_blob": "4c78cdb542c5ff4ce898c033eb99dd7b2daa7c2c",
+  "added_test_ids": [
+    "ATB-ORACLE-002",
+    "ATB-ORACLE-003",
+    "ATB-SPC-003",
+    "ATB-TRN-002",
+    "ATB-CONS-002",
+    "ATB-CONS-003",
+    "ATB-CONS-004",
+    "ATB-CONS-005"
+  ],
+  "removed_test_ids": [],
+  "modified_preexisting_test_ids": [],
+  "changed_top_level_registry_metadata": [],
+  "nonqualified_fragment_ids_not_added": {
+    "ATB-SPC-004": "CANDIDATE",
+    "ATB-SPC-005": "CANDIDATE",
+    "ATB-SPC-006": "CANDIDATE",
+    "ATB-SPC-007": "GAP"
+  },
+  "source_payload": "integration/animo-testbank/fragments/ANIMO-TB03D_REGISTRY_ADDITIONS.json@blob:89f9661c343f74c843d3f2533d8f38bb2f9603c1",
+  "diff_semantics": "Append-only registration of exactly eight already-qualified TB03 fragment entries; no pre-existing registry record or central architecture metadata changed.",
+  "admission_effect": "NONE",
+  "whole_model_conservation_claim_created": false,
+  "whole_model_golden_baseline_created": false,
+  "historical_b2_created": false,
+  "production_source_changed": false,
+  "tb04_changed": false
+}
