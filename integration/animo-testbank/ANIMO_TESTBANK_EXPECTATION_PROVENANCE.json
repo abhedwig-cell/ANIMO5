@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB01",
+  "authority_base": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
+  "expected_value_taxonomy": [
+    "ANALYTICAL",
+    "THEORY",
+    "FROZEN_LEGACY",
+    "CORRECTED_LEGACY_REFERENCE",
+    "QUALIFIED_GOLDEN_CASE",
+    "INVARIANT",
+    "UNKNOWN"
+  ],
+  "oracle_origin_extensions": [
+    "QUALIFIED_SYNTHETIC_ORACLE"
+  ],
+  "governance_rules": {
+    "numerical_expectation_requires_provenance": true,
+    "numerical_expectation_requires_authority": true,
+    "numerical_expectation_requires_expectation_hash_or_derivation_identity": true,
+    "numerical_expectation_requires_source_and_input_identity": true,
+    "numerical_expectation_requires_comparison_policy": true,
+    "UNKNOWN_may_block_qualification_as_truth": false,
+    "UNKNOWN_may_serve_as_qualification_oracle": false,
+    "UNKNOWN_may_block_admission_as_expected_truth": false,
+    "UNKNOWN_may_block_release_as_expected_truth": false,
+    "captured_output_automatically_becomes_golden": false,
+    "FROZEN_LEGACY_automatically_scientific": false,
+    "CORRECTED_LEGACY_REFERENCE_automatically_scientific": false,
+    "QUALIFIED_GOLDEN_CASE_scope_must_equal_qualified_authority_scope": true,
+    "synthetic_oracle_may_be_counted_as_historical_B2": false,
+    "timestamps_are_semantic_expectations": false,
+    "volatile_normalization_requires_explicit_allowlist": true
+  },
+  "category_semantics": {
+    "ANALYTICAL": {
+      "default_status": "SCIENTIFIC_CANDIDATE",
+      "requirements": ["derivation_or_exact_formula_identity", "applicability_domain", "units", "comparison_policy"]
+    },
+    "THEORY": {
+      "default_status": "SCIENTIFIC_CANDIDATE",
+      "requirements": ["theory_authority", "source_scope", "translation_to_test_quantity", "comparison_policy"]
+    },
+    "FROZEN_LEGACY": {
+      "default_status": "BEHAVIOURAL_ONLY",
+      "requirements": ["frozen_source_identity", "testcase_identity", "reference_output_hash", "normalization_allowlist_if_any"],
+      "may_claim_scientific_correctness_by_default": false
+    },
+    "CORRECTED_LEGACY_REFERENCE": {
+      "default_status": "SCOPE_BOUND_CORRECTED_REFERENCE",
+      "requirements": ["parent_legacy_identity", "admitted_discrepancy_authority", "corrected_reference_hash", "scope", "comparison_policy"],
+      "may_claim_whole_model_scientific_correctness_by_default": false
+    },
+    "QUALIFIED_GOLDEN_CASE": {
+      "default_status": "SCIENTIFIC_SCOPE_BOUNDED",
+      "requirements": ["qualification_authority", "source_identity", "input_identity", "output_hash", "scientific_claims", "comparison_policy"]
+    },
+    "INVARIANT": {
+      "default_status": "SCIENTIFIC_OR_TECHNICAL_INVARIANT",
+      "requirements": ["invariant_definition", "applicability_domain", "comparison_policy"]
+    },
+    "UNKNOWN": {
+      "default_status": "INVENTORY_ONLY_NOT_QUALIFICATION_TRUTH",
+      "requirements": ["reason_unknown"],
+      "may_serve_as_qualification_oracle": false
+    }
+  },
+  "synthetic_oracle_policy": {
+    "origin": "QUALIFIED_SYNTHETIC_ORACLE",
+    "expected_value_taxonomy_must_still_be_one_of_historical_categories": true,
+    "typical_expected_value_categories": ["ANALYTICAL", "THEORY", "INVARIANT"],
+    "must_record_synthetic_authority": true,
+    "must_record_generating_assumptions": true,
+    "must_record_applicability_domain": true,
+    "must_remain_explicitly_synthetic": true,
+    "may_be_relabelled_historical_B2": false
+  },
+  "baseline_availability": {
+    "ATOMICALLY_QUALIFIED_COMPONENT_EXPECTATIONS": {
+      "status": "AVAILABLE_ONLY_WHERE_EXACT_ATOMIC_OR_SUBSYSTEM_AUTHORITY_EXISTS",
+      "scientific_scope": "bounded by each exact admission or qualification authority",
+      "machine_usable_for_qualification": true,
+      "whole_model_implication": false
+    },
+    "COMPOSED_WHOLE_MODEL_GOLDEN_BASELINE": {
+      "status": "UNAVAILABLE_NOT_AUTHORIZED",
+      "reason": "Current B3 atomic admissions are not equivalent to scientifically qualified composed whole-model behaviour.",
+      "machine_usable_for_qualification": false,
+      "may_be_inferred_from_atomic_passes": false
+    }
+  },
+  "currently_registered_expectation_sources": [
+    {
+      "expectation_source_id": "ATB-EXP-B0-R53-BEHAVIOUR",
+      "category": "FROZEN_LEGACY",
+      "authority": "ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300",
+      "source_identity": "ANIMO-B0-SRC-41553-R53:sha256:183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "input_identity": "ANIMO-B0-TB-202609:sha256:44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "expectation_hash": "PER_REFERENCE_OUTPUT_ARTIFACT_REQUIRED_NOT_GLOBALLY_AVAILABLE",
+      "scientific_status": "BEHAVIOURAL_ONLY",
+      "may_block_admission": false,
+      "may_block_release": false,
+      "may_trigger_regression_triage": true,
+      "limitations": [
+        "External controlled immutable B0 retention remains unproven.",
+        "Frozen revision-53 behaviour is not a scientific golden baseline."
+      ]
+    },
+    {
+      "expectation_source_id": "ATB-EXP-SYNQ01",
+      "category": "INVARIANT",
+      "oracle_origin": "QUALIFIED_SYNTHETIC_ORACLE",
+      "authority": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+      "source_identity": "integration/animo-synthetic/SYNTHETIC_ORACLE_REGISTER.json@blob:4c215d19844614de8868380fb03f93268ea4c5d8",
+      "input_identity": "PER_SYNTHETIC_ORACLE_ENTRY",
+      "expectation_hash": "PER_SYNTHETIC_ORACLE_ENTRY",
+      "scientific_status": "SCIENTIFIC_SCOPE_BOUNDED_SYNTHETIC",
+      "may_block_admission": true,
+      "may_block_release": true,
+      "limitations": [
+        "Synthetic evidence is not historical B2.",
+        "Applicability and assumptions must match the target claim."
+      ]
+    },
+    {
+      "expectation_source_id": "ATB-EXP-STRUCTURAL-INVARIANTS",
+      "category": "INVARIANT",
+      "authority": "ANIMO-TB01",
+      "source_identity": "PER_REGISTERED_TEST_SOURCE_PIN",
+      "input_identity": "PINNED_SOURCE_TREE_OR_MANIFEST",
+      "expectation_hash": "DERIVATION_OR_RULE_IDENTITY_REQUIRED_PER_TEST",
+      "scientific_status": "TECHNICAL_OR_SCIENTIFIC_INVARIANT_AS_DECLARED_PER_TEST",
+      "may_block_admission": true,
+      "may_block_release": true,
+      "limitations": [
+        "A structural invariant is not automatically a process-level scientific oracle."
+      ]
+    }
+  ],
+  "reference_regression_manifest_required_fields": [
+    "expectation_source_id",
+    "expected_value_provenance",
+    "authority",
+    "expectation_hash_or_derivation_identity",
+    "source_identity",
+    "input_identity",
+    "scientific_status",
+    "comparison_policy",
+    "scope",
+    "known_admitted_deviations",
+    "may_block_admission",
+    "may_block_release"
+  ],
+  "normalization_policy": {
+    "default": "NO_NORMALIZATION",
+    "allowlisted_examples": [
+      "timestamp fields explicitly declared metadata-only",
+      "platform line endings when TEXT_NORMALIZED_EXACT explicitly selects them"
+    ],
+    "forbidden": [
+      "dropping unexplained numeric differences",
+      "rounding until outputs pass",
+      "removing records because they are inconvenient",
+      "treating an unpinned captured output as a reference"
+    ]
+  }
+}
