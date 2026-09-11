@@ -1,0 +1,45 @@
+name: ANIMO-B3B10R2 targeted independent TCD-031 rereview
+
+on:
+  push:
+    branches:
+      - review/animo-b3b10r2-tcd031-independent-second-line-rereview
+    paths:
+      - 'docs/b3/ANIMO_B3B10R2_TCD031_TARGETED_INDEPENDENT_REREVIEW.md'
+      - 'integration/animo-b3/ANIMO-B3B10R2_CHECKPOINT.json'
+      - 'integration/animo-b3/ANIMO-B3B10R2_EVIDENCE_MATRIX.json'
+      - 'integration/animo-b3/ANIMO-B3B10R2_STATUS.json'
+      - 'integration/animo-b3/ANIMO-B3B10E1_STATUS.json'
+      - 'integration/animo-b3/ANIMO-B3B10E1_MANIFEST.json'
+      - 'integration/animo-b3/ANIMO-B3B10R_STATUS.json'
+      - 'tools/validate_b3b10r2_tcd031_rereview.py'
+      - '.github/workflows/animo-b3b10r2-tcd031-rereview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-targeted-rereview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact rereview head
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate fail-closed rereview package
+        run: python tools/validate_b3b10r2_tcd031_rereview.py
+
+      - name: Assert no frozen source archive was committed
+        shell: bash
+        run: |
+          if find . -type f -name 'ANIMO_4.1.5.53(3).zip' -print -quit | grep -q .; then
+            echo 'FAIL_CLOSED: frozen source archive is repository-visible'
+            exit 1
+          fi
+          echo 'PASS: frozen source archive remains outside the repository'
