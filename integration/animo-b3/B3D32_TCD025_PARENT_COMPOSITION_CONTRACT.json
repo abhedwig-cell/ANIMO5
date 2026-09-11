@@ -1,0 +1,18 @@
+{
+  "work_unit":"ANIMO-B3D32",
+  "target_parent_tcd":"TCD-025",
+  "kind":"BOUNDED_COMPOSED_PUBLIC_MAIN_MACROPORE_LEDGER_PARENT",
+  "base_authority":"ANIMO-B3I09@44f29974a1f49cffd36f67857a1ed2c919978a07",
+  "aggregate_at_start":"ANIMO-RG05K@e5ccad78d7c85aaf2c68d844c5a496edf6d73db5",
+  "routing_authorities":["ANIMO-B3I08@f4a3056087e5f7bac41b243be1f404739cde52b0","ANIMO-B3I09@44f29974a1f49cffd36f67857a1ed2c919978a07"],
+  "readiness_authority":"ANIMO-B3A10@872c78b6c020086280e31e1d9a7408e8b5a1afc7",
+  "control_volume_authority":"ANIMO-MASSQ03@68a8c202bd01bf55b31b7c944884fb2f78a6a8e8",
+  "children":{"TCD-025-A1":"ANIMO-B3D28@ce602528d075fc962b0b78759ed0082d1ec78a51","TCD-025-A2":"ANIMO-B3D29@97fd3274acd47bac74939d9dbd55b908043d1521","TCD-025-A3":"ANIMO-B3D30@5da4e4f38ca94630ff857deb66e86f974425f30c","TCD-025-A4":"ANIMO-B3D31@0bec1968adbf77fd04c6f46819d704b86482d8b2"},
+  "supported_scope":{"public_families":["water","DOM","N","P"],"boundary_predicate":"for every active D: (I intersection S_D is empty) OR (S_D subset_of I)","partial_saturated_reservoir_cut_supported":false,"scope_widening_allowed":false,"whole_profile_only":false},
+  "composition_semantics":{"kind":"CONJUNCTION_VECTOR_NOT_CROSS_FAMILY_SCALAR_SUM","water":"consume TCD-025-A1 exactly","DOM":"consume TCD-025-A2 exactly","N":"consume TCD-025-A3 exactly; DON, NH4-N, NO3-N identities remain separate before N aggregation","P":"consume TCD-025-A4 exactly; DOP and PO4-P identities remain separate before P aggregation","cross_family_summation":false,"new_stoichiometric_conversion":false,"new_atomic_weight_conversion":false},
+  "A5":{"state":"PERMANENTLY_EXCLUDED_FROM_SUPPORTED_PARENT_SCOPE_FOR_FROZEN_REVISION53","scientifically_source_closed":false,"b3_admitted":false,"included_in_parent":false,"future_reopening":"SEPARATE_MODEL_EVOLUTION_AND_QUALIFICATION_ONLY"},
+  "expected_difference":{"changed_states":[],"changed_process_fluxes":[],"changed_numerical_policy":false,"changed_parent_scientific_contract":["bounded supported TCD-025 parent observer composition"],"production_change":false},
+  "historical_behavior":"UNKNOWN_WITHOUT_B2",
+  "candidate_decision":"ADMIT_TCD025_RESTRICTED_PARENT_COMPOSITION_A1_A4_WITH_A5_REV53_EXCLUSION_HISTORICAL_UNCERTAINTY_GOV05_TIER_D",
+  "production_authorized":false
+}

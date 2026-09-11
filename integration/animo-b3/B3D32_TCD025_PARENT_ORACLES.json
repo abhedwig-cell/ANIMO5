@@ -1,0 +1,13 @@
+{
+  "work_unit":"ANIMO-B3D32",
+  "evidence_class":"PARENT_LEVEL_SYNTHETIC_COMPOSITION_ORACLE_NOT_B2",
+  "cases":[
+    {"id":"PC01","interval_relation":"contains_all_active_saturated_reservoirs","children":{"A1":true,"A2":true,"A3":true,"A4":true},"expect_parent_in_scope":true},
+    {"id":"PC02","interval_relation":"partial_cut","children":{"A1":true,"A2":false,"A3":false,"A4":false},"expect_parent_in_scope":false},
+    {"id":"PC03","N_species":{"DON":true,"NH4":true,"NO3":false},"N_aggregate_apparently_closed":true,"expect_parent_pass":false},
+    {"id":"PC04","P_species":{"DOP":true,"PO4":false},"P_aggregate_apparently_closed":true,"expect_parent_pass":false},
+    {"id":"PC05","cross_family_scalar_sum_attempted":true,"expect_allowed":false},
+    {"id":"PC06","A5_b3_admitted":false,"A5_revision53_excluded":true,"A1_A4_exact":true,"expect_restricted_parent_composable":true},
+    {"id":"PC07","residual_derived_missing_flux":true,"expect_allowed":false}
+  ]
+}

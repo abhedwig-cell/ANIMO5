@@ -1,0 +1,13 @@
+{
+  "work_unit":"ANIMO-B3D32",
+  "parent":"TCD-025",
+  "coverage":[
+    {"family":"water","child":"TCD-025-A1","status":"EXACT_FINAL_ADMITTED","scope":"shared predicate only"},
+    {"family":"DOM","child":"TCD-025-A2","status":"EXACT_FINAL_ADMITTED","scope":"shared predicate only"},
+    {"family":"N","child":"TCD-025-A3","status":"EXACT_FINAL_ADMITTED","internal_species":["DON","NH4-N","NO3-N"],"species_separation_required":true},
+    {"family":"P","child":"TCD-025-A4","status":"EXACT_FINAL_ADMITTED","internal_species":["DOP","PO4-P"],"species_separation_required":true}
+  ],
+  "excluded_surface":{"child":"TCD-025-A5","status":"NOT_ADMITTED_PERMANENT_REV53_SCOPE_EXCLUSION","partial_saturated_reservoir_cut":true},
+  "overlap_gap_audit":{"duplicate_public_family_ownership":false,"missing_supported_public_family":false,"A5_silently_included":false,"cross_family_scalar_balance_created":false,"child_scope_widened":false},
+  "parent_composition_complete_for_supported_revision53_scope":true
+}
