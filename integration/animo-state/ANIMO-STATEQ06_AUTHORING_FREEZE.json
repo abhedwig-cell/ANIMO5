@@ -1,0 +1,37 @@
+{
+  "work_unit": "ANIMO-STATEQ06",
+  "freeze_kind": "GOV05_SUBSTANTIVE_AUTHORING_FREEZE",
+  "target": "TCD-035",
+  "substantive_package_head": "a8a3d774bf6fe63cf3c810b4f593a56a8d7a18b4",
+  "substantive_package_tree": "bee4c627265affcaa4cd1026cff802d1b97bf6d9",
+  "base_authority": "ANIMO-B3D37@8bd1d0a5e20e5fa1d15508e0fdf7c69a5150a84f",
+  "pre_freeze_validation": {
+    "green_run": 34643373307,
+    "green_job": 103408223011,
+    "conclusion": "success",
+    "superseded_tooling_failure_run": 34643247874,
+    "superseded_tooling_failure_job": 103407808399,
+    "superseded_failure_cause": "pytest was not installed on the clean GitHub Actions Python environment; the standalone 72-case scientific oracle itself passed before the missing-test-dependency failure",
+    "superseded_failure_qualified": false,
+    "superseded_failure_reviewed": false
+  },
+  "frozen_candidate_identity": "TCD035_SOIL_LAYER_GHG_PHASE_VIEW_RECONSTRUCTION_FROM_ACCEPTED_TOTAL_SYSTEM_GAS_HYDROLOGY_AND_CHECKPOINT_TEMPERATURE",
+  "candidate_b3_class_after_state_resolution": "B_LOCAL_RESTART_RECONSTRUCTION_EXISTING_OWNER",
+  "risk_tier": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "frozen_substantive_paths": [
+    "docs/stateq06/TCD035_GHG_PHASE_RESTART_RECONSTRUCTION.md",
+    "integration/animo-state/TCD035_GHG_PHASE_RESTART_RECONSTRUCTION_CONTRACT.json",
+    "tools/stateq06/tcd035_phase_reconstruction_oracle.py",
+    "tests/stateq06/test_tcd035_phase_reconstruction.py",
+    "tools/validate_stateq06_tcd035.py",
+    ".github/workflows/animo-stateq06-tcd035-phase-restart.yml"
+  ],
+  "post_freeze_allowed_changes": [
+    "integration/animo-state/ANIMO-STATEQ06_STATUS.json",
+    "integration/animo-state/ANIMO-STATEQ06_INTERNAL_ADVERSARIAL_REVIEW.json"
+  ],
+  "same_agent_review_required": true,
+  "genuinely_independent_review_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "instruction": "Require green CI on the exact frozen/reviewed head before adversarial review. Preserve TCD-036 layer0 exclusion, B1-not-B2 status, Tier-C restart risk and all production/B4 boundaries."
+}
