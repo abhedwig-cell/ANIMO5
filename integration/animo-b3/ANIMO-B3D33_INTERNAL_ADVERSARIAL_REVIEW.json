@@ -1,0 +1,30 @@
+{
+  "work_unit":"ANIMO-B3D33",
+  "reviewed_head":"f90ce5b2ad1eab60812973e20fda98f6024e0c3b",
+  "reviewed_authoring_ci":{"run":34588211700,"job":103227209890,"conclusion":"success"},
+  "model":"MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "same_agent":true,
+  "genuinely_independent":false,
+  "independence_claimed":false,
+  "assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "risk_tier":"C_SINGULAR_DOMAIN_SEMANTICS",
+  "scientific_gate_reduction":false,
+  "target_scope":"TCD-042-B1: Flpn=0 AND Flux=0 AND Hetop>0",
+  "counter_hypotheses":[
+    {"id":"H1_ZERO_ENDPOINT_INVALIDATES_THE_BOUNDED_ATOM","hypothesis":"Because revision 53 accepts Hetop=0, the positive-HETOP exact-zero atom cannot be admitted separately.","test":"Recheck B3I10 routing against UBQ04 endpoint findings and verify that the admission contract changes claim scope only, not parser semantics.","result":"REJECTED","basis":"B3I10 explicitly qualifies the positive-HETOP B1 child scope while UBQ04 keeps Hetop=0 scientifically unresolved. The candidate neither changes input validation nor declares zero thickness globally invalid."},
+    {"id":"H2_NEW_PHYSICAL_STATE_IS_REQUIRED","hypothesis":"The missing exact-zero mass requires a new state owner, making the local algebra classification unsound.","test":"Reconstruct the governing upper-reservoir equation and owner from UBQ01 and inspect whether C0, Hetop, Load and the accepted end/average reservoir concentrations already exist.","result":"REJECTED","basis":"UBQ01 establishes the existing upper addition-reservoir owner. At Hetop>0 the defect is the exact-zero coefficient fallback A2=B2=0, not absence of reservoir state."},
+    {"id":"H3_SAME_STEP_EXPORT_CHANGES","hypothesis":"Retaining the loaded mass changes same-step solute export and therefore widens the process-flux scope.","test":"Evaluate St*Flux*Cavg under the admitted predicate.","result":"REJECTED","basis":"Flux=0 exactly, so same-step export is identically zero for any finite Cavg. Later differences are causal descendants only after retained mass can move or transform."},
+    {"id":"H4_E1_IS_SILENTLY_COMPOSED","hypothesis":"The B1 admission silently fixes or constrains the finite-positive 0<Flux<1e-8 numerical seam.","test":"Compare candidate predicate and unchanged surfaces with B3I10 child separation.","result":"REJECTED","basis":"The predicate requires Flux=0 exactly. Finite-positive subthreshold behaviour remains explicitly owned by TCD-042-E1 and is not admitted here."},
+    {"id":"H5_HISTORICAL_UNCERTAINTY_IS_BEING_PROMOTED_TO_B2","hypothesis":"Natural execution and synthetic/exact oracles are being used as historical fidelity evidence.","test":"Inspect the formal disposition, evidence labels and GOV03 route.","result":"REJECTED","basis":"The contract keeps historical behaviour UNKNOWN_WITHOUT_B2 and labels natural execution as B1 causal evidence only. GOV03 supplies route eligibility, not B2 equivalence."},
+    {"id":"H6_PARENT_ADMISSION_FOLLOWS_FROM_B1","hypothesis":"Admitting B1 implicitly admits TCD-042 because B1 is the exact-zero correction.","test":"Check parent and E1 boundaries in the contract/status and B3I10 routing.","result":"REJECTED","basis":"TCD-042-E1 remains separate and unadmitted here, while Hetop=0 remains excluded. Parent admission is explicitly false."},
+    {"id":"H7_SPECIES_VECTOR_MASKS_CANCELLATION","hypothesis":"NH4 and NO3 could cancel in an aggregate balance and make the algebra appear conservative.","test":"Evaluate Z03 for NH4 and NO3 independently before any aggregation.","result":"REJECTED","basis":"Each species separately satisfies old storage plus input equals new storage and same-step export is zero. No cross-species cancellation is used."},
+    {"id":"H8_B3_ADMISSION_PREMATURELY_AUTHORIZES_PRODUCTION","hypothesis":"A scientific B3 decision could be read as permission to patch production source or change input policy.","test":"Inspect all hard boundaries and changed paths.","result":"REJECTED","basis":"No src/reference/input-validation path changes exist. Production, B4 and migration authorization are all false."}
+  ],
+  "gate_results":{"exact_atomic_scope":"PASS","B0_identity":"PASS","source_owner_and_equation":"PASS","positive_Hetop_exact_zero_limit":"PASS","exact_conservation":"PASS","natural_positive_Hetop_activation":"PASS","negative_controls":"PASS","species_separation":"PASS","Hetop_zero_fail_closed_exclusion":"PASS","E1_noncomposition":"PASS","historical_uncertainty_route":"PASS_WITH_HISTORICAL_BEHAVIOUR_UNKNOWN","non_interference":"PASS_BOUNDED_SCOPE","production_separation":"PASS","aggregate_cadence":"PASS_PENDING_SEPARATE_RG05L_AFTER_EXACT_FINAL_GREEN"},
+  "residual_uncertainty":["Historical revision-53 behaviour remains unknown because no qualified B2 reference exists.","Hetop=0 model semantics remain unresolved and outside this admission.","TCD-042-E1 finite-positive numerical policy remains a separate admission problem.","No production coefficient evaluation or source patch is authorized by this B3 admission."],
+  "outcome":"SELF_REVIEW_PASS_ADMIT_TCD042_B1_POSITIVE_HETOP_WITH_HISTORICAL_UNCERTAINTY",
+  "admission_supported":true,
+  "parent_admission_supported":false,
+  "TCD042_E1_admission_supported":false,
+  "production_authorization_supported":false
+}
