@@ -1,0 +1,26 @@
+{
+  "work_unit": "ANIMO-B3B12",
+  "freeze_kind": "GOV05_SUBSTANTIVE_AUTHORING_FREEZE",
+  "target": "TCD-035",
+  "substantive_package_head": "4151b7da7db9a9debb76ff7a8ef4c0f5da48e9f8",
+  "substantive_package_tree": "882d4cc83ffdad265676a00e63b1fb6ee145d459",
+  "base_authority": "ANIMO-STATEQ06@7e4ee6ebdfe168b24414c97df39b2ca76940ea44",
+  "pre_freeze_validation": {"run": 34643769659, "job": 103409527354, "conclusion": "success"},
+  "frozen_candidate_identity": "TCD035_GHG_SOIL_LAYER_PHASE_VIEW_RECONSTRUCT_FROM_ACCEPTED_CS_HYDROLOGY_AND_CHECKPOINT_TEMPERATURE",
+  "resolved_b3_qualification_class": "B_LOCAL_RESTART_RECONSTRUCTION_EXISTING_OWNER",
+  "risk_tier": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "frozen_substantive_paths": [
+    "docs/b3b12/TCD035_GHG_PHASE_RESTART_READINESS.md",
+    "integration/animo-b3/B3B12_TCD035_READINESS_CONTRACT.json",
+    "tools/validate_b3b12_tcd035.py",
+    ".github/workflows/animo-b3b12-tcd035-readiness.yml"
+  ],
+  "post_freeze_allowed_changes": [
+    "integration/animo-b3/ANIMO-B3B12_STATUS.json",
+    "integration/animo-b3/ANIMO-B3B12_INTERNAL_ADVERSARIAL_REVIEW.json"
+  ],
+  "same_agent_review_required": true,
+  "genuinely_independent_review_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "instruction": "Require green CI on exact frozen/reviewed head before GOV05 review; preserve Tier-C risk, layer0 exclusion, B1-not-B2 and no-admission boundary."
+}
