@@ -1,0 +1,193 @@
+{
+  "schema": "ANIMO-B3A09-TCD037-A4-TIER-A-READINESS-v1",
+  "work_unit": "ANIMO-B3A09",
+  "target_parent_tcd": "TCD-037",
+  "target_child_atom": "TCD-037-A4",
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
+  "risk_tier_at_readiness": "A",
+  "admission_route_if_later_admitted": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "authorities": {
+    "workunit_base": "ANIMO-SYNQ05@ca3b6fba99ddc70e1f063ac98088f8825f467c1a",
+    "synthetic_activation_exact_final_ci_run": 34550444642,
+    "latest_atomic_admission": "ANIMO-B3D25@4da2dd067069944a5e3eeb5f532566a23402bd68",
+    "latest_atomic_admission_exact_final_ci_run": 34549748497,
+    "current_aggregate_snapshot": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "runtime_semantics": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "synthetic_activation": "ANIMO-SYNQ05@ca3b6fba99ddc70e1f063ac98088f8825f467c1a",
+    "synthetic_policy": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+    "gov05_current": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "gov05_exact_final_ci_run": 34546470484,
+    "gov04_tier_a_predicate": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "identifier_reconciliation": {
+    "historical_b3i07_route": "ANIMO-B3A08",
+    "historical_route_rewritten": false,
+    "collision": "ANIMO-B3A08_ALREADY_ALLOCATED_TO_TCD025_MACROPORE_MAIN_LEDGER_READINESS",
+    "live_free_identifier_selected": "ANIMO-B3A09",
+    "canonical_atom_identity_changed": false,
+    "canonical_atom_identity": "TCD-037-A4"
+  },
+  "route": {
+    "b2_available": false,
+    "historical_behavior": "UNKNOWN",
+    "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+    "gov03_g6u_eligible": true
+  },
+  "atomic_claim": {
+    "atomic": true,
+    "source_owner": "(QEmN2ODif+QEmN2OFlw)*St",
+    "consumer": "Bani(N2Oe)",
+    "local_observer_increment": "10000*(QEmN2ODif+QEmN2OFlw)*St",
+    "allowed_observer_fields": ["Bani(N2Oe)"],
+    "existing_consumer_activation_boundary": "existing active-GHG N2Oe observer seam at the first native Ln==1 consumer call",
+    "global_Ly_equals_Ln_theorem_claimed": false,
+    "denitrification_observer_in_scope": false,
+    "nitrification_observer_in_scope": false,
+    "reduction_sink_in_scope": false,
+    "siblings_in_scope": [],
+    "tcd032_036_in_scope": []
+  },
+  "accounting_identity": {
+    "accepted_timestep_amount": "A_N2Oe=(QEmN2ODif+QEmN2OFlw)*St",
+    "source_conversion_factor": "Z=10000",
+    "observer_increment": "Delta Bani(N2Oe)=10000*(QEmN2ODif+QEmN2OFlw)*St",
+    "oracle": "ANIMO-SYNQ05 exact-rational Fraction oracle",
+    "strongest_alternative_rejected": "N2O production totals are not the atmosphere-emission owner",
+    "signed_exchange_semantics": "negative atmosphere emission is soil uptake and decreases the observer amount",
+    "numerical_acceptance": "EXACT_BINARY64_FOR_CHOSEN_DYADIC_SYNTHETIC_VALUES_NO_EMPIRICAL_TOLERANCE"
+  },
+  "expected_difference": {
+    "predeclared_before_b3a09": true,
+    "allowed_observer_fields": ["Bani(N2Oe)"],
+    "physical_state": "NONE",
+    "process_flux": "NONE",
+    "restart_state": "NONE",
+    "solver_or_numerical_policy": "NONE",
+    "Banh_N2On": "NONE",
+    "Bani_N2Od": "NONE",
+    "QRdN2O": "NONE",
+    "unrelated_observer_fields": "NONE",
+    "sibling_atoms": "NONE",
+    "tcd032_036": "NONE"
+  },
+  "coverage": {
+    "natural_active_ghg": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+    "natural_case_translation_performed": false,
+    "synthetic_evidence_strength": "B1_SYNTHETIC_NOT_B2",
+    "synthetic_independence": "INDEPENDENT_SOURCE_SHAPED_PROBE_AND_EXACT_RATIONAL_ORACLE_FOR_CAUSALITY_AND_SCOPE_NOT_REVIEW_INDEPENDENCE",
+    "synthetic_cases": [
+      "EMISSION_NONZERO_PRODUCTION_ZERO",
+      "PRODUCTION_NONZERO_EMISSION_ZERO",
+      "COMPONENT_PERMUTED",
+      "RATE_TIME_EQUIVALENT",
+      "SIGNED_UPTAKE",
+      "INACTIVE"
+    ],
+    "synthetic_activation_predicate": "PASS",
+    "historical_behavior": "UNKNOWN"
+  },
+  "source_provenance": {
+    "frozen_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "local_member_hashes_rechecked_in_synq05": true,
+    "raw_source_redistributed": false,
+    "outbal_consumer_mismatch_corroborated": true,
+    "ghg_n2o_atmosphere_flux_owners_corroborated": true,
+    "outsel_total_emission_identity_corroborated": true
+  },
+  "gov03": {
+    "closure_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "g6u": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "historical_behavior": "UNKNOWN"
+  },
+  "gov04_tier_a_waiver_predicate": {
+    "EXACT_SOURCE_SEAM_PINNED": "PASS",
+    "PHYSICAL_AND_ACCOUNTING_OWNERSHIP_UNAMBIGUOUS": "PASS",
+    "ATOMIC_CLAIM": "PASS",
+    "EXACT_CONSERVATION_OR_ACCOUNTING_IDENTITY": "PASS",
+    "EXPECTED_DIFFERENCE_PINNED_BEFORE_QUALIFICATION": "PASS",
+    "PHYSICAL_STATE_NON_INTERFERENCE": "PASS",
+    "PROCESS_FLUX_NON_INTERFERENCE": "PASS",
+    "NO_NUMERICAL_POLICY_CHANGE": "PASS",
+    "NO_SOLVER_OR_TOLERANCE_CHANGE": "PASS",
+    "NO_RESTART_INITIALIZATION_OR_STATE_SEMANTIC_CHANGE": "PASS",
+    "NO_COMPOSITION": "PASS",
+    "NO_UNRESOLVED_SCIENTIFIC_OR_SOURCE_MEANING_AMBIGUITY": "PASS",
+    "REPRODUCIBLE_VALIDATOR": "PASS",
+    "SCOPE_GUARD": "PASS_IF_EXACT_B3A09_CI_GREEN",
+    "NATURAL_OR_INDEPENDENTLY_QUALIFIED_SYNTHETIC_ACTIVATION": "PASS",
+    "HISTORICAL_UNKNOWN_PRESERVED_WITHOUT_B2": "PASS",
+    "GOV03_ROUTE_CONDITIONS_RETAINED": "PASS",
+    "NO_PRODUCTION_REGISTER_B4_OR_FINALIZED_GOVERNANCE_SNAPSHOT_MUTATION": "PASS",
+    "readiness_result": "TIER_A_WAIVER_PREDICATE_PASS_AT_READINESS",
+    "final_waiver_granted": false,
+    "final_waiver_grant_deferred_to_admission_workunit": true
+  },
+  "gov05_tier_a_application": {
+    "current_governance": true,
+    "gov04_tier_a_waiver_retained_without_weakening": true,
+    "separate_review_phase_required_when_all_tier_a_predicates_pass": false,
+    "independence_claim_made": false,
+    "scientific_gate_reduction": false
+  },
+  "aggregate_context": {
+    "rg05i_snapshot_scientific_admission_count": 14,
+    "effective_post_rg05i_new_admissions": ["ANIMO-B3D25:TCD-037-A3"],
+    "effective_scientific_admission_count_in_lineage": 15,
+    "normal_batch_threshold": 3,
+    "normal_batch_threshold_reached": false,
+    "aggregate_update_performed_here": false,
+    "tcd037_parent_admitted": false,
+    "admitted_children": ["TCD-037-A1", "TCD-037-A2", "TCD-037-A3"],
+    "unadmitted_children": ["TCD-037-A4"]
+  },
+  "b3q01_child_schema_binding": {
+    "schema_change_required": false,
+    "later_disposition_tcd_ids": ["TCD-037"],
+    "canonical_atomic_child_identity": "TCD-037-A4",
+    "parent_or_sibling_admission_implied": false
+  },
+  "readiness_gates": {
+    "B0_IDENTITY": "PASS",
+    "ATOMICITY": "PASS",
+    "CLASS_A_CLASSIFICATION": "PASS",
+    "B1_CAUSAL_EVIDENCE": "PASS",
+    "B2_OR_HISTORICAL_UNCERTAINTY_ROUTE": "PASS_GOV03_G6U",
+    "SCIENTIFIC_OR_ACCOUNTING_BASIS": "PASS",
+    "CAUSAL_MECHANISM": "PASS",
+    "CONSERVATION_OR_ACCOUNTING_IDENTITY": "PASS",
+    "EXPECTED_DIFFERENCE": "PASS",
+    "NON_INTERFERENCE": "PASS",
+    "COVERAGE": "PASS_QUALIFIED_SYNTHETIC_ALTERNATIVE",
+    "SIGNED_EXCHANGE": "PASS",
+    "RESIDUAL_UNCERTAINTY": "PASS_EXPLICIT_UNKNOWN_HISTORY_AND_NATURAL_CASE_GAP",
+    "REVIEW_PROCESS": "PASS_NOT_APPLICABLE_TIER_A_ALL_WAIVER_PREDICATES_PASS",
+    "ADMISSION": "NOT_PERFORMED"
+  },
+  "identifier_collision_check": {
+    "ANIMO-B3A08": "OCCUPIED_BY_TCD025_DO_NOT_REUSE",
+    "ANIMO-B3A09": "ALLOCATED_TO_THIS_READINESS_WORKUNIT_AFTER_LIVE_FREE_CHECK",
+    "ANIMO-B3D26": "FREE_AT_B3A09_START_CHECK_NOT_RESERVED_RECHECK_BEFORE_ADMISSION_BRANCH_CREATION"
+  },
+  "scope_guards": {
+    "scientific_admission": false,
+    "tier_a_final_waiver": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "routing_register_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "parent_tcd_admitted": false,
+    "sibling_admission": false,
+    "composition": false,
+    "b4_opened": false,
+    "aggregate_updated": false,
+    "historical_fidelity_claimed": false,
+    "synthetic_evidence_promoted_to_b2": false,
+    "testcase_translation_performed": false
+  },
+  "decision": "QUALIFIED_TCD037_A4_TIER_A_ADMISSION_READINESS_WAIVER_PREDICATE_PASS_NO_ADMISSION",
+  "next_work_unit_candidate": "LIVE_RECHECK_THEN_ANIMO-B3D26_TCD037_A4_TIER_A_ATOMIC_ADMISSION_DECISION_IF_IDENTIFIER_STILL_FREE"
+}
