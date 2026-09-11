@@ -3,14 +3,14 @@
   "title": "TCD-031 Active Macropore Persistent Solute Restart State GOV04 Tier-C Formal Disposition",
   "branch": "work/animo-b3d22-tcd031-gov04-tier-c-disposition",
   "target": "TCD-031",
-  "state": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_PENDING_EXACT_HEAD_CI",
+  "state": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_B3_ADMISSION_DECISION",
   "decision": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_B3_ADMISSION_DECISION",
   "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "b3_qualification_class": "C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL",
   "gov04_risk_tier": "C",
   "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
   "admitted": false,
-  "qualified": false,
+  "qualified": true,
   "production_authorized": false,
   "exact_starting_head": "7648e7b2813f3abc5904e4c34e36072d81d9844f",
   "persist_early_checkpoint": "8e972a18341b538cfc9ae1c95eb51f461d4748c0",
@@ -45,15 +45,15 @@
     "historical_fidelity_claimed": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-B3D22 TCD-031 Tier-C formal disposition",
-    "run_id": null,
-    "job_id": null,
-    "evidence_head": null,
-    "conclusion": "PENDING",
-    "validator": "PENDING",
-    "scope_guard": "PENDING",
-    "closeout_note": "The substantive disposition package must pass the fail-closed workflow before this disposition becomes qualified. A later status-only closeout must itself pass the same workflow on its exact head."
+    "run_id": 34546662833,
+    "job_id": 103100664439,
+    "evidence_head": "91dfcf047d393e89b1e25dc01cd739cb2f20691e",
+    "conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34546662833 validates the complete substantive B3D22 disposition package at evidence head 91dfcf047d393e89b1e25dc01cd739cb2f20691e. This status-only closeout must pass the same workflow on its own exact final head before B3D22 is treated as final authority."
   },
   "next_if_validated": "SEPARATE_TIER_C_B3_ADMISSION_DECISION_FOR_TCD031"
 }
