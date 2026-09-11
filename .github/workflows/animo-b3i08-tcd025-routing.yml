@@ -1,0 +1,53 @@
+name: ANIMO-B3I08 TCD025 child-scope routing
+
+on:
+  push:
+    branches:
+      - work/animo-b3i08-tcd025-restricted-ledger-routing
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in \
+            624bbad35add93de29ac89649155d9fa086a73af \
+            872c78b6c020086280e31e1d9a7408e8b5a1afc7 \
+            68a8c202bd01bf55b31b7c944884fb2f78a6a8e8 \
+            54679c7555a963133dfd686648af334f479c5808
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+            git cat-file -e "${sha}^{commit}"
+          done
+      - name: Verify exact workflow head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify consumed exact-final workflows
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request
+          checks={34568286088:"624bbad35add93de29ac89649155d9fa086a73af",34571906586:"872c78b6c020086280e31e1d9a7408e8b5a1afc7",34570642773:"68a8c202bd01bf55b31b7c944884fb2f78a6a8e8",34537171952:"54679c7555a963133dfd686648af334f479c5808"}
+          for run,sha in checks.items():
+            req=urllib.request.Request(f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run}",headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}","Accept":"application/vnd.github+json"})
+            with urllib.request.urlopen(req) as f: d=json.load(f)
+            assert d["head_sha"]==sha and d["status"]=="completed" and d["conclusion"]=="success",(run,d.get("head_sha"),d.get("status"),d.get("conclusion"))
+          print("exact-final authorities verified")
+          PY
+      - name: Parse records
+        run: |
+          python -m json.tool integration/animo-b3/B3I08_TCD025_CHILD_ROUTING.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3I08_STATUS.json >/dev/null
+          python -m py_compile tools/validate_b3i08_tcd025_routing.py
+      - name: Validate routing and scope
+        run: python tools/validate_b3i08_tcd025_routing.py

@@ -1,0 +1,48 @@
+{
+  "work_unit": "ANIMO-B3I08",
+  "title": "TCD-025 Restricted Ledger Child-Scope Routing",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3i08-tcd025-restricted-ledger-routing",
+  "base": "ANIMO-B3A10@872c78b6c020086280e31e1d9a7408e8b5a1afc7",
+  "aggregate_authority": "ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
+  "prior_routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+  "status": "QUALIFIED_TCD025_CHILD_SCOPE_PARTITION_A1_A4_BOUNDED_A5_BLOCKED_NO_ADMISSION",
+  "decision": "QUALIFIED_TCD025_CHILD_SCOPE_PARTITION_A1_A4_BOUNDED_A5_BLOCKED_NO_ADMISSION",
+  "parent_tcd": "TCD-025",
+  "child_ids": ["TCD-025-A1", "TCD-025-A2", "TCD-025-A3", "TCD-025-A4", "TCD-025-A5"],
+  "admission_candidate_children": ["TCD-025-A1", "TCD-025-A2", "TCD-025-A3", "TCD-025-A4"],
+  "blocked_children": ["TCD-025-A5"],
+  "shared_readiness_authority": "ANIMO-B3A10@872c78b6c020086280e31e1d9a7408e8b5a1afc7",
+  "parent_admitted": false,
+  "child_admission_count": 0,
+  "new_top_level_tcd_reserved": false,
+  "canonical_register_tail": "TCD-042",
+  "scope_guards": {
+    "production_source_modified": false,
+    "canonical_top_level_tcd_register_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "scientific_admission": false,
+    "b4_opened": false,
+    "production_migration_admitted": false,
+    "massq03_predicate_changed": false,
+    "b3a10_science_changed": false,
+    "parent_auto_admission": false
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-b3i08-tcd025-routing.yml",
+    "validator": "tools/validate_b3i08_tcd025_routing.py",
+    "exact_final_head_ci_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "recommended_next": [
+    "After exact-final green, A1-A4 may enter separate bounded Tier-C admission decisions consuming B3A10 and B3I08 without widening scope.",
+    "Do not admit parent TCD-025 from A1-A4 completion; A5 must be disposed and parent composition separately qualified.",
+    "If A5 is researched, use a separate control-volume/state workunit; do not invent a residual-derived saturated internal species flux."
+  ]
+}

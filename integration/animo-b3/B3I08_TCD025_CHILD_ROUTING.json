@@ -1,0 +1,79 @@
+{
+  "work_unit": "ANIMO-B3I08",
+  "parent_tcd": "TCD-025",
+  "scope": "CHILD_SCOPE_ROUTING_ONLY_NO_ADMISSION",
+  "base_authority": "ANIMO-B3A10@872c78b6c020086280e31e1d9a7408e8b5a1afc7",
+  "aggregate_authority": "ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
+  "prior_routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+  "qualified_common_contract": "ANIMO-B3A10_RESTRICTED_PUBLIC_MAIN_MACROPORE_LEDGER_CORRECTION",
+  "boundary_predicate": "for every active D: (I intersection S_D is empty) OR (S_D subset_of I)",
+  "children": [
+    {
+      "id": "TCD-025-A1",
+      "kind": "BOUNDED_CHILD_CORRECTION",
+      "title": "Water public/main macropore ledger correction on admissible selected intervals",
+      "public_family": "water",
+      "admission_candidate": true,
+      "risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
+      "shared_readiness_authority": "ANIMO-B3A10@872c78b6c020086280e31e1d9a7408e8b5a1afc7",
+      "scope_expansion_allowed": false
+    },
+    {
+      "id": "TCD-025-A2",
+      "kind": "BOUNDED_CHILD_CORRECTION",
+      "title": "DOM public/main macropore ledger correction on admissible selected intervals",
+      "public_family": "DOM",
+      "source_species": ["DiorMa"],
+      "admission_candidate": true,
+      "risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
+      "shared_readiness_authority": "ANIMO-B3A10@872c78b6c020086280e31e1d9a7408e8b5a1afc7",
+      "scope_expansion_allowed": false
+    },
+    {
+      "id": "TCD-025-A3",
+      "kind": "BOUNDED_CHILD_CORRECTION",
+      "title": "Nitrogen public/main macropore ledger correction on admissible selected intervals",
+      "public_family": "N",
+      "source_species": ["DiorNi", "Nh", "Ni"],
+      "species_separation_required_before_aggregation": true,
+      "admission_candidate": true,
+      "risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
+      "shared_readiness_authority": "ANIMO-B3A10@872c78b6c020086280e31e1d9a7408e8b5a1afc7",
+      "scope_expansion_allowed": false
+    },
+    {
+      "id": "TCD-025-A4",
+      "kind": "BOUNDED_CHILD_CORRECTION",
+      "title": "Phosphorus public/main macropore ledger correction on admissible selected intervals",
+      "public_family": "P",
+      "source_species": ["DiorPo", "Po"],
+      "species_separation_required_before_aggregation": true,
+      "admission_candidate": true,
+      "risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
+      "shared_readiness_authority": "ANIMO-B3A10@872c78b6c020086280e31e1d9a7408e8b5a1afc7",
+      "scope_expansion_allowed": false
+    },
+    {
+      "id": "TCD-025-A5",
+      "kind": "UNRESOLVED_PARENT_SCOPE_BLOCKER",
+      "title": "Partial saturated-reservoir selected-profile dissolved-species semantics",
+      "public_family": "cross-species",
+      "admission_candidate": false,
+      "state": "BLOCKED_NOT_SOURCE_CLOSED",
+      "required_next": "additional independently owned partial-reservoir observer/state contract or permanent exclusion from supported scope by explicit parent governance"
+    }
+  ],
+  "parent": {
+    "admitted": false,
+    "automatic_admission_from_A1_A4_forbidden": true,
+    "A5_disposition_required_before_parent_completion": true,
+    "explicit_parent_composition_decision_required": true
+  },
+  "canonical_register": {
+    "new_top_level_tcd_reserved": false,
+    "canonical_register_modified": false,
+    "tail_remains": "TCD-042"
+  },
+  "production_authorized": false,
+  "b4_opened": false
+}
