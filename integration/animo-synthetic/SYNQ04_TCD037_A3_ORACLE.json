@@ -119,15 +119,15 @@
     "tier_a_waiver_granted": false
   },
   "qualification": {
-    "tested_head": null,
-    "workflow_run_id": null,
-    "job_id": null,
-    "workflow_conclusion": "PENDING",
-    "o0_exact_oracle": "PENDING",
-    "o2_exact_oracle": "PENDING",
-    "o0_o2_byte_identity": "PENDING",
-    "causal_discriminator": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "29d016dfdb8da8e0eac9c0e8bbca2c309f4de439",
+    "workflow_run_id": 34548513397,
+    "job_id": 103106247839,
+    "workflow_conclusion": "success",
+    "o0_exact_oracle": "PASS",
+    "o2_exact_oracle": "PASS",
+    "o0_o2_byte_identity": "PASS",
+    "causal_discriminator": "PASS",
+    "scope_guard": "PASS"
   },
   "scope": {
     "scientific_admission": false,
