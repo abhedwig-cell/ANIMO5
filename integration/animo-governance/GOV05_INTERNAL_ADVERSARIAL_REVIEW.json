@@ -1,0 +1,123 @@
+{
+  "work_unit": "ANIMO-GOV05",
+  "risk_tier": "GOVERNANCE",
+  "review_mode": "INTERNAL_ADVERSARIAL_REVIEW",
+  "assurance_label": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "reviewed_authoring_head": "c7a4064fd20b2978bdfb87bd8c8de20924ba87a4",
+  "same_agent": true,
+  "independence_claimed": false,
+  "review_boundary": {
+    "complete_authoring_package_persisted": true,
+    "immutable_head_frozen_before_review": true,
+    "source_testbank_evidence_hashes_recorded_before_review": true,
+    "authoring_completed_before_review": true,
+    "authoring_head_matches_reviewed_head": true,
+    "moving_tree_reviewed": false
+  },
+  "evidence_reuse_checks": {
+    "pin_identity": "PASS",
+    "scope_compatibility": "PASS",
+    "immutable_provenance": "PASS",
+    "no_superseding_contradiction": "PASS",
+    "evidence_strength_preserved": "PASS"
+  },
+  "counter_hypothesis": {
+    "tested": true,
+    "alternative": "Retain GOV04 mandatory separate-context review because a same-agent second pass cannot provide equal process-independence assurance and can preserve correlated authoring errors.",
+    "test": "Compare the assurance property supplied by a fresh context with the GOV05 controls actually encoded at the frozen authoring head. The immutable checkpoint, mandatory reconstruction, counter-hypothesis, controls, gate preservation and fail-closed validator reduce confirmation risk but do not create independence. GOV05 therefore has to accept lower independence explicitly rather than claim equivalence.",
+    "result": "ALTERNATIVE_HAS_HIGHER_INDEPENDENCE_ASSURANCE_BUT_IS_NOT_REQUIRED_BY_GOV05"
+  },
+  "active_controls": [
+    "The frozen GOV04 Tier A, B, C and D gate inventories were compared against GOV05_REVIEW_ASSURANCE_MATRIX.json. The scientific gate sets are retained and only the review-process independence gate is replaced with an explicitly lower-assurance same-agent process.",
+    "The frozen B3Q01 disposition schema and representative Tier B and Tier C GOV04 review records were inspected. The legacy evidence.independent_review field does not itself force independence, so GOV05 can preserve the historical schema while requiring independent_from_correction_authoring=false plus a pinned GOV05 review artifact for same-agent use.",
+    "The branch scope was reconstructed from the B3D21 base. GOV05 changes only governance documentation, machine-readable GOV05 artifacts, its validator and its workflow; production source, frozen reference material, canonical TCD records and historical review/admission artifacts remain outside the permitted diff."
+  ],
+  "negative_controls": [
+    "A same-agent record that sets independence_claimed=true must fail validation.",
+    "A matrix mutation removing a Tier C enhanced gate must fail validation.",
+    "A matrix mutation collapsing the Tier D production-authorization decision surface must fail validation.",
+    "A mutation promoting historical behaviour from UNKNOWN without B2 to KNOWN must fail validation.",
+    "A matrix mutation removing any frozen GOV04 Tier B gate from the preservation inventory must fail validation.",
+    "A SELF_REVIEW_PASS record containing a failed adversarial gate or an applicable failed scientific gate must fail validation.",
+    "The initial authoring checkpoint 82f3a6b089588ae64e9884492b145cef1f866128 failed closed in CI before a review artifact existed; its first adversarial inspection also exposed an underconstrained generic review schema, which was remediated before this restarted review."
+  ],
+  "scientific_gates": {
+    "SCIENTIFIC_GATE_SET_PRESERVED": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The matrix carries the exact frozen GOV04 gate inventories for Tier A through D and marks only the independent-context review-process gate as replaced. It explicitly forbids scientific evidence-gate removal."
+    },
+    "SOURCE_AND_EVIDENCE_PROVENANCE_ENFORCED": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "GOV05 requires a complete persisted evidence package, immutable authoring head, source/testbank/evidence identities and pin verification before review. Frozen ANIMO source, testbank and guide SHA256 identities are recorded in status."
+    },
+    "OWNERSHIP_UNITS_LIFECYCLE_ENFORCED_WHERE_APPLICABLE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The policy requires same-agent review to reconstruct scientific ownership, variable identity, units, sign, lifecycle and first-read/first-write or restore direction whenever applicable, rather than inherit the authoring conclusion."
+    },
+    "EXPECTED_DIFFERENCE_ENFORCED": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "Expected-difference contracts remain explicit GOV04 scientific gates and are repeated as mandatory adversarial checks; no tolerance may be invented for Tier C."
+    },
+    "CONSERVATION_ENFORCED_WHERE_APPLICABLE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "Conservation and accounting identities remain in the GOV04 gate inventories and in the mandatory second-pass reconstruction whenever scientifically applicable."
+    },
+    "NON_INTERFERENCE_ENFORCED": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "Non-interference is retained for Tier A through D as applicable and is explicitly required in the adversarial second pass and regression-surface inspection."
+    },
+    "STATE_RESTART_NUMERICAL_GATES_ENFORCED_WHERE_APPLICABLE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "Tier C retains state ownership, initialization/restart, numerical/convergence and failure/fallback gates and adds ownership reconstruction, restore-direction analysis, restart/split-run evidence where applicable, explicit comparison policy and no invented tolerance."
+    },
+    "NEGATIVE_CONTROLS_AND_REGRESSION_ENFORCED": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The policy requires active and negative controls plus regression-surface inspection. The GOV05 validator contains explicit matrix and review-record mutation tests and a strict branch scope guard."
+    },
+    "HISTORICAL_UNKNOWN_WITHOUT_B2_ENFORCED": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "GOV03 remains pinned. The policy and matrix require historical revision-53 behaviour to remain UNKNOWN or UNKNOWN_WITHOUT_B2 when no qualified B2 exists; same-agent review cannot promote current-GNU or synthetic evidence to B2."
+    },
+    "PRODUCTION_AUTHORIZATION_SEPARATION_ENFORCED": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "Tier D preserves separate immutable composition qualification, integration qualification, B4 decision and production-authorization surfaces. Ordinary authoring cannot authorize production, and GOV05 itself does not open B4 or production."
+    }
+  },
+  "adversarial_gates": {
+    "POLICY_CLAIM_RECONSTRUCTION": "PASS",
+    "COUNTER_HYPOTHESIS_TEST": "PASS",
+    "GOV04_GATE_PRESERVATION": "PASS",
+    "ASSURANCE_LABELING": "PASS",
+    "TIER_A_WAIVER_PRESERVATION": "PASS",
+    "TIER_B_PROTOCOL": "PASS",
+    "TIER_C_ENHANCED_PROTOCOL": "PASS",
+    "TIER_D_DECISION_SURFACE_SEPARATION": "PASS",
+    "B3Q01_COMPATIBILITY": "PASS",
+    "HISTORICAL_UNKNOWN_PRESERVED": "PASS",
+    "VERIFY_AND_REUSE": "PASS",
+    "TRANSITION_IMMUTABILITY": "PASS",
+    "NO_PRODUCTION_OR_TCD_CHANGE": "PASS",
+    "NEGATIVE_CONTROL_VALIDATOR": "PASS",
+    "REGRESSION_SCOPE": "PASS",
+    "RESIDUAL_UNCERTAINTY": "PASS"
+  },
+  "residual_uncertainty": [
+    "Same-agent review retains correlated reasoning and confirmation-bias risk. Immutable checkpoints and adversarial prompts constrain that risk but cannot make the process independent.",
+    "GOV05 therefore has lower independence assurance than the GOV04 separate-context model. It provides neither human nor organizational independence.",
+    "B3Q01 retains the historical field name evidence.independent_review. For GOV05 same-agent use, a workunit-specific validator must enforce independent_from_correction_authoring=false and require the pinned GOV05 review artifact so the legacy name cannot be misread as an independence claim.",
+    "The generic GOV05 schema can enforce review boundaries, structured applicable scientific-gate results and Tier C/D minimum structures, but it cannot know every workunit-specific scientific gate. Each consuming workunit still needs a scope-specific validator that proves its applicable gate inventory is complete.",
+    "Transition observations are a dated snapshot. Any open handoff or in-flight GOV04 review must be rechecked live when a transition action is actually taken; no snapshot entry itself authorizes cancellation or converts a historical result.",
+    "This review PASS is a same-agent process result only. GOV05 qualification remains conditional on the exact final-head workflow succeeding after this review record and final status are committed."
+  ],
+  "outcome": "SELF_REVIEW_PASS"
+}

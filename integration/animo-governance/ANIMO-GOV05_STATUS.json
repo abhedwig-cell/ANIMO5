@@ -2,8 +2,8 @@
   "work_unit": "ANIMO-GOV05",
   "title": "Single-Agent Adversarial Scientific Review & User-Zero-Intervention Governance",
   "branch": "work/animo-gov05-single-agent-adversarial-review",
-  "phase": "AUTHORING_PACKAGE_COMPLETE_PENDING_IMMUTABLE_HEAD_CAPTURE_AND_ADVERSARIAL_REVIEW",
-  "decision": "PENDING_INTERNAL_ADVERSARIAL_REVIEW",
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "decision": "QUALIFIED_SINGLE_AGENT_ADVERSARIAL_REVIEW_GOVERNANCE_WITH_EXPLICITLY_REDUCED_INDEPENDENCE_ASSURANCE_NO_SCIENTIFIC_GATE_REDUCTION",
   "authoring_base": "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858",
   "aggregate_authority_at_start": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
   "governance_authorities": {
@@ -25,6 +25,13 @@
     "open_review_issues_and_handoffs_reviewed": true,
     "independence_coding_surfaces_reviewed": true
   },
+  "final_review_recheck": {
+    "aggregate_authority_still_rg05h": true,
+    "newer_rg05_aggregate_found": false,
+    "newer_b3_admission_than_b3d21_found": false,
+    "in_flight_gov04_review": "ANIMO-B3B10R2@7648ff1de1f96e25137f486c62708387421380bb",
+    "in_flight_review_transition": "DO_NOT_INTERRUPT_OR_RELABEL; KEEP_GOV04_STATUS_IF_IT_COMPLETES; IF_STILL_INCOMPLETE_LATER_RECHECK_LIVE_BEFORE_ANY_GOV05_RESTART"
+  },
   "frozen_evidence_identities": {
     "source_archive": {
       "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
@@ -44,9 +51,6 @@
     "gov04_policy": {
       "authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
       "git_blob": "00c8f0f8ee873f537a5eadc0ae7bbab36bbf513d"
-    },
-    "gov04_matrix": {
-      "authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc"
     },
     "gov03_policy": {
       "authority": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
@@ -72,8 +76,35 @@
     "from": "MANDATORY_SEPARATE_CONTEXT_INDEPENDENT_REVIEW",
     "to": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
     "same_agent_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "tier_c_independence_assurance_relative_to_gov04": "LOWER",
     "independence_assurance_reduced": true,
     "scientific_gate_reduction": false
+  },
+  "adversarial_review_history": {
+    "first_immutable_authoring_head": "82f3a6b089588ae64e9884492b145cef1f866128",
+    "first_head_ci_run": 34545980415,
+    "first_head_ci_result": "FAIL_CLOSED_BECAUSE_REVIEW_ARTIFACT_NOT_YET_PRESENT_AS_DESIGNED",
+    "first_adversarial_inspection": "FAIL_CLOSED_REMEDIATION_REQUIRED",
+    "findings": [
+      "The first generic GOV05 review schema did not require counter-hypothesis and control records, did not encode Tier C or Tier D conditional minimum structures, and could structurally represent SELF_REVIEW_PASS while a gate was FAIL.",
+      "The first validator phrased the strongest alternative as REJECTED_AS_REQUIRED_MODEL, which would overstate what same-agent evidence can establish about the stronger GOV04 independence model."
+    ],
+    "remediation": "The generic schema and validator were strengthened and frozen at a new immutable authoring head before restarting the full adversarial review.",
+    "remediated_immutable_authoring_head": "c7a4064fd20b2978bdfb87bd8c8de20924ba87a4",
+    "substantive_files_changed_in_remediation": [
+      "integration/animo-governance/GOV05_INTERNAL_ADVERSARIAL_REVIEW_SCHEMA.json",
+      "tools/validate_gov05_single_agent_review.py"
+    ]
+  },
+  "review_boundary": {
+    "complete_authoring_package_persisted": true,
+    "immutable_authoring_head": "c7a4064fd20b2978bdfb87bd8c8de20924ba87a4",
+    "review_started": true,
+    "review_completed": true,
+    "review_artifact": "integration/animo-governance/GOV05_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "review_outcome": "SELF_REVIEW_PASS",
+    "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "substantive_changes_after_reviewed_checkpoint_allowed": false
   },
   "hard_boundaries": {
     "tcd_admission_performed": false,
@@ -86,26 +117,19 @@
     "production_authorized": false,
     "historical_fidelity_claimed": false
   },
-  "review_boundary": {
-    "complete_authoring_package_persisted": true,
-    "immutable_authoring_head": null,
-    "review_started": false,
-    "review_artifact": "integration/animo-governance/GOV05_INTERNAL_ADVERSARIAL_REVIEW.json",
-    "substantive_changes_after_reviewed_checkpoint_allowed": false
-  },
   "validation": {
     "validator": "tools/validate_gov05_single_agent_review.py",
     "workflow": ".github/workflows/animo-gov05-single-agent-review.yml",
     "exact_final_head_ci_required": true,
     "final_head": null,
     "final_run_id": null,
-    "conclusion": "PENDING"
+    "conclusion": "EXACT_FINAL_HEAD_CI_REQUIRED_THIS_COMMIT_IS_QUALIFIED_ONLY_IF_WORKFLOW_SUCCEEDS"
   },
   "work_status": {
     "realized": true,
-    "persisted": false,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "persisted": true,
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   }
 }
