@@ -1,10 +1,13 @@
 {
   "work_unit": "ANIMO-B3D27",
-  "checkpoint": "C1_PARENT_COMPOSITION_AUTHORING",
-  "checkpoint_state": "READY_TO_FREEZE_AS_IMMUTABLE_AUTHORING_HEAD",
+  "checkpoint": "C1_PARENT_COMPOSITION_AUTHORING_RESTARTED_AFTER_PRE_REVIEW_EVIDENCE_GAP",
+  "checkpoint_state": "READY_TO_FREEZE_AS_NEW_IMMUTABLE_AUTHORING_HEAD",
   "target": "TCD-037",
+  "superseded_authoring_head": "74711b4ce5ada0e8748014dff0f7c131bdde96ad",
+  "restart_reason": "Pre-review adversarial check found that the new parent-level composition claim should have its own executable bounded composition oracle rather than rely only on child evidence and analytical matrices.",
+  "remediation_scope": "Add exact-rational parent composition oracle and machine-readable oracle evidence only; no production source, child admission, B0, aggregate or registry change.",
   "risk_tier": "GOV04_TIER_D",
-  "assurance_model": "GOV05_SINGLE_AGENT_ADVERSARIAL_REVIEW_REQUIRED_AFTER_FREEZE",
+  "assurance_model": "GOV05_SINGLE_AGENT_ADVERSARIAL_REVIEW_REQUIRED_AFTER_NEW_FREEZE",
   "same_agent_review_may_be_called_independent": false,
   "composition_complete": true,
   "scientific_admission_at_this_checkpoint": false,
@@ -12,7 +15,9 @@
     "docs/b3/TCD037_PARENT_COMPOSITION_QUALIFICATION.md",
     "integration/animo-b3/TCD037_PARENT_COMPOSITION_EVIDENCE_MATRIX.json",
     "integration/animo-b3/TCD037_CHILD_TO_PARENT_COVERAGE_MATRIX.json",
-    "integration/animo-b3/TCD037_PARENT_OVERLAP_GAP_AUDIT.json"
+    "integration/animo-b3/TCD037_PARENT_OVERLAP_GAP_AUDIT.json",
+    "tools/b3d27/tcd037_parent_composition_oracle.py",
+    "integration/animo-b3/TCD037_PARENT_COMPOSITION_ORACLE_EVIDENCE.json"
   ],
   "review_questions": [
     "Does the parent claim accidentally equate formation and atmosphere exchange?",
@@ -24,8 +29,9 @@
     "Is a fifth child atom actually required?",
     "Does the composition make an unsupported restart, conservation, historical, B4 or production claim?",
     "Is TCD-032 through TCD-036 silently required?",
-    "Is the parent new meaning no more than a bounded conjunction of admitted atoms?"
+    "Is the parent new meaning no more than a bounded conjunction of admitted atoms?",
+    "Does the independent parent oracle fail if formation and atmosphere exchange are collapsed?"
   ],
   "fail_closed_if_any_review_question_unresolved": true,
-  "next_surface": "C2_GOV05_ADVERSARIAL_REVIEW_OF_EXACT_C1_HEAD"
+  "next_surface": "C2_GOV05_ADVERSARIAL_REVIEW_OF_THIS_NEW_EXACT_C1_HEAD"
 }

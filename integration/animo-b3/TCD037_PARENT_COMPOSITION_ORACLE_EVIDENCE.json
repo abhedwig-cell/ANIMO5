@@ -1,0 +1,26 @@
+{
+  "work_unit": "ANIMO-B3D27",
+  "target": "TCD-037",
+  "evidence_class": "PARENT_LEVEL_SYNTHETIC_COMPOSITION_ORACLE_NOT_B2",
+  "oracle_path": "tools/b3d27/tcd037_parent_composition_oracle.py",
+  "oracle_blob_sha": "9834f7b229eaea88068310ae3f3c4d61418844e7",
+  "purpose": "Independently test the new parent-level composition algebra and noninterference without re-proving or promoting the child scientific evidence.",
+  "source_semantics_authority": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+  "tests": {
+    "ch4_formation_and_atmosphere_exchange_deliberately_different": "PASS",
+    "ch4_atmosphere_sign_flip_changes_only_Btom_CH4e": "PASS",
+    "ch4_formation_change_leaves_Btom_CH4e_unchanged_and_changes_formation_side_CO2e": "PASS",
+    "n2o_atmosphere_sign_flip_changes_only_Bani_N2Oe": "PASS",
+    "n2o_denitrification_change_leaves_Bani_N2Oe_unchanged": "PASS",
+    "n2o_nitrification_and_reduction_sentinels_untouched": "PASS",
+    "rate_time_amount_equivalence": "PASS",
+    "no_cross_element_ghg_total_defined": "PASS",
+    "no_climate_CO2e_metric_defined": "PASS"
+  },
+  "arithmetic": "EXACT_RATIONAL_FRACTIONS",
+  "historical_reference_strength": "NONE",
+  "natural_runtime_strength": "NONE",
+  "b2_strength": false,
+  "production_source_executed": false,
+  "result": "PASS_BOUNDED_PARENT_COMPOSITION_PROOF"
+}
