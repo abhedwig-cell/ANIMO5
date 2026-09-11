@@ -63,7 +63,7 @@
       "permanence": "REUSABLE_NUMERICAL_POLICY_QUALIFICATION_PATTERN_NOT_TCD_SPECIFIC_PROBE"
     },
     {
-      "test_id": "ATB-ARCH-002",
+      "test_id": "ATB-ARCH-003",
       "layer": "TB-L11",
       "owner": "testbank-runtime",
       "status": "QUALIFIED_FRAGMENT_ENTRY",
@@ -97,7 +97,7 @@
       "permanence": "GAP_TRACKER"
     },
     {
-      "test_id": "ATB-ARCH-003",
+      "test_id": "ATB-ARCH-004",
       "layer": "TB-L11",
       "owner": "testbank-runtime",
       "status": "GAP",

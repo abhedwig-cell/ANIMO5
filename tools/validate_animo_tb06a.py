@@ -43,9 +43,9 @@ def main():
     assert by_id["ATB-NUM-002"]["status"] == "QUALIFIED_FRAGMENT_ENTRY"
     assert by_id["ATB-NUM-003"]["status"] == "QUALIFIED_FRAGMENT_ENTRY"
     assert by_id["ATB-NUM-004"]["status"] == "QUALIFIED_FRAGMENT_ENTRY"
-    assert by_id["ATB-ARCH-002"]["status"] == "QUALIFIED_FRAGMENT_ENTRY"
+    assert by_id["ATB-ARCH-003"]["status"] == "QUALIFIED_FRAGMENT_ENTRY"
     assert by_id["ATB-NUM-005"]["status"] == "GAP"
-    assert by_id["ATB-ARCH-003"]["status"] == "GAP"
+    assert by_id["ATB-ARCH-004"]["status"] == "GAP"
 
     n2 = by_id["ATB-NUM-002"]
     assert n2["applicability_pins"]["global_numeric_tolerance_defined"] is False
@@ -59,12 +59,11 @@ def main():
     assert n4["applicability_pins"]["TCD042_specific_polynomial_promoted_to_general_oracle"] is False
     assert n4["applicability_pins"]["TCD042_specific_threshold_promoted_to_general_policy"] is False
 
-    a2 = by_id["ATB-ARCH-002"]
-    assert a2["applicability_pins"]["historical_compiler_behaviour_can_define_ownership"] is False
-    assert a2["applicability_pins"]["restart_state_inference_from_workspace_forbidden"] is True
+    a3 = by_id["ATB-ARCH-003"]
+    assert a3["applicability_pins"]["historical_compiler_behaviour_can_define_ownership"] is False
+    assert a3["applicability_pins"]["restart_state_inference_from_workspace_forbidden"] is True
 
-    hard = frag["hard_boundaries"]
-    for key, value in hard.items():
+    for key, value in frag["hard_boundaries"].items():
         assert value is False, f"hard boundary must remain false: {key}"
 
     assert status["gov05_adversarial_self_review"]["assurance"] == "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT"

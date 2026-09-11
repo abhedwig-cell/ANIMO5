@@ -20,9 +20,9 @@
     "RUNTIMEQ02": "45e8073fa95035b3565bd8b373ac327915cf1af5"
   },
   "fragment": "integration/animo-testbank/fragments/ANIMO-TB06A_NUMERICAL_COMPILER_RUNTIME_FRAGMENT.json",
-  "qualified_entry_candidates": ["ATB-NUM-002", "ATB-NUM-003", "ATB-NUM-004", "ATB-ARCH-002"],
-  "gap_entries": ["ATB-NUM-005", "ATB-ARCH-003"],
-  "existing_registry_handling": "ATB-NUM-001 and ATB-ARCH-001 are not modified or redefined by this fragment.",
+  "qualified_entry_candidates": ["ATB-NUM-002", "ATB-NUM-003", "ATB-NUM-004", "ATB-ARCH-003"],
+  "gap_entries": ["ATB-NUM-005", "ATB-ARCH-004"],
+  "existing_registry_handling": "ATB-NUM-001, ATB-ARCH-001 and ATB-ARCH-002 are not modified or redefined by this fragment.",
   "scope_limit": "No global tolerance, no repository-wide cross-compiler equivalence, no whole-model runtime correctness, no TCD admission and no production numerical policy binding are established.",
   "gov05_adversarial_self_review": {
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
