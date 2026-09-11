@@ -1,0 +1,29 @@
+{
+  "work_unit": "ANIMO-B3D38",
+  "freeze_kind": "GOV05_SUBSTANTIVE_AUTHORING_FREEZE",
+  "target": "TCD-035",
+  "substantive_package_head": "5961a2e2dcb056237e872614afe98b995a782f84",
+  "substantive_package_tree": "5424ddea4a5b9f64957c1ec6fe2f1e9c9c64ddf7",
+  "base_authority": "ANIMO-B3B12@b930d17d98cd6ec9f6dda1613a7f9aa68148a0d3",
+  "candidate_ci_run": 34644094037,
+  "candidate_ci_job": 103410587169,
+  "candidate_ci_conclusion": "success",
+  "candidate_decision": "ADMIT_TCD035_GHG_SOIL_LAYER_PHASE_VIEW_RECONSTRUCTION_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
+  "admitted_identity_if_green": "TCD035_GHG_SOIL_LAYER_PHASE_VIEW_RECONSTRUCT_FROM_ACCEPTED_CS_HYDROLOGY_AND_CHECKPOINT_TEMPERATURE",
+  "b3_qualification_class": "B_LOCAL_RESTART_RECONSTRUCTION_EXISTING_OWNER",
+  "risk_tier": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "frozen_substantive_paths": [
+    "docs/b3d38/TCD035_ATOMIC_B3_ADMISSION.md",
+    "integration/animo-b3/B3D38_TCD035_ADMISSION_CONTRACT.json",
+    "tools/validate_b3d38_tcd035.py",
+    ".github/workflows/animo-b3d38-tcd035.yml"
+  ],
+  "post_freeze_allowed_changes": [
+    "integration/animo-b3/ANIMO-B3D38_STATUS.json",
+    "integration/animo-b3/ANIMO-B3D38_INTERNAL_ADVERSARIAL_REVIEW.json"
+  ],
+  "same_agent_review_required": true,
+  "genuinely_independent_review_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "instruction": "Require green CI on exact frozen head before Tier-C adversarial review; preserve historical uncertainty, TCD-036 exclusion, B1-not-B2 and two-of-three post-RG05M cadence."
+}
