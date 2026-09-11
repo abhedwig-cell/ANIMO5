@@ -1,0 +1,86 @@
+{
+  "work_unit": "ANIMO-RG05I",
+  "title": "Third Batched Atomic B3 Admission Integration",
+  "branch": "work/animo-rg05i-third-batched-admission-integration",
+  "state": "PERSISTED_VALIDATION_PENDING",
+  "decision": "PERSISTED_VALIDATION_PENDING",
+  "source_aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+  "aggregate_trigger": "NORMAL_BATCH_THRESHOLD_REACHED_THREE_EXACT_FINAL_QUALIFIED_POST_RG05H_ATOMIC_ADMISSIONS",
+  "governance": {
+    "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "gov04_retained_batch_and_tier_a_policy": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+  },
+  "batch_policy": {
+    "new_atomic_admissions": 3,
+    "normal_threshold_reached": true,
+    "early_batch": false
+  },
+  "new_atomic_admissions": [
+    "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858:TCD-037-A1",
+    "ANIMO-B3D24@0f85d7102945c7c4d77bc49885f9ecca688209e3:TCD-037-A2",
+    "ANIMO-B3D23@6c9ab83952b53566b878b533c08e3cb10074f399:TCD-031"
+  ],
+  "exact_final_admission_ci": {
+    "ANIMO-B3D21": "34540047043:success",
+    "ANIMO-B3D24": "34547891772:success",
+    "ANIMO-B3D23": "34548360916:success"
+  },
+  "scientific_admission_count": 14,
+  "historical_uncertainty_admission_count": 14,
+  "normal_b2_admission_count": 0,
+  "top_level_admitted_tcd_count": 12,
+  "admitted_child_atom_count": 2,
+  "current_routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+  "tcd037_state": {
+    "parent_admitted": false,
+    "admitted_children": [
+      "TCD-037-A1",
+      "TCD-037-A2"
+    ],
+    "unadmitted_children": [
+      "TCD-037-A3",
+      "TCD-037-A4"
+    ],
+    "latest_non_admission_evidence": "ANIMO-SYNQ04@31d4ac628edf43501b403f0844dd472bcc12644c:TCD-037-A3",
+    "next_route": "ANIMO-B3A07"
+  },
+  "b3_complete": false,
+  "b4_open": false,
+  "production_open": false,
+  "global_canonical_queue_count_recomputed": false,
+  "hard_boundaries": {
+    "scientific_readmission_performed": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "routing_register_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "parent_tcd037_admitted": false,
+    "composition_admitted": false,
+    "b4_admitted": false,
+    "production_migration_admitted": false,
+    "historical_fidelity_claimed": false,
+    "synthetic_evidence_counted_as_admission": false
+  },
+  "validation": {
+    "machine_validated": false,
+    "workflow": "ANIMO-RG05I third batched atomic admission integration",
+    "run_id": null,
+    "job_id": null,
+    "tested_head": null,
+    "conclusion": "PENDING",
+    "validator": "PENDING",
+    "scope_guard": "PENDING",
+    "closeout_note": null,
+    "exact_final_head_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "next_if_validated": "USE_ANIMO_RG05I_AS_CURRENT_AGGREGATE_AUTHORITY_AND_CONTINUE_TCD037_A3_WITH_ANIMO-B3A07"
+}
