@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB07A",
+  "title": "Composed Regression Baseline Prerequisite Readiness Gate",
+  "branch": "work/animo-tb07a-composed-regression-baseline-readiness",
+  "testbank_base": {
+    "authority": "ANIMO-TB06C@104100f5ceeaf0c13b4bca6ec0a0d641824014a6",
+    "exact_final_ci_run": 34568860576,
+    "exact_final_ci_conclusion": "success",
+    "registry_blob": "caf0ff601da27c9b810b992b923bfdac62f4f7d1"
+  },
+  "architecture_authority": {
+    "authority": "ANIMO-TB01@15a17bfa2c321d08f3ac89f334986c0ae8429045",
+    "status_path": "integration/animo-testbank/ANIMO-TB01_STATUS.json",
+    "status_blob": "8c8ca292bf0495004c9d61d89c8f18f0d44e7f1b",
+    "architecture_path": "docs/testing/ANIMO_TESTBANK_ARCHITECTURE.md",
+    "architecture_blob": "7153ba4cff065c619b1c5f9de4c5d61622604f44"
+  },
+  "current_aggregate_authority": {
+    "authority": "ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
+    "exact_final_ci_run": 34568286088,
+    "exact_final_ci_conclusion": "success",
+    "status_path": "integration/animo-reg/ANIMO-RG05J_STATUS.json",
+    "status_blob": "6795a0489a663b9de75590557dc0366d7562af51"
+  },
+  "bounded_parent_composition_authority": {
+    "authority": "ANIMO-B3D27@cb881d0cd3e3c50455614a93b562b32354f0f1a8",
+    "exact_final_ci_run": 34560197591,
+    "exact_final_ci_conclusion": "success",
+    "status_path": "integration/animo-b3/ANIMO-B3D27_STATUS.json",
+    "status_blob": "9d01d1848ca9e43dec45babdc3986faffc1823f6",
+    "scope": "BOUNDED_COMPOSED_GHG_OBSERVER_ACCOUNTING_CONTRACT"
+  },
+  "governance": {
+    "GOV05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "GOV05_exact_final_ci_run": 34546470484,
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT"
+  },
+  "live_discovery": {
+    "dedicated_TB07_branch_found_before_creation": false,
+    "qualified_B3_composition_completeness_authority_found": false,
+    "newer_aggregate_than_RG05J_found": false,
+    "note": "RG05J is qualified and includes a bounded TCD-037 parent composition, but explicitly records b3_complete=false. No bounded parent composition is treated as whole-model B3 composition completeness."
+  }
+}

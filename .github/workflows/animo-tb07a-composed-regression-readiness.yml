@@ -1,0 +1,40 @@
+name: ANIMO-TB07A composed regression baseline readiness
+
+on:
+  push:
+    branches:
+      - work/animo-tb07a-composed-regression-baseline-readiness
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch pinned authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin \
+            +refs/heads/work/animo-tb01-scientific-verification-testbank-architecture:refs/remotes/origin/tb07a-tb01 \
+            +refs/heads/work/animo-rg05j-fourth-batched-admission-integration:refs/remotes/origin/tb07a-rg05j \
+            +refs/heads/work/animo-b3d27-tcd037-parent-composition-gov05-tier-d-admission:refs/remotes/origin/tb07a-b3d27 \
+            +refs/heads/work/animo-gov05-single-agent-adversarial-review:refs/remotes/origin/tb07a-gov05 \
+            +refs/heads/work/animo-b3q01-scientific-admission-framework:refs/remotes/origin/tb07a-b3q01 \
+            +refs/heads/work/animo-b3i07-tcd037-ghg-balance-observer-routing:refs/remotes/origin/tb07a-b3i07
+          git cat-file -e 15a17bfa2c321d08f3ac89f334986c0ae8429045^{commit}
+          git cat-file -e 624bbad35add93de29ac89649155d9fa086a73af^{commit}
+          git cat-file -e cb881d0cd3e3c50455614a93b562b32354f0f1a8^{commit}
+          git cat-file -e f65a47724e4a4fca7f2d8b8d6de9eeee51867904^{commit}
+          git cat-file -e 846e0f4d02a38b9e02cc1419b1ca87e63aaedb54^{commit}
+          git cat-file -e 54679c7555a963133dfd686648af334f479c5808^{commit}
+
+      - name: Validate fail-closed TB7 prerequisite gate
+        run: python tools/validate_animo_tb07a.py

@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB07A",
+  "title": "Composed Regression Baseline Prerequisite Audit",
+  "phase": "CANDIDATE_AND_FINAL_STATIC_AUDIT",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "target": "TB7_COMPOSED_REGRESSION_BASELINE_READINESS_ONLY",
+  "prerequisite_evaluation": {
+    "TB01_requires_separate_B3_composition_completeness_authority": {
+      "result": "PASS_REQUIREMENT_CONFIRMED",
+      "evidence": "TB01 roadmap states TB7 may proceed only after separate scientific authority showing B3 composition completeness."
+    },
+    "current_aggregate_is_RG05J": {
+      "result": "PASS",
+      "authority": "ANIMO-RG05J@624bbad35add93de29ac89649155d9fa086a73af",
+      "exact_final_ci": "34568286088:success"
+    },
+    "current_aggregate_declares_B3_complete": {
+      "result": "FAIL_CLOSED_FALSE",
+      "observed_value": false,
+      "evidence": "ANIMO-RG05J_STATUS.json:b3_complete=false"
+    },
+    "bounded_TCD037_parent_composition_can_substitute_for_B3_completeness": {
+      "result": "PASS_NO_SUBSTITUTION",
+      "observed_scope": "BOUNDED_COMPOSED_GHG_OBSERVER_ACCOUNTING_CONTRACT",
+      "reason": "B3D27 explicitly excludes whole-model GHG conservation, historical B2, production authorization and whole-model golden-baseline claims."
+    },
+    "separate_qualified_B3_composition_completeness_authority_found": {
+      "result": "FAIL_CLOSED_NOT_FOUND",
+      "observed_value": false
+    },
+    "TB7_composed_baseline_may_be_created_now": {
+      "result": "BLOCKED",
+      "observed_value": false
+    }
+  },
+  "decision": "DO_NOT_CREATE_COMPOSED_REGRESSION_BASELINE_UNTIL_SEPARATE_B3_COMPOSITION_COMPLETENESS_AUTHORITY_EXISTS",
+  "blocker": "NO_QUALIFIED_B3_COMPOSITION_COMPLETENESS_AUTHORITY_AND_RG05J_EXPLICITLY_B3_INCOMPLETE",
+  "registry_guard": {
+    "expected_registry_blob": "caf0ff601da27c9b810b992b923bfdac62f4f7d1",
+    "central_registry_write_allowed": false,
+    "registry_entry_creation_allowed": false
+  },
+  "baseline_guard": {
+    "captured_whole_model_output_created": false,
+    "qualified_golden_case_created": false,
+    "composed_whole_model_golden_baseline_created": false,
+    "legacy_output_promoted_to_scientific_truth": false,
+    "synthetic_output_promoted_to_historical_B2": false
+  },
+  "gov05_adversarial_self_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "result": "PASS_FAIL_CLOSED_PREREQUISITE_DECISION",
+    "questions": {
+      "did_a_bounded_TCD037_parent_composition_get_misread_as_whole_model_B3_completeness": false,
+      "did_green_TB3_through_TB6_registry_qualification_get_misread_as_composition_authority": false,
+      "did_stable_or_frozen_output_get_promoted_to_scientific_golden_truth": false,
+      "did_missing_composition_authority_get_silently_inferred_from_admission_count": false,
+      "did_this_workunit_open_B4_or_release_governance": false,
+      "did_this_workunit_modify_production_source": false,
+      "did_this_workunit_modify_frozen_B0": false,
+      "did_this_workunit_modify_the_central_registry": false,
+      "did_this_workunit_perform_or_imply_a_TCD_admission": false
+    }
+  },
+  "unblock_condition": {
+    "required": "A separate exact-head-qualified scientific authority must explicitly establish B3 composition completeness at the scope needed for a composed whole-model regression baseline.",
+    "then": "Run a fresh TB7 readiness/composition workunit against that authority before creating any composed baseline."
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "whole_model_golden_baseline_created": false,
+    "historical_B2_fabricated": false,
+    "B4_opened": false,
+    "release_gate_opened": false,
+    "frozen_B0_modified": false,
+    "global_tolerance_created": false,
+    "scientific_authority_redefined": false
+  }
+}
