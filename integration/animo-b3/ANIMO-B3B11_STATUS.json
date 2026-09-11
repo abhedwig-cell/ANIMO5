@@ -4,9 +4,9 @@
   "title": "TCD-039 Potential-Uptake Restart Admission Readiness",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-b3b11-tcd039-potential-uptake-restart-readiness",
-  "phase": "SUBSTANTIVE_AUTHORING_COMPLETE_PENDING_FREEZE",
-  "state": "CANDIDATE_TCD039_CLASS_B_READINESS_REVISED_AFTER_FAILED_FREEZE01",
-  "decision": "CREATE_NEW_IMMUTABLE_AUTHORING_FREEZE_AND_REQUIRE_GREEN_CI_BEFORE_GOV05_REVIEW",
+  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
+  "state": "CANDIDATE_TCD039_CLASS_B_READINESS_FREEZE02_PENDING_REVIEW",
+  "decision": "REQUIRE_GREEN_CI_ON_FREEZE02_EXACT_HEAD_BEFORE_GOV05_REVIEW",
   "base_authority": "ANIMO-STATEQ05@c2b29f05b7726f3c57a39481b92f211e78dbee59",
   "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
   "queue_recompute_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
@@ -34,15 +34,19 @@
     "job_id": 103337946933,
     "conclusion": "failure",
     "failed_step": "Validate B3B11 readiness contract and scope",
-    "cause": "validator attempted to read STATEQ01 evidence from the current working tree rather than the exact pinned STATEQ01 authority",
-    "remediation": "validator now loads STATEQ01 and B3Q04 semantic evidence with git show from their exact pinned commits",
+    "cause": "validator used current-tree STATEQ01 evidence instead of the exact pinned STATEQ01 authority",
+    "remediation": "validator now loads STATEQ01 and B3Q04 semantic evidence from exact pinned commits",
     "qualified": false,
     "reviewed": false,
     "disposition": "SUPERSEDED_BEFORE_REVIEW"
   },
   "authoring_freeze": {
     "required": true,
-    "completed": false,
+    "completed": true,
+    "sequence": 2,
+    "substantive_package_head": "883accbca0c6456ae9f54e922135a2606d3078dd",
+    "substantive_package_tree": "03cf9e5d85bdfe7eb8e1365afeff1e0df7791f33",
+    "materialization_commit": "339460a081a58c2d451594406cebbcded79be2c1",
     "supersedes_head": "29a68b49d9d636e7c607af7d15c667ed89a38f9b",
     "post_freeze_substantive_changes_allowed": false
   },
@@ -74,5 +78,5 @@
     "qualified": false,
     "work_unit_complete": false
   },
-  "next": "FREEZE_THE_REVISED_SUBSTANTIVE_PACKAGE_AND_REQUIRE_GREEN_CI_ON_THAT_EXACT_HEAD_BEFORE_REVIEW"
+  "next": "RUN_FREEZE02_EXACT_HEAD_CI; IF GREEN PERFORM_GOV05_SINGLE_AGENT_ADVERSARIAL_REVIEW_OF_THAT_EXACT_HEAD; THEN CLOSE STATUS_ONLY_AND REQUIRE EXACT_FINAL_HEAD_CI"
 }
