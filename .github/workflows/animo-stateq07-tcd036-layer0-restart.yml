@@ -1,0 +1,23 @@
+name: ANIMO-STATEQ07 TCD036 GHG ponding layer0 restart
+
+on:
+  push:
+    branches:
+      - work/animo-stateq07-tcd036-ghg-ponding-layer0-restart
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run bounded source-shaped layer0 oracle
+        run: |
+          python tools/stateq07/tcd036_ponding_layer0_oracle.py
+          python -m unittest -q tests/stateq07/test_tcd036_ponding_layer0.py
+      - name: Validate STATEQ07 authority pins and scope
+        run: python tools/validate_stateq07_tcd036.py
