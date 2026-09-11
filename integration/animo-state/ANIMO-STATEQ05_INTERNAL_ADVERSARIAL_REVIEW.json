@@ -1,0 +1,80 @@
+{
+  "work_unit": "ANIMO-STATEQ05",
+  "tcd": "TCD-039",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "reviewed_head": "e5955cde0d0751edf6d46568bd37dfc7948e0c48",
+  "reviewed_head_tree": "92aa73e241beada42dedeb3a0e765463ff79698a",
+  "reviewed_head_ci_run": 34621225241,
+  "reviewed_head_ci_job": 103335407007,
+  "reviewed_head_ci_conclusion": "success",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "risk_tier_review": "PASS_TIER_C_PERSISTENT_CONTINUATION_STATE_RESTART_SEMANTICS",
+  "review_questions": [
+    {
+      "question": "Does the four-symbol runtime surface imply four independent scientific state owners?",
+      "finding": "NO. Rsamplni_pot/Amplni_pot and Rsamplpo_pot/Amplpo_pot are accepted-backing/working pairs for two logical continuation quantities, N and conditional P. Counting four owners would duplicate state."
+    },
+    {
+      "question": "Could potential uptake be treated as report-only because legacy Output_Init omits it?",
+      "finding": "NO. Uptpar_Plant consumes potential minus actual uptake in later demand calculations, while Init restores the working value from the accepted Rs backing value. Omission from the legacy restart surface is evidence of the restart seam, not evidence that the quantity is diagnostic."
+    },
+    {
+      "question": "Do cold-start, crop-start, or harvest resets justify resetting a nonzero accepted value at an arbitrary restart boundary?",
+      "finding": "NO. Those are explicit lifecycle transitions. They do not authorize replacing accepted continuation state by the cold-start zero path at an unrelated checkpoint."
+    },
+    {
+      "question": "Is a deterministic reconstruction from restart time or configuration established?",
+      "finding": "NO. Frozen revision-53 source defines continuation through prior accepted potential uptake and contains shortage-history mutations. STATEQ05 therefore rejects zero/time/config-only reconstruction for this supported profile, while explicitly not claiming that every conceivable future migration transform is mathematically impossible."
+    },
+    {
+      "question": "Does the synthetic split oracle establish historical B2 or full frozen-Fortran split-run equivalence?",
+      "finding": "NO. It is deliberately B1 source-derived evidence. Historical behavior remains UNKNOWN_WITHOUT_B2 and full-model split-run equivalence is not claimed."
+    },
+    {
+      "question": "Does this qualification reopen or derive TCD-038 actual-uptake admission?",
+      "finding": "NO. Actual uptake is excluded. TCD-039 potential continuation ownership is assessed independently of the already admitted TCD-038 route."
+    },
+    {
+      "question": "Does resolving CROP-005 and CROP-006 resolve the broader CROP-007 crop checkpoint set?",
+      "finding": "NO. CROP-007 remains unresolved and outside the TCD-039 bounded claim. No whole-crop checkpoint sufficiency claim is made."
+    },
+    {
+      "question": "Is phosphorus continuation mandatory when phosphorus is inactive?",
+      "finding": "NO. The P owner is conditional on Ipo == 1; the qualification must fail closed against unconditional P-state claims."
+    },
+    {
+      "question": "Was the failed first freeze silently treated as evidence?",
+      "finding": "NO. Freeze01 head 9afb41f3cba3817e21fe1bf76b94a7d48a29f07d failed CI run 34620873520 before review and is explicitly superseded. Freeze02 e5955cde0d0751edf6d46568bd37dfc7948e0c48 is the only reviewed candidate and its exact-head CI passed."
+    },
+    {
+      "question": "Does STATEQ05 itself scientifically admit canonical TCD-039, canonical STATE, B4, or production?",
+      "finding": "NO. It only qualifies the bounded owner contract for a later separate B3 readiness/admission route."
+    },
+    {
+      "question": "Is this review genuinely independent?",
+      "finding": "NO. This is the GOV05 same-agent adversarial process review and is explicitly not independent."
+    }
+  ],
+  "rejected_overclaims": [
+    "FOUR_INDEPENDENT_TCD039_STATE_OWNERS",
+    "POTENTIAL_UPTAKE_IS_REPORT_ONLY",
+    "ARBITRARY_RESTART_ZERO_RESET_IS_EQUIVALENT",
+    "UNIVERSAL_IMPOSSIBILITY_OF_FUTURE_RECONSTRUCTION_TRANSFORMS",
+    "B1_SYNTHETIC_ORACLE_IS_HISTORICAL_B2",
+    "FULL_FORTRAN_SPLIT_RUN_QUALIFIED",
+    "TCD038_REOPENED_OR_REDERIVED",
+    "CROP007_CLOSED",
+    "WHOLE_CROP_CHECKPOINT_SUFFICIENT",
+    "UNCONDITIONAL_P_OWNER_WHEN_IPO_OFF",
+    "FREEZE01_FAILURE_QUALIFIED",
+    "TCD039_B3_ADMITTED_BY_STATEQ05",
+    "CANONICAL_STATE_ADMITTED",
+    "B4_ALLOWED",
+    "PRODUCTION_ALLOWED",
+    "GENUINELY_INDEPENDENT_REVIEW"
+  ],
+  "outcome": "SELF_REVIEW_PASS_TCD039_BOUNDED_CONTINUATION_OWNER_QUALIFICATION"
+}
