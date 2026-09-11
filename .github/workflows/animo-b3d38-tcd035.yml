@@ -1,0 +1,21 @@
+name: ANIMO-B3D38 TCD035 atomic admission
+
+on:
+  push:
+    branches:
+      - work/animo-b3d38-tcd035-gov05-tier-c-admission
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Re-run inherited bounded reconstruction oracle
+        run: python tools/stateq06/tcd035_phase_reconstruction_oracle.py
+      - name: Validate B3D38 admission contract and scope
+        run: python tools/validate_b3d38_tcd035.py
