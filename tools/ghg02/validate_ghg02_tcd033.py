@@ -85,7 +85,8 @@ manifest = gt(BASE, "reference/source/source_manifest.csv")
 req("ANIMO_4.1.5.53/ghg_ch4.for,26809,ee4e83f7,00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98" in manifest, "ghg_ch4 source identity")
 recon = gt(GHG01, "docs/ghg/GHG_CH4_PRODUCTION_AND_SUBSTRATE_RECONCILIATION.md")
 for needle in [
-    "QPrCH4 = E * A * S",
+    "OmSubCH4 = A * S",
+    "QPrCH4 = E * OmSubCH4 = E * A * S",
     "sum_i(QPrCH4_i) = E*S = QPrCH4/A",
     "SOURCE_CONFIRMED_CH4_PRODUCTION_COMPONENT_PARTITION_NONCLOSURE",
     "QPrCH4Do(Ln)",
