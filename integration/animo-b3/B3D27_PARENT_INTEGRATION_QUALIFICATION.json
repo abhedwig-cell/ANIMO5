@@ -1,0 +1,43 @@
+{
+  "work_unit": "ANIMO-B3D27",
+  "target": "TCD-037",
+  "decision_surface": "TIER_D_PARENT_INTEGRATION_QUALIFICATION",
+  "input_authoring_head": "17387b7282a6f5b40fec290bd4c28cc6cef8f767",
+  "review_assurance": "PASS_GOV05_SINGLE_AGENT_ADVERSARIAL_PARENT_COMPOSITION_REVIEW_NOT_INDEPENDENT",
+  "composition_inputs": [
+    "TCD-037-A1@ANIMO-B3D21",
+    "TCD-037-A2@ANIMO-B3D24",
+    "TCD-037-A3@ANIMO-B3D25",
+    "TCD-037-A4@ANIMO-B3D26"
+  ],
+  "integration_definition": "Scientific integration of the four admitted child observer contracts into the bounded parent TCD-037 claim. This is not source-code integration, aggregate integration, B4 integration or production migration.",
+  "compatibility": {
+    "shared_producer_semantics_conflict": false,
+    "index_semantics_conflict": false,
+    "unit_conflict": false,
+    "sign_conflict": false,
+    "lifetime_conflict": false,
+    "restart_state_conflict": false,
+    "double_count_conflict": false,
+    "cross_element_ledger_conflict": false,
+    "tcd032_036_dependency_conflict": false
+  },
+  "parent_only_constraints": [
+    "formation and atmosphere exchange remain distinct",
+    "CH4 profile formation total is used only for the formation-side Btom(CO2e) complement",
+    "signed atmosphere exchange is preserved including negative uptake",
+    "N2O nitrification and reduction remain separate from the admitted TCD-037 correction",
+    "no cross-element GHG scalar is formed",
+    "no complete GHG conservation theorem is inferred",
+    "no restart reporting-accumulator theorem is inferred"
+  ],
+  "new_scientific_process_introduced": false,
+  "new_state_introduced": false,
+  "new_numerical_policy_introduced": false,
+  "new_child_atom_required": false,
+  "result": "QUALIFIED_TCD037_PARENT_COMPOSITION_INTEGRATION_READY_FOR_FORMAL_B3_ADMISSION_DECISION",
+  "later_tier_d_surfaces": {
+    "b4": "NOT_PERFORMED_NOT_AUTHORIZED",
+    "production_authorization": "NOT_PERFORMED_NOT_AUTHORIZED"
+  }
+}

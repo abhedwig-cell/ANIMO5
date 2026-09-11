@@ -1,0 +1,97 @@
+{
+  "work_unit": "ANIMO-B3D27",
+  "target": "TCD-037",
+  "review_surface": "GOV05_PARENT_COMPOSITION_ADVERSARIAL_REVIEW",
+  "reviewed_authoring_head": "17387b7282a6f5b40fec290bd4c28cc6cef8f767",
+  "superseded_pre_review_head": "74711b4ce5ada0e8748014dff0f7c131bdde96ad",
+  "assurance_mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "assurance_strength": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "gov04_risk_tier": "TIER_D",
+  "strictest_trigger": "PARENT_COMPOSITION_OF_FOUR_ADMITTED_CHILD_ATOMS",
+  "verify_and_reuse": {
+    "exact_pins_verified": true,
+    "scope_compatible": true,
+    "immutable_provenance": true,
+    "superseding_contradiction_found": false,
+    "strength_promotion": false
+  },
+  "adversarial_challenges": [
+    {
+      "challenge": "ONE_SHARED_PROFILE_ARRAY_PER_GAS",
+      "result": "REJECTED",
+      "reason": "layer formation and atmosphere exchange have different source owners; CH4 index 0 is overloaded and N2O total production is not total atmosphere exchange"
+    },
+    {
+      "challenge": "EMISSION_FIELDS_MUST_BE_NONNEGATIVE",
+      "result": "REJECTED",
+      "reason": "frozen CH4 and N2O source explicitly defines negative atmosphere-emission rates as uptake by soil"
+    },
+    {
+      "challenge": "FORMATION_EQUALS_ATMOSPHERE_EXCHANGE_PER_TIMESTEP",
+      "result": "REJECTED",
+      "reason": "dynamic storage, CH4 oxidation and N2O reduction separate production from boundary exchange"
+    },
+    {
+      "challenge": "N2O_NITRIFICATION_IS_A_MISSING_FIFTH_CHILD",
+      "result": "REJECTED",
+      "reason": "current-call producer exists and threshold policy is outside TCD-037"
+    },
+    {
+      "challenge": "QRdN2O_IS_PART_OF_N2O_EMISSION_OBSERVER",
+      "result": "REJECTED",
+      "reason": "QRdN2O is a separate N2O-to-N2 reduction sink"
+    },
+    {
+      "challenge": "CO2e_IS_CLIMATE_CO2_EQUIVALENT",
+      "result": "REJECTED",
+      "reason": "field is in the organic-matter balance and uses Cfracom conversion; no GWP conversion exists in the parent claim"
+    },
+    {
+      "challenge": "PARENT_ADMISSION_IMPLIES_RESTART_BALANCE_ACCUMULATOR_IDENTITY",
+      "result": "REJECTED",
+      "reason": "no restart state is changed and arbitrary split-run reporting-accumulator identity is explicitly not claimed"
+    },
+    {
+      "challenge": "TCD032_036_ARE_IMPLICIT_COMPOSITION_INPUTS",
+      "result": "REJECTED",
+      "reason": "no required parent term is owned by those discrepancies and child scope exclusions remain intact"
+    }
+  ],
+  "parent_oracle": {
+    "path": "tools/b3d27/tcd037_parent_composition_oracle.py",
+    "blob_sha": "9834f7b229eaea88068310ae3f3c4d61418844e7",
+    "evidence": "integration/animo-b3/TCD037_PARENT_COMPOSITION_ORACLE_EVIDENCE.json",
+    "result": "PASS_BOUNDED_PARENT_COMPOSITION_PROOF",
+    "historical_b2": false,
+    "natural_runtime": false
+  },
+  "review_predicates": {
+    "claim_reconstructed_independently_from_authoring_conclusion": "PASS",
+    "counterexamples_sought": "PASS",
+    "strongest_alternative_tested": "PASS",
+    "ownership_identity_units_sign_lifecycle": "PASS",
+    "first_write_read_lifetime_issue_not_reintroduced": "PASS",
+    "expected_difference_noninterference": "PASS",
+    "overlap_double_count": "PASS",
+    "gap_audit": "PASS",
+    "conservation_accounting_boundary": "PASS",
+    "restart_state_boundary": "PASS",
+    "residual_uncertainty_preserved": "PASS",
+    "fail_closed_rule_applied": "PASS"
+  },
+  "residual_uncertainties": [
+    "historical Intel/reference behaviour remains unknown and is not promoted to B2",
+    "natural revision-53 active-GHG testcase remains unavailable because of source/testcase lineage mismatch",
+    "complete GHG carbon and N2O ledger closure is not established by TCD-037",
+    "arbitrary split-run identity of reporting accumulators is not established",
+    "production implementation and migration remain separate future surfaces"
+  ],
+  "substantive_change_required_after_review": false,
+  "review_disposition": "PASS_GOV05_SINGLE_AGENT_ADVERSARIAL_PARENT_COMPOSITION_REVIEW_NOT_INDEPENDENT",
+  "scientific_parent_admitted_by_this_review": false,
+  "aggregate_updated": false,
+  "b4_authorized": false,
+  "production_authorized": false,
+  "next_surface": "PERSIST_PARENT_INTEGRATION_QUALIFICATION_AND_FORMAL_B3_ADMISSION_CLOSEOUT"
+}
