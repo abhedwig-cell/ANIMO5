@@ -1,0 +1,17 @@
+{
+  "work_unit": "ANIMO-B3Q05",
+  "base_head": "8758bd30e302b75dd7854ac00fd2e29473669a13",
+  "scope": "GOVERNANCE_ONLY_GLOBAL_CANONICAL_B3_QUEUE_RECOMPUTE_NEGATIVE_CLOSURE_GATE",
+  "substantive_artifacts": [
+    "integration/animo-b3/ANIMO-B3Q05_GLOBAL_QUEUE_RECOMPUTE.json",
+    "integration/animo-b3/ANIMO-B3Q05_SOURCE_PINS.json",
+    "tools/validate_animo_b3q05.py",
+    ".github/workflows/animo-b3q05-global-queue-recompute.yml"
+  ],
+  "review_must_pin_exact_commit": true,
+  "substantive_change_resets_GOV05_review": true,
+  "post_review_changes_allowed_only": [
+    "integration/animo-b3/ANIMO-B3Q05_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-b3/ANIMO-B3Q05_STATUS.json"
+  ]
+}
