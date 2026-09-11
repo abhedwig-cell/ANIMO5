@@ -1,0 +1,78 @@
+{
+  "work_unit": "ANIMO-B3D39",
+  "target": "TCD-036",
+  "review_framework": "ANIMO-GOV05",
+  "gov05_authority": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "reviewed_head": "33638e35bc68550fca586d30fd01908dc1ec3d0c",
+  "reviewed_tree": "0336b0203dec800e62b37390acb7a97e89caede8",
+  "reviewed_head_ci": {"run_id": 34646313860, "job_id": 103417838771, "conclusion": "success"},
+  "frozen_substantive_head": "ab77091324569b78d3330447b66c2aabd48fe5c9",
+  "freeze_artifact_commit": "077310eac69614254ae3cfa37f2eebce1ce42516",
+  "risk_tier": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "adversarial_checks": [
+    {
+      "attack": "ADMIT_A_SECOND_PERSISTENT_CO0_CHECKPOINT_OWNER",
+      "result": "REJECTED",
+      "reason": "The candidate admits only the serialized gas-specific Cs0 owner and deterministic Co0 identity view for active pre-existing ponding."
+    },
+    {
+      "attack": "EXTEND_PRE_EXISTING_PONDING_RECONSTRUCTION_TO_NEW_PONDING",
+      "result": "REJECTED",
+      "reason": "New ponding remains governed by source inflow initialization and is explicitly excluded from the admitted identity."
+    },
+    {
+      "attack": "CREATE_DORMANT_LAYER0_STORAGE_WITHOUT_PONDING",
+      "result": "REJECTED",
+      "reason": "No-ponding remains outside admitted reconstruction scope and no dormant layer0 GHG store is introduced."
+    },
+    {
+      "attack": "COLLAPSE_OR_CROSS_MAP_CH4_AND_N2O",
+      "result": "REJECTED",
+      "reason": "CH4 and N2O remain separate gas-specific owners and views."
+    },
+    {
+      "attack": "REOPEN_TCD035_SOIL_LAYER_RESTART_OR_TCD032_034",
+      "result": "REJECTED",
+      "reason": "TCD-036 admission is bounded to layer0 pre-existing ponding only; prior TCD-035 authority and TCD-032..034 remain untouched."
+    },
+    {
+      "attack": "USE_LOCAL_CLASS_B_TO_DROP_THE_RESTART_RISK_REVIEW_FLOOR",
+      "result": "REJECTED",
+      "reason": "Restart/checkpoint semantics can affect future trajectories, so GOV05 Tier C remains the strictest applicable review tier."
+    },
+    {
+      "attack": "PROMOTE_B1_SOURCE_SHAPED_ORACLE_TO_HISTORICAL_B2",
+      "result": "REJECTED",
+      "reason": "Historical behavior remains UNKNOWN_WITHOUT_B2 and the admission explicitly carries historical uncertainty."
+    },
+    {
+      "attack": "CLAIM_WHOLE_MODEL_SPLIT_RUN_OR_CHECKPOINT_FORMAT_QUALIFICATION",
+      "result": "REJECTED",
+      "reason": "The admission is a bounded local reconstruction identity and does not qualify whole-model GHG split-run equivalence or serialization format redesign."
+    },
+    {
+      "attack": "CONTINUE_TO_A_FOURTH_POST_RG05M_SCIENTIFIC_ADMISSION_WITHOUT_AGGREGATING",
+      "result": "REJECTED",
+      "reason": "If B3D39 reaches exact-final green it is the third post-RG05M admission; RG05N becomes mandatory before any fourth scientific admission."
+    },
+    {
+      "attack": "OPEN_B4_OR_PRODUCTION_FROM_ATOMIC_B3_ADMISSION",
+      "result": "REJECTED",
+      "reason": "B4 and production remain closed and production source remains untouched."
+    }
+  ],
+  "positive_findings": [
+    "B3B13 and STATEQ07 exact-final authorities are pinned and their boundaries are preserved.",
+    "The admitted identity is scientifically local and does not invent persistent physical state.",
+    "Lifecycle distinctions between pre-existing ponding, new ponding and absent ponding are explicit.",
+    "Historical uncertainty and B1-not-B2 evidence strength are explicit.",
+    "The aggregate cadence correctly requires RG05N after exact-final admission."
+  ],
+  "outcome": "SELF_REVIEW_PASS_ADMIT_TCD036_BOUNDED_LAYER0_RESTART_IDENTITY_WITH_HISTORICAL_UNCERTAINTY",
+  "admission_recommendation": "ADMIT_TCD036_PRE_EXISTING_ACTIVE_PONDING_LAYER0_RESTART_IDENTITY_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
+  "production_authorized": false
+}
