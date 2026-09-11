@@ -122,19 +122,19 @@
     "natural_activation_reasonably_available": false,
     "absence_documented": true,
     "purpose_built_synthetic_activation": true,
-    "independently_qualified_for_causality_and_scope": "PENDING_CI",
+    "independently_qualified_for_causality_and_scope": "PASS",
     "tier_a_waiver_granted": false
   },
   "qualification": {
-    "tested_head": null,
-    "workflow_run_id": null,
-    "job_id": null,
-    "workflow_conclusion": "PENDING",
-    "o0_exact_oracle": "PENDING",
-    "o2_exact_oracle": "PENDING",
-    "o0_o2_byte_identity": "PENDING",
-    "causal_discriminator": "PENDING",
-    "scope_guard": "PENDING"
+    "tested_head": "beea438f261a42071f09d055e9ac36fdb674fe3e",
+    "workflow_run_id": 34544830605,
+    "job_id": 103095091379,
+    "workflow_conclusion": "success",
+    "o0_exact_oracle": "PASS",
+    "o2_exact_oracle": "PASS",
+    "o0_o2_byte_identity": "PASS",
+    "causal_discriminator": "PASS",
+    "scope_guard": "PASS"
   },
   "scope": {
     "scientific_admission": false,
