@@ -1,0 +1,21 @@
+name: ANIMO-B3B13 TCD036 GHG ponding layer0 readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3b13-tcd036-ghg-ponding-layer0-readiness
+
+jobs:
+  readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Re-run inherited STATEQ07 source-shaped oracle
+        run: python tools/stateq07/tcd036_ponding_layer0_oracle.py
+      - name: Validate B3B13 readiness contract and scope
+        run: python tools/validate_b3b13_tcd036.py
