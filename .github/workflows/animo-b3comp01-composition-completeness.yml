@@ -1,0 +1,59 @@
+name: ANIMO-B3COMP01 B3 composition completeness authority
+
+on:
+  push:
+    branches:
+      - work/animo-b3comp01-composition-completeness-authority
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact branch head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch pinned external authority branches
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin \
+            refs/heads/work/animo-rg05k-fifth-batched-admission-integration \
+            refs/heads/work/animo-b3i08-tcd025-restricted-ledger-routing \
+            refs/heads/work/animo-b3i09-tcd025-a5-exclusion-parent-scope-routing \
+            refs/heads/work/animo-b3d27-tcd037-parent-composition-gov05-tier-d-admission \
+            refs/heads/work/animo-tb07a-composed-regression-baseline-readiness \
+            refs/heads/work/animo-gov05-single-agent-adversarial-review \
+            refs/heads/work/animo-b3q01-scientific-admission-framework
+
+      - name: Verify exact checked-out head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+
+      - name: Validate B3 composition completeness authority
+        run: python tools/validate_b3comp01_composition_completeness.py
+
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=0bec1968adbf77fd04c6f46819d704b86482d8b2
+          git diff --name-only "$BASE"..HEAD | tee /tmp/b3comp01_changed.txt
+          if grep -E '^(src/|reference/source/|reference/testcases/|integration/animo-reg/ANIMO-RG|integration/animo-reg/RG05)' /tmp/b3comp01_changed.txt; then
+            echo 'B3COMP01 scope guard failed: forbidden production/frozen/aggregate path changed.' >&2
+            exit 1
+          fi
+
+      - name: Report exact-head qualification
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "ANIMO-B3COMP01 head=${GITHUB_SHA}"
+          echo "assurance=PROCESS_SELF_REVIEWED_NOT_INDEPENDENT"

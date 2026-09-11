@@ -1,0 +1,22 @@
+{
+  "work_unit": "ANIMO-B3COMP01",
+  "authoring_phase": "FROZEN_FOR_GOV05_ADVERSARIAL_REVIEW",
+  "branch": "work/animo-b3comp01-composition-completeness-authority",
+  "base_head": "0bec1968adbf77fd04c6f46819d704b86482d8b2",
+  "substantive_files": [
+    "docs/b3comp01/B3_COMPOSITION_COMPLETENESS_AUTHORITY.md",
+    "integration/animo-b3/ANIMO-B3COMP01_SOURCE_PINS.json",
+    "integration/animo-b3/ANIMO-B3COMP01_COMPLETENESS_AUDIT.json",
+    "tools/validate_b3comp01_composition_completeness.py",
+    ".github/workflows/animo-b3comp01-composition-completeness.yml"
+  ],
+  "review_artifact_after_freeze": "integration/animo-b3/ANIMO-B3COMP01_INTERNAL_ADVERSARIAL_REVIEW.json",
+  "status_artifact": "integration/animo-b3/ANIMO-B3COMP01_STATUS.json",
+  "substantive_change_after_review_start_allowed": false,
+  "concurrent_workstream": {
+    "branch": "work/animo-b3i09-tcd025-a5-exclusion-parent-scope-routing",
+    "observed_head": "fcce3e5d3c465dbd618f1e36e1d5f259f74b2d2a",
+    "policy": "OBSERVE_AND_FAIL_CLOSED_ON_ADVANCE_DO_NOT_MUTATE"
+  },
+  "decision_candidate": "B3_COMPOSITION_COMPLETENESS_NOT_ESTABLISHED_TB7_REMAINS_BLOCKED"
+}

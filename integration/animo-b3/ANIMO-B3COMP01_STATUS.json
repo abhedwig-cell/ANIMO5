@@ -1,0 +1,56 @@
+{
+  "work_unit": "ANIMO-B3COMP01",
+  "title": "Whole-B3 Composition Completeness Authority",
+  "branch": "work/animo-b3comp01-composition-completeness-authority",
+  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
+  "state": "NOT_YET_QUALIFIED",
+  "decision_candidate": "B3_COMPOSITION_COMPLETENESS_NOT_ESTABLISHED_TB7_REMAINS_BLOCKED",
+  "authoring_base": "ANIMO-B3D31@0bec1968adbf77fd04c6f46819d704b86482d8b2",
+  "aggregate_authority": "ANIMO-RG05K@e5ccad78d7c85aaf2c68d844c5a496edf6d73db5",
+  "current_qualified_routing": "ANIMO-B3I08@f4a3056087e5f7bac41b243be1f404739cde52b0",
+  "concurrent_b3i09_observed_head": "fcce3e5d3c465dbd618f1e36e1d5f259f74b2d2a",
+  "tb7_gate": "ANIMO-TB07A@6d77e92f5beb2a30deb7411d93890aa7a5559685",
+  "review_risk_tier": "D_COMPOSITION_WHOLE_MODEL_GATE",
+  "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "b3_composition_complete": false,
+  "tb7_authorized": false,
+  "whole_model_golden_baseline_authorized": false,
+  "scientific_admission": false,
+  "review": {
+    "started": false,
+    "completed": false,
+    "reviewed_head": null,
+    "genuinely_independent": false,
+    "artifact": "integration/animo-b3/ANIMO-B3COMP01_INTERNAL_ADVERSARIAL_REVIEW.json"
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "scientific_tcd_admission_performed": false,
+    "tcd025_parent_admitted": false,
+    "central_aggregate_modified": false,
+    "canonical_tcd_register_modified": false,
+    "b4_opened": false,
+    "production_migration_authorized": false,
+    "historical_b2_created": false,
+    "whole_model_golden_baseline_created": false,
+    "concurrent_b3i09_modified": false
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-b3comp01-composition-completeness.yml",
+    "validator": "tools/validate_b3comp01_composition_completeness.py",
+    "authoring_head": null,
+    "authoring_head_ci_run": null,
+    "authoring_head_ci_conclusion": null,
+    "exact_final_head_ci_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  }
+}
