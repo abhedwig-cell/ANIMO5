@@ -1,0 +1,75 @@
+name: ANIMO-SYNQ04 TCD-037-A3 independent synthetic activation
+
+on:
+  push:
+    branches:
+      - work/animo-synq04-tcd037-a3-independent-n2o-deni-activation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact evidence and policy authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in \
+            0f85d7102945c7c4d77bc49885f9ecca688209e3 \
+            3e4247928bb43f30def951fa8804560636affbef \
+            54679c7555a963133dfd686648af334f479c5808 \
+            a3e822f8e97fe1312a7dfa73601a49ae7375163e \
+            842f72300fd03ede0b9024537a7ee6126722a121 \
+            f65a47724e4a4fca7f2d8b8d6de9eeee51867904 \
+            1bbe4c211197590f346803106e45dca5faae79fc \
+            cbd262bdabe92923113b7326f2f42822ce9a971c
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+            git cat-file -e "${sha}^{commit}"
+          done
+
+      - name: Verify exact workflow head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install GNU Fortran
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y gfortran
+          gfortran --version
+
+      - name: Parse persisted evidence and compile validator
+        run: |
+          python -m json.tool integration/animo-synthetic/ANIMO-SYNQ04_STATUS.json >/dev/null
+          python -m json.tool integration/animo-synthetic/SYNQ04_TCD037_A3_ORACLE.json >/dev/null
+          python -m py_compile tools/synq04/validate_tcd037_a3_synthetic.py
+
+      - name: Freeze tool identities in log
+        run: sha256sum tools/synq04/tcd037_a3_source_shaped_probe.f90 tools/synq04/validate_tcd037_a3_synthetic.py
+
+      - name: Build and validate source-shaped target at O0
+        run: |
+          gfortran -std=f2008 -Wall -Wextra -pedantic -O0 tools/synq04/tcd037_a3_source_shaped_probe.f90 -o /tmp/synq04_o0
+          /tmp/synq04_o0 > /tmp/synq04_o0.out
+          python tools/synq04/validate_tcd037_a3_synthetic.py /tmp/synq04_o0.out
+
+      - name: Build and validate source-shaped target at O2
+        run: |
+          gfortran -std=f2008 -Wall -Wextra -pedantic -O2 tools/synq04/tcd037_a3_source_shaped_probe.f90 -o /tmp/synq04_o2
+          /tmp/synq04_o2 > /tmp/synq04_o2.out
+          python tools/synq04/validate_tcd037_a3_synthetic.py /tmp/synq04_o2.out
+
+      - name: Require byte-identical O0 and O2 evidence
+        run: cmp /tmp/synq04_o0.out /tmp/synq04_o2.out
