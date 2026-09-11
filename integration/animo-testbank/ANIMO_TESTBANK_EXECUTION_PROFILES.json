@@ -1,0 +1,186 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB01",
+  "authority_base": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
+  "historical_cost_classes": [
+    "FAST",
+    "FOCUSED",
+    "BROAD",
+    "QUALIFICATION"
+  ],
+  "profiles": [
+    {
+      "profile": "DEVELOPER_FAST",
+      "primary_cost_class": "FAST",
+      "compatible_cost_classes": ["FAST"],
+      "intent": "Seconds-to-minutes local structural, provenance and atomic checks for ordinary development.",
+      "evidence_producing": false,
+      "immutable_identity_required": false,
+      "default_test_layers": ["TB-L0", "TB-L1", "TB-L2", "TB-L3", "TB-L11"],
+      "may_skip_expensive_qualified_evidence_when_unchanged": true
+    },
+    {
+      "profile": "SCIENTIFIC_FOCUSED",
+      "primary_cost_class": "FOCUSED",
+      "compatible_cost_classes": ["FAST", "FOCUSED"],
+      "intent": "One subsystem, scientific claim or bounded workunit surface.",
+      "evidence_producing": true,
+      "immutable_identity_required": true,
+      "default_test_layers": ["TB-L0", "TB-L1", "TB-L2", "TB-L3", "TB-L4", "TB-L5", "TB-L6", "TB-L7"],
+      "selection_rule": "Only applicable tests resolved from claims and dependencies are required."
+    },
+    {
+      "profile": "CANONICAL_BROAD",
+      "primary_cost_class": "BROAD",
+      "compatible_cost_classes": ["FAST", "FOCUSED", "BROAD"],
+      "intent": "Cross-subsystem and larger behavioural/integration surface without implying release qualification.",
+      "evidence_producing": true,
+      "immutable_identity_required": true,
+      "default_test_layers": ["TB-L0", "TB-L2", "TB-L3", "TB-L4", "TB-L5", "TB-L7", "TB-L8", "TB-L9", "TB-L11"]
+    },
+    {
+      "profile": "ADMISSION_QUALIFICATION",
+      "primary_cost_class": "QUALIFICATION",
+      "compatible_cost_classes": ["FAST", "FOCUSED", "BROAD", "QUALIFICATION"],
+      "intent": "Pinned, evidence-producing run for a scientific admission or equivalent high-assurance decision.",
+      "evidence_producing": true,
+      "immutable_identity_required": true,
+      "exact_source_head_required": true,
+      "testbank_manifest_identity_required": true,
+      "input_hashes_required": true,
+      "comparison_policies_required": true,
+      "qualification_decision_required": true,
+      "default_test_layers": ["TB-L0", "TB-L1", "TB-L2", "TB-L3", "TB-L4", "TB-L5", "TB-L6", "TB-L7", "TB-L9", "TB-L10", "TB-L11"]
+    },
+    {
+      "profile": "RELEASE",
+      "primary_cost_class": "QUALIFICATION",
+      "compatible_cost_classes": ["FAST", "FOCUSED", "BROAD", "QUALIFICATION"],
+      "intent": "Future complete release qualification against an explicit claim-carrying release manifest.",
+      "evidence_producing": true,
+      "immutable_identity_required": true,
+      "exact_source_head_required": true,
+      "testbank_manifest_identity_required": true,
+      "input_hashes_required": true,
+      "comparison_policies_required": true,
+      "qualification_decision_required": true,
+      "default_test_layers": ["TB-L0", "TB-L1", "TB-L2", "TB-L3", "TB-L4", "TB-L5", "TB-L6", "TB-L7", "TB-L8", "TB-L9", "TB-L10", "TB-L11", "TB-L12"],
+      "availability": "FUTURE_ONLY_NOT_AUTHORIZED_BY_TB01",
+      "reason": "B3 is incomplete, B4 is closed and no composed whole-model golden baseline or release authority exists."
+    },
+    {
+      "profile": "DEEP_AUDIT",
+      "primary_cost_class": "QUALIFICATION",
+      "compatible_cost_classes": ["BROAD", "QUALIFICATION"],
+      "intent": "Optional expensive restart, compiler, numerical robustness and architecture matrix triggered by risk or release policy.",
+      "evidence_producing": true,
+      "immutable_identity_required": true,
+      "default_test_layers": ["TB-L0", "TB-L4", "TB-L5", "TB-L8", "TB-L10", "TB-L11"],
+      "default_required_for_ordinary_development": false
+    }
+  ],
+  "gate_requirements": [
+    {
+      "gate": "ORDINARY_DEVELOPMENT",
+      "required_profiles": ["DEVELOPER_FAST"],
+      "conditional_profiles": ["SCIENTIFIC_FOCUSED"],
+      "condition": "Focused profile is required when a changed surface has a registered scientific or subsystem obligation."
+    },
+    {
+      "gate": "TCD_READINESS",
+      "required_profiles": ["DEVELOPER_FAST", "SCIENTIFIC_FOCUSED"],
+      "conditional_profiles": ["DEEP_AUDIT"],
+      "condition": "Deep audit is risk-triggered, not a universal rereun."
+    },
+    {
+      "gate": "GOV05_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+      "required_profiles": ["SCIENTIFIC_FOCUSED"],
+      "conditional_profiles": ["ADMISSION_QUALIFICATION", "DEEP_AUDIT"],
+      "evidence_resolution_mode": "VERIFY_AND_REUSE",
+      "workflow": [
+        "identify claim",
+        "resolve required ATB test IDs",
+        "verify immutable test and evidence pins",
+        "execute only missing, invalidated or newly applicable gates",
+        "adversarially inspect failures, controls and alternative hypotheses",
+        "record review decision"
+      ],
+      "assurance_note": "GOV05 same-agent adversarial review is PROCESS_SELF_REVIEWED_NOT_INDEPENDENT and must never be described as genuinely independent.",
+      "green_automation_substitutes_for_unresolved_scientific_meaning": false
+    },
+    {
+      "gate": "ATOMIC_B3_ADMISSION",
+      "required_profiles": ["ADMISSION_QUALIFICATION"],
+      "conditional_profiles": ["DEEP_AUDIT"],
+      "requires_separate_scientific_admission_authority": true,
+      "opened_by_tb01": false
+    },
+    {
+      "gate": "COMPOSITION",
+      "required_profiles": ["CANONICAL_BROAD", "ADMISSION_QUALIFICATION"],
+      "conditional_profiles": ["DEEP_AUDIT"],
+      "requires_separate_composition_authority": true,
+      "opened_by_tb01": false
+    },
+    {
+      "gate": "B4",
+      "required_profiles": ["CANONICAL_BROAD", "ADMISSION_QUALIFICATION"],
+      "conditional_profiles": ["DEEP_AUDIT", "RELEASE"],
+      "availability": "CLOSED",
+      "opened_by_tb01": false
+    },
+    {
+      "gate": "PRODUCTION_RELEASE",
+      "required_profiles": ["RELEASE"],
+      "conditional_profiles": ["DEEP_AUDIT"],
+      "availability": "CLOSED",
+      "opened_by_tb01": false
+    }
+  ],
+  "qualification_evidence_receipt": {
+    "required_fields": [
+      "source_head",
+      "source_tree",
+      "compiler_or_tool_identity",
+      "testbank_manifest_identity",
+      "testcase_and_input_hashes",
+      "selected_test_ids",
+      "comparison_policies",
+      "result_artifact_hashes",
+      "upstream_authority_pins",
+      "qualification_decision"
+    ],
+    "timestamp": {
+      "required_as_metadata": true,
+      "may_define_expected_result": false
+    },
+    "volatile_output_normalization": {
+      "default_allowed": false,
+      "requires_explicit_allowlist": true
+    }
+  },
+  "reuse_policy": {
+    "mode": "VERIFY_AND_REUSE",
+    "immutable_expensive_evidence_rerun_without_reason": false,
+    "reuse_requires_matching_source_identity": true,
+    "reuse_requires_matching_input_identity": true,
+    "reuse_requires_matching_or_stronger_comparison_policy": true,
+    "reuse_requires_applicability_predicates": true,
+    "changed_dependency_invalidates_reuse_until_requalified": true,
+    "automated_green_result_can_override_unresolved_scientific_interpretation": false
+  },
+  "parallel_execution_contract": {
+    "safe_lanes": [
+      "provenance_registry",
+      "cnp_atomic_oracles",
+      "conservation",
+      "state_restart",
+      "macropores",
+      "ghg",
+      "numerical_compiler",
+      "runner_tooling"
+    ],
+    "central_registry_parallel_writers_allowed": false,
+    "integration_mechanism": "Parallel lanes publish fragment manifests with reserved stable ATB IDs; one designated consolidation workunit updates central registries."
+  }
+}
