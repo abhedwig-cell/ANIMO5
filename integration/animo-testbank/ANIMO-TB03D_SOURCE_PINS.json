@@ -58,13 +58,24 @@
       "central_registry_blob": "a5f279cfa334dc63d3e4e8759370279736d874a0",
       "fragment_blob": "4930296207e8538e8fff4dd3223f82559805ab1d",
       "ids": ["ATB-SUB-003", "ATB-SUB-004", "ATB-SUB-005", "ATB-SUB-006", "ATB-SUB-007"]
+    },
+    {
+      "work_unit": "ANIMO-TB05B",
+      "head": "fe0a5aae6382cf37e1ad233655f313f5fa60f874",
+      "ci_run": 34559155201,
+      "ci_conclusion": "success",
+      "central_registry_blob": "a5f279cfa334dc63d3e4e8759370279736d874a0",
+      "fragment_path": "integration/animo-testbank/fragments/ANIMO-TB05B_GHG_SUBSYSTEM_FRAGMENT.json",
+      "fragment_blob": "525942a7aaa71ed1d231d54073e118a99b21fb40",
+      "ids": ["ATB-SUB-008", "ATB-SUB-009", "ATB-SUB-010", "ATB-SUB-011", "ATB-SUB-012"]
     }
   ],
   "live_check_conclusions": {
     "tb03d_preexisted": false,
     "post_tb03c_central_registry_write_detected": false,
     "newer_fragment_target_id_collision_detected": false,
+    "newest_checked_tb_workunit": "ANIMO-TB05B@fe0a5aae6382cf37e1ad233655f313f5fa60f874",
     "serial_writer_base": "ANIMO-TB03C@a989541c265213bde0bae3f0e2db28fcaf9c0579",
-    "reason": "TB03C is the explicit serial-consolidation handoff and its central-registry baseline remains byte-identical at current TB01 and checked newer TB branches."
+    "reason": "TB03C is the explicit serial-consolidation handoff. The central registry remained byte-identical at current TB01 and all newer TB04A/TB04B/TB05A/TB05B fragment branches checked live, and their fragment IDs are disjoint from the eight TB03D target IDs."
   }
 }
