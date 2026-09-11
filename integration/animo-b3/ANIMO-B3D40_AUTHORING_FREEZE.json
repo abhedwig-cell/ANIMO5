@@ -1,0 +1,27 @@
+{
+  "work_unit": "ANIMO-B3D40",
+  "target": "TCD-033",
+  "base_head": "28306877152972a9a8ba1a19e1c61fda56b658a0",
+  "scope": "ATOMIC_TCD033_B3_ADMISSION_DECISION_ONLY",
+  "review_must_pin_exact_commit": true,
+  "substantive_change_resets_GOV05_review": true,
+  "exact_final_head_ci_required": true,
+  "post_review_changes_allowed_only": [
+    "integration/animo-b3/ANIMO-B3D40_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-b3/ANIMO-B3D40_STATUS.json"
+  ],
+  "forbidden_scope": [
+    "production source",
+    "frozen B0",
+    "canonical TCD register",
+    "central queue mutation",
+    "TCD-032",
+    "TCD-034",
+    "total CH4 production law",
+    "Rdfaox logic",
+    "GHG transport",
+    "whole-model golden baseline",
+    "B4",
+    "production migration"
+  ]
+}
