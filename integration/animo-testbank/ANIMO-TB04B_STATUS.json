@@ -5,7 +5,7 @@
   "branch": "work/animo-tb04b-boundary-initialization-bank-adoption",
   "base_authority": "ANIMO-TB04A@ad9683716e1a41a6f6b3d32ff1012bfa215c27db",
   "tb02_authority": "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d",
-  "state": "QUALIFICATION_CANDIDATE_PENDING_EXACT_HEAD_CI",
+  "state": "QUALIFIED_TB04B_BOUNDED_BOUNDARY_AND_INITIALIZATION_FRAGMENT_PACKAGE",
   "scope": [
     "exact-zero upper-reservoir boundary transaction contract",
     "finite-positive subthreshold numerical seam gap",
@@ -21,7 +21,7 @@
     "BUILDQ04": "268a0c007b4c9eff5cbf1dcbd7eeb4389554d3ed"
   },
   "fragment": "integration/animo-testbank/fragments/ANIMO-TB04B_BOUNDARY_INITIALIZATION_FRAGMENT.json",
-  "qualified_entry_candidates": ["ATB-BND-002", "ATB-BND-005"],
+  "qualified_entries": ["ATB-BND-002", "ATB-BND-005"],
   "gap_entries": ["ATB-BND-003", "ATB-BND-004", "ATB-BND-006"],
   "existing_registry_handling": "ATB-BND-001 is not modified, redefined or treated as qualified by this fragment.",
   "scope_limit": "No complete TCD-042 qualification, no finite-positive numerical policy, no HETOP=0 policy, no production initialization repair and no whole-model boundary qualification are established.",
@@ -42,14 +42,19 @@
     "validator": "tools/validate_animo_tb04b.py",
     "workflow": ".github/workflows/animo-tb04b-boundary-initialization.yml",
     "exact_final_head_ci_required": true,
-    "qualified_state_after_success": "QUALIFIED_TB04B_BOUNDED_BOUNDARY_AND_INITIALIZATION_FRAGMENT_PACKAGE"
+    "candidate_green_run": {
+      "run_id": 34558729913,
+      "head": "997ba1373a28b5da407df0fb44f08ee1bf4959e5",
+      "conclusion": "success"
+    },
+    "final_exact_head_evidence": "ESTABLISHED_BY_POST_CLOSEOUT_WORKFLOW"
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "complete": false
+    "tested": true,
+    "qualified": true,
+    "complete": true
   },
   "hard_boundaries": {
     "production_source_modified": false,
