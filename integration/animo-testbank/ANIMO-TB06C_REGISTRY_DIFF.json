@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB06C",
+  "serial_base_authority": "ANIMO-TB05D@e0d96fc279ef35966a0d5dd37462fa0cded2cc1e",
+  "base_registry_blob": "9b5078ea4c4f22f0215fead27a96580eeb613a9b",
+  "result_registry_blob": "caf0ff601da27c9b810b992b923bfdac62f4f7d1",
+  "added_test_ids": ["ATB-NUM-002", "ATB-NUM-003", "ATB-NUM-004", "ATB-ARCH-003"],
+  "removed_test_ids": [],
+  "modified_preexisting_test_ids": [],
+  "modified_central_metadata": [],
+  "preserved_outside_registry": {"ATB-NUM-005": "GAP", "ATB-ARCH-004": "GAP"},
+  "convergence_rebase": {
+    "qualified_convergence_authority": "ANIMO-TB06B@7666c016e77d3743210b6f3135e53e9db87d75cc",
+    "convergence_original_registry_base": "ANIMO-TB05C@788247b4346bedbb79749d5ce5daef3f99283f8d",
+    "serial_write_registry_base": "ANIMO-TB05D@e0d96fc279ef35966a0d5dd37462fa0cded2cc1e",
+    "target_or_gap_collision_after_rebase": false,
+    "dependency_closure_after_rebase": true,
+    "scientific_meaning_reinterpreted": false
+  },
+  "change_semantics": "Append-only registration of four TB06B-qualified entries on the newer TB05D serial registry after explicit collision and dependency rechecks.",
+  "scientific_authority_change": "NONE",
+  "admission_effect": "NONE",
+  "global_tolerance_created": false,
+  "whole_model_golden_baseline_created": false
+}
