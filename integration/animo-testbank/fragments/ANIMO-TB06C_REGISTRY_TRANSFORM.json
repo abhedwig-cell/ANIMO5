@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB06C",
+  "title": "Qualified TB6 Fragment Serial Registry Consolidation",
+  "serial_base_authority": "ANIMO-TB05D@e0d96fc279ef35966a0d5dd37462fa0cded2cc1e",
+  "serial_base_registry_blob": "9b5078ea4c4f22f0215fead27a96580eeb613a9b",
+  "convergence_authority": "ANIMO-TB06B@7666c016e77d3743210b6f3135e53e9db87d75cc",
+  "convergence_ci": {"run_id": 34568404986, "conclusion": "success"},
+  "convergence_original_registry_base": "ANIMO-TB05C@788247b4346bedbb79749d5ce5daef3f99283f8d",
+  "rebase_requirement": "Recheck target/GAP ID collisions and dependency closure against the newer TB05D serial registry before writing; do not reinterpret TB06B scientific meaning.",
+  "qualified_entry_ids": ["ATB-NUM-002", "ATB-NUM-003", "ATB-NUM-004", "ATB-ARCH-003"],
+  "preserved_gap_ids": ["ATB-NUM-005", "ATB-ARCH-004"],
+  "titles": {
+    "ATB-NUM-002": "Fail-closed scientific numerical comparison contract",
+    "ATB-NUM-003": "Precision-preserving scientific reference capture contract",
+    "ATB-NUM-004": "Domain-bounded numerical policy qualification pattern",
+    "ATB-ARCH-003": "Runtime producer and lifetime ownership invariant"
+  },
+  "mechanical_transform": {
+    "copy_all_source_fragment_entry_fields_exactly": true,
+    "add_title_from_this_manifest": true,
+    "add_input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned TB06A fragment entry; TB06C infers no broader testcase, compiler or runtime identity.",
+    "add_dependencies_from_tb06b_handoff": true,
+    "add_level_cost_profile_subsystem_failure_class_from_tb06b_handoff": true,
+    "add_qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+    "add_admission_effect": "NONE",
+    "add_registry_source_fragment_exact_pin": true,
+    "add_registry_consolidation": "ANIMO-TB06C",
+    "overwrite_existing_source_fields": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "gap_promoted": false,
+    "global_tolerance_created": false,
+    "TCD_specific_numerical_policy_promoted": false,
+    "historical_B2_fabricated": false,
+    "whole_model_compiler_equivalence_qualified": false,
+    "whole_model_runtime_qualified": false,
+    "whole_model_golden_baseline_created": false,
+    "scientific_authority_redefined": false
+  }
+}
