@@ -1,0 +1,92 @@
+{
+  "work_unit": "ANIMO-B3D36",
+  "title": "TCD-029 Iflsol=4 Detcoef/Coefdc Cancellation-Safe Numerical Policy Atomic B3 Admission Decision",
+  "target_tcd": "TCD-029",
+  "atomic_target": "CANONICAL_TOP_LEVEL_TCD:TCD-029",
+  "aggregate_at_start": "ANIMO-RG05L@214062fe773618ea77c7c74867cc8d9a2a4eef6d",
+  "global_queue_authority": "ANIMO-B3Q03@67a87c6a650d503c1b0968ada2cc5eaa5155aa42",
+  "canonical_allocation_authority": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4",
+  "numerical_policy_authority": "ANIMO-NQ04@bfd736b88b6fc4f2a66970b812172729c1923562",
+  "numerical_policy_exact_final_ci": {
+    "run": 34600616004,
+    "job": 103266708308,
+    "conclusion": "success"
+  },
+  "governance": {
+    "GOV05": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "frozen_identity": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "b3_qualification_class": "E_NUMERICAL_POLICY",
+  "review_risk_tier": "C_NUMERICAL_POLICY",
+  "risk_rule": "STRICTEST_APPLICABLE_RISK_TRIGGER_WINS",
+  "admitted_identity": "IFLSOL4_DETCOEF_COEFDC_CANCELLATION_SAFE_BINARY64_EVALUATION_ON_NQ04_QUALIFIED_DOMAIN",
+  "supported_scope": {
+    "precision": "binary64",
+    "finite_inputs": true,
+    "D_gt_0": true,
+    "T_gt_0": true,
+    "x_definition": "x=Hv*T/D",
+    "x_gt_minus_1": true,
+    "zero_policy": "ANALYTIC_LIMITS_F_EQ_1_G_EQ_H_EQ_0_5",
+    "series_region": "abs(x)<=0.25",
+    "series_degree": 24,
+    "moderate_region": "0.25<abs(x)<=1",
+    "large_region": "abs(x)>1",
+    "outside_domain": "NOT_QUALIFIED_FAIL_CLOSED",
+    "scope_widening_allowed": false
+  },
+  "selected_policy": {
+    "F": "log1p(x)/x with analytic zero limit and NQ04 degree-24 Horner evaluation in series region",
+    "G": "((1+x)*log1p(x)-x)/x^2 with analytic zero limit and NQ04 stable region-specific evaluation",
+    "H": "(x-log1p(x))/x^2 with analytic zero limit and NQ04 stable region-specific evaluation",
+    "A2": "T/D*F",
+    "B2": "T/D*G",
+    "A2dc": "-T/D^2*q/(1+x)",
+    "B2dc": "-T/D^2*H*q",
+    "verification_bound": "128u relative equation-evaluation oracle bound only",
+    "model_acceptance_tolerance_created": false
+  },
+  "qualified_evidence": {
+    "nq04_final_head": "bfd736b88b6fc4f2a66970b812172729c1923562",
+    "nq04_reviewed_authoring_head": "37128a2fde1ee9c2f783be078aa844fbfc15dc69",
+    "deterministic_oracle_points": 4756,
+    "oracle_bound_u": 128.0,
+    "natural_control_B2_policy": 0.0004358493041206774,
+    "natural_control_B2_legacy_direct": 0.2685923078097403,
+    "natural_control_B2dc_reference_positive": true,
+    "natural_control_B2dc_legacy_direct_negative": true,
+    "mass_balance_improvement_is_acceptance_criterion": false
+  },
+  "expected_difference": {
+    "scientific_change": "replace cancellation-prone direct binary64 evaluation of the same Iflsol=4 analytical coefficient functions by the NQ04-qualified cancellation-safe binary64 evaluation within the admitted domain",
+    "trajectory_difference_can_be_material": true,
+    "difference_direction_is_input_dependent": true,
+    "uniform_mass_balance_improvement_claimed": false,
+    "unchanged_surfaces": [
+      "TCD-019 nonlinear solver and fallback semantics",
+      "Coefdt",
+      "Iflsol branches other than 4",
+      "persistent scientific state",
+      "restart semantics",
+      "global solver tolerances",
+      "input validation",
+      "frozen B0",
+      "production source in this workunit"
+    ]
+  },
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "historical_route": "GOV03_G6U_HISTORICAL_UNCERTAINTY_ROUTE",
+  "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "candidate_decision": "ADMIT_TCD029_IFLSOL4_DETCOEF_COEFDC_CANCELLATION_SAFE_BINARY64_POLICY_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
+  "candidate_admitted": true,
+  "production_authorized": false,
+  "b4_opened": false,
+  "canonical_register_modified": false,
+  "aggregate_modified": false
+}

@@ -1,0 +1,26 @@
+{
+  "work_unit": "ANIMO-B3D36",
+  "artifact": "AUTHORING_FREEZE",
+  "base_head": "bfd736b88b6fc4f2a66970b812172729c1923562",
+  "base_authority": "ANIMO-NQ04@bfd736b88b6fc4f2a66970b812172729c1923562",
+  "substantive_scope": [
+    "docs/b3d36/WORK_UNIT_CONTRACT.md",
+    "integration/animo-b3/B3D36_TCD029_ADMISSION_CONTRACT.json",
+    "integration/animo-b3/ANIMO-B3D36_AUTHORING_FREEZE.json",
+    "integration/animo-b3/ANIMO-B3D36_STATUS.json",
+    "tools/validate_b3d36_tcd029.py",
+    ".github/workflows/animo-b3d36-tcd029.yml"
+  ],
+  "allowed_post_review_changes": [
+    "integration/animo-b3/ANIMO-B3D36_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-b3/ANIMO-B3D36_STATUS.json"
+  ],
+  "review_must_pin_exact_commit": true,
+  "substantive_change_resets_GOV05_review": true,
+  "production_source_changes_allowed": false,
+  "frozen_b0_changes_allowed": false,
+  "canonical_register_changes_allowed": false,
+  "aggregate_changes_allowed": false,
+  "b4_allowed": false,
+  "exact_final_head_ci_required": true
+}

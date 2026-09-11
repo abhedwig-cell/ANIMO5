@@ -1,0 +1,93 @@
+{
+  "work_unit": "ANIMO-B3D36",
+  "title": "TCD-029 Iflsol=4 Detcoef/Coefdc Cancellation-Safe Numerical Policy Atomic B3 Admission Decision",
+  "target_tcd": "TCD-029",
+  "branch": "work/animo-b3d36-tcd029-gov05-tier-c-admission",
+  "phase": "AUTHORING_FROZEN_PENDING_GOV05_TIER_C_ADVERSARIAL_REVIEW",
+  "state": "CANDIDATE_NOT_ADMITTED_PENDING_REVIEW",
+  "candidate_decision": "ADMIT_TCD029_IFLSOL4_DETCOEF_COEFDC_CANCELLATION_SAFE_BINARY64_POLICY_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
+  "decision": null,
+  "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "b3_qualification_class": "E_NUMERICAL_POLICY",
+  "review_risk_tier": "C_NUMERICAL_POLICY",
+  "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "aggregate_at_start": "ANIMO-RG05L@214062fe773618ea77c7c74867cc8d9a2a4eef6d",
+  "global_queue_authority": "ANIMO-B3Q03@67a87c6a650d503c1b0968ada2cc5eaa5155aa42",
+  "canonical_allocation_authority": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4",
+  "numerical_policy_authority": "ANIMO-NQ04@bfd736b88b6fc4f2a66970b812172729c1923562",
+  "supported_scope": "finite binary64; D>0; T>0; x=Hv*T/D>-1; NQ04 exact zero/series/log1p/large-x evaluation only",
+  "admitted": false,
+  "qualified": false,
+  "admitted_atomic_identity": null,
+  "admission_effect": {
+    "tcd029_top_level_admitted": false,
+    "tcd019_admitted_or_modified": false,
+    "Coefdt_admitted": false,
+    "other_iflsol_branches_admitted": false,
+    "production_authorized": false
+  },
+  "aggregate_policy": {
+    "post_RG05L_new_admissions_before_this_candidate": 2,
+    "post_RG05L_new_admissions_if_exact_final_green": 3,
+    "normal_batch_threshold_minimum": 3,
+    "normal_batch_threshold_reached_if_green": true,
+    "aggregate_update_required_after_exact_final_green": true,
+    "required_next_aggregate": "ANIMO-RG05M",
+    "reason": "B3D34 and B3D35 are already exact-final post-RG05L admissions. An exact-final B3D36 would be the third and therefore reaches the normal GOV04 aggregation cadence before any fourth admission."
+  },
+  "review": {
+    "started": false,
+    "completed": false,
+    "reviewed_head": null,
+    "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "same_agent": true,
+    "genuinely_independent": false,
+    "independence_claimed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+    "outcome": null,
+    "artifact": "integration/animo-b3/ANIMO-B3D36_INTERNAL_ADVERSARIAL_REVIEW.json"
+  },
+  "residual_uncertainty": [
+    "Historical revision-53 behavior remains UNKNOWN_WITHOUT_B2.",
+    "The 128u NQ04 bound is equation-evaluation verification only and is not a model tolerance.",
+    "TCD-019 nonlinear solver and fallback semantics remain separate and unadmitted by this workunit.",
+    "Coefdt and Iflsol branches other than 4 remain outside scope.",
+    "Production compiler-level reassociation, contraction and intrinsic binding remain unqualified."
+  ],
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_top_level_tcd_register_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "tcd019_modified_or_admitted": false,
+    "Coefdt_admitted": false,
+    "other_iflsol_branches_admitted": false,
+    "residual_derived_tolerance_created": false,
+    "state_or_restart_semantics_changed": false,
+    "solver_changed": false,
+    "b4_opened": false,
+    "central_regie_updated": false,
+    "production_migration_authorized": false,
+    "historical_fidelity_claimed": false,
+    "synthetic_evidence_promoted_to_b2": false
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-b3d36-tcd029.yml",
+    "validator": "tools/validate_b3d36_tcd029.py",
+    "authoring_head": null,
+    "authoring_head_ci_run": null,
+    "authoring_head_ci_job": null,
+    "authoring_head_ci_conclusion": "PENDING",
+    "exact_final_head_ci_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next_after_exact_final_green": "OPEN_ANIMO_RG05M_SEVENTH_BATCHED_ADMISSION_INTEGRATION_BEFORE_ANY_FOURTH_POST_RG05L_ADMISSION"
+}
