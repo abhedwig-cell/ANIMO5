@@ -1,0 +1,24 @@
+{
+  "work_unit":"ANIMO-B3D37",
+  "freeze_kind":"GOV05_SUBSTANTIVE_AUTHORING_FREEZE",
+  "substantive_package_head":"742ee192461183e285469100502b94cc2aa8f95d",
+  "substantive_package_tree":"10111507492ba3ff768d21a46d4ce10a52eab0a0",
+  "authoring_ci":{"run":34630605780,"job":103366239503,"conclusion":"success"},
+  "target":"TCD-039",
+  "candidate_identity":"TCD039_INTERNAL_CROP_POTENTIAL_UPTAKE_RESTART_CONTINUATION_OWNER_RESTORE_N_AND_CONDITIONAL_P",
+  "review_risk_tier":"C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "frozen_paths":[
+    "docs/b3d37/TCD039_ATOMIC_B3_ADMISSION.md",
+    "integration/animo-b3/B3D37_TCD039_ADMISSION_CONTRACT.json",
+    "tools/validate_b3d37_tcd039.py",
+    ".github/workflows/animo-b3d37-tcd039.yml"
+  ],
+  "post_freeze_allowed_changes":[
+    "integration/animo-b3/ANIMO-B3D37_STATUS.json",
+    "integration/animo-b3/ANIMO-B3D37_INTERNAL_ADVERSARIAL_REVIEW.json"
+  ],
+  "same_agent_review_required":true,
+  "genuinely_independent_review_claimed":false,
+  "assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "instruction":"Review this exact frozen admission candidate after green exact-head CI. No substantive edits after freeze."
+}

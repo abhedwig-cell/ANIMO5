@@ -1,11 +1,10 @@
 {
   "work_unit":"ANIMO-B3D37",
   "target":"TCD-039",
-  "phase":"SUBSTANTIVE_AUTHORING_COMPLETE_PENDING_FREEZE",
-  "state":"CANDIDATE_TCD039_ATOMIC_B3_ADMISSION_PENDING_FREEZE",
+  "phase":"AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
+  "state":"CANDIDATE_TCD039_ATOMIC_B3_ADMISSION_FROZEN_PENDING_REVIEW",
   "decision":"PENDING_GOV05_TIER_C_ADVERSARIAL_REVIEW_NO_PRODUCTION",
   "base_authority":"ANIMO-B3B11@6d8ba72ffd33eef4a16eb4dc693b1eaada772c4a",
-  "base_exact_final_ci":{"run":34630225955,"job":103364940173,"conclusion":"success"},
   "aggregate_authority":"ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
   "b3_qualification_class":"B_LOCAL_RESTART_CHECKPOINT_OMISSION_EXISTING_CONTINUATION_OWNER",
   "review_risk_tier":"C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
@@ -20,9 +19,10 @@
   "full_model_split_run_claimed":false,
   "historical_b2_created":false,
   "aggregate_policy":{"post_RG05M_before":0,"post_RG05M_if_green":1,"threshold":3,"aggregate_update_required":false},
+  "authoring_freeze":{"completed":true,"substantive_package_head":"742ee192461183e285469100502b94cc2aa8f95d","substantive_package_tree":"10111507492ba3ff768d21a46d4ce10a52eab0a0","authoring_run":34630605780,"authoring_job":103366239503,"authoring_conclusion":"success"},
   "review":{"required":true,"started":false,"completed":false,"model":"MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW","same_agent":true,"genuinely_independent":false,"independence_claimed":false,"assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT","reviewed_head":null,"outcome":null},
-  "validation":{"workflow":".github/workflows/animo-b3d37-tcd039.yml","validator":"tools/validate_b3d37_tcd039.py","authoring_head":null,"authoring_run":null,"authoring_job":null,"authoring_conclusion":null,"exact_final_head_required":true},
+  "validation":{"workflow":".github/workflows/animo-b3d37-tcd039.yml","validator":"tools/validate_b3d37_tcd039.py","authoring_head":"742ee192461183e285469100502b94cc2aa8f95d","authoring_run":34630605780,"authoring_job":103366239503,"authoring_conclusion":"success","exact_final_head_required":true},
   "hard_boundaries":{"production_source_modified":false,"frozen_b0_modified":false,"canonical_register_modified":false,"central_queue_modified":false,"b4_opened":false,"production_migration_authorized":false},
-  "work_status":{"realized":true,"persisted":true,"tested":false,"reviewed":false,"qualified":false,"workunit_complete":false},
-  "next":"FREEZE_SUBSTANTIVE_PACKAGE_AND_REQUIRE_GREEN_EXACT_HEAD_CI_BEFORE_GOV05_REVIEW"
+  "work_status":{"realized":true,"persisted":true,"tested":true,"reviewed":false,"qualified":false,"workunit_complete":false},
+  "next":"REQUIRE_GREEN_CI_ON_THIS_EXACT_FREEZE_HEAD_THEN_PERFORM_GOV05_SINGLE_AGENT_ADVERSARIAL_REVIEW"
 }
