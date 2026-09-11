@@ -1,0 +1,170 @@
+{
+  "work_unit": "ANIMO-TB01",
+  "title": "ANIMO5 Scientific Verification, Conservation, State & Release Testbank Architecture",
+  "branch": "work/animo-tb01-scientific-verification-testbank-architecture",
+  "state": "QUALIFIED_ANIMO5_SCIENTIFIC_TESTBANK_ARCHITECTURE_READY_FOR_INCREMENTAL_IMPLEMENTATION_NO_WHOLE_MODEL_GOLDEN_BASELINE",
+  "decision": "QUALIFIED_ANIMO5_SCIENTIFIC_TESTBANK_ARCHITECTURE_READY_FOR_INCREMENTAL_IMPLEMENTATION_NO_WHOLE_MODEL_GOLDEN_BASELINE",
+  "architecture_base": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
+  "authority_reconciliation": {
+    "equivalent_later_tb_workunit_found_before_branch_creation": false,
+    "aggregate_authority": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
+    "aggregate_exact_final_ci_run": 34549097225,
+    "aggregate_exact_final_ci_conclusion": "success",
+    "post_source_aggregate_admissions_in_rg05i": [
+      "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858:TCD-037-A1",
+      "ANIMO-B3D24@0f85d7102945c7c4d77bc49885f9ecca688209e3:TCD-037-A2",
+      "ANIMO-B3D23@6c9ab83952b53566b878b533c08e3cb10074f399:TCD-031"
+    ],
+    "current_routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "GOV05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "GOV05_exact_final_ci_run": 34546470484,
+    "GOV05_exact_final_ci_conclusion": "success",
+    "GOV05_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "SYNQ01": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+    "SWAP5_reference_canonical": "integration/f-ci-canonical@af9ec34ec587be76deea95763186a204f3ed32cd"
+  },
+  "frozen_b0_identities": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testcase_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "animo_4_0_user_guide_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "external_controlled_immutable_storage_proven": false,
+    "provenance_gap_retained": true
+  },
+  "architecture": {
+    "layer_count": 13,
+    "layers": [
+      "TB-L0",
+      "TB-L1",
+      "TB-L2",
+      "TB-L3",
+      "TB-L4",
+      "TB-L5",
+      "TB-L6",
+      "TB-L7",
+      "TB-L8",
+      "TB-L9",
+      "TB-L10",
+      "TB-L11",
+      "TB-L12"
+    ],
+    "legacy_test_levels_preserved": ["UT", "CT", "IT", "INV", "RR", "QG"],
+    "legacy_cost_classes_preserved": ["FAST", "FOCUSED", "BROAD", "QUALIFICATION"],
+    "execution_profiles": [
+      "DEVELOPER_FAST",
+      "SCIENTIFIC_FOCUSED",
+      "CANONICAL_BROAD",
+      "ADMISSION_QUALIFICATION",
+      "RELEASE",
+      "DEEP_AUDIT"
+    ],
+    "test_id_scheme": "ATB-{PROV|ORACLE|SPC|CONS|TRN|STATE|BND|SUB|INT|REG|NUM|ARCH|REL}-{NNN}",
+    "existing_assets_inventoried": 60,
+    "shared_test_entries_seeded": 16,
+    "required_subsystems_represented": [
+      "NITROGEN",
+      "PHOSPHORUS",
+      "CARBON_ORGANIC_MATTER",
+      "DOM",
+      "PLANT_CROP_UPTAKE",
+      "SORPTION",
+      "TRANSPORT",
+      "MACROPORES",
+      "GHG"
+    ],
+    "state_restart_first_class": true,
+    "species_cnp_first_class": true,
+    "multidimensional_coverage_first_class": true,
+    "raw_line_coverage_primary": false,
+    "gov05_integration": "VERIFY_AND_REUSE"
+  },
+  "expected_value_governance": {
+    "taxonomy_preserved": [
+      "ANALYTICAL",
+      "THEORY",
+      "FROZEN_LEGACY",
+      "CORRECTED_LEGACY_REFERENCE",
+      "QUALIFIED_GOLDEN_CASE",
+      "INVARIANT",
+      "UNKNOWN"
+    ],
+    "synthetic_oracle_origin_extension": "QUALIFIED_SYNTHETIC_ORACLE",
+    "UNKNOWN_qualification_truth_allowed": false,
+    "frozen_legacy_automatically_scientific": false,
+    "captured_output_automatically_golden": false,
+    "atomic_component_expectations": "AVAILABLE_ONLY_WHERE_EXACT_ATOMIC_OR_SUBSYSTEM_AUTHORITY_EXISTS",
+    "composed_whole_model_golden_baseline": "UNAVAILABLE_NOT_AUTHORIZED"
+  },
+  "major_scientific_coverage_gaps": [
+    "systematic C/N/P and NH4/NO3 local transaction and stoichiometric coverage",
+    "complete local layer and whole-profile control-volume conservation across all transport paths",
+    "whole-model persistent-state inventory and restart identity beyond bounded subsystem evidence",
+    "complete GHG persistent-state/restart bank",
+    "shared small interpretable multi-process integration cases",
+    "shared O0/O2 and cross-compiler qualification matrix",
+    "externally proven immutable B0 custody and restore proof",
+    "scientifically qualified composed whole-model golden baseline"
+  ],
+  "implementation_roadmap": [
+    "TB2 shared runner, manifest resolver and qualification receipts",
+    "TB3 adoption of synthetic, species and conservation assets",
+    "TB4 state/restart and boundary banks",
+    "TB5 subsystem integration banks including macropore and GHG lanes",
+    "TB6 numerical/compiler/runtime qualification",
+    "TB7 composed regression baseline only after separate composition authority",
+    "TB8 release qualification suite only after release governance"
+  ],
+  "safe_parallel_lanes": [
+    "provenance/registry fragments",
+    "C/N/P atomic oracles",
+    "conservation",
+    "state/restart",
+    "macropores",
+    "GHG",
+    "numerical/compiler",
+    "runner/tooling"
+  ],
+  "central_registry_parallel_writes_allowed": false,
+  "hard_boundaries": {
+    "production_scientific_source_modified": false,
+    "tcd_scientific_claim_changed": false,
+    "tcd_scientific_admission_performed": false,
+    "composition_performed": false,
+    "b4_opened": false,
+    "production_gate_opened": false,
+    "corrected_whole_model_golden_baseline_created": false,
+    "historical_b2_fabricated": false,
+    "frozen_legacy_output_promoted_to_scientific_truth": false,
+    "finalized_historical_authorities_rewritten": false,
+    "frozen_b0_modified": false
+  },
+  "deliverables": [
+    "docs/testing/ANIMO_TESTBANK_ARCHITECTURE.md",
+    "docs/testing/ANIMO_TESTBANK_MIGRATION_PLAN.md",
+    "integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json",
+    "integration/animo-testbank/ANIMO_TESTBANK_COVERAGE_MATRIX.json",
+    "integration/animo-testbank/ANIMO_TESTBANK_EXPECTATION_PROVENANCE.json",
+    "integration/animo-testbank/ANIMO_TESTBANK_EXECUTION_PROFILES.json",
+    "integration/animo-testbank/ANIMO-TB01_STATUS.json",
+    "tools/validate_animo_tb01_architecture.py",
+    ".github/workflows/animo-tb01-testbank-architecture.yml"
+  ],
+  "validation": {
+    "validator": "tools/validate_animo_tb01_architecture.py",
+    "workflow": ".github/workflows/animo-tb01-testbank-architecture.yml",
+    "scope_guard_base": "94afe7d649a8c60758a41996f0059de0acddd2fc",
+    "exact_final_head_ci_required": true,
+    "final_head_and_run_are_authoritative_only_when_github_actions_reports_success_for_the_exact_branch_head": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true,
+    "qualification_is_conditional_on_exact_final_head_ci_success": true
+  },
+  "next_workunits_started_by_tb01": false
+}
