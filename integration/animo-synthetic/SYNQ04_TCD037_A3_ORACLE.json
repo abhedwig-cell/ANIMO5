@@ -1,0 +1,146 @@
+{
+  "work_unit": "ANIMO-SYNQ04",
+  "target": "TCD-037-A3",
+  "title": "N2O Denitrification Layer Formation Observer Independent Synthetic Activation",
+  "evidence_role": "PURPOSE_BUILT_SYNTHETIC_ACTIVATION_FOR_CAUSALITY_AND_SCOPE",
+  "evidence_strength": "B1_SYNTHETIC_NOT_B2",
+  "independence": {
+    "classification": "INDEPENDENT_IMPLEMENTATION_AND_EXACT_RATIONAL_ORACLE_FOR_CAUSALITY_AND_SCOPE",
+    "semantic_contract_external_to_probe": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "source_shaped_target": "tools/synq04/tcd037_a3_source_shaped_probe.f90",
+    "independent_oracle": "tools/synq04/validate_tcd037_a3_synthetic.py",
+    "oracle_arithmetic": "EXACT_RATIONAL_FRACTION",
+    "oracle_reuses_animo_source_code": false,
+    "historical_reference_claim": false
+  },
+  "authorities": {
+    "base": "ANIMO-B3D24@0f85d7102945c7c4d77bc49885f9ecca688209e3",
+    "aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "runtime_semantics": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "synthetic_policy": "ANIMO-SYNQ01@842f72300fd03ede0b9024537a7ee6126722a121",
+    "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "gov04_tier_a_predicates": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c"
+  },
+  "frozen_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "outbal_calc_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+    "ghg_n2o_sha256": "493bf88d4b321df64817a7c0eaa2725ad614a45df0a0f16cefa96ac348254175"
+  },
+  "source_seam": {
+    "producer_owner": "QPrN2Oden(Ln)*St",
+    "consumer": "Bani(N2Od,Ly)",
+    "consumer_update": "Bani(N2Od,Ly) += AmN2Odeni(Ln)*Z",
+    "source_conversion_factor": "Z=10000",
+    "derived_atomic_increment": "10000*QPrN2Oden(Ln)*St",
+    "scope_note": "Local accepted-timestep denitrification-formation observer increment only; no N2Oe atmosphere-emission or N2On nitrification claim."
+  },
+  "accounting_contract": {
+    "source_owner": "QPrN2Oden(Ln)*St",
+    "observer_increment": "10000*QPrN2Oden(Ln)*St",
+    "allowed_target": "Bani(N2Od)",
+    "numerical_acceptance": "EXACT_BINARY64_FOR_CHOSEN_DYADIC_SYNTHETIC_VALUES_NO_EMPIRICAL_TOLERANCE"
+  },
+  "allowed_difference_surface": [
+    "Bani(N2Od)"
+  ],
+  "forbidden_difference_domains": [
+    "physical_state",
+    "process_flux",
+    "restart_state",
+    "solver_or_numerical_policy",
+    "TCD-037-A1",
+    "TCD-037-A2",
+    "TCD-037-A4",
+    "Bani(N2Oe)",
+    "Banh(N2On)",
+    "QRdN2O reduction sink",
+    "TCD-032_through_TCD-036",
+    "unrelated_observer_fields"
+  ],
+  "synthetic_inputs": {
+    "nl": 3,
+    "Z": 10000,
+    "St_active": "1/4",
+    "QPrN2Oden_active": [
+      "1/16384",
+      "1/8192",
+      "3/16384"
+    ],
+    "baseline_Bani_N2Od": [100, 100, 100],
+    "physical_state_sentinels": [11, 22, 33],
+    "process_flux_sentinels": [7, 13],
+    "TCD037_A1_observer_sentinel": 31,
+    "TCD037_A2_observer_sentinel": 41,
+    "TCD037_A4_observer_sentinel": 51,
+    "unrelated_observer_sentinel": 77
+  },
+  "cases": [
+    {
+      "id": "ACTIVE_NONZERO",
+      "purpose": "nonzero layer denitrification production activates only the matching N2Od layer observer increments"
+    },
+    {
+      "id": "ZERO_DENI",
+      "purpose": "zero denitrification production leaves target observer at baseline"
+    },
+    {
+      "id": "PERMUTED",
+      "purpose": "permuting layer denitrification rates permutes only the corresponding N2Od layer increments"
+    },
+    {
+      "id": "RATE_TIME_EQUIVALENT",
+      "purpose": "halving rates and doubling St preserves accepted-timestep amounts and target observer outputs exactly"
+    },
+    {
+      "id": "INACTIVE",
+      "purpose": "nonzero denitrification inputs with inactive GHG observer branch leave target and all sentinels at baseline"
+    }
+  ],
+  "causal_discriminators": [
+    "ACTIVE_NONZERO versus ZERO_DENI proves nonzero source-owned denitrification formation causes N2Od observer change",
+    "PERMUTED proves one-to-one layer ownership rather than total-profile substitution",
+    "RATE_TIME_EQUIVALENT proves accepted-timestep amount rather than raw rate is the observer owner",
+    "INACTIVE proves branch activation is required",
+    "all forbidden sentinels remain unchanged in every case"
+  ],
+  "natural_case": {
+    "state": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+    "translation_performed": false
+  },
+  "historical_behavior": "UNKNOWN",
+  "gov05_tier_a_activation_predicate": {
+    "natural_activation_reasonably_available": false,
+    "absence_documented": true,
+    "purpose_built_synthetic_activation": true,
+    "independently_qualified_for_causality_and_scope": "PASS",
+    "tier_a_waiver_granted": false
+  },
+  "qualification": {
+    "tested_head": null,
+    "workflow_run_id": null,
+    "job_id": null,
+    "workflow_conclusion": "PENDING",
+    "o0_exact_oracle": "PENDING",
+    "o2_exact_oracle": "PENDING",
+    "o0_o2_byte_identity": "PENDING",
+    "causal_discriminator": "PENDING",
+    "scope_guard": "PENDING"
+  },
+  "scope": {
+    "scientific_admission": false,
+    "tier_a_waiver": false,
+    "production_source_change": false,
+    "canonical_tcd_register_change": false,
+    "new_top_level_tcd": false,
+    "b4": false,
+    "aggregate_update": false,
+    "production_migration": false,
+    "historical_fidelity": false,
+    "tcd032_036_composition": false,
+    "testcase_translation": false
+  },
+  "next_work_unit_if_qualified": "ANIMO-B3A07 — TCD-037-A3 N2O Denitrification Formation Observer Tier-A Readiness"
+}
