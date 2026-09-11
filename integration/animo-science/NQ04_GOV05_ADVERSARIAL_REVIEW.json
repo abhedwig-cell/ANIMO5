@@ -1,0 +1,128 @@
+{
+  "work_unit": "ANIMO-NQ04",
+  "risk_tier": "C",
+  "review_mode": "INTERNAL_ADVERSARIAL_REVIEW",
+  "assurance_label": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "reviewed_authoring_head": "37128a2fde1ee9c2f783be078aa844fbfc15dc69",
+  "same_agent": true,
+  "independence_claimed": false,
+  "review_boundary": {
+    "complete_authoring_package_persisted": true,
+    "immutable_head_frozen_before_review": true,
+    "source_testbank_evidence_hashes_recorded_before_review": true,
+    "authoring_completed_before_review": true,
+    "authoring_head_matches_reviewed_head": true,
+    "moving_tree_reviewed": false
+  },
+  "evidence_reuse_checks": {
+    "pin_identity": "PASS",
+    "scope_compatibility": "PASS",
+    "immutable_provenance": "PASS",
+    "no_superseding_contradiction": "PASS",
+    "evidence_strength_preserved": "PASS"
+  },
+  "counter_hypothesis": {
+    "tested": true,
+    "alternative": "The NQ02 divergence could reflect a different constitutive or physical equation rather than floating-point cancellation, so algebraically stable evaluation could silently change model science.",
+    "test": "Reconstruct the Detcoef and Coefdc identities symbolically, verify analytic zero limits, compare the selected binary64 evaluation against the high-precision F/G/H oracle across cancellation, crossover and large-x regions, and test the naturally activated NQ02 control while rejecting mass-residual improvement as evidence of correctness.",
+    "result": "ALTERNATIVE_REJECTED_BY_PINNED_EVIDENCE"
+  },
+  "active_controls": [
+    "4756-point high-precision F/G/H oracle remains inside the declared 128u equation-evaluation envelope",
+    "naturally activated Zuiderzeeland NQ02 B2 control reproduces the rounded high-precision value 0.0004358493041206774",
+    "exact x=0 analytic limits F=1 and G=H=0.5 are explicit",
+    "evaluation-method crossover at abs(x)=0.25 is exercised on both sides and does not alter the mathematical function"
+  ],
+  "negative_controls": [
+    "revision-53 direct binary64 B2 at the natural control is approximately 0.2685923078097403 rather than the high-precision value",
+    "revision-53 direct binary64 B2dc reverses sign and yields approximately -290.4145135735744 versus a positive high-precision reference",
+    "a smaller mass-balance residual is explicitly rejected as proof of numerical correctness",
+    "TCD-019 solver and fallback semantics are excluded rather than silently composed",
+    "Coefdt, other Iflsol branches, production binding and B4 remain outside scope"
+  ],
+  "scientific_gates": {
+    "B0_IDENTITY": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "Frozen source and testbank identities and the exact Transsub.for and Transorp.for member hashes are pinned before review."
+    },
+    "AUTHORITATIVE_EQUATION_IDENTITY": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The candidate evaluates algebraically identical revision-53 Iflsol=4 coefficient functions with explicit analytic limits; no constitutive equation is replaced."
+    },
+    "NUMERICAL_POLICY_AND_CONVERGENCE_EVIDENCE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The 4756-point Decimal oracle covers subnormal-scale cancellation, crossover neighborhoods and large positive x; maximum observed relative errors remain below 20u and below the predeclared 128u verification envelope."
+    },
+    "SOURCE_COEFFICIENT_OWNERSHIP": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The qualified values are call-local analytical coefficients produced by Detcoef and derivative coefficients produced by Coefdc; no new persistent model state is introduced."
+    },
+    "INITIALIZATION_AND_RESTART_SEMANTICS": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "The candidate changes only evaluation of call-local coefficient functions and creates no initialized, checkpointed or restored state."
+    },
+    "CONSERVATION": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "NQ02 shows the coefficient correction is materially trajectory-active but does not uniformly improve the TCD-019 residual, preventing conservation improvement from masking the numerical decision; the same analytical coefficient equations introduce no new source or sink."
+    },
+    "NON_INTERFERENCE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "No solver stopping rule, residual tolerance, state owner, restart contract, constitutive law, canonical register or production source is changed by NQ04."
+    },
+    "EDGE_AND_BOUNDARY_CASE_COVERAGE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The oracle includes x=0, both sides of the exact 0.25 crossover, values approaching -1 from above, subnormal-scale magnitudes and large positive values; outside-domain inputs are fail-closed."
+    },
+    "HISTORICAL_UNCERTAINTY_ROUTE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "No qualified B2 is available; historical corrected behavior remains explicitly UNKNOWN_WITHOUT_B2 and the synthetic oracle is not promoted to B2."
+    },
+    "NO_PRODUCTION_AUTHORIZATION": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "NQ04 is qualification only. Production implementation, compiler-level FP binding and B4 remain unauthorized."
+    }
+  },
+  "adversarial_gates": {
+    "NO_SCOPE_CREEP_INTO_TCD019": "PASS",
+    "NO_MASS_BALANCE_MASKING": "PASS",
+    "NO_HIDDEN_OR_RESIDUAL_DERIVED_TOLERANCE": "PASS",
+    "NO_SYNTHETIC_TO_B2_PROMOTION": "PASS",
+    "NO_CANONICAL_REGISTER_MUTATION": "PASS",
+    "NO_PRODUCTION_OR_B4_PROMOTION": "PASS"
+  },
+  "tier_c_enhanced": {
+    "immutable_authoring_checkpoint": "PASS",
+    "complete_source_state_ownership_reconstruction": "PASS",
+    "first_read_first_write_or_restore_direction_analysis": "PASS",
+    "counter_hypothesis_test": "PASS",
+    "active_controls": "PASS",
+    "negative_controls": "PASS",
+    "split_run_or_restart_evidence": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "The numerical policy has no persistent state and therefore no split-run or restart semantic surface."
+    },
+    "exact_comparison_policy": "Compare binary64 F/G/H against high-precision Decimal references on the frozen deterministic 4756-point set with the predeclared 128u relative equation-evaluation envelope; separately require the natural NQ02 B2 control to equal its pinned rounded binary64 value.",
+    "no_invented_tolerance": true,
+    "regression_guard": "PASS",
+    "regression_surface_declared": true,
+    "exact_final_head_ci_required": true
+  },
+  "residual_uncertainty": [
+    "Historical revision-53 corrected behavior remains UNKNOWN_WITHOUT_B2.",
+    "NQ04 does not qualify TCD-019 solver or fallback semantics, Coefdt, or other Iflsol branches.",
+    "Future production binding must separately freeze or qualify compiler reassociation, contraction and intrinsic behavior.",
+    "The 128u envelope is a qualification oracle bound for the dimensionless coefficient evaluation, not a model acceptance tolerance."
+  ],
+  "outcome": "SELF_REVIEW_PASS"
+}

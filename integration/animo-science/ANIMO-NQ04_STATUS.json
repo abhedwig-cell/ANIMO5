@@ -3,8 +3,8 @@
   "title": "TCD-029 Iflsol=4 Detcoef/Coefdc Cancellation-Safe Numerical Policy Qualification",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-nq04-tcd029-iflsol4-coefficient-cancellation",
-  "phase": "AUTHORING_COMPLETE_PENDING_IMMUTABLE_HEAD_CI_AND_GOV05_REVIEW",
-  "state": "QUALIFIED_CANDIDATE_TCD029_IFLSOL4_CANCELLATION_SAFE_BINARY64_POLICY_REVIEW_PENDING",
+  "phase": "COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_TCD029_IFLSOL4_CANCELLATION_SAFE_BINARY64_NUMERICAL_POLICY_READY_FOR_SEPARATE_B3_ADMISSION",
   "target": "TCD-029",
   "qualification_class": "E_NUMERICAL_POLICY",
   "review_risk_tier": "C_NUMERICAL_POLICY",
@@ -59,19 +59,26 @@
   "review": {
     "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
     "required": true,
-    "started": false,
-    "completed": false,
+    "started": true,
+    "completed": true,
+    "reviewed_head": "37128a2fde1ee9c2f783be078aa844fbfc15dc69",
+    "same_agent": true,
+    "genuinely_independent": false,
+    "independence_claimed": false,
     "assurance_if_pass": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
-    "genuinely_independent": false
+    "outcome": "SELF_REVIEW_PASS_QUALIFY_TCD029_NUMERICAL_POLICY",
+    "artifact": "integration/animo-science/NQ04_GOV05_ADVERSARIAL_REVIEW.json"
   },
   "validation": {
     "workflow": ".github/workflows/animo-nq04-tcd029.yml",
     "validator": "tools/nq04/validate_nq04.py",
     "oracle": "tools/nq04/tcd029_coefficient_oracle.py",
-    "immutable_authoring_head": null,
-    "authoring_head_ci_run": null,
-    "authoring_head_ci_conclusion": "PENDING",
-    "exact_final_head_ci_required": true
+    "immutable_authoring_head": "37128a2fde1ee9c2f783be078aa844fbfc15dc69",
+    "authoring_head_ci_run": 34600421926,
+    "authoring_head_ci_job": 103266076391,
+    "authoring_head_ci_conclusion": "success",
+    "exact_final_head_ci_required": true,
+    "closeout_note": "The reviewed authoring head passed the deterministic oracle, validator and scope guard. This review/status closeout is authoritative only if the same workflow succeeds on the exact final closeout head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -90,10 +97,10 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
-  "next": "FREEZE_AUTHORING_HEAD_RUN_CI_THEN_GOV05_TIER_C_ADVERSARIAL_REVIEW; IF_PASS_CLOSE_EXACT_FINAL_AND_ONLY_THEN_OPEN_SEPARATE_TCD029_B3_ADMISSION"
+  "next": "AFTER_EXACT_FINAL_NQ04_CI_SUCCESS_OPEN_SEPARATE_ANIMO_B3D36_TCD029_GOV05_TIER_C_ADMISSION; DO_NOT MODIFY_PRODUCTION_SOURCE_OR_TCD019_OR_CANONICAL_REGISTER"
 }
