@@ -1,0 +1,111 @@
+{
+  "work_unit": "ANIMO-GOV05",
+  "title": "Single-Agent Adversarial Scientific Review & User-Zero-Intervention Governance",
+  "branch": "work/animo-gov05-single-agent-adversarial-review",
+  "phase": "AUTHORING_PACKAGE_COMPLETE_PENDING_IMMUTABLE_HEAD_CAPTURE_AND_ADVERSARIAL_REVIEW",
+  "decision": "PENDING_INTERNAL_ADVERSARIAL_REVIEW",
+  "authoring_base": "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858",
+  "aggregate_authority_at_start": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+  "governance_authorities": {
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "live_start_checks": {
+    "gov05_or_later_equivalent_found": false,
+    "rg05h_exact_head_ci_green": true,
+    "rg05h_exact_head_ci_run": 34537563430,
+    "b3d21_exact_head_ci_green": true,
+    "b3d21_exact_head_ci_run": 34540047043,
+    "gov04_current_head_verified": true,
+    "gov03_current_head_verified": true,
+    "b3q01_current_head_verified": true,
+    "post_gov04_admissions_reviewed": true,
+    "tier_b_and_tier_c_conventions_reviewed": true,
+    "open_review_issues_and_handoffs_reviewed": true,
+    "independence_coding_surfaces_reviewed": true
+  },
+  "frozen_evidence_identities": {
+    "source_archive": {
+      "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "manifest_path": "reference/source/ANIMO_4.1.5.53.zip.sha256",
+      "manifest_git_blob": "d8a46d461d3bfaf38a084ab7bf99f22b04bb30b6"
+    },
+    "testbank": {
+      "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "manifest_path": "reference/testcases/ANIMO_testbank.zip.sha256",
+      "manifest_git_blob": "f45d412d805353900d34a6d9d934c632b055ea7e"
+    },
+    "user_guide": {
+      "sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+      "manifest_path": "reference/documentation/animo_user_guide_4_0.pdf.sha256",
+      "manifest_git_blob": "df22ff64fe3d65ff5b98f048e7fe6e73f7afe746"
+    },
+    "gov04_policy": {
+      "authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+      "git_blob": "00c8f0f8ee873f537a5eadc0ae7bbab36bbf513d"
+    },
+    "gov04_matrix": {
+      "authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc"
+    },
+    "gov03_policy": {
+      "authority": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+      "git_blob": "57d8831ba8a2b997f152b6c34aa06e4cf91f47f7"
+    },
+    "b3q01_disposition_schema": {
+      "authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+      "path": "integration/animo-b3/B3_DISPOSITION_SCHEMA.json"
+    },
+    "tier_b_example_review": "ANIMO-B3B07R@3587c7a94a992f3779034c4c1e5f4134192d54f3",
+    "tier_c_example_review": "ANIMO-B3B09R@c6fcd47f4fb4c0277fa27860ee66dc83a449a038"
+  },
+  "post_gov04_admissions_observed": [
+    "ANIMO-B3D13@b20841eb71c338cad21abd8164fa025d8efc75c4:TCD-027:TIER_A",
+    "ANIMO-B3D14@d672992bbc32d40d7e0fbdf03f3fa9bc4cd5a522:TCD-041:TIER_B",
+    "ANIMO-B3D15@22e48f7e2c1eaa1245f034de2d909191d9cfa227:TCD-030:TIER_B",
+    "ANIMO-B3D16@8650ea9e716336520d8d7df5f9ea2b393d17ab98:TCD-023:TIER_B",
+    "ANIMO-B3D18@796c6f78ff863a2237e163d00cf4b5d15c04fc17:TCD-028:TIER_C",
+    "ANIMO-B3D20@4f0a352bd354c971db0d972967296bf64505da5b:TCD-038:TIER_C",
+    "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858:TCD-037-A1:TIER_A"
+  ],
+  "assurance_change": {
+    "from": "MANDATORY_SEPARATE_CONTEXT_INDEPENDENT_REVIEW",
+    "to": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "same_agent_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "independence_assurance_reduced": true,
+    "scientific_gate_reduction": false
+  },
+  "hard_boundaries": {
+    "tcd_admission_performed": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "existing_historical_review_modified": false,
+    "existing_admission_modified": false,
+    "b4_opened": false,
+    "production_authorized": false,
+    "historical_fidelity_claimed": false
+  },
+  "review_boundary": {
+    "complete_authoring_package_persisted": true,
+    "immutable_authoring_head": null,
+    "review_started": false,
+    "review_artifact": "integration/animo-governance/GOV05_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "substantive_changes_after_reviewed_checkpoint_allowed": false
+  },
+  "validation": {
+    "validator": "tools/validate_gov05_single_agent_review.py",
+    "workflow": ".github/workflows/animo-gov05-single-agent-review.yml",
+    "exact_final_head_ci_required": true,
+    "final_head": null,
+    "final_run_id": null,
+    "conclusion": "PENDING"
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": false,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  }
+}

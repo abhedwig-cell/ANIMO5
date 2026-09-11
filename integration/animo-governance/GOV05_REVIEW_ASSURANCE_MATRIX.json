@@ -1,0 +1,264 @@
+{
+  "policy_id": "ANIMO-GOV05",
+  "policy_version": 1,
+  "policy_name": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "repository": "abhedwig-cell/ANIMO5",
+  "prospective_only": true,
+  "authorities": {
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "aggregate_at_authoring_start": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "latest_qualified_atomic_descendant_at_authoring_start": "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858"
+  },
+  "governance_semantics": {
+    "strictest_applicable_risk_trigger_wins": true,
+    "scientific_gate_reduction_allowed": false,
+    "historical_behaviour_without_qualified_b2": "UNKNOWN",
+    "same_agent_review_mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "same_agent_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "independence_assurance_relative_to_gov04_separate_context": "LOWER",
+    "same_agent_review_is_independent": false,
+    "user_created_review_chat_required": false
+  },
+  "mandatory_review_boundary": [
+    "PERSIST_COMPLETE_AUTHORING_AND_EVIDENCE_PACKAGE",
+    "FREEZE_IMMUTABLE_AUTHORING_HEAD",
+    "RECORD_SOURCE_TESTBANK_AND_EVIDENCE_HASHES",
+    "COMPLETE_AUTHORING_PHASE",
+    "REVIEW_EXACT_FROZEN_AUTHORING_HEAD_ONLY"
+  ],
+  "mandatory_adversarial_actions": [
+    "RECONSTRUCT_CLAIM_FROM_PINNED_SOURCE_AND_EVIDENCE",
+    "SEARCH_FOR_COUNTEREXAMPLES_AND_CONTRADICTIONS",
+    "TEST_STRONGEST_PLAUSIBLE_ALTERNATIVE_INTERPRETATION",
+    "VERIFY_OWNERSHIP_UNITS_SIGN_AND_LIFECYCLE_AS_APPLICABLE",
+    "VERIFY_FIRST_READ_FIRST_WRITE_OR_RESTORE_DIRECTION_AS_APPLICABLE",
+    "VERIFY_EXPECTED_DIFFERENCE_CONTRACT",
+    "VERIFY_NON_INTERFERENCE_CONTRACT",
+    "INSPECT_ACTIVE_CONTROLS",
+    "INSPECT_NEGATIVE_CONTROLS",
+    "INSPECT_REGRESSION_SURFACE_AND_SCOPE_GUARD",
+    "VERIFY_CONSERVATION_OR_ACCOUNTING_WHERE_APPLICABLE",
+    "CLASSIFY_RESIDUAL_UNCERTAINTY",
+    "FAIL_CLOSED_ON_CONTRADICTORY_OR_INSUFFICIENT_EVIDENCE"
+  ],
+  "gov04_gate_preservation": {
+    "A": {
+      "all_waiver_predicates_retained": true,
+      "waiver_predicates": [
+        "EXACT_SOURCE_SEAM",
+        "UNAMBIGUOUS_PHYSICAL_AND_ACCOUNTING_OWNERSHIP",
+        "ATOMICITY",
+        "EXACT_CONSERVATION_OR_ACCOUNTING_IDENTITY",
+        "EXPECTED_DIFFERENCE_PREDECLARED",
+        "PHYSICAL_STATE_NON_INTERFERENCE",
+        "PROCESS_FLUX_NON_INTERFERENCE",
+        "NO_NUMERICAL_POLICY_CHANGE",
+        "NO_SOLVER_OR_TOLERANCE_CHANGE",
+        "NO_RESTART_INITIALIZATION_OR_STATE_SEMANTIC_CHANGE",
+        "NO_COMPOSITION",
+        "NO_UNRESOLVED_SCIENTIFIC_OR_SOURCE_MEANING_AMBIGUITY",
+        "REPRODUCIBLE_VALIDATOR",
+        "SCOPE_GUARD",
+        "NATURAL_OR_QUALIFIED_SYNTHETIC_ACTIVATION",
+        "HISTORICAL_UNKNOWN_PRESERVED_WITHOUT_B2",
+        "GOV03_ROUTE_CONDITIONS_RETAINED_WHEN_APPLICABLE",
+        "NO_PRODUCTION_OR_B4_OR_CANONICAL_REGISTER_CHANGE"
+      ]
+    },
+    "B": {
+      "gov04_required_gates": [
+        "B0_IDENTITY",
+        "B1_CAUSAL_EVIDENCE",
+        "B2_ROUTE_OR_GOV03_HISTORICAL_UNCERTAINTY_ROUTE",
+        "ATOMICITY",
+        "EXACT_CAUSAL_CODE_PATH_AND_TRIGGER",
+        "MATHEMATICAL_OR_SPECIES_IDENTITY",
+        "EXPECTED_DIFFERENCE_PREDECLARED",
+        "BRANCH_ACTIVATION",
+        "CONSERVATION_WHERE_APPLICABLE",
+        "NON_INTERFERENCE",
+        "ONE_GENUINELY_INDEPENDENT_SECOND_LINE_REVIEW",
+        "RESIDUAL_UNCERTAINTY_EXPLICIT",
+        "HISTORICAL_UNKNOWN_PRESERVED_WITHOUT_B2",
+        "NO_NUMERICAL_STATE_RESTART_OR_PRODUCTION_SCOPE_CREEP"
+      ],
+      "review_process_gate_replacement": {
+        "from": "ONE_GENUINELY_INDEPENDENT_SECOND_LINE_REVIEW",
+        "to": "ONE_MANDATORY_INTERNAL_ADVERSARIAL_REVIEW",
+        "scientific_evidence_gate_removed": false,
+        "independence_assurance_reduced": true
+      }
+    },
+    "C": {
+      "gov04_required_gates": [
+        "B0_IDENTITY",
+        "B1_CAUSAL_EVIDENCE_WHERE_APPLICABLE",
+        "B2_ROUTE_OR_GOV03_HISTORICAL_UNCERTAINTY_ROUTE",
+        "AUTHORITATIVE_THEORY_OR_EXACT_DOMAIN_CONTRACT",
+        "STATE_OWNERSHIP_AND_UNITS_WHERE_APPLICABLE",
+        "INITIALIZATION_AND_RESTART_SEMANTICS_WHERE_APPLICABLE",
+        "NUMERICAL_POLICY_AND_CONVERGENCE_EVIDENCE_WHERE_APPLICABLE",
+        "FAILURE_AND_FALLBACK_BEHAVIOUR_WHERE_APPLICABLE",
+        "EXPECTED_DIFFERENCE_PREDECLARED",
+        "CONSERVATION",
+        "NON_INTERFERENCE",
+        "EDGE_AND_BOUNDARY_CASE_COVERAGE",
+        "GENUINELY_INDEPENDENT_SECOND_LINE_REVIEW",
+        "RESIDUAL_UNCERTAINTY_EXPLICIT",
+        "HISTORICAL_UNKNOWN_PRESERVED_WITHOUT_B2",
+        "NO_PRODUCTION_AUTHORIZATION"
+      ],
+      "review_process_gate_replacement": {
+        "from": "GENUINELY_INDEPENDENT_SECOND_LINE_REVIEW",
+        "to": "ENHANCED_INTERNAL_ADVERSARIAL_REVIEW",
+        "scientific_evidence_gate_removed": false,
+        "independence_assurance_reduced": true
+      }
+    },
+    "D": {
+      "gov04_required_gates": [
+        "ALL_COMPONENT_ADMISSIONS_PINNED",
+        "NO_CONTRADICTORY_ASSUMPTIONS",
+        "NO_DOUBLE_CORRECTION",
+        "NO_CANCELLATION_MASKING",
+        "EXPECTED_COMBINED_DIFFERENCE_PREDECLARED",
+        "COMBINED_CONSERVATION",
+        "COMBINED_NON_INTERFERENCE",
+        "INTERACTION_AND_ORDERING_COVERAGE",
+        "UNCERTAINTY_PROPAGATION",
+        "GENUINELY_INDEPENDENT_REVIEW",
+        "COMPOSITION_QUALIFICATION",
+        "INTEGRATION_QUALIFICATION",
+        "EXPLICIT_PRODUCTION_AUTHORIZATION_WHEN_PRODUCTION_BOUND"
+      ],
+      "review_process_gate_replacement": {
+        "from": "GENUINELY_INDEPENDENT_REVIEW",
+        "to": "SEQUENTIAL_SINGLE_AGENT_ADVERSARIAL_REVIEW_WITH_DISTINCT_DECISION_SURFACES",
+        "scientific_evidence_gate_removed": false,
+        "independence_assurance_reduced": true
+      }
+    }
+  },
+  "tiers": {
+    "A": {
+      "review_mode": "GOV04_TIER_A_WAIVER",
+      "assurance_level": "WAIVER_ONLY_WHEN_ALL_GOV04_TIER_A_PREDICATES_PASS",
+      "same_agent_review_required": false,
+      "separate_context_required": false,
+      "strictest_applicable_risk_trigger_wins": true,
+      "all_gov04_waiver_predicates_must_pass": true
+    },
+    "B": {
+      "review_mode": "ONE_MANDATORY_INTERNAL_ADVERSARIAL_REVIEW",
+      "assurance_level": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+      "same_agent_allowed": true,
+      "separate_context_required": false,
+      "immutable_authoring_checkpoint_required": true,
+      "same_workunit_disposition_or_admission_after_pass_allowed": true
+    },
+    "C": {
+      "review_mode": "ENHANCED_INTERNAL_ADVERSARIAL_REVIEW",
+      "assurance_level": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+      "same_agent_allowed": true,
+      "separate_context_required": false,
+      "lower_independence_assurance_than_gov04": true,
+      "mandatory_additional_gates": [
+        "IMMUTABLE_AUTHORING_CHECKPOINT",
+        "COMPLETE_SOURCE_AND_PERSISTENT_STATE_OWNERSHIP_RECONSTRUCTION",
+        "FIRST_READ_FIRST_WRITE_OR_RESTORE_DIRECTION_ANALYSIS",
+        "COUNTER_HYPOTHESIS_TEST",
+        "ACTIVE_CONTROLS",
+        "NEGATIVE_CONTROLS",
+        "SPLIT_RUN_OR_RESTART_EVIDENCE_WHERE_APPLICABLE",
+        "EXACT_COMPARISON_POLICY_EXPLICITLY_JUSTIFIED",
+        "NO_INVENTED_TOLERANCE",
+        "REGRESSION_GUARD",
+        "DECLARED_REGRESSION_SURFACE",
+        "EXACT_FINAL_HEAD_CI"
+      ]
+    },
+    "D": {
+      "review_mode": "SEQUENTIAL_SINGLE_AGENT_ADVERSARIAL_REVIEW_WITH_DISTINCT_DECISION_SURFACES",
+      "assurance_level": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_MULTI_SURFACE",
+      "same_agent_allowed": true,
+      "separate_context_required": false,
+      "decision_surfaces_must_remain_separate": [
+        "COMPOSITION_QUALIFICATION",
+        "INTEGRATION_QUALIFICATION",
+        "B4_DECISION",
+        "PRODUCTION_AUTHORIZATION"
+      ],
+      "immutable_checkpoint_required_per_surface": true,
+      "ordinary_authoring_may_not_authorize_production": true
+    }
+  },
+  "evidence_reuse": {
+    "policy": "GOV04_VERIFY_AND_REUSE",
+    "required_checks": [
+      "PIN_IDENTITY",
+      "SCOPE_COMPATIBILITY",
+      "IMMUTABLE_PROVENANCE",
+      "NO_SUPERSEDING_OR_CONTRADICTORY_EVIDENCE",
+      "NO_EVIDENCE_STRENGTH_PROMOTION"
+    ],
+    "mechanical_rerun_required_when_immutable_and_unchanged": false
+  },
+  "b3q01_compatibility": {
+    "legacy_field_name": "evidence.independent_review",
+    "schema_rewritten": false,
+    "same_agent_encoding_requires_independent_from_correction_authoring_false": true,
+    "pass_requires_pinned_gov05_internal_adversarial_review": true,
+    "legacy_field_name_confers_independence": false
+  },
+  "failure_policy": {
+    "self_review_pass_requires_all_applicable_scientific_gates_pass": true,
+    "incomplete_evidence": "FAIL_CLOSED",
+    "contradictory_evidence": "FAIL_CLOSED",
+    "mechanical_remediation": "NEW_IMMUTABLE_AUTHORING_HEAD_THEN_RESTART_REVIEW",
+    "material_claim_change": "RESTART_FULL_REVIEW_PHASE",
+    "request_new_user_review_chat": false
+  },
+  "terminology": {
+    "allowed_same_agent_labels": [
+      "INTERNAL_ADVERSARIAL_REVIEW",
+      "SAME_AGENT_SECOND_PASS",
+      "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT"
+    ],
+    "prohibited_same_agent_claims": [
+      "genuinely independent",
+      "independent second-line",
+      "organizationally independent",
+      "human independent"
+    ],
+    "historical_review_wording_rewritten": false
+  },
+  "transition": {
+    "gov04_historically_valid": true,
+    "completed_independent_reviews_remain_valid": true,
+    "existing_admissions_remain_valid": true,
+    "fail_or_incomplete_reviews_rewritten": false,
+    "old_incomplete_review_may_be_converted_to_pass": false,
+    "finalized_scientific_work_reopened_only_for_review_style": false,
+    "open_handoff_cancellation_requires_live_eligibility_check": true,
+    "open_handoff_cancellation_label": "NOT_REQUIRED_UNDER_GOV05"
+  },
+  "user_zero_intervention_workflow": [
+    "AUTHOR",
+    "PERSIST_IMMUTABLE_CHECKPOINT",
+    "INTERNAL_ADVERSARIAL_REVIEW",
+    "REMEDIATE_IF_NEEDED",
+    "EXACT_HEAD_CI",
+    "DISPOSITION_OR_ADMISSION_WHEN_ELIGIBLE"
+  ],
+  "hard_boundaries": {
+    "tcd_admission_performed": false,
+    "b4_opened": false,
+    "production_authorized": false,
+    "production_source_modified": false,
+    "canonical_tcd_register_modified": false,
+    "frozen_b0_modified": false,
+    "historical_reviews_or_admissions_modified": false
+  }
+}

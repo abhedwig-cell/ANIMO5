@@ -1,0 +1,40 @@
+name: ANIMO-GOV05 single-agent adversarial review governance
+
+on:
+  push:
+    branches:
+      - work/animo-gov05-single-agent-adversarial-review
+  pull_request:
+    paths:
+      - 'docs/governance/ANIMO_GOV05_SINGLE_AGENT_REVIEW_POLICY.md'
+      - 'integration/animo-governance/ANIMO-GOV05_STATUS.json'
+      - 'integration/animo-governance/GOV05_*.json'
+      - 'tools/validate_gov05_single_agent_review.py'
+      - '.github/workflows/animo-gov05-single-agent-review.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-gov05:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact revision with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify exact workflow head
+        shell: bash
+        run: |
+          set -euo pipefail
+          observed="$(git rev-parse HEAD)"
+          test "$observed" = "$GITHUB_SHA"
+          echo "Exact head: $observed"
+
+      - name: Syntax-check validator
+        run: python -m py_compile tools/validate_gov05_single_agent_review.py
+
+      - name: Validate GOV05 fail-closed governance
+        run: python tools/validate_gov05_single_agent_review.py

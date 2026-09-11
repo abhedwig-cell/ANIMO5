@@ -1,0 +1,91 @@
+{
+  "work_unit": "ANIMO-GOV05",
+  "snapshot_scope": "OPEN_OR_IN_FLIGHT_REVIEW_RELATED_HANDOFFS_OBSERVED_BEFORE_GOV05_AUTHORING_CHECKPOINT",
+  "snapshot_date": "2026-09-11",
+  "rule": "NO_HISTORICAL_REVIEW_RESULT_IS_REWRITTEN; LIVE_RECHECK_REQUIRED_WHEN_TRANSITION_IS_ACTUALLY_APPLIED",
+  "items": [
+    {
+      "kind": "OPEN_GITHUB_ISSUE",
+      "id": "issue-44",
+      "target": "TCD-041",
+      "historical_request": "SEPARATE_CONTEXT_GOV04_TIER_B_REVIEW",
+      "live_resolution_evidence": [
+        "ANIMO-B3B07R@3587c7a94a992f3779034c4c1e5f4134192d54f3:PASS_TIER_B_READY_FOR_POST_REVIEW_DISPOSITION",
+        "ANIMO-B3D14@d672992bbc32d40d7e0fbdf03f3fa9bc4cd5a522:ADMITTED",
+        "ANIMO-RG05F@7c61a5031f41d602e996310df6f3958cbd1b511e:AGGREGATED"
+      ],
+      "transition": "HISTORICAL_REVIEW_COMPLETED_AND_ADMITTED_DO_NOT_CONVERT_TO_GOV05",
+      "recommended_issue_action": "CLOSE_AS_COMPLETED_HISTORY_WHEN_ADMINISTRATIVELY_CONVENIENT",
+      "not_required_under_gov05_cancellation": false
+    },
+    {
+      "kind": "OPEN_GITHUB_ISSUE",
+      "id": "issue-12",
+      "target": "PREP10C_STABLE_DOM_EVENT_RESET_CANDIDATE_NOW_CANONICAL_TCD028_LINEAGE",
+      "historical_request": "GENUINELY_INDEPENDENT_B3Q01_SECOND_LINE_REVIEW",
+      "live_resolution_evidence": [
+        "ANIMO-B3B08R@3281f98feef7af4822e85a0f011ede0b779de07b:QUALIFIED_INDEPENDENT_REVIEW",
+        "ANIMO-B3D18@796c6f78ff863a2237e163d00cf4b5d15c04fc17:TCD028_ADMITTED",
+        "ANIMO-RG05G@4551b6b4c3f987b1247571d59f8489b2f1a71ba6:AGGREGATED"
+      ],
+      "transition": "SUPERSEDED_BY_COMPLETED_CANONICAL_TCD028_REVIEW_AND_ADMISSION_DO_NOT_CONVERT_TO_GOV05",
+      "recommended_issue_action": "CLOSE_AS_COMPLETED_OR_SUPERSEDED_HISTORY_WHEN_ADMINISTRATIVELY_CONVENIENT",
+      "not_required_under_gov05_cancellation": false
+    },
+    {
+      "kind": "OPEN_GITHUB_ISSUE_WITH_REVIEW_TEXT_NOT_A_DEDICATED_REVIEW_HANDOFF",
+      "id": "issue-8",
+      "target": "PREP10_STABLE_DOM_PLOUGH_ACCUMULATOR_LINEAGE",
+      "historical_request": "INCLUDES_INDEPENDENT_SECOND_LINE_AS_ONE_PRE_ADMISSION_STEP",
+      "live_resolution_evidence": [
+        "ANIMO-B3B08R@3281f98feef7af4822e85a0f011ede0b779de07b:TCD028_REVIEW",
+        "ANIMO-B3D18@796c6f78ff863a2237e163d00cf4b5d15c04fc17:TCD028_ADMITTED"
+      ],
+      "transition": "DO_NOT_REWRITE_ISSUE_HISTORY; REVIEW_REQUIREMENT_FOR_THE_ADMITTED_CANONICAL_LINEAGE_IS_ALREADY_SATISFIED_HISTORICALLY",
+      "not_required_under_gov05_cancellation": false
+    },
+    {
+      "kind": "OPEN_EVIDENCE_REMEDIATION_ISSUE",
+      "id": "issue-42",
+      "target": "TCD-040",
+      "historical_review": "ANIMO-B3B04R@bb001129578457ca8435e39deb2b8586e7ebc6a2:FAIL_CLOSED_INDEPENDENT_EVIDENCE_REPLAY_INCOMPLETE",
+      "current_blocker": "PROVENANCE_PINNED_EXECUTABLE_REPLAY_AND_CONTROLLED_B0_EVIDENCE_NOT_QUALIFIED",
+      "transition": "KEEP_FAIL_CLOSED; GOV05_DOES_NOT_REMOVE_EVIDENCE_BLOCKER; AFTER_REMEDIATION_USE_ENHANCED_INTERNAL_ADVERSARIAL_REVIEW_AGAINST_A_NEW_IMMUTABLE_HEAD_INSTEAD_OF_REQUIRING_A_USER_CREATED_REVIEW_CHAT",
+      "old_fail_rewritten": false,
+      "not_required_under_gov05_cancellation": false
+    },
+    {
+      "kind": "OPEN_EXTERNAL_CUSTODIAN_ISSUE",
+      "id": "issue-5",
+      "target": "CONTROLLED_IMMUTABLE_B0_RETENTION",
+      "current_blocker": "EXTERNAL_STORAGE_CUSTODY_AND_RESTORE_PROOF",
+      "transition": "OUTSIDE_GOV05_SCIENTIFIC_SELF_REVIEW_SUBSTITUTION; EXTERNAL_CUSTODIAN_AND_ANY_EXPLICIT_HUMAN_STORAGE_CONTROL_REVIEW_REMAIN_AS_SPECIFIED",
+      "not_required_under_gov05_cancellation": false
+    },
+    {
+      "kind": "IN_FLIGHT_GOV04_REVIEW_WORKUNIT",
+      "id": "ANIMO-B3B10R2",
+      "target": "TCD-031",
+      "branch": "review/animo-b3b10r2-tcd031-independent-second-line-rereview",
+      "observed_head_before_gov05_authoring": "a20325d819c92bc49aebafd720ad045c635fb5f1",
+      "observed_state": "REREVIEW_CHECKPOINT_IN_FLIGHT",
+      "transition": "DO_NOT_INTERRUPT_OR_RELABEL_AN_ALREADY_STARTED_GOV04_REVIEW; IF_IT_COMPLETES_KEEP_ITS_ORIGINAL_STATUS; IF_IT_REMAINS_INCOMPLETE_AFTER_GOV05_QUALIFICATION_RECHECK_LIVE_AND_ONLY_THEN_START_A_GOV05_ADVERSARIAL_REREVIEW_FROM_A_NEW_IMMUTABLE_ELIGIBLE_HEAD",
+      "not_required_under_gov05_cancellation": false
+    },
+    {
+      "kind": "COMPLETED_HISTORICAL_REVIEW_BRANCH",
+      "id": "ANIMO-NQ03R",
+      "target": "TCD-042-E1",
+      "authority": "ANIMO-NQ03R@0153779e9045c6527b7c31156f2295ff44b57eeb",
+      "observed_state": "CLOSED_INDEPENDENT_NUMERICAL_REVIEW_PASS",
+      "transition": "NO_ACTION; RETAIN_ORIGINAL_GOV04_STYLE_ASSURANCE_AND_DO_NOT_REOPEN_FOR_STYLE"
+    }
+  ],
+  "future_default": {
+    "tier_b": "ONE_MANDATORY_INTERNAL_ADVERSARIAL_REVIEW_AFTER_IMMUTABLE_AUTHORING_CHECKPOINT",
+    "tier_c": "ENHANCED_INTERNAL_ADVERSARIAL_REVIEW_AFTER_IMMUTABLE_AUTHORING_CHECKPOINT",
+    "tier_d": "SAME_AGENT_ALLOWED_BUT_COMPOSITION_INTEGRATION_B4_AND_PRODUCTION_DECISIONS_REMAIN_SEPARATE_IMMUTABLE_SURFACES",
+    "user_created_review_chat_required": false,
+    "historical_fail_or_incomplete_promoted_to_pass": false
+  }
+}
