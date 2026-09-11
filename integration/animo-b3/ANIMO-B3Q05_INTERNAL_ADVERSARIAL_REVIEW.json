@@ -1,0 +1,51 @@
+{
+  "work_unit": "ANIMO-B3Q05",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "reviewed_head": "794995268a6a8d96fbaacba6304d64f48f21202f",
+  "reviewed_head_ci_run": 34654096957,
+  "reviewed_head_ci_job": 103442606886,
+  "reviewed_head_ci_conclusion": "success",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "counter_hypothesis": {
+    "claim": "The RG05N batch could be interpreted as closing the canonical B3 queue or as permitting a positive whole-B3 composition authority despite the previous B3Q04 blockers.",
+    "test": "Reconstruct the 25-object canonical queue from the unchanged source, add only exact-final RG05N top-level admissions TCD-035, TCD-036 and TCD-039 to the exact B3Q04 admitted set, and reapply the immutable B3Q01 composition rule.",
+    "result": "REJECTED: six canonical top-level objects remain unadmitted, so neither queue closure nor whole-B3 composition completeness follows."
+  },
+  "active_controls": [
+    "ANIMO-RG05N exact-final head 8758bd30e302b75dd7854ac00fd2e29473669a13 with CI 34646787915 reports 29 scientific admission objects, 19 admitted top-level TCDs and 10 admitted child atoms.",
+    "ANIMO-B3Q04 exact-final head dcc0885f73de6241d5efa9324ddb9f41784f6f2d with CI 34610684987 reports 16 admitted and 9 unadmitted top-level TCDs before the RG05N batch.",
+    "The canonical membership remains 25 top-level objects with tail TCD-042 and no TCD-043 reservation.",
+    "B3Q01 requires every required component to be admitted before composition can be admitted."
+  ],
+  "negative_controls": [
+    "TCD-035 admission is not allowed to imply TCD-036 admission; RG05N carries distinct exact-final authorities for both.",
+    "Legacy queue labels for TCD-016, TCD-019, TCD-032, TCD-033, TCD-034 and TCD-040 are not requalified by this governance recompute.",
+    "No child admission or scope exclusion is promoted to a parent or broader scientific admission.",
+    "No canonical register mutation, new top-level reservation, historical B2 evidence, TB7 baseline, B4 authority or production authority is introduced."
+  ],
+  "review_questions": [
+    {"question": "Could TCD-035, TCD-036 or TCD-039 be counted without exact RG05N authority?", "finding": "NO. B3Q05 consumes them only through exact-final RG05N, which pins their exact-final admission authorities and CI."},
+    {"question": "Could the six remaining objects be treated as scientifically re-reviewed because their old queue states are displayed?", "finding": "NO. Their legacy queue labels are orientation only and last_queue_state_revalidated_here remains false."},
+    {"question": "Could B3Q05 close the queue because 29 scientific admission objects exceed the 25 top-level queue count?", "finding": "NO. Scientific admission objects include child atoms; closure is determined over the 25 canonical top-level objects, of which only 19 are admitted."},
+    {"question": "Could TCD-035 imply TCD-036 because both concern GHG restart state?", "finding": "NO. RG05N explicitly records that TCD-035 does not admit TCD-036, and both have distinct exact-final admissions."},
+    {"question": "Could this negative closure gate open TB7, B4 or production?", "finding": "NO. Six canonical top-level objects remain unadmitted and all downstream gates remain false."},
+    {"question": "Is this review genuinely independent?", "finding": "NO. It is a GOV05 same-agent adversarial review with lower assurance than the former GOV04 separate-context model."}
+  ],
+  "rejected_overclaims": [
+    "GLOBAL_B3_QUEUE_CLOSED",
+    "WHOLE_B3_COMPOSITION_COMPLETE",
+    "TB7_ALLOWED",
+    "B4_ALLOWED",
+    "PRODUCTION_ALLOWED",
+    "SIX_REMAINING_OBJECTS_REQUALIFIED_BY_THIS_WORKUNIT",
+    "TCD035_IMPLIES_TCD036",
+    "CHILD_ADMISSION_IMPLIES_PARENT",
+    "HISTORICAL_B2_CREATED",
+    "GENUINELY_INDEPENDENT_REVIEW"
+  ],
+  "positive_composition_completeness_authority_created": false,
+  "outcome": "SELF_REVIEW_PASS_NEGATIVE_B3_CLOSURE_GATE_SIX_TOP_LEVEL_UNADMITTED"
+}
