@@ -1,0 +1,59 @@
+{
+  "work_unit": "ANIMO-B3B13",
+  "target": "TCD-036",
+  "base_authority": "ANIMO-STATEQ07@26f6e61da328a5578b9c4b332de04eb99a3ac04f",
+  "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
+  "queue_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
+  "candidate_identity": "TCD036_PRE_EXISTING_ACTIVE_PONDING_LAYER0_GHG_RESTART_IDENTITY_FROM_SERIALIZED_TOTAL_SYSTEM_OWNER",
+  "b3_qualification_class": "B_LOCAL_RESTART_RECONSTRUCTION_EXISTING_OWNER",
+  "review_risk_tier": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "strictest_risk_trigger_wins": true,
+  "supported_scope": {
+    "revision": 53,
+    "ghg_active": true,
+    "layer": 0,
+    "species": ["CH4", "N2O"],
+    "ponding_state": "ACTIVE_PRE_EXISTING_PONDING",
+    "restart_owner": "gas-specific serialized total-system Cs(0)/RsCs(0)",
+    "restart_view": "gas-specific aqueous Co(0)/RsCo(0)",
+    "reconstruction": "Co(0)=Cs(0)"
+  },
+  "lifecycle_guards": {
+    "new_ponding_event": "EXCLUDED_KEEP_SOURCE_INFLOW_INITIALIZATION",
+    "ponding_absent": "EXCLUDED_NO_DORMANT_LAYER0_GHG_STORE",
+    "species_cross_mapping": "FORBIDDEN",
+    "independent_second_co_checkpoint_owner": "FORBIDDEN"
+  },
+  "consumed_stateq07": {
+    "status": "QUALIFIED_BOUNDED_TCD036_PRE_EXISTING_PONDING_LAYER0_RESTART_OWNERSHIP_READY_FOR_SEPARATE_B3_READINESS",
+    "decision": "QUALIFY_TCD036_PRE_EXISTING_ACTIVE_PONDING_LAYER0_RESTART_IDENTITY_FROM_SERIALIZED_TOTAL_SYSTEM_OWNER_ONLY",
+    "exact_final_ci": {
+      "run_id": 34645405205,
+      "job_id": 103414874688,
+      "conclusion": "success"
+    },
+    "review_outcome": "SELF_REVIEW_PASS_BOUNDED_TCD036_PONDING_LAYER0_RESTART_OWNER",
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT"
+  },
+  "evidence_strength": {
+    "source": "B0_HASH_PINNED_SOURCE_SEMANTICS",
+    "oracle": "B1_SOURCE_DERIVED_SYNTHETIC_NOT_B2",
+    "historical_behavior": "UNKNOWN_WITHOUT_B2",
+    "whole_model_split_run": false
+  },
+  "admission_readiness_predicates": [
+    "BOUND_TO_PRE_EXISTING_ACTIVE_PONDING_LAYER0",
+    "CH4_N2O_IDENTITIES_SEPARATE",
+    "CS0_IS_SERIALIZED_OWNER_CO0_IS_IDENTITY_VIEW",
+    "NEW_PONDING_SOURCE_INITIALIZATION_PRESERVED",
+    "NO_DORMANT_LAYER0_STATE",
+    "TCD035_NOT_REOPENED",
+    "TCD032_034_NOT_REOPENED",
+    "B1_NOT_PROMOTED_TO_B2",
+    "NO_CANONICAL_STATE_B4_OR_PRODUCTION_CLAIM"
+  ],
+  "candidate_readiness_disposition": "READY_TCD036_BOUNDED_PRE_EXISTING_PONDING_LAYER0_RESTART_FOR_SEPARATE_ADMISSION",
+  "b3_admission_performed": false,
+  "production_authorized": false,
+  "b4_opened": false
+}
