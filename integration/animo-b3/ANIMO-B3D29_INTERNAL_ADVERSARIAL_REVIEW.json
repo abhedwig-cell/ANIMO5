@@ -1,0 +1,21 @@
+{
+  "work_unit":"ANIMO-B3D29",
+  "target_child_atom":"TCD-025-A2",
+  "risk_tier":"C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
+  "model":"MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent":false,
+  "reviewed_head":"84d61ee92c5cf44abb0c202045fd42fe51e4345d",
+  "reviewed_head_ci":{"run_id":34572853368,"job_id":103178566304,"conclusion":"success"},
+  "counter_hypotheses":[
+    {"id":"CH1","alternative":"admit arbitrary selected intervals","result":"REJECTED_OUT_OF_SCOPE","reason":"B3I08/B3A10 retain the common predicate and forbid partial saturated-reservoir cuts"},
+    {"id":"CH2","alternative":"geometrically allocate a partial mixed DOM reservoir","result":"REJECTED","reason":"revision53 owns one mixed domain species reservoir, not independent layer DOM state/flux"},
+    {"id":"CH3","alternative":"derive missing boundary mass from the residual","result":"REJECTED","reason":"observer would become self-closing"},
+    {"id":"CH4","alternative":"count FlMpOuDrSo as a second external DOM export","result":"REJECTED","reason":"it is soil-routed and would be double counted"},
+    {"id":"CH5","alternative":"promote generic solute-kernel and exact-rational evidence to historical B2","result":"REJECTED","reason":"no active historical B2 reference exists"},
+    {"id":"CH6","alternative":"A2 admission composes parent TCD-025","result":"REJECTED","reason":"A1 only is separately admitted, A3/A4 remain open and A5 remains blocked"}
+  ],
+  "gates":{"source_provenance":"PASS","atomic_scope":"PASS","control_volume":"PASS_BOUNDED_ONLY","species_identity":"PASS_DIORMA_ONLY","conservation":"PASS","expected_difference":"PASS_LEDGER_ONLY","non_interference":"PASS","historical_uncertainty":"PASS_UNKNOWN_WITHOUT_B2","negative_controls":"PASS","production_separation":"PASS","parent_sibling_separation":"PASS"},
+  "residual_uncertainty":["No qualified historical active-macropore B2 reference.","Production observer plumbing is not qualified here.","Partial saturated-reservoir selected profiles remain outside scope.","Same-agent review is not independent."],
+  "outcome":"SELF_REVIEW_PASS_ADMIT_TCD025_A2_WITH_HISTORICAL_UNCERTAINTY"
+}
