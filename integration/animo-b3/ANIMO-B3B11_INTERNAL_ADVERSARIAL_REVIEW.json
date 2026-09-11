@@ -1,0 +1,61 @@
+{
+  "work_unit": "ANIMO-B3B11",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "reviewed_head": "79b433e863b99fb7e724f22afe68c57897523e35",
+  "reviewed_head_ci_run": 34630070484,
+  "reviewed_head_ci_job": 103364439817,
+  "reviewed_head_ci_conclusion": "success",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "risk_tier_reviewed": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "adversarial_findings": [
+    {
+      "question": "Does resolving owner-versus-reconstruction permit the provisional Class-C label to be reduced without weakening the scientific gate?",
+      "finding": "YES for B3 qualification class, because STATEQ05 identifies already-existing accepted continuation owners and no new physical state, phase, constitutive law or transfer law is introduced. NO for review risk: Tier C remains mandatory because restart semantics alter future trajectories."
+    },
+    {
+      "question": "Does the candidate silently define a checkpoint file format or production implementation?",
+      "finding": "NO. It defines exact accepted-owner restoration semantics while explicitly leaving checkpoint representation and production migration outside scope."
+    },
+    {
+      "question": "Could the nitrogen and phosphorus owners be collapsed into one unconditional restart rule?",
+      "finding": "NO. N and P remain distinct owner pairs, and P is conditional on Ipo == 1."
+    },
+    {
+      "question": "Does this readiness claim close the broader CROP-007 stage or rotation continuation problem?",
+      "finding": "NO. CROP-007 is explicitly excluded and remains unresolved."
+    },
+    {
+      "question": "Can the B1 source-shaped split witnesses establish historical revision-53 behavior or a normal B2 baseline?",
+      "finding": "NO. They establish bounded causality only. Historical behavior remains UNKNOWN_WITHOUT_B2 and no B2 is created."
+    },
+    {
+      "question": "Does the failed first freeze remain admissible evidence or contaminate the reviewed head?",
+      "finding": "NO. Freeze01 is explicitly superseded before review. The reviewed authority is freeze02 exact head 79b433e863b99fb7e724f22afe68c57897523e35 with green exact-head CI."
+    },
+    {
+      "question": "Does B3B11 itself admit TCD-039, canonical STATE, B4 or production?",
+      "finding": "NO. This is readiness only; all downstream admission and production gates remain closed."
+    },
+    {
+      "question": "Is this review genuinely independent?",
+      "finding": "NO. It is the required GOV05 same-agent adversarial process review only."
+    }
+  ],
+  "rejected_overclaims": [
+    "CLASS_C_SCIENTIFIC_GATE_NO_LONGER_APPLIES",
+    "CHECKPOINT_FILE_FORMAT_QUALIFIED",
+    "CROP007_RESOLVED",
+    "FULL_MODEL_SPLIT_RUN_EQUIVALENCE",
+    "B1_IS_B2",
+    "HISTORICAL_REV53_BEHAVIOR_ESTABLISHED",
+    "TCD039_B3_ADMITTED",
+    "CANONICAL_STATE_ADMITTED",
+    "B4_OPENED",
+    "PRODUCTION_AUTHORIZED",
+    "GENUINELY_INDEPENDENT_REVIEW"
+  ],
+  "outcome": "SELF_REVIEW_PASS_TCD039_BOUNDED_CLASS_B_READINESS_TIER_C_RISK_PRESERVED"
+}
