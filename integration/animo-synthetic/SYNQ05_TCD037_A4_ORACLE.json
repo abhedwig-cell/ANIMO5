@@ -16,6 +16,7 @@
   "frozen_source_provenance": {
     "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
     "local_reinspection_only_not_redistributed": true,
+    "raw_source_redistributed": false,
     "member_sha256": {
       "Outbal_calc.for": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
       "ghg_n2o.for": "493bf88d4b321df64817a7c0eaa2725ad614a45df0a0f16cefa96ac348254175",
