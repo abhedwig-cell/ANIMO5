@@ -1,0 +1,84 @@
+name: ANIMO-B3A09 TCD-037-A4 Tier-A readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3a09-tcd037-a4-tier-a-readiness
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact readiness authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in \
+            ca3b6fba99ddc70e1f063ac98088f8825f467c1a \
+            4da2dd067069944a5e3eeb5f532566a23402bd68 \
+            94afe7d649a8c60758a41996f0059de0acddd2fc \
+            54679c7555a963133dfd686648af334f479c5808 \
+            a3e822f8e97fe1312a7dfa73601a49ae7375163e \
+            842f72300fd03ede0b9024537a7ee6126722a121 \
+            f65a47724e4a4fca7f2d8b8d6de9eeee51867904 \
+            1bbe4c211197590f346803106e45dca5faae79fc \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            846e0f4d02a38b9e02cc1419b1ca87e63aaedb54
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+            git cat-file -e "${sha}^{commit}"
+          done
+
+      - name: Verify exact workflow head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Verify consumed exact-final workflows
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          checks = {
+              34550444642: "ca3b6fba99ddc70e1f063ac98088f8825f467c1a",
+              34549748497: "4da2dd067069944a5e3eeb5f532566a23402bd68",
+              34549097225: "94afe7d649a8c60758a41996f0059de0acddd2fc",
+              34546470484: "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+          }
+          token = os.environ["GH_TOKEN"]
+          for run_id, sha in checks.items():
+              req = urllib.request.Request(
+                  f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}",
+                  headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"},
+              )
+              with urllib.request.urlopen(req) as response:
+                  data = json.load(response)
+              assert data["head_sha"] == sha, (run_id, data["head_sha"], sha)
+              assert data["status"] == "completed" and data["conclusion"] == "success", (
+                  run_id, data["status"], data["conclusion"]
+              )
+          print("exact-final upstream workflows verified")
+          PY
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Parse readiness records and compile validator
+        run: |
+          python -m json.tool integration/animo-b3/TCD037_A4_TIER_A_READINESS.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3A09_STATUS.json >/dev/null
+          python -m py_compile tools/validate_b3a09_tcd037_a4.py
+
+      - name: Validate Tier-A readiness and scope
+        run: python tools/validate_b3a09_tcd037_a4.py
