@@ -1,0 +1,11 @@
+{
+  "work_unit":"ANIMO-B3Q03",
+  "repository":"abhedwig-cell/ANIMO5",
+  "branch":"work/animo-b3q03-global-canonical-queue-recompute-closure",
+  "base_authority":{"authority":"ANIMO-RG05L@214062fe773618ea77c7c74867cc8d9a2a4eef6d","branch":"work/animo-rg05l-sixth-batched-admission-integration","head":"214062fe773618ea77c7c74867cc8d9a2a4eef6d","exact_final_ci_run":34588681709,"exact_final_ci_conclusion":"success"},
+  "b3_framework":{"authority":"ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54","branch":"work/animo-b3q01-scientific-admission-framework","composition_rules":"docs/governance/B3_COMPOSITION_RULES.md","exact_final_ci_run":34305009180,"exact_final_ci_conclusion":"success"},
+  "routing_authority":{"authority":"ANIMO-B3I10@942f26fe32eaf91679e59a1968ae173a3703e22d","branch":"work/animo-b3i10-tcd042-positive-hetop-routing","head":"942f26fe32eaf91679e59a1968ae173a3703e22d","artifact":"integration/animo-b3/B3I10_TCD042_CHILD_SCOPE_ROUTING.json"},
+  "canonical_queue_source":{"authority":"ANIMO-RG05_CANONICAL_QUEUE_MEMBERSHIP_SURFACE","artifact":"integration/animo-reg/RG05_B3_QUEUE.json","queue_membership_head":"214062fe773618ea77c7c74867cc8d9a2a4eef6d","canonical_register_authority":"work/animo-b3i03-canonical-register-append@814ea660d367494432beb63ea78298d1f6cd73d7","tail":"TCD-042","entry_count":25},
+  "live_recheck":{"newer_top_level_tcd_reservation_found":false,"tcd043_reserved":false,"rg05l_b3_complete":false,"rg05l_b4_open":false,"rg05l_production_open":false},
+  "assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT"
+}
