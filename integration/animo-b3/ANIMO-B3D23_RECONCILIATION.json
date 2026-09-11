@@ -1,0 +1,34 @@
+{
+  "work_unit": "ANIMO-B3D23",
+  "target": "TCD-031",
+  "purpose": "NON_DESTRUCTIVE_RECONCILIATION_OF_CONCURRENT_ADMISSION_AUTHORING_WITH_FINAL_B3D22_AUTHORITY",
+  "original_branch_start": "744c42119ee8cd21de658ef6d9c0ecf4a3f7d2ca",
+  "original_checkpoint_blob_sha1": "34c95c70c6bab8161cfbcec286fc95a53e42c350",
+  "original_authoring_freeze_head": "048855e7d0bbcb21b79b906b8c11ab09be98870a",
+  "final_formal_disposition_authority": "ANIMO-B3D22@b68ebd807fbac2f8e8305417329e390fdab758d2",
+  "final_formal_disposition_exact_head_ci": "34547171960:success",
+  "reconciliation_merge_commit": "6fe7b43bbe209328b086058bfeefb907677aaa9b",
+  "reconciliation_method": "MERGE_PRESERVE_CONCURRENT_HISTORY_NO_FORCE_PUSH",
+  "original_checkpoint_rewritten": false,
+  "historical_concurrent_authoring_preserved": true,
+  "scientific_scope_changed_by_reconciliation": false,
+  "admission_decision_changed_by_reconciliation": false,
+  "reason": "B3D23 was authored concurrently from an intermediate B3D22 head while B3D22 governance-transition remediation was still moving. Final B3D22 retained the same scientific disposition but became authoritative only at b68ebd807fbac2f8e8305417329e390fdab758d2 after GOV05-aware exact-head validation.",
+  "effective_authority_rule": "ALL_B3D23_QUALIFICATION_AND_REVIEW_MUST_PIN_FINAL_B3D22_B68EBD8_NOT_THE_HISTORICAL_INTERMEDIATE_BRANCH_START",
+  "review_reset": {
+    "required": true,
+    "reason": "authority reconciliation changed the effective upstream authority after the original authoring freeze",
+    "old_freeze_may_be_used_for_final_review": false,
+    "new_immutable_authoring_head_required": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "canonical_state_admitted": false,
+    "tcd025_composition_performed": false,
+    "b4_opened": false,
+    "production_authorized": false,
+    "central_regie_updated": false
+  }
+}
