@@ -1,0 +1,174 @@
+{
+  "work_unit": "ANIMO-B3D27",
+  "title": "TCD-037 GHG Balance Observer Parent Composition Qualification and B3 Admission Decision",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3d27-tcd037-parent-composition-gov05-tier-d-admission",
+  "target_parent_tcd": "TCD-037",
+  "base_head": "49e5ef141850296df17317da181a561def239117",
+  "composition_authoring_head": "17387b7282a6f5b40fec290bd4c28cc6cef8f767",
+  "adversarial_review_head": "f2d209754b0f96ac20b9642de91bcfbda1116cab",
+  "state": "PERSISTED_VALIDATION_PENDING",
+  "decision": "PENDING_EXACT_HEAD_VALIDATION",
+  "target_state_after_green_final_head": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+  "target_decision_after_green_final_head": "ADMIT_TCD037_PARENT_GHG_OBSERVER_COMPOSITION_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_D",
+  "formal_disposition_after_green_final_head": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "parent_tcd_admitted": false,
+  "qualification_class": "A_ACCOUNTING_REPORTING_ONLY_COMPOSED_PARENT_GOV04_TIER_D",
+  "gov04_risk_tier": "TIER_D",
+  "risk_rule": "STRICTEST_APPLICABLE_RISK_TRIGGER_WINS",
+  "risk_trigger": "NON_ATOMIC_PARENT_COMPOSITION_OF_FOUR_ADMITTED_CHILD_ATOMS_WITH_SHARED_LAYER_PROFILE_BOUNDARY_ACCOUNTING_SEMANTICS",
+  "governance": {
+    "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "b3q02": "ANIMO-B3Q02@1db63b17cb5f48cbd8ae28116a2e716b4bdaadf3",
+    "review_mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent_review_claimed": false
+  },
+  "authorities": {
+    "aggregate_at_start": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
+    "latest_b3_admission_at_start": "ANIMO-B3D26@49e5ef141850296df17317da181a561def239117",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "routing_refresh": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "runtime_ownership": "ANIMO-RUNTIMEQ02@45e8073fa95035b3565bd8b373ac327915cf1af5",
+    "runtime_semantics": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e"
+  },
+  "frozen_evidence": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "outbal_calc_sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981"
+  },
+  "qualified_child_authorities": {
+    "TCD-037-A1": {
+      "admission": "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858",
+      "exact_final_ci_run": 34540047043,
+      "conclusion": "success"
+    },
+    "TCD-037-A2": {
+      "admission": "ANIMO-B3D24@0f85d7102945c7c4d77bc49885f9ecca688209e3",
+      "exact_final_ci_run": 34547891772,
+      "conclusion": "success"
+    },
+    "TCD-037-A3": {
+      "admission": "ANIMO-B3D25@4da2dd067069944a5e3eeb5f532566a23402bd68",
+      "exact_final_ci_run": 34549748497,
+      "conclusion": "success"
+    },
+    "TCD-037-A4": {
+      "admission": "ANIMO-B3D26@49e5ef141850296df17317da181a561def239117",
+      "exact_final_ci_run": 34554010568,
+      "conclusion": "success"
+    }
+  },
+  "parent_scientific_claim": {
+    "kind": "BOUNDED_COMPOSED_GHG_OBSERVER_ACCOUNTING_CONTRACT",
+    "ch4_layer_formation": "QPrCH4(Ln)*St for Ln=1..Nl owns CH4f and associated CO2f formation partition increments",
+    "ch4_atmosphere_exchange": "(QEmCH4Dif+QEmCH4Ebl+QEmCH4Flw+QEmCH4Plt)*St owns Btom(CH4e), sign preserved",
+    "ch4_formation_total": "sum(QPrCH4(1:Nl)*St) owns the formation-side Btom(CO2e) dissimilation complement only",
+    "n2o_denitrification_formation": "QPrN2Oden(Ln)*St owns Bani(N2Od)",
+    "n2o_atmosphere_exchange": "(QEmN2ODif+QEmN2OFlw)*St owns Bani(N2Oe), sign preserved",
+    "n2o_nitrification": "existing Banh(N2On) accounting remains unchanged",
+    "n2o_reduction": "QRdN2O remains a separate reduction sink",
+    "formation_equals_emission": false,
+    "complete_ghg_carbon_ledger": false,
+    "complete_n2o_mass_ledger": false,
+    "climate_co2_equivalent_metric": false,
+    "new_physical_process": false,
+    "new_persistent_state": false,
+    "new_numerical_policy": false
+  },
+  "composition_evidence": {
+    "qualification": "docs/b3/TCD037_PARENT_COMPOSITION_QUALIFICATION.md",
+    "evidence_matrix": "integration/animo-b3/TCD037_PARENT_COMPOSITION_EVIDENCE_MATRIX.json",
+    "coverage_matrix": "integration/animo-b3/TCD037_CHILD_TO_PARENT_COVERAGE_MATRIX.json",
+    "overlap_gap_audit": "integration/animo-b3/TCD037_PARENT_OVERLAP_GAP_AUDIT.json",
+    "parent_oracle": "tools/b3d27/tcd037_parent_composition_oracle.py",
+    "parent_oracle_blob_sha": "9834f7b229eaea88068310ae3f3c4d61418844e7",
+    "parent_oracle_evidence": "integration/animo-b3/TCD037_PARENT_COMPOSITION_ORACLE_EVIDENCE.json",
+    "adversarial_review": "docs/b3/TCD037_PARENT_GOV05_ADVERSARIAL_REVIEW.md",
+    "review_record": "integration/animo-b3/TCD037_PARENT_GOV05_REVIEW.json",
+    "integration_qualification": "integration/animo-b3/B3D27_PARENT_INTEGRATION_QUALIFICATION.json"
+  },
+  "admission_predicates": {
+    "all_four_children_exact_final_green": "PASS",
+    "parent_claim_reconstructed": "PASS",
+    "child_to_parent_coverage": "PASS",
+    "producer_lifetime_observer_ownership": "PASS",
+    "signed_exchange_semantics": "PASS",
+    "index0_layer_atmosphere_semantics": "PASS",
+    "n2o_denitrification_vs_emission_accounting": "PASS",
+    "units_dimensional_compatibility": "PASS",
+    "overlap_gap_double_count": "PASS",
+    "persistent_vs_temporary_state": "PASS",
+    "restart_state_interaction": "PASS_BOUNDED_NONCLAIM",
+    "conservation_accounting_interaction": "PASS_BOUNDED_NONCLAIM",
+    "tcd032_through_tcd036_dependency": "PASS_NO_DEPENDENCY",
+    "new_parent_scientific_meaning": "PASS_CONJUNCTION_ONLY_NO_NEW_PHYSICS",
+    "gov05_adversarial_review": "PASS_NOT_INDEPENDENT",
+    "tier_d_parent_integration": "PASS",
+    "new_child_required": false,
+    "contradictory_evidence_found": false
+  },
+  "residual_uncertainty": {
+    "historical_intel_or_reference_behaviour": "UNKNOWN",
+    "natural_revision53_active_ghg_case": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+    "synthetic_parent_oracle_is_b2": false,
+    "whole_model_ghg_conservation": "NOT_CLAIMED",
+    "restart_balance_accumulator_split_run_identity": "NOT_CLAIMED",
+    "production_implementation": "NOT_AUTHORIZED"
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "child_admissions_reopened": false,
+    "canonical_tcd_register_modified": false,
+    "aggregate_modified": false,
+    "b4": false,
+    "production_migration": false,
+    "whole_model_golden_baseline": false,
+    "historical_b2_claim": false,
+    "global_Ly_equals_Ln_theorem": false,
+    "central_regie_rewrite": false
+  },
+  "aggregate_policy": {
+    "aggregate_updated_in_this_workunit": false,
+    "current_aggregate": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
+    "post_rg05i_admissions_before_parent": [
+      "ANIMO-B3D25@4da2dd067069944a5e3eeb5f532566a23402bd68",
+      "ANIMO-B3D26@49e5ef141850296df17317da181a561def239117"
+    ],
+    "post_rg05i_pending_batch_if_parent_final_green": [
+      "ANIMO-B3D25@4da2dd067069944a5e3eeb5f532566a23402bd68",
+      "ANIMO-B3D26@49e5ef141850296df17317da181a561def239117",
+      "ANIMO-B3D27_THIS_EXACT_FINAL_HEAD_IF_GREEN"
+    ],
+    "batch_size_if_parent_final_green": 3,
+    "next_aggregate_handoff": "ANIMO-RG05J_SEPARATE_WORKUNIT_AFTER_EXACT_FINAL_GREEN",
+    "rg05j_created_here": false
+  },
+  "validation": {
+    "machine_validated": false,
+    "workflow": ".github/workflows/animo-b3d27-tcd037-parent-composition.yml",
+    "validator": "tools/validate_b3d27_tcd037_parent.py",
+    "parent_oracle": "tools/b3d27/tcd037_parent_composition_oracle.py",
+    "precloseout_run_id": null,
+    "precloseout_job_id": null,
+    "precloseout_tested_head": null,
+    "precloseout_conclusion": "PENDING",
+    "final_exact_head_required": true,
+    "conclusion": "PENDING",
+    "validator_result": "PENDING",
+    "scope_guard": "PENDING",
+    "closeout_note": null
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "work_unit_complete": false
+  },
+  "next_after_qualified_admission": "HANDOFF_ONLY_TO_SEPARATE_ANIMO_RG05J_WORKUNIT_NO_AGGREGATE_CHANGE_HERE"
+}
