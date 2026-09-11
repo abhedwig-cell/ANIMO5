@@ -1,0 +1,47 @@
+name: ANIMO-TB05A macropore subsystem fragment qualification
+
+on:
+  push:
+    branches:
+      - work/animo-tb05a-macropore-subsystem-bank-adoption
+  workflow_dispatch:
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate bounded fragment
+        run: python tools/validate_animo_tb05a.py
+      - name: Guard hard boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=82213ad143bd5f0fa5c500303a8a4f1d35dd3f0c
+          git diff --name-only "$BASE"...HEAD > /tmp/tb05a_changed.txt
+          if grep -Eq '^(src/|source/|Source/|animo/|ANIMO/)' /tmp/tb05a_changed.txt; then
+            echo 'Production source path changed' >&2
+            cat /tmp/tb05a_changed.txt >&2
+            exit 1
+          fi
+          if grep -Fxq 'integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json' /tmp/tb05a_changed.txt; then
+            echo 'Central testbank registry changed' >&2
+            exit 1
+          fi
+          allowed='^(.github/workflows/animo-tb05a-macropore-subsystem.yml|tools/validate_animo_tb05a.py|docs/testbank/ANIMO-TB05A_MACROPORE_SUBSYSTEM_ADOPTION.md|integration/animo-testbank/ANIMO-TB05A_STATUS.json|integration/animo-testbank/fragments/ANIMO-TB05A_MACROPORE_SUBSYSTEM_FRAGMENT.json|integration/animo-testbank/receipts/ANIMO-TB05A_QUALIFICATION_RECEIPT.json)$'
+          bad=$(grep -Ev "$allowed" /tmp/tb05a_changed.txt || true)
+          if [ -n "$bad" ]; then
+            echo 'Out-of-scope files changed:' >&2
+            echo "$bad" >&2
+            exit 1
+          fi
+      - name: Exact-head identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"

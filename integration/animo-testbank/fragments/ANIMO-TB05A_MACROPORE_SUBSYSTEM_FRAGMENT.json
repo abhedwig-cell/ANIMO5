@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "fragment_id": "ANIMO-TB05A-MACROPORE-SUBSYSTEM",
+  "producer_workunit": "ANIMO-TB05A",
+  "base_authority": "ANIMO-TB04B@82213ad143bd5f0fa5c500303a8a4f1d35dd3f0c",
+  "tb02_authority": "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d",
+  "registry_integration": "SEPARATE_SERIAL_CONSOLIDATION_WORKUNIT_ONLY",
+  "central_registry_write": "FORBIDDEN_BY_FRAGMENT_PRODUCER",
+  "scope": "TB-L7 macropore subsystem bank adoption only",
+  "existing_registry_note": "ATB-SUB-001 remains an untouched TB01 adapter candidate; this fragment uses narrower permanent IDs and does not promote MP01/MP02 to B3 or historical reference authority.",
+  "entries": [
+    {
+      "test_id": "ATB-SUB-003",
+      "layer": "TB-L7",
+      "owner": "testbank-macropores",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "integration/animo-macropore/ANIMO-MP01_STATUS.json@blob:2f91fd50e6ecad4c846adac8766e5615c2bcc247",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_STRUCTURAL_CONTRACT_NO_TOLERANCE",
+      "claim": "The qualified revision-53 macropore activation contract requires Ioptmp=1 with detailed hydrology Hlpimp=2, dynamically reaches wet macropore domains, and keeps Main Bypass and Internal Catchment ownership distinct.",
+      "applicability_pins": {
+        "configuration_gate": "Ioptmp=1",
+        "hydrology_gate": "Hlpimp=2",
+        "aggregated_hydrology_with_macropores_qualified": false,
+        "molecular_diffusion_revision53": "DISABLED",
+        "historical_reference_qualified": false,
+        "b3_ready": false
+      },
+      "failure_semantics": "Configuration/hydrology mismatch, domain ownership collapse or promotion of diagnostic evidence to historical truth fails the contract.",
+      "permanence": "REUSABLE_MACROPORE_ACTIVATION_AND_OWNERSHIP_CONTRACT"
+    },
+    {
+      "test_id": "ATB-SUB-004",
+      "layer": "TB-L7",
+      "owner": "testbank-macropores",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "integration/animo-macropore/ANIMO-MP02_STATUS.json@blob:953f631e4bff01490178b8748f34432b987811f7",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_ROUTE_AND_EVENT_IDENTITY_NO_TOLERANCE",
+      "claim": "B0-derived complete-case diagnostic descendants causally exercise active macropore storage, matrix/macropore exchange, Main Bypass direct drainage and combined P-active C/N/P solute transport for DOC, DON, NH4, NO3, DOP and PO4.",
+      "applicability_pins": {
+        "evidence_class": "B1_COMPLETE_CASE_SYNTHETIC_DIAGNOSTIC_ONLY",
+        "complete_case_runs": 6,
+        "active_species": ["DOC", "DON", "NH4", "NO3", "DOP", "PO4"],
+        "active_iteration_hits_per_species": 2922,
+        "historical_B2": false,
+        "behavioural_golden_reference": false,
+        "b3_ready": false
+      },
+      "failure_semantics": "Loss of declared route reachability or species coverage fails the B1 diagnostic contract; output agreement is not a golden-reference claim.",
+      "permanence": "REUSABLE_COMPLETE_CASE_ROUTE_REACHABILITY_CONTRACT"
+    },
+    {
+      "test_id": "ATB-SUB-005",
+      "layer": "TB-L7",
+      "owner": "testbank-macropores",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-STATEQ04@ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_BYTEWISE_NO_TOLERANCE",
+      "claim": "The narrow qualification-only persistent-solute restore contract preserves six macropore species across both accepted CoMp domains in the source-bound kernel split, while remaining short of a complete-model active split.",
+      "applicability_pins": {
+        "whole_model_active_split": false,
+        "production_checkpoint_implementation": false,
+        "canonical_state_admission": false,
+        "current_interval_workspace_persistent": false
+      },
+      "failure_semantics": "Any inference of complete-model restart coverage from the narrow kernel contract fails closed.",
+      "permanence": "REUSABLE_NARROW_SUBSYSTEM_RESTART_DEPENDENCY"
+    },
+    {
+      "test_id": "ATB-SUB-006",
+      "layer": "TB-L7",
+      "owner": "testbank-macropores",
+      "status": "GAP",
+      "source_identity": "MP01/MP02 TCD-025 control-volume findings",
+      "expected_value_provenance": "UNKNOWN",
+      "comparison_policy": "NOT_YET_QUALIFIED",
+      "claim": "The public/main macropore ledger control volume remains incomplete for storage/direct-drain and selected N/P/DOM terms; TCD-025 remains uncorrected and unadmitted.",
+      "applicability_pins": {
+        "TCD025_correction_implemented": false,
+        "TCD025_correction_admitted": false,
+        "public_main_storage_complete": false,
+        "historical_magnitude_open": true
+      },
+      "failure_semantics": "Fail closed: specialized-route closure must not be promoted to complete public/main ledger conservation.",
+      "permanence": "GAP_TRACKER_MACROPORE_PUBLIC_LEDGER"
+    },
+    {
+      "test_id": "ATB-SUB-007",
+      "layer": "TB-L7",
+      "owner": "testbank-macropores",
+      "status": "GAP",
+      "source_identity": "MP01/MP02 remaining blockers",
+      "expected_value_provenance": "UNKNOWN",
+      "comparison_policy": "NOT_YET_QUALIFIED",
+      "claim": "Macropore subsystem historical reference, complete persistent restart, exact solute-transfer theory reconciliation and build/numerical FPE disposition remain incomplete.",
+      "applicability_pins": {
+        "native_active_historical_case": false,
+        "independently_trusted_B2": false,
+        "complete_persistent_restart": false,
+        "GNU_active_route_FPE_disposition_complete": false,
+        "subsystem_release_qualified": false
+      },
+      "failure_semantics": "Fail closed: no subsystem release or behavioural-reference qualification may be inferred from B1 diagnostic activation alone.",
+      "permanence": "GAP_TRACKER_MACROPORE_SUBSYSTEM_COMPLETENESS"
+    }
+  ],
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "historical_B2_fabricated": false,
+    "whole_model_golden_baseline_created": false,
+    "TCD025_correction_implemented": false,
+    "subsystem_release_qualified": false,
+    "new_tolerance_introduced": false
+  }
+}
