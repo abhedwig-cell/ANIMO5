@@ -1,0 +1,99 @@
+{
+  "work_unit": "ANIMO-SYNQ05",
+  "target": "TCD-037-A4",
+  "title": "Independent Synthetic Oracle for N2O Atmosphere-Emission Observer Ownership",
+  "evidence_strength": "B1_SYNTHETIC_NOT_B2",
+  "canonical_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+  "runtime_semantic_authority": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+  "accounting_contract": {
+    "source_owner": "(QEmN2ODif+QEmN2OFlw)*St",
+    "observer_increment": "10000*(QEmN2ODif+QEmN2OFlw)*St",
+    "observer": "Bani(N2Oe)",
+    "existing_conversion_factor": 10000,
+    "existing_consumer_activation_boundary": "existing active-GHG N2Oe observer seam at the first native Ln==1 consumer call",
+    "global_Ly_equals_Ln_theorem_claimed": false
+  },
+  "frozen_source_provenance": {
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "local_reinspection_only_not_redistributed": true,
+    "member_sha256": {
+      "Outbal_calc.for": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+      "ghg_n2o.for": "493bf88d4b321df64817a7c0eaa2725ad614a45df0a0f16cefa96ac348254175",
+      "Outsel.for": "b058b88aef464183aa35bdb0377315e3755192e5ee70bb88db6522cf1311ec9d"
+    },
+    "semantic_reinspection": {
+      "frozen_Outbal_calc_N2Oe_consumer_uses_production_totals": true,
+      "frozen_ghg_n2o_produces_QEmN2ODif_and_QEmN2OFlw_at_atmosphere_boundary": true,
+      "frozen_Outsel_reports_total_N2O_emission_as_QEmN2ODif_plus_QEmN2OFlw_times_St": true,
+      "negative_emission_means_soil_uptake_in_frozen_source": true
+    },
+    "ci_can_rehash_raw_members": false,
+    "reason": "The licensed frozen source archive is intentionally not redistributed in the public repository; member hashes and semantics are locally rechecked provenance evidence, while CI verifies the public synthetic oracle and immutable authority pins."
+  },
+  "strongest_alternative_hypothesis": {
+    "identity": "N2Oe is owned by the sum of N2O production totals rather than atmosphere-emission fluxes",
+    "source_shaped_native_bad_emulation": "10000*(N2O_denitrification_production_total+N2O_nitrification_production_total)*St",
+    "discriminator_required": true
+  },
+  "cases": {
+    "EMISSION_NONZERO_PRODUCTION_ZERO": {
+      "purpose": "Positive-path activation and direct discrimination from the frozen production-total consumer mismatch",
+      "candidate_must_change": true,
+      "native_bad_must_not_change": true
+    },
+    "PRODUCTION_NONZERO_EMISSION_ZERO": {
+      "purpose": "Negative control proving production totals do not own N2Oe atmosphere-emission accounting",
+      "candidate_must_not_change": true,
+      "native_bad_must_change": true
+    },
+    "COMPONENT_PERMUTED": {
+      "purpose": "Metamorphic check that only the QEmN2ODif plus QEmN2OFlw sum owns the observer amount",
+      "must_equal_positive_candidate": true
+    },
+    "RATE_TIME_EQUIVALENT": {
+      "purpose": "Metamorphic amount identity under inverse rate-time scaling",
+      "must_equal_positive_candidate": true
+    },
+    "SIGNED_UPTAKE": {
+      "purpose": "Signed atmosphere exchange check consistent with frozen-source convention that negative emission is soil uptake",
+      "candidate_must_decrease": true
+    },
+    "INACTIVE": {
+      "purpose": "Branch non-interference control",
+      "candidate_and_native_bad_must_not_change": true
+    }
+  },
+  "allowed_difference_surface": [
+    "Bani(N2Oe)"
+  ],
+  "forbidden_difference_surface": [
+    "Bani(N2Od)",
+    "Banh(N2On)",
+    "QRdN2O",
+    "physical_state",
+    "process_flux",
+    "restart_state",
+    "solver_or_numerical_policy",
+    "TCD-037-A1",
+    "TCD-037-A2",
+    "TCD-037-A3",
+    "TCD-032..036",
+    "unrelated_observers"
+  ],
+  "comparison_policy": "EXACT_BINARY_VALUES_NO_EMPIRICAL_TOLERANCE",
+  "compiler_qualification": [
+    "GNU Fortran O0",
+    "GNU Fortran O2",
+    "byte-identical probe output required"
+  ],
+  "natural_case": {
+    "status": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+    "translation_performed": false
+  },
+  "historical_behavior": "UNKNOWN",
+  "historical_fidelity_claimed": false,
+  "scientific_admission": false,
+  "tier_a_waiver_granted": false,
+  "production_authorized": false,
+  "next_if_qualified": "ALLOCATE_FREE_TCD037_A4_TIER_A_READINESS_WORKUNIT_AFTER_LIVE_IDENTIFIER_RECHECK"
+}
