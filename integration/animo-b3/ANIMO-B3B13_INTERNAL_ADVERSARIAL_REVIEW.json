@@ -1,0 +1,78 @@
+{
+  "work_unit": "ANIMO-B3B13",
+  "target": "TCD-036",
+  "review_framework": "ANIMO-GOV05",
+  "gov05_authority": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "reviewed_head": "8b91ff1fd65a70459942c166f25115ac463769fe",
+  "reviewed_tree": "a43b5d9f1a73c47623775b2cf346101f8bfeec86",
+  "reviewed_head_ci": {
+    "run_id": 34645786012,
+    "job_id": 103416112308,
+    "conclusion": "success"
+  },
+  "frozen_substantive_head": "1d6aaf46b3efb219350ab495bb973a67cfb94fe1",
+  "freeze_artifact_commit": "af6de297e578e6e8ee79bb8c2b9d64031379dde7",
+  "risk_tier": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "adversarial_checks": [
+    {
+      "attack": "TREAT_PROVISIONAL_CLASS_C_AS_AN_IMMUTABLE_SCIENTIFIC_CLASSIFICATION",
+      "result": "REJECTED",
+      "reason": "B3Q04 explicitly left TCD-036 waiting on state ownership. STATEQ07 resolves the missing ownership/reconstruction predicate without new physics, supporting local class B while retaining the stricter Tier-C review floor."
+    },
+    {
+      "attack": "LOWER_REVIEW_TIER_TO_MATCH_RESOLVED_LOCAL_CLASS_B",
+      "result": "REJECTED",
+      "reason": "Restart/checkpoint semantics can alter future trajectories, so the strictest applicable risk trigger keeps Tier C."
+    },
+    {
+      "attack": "USE_CO0_AS_A_SECOND_PERSISTENT_CHECKPOINT_OWNER",
+      "result": "REJECTED",
+      "reason": "The readiness contract preserves Cs(0)/RsCs(0) as the gas-specific serialized owner and Co(0)/RsCo(0) as a deterministic identity view only."
+    },
+    {
+      "attack": "EXTEND_THE_IDENTITY_TO_NEW_PONDING",
+      "result": "REJECTED",
+      "reason": "New ponding remains excluded and the source-defined inflow initialization is explicitly preserved."
+    },
+    {
+      "attack": "ALLOW_DORMANT_LAYER0_GHG_STATE_WITHOUT_PONDING",
+      "result": "REJECTED",
+      "reason": "No-ponding is excluded from the candidate and no dormant layer0 GHG storage is introduced."
+    },
+    {
+      "attack": "COLLAPSE_OR_CROSS_MAP_CH4_AND_N2O",
+      "result": "REJECTED",
+      "reason": "The candidate requires independent gas identities and forbids species cross-mapping."
+    },
+    {
+      "attack": "REOPEN_TCD035_OR_BROADER_GHG_RESTART_SEMANTICS",
+      "result": "REJECTED",
+      "reason": "The candidate is layer0-only; TCD-035 soil layers 1..Nl and TCD-032..034 remain outside scope."
+    },
+    {
+      "attack": "PROMOTE_STATEQ07_B1_TO_HISTORICAL_B2_OR_CLAIM_WHOLE_MODEL_SPLIT_RUN",
+      "result": "REJECTED",
+      "reason": "Evidence remains B1 source-derived synthetic, historical behavior is UNKNOWN_WITHOUT_B2, and no whole-model split-run claim is made."
+    },
+    {
+      "attack": "TREAT_READINESS_AS_B3_ADMISSION_OR_PRODUCTION_AUTHORIZATION",
+      "result": "REJECTED",
+      "reason": "B3B13 only qualifies a bounded admission candidate; a separate atomic admission is mandatory and production/B4 remain closed."
+    }
+  ],
+  "positive_findings": [
+    "STATEQ07 exact-final authority is pinned and green.",
+    "The candidate identity is narrow enough to avoid conflating pre-existing ponding with new-ponding initialization.",
+    "Persistent ownership and deterministic reconstruction are separated explicitly.",
+    "Gas identities, historical uncertainty and B1-not-B2 evidence strength are explicit.",
+    "No production, canonical-state, B4 or top-level registry mutation is embedded in readiness."
+  ],
+  "outcome": "SELF_REVIEW_PASS_TCD036_BOUNDED_LAYER0_RESTART_ADMISSION_READINESS",
+  "readiness_recommendation": "READY_TCD036_BOUNDED_PRE_EXISTING_PONDING_LAYER0_RESTART_FOR_SEPARATE_ADMISSION",
+  "b3_admission_performed": false,
+  "production_authorized": false
+}
