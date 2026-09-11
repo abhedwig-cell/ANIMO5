@@ -1,0 +1,158 @@
+{
+  "work_unit": "ANIMO-B3D22",
+  "target": "TCD-031",
+  "title": "TCD-031 GOV04 Tier-C Formal Disposition",
+  "branch": "work/animo-b3d22-tcd031-gov04-tier-c-disposition",
+  "authoring_base": "ANIMO-B3B10R2@7648e7b2813f3abc5904e4c34e36072d81d9844f",
+  "current_aggregate_at_open": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+  "qualification_class": "C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL",
+  "gov04_risk_tier": "C",
+  "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+  "decision": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_B3_ADMISSION_DECISION",
+  "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "admitted": false,
+  "authorities": {
+    "aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "readiness": "ANIMO-B3B10@eccba6712f65455161d05fa9cdf6aa142f823dd4",
+    "first_review": "ANIMO-B3B10R@36aad892cac546105dfec0fe43aa34a18e23bcad",
+    "source_remediation": "ANIMO-B3B10E1@8522752f9941e6fd5b421cf5ac4ef839384d7ce7",
+    "independent_targeted_rereview": "ANIMO-B3B10R2@7648e7b2813f3abc5904e4c34e36072d81d9844f",
+    "STATEQ03": "ANIMO-STATEQ03@10c50e65d1369d5f3b26736c4b12d3a482379eb5",
+    "STATEQ04": "ANIMO-STATEQ04@ef9a5998cafae433deeba701a8e9a8a08eacc92f",
+    "MP01": "ANIMO-MP01@7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "MP02": "ANIMO-MP02@6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "MASSQ02": "ANIMO-MASSQ02@56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "frozen_B0_retention": "ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300"
+  },
+  "review_gate": {
+    "result": "PASS_TARGETED_INDEPENDENT_REREVIEW_TCD031_SOURCE_PROVENANCE_GATES_CLOSED",
+    "review_head": "7648e7b2813f3abc5904e4c34e36072d81d9844f",
+    "workflow_run": 34545898592,
+    "workflow_conclusion": "success",
+    "tier_c_review_gate_satisfied": true,
+    "first_fail_closed_review_preserved": true
+  },
+  "atomic_scientific_disposition": {
+    "identity": "COMPLETE_ACCEPTED_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY",
+    "persistent_owner": [
+      "CoMpDiorMa(1:2)",
+      "CoMpDiorNi(1:2)",
+      "CoMpNh(1:2)",
+      "CoMpNi(1:2)",
+      "CoMpDiorPo(1:2) when IPO.EQ.1",
+      "CoMpPo(1:2) when IPO.EQ.1"
+    ],
+    "domain_count": 2,
+    "p_off_scalar_count": 8,
+    "p_on_scalar_count": 12,
+    "phosphorus_condition": "IPO.EQ.1",
+    "result_alias": "RsCoMp*",
+    "required_checkpoint_semantics": [
+      "serialize every enabled accepted CoMp persistent coordinate at the accepted restart boundary",
+      "restore every enabled accepted CoMp persistent coordinate exactly before resumed transport",
+      "initialize the non-independent RsCoMp result alias from restored CoMp before any legacy RsCoMp-to-CoMp promotion can overwrite restored accepted state",
+      "reinitialize AvCoMp, AvCoML and MpReKo as current-interval workspace instead of serializing them",
+      "require a compatible external hydrology frame before mutation and resume"
+    ],
+    "serializer_only_is_sufficient": false,
+    "restore_only_is_sufficient": false,
+    "writer_and_restore_halves_are_one_atomic_correction": true,
+    "new_physical_state_introduced": false
+  },
+  "source_provenance_basis": {
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "mechanical_binding_closed_by_r2": true,
+    "native_output_init_omits_active_macropore_serialization": true,
+    "native_animo_output_init_call_omits_active_macropore_arguments": true,
+    "native_promotion_direction": "CoMp* <- RsCoMp*",
+    "native_valid_RsCoMp_pre_promotion_restore_or_initialization": false,
+    "source_level_ownership_unambiguous_at_claim_scope": true
+  },
+  "claim_scoped_split_evidence": {
+    "STATEQ04_candidate_restore_transaction": "PASS",
+    "six_species_kernel_coverage": true,
+    "both_domains_causally_required": true,
+    "native_bad_emulation_diverges": true,
+    "domain_drop_controls_diverge": true,
+    "comparison_policy": "EXACT_BYTEWISE_NO_TOLERANCE",
+    "fresh_stage_b_process": true,
+    "whole_model_active_production_split_equivalence": "NOT_PROVEN",
+    "whole_model_production_split_required_for_this_formal_disposition": false,
+    "whole_model_production_split_required_before_production_or_migration_equivalence_claim": true
+  },
+  "gov04_disposition": {
+    "tier": "C",
+    "tier_c_triggers": [
+      "PERSISTENT_STATE_OWNERSHIP",
+      "RESTART_OR_COLD_START_DISCRIMINATION",
+      "INITIALIZATION_SEMANTICS",
+      "CHECKPOINT_SEMANTICS"
+    ],
+    "tier_d_trigger_found": false,
+    "numerical_policy_change": false,
+    "solver_or_tolerance_change": false,
+    "composition": false,
+    "production_bound_scope": false,
+    "separate_admission_decision_required_by_this_workunit_contract": true
+  },
+  "historical_uncertainty": {
+    "qualified_b2_available": false,
+    "gov03_acquisition_state": "B2_REFERENCE_UNAVAILABLE_AFTER_REASONABLE_ACQUISITION_EFFORT",
+    "gov03_route_state": "ELIGIBLE_HISTORICAL_UNCERTAINTY_ROUTE_SUBJECT_TO_CLAIM_SCOPED_B3_REQUIREMENTS",
+    "historical_revision53_active_macropore_restart_behaviour": "UNKNOWN_WITHOUT_B2",
+    "historical_intent_inferred_from_source": false,
+    "historical_fidelity_claimed": false
+  },
+  "expected_difference_surface": {
+    "may_change_after_future_atomic_correction": [
+      "resumed active-macropore solute concentrations when native restart would omit or overwrite accepted CoMp state",
+      "causally downstream macropore transport and exchange after a restart boundary",
+      "causally downstream solute state, fluxes, balances and outputs after a restart boundary"
+    ],
+    "must_not_change_semantics": [
+      "continuous unsplit execution away from checkpoint and restore paths",
+      "cold-start INITIAL.INP CoMp mapping",
+      "two-domain physical meaning",
+      "phosphorus applicability condition IPO.EQ.1",
+      "external hydrology ownership and compatibility requirements",
+      "current-interval workspace ownership",
+      "numerical precision policy",
+      "solver or tolerance policy",
+      "frozen B0 identities"
+    ],
+    "whole_model_equivalence_claimed": false,
+    "production_restart_equivalence_claimed": false,
+    "global_arbitrary_tolerance_allowed": false
+  },
+  "residual_uncertainties": [
+    "historical revision-53 active macropore restart behaviour remains unknown without qualified B2",
+    "whole-model active production continuous-versus-split equivalence has not been demonstrated",
+    "production serializer and restore integration has not been implemented or qualified in this workunit",
+    "full-horizon magnitude and prevalence of downstream restart differences is not established by the claim-scoped kernel evidence"
+  ],
+  "tcd025_boundary": {
+    "executed_here": false,
+    "composition_here": false,
+    "tcd031_may_be_consumed_as_reviewed_dependency_for_separate_readiness": true,
+    "allowed_scope": "SEPARATE_CLASS_A_LEDGER_READINESS_ONLY"
+  },
+  "hard_boundaries": {
+    "b3_admission_performed": false,
+    "production_source_modified": false,
+    "corrected_legacy_source_promoted": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "canonical_state_admitted": false,
+    "tcd025_composition_performed": false,
+    "b4_opened": false,
+    "production_migration_opened": false,
+    "central_regie_updated": false,
+    "new_numerical_tolerance": false,
+    "historical_fidelity_claimed": false
+  },
+  "next_allowed_workunit": "SEPARATE_TIER_C_B3_ADMISSION_DECISION_FOR_TCD031"
+}
