@@ -1,0 +1,8 @@
+{
+  "work_unit":"ANIMO-RG05L",
+  "source_aggregate":"ANIMO-RG05K@e5ccad78d7c85aaf2c68d844c5a496edf6d73db5",
+  "pre":{"scientific_admissions":20,"historical_uncertainty_admissions":20,"top_level_admitted_tcd_count":13,"admitted_child_atom_count":7,"tcd025_parent_admitted":false,"tcd042_parent_admitted":false},
+  "delta":{"scientific_admissions":3,"historical_uncertainty_admissions":3,"top_level_admitted_tcds":1,"child_atoms":2,"objects":["TCD-025-A4","TCD-025","TCD-042-B1"]},
+  "post":{"scientific_admissions":23,"historical_uncertainty_admissions":23,"top_level_admitted_tcd_count":14,"admitted_child_atom_count":9,"tcd025_parent_admitted":true,"tcd025_admitted_children":["TCD-025-A1","TCD-025-A2","TCD-025-A3","TCD-025-A4"],"tcd025_A5_state":"PERMANENTLY_EXCLUDED_FROM_SUPPORTED_PARENT_SCOPE_FOR_FROZEN_REVISION53","tcd042_parent_admitted":false,"tcd042_admitted_children":["TCD-042-B1"],"tcd042_E1_admitted":false,"tcd042_Hetop_zero_admitted":false},
+  "guards":{"automatic_parent_admission":false,"A5_b3_admission":false,"TCD042_parent_auto_admission":false,"TCD042_E1_inferred_admission":false,"Hetop_zero_inferred_admission":false,"historical_B2_created":false,"production_authorized":false,"B4_opened":false,"global_canonical_queue_count_recomputed":false}
+}
