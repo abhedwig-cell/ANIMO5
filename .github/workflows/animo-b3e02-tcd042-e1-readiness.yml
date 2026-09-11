@@ -1,0 +1,60 @@
+name: ANIMO-B3E02 TCD042-E1 positive-HETOP readiness
+on:
+  push:
+    branches: [work/animo-b3e02-tcd042-e1-positive-hetop-readiness]
+  workflow_dispatch:
+permissions: {contents: read, actions: read}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in \
+            214062fe773618ea77c7c74867cc8d9a2a4eef6d \
+            67a87c6a650d503c1b0968ada2cc5eaa5155aa42 \
+            942f26fe32eaf91679e59a1968ae173a3703e22d \
+            8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6 \
+            0153779e9045c6527b7c31156f2295ff44b57eeb \
+            1db63b17cb5f48cbd8ae28116a2e716b4bdaadf3 \
+            41e43c6a6888aac5b5b52041bcdd088c7afc68f1 \
+            cbd262bdabe92923113b7326f2f42822ce9a971c \
+            1bbe4c211197590f346803106e45dca5faae79fc \
+            f65a47724e4a4fca7f2d8b8d6de9eeee51867904 \
+            846e0f4d02a38b9e02cc1419b1ca87e63aaedb54
+          do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+            git cat-file -e "${sha}^{commit}"
+          done
+      - name: Verify exact head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify exact-final authorities
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request
+          checks={
+            34588681709:"214062fe773618ea77c7c74867cc8d9a2a4eef6d",
+            34590598874:"67a87c6a650d503c1b0968ada2cc5eaa5155aa42",
+            34587001516:"942f26fe32eaf91679e59a1968ae173a3703e22d",
+            34382597133:"8dcdcf09304f50c83d77abbdc8ef35126d3dcbb6",
+            34384001394:"0153779e9045c6527b7c31156f2295ff44b57eeb",
+            34386937159:"1db63b17cb5f48cbd8ae28116a2e716b4bdaadf3",
+            34391300744:"cbd262bdabe92923113b7326f2f42822ce9a971c",
+            34462295879:"1bbe4c211197590f346803106e45dca5faae79fc",
+            34546470484:"f65a47724e4a4fca7f2d8b8d6de9eeee51867904"
+          }
+          for run,sha in checks.items():
+            req=urllib.request.Request(f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run}",headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}","Accept":"application/vnd.github+json"})
+            with urllib.request.urlopen(req) as f: d=json.load(f)
+            assert d["head_sha"]==sha and d["status"]=="completed" and d["conclusion"]=="success",(run,d.get("head_sha"),d.get("status"),d.get("conclusion"))
+          print("exact-final authorities verified")
+          PY
+      - run: python -m json.tool integration/animo-b3/B3E02_TCD042_E1_READINESS_CONTRACT.json >/dev/null
+      - run: python -m json.tool integration/animo-b3/ANIMO-B3E02_STATUS.json >/dev/null
+      - run: python -m json.tool integration/animo-b3/ANIMO-B3E02_AUTHORING_FREEZE.json >/dev/null
+      - run: python -m py_compile tools/validate_b3e02_tcd042_e1.py
+      - run: python tools/validate_b3e02_tcd042_e1.py

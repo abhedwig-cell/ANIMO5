@@ -1,0 +1,1 @@
+{"work_unit":"ANIMO-B3E02","base_head":"214062fe773618ea77c7c74867cc8d9a2a4eef6d","authoring_complete":true,"review_must_pin_exact_commit":true,"rule":"substantive change resets GOV05 review","scope":"TCD-042-E1 only: Flpn=0 AND 0<Flux<1.0d-8 AND Hetop>0 AND 0<P<=3.8510200002999744e-7 AND binary64; readiness only, no admission"}
