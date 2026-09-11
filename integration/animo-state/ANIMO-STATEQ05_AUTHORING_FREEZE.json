@@ -1,11 +1,16 @@
 {
   "work_unit": "ANIMO-STATEQ05",
   "freeze_kind": "GOV05_SUBSTANTIVE_AUTHORING_FREEZE",
-  "substantive_package_head": "6def940ced3b19a229bb097dda784d0ca4399768",
-  "substantive_package_tree": "a20653a5a22d304b7bbd90134d173e60797a576a",
+  "freeze_sequence": 2,
+  "substantive_package_head": "889f940852bb1636e65628fd58f94481c4f9cfbb",
+  "substantive_package_tree": "e9a25eff2a4384ccf61cf7899fb78cb2a31a748a",
+  "supersedes_failed_freeze_head": "9afb41f3cba3817e21fe1bf76b94a7d48a29f07d",
+  "superseded_run": 34620873520,
+  "superseded_job": 103334232818,
   "base_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
   "risk_tier": "C_PERSISTENT_CONTINUATION_STATE_RESTART_SEMANTICS",
   "frozen_claim": "FOR_FROZEN_REVISION53_INTERNAL_CROP_MODE_CUMULATIVE_POTENTIAL_N_UPTAKE_AND_CONDITIONAL_P_UPTAKE_ARE_PERSISTENT_ACCEPTED_CONTINUATION_OWNERS_AND_NONZERO_ACCEPTED_VALUES_MUST_NOT_BE_ZERO_RESET_AT_RESTART",
+  "remediation_from_freeze01": "Exact binary-fraction identity witnesses and robust unittest discovery invocation only; scientific ownership claim unchanged.",
   "frozen_substantive_paths": [
     "docs/stateq05/TCD039_POTENTIAL_UPTAKE_CONTINUATION.md",
     "docs/stateq05/WORK_UNIT_CONTRACT.md",

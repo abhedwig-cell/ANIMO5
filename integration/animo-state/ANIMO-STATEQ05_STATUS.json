@@ -4,9 +4,9 @@
   "title": "TCD-039 Internal-Crop Potential Uptake Continuation State Qualification",
   "repository": "abhedwig-cell/ANIMO5",
   "branch": "work/animo-stateq05-tcd039-potential-crop-uptake-continuation",
-  "phase": "SUBSTANTIVE_AUTHORING_COMPLETE_PENDING_FREEZE",
-  "state": "CANDIDATE_TCD039_INTERNAL_CROP_CONTINUATION_OWNER_QUALIFICATION_REVISED_AFTER_FAILED_FREEZE01",
-  "decision": "CREATE_NEW_IMMUTABLE_AUTHORING_FREEZE_AND_REQUIRE_GREEN_CI_BEFORE_GOV05_REVIEW",
+  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
+  "state": "CANDIDATE_TCD039_INTERNAL_CROP_CONTINUATION_OWNER_QUALIFICATION_FREEZE02",
+  "decision": "PENDING_GREEN_CI_ON_EXACT_FREEZE02_HEAD_THEN_GOV05_ADVERSARIAL_REVIEW",
   "risk_tier": "C_PERSISTENT_CONTINUATION_STATE_RESTART_SEMANTICS",
   "base_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
   "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
@@ -27,21 +27,21 @@
   },
   "superseded_freeze": {
     "head": "9afb41f3cba3817e21fe1bf76b94a7d48a29f07d",
-    "tree": "54b5c3e8e780310c743f1c5f918d4d31efa7e723",
     "workflow_run": 34620873520,
     "job_id": 103334232818,
     "conclusion": "failure",
     "failed_step": "Run bounded source-shaped oracle tests",
-    "validator_step": "skipped",
     "qualified": false,
-    "reviewed": false,
-    "disposition": "SUPERSEDED_BEFORE_REVIEW_NEW_SUBSTANTIVE_PACKAGE_REQUIRED",
-    "remediation": "Use exact binary-fraction identity witnesses and unittest discovery invocation; scientific ownership claim unchanged."
+    "reviewed": false
   },
   "authoring_freeze": {
     "required": true,
-    "completed": false,
+    "completed": true,
+    "sequence": 2,
+    "substantive_package_head": "889f940852bb1636e65628fd58f94481c4f9cfbb",
+    "substantive_package_tree": "e9a25eff2a4384ccf61cf7899fb78cb2a31a748a",
     "supersedes_head": "9afb41f3cba3817e21fe1bf76b94a7d48a29f07d",
+    "artifact": "integration/animo-state/ANIMO-STATEQ05_AUTHORING_FREEZE.json",
     "post_freeze_substantive_changes_allowed": false
   },
   "scientific_admission_performed": false,
@@ -85,5 +85,5 @@
     "qualified": false,
     "work_unit_complete": false
   },
-  "next": "FREEZE_THE_REVISED_SUBSTANTIVE_PACKAGE_AND_REQUIRE_GREEN_CI_ON_THAT_EXACT_HEAD_BEFORE_REVIEW"
+  "next": "REQUIRE_GREEN_CI_ON_THIS_EXACT_FREEZE02_HEAD_THEN_PERFORM_GOV05_SINGLE_AGENT_ADVERSARIAL_REVIEW_WITHOUT_CHANGING_FROZEN_SUBSTANTIVE_PATHS"
 }
