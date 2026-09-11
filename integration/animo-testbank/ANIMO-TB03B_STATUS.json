@@ -3,48 +3,10 @@
   "title": "Transaction, Mass-Conservation & Control-Volume Bank Adoption",
   "branch": "work/animo-tb03b-transaction-mass-conservation-control-volume-bank",
   "base": "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d",
-  "state": "QUALIFICATION_CANDIDATE_PENDING_EXACT_HEAD_CI",
-  "decision_after_success": "QUALIFIED_TB03B_BOUNDED_TRANSACTION_AND_CONSERVATION_FRAGMENT_PACKAGE",
+  "state": "QUALIFIED_TB03B_BOUNDED_TRANSACTION_AND_CONSERVATION_FRAGMENT_PACKAGE",
   "fragment": "integration/animo-testbank/fragments/ANIMO-TB03B_FRAGMENT.json",
-  "adopted_concepts": [
-    "MASSQ typed transaction/event semantics",
-    "MASSQ residual causality discipline",
-    "PREP06 physical conserved-state ownership",
-    "balance deviation/index structural audits",
-    "single-layer control-volume residuals",
-    "whole-profile internal-transfer cancellation",
-    "source/sink/internal-transfer sign contracts",
-    "species-preserving NH4/NO3 nitrogen aggregation"
-  ],
-  "permanence": {
-    "promoted": [
-      "generic typed transaction invariants",
-      "generic local control-volume residual contract",
-      "generic whole-profile residual contract",
-      "NH4/NO3 preserving total-N aggregation contract",
-      "generic balance/index audit adoption gate"
-    ],
-    "not_promoted": [
-      "TCD-specific probes",
-      "individual legacy residual magnitudes",
-      "execution-only causal debugging probes",
-      "captured whole-model outputs"
-    ]
-  },
   "gov05_adversarial_self_review": {
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "checks": {
-      "double_booked_internal_interfaces_rejected": true,
-      "boundary_signs_explicit": true,
-      "NH4_NO3_silent_conflation_rejected": true,
-      "legacy_balance_arrays_not_physical_state_owners": true,
-      "known_nonclosure_not_repaired_with_balancing_events": true,
-      "empirical_tolerance_not_promoted_to_scientific_tolerance": true,
-      "central_registry_write_absent": true,
-      "production_source_write_absent": true,
-      "scientific_admission_absent": true,
-      "whole_model_golden_baseline_absent": true
-    },
     "result": "PASS_BOUNDED_FRAGMENT_SCOPE"
   },
   "hard_boundaries": {
@@ -57,13 +19,16 @@
   "qualification": {
     "validator": "tools/validate_animo_tb03b.py",
     "workflow": ".github/workflows/animo-tb03b-transaction-conservation.yml",
+    "preclose_exact_head": "a3509a11138a46df2b064b91d408242e5540e74e",
+    "preclose_ci_run": 34557574033,
+    "preclose_ci_conclusion": "success",
     "exact_final_head_ci_required": true
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   }
 }
