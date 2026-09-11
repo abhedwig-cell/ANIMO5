@@ -1,0 +1,171 @@
+{
+  "work_unit": "ANIMO-GHG02",
+  "target": "TCD-033",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "risk_tier": "C_SCIENTIFIC_MASS_TRANSFER_PARTITION_IDENTITY",
+  "reviewed_head": "fb751d90af6563ec27c0dabea5bbc6d2f1966841",
+  "reviewed_head_ci_run": 34654844203,
+  "reviewed_head_ci_job": 103444879909,
+  "reviewed_head_ci_conclusion": "success",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "review_boundary": {
+    "production_source": "EXCLUDED",
+    "frozen_B0": "EXCLUDED",
+    "canonical_register": "EXCLUDED",
+    "TCD_032": "EXCLUDED",
+    "TCD_034": "EXCLUDED",
+    "total_CH4_production_law": "EXCLUDED",
+    "Rdfaox_logic": "EXCLUDED",
+    "GHG_transport": "EXCLUDED",
+    "B3_admission": "EXCLUDED_FROM_THIS_WORKUNIT",
+    "B4": "EXCLUDED",
+    "production_migration": "EXCLUDED"
+  },
+  "evidence_reuse_checks": {
+    "frozen_revision53_archive_identity": "PASS",
+    "ghg_ch4_member_identity": "PASS",
+    "B3I01_TCD033_allocation": "PASS",
+    "GHG01_source_algebra_reconstruction": "PASS",
+    "B3Q05_TCD033_unadmitted_base_state": "PASS",
+    "RG05N_project_gate": "PASS",
+    "historical_active_GHG_reference": "UNAVAILABLE_NOT_INVENTED"
+  },
+  "counter_hypothesis": {
+    "claim": "The revision-53 normalization by A*S may intentionally define independent source-family methane potentials rather than daughter components of the total CH4 production rate, so changing the denominator to S should not be scientifically qualified.",
+    "tests": [
+      "Check the revision-53 source comment and units for QPrCH4Do, QPrCH4Ex, QPrCH4Hu and QPrCH4Os.",
+      "Check whether the source family is used as accounting/depletion quantities rather than diagnostic-only output.",
+      "Substitute the frozen-source total relation Q=E*A*S into the legacy component relation Q_i=Q*S_i/(A*S).",
+      "Require simultaneous preservation of proportional source shares and parent/daughter closure to the one total Q."
+    ],
+    "result": "REJECTED_AS_REQUIRED_SCIENTIFIC_COMPONENT_SEMANTICS_WITH_HISTORICAL_INTENT_RETAINED_AS_UNKNOWN",
+    "reason": "The frozen source calls the arrays contributions to the CH4 production rate, assigns the same kg C m-2 d-1 units as the total, and active Rates2 consumes QPrCH4Do in a source-pool depletion path. Under partial anaerobiosis the legacy family sums to Q/A, not Q. For proportional source weights, closure to Q uniquely gives Q_i=Q*S_i/S. This supports the bounded scientific identity but does not prove that revision 53 historically intended it."
+  },
+  "active_controls": [
+    {
+      "id": "FULL_ANAEROBIOSIS_COMPATIBILITY",
+      "condition": "A=1 and S>0",
+      "expectation": "qualified and revision53 component expressions are algebraically identical",
+      "result": "PASS"
+    },
+    {
+      "id": "PARTIAL_ANAEROBIOSIS_PARENT_DAUGHTER_CLOSURE",
+      "condition": "0<A<1 and S>0",
+      "expectation": "sum_i(Q_i)=Q with proportional source shares",
+      "result": "PASS"
+    },
+    {
+      "id": "EXACT_EXISTING_CUTOFF_BOUNDARY",
+      "condition": "A=1.0e-8",
+      "expectation": "existing strict-LT early return is not taken and the partition remains defined",
+      "result": "PASS"
+    },
+    {
+      "id": "BELOW_EXISTING_CUTOFF",
+      "condition": "A<1.0e-8",
+      "expectation": "existing source early return leaves Q and all components zero",
+      "result": "PASS"
+    },
+    {
+      "id": "ZERO_SUBSTRATE_EMPTY_PARTITION",
+      "condition": "S=0",
+      "expectation": "Q=0 and all daughter components are explicitly zero",
+      "result": "PASS"
+    },
+    {
+      "id": "HIGH_PRECISION_GRID",
+      "condition": "270 deterministic A/E/source-vector cases",
+      "expectation": "binary64 policy agrees with 100-digit equation oracle within verification-only bound",
+      "result": "PASS_MAX_2_ULP_UNDER_64_ULP_VERIFICATION_BOUND"
+    }
+  ],
+  "negative_controls": [
+    {
+      "id": "LEGACY_PARTIAL_A_OVERALLOCATION",
+      "condition": "A=0.4 and S>0",
+      "expected_failure": "legacy component sum equals Q/A=2.5Q rather than Q",
+      "result": "FAIL_EXPECTED_CONFIRMED"
+    },
+    {
+      "id": "LEGACY_ZERO_SUBSTRATE_DOMAIN",
+      "condition": "A>=1.0e-8 and S=0",
+      "expected_failure": "legacy component denominator A*S is zero and the daughter expression is undefined",
+      "result": "FAIL_EXPECTED_CONFIRMED"
+    },
+    {
+      "id": "WHOLE_MODEL_RESIDUAL_NOT_ORACLE",
+      "condition": "temptation to infer local equation correctness from a model-wide C residual",
+      "expected_failure": "residual is cross-process and cannot uniquely identify this local partition",
+      "result": "REJECTED_AS_ORACLE"
+    },
+    {
+      "id": "TCD032_SEPARATION",
+      "condition": "inactive comprehensive source-pool transfer path",
+      "expected_failure": "must not be interpreted as solved or admitted by TCD033 partition closure",
+      "result": "PASS_SEPARATE"
+    },
+    {
+      "id": "TCD034_SEPARATION",
+      "condition": "plant-growth temperature index first-read semantics",
+      "expected_failure": "must not be interpreted as solved or admitted by TCD033",
+      "result": "PASS_SEPARATE"
+    }
+  ],
+  "scientific_gates": {
+    "frozen_source_identity": "PASS",
+    "B1_causal_source_evidence": "PASS",
+    "parent_daughter_identity_defined": "PASS",
+    "units_contract": "PASS_SAME_KG_C_M2_D1_FOR_PARENT_AND_DAUGHTERS",
+    "source_share_preservation": "PASS",
+    "zero_domain_defined": "PASS",
+    "existing_anaerobic_cutoff_preserved": "PASS",
+    "full_anaerobiosis_legacy_compatibility": "PASS",
+    "partial_anaerobiosis_legacy_nonclosure_reproduced": "PASS",
+    "historical_uncertainty_route": "PASS_UNKNOWN_WITHOUT_B2",
+    "historical_fidelity_claim": "NOT_MADE",
+    "sibling_noninterference_TCD032_TCD034": "PASS",
+    "production_noninterference": "PASS",
+    "B3_admission_performed_here": "NO"
+  },
+  "tier_c_enhanced": {
+    "immutable_authoring_checkpoint": "PASS_fb751d90af6563ec27c0dabea5bbc6d2f1966841",
+    "source_state_ownership_reconstruction": "PASS_LOCAL_ALGEBRAIC_RATE_PARTITION_NO_PERSISTENT_STATE_OWNER",
+    "first_read_write_or_restore_direction_analysis": "NOT_APPLICABLE_NO_PERSISTENT_STATE_OR_RESTART_SEAM",
+    "counter_hypothesis": "PASS_TESTED_AND_BOUNDED",
+    "active_controls": "PASS",
+    "negative_controls": "PASS",
+    "split_run_restart_applicability": "NOT_APPLICABLE_LOCAL_RATE_PARTITION_HAS_NO_PERSISTENT_STATE_OR_RESTART_SEAM",
+    "exact_comparison_policy": "100_DIGIT_DECIMAL_EQUATION_REFERENCE_AND_64_ULP_BINARY64_EVALUATION_VERIFICATION_BOUND_ONLY",
+    "precision_axis": "PASS_270_CASES_MAX_2_ULP",
+    "no_invented_scientific_tolerance": true,
+    "model_tolerance_created": false,
+    "regression_surface": "A_E_SOURCE_VECTOR_TO_Q_AND_Q_COMPONENTS_WITH_FULL_PARTIAL_CUTOFF_ZERO_SINGLE_AND_MIXED_SOURCE_CASES",
+    "expected_difference_policy": "QUALIFIED_POLICY_DIFFERS_FROM_REVISION53_ONLY_WHERE_PARTIAL_ANAEROBIOSIS_OR_ZERO_SUBSTRATE_EXPOSES_THE_IDENTIFIED_PARTITION_DEFECT; NO_WHOLE_MODEL_GOLDEN_BASELINE",
+    "exact_final_CI_required": true
+  },
+  "residual_uncertainties": [
+    "No B2 historical active-GHG reference is available; historical revision-53 runtime prevalence and intended component normalization remain unknown.",
+    "The exact historical component equation is not independently documented as a release-53 specification.",
+    "TCD-032 comprehensive source-pool transfer ownership remains unresolved and unadmitted.",
+    "TCD-034 plant-growth temperature state semantics remain unresolved and unadmitted.",
+    "The total CH4 production law, exact pH response and hard-coded Q10 are not reopened or newly qualified by this workunit.",
+    "No production implementation is bound by this qualification."
+  ],
+  "rejected_overclaims": [
+    "HISTORICAL_REV53_INTENT_PROVEN",
+    "HISTORICAL_B2_CREATED",
+    "TCD032_RESOLVED_OR_ADMITTED",
+    "TCD034_RESOLVED_OR_ADMITTED",
+    "TOTAL_CH4_PRODUCTION_LAW_REQUALIFIED",
+    "WHOLE_MODEL_C_LEDGER_CLOSED",
+    "PRODUCTION_PATCH_AUTHORIZED",
+    "B3_ADMISSION_PERFORMED_IN_GHG02",
+    "B4_OPENED",
+    "GENUINELY_INDEPENDENT_REVIEW"
+  ],
+  "outcome": "SELF_REVIEW_PASS_TCD033_SCIENTIFIC_PARTITION_POLICY_WITH_HISTORICAL_UNCERTAINTY"
+}
