@@ -1,0 +1,36 @@
+name: ANIMO-TB05C TB4/TB5 fragment convergence readiness
+
+on:
+  push:
+    branches:
+      - work/animo-tb05c-tb4-tb5-fragment-convergence-readiness
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch pinned source authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin \
+            abcfc9daeacbba4c7d56339fdeedae8f422288c5 \
+            ad9683716e1a41a6f6b3d32ff1012bfa215c27db \
+            82213ad143bd5f0fa5c500303a8a4f1d35dd3f0c \
+            e3d537935104b4a7253a5287f8fbf7df7e7459e2 \
+            fe0a5aae6382cf37e1ad233655f313f5fa60f874
+
+      - name: Validate convergence, collisions, closure and scope preservation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/validate_animo_tb05c_convergence.py
