@@ -38,11 +38,19 @@ jobs:
           set -euo pipefail
           python tools/consolidate_animo_tb03d_registry.py --write
 
-      - name: Validate TB01 architecture and TB03D materialization
+      - name: Validate pinned TB01 architecture authority
         shell: bash
         run: |
           set -euo pipefail
-          python tools/validate_animo_tb01_architecture.py
+          tmp="$(mktemp -d)"
+          git worktree add --detach "$tmp" 15a17bfa2c321d08f3ac89f334986c0ae8429045
+          python "$tmp/tools/validate_animo_tb01_architecture.py"
+          git worktree remove "$tmp"
+
+      - name: Validate TB03D materialization
+        shell: bash
+        run: |
+          set -euo pipefail
           python tools/validate_animo_tb03d.py --phase materialization
 
       - name: Validate final TB03D closeout when present
