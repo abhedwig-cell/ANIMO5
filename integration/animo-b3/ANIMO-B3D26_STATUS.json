@@ -4,8 +4,8 @@
   "branch": "work/animo-b3d26-tcd037-a4-gov05-tier-a-admission",
   "target_parent_tcd": "TCD-037",
   "target_child_atom": "TCD-037-A4",
-  "state": "PERSISTED_VALIDATION_PENDING",
-  "decision": "PENDING_EXACT_HEAD_VALIDATION",
+  "state": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+  "decision": "ADMIT_TCD037_A4_N2O_ATMOSPHERE_EMISSION_OBSERVER_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_A_WAIVER",
   "target_state_after_green_final_head": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
   "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "b3_qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
@@ -14,7 +14,7 @@
   "admission_base": "ANIMO-B3A09@840352e615b1ae4c7e30b922378655111dba9257",
   "admission_base_exact_final_ci_run": 34553519234,
   "aggregate_at_start": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
-  "latest_atomic_admission": "ANIMO-B3D25@4da2dd067069944a5e3eeb5f532566a23402bd68",
+  "latest_atomic_admission_at_start": "ANIMO-B3D25@4da2dd067069944a5e3eeb5f532566a23402bd68",
   "routing_authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
   "runtime_semantics_authority": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
   "synthetic_evidence_authority": "ANIMO-SYNQ05@ca3b6fba99ddc70e1f063ac98088f8825f467c1a",
@@ -50,11 +50,11 @@
     "global_Ly_equals_Ln_theorem_admitted": false,
     "production_authorized": false
   },
-  "qualified_child_authorities_to_reconcile_after_green": {
+  "qualified_child_authorities_after_exact_final_green": {
     "TCD-037-A1": "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858",
     "TCD-037-A2": "ANIMO-B3D24@0f85d7102945c7c4d77bc49885f9ecca688209e3",
     "TCD-037-A3": "ANIMO-B3D25@4da2dd067069944a5e3eeb5f532566a23402bd68",
-    "TCD-037-A4": "THIS_EXACT_FINAL_B3D26_HEAD_IF_GREEN"
+    "TCD-037-A4": "ANIMO-B3D26_THIS_CLOSEOUT_HEAD_SUBJECT_TO_EXACT_FINAL_GREEN"
   },
   "aggregate_policy": {
     "aggregate_updated_in_this_workunit": false,
@@ -68,10 +68,15 @@
     "next_aggregate_created": false
   },
   "parent_routing": {
+    "all_child_atoms_complete_if_exact_final_green": true,
     "parent_admitted_by_child_completion": false,
     "automatic_parent_composition_allowed": false,
-    "determination": "PENDING_POST_ADMISSION_LIVE_RECONCILIATION",
-    "separate_parent_decision_surface_required_if_all_children_green": true
+    "live_parent_workunit_already_exists": false,
+    "determination": "SEPARATE_PARENT_TCD037_COMPOSITION_DISPOSITION_ADMISSION_WORKUNIT_REQUIRED",
+    "governance_reason": "B3I07 defines TCD-037 as non-atomic and leaves the parent unadmitted; B3Q02 explicitly forbids parent admission by child-carrier implication. A parent-level combination is composition, which escalates out of Tier A under GOV04 and must be independently qualified as its own decision surface under current GOV05 governance.",
+    "expected_risk_route": "TIER_D_COMPOSITION_RECHECK_STRICTEST_APPLICABLE_TRIGGER_AT_PARENT_WORKUNIT_START",
+    "separate_parent_decision_surface_required_if_all_children_green": true,
+    "parent_workunit_started_here": false
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -92,25 +97,25 @@
     "global_Ly_equals_Ln_theorem_claimed": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": ".github/workflows/animo-b3d26-tcd037-a4.yml",
     "validator": "tools/validate_b3d26_tcd037_a4.py",
-    "precloseout_run_id": null,
-    "precloseout_job_id": null,
-    "precloseout_tested_head": null,
-    "precloseout_conclusion": "PENDING",
+    "precloseout_run_id": 34553902345,
+    "precloseout_job_id": 103122340183,
+    "precloseout_tested_head": "25c516fa8a0a895387ef953677adf24ba398fd62",
+    "precloseout_conclusion": "success",
     "final_exact_head_required": true,
-    "conclusion": "PENDING",
-    "validator_result": "PENDING",
-    "scope_guard": "PENDING",
-    "closeout_note": null
+    "conclusion": "PRE_CLOSEOUT_PASS_EXACT_FINAL_HEAD_REQUALIFICATION_REQUIRED",
+    "validator_result": "PASS",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34553902345 validates the complete substantive B3D26 admission package at 25c516fa8a0a895387ef953677adf24ba398fd62. This status-only closeout is authoritative only if the same workflow succeeds on this closeout commit's exact head."
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
-  "next_after_qualified_admission": "LIVE_RECONCILE_A1_A4_THEN_DETERMINE_SEPARATE_PARENT_TCD037_ROUTE_WITHOUT_ADMITTING_PARENT"
+  "next_after_qualified_admission": "STOP_B3D26_PARENT_ROUTE_DETERMINED_SEPARATE_PARENT_COMPOSITION_WORKUNIT_REQUIRED"
 }
