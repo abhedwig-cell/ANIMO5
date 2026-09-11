@@ -3,10 +3,10 @@
   "title": "TCD-031 GOV05 Tier-C Atomic B3 Admission Decision",
   "branch": "work/animo-b3d23-tcd031-gov05-tier-c-admission",
   "target": "TCD-031",
-  "phase": "RECONCILED_AUTHORING_PACKAGE_COMPLETE_PENDING_GOV05_INTERNAL_ADVERSARIAL_REVIEW",
-  "state": "NOT_YET_ADMITTED",
+  "phase": "COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+  "decision": "ADMIT_TCD031_ATOMIC_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
   "candidate_decision": "ADMIT_TCD031_ATOMIC_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
-  "target_state_after_review_and_exact_final_head_green": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
   "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "qualification_class": "C_MISSING_OR_INCOMPLETE_STATE_RESTART_MODEL",
   "risk_tier": "C",
@@ -26,17 +26,34 @@
     "historical_concurrent_authoring_preserved": true,
     "old_reviewed_authoring_head": "048855e7d0bbcb21b79b906b8c11ab09be98870a",
     "old_review_artifact_commit": "27c1d5320fe4765eacbe18666ad73ac74ef82453",
-    "old_review_superseded_for_final_admission": true
+    "old_review_superseded_for_final_admission": true,
+    "reconciled_authoring_head": "19b14391ebfb57bf86a96c934d1d3c7752fa9dba"
   },
   "review_boundary": {
     "complete_reconciled_authoring_package_persisted": true,
-    "immutable_authoring_head": null,
-    "immutable_authoring_head_policy": "THE_EXACT_COMMIT_CREATED_BY_THIS_AUTHORING_COMPLETE_STATUS_UPDATE_IS_THE_REVIEW_HEAD;_SHA_NOT_SELF_EMBEDDED",
-    "review_started": false,
-    "review_completed": false,
-    "review_outcome": null,
+    "immutable_authoring_head": "19b14391ebfb57bf86a96c934d1d3c7752fa9dba",
+    "review_started": true,
+    "review_completed": true,
+    "review_outcome": "SELF_REVIEW_PASS",
     "review_artifact": "integration/animo-b3/ANIMO-B3D23_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "review_artifact_commit": "119723a48ef699e8a9b542126918a28ec96de21c",
+    "genuinely_independent": false,
+    "historical_genuinely_independent_review_preserved": "ANIMO-B3B10R2@7648e7b2813f3abc5904e4c34e36072d81d9844f",
     "substantive_changes_after_reviewed_checkpoint_allowed": false
+  },
+  "admitted_atomic_identity": "COMPLETE_ACCEPTED_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY",
+  "persistent_state_contract": {
+    "domains": 2,
+    "p_off_scalars": 8,
+    "p_on_scalars": 12,
+    "phosphorus_condition": "IPO.EQ.1",
+    "persistent_owner": "CoMp species x two domains",
+    "result_alias": "RsCoMp reconstructed from restored CoMp before native promotion",
+    "native_promotion_direction": "CoMp* <- RsCoMp*",
+    "comparison_policy": "EXACT_BYTEWISE_NO_TOLERANCE",
+    "serializer_only_sufficient": false,
+    "restore_only_sufficient": false,
+    "atomic_writer_and_restore_required": true
   },
   "historical_boundary": {
     "qualified_b2_available": false,
@@ -49,10 +66,15 @@
     "migration_readiness": "NOT_PROVEN",
     "whole_model_checkpoint_validation": "NOT_PROVEN"
   },
-  "admitted": false,
-  "qualified": false,
+  "admitted": true,
+  "qualified": true,
   "production_authorized": false,
   "stateq04_reopen_required": false,
+  "tcd025_boundary": {
+    "executed_here": false,
+    "composition_here": false,
+    "may_consume_TCD031_only_in_separate_later_workunit": true
+  },
   "hard_boundaries": {
     "production_source_modified": false,
     "frozen_b0_modified": false,
@@ -73,6 +95,7 @@
     "exact_final_head_ci_required": true,
     "final_head": null,
     "final_run_id": null,
-    "conclusion": "EXPECTED_FAIL_CLOSED_UNTIL_NEW_REVIEW_ARTIFACT_AND_ADMINISTRATIVE_CLOSEOUT_EXIST"
-  }
+    "conclusion": "EXACT_FINAL_HEAD_CI_REQUIRED_THIS_COMMIT_IS_QUALIFIED_ONLY_IF_WORKFLOW_SUCCEEDS"
+  },
+  "next_if_exact_final_head_ci_green": "SEPARATE_POST_ADMISSION_ROUTING_OR_DEPENDENCY_CONSUMER_WORKUNIT_AFTER_LIVE_AUTHORITY_RECHECK"
 }
