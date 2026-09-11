@@ -1,0 +1,73 @@
+{
+  "work_unit": "ANIMO-GHG02",
+  "target": "TCD-033",
+  "title": "CH4 Production Component Parent-Daughter Partition Qualification",
+  "b3_class": "B_LOCAL_SCIENTIFIC_IDENTITY",
+  "review_risk_tier": "C_SCIENTIFIC_MASS_TRANSFER_PARTITION_IDENTITY",
+  "base_authority": "ANIMO-B3Q05@997d867a2b107ec8e28efce530c82a204719de46",
+  "aggregate_authority": "ANIMO-RG05N@8758bd30e302b75dd7854ac00fd2e29473669a13",
+  "allocation_authority": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4",
+  "source_reconstruction_authority": "ANIMO-GHG01@dac7b7b5c591b781b82ec968896edb5957664c88",
+  "governance": {
+    "GOV05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "B3Q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54"
+  },
+  "source_identity": {
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "member": "ANIMO_4.1.5.53/ghg_ch4.for",
+    "member_sha256": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98",
+    "routine": "CH4produc",
+    "legacy_total_relation": "Q=E*A*S",
+    "legacy_component_relation": "Q_i=Q*S_i/(A*S)",
+    "component_units": "kg_C_m-2_d-1",
+    "total_units": "kg_C_m-2_d-1"
+  },
+  "semantic_contract": {
+    "A": "1-Rdfaox",
+    "S_i": "pre-aeration methanogenic source-pool contribution",
+    "S": "sum_i(S_i)",
+    "Q": "total CH4 production rate",
+    "Q_i": "source-pool contribution to total CH4 production rate",
+    "parent_daughter_identity": "sum_i(Q_i)=Q",
+    "source_share_identity": "Q_i/Q_j=S_i/S_j where defined"
+  },
+  "qualified_policy": {
+    "anaerobic_early_return": "if A < 1.0e-8 then Q=0 and all Q_i=0",
+    "zero_substrate": "if S=0 then Q=0 and all Q_i=0",
+    "positive_substrate": "Q_i=Q*S_i/S",
+    "equivalent_form": "Q_i=E*A*S_i",
+    "full_anaerobic_compatibility": "A=1 is algebraically identical to revision53 component expression",
+    "partial_anaerobic_effect": "legacy component over-allocation factor 1/A is removed while preserving proportional source shares",
+    "historical_behavior": "UNKNOWN_WITHOUT_B2",
+    "route": "BOUNDED_SCIENTIFIC_MODEL_EVOLUTION_WITH_HISTORICAL_UNCERTAINTY"
+  },
+  "evidence": {
+    "source_internal_nonclosure": "B1_SOURCE_ALGEBRA_CONFIRMED",
+    "broad_methanogenesis_process_support": "INDEPENDENT_THEORY_AT_PROCESS_CLASS_ONLY",
+    "exact_historical_component_equation": "UNAVAILABLE",
+    "historical_active_GHG_reference": "UNAVAILABLE",
+    "equation_oracle": "tools/ghg02/tcd033_partition_oracle.py",
+    "verification_matrix": "integration/animo-ghg/GHG02_TCD033_ORACLE_MATRIX.csv"
+  },
+  "candidate_decision": "QUALIFIED_TCD033_CH4_COMPONENT_PARENT_DAUGHTER_PARTITION_IDENTITY_READY_FOR_SEPARATE_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "qualified": false,
+  "b3_admission_performed": false,
+  "production_authorized": false,
+  "hard_boundaries": {
+    "tcd032_modified_or_admitted": false,
+    "tcd034_modified_or_admitted": false,
+    "total_CH4_production_law_changed": false,
+    "Rdfaox_logic_changed": false,
+    "transport_changed": false,
+    "whole_model_mass_residual_used_as_oracle": false,
+    "historical_fidelity_claimed": false,
+    "synthetic_evidence_promoted_to_B2": false,
+    "production_source_modified": false,
+    "frozen_B0_modified": false,
+    "canonical_register_modified": false,
+    "B4_opened": false,
+    "production_migration_authorized": false
+  }
+}
