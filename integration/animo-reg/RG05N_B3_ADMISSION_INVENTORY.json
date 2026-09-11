@@ -1,0 +1,129 @@
+{
+  "work_unit": "ANIMO-RG05N",
+  "title": "Eighth Batched B3 Admission Integration",
+  "source_aggregate": {
+    "authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
+    "head": "7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
+    "exact_final_ci_run": 34610132079,
+    "scientific_admissions": 26,
+    "historical_uncertainty_admissions": 26,
+    "normal_b2_route_admissions": 0,
+    "top_level_admitted_tcd_count": 16,
+    "admitted_child_atom_count": 10
+  },
+  "governance": {
+    "current_review_governance": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "retained_batch_and_risk_governance": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "historical_uncertainty_governance": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "current_routing": "ANIMO-B3I10@942f26fe32eaf91679e59a1968ae173a3703e22d",
+    "current_queue_authority": "ANIMO-B3Q04@dcc0885f73de6241d5efa9324ddb9f41784f6f2d",
+    "central_regie_mode": "AGGREGATED_TOP_LEVEL_ADMISSION_INTEGRATION",
+    "normal_batch_min": 3,
+    "normal_batch_max": 5
+  },
+  "batch_policy": {
+    "new_b3_admissions_in_this_batch": 3,
+    "new_atomic_child_admissions": 0,
+    "new_composed_parent_admissions": 0,
+    "new_top_level_standalone_admissions": 3,
+    "normal_threshold_reached": true,
+    "early_batch": false,
+    "trigger": "THREE_EXACT_FINAL_QUALIFIED_POST_RG05M_ADMISSIONS"
+  },
+  "new_admissions": [
+    {
+      "object": "TCD-039",
+      "object_kind": "BOUNDED_TOP_LEVEL_RESTART_CONTINUATION",
+      "admitted_identity": "TCD039_INTERNAL_CROP_POTENTIAL_UPTAKE_RESTART_CONTINUATION_OWNER_RESTORE_N_AND_CONDITIONAL_P",
+      "admission_authority": "ANIMO-B3D37@8bd1d0a5e20e5fa1d15508e0fdf7c69a5150a84f",
+      "exact_final_ci_run": 34642563837,
+      "risk_tier": "C",
+      "admission_route": "SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_UNDER_GOV05",
+      "historical_behavior": "UNKNOWN_WITHOUT_B2",
+      "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+      "production_authorized": false
+    },
+    {
+      "object": "TCD-035",
+      "object_kind": "BOUNDED_TOP_LEVEL_GHG_SOIL_LAYER_RESTART_RECONSTRUCTION",
+      "admitted_identity": "TCD035_GHG_SOIL_LAYER_PHASE_VIEW_RECONSTRUCT_FROM_ACCEPTED_CS_HYDROLOGY_AND_CHECKPOINT_TEMPERATURE",
+      "supported_scope": "revision53 GHG active; layers 1..Nl; CH4/N2O; accepted Cs owner with aqueous Co reconstructed from accepted checkpoint hydrology and temperature",
+      "admission_authority": "ANIMO-B3D38@c6fe71cfd1822aea5d00a802862e4b3a4a991cd2",
+      "exact_final_ci_run": 34644248709,
+      "risk_tier": "C",
+      "admission_route": "SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_UNDER_GOV05",
+      "historical_behavior": "UNKNOWN_WITHOUT_B2",
+      "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+      "tcd036_modified_or_admitted_by_tcd035": false,
+      "production_authorized": false
+    },
+    {
+      "object": "TCD-036",
+      "object_kind": "BOUNDED_TOP_LEVEL_GHG_PONDING_LAYER0_RESTART_RECONSTRUCTION",
+      "admitted_identity": "TCD036_PRE_EXISTING_ACTIVE_PONDING_LAYER0_GHG_RESTART_IDENTITY_FROM_SERIALIZED_TOTAL_SYSTEM_OWNER",
+      "supported_scope": "revision53 GHG active; layer0; active pre-existing ponding; CH4/N2O separate; Cs0 serialized owner and Co0 identity view",
+      "admission_authority": "ANIMO-B3D39@025bb9e5da84a6a1b55d29681de005fca784f543",
+      "exact_final_ci_run": 34646389629,
+      "risk_tier": "C",
+      "admission_route": "SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_UNDER_GOV05",
+      "historical_behavior": "UNKNOWN_WITHOUT_B2",
+      "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+      "new_ponding_source_initialization_preserved": true,
+      "dormant_layer0_state_created": false,
+      "production_authorized": false
+    }
+  ],
+  "post_state": {
+    "scientific_admissions": 29,
+    "admission_objects": 29,
+    "historical_uncertainty_admissions": 29,
+    "normal_b2_route_admissions": 0,
+    "top_level_admitted_tcd_count": 19,
+    "admitted_child_atom_count": 10,
+    "tcd039": {
+      "top_level_admitted": true,
+      "admitted_identity": "TCD039_INTERNAL_CROP_POTENTIAL_UPTAKE_RESTART_CONTINUATION_OWNER_RESTORE_N_AND_CONDITIONAL_P",
+      "canonical_state_admitted": false,
+      "crop007_resolved": false,
+      "production_authorized": false
+    },
+    "tcd035": {
+      "top_level_admitted": true,
+      "admitted_identity": "TCD035_GHG_SOIL_LAYER_PHASE_VIEW_RECONSTRUCT_FROM_ACCEPTED_CS_HYDROLOGY_AND_CHECKPOINT_TEMPERATURE",
+      "layers": "1..Nl",
+      "tcd036_admitted_by_tcd035": false,
+      "canonical_state_admitted": false,
+      "production_authorized": false
+    },
+    "tcd036": {
+      "top_level_admitted": true,
+      "admitted_identity": "TCD036_PRE_EXISTING_ACTIVE_PONDING_LAYER0_GHG_RESTART_IDENTITY_FROM_SERIALIZED_TOTAL_SYSTEM_OWNER",
+      "layer": 0,
+      "ponding_scope": "ACTIVE_PRE_EXISTING_PONDING_ONLY",
+      "species": ["CH4", "N2O"],
+      "new_ponding_source_initialization_preserved": true,
+      "dormant_layer0_state_created": false,
+      "canonical_state_admitted": false,
+      "production_authorized": false
+    },
+    "b4_admissions": 0,
+    "production_migrations": 0
+  },
+  "routing_state": {
+    "authority": "ANIMO-B3I10@942f26fe32eaf91679e59a1968ae173a3703e22d",
+    "canonical_top_level_tail": "TCD-042",
+    "canonical_register_modified_here": false,
+    "routing_register_modified_here": false
+  },
+  "project_boundary": {
+    "B3_complete": false,
+    "B4_open": false,
+    "production_open": false,
+    "global_canonical_queue_count_recomputed": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "scientific_readmission_performed": false,
+    "historical_fidelity_claimed": false
+  }
+}
