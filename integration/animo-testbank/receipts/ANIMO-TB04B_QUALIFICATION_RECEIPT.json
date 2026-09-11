@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB04B",
+  "exact_head": "ESTABLISHED_BY_EXACT_HEAD_CI",
+  "manifest_identity": "integration/animo-testbank/fragments/ANIMO-TB04B_BOUNDARY_INITIALIZATION_FRAGMENT.json",
+  "selected_test_ids": ["ATB-BND-002", "ATB-BND-003", "ATB-BND-004", "ATB-BND-005", "ATB-BND-006"],
+  "result": "PASS",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "scientific_admission": false,
+  "registry_integration_performed": false
+}

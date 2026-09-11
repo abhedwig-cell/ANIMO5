@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "fragment_id": "ANIMO-TB04B-BOUNDARY-INITIALIZATION",
+  "producer_workunit": "ANIMO-TB04B",
+  "base_authority": "ANIMO-TB04A@ad9683716e1a41a6f6b3d32ff1012bfa215c27db",
+  "tb02_authority": "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d",
+  "registry_integration": "SEPARATE_SERIAL_CONSOLIDATION_WORKUNIT_ONLY",
+  "central_registry_write": "FORBIDDEN_BY_FRAGMENT_PRODUCER",
+  "scope": "TB-L6 boundary and initialization contract adoption only",
+  "existing_registry_note": "ATB-BND-001 remains an untouched TB01 adapter candidate. This fragment does not inherit its broader wording across zero, subthreshold and active domains; it records only evidence-bounded contracts and gaps.",
+  "entries": [
+    {
+      "test_id": "ATB-BND-002",
+      "layer": "TB-L6",
+      "owner": "testbank-boundaries",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-UBQ01@6895b67799f26888025eced7188e7190b2a0d07d",
+      "expected_value_provenance": "THEORY",
+      "comparison_policy": "EXACT_BITWISE_NO_TOLERANCE",
+      "claim": "For the qualified exact-zero-throughflow atom with Hetop>0, the upper reservoir retains incoming load in storage according to the zero-flow limit Hetop*C1 = Hetop*C0 + St*Load; the natural isolated probe preserves all prior records and confines first differences to predeclared upper-boundary coordinates.",
+      "applicability_pins": {
+        "target": "TCD-042",
+        "flux_domain": "Flux=0 EXACTLY",
+        "Hetop_domain": "Hetop>0",
+        "finite_positive_subthreshold_included": false,
+        "parent_TCD042_fully_qualified": false,
+        "b3_admitted": false
+      },
+      "boundary_sign_contract": "Load is positive into the upper-reservoir control volume; throughflow is exactly zero for this atom.",
+      "failure_semantics": "Loss of nonzero incoming load from represented end storage, or any difference outside the declared direct coordinates in the pinned natural probe, fails the narrow contract.",
+      "permanence": "REUSABLE_EXACT_ZERO_UPPER_BOUNDARY_CONTRACT"
+    },
+    {
+      "test_id": "ATB-BND-003",
+      "layer": "TB-L6",
+      "owner": "testbank-boundaries",
+      "status": "GAP",
+      "source_identity": "ANIMO-UBQ02 finite-positive subthreshold characterization",
+      "expected_value_provenance": "UNKNOWN",
+      "comparison_policy": "NOT_YET_QUALIFIED",
+      "claim": "For 0<Flux<1.0d-8 with Flpn=0, the upper-boundary seam is naturally reachable and numerically material, but no replacement threshold, P-switch, series order, expm1 policy or scientific tolerance has been admitted.",
+      "applicability_pins": {
+        "target": "TCD-042 finite-positive Class-E child route",
+        "qualified_characterization": true,
+        "numerical_policy_selected": false,
+        "tolerance_admitted": false,
+        "silent_composition_with_exact_zero_atom": false
+      },
+      "failure_semantics": "Fail closed: the exact-zero boundary contract must not be extended into the finite-positive subthreshold domain without separate numerical-policy qualification.",
+      "permanence": "GAP_TRACKER_NUMERICAL_BOUNDARY_POLICY"
+    },
+    {
+      "test_id": "ATB-BND-004",
+      "layer": "TB-L6",
+      "owner": "testbank-boundaries",
+      "status": "GAP",
+      "source_identity": "ANIMO-UBQ03 plus ANIMO-UBQ04 HETOP=0 characterization",
+      "expected_value_provenance": "UNKNOWN",
+      "comparison_policy": "NOT_YET_QUALIFIED",
+      "claim": "HETOP=0 is parser- and documentation-admissible but its global concentration semantics are not uniquely recoverable; no zero-thickness model policy is selected.",
+      "applicability_pins": {
+        "documented_range_includes_zero": true,
+        "general_zero_thickness_guard_present": false,
+        "natural_zero_case_present": false,
+        "global_semantics_unique": false,
+        "zero_thickness_policy_selected": false
+      },
+      "failure_semantics": "Fail closed: do not infer a zero-thickness concentration or initialization policy and do not silently widen BND-002 to HETOP=0.",
+      "permanence": "GAP_TRACKER_MODEL_SEMANTICS"
+    },
+    {
+      "test_id": "ATB-BND-005",
+      "layer": "TB-L6",
+      "owner": "testbank-boundaries",
+      "status": "QUALIFIED_FRAGMENT_ENTRY",
+      "source_identity": "ANIMO-BUILDQ04@268a0c007b4c9eff5cbf1dcbd7eeb4389554d3ed",
+      "expected_value_provenance": "INVARIANT",
+      "comparison_policy": "EXACT_BOUNDARY_VALUE_AND_STRUCTURAL_CONTRACT_NO_TOLERANCE",
+      "claim": "For the qualified GHG bottom-air boundary contract, the lower external advective air flux Flair(Nl+1) is zero for the closed lower GHG air boundary; compiler-provided uninitialized values are not model semantics.",
+      "applicability_pins": {
+        "routine": "GHGasses",
+        "coordinate": "Flair(Nl+1)",
+        "boundary_meaning": "LOWER_EXTERNAL_ADVECTIVE_AIR_FLUX_DOWNWARD_POSITIVE",
+        "qualified_boundary_value": 0.0,
+        "historical_intel_effect": "UNKNOWN",
+        "production_patch_admitted": false,
+        "b3_scientific_admitted": false
+      },
+      "boundary_sign_contract": "Downward external advective air flux is positive; the qualified closed lower boundary value is exactly zero.",
+      "failure_semantics": "Any dependence of the first boundary read on uninitialized compiler or stack state fails the initialization contract; this entry does not itself admit a production fix.",
+      "permanence": "REUSABLE_GHG_LOWER_BOUNDARY_INITIALIZATION_CONTRACT"
+    },
+    {
+      "test_id": "ATB-BND-006",
+      "layer": "TB-L6",
+      "owner": "testbank-boundaries",
+      "status": "GAP",
+      "source_identity": "ANIMO-TB01 TB-L6 coverage gap plus bounded UBQ/BUILDQ evidence",
+      "expected_value_provenance": "UNKNOWN",
+      "comparison_policy": "NOT_YET_QUALIFIED",
+      "claim": "A complete cold-start/restart initialization and boundary matrix across upper, lower, deposition, crop, GHG, macropore and management-transition surfaces is not yet qualified.",
+      "applicability_pins": {
+        "future_scope": ["upper solute", "lower solute", "deposition", "crop uptake boundary", "GHG", "macropore exchange boundaries", "restart initialization", "management transitions"],
+        "whole_model_initialization_qualified": false
+      },
+      "failure_semantics": "Fail closed: no whole-model boundary or initialization qualification may be inferred from BND-002 or BND-005.",
+      "permanence": "GAP_TRACKER"
+    }
+  ],
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "whole_model_golden_baseline_created": false,
+    "whole_model_boundary_initialization_qualified": false,
+    "new_tolerance_introduced": false,
+    "numerical_policy_selected": false,
+    "HETOP_zero_policy_selected": false
+  }
+}
