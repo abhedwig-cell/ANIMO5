@@ -1,0 +1,122 @@
+{
+  "work_unit": "ANIMO-RG05I",
+  "title": "Third Batched Atomic B3 Admission Integration",
+  "source_aggregate": {
+    "authority": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "head": "3e4247928bb43f30def951fa8804560636affbef",
+    "scientific_admissions": 11,
+    "historical_uncertainty_admissions": 11,
+    "top_level_admitted_tcds": [
+      "TCD-017",
+      "TCD-018",
+      "TCD-024",
+      "TCD-026",
+      "TCD-015",
+      "TCD-027",
+      "TCD-041",
+      "TCD-030",
+      "TCD-023",
+      "TCD-028",
+      "TCD-038"
+    ]
+  },
+  "governance": {
+    "current_review_governance": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "retained_risk_tier_governance": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "historical_uncertainty_governance": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "canonical_routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "batch_mode": "AGGREGATED_ATOMIC_ADMISSION_INTEGRATION",
+    "normal_batch_min": 3,
+    "normal_batch_max": 5
+  },
+  "batch_policy": {
+    "new_admissions_in_this_batch": 3,
+    "normal_threshold_reached": true,
+    "early_batch": false,
+    "trigger": "THREE_EXACT_FINAL_QUALIFIED_POST_RG05H_ATOMIC_ADMISSIONS"
+  },
+  "new_admissions": [
+    {
+      "object": "TCD-037-A1",
+      "object_kind": "CANONICAL_CHILD_ATOM",
+      "lineage_parent": "TCD-037",
+      "admission_authority": "ANIMO-B3D21@331f6ed91d4a1c15a23ae0c1ad75d1b540f61858",
+      "exact_final_ci_run": 34540047043,
+      "risk_tier": "A",
+      "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+      "historical_behavior": "UNKNOWN",
+      "parent_admitted": false
+    },
+    {
+      "object": "TCD-037-A2",
+      "object_kind": "CANONICAL_CHILD_ATOM",
+      "lineage_parent": "TCD-037",
+      "admission_authority": "ANIMO-B3D24@0f85d7102945c7c4d77bc49885f9ecca688209e3",
+      "exact_final_ci_run": 34547891772,
+      "risk_tier": "A",
+      "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+      "historical_behavior": "UNKNOWN",
+      "parent_admitted": false
+    },
+    {
+      "object": "TCD-031",
+      "object_kind": "TOP_LEVEL_TCD",
+      "lineage_parent": null,
+      "admission_authority": "ANIMO-B3D23@6c9ab83952b53566b878b533c08e3cb10074f399",
+      "exact_final_ci_run": 34548360916,
+      "risk_tier": "C",
+      "admission_route": "INDEPENDENT_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+      "historical_behavior": "UNKNOWN_WITHOUT_B2",
+      "parent_admitted": null
+    }
+  ],
+  "post_state": {
+    "scientific_admissions": 14,
+    "atomic_admissions": 14,
+    "historical_uncertainty_admissions": 14,
+    "normal_b2_route_admissions": 0,
+    "top_level_admitted_tcds": [
+      "TCD-017",
+      "TCD-018",
+      "TCD-024",
+      "TCD-026",
+      "TCD-015",
+      "TCD-027",
+      "TCD-041",
+      "TCD-030",
+      "TCD-023",
+      "TCD-028",
+      "TCD-038",
+      "TCD-031"
+    ],
+    "admitted_child_atoms": [
+      "TCD-037-A1",
+      "TCD-037-A2"
+    ],
+    "tcd037_parent_admitted": false,
+    "tcd037_unadmitted_children": [
+      "TCD-037-A3",
+      "TCD-037-A4"
+    ],
+    "b4_admissions": 0,
+    "production_migrations": 0
+  },
+  "routing_state": {
+    "authority": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "canonical_top_level_tail": "TCD-042",
+    "canonical_register_modified_here": false,
+    "routing_register_modified_here": false,
+    "tcd037_parent_remains_atomized": true,
+    "next_unadmitted_child_route": "TCD-037-A3 -> ANIMO-B3A07 after SYNQ04 evidence qualification"
+  },
+  "project_boundary": {
+    "B3_complete": false,
+    "B4_open": false,
+    "production_open": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "composition_admitted": false,
+    "historical_fidelity_claimed": false
+  }
+}
