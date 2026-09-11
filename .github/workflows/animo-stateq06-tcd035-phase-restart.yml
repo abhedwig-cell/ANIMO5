@@ -1,0 +1,23 @@
+name: ANIMO-STATEQ06 TCD035 GHG phase restart reconstruction
+
+on:
+  push:
+    branches:
+      - work/animo-stateq06-tcd035-ghg-phase-restart-reconstruction
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run bounded source-shaped reconstruction oracle
+        run: |
+          python tools/stateq06/tcd035_phase_reconstruction_oracle.py
+          python -m pytest -q tests/stateq06/test_tcd035_phase_reconstruction.py
+      - name: Validate STATEQ06 authority pins and scope
+        run: python tools/validate_stateq06_tcd035.py
