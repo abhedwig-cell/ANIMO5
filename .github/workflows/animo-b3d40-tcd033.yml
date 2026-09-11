@@ -1,0 +1,50 @@
+name: ANIMO-B3D40 TCD033 atomic admission
+on:
+  push:
+    branches: [work/animo-b3d40-tcd033-gov05-tier-c-admission]
+  workflow_dispatch:
+permissions: {contents: read, actions: read}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in 28306877152972a9a8ba1a19e1c61fda56b658a0 997d867a2b107ec8e28efce530c82a204719de46 8758bd30e302b75dd7854ac00fd2e29473669a13 383c7a83e84a578969f92113280dc715b7bdddb4 cbd262bdabe92923113b7326f2f42822ce9a971c f65a47724e4a4fca7f2d8b8d6de9eeee51867904; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify exact-final upstream authorities
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          checks = {
+              34654987849: "28306877152972a9a8ba1a19e1c61fda56b658a0",
+              34654186685: "997d867a2b107ec8e28efce530c82a204719de46",
+              34646787915: "8758bd30e302b75dd7854ac00fd2e29473669a13",
+          }
+          for run_id, head in checks.items():
+              req = urllib.request.Request(
+                  f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}",
+                  headers={"Authorization": f"Bearer {os.environ['GH_TOKEN']}", "Accept": "application/vnd.github+json"},
+              )
+              with urllib.request.urlopen(req) as response:
+                  data = json.load(response)
+              assert data["head_sha"] == head, (run_id, data.get("head_sha"))
+              assert data["status"] == "completed" and data["conclusion"] == "success", (run_id, data.get("status"), data.get("conclusion"))
+          print("exact-final GHG02, B3Q05 and RG05N authorities verified")
+          PY
+      - name: Parse and validate admission package
+        run: |
+          python -m json.tool integration/animo-b3/B3D40_TCD033_ADMISSION_CONTRACT.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3D40_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3D40_STATUS.json >/dev/null
+          if test -f integration/animo-b3/ANIMO-B3D40_INTERNAL_ADVERSARIAL_REVIEW.json; then
+            python -m json.tool integration/animo-b3/ANIMO-B3D40_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null
+          fi
+          python -m py_compile tools/validate_b3d40_tcd033.py
+          python tools/validate_b3d40_tcd033.py
