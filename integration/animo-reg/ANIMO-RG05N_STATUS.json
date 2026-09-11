@@ -2,8 +2,8 @@
   "work_unit": "ANIMO-RG05N",
   "title": "Eighth Batched B3 Admission Integration",
   "branch": "work/animo-rg05n-eighth-batched-admission-integration",
-  "state": "PERSISTED_VALIDATION_PENDING",
-  "decision": "PENDING_EXACT_VALIDATION_OF_THREE_POST_RG05M_B3_ADMISSIONS",
+  "state": "QUALIFIED_EIGHTH_BATCHED_B3_ADMISSION_INTEGRATION_TCD039_TCD035_TCD036_NO_PRODUCTION",
+  "decision": "QUALIFIED_EIGHTH_BATCHED_B3_ADMISSION_INTEGRATION_TCD039_TCD035_TCD036_NO_PRODUCTION",
   "source_aggregate": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
   "source_aggregate_exact_final_ci": "34610132079:success",
   "aggregate_trigger": "NORMAL_BATCH_THRESHOLD_REACHED_THREE_EXACT_FINAL_QUALIFIED_POST_RG05M_B3_ADMISSIONS",
@@ -82,16 +82,17 @@
     "synthetic_evidence_counted_as_b2": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-RG05N eighth batched B3 admission integration",
-    "candidate_run_id": null,
-    "candidate_job_id": null,
-    "tested_candidate_head": null,
-    "candidate_conclusion": null,
-    "validator": "PENDING",
-    "scope_guard": "PENDING",
-    "exact_final_head_required": true
+    "candidate_run_id": 34646710756,
+    "candidate_job_id": 103419122851,
+    "tested_candidate_head": "75cb78925529995bb54cd89919c7bc5832192372",
+    "candidate_conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "exact_final_head_required": true,
+    "closeout_note": "Candidate run 34646710756 validated the complete substantive RG05N package. This status-only closeout is authoritative only if the same workflow succeeds on this closeout commit's exact final head."
   },
-  "work_status": {"realized": true, "persisted": true, "tested": false, "qualified": false, "work_unit_complete": false},
+  "work_status": {"realized": true, "persisted": true, "tested": true, "qualified": true, "work_unit_complete": true},
   "next_if_validated": "USE_ANIMO_RG05N_AS_CURRENT_AGGREGATE_AUTHORITY_THEN_RECOMPUTE_GLOBAL_CANONICAL_B3_QUEUE_AND_REAUDIT_WHOLE_B3_COMPOSITION_COMPLETENESS; DO_NOT OPEN TB7 B4 OR PRODUCTION"
 }
