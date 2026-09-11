@@ -1,0 +1,62 @@
+name: ANIMO-TB06C serial registry consolidation
+
+on:
+  push:
+    branches:
+      - work/animo-tb06c-qualified-tb6-fragment-serial-registry-consolidation
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch pinned authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin \
+            e0d96fc279ef35966a0d5dd37462fa0cded2cc1e \
+            7666c016e77d3743210b6f3135e53e9db87d75cc \
+            1ae7afbe540f3e5b53331137016db2936ff79cae
+
+      - name: Materialize or verify four qualified TB6 registry entries
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/consolidate_animo_tb06c_registry.py --write
+
+      - name: Validate bounded serial rebase and materialization
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/validate_animo_tb06c.py --phase materialization
+
+      - name: Validate final closeout when present
+        if: ${{ hashFiles('integration/animo-testbank/ANIMO-TB06C_STATUS.json') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/validate_animo_tb06c.py --phase final
+
+      - name: Commit central registry materialization when required
+        shell: bash
+        run: |
+          set -euo pipefail
+          registry=integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json
+          if git diff --quiet -- "$registry"; then
+            echo "Central registry already exact; no materialization commit required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$registry"
+          git commit -m "registry(ANIMO-TB06C): consolidate four qualified TB6 fragment entries"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
