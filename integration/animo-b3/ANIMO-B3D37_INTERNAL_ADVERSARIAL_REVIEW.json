@@ -1,0 +1,69 @@
+{
+  "work_unit": "ANIMO-B3D37",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "reviewed_head": "0e6f89869fceb33125b988402fba067417151dd2",
+  "reviewed_head_ci_run": 34642378436,
+  "reviewed_head_ci_job": 103404969083,
+  "reviewed_head_ci_conclusion": "success",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "risk_tier_reviewed": "C_RESTART_CHECKPOINT_SEMANTICS_FUTURE_TRAJECTORY",
+  "adversarial_findings": [
+    {
+      "question": "Does this admission add or redefine physical crop state rather than restore an already-qualified continuation owner?",
+      "finding": "NO. STATEQ05 and B3B11 establish existing accepted continuation owners Rsamplni_pot and conditional Rsamplpo_pot with working aliases Amplni_pot and Amplpo_pot. The admission is bounded to restart restoration semantics and adds no new physical store, phase or transfer law."
+    },
+    {
+      "question": "Does resolving the B3 qualification class to local restart/checkpoint omission weaken the review gate?",
+      "finding": "NO. The qualification class is bounded Class B, but restart semantics can change future trajectories, so the strictest applicable review risk remains Tier C."
+    },
+    {
+      "question": "Are nitrogen and phosphorus continuation semantics improperly collapsed?",
+      "finding": "NO. Nitrogen and phosphorus remain separate owner pairs, and phosphorus restoration remains conditional on Ipo == 1."
+    },
+    {
+      "question": "Does forbidding zero reset at restart accidentally prohibit legitimate cold-start initialization?",
+      "finding": "NO. The rule is explicitly limited to arbitrary restart of a nonzero accepted continuation owner. Cold-start zero initialization remains a separate lifecycle path."
+    },
+    {
+      "question": "Does the admission claim a checkpoint serialization format or production migration?",
+      "finding": "NO. Checkpoint representation is explicitly not defined, production source is unchanged and production migration remains unauthorized."
+    },
+    {
+      "question": "Does TCD-039 admission silently close TCD-038, CROP-007, canonical STATE or whole-model split-run equivalence?",
+      "finding": "NO. All remain expressly outside scope. The atomic admission only covers the bounded potential-uptake continuation restore identity."
+    },
+    {
+      "question": "Does B1 source-shaped split evidence establish historical revision-53 behavior?",
+      "finding": "NO. It establishes bounded causality only. Historical behavior remains UNKNOWN_WITHOUT_B2 and no synthetic evidence is promoted to B2."
+    },
+    {
+      "question": "Is the aggregate cadence respected?",
+      "finding": "YES. This is the first post-RG05M admission if exact-final green, so no RG05N aggregation is required yet under the normal three-admission cadence."
+    },
+    {
+      "question": "Is this review genuinely independent?",
+      "finding": "NO. It is the GOV05 same-agent adversarial review and is explicitly labeled PROCESS_SELF_REVIEWED_NOT_INDEPENDENT."
+    }
+  ],
+  "rejected_overclaims": [
+    "NEW_PHYSICAL_CROP_STATE_ADMITTED",
+    "REVIEW_RISK_REDUCED_BELOW_TIER_C",
+    "N_AND_P_CONTINUATION_COLLAPSED",
+    "COLD_START_ZEROING_FORBIDDEN",
+    "CHECKPOINT_FILE_FORMAT_QUALIFIED",
+    "TCD038_REOPENED",
+    "CROP007_RESOLVED",
+    "CANONICAL_STATE_ADMITTED",
+    "FULL_MODEL_SPLIT_RUN_EQUIVALENCE",
+    "HISTORICAL_REV53_BEHAVIOR_ESTABLISHED",
+    "B1_IS_B2",
+    "PRODUCTION_AUTHORIZED",
+    "B4_OPENED",
+    "PREMATURE_RG05N_REQUIRED",
+    "GENUINELY_INDEPENDENT_REVIEW"
+  ],
+  "outcome": "SELF_REVIEW_PASS_ADMIT_TCD039_BOUNDED_RESTART_CONTINUATION_WITH_HISTORICAL_UNCERTAINTY"
+}
