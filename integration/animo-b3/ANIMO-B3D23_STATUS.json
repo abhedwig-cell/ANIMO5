@@ -3,7 +3,7 @@
   "title": "TCD-031 GOV05 Tier-C Atomic B3 Admission Decision",
   "branch": "work/animo-b3d23-tcd031-gov05-tier-c-admission",
   "target": "TCD-031",
-  "phase": "AUTHORING_IN_PROGRESS_PENDING_IMMUTABLE_HEAD_AND_GOV05_INTERNAL_ADVERSARIAL_REVIEW",
+  "phase": "AUTHORING_PACKAGE_COMPLETE_PENDING_IMMUTABLE_HEAD_CAPTURE_AND_GOV05_INTERNAL_ADVERSARIAL_REVIEW",
   "state": "NOT_YET_ADMITTED",
   "candidate_decision": "ADMIT_TCD031_ATOMIC_MACROPORE_SOLUTE_STATE_TRANSFER_ACROSS_RESTART_BOUNDARY_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
   "target_state_after_review_and_exact_final_head_green": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
@@ -15,8 +15,9 @@
   "historical_independent_review_authority": "ANIMO-B3B10R2@7648e7b2813f3abc5904e4c34e36072d81d9844f",
   "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
   "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "authoring_freeze_policy": "The exact commit produced by this authoring-complete status update is the immutable authoring head reviewed by the subsequent GOV05 review artifact; the SHA is not self-embedded.",
   "review_boundary": {
-    "complete_authoring_package_persisted": false,
+    "complete_authoring_package_persisted": true,
     "immutable_authoring_head": null,
     "review_started": false,
     "review_completed": false,
@@ -59,6 +60,6 @@
     "exact_final_head_ci_required": true,
     "final_head": null,
     "final_run_id": null,
-    "conclusion": "PENDING"
+    "conclusion": "EXPECTED_FAIL_CLOSED_UNTIL_REVIEW_ARTIFACT_AND_ADMINISTRATIVE_CLOSEOUT_EXIST"
   }
 }
