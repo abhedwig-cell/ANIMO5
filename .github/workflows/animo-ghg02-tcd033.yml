@@ -1,0 +1,52 @@
+name: ANIMO-GHG02 TCD033 CH4 component partition qualification
+on:
+  push:
+    branches: [work/animo-ghg02-tcd033-ch4-component-partition]
+  workflow_dispatch:
+permissions: {contents: read, actions: read}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in 997d867a2b107ec8e28efce530c82a204719de46 8758bd30e302b75dd7854ac00fd2e29473669a13 383c7a83e84a578969f92113280dc715b7bdddb4 dac7b7b5c591b781b82ec968896edb5957664c88 f65a47724e4a4fca7f2d8b8d6de9eeee51867904; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify exact-final central authorities
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          checks = {
+              34654186685: "997d867a2b107ec8e28efce530c82a204719de46",
+              34646787915: "8758bd30e302b75dd7854ac00fd2e29473669a13",
+          }
+          for run_id, head in checks.items():
+              req = urllib.request.Request(
+                  f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}",
+                  headers={"Authorization": f"Bearer {os.environ['GH_TOKEN']}", "Accept": "application/vnd.github+json"},
+              )
+              with urllib.request.urlopen(req) as response:
+                  data = json.load(response)
+              assert data["head_sha"] == head, (run_id, data.get("head_sha"))
+              assert data["status"] == "completed" and data["conclusion"] == "success", (run_id, data.get("status"), data.get("conclusion"))
+          print("exact-final B3Q05 and RG05N authorities verified")
+          PY
+      - name: Parse and compile GHG02 package
+        run: |
+          python -m json.tool integration/animo-ghg/GHG02_TCD033_PARTITION_POLICY.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG02_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG02_STATUS.json >/dev/null
+          if test -f integration/animo-ghg/ANIMO-GHG02_INTERNAL_ADVERSARIAL_REVIEW.json; then
+            python -m json.tool integration/animo-ghg/ANIMO-GHG02_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null
+          fi
+          python -m py_compile tools/ghg02/tcd033_partition_oracle.py tools/ghg02/validate_ghg02_tcd033.py
+      - name: Run high-precision partition oracle
+        run: python tools/ghg02/tcd033_partition_oracle.py
+      - name: Validate bounded TCD033 qualification
+        run: python tools/ghg02/validate_ghg02_tcd033.py
