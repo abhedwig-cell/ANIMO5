@@ -1,0 +1,151 @@
+{
+  "work_unit": "ANIMO-B3A08",
+  "target": "TCD-025",
+  "title": "TCD-025 Macropore Main-Ledger Admission Readiness and Risk Reclassification",
+  "repository": "abhedwig-cell/ANIMO5",
+  "branch": "work/animo-b3a08-tcd025-macropore-main-ledger-readiness",
+  "base_authority": {
+    "work_unit": "ANIMO-RG05I",
+    "head": "94afe7d649a8c60758a41996f0059de0acddd2fc"
+  },
+  "upstream_pins": {
+    "ANIMO-GOV05": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "ANIMO-GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "ANIMO-GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "ANIMO-B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "ANIMO-MP01": "7b5979dd6301b9d55d23e8c22948a0dba24b229b",
+    "ANIMO-MP02": "6b0f2e7470f13baeb6612b0bddb662a497dea528",
+    "ANIMO-STATEQ01": "4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "ANIMO-MASSQ02": "56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "ANIMO-B3D23": "6c9ab83952b53566b878b533c08e3cb10074f399"
+  },
+  "frozen_identity": {
+    "source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "raw_source_committed": false,
+    "raw_source_redistributed": false,
+    "selected_member_sha256": {
+      "Animo.for": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
+      "Animo.inc": "0f8b58e522ac2cdae95e8ae727dbf3ecea942e39c4d117b6bcae955d80fb69a2",
+      "Init.for": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+      "mapoinput.for": "081c671d2f576ab0608350cbb0083eab157c586a6783522cda3534b141244065",
+      "MAPOHYDRO.FOR": "86659aaac3e48439252c37490d44f214945dfe8f1d49d14876a40abc03e3722a",
+      "MAPOTRANSPORT.FOR": "735b3f86497a6968c24d2dbce2ad23ae350b4eed573da421baa1a7557a0615da",
+      "Outbal_calc.for": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+      "Outbal_Init.for": "95c0d7aad6cb863fcbb5dd41563674af3ab0819387212d27d5f6f04b4a788cc8",
+      "Outbal_write.for": "cdc0a9738216d8a97d3c35f9862b78fc94fec385aaf0691d6778a73031ac74ea"
+    }
+  },
+  "queue_context": {
+    "b3_class": "A_ACCOUNTING_REPORTING_ONLY",
+    "prior_queue_state": "WAITING_ON_STATE",
+    "prior_blockers": [
+      "active macropore persistent solute state incomplete under TCD-031",
+      "active-feature ledger closure absent"
+    ],
+    "tcd031_blocker_now_disposed": true,
+    "tcd031_authority": "ANIMO-B3D23@6c9ab83952b53566b878b533c08e3cb10074f399",
+    "remaining_question": "whether the public/main balance observer can be corrected without changing state/control-volume semantics"
+  },
+  "source_reconstruction": {
+    "evidence_class": "LICENSE_SAFE_HASH_PINNED_LOCAL_FROZEN_SOURCE_REPLAY_PLUS_PRIOR_QUALIFIED_EVIDENCE",
+    "public_balance_profile_contract": {
+      "source": "Outbal_calc.for",
+      "coordinates": [
+        "229-230",
+        "265-280",
+        "296-325"
+      ],
+      "finding": "each public balance may cover a selected layer interval Balnmi(Ly)..Balnma(Ly), not only the whole profile"
+    },
+    "macropore_water_state": {
+      "sources": [
+        "Animo.inc",
+        "Init.for",
+        "mapoinput.for"
+      ],
+      "coordinates": [
+        "Animo.inc:816-818",
+        "Init.for:505-529",
+        "mapoinput.for:185-211"
+      ],
+      "finding": "macropore water has domain-total accepted/result storage and layer-resolved current storage; accepted layer-resolved SrWaMpCpOld is combined across the two domains"
+    },
+    "macropore_transport_topology": {
+      "sources": [
+        "MAPOHYDRO.FOR",
+        "MAPOTRANSPORT.FOR"
+      ],
+      "coordinates": [
+        "MAPOHYDRO.FOR:142-220",
+        "MAPOTRANSPORT.FOR:470-503"
+      ],
+      "finding": "the unsaturated macropore route has explicit vertical transfer by layer, while the saturated part is solved as a domain-level concentration/storage reservoir spanning its active layer range"
+    },
+    "whole_profile_identity": {
+      "sources": [
+        "MAPOHYDRO.FOR",
+        "MAPOTRANSPORT.FOR"
+      ],
+      "coordinates": [
+        "MAPOHYDRO.FOR:287-303",
+        "MAPOTRANSPORT.FOR:650-670"
+      ],
+      "finding": "whole-profile macropore water and species mass identities are source-defined from external/internal transfers and domain-total beginning/end storage"
+    },
+    "direct_drain_partition": {
+      "source": "MAPOHYDRO.FOR",
+      "coordinates": [
+        "142-182"
+      ],
+      "finding": "FlMpOuDrMp is direct external Main-Bypass drainage; FlMpOuDrSo is routed through soil and must not be counted again as an external macropore output"
+    }
+  },
+  "resolved_from_prior_work": {
+    "specialized_water_and_solute_local_conservation": "PASS_MP01",
+    "complete_case_active_macropore_reachability": "PASS_MP02_SYNTHETIC_B1_NON_B2",
+    "species_mapping": "PASS_MP01",
+    "direct_drain_partition": "PASS_MP01",
+    "restart_state_blocker": "DISPOSED_BY_B3D23_WITH_HISTORICAL_UNCERTAINTY",
+    "observer_state_owner_rule": "PASS_MASSQ02_READ_ONLY_OWNER_STATE",
+    "historical_active_reference": "ABSENT_B2_HISTORY_UNKNOWN"
+  },
+  "new_readiness_finding": {
+    "id": "B3A08-F1",
+    "classification": "SELECTED_PROFILE_MACROPORE_CONTROL_VOLUME_NOT_SOURCE_CLOSED_FOR_ALL_PUBLIC_BALANCE_INTERVALS",
+    "whole_profile_candidate": "STRUCTURALLY_DETERMINATE_FROM_EXISTING_SOURCE_OWNERS",
+    "selected_profile_candidate": "NOT_YET_SCIENTIFICALLY_DETERMINATE",
+    "reason": [
+      "public balances can cut an arbitrary layer interval",
+      "saturated macropore transport is represented as a domain-level mixed reservoir rather than independent layer solute control volumes",
+      "no source-owned saturated-domain vertical solute boundary transfer exists for every possible interior public balance boundary",
+      "inventing such an interior boundary transfer from the residual would make the observer self-closing and would mask rather than test conservation"
+    ],
+    "consequence": "a general TCD-025 correction cannot currently be certified as accounting-only observer plumbing for every supported public balance profile"
+  },
+  "risk_assessment": {
+    "b3_class_retained": "A_ACCOUNTING_REPORTING_ONLY",
+    "candidate_review_risk_tier": "C_STATE_OR_CONTROL_VOLUME_SEMANTICS",
+    "strictest_trigger": "unresolved state/control-volume ownership with scientific consequences",
+    "tier_a_waiver_available": false,
+    "scientific_gate_reduction": false
+  },
+  "admission_readiness": {
+    "ready_for_tier_a_admission": false,
+    "ready_for_tier_c_admission": false,
+    "ready_for_next_qualification": true,
+    "required_next_work": "dedicated TCD-025 selected-profile state/control-volume qualification before any B3 admission"
+  },
+  "hard_boundaries": {
+    "b3_admission": false,
+    "production_patch": false,
+    "production_authorization": false,
+    "canonical_tcd_register_change": false,
+    "aggregate_queue_change": false,
+    "b4": false,
+    "migration": false,
+    "numerical_tolerance": false,
+    "historical_behavior_claim": false,
+    "tcd031_reopen": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "work_unit": "ANIMO-B3A08",
+  "purpose": "IMMUTABLE_SUBSTANTIVE_AUTHORING_BOUNDARY_FOR_GOV05_ADVERSARIAL_REVIEW",
+  "base_head": "94afe7d649a8c60758a41996f0059de0acddd2fc",
+  "authoring_complete": true,
+  "review_must_pin_exact_commit_containing_this_marker": true,
+  "exact_freeze_commit_sha": "RECORDED_BY_REVIEW_ARTIFACT_AFTER_COMMIT_CREATION",
+  "substantive_files": [
+    "docs/b3a08/WORK_UNIT_CONTRACT.md",
+    "docs/b3a08/TCD025_MACROPORE_MAIN_LEDGER_READINESS.md",
+    "integration/animo-b3/TCD025_MACROPORE_MAIN_LEDGER_READINESS.json",
+    "integration/animo-b3/TCD025_TIER_A_WAIVER_AUDIT.json",
+    "integration/animo-b3/ANIMO-B3A08_STATUS.json",
+    "tools/validate_b3a08_tcd025.py",
+    ".github/workflows/animo-b3a08-tcd025.yml"
+  ],
+  "rule": "after this commit, substantive authoring content is frozen; review/status closeout artifacts may be added, but any substantive change resets review"
+}

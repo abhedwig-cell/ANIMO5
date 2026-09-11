@@ -1,0 +1,75 @@
+{
+  "work_unit": "ANIMO-B3A08",
+  "target": "TCD-025",
+  "policy": "ANIMO-GOV04 risk-tier predicates as prospectively governed by ANIMO-GOV05",
+  "result": "TIER_A_WAIVER_UNAVAILABLE",
+  "gates": {
+    "exact_source_seam_pinned": {
+      "result": "PASS"
+    },
+    "physical_and_accounting_ownership_unambiguous": {
+      "result": "FAIL",
+      "reason": "selected public balance profiles can cut a saturated macropore domain-level reservoir for which an exact source-owned interior solute boundary transfer is not established"
+    },
+    "atomic_claim": {
+      "result": "UNKNOWN",
+      "reason": "whole-profile closure is structurally determinate while arbitrary selected-profile closure requires a different state/control-volume argument"
+    },
+    "exact_conservation_accounting_identity": {
+      "result": "PARTIAL",
+      "reason": "PASS for specialized/whole-profile identity; not established for every selected public balance interval"
+    },
+    "expected_difference_contract_pinned": {
+      "result": "FAIL",
+      "reason": "no admitted correction candidate exists and selected-profile semantics remain unresolved"
+    },
+    "physical_state_noninterference_demonstrated": {
+      "result": "NOT_APPLICABLE_YET",
+      "reason": "no correction candidate executed"
+    },
+    "process_flux_noninterference_demonstrated": {
+      "result": "NOT_APPLICABLE_YET",
+      "reason": "no correction candidate executed"
+    },
+    "no_numerical_policy_change": {
+      "result": "PASS"
+    },
+    "no_solver_or_tolerance_change": {
+      "result": "PASS"
+    },
+    "no_restart_initialization_state_semantic_change": {
+      "result": "UNKNOWN",
+      "reason": "exact selected-profile closure may require an additional observer snapshot or a higher-level control-volume restriction; this has not been qualified"
+    },
+    "no_composition": {
+      "result": "PASS"
+    },
+    "no_unresolved_scientific_or_source_meaning_ambiguity": {
+      "result": "FAIL",
+      "reason": "selected-profile saturated macropore control-volume boundary meaning is unresolved"
+    },
+    "reproducible_validator_passes": {
+      "result": "PENDING_FINAL_CI"
+    },
+    "scope_guard_passes": {
+      "result": "PENDING_FINAL_CI"
+    },
+    "activation_requirement": {
+      "result": "PASS",
+      "evidence": "ANIMO-MP02 purpose-built complete-case B1 activation; no historical B2 promoted"
+    },
+    "historical_behavior_without_b2_exactly_unknown": {
+      "result": "PASS"
+    },
+    "gov03_uncertainty_route_retained": {
+      "result": "PASS"
+    },
+    "forbidden_surfaces_unchanged": {
+      "result": "PASS"
+    }
+  },
+  "decision": "FAIL_CLOSED_ESCALATE_TO_TIER_C_QUALIFICATION",
+  "independent_review_required": false,
+  "prospective_review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW_IF_SUBSTANTIVE_TIER_C_QUALIFICATION_OR_ADMISSION_PROCEEDS",
+  "scientific_gate_reduction": false
+}
