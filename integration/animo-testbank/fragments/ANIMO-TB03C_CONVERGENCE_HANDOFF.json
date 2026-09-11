@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "fragment_id": "ANIMO-TB03C-TB3-FRAGMENT-CONVERGENCE-HANDOFF-v1",
+  "producer_workunit": "ANIMO-TB03C",
+  "title": "TB3 Fragment Convergence, Collision & Serial Registry-Handoff Readiness",
+  "base_authority": "ANIMO-TB02@54a565c2f7f2a29817ae027cc18bee1613ce568d:CI_34557165449_SUCCESS",
+  "entries": [],
+  "purpose": "Converge the independently qualified TB03A and TB03B bounded fragment packages mechanically and adversarially without mutating the central testbank registry or creating new scientific test claims.",
+  "source_fragments": [
+    {
+      "work_unit": "ANIMO-TB03A",
+      "exact_head": "a37f07b15ae50d6fbb526cef3215fb58702e85aa",
+      "exact_head_ci_run": 34557800712,
+      "exact_head_ci_conclusion": "success",
+      "path": "integration/animo-testbank/fragments/ANIMO-TB03A_CNP_SPECIES_ORACLE_FRAGMENT.json",
+      "git_blob_sha1": "aa11d224964bdc5f1d529d823f774afc18994bbd",
+      "qualified_package_state": "QUALIFIED_ANIMO_TB03A_BOUNDED_FRAGMENT_PACKAGE",
+      "qualified_entry_ids": ["ATB-ORACLE-002", "ATB-ORACLE-003", "ATB-SPC-003"],
+      "status_preserved_nonqualified_entry_ids": ["ATB-SPC-004", "ATB-SPC-005", "ATB-SPC-006", "ATB-SPC-007"]
+    },
+    {
+      "work_unit": "ANIMO-TB03B",
+      "exact_head": "48a3036501e9e871608ab920f46dde5570ebf369",
+      "exact_head_ci_run": 34557679150,
+      "exact_head_ci_conclusion": "success",
+      "path": "integration/animo-testbank/fragments/ANIMO-TB03B_FRAGMENT.json",
+      "git_blob_sha1": "4b1f1a0ef11a02a76dbb33f9168dbb1f552ade7e",
+      "qualified_package_state": "QUALIFIED_TB03B_BOUNDED_TRANSACTION_AND_CONSERVATION_FRAGMENT_PACKAGE",
+      "qualified_entry_ids": ["ATB-TRN-002", "ATB-CONS-002", "ATB-CONS-003", "ATB-CONS-004", "ATB-CONS-005"],
+      "status_preserved_nonqualified_entry_ids": []
+    }
+  ],
+  "central_registry_baseline": {
+    "path": "integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json",
+    "git_blob_sha1": "a5f279cfa334dc63d3e4e8759370279736d874a0",
+    "authority": "ANIMO-TB01 seed registry carried unchanged by ANIMO-TB02",
+    "write_policy": "FORBIDDEN_IN_TB03C",
+    "future_write_owner": "SEPARATE_SERIAL_CONSOLIDATION_WORKUNIT_ONLY"
+  },
+  "convergence_result": {
+    "new_test_ids_created_by_tb03c": [],
+    "qualified_handoff_entry_ids": [
+      "ATB-ORACLE-002",
+      "ATB-ORACLE-003",
+      "ATB-SPC-003",
+      "ATB-TRN-002",
+      "ATB-CONS-002",
+      "ATB-CONS-003",
+      "ATB-CONS-004",
+      "ATB-CONS-005"
+    ],
+    "status_preserved_nonqualified_entry_ids": [
+      "ATB-SPC-004",
+      "ATB-SPC-005",
+      "ATB-SPC-006",
+      "ATB-SPC-007"
+    ],
+    "inter_fragment_id_collision": false,
+    "central_registry_id_collision": false,
+    "dependency_closure": "PASS_AGAINST_CENTRAL_REGISTRY_PLUS_BOUNDED_FRAGMENT_IDS",
+    "cross_fragment_dependency_required": false,
+    "central_registry_ready_for_separate_serial_consolidation": true,
+    "central_registry_modified": false
+  },
+  "semantic_reconciliation": {
+    "nh4_no3": {
+      "tb03a": "ATB-SPC-004 remains CANDIDATE because a dedicated reusable executable NH4/NO3 ownership adapter is still pending.",
+      "tb03b": "ATB-CONS-004 is a qualified conservation aggregation contract requiring NH4-N and NO3-N ledgers to remain species-resolved before elemental-N aggregation.",
+      "decision": "NO_CONTRADICTION_AND_NO_AUTOMATIC_PROMOTION: the conservation contract does not satisfy the missing executable species-ownership adapter obligation."
+    },
+    "species_and_conservation": {
+      "decision": "COMPLEMENTARY_BOUNDED_SCOPES: TB03A establishes selected atomic/species ownership contracts; TB03B establishes typed transaction and control-volume contracts. Neither package establishes whole-network C/N/P correctness or whole-model conservation."
+    },
+    "candidate_and_gap_preservation": {
+      "decision": "MANDATORY: ATB-SPC-004 through ATB-SPC-006 must remain CANDIDATE and ATB-SPC-007 must remain GAP in any later consolidation unless a separate workunit supplies new qualifying evidence."
+    }
+  },
+  "registry_handoff_contract": {
+    "action_in_tb03c": "READINESS_ONLY_NO_REGISTRY_WRITE",
+    "qualified_entries_may_be_presented_to_future_consolidator": true,
+    "nonqualified_entries_may_only_be_carried_with_original_status": true,
+    "future_consolidator_must_recheck_id_collisions": true,
+    "future_consolidator_must_recheck_dependency_closure": true,
+    "future_consolidator_must_preserve_source_identity_and_expected_value_provenance": true,
+    "future_consolidator_may_not_infer_tcd_admission": true,
+    "future_consolidator_may_not_create_whole_model_golden_baseline": true
+  },
+  "gov05_adversarial_self_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "alternative_hypotheses_checked": [
+      "two green fragment packages can still collide on stable ATB identifiers",
+      "dependencies can resolve inside one sibling branch but fail after convergence",
+      "a qualified conservation contract can be misread as satisfying an unqualified species-ownership adapter",
+      "candidate or GAP entries can be accidentally promoted by aggregation",
+      "local control-volume closure can be overgeneralized to whole-model conservation",
+      "synthetic or structural evidence can be misread as TCD admission or historical B2",
+      "a convergence workunit can accidentally become the forbidden central-registry writer"
+    ],
+    "disposition": [
+      "fail closed on any cross-fragment or central-registry test-id collision",
+      "require dependency closure against the union of the central registry and both exact fragment identities",
+      "preserve TB03A candidate/GAP states exactly",
+      "treat TB03B NH4/NO3 aggregation as complementary to, not a replacement for, the pending TB03A ownership adapter",
+      "create no new ATB test entries and perform no registry write",
+      "retain no-TCD-admission and no-whole-model-golden boundaries"
+    ],
+    "result": "PASS_BOUNDED_CONVERGENCE_READINESS_SCOPE"
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "tcd_scientific_admission_performed": false,
+    "central_registry_modified": false,
+    "new_scientific_test_claim_created": false,
+    "candidate_or_gap_promoted": false,
+    "whole_model_conservation_claim_created": false,
+    "whole_model_golden_baseline_created": false,
+    "historical_b2_created": false
+  },
+  "qualification": {
+    "exact_final_head_ci_required": true,
+    "qualified_state_after_success": "QUALIFIED_ANIMO_TB03C_FRAGMENT_CONVERGENCE_HANDOFF_READY_FOR_SEPARATE_SERIAL_REGISTRY_CONSOLIDATION",
+    "receipt_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "receipt_is_not_scientific_admission": true
+  }
+}
