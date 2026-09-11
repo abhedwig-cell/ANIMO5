@@ -1,0 +1,75 @@
+{
+  "work_unit": "ANIMO-B3D24",
+  "target": "CANONICAL_CHILD_ATOM:TCD-037-A2",
+  "risk_tier": "A",
+  "governance": {
+    "current": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "retained_tier_a_predicate": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov05_tier_a_rule": "GOV04_TIER_A_WAIVER_RETAINED_WITHOUT_WEAKENING",
+    "strictest_applicable_risk_trigger_wins": true,
+    "scientific_gate_reduction": false
+  },
+  "authorities": {
+    "readiness": "ANIMO-B3A06@466718167b22a643b26ee5035a18514987b6e289",
+    "readiness_exact_final_run": 34547418205,
+    "aggregate": "ANIMO-RG05H@3e4247928bb43f30def951fa8804560636affbef",
+    "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
+    "runtime_semantics": "ANIMO-RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e",
+    "synthetic_activation": "ANIMO-SYNQ03@0ca6b31dc8d003ab2b86ced29a2ff8923496ee38",
+    "synthetic_activation_exact_final_run": 34544980891,
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "b3q02": "ANIMO-B3Q02@1db63b17cb5f48cbd8ae28116a2e716b4bdaadf3"
+  },
+  "predicates": {
+    "EXACT_SOURCE_SEAM_PINNED": "PASS",
+    "PHYSICAL_AND_ACCOUNTING_OWNERSHIP_UNAMBIGUOUS": "PASS",
+    "ATOMIC_CLAIM": "PASS",
+    "EXACT_CONSERVATION_OR_ACCOUNTING_IDENTITY": "PASS",
+    "EXPECTED_DIFFERENCE_PINNED_BEFORE_QUALIFICATION": "PASS",
+    "PHYSICAL_STATE_NON_INTERFERENCE": "PASS",
+    "PROCESS_FLUX_NON_INTERFERENCE": "PASS",
+    "NO_NUMERICAL_POLICY_CHANGE": "PASS",
+    "NO_SOLVER_OR_TOLERANCE_CHANGE": "PASS",
+    "NO_RESTART_INITIALIZATION_OR_STATE_SEMANTIC_CHANGE": "PASS",
+    "NO_COMPOSITION": "PASS",
+    "NO_UNRESOLVED_SCIENTIFIC_OR_SOURCE_MEANING_AMBIGUITY": "PASS",
+    "REPRODUCIBLE_VALIDATOR": "PASS",
+    "SCOPE_GUARD": "PASS_IF_EXACT_B3D24_CI_GREEN",
+    "NATURAL_OR_INDEPENDENTLY_QUALIFIED_SYNTHETIC_ACTIVATION": "PASS",
+    "HISTORICAL_UNKNOWN_PRESERVED_WITHOUT_B2": "PASS",
+    "GOV03_ROUTE_CONDITIONS_RETAINED": "PASS",
+    "NO_PRODUCTION_REGISTER_B4_OR_FINALIZED_GOVERNANCE_SNAPSHOT_MUTATION": "PASS"
+  },
+  "evidence_boundary": {
+    "synthetic_strength": "B1_SYNTHETIC_NOT_B2",
+    "natural_active_ghg": "BLOCKED_SOURCE_TESTCASE_LINEAGE_MISMATCH",
+    "testcase_translation_performed": false,
+    "historical_revision53_behavior": "UNKNOWN",
+    "full_model_co2_ledger_claim": false
+  },
+  "expected_difference": {
+    "allowed_reporting_surface": [
+      "Btom(CH4e)",
+      "Btom(CO2e) formation-side dissimilation complement only"
+    ],
+    "physical_state": "NONE",
+    "process_flux": "NONE",
+    "restart_state": "NONE",
+    "solver_or_numerical_policy": "NONE",
+    "unrelated_observer": "NONE",
+    "siblings": "NONE",
+    "composition": "NONE"
+  },
+  "review_gate": {
+    "separate_independent_second_line_required": false,
+    "review_performed": false,
+    "independence_claimed": false,
+    "b3q01_evidence_result": "NOT_REVIEWED",
+    "b3q01_gate_status": "PASS",
+    "b3q01_gate_applicability": "NOT_APPLICABLE"
+  },
+  "all_predicates_pass": true,
+  "final_tier_a_waiver_granted_for_this_atomic_admission_object": true,
+  "scientific_admission_effect_is_separate_field_in_carrier": true
+}
