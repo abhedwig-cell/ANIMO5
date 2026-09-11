@@ -8,8 +8,8 @@
   "target_child_atom": "TCD-037-A3",
   "qualification_class": "A_ACCOUNTING_REPORTING_ONLY",
   "risk_tier": "A",
-  "state": "PERSISTED_VALIDATION_PENDING",
-  "decision": "PENDING_EXACT_HEAD_VALIDATION",
+  "state": "QUALIFIED_TCD037_A3_TIER_A_ADMISSION_READINESS_WAIVER_PREDICATE_PASS_NO_ADMISSION",
+  "decision": "QUALIFIED_TCD037_A3_TIER_A_ADMISSION_READINESS_WAIVER_PREDICATE_PASS_NO_ADMISSION",
   "authorities": {
     "aggregate": "ANIMO-RG05I@94afe7d649a8c60758a41996f0059de0acddd2fc",
     "routing": "ANIMO-B3I07@54679c7555a963133dfd686648af334f479c5808",
@@ -36,7 +36,7 @@
     "process_flux_non_interference": "PASS",
     "qualified_synthetic_activation_alternative": "PASS",
     "historical_uncertainty_explicit": "PASS",
-    "tier_a_waiver_predicate": "PASS_AT_READINESS_PENDING_EXACT_HEAD_CI"
+    "tier_a_waiver_predicate": "PASS_AT_READINESS"
   },
   "tier_a_waiver": {
     "predicate_pass_at_readiness": true,
@@ -50,12 +50,12 @@
     "workflow": ".github/workflows/animo-b3a07-tcd037-a3.yml",
     "validator": "tools/validate_b3a07_tcd037_a3.py",
     "exact_final_head_must_pass": true,
-    "run_id": null,
-    "job_id": null,
-    "tested_head": null,
-    "conclusion": "PENDING",
-    "scope_guard": "PENDING",
-    "closeout_note": null
+    "run_id": 34549327345,
+    "job_id": 103108708745,
+    "tested_head": "7d608d2eb167fb76d3839e147d12ddd3e5e141b8",
+    "conclusion": "success",
+    "scope_guard": "PASS",
+    "closeout_note": "Run 34549327345 validates the complete substantive B3A07 readiness package at 7d608d2eb167fb76d3839e147d12ddd3e5e141b8, including exact-final RG05I, SYNQ04 and GOV05 workflow verification. This status-only closeout must pass the same workflow on its exact final head before B3A07 is consumed as authoritative readiness."
   },
   "scope_guards": {
     "scientific_admission": false,
@@ -77,9 +77,9 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "work_unit_complete": false
+    "tested": true,
+    "qualified": true,
+    "work_unit_complete": true
   },
   "next_if_exact_head_ci_green": "LIVE_RECHECK_THEN_ANIMO-B3D25_TCD037_A3_TIER_A_ATOMIC_ADMISSION_DECISION"
 }
