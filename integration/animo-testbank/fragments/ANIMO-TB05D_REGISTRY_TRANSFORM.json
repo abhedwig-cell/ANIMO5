@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-TB05D",
+  "title": "Qualified TB4/TB5 Fragment Serial Registry Consolidation",
+  "base_authority": "ANIMO-TB05C@788247b4346bedbb79749d5ce5daef3f99283f8d",
+  "base_registry_blob": "4c78cdb542c5ff4ce898c033eb99dd7b2daa7c2c",
+  "tb05c_ci": {
+    "run_id": 34568169477,
+    "conclusion": "success"
+  },
+  "handoff_path": "integration/animo-testbank/fragments/ANIMO-TB05C_CONVERGENCE_HANDOFF.json",
+  "qualified_entry_ids": [
+    "ATB-STATE-003",
+    "ATB-STATE-004",
+    "ATB-STATE-005",
+    "ATB-STATE-006",
+    "ATB-BND-002",
+    "ATB-BND-005",
+    "ATB-SUB-003",
+    "ATB-SUB-004",
+    "ATB-SUB-005",
+    "ATB-SUB-008",
+    "ATB-SUB-009",
+    "ATB-SUB-010"
+  ],
+  "preserved_gap_ids": [
+    "ATB-STATE-007",
+    "ATB-BND-003",
+    "ATB-BND-004",
+    "ATB-BND-006",
+    "ATB-SUB-006",
+    "ATB-SUB-007",
+    "ATB-SUB-011",
+    "ATB-SUB-012"
+  ],
+  "titles": {
+    "ATB-STATE-003": "Checkpoint projection purity invariant",
+    "ATB-STATE-004": "Restricted-core C/N/P exact split-run equivalence",
+    "ATB-STATE-005": "Exact year-boundary restart ordering invariant",
+    "ATB-STATE-006": "Macropore persistent-solute narrow restart contract",
+    "ATB-BND-002": "Exact-zero upper-reservoir retention contract",
+    "ATB-BND-005": "GHG closed lower-air boundary initialization contract",
+    "ATB-SUB-003": "Macropore activation and domain-ownership contract",
+    "ATB-SUB-004": "Macropore complete-case route-reachability contract",
+    "ATB-SUB-005": "Macropore narrow persistent-solute restart dependency",
+    "ATB-SUB-008": "GHG theory/source lineage boundary contract",
+    "ATB-SUB-009": "GHG accounting ownership and atomization contract",
+    "ATB-SUB-010": "GHG lower-boundary initialization subsystem dependency"
+  },
+  "mechanical_transform": {
+    "copy_all_source_fragment_entry_fields_exactly": true,
+    "add_title_from_this_manifest": true,
+    "add_input_identity": "Source applicability pins and evidence boundaries embedded in the exact pinned source fragment entry; TB05D infers no broader testcase identity.",
+    "add_dependencies_from_tb05c_handoff": true,
+    "add_level_cost_profile_subsystem_failure_class_from_tb05c_handoff": true,
+    "add_qualification_strength": "QUALIFIED_FRAGMENT_SCOPE_ONLY",
+    "add_admission_effect": "NONE",
+    "add_registry_source_fragment_exact_pin": true,
+    "add_registry_consolidation": "ANIMO-TB05D",
+    "overwrite_existing_source_fields": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_admission_performed": false,
+    "gap_promoted": false,
+    "historical_B2_fabricated": false,
+    "whole_model_golden_baseline_created": false,
+    "whole_model_restart_qualified": false,
+    "whole_model_boundary_initialization_qualified": false,
+    "whole_model_conservation_qualified": false,
+    "subsystem_release_qualified": false,
+    "scientific_authority_redefined": false
+  }
+}
