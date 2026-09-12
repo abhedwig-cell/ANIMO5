@@ -1,0 +1,54 @@
+{
+  "work_unit": "ANIMO-GHG05",
+  "target": "TCD-034",
+  "scope": "CH4_PLANT_GROWTH_TEMPERATURE_SELECTOR_ONLY",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "source_files": {
+    "ANIMO_4.1.5.53/ghg_ch4.for": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98",
+    "ANIMO_4.1.5.53/input1.for": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+    "ANIMO_4.1.5.53/Param.inc": "20d85ed8bca9e0060d3b51c2f800ff02fdf0bc3ebb8c834baf4afca870a33475",
+    "ANIMO_4.1.5.53/Temper.for": "643e4460a897ec629068dc97ab4589a745304b8fa7adb7597dfadc1a9a9d41e5",
+    "ANIMO_4.1.5.53/Input_hydro.for": "5f07ce68969d749308595d6b4f9f789b6b3646ae226c233e2f8e49565a7dad64"
+  },
+  "source_reconstruction": {
+    "LnRoot_assignment": "LnRoot=Nuroup",
+    "input_bounds": "1<=Nuroup<=Nl<=Manl",
+    "Manl": 50,
+    "first_root_loop": "Do Ln=1,LnRoot",
+    "first_root_loop_has_at_least_one_iteration": true,
+    "fallback_root_loop": "Do Ln=1,LnRoot if ToRo<1e-4",
+    "selector_statement": "Te50=Te(Ln)",
+    "normal_post_loop_control_variable": "LnRoot+1",
+    "resolved_selector_current_standard_semantics": "Te(Nuroup+1)",
+    "old_use_before_definition_premise": "REJECTED",
+    "intended_scientific_selector": "UNQUALIFIED"
+  },
+  "temperature_population": {
+    "declared": "Te(0:Manl)",
+    "internal_temperature_model_writes": "Te(0:Nl)",
+    "hydrologic_temperature_route_writes": "Te(1:Nl) and Te(0) separately",
+    "when_Nuroup_lt_Nl": "selector is within populated 0:Nl and addresses first compartment below root zone",
+    "when_Nuroup_eq_Nl_lt_Manl": "selector Te(Nl+1) is within declared bound but outside demonstrated current-step producer range",
+    "when_Nuroup_eq_Nl_eq_Manl": "selector Te(Manl+1) is outside declared bound"
+  },
+  "testbank_activation": {
+    "ghg_ch4_blocks_found": 1,
+    "only_case": "GHGMais/Input/soil.inp",
+    "only_case_sha256": "6a07157f64c0913f977487c1719794c1126416646b0b329ce39940935601f760",
+    "FvegCH4": 0.0,
+    "Tegr": 7.0,
+    "PvCH4Ox": 0.5,
+    "plant_mediated_positive_control": false,
+    "natural_testbank_activates_selector_effect": false
+  },
+  "theory": {
+    "ANIMO40_user_guide_defines_revision53_CH4_plant_temperature_selector": false,
+    "GHG01_exact_CH4_kinetics_fully_documented": false,
+    "authoritative_Te50_identity_recovered": false,
+    "variable_name_used_as_theory": false
+  },
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "decision": "QUALIFY_SOURCE_RECONSTRUCTION_REJECT_OLD_PREMISE_KEEP_TCD034_UNADMITTED_SELECTOR_INTENT_AND_ACTIVE_REFERENCE_UNQUALIFIED"
+}
