@@ -1,0 +1,38 @@
+name: ANIMO-B3Q06 global canonical queue recompute
+on:
+  push:
+    branches: [work/animo-b3q06-global-canonical-queue-recompute-closure]
+  workflow_dispatch:
+permissions: {contents: read, actions: read}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in bc9e6ed997a078336645210ebb4d99ae976893fe 997d867a2b107ec8e28efce530c82a204719de46 846e0f4d02a38b9e02cc1419b1ca87e63aaedb54 942f26fe32eaf91679e59a1968ae173a3703e22d f65a47724e4a4fca7f2d8b8d6de9eeee51867904; do git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"; done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify consumed exact-final workflows
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request
+          checks={34687736122:"bc9e6ed997a078336645210ebb4d99ae976893fe",34654186685:"997d867a2b107ec8e28efce530c82a204719de46"}
+          for n,h in checks.items():
+            q=urllib.request.Request(f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{n}",headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}","Accept":"application/vnd.github+json"})
+            with urllib.request.urlopen(q) as f:d=json.load(f)
+            assert d["head_sha"]==h and d["status"]=="completed" and d["conclusion"]=="success",(n,d.get("head_sha"),d.get("status"),d.get("conclusion"))
+          print("exact-final RG05O and B3Q05 authorities verified")
+          PY
+      - name: Parse and validate queue package
+        run: |
+          python -m json.tool integration/animo-b3/ANIMO-B3Q06_GLOBAL_QUEUE_RECOMPUTE.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3Q06_SOURCE_PINS.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3Q06_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3Q06_STATUS.json >/dev/null
+          if test -f integration/animo-b3/ANIMO-B3Q06_INTERNAL_ADVERSARIAL_REVIEW.json; then python -m json.tool integration/animo-b3/ANIMO-B3Q06_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null; fi
+          python -m py_compile tools/validate_animo_b3q06.py
+          python tools/validate_animo_b3q06.py
