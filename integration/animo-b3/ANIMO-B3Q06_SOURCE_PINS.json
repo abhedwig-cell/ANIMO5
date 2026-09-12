@@ -1,0 +1,33 @@
+{
+  "work_unit": "ANIMO-B3Q06",
+  "base_authority": {
+    "name": "ANIMO-RG05O",
+    "head": "bc9e6ed997a078336645210ebb4d99ae976893fe",
+    "exact_final_ci_run": 34687736122,
+    "exact_final_ci_conclusion": "success"
+  },
+  "previous_queue_authority": {
+    "name": "ANIMO-B3Q05",
+    "head": "997d867a2b107ec8e28efce530c82a204719de46",
+    "exact_final_ci_run": 34654186685,
+    "exact_final_ci_conclusion": "success"
+  },
+  "governance": {
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "B3I10": "942f26fe32eaf91679e59a1968ae173a3703e22d",
+    "GOV05": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904"
+  },
+  "live_recheck": {
+    "rg05o_b3_complete": false,
+    "rg05o_b4_open": false,
+    "rg05o_production_open": false,
+    "rg05o_scientific_admissions": 32,
+    "rg05o_top_level_admitted": 22,
+    "rg05o_admitted_child_atoms": 10,
+    "canonical_top_level_count": 25,
+    "canonical_tail": "TCD-042",
+    "newer_top_level_tcd_reservation_found": false,
+    "later_aggregate_found": false
+  },
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT"
+}
