@@ -90,10 +90,12 @@ req(qo["fast_freundlich_integrated_synthetic_solver_support"] is True and qo["fa
 req(qo["historical_b2_equivalence_qualified"] is False, "no historical B2")
 
 fm = gj(NQ02, "integration/animo-numerics/TCD019_FALLBACK_POLICY_MATRIX.json")
+req(fm["evidence_class"] == "B1_DIAGNOSTIC_NATURAL_FALLBACK_SENSITIVITY_ONLY", "fallback matrix evidence class")
 req(fm["qualification"]["fallback_natural_activation"] is True, "fallback natural activation")
 req(fm["qualification"]["fallback_policy_causally_material"] is True, "fallback materiality")
 req(fm["qualification"]["fallback_threshold_as_ordinary_accuracy_knob_rejected"] is True, "fallback threshold rejection")
-req(fm["qualification"]["fallback_policy_qualified"] is False and fm["qualification"]["specific_fallback_tolerance_qualified"] is False, "fallback remains unqualified")
+req(fm["qualification"]["fallback_policy_classification"] == "FALLBACK_POLICY_CAUSALLY_MATERIAL_BUT_NOT_YET_QUALIFIED", "fallback matrix classification")
+req(fm["qualification"]["specific_fallback_tolerance_qualified"] is False and fm["qualification"]["B3_admitted"] is False and fm["qualification"]["production_migration_admitted"] is False, "fallback matrix remains non-admission evidence")
 
 frl = gj(NQ02, "integration/animo-numerics/TCD019_NEWTON_FALLBACK_RELATION.json")
 fq = frl["qualification"]
