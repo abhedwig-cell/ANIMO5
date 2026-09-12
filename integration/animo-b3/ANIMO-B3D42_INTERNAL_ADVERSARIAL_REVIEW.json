@@ -1,4 +1,89 @@
 {
   "work_unit": "ANIMO-B3D42",
-  "target": "TCD-019"
+  "target": "TCD-019",
+  "risk_tier": "C",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "reviewed_head": "cadf6c84956c2714ccf81575844fe5ecac7faee1",
+  "reviewed_head_ci_run": 34687420916,
+  "reviewed_head_ci_job": 103536733650,
+  "reviewed_head_ci_conclusion": "success",
+  "counter_hypotheses": [
+    {
+      "id": "H1_GENERAL_CONVERGENCE",
+      "result": "REJECTED_AS_ADMISSION_CLAIM",
+      "basis": "Representation stability is only a discrete binary64 accepted-state predicate; no global convergence theorem or arbitrary-start guarantee is admitted."
+    },
+    {
+      "id": "H2_PHYSICAL_ADEQUACY",
+      "result": "REJECTED_AS_ADMISSION_CLAIM",
+      "basis": "The candidate is a numerical-policy admission only; whole-model physical adequacy, calibration and validation remain outside scope."
+    },
+    {
+      "id": "H3_FALLBACK_REQUIRED_FOR_ANY_ADMISSION",
+      "result": "REJECTED_FOR_RESTRICTED_DOMAIN",
+      "basis": "The admitted domain is intentionally partial and fail-closed. Natural fallback-triggering states outside the NQ05 acceptance contract remain unqualified."
+    },
+    {
+      "id": "H4_SYNTHETIC_OR_DIAGNOSTIC_IS_B2",
+      "result": "REJECTED",
+      "basis": "Historical behavior remains UNKNOWN_WITHOUT_B2 and no NQ02 synthetic or diagnostic evidence is promoted to B2."
+    },
+    {
+      "id": "H5_TOP_LEVEL_ADMISSION_BROADENS_SCOPE",
+      "result": "REJECTED",
+      "basis": "Fast Freundlich, slow Langmuir/TCD-024, TCD-014 initialization, legacy fallback and all selected tolerances remain explicitly excluded."
+    },
+    {
+      "id": "H6_B3_IMPLIES_PRODUCTION",
+      "result": "REJECTED",
+      "basis": "Production source, B4, migration and compiler-level floating-point binding remain unauthorized."
+    },
+    {
+      "id": "H7_SKIP_AGGREGATE_REFRESH",
+      "result": "REJECTED",
+      "basis": "B3D40 and B3D41 are the first two exact-final post-RG05N admissions. Exact-final B3D42 is the third and therefore requires RG05O before any fourth."
+    }
+  ],
+  "active_controls": [
+    "NQ05 exact-final run 34687056463 job 103535764654 is green.",
+    "B3D42 frozen authoring head cadf6c84956c2714ccf81575844fe5ecac7faee1 is green in run 34687420916 job 103536733650.",
+    "B3Q05 lists TCD-019 as top-level unadmitted at its checkpoint.",
+    "The candidate admitted identity is byte-for-byte the NQ05 qualified candidate identity.",
+    "B3D40 and B3D41 establish the two prior post-RG05N admissions."
+  ],
+  "negative_controls": [
+    "Production-source modification is forbidden.",
+    "Any selected Small, fallback threshold or global model tolerance is forbidden.",
+    "Fast Freundlich, TCD-024 slow Langmuir, TCD-014 initialization and legacy fallback remain excluded.",
+    "Historical-fidelity claims and synthetic-to-B2 promotion are forbidden.",
+    "Central queue, canonical register and aggregate-regie mutation inside B3D42 are forbidden."
+  ],
+  "scientific_and_adversarial_gates": {
+    "NQ05_exact_identity_preserved": true,
+    "restricted_domain_only": true,
+    "no_general_convergence_overclaim": true,
+    "no_physical_adequacy_overclaim": true,
+    "legacy_fallback_excluded": true,
+    "no_invented_tolerance": true,
+    "historical_behavior_remains_unknown": true,
+    "synthetic_evidence_not_promoted_to_B2": true,
+    "production_not_authorized": true,
+    "aggregate_threshold_reached_and_handoff_explicit": true
+  },
+  "residual_uncertainty": [
+    "Historical revision-53 corrected behavior remains UNKNOWN_WITHOUT_B2.",
+    "Representation stability does not prove global nonlinear convergence.",
+    "Whole-model physical adequacy of a no-fallback production solver is not established.",
+    "Fallback-triggering natural states outside the accepted-state contract remain unqualified.",
+    "Fast Freundlich, TCD-024 slow Langmuir and TCD-014 initialization remain outside scope.",
+    "Production implementation and compiler-level floating-point behavior remain future work."
+  ],
+  "outcome": "SELF_REVIEW_PASS_ADMIT_TCD019_RESTRICTED_NUMERICAL_POLICY_WITH_HISTORICAL_UNCERTAINTY",
+  "admission_supported": true,
+  "production_authorized": false
 }
