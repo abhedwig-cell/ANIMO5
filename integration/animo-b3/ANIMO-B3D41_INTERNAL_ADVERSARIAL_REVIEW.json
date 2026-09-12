@@ -1,0 +1,106 @@
+{
+  "work_unit": "ANIMO-B3D41",
+  "target": "TCD-032",
+  "review_kind": "GOV05_TIER_C_SINGLE_AGENT_ADVERSARIAL_B3_ADMISSION_REVIEW",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "reviewed_head": "79ca1508f3f063a0e87339e820025286ce5b8d8e",
+  "reviewed_tree": "a6cff9ffd767c772980f151889bb675f871c8a3a",
+  "reviewed_head_ci_run": 34676513940,
+  "reviewed_head_ci_job": 103507224605,
+  "reviewed_head_ci_conclusion": "success",
+  "risk_tier": "C",
+  "risk_basis": "scientific mass-transfer ownership and carbon-conservation identity admitted at canonical top-level TCD scope",
+  "immutable_checkpoint": {
+    "substantive_authoring_frozen": true,
+    "head": "79ca1508f3f063a0e87339e820025286ce5b8d8e",
+    "ci_exact_head_green": true,
+    "post_review_substantive_changes_forbidden": true
+  },
+  "authority_reconstruction": {
+    "scientific_policy": "ANIMO-GHG03@9614e4a4733573c865aeece9f5b33628cbc7ee2d",
+    "canonical_allocation": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4:TCD-032",
+    "negative_queue_gate": "ANIMO-B3Q05@997d867a2b107ec8e28efce530c82a204719de46",
+    "aggregate": "ANIMO-RG05N@8758bd30e302b75dd7854ac00fd2e29473669a13",
+    "historical_uncertainty_route": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "parent_daughter_dependency": "ANIMO-B3D40@83fedc7323cea6da696a81bc64e4e3b13d794880:TCD-033"
+  },
+  "source_state_ownership_reconstruction": {
+    "methane_producer": "CH4produc source-family Q_j values feed physical CH4-C production",
+    "DOM_current_debit_path": "Rates2 contains the existing active DOM methanogenesis debit route",
+    "other_source_family_gap": "exudate, humus/biomass and fresh-OM lack the corresponding active comprehensive source debit path identified by GHG01",
+    "inactive_legacy_candidate": "GHG_Miner contains transfer logic but is not admitted for unchanged reactivation",
+    "qualified_owner_rule": "one and only one organic-C source debit owner per positive Q_j, plus one matching internal humus/biomass credit I_j when nonzero",
+    "qualified_direction": "f_C*(G_j-I_j) leaves organic source ownership and equals Q_j*dt entering CH4-C production"
+  },
+  "counter_hypotheses": [
+    {
+      "id": "H1_ADMIT_UNCHANGED_GHG_MINER",
+      "hypothesis": "The B3 admission can be interpreted as permission to reactivate legacy GHG_Miner unchanged.",
+      "result": "REJECTED",
+      "reason": "GHG03 expressly does not qualify GHG_Miner call structure, hidden task-state lifetime, Rdas timing or overlap with the active DOM route."
+    },
+    {
+      "id": "H2_ADMIT_NP_WITH_C",
+      "hypothesis": "Because legacy GHG_Miner handles C/N/P, admitting the C identity also admits N/P transfer stoichiometry.",
+      "result": "REJECTED",
+      "reason": "The qualified and candidate admitted scope is explicitly C-only; N and P remain unqualified."
+    },
+    {
+      "id": "H3_REOPEN_TCD033",
+      "hypothesis": "TCD032 admission changes or supersedes the TCD033 CH4 source-family partition policy.",
+      "result": "REJECTED",
+      "reason": "B3D41 depends on the already-admitted TCD033 sum_j(Q_j)=Q_total identity and does not alter it."
+    },
+    {
+      "id": "H4_ADMISSION_IMPLIES_PRODUCTION",
+      "hypothesis": "A scientific B3 admission is sufficient to authorize a production implementation or B4 opening.",
+      "result": "REJECTED",
+      "reason": "Production source, B4, migration, hidden-state repair and implementation binding remain explicit hard boundaries."
+    },
+    {
+      "id": "H5_AGGREGATE_REQUIRED_NOW",
+      "hypothesis": "TCD032 admission requires RG05O immediately.",
+      "result": "REJECTED",
+      "reason": "B3D40 is admission 1 post-RG05N and B3D41 would be admission 2; the normal threshold is 3."
+    }
+  ],
+  "active_controls": [
+    "GHG03 exact-final scientific policy is qualified and performs no B3 admission",
+    "TCD032 is canonically allocated as a B-class top-level object and remains present in the B3Q05 pre-admission unadmitted set",
+    "GOV03 historical-uncertainty route is eligible and historical B2 remains unrecovered",
+    "B3D40 exact-final establishes TCD033 without modifying/admitting TCD032",
+    "candidate contract admits only the exact GHG03 C-transfer identity",
+    "post-RG05N cadence remains below the three-admission aggregate threshold"
+  ],
+  "negative_controls": [
+    "admitting N or P transfer fails the contract boundary",
+    "reopening TCD033 fails the sibling/dependency boundary",
+    "authorizing production, B4, central regie or canonical-register changes fails scope",
+    "claiming historical fidelity or synthetic B2 fails GOV03/GOV05 evidence semantics"
+  ],
+  "scientific_and_adversarial_gates": {
+    "qualified_identity_matches_GHG03_exactly": true,
+    "units_and_direction_preserved": true,
+    "single_owner_constraint_preserved": true,
+    "DOM_double_debit_forbidden": true,
+    "no_new_tolerance": true,
+    "historical_behavior_remains_unknown": true,
+    "N_P_scope_not_admitted": true,
+    "production_not_authorized": true,
+    "aggregate_threshold_not_reached": true
+  },
+  "residual_uncertainty": [
+    "Historical revision-53 active-GHG transfer behaviour remains UNKNOWN_WITHOUT_B2.",
+    "The exact construction and timing of effective a_j from Rdas/Asfa-family quantities is not admitted.",
+    "A future production implementation must prove exactly one DOM source-debit owner and transaction-equivalent internal credit semantics.",
+    "N/P transfer consequences, GHG_Miner hidden task state and CO2/subsidence accounting remain separate qualification work."
+  ],
+  "outcome": "SELF_REVIEW_PASS_ADMIT_TCD032_BOUNDED_C_TRANSFER_IDENTITY_WITH_HISTORICAL_UNCERTAINTY",
+  "admission_supported": true,
+  "production_authorized": false
+}
