@@ -1,0 +1,24 @@
+{
+  "work_unit": "ANIMO-B3D41",
+  "target": "TCD-032",
+  "branch": "work/animo-b3d41-tcd032-gov05-tier-c-admission",
+  "base_head": "9614e4a4733573c865aeece9f5b33628cbc7ee2d",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_TIER_C_REVIEW",
+  "substantive_files": [
+    "docs/b3d41/WORK_UNIT_CONTRACT.md",
+    "integration/animo-b3/B3D41_TCD032_ADMISSION_CONTRACT.json",
+    "tools/validate_b3d41_tcd032.py",
+    ".github/workflows/animo-b3d41-tcd032.yml"
+  ],
+  "review_must_pin_exact_green_authoring_head": true,
+  "substantive_change_resets_GOV05_review": true,
+  "post_review_allowed_changes": [
+    "integration/animo-b3/ANIMO-B3D41_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-b3/ANIMO-B3D41_STATUS.json"
+  ],
+  "exact_final_head_ci_required": true,
+  "production_source_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "historical_behavior": "UNKNOWN_WITHOUT_B2"
+}
