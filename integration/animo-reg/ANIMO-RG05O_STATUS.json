@@ -2,8 +2,8 @@
   "work_unit": "ANIMO-RG05O",
   "title": "Ninth Batched B3 Admission Integration",
   "branch": "work/animo-rg05o-ninth-batched-admission-integration",
-  "state": "PERSISTED_VALIDATION_PENDING",
-  "decision": null,
+  "state": "QUALIFIED_NINTH_BATCHED_B3_ADMISSION_INTEGRATION_TCD033_TCD032_TCD019_NO_PRODUCTION",
+  "decision": "QUALIFIED_NINTH_BATCHED_B3_ADMISSION_INTEGRATION_TCD033_TCD032_TCD019_NO_PRODUCTION",
   "source_aggregate": "ANIMO-RG05N@8758bd30e302b75dd7854ac00fd2e29473669a13",
   "source_aggregate_exact_final_ci": "34646787915:success",
   "aggregate_trigger": "NORMAL_BATCH_THRESHOLD_REACHED_THREE_EXACT_FINAL_QUALIFIED_POST_RG05N_B3_ADMISSIONS",
@@ -67,22 +67,23 @@
     "synthetic_evidence_counted_as_b2": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO-RG05O ninth batched B3 admission integration",
-    "candidate_run_id": null,
-    "candidate_job_id": null,
-    "tested_candidate_head": null,
-    "candidate_conclusion": "PENDING",
-    "validator": "PENDING",
-    "scope_guard": "PENDING",
-    "exact_final_head_required": true
+    "candidate_run_id": 34687704967,
+    "candidate_job_id": 103537496997,
+    "tested_candidate_head": "672bc1d96b200957cd4bbc74a348affec827b36f",
+    "candidate_conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "exact_final_head_required": true,
+    "closeout_note": "Candidate run 34687704967 validated the complete substantive RG05O package at 672bc1d96b200957cd4bbc74a348affec827b36f. This status-only closeout is authoritative only if the same workflow succeeds on this exact final head."
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "qualified": true,
+    "workunit_complete": true
   },
   "next_if_validated": "USE_ANIMO_RG05O_AS_CURRENT_AGGREGATE_AUTHORITY_THEN_RECOMPUTE_GLOBAL_CANONICAL_B3_QUEUE; DO_NOT_OPEN_B4_OR_PRODUCTION"
 }
