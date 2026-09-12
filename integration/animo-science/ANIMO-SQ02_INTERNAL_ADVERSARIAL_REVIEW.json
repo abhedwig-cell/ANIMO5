@@ -1,0 +1,121 @@
+{
+  "work_unit": "ANIMO-SQ02",
+  "risk_tier": "C",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "assurance_label": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "reviewed_authoring_head": "9f02f9464440cf789fe141b2192a066f2afe2f0e",
+  "same_agent": true,
+  "independence_claimed": false,
+  "review_boundary": {
+    "complete_authoring_package_persisted": true,
+    "immutable_head_frozen_before_review": true,
+    "source_testbank_evidence_hashes_recorded_before_review": true,
+    "authoring_completed_before_review": true,
+    "authoring_head_matches_reviewed_head": true,
+    "moving_tree_reviewed": false
+  },
+  "evidence_reuse_checks": {
+    "pin_identity": "PASS",
+    "scope_compatibility": "PASS",
+    "immutable_provenance": "PASS",
+    "no_superseding_contradiction": "PASS",
+    "evidence_strength_preserved": "PASS"
+  },
+  "counter_hypothesis": {
+    "tested": true,
+    "alternative": "No distinct continuation owner is needed because an existing ANIMO surface or soil state can absorb residual layer-0 NH4 without changing scientific semantics.",
+    "test": "Recheck pinned SQ01 state ownership and candidate analysis, including layer-0 aqueous ownership, soil-layer-only NH4 sorption, and the documented additions-reservoir role of Conhtop/Rsconhtop; require semantic identity rather than mere algebraic conservation.",
+    "result": "ALTERNATIVE_REJECTED_BY_PINNED_EVIDENCE"
+  },
+  "active_controls": [
+    "Exact Decimal oracle preserves 1.3880242022597072e-5 kg N m-2 through an explicit aqueous-to-areic internal transfer at zero aqueous storage.",
+    "SQ01 frozen-source reconstruction identifies no existing generic layer-0 dry NH4 owner and separates aqueous layer 0, soil sorption, and the additions reservoir.",
+    "Authoring CI 34689938290 job 103543305310 passed on exact immutable head 9f02f9464440cf789fe141b2192a066f2afe2f0e.",
+    "The disposition requires restart persistence and typed transfers if the conservation shell is ever implemented."
+  ],
+  "negative_controls": [
+    "Forcing the canonical residual through the observed tiny Fu implies approximately 3.37e4 kg N m-3 and is rejected as a state substitute.",
+    "Reusing Conhtop/Rsconhtop is rejected as semantic aliasing with the documented additions reservoir.",
+    "Reusing soil-sorbed NH4 is rejected without a separately qualified cross-compartment and cross-phase transfer.",
+    "A positive ghost-water floor is rejected because it invents hydrologic storage and an arbitrary concentration scale.",
+    "No specific dry phase, dry chemistry, rewetting law, transition threshold, B3 admission, historical fidelity, or production implementation is inferred from topology acceptance."
+  ],
+  "scientific_gates": {
+    "closed_control_volume_requires_mass_owner": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "Pinned SQ01 evidence shows represented NH4 mass remains in the modeled surface control volume when the aqueous coordinate is removed without a declared export or transformation."
+    },
+    "areic_owner_finite_at_zero_aqueous_volume": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "An areic mass coordinate remains finite at zero water volume, while any finite concentration multiplied by zero aqueous storage carries zero mass; the exact oracle verifies the bounded conservation identity."
+    },
+    "existing_state_semantic_separation": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "SQ01 source/theory reconstruction separates ponding aqueous NH4, soil-layer sorption, and the management-additions reservoir; none is a semantically equivalent generic continuation owner."
+    },
+    "explicit_transfer_and_restart_ownership": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The accepted topology requires one persistent owner, explicit typed internal transfers, and checkpoint/restart persistence; the MassLedger is observer only."
+    },
+    "topology_process_law_separation": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The disposition explicitly withholds dry-phase identity, kinetics, atmospheric/soil exchange, rewetting, and threshold semantics; accepting storage topology does not admit those process laws."
+    },
+    "specific_dry_phase_or_chemistry": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "SQ02 does not qualify a molecular/physical dry phase or any dry-period reaction law."
+    },
+    "corrected_historical_behavior": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "Historical behavior remains UNKNOWN_WITHOUT_B2 and this workunit is model-evolution topology review only."
+    },
+    "b3_admission": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "No C1 or parent TCD-016 B3 admission is performed or authorized here."
+    }
+  },
+  "adversarial_gates": {
+    "scope_not_broadened_to_process_physics": "PASS",
+    "existing_owner_aliases_retested": "PASS",
+    "mass_conservation_not_confused_with_phase_identity": "PASS",
+    "synthetic_oracle_not_promoted_to_B2": "PASS",
+    "historical_uncertainty_preserved": "PASS",
+    "no_invented_tolerance_or_threshold": "PASS",
+    "no_production_or_queue_mutation": "PASS"
+  },
+  "tier_c_enhanced": {
+    "immutable_authoring_checkpoint": "PASS",
+    "complete_source_state_ownership_reconstruction": "PASS",
+    "first_read_first_write_or_restore_direction_analysis": "PASS",
+    "counter_hypothesis_test": "PASS",
+    "active_controls": "PASS",
+    "negative_controls": "PASS",
+    "split_run_or_restart_evidence": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "No implementation or restart serializer is admitted in SQ02; restart persistence is a mandatory topology requirement for any later implementation and must be qualified in that later workunit."
+    },
+    "exact_comparison_policy": "Exact SHA-pinned evidence identities and exact Decimal mass-transfer identities only; no scientific or numerical tolerance is introduced.",
+    "no_invented_tolerance": true,
+    "regression_guard": "PASS",
+    "regression_surface_declared": true,
+    "exact_final_head_ci_required": true
+  },
+  "residual_uncertainty": [
+    "The specific physical or chemical phase represented during dry surface conditions is not established.",
+    "Dry-period volatilization, sorption, nitrification, precipitation, fixation, or other transformations are not qualified.",
+    "Rewetting/remobilization destination and kinetics are not qualified.",
+    "The physical status of the legacy 0.1 mm surface-representation boundary and Fu threshold is unresolved.",
+    "Historical behavior remains UNKNOWN_WITHOUT_B2 and topology acceptance is not corrected-legacy admission.",
+    "Same-agent GOV05 review has lower independence assurance than the superseded GOV04 separate-context model."
+  ],
+  "outcome": "SELF_REVIEW_PASS"
+}
