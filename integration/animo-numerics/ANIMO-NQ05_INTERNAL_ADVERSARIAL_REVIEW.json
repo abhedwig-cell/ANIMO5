@@ -1,0 +1,171 @@
+{
+  "work_unit": "ANIMO-NQ05",
+  "target": "TCD-019",
+  "risk_tier": "C",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "INTERNAL_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "assurance_label": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "reviewed_head": "141cad58d03f963522a5631cb9e2e219dbc1ef0d",
+  "reviewed_authoring_head": "141cad58d03f963522a5631cb9e2e219dbc1ef0d",
+  "reviewed_head_ci_run": 34686947940,
+  "reviewed_head_ci_job": 103535476679,
+  "reviewed_head_ci_conclusion": "success",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "review_boundary": {
+    "complete_authoring_package_persisted": true,
+    "immutable_head_frozen_before_review": true,
+    "source_testbank_evidence_hashes_recorded_before_review": true,
+    "authoring_completed_before_review": true,
+    "authoring_head_matches_reviewed_head": true,
+    "moving_tree_reviewed": false,
+    "failed_pre_remediation_head_preserved": "937026d837bfb78a1af0af501a1a7aaf1100c834",
+    "remediation_head_exact_ci_green": true
+  },
+  "evidence_reuse_checks": {
+    "pin_identity": "PASS",
+    "scope_compatibility": "PASS",
+    "immutable_provenance": "PASS",
+    "no_superseding_contradiction": "PASS",
+    "evidence_strength_preserved": "PASS"
+  },
+  "counter_hypotheses": [
+    {
+      "alternative": "The NQ05 validator and the NQ02 fallback matrix could both be internally consistent while encoding the wrong scientific meaning.",
+      "test": "Re-read the pinned NQ02 status, TCD019_FALLBACK_POLICY_MATRIX and TCD019_NEWTON_FALLBACK_RELATION independently of the failed validator expression; distinguish the diagnostic matrix schema from the NQ02 qualification authority and require agreement on fallback materiality, distinct closure and non-qualification.",
+      "result": "REJECTED_FOR_THE_BOUNDED_CLAIM",
+      "basis": "The B1 diagnostic matrix classifies fallback as causally material but not yet qualified and records no B3 or production admission. ANIMO-NQ02_STATUS and the Newton/fallback relation independently record fallback_policy_qualified=false. The repaired validator now checks each artifact according to its actual schema rather than inventing a matrix field."
+    },
+    {
+      "alternative": "A no-legacy-fallback solver can be numerically robust yet physically insufficiently justified.",
+      "test": "Separate numerical equation/acceptance qualification from physical model adequacy, historical fidelity and whole-model validation; inspect whether NQ05 claims any of those broader properties.",
+      "result": "REMAINS_PLAUSIBLE_OUTSIDE_SCOPE_NOT_A_BOUNDED_POLICY_FALSIFIER",
+      "basis": "NQ05 qualifies only a restricted numerical policy for the reconstructed C_unl equations. It does not claim whole-model physical adequacy, historical B2 fidelity, fallback-triggering-state coverage or production fitness. Those remain downstream admission/validation questions."
+    },
+    {
+      "alternative": "Representation stability proves general nonlinear convergence.",
+      "test": "Compare the acceptance contract with the claim language and oracle controls.",
+      "result": "REJECTED_AS_AN_NQ05_CLAIM",
+      "basis": "The policy claims a binary64 discrete acceptance condition only. It requires representation-stable corrections plus an immediate-neighbour residual guard and fail-closed behavior; it does not assert a convergence theorem or convergence from arbitrary starts."
+    },
+    {
+      "alternative": "NQ02 synthetic evidence can substitute for historical B2 or broaden NQ05 to fast Freundlich.",
+      "test": "Inspect NQ02 evidence classes and NQ05 scope exclusions.",
+      "result": "REJECTED_BY_SCOPE_AND_PROVENANCE",
+      "basis": "Historical behavior remains UNKNOWN_WITHOUT_B2. Fast Freundlich has synthetic support but lacks natural/B2 solver support and is explicitly excluded from NQ05."
+    },
+    {
+      "alternative": "Tightening the legacy Newton or fallback threshold is sufficient evidence of correctness.",
+      "test": "Recheck NQ02 fallback sensitivity and equation-relation evidence.",
+      "result": "REJECTED_BY_PINNED_EVIDENCE",
+      "basis": "NQ02 shows fallback threshold changes can select materially different roots/states and the fallback solves a distinct midpoint closure; no monotone correctness argument follows from a smaller threshold or Df."
+    },
+    {
+      "alternative": "The legacy fallback is merely a scalar implementation of the original two-variable C_unl system.",
+      "test": "Recheck the pinned TCD019_NEWTON_FALLBACK_RELATION reconstruction and naturally activated Recfso path-dependence evidence.",
+      "result": "REJECTED_BY_PINNED_EVIDENCE",
+      "basis": "The fallback imposes Rsc=2*Avc-Con and can inherit Recfso from unsuccessful Newton history; it is not equation-equivalent to the reconstructed two-variable system."
+    }
+  ],
+  "active_controls": [
+    "Exact reviewed authoring head 141cad58d03f963522a5631cb9e2e219dbc1ef0d passed workflow run 34686947940 job 103535476679.",
+    "The arithmetic oracle evaluates 3136 finite nonnegative Langmuir secant cases and preserves the exact cancellation-safe storage identity in high precision.",
+    "The zero-delta analytic limit uses the same closed form and therefore introduces no delta switch or chosen Small tolerance.",
+    "Representation-stable exact-root control passes with model_tolerance NONE.",
+    "NQ04 and B3D36 remain pinned as the admitted Iflsol=4 cancellation-safe coefficient-policy dependency.",
+    "NQ02 natural fast-Langmuir multicase evidence remains diagnostic support and is not promoted to historical B2."
+  ],
+  "negative_controls": [
+    "A finite-delta endpoint tangent is explicitly shown not to equal the finite Langmuir secant/storage change.",
+    "One-ULP displaceable candidate roots fail the representation-stability/neighbour acceptance control.",
+    "Legacy midpoint fallback, inherited Recfso and any fallback Df tolerance remain unadmitted.",
+    "Fast Freundlich, slow Langmuir/TCD-024, off-relation initialization/TCD-014 and fallback-triggering-state coverage remain excluded.",
+    "No production source, canonical TCD register, central queue, B4 state or production authorization is changed."
+  ],
+  "scientific_gates": {
+    "AUTHORITY_AND_PROVENANCE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "B3D41, B3Q05, RG05N, NQ02, NQ04, B3D36, GOV03, GOV04, GOV05 and B3Q01 were live-rechecked or exact-pinned; the reviewed NQ05 head passed exact-authority CI checks."
+    },
+    "SCHEMA_AND_VALIDATOR_SEMANTICS": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The failed KeyError was traced to a stale validator expectation against the B1 fallback sensitivity matrix. The matrix is complete for its own schema; NQ02 status and the Newton/fallback relation are the pinned authorities for the boolean non-qualification claim."
+    },
+    "EXACT_STORAGE_EQUATION_IDENTITY": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "For fast Langmuir, D(C,C0)=a/((1+bC)(1+bC0)) is algebraically the finite storage secant and its analytic zero-delta limit; the oracle checks the finite storage identity without a model tolerance."
+    },
+    "NONLINEAR_ACCEPTANCE_POLICY": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The candidate retains the reconstructed two-variable C_unl target, recomputes state-local slow-rate selection, requires finite binary64 state/correction/Jacobian conditions, representation stability and a local neighbour residual guard, otherwise fails closed."
+    },
+    "PHYSICAL_ADEQUACY_AND_WHOLE_MODEL_VALIDATION": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "NQ05 is a bounded numerical-policy qualification and does not establish whole-model physical adequacy, calibration, validation or production fitness."
+    },
+    "FALLBACK_EXCLUSION": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "Pinned NQ02 evidence establishes that legacy fallback is causally material, uses a distinct midpoint closure and can be history dependent. NQ05 therefore admits no legacy fallback and chooses no fallback tolerance."
+    },
+    "SCOPE_SEPARATION": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The candidate is limited to Optcxfa=2 and Optcxsl in {1,3}, constitutively consistent starts and finite nonnegative binary64 state. Fast Freundlich, TCD-024, TCD-014 and fallback-triggering-state coverage remain outside scope."
+    },
+    "HISTORICAL_UNCERTAINTY_ROUTE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "GOV03 remains current for the no-B2 route; historical behavior stays UNKNOWN_WITHOUT_B2 and no synthetic result is promoted to B2."
+    },
+    "NON_INTERFERENCE": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The remediation changes only the NQ05 validator. The workunit changes no production source, central queue, canonical TCD register, B3 admission, B4 state or production authorization."
+    }
+  },
+  "adversarial_gates": {
+    "NO_BLIND_SCHEMA_FIELD_ADDITION": "PASS",
+    "NO_GENERAL_CONVERGENCE_OVERCLAIM": "PASS",
+    "NO_PHYSICAL_ADEQUACY_OVERCLAIM": "PASS",
+    "NO_SYNTHETIC_TO_B2_PROMOTION": "PASS",
+    "NO_FAST_FREUNDLICH_OR_SLOW_LANGMUIR_SCOPE_CREEP": "PASS",
+    "NO_LEGACY_FALLBACK_OR_TOLERANCE_ADMISSION": "PASS",
+    "NO_PRODUCTION_OR_B4_PROMOTION": "PASS",
+    "NO_CENTRAL_QUEUE_MUTATION": "PASS"
+  },
+  "tier_c_enhanced": {
+    "immutable_authoring_checkpoint": "PASS",
+    "complete_source_state_ownership_reconstruction": "PASS",
+    "first_read_first_write_or_restore_direction_analysis": "PASS",
+    "counter_hypothesis_test": "PASS",
+    "active_controls": "PASS",
+    "negative_controls": "PASS",
+    "split_run_or_restart_evidence": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "NQ05 changes no persistent or restart state; TCD-014/off-relation initialization is explicitly outside scope."
+    },
+    "exact_comparison_policy": "Use exact algebraic Langmuir storage identity where available; use binary64 representation-stability equality and immediate-neighbour residual ordering for the discrete root predicate; introduce no model residual tolerance.",
+    "no_invented_tolerance": true,
+    "regression_guard": "PASS",
+    "regression_surface_declared": true,
+    "exact_final_head_ci_required": true
+  },
+  "residual_uncertainty": [
+    "Historical revision-53 corrected behavior remains UNKNOWN_WITHOUT_B2.",
+    "Representation stability is a bounded binary64 acceptance predicate, not a proof of global nonlinear convergence or convergence from arbitrary initial guesses.",
+    "The workunit does not establish whole-model physical adequacy of a no-fallback production solver; that remains downstream of this numerical-policy qualification.",
+    "Fallback-triggering states are deliberately not qualified by NQ05; failure outside the accepted root contract is fail-closed.",
+    "Fast Freundlich, slow Langmuir/TCD-024 and off-relation initialization/TCD-014 remain unqualified here.",
+    "Production implementation and compiler-level floating-point behavior remain outside this workunit."
+  ],
+  "outcome": "SELF_REVIEW_PASS_TCD019_RESTRICTED_NO_FALLBACK_NUMERICAL_POLICY_WITH_HISTORICAL_UNCERTAINTY"
+}
