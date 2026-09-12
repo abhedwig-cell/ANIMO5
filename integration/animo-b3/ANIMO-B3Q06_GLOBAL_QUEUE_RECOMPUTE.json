@@ -1,0 +1,61 @@
+{
+  "work_unit": "ANIMO-B3Q06",
+  "title": "Global Canonical B3 Queue Recompute and Closure Gate after RG05O",
+  "kind": "GOVERNANCE_RECOMPUTE_ONLY_NO_SCIENTIFIC_ADMISSION",
+  "aggregate_authority": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+  "previous_queue_authority": "ANIMO-B3Q05@997d867a2b107ec8e28efce530c82a204719de46",
+  "b3_framework_authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "routing_authority": "ANIMO-B3I10@942f26fe32eaf91679e59a1968ae173a3703e22d",
+  "canonical_queue_source": {
+    "artifact": "integration/animo-reg/RG05_B3_QUEUE.json",
+    "entry_count": 25,
+    "tail": "TCD-042",
+    "later_top_level_reservation_found": false,
+    "note": "RG05O did not modify the canonical register or reserve a later top-level TCD; canonical membership remains the 25-object TCD-015..TCD-042 queue carried from RG05."
+  },
+  "canonical_top_level_queue": [
+    "TCD-015", "TCD-016", "TCD-017", "TCD-018", "TCD-019", "TCD-023", "TCD-024", "TCD-025", "TCD-026", "TCD-027", "TCD-028", "TCD-029", "TCD-030", "TCD-031", "TCD-032", "TCD-033", "TCD-034", "TCD-035", "TCD-036", "TCD-037", "TCD-038", "TCD-039", "TCD-040", "TCD-041", "TCD-042"
+  ],
+  "admitted_top_level_at_RG05O": [
+    "TCD-015", "TCD-017", "TCD-018", "TCD-019", "TCD-023", "TCD-024", "TCD-025", "TCD-026", "TCD-027", "TCD-028", "TCD-029", "TCD-030", "TCD-031", "TCD-032", "TCD-033", "TCD-035", "TCD-036", "TCD-037", "TCD-038", "TCD-039", "TCD-041", "TCD-042"
+  ],
+  "newly_admitted_top_level_since_B3Q05": ["TCD-019", "TCD-032", "TCD-033"],
+  "newly_admitted_child_atoms_since_B3Q05": [],
+  "unadmitted_top_level_at_RG05O": [
+    {"tcd": "TCD-016", "last_b3q05_queue_state": "WAITING_ON_THEORY", "current_claim": "UNADMITTED_AT_RG05O", "last_queue_state_revalidated_here": false},
+    {"tcd": "TCD-034", "last_b3q05_queue_state": "WAITING_ON_THEORY", "current_claim": "UNADMITTED_AT_RG05O", "last_queue_state_revalidated_here": false},
+    {"tcd": "TCD-040", "last_b3q05_queue_state": "WAITING_ON_ROUTE_AND_REVIEW", "current_claim": "UNADMITTED_AT_RG05O", "last_queue_state_revalidated_here": false}
+  ],
+  "counts": {
+    "canonical_top_level_queue": 25,
+    "admitted_top_level": 22,
+    "unadmitted_top_level": 3,
+    "admitted_child_atoms": 10,
+    "scientific_admission_objects": 32
+  },
+  "closure_rule": "QUEUE_CLOSED_ONLY_IF_EVERY_CANONICAL_TOP_LEVEL_QUEUE_OBJECT_HAS_QUALIFIED_FINAL_B3_DISPOSITION_SUFFICIENT_FOR_WHOLE_B3_COMPOSITION; CHILD_ADMISSION_DOES_NOT_IMPLY_PARENT_ADMISSION",
+  "closure_result": {
+    "global_canonical_b3_queue_closed": false,
+    "whole_b3_composition_precondition_met": false,
+    "positive_b3_composition_completeness_authority_allowed": false,
+    "tb7_allowed": false,
+    "b4_allowed": false,
+    "production_allowed": false,
+    "blocker": "THREE_CANONICAL_TOP_LEVEL_B3_QUEUE_OBJECTS_REMAIN_UNADMITTED_AT_RG05O"
+  },
+  "hard_boundaries": {
+    "scientific_admission_performed": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_register_modified": false,
+    "queue_membership_modified": false,
+    "historical_b2_created": false,
+    "child_admission_promoted_to_parent": false,
+    "scope_exclusion_promoted_to_parent_admission": false,
+    "positive_composition_authority_created": false,
+    "whole_model_golden_baseline_created": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_migration_authorized": false
+  }
+}
