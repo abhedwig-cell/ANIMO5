@@ -1,0 +1,88 @@
+{
+  "work_unit": "ANIMO-RG05O",
+  "title": "Ninth Batched B3 Admission Integration",
+  "branch": "work/animo-rg05o-ninth-batched-admission-integration",
+  "state": "PERSISTED_VALIDATION_PENDING",
+  "decision": null,
+  "source_aggregate": "ANIMO-RG05N@8758bd30e302b75dd7854ac00fd2e29473669a13",
+  "source_aggregate_exact_final_ci": "34646787915:success",
+  "aggregate_trigger": "NORMAL_BATCH_THRESHOLD_REACHED_THREE_EXACT_FINAL_QUALIFIED_POST_RG05N_B3_ADMISSIONS",
+  "governance": {
+    "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "routing": "ANIMO-B3I10@942f26fe32eaf91679e59a1968ae173a3703e22d",
+    "queue": "ANIMO-B3Q05@997d867a2b107ec8e28efce530c82a204719de46"
+  },
+  "new_b3_admissions": [
+    "ANIMO-B3D40@83fedc7323cea6da696a81bc64e4e3b13d794880:TCD-033",
+    "ANIMO-B3D41@3ac98899dd4e6b7a5133cbecd758fab0b81e945d:TCD-032",
+    "ANIMO-B3D42@86474df11ecf104797df9df3b8d53fcf2e847873:TCD-019"
+  ],
+  "exact_final_admission_ci": {
+    "ANIMO-B3D40": "34655310361:success",
+    "ANIMO-B3D41": "34676576732:success",
+    "ANIMO-B3D42": "34687484143:success"
+  },
+  "scientific_admission_count": 32,
+  "historical_uncertainty_admission_count": 32,
+  "normal_b2_admission_count": 0,
+  "top_level_admitted_tcd_count": 22,
+  "admitted_child_atom_count": 10,
+  "current_routing_authority": "ANIMO-B3I10@942f26fe32eaf91679e59a1968ae173a3703e22d",
+  "current_queue_authority": "ANIMO-B3Q05@997d867a2b107ec8e28efce530c82a204719de46",
+  "tcd033_state": {
+    "top_level_admitted": true,
+    "admitted_identity": "TCD033_CH4_COMPONENT_PARENT_DAUGHTER_PARTITION_QI_EQ_Q_SI_OVER_S",
+    "production_authorized": false
+  },
+  "tcd032_state": {
+    "top_level_admitted": true,
+    "admitted_identity": "TCD032_SINGLE_OWNER_METHANOGENESIS_C_TRANSFER_WITH_GROSS_DEBIT_INTERNAL_CREDIT_AND_NET_QJ_DT_CLOSURE",
+    "production_authorized": false
+  },
+  "tcd019_state": {
+    "top_level_admitted": true,
+    "admitted_identity": "TCD019_FAST_LANGMUIR_EXACT_STORAGE_REPRESENTATION_STABLE_TWO_VARIABLE_ROOT_NO_LEGACY_FALLBACK_BINARY64_POLICY",
+    "legacy_fallback_admitted": false,
+    "production_authorized": false
+  },
+  "b3_complete": false,
+  "b4_open": false,
+  "production_open": false,
+  "global_canonical_queue_count_recomputed": false,
+  "known_remaining_unadmitted_from_b3q05_delta": ["TCD-016", "TCD-034", "TCD-040"],
+  "hard_boundaries": {
+    "scientific_readmission_performed": false,
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_tcd_register_modified": false,
+    "queue_authority_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "child_readmission_performed": false,
+    "automatic_parent_admission_performed": false,
+    "b4_admitted": false,
+    "production_migration_admitted": false,
+    "historical_fidelity_claimed": false,
+    "synthetic_evidence_counted_as_b2": false
+  },
+  "validation": {
+    "machine_validated": false,
+    "workflow": "ANIMO-RG05O ninth batched B3 admission integration",
+    "candidate_run_id": null,
+    "candidate_job_id": null,
+    "tested_candidate_head": null,
+    "candidate_conclusion": "PENDING",
+    "validator": "PENDING",
+    "scope_guard": "PENDING",
+    "exact_final_head_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next_if_validated": "USE_ANIMO_RG05O_AS_CURRENT_AGGREGATE_AUTHORITY_THEN_RECOMPUTE_GLOBAL_CANONICAL_B3_QUEUE; DO_NOT_OPEN_B4_OR_PRODUCTION"
+}
