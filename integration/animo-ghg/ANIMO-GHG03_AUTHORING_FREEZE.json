@@ -1,0 +1,25 @@
+{
+  "work_unit": "ANIMO-GHG03",
+  "target": "TCD-032",
+  "branch": "work/animo-ghg03-tcd032-methanogenesis-c-transfer-ownership",
+  "base_head": "83fedc7323cea6da696a81bc64e4e3b13d794880",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_TIER_C_REVIEW",
+  "substantive_files": [
+    "docs/ghg/TCD032_METHANOGENESIS_C_TRANSFER_OWNERSHIP_QUALIFICATION.md",
+    "integration/animo-ghg/GHG03_TCD032_C_TRANSFER_POLICY.json",
+    "tools/ghg03/tcd032_c_transfer_oracle.py",
+    "tools/ghg03/validate_ghg03_tcd032.py",
+    ".github/workflows/animo-ghg03-tcd032.yml"
+  ],
+  "review_must_pin_exact_green_authoring_head": true,
+  "substantive_change_resets_GOV05_review": true,
+  "post_review_allowed_changes": [
+    "integration/animo-ghg/ANIMO-GHG03_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-ghg/ANIMO-GHG03_STATUS.json"
+  ],
+  "exact_final_head_ci_required": true,
+  "production_source_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "historical_behavior": "UNKNOWN_WITHOUT_B2"
+}
