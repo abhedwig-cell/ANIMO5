@@ -52,12 +52,13 @@ jobs:
             python -m json.tool integration/animo-ghg/ANIMO-GHG05_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null
           fi
           python -m py_compile tools/ghg05/validate_ghg05_tcd034.py
-      - name: Compile and run current-GNU post-DO mechanistic control
+      - name: Compile and run current-GNU post-DO mechanistic controls
         run: |
           gfortran --version
           gfortran -std=f2018 -Wall -Wextra -fcheck=all -O0 tools/ghg05/tcd034_post_do_probe.f90 -o /tmp/tcd034_post_do_probe
           /tmp/tcd034_post_do_probe | tee /tmp/tcd034_post_do_probe.out
-          grep -Fx 'normal_post_do_ln=4' /tmp/tcd034_post_do_probe.out
+          grep -Fx 'positive_trip_post_do_ln=4' /tmp/tcd034_post_do_probe.out
+          grep -Fx 'zero_trip_post_do_ln=1' /tmp/tcd034_post_do_probe.out
           grep -Fx 'explicit_reset_negative_control_ln=3' /tmp/tcd034_post_do_probe.out
       - name: Validate bounded TCD034 requalification
         run: python tools/ghg05/validate_ghg05_tcd034.py
