@@ -1,0 +1,17 @@
+{
+  "work_unit": "ANIMO-B3D42",
+  "target": "TCD-019",
+  "branch": "work/animo-b3d42-tcd019-gov05-tier-c-admission",
+  "base_head": "62080a8e731681407e2e7e759decc49c1a47fa7b",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_TIER_C_REVIEW",
+  "review_must_pin_exact_green_authoring_head": true,
+  "substantive_change_resets_GOV05_review": true,
+  "post_review_allowed_changes": ["integration/animo-b3/ANIMO-B3D42_INTERNAL_ADVERSARIAL_REVIEW.json", "integration/animo-b3/ANIMO-B3D42_STATUS.json"],
+  "exact_final_head_ci_required": true,
+  "production_source_frozen": true,
+  "frozen_b0_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "central_regie_frozen_in_this_workunit": true,
+  "historical_behavior": "UNKNOWN_WITHOUT_B2"
+}
