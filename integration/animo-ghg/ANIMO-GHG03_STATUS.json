@@ -3,11 +3,11 @@
   "target": "TCD-032",
   "title": "TCD-032 Methanogenesis Carbon-Transfer Ownership Qualification",
   "branch": "work/animo-ghg03-tcd032-methanogenesis-c-transfer-ownership",
-  "phase": "AUTHORING_FROZEN_PENDING_GOV05_TIER_C_ADVERSARIAL_REVIEW",
-  "state": "CANDIDATE_TCD032_C_TRANSFER_POLICY_NOT_B3_ADMITTED_PENDING_REVIEW",
+  "phase": "CLOSED_QUALIFIED_SCIENTIFIC_POLICY",
+  "state": "QUALIFIED_TCD032_BOUNDED_C_TRANSFER_OWNERSHIP_POLICY_READY_FOR_SEPARATE_B3_ADMISSION",
   "candidate_decision": "QUALIFY_TCD032_BOUNDED_C_TRANSFER_OWNERSHIP_IDENTITY_READY_FOR_SEPARATE_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
-  "decision": null,
-  "qualified": false,
+  "decision": "QUALIFY_TCD032_BOUNDED_C_TRANSFER_OWNERSHIP_IDENTITY_READY_FOR_SEPARATE_B3_ADMISSION_WITH_HISTORICAL_UNCERTAINTY",
+  "qualified": true,
   "b3_admission_performed": false,
   "production_authorized": false,
   "b3_qualification_class": "B_LOCAL_SCIENTIFIC_TRANSFER_IDENTITY",
@@ -25,20 +25,33 @@
   "tcd034_modified_or_admitted": false,
   "review": {
     "required": true,
-    "started": false,
-    "completed": false,
+    "started": true,
+    "completed": true,
     "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "review_mode": "SAME_AGENT_SECOND_PASS",
     "same_agent": true,
     "genuinely_independent": false,
     "independence_claimed": false,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+    "reviewed_head": "7a7454183ffd503d2526c40f115e4e212cd9c854",
+    "reviewed_head_ci_run": 34676288482,
+    "reviewed_head_ci_job": 103506622864,
+    "reviewed_head_ci_conclusion": "success",
+    "outcome": "SELF_REVIEW_PASS_TCD032_BOUNDED_C_TRANSFER_OWNERSHIP_POLICY_WITH_HISTORICAL_UNCERTAINTY",
     "artifact": "integration/animo-ghg/ANIMO-GHG03_INTERNAL_ADVERSARIAL_REVIEW.json"
   },
   "validation": {
     "workflow": ".github/workflows/animo-ghg03-tcd032.yml",
     "validator": "tools/ghg03/validate_ghg03_tcd032.py",
     "oracle": "tools/ghg03/tcd032_c_transfer_oracle.py",
-    "exact_final_head_ci_required": true
+    "authoring_head": "7a7454183ffd503d2526c40f115e4e212cd9c854",
+    "authoring_head_ci_run": 34676288482,
+    "authoring_head_ci_job": 103506622864,
+    "authoring_head_ci_conclusion": "success",
+    "oracle_arithmetic": "EXACT_RATIONAL_NO_TOLERANCE",
+    "scope_guard": "PASS",
+    "exact_final_head_ci_required": true,
+    "closeout_note": "The exact frozen substantive GHG03 authoring head 7a7454183ffd503d2526c40f115e4e212cd9c854 passed CI run 34676288482. This review/status-only closeout is authoritative only after the same workflow succeeds on its exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -61,10 +74,10 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_THEN_GOV05_TIER_C_ADVERSARIAL_REVIEW; B3_ADMISSION_REMAINS_SEPARATE"
+  "next_after_exact_final_green": "OPEN_SEPARATE_GOV05_TIER_C_TCD032_B3_ADMISSION_DECISION; DO_NOT MODIFY PRODUCTION OR OPEN B4"
 }

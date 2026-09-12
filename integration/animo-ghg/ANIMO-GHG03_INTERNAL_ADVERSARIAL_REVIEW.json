@@ -1,0 +1,106 @@
+{
+  "work_unit": "ANIMO-GHG03",
+  "target": "TCD-032",
+  "review_kind": "GOV05_TIER_C_SINGLE_AGENT_ADVERSARIAL_SCIENTIFIC_REVIEW",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "reviewed_head": "7a7454183ffd503d2526c40f115e4e212cd9c854",
+  "reviewed_tree": "65ec09f7823ac28842365bc3cf17b8ba42f4f97a",
+  "reviewed_head_ci_run": 34676288482,
+  "reviewed_head_ci_job": 103506622864,
+  "reviewed_head_ci_conclusion": "success",
+  "risk_tier": "C",
+  "risk_basis": "scientific mass-transfer ownership and carbon-conservation identity on active GHG source families",
+  "immutable_checkpoint": {
+    "substantive_authoring_frozen": true,
+    "head": "7a7454183ffd503d2526c40f115e4e212cd9c854",
+    "ci_exact_head_green": true,
+    "post_review_substantive_changes_forbidden": true
+  },
+  "source_state_ownership_reconstruction": {
+    "producer": "revision-53 CH4produc produces total QPrCH4 and source-family QPrCH4Do/QPrCH4Ex/QPrCH4Hu/QPrCH4Os",
+    "parent_daughter_dependency": "B3D40 admits sum_j(Q_j)=Q_total under the bounded TCD033 policy",
+    "DOM_active_owner_observed": "Rates2 converts QPrCH4Do into a DOM zero-order sink through Recfpddiorma/Transca",
+    "EXUDATE_active_owner_observed": "no equivalent active methanogenesis source debit outside inactive GHG_Miner was identified by GHG01",
+    "HUMUS_active_owner_observed": "no equivalent active methanogenesis source debit outside inactive GHG_Miner was identified by GHG01",
+    "FRESH_OM_active_owner_observed": "no equivalent active methanogenesis source debit outside inactive GHG_Miner was identified by GHG01",
+    "inactive_transfer_path": "GHG_Miner contains source-family gross mineralisation/internal-incorporation/storage-update logic but both resp_miner call sites are commented out",
+    "DOM_double_owner_risk": "reactivating GHG_Miner without reconciling the existing Rates2 DOM path could create two DOM debit owners",
+    "hidden_state_risk": "GHG_Miner task-1/task-2 local intermediates are not an admitted persistent-state contract; unchanged reactivation is therefore outside this qualification"
+  },
+  "directional_analysis": {
+    "physical_direction": "organic source family -> CH4-C gas/liquid production, with optional internal humus/biomass retention credit",
+    "qualified_debit_direction": "source family debit G_j is positive removal from source OM",
+    "qualified_credit_direction": "I_j is positive internal credit to humus/biomass and must not be counted as CH4-C",
+    "net_externalized_C_direction": "f_C*(G_j-I_j) leaves the organic-family control volume and equals Q_j*dt entering CH4 production",
+    "zero_direction": "Q_j=0 implies no debit and no internal credit"
+  },
+  "counter_hypotheses": [
+    {
+      "id": "H1_DIAGNOSTIC_ONLY",
+      "hypothesis": "CH4 source-family production can be diagnostic and need not debit organic source pools",
+      "test": "compare GHG01 physical gas-store/process classification and GHG_Miner source-pool intent against the proposed no-debit interpretation",
+      "result": "REJECTED",
+      "reason": "QPrCH4 is a physical CH4-C source into dynamic GHG state; omitting a matching source-family C debit creates carbon"
+    },
+    {
+      "id": "H2_REENABLE_GHG_MINER_UNCHANGED",
+      "hypothesis": "TCD032 can be solved by re-enabling both legacy GHG_Miner calls unchanged",
+      "test": "reconstruct owner overlap and task-state dependencies",
+      "result": "REJECTED",
+      "reason": "DOM already has an active Rates2 owner path and GHG_Miner task coupling depends on unqualified cross-call local state and Rdas/assimilation timing"
+    },
+    {
+      "id": "H3_NET_ONLY_IGNORE_INTERNAL_CREDIT",
+      "hypothesis": "every source pool can be debited only by Q_j*dt/f_C, irrespective of retained incorporation",
+      "test": "exact rational negative control removes the I_j credit while preserving a_j>0",
+      "result": "REJECTED",
+      "reason": "when a_j>0 the gross source debit exceeds net CH4 conversion; omitting the matching internal credit over-debits organic C"
+    },
+    {
+      "id": "H4_DUPLICATE_DOM_OWNER",
+      "hypothesis": "Rates2 can retain its DOM debit while a separate GHG transfer owner debits DOM again",
+      "test": "exact rational duplicated-DOM-debit negative control",
+      "result": "REJECTED",
+      "reason": "the resulting net source C loss exceeds Q_dom*dt exactly"
+    }
+  ],
+  "active_controls": [
+    "zero Q_j -> zero G_j and I_j",
+    "a_j=0 -> direct net debit",
+    "0<a_j<1 -> gross debit plus exact internal credit",
+    "humus family a_hu=0",
+    "multi-family sum closes exactly to sum_j(Q_j)*dt",
+    "B3D40 parent/daughter identity converts family sum to Q_total*dt"
+  ],
+  "negative_controls": [
+    "duplicate DOM debit must fail exact C identity",
+    "missing internal humus credit at a_j>0 must fail exact C identity",
+    "negative Q_j, nonpositive dt/f_C, a_j<0 or a_j>=1 must fail closed"
+  ],
+  "scientific_gates": {
+    "units_reconciled": true,
+    "family_C_identity_exact": true,
+    "total_C_identity_exact_given_B3D40": true,
+    "single_owner_invariant_explicit": true,
+    "no_numerical_tolerance_invented": true,
+    "historical_behavior_claimed": false,
+    "N_or_P_stoichiometry_admitted": false,
+    "effective_assimilation_fraction_selection_admitted": false,
+    "production_implementation_admitted": false
+  },
+  "residual_uncertainty": [
+    "Historical active-GHG transfer behaviour remains UNKNOWN_WITHOUT_B2.",
+    "The exact current-step construction/timing of effective a_j from Rdas and Asfa-family variables is not qualified here.",
+    "N and P consequences of methanogenesis source transfer remain outside GHG03.",
+    "CO2/subsidence accounting and GHG_Miner task-state persistence remain outside GHG03.",
+    "A production implementation must prove that the DOM route has exactly one owner and that any reused Rates2 debit is transaction-equivalent to G_dom and paired with I_dom."
+  ],
+  "outcome": "SELF_REVIEW_PASS_TCD032_BOUNDED_C_TRANSFER_OWNERSHIP_POLICY_WITH_HISTORICAL_UNCERTAINTY",
+  "b3_admission_performed": false,
+  "production_authorized": false
+}
