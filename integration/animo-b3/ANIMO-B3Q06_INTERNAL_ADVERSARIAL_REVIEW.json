@@ -1,0 +1,50 @@
+{
+  "work_unit": "ANIMO-B3Q06",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "reviewed_head": "b3540cdd1d2f781abdf80c44df5bd9cbbc28df66",
+  "reviewed_head_ci_run": 34687851100,
+  "reviewed_head_ci_job": 103537886454,
+  "reviewed_head_ci_conclusion": "success",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "counter_hypothesis": {
+    "claim": "The RG05O batch could be interpreted as closing the canonical B3 queue or as permitting whole-B3 composition because TCD-019, TCD-032 and TCD-033 are now admitted.",
+    "test": "Reconstruct the unchanged 25-object canonical queue, add only exact-final RG05O admissions TCD-019, TCD-032 and TCD-033 to the exact B3Q05 admitted set, and reapply the B3Q01 composition rule.",
+    "result": "REJECTED: TCD-016, TCD-034 and TCD-040 remain unadmitted, so neither queue closure nor whole-B3 composition completeness follows."
+  },
+  "active_controls": [
+    "ANIMO-RG05O exact-final head bc9e6ed997a078336645210ebb4d99ae976893fe with CI 34687736122 reports 32 scientific admission objects, 22 admitted top-level TCDs and 10 admitted child atoms.",
+    "ANIMO-B3Q05 exact-final head 997d867a2b107ec8e28efce530c82a204719de46 with CI 34654186685 reports 19 admitted and 6 unadmitted top-level TCDs before the RG05O batch.",
+    "The canonical membership remains 25 top-level objects with tail TCD-042 and no TCD-043 reservation.",
+    "B3Q01 still requires every required component to be admitted before composition can be admitted."
+  ],
+  "negative_controls": [
+    "TCD-019, TCD-032 and TCD-033 are counted only through exact-final RG05O integration of their distinct admission authorities.",
+    "Legacy queue labels for TCD-016, TCD-034 and TCD-040 are not requalified by this governance recompute.",
+    "No child admission, scope exclusion or restricted numerical domain is promoted to a broader scientific admission.",
+    "No canonical register mutation, new top-level reservation, historical B2 evidence, TB7 baseline, B4 authority or production authority is introduced."
+  ],
+  "review_questions": [
+    {"question": "Could the three remaining objects be treated as scientifically re-reviewed because their queue labels are displayed?", "finding": "NO. Their inherited labels are orientation only and last_queue_state_revalidated_here remains false."},
+    {"question": "Could 32 scientific admission objects imply closure of a 25-object top-level queue?", "finding": "NO. The scientific count includes 10 child atoms; only 22 of 25 canonical top-level objects are admitted."},
+    {"question": "Could restricted TCD-019 admission be broadened while counting it here?", "finding": "NO. B3Q06 only counts the exact B3D42 admitted identity and does not alter its restricted domain."},
+    {"question": "Could B3Q06 open TB7, B4 or production because only three objects remain?", "finding": "NO. One unadmitted required top-level object is sufficient to keep composition incomplete; three remain."},
+    {"question": "Is this review genuinely independent?", "finding": "NO. It is a GOV05 same-agent adversarial review with lower assurance than GOV04 separate-context review."}
+  ],
+  "rejected_overclaims": [
+    "GLOBAL_B3_QUEUE_CLOSED",
+    "WHOLE_B3_COMPOSITION_COMPLETE",
+    "TB7_ALLOWED",
+    "B4_ALLOWED",
+    "PRODUCTION_ALLOWED",
+    "THREE_REMAINING_OBJECTS_REQUALIFIED_BY_THIS_WORKUNIT",
+    "TCD019_RESTRICTED_SCOPE_BROADENED",
+    "CHILD_ADMISSION_IMPLIES_PARENT",
+    "HISTORICAL_B2_CREATED",
+    "GENUINELY_INDEPENDENT_REVIEW"
+  ],
+  "positive_composition_completeness_authority_created": false,
+  "outcome": "SELF_REVIEW_PASS_NEGATIVE_B3_CLOSURE_GATE_THREE_TOP_LEVEL_UNADMITTED"
+}
