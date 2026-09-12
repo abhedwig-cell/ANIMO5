@@ -1,0 +1,40 @@
+{
+  "work_unit": "ANIMO-RG05O",
+  "source_aggregate": "ANIMO-RG05N@8758bd30e302b75dd7854ac00fd2e29473669a13",
+  "source_queue_authority": "ANIMO-B3Q05@997d867a2b107ec8e28efce530c82a204719de46",
+  "pre": {
+    "scientific_admissions": 29,
+    "historical_uncertainty_admissions": 29,
+    "top_level_admitted_tcd_count": 19,
+    "admitted_child_atom_count": 10,
+    "b3q05_unadmitted_top_level": ["TCD-016", "TCD-019", "TCD-032", "TCD-033", "TCD-034", "TCD-040"]
+  },
+  "delta": {
+    "scientific_admissions": 3,
+    "historical_uncertainty_admissions": 3,
+    "top_level_admitted_tcds": 3,
+    "child_atoms": 0,
+    "objects": ["TCD-033", "TCD-032", "TCD-019"]
+  },
+  "post": {
+    "scientific_admissions": 32,
+    "historical_uncertainty_admissions": 32,
+    "top_level_admitted_tcd_count": 22,
+    "admitted_child_atom_count": 10,
+    "known_remaining_from_b3q05_after_exact_admission_delta": ["TCD-016", "TCD-034", "TCD-040"],
+    "global_queue_recomputed": false
+  },
+  "guards": {
+    "scientific_readmission": false,
+    "automatic_parent_admission": false,
+    "child_readmission": false,
+    "canonical_register_mutation": false,
+    "queue_authority_rewrite": false,
+    "new_top_level_tcd_reserved": false,
+    "historical_B2_created": false,
+    "production_authorized": false,
+    "B4_opened": false,
+    "global_canonical_queue_count_recomputed": false
+  },
+  "required_next_queue_workunit": "ANIMO-B3Q06_OR_LATER_EQUIVALENT_GLOBAL_QUEUE_RECOMPUTE"
+}
