@@ -1,0 +1,63 @@
+name: ANIMO-NQ05 TCD019 restricted no-fallback numerical policy
+
+on:
+  push:
+    branches:
+      - work/animo-nq05-tcd019-restricted-no-fallback-policy
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch exact authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in 3ac98899dd4e6b7a5133cbecd758fab0b81e945d 40a41089020f78ee1d5181b8afc7bdb511af3193 bfd736b88b6fc4f2a66970b812172729c1923562 b74ec4461ab4d7b62ecfaf175e1eeeec8c58f7b2 997d867a2b107ec8e28efce530c82a204719de46 8758bd30e302b75dd7854ac00fd2e29473669a13 cbd262bdabe92923113b7326f2f42822ce9a971c f65a47724e4a4fca7f2d8b8d6de9eeee51867904; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify exact-final current authorities
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          checks = {
+              34676576732: "3ac98899dd4e6b7a5133cbecd758fab0b81e945d",
+              34654186685: "997d867a2b107ec8e28efce530c82a204719de46",
+              34646787915: "8758bd30e302b75dd7854ac00fd2e29473669a13",
+              34600616004: "bfd736b88b6fc4f2a66970b812172729c1923562",
+              34601299550: "b74ec4461ab4d7b62ecfaf175e1eeeec8c58f7b2",
+          }
+          for run_id, head in checks.items():
+              req = urllib.request.Request(
+                  f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}",
+                  headers={"Authorization": f"Bearer {os.environ['GH_TOKEN']}", "Accept": "application/vnd.github+json"},
+              )
+              with urllib.request.urlopen(req) as response:
+                  data = json.load(response)
+              assert data["head_sha"] == head, (run_id, data.get("head_sha"))
+              assert data["status"] == "completed" and data["conclusion"] == "success", (run_id, data.get("status"), data.get("conclusion"))
+          print("exact-final current authorities verified; NQ02 retained as pinned diagnostic evidence commit")
+          PY
+      - name: Parse and compile NQ05 package
+        run: |
+          python -m json.tool integration/animo-numerics/NQ05_TCD019_RESTRICTED_POLICY.json >/dev/null
+          python -m json.tool integration/animo-numerics/ANIMO-NQ05_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-numerics/ANIMO-NQ05_STATUS.json >/dev/null
+          if test -f integration/animo-numerics/ANIMO-NQ05_INTERNAL_ADVERSARIAL_REVIEW.json; then
+            python -m json.tool integration/animo-numerics/ANIMO-NQ05_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null
+          fi
+          python -m py_compile tools/nq05/tcd019_restricted_policy_oracle.py tools/nq05/validate_nq05_tcd019.py
+      - name: Run restricted-policy arithmetic oracle
+        run: python tools/nq05/tcd019_restricted_policy_oracle.py
+      - name: Validate bounded TCD019 qualification
+        run: python tools/nq05/validate_nq05_tcd019.py

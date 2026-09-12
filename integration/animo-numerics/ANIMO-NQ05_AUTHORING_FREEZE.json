@@ -1,0 +1,26 @@
+{
+  "work_unit": "ANIMO-NQ05",
+  "target": "TCD-019",
+  "branch": "work/animo-nq05-tcd019-restricted-no-fallback-policy",
+  "base_head": "3ac98899dd4e6b7a5133cbecd758fab0b81e945d",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_TIER_C_REVIEW",
+  "substantive_files": [
+    "docs/numerics/TCD019_RESTRICTED_NO_FALLBACK_NUMERICAL_POLICY.md",
+    "integration/animo-numerics/NQ05_TCD019_RESTRICTED_POLICY.json",
+    "tools/nq05/tcd019_restricted_policy_oracle.py",
+    "tools/nq05/validate_nq05_tcd019.py",
+    ".github/workflows/animo-nq05-tcd019.yml"
+  ],
+  "review_must_pin_exact_green_authoring_head": true,
+  "substantive_change_resets_GOV05_review": true,
+  "post_review_allowed_changes": [
+    "integration/animo-numerics/ANIMO-NQ05_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-numerics/ANIMO-NQ05_STATUS.json"
+  ],
+  "exact_final_head_ci_required": true,
+  "production_source_frozen": true,
+  "frozen_b0_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "historical_behavior": "UNKNOWN_WITHOUT_B2"
+}
