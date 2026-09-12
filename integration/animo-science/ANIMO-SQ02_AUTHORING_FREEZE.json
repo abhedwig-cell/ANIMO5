@@ -1,0 +1,30 @@
+{
+  "work_unit": "ANIMO-SQ02",
+  "target": "TCD-016-C1",
+  "branch": "work/animo-sq02-tcd016-c1-continuation-state-scientific-review",
+  "base_head": "11e9bcdc6654e63f84875bf1f28dc54abe725700",
+  "base_authority": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+  "upstream_science_authority": "ANIMO-SQ01@26d0c74aa440bd73c23709d313e24ea8af2a0bcd",
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_TIER_C_REVIEW",
+  "substantive_files": [
+    "docs/science/TCD016_C1_GOV05_ADVERSARIAL_SCIENTIFIC_REVIEW.md",
+    "integration/animo-science/SQ02_TCD016_C1_MODEL_EVOLUTION_DISPOSITION.json",
+    "tools/sq02/tcd016_c1_topology_oracle.py",
+    "tools/sq02/validate_sq02_tcd016_c1.py",
+    ".github/workflows/animo-sq02-tcd016-c1.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-science/ANIMO-SQ02_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-science/ANIMO-SQ02_STATUS.json"
+  ],
+  "review_must_pin_exact_green_authoring_head": true,
+  "substantive_change_resets_GOV05_review": true,
+  "exact_final_head_ci_required": true,
+  "production_source_frozen": true,
+  "frozen_b0_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "b3_admission_forbidden_in_this_workunit": true,
+  "historical_behavior": "UNKNOWN_WITHOUT_B2"
+}

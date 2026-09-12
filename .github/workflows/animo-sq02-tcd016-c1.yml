@@ -1,0 +1,58 @@
+name: ANIMO-SQ02 TCD016-C1 continuation-state scientific review
+
+on:
+  push:
+    branches:
+      - work/animo-sq02-tcd016-c1-continuation-state-scientific-review
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify exact branch head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Fetch exact authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in 11e9bcdc6654e63f84875bf1f28dc54abe725700 26d0c74aa440bd73c23709d313e24ea8af2a0bcd f65a47724e4a4fca7f2d8b8d6de9eeee51867904 846e0f4d02a38b9e02cc1419b1ca87e63aaedb54 bc9e6ed997a078336645210ebb4d99ae976893fe; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+          done
+      - name: Verify current negative B3 closure authority CI
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          run_id = 34687903443
+          expected = "11e9bcdc6654e63f84875bf1f28dc54abe725700"
+          req = urllib.request.Request(
+              f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}",
+              headers={"Authorization": f"Bearer {os.environ['GH_TOKEN']}", "Accept": "application/vnd.github+json"},
+          )
+          with urllib.request.urlopen(req) as response:
+              data = json.load(response)
+          assert data["head_sha"] == expected, data.get("head_sha")
+          assert data["status"] == "completed" and data["conclusion"] == "success", (data.get("status"), data.get("conclusion"))
+          print("B3Q06 exact-final CI authority verified")
+          PY
+      - name: Parse and compile SQ02 package
+        run: |
+          python -m json.tool integration/animo-science/SQ02_TCD016_C1_MODEL_EVOLUTION_DISPOSITION.json >/dev/null
+          python -m json.tool integration/animo-science/ANIMO-SQ02_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-science/ANIMO-SQ02_STATUS.json >/dev/null
+          if test -f integration/animo-science/ANIMO-SQ02_INTERNAL_ADVERSARIAL_REVIEW.json; then
+            python -m json.tool integration/animo-science/ANIMO-SQ02_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null
+          fi
+          python -m py_compile tools/sq02/tcd016_c1_topology_oracle.py tools/sq02/validate_sq02_tcd016_c1.py
+      - name: Run exact continuation-topology oracle
+        run: python tools/sq02/tcd016_c1_topology_oracle.py
+      - name: Validate bounded TCD016-C1 package
+        run: python tools/sq02/validate_sq02_tcd016_c1.py

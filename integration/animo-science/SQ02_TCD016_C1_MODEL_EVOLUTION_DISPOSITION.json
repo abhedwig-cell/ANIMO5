@@ -1,0 +1,75 @@
+{
+  "work_unit": "ANIMO-SQ02",
+  "target": "TCD-016-C1",
+  "parent_tcd": "TCD-016",
+  "title": "Surface NH4 non-aqueous continuation-state model-evolution topology scientific review",
+  "qualification_class": "C_MISSING_PHYSICAL_STATE_OR_INCOMPLETE_STATE_MODEL",
+  "base_authority": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+  "upstream_science_authority": "ANIMO-SQ01@26d0c74aa440bd73c23709d313e24ea8af2a0bcd",
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "b3_framework_authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "evidence_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "canonical_event": "Puitmijn_Cranendonck_60:TITO=1490:layer0",
+    "canonical_residual_NH4_kgN_m2": "1.3880242022597072e-5"
+  },
+  "candidate_state": {
+    "name": "M_surface_NH4_non_aqueous_continuation",
+    "unit": "kg N m-2",
+    "owner": "SURFACE_CHEMISTRY_PONDING_CONTROL_VOLUME",
+    "chemically_noncommittal": true,
+    "independent_of_aqueous_volume": true,
+    "persistent_state_required_if_implemented": true,
+    "restart_checkpoint_state_required_if_implemented": true,
+    "typed_internal_transfers_required": true,
+    "mass_ledger_observer_only": true
+  },
+  "supplemental_theory": {
+    "animo35_report144": {
+      "public_full_text_url": "https://edepot.wur.nl/363774",
+      "role": "SUPPLEMENTAL_ANIMO_SPECIFIC_PUBLIC_THEORY_NOT_IMMUTABLE_B0",
+      "finding": "ANIMO_3_5_DESCRIBES_AN_IMAGINARY_SURFACE_STORAGE_RESERVOIR_FOR_ADDITIONS_WITH_ITS_OWN_RELEASE_BOOKKEEPING",
+      "consequence": "EXISTING_ADDITIONS_RESERVOIR_MUST_NOT_BE_SILENTLY_REPURPOSED_AS_GENERIC_RESIDUAL_PONDING_OWNER"
+    },
+    "animo40_alterra_report983": {
+      "official_record_confirmed": true,
+      "full_text_immutably_ingested_here": false,
+      "negative_claim_about_uninspected_text": false
+    }
+  },
+  "qualified_model_evolution_topology": {
+    "areic_continuation_owner_acceptable": true,
+    "finite_owner_when_aqueous_volume_zero": true,
+    "explicit_wet_to_continuation_transfer_required": true,
+    "explicit_continuation_to_receiving_phase_transfer_required": true,
+    "restart_persistence_required": true,
+    "ledger_ownership_forbidden": true,
+    "semantic_alias_to_additions_reservoir_forbidden": true,
+    "semantic_alias_to_soil_sorption_forbidden": true,
+    "ghost_water_floor_forbidden": true,
+    "forced_tiny_outflow_closure_forbidden": true
+  },
+  "not_qualified": {
+    "specific_non_aqueous_phase": true,
+    "dry_hold_chemistry_or_inertness": true,
+    "NH3_volatilization_law": true,
+    "nitrification_or_other_reaction_law": true,
+    "soil_exchange_or_sorption_transfer": true,
+    "precipitation_or_crystallization_law": true,
+    "instantaneous_redissolution": true,
+    "finite_rate_remobilization": true,
+    "transfer_to_layer1": true,
+    "physical_status_of_0_1_mm_boundary": true,
+    "physical_status_of_Fu_1e_minus_6_threshold": true,
+    "corrected_historical_ANIMO_behavior": true,
+    "B3_admission": true,
+    "production_implementation": true
+  },
+  "disposition": "ACCEPT_NONCOMMITTAL_CONSERVATION_STATE_FOR_MODEL_EVOLUTION_WITH_ADDITIONAL_PROCESS_QUALIFICATION",
+  "c1_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "e1_disposition": "BLOCKED_DEPENDS_ON_C1_PROCESS_CONTRACT",
+  "parent_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "production_authorized": false
+}
