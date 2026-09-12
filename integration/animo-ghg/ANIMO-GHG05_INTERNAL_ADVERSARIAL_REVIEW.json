@@ -1,0 +1,109 @@
+{
+  "work_unit": "ANIMO-GHG05",
+  "target": "TCD-034",
+  "review_kind": "GOV05_ENHANCED_INTERNAL_ADVERSARIAL_REVIEW",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "reviewed_head": "959cb7e7f2b808da8cb432d83047c9a00c9ce411",
+  "reviewed_head_ci_run": 34689190719,
+  "reviewed_head_ci_job": 103541356729,
+  "reviewed_head_ci_conclusion": "success",
+  "base_authority": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+  "aggregate_authority": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "b3_framework_authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "initial_authoring_checkpoint": {
+    "head": "64c9603b51d14850b43e30607eefaa3a62ee9d77",
+    "ci_run": 34689033439,
+    "ci_job": 103540947953,
+    "ci_conclusion": "success",
+    "review_disposition": "SUPERSEDED_NOT_REVIEWED_AS_FINAL_AUTHORING",
+    "reason": "Adversarial reconstruction found that SWATRE root routines can reset Nuroup to zero before the GHG call. The first authoring package incorrectly treated the input-time Nuroup>=1 check as a persistent runtime invariant. GOV05 therefore required substantive remediation and a new immutable authoring checkpoint."
+  },
+  "evidence_reconstruction": {
+    "frozen_source_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "frozen_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "Nuroup_assignment_search": "Only root_plant.for, root_grass.for and root_extern.for contain explicit Nuroup assignments in the frozen source; each SWATRE branch resets Nuroup=0 then assigns the deepest active Flev layer.",
+    "call_order": "Applicable root routine is called before GHGasses in Animo.for.",
+    "runtime_Nuroup_range": "0<=Nuroup<=Nl",
+    "selector_source_order": "ghg_ch4.for sets LnRoot=Nuroup, exhausts root loops, then reads Te(Ln) into Te50.",
+    "current_standard_semantic_selector": "Te(Nuroup+1)",
+    "zero_root_semantics": "For LnRoot=0 current standard/GNU zero-trip semantics leave Ln=1; fGrow is evaluated from Te(1), but K1plant remains zero because no Ln satisfies Ln<=LnRoot.",
+    "temperature_producer_range": "Temper writes Te(0:Nl); Input_hydro writes Te(1:Nl) and Te(0) separately.",
+    "bottom_edge": "Nuroup=Nl<Manl selects Te(Nl+1), outside demonstrated current-step producer range; Nuroup=Nl=Manl selects Te(Manl+1), outside the declared Te(0:Manl) bound.",
+    "testbank_activation": "The only frozen >GhgCH4: block is GHGMais/Input/soil.inp with FvegCH4=0.0, so the natural testbank does not positively activate plant-mediated CH4 transport.",
+    "theory": "No frozen/recovered ANIMO-specific authority reviewed by this workunit defines which temperature Te50 is intended to represent.",
+    "historical_behavior": "UNKNOWN_WITHOUT_B2"
+  },
+  "counter_hypotheses": [
+    {
+      "hypothesis": "Ln is used before definition in ghg_ch4.for.",
+      "result": "REJECTED",
+      "basis": "Ln is the control variable of the immediately preceding root loops; current standard semantics establish the post-loop value."
+    },
+    {
+      "hypothesis": "Input validation guarantees Nuroup>=1 at runtime.",
+      "result": "REJECTED",
+      "basis": "Root routines can reset Nuroup=0 before GHGasses."
+    },
+    {
+      "hypothesis": "Te50 intentionally means the first soil compartment below the active root zone.",
+      "result": "PLAUSIBLE_BUT_UNQUALIFIED",
+      "basis": "Matches current source semantics for 0<Nuroup<Nl but no authoritative ANIMO theory recovered here establishes intent."
+    },
+    {
+      "hypothesis": "Te50 means a fixed 50 cm soil temperature.",
+      "result": "UNSUPPORTED",
+      "basis": "Variable naming is not theory and the implementation follows dynamic root depth rather than an explicit 50 cm geometric lookup."
+    },
+    {
+      "hypothesis": "The intended selector is the deepest rooted compartment Te(LnRoot).",
+      "result": "PLAUSIBLE_BUT_UNSUPPORTED",
+      "basis": "Would require an explicit reset or index change absent from the frozen source; no theory or B2 reference establishes it."
+    },
+    {
+      "hypothesis": "TCD-034 can be closed as harmless because GHGMais has FvegCH4=0.",
+      "result": "REJECTED",
+      "basis": "That establishes non-activation only for the frozen natural GHG testcase, not correctness for valid FvegCH4>0 inputs."
+    },
+    {
+      "hypothesis": "TCD-034 should be deleted because its original causal label is false.",
+      "result": "REJECTED_FAIL_CLOSED",
+      "basis": "The reconstructed selector remains scientifically unidentified and exposes reachable lower-boundary ownership/bounds questions without positive reference coverage."
+    }
+  ],
+  "gates": {
+    "source_identity": "PASS",
+    "source_order_reconstruction": "PASS",
+    "dynamic_Nuroup_ownership": "PASS",
+    "post_do_positive_trip_control": "PASS",
+    "post_do_zero_trip_control": "PASS",
+    "temperature_population_bounds": "PASS_FOR_SOURCE_RECONSTRUCTION",
+    "zero_root_noninterference": "PASS_FOR_K1PLANT_PATH",
+    "testbank_manifest_identity": "PASS",
+    "testbank_positive_activation": "FAIL_CLOSED_NO_POSITIVE_CONTROL",
+    "theory_selector_identity": "FAIL_CLOSED_UNQUALIFIED",
+    "historical_behavior": "UNKNOWN_WITHOUT_B2",
+    "replacement_index_not_invented": "PASS",
+    "scope_guard": "PASS",
+    "current_gnu_not_promoted_to_B2": "PASS",
+    "production_source_unchanged": "PASS",
+    "canonical_register_unchanged": "PASS",
+    "central_queue_unchanged": "PASS"
+  },
+  "residual_uncertainty": [
+    "intended scientific identity of Te50",
+    "historical executable behavior for the affected active plant-mediated CH4 path",
+    "natural/reference behavior for FvegCH4>0",
+    "scientific disposition of Nuroup=Nl selector behavior at the lower profile edge"
+  ],
+  "review_outcome": "SELF_REVIEW_PASS_NEGATIVE_TCD034_DISPOSITION_UNRESOLVED_NOT_ADMITTED",
+  "decision": "PASS_FAIL_CLOSED_TCD034_RECONSTRUCTION_UNRESOLVED_NOT_ADMITTED",
+  "b3_admission_allowed": false,
+  "production_authorized": false,
+  "next_required_evidence": "Recover ANIMO-specific selector theory/design authority and qualify an active FvegCH4>0 case, including lower-profile edge coverage, before any TCD-034 correction or B3 admission decision."
+}
