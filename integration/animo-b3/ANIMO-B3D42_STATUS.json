@@ -3,10 +3,10 @@
   "target_tcd": "TCD-019",
   "title": "TCD-019 Restricted Exact-Storage / No-Legacy-Fallback Numerical Policy Atomic B3 Admission Decision",
   "branch": "work/animo-b3d42-tcd019-gov05-tier-c-admission",
-  "phase": "AUTHORING_FROZEN_PENDING_GOV05_TIER_C_ADVERSARIAL_REVIEW",
-  "state": "CANDIDATE_NOT_ADMITTED_PENDING_REVIEW",
+  "phase": "COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
   "candidate_decision": "ADMIT_TCD019_RESTRICTED_FAST_LANGMUIR_EXACT_STORAGE_REPRESENTATION_STABLE_NO_LEGACY_FALLBACK_POLICY_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
-  "decision": null,
+  "decision": "ADMIT_TCD019_RESTRICTED_FAST_LANGMUIR_EXACT_STORAGE_REPRESENTATION_STABLE_NO_LEGACY_FALLBACK_POLICY_WITH_HISTORICAL_UNCERTAINTY_GOV05_TIER_C",
   "formal_disposition": "HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
   "b3_qualification_class": "E_NUMERICAL_POLICY_RESTRICTED_DOMAIN",
   "review_risk_tier": "C_NUMERICAL_POLICY",
@@ -18,11 +18,11 @@
   "canonical_allocation_authority": "ANIMO-B3I01@383c7a83e84a578969f92113280dc715b7bdddb4",
   "numerical_policy_authority": "ANIMO-NQ05@62080a8e731681407e2e7e759decc49c1a47fa7b",
   "supported_scope": "NQ05 exact scope only: Optcxfa=2 fast Langmuir; Optcxsl in {1,3}; constitutively consistent fast start; finite nonnegative binary64 state; exact cancellation-safe Langmuir secant; reconstructed C_unl two-variable equations; state-local slow-rate selection; NQ04/B3D36 Iflsol=4 policy; representation-stable discrete binary64 acceptance with immediate-neighbour residual guard; no legacy fallback; fail closed otherwise",
-  "admitted": false,
-  "qualified": false,
-  "admitted_atomic_identity": null,
+  "admitted": true,
+  "qualified": true,
+  "admitted_atomic_identity": "TCD019_FAST_LANGMUIR_EXACT_STORAGE_REPRESENTATION_STABLE_TWO_VARIABLE_ROOT_NO_LEGACY_FALLBACK_BINARY64_POLICY",
   "admission_effect": {
-    "tcd019_top_level_admitted": false,
+    "tcd019_top_level_admitted": true,
     "nq05_scope_broadened": false,
     "tcd024_admitted_or_modified": false,
     "tcd014_admitted_or_modified": false,
@@ -38,14 +38,19 @@
     "fourth_post_RG05N_admission_before_RG05O": "FORBIDDEN"
   },
   "review": {
-    "started": false,
-    "completed": false,
+    "started": true,
+    "completed": true,
     "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
     "review_mode": "SAME_AGENT_SECOND_PASS",
     "same_agent": true,
     "genuinely_independent": false,
     "independence_claimed": false,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+    "reviewed_head": "cadf6c84956c2714ccf81575844fe5ecac7faee1",
+    "reviewed_head_ci_run": 34687420916,
+    "reviewed_head_ci_job": 103536733650,
+    "reviewed_head_ci_conclusion": "success",
+    "outcome": "SELF_REVIEW_PASS_ADMIT_TCD019_RESTRICTED_NUMERICAL_POLICY_WITH_HISTORICAL_UNCERTAINTY",
     "artifact": "integration/animo-b3/ANIMO-B3D42_INTERNAL_ADVERSARIAL_REVIEW.json"
   },
   "residual_uncertainty": [
@@ -80,15 +85,20 @@
   "validation": {
     "workflow": ".github/workflows/animo-b3d42-tcd019.yml",
     "validator": "tools/validate_b3d42_tcd019.py",
-    "exact_final_head_ci_required": true
+    "authoring_head": "cadf6c84956c2714ccf81575844fe5ecac7faee1",
+    "authoring_head_ci_run": 34687420916,
+    "authoring_head_ci_job": 103536733650,
+    "authoring_head_ci_conclusion": "success",
+    "exact_final_head_ci_required": true,
+    "closeout_note": "The frozen B3D42 authoring head passed exact-head CI. This review/status-only closeout is authoritative only if the same workflow succeeds on this exact final head."
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_THEN_GOV05_TIER_C_ADVERSARIAL_REVIEW; IF_ADMITTED_EXACT_FINAL_GREEN_OPEN_SEPARATE_RG05O_BEFORE_ANY_FOURTH_POST_RG05N_ADMISSION"
+  "next_after_exact_final_green": "COUNT_TCD019_AS_THIRD_POST_RG05N_ADMISSION_AND_OPEN_SEPARATE_ANIMO_RG05O_BEFORE_ANY_FOURTH_POST_RG05N_SCIENTIFIC_ADMISSION"
 }
