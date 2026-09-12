@@ -21,6 +21,10 @@ EXPECTED_SOURCE = {
     "ANIMO_4.1.5.53/Param.inc": "20d85ed8bca9e0060d3b51c2f800ff02fdf0bc3ebb8c834baf4afca870a33475",
     "ANIMO_4.1.5.53/Temper.for": "643e4460a897ec629068dc97ab4589a745304b8fa7adb7597dfadc1a9a9d41e5",
     "ANIMO_4.1.5.53/Input_hydro.for": "5f07ce68969d749308595d6b4f9f789b6b3646ae226c233e2f8e49565a7dad64",
+    "ANIMO_4.1.5.53/root_plant.for": "07adda92e78a21bde08e137d1cb09bb40d9c63c4f19dcdeeef0d3e263b107816",
+    "ANIMO_4.1.5.53/root_grass.for": "cad5cc713e72b7fac01cbba63caa25560fcabd243c73d9fc06ab7130de4d0661",
+    "ANIMO_4.1.5.53/root_extern.for": "063a754fac2fe1b1c4b60fab1e395b8b65a9a03a5d89ace03e08868e1774f0e9",
+    "ANIMO_4.1.5.53/Animo.for": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
 }
 EXPECTED_TESTCASE = {
     "ANIMO_testbank/GHGMais/Input/soil.inp": "6a07157f64c0913f977487c1719794c1126416646b0b329ce39940935601f760",
@@ -68,16 +72,21 @@ def main():
         assert recon["testbank_activation"]["only_case_sha256"] == sha
 
     s = recon["source_reconstruction"]
-    assert s["input_bounds"] == "1<=Nuroup<=Nl<=Manl"
+    assert s["input_time_bounds"] == "1<=Nuroup<=Nl<=Manl"
+    assert s["runtime_bounds"] == "0<=Nuroup<=Nl"
     assert s["Manl"] == 50
-    assert s["first_root_loop_has_at_least_one_iteration"] is True
-    assert s["normal_post_loop_control_variable"] == "LnRoot+1"
+    assert "reset Nuroup=0" in s["dynamic_root_update"]
+    assert "Flev(Ln)>=1e-7" in s["dynamic_root_update"]
+    assert s["positive_trip_post_loop_control_variable"] == "LnRoot+1"
+    assert s["zero_trip_current_standard_semantics"] == "Ln=1 when LnRoot=0"
     assert s["resolved_selector_current_standard_semantics"] == "Te(Nuroup+1)"
+    assert "K1plant zero" in s["zero_root_path_effect"]
     assert s["old_use_before_definition_premise"] == "REJECTED"
     assert s["intended_scientific_selector"] == "UNQUALIFIED"
 
     p = recon["temperature_population"]
-    assert "within populated 0:Nl" in p["when_Nuroup_lt_Nl"]
+    assert "K1plant zero" in p["when_Nuroup_eq_0"]
+    assert "first compartment below root zone" in p["when_0_lt_Nuroup_lt_Nl"]
     assert "outside demonstrated current-step producer range" in p["when_Nuroup_eq_Nl_lt_Manl"]
     assert "outside declared bound" in p["when_Nuroup_eq_Nl_eq_Manl"]
 
@@ -108,6 +117,9 @@ def main():
         assert review["genuinely_independent"] is False
         assert review["independence_claimed"] is False
         assert review["decision"] == "PASS_FAIL_CLOSED_TCD034_RECONSTRUCTION_UNRESOLVED_NOT_ADMITTED"
+        assert review["gates"]["dynamic_Nuroup_ownership"] == "PASS"
+        assert review["gates"]["post_do_zero_trip_control"] == "PASS"
+        assert review["gates"]["theory_selector_identity"] == "FAIL_CLOSED_UNQUALIFIED"
         assert status["review"]["completed"] is True
         assert status["qualified"] is True
         assert status["b3_admission_performed"] is False
