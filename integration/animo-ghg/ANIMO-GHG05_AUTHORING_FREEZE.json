@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-GHG05",
+  "target": "TCD-034",
+  "branch": "work/animo-ghg05-tcd034-plant-growth-temperature-selector-requalification",
+  "base_head": "11e9bcdc6654e63f84875bf1f28dc54abe725700",
+  "base_authority": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+  "aggregate_authority": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "upstream_source_reconstruction": "ANIMO-GHG01@dac7b7b5c591b781b82ec968896edb5957664c88",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_TIER_C_REVIEW",
+  "substantive_files": [
+    "docs/ghg/TCD034_PLANT_GROWTH_TEMPERATURE_SELECTOR_REQUALIFICATION.md",
+    "integration/animo-ghg/GHG05_TCD034_SOURCE_RECONSTRUCTION.json",
+    "tools/ghg05/tcd034_post_do_probe.f90",
+    "tools/ghg05/validate_ghg05_tcd034.py",
+    ".github/workflows/animo-ghg05-tcd034.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-ghg/ANIMO-GHG05_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-ghg/ANIMO-GHG05_STATUS.json"
+  ],
+  "review_must_pin_exact_green_authoring_head": true,
+  "substantive_change_resets_GOV05_review": true,
+  "exact_final_head_ci_required": true,
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "production_source_frozen": true,
+  "frozen_b0_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "workunit_number_note": "GHG04 was a historical proposed routing label for TCD-037 in B3I01; no GHG04 branch was created, but GHG05 is used here to avoid reusing that historical proposed identifier."
+}
