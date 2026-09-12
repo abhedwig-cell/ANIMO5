@@ -1,0 +1,60 @@
+name: ANIMO-B3D42 TCD019 atomic admission
+
+on:
+  push:
+    branches:
+      - work/animo-b3d42-tcd019-gov05-tier-c-admission
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch exact authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in 62080a8e731681407e2e7e759decc49c1a47fa7b 997d867a2b107ec8e28efce530c82a204719de46 8758bd30e302b75dd7854ac00fd2e29473669a13 383c7a83e84a578969f92113280dc715b7bdddb4 83fedc7323cea6da696a81bc64e4e3b13d794880 3ac98899dd4e6b7a5133cbecd758fab0b81e945d cbd262bdabe92923113b7326f2f42822ce9a971c 1bbe4c211197590f346803106e45dca5faae79fc f65a47724e4a4fca7f2d8b8d6de9eeee51867904 846e0f4d02a38b9e02cc1419b1ca87e63aaedb54; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify exact-final upstream authorities
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          checks = {
+              34687056463: "62080a8e731681407e2e7e759decc49c1a47fa7b",
+              34676576732: "3ac98899dd4e6b7a5133cbecd758fab0b81e945d",
+              34655310361: "83fedc7323cea6da696a81bc64e4e3b13d794880",
+              34654186685: "997d867a2b107ec8e28efce530c82a204719de46",
+              34646787915: "8758bd30e302b75dd7854ac00fd2e29473669a13",
+          }
+          for run_id, head in checks.items():
+              req = urllib.request.Request(
+                  f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}",
+                  headers={"Authorization": f"Bearer {os.environ['GH_TOKEN']}", "Accept": "application/vnd.github+json"},
+              )
+              with urllib.request.urlopen(req) as response:
+                  data = json.load(response)
+              assert data["head_sha"] == head, (run_id, data.get("head_sha"))
+              assert data["status"] == "completed" and data["conclusion"] == "success", (run_id, data.get("status"), data.get("conclusion"))
+          print("exact-final NQ05, B3D40, B3D41, B3Q05 and RG05N authorities verified")
+          PY
+      - name: Parse and validate B3D42 package
+        run: |
+          python -m json.tool integration/animo-b3/B3D42_TCD019_ADMISSION_CONTRACT.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3D42_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-b3/ANIMO-B3D42_STATUS.json >/dev/null
+          if test -f integration/animo-b3/ANIMO-B3D42_INTERNAL_ADVERSARIAL_REVIEW.json; then
+            python -m json.tool integration/animo-b3/ANIMO-B3D42_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null
+          fi
+          python -m py_compile tools/validate_b3d42_tcd019.py
+          python tools/validate_b3d42_tcd019.py
