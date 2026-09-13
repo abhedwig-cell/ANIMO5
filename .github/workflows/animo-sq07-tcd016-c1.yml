@@ -1,0 +1,49 @@
+name: ANIMO-SQ07 TCD016-C1 rewetting qualification
+on:
+  push:
+    branches:
+      - work/animo-sq07-tcd016-c1-rewetting-process-contract
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Parse artifacts
+        run: |
+          python -m json.tool integration/animo-science/SQ07_TCD016_C1_REWETTING_PROCESS_QUALIFICATION.json >/dev/null
+          python -m json.tool integration/animo-science/ANIMO-SQ07_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-science/ANIMO-SQ07_STATUS.json >/dev/null
+          python -m json.tool integration/animo-testbank/fragments/ANIMO-SQ07_TCD016_C1_REWETTING_NEGATIVE_FRAGMENT.json >/dev/null
+          if test -f integration/animo-science/ANIMO-SQ07_INTERNAL_ADVERSARIAL_REVIEW.json; then python -m json.tool integration/animo-science/ANIMO-SQ07_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null; fi
+      - name: Run SQ07 validators
+        run: |
+          python tools/sq07/validate_sq07_tcd016_c1.py
+          python tools/sq07/tcd016_c1_rewetting_negative_oracle.py
+      - name: Scope guard
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+            'integration/animo-science/SQ07_TCD016_C1_REWETTING_PROCESS_QUALIFICATION.json',
+            'integration/animo-science/ANIMO-SQ07_AUTHORING_FREEZE.json',
+            'integration/animo-science/ANIMO-SQ07_STATUS.json',
+            'integration/animo-science/ANIMO-SQ07_INTERNAL_ADVERSARIAL_REVIEW.json',
+            'integration/animo-testbank/fragments/ANIMO-SQ07_TCD016_C1_REWETTING_NEGATIVE_FRAGMENT.json',
+            'tools/sq07/validate_sq07_tcd016_c1.py',
+            'tools/sq07/tcd016_c1_rewetting_negative_oracle.py',
+            '.github/workflows/animo-sq07-tcd016-c1.yml',
+          }
+          changed = set(subprocess.check_output(['git','diff','--name-only','2dbabfd5f57120c583645415e87f7eb792a8c0d7','HEAD'], text=True).splitlines())
+          extra = changed - allowed
+          if extra:
+              raise SystemExit(f'Out-of-scope SQ07 paths: {sorted(extra)}')
+          PY
