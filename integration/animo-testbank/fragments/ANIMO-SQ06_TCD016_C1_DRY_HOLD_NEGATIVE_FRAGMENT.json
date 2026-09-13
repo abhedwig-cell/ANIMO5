@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "work_unit": "ANIMO-SQ06",
+  "scope": "BOUNDED_NEGATIVE_SCIENTIFIC_QUALIFICATION_GUARDS_ONLY",
+  "central_registry_modified": false,
+  "whole_model_golden_baseline": false,
+  "permanence_disposition": "BOUNDED_FRAGMENT_NOT_CENTRAL_REGISTRY_ADOPTION",
+  "entries": [
+    {
+      "id": "SQ06-HYP-GATE-001",
+      "class": "SCIENTIFIC_QUALIFICATION_GATE",
+      "purpose": "Reject H0-H4 unless all mandatory positive-process contract fields are evidence-backed.",
+      "oracle": "tools/sq06/tcd016_c1_dry_hold_negative_oracle.py",
+      "expected": "H5_SELECTED"
+    },
+    {
+      "id": "SQ06-NOPROCESS-MASS-001",
+      "class": "FAIL_CLOSED_STATE_GUARD",
+      "purpose": "Verify exact continuation-state conservation when no dry process is qualified, without relabelling persistence as physical inertness.",
+      "oracle": "tools/sq06/tcd016_c1_dry_hold_negative_oracle.py",
+      "expected": "EXACT_DECIMAL_STATE_PERSISTENCE_NO_TOLERANCE"
+    },
+    {
+      "id": "SQ06-ZERO-MASS-001",
+      "class": "LIMIT_GUARD",
+      "purpose": "Verify zero continuation mass remains exact zero with no hidden creation.",
+      "oracle": "tools/sq06/tcd016_c1_dry_hold_negative_oracle.py",
+      "expected": "EXACT_ZERO"
+    },
+    {
+      "id": "SQ06-TIMESTEP-001",
+      "class": "ORDER_AND_PARTITION_GUARD",
+      "purpose": "Verify no-process state persistence is exactly timestep-partition invariant because no physical process operator is applied.",
+      "oracle": "tools/sq06/tcd016_c1_dry_hold_negative_oracle.py",
+      "expected": "EXACT_PARTITION_IDENTITY"
+    },
+    {
+      "id": "SQ06-RESTART-001",
+      "class": "RESTART_GUARD",
+      "purpose": "Verify exact split-run restoration from the persistent continuation owner without hidden process memory.",
+      "oracle": "tools/sq06/tcd016_c1_dry_hold_negative_oracle.py",
+      "expected": "EXACT_SPLIT_RUN_STATE_IDENTITY"
+    },
+    {
+      "id": "SQ06-OBSERVER-001",
+      "class": "OWNERSHIP_NEGATIVE_CONTROL",
+      "purpose": "Reject reconstruction of continuation physical state from a mass-balance residual.",
+      "oracle": "tools/sq06/tcd016_c1_dry_hold_negative_oracle.py",
+      "expected": "OBSERVER_NOT_OWNER"
+    }
+  ],
+  "negative_controls": [
+    "Promoting M_cont_after=M_cont_before to a physical zero-rate law must fail.",
+    "Reusing FRVO unchanged for continuation mass must fail.",
+    "Reusing soil nitrification or soil NH4 sorption unchanged must fail.",
+    "Inventing any dry-process parameter without provenance must fail.",
+    "Selecting a dry-process receiver not already scientifically qualified must fail.",
+    "Adding a rewetting receiver, threshold or kinetics to SQ06 must fail.",
+    "Allowing the mass observer to own or reconstruct continuation state must fail."
+  ],
+  "qualification": {
+    "selected_hypothesis": "H5",
+    "positive_process_contract_qualified": false,
+    "decision": "QUALIFIED_NEGATIVE_NO_DRY_HOLD_PROCESS_LAW_CURRENTLY_DEFENSIBLE",
+    "fragment_is_not_b3_admission": true,
+    "fragment_is_not_production_authorization": true
+  }
+}
