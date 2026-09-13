@@ -3,11 +3,11 @@
   "target": "TCD-016-C1",
   "parent_tcd": "TCD-016",
   "branch": "work/animo-sq07-tcd016-c1-rewetting-process-contract",
-  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
-  "state": "CANDIDATE_NEGATIVE_NO_REWETTING_PROCESS_CONTRACT_CURRENTLY_DEFENSIBLE",
-  "decision": null,
+  "phase": "COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_NEGATIVE_NO_REWETTING_PROCESS_CONTRACT_CURRENTLY_DEFENSIBLE",
+  "decision": "NO_REWETTING_RECEIVER_ACTIVATION_KINETICS_SCIENTIFICALLY_QUALIFIED",
   "selected_hypothesis": "R5",
-  "qualified": false,
+  "qualified": true,
   "qualification_scope": "MODEL_EVOLUTION_REWETTING_RECEIVER_ACTIVATION_KINETICS_ONLY",
   "base_head": "ANIMO-SQ06@2dbabfd5f57120c583645415e87f7eb792a8c0d7",
   "aggregate_authority": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
@@ -24,15 +24,15 @@
   "production_authorized": false,
   "review": {
     "required": true,
-    "completed": false,
+    "completed": true,
     "same_agent": true,
     "genuinely_independent": false,
     "independence_claimed": false,
-    "reviewed_head": null,
-    "reviewed_head_ci_run": null,
-    "reviewed_head_ci_job": null,
-    "reviewed_head_ci_conclusion": "PENDING",
-    "outcome": null,
+    "reviewed_head": "be0b7a89cf020b1ac12d12ea6e99e76163ee0b7c",
+    "reviewed_head_ci_run": 34744420213,
+    "reviewed_head_ci_job": 103689562630,
+    "reviewed_head_ci_conclusion": "success",
+    "outcome": "SELF_REVIEW_PASS",
     "artifact": "integration/animo-science/ANIMO-SQ07_INTERNAL_ADVERSARIAL_REVIEW.json"
   },
   "validation": {
@@ -40,12 +40,13 @@
     "validator": "tools/sq07/validate_sq07_tcd016_c1.py",
     "oracle": "tools/sq07/tcd016_c1_rewetting_negative_oracle.py",
     "testbank_fragment": "integration/animo-testbank/fragments/ANIMO-SQ07_TCD016_C1_REWETTING_NEGATIVE_FRAGMENT.json",
-    "authoring_head": null,
-    "authoring_run": null,
-    "authoring_job": null,
-    "authoring_conclusion": "PENDING",
-    "scope_guard": "PENDING",
-    "exact_final_head_required": true
+    "authoring_head": "be0b7a89cf020b1ac12d12ea6e99e76163ee0b7c",
+    "authoring_run": 34744420213,
+    "authoring_job": 103689562630,
+    "authoring_conclusion": "success",
+    "scope_guard": "PASS",
+    "exact_final_head_required": true,
+    "closeout_note": "The frozen authoring head passed exact-head CI and then received a GOV05 same-agent adversarial second pass. This closeout is authoritative only if the same workflow succeeds on the exact final head containing only the permitted review and status closeout changes."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -66,9 +67,10 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
-  }
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
+  },
+  "next_handoff": "OPEN_TCD016_C1_CONTINUATION_PHYSICAL_IDENTITY_AND_SPECIATION_QUALIFICATION_BEFORE_ANY_RETRY_OF_REWETTING_RECEIVER_ACTIVATION_KINETICS"
 }
