@@ -1,0 +1,31 @@
+name: ANIMO-SQ05 TCD016-C1 B0 user-guide reconciliation
+on:
+  push:
+    branches:
+      - work/animo-sq05-tcd016-c1-b0-user-guide-reconciliation
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify exact branch head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in 063627cddd478904c437c9c47f02513ef0d9326b 11e9bcdc6654e63f84875bf1f28dc54abe725700 bc9e6ed997a078336645210ebb4d99ae976893fe f65a47724e4a4fca7f2d8b8d6de9eeee51867904; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+          done
+      - name: Parse and compile SQ05 package
+        run: |
+          python -m json.tool integration/animo-science/SQ05_TCD016_B0_USER_GUIDE_RECONCILIATION.json >/dev/null
+          python -m json.tool integration/animo-science/ANIMO-SQ05_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-science/ANIMO-SQ05_STATUS.json >/dev/null
+          if test -f integration/animo-science/ANIMO-SQ05_INTERNAL_ADVERSARIAL_REVIEW.json; then python -m json.tool integration/animo-science/ANIMO-SQ05_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null; fi
+          python -m py_compile tools/sq05/validate_sq05_tcd016_c1.py
+      - name: Validate bounded B0 user-guide reconciliation
+        run: python tools/sq05/validate_sq05_tcd016_c1.py
