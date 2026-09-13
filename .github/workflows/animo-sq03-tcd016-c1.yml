@@ -58,10 +58,13 @@ jobs:
           python tools/sq03/tcd016_c1_process_envelope_oracle.py | tee /tmp/sq03_oracle.out
           grep -Fx 'TCD016-C1 SQ03 process-envelope oracle PASS' /tmp/sq03_oracle.out
           grep -Fx 'dry_hold_365_steps_exact PASS' /tmp/sq03_oracle.out
-          grep -Fx 'bounded_rewet_partitions_exact PASS' /tmp/sq03_oracle.out
+          grep -Fx 'bounded_transfer_partitions_exact PASS' /tmp/sq03_oracle.out
+          grep -Fx 'receiver_neutral_partition_exact PASS' /tmp/sq03_oracle.out
           grep -Fx 'out_of_range_negative_controls PASS' /tmp/sq03_oracle.out
+          grep -Fx 'receiver_partition_negative_controls PASS' /tmp/sq03_oracle.out
           grep -Fx 'model_tolerance NONE' /tmp/sq03_oracle.out
           grep -Fx 'specific_process_law_qualified false' /tmp/sq03_oracle.out
+          grep -Fx 'specific_receiver_qualified false' /tmp/sq03_oracle.out
           grep -Fx 'historical_behavior UNKNOWN_WITHOUT_B2' /tmp/sq03_oracle.out
       - name: Validate bounded TCD016-C1 process envelope
         run: python tools/sq03/validate_sq03_tcd016_c1.py
