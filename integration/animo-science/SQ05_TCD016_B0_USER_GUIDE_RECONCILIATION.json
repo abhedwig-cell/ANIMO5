@@ -1,0 +1,63 @@
+{
+  "work_unit": "ANIMO-SQ05",
+  "target": "TCD-016-C1",
+  "parent_tcd": "TCD-016",
+  "scope": "ANIMO_4_0_USER_GUIDE_RECONCILIATION_ONLY",
+  "base_authority": "ANIMO-SQ04@063627cddd478904c437c9c47f02513ef0d9326b",
+  "b0_document": {
+    "evidence_id": "ANIMO-B0-DOC-UG40-2005",
+    "logical_title": "ANIMO 4.0 User's Guide, Alterra Report 224, 2005",
+    "sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "session_local_sha256_match": true,
+    "version_scope": "ANIMO_4_0_NOT_EXACT_4_1_5_REV53_THEORY",
+    "controlled_immutable_storage_proven": false
+  },
+  "page_claims": [
+    {
+      "page": 17,
+      "claim": "The guide locates additions and removals at or above the soil-system boundary and distinguishes the soil-system states below that boundary."
+    },
+    {
+      "page": 18,
+      "claim": "The nitrogen-cycle schematic separates mineral NH4-N, adsorbed NH4-N, NH3, NO3-N, plant and organic pools; it does not identify a dry nonaqueous surface residual-NH4 store."
+    },
+    {
+      "page": 21,
+      "claim": "The transport equation defines liquid concentration plus solid-phase soil contents, while the guide separately defines an artificial reservoir above the compartment division and a ponding-layer solute balance for surface runoff."
+    },
+    {
+      "page": 46,
+      "claim": "CONHTOP is explicitly the NH4-N concentration in a virtual top layer used for additions, distinct from CONH for soil-moisture compartments 0-NL."
+    },
+    {
+      "page": 49,
+      "claim": "WYAD=0 sends inorganic additions to an additional artificial top compartment, and FRVO is specified as the volatilization fraction of NH4-N for the addition event."
+    },
+    {
+      "page": 50,
+      "claim": "Subsequent addition-event records explicitly label FRVO(x) as the fraction of volatilization of NH4-N of the addition."
+    }
+  ],
+  "bounded_negative_search": {
+    "searched_concepts": [
+      "dry surface NH4 continuation owner",
+      "non-aqueous layer-0 NH4 state",
+      "rewetting/remobilization law for residual surface NH4",
+      "generic application of FRVO to pre-existing surface NH4",
+      "surface sorption owner for residual layer-0 NH4"
+    ],
+    "qualified_result": "NO_EXPLICIT_ANIMO4_0_USER_GUIDE_CONTRACT_FOUND_FOR_TCD016_C1_CONTINUATION_STATE_OR_REWETTING_PROCESS",
+    "absence_not_promoted_to_proof_of_PHYSICAL_IMPOSSIBILITY": true
+  },
+  "reconciliation": {
+    "SQ02_distinct_continuation_owner": "CORROBORATED_BY_GUIDE_SEMANTIC_SEPARATION",
+    "SQ04_Frvo_not_reusable_unchanged": "CORROBORATED_BY_ADDITION_EVENT_PROVENANCE",
+    "SQ04_Conhtop_not_generic_continuation_owner": "CORROBORATED_BY_VIRTUAL_ADDITIONS_LAYER_IDENTITY",
+    "SQ04_soil_sorption_not_surface_continuation_owner": "CORROBORATED_BY_SOIL_SOLID_PHASE_SCOPE",
+    "specific_new_dry_process_law": "NOT_QUALIFIED",
+    "specific_rewetting_receiver_or_kinetics": "NOT_QUALIFIED"
+  },
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "decision": "QUALIFY_B0_USER_GUIDE_RECONCILIATION_AS_CORROBORATING_EXISTING_SEMANTIC_SEPARATION_WITH_NO_DOCUMENTED_DRY_CONTINUATION_OR_REWETTING_LAW"
+}
