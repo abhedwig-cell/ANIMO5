@@ -1,0 +1,63 @@
+{
+  "work_unit": "ANIMO-SQ07",
+  "target": "TCD-016-C1",
+  "risk_tier": "C_SCIENTIFIC_PROCESS_SEMANTICS",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "reviewed_authoring_head": "be0b7a89cf020b1ac12d12ea6e99e76163ee0b7c",
+  "reviewed_head_ci_run": 34744420213,
+  "reviewed_head_ci_job": 103689562630,
+  "reviewed_head_ci_conclusion": "success",
+  "selected_hypothesis": "R5",
+  "counter_hypothesis": {
+    "strongest_positive_alternative": "R0_INSTANTANEOUS_COMPLETE_DISSOLUTION_TO_SURFACE_AQUEOUS_NH4_ON_FIRST_REPRESENTABLE_SURFACE_WATER",
+    "test": "Assume R0 only if the inherited and frozen evidence establishes the continuation material as completely and rapidly water-soluble, establishes surface aqueous NH4 as the physical receiver, and supplies a physical activation criterion and ordering independent of a numerical concentration denominator guard.",
+    "result": "REJECTED_CURRENT_EVIDENCE_DOES_NOT_ESTABLISH_REQUIRED_PHASE_RECEIVER_ACTIVATION_OR_TIMESCALE"
+  },
+  "adversarial_findings": [],
+  "adversarial_gates": {
+    "numerical_water_availability_not_mistaken_for_physical_activation": "PASS",
+    "mass_closure_not_mistaken_for_scientific_validity": "PASS",
+    "chemical_noncommittal_owner_not_silently_promoted_to_soluble_salt": "PASS",
+    "instantaneous_dissolution_not_assumed_for_convenience": "PASS",
+    "fixed_release_fraction_not_invented": "PASS",
+    "Conhtop_not_silently_reused_as_receiver": "PASS",
+    "layer1_aqueous_or_sorbed_receiver_not_implicitly_selected": "PASS",
+    "infiltration_not_used_as_unqualified_release_coefficient": "PASS",
+    "ordering_uncertainty_preserved": "PASS",
+    "dry_hold_negative_qualification_not_leaked_into_rewetting_physics": "PASS",
+    "observer_state_ownership_inversion_absent": "PASS",
+    "typed_transfer_and_double_counting_guards_preserved": "PASS",
+    "no_parameter_invention": "PASS",
+    "external_literature_not_misrepresented_as_ANIMO_provenance": "PASS",
+    "historical_UNKNOWN_WITHOUT_B2_preserved": "PASS",
+    "negative_qualification_not_overstated_as_physical_impossibility": "PASS",
+    "scope_and_hard_boundaries_preserved": "PASS"
+  },
+  "active_controls": [
+    "SQ03 receiver-neutral bounds remain unchanged: any future T_rewet must satisfy 0<=T_rewet<=M_cont_before and exact declared receiver gains.",
+    "SQ04 prohibits unchanged reuse of Conhtop, soil sorption and aqueous transport as the missing continuation process law.",
+    "SQ05 provides no documented continuation rewetting law in the ANIMO 4.0 guide.",
+    "SQ06 establishes no dry-hold process law and preserves the chemically noncommittal continuation owner.",
+    "The exact Decimal oracle verifies zero-mass, exact state persistence, no hidden receiver gain and split-run invariance for the fail-closed guard only."
+  ],
+  "negative_controls": [
+    "Do not treat first nonzero ponding or any numerical water threshold as a qualified activation law.",
+    "Do not assume all continuation mass is soluble NH4 salt or dissolves instantaneously.",
+    "Do not create a fixed transfer fraction or kinetic coefficient without provenance.",
+    "Do not route continuation mass directly to layer1 or Conhtop to make the existing transport machinery usable.",
+    "Do not let the mass ledger create a receiver from a residual."
+  ],
+  "residual_uncertainty": [
+    "The physical and chemical identity of continuation material remains deliberately unresolved.",
+    "The correct receiver may be surface aqueous, soil aqueous, sorbed, mixed, or another bounded state; current evidence does not select among them.",
+    "Activation and kinetics may depend on compound identity, water amount, chemistry, mixing, morphology and ordering that are not yet qualified.",
+    "Historical revision-53 rewetting behaviour remains UNKNOWN_WITHOUT_B2.",
+    "Same-agent GOV05 review is not genuinely independent."
+  ],
+  "outcome": "SELF_REVIEW_PASS",
+  "decision": "PASS_NEGATIVE_REWETTING_PROCESS_QUALIFICATION_NO_B3_ADMISSION"
+}
