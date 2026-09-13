@@ -1,0 +1,125 @@
+{
+  "work_unit": "ANIMO-SQ03",
+  "risk_tier": "C",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "assurance_label": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "reviewed_authoring_head": "265e9b3ca533c88607fec0cba016ff4f6cec378c",
+  "same_agent": true,
+  "independence_claimed": false,
+  "review_boundary": {
+    "complete_authoring_package_persisted": true,
+    "immutable_head_frozen_before_review": true,
+    "source_testbank_evidence_hashes_recorded_before_review": true,
+    "authoring_completed_before_review": true,
+    "authoring_head_matches_reviewed_head": true,
+    "moving_tree_reviewed": false
+  },
+  "evidence_reuse_checks": {
+    "pin_identity": "PASS",
+    "scope_compatibility": "PASS",
+    "immutable_provenance": "PASS",
+    "no_superseding_contradiction": "PASS",
+    "evidence_strength_preserved": "PASS"
+  },
+  "counter_hypothesis": {
+    "tested": true,
+    "alternative": "Persisting continuation mass unchanged whenever no process is admitted can still bias real dry-surface NH4 behaviour because volatilization, biochemical conversion, soil exchange or other transformations may occur.",
+    "test": "Separate the bounded SQ03 claim from physical completeness: verify that persistence is encoded only as the no-authority-to-mutate rule of a conservation shell, that all real process families remain explicitly unqualified, and that no production, B3, historical-fidelity or application-adequacy claim is made.",
+    "result": "ALTERNATIVE_REMAINS_PLAUSIBLE_FAIL_CLOSED"
+  },
+  "active_controls": [
+    "SQ02@09ab76f0b44cb72956875fa379d68bbf97f1a0c7 qualifies only the chemically noncommittal continuation-state topology and explicitly withholds process-law qualification.",
+    "SQ01@26d0c74aa440bd73c23709d313e24ea8af2a0bcd supplies the exact local conservation and rewetting bounds used by SQ03.",
+    "Exact authoring-head CI run 34741704330 job 103682379461 succeeded on 265e9b3ca533c88607fec0cba016ff4f6cec378c.",
+    "The Decimal oracle verifies exact dry persistence, bounded source decrement, receiver-neutral gain partition, sequential partial transfer, and fail-closed negative controls without tolerance."
+  ],
+  "negative_controls": [
+    "The first green checkpoint 606fe29b48013397ab7ed5905132e815e6fbc456 was superseded before review because it privileged surface aqueous NH4 as the rewetting receiver; the reviewed head is receiver-neutral.",
+    "Invalid transfer fractions below zero or above one are rejected.",
+    "Receiver partitions that do not sum exactly to transferred mass or contain a negative share are rejected.",
+    "An implicit untyped sink is detectable and forbidden.",
+    "Direct soil-sorption transfer, instantaneous dissolution, NH3 volatilization, nitrification, precipitation/fixation, and any specific receiver remain unqualified.",
+    "Legacy 0.1 mm and Fu thresholds are not promoted to physical phase triggers.",
+    "Synthetic envelope evidence is not B2 and does not open TCD-016-E1."
+  ],
+  "scientific_gates": {
+    "no_unqualified_state_mutation": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "A conserved continuation owner may change only through an explicitly qualified typed transfer or transformation; absence of a process law confers no authority to delete or reroute mass."
+    },
+    "receiver_neutral_conservation_identity": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "For any admitted transfer, source decrement is bounded by available continuation mass and the sum of explicitly declared receiver gains must equal the transferred mass exactly."
+    },
+    "persistence_not_physical_inertness": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The contract explicitly labels persistence as an epistemic fail-closed state-update rule and preserves physical-process uncertainty; it does not claim real dry NH4 is inert."
+    },
+    "process_ordering_required": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "Any concrete future process must declare ordering relative to hydrological state creation, additions, runoff, infiltration, adsorption, transformation and atmospheric loss because trajectory differences can arise despite mass closure."
+    },
+    "specific_dry_phase_or_process_law": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "SQ03 intentionally does not qualify a physical dry phase, dry chemistry, transfer rate, or atmospheric/soil exchange law."
+    },
+    "specific_rewetting_receiver_or_kinetics": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "SQ03 qualifies only the receiver-neutral bounded interface; receiver identity, activation, fraction and kinetics require later scientific qualification."
+    },
+    "corrected_historical_behavior": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "Historical behavior remains UNKNOWN_WITHOUT_B2; this is a model-evolution interface qualification, not corrected-legacy admission."
+    },
+    "b3_admission": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "Neither TCD-016-C1 nor parent TCD-016 is admitted by SQ03."
+    }
+  },
+  "adversarial_gates": {
+    "receiver_destination_not_privileged": "PASS",
+    "persistence_not_overclaimed_as_physical_inertness": "PASS",
+    "specific_process_families_remain_unqualified": "PASS",
+    "mass_conservation_not_confused_with_process_identity": "PASS",
+    "synthetic_oracle_not_promoted_to_B2": "PASS",
+    "historical_uncertainty_preserved": "PASS",
+    "legacy_thresholds_not_promoted_to_physics": "PASS",
+    "E1_remains_blocked": "PASS",
+    "no_production_or_queue_mutation": "PASS"
+  },
+  "tier_c_enhanced": {
+    "immutable_authoring_checkpoint": "PASS",
+    "complete_source_state_ownership_reconstruction": "PASS",
+    "first_read_first_write_or_restore_direction_analysis": "PASS",
+    "counter_hypothesis_test": "PASS",
+    "active_controls": "PASS",
+    "negative_controls": "PASS",
+    "split_run_or_restart_evidence": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "SQ03 does not implement the continuation state or any process serializer; restart persistence remains a mandatory requirement for a later implementation workunit."
+    },
+    "exact_comparison_policy": "Exact SHA-pinned evidence identities and exact Decimal conservation identities only; no model tolerance, kinetic tolerance or scientific threshold is introduced.",
+    "no_invented_tolerance": true,
+    "regression_guard": "PASS",
+    "regression_surface_declared": true,
+    "exact_final_head_ci_required": true
+  },
+  "residual_uncertainty": [
+    "Real dry-surface NH4 may undergo volatilization, biochemical transformation, soil exchange, precipitation/fixation or other processes not represented by the persistence-only shell.",
+    "No specific receiving state for rewetting-triggered mass is scientifically selected.",
+    "No rewetting activation condition, transfer fraction, rate law, or ordering instance is qualified.",
+    "The physical meaning of the legacy 0.1 mm and Fu thresholds remains unresolved.",
+    "Historical behavior remains UNKNOWN_WITHOUT_B2.",
+    "Same-agent GOV05 review is not genuinely independent and has lower independence assurance than the former GOV04 separate-context review model."
+  ],
+  "outcome": "SELF_REVIEW_PASS"
+}
