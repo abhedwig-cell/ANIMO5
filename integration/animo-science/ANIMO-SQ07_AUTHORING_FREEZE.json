@@ -1,0 +1,19 @@
+{
+  "work_unit": "ANIMO-SQ07",
+  "target": "TCD-016-C1",
+  "base_head": "2dbabfd5f57120c583645415e87f7eb792a8c0d7",
+  "review_must_pin_exact_green_authoring_head": true,
+  "substantive_change_resets_review": true,
+  "exact_final_head_ci_required": true,
+  "substantive_files": [
+    "integration/animo-science/SQ07_TCD016_C1_REWETTING_PROCESS_QUALIFICATION.json",
+    "tools/sq07/tcd016_c1_rewetting_negative_oracle.py",
+    "tools/sq07/validate_sq07_tcd016_c1.py",
+    "integration/animo-testbank/fragments/ANIMO-SQ07_TCD016_C1_REWETTING_NEGATIVE_FRAGMENT.json",
+    ".github/workflows/animo-sq07-tcd016-c1.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-science/ANIMO-SQ07_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-science/ANIMO-SQ07_STATUS.json"
+  ]
+}
