@@ -1,0 +1,42 @@
+{
+  "fragment_id": "ANIMO-SQ07-TCD016-C1-REWETTING-NEGATIVE-v1",
+  "producer_workunit": "ANIMO-SQ07",
+  "scope": "TCD016_C1_REWETTING_NEGATIVE_QUALIFICATION_ONLY",
+  "central_registry_write": "FORBIDDEN",
+  "tests": [
+    {
+      "id": "SQ07-NEG-001",
+      "claim": "Without a qualified rewetting receiver and law, continuation state is retained exactly and no transfer event is emitted.",
+      "comparison": "DECIMAL_EXACT",
+      "oracle": "tools/sq07/tcd016_c1_rewetting_negative_oracle.py"
+    },
+    {
+      "id": "SQ07-NEG-002",
+      "claim": "Zero continuation mass remains exact zero under the fail-closed rewetting guard.",
+      "comparison": "DECIMAL_EXACT",
+      "oracle": "tools/sq07/tcd016_c1_rewetting_negative_oracle.py"
+    },
+    {
+      "id": "SQ07-NEG-003",
+      "claim": "No-process rewetting guard is timestep-partition and split-run invariant because no process memory or transfer is introduced.",
+      "comparison": "DECIMAL_EXACT",
+      "oracle": "tools/sq07/tcd016_c1_rewetting_negative_oracle.py"
+    },
+    {
+      "id": "SQ07-NEG-004",
+      "claim": "A non-zero source loss without equal typed receiver gain or declared external sink is invalid.",
+      "comparison": "EXACT_IDENTITY",
+      "oracle": "tools/sq07/tcd016_c1_rewetting_negative_oracle.py"
+    }
+  ],
+  "negative_controls": [
+    "instantaneous complete dissolution at first nonzero water is not treated as qualified physics",
+    "a fixed release fraction is not invented",
+    "infiltration does not silently become a continuation release coefficient",
+    "Conhtop is not silently selected as receiver",
+    "the mass observer never reconstructs receiver gain or continuation state from a residual"
+  ],
+  "permanence": "BOUNDED_WORKUNIT_FRAGMENT_NOT_CENTRAL_TESTBANK_ADOPTION",
+  "admission_effect": "NONE",
+  "whole_model_golden_baseline": false
+}
