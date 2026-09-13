@@ -1,0 +1,156 @@
+{
+  "work_unit": "ANIMO-SQ07",
+  "target": "TCD-016-C1",
+  "parent_tcd": "TCD-016",
+  "title": "TCD-016-C1 Explicit Rewetting Receiver, Activation and Kinetics Qualification",
+  "scope": "MODEL_EVOLUTION_REWETTING_RECEIVER_ACTIVATION_KINETICS_ONLY",
+  "risk_tier": "C_SCIENTIFIC_PROCESS_SEMANTICS",
+  "branch": "work/animo-sq07-tcd016-c1-rewetting-process-contract",
+  "central_scientific_question": "Can one concrete receiver, activation rule and transfer kinetics be scientifically qualified for M_surface_NH4_non_aqueous_continuation when rewetting occurs?",
+  "authorities": {
+    "aggregate": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+    "global_b3_queue": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+    "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "sq02": "ANIMO-SQ02@09ab76f0b44cb72956875fa379d68bbf97f1a0c7",
+    "sq03": "ANIMO-SQ03@58dc3c5c108ee97fd6bea107b7a9e686596617b1",
+    "sq04": "ANIMO-SQ04@063627cddd478904c437c9c47f02513ef0d9326b",
+    "sq05": "ANIMO-SQ05@897ba742630f06381a2b89290db80d5f405ab51d",
+    "sq06": "ANIMO-SQ06@2dbabfd5f57120c583645415e87f7eb792a8c0d7",
+    "massq04": "ANIMO-MASSQ04@3e0f8254d9cd7966a4491b3068d0239b8ccda5f9",
+    "stateq01": "ANIMO-STATEQ01@4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "stateq02": "ANIMO-STATEQ02@cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "tb01": "ANIMO-TB01@15a17bfa2c321d08f3ac89f334986c0ae8429045",
+    "tb03a": "ANIMO-TB03A@a37f07b15ae50d6fbb526cef3215fb58702e85aa"
+  },
+  "frozen_evidence": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "user_guide_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "historical_behavior": "UNKNOWN_WITHOUT_B2"
+  },
+  "inherited_contract": {
+    "source_owner": "M_surface_NH4_non_aqueous_continuation",
+    "unit": "kg N m-2",
+    "chemically_noncommittal": true,
+    "persistent_restart_state": true,
+    "rewetting_transfer_symbol": "T_rewet",
+    "rewetting_bounds": "0<=T_rewet<=M_cont_before",
+    "source_update": "M_cont_after=M_cont_before-T_rewet",
+    "receiver_identity": "SUM_DECLARED_RECEIVER_GAINS_EQUALS_T_rewet",
+    "receiver_neutral_before_sq07": true,
+    "instantaneous_dissolution_previously_qualified": false,
+    "activation_threshold_previously_qualified": false,
+    "kinetic_law_previously_qualified": false,
+    "dry_hold_process_law": "NO_DRY_HOLD_PROCESS_LAW_SCIENTIFICALLY_QUALIFIED"
+  },
+  "candidate_hypotheses": {
+    "R0": {
+      "name": "instantaneous_complete_dissolution_to_surface_aqueous_NH4_at_first_representable_surface_water",
+      "disposition": "REJECTED_NOT_SCIENTIFICALLY_QUALIFIABLE",
+      "basis": [
+        "The continuation owner is deliberately chemically noncommittal, so complete water solubility cannot be inferred.",
+        "SQ03 explicitly left instantaneous dissolution and any activation threshold unqualified.",
+        "A representable numerical water volume is not by itself a physical dissolution trigger or timescale.",
+        "No qualified surface aqueous receiver mapping proves that all continuation mass enters that owner before runoff or infiltration."
+      ],
+      "missing": ["physical phase or compound identity", "solubility basis", "surface aqueous receiver contract", "physical activation condition", "mixing timescale or justification for instantaneous transfer", "ordering relative to runoff and infiltration"]
+    },
+    "R1": {
+      "name": "partial_or_equilibrium_dissolution_to_surface_aqueous_NH4",
+      "disposition": "REJECTED_NOT_SCIENTIFICALLY_QUALIFIABLE",
+      "basis": [
+        "An equilibrium or kinetic dissolution law requires compound identity, counter-ion or material form, available interfacial area and water chemistry that the continuation owner does not define.",
+        "No parameter set with ANIMO provenance exists for this continuation state.",
+        "Introducing an empirical fraction would be parameter invention rather than qualification."
+      ],
+      "missing": ["chemical composition", "equilibrium or kinetic law", "temperature and water-chemistry envelope", "surface area or morphology where required", "parameter provenance", "validated observables"]
+    },
+    "R2": {
+      "name": "direct_transfer_to_layer1_aqueous_or_sorbed_NH4_during_infiltration",
+      "disposition": "REJECTED_NOT_SCIENTIFICALLY_QUALIFIABLE",
+      "basis": [
+        "SQ04 established that aqueous transport may act only after a qualified transfer to an aqueous owner and that soil NH4 sorption is a layer1-plus owner, not a continuation owner.",
+        "Using infiltration to remove continuation mass would silently couple water flux to an unqualified release fraction.",
+        "Direct sorbed routing would bypass an unqualified surface-to-soil phase transition."
+      ],
+      "missing": ["surface release law", "aqueous carrier mapping", "infiltration-coupled transfer law", "layer1 receiver selection", "sorption sequencing", "parameter provenance"]
+    },
+    "R3": {
+      "name": "adapted_Conhtop_virtual_top_reservoir_as_rewetting_receiver",
+      "disposition": "REJECTED_NOT_SCIENTIFICALLY_QUALIFIABLE_WITH_CURRENT_EVIDENCE",
+      "basis": [
+        "SQ04 found Conhtop to be an upper-boundary input reservoir with different provenance and release semantics.",
+        "Adapting Conhtop would require a new owner contract, water-volume definition and release semantics rather than unchanged reuse.",
+        "No evidence establishes that a virtual additions reservoir is the physical receiver for residual continuation mass."
+      ],
+      "missing": ["new receiver identity", "water-volume mapping", "mixing law", "release ordering", "restart semantics", "scientific rather than numerical activation basis"]
+    },
+    "R4": {
+      "name": "other_bounded_rewetting_law",
+      "disposition": "REJECTED_NO_EXPLICIT_SUPPORTED_CANDIDATE",
+      "basis": [
+        "No additional receiver, activation rule and kinetic law is specified by the frozen ANIMO evidence.",
+        "A literature mechanism cannot be mapped to a chemically noncommittal continuation owner without first adding physical identity not qualified here."
+      ],
+      "missing": ["named receiver", "physical phase mapping", "activation envelope", "rate or transfer law", "parameter provenance", "ordering", "falsification observations"]
+    },
+    "R5": {
+      "name": "no_currently_qualifiable_rewetting_receiver_activation_kinetics_contract",
+      "disposition": "SELECTED",
+      "basis": "Every positive candidate requires at least one unqualified physical-phase, receiver, activation, kinetics or parameter assumption. Conservation bounds and numerical water availability are insufficient to select the physics."
+    }
+  },
+  "decision": "NO_REWETTING_RECEIVER_ACTIVATION_KINETICS_SCIENTIFICALLY_QUALIFIED",
+  "final_qualification": "QUALIFIED_NEGATIVE_NO_REWETTING_PROCESS_CONTRACT_CURRENTLY_DEFENSIBLE",
+  "positive_process_contract": null,
+  "parameters": [],
+  "external_literature_invoked": false,
+  "external_literature_reason": "The first unresolved question is the physical and chemical identity of the continuation owner. External dissolution, sorption or remobilization laws are not transferable until that mapping exists; importing them now would create model semantics rather than support an already-defined process.",
+  "operational_semantics_after_negative_qualification": {
+    "rewetting_event_emitted": false,
+    "automatic_receiver_selection": false,
+    "automatic_transfer_fraction": false,
+    "automatic_activation_threshold": false,
+    "continuation_state_rule": "RETAIN_FAIL_CLOSED_PERSISTENT_STATE_UNTIL_A_SEPARATELY_QUALIFIED_REWETTING_CONTRACT_EXISTS",
+    "scientific_status": "NO_REWETTING_PHYSICS_QUALIFIED",
+    "mass_observer_role": "READ_ONLY_NO_STATE_RECONSTRUCTION"
+  },
+  "mass_state_restart_implications": {
+    "storage_identity": "S_NH4=S_aq+S_complex+S_cont",
+    "unqualified_rewet_interval": "NO_TYPED_REWETTING_TRANSFER_EMITTED",
+    "hidden_creation_or_destruction_permitted": false,
+    "receiver_gain_without_typed_source_loss_permitted": false,
+    "source_loss_without_declared_receiver_or_external_sink_permitted": false,
+    "restart_required_state": ["M_surface_NH4_non_aqueous_continuation"],
+    "partial_transfer_memory_added": false,
+    "observer_can_reconstruct_state_from_residual": false
+  },
+  "unlock_criteria": [
+    "A separate scientific qualification of the physical or chemical identity of the continuation material sufficient to constrain solubility or remobilization behaviour.",
+    "A named receiver owner with explicit water or solid-phase state and compatible units.",
+    "A physical activation criterion distinguishable from a numerical concentration denominator guard.",
+    "A rate, equilibrium or transfer law with parameter provenance and an application envelope.",
+    "Observations or high-quality new-model-evolution evidence capable of falsifying complete, partial and direct-to-soil transfer alternatives.",
+    "Explicit ordering relative to ponding creation, runoff, infiltration, adsorption and transformations."
+  ],
+  "scientific_nonclaims": [
+    "Rewetting does not imply complete dissolution by qualification.",
+    "First nonzero surface water does not constitute a qualified physical activation threshold.",
+    "Conhtop is not promoted to the continuation receiver.",
+    "Layer1 aqueous or sorbed NH4 is not selected as receiver.",
+    "Historical revision-53 rewetting behaviour remains UNKNOWN_WITHOUT_B2.",
+    "No B3 admission or production implementation is authorized."
+  ],
+  "disposition": {
+    "tcd016_c1_b3": "UNRESOLVED_NOT_ADMITTED",
+    "parent_tcd016_b3": "UNRESOLVED_NOT_ADMITTED",
+    "tcd016_e1": "BLOCKED_REWETTING_PROCESS_CONTRACT_NOT_QUALIFIED",
+    "central_queue_mutated": false,
+    "canonical_register_mutated": false,
+    "production_authorized": false
+  },
+  "next_handoff": "OPEN_A_SEPARATE_TCD016_C1_CONTINUATION_PHYSICAL_IDENTITY_AND_SPECIATION_QUALIFICATION_BEFORE_RETRYING_REWETTING_RECEIVER_ACTIVATION_KINETICS"
+}
