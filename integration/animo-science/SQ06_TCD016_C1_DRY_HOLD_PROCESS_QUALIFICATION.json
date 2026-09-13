@@ -1,0 +1,185 @@
+{
+  "work_unit": "ANIMO-SQ06",
+  "target": "TCD-016-C1",
+  "parent_tcd": "TCD-016",
+  "title": "TCD-016-C1 Explicit Dry-Hold Scientific Process Contract Qualification",
+  "scope": "MODEL_EVOLUTION_DRY_HOLD_PROCESS_LAW_ONLY",
+  "risk_tier": "C_SCIENTIFIC_PROCESS_SEMANTICS",
+  "branch": "work/animo-sq06-tcd016-c1-dry-hold-process-contract",
+  "central_scientific_question": "Which physical law, if any, governs M_surface_NH4_non_aqueous_continuation during a dry period before a separately qualified rewetting transition occurs?",
+  "authorities": {
+    "aggregate": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+    "rolling_integration_observed": "rg05o-integration@86474df11ecf104797df9df3b8d53fcf2e847873",
+    "global_b3_queue": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+    "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "gov04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "sq01": "ANIMO-SQ01@26d0c74aa440bd73c23709d313e24ea8af2a0bcd",
+    "sq02": "ANIMO-SQ02@09ab76f0b44cb72956875fa379d68bbf97f1a0c7",
+    "sq03": "ANIMO-SQ03@58dc3c5c108ee97fd6bea107b7a9e686596617b1",
+    "sq04": "ANIMO-SQ04@063627cddd478904c437c9c47f02513ef0d9326b",
+    "sq05": "ANIMO-SQ05@897ba742630f06381a2b89290db80d5f405ab51d",
+    "massq01": "ANIMO-MASSQ01@6ccddd631a8dcc21f06b1384baf2561e81179e75",
+    "massq02": "ANIMO-MASSQ02@56a11b524d03c33ee4ab9b1cd13b2cd523d543fc",
+    "massq03": "ANIMO-MASSQ03@68a8c202bd01bf55b31b7c944884fb2f78a6a8e8",
+    "massq04": "ANIMO-MASSQ04@3e0f8254d9cd7966a4491b3068d0239b8ccda5f9",
+    "stateq01": "ANIMO-STATEQ01@4adae99576eb56978da71f7c8a250e4445fd3bc4",
+    "stateq02": "ANIMO-STATEQ02@cb7c23524df6560e65a5bdc1ed19e0b6e3bd46c6",
+    "eg01": "ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300",
+    "tb01": "ANIMO-TB01@15a17bfa2c321d08f3ac89f334986c0ae8429045",
+    "tb03a": "ANIMO-TB03A@a37f07b15ae50d6fbb526cef3215fb58702e85aa"
+  },
+  "frozen_evidence": {
+    "source_archive": {
+      "logical_id": "ANIMO_4.1.5_revision_53",
+      "sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+      "manifest": "reference/source/source_manifest.csv",
+      "evidence_role": "REVISION_53_SOURCE_PROVENANCE_NOT_HISTORICAL_B2_BEHAVIOUR"
+    },
+    "animo40_user_guide": {
+      "logical_id": "ANIMO-B0-DOC-UG40-2005",
+      "sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+      "version_scope": "ANIMO_4_0_NOT_EXACT_4_1_5_REV53_THEORY",
+      "relevant_pages": [17, 18, 21, 25, 26, 43, 46, 49, 50]
+    },
+    "testbank": {
+      "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+      "manifest": "reference/testcases/testbank_manifest.csv"
+    }
+  },
+  "inherited_contract": {
+    "continuation_owner": "M_surface_NH4_non_aqueous_continuation",
+    "unit": "kg N m-2",
+    "chemically_noncommittal": true,
+    "independent_of_aqueous_volume": true,
+    "persistent_restart_state_required_if_implemented": true,
+    "specific_phase_or_process_law_previously_qualified": false,
+    "fail_closed_no_process_update": "M_cont_after=M_cont_before",
+    "no_process_update_is_physical_inertness_claim": false,
+    "storage_identity": "S_NH4=S_aq+S_complex+S_cont",
+    "same_control_volume_transfer": "INTERNAL_NOT_EXTERNAL",
+    "cross_control_volume_transfer": "TYPED_BOUNDARY_TERM_REQUIRED",
+    "observer_may_own_or_reconstruct_physical_state": false
+  },
+  "evidence_hierarchy_application": {
+    "frozen_b0_theory_documentation": "NO_CONCRETE_CONTINUATION_STATE_DRY_PROCESS_LAW_FOUND",
+    "revision53_source_provenance": "EXISTING_FRVO_NITRIFICATION_SORPTION_CONHTOP_AND_AQUEOUS_ROUTES_AUDITED_BY_SQ04_AND_NOT_REUSABLE_UNCHANGED",
+    "existing_animo_scientific_authorities": "STATE_AND_PROCESS_ENVELOPE_QUALIFIED_BUT_SPECIFIC_DRY_PROCESS_UNQUALIFIED",
+    "mass_state_testbank_evidence": "SUPPORTS_OWNERSHIP_CONSERVATION_RESTART_AND_FAIL_CLOSED_GUARDS_BUT_NOT_A_PHYSICAL_DRY_PROCESS_LAW",
+    "external_literature_invoked": false,
+    "external_literature_reason": "A literature process law cannot be mapped without first assigning physical and chemical identity, interface geometry and activation variables to the deliberately chemically noncommittal continuation owner. Doing so here would introduce unqualified model semantics or parameters rather than merely import evidence."
+  },
+  "hypotheses": {
+    "H0": {
+      "name": "conservative dry hold",
+      "disposition": "REJECTED_AS_PHYSICAL_LAW_NOT_SCIENTIFICALLY_QUALIFIED",
+      "basis": [
+        "SQ03 qualifies M_cont_after=M_cont_before only as a fail-closed no-process update and explicitly denies that persistence is a physical inertness claim.",
+        "ANIMO 4.0 theory describes moisture-dependent biological process-rate reduction, not a universal zero-rate law for the continuation owner.",
+        "No evidence identifies the continuation phase or establishes that all possible dry-period losses and transformations are exactly zero."
+      ],
+      "missing_for_positive_qualification": ["physical phase identity", "dry activation envelope", "evidence that the physical rate is exactly zero over that envelope", "falsifiable physical observable beyond accounting closure"]
+    },
+    "H1": {
+      "name": "NH3_NH4_volatilization_during_dry_hold",
+      "disposition": "REJECTED_NOT_SCIENTIFICALLY_QUALIFIABLE_FROM_CURRENT_EVIDENCE",
+      "basis": [
+        "SQ04 rejects unchanged reuse of management-addition FRVO volatilization for the continuation owner.",
+        "The user guide defines FRVO as an addition-event fraction, not a kinetic law for pre-existing continuation mass.",
+        "The continuation owner is chemically noncommittal, so an NH3/NH4 gas-liquid-solid speciation assumption cannot be introduced silently."
+      ],
+      "missing_for_positive_qualification": ["NH3_NH4 speciation contract", "gas exchange interface", "activation and deactivation variables", "rate law", "parameter values with provenance", "typed atmospheric boundary mapping"]
+    },
+    "H2": {
+      "name": "binding_sorption_or_precipitation_to_another_owner",
+      "disposition": "REJECTED_NOT_SCIENTIFICALLY_QUALIFIABLE_FROM_CURRENT_EVIDENCE",
+      "basis": [
+        "SQ04 rejects unchanged reuse of soil NH4 sorption as the continuation owner or continuation process.",
+        "No qualified surface receiver owner, site inventory, equilibrium or kinetic relation is defined for this continuation state.",
+        "Selecting a soil or other receiver here would violate the receiver-neutral SQ03 envelope."
+      ],
+      "missing_for_positive_qualification": ["receiver owner", "surface or soil phase mapping", "capacity or equilibrium relation", "kinetic law where applicable", "parameter provenance", "owner-transition observables"]
+    },
+    "H3": {
+      "name": "nitrification_or_other_N_transformation_during_dry_hold",
+      "disposition": "REJECTED_NOT_SCIENTIFICALLY_QUALIFIABLE_FROM_CURRENT_EVIDENCE",
+      "basis": [
+        "SQ04 rejects unchanged reuse of the soil nitrification route for the continuation owner.",
+        "ANIMO 4.0 nitrification is a soil biological process with moisture, temperature and pH response, while no mapping puts continuation mass into the required soil microbial domain.",
+        "No qualified daughter owner or stoichiometric transition from continuation mass is defined."
+      ],
+      "missing_for_positive_qualification": ["microbial accessibility mapping", "daughter species owner", "activation envelope", "rate law", "parameters with provenance", "stoichiometric transfer contract"]
+    },
+    "H4": {
+      "name": "other_explicit_bounded_process_law",
+      "disposition": "REJECTED_NO_EXPLICIT_CANDIDATE_SUPPORTED_BY_CURRENT_EVIDENCE",
+      "basis": [
+        "No additional bounded dry-hold law is identified in the frozen ANIMO evidence or qualified scientific authorities.",
+        "Inventing a phase, receiver, rate coefficient or calibration constant is prohibited."
+      ],
+      "missing_for_positive_qualification": ["named physical mechanism", "complete state mapping", "activation envelope", "rate or transfer law", "parameter provenance", "falsification data"]
+    },
+    "H5": {
+      "name": "no_currently_qualifiable_dry_hold_process_law",
+      "disposition": "SELECTED",
+      "basis": "Every positive candidate requires at least one unqualified physical identity, receiver, activation, rate-law or parameter assumption. Mass closure alone cannot resolve those missing scientific semantics."
+    }
+  },
+  "decision": "NO_DRY_HOLD_PROCESS_LAW_SCIENTIFICALLY_QUALIFIED",
+  "final_qualification": "QUALIFIED_NEGATIVE_NO_DRY_HOLD_PROCESS_LAW_CURRENTLY_DEFENSIBLE",
+  "positive_process_contract": null,
+  "parameters": [],
+  "parameter_provenance": "NO_PROCESS_PARAMETERS_INTRODUCED_OR_CALIBRATED",
+  "dry_hold_operational_semantics_after_negative_qualification": {
+    "rule": "When no separately qualified dry process is active, retain M_surface_NH4_non_aqueous_continuation exactly as the already-qualified fail-closed no-process state-persistence behaviour.",
+    "scientific_status": "SAFETY_AND_STATE_PERSISTENCE_SEMANTICS_ONLY_NOT_A_PHYSICAL_INERTNESS_LAW",
+    "owner_before": "M_surface_NH4_non_aqueous_continuation",
+    "owner_after": "M_surface_NH4_non_aqueous_continuation",
+    "species_identity": "NH4_N_ORIGIN_MASS_CHEMICALLY_NONCOMMITTAL_CONTINUATION_OWNER",
+    "unit": "kg N m-2",
+    "process_rate": null,
+    "process_transfer": null,
+    "boundary_term": null,
+    "observer_role": "READ_ONLY_ACCOUNTING_OBSERVER",
+    "timestep_order_semantics": "NO_DRY_PROCESS_EVENT_IS_EMITTED; PERSISTENT_STATE_CARRIES_FORWARD_UNTIL_A_SEPARATELY_QUALIFIED_PROCESS_OR_REWETTING_TRANSITION_EXISTS",
+    "rewetting_semantics": "OUT_OF_SCOPE_AND_UNQUALIFIED"
+  },
+  "mass_state_restart_implications": {
+    "mass_identity": "S_NH4=S_aq+S_complex+S_cont",
+    "dry_no_process_interval": "Delta_S_cont=0_BY_FAIL_CLOSED_STATE_SEMANTICS_NOT_BY_PHYSICAL_RATE_ASSERTION",
+    "hidden_creation_or_destruction_permitted": false,
+    "owner_transition_in_this_workunit": "NONE_QUALIFIED",
+    "restart_required_state": ["M_surface_NH4_non_aqueous_continuation"],
+    "split_run_requirement": "EXACT_CONTINUATION_STATE_RESTORE_SUFFICES_FOR_THE_NO_PROCESS_GUARD; NO_UNQUALIFIED_PROCESS_MEMORY_IS_INTRODUCED",
+    "observer_can_reconstruct_missing_state_from_residual": false
+  },
+  "expected_limiting_behaviour": {
+    "zero_mass": "NO_NEGATIVE_MASS_NO_EVENT_AND_EXACT_ZERO_PERSISTS",
+    "zero_process_rate": "ONLY_A_SYNTHETIC_GUARD_IDENTITY_NOT_A_QUALIFIED_PHYSICAL_RATE",
+    "timestep_partition": "NO_PROCESS_GUARD_IS_EXACTLY_PARTITION_INVARIANT_BECAUSE_IT_IS_STATE_PERSISTENCE_ONLY",
+    "restart": "UNINTERRUPTED_AND_SPLIT_RUN_NO_PROCESS_GUARD_STATES_MATCH_EXACTLY"
+  },
+  "falsification_and_unlock_criteria": [
+    "Recovered comprehensive ANIMO theory with explicit provenance that identifies a dry continuation-state process, its state mapping, applicability and parameters.",
+    "New model-evolution scientific evidence that first identifies the physical phase/speciation and interface of continuation mass and then supplies a bounded process law with independently traceable parameters.",
+    "Process-specific observations that distinguish volatilization, binding or N transformation during the dry interval and support a receiver or atmospheric boundary mapping rather than only total-mass closure.",
+    "A reproducible experiment or literature-backed parameterization with an application envelope that can be mapped without inventing continuation-state chemistry or rewetting semantics."
+  ],
+  "scientific_nonclaims": [
+    "Historical revision-53 dry behaviour is not inferred and remains UNKNOWN_WITHOUT_B2.",
+    "Conservative persistence is not promoted to physical inertness.",
+    "No existing revision-53 process is silently repurposed.",
+    "No rewetting receiver, threshold or kinetics are selected.",
+    "No B3 admission or production implementation is authorized."
+  ],
+  "disposition": {
+    "tcd016_c1_b3": "UNRESOLVED_NOT_ADMITTED",
+    "parent_tcd016_b3": "UNRESOLVED_NOT_ADMITTED",
+    "tcd016_e1": "BLOCKED_PENDING_SEPARATE_REWETTING_RECEIVER_ACTIVATION_KINETICS_QUALIFICATION",
+    "global_b3_queue_mutation": false,
+    "canonical_register_mutation": false,
+    "production_authorized": false
+  },
+  "next_handoff": "OPEN_A_SEPARATE_TCD016_C1_REWETTING_RECEIVER_ACTIVATION_AND_KINETICS_MODEL_EVOLUTION_WORKUNIT_WITHOUT_REOPENING_THIS_NEGATIVE_DRY_HOLD_QUALIFICATION_UNLESS_NEW_DRY_PROCESS_EVIDENCE_APPEARS"
+}
