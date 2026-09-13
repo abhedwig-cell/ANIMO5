@@ -2,10 +2,10 @@
   "work_unit": "ANIMO-SQ08",
   "target": "TCD-016-C1",
   "branch": "work/animo-sq08-tcd016-c1-identity-speciation",
-  "phase": "AUTHORING_FROZEN_PENDING_GOV05_ADVERSARIAL_REVIEW",
-  "state": "CANDIDATE_QUALIFIED_NONCOMMITTAL_IDENTITY_ENVELOPE",
-  "decision": null,
-  "qualified": false,
+  "phase": "COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_TCD016_C1_NONCOMMITTAL_IDENTITY_ENVELOPE_SPECIFIC_PHASE_AND_SPECIATION_UNQUALIFIED",
+  "decision": "QUALIFY_ONLY_BOUNDED_NONCOMMITTAL_IDENTITY_ENVELOPE_NO_SPECIFIC_PHASE_OR_SPECIATION_CURRENTLY_DEFENSIBLE",
+  "qualified": true,
   "base_head": "ANIMO-SQ07@2076c0def17c504a3ba29db02d964d4a6238d2cf",
   "aggregate_authority": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
   "global_b3_authority": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
@@ -20,15 +20,15 @@
   "e1_disposition": "BLOCKED_NO_SPECIFIC_REWETTING_PROCESS_CONTRACT",
   "review": {
     "required": true,
-    "completed": false,
+    "completed": true,
     "same_agent": true,
     "genuinely_independent": false,
     "independence_claimed": false,
-    "reviewed_head": null,
-    "reviewed_head_ci_run": null,
-    "reviewed_head_ci_job": null,
-    "reviewed_head_ci_conclusion": "PENDING",
-    "outcome": null,
+    "reviewed_head": "da26843fe93cf23040efbfc06be0946cf2f30424",
+    "reviewed_head_ci_run": 34744655527,
+    "reviewed_head_ci_job": 103690216290,
+    "reviewed_head_ci_conclusion": "success",
+    "outcome": "SELF_REVIEW_PASS",
     "artifact": "integration/animo-science/ANIMO-SQ08_INTERNAL_ADVERSARIAL_REVIEW.json"
   },
   "validation": {
@@ -36,12 +36,13 @@
     "validator": "tools/sq08/validate_sq08_tcd016_c1.py",
     "oracle": "tools/sq08/tcd016_c1_identity_oracle.py",
     "fragment": "integration/animo-testbank/fragments/ANIMO-SQ08_TCD016_C1_IDENTITY_FRAGMENT.json",
-    "authoring_head": null,
-    "authoring_run": null,
-    "authoring_job": null,
-    "authoring_conclusion": "PENDING",
-    "scope_guard": "PENDING",
-    "exact_final_head_required": true
+    "authoring_head": "da26843fe93cf23040efbfc06be0946cf2f30424",
+    "authoring_run": 34744655527,
+    "authoring_job": 103690216290,
+    "authoring_conclusion": "success",
+    "scope_guard": "PASS",
+    "exact_final_head_required": true,
+    "closeout_note": "The authoring head passed exact-head CI and received a GOV05 same-agent adversarial second pass. This status is authoritative only if the same workflow succeeds on the exact final head containing the review and status closeout."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -56,9 +57,10 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
-  }
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
+  },
+  "next_handoff": "DO_NOT_RETRY_REWETTING_OR_DRY_PROCESS_LAWS_UNLESS_NEW_MATERIAL_IDENTITY_EVIDENCE_OR_AN_EXPLICIT_NEW_MODEL_ASSUMPTION_IS_AUTHORIZED; IF_SUCH_EVIDENCE_EXISTS_OPEN_A_SEPARATE_MATERIAL_IDENTITY_CANDIDATE_WORKUNIT_FIRST"
 }
