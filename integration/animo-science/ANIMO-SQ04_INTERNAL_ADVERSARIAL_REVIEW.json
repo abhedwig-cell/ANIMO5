@@ -1,0 +1,129 @@
+{
+  "work_unit": "ANIMO-SQ04",
+  "risk_tier": "C",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "assurance_label": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "reviewed_authoring_head": "ea202e8af48350ab4edce714aa39fbdd43f7ec22",
+  "same_agent": true,
+  "independence_claimed": false,
+  "review_boundary": {
+    "complete_authoring_package_persisted": true,
+    "immutable_head_frozen_before_review": true,
+    "source_testbank_evidence_hashes_recorded_before_review": true,
+    "authoring_completed_before_review": true,
+    "authoring_head_matches_reviewed_head": true,
+    "moving_tree_reviewed": false
+  },
+  "evidence_reuse_checks": {
+    "pin_identity": "PASS",
+    "scope_compatibility": "PASS",
+    "immutable_provenance": "PASS",
+    "no_superseding_contradiction": "PASS",
+    "evidence_strength_preserved": "PASS"
+  },
+  "counter_hypothesis": {
+    "tested": true,
+    "alternative": "The existing Frvo volatilization fraction or existing soil NH4 process machinery is generic enough to be applied directly to the TCD-016-C1 continuation mass without defining a new process contract.",
+    "test": "Reinspect the hash-pinned revision-53 source ownership, activation variables, layer domains and balance semantics for Frvo, Rates/Denitr/resp_miner, NH4 sorption, Conhtop/Rsconhtop and aqueous transport; require unchanged reuse to preserve owner, provenance, activation domain and balance meaning rather than merely reuse a formula or parameter type.",
+    "result": "ALTERNATIVE_REJECTED_BY_PINNED_EVIDENCE"
+  },
+  "active_controls": [
+    "The session-local frozen source archive re-hashed exactly to 183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566 before source inspection.",
+    "Repository source_manifest identities for all eleven audited source files match the independently re-hashed frozen archive files.",
+    "Authoring CI run 34742069399 job 103683336909 passed on exact immutable authoring head ea202e8af48350ab4edce714aa39fbdd43f7ec22.",
+    "Frvo is indexed by management-addition event and its balance accounting is constructed from the same event quantity and material composition.",
+    "Rates and Denitr process loops are soil-layer scoped, while resp_miner explicitly skips Ln=0 before its mineralization logic.",
+    "Inicalc maps NH4 sorption parameters and initializes adsorbed NH4 over soil layers 1..Nl, not a generic surface continuation owner.",
+    "UBoundconc gives Conhtop/Rsconhtop an upper-boundary input-reservoir residence/release contract distinct from residual ponding mass."
+  ],
+  "negative_controls": [
+    "A dimensionless fraction is not treated as a reusable process law when its provenance and source owner differ.",
+    "A formula that can act after mass is explicitly transferred into soil does not qualify an implicit continuation-to-soil transfer.",
+    "Existing persistence of Conhtop does not establish semantic identity with continuation mass.",
+    "Existing aqueous transport is not treated as a continuation owner at zero aqueous storage.",
+    "No audited route is generalized beyond its source-supported layer, state, input or management contract.",
+    "The audit does not claim that dry continuation NH4 cannot volatilize, nitrify, sorb, dissolve or transfer to soil; those remain possible future processes requiring separate qualification.",
+    "Session-local source inspection is not promoted to historical B2 behavior evidence, and no historical fidelity is claimed.",
+    "No production source, central queue, canonical register, B3 admission or B4 surface is modified."
+  ],
+  "scientific_gates": {
+    "management_volatilization_provenance": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "Frvo partitions newly added management NH4 and is reported through the same addition-event variables; unchanged application to pre-existing continuation state would alter provenance and state semantics."
+    },
+    "soil_transformation_domain": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "The audited nitrification/transformation machinery is bound to soil-layer environmental states and does not define a process on the surface nonaqueous continuation owner."
+    },
+    "soil_sorption_ownership": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "NH4 sorption parameters and adsorbed-state initialization are soil-layer owned; direct continuation-to-sorption assignment would require an explicit new cross-compartment and cross-phase transfer."
+    },
+    "top_reservoir_semantic_identity": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "Conhtop/Rsconhtop is an upper-boundary input reservoir with its own Hetop and flux-driven release semantics, not an interchangeable residual ponding owner."
+    },
+    "aqueous_transport_as_continuation_owner": {
+      "applicability": "APPLICABLE",
+      "result": "PASS",
+      "justification": "Aqueous concentration transport requires a representable aqueous owner; it can act after a separately qualified transfer but cannot itself carry finite continuation mass through zero aqueous storage."
+    },
+    "new_or_adapted_process_law": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "SQ04 qualifies only the negative unchanged-reuse audit and does not select, adapt or parameterize a future process law."
+    },
+    "historical_behavior": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "Historical behavior remains UNKNOWN_WITHOUT_B2 and is outside this source-semantic audit."
+    },
+    "b3_admission": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "Neither TCD-016-C1 nor parent TCD-016 is admitted in SQ04."
+    }
+  },
+  "adversarial_gates": {
+    "formula_reuse_not_confused_with_semantic_reuse": "PASS",
+    "Frvo_provenance_rechecked": "PASS",
+    "soil_layer_domain_rechecked": "PASS",
+    "sorption_owner_rechecked": "PASS",
+    "top_reservoir_alias_rechecked": "PASS",
+    "aqueous_transport_boundary_rechecked": "PASS",
+    "future_adaptation_not_precluded": "PASS",
+    "historical_uncertainty_preserved": "PASS",
+    "no_production_or_queue_mutation": "PASS"
+  },
+  "tier_c_enhanced": {
+    "immutable_authoring_checkpoint": "PASS",
+    "complete_source_state_ownership_reconstruction": "PASS",
+    "first_read_first_write_or_restore_direction_analysis": "PASS",
+    "counter_hypothesis_test": "PASS",
+    "active_controls": "PASS",
+    "negative_controls": "PASS",
+    "split_run_or_restart_evidence": {
+      "applicability": "NOT_APPLICABLE",
+      "result": "NOT_APPLICABLE",
+      "justification": "SQ04 is a source-bound semantic reuse audit with no implementation or changed restart state; restart behavior of a future adapted process must be qualified in that later workunit."
+    },
+    "exact_comparison_policy": "Exact SHA-256 source/archive identities and exact enumerated route dispositions; no numerical, scientific or behavioral tolerance is introduced.",
+    "no_invented_tolerance": true,
+    "regression_guard": "PASS",
+    "regression_surface_declared": true,
+    "exact_final_head_ci_required": true
+  },
+  "residual_uncertainty": [
+    "An existing ANIMO scientific formulation may still be adaptable after a new state mapping, activation contract, parameters, ordering and balance semantics are qualified; SQ04 rejects only unchanged reuse.",
+    "The physical dry-period fate of surface NH4 remains unresolved.",
+    "The scientifically correct rewetting receiver, timing and kinetics remain unresolved.",
+    "Uninspected authoritative historical theory, including inaccessible sections of Alterra Report 983, could materially refine a future process contract.",
+    "Historical behavior remains UNKNOWN_WITHOUT_B2.",
+    "Same-agent GOV05 review is not genuinely independent and has lower independence assurance than the former GOV04 separate-context model."
+  ],
+  "outcome": "SELF_REVIEW_PASS"
+}
