@@ -1,0 +1,56 @@
+name: ANIMO-SQ04 TCD016-C1 existing-process reuse audit
+
+on:
+  push:
+    branches:
+      - work/animo-sq04-tcd016-c1-existing-process-reuse-audit
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify exact branch head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Fetch exact authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in 58dc3c5c108ee97fd6bea107b7a9e686596617b1 11e9bcdc6654e63f84875bf1f28dc54abe725700 bc9e6ed997a078336645210ebb4d99ae976893fe f65a47724e4a4fca7f2d8b8d6de9eeee51867904; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+          done
+      - name: Verify current negative B3 closure authority CI
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          run_id = 34687903443
+          expected = "11e9bcdc6654e63f84875bf1f28dc54abe725700"
+          req = urllib.request.Request(
+              f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}",
+              headers={"Authorization": f"Bearer {os.environ['GH_TOKEN']}", "Accept": "application/vnd.github+json"},
+          )
+          with urllib.request.urlopen(req) as response:
+              data = json.load(response)
+          assert data["head_sha"] == expected
+          assert data["status"] == "completed" and data["conclusion"] == "success"
+          print("B3Q06 exact-final CI authority verified")
+          PY
+      - name: Parse and compile SQ04 package
+        run: |
+          python -m json.tool integration/animo-science/SQ04_TCD016_C1_EXISTING_PROCESS_REUSE_AUDIT.json >/dev/null
+          python -m json.tool integration/animo-science/ANIMO-SQ04_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-science/ANIMO-SQ04_STATUS.json >/dev/null
+          if test -f integration/animo-science/ANIMO-SQ04_INTERNAL_ADVERSARIAL_REVIEW.json; then
+            python -m json.tool integration/animo-science/ANIMO-SQ04_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null
+          fi
+          python -m py_compile tools/sq04/validate_sq04_tcd016_c1.py
+      - name: Validate source-bound route identities and bounded reuse audit
+        run: python tools/sq04/validate_sq04_tcd016_c1.py

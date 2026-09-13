@@ -1,0 +1,118 @@
+{
+  "work_unit": "ANIMO-SQ04",
+  "target": "TCD-016-C1",
+  "parent_tcd": "TCD-016",
+  "scope": "EXISTING_REV53_NH4_PROCESS_REUSE_AUDIT_ONLY",
+  "base_authority": "ANIMO-SQ03@58dc3c5c108ee97fd6bea107b7a9e686596617b1",
+  "global_b3_authority": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+  "aggregate_authority": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "source_files": {
+    "ANIMO_4.1.5.53/Addit.for": "e3cf8f427e9a4b3743742039c89aae57864cb7268893e45797c7a17427dc8f5d",
+    "ANIMO_4.1.5.53/Input_addit.for": "83b15da4ecefb73559dc99f4f82d4fb2b21f72a35fa03bb53a2dd11b9a450989",
+    "ANIMO_4.1.5.53/Outbal_calc.for": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+    "ANIMO_4.1.5.53/Rates.for": "7a1a8aee4715d85b9b7e9e172f83756e4aee8b8278386c804210ef77dc2a857a",
+    "ANIMO_4.1.5.53/resp_miner.for": "938d35c043bd3e1f14c20ec1c0b2395e9944beb2797746bc4e7cdfb38bb98106",
+    "ANIMO_4.1.5.53/Denitr.for": "d4232485cf4dcb755f9a070509d74f5bf1ae22835c2e29df5502d2f307b97e3c",
+    "ANIMO_4.1.5.53/UBoundconc.for": "b9a7ec980d40c0f76279077852190788e36cd976d185b12683a38da0c7dfecf7",
+    "ANIMO_4.1.5.53/Inicalc.for": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1",
+    "ANIMO_4.1.5.53/MODFLUX.FOR": "0c0909922e88ee59233cabc307fb18243ea86023b4722879f6301259780de93d",
+    "ANIMO_4.1.5.53/Animo.for": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
+    "ANIMO_4.1.5.53/TRANSPORT.FOR": "3f597b896ab5514e0b836f5547b342e317b03c8e3e58e053e113bd1c17e2f998"
+  },
+  "session_local_source_search": {
+    "archive_hash_reverified": true,
+    "search_terms": ["Frvo", "NH3", "ammonia", "volatilization"],
+    "Frvo_symbol_files": [
+      "ANIMO_4.1.5.53/Addit.for",
+      "ANIMO_4.1.5.53/Animo.for",
+      "ANIMO_4.1.5.53/Animo.inc",
+      "ANIMO_4.1.5.53/Input_addit.for",
+      "ANIMO_4.1.5.53/Outbal_calc.for",
+      "ANIMO_4.1.5.53/Output2.for"
+    ],
+    "generic_state_dependent_surface_NH4_volatilization_operator_found": false,
+    "raw_source_republished": false
+  },
+  "audited_routes": {
+    "management_addition_volatilization_Frvo": {
+      "source_contract": "PER_ADDITION_EVENT_INPUT_PARTITION_BEFORE_RETAINED_NH4_ENTERS_MODEL_STATE",
+      "evidence": [
+        "Input_addit reads Frvo(I) with Mtnu(I), Qumt(I), Wyad(I), Pl(I) and bounds Frvo to [0,1]",
+        "Addit multiplies newly added NH4 by (1-Frvo(I)) before retained mass enters layer0, top reservoir or soil",
+        "Outbal_calc computes volatilization from the same addition-event amount and Frvo(I)"
+      ],
+      "continuation_mismatch": [
+        "continuation mass is pre-existing persistent state rather than a new management addition",
+        "Frvo has no state-dependent activation or removal law for M_surface_NH4_non_aqueous_continuation",
+        "unchanged reuse would alter provenance and balance semantics"
+      ],
+      "disposition": "NOT_REUSABLE_UNCHANGED"
+    },
+    "soil_nitrification_transformation": {
+      "source_contract": "SOIL_LAYER_PROCESS_LN_1_TO_NL_WITH_SOIL_ENVIRONMENTAL_STATE",
+      "evidence": [
+        "Rates constructs pH, temperature, moisture and transformation factors for Ln=1..Nl",
+        "Rates calculates ReKinh inside soil-layer processing",
+        "Denitr nitrification-related oxygen demand and nitrate production loops Ln=1..Nl",
+        "resp_miner diverts Ln=0 before mineralization logic and forms Rekonh over Ln=1..Nl"
+      ],
+      "continuation_mismatch": [
+        "continuation owner is a surface nonaqueous conservation state, not an admitted soil layer phase",
+        "using soil kinetics requires a separately qualified transfer/state mapping"
+      ],
+      "disposition": "NOT_REUSABLE_UNCHANGED"
+    },
+    "soil_NH4_sorption": {
+      "source_contract": "SOIL_HORIZON_TO_LAYER_SORPTION_OWNER_LN_1_TO_NL",
+      "evidence": [
+        "Inicalc maps Socfnh and Rhbd from horizons to layers only for Ln=1..Nl",
+        "Inicalc initializes adsorbed NH4 Cxnh only for Ln=1..Nl",
+        "UBoundconc applies layer1 sorption only after explicit dry-deposition routing into layer1"
+      ],
+      "continuation_mismatch": [
+        "no source-defined surface solid/sorption owner is identified",
+        "directly assigning continuation mass to soil sorption would invent a cross-compartment cross-phase transfer"
+      ],
+      "disposition": "NOT_REUSABLE_UNCHANGED_AS_CONTINUATION_OWNER"
+    },
+    "top_reservoir_Conhtop": {
+      "source_contract": "UPPER_BOUNDARY_INPUT_RESERVOIR_WITH_HETOP_AND_FLUX_DRIVEN_RESIDENCE_RELEASE",
+      "evidence": [
+        "UBoundconc forms Load terms from precipitation, irrigation, runon and other upper-boundary inputs",
+        "under no ponding Conhtop/Rsconhtop evolves over Hetop with flux-driven residence-time coefficients",
+        "under ponding the top-reservoir result is emptied into the active upper-boundary mixture"
+      ],
+      "continuation_mismatch": [
+        "input/addition provenance differs from residual ponding mass",
+        "release kinetics and restart meaning differ"
+      ],
+      "disposition": "NOT_REUSABLE_UNCHANGED"
+    },
+    "aqueous_transport": {
+      "source_contract": "AQUEOUS_CONCENTRATION_TRANSPORT_REQUIRES_REPRESENTABLE_AQUEOUS_STORAGE",
+      "evidence": [
+        "MODFLUX includes layer0 in solute sequence only when ponding is active through Flpn",
+        "TCD016 exists because concentration cannot carry finite continuation mass at zero aqueous storage",
+        "TRANSPORT/Transsub can act after mass has a qualified aqueous owner but do not create the missing continuation owner"
+      ],
+      "continuation_mismatch": [
+        "zero-water continuation state is not an aqueous concentration coordinate",
+        "direct reuse before a qualified transfer would recreate missing-state semantics or require invented water"
+      ],
+      "disposition": "NOT_A_CONTINUATION_PROCESS_LAW"
+    }
+  },
+  "bounded_conclusion": "NO_AUDITED_EXISTING_REV53_NH4_ROUTE_IS_SEMANTICALLY_REUSABLE_UNCHANGED_FOR_TCD016_C1_CONTINUATION_STATE",
+  "adaptation_may_be_qualified_later": true,
+  "unchanged_reuse_qualified": false,
+  "specific_new_process_law_qualified": false,
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "c1_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "parent_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "e1_disposition": "BLOCKED_PENDING_CONCRETE_PHYSICAL_ACTIVATION_AND_PROCESS_LAW",
+  "production_authorized": false,
+  "decision": "QUALIFY_EXISTING_PROCESS_REUSE_AUDIT_NO_AUDITED_ROUTE_REUSABLE_UNCHANGED_ADAPTED_OR_NEW_PROCESS_SEMANTICS_REQUIRE_SEPARATE_QUALIFICATION"
+}

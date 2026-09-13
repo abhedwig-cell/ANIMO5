@@ -1,0 +1,35 @@
+{
+  "work_unit": "ANIMO-SQ04",
+  "target": "TCD-016-C1",
+  "branch": "work/animo-sq04-tcd016-c1-existing-process-reuse-audit",
+  "base_head": "58dc3c5c108ee97fd6bea107b7a9e686596617b1",
+  "base_authority": "ANIMO-SQ03@58dc3c5c108ee97fd6bea107b7a9e686596617b1",
+  "global_b3_authority": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+  "aggregate_authority": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_TIER_C_REVIEW",
+  "substantive_files": [
+    "docs/science/TCD016_C1_EXISTING_PROCESS_REUSE_AUDIT.md",
+    "integration/animo-science/SQ04_TCD016_C1_EXISTING_PROCESS_REUSE_AUDIT.json",
+    "tools/sq04/validate_sq04_tcd016_c1.py",
+    ".github/workflows/animo-sq04-tcd016-c1.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-science/ANIMO-SQ04_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-science/ANIMO-SQ04_STATUS.json"
+  ],
+  "review_must_pin_exact_green_authoring_head": true,
+  "substantive_change_resets_GOV05_review": true,
+  "exact_final_head_ci_required": true,
+  "source_archive_reinspected_session_locally": true,
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "raw_b0_republished": false,
+  "production_source_frozen": true,
+  "frozen_b0_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "b3_admission_forbidden": true,
+  "b4_forbidden": true,
+  "historical_behavior": "UNKNOWN_WITHOUT_B2"
+}
