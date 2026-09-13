@@ -46,13 +46,17 @@ def main():
     assert legacy['soil_complex_storage_begin']=='BANHCX'
     assert legacy['soil_complex_storage_end']=='BANHCXT'
     assert legacy['explicit_continuation_storage_term_present'] is False
-    rr=ev['revision53_storage_reconstruction']
-    assert rr['continuation_state_in_legacy_deviation_equation'] is False
+    assert ev['revision53_storage_reconstruction']['continuation_state_in_legacy_deviation_equation'] is False
     q=ev['qualified_model_evolution_contract']
     assert q['total_storage_identity']=='S_NH4=S_aq+S_complex+S_cont'
     assert q['S_cont_owner']=='M_surface_NH4_non_aqueous_continuation'
-    assert q['wet_to_continuation_transfer']=='INTERNAL_NOT_EXTERNAL'
-    assert q['continuation_to_receiver_transfer']=='INTERNAL_NOT_EXTERNAL'
+    assert q['transfer_classification_control_volume_relative'] is True
+    assert q['internal_if_source_and_destination_owned_by_selected_control_volume'] is True
+    assert q['cross_control_volume_transfer_requires_typed_boundary_term'] is True
+    assert q['internal_transfer_identity']=='S_before=S_after'
+    assert q['boundary_transfer_identity']=='S_before=S_after+O_boundary'
+    assert q['receiving_observed_volume_gain_equals_typed_transfer'] is True
+    assert q['same_transfer_may_be_internal_and_boundary_for_same_control_volume'] is False
     assert q['observer_may_reconstruct_state_from_residual'] is False
     assert q['observer_may_own_physical_state'] is False
     assert q['new_process_loss_must_be_named_once'] is True
@@ -71,6 +75,7 @@ def main():
         assert r['same_agent'] is True and r['genuinely_independent'] is False and r['independence_claimed'] is False
         assert r['outcome']=='SELF_REVIEW_PASS'
         assert r['decision']=='PASS_TCD016_C1_BALANCE_ONTOLOGY_NO_PROCESS_OR_B3_ADMISSION'
+        assert r['adversarial_gates']['control_volume_relative_transfer_classification']=='PASS'
         assert st['review']['completed'] is True and st['qualified'] is True
     print('MASSQ04 TCD016-C1 balance ontology validation PASS')
 

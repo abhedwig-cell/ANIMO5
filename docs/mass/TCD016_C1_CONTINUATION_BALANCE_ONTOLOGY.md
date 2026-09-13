@@ -25,13 +25,7 @@ The source-bound mass-balance deviation equation subtracts final liquid and comp
 
 SQ02-SQ05 qualify a chemically noncommittal model-evolution state topology `M_surface_NH4_non_aqueous_continuation [kg N m-2]`, while leaving its process physics unqualified.
 
-That state is semantically neither:
-
-1. soil-solution NH4, because it must remain finite when represented aqueous volume is zero;
-2. soil-complex NH4, because revision-53 `Cxnh/Rscxnh` is a soil-layer owner and excludes layer 0 from the complex-storage loops;
-3. the `Conhtop/Rsconhtop` virtual additions reservoir, because that reservoir has addition-specific provenance.
-
-Therefore any future implementation of C1 must extend the accounting storage ontology instead of silently folding the continuation mass into an existing legacy storage field.
+That state is semantically neither soil-solution NH4, soil-complex NH4, nor the addition-specific `Conhtop/Rsconhtop` reservoir. Any future implementation must therefore extend the accounting storage ontology instead of silently folding the continuation mass into an existing legacy storage field.
 
 ## Qualified observer contract
 
@@ -41,11 +35,17 @@ For a selected control volume that owns the continuation state, define total rep
 
 where `S_cont` is the areic continuation mass converted to the reporting unit exactly once.
 
-A wet-to-continuation transfer and a continuation-to-qualified-receiver transfer are internal transfers. They may change storage partitioning but must not be counted as external input or output. For an isolated transfer:
+Transfer classification is control-volume relative. A transfer is internal only when both its source owner and destination owner belong to the same selected control volume. Thus wet-to-continuation is internal for a control volume containing layer-0 aqueous storage and the continuation owner. A later continuation-to-receiver transfer is internal only if the scientifically qualified receiver also belongs to that same selected control volume. If the receiver lies outside the selected control volume, the transfer must appear exactly once as a typed boundary output from that volume and, where another observed volume receives it, exactly once as its corresponding boundary input.
+
+For an isolated internal transfer:
 
 `S_before = S_after`
 
-exactly under the chosen exact arithmetic oracle.
+For an isolated transfer across the selected control-volume boundary:
+
+`S_before = S_after + O_boundary`
+
+with the receiving volume, if observed separately, gaining the same typed transferred mass. No transfer may be counted both as internal and as an external/boundary term for the same control volume.
 
 If future science qualifies an actual loss process from the continuation state, that loss must enter a named process/output term exactly once. It may not be represented simultaneously as disappearance from `S_cont` and as an unexplained balance deviation.
 
@@ -59,17 +59,10 @@ Reusing `BANHST`, `BANHCX`, or `BANHVO` with changed meaning without versioned d
 
 ## Negative controls
 
-The following are rejected:
-
-- classify continuation mass as soil solution at zero aqueous volume;
-- classify continuation mass as soil-complex storage without an admitted surface-to-soil process;
-- alias continuation mass to the additions reservoir;
-- count wet-to-continuation or continuation-to-receiver transfers as external source/sink terms;
-- repair a balance after the fact by assigning unexplained residual to the continuation state;
-- infer physical volatilisation, nitrification, sorption or rewetting from an accounting requirement.
+Rejected accounting substitutions are: classifying continuation mass as solution at zero water; classifying it as soil-complex storage without a qualified transfer; aliasing it to the additions reservoir; treating a transfer as internal without checking selected control-volume membership; counting one transfer simultaneously as internal and boundary/external; deriving the continuation state from a balance residual; or inferring volatilisation, nitrification, sorption or rewetting physics from accounting closure.
 
 ## Decision
 
-`QUALIFY_TCD016_C1_EXPLICIT_THIRD_STORAGE_OWNER_AND_INTERNAL_TRANSFER_ACCOUNTING_CONTRACT_FOR_MODEL_EVOLUTION; NO_PROCESS_LAW_OR_B3_ADMISSION`
+`QUALIFY_TCD016_C1_EXPLICIT_THIRD_STORAGE_OWNER_AND_CONTROL_VOLUME_RELATIVE_TYPED_TRANSFER_ACCOUNTING_CONTRACT_FOR_MODEL_EVOLUTION; NO_PROCESS_LAW_OR_B3_ADMISSION`
 
 Historical behavior remains `UNKNOWN_WITHOUT_B2`.

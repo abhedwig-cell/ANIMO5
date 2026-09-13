@@ -33,8 +33,13 @@
     "total_storage_identity":"S_NH4=S_aq+S_complex+S_cont",
     "S_cont_owner":"M_surface_NH4_non_aqueous_continuation",
     "S_cont_unit":"kg N m-2 before explicit reporting-unit conversion",
-    "wet_to_continuation_transfer":"INTERNAL_NOT_EXTERNAL",
-    "continuation_to_receiver_transfer":"INTERNAL_NOT_EXTERNAL",
+    "transfer_classification_control_volume_relative":true,
+    "internal_if_source_and_destination_owned_by_selected_control_volume":true,
+    "cross_control_volume_transfer_requires_typed_boundary_term":true,
+    "internal_transfer_identity":"S_before=S_after",
+    "boundary_transfer_identity":"S_before=S_after+O_boundary",
+    "receiving_observed_volume_gain_equals_typed_transfer":true,
+    "same_transfer_may_be_internal_and_boundary_for_same_control_volume":false,
     "observer_may_reconstruct_state_from_residual":false,
     "observer_may_own_physical_state":false,
     "new_process_loss_must_be_named_once":true,
@@ -45,11 +50,12 @@
     "NO_SOLUTION_ALIAS_AT_ZERO_WATER",
     "NO_SOIL_COMPLEX_ALIAS_WITHOUT_QUALIFIED_TRANSFER",
     "NO_ADDITIONS_RESERVOIR_ALIAS",
-    "NO_INTERNAL_TRANSFER_AS_EXTERNAL_FLUX",
+    "NO_TRANSFER_CLASSIFICATION_WITHOUT_CONTROL_VOLUME_MEMBERSHIP",
+    "NO_INTERNAL_AND_BOUNDARY_DOUBLE_CLASSIFICATION_FOR_SAME_CONTROL_VOLUME",
     "NO_RESIDUAL_DERIVED_STATE_RECONSTRUCTION",
     "NO_ACCOUNTING_TO_PHYSICS_INFERENCE"
   ],
   "historical_behavior":"UNKNOWN_WITHOUT_B2",
   "b3_disposition":"UNRESOLVED_NOT_ADMITTED",
-  "decision":"QUALIFY_TCD016_C1_EXPLICIT_THIRD_STORAGE_OWNER_AND_INTERNAL_TRANSFER_ACCOUNTING_CONTRACT_FOR_MODEL_EVOLUTION_NO_PROCESS_LAW_OR_B3_ADMISSION"
+  "decision":"QUALIFY_TCD016_C1_EXPLICIT_THIRD_STORAGE_OWNER_AND_CONTROL_VOLUME_RELATIVE_TYPED_TRANSFER_ACCOUNTING_CONTRACT_FOR_MODEL_EVOLUTION_NO_PROCESS_LAW_OR_B3_ADMISSION"
 }

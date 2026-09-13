@@ -3,38 +3,55 @@ from decimal import Decimal, getcontext
 getcontext().prec=60
 
 M=Decimal('0.000013880242022597072')
+ZERO=Decimal(0)
 
-def total(aq,complex_,cont):
+def storage(aq,complex_,cont):
     return aq+complex_+cont
 
-before=total(M,Decimal(0),Decimal(0))
-after_wet_to_cont=total(Decimal(0),Decimal(0),M)
-assert before==after_wet_to_cont
+# Active control: wet-to-continuation stays inside a selected control volume that owns both states.
+before=storage(M,ZERO,ZERO)
+after=storage(ZERO,ZERO,M)
+assert before==after
 
-# Receiver-neutral rewetting transfer. The receiver label is intentionally not physics-qualified here.
+# Active controls: receiver-neutral rewetting when receiver belongs to same selected control volume.
 for frac in (Decimal('0'),Decimal('0.125'),Decimal('0.5'),Decimal('1')):
-    transfer=M*frac
-    cont_after=M-transfer
-    receiver_gain=transfer
-    assert cont_after>=0 and receiver_gain>=0
-    assert cont_after+receiver_gain==M
+    t=M*frac
+    cont=M-t
+    receiver=t
+    assert cont+receiver==M
 
-# Negative controls: omitting S_cont loses storage; double-counting internal transfer creates storage.
-omit_cont=total(Decimal(0),Decimal(0),Decimal(0))
-assert omit_cont!=before
-transfer=M/Decimal(2)
-double_count=(M-transfer)+transfer+transfer
-assert double_count!=M
+# Active control: when the receiver is outside the selected control volume, the same transfer is a typed boundary output.
+t=M*Decimal('0.375')
+source_after=M-t
+boundary_output=t
+assert M==source_after+boundary_output
+receiving_volume_gain=t
+assert receiving_volume_gain==boundary_output
 
-# Unit conversion must occur once: kg N m-2 -> kg N ha-1.
+# Negative control: omitting continuation storage loses represented mass.
+assert storage(ZERO,ZERO,ZERO)!=M
+
+# Negative control: counting one same-CV internal transfer again as boundary output creates a false imbalance.
+t=M/Decimal(2)
+same_cv_storage_after=(M-t)+t
+false_boundary_output=t
+assert same_cv_storage_after+false_boundary_output!=M
+
+# Negative control: a boundary transfer cannot disappear merely because the receiver is outside the observed volume.
+assert source_after!=M
+assert source_after+ZERO!=M
+
+# Exact one-time unit conversion kg N m-2 -> kg N ha-1.
 ha_factor=Decimal('10000')
 assert M*ha_factor==Decimal('0.138802420225970720000')
 
 print('MASSQ04 TCD016-C1 balance ontology oracle PASS')
-print('canonical_mass_kg_N_m2', M)
-print('canonical_mass_kg_N_ha', M*ha_factor)
-print('wet_to_continuation_exact_closure PASS')
-print('receiver_neutral_internal_transfer_cases 4')
+print('canonical_mass_kg_N_m2',M)
+print('canonical_mass_kg_N_ha',M*ha_factor)
+print('same_control_volume_internal_transfer PASS')
+print('receiver_neutral_same_volume_cases 4')
+print('cross_control_volume_typed_boundary_transfer PASS')
 print('omit_continuation_negative_control PASS')
-print('double_count_internal_transfer_negative_control PASS')
+print('internal_boundary_double_count_negative_control PASS')
+print('missing_boundary_output_negative_control PASS')
 print('tolerance NONE')
