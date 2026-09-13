@@ -1,0 +1,42 @@
+{
+  "work_unit":"ANIMO-SQ05",
+  "target":"TCD-016-C1",
+  "risk_tier":"C",
+  "review_mode":"SAME_AGENT_SECOND_PASS",
+  "same_agent":true,
+  "genuinely_independent":false,
+  "independence_claimed":false,
+  "assurance_label":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "reviewed_authoring_head":"af540f703145c933a2b4bbca8f70a5c0a165ff96",
+  "reviewed_head_ci_run":34742534155,
+  "reviewed_head_ci_job":103684555381,
+  "reviewed_head_ci_conclusion":"success",
+  "counter_hypotheses":[
+    {"claim":"ANIMO 4.0 guide can be treated as exact revision-53 theory.","result":"REJECTED_VERSION_BOUNDARY"},
+    {"claim":"Absence of a dry continuation state in this guide proves such physics is impossible.","result":"REJECTED_ABSENCE_IS_NOT_PHYSICAL_PROOF"},
+    {"claim":"Adsorbed NH4 in the nitrogen cycle can be reused directly as the residual surface owner.","result":"REJECTED_UNCHANGED_REUSE","basis":"Guide places adsorption in soil solid-phase context; SQ04 source audit binds NH4 sorption to soil layers."},
+    {"claim":"CONHTOP can serve as the continuation owner because it is a top-layer NH4 state.","result":"REJECTED_SEMANTIC_ALIAS","basis":"Guide identifies CONHTOP as the virtual top layer used for additions, distinct from compartment concentrations."},
+    {"claim":"FRVO is a generic dry-surface NH4 volatilization law.","result":"REJECTED_UNCHANGED_REUSE","basis":"Guide ties FRVO to material-addition events and the NH4 fraction of the addition."},
+    {"claim":"The supplied guide resolves the rewetting receiver or kinetics.","result":"REJECTED_NO_EXPLICIT_CONTRACT_FOUND"},
+    {"claim":"The broader ANIMO literature contains no such process law.","result":"NOT_ESTABLISHED","basis":"The guide points to more comprehensive theory sources not qualified in SQ05."}
+  ],
+  "gates":{
+    "b0_document_identity":"PASS",
+    "version_scope_preserved":"PASS",
+    "page_claims_consistent_with_reviewed_pdf":"PASS",
+    "semantic_separation_corroboration":"PASS",
+    "negative_search_bounded_to_supplied_guide":"PASS",
+    "absence_not_promoted_to_physical_proof":"PASS",
+    "specific_process_law_not_invented":"PASS",
+    "historical_unknown_preserved":"PASS",
+    "production_and_queue_scope_guard":"PASS"
+  },
+  "residual_uncertainty":[
+    "Comprehensive ANIMO theory referenced by the guide may contain additional relevant process semantics.",
+    "The guide documents ANIMO 4.0, not exact 4.1.5 revision 53 design intent.",
+    "The physical dry-period fate and rewetting behavior of residual surface NH4 remain unresolved.",
+    "Historical behavior remains UNKNOWN_WITHOUT_B2."
+  ],
+  "outcome":"SELF_REVIEW_PASS",
+  "decision":"PASS_TCD016_C1_B0_GUIDE_RECONCILIATION_NO_PROCESS_LAW_ADMISSION"
+}
