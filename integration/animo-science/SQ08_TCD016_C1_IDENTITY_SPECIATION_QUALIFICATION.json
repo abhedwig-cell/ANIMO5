@@ -1,0 +1,80 @@
+{
+  "work_unit": "ANIMO-SQ08",
+  "target": "TCD-016-C1",
+  "title": "Continuation material identity and speciation qualification",
+  "branch": "work/animo-sq08-tcd016-c1-identity-speciation",
+  "base_head": "ANIMO-SQ07@2076c0def17c504a3ba29db02d964d4a6238d2cf",
+  "authorities": {
+    "aggregate": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+    "global_b3_queue": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+    "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "sq02": "ANIMO-SQ02@09ab76f0b44cb72956875fa379d68bbf97f1a0c7",
+    "sq04": "ANIMO-SQ04@063627cddd478904c437c9c47f02513ef0d9326b",
+    "sq05": "ANIMO-SQ05@897ba742630f06381a2b89290db80d5f405ab51d",
+    "sq06": "ANIMO-SQ06@2dbabfd5f57120c583645415e87f7eb792a8c0d7",
+    "sq07": "ANIMO-SQ07@2076c0def17c504a3ba29db02d964d4a6238d2cf"
+  },
+  "question": "What additional material identity or speciation can be assigned to M_surface_NH4_non_aqueous_continuation without inventing unsupported model semantics?",
+  "inherited_state": {
+    "owner": "M_surface_NH4_non_aqueous_continuation",
+    "unit": "kg N m-2",
+    "origin": "NH4-N continuation mass",
+    "chemically_noncommittal": true,
+    "independent_of_aqueous_volume": true,
+    "persistent_restart_state_if_implemented": true
+  },
+  "evidence_result": {
+    "user_guide": "No explicit dry nonaqueous surface residual identity or rewetting identity is documented.",
+    "revision53_source": "No audited existing NH4 route provides an unchanged continuation-state identity.",
+    "external_literature_invoked": false,
+    "reason": "Outside literature cannot prove that the existing continuation owner is a particular material unless a source-to-state mapping is first qualified."
+  },
+  "hypotheses": {
+    "I0_specific_solid_residue": "NOT_QUALIFIED",
+    "I1_adsorbed_surface_or_soil_state": "NOT_QUALIFIED",
+    "I2_hidden_aqueous_film": "NOT_QUALIFIED",
+    "I3_gas_phase_identity": "NOT_QUALIFIED",
+    "I4_fixed_multiphase_mixture": "NOT_QUALIFIED",
+    "I5_original_fertilizer_compound_preserved": "NOT_QUALIFIED",
+    "I6_noncommittal_identity_envelope": "SELECTED"
+  },
+  "qualified_identity_envelope": {
+    "claims": [
+      "The owner carries nitrogen mass with NH4-N continuation provenance at the surface control volume.",
+      "The coordinate is mass per area rather than concentration.",
+      "The state remains representable without nonzero aqueous volume.",
+      "The owner is persistent state for conservation and restart, never an accounting residual."
+    ],
+    "nonclaims": [
+      "No specific material phase is selected.",
+      "No specific molecular speciation is selected.",
+      "No counter-ion, hydration state, surface-binding state or phase fraction is selected.",
+      "No process law follows automatically from this identity envelope."
+    ],
+    "current_phase": "UNRESOLVED",
+    "current_molecular_speciation": "UNRESOLVED"
+  },
+  "mass_state_restart": {
+    "storage_identity": "S_NH4=S_aq+S_complex+S_cont",
+    "S_cont": "M_surface_NH4_non_aqueous_continuation",
+    "observer_state_ownership": "FORBIDDEN",
+    "restart": "Restore exact continuation mass; no hidden phase-memory is currently qualified.",
+    "future_transfer_rule": "Any phase/species/owner reassignment requires a separately qualified typed transfer contract."
+  },
+  "decision": "QUALIFY_ONLY_BOUNDED_NONCOMMITTAL_IDENTITY_ENVELOPE_NO_SPECIFIC_PHASE_OR_SPECIATION_CURRENTLY_DEFENSIBLE",
+  "final_qualification": "QUALIFIED_TCD016_C1_NONCOMMITTAL_IDENTITY_ENVELOPE_SPECIFIC_PHASE_AND_SPECIATION_UNQUALIFIED",
+  "parameters": [],
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "disposition": {
+    "tcd016_c1_b3": "UNRESOLVED_NOT_ADMITTED",
+    "parent_tcd016_b3": "UNRESOLVED_NOT_ADMITTED",
+    "tcd016_e1": "BLOCKED_NO_SPECIFIC_REWETTING_PROCESS_CONTRACT",
+    "production_authorized": false
+  },
+  "unlock_evidence": [
+    "Provenanced theory or source evidence explicitly mapping continuation mass to a named material identity.",
+    "A separately authorized model-evolution material proposal with traceable identity evidence.",
+    "Observations that discriminate among competing continuation-material identities under the relevant dry-surface state."
+  ],
+  "next_handoff": "Acquire or explicitly authorize candidate material-identity evidence before retrying dry-process or rewetting-process qualification."
+}
