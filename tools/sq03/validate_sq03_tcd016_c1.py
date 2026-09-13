@@ -45,8 +45,7 @@ def validate_review(r):
     assert r["independence_claimed"] is False
     assert r["outcome"] == "SELF_REVIEW_PASS"
 
-    rb = r["review_boundary"]
-    assert rb == {
+    assert r["review_boundary"] == {
         "complete_authoring_package_persisted": True,
         "immutable_head_frozen_before_review": True,
         "source_testbank_evidence_hashes_recorded_before_review": True,
@@ -57,10 +56,7 @@ def validate_review(r):
     assert all(v == "PASS" for v in r["evidence_reuse_checks"].values())
     ch = r["counter_hypothesis"]
     assert ch["tested"] is True and ch["alternative"] and ch["test"]
-    assert ch["result"] in {
-        "ALTERNATIVE_REJECTED_BY_PINNED_EVIDENCE",
-        "ALTERNATIVE_REMAINS_PLAUSIBLE_FAIL_CLOSED",
-    }
+    assert ch["result"] in {"ALTERNATIVE_REJECTED_BY_PINNED_EVIDENCE", "ALTERNATIVE_REMAINS_PLAUSIBLE_FAIL_CLOSED"}
     assert r["active_controls"] and r["negative_controls"]
     for gate in r["scientific_gates"].values():
         if gate["applicability"] == "APPLICABLE":
@@ -117,8 +113,11 @@ def main():
     assert rw["lower_bound"] == "0"
     assert rw["upper_bound"] == "M_cont_before"
     assert rw["source_update"] == "M_cont_after=M_cont_before-T_rewet"
-    assert rw["receiving_aqueous_gain"] == "M_aq_gain=T_rewet"
+    assert rw["receiver_rule"] == "SUM_DECLARED_RECEIVER_GAINS_EQUALS_T_rewet"
+    assert rw["receiver_neutral"] is True
+    assert rw["surface_aqueous_receiver_required"] is False
     for key in [
+        "specific_receiver_qualified",
         "specific_function_qualified",
         "instantaneous_dissolution_qualified",
         "transfer_fraction_qualified",
@@ -130,12 +129,16 @@ def main():
     assert rw["ordering_must_be_explicit"] is True
 
     ap = c["activation_policy"]
-    assert ap["receiving_aqueous_state_must_be_admitted"] is True
+    assert ap["any_receiving_state_must_be_scientifically_admitted"] is True
+    assert ap["aqueous_receiver_requires_admitted_hydrological_state"] is True
     assert ap["legacy_0_1_mm_threshold_promoted_to_physical_trigger"] is False
     assert ap["legacy_Fu_threshold_promoted_to_physical_trigger"] is False
     assert ap["numerical_threshold_may_define_new_phase_theory"] is False
 
     assert set(c["candidate_process_families"].values()) == {"UNQUALIFIED", "UNQUALIFIED_FUNCTION_BOUNDED_INTERFACE_ONLY"}
+    rem = c["authoring_remediation"]
+    assert rem["superseded_green_head"] == "606fe29b48013397ab7ed5905132e815e6fbc456"
+    assert "RECEIVER_ASSUMPTION_TOO_NARROW" in rem["reason"]
     assert c["exact_comparison_policy"] == "EXACT_DECIMAL_IDENTITIES_NO_TOLERANCE"
     assert c["c1_b3_disposition"] == s["c1_b3_disposition"] == "UNRESOLVED_NOT_ADMITTED"
     assert c["parent_b3_disposition"] == s["parent_b3_disposition"] == "UNRESOLVED_NOT_ADMITTED"
@@ -153,7 +156,7 @@ def main():
         assert s["review"]["reviewed_head"] == r["reviewed_authoring_head"]
         assert s["qualified"] is True
         assert s["state"] == "QUALIFIED_TCD016_C1_FAIL_CLOSED_PROCESS_ENVELOPE_SPECIFIC_PROCESS_LAWS_UNQUALIFIED_NO_B3_ADMISSION"
-        assert s["decision"] == "QUALIFY_FAIL_CLOSED_PROCESS_ENVELOPE_STATE_PERSISTENCE_AND_BOUNDED_TYPED_TRANSFER_INTERFACE_KEEP_SPECIFIC_PROCESS_LAWS_UNQUALIFIED"
+        assert s["decision"] == "QUALIFY_FAIL_CLOSED_PROCESS_ENVELOPE_STATE_PERSISTENCE_AND_RECEIVER_NEUTRAL_BOUNDED_TYPED_TRANSFER_INTERFACE_KEEP_SPECIFIC_PROCESS_LAWS_UNQUALIFIED"
         assert s["b3_admission_performed"] is False
         assert s["production_authorized"] is False
     else:
