@@ -1,0 +1,69 @@
+{
+  "work_unit":"ANIMO-MASSQ04",
+  "target":"TCD-016-C1",
+  "risk_tier":"C",
+  "review_mode":"SAME_AGENT_SECOND_PASS",
+  "same_agent":true,
+  "genuinely_independent":false,
+  "independence_claimed":false,
+  "assurance_label":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "reviewed_authoring_head":"71687d5a981786b406ef6e0234d3f06693af4af8",
+  "reviewed_head_ci_run":34743004052,
+  "reviewed_head_ci_job":103685788943,
+  "reviewed_head_ci_conclusion":"success",
+  "base_science_authority":"ANIMO-SQ05@897ba742630f06381a2b89290db80d5f405ab51d",
+  "mass_predecessor":"ANIMO-MASSQ03@68a8c202bd01bf55b31b7c944884fb2f78a6a8e8",
+  "initial_authoring_checkpoint":{
+    "head":"ed49cd00d7ef11763296bb61f3d6547da0c612f9",
+    "ci_run":34742913551,
+    "ci_job":103685554207,
+    "ci_conclusion":"success",
+    "disposition":"SUPERSEDED_BEFORE_FORMAL_REVIEW",
+    "reason":"Pre-review adversarial analysis found that transfer classification had been stated too broadly. A continuation-to-receiver transfer is internal only when both owners are inside the selected control volume. The authoring package was remediated to make internal versus boundary classification explicitly control-volume relative."
+  },
+  "counter_hypotheses":[
+    {"claim":"Continuation mass can be folded into BANHST as long as the numerical total closes.","result":"REJECTED_SEMANTIC_ALIAS","basis":"BANHST is explicitly soil-solution storage and continuation mass must remain finite at zero represented aqueous volume."},
+    {"claim":"Continuation mass can be folded into BANHCX because both are non-aqueous.","result":"REJECTED_OWNER_ALIAS","basis":"Revision-53 soil-complex storage is Cxnh/Rscxnh over soil layers max(1,Ln1)..Ln2; SQ04 rejected direct continuation-to-soil ownership without a qualified transfer."},
+    {"claim":"Conhtop/Rsconhtop can absorb continuation mass.","result":"REJECTED_PROVENANCE_ALIAS","basis":"SQ05 and the user guide identify the virtual top reservoir as additions-specific."},
+    {"claim":"Wet-to-continuation and rewetting transfers are always internal.","result":"REJECTED_AND_REMEDIATED","basis":"Internality is relative to selected control-volume membership. Cross-volume transfers require typed boundary terms."},
+    {"claim":"The observer can reconstruct continuation mass from the balance residual, avoiding a persistent physical state.","result":"REJECTED","basis":"SQ02 requires a persistent owner and restart state. Residual reconstruction would make accounting own physics and can mask unrelated defects."},
+    {"claim":"Exact accounting closure proves the dry-phase or rewetting physics.","result":"REJECTED","basis":"MASSQ04 qualifies observer semantics only; process laws remain unqualified in SQ03-SQ05."},
+    {"claim":"An unspecified continuation loss may be reported under legacy BANHVO or BANHNT because those output categories already exist.","result":"REJECTED_WITHOUT_PROCESS_MAPPING","basis":"A named legacy output can be used only after the corresponding physical process, owner mapping, sign, units and ordering are separately qualified."},
+    {"claim":"A legacy public balance field may silently change meaning if total mass conservation improves.","result":"REJECTED","basis":"Versioned semantics and auditable component ownership are required; conservation does not justify semantic redefinition."
+  ],
+  "active_controls":[
+    "Alterra Report 224 Annex 2 identifies distinct soil-solution and soil-complex NH4 storage terms and named external/process outputs.",
+    "Frozen revision-53 Outbal_Init/Outbal_calc/Outbal_write hashes match the repository source manifest and implement the same storage split.",
+    "Exact Decimal oracle preserves the canonical 1.3880242022597072e-5 kg N m-2 through same-control-volume storage repartition without tolerance.",
+    "The remediated oracle separately verifies a cross-control-volume transfer with an exactly matching typed boundary output and receiver gain.",
+    "Authoring CI 34743004052 job 103685788943 is green on exact immutable head 71687d5a981786b406ef6e0234d3f06693af4af8."
+  ],
+  "negative_controls":[
+    "Omitting S_cont fails exact storage closure.",
+    "Counting a same-control-volume internal transfer again as boundary output creates a false imbalance.",
+    "Omitting a required boundary output for a cross-volume transfer leaves the source control volume unclosed.",
+    "No residual-derived physical state, silent legacy-field redefinition, process-law inference, B3 admission or production change is permitted."
+  ],
+  "adversarial_gates":{
+    "legacy_storage_ontology_reconstructed":"PASS",
+    "revision53_storage_ownership_reconstructed":"PASS",
+    "continuation_owner_semantically_distinct":"PASS",
+    "control_volume_relative_transfer_classification":"PASS",
+    "internal_transfer_no_external_double_count":"PASS",
+    "cross_volume_typed_boundary_contract":"PASS",
+    "observer_not_physical_state_owner":"PASS",
+    "residual_reconstruction_rejected":"PASS",
+    "accounting_not_promoted_to_process_physics":"PASS",
+    "historical_unknown_preserved":"PASS",
+    "scope_guard":"PASS"
+  },
+  "residual_uncertainty":[
+    "The physical dry-phase identity and all dry-period process laws remain unqualified.",
+    "The scientifically correct rewetting receiver, activation and kinetics remain unqualified.",
+    "A future implementation must choose versioned public output representation and qualify restart/serialization behavior.",
+    "Historical behavior remains UNKNOWN_WITHOUT_B2.",
+    "Same-agent GOV05 review is not genuinely independent."
+  ],
+  "outcome":"SELF_REVIEW_PASS",
+  "decision":"PASS_TCD016_C1_BALANCE_ONTOLOGY_NO_PROCESS_OR_B3_ADMISSION"
+}
