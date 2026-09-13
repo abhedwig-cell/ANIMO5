@@ -1,0 +1,49 @@
+name: ANIMO-SQ08 TCD016-C1 identity and speciation qualification
+
+on:
+  push:
+    branches:
+      - work/animo-sq08-tcd016-c1-identity-speciation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact head
+        run: test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+      - name: Parse artifacts
+        run: |
+          python -m json.tool integration/animo-science/SQ08_TCD016_C1_IDENTITY_SPECIATION_QUALIFICATION.json >/dev/null
+          python -m json.tool integration/animo-science/ANIMO-SQ08_STATUS.json >/dev/null
+          python -m json.tool integration/animo-testbank/fragments/ANIMO-SQ08_TCD016_C1_IDENTITY_FRAGMENT.json >/dev/null
+          if test -f integration/animo-science/ANIMO-SQ08_INTERNAL_ADVERSARIAL_REVIEW.json; then python -m json.tool integration/animo-science/ANIMO-SQ08_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null; fi
+      - name: Run SQ08 validators
+        run: |
+          python tools/sq08/validate_sq08_tcd016_c1.py
+          python tools/sq08/tcd016_c1_identity_oracle.py
+      - name: Scope guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=2076c0def17c504a3ba29db02d964d4a6238d2cf
+          git diff --name-only "$BASE" HEAD >/tmp/sq08_changed.txt
+          if grep -E '^(src/|source/|Source/|animo/|ANIMO/|reference/)' /tmp/sq08_changed.txt; then exit 1; fi
+          if grep -Fx 'integration/animo-testbank/ANIMO_TESTBANK_REGISTRY.json' /tmp/sq08_changed.txt; then exit 1; fi
+          while IFS= read -r path; do
+            case "$path" in
+              integration/animo-science/SQ08_TCD016_C1_IDENTITY_SPECIATION_QUALIFICATION.json|integration/animo-science/ANIMO-SQ08_STATUS.json|integration/animo-science/ANIMO-SQ08_AUTHORING_FREEZE.json|integration/animo-science/ANIMO-SQ08_INTERNAL_ADVERSARIAL_REVIEW.json|integration/animo-testbank/fragments/ANIMO-SQ08_TCD016_C1_IDENTITY_FRAGMENT.json|tools/sq08/validate_sq08_tcd016_c1.py|tools/sq08/tcd016_c1_identity_oracle.py|.github/workflows/animo-sq08-tcd016-c1.yml) ;;
+              *) echo "Out-of-scope SQ08 path: $path" >&2; exit 1 ;;
+            esac
+          done </tmp/sq08_changed.txt
+      - name: Exact-head identity
+        run: echo "ANIMO-SQ08 exact head ${GITHUB_SHA}"
