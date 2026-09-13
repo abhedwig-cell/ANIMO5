@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-SQ08",
+  "review_mode": "GOV05_SAME_AGENT_ADVERSARIAL_SECOND_PASS",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "reviewed_authoring_head": "da26843fe93cf23040efbfc06be0946cf2f30424",
+  "reviewed_head_ci_run": 34744655527,
+  "reviewed_head_ci_job": 103690216290,
+  "reviewed_head_ci_conclusion": "success",
+  "checks": {
+    "numerical_convenience_mistaken_for_science": "PASS",
+    "state_name_overinterpreted": "PASS",
+    "mass_closure_mistaken_for_material_evidence": "PASS",
+    "existing_process_owner_reused_without_qualification": "PASS",
+    "parameter_or_hidden_state_invented": "PASS",
+    "observer_ownership_inverted": "PASS",
+    "external_evidence_misrepresented": "PASS",
+    "process_semantics_leaked_into_scope": "PASS",
+    "admission_or_production_scope_leaked": "PASS"
+  },
+  "substantive_findings": [],
+  "remediation_required": false,
+  "outcome": "SELF_REVIEW_PASS",
+  "residual_uncertainty": [
+    "A more specific material description may exist in reality but is not identified by current qualified evidence.",
+    "The qualified envelope supports conservation and restart semantics but not a process rate law.",
+    "Same-agent review is not independent."
+  ]
+}
