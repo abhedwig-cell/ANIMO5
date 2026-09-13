@@ -1,0 +1,55 @@
+{
+  "work_unit":"ANIMO-MASSQ04",
+  "target":"TCD-016-C1",
+  "parent_tcd":"TCD-016",
+  "scope":"CONTINUATION_STATE_NH4_BALANCE_ONTOLOGY_ONLY",
+  "base_science_authority":"ANIMO-SQ05@897ba742630f06381a2b89290db80d5f405ab51d",
+  "mass_predecessor":"ANIMO-MASSQ03@68a8c202bd01bf55b31b7c944884fb2f78a6a8e8",
+  "global_b3_authority":"ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+  "aggregate_authority":"ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+  "source_archive_sha256":"183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "guide_sha256":"ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+  "source_files":{
+    "ANIMO_4.1.5.53/Outbal_Init.for":"95c0d7aad6cb863fcbb5dd41563674af3ab0819387212d27d5f6f04b4a788cc8",
+    "ANIMO_4.1.5.53/Outbal_calc.for":"4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+    "ANIMO_4.1.5.53/Outbal_write.for":"cdc0a9738216d8a97d3c35f9862b78fc94fec385aaf0691d6778a73031ac74ea"
+  },
+  "legacy_balance_ontology":{
+    "solution_storage_begin":"BANHST",
+    "solution_storage_end":"BANHSTT",
+    "soil_complex_storage_begin":"BANHCX",
+    "soil_complex_storage_end":"BANHCXT",
+    "surface_runoff_output":"BANHRU",
+    "nitrification_output":"BANHNT",
+    "volatilisation_output":"BANHVO",
+    "explicit_continuation_storage_term_present":false
+  },
+  "revision53_storage_reconstruction":{
+    "liquid_storage":"Conh/Rsconh multiplied by represented water storage; Conhtop/Rsconhtop is separately included when Ln1=0",
+    "complex_storage":"Cxnh/Rscxnh accumulated only for max(1,Ln1)..Ln2",
+    "continuation_state_in_legacy_deviation_equation":false
+  },
+  "qualified_model_evolution_contract":{
+    "total_storage_identity":"S_NH4=S_aq+S_complex+S_cont",
+    "S_cont_owner":"M_surface_NH4_non_aqueous_continuation",
+    "S_cont_unit":"kg N m-2 before explicit reporting-unit conversion",
+    "wet_to_continuation_transfer":"INTERNAL_NOT_EXTERNAL",
+    "continuation_to_receiver_transfer":"INTERNAL_NOT_EXTERNAL",
+    "observer_may_reconstruct_state_from_residual":false,
+    "observer_may_own_physical_state":false,
+    "new_process_loss_must_be_named_once":true,
+    "legacy_public_field_meaning_may_change_silently":false,
+    "specific_public_output_name_qualified":false
+  },
+  "negative_controls":[
+    "NO_SOLUTION_ALIAS_AT_ZERO_WATER",
+    "NO_SOIL_COMPLEX_ALIAS_WITHOUT_QUALIFIED_TRANSFER",
+    "NO_ADDITIONS_RESERVOIR_ALIAS",
+    "NO_INTERNAL_TRANSFER_AS_EXTERNAL_FLUX",
+    "NO_RESIDUAL_DERIVED_STATE_RECONSTRUCTION",
+    "NO_ACCOUNTING_TO_PHYSICS_INFERENCE"
+  ],
+  "historical_behavior":"UNKNOWN_WITHOUT_B2",
+  "b3_disposition":"UNRESOLVED_NOT_ADMITTED",
+  "decision":"QUALIFY_TCD016_C1_EXPLICIT_THIRD_STORAGE_OWNER_AND_INTERNAL_TRANSFER_ACCOUNTING_CONTRACT_FOR_MODEL_EVOLUTION_NO_PROCESS_LAW_OR_B3_ADMISSION"
+}

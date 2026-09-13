@@ -1,0 +1,36 @@
+name: ANIMO-MASSQ04 TCD016-C1 continuation balance ontology
+
+on:
+  push:
+    branches:
+      - work/animo-massq04-tcd016-c1-continuation-balance-ontology
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify exact branch head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in 897ba742630f06381a2b89290db80d5f405ab51d 68a8c202bd01bf55b31b7c944884fb2f78a6a8e8 11e9bcdc6654e63f84875bf1f28dc54abe725700 bc9e6ed997a078336645210ebb4d99ae976893fe f65a47724e4a4fca7f2d8b8d6de9eeee51867904; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+          done
+      - name: Parse and compile MASSQ04 package
+        run: |
+          python -m json.tool integration/animo-mass/MASSQ04_TCD016_C1_BALANCE_ONTOLOGY.json >/dev/null
+          python -m json.tool integration/animo-mass/ANIMO-MASSQ04_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-mass/ANIMO-MASSQ04_STATUS.json >/dev/null
+          if test -f integration/animo-mass/ANIMO-MASSQ04_INTERNAL_ADVERSARIAL_REVIEW.json; then python -m json.tool integration/animo-mass/ANIMO-MASSQ04_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null; fi
+          python -m py_compile tools/massq04/tcd016_c1_balance_ontology_oracle.py tools/massq04/validate_massq04.py
+      - name: Run exact balance ontology oracle
+        run: python tools/massq04/tcd016_c1_balance_ontology_oracle.py
+      - name: Validate bounded continuation balance ontology
+        run: python tools/massq04/validate_massq04.py
