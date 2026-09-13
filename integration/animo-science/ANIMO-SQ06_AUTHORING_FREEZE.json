@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-SQ06",
+  "target": "TCD-016-C1",
+  "base_head": "3e0f8254d9cd7966a4491b3068d0239b8ccda5f9",
+  "review_must_pin_exact_green_authoring_head": true,
+  "substantive_change_resets_review": true,
+  "exact_final_head_ci_required": true,
+  "substantive_files": [
+    "docs/science/TCD016_C1_DRY_HOLD_PROCESS_QUALIFICATION.md",
+    "integration/animo-science/SQ06_TCD016_C1_DRY_HOLD_PROCESS_QUALIFICATION.json",
+    "integration/animo-testbank/fragments/ANIMO-SQ06_TCD016_C1_DRY_HOLD_NEGATIVE_FRAGMENT.json",
+    "tools/sq06/tcd016_c1_dry_hold_negative_oracle.py",
+    "tools/sq06/validate_sq06_tcd016_c1.py",
+    ".github/workflows/animo-sq06-tcd016-c1.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-science/ANIMO-SQ06_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-science/ANIMO-SQ06_STATUS.json"
+  ],
+  "forbidden_mutations": [
+    "production source",
+    "frozen B0",
+    "central B3 queue",
+    "canonical discrepancy register",
+    "central testbank registry",
+    "B3 admission",
+    "TCD-016-E1 admission",
+    "rewetting receiver activation or kinetics",
+    "whole-model golden baseline"
+  ]
+}
