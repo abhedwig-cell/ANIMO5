@@ -1,0 +1,19 @@
+{
+  "work_unit": "ANIMO-SQ08",
+  "target": "TCD-016-C1",
+  "base_head": "2076c0def17c504a3ba29db02d964d4a6238d2cf",
+  "review_must_pin_exact_green_authoring_head": true,
+  "substantive_change_resets_review": true,
+  "exact_final_head_ci_required": true,
+  "substantive_files": [
+    "integration/animo-science/SQ08_TCD016_C1_IDENTITY_SPECIATION_QUALIFICATION.json",
+    "integration/animo-testbank/fragments/ANIMO-SQ08_TCD016_C1_IDENTITY_FRAGMENT.json",
+    "tools/sq08/validate_sq08_tcd016_c1.py",
+    "tools/sq08/tcd016_c1_identity_oracle.py",
+    ".github/workflows/animo-sq08-tcd016-c1.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-science/ANIMO-SQ08_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-science/ANIMO-SQ08_STATUS.json"
+  ]
+}
