@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "fragment_id": "ANIMO-SQ08-TCD016-C1-IDENTITY-v1",
+  "producer_workunit": "ANIMO-SQ08",
+  "central_registry_write": "FORBIDDEN",
+  "entries": [
+    {
+      "test_id": "SQ08-ID-001",
+      "title": "Continuation owner identity preservation",
+      "layer": "TB-L2",
+      "claim": "The continuation owner remains mass-per-area state with unresolved phase and unresolved molecular speciation.",
+      "expected": "EXACT"
+    },
+    {
+      "test_id": "SQ08-ID-002",
+      "title": "Observer ownership exclusion",
+      "layer": "TB-L11",
+      "claim": "Accounting observers do not own or reconstruct continuation state.",
+      "expected": "EXACT_FALSE"
+    },
+    {
+      "test_id": "SQ08-ID-003",
+      "title": "No implicit material assignment",
+      "layer": "TB-L2",
+      "claim": "No more specific material identity is silently selected by this workunit.",
+      "expected": "UNQUALIFIED"
+    }
+  ],
+  "whole_model_golden_created": false,
+  "admission_effect": "NONE"
+}
