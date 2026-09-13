@@ -33,7 +33,10 @@
     "lower_bound": "0",
     "upper_bound": "M_cont_before",
     "source_update": "M_cont_after=M_cont_before-T_rewet",
-    "receiving_aqueous_gain": "M_aq_gain=T_rewet",
+    "receiver_rule": "SUM_DECLARED_RECEIVER_GAINS_EQUALS_T_rewet",
+    "receiver_neutral": true,
+    "surface_aqueous_receiver_required": false,
+    "specific_receiver_qualified": false,
     "specific_function_qualified": false,
     "instantaneous_dissolution_qualified": false,
     "transfer_fraction_qualified": false,
@@ -43,7 +46,8 @@
     "ordering_must_be_explicit": true
   },
   "activation_policy": {
-    "receiving_aqueous_state_must_be_admitted": true,
+    "any_receiving_state_must_be_scientifically_admitted": true,
+    "aqueous_receiver_requires_admitted_hydrological_state": true,
     "legacy_0_1_mm_threshold_promoted_to_physical_trigger": false,
     "legacy_Fu_threshold_promoted_to_physical_trigger": false,
     "numerical_threshold_may_define_new_phase_theory": false
@@ -64,11 +68,16 @@
     "soil_adsorption_after_arrival",
     "NH4_transformations_and_atmospheric_loss"
   ],
+  "authoring_remediation": {
+    "superseded_green_head": "606fe29b48013397ab7ed5905132e815e6fbc456",
+    "reason": "PRE_REVIEW_ADVERSARIAL_CHECK_FOUND_SURFACE_AQUEOUS_RECEIVER_ASSUMPTION_TOO_NARROW",
+    "remediation": "RECEIVER_NEUTRAL_TYPED_TRANSFER_ENVELOPE_WITH_EXACT_SUM_OF_DECLARED_RECEIVER_GAINS"
+  },
   "exact_comparison_policy": "EXACT_DECIMAL_IDENTITIES_NO_TOLERANCE",
   "historical_behavior": "UNKNOWN_WITHOUT_B2",
   "c1_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
   "parent_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
   "e1_disposition": "BLOCKED_PENDING_CONCRETE_PHYSICAL_ACTIVATION_AND_PROCESS_LAW",
   "production_authorized": false,
-  "decision": "QUALIFY_FAIL_CLOSED_PROCESS_ENVELOPE_STATE_PERSISTENCE_AND_BOUNDED_TYPED_TRANSFER_INTERFACE_KEEP_SPECIFIC_PROCESS_LAWS_UNQUALIFIED"
+  "decision": "QUALIFY_FAIL_CLOSED_PROCESS_ENVELOPE_STATE_PERSISTENCE_AND_RECEIVER_NEUTRAL_BOUNDED_TYPED_TRANSFER_INTERFACE_KEEP_SPECIFIC_PROCESS_LAWS_UNQUALIFIED"
 }
