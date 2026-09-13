@@ -1,0 +1,146 @@
+{
+  "work_unit": "ANIMO-SQ06",
+  "target": "TCD-016-C1",
+  "risk_tier": "C_SCIENTIFIC_PROCESS_SEMANTICS",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "assurance_label": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT_LOWER_THAN_GOV04_SEPARATE_CONTEXT",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "reviewed_authoring_head": "ba292e93049caaecc11dcaeeeb1053a588286027",
+  "reviewed_head_ci_run": 34744096702,
+  "reviewed_head_ci_job": 103688666573,
+  "reviewed_head_ci_conclusion": "success",
+  "review_boundary": {
+    "complete_authoring_package_persisted": true,
+    "immutable_head_frozen_before_review": true,
+    "authoring_completed_before_review": true,
+    "moving_tree_reviewed": false,
+    "substantive_change_after_review_requires_restart": true
+  },
+  "live_rechecks_before_review": {
+    "sq06_or_equivalent_preexisted": false,
+    "aggregate_authority": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+    "rolling_rg05o_integration_observed": "86474df11ecf104797df9df3b8d53fcf2e847873",
+    "newer_formal_rg05_or_rg06_authority_found": false,
+    "global_b3_queue": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+    "newer_b3q07_found": false,
+    "gov05": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "gov04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "gov03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "b3q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "sq01": "26d0c74aa440bd73c23709d313e24ea8af2a0bcd",
+    "sq02": "09ab76f0b44cb72956875fa379d68bbf97f1a0c7",
+    "sq03": "58dc3c5c108ee97fd6bea107b7a9e686596617b1",
+    "sq04": "063627cddd478904c437c9c47f02513ef0d9326b",
+    "sq05": "897ba742630f06381a2b89290db80d5f405ab51d",
+    "massq04": "3e0f8254d9cd7966a4491b3068d0239b8ccda5f9",
+    "tb01": "15a17bfa2c321d08f3ac89f334986c0ae8429045",
+    "tb02_current_branch_head": "701d046e23e4740dace432f6e36149c4cb155ca6",
+    "tb03a": "a37f07b15ae50d6fbb526cef3215fb58702e85aa",
+    "tb03d_serial_registry_consolidation": "abcfc9daeacbba4c7d56339fdeedae8f422288c5",
+    "testbank_registry_checked_read_only": true,
+    "testbank_registry_mutated": false
+  },
+  "counter_hypotheses": [
+    {
+      "claim": "H0 should be qualified because exact persistence is conservative, simple and already executable as a no-process update.",
+      "test": "Separate numerical/state safety from a physical process claim. SQ03 explicitly labels persistence as non-physical fail-closed semantics, and neither mass closure nor absence of another law supplies evidence that the real dry-period rate is exactly zero.",
+      "result": "REJECTED_NUMERICAL_CONVENIENCE_IS_NOT_PHYSICS"
+    },
+    {
+      "claim": "FRVO provides enough ANIMO precedent to qualify H1 volatilization for continuation mass.",
+      "test": "Reconstruct provenance and state mapping. FRVO is an addition-event fraction and SQ04 rejects unchanged reuse. Continuation mass has no qualified NH3/NH4 speciation, gas interface, kinetic law or parameters.",
+      "result": "REJECTED_HIDDEN_REV53_REUSE_AND_MISSING_PROCESS_MAPPING"
+    },
+    {
+      "claim": "Existing soil NH4 sorption can receive continuation mass during dry hold because both represent non-aqueous NH4-N.",
+      "test": "Reconstruct owner domains. Soil sorption is a soil-horizon solid-phase owner while SQ02 continuation is a distinct surface non-aqueous owner. SQ04 rejects unchanged owner aliasing and SQ03 leaves the receiver neutral.",
+      "result": "REJECTED_IMPLICIT_RECEIVER_AND_OWNER_ALIAS"
+    },
+    {
+      "claim": "ANIMO soil nitrification moisture response supplies H3 once a dry response factor is chosen.",
+      "test": "Check process-domain preconditions. The continuation owner is not qualified as soil-solution or microbially accessible soil NH4. Choosing a moisture factor, daughter owner or rate coefficient would add unqualified state mapping and parameters.",
+      "result": "REJECTED_PROCESS_DOMAIN_AND_PARAMETER_GAP"
+    },
+    {
+      "claim": "External literature should be used now to force a positive model-evolution choice.",
+      "test": "Ask whether a literature relation can be mapped without first inventing continuation-state phase/speciation, interface geometry, activation variables or a receiver. It cannot. Literature remains potentially useful after those semantics are independently established; its non-use here is not evidence that any candidate mechanism is physically absent.",
+      "result": "REJECTED_AS_PREMATURE_MAPPING_NOT_AS_IRRELEVANT_LITERATURE"
+    },
+    {
+      "claim": "A negative qualification plus operational state persistence is just H0 under another name.",
+      "test": "Inspect the qualified statements and synthetic oracle. They verify only state identity, exact accounting and restart under the condition that no dry process is qualified. The package explicitly leaves the physical rate null and denies inertness, so no physical zero-rate law is asserted.",
+      "result": "REJECTED_SEMANTIC_COLLAPSE_AVOIDED"
+    }
+  ],
+  "active_controls": [
+    "SQ02 owner, unit, chemical noncommitment and restart-state requirements remain unchanged.",
+    "SQ03 receiver-neutral envelope and the distinction between state persistence and physical inertness remain explicit.",
+    "SQ04 negative reuse audit prevents silent reuse of FRVO, soil nitrification, soil NH4 sorption, CONHTOP or aqueous transport.",
+    "SQ05 guide reconciliation supplies bounded ANIMO 4.0 documentation and preserves the 4.0 versus revision-53 version limitation.",
+    "MASSQ04 keeps S_cont explicit in S_NH4=S_aq+S_complex+S_cont and forbids residual-derived physical ownership.",
+    "The exact Decimal oracle validates state/accounting guards without tolerance and contains no process-rate implementation.",
+    "TB01/TB02/TB03A/TB03D were rechecked. The SQ06 workunit-local bounded fragment is not written into the central registry and claims no permanent ATB allocation or scientific admission.",
+    "The authoring head ba292e93049caaecc11dcaeeeb1053a588286027 passed CI run 34744096702 job 103688666573 before this second pass."
+  ],
+  "negative_controls": [
+    "Relabelling exact persistence as a physical zero-rate law is forbidden.",
+    "Any unchanged FRVO, soil nitrification, soil sorption, CONHTOP or aqueous-transport reuse is forbidden.",
+    "Any invented coefficient, threshold, capacity or calibration value without provenance is forbidden.",
+    "Any dry owner transition without an explicitly qualified receiver is forbidden.",
+    "Any rewetting receiver, activation threshold or kinetics in SQ06 is forbidden.",
+    "Any external-literature statement represented as historical ANIMO intent is forbidden.",
+    "Any observer-derived continuation state or double-counted internal transfer is forbidden.",
+    "Any B3 admission, production source change, central queue/register mutation or whole-model golden is forbidden."
+  ],
+  "adversarial_gates": {
+    "NUMERICAL_CONVENIENCE_NOT_PHYSICS": "PASS",
+    "ABSENCE_OF_EVIDENCE_NOT_HISTORICAL_BEHAVIOUR": "PASS",
+    "MASS_CLOSURE_NOT_SCIENTIFIC_VALIDITY": "PASS",
+    "NO_REJECTED_REV53_PROCESS_REUSE": "PASS",
+    "NO_IMPLICIT_RECEIVER": "PASS",
+    "NO_PARAMETER_INVENTION": "PASS",
+    "NO_DOUBLE_COUNTING": "PASS",
+    "NO_REWETTING_SCOPE_LEAKAGE": "PASS",
+    "OBSERVER_NOT_STATE_OWNER": "PASS",
+    "EXTERNAL_LITERATURE_PROVENANCE": "PASS",
+    "H0_NOT_PROMOTED_TO_INERTNESS": "PASS"
+  },
+  "scientific_contract_completeness_review": {
+    "positive_contract_selected": false,
+    "physical_interpretation": "UNRESOLVED_FOR_ANY_POSITIVE_LAW",
+    "owner_before": "QUALIFIED_M_surface_NH4_non_aqueous_continuation",
+    "owner_after": "NO_TRANSITION_QUALIFIED",
+    "chemical_species_identity": "CHEMICALLY_NONCOMMITTAL_CONTINUATION_OWNER",
+    "state_mapping": "NO_POSITIVE_PROCESS_MAPPING_QUALIFIED",
+    "units": "kg N m-2",
+    "activation_envelope": "NO_POSITIVE_PROCESS_ACTIVATION_QUALIFIED",
+    "deactivation_envelope": "NO_POSITIVE_PROCESS_DEACTIVATION_QUALIFIED",
+    "timestep_order_semantics": "ONLY_EXISTING_NO_PROCESS_STATE_PERSISTENCE_GUARD",
+    "rate_or_transfer_law": "NONE_QUALIFIED",
+    "parameters": "NONE_INTRODUCED",
+    "mass_ledger_mapping": "S_NH4=S_aq+S_complex+S_cont_WITH_NO_DRY_PROCESS_EVENT",
+    "restart_implications": "M_cont_REMAINS_EXPLICIT_PERSISTENT_STATE",
+    "numerical_domain": "NO_PROCESS_GUARD_ONLY",
+    "observables": "STATE_AND_LEDGER_GUARDS_ONLY_NOT_PROCESS_VALIDATION",
+    "falsification_criteria": "RECOVERED_THEORY_OR_NEW_PROCESS_SPECIFIC_EVIDENCE_CAN_REOPEN",
+    "synthetic_oracle": "NEGATIVE_QUALIFICATION_AND_NO_PROCESS_STATE_GUARD_ONLY",
+    "negative_controls": "PRESENT"
+  },
+  "substantive_findings": [],
+  "non_substantive_observations": [
+    "The rolling rg05o-integration branch has advanced beyond the formal ANIMO-RG05O authority, but no newer formal RG05P/RG06 authority or B3Q07 was found. SQ06 therefore continues to pin the formal authorities and records the rolling head only as observed context.",
+    "The bounded SQ06 testbank fragment uses workunit-local IDs and is intentionally not a central registry adoption. A later testbank consolidation may decide whether any guard merits a stable ATB ID; SQ06 does not allocate one."
+  ],
+  "selected_hypothesis_after_review": "H5",
+  "decision_after_review": "NO_DRY_HOLD_PROCESS_LAW_SCIENTIFICALLY_QUALIFIED",
+  "residual_uncertainty": [
+    "The actual physical fate of continuation mass during a dry interval remains unknown and may include volatilization, binding or transformation mechanisms not presently mappable to the qualified state.",
+    "Relevant external scientific literature may exist, but current continuation-state chemistry and interface semantics are too underdetermined to apply a law without adding assumptions.",
+    "No process-specific dry-period observations for this continuation owner are qualified in the repository evidence.",
+    "Historical revision-53 behaviour remains UNKNOWN_WITHOUT_B2.",
+    "Same-agent GOV05 review retains correlated-reasoning risk and is not genuinely independent."
+  ],
+  "outcome": "SELF_REVIEW_PASS"
+}
