@@ -1,0 +1,36 @@
+{
+  "work_unit": "ANIMO-GHG12",
+  "target": "TCD-034",
+  "branch": "work/animo-ghg12-tcd034-validation-dataset-acquisition",
+  "phase": "SUBSTANTIVE_AUTHORING_FROZEN_AWAITING_GOV05_REVIEW",
+  "state": "QUALIFIED_DATASET_CANDIDATE_STACK_PENDING_PROCESS_REVIEW",
+  "primary_disposition": "QUALIFIED_TCD034_PUBLIC_VALIDATION_DATASET_CANDIDATE_STACK_IDENTIFIED_DETAILED_JOINABILITY_EXTRACTION_REQUIRED_V1",
+  "base_predecessor": "ANIMO-GHG11@98782bfa332aae0073d0686ad0261571a991a057",
+  "evidence_class": "NEW_MODEL_EVOLUTION_SCIENTIFIC_EVIDENCE_NOT_HISTORICAL_ANIMO_AUTHORITY",
+  "primary_candidate": "SPRUCE_S1_BOG_STACK",
+  "empirical_validation_performed": false,
+  "class_f_admission_ready": false,
+  "b3_admission_performed": false,
+  "class_f_admission_performed": false,
+  "production_authorized": false,
+  "historical_revision53_selector": "UNRESOLVED_NOT_HISTORICALLY_QUALIFIED",
+  "review": {
+    "required": true,
+    "completed": false,
+    "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-ghg12-tcd034.yml",
+    "validator": "tools/ghg12/validate_ghg12_tcd034.py",
+    "exact_final_head_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next_if_green_and_reviewed": "START_FILE_LEVEL_SPRUCE_EXTRACTION_AND_JOINABILITY_QUALIFICATION_WITH_CHECKSUMMED_AUTHORITATIVE_PACKAGES; DO_NOT_AUTO_ADMIT_CLASS_F_OR_B3"
+}

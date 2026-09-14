@@ -1,0 +1,30 @@
+{
+  "work_unit": "ANIMO-GHG12",
+  "target": "TCD-034",
+  "branch": "work/animo-ghg12-tcd034-validation-dataset-acquisition",
+  "base_head": "98782bfa332aae0073d0686ad0261571a991a057",
+  "base_predecessor": "ANIMO-GHG11@98782bfa332aae0073d0686ad0261571a991a057",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_DATASET_ACQUISITION_REVIEW",
+  "semantic_owner": "TCD034_VALIDATION_DATASET_ACQUISITION_AND_JOINABILITY_READINESS",
+  "substantive_files": [
+    "docs/ghg/TCD034_VALIDATION_DATASET_ACQUISITION.md",
+    "integration/animo-ghg/GHG12_TCD034_VALIDATION_DATASET_CANDIDATES.csv",
+    "integration/animo-ghg/GHG12_TCD034_VALIDATION_DATASET_ASSESSMENT.json",
+    "tools/ghg12/validate_ghg12_tcd034.py",
+    ".github/workflows/animo-ghg12-tcd034.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-ghg/ANIMO-GHG12_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-ghg/ANIMO-GHG12_STATUS.json"
+  ],
+  "external_evidence_policy": "NEW_MODEL_EVOLUTION_SCIENTIFIC_EVIDENCE_NOT_HISTORICAL_ANIMO_AUTHORITY",
+  "substantive_change_resets_GOV05_review": true,
+  "review_must_pin_exact_green_authoring_head": true,
+  "exact_final_head_ci_required": true,
+  "production_source_frozen": true,
+  "frozen_b0_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "aggregate_and_routing_frozen": true,
+  "central_testbank_registry_frozen": true
+}

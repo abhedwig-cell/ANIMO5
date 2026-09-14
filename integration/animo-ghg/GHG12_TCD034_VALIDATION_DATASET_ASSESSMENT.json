@@ -1,0 +1,50 @@
+{
+  "work_unit": "ANIMO-GHG12",
+  "target": "TCD-034",
+  "title": "Validation Dataset Acquisition & Joinability Readiness",
+  "predecessor": "ANIMO-GHG11@98782bfa332aae0073d0686ad0261571a991a057",
+  "evidence_class": "NEW_MODEL_EVOLUTION_SCIENTIFIC_EVIDENCE_NOT_HISTORICAL_ANIMO_AUTHORITY",
+  "primary_disposition": "QUALIFIED_TCD034_PUBLIC_VALIDATION_DATASET_CANDIDATE_STACK_IDENTIFIED_DETAILED_JOINABILITY_EXTRACTION_REQUIRED_V1",
+  "candidate_stack": {
+    "primary_site": "SPRUCE_S1_BOG_MINNESOTA",
+    "primary_dataset": "spruce.200",
+    "supporting_datasets": ["spruce.032", "spruce.079", "spruce.034", "spruce.127"],
+    "secondary_acquisition_lead": "SHANNON_WHITE_MICHIGAN_PEATLAND_SERIES"
+  },
+  "minimum_package_coverage": {
+    "positive_surface_ch4_flux": "AVAILABLE_CANDIDATE",
+    "direct_plant_mediated_transport": "AVAILABLE_CANDIDATE_SPRUCE_200",
+    "diffusion_or_other_pathway_context": "AVAILABLE_CANDIDATE_SPRUCE_200",
+    "oxidation_constraint": "PARTIAL_STABLE_ISOTOPE_CANDIDATE",
+    "soil_temperature": "AVAILABLE_SUPPORTING_DATASET_EXACT_DEPTHS_REQUIRE_FILE_LEVEL_VERIFICATION",
+    "water_table": "AVAILABLE_SUPPORTING_DATASET",
+    "vegetation_and_root_state": "PARTIAL_SUPPORTING_DATASETS",
+    "legacy_selector_reconstruction": "NOT_YET_DEMONSTRATED",
+    "t50_selector_reconstruction": "NOT_YET_DEMONSTRATED_AT_OBSERVATION_LEVEL",
+    "temporal_selector_separability": "NOT_YET_DEMONSTRATED",
+    "multi_site_application_envelope": "NOT_SATISFIED"
+  },
+  "joinability_gates": {
+    "authoritative_files_downloaded_and_checksummed": false,
+    "schemas_and_data_dictionaries_pinned": false,
+    "spatial_keys_reconciled": false,
+    "temporal_keys_reconciled": false,
+    "exact_temperature_depths_verified": false,
+    "same_observation_supports_both_selector_inputs": false,
+    "plant_transport_observation_joined_to_environmental_state": false,
+    "anti_parameter_compensation_design_demonstrated": false,
+    "broader_application_envelope_covered": false
+  },
+  "scientific_interpretation": {
+    "process_resolved_public_candidate_exists": true,
+    "candidate_materially_stronger_than_system_flux_only": true,
+    "empirical_validation_performed": false,
+    "class_f_admission_ready": false,
+    "historical_revision53_selector_resolved": false
+  },
+  "next_required_work": "FILE_LEVEL_SPRUCE_EXTRACTION_CHECKSUM_SCHEMA_AND_JOINABILITY_QUALIFICATION",
+  "class_f_admitted": false,
+  "b3_admitted": false,
+  "production_authorized": false,
+  "decision": "QUALIFIED_TCD034_PUBLIC_VALIDATION_DATASET_CANDIDATE_STACK_IDENTIFIED_DETAILED_JOINABILITY_EXTRACTION_REQUIRED_V1"
+}
