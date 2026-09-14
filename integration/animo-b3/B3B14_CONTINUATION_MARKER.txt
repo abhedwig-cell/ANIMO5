@@ -1,1 +1,0 @@
-ANIMO-B3B14 continuation marker after CI validator remediation.
