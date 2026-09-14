@@ -1,0 +1,34 @@
+{
+  "work_unit": "ANIMO-SQ10",
+  "target": "TCD-016-C1",
+  "branch": "work/animo-sq10-tcd016-c1-model-evolution-evidence-validation",
+  "base_head": "d7f63e56daef8285e6a137774c703131a1100fa2",
+  "authoring_head": "d03a83066c5d09c52dc4b4ffb858df8cfd97af8d",
+  "authoring_tree": "ec56c857ac21122b9f2ff5463ba50edceb525975",
+  "review_boundary": "AUTHORING_FROZEN_NO_SUBSTANTIVE_CHANGE_PERMITTED",
+  "authoring_exact_head_ci": {
+    "workflow": "ANIMO SQ10 TCD016 C1 Evidence Acquisition Validation",
+    "run_id": 34824657770,
+    "job_id": 103913880706,
+    "job_name": "exact-head-validation",
+    "head_sha": "d03a83066c5d09c52dc4b4ffb858df8cfd97af8d",
+    "conclusion": "success"
+  },
+  "substantive_authoring_files": [
+    "integration/animo-science/SQ10_TCD016_C1_EXTERNAL_EVIDENCE_DOSSIER.json",
+    "integration/animo-science/SQ10_TCD016_C1_EVIDENCE_QUALIFICATION.json",
+    "docs/science/TCD016_C1_EXTERNAL_EVIDENCE_ACQUISITION_AND_VALIDATION.md",
+    "tools/sq10/validate_sq10_tcd016_c1.py",
+    ".github/workflows/animo-sq10-tcd016-c1-evidence-validation.yml",
+    "integration/animo-science/ANIMO-SQ10_STATUS.json"
+  ],
+  "frozen_scientific_disposition": "QUALIFIED_EVIDENCE_ACQUISITION_COMPLETE_NO_CLASS_F_UNLOCK",
+  "frozen_candidate_maturity": "RESEARCH_ISOLATED",
+  "frozen_scientific_admission_readiness": false,
+  "post_freeze_permitted_changes": [
+    "integration/animo-science/ANIMO-SQ10_AUTHORING_FREEZE.json",
+    "integration/animo-science/ANIMO-SQ10_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-science/ANIMO-SQ10_STATUS.json"
+  ],
+  "substantive_change_requires_new_freeze_and_review": true
+}
