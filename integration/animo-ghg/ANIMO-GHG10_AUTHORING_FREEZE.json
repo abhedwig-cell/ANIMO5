@@ -1,0 +1,35 @@
+{
+  "work_unit": "ANIMO-GHG10",
+  "target": "TCD-034",
+  "branch": "work/animo-ghg10-tcd034-frozen-driver-selector-replay",
+  "base_head": "31c8ba9a53cb602c7a4a71f501384058ef7be7b2",
+  "base_predecessor": "ANIMO-GHG09@31c8ba9a53cb602c7a4a71f501384058ef7be7b2",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_REVIEW",
+  "semantic_owner": "TCD034_FROZEN_GHGMAIS_DRIVER_DUAL_SELECTOR_REPLAY_CASE_EVIDENCE",
+  "parallelism": "PARALLEL_AFTER_PINNING",
+  "substantive_files": [
+    "docs/ghg/TCD034_FROZEN_DRIVER_SELECTOR_REPLAY.md",
+    "integration/animo-ghg/GHG10_TCD034_FROZEN_DRIVER_REPLAY_SUMMARY.json",
+    "integration/animo-ghg/GHG10_TCD034_FROZEN_DRIVER_YEARLY_SUMMARY.csv",
+    "integration/animo-ghg/GHG10_TCD034_GROWTH_REGIME_TRANSITIONS.csv",
+    "integration/animo-ghg/GHG10_TCD034_REPRESENTATIVE_REPLAY_ROWS.csv",
+    "tools/ghg10/validate_ghg10_tcd034.py",
+    ".github/workflows/animo-ghg10-tcd034.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-ghg/ANIMO-GHG10_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-ghg/ANIMO-GHG10_STATUS.json"
+  ],
+  "substantive_change_resets_GOV05_review": true,
+  "review_must_pin_exact_green_authoring_head": true,
+  "exact_final_head_ci_required": true,
+  "full_replay_csv_sha256": "970bdc7b8666ddc30df5427310799efab77239d6cd02d11d92d977a54b45783e",
+  "historical_behavior": "NOT_CLAIMED_DRIVER_REPLAY_ONLY",
+  "empirical_validation": "NOT_CLAIMED",
+  "production_source_frozen": true,
+  "frozen_b0_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "aggregate_and_routing_frozen": true,
+  "central_testbank_registry_frozen": true
+}
