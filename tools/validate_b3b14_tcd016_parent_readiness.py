@@ -56,7 +56,7 @@ assert fragment["readiness_oracle"]["expected_primary_disposition"] == EXPECTED
 
 text = (ROOT / "docs" / "science" / "TCD016_PARENT_CLOSURE_READINESS_SYNTHESIS.md").read_text(encoding="utf-8")
 for phrase in [
-    "mass/state sufficiency does not establish a scientific rewetting lifecycle",
+    "They are not sufficient for `continue` across rewetting",
     "not a physical inertness law",
     "UNKNOWN_WITHOUT_B2",
     EXPECTED,
