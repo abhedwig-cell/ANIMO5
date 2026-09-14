@@ -1,0 +1,110 @@
+{
+  "work_unit": "ANIMO-SQ10",
+  "target": "TCD-016-C1",
+  "review_mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "gov06_authority": "ANIMO-GOV06@7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
+  "b3q01_authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "reviewed_authoring_head": "d03a83066c5d09c52dc4b4ffb858df8cfd97af8d",
+  "reviewed_authoring_tree": "ec56c857ac21122b9f2ff5463ba50edceb525975",
+  "freeze_record_commit": "3ed8d206e15ceab80ec84d4a2530fb758f559881",
+  "pre_review_exact_head_ci": {
+    "workflow": "ANIMO SQ10 TCD016 C1 Evidence Acquisition Validation",
+    "run_id": 34824657770,
+    "job_id": 103913880706,
+    "job_name": "exact-head-validation",
+    "head_sha": "d03a83066c5d09c52dc4b4ffb858df8cfd97af8d",
+    "conclusion": "success"
+  },
+  "review_scope": "RECONSTRUCT_AND_ATTACK_THE_SQ10_EXTERNAL_EVIDENCE_ASSESSMENT_WITHOUT_PROMOTING_GENERIC_LITERATURE_ANALOGUES_TO_TCD016_STATE_IDENTITY_OR_PROCESS_VALIDATION",
+  "reconstruction": {
+    "starting_disposition": "SQ09 defined an operationally explicit, parameter-free complete-rewetting candidate but failed Class-F authoritative-theory and process-validation gates.",
+    "sq10_question": "Whether external scientific evidence can unlock either failed gate.",
+    "search_character": "Targeted bounded scholarly search, not a systematic review and not an exhaustive global evidence census.",
+    "candidate_identity": "REWETTABLE_SURFACE_NH4_N_RESIDUE_EQUIVALENT",
+    "candidate_state_mapping": "No physical phase, counter-ion or molecular speciation is qualified for M_surface_NH4_non_aqueous_continuation."
+  },
+  "counter_hypotheses": {
+    "H1_ammonium_sulfate_deliquescence_is_enough_to_identify_the_continuation_pool": {
+      "result": "REJECTED",
+      "reason": "The source is strong evidence for an identified ammonium-sulfate phase only. SQ08 explicitly leaves the continuation material unidentified; using phase-specific behavior would require an unqualified identity promotion."
+    },
+    "H2_most_common_ammonium_salts_are_soluble_so_complete_transfer_is_safe_as_a_generic_model_law": {
+      "result": "REJECTED",
+      "reason": "Generic solubility does not establish the actual retained phase, complete mass availability, receiver, time scale or behavior at small water volume. The literature also supports retention/fixation and volatilization alternatives."
+    },
+    "H3_soil_fixation_literature_proves_direct_to_soil_transfer_for_TCD016": {
+      "result": "REJECTED",
+      "reason": "Soil fixation is a credible competing mechanism but the TCD-016 continuation owner is not qualified as soil-contact fixed NH4. The literature undercuts uniqueness of M1; it does not qualify an alternative receiver."
+    },
+    "H4_volatilization_literature_proves_that_fail_closed_dry_persistence_is_physically_wrong": {
+      "result": "REJECTED_AS_A_DIRECT_TCD016_CLAIM",
+      "reason": "Volatilization evidence establishes a plausible conditional fate for ammoniacal N, but without continuation material identity and environmental mapping it cannot quantify or prove dry-period loss for this state. Fail-closed persistence remains safety semantics, not a positive inertness claim."
+    },
+    "H5_no_direct_hit_in_the_search_proves_no_qualifying_evidence_exists": {
+      "result": "REJECTED",
+      "reason": "SQ10 explicitly bounds the absence statement to the performed search and must not claim global absence."
+    },
+    "H6_peer_review_status_alone_satisfies_authoritative_theory": {
+      "result": "REJECTED",
+      "reason": "Peer review supports source quality but does not solve source-to-state applicability, material mapping or process discrimination."
+    },
+    "H7_external_evidence_unlocks_M1_by_converging_on_rewettable_behavior": {
+      "result": "REJECTED",
+      "reason": "The acquired evidence converges on conditional behavior, not one universal law: phase-specific deliquescence, matrix-dependent fixation/defixation, and state-dependent volatilization all remain credible."
+    },
+    "H8_the_evidence_is_useless_because_it_does_not_unlock_admission": {
+      "result": "REJECTED",
+      "reason": "The evidence materially sharpens the experiment/data requirements and identifies discriminating observables and alternative mechanisms."
+    }
+  },
+  "source_applicability_review": {
+    "EXT-01_Nieder_2011": "PASS_AS_COUNTEREVIDENCE_ANALOGUE_ONLY; no TCD016 material mapping claimed.",
+    "EXT-02_Opuwariboi_Odu_1975": "PASS_AS_WET_DRY_RETENTION_ANALOGUE_ONLY; no direct surface-state mapping claimed.",
+    "EXT-03_Montes_2009": "PASS_AS_AQUEOUS_SURFACE_VOLATILIZATION_PROCESS_EVIDENCE_ONLY; does not validate dry-residue rewetting.",
+    "EXT-04_Bouwman_2002": "PASS_AS_MULTI_FATE_SYNTHESIS_ONLY; does not identify the continuation phase.",
+    "EXT-05_Brooks_2002": "PASS_AS_PHASE_SPECIFIC_REWETTING_PLAUSIBILITY_ONLY; ammonium-sulfate identity is not transferred to TCD016."
+  },
+  "mandatory_adversarial_checks": {
+    "bounded_search_not_claimed_systematic_or_exhaustive": "PASS",
+    "absence_in_search_not_promoted_to_global_absence": "PASS",
+    "peer_review_not_treated_as_state_mapping": "PASS",
+    "phase_specific_analogue_not_promoted_to_continuation_identity": "PASS",
+    "soil_fixation_not_promoted_to_direct_soil_receiver": "PASS",
+    "volatilization_not_promoted_to_proven_dry_loss_for_continuation_state": "PASS",
+    "generic_chemistry_not_promoted_to_complete_instantaneous_rewetting": "PASS",
+    "candidate_contract_not_modified": "PASS",
+    "historical_b2_not_invented": "PASS",
+    "mass_conservation_not_promoted_to_process_validation": "PASS",
+    "material_identity_blocker_retained": "PASS",
+    "process_specific_validation_blocker_retained": "PASS",
+    "targeted_experiment_is_evidence_requirement_not_claimed_evidence": "PASS",
+    "tcd016_e1_not_qualified": "PASS",
+    "b3_admission_not_performed": "PASS",
+    "production_not_modified_or_authorized": "PASS",
+    "same_agent_review_not_claimed_independent": "PASS",
+    "scope_guard_and_no_shared_authority_mutation": "PASS"
+  },
+  "residual_uncertainty": [
+    "continuation material phase, counter-ion and molecular speciation remain unresolved",
+    "whether retained mass is freely soluble, matrix-bound, transformed or partly volatile remains unresolved",
+    "receiver selection on rewetting remains unresolved",
+    "complete versus partial versus delayed transfer remains unresolved",
+    "application-envelope dependence on pH, temperature, water amount, ionic composition and surface material remains unresolved",
+    "historical revision-53 behavior remains UNKNOWN_WITHOUT_B2"
+  ],
+  "live_supersession_check": {
+    "result": "NO_LATER_TCD016_SCIENCE_BRANCH_FOUND_BEYOND_SQ10_AT_REVIEW_TIME",
+    "latest_observed": "work/animo-sq10-tcd016-c1-model-evolution-evidence-validation"
+  },
+  "substantive_findings": [],
+  "substantive_remediation_required": false,
+  "reviewed_disposition": "QUALIFIED_EVIDENCE_ACQUISITION_COMPLETE_NO_CLASS_F_UNLOCK",
+  "scientific_admission_readiness": false,
+  "outcome": "SELF_REVIEW_PASS",
+  "interpretation": "The review passes SQ10's negative evidence disposition. It does not pass the M1 physics candidate. External evidence is scientifically useful but insufficiently mapped and insufficiently discriminating for Class-F admission."
+}
