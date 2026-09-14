@@ -1,0 +1,18 @@
+{
+  "workunit":"ANIMO-GOV06",
+  "snapshot_basis":"ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe plus later qualified B3Q06 closure gate and live authority rechecks",
+  "denominator_status":"DENOMINATOR_NOT_YET_QUALIFIED",
+  "numeric_completion_authorized":false,
+  "reason":"No versioned, defensible whole-program frozen scope with non-arbitrary weights currently governs ANIMO5. TCD admissions cover scientific scope only and cannot stand in for whole-program completion.",
+  "capabilities":[
+    {"area":"scientific_b3_closure","state":"INCOMPLETE","authority":"ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700","evidence":"three top-level TCDs remain unadmitted: TCD-016, TCD-034, TCD-040"},
+    {"area":"architecture_readiness","state":"PARTIAL_QUALIFIED_FOUNDATIONS","authority":"ARCHG02@db8183802631902f41aa5bec518a3c2e63e03ab7","evidence":"architecture invariants and temporal revalidation exist; B4 architecture composition is not admitted"},
+    {"area":"production_migration_b4","state":"NOT_OPEN","authority":"MIGRATION_DAG plus B3Q06","evidence":"B4 is downstream of integrated qualification and current B3 closure gate is negative"},
+    {"area":"testbank_release_qualification","state":"PRE_B4_FAIL_CLOSED","authority":"TB07A@6d77e92f5beb2a30deb7411d93890aa7a5559685","evidence":"fail-closed composed regression baseline prerequisite gate; no release admission inferred"},
+    {"area":"documentation_scientific_traceability","state":"IN_PROGRESS","authority":"STATUS_A_AA_GAP_REGISTER","evidence":"multiple conceptual, formal, implementation, provenance and documentation gaps remain open"},
+    {"area":"status_a_readiness","state":"NOT_CLAIMED_GAPS_OPEN","authority":"STATUS_A_AA_GAP_REGISTER","evidence":"GOV06 makes no Status A claim"},
+    {"area":"status_aa_readiness","state":"NOT_CLAIMED_GAPS_OPEN","authority":"STATUS_A_AA_GAP_REGISTER","evidence":"GOV06 makes no Status AA claim"},
+    {"area":"optional_research","state":"OUTSIDE_PRODUCTION_COMPLETION_SCOPE_BY_DEFAULT","authority":"ANIMO-GOV06","evidence":"optional research gains completion weight only through a future versioned scope authority"}
+  ],
+  "scope_change_rule":"ANY_LATER_SCOPE_OR_WEIGHT_CHANGE_REQUIRES_NEW_VERSIONED_GOVERNANCE_AUTHORITY"
+}

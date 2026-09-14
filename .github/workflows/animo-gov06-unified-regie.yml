@@ -1,0 +1,23 @@
+name: ANIMO-GOV06 unified regie governance
+
+on:
+  push:
+    branches:
+      - work/animo-gov06-unified-regie-workflow
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-gov06:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate governance package and scope guard
+        run: python tools/validate_gov06_unified_regie.py

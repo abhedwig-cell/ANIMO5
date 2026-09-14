@@ -1,0 +1,19 @@
+{
+  "workunit":"ANIMO-GOV06",
+  "snapshot_date":"2026-09-14",
+  "branch":"work/animo-gov06-unified-regie-workflow",
+  "base_aggregate":"ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+  "base_tree":"4bb29a4092d6313174704185c95a9b7ced1ed51a",
+  "governance":{"GOV03":"cbd262bdabe92923113b7326f2f42822ce9a971c","GOV04":"1bbe4c211197590f346803106e45dca5faae79fc","GOV05":"f65a47724e4a4fca7f2d8b8d6de9eeee51867904"},
+  "b3":{"aggregate":"bc9e6ed997a078336645210ebb4d99ae976893fe","routing":"ANIMO-B3I10@942f26fe32eaf91679e59a1968ae173a3703e22d","closure_gate":"ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700","closure_decision":"B3_COMPOSITION_INCOMPLETE_DO_NOT_OPEN_TB7_B4_OR_PRODUCTION","remaining_top_level_unadmitted":["TCD-016","TCD-034","TCD-040"]},
+  "qualification_family_heads":{"SQ":"SQ08@f89ec3b0bfd053c2c903cbbcf2243bb4ab4a5741","NQ":"NQ05@62080a8e731681407e2e7e759decc49c1a47fa7b","MASSQ":"MASSQ04@3e0f8254d9cd7966a4491b3068d0239b8ccda5f9","STATEQ":"STATEQ07@26f6e61da328a5578b9c4b332de04eb99a3ac04f","RUNTIMEQ":"RUNTIMEQ03@a3e822f8e97fe1312a7dfa73601a49ae7375163e","SYNQ":"SYNQ05@ca3b6fba99ddc70e1f063ac98088f8825f467c1a"},
+  "testbank":"TB07A@6d77e92f5beb2a30deb7411d93890aa7a5559685",
+  "architecture":"ARCHG02@db8183802631902f41aa5bec518a3c2e63e03ab7",
+  "b4":"NOT_OPEN",
+  "production":"NOT_OPEN",
+  "status_a":"NOT_CLAIMED_GAPS_OPEN",
+  "status_aa":"NOT_CLAIMED_GAPS_OPEN",
+  "denominator":"DENOMINATOR_NOT_YET_QUALIFIED",
+  "moving_authorities_requiring_live_recheck_before_use":["aggregate RG series","B3Q global queue/closure","B3I routing","TCD016/TCD034/TCD040 scientific owners","testbank composition authority","B4 and production decision surfaces"],
+  "rebaseline_triggers":["bounded set of substantive closeouts","major aggregate or canonical architecture change","semantic contract ownership conflict","scope or denominator conflict","before major B3-completeness decision","before B4 decision","before Status A decision","before release decision"]
+}

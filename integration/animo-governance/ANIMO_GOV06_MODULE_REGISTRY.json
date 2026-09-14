@@ -1,0 +1,17 @@
+{
+  "registry":"ANIMO_GOV06_MODULE_REGISTRY_v1",
+  "authority":"ANIMO-GOV06",
+  "role":"PROSPECTIVE_GOVERNANCE_INDEX_NOT_SCIENTIFIC_SOURCE_OF_TRUTH",
+  "retroactive_invalidation":false,
+  "prospective_rule":"NEW_OR_MATERIALLY_CHANGED_MODULES_REQUIRE_SCHEMA_CONFORMING_MANIFEST_BEFORE_B4_PRODUCTION_ADMISSION",
+  "modules":[
+    {"identity":"COMPUTATIONAL_KERNEL","responsibility":"I/O-independent ANIMO computational orchestration and explicit data separation","authority_refs":["ANIMO5_ARCHITECTURE_INVARIANTS","ARCHG02"],"contract_state":"INITIAL_REGISTRY_ENTRY_MANIFEST_REQUIRED_BEFORE_MATERIAL_CHANGE_OR_B4"},
+    {"identity":"STATE_PERSISTENCE_RESTART","responsibility":"continuation-critical persistent state, checkpoint/restore and restart ownership","authority_refs":["STATEQ07","ANIMO5_ARCHITECTURE_INVARIANTS"],"contract_state":"INITIAL_REGISTRY_ENTRY_MANIFEST_REQUIRED_BEFORE_MATERIAL_CHANGE_OR_B4"},
+    {"identity":"TIME_TRANSACTION","responsibility":"generic time interval and trial/commit/rollback semantics","authority_refs":["ANIMO5_ARCHITECTURE_INVARIANTS","MIGRATION_DAG"],"contract_state":"INITIAL_REGISTRY_ENTRY_MANIFEST_REQUIRED_BEFORE_MATERIAL_CHANGE_OR_B4"},
+    {"identity":"MASS_CONSERVATION","responsibility":"typed C/N/P transfer accounting, conservation and residual causality","authority_refs":["MASSQ04","ANIMO5_ARCHITECTURE_INVARIANTS"],"contract_state":"INITIAL_REGISTRY_ENTRY_MANIFEST_REQUIRED_BEFORE_MATERIAL_CHANGE_OR_B4"},
+    {"identity":"HYDROLOGY_EXCHANGE","responsibility":"explicit hydrological forcing and SWAP-facing exchange contracts without internal-state coupling","authority_refs":["ANIMO5_ARCHITECTURE_INVARIANTS","MIGRATION_DAG"],"contract_state":"INITIAL_REGISTRY_ENTRY_MANIFEST_REQUIRED_BEFORE_MATERIAL_CHANGE_OR_B4"},
+    {"identity":"CNP_PROCESS_SEMANTICS","responsibility":"admitted carbon, nitrogen and phosphorus process semantics by bounded B3 scope","authority_refs":["RG05O","B3Q06"],"contract_state":"AGGREGATES_EXISTING_B3_AUTHORITIES_WITHOUT_RESTATING_OR_REPLACING_THEM"},
+    {"identity":"INPUT_CONFIGURATION","responsibility":"versioned input representation and configuration contracts separated from kernel physics","authority_refs":["ANIMO5_ARCHITECTURE_INVARIANTS","RG05_PARALLELISM_MATRIX"],"contract_state":"INITIAL_REGISTRY_ENTRY_MANIFEST_REQUIRED_BEFORE_MATERIAL_CHANGE_OR_B4"},
+    {"identity":"DIAGNOSTICS_OUTPUT","responsibility":"diagnostics, qualification observability and results publication without owning scientific state","authority_refs":["ANIMO5_ARCHITECTURE_INVARIANTS","TB07A"],"contract_state":"INITIAL_REGISTRY_ENTRY_MANIFEST_REQUIRED_BEFORE_MATERIAL_CHANGE_OR_B4"}
+  ]
+}

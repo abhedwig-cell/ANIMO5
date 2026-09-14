@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ANIMO_GOV06_WORKUNIT_RESUMPTION_SCHEMA_v1",
+  "title": "ANIMO5 GOV06 durable workunit resumption record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","workunit","scope","current_phase","governing_authorities","aggregate_or_canonical_authority","contracts","decisions","commits","changed_files","tests","review_status","blockers","next_safe_action","moving_authorities_to_recheck","ownership_state"],
+  "properties": {
+    "schema_version": {"const":"ANIMO-GOV06-RESUME-v1"},
+    "workunit": {"type":"string","minLength":1},
+    "scope": {"type":"string","minLength":1},
+    "current_phase": {"type":"string","minLength":1},
+    "governing_authorities": {"type":"array","items":{"type":"string","minLength":1},"minItems":1,"uniqueItems":true},
+    "aggregate_or_canonical_authority": {"type":["string","null"]},
+    "contracts": {"type":"array","items":{"type":"object","additionalProperties":false,"required":["id","relation","stability","owner"],"properties":{"id":{"type":"string"},"relation":{"enum":["CONSUMED","OWNED_MODIFIED"]},"stability":{"enum":["FROZEN","MOVING"]},"owner":{"type":"string"}}},"minItems":1},
+    "decisions": {"type":"array","items":{"type":"string"}},
+    "commits": {"type":"array","items":{"type":"string"}},
+    "changed_files": {"type":"array","items":{"type":"string"}},
+    "tests": {"type":"array","items":{"type":"object","required":["id","result"],"properties":{"id":{"type":"string"},"result":{"type":"string"}}}},
+    "review_status": {"type":"string"},
+    "blockers": {"type":"array","items":{"type":"string"}},
+    "next_safe_action": {"type":"string","minLength":1},
+    "moving_authorities_to_recheck": {"type":"array","items":{"type":"string"}},
+    "ownership_state": {"enum":["HELD","RELEASED_ON_CLOSEOUT","SUPERSEDED"]}
+  }
+}
