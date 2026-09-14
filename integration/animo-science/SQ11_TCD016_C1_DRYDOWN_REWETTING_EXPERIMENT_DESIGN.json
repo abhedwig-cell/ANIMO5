@@ -1,0 +1,150 @@
+{
+  "work_unit": "ANIMO-SQ11",
+  "target": "TCD-016-C1",
+  "parent_tcd": "TCD-016",
+  "branch": "work/animo-sq11-tcd016-c1-drydown-rewetting-experiment-design",
+  "base_head": "ANIMO-SQ10@e385f637c14b67f25670d7e9edd85d4aaefdb63b",
+  "scope": "EXPERIMENT_DESIGN_PRE_REGISTRATION_DATA_INTERFACE_AND_DISCRIMINATION_LOGIC_ONLY",
+  "candidate": "REWETTABLE_SURFACE_NH4_N_RESIDUE_EQUIVALENT",
+  "starting_maturity": "RESEARCH_ISOLATED",
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "class_f_blockers": [
+    "AUTHORITATIVE_THEORY_OR_EQUIVALENT_TRACEABLE_MATERIAL_TO_PROCESS_BASIS",
+    "PROCESS_SPECIFIC_VALIDATION_EVIDENCE_FOR_REWETTING_BEHAVIOR"
+  ],
+  "scientific_question": "After a traceable surface NH4-N aqueous pool dries to loss of explicit aqueous storage, what fraction and time course of retained N returns to surface aqueous NH4-N when water returns, and what fraction remains retained, enters soil/mineral storage, or leaves as gaseous N?",
+  "candidate_prediction": "At the first experimentally resolvable post-rewetting state all retained continuation N is in surface aqueous NH4-N, with no material delayed release, competing soil/mineral receiver, gaseous loss attributable to rewetting, or terminal non-aqueous residue.",
+  "operational_instantaneous_rule": "Instantaneous is evaluated at the predeclared earliest defensible sampling resolution; SQ11 sets no universal time threshold.",
+  "competing_hypotheses": {
+    "H_PARTIAL": "partial first-sample aqueous recovery",
+    "H_DELAYED": "later aqueous recovery increases from a retained pool",
+    "H_SOIL_RECEIVER": "material N enters a quantified soil/mineral receiver",
+    "H_GAS_LOSS": "material N leaves as NH3 during dry-down or rewetting",
+    "H_OTHER_RETAINED": "material non-aqueous N remains after rewetting"
+  },
+  "experimental_architecture": {
+    "stage_A": {
+      "name": "ISOLATED_INERT_SURFACE",
+      "purpose": "Separate residue formation and rewetting from soil/mineral receiver ambiguity.",
+      "required": [
+        "traceable NH4-N source and counter-ion composition",
+        "inert mass-accountable vessel",
+        "pre-dry aqueous NH4-N mass",
+        "documented dry endpoint with no explicit aqueous storage",
+        "NH3 loss measured or tightly bounded",
+        "residue material/phase characterization",
+        "predeclared rewetting water amount and composition",
+        "time-resolved aqueous NH4-N after rewetting",
+        "terminal retained/non-aqueous N",
+        "full N mass closure with uncertainty"
+      ]
+    },
+    "stage_B": {
+      "name": "SURFACE_SOIL_OR_MINERAL_CONTACT",
+      "purpose": "Test for a competing receiver under representative contact.",
+      "required": [
+        "same source and dry-down bookkeeping as Stage A",
+        "defined soil/mineral matrix",
+        "time-resolved surface aqueous NH4-N",
+        "quantified soil/mineral NH4-N receiver",
+        "NH3 loss measured or tightly bounded",
+        "terminal retained/non-aqueous N where separable",
+        "full N mass closure with uncertainty"
+      ]
+    },
+    "tracer": {
+      "preferred": "15N-labelled ammonium or equivalent source-specific tracer",
+      "mandatory": false,
+      "reason": "Improves attribution against background N, especially in Stage B and gas capture."
+    },
+    "replication_rule": "The executing laboratory must predeclare replication/randomization from pilot variance, analytical precision and power target. SQ11 has no evidence basis for a universal numeric n."
+  },
+  "minimum_observables": [
+    "M_initial_aqueous_NH4_N",
+    "M_dry_retained_total_N",
+    "M_NH3_drydown",
+    "material_phase_or_composition_characterization",
+    "M_surface_aqueous_NH4_N_time_series_after_rewetting",
+    "M_soil_or_mineral_receiver_NH4_N_if_applicable",
+    "M_NH3_rewetting",
+    "M_terminal_non_aqueous_retained_N",
+    "total_mass_balance_residual_with_uncertainty"
+  ],
+  "required_metadata": [
+    "temperature_time_series",
+    "pH",
+    "ionic_composition_and_counter_ions",
+    "surface_material",
+    "soil_or_mineral_material_if_present",
+    "initial_water_storage_or_depth",
+    "drying_method_and_endpoint",
+    "rewetting_amount_composition_and_time",
+    "sampling_times",
+    "analytical_methods_LOD_LOQ_and_uncertainty",
+    "gas_capture_method_and_recovery",
+    "sample_and_batch_identifiers"
+  ],
+  "derived_quantities": {
+    "f_aq_0": "M_surface_aqueous_NH4_N(t_first)/M_dry_retained_total_N",
+    "f_soil": "delta_M_soil_or_mineral_receiver_NH4_N/M_dry_retained_total_N",
+    "f_gas": "M_NH3_rewetting/M_dry_retained_total_N",
+    "f_residual": "M_terminal_non_aqueous_retained_N/M_dry_retained_total_N"
+  },
+  "decision_rules": {
+    "uncertainty": "Use predeclared combined measurement uncertainty and method quantification limits; no arbitrary universal epsilon is introduced.",
+    "support_M1": [
+      "first resolvable aqueous recovery is compatible with complete recovery",
+      "no material delayed increase",
+      "soil/mineral receiver absent or bounded within the uncertainty/quantification envelope",
+      "rewetting gaseous loss absent or bounded within the uncertainty/quantification envelope",
+      "terminal non-aqueous retained N absent or bounded within the uncertainty/quantification envelope",
+      "mass closure passes the predeclared analytical criterion",
+      "material characterization supports a traceable mapping for the tested residue"
+    ],
+    "refute_M1_for_tested_condition": [
+      "material terminal residue",
+      "material delayed aqueous increase",
+      "material soil/mineral receiver",
+      "material rewetting gaseous loss",
+      "first-sample aqueous recovery materially below complete recovery after measured sinks"
+    ],
+    "inconclusive": [
+      "failed mass closure",
+      "unresolved background/contamination",
+      "insufficient residue characterization",
+      "sampling too coarse to distinguish finite-rate release",
+      "unmeasured receiver or gas term that is not tightly bounded"
+    ],
+    "scope_limit": "A pass supports only the tested material and application envelope and cannot by itself establish a universal ANIMO constitutive law."
+  },
+  "evidence_package": {
+    "raw_data": "immutable raw observations or governance-approved immutable external reference",
+    "processed_data": "reproducible from raw data",
+    "methods": "versioned protocol and calibration records",
+    "provenance": "sample lineage, lab/operator identity, dates and source-material traceability",
+    "uncertainty": "reported for measurements and derived fractions",
+    "negative_results": "retained; failed/inconclusive runs may not be silently excluded"
+  },
+  "qualification_effect": {
+    "experiment_design": "QUALIFIABLE_AS_DISCRIMINATING_AND_FAIL_CLOSED",
+    "physical_evidence_generated_in_sq11": false,
+    "class_f_theory_gate_unlocked": false,
+    "class_f_validation_gate_unlocked": false,
+    "candidate_scientific_admission_readiness": false
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "prior_scientific_semantics_modified": false,
+    "canonical_register_modified": false,
+    "central_queue_modified": false,
+    "aggregate_modified": false,
+    "routing_modified": false,
+    "central_testbank_registry_modified": false,
+    "tcd016_e1_qualified": false,
+    "b3_admission_performed": false,
+    "b4_performed": false,
+    "production_authorized": false
+  },
+  "workunit_disposition": "QUALIFIED_EXPERIMENT_DESIGN_READY_EXTERNAL_EVIDENCE_EXECUTION_REQUIRED",
+  "next_handoff": "EXECUTE_OR_ACQUIRE_TRACEABLE_DRYDOWN_REWETTING_DATA_UNDER_THE_SQ11_PRE_REGISTERED_INTERFACE_THEN_OPEN_A_SEPARATE_EVIDENCE_INGESTION_AND_CLASS_F_REASSESSMENT_WORKUNIT"
+}
