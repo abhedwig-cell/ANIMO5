@@ -1,0 +1,16 @@
+{
+  "work_unit":"ANIMO-GHG09",
+  "target":"TCD-034",
+  "predecessor":"ANIMO-GHG08@97913b04906eb23c28b47a68ec9def7392174be5",
+  "contract_id":"TCD034_SELECTOR_SENSITIVITY_PARAMETER_TRANSFER_V1",
+  "evidence_class":"ANALYTIC_MODEL_EVOLUTION_SENSITIVITY_NOT_B2",
+  "growth_response":{"low":"0 if T<=Tegr","transition":"4*(1-((Tegr+10-T)/10)^2)","high":"4 if T>=Tegr+10","derivative_transition":"0.08*(Tegr+10-T)","global_lipschitz_per_degC":0.8},
+  "frozen_Kpl_d_minus_1":0.24,
+  "qualified_bounds":{"delta_Kraw":"abs(dKraw)<=0.192*FvegCH4*fRoot*abs(deltaT)","delta_Qplant":"abs(dQplant)<=0.192*FvegCH4*fRoot*S*C*He*abs(deltaT)"},
+  "parameter_transfer":{"Kpl_Fveg_global_scaling":"NOT_GENERALLY_TRANSFERABLE","Tegr_adjustment":"SEMANTIC_CHANGE_NOT_NEUTRAL_RECALIBRATION","PvCH4Ox":"PARTITION_ONLY_CANNOT_COMPENSATE_TOTAL_QPLANT","empirical_recalibration":"STILL_REQUIRED_FOR_APPLICATION_USE"},
+  "application_envelope_difference":"OPEN_REQUIRES_REPRESENTATIVE_SELECTOR_REPLAY",
+  "decision":"QUALIFIED_TCD034_SELECTOR_SENSITIVITY_AND_PARAMETER_NONTRANSFERABILITY_RISK_V1",
+  "b3_admission_performed":false,
+  "class_f_admission_performed":false,
+  "production_authorized":false
+}

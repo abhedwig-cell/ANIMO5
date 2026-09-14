@@ -1,0 +1,22 @@
+{
+  "work_unit":"ANIMO-GHG09",
+  "target":"TCD-034",
+  "title":"Selector Sensitivity & Parameter-Transfer Qualification",
+  "branch":"work/animo-ghg09-tcd034-selector-sensitivity-parameter-transfer",
+  "phase":"SUBSTANTIVE_AUTHORING_FROZEN_AWAITING_GOV05_REVIEW",
+  "state":"POSITIVE_ANALYTIC_SENSITIVITY_DECISION_PENDING_PROCESS_REVIEW",
+  "primary_disposition":"QUALIFIED_TCD034_SELECTOR_SENSITIVITY_AND_PARAMETER_NONTRANSFERABILITY_RISK_V1_PENDING_GOV05_REVIEW",
+  "base_predecessor":"ANIMO-GHG08@97913b04906eb23c28b47a68ec9def7392174be5",
+  "selector_contract":"TCD034_T50_0P50M_DEPTH_OPERATOR_V1",
+  "analytic_sensitivity_qualified":true,
+  "parameter_transferability":"NOT_ASSUMED_GLOBAL_RECALIBRATION_OR_VALIDATION_REQUIRED",
+  "application_envelope_difference":"OPEN_REQUIRES_REPRESENTATIVE_SELECTOR_REPLAY",
+  "empirical_validation":"OPEN",
+  "b3_admission_performed":false,
+  "class_f_admission_performed":false,
+  "production_authorized":false,
+  "review":{"required":true,"completed":false,"model":"MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW","assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT when complete"},
+  "validation":{"workflow":".github/workflows/animo-ghg09-tcd034.yml","validator":"tools/ghg09/validate_ghg09_tcd034.py","exact_final_head_required":true},
+  "hard_boundaries":{"production_source_modified":false,"canonical_register_modified":false,"central_queue_modified":false,"historical_selector_resolved_claimed":false,"empirical_calibration_claimed":false,"synthetic_or_analytic_evidence_promoted_to_B2":false,"b3_admission_performed":false,"class_f_admission_performed":false,"b4_opened":false},
+  "work_status":{"realized":true,"persisted":true,"tested":false,"reviewed":false,"qualified":false,"workunit_complete":false}
+}

@@ -1,0 +1,51 @@
+name: ANIMO-GHG09 TCD034 selector sensitivity parameter transfer
+
+on:
+  push:
+    branches:
+      - work/animo-ghg09-tcd034-selector-sensitivity-parameter-transfer
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify exact branch head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Fetch pinned predecessor
+        shell: bash
+        run: |
+          set -euo pipefail
+          git cat-file -e "97913b04906eb23c28b47a68ec9def7392174be5^{commit}" 2>/dev/null || git fetch --no-tags origin 97913b04906eb23c28b47a68ec9def7392174be5
+      - name: Verify exact GHG08 predecessor CI
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          run_id=34845255094
+          expected="97913b04906eb23c28b47a68ec9def7392174be5"
+          req=urllib.request.Request(
+              f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}",
+              headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}","Accept":"application/vnd.github+json"},
+          )
+          with urllib.request.urlopen(req) as response: data=json.load(response)
+          assert data["head_sha"]==expected
+          assert data["status"]=="completed" and data["conclusion"]=="success"
+          PY
+      - name: Parse package
+        run: |
+          python -m json.tool integration/animo-ghg/GHG09_TCD034_SELECTOR_SENSITIVITY_CONTRACT.json >/dev/null
+          python -m json.tool integration/animo-ghg/GHG09_TCD034_SELECTOR_SENSITIVITY_ORACLES.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG09_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG09_STATUS.json >/dev/null
+          if test -f integration/animo-ghg/ANIMO-GHG09_INTERNAL_ADVERSARIAL_REVIEW.json; then python -m json.tool integration/animo-ghg/ANIMO-GHG09_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null; fi
+          python -m py_compile tools/ghg09/validate_ghg09_tcd034.py
+      - name: Validate selector sensitivity and parameter transfer
+        run: python tools/ghg09/validate_ghg09_tcd034.py

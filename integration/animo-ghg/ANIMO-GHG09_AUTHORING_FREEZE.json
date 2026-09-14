@@ -1,0 +1,27 @@
+{
+  "work_unit":"ANIMO-GHG09",
+  "target":"TCD-034",
+  "branch":"work/animo-ghg09-tcd034-selector-sensitivity-parameter-transfer",
+  "base_head":"97913b04906eb23c28b47a68ec9def7392174be5",
+  "base_predecessor":"ANIMO-GHG08@97913b04906eb23c28b47a68ec9def7392174be5",
+  "freeze_kind":"SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_REVIEW",
+  "semantic_owner":"TCD034_MODEL_EVOLUTION_SELECTOR_SENSITIVITY_AND_PARAMETER_TRANSFER",
+  "parallelism":"PARALLEL_AFTER_PINNING",
+  "substantive_files":[
+    "docs/ghg/TCD034_SELECTOR_SENSITIVITY_PARAMETER_TRANSFER.md",
+    "integration/animo-ghg/GHG09_TCD034_SELECTOR_SENSITIVITY_CONTRACT.json",
+    "integration/animo-ghg/GHG09_TCD034_SELECTOR_SENSITIVITY_ORACLES.json",
+    "tools/ghg09/validate_ghg09_tcd034.py",
+    ".github/workflows/animo-ghg09-tcd034.yml"
+  ],
+  "post_review_allowed_changes":[
+    "integration/animo-ghg/ANIMO-GHG09_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-ghg/ANIMO-GHG09_STATUS.json"
+  ],
+  "substantive_change_resets_GOV05_review":true,
+  "exact_final_head_ci_required":true,
+  "production_source_frozen":true,
+  "canonical_register_frozen":true,
+  "central_queue_frozen":true,
+  "no_admission_in_this_workunit":true
+}

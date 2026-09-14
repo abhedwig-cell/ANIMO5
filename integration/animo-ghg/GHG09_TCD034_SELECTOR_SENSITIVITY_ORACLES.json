@@ -1,0 +1,16 @@
+{
+  "work_unit":"ANIMO-GHG09",
+  "target":"TCD-034",
+  "oracle_bank":"TCD034_SELECTOR_SENSITIVITY_V1_ANALYTIC_ORACLES",
+  "evidence_class":"ANALYTIC_MODEL_EVOLUTION_SENSITIVITY_NOT_B2",
+  "cases":[
+    {"id":"GHG09-O01-ONSET-CROSSING","Tegr":7.0,"T_old":6.0,"T_new":8.0,"expected_g_old":0.0,"expected_g_new":0.76,"expected_branch_change":true},
+    {"id":"GHG09-O02-TRANSITION-AMPLIFICATION","Tegr":7.0,"T_old":8.0,"T_new":12.0,"expected_g_old":0.76,"expected_g_new":3.0,"expected_ratio_old_over_new":0.25333333333333335},
+    {"id":"GHG09-O03-MATURE-PLATEAU","Tegr":7.0,"T_old":18.0,"T_new":20.0,"expected_g_old":4.0,"expected_g_new":4.0},
+    {"id":"GHG09-O04-TRANSITION-TO-MATURE","Tegr":7.0,"T_old":12.0,"T_new":17.0,"expected_g_old":3.0,"expected_g_new":4.0},
+    {"id":"GHG09-O05-NONUNIVERSAL-MULTIPLIER-A","Tegr":7.0,"T_old":8.0,"T_new":12.0,"expected_scale":0.25333333333333335},
+    {"id":"GHG09-O06-NONUNIVERSAL-MULTIPLIER-B","Tegr":7.0,"T_old":12.0,"T_new":14.0,"expected_scale":0.8241758241758241}
+  ],
+  "historical_behavior_claimed":false,
+  "empirical_validation_claimed":false
+}
