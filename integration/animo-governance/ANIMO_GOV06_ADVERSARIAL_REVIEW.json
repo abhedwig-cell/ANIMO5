@@ -1,0 +1,73 @@
+{
+  "work_unit":"ANIMO-GOV06",
+  "review_mode":"MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "same_agent":true,
+  "genuinely_independent":false,
+  "independence_claimed":false,
+  "assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "reviewed_head":"31f82b57f40660668c716338bf8a363ec1b3a8e5",
+  "reviewed_head_ci":{"run_id":34813924923,"job_id":103880564115,"conclusion":"success"},
+  "outcome":"SELF_REVIEW_PASS",
+  "review_history":{
+    "first_immutable_authoring_head":"01e83f48c26034cb999e31398bd565b8c98aac7f",
+    "first_head_ci":{"run_id":34813840674,"conclusion":"success"},
+    "first_adversarial_pass":"REMEDIATION_REQUIRED",
+    "finding":"The initial execution-wave map correctly warned that branch existence is not activity evidence, but individual rows did not encode activity state. A reader could therefore still misread closed or merely observed branch heads as current active execution and branch count as progress.",
+    "substantive_remediation":"Added activity_state and activity_evidence to every wave row and explicitly distinguished active GOV06 work, closed qualified heads, unresolved lanes, current authority snapshots and closed B4/production.",
+    "remediated_immutable_head":"31f82b57f40660668c716338bf8a363ec1b3a8e5",
+    "remediated_head_ci":{"run_id":34813924923,"job_id":103880564115,"conclusion":"success"},
+    "review_restarted_after_remediation":true
+  },
+  "counter_hypothesis":{
+    "tested":true,
+    "alternative":"Do not create GOV06 because existing ANIMO RG, GOV03-GOV05 and migration documents already provide enough governance, and importing SWAP-style regie risks duplicate authority and scope gaming.",
+    "test":"Check whether GOV06 replaces scientific, routing, queue, aggregate or architecture authorities, or instead supplies missing cross-cutting ownership/resumption/module/scope contracts while pinning existing authorities as sources of truth.",
+    "result":"GOV06 is defensible only as a governance overlay. It explicitly forbids automatic authority promotion, keeps the module registry non-normative for scientific semantics, leaves B3Q06 negative, leaves B4 closed, and sets the whole-program denominator to DENOMINATOR_NOT_YET_QUALIFIED."
+  },
+  "challenges":{
+    "swap_assumption_transfer":"PASS",
+    "scope_gaming":"PASS",
+    "branch_count_as_progress":"PASS",
+    "tcd_count_as_program_completion":"PASS",
+    "research_as_production":"PASS",
+    "evidence_as_authority":"PASS",
+    "child_to_parent_promotion":"PASS",
+    "same_agent_as_independent":"PASS",
+    "runtime_interruption_as_invalidity":"PASS",
+    "parallel_moving_contract_coownership":"PASS",
+    "module_registry_second_truth":"PASS",
+    "retroactive_science_invalidation":"PASS"
+  },
+  "challenge_notes":{
+    "swap_assumption_transfer":"Only abstract ownership, resumption, maturity, denominator-discipline and module-governance lessons were transferred. SWAP weights, topology, solver contracts, naming and completion percentages were rejected.",
+    "scope_gaming":"No numerical denominator or percentage is created. The capability map keeps B3, architecture, B4, testbank, documentation, Status A, Status AA and optional research distinct.",
+    "branch_count_as_progress":"Remediation makes activity evidence explicit and prohibits treating observed closed branches as active work or progress.",
+    "tcd_count_as_program_completion":"The policy explicitly rejects TCD counts as whole-program completion and preserves B3Q06 as a scientific-composition gate only.",
+    "research_as_production":"Four maturity states are explicit and no transition is automatic; optional research has no production-completion weight by default.",
+    "evidence_as_authority":"B0/B1/B2/B3, synthetic/reconstructed, model-evolution and production authority remain separate; evidence cannot self-promote.",
+    "child_to_parent_promotion":"Child admission is explicitly non-equivalent to parent admission and aggregate composition is serialized.",
+    "same_agent_as_independent":"Review is labeled PROCESS_SELF_REVIEWED_NOT_INDEPENDENT and GOV05 lower-independence assurance is preserved.",
+    "runtime_interruption_as_invalidity":"Durable resumption records and retained semantic ownership distinguish runtime interruption from scientific invalidity.",
+    "parallel_moving_contract_coownership":"SAFE_PARALLEL requires no shared moving semantic contract; shared program authority and same moving semantics serialize regardless of branch/file separation.",
+    "module_registry_second_truth":"Registry is explicitly an index/governance overlay and points to governing authorities rather than restating equations or scientific semantics.",
+    "retroactive_science_invalidation":"Policy states existing qualified B3 science is not invalidated retroactively; schema conformance applies prospectively to new or materially changed modules before B4."
+  },
+  "hard_boundary_recheck":{
+    "production_source_changed":false,
+    "scientific_source_changed":false,
+    "b0_changed":false,
+    "b2_fabricated":false,
+    "tcd_or_b3_admission_performed":false,
+    "central_queue_or_aggregate_mutated":false,
+    "b4_opened":false,
+    "production_advanced":false,
+    "status_a_or_aa_claimed":false,
+    "swap5_modified":false
+  },
+  "residual_uncertainty":[
+    "This is same-agent adversarial review and therefore does not provide genuine independence.",
+    "The initial module registry is deliberately coarse. Scientific responsibility boundaries still require authority-backed manifests before material module change or B4 admission.",
+    "TCD-034 ownership was not reconstructed by GOV06 and remains an explicit live-recheck requirement rather than an inferred owner.",
+    "The whole-program completion denominator remains unqualified; future scope freezing may change the capability map through a new versioned governance authority."
+  ]
+}
