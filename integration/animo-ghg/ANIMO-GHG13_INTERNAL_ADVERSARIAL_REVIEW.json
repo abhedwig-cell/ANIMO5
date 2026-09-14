@@ -1,0 +1,42 @@
+{
+  "work_unit": "ANIMO-GHG13",
+  "target": "TCD-034",
+  "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "reviewed_head": "3a1f725cf8f10fc649bb8dfeff3867e071928d01",
+  "reviewed_tree": "51bde4c84bd3be4704b2b9f6010d7ef87a443b25",
+  "reviewed_head_ci_run": 34875120767,
+  "reviewed_head_ci_job": 104080290718,
+  "reviewed_head_ci_conclusion": "success",
+  "gates": {
+    "source_provenance": "PASS_PINNED_MANIFEST_HASHES",
+    "transport_sink_identity": "PASS_BOUNDED_SOURCE_RECONSTRUCTION",
+    "reported_flux_partition_identity": "PASS_BOUNDED_SOURCE_RECONSTRUCTION",
+    "time_integrated_layer_ledger": "PASS",
+    "time_integrated_profile_ledger": "PASS",
+    "selector_fail_closed_boundary": "PASS",
+    "whole_model_conservation_boundary": "PASS_NOT_CLAIMED",
+    "production_executable_connection_boundary": "PASS_NOT_CLAIMED",
+    "historical_selector_boundary": "PASS_UNRESOLVED_PRESERVED",
+    "empirical_validation_boundary": "PASS_NOT_PERFORMED",
+    "independent_scientific_review_boundary": "PASS_OPEN_SELF_REVIEW_NOT_INDEPENDENT",
+    "admission_boundary": "PASS_NO_CLASS_F_NO_B3_NO_PRODUCTION_ADMISSION"
+  },
+  "findings": [
+    "The same adapted K1plant coefficient participates in the frozen transport process balance and in the reported plant oxidation/emission terms.",
+    "For each rooted layer, St times the sum of plant oxidation and atmospheric plant emission equals the plant-removal mass represented by AvCo*K1plant*He*St.",
+    "The profile identity follows by summation and is preserved at PvCH4Ox partition endpoints.",
+    "This closes only bounded source-ledger compatibility; it does not demonstrate whole-model CH4 conservation with an executable evolved selector."
+  ],
+  "decision": "PASS_TCD034_MODEL_EVOLUTION_PLANT_TRANSFER_SOURCE_LEDGER_COMPATIBILITY_V1",
+  "primary_disposition_confirmed": "QUALIFIED_TCD034_MODEL_EVOLUTION_PLANT_TRANSFER_SOURCE_LEDGER_COMPATIBILITY_V1",
+  "whole_model_ch4_balance_qualified": false,
+  "production_executable_selector_connection_qualified": false,
+  "class_f_admission_ready": false,
+  "b3_admission_performed": false,
+  "production_authorized": false
+}
