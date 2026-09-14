@@ -1,0 +1,81 @@
+{
+  "work_unit": "ANIMO-GHG06A",
+  "target": "TCD-034",
+  "review_kind": "GOV05_ENHANCED_INTERNAL_ADVERSARIAL_REVIEW",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "reviewed_head": "eda60bbc3484d82a2f52871ace00a74dfb44d26e",
+  "reviewed_head_ci_run": 34843001113,
+  "reviewed_head_ci_job": 103972125722,
+  "reviewed_head_ci_conclusion": "success",
+  "base_predecessor": "ANIMO-GHG06@730f09f1567461a45bff4566368db05963b200fa",
+  "primary_disposition": "QUALIFIED_BOUNDED_MODEL_EVOLUTION_T50_DEPTH_OPERATOR_V1",
+  "adversarial_questions": [
+    {
+      "question": "Does this operator silently convert the Walter-Heimann provenance fingerprint into historical ANIMO truth?",
+      "finding": "NO",
+      "basis": "The contract is explicitly MODEL_EVOLUTION_SCIENTIFIC_CONTRACT and keeps the historical revision-53 selector unresolved."
+    },
+    {
+      "question": "Could the existing root-index selector Te(Nuroup+1) remain an equivalent fallback?",
+      "finding": "NO",
+      "basis": "Nuroup is crop/root state rather than physical depth; the v1 contract forbids fallback to root-index, Te(0), Te(1), nearest-layer or containing-layer semantics."
+    },
+    {
+      "question": "Is linear interpolation merely an arbitrary aesthetic choice?",
+      "finding": "NO_WITHIN_DECLARED_MODEL_EVOLUTION_SCOPE",
+      "basis": "Between adjacent layer-centre samples it is the local node-preserving affine-exact reconstruction. This supports a bounded new design but does not claim historical use or empirical superiority over all alternatives."
+    },
+    {
+      "question": "Does the operator invent unavailable surface or bottom temperature information?",
+      "finding": "NO",
+      "basis": "Targets outside the first-to-last layer-centre bracket return UNAVAILABLE_FAIL_CLOSED even if 0.50 m lies inside a physical boundary half-cell. No extrapolation is authorized."
+    },
+    {
+      "question": "Does GHG06A redefine temporal averaging of the Te field?",
+      "finding": "NO",
+      "basis": "GHG06A qualifies the spatial fixed-depth reconstruction over the current Te field. The provider's existing time-coordinate and temperature semantics are inherited; no new temporal averaging operator is introduced."
+    },
+    {
+      "question": "Can synthetic affine and interpolation oracles be treated as historical B2 behavior?",
+      "finding": "NO",
+      "basis": "They are explicitly synthetic model-evolution oracles and test only the new mathematical contract."
+    },
+    {
+      "question": "Does this qualification close active plant-mediated methane behavior?",
+      "finding": "NO",
+      "basis": "FvegCH4>0 positive activation remains a separate GHG07 scope; no production or B3 admission follows automatically."
+    }
+  ],
+  "gates": {
+    "fixed_depth_identity": "PASS_MODEL_EVOLUTION_ONLY",
+    "operator_mathematics": "PASS",
+    "layer_geometry_units_and_midpoints": "PASS",
+    "root_independence": "PASS",
+    "no_extrapolation": "PASS_FAIL_CLOSED",
+    "provider_time_semantics_not_redefined": "PASS",
+    "synthetic_oracles": "PASS_NOT_B2",
+    "historical_claim_separation": "PASS",
+    "FVEGCH4_separate_scope": "PASS_OPEN_NOT_CLOSED",
+    "production_source_unchanged": "PASS",
+    "canonical_register_unchanged": "PASS",
+    "central_queue_unchanged": "PASS",
+    "aggregate_and_routing_unchanged": "PASS"
+  },
+  "residual_limits": [
+    "v1 is unavailable when 0.50 m is not bracketed by layer centres",
+    "v1 does not establish historical revision-53 intent",
+    "v1 does not add or qualify a temporal averaging operator beyond the existing Te provider semantics",
+    "v1 has no empirical plant-mediated CH4 positive-control evidence",
+    "v1 is not B3 admission and not production authority"
+  ],
+  "outcome": "PASS_BOUNDED_MODEL_EVOLUTION_T50_OPERATOR_V1",
+  "decision": "PASS_BOUNDED_MODEL_EVOLUTION_T50_OPERATOR_V1",
+  "b3_admission_allowed_by_this_review": false,
+  "production_authorized": false,
+  "next_allowed_work": "SEPARATE_GHG07_ACTIVE_FVEGCH4_POSITIVE_CONTROL_AND_REACHABILITY_AGAINST_GHG06A_MODEL_EVOLUTION_CONTRACT"
+}

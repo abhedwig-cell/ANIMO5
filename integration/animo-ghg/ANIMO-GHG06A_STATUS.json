@@ -3,9 +3,9 @@
   "target": "TCD-034",
   "title": "Bounded Model-Evolution T50 0.50 m Depth Operator Qualification",
   "branch": "work/animo-ghg06a-tcd034-t50-depth-operator-model-evolution",
-  "phase": "SUBSTANTIVE_AUTHORING_FROZEN_AWAITING_GOV05_REVIEW",
-  "state": "POSITIVE_BOUNDED_MODEL_EVOLUTION_OPERATOR_DECISION_PENDING_PROCESS_REVIEW",
-  "primary_disposition": "QUALIFIED_BOUNDED_MODEL_EVOLUTION_T50_DEPTH_OPERATOR_V1_PENDING_GOV05_REVIEW",
+  "phase": "COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_BOUNDED_MODEL_EVOLUTION_T50_OPERATOR_NO_B3_ADMISSION",
+  "primary_disposition": "QUALIFIED_BOUNDED_MODEL_EVOLUTION_T50_DEPTH_OPERATOR_V1",
   "base_predecessor": "ANIMO-GHG06@730f09f1567461a45bff4566368db05963b200fa",
   "authorities": {
     "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
@@ -25,19 +25,37 @@
   "historical_revision53_selector_qualified": false,
   "selector_domain": "LAYER_CENTER_BRACKETED_0P50M_ONLY",
   "boundary_extrapolation": "FORBIDDEN_FAIL_CLOSED",
+  "temporal_semantics": "INHERIT_CURRENT_TE_PROVIDER_SEMANTICS_NO_NEW_TEMPORAL_AVERAGING_OPERATOR",
   "FVEGCH4_positive_control": "OPEN_UNCHANGED_GHG07_NOT_STARTED",
   "b3_admission_performed": false,
   "production_authorized": false,
   "review": {
     "required": true,
-    "completed": false,
+    "completed": true,
     "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
-    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT when complete"
+    "review_mode": "SAME_AGENT_SECOND_PASS",
+    "same_agent": true,
+    "genuinely_independent": false,
+    "independence_claimed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "reviewed_head": "eda60bbc3484d82a2f52871ace00a74dfb44d26e",
+    "reviewed_head_ci_run": 34843001113,
+    "reviewed_head_ci_job": 103972125722,
+    "reviewed_head_ci_conclusion": "success",
+    "outcome": "PASS_BOUNDED_MODEL_EVOLUTION_T50_OPERATOR_V1",
+    "artifact": "integration/animo-ghg/ANIMO-GHG06A_INTERNAL_ADVERSARIAL_REVIEW.json"
   },
   "validation": {
     "workflow": ".github/workflows/animo-ghg06a-tcd034.yml",
     "validator": "tools/ghg06a/validate_ghg06a_tcd034.py",
-    "exact_final_head_required": true
+    "authoring_head": "eda60bbc3484d82a2f52871ace00a74dfb44d26e",
+    "authoring_tree": "1c97be647815a9038dc2765b4a9e886240af4e3f",
+    "authoring_run": 34843001113,
+    "authoring_job": 103972125722,
+    "authoring_conclusion": "success",
+    "exact_final_head_required": true,
+    "exact_final_head_status": "PENDING_REPLAY_AFTER_REVIEW_STATUS_CLOSEOUT",
+    "closeout_note": "The immutable substantive authoring head passed CI and was reviewed under GOV05. This review/status-only closeout becomes authoritative only after the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -54,9 +72,11 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
-  }
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
+  },
+  "next_handoff": "ANIMO-GHG07_ACTIVE_FVEGCH4_POSITIVE_CONTROL_AND_SELECTOR_REACHABILITY_AGAINST_GHG06A_MODEL_EVOLUTION_CONTRACT",
+  "next_if_exact_final_green": "GHG06A_BOUNDED_OPERATOR_AUTHORITY_MAY_BE_CONSUMED_BY_GHG07; HISTORICAL_TCD034_REMAINS_UNRESOLVED; NO_B3_OR_PRODUCTION_PROMOTION"
 }
