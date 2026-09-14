@@ -12,42 +12,45 @@
     "AUTHORITATIVE_THEORY_OR_EQUIVALENT_TRACEABLE_MATERIAL_TO_PROCESS_BASIS",
     "PROCESS_SPECIFIC_VALIDATION_EVIDENCE_FOR_REWETTING_BEHAVIOR"
   ],
-  "scientific_question": "After a traceable surface NH4-N aqueous pool dries to loss of explicit aqueous storage, what fraction and time course of retained N returns to surface aqueous NH4-N when water returns, and what fraction remains retained, enters soil/mineral storage, or leaves as gaseous N?",
-  "candidate_prediction": "At the first experimentally resolvable post-rewetting state all retained continuation N is in surface aqueous NH4-N, with no material delayed release, competing soil/mineral receiver, gaseous loss attributable to rewetting, or terminal non-aqueous residue.",
+  "scientific_question": "After a traceable surface NH4-N aqueous pool dries to loss of explicit aqueous storage, does the retained continuation pool transfer completely to surface aqueous NH4-N when explicit surface water returns, and can that transfer be distinguished from slower release or direct alternative-receiver behavior?",
+  "candidate_prediction": "When explicit positive surface aqueous storage is re-established, the retained continuation pool transfers completely to SURFACE_AQUEOUS_NH4_STORAGE before downstream runoff, infiltration, sorption-after-arrival, transformation or atmospheric loss consume that aqueous NH4-N.",
   "operational_instantaneous_rule": "Instantaneous is evaluated at the predeclared earliest defensible sampling resolution; SQ11 sets no universal time threshold.",
+  "ordering_rule": "Observed soil/mineral uptake or atmospheric loss after complete aqueous arrival is compatible with M1 and must not be misclassified as evidence against the continuation-to-aqueous transfer itself.",
   "competing_hypotheses": {
-    "H_PARTIAL": "partial first-sample aqueous recovery",
-    "H_DELAYED": "later aqueous recovery increases from a retained pool",
-    "H_SOIL_RECEIVER": "material N enters a quantified soil/mineral receiver",
-    "H_GAS_LOSS": "material N leaves as NH3 during dry-down or rewetting",
-    "H_OTHER_RETAINED": "material non-aqueous N remains after rewetting"
+    "H_PARTIAL": "Only part of the continuation pool reaches surface aqueous NH4-N at first resolvable activation while a non-aqueous residue remains.",
+    "H_DELAYED": "Aqueous NH4-N attributable to the retained pool continues to increase after first resolvable activation because release is finite-rate or delayed.",
+    "H_DIRECT_ALTERNATIVE_RECEIVER": "A material fraction reaches a soil/mineral or other receiver without evidence of prior surface-aqueous arrival, when the experimental resolution can actually distinguish that ordering.",
+    "H_OTHER_RETAINED": "A material fraction remains non-aqueous after rewetting."
   },
   "experimental_architecture": {
     "stage_A": {
-      "name": "ISOLATED_INERT_SURFACE",
-      "purpose": "Separate residue formation and rewetting from soil/mineral receiver ambiguity.",
+      "name": "ISOLATED_INERT_SURFACE_PRIMARY_TRANSFER_TEST",
+      "purpose": "Primary test of the continuation-to-aqueous transfer while suppressing or tightly bounding downstream receiver ambiguity.",
       "required": [
         "traceable NH4-N source and counter-ion composition",
         "inert mass-accountable vessel",
         "pre-dry aqueous NH4-N mass",
         "documented dry endpoint with no explicit aqueous storage",
-        "NH3 loss measured or tightly bounded",
+        "dry-down atmospheric loss measured or tightly bounded",
         "residue material/phase characterization",
         "predeclared rewetting water amount and composition",
+        "earliest technically defensible aqueous NH4-N measurement after water return",
         "time-resolved aqueous NH4-N after rewetting",
         "terminal retained/non-aqueous N",
+        "rewetting downstream losses suppressed where feasible or measured sufficiently to reconstruct aqueous arrival",
         "full N mass closure with uncertainty"
       ]
     },
     "stage_B": {
-      "name": "SURFACE_SOIL_OR_MINERAL_CONTACT",
-      "purpose": "Test for a competing receiver under representative contact.",
+      "name": "SURFACE_SOIL_OR_MINERAL_ORDERING_AND_FATE_TEST",
+      "purpose": "Test lifecycle ordering and downstream fate under representative contact; downstream uptake after aqueous arrival is not itself a refutation of M1.",
       "required": [
         "same source and dry-down bookkeeping as Stage A",
         "defined soil/mineral matrix",
+        "sufficient temporal resolution to assess whether aqueous arrival precedes downstream transfer",
         "time-resolved surface aqueous NH4-N",
         "quantified soil/mineral NH4-N receiver",
-        "NH3 loss measured or tightly bounded",
+        "atmospheric loss measured or tightly bounded",
         "terminal retained/non-aqueous N where separable",
         "full N mass closure with uncertainty"
       ]
@@ -55,18 +58,18 @@
     "tracer": {
       "preferred": "15N-labelled ammonium or equivalent source-specific tracer",
       "mandatory": false,
-      "reason": "Improves attribution against background N, especially in Stage B and gas capture."
+      "reason": "Improves attribution against background N, especially in Stage B and atmospheric-loss accounting."
     },
     "replication_rule": "The executing laboratory must predeclare replication/randomization from pilot variance, analytical precision and power target. SQ11 has no evidence basis for a universal numeric n."
   },
   "minimum_observables": [
     "M_initial_aqueous_NH4_N",
     "M_dry_retained_total_N",
-    "M_NH3_drydown",
+    "M_atmospheric_loss_drydown",
     "material_phase_or_composition_characterization",
     "M_surface_aqueous_NH4_N_time_series_after_rewetting",
     "M_soil_or_mineral_receiver_NH4_N_if_applicable",
-    "M_NH3_rewetting",
+    "M_atmospheric_loss_rewetting_if_relevant",
     "M_terminal_non_aqueous_retained_N",
     "total_mass_balance_residual_with_uncertainty"
   ],
@@ -81,39 +84,41 @@
     "rewetting_amount_composition_and_time",
     "sampling_times",
     "analytical_methods_LOD_LOQ_and_uncertainty",
-    "gas_capture_method_and_recovery",
+    "downstream_loss_or_receiver_measurement_method",
     "sample_and_batch_identifiers"
   ],
   "derived_quantities": {
-    "f_aq_0": "M_surface_aqueous_NH4_N(t_first)/M_dry_retained_total_N",
-    "f_soil": "delta_M_soil_or_mineral_receiver_NH4_N/M_dry_retained_total_N",
-    "f_gas": "M_NH3_rewetting/M_dry_retained_total_N",
+    "f_aq_first": "source-attributable M_surface_aqueous_NH4_N(t_first)/M_dry_retained_total_N",
+    "f_delayed_increment": "source-attributable increase in aqueous NH4-N after t_first divided by M_dry_retained_total_N",
+    "f_direct_alternative_receiver": "source-attributable alternative-receiver N proven not to have passed through the surface-aqueous receiver divided by M_dry_retained_total_N",
     "f_residual": "M_terminal_non_aqueous_retained_N/M_dry_retained_total_N"
   },
   "decision_rules": {
     "uncertainty": "Use predeclared combined measurement uncertainty and method quantification limits; no arbitrary universal epsilon is introduced.",
-    "support_M1": [
-      "first resolvable aqueous recovery is compatible with complete recovery",
-      "no material delayed increase",
-      "soil/mineral receiver absent or bounded within the uncertainty/quantification envelope",
-      "rewetting gaseous loss absent or bounded within the uncertainty/quantification envelope",
-      "terminal non-aqueous retained N absent or bounded within the uncertainty/quantification envelope",
+    "support_M1_for_tested_condition": [
+      "Stage A first-resolvable source-attributable aqueous recovery is compatible with complete transfer after accounting for any measured downstream loss occurring before sampling",
+      "no material delayed release from the continuation residue is observed",
+      "terminal non-aqueous retained N is absent or bounded within the declared uncertainty/quantification envelope",
       "mass closure passes the predeclared analytical criterion",
       "material characterization supports a traceable mapping for the tested residue"
     ],
     "refute_M1_for_tested_condition": [
-      "material terminal residue",
-      "material delayed aqueous increase",
-      "material soil/mineral receiver",
-      "material rewetting gaseous loss",
-      "first-sample aqueous recovery materially below complete recovery after measured sinks"
+      "material non-aqueous residue remains after rewetting under a closed mass balance",
+      "source-attributable aqueous recovery materially increases after the first resolvable activation in a manner attributable to delayed release from the continuation pool",
+      "a direct alternative receiver is demonstrated with temporal/source evidence sufficient to exclude prior surface-aqueous arrival",
+      "first-resolvable aqueous arrival plus any independently quantified downstream transfer that occurred before sampling remains materially below the retained continuation mass"
+    ],
+    "compatible_but_not_discriminating_against_M1": [
+      "soil/mineral uptake after demonstrated surface-aqueous arrival",
+      "atmospheric loss after demonstrated surface-aqueous arrival",
+      "runoff, infiltration, sorption or transformation after demonstrated surface-aqueous arrival"
     ],
     "inconclusive": [
       "failed mass closure",
       "unresolved background/contamination",
       "insufficient residue characterization",
-      "sampling too coarse to distinguish finite-rate release",
-      "unmeasured receiver or gas term that is not tightly bounded"
+      "sampling too coarse to distinguish complete transfer followed by downstream loss from direct alternative transfer or finite-rate release",
+      "an unmeasured downstream pathway cannot be tightly bounded"
     ],
     "scope_limit": "A pass supports only the tested material and application envelope and cannot by itself establish a universal ANIMO constitutive law."
   },
