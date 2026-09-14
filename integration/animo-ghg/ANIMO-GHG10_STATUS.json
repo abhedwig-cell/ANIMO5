@@ -3,9 +3,9 @@
   "target": "TCD-034",
   "title": "Frozen GHGMais Driver Dual-Selector Replay Case Qualification",
   "branch": "work/animo-ghg10-tcd034-frozen-driver-selector-replay",
-  "phase": "SUBSTANTIVE_AUTHORING_FROZEN_AWAITING_GOV05_REVIEW",
-  "state": "QUALIFIED_CASE_EVIDENCE_PENDING_PROCESS_REVIEW",
-  "primary_disposition": "QUALIFIED_TCD034_FROZEN_GHGMAIS_DRIVER_DUAL_SELECTOR_REPLAY_CASE_EVIDENCE_V1_PENDING_GOV05_REVIEW",
+  "phase": "COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_FROZEN_DRIVER_SELECTOR_REPLAY_CASE_EVIDENCE_NO_ADMISSION",
+  "primary_disposition": "QUALIFIED_TCD034_FROZEN_GHGMAIS_DRIVER_DUAL_SELECTOR_REPLAY_CASE_EVIDENCE_V1",
   "base_predecessor": "ANIMO-GHG09@31c8ba9a53cb602c7a4a71f501384058ef7be7b2",
   "evidence_class": "PINNED_FROZEN_DRIVER_COUNTERFACTUAL_SELECTOR_REPLAY_NOT_B2_NOT_EMPIRICAL_VALIDATION",
   "driver_identity": {
@@ -47,14 +47,31 @@
   },
   "review": {
     "required": true,
-    "completed": false,
+    "completed": true,
     "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
-    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT when complete"
+    "review_mode": "SAME_AGENT_SECOND_PASS",
+    "same_agent": true,
+    "genuinely_independent": false,
+    "independence_claimed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "reviewed_head": "e45afd5d5636d1f75dcb998fcef85b85bd13c327",
+    "reviewed_head_ci_run": 34849310090,
+    "reviewed_head_ci_job": 103992908099,
+    "reviewed_head_ci_conclusion": "success",
+    "outcome": "PASS_TCD034_FROZEN_DRIVER_DUAL_SELECTOR_REPLAY_CASE_EVIDENCE_V1",
+    "artifact": "integration/animo-ghg/ANIMO-GHG10_INTERNAL_ADVERSARIAL_REVIEW.json"
   },
   "validation": {
     "workflow": ".github/workflows/animo-ghg10-tcd034.yml",
     "validator": "tools/ghg10/validate_ghg10_tcd034.py",
-    "exact_final_head_required": true
+    "authoring_head": "e45afd5d5636d1f75dcb998fcef85b85bd13c327",
+    "authoring_tree": "5a5d5d7249278a418e04d330e9ed25dd4898ac81",
+    "authoring_run": 34849310090,
+    "authoring_job": 103992908099,
+    "authoring_conclusion": "success",
+    "exact_final_head_required": true,
+    "exact_final_head_status": "PENDING_REPLAY_AFTER_REVIEW_STATUS_CLOSEOUT",
+    "closeout_note": "The immutable substantive authoring head passed CI and was reviewed under GOV05. The review/status-only closeout is authoritative only after the same workflow succeeds on the exact final head."
   },
   "b3_admission_performed": false,
   "class_f_admission_performed": false,
@@ -77,10 +94,11 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next_if_green_and_reviewed": "PRESERVE_CASE_MATERIALITY_EVIDENCE; CONTINUE_WITH_BROADER_APPLICATION_ENVELOPE_AND_EMPIRICAL_VALIDATION; DO_NOT AUTO-ADMIT CLASS_F OR B3"
+  "next_handoff": "BROADER_APPLICATION_ENVELOPE_AND_EMPIRICAL_VALIDATION_FOR_TCD034_CLASS_F_READINESS",
+  "next_if_exact_final_green": "PRESERVE_GHG10_CASE_MATERIALITY_EVIDENCE; DO_NOT AUTO-ADMIT; CONTINUE WITH BROADER ENVELOPE AND EMPIRICAL/OBSERVATIONAL VALIDATION"
 }
