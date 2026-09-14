@@ -2,15 +2,17 @@
   "work_unit": "ANIMO-B3B14",
   "artifact": "IMMUTABLE_AUTHORING_FREEZE",
   "branch": "work/animo-b3b14-tcd016-parent-closure-readiness",
-  "authoring_head": "10e7096aa3dc1aa653f479a99950add796129c10",
-  "authoring_tree": "8a0680a4f3d3f965cc2bdb602462a7ed6424530e",
-  "package_state": "AUTHORING_COMPLETE",
+  "authoring_head": "568421dbad50a561261f28fb63b772451a518cdf",
+  "authoring_tree": "8d4c8a38dd609c20ef264994623ecdd705246683",
+  "package_state": "AUTHORING_COMPLETE_CLEAN_FREEZE",
   "semantic_contract_owned": "TCD016_PARENT_READINESS_SYNTHESIS",
   "primary_disposition_at_freeze": "QUALIFIED_TCD016_PARENT_NOT_READY_EXPLICIT_MODEL_EVOLUTION_DECISION_REQUIRED",
-  "scientific_semantics_mutated_after_freeze": false,
+  "previous_freeze_head": "10e7096aa3dc1aa653f479a99950add796129c10",
+  "post_previous_freeze_changes": "VALIDATOR_PATH_AND_ASSERTION_REMEDIATION_PLUS_REMOVAL_OF_TRANSIENT_DUPLICATE_ARTIFACTS_ONLY",
+  "scientific_semantics_mutated_after_previous_freeze": false,
   "b3_admission_performed": false,
   "queue_or_aggregate_mutation": false,
   "production_mutation": false,
   "review_state": "PENDING_GOV05_ADVERSARIAL_SECOND_PASS",
-  "note": "This record freezes the completed authoring package by exact commit and tree. Subsequent review may add review evidence and final status only; any substantive scientific remediation requires a new immutable authoring head and restart of affected gates."
+  "note": "This record freezes the cleaned completed authoring package by exact commit and tree. The earlier freeze is superseded only because CI tooling and transient duplicate artifacts were remediated; no scientific claim or readiness disposition changed. Subsequent review may add review evidence and final closeout metadata only. Any substantive scientific remediation requires a new immutable authoring head and restart of affected review gates."
 }
