@@ -1,0 +1,44 @@
+{
+  "work_unit": "ANIMO-SQ09",
+  "target": "TCD-016-C1",
+  "branch": "work/animo-sq09-tcd016-c1-explicit-model-evolution",
+  "base_head": "1f13c7cab30772f4aa8d5071b19d13761c2b5f16",
+  "authoring_head": "235ada4d2d437cc11c07a038b078a91323b6105d",
+  "authoring_tree": "a81d81df19017dcb6b3c185ab914647041d39a73",
+  "review_boundary": "AUTHORING_FROZEN_NO_SUBSTANTIVE_CHANGE_PERMITTED",
+  "authoring_exact_head_ci": {
+    "workflow": "ANIMO SQ09 TCD016 C1 Explicit Model Evolution",
+    "run_id": 34822931515,
+    "job_id": 103908390598,
+    "job_name": "exact-head-validation",
+    "head_sha": "235ada4d2d437cc11c07a038b078a91323b6105d",
+    "conclusion": "success"
+  },
+  "cryptographic_binding": {
+    "method": "GIT_COMMIT_AND_TREE_SHA",
+    "statement": "The authoring commit and tree cryptographically bind the complete SQ09 authoring package. Individual evidence inputs are additionally pinned by immutable upstream authority commit SHAs in the qualification record.",
+    "production_source_identity": "NO_PRODUCTION_SOURCE_MUTATION; frozen source/evidence identities are consumed only through pinned upstream authorities",
+    "testbank_fragment_identity": "integration/animo-testbank/fragments/ANIMO-SQ09_TCD016_C1_MODEL_EVOLUTION_FRAGMENT.json@authoring_tree:a81d81df19017dcb6b3c185ab914647041d39a73",
+    "qualification_identity": "integration/animo-science/SQ09_TCD016_C1_EXPLICIT_MODEL_EVOLUTION_REWETTING_QUALIFICATION.json@authoring_tree:a81d81df19017dcb6b3c185ab914647041d39a73",
+    "evidence_matrix_identity": "integration/animo-science/SQ09_TCD016_C1_AUTHORITY_EVIDENCE_MATRIX.json@authoring_tree:a81d81df19017dcb6b3c185ab914647041d39a73"
+  },
+  "substantive_authoring_files": [
+    "integration/animo-science/SQ09_TCD016_C1_EXPLICIT_MODEL_EVOLUTION_REWETTING_QUALIFICATION.json",
+    "integration/animo-science/SQ09_TCD016_C1_AUTHORITY_EVIDENCE_MATRIX.json",
+    "docs/science/TCD016_C1_EXPLICIT_MODEL_EVOLUTION_REWETTING_CONTRACT.md",
+    "integration/animo-testbank/fragments/ANIMO-SQ09_TCD016_C1_MODEL_EVOLUTION_FRAGMENT.json",
+    "tools/sq09/tcd016_c1_model_evolution_oracle.py",
+    "tools/sq09/validate_sq09_tcd016_c1.py",
+    ".github/workflows/animo-sq09-tcd016-c1.yml",
+    "integration/animo-science/ANIMO-SQ09_STATUS.json"
+  ],
+  "frozen_scientific_disposition": "QUALIFIED_NEGATIVE_CLASS_F_CANDIDATE_NOT_SCIENTIFICALLY_ADMISSIBLE_WITH_CURRENT_EVIDENCE",
+  "frozen_candidate_maturity": "RESEARCH_ISOLATED",
+  "frozen_scientific_admission_readiness": false,
+  "post_freeze_permitted_changes": [
+    "integration/animo-science/ANIMO-SQ09_AUTHORING_FREEZE.json",
+    "integration/animo-science/ANIMO-SQ09_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-science/ANIMO-SQ09_STATUS.json"
+  ],
+  "substantive_change_requires_new_freeze_and_review": true
+}
