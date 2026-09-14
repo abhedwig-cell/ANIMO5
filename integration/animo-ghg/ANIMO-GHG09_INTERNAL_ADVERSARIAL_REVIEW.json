@@ -1,0 +1,46 @@
+{
+  "work_unit":"ANIMO-GHG09",
+  "target":"TCD-034",
+  "review_kind":"GOV05_ENHANCED_INTERNAL_ADVERSARIAL_REVIEW",
+  "model":"MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "same_agent":true,
+  "genuinely_independent":false,
+  "independence_claimed":false,
+  "assurance":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "reviewed_head":"0c30bd545ff83bd8769383e112a86ccb6d902c99",
+  "reviewed_head_ci_run":34846008261,
+  "reviewed_head_ci_job":103982008298,
+  "reviewed_head_ci_conclusion":"success",
+  "base_predecessor":"ANIMO-GHG08@97913b04906eb23c28b47a68ec9def7392174be5",
+  "primary_disposition":"QUALIFIED_TCD034_SELECTOR_SENSITIVITY_AND_PARAMETER_NONTRANSFERABILITY_RISK_V1",
+  "adversarial_questions":[
+    {"question":"Is the 0.8 per degC bound valid across the piecewise branch points?","finding":"YES","basis":"g(T) is continuous at Tegr and Tegr+10; slope is zero outside the transition and ranges from 0.8 down to 0 inside it."},
+    {"question":"Does an absolute Lipschitz bound imply small practical effect near onset?","finding":"NO","basis":"Relative sensitivity becomes unbounded as g approaches zero; a small selector shift can cross the OFF/TRANSITION boundary."},
+    {"question":"Can Kpl or FvegCH4 simply be rescaled once to preserve old behavior?","finding":"NO_IN_GENERAL","basis":"Required scale g_old/g_new varies by thermal state and can be singular when one state is off."},
+    {"question":"Can Tegr be tuned without changing process semantics?","finding":"NO","basis":"Tegr moves both onset and the full 10 degC transition window."},
+    {"question":"Can PvCH4Ox compensate selector-induced total plant-transfer changes?","finding":"NO","basis":"PvCH4Ox partitions Qplant but does not change Qplant itself."},
+    {"question":"Does this analytical work close application-envelope or empirical calibration evidence?","finding":"NO","basis":"No representative replay or observations are introduced. GHG09 only qualifies structural sensitivity and non-transferability risk."}
+  ],
+  "gates":{
+    "growth_function_reconstruction":"PASS",
+    "lipschitz_bound":"PASS",
+    "flux_sensitivity_propagation":"PASS",
+    "branch_crossing_risk":"PASS",
+    "multiplicative_compensation_nonuniversality":"PASS",
+    "tegr_semantic_role":"PASS",
+    "pv_partition_role":"PASS",
+    "nontransferability_not_overclaimed":"PASS",
+    "historical_claim_separation":"PASS",
+    "application_envelope_kept_open":"PASS",
+    "production_source_unchanged":"PASS"
+  },
+  "residual_limits":[
+    "No empirical recalibration values are qualified",
+    "No representative selector-difference distribution is quantified",
+    "No observational validation is performed",
+    "No B3 or Class-F admission is performed"
+  ],
+  "outcome":"PASS_TCD034_SELECTOR_SENSITIVITY_PARAMETER_TRANSFER_V1",
+  "decision":"PASS_TCD034_SELECTOR_SENSITIVITY_PARAMETER_TRANSFER_V1",
+  "production_authorized":false
+}
