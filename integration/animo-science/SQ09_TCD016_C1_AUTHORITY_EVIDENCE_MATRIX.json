@@ -1,0 +1,137 @@
+{
+  "work_unit": "ANIMO-SQ09",
+  "target": "TCD-016-C1",
+  "artifact": "AUTHORITY_EVIDENCE_MATRIX",
+  "base_head": "ANIMO-B3B14@1f13c7cab30772f4aa8d5071b19d13761c2b5f16",
+  "authorities": [
+    {
+      "id": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+      "role": "historical evidence boundary",
+      "consumed_result": "Historical behavior remains UNKNOWN_WITHOUT_B2; synthetic and model-evolution evidence cannot be promoted to B2."
+    },
+    {
+      "id": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+      "role": "prospective adversarial review governance",
+      "consumed_result": "Same-agent review must use PROCESS_SELF_REVIEWED_NOT_INDEPENDENT and an immutable authoring checkpoint."
+    },
+    {
+      "id": "ANIMO-GOV06@7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
+      "role": "semantic contract ownership and research maturity",
+      "consumed_result": "SQ09 owns only the new model-evolution candidate; prior science is frozen evidence and shared authorities are not mutated."
+    },
+    {
+      "id": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+      "role": "B3 classes and admission semantics",
+      "consumed_result": "A constitutive rewetting law not established as corrected intended legacy theory is Class F; Class F requires scientific rationale, authoritative theory, parameter/calibration implications, conservation, validation evidence, expected changes and scientific review. It cannot be admitted as a B3 legacy correction."
+    },
+    {
+      "id": "ANIMO-SQ02@09ab76f0b44cb72956875fa379d68bbf97f1a0c7",
+      "role": "continuation state topology",
+      "consumed_result": "Finite persistent M_surface_NH4_non_aqueous_continuation is an accepted model-evolution topology; process law remained unqualified."
+    },
+    {
+      "id": "ANIMO-SQ03@58dc3c5c108ee97fd6bea107b7a9e686596617b1",
+      "role": "typed transfer and fail-closed process envelope",
+      "consumed_result": "Every nonzero change requires an explicit source, receiver, identity, unit, activation, amount/rate law, ordering and restart semantics; zero-process persistence is safety semantics only."
+    },
+    {
+      "id": "ANIMO-SQ06@2dbabfd5f57120c583645415e87f7eb792a8c0d7",
+      "role": "dry-hold negative qualification",
+      "consumed_result": "No physical dry-hold process is qualified; exact persistence is allowed only as fail-closed state behavior."
+    },
+    {
+      "id": "ANIMO-SQ07@2076c0def17c504a3ba29db02d964d4a6238d2cf",
+      "role": "rewetting negative qualification",
+      "consumed_result": "No receiver, activation or kinetics was scientifically qualified from existing evidence. Complete instantaneous dissolution was specifically not established."
+    },
+    {
+      "id": "ANIMO-SQ08@f89ec3b0bfd053c2c903cbbcf2243bb4ab4a5741",
+      "role": "identity and speciation boundary",
+      "consumed_result": "Only a noncommittal NH4-N provenance envelope is qualified; specific phase and molecular speciation remain unresolved."
+    },
+    {
+      "id": "ANIMO-MASSQ04@3e0f8254d9cd7966a4491b3068d0239b8ccda5f9",
+      "role": "mass and control-volume ontology",
+      "consumed_result": "S_NH4=S_aq+S_complex+S_cont and typed-transfer conservation are qualified; accounting may not infer physics."
+    },
+    {
+      "id": "ANIMO-B3B14@1f13c7cab30772f4aa8d5071b19d13761c2b5f16",
+      "role": "parent closure and readiness synthesis",
+      "consumed_result": "Parent is not ready; explicit model-evolution decision/qualification or genuinely new material identity evidence is required before rewetting closure."
+    }
+  ],
+  "evidence_groups": {
+    "B0_identity": {
+      "status": "REUSED_PINNED",
+      "claim": "The historical source/testcase defect identity is inherited from the frozen TCD-016 qualification lineage; SQ09 does not reinterpret B0 as proof of the candidate."
+    },
+    "B1_causal_evidence": {
+      "status": "REUSED_PINNED",
+      "claim": "The dry-down mass representation defect and conservation need are established upstream; this supports the need for a continuation lifecycle but not the selected rewetting law."
+    },
+    "B2_historical_behavior": {
+      "status": "UNKNOWN_WITHOUT_B2",
+      "claim": "No historical-behavior claim is made for the selected candidate."
+    },
+    "state_ownership": {
+      "status": "PASS_REUSED",
+      "claim": "M_surface_NH4_non_aqueous_continuation, kg N m-2, is owned by the surface chemistry ponding control volume."
+    },
+    "mass_conservation": {
+      "status": "PASS_FOR_CANDIDATE_ALGEBRA",
+      "claim": "Candidate M1 transfers exactly M_cont_before from S_cont to S_aq in the same control volume with no external boundary term."
+    },
+    "process_activation": {
+      "status": "DEFINED_AS_MODEL_EVOLUTION_CANDIDATE_NOT_PHYSICALLY_VALIDATED",
+      "claim": "Candidate M1 activates on existence of explicit positive surface aqueous storage without an invented numerical threshold."
+    },
+    "process_receiver": {
+      "status": "DEFINED_AS_MODEL_EVOLUTION_CANDIDATE_NOT_PHYSICALLY_VALIDATED",
+      "claim": "Candidate M1 uses SURFACE_AQUEOUS_NH4_STORAGE as receiver."
+    },
+    "process_transfer_law": {
+      "status": "DEFINED_AS_MODEL_EVOLUTION_CANDIDATE_NOT_PHYSICALLY_VALIDATED",
+      "claim": "Candidate M1 transfers the complete continuation mass atomically at activation."
+    },
+    "process_ordering": {
+      "status": "DEFINED_AS_MODEL_EVOLUTION_CANDIDATE",
+      "claim": "Transfer follows creation of surface aqueous storage and precedes any process that exports or transforms surface aqueous NH4."
+    },
+    "restart": {
+      "status": "PASS_AT_CONTRACT_LEVEL",
+      "claim": "Persist exact M_cont before activation; the transfer is atomic and cannot be checkpointed half applied; no hidden post-event memory is introduced."
+    },
+    "authoritative_theory": {
+      "status": "FAIL",
+      "claim": "No qualified theory or material mapping establishes complete instantaneous rewetting into the surface aqueous NH4 store."
+    },
+    "physical_validation": {
+      "status": "FAIL",
+      "claim": "No qualified observation or experiment discriminates the candidate from partial, delayed, direct-to-soil or transformed alternatives."
+    },
+    "synthetic_contract_oracle": {
+      "status": "AVAILABLE_FOR_ALGEBRA_ONLY",
+      "claim": "Synthetic tests can prove exact conservation, no double transfer and no transfer while dry; they cannot validate physical truth."
+    },
+    "external_literature": {
+      "status": "NOT_INVOKED_AS_QUALIFYING_EVIDENCE",
+      "claim": "Generic ammonium chemistry cannot establish the behavior of an unresolved continuation material without a qualified mapping or discriminating observations."
+    },
+    "numerical_low_storage_policy": {
+      "status": "OUT_OF_SCOPE_TCD016_E1",
+      "claim": "SQ09 introduces no concentration floor, clipping, export guard, threshold or tolerance."
+    }
+  },
+  "class_f_gate_summary": {
+    "scientific_rationale": "PASS_BOUNDED",
+    "authoritative_theory": "FAIL",
+    "relationship_to_preserved_b3_baseline": "PASS",
+    "calibration_and_parameter_implications": "PASS",
+    "conservation_implications": "PASS",
+    "validation_evidence_appropriate_to_process": "FAIL",
+    "expected_changes": "PASS_AT_CONTRACT_LEVEL_ONLY",
+    "scientific_review": "PENDING_GOV05_INTERNAL_ADVERSARIAL_REVIEW"
+  },
+  "evidence_strength_rule": "No definition, authorization, conservation oracle or same-agent review may be promoted into authoritative physical theory, process validation or historical B2 evidence.",
+  "overall": "CANDIDATE_OPERATIONALLY_DEFINED_BUT_CLASS_F_SCIENTIFIC_QUALIFICATION_FAILS_CLOSED_ON_THEORY_AND_VALIDATION"
+}
