@@ -1,0 +1,60 @@
+{
+  "work_unit": "ANIMO-SQ10",
+  "target": "TCD-016-C1",
+  "branch": "work/animo-sq10-tcd016-c1-model-evolution-evidence-validation",
+  "phase": "AUTHORING_COMPLETE_PENDING_FREEZE_AND_REVIEW",
+  "state": "QUALIFIED_EVIDENCE_ACQUISITION_COMPLETE_NO_CLASS_F_UNLOCK",
+  "decision": "EVIDENCE_ACQUISITION_COMPLETE_RETAIN_FAIL_CLOSED_CLASS_F_BLOCKERS_AND_DEFINE_TARGETED_EMPIRICAL_DISCRIMINATION_REQUIREMENT",
+  "qualified": true,
+  "qualification_kind": "NEGATIVE_SCIENTIFIC_EVIDENCE_QUALIFICATION",
+  "base_head": "ANIMO-SQ09@d7f63e56daef8285e6a137774c703131a1100fa2",
+  "candidate": "REWETTABLE_SURFACE_NH4_N_RESIDUE_EQUIVALENT",
+  "candidate_maturity": "RESEARCH_ISOLATED",
+  "scientific_admission_readiness": false,
+  "class_f_blocking_gates": [
+    "AUTHORITATIVE_THEORY_OR_EQUIVALENT_TRACEABLE_MATERIAL_TO_PROCESS_BASIS",
+    "PROCESS_SPECIFIC_VALIDATION_EVIDENCE_FOR_REWETTING_BEHAVIOR"
+  ],
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "tcd016_c1_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "parent_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "e1_disposition": "BLOCKED_PENDING_SCIENTIFICALLY_QUALIFIED_OR_SEPARATELY_ADMITTED_C1_REWETTING_SEMANTICS",
+  "review": {
+    "required": true,
+    "mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "completed": false,
+    "same_agent": true,
+    "genuinely_independent": false,
+    "independence_claimed": false,
+    "assurance_target": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "outcome": "PENDING"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-sq10-tcd016-c1-evidence-validation.yml",
+    "validator": "tools/sq10/validate_sq10_tcd016_c1.py",
+    "exact_final_head_required": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "prior_scientific_semantics_modified": false,
+    "canonical_register_modified": false,
+    "central_queue_modified": false,
+    "aggregate_modified": false,
+    "routing_modified": false,
+    "central_testbank_registry_modified": false,
+    "tcd016_e1_qualified": false,
+    "b3_admission_performed": false,
+    "b4_performed": false,
+    "production_authorized": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": true,
+    "workunit_complete": false
+  },
+  "next_handoff": "OPEN_SEPARATE_TCD016_C1_TARGETED_DRYDOWN_REWETTING_EXPERIMENT_DESIGN_AND_EVIDENCE_GENERATION_WORKUNIT; DO_NOT_RETRY_CLASS_F_ADMISSION_UNTIL_TRACEABLE_DATA_OR_MATERIAL_IDENTITY_EVIDENCE_EXISTS"
+}
