@@ -1,0 +1,74 @@
+{
+  "work_unit": "ANIMO-SQ11",
+  "purpose": "Synthetic examples for reviewing the pre-registered decision logic only. These are not empirical data and are not physical validation.",
+  "units": "arbitrary consistent N-mass units",
+  "examples": [
+    {
+      "id": "SYN_SUPPORT_M1_AT_RESOLUTION",
+      "retained": 1.0,
+      "first_aqueous": 1.0,
+      "later_aqueous": 1.0,
+      "soil_receiver": 0.0,
+      "rewet_atmospheric_loss": 0.0,
+      "terminal_non_aqueous": 0.0,
+      "material_mapping_sufficient": true,
+      "temporal_resolution_sufficient": true,
+      "mass_closure_pass": true,
+      "expected_class": "M1_SUPPORTED_AT_EXPERIMENTAL_RESOLUTION"
+    },
+    {
+      "id": "SYN_PARTIAL_WITH_RESIDUAL",
+      "retained": 1.0,
+      "first_aqueous": 0.6,
+      "later_aqueous": 0.6,
+      "soil_receiver": 0.0,
+      "rewet_atmospheric_loss": 0.0,
+      "terminal_non_aqueous": 0.4,
+      "material_mapping_sufficient": true,
+      "temporal_resolution_sufficient": true,
+      "mass_closure_pass": true,
+      "expected_class": "M1_REFUTED_FOR_TESTED_CONDITION_RESIDUAL"
+    },
+    {
+      "id": "SYN_DELAYED_RELEASE",
+      "retained": 1.0,
+      "first_aqueous": 0.6,
+      "later_aqueous": 0.9,
+      "soil_receiver": 0.0,
+      "rewet_atmospheric_loss": 0.0,
+      "terminal_non_aqueous_at_first": 0.4,
+      "terminal_non_aqueous_at_later": 0.1,
+      "material_mapping_sufficient": true,
+      "temporal_resolution_sufficient": true,
+      "mass_closure_pass": true,
+      "expected_class": "M1_REFUTED_FOR_TESTED_CONDITION_DELAYED"
+    },
+    {
+      "id": "SYN_SOIL_RECEIVER",
+      "retained": 1.0,
+      "first_aqueous": 0.7,
+      "later_aqueous": 0.7,
+      "soil_receiver": 0.3,
+      "rewet_atmospheric_loss": 0.0,
+      "terminal_non_aqueous": 0.0,
+      "material_mapping_sufficient": true,
+      "temporal_resolution_sufficient": true,
+      "mass_closure_pass": true,
+      "expected_class": "M1_REFUTED_FOR_TESTED_CONDITION_SOIL_RECEIVER"
+    },
+    {
+      "id": "SYN_INCONCLUSIVE_MAPPING",
+      "retained": 1.0,
+      "first_aqueous": 1.0,
+      "later_aqueous": 1.0,
+      "soil_receiver": 0.0,
+      "rewet_atmospheric_loss": 0.0,
+      "terminal_non_aqueous": 0.0,
+      "material_mapping_sufficient": false,
+      "temporal_resolution_sufficient": true,
+      "mass_closure_pass": true,
+      "expected_class": "INCONCLUSIVE_MATERIAL_MAPPING"
+    }
+  ],
+  "interpretation_limit": "A synthetic example demonstrates only that the decision categories are mutually intelligible. It cannot satisfy either SQ10 Class-F blocker."
+}
