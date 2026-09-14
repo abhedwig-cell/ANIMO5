@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-SQ11",
+  "target": "TCD-016-C1",
+  "base_head": "e385f637c14b67f25670d7e9edd85d4aaefdb63b",
+  "authoring_head": "e59626d1154f49083709ac96bc4593840cfc0431",
+  "authoring_tree": "4c23e34be959180e52ad00c26c0385d845fdc0c6",
+  "review_boundary": "AUTHORING_FROZEN_NO_SUBSTANTIVE_CHANGE_PERMITTED",
+  "authoring_ci": {
+    "workflow": "ANIMO SQ11 TCD016 C1 Experiment Design",
+    "run_id": 34826023851,
+    "job_id": 103918271536,
+    "head_sha": "e59626d1154f49083709ac96bc4593840cfc0431",
+    "state_at_freeze": "QUEUED_EXTERNAL_RUNNER_CAPACITY",
+    "conclusion_at_freeze": null,
+    "rule": "A queued run is not a pass. Final closeout still requires a successful exact-final-head run."
+  },
+  "pre_freeze_scientific_correction": {
+    "issue": "Initial authoring overinterpreted post-rewetting soil/mineral or atmospheric fate as direct evidence against M1.",
+    "resolution": "Corrected before freeze to preserve SQ09 ordering: continuation transfers to surface aqueous NH4-N first, and downstream fate after demonstrated aqueous arrival is compatible with M1.",
+    "affected_artifacts_corrected_before_freeze": [
+      "SQ11_TCD016_C1_DRYDOWN_REWETTING_EXPERIMENT_DESIGN.json",
+      "TCD016_C1_DRYDOWN_REWETTING_EXPERIMENT_DESIGN.md",
+      "SQ11_TCD016_C1_EVIDENCE_PACKAGE_SCHEMA.json",
+      "SQ11_TCD016_C1_DISCRIMINATION_EXAMPLES.json",
+      "SQ11_TCD016_C1_DESIGN_RATIONALE.json"
+    ]
+  },
+  "frozen_disposition": "QUALIFIED_EXPERIMENT_DESIGN_READY_EXTERNAL_EVIDENCE_EXECUTION_REQUIRED",
+  "scientific_admission_readiness": false,
+  "physical_evidence_generated": false
+}
