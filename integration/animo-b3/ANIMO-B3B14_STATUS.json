@@ -3,7 +3,7 @@
   "title":"TCD-016 Parent Scientific Closure, Evidence Composition & B3 Admission Readiness Synthesis",
   "branch":"work/animo-b3b14-tcd016-parent-closure-readiness",
   "scope":"SCIENTIFIC_CLOSURE_READINESS_SYNTHESIS_ONLY",
-  "status":"AUTHORING_COMPLETE_PENDING_GOV05_ADVERSARIAL_REVIEW",
+  "status":"QUALIFIED_CLOSURE_READINESS_COMPLETE_PENDING_EXACT_FINAL_HEAD_CI_OBSERVATION",
   "owned_semantic_contract":"TCD016_PARENT_READINESS_SYNTHESIS",
   "gov06_parallelism":"PARALLEL_AFTER_PINNING",
   "base":"ANIMO-SQ08@f89ec3b0bfd053c2c903cbbcf2243bb4ab4a5741",
@@ -29,6 +29,21 @@
     "MASSQ04":"3e0f8254d9cd7966a4491b3068d0239b8ccda5f9"
   },
   "live_precheck":"PASS_B3B14_FREE_NO_EQUIVALENT_NO_LATER_TCD016_AUTHORITY",
+  "authoring_freeze": {
+    "substantive_authoring_head":"568421dbad50a561261f28fb63b772451a518cdf",
+    "substantive_authoring_tree":"8d4c8a38dd609c20ef264994623ecdd705246683",
+    "freeze_record_commit":"d4d6f3725544177813f91435e81f0d42caa68b44",
+    "pre_review_ci_run":34819969383,
+    "pre_review_ci_job":103899062842,
+    "pre_review_ci_conclusion":"success"
+  },
+  "gov05_review": {
+    "artifact":"integration/animo-b3/B3B14_GOV05_ADVERSARIAL_REVIEW.json",
+    "review_mode":"SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "assurance_label":"PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "result":"SELF_REVIEW_PASS",
+    "substantive_remediation_required":false
+  },
   "parent_composition":"NOT_READY_REQUIRED_REWETTING_SCIENTIFIC_SURFACE_UNQUALIFIED",
   "historical_behavior":"UNKNOWN_WITHOUT_B2",
   "mass_state_restart":"BOUNDED_READY_EXCEPT_CONTINUE_ACROSS_REWETTING",
