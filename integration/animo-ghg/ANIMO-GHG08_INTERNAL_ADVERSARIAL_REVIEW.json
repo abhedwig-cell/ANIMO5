@@ -1,0 +1,103 @@
+{
+  "work_unit": "ANIMO-GHG08",
+  "target": "TCD-034",
+  "review_kind": "GOV05_ENHANCED_INTERNAL_ADVERSARIAL_PARENT_CLOSURE_REVIEW",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "reviewed_head": "c291740ad53ea6092d7e1c5421c5a27539ca3538",
+  "reviewed_head_ci_run": 34845123161,
+  "reviewed_head_ci_job": 103979081199,
+  "reviewed_head_ci_conclusion": "success",
+  "base_predecessor": "ANIMO-GHG07@f8969334f648ca28ceb93a2a55bb4eedd478e1dc",
+  "primary_disposition": "QUALIFIED_TCD034_PARENT_DUAL_TRACK_CLOSURE_LEGACY_UNRESOLVED_MODEL_EVOLUTION_NOT_READY_FOR_SEPARATE_CLASS_F_ADMISSION",
+  "adversarial_questions": [
+    {
+      "question": "Does the existence of a qualified GHG06A model-evolution selector resolve the historical revision-53 selector defect?",
+      "finding": "NO",
+      "basis": "GHG06A explicitly defines new model-evolution semantics and preserves historical uncertainty; it cannot be back-promoted into revision-53 intent."
+    },
+    {
+      "question": "Does GHG07 synthetic FvegCH4>0 reachability supply the missing active historical B2 reference?",
+      "finding": "NO",
+      "basis": "The positive controls are synthetic model-evolution oracles and are explicitly not B2. The frozen natural GHG case remains FvegCH4=0."
+    },
+    {
+      "question": "Are GHG06A and GHG07 being discarded by the negative parent decision?",
+      "finding": "NO",
+      "basis": "Their bounded contracts remain qualified and reusable; the negative result concerns parent-level legacy admission and separate Class-F admission readiness only."
+    },
+    {
+      "question": "Could the Class-F track already be admitted because theory and synthetic reachability are positive?",
+      "finding": "NO",
+      "basis": "B3Q01 Class F additionally requires calibration/parameter implications, process-appropriate validation, expected changes across the intended application envelope, conservation implications and independent scientific review. Material gaps remain in those groups."
+    },
+    {
+      "question": "Does the GHG07 partition identity satisfy the entire Class-F conservation gate?",
+      "finding": "NO",
+      "basis": "Qox+Qem=Qplant only closes the internal partition of plant-mediated removal. It does not prove integrated CH4/carbon conservation after connecting the evolved selector to the executable model."
+    },
+    {
+      "question": "Can GOV05 same-agent adversarial review count as the Class-F independent scientific review?",
+      "finding": "NO_UNDER_CURRENT_AUTHORITIES",
+      "basis": "GOV05 explicitly labels same-agent assurance PROCESS_SELF_REVIEWED_NOT_INDEPENDENT and states that scientific gates are not reduced; B3Q01 explicitly requires independent scientific review for Class F."
+    },
+    {
+      "question": "Is the calibration-impact gap artificial because GHG06A introduces no new scalar parameter?",
+      "finding": "NO",
+      "basis": "Changing the selector changes fGrow and therefore effective use of existing Tegr, FvegCH4, Kpl and PvCH4Ox. Parameter-transfer implications can change even without adding a parameter."
+    },
+    {
+      "question": "Should the next workunit immediately be a Class-F admission workunit?",
+      "finding": "NO",
+      "basis": "Admission would be premature while material validation, application-envelope, calibration and independent-review gates are known open. The next work should gather those evidence groups first."
+    },
+    {
+      "question": "Does this synthesis alter the global B3 queue or permit TB7/B4/production?",
+      "finding": "NO",
+      "basis": "B3Q06 remains the current negative global closure authority until a separate queue recompute. GHG08 modifies no central queue, aggregate, routing, testbank registry or production surface."
+    }
+  ],
+  "gates": {
+    "legacy_track_not_admitted": "PASS",
+    "historical_uncertainty_preserved": "PASS",
+    "model_evolution_not_back_promoted_to_legacy": "PASS",
+    "qualified_child_evidence_preserved": "PASS",
+    "class_f_not_prematurely_admitted": "PASS",
+    "class_f_material_gaps_explicit": "PASS",
+    "bounded_conservation_not_overclaimed": "PASS",
+    "independence_requirement_not_waived": "PASS",
+    "global_b3_queue_not_recomputed": "PASS",
+    "production_source_unchanged": "PASS",
+    "canonical_register_unchanged": "PASS",
+    "central_queue_unchanged": "PASS",
+    "aggregate_and_routing_unchanged": "PASS",
+    "central_testbank_registry_unchanged": "PASS"
+  },
+  "counter_hypotheses": [
+    {
+      "hypothesis": "TCD034_IS_NOW_READY_FOR_CORRECTED_LEGACY_B3_ADMISSION",
+      "disposition": "REJECTED",
+      "reason": "Historical selector identity and active historical reference remain unresolved."
+    },
+    {
+      "hypothesis": "TCD034_MODEL_EVOLUTION_IS_NOW_READY_FOR_IMMEDIATE_CLASS_F_ADMISSION",
+      "disposition": "REJECTED",
+      "reason": "Material calibration, validation, application-envelope, integrated conservation and independent-review gates remain open."
+    },
+    {
+      "hypothesis": "GHG06A_AND_GHG07_SHOULD_BE_REOPENED_BECAUSE_PARENT_IS_NOT_READY",
+      "disposition": "REJECTED",
+      "reason": "The parent blocker is missing composition-level evidence, not a contradiction in the already qualified bounded child contracts."
+    }
+  ],
+  "outcome": "PASS_NEGATIVE_TCD034_PARENT_READINESS_SYNTHESIS",
+  "decision": "PASS_NEGATIVE_TCD034_PARENT_READINESS_SYNTHESIS",
+  "b3_admission_allowed_by_this_review": false,
+  "class_f_admission_allowed_by_this_review": false,
+  "production_authorized": false,
+  "next_required_work": "SEPARATE_CLASS_F_EVIDENCE_COMPLETION_WORKSTREAMS_FOR_APPLICATION_ENVELOPE_CALIBRATION_VALIDATION_INTEGRATED_CONSERVATION_AND_GENUINELY_INDEPENDENT_SCIENTIFIC_REVIEW"
+}
