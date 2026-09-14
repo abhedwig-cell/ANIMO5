@@ -1,0 +1,51 @@
+{
+  "policy": "ANIMO_DELIVERY_CAPABILITY_FLOW",
+  "version": 1,
+  "effective_date": "2026-09-14",
+  "status": "ACTIVE_PROSPECTIVE_DELIVERY_OVERLAY",
+  "base_governance": {
+    "id": "ANIMO-GOV05",
+    "commit": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904"
+  },
+  "default_planning_unit": "CAPABILITY",
+  "atomicity_required_at": ["COMMIT", "SCIENTIFIC_DECISION"],
+  "standalone_workunit_default": false,
+  "max_active_production_capabilities": 3,
+  "evidence_policy": "INHERIT_UNTIL_DEPENDENCY_INVALIDATION",
+  "checkpoint_policy": "IMMUTABLE_GIT_COMMIT_NOT_PROCESS_BRANCH",
+  "process_branch_names_disallowed_as_sole_reason": [
+    "final",
+    "review",
+    "copy",
+    "shadow",
+    "temp",
+    "staging",
+    "freeze",
+    "package",
+    "ci",
+    "artifacts",
+    "checkpoint"
+  ],
+  "new_branch_requires_one_of": [
+    "SEMANTIC_CONTRACT_CHANGE",
+    "ACTIVE_SEMANTIC_OWNERSHIP_COLLISION",
+    "INDEPENDENTLY_PINNABLE_FAILURE_OR_REVERSAL_BOUNDARY",
+    "EXISTING_GOVERNANCE_REQUIRES_SEPARATE_DECISION_SURFACE",
+    "DECLARED_ISOLATED_RESEARCH_OR_SUPPLEMENTAL_EVIDENCE"
+  ],
+  "delivery_classes": {
+    "R0": "NO_SEMANTIC_EFFECT",
+    "R1": "SEMANTICS_PRESERVING",
+    "R2": "STATE_IO_API_RESTART_INTEGRATION_CONTRACT",
+    "R3": "SCIENCE_CONSERVATION_NUMERICS_OR_PRODUCTION_COMPOSITION"
+  },
+  "progress_dimensions": [
+    "CAPABILITY_IMPLEMENTATION",
+    "QUALIFICATION",
+    "CANONICAL_INTEGRATION",
+    "PRESERVATION_TRACEABILITY"
+  ],
+  "historical_rewrite": false,
+  "scientific_gate_reduction": false,
+  "production_authorization": false
+}
