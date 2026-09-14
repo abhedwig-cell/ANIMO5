@@ -2,7 +2,7 @@
   "work_unit": "ANIMO-SQ10",
   "target": "TCD-016-C1",
   "branch": "work/animo-sq10-tcd016-c1-model-evolution-evidence-validation",
-  "phase": "AUTHORING_COMPLETE_PENDING_FREEZE_AND_REVIEW",
+  "phase": "COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
   "state": "QUALIFIED_EVIDENCE_ACQUISITION_COMPLETE_NO_CLASS_F_UNLOCK",
   "decision": "EVIDENCE_ACQUISITION_COMPLETE_RETAIN_FAIL_CLOSED_CLASS_F_BLOCKERS_AND_DEFINE_TARGETED_EMPIRICAL_DISCRIMINATION_REQUIREMENT",
   "qualified": true,
@@ -22,17 +22,25 @@
   "review": {
     "required": true,
     "mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
-    "completed": false,
+    "completed": true,
     "same_agent": true,
     "genuinely_independent": false,
     "independence_claimed": false,
-    "assurance_target": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "outcome": "PENDING"
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "outcome": "SELF_REVIEW_PASS",
+    "reviewed_authoring_head": "d03a83066c5d09c52dc4b4ffb858df8cfd97af8d",
+    "reviewed_authoring_tree": "ec56c857ac21122b9f2ff5463ba50edceb525975",
+    "review_artifact": "integration/animo-science/ANIMO-SQ10_INTERNAL_ADVERSARIAL_REVIEW.json"
   },
   "validation": {
     "workflow": ".github/workflows/animo-sq10-tcd016-c1-evidence-validation.yml",
     "validator": "tools/sq10/validate_sq10_tcd016_c1.py",
-    "exact_final_head_required": true
+    "authoring_freeze": "integration/animo-science/ANIMO-SQ10_AUTHORING_FREEZE.json",
+    "pre_review_exact_head_run_id": 34824657770,
+    "pre_review_exact_head_job_id": 103913880706,
+    "pre_review_exact_head_conclusion": "success",
+    "exact_final_head_required": true,
+    "exact_final_head_state": "PENDING_THIS_CLOSEOUT_PUSH"
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -51,10 +59,10 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
+    "tested": true,
+    "reviewed": true,
     "qualified": true,
-    "workunit_complete": false
+    "workunit_complete": true
   },
   "next_handoff": "OPEN_SEPARATE_TCD016_C1_TARGETED_DRYDOWN_REWETTING_EXPERIMENT_DESIGN_AND_EVIDENCE_GENERATION_WORKUNIT; DO_NOT_RETRY_CLASS_F_ADMISSION_UNTIL_TRACEABLE_DATA_OR_MATERIAL_IDENTITY_EVIDENCE_EXISTS"
 }
