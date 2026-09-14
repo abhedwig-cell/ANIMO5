@@ -1,0 +1,151 @@
+{
+  "work_unit": "ANIMO-SQ10",
+  "target": "TCD-016-C1",
+  "parent_tcd": "TCD-016",
+  "title": "TCD-016-C1 Model-Evolution Evidence Acquisition and Rewetting Validation",
+  "branch": "work/animo-sq10-tcd016-c1-model-evolution-evidence-validation",
+  "base_head": "ANIMO-SQ09@d7f63e56daef8285e6a137774c703131a1100fa2",
+  "candidate": "REWETTABLE_SURFACE_NH4_N_RESIDUE_EQUIVALENT",
+  "candidate_maturity": "RESEARCH_ISOLATED",
+  "search_date": "2026-09-14",
+  "scope": "BOUNDED_EXTERNAL_EVIDENCE_ACQUISITION_AND_ADMISSIBILITY_ASSESSMENT_ONLY",
+  "internal_evidence_exhaustion": {
+    "status": "CONFIRMED_FROM_PINNED_LINEAGE_AND_OPEN_PLANNING_RECORD",
+    "github_issue": 48,
+    "conclusion": "Frozen ANIMO source, user-guide evidence and SQ02-SQ09 do not identify the continuation material strongly enough to select a physical rewetting law."
+  },
+  "search_questions": [
+    "Is there authoritative evidence that an unidentified dry NH4-N surface residue can universally be treated as fully and instantaneously rewettable into surface aqueous NH4?",
+    "Is there evidence that plausible ammonium-bearing dry phases can rehydrate or dissolve on water return?",
+    "Are there credible competing fates that prevent complete instantaneous remobilization from being a universal constitutive law?",
+    "Is there process-specific validation sufficiently close to the ANIMO TCD-016 control-volume problem to discriminate complete, partial, delayed or alternative-receiver behavior?"
+  ],
+  "bounded_search_protocol": {
+    "method": "targeted scholarly web search of publisher and scholarly-index pages",
+    "query_families": [
+      "ammonium dry residue rewetting dissolution surface water fertilizer experiment",
+      "ammonium fixation drying rewetting clay soil",
+      "ammonia volatilization ammonium solution surface review",
+      "ammonium sulfate deliquescence water uptake laboratory"
+    ],
+    "admissibility_rule": "A paper can support the SQ09 candidate only if its material identity, control volume, activation condition, receiver and transfer behavior can be mapped traceably to M_surface_NH4_non_aqueous_continuation. Generic ammonium chemistry is supporting or counter evidence only.",
+    "absence_claim_limit": "NO_QUALIFYING_EVIDENCE_FOUND_IN_THIS_BOUNDED_SEARCH; this is not a claim that no such evidence exists anywhere."
+  },
+  "sources": [
+    {
+      "id": "EXT-01",
+      "citation": "Nieder, R., Benbi, D.K. & Scherer, H.W. (2011). Fixation and defixation of ammonium in soils: a review. Biology and Fertility of Soils 47, 1-14.",
+      "doi": "10.1007/s00374-010-0506-4",
+      "source_type": "PEER_REVIEWED_REVIEW",
+      "relevance": "Documents rapid and strongly soil/mineral-dependent NH4 fixation and variable defixation/availability, including moisture dependence.",
+      "evidence_effect": "COUNTEREVIDENCE_TO_UNIVERSAL_COMPLETE_INSTANTANEOUS_REWETTING_IF_SOIL_OR_MINERAL_CONTACT_IS_PLAUSIBLE",
+      "candidate_mapping": "NONQUALIFYING_GENERIC_ENVIRONMENTAL_PROCESS",
+      "reason_not_qualifying": "The ANIMO continuation state is not identified as clay-fixed NH4, and the source does not validate the SQ09 surface-residue receiver or kinetics."
+    },
+    {
+      "id": "EXT-02",
+      "citation": "Opuwariboi, E. & Odu, C.T.I. (1975). Fixed ammonium in Nigerian soils III. Capacity of organic and inorganic soil components to retain added ammonium. Journal of Soil Science 26, 358-363.",
+      "doi": "10.1111/j.1365-2389.1975.tb01960.x",
+      "source_type": "PEER_REVIEWED_EXPERIMENT",
+      "relevance": "Reports substantial retained ammonium after repeated wetting and drying, demonstrating that wet-dry cycling need not imply complete immediate aqueous recovery.",
+      "evidence_effect": "COUNTEREVIDENCE_TO_UNIVERSAL_COMPLETE_TRANSFER",
+      "candidate_mapping": "NONQUALIFYING_SOIL_SYSTEM",
+      "reason_not_qualifying": "The experimental matrix is soil and does not identify the ANIMO surface continuation material."
+    },
+    {
+      "id": "EXT-03",
+      "citation": "Montes, F., Rotz, C.A. & Chaoui, H. (2009). Process Modeling of Ammonia Volatilization from Ammonium Solution and Manure Surfaces: A Review with Recommended Models. Transactions of the ASABE 52(5), 1707-1720.",
+      "doi": "10.13031/2013.29133",
+      "source_type": "PEER_REVIEWED_PROCESS_REVIEW_WITH_LAB_VALIDATION",
+      "relevance": "Shows ammonia loss from ammonium-containing surfaces depends on temperature, pH, ionic strength and air-flow mass transfer, with laboratory validation for buffered ammonium-water solutions and manure.",
+      "evidence_effect": "SUPPORTS_STATE_DEPENDENT_COMPETING_ATMOSPHERIC_FATE_AFTER_OR_DURING_AQUEOUS_EXPOSURE",
+      "candidate_mapping": "NONQUALIFYING_FOR_DRY_RESIDUE_IDENTITY",
+      "reason_not_qualifying": "It constrains NH3/NH4 aqueous-surface volatilization but does not establish the dry continuation material or complete instantaneous redissolution."
+    },
+    {
+      "id": "EXT-04",
+      "citation": "Bouwman, A.F. et al. (2002). Estimation of global NH3 volatilization loss from synthetic fertilizers and animal manure applied to arable lands and grasslands. Global Biogeochemical Cycles 16.",
+      "doi": "10.1029/2000GB001389",
+      "source_type": "PEER_REVIEWED_GLOBAL_SYNTHESIS",
+      "relevance": "Shows ammoniacal N fate is controlled by multiple interacting factors including pH, CEC, temperature, water and fertilizer form; NH4 can be retained, nitrified or converted to volatile NH3.",
+      "evidence_effect": "COUNTEREVIDENCE_TO_SINGLE_UNIVERSAL_REWETTING_FATE",
+      "candidate_mapping": "NONQUALIFYING_GENERIC_AGRICULTURAL_SYSTEM",
+      "reason_not_qualifying": "The synthesis does not identify the TCD-016 continuation phase and cannot choose its receiver/kinetics."
+    },
+    {
+      "id": "EXT-05",
+      "citation": "Brooks, S.D. et al. (2002). Deliquescence behavior of organic/ammonium sulfate aerosol. Geophysical Research Letters 29.",
+      "doi": "10.1029/2002GL014733",
+      "source_type": "PEER_REVIEWED_LAB_THERMODYNAMIC_EXPERIMENT",
+      "relevance": "Shows a known ammonium-sulfate phase is highly water-soluble and exhibits phase-specific deliquescence behavior.",
+      "evidence_effect": "POSITIVE_PLAUSIBILITY_FOR_REWETTING_OF_ONE_IDENTIFIED_AMMONIUM_SALT_CLASS",
+      "candidate_mapping": "NONQUALIFYING_PHASE_SPECIFIC_ANALOGUE",
+      "reason_not_qualifying": "SQ08 did not identify the continuation mass as ammonium sulfate or any other specific salt; phase-specific deliquescence cannot be transferred to an unidentified state."
+    }
+  ],
+  "evidence_synthesis": {
+    "positive_support": [
+      "Known ammonium salts can be strongly water-soluble and can deliquesce under phase-specific conditions.",
+      "A rewettable-residue model is chemically plausible for some material identities."
+    ],
+    "counterevidence_and_alternatives": [
+      "NH4 can become fixed or otherwise retained by mineral or soil matrices and later defix at variable rates.",
+      "Ammoniacal N can partition toward NH3 volatilization depending on pH, temperature, ionic strength, airflow and water regime.",
+      "Wetting and drying does not imply one universal receiver or instantaneous complete remobilization."
+    ],
+    "critical_mapping_gap": "No source maps M_surface_NH4_non_aqueous_continuation to a specific material class for which complete instantaneous transfer to SURFACE_AQUEOUS_NH4_STORAGE is established.",
+    "process_validation_gap": "No located source reproduces or closely analogizes the exact ANIMO sequence of ponded surface NH4, dry-down to zero explicit aqueous storage, retained continuation mass, and quantified rewetting receiver/time course.",
+    "result": "EXTERNAL_LITERATURE_INCREASES_PLAUSIBILITY_OF_MULTIPLE_COMPETING_MECHANISMS_BUT_DOES_NOT_QUALIFY_SQ09_CANDIDATE"
+  },
+  "class_f_gate_effect": {
+    "authoritative_theory_or_traceable_material_to_process_basis": "FAIL_REMAINS",
+    "process_specific_validation_evidence_for_rewetting_behavior": "FAIL_REMAINS",
+    "scientific_rationale": "PASS_BOUNDED",
+    "conservation_implications": "PASS_REUSED_FROM_SQ09",
+    "calibration_parameter_implications": "PASS_REUSED_FROM_SQ09",
+    "expected_changes": "PASS_AT_CONTRACT_LEVEL_ONLY",
+    "historical_behavior": "UNKNOWN_WITHOUT_B2"
+  },
+  "final_evidence_disposition": "QUALIFIED_EVIDENCE_ACQUISITION_COMPLETE_NO_CLASS_F_UNLOCK",
+  "candidate_scientific_admission_readiness": false,
+  "next_empirical_evidence_requirement": {
+    "type": "TARGETED_DRYDOWN_REWETTING_DISCRIMINATION_EXPERIMENT_OR_EQUIVALENT_TRACEABLE_DATASET",
+    "minimum_observables": [
+      "initial dissolved surface NH4-N mass before dry-down",
+      "retained total NH4-N after dry-down with atmospheric loss separately quantified or bounded",
+      "material or phase characterization sufficient to map the retained pool",
+      "time-resolved aqueous NH4-N after rewetting",
+      "soil/mineral receiver NH4-N where contact is possible",
+      "gaseous NH3-N during dry-down and rewetting where relevant",
+      "mass closure across aqueous, retained/fixed, soil/mineral and gaseous terms"
+    ],
+    "candidate_discrimination": [
+      "complete instantaneous surface-aqueous remobilization",
+      "partial remobilization",
+      "finite-rate or delayed remobilization",
+      "direct or competing soil/mineral receiver",
+      "irreversible or gaseous loss"
+    ],
+    "required_metadata": [
+      "temperature",
+      "pH",
+      "ionic composition/counter-ions",
+      "surface/soil material",
+      "water depth or storage",
+      "drying endpoint",
+      "rewetting amount and timing"
+    ]
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "prior_scientific_semantics_modified": false,
+    "canonical_register_modified": false,
+    "central_queue_modified": false,
+    "aggregate_modified": false,
+    "routing_modified": false,
+    "central_testbank_registry_modified": false,
+    "b3_admission_performed": false,
+    "b4_performed": false,
+    "production_authorized": false
+  }
+}
