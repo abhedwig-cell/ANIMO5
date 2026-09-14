@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-GHG07",
+  "target": "TCD-034",
+  "branch": "work/animo-ghg07-tcd034-active-plant-ch4-reachability",
+  "base_head": "2573686af69a8d68a94010bb663272b35871a6e1",
+  "base_predecessor": "ANIMO-GHG06A@2573686af69a8d68a94010bb663272b35871a6e1",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_MODEL_EVOLUTION_REVIEW",
+  "semantic_owner": "TCD034_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY",
+  "parallelism": "PARALLEL_AFTER_PINNING",
+  "substantive_files": [
+    "docs/ghg/TCD034_ACTIVE_PLANT_CH4_REACHABILITY.md",
+    "integration/animo-ghg/GHG07_TCD034_ACTIVE_PLANT_CH4_CONTRACT.json",
+    "integration/animo-ghg/GHG07_TCD034_ACTIVE_PLANT_CH4_ORACLES.json",
+    "tools/ghg07/validate_ghg07_tcd034.py",
+    ".github/workflows/animo-ghg07-tcd034.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-ghg/ANIMO-GHG07_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-ghg/ANIMO-GHG07_STATUS.json"
+  ],
+  "review_must_pin_exact_green_authoring_head": true,
+  "substantive_change_resets_GOV05_review": true,
+  "exact_final_head_ci_required": true,
+  "historical_behavior": "NOT_CLAIMED_MODEL_EVOLUTION_SYNTHETIC_ONLY",
+  "production_source_frozen": true,
+  "frozen_b0_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "aggregate_and_routing_frozen": true,
+  "central_testbank_registry_frozen": true
+}

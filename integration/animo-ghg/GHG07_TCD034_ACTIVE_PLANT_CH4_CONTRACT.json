@@ -1,0 +1,88 @@
+{
+  "work_unit": "ANIMO-GHG07",
+  "target": "TCD-034",
+  "contract_id": "TCD034_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY_V1",
+  "evidence_class": "SYNTHETIC_MODEL_EVOLUTION_POSITIVE_CONTROL_NOT_B2",
+  "predecessor": "ANIMO-GHG06A@2573686af69a8d68a94010bb663272b35871a6e1",
+  "selector_contract": {
+    "id": "TCD034_T50_0P50M_DEPTH_OPERATOR_V1",
+    "blob_sha": "66d378738d80040933844a6b929abac12e4384df",
+    "unavailable_behavior": "PROPAGATE_UNAVAILABLE_FAIL_CLOSED_NO_FALLBACK"
+  },
+  "source_pathway": {
+    "Kpl_d_minus_1": 0.24,
+    "growth_temperature_low": "Tegr",
+    "growth_temperature_mature": "Tegr+10_degC",
+    "growth_factor": {
+      "T50_le_Tegr": 0.0,
+      "Tegr_lt_T50_lt_Tegr_plus_10": "4*(1-((Tegr+10-T50)/10)^2)",
+      "T50_ge_Tegr_plus_10": 4.0
+    },
+    "root_factor": "AmRo(i)/ToRo*ToZr/He(i)",
+    "zero_supplied_root_mass_fallback": "AmRo(i)=He(i)_WITHIN_POSITIVE_ROOT_ZONE",
+    "raw_plant_coefficient": "Kraw(i)=0.24*FvegCH4*fRoot(i)*fGrow",
+    "phase_adaptation": "Kplant(i)=Kraw(i)*(Mofr(i)+ReBu(i)*(Mofrsa(i)-Mofr(i)))",
+    "plant_removal": "Qplant(i)=Kplant(i)*AvCoCH4(i)*He(i)",
+    "plant_oxidation": "Qox(i)=PvCH4Ox*Qplant(i)",
+    "plant_emission": "Qem(i)=(1-PvCH4Ox)*Qplant(i)"
+  },
+  "input_domain": {
+    "FvegCH4": "0<=FvegCH4<=100_FROM_REV53_PARSER",
+    "PvCH4Ox": "0<=PvCH4Ox<=1_FROM_REV53_PARSER",
+    "positive_control_requires": [
+      "selector_available",
+      "Nuroup>0",
+      "FvegCH4>0",
+      "fGrow>0",
+      "AvCoCH4_positive_in_at_least_one_rooted_layer",
+      "phase_storage_factor_positive_in_at_least_one_rooted_layer"
+    ]
+  },
+  "qualified_invariants": {
+    "root_depth_normalization": "sum_over_rooted(fRoot(i)*He(i))=ToZr",
+    "zero_root_mass_fallback": "fRoot(i)=1_for_each_rooted_layer",
+    "vegetation_switch": "FvegCH4=0_implies_Qplant=Qox=Qem=0",
+    "growth_switch": "T50<=Tegr_implies_fGrow=0_and_Qplant=0",
+    "mature_growth": "T50>=Tegr+10_implies_fGrow=4",
+    "partition_layerwise": "Qox(i)+Qem(i)=Qplant(i)",
+    "partition_profile": "sum(Qox)+sum(Qem)=sum(Qplant)",
+    "partition_endpoints": "PvCH4Ox=0_all_emission; PvCH4Ox=1_all_oxidation",
+    "selector_unavailable": "NO_ACTIVE_PLANT_RESULT_PUBLISHED"
+  },
+  "principal_positive_control": {
+    "He_m": [0.25, 0.25, 0.25, 0.25],
+    "Te_degC": [8.0, 10.0, 14.0, 16.0],
+    "Nuroup": 2,
+    "Ro": [0.5, 0.5],
+    "Tegr_degC": 7.0,
+    "FvegCH4": 0.5,
+    "Mofr": [0.4, 0.4],
+    "Mofrsa": [0.4, 0.4],
+    "ReBu": [1.0, 1.0],
+    "AvCoCH4_kgC_m3": [0.1, 0.1],
+    "PvCH4Ox": 0.25,
+    "expected": {
+      "T50_degC": 12.0,
+      "fGrow": 3.0,
+      "fRoot": [1.0, 1.0],
+      "Kraw_d_minus_1": [0.36, 0.36],
+      "Kplant_d_minus_1": [0.144, 0.144],
+      "Qplant_total_kgC_m2_d": 0.0072,
+      "Qox_total_kgC_m2_d": 0.0018,
+      "Qem_total_kgC_m2_d": 0.0054
+    }
+  },
+  "historical_claims": {
+    "historical_revision53_selector_qualified": false,
+    "historical_positive_control_claimed": false,
+    "synthetic_oracles_promoted_to_B2": false
+  },
+  "source_manifest_evidence": {
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "ANIMO_4.1.5.53/ghg_ch4.for": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98",
+    "ANIMO_4.1.5.53/input1.for": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95"
+  },
+  "decision": "QUALIFIED_TCD034_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY_AND_PARTITION_V1",
+  "b3_admission_performed": false,
+  "production_authorized": false
+}

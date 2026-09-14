@@ -1,0 +1,65 @@
+{
+  "work_unit": "ANIMO-GHG07",
+  "target": "TCD-034",
+  "title": "Active Plant-Mediated CH4 Reachability & Positive-Control Qualification",
+  "branch": "work/animo-ghg07-tcd034-active-plant-ch4-reachability",
+  "phase": "SUBSTANTIVE_AUTHORING_FROZEN_AWAITING_GOV05_REVIEW",
+  "state": "POSITIVE_MODEL_EVOLUTION_ACTIVE_PATH_DECISION_PENDING_PROCESS_REVIEW",
+  "primary_disposition": "QUALIFIED_TCD034_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY_AND_PARTITION_V1_PENDING_GOV05_REVIEW",
+  "base_predecessor": "ANIMO-GHG06A@2573686af69a8d68a94010bb663272b35871a6e1",
+  "authorities": {
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV05": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "GOV06": "7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
+    "RG05O": "bc9e6ed997a078336645210ebb4d99ae976893fe",
+    "B3Q06": "11e9bcdc6654e63f84875bf1f28dc54abe725700",
+    "B3I10": "942f26fe32eaf91679e59a1968ae173a3703e22d"
+  },
+  "semantic_ownership": {
+    "owned": "TCD034_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY",
+    "parallelism": "PARALLEL_AFTER_PINNING"
+  },
+  "selector_authority": "TCD034_T50_0P50M_DEPTH_OPERATOR_V1",
+  "model_evolution_active_path_qualified": true,
+  "historical_revision53_selector_qualified": false,
+  "historical_positive_control_qualified": false,
+  "evidence_class": "SYNTHETIC_MODEL_EVOLUTION_POSITIVE_CONTROL_NOT_B2",
+  "principal_positive_control": "STRICTLY_POSITIVE_QPLANT_QOX_QEM_WITH_FVEGCH4_0P5_T50_12C_PV_0P25",
+  "partition_conservation": "QOX_PLUS_QEM_EQUALS_QPLANT_LAYERWISE_AND_PROFILE",
+  "selector_unavailable_behavior": "FAIL_CLOSED_NO_ACTIVE_PLANT_RESULT",
+  "b3_admission_performed": false,
+  "production_authorized": false,
+  "review": {
+    "required": true,
+    "completed": false,
+    "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT when complete"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-ghg07-tcd034.yml",
+    "validator": "tools/ghg07/validate_ghg07_tcd034.py",
+    "exact_final_head_required": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_register_modified": false,
+    "central_queue_modified": false,
+    "aggregate_modified": false,
+    "routing_modified": false,
+    "central_testbank_registry_modified": false,
+    "historical_selector_claimed": false,
+    "historical_positive_control_claimed": false,
+    "synthetic_oracles_promoted_to_B2": false,
+    "b4_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  }
+}
