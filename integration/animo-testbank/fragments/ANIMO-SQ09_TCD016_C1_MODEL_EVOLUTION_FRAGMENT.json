@@ -1,0 +1,67 @@
+{
+  "fragment_id": "ANIMO-SQ09_TCD016_C1_MODEL_EVOLUTION_FRAGMENT",
+  "work_unit": "ANIMO-SQ09",
+  "target": "TCD-016-C1",
+  "evidence_class": "MODEL_EVOLUTION_CONTRACT_ORACLE_ONLY",
+  "candidate": "REWETTABLE_SURFACE_NH4_N_RESIDUE_EQUIVALENT",
+  "maturity": "RESEARCH_ISOLATED",
+  "central_registry_write": "FORBIDDEN",
+  "tb7_opened": false,
+  "whole_model_golden_created": false,
+  "admission_effect": "NONE",
+  "physical_validation_claimed": false,
+  "historical_b2_claimed": false,
+  "unit": "kg N m-2",
+  "contract": {
+    "activation": "explicit_positive_surface_aqueous_storage_exists",
+    "activation_threshold": null,
+    "transfer_when_active": "T_rewet=M_cont_before",
+    "source_after_active": "0",
+    "receiver_gain_active": "M_cont_before",
+    "transfer_when_inactive": "0",
+    "mass_identity": "M_cont_before+S_aq_before=M_cont_after+S_aq_after",
+    "parameters": [],
+    "small_water_numerical_policy": "OUT_OF_SCOPE_TCD016_E1"
+  },
+  "entries": [
+    {
+      "id": "SQ09-ME-01-DRY-PERSIST",
+      "purpose": "Fail-closed dry state emits no model-evolution transfer.",
+      "input": {"M_cont_before": "0.250000", "S_aq_before": "0.000000", "surface_aqueous_active": false},
+      "expected": {"T_rewet": "0.000000", "M_cont_after": "0.250000", "S_aq_after": "0.000000"}
+    },
+    {
+      "id": "SQ09-ME-02-ACTIVE-COMPLETE-TRANSFER",
+      "purpose": "Selected candidate transfers the complete continuation pool to the surface aqueous receiver when active.",
+      "input": {"M_cont_before": "0.250000", "S_aq_before": "0.010000", "surface_aqueous_active": true},
+      "expected": {"T_rewet": "0.250000", "M_cont_after": "0.000000", "S_aq_after": "0.260000"}
+    },
+    {
+      "id": "SQ09-ME-03-ZERO-SOURCE-NOOP",
+      "purpose": "Active surface water with no continuation mass is a no-op.",
+      "input": {"M_cont_before": "0.000000", "S_aq_before": "0.010000", "surface_aqueous_active": true},
+      "expected": {"T_rewet": "0.000000", "M_cont_after": "0.000000", "S_aq_after": "0.010000"}
+    },
+    {
+      "id": "SQ09-ME-04-NO-DOUBLE-TRANSFER",
+      "purpose": "A second active evaluation after a completed transfer cannot transfer mass twice.",
+      "sequence": [
+        {"M_cont_before": "0.250000", "S_aq_before": "0.010000", "surface_aqueous_active": true},
+        {"surface_aqueous_active": true}
+      ],
+      "expected_final": {"total_T_rewet": "0.250000", "M_cont_after": "0.000000", "S_aq_after": "0.260000"}
+    },
+    {
+      "id": "SQ09-ME-05-NEW-CYCLE",
+      "purpose": "New continuation mass created after a later dry-down is independently eligible at the next activation.",
+      "sequence": [
+        {"M_cont_before": "0.100000", "S_aq_before": "0.020000", "surface_aqueous_active": true},
+        {"add_new_continuation_mass": "0.040000", "surface_aqueous_active": false},
+        {"surface_aqueous_active": true}
+      ],
+      "expected_final": {"total_T_rewet": "0.140000", "M_cont_after": "0.000000", "S_aq_after": "0.160000"}
+    }
+  ],
+  "interpretation_limit": "Passing this fragment proves only that the selected candidate contract is internally conservative and state-machine consistent. It does not prove that the candidate is physically correct, historically faithful or scientifically admissible.",
+  "expected_workunit_disposition": "QUALIFIED_NEGATIVE_CLASS_F_CANDIDATE_NOT_SCIENTIFICALLY_ADMISSIBLE_WITH_CURRENT_EVIDENCE"
+}
