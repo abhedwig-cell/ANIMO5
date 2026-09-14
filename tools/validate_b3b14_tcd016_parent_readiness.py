@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 B3 = ROOT / "integration" / "animo-b3"
 EXPECTED = "QUALIFIED_TCD016_PARENT_NOT_READY_EXPLICIT_MODEL_EVOLUTION_DECISION_REQUIRED"
 
