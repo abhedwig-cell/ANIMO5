@@ -1,0 +1,150 @@
+{
+  "work_unit": "ANIMO-SQ09",
+  "target": "TCD-016-C1",
+  "review_mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "gov06_authority": "ANIMO-GOV06@7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
+  "b3q01_authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "reviewed_authoring_head": "235ada4d2d437cc11c07a038b078a91323b6105d",
+  "reviewed_authoring_tree": "a81d81df19017dcb6b3c185ab914647041d39a73",
+  "freeze_record_commit": "de546cf07fee61af559e0e6c046a1b3c5173d2cd",
+  "pre_review_exact_head_ci": {
+    "workflow": "ANIMO SQ09 TCD016 C1 Explicit Model Evolution",
+    "run_id": 34822931515,
+    "job_id": 103908390598,
+    "job_name": "exact-head-validation",
+    "head_sha": "235ada4d2d437cc11c07a038b078a91323b6105d",
+    "conclusion": "success"
+  },
+  "review_scope": "RECONSTRUCT_AND_ATTACK_THE_SQ09_CLASS_F_MODEL_EVOLUTION_DECISION_WITHOUT_PROMOTING_CANDIDATE_DEFINITION_OR_CONSERVATION_EVIDENCE_TO_PHYSICAL_VALIDATION",
+  "reconstruction": {
+    "legacy_problem": "TCD-016 establishes a wet-to-dry surface NH4 mass representation defect. Upstream Class C work defines a persistent continuation owner, but no qualified rewetting transfer-out process exists.",
+    "frozen_state_contract": "M_surface_NH4_non_aqueous_continuation is persistent NH4-N mass in kg N m-2 owned by the surface chemistry ponding control volume; specific material phase and molecular speciation are unresolved.",
+    "candidate_under_review": "REWETTABLE_SURFACE_NH4_N_RESIDUE_EQUIVALENT",
+    "candidate_semantics": "When explicit positive surface aqueous storage exists, atomically transfer all continuation mass to SURFACE_AQUEOUS_NH4_STORAGE; otherwise persist fail-closed. No threshold, fraction, rate coefficient or calibration parameter is introduced.",
+    "candidate_class": "CLASS_F_PHYSICS_OR_MODEL_EVOLUTION",
+    "authoring_disposition": "QUALIFIED_NEGATIVE_CLASS_F_CANDIDATE_NOT_SCIENTIFICALLY_ADMISSIBLE_WITH_CURRENT_EVIDENCE"
+  },
+  "counter_hypotheses": {
+    "H1_parameter_free_minimality_is_enough_for_scientific_admission": {
+      "result": "REJECTED",
+      "reason": "Parsimony and absence of calibration parameters reduce arbitrariness but do not establish that complete instantaneous remobilization is physically correct."
+    },
+    "H2_mass_conservation_is_sufficient_process_evidence": {
+      "result": "REJECTED",
+      "reason": "Exact conservation constrains accounting and typed-transfer algebra only. Multiple mutually incompatible physical release laws can conserve the same NH4-N mass."
+    },
+    "H3_generic_ammonium_chemistry_can_supply_the_missing_theory": {
+      "result": "REJECTED",
+      "reason": "SQ08 leaves the continuation material physically unidentified. Generic ammonium solubility or remobilization knowledge does not establish a source-to-state material mapping or the selected complete-transfer kinetics."
+    },
+    "H4_existing_revision53_processes_can_be_reused_without_new_science": {
+      "result": "REJECTED",
+      "reason": "The pinned SQ04 audit found no audited revision-53 NH4 route semantically reusable unchanged for the continuation state. Adaptation would itself require separate qualification."
+    },
+    "H5_indefinite_fail_closed_persistence_can_close_the_parent": {
+      "result": "REJECTED",
+      "reason": "Persistence is valid safety/state semantics while no process is qualified, but promoting it to permanent model physics would leave the continuation-out lifecycle undefined."
+    },
+    "H6_direct_transfer_to_soil_is_equally_supported": {
+      "result": "SUPPORTED_AS_A_PLAUSIBLE_ALTERNATIVE_NOT_AS_A_QUALIFIED_PROCESS",
+      "reason": "Current evidence cannot discriminate a direct-to-soil receiver from surface aqueous, partial or delayed alternatives. This undercuts scientific admission of M1 rather than qualifying H6."
+    },
+    "H7_synthetic_oracles_validate_physical_truth": {
+      "result": "REJECTED",
+      "reason": "The SQ09 oracle proves candidate algebra, no double transfer and conservation only; the fragment explicitly disclaims physical and historical validation."
+    },
+    "H8_missing_B2_requires_abandoning_the_negative_class_F_disposition": {
+      "result": "REJECTED",
+      "reason": "Historical revision-53 behavior remains UNKNOWN_WITHOUT_B2. That uncertainty prevents historical-fidelity claims but does not convert missing authoritative theory and process validation into PASS evidence."
+    }
+  },
+  "evidence_reuse_checks": {
+    "SQ02_state_topology": "PASS_REUSED_PINNED_SCOPE_COMPATIBLE_NO_PROMOTION",
+    "SQ03_typed_transfer_envelope": "PASS_REUSED_PINNED_SCOPE_COMPATIBLE_NO_PROMOTION",
+    "SQ04_existing_process_reuse_audit": "PASS_REUSED_PINNED_SCOPE_COMPATIBLE_NO_PROMOTION",
+    "SQ06_dry_hold_negative_qualification": "PASS_REUSED_PINNED_SCOPE_COMPATIBLE_NO_PROMOTION",
+    "SQ07_rewetting_negative_qualification": "PASS_REUSED_PINNED_SCOPE_COMPATIBLE_NO_PROMOTION",
+    "SQ08_identity_speciation_boundary": "PASS_REUSED_PINNED_SCOPE_COMPATIBLE_NO_PROMOTION",
+    "MASSQ04_mass_ontology": "PASS_REUSED_PINNED_SCOPE_COMPATIBLE_NO_PROMOTION",
+    "B3B14_parent_readiness": "PASS_REUSED_PINNED_SCOPE_COMPATIBLE_NO_PROMOTION"
+  },
+  "active_and_negative_controls": {
+    "active_transfer_control": "SQ09-ME-02 requires exact complete candidate transfer when the candidate activation flag is true.",
+    "dry_negative_control": "SQ09-ME-01 requires zero transfer and exact continuation persistence while surface aqueous storage is inactive.",
+    "zero_source_negative_control": "SQ09-ME-03 requires active surface water with zero continuation mass to remain a no-op.",
+    "repeat_activation_negative_control": "SQ09-ME-04 requires no double transfer after source exhaustion.",
+    "delayed_activation_control": "SQ09-ME-05 requires dry persistence before a later candidate activation.",
+    "interpretation": "These controls validate the proposed state-machine contract only and do not discriminate physical alternatives."
+  },
+  "state_restart_and_failure_review": {
+    "state_identity": "PASS: inherited continuation state identity, unit and owner remain unchanged.",
+    "restart_before_activation": "PASS_AT_CONTRACT_LEVEL: exact M_cont persistence is inherited; no hidden phase memory is introduced.",
+    "atomic_event_semantics": "PASS_AT_CONTRACT_LEVEL: candidate transfer is all-or-nothing and no half-applied checkpoint state is part of the contract.",
+    "failure_semantics": "PASS_FAIL_CLOSED: without explicit positive surface aqueous storage no candidate transfer occurs.",
+    "production_restart_claim": "NONE: SQ09 contains no production implementation and therefore does not claim executable production split-run qualification."
+  },
+  "class_f_gate_rereview": {
+    "scientific_rationale": "PASS_BOUNDED",
+    "authoritative_theory": "FAIL",
+    "relationship_to_preserved_b3_baseline": "PASS",
+    "calibration_and_parameter_implications": "PASS",
+    "conservation_implications": "PASS",
+    "validation_evidence_appropriate_to_process": "FAIL",
+    "expected_changes_over_application_envelope": "PASS_AT_CONTRACT_LEVEL_ONLY",
+    "scientific_review": "PASS_FOR_NEGATIVE_DISPOSITION_UNDER_GOV05_SAME_AGENT_ASSURANCE_ONLY"
+  },
+  "mandatory_adversarial_checks": {
+    "authorization_not_treated_as_evidence": "PASS",
+    "candidate_definition_not_treated_as_authoritative_theory": "PASS",
+    "conservation_not_promoted_to_process_validation": "PASS",
+    "synthetic_oracle_not_promoted_to_physical_validation": "PASS",
+    "historical_b2_not_invented": "PASS",
+    "specific_phase_or_speciation_not_invented": "PASS",
+    "existing_process_reuse_not_assumed": "PASS",
+    "alternative_receivers_and_kinetics_considered": "PASS",
+    "state_owner_unit_and_control_volume_consistent": "PASS",
+    "restart_and_atomic_event_semantics_bounded": "PASS",
+    "small_positive_water_numerical_policy_kept_out_of_scope": "PASS",
+    "tcd016_e1_not_qualified": "PASS",
+    "b3_admission_not_performed": "PASS",
+    "production_not_modified_or_authorized": "PASS",
+    "same_agent_review_not_claimed_independent": "PASS",
+    "scope_guard_and_no_shared_authority_mutation": "PASS",
+    "negative_qualification_remains_fail_closed": "PASS"
+  },
+  "residual_uncertainty": [
+    "continuation material phase and molecular speciation remain unresolved",
+    "complete versus partial versus delayed remobilization remains unresolved",
+    "surface aqueous versus direct-to-soil or multi-receiver behavior remains unresolved",
+    "process-specific validation evidence is absent",
+    "historical revision-53 behavior remains UNKNOWN_WITHOUT_B2",
+    "very-small-water post-rewet concentration behavior remains a separate numerical-policy surface"
+  ],
+  "live_supersession_check": {
+    "result": "NO_LATER_TCD016_SCIENCE_AUTHORITY_FOUND_BEYOND_SQ09_AT_REVIEW_TIME",
+    "observed_tcd016_branches": [
+      "work/animo-sq01-tcd016-dry-solute-state",
+      "work/animo-sq02-tcd016-c1-continuation-state-scientific-review",
+      "work/animo-sq03-tcd016-c1-process-envelope",
+      "work/animo-sq04-tcd016-c1-existing-process-reuse-audit",
+      "work/animo-sq05-tcd016-c1-b0-user-guide-reconciliation",
+      "work/animo-sq06-tcd016-c1-dry-hold-process-contract",
+      "work/animo-sq07-tcd016-c1-rewetting-process-contract",
+      "work/animo-sq08-tcd016-c1-identity-speciation",
+      "work/animo-sq09-tcd016-c1-explicit-model-evolution",
+      "work/animo-massq04-tcd016-c1-continuation-balance-ontology",
+      "work/animo-b3b14-tcd016-parent-closure-readiness"
+    ]
+  },
+  "substantive_findings": [],
+  "substantive_remediation_required": false,
+  "reviewed_disposition": "QUALIFIED_NEGATIVE_CLASS_F_CANDIDATE_NOT_SCIENTIFICALLY_ADMISSIBLE_WITH_CURRENT_EVIDENCE",
+  "scientific_admission_readiness": false,
+  "outcome": "SELF_REVIEW_PASS",
+  "interpretation": "The review passes the SQ09 negative scientific disposition, not the M1 physics candidate. The candidate remains research-isolated and scientifically non-admissible until authoritative material/theory support and process-specific validation evidence are supplied under a separate scientific admission route."
+}
