@@ -1,0 +1,54 @@
+{
+  "work_unit": "ANIMO-SQ11",
+  "target": "TCD-016-C1",
+  "branch": "work/animo-sq11-tcd016-c1-drydown-rewetting-experiment-design",
+  "base_head": "ANIMO-SQ10@e385f637c14b67f25670d7e9edd85d4aaefdb63b",
+  "phase": "AUTHORING_COMPLETE_PENDING_FREEZE_AND_REVIEW",
+  "state": "QUALIFIED_EXPERIMENT_DESIGN_READY_EXTERNAL_EVIDENCE_EXECUTION_REQUIRED",
+  "candidate": "REWETTABLE_SURFACE_NH4_N_RESIDUE_EQUIVALENT",
+  "candidate_maturity": "RESEARCH_ISOLATED",
+  "physical_evidence_generated": false,
+  "scientific_admission_readiness": false,
+  "class_f_theory_gate_unlocked": false,
+  "class_f_validation_gate_unlocked": false,
+  "tcd016_c1_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "parent_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "e1_disposition": "BLOCKED_PENDING_SCIENTIFICALLY_QUALIFIED_OR_SEPARATELY_ADMITTED_C1_REWETTING_SEMANTICS",
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "review": {
+    "required": true,
+    "mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "completed": false,
+    "same_agent": true,
+    "genuinely_independent": false,
+    "independence_claimed": false,
+    "assurance_target": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "outcome": "PENDING"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-sq11-tcd016-c1-experiment-design.yml",
+    "exact_final_head_required": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "prior_scientific_semantics_modified": false,
+    "canonical_register_modified": false,
+    "central_queue_modified": false,
+    "aggregate_modified": false,
+    "routing_modified": false,
+    "central_testbank_registry_modified": false,
+    "tcd016_e1_qualified": false,
+    "b3_admission_performed": false,
+    "b4_performed": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": true,
+    "workunit_complete": false
+  },
+  "next_handoff": "EXECUTE_OR_ACQUIRE_TRACEABLE_DRYDOWN_REWETTING_DATA_UNDER_THE_SQ11_PRE_REGISTERED_INTERFACE_THEN_OPEN_A_SEPARATE_EVIDENCE_INGESTION_AND_CLASS_F_REASSESSMENT_WORKUNIT"
+}
