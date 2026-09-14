@@ -1,0 +1,55 @@
+name: ANIMO B3B14 TCD016 Parent Readiness
+
+on:
+  push:
+    branches:
+      - work/animo-b3b14-tcd016-parent-closure-readiness
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate B3B14 package
+        run: python tools/validate_b3b14_tcd016_parent_readiness.py
+      - name: Enforce governance-only change surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=f89ec3b0bfd053c2c903cbbcf2243bb4ab4a5741
+          changed="$(git diff --name-only "$BASE"...HEAD)"
+          echo "$changed"
+          if echo "$changed" | grep -E '^(src/|reference/|docs/quality/THEORY_CODE_DISCREPANCY_REGISTER\.csv$|integration/animo-reg/|integration/animo-b3/RG05_B3_QUEUE|integration/animo-testbank/registry|production/)'; then
+            echo 'Forbidden mutation surface detected'
+            exit 1
+          fi
+          if ! echo "$changed" | grep -q '^integration/animo-b3/B3B14_'; then
+            echo 'B3B14 artifacts missing from diff'
+            exit 1
+          fi
+      - name: Assert no admission or production authority
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('integration/animo-b3/ANIMO-B3B14_STATUS.json')
+          s=json.loads(p.read_text())
+          assert s['b3_admission_performed'] is False
+          assert s['b3_queue_mutated'] is False
+          assert s['aggregate_mutated'] is False
+          assert s['routing_mutated'] is False
+          assert s['production_source_modified'] is False
+          assert s['b4_opened'] is False
+          assert s['tb7_opened'] is False
+          assert s['production_authorized'] is False
+          print('hard boundaries: PASS')
+          PY

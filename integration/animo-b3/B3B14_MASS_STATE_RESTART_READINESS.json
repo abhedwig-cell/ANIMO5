@@ -1,0 +1,31 @@
+{
+  "work_unit":"ANIMO-B3B14",
+  "artifact":"MASS_STATE_RESTART_READINESS_MATRIX",
+  "state":"M_surface_NH4_non_aqueous_continuation",
+  "unit":"kg N m-2",
+  "owner":"SURFACE_CHEMISTRY_PONDING_CONTROL_VOLUME",
+  "storage_identity":"S_NH4=S_aq+S_complex+S_cont",
+  "matrix":[
+    {"operation":"capture","status":"QUALIFIED_BOUNDED","contract":"wet-to-continuation transfer is conservative, explicit and typed; state is not a diagnostic residual"},
+    {"operation":"persist","status":"QUALIFIED_BOUNDED","contract":"exact state carry-forward when no separately qualified process is active; this is safety semantics, not physical inertness"},
+    {"operation":"restore","status":"QUALIFIED_BOUNDED","contract":"checkpoint/restart restores exact continuation mass; observer reconstruction and hidden phase memory are forbidden"},
+    {"operation":"continue_dry","status":"QUALIFIED_BOUNDED","contract":"no process event is emitted under the fail-closed guard; mass remains owned and conserved"},
+    {"operation":"continue_rewet","status":"ADMISSION_BLOCKING","contract":"no qualified receiver, activation, amount/rate/kinetics or ordering exists"}
+  ],
+  "typed_transfer_rules": {
+    "all_nonzero_changes_require_typed_transfer":true,
+    "source_owner_required":true,
+    "destination_or_external_sink_required":true,
+    "species_or_element_identity_required":true,
+    "unit_required":true,
+    "activation_required":true,
+    "amount_or_rate_law_required":true,
+    "ordering_required":true,
+    "restart_semantics_required_if_partial_or_delayed":true,
+    "mass_observer_can_reconstruct_physical_state":false
+  },
+  "split_run_disposition":"PASS_FOR_NO_PROCESS_GUARD_AT_CONTRACT_LEVEL_ONLY",
+  "physical_process_restart_disposition":"NOT_APPLICABLE_BECAUSE_NO_DRY_OR_REWETTING_PROCESS_MEMORY_IS_QUALIFIED",
+  "production_restart_implementation":"OUT_OF_SCOPE_NOT_CLAIMED",
+  "overall":"STATE_AND_MASS_READY_BOUNDED_REWETTING_CONTINUATION_NOT_READY"
+}

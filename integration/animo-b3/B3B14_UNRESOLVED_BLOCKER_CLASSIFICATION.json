@@ -1,0 +1,29 @@
+{
+  "work_unit":"ANIMO-B3B14",
+  "artifact":"UNRESOLVED_ITEM_BLOCKER_CLASSIFICATION",
+  "items":[
+    {"category":"existence/state deficiency","classification":["QUALIFIED"],"blocking":false,"finding":"Missing representable zero-water continuation state is established and bounded continuation owner topology is qualified."},
+    {"category":"state ownership","classification":["QUALIFIED"],"blocking":false,"finding":"M_surface_NH4_non_aqueous_continuation is the physical state owner; ledger/observer ownership is forbidden."},
+    {"category":"species/chemical identity","classification":["QUALIFIED_BOUNDED","UNRESOLVED"],"blocking":false,"finding":"NH4-N provenance and elemental mass identity are bounded; specific phase/speciation remains unresolved. This does not prevent storage/restart, but constrains process selection."},
+    {"category":"storage representation","classification":["QUALIFIED"],"blocking":false,"finding":"Areic mass coordinate kg N m-2 is finite without aqueous volume and enters S_NH4=S_aq+S_complex+S_cont."},
+    {"category":"dry-period semantics","classification":["QUALIFIED_NEGATIVE","QUALIFIED_BOUNDED"],"blocking":false,"finding":"No dry physical process law is qualified. Exact persistence is qualified only as fail-closed no-process state semantics, not physical inertness."},
+    {"category":"rewetting semantics","classification":["QUALIFIED_NEGATIVE","ADMISSION_BLOCKING"],"blocking":true,"finding":"No receiver, physical activation criterion, transfer fraction/rate/kinetics or ordering is scientifically qualified. Indefinite retention cannot be promoted to physics."},
+    {"category":"mass conservation","classification":["QUALIFIED"],"blocking":false,"finding":"Third-store ontology and typed-transfer conservation identities are explicit; mass closure does not select physics."},
+    {"category":"restart persistence","classification":["QUALIFIED_BOUNDED"],"blocking":false,"finding":"Exact continuation mass is the required restart coordinate; no hidden phase memory is qualified. Split-run no-process persistence is deterministic at contract level."},
+    {"category":"observable behavior","classification":["UNRESOLVED","ADMISSION_BLOCKING"],"blocking":true,"finding":"Post-rewet owner trajectories are undefined because no executable process transfer is qualified."},
+    {"category":"historical ANIMO behavior","classification":["UNKNOWN_WITHOUT_B2","NON_BLOCKING_RESIDUAL_UNCERTAINTY"],"blocking":false,"finding":"Historical behavior is unknown and may remain explicit under the uncertainty route only after scientific behavior is independently qualified. It is not the present primary blocker."},
+    {"category":"model-evolution assumptions","classification":["UNRESOLVED","ADMISSION_BLOCKING"],"blocking":true,"finding":"Current evidence cannot choose phase/receiver/activation/kinetics. New assumptions require explicit model-evolution authorization and subsequent qualification."},
+    {"category":"production implementation","classification":["OUT_OF_SCOPE_FOR_B3_PARENT_ADMISSION"],"blocking":false,"finding":"No production implementation is required or authorized by this readiness synthesis."}
+  ],
+  "admission_blocker_test": {
+    "necessary_to_correct_original_defect":"State capture and persistence are necessary but insufficient for a scientifically executable lifecycle once water returns.",
+    "necessary_to_avoid_mass_species_creation_destruction":"Typed storage and transfer ontology is sufficient and qualified.",
+    "necessary_for_persistent_ownership":"Qualified.",
+    "necessary_for_restart":"Qualified at bounded contract level.",
+    "necessary_for_executable_scientific_process":"YES: rewetting receiver/activation/transfer semantics are missing.",
+    "later_enhancement_only":"NO for rewetting. A scientifically defined fate after rewetting is part of C1 closure, not an optional enhancement."
+  },
+  "minimal_blocker_class":"EXPLICIT_MODEL_EVOLUTION_AUTHORIZATION_REQUIRED",
+  "alternative_unlock":"NEW_MATERIAL_IDENTITY_EVIDENCE_MAY_REOPEN_SQ08_PATH",
+  "repeated_search_without_new_evidence":"SCIENTIFICALLY_CIRCULAR_NOT_A_VALID_HANDOFF"
+}

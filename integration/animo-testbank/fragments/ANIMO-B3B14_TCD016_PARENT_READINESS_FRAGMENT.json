@@ -1,0 +1,26 @@
+{
+  "fragment_id":"ANIMO-B3B14-TCD016-PARENT-READINESS",
+  "work_unit":"ANIMO-B3B14",
+  "target":"TCD-016",
+  "kind":"BOUNDED_READINESS_PRESERVATION_FRAGMENT",
+  "authority_class":"READINESS_EVIDENCE_ONLY_NOT_B3_ADMISSION_NOT_TB7_COMPOSITION",
+  "reused_fragments":[
+    {"id":"ANIMO-SQ06_TCD016_C1_DRY_HOLD_NEGATIVE_FRAGMENT","classification":"PERMANENT_REUSABLE","claim":"no dry-hold physical law currently qualified; fail-closed persistence is not inertness"},
+    {"id":"ANIMO-SQ07_TCD016_C1_REWETTING_NEGATIVE_FRAGMENT","classification":"PERMANENT_REUSABLE","claim":"no rewetting receiver/activation/kinetics contract currently qualified"},
+    {"id":"ANIMO-SQ08_TCD016_C1_IDENTITY_FRAGMENT","classification":"PERMANENT_REUSABLE","claim":"bounded noncommittal identity envelope only"}
+  ],
+  "massq04_ontology":{"classification":"BOUND_TO_TCD016_READINESS","claim":"third NH4 storage owner and typed control-volume transfer ontology"},
+  "sq01_diagnostic_material":{"classification":"BOUND_TO_TCD016_READINESS","claim":"causal canonical dry-down defect and atomization"},
+  "debug_only":[],
+  "insufficient_for_parent_composition":["any fragment interpreted as a positive dry physical law","any fragment interpreted as a positive rewetting law","mass closure treated as physical process evidence"],
+  "readiness_oracle": {
+    "expected_primary_disposition":"QUALIFIED_TCD016_PARENT_NOT_READY_EXPLICIT_MODEL_EVOLUTION_DECISION_REQUIRED",
+    "must_preserve_negative_science_as_closed_knowledge":true,
+    "must_not_promote_fail_closed_persistence_to_inertness":true,
+    "must_not_promote_child_evidence_to_parent_admission":true,
+    "must_keep_historical_behavior":"UNKNOWN_WITHOUT_B2"
+  },
+  "opens_tb7":false,
+  "whole_model_golden_baseline":false,
+  "central_testbank_registry_mutated":false
+}

@@ -1,0 +1,45 @@
+{
+  "work_unit": "ANIMO-B3B14",
+  "artifact": "AUTHORITY_EVIDENCE_MATRIX",
+  "gov06_ownership": {
+    "owned_contract": "TCD016_PARENT_READINESS_SYNTHESIS",
+    "owned_contract_state": "MOVING_WITHIN_B3B14_ONLY",
+    "parallelism": "PARALLEL_AFTER_PINNING",
+    "forbidden_owned_contracts": ["SQ01-SQ08 scientific semantics", "MASSQ04 ontology", "B3 queue", "aggregate authority", "routing authority", "testbank composition", "B4", "production"]
+  },
+  "authorities": [
+    {"id":"ANIMO-GOV03","sha":"cbd262bdabe92923113b7326f2f42822ce9a971c","role":"historical B2 acquisition/closure governance","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-GOV04","sha":"1bbe4c211197590f346803106e45dca5faae79fc","role":"risk-tiered scientific review policy","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-GOV05","sha":"f65a47724e4a4fca7f2d8b8d6de9eeee51867904","role":"same-agent adversarial review governance","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-GOV06","sha":"7a7d3a1f5a5c07bf36b7e6e2915338dabde20660","role":"unified regie and semantic contract ownership","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-RG05O","sha":"bc9e6ed997a078336645210ebb4d99ae976893fe","role":"current aggregate authority observed by GOV06","state":"MOVING_EXTERNAL_NOT_OWNED"},
+    {"id":"ANIMO-B3I10","sha":"942f26fe32eaf91679e59a1968ae173a3703e22d","role":"routing authority carried by RG05O","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-B3Q01","sha":"846e0f4d02a38b9e02cc1419b1ca87e63aaedb54","role":"B3 scientific admission framework","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-B3Q06","sha":"11e9bcdc6654e63f84875bf1f28dc54abe725700","role":"global queue closure authority, TCD-016 top-level unadmitted","state":"MOVING_EXTERNAL_NOT_OWNED"},
+    {"id":"ANIMO-SQ01","sha":"26d0c74aa440bd73c23709d313e24ea8af2a0bcd","role":"TCD-016 dry-solute state reconstruction and atomization","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-SQ02","sha":"09ab76f0b44cb72956875fa379d68bbf97f1a0c7","role":"C1 continuation-state scientific review","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-SQ03","sha":"58dc3c5c108ee97fd6bea107b7a9e686596617b1","role":"C1 process envelope","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-SQ04","sha":"063627cddd478904c437c9c47f02513ef0d9326b","role":"existing process reuse audit","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-SQ05","sha":"897ba742630f06381a2b89290db80d5f405ab51d","role":"B0 user-guide reconciliation","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-SQ06","sha":"2dbabfd5f57120c583645415e87f7eb792a8c0d7","role":"negative dry-hold process qualification","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-SQ07","sha":"2076c0def17c504a3ba29db02d964d4a6238d2cf","role":"negative rewetting process qualification","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-SQ08","sha":"f89ec3b0bfd053c2c903cbbcf2243bb4ab4a5741","role":"bounded noncommittal identity/speciation qualification","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-MASSQ04","sha":"3e0f8254d9cd7966a4491b3068d0239b8ccda5f9","role":"C1 continuation balance ontology","state":"FROZEN_CONSUMED"},
+    {"id":"ANIMO-STATEQ07","sha":"26f6e61da328a5578b9c4b332de04eb99a3ac04f","role":"current state/restart family head observed by GOV06, not a TCD-016 semantic authority","state":"FROZEN_CONTEXT_ONLY"},
+    {"id":"ANIMO-TB07A","sha":"6d77e92f5beb2a30deb7411d93890aa7a5559685","role":"current fail-closed testbank readiness authority observed by GOV06","state":"FROZEN_CONTEXT_ONLY"},
+    {"id":"ANIMO-ARCHG02","sha":"db8183802631902f41aa5bec518a3c2e63e03ab7","role":"current architecture family head observed by GOV06","state":"FROZEN_CONTEXT_ONLY"}
+  ],
+  "live_precheck": {
+    "B3B14_branch_found_before_creation": false,
+    "equivalent_parent_readiness_branch_found": false,
+    "tcd016_branches_found": ["MASSQ04","SQ01","SQ02","SQ03","SQ04","SQ05","SQ06","SQ07","SQ08"],
+    "later_tcd016_authority_found_after_SQ08": false,
+    "B3Q06_tcd016_state": "UNADMITTED_AT_RG05O",
+    "B3Q06_global_queue_closed": false
+  },
+  "source_evidence": {
+    "revision53_source_sha256":"183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256":"44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "animo40_user_guide_sha256":"ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301"
+  }
+}

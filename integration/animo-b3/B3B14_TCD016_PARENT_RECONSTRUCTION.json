@@ -1,0 +1,42 @@
+{
+  "work_unit": "ANIMO-B3B14",
+  "target": "TCD-016",
+  "artifact": "TCD016_PARENT_RECONSTRUCTION",
+  "canonical_definition": {
+    "process": "NH4 surface-layer dry-down mass conservation",
+    "theory_requirement": "dissolved ammonium cannot leave with evaporation and conserved mass must survive a wet-to-dry surface transition",
+    "legacy_failure": "Transsub layer-0 dry-down sets Rsc=0 and exports residual solute only when Fu>1e-6, leaving finite NH4 mass unrepresented when surface aqueous storage disappears",
+    "canonical_case": "Puitmijn_Cranendonck_60:TITO=1490:layer0",
+    "observed_mass_loss_kg_N_ha": 0.13880242022597072,
+    "classification": "CONFIRMED_LEGACY_CODE_DEFECT_AND_STATE_MODEL_GAP",
+    "register_decision": "freeze original mass-loss evidence; do not adopt huge-concentration tiny-outflow probe; define and qualify an explicit conservative dry-down state in corrected legacy/ANIMO5"
+  },
+  "atomization": {
+    "TCD-016-C1": {
+      "class": "C_MISSING_PHYSICAL_STATE_OR_INCOMPLETE_STATE_MODEL",
+      "scope": "surface NH4 continuation-state ownership across ponding deactivation, including scientifically bounded lifecycle semantics",
+      "current_state": "UNRESOLVED_NOT_ADMITTED"
+    },
+    "TCD-016-E1": {
+      "class": "E_NUMERICAL_POLICY_CHANGE",
+      "scope": "numerical transport behaviour around surface activation and export thresholds",
+      "current_state": "BLOCKED_DEPENDS_ON_TCD016_C1"
+    }
+  },
+  "known_child_set_complete_for_readiness_review": true,
+  "implicit_child_missing": false,
+  "reason": "Live branch inspection found the TCD-016 family through SQ08 plus MASSQ04 and no later TCD-016 authority or parent-readiness work unit. The remaining gap is semantic completion of C1, not an undiscovered child object.",
+  "parent_cannot_be_redefined_to_storage_only": true,
+  "required_parent_composition_surfaces": [
+    "state ownership",
+    "mass semantics",
+    "dry/no-process semantics",
+    "rewetting boundary",
+    "identity/speciation",
+    "restart",
+    "failure semantics",
+    "interaction with existing ANIMO processes",
+    "scope boundaries"
+  ],
+  "b3_readiness_not_b3_admission": true
+}

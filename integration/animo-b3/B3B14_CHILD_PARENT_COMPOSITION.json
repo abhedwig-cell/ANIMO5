@@ -1,0 +1,33 @@
+{
+  "work_unit":"ANIMO-B3B14",
+  "artifact":"CHILD_TO_PARENT_COMPOSITION_MATRIX",
+  "rule":"child qualification != parent qualification; all known child work != automatic parent composition",
+  "rows":[
+    {"authority":"SQ01","surface":"state defect reconstruction and atomization","result":"QUALIFIED_BOUNDED","parent_effect":"establishes C1 and E1; does not admit either"},
+    {"authority":"SQ02","surface":"continuation owner topology","result":"QUALIFIED_BOUNDED","parent_effect":"finite persistent non-aqueous continuation owner accepted for model evolution; additional process qualification required"},
+    {"authority":"SQ03","surface":"process/no-process envelope","result":"QUALIFIED_BOUNDED","parent_effect":"typed transfer envelope and fail-closed persistence qualified; specific process absent"},
+    {"authority":"SQ04","surface":"existing-process interactions","result":"QUALIFIED_NEGATIVE","parent_effect":"rules out unchanged reuse of FRVO, nitrification, soil sorption, Conhtop and aqueous transport as continuation process"},
+    {"authority":"SQ05","surface":"historical documentation","result":"QUALIFIED_NEGATIVE","parent_effect":"no documented dry continuation or rewetting law found in B0 guide; historical behavior remains unknown"},
+    {"authority":"SQ06","surface":"dry-hold semantics","result":"QUALIFIED_NEGATIVE","parent_effect":"no concrete dry physical law; fail-closed persistence remains safety semantics only"},
+    {"authority":"SQ07","surface":"rewetting boundary","result":"QUALIFIED_NEGATIVE","parent_effect":"no receiver, activation or kinetics qualified; executable lifecycle remains incomplete"},
+    {"authority":"SQ08","surface":"identity/speciation","result":"QUALIFIED_BOUNDED","parent_effect":"noncommittal identity envelope qualified; specific phase/speciation unresolved; process cannot be selected from present evidence"},
+    {"authority":"MASSQ04","surface":"mass/control-volume ontology","result":"QUALIFIED","parent_effect":"third-store and typed-transfer balance rules qualified; accounting cannot infer physics"},
+    {"authority":"TCD-016-E1","surface":"numerical low-storage/export policy","result":"UNRESOLVED","parent_effect":"blocked on C1 physical semantics and cannot close parent"}
+  ],
+  "parent_surface_gates": {
+    "state_ownership":"PASS",
+    "mass_semantics":"PASS",
+    "dry_no_process_semantics":"PASS_BOUNDED_NEGATIVE_WITH_FAIL_CLOSED_GUARD_ONLY",
+    "rewetting_boundary":"FAIL_SCIENTIFIC_PROCESS_NOT_QUALIFIED",
+    "identity_speciation":"PASS_BOUNDED_FOR_STORAGE_FAIL_FOR_SPECIFIC_PROCESS_SELECTION",
+    "restart":"PASS_BOUNDED_CONTRACT_LEVEL",
+    "failure_semantics":"PASS_FAIL_CLOSED_NO_HIDDEN_TRANSFER",
+    "existing_ANIMO_interactions":"PASS_NEGATIVE_REUSE_AUDIT",
+    "scope_boundaries":"PASS",
+    "E1_dependency":"FAIL_BLOCKED_ON_C1"
+  },
+  "composition_result":"PARENT_SCIENTIFIC_LIFECYCLE_INCOMPLETE_DUE_TO_REWETTING_PROCESS_SEMANTICS",
+  "parent_definition_narrowed":false,
+  "known_child_inventory_complete":true,
+  "disposition_family":"NOT_READY_EXPLICIT_MODEL_EVOLUTION_DECISION_REQUIRED"
+}

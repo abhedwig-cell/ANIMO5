@@ -1,0 +1,61 @@
+{
+  "work_unit":"ANIMO-B3B14",
+  "artifact":"TCD016_PARENT_READINESS_DECISION",
+  "target":"TCD-016",
+  "central_question":"Given all currently qualified TCD-016 scientific evidence, what is scientifically known about the parent, what remains unknown, and is the remaining uncertainty compatible with bounded B3 admission?",
+  "hypotheses": {
+    "H1":{"result":"REJECTED","reason":"A conserved persistent owner corrects the representation defect but mass/state sufficiency does not establish a scientific rewetting lifecycle."},
+    "H2":{"result":"SUPPORTED","reason":"C1 closure requires a scientifically bounded continuation-to-receiver lifecycle; no rewetting process contract is qualified."},
+    "H3":{"result":"PARTIALLY_SUPPORTED_NOT_INDEPENDENT_BLOCKER","reason":"Specific phase/speciation is unnecessary for storage/conservation/restart but current lack of identity prevents scientific process selection."},
+    "H4":{"result":"REJECTED_AS_B3_READINESS_ROUTE","reason":"Storage-only qualification is valid model-evolution topology evidence but would silently narrow C1 and promote fail-closed persistence into model physics if used as parent B3 correction."},
+    "H5":{"result":"REJECTED_AS_PRIMARY_BLOCKER","reason":"Known child inventory is compositionally reconstructed; the gap is scientific lifecycle semantics rather than missing parent bookkeeping."}
+  },
+  "positively_qualified":[
+    "legacy TCD-016 mass-loss defect and causal wet-to-dry state-model gap",
+    "finite chemically noncommittal continuation owner M_surface_NH4_non_aqueous_continuation",
+    "kg N m-2 storage coordinate independent of aqueous volume",
+    "persistent state ownership and exact restart coordinate",
+    "S_NH4=S_aq+S_complex+S_cont mass ontology",
+    "typed-transfer conservation envelope",
+    "fail-closed no-process persistence as safety/state semantics",
+    "bounded noncommittal NH4-N provenance identity envelope"
+  ],
+  "negatively_qualified":[
+    "no audited revision-53 NH4 process reusable unchanged as continuation process",
+    "no documented B0 dry continuation or rewetting law",
+    "no defensible concrete dry-hold physical process law",
+    "no defensible concrete rewetting receiver/activation/kinetics contract",
+    "no defensible specific continuation phase or molecular speciation"
+  ],
+  "unknowns":[
+    "specific continuation material phase/speciation",
+    "physical rewetting receiver",
+    "physical activation criterion",
+    "transfer fraction, rate or kinetics",
+    "ordering relative to ponding, runoff, infiltration, sorption and transformations",
+    "historical revision-53 behaviour without B2"
+  ],
+  "non_blocking_uncertainty":[
+    "historical behaviour UNKNOWN_WITHOUT_B2, because the present primary failure is scientific process qualification rather than historical fidelity",
+    "specific phase/speciation for bounded storage/restart claims only"
+  ],
+  "admission_blocking_uncertainty":[
+    "rewetting receiver/activation/transfer semantics",
+    "observable post-rewet scientific behaviour",
+    "model-evolution choice required to supply those semantics absent new material evidence",
+    "TCD-016-E1 remains dependent on C1"
+  ],
+  "historical_behavior":"UNKNOWN_WITHOUT_B2",
+  "mass_state_restart":"QUALIFIED_BOUNDED_FOR_CAPTURE_PERSIST_RESTORE_AND_DRY_FAIL_CLOSED_CONTINUATION; NOT_QUALIFIED_FOR_REWET_CONTINUE",
+  "parent_composition":"KNOWN_CHILD_SET_COMPOSED_BUT_REQUIRED_REWETTING_SCIENTIFIC_SURFACE_FAILS",
+  "readiness":false,
+  "primary_disposition":"QUALIFIED_TCD016_PARENT_NOT_READY_EXPLICIT_MODEL_EVOLUTION_DECISION_REQUIRED",
+  "blocker_class":"EXPLICIT_MODEL_EVOLUTION_AUTHORIZATION_REQUIRED",
+  "unlock_conditions":[
+    "A separate explicitly authorized model-evolution work unit selects and scientifically qualifies a bounded continuation-material/rewetting assumption with receiver, activation, transfer law/kinetics, ordering and evidence/parameter provenance as applicable.",
+    "OR genuinely new material identity evidence sufficient to reopen the SQ08 evidence route is supplied before retrying process qualification."
+  ],
+  "b3_admission_performed":false,
+  "production_authorized":false,
+  "exact_next_handoff":"SEPARATE_EXPLICITLY_AUTHORIZED_TCD016_MODEL_EVOLUTION_DECISION_AND_QUALIFICATION_WORKUNIT_UNLESS_NEW_MATERIAL_IDENTITY_EVIDENCE_IS_SUPPLIED_FIRST"
+}
