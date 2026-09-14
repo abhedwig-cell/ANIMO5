@@ -1,0 +1,12 @@
+gate_id,gate,status,evidence_basis,residual_requirement
+F01,scientific_rationale_and_authoritative_theory,PASS_BOUNDED,"GHG06 provenance + GHG06A explicit model-evolution T50 contract","Do not relabel as historical revision-53 authority"
+F02,relationship_to_preserved_b3_baseline,PARTIAL,"GHG05 source reconstruction; GHG06 historical uncertainty; B3Q06 global composition incomplete","Separate evolution admission must preserve unresolved historical selector and coexist with incomplete B3 baseline"
+F03,calibration_and_parameter_implications,MATERIAL_GAP,"No qualified sensitivity or recalibration study for Tegr/FvegCH4/Kpl/PvCH4Ox under selector change","Quantify parameter interpretation and transfer/recalibration implications across representative cases"
+F04,conservation_implications,PASS_BOUNDED_ONLY,"GHG07 proves Qox+Qem=Qplant layerwise and profile-wide for synthetic plant pathway","Add integrated CH4/carbon conservation after executable evolved selector connection"
+F05,validation_evidence_appropriate_to_process,MATERIAL_GAP,"GHG07 evidence is synthetic model-evolution positive control, not B2 or empirical process validation","Provide process-appropriate active plant-mediated CH4 validation evidence"
+F06,expected_changes_across_intended_application_envelope,MATERIAL_GAP,"No qualified comparison envelope between Te(Nuroup+1) and fixed-depth T50 operator","Evaluate meshes, root depths, seasons, temperature profiles and vegetation settings"
+F07,independent_scientific_review,MATERIAL_GAP,"GHG06A/GHG07 use GOV05 PROCESS_SELF_REVIEWED_NOT_INDEPENDENT; GOV05 states no scientific gate reduction","Obtain genuinely independent Class-F scientific review unless later governance explicitly supersedes the requirement"
+L01,historical_selector_identity,MATERIAL_GAP,"GHG05/GHG06: executed selector reconstructed but intended ANIMO selector unresolved","Recover version-specific ANIMO authority or retain historical uncertainty"
+L02,active_historical_reference,MATERIAL_GAP,"Frozen natural GHG testcase has FvegCH4=0","No active B2 anchor exists; synthetic evidence must remain separate"
+P01,parent_legacy_admission,FAIL_CLOSED,"L01 and L02 unresolved","TCD-034 corrected-legacy B3 admission prohibited"
+P02,parent_model_evolution_separate_admission,NOT_READY,"F03 F05 F06 F07 are material gaps; F04 only bounded","Complete material Class-F evidence package before separate scientific admission"

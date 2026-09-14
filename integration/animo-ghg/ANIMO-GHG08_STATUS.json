@@ -1,0 +1,85 @@
+{
+  "work_unit": "ANIMO-GHG08",
+  "target": "TCD-034",
+  "title": "Parent Scientific Closure & Separate-Admission Readiness Synthesis",
+  "branch": "work/animo-ghg08-tcd034-parent-scientific-closure-readiness",
+  "phase": "SUBSTANTIVE_AUTHORING_FROZEN_AWAITING_GOV05_REVIEW",
+  "state": "NEGATIVE_PARENT_READINESS_DECISION_PENDING_PROCESS_REVIEW",
+  "primary_disposition": "QUALIFIED_TCD034_PARENT_DUAL_TRACK_CLOSURE_LEGACY_UNRESOLVED_MODEL_EVOLUTION_NOT_READY_FOR_SEPARATE_CLASS_F_ADMISSION_PENDING_GOV05_REVIEW",
+  "base_predecessor": "ANIMO-GHG07@f8969334f648ca28ceb93a2a55bb4eedd478e1dc",
+  "authorities": {
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV05": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "GOV06": "7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
+    "B3Q01": "846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "B3Q06": "11e9bcdc6654e63f84875bf1f28dc54abe725700",
+    "RG05O": "bc9e6ed997a078336645210ebb4d99ae976893fe",
+    "B3I10": "942f26fe32eaf91679e59a1968ae173a3703e22d",
+    "GHG05": "cf235fbc93fdb77d93aa260c8ede8fcdbbdbc5d3",
+    "GHG06": "730f09f1567461a45bff4566368db05963b200fa",
+    "GHG06A": "2573686af69a8d68a94010bb663272b35871a6e1",
+    "GHG07": "f8969334f648ca28ceb93a2a55bb4eedd478e1dc"
+  },
+  "semantic_ownership": {
+    "owned": "TCD034_PARENT_SCIENTIFIC_CLOSURE_READINESS",
+    "parallelism": "SERIAL_PARENT_COMPOSITION_AFTER_PINNED_CHILD_AUTHORITIES"
+  },
+  "legacy_track": {
+    "historical_selector_identity": "UNRESOLVED",
+    "active_historical_B2": "ABSENT",
+    "b3_corrected_legacy_ready": false,
+    "disposition": "UNRESOLVED_NOT_ADMITTED"
+  },
+  "model_evolution_track": {
+    "class": "F_PHYSICS_OR_MODEL_EVOLUTION",
+    "bounded_selector_qualified": true,
+    "synthetic_active_path_qualified": true,
+    "separate_class_f_admission_ready": false
+  },
+  "material_gaps": [
+    "APPLICATION_ENVELOPE_SELECTOR_SENSITIVITY_AND_EXPECTED_DIFFERENCE",
+    "CALIBRATION_AND_PARAMETER_TRANSFER_IMPLICATIONS",
+    "PROCESS_APPROPRIATE_ACTIVE_PLANT_CH4_VALIDATION",
+    "INTEGRATED_CH4_OR_CARBON_CONSERVATION_AFTER_EXECUTABLE_SELECTOR_CONNECTION",
+    "GENUINELY_INDEPENDENT_CLASS_F_SCIENTIFIC_REVIEW"
+  ],
+  "b3_admission_performed": false,
+  "class_f_admission_performed": false,
+  "production_authorized": false,
+  "global_b3_queue_recomputed": false,
+  "review": {
+    "required": true,
+    "completed": false,
+    "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT when complete"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-ghg08-tcd034.yml",
+    "validator": "tools/ghg08/validate_ghg08_tcd034.py",
+    "exact_final_head_required": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_register_modified": false,
+    "central_queue_modified": false,
+    "aggregate_modified": false,
+    "routing_modified": false,
+    "central_testbank_registry_modified": false,
+    "historical_selector_resolved_claimed": false,
+    "synthetic_evidence_promoted_to_B2": false,
+    "class_f_admission_performed": false,
+    "b3_admission_performed": false,
+    "b4_opened": false,
+    "production_migration_authorized": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  }
+}

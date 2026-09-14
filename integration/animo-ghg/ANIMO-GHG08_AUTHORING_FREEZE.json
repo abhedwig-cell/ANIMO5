@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-GHG08",
+  "target": "TCD-034",
+  "branch": "work/animo-ghg08-tcd034-parent-scientific-closure-readiness",
+  "base_head": "f8969334f648ca28ceb93a2a55bb4eedd478e1dc",
+  "base_predecessor": "ANIMO-GHG07@f8969334f648ca28ceb93a2a55bb4eedd478e1dc",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_PARENT_CLOSURE_REVIEW",
+  "semantic_owner": "TCD034_PARENT_SCIENTIFIC_CLOSURE_READINESS",
+  "parallelism": "SERIAL_PARENT_COMPOSITION_AFTER_PINNED_CHILD_AUTHORITIES",
+  "substantive_files": [
+    "docs/ghg/TCD034_PARENT_SCIENTIFIC_CLOSURE_READINESS.md",
+    "integration/animo-ghg/GHG08_TCD034_PARENT_CLOSURE_DECISION.json",
+    "integration/animo-ghg/GHG08_TCD034_CLASS_F_GATE_MATRIX.csv",
+    "tools/ghg08/validate_ghg08_tcd034.py",
+    ".github/workflows/animo-ghg08-tcd034.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-ghg/ANIMO-GHG08_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-ghg/ANIMO-GHG08_STATUS.json"
+  ],
+  "review_must_pin_exact_green_authoring_head": true,
+  "substantive_change_resets_GOV05_review": true,
+  "exact_final_head_ci_required": true,
+  "production_source_frozen": true,
+  "frozen_b0_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "aggregate_and_routing_frozen": true,
+  "central_testbank_registry_frozen": true,
+  "no_scientific_admission_in_this_workunit": true
+}

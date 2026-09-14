@@ -1,0 +1,56 @@
+{
+  "work_unit": "ANIMO-GHG08",
+  "target": "TCD-034",
+  "kind": "PARENT_SCIENTIFIC_CLOSURE_AND_SEPARATE_ADMISSION_READINESS_SYNTHESIS",
+  "predecessor": "ANIMO-GHG07@f8969334f648ca28ceb93a2a55bb4eedd478e1dc",
+  "composed_evidence": {
+    "GHG05": "QUALIFIED_SOURCE_RECONSTRUCTION_HISTORICAL_SELECTOR_UNQUALIFIED",
+    "GHG06": "QUALIFIED_NEGATIVE_SELECTOR_IDENTITY_AND_PROVENANCE",
+    "GHG06A": "QUALIFIED_BOUNDED_MODEL_EVOLUTION_T50_DEPTH_OPERATOR_V1",
+    "GHG07": "QUALIFIED_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY_AND_PARTITION_V1"
+  },
+  "parent_tracks": {
+    "historical_corrected_legacy": {
+      "status": "UNRESOLVED_NOT_ADMITTED",
+      "historical_selector_identity": "UNRESOLVED",
+      "active_historical_B2_reference": "ABSENT",
+      "model_evolution_evidence_may_substitute_for_historical_authority": false,
+      "ready_for_B3_corrected_legacy_admission": false
+    },
+    "explicit_model_evolution": {
+      "qualification_class": "F_PHYSICS_OR_MODEL_EVOLUTION",
+      "selector_contract": "TCD034_T50_0P50M_DEPTH_OPERATOR_V1",
+      "active_path_contract": "TCD034_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY_V1",
+      "bounded_selector_qualified": true,
+      "synthetic_active_reachability_qualified": true,
+      "ready_for_separate_class_f_scientific_admission": false
+    }
+  },
+  "class_f_gate_summary": {
+    "scientific_rationale_and_authoritative_theory": "PASS_BOUNDED",
+    "relationship_to_preserved_b3_baseline": "PARTIAL_HISTORICAL_UNCERTAINTY_MUST_PROPAGATE",
+    "calibration_and_parameter_implications": "MATERIAL_GAP",
+    "conservation_implications": "PASS_BOUNDED_PLANT_PARTITION_ONLY",
+    "validation_evidence_appropriate_to_process": "MATERIAL_GAP",
+    "expected_changes_across_application_envelope": "MATERIAL_GAP",
+    "independent_scientific_review": "MATERIAL_GAP_GOV05_SELF_REVIEW_NOT_INDEPENDENT"
+  },
+  "material_gaps": [
+    "APPLICATION_ENVELOPE_SELECTOR_SENSITIVITY_AND_EXPECTED_DIFFERENCE",
+    "CALIBRATION_AND_PARAMETER_TRANSFER_IMPLICATIONS",
+    "PROCESS_APPROPRIATE_ACTIVE_PLANT_CH4_VALIDATION",
+    "INTEGRATED_CH4_OR_CARBON_CONSERVATION_AFTER_EXECUTABLE_SELECTOR_CONNECTION",
+    "GENUINELY_INDEPENDENT_CLASS_F_SCIENTIFIC_REVIEW"
+  ],
+  "non_gaps_do_not_reopen": [
+    "T50_PHYSICAL_TARGET_AT_0P50M_FOR_MODEL_EVOLUTION",
+    "BOUNDED_LAYER_CENTER_INTERPOLATION_OPERATOR_V1",
+    "SYNTHETIC_FVEGCH4_POSITIVE_PATH_REACHABILITY",
+    "PLANT_REMOVAL_OXIDATION_EMISSION_PARTITION_IDENTITY"
+  ],
+  "primary_disposition": "QUALIFIED_TCD034_PARENT_DUAL_TRACK_CLOSURE_LEGACY_UNRESOLVED_MODEL_EVOLUTION_NOT_READY_FOR_SEPARATE_CLASS_F_ADMISSION",
+  "b3_admission_performed": false,
+  "class_f_admission_performed": false,
+  "production_authorized": false,
+  "global_b3_queue_recomputed": false
+}
