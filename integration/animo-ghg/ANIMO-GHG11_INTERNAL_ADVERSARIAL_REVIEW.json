@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-GHG11",
+  "target": "TCD-034",
+  "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "reviewed_head": "afa8bd350eff42732774479c92921152af5cb857",
+  "reviewed_tree": "a2c79ae9e900d06b0524a1b8c0af313eded19048",
+  "reviewed_head_ci_run": 34852842538,
+  "reviewed_head_ci_job": 104004837804,
+  "reviewed_head_ci_conclusion": "success",
+  "gates": {
+    "literature_identity_and_relevance": "PASS_BOUNDED",
+    "external_evidence_classification": "PASS_MODEL_EVOLUTION_ONLY",
+    "scientific_lineage_support": "PASS_STRENGTHENED",
+    "historical_animo_authority_separation": "PASS_UNRESOLVED_PRESERVED",
+    "parameter_transfer_boundary": "PASS_NO_UNCHANGED_TRANSFER_ASSUMED",
+    "selector_specific_empirical_validation": "PASS_AS_NEGATIVE_READINESS_PROCESS_RESOLVED_POSITIVE_DATASET_NOT_RECOVERED",
+    "application_envelope": "PASS_AS_PARTIAL_GHG10_ONE_CASE_ONLY",
+    "independent_scientific_review_gate": "PASS_AS_OPEN_GOV05_SELF_REVIEW_NOT_INDEPENDENT",
+    "admission_boundary": "PASS_NO_CLASS_F_NO_B3_NO_PRODUCTION_ADMISSION"
+  },
+  "decision": "PASS_TCD034_EXTERNAL_MODEL_EVOLUTION_EVIDENCE_PARTIAL_SUPPORT_V1",
+  "primary_disposition_confirmed": "QUALIFIED_TCD034_EXTERNAL_MODEL_EVOLUTION_EVIDENCE_PARTIAL_EMPIRICAL_SUPPORT_CLASS_F_VALIDATION_GAP_REMAINS_V1",
+  "class_f_admission_ready": false,
+  "b3_admission_performed": false,
+  "production_authorized": false
+}
