@@ -3,7 +3,7 @@
   "target": "TCD-016-C1",
   "branch": "work/animo-sq11-tcd016-c1-drydown-rewetting-experiment-design",
   "base_head": "ANIMO-SQ10@e385f637c14b67f25670d7e9edd85d4aaefdb63b",
-  "phase": "AUTHORING_COMPLETE_PENDING_FREEZE_AND_REVIEW",
+  "phase": "REVIEW_COMPLETE_PENDING_EXACT_FINAL_HEAD_CI",
   "state": "QUALIFIED_EXPERIMENT_DESIGN_READY_EXTERNAL_EVIDENCE_EXECUTION_REQUIRED",
   "candidate": "REWETTABLE_SURFACE_NH4_N_RESIDUE_EQUIVALENT",
   "candidate_maturity": "RESEARCH_ISOLATED",
@@ -18,16 +18,29 @@
   "review": {
     "required": true,
     "mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
-    "completed": false,
+    "completed": true,
     "same_agent": true,
     "genuinely_independent": false,
     "independence_claimed": false,
-    "assurance_target": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "outcome": "PENDING"
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "outcome": "SELF_REVIEW_PASS",
+    "reviewed_authoring_head": "e59626d1154f49083709ac96bc4593840cfc0431",
+    "reviewed_authoring_tree": "4c23e34be959180e52ad00c26c0385d845fdc0c6",
+    "review_artifact": "integration/animo-science/ANIMO-SQ11_INTERNAL_ADVERSARIAL_REVIEW.json"
   },
   "validation": {
     "workflow": ".github/workflows/animo-sq11-tcd016-c1-experiment-design.yml",
-    "exact_final_head_required": true
+    "authoring_run_id": 34826023851,
+    "authoring_job_id": 103918271536,
+    "authoring_run_state_at_review_closeout": "QUEUED_EXTERNAL_RUNNER_CAPACITY",
+    "exact_final_head_required": true,
+    "exact_final_head_state": "PENDING_EXTERNAL_RUNNER_CAPACITY"
+  },
+  "external_execution": {
+    "required": true,
+    "tracking_issue": 54,
+    "physical_data_available": false,
+    "class_f_reassessment_allowed_now": false
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -46,9 +59,9 @@
     "realized": true,
     "persisted": true,
     "tested": false,
-    "reviewed": false,
+    "reviewed": true,
     "qualified": true,
     "workunit_complete": false
   },
-  "next_handoff": "EXECUTE_OR_ACQUIRE_TRACEABLE_DRYDOWN_REWETTING_DATA_UNDER_THE_SQ11_PRE_REGISTERED_INTERFACE_THEN_OPEN_A_SEPARATE_EVIDENCE_INGESTION_AND_CLASS_F_REASSESSMENT_WORKUNIT"
+  "next_handoff": "AFTER_SUCCESSFUL_EXACT_FINAL_HEAD_CI_EXECUTE_OR_ACQUIRE_TRACEABLE_DRYDOWN_REWETTING_DATA_UNDER_THE_SQ11_PRE_REGISTERED_INTERFACE_THEN_OPEN_A_SEPARATE_EVIDENCE_INGESTION_AND_CLASS_F_REASSESSMENT_WORKUNIT"
 }
