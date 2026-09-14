@@ -2,7 +2,8 @@
   "work_unit": "ANIMO-SQ11",
   "target": "TCD-016-C1",
   "source_authority": "ANIMO-SQ10@e385f637c14b67f25670d7e9edd85d4aaefdb63b",
-  "purpose": "Trace each major experiment-design element to the unresolved evidence problem without promoting SQ10 analogues to TCD-016 physical truth.",
+  "ordering_authority": "ANIMO-SQ09@d7f63e56daef8285e6a137774c703131a1100fa2",
+  "purpose": "Trace each experiment-design element to the unresolved evidence problem while preserving the SQ09 rule that continuation-to-aqueous transfer precedes downstream fate.",
   "design_rationale": [
     {
       "element": "residue material/phase characterization",
@@ -11,28 +12,28 @@
       "claim_limit": "Characterization of a tested residue does not automatically identify every ANIMO continuation state."
     },
     {
-      "element": "Stage A inert-surface experiment",
-      "reason": "The intrinsic rewetting behavior must first be separable from soil/mineral retention so that receiver ambiguity does not make the result uninterpretable.",
-      "source_basis": ["SQ10 EXT-01", "SQ10 EXT-02"],
+      "element": "Stage A inert-surface primary transfer test",
+      "reason": "The continuation-to-aqueous transfer must be tested with downstream receiver ambiguity minimized; otherwise post-rewetting loss can hide prior aqueous arrival.",
+      "source_basis": ["SQ09 ordered candidate contract", "SQ10 process-validation gap"],
       "claim_limit": "An inert-surface result applies only to the tested residue and environment."
     },
     {
-      "element": "Stage B defined soil/mineral contact",
-      "reason": "SQ10 identified fixation/retention as a credible competing fate when mineral contact is plausible.",
-      "source_basis": ["SQ10 EXT-01", "SQ10 EXT-02"],
-      "claim_limit": "Observed soil retention cannot be generalized to untested matrices."
+      "element": "Stage B soil/mineral ordering and fate test",
+      "reason": "SQ10 identified soil/mineral retention as credible downstream behavior. SQ09 nevertheless places sorption-after-arrival after the continuation-to-aqueous transfer, so Stage B must resolve ordering rather than treat any soil receiver as automatic refutation.",
+      "source_basis": ["SQ10 EXT-01", "SQ10 EXT-02", "SQ09 process ordering"],
+      "claim_limit": "Soil/mineral uptake after demonstrated aqueous arrival is compatible with M1; only evidence for direct alternative transfer can refute the receiver ordering."
     },
     {
-      "element": "NH3 loss measurement or defensible bound",
-      "reason": "SQ10 identified state-dependent atmospheric loss as a credible competing fate for ammoniacal N.",
-      "source_basis": ["SQ10 EXT-03", "SQ10 EXT-04"],
-      "claim_limit": "The literature does not prove that the TCD-016 dry continuation state volatilizes; the measurement is required to discriminate the possibility."
+      "element": "atmospheric-loss measurement or defensible bound",
+      "reason": "SQ10 identified state-dependent atmospheric loss as credible ammoniacal-N fate. Such loss can occur after aqueous arrival, so it is required for mass reconstruction and ordering rather than being treated as automatic M1 failure.",
+      "source_basis": ["SQ10 EXT-03", "SQ10 EXT-04", "SQ09 process ordering"],
+      "claim_limit": "Atmospheric loss after demonstrated aqueous arrival is compatible with the M1 transfer law."
     },
     {
-      "element": "time-resolved post-rewetting aqueous NH4-N",
-      "reason": "A single terminal sample cannot distinguish immediate complete transfer from finite-rate or delayed release.",
+      "element": "earliest defensible and time-resolved post-rewetting aqueous NH4-N",
+      "reason": "A terminal sample cannot distinguish complete early transfer followed by downstream fate from finite-rate release or direct alternative transfer.",
       "source_basis": ["SQ10 process-validation gap", "SQ09 candidate prediction"],
-      "claim_limit": "The earliest sample only defines experimental resolution, not metaphysical zero-time behavior."
+      "claim_limit": "The earliest sample defines experimental resolution, not literal zero-time behavior."
     },
     {
       "element": "full N mass closure with uncertainty",
@@ -42,16 +43,16 @@
     },
     {
       "element": "source-specific tracer strongly recommended",
-      "reason": "Background N in Stage B can confound attribution of retained, aqueous and atmospheric N to the experimental source.",
+      "reason": "Background N in Stage B can confound source attribution and make receiver ordering impossible to infer.",
       "source_basis": ["SQ10 receiver-discrimination requirement"],
       "claim_limit": "Tracer use is a design recommendation, not inherited ANIMO theory."
     },
     {
-      "element": "no universal replicate count or numerical epsilon",
-      "reason": "SQ10/SQ09 provide no pilot variance, instrument performance or uncertainty model from which universal values could be scientifically justified.",
+      "element": "no universal replicate count, time threshold or numerical epsilon",
+      "reason": "SQ09/SQ10 provide no pilot variance, instrument response or uncertainty model from which universal values could be scientifically justified.",
       "source_basis": ["SQ09 no invented numerical policy", "SQ10 evidence-strength controls"],
-      "claim_limit": "Executing studies must predeclare their own power, uncertainty and acceptance criteria."
+      "claim_limit": "Executing studies must predeclare power, uncertainty, temporal resolution and acceptance criteria."
     }
   ],
-  "overall": "DESIGN_FEATURES_TRACE_TO_SQ10_GAPS_WHILE_RETAINING_FAIL_CLOSED_EVIDENCE_STRENGTH"
+  "overall": "DESIGN_FEATURES_TRACE_TO_SQ09_ORDERING_AND_SQ10_GAPS_WITHOUT_PROMOTING_DOWNSTREAM_FATE_TO_TRANSFER_EVIDENCE"
 }
