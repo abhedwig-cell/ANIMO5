@@ -1,0 +1,110 @@
+{
+  "schema_id": "ANIMO-SQ11-TCD016-C1-EVIDENCE-PACKAGE-v1",
+  "work_unit": "ANIMO-SQ11",
+  "target": "TCD-016-C1",
+  "purpose": "Fail-closed interface for future dry-down/rewetting empirical evidence. Conformance to this schema is necessary but not sufficient for scientific admissibility.",
+  "required_top_level": [
+    "study_id",
+    "study_type",
+    "protocol_version",
+    "provenance",
+    "source_material",
+    "environment",
+    "analytical_methods",
+    "samples",
+    "mass_balance",
+    "uncertainty",
+    "raw_data_reference",
+    "processed_data_reference"
+  ],
+  "study_type_allowed": [
+    "CONTROLLED_STAGE_A_INERT_SURFACE",
+    "CONTROLLED_STAGE_B_SURFACE_SOIL_CONTACT",
+    "TRACEABLE_EXISTING_DATASET_EQUIVALENT"
+  ],
+  "provenance_required": [
+    "executing_lab_or_data_custodian",
+    "execution_or_collection_dates",
+    "sample_lineage",
+    "source_material_batch_ids",
+    "immutable_raw_data_hash_or_external_immutable_reference",
+    "processing_code_version_or_commit"
+  ],
+  "source_material_required": [
+    "NH4_N_source_identity",
+    "counter_ions_or_matrix_composition",
+    "source_concentration_or_mass",
+    "tracer_identity_if_used",
+    "material_mapping_statement"
+  ],
+  "environment_required": [
+    "surface_material",
+    "soil_or_mineral_material_if_present",
+    "temperature_record",
+    "pH_record",
+    "initial_water_storage_or_depth",
+    "drying_method",
+    "dry_endpoint_definition",
+    "rewetting_water_amount",
+    "rewetting_water_composition",
+    "rewetting_time",
+    "sampling_times_relative_to_rewetting"
+  ],
+  "analytical_methods_required_per_measurement": [
+    "method_id",
+    "analyte_or_pool",
+    "unit",
+    "LOD",
+    "LOQ",
+    "measurement_uncertainty_or_estimation_method",
+    "calibration_or_QC_reference"
+  ],
+  "required_mass_terms": [
+    "M_initial_aqueous_NH4_N",
+    "M_dry_retained_total_N",
+    "M_NH3_drydown",
+    "M_surface_aqueous_NH4_N_time_series_after_rewetting",
+    "M_NH3_rewetting",
+    "M_terminal_non_aqueous_retained_N"
+  ],
+  "conditional_mass_terms": {
+    "M_soil_or_mineral_receiver_NH4_N": "required whenever soil/mineral contact is possible",
+    "other_measured_N_terms": "required for any additional known receiver or loss pathway"
+  },
+  "material_characterization_required": {
+    "present": true,
+    "minimum": "sufficient composition/phase evidence to state what retained residue was actually tested and to assess mapping to the ANIMO continuation state",
+    "unknown_or_unresolved_result": "allowed but forces MATERIAL_MAPPING_INSUFFICIENT for Class-F unlock"
+  },
+  "mass_balance_required": {
+    "identity": "M_dry_retained_total_N = aqueous_rewet + soil_or_mineral_receiver + NH3_rewet + terminal_non_aqueous + other_measured_terms + residual",
+    "criterion": "predeclared by executing study from analytical uncertainty and recovery performance",
+    "no_universal_epsilon": true
+  },
+  "uncertainty_required": {
+    "measurement_uncertainty": true,
+    "derived_fraction_uncertainty": true,
+    "replicate_variability_if_replicated": true,
+    "censoring_or_below_LOQ_handling_predeclared": true
+  },
+  "classification_outputs": [
+    "M1_SUPPORTED_AT_EXPERIMENTAL_RESOLUTION",
+    "M1_REFUTED_FOR_TESTED_CONDITION_PARTIAL",
+    "M1_REFUTED_FOR_TESTED_CONDITION_DELAYED",
+    "M1_REFUTED_FOR_TESTED_CONDITION_SOIL_RECEIVER",
+    "M1_REFUTED_FOR_TESTED_CONDITION_GAS_LOSS",
+    "M1_REFUTED_FOR_TESTED_CONDITION_RESIDUAL",
+    "INCONCLUSIVE_MASS_CLOSURE",
+    "INCONCLUSIVE_MATERIAL_MAPPING",
+    "INCONCLUSIVE_TEMPORAL_RESOLUTION",
+    "INCONCLUSIVE_UNMEASURED_PATHWAY"
+  ],
+  "evidence_strength_rules": [
+    "schema conformance is not physical validation",
+    "synthetic test cases are not empirical evidence",
+    "a single-condition pass cannot establish universal ANIMO applicability",
+    "negative and inconclusive runs must remain in the evidence package",
+    "material mapping and process discrimination are separate gates",
+    "historical revision-53 behavior remains UNKNOWN_WITHOUT_B2"
+  ]
+}
