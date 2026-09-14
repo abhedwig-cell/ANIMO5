@@ -1,0 +1,19 @@
+{
+  "work_unit": "ANIMO-SQ11",
+  "target": "TCD-016-C1",
+  "branch": "work/animo-sq11-tcd016-c1-drydown-rewetting-experiment-design",
+  "base_head": "ANIMO-SQ10@e385f637c14b67f25670d7e9edd85d4aaefdb63b",
+  "reviewed_authoring_head": "e59626d1154f49083709ac96bc4593840cfc0431",
+  "review_outcome": "SELF_REVIEW_PASS",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "pre_closeout_exact_head": "9bc89aea68634beec778521db7750c662492d6d1",
+  "pre_closeout_run_id": 34826549591,
+  "pre_closeout_job_id": 103919927472,
+  "pre_closeout_conclusion": "success",
+  "final_disposition": "QUALIFIED_EXPERIMENT_DESIGN_READY_EXTERNAL_EVIDENCE_EXECUTION_REQUIRED",
+  "physical_evidence_generated": false,
+  "scientific_admission_readiness": false,
+  "external_execution_issue": 54,
+  "closeout_rule": "This file closes the repository workunit after successful review and pre-closeout exact-head validation. The workflow triggered by this commit must also succeed on this exact closeout head before the closeout is treated as final.",
+  "next_handoff": "EXECUTE_OR_ACQUIRE_TRACEABLE_DRYDOWN_REWETTING_DATA_THEN_OPEN_SEPARATE_EVIDENCE_INGESTION_AND_CLASS_F_REASSESSMENT_WORKUNIT"
+}
