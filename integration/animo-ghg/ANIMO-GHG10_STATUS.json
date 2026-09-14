@@ -1,0 +1,86 @@
+{
+  "work_unit": "ANIMO-GHG10",
+  "target": "TCD-034",
+  "title": "Frozen GHGMais Driver Dual-Selector Replay Case Qualification",
+  "branch": "work/animo-ghg10-tcd034-frozen-driver-selector-replay",
+  "phase": "SUBSTANTIVE_AUTHORING_FROZEN_AWAITING_GOV05_REVIEW",
+  "state": "QUALIFIED_CASE_EVIDENCE_PENDING_PROCESS_REVIEW",
+  "primary_disposition": "QUALIFIED_TCD034_FROZEN_GHGMAIS_DRIVER_DUAL_SELECTOR_REPLAY_CASE_EVIDENCE_V1_PENDING_GOV05_REVIEW",
+  "base_predecessor": "ANIMO-GHG09@31c8ba9a53cb602c7a4a71f501384058ef7be7b2",
+  "evidence_class": "PINNED_FROZEN_DRIVER_COUNTERFACTUAL_SELECTOR_REPLAY_NOT_B2_NOT_EMPIRICAL_VALIDATION",
+  "driver_identity": {
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "result_bun_sha256": "cd4202745ee8a9ccd890e6aa6d3f551ff3bb80041efd178aedb3f5f4bbe002e2",
+    "result_crop_ext_sha256": "075a3a612df2b8745d3eda65eac7c56d6c37eb2beea5b91e4cb6dc1edb526679",
+    "soil_inp_sha256": "6a07157f64c0913f977487c1719794c1126416646b0b329ce39940935601f760",
+    "full_replay_csv_sha256": "970bdc7b8666ddc30df5427310799efab77239d6cd02d11d92d977a54b45783e"
+  },
+  "case_results": {
+    "driver_days": 3652,
+    "active_root_days": 1604,
+    "mean_absolute_selector_temperature_difference_degC": 1.1584711637381546,
+    "median_absolute_selector_temperature_difference_degC": 0.96071376,
+    "maximum_absolute_selector_temperature_difference_degC": 5.384873259,
+    "days_abs_difference_ge_1_degC": 767,
+    "days_abs_difference_ge_2_degC": 246,
+    "mean_absolute_fGrow_difference": 0.2786236616003741,
+    "maximum_absolute_fGrow_difference": 2.487223461,
+    "growth_regime_change_days": 231,
+    "growth_regime_change_percent": 14.40149625935162,
+    "unweighted_fGrow_sum_change_percent": -5.391428063261472
+  },
+  "interpretation": {
+    "material_selector_divergence_demonstrated": true,
+    "representation_only_supported": false,
+    "numerically_negligible_supported": false,
+    "parameter_transferability_assumed": false,
+    "methane_flux_change_claimed": false,
+    "historical_revision53_behavior_claimed": false,
+    "empirical_validation_claimed": false,
+    "full_application_envelope_closed": false,
+    "class_f_admission_ready": false
+  },
+  "known_testcase_limit": {
+    "GHGMais_FvegCH4": 0.0,
+    "source_testcase_lineage": "BLOCKED_SOURCE_TESTCASE_CONTRACT_LINEAGE_MISMATCH",
+    "consequence": "DRIVER_REPLAY_ONLY_NO_B2_NO_ACTIVE_CH4_FLUX_VALIDATION"
+  },
+  "review": {
+    "required": true,
+    "completed": false,
+    "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT when complete"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-ghg10-tcd034.yml",
+    "validator": "tools/ghg10/validate_ghg10_tcd034.py",
+    "exact_final_head_required": true
+  },
+  "b3_admission_performed": false,
+  "class_f_admission_performed": false,
+  "production_authorized": false,
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "canonical_register_modified": false,
+    "central_queue_modified": false,
+    "aggregate_modified": false,
+    "routing_modified": false,
+    "central_testbank_registry_modified": false,
+    "historical_selector_resolved_claimed": false,
+    "b2_claimed": false,
+    "methane_flux_validation_claimed": false,
+    "empirical_validation_claimed": false,
+    "class_f_admission_performed": false,
+    "b4_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next_if_green_and_reviewed": "PRESERVE_CASE_MATERIALITY_EVIDENCE; CONTINUE_WITH_BROADER_APPLICATION_ENVELOPE_AND_EMPIRICAL_VALIDATION; DO_NOT AUTO-ADMIT CLASS_F OR B3"
+}
