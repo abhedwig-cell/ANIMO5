@@ -1,0 +1,22 @@
+name: ANIMO SQ11 TCD016 C1 Experiment Design
+
+on:
+  push:
+    branches:
+      - work/animo-sq11-tcd016-c1-drydown-rewetting-experiment-design
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact branch head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify required SQ11 artifacts exist
+        run: test -f integration/animo-science/SQ11_TCD016_C1_DRYDOWN_REWETTING_EXPERIMENT_DESIGN.json && test -f integration/animo-science/SQ11_TCD016_C1_EVIDENCE_PACKAGE_SCHEMA.json && test -f integration/animo-science/ANIMO-SQ11_STATUS.json
+      - name: Record exact head
+        run: echo "validated_head=$(git rev-parse HEAD)"
