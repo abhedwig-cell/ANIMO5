@@ -1,0 +1,41 @@
+{
+  "work_unit": "ANIMO-GHG14",
+  "target": "TCD-034",
+  "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "reviewed_head": "4618e47ff9bd86d7cabfd8043f83b19d54acaa8a",
+  "reviewed_tree": "6d25fd11a7dec7f400b6bf5f6e060811cf149867",
+  "reviewed_head_ci_run": 34875953715,
+  "reviewed_head_ci_job": 104083058975,
+  "reviewed_head_ci_conclusion": "success",
+  "gates": {
+    "legacy_track_preservation": "PASS_UNRESOLVED_NOT_ADMITTED",
+    "scientific_theory": "PASS_STRENGTHENED",
+    "baseline_relationship": "PASS_BOUNDED_WITH_HISTORICAL_UNCERTAINTY",
+    "parameter_implications": "PASS_BOUNDED_NONTRANSFERABILITY_DEFINED",
+    "conservation_implications": "PASS_BOUNDED_SOURCE_LEDGER_COMPATIBILITY",
+    "process_validation": "FAIL_MATERIAL_BLOCKER_PRESERVED",
+    "application_envelope": "PARTIAL_MATERIAL_BLOCKER_PRESERVED",
+    "independent_scientific_review": "FAIL_MATERIAL_BLOCKER_PRESERVED",
+    "no_scope_reduction": "PASS",
+    "no_admission_overclaim": "PASS"
+  },
+  "adversarial_findings": [
+    "GHG12 identifies a candidate dataset stack but does not itself validate the evolved selector; treating dataset existence as empirical validation would be an overclaim.",
+    "GHG10 proves material selector divergence on one driver case but cannot define the intended application envelope by itself.",
+    "GHG13 closes only bounded source-ledger compatibility and must not be promoted to whole-model executable methane conservation.",
+    "GHG09 defines parameter nontransferability implications, but parameter fitting remains part of the still-open empirical validation design.",
+    "Same-agent GOV05 review does not satisfy the B3Q01 Class-F independent scientific review requirement."
+  ],
+  "decision": "PASS_TCD034_CLASS_F_READINESS_REASSESSMENT_NOT_READY_V1",
+  "primary_disposition_confirmed": "QUALIFIED_TCD034_CLASS_F_READINESS_REASSESSMENT_NOT_READY_THREE_MATERIAL_GATES_REMAIN_V1",
+  "remaining_material_gate_count": 3,
+  "class_f_admission_ready": false,
+  "class_f_admission_performed": false,
+  "b3_admission_performed": false,
+  "production_authorized": false
+}
