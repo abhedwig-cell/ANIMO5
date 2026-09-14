@@ -1,0 +1,10 @@
+id,tier,source_class,claim,assessment,role
+ANIMO-GHG05,1,ANIMO authority,"current source selector under standard semantics is Te(Nuroup+1), zero-root Te(1) is non-observable in K1plant path",PROVEN,frozen predecessor
+SRC-ghg_ch4,1,frozen source,Te50/fGrow/K1plant equation and Kpl=0.24 d-1; source comment identifies plant-mediated transport,PROVEN,primary source
+SRC-input1,1,frozen source,Tegr means plant-start growth temperature; FvegCH4 vegetation factor; PvCH4Ox plant-path oxidation fraction,PROVEN,primary source
+DOC-userguide40,1,ANIMO documentation,Te represents average daily soil temperature by layer in degC; guide predates GHG selector,PROVEN,primary documentation limit
+SRC-root-temp,2,internal structural evidence,Nuroup/Te state ownership and arbitrary model-layer geometry constrain valid selectors,PROVEN,structural constraint
+EXT-WH2000,3,external primary peer-reviewed literature,Walter-Heimann plant-mediated CH4 model uses fixed-depth T50 at 50 cm and same growth/transport fingerprint,STRONGLY_SUPPORTED,NEW_MODEL_EVOLUTION_SCIENTIFIC_EVIDENCE only
+EXT-Hendriks2007,3,ANIMO-related external publication,historical SWAP-ANIMO GHG lineage exists but accessible short publication does not specify selector,STRONGLY_SUPPORTED_LIMITED,NEW_MODEL_EVOLUTION_SCIENTIFIC_EVIDENCE only
+EXT-synthesis,3,external contextual report,SWAP-ANIMO CH4 modelling lineage is linked to Walter-Heimann,STRONGLY_SUPPORTED_CONTEXT,NEW_MODEL_EVOLUTION_SCIENTIFIC_EVIDENCE only
+GENERIC,4,generic plausibility,weighted root-zone temperature may sound modern,INSUFFICIENT,excluded from decision

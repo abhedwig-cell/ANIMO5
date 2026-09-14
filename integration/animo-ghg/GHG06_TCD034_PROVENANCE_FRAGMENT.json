@@ -1,0 +1,32 @@
+{
+  "fragment_id": "TB-GHG06-TCD034-PROVENANCE",
+  "work_unit": "ANIMO-GHG06",
+  "target": "TCD-034",
+  "kind": "BOUNDED_PROVENANCE_FRAGMENT_NOT_CENTRAL_TESTBANK_REGISTRY",
+  "permanence_candidate": true,
+  "registry_mutated": false,
+  "production_behavior_claimed": false,
+  "assertions": [
+    {
+      "id": "P1",
+      "assert": "Frozen source identity equals expected SHA-256 archive and relevant file hashes."
+    },
+    {
+      "id": "P2",
+      "assert": "Current source selector remains Te(Nuroup+1) under standard semantics, with zero-root Te(1) but K1plant zero."
+    },
+    {
+      "id": "P3",
+      "assert": "External Walter-Heimann fingerprint supports conceptual T50=soil temperature at 0.50m, but does not qualify an ANIMO index rule."
+    },
+    {
+      "id": "P4",
+      "assert": "No positive FvegCH4 activation closure is claimed."
+    },
+    {
+      "id": "P5",
+      "assert": "Primary disposition remains negative and no B3 admission occurs."
+    }
+  ],
+  "replay": "python tools/ghg06/validate_ghg06_tcd034.py"
+}

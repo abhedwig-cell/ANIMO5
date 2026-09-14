@@ -1,0 +1,105 @@
+{
+  "work_unit": "ANIMO-GHG06",
+  "target": "TCD-034",
+  "variables": [
+    {
+      "name": "Te",
+      "owner": "temperature/hydrology state",
+      "shape": "0:Manl",
+      "units": "degC",
+      "producer": "Temper.for or Input_hydro.for",
+      "spatial_semantics": "compartment temperature; internal sine model at compartment midpoint",
+      "qualified": "PROVEN"
+    },
+    {
+      "name": "Nuroup",
+      "owner": "root/crop state",
+      "shape": "scalar integer",
+      "units": "index",
+      "producer": "root_plant/root_grass/root_extern for detailed SWATRE hydrology",
+      "spatial_semantics": "deepest compartment with active transpiration flux >=1e-7; may be zero",
+      "qualified": "PROVEN"
+    },
+    {
+      "name": "LnRoot",
+      "owner": "GHG_Methane local",
+      "shape": "scalar integer",
+      "units": "index",
+      "producer": "LnRoot=Nuroup",
+      "spatial_semantics": "root-domain upper index",
+      "qualified": "PROVEN"
+    },
+    {
+      "name": "Te50",
+      "owner": "GHG_Methane local",
+      "shape": "scalar real",
+      "units": "degC",
+      "producer": "Te50=Te(Ln) after root loops",
+      "spatial_semantics": "current source value follows post-DO Ln; conceptual 50-cm identity is strongly supported by provenance fingerprint but not exact ANIMO indexing authority",
+      "qualified": "AMBIGUOUS"
+    },
+    {
+      "name": "Tegr",
+      "owner": "GHG input",
+      "shape": "scalar real",
+      "units": "degC",
+      "producer": "input1 >GhgCH4",
+      "spatial_semantics": "temperature at which plant starts to grow",
+      "qualified": "PROVEN"
+    },
+    {
+      "name": "fGrow",
+      "owner": "GHG_Methane local",
+      "shape": "scalar real",
+      "units": "dimensionless",
+      "producer": "piecewise function of Te50, Tegr, Temat",
+      "spatial_semantics": "plant growing-state multiplier, 0..4",
+      "qualified": "PROVEN_EQUATION_UNQUALIFIED_INPUT_SELECTOR"
+    },
+    {
+      "name": "K1plant",
+      "owner": "GHG_Methane local",
+      "shape": "0:Manl",
+      "units": "d-1 before storage-factor adaptation",
+      "producer": "Kpl*FvegCH4*fRoot*fGrow in root zone",
+      "spatial_semantics": "plant-mediated methane transport first-order coefficient",
+      "qualified": "PROVEN"
+    },
+    {
+      "name": "FvegCH4",
+      "owner": "GHG input",
+      "shape": "scalar real",
+      "units": "dimensionless",
+      "producer": "input1 >GhgCH4",
+      "spatial_semantics": "vegetation factor for plant-mediated CH4 transport",
+      "qualified": "PROVEN"
+    }
+  ],
+  "indexing_cases": [
+    {
+      "case": "Nuroup=0",
+      "source_selector": "Te(1)",
+      "path_effect": "fGrow evaluated but K1plant=0 everywhere",
+      "selector_relevance": "non-observable on plant transport path"
+    },
+    {
+      "case": "0<Nuroup<Nl",
+      "source_selector": "Te(Nuroup+1)",
+      "path_effect": "temperature from first compartment after active root index",
+      "selector_relevance": "observable if FvegCH4>0"
+    },
+    {
+      "case": "Nuroup=Nl<Manl",
+      "source_selector": "Te(Nl+1)",
+      "path_effect": "outside current-step demonstrated producer range",
+      "selector_relevance": "scientific and state-ownership blocker"
+    },
+    {
+      "case": "Nuroup=Nl=Manl",
+      "source_selector": "Te(Manl+1)",
+      "path_effect": "outside declared Te bound",
+      "selector_relevance": "bounds blocker"
+    }
+  ],
+  "geometry_gap": "No reviewed ANIMO authority maps physical depth z=0.50 m to one exact layer-centered Te element for arbitrary compartment geometry; nearest-layer, containing-layer, interpolation and profile-specific lookup are distinct designs."
+}

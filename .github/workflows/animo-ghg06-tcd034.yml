@@ -1,0 +1,52 @@
+name: ANIMO-GHG06 TCD034 selector theory provenance
+
+on:
+  push:
+    branches:
+      - work/animo-ghg06-tcd034-selector-theory-provenance
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify exact branch head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in cf235fbc93fdb77d93aa260c8ede8fcdbbdbc5d3 cbd262bdabe92923113b7326f2f42822ce9a971c 1bbe4c211197590f346803106e45dca5faae79fc f65a47724e4a4fca7f2d8b8d6de9eeee51867904 7a7d3a1f5a5c07bf36b7e6e2915338dabde20660 bc9e6ed997a078336645210ebb4d99ae976893fe 11e9bcdc6654e63f84875bf1f28dc54abe725700 942f26fe32eaf91679e59a1968ae173a3703e22d dac7b7b5c591b781b82ec968896edb5957664c88; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+          done
+      - name: Verify exact GHG05 predecessor CI
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY2'
+          import json,os,urllib.request
+          run_id=34689245493
+          expected='cf235fbc93fdb77d93aa260c8ede8fcdbbdbc5d3'
+          req=urllib.request.Request(f'https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}',headers={'Authorization':f"Bearer {os.environ['GH_TOKEN']}",'Accept':'application/vnd.github+json'})
+          with urllib.request.urlopen(req) as r: d=json.load(r)
+          assert d['head_sha']==expected,d.get('head_sha')
+          assert d['status']=='completed' and d['conclusion']=='success',(d.get('status'),d.get('conclusion'))
+          print('GHG05 exact-final CI authority verified')
+          PY2
+      - name: Parse package
+        run: |
+          python -m json.tool integration/animo-ghg/GHG06_TCD034_SELECTOR_PROVENANCE.json >/dev/null
+          python -m json.tool integration/animo-ghg/GHG06_TCD034_VARIABLE_INDEX_MAP.json >/dev/null
+          python -m json.tool integration/animo-ghg/GHG06_TCD034_DECISION.json >/dev/null
+          python -m json.tool integration/animo-ghg/GHG06_TCD034_PROVENANCE_FRAGMENT.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG06_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG06_STATUS.json >/dev/null
+          if test -f integration/animo-ghg/ANIMO-GHG06_INTERNAL_ADVERSARIAL_REVIEW.json; then python -m json.tool integration/animo-ghg/ANIMO-GHG06_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null; fi
+          python -m py_compile tools/ghg06/validate_ghg06_tcd034.py
+      - name: Validate bounded theory/provenance package
+        run: python tools/ghg06/validate_ghg06_tcd034.py

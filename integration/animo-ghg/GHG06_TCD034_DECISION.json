@@ -1,0 +1,34 @@
+{
+  "work_unit": "ANIMO-GHG06",
+  "target": "TCD-034",
+  "question": "What physical temperature quantity should the CH4 plant-growth response consume, and can one exact ANIMO selector be qualified?",
+  "conceptual_identity": "DAILY_MEAN_SOIL_TEMPERATURE_AT_0_50_M_DEPTH_STRONGLY_SUPPORTED_AS_SOURCE_MODEL_PROVENANCE_FINGERPRINT_NOT_HISTORICAL_ANIMO_AUTHORITY",
+  "historical_selector_conclusion": "NOT_QUALIFIED",
+  "model_evolution_selector_conclusion": "NOT_QUALIFIED",
+  "primary_disposition": "QUALIFIED_TCD034_SELECTOR_IDENTITY_UNRESOLVED_MATERIAL_THEORY_OR_DESIGN_EVIDENCE_REQUIRED",
+  "why_not_empirical_discrimination": "The current blocker is prior to empirical discrimination: the exact mathematical mapping from physical 0.50 m temperature to arbitrary ANIMO layer-centered Te state is not specified. Empirical data could later test alternatives but are not required to prove this documentary/design gap.",
+  "positive_gate": {
+    "1_physical_meaning": "STRONGLY_SUPPORTED_NOT_FULLY_HISTORICAL_AUTHORITY",
+    "2_application_domain": "PROVEN_PLANT_MEDIATED_CH4_TRANSPORT",
+    "3_exact_mathematical_selector": "FAIL_ABSENT_0_50M_TO_TE_MAPPING",
+    "4_state_ownership": "PROVEN",
+    "5_units": "PROVEN_DEGC",
+    "6_indexing_semantics": "PROVEN_FOR_CURRENT_SOURCE_NOT_FOR_POSITIVE_T50_SELECTOR",
+    "7_zero_root_behavior": "PROVEN_CURRENT_SOURCE_NONOBSERVABLE_K1PLANT_ZERO",
+    "8_active_root_behavior": "PROVEN_CURRENT_SOURCE_STRUCTURE_POSITIVE_REFERENCE_NOT_CLOSED",
+    "9_multi_layer_behavior": "FAIL_FOR_POSITIVE_T50_SELECTOR_EXACT_MAPPING_ABSENT",
+    "10_methane_equation_compatibility": "STRONGLY_SUPPORTED_CONCEPTUALLY_NOT_FULLY_QUALIFIED",
+    "11_observable_consequences": "PROVEN_ANALYTICALLY_NOT_POSITIVE_TESTBANK_QUALIFIED",
+    "12_falsification_criterion": "PROVEN_AS_DESIGN_REQUIREMENT",
+    "13_no_contradiction_frozen_ANIMO": "FAIL_NOT_ESTABLISHED_FOR_ANY_REPLACEMENT_SELECTOR"
+  },
+  "falsification_criterion": "A future ANIMO-specific theory/design authority that explicitly defines the temperature quantity and its mapping to arbitrary layered Te state can falsify this negative disposition; a qualified historical source showing Te(Nuroup+1) intent would also supersede it.",
+  "minimal_next_evidence": [
+    "Recover/freeze a source-specific GHG formulation or design authority, especially the detailed Hendriks et al. ANIMO GHG report if available, that defines plant-growth temperature depth/indexing.",
+    "If historical authority remains unavailable, create a separate model-evolution design qualification that explicitly chooses and justifies one 0.50 m discretization operator (for example interpolation), with state/bounds/restart consequences.",
+    "Only after positive selector qualification, run separate GHG07 active FVEGCH4 positive-control and reachability qualification."
+  ],
+  "FVEGCH4_positive_control_status": "OPEN_UNCHANGED_FROM_GHG05_NOT_CLOSED_BY_GHG06",
+  "b3_admission_performed": false,
+  "production_authorized": false
+}

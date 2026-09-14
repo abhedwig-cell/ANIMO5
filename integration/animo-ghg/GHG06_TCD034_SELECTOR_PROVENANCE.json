@@ -1,0 +1,151 @@
+{
+  "work_unit": "ANIMO-GHG06",
+  "target": "TCD-034",
+  "semantic_contract": "TCD034_PLANT_GROWTH_TEMPERATURE_SELECTOR_IDENTITY",
+  "branch": "work/animo-ghg06-tcd034-selector-theory-provenance",
+  "base_predecessor": "ANIMO-GHG05@cf235fbc93fdb77d93aa260c8ede8fcdbbdbc5d3",
+  "governing_authorities": {
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV05": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "GOV06": "7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
+    "aggregate_RG05O": "bc9e6ed997a078336645210ebb4d99ae976893fe",
+    "B3Q06": "11e9bcdc6654e63f84875bf1f28dc54abe725700",
+    "routing_B3I10": "942f26fe32eaf91679e59a1968ae173a3703e22d",
+    "GHG01": "dac7b7b5c591b781b82ec968896edb5957664c88"
+  },
+  "parallelism": "PARALLEL_AFTER_PINNING",
+  "ownership": {
+    "owned": [
+      "TCD034_PLANT_GROWTH_TEMPERATURE_SELECTOR_IDENTITY"
+    ],
+    "consumed_frozen": [
+      "GHG05 source reconstruction",
+      "existing methane process semantics",
+      "temperature-state semantics",
+      "root/crop ownership semantics",
+      "current B3 governance"
+    ],
+    "not_owned": [
+      "FVEGCH4 activation evidence",
+      "B3 queue",
+      "aggregate authority",
+      "routing",
+      "production implementation",
+      "canonical testbank registry",
+      "B4"
+    ]
+  },
+  "frozen_inputs": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "source_files": {
+      "ANIMO_4.1.5.53/ghg_ch4.for": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98",
+      "ANIMO_4.1.5.53/input1.for": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+      "ANIMO_4.1.5.53/Param.inc": "20d85ed8bca9e0060d3b51c2f800ff02fdf0bc3ebb8c834baf4afca870a33475",
+      "ANIMO_4.1.5.53/Temper.for": "643e4460a897ec629068dc97ab4589a745304b8fa7adb7597dfadc1a9a9d41e5",
+      "ANIMO_4.1.5.53/Input_hydro.for": "5f07ce68969d749308595d6b4f9f789b6b3646ae226c233e2f8e49565a7dad64",
+      "ANIMO_4.1.5.53/root_plant.for": "07adda92e78a21bde08e137d1cb09bb40d9c63c4f19dcdeeef0d3e263b107816",
+      "ANIMO_4.1.5.53/root_grass.for": "cad5cc713e72b7fac01cbba63caa25560fcabd243c73d9fc06ab7130de4d0661",
+      "ANIMO_4.1.5.53/root_extern.for": "063a754fac2fe1b1c4b60fab1e395b8b65a9a03a5d89ace03e08868e1774f0e9",
+      "ANIMO_4.1.5.53/Animo.for": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7"
+    }
+  },
+  "current_source_reconstruction": {
+    "Te_declaration": "Te(0:Manl)",
+    "Te_units": "degC",
+    "Te_semantics": "average soil temperature per model compartment; internal Temper.for evaluates temperature at compartment midpoint; hydrological input supplies Te(1:Nl) and Te(0)=Avdate",
+    "root_state": "Nuroup is runtime deepest active root/transpiration compartment index; SWATRE root routines reset it to zero and set it to deepest Ln with Flev(Ln)>=1e-7",
+    "runtime_Nuroup_range": "0<=Nuroup<=Nl",
+    "call_order": "root update precedes GHGasses/GHG_Methane",
+    "Te50_source_statement": "Te50 = Te(Ln) after both root-zone DO loops",
+    "current_standard_fortran_selector": "Nuroup>0 => Te(Nuroup+1); Nuroup=0 => Te(1)",
+    "zero_root_effect": "fGrow is evaluated from Te(1), but K1plant is zero for all compartments because no compartment satisfies Ln<=LnRoot",
+    "active_path": "K1plant(Ln)=Kpl*FvegCH4*fRoot*fGrow for rooted compartments",
+    "Kpl": "0.24 d-1",
+    "separate_soil_methane_temperature": "CH4produc consumes local Te(Ln); this is distinct from Te50 used only by plant-growth multiplier"
+  },
+  "animo_specific_evidence": [
+    {
+      "id": "A1",
+      "tier": "TIER1_ANIMO_PRIMARY",
+      "source": "frozen revision-53 ghg_ch4.for",
+      "finding": "Plant-mediated CH4 transport is explicit; Te50 drives fGrow; local variable is literally named Te50; Kpl=0.24 d-1; source contains no comment defining Te50 depth or selector rule.",
+      "classification": "PROVEN_SOURCE_FACT"
+    },
+    {
+      "id": "A2",
+      "tier": "TIER1_ANIMO_PRIMARY",
+      "source": "frozen revision-53 input1.for",
+      "finding": "Tegr is documented as temperature at which plant starts to grow; FvegCH4 is vegetation factor; PvCH4Ox is fraction oxidised during plant transport.",
+      "classification": "PROVEN_SOURCE_FACT"
+    },
+    {
+      "id": "A3",
+      "tier": "TIER1_ANIMO_PRIMARY",
+      "source": "ANIMO 4.0 User Guide, temperature and hydrology input sections",
+      "finding": "Te is soil temperature by layer in degC; the guide predates the later GHG selector and does not define Te50.",
+      "classification": "PROVEN_DOCUMENTATION_LIMIT"
+    },
+    {
+      "id": "A4",
+      "tier": "TIER1_ANIMO_PRIMARY",
+      "source": "frozen root_* and Temper/Input_hydro sources",
+      "finding": "Nuroup and Te ownership/indexing are reconstructable, but no 0.50 m lookup/interpolation authority exists in the reviewed frozen source.",
+      "classification": "PROVEN_ABSENCE_WITHIN_REVIEWED_SCOPE"
+    },
+    {
+      "id": "A5",
+      "tier": "TIER1_ANIMO_PRIMARY",
+      "source": "GHG01 recovered ANIMO theory package",
+      "finding": "Recovered ANIMO-specific GHG theory is strong for N2O but does not supply the missing CH4 plant-growth selector identity.",
+      "classification": "PROVEN_DOCUMENTATION_GAP"
+    }
+  ],
+  "external_evidence": [
+    {
+      "id": "E1",
+      "tier": "TIER3_EXTERNAL",
+      "classification": "NEW_MODEL_EVOLUTION_SCIENTIFIC_EVIDENCE",
+      "citation": "Walter, B.P. & Heimann, M. (2000), Global Biogeochemical Cycles 14(3), 745-765, DOI 10.1029/1999GB001204",
+      "finding": "Walter-Heimann plant-mediated CH4 transport uses kp=0.01 h-1, vegetation factor, root distribution and fGrow; fGrow is based on daily mean soil temperature at 50 cm depth T50, with Amin=0, Amax=4, Tmat=Tgr+10 C."
+    },
+    {
+      "id": "E2",
+      "tier": "TIER3_EXTERNAL",
+      "classification": "NEW_MODEL_EVOLUTION_SCIENTIFIC_EVIDENCE",
+      "citation": "Hendriks, Wollewinkel & van den Akker (2007), SWAP-ANIMO peat GHG conference contribution",
+      "finding": "Confirms ANIMO GHG development lineage and process-based CH4 model but the accessible four-page contribution does not define the disputed Te50 selector."
+    },
+    {
+      "id": "E3",
+      "tier": "TIER3_EXTERNAL",
+      "classification": "NEW_MODEL_EVOLUTION_SCIENTIFIC_EVIDENCE",
+      "citation": "Wageningen/Netherlands GHG synthesis referencing SWAP-ANIMO and Walter-Heimann",
+      "finding": "Independent contextual evidence states the CH4 modelling lineage includes a version of the Walter-Heimann model; this is not revision-53 selector authority."
+    }
+  ],
+  "provenance_fingerprint": {
+    "assessment": "STRONGLY_SUPPORTED_NOT_HISTORICAL_AUTHORITY",
+    "matches": [
+      "Kpl 0.24 d-1 equals Walter-Heimann kp 0.01 h-1",
+      "FvegCH4 corresponds structurally to vegetation transport factor",
+      "fRoot corresponds to root-distribution factor",
+      "fGrow functional form has same 0-to-4 envelope",
+      "Tmat=Tegr+10 C matches",
+      "PvCH4Ox corresponds to rhizospheric/plant-path oxidation fraction",
+      "ANIMO local variable name Te50 matches Walter-Heimann T50"
+    ],
+    "inference": "The ANIMO plant-growth multiplier is very likely adapted from the Walter-Heimann plant-mediated methane formulation and its conceptual temperature quantity is therefore strongly supported as daily mean soil temperature at 0.50 m depth.",
+    "limit": "Under this workunit evidence hierarchy, external literature is NEW_MODEL_EVOLUTION_SCIENTIFIC_EVIDENCE and cannot by itself establish historical ANIMO intent. More importantly, no reviewed ANIMO authority defines how T(0.50 m) maps to arbitrary layer-centered Te indices."
+  },
+  "machine_provenance_chain": [
+    "frozen source archive -> ghg_ch4.for:Te50/fGrow/K1plant",
+    "frozen source archive -> root_*:Nuroup runtime ownership",
+    "frozen source archive -> Temper.for/Input_hydro.for:Te spatial ownership",
+    "ANIMO 4.0 guide -> Te is layer soil temperature, no GHG Te50 selector",
+    "Walter-Heimann 2000 -> T50 at 0.50 m and matching plant transport/growth formulation",
+    "comparison -> conceptual T50 provenance strongly supported",
+    "missing ANIMO discretization rule -> exact selector not qualified"
+  ]
+}

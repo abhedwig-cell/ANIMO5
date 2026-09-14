@@ -1,0 +1,10 @@
+link,from,to,status,basis
+1,physical process,plant-mediated CH4 transport through rooted vegetation,PROVEN,ghg_ch4.for comments and equations
+2,plant-mediated CH4 transport,plant growing-state multiplier fGrow,PROVEN,K1plant=Kpl*FvegCH4*fRoot*fGrow
+3,plant growing-state multiplier,temperature-controlled piecewise equation,PROVEN,Te50/Tegr/Temat source equation
+4,temperature-controlled growth equation,Walter-Heimann T50 conceptual quantity at z=0.50 m,STRONGLY_SUPPORTED,exact multi-feature fingerprint plus Te50 variable name; external evidence only
+5,conceptual T(0.50m),ANIMO Te field,STRONGLY_SUPPORTED,Te is soil temperature by compartment and units match
+6,ANIMO Te field,exact index/interpolation rule for z=0.50m,ABSENT,"no reviewed ANIMO source/doc defines containing-layer, nearest-center or interpolation rule"
+7,exact index rule,current source Te(Nuroup+1),CONTRADICTED,"Nuroup is dynamic root/transpiration state, not a physical fixed-depth locator; equivalence to 0.50m is not invariant"
+8,selector value,observable K1plant/QEmCH4Plt consequence,PROVEN,"selector affects fGrow and K1plant when FvegCH4>0, but frozen testbank lacks positive activation"
+9,selector qualification,B3 admission,ABSENT,GHG06 explicitly does not perform B3 admission
