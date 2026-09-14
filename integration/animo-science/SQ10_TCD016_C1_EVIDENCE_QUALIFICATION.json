@@ -1,0 +1,140 @@
+{
+  "work_unit": "ANIMO-SQ10",
+  "target": "TCD-016-C1",
+  "parent_tcd": "TCD-016",
+  "scope": "EXTERNAL_EVIDENCE_ACQUISITION_AND_CLASS_F_UNLOCK_ASSESSMENT_ONLY",
+  "base_head": "ANIMO-SQ09@d7f63e56daef8285e6a137774c703131a1100fa2",
+  "authorities": {
+    "gov03": "ANIMO-GOV03@cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "gov05": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "gov06": "ANIMO-GOV06@7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
+    "b3q01": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+    "sq09": "ANIMO-SQ09@d7f63e56daef8285e6a137774c703131a1100fa2",
+    "b3b14": "ANIMO-B3B14@1f13c7cab30772f4aa8d5071b19d13761c2b5f16"
+  },
+  "gov06_semantic_contract_ownership": {
+    "owned_contract": "TCD016_C1_MODEL_EVOLUTION_EXTERNAL_EVIDENCE_ASSESSMENT",
+    "owner": "ANIMO-SQ10",
+    "stability": "MOVING_WITHIN_SQ10_ONLY",
+    "consumed_frozen_contracts": [
+      "TCD016_C1_CONTINUATION_STATE_TOPOLOGY",
+      "TCD016_C1_TYPED_TRANSFER_ENVELOPE",
+      "TCD016_C1_NONCOMMITTAL_IDENTITY_ENVELOPE",
+      "TCD016_C1_EXPLICIT_MODEL_EVOLUTION_REWETTING_CANDIDATE",
+      "TCD016_PARENT_READINESS_SYNTHESIS"
+    ],
+    "forbidden": [
+      "mutation of SQ01-SQ09 or MASSQ04 semantics",
+      "new production physics",
+      "TCD register or central B3 queue mutation",
+      "aggregate or routing mutation",
+      "central testbank registry mutation",
+      "TCD-016-E1 qualification",
+      "B3 admission",
+      "B4 decision",
+      "production authorization"
+    ],
+    "parallelism_class": "PARALLEL_AFTER_PINNING"
+  },
+  "candidate": {
+    "id": "REWETTABLE_SURFACE_NH4_N_RESIDUE_EQUIVALENT",
+    "inherited_contract": "on explicit positive surface aqueous storage, candidate M1 would transfer all M_cont atomically to SURFACE_AQUEOUS_NH4_STORAGE",
+    "maturity_before": "RESEARCH_ISOLATED",
+    "maturity_after": "RESEARCH_ISOLATED",
+    "candidate_contract_modified": false
+  },
+  "qualification_question": "Does newly acquired external scientific evidence satisfy the two SQ09 Class F blocking gates strongly enough to advance the selected candidate toward separate scientific admission?",
+  "hypotheses": {
+    "H1_generic_solubility_or_deliquescence_is_sufficient": {
+      "result": "REJECTED",
+      "reason": "Phase-specific ammonium-salt solubility demonstrates plausibility only. The continuation state has no qualified salt identity, counter-ion or material phase."
+    },
+    "H2_soil_fixation_literature_can_define_the_candidate_receiver": {
+      "result": "REJECTED",
+      "reason": "The literature establishes credible competing fixation/defixation behavior but cannot map the surface continuation owner to a specific soil/mineral store."
+    },
+    "H3_aqueous_ammonia_volatilization_models_validate_rewetting": {
+      "result": "REJECTED",
+      "reason": "They constrain post-aqueous NH3/NH4 behavior and competing loss pathways, not the dry-residue identity or complete instantaneous dissolution law."
+    },
+    "H4_combined_generic_literature_is_enough_to_select_M1_by_parsimony": {
+      "result": "REJECTED",
+      "reason": "The combined literature supports multiple scientifically credible fates. Parsimony cannot replace material mapping or discriminating process validation."
+    },
+    "H5_current_external_evidence_unlocks_class_F": {
+      "result": "REJECTED",
+      "reason": "No traceable material-to-process mapping and no process-specific dry-down/rewetting validation were found in the bounded search."
+    },
+    "H6_current_external_evidence_is_still_scientifically_useful": {
+      "result": "SUPPORTED",
+      "reason": "It narrows the next evidence task by showing what must be measured and by demonstrating that complete, partial/delayed, mineral-retained and gaseous-loss alternatives are all plausible enough to require discrimination."
+    }
+  },
+  "class_f_gate_matrix_after_acquisition": {
+    "scientific_rationale": {
+      "status": "PASS_BOUNDED",
+      "change_from_sq09": "NONE"
+    },
+    "authoritative_theory": {
+      "status": "FAIL",
+      "change_from_sq09": "NO_UNLOCK",
+      "reason": "External literature is phase- and environment-specific and does not identify M_surface_NH4_non_aqueous_continuation."
+    },
+    "relationship_to_preserved_b3_baseline": {
+      "status": "PASS",
+      "change_from_sq09": "NONE"
+    },
+    "calibration_and_parameter_implications": {
+      "status": "PASS",
+      "change_from_sq09": "NONE"
+    },
+    "conservation_implications": {
+      "status": "PASS",
+      "change_from_sq09": "NONE"
+    },
+    "validation_evidence_appropriate_to_process": {
+      "status": "FAIL",
+      "change_from_sq09": "NO_UNLOCK",
+      "reason": "No process-specific dataset discriminates M1 from partial, delayed, alternative-receiver or gaseous-loss behavior for the TCD-016 lifecycle."
+    },
+    "expected_changes_over_application_envelope": {
+      "status": "PASS_AT_CONTRACT_LEVEL_ONLY",
+      "change_from_sq09": "NONE"
+    },
+    "scientific_review": {
+      "status": "PENDING_GOV05_INTERNAL_ADVERSARIAL_REVIEW"
+    }
+  },
+  "evidence_strength_controls": {
+    "bounded_web_search_is_not_authoritative_theory_by_itself": true,
+    "peer_review_does_not_remove_mapping_requirement": true,
+    "generic_chemistry_not_promoted_to_candidate_validation": true,
+    "phase_specific_analogue_not_promoted_to_state_identity": true,
+    "absence_in_bounded_search_not_promoted_to_global_absence": true,
+    "historical_behavior": "UNKNOWN_WITHOUT_B2"
+  },
+  "decision": "EVIDENCE_ACQUISITION_COMPLETE_RETAIN_FAIL_CLOSED_CLASS_F_BLOCKERS_AND_DEFINE_TARGETED_EMPIRICAL_DISCRIMINATION_REQUIREMENT",
+  "final_qualification": "QUALIFIED_EVIDENCE_ACQUISITION_COMPLETE_NO_CLASS_F_UNLOCK",
+  "scientific_admission_readiness": false,
+  "tcd016_c1_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "parent_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "tcd016_e1_disposition": "BLOCKED_PENDING_SCIENTIFICALLY_QUALIFIED_OR_SEPARATELY_ADMITTED_C1_REWETTING_SEMANTICS",
+  "blocking_gates": [
+    "AUTHORITATIVE_THEORY_OR_EQUIVALENT_TRACEABLE_MATERIAL_TO_PROCESS_BASIS",
+    "PROCESS_SPECIFIC_VALIDATION_EVIDENCE_FOR_REWETTING_BEHAVIOR"
+  ],
+  "next_handoff": "OPEN_SEPARATE_TCD016_C1_TARGETED_DRYDOWN_REWETTING_EXPERIMENT_DESIGN_AND_EVIDENCE_GENERATION_WORKUNIT; DO_NOT_RETRY_CLASS_F_ADMISSION_UNTIL_TRACEABLE_DATA_OR_MATERIAL_IDENTITY_EVIDENCE_EXISTS",
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "prior_scientific_semantics_modified": false,
+    "canonical_register_modified": false,
+    "central_queue_modified": false,
+    "aggregate_modified": false,
+    "routing_modified": false,
+    "central_testbank_registry_modified": false,
+    "b3_admission_performed": false,
+    "b4_performed": false,
+    "production_authorized": false
+  }
+}
