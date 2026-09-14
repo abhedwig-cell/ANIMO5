@@ -1,0 +1,67 @@
+{
+  "work_unit": "ANIMO-SQ09",
+  "target": "TCD-016-C1",
+  "branch": "work/animo-sq09-tcd016-c1-explicit-model-evolution",
+  "phase": "AUTHORING_COMPLETE_PENDING_FREEZE_AND_REVIEW",
+  "state": "QUALIFIED_NEGATIVE_CLASS_F_CANDIDATE_NOT_SCIENTIFICALLY_ADMISSIBLE_WITH_CURRENT_EVIDENCE",
+  "decision": "DEFINE_BOUNDED_PARAMETER_FREE_REWETTABLE_RESIDUE_CANDIDATE_BUT_DO_NOT_SCIENTIFICALLY_QUALIFY_FROM_CURRENT_EVIDENCE",
+  "qualified": true,
+  "qualification_kind": "NEGATIVE_SCIENTIFIC_QUALIFICATION",
+  "candidate": "REWETTABLE_SURFACE_NH4_N_RESIDUE_EQUIVALENT",
+  "candidate_maturity": "RESEARCH_ISOLATED",
+  "base_head": "ANIMO-B3B14@1f13c7cab30772f4aa8d5071b19d13761c2b5f16",
+  "gov06_authority": "ANIMO-GOV06@7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
+  "b3q01_authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "class_f": true,
+  "scientific_admission_readiness": false,
+  "class_f_blocking_gates": [
+    "AUTHORITATIVE_THEORY_OR_EQUIVALENT_TRACEABLE_MATERIAL_TO_PROCESS_BASIS",
+    "PROCESS_SPECIFIC_VALIDATION_EVIDENCE_FOR_REWETTING_BEHAVIOR"
+  ],
+  "canonical_b3_disposition": "PHYSICS_CHANGE_REQUIRES_SEPARATE_SCIENTIFIC_ADMISSION",
+  "tcd016_c1_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "parent_b3_disposition": "UNRESOLVED_NOT_ADMITTED",
+  "e1_disposition": "BLOCKED_PENDING_SCIENTIFICALLY_QUALIFIED_OR_SEPARATELY_ADMITTED_C1_REWETTING_SEMANTICS",
+  "review": {
+    "required": true,
+    "mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "completed": false,
+    "same_agent": true,
+    "genuinely_independent": false,
+    "independence_claimed": false,
+    "assurance_target": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "outcome": "PENDING"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-sq09-tcd016-c1.yml",
+    "validator": "tools/sq09/validate_sq09_tcd016_c1.py",
+    "oracle": "tools/sq09/tcd016_c1_model_evolution_oracle.py",
+    "fragment": "integration/animo-testbank/fragments/ANIMO-SQ09_TCD016_C1_MODEL_EVOLUTION_FRAGMENT.json",
+    "exact_final_head_required": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "frozen_b0_modified": false,
+    "prior_sq_semantics_modified": false,
+    "canonical_register_modified": false,
+    "central_queue_modified": false,
+    "aggregate_modified": false,
+    "routing_modified": false,
+    "central_testbank_registry_modified": false,
+    "tcd016_e1_qualified": false,
+    "b3_admission_performed": false,
+    "b4_performed": false,
+    "production_authorized": false,
+    "whole_model_golden_baseline_created": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": true,
+    "workunit_complete": false
+  },
+  "next_handoff": "OPEN_SEPARATE_TCD016_C1_MODEL_EVOLUTION_EVIDENCE_ACQUISITION_AND_VALIDATION_WORKUNIT_FOR_THE_SELECTED_REWETTABLE_RESIDUE_CANDIDATE_BEFORE_ANY_CLASS_F_SCIENTIFIC_ADMISSION_OR_TCD016_E1_QUALIFICATION"
+}
