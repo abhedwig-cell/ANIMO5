@@ -3,7 +3,7 @@
   "target": "TCD-016-C1",
   "branch": "work/animo-sq11-tcd016-c1-drydown-rewetting-experiment-design",
   "base_head": "ANIMO-SQ10@e385f637c14b67f25670d7e9edd85d4aaefdb63b",
-  "phase": "REVIEW_COMPLETE_PENDING_EXACT_FINAL_HEAD_CI",
+  "phase": "COMPLETE",
   "state": "QUALIFIED_EXPERIMENT_DESIGN_READY_EXTERNAL_EVIDENCE_EXECUTION_REQUIRED",
   "candidate": "REWETTABLE_SURFACE_NH4_N_RESIDUE_EQUIVALENT",
   "candidate_maturity": "RESEARCH_ISOLATED",
@@ -32,9 +32,12 @@
     "workflow": ".github/workflows/animo-sq11-tcd016-c1-experiment-design.yml",
     "authoring_run_id": 34826023851,
     "authoring_job_id": 103918271536,
-    "authoring_run_state_at_review_closeout": "QUEUED_EXTERNAL_RUNNER_CAPACITY",
     "exact_final_head_required": true,
-    "exact_final_head_state": "PENDING_EXTERNAL_RUNNER_CAPACITY"
+    "validated_closeout_head": "fc5bc8b8382efb3ed419e4b66d803e6257911eaf",
+    "validated_closeout_tree": "f8aaecab3f710274444d13cd2145a99fcba3ae5a",
+    "exact_head_run_id": 34827065764,
+    "exact_head_job_id": 103921549993,
+    "exact_head_conclusion": "success"
   },
   "external_execution": {
     "required": true,
@@ -58,10 +61,10 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
+    "tested": true,
     "reviewed": true,
     "qualified": true,
-    "workunit_complete": false
+    "workunit_complete": true
   },
-  "next_handoff": "AFTER_SUCCESSFUL_EXACT_FINAL_HEAD_CI_EXECUTE_OR_ACQUIRE_TRACEABLE_DRYDOWN_REWETTING_DATA_UNDER_THE_SQ11_PRE_REGISTERED_INTERFACE_THEN_OPEN_A_SEPARATE_EVIDENCE_INGESTION_AND_CLASS_F_REASSESSMENT_WORKUNIT"
+  "next_handoff": "EXECUTE_OR_ACQUIRE_TRACEABLE_DRYDOWN_REWETTING_DATA_UNDER_THE_SQ11_PRE_REGISTERED_INTERFACE_THEN_OPEN_A_SEPARATE_EVIDENCE_INGESTION_AND_CLASS_F_REASSESSMENT_WORKUNIT"
 }
