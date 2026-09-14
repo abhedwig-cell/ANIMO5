@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-GHG11",
+  "target": "TCD-034",
+  "branch": "work/animo-ghg11-tcd034-external-validation-evidence",
+  "base_head": "ad24f3a6dcf2b0a7f4dc1cc9b49e6422f8d36159",
+  "base_predecessor": "ANIMO-GHG10@ad24f3a6dcf2b0a7f4dc1cc9b49e6422f8d36159",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_EXTERNAL_EVIDENCE_REVIEW",
+  "semantic_owner": "TCD034_EXTERNAL_MODEL_EVOLUTION_VALIDATION_EVIDENCE",
+  "parallelism": "PARALLEL_AFTER_PINNING",
+  "substantive_files": [
+    "docs/ghg/TCD034_EXTERNAL_VALIDATION_EVIDENCE.md",
+    "integration/animo-ghg/GHG11_TCD034_EXTERNAL_EVIDENCE_MATRIX.csv",
+    "integration/animo-ghg/GHG11_TCD034_EXTERNAL_EVIDENCE_ASSESSMENT.json",
+    "tools/ghg11/validate_ghg11_tcd034.py",
+    ".github/workflows/animo-ghg11-tcd034.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-ghg/ANIMO-GHG11_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-ghg/ANIMO-GHG11_STATUS.json"
+  ],
+  "external_evidence_policy": "ALL_EXTERNAL_LITERATURE_IS_NEW_MODEL_EVOLUTION_SCIENTIFIC_EVIDENCE_NOT_HISTORICAL_ANIMO_AUTHORITY",
+  "substantive_change_resets_GOV05_review": true,
+  "review_must_pin_exact_green_authoring_head": true,
+  "exact_final_head_ci_required": true,
+  "production_source_frozen": true,
+  "frozen_b0_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "aggregate_and_routing_frozen": true,
+  "central_testbank_registry_frozen": true
+}

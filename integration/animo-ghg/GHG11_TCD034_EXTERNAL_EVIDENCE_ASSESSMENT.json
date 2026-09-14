@@ -1,0 +1,141 @@
+{
+  "work_unit": "ANIMO-GHG11",
+  "target": "TCD-034",
+  "title": "External Validation Evidence & Class-F Readiness Acquisition",
+  "predecessor": "ANIMO-GHG10@ad24f3a6dcf2b0a7f4dc1cc9b49e6422f8d36159",
+  "evidence_class": "NEW_MODEL_EVOLUTION_SCIENTIFIC_EVIDENCE_NOT_HISTORICAL_ANIMO_AUTHORITY",
+  "primary_disposition": "QUALIFIED_TCD034_EXTERNAL_MODEL_EVOLUTION_EVIDENCE_PARTIAL_EMPIRICAL_SUPPORT_CLASS_F_VALIDATION_GAP_REMAINS_V1",
+  "literature_authorities": [
+    {
+      "id": "GHG11-E01-E04",
+      "citation": "Walter, B.P. & Heimann, M. (2000). A process-based, climate-sensitive model to derive methane emissions from natural wetlands: Application to five wetland sites, sensitivity to model parameters, and climate. Global Biogeochemical Cycles 14(3):745-765.",
+      "doi": "10.1029/1999GB001204",
+      "authoritative_urls": [
+        "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/1999GB001204",
+        "https://pure.mpg.de/rest/items/item_1560407_5/component/file_3032861/content",
+        "https://ntrs.nasa.gov/citations/19990113122"
+      ],
+      "supports": [
+        "PROCESS_BASED_CH4_MODEL_WITH_DIFFUSION_PLANT_TRANSPORT_EBULLITION",
+        "TESTED_AGAINST_OBSERVATIONS_AT_FIVE_WETLAND_SITES",
+        "DAILY_MEAN_SOIL_TEMPERATURE_AT_0P50M_USED_FOR_PLANT_GROWTH_STATE",
+        "PLANT_TRANSPORT_RATE_CONSTANT_0P01_H_MINUS_1_EQUIVALENT_0P24_D_MINUS_1",
+        "VEGETATION_ROOT_GROWTH_AND_RHIZOSPHERE_OXIDATION_STRUCTURE",
+        "PROCESS_RESOLVED_VALIDATION_DATA_IDENTIFIED_AS_DESIRABLE"
+      ],
+      "does_not_support": [
+        "HISTORICAL_ANIMO_SELECTOR_DISCRETIZATION",
+        "EMPIRICAL_VALIDATION_OF_GHG06A_LAYER_CENTER_INTERPOLATION",
+        "DIRECT_TRANSFER_OF_ANIMO_PARAMETERS_WITHOUT_RECALIBRATION"
+      ]
+    },
+    {
+      "id": "GHG11-E05",
+      "citation": "Hendriks, R.F.A., Wollewinkel, R. & van den Akker, J.J.H. (2007). Predicting soil subsidence and greenhouse gas emission in peat soils depending on water management with the SWAP-ANIMO model.",
+      "authoritative_urls": [
+        "https://research.wur.nl/en/publications/predicting-soil-subsidence-and-greenhouse-gas-emission-in-peat-so/",
+        "https://edepot.wur.nl/159749"
+      ],
+      "supports": [
+        "SWAP_ANIMO_PROCESS_GHG_MODEL",
+        "CALIBRATED_AND_VALIDATED_AGAINST_TWO_DUTCH_EXPERIMENTAL_PEAT_FIELDS",
+        "SYSTEM_LEVEL_DUTCH_PEAT_VALIDATION_CONTEXT"
+      ],
+      "does_not_support": [
+        "SELECTOR_SPECIFIC_POSITIVE_PLANT_CH4_VALIDATION",
+        "GHG06A_INTERPOLATION_VALIDATION"
+      ]
+    },
+    {
+      "id": "GHG11-E06",
+      "citation": "RIVM (2000). The integrated nitrous oxide and methane grassland project.",
+      "authoritative_urls": [
+        "https://www.rivm.nl/publicaties/integrated-nitrous-oxide-and-methane-grassland-project"
+      ],
+      "supports": [
+        "DRAINED_ZEGVELD_PEAT_CH4_VIRTUALLY_ZERO",
+        "ABSENCE_OF_AERENCHYMATOUS_WETLAND_PLANT_ROOTS_IDENTIFIED_AS_ONE_MECHANISM"
+      ],
+      "does_not_support": [
+        "POSITIVE_PLANT_MEDIATED_CH4_SELECTOR_VALIDATION"
+      ]
+    },
+    {
+      "id": "GHG11-E07",
+      "citation": "Langeveld, C.A. et al. (1997). Emissions of CO2, CH4 and N2O from pasture on drained peat soils in the Netherlands. European Journal of Agronomy 7:35-42.",
+      "doi": "10.1016/S1161-0301(97)00036-1",
+      "authoritative_urls": [
+        "https://research.wur.nl/en/publications/emissions-of-co2-ch4-and-n2o-from-pasture-on-drained-peat-soils-i",
+        "https://www.sciencedirect.com/science/article/abs/pii/S1161030197000361"
+      ],
+      "supports": [
+        "DRAINED_ZEGVELD_PASTURE_CH4_FLUX_NEAR_ZERO",
+        "LOW_SIGNAL_CASE_IS_WEAK_FOR_ACTIVE_PLANT_TRANSPORT_IDENTIFICATION"
+      ],
+      "does_not_support": [
+        "ACTIVE_WETLAND_PLANT_TRANSPORT_PARAMETER_VALIDATION"
+      ]
+    },
+    {
+      "id": "GHG11-E08",
+      "citation": "Moors, E. et al. (2012). Integrated observations and modelling of greenhouse gas budgets at ecosystem level in The Netherlands. KvR 055/12.",
+      "authoritative_urls": [
+        "https://cdn.knmi.nl/system/data_center_publications/files/000/069/685/original/moors_et_al._2012._integrated_observations_and_modelling_of_greenhouse_gas_budgets_at_the_ecosystem_level_in_the_netherlands.bsikreportco2.pdf"
+      ],
+      "supports": [
+        "DUTCH_GHG_MODEL_VALIDATION_CONTEXT",
+        "VEGETATION_AND_HYDROLOGY_INFORMATION_IMPORTANT_FOR_CH4_APPLICATION"
+      ],
+      "does_not_support": [
+        "TCD034_SELECTOR_SPECIFIC_EMPIRICAL_VALIDATION"
+      ]
+    },
+    {
+      "id": "GHG11-E09",
+      "citation": "Ma, S. et al. (2017). Data-Constrained Projections of Methane Fluxes in a Northern Minnesota Peatland in Response to Elevated CO2 and Warming. Journal of Geophysical Research: Biogeosciences 122:2841-2861.",
+      "doi": "10.1002/2017JG003932",
+      "authoritative_urls": [
+        "https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2017JG003932",
+        "https://research.fs.usda.gov/treesearch/55485",
+        "https://mnspruce.ornl.gov/datasets/public"
+      ],
+      "supports": [
+        "MULTIYEAR_CH4_DATA_USED_TO_CONSTRAIN_PROCESS_MODEL_PARAMETERS",
+        "PLANT_MEDIATED_TRANSPORT_FRACTION_IS_MATERIAL_AND_PARAMETER_SENSITIVE",
+        "MODEL_DATA_FUSION_CAN_QUANTIFY_PARAMETER_UNCERTAINTY"
+      ],
+      "does_not_support": [
+        "DIRECT_PARAMETER_TRANSFER_TO_ANIMO",
+        "HISTORICAL_ANIMO_AUTHORITY"
+      ]
+    }
+  ],
+  "class_f_gate_assessment": {
+    "scientific_rationale_and_authoritative_theory": "PASS_STRENGTHENED",
+    "relationship_to_preserved_b3_baseline": "PARTIAL_HISTORICAL_SELECTOR_UNRESOLVED_MUST_PROPAGATE",
+    "calibration_and_parameter_implications": "PARTIAL_GHG09_PLUS_EXTERNAL_EVIDENCE_CONFIRMS_RECALIBRATION_OR_VALIDATION_NEEDED",
+    "conservation_implications": "PASS_BOUNDED_PLANT_PARTITION_ONLY_NO_WHOLE_MODEL_CLAIM",
+    "validation_evidence_appropriate_to_process": "FAIL_MATERIAL_PROCESS_RESOLVED_POSITIVE_PLANT_PATH_DATASET_NOT_RECOVERED",
+    "expected_changes_across_application_envelope": "PARTIAL_ONE_FROZEN_DRIVER_CASE_MATERIAL_GHG10_BROADER_ENVELOPE_OPEN",
+    "independent_scientific_review": "FAIL_NOT_PERFORMED_GOV05_SELF_REVIEW_IS_NOT_INDEPENDENT"
+  },
+  "minimum_empirical_package": [
+    "DAILY_OR_FINER_SOIL_TEMPERATURE_PROFILE_BRACKETING_0P50M_AND_LEGACY_SELECTOR_RECONSTRUCTION",
+    "WATER_TABLE_AND_HYDROLOGICAL_STATE",
+    "VEGETATION_IDENTITY_DENSITY_ROOTING_DEPTH_OR_ROOT_DISTRIBUTION_AND_PHENOLOGY",
+    "POSITIVE_CH4_CONCENTRATION_AND_SURFACE_FLUX_TIME_SERIES",
+    "INDEPENDENT_CONSTRAINT_ON_PLANT_MEDIATED_TRANSPORT_AND_PREFERABLY_RHIZOSPHERE_OXIDATION",
+    "TEMPORAL_VARIATION_THAT_SEPARATES_LEGACY_AND_T50_SELECTOR_SIGNALS",
+    "CALIBRATION_VALIDATION_SEPARATION_OR_EQUIVALENT_ANTI_COMPENSATION_DESIGN",
+    "MULTI_SITE_OR_JUSTIFIED_APPLICATION_ENVELOPE_COVERAGE_FOR_ANY_BROAD_ADMISSION"
+  ],
+  "admission": {
+    "class_f_ready": false,
+    "class_f_admitted": false,
+    "b3_admitted": false,
+    "production_authorized": false,
+    "reason": "PARTIAL_EMPIRICAL_SUPPORT_DOES_NOT_IDENTIFY_OR_VALIDATE_EVOLVED_SELECTOR_AND_ACTIVE_PLANT_PATH_WITHOUT_PARAMETER_COMPENSATION"
+  },
+  "historical_revision53_selector": "UNRESOLVED_NOT_HISTORICALLY_QUALIFIED",
+  "decision": "QUALIFIED_TCD034_EXTERNAL_MODEL_EVOLUTION_EVIDENCE_PARTIAL_EMPIRICAL_SUPPORT_CLASS_F_VALIDATION_GAP_REMAINS_V1"
+}

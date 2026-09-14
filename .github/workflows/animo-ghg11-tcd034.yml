@@ -1,0 +1,44 @@
+name: ANIMO-GHG11 TCD034 external validation evidence
+
+on:
+  push:
+    branches:
+      - work/animo-ghg11-tcd034-external-validation-evidence
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify exact branch head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Fetch pinned predecessor
+        run: git cat-file -e "ad24f3a6dcf2b0a7f4dc1cc9b49e6422f8d36159^{commit}" 2>/dev/null || git fetch --no-tags origin ad24f3a6dcf2b0a7f4dc1cc9b49e6422f8d36159
+      - name: Verify predecessor qualification artifacts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('integration/animo-ghg/ANIMO-GHG10_STATUS.json').read_text())
+          assert data['primary_disposition']=='QUALIFIED_TCD034_FROZEN_GHGMAIS_DRIVER_DUAL_SELECTOR_REPLAY_CASE_EVIDENCE_V1'
+          assert data['work_status']['qualified'] is True
+          assert data['work_status']['reviewed'] is True
+          PY
+      - name: Scope guard
+        run: |
+          bad="$(git diff --name-only ad24f3a6dcf2b0a7f4dc1cc9b49e6422f8d36159..HEAD | grep -Ev '^(.github/workflows/animo-ghg11-tcd034.yml|docs/ghg/TCD034_EXTERNAL_VALIDATION_EVIDENCE.md|integration/animo-ghg/GHG11_TCD034_EXTERNAL_EVIDENCE_MATRIX.csv|integration/animo-ghg/GHG11_TCD034_EXTERNAL_EVIDENCE_ASSESSMENT.json|integration/animo-ghg/ANIMO-GHG11_AUTHORING_FREEZE.json|integration/animo-ghg/ANIMO-GHG11_INTERNAL_ADVERSARIAL_REVIEW.json|integration/animo-ghg/ANIMO-GHG11_STATUS.json|tools/ghg11/.*)$' || true)"
+          test -z "$bad" || { echo "$bad"; exit 1; }
+      - name: Parse package
+        run: |
+          python -m json.tool integration/animo-ghg/GHG11_TCD034_EXTERNAL_EVIDENCE_ASSESSMENT.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG11_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG11_STATUS.json >/dev/null
+          if test -f integration/animo-ghg/ANIMO-GHG11_INTERNAL_ADVERSARIAL_REVIEW.json; then python -m json.tool integration/animo-ghg/ANIMO-GHG11_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null; fi
+          python -m py_compile tools/ghg11/validate_ghg11_tcd034.py
+      - name: Validate external evidence qualification
+        run: python tools/ghg11/validate_ghg11_tcd034.py
