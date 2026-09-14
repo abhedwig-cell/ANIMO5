@@ -3,8 +3,8 @@
   "target": "TCD-034",
   "title": "Plant-Growth Temperature Selector Scientific Identity, Theory Provenance & Bounded Design Qualification",
   "branch": "work/animo-ghg06-tcd034-selector-theory-provenance",
-  "phase": "SUBSTANTIVE_AUTHORING_FROZEN_AWAITING_GOV05_REVIEW",
-  "state": "QUALIFIED_NEGATIVE_SELECTOR_DECISION_PENDING_PROCESS_REVIEW",
+  "phase": "COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_NEGATIVE_SELECTOR_IDENTITY_AND_PROVENANCE_NO_B3_ADMISSION",
   "primary_disposition": "QUALIFIED_TCD034_SELECTOR_IDENTITY_UNRESOLVED_MATERIAL_THEORY_OR_DESIGN_EVIDENCE_REQUIRED",
   "base_predecessor": "ANIMO-GHG05@cf235fbc93fdb77d93aa260c8ede8fcdbbdbc5d3",
   "authorities": {
@@ -30,21 +30,40 @@
   "production_authorized": false,
   "review": {
     "required": true,
-    "completed": false,
+    "completed": true,
     "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
-    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT when complete"
+    "review_mode": "SAME_AGENT_SECOND_PASS",
+    "same_agent": true,
+    "genuinely_independent": false,
+    "independence_claimed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "reviewed_head": "9d72d9c1140db87ee2468285100bfc5bdb748c93",
+    "reviewed_head_ci_run": 34839753046,
+    "reviewed_head_ci_job": 103961705229,
+    "reviewed_head_ci_conclusion": "success",
+    "outcome": "PASS_NEGATIVE_SELECTOR_DISPOSITION_WITH_NO_SUBSTANTIVE_REMEDIATION",
+    "artifact": "integration/animo-ghg/ANIMO-GHG06_INTERNAL_ADVERSARIAL_REVIEW.json"
   },
   "validation": {
     "workflow": ".github/workflows/animo-ghg06-tcd034.yml",
     "validator": "tools/ghg06/validate_ghg06_tcd034.py",
-    "exact_final_head_required": true
+    "authoring_head": "9d72d9c1140db87ee2468285100bfc5bdb748c93",
+    "authoring_tree": "0a50bc308abbfa86d276f6efc2c97d3faaf695e9",
+    "authoring_run": 34839753046,
+    "authoring_job": 103961705229,
+    "authoring_conclusion": "success",
+    "exact_final_head_required": true,
+    "exact_final_head_status": "PENDING_REPLAY_AFTER_REVIEW_STATUS_CLOSEOUT",
+    "closeout_note": "The exact substantive authoring head passed CI and was reviewed under GOV05. This review/status-only closeout becomes authoritative only after the same workflow succeeds on the exact final head."
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
-  }
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
+  },
+  "next_handoff": "RECOVER_ANIMO_SPECIFIC_GHG_SELECTOR_DESIGN_AUTHORITY_OR_RUN_SEPARATE_BOUNDED_MODEL_EVOLUTION_0_50M_OPERATOR_DESIGN_QUALIFICATION; ONLY_AFTER_POSITIVE_SELECTOR_QUALIFICATION_RUN_SEPARATE_GHG07_FVEGCH4_POSITIVE_CONTROL",
+  "next_if_exact_final_green": "RETAIN_TCD034_AS_UNRESOLVED_NOT_ADMITTED; SEEK_ANIMO_SPECIFIC_SELECTOR_AUTHORITY_OR_SEPARATE_MODEL_EVOLUTION_OPERATOR_QUALIFICATION; ONLY THEN OPEN_ACTIVE_FVEGCH4_POSITIVE_CONTROL; B3Q06_REMAINS_NEGATIVE_UNTIL_SEPARATE_QUEUE_RECOMPUTE"
 }

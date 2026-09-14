@@ -1,0 +1,82 @@
+{
+  "work_unit": "ANIMO-GHG06",
+  "target": "TCD-034",
+  "review_kind": "GOV05_ENHANCED_INTERNAL_ADVERSARIAL_REVIEW",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "reviewed_head": "9d72d9c1140db87ee2468285100bfc5bdb748c93",
+  "reviewed_head_ci_run": 34839753046,
+  "reviewed_head_ci_job": 103961705229,
+  "reviewed_head_ci_conclusion": "success",
+  "base_predecessor": "ANIMO-GHG05@cf235fbc93fdb77d93aa260c8ede8fcdbbdbc5d3",
+  "governing_authorities": {
+    "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "GOV05": "f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+    "GOV06": "7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
+    "RG05O": "bc9e6ed997a078336645210ebb4d99ae976893fe",
+    "B3Q06": "11e9bcdc6654e63f84875bf1f28dc54abe725700",
+    "B3I10": "942f26fe32eaf91679e59a1968ae173a3703e22d"
+  },
+  "primary_disposition": "QUALIFIED_TCD034_SELECTOR_IDENTITY_UNRESOLVED_MATERIAL_THEORY_OR_DESIGN_EVIDENCE_REQUIRED",
+  "adversarial_questions": [
+    {
+      "question": "Could Te(Nuroup+1) itself be qualified as the intended physical selector?",
+      "finding": "NO",
+      "basis": "Nuroup is dynamic root/transpiration state rather than a fixed-depth coordinate; equivalence to physical T50 is not invariant and lower-profile edge behavior is unsafe."
+    },
+    {
+      "question": "Does the Walter-Heimann fingerprint prove historical ANIMO intent?",
+      "finding": "NO",
+      "basis": "The multi-feature match strongly supports conceptual provenance, but external literature is not revision-53 ANIMO authority and does not define ANIMO layer indexing."
+    },
+    {
+      "question": "Can the fixed 0.50 m concept be converted directly into a model-evolution selector?",
+      "finding": "NO",
+      "basis": "Containing-layer, nearest-midpoint and interpolation operators are distinct on arbitrary layer geometry; choosing one without a design authority would invent semantics."
+    },
+    {
+      "question": "Could a root-weighted temperature be admitted as a scientifically preferable replacement?",
+      "finding": "NO",
+      "basis": "It is plausible but unsupported by the reviewed ANIMO or Walter-Heimann formulation for this growth term."
+    },
+    {
+      "question": "Does zero-root Te(1) create an observable plant-path defect requiring separate correction here?",
+      "finding": "NO_FOR_THIS_PATH",
+      "basis": "K1plant remains zero for all compartments when Nuroup=0, so the evaluated fGrow does not affect plant-mediated CH4 transport on that path."
+    },
+    {
+      "question": "Can GHG06 close the active plant-mediated methane evidence gap?",
+      "finding": "NO",
+      "basis": "The frozen natural GHG testcase has FvegCH4=0.0; positive activation/reachability remains a separate future workunit after selector qualification."
+    }
+  ],
+  "evidence_review": {
+    "source_reconstruction": "PASS",
+    "source_hash_and_manifest_lineage": "PASS",
+    "current_selector_semantics": "PASS",
+    "zero_root_noninterference": "PASS_BOUNDED_TO_K1PLANT_PATH",
+    "external_Walter_Heimann_formula_fingerprint": "PASS_AS_EXTERNAL_MODEL_EVOLUTION_EVIDENCE_ONLY",
+    "historical_ANIMO_selector_authority": "FAIL_CLOSED_ABSENT",
+    "exact_0_50m_to_layer_operator": "FAIL_CLOSED_ABSENT",
+    "positive_FvegCH4_reference_activation": "FAIL_CLOSED_OPEN_SEPARATE_SCOPE",
+    "replacement_selector_invented": false,
+    "production_source_changed": false,
+    "B3_admission_performed": false,
+    "central_queue_or_routing_mutated": false
+  },
+  "review_notes": [
+    "The strongest new result is a conceptual provenance narrowing, not an executable selector qualification.",
+    "The negative disposition is stronger than GHG05 because it distinguishes the likely physical quantity from the still-missing discretization rule.",
+    "No substantive remediation is required because the authoring package already states the external-evidence limit and fails closed at the exact-selector gate.",
+    "No claim of genuinely independent review is made."
+  ],
+  "outcome": "PASS_NEGATIVE_SELECTOR_DISPOSITION_WITH_NO_SUBSTANTIVE_REMEDIATION",
+  "b3_admission_allowed": false,
+  "production_authorized": false,
+  "next_required_evidence": "Recover/freeze ANIMO-specific GHG selector authority or open a separately governed model-evolution design qualification for an explicit 0.50 m temperature operator. Only after a positive selector qualification should an active FvegCH4>0 positive-control/reachability workunit proceed."
+}
