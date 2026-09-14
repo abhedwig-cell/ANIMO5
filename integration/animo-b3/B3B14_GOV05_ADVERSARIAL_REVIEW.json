@@ -1,0 +1,109 @@
+{
+  "work_unit": "ANIMO-B3B14",
+  "artifact": "GOV05_INTERNAL_ADVERSARIAL_REVIEW",
+  "review_mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "assurance_label": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "independent_from_correction_authoring": false,
+  "reviewed_authoring_head": "568421dbad50a561261f28fb63b772451a518cdf",
+  "reviewed_authoring_tree": "8d4c8a38dd609c20ef264994623ecdd705246683",
+  "freeze_record_commit": "d4d6f3725544177813f91435e81f0d42caa68b44",
+  "pre_review_exact_head_ci": {
+    "run_id": 34819969383,
+    "job_id": 103899062842,
+    "job_name": "exact-head-validation",
+    "conclusion": "success"
+  },
+  "governing_review_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "risk_treatment": "ENHANCED_INTERNAL_ADVERSARIAL_REVIEW_FOR_CLASS_C_PARENT_READINESS",
+  "reconstruction_without_authoring_conclusion_as_premise": {
+    "original_parent_defect": "Revision-53 can delete finite NH4-N mass when the layer-0 aqueous storage representation disappears during wet-to-dry transition. The original correction obligation is therefore not merely to add a bookkeeping bucket, but to preserve conserved mass in an explicit physical state with a scientifically bounded lifecycle.",
+    "minimum_scientific_surfaces_reconstructed": [
+      "existence and state ownership",
+      "species/identity envelope",
+      "storage representation",
+      "wet-to-continuation transfer",
+      "dry-period semantics",
+      "rewetting or continuation-out transition",
+      "mass conservation",
+      "restart persistence",
+      "interaction with existing ANIMO processes",
+      "historical-behaviour uncertainty"
+    ],
+    "strongest_positive_case": "A bounded continuation owner can represent, conserve, checkpoint and restore the lost nitrogen mass without assigning an unsupported phase. Dry intervals can fail closed by carrying state forward without claiming physical inertness.",
+    "strongest_negative_case": "Class-C state correction is not scientifically executable through a complete lifecycle because no receiver, physical activation rule, transfer amount or kinetics, or ordering is qualified for rewetting/continuation-out. A storage-only parent disposition would silently narrow the original missing-state correction."
+  },
+  "counter_hypothesis_tests": [
+    {
+      "id": "H1_READY_ON_CONSERVATIVE_STATE_ONLY",
+      "result": "REJECT",
+      "reason": "State and mass sufficiency establish capture/persist/restore, but B3Q01 Class-C semantics require transfer-in/out and activation or phase-transition behavior. Rewetting remains an admission-blocking lifecycle surface."
+    },
+    {
+      "id": "H2_NOT_READY_PROCESS_LAW_REQUIRED",
+      "result": "SUPPORTED_WITH_SCOPE",
+      "reason": "A concrete dry transformation law is not automatically required because the qualified fail-closed no-process guard is epistemic safety semantics. A scientifically bounded continuation-out/rewetting transition is required for a complete Class-C parent correction."
+    },
+    {
+      "id": "H3_NOT_READY_IDENTITY_INSUFFICIENT",
+      "result": "SUPPORTED_AS_UPSTREAM_LIMIT_NOT_STANDALONE_STORAGE_BLOCKER",
+      "reason": "The noncommittal NH4-N-origin identity envelope is sufficient for conservation ownership but insufficient to select dissolution, volatilization, sorption or other rewetting physics. Identity uncertainty therefore blocks process selection through the rewetting surface, not existence of the continuation storage itself."
+    },
+    {
+      "id": "H4_STORAGE_ONLY_BOUNDED_PARENT",
+      "result": "REJECT",
+      "reason": "Admitting only explicit conserved continuation storage would redefine the parent from a missing physical-state lifecycle correction to a storage-only correction. That conflicts with SQ01 atomization and B3Q01 Class-C transfer/activation gates."
+    },
+    {
+      "id": "H5_PARENT_COMPOSITION_INCOMPLETE",
+      "result": "REJECT_AS_PRIMARY_DISPOSITION",
+      "reason": "The composition review covers all identified parent surfaces and finds no missing implicit child. Composition is complete enough to diagnose the scientific blocker; it fails because a required rewetting surface is unqualified, not because composition work itself is missing."
+    }
+  ],
+  "mandatory_adversarial_checks": {
+    "desire_to_close_b3_mistaken_for_evidence": "PASS_NO_POSITIVE_READINESS_PROMOTION",
+    "mass_closure_mistaken_for_physics": "PASS_MASSQ04_USED_ONLY_FOR_ONTOLOGY_AND_CONSERVATION",
+    "negative_qualification_mistaken_for_failure": "PASS_SQ06_AND_SQ07_TREATED_AS_CLOSED_SCIENTIFIC_KNOWLEDGE",
+    "negative_qualification_mistaken_for_positive_inertness": "PASS_DRY_PERSISTENCE_REMAINS_NONPHYSICAL_FAIL_CLOSED_GUARD",
+    "unknown_historical_behavior_silently_ignored": "PASS_REMAINS_UNKNOWN_WITHOUT_B2",
+    "child_evidence_promoted_to_parent": "PASS_EXPLICIT_PARENT_COMPOSITION_REVIEW_REQUIRED_AND_PERFORMED",
+    "original_discrepancy_silently_narrowed": "PASS_STORAGE_ONLY_H4_REJECTED",
+    "state_representation_mistaken_for_process_definition": "PASS_REWETTING_REMAINS_BLOCKING",
+    "noncommittal_identity_mistaken_for_NH4_speciation": "PASS_NO_PHASE_OR_MOLECULAR_SPECIATION_CLAIM",
+    "restart_sufficiency_assumed": "PASS_ONLY_EXACT_CONTINUATION_MASS_RESTORE_IS_CLAIMED_AT_CONTRACT_LEVEL_NO_PRODUCTION_RESTART_IMPLEMENTATION_CLAIM",
+    "missing_process_law_auto_blocking": "PASS_DRY_LAW_ABSENCE_CLASSIFIED_NONBLOCKING_UNDER_FAIL_CLOSED_GUARD",
+    "missing_process_law_auto_nonblocking": "PASS_REWETTING_LIFECYCLE_LAW_CLASSIFIED_BLOCKING_BY_CLASS_C_GATE",
+    "b3_readiness_confused_with_b3_admission": "PASS_NO_ADMISSION_PERFORMED",
+    "same_agent_review_mislabeled_independent": "PASS_ASSURANCE_LABEL_EXPLICITLY_NOT_INDEPENDENT"
+  },
+  "state_mass_restart_review": {
+    "capture": "PASS_BOUNDED_CONSERVATIVE_TYPED_TRANSFER_TO_EXPLICIT_OWNER",
+    "persist": "PASS_BOUNDED_FAIL_CLOSED_STATE_CARRY_FORWARD",
+    "restore": "PASS_BOUNDED_EXACT_CONTINUATION_MASS_RESTORE_CONTRACT",
+    "continue_dry": "PASS_BOUNDED_NO_PROCESS_GUARD_NOT_PHYSICAL_INERTNESS",
+    "continue_rewet": "FAIL_ADMISSION_BLOCKING_NO_QUALIFIED_RECEIVER_ACTIVATION_TRANSFER_LAW_OR_ORDERING",
+    "diagnostic_residual_may_reconstruct_state": false,
+    "production_split_run_claim": false
+  },
+  "historical_evidence_review": {
+    "status": "UNKNOWN_WITHOUT_B2",
+    "new_b2_found": false,
+    "historical_fidelity_claim": false,
+    "disposition": "NON_BLOCKING_FOR_THE_PRESENT_FAIL_CLOSED_READINESS_DECISION_BUT_MUST_PROPAGATE_AS_RESIDUAL_UNCERTAINTY"
+  },
+  "supersession_check": {
+    "later_tcd016_science_authority_found": false,
+    "observed_latest_bounded_science": "ANIMO-SQ08@f89ec3b0bfd053c2c903cbbcf2243bb4ab4a5741",
+    "note": "Live branch inspection found B3B14 itself but no later separate TCD-016 scientific authority superseding SQ08."
+  },
+  "substantive_findings": [],
+  "administrative_or_tooling_history": [
+    "The first authoring-freeze CI exposed an incorrect validator repository root.",
+    "A second CI exposed an overly brittle wording assertion.",
+    "Both were tooling-only defects. They were remediated and transient duplicate artifacts were removed before the clean freeze. No scientific claim changed."
+  ],
+  "substantive_remediation_required": false,
+  "review_result": "SELF_REVIEW_PASS",
+  "reviewed_primary_disposition": "QUALIFIED_TCD016_PARENT_NOT_READY_EXPLICIT_MODEL_EVOLUTION_DECISION_REQUIRED",
+  "review_conclusion": "The fail-closed not-ready disposition survives adversarial reconstruction. The exact blocking surface is the missing scientifically qualified continuation-out/rewetting lifecycle contract. The dry-law negative result and historical unknown do not independently force failure, and mass/restart sufficiency does not repair the missing process semantics.",
+  "next_handoff": "SEPARATE_EXPLICITLY_AUTHORIZED_TCD016_MODEL_EVOLUTION_DECISION_AND_QUALIFICATION_WORKUNIT_UNLESS_NEW_MATERIAL_IDENTITY_EVIDENCE_IS_SUPPLIED_FIRST"
+}
