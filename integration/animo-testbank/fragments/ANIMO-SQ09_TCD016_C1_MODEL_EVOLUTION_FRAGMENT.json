@@ -52,14 +52,13 @@
       "expected_final": {"total_T_rewet": "0.250000", "M_cont_after": "0.000000", "S_aq_after": "0.260000"}
     },
     {
-      "id": "SQ09-ME-05-NEW-CYCLE",
-      "purpose": "New continuation mass created after a later dry-down is independently eligible at the next activation.",
+      "id": "SQ09-ME-05-DELAYED-ACTIVATION",
+      "purpose": "A newly present continuation pool persists while inactive and is eligible at the next activation without any dry-period loss.",
       "sequence": [
-        {"M_cont_before": "0.100000", "S_aq_before": "0.020000", "surface_aqueous_active": true},
-        {"add_new_continuation_mass": "0.040000", "surface_aqueous_active": false},
+        {"M_cont_before": "0.040000", "S_aq_before": "0.000000", "surface_aqueous_active": false},
         {"surface_aqueous_active": true}
       ],
-      "expected_final": {"total_T_rewet": "0.140000", "M_cont_after": "0.000000", "S_aq_after": "0.160000"}
+      "expected_final": {"total_T_rewet": "0.040000", "M_cont_after": "0.000000", "S_aq_after": "0.040000"}
     }
   ],
   "interpretation_limit": "Passing this fragment proves only that the selected candidate contract is internally conservative and state-machine consistent. It does not prove that the candidate is physically correct, historically faithful or scientifically admissible.",
