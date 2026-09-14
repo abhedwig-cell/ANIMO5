@@ -1,0 +1,93 @@
+{
+  "work_unit": "ANIMO-GHG07",
+  "target": "TCD-034",
+  "review_kind": "GOV05_ENHANCED_INTERNAL_ADVERSARIAL_REVIEW",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "reviewed_head": "ade0d6ba20a04823349c3e88a4898fd9dbd0d0b2",
+  "reviewed_head_ci_run": 34844113514,
+  "reviewed_head_ci_job": 103975778802,
+  "reviewed_head_ci_conclusion": "success",
+  "base_predecessor": "ANIMO-GHG06A@2573686af69a8d68a94010bb663272b35871a6e1",
+  "primary_disposition": "QUALIFIED_TCD034_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY_AND_PARTITION_V1",
+  "adversarial_questions": [
+    {
+      "question": "Does a positive synthetic plant flux prove historical revision-53 TCD-034 correctness?",
+      "finding": "NO",
+      "basis": "The selector is the GHG06A model-evolution contract and the controls are synthetic. Historical selector identity and historical active behavior remain unqualified."
+    },
+    {
+      "question": "Is the active control genuinely reachable rather than positive by construction through an unchecked constant?",
+      "finding": "YES_FOR_THE_BOUNDED_ALGEBRA",
+      "basis": "The control derives T50 from the qualified 0.50 m operator, derives fGrow from the source response, normalizes roots with the source rule, applies Kpl=0.24, positive FvegCH4, positive phase storage and positive AvCoCH4, then checks strictly positive removal, oxidation and emission."
+    },
+    {
+      "question": "Could the positive control hide a selector fallback when 0.50 m is unavailable?",
+      "finding": "NO",
+      "basis": "The unavailable-geometry oracle propagates UNAVAILABLE_FAIL_CLOSED before any plant result and no root-index, Te(0), nearest-layer or containing-layer fallback exists."
+    },
+    {
+      "question": "Does the root-factor construction preserve the source normalization for unequal roots and the zero-root-mass fallback?",
+      "finding": "YES",
+      "basis": "The oracle bank verifies sum(fRoot*He)=ToZr for unequal roots and fRoot=1 per rooted layer under the thickness fallback."
+    },
+    {
+      "question": "Does Qox+Qem conservation accidentally claim a whole-model methane or carbon balance?",
+      "finding": "NO",
+      "basis": "The identity is restricted to partition of the plant-mediated removal term built from the same Kplant, AvCoCH4 and He. Production, ebullition, diffusion, advection and soil oxidation are explicitly outside scope."
+    },
+    {
+      "question": "Are PvCH4Ox endpoint controls consistent with the source partition semantics?",
+      "finding": "YES",
+      "basis": "Pv=0 sends the bounded plant-removal term entirely to atmospheric emission; Pv=1 sends it entirely to plant oxidation; intermediate Pv closes exactly to the same removal term."
+    },
+    {
+      "question": "Could the natural GHGMais testcase now be described as validating active plant transport?",
+      "finding": "NO",
+      "basis": "Its FvegCH4 remains zero. GHG07 creates a separate synthetic positive-control fragment and does not alter or relabel the frozen testcase."
+    },
+    {
+      "question": "Does GHG07 authorize B3 admission or production migration?",
+      "finding": "NO",
+      "basis": "It qualifies only model-evolution active-path reachability and partition. Admission and production remain separate serialized authorities."
+    }
+  ],
+  "gates": {
+    "predecessor_selector_authority": "PASS_GHG06A_EXACT_FINAL_GREEN",
+    "active_positive_control": "PASS",
+    "vegetation_switch": "PASS",
+    "growth_switch": "PASS",
+    "mature_growth_endpoint": "PASS",
+    "no_root_nonactivation": "PASS",
+    "root_normalization": "PASS",
+    "zero_root_mass_fallback": "PASS",
+    "partition_conservation": "PASS",
+    "partition_endpoints": "PASS",
+    "selector_fail_closed": "PASS",
+    "historical_claim_separation": "PASS",
+    "synthetic_evidence_not_B2": "PASS",
+    "whole_model_balance_not_claimed": "PASS",
+    "production_source_unchanged": "PASS",
+    "canonical_register_unchanged": "PASS",
+    "central_queue_unchanged": "PASS",
+    "aggregate_and_routing_unchanged": "PASS",
+    "central_testbank_registry_unchanged": "PASS"
+  },
+  "residual_limits": [
+    "historical revision-53 T50 intent remains unresolved",
+    "no empirical validation of plant-mediated methane flux magnitude is performed",
+    "no whole-model methane conservation claim is made",
+    "the active controls do not establish B2 historical behavior",
+    "the frozen natural GHG testcase still does not activate FvegCH4>0",
+    "no B3 admission or production authority is created"
+  ],
+  "outcome": "PASS_TCD034_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY_AND_PARTITION_V1",
+  "decision": "PASS_TCD034_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY_AND_PARTITION_V1",
+  "b3_admission_allowed_by_this_review": false,
+  "production_authorized": false,
+  "next_required_regie_action": "REASSESS_TCD034_PARENT_SCIENTIFIC_CLOSURE_WITH_HISTORICAL_SELECTOR_UNRESOLVED_BUT_MODEL_EVOLUTION_SELECTOR_AND_ACTIVE_PATH_NOW_BOUNDED; DO_NOT_AUTO_ADMIT"
+}

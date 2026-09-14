@@ -3,9 +3,9 @@
   "target": "TCD-034",
   "title": "Active Plant-Mediated CH4 Reachability & Positive-Control Qualification",
   "branch": "work/animo-ghg07-tcd034-active-plant-ch4-reachability",
-  "phase": "SUBSTANTIVE_AUTHORING_FROZEN_AWAITING_GOV05_REVIEW",
-  "state": "POSITIVE_MODEL_EVOLUTION_ACTIVE_PATH_DECISION_PENDING_PROCESS_REVIEW",
-  "primary_disposition": "QUALIFIED_TCD034_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY_AND_PARTITION_V1_PENDING_GOV05_REVIEW",
+  "phase": "COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY_NO_B3_ADMISSION",
+  "primary_disposition": "QUALIFIED_TCD034_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY_AND_PARTITION_V1",
   "base_predecessor": "ANIMO-GHG06A@2573686af69a8d68a94010bb663272b35871a6e1",
   "authorities": {
     "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
@@ -25,21 +25,48 @@
   "historical_revision53_selector_qualified": false,
   "historical_positive_control_qualified": false,
   "evidence_class": "SYNTHETIC_MODEL_EVOLUTION_POSITIVE_CONTROL_NOT_B2",
-  "principal_positive_control": "STRICTLY_POSITIVE_QPLANT_QOX_QEM_WITH_FVEGCH4_0P5_T50_12C_PV_0P25",
-  "partition_conservation": "QOX_PLUS_QEM_EQUALS_QPLANT_LAYERWISE_AND_PROFILE",
-  "selector_unavailable_behavior": "FAIL_CLOSED_NO_ACTIVE_PLANT_RESULT",
+  "principal_positive_control": {
+    "T50_degC": 12.0,
+    "Tegr_degC": 7.0,
+    "FvegCH4": 0.5,
+    "PvCH4Ox": 0.25,
+    "Qplant_total_kgC_m2_d": 0.0072,
+    "Qox_total_kgC_m2_d": 0.0018,
+    "Qem_total_kgC_m2_d": 0.0054,
+    "strictly_positive": true
+  },
+  "partition_conservation": "PASS_LAYERWISE_AND_PROFILE",
+  "selector_unavailable_behavior": "PASS_FAIL_CLOSED_NO_ACTIVE_PLANT_RESULT",
+  "natural_testbank_active_control": "ABSENT_FROZEN_GHG_CASE_REMAINS_FVEGCH4_ZERO",
   "b3_admission_performed": false,
   "production_authorized": false,
   "review": {
     "required": true,
-    "completed": false,
+    "completed": true,
     "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
-    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT when complete"
+    "review_mode": "SAME_AGENT_SECOND_PASS",
+    "same_agent": true,
+    "genuinely_independent": false,
+    "independence_claimed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "reviewed_head": "ade0d6ba20a04823349c3e88a4898fd9dbd0d0b2",
+    "reviewed_head_ci_run": 34844113514,
+    "reviewed_head_ci_job": 103975778802,
+    "reviewed_head_ci_conclusion": "success",
+    "outcome": "PASS_TCD034_MODEL_EVOLUTION_ACTIVE_PLANT_CH4_REACHABILITY_AND_PARTITION_V1",
+    "artifact": "integration/animo-ghg/ANIMO-GHG07_INTERNAL_ADVERSARIAL_REVIEW.json"
   },
   "validation": {
     "workflow": ".github/workflows/animo-ghg07-tcd034.yml",
     "validator": "tools/ghg07/validate_ghg07_tcd034.py",
-    "exact_final_head_required": true
+    "authoring_head": "ade0d6ba20a04823349c3e88a4898fd9dbd0d0b2",
+    "authoring_tree": "15d4ba65a88e2417191d65ecd22d04963661dde2",
+    "authoring_run": 34844113514,
+    "authoring_job": 103975778802,
+    "authoring_conclusion": "success",
+    "exact_final_head_required": true,
+    "exact_final_head_status": "PENDING_REPLAY_AFTER_REVIEW_STATUS_CLOSEOUT",
+    "closeout_note": "The immutable substantive authoring head passed CI and was reviewed under GOV05. This review/status-only closeout becomes authoritative only after the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -57,9 +84,11 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
-  }
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
+  },
+  "next_handoff": "TCD034_PARENT_SCIENTIFIC_CLOSURE_REASSESSMENT_WITH_HISTORICAL_UNCERTAINTY_PRESERVED",
+  "next_if_exact_final_green": "GHG07_MAY_BE_CONSUMED_AS_MODEL_EVOLUTION_ACTIVE_PATH_EVIDENCE; HISTORICAL_TCD034_REMAINS_UNRESOLVED; NO_AUTOMATIC_B3_OR_PRODUCTION_PROMOTION"
 }
