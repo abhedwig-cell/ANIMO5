@@ -1,0 +1,33 @@
+{
+  "work_unit": "ANIMO-GHG11",
+  "target": "TCD-034",
+  "branch": "work/animo-ghg11-tcd034-external-validation-evidence",
+  "phase": "SUBSTANTIVE_AUTHORING_FROZEN_AWAITING_GOV05_REVIEW",
+  "state": "QUALIFIED_EXTERNAL_EVIDENCE_INVENTORY_PENDING_PROCESS_REVIEW",
+  "primary_disposition": "QUALIFIED_TCD034_EXTERNAL_MODEL_EVOLUTION_EVIDENCE_PARTIAL_EMPIRICAL_SUPPORT_CLASS_F_VALIDATION_GAP_REMAINS_V1",
+  "base_predecessor": "ANIMO-GHG10@ad24f3a6dcf2b0a7f4dc1cc9b49e6422f8d36159",
+  "evidence_class": "NEW_MODEL_EVOLUTION_SCIENTIFIC_EVIDENCE_NOT_HISTORICAL_ANIMO_AUTHORITY",
+  "class_f_admission_ready": false,
+  "b3_admission_performed": false,
+  "class_f_admission_performed": false,
+  "production_authorized": false,
+  "historical_revision53_selector": "UNRESOLVED_NOT_HISTORICALLY_QUALIFIED",
+  "review": {
+    "required": true,
+    "completed": false,
+    "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-ghg11-tcd034.yml",
+    "validator": "tools/ghg11/validate_ghg11_tcd034.py",
+    "exact_final_head_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  }
+}
