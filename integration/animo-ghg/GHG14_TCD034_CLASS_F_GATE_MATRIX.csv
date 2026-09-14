@@ -1,0 +1,8 @@
+gate_id,class_f_gate,status,primary_authorities,readiness_effect,residual_requirement
+GHG14-G01,"scientific rationale and authoritative theory",PASS_STRENGTHENED,"GHG06A;GHG11","SATISFIED_BOUNDED","Preserve model-evolution classification and do not promote external literature to historical ANIMO authority"
+GHG14-G02,"relationship to preserved B3/historical baseline",PASS_BOUNDED_WITH_HISTORICAL_UNCERTAINTY,"GHG05;GHG06;GHG08;GHG10","SATISFIED_BOUNDED","Historical selector remains unresolved and material difference must remain explicit"
+GHG14-G03,"calibration and parameter implications",PASS_BOUNDED_NONTRANSFERABILITY_DEFINED,"GHG09;GHG11","SATISFIED_SEMANTICALLY","Actual parameter estimation belongs inside process-resolved empirical validation and may not assume unchanged transfer"
+GHG14-G04,"conservation implications",PASS_BOUNDED_SOURCE_LEDGER_COMPATIBILITY,"GHG07;GHG13","SATISFIED_FOR_SCIENTIFIC_CONTRACT_BOUNDARY","Whole-model executable conservation remains implementation/production qualification and is not claimed"
+GHG14-G05,"validation evidence appropriate to process",FAIL_MATERIAL,"GHG11;GHG12","BLOCKS_CLASS_F_READINESS","File-level joined positive plant-CH4 validation with both selector inputs and anti-compensation design"
+GHG14-G06,"expected changes over intended application envelope",PARTIAL_MATERIAL_GAP,"GHG09;GHG10;GHG12","BLOCKS_CLASS_F_READINESS","Representative multi-condition or multi-site evidence unless intended scope is prospectively and explicitly narrower"
+GHG14-G07,"independent scientific review",FAIL_MATERIAL,"B3Q01;GOV05;GHG08;GHG11;GHG12;GHG13","BLOCKS_CLASS_F_READINESS","Genuinely independent Class-F scientific review; same-agent GOV05 review does not satisfy this gate"

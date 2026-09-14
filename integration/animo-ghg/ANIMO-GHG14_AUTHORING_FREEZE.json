@@ -1,0 +1,29 @@
+{
+  "work_unit": "ANIMO-GHG14",
+  "target": "TCD-034",
+  "branch": "work/animo-ghg14-tcd034-class-f-readiness-reassessment",
+  "base_head": "a5f3c0ff662017791c6ccf6303b9e98c570d9d42",
+  "base_predecessor": "ANIMO-GHG13@a5f3c0ff662017791c6ccf6303b9e98c570d9d42",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_READINESS_REVIEW",
+  "semantic_owner": "TCD034_CLASS_F_READINESS_REASSESSMENT",
+  "substantive_files": [
+    "docs/ghg/TCD034_CLASS_F_READINESS_REASSESSMENT.md",
+    "integration/animo-ghg/GHG14_TCD034_CLASS_F_GATE_MATRIX.csv",
+    "integration/animo-ghg/GHG14_TCD034_CLASS_F_READINESS_ASSESSMENT.json",
+    "tools/ghg14/validate_ghg14_tcd034.py",
+    ".github/workflows/animo-ghg14-tcd034.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-ghg/ANIMO-GHG14_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-ghg/ANIMO-GHG14_STATUS.json"
+  ],
+  "substantive_change_resets_GOV05_review": true,
+  "review_must_pin_exact_green_authoring_head": true,
+  "exact_final_head_ci_required": true,
+  "production_source_frozen": true,
+  "frozen_b0_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "aggregate_and_routing_frozen": true,
+  "central_testbank_registry_frozen": true
+}

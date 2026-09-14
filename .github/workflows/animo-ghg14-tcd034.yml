@@ -1,0 +1,22 @@
+name: ANIMO-GHG14 TCD034 Class-F readiness reassessment
+
+on:
+  push:
+    branches:
+      - work/animo-ghg14-tcd034-class-f-readiness-reassessment
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Parse qualification package
+        run: |
+          python -m json.tool integration/animo-ghg/GHG14_TCD034_CLASS_F_READINESS_ASSESSMENT.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG14_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG14_STATUS.json >/dev/null
+          python -m py_compile tools/ghg14/validate_ghg14_tcd034.py
+      - name: Validate Class-F readiness reassessment
+        run: python tools/ghg14/validate_ghg14_tcd034.py

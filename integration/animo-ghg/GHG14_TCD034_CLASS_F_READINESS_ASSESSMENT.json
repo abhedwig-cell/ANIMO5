@@ -1,0 +1,60 @@
+{
+  "work_unit": "ANIMO-GHG14",
+  "target": "TCD-034",
+  "title": "Class-F Readiness Reassessment after GHG09-GHG13",
+  "predecessor": "ANIMO-GHG13@a5f3c0ff662017791c6ccf6303b9e98c570d9d42",
+  "b3q01_authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "primary_disposition": "QUALIFIED_TCD034_CLASS_F_READINESS_REASSESSMENT_NOT_READY_THREE_MATERIAL_GATES_REMAIN_V1",
+  "legacy_track": {
+    "historical_selector_identity": "UNRESOLVED",
+    "historical_behavior": "UNRESOLVED_NOT_ADMITTED",
+    "active_historical_b2": "ABSENT",
+    "promoted_to_model_evolution": false
+  },
+  "model_evolution_authorities": {
+    "selector_operator": "ANIMO-GHG06A@2573686af69a8d68a94010bb663272b35871a6e1",
+    "active_path_reachability": "ANIMO-GHG07@f8969334f648ca28ceb93a2a55bb4eedd478e1dc",
+    "parent_negative_readiness": "ANIMO-GHG08@97913b04906eb23c28b47a68ec9def7392174be5",
+    "parameter_transfer": "ANIMO-GHG09@31c8ba9a53cb602c7a4a71f501384058ef7be7b2",
+    "frozen_driver_materiality": "ANIMO-GHG10@ad24f3a6dcf2b0a7f4dc1cc9b49e6422f8d36159",
+    "external_evidence": "ANIMO-GHG11@98782bfa332aae0073d0686ad0261571a991a057",
+    "validation_candidate_acquisition": "ANIMO-GHG12@b4a3c603743a2e3ba62fdf69f0879975a3b4f14a",
+    "source_ledger_compatibility": "ANIMO-GHG13@a5f3c0ff662017791c6ccf6303b9e98c570d9d42"
+  },
+  "class_f_gate_assessment": {
+    "scientific_rationale_and_authoritative_theory": "PASS_STRENGTHENED",
+    "relationship_to_preserved_b3_baseline": "PASS_BOUNDED_WITH_HISTORICAL_UNCERTAINTY",
+    "calibration_and_parameter_implications": "PASS_BOUNDED_NONTRANSFERABILITY_DEFINED",
+    "conservation_implications": "PASS_BOUNDED_SOURCE_LEDGER_COMPATIBILITY",
+    "validation_evidence_appropriate_to_process": "FAIL_MATERIAL",
+    "expected_changes_across_application_envelope": "PARTIAL_MATERIAL_GAP",
+    "independent_scientific_review": "FAIL_MATERIAL"
+  },
+  "material_remaining_gates": [
+    "PROCESS_RESOLVED_EMPIRICAL_VALIDATION_WITH_ANTI_COMPENSATION_DESIGN",
+    "INTENDED_APPLICATION_ENVELOPE_EXPECTED_CHANGE_EVIDENCE",
+    "GENUINELY_INDEPENDENT_CLASS_F_SCIENTIFIC_REVIEW"
+  ],
+  "resolved_or_bounded_since_ghg08": {
+    "application_case_materiality": "GHG10 demonstrates material selector divergence on one ten-year frozen environmental driver case",
+    "parameter_transfer_implications": "GHG09 defines nontransferability risk and GHG11 reinforces empirical recalibration/validation need",
+    "conservation_implications": "GHG13 closes bounded source-ledger compatibility beyond GHG07 partition-only identity",
+    "external_scientific_lineage": "GHG11 strengthens theory and process-validation design",
+    "public_process_resolved_candidate": "GHG12 identifies SPRUCE S1 Bog stack but does not yet qualify file-level joinability"
+  },
+  "admission": {
+    "class_f_ready": false,
+    "class_f_admitted": false,
+    "b3_admitted": false,
+    "production_authorized": false,
+    "canonical_register_modified": false,
+    "central_queue_modified": false
+  },
+  "next_required_work": [
+    "FILE_LEVEL_SPRUCE_EXTRACTION_CHECKSUM_SCHEMA_AND_JOINABILITY_QUALIFICATION",
+    "EMPIRICAL_SELECTOR_VALIDATION_WITH_CALIBRATION_VALIDATION_SEPARATION",
+    "REPRESENTATIVE_APPLICATION_ENVELOPE_EXPECTED_CHANGE_QUALIFICATION",
+    "GENUINELY_INDEPENDENT_CLASS_F_SCIENTIFIC_REVIEW"
+  ],
+  "decision": "QUALIFIED_TCD034_CLASS_F_READINESS_REASSESSMENT_NOT_READY_THREE_MATERIAL_GATES_REMAIN_V1"
+}

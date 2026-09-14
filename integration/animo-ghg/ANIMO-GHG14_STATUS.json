@@ -1,0 +1,39 @@
+{
+  "work_unit": "ANIMO-GHG14",
+  "target": "TCD-034",
+  "branch": "work/animo-ghg14-tcd034-class-f-readiness-reassessment",
+  "phase": "SUBSTANTIVE_AUTHORING_FROZEN_AWAITING_GOV05_REVIEW",
+  "state": "QUALIFIED_CLASS_F_READINESS_REASSESSMENT_PENDING_PROCESS_REVIEW",
+  "primary_disposition": "QUALIFIED_TCD034_CLASS_F_READINESS_REASSESSMENT_NOT_READY_THREE_MATERIAL_GATES_REMAIN_V1",
+  "base_predecessor": "ANIMO-GHG13@a5f3c0ff662017791c6ccf6303b9e98c570d9d42",
+  "legacy_track": "UNRESOLVED_NOT_ADMITTED",
+  "class_f_admission_ready": false,
+  "remaining_material_gate_count": 3,
+  "remaining_material_gates": [
+    "PROCESS_RESOLVED_EMPIRICAL_VALIDATION_WITH_ANTI_COMPENSATION_DESIGN",
+    "INTENDED_APPLICATION_ENVELOPE_EXPECTED_CHANGE_EVIDENCE",
+    "GENUINELY_INDEPENDENT_CLASS_F_SCIENTIFIC_REVIEW"
+  ],
+  "b3_admission_performed": false,
+  "class_f_admission_performed": false,
+  "production_authorized": false,
+  "review": {
+    "required": true,
+    "completed": false,
+    "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-ghg14-tcd034.yml",
+    "validator": "tools/ghg14/validate_ghg14_tcd034.py",
+    "exact_final_head_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next_if_green_and_reviewed": "PROCEED_TO_FILE_LEVEL_SPRUCE_EXTRACTION_AND_JOINABILITY; DO_NOT_AUTO_ADMIT_CLASS_F_OR_B3"
+}
