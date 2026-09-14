@@ -1,0 +1,51 @@
+name: ANIMO SQ10 TCD016 C1 Evidence Acquisition Validation
+
+on:
+  push:
+    branches:
+      - work/animo-sq10-tcd016-c1-model-evolution-evidence-validation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact branch head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Assert exact checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git cat-file -e d7f63e56daef8285e6a137774c703131a1100fa2^{commit}
+
+      - name: Validate SQ10 evidence package
+        run: python tools/sq10/validate_sq10_tcd016_c1.py
+
+      - name: Enforce evidence-only change surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=d7f63e56daef8285e6a137774c703131a1100fa2
+          if git diff --name-only "$base"..HEAD | grep -E '^(src/|integration/animo-reg/|integration/animo-testbank/)' ; then
+            echo 'Forbidden production, regie, or testbank mutation in SQ10'
+            exit 1
+          fi
+
+      - name: Record exact head
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "validated_head=$(git rev-parse HEAD)"
+          echo "validated_tree=$(git rev-parse HEAD^{tree})"
