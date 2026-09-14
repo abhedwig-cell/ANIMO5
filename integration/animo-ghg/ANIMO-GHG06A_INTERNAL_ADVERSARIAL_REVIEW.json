@@ -1,0 +1,107 @@
+{
+  "work_unit": "ANIMO-GHG06A",
+  "target": "TCD-034",
+  "review_kind": "GOV05_ENHANCED_INTERNAL_ADVERSARIAL_REREVIEW_AFTER_SUBSTANTIVE_VALIDATOR_REMEDIATION",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "reviewed_head": "a631c18f790f9be22dfade429513f7a74fa31770",
+  "reviewed_head_ci_run": 34843513288,
+  "reviewed_head_ci_job": 103973780492,
+  "reviewed_head_ci_conclusion": "success",
+  "base_predecessor": "ANIMO-GHG06@730f09f1567461a45bff4566368db05963b200fa",
+  "primary_disposition": "QUALIFIED_BOUNDED_MODEL_EVOLUTION_T50_DEPTH_OPERATOR_V1",
+  "superseded_review": {
+    "reviewed_head": "eda60bbc3484d82a2f52871ace00a74dfb44d26e",
+    "reviewed_head_ci_run": 34843001113,
+    "reviewed_head_ci_job": 103972125722,
+    "closeout_head": "1403eb200d48be70b6b6a3f134fee1f3b3df4f89",
+    "closeout_ci_run": 34843257441,
+    "closeout_ci_job": 103972954648,
+    "closeout_ci_conclusion": "failure",
+    "failure_class": "VALIDATOR_METADATA_PATH_BUG_NOT_SCIENTIFIC_FAILURE",
+    "supersession_reason": "The final validator read status.qualified although qualification is stored at status.work_status.qualified. Because the validator is a substantive workunit file, the prior GOV05 review was reset rather than reused."
+  },
+  "remediation_review": {
+    "changed_semantics": false,
+    "changed_scientific_contract": false,
+    "changed_oracles": false,
+    "changed_production_source": false,
+    "changed_validator_only": true,
+    "validator_change": "optional review block now reads work_status.qualified and work_status.workunit_complete from the declared status schema",
+    "remediated_exact_head_ci": "PASS"
+  },
+  "adversarial_questions": [
+    {
+      "question": "Did the validator remediation alter the scientific T50 operator or its domain?",
+      "finding": "NO",
+      "basis": "The contract, documentation and oracle bank are byte-identical to the green pre-review authoring package; only validator/status/review state changed."
+    },
+    {
+      "question": "Does this operator silently convert the Walter-Heimann provenance fingerprint into historical ANIMO truth?",
+      "finding": "NO",
+      "basis": "The contract remains explicitly MODEL_EVOLUTION_SCIENTIFIC_CONTRACT and historical revision-53 selector identity remains unqualified."
+    },
+    {
+      "question": "Could Te(Nuroup+1), Te(0), Te(1), nearest-layer or containing-layer behavior act as an implicit fallback?",
+      "finding": "NO",
+      "basis": "All are explicitly forbidden. The v1 operator either returns exact-node or adjacent-centre interpolation at 0.50 m, or UNAVAILABLE_FAIL_CLOSED."
+    },
+    {
+      "question": "Is linear interpolation sufficiently justified for a bounded model-evolution contract?",
+      "finding": "YES_WITHIN_DECLARED_SCOPE",
+      "basis": "It is local, node-preserving and affine-exact over the layer-centre field. This qualifies one bounded design, not historical use or empirical superiority over all possible reconstructions."
+    },
+    {
+      "question": "Does the operator invent surface or bottom boundary information?",
+      "finding": "NO",
+      "basis": "0.50 m must be bracketed by layer centres. Boundary half-cell extrapolation is explicitly rejected."
+    },
+    {
+      "question": "Does GHG06A redefine provider temporal semantics or create persistent state?",
+      "finding": "NO",
+      "basis": "T50 is derived from the current candidate-bound Te field, introduces no temporal averaging rule and is not persistent, restart or conserved state."
+    },
+    {
+      "question": "Can the synthetic operator oracles be promoted to B2 or whole-model reference behavior?",
+      "finding": "NO",
+      "basis": "They remain explicitly synthetic model-evolution oracles."
+    },
+    {
+      "question": "Does successful GHG06A qualification itself authorize B3 admission, production use or claim active plant-mediated CH4 validation?",
+      "finding": "NO",
+      "basis": "B3 and production remain closed; FvegCH4>0 positive-control/reachability remains separate GHG07 scope."
+    }
+  ],
+  "gates": {
+    "remediation_scope": "PASS_VALIDATOR_ONLY_NO_SCIENTIFIC_SEMANTIC_CHANGE",
+    "fixed_depth_identity": "PASS_MODEL_EVOLUTION_ONLY",
+    "operator_mathematics": "PASS",
+    "layer_geometry_units_and_midpoints": "PASS",
+    "root_independence": "PASS",
+    "no_extrapolation": "PASS_FAIL_CLOSED",
+    "provider_time_semantics_not_redefined": "PASS",
+    "synthetic_oracles": "PASS_NOT_B2",
+    "historical_claim_separation": "PASS",
+    "FVEGCH4_separate_scope": "PASS_OPEN_NOT_CLOSED",
+    "production_source_unchanged": "PASS",
+    "canonical_register_unchanged": "PASS",
+    "central_queue_unchanged": "PASS",
+    "aggregate_and_routing_unchanged": "PASS"
+  },
+  "residual_limits": [
+    "v1 is unavailable when 0.50 m is not bracketed by layer centres",
+    "v1 does not establish historical revision-53 intent",
+    "v1 does not add or qualify a temporal averaging operator beyond existing Te provider semantics",
+    "v1 has no active FvegCH4>0 plant-mediated CH4 positive-control evidence",
+    "v1 is not B3 admission and not production authority"
+  ],
+  "outcome": "PASS_BOUNDED_MODEL_EVOLUTION_T50_OPERATOR_V1_AFTER_VALIDATOR_REMEDIATION",
+  "decision": "PASS_BOUNDED_MODEL_EVOLUTION_T50_OPERATOR_V1",
+  "b3_admission_allowed_by_this_review": false,
+  "production_authorized": false,
+  "next_allowed_work": "SEPARATE_GHG07_ACTIVE_FVEGCH4_POSITIVE_CONTROL_AND_REACHABILITY_AGAINST_GHG06A_MODEL_EVOLUTION_CONTRACT"
+}
