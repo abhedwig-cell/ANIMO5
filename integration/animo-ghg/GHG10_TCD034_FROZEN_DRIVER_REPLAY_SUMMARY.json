@@ -1,0 +1,115 @@
+{
+  "work_unit": "ANIMO-GHG10",
+  "target": "TCD-034",
+  "evidence_id": "TCD034_FROZEN_GHGMAIS_DRIVER_DUAL_SELECTOR_REPLAY_V1",
+  "evidence_class": "PINNED_FROZEN_DRIVER_COUNTERFACTUAL_SELECTOR_REPLAY_NOT_B2_NOT_EMPIRICAL_VALIDATION",
+  "predecessor": "ANIMO-GHG09@31c8ba9a53cb602c7a4a71f501384058ef7be7b2",
+  "testbank": {
+    "archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "result_bun": {
+      "path": "ANIMO_testbank/GHGMais/Input/result.bun",
+      "size_bytes": 4178832,
+      "sha256": "cd4202745ee8a9ccd890e6aa6d3f551ff3bb80041efd178aedb3f5f4bbe002e2"
+    },
+    "crop_driver": {
+      "path": "ANIMO_testbank/GHGMais/Input/result_crop_ext.inp",
+      "sha256": "075a3a612df2b8745d3eda65eac7c56d6c37eb2beea5b91e4cb6dc1edb526679"
+    },
+    "soil_input": {
+      "path": "ANIMO_testbank/GHGMais/Input/soil.inp",
+      "sha256": "6a07157f64c0913f977487c1719794c1126416646b0b329ce39940935601f760",
+      "FvegCH4": 0.0,
+      "Tegr_degC": 7.0,
+      "PvCH4Ox": 0.5
+    },
+    "lineage_status": "BLOCKED_SOURCE_TESTCASE_CONTRACT_LINEAGE_MISMATCH",
+    "allowed_use": "ENVIRONMENTAL_DRIVER_TRACE_ONLY",
+    "b2_claimed": false
+  },
+  "source_evidence": {
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "ANIMO_4.1.5.53/Input_hydro.for": "5f07ce68969d749308595d6b4f9f789b6b3646ae226c233e2f8e49565a7dad64",
+    "ANIMO_4.1.5.53/root_extern.for": "063a754fac2fe1b1c4b60fab1e395b8b65a9a03a5d89ace03e08868e1774f0e9",
+    "ANIMO_4.1.5.53/ghg_ch4.for": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98"
+  },
+  "selector_pair": {
+    "reconstructed_current": "Te(Nuroup+1)_FOR_POSITIVE_ROOT_STATES_UNDER_CURRENT_STANDARD_FORTRAN_SEMANTICS",
+    "model_evolution": "TCD034_T50_0P50M_DEPTH_OPERATOR_V1",
+    "historical_intent_resolved": false
+  },
+  "driver": {
+    "daily_records": 3652,
+    "start_date": "2010-01-01",
+    "end_date": "2019-12-31",
+    "soil_compartments": 32,
+    "tiwa_start_d": 1.0,
+    "tiwa_end_d": 3652.0,
+    "tiwa_step_d": 1.0,
+    "active_root_days": 1604,
+    "active_date_first": "2010-04-13",
+    "active_date_last": "2019-09-04"
+  },
+  "replay_artifact": {
+    "filename": "GHG10_TCD034_FROZEN_DRIVER_ACTIVE_SELECTOR_REPLAY.csv",
+    "rows": 1604,
+    "sha256": "970bdc7b8666ddc30df5427310799efab77239d6cd02d11d92d977a54b45783e",
+    "repository_distribution": "SUMMARY_AND_REPRESENTATIVE_ROWS_ONLY",
+    "reason": "PINNED_BINARY_TESTBANK_NOT_REDISTRIBUTED_BY_THIS_WORKUNIT"
+  },
+  "selector_depth_m": {
+    "minimum": 0.074999996,
+    "maximum": 0.324999981,
+    "unique_values": [0.074999996, 0.124999993, 0.174999990, 0.224999987, 0.274999984, 0.324999981]
+  },
+  "temperature_difference": {
+    "definition": "reconstructed_current_minus_T50",
+    "mean_absolute_degC": 1.1584711637381546,
+    "median_absolute_degC": 0.960713760,
+    "maximum_absolute_degC": 5.384873259,
+    "count_abs_ge_0p5_degC": 1210,
+    "count_abs_ge_1_degC": 767,
+    "count_abs_ge_2_degC": 246,
+    "count_abs_ge_3_degC": 76,
+    "count_abs_ge_4_degC": 17,
+    "count_abs_ge_5_degC": 5
+  },
+  "growth_response_difference": {
+    "Tegr_degC": 7.0,
+    "Temat_degC": 17.0,
+    "mean_absolute_fGrow_difference": 0.2786236616003741,
+    "maximum_absolute_fGrow_difference": 2.487223461,
+    "regime_change_days": 231,
+    "regime_change_fraction": 0.1440149625935162,
+    "regime_change_percent": 14.40149625935162,
+    "legacy_fGrow_unweighted_sum": 5315.363443385,
+    "t50_fGrow_unweighted_sum": 5028.789447034,
+    "t50_vs_legacy_unweighted_sum_change_percent": -5.391428063261472,
+    "unweighted_sum_interpretation": "CASE_SENSITIVITY_DESCRIPTOR_ONLY_NOT_CH4_FLUX"
+  },
+  "regime_transition_counts": {
+    "MATURE_to_MATURE": 114,
+    "MATURE_to_TRANSITION": 196,
+    "OFF_to_TRANSITION": 34,
+    "TRANSITION_to_OFF": 1,
+    "TRANSITION_to_TRANSITION": 1259
+  },
+  "root_state_counts": {
+    "Nuroup_1": 46,
+    "Nuroup_2": 209,
+    "Nuroup_3": 242,
+    "Nuroup_4": 231,
+    "Nuroup_5": 211,
+    "Nuroup_6": 665
+  },
+  "interpretation": {
+    "selector_difference_material_on_case": true,
+    "representation_only_supported": false,
+    "numerically_negligible_supported": false,
+    "parameter_transfer_can_be_assumed": false,
+    "methane_flux_change_claimed": false,
+    "empirical_validation_claimed": false,
+    "full_application_envelope_closed": false,
+    "class_f_admission_supported": false
+  },
+  "decision": "QUALIFIED_TCD034_FROZEN_GHGMAIS_DRIVER_DUAL_SELECTOR_REPLAY_CASE_EVIDENCE_V1"
+}
