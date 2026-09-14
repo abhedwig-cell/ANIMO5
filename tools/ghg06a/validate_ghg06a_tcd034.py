@@ -167,7 +167,8 @@ def main():
         assert review["gates"]["no_extrapolation"] == "PASS_FAIL_CLOSED"
         assert review["gates"]["historical_claim_separation"] == "PASS"
         assert status["review"]["completed"] is True
-        assert status["qualified"] is True
+        assert status["work_status"]["qualified"] is True
+        assert status["work_status"]["workunit_complete"] is True
         assert status["b3_admission_performed"] is False
         assert status["state"] == "QUALIFIED_BOUNDED_MODEL_EVOLUTION_T50_OPERATOR_NO_B3_ADMISSION"
 

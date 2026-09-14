@@ -3,9 +3,9 @@
   "target": "TCD-034",
   "title": "Bounded Model-Evolution T50 0.50 m Depth Operator Qualification",
   "branch": "work/animo-ghg06a-tcd034-t50-depth-operator-model-evolution",
-  "phase": "COMPLETE_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
-  "state": "QUALIFIED_BOUNDED_MODEL_EVOLUTION_T50_OPERATOR_NO_B3_ADMISSION",
-  "primary_disposition": "QUALIFIED_BOUNDED_MODEL_EVOLUTION_T50_DEPTH_OPERATOR_V1",
+  "phase": "SUBSTANTIVE_REMEDIATION_FROZEN_AWAITING_GOV05_REREVIEW",
+  "state": "POSITIVE_BOUNDED_MODEL_EVOLUTION_OPERATOR_DECISION_REVIEW_RESET_AFTER_VALIDATOR_REMEDIATION",
+  "primary_disposition": "QUALIFIED_BOUNDED_MODEL_EVOLUTION_T50_DEPTH_OPERATOR_V1_PENDING_GOV05_REREVIEW",
   "base_predecessor": "ANIMO-GHG06@730f09f1567461a45bff4566368db05963b200fa",
   "authorities": {
     "GOV03": "cbd262bdabe92923113b7326f2f42822ce9a971c",
@@ -31,31 +31,29 @@
   "production_authorized": false,
   "review": {
     "required": true,
-    "completed": true,
+    "completed": false,
     "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
-    "review_mode": "SAME_AGENT_SECOND_PASS",
-    "same_agent": true,
-    "genuinely_independent": false,
-    "independence_claimed": false,
-    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "reviewed_head": "eda60bbc3484d82a2f52871ace00a74dfb44d26e",
-    "reviewed_head_ci_run": 34843001113,
-    "reviewed_head_ci_job": 103972125722,
-    "reviewed_head_ci_conclusion": "success",
-    "outcome": "PASS_BOUNDED_MODEL_EVOLUTION_T50_OPERATOR_V1",
-    "artifact": "integration/animo-ghg/ANIMO-GHG06A_INTERNAL_ADVERSARIAL_REVIEW.json"
+    "prior_review_superseded": true,
+    "superseded_reviewed_head": "eda60bbc3484d82a2f52871ace00a74dfb44d26e",
+    "superseded_review_ci_run": 34843001113,
+    "supersession_reason": "EXACT_FINAL_CI_ON_1403EB2_FAILED_IN_VALIDATOR_BECAUSE_REVIEW_BLOCK_READ_STATUS_QUALIFIED_AT_TOP_LEVEL_WHILE_STATUS_SCHEMA_STORES_IT_UNDER_WORK_STATUS; VALIDATOR_IS_A_SUBSTANTIVE_FILE_SO_GOV05_REVIEW_RESET_IS_REQUIRED",
+    "assurance_when_recompleted": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT"
   },
   "validation": {
     "workflow": ".github/workflows/animo-ghg06a-tcd034.yml",
     "validator": "tools/ghg06a/validate_ghg06a_tcd034.py",
-    "authoring_head": "eda60bbc3484d82a2f52871ace00a74dfb44d26e",
-    "authoring_tree": "1c97be647815a9038dc2765b4a9e886240af4e3f",
-    "authoring_run": 34843001113,
-    "authoring_job": 103972125722,
-    "authoring_conclusion": "success",
-    "exact_final_head_required": true,
-    "exact_final_head_status": "PENDING_REPLAY_AFTER_REVIEW_STATUS_CLOSEOUT",
-    "closeout_note": "The immutable substantive authoring head passed CI and was reviewed under GOV05. This review/status-only closeout becomes authoritative only after the same workflow succeeds on the exact final head."
+    "initial_authoring_head": "eda60bbc3484d82a2f52871ace00a74dfb44d26e",
+    "initial_authoring_run": 34843001113,
+    "initial_authoring_job": 103972125722,
+    "initial_authoring_conclusion": "success",
+    "failed_review_closeout_head": "1403eb200d48be70b6b6a3f134fee1f3b3df4f89",
+    "failed_review_closeout_run": 34843257441,
+    "failed_review_closeout_job": 103972954648,
+    "failed_step": "Validate bounded model-evolution T50 operator",
+    "failure_class": "VALIDATOR_METADATA_PATH_BUG_NOT_SCIENTIFIC_FAILURE",
+    "remediation": "READ_QUALIFICATION_AND_COMPLETION_FROM_STATUS_WORK_STATUS_IN_OPTIONAL_REVIEW_BLOCK",
+    "exact_remediated_authoring_head_required": true,
+    "exact_final_head_required": true
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -72,11 +70,10 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": true,
-    "reviewed": true,
-    "qualified": true,
-    "workunit_complete": true
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
   },
-  "next_handoff": "ANIMO-GHG07_ACTIVE_FVEGCH4_POSITIVE_CONTROL_AND_SELECTOR_REACHABILITY_AGAINST_GHG06A_MODEL_EVOLUTION_CONTRACT",
-  "next_if_exact_final_green": "GHG06A_BOUNDED_OPERATOR_AUTHORITY_MAY_BE_CONSUMED_BY_GHG07; HISTORICAL_TCD034_REMAINS_UNRESOLVED; NO_B3_OR_PRODUCTION_PROMOTION"
+  "next_safe_action": "RUN_EXACT_HEAD_CI_ON_REMEDIATED_AUTHORING_HEAD_THEN_REPEAT_GOV05_SAME_AGENT_ADVERSARIAL_REVIEW"
 }
