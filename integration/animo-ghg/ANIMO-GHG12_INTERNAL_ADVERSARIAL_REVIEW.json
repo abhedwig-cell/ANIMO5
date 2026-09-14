@@ -1,0 +1,38 @@
+{
+  "work_unit": "ANIMO-GHG12",
+  "target": "TCD-034",
+  "review_model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "reviewed_head": "d91f15072b51ad255d71039938da2d8dc1c02bce",
+  "reviewed_tree": "3dc5aca59734385edb7c664df58b04e90dfa96b0",
+  "reviewed_head_ci_run": 34853851407,
+  "reviewed_head_ci_job": 104008228979,
+  "reviewed_head_ci_conclusion": "success",
+  "gates": {
+    "candidate_identity": "PASS_SPRUCE_STACK_PINNED_AT_DATASET_IDENTIFIER_LEVEL",
+    "process_resolved_candidate": "PASS_DIRECT_PLANT_TRANSPORT_CANDIDATE_IDENTIFIED",
+    "external_evidence_classification": "PASS_MODEL_EVOLUTION_ONLY",
+    "joinability_claim": "PASS_AS_OPEN_FILE_LEVEL_EXTRACTION_REQUIRED",
+    "selector_reconstruction_claim": "PASS_NOT_YET_DEMONSTRATED",
+    "empirical_validation_boundary": "PASS_NOT_PERFORMED",
+    "application_envelope_boundary": "PASS_SINGLE_SITE_CANDIDATE_NOT_GENERAL_ENVELOPE",
+    "independent_review_boundary": "PASS_SELF_REVIEW_NOT_INDEPENDENT",
+    "admission_boundary": "PASS_NO_CLASS_F_NO_B3_NO_PRODUCTION_ADMISSION"
+  },
+  "findings": [
+    "A public process-resolved candidate stack exists and is materially stronger than whole-system flux evidence alone.",
+    "The key unresolved question is not dataset existence but exact file-level joinability of plant-transport observations to the environmental state needed to reconstruct both selector inputs.",
+    "Episodic plant-transport observations may still be insufficient to identify the selector independently of compensating parameters.",
+    "One SPRUCE peatland cannot by itself establish a broad ANIMO application envelope."
+  ],
+  "decision": "PASS_TCD034_PUBLIC_VALIDATION_DATASET_CANDIDATE_STACK_V1",
+  "primary_disposition_confirmed": "QUALIFIED_TCD034_PUBLIC_VALIDATION_DATASET_CANDIDATE_STACK_IDENTIFIED_DETAILED_JOINABILITY_EXTRACTION_REQUIRED_V1",
+  "empirical_validation_performed": false,
+  "class_f_admission_ready": false,
+  "b3_admission_performed": false,
+  "production_authorized": false
+}
