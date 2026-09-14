@@ -1,0 +1,23 @@
+name: ANIMO-GHG13 TCD034 plant transfer ledger
+
+on:
+  push:
+    branches:
+      - work/animo-ghg13-tcd034-plant-transfer-carbon-ledger
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Parse qualification package
+        run: |
+          python -m json.tool integration/animo-ghg/GHG13_TCD034_PLANT_TRANSFER_LEDGER_CONTRACT.json >/dev/null
+          python -m json.tool integration/animo-ghg/GHG13_TCD034_PLANT_TRANSFER_LEDGER_ORACLES.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG13_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG13_STATUS.json >/dev/null
+          python -m py_compile tools/ghg13/validate_ghg13_tcd034.py
+      - name: Validate qualification package
+        run: python tools/ghg13/validate_ghg13_tcd034.py

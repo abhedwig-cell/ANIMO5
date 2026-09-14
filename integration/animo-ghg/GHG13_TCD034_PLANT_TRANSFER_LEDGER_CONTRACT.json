@@ -1,0 +1,40 @@
+{
+  "work_unit": "ANIMO-GHG13",
+  "target": "TCD-034",
+  "contract_id": "TCD034_MODEL_EVOLUTION_PLANT_TRANSFER_SOURCE_LEDGER_V1",
+  "predecessor": "ANIMO-GHG12@b4a3c603743a2e3ba62fdf69f0879975a3b4f14a",
+  "selector_authority": "ANIMO-GHG06A@2573686af69a8d68a94010bb663272b35871a6e1",
+  "active_path_authority": "ANIMO-GHG07@f8969334f648ca28ceb93a2a55bb4eedd478e1dc",
+  "evidence_class": "BOUNDED_SOURCE_LEDGER_COMPATIBILITY_MODEL_EVOLUTION_NOT_B2",
+  "source_manifest": {
+    "ANIMO_4.1.5.53/ghg_ch4.for": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98",
+    "ANIMO_4.1.5.53/ghgtransport.for": "d86e420952c43aaa6e730235f5820802310dd14a0019dc890537d9acd95fcff6",
+    "ANIMO_4.1.5.53/ghgtranssub.for": "48d5e45d0b68b87c1d32bc16a867fe36f2f440e0d2c0ca8c95bf605f9f24ea6c"
+  },
+  "source_semantics": {
+    "adapted_coefficient": "K1plant=Kraw*(Mofr+ReBuAvCH4*(Mofrsa-Mofr))",
+    "transport_coefficient_use": "GHGtranssub dynamic Hv1 includes +K1plant",
+    "transport_mass_balance_plant_term": "Mplant_sink=AvCo*K1plant*He*St",
+    "reported_plant_oxidation_rate": "Qox=PvCH4Ox*K1plant*AvCoCH4*He",
+    "reported_plant_emission_rate": "Qem=(1-PvCH4Ox)*K1plant*AvCoCH4*He"
+  },
+  "qualified_invariants": {
+    "layerwise_time_integrated_ledger": "St*(Qox_i+Qem_i)=Mplant_sink_i",
+    "profile_time_integrated_ledger": "St*(sum(Qox)+sum(Qem))=sum(Mplant_sink)",
+    "partition_endpoints": "PvCH4Ox=0_or_1_preserve_total_sink_mass",
+    "vegetation_off": "FvegCH4=0_implies_zero_sink_zero_reported_transfer",
+    "growth_off": "T50<=Tegr_implies_zero_sink_zero_reported_transfer",
+    "selector_unavailable": "NO_PLANT_LEDGER_RESULT_PUBLISHED_NO_FALLBACK"
+  },
+  "non_claims": {
+    "whole_model_CH4_balance_qualified": false,
+    "production_executable_selector_connection_qualified": false,
+    "historical_revision53_selector_qualified": false,
+    "empirical_flux_magnitude_validated": false,
+    "b2_claimed": false,
+    "b3_admission_performed": false,
+    "class_f_admission_performed": false,
+    "production_authorized": false
+  },
+  "decision": "QUALIFIED_TCD034_MODEL_EVOLUTION_PLANT_TRANSFER_SOURCE_LEDGER_COMPATIBILITY_V1"
+}

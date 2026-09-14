@@ -1,0 +1,73 @@
+{
+  "work_unit": "ANIMO-GHG13",
+  "target": "TCD-034",
+  "oracles": [
+    {
+      "id": "GHG13-O01_GHG07_PRINCIPAL_WITH_HALF_DAY_LEDGER",
+      "inputs": {
+        "He_m": [0.25,0.25,0.25,0.25],
+        "Te_degC": [8.0,10.0,14.0,16.0],
+        "Nuroup": 2,
+        "Ro": [0.5,0.5],
+        "Tegr_degC": 7.0,
+        "FvegCH4": 0.5,
+        "phase_factor": [0.4,0.4],
+        "AvCoCH4_kgC_m3": [0.1,0.1],
+        "PvCH4Ox": 0.25,
+        "St_d": 0.5
+      },
+      "expected": {
+        "T50_degC": 12.0,
+        "fGrow": 3.0,
+        "Qplant_total_kgC_m2_d": 0.0072,
+        "Mplant_sink_total_kgC_m2": 0.0036,
+        "Mplant_oxidation_total_kgC_m2": 0.0009,
+        "Mplant_emission_total_kgC_m2": 0.0027,
+        "ledger_residual_kgC_m2": 0.0
+      }
+    },
+    {
+      "id": "GHG13-O02_NONUNIFORM_ROOT_PHASE_QUARTER_DAY",
+      "inputs": {
+        "He_m": [0.2,0.3,0.5],
+        "Te_degC": [6.0,12.0,18.0],
+        "Nuroup": 2,
+        "Ro": [0.25,0.75],
+        "Tegr_degC": 7.0,
+        "FvegCH4": 0.8,
+        "phase_factor": [0.3,0.6],
+        "AvCoCH4_kgC_m3": [0.08,0.12],
+        "PvCH4Ox": 0.4,
+        "St_d": 0.25
+      },
+      "expected": {
+        "T50_degC": 14.25,
+        "fGrow": 3.6975,
+        "fRoot": [0.625,1.25],
+        "Kraw_d_minus_1": [0.4437,0.8874],
+        "Kplant_d_minus_1": [0.13311,0.53244],
+        "Qplant_total_kgC_m2_d": 0.0212976,
+        "Mplant_sink_total_kgC_m2": 0.0053244,
+        "Mplant_oxidation_total_kgC_m2": 0.00212976,
+        "Mplant_emission_total_kgC_m2": 0.00319464,
+        "ledger_residual_kgC_m2": 0.0
+      }
+    },
+    {
+      "id": "GHG13-O03_PARTITION_ENDPOINTS",
+      "assertions": [
+        "PvCH4Ox=0_implies_Moxidation=0_and_Memission=Mplant_sink",
+        "PvCH4Ox=1_implies_Moxidation=Mplant_sink_and_Memission=0"
+      ]
+    },
+    {
+      "id": "GHG13-O04_SWITCHES_AND_FAIL_CLOSED",
+      "assertions": [
+        "FvegCH4=0_implies_all_plant_transfer_ledger_terms_zero",
+        "T50<=Tegr_implies_all_plant_transfer_ledger_terms_zero",
+        "selector_unavailable_implies_no_published_ledger_result"
+      ]
+    }
+  ],
+  "decision": "QUALIFIED_TCD034_MODEL_EVOLUTION_PLANT_TRANSFER_SOURCE_LEDGER_COMPATIBILITY_V1"
+}

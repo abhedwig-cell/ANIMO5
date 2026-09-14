@@ -1,0 +1,38 @@
+{
+  "work_unit": "ANIMO-GHG13",
+  "target": "TCD-034",
+  "branch": "work/animo-ghg13-tcd034-plant-transfer-carbon-ledger",
+  "phase": "SUBSTANTIVE_AUTHORING_FROZEN_AWAITING_GOV05_REVIEW",
+  "state": "QUALIFIED_PLANT_TRANSFER_LEDGER_PENDING_PROCESS_REVIEW",
+  "primary_disposition": "QUALIFIED_TCD034_MODEL_EVOLUTION_PLANT_TRANSFER_SOURCE_LEDGER_COMPATIBILITY_V1",
+  "base_predecessor": "ANIMO-GHG12@b4a3c603743a2e3ba62fdf69f0879975a3b4f14a",
+  "evidence_class": "BOUNDED_SOURCE_LEDGER_COMPATIBILITY_MODEL_EVOLUTION_NOT_B2",
+  "bounded_conservation_result": "PASS_PLANT_TRANSFER_SOURCE_LEDGER_COMPATIBILITY",
+  "whole_model_ch4_balance_qualified": false,
+  "production_executable_selector_connection_qualified": false,
+  "empirical_validation_performed": false,
+  "class_f_admission_ready": false,
+  "b3_admission_performed": false,
+  "class_f_admission_performed": false,
+  "production_authorized": false,
+  "historical_revision53_selector": "UNRESOLVED_NOT_HISTORICALLY_QUALIFIED",
+  "review": {
+    "required": true,
+    "completed": false,
+    "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-ghg13-tcd034.yml",
+    "validator": "tools/ghg13/validate_ghg13_tcd034.py",
+    "exact_final_head_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next_if_green_and_reviewed": "PRESERVE_BOUNDED_LEDGER_COMPATIBILITY; DO_NOT_EQUATE_WITH_WHOLE_MODEL_CONSERVATION_OR_CLASS_F_ADMISSION"
+}

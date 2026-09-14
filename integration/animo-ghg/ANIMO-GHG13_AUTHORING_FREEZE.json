@@ -1,0 +1,30 @@
+{
+  "work_unit": "ANIMO-GHG13",
+  "target": "TCD-034",
+  "branch": "work/animo-ghg13-tcd034-plant-transfer-carbon-ledger",
+  "base_head": "b4a3c603743a2e3ba62fdf69f0879975a3b4f14a",
+  "base_predecessor": "ANIMO-GHG12@b4a3c603743a2e3ba62fdf69f0879975a3b4f14a",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_LEDGER_REVIEW",
+  "semantic_owner": "TCD034_MODEL_EVOLUTION_PLANT_TRANSFER_SOURCE_LEDGER_COMPATIBILITY",
+  "substantive_files": [
+    "docs/ghg/TCD034_PLANT_TRANSFER_SOURCE_LEDGER.md",
+    "integration/animo-ghg/GHG13_TCD034_PLANT_TRANSFER_LEDGER_CONTRACT.json",
+    "integration/animo-ghg/GHG13_TCD034_PLANT_TRANSFER_LEDGER_ORACLES.json",
+    "tools/ghg13/validate_ghg13_tcd034.py",
+    ".github/workflows/animo-ghg13-tcd034.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-ghg/ANIMO-GHG13_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-ghg/ANIMO-GHG13_STATUS.json"
+  ],
+  "evidence_class": "BOUNDED_SOURCE_LEDGER_COMPATIBILITY_MODEL_EVOLUTION_NOT_B2",
+  "substantive_change_resets_GOV05_review": true,
+  "review_must_pin_exact_green_authoring_head": true,
+  "exact_final_head_ci_required": true,
+  "production_source_frozen": true,
+  "frozen_b0_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "aggregate_and_routing_frozen": true,
+  "central_testbank_registry_frozen": true
+}
