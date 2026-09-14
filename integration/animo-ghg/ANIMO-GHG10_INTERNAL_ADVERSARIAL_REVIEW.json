@@ -1,0 +1,90 @@
+{
+  "work_unit": "ANIMO-GHG10",
+  "target": "TCD-034",
+  "review_kind": "GOV05_ENHANCED_INTERNAL_ADVERSARIAL_REVIEW",
+  "model": "MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode": "SAME_AGENT_SECOND_PASS",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "reviewed_head": "e45afd5d5636d1f75dcb998fcef85b85bd13c327",
+  "reviewed_head_ci_run": 34849310090,
+  "reviewed_head_ci_job": 103992908099,
+  "reviewed_head_ci_conclusion": "success",
+  "base_predecessor": "ANIMO-GHG09@31c8ba9a53cb602c7a4a71f501384058ef7be7b2",
+  "primary_disposition": "QUALIFIED_TCD034_FROZEN_GHGMAIS_DRIVER_DUAL_SELECTOR_REPLAY_CASE_EVIDENCE_V1",
+  "adversarial_questions": [
+    {
+      "question": "Does using GHGMais result.bun make this a provenance-qualified revision-53 B2 replay?",
+      "finding": "NO",
+      "basis": "PREP01 already proves a source/testcase textual contract-lineage mismatch. GHG10 consumes the binary and crop series only as a frozen environmental driver trace and explicitly forbids B2 promotion."
+    },
+    {
+      "question": "Could the selector difference be dismissed as representation-only or numerically negligible on this case?",
+      "finding": "NO",
+      "basis": "Across 1604 active-root days the mean absolute temperature difference is 1.158471164 degC, maximum 5.384873259 degC, and 767 days exceed 1 degC. The non-linear growth-regime identity changes on 231 days."
+    },
+    {
+      "question": "Does the -5.391428 percent change in the unweighted fGrow sum establish a methane-flux change?",
+      "finding": "NO",
+      "basis": "The sum is an explicitly labelled case sensitivity descriptor. The frozen soil input has FvegCH4=0 and active plant-mediated methane flux is therefore not inferred."
+    },
+    {
+      "question": "Can this one ten-year driver trace close the intended Class-F application envelope?",
+      "finding": "NO",
+      "basis": "It establishes materiality on one pinned environmental trace only. Cross-site, soil, climate, crop, geometry and parameter-envelope representativeness remain open."
+    },
+    {
+      "question": "Does case materiality justify carrying legacy Kpl, FvegCH4, Tegr or PvCH4Ox unchanged into the evolved selector?",
+      "finding": "NO",
+      "basis": "GHG09 already established parameter non-transferability risk. GHG10 corroborates that warning with case-level selector divergence but provides no calibration or empirical validation."
+    },
+    {
+      "question": "Is the replay evidence fully portable inside the repository?",
+      "finding": "PARTIAL_BY_DESIGN",
+      "basis": "The repository preserves exact testbank/source identities, the full replay CSV SHA-256, annual aggregates, transition counts and representative rows. The full extracted CSV and frozen binary archive are not redistributed by this workunit, so independent byte-for-byte replay requires the pinned external testbank/evidence artifact. This limits assurance but does not invalidate the bounded case-summary disposition."
+    },
+    {
+      "question": "Could the source/testcase lineage mismatch itself make the environmental trace unusable for a counterfactual selector sensitivity experiment?",
+      "finding": "NO_FOR_THE_DECLARED_DRIVER_ONLY_USE",
+      "basis": "The mismatch blocks claims about revision-53 executable behavior. It does not prevent treating the pinned temperature/root-driving series as an arbitrary fixed environmental trace for applying two explicitly defined selector functions."
+    },
+    {
+      "question": "Does GHG10 authorize Class-F admission, B3 admission or production migration?",
+      "finding": "NO",
+      "basis": "Empirical validation, broader application-envelope evidence, calibration implications and the separate scientific admission/review step remain open."
+    }
+  ],
+  "gates": {
+    "driver_provenance": "PASS_PINNED_WITH_LINEAGE_LIMIT_PRESERVED",
+    "material_selector_divergence": "PASS_CASE_BOUND",
+    "growth_regime_divergence": "PASS_CASE_BOUND",
+    "no_flux_overclaim": "PASS",
+    "no_b2_overclaim": "PASS",
+    "parameter_transfer_boundary": "PASS_NOT_ASSUMED",
+    "application_envelope_boundary": "PASS_REMAINS_OPEN",
+    "evidence_portability": "PASS_WITH_EXTERNAL_ARTIFACT_RESIDUAL_LIMIT",
+    "class_f_boundary": "PASS_NOT_READY",
+    "production_source_unchanged": "PASS",
+    "canonical_register_unchanged": "PASS",
+    "central_queue_unchanged": "PASS",
+    "aggregate_and_routing_unchanged": "PASS",
+    "central_testbank_registry_unchanged": "PASS"
+  },
+  "residual_limits": [
+    "the full extracted 1604-row replay CSV is hash-pinned but not redistributed in the repository by this workunit",
+    "the GHGMais textual testcase contract is not provenance-compatible with frozen revision-53 source and therefore remains non-B2",
+    "the frozen GHGMais case has FvegCH4=0 and cannot validate active plant-mediated methane flux",
+    "one ten-year driver trace is insufficient to close the intended application envelope",
+    "no empirical/observational validation or recalibration evidence is provided",
+    "historical revision-53 selector intent remains unresolved",
+    "no Class-F admission, B3 admission or production authority is created"
+  ],
+  "outcome": "PASS_TCD034_FROZEN_DRIVER_DUAL_SELECTOR_REPLAY_CASE_EVIDENCE_V1",
+  "decision": "PASS_TCD034_FROZEN_DRIVER_DUAL_SELECTOR_REPLAY_CASE_EVIDENCE_V1",
+  "b3_admission_allowed_by_this_review": false,
+  "class_f_admission_allowed_by_this_review": false,
+  "production_authorized": false,
+  "next_required_work": "BROADEN_REPRESENTATIVE_APPLICATION_ENVELOPE_AND_OBTAIN_EMPIRICAL_VALIDATION_OR_OBSERVATIONAL_EVIDENCE_BEFORE_ANY_CLASS_F_ADMISSION; PRESERVE_FULL_REPLAY_ARTIFACT_OR_REGENERATION_ROUTE_WHEN FEASIBLE"
+}
