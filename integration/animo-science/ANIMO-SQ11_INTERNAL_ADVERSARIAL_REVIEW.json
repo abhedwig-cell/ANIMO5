@@ -1,0 +1,112 @@
+{
+  "work_unit": "ANIMO-SQ11",
+  "target": "TCD-016-C1",
+  "review_mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "same_agent": true,
+  "genuinely_independent": false,
+  "independence_claimed": false,
+  "gov05_authority": "ANIMO-GOV05@f65a47724e4a4fca7f2d8b8d6de9eeee51867904",
+  "gov06_authority": "ANIMO-GOV06@7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
+  "b3q01_authority": "ANIMO-B3Q01@846e0f4d02a38b9e02cc1419b1ca87e63aaedb54",
+  "reviewed_authoring_head": "e59626d1154f49083709ac96bc4593840cfc0431",
+  "reviewed_authoring_tree": "4c23e34be959180e52ad00c26c0385d845fdc0c6",
+  "freeze_record_commit": "c00329211d919ce9673bb497bf0423946eb0d45a",
+  "review_scope": "ATTACK_THE_SQ11_EXPERIMENT_DESIGN_FOR_FALSIFIABILITY_ORDERING_MATERIAL_MAPPING_EVIDENCE_STRENGTH_AND_EXTERNAL_EXECUTION_BOUNDARIES",
+  "reconstruction": {
+    "sq09_candidate": "Complete continuation-to-surface-aqueous transfer at activation, ordered before downstream runoff, infiltration, sorption-after-arrival, transformation and atmospheric loss.",
+    "sq10_result": "Generic external literature did not unlock material mapping or process-specific validation.",
+    "sq11_claim": "A two-stage pre-registered design can be qualified as capable of discriminating the transfer hypothesis, but no physical evidence is generated in the repository workunit."
+  },
+  "counter_hypotheses": {
+    "H1_protocol_design_itself_is_process_validation": {
+      "result": "REJECTED",
+      "reason": "A design and schema create a future evidence interface only. They do not observe the physical process."
+    },
+    "H2_any_post_rewetting_soil_receiver_refutes_M1": {
+      "result": "REJECTED_AND_CONFIRMED_REMEDIATED_PRE_FREEZE",
+      "reason": "SQ09 orders sorption-after-arrival after continuation-to-aqueous transfer. SQ11 now requires temporal/source evidence for a direct alternative receiver before treating soil uptake as refutation."
+    },
+    "H3_any_post_rewetting_atmospheric_loss_refutes_M1": {
+      "result": "REJECTED_AND_CONFIRMED_REMEDIATED_PRE_FREEZE",
+      "reason": "Atmospheric loss after demonstrated aqueous arrival is compatible with M1 and is used for mass reconstruction, not automatic failure."
+    },
+    "H4_stage_A_is_too_artificial_to_be_scientifically_useful": {
+      "result": "REJECTED_WITH_SCOPE_LIMIT",
+      "reason": "Stage A deliberately isolates the primary transfer. Its result is bounded to the tested material and environment and requires Stage B or equivalent evidence for representative lifecycle ordering."
+    },
+    "H5_stage_A_alone_can_establish_universal_ANIMO_behavior": {
+      "result": "REJECTED",
+      "reason": "The design explicitly prohibits universalization from a single material/condition and retains the separate material-to-model-state mapping gate."
+    },
+    "H6_15N_must_be_mandatory": {
+      "result": "REJECTED",
+      "reason": "Source attribution is mandatory, but the analytical method is not. A tracer is strongly recommended where background N would otherwise make attribution inadequate; without adequate attribution the result is inconclusive."
+    },
+    "H7_no_fixed_replicate_count_makes_the_design_nonfalsifiable": {
+      "result": "REJECTED",
+      "reason": "A universal n would be invented without variance or instrument evidence. The executing study must predeclare replication/randomization from pilot variance, analytical precision and a stated power or equivalent design criterion."
+    },
+    "H8_no_universal_numeric_epsilon_makes_the_design_nonfalsifiable": {
+      "result": "REJECTED",
+      "reason": "Decision thresholds are required to be predeclared from measurement uncertainty, recovery performance and quantification limits. This is stricter than an arbitrary model-wide epsilon."
+    },
+    "H9_complete_first_sample_recovery_proves_literal_zero_time_transfer": {
+      "result": "REJECTED",
+      "reason": "SQ11 qualifies support only at the declared experimental temporal resolution."
+    },
+    "H10_residue_characterization_in_one_experiment_solves_the_global_material_identity_blocker": {
+      "result": "REJECTED",
+      "reason": "It can map the tested residue only. Extension to the ANIMO continuation state and intended application envelope still requires a separate traceable argument."
+    },
+    "H11_synthetic_discrimination_examples_are_empirical_evidence": {
+      "result": "REJECTED",
+      "reason": "They document decision categories only and are explicitly excluded from Class-F evidence."
+    },
+    "H12_evidence_generation_is_complete_because_the_protocol_is_ready": {
+      "result": "REJECTED",
+      "reason": "No physical observations are generated or acquired. External execution or an equivalent traceable dataset remains a hard dependency."
+    }
+  },
+  "mandatory_adversarial_checks": {
+    "design_not_promoted_to_physical_evidence": "PASS",
+    "synthetic_examples_not_promoted_to_validation": "PASS",
+    "sq09_transfer_ordering_preserved": "PASS",
+    "downstream_fate_not_misclassified_as_direct_receiver": "PASS",
+    "material_mapping_gate_retained": "PASS",
+    "process_validation_gate_retained": "PASS",
+    "earliest_sample_claim_bounded_to_temporal_resolution": "PASS",
+    "mass_closure_required_but_not_promoted_to_physics": "PASS",
+    "source_attribution_required": "PASS",
+    "tracer_recommendation_not_mandated_without_method evidence": "PASS",
+    "replication_not_invented_without_variance": "PASS",
+    "numeric_epsilon_not_invented": "PASS",
+    "single_condition_not_universalized": "PASS",
+    "negative_and_inconclusive_results_retained": "PASS",
+    "historical_b2_not_invented": "PASS",
+    "tcd016_e1_not_qualified": "PASS",
+    "b3_admission_not_performed": "PASS",
+    "production_not_modified_or_authorized": "PASS",
+    "same_agent_review_not_claimed_independent": "PASS",
+    "external_execution_dependency_explicit": "PASS"
+  },
+  "residual_uncertainty": [
+    "no empirical dry-down/rewetting dataset exists in SQ11",
+    "continuation material identity across the ANIMO application envelope remains unresolved",
+    "required experimental temporal resolution depends on the executing method",
+    "replication and power depend on pilot variance and analytical precision",
+    "whether a tested residue maps to the canonical continuation state remains an evidence question",
+    "historical revision-53 behavior remains UNKNOWN_WITHOUT_B2"
+  ],
+  "live_supersession_check": {
+    "result": "NO_LATER_TCD016_SCIENCE_BRANCH_FOUND_BEYOND_SQ11_AT_REVIEW_TIME",
+    "latest_observed": "work/animo-sq11-tcd016-c1-drydown-rewetting-experiment-design"
+  },
+  "substantive_findings": [],
+  "substantive_remediation_required": false,
+  "reviewed_disposition": "QUALIFIED_EXPERIMENT_DESIGN_READY_EXTERNAL_EVIDENCE_EXECUTION_REQUIRED",
+  "scientific_admission_readiness": false,
+  "physical_evidence_generated": false,
+  "outcome": "SELF_REVIEW_PASS",
+  "interpretation": "The review passes the bounded SQ11 experiment-design qualification. It does not pass the M1 physics candidate and does not claim that evidence generation has occurred."
+}
