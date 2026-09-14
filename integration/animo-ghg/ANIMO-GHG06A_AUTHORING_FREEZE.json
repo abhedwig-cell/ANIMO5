@@ -1,0 +1,30 @@
+{
+  "work_unit": "ANIMO-GHG06A",
+  "target": "TCD-034",
+  "branch": "work/animo-ghg06a-tcd034-t50-depth-operator-model-evolution",
+  "base_head": "730f09f1567461a45bff4566368db05963b200fa",
+  "base_predecessor": "ANIMO-GHG06@730f09f1567461a45bff4566368db05963b200fa",
+  "freeze_kind": "SUBSTANTIVE_AUTHORING_FREEZE_BEFORE_GOV05_MODEL_EVOLUTION_REVIEW",
+  "substantive_files": [
+    "docs/ghg/TCD034_T50_DEPTH_OPERATOR_MODEL_EVOLUTION.md",
+    "integration/animo-ghg/GHG06A_TCD034_T50_OPERATOR_CONTRACT.json",
+    "integration/animo-ghg/GHG06A_TCD034_T50_OPERATOR_ORACLES.json",
+    "tools/ghg06a/validate_ghg06a_tcd034.py",
+    ".github/workflows/animo-ghg06a-tcd034.yml"
+  ],
+  "post_review_allowed_changes": [
+    "integration/animo-ghg/ANIMO-GHG06A_INTERNAL_ADVERSARIAL_REVIEW.json",
+    "integration/animo-ghg/ANIMO-GHG06A_STATUS.json"
+  ],
+  "semantic_owner": "TCD034_T50_0P50M_DEPTH_OPERATOR_MODEL_EVOLUTION",
+  "parallelism": "PARALLEL_AFTER_PINNING",
+  "substantive_change_resets_GOV05_review": true,
+  "review_must_pin_exact_green_authoring_head": true,
+  "exact_final_head_ci_required": true,
+  "historical_behavior": "NOT_CLAIMED_MODEL_EVOLUTION_ONLY",
+  "production_source_frozen": true,
+  "frozen_b0_frozen": true,
+  "canonical_register_frozen": true,
+  "central_queue_frozen": true,
+  "aggregate_and_routing_frozen": true
+}

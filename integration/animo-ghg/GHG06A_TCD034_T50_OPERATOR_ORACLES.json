@@ -1,0 +1,84 @@
+{
+  "work_unit": "ANIMO-GHG06A",
+  "target": "TCD-034",
+  "oracle_bank": "TCD034_T50_OPERATOR_V1_SYNTHETIC_ORACLES",
+  "evidence_class": "SYNTHETIC_MODEL_EVOLUTION_ORACLE_NOT_B2",
+  "target_depth_m": 0.5,
+  "cases": [
+    {
+      "id": "GHG06A-O01-EXACT-NODE",
+      "He_m": [0.2, 0.2, 0.2, 0.2],
+      "Te_degC": [8.0, 9.0, 10.0, 11.0],
+      "expected_status": "AVAILABLE",
+      "expected_T50_degC": 10.0,
+      "purpose": "exact layer-centre node preservation"
+    },
+    {
+      "id": "GHG06A-O02-NONUNIFORM-INTERPOLATION",
+      "He_m": [0.2, 0.4, 0.6],
+      "Te_degC": [5.0, 10.0, 20.0],
+      "expected_status": "AVAILABLE",
+      "expected_T50_degC": 12.0,
+      "purpose": "non-uniform adjacent-centre linear interpolation"
+    },
+    {
+      "id": "GHG06A-O03-AFFINE-COARSE",
+      "He_m": [0.2, 0.4, 0.6],
+      "Te_degC": [10.2, 10.8, 11.8],
+      "expected_status": "AVAILABLE",
+      "expected_T50_degC": 11.0,
+      "purpose": "affine T(z)=10+2z exactness on coarse non-uniform mesh"
+    },
+    {
+      "id": "GHG06A-O04-AFFINE-REFINED",
+      "He_m": [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+      "Te_degC": [10.1, 10.3, 10.5, 10.7, 10.9, 11.1, 11.3, 11.5, 11.7, 11.9],
+      "expected_status": "AVAILABLE",
+      "expected_T50_degC": 11.0,
+      "purpose": "affine field invariance under mesh refinement"
+    },
+    {
+      "id": "GHG06A-O05-ROOT-INDEPENDENCE",
+      "He_m": [0.2, 0.4, 0.6],
+      "Te_degC": [5.0, 10.0, 20.0],
+      "irrelevant_Nuroup_values": [0, 1, 2, 3],
+      "expected_status": "AVAILABLE",
+      "expected_T50_degC": 12.0,
+      "purpose": "operator result must not depend on root-depth state"
+    },
+    {
+      "id": "GHG06A-O06-SINGLE-LAYER-EXACT-CENTRE",
+      "He_m": [1.0],
+      "Te_degC": [7.25],
+      "expected_status": "AVAILABLE",
+      "expected_T50_degC": 7.25,
+      "purpose": "single-layer exact target centre"
+    },
+    {
+      "id": "GHG06A-O07-TOP-HALF-CELL-UNBRACKETED",
+      "He_m": [1.2, 0.4],
+      "Te_degC": [7.0, 8.0],
+      "expected_status": "UNAVAILABLE_FAIL_CLOSED",
+      "expected_reason": "TARGET_OUTSIDE_LAYER_CENTER_BRACKET",
+      "purpose": "forbid top-boundary extrapolation even when physical first layer contains 0.50 m"
+    },
+    {
+      "id": "GHG06A-O08-BOTTOM-HALF-CELL-UNBRACKETED",
+      "He_m": [0.2, 0.35],
+      "Te_degC": [7.0, 8.0],
+      "expected_status": "UNAVAILABLE_FAIL_CLOSED",
+      "expected_reason": "TARGET_OUTSIDE_LAYER_CENTER_BRACKET",
+      "purpose": "forbid bottom-boundary extrapolation even when physical profile extends beyond 0.50 m"
+    },
+    {
+      "id": "GHG06A-O09-NONPOSITIVE-THICKNESS",
+      "He_m": [0.2, 0.0, 0.6],
+      "Te_degC": [5.0, 10.0, 20.0],
+      "expected_status": "UNAVAILABLE_FAIL_CLOSED",
+      "expected_reason": "INVALID_GEOMETRY",
+      "purpose": "fail closed on non-positive layer thickness"
+    }
+  ],
+  "historical_behavior_claimed": false,
+  "whole_model_golden_baseline": false
+}

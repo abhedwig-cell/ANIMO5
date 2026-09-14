@@ -1,0 +1,57 @@
+name: ANIMO-GHG06A TCD034 bounded T50 depth operator
+
+on:
+  push:
+    branches:
+      - work/animo-ghg06a-tcd034-t50-depth-operator-model-evolution
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify exact branch head
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Fetch pinned authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          for sha in 730f09f1567461a45bff4566368db05963b200fa cbd262bdabe92923113b7326f2f42822ce9a971c 1bbe4c211197590f346803106e45dca5faae79fc f65a47724e4a4fca7f2d8b8d6de9eeee51867904 7a7d3a1f5a5c07bf36b7e6e2915338dabde20660 bc9e6ed997a078336645210ebb4d99ae976893fe 11e9bcdc6654e63f84875bf1f28dc54abe725700 942f26fe32eaf91679e59a1968ae173a3703e22d; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "$sha"
+          done
+      - name: Verify exact GHG06 predecessor CI
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          run_id = 34840056086
+          expected = "730f09f1567461a45bff4566368db05963b200fa"
+          req = urllib.request.Request(
+              f"https://api.github.com/repos/abhedwig-cell/ANIMO5/actions/runs/{run_id}",
+              headers={"Authorization": f"Bearer {os.environ['GH_TOKEN']}", "Accept": "application/vnd.github+json"},
+          )
+          with urllib.request.urlopen(req) as response:
+              data = json.load(response)
+          assert data["head_sha"] == expected, data.get("head_sha")
+          assert data["status"] == "completed" and data["conclusion"] == "success", (data.get("status"), data.get("conclusion"))
+          print("GHG06 exact-final CI authority verified")
+          PY
+      - name: Parse package
+        run: |
+          python -m json.tool integration/animo-ghg/GHG06A_TCD034_T50_OPERATOR_CONTRACT.json >/dev/null
+          python -m json.tool integration/animo-ghg/GHG06A_TCD034_T50_OPERATOR_ORACLES.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG06A_AUTHORING_FREEZE.json >/dev/null
+          python -m json.tool integration/animo-ghg/ANIMO-GHG06A_STATUS.json >/dev/null
+          if test -f integration/animo-ghg/ANIMO-GHG06A_INTERNAL_ADVERSARIAL_REVIEW.json; then
+            python -m json.tool integration/animo-ghg/ANIMO-GHG06A_INTERNAL_ADVERSARIAL_REVIEW.json >/dev/null
+          fi
+          python -m py_compile tools/ghg06a/validate_ghg06a_tcd034.py
+      - name: Validate bounded model-evolution T50 operator
+        run: python tools/ghg06a/validate_ghg06a_tcd034.py

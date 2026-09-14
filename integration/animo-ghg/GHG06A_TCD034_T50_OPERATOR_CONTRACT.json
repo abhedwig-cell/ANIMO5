@@ -1,0 +1,84 @@
+{
+  "work_unit": "ANIMO-GHG06A",
+  "target": "TCD-034",
+  "contract_id": "TCD034_T50_0P50M_DEPTH_OPERATOR_V1",
+  "evidence_class": "MODEL_EVOLUTION_SCIENTIFIC_CONTRACT",
+  "predecessor": "ANIMO-GHG06@730f09f1567461a45bff4566368db05963b200fa",
+  "semantic_target": {
+    "quantity": "daily_mean_soil_temperature_at_fixed_depth",
+    "depth_m": 0.5,
+    "positive_depth_direction": "DOWNWARD_FROM_SOIL_SURFACE",
+    "unit": "degC"
+  },
+  "source_geometry": {
+    "layer_thickness": "He(i)",
+    "layer_thickness_unit": "m",
+    "layer_bottom_depth": "Bo(i)=sum(He(1:i))",
+    "layer_center_depth": "z_i=Bo(i)-0.5*He(i)",
+    "temperature_sample": "Te(i)_AT_LAYER_CENTER",
+    "temperature_unit": "degC",
+    "te0_consumed": false,
+    "root_state_consumed": false
+  },
+  "preconditions": [
+    "Nl>=1",
+    "all_He_finite_and_strictly_positive",
+    "all_consumed_Te_finite",
+    "z_i_strictly_increasing",
+    "z_1<=0.50<=z_Nl"
+  ],
+  "operator": {
+    "exact_node": "if z_target==z_i return Te(i)",
+    "interior_bracket": "choose unique i with z_i<z_target<z_(i+1)",
+    "weight": "w=(z_target-z_i)/(z_(i+1)-z_i)",
+    "value": "T50=(1-w)*Te(i)+w*Te(i+1)",
+    "comparison_tolerance": "NONE",
+    "extrapolation": "FORBIDDEN",
+    "unavailable_result": "UNAVAILABLE_FAIL_CLOSED"
+  },
+  "forbidden_fallbacks": [
+    "Te(Nuroup+1)",
+    "Te(1)",
+    "Te(0)",
+    "nearest_layer_without_explicit_new_authority",
+    "containing_layer_without_explicit_new_authority",
+    "root_weighted_temperature"
+  ],
+  "qualified_properties": {
+    "root_independent": true,
+    "local_two_point_when_interpolating": true,
+    "exact_at_existing_sample_node": true,
+    "affine_depth_field_exact_within_bracket": true,
+    "route_neutral_over_final_Te_field": true,
+    "no_extrapolation": true
+  },
+  "boundary_semantics": {
+    "target_inside_physical_profile_but_above_first_center": "UNAVAILABLE_FAIL_CLOSED",
+    "target_inside_physical_profile_but_below_last_center": "UNAVAILABLE_FAIL_CLOSED",
+    "surface_boundary_temperature_invented": false,
+    "bottom_boundary_temperature_invented": false
+  },
+  "state_semantics": {
+    "persistent": false,
+    "restart_state": false,
+    "conserved_storage": false,
+    "derived_per_timestep": true,
+    "candidate_bound_requirement": "SAME_TEMPERATURE_FIELD_AND_TIME_COORDINATE_AS_CONSUMER",
+    "stale_cache_allowed": false
+  },
+  "historical_claims": {
+    "historical_revision53_selector_qualified": false,
+    "historical_interpolation_claimed": false,
+    "walter_heimann_promoted_to_ANIMO_authority": false
+  },
+  "source_manifest_evidence": {
+    "archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "ANIMO_4.1.5.53/ghg_ch4.for": "00dcc298436488beea059e6c776f09feb3a59c9ea331c235b8b5334b65874f98",
+    "ANIMO_4.1.5.53/Temper.for": "643e4460a897ec629068dc97ab4589a745304b8fa7adb7597dfadc1a9a9d41e5",
+    "ANIMO_4.1.5.53/Inicalc.for": "306dd3be262a9eaa293520c754190931bc54e76e7d84b3145efe5663a3e523e1",
+    "ANIMO_4.1.5.53/Input_hydro.for": "5f07ce68969d749308595d6b4f9f789b6b3646ae226c233e2f8e49565a7dad64"
+  },
+  "decision": "QUALIFIED_BOUNDED_MODEL_EVOLUTION_T50_DEPTH_OPERATOR_V1",
+  "b3_admission_performed": false,
+  "production_authorized": false
+}
