@@ -65,7 +65,16 @@ required_blobs = [
 require(all(blob in matrix for blob in required_blobs),
         "S07 provenance matrix pins all six exact SWAP5 source blobs")
 
+contracts_text = (PROTOTYPE / "mod_animo_runtime_contracts.f90").read_text(encoding="utf-8")
+persistence_text = (PROTOTYPE / "mod_animo_committed_persistence.f90").read_text(encoding="utf-8")
+require("committed_journal" not in contracts_text.lower(),
+        "S08 physical AcceptedState does not own committed event history")
+require("transferjournal" not in persistence_text.lower() and "committedeventledger" not in persistence_text.lower(),
+        "S09 physical checkpoint contains no event journal or committed event ledger")
+require(re.search(r"type,\s*public\s*::\s*AcceptedCheckpoint\s*\n\s*private", persistence_text, re.I) is not None,
+        "S10 checkpoint components are private outside persistence module")
+
 if failures:
     print(f"KT01 STRUCTURAL TEST FAILURES: {len(failures)}")
     sys.exit(1)
-print("KT01 STRUCTURAL TESTS 24-25 AND S01-S07: PASS")
+print("KT01 STRUCTURAL TESTS 24-25 AND S01-S10: PASS")
