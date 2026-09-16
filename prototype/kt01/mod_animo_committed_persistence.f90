@@ -27,6 +27,14 @@ module mod_animo_committed_persistence
 
 contains
 
+  logical function identity_argument_valid(value)
+    character(len=*), intent(in) :: value
+    integer :: n
+
+    n = len_trim(value)
+    identity_argument_valid = n > 0 .and. n <= ID_LEN
+  end function identity_argument_valid
+
   subroutine make_accepted_checkpoint(accepted, checkpoint_schema_id, state_layout_id, &
       configuration_id, feature_layout_id, checkpoint, ok)
     type(AcceptedState), intent(in) :: accepted
@@ -38,11 +46,12 @@ contains
     checkpoint = AcceptedCheckpoint()
     ok = .false.
     if (len_trim(accepted%lineage_id) == 0) return
+    if (accepted%generation < 0_int64) return
     if (.not. time_is_valid(accepted%accepted_time)) return
-    if (len_trim(checkpoint_schema_id) == 0) return
-    if (len_trim(state_layout_id) == 0) return
-    if (len_trim(configuration_id) == 0) return
-    if (len_trim(feature_layout_id) == 0) return
+    if (.not. identity_argument_valid(checkpoint_schema_id)) return
+    if (.not. identity_argument_valid(state_layout_id)) return
+    if (.not. identity_argument_valid(configuration_id)) return
+    if (.not. identity_argument_valid(feature_layout_id)) return
 
     checkpoint%checkpoint_schema_id = trim(checkpoint_schema_id)
     checkpoint%state_layout_id = trim(state_layout_id)
@@ -75,6 +84,13 @@ contains
       reason = 'INVALID_CHECKPOINT'
       return
     end if
+    if (.not. identity_argument_valid(expected_checkpoint_schema_id) .or. &
+        .not. identity_argument_valid(expected_state_layout_id) .or. &
+        .not. identity_argument_valid(expected_configuration_id) .or. &
+        .not. identity_argument_valid(expected_feature_layout_id)) then
+      reason = 'INVALID_EXPECTED_IDENTITY'
+      return
+    end if
     if (trim(checkpoint%checkpoint_schema_id) /= trim(expected_checkpoint_schema_id)) then
       reason = 'CHECKPOINT_SCHEMA_MISMATCH'
       return
@@ -91,8 +107,8 @@ contains
       reason = 'FEATURE_LAYOUT_MISMATCH'
       return
     end if
-    if (len_trim(checkpoint%lineage_id) == 0) then
-      reason = 'INVALID_LINEAGE'
+    if (len_trim(checkpoint%lineage_id) == 0 .or. checkpoint%accepted_generation < 0_int64) then
+      reason = 'INVALID_ACCEPTED_PROVENANCE'
       return
     end if
     if (.not. time_is_valid(checkpoint%accepted_time)) then
