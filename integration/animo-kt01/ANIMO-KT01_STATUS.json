@@ -1,9 +1,10 @@
 {
   "workunit": "ANIMO-KT01",
   "branch": "work/animo-kt01-swap5-runtime-substrate-reuse",
-  "phase": "CLASSIFY",
-  "status": "CLASSIFY_COMPLETE_PROTOTYPE_PERMITTED",
-  "research_maturity": "RESEARCH_ISOLATED",
+  "phase": "PROTOTYPE",
+  "status": "PROTOTYPE_COMPLETE_QUALIFICATION_PENDING",
+  "research_maturity": "RESEARCH_ISOLATED_NONPRODUCTION",
+  "frozen_authoring_head": "fc4df11c467bcd26951a3e7b168e5bf9c676b94b",
   "reuse_summary": {
     "DIRECT_PORT": 0,
     "PORT_WITH_ANIMO_ADAPTATION": 3,
@@ -19,5 +20,5 @@
   "B2_historical_reference_created": false,
   "SWAP5_dependency_at_runtime": false,
   "shared_cross_model_library_created": false,
-  "next_permitted_action": "PROTOTYPE"
+  "next_permitted_action": "QUALIFY_AFTER_EXACT_HEAD_CI"
 }
