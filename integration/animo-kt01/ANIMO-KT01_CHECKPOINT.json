@@ -1,10 +1,8 @@
 {
   "workunit": "ANIMO-KT01",
   "phase": "QUALIFY",
-  "checkpoint_state": "REMEDIATION_COMPLETE_AUTHORING_HEAD_FROZEN_EXACT_HEAD_CI_PASS",
+  "checkpoint_state": "RESTARTED_REVIEW_COMPLETE_PASS_QUALIFICATION_PERMITTED",
   "animo_branch": "work/animo-kt01-swap5-runtime-substrate-reuse",
-  "animo_head": "2070377dcb0aa2c5cfec9cf8c3bc03c6749ff7ea",
-  "animo_head_semantics": "metadata checkpoint head after freezing remediated executable authoring head",
   "frozen_authoring_head": "25819e08fa34676e8dddd0254c4539f6b4372b89",
   "central_regie_authority": "ANIMO-GOV06@7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
   "time_authorities": [
@@ -39,30 +37,9 @@
     "REJECT": 6,
     "matrix": "docs/kt01/SWAP5_RUNTIME_REUSE_MATRIX.csv"
   },
-  "remediation_closed_findings": [
-    "KT01-R1-F01 event ledger separated from physical accepted/checkpoint state and staged to outer exact completion",
-    "KT01-R1-F02 negative directed transfer amounts rejected before journal mutation",
-    "KT01-R1-F03 exact split-run/restart continuation evidence added",
-    "bounded int64 TIME02 realization envelope documented and fail-closed identity handling added",
-    "explicit trial provenance required before commit"
-  ],
-  "files_added_or_changed_since_review_1": [
-    "prototype/kt01/mod_animo_time_coordinate.f90",
-    "prototype/kt01/mod_animo_runtime_contracts.f90",
-    "prototype/kt01/mod_animo_kernel_transactions.f90",
-    "prototype/kt01/mod_animo_committed_persistence.f90",
-    "prototype/kt01/mod_animo_worker_context.f90",
-    "prototype/kt01/mod_animo_interval_runtime.f90",
-    "tests/kt01/test_kt01_runtime.f90",
-    "tests/kt01/test_kt01_identity_envelope.f90",
-    "tests/kt01/test_kt01_structure.py",
-    "tests/kt01/run_kt01_tests.sh",
-    "docs/kt01/ANIMO_RUNTIME_SUBSTRATE_CONTRACT.md",
-    "docs/kt01/PROTOTYPE_TEST_MATRIX.md"
-  ],
   "tests_executed": [
     "GitHub Actions exact-head qualification against 25819e08fa34676e8dddd0254c4539f6b4372b89",
-    "Fortran executable tests 01-23, 26-29, 30-38",
+    "Fortran executable tests 01-23 and 26-38",
     "structural checks 24-25 and S01-S10",
     "GOV06-to-authoring-head production-tree diff"
   ],
@@ -72,18 +49,26 @@
     "exact_head_ci_result": "SUCCESS",
     "production_src_diff": "PASS_NONE"
   },
-  "review_state": "REVIEW_1_FINDINGS_REMEDIATED_RESTART_NOT_YET_EXECUTED",
-  "current_verdict": "REMEDIATED_AUTHORING_HEAD_READY_FOR_RESTARTED_REVIEW",
+  "review_state": {
+    "mode": "same-agent / not genuinely independent",
+    "gov05_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "review_artifact": "integration/animo-kt01/ANIMO_KT01_ADVERSARIAL_REVIEW.json",
+    "outcome": "SELF_REVIEW_PASS_NONPRODUCTION_PROTOTYPE_ONLY",
+    "material_open_findings": []
+  },
+  "review_1_findings": {
+    "KT01-R1-F01": "CLOSED",
+    "KT01-R1-F02": "CLOSED",
+    "KT01-R1-F03": "CLOSED"
+  },
+  "current_verdict": "QUALIFICATION_PERMITTED_NONPRODUCTION_ONLY",
   "mutations_performed": [
-    "bounded nonproduction prototype remediation only",
-    "test and documentation strengthening",
-    "no ANIMO src production file modified",
-    "no B3/B4/admission state modified"
+    "completed full restarted adversarial review against immutable remediated authoring head",
+    "recorded same-agent non-independent assurance",
+    "no production or admission mutation"
   ],
-  "open_blockers": [
-    "full restarted GOV05-compatible same-agent / not genuinely independent review against frozen authoring head"
-  ],
-  "next_permitted_action": "perform restarted full adversarial review against 25819e08fa34676e8dddd0254c4539f6b4372b89; qualify only if no material blocker remains",
+  "open_blockers": [],
+  "next_permitted_action": "write qualification report, then close KT01 without production promotion",
   "explicit_exclusions": [
     "B3 admission mutation",
     "B4 or production opening",
