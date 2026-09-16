@@ -1,10 +1,10 @@
 {
   "workunit": "ANIMO-KT01",
-  "phase": "PROTOTYPE",
-  "checkpoint_state": "PROTOTYPE_IMPLEMENTED_AUTHORING_HEAD_FROZEN_CI_RUNNING",
+  "phase": "QUALIFY",
+  "checkpoint_state": "REVIEW_1_REMEDIATION_REQUIRED",
   "animo_branch": "work/animo-kt01-swap5-runtime-substrate-reuse",
-  "animo_head": "fc4df11c467bcd26951a3e7b168e5bf9c676b94b",
-  "animo_head_semantics": "frozen nonproduction prototype authoring head before PROTOTYPE checkpoint persistence",
+  "animo_head": "3fc5ed2874f6065866128c3a67f070bfd0e7e082",
+  "reviewed_authoring_head": "fc4df11c467bcd26951a3e7b168e5bf9c676b94b",
   "central_regie_authority": "ANIMO-GOV06@7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
   "time_authorities": [
     "ANIMO-TIMEQ01@ddd5de478165d51a53352033bc92c55ce672d3aa",
@@ -37,46 +37,37 @@
     "REJECT": 6,
     "matrix": "docs/kt01/SWAP5_RUNTIME_REUSE_MATRIX.csv"
   },
-  "files_added_or_changed": [
-    "prototype/kt01/mod_animo_time_coordinate.f90",
-    "prototype/kt01/mod_animo_runtime_contracts.f90",
-    "prototype/kt01/mod_animo_kernel_transactions.f90",
-    "prototype/kt01/mod_animo_committed_persistence.f90",
-    "prototype/kt01/mod_animo_worker_context.f90",
-    "prototype/kt01/mod_animo_interval_runtime.f90",
-    "tests/kt01/test_kt01_runtime.f90",
-    "tests/kt01/test_kt01_structure.py",
-    "tests/kt01/run_kt01_tests.sh",
-    ".github/workflows/animo-kt01-nonproduction-runtime.yml",
-    "docs/kt01/ANIMO_RUNTIME_SUBSTRATE_CONTRACT.md",
-    "docs/kt01/PROTOTYPE_TEST_MATRIX.md",
-    "docs/kt01/PROVENANCE_AND_AUTHORITY_MAP.md"
-  ],
   "tests_executed": [
-    "local gfortran -std=f2008 -ffree-line-length-none -Wall -Wextra -Werror -fcheck=all -fbacktrace",
-    "Fortran executable requirements 01-23 plus fail-closed 26-29",
-    "GitHub compare GOV06 base to authoring head for production-tree mutation"
+    "local gfortran executable suite",
+    "structural test suite in GitHub Actions",
+    "GitHub exact-head CI run 35042404231 against fc4df11c467bcd26951a3e7b168e5bf9c676b94b"
   ],
   "test_results": {
     "local_fortran": "PASS",
-    "production_src_diff": "PASS_NONE",
     "exact_head_ci_run": 35042404231,
-    "exact_head_ci_state_at_checkpoint": "IN_PROGRESS"
+    "exact_head_ci_job": 104624872888,
+    "exact_head_ci_result": "SUCCESS",
+    "production_src_diff": "PASS_NONE"
   },
-  "review_state": "NOT_STARTED_AUTHORING_HEAD_FROZEN",
-  "current_verdict": "PROTOTYPE_IMPLEMENTED_QUALIFY_PENDING_EXACT_HEAD_CI_AND_GOV05_REVIEW",
+  "review_state": "same-agent / not genuinely independent; REVIEW_1_REMEDIATION_REQUIRED",
+  "review_finding": {
+    "id": "KT01-R1-F01",
+    "class": "ARCHITECTURE_OWNERSHIP",
+    "description": "Committed TransferJournal was embedded in AcceptedState and AcceptedCheckpoint, conflating event ledger ownership with physical continuation state.",
+    "material": true
+  },
+  "current_verdict": "REMEDIATION_REQUIRED_AUTHORING_HEAD_NOT_QUALIFIED",
   "mutations_performed": [
-    "added isolated prototype/kt01 runtime source only",
-    "added executable and structural tests",
-    "added KT01-only CI workflow",
-    "added prototype contract and exact source provenance mapping",
-    "no src production file changed"
+    "persisted same-agent adversarial Review 1",
+    "no production source modified",
+    "no admission state modified"
   ],
   "open_blockers": [
-    "exact-head CI run 35042404231 must complete successfully before qualification",
-    "GOV05-compatible same-agent adversarial review must be executed against frozen authoring head"
+    "remove committed event history from physical AcceptedState and AcceptedCheckpoint",
+    "separate accepted event ledger publication from physical state while retaining interval atomicity",
+    "rerun exact-head CI and restart review on a new immutable authoring head"
   ],
-  "next_permitted_action": "QUALIFY only after exact-head CI is successful; perform same-agent / not genuinely independent adversarial review against fc4df11c467bcd26951a3e7b168e5bf9c676b94b",
+  "next_permitted_action": "bounded remediation of KT01-R1-F01 only, then new immutable authoring head, exact-head CI, restarted GOV05-compatible review",
   "explicit_exclusions": [
     "B3 admission mutation",
     "B4 or production opening",
