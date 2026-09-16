@@ -5,7 +5,7 @@
 module mod_animo_interval_runtime
   use iso_fortran_env, only: int64
   use mod_animo_time_coordinate, only: TimeCoordinate, time_compare, time_equal, time_is_valid
-  use mod_animo_runtime_contracts, only: AcceptedState, TrialState, TrialResult, &
+  use mod_animo_runtime_contracts, only: AcceptedState, CommittedEventLedger, TrialState, TrialResult, &
     ConservationAssessment, append_transfer_event
   use mod_animo_kernel_transactions, only: begin_trial, commit_trial, checked_add_storage
   implicit none
@@ -34,9 +34,10 @@ module mod_animo_interval_runtime
 
 contains
 
-  subroutine run_synthetic_interval(external_accepted, requested_target, plans, max_attempts, &
+  subroutine run_synthetic_interval(external_accepted, external_events, requested_target, plans, max_attempts, &
       trace, success, reason)
     type(AcceptedState), intent(inout) :: external_accepted
+    type(CommittedEventLedger), intent(inout) :: external_events
     type(TimeCoordinate), intent(in) :: requested_target
     type(SyntheticAttemptPlan), intent(in) :: plans(:)
     integer, intent(in) :: max_attempts
@@ -45,6 +46,7 @@ contains
     character(len=*), intent(out) :: reason
 
     type(AcceptedState) :: working
+    type(CommittedEventLedger) :: working_events
     type(TrialState) :: trial
     type(TrialResult) :: result
     integer :: target_order, endpoint_order, endpoint_vs_target, plan_index
@@ -56,6 +58,10 @@ contains
     success = .false.
     reason = 'UNSET'
 
+    if (len_trim(external_accepted%lineage_id) == 0 .or. external_accepted%generation < 0_int64) then
+      reason = 'INVALID_ACCEPTED_ORIGIN_PROVENANCE'
+      return
+    end if
     if (.not. time_is_valid(external_accepted%accepted_time)) then
       reason = 'INVALID_ACCEPTED_ORIGIN_TIME'
       return
@@ -75,6 +81,7 @@ contains
     end if
 
     working = external_accepted
+    working_events = external_events
     plan_index = 0
 
     do
@@ -128,7 +135,7 @@ contains
       call append_transfer_event(trial%trial_journal, 'SYNTHETIC_Q', 'CV_OUTSIDE', 'CV_PRIMARY', &
         plans(plan_index)%transfer_amount, event_ok)
       if (.not. event_ok) then
-        reason = 'TRIAL_JOURNAL_CAPACITY_OR_ID_FAILURE'
+        reason = 'TRIAL_JOURNAL_CAPACITY_OR_EVENT_FAILURE'
         return
       end if
 
@@ -143,12 +150,16 @@ contains
         admissible=plans(plan_index)%conservation_admissible)
       result%provenance_id = 'KT01_SYNTHETIC_ATTEMPT'
 
-      call commit_trial(working, result, ok, commit_reason)
+      call commit_trial(working, working_events, result, ok, commit_reason)
       if (ok) then
         trace%accepted_attempt(trace%attempt_count) = .true.
         trace%commit_count = trace%commit_count + 1
       else
         trace%accepted_attempt(trace%attempt_count) = .false.
+        if (trim(commit_reason) /= 'ACCEPTANCE_REJECTED_OR_INCOMPLETE') then
+          reason = 'TRANSACTION_COMMIT_FAILED'
+          return
+        end if
         if (.not. plans(plan_index)%retry_permitted_after_reject) then
           reason = 'FAILED_ACCEPTANCE_AND_RETRY_POLICY'
           return
@@ -163,6 +174,7 @@ contains
     end if
 
     external_accepted = working
+    external_events = working_events
     success = .true.
     reason = 'INTERVAL_COMMITTED'
   end subroutine run_synthetic_interval
