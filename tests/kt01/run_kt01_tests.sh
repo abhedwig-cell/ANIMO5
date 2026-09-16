@@ -27,6 +27,16 @@ FFLAGS="${FFLAGS:--std=f2008 -ffree-line-length-none -Wall -Wextra -Werror -fche
   "$ROOT/tests/kt01/test_kt01_runtime.f90"
 
 ./test_kt01_runtime
+
+"$FC" $FFLAGS -o test_kt01_identity_envelope \
+  mod_animo_time_coordinate.o \
+  mod_animo_runtime_contracts.o \
+  mod_animo_kernel_transactions.o \
+  mod_animo_committed_persistence.o \
+  mod_animo_worker_context.o \
+  "$ROOT/tests/kt01/test_kt01_identity_envelope.f90"
+
+./test_kt01_identity_envelope
 cd "$ROOT"
 python3 tests/kt01/test_kt01_structure.py
 rm -rf "$BUILD"
