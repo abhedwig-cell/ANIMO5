@@ -1,7 +1,7 @@
 {
   "workunit": "ANIMO-KT01",
-  "phase": "QUALIFY",
-  "checkpoint_state": "QUALIFY_COMPLETE_CLOSE_PENDING",
+  "phase": "CLOSE",
+  "checkpoint_state": "CLOSE_COMPLETE",
   "animo_branch": "work/animo-kt01-swap5-runtime-substrate-reuse",
   "frozen_authoring_head": "25819e08fa34676e8dddd0254c4539f6b4372b89",
   "central_regie_authority": "ANIMO-GOV06@7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
@@ -19,7 +19,9 @@
     "ANIMO-STATEQ07@26f6e61da328a5578b9c4b332de04eb99a3ac04f",
     "ANIMO-MASSQ04@3e0f8254d9cd7966a4491b3068d0239b8ccda5f9"
   ],
-  "numerical_authorities": ["ANIMO-NQ01@e558dff12b127e0662cad62beea7527b42ad89ac"],
+  "numerical_authorities": [
+    "ANIMO-NQ01@e558dff12b127e0662cad62beea7527b42ad89ac"
+  ],
   "swap_canonical_authority": "992a5c657bfe10a10100f92e0cb77c4825ae65b6",
   "swap_scientific_production_source_authority": "50346642bd565f79134ea17d5462e544b354998c",
   "source_file_blob_pins": {
@@ -57,14 +59,18 @@
     "material_open_findings": []
   },
   "qualification_report": "docs/kt01/QUALIFICATION_REPORT.md",
+  "closeout_document": "docs/kt01/CLOSEOUT_AND_HANDOFF.md",
+  "closeout_document_commit": "a9246897738fcb9a8f2fbcce7950203f763cb6d4",
+  "status_close_commit": "a5b250dd8d2f3acc0df2c211c1f4edfa4422249e",
   "current_verdict": "QUALIFIED_NONPRODUCTION_ANIMO_NATIVE_TRANSACTION_AND_INTERVAL_RUNTIME_SUBSTRATE_REUSE_PROTOTYPE_NO_B3_B4_OR_PRODUCTION_ADMISSION",
   "mutations_performed": [
     "qualified isolated prototype only",
+    "persisted closeout and handoff metadata",
     "no production source modified",
     "no B3/B4/admission state modified"
   ],
   "open_blockers": [],
-  "next_permitted_action": "CLOSE by persisting final handoff; do not promote prototype to production",
+  "next_permitted_action": "CENTRAL_REGIE_HANDOFF_ONLY_NO_PRODUCTION_PROMOTION",
   "explicit_exclusions": [
     "B3 admission mutation",
     "B4 or production opening",
