@@ -5,11 +5,12 @@
 module mod_animo_committed_persistence
   use iso_fortran_env, only: int64
   use mod_animo_time_coordinate, only: TimeCoordinate, time_is_valid
-  use mod_animo_runtime_contracts, only: AcceptedState, TransferJournal, ID_LEN
+  use mod_animo_runtime_contracts, only: AcceptedState, ID_LEN
   implicit none
   private
 
   type, public :: AcceptedCheckpoint
+    private
     logical :: valid = .false.
     character(len=ID_LEN) :: checkpoint_schema_id = ''
     character(len=ID_LEN) :: state_layout_id = ''
@@ -19,7 +20,6 @@ module mod_animo_committed_persistence
     integer(int64) :: accepted_generation = 0_int64
     type(TimeCoordinate) :: accepted_time
     integer(int64) :: synthetic_storage = 0_int64
-    type(TransferJournal) :: committed_journal
   end type AcceptedCheckpoint
 
   public :: make_accepted_checkpoint
@@ -61,7 +61,6 @@ contains
     checkpoint%accepted_generation = accepted%generation
     checkpoint%accepted_time = accepted%accepted_time
     checkpoint%synthetic_storage = accepted%synthetic_storage
-    checkpoint%committed_journal = accepted%committed_journal
     checkpoint%valid = .true.
     ok = .true.
   end subroutine make_accepted_checkpoint
@@ -120,7 +119,6 @@ contains
     restored%generation = checkpoint%accepted_generation
     restored%accepted_time = checkpoint%accepted_time
     restored%synthetic_storage = checkpoint%synthetic_storage
-    restored%committed_journal = checkpoint%committed_journal
     ok = .true.
     reason = 'RESTORED'
   end subroutine restore_accepted_checkpoint
