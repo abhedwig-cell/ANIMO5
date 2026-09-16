@@ -19,13 +19,28 @@ The prototype materializes only the reuse classes allowed by `SWAP5_RUNTIME_REUS
 
 `TimeCoordinate` is a bounded prototype realization of the TIME02 candidate fields `calendar_contract_id`, `day_index`, `subday_numerator`, and `subday_denominator`. Fractions are normalized exactly. Equality and ordering use integer-only exact comparison. Ratio comparison uses Euclidean continued-fraction comparison and does not use unchecked cross products. Arithmetic detects overflow and fails closed. No fixed global timestep quantum is introduced.
 
+The explicit KT01 representation envelope is:
+
+- all integer coordinate fields use signed Fortran `int64` storage;
+- `day_index` may occupy the `int64` range, subject to fail-closed whole-day carry during arithmetic;
+- `subday_denominator` is an `int64` value greater than zero;
+- constructor and arithmetic numerators are nonnegative `int64` values and normalize to `0 <= numerator < denominator` with `gcd=1`;
+- arithmetic exposed by KT01 is forward nonnegative rational addition only; any intermediate multiply, add, denominator construction or whole-day carry that is not representable in `int64` fails closed;
+- exact ratio comparison does not multiply denominators and is defined for every valid coordinate inside this bounded envelope;
+- `calendar_contract_id` is an opaque nonempty identifier of at most 48 characters; the prototype serialization delimiter `|` is excluded so serialization cannot become ambiguous;
+- cross-calendar ordering/equality fails closed rather than converting calendars implicitly.
+
+TIME02 defines mathematical-integer semantics beyond this bounded storage backend. KT01 does not claim arbitrary-precision realization. Values outside the envelope are rejected rather than rounded, truncated or projected through REAL.
+
+The prototype pipe-delimited serializer is a bounded executable round-trip harness for the four TIME02 identity fields. It is deliberately **not** claimed to be the TIME02 canonical JSON interchange form. A later admitted implementation must either implement the TIME02 canonical serialization contract or qualify an explicit adapter. This distinction does not change time identity or ordering semantics.
+
 This is not canonical TIME admission.
 
 ## Transaction model
 
 `AcceptedState` is authoritative physical state. A `TrialState` is created from one exact accepted origin and is private until commit. A `TrialResult` carries the candidate endpoint, trial-local transfer journal, supplied conservation assessments, diagnostics and provenance.
 
-Commit checks exact lineage, generation and origin-time identity, forward endpoint progress, and supplied acceptance. Publication is built in a temporary next state and assigned to accepted state only after all checks pass. Rejection leaves accepted state unchanged and trial events remain uncommitted.
+Commit checks a valid accepted origin, nonempty trial provenance, exact lineage, generation and origin-time identity, forward endpoint progress, and supplied acceptance. Publication is built in a temporary next state and assigned to accepted state only after all checks pass. Rejection leaves accepted state unchanged and trial events remain uncommitted.
 
 No scientific process ordering or process equations exist in KT01.
 
@@ -37,13 +52,15 @@ The synthetic tests use exact Boolean pass/fail assessments only. They do not de
 
 ## Persistence and restart
 
-`AcceptedCheckpoint` can be constructed only from `AcceptedState`. It contains accepted continuation state plus checkpoint schema, state layout, configuration, feature layout, lineage, generation and exact accepted time. It excludes trial state, uncommitted journal events, worker/process scratch and diagnostics.
+`AcceptedCheckpoint` can be constructed only through the KT01 checkpoint constructor from `AcceptedState` in the tested runtime path. It contains accepted continuation state plus checkpoint schema, state layout, configuration, feature layout, lineage, generation and exact accepted time. It excludes trial state, uncommitted journal events, worker/process scratch and diagnostics. Fixed-width compatibility identifiers supplied to the constructor or restore boundary must be nonempty and at most 48 characters; overlength identities fail closed rather than truncate.
 
-Restore fails closed on schema, state-layout, configuration or feature-layout mismatch. This demonstrates the ARCH02/04/06 mechanics only. It is not a historical ANIMO restart equivalence claim and creates no B2 evidence.
+Restore fails closed on schema, state-layout, configuration or feature-layout mismatch and on invalid accepted provenance or time. This demonstrates the ARCH02/04/06 mechanics only. It is not a historical ANIMO restart equivalence claim and creates no B2 evidence.
+
+The public derived type remains a prototype carrier rather than a production encapsulation boundary. KT01 qualification therefore applies to the constructor/restore API path exercised by the tests; a later B4 implementation must decide whether stronger component privacy is required.
 
 ## Worker context
 
-The minimal worker context holds only worker/job ownership, logical-model/attempt binding, synthetic scratch and attempt-local diagnostic counters. Preparing an attempt resets scratch and attempt diagnostics. No worker payload can become accepted physical state or checkpoint state.
+The minimal worker context holds only worker/job ownership, logical-model/attempt binding, synthetic scratch and attempt-local diagnostic counters. Preparing an attempt resets scratch and attempt diagnostics. External identity arguments are nonempty and at most 48 characters so worker/model/attempt identifiers cannot silently truncate. No worker payload can become accepted physical state or checkpoint state.
 
 ## Interval runtime
 
