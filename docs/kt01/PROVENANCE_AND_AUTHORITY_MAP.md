@@ -44,6 +44,20 @@ These pins identify source provenance only. They do not transfer SWAP5 scientifi
 - numerical qualification architecture: `NQ01@e558dff12b127e0662cad62beea7527b42ad89ac`
 - B3 closure gate: `B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700`, negative
 
+## Prototype source mapping
+
+| ANIMO KT01 prototype path | Provenance disposition |
+| --- | --- |
+| `prototype/kt01/mod_animo_time_coordinate.f90` | newly written bounded realization of `TIME02@b4d78cf32cb149cf50aa2b0a0fbefee571eee6b8`; no SWAP time code ported |
+| `prototype/kt01/mod_animo_runtime_contracts.f90` | ANIMO ARCH01/03/05 contract realization; SWAP `mod_canonical_contracts.f90@3962c270a7579b7403764674302445fe15ef5f72` is `DESIGN_ONLY` architecture evidence |
+| `prototype/kt01/mod_animo_kernel_transactions.f90` | `PORT_WITH_ANIMO_ADAPTATION` control structure from `src/kernel/mod_kernel_transactions.f90@e4db4ede8162c8be877c8cad9f1babd57ba451b6`; SWAP physical types, water acceptance and REAL time rejected |
+| `prototype/kt01/mod_animo_committed_persistence.f90` | `PORT_WITH_ANIMO_ADAPTATION` control structure from `src/kernel/mod_kernel_committed_persistence.f90@ffd886c3401fc12739a456fe60a8741c12b9848b`; ANIMO schema/layout/configuration/feature identities substituted |
+| `prototype/kt01/mod_animo_worker_context.f90` | `DESIGN_ONLY` semantic/structural derivation from `src/runtime/mod_a23bu_worker_execution_context.f90@f96a66c0185d96ba48258f8560db275fa7fed58c`; hydraulic payload rejected |
+| `prototype/kt01/mod_animo_interval_runtime.f90` | `PORT_WITH_ANIMO_ADAPTATION` control structure from `src/runtime/mod_canonical_interval_runtime.f90@0b50dda5caf3b73a82561d7b0ba1e92386a08fee`; exact ANIMO time and supplied acceptance substituted |
+| `tests/kt01/*` | newly written KT01 verification harness, not SWAP source reuse |
+
+The source headers contain the same exact source authority, path/blob or ANIMO authority where applicable. No copied source fragment is left with only a generic `based on SWAP5` statement.
+
 ## Authority/non-authority statements
 
 `TIME02` is candidate time semantics, not canonical TIME admission.
