@@ -9,6 +9,8 @@ program test_kt01_identity_envelope
 
   type(TimeCoordinate) :: t0, t1
   type(AcceptedState) :: accepted
+  type(CommittedEventLedger) :: ledger
+  type(TransferJournal) :: journal
   type(TrialState) :: trial
   type(TrialResult) :: result
   type(AcceptedCheckpoint) :: checkpoint
@@ -37,6 +39,7 @@ program test_kt01_identity_envelope
   accepted%generation = 2_int64
   accepted%accepted_time = t0
   accepted%synthetic_storage = 10_int64
+  call clear_committed_ledger(ledger)
 
   call make_accepted_checkpoint(accepted, overlong, 'LAYOUT', 'CONFIG', 'FEATURE', checkpoint, ok)
   call assert_true(.not. ok, '32 overlong checkpoint identity fails closed', failures)
@@ -53,15 +56,20 @@ program test_kt01_identity_envelope
   result%assessments(1)%control_volume_id = 'CV'
   result%assessments(1)%complete = .true.
   result%assessments(1)%admissible = .true.
-  call commit_trial(accepted, result, ok, reason)
+  call commit_trial(accepted, ledger, result, ok, reason)
   call assert_true(.not. ok .and. trim(reason) == 'MISSING_TRIAL_PROVENANCE', &
     '34 provenance-free candidate cannot commit', failures)
+
+  call clear_journal(journal)
+  call append_transfer_event(journal, 'SYNTHETIC_Q', 'SOURCE', 'SINK', -1_int64, ok)
+  call assert_true(.not. ok .and. journal%count == 0, &
+    '35 negative directed transfer fails without journal mutation', failures)
 
   if (failures /= 0) then
     write(*,'(A,I0)') 'KT01 IDENTITY ENVELOPE TEST FAILURES: ', failures
     error stop 1
   end if
-  write(*,'(A)') 'KT01 IDENTITY ENVELOPE TESTS 30-34: PASS'
+  write(*,'(A)') 'KT01 IDENTITY ENVELOPE TESTS 30-35: PASS'
 
 contains
 
