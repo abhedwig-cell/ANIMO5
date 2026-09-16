@@ -10,6 +10,7 @@ module mod_animo_runtime_contracts
 
   integer, parameter, public :: ID_LEN = 48
   integer, parameter, public :: MAX_TRANSFER_EVENTS = 32
+  integer, parameter, public :: MAX_COMMITTED_EVENTS = 128
   integer, parameter, public :: MAX_ASSESSMENTS = 16
 
   type, public :: TransferEvent
@@ -24,12 +25,16 @@ module mod_animo_runtime_contracts
     type(TransferEvent) :: events(MAX_TRANSFER_EVENTS)
   end type TransferJournal
 
+  type, public :: CommittedEventLedger
+    integer :: count = 0
+    type(TransferEvent) :: events(MAX_COMMITTED_EVENTS)
+  end type CommittedEventLedger
+
   type, public :: AcceptedState
     character(len=ID_LEN) :: lineage_id = ''
     integer(int64) :: generation = 0_int64
     type(TimeCoordinate) :: accepted_time
     integer(int64) :: synthetic_storage = 0_int64
-    type(TransferJournal) :: committed_journal
   end type AcceptedState
 
   type, public :: TrialState
@@ -62,20 +67,30 @@ module mod_animo_runtime_contracts
   end type TrialResult
 
   public :: clear_journal
+  public :: clear_committed_ledger
   public :: append_transfer_event
+  public :: append_trial_journal_to_ledger
   public :: assessments_allow_commit
 
 contains
 
+  logical function event_is_valid(event)
+    type(TransferEvent), intent(in) :: event
+
+    event_is_valid = len_trim(event%quantity_id) > 0 .and. &
+      len_trim(event%source_id) > 0 .and. len_trim(event%sink_id) > 0 .and. &
+      event%amount >= 0_int64
+  end function event_is_valid
+
   subroutine clear_journal(journal)
     type(TransferJournal), intent(out) :: journal
-    integer :: i
-
-    journal%count = 0
-    do i = 1, MAX_TRANSFER_EVENTS
-      journal%events(i) = TransferEvent()
-    end do
+    journal = TransferJournal()
   end subroutine clear_journal
+
+  subroutine clear_committed_ledger(ledger)
+    type(CommittedEventLedger), intent(out) :: ledger
+    ledger = CommittedEventLedger()
+  end subroutine clear_committed_ledger
 
   subroutine append_transfer_event(journal, quantity_id, source_id, sink_id, amount, ok)
     type(TransferJournal), intent(inout) :: journal
@@ -88,6 +103,7 @@ contains
     if (journal%count < 0 .or. journal%count >= MAX_TRANSFER_EVENTS) return
     if (len_trim(quantity_id) == 0 .or. len_trim(source_id) == 0 .or. len_trim(sink_id) == 0) return
     if (len_trim(quantity_id) > ID_LEN .or. len_trim(source_id) > ID_LEN .or. len_trim(sink_id) > ID_LEN) return
+    if (amount < 0_int64) return
 
     slot = journal%count + 1
     journal%events(slot)%quantity_id = trim(quantity_id)
@@ -97,6 +113,34 @@ contains
     journal%count = slot
     ok = .true.
   end subroutine append_transfer_event
+
+  subroutine append_trial_journal_to_ledger(journal, ledger, ok)
+    type(TransferJournal), intent(in) :: journal
+    type(CommittedEventLedger), intent(inout) :: ledger
+    logical, intent(out) :: ok
+    type(CommittedEventLedger) :: next_ledger
+    integer :: i, slot
+
+    ok = .false.
+    if (journal%count < 0 .or. journal%count > MAX_TRANSFER_EVENTS) return
+    if (ledger%count < 0 .or. ledger%count > MAX_COMMITTED_EVENTS) return
+    if (journal%count > MAX_COMMITTED_EVENTS - ledger%count) return
+    do i = 1, ledger%count
+      if (.not. event_is_valid(ledger%events(i))) return
+    end do
+    do i = 1, journal%count
+      if (.not. event_is_valid(journal%events(i))) return
+    end do
+
+    next_ledger = ledger
+    do i = 1, journal%count
+      slot = next_ledger%count + 1
+      next_ledger%events(slot) = journal%events(i)
+      next_ledger%count = slot
+    end do
+    ledger = next_ledger
+    ok = .true.
+  end subroutine append_trial_journal_to_ledger
 
   logical function assessments_allow_commit(result)
     type(TrialResult), intent(in) :: result
