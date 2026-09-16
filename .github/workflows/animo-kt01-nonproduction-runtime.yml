@@ -1,0 +1,25 @@
+name: ANIMO KT01 nonproduction runtime prototype
+
+on:
+  push:
+    branches:
+      - work/animo-kt01-swap5-runtime-substrate-reuse
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-qualification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head with history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install GNU Fortran
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gfortran
+      - name: Run KT01 executable and structural verification
+        run: bash tests/kt01/run_kt01_tests.sh
