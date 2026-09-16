@@ -38,9 +38,13 @@ This is not canonical TIME admission.
 
 ## Transaction model
 
-`AcceptedState` is authoritative physical state. A `TrialState` is created from one exact accepted origin and is private until commit. A `TrialResult` carries the candidate endpoint, trial-local transfer journal, supplied conservation assessments, diagnostics and provenance.
+`AcceptedState` is authoritative physical state. It contains lineage, generation, exact accepted time and the synthetic physical payload only. It does not contain committed transfer/event history.
 
-Commit checks a valid accepted origin, nonempty trial provenance, exact lineage, generation and origin-time identity, forward endpoint progress, and supplied acceptance. Publication is built in a temporary next state and assigned to accepted state only after all checks pass. Rejection leaves accepted state unchanged and trial events remain uncommitted.
+A `TrialState` is created from one exact accepted origin and is private until commit. Its `TransferJournal` is attempt-local. A `TrialResult` carries the candidate endpoint, trial-local transfer journal, supplied conservation assessments, diagnostics and explicit provenance.
+
+`CommittedEventLedger` is a separate publication product. It is not physical accepted state and is not restart continuation state. Transfer direction is represented by `source_id -> sink_id`; event amounts are therefore non-negative, and a negative directed amount is rejected before journal mutation.
+
+Commit checks a valid accepted origin, nonempty trial provenance, exact lineage, generation and origin-time identity, forward endpoint progress, supplied acceptance and event-ledger capacity/validity. It first constructs candidate physical and ledger postimages. Only after all checks succeed are both outputs assigned. Rejection leaves accepted physical state and the external committed event ledger unchanged.
 
 No scientific process ordering or process equations exist in KT01.
 
@@ -52,11 +56,11 @@ The synthetic tests use exact Boolean pass/fail assessments only. They do not de
 
 ## Persistence and restart
 
-`AcceptedCheckpoint` can be constructed only through the KT01 checkpoint constructor from `AcceptedState` in the tested runtime path. It contains accepted continuation state plus checkpoint schema, state layout, configuration, feature layout, lineage, generation and exact accepted time. It excludes trial state, uncommitted journal events, worker/process scratch and diagnostics. Fixed-width compatibility identifiers supplied to the constructor or restore boundary must be nonempty and at most 48 characters; overlength identities fail closed rather than truncate.
+`AcceptedCheckpoint` is constructed through the KT01 checkpoint constructor from `AcceptedState`. Its components are private outside the persistence module. It contains accepted physical continuation state plus checkpoint schema, state layout, configuration, feature layout, lineage, generation and exact accepted time. It contains no trial state, transfer journal, committed event ledger, worker/process scratch or diagnostics.
 
-Restore fails closed on schema, state-layout, configuration or feature-layout mismatch and on invalid accepted provenance or time. This demonstrates the ARCH02/04/06 mechanics only. It is not a historical ANIMO restart equivalence claim and creates no B2 evidence.
+Fixed-width compatibility identifiers supplied to the constructor or restore boundary must be nonempty and at most 48 characters; overlength identities fail closed rather than truncate. Restore fails closed on schema, state-layout, configuration or feature-layout mismatch and on invalid accepted provenance or time.
 
-The public derived type remains a prototype carrier rather than a production encapsulation boundary. KT01 qualification therefore applies to the constructor/restore API path exercised by the tests; a later B4 implementation must decide whether stronger component privacy is required.
+The executable restart control compares an uninterrupted two-segment synthetic continuation with a run split at an accepted checkpoint. Final exact time, lineage/generation and synthetic physical storage must match exactly. The separately published event ledger is deliberately retained outside the physical checkpoint and compared separately after continuation. This demonstrates restart mechanics only. It is not a historical ANIMO restart equivalence claim and creates no B2 evidence.
 
 ## Worker context
 
@@ -64,9 +68,11 @@ The minimal worker context holds only worker/job ownership, logical-model/attemp
 
 ## Interval runtime
 
-The interval runtime clones the externally accepted origin into a private working accepted state. It consumes caller-supplied synthetic attempt plans, performs transaction checks against the private working origin, and publishes externally only after the exact requested target coordinate is reached.
+The interval runtime clones the externally accepted physical origin and the external committed event ledger into private working values. Internal accepted substeps update only those private values. Accepted substep events accumulate in the private event ledger. The runtime publishes both physical accepted state and the separately owned event ledger only after the exact requested target coordinate is reached.
 
-It fails closed on invalid interval ordering, zero or backward progress, endpoint beyond target, failed acceptance when retry is not permitted, attempt exhaustion, trace exhaustion, unrepresentable synthetic state arithmetic and incomplete interval completion. Retry policy is supplied by the synthetic test plan. No scientific timestep, subdivision, step-doubling or solver fallback policy is defined.
+If a later attempt fails, the attempt budget is exhausted, progress is invalid, or the requested interval otherwise remains incomplete, neither the privately advanced physical state nor accepted-event progress is externally published.
+
+The runtime fails closed on invalid interval ordering, zero or backward progress, endpoint beyond target, failed acceptance when retry is not permitted, attempt exhaustion, trace exhaustion, unrepresentable synthetic state arithmetic, invalid event construction and incomplete interval completion. Retry policy is supplied by the synthetic test plan. No scientific timestep, subdivision, step-doubling or solver fallback policy is defined.
 
 ## Explicit non-authority
 
