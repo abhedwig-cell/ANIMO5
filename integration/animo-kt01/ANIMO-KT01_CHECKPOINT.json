@@ -1,7 +1,7 @@
 {
   "workunit": "ANIMO-KT01",
   "phase": "QUALIFY",
-  "checkpoint_state": "RESTARTED_REVIEW_COMPLETE_PASS_QUALIFICATION_PERMITTED",
+  "checkpoint_state": "QUALIFY_COMPLETE_CLOSE_PENDING",
   "animo_branch": "work/animo-kt01-swap5-runtime-substrate-reuse",
   "frozen_authoring_head": "25819e08fa34676e8dddd0254c4539f6b4372b89",
   "central_regie_authority": "ANIMO-GOV06@7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
@@ -56,19 +56,15 @@
     "outcome": "SELF_REVIEW_PASS_NONPRODUCTION_PROTOTYPE_ONLY",
     "material_open_findings": []
   },
-  "review_1_findings": {
-    "KT01-R1-F01": "CLOSED",
-    "KT01-R1-F02": "CLOSED",
-    "KT01-R1-F03": "CLOSED"
-  },
-  "current_verdict": "QUALIFICATION_PERMITTED_NONPRODUCTION_ONLY",
+  "qualification_report": "docs/kt01/QUALIFICATION_REPORT.md",
+  "current_verdict": "QUALIFIED_NONPRODUCTION_ANIMO_NATIVE_TRANSACTION_AND_INTERVAL_RUNTIME_SUBSTRATE_REUSE_PROTOTYPE_NO_B3_B4_OR_PRODUCTION_ADMISSION",
   "mutations_performed": [
-    "completed full restarted adversarial review against immutable remediated authoring head",
-    "recorded same-agent non-independent assurance",
-    "no production or admission mutation"
+    "qualified isolated prototype only",
+    "no production source modified",
+    "no B3/B4/admission state modified"
   ],
   "open_blockers": [],
-  "next_permitted_action": "write qualification report, then close KT01 without production promotion",
+  "next_permitted_action": "CLOSE by persisting final handoff; do not promote prototype to production",
   "explicit_exclusions": [
     "B3 admission mutation",
     "B4 or production opening",
