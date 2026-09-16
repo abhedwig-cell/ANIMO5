@@ -5,8 +5,8 @@
 module mod_animo_kernel_transactions
   use iso_fortran_env, only: int64
   use mod_animo_time_coordinate, only: TimeCoordinate, time_equal, time_compare, time_is_valid
-  use mod_animo_runtime_contracts, only: AcceptedState, TrialState, TrialResult, &
-    clear_journal, assessments_allow_commit
+  use mod_animo_runtime_contracts, only: AcceptedState, CommittedEventLedger, TrialState, TrialResult, &
+    clear_journal, append_trial_journal_to_ledger, assessments_allow_commit
   implicit none
   private
 
@@ -42,13 +42,15 @@ contains
     ok = .true.
   end subroutine begin_trial
 
-  subroutine commit_trial(accepted, result, ok, reason)
+  subroutine commit_trial(accepted, committed_events, result, ok, reason)
     type(AcceptedState), intent(inout) :: accepted
+    type(CommittedEventLedger), intent(inout) :: committed_events
     type(TrialResult), intent(in) :: result
     logical, intent(out) :: ok
     character(len=*), intent(out) :: reason
     type(AcceptedState) :: next_state
-    logical :: equal, time_ok
+    type(CommittedEventLedger) :: next_events
+    logical :: equal, time_ok, ledger_ok
     integer :: ordering
 
     ok = .false.
@@ -91,19 +93,25 @@ contains
     end if
 
     next_state = accepted
+    next_events = committed_events
+    call append_trial_journal_to_ledger(result%candidate%trial_journal, next_events, ledger_ok)
+    if (.not. ledger_ok) then
+      reason = 'COMMITTED_EVENT_LEDGER_REJECTED'
+      return
+    end if
+
     next_state%generation = accepted%generation + 1_int64
     next_state%accepted_time = result%candidate%endpoint_time
     next_state%synthetic_storage = result%candidate%synthetic_storage
-    next_state%committed_journal = result%candidate%trial_journal
 
     accepted = next_state
+    committed_events = next_events
     ok = .true.
     reason = 'COMMITTED'
   end subroutine commit_trial
 
   subroutine reject_trial(result)
     type(TrialResult), intent(inout) :: result
-
     result = TrialResult()
   end subroutine reject_trial
 
