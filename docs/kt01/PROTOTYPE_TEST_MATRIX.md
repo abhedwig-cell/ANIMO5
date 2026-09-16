@@ -1,6 +1,6 @@
 # ANIMO-KT01 Prototype Verification Matrix
 
-The executable Fortran suite covers requirements 1 through 23. The structural Python suite covers requirements 24 and 25 plus additional guards.
+The executable Fortran suite covers requirements 1 through 23. The structural Python suite covers requirements 24 and 25 plus additional guards. Additional adversarial executable controls 26 through 34 exercise fail-closed boundaries.
 
 | ID | Property | Test surface |
 | --- | --- | --- |
@@ -17,8 +17,8 @@ The executable Fortran suite covers requirements 1 through 23. The structural Py
 | 11 | restore preserves continuation identity | Fortran |
 | 12 | incompatible checkpoint identity fails closed | Fortran |
 | 13 | exact time equality without epsilon | Fortran |
-| 14 | rational normalization is canonical | Fortran |
-| 15 | time serialization round-trips exactly | Fortran |
+| 14 | rational normalization is canonical within the bounded backend | Fortran |
+| 15 | prototype time serialization round-trips exactly | Fortran |
 | 16 | exact rationals remain distinct when REAL projection collapses | Fortran, REAL only in adversarial test |
 | 17 | invalid/overflowing time arithmetic fails closed | Fortran |
 | 18 | interval success requires exact requested target | Fortran |
@@ -40,3 +40,8 @@ Additional fail-closed runtime coverage:
 | 27 | attempt-budget exhaustion causes no partial external publication | Fortran |
 | 28 | endpoint beyond exact target fails closed | Fortran |
 | 29 | unrepresentable synthetic state arithmetic fails closed | Fortran |
+| 30 | overlength calendar identity is rejected rather than truncated | Fortran identity-envelope suite |
+| 31 | delimiter-ambiguous prototype calendar identity is rejected | Fortran identity-envelope suite |
+| 32 | overlength checkpoint compatibility identity is rejected rather than truncated | Fortran identity-envelope suite |
+| 33 | overlength worker identity is rejected rather than truncated | Fortran identity-envelope suite |
+| 34 | a candidate without explicit trial provenance cannot commit | Fortran identity-envelope suite |
