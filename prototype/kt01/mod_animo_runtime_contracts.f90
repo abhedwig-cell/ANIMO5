@@ -87,6 +87,7 @@ contains
     ok = .false.
     if (journal%count < 0 .or. journal%count >= MAX_TRANSFER_EVENTS) return
     if (len_trim(quantity_id) == 0 .or. len_trim(source_id) == 0 .or. len_trim(sink_id) == 0) return
+    if (len_trim(quantity_id) > ID_LEN .or. len_trim(source_id) > ID_LEN .or. len_trim(sink_id) > ID_LEN) return
 
     slot = journal%count + 1
     journal%events(slot)%quantity_id = trim(quantity_id)
