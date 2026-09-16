@@ -32,11 +32,14 @@ contains
     type(TimeCoordinate), intent(out) :: value
     logical, intent(out) :: ok
     integer(int64) :: whole, remainder, divisor, normalized_day
+    integer :: calendar_length
 
     value = TimeCoordinate()
     ok = .false.
 
-    if (len_trim(calendar_contract_id) == 0) return
+    calendar_length = len_trim(calendar_contract_id)
+    if (calendar_length == 0 .or. calendar_length > CALENDAR_ID_LEN) return
+    if (index(calendar_contract_id(:calendar_length), '|') /= 0) return
     if (denominator <= 0_int64) return
     if (numerator < 0_int64) return
 
@@ -51,7 +54,7 @@ contains
       if (divisor <= 0_int64) return
     end if
 
-    value%calendar_contract_id = trim(calendar_contract_id)
+    value%calendar_contract_id = calendar_contract_id(:calendar_length)
     value%day_index = normalized_day
     value%subday_numerator = remainder / divisor
     value%subday_denominator = denominator / divisor
@@ -64,6 +67,7 @@ contains
 
     time_is_valid = .false.
     if (len_trim(value%calendar_contract_id) == 0) return
+    if (index(trim(value%calendar_contract_id), '|') /= 0) return
     if (value%subday_denominator <= 0_int64) return
     if (value%subday_numerator < 0_int64) return
     if (value%subday_numerator >= value%subday_denominator) return
@@ -170,14 +174,14 @@ contains
     value = TimeCoordinate()
     ok = .false.
     p1 = index(text, '|')
-    if (p1 <= 1) return
+    if (p1 <= 1 .or. p1 - 1 > CALENDAR_ID_LEN) return
     p2 = p1 + index(text(p1+1:), '|')
     if (p2 <= p1 + 1) return
     p3 = p2 + index(text(p2+1:), '|')
     if (p3 <= p2 + 1) return
     if (index(text(p3+1:), '|') /= 0) return
 
-    calendar = adjustl(text(:p1-1))
+    calendar = text(:p1-1)
     read(text(p1+1:p2-1), *, iostat=ios) day_index
     if (ios /= 0) return
     read(text(p2+1:p3-1), *, iostat=ios) numerator
