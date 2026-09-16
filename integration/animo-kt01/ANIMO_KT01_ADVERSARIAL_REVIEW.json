@@ -1,0 +1,107 @@
+{
+  "workunit": "ANIMO-KT01",
+  "review_iteration": 2,
+  "reviewed_authoring_head": "25819e08fa34676e8dddd0254c4539f6b4372b89",
+  "review_mode": "SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "review_mode_label": "same-agent / not genuinely independent",
+  "gov05_assurance_label": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "same_agent": true,
+  "independence_claimed": false,
+  "review_boundary": {
+    "authoring_head_frozen_before_review": true,
+    "moving_tree_reviewed": false,
+    "exact_head_ci_run": 35043168090,
+    "exact_head_ci_job": 104627245057,
+    "exact_head_ci_result": "SUCCESS",
+    "production_src_changed_from_gov06_base": false
+  },
+  "counter_hypothesis": {
+    "tested": true,
+    "alternative": "The apparent runtime reuse may still import SWAP-specific scientific or numerical semantics, weaken TIME02, or conflate physical continuation with event/restart state despite passing tests.",
+    "result": "NOT_SUPPORTED_WITHIN_KT01_BOUNDED_PROTOTYPE_SCOPE"
+  },
+  "review_1_finding_closure": {
+    "KT01-R1-F01": {
+      "status": "CLOSED",
+      "finding": "event ledger was embedded in physical accepted/checkpoint state",
+      "closure_evidence": [
+        "AcceptedState no longer contains committed event history",
+        "AcceptedCheckpoint contains no transfer journal or committed event ledger",
+        "CommittedEventLedger is a separate publication product",
+        "interval runtime stages physical and event progress privately and publishes both only at exact interval completion",
+        "tests 08, 18, 27, 36, 37 and structural S08-S10"
+      ]
+    },
+    "KT01-R1-F02": {
+      "status": "CLOSED",
+      "finding": "negative directed transfer amount was representable",
+      "closure_evidence": [
+        "append_transfer_event rejects amount < 0 before mutation",
+        "test 35"
+      ]
+    },
+    "KT01-R1-F03": {
+      "status": "CLOSED",
+      "finding": "split-run/restart continuation evidence missing",
+      "closure_evidence": [
+        "test 38 compares uninterrupted and accepted-checkpoint split continuation",
+        "exact final physical state and separately retained event history agree",
+        "no tolerance introduced"
+      ]
+    }
+  },
+  "applicable_gates": {
+    "TRANSACTION_ISOLATION_AND_ROLLBACK": "PASS",
+    "ATOMIC_PHYSICAL_AND_EVENT_PUBLICATION": "PASS",
+    "LINEAGE_GENERATION_AND_ORIGIN_IDENTITY": "PASS",
+    "EXACT_TIME_SEMANTICS_NOT_WEAKENED": "PASS",
+    "BOUNDED_TIME_REPRESENTATION_FAILS_CLOSED": "PASS",
+    "CHECKPOINT_PHYSICAL_CONTINUATION_ONLY": "PASS",
+    "SPLIT_RUN_RESTART_MECHANICS": "PASS",
+    "WORKER_SCRATCH_ISOLATION": "PASS",
+    "GENERIC_CONSERVATION_ACCEPTANCE_NO_TOLERANCE_INVENTED": "PASS",
+    "NO_BALANCING_MASS_OR_EVENT": "PASS",
+    "NO_SWAP_RUNTIME_DEPENDENCY": "PASS",
+    "NO_SWAP_PHYSICS_OR_NUMERICAL_POLICY_LEAK": "PASS",
+    "EXACT_SOURCE_PROVENANCE": "PASS",
+    "NO_ANIMO_PRODUCTION_SOURCE_CHANGE": "PASS",
+    "NO_B3_B4_OR_PRODUCTION_ADMISSION": "PASS",
+    "HISTORICAL_B2_NOT_INVENTED": "PASS"
+  },
+  "time_review": {
+    "canonical_time_admission": false,
+    "fixed_global_timestep_quantum_introduced": false,
+    "floating_time_identity_used": false,
+    "epsilon_or_ulp_equality_used": false,
+    "unchecked_rational_cross_products_used": false,
+    "bounded_int64_backend": true,
+    "overflow_nonrepresentability_fail_closed": true,
+    "prototype_pipe_serialization_claimed_as_time02_canonical_json": false
+  },
+  "reuse_review": {
+    "DIRECT_PORT": 0,
+    "PORT_WITH_ANIMO_ADAPTATION": 3,
+    "DESIGN_ONLY": 3,
+    "REJECT": 6,
+    "swap5_dependency_at_runtime": false,
+    "shared_cross_model_library_created": false
+  },
+  "governance_boundary": {
+    "B3_admission_changed": false,
+    "B4_opened": false,
+    "production_opened": false,
+    "ANIMO_Status_A_claimed": false,
+    "ANIMO_Status_AA_claimed": false,
+    "B2_historical_reference_created": false
+  },
+  "residual_uncertainty": [
+    "Same-agent review retains correlated reasoning and confirmation-bias risk and is not genuinely independent.",
+    "The int64 time backend is a bounded prototype realization, not arbitrary-precision production TIME02.",
+    "The pipe-delimited prototype serializer is not the TIME02 canonical JSON interchange form.",
+    "Fixed identifier and event-ledger capacities are prototype implementation envelopes, not admitted production layouts.",
+    "No real ANIMO process, scientific timestep policy, conserved-quantity registry, scientific tolerance or production restart format is qualified by KT01."
+  ],
+  "material_open_findings": [],
+  "outcome": "SELF_REVIEW_PASS_NONPRODUCTION_PROTOTYPE_ONLY",
+  "qualification_permitted": true
+}
