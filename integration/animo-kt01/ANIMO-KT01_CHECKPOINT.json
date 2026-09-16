@@ -1,10 +1,10 @@
 {
   "workunit": "ANIMO-KT01",
-  "phase": "RECONCILE",
-  "checkpoint_state": "RECONCILE_COMPLETE",
+  "phase": "CLASSIFY",
+  "checkpoint_state": "CLASSIFY_COMPLETE",
   "animo_branch": "work/animo-kt01-swap5-runtime-substrate-reuse",
-  "animo_head": "7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
-  "animo_head_semantics": "phase input head and branch base before checkpoint persistence",
+  "animo_head": "f9072ef195654aded1bf3e26a5a3d555b97da1c8",
+  "animo_head_semantics": "phase input head before CLASSIFY checkpoint persistence",
   "central_regie_authority": "ANIMO-GOV06@7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
   "time_authorities": [
     "ANIMO-TIMEQ01@ddd5de478165d51a53352033bc92c55ce672d3aa",
@@ -20,14 +20,6 @@
     "ANIMO-STATEQ07@26f6e61da328a5578b9c4b332de04eb99a3ac04f",
     "ANIMO-MASSQ04@3e0f8254d9cd7966a4491b3068d0239b8ccda5f9"
   ],
-  "numerical_authorities": [
-    "ANIMO-NQ01@e558dff12b127e0662cad62beea7527b42ad89ac"
-  ],
-  "b3_b4_gate_state": {
-    "B3Q06": "11e9bcdc6654e63f84875bf1f28dc54abe725700",
-    "B3_complete": false,
-    "B4_opened": false
-  },
   "swap_canonical_authority": "992a5c657bfe10a10100f92e0cb77c4825ae65b6",
   "swap_scientific_production_source_authority": "50346642bd565f79134ea17d5462e544b354998c",
   "source_file_blob_pins": {
@@ -38,32 +30,41 @@
     "src/runtime/mod_canonical_interval_runtime.f90": "0b50dda5caf3b73a82561d7b0ba1e92386a08fee",
     "src/runtime/mod_a23bu_worker_execution_context.f90": "f96a66c0185d96ba48258f8560db275fa7fed58c"
   },
-  "source_blob_delta_baseline_to_canonical": false,
-  "reuse_classifications": [],
+  "reuse_classifications": {
+    "DIRECT_PORT": 0,
+    "PORT_WITH_ANIMO_ADAPTATION": 3,
+    "DESIGN_ONLY": 3,
+    "REJECT": 6,
+    "matrix": "docs/kt01/SWAP5_RUNTIME_REUSE_MATRIX.csv"
+  },
+  "classification_notes": [
+    "No inspected element satisfies the strict DIRECT_PORT definition.",
+    "Positive reuse is limited to adapted transaction publication, committed-only persistence and private interval working-state control structure.",
+    "Worker ownership/reset and generic clone/retry patterns are design evidence only, not literal ports.",
+    "Floating time equality/progress, SWAP retry/step-doubling policy, single-water acceptance and all hydraulic/solver payloads are rejected."
+  ],
   "files_added_or_changed": [
-    "docs/kt01/WORK_UNIT_CONTRACT.md",
-    "docs/kt01/RECONCILIATION.md",
-    "docs/kt01/PROVENANCE_AND_AUTHORITY_MAP.md",
+    "docs/kt01/SWAP5_RUNTIME_REUSE_MATRIX.csv",
     "integration/animo-kt01/ANIMO-KT01_STATUS.json",
     "integration/animo-kt01/ANIMO-KT01_CHECKPOINT.json"
   ],
   "tests_executed": [],
-  "test_results": "NOT_RUN_BEFORE_IMPLEMENTATION",
+  "test_results": "NOT_RUN_BEFORE_PROTOTYPE",
   "review_state": "NOT_STARTED",
-  "current_verdict": "RECONCILE_PASS_TO_CLASSIFY",
+  "current_verdict": "CLASSIFY_PASS_TO_PROTOTYPE",
   "mutations_performed": [
-    "created KT01 branch from current legitimate central regie authority",
-    "added governance/provenance/reconciliation metadata only",
-    "no production scientific source modified"
+    "classified all considered SWAP5 source elements",
+    "no production source modified",
+    "no SWAP source copied into ANIMO production tree"
   ],
   "open_blockers": [],
-  "next_permitted_action": "CLASSIFY every considered SWAP5 implementation element before prototype implementation",
+  "next_permitted_action": "PROTOTYPE the classified adapted/design-derived subset under prototype/kt01 only",
   "explicit_exclusions": [
     "B3 admission mutation",
     "B4 or production opening",
     "canonical TIME admission",
     "scientific process equations or ordering",
-    "SWAP physics or water-specific acceptance",
+    "SWAP physics, calendars, file formats or water-specific acceptance",
     "SWAP runtime dependency",
     "shared cross-model library",
     "historical ANIMO behaviour invention",
