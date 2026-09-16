@@ -28,6 +28,7 @@ contains
     trial = TrialState()
     ok = .false.
     if (len_trim(accepted%lineage_id) == 0) return
+    if (accepted%generation < 0_int64) return
     if (.not. time_is_valid(accepted%accepted_time)) return
     call time_compare(endpoint_time, accepted%accepted_time, ordering, compare_ok)
     if (.not. compare_ok .or. ordering <= 0) return
@@ -53,6 +54,15 @@ contains
     ok = .false.
     reason = 'UNSET'
 
+    if (len_trim(accepted%lineage_id) == 0 .or. accepted%generation < 0_int64 .or. &
+        .not. time_is_valid(accepted%accepted_time)) then
+      reason = 'INVALID_ACCEPTED_ORIGIN'
+      return
+    end if
+    if (len_trim(result%provenance_id) == 0) then
+      reason = 'MISSING_TRIAL_PROVENANCE'
+      return
+    end if
     if (trim(result%candidate%origin_lineage_id) /= trim(accepted%lineage_id)) then
       reason = 'LINEAGE_MISMATCH'
       return
