@@ -22,6 +22,14 @@ module mod_animo_worker_context
 
 contains
 
+  logical function identity_argument_valid(value)
+    character(len=*), intent(in) :: value
+    integer :: n
+
+    n = len_trim(value)
+    identity_argument_valid = n > 0 .and. n <= ID_LEN
+  end function identity_argument_valid
+
   subroutine initialize_worker_context(context, worker_id, ok)
     type(WorkerContext), intent(out) :: context
     character(len=*), intent(in) :: worker_id
@@ -29,7 +37,7 @@ contains
 
     context = WorkerContext()
     ok = .false.
-    if (len_trim(worker_id) == 0) return
+    if (.not. identity_argument_valid(worker_id)) return
     context%worker_id = trim(worker_id)
     ok = .true.
   end subroutine initialize_worker_context
@@ -41,7 +49,8 @@ contains
 
     ok = .false.
     if (len_trim(context%worker_id) == 0) return
-    if (len_trim(logical_model_id) == 0 .or. len_trim(attempt_id) == 0) return
+    if (.not. identity_argument_valid(logical_model_id)) return
+    if (.not. identity_argument_valid(attempt_id)) return
 
     context%logical_model_id = trim(logical_model_id)
     context%attempt_id = trim(attempt_id)
