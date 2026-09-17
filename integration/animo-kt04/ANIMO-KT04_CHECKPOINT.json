@@ -1,24 +1,34 @@
 {
   "workunit": "ANIMO-KT04",
   "title": "Hlpimp=1 Legacy Projection and File/Typed Equivalence",
-  "phase": "IMPLEMENT",
-  "checkpoint_state": "PROJECTION_LAYER_IMPLEMENTED_CI_PENDING",
+  "phase": "QUALIFY",
+  "checkpoint_state": "IMPLEMENTATION_GREEN_CONTRACT_HARDENING_APPLIED_REVIEW_PENDING",
   "branch": "work/animo-kt04-hlpimp1-legacy-projection",
   "base_authority": "ANIMO-KT03F01@0bd8e3f2fe84837e85c45c44ec2e8201f81cef12",
   "consumed_kt03_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
-  "consumed_kt03f01_ci": 35283894975,
+  "first_implementation_head": "7111ebc969fff927240a3c5532a2e322402814c9",
+  "first_implementation_exact_head_ci": {
+    "run_id": 35284103015,
+    "conclusion": "SUCCESS"
+  },
   "production_src_modified": false,
   "normalized_hydrology_step_contract_modified": false,
   "implemented_capabilities": [
-    "explicit interception projection policy identity",
+    "pinned semantic projection authority",
+    "immutable external projection carrier",
     "Hlpimp=1 absent-state projection without fabricated Sict",
     "Hlpimp=11 explicit-state projection",
-    "legacy provenance to policy selection",
+    "legacy provenance to authority selection",
     "producer-independent typed projection path",
     "bounded SWAP3 top-boundary Dif-Evso-Flab1 transformation probe"
   ],
   "supplementary_build_evidence": "SUPPLEMENTARY_BUILD_ARTIFACT_NOT_B2",
-  "verdict": "IMPLEMENTED_NONPRODUCTION_PROJECTION_AWAITING_EXACT_HEAD_CI_AND_REVIEW",
+  "preclose_findings_remediated": [
+    "free policy string could over-authorize unqualified typed producers",
+    "mutable external_inputs dictionary weakened projection immutability",
+    "absent LocalSavedScalarsZero attributes were incorrectly represented as false rather than not explicitly set"
+  ],
+  "verdict": "QUALIFICATION_CANDIDATE_AWAITING_REMEDIATION_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW",
   "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_ADVERSARIAL_REVIEW",
   "explicit_exclusions": [
     "Hlpimp=2 semantics",

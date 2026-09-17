@@ -15,11 +15,12 @@ from prototype.kt03.hydrology_step import (  # noqa: E402
     parse_swap3_static,
 )
 from prototype.kt04.hydrology_projection import (  # noqa: E402
-    EXPLICIT_INTERCEPTION_POLICY,
-    HLPIMP1_ABSENT_INTERCEPTION_POLICY,
+    EXPLICIT_INTERCEPTION_AUTHORITY,
+    HLPIMP1_AUTHORITY,
+    ProjectionAuthority,
     TopBoundaryContext,
+    authority_from_legacy_provenance,
     evaluate_swap3_top_boundary,
-    policy_from_legacy_provenance,
     project_legacy_step,
     project_typed_step,
     projection_digest,
@@ -115,15 +116,16 @@ def main() -> int:
     h1_step = parse_dynamic_step(h1_records, 0, h1_static)
     h1_prov = legacy_step_provenance(h1_records, 0, h1_static)
 
-    assert policy_from_legacy_provenance(h1_step, h1_prov) == HLPIMP1_ABSENT_INTERCEPTION_POLICY
+    assert authority_from_legacy_provenance(h1_step, h1_prov) == HLPIMP1_AUTHORITY
     file_projection = project_legacy_step(h1_step, h1_prov)
     typed_projection = project_typed_step(
         HydrologyStep(**h1_step.__dict__),
-        interception_policy_id=HLPIMP1_ABSENT_INTERCEPTION_POLICY,
+        authority=HLPIMP1_AUTHORITY,
     )
     assert file_projection == typed_projection
     assert projection_digest(file_projection) == projection_digest(typed_projection)
-    assert "Sict" not in file_projection.external_inputs
+    assert "Sict" not in file_projection.as_dict()
+    assert isinstance(file_projection.external_inputs, tuple)
 
     context_h1 = TopBoundaryContext(
         flab1_before_correction=0.0002,
@@ -152,7 +154,14 @@ def main() -> int:
     expect_error(
         "requires interception payload",
         lambda: project_typed_step(
-            h1_step, interception_policy_id=EXPLICIT_INTERCEPTION_POLICY
+            h1_step, authority=EXPLICIT_INTERCEPTION_AUTHORITY
+        ),
+    )
+    expect_error(
+        "unqualified hydrology projection authority",
+        lambda: project_typed_step(
+            h1_step,
+            authority=ProjectionAuthority("UNQUALIFIED", HLPIMP1_AUTHORITY.interception_policy_id),
         ),
     )
 
@@ -160,15 +169,18 @@ def main() -> int:
     h11_static = parse_swap3_static(h11_records)
     h11_step = parse_dynamic_step(h11_records, 0, h11_static)
     h11_prov = legacy_step_provenance(h11_records, 0, h11_static)
-    assert policy_from_legacy_provenance(h11_step, h11_prov) == EXPLICIT_INTERCEPTION_POLICY
+    assert (
+        authority_from_legacy_provenance(h11_step, h11_prov)
+        == EXPLICIT_INTERCEPTION_AUTHORITY
+    )
 
     h11_file_projection = project_legacy_step(h11_step, h11_prov)
     h11_typed_projection = project_typed_step(
         HydrologyStep(**h11_step.__dict__),
-        interception_policy_id=EXPLICIT_INTERCEPTION_POLICY,
+        authority=EXPLICIT_INTERCEPTION_AUTHORITY,
     )
     assert h11_file_projection == h11_typed_projection
-    assert h11_file_projection.external_inputs["Sict"] == 0.0002
+    assert h11_file_projection.as_dict()["Sict"] == 0.0002
 
     context_h11 = TopBoundaryContext(
         flab1_before_correction=0.0002,
@@ -194,7 +206,7 @@ def main() -> int:
         "conflicts with explicit interception payload",
         lambda: project_typed_step(
             h11_step,
-            interception_policy_id=HLPIMP1_ABSENT_INTERCEPTION_POLICY,
+            authority=HLPIMP1_AUTHORITY,
         ),
     )
 

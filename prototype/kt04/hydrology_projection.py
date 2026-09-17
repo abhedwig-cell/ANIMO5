@@ -14,29 +14,74 @@ from prototype.kt03.hydrology_step import (
 HLPIMP1_ABSENT_INTERCEPTION_POLICY = "ANIMO_KT03F01_HLPIMP1_ABSENT_INTERCEPTION_V1"
 EXPLICIT_INTERCEPTION_POLICY = "ANIMO_EXPLICIT_INTERCEPTION_STORAGE_V1"
 
+KT03F01_HLPIMP1_AUTHORITY_ID = (
+    "ANIMO-KT03F01@0bd8e3f2fe84837e85c45c44ec2e8201f81cef12"
+)
+KT03_EXPLICIT_INTERCEPTION_AUTHORITY_ID = (
+    "ANIMO-KT03@e844c7658a95819fc0463c55737f9bd41b29a6da"
+)
+
+
+@dataclass(frozen=True)
+class ProjectionAuthority:
+    authority_id: str
+    interception_policy_id: str
+
+    def validate(self) -> None:
+        allowed = {
+            (
+                KT03F01_HLPIMP1_AUTHORITY_ID,
+                HLPIMP1_ABSENT_INTERCEPTION_POLICY,
+            ),
+            (
+                KT03_EXPLICIT_INTERCEPTION_AUTHORITY_ID,
+                EXPLICIT_INTERCEPTION_POLICY,
+            ),
+        }
+        if (self.authority_id, self.interception_policy_id) not in allowed:
+            raise HydrologyAdapterError("unqualified hydrology projection authority")
+
+
+HLPIMP1_AUTHORITY = ProjectionAuthority(
+    KT03F01_HLPIMP1_AUTHORITY_ID,
+    HLPIMP1_ABSENT_INTERCEPTION_POLICY,
+)
+EXPLICIT_INTERCEPTION_AUTHORITY = ProjectionAuthority(
+    KT03_EXPLICIT_INTERCEPTION_AUTHORITY_ID,
+    EXPLICIT_INTERCEPTION_POLICY,
+)
+
 
 @dataclass(frozen=True)
 class HydroDetailedProjection:
-    interception_policy_id: str
+    authority: ProjectionAuthority
     interception_storage_end: Optional[float]
-    external_inputs: dict
+    external_inputs: tuple[tuple[str, object], ...]
+
+    def as_dict(self) -> dict:
+        return dict(self.external_inputs)
 
     def validate(self) -> None:
-        if self.interception_policy_id == HLPIMP1_ABSENT_INTERCEPTION_POLICY:
+        self.authority.validate()
+        values = self.as_dict()
+        if len(values) != len(self.external_inputs):
+            raise HydrologyAdapterError("duplicate external projection field")
+
+        if self.authority.interception_policy_id == HLPIMP1_ABSENT_INTERCEPTION_POLICY:
             if self.interception_storage_end is not None:
                 raise HydrologyAdapterError(
                     "absent-interception projection must not carry Sict"
                 )
-            if "Sict" in self.external_inputs:
+            if "Sict" in values:
                 raise HydrologyAdapterError(
                     "absent-interception projection must not expose Sict"
                 )
-        elif self.interception_policy_id == EXPLICIT_INTERCEPTION_POLICY:
+        elif self.authority.interception_policy_id == EXPLICIT_INTERCEPTION_POLICY:
             if self.interception_storage_end is None:
                 raise HydrologyAdapterError(
                     "explicit-interception projection requires Sict"
                 )
-            if self.external_inputs.get("Sict") != self.interception_storage_end:
+            if values.get("Sict") != self.interception_storage_end:
                 raise HydrologyAdapterError(
                     "explicit-interception projection Sict mismatch"
                 )
@@ -94,32 +139,37 @@ def _base_external_inputs(step: HydrologyStep) -> dict:
     }
 
 
+def _freeze_external_inputs(values: dict) -> tuple[tuple[str, object], ...]:
+    return tuple(sorted(values.items(), key=lambda item: item[0]))
+
+
 def project_typed_step(
-    step: HydrologyStep, *, interception_policy_id: str
+    step: HydrologyStep, *, authority: ProjectionAuthority
 ) -> HydroDetailedProjection:
     step.validate()
+    authority.validate()
     external = _base_external_inputs(step)
 
-    if interception_policy_id == HLPIMP1_ABSENT_INTERCEPTION_POLICY:
+    if authority.interception_policy_id == HLPIMP1_ABSENT_INTERCEPTION_POLICY:
         if step.has_interception_storage_end or step.interception_storage_end is not None:
             raise HydrologyAdapterError(
                 "Hlpimp=1 absent-state policy conflicts with explicit interception payload"
             )
         projection = HydroDetailedProjection(
-            interception_policy_id=interception_policy_id,
+            authority=authority,
             interception_storage_end=None,
-            external_inputs=external,
+            external_inputs=_freeze_external_inputs(external),
         )
-    elif interception_policy_id == EXPLICIT_INTERCEPTION_POLICY:
+    elif authority.interception_policy_id == EXPLICIT_INTERCEPTION_POLICY:
         if not step.has_interception_storage_end or step.interception_storage_end is None:
             raise HydrologyAdapterError(
                 "explicit interception policy requires interception payload"
             )
         external = {**external, "Sict": step.interception_storage_end}
         projection = HydroDetailedProjection(
-            interception_policy_id=interception_policy_id,
+            authority=authority,
             interception_storage_end=step.interception_storage_end,
-            external_inputs=external,
+            external_inputs=_freeze_external_inputs(external),
         )
     else:
         raise HydrologyAdapterError("unknown interception projection policy")
@@ -128,9 +178,9 @@ def project_typed_step(
     return projection
 
 
-def policy_from_legacy_provenance(
+def authority_from_legacy_provenance(
     step: HydrologyStep, provenance: LegacyStepProvenance
-) -> str:
+) -> ProjectionAuthority:
     step.validate()
     provenance.validate()
     if provenance.hlpimp == 1:
@@ -138,13 +188,13 @@ def policy_from_legacy_provenance(
             raise HydrologyAdapterError(
                 "Hlpimp=1 provenance conflicts with explicit interception payload"
             )
-        return HLPIMP1_ABSENT_INTERCEPTION_POLICY
+        return HLPIMP1_AUTHORITY
     if provenance.hlpimp == 11:
         if not step.has_interception_storage_end:
             raise HydrologyAdapterError(
                 "Hlpimp=11 provenance requires explicit interception payload"
             )
-        return EXPLICIT_INTERCEPTION_POLICY
+        return EXPLICIT_INTERCEPTION_AUTHORITY
     raise HydrologyAdapterError("unsupported legacy interception provenance")
 
 
@@ -153,7 +203,7 @@ def project_legacy_step(
 ) -> HydroDetailedProjection:
     return project_typed_step(
         step,
-        interception_policy_id=policy_from_legacy_provenance(step, provenance),
+        authority=authority_from_legacy_provenance(step, provenance),
     )
 
 
@@ -161,12 +211,12 @@ def evaluate_swap3_top_boundary(
     projection: HydroDetailedProjection, context: TopBoundaryContext
 ) -> TopBoundaryResult:
     projection.validate()
-    values = projection.external_inputs
+    values = projection.as_dict()
     st = values["St"]
     if st <= 0.0:
         raise HydrologyAdapterError("non-positive timestep in projection")
 
-    if projection.interception_policy_id == HLPIMP1_ABSENT_INTERCEPTION_POLICY:
+    if projection.authority.interception_policy_id == HLPIMP1_ABSENT_INTERCEPTION_POLICY:
         if context.interception_storage_start is not None:
             raise HydrologyAdapterError(
                 "absent-state policy must not receive an interception start state"
@@ -222,9 +272,10 @@ def evaluate_swap3_top_boundary(
 def projection_digest(projection: HydroDetailedProjection) -> str:
     projection.validate()
     payload = {
-        "interception_policy_id": projection.interception_policy_id,
+        "authority_id": projection.authority.authority_id,
+        "interception_policy_id": projection.authority.interception_policy_id,
         "interception_storage_end": projection.interception_storage_end,
-        "external_inputs": projection.external_inputs,
+        "external_inputs": projection.as_dict(),
     }
     encoded = json.dumps(
         payload, sort_keys=True, separators=(",", ":"), allow_nan=False

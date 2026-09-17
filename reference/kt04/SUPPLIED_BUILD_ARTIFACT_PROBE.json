@@ -5,11 +5,11 @@
     "configurations": {
       "Debug|Win32": {
         "LocalVariableStorage": "localStorageSave",
-        "LocalSavedScalarsZero": false
+        "LocalSavedScalarsZero": "NOT_EXPLICITLY_SET"
       },
       "Release|Win32": {
         "LocalVariableStorage": "localStorageSave",
-        "LocalSavedScalarsZero": false
+        "LocalSavedScalarsZero": "NOT_EXPLICITLY_SET"
       },
       "Debug|x64": {
         "LocalVariableStorage": "localStorageSave",
@@ -17,7 +17,7 @@
       },
       "Release|x64": {
         "LocalVariableStorage": "localStorageSave",
-        "LocalSavedScalarsZero": false
+        "LocalSavedScalarsZero": "NOT_EXPLICITLY_SET"
       }
     }
   },
@@ -28,5 +28,5 @@
     "pe_timestamp_utc_observed": "2026-05-27T13:41:28Z",
     "intel_fortran_rtl_string": "V20.0-001 Jan 10 2019"
   },
-  "interpretation": "The supplied executable is consistent with the supplied Debug|x64 project profile that zero-initializes saved scalars. This is not historical revision-53 reference evidence and is not used as B2 authority."
+  "interpretation": "The supplied executable is consistent with the supplied Debug|x64 project profile that explicitly zero-initializes saved scalars. This is not historical revision-53 reference evidence and is not used as B2 authority."
 }
