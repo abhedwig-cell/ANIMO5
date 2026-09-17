@@ -6,7 +6,7 @@ on:
       - 'work/animo-kt03-*'
     paths:
       - 'prototype/kt03/**'
-      - 'tools/kt03_probe_cranmais_hydrology.py'
+      - 'tools/kt03_probe_*_hydrology.py'
       - 'tests/kt03/**'
       - 'docs/kt03/**'
       - 'reference/kt03/**'
