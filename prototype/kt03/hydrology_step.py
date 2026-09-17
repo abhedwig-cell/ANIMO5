@@ -164,13 +164,39 @@ class HydrologyStep:
             raise HydrologyAdapterError("missing or malformed source record identity")
 
     def require_hydro_detailed_compatibility(self) -> None:
-        """Fail closed unless every Hydro_detailed-required input is defined."""
+        """Fail closed unless every file-derived Hydro_detailed input is defined."""
         self.validate()
         if not self.has_interception_storage_end:
             raise HydrologyAdapterError(
                 "Sict unavailable from this legacy layout; Hydro_detailed call must "
                 "fail closed pending scientific disposition"
             )
+
+    def hydro_detailed_boundary(self) -> dict:
+        """Project the typed packet onto the file-derived Hydro_detailed seam."""
+        self.require_hydro_detailed_compatibility()
+        return {
+            "Evicirr": self.evicirr,
+            "Evicpr": self.evicpr,
+            "Evpn": self.evpn,
+            "Evsn": self.evsn,
+            "Evso": self.evso,
+            "Evsoma": self.evsoma,
+            "Evtrma": self.evtrma,
+            "Flab": self.flab,
+            "Fldr": self.fldr,
+            "Flev": self.flev,
+            "Mofrt": self.mofrt,
+            "Pnt": self.ponding_end,
+            "Prirr": self.prirr,
+            "Prr": self.prr,
+            "Prsn": self.prsn,
+            "Ru": self.runoff,
+            "Runon": self.runon,
+            "Sict": self.interception_storage_end,
+            "Snt": self.snow_storage_end,
+            "St": self.step_days,
+        }
 
 
 def parse_swap3_static(records: list[bytes]) -> dict:
@@ -190,9 +216,9 @@ def parse_swap3_static(records: list[bytes]) -> dict:
         records[7], 3, "dimensions"
     )
 
-    if hlpimp != 1:
+    if hlpimp not in (1, 11):
         raise HydrologyAdapterError(
-            "KT03 CranMais parser currently supports hlpimp=1 only"
+            "KT03 parser currently supports only the observed Hlpimp=1/11 SWAP3 layouts"
         )
     if layer_count <= 0 or horizon_count <= 0 or drainage_count < 0:
         raise HydrologyAdapterError("invalid static dimensions")
@@ -203,7 +229,11 @@ def parse_swap3_static(records: list[bytes]) -> dict:
     _f32s(records[11], horizon_count, "wilting moisture")
     layer_thickness = _f32s(records[12], layer_count, "layer thickness")
     initial_moisture = _f32s(records[13], layer_count, "initial moisture")
-    _f32s(records[14], 2, "initial groundwater/ponding")
+    initial_surface = _f32s(
+        records[14],
+        3 if hlpimp == 11 else 2,
+        "initial groundwater/interception/ponding",
+    )
     _f32s(records[15], 1, "initial snow storage")
     initial_temperature = _f32s(
         records[16], layer_count, "initial producer temperature"
@@ -222,6 +252,8 @@ def parse_swap3_static(records: list[bytes]) -> dict:
         "nudr": drainage_count,
         "layer_thickness": layer_thickness,
         "initial_moisture": initial_moisture,
+        "initial_interception_storage_present": hlpimp == 11,
+        "initial_surface_record": initial_surface,
         "ioptte": has_soil_temperature,
         "dynamic_start": 17,
     }
@@ -245,27 +277,55 @@ def parse_dynamic_step(
         raise HydrologyAdapterError("incomplete dynamic timestep record group")
 
     group = records[start:end]
-    first = _f32s(group[0], 18, "dynamic surface record")
-    (
-        tiwa,
-        step_days,
-        prr,
-        prsn,
-        prirr,
-        evicpr,
-        evicirr,
-        evsn,
-        evso,
-        evpn,
-        evsoma,
-        evtrma,
-        runon,
-        runoff,
-        groundwater_level,
-        ponding_end,
-        snow_storage_end,
-        water_balance_aeration,
-    ) = first
+    first = _f32s(
+        group[0], 19 if hlpimp == 11 else 18, "dynamic surface record"
+    )
+    if hlpimp == 11:
+        (
+            tiwa,
+            step_days,
+            prr,
+            prsn,
+            prirr,
+            evicpr,
+            evicirr,
+            evsn,
+            evso,
+            evpn,
+            evsoma,
+            evtrma,
+            runon,
+            runoff,
+            groundwater_level,
+            interception_storage_end,
+            ponding_end,
+            snow_storage_end,
+            water_balance_aeration,
+        ) = first
+        has_interception_storage_end = True
+    else:
+        (
+            tiwa,
+            step_days,
+            prr,
+            prsn,
+            prirr,
+            evicpr,
+            evicirr,
+            evsn,
+            evso,
+            evpn,
+            evsoma,
+            evtrma,
+            runon,
+            runoff,
+            groundwater_level,
+            ponding_end,
+            snow_storage_end,
+            water_balance_aeration,
+        ) = first
+        interception_storage_end = None
+        has_interception_storage_end = False
 
     sc = _f32s(group[1], layer_count, "Sc")
     mofrt = _f32s(group[2], layer_count, "Mofrt")
@@ -335,8 +395,12 @@ def parse_dynamic_step(
         flev=tuple(map(normalize, flev)),
         flab=tuple(map(normalize, flab)),
         fldr=tuple(tuple(map(normalize, row)) for row in drainage_rows),
-        has_interception_storage_end=False,
-        interception_storage_end=None,
+        has_interception_storage_end=has_interception_storage_end,
+        interception_storage_end=(
+            normalize(interception_storage_end)
+            if interception_storage_end is not None
+            else None
+        ),
         has_soil_temperature=bool(static["ioptte"]),
         soil_temperature=(
             tuple(map(normalize, temperature_record)) if static["ioptte"] else tuple()
