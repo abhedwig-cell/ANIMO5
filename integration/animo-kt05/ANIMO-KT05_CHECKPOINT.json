@@ -1,104 +1,63 @@
 {
   "workunit": "ANIMO-KT05",
   "title": "Explicit-State HydrologyStep to ANIMO Hydrology Call-Boundary Adapter",
-  "phase": "REVIEW",
-  "checkpoint_state": "POST_REMEDIATION_REVIEW_FOUND_PUBLIC_PROJECTION_VALIDATION_GAP",
+  "phase": "CLOSE",
+  "checkpoint_state": "QUALIFIED_NONPRODUCTION_EXPLICIT_FORTRAN_ADAPTER_CLOSED",
   "branch": "work/animo-kt05-explicit-hydrology-animo-adapter",
   "base_head": "c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
+  "frozen_implementation_head": "69dd607ba1efa28de3f83cc963526021352b3311",
   "consumed_kt03_contract_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
   "hydrology_schema": "ANIMO_HYDROLOGY_STEP_V1",
   "unit_contract": "ANIMO_HYDROLOGY_UNITS_V1",
   "hydro_detailed_source_sha256": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
   "parallelism_class": "PARALLEL_AFTER_PINNING",
+  "research_maturity": "QUALIFIED_NONPRODUCTION_PROTOTYPE",
   "scientific_dependency": "EXPLICIT_INTERCEPTION_STATE_ONLY",
   "kt03f01_dependency": false,
   "production_src_modified": false,
   "kt02_runtime_modified": false,
-  "implemented_capabilities": [
-    "Fortran representation of frozen ANIMO_HYDROLOGY_STEP_V1",
+  "exact_head_ci": {
+    "run_id": 35285836540,
+    "head": "69dd607ba1efa28de3f83cc963526021352b3311",
+    "conclusion": "SUCCESS"
+  },
+  "review": {
+    "mode": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "initial_findings": ["KT05-R1", "KT05-R2", "KT05-R3", "KT05-R4"],
+    "second_round_findings": ["KT05-R5", "KT05-R6"],
+    "open_material_findings": [],
+    "final_verdict": "SELF_REVIEW_PASS_NONPRODUCTION_EXPLICIT_STATE_FORTRAN_ADAPTER_ONLY",
+    "artifacts": [
+      "docs/kt05/ADVERSARIAL_REVIEW.md",
+      "docs/kt05/POST_REMEDIATION_REVIEW.md"
+    ]
+  },
+  "qualified_capabilities": [
+    "complete frozen KT03 HydrologyStep field set represented in Fortran",
     "schema and unit identity validation",
-    "dimension and finite-value fail-closed validation",
-    "explicit interception endpoint mandatory",
-    "typed projection of external Hydro_detailed producer-derived subset",
-    "legacy file provenance excluded from Fortran physical carrier",
-    "machine-checked exact field parity with frozen KT03 HydrologyStep dataclass",
-    "explicit normalized-to-legacy index-1 slice mapping with index-zero preservation",
-    "zero-drainage and unavailable-temperature valid schema branch",
-    "dedicated producer-time validation status"
+    "dimension finite-value explicit-interception and producer-time fail-closed validation",
+    "producer-derived Hydro_detailed external subset projection",
+    "machine-checked KT03 dataclass to Fortran field-set parity",
+    "machine-checked projected external field set",
+    "public fail-closed projected-carrier validator",
+    "explicit 1-based producer-slice mapping into legacy-shaped arrays with index-zero preservation",
+    "zero-drainage and unavailable-temperature valid schema branches",
+    "zero-drainage legacy-slice mapping",
+    "legacy file provenance excluded from physical carrier"
   ],
-  "local_precommit_test": "gfortran 14.2.0 strict compile and test PASS",
-  "verdict": "KT05_NOT_YET_CLOSED_PUBLIC_PROJECTION_VALIDATION_REMEDIATION_REQUIRED",
-  "next_permitted_action": "ADD_PROJECTED_CARRIER_VALIDATOR_AND_ZERO_DRAINAGE_SLICE_TEST_THEN_EXACT_HEAD_CI",
+  "verdict": "QUALIFIED_NONPRODUCTION_EXPLICIT_STATE_FORTRAN_HYDROLOGY_CALL_BOUNDARY_ADAPTER_NO_HYDRO_DETAILED_EXECUTION_OR_RUNTIME_INTEGRATION",
+  "next_permitted_action": "SEPARATE_KT06_RUNTIME_ADAPTER_WORKUNIT_USING_KT02_EXACT_INTERVAL_AUTHORITY_AND_KT05_EXPLICIT_HYDROLOGY_BOUNDARY",
   "explicit_exclusions": [
     "Hlpimp=1 semantics",
     "Hlpimp=2 semantics",
-    "Hydro_detailed scientific rewrite",
+    "Hydro_detailed execution equivalence",
     "runoff partitioning or Dif/Evso transformation ownership",
     "macropore coupling semantics",
     "Modflux migration",
-    "KT02 runtime integration",
+    "KT02 runtime integration inside KT05",
     "production source admission",
     "B2 historical equivalence",
     "B3 or B4 admission",
     "Status A or Status AA"
-  ],
-  "exact_head_ci": {
-    "run_id": 35285228675,
-    "conclusion": "SUCCESS",
-    "head": "bcef06df5a7c07052e251f8adf8a4761edf67d44"
-  },
-  "review": {
-    "mode": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "reviewed_head": "bcef06df5a7c07052e251f8adf8a4761edf67d44",
-    "verdict": "NOT_YET_QUALIFIABLE_AS_FROZEN_COMPILED_EXPLICIT_HYDROLOGY_ADAPTER",
-    "material_findings": [
-      "KT05-R1",
-      "KT05-R2",
-      "KT05-R3"
-    ],
-    "low_findings": [
-      "KT05-R4"
-    ],
-    "artifact": "docs/kt05/ADVERSARIAL_REVIEW.md"
-  },
-  "remediation": {
-    "reviewed_head": "bcef06df5a7c07052e251f8adf8a4761edf67d44",
-    "reviewed_head_ci_run": 35285228675,
-    "findings": {
-      "KT05-R1": "remediated by exact Python/Fortran full schema and projection field-set parity test",
-      "KT05-R2": "remediated by explicit index-1 slice mapping helper, documentation and index-zero sentinel test",
-      "KT05-R3": "remediated by compiled zero-drainage and unavailable-temperature packet test",
-      "KT05-R4": "remediated by dedicated KT05_ERR_TIME"
-    }
-  },
-  "failed_ci": {
-    "run_id": 35285495374,
-    "head": "1bd0dd1264965959cdca37954176b66cfdee3bd1",
-    "conclusion": "FAILURE",
-    "classification": "TOOLING_VALIDATOR_FAILURE",
-    "failed_step": "Compile and run KT05 adapter tests",
-    "diagnosis": "structural Python test imported prototype before adding repository root to sys.path; compiled Fortran test itself had already passed locally and prior head CI",
-    "scientific_falsification": false
-  },
-  "latest_exact_head_ci": {
-    "run_id": 35285568227,
-    "head": "e4db83052d542021edf8c4f5d8e00bacc9d97ed9",
-    "conclusion": "SUCCESS"
-  },
-  "post_remediation_review": {
-    "mode": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "artifact": "docs/kt05/POST_REMEDIATION_REVIEW.md",
-    "reviewed_head": "e4db83052d542021edf8c4f5d8e00bacc9d97ed9",
-    "prior_findings_status": {
-      "KT05-R1": "REMEDIATED",
-      "KT05-R2": "REMEDIATED",
-      "KT05-R3": "REMEDIATED",
-      "KT05-R4": "REMEDIATED"
-    },
-    "new_findings": {
-      "KT05-R5": "MEDIUM_PUBLIC_PROJECTED_CARRIER_CAN_BYPASS_COMPLETE_VALIDATION",
-      "KT05-R6": "LOW_ZERO_DRAINAGE_SLICE_MAPPING_NOT_EXERCISED"
-    },
-    "verdict": "REMEDIATION_REQUIRED_FOR_PUBLIC_PROJECTION_FAIL_CLOSED_GATE"
-  }
+  ]
 }

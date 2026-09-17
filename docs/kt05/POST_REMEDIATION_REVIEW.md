@@ -4,7 +4,7 @@ Review mode: `same-agent / not genuinely independent`.
 
 Assurance label: `PROCESS_SELF_REVIEWED_NOT_INDEPENDENT`.
 
-Reviewed head:
+Initial post-remediation reviewed head:
 
 `e4db83052d542021edf8c4f5d8e00bacc9d97ed9`
 
@@ -12,66 +12,54 @@ Exact-head CI:
 
 `35285568227 -> SUCCESS`
 
-The earlier material findings R1 through R3 and low finding R4 are remediated at this head. CI confirms strict Fortran compilation, frozen KT03 regression, the full schema-parity validator, legacy index-slice tests, zero-drainage/unavailable-temperature coverage, JSON validation and the production/runtime scope guard.
+The first remediation closed KT05-R1 through KT05-R4. A second review then identified two remaining public-boundary gaps: KT05-R5 and KT05-R6.
 
 ## Re-check of prior findings
 
-### KT05-R1: full KT03 schema parity
+- **KT05-R1 REMEDIATED**: the structural validator imports the frozen KT03 `HydrologyStep` dataclass and compares its exact field-name set with `hydrology_step_t`; it separately checks the exact `hydro_detailed_external_t` field set.
+- **KT05-R2 REMEDIATED**: the explicit slice mapper and compiled sentinel tests prove producer values enter legacy indices 1 and higher while index zero remains ANIMO-owned.
+- **KT05-R3 REMEDIATED**: a valid compiled packet exercises `drainage_count=0`, `fldr(0,Nl)`, unavailable temperature and a zero-length temperature payload.
+- **KT05-R4 REMEDIATED**: non-positive producer duration returns dedicated `KT05_ERR_TIME`.
 
-Status: `REMEDIATED`.
+## Second-round findings
 
-The structural test imports the frozen KT03 `HydrologyStep` dataclass and compares its exact field-name set with `hydrology_step_t`. It separately checks the exact `hydro_detailed_external_t` field set.
+### KT05-R5, MEDIUM: public projected carrier could bypass complete validation
 
-### KT05-R2: normalized-to-legacy indexing
+At `e4db83052d542021edf8c4f5d8e00bacc9d97ed9`, a caller could construct or corrupt public `hydro_detailed_external_t` and pass it to the slice mapper without a complete validation gate.
 
-Status: `REMEDIATED`.
+Required remediation was to add a public validator covering allocation, exact dimensions, finite scalars/profiles and positive `St`, and to make the mapper invoke it before copying.
 
-The adapter now contains an explicit slice-mapping helper. Compiled tests prove producer values enter legacy indices 1 and higher while sentinel values at index zero remain unchanged.
+### KT05-R6, LOW: zero-drainage path was not exercised through the slice mapper
 
-### KT05-R3: zero-drainage and unavailable-temperature branches
+The zero-drainage packet was projected but not mapped into legacy-shaped target arrays.
 
-Status: `REMEDIATED`.
+Required remediation was a compiled `Nudr=0` slice-mapping test.
 
-A compiled valid explicit-state packet exercises `drainage_count=0`, `fldr(0,Nl)`, `has_soil_temperature=.false.` and `soil_temperature(0)`.
+## Final post-remediation review
 
-### KT05-R4: producer-time diagnostic classification
+Frozen remediated implementation head:
 
-Status: `REMEDIATED`.
+`69dd607ba1efa28de3f83cc963526021352b3311`
 
-Non-positive producer step duration has a dedicated `KT05_ERR_TIME` result.
+Exact-head CI:
 
-## New finding after remediation
+`35285836540 -> SUCCESS`
 
-### KT05-R5, MEDIUM: public projected carrier can bypass source-step validation
+Final dispositions:
 
-`hydro_detailed_external_t` is a public type with public components. A caller can therefore construct one directly rather than obtaining it through `project_hydro_detailed_explicit`.
+- **KT05-R5 CLOSED**: `validate_hydro_detailed_external` is public, validates the complete projected carrier, is called after projection construction, and is called by `apply_projection_to_legacy_slices` before any target copy. The compiled test corrupts a public projection with NaN and proves the mapper rejects it before modifying target data.
+- **KT05-R6 CLOSED**: the compiled test maps a valid zero-drainage projection into zero-extent `Fldr` target storage while preserving ANIMO-owned index-zero values in the other legacy arrays.
 
-`apply_projection_to_legacy_slices` currently validates dimensions but not the complete projection contract. A manually constructed projection containing non-finite profile data or an invalid producer timestep could be copied into the legacy-shaped arrays. This weakens the fail-closed claim at the public adapter boundary.
-
-Disposition: `MUST_REMEDIATE_BEFORE_CLOSE`.
-
-Required remediation:
-
-- add a public projection validator covering exact dimensions, allocation, finite scalar/profile values and positive `St`;
-- make `apply_projection_to_legacy_slices` call that validator before copying;
-- add a compiled negative test that directly constructs/corrupts a projected carrier and proves the mapping helper rejects it.
-
-### KT05-R6, LOW: zero-drainage projection is not exercised through the legacy slice mapper
-
-The zero-drainage packet is projected successfully but the new slice-mapping helper is tested only with one drainage system.
-
-Disposition: `SHOULD_REMEDIATE`.
-
-Add a zero-drainage target-array mapping test to ensure the `nudr=0` branch remains a valid no-op for `Fldr`.
+No material finding remains open inside the KT05 scope.
 
 ## Boundaries reconfirmed
 
-No evidence was found that KT05 changes ANIMO scientific equations, production `src/`, KT02 runtime mechanics, Hlpimp=1 semantics, Hlpimp=2 semantics, macropore semantics, `Modflux`, timestep selection or retry policy.
+KT05 does not change ANIMO scientific equations, production `src/`, KT02 runtime mechanics, Hlpimp=1 or Hlpimp=2 semantics, macropore semantics, `Modflux`, timestep selection or retry policy.
 
-The Hlpimp=1 route remains outside KT05 and blocked in KT03F01 pending genuinely independent Tier C review.
+The Hlpimp=1 route remains outside KT05 and remains blocked in KT03F01 pending genuinely independent Tier-C review.
 
-## Post-remediation review verdict
+Final review verdict:
 
-`REMEDIATION_REQUIRED_FOR_PUBLIC_PROJECTION_FAIL_CLOSED_GATE`.
+`SELF_REVIEW_PASS_NONPRODUCTION_EXPLICIT_STATE_FORTRAN_ADAPTER_ONLY`
 
-R5 is material to closing the public compiled adapter contract. R6 should be closed in the same bounded remediation.
+This is same-agent review. It is not an independent scientific review and does not qualify new process semantics.
