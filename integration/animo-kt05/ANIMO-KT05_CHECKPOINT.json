@@ -2,7 +2,7 @@
   "workunit": "ANIMO-KT05",
   "title": "Explicit-State HydrologyStep to ANIMO Hydrology Call-Boundary Adapter",
   "phase": "QUALIFY",
-  "checkpoint_state": "ADVERSARIAL_FINDINGS_REMEDIATED_EXACT_HEAD_CI_PENDING",
+  "checkpoint_state": "REMEDIATION_LOGIC_COMPLETE_TOOLING_IMPORT_PATH_FIX_CI_PENDING",
   "branch": "work/animo-kt05-explicit-hydrology-animo-adapter",
   "base_head": "c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
   "consumed_kt03_contract_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
@@ -27,7 +27,7 @@
     "dedicated producer-time validation status"
   ],
   "local_precommit_test": "gfortran 14.2.0 strict compile and test PASS",
-  "verdict": "REMEDIATED_QUALIFICATION_CANDIDATE_AWAITING_NEW_EXACT_HEAD_CI_AND_POST_REMEDIATION_REVIEW",
+  "verdict": "TOOLING_FAILURE_REMEDIATED_AWAITING_NEW_EXACT_HEAD_CI",
   "next_permitted_action": "RUN_NEW_EXACT_HEAD_CI_THEN_POST_REMEDIATION_ADVERSARIAL_REVIEW",
   "explicit_exclusions": [
     "Hlpimp=1 semantics",
@@ -70,5 +70,14 @@
       "KT05-R3": "remediated by compiled zero-drainage and unavailable-temperature packet test",
       "KT05-R4": "remediated by dedicated KT05_ERR_TIME"
     }
+  },
+  "failed_ci": {
+    "run_id": 35285495374,
+    "head": "1bd0dd1264965959cdca37954176b66cfdee3bd1",
+    "conclusion": "FAILURE",
+    "classification": "TOOLING_VALIDATOR_FAILURE",
+    "failed_step": "Compile and run KT05 adapter tests",
+    "diagnosis": "structural Python test imported prototype before adding repository root to sys.path; compiled Fortran test itself had already passed locally and prior head CI",
+    "scientific_falsification": false
   }
 }

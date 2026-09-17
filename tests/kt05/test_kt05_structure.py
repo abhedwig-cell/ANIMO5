@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 import re
+import sys
 from pathlib import Path
 
-from prototype.kt03.hydrology_step import HydrologyStep, SCHEMA_ID, UNIT_CONTRACT_ID
-
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+
+from prototype.kt03.hydrology_step import HydrologyStep, SCHEMA_ID, UNIT_CONTRACT_ID  # noqa: E402
+
 SOURCE = ROOT / "prototype" / "kt05" / "mod_animo_hydrology_adapter.f90"
 text = SOURCE.read_text(encoding="utf-8")
 lower = text.lower()
