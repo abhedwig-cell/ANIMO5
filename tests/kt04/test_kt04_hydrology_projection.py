@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 import struct
 import sys
 from pathlib import Path
@@ -17,6 +18,7 @@ from prototype.kt03.hydrology_step import (  # noqa: E402
 from prototype.kt04.hydrology_projection import (  # noqa: E402
     EXPLICIT_INTERCEPTION_AUTHORITY,
     HLPIMP1_AUTHORITY,
+    HydroDetailedProjection,
     ProjectionAuthority,
     TopBoundaryContext,
     authority_from_legacy_provenance,
@@ -163,6 +165,23 @@ def main() -> int:
             h1_step,
             authority=ProjectionAuthority("UNQUALIFIED", HLPIMP1_AUTHORITY.interception_policy_id),
         ),
+    )
+
+    missing_field_projection = HydroDetailedProjection(
+        authority=HLPIMP1_AUTHORITY,
+        interception_storage_end=None,
+        external_inputs=tuple(
+            item for item in file_projection.external_inputs if item[0] != "Prr"
+        ),
+    )
+    expect_error("external projection field set mismatch", missing_field_projection.validate)
+
+    bad_context = TopBoundaryContext(
+        **{**context_h1.__dict__, "flab1_before_correction": math.nan}
+    )
+    expect_error(
+        "context.flab1_before_correction: non-finite value",
+        lambda: evaluate_swap3_top_boundary(file_projection, bad_context),
     )
 
     h11_records = records_h11()

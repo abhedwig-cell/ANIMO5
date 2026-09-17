@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import hashlib
 import json
+import math
 from typing import Optional
 
 from prototype.kt03.hydrology_step import (
@@ -19,6 +20,30 @@ KT03F01_HLPIMP1_AUTHORITY_ID = (
 )
 KT03_EXPLICIT_INTERCEPTION_AUTHORITY_ID = (
     "ANIMO-KT03@e844c7658a95819fc0463c55737f9bd41b29a6da"
+)
+
+BASE_EXTERNAL_FIELDS = frozenset(
+    {
+        "Evicirr",
+        "Evicpr",
+        "Evpn",
+        "Evsn",
+        "Evso",
+        "Evsoma",
+        "Evtrma",
+        "Flab",
+        "Fldr",
+        "Flev",
+        "Mofrt",
+        "Pnt",
+        "Prirr",
+        "Prr",
+        "Prsn",
+        "Ru",
+        "Runon",
+        "Snt",
+        "St",
+    }
 )
 
 
@@ -52,6 +77,20 @@ EXPLICIT_INTERCEPTION_AUTHORITY = ProjectionAuthority(
 )
 
 
+def _validate_numeric_value(value: object, label: str) -> None:
+    if isinstance(value, bool):
+        raise HydrologyAdapterError(f"{label}: boolean is not a hydrology number")
+    if isinstance(value, (int, float)):
+        if not math.isfinite(float(value)):
+            raise HydrologyAdapterError(f"{label}: non-finite value")
+        return
+    if isinstance(value, tuple):
+        for index, item in enumerate(value):
+            _validate_numeric_value(item, f"{label}[{index}]")
+        return
+    raise HydrologyAdapterError(f"{label}: unsupported projection value type")
+
+
 @dataclass(frozen=True)
 class HydroDetailedProjection:
     authority: ProjectionAuthority
@@ -67,6 +106,7 @@ class HydroDetailedProjection:
         if len(values) != len(self.external_inputs):
             raise HydrologyAdapterError("duplicate external projection field")
 
+        expected_fields = set(BASE_EXTERNAL_FIELDS)
         if self.authority.interception_policy_id == HLPIMP1_ABSENT_INTERCEPTION_POLICY:
             if self.interception_storage_end is not None:
                 raise HydrologyAdapterError(
@@ -77,6 +117,7 @@ class HydroDetailedProjection:
                     "absent-interception projection must not expose Sict"
                 )
         elif self.authority.interception_policy_id == EXPLICIT_INTERCEPTION_POLICY:
+            expected_fields.add("Sict")
             if self.interception_storage_end is None:
                 raise HydrologyAdapterError(
                     "explicit-interception projection requires Sict"
@@ -87,6 +128,15 @@ class HydroDetailedProjection:
                 )
         else:
             raise HydrologyAdapterError("unknown interception projection policy")
+
+        if set(values) != expected_fields:
+            missing = sorted(expected_fields - set(values))
+            extra = sorted(set(values) - expected_fields)
+            raise HydrologyAdapterError(
+                f"external projection field set mismatch: missing={missing}, extra={extra}"
+            )
+        for key, value in values.items():
+            _validate_numeric_value(value, key)
 
 
 @dataclass(frozen=True)
@@ -104,6 +154,12 @@ class TopBoundaryContext:
     flmp_hlp0: float = 0.0
     flmp_hlp1: float = 0.0
     interception_storage_start: Optional[float] = None
+
+    def validate(self) -> None:
+        for name, value in self.__dict__.items():
+            if value is None:
+                continue
+            _validate_numeric_value(value, f"context.{name}")
 
 
 @dataclass(frozen=True)
@@ -211,6 +267,7 @@ def evaluate_swap3_top_boundary(
     projection: HydroDetailedProjection, context: TopBoundaryContext
 ) -> TopBoundaryResult:
     projection.validate()
+    context.validate()
     values = projection.as_dict()
     st = values["St"]
     if st <= 0.0:
