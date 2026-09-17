@@ -22,6 +22,7 @@ from prototype.kt03.hydrology_step import (
 
 EXPECTED_SOURCE_SHA256 = "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c"
 EXPECTED_GROUP_SHA256 = "2e5e8ff7c088ddd94f91aeb663ea10abdecfda0ac4cd418a8bf90be955389ec7"
+EXPECTED_TYPED_STEP_DIGEST = "eeeb862839cce8111535fae86220d8574240804b9f6f029f7ec8e07ceb65da1c"
 
 
 def main() -> int:
@@ -62,6 +63,10 @@ def main() -> int:
         )
 
     step = parse_dynamic_step(records, index, static)
+    step_digest = typed_step_digest(step)
+    if step_digest != EXPECTED_TYPED_STEP_DIGEST:
+        raise SystemExit(f"unexpected typed-step digest: {step_digest}")
+
     payload = {
         "workunit": "ANIMO-KT07",
         "evidence_class": "B1_DERIVED_FROM_PINNED_B0_PRODUCER_NOT_B2",
@@ -88,7 +93,7 @@ def main() -> int:
             "classification": "B1_DIAGNOSTIC_ADAPTER_PROBE_NOT_B2",
         },
         "diagnostic_normalized_step": step.__dict__,
-        "typed_step_digest_sha256": typed_step_digest(step),
+        "typed_step_digest_sha256": step_digest,
         "nonclaims": [
             "B2 historical compiler equivalence",
             "revision-53 Hydro_detailed execution equivalence",

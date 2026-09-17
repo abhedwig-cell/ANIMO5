@@ -11,6 +11,9 @@ if str(ROOT) not in sys.path:
 from prototype.kt03.hydrology_step import HydrologyStep, typed_step_digest
 
 FIXTURE = ROOT / "reference/kt07/LWKM_FIRST_EXPLICIT_HYDROLOGY_STEP.json"
+EXPECTED_TYPED_STEP_DIGEST = (
+    "eeeb862839cce8111535fae86220d8574240804b9f6f029f7ec8e07ceb65da1c"
+)
 data = json.loads(FIXTURE.read_text())
 
 assert data["evidence_class"] == "B1_DERIVED_FROM_PINNED_B0_PRODUCER_NOT_B2"
@@ -28,7 +31,8 @@ assert data["dynamic_group_record_lengths"] == [
 step_payload = data["diagnostic_normalized_step"]
 step = HydrologyStep(**step_payload)
 step.validate()
-assert typed_step_digest(step) == data["typed_step_digest_sha256"]
+assert data["typed_step_digest_sha256"] == EXPECTED_TYPED_STEP_DIGEST
+assert typed_step_digest(step) == EXPECTED_TYPED_STEP_DIGEST
 
 assert step.layer_count == data["static"]["layer_count"] == 30
 assert step.drainage_count == data["static"]["drainage_count"] == 5
