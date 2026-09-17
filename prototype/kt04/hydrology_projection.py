@@ -91,6 +91,24 @@ def _validate_numeric_value(value: object, label: str) -> None:
     raise HydrologyAdapterError(f"{label}: unsupported projection value type")
 
 
+def _validate_projection_shapes(values: dict) -> None:
+    mofrt = values["Mofrt"]
+    flev = values["Flev"]
+    flab = values["Flab"]
+    fldr = values["Fldr"]
+    if not all(isinstance(value, tuple) for value in (mofrt, flev, flab, fldr)):
+        raise HydrologyAdapterError("projection profile fields must be immutable tuples")
+    layer_count = len(mofrt)
+    if layer_count <= 0:
+        raise HydrologyAdapterError("projection has no soil layers")
+    if len(flev) != layer_count:
+        raise HydrologyAdapterError("projection Flev layer dimension mismatch")
+    if len(flab) != layer_count + 1:
+        raise HydrologyAdapterError("projection Flab interface dimension mismatch")
+    if any(not isinstance(row, tuple) or len(row) != layer_count for row in fldr):
+        raise HydrologyAdapterError("projection Fldr layer dimension mismatch")
+
+
 @dataclass(frozen=True)
 class HydroDetailedProjection:
     authority: ProjectionAuthority
@@ -137,15 +155,13 @@ class HydroDetailedProjection:
             )
         for key, value in values.items():
             _validate_numeric_value(value, key)
+        _validate_projection_shapes(values)
 
 
 @dataclass(frozen=True)
 class TopBoundaryContext:
-    flab1_before_correction: float
-    flab2: float
     ruso: float
     moisture_storage_rate_layer1: float
-    drainage_total_layer1: float
     runinu: float
     rupr: float
     rurv: float
@@ -166,6 +182,8 @@ class TopBoundaryContext:
 class TopBoundaryResult:
     interception_delta: Optional[float]
     interception_rate: float
+    preliminary_flab1: float
+    drainage_total_layer1: float
     dif: float
     evso_adjusted: float
     flab1_after_correction: float
@@ -263,6 +281,21 @@ def project_legacy_step(
     )
 
 
+def _validate_runoff_split(values: dict, context: TopBoundaryContext) -> None:
+    runoff = values["Ru"]
+    tolerance = 1.0e-12 * max(1.0, abs(runoff))
+    if runoff < 0.0:
+        if abs(context.runinu + runoff) > tolerance:
+            raise HydrologyAdapterError("negative-runoff Runinu closure mismatch")
+        if max(abs(context.rupr), abs(context.rurv), abs(context.ruso)) > tolerance:
+            raise HydrologyAdapterError("negative-runoff split must be zero")
+    else:
+        if abs(context.runinu) > tolerance:
+            raise HydrologyAdapterError("nonnegative-runoff Runinu must be zero")
+        if abs((context.rupr + context.rurv + context.ruso) - runoff) > tolerance:
+            raise HydrologyAdapterError("runoff split closure mismatch")
+
+
 def evaluate_swap3_top_boundary(
     projection: HydroDetailedProjection, context: TopBoundaryContext
 ) -> TopBoundaryResult:
@@ -272,6 +305,7 @@ def evaluate_swap3_top_boundary(
     st = values["St"]
     if st <= 0.0:
         raise HydrologyAdapterError("non-positive timestep in projection")
+    _validate_runoff_split(values, context)
 
     if projection.authority.interception_policy_id == HLPIMP1_ABSENT_INTERCEPTION_POLICY:
         if context.interception_storage_start is not None:
@@ -290,6 +324,18 @@ def evaluate_swap3_top_boundary(
         )
         interception_rate = interception_delta / st
 
+    drainage_total_layer1 = sum(row[0] for row in values["Fldr"])
+    flab2 = values["Flab"][1]
+    preliminary_flab1 = (
+        flab2
+        + context.ruso
+        + values["Evso"]
+        + context.moisture_storage_rate_layer1
+        + drainage_total_layer1
+        + values["Flev"][0]
+        + context.flmp_hlp1
+    )
+
     source_term = (
         values["Prr"]
         - values["Evicpr"]
@@ -306,13 +352,13 @@ def evaluate_swap3_top_boundary(
         - context.rupr
         - context.rurv
     )
-    dif = context.flab1_before_correction - source_term + context.flmp_hlp0
+    dif = preliminary_flab1 - source_term + context.flmp_hlp0
     evso_adjusted = max(0.0, values["Evso"] - dif)
     flab1_after = (
-        context.flab2
+        flab2
         + context.ruso
         + evso_adjusted
-        + context.drainage_total_layer1
+        + drainage_total_layer1
         + values["Flev"][0]
         + context.moisture_storage_rate_layer1
         + context.flmp_hlp1
@@ -320,6 +366,8 @@ def evaluate_swap3_top_boundary(
     return TopBoundaryResult(
         interception_delta=interception_delta,
         interception_rate=interception_rate,
+        preliminary_flab1=preliminary_flab1,
+        drainage_total_layer1=drainage_total_layer1,
         dif=dif,
         evso_adjusted=evso_adjusted,
         flab1_after_correction=flab1_after,

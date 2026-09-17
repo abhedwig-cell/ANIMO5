@@ -130,21 +130,20 @@ def main() -> int:
     assert isinstance(file_projection.external_inputs, tuple)
 
     context_h1 = TopBoundaryContext(
-        flab1_before_correction=0.0002,
-        flab2=0.0001,
         ruso=0.0,
         moisture_storage_rate_layer1=0.0,
-        drainage_total_layer1=0.0,
         runinu=0.0,
         rupr=0.0,
         rurv=0.0,
         ponding_start=0.0,
         snow_storage_start=0.0,
     )
-    assert (
-        evaluate_swap3_top_boundary(file_projection, context_h1)
-        == evaluate_swap3_top_boundary(typed_projection, context_h1)
-    )
+    result_h1 = evaluate_swap3_top_boundary(file_projection, context_h1)
+    assert result_h1 == evaluate_swap3_top_boundary(typed_projection, context_h1)
+    assert abs(result_h1.preliminary_flab1 - 0.0012) < 1.0e-12
+    assert abs(result_h1.dif - 0.0004) < 1.0e-12
+    assert abs(result_h1.evso_adjusted - 0.0004) < 1.0e-12
+    assert abs(result_h1.flab1_after_correction - 0.0008) < 1.0e-12
 
     expect_error(
         "must not receive an interception start state",
@@ -176,12 +175,30 @@ def main() -> int:
     )
     expect_error("external projection field set mismatch", missing_field_projection.validate)
 
+    bad_shape = HydroDetailedProjection(
+        authority=HLPIMP1_AUTHORITY,
+        interception_storage_end=None,
+        external_inputs=tuple(
+            (key, tuple()) if key == "Flev" else (key, value)
+            for key, value in file_projection.external_inputs
+        ),
+    )
+    expect_error("projection Flev layer dimension mismatch", bad_shape.validate)
+
     bad_context = TopBoundaryContext(
-        **{**context_h1.__dict__, "flab1_before_correction": math.nan}
+        **{**context_h1.__dict__, "moisture_storage_rate_layer1": math.nan}
     )
     expect_error(
-        "context.flab1_before_correction: non-finite value",
+        "context.moisture_storage_rate_layer1: non-finite value",
         lambda: evaluate_swap3_top_boundary(file_projection, bad_context),
+    )
+
+    bad_runoff_context = TopBoundaryContext(
+        **{**context_h1.__dict__, "ruso": 0.001}
+    )
+    expect_error(
+        "runoff split closure mismatch",
+        lambda: evaluate_swap3_top_boundary(file_projection, bad_runoff_context),
     )
 
     h11_records = records_h11()
@@ -202,11 +219,8 @@ def main() -> int:
     assert h11_file_projection.as_dict()["Sict"] == 0.0002
 
     context_h11 = TopBoundaryContext(
-        flab1_before_correction=0.0002,
-        flab2=0.0001,
         ruso=0.0,
         moisture_storage_rate_layer1=0.0,
-        drainage_total_layer1=0.0,
         runinu=0.0,
         rupr=0.0,
         rurv=0.0,
@@ -216,9 +230,8 @@ def main() -> int:
     )
     result_h11 = evaluate_swap3_top_boundary(h11_file_projection, context_h11)
     assert abs(result_h11.interception_delta - 0.0001) < 1.0e-12
-    assert (
-        result_h11
-        == evaluate_swap3_top_boundary(h11_typed_projection, context_h11)
+    assert result_h11 == evaluate_swap3_top_boundary(
+        h11_typed_projection, context_h11
     )
 
     expect_error(

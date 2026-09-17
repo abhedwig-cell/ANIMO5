@@ -2,7 +2,7 @@
   "workunit": "ANIMO-KT04",
   "title": "Hlpimp=1 Legacy Projection and File/Typed Equivalence",
   "phase": "QUALIFY",
-  "checkpoint_state": "SECOND_CONTRACT_HARDENING_APPLIED_REVIEW_PENDING",
+  "checkpoint_state": "SOURCE_EQUIVALENT_TOP_BOUNDARY_HARDENING_APPLIED_REVIEW_PENDING",
   "branch": "work/animo-kt04-hlpimp1-legacy-projection",
   "base_authority": "ANIMO-KT03F01@0bd8e3f2fe84837e85c45c44ec2e8201f81cef12",
   "consumed_kt03_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
@@ -17,29 +17,36 @@
     "run_id": 35284238167,
     "conclusion": "SUCCESS"
   },
+  "second_remediation_head": "708738dca426bfa4eba6a8c374995619ed234fbf",
+  "second_remediation_exact_head_ci": {
+    "run_id": 35284458112,
+    "conclusion": "SUCCESS"
+  },
   "production_src_modified": false,
   "normalized_hydrology_step_contract_modified": false,
   "implemented_capabilities": [
     "pinned semantic projection authority",
     "immutable external projection carrier",
-    "exact external projection field-set validation",
+    "exact external projection field-set and profile-shape validation",
     "finite ANIMO-owned top-boundary context validation",
+    "runoff split closure validation against imported Ru",
     "Hlpimp=1 absent-state projection without fabricated Sict",
     "Hlpimp=11 explicit-state projection",
     "legacy provenance to authority selection",
     "producer-independent typed projection path",
-    "bounded SWAP3 top-boundary Dif-Evso-Flab1 transformation probe"
+    "source-ordered SWAP3 top-boundary preliminary-Flab1, Dif, Evso and final-Flab1 transformation probe"
   ],
   "supplementary_build_evidence": "SUPPLEMENTARY_BUILD_ARTIFACT_NOT_B2",
   "preclose_findings_remediated": [
     "free policy string could over-authorize unqualified typed producers",
     "mutable external_inputs dictionary weakened projection immutability",
     "absent LocalSavedScalarsZero attributes were incorrectly represented as false rather than not explicitly set",
-    "directly constructed projection could validate with missing or extra external fields",
-    "non-finite ANIMO-owned top-boundary context was not rejected explicitly"
+    "directly constructed projection could validate with missing, extra or incoherent profile fields",
+    "non-finite ANIMO-owned top-boundary context was not rejected explicitly",
+    "top-boundary probe accepted caller-supplied Flab1/Flab2/drainage terms that are file-derived or source-derived, allowing internally inconsistent source emulation"
   ],
   "accepted_review_boundary": "projection authority is a semantic contract pin, not cryptographic producer attestation",
-  "verdict": "QUALIFICATION_CANDIDATE_AWAITING_SECOND_REMEDIATION_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW",
+  "verdict": "QUALIFICATION_CANDIDATE_AWAITING_FINAL_REMEDIATION_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW",
   "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_FINAL_ADVERSARIAL_REVIEW",
   "explicit_exclusions": [
     "Hlpimp=2 semantics",
