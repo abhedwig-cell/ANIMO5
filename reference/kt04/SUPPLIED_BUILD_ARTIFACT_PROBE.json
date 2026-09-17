@@ -1,0 +1,32 @@
+{
+  "evidence_class": "SUPPLEMENTARY_BUILD_ARTIFACT_NOT_B2",
+  "vfproj": {
+    "sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+    "configurations": {
+      "Debug|Win32": {
+        "LocalVariableStorage": "localStorageSave",
+        "LocalSavedScalarsZero": false
+      },
+      "Release|Win32": {
+        "LocalVariableStorage": "localStorageSave",
+        "LocalSavedScalarsZero": false
+      },
+      "Debug|x64": {
+        "LocalVariableStorage": "localStorageSave",
+        "LocalSavedScalarsZero": true
+      },
+      "Release|x64": {
+        "LocalVariableStorage": "localStorageSave",
+        "LocalSavedScalarsZero": false
+      }
+    }
+  },
+  "exe": {
+    "sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+    "format": "PE32+ x86-64 Windows console executable",
+    "pdb_path": "D:\\USR\\5200048928_SWAP_ANIMO\\ANIMO\\x64\\Debug\\animo41.pdb",
+    "pe_timestamp_utc_observed": "2026-05-27T13:41:28Z",
+    "intel_fortran_rtl_string": "V20.0-001 Jan 10 2019"
+  },
+  "interpretation": "The supplied executable is consistent with the supplied Debug|x64 project profile that zero-initializes saved scalars. This is not historical revision-53 reference evidence and is not used as B2 authority."
+}

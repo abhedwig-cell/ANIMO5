@@ -1,0 +1,28 @@
+name: ANIMO KT04 hydrology projection
+
+on:
+  push:
+    branches:
+      - work/animo-kt04-hlpimp1-legacy-projection
+    paths:
+      - 'prototype/kt04/**'
+      - 'tests/kt04/**'
+      - 'docs/kt04/**'
+      - 'reference/kt04/**'
+      - 'integration/animo-kt04/**'
+      - '.github/workflows/animo-kt04-hydrology-projection.yml'
+  workflow_dispatch:
+
+jobs:
+  projection-contract-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run frozen KT03 adapter tests
+        run: python3 tests/kt03/test_kt03_hydrology_adapter.py
+      - name: Run KT04 projection tests
+        run: python3 tests/kt04/test_kt04_hydrology_projection.py
+      - name: Validate checkpoint JSON
+        run: python3 -m json.tool integration/animo-kt04/ANIMO-KT04_CHECKPOINT.json >/dev/null
+      - name: Validate supplied build evidence JSON
+        run: python3 -m json.tool reference/kt04/SUPPLIED_BUILD_ARTIFACT_PROBE.json >/dev/null

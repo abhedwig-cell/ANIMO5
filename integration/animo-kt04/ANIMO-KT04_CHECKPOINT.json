@@ -1,0 +1,32 @@
+{
+  "workunit": "ANIMO-KT04",
+  "title": "Hlpimp=1 Legacy Projection and File/Typed Equivalence",
+  "phase": "IMPLEMENT",
+  "checkpoint_state": "PROJECTION_LAYER_IMPLEMENTED_CI_PENDING",
+  "branch": "work/animo-kt04-hlpimp1-legacy-projection",
+  "base_authority": "ANIMO-KT03F01@0bd8e3f2fe84837e85c45c44ec2e8201f81cef12",
+  "consumed_kt03_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
+  "consumed_kt03f01_ci": 35283894975,
+  "production_src_modified": false,
+  "normalized_hydrology_step_contract_modified": false,
+  "implemented_capabilities": [
+    "explicit interception projection policy identity",
+    "Hlpimp=1 absent-state projection without fabricated Sict",
+    "Hlpimp=11 explicit-state projection",
+    "legacy provenance to policy selection",
+    "producer-independent typed projection path",
+    "bounded SWAP3 top-boundary Dif-Evso-Flab1 transformation probe"
+  ],
+  "supplementary_build_evidence": "SUPPLEMENTARY_BUILD_ARTIFACT_NOT_B2",
+  "verdict": "IMPLEMENTED_NONPRODUCTION_PROJECTION_AWAITING_EXACT_HEAD_CI_AND_REVIEW",
+  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_ADVERSARIAL_REVIEW",
+  "explicit_exclusions": [
+    "Hlpimp=2 semantics",
+    "production source changes",
+    "whole-model equivalence",
+    "B2 historical behaviour",
+    "B3 or B4 admission",
+    "canonical TCD mutation",
+    "Status A or Status AA"
+  ]
+}
