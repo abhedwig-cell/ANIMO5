@@ -1,82 +1,102 @@
-# ANIMO-KT03 Qualification Report
+# ANIMO-KT03 Qualification and Closeout Report
 
-## Disposition
+## Decision
 
-KT03 supports a bounded positive result for the **defined CranMais file-to-typed hydrology boundary**, and a bounded negative result for **full downstream `Hydro_detailed` compatibility**.
+KT03 is closed as a bounded nonproduction adapter/runtime-architecture qualification.
 
-Exact qualification statement:
+Qualification verdict:
 
-`QUALIFIED_NONPRODUCTION_CRANMAIS_FILE_TO_TYPED_HYDROLOGY_FIELDS_WITH_FULL_DOWNSTREAM_COMPATIBILITY_BLOCKED_BY_UNDEFINED_SICT_FOR_HLPIMP_1`
+`QUALIFIED_NONPRODUCTION_FILE_INDEPENDENT_TYPED_HYDROLOGY_EXCHANGE_WITH_BOUNDED_HLPIMP11_DOWNSTREAM_PROJECTION_AND_FAIL_CLOSED_HLPIMP1_SICT_BOUNDARY`
 
-This is an architecture/adapter qualification only. It does not change ANIMO scientific equations, B3 admission, B4, production source, SWAP5 production coupling, Status A or Status AA.
+This means the first real ANIMO external-hydrology seam supports the intended architecture: legacy file grammar can terminate in an adapter, while ANIMO consumes an explicit normalized hydrology payload that a later in-memory producer can also construct. It does not mean ANIMO production migration or SWAP5-ANIMO production coupling is admitted.
 
-## Frozen executable/prototype target
+## Frozen qualification target
 
 - branch: `work/animo-kt03-real-hydrology-adapter`;
-- prototype head: `6b6a263239184d710d6e57e8826353d3ea038360`;
-- exact-head GitHub Actions run: `35281025858`;
-- CI conclusion: `SUCCESS`;
-- frozen CranMais `Swatre.unf` SHA-256: `538827d517f7be4c060e2d62131e1942f8e0e76fdeae49dc0268486984cc9eaf`.
+- frozen remediation target: `e844c7658a95819fc0463c55737f9bd41b29a6da`;
+- exact-head GitHub Actions run: `35282453399`;
+- conclusion: `SUCCESS`;
+- assurance: `PROCESS_SELF_REVIEWED_NOT_INDEPENDENT`;
+- evidence class: `B1_DIAGNOSTIC_ADAPTER_PROBE_NOT_B2`.
 
-The exact-head CI executes the synthetic adapter-contract tests. The frozen CranMais binary itself is not stored in the public repository; its byte-derived probe metadata is retained in `reference/kt03/CRANMAIS_HYDROLOGY_PROBE.json`.
+The closeout record is bookkeeping downstream of this frozen implementation/contract target.
 
-## Qualified adapter evidence
+## Qualified contract
 
-Within the frozen CranMais layout, the probe establishes:
+The normalized payload is `ANIMO_HYDROLOGY_STEP_V1` with unit contract `ANIMO_HYDROLOGY_UNITS_V1`.
 
-- PowerStation framing can be consumed using the already existing fail-closed logical-record parser;
-- static layout is `Hlpimp=1`, 22 layers, 5 horizons and 0 drainage systems;
-- the dynamic stream has 3287 timesteps and exactly 8 logical records per timestep;
-- the dynamic tail contains 26296 logical records;
-- the diagnostic parser observes exact `Tiwa=1..3287` and `St=1` throughout the case;
-- no groundwater sentinel below `-9.98` occurs in this frozen case;
-- the initial temperature record selects the legacy `Ioptte=0` path;
-- file-backed values can be represented by an explicit typed `HydrologyStep` without ANIMO chemistry/process state;
-- layout, dimensions, non-finite values, missing provenance and groundwater-sentinel normalization fail closed;
-- an independently constructed typed packet can use the same contract as a file-backed packet;
-- local-only SWAP3 records read into `Soco`, `Lai`, `Dpro`, `Hecr`, `Avdate` and `SDum` are validated as legacy stream grammar but are not incorrectly promoted into the shared typed coupling API.
+The following separation is qualified for this nonproduction scope:
 
-The raw dynamic logical-payload SHA-256 recorded by the bounded probe is:
+`legacy SWATRE.UNF -> legacy adapter/normalization -> HydrologyStep -> ANIMO hydrology adapter -> Hydro_detailed`
 
-`e68c1056fa241a1daec8c78cd0279c0f0a5af1aeed2c1d63589adee4ef01808c`.
+Legacy framing, `Hlpimp` and source-record hashes are adapter provenance rather than required physical forcing. Producer endpoint/duration fields are explicitly producer metadata, not authoritative KT02 runtime time. KT02 remains model-neutral and does not know the legacy grammar or the hydrology field schema.
 
-## Normalization boundary
+## Real-file evidence
 
-The prototype includes a diagnostic reimplementation of the revision-53 `Dble_trunc` intent so the file-to-typed seam can be exercised.
+### CranMais
 
-This is explicitly classified as:
+Frozen `Swatre.unf` SHA-256:
 
-`B1_DIAGNOSTIC_ADAPTER_PROBE_NOT_B2`
+`538827d517f7be4c060e2d62131e1942f8e0e76fdeae49dc0268486984cc9eaf`
 
-because historical Intel intrinsic/build semantics are not independently recovered by KT03. The result must not be promoted to B2 historical compiler equivalence.
+The bounded probe establishes Hlpimp=1, 22 layers, 5 horizons, no drainage systems, 3287 timesteps, eight dynamic logical records per timestep, one-day producer steps, Ioptte=0 and no groundwater sentinel activation. File data reconstruct into the normalized payload, but Hlpimp=1 does not provide `sSict` and therefore fails closed for a complete downstream projection.
 
-## Material blocker
+### LWKM
 
-`KT03-F01` is material to the final downstream seam.
+Frozen `Swatre.unf` SHA-256:
 
-For CranMais `Hlpimp=1`, the dynamic first record has 18 REAL(4) values and does not contain `sSict`. Revision-53 `Input_hydro` nevertheless assigns `Sict` from `sSict`, and `Hydro_detailed` uses `(Sict-Sic)` in the SWAP3 water-balance equations.
+`b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c`
 
-KT03 therefore refuses to synthesize `Sict` and represents interception-storage availability explicitly as false. Calling the prototype compatibility gate for `Hydro_detailed` fails closed.
+The bounded probe establishes Hlpimp=11, 30 layers, 30 horizons, five drainage systems, 1800 timesteps, thirteen dynamic logical records per timestep, producer steps of 8-11 days, Ioptte=1, explicit `sSict` in every dynamic first record and no groundwater sentinel activation. Within this envelope, the normalized packet can construct the complete file-derived subset of the existing `Hydro_detailed` call surface.
 
-This means requirement 4 of the KT03 work-unit contract, full downstream call compatibility with every required input defined, is not positively satisfied for the selected case.
+This is structural adapter evidence. It is not a claim that executing `Hydro_detailed` through a new production path is scientifically or numerically equivalent.
 
-## Requirement disposition
+## Adversarial review and remediation
 
-1. Exact source-to-field provenance for the selected SWATRE timestep representation: **PASS within frozen CranMais layout**.
-2. Typed carrier with no ANIMO chemical/process state: **PASS**.
-3. File-backed and independently supplied typed packet contract: **PASS in bounded prototype tests**.
-4. Downstream `Hydro_detailed` compatibility without scientific rewrite: **BLOCKED by KT03-F01 / undefined Sict**.
-5. Bounded CranMais probe with classified differences: **PASS for input-boundary reconstruction; downstream replay not claimed**.
-6. No parser cursor/file handle in accepted scientific continuation state: **PASS by carrier structure**.
-7. No KT02 model-neutral runtime dependency on file grammar: **PASS; KT03 code is outside `prototype/kt02/runtime/`**.
-8. Fail-closed dimension/layout/provenance mismatch: **PASS in exact-head CI**.
+The pre-remediation same-agent adversarial review found four issues requiring action before close: legacy file identity leaked into the payload, producer time could be confused with runtime authority, units were implicit, and digest validation was weak.
 
-## Review status
+At the frozen target:
 
-No claim of independent review is made. This qualification is authoring-agent evidence plus exact-head CI. Before any production or scientific admission step, the material `Sict` finding requires a separate scientific/source disposition under the appropriate authority.
+- R1 is resolved by `LegacyStepProvenance` separation;
+- R2 is resolved by explicit producer-time naming and ownership rules;
+- R3 is resolved by `ANIMO_HYDROLOGY_UNITS_V1`;
+- R4 is resolved by moving the digest to provenance and validating hexadecimal SHA-256;
+- R5 remains an explicit B1-not-B2 normalization boundary;
+- R6 remains the explicit Hlpimp=1 `Sict` boundary.
 
-## Conclusion
+Post-remediation verdict:
 
-The architecture decision survives its first real ANIMO file boundary: the legacy file grammar can be isolated behind a typed hydrology packet without leaking ANIMO chemistry or SWAP solver policy into the shared runtime.
+`SELF_REVIEW_PASS_NONPRODUCTION_FILE_INDEPENDENT_TYPED_HYDROLOGY_CONTRACT_WITH_EXPLICIT_HLPIMP1_SICT_BOUNDARY`
 
-The test also demonstrates why the adapter must fail closed. A real legacy ambiguity appears exactly at the file/science seam. The architecture exposes it rather than burying it in a compatibility shim.
+No independent-review claim is made.
+
+## KT03-F01 handoff
+
+The remaining scientific/source finding is not an adapter-design ambiguity that KT03 may silently solve.
+
+For Hlpimp=1, revision-53 input grammar omits initial and dynamic interception-storage values, while `input1`/`Input_hydro` still normalize local `sSic`/`sSict` and `Hydro_detailed` consumes `Sict-Sic` in detailed-hydrology balance expressions. KT03 therefore does not invent zero, previous-state carry, or another inferred value.
+
+`KT03-F01` must be handled by a separate scientific/source-disposition workunit. TCD-018 is related because it concerns interception storage in a reporting ledger, but it does not settle this Hlpimp=1 missing-state question and must not be treated as automatic authority for it.
+
+## Residual nonproduction design note
+
+Revision-53 `Input_hydro` also returns `Wabaer`, and the legacy SWATRE record documents it as a water-balance error. Source-wide inspection found no downstream revision-53 consumer after the call. The V1 prototype retains it only as normalized producer diagnostic data and does not include it in the `Hydro_detailed` projection. A future production coupling-schema freeze should minimize or explicitly justify this field rather than inherit it by accident.
+
+## Explicit nonclaims
+
+KT03 does not qualify or admit:
+
+- corrected Hlpimp=1 interception-storage science;
+- B2 historical compiler/runtime equivalence;
+- complete ANIMO production migration;
+- B4 or production admission;
+- a separately versioned production shared runtime library;
+- online SWAP5-ANIMO production coupling;
+- joint SWAP5-ANIMO timestep acceptance or retry policy;
+- Status A or Status AA.
+
+Production `src/` was not modified.
+
+## Next safe action
+
+Start a separate `KT03-F01` scientific/source-disposition workunit from the frozen KT03 evidence. Keep the typed adapter contract frozen while that workunit determines whether Hlpimp=1 scientifically has no interception-storage state, whether the unconditional Sic/Sict path is a bounded legacy defect, and what explicit corrected contract is defensible. Only after that disposition may a later adapter workunit reopen Hlpimp=1 full downstream projection.

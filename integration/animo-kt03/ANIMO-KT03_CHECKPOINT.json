@@ -1,55 +1,80 @@
 {
   "workunit": "ANIMO-KT03",
   "title": "Real ANIMO Hydrology-Step Adapter Boundary Qualification",
-  "phase": "QUALIFY",
-  "checkpoint_state": "DEFINED_FILE_TO_TYPED_BOUNDARY_QUALIFIED_DOWNSTREAM_BLOCKED",
+  "phase": "CLOSE",
+  "checkpoint_state": "CLOSED_NONPRODUCTION_TYPED_HYDROLOGY_CONTRACT_F01_HANDOFF",
   "branch": "work/animo-kt03-real-hydrology-adapter",
   "base_authority": "ANIMO-KT02@1f88db4dc87fc4d93075884ac35a59711f0725bf",
-  "prototype_head": "6b6a263239184d710d6e57e8826353d3ea038360",
+  "frozen_qualification_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
   "exact_head_ci": {
-    "run_id": 35281025858,
+    "run_id": 35282453399,
     "conclusion": "SUCCESS"
+  },
+  "review": {
+    "mode": "same-agent / not genuinely independent",
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "pre_remediation_review_head": "8f940d9f7f9fafeb167c2847fe0c0d15749816b8",
+    "post_remediation_target": "e844c7658a95819fc0463c55737f9bd41b29a6da",
+    "post_remediation_verdict": "SELF_REVIEW_PASS_NONPRODUCTION_FILE_INDEPENDENT_TYPED_HYDROLOGY_CONTRACT_WITH_EXPLICIT_HLPIMP1_SICT_BOUNDARY"
   },
   "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
   "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
-  "selected_case": {
-    "case_id": "CranMais",
-    "swatre_unf_sha256": "538827d517f7be4c060e2d62131e1942f8e0e76fdeae49dc0268486984cc9eaf",
-    "hlpimp": 1,
-    "layer_count": 22,
-    "horizon_count": 5,
-    "drainage_count": 0,
-    "timestep_count": 3287,
-    "dynamic_records_per_step": 8,
-    "groundwater_sentinel_count": 0,
-    "ioptte": 0
+  "normalized_contract": {
+    "schema_id": "ANIMO_HYDROLOGY_STEP_V1",
+    "unit_contract_id": "ANIMO_HYDROLOGY_UNITS_V1",
+    "legacy_provenance_separate": true,
+    "producer_time_is_runtime_authority": false
   },
-  "candidate_boundary": "normalized Input_hydro output immediately before Hydro_detailed",
+  "real_file_envelopes": {
+    "CranMais": {
+      "swatre_unf_sha256": "538827d517f7be4c060e2d62131e1942f8e0e76fdeae49dc0268486984cc9eaf",
+      "hlpimp": 1,
+      "layer_count": 22,
+      "horizon_count": 5,
+      "drainage_count": 0,
+      "timestep_count": 3287,
+      "dynamic_records_per_step": 8,
+      "ioptte": 0,
+      "interception_storage_endpoint": "NOT_SUPPLIED",
+      "downstream_projection": "FAIL_CLOSED"
+    },
+    "LWKM": {
+      "swatre_unf_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
+      "hlpimp": 11,
+      "layer_count": 30,
+      "horizon_count": 30,
+      "drainage_count": 5,
+      "timestep_count": 1800,
+      "dynamic_records_per_step": 13,
+      "ioptte": 1,
+      "interception_storage_endpoint": "EXPLICIT",
+      "downstream_projection": "COMPLETE_FILE_DERIVED_SUBSET"
+    }
+  },
   "qualified_capabilities": [
-    "bounded CranMais SWAP3 logical-record layout reconstruction",
-    "typed hydrology-step contract for defined Input_hydro outputs",
-    "legacy file grammar isolated from model-neutral KT02 runtime",
-    "independent typed-packet construction against same carrier contract",
-    "fail-closed layout dimension provenance and groundwater-sentinel checks",
+    "bounded reconstruction of two frozen SWAP3 hydrology layouts",
+    "file-independent ANIMO_HYDROLOGY_STEP_V1 normalized payload",
+    "explicit ANIMO_HYDROLOGY_UNITS_V1 unit contract",
+    "legacy layout and record digest separated into adapter provenance",
+    "producer time metadata separated from model-neutral runtime authority",
+    "legacy file grammar isolated from KT02 model-neutral runtime",
+    "Hlpimp=11 complete file-derived Hydro_detailed projection for frozen LWKM envelope",
+    "Hlpimp=1 fail-closed projection when Sict is not supplied",
+    "fail-closed dimension layout provenance and groundwater-sentinel checks",
     "local-only producer records excluded from coupling API"
   ],
-  "material_blocker": {
+  "open_scientific_handoff": {
     "id": "KT03-F01",
-    "status": "ADJACENT_SOURCE_FINDING_REQUIRES_SCIENTIFIC_DISPOSITION",
-    "summary": "CranMais Hlpimp=1 omits sSict from the dynamic record while Input_hydro still assigns Sict and Hydro_detailed consumes Sict-Sic",
-    "effect": "FULL_HYDRO_DETAILED_COMPATIBILITY_NOT_QUALIFIED"
+    "status": "REQUIRES_SEPARATE_SCIENTIFIC_SOURCE_DISPOSITION",
+    "summary": "Hlpimp=1 omits Sic/Sict producer state while revision-53 input paths still normalize local sSic/sSict and Hydro_detailed consumes Sict-Sic",
+    "not_resolved_by": "TCD-018"
   },
   "evidence_class": "B1_DIAGNOSTIC_ADAPTER_PROBE_NOT_B2",
   "production_src_modified": false,
-  "tests_executed": [
-    "python3 tests/kt03/test_kt03_hydrology_adapter.py",
-    "GitHub Actions run 35281025858 SUCCESS",
-    "local frozen CranMais byte-level probe recorded in reference/kt03/CRANMAIS_HYDROLOGY_PROBE.json"
-  ],
-  "verdict": "QUALIFIED_NONPRODUCTION_CRANMAIS_FILE_TO_TYPED_HYDROLOGY_FIELDS_WITH_FULL_DOWNSTREAM_COMPATIBILITY_BLOCKED_BY_UNDEFINED_SICT_FOR_HLPIMP_1",
-  "next_permitted_action": "SEPARATE_SCIENTIFIC_SOURCE_DISPOSITION_FOR_KT03_F01_THEN_RETURN_TO_KT03_DOWNSTREAM_COMPATIBILITY_PROOF",
+  "qualification_verdict": "QUALIFIED_NONPRODUCTION_FILE_INDEPENDENT_TYPED_HYDROLOGY_EXCHANGE_WITH_BOUNDED_HLPIMP11_DOWNSTREAM_PROJECTION_AND_FAIL_CLOSED_HLPIMP1_SICT_BOUNDARY",
+  "next_permitted_action": "START_SEPARATE_KT03_F01_SCIENTIFIC_SOURCE_DISPOSITION_FROM_FROZEN_KT03_EVIDENCE",
   "explicit_exclusions": [
-    "inventing or defaulting Sict",
+    "inventing or defaulting Hlpimp=1 Sic or Sict",
     "ANIMO scientific equation changes inside KT03",
     "B2 historical compiler equivalence",
     "production source admission",
