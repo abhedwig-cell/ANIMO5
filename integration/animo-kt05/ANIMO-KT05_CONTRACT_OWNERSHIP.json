@@ -1,0 +1,54 @@
+{
+  "workunit": "ANIMO-KT05",
+  "consumed_contracts": [
+    {
+      "id": "ANIMO_HYDROLOGY_STEP_V1",
+      "stability": "FROZEN",
+      "owner": "ANIMO-KT03",
+      "authority": "e844c7658a95819fc0463c55737f9bd41b29a6da"
+    },
+    {
+      "id": "ANIMO_HYDROLOGY_UNITS_V1",
+      "stability": "FROZEN",
+      "owner": "ANIMO-KT03",
+      "authority": "e844c7658a95819fc0463c55737f9bd41b29a6da"
+    },
+    {
+      "id": "REV53_HYDRO_DETAILED_EXTERNAL_CALL_SURFACE",
+      "stability": "FROZEN",
+      "owner": "LEGACY_ANIMO_REV53",
+      "authority": "sha256:f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d"
+    }
+  ],
+  "owned_modified_contracts": [
+    {
+      "id": "KT05_EXPLICIT_HYDROLOGY_FORTRAN_PROJECTION",
+      "stability": "MOVING",
+      "owner": "ANIMO-KT05",
+      "authority": "work/animo-kt05-explicit-hydrology-animo-adapter"
+    }
+  ],
+  "allowed_scope": [
+    "prototype/kt05",
+    "tests/kt05",
+    "docs/kt05",
+    "integration/animo-kt05",
+    ".github/workflows/animo-kt05-explicit-adapter.yml"
+  ],
+  "forbidden_overlap": [
+    "production src/",
+    "prototype/kt02/runtime",
+    "KT03 normalized schema mutation",
+    "KT03F01 Hlpimp=1 missing-state semantics",
+    "Hlpimp=2 semantics",
+    "Hydro_detailed scientific equations",
+    "Modflux",
+    "timestep or retry policy"
+  ],
+  "dependencies": [
+    "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
+    "ANIMO-KT03 contract@e844c7658a95819fc0463c55737f9bd41b29a6da"
+  ],
+  "parallelism_class": "PARALLEL_AFTER_PINNING",
+  "exit_gate": "strict Fortran compilation, frozen KT03 regression, exact-head CI and adversarial review"
+}

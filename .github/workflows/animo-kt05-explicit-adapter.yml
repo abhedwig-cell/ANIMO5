@@ -1,0 +1,30 @@
+name: ANIMO KT05 explicit hydrology adapter
+
+on:
+  push:
+    branches:
+      - work/animo-kt05-explicit-hydrology-animo-adapter
+    paths:
+      - 'prototype/kt05/**'
+      - 'tests/kt05/**'
+      - 'docs/kt05/**'
+      - 'integration/animo-kt05/**'
+      - '.github/workflows/animo-kt05-explicit-adapter.yml'
+  workflow_dispatch:
+
+jobs:
+  explicit-adapter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run frozen KT03 adapter regression
+        run: python3 tests/kt03/test_kt03_hydrology_adapter.py
+      - name: Compile and run KT05 adapter tests
+        run: bash tests/kt05/run_kt05_tests.sh
+      - name: Validate KT05 checkpoint
+        run: python3 -m json.tool integration/animo-kt05/ANIMO-KT05_CHECKPOINT.json >/dev/null
+      - name: Validate GOV06 contract ownership declaration
+        run: python3 -m json.tool integration/animo-kt05/ANIMO-KT05_CONTRACT_OWNERSHIP.json >/dev/null
+      - name: Guard production and KT02 runtime surfaces
+        run: |
+          ! git diff --name-only HEAD^ HEAD | grep -E '^(src/|prototype/kt02/runtime/)'

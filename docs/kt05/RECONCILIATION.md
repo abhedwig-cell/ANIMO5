@@ -31,4 +31,13 @@ This is intentionally narrower than executing `Hydro_detailed`. The projection m
 
 KT05 reuses the **contract**, not SWAP-specific science. It does not change KT02 runtime mechanics and does not import SWAP solver, forcing-file or timestep policy.
 
-Current phase: `RECONCILE`.
+Current phase: `IMPLEMENT`.
+
+
+## Implemented boundary
+
+The first implementation is a compiled Fortran contract adapter only. It mirrors the full normalized KT03 packet sufficiently to validate the frozen schema and then projects the bounded producer-derived subset required at the `Hydro_detailed` call boundary.
+
+No file framing, `Hlpimp`, record hash, SWAP solver policy, ANIMO accepted state or scientific transformation is carried into the adapter. Interception storage is mandatory in KT05, so the unresolved Hlpimp=1 route cannot enter this workunit.
+
+The implementation was compiled locally before persistence with GNU Fortran 14.2 using `-std=f2008 -Wall -Wextra -Werror -fcheck=all`; the test executable passed. Repository qualification still depends on exact-head CI and review.
