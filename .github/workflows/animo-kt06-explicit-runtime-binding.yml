@@ -26,6 +26,8 @@ jobs:
         run: python3 tests/kt03/test_kt03_hydrology_adapter.py
       - name: Re-run frozen KT05 compiled adapter tests
         run: bash tests/kt05/run_kt05_tests.sh
+      - name: Validate KT06 derived fixture parity
+        run: python3 tests/kt06/test_kt06_fixture_contract.py
       - name: Run KT06 runtime-binding tests
         run: bash tests/kt06/run_kt06_tests.sh
       - name: Validate KT06 checkpoint

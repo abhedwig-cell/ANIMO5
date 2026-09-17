@@ -21,14 +21,14 @@ module mod_animo_explicit_hydrology_runtime_binding
   end type animo_runtime_probe_state_t
 
   type, extends(transient_client_t), public :: &
-      animo_explicit_hydrology_runtime_client_t
+      animo_explicit_hydrology_runtime_probe_client_t
     type(hydrology_step_t) :: forcing
     logical :: forcing_present = .false.
     character(len=48) :: runtime_calendar_contract_id = ''
     integer(int64) :: producer_day_offset = 0_int64
   contains
     procedure :: execute_attempt => execute_explicit_hydrology_attempt
-  end type animo_explicit_hydrology_runtime_client_t
+  end type animo_explicit_hydrology_runtime_probe_client_t
 
   public :: initialize_probe_store
 
@@ -87,7 +87,7 @@ contains
   subroutine execute_explicit_hydrology_attempt( &
       self, origin_payload, origin_time, endpoint_time, candidate_payload, &
       admissibility, ok, reason)
-    class(animo_explicit_hydrology_runtime_client_t), intent(inout) :: self
+    class(animo_explicit_hydrology_runtime_probe_client_t), intent(inout) :: self
     class(transient_payload_t), intent(in) :: origin_payload
     type(TimeCoordinate), intent(in) :: origin_time, endpoint_time
     class(transient_payload_t), allocatable, intent(out) :: candidate_payload

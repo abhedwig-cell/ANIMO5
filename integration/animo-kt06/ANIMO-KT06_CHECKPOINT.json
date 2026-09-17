@@ -1,8 +1,8 @@
 {
   "workunit": "ANIMO-KT06",
   "title": "Explicit Hydrology Runtime Interval Binding",
-  "phase": "IMPLEMENT",
-  "checkpoint_state": "FIRST_KT05_TO_KT02_RUNTIME_BINDING_IMPLEMENTATION_AUTHORED_CI_PENDING",
+  "phase": "QUALIFY",
+  "checkpoint_state": "SELF_REVIEW_FINDINGS_REMEDIATED_EXACT_HEAD_CI_PENDING",
   "branch": "work/animo-kt06-explicit-hydrology-runtime-binding",
   "base_head": "3319e57adbf6036a86684f8e26d9559454c07b82",
   "consumed_kt02_authority": "ANIMO-KT02@1f88db4dc87fc4d93075884ac35a59711f0725bf",
@@ -12,6 +12,20 @@
   "consumed_kt05_frozen_implementation": "69dd607ba1efa28de3f83cc963526021352b3311",
   "consumes_kt03f01_as_qualified_authority": false,
   "candidate_risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS",
+  "reviewed_head": "7b15faa65355d1f12eeb6f737c24f962319af1e5",
+  "reviewed_head_ci": {
+    "run_id": 35286434233,
+    "conclusion": "SUCCESS"
+  },
+  "review": {
+    "mode": "same-agent / not genuinely independent",
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "findings": [
+      "KT06-R1 probe client naming insufficiently distinguished binding proof from scientific client",
+      "KT06-R2 derived producer fixture and compiled test constants could drift independently"
+    ],
+    "remediation_status": "APPLIED_CI_PENDING"
+  },
   "production_src_modified": false,
   "kt02_runtime_core_modified": false,
   "kt05_adapter_modified": false,
@@ -22,19 +36,21 @@
     "runtime calendar contract pinned in coupling composition",
     "exact whole-day runtime-to-producer interval binding",
     "KT02 runtime remains accepted-time and publication authority",
-    "producer endpoint and duration mismatch fail closed",
+    "producer endpoint duration and nonzero offset paths machine tested",
     "missing explicit interception state fails closed through KT05",
     "fractional producer metadata and subday runtime mapping fail closed",
-    "single stale forcing cannot leak a partially completed multi-step interval"
+    "single stale forcing cannot leak a partially completed multi-step interval",
+    "derived LWKM interval fixture parity is machine checked"
   ],
-  "verdict": "IMPLEMENTED_NONPRODUCTION_KT05_TO_KT02_RUNTIME_BINDING_CANDIDATE_AWAITING_EXACT_HEAD_CI_AND_TIER_C_REVIEW",
-  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW_AND_PREPARE_GENUINELY_INDEPENDENT_TIER_C_HANDOFF",
+  "verdict": "REMEDIATED_NONPRODUCTION_KT05_TO_KT02_RUNTIME_BINDING_CANDIDATE_AWAITING_EXACT_HEAD_CI_AND_FINAL_SAME_AGENT_REVIEW",
+  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_FINAL_SAME_AGENT_ADVERSARIAL_REVIEW_AND_PREPARE_GENUINELY_INDEPENDENT_TIER_C_HANDOFF",
   "explicit_exclusions": [
     "Hlpimp=1 semantics",
     "Hlpimp=2 semantics",
     "Hydro_detailed scientific execution",
     "ANIMO scientific admissibility",
     "full real-LWKM HydrologyStep payload equivalence",
+    "multi-packet forcing provider",
     "Modflux or solute transport",
     "retry or timestep selection policy",
     "subday or fractional producer-time mapping",

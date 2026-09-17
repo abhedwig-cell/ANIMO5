@@ -9,8 +9,10 @@ program test_kt06_explicit_hydrology_runtime_binding
   use mod_animo_hydrology_adapter, only: hydrology_step_t, &
     HYDROLOGY_SCHEMA_ID, HYDROLOGY_UNIT_CONTRACT_ID
   use mod_animo_explicit_hydrology_runtime_binding, only: &
-    animo_runtime_probe_state_t, animo_explicit_hydrology_runtime_client_t, &
+    animo_runtime_probe_state_t, animo_explicit_hydrology_runtime_probe_client_t, &
     initialize_probe_store
+  use mod_kt06_lwkm_interval_fixture, only: LWKM_LAYER_COUNT, &
+    LWKM_DRAINAGE_COUNT, LWKM_ENDPOINT_DAY, LWKM_STEP_DAYS, LWKM_SICT_END
   implicit none
 
   character(len=*), parameter :: RUNTIME_CALENDAR_ID = 'ANIMO_LWKM_DAILY_V1'
@@ -60,19 +62,19 @@ contains
 
     step%schema_id = HYDROLOGY_SCHEMA_ID
     step%unit_contract_id = HYDROLOGY_UNIT_CONTRACT_ID
-    step%layer_count = 30
-    step%drainage_count = 5
-    step%producer_endpoint_day = 10.0_real64
-    step%producer_step_days = 10.0_real64
+    step%layer_count = LWKM_LAYER_COUNT
+    step%drainage_count = LWKM_DRAINAGE_COUNT
+    step%producer_endpoint_day = LWKM_ENDPOINT_DAY
+    step%producer_step_days = LWKM_STEP_DAYS
     step%has_interception_storage_end = .true.
-    step%interception_storage_end = 0.0_real64
+    step%interception_storage_end = LWKM_SICT_END
     step%has_soil_temperature = .false.
 
-    allocate(step%sc(30))
-    allocate(step%mofrt(30))
-    allocate(step%flev(30))
-    allocate(step%flab(31))
-    allocate(step%fldr(5, 30))
+    allocate(step%sc(LWKM_LAYER_COUNT))
+    allocate(step%mofrt(LWKM_LAYER_COUNT))
+    allocate(step%flev(LWKM_LAYER_COUNT))
+    allocate(step%flab(LWKM_LAYER_COUNT + 1))
+    allocate(step%fldr(LWKM_DRAINAGE_COUNT, LWKM_LAYER_COUNT))
     allocate(step%soil_temperature(0))
 
     step%sc = 0.0_real64
@@ -83,7 +85,7 @@ contains
   end subroutine configure_lwkm_shaped_step
 
   subroutine configure_valid_client(client)
-    type(animo_explicit_hydrology_runtime_client_t), intent(out) :: client
+    type(animo_explicit_hydrology_runtime_probe_client_t), intent(out) :: client
 
     client%forcing_present = .true.
     client%runtime_calendar_contract_id = RUNTIME_CALENDAR_ID
@@ -123,7 +125,7 @@ contains
 
   subroutine run_one(store, client, target, success, reason)
     type(accepted_store_t), intent(inout) :: store
-    type(animo_explicit_hydrology_runtime_client_t), intent(inout) :: client
+    type(animo_explicit_hydrology_runtime_probe_client_t), intent(inout) :: client
     type(TimeCoordinate), intent(in) :: target
     logical, intent(out) :: success
     character(len=*), intent(out) :: reason
@@ -138,7 +140,7 @@ contains
   subroutine test_full_kt05_forcing_commits(t_start, t_end)
     type(TimeCoordinate), intent(in) :: t_start, t_end
     type(accepted_store_t) :: store
-    type(animo_explicit_hydrology_runtime_client_t) :: client
+    type(animo_explicit_hydrology_runtime_probe_client_t) :: client
     logical :: ok, success
     character(len=64) :: reason
 
@@ -160,7 +162,7 @@ contains
   subroutine test_nonzero_offset_binding_commits(t_start, t_end)
     type(TimeCoordinate), intent(in) :: t_start, t_end
     type(accepted_store_t) :: store
-    type(animo_explicit_hydrology_runtime_client_t) :: client
+    type(animo_explicit_hydrology_runtime_probe_client_t) :: client
     logical :: ok, success
     character(len=64) :: reason
 
@@ -183,7 +185,7 @@ contains
   subroutine test_step_mismatch_fails_closed(t_start, t_end)
     type(TimeCoordinate), intent(in) :: t_start, t_end
     type(accepted_store_t) :: store
-    type(animo_explicit_hydrology_runtime_client_t) :: client
+    type(animo_explicit_hydrology_runtime_probe_client_t) :: client
     logical :: ok, success
     character(len=64) :: reason
 
@@ -205,7 +207,7 @@ contains
   subroutine test_endpoint_mismatch_fails_closed(t_start, t_end)
     type(TimeCoordinate), intent(in) :: t_start, t_end
     type(accepted_store_t) :: store
-    type(animo_explicit_hydrology_runtime_client_t) :: client
+    type(animo_explicit_hydrology_runtime_probe_client_t) :: client
     logical :: ok, success
     character(len=64) :: reason
 
@@ -227,7 +229,7 @@ contains
   subroutine test_missing_explicit_state_fails_closed(t_start, t_end)
     type(TimeCoordinate), intent(in) :: t_start, t_end
     type(accepted_store_t) :: store
-    type(animo_explicit_hydrology_runtime_client_t) :: client
+    type(animo_explicit_hydrology_runtime_probe_client_t) :: client
     logical :: ok, success
     character(len=64) :: reason
 
@@ -248,7 +250,7 @@ contains
   subroutine test_schema_mismatch_fails_closed(t_start, t_end)
     type(TimeCoordinate), intent(in) :: t_start, t_end
     type(accepted_store_t) :: store
-    type(animo_explicit_hydrology_runtime_client_t) :: client
+    type(animo_explicit_hydrology_runtime_probe_client_t) :: client
     logical :: ok, success
     character(len=64) :: reason
 
@@ -269,7 +271,7 @@ contains
   subroutine test_fractional_producer_metadata_fails_closed(t_start, t_end)
     type(TimeCoordinate), intent(in) :: t_start, t_end
     type(accepted_store_t) :: store
-    type(animo_explicit_hydrology_runtime_client_t) :: client
+    type(animo_explicit_hydrology_runtime_probe_client_t) :: client
     logical :: ok, success
     character(len=64) :: reason
 
@@ -290,7 +292,7 @@ contains
   subroutine test_calendar_binding_fails_closed(t_start, t_end)
     type(TimeCoordinate), intent(in) :: t_start, t_end
     type(accepted_store_t) :: store
-    type(animo_explicit_hydrology_runtime_client_t) :: client
+    type(animo_explicit_hydrology_runtime_probe_client_t) :: client
     logical :: ok, success
     character(len=64) :: reason
 
@@ -311,7 +313,7 @@ contains
   subroutine test_subday_runtime_mapping_fails_closed(t_start, target)
     type(TimeCoordinate), intent(in) :: t_start, target
     type(accepted_store_t) :: store
-    type(animo_explicit_hydrology_runtime_client_t) :: client
+    type(animo_explicit_hydrology_runtime_probe_client_t) :: client
     logical :: ok, success
     character(len=64) :: reason
 
@@ -332,7 +334,7 @@ contains
       t_start, t_middle, t_end)
     type(TimeCoordinate), intent(in) :: t_start, t_middle, t_end
     type(accepted_store_t) :: store
-    type(animo_explicit_hydrology_runtime_client_t) :: client
+    type(animo_explicit_hydrology_runtime_probe_client_t) :: client
     type(attempt_request_t) :: requests(2)
     type(runtime_trace_t) :: trace
     logical :: ok, success

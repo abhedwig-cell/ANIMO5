@@ -8,9 +8,9 @@
   "first_dynamic_logical_record_index_one_based": 18,
   "first_dynamic_group_logical_record_count": 13,
   "first_dynamic_group_sha256": "2e5e8ff7c088ddd94f91aeb663ea10abdecfda0ac4cd418a8bf90be955389ec7",
-  "producer_endpoint_day_raw_real4": 10.0,
-  "producer_step_days_raw_real4": 10.0,
-  "interception_storage_end_raw_real4_m": 0.0,
+  "producer_endpoint_day_raw_real4": 10,
+  "producer_step_days_raw_real4": 10,
+  "interception_storage_end_raw_real4_m": 0,
   "kt06_use": "time-binding and explicit-state contact only",
   "kt06_test_payload_note": "remaining HydrologyStep fields are synthetic finite values with LWKM dimensions; full real-record payload equivalence is not claimed",
   "nonclaims": [
@@ -19,5 +19,7 @@
     "Hydro_detailed scientific execution",
     "general producer-to-runtime calendar mapping",
     "production coupling"
-  ]
+  ],
+  "layer_count": 30,
+  "drainage_count": 5
 }
