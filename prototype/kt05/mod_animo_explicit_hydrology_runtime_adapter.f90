@@ -80,7 +80,7 @@ contains
     if (value < 0.0_real64) return
     if (value > real(MAX_EXACT_REAL64_INTEGER, real64)) return
     integer_value = nint(value, kind=int64)
-    if (value /= real(integer_value, real64)) then
+    if (transfer(value, 0_int64) /= transfer(real(integer_value, real64), 0_int64)) then
       integer_value = 0_int64
       return
     end if
