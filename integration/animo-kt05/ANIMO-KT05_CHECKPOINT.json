@@ -1,8 +1,8 @@
 {
   "workunit": "ANIMO-KT05",
   "title": "Explicit-State HydrologyStep to ANIMO Hydrology Call-Boundary Adapter",
-  "phase": "QUALIFY",
-  "checkpoint_state": "REMEDIATION_LOGIC_COMPLETE_TOOLING_IMPORT_PATH_FIX_CI_PENDING",
+  "phase": "REVIEW",
+  "checkpoint_state": "POST_REMEDIATION_REVIEW_FOUND_PUBLIC_PROJECTION_VALIDATION_GAP",
   "branch": "work/animo-kt05-explicit-hydrology-animo-adapter",
   "base_head": "c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
   "consumed_kt03_contract_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
@@ -27,8 +27,8 @@
     "dedicated producer-time validation status"
   ],
   "local_precommit_test": "gfortran 14.2.0 strict compile and test PASS",
-  "verdict": "TOOLING_FAILURE_REMEDIATED_AWAITING_NEW_EXACT_HEAD_CI",
-  "next_permitted_action": "RUN_NEW_EXACT_HEAD_CI_THEN_POST_REMEDIATION_ADVERSARIAL_REVIEW",
+  "verdict": "KT05_NOT_YET_CLOSED_PUBLIC_PROJECTION_VALIDATION_REMEDIATION_REQUIRED",
+  "next_permitted_action": "ADD_PROJECTED_CARRIER_VALIDATOR_AND_ZERO_DRAINAGE_SLICE_TEST_THEN_EXACT_HEAD_CI",
   "explicit_exclusions": [
     "Hlpimp=1 semantics",
     "Hlpimp=2 semantics",
@@ -79,5 +79,26 @@
     "failed_step": "Compile and run KT05 adapter tests",
     "diagnosis": "structural Python test imported prototype before adding repository root to sys.path; compiled Fortran test itself had already passed locally and prior head CI",
     "scientific_falsification": false
+  },
+  "latest_exact_head_ci": {
+    "run_id": 35285568227,
+    "head": "e4db83052d542021edf8c4f5d8e00bacc9d97ed9",
+    "conclusion": "SUCCESS"
+  },
+  "post_remediation_review": {
+    "mode": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "artifact": "docs/kt05/POST_REMEDIATION_REVIEW.md",
+    "reviewed_head": "e4db83052d542021edf8c4f5d8e00bacc9d97ed9",
+    "prior_findings_status": {
+      "KT05-R1": "REMEDIATED",
+      "KT05-R2": "REMEDIATED",
+      "KT05-R3": "REMEDIATED",
+      "KT05-R4": "REMEDIATED"
+    },
+    "new_findings": {
+      "KT05-R5": "MEDIUM_PUBLIC_PROJECTED_CARRIER_CAN_BYPASS_COMPLETE_VALIDATION",
+      "KT05-R6": "LOW_ZERO_DRAINAGE_SLICE_MAPPING_NOT_EXERCISED"
+    },
+    "verdict": "REMEDIATION_REQUIRED_FOR_PUBLIC_PROJECTION_FAIL_CLOSED_GATE"
   }
 }
