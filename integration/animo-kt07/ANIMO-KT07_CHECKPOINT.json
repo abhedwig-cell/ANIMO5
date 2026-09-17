@@ -1,0 +1,41 @@
+{
+  "workunit": "ANIMO-KT07",
+  "title": "LWKM Full Explicit Hydrology Packet Derived Fixture",
+  "phase": "IMPLEMENT",
+  "checkpoint_state": "FULL_FIRST_PACKET_DERIVED_FIXTURE_AND_COMPILED_PROJECTION_TEST_AUTHORED_CI_PENDING",
+  "branch": "work/animo-kt07-lwkm-real-packet-fixture",
+  "base_authority": "ANIMO-KT05@3319e57adbf6036a86684f8e26d9559454c07b82",
+  "consumed_kt03_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
+  "consumed_kt05_frozen_implementation": "69dd607ba1efa28de3f83cc963526021352b3311",
+  "consumes_kt06_as_qualified_authority": false,
+  "evidence_class": "B1_DERIVED_FROM_PINNED_B0_PRODUCER_NOT_B2",
+  "source_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
+  "dynamic_group_sha256": "2e5e8ff7c088ddd94f91aeb663ea10abdecfda0ac4cd418a8bf90be955389ec7",
+  "typed_step_digest_sha256": "eeeb862839cce8111535fae86220d8574240804b9f6f029f7ec8e07ceb65da1c",
+  "production_src_modified": false,
+  "kt03_adapter_modified": false,
+  "kt05_adapter_modified": false,
+  "implemented_capabilities": [
+    "complete first LWKM explicit HydrologyStep persisted as B1 derived fixture",
+    "source file and first dynamic logical-record group provenance pinned",
+    "frozen KT03 typed-step digest pinned",
+    "fixture integrity validator",
+    "fixture-to-Fortran generator",
+    "compiled KT05 validation and projection test using all real derived packet fields",
+    "compiled legacy slice mapping with index-zero preservation"
+  ],
+  "verdict": "IMPLEMENTED_B1_REAL_PACKET_FIXTURE_AND_COMPILED_PROJECTION_PROOF_AWAITING_EXACT_HEAD_CI_AND_SAME_AGENT_REVIEW",
+  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW_AND_CLOSE_IF_NO_MATERIAL_FINDINGS",
+  "explicit_exclusions": [
+    "B2 historical compiler equivalence",
+    "Hlpimp=1 semantics",
+    "Hydro_detailed scientific execution",
+    "ANIMO scientific admissibility",
+    "KT02 or KT06 runtime integration",
+    "SWAP5 in-memory producer",
+    "retry or timestep selection policy",
+    "production migration",
+    "B3 or B4 admission",
+    "Status A or Status AA"
+  ]
+}
