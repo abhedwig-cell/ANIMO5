@@ -76,6 +76,7 @@ module mod_animo_hydrology_adapter
   end type hydro_detailed_external_t
 
   public :: validate_hydrology_step_explicit
+  public :: validate_hydro_detailed_external
   public :: project_hydro_detailed_explicit
   public :: apply_projection_to_legacy_slices
 
@@ -198,7 +199,52 @@ contains
     projection%sict = step%interception_storage_end
     projection%snt = step%snow_storage_end
     projection%st = step%producer_step_days
+
+    call validate_hydro_detailed_external(projection, status)
   end subroutine project_hydro_detailed_explicit
+
+  subroutine validate_hydro_detailed_external(projection, status)
+    type(hydro_detailed_external_t), intent(in) :: projection
+    integer, intent(out) :: status
+    real(real64) :: values(16)
+
+    status = KT05_OK
+
+    if (projection%layer_count <= 0 .or. projection%drainage_count < 0) then
+      status = KT05_ERR_DIMENSIONS
+      return
+    end if
+    if (.not. allocated(projection%mofrt) .or. .not. allocated(projection%flev) .or. &
+        .not. allocated(projection%flab) .or. .not. allocated(projection%fldr)) then
+      status = KT05_ERR_DIMENSIONS
+      return
+    end if
+    if (size(projection%mofrt) /= projection%layer_count .or. &
+        size(projection%flev) /= projection%layer_count .or. &
+        size(projection%flab) /= projection%layer_count + 1 .or. &
+        size(projection%fldr, 1) /= projection%drainage_count .or. &
+        size(projection%fldr, 2) /= projection%layer_count) then
+      status = KT05_ERR_DIMENSIONS
+      return
+    end if
+
+    values = [ &
+      projection%evicirr, projection%evicpr, projection%evpn, projection%evsn, &
+      projection%evso, projection%evsoma, projection%evtrma, projection%pnt, &
+      projection%prirr, projection%prr, projection%prsn, projection%ru, &
+      projection%runon, projection%sict, projection%snt, projection%st ]
+    if (.not. all(ieee_is_finite(values)) .or. &
+        .not. all(ieee_is_finite(projection%mofrt)) .or. &
+        .not. all(ieee_is_finite(projection%flev)) .or. &
+        .not. all(ieee_is_finite(projection%flab)) .or. &
+        .not. all(ieee_is_finite(projection%fldr))) then
+      status = KT05_ERR_NONFINITE
+      return
+    end if
+    if (projection%st <= 0.0_real64) then
+      status = KT05_ERR_TIME
+    end if
+  end subroutine validate_hydro_detailed_external
 
   subroutine apply_projection_to_legacy_slices(projection, mofrt, flev, flab, fldr, status)
     type(hydro_detailed_external_t), intent(in) :: projection
@@ -209,7 +255,9 @@ contains
     integer, intent(out) :: status
     integer :: nl, nudr
 
-    status = KT05_OK
+    call validate_hydro_detailed_external(projection, status)
+    if (status /= KT05_OK) return
+
     nl = projection%layer_count
     nudr = projection%drainage_count
     if (nl <= 0 .or. nudr < 0) then

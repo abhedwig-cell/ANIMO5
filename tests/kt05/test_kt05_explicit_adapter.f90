@@ -9,6 +9,8 @@ program test_kt05_explicit_adapter
   integer :: status
   real(real64) :: legacy_mofrt(0:2), legacy_flev(0:2), legacy_flab(0:3)
   real(real64) :: legacy_fldr(1,0:2)
+  real(real64) :: zero_mofrt(0:2), zero_flev(0:2), zero_flab(0:3)
+  real(real64), allocatable :: zero_fldr(:,:)
 
   call make_valid_step(step)
   call project_hydro_detailed_explicit(step, projection, status)
@@ -34,6 +36,13 @@ program test_kt05_explicit_adapter
   call assert_equal_real(legacy_flev(2), 0.0006_real64, 'Flev index two mapping')
   call assert_equal_real(legacy_flab(3), -0.0002_real64, 'Flab Nl+1 mapping')
   call assert_equal_real(legacy_fldr(1,2), 0.00002_real64, 'Fldr layer mapping')
+
+  projection%prr = ieee_value(projection%prr, ieee_quiet_nan)
+  legacy_mofrt = -777.0_real64
+  call apply_projection_to_legacy_slices( &
+    projection, legacy_mofrt, legacy_flev, legacy_flab, legacy_fldr, status)
+  call assert_equal_int(status, KT05_ERR_NONFINITE, 'corrupt public projection rejected')
+  call assert_equal_real(legacy_mofrt(1), -777.0_real64, 'corrupt projection copied nothing')
 
   step%schema_id = 'WRONG'
   call validate_hydrology_step_explicit(step, status)
@@ -76,6 +85,18 @@ program test_kt05_explicit_adapter
   call assert_equal_int(status, KT05_OK, 'zero optional projection status')
   call assert_equal_int(projection%drainage_count, 0, 'zero drainage projection')
   call assert_equal_int(size(projection%fldr, 1), 0, 'zero drainage extent')
+  zero_mofrt = -555.0_real64
+  zero_flev = -555.0_real64
+  zero_flab = -555.0_real64
+  allocate(zero_fldr(0,0:2))
+  call apply_projection_to_legacy_slices( &
+    projection, zero_mofrt, zero_flev, zero_flab, zero_fldr, status)
+  call assert_equal_int(status, KT05_OK, 'zero drainage slice mapping status')
+  call assert_equal_int(size(zero_fldr, 1), 0, 'zero drainage target remains empty')
+  call assert_equal_real(zero_mofrt(0), -555.0_real64, 'zero drainage Mofrt index zero preserved')
+  call assert_equal_real(zero_flev(0), -555.0_real64, 'zero drainage Flev index zero preserved')
+  call assert_equal_real(zero_flab(0), -555.0_real64, 'zero drainage Flab index zero preserved')
+  call assert_equal_real(zero_mofrt(1), step%mofrt(1), 'zero drainage Mofrt mapping')
 
   print '(A)', 'KT05 explicit Fortran hydrology adapter tests: PASS'
 
