@@ -1,0 +1,22 @@
+{
+  "evidence_class": "B1_DERIVED_FROM_PINNED_FROZEN_PRODUCER_RECORD_NOT_B2",
+  "source_case": "LWKM_gras_1040.2021.2045",
+  "source_member": "input/SWATRE.UNF",
+  "source_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
+  "source_model_version": "V7.3.3.3",
+  "hlpimp": 11,
+  "dynamic_step_index_zero_based": 0,
+  "logical_record_group_sha256": "2e5e8ff7c088ddd94f91aeb663ea10abdecfda0ac4cd418a8bf90be955389ec7",
+  "logical_records_in_group": 13,
+  "producer_endpoint_day_raw_real4": 10.0,
+  "producer_step_days_raw_real4": 10.0,
+  "interception_storage_end_raw_real4_m": 0.0,
+  "use": "KT05 bounded exact whole-day explicit-state runtime-binding fixture only",
+  "nonclaims": [
+    "B2 historical executable equivalence",
+    "full HydrologyStep equivalence",
+    "Hydro_detailed scientific execution",
+    "general LWKM time mapping",
+    "production coupling"
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "workunit": "ANIMO-KT05",
   "title": "Explicit-State Hydrology Runtime Interval Binding",
-  "phase": "IMPLEMENT",
-  "checkpoint_state": "FIRST_RUNTIME_BINDING_IMPLEMENTATION_AUTHORED_CI_PENDING",
+  "phase": "QUALIFY",
+  "checkpoint_state": "FIRST_GREEN_HEAD_REVIEWED_MATERIAL_FINDINGS_REMEDIATED_EXACT_HEAD_CI_PENDING",
   "branch": "work/animo-kt05-explicit-state-runtime-adapter",
   "base_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
   "consumed_kt02_authority": "ANIMO-KT02@1f88db4dc87fc4d93075884ac35a59711f0725bf",
@@ -10,24 +10,45 @@
   "consumed_kt03_contract_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
   "consumes_kt03f01_as_qualified_authority": false,
   "candidate_risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS",
+  "first_green_head": "1744609baaf2d39c04ac3af2b4d128af62a3bc79",
+  "first_green_exact_head_ci": {
+    "run_id": 35285609451,
+    "conclusion": "SUCCESS"
+  },
+  "review": {
+    "mode": "same-agent / not genuinely independent",
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "material_findings": [
+      "partial interval view incorrectly shared full HydrologyStep schema identity",
+      "producer-day offset was not pinned to a runtime calendar contract",
+      "first proof used only synthetic producer-time metadata",
+      "single-forcing multi-step nonpublication required explicit coverage"
+    ],
+    "remediation_status": "APPLIED_CI_PENDING"
+  },
   "production_src_modified": false,
   "kt02_runtime_core_modified": false,
   "implemented_capabilities": [
+    "distinct explicit interval-binding contract projected from frozen KT03 source contract",
     "explicit-state hydrology forcing held outside accepted continuation state",
+    "runtime calendar contract pinned in coupling composition",
     "exact whole-day runtime-to-producer interval binding",
     "runtime time remains authoritative",
     "producer endpoint and duration metadata checked fail-closed",
+    "pinned LWKM first-interval derived fixture used as bounded real-producer evidence",
     "missing explicit interception endpoint fails closed",
     "fractional producer metadata and subday runtime mapping fail closed",
+    "single forcing cannot leak a partially completed multi-step interval",
     "accepted payload remains unchanged by forcing-only proof attempt"
   ],
-  "verdict": "IMPLEMENTED_NONPRODUCTION_RUNTIME_BINDING_PROOF_AWAITING_EXACT_HEAD_CI_AND_TIER_C_REVIEW",
-  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW_AND_PREPARE_GENUINELY_INDEPENDENT_TIER_C_HANDOFF",
+  "verdict": "REMEDIATED_NONPRODUCTION_RUNTIME_BINDING_CANDIDATE_AWAITING_EXACT_HEAD_CI_AND_FINAL_SAME_AGENT_REVIEW",
+  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_FINAL_SAME_AGENT_ADVERSARIAL_REVIEW_AND_PREPARE_GENUINELY_INDEPENDENT_TIER_C_HANDOFF",
   "explicit_exclusions": [
     "Hlpimp=1 semantics",
     "Hlpimp=2 semantics",
     "full HydrologyStep field transport",
     "Hydro_detailed scientific execution",
+    "ANIMO scientific admissibility",
     "Modflux or solute transport",
     "retry or timestep selection policy",
     "subday or fractional producer-time mapping",

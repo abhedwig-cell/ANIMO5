@@ -8,13 +8,21 @@ module mod_animo_explicit_hydrology_runtime_adapter
   implicit none
   private
 
-  character(len=*), parameter, public :: HYDROLOGY_SCHEMA_ID = 'ANIMO_HYDROLOGY_STEP_V1'
-  character(len=*), parameter, public :: HYDROLOGY_UNIT_ID = 'ANIMO_HYDROLOGY_UNITS_V1'
+  character(len=*), parameter, public :: BINDING_CONTRACT_ID = &
+    'ANIMO_KT05_EXPLICIT_INTERVAL_BINDING_V1'
+  character(len=*), parameter, public :: SOURCE_SCHEMA_ID = &
+    'ANIMO_HYDROLOGY_STEP_V1'
+  character(len=*), parameter, public :: SOURCE_UNIT_ID = &
+    'ANIMO_HYDROLOGY_UNITS_V1'
+  character(len=*), parameter, public :: SOURCE_AUTHORITY_ID = &
+    'ANIMO-KT03-CONTRACT@e844c7658a95819fc0463c55737f9bd41b29a6da'
   integer(int64), parameter :: MAX_EXACT_REAL64_INTEGER = 9007199254740991_int64
 
   type, public :: hydrology_interval_binding_t
-    character(len=48) :: schema_id = ''
-    character(len=48) :: unit_contract_id = ''
+    character(len=64) :: binding_contract_id = ''
+    character(len=48) :: source_schema_id = ''
+    character(len=48) :: source_unit_contract_id = ''
+    character(len=96) :: source_authority_id = ''
     real(real64) :: producer_endpoint_day = 0.0_real64
     real(real64) :: producer_step_days = 0.0_real64
     logical :: has_interception_storage_end = .false.
@@ -31,6 +39,7 @@ module mod_animo_explicit_hydrology_runtime_adapter
   type, extends(transient_client_t), public :: animo_explicit_hydrology_client_t
     type(hydrology_interval_binding_t) :: forcing
     logical :: forcing_present = .false.
+    character(len=48) :: runtime_calendar_contract_id = ''
     integer(int64) :: producer_day_offset = 0_int64
   contains
     procedure :: execute_attempt => execute_explicit_hydrology_attempt
@@ -80,7 +89,8 @@ contains
     if (value < 0.0_real64) return
     if (value > real(MAX_EXACT_REAL64_INTEGER, real64)) return
     integer_value = nint(value, kind=int64)
-    if (transfer(value, 0_int64) /= transfer(real(integer_value, real64), 0_int64)) then
+    if (transfer(value, 0_int64) /= &
+        transfer(real(integer_value, real64), 0_int64)) then
       integer_value = 0_int64
       return
     end if
@@ -93,18 +103,23 @@ contains
     logical :: endpoint_ok, step_ok
 
     binding_valid = .false.
-    if (trim(binding%schema_id) /= HYDROLOGY_SCHEMA_ID) return
-    if (trim(binding%unit_contract_id) /= HYDROLOGY_UNIT_ID) return
+    if (trim(binding%binding_contract_id) /= BINDING_CONTRACT_ID) return
+    if (trim(binding%source_schema_id) /= SOURCE_SCHEMA_ID) return
+    if (trim(binding%source_unit_contract_id) /= SOURCE_UNIT_ID) return
+    if (trim(binding%source_authority_id) /= SOURCE_AUTHORITY_ID) return
     if (.not. binding%has_interception_storage_end) return
     if (.not. ieee_is_finite(binding%interception_storage_end)) return
-    call exact_nonnegative_integer(binding%producer_endpoint_day, endpoint_day, endpoint_ok)
-    call exact_nonnegative_integer(binding%producer_step_days, step_days, step_ok)
+    call exact_nonnegative_integer( &
+      binding%producer_endpoint_day, endpoint_day, endpoint_ok)
+    call exact_nonnegative_integer( &
+      binding%producer_step_days, step_days, step_ok)
     if (.not. endpoint_ok .or. .not. step_ok) return
     if (step_days <= 0_int64) return
     binding_valid = .true.
   end function binding_valid
 
-  subroutine execute_explicit_hydrology_attempt(self, origin_payload, origin_time, endpoint_time, candidate_payload, &
+  subroutine execute_explicit_hydrology_attempt( &
+      self, origin_payload, origin_time, endpoint_time, candidate_payload, &
       admissibility, ok, reason)
     class(animo_explicit_hydrology_client_t), intent(inout) :: self
     class(transient_payload_t), intent(in) :: origin_payload
@@ -114,7 +129,8 @@ contains
     logical, intent(out) :: ok
     character(len=*), intent(out) :: reason
 
-    integer(int64) :: producer_endpoint, producer_step, runtime_step, expected_endpoint
+    integer(int64) :: producer_endpoint, producer_step
+    integer(int64) :: runtime_step, expected_endpoint
     logical :: endpoint_ok, step_ok
 
     admissibility = admissibility_t()
@@ -125,19 +141,31 @@ contains
       reason = 'MISSING_HYDROLOGY_FORCING'
       return
     end if
+    if (len_trim(self%runtime_calendar_contract_id) == 0) then
+      reason = 'MISSING_RUNTIME_CALENDAR_BINDING'
+      return
+    end if
     if (self%producer_day_offset < 0_int64) then
       reason = 'INVALID_PRODUCER_DAY_OFFSET'
       return
     end if
-    if (trim(origin_time%calendar_contract_id) /= trim(endpoint_time%calendar_contract_id)) then
-      reason = 'RUNTIME_CALENDAR_MISMATCH'
+    if (trim(origin_time%calendar_contract_id) /= &
+        trim(self%runtime_calendar_contract_id)) then
+      reason = 'RUNTIME_CALENDAR_BINDING_MISMATCH'
       return
     end if
-    if (origin_time%subday_numerator /= 0_int64 .or. endpoint_time%subday_numerator /= 0_int64) then
+    if (trim(endpoint_time%calendar_contract_id) /= &
+        trim(self%runtime_calendar_contract_id)) then
+      reason = 'RUNTIME_CALENDAR_BINDING_MISMATCH'
+      return
+    end if
+    if (origin_time%subday_numerator /= 0_int64 .or. &
+        endpoint_time%subday_numerator /= 0_int64) then
       reason = 'SUBDAY_MAPPING_NOT_QUALIFIED'
       return
     end if
-    if (origin_time%day_index < 0_int64 .or. endpoint_time%day_index <= origin_time%day_index) then
+    if (origin_time%day_index < 0_int64 .or. &
+        endpoint_time%day_index <= origin_time%day_index) then
       reason = 'INVALID_RUNTIME_INTERVAL'
       return
     end if
@@ -146,8 +174,10 @@ contains
       return
     end if
 
-    call exact_nonnegative_integer(self%forcing%producer_endpoint_day, producer_endpoint, endpoint_ok)
-    call exact_nonnegative_integer(self%forcing%producer_step_days, producer_step, step_ok)
+    call exact_nonnegative_integer( &
+      self%forcing%producer_endpoint_day, producer_endpoint, endpoint_ok)
+    call exact_nonnegative_integer( &
+      self%forcing%producer_step_days, producer_step, step_ok)
     if (.not. endpoint_ok .or. .not. step_ok) then
       reason = 'NONEXACT_PRODUCER_TIME_METADATA'
       return
@@ -158,7 +188,8 @@ contains
       reason = 'PRODUCER_STEP_MISMATCH'
       return
     end if
-    if (endpoint_time%day_index > huge(expected_endpoint) - self%producer_day_offset) then
+    if (endpoint_time%day_index > &
+        huge(expected_endpoint) - self%producer_day_offset) then
       reason = 'PRODUCER_TIME_MAPPING_OVERFLOW'
       return
     end if
