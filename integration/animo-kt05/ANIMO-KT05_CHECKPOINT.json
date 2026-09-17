@@ -1,0 +1,38 @@
+{
+  "workunit": "ANIMO-KT05",
+  "title": "Explicit-State Hydrology Runtime Interval Binding",
+  "phase": "IMPLEMENT",
+  "checkpoint_state": "FIRST_RUNTIME_BINDING_IMPLEMENTATION_AUTHORED_CI_PENDING",
+  "branch": "work/animo-kt05-explicit-state-runtime-adapter",
+  "base_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
+  "consumed_kt02_authority": "ANIMO-KT02@1f88db4dc87fc4d93075884ac35a59711f0725bf",
+  "consumed_kt02_frozen_executable": "1909709e7a244b5d0ee53342a26bab74815c118c",
+  "consumed_kt03_contract_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
+  "consumes_kt03f01_as_qualified_authority": false,
+  "candidate_risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS",
+  "production_src_modified": false,
+  "kt02_runtime_core_modified": false,
+  "implemented_capabilities": [
+    "explicit-state hydrology forcing held outside accepted continuation state",
+    "exact whole-day runtime-to-producer interval binding",
+    "runtime time remains authoritative",
+    "producer endpoint and duration metadata checked fail-closed",
+    "missing explicit interception endpoint fails closed",
+    "fractional producer metadata and subday runtime mapping fail closed",
+    "accepted payload remains unchanged by forcing-only proof attempt"
+  ],
+  "verdict": "IMPLEMENTED_NONPRODUCTION_RUNTIME_BINDING_PROOF_AWAITING_EXACT_HEAD_CI_AND_TIER_C_REVIEW",
+  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW_AND_PREPARE_GENUINELY_INDEPENDENT_TIER_C_HANDOFF",
+  "explicit_exclusions": [
+    "Hlpimp=1 semantics",
+    "Hlpimp=2 semantics",
+    "full HydrologyStep field transport",
+    "Hydro_detailed scientific execution",
+    "Modflux or solute transport",
+    "retry or timestep selection policy",
+    "subday or fractional producer-time mapping",
+    "production migration",
+    "B3 or B4 admission",
+    "Status A or Status AA"
+  ]
+}

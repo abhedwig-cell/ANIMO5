@@ -1,0 +1,27 @@
+name: ANIMO KT05 explicit-state runtime adapter
+
+on:
+  push:
+    branches:
+      - work/animo-kt05-explicit-state-runtime-adapter
+    paths:
+      - 'prototype/kt05/**'
+      - 'tests/kt05/**'
+      - 'docs/kt05/**'
+      - 'integration/animo-kt05/**'
+      - '.github/workflows/animo-kt05-explicit-runtime-adapter.yml'
+  workflow_dispatch:
+
+jobs:
+  runtime-adapter-proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install gfortran
+        run: sudo apt-get update && sudo apt-get install -y gfortran
+      - name: Re-run frozen KT02 qualification tests
+        run: bash tests/kt02/run_kt02_tests.sh
+      - name: Run KT05 explicit-state runtime adapter tests
+        run: bash tests/kt05/run_kt05_tests.sh
+      - name: Validate KT05 checkpoint
+        run: python3 -m json.tool integration/animo-kt05/ANIMO-KT05_CHECKPOINT.json >/dev/null
