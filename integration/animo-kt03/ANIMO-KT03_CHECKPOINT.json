@@ -1,0 +1,41 @@
+{
+  "workunit": "ANIMO-KT03",
+  "title": "Real ANIMO Hydrology-Step Adapter Boundary Qualification",
+  "phase": "ACQUIRE",
+  "checkpoint_state": "ACQUIRE_COMPLETE_BOUNDARY_IDENTIFIED",
+  "branch": "work/animo-kt03-real-hydrology-adapter",
+  "base_authority": "ANIMO-KT02@1f88db4dc87fc4d93075884ac35a59711f0725bf",
+  "consumed_kt02_frozen_executable": "1909709e7a244b5d0ee53342a26bab74815c118c",
+  "consumed_kt02_ci_run": 35278517691,
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "source_files": {
+    "ANIMO_4.1.5.53/Animo.for": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
+    "ANIMO_4.1.5.53/Input_hydro.for": "5f07ce68969d749308595d6b4f9f789b6b3646ae226c233e2f8e49565a7dad64",
+    "ANIMO_4.1.5.53/Hydro_detailed.for": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d"
+  },
+  "selected_case": {
+    "case_id": "CranMais",
+    "hydrology_mode": "Iwa=2 detailed",
+    "swatre_unf_sha256": "538827d517f7be4c060e2d62131e1942f8e0e76fdeae49dc0268486984cc9eaf",
+    "general_inp_sha256": "e514e50020f7d73d2695b359c4b956117b0161d862c375f03a3ae8b95ca43029",
+    "animo_ini_sha256": "5d1f62faf62747b7d91d3e9199e33954e3038ddd005259f32a8bca95f0c82bb8",
+    "phosphorus_cycle": 0,
+    "macropore_option": 0,
+    "greenhouse_gas_option": 0
+  },
+  "candidate_boundary": "normalized Input_hydro output immediately before Hydro_detailed",
+  "production_src_modified": false,
+  "tests_executed": [],
+  "verdict": "ACQUIRE_COMPLETE_BOUNDARY_IDENTIFIED_PROTOTYPE_NOT_YET_STARTED",
+  "next_permitted_action": "SPECIFY_TYPED_HYDROLOGY_STEP_AND_BUILD_BOUNDED_CRANMAIS_FILE_ADAPTER_PROBE",
+  "explicit_exclusions": [
+    "ANIMO scientific equation changes",
+    "Hydro_detailed semantic rewrite",
+    "production source admission",
+    "shared production runtime library",
+    "SWAP5-ANIMO production coupling",
+    "joint timestep acceptance",
+    "Status A or Status AA claims"
+  ]
+}
