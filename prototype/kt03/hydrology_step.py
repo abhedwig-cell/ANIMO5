@@ -4,10 +4,41 @@ from dataclasses import dataclass
 import hashlib
 import json
 import math
+import string
 import struct
 from typing import Optional
 
-LAYOUT_ID = "ANIMO41_SWAP3_HYDROLOGY_STEP_V1"
+SCHEMA_ID = "ANIMO_HYDROLOGY_STEP_V1"
+UNIT_CONTRACT_ID = "ANIMO_HYDROLOGY_UNITS_V1"
+LEGACY_LAYOUT_ID = "ANIMO41_SWAP3_RECORD_LAYOUT_V1"
+
+HYDROLOGY_UNITS = {
+    "producer_endpoint_day": "legacy producer Julian-day coordinate",
+    "producer_step_days": "d",
+    "prr": "m d-1",
+    "prsn": "m d-1",
+    "prirr": "m d-1",
+    "evicpr": "m d-1",
+    "evicirr": "m d-1",
+    "evsn": "m d-1",
+    "evso": "m d-1",
+    "evpn": "m d-1",
+    "evsoma": "m d-1",
+    "evtrma": "m d-1",
+    "runon": "m d-1",
+    "runoff": "m d-1",
+    "groundwater_level": "m relative to soil surface, legacy convention",
+    "ponding_end": "m",
+    "snow_storage_end": "m water equivalent",
+    "water_balance_aeration": "m",
+    "sc": "cm pressure head",
+    "mofrt": "m3 m-3",
+    "flev": "m d-1",
+    "flab": "m d-1",
+    "fldr": "m d-1",
+    "interception_storage_end": "m",
+    "soil_temperature": "degC",
+}
 
 
 class HydrologyAdapterError(ValueError):
@@ -34,11 +65,7 @@ def _i32s(record: bytes, expected: int, label: str) -> tuple[int, ...]:
 
 
 def legacy_dble_trunc_diagnostic(value: float) -> float:
-    """Diagnostic emulation of revision-53 REAL(4)->REAL(8) normalization.
-
-    This isolates the legacy decimal-normalization intent for adapter testing.
-    It is not an independently qualified Intel/B2 compiler authority.
-    """
+    """Diagnostic emulation only, not independently qualified B2 authority."""
     r4 = struct.unpack("<f", struct.pack("<f", value))[0]
     integer = math.trunc(r4)
     remainder = struct.unpack("<f", struct.pack("<f", math.fmod(r4, 1.0)))[0]
@@ -56,15 +83,29 @@ def legacy_dble_trunc_diagnostic(value: float) -> float:
 
 
 @dataclass(frozen=True)
-class HydrologyStep:
-    layout_id: str
+class LegacyStepProvenance:
+    legacy_layout_id: str
     hlpimp: int
+    source_record_sha256: str
+
+    def validate(self) -> None:
+        if self.legacy_layout_id != LEGACY_LAYOUT_ID:
+            raise HydrologyAdapterError("legacy layout identity mismatch")
+        if self.hlpimp not in (1, 11):
+            raise HydrologyAdapterError("unsupported legacy hlpimp")
+        digest = self.source_record_sha256
+        if len(digest) != 64 or any(ch not in string.hexdigits for ch in digest):
+            raise HydrologyAdapterError("malformed source record SHA-256")
+
+
+@dataclass(frozen=True)
+class HydrologyStep:
+    schema_id: str
+    unit_contract_id: str
     layer_count: int
     drainage_count: int
-
-    tiwa: float
-    step_days: float
-
+    producer_endpoint_day: float
+    producer_step_days: float
     prr: float
     prsn: float
     prirr: float
@@ -81,25 +122,21 @@ class HydrologyStep:
     ponding_end: float
     snow_storage_end: float
     water_balance_aeration: float
-
     sc: tuple[float, ...]
     mofrt: tuple[float, ...]
     flev: tuple[float, ...]
     flab: tuple[float, ...]
     fldr: tuple[tuple[float, ...], ...]
-
     has_interception_storage_end: bool
     interception_storage_end: Optional[float]
     has_soil_temperature: bool
     soil_temperature: tuple[float, ...]
 
-    source_record_sha256: str
-
     def validate(self) -> None:
-        if self.layout_id != LAYOUT_ID:
-            raise HydrologyAdapterError("layout identity mismatch")
-        if self.hlpimp not in (1, 11):
-            raise HydrologyAdapterError("unsupported hlpimp for KT03 prototype")
+        if self.schema_id != SCHEMA_ID:
+            raise HydrologyAdapterError("hydrology schema identity mismatch")
+        if self.unit_contract_id != UNIT_CONTRACT_ID:
+            raise HydrologyAdapterError("hydrology unit contract mismatch")
         if self.layer_count <= 0 or self.drainage_count < 0:
             raise HydrologyAdapterError("invalid dimensions")
         if (
@@ -117,17 +154,15 @@ class HydrologyStep:
         if self.has_soil_temperature and len(self.soil_temperature) != self.layer_count:
             raise HydrologyAdapterError("temperature dimension mismatch")
         if not self.has_soil_temperature and self.soil_temperature:
-            raise HydrologyAdapterError(
-                "temperature payload present while temperature is unavailable"
-            )
+            raise HydrologyAdapterError("temperature payload present while unavailable")
         if self.has_interception_storage_end != (
             self.interception_storage_end is not None
         ):
             raise HydrologyAdapterError("interception availability mismatch")
 
         scalars = [
-            self.tiwa,
-            self.step_days,
+            self.producer_endpoint_day,
+            self.producer_step_days,
             self.prr,
             self.prsn,
             self.prirr,
@@ -158,23 +193,17 @@ class HydrologyStep:
         )
         if not all(math.isfinite(value) for value in all_values):
             raise HydrologyAdapterError("non-finite typed hydrology value")
-        if self.step_days <= 0.0:
-            raise HydrologyAdapterError("non-positive timestep")
-        if len(self.source_record_sha256) != 64:
-            raise HydrologyAdapterError("missing or malformed source record identity")
+        if self.producer_step_days <= 0.0:
+            raise HydrologyAdapterError("non-positive producer timestep")
 
-    def require_hydro_detailed_compatibility(self) -> None:
-        """Fail closed unless every file-derived Hydro_detailed input is defined."""
+    def require_hydro_detailed_projection(self) -> None:
         self.validate()
         if not self.has_interception_storage_end:
-            raise HydrologyAdapterError(
-                "Sict unavailable from this legacy layout; Hydro_detailed call must "
-                "fail closed pending scientific disposition"
-            )
+            raise HydrologyAdapterError("Sict unavailable from this producer payload")
 
     def hydro_detailed_boundary(self) -> dict:
-        """Project the typed packet onto the file-derived Hydro_detailed seam."""
-        self.require_hydro_detailed_compatibility()
+        """Return only the file-derived subset of the Hydro_detailed call surface."""
+        self.require_hydro_detailed_projection()
         return {
             "Evicirr": self.evicirr,
             "Evicpr": self.evicpr,
@@ -195,14 +224,13 @@ class HydrologyStep:
             "Runon": self.runon,
             "Sict": self.interception_storage_end,
             "Snt": self.snow_storage_end,
-            "St": self.step_days,
+            "St": self.producer_step_days,
         }
 
 
 def parse_swap3_static(records: list[bytes]) -> dict:
     if len(records) < 17:
         raise HydrologyAdapterError("insufficient SWAP3 records")
-
     headers = [record.decode("ascii", errors="strict") for record in records[:5]]
     if not all(header.startswith("*") for header in headers):
         raise HydrologyAdapterError("unexpected SWAP3 textual header")
@@ -215,10 +243,9 @@ def parse_swap3_static(records: list[bytes]) -> dict:
     layer_count, horizon_count, drainage_count = _i32s(
         records[7], 3, "dimensions"
     )
-
     if hlpimp not in (1, 11):
         raise HydrologyAdapterError(
-            "KT03 parser currently supports only the observed Hlpimp=1/11 SWAP3 layouts"
+            "KT03 supports only the observed Hlpimp=1/11 SWAP3 layouts"
         )
     if layer_count <= 0 or horizon_count <= 0 or drainage_count < 0:
         raise HydrologyAdapterError("invalid static dimensions")
@@ -259,30 +286,46 @@ def parse_swap3_static(records: list[bytes]) -> dict:
     }
 
 
+def _dynamic_group(records: list[bytes], index: int, static: dict) -> list[bytes]:
+    records_per_step = 8 + static["nudr"]
+    start = static["dynamic_start"] + index * records_per_step
+    end = start + records_per_step
+    if index < 0 or end > len(records):
+        raise HydrologyAdapterError("incomplete dynamic timestep record group")
+    return records[start:end]
+
+
+def legacy_step_provenance(
+    records: list[bytes], index: int, static: dict
+) -> LegacyStepProvenance:
+    group = _dynamic_group(records, index, static)
+    provenance = LegacyStepProvenance(
+        legacy_layout_id=LEGACY_LAYOUT_ID,
+        hlpimp=static["hlpimp"],
+        source_record_sha256=hashlib.sha256(b"".join(group)).hexdigest(),
+    )
+    provenance.validate()
+    return provenance
+
+
 def parse_dynamic_step(
     records: list[bytes],
     index: int,
     static: dict,
     *,
-    expected_layout_id: str = LAYOUT_ID,
     profile_bottom: float | None = None,
 ) -> HydrologyStep:
     layer_count = static["nl"]
     drainage_count = static["nudr"]
     hlpimp = static["hlpimp"]
-    records_per_step = 8 + drainage_count
-    start = static["dynamic_start"] + index * records_per_step
-    end = start + records_per_step
-    if end > len(records):
-        raise HydrologyAdapterError("incomplete dynamic timestep record group")
-
-    group = records[start:end]
+    group = _dynamic_group(records, index, static)
     first = _f32s(
         group[0], 19 if hlpimp == 11 else 18, "dynamic surface record"
     )
+
     if hlpimp == 11:
         (
-            tiwa,
+            endpoint,
             step_days,
             prr,
             prsn,
@@ -305,7 +348,7 @@ def parse_dynamic_step(
         has_interception_storage_end = True
     else:
         (
-            tiwa,
+            endpoint,
             step_days,
             prr,
             prsn,
@@ -344,14 +387,10 @@ def parse_dynamic_step(
         )
         position += 1
 
-    # These two records are read by Input_hydro but only populate local variables.
-    # They are validated for framing/completeness but are not part of the typed
-    # output contract delivered to Hydro_detailed.
     _f32s(group[position], 4, "local producer crop/weather")
     position += 1
     _f32s(group[position], 1, "local average date")
     position += 1
-
     temperature_record = _f32s(
         group[position], layer_count, "producer temperature/dummy"
     )
@@ -368,12 +407,12 @@ def parse_dynamic_step(
 
     normalize = legacy_dble_trunc_diagnostic
     step = HydrologyStep(
-        layout_id=expected_layout_id,
-        hlpimp=hlpimp,
+        schema_id=SCHEMA_ID,
+        unit_contract_id=UNIT_CONTRACT_ID,
         layer_count=layer_count,
         drainage_count=drainage_count,
-        tiwa=normalize(tiwa),
-        step_days=normalize(step_days),
+        producer_endpoint_day=normalize(endpoint),
+        producer_step_days=normalize(step_days),
         prr=normalize(prr),
         prsn=normalize(prsn),
         prirr=normalize(prirr),
@@ -405,7 +444,6 @@ def parse_dynamic_step(
         soil_temperature=(
             tuple(map(normalize, temperature_record)) if static["ioptte"] else tuple()
         ),
-        source_record_sha256=hashlib.sha256(b"".join(group)).hexdigest(),
     )
     step.validate()
     return step
