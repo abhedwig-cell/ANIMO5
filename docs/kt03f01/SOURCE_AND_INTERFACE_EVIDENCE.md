@@ -18,31 +18,23 @@ It then executes `Sict = Dble_trunc(sSict)` unconditionally.
 
 `Init.for` strengthens the distinction: previous interception storage is promoted with `Sic = Sict` only when `Iopthyvs=1 .and. Hlpimp==11`. Therefore the source itself contains an explicit lifecycle for interception storage only on the Hlpimp=11 path.
 
-This does not establish the value of the undefined Hlpimp=1 locals. TCD-010 and TCD-011 already show that default-real and local-storage behaviour depend on the historical build contract. KT03F01 therefore treats those local values as scientifically undefined, not as zero and not as a stable historical carry value.
-
 ## 2. The consequence is not accounting-only
 
-`Hydro_detailed.for` uses `Sict-Sic` in two places relevant here.
+`Hydro_detailed.for` uses `Sict-Sic` inside the top-boundary `Dif` identity and the whole-profile `Badev` identity. The `Dif` path can change `Evso`, then `Flab(1)`, after which `Modflux` derives transport-facing water fluxes.
 
-First, the Hlpimp-independent `Iopthyvs=1` top-boundary correction includes `-(Sict-Sic)/St` inside `Dif`. `Dif` then changes `Evso` through `Evso = Max(0, Evso-Dif)`, after which `Flab(1)` is recomputed. `Hydro_detailed` immediately calls `Modflux`, which converts `Flab` into non-negative transport-facing inflow/outflow terms. Elsewhere, `Flab(1)` is also consumed by uptake parameter calculations.
-
-The causal chain is therefore:
+Causal chain:
 
 `undefined Hlpimp=1 Sic/Sict -> Dif -> Evso -> Flab(1) -> Modflux / transport-facing water fluxes`
 
-Second, the whole-profile water-balance deviation subtracts `Sict-Sic` directly.
-
-Consequently KT03-F01 is not merely another form of TCD-018 output accounting. An undefined interception delta can alter the hydrological transformation presented to solute transport.
+This makes KT03-F01 distinct from TCD-018, which concerns reporting-ledger coverage for an interception state that actually exists.
 
 ## 3. Supplied 4.0 documentation supports an absent-state older interface
 
-The supplied ANIMO 4.0 user guide describes SWATRE.UNF in Table 10. Its initial-condition fields include groundwater level, ponding storage and snow storage, but no interception-storage state. Its dynamic fields include precipitation, interception-evaporation fluxes, soil evaporation, ponded-water evaporation, transpiration terms, runoff, groundwater level, ponding, snow storage, a water-balance error and profile flux/state arrays, again without `Sic` or `Sict`.
+The supplied ANIMO 4.0 user guide Table 10 documents the SWATRE.UNF exchange. It contains interception-evaporation fluxes but no initial or dynamic interception-storage state. This is version-limited evidence for ANIMO 4.0, but it agrees with the observed Hlpimp=1 file grammar.
 
-The same guide describes `Hydro_detailed` as taking detailed water-model fluxes/moisture as input and modifying flux terms for use in the transport equation. The guide is version-limited evidence for ANIMO 4.0, not exact revision-53 authority, but it agrees with the observed Hlpimp=1 file grammar.
+## 4. Frozen producer lineages separate the layouts
 
-## 4. Frozen testbank lineages separate the two layouts
-
-The supplied textual-header SWAP files inspected for this workunit show:
+Observed bounded files:
 
 - CranMais: Hlpimp=1, SWAP3.0beta;
 - CranGrass: Hlpimp=1, swap_3_0_2;
@@ -54,35 +46,44 @@ All four Hlpimp=1 files omit initial and dynamic interception storage. LWKM Hlpi
 
 ## 5. Whole-profile balance probe
 
-`tools/kt03f01/analyze_interception_balance.py` evaluates the revision-53 whole-profile water-balance identity directly from frozen SWATRE logical records after the same diagnostic `Dble_trunc` normalization used by KT03. The tool does not execute production source and does not reconstruct historical compiler behaviour.
+The bounded B1 probe evaluates the revision-53 whole-profile identity directly from the frozen producer records after diagnostic `Dble_trunc` normalization.
 
-For Hlpimp=1, the probe evaluates the balance without an interception-storage term because no such state exists in the record. Mean absolute residuals are:
+Mean absolute residual without a separate interception-storage term:
 
-- CranMais: `4.812e-08 m` over 3287 timesteps, max `3.716e-06 m`;
-- CranGrass: `5.609e-08 m` over 2922 timesteps, max `9.480e-06 m`;
-- GrassPeat: `3.579e-08 m` over 540 timesteps, max `2.751e-07 m`;
-- STONE: `4.787e-08 m` over 540 timesteps, max `6.598e-07 m`.
+- CranMais: `4.812e-08 m`;
+- CranGrass: `5.609e-08 m`;
+- GrassPeat: `3.579e-08 m`;
+- STONE: `4.787e-08 m`.
 
-For Hlpimp=11 LWKM, omitting the explicit interception-storage change gives mean absolute residual `4.124e-05 m`; including the supplied `Sict-Sic` reduces it to `2.284e-06 m`, an approximately `18.06x` reduction. The maximum explicit interception-storage change in the file is `2.0e-04 m`.
+LWKM Hlpimp=11:
 
-These results are derived B1 diagnostic evidence. They do not establish historical executable behaviour. They do establish a strong interface distinction: the older Hlpimp=1 hydrology payloads are internally close to the revision-53 whole-profile identity without interception storage, whereas the Hlpimp=11 payload materially requires the explicitly supplied storage term.
+- without explicit interception delta: `4.124e-05 m`;
+- with supplied `Sict-Sic`: `2.284e-06 m`;
+- improvement factor: about `18.06x`.
 
-## 6. Qualification implication
+This is B1 diagnostic evidence, not historical executable truth.
 
-The evidence currently supports H0 more strongly than H1:
+## 6. Historical build artifacts recovered
 
-- no Hlpimp=1 producer state exists in the documented or observed grammar;
-- no Hlpimp=1 lifecycle promotion exists in `Init`;
-- four independent frozen Hlpimp=1 payload lineages close their whole-profile hydrological balance without an interception-storage term;
-- the later Hlpimp=11 layout explicitly adds the state and materially improves closure when the term is used.
+The user-supplied original project artifacts provide new B0/build-contract evidence:
 
-The candidate bounded scientific disposition is therefore:
+- `animo41.vfproj` SHA-256 `f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a`;
+- `animo41.sln` SHA-256 `206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2`;
+- `animo41.exe` SHA-256 `40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d`.
 
-`HLPIMP1_INTERCEPTION_STORAGE_NOT_PART_OF_PRODUCER_STATE_CONTRACT`
+The Visual Studio 2010 Intel Fortran project specifies `RealKIND=realKIND8` and `LocalVariableStorage=localStorageSave`. Debug x64 additionally sets `LocalSavedScalarsZero=true`; Release x64 does not contain an explicit equivalent zero-initialization setting.
 
-with the candidate corrected source semantics:
+This materially narrows TCD-010/TCD-011 historical build uncertainty, but it does not turn unread `sSic/sSict` into scientifically defined state and does not establish their exact release-executable value.
 
-- for Hlpimp=1, do not read or propagate undefined `Sic/Sict`, and omit the interception-storage delta from both the `Dif` top-boundary term and whole-profile `Badev` term;
-- for Hlpimp=11, retain the explicit `Sic/Sict` state and current delta terms.
+## 7. Candidate implication
 
-This is a qualification candidate only. It requires adversarial review before close and does not authorize a production patch.
+The evidence supports the candidate:
+
+`HLPIMP1_INTERCEPTION_STORAGE_NOT_PART_OF_PRODUCER_EXCHANGE_STATE_CONTRACT`
+
+Candidate corrected semantics:
+
+- Hlpimp=1: do not read, expose or reconstruct undefined `Sic/Sict`; omit the absent interception-storage delta from the affected transformation identities.
+- Hlpimp=11: retain explicit `Sic/Sict` state and delta terms.
+
+Because this is a Tier C state/initialization/source-ownership decision, the candidate requires genuinely independent second-line review before qualification.

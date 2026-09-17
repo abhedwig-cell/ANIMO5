@@ -1,101 +1,68 @@
-# ANIMO-KT03F01 Qualification Report
+# ANIMO-KT03F01 Qualification Status
 
-## Decision
+## Corrected governance disposition
 
-KT03-F01 is qualified positively as a bounded nonproduction scientific/source disposition.
+The scientific/source evidence for KT03-F01 is strong enough to support a **candidate positive disposition**, but it is not yet a completed qualification.
 
-Qualification verdict:
+Current status:
 
-`QUALIFIED_NONPRODUCTION_HLPIMP1_INTERCEPTION_STORAGE_NOT_PART_OF_PRODUCER_EXCHANGE_STATE_CONTRACT`
+`CANDIDATE_POSITIVE_HLPIMP1_INTERCEPTION_EXCHANGE_STATE_DISPOSITION_PENDING_GOV04_TIER_C_INDEPENDENT_REVIEW`
 
-The qualified statement is deliberately narrow:
+The earlier same-agent closeout remains useful authoring and adversarial evidence, but it does not satisfy the governing independent-review gate. GOV06 explicitly preserves genuinely independent review wherever another authority requires it. GOV04 places this work in Tier C because it concerns missing physical state, initialization/state semantics and source/state ownership ambiguity with scientific consequences.
 
-> For revision-53 detailed hydrology with `Iopthyvs=1, Hlpimp=1`, interception storage is not part of the producer exchange-state contract. The unconditional legacy use of `Sic/Sict` cannot be treated as scientifically defined input. A corrected Hlpimp=1 transformation must omit the interception-storage delta from the affected `Hydro_detailed` identities rather than fabricate, default or recover an undefined state.
+## Candidate scientific statement
 
-This says nothing about whether interception storage exists physically inside the producing hydrology model. It says that Hlpimp=1 does not deliver it as a separate ANIMO exchange state.
+For revision-53 detailed hydrology with `Iopthyvs=1, Hlpimp=1`, the available evidence supports the interpretation that interception storage is **not part of the producer exchange-state contract**. The unconditional legacy use of `Sic/Sict` therefore cannot be treated as scientifically defined input.
 
-## Frozen qualification evidence
+The candidate corrected transformation is:
 
-Authoring head:
+- Hlpimp=1: do not reconstruct, fabricate or default `Sic/Sict`; omit the interception-storage delta from the affected `Hydro_detailed` identities.
+- Hlpimp=11: retain the explicit initial `Sic`, dynamic `Sict`, lifecycle promotion and delta terms.
 
-`9e31afe36ca1bc8f4c90dab024c811c87337cbc0`
+At equation level, omission of a non-existent exchange term contributes zero. Semantically this is not the creation of a zero-valued interception-storage state.
 
-Exact-head CI:
+## Evidence already complete
 
-`35283726500` -> `SUCCESS`.
-
-Review assurance:
-
-`PROCESS_SELF_REVIEWED_NOT_INDEPENDENT`.
-
-Adversarial review verdict:
-
-`PASS_KT03F01_HLPIMP1_ABSENT_INTERCEPTION_EXCHANGE_STATE_SOURCE_DISPOSITION_NONPRODUCTION`.
-
-Evidence class:
-
-`B1_DIAGNOSTIC_ADAPTER_PROBE_NOT_B2`.
-
-## Scientific/source basis
-
-The disposition rests on converging evidence rather than a single source statement:
+The candidate is supported by converging B1 evidence:
 
 1. revision-53 Hlpimp=1 static and dynamic records omit `sSic/sSict`;
 2. revision-53 nevertheless normalizes those unread locals unconditionally;
-3. previous interception state is promoted in `Init` only for Hlpimp=11;
+3. `Init` promotes `Sic=Sict` only for Hlpimp=11;
 4. the supplied ANIMO 4.0 SWATRE exchange table contains no interception-storage state;
-5. four frozen Hlpimp=1 SWAP files close the revision-53 whole-profile water identity without a separate interception term at mean absolute residuals around `10^-8 m` per timestep;
-6. the frozen Hlpimp=11 LWKM file explicitly supplies the state and its inclusion improves mean absolute closure by about `18.06x`;
-7. `Sict-Sic` participates in the `Dif -> Evso -> Flab(1) -> Modflux` chain, so the undefined Hlpimp=1 value is not merely an output-ledger concern.
+5. four frozen Hlpimp=1 producer lineages close the revision-53 whole-profile identity without a separate interception term at mean absolute residuals of order `10^-8 m` per timestep;
+6. LWKM Hlpimp=11 explicitly supplies interception state and inclusion of its storage delta improves mean absolute closure by about `18.06x`;
+7. `Sict-Sic` participates in the `Dif -> Evso -> Flab(1) -> Modflux` chain, so the ambiguity can affect transport-facing hydrology and is not accounting-only.
 
-## Qualified corrected equation boundary
+The same-agent adversarial review found no material scientific contradiction in this bounded candidate, but its assurance remains `PROCESS_SELF_REVIEWED_NOT_INDEPENDENT`.
 
-For the bounded exchange contract, define an interception-storage delta only when that state is explicitly supplied by the qualified producer layout.
+## Newly recovered historical build evidence
 
-For Hlpimp=1:
+The supplied Visual Studio / Intel Fortran project materially narrows the historical build contract:
 
-`delta_interception = NOT_PRESENT_IN_EXCHANGE_CONTRACT`
+- `animo41.vfproj` SHA-256: `f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a`;
+- `animo41.sln` SHA-256: `206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2`;
+- `animo41.exe` SHA-256: `40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d`.
 
-and the `Sict-Sic` contribution is omitted from both:
+The project specifies `RealKIND=realKIND8` and `LocalVariableStorage=localStorageSave` for the inspected configurations. Debug x64 additionally has `LocalSavedScalarsZero=true`; Release x64 does not expose that explicit zero-initialization setting.
 
-- the `Iopthyvs=1` top-boundary `Dif` identity;
-- the whole-profile `Badev` identity.
+This evidence resolves part of the previously missing compiler contract, but it does **not** establish a portable or scientifically defined value for unread `sSic/sSict` in release execution. Therefore no B2 historical-behaviour claim follows from it.
 
-For Hlpimp=11, KT03-F01 changes nothing. The explicit initial `Sic`, dynamic `Sict`, lifecycle promotion and delta terms remain the qualified observed layout behaviour for the bounded KT03 evidence.
+## Governance classification
 
-At the equation level, omitting an absent term has the same arithmetic contribution as zero. Semantically these are not the same operation: the qualified contract does **not** create a zero-valued interception state for Hlpimp=1. The state is absent, so an adapter or future module contract must not expose fabricated `Sic/Sict` values.
+KT03-F01 is Tier C under GOV04. The triggers are:
 
-## Relationship to KT03
+- missing or redefined physical state;
+- initialization/state semantics;
+- state/source ownership ambiguity with scientific consequences.
 
-KT03 correctly failed closed for Hlpimp=1 full downstream projection because the producer payload did not contain `Sict`. KT03-F01 now qualifies the missing scientific rule needed to continue architecture work: Hlpimp=1 projection does not require synthesizing `Sict`; it requires a layout-qualified projection whose equations omit the absent storage term.
+A genuinely independent second-line review is therefore mandatory before this candidate can be called qualified or used as an admitted scientific rule.
 
-The frozen `ANIMO_HYDROLOGY_STEP_V1` payload remains unchanged. Its explicit availability semantics are therefore preserved.
+## Current authority boundary
 
-## Relationship to TCD-018
+No production source is changed. The canonical TCD register is unchanged. No B3/B4, Status A or production claim is made.
 
-TCD-018 remains valid and separate. It concerns an output water-ledger interface when `Sic/Sict` is a real existing state. KT03-F01 concerns a producer layout that does not supply that state and where unconditional use can affect transport-facing hydrology transformation. Neither disposition replaces the other.
+The architecture line may continue in parallel only on surfaces that do not consume the unresolved Hlpimp=1 candidate as qualified authority, for example the explicit-state Hlpimp=11 path.
 
-## Historical uncertainty
+## Next action
 
-The exact revision-53 executable behaviour of unread `sSic/sSict` is not qualified. Default-real and local-storage compiler semantics are known historical build-contract dependencies. KT03-F01 therefore does not claim that historical ANIMO happened to use zero, retained memory, or any other specific value on Hlpimp=1 runs.
-
-The qualified result is a corrected scientific interface disposition under historical uncertainty, not a reconstruction of undefined historical memory behaviour.
-
-## Explicit nonclaims
-
-KT03-F01 does not qualify or admit:
-
-- Hlpimp=2 interception semantics;
-- a corrected executable `Hydro_detailed` implementation;
-- whole-model numerical equivalence after applying the guard;
-- B2 historical behaviour;
-- a canonical TCD identity or register mutation;
-- B3 or B4 admission;
-- production source changes;
-- Status A or Status AA.
-
-Production `src/` is unchanged.
-
-## Next safe action
-
-Return to the architecture line in a separate successor adapter workunit. That workunit may consume this frozen disposition to implement a nonproduction Hlpimp=1 `Hydro_detailed` projection path with an explicit layout-qualified interception rule, then prove that file-backed and typed-provider paths produce the same transport-facing hydrology transformation for the bounded cases. It must still keep Hlpimp=11 explicit-state semantics separate and must not promote the result into production without its own admission path.
+Run a genuinely independent second-line review against the frozen authoring evidence and candidate claim. If that review passes without changing claim, scope or semantics, perform formal disposition closeout. If it changes the scientific claim, reopen qualification before any adapter implementation consumes it.

@@ -1,12 +1,13 @@
 {
   "workunit": "ANIMO-KT03F01",
   "title": "Hlpimp=1 Interception-State Scientific Source Disposition",
-  "phase": "CLOSE",
-  "checkpoint_state": "CLOSED_POSITIVE_NONPRODUCTION_SOURCE_DISPOSITION",
+  "phase": "REVIEW",
+  "checkpoint_state": "AUTHORING_AND_SELF_REVIEW_COMPLETE_TIER_C_INDEPENDENT_REVIEW_REQUIRED",
   "branch": "work/animo-kt03f01-hlpimp1-interception-disposition",
   "base_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
   "consumed_contract_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
   "authoring_head": "9e31afe36ca1bc8f4c90dab024c811c87337cbc0",
+  "self_review_closeout_head": "0bd8e3f2fe84837e85c45c44ec2e8201f81cef12",
   "authoring_exact_head_ci": {
     "run_id": 35283726500,
     "conclusion": "SUCCESS"
@@ -14,17 +15,28 @@
   "parallelism_class": "PARALLEL_AFTER_PINNING",
   "research_maturity": "RESEARCH_ISOLATED",
   "evidence_class": "B1_DIAGNOSTIC_ADAPTER_PROBE_NOT_B2",
-  "review": {
-    "mode": "same-agent / not genuinely independent",
-    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "verdict": "PASS_KT03F01_HLPIMP1_ABSENT_INTERCEPTION_EXCHANGE_STATE_SOURCE_DISPOSITION_NONPRODUCTION"
+  "governance": {
+    "GOV06": "current unified programme-regie; same-agent review never counts as independent review",
+    "GOV05": "mandatory same-agent adversarial review satisfied for authoring process",
+    "GOV04_risk_tier": "TIER_C",
+    "tier_c_triggers": [
+      "missing or redefined physical state",
+      "initialization/state semantics",
+      "state or source ownership ambiguity with scientific consequences"
+    ],
+    "genuinely_independent_second_line_review_required": true
   },
-  "qualification_verdict": "QUALIFIED_NONPRODUCTION_HLPIMP1_INTERCEPTION_STORAGE_NOT_PART_OF_PRODUCER_EXCHANGE_STATE_CONTRACT",
-  "qualified_semantics": {
+  "review": {
+    "same_agent_mode": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "same_agent_verdict": "PASS_AUTHORING_EVIDENCE_AND_BOUNDED_CANDIDATE_DISPOSITION",
+    "independent_review_status": "REQUIRED_NOT_YET_PERFORMED"
+  },
+  "candidate_disposition": "HLPIMP1_INTERCEPTION_STORAGE_NOT_PART_OF_PRODUCER_EXCHANGE_STATE_CONTRACT",
+  "candidate_semantics": {
     "scope": "Iopthyvs=1 and Hlpimp=1 only",
     "producer_exchange_state": "Sic/Sict absent",
-    "top_boundary_Dif": "omit Sict-Sic contribution",
-    "whole_profile_Badev": "omit Sict-Sic contribution",
+    "top_boundary_Dif": "candidate: omit Sict-Sic contribution",
+    "whole_profile_Badev": "candidate: omit Sict-Sic contribution",
     "state_representation": "do not fabricate or default Sic/Sict",
     "Hlpimp_11": "unchanged; explicit Sic/Sict semantics remain separate"
   },
@@ -34,11 +46,24 @@
     "Hlpimp11_contrast_case": "LWKM",
     "LWKM_mean_abs_closure_improvement_factor_with_explicit_interception": 18.057720003291088
   },
-  "adjacent_authority": "ANIMO-B3D06@11286faafcc59717196ed045d96c9d215c74abeb",
+  "historical_build_artifacts": {
+    "animo41_vfproj_sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+    "animo41_sln_sha256": "206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2",
+    "animo41_exe_sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+    "observed_project_flags": [
+      "RealKIND=realKIND8",
+      "LocalVariableStorage=localStorageSave",
+      "Debug x64 LocalSavedScalarsZero=true",
+      "Release x64 has no explicit LocalSavedScalarsZero flag"
+    ],
+    "interpretation": "build artifacts narrow the historical environment but do not define the value of unread sSic/sSict in release execution"
+  },
   "production_src_modified": false,
   "canonical_tcd_register_modified": false,
-  "historical_executable_behavior": "UNKNOWN_NOT_CLAIMED",
-  "next_permitted_action": "START_SEPARATE_SUCCESSOR_ADAPTER_WORKUNIT_USING_FROZEN_KT03F01_GUARD_SEMANTICS",
+  "qualification_status": "NOT_YET_QUALIFIED_UNDER_GOV04_TIER_C",
+  "admission_status": "NOT_ADMITTED",
+  "next_permitted_action": "GENUINELY_INDEPENDENT_SECOND_LINE_REVIEW_THEN_FORMAL_DISPOSITION_OR_NEGATIVE_CLOSE",
+  "safe_parallel_action": "CONTINUE_KT03_SUCCESSOR_ARCHITECTURE_ONLY_ON_EXPLICIT_STATE_HLPIMP11_OR_OTHER_NON_F01_SURFACES",
   "explicit_exclusions": [
     "Hlpimp=2 semantics",
     "corrected Hydro_detailed executable qualification",
