@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT))
 
 from prototype.kt03.hydrology_step import (  # noqa: E402
     HydrologyAdapterError,
+    legacy_step_provenance,
     parse_dynamic_step,
     parse_swap3_static,
     typed_step_digest,
@@ -30,11 +31,15 @@ def main() -> int:
     raw = args.source.read_bytes()
     records, physical_blocks = parse_powerstation_records(raw)
     static = parse_swap3_static(records)
+    if static["hlpimp"] != 1:
+        raise HydrologyAdapterError("CranMais probe requires Hlpimp=1")
 
     records_per_step = 8 + static["nudr"]
     remainder = len(records) - static["dynamic_start"]
     if remainder < 0 or remainder % records_per_step != 0:
-        raise HydrologyAdapterError("dynamic record tail is not an integral timestep sequence")
+        raise HydrologyAdapterError(
+            "dynamic record tail is not an integral timestep sequence"
+        )
     timestep_count = remainder // records_per_step
     if timestep_count <= 0:
         raise HydrologyAdapterError("no dynamic timesteps found")
@@ -63,10 +68,14 @@ def main() -> int:
         )
         for index in range(timestep_count)
     ]
+    provenances = [
+        legacy_step_provenance(records, index, static)
+        for index in range(timestep_count)
+    ]
 
-    expected_tiwa = [float(index) for index in range(1, timestep_count + 1)]
-    if [step.tiwa for step in steps] != expected_tiwa:
-        raise HydrologyAdapterError("CranMais Tiwa sequence is not exact 1..N")
+    expected_endpoints = [float(index) for index in range(1, timestep_count + 1)]
+    if [step.producer_endpoint_day for step in steps] != expected_endpoints:
+        raise HydrologyAdapterError("CranMais producer endpoint sequence is not 1..N")
 
     dynamic_payload = b"".join(records[static["dynamic_start"] :])
     metadata = {
@@ -90,21 +99,25 @@ def main() -> int:
             "end_time": static["end_time"],
         },
         "ioptte_from_initial_temperature_record": static["ioptte"],
-        "tiwa_first": steps[0].tiwa,
-        "tiwa_last": steps[-1].tiwa,
-        "all_step_days_one": all(step.step_days == 1.0 for step in steps),
+        "producer_endpoint_first": steps[0].producer_endpoint_day,
+        "producer_endpoint_last": steps[-1].producer_endpoint_day,
+        "all_producer_step_days_one": all(
+            step.producer_step_days == 1.0 for step in steps
+        ),
         "groundwater_sentinel_count": sentinel_count,
         "interception_storage_end_available_from_file": False,
         "dynamic_logical_payload_sha256": hashlib.sha256(dynamic_payload).hexdigest(),
-        "first_step_source_record_sha256": steps[0].source_record_sha256,
-        "last_step_source_record_sha256": steps[-1].source_record_sha256,
+        "first_step_source_record_sha256": provenances[0].source_record_sha256,
+        "last_step_source_record_sha256": provenances[-1].source_record_sha256,
         "first_step_typed_sha256": typed_step_digest(steps[0]),
         "last_step_typed_sha256": typed_step_digest(steps[-1]),
         "normalization": (
             "diagnostic reimplementation of revision-53 Dble_trunc; "
             "not independently qualified historical compiler authority"
         ),
-        "downstream_compatibility": "BLOCKED_UNDEFINED_SICT_FOR_HLPIMP_1",
+        "normalization_authority": "DIAGNOSTIC_ONLY_NOT_B2",
+        "hydro_detailed_file_projection": "BLOCKED_UNDEFINED_SICT_FOR_HLPIMP_1",
+        "time_authority": "producer coordinate evidence only, not KT02 runtime authority",
     }
 
     text = json.dumps(metadata, indent=2) + "\n"
