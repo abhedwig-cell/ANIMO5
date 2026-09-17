@@ -1,0 +1,23 @@
+{
+  "evidence_class": "B1_DERIVED_INTERVAL_METADATA_FROM_PINNED_PRODUCER_NOT_B2",
+  "source_case": "LWKM_gras_1040.2021.2045",
+  "source_member": "input/SWATRE.UNF",
+  "source_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
+  "source_model_version": "V7.3.3.3",
+  "hlpimp": 11,
+  "first_dynamic_logical_record_index_one_based": 18,
+  "first_dynamic_group_logical_record_count": 13,
+  "first_dynamic_group_sha256": "2e5e8ff7c088ddd94f91aeb663ea10abdecfda0ac4cd418a8bf90be955389ec7",
+  "producer_endpoint_day_raw_real4": 10.0,
+  "producer_step_days_raw_real4": 10.0,
+  "interception_storage_end_raw_real4_m": 0.0,
+  "kt06_use": "time-binding and explicit-state contact only",
+  "kt06_test_payload_note": "remaining HydrologyStep fields are synthetic finite values with LWKM dimensions; full real-record payload equivalence is not claimed",
+  "nonclaims": [
+    "B2 historical executable equivalence",
+    "full first-step LWKM payload equivalence",
+    "Hydro_detailed scientific execution",
+    "general producer-to-runtime calendar mapping",
+    "production coupling"
+  ]
+}
