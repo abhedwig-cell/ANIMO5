@@ -1,7 +1,11 @@
 {
   "evidence_class": "B1_DIAGNOSTIC_ADAPTER_PROBE_NOT_B2",
   "case_id": "CranMais",
+  "source_member": "ANIMO_testbank/CranMais/Input/Swatre.unf",
   "source_sha256": "538827d517f7be4c060e2d62131e1942f8e0e76fdeae49dc0268486984cc9eaf",
+  "typed_schema_id": "ANIMO_HYDROLOGY_STEP_V1",
+  "unit_contract_id": "ANIMO_HYDROLOGY_UNITS_V1",
+  "legacy_layout_id": "ANIMO41_SWAP3_RECORD_LAYOUT_V1",
   "logical_record_count": 26313,
   "physical_block_count": 26313,
   "header_record_count": 17,
@@ -19,16 +23,18 @@
     "end_time": 365.0
   },
   "ioptte_from_initial_temperature_record": false,
-  "tiwa_first": 1.0,
-  "tiwa_last": 3287.0,
-  "all_step_days_one": true,
+  "producer_endpoint_first": 1.0,
+  "producer_endpoint_last": 3287.0,
+  "all_producer_step_days_one": true,
   "groundwater_sentinel_count": 0,
   "interception_storage_end_available_from_file": false,
   "dynamic_logical_payload_sha256": "e68c1056fa241a1daec8c78cd0279c0f0a5af1aeed2c1d63589adee4ef01808c",
   "first_step_source_record_sha256": "1edd7140084a1328430eef05dc95c8681b35e56b0985f375677322bcfd5d5bbd",
   "last_step_source_record_sha256": "04ba6658808ee5031aaa59913fa15767e302ac82269d41385eed869d0ffa2407",
-  "first_step_typed_sha256": "28580cd02dd9b658b4597f1943ec5b05b582cd0278239497fc2c1b541a9dddfe",
-  "last_step_typed_sha256": "f00e3ba17b1dd13584a42d62ffbd9cbd31fac9424bcf349fe6d7e626fa240f79",
+  "first_step_typed_sha256": "3a763737ae0fe0d082b30fdcaf6249f96cea69228fc71f8d003d0c00bf3a06cf",
+  "last_step_typed_sha256": "48eaea010ad4e82143ef562e43a4632e2200303bb56148c4411f0d5e7f13e1c0",
   "normalization": "diagnostic reimplementation of revision-53 Dble_trunc; not independently qualified historical compiler authority",
-  "downstream_compatibility": "BLOCKED_UNDEFINED_SICT_FOR_HLPIMP_1"
+  "normalization_authority": "DIAGNOSTIC_ONLY_NOT_B2",
+  "hydro_detailed_file_projection": "BLOCKED_UNDEFINED_SICT_FOR_HLPIMP_1",
+  "time_authority": "producer coordinate evidence only, not KT02 runtime authority"
 }
