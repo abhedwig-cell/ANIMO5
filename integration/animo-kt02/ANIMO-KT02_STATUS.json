@@ -1,0 +1,46 @@
+{
+  "workunit": "ANIMO-KT02",
+  "title": "Cross-Model Transient Runtime Contract Extraction & Dual-Client Proof",
+  "phase": "CLOSE",
+  "research_maturity": "QUALIFIED_NONPRODUCTION_PROTOTYPE",
+  "frozen_executable_head": "1909709e7a244b5d0ee53342a26bab74815c118c",
+  "exact_head_ci": {
+    "run_id": 35278517691,
+    "conclusion": "SUCCESS"
+  },
+  "review": {
+    "mode": "same-agent / not genuinely independent",
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "initial_verdict": "NOT_YET_QUALIFIABLE",
+    "post_remediation_verdict": "SELF_REVIEW_PASS_NONPRODUCTION_DUAL_CLIENT_PROTOTYPE_ONLY",
+    "material_open_findings": []
+  },
+  "qualification_verdict": "QUALIFIED_NONPRODUCTION_MODEL_NEUTRAL_TRANSIENT_RUNTIME_DUAL_CLIENT_PROTOTYPE_NO_PRODUCTION_LIBRARY_OR_MODEL_ADMISSION",
+  "qualified_capabilities": [
+    "opaque accepted authority",
+    "opaque trial-origin provenance",
+    "atomic accepted-payload commit or reject",
+    "stale-origin rejection",
+    "bounded retry from accepted authority",
+    "private interval execution with exact target publication",
+    "bounded exact time identity/order prototype",
+    "serialization-neutral accepted-only checkpoint/restore",
+    "worker scratch isolation",
+    "external client-owned admissibility",
+    "one shared core serving SWAP-like and ANIMO-like proof clients"
+  ],
+  "explicit_nonclaims": [
+    "production shared library",
+    "SWAP5 production migration",
+    "ANIMO5 production migration",
+    "canonical TIME admission",
+    "generic atomic transfer/event sidecar",
+    "production SWAP5-ANIMO coupling",
+    "joint timestep ownership",
+    "scientific or numerical policy",
+    "B3 or B4 mutation",
+    "Status A or Status AA"
+  ],
+  "production_src_modified": false,
+  "next_permitted_action": "SEPARATE_REAL_ANIMO_ADAPTER_WORKUNIT_USING_QUALIFIED_KT02_PROTOTYPE_AS_DESIGN_AND_NONPRODUCTION_RUNTIME_EVIDENCE"
+}
