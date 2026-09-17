@@ -29,3 +29,16 @@ The Hlpimp=1 implementation is retained as research history but is no longer exe
 The Hlpimp=11 explicit-state path does not depend on KT03F01 and remains safe nonproduction architecture evidence under frozen KT03 authority. It is not, by itself, a completed KT04 qualification or any production/B3/B4 claim.
 
 Current phase: `REVIEW`, blocked only on the Hlpimp=1 scientific dependency.
+
+## Safe parallel hardening after the governance block
+
+The Tier C block is preserved. No Hlpimp=1 execution path is re-enabled.
+
+Two explicit-state-only hardenings are applied in parallel:
+
+- the Hlpimp=11 typed-provider proof now constructs its `HydrologyStep` independently rather than copying the file-backed packet;
+- nonzero `FlMpHlp` helper fluxes fail closed because the KT03 frozen Hlpimp=11 envelope used here has no qualified macropore exchange and the V1 typed packet does not own that contract.
+
+KT03F01 now also has a persisted independent-review handoff at `1d5bb2a5fb0f6e7bc866dc2e92c815046fcfbbc8`. That handoff does not change the blocked scientific status.
+
+These changes strengthen only the nonproduction explicit-state evidence. KT04 remains blocked from closeout on Hlpimp=1.

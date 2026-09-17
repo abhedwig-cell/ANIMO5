@@ -9,6 +9,8 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 from prototype.kt03.hydrology_step import (  # noqa: E402
+    SCHEMA_ID,
+    UNIT_CONTRACT_ID,
     HydrologyAdapterError,
     HydrologyStep,
     legacy_step_provenance,
@@ -65,6 +67,42 @@ def records_h11() -> list[bytes]:
     ]
 
 
+def independent_h11_step() -> HydrologyStep:
+    return HydrologyStep(
+        schema_id=SCHEMA_ID,
+        unit_contract_id=UNIT_CONTRACT_ID,
+        layer_count=1,
+        drainage_count=0,
+        producer_endpoint_day=1.0,
+        producer_step_days=1.0,
+        prr=0.001,
+        prsn=0.0,
+        prirr=0.0,
+        evicpr=0.0002,
+        evicirr=0.0,
+        evsn=0.0,
+        evso=0.0007,
+        evpn=0.0,
+        evsoma=0.0,
+        evtrma=0.0,
+        runon=0.0,
+        runoff=0.0,
+        groundwater_level=1.0,
+        ponding_end=0.0,
+        snow_storage_end=0.0,
+        water_balance_aeration=0.0,
+        sc=(0.1,),
+        mofrt=(0.25,),
+        flev=(0.0001,),
+        flab=(0.0002, 0.0003),
+        fldr=(),
+        has_interception_storage_end=True,
+        interception_storage_end=0.0002,
+        has_soil_temperature=False,
+        soil_temperature=(),
+    )
+
+
 def expect_error(fragment: str, fn) -> None:
     try:
         fn()
@@ -104,8 +142,11 @@ def main() -> int:
     assert authority_from_legacy_provenance(h11_step, h11_prov) == EXPLICIT_INTERCEPTION_AUTHORITY
 
     file_projection = project_legacy_step(h11_step, h11_prov)
+    independent_step = independent_h11_step()
+    independent_step.validate()
+    assert independent_step == h11_step
     typed_projection = project_typed_step(
-        HydrologyStep(**h11_step.__dict__),
+        independent_step,
         authority=EXPLICIT_INTERCEPTION_AUTHORITY,
     )
     assert file_projection == typed_projection
@@ -175,6 +216,14 @@ def main() -> int:
     expect_error(
         "runoff split closure mismatch",
         lambda: evaluate_swap3_top_boundary(file_projection, bad_runoff_context),
+    )
+
+    macropore_context = TopBoundaryContext(
+        **{**context.__dict__, "flmp_hlp1": 1.0e-6}
+    )
+    expect_error(
+        "does not qualify nonzero macropore helper fluxes",
+        lambda: evaluate_swap3_top_boundary(file_projection, macropore_context),
     )
 
     print("KT04 hydrology projection tests: PASS")

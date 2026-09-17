@@ -181,6 +181,10 @@ class TopBoundaryContext:
             if value is None:
                 continue
             _validate_numeric_value(value, f"context.{name}")
+        if self.flmp_hlp0 != 0.0 or self.flmp_hlp1 != 0.0:
+            raise HydrologyAdapterError(
+                "KT04 does not qualify nonzero macropore helper fluxes"
+            )
 
 
 @dataclass(frozen=True)
