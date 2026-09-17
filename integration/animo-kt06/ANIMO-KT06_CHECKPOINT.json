@@ -1,8 +1,8 @@
 {
   "workunit": "ANIMO-KT06",
   "title": "Explicit Hydrology Runtime Interval Binding",
-  "phase": "QUALIFY",
-  "checkpoint_state": "SELF_REVIEW_FINDINGS_REMEDIATED_EXACT_HEAD_CI_PENDING",
+  "phase": "REVIEW",
+  "checkpoint_state": "SELF_REVIEW_PASS_INDEPENDENT_TIER_C_REVIEW_REQUIRED",
   "branch": "work/animo-kt06-explicit-hydrology-runtime-binding",
   "base_head": "3319e57adbf6036a86684f8e26d9559454c07b82",
   "consumed_kt02_authority": "ANIMO-KT02@1f88db4dc87fc4d93075884ac35a59711f0725bf",
@@ -12,38 +12,49 @@
   "consumed_kt05_frozen_implementation": "69dd607ba1efa28de3f83cc963526021352b3311",
   "consumes_kt03f01_as_qualified_authority": false,
   "candidate_risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS",
-  "reviewed_head": "7b15faa65355d1f12eeb6f737c24f962319af1e5",
-  "reviewed_head_ci": {
-    "run_id": 35286434233,
-    "conclusion": "SUCCESS"
+  "frozen_review_target_head": "fc818917a46408d55cd7f03e2fa8257534683907",
+  "exact_head_ci": {
+    "run_id": 35286651951,
+    "conclusion": "SUCCESS",
+    "checks": [
+      "frozen KT02 qualification tests",
+      "frozen KT03 adapter tests",
+      "frozen KT05 compiled adapter tests",
+      "KT06 derived LWKM fixture parity",
+      "compiled KT06 runtime-binding tests",
+      "checkpoint and evidence JSON validation"
+    ]
   },
   "review": {
     "mode": "same-agent / not genuinely independent",
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "findings": [
+    "verdict": "PASS_REMEDIATED_BOUNDED_KT05_TO_KT02_RUNTIME_BINDING_CANDIDATE",
+    "independent_review_status": "REQUIRED_READY_NOT_YET_PERFORMED",
+    "material_findings_remediated": [
       "KT06-R1 probe client naming insufficiently distinguished binding proof from scientific client",
       "KT06-R2 derived producer fixture and compiled test constants could drift independently"
     ],
-    "remediation_status": "APPLIED_CI_PENDING"
+    "open_material_findings": []
   },
   "production_src_modified": false,
   "kt02_runtime_core_modified": false,
   "kt05_adapter_modified": false,
-  "implemented_capabilities": [
+  "qualified_capability_candidate": [
     "complete KT05 explicit HydrologyStep validated before runtime attempt",
-    "KT05 Hydro_detailed external projection exercised before candidate publication",
+    "KT05 Hydro_detailed external projection exercised before probe candidate publication",
     "hydrology forcing held outside accepted continuation state",
     "runtime calendar contract pinned in coupling composition",
-    "exact whole-day runtime-to-producer interval binding",
+    "exact whole-day runtime-to-producer interval relation with explicit nonnegative offset",
     "KT02 runtime remains accepted-time and publication authority",
-    "producer endpoint duration and nonzero offset paths machine tested",
-    "missing explicit interception state fails closed through KT05",
+    "producer endpoint duration schema and explicit-state mismatches fail closed",
     "fractional producer metadata and subday runtime mapping fail closed",
     "single stale forcing cannot leak a partially completed multi-step interval",
-    "derived LWKM interval fixture parity is machine checked"
+    "LWKM first-interval derived metadata and compiled fixture are machine-checked for parity"
   ],
-  "verdict": "REMEDIATED_NONPRODUCTION_KT05_TO_KT02_RUNTIME_BINDING_CANDIDATE_AWAITING_EXACT_HEAD_CI_AND_FINAL_SAME_AGENT_REVIEW",
-  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_FINAL_SAME_AGENT_ADVERSARIAL_REVIEW_AND_PREPARE_GENUINELY_INDEPENDENT_TIER_C_HANDOFF",
+  "qualification_status": "NOT_YET_QUALIFIED_UNDER_GOV04_TIER_C",
+  "admission_status": "NOT_ADMITTED",
+  "next_permitted_action": "GENUINELY_INDEPENDENT_TIER_C_SECOND_LINE_REVIEW_THEN_FORMAL_DISPOSITION_OR_REOPEN",
+  "safe_parallel_action": "CONTINUE_NON_SEMANTIC_TOOLING_OR_SEPARATE_RESEARCH_THAT_DOES_NOT_CONSUME_KT06_AS_QUALIFIED_AUTHORITY",
   "explicit_exclusions": [
     "Hlpimp=1 semantics",
     "Hlpimp=2 semantics",
