@@ -1,0 +1,21 @@
+name: ANIMO KT02 cross-model transient runtime
+
+on:
+  push:
+    branches:
+      - 'work/animo-kt02-*'
+    paths:
+      - 'prototype/kt02/**'
+      - 'tests/kt02/**'
+      - '.github/workflows/animo-kt02-cross-model-runtime.yml'
+  workflow_dispatch:
+
+jobs:
+  qualify-prototype:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install gfortran
+        run: sudo apt-get update && sudo apt-get install -y gfortran
+      - name: Run KT02 dual-client qualification tests
+        run: bash tests/kt02/run_kt02_tests.sh
