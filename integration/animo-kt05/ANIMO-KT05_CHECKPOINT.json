@@ -1,8 +1,8 @@
 {
   "workunit": "ANIMO-KT05",
   "title": "Explicit-State HydrologyStep to ANIMO Hydrology Call-Boundary Adapter",
-  "phase": "IMPLEMENT",
-  "checkpoint_state": "COMPILED_FORTRAN_EXPLICIT_ADAPTER_IMPLEMENTED_CI_PENDING",
+  "phase": "REVIEW",
+  "checkpoint_state": "ADVERSARIAL_REVIEW_COMPLETE_REMEDIATION_REQUIRED",
   "branch": "work/animo-kt05-explicit-hydrology-animo-adapter",
   "base_head": "c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
   "consumed_kt03_contract_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
@@ -23,8 +23,8 @@
     "legacy file provenance excluded from Fortran physical carrier"
   ],
   "local_precommit_test": "gfortran 14.2.0 strict compile and test PASS",
-  "verdict": "IMPLEMENTED_NONPRODUCTION_EXPLICIT_FORTRAN_ADAPTER_AWAITING_EXACT_HEAD_CI_AND_REVIEW",
-  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_ADVERSARIAL_REVIEW",
+  "verdict": "REMEDIATION_REQUIRED_BEFORE_KT05_QUALIFICATION",
+  "next_permitted_action": "REMEDIATE_R1_R2_R3_AND_R4_THEN_RUN_NEW_EXACT_HEAD_CI_AND_POST_REMEDIATION_REVIEW",
   "explicit_exclusions": [
     "Hlpimp=1 semantics",
     "Hlpimp=2 semantics",
@@ -37,5 +37,24 @@
     "B2 historical equivalence",
     "B3 or B4 admission",
     "Status A or Status AA"
-  ]
+  ],
+  "exact_head_ci": {
+    "run_id": 35285228675,
+    "conclusion": "SUCCESS",
+    "head": "bcef06df5a7c07052e251f8adf8a4761edf67d44"
+  },
+  "review": {
+    "mode": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "reviewed_head": "bcef06df5a7c07052e251f8adf8a4761edf67d44",
+    "verdict": "NOT_YET_QUALIFIABLE_AS_FROZEN_COMPILED_EXPLICIT_HYDROLOGY_ADAPTER",
+    "material_findings": [
+      "KT05-R1",
+      "KT05-R2",
+      "KT05-R3"
+    ],
+    "low_findings": [
+      "KT05-R4"
+    ],
+    "artifact": "docs/kt05/ADVERSARIAL_REVIEW.md"
+  }
 }
