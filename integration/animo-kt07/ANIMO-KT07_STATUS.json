@@ -1,0 +1,15 @@
+{
+  "workunit": "ANIMO-KT07",
+  "status": "CLOSED",
+  "evidence_class": "B1_DERIVED_FROM_PINNED_B0_PRODUCER_NOT_B2",
+  "frozen_qualified_head": "2d469e0a00071b73207112222199eef82c96a961",
+  "exact_head_ci_run": 35288769233,
+  "exact_head_ci_conclusion": "SUCCESS",
+  "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "open_material_findings": [],
+  "verdict": "QUALIFIED_B1_DERIVED_FULL_LWKM_EXPLICIT_HYDROLOGY_PACKET_FIXTURE_AND_COMPILED_KT05_PROJECTION_NO_B2_OR_RUNTIME_OR_SCIENTIFIC_EQUIVALENCE",
+  "runtime_authority_changed": false,
+  "scientific_semantics_changed": false,
+  "production_source_changed": false,
+  "kt06_qualification_effect": "NONE_KT06_STILL_REQUIRES_GENUINELY_INDEPENDENT_TIER_C_REVIEW"
+}

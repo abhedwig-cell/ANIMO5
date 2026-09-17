@@ -1,10 +1,11 @@
 {
   "workunit": "ANIMO-KT07",
   "title": "LWKM Full Explicit Hydrology Packet Derived Fixture",
-  "phase": "QUALIFY",
-  "checkpoint_state": "FIRST_GREEN_HEAD_REVIEWED_DIGEST_PIN_REMEDIATION_AUTHORED_CI_PENDING",
+  "phase": "CLOSE",
+  "checkpoint_state": "QUALIFIED_B1_FULL_LWKM_PACKET_FIXTURE_CLOSED",
   "branch": "work/animo-kt07-lwkm-real-packet-fixture",
   "base_authority": "ANIMO-KT05@3319e57adbf6036a86684f8e26d9559454c07b82",
+  "frozen_qualified_head": "2d469e0a00071b73207112222199eef82c96a961",
   "consumed_kt03_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
   "consumed_kt03_parser_blob": "5a71f88a3949b15d0257bd69f2b44ab9da3a1a87",
   "consumed_powerstation_parser_blob": "d6ada17f40434137fdaa7b6d5b3c6be4e8370f7a",
@@ -14,37 +15,48 @@
   "source_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
   "dynamic_group_sha256": "2e5e8ff7c088ddd94f91aeb663ea10abdecfda0ac4cd418a8bf90be955389ec7",
   "typed_step_digest_sha256": "eeeb862839cce8111535fae86220d8574240804b9f6f029f7ec8e07ceb65da1c",
-  "first_green_head": "90f1c9ba240da681033b6392d0843ddb131b6ef3",
-  "first_green_exact_head_ci": {
-    "run_id": 35288669987,
-    "conclusion": "SUCCESS"
-  },
-  "review": {
-    "mode": "same-agent / not genuinely independent",
-    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "finding": "KT07-R1 typed-step digest was mutable with fixture and therefore self-referential",
-    "remediation": "pin exact typed-step digest independently in integrity test and raw-source materializer",
-    "remediation_status": "APPLIED_CI_PENDING"
-  },
   "production_src_modified": false,
   "kt03_adapter_modified": false,
   "kt05_adapter_modified": false,
-  "implemented_capabilities": [
-    "complete first LWKM explicit HydrologyStep persisted as B1 derived fixture",
-    "source file and first dynamic logical-record group provenance pinned",
-    "typed-step digest independently pinned outside fixture payload",
-    "fixture integrity validator",
+  "exact_head_ci": {
+    "run_id": 35288769233,
+    "head": "2d469e0a00071b73207112222199eef82c96a961",
+    "conclusion": "SUCCESS"
+  },
+  "historical_ci": {
+    "initial_run_id": 35288616990,
+    "initial_conclusion": "FAILURE",
+    "initial_failure_classification": "TOOLING_VALIDATOR_FAILURE",
+    "first_green_head": "90f1c9ba240da681033b6392d0843ddb131b6ef3",
+    "first_green_run_id": 35288669987,
+    "first_green_conclusion": "SUCCESS"
+  },
+  "review": {
+    "mode": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "findings": ["KT07-R1"],
+    "closed_findings": ["KT07-R1"],
+    "open_material_findings": [],
+    "final_verdict": "SELF_REVIEW_PASS_B1_EVIDENCE_TOOLING_ONLY",
+    "independent_scientific_review_required": false
+  },
+  "qualified_capabilities": [
+    "complete first LWKM Hlpimp=11 normalized HydrologyStep persisted as B1 derived fixture",
+    "raw source file dynamic group and normalized typed-step identities independently pinned",
+    "fixture schema dimension explicit-interception temperature and shape validation",
     "fail-closed raw-source rematerializer",
-    "fixture-to-Fortran generator",
-    "compiled KT05 validation and projection test using all derived packet fields",
-    "compiled legacy slice mapping with index-zero preservation"
+    "deterministic fixture-to-Fortran generator",
+    "frozen KT05 validation of the complete derived packet",
+    "frozen KT05 Hydro_detailed external projection of the complete derived packet",
+    "exact preservation of projected fixture values",
+    "legacy producer-slice mapping with ANIMO-owned index-zero preservation"
   ],
-  "verdict": "REMEDIATED_B1_REAL_PACKET_FIXTURE_AND_COMPILED_PROJECTION_PROOF_AWAITING_EXACT_HEAD_CI_AND_FINAL_SAME_AGENT_REVIEW",
-  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_FINAL_SAME_AGENT_REVIEW_AND_CLOSE_IF_NO_MATERIAL_FINDINGS",
+  "verdict": "QUALIFIED_B1_DERIVED_FULL_LWKM_EXPLICIT_HYDROLOGY_PACKET_FIXTURE_AND_COMPILED_KT05_PROJECTION_NO_B2_OR_RUNTIME_OR_SCIENTIFIC_EQUIVALENCE",
+  "next_permitted_action": "REUSE_KT07_AS_PINNED_B1_PACKET_EVIDENCE_WHERE_SCOPE_MATCHES; KT06_RUNTIME_LANE_REMAINS_BLOCKED_ON_GENUINELY_INDEPENDENT_TIER_C_REVIEW",
   "explicit_exclusions": [
     "B2 historical compiler equivalence",
     "Hlpimp=1 semantics",
-    "Hydro_detailed scientific execution",
+    "Hlpimp=2 semantics",
+    "Hydro_detailed scientific execution or numerical equivalence",
     "ANIMO scientific admissibility",
     "KT02 or KT06 runtime integration",
     "SWAP5 in-memory producer",
