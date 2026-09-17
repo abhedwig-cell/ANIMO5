@@ -1,0 +1,30 @@
+{
+  "workunit": "ANIMO-KT05",
+  "title": "Explicit-State HydrologyStep to ANIMO Hydrology Call-Boundary Adapter",
+  "phase": "RECONCILE",
+  "checkpoint_state": "RECONCILED_READY_TO_IMPLEMENT",
+  "branch": "work/animo-kt05-explicit-hydrology-animo-adapter",
+  "base_head": "c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
+  "consumed_kt03_contract_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
+  "hydrology_schema": "ANIMO_HYDROLOGY_STEP_V1",
+  "unit_contract": "ANIMO_HYDROLOGY_UNITS_V1",
+  "hydro_detailed_source_sha256": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
+  "parallelism_class": "PARALLEL_AFTER_PINNING",
+  "scientific_dependency": "EXPLICIT_INTERCEPTION_STATE_ONLY",
+  "kt03f01_dependency": false,
+  "production_src_modified": false,
+  "kt02_runtime_modified": false,
+  "verdict": "RECONCILED_READY_FOR_COMPILED_FORTRAN_ADAPTER_IMPLEMENTATION",
+  "next_permitted_action": "IMPLEMENT_FORTRAN_TYPED_STEP_AND_EXPLICIT_HYDRO_DETAILED_EXTERNAL_PROJECTION",
+  "explicit_exclusions": [
+    "Hlpimp=1 semantics",
+    "Hlpimp=2 semantics",
+    "Hydro_detailed scientific rewrite",
+    "Modflux migration",
+    "KT02 runtime integration",
+    "production source admission",
+    "B2 historical equivalence",
+    "B3 or B4 admission",
+    "Status A or Status AA"
+  ]
+}
