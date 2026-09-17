@@ -1,72 +1,30 @@
 {
-  "workunit": "ANIMO-KT05",
-  "title": "Explicit-State Hydrology Runtime Interval Binding",
-  "phase": "REVIEW",
-  "checkpoint_state": "SELF_REVIEW_PASS_INDEPENDENT_TIER_C_REVIEW_REQUIRED",
+  "workunit": "ANIMO-KT05-EXPERIMENTAL-RUNTIME-BINDING",
+  "original_title": "Explicit-State Hydrology Runtime Interval Binding",
+  "phase": "SUPERSEDED",
+  "checkpoint_state": "SUPERSEDED_BY_CANONICAL_KT05_COMPILED_ADAPTER_AND_KT06_RUNTIME_BINDING",
   "branch": "work/animo-kt05-explicit-state-runtime-adapter",
-  "base_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
-  "consumed_kt02_authority": "ANIMO-KT02@1f88db4dc87fc4d93075884ac35a59711f0725bf",
-  "consumed_kt02_frozen_executable": "1909709e7a244b5d0ee53342a26bab74815c118c",
-  "consumed_kt03_contract_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
-  "consumes_kt03f01_as_qualified_authority": false,
-  "candidate_risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS",
-  "reviewed_head": "c67c28f0475c42351c1a66f58d4d44ce8b584ee5",
-  "exact_head_ci": {
-    "run_id": 35285939129,
-    "conclusion": "SUCCESS",
-    "checks": [
-      "frozen KT02 qualification tests",
-      "frozen KT03 adapter tests",
-      "KT05 explicit-state runtime adapter tests",
-      "checkpoint JSON validation",
-      "LWKM derived fixture JSON validation"
-    ]
-  },
-  "review": {
-    "mode": "same-agent / not genuinely independent",
-    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "verdict": "PASS_REMEDIATED_BOUNDED_RUNTIME_BINDING_CANDIDATE",
-    "independent_review_status": "REQUIRED_READY_NOT_YET_PERFORMED",
-    "material_findings_remediated": [
-      "partial interval view incorrectly shared full HydrologyStep schema identity",
-      "producer-day offset was not pinned to a runtime calendar contract",
-      "first proof used only synthetic producer-time metadata",
-      "single-forcing multi-step nonpublication required explicit coverage"
-    ],
-    "remaining_bounded_limitations": [
-      "semantic authority strings are contract pins not producer authentication",
-      "public runtime failure reason does not expose detailed client binding reason",
-      "one forcing binding at a time; no multi-packet forcing provider",
-      "synthetic accepted ANIMO state token rather than real scientific continuation state",
-      "no scientific admissibility calculation"
-    ]
-  },
-  "production_src_modified": false,
-  "kt02_runtime_core_modified": false,
-  "qualified_capability_candidate": [
-    "distinct KT05 explicit interval-binding projection from frozen KT03 contract",
-    "explicit-state forcing remains outside accepted continuation state",
-    "runtime calendar contract and whole-day offset are explicit composition inputs",
-    "KT02 runtime remains accepted-time and publication authority",
-    "exact producer endpoint and duration agreement fail closed",
-    "fractional producer metadata and subday runtime mapping fail closed",
-    "pinned LWKM first interval provides B1 real-producer contact",
-    "partial multi-step working commit does not publish on later forcing mismatch"
+  "historical_head_before_supersession": "9cc2609188309804fd9d9190bf6cc0b35fca589f",
+  "authority_status": "NO_PROGRAMME_AUTHORITY_NUMBERING_COLLISION",
+  "canonical_kt05_closeout": "3319e57adbf6036a86684f8e26d9559454c07b82",
+  "canonical_kt05_frozen_implementation": "69dd607ba1efa28de3f83cc963526021352b3311",
+  "canonical_kt06_branch": "work/animo-kt06-explicit-hydrology-runtime-binding",
+  "useful_findings_transferred_to_kt06": [
+    "forcing remains outside accepted continuation state",
+    "runtime remains authoritative for time and publication",
+    "calendar identity and producer day offset must be explicit",
+    "fractional and subday mappings fail closed in the first bounded proof",
+    "stale single forcing must not leak a private partial interval"
   ],
-  "qualification_status": "NOT_YET_QUALIFIED_UNDER_GOV04_TIER_C",
-  "admission_status": "NOT_ADMITTED",
-  "next_permitted_action": "GENUINELY_INDEPENDENT_TIER_C_SECOND_LINE_REVIEW_THEN_FORMAL_DISPOSITION_OR_REOPEN",
-  "safe_parallel_action": "CONTINUE_NON_SEMANTIC_TOOLING_OR_SEPARATE_EXPLICIT_STATE_RESEARCH_THAT_DOES_NOT_CONSUME_KT05_AS_QUALIFIED_AUTHORITY",
-  "explicit_exclusions": [
-    "Hlpimp=1 semantics",
-    "Hlpimp=2 semantics",
-    "full HydrologyStep field transport",
-    "Hydro_detailed scientific execution",
-    "ANIMO scientific admissibility",
-    "Modflux or solute transport",
-    "retry or timestep selection policy",
-    "subday or fractional producer-time mapping",
-    "production migration",
+  "production_src_modified": false,
+  "admission_status": "NOT_APPLICABLE_SUPERSEDED_EXPERIMENT",
+  "independent_review_status": "DO_NOT_REVIEW_AS_KT05",
+  "next_permitted_action": "NO_FURTHER_MUTATION_EXCEPT_PROVENANCE_CORRECTION; CONTINUE_RUNTIME_BINDING_ON_CANONICAL_KT06",
+  "explicit_nonclaims": [
+    "canonical KT05 authority",
+    "canonical KT06 authority",
+    "production runtime binding",
+    "Tier C qualification",
     "B3 or B4 admission",
     "Status A or Status AA"
   ]
