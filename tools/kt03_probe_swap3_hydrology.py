@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT))
 
 from prototype.kt03.hydrology_step import (  # noqa: E402
     HydrologyAdapterError,
+    legacy_step_provenance,
     parse_dynamic_step,
     parse_swap3_static,
     typed_step_digest,
@@ -83,14 +84,20 @@ def main() -> int:
         )
         for index in range(timestep_count)
     ]
+    provenances = [
+        legacy_step_provenance(records, index, static)
+        for index in range(timestep_count)
+    ]
 
     chain_mismatches = []
-    previous_endpoint = decimal_value(steps[0].tiwa) - decimal_value(
-        steps[0].step_days
+    previous_endpoint = decimal_value(steps[0].producer_endpoint_day) - decimal_value(
+        steps[0].producer_step_days
     )
     interval_origin = previous_endpoint
     for index, step in enumerate(steps):
-        origin = decimal_value(step.tiwa) - decimal_value(step.step_days)
+        origin = decimal_value(step.producer_endpoint_day) - decimal_value(
+            step.producer_step_days
+        )
         if origin != previous_endpoint:
             chain_mismatches.append(
                 {
@@ -99,7 +106,7 @@ def main() -> int:
                     "observed_origin": str(origin),
                 }
             )
-        previous_endpoint = decimal_value(step.tiwa)
+        previous_endpoint = decimal_value(step.producer_endpoint_day)
 
     projection_complete_count = 0
     for step in steps:
@@ -134,9 +141,11 @@ def main() -> int:
         },
         "ioptte_from_initial_temperature_record": static["ioptte"],
         "producer_interval_origin": float(interval_origin),
-        "tiwa_first": steps[0].tiwa,
-        "tiwa_last": steps[-1].tiwa,
-        "step_days_values": sorted({step.step_days for step in steps}),
+        "producer_endpoint_first": steps[0].producer_endpoint_day,
+        "producer_endpoint_last": steps[-1].producer_endpoint_day,
+        "producer_step_days_values": sorted(
+            {step.producer_step_days for step in steps}
+        ),
         "producer_endpoint_duration_chain_exact_decimal": len(chain_mismatches) == 0,
         "producer_endpoint_duration_chain_mismatches": chain_mismatches[:20],
         "groundwater_sentinel_count": sentinel_count,
@@ -145,8 +154,8 @@ def main() -> int:
         ),
         "hydro_detailed_file_projection_complete_count": projection_complete_count,
         "dynamic_logical_payload_sha256": hashlib.sha256(dynamic_payload).hexdigest(),
-        "first_step_source_record_sha256": steps[0].source_record_sha256,
-        "last_step_source_record_sha256": steps[-1].source_record_sha256,
+        "first_step_source_record_sha256": provenances[0].source_record_sha256,
+        "last_step_source_record_sha256": provenances[-1].source_record_sha256,
         "first_step_typed_sha256": typed_step_digest(steps[0]),
         "last_step_typed_sha256": typed_step_digest(steps[-1]),
         "normalization": (
@@ -157,6 +166,10 @@ def main() -> int:
         "projection_claim": (
             "structural completeness of the file-derived Hydro_detailed argument subset; "
             "not scientific equivalence of Hydro_detailed execution"
+        ),
+        "time_authority": (
+            "producer coordinate evidence only; a future KT02 runtime adapter must "
+            "validate this against the authoritative runtime interval"
         ),
     }
 
