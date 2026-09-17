@@ -31,7 +31,9 @@ program test_kt06_explicit_hydrology_runtime_binding
   call assert_true(ok, 't10half construction')
 
   call test_full_kt05_forcing_commits(t0, t10)
+  call test_nonzero_offset_binding_commits(t0, t10)
   call test_endpoint_mismatch_fails_closed(t0, t10)
+  call test_step_mismatch_fails_closed(t0, t10)
   call test_missing_explicit_state_fails_closed(t0, t10)
   call test_schema_mismatch_fails_closed(t0, t10)
   call test_fractional_producer_metadata_fails_closed(t0, t10)
@@ -154,6 +156,51 @@ contains
     call assert_store_time(store, t_end, 'explicit exact runtime target')
     call assert_state_token(store, 7_int64, 'forcing not accepted state')
   end subroutine test_full_kt05_forcing_commits
+
+  subroutine test_nonzero_offset_binding_commits(t_start, t_end)
+    type(TimeCoordinate), intent(in) :: t_start, t_end
+    type(accepted_store_t) :: store
+    type(animo_explicit_hydrology_runtime_client_t) :: client
+    logical :: ok, success
+    character(len=64) :: reason
+
+    call initialize_probe_store( &
+      store, 'ANIMO_KT06_OFFSET', t_start, 9_int64, ok)
+    call assert_true(ok, 'offset store initialize')
+    call configure_valid_client(client)
+    client%producer_day_offset = 1000_int64
+    client%forcing%producer_endpoint_day = 1010.0_real64
+    call run_one(store, client, t_end, success, reason)
+
+    call assert_true(success, 'nonzero offset interval success')
+    call assert_true( &
+      accepted_store_generation(store) == 1_int64, &
+      'nonzero offset generation')
+    call assert_store_time(store, t_end, 'nonzero offset runtime target')
+    call assert_state_token(store, 9_int64, 'nonzero offset payload unchanged')
+  end subroutine test_nonzero_offset_binding_commits
+
+  subroutine test_step_mismatch_fails_closed(t_start, t_end)
+    type(TimeCoordinate), intent(in) :: t_start, t_end
+    type(accepted_store_t) :: store
+    type(animo_explicit_hydrology_runtime_client_t) :: client
+    logical :: ok, success
+    character(len=64) :: reason
+
+    call initialize_probe_store( &
+      store, 'ANIMO_KT06_STEP', t_start, 10_int64, ok)
+    call assert_true(ok, 'step store initialize')
+    call configure_valid_client(client)
+    client%forcing%producer_step_days = 9.0_real64
+    call run_one(store, client, t_end, success, reason)
+
+    call assert_true(.not. success, 'step mismatch rejected')
+    call assert_true( &
+      accepted_store_generation(store) == 0_int64, &
+      'step generation unchanged')
+    call assert_store_time(store, t_start, 'step time unchanged')
+    call assert_state_token(store, 10_int64, 'step payload unchanged')
+  end subroutine test_step_mismatch_fails_closed
 
   subroutine test_endpoint_mismatch_fails_closed(t_start, t_end)
     type(TimeCoordinate), intent(in) :: t_start, t_end
