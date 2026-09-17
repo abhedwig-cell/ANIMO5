@@ -1,0 +1,53 @@
+{
+  "workunit": "ANIMO-KT03F01",
+  "title": "Hlpimp=1 Interception-State Scientific Source Disposition",
+  "phase": "QUALIFY",
+  "checkpoint_state": "SOURCE_CAUSAL_CHAIN_AND_B1_BALANCE_EVIDENCE_COMPLETE_REVIEW_PENDING",
+  "branch": "work/animo-kt03f01-hlpimp1-interception-disposition",
+  "base_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
+  "consumed_contract_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
+  "consumed_kt03_ci_run": 35282911835,
+  "parallelism_class": "PARALLEL_AFTER_PINNING",
+  "research_maturity": "RESEARCH_ISOLATED",
+  "evidence_class": "B1_DIAGNOSTIC_ADAPTER_PROBE_NOT_B2",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "user_guide_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+  "testbank_archive_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "adjacent_authority": "ANIMO-B3D06@11286faafcc59717196ed045d96c9d215c74abeb",
+  "scientific_finding": {
+    "id": "KT03-F01",
+    "source_classification_candidate": "HLPIMP1_UNDEFINED_INTERCEPTION_LOCAL_STATE_WITH_TRANSPORT_FACING_CONSEQUENCE",
+    "causal_chain": "undefined Sic/Sict -> Hydro_detailed Dif -> Evso -> Flab(1) -> Modflux / transport-facing water fluxes",
+    "not_accounting_only": true
+  },
+  "candidate_disposition": "HLPIMP1_INTERCEPTION_STORAGE_NOT_PART_OF_PRODUCER_STATE_CONTRACT",
+  "candidate_corrected_semantics": {
+    "Hlpimp_1": "no Sic/Sict producer state; omit interception-storage delta from Hlpimp=1 Dif and Badev identities",
+    "Hlpimp_11": "retain explicit Sic/Sict lifecycle and delta terms"
+  },
+  "real_file_evidence": {
+    "CranMais_Hlpimp1_mean_abs_residual_m": 4.811997487226038e-08,
+    "CranGrass_Hlpimp1_mean_abs_residual_m": 5.608864197313284e-08,
+    "GrassPeat_Hlpimp1_mean_abs_residual_m": 3.578654307891734e-08,
+    "STONE_Hlpimp1_mean_abs_residual_m": 4.7870711988720724e-08,
+    "LWKM_Hlpimp11_mean_abs_without_interception_m": 4.1237061617347114e-05,
+    "LWKM_Hlpimp11_mean_abs_with_interception_m": 2.2836250429086013e-06,
+    "LWKM_improvement_factor": 18.057720003291088
+  },
+  "production_src_modified": false,
+  "canonical_tcd_register_modified": false,
+  "tests_executed": [
+    "local frozen-testbank whole-profile balance probe across CranMais, CranGrass, GrassPeat, STONE and LWKM"
+  ],
+  "review_status": "PENDING_MANDATORY_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "verdict": "CANDIDATE_POSITIVE_SOURCE_DISPOSITION_NOT_YET_QUALIFIED",
+  "next_permitted_action": "PERSIST_AUTHORING_HEAD_RUN_EXACT_HEAD_CI_THEN_ADVERSARIAL_REVIEW",
+  "explicit_exclusions": [
+    "historical uninitialized Sic/Sict value reconstruction",
+    "production source patch",
+    "canonical TCD ID allocation",
+    "B3 or B4 admission",
+    "KT03 normalized payload mutation",
+    "Status A or Status AA claims"
+  ]
+}

@@ -1,0 +1,26 @@
+name: ANIMO KT03-F01 interception disposition
+
+on:
+  push:
+    branches:
+      - work/animo-kt03f01-hlpimp1-interception-disposition
+    paths:
+      - 'tools/kt03f01/**'
+      - 'tests/kt03f01/**'
+      - 'docs/kt03f01/**'
+      - 'reference/kt03f01/**'
+      - 'integration/animo-kt03f01/**'
+      - '.github/workflows/animo-kt03f01-interception-disposition.yml'
+  workflow_dispatch:
+
+jobs:
+  bounded-diagnostic-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run KT03-F01 synthetic qualification tests
+        run: python3 tests/kt03f01/test_interception_balance_probe.py
+      - name: Validate checkpoint JSON
+        run: python3 -m json.tool integration/animo-kt03f01/ANIMO-KT03F01_CHECKPOINT.json >/dev/null
+      - name: Validate derived evidence JSON
+        run: python3 -m json.tool reference/kt03f01/HLPIMP_INTERCEPTION_BALANCE_PROBE.json >/dev/null
