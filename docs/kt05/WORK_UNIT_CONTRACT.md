@@ -73,3 +73,8 @@ KT05 must establish:
 ## Exclusions
 
 No Hlpimp=1 or Hlpimp=2 semantic claim, no production source change, no full `Hydro_detailed` execution equivalence, no B2 historical compiler claim, no KT02 runtime integration yet, no SWAP5 production coupling, no B3/B4 admission and no Status A/AA claim.
+
+
+## Array-index boundary
+
+The normalized producer arrays map only to the legacy index-1-and-up slices. Exact mapping and index-zero ownership are qualified in `docs/kt05/EXTERNAL_SLICE_INDEXING.md`. KT05 must preserve legacy index zero as caller/ANIMO-owned state and may not shift producer data into it.

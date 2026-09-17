@@ -13,6 +13,8 @@ module mod_animo_hydrology_adapter
   integer, parameter, public :: KT05_ERR_DIMENSIONS = 3
   integer, parameter, public :: KT05_ERR_NONFINITE = 4
   integer, parameter, public :: KT05_ERR_EXPLICIT_INTERCEPTION = 5
+  integer, parameter, public :: KT05_ERR_TIME = 6
+  integer, parameter, public :: KT05_ERR_TARGET_SHAPE = 7
 
   type, public :: hydrology_step_t
     character(len=32) :: schema_id = ''
@@ -75,6 +77,7 @@ module mod_animo_hydrology_adapter
 
   public :: validate_hydrology_step_explicit
   public :: project_hydro_detailed_explicit
+  public :: apply_projection_to_legacy_slices
 
 contains
 
@@ -143,7 +146,7 @@ contains
       return
     end if
     if (step%producer_step_days <= 0.0_real64) then
-      status = KT05_ERR_DIMENSIONS
+      status = KT05_ERR_TIME
     end if
   end subroutine validate_hydrology_step_explicit
 
@@ -196,5 +199,46 @@ contains
     projection%snt = step%snow_storage_end
     projection%st = step%producer_step_days
   end subroutine project_hydro_detailed_explicit
+
+  subroutine apply_projection_to_legacy_slices(projection, mofrt, flev, flab, fldr, status)
+    type(hydro_detailed_external_t), intent(in) :: projection
+    real(real64), intent(inout) :: mofrt(0:)
+    real(real64), intent(inout) :: flev(0:)
+    real(real64), intent(inout) :: flab(0:)
+    real(real64), intent(inout) :: fldr(:,0:)
+    integer, intent(out) :: status
+    integer :: nl, nudr
+
+    status = KT05_OK
+    nl = projection%layer_count
+    nudr = projection%drainage_count
+    if (nl <= 0 .or. nudr < 0) then
+      status = KT05_ERR_TARGET_SHAPE
+      return
+    end if
+    if (.not. allocated(projection%mofrt) .or. .not. allocated(projection%flev) .or. &
+        .not. allocated(projection%flab) .or. .not. allocated(projection%fldr)) then
+      status = KT05_ERR_TARGET_SHAPE
+      return
+    end if
+    if (size(projection%mofrt) /= nl .or. size(projection%flev) /= nl .or. &
+        size(projection%flab) /= nl + 1 .or. size(projection%fldr, 1) /= nudr .or. &
+        size(projection%fldr, 2) /= nl) then
+      status = KT05_ERR_TARGET_SHAPE
+      return
+    end if
+    if (ubound(mofrt, 1) < nl .or. ubound(flev, 1) < nl .or. &
+        ubound(flab, 1) < nl + 1 .or. size(fldr, 1) < nudr .or. &
+        ubound(fldr, 2) < nl) then
+      status = KT05_ERR_TARGET_SHAPE
+      return
+    end if
+
+    ! Producer values occupy the legacy 1:N slices. Index zero remains ANIMO-owned.
+    mofrt(1:nl) = projection%mofrt
+    flev(1:nl) = projection%flev
+    flab(1:nl + 1) = projection%flab
+    if (nudr > 0) fldr(1:nudr, 1:nl) = projection%fldr
+  end subroutine apply_projection_to_legacy_slices
 
 end module mod_animo_hydrology_adapter

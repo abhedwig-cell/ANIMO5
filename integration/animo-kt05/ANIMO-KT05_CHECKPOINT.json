@@ -1,8 +1,8 @@
 {
   "workunit": "ANIMO-KT05",
   "title": "Explicit-State HydrologyStep to ANIMO Hydrology Call-Boundary Adapter",
-  "phase": "REVIEW",
-  "checkpoint_state": "ADVERSARIAL_REVIEW_COMPLETE_REMEDIATION_REQUIRED",
+  "phase": "QUALIFY",
+  "checkpoint_state": "ADVERSARIAL_FINDINGS_REMEDIATED_EXACT_HEAD_CI_PENDING",
   "branch": "work/animo-kt05-explicit-hydrology-animo-adapter",
   "base_head": "c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
   "consumed_kt03_contract_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
@@ -20,11 +20,15 @@
     "dimension and finite-value fail-closed validation",
     "explicit interception endpoint mandatory",
     "typed projection of external Hydro_detailed producer-derived subset",
-    "legacy file provenance excluded from Fortran physical carrier"
+    "legacy file provenance excluded from Fortran physical carrier",
+    "machine-checked exact field parity with frozen KT03 HydrologyStep dataclass",
+    "explicit normalized-to-legacy index-1 slice mapping with index-zero preservation",
+    "zero-drainage and unavailable-temperature valid schema branch",
+    "dedicated producer-time validation status"
   ],
   "local_precommit_test": "gfortran 14.2.0 strict compile and test PASS",
-  "verdict": "REMEDIATION_REQUIRED_BEFORE_KT05_QUALIFICATION",
-  "next_permitted_action": "REMEDIATE_R1_R2_R3_AND_R4_THEN_RUN_NEW_EXACT_HEAD_CI_AND_POST_REMEDIATION_REVIEW",
+  "verdict": "REMEDIATED_QUALIFICATION_CANDIDATE_AWAITING_NEW_EXACT_HEAD_CI_AND_POST_REMEDIATION_REVIEW",
+  "next_permitted_action": "RUN_NEW_EXACT_HEAD_CI_THEN_POST_REMEDIATION_ADVERSARIAL_REVIEW",
   "explicit_exclusions": [
     "Hlpimp=1 semantics",
     "Hlpimp=2 semantics",
@@ -56,5 +60,15 @@
       "KT05-R4"
     ],
     "artifact": "docs/kt05/ADVERSARIAL_REVIEW.md"
+  },
+  "remediation": {
+    "reviewed_head": "bcef06df5a7c07052e251f8adf8a4761edf67d44",
+    "reviewed_head_ci_run": 35285228675,
+    "findings": {
+      "KT05-R1": "remediated by exact Python/Fortran full schema and projection field-set parity test",
+      "KT05-R2": "remediated by explicit index-1 slice mapping helper, documentation and index-zero sentinel test",
+      "KT05-R3": "remediated by compiled zero-drainage and unavailable-temperature packet test",
+      "KT05-R4": "remediated by dedicated KT05_ERR_TIME"
+    }
   }
 }

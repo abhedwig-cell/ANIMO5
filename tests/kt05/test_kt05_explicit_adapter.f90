@@ -7,6 +7,8 @@ program test_kt05_explicit_adapter
   type(hydrology_step_t) :: step
   type(hydro_detailed_external_t) :: projection
   integer :: status
+  real(real64) :: legacy_mofrt(0:2), legacy_flev(0:2), legacy_flab(0:3)
+  real(real64) :: legacy_fldr(1,0:2)
 
   call make_valid_step(step)
   call project_hydro_detailed_explicit(step, projection, status)
@@ -16,6 +18,22 @@ program test_kt05_explicit_adapter
   call assert_equal_real(projection%flab(3), -0.0002_real64, 'Flab projection')
   call assert_equal_real(projection%fldr(1, 2), 0.00002_real64, 'Fldr projection')
   call assert_equal_real(projection%mofrt(2), 0.28_real64, 'Mofrt projection')
+
+  legacy_mofrt = -999.0_real64
+  legacy_flev = -999.0_real64
+  legacy_flab = -999.0_real64
+  legacy_fldr = -999.0_real64
+  call apply_projection_to_legacy_slices( &
+    projection, legacy_mofrt, legacy_flev, legacy_flab, legacy_fldr, status)
+  call assert_equal_int(status, KT05_OK, 'legacy slice mapping status')
+  call assert_equal_real(legacy_mofrt(0), -999.0_real64, 'Mofrt index zero preserved')
+  call assert_equal_real(legacy_flev(0), -999.0_real64, 'Flev index zero preserved')
+  call assert_equal_real(legacy_flab(0), -999.0_real64, 'Flab index zero preserved')
+  call assert_equal_real(legacy_fldr(1,0), -999.0_real64, 'Fldr index zero preserved')
+  call assert_equal_real(legacy_mofrt(1), 0.30_real64, 'Mofrt index one mapping')
+  call assert_equal_real(legacy_flev(2), 0.0006_real64, 'Flev index two mapping')
+  call assert_equal_real(legacy_flab(3), -0.0002_real64, 'Flab Nl+1 mapping')
+  call assert_equal_real(legacy_fldr(1,2), 0.00002_real64, 'Fldr layer mapping')
 
   step%schema_id = 'WRONG'
   call validate_hydrology_step_explicit(step, status)
@@ -39,6 +57,11 @@ program test_kt05_explicit_adapter
   call assert_equal_int(status, KT05_ERR_DIMENSIONS, 'dimension mismatch')
 
   call make_valid_step(step)
+  step%producer_step_days = 0.0_real64
+  call validate_hydrology_step_explicit(step, status)
+  call assert_equal_int(status, KT05_ERR_TIME, 'non-positive producer timestep')
+
+  call make_valid_step(step)
   step%prr = ieee_value(step%prr, ieee_quiet_nan)
   call validate_hydrology_step_explicit(step, status)
   call assert_equal_int(status, KT05_ERR_NONFINITE, 'nonfinite scalar')
@@ -47,6 +70,12 @@ program test_kt05_explicit_adapter
   step%fldr(1, 1) = ieee_value(step%fldr(1, 1), ieee_quiet_nan)
   call validate_hydrology_step_explicit(step, status)
   call assert_equal_int(status, KT05_ERR_NONFINITE, 'nonfinite profile')
+
+  call make_zero_optional_step(step)
+  call project_hydro_detailed_explicit(step, projection, status)
+  call assert_equal_int(status, KT05_OK, 'zero optional projection status')
+  call assert_equal_int(projection%drainage_count, 0, 'zero drainage projection')
+  call assert_equal_int(size(projection%fldr, 1), 0, 'zero drainage extent')
 
   print '(A)', 'KT05 explicit Fortran hydrology adapter tests: PASS'
 
@@ -89,6 +118,27 @@ contains
     value%has_soil_temperature = .true.
     value%soil_temperature = [8.0_real64, 8.5_real64]
   end subroutine make_valid_step
+
+  subroutine make_zero_optional_step(value)
+    type(hydrology_step_t), intent(out) :: value
+
+    value%schema_id = HYDROLOGY_SCHEMA_ID
+    value%unit_contract_id = HYDROLOGY_UNIT_CONTRACT_ID
+    value%layer_count = 2
+    value%drainage_count = 0
+    value%producer_endpoint_day = 11.0_real64
+    value%producer_step_days = 1.0_real64
+    value%groundwater_level = 1.0_real64
+    allocate(value%sc(2), value%mofrt(2), value%flev(2), value%flab(3))
+    allocate(value%fldr(0, 2), value%soil_temperature(0))
+    value%sc = [-5.0_real64, -6.0_real64]
+    value%mofrt = [0.31_real64, 0.29_real64]
+    value%flev = [0.0_real64, 0.0_real64]
+    value%flab = [0.0_real64, 0.0_real64, 0.0_real64]
+    value%has_interception_storage_end = .true.
+    value%interception_storage_end = 0.0_real64
+    value%has_soil_temperature = .false.
+  end subroutine make_zero_optional_step
 
   subroutine assert_equal_int(actual, expected, label)
     integer, intent(in) :: actual, expected
