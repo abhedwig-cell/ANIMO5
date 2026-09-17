@@ -101,14 +101,14 @@ def main() -> int:
             )
         previous_endpoint = decimal_value(step.tiwa)
 
-    downstream_compatible_count = 0
+    projection_complete_count = 0
     for step in steps:
         try:
             step.hydro_detailed_boundary()
         except HydrologyAdapterError:
             pass
         else:
-            downstream_compatible_count += 1
+            projection_complete_count += 1
 
     dynamic_payload = b"".join(records[static["dynamic_start"] :])
     metadata = {
@@ -122,6 +122,7 @@ def main() -> int:
         "dynamic_records_per_step": records_per_step,
         "timestep_count": timestep_count,
         "hlpimp": static["hlpimp"],
+        "prototype_supported_hlpimp": [1, 11],
         "layer_count": static["nl"],
         "horizon_count": static["nh"],
         "drainage_count": static["nudr"],
@@ -132,17 +133,17 @@ def main() -> int:
             "end_time": static["end_time"],
         },
         "ioptte_from_initial_temperature_record": static["ioptte"],
-        "interval_origin": float(interval_origin),
+        "producer_interval_origin": float(interval_origin),
         "tiwa_first": steps[0].tiwa,
         "tiwa_last": steps[-1].tiwa,
         "step_days_values": sorted({step.step_days for step in steps}),
-        "interval_chain_exact_decimal": len(chain_mismatches) == 0,
-        "interval_chain_mismatches": chain_mismatches[:20],
+        "producer_endpoint_duration_chain_exact_decimal": len(chain_mismatches) == 0,
+        "producer_endpoint_duration_chain_mismatches": chain_mismatches[:20],
         "groundwater_sentinel_count": sentinel_count,
         "interception_storage_available_count": sum(
             1 for step in steps if step.has_interception_storage_end
         ),
-        "downstream_compatible_count": downstream_compatible_count,
+        "hydro_detailed_file_projection_complete_count": projection_complete_count,
         "dynamic_logical_payload_sha256": hashlib.sha256(dynamic_payload).hexdigest(),
         "first_step_source_record_sha256": steps[0].source_record_sha256,
         "last_step_source_record_sha256": steps[-1].source_record_sha256,
@@ -151,6 +152,11 @@ def main() -> int:
         "normalization": (
             "diagnostic reimplementation of revision-53 Dble_trunc; "
             "not independently qualified historical compiler authority"
+        ),
+        "normalization_authority": "DIAGNOSTIC_ONLY_NOT_B2",
+        "projection_claim": (
+            "structural completeness of the file-derived Hydro_detailed argument subset; "
+            "not scientific equivalence of Hydro_detailed execution"
         ),
     }
 
