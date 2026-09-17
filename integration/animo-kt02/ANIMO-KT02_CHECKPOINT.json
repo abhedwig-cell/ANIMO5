@@ -1,0 +1,69 @@
+{
+  "workunit": "ANIMO-KT02",
+  "phase": "EXTRACT",
+  "checkpoint_state": "EXTRACT_COMPLETE_READY_FOR_PROTOTYPE",
+  "branch": "work/animo-kt02-cross-model-transient-runtime",
+  "branch_base": "ANIMO-KT01@df30e79a8785b4fd83746e80e7766935225e90d3",
+  "central_regie_authority": "ANIMO-GOV06@7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
+  "kt01_frozen_executable_head": "25819e08fa34676e8dddd0254c4539f6b4372b89",
+  "swap_current_canonical_observed": "fc6c4e00d3b94f39dee5a30d68f4c6ef22385f9e",
+  "swap_scientific_production_source_authority": "50346642bd565f79134ea17d5462e544b354998c",
+  "reconciliation": {
+    "existing_equivalent_workunit_found": false,
+    "swap_canonical_ahead_by_commits": 357,
+    "kt01_pinned_swap_runtime_files_changed_since_source_authority": false,
+    "verdict": "PROCEED_TO_EXTRACT"
+  },
+  "artifacts_added": [
+    "docs/kt02/WORK_UNIT_CONTRACT.md",
+    "docs/kt02/RECONCILIATION.md",
+    "docs/kt02/SHARED_RUNTIME_EXTRACTION_MATRIX.csv",
+    "docs/kt02/CANDIDATE_SHARED_RUNTIME_CONTRACT.md"
+  ],
+  "core_candidates": [
+    "accepted_candidate_authority_separation",
+    "lineage_revision_origin_provenance",
+    "atomic_commit_or_reject",
+    "private_interval_execution",
+    "checkpoint_restart_envelope",
+    "worker_scratch_isolation",
+    "exact_time_identity_and_ordering_candidate",
+    "interval_target_contract",
+    "external_admissibility_hook"
+  ],
+  "adapter_or_policy_owned": [
+    "conservation_quantity_registry",
+    "transfer_event_semantics",
+    "retry_and_subdivision_policy",
+    "solver_diagnostics",
+    "forcing_and_input_payloads",
+    "calendar_conversion",
+    "model_specific_file_and_restart_grammars"
+  ],
+  "deferred": [
+    "production_shared_library_or_repository",
+    "SWAP5_production_migration",
+    "ANIMO5_production_migration",
+    "production_SWAPP5_ANIMO5_coupling",
+    "distributed_or_service_transport"
+  ],
+  "mutations_performed": [
+    "created isolated KT02 branch from closed KT01 head",
+    "persisted workunit contract and live reconciliation",
+    "classified shared-core versus adapter/policy responsibilities",
+    "defined nonproduction candidate shared runtime contract",
+    "no production source modified",
+    "no B3/B4/admission state modified"
+  ],
+  "tests_executed": [],
+  "current_verdict": "EXTRACTION_CONTRACT_READY_FOR_DUAL_CLIENT_PROTOTYPE",
+  "next_permitted_action": "IMPLEMENT_ONE_NEUTRAL_NONPRODUCTION_RUNTIME_AND_TWO_SYNTHETIC_CLIENTS_WITH_SHARED_CONFORMANCE_TESTS",
+  "explicit_exclusions": [
+    "scientific process equations",
+    "scientific or numerical tolerance selection",
+    "model specific solver policy",
+    "production coupling",
+    "production dependency changes",
+    "Status A or Status AA claims"
+  ]
+}
