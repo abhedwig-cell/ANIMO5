@@ -10,6 +10,7 @@
   "dynamic_records_per_step": 13,
   "timestep_count": 1800,
   "hlpimp": 11,
+  "prototype_supported_hlpimp": [1, 11],
   "layer_count": 30,
   "horizon_count": 30,
   "drainage_count": 5,
@@ -20,15 +21,15 @@
     "end_time": 365.0
   },
   "ioptte_from_initial_temperature_record": true,
-  "interval_origin": 0.0,
+  "producer_interval_origin": 0.0,
   "tiwa_first": 10.0,
   "tiwa_last": 18263.0,
   "step_days_values": [8.0, 9.0, 10.0, 11.0],
-  "interval_chain_exact_decimal": true,
-  "interval_chain_mismatches": [],
+  "producer_endpoint_duration_chain_exact_decimal": true,
+  "producer_endpoint_duration_chain_mismatches": [],
   "groundwater_sentinel_count": 0,
   "interception_storage_available_count": 1800,
-  "downstream_compatible_count": 1800,
+  "hydro_detailed_file_projection_complete_count": 1800,
   "dynamic_logical_payload_sha256": "de32500b518da0994d4578ff7e92388c170b63c9df2e5f4820cf3304a1378c9a",
   "first_step_source_record_sha256": "2e5e8ff7c088ddd94f91aeb663ea10abdecfda0ac4cd418a8bf90be955389ec7",
   "last_step_source_record_sha256": "37cf898001765e1524b4427c87f39cf88a01c3be4367a68db44f91b2db921b7e",
@@ -37,5 +38,6 @@
   "first_step_interception_storage_end": 0.0,
   "last_step_interception_storage_end": 0.000004132999,
   "normalization": "diagnostic reimplementation of revision-53 Dble_trunc; not independently qualified historical compiler authority",
-  "downstream_compatibility": "DEFINED_FOR_ALL_1800_HLPIMP11_PACKETS"
+  "normalization_authority": "DIAGNOSTIC_ONLY_NOT_B2",
+  "projection_claim": "structural completeness of the file-derived Hydro_detailed argument subset; not scientific equivalence of Hydro_detailed execution"
 }
