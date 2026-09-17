@@ -1,7 +1,8 @@
 module mod_animo_like_client
   use iso_fortran_env, only: int64
   use mod_transient_time, only: TimeCoordinate, time_compare
-  use mod_transient_contracts, only: transient_payload_t, accepted_store_t, admissibility_t
+  use mod_transient_contracts, only: transient_payload_t, admissibility_t
+  use mod_transient_transactions, only: accepted_store_t, initialize_accepted_store
   use mod_transient_interval_runtime, only: transient_client_t
   implicit none
   private
@@ -48,21 +49,13 @@ contains
     type(TimeCoordinate), intent(in) :: time
     integer(int64), intent(in) :: store_a, store_b
     logical, intent(out) :: ok
+    type(animo_like_payload_t) :: payload
 
-    store = accepted_store_t()
     ok = .false.
-    if (len_trim(lineage_id) == 0 .or. len_trim(lineage_id) > len(store%lineage_id)) return
     if (store_a < 0_int64 .or. store_b < 0_int64) return
-    store%lineage_id = trim(lineage_id)
-    store%generation = 0_int64
-    store%accepted_time = time
-    allocate(animo_like_payload_t :: store%payload)
-    select type (payload => store%payload)
-    type is (animo_like_payload_t)
-      payload%store_a = store_a
-      payload%store_b = store_b
-    end select
-    ok = store%payload%is_valid()
+    payload%store_a = store_a
+    payload%store_b = store_b
+    call initialize_accepted_store(lineage_id, time, payload, store, ok)
   end subroutine initialize_animo_like_store
 
   subroutine animo_like_execute_attempt(self, origin_payload, origin_time, endpoint_time, candidate_payload, &
@@ -98,6 +91,16 @@ contains
         reason = 'INSUFFICIENT_SOURCE_STORE'
         return
       end if
+      if (origin%store_b > huge(origin%store_b) - self%transfer_per_accepted_attempt) then
+        reason = 'TARGET_STORE_OVERFLOW'
+        return
+      end if
+      if (origin%store_a > huge(origin%store_a) - origin%store_b) then
+        reason = 'TOTAL_STORAGE_OVERFLOW'
+        return
+      end if
+      total_before = origin%store_a + origin%store_b
+
       allocate(animo_like_payload_t :: candidate_payload)
       select type (candidate => candidate_payload)
       type is (animo_like_payload_t)
@@ -107,7 +110,10 @@ contains
           reason = 'INVALID_CANDIDATE'
           return
         end if
-        total_before = origin%store_a + origin%store_b
+        if (candidate%store_a > huge(candidate%store_a) - candidate%store_b) then
+          reason = 'CANDIDATE_TOTAL_OVERFLOW'
+          return
+        end if
         total_after = candidate%store_a + candidate%store_b
         admissibility%evidence_complete = .true.
         admissibility%admissible = total_before == total_after

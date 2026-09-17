@@ -17,9 +17,17 @@ for path in runtime_files:
 contracts = (RUNTIME / "mod_transient_contracts.f90").read_text(encoding="utf-8").lower()
 assert "abstract" in contracts and "transient_payload_t" in contracts
 
+transactions = (RUNTIME / "mod_transient_transactions.f90").read_text(encoding="utf-8").lower()
+assert "type, public :: accepted_store_t\n    private" in transactions
+assert "type, public :: trial_state_t\n    private" in transactions
+assert "type, public :: trial_result_t\n    private" in transactions
+assert "reconstruct_accepted_store_trusted" in transactions
+assert "initialize_accepted_store" in transactions
+
 interval = (RUNTIME / "mod_transient_interval_runtime.f90").read_text(encoding="utf-8").lower()
 assert "transient_client_t" in interval
 assert "retry_permitted_after_reject" in interval
 assert "external_accepted = working" in interval
+assert "endpoint_beyond_requested_target" in interval
 
 print("KT02 structure checks: PASS")

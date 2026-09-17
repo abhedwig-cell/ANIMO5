@@ -1,9 +1,10 @@
 module mod_transient_interval_runtime
   use iso_fortran_env, only: int64
   use mod_transient_time, only: TimeCoordinate, time_compare, time_equal, time_is_valid
-  use mod_transient_contracts, only: accepted_store_t, trial_state_t, trial_result_t, &
-    transient_payload_t, admissibility_t, accepted_store_ready, TRANSIENT_ID_LEN
-  use mod_transient_transactions, only: begin_trial, commit_trial
+  use mod_transient_contracts, only: transient_payload_t, admissibility_t, TRANSIENT_ID_LEN
+  use mod_transient_transactions, only: accepted_store_t, trial_state_t, trial_result_t, &
+    accepted_store_ready, accepted_store_generation, accepted_store_time, begin_trial, &
+    snapshot_trial_payload, make_trial_result, commit_trial
   implicit none
   private
 
@@ -58,10 +59,11 @@ contains
     type(accepted_store_t) :: working
     type(trial_state_t) :: trial
     type(trial_result_t) :: result
-    class(transient_payload_t), allocatable :: candidate_payload
+    class(transient_payload_t), allocatable :: origin_payload, candidate_payload
     type(admissibility_t) :: admissibility
+    type(TimeCoordinate) :: working_time
     integer :: target_order, endpoint_order, endpoint_vs_target, request_index
-    logical :: ok, compare_ok, equal, client_ok
+    logical :: ok, compare_ok, equal, client_ok, result_ok, time_ok
     character(len=TRANSIENT_ID_LEN) :: commit_reason, client_reason
 
     trace = runtime_trace_t()
@@ -76,7 +78,12 @@ contains
       reason = 'INVALID_TARGET_TIME'
       return
     end if
-    call time_compare(requested_target, external_accepted%accepted_time, target_order, compare_ok)
+    call accepted_store_time(external_accepted, working_time, time_ok)
+    if (.not. time_ok) then
+      reason = 'ACCEPTED_TIME_UNAVAILABLE'
+      return
+    end if
+    call time_compare(requested_target, working_time, target_order, compare_ok)
     if (.not. compare_ok .or. target_order <= 0) then
       reason = 'INVALID_INTERVAL_ORDERING'
       return
@@ -90,7 +97,12 @@ contains
     request_index = 0
 
     do
-      call time_equal(working%accepted_time, requested_target, equal, compare_ok)
+      call accepted_store_time(working, working_time, time_ok)
+      if (.not. time_ok) then
+        reason = 'WORKING_TIME_UNAVAILABLE'
+        return
+      end if
+      call time_equal(working_time, requested_target, equal, compare_ok)
       if (.not. compare_ok) then
         reason = 'TIME_COMPARISON_FAILED'
         return
@@ -112,10 +124,10 @@ contains
 
       request_index = request_index + 1
       trace%attempt_count = trace%attempt_count + 1
-      trace%origin_generation(trace%attempt_count) = working%generation
-      trace%origin_time(trace%attempt_count) = working%accepted_time
+      trace%origin_generation(trace%attempt_count) = accepted_store_generation(working)
+      trace%origin_time(trace%attempt_count) = working_time
 
-      call time_compare(requests(request_index)%endpoint_time, working%accepted_time, endpoint_order, compare_ok)
+      call time_compare(requests(request_index)%endpoint_time, working_time, endpoint_order, compare_ok)
       if (.not. compare_ok .or. endpoint_order <= 0) then
         reason = 'NO_OR_BACKWARD_PROGRESS'
         return
@@ -131,21 +143,24 @@ contains
         reason = 'BEGIN_TRIAL_FAILED'
         return
       end if
+      call snapshot_trial_payload(trial, origin_payload, ok)
+      if (.not. ok) then
+        reason = 'TRIAL_PAYLOAD_SNAPSHOT_FAILED'
+        return
+      end if
 
-      call client%execute_attempt(trial%payload, trial%origin_time, trial%endpoint_time, candidate_payload, &
-        admissibility, client_ok, client_reason)
+      call client%execute_attempt(origin_payload, working_time, requests(request_index)%endpoint_time, &
+        candidate_payload, admissibility, client_ok, client_reason)
       if (.not. client_ok .or. .not. allocated(candidate_payload)) then
         reason = 'CLIENT_ATTEMPT_FAILED'
         return
       end if
 
-      if (allocated(trial%payload)) deallocate(trial%payload)
-      call move_alloc(candidate_payload, trial%payload)
-
-      result = trial_result_t()
-      result%candidate = trial
-      result%admissibility = admissibility
-      result%provenance_id = 'KT02_SHARED_CLIENT_ATTEMPT'
+      call make_trial_result(trial, candidate_payload, admissibility, 'KT02_SHARED_CLIENT_ATTEMPT', result, result_ok)
+      if (.not. result_ok) then
+        reason = 'TRIAL_RESULT_CONSTRUCTION_FAILED'
+        return
+      end if
 
       call commit_trial(working, result, ok, commit_reason)
       if (ok) then
@@ -164,7 +179,12 @@ contains
       end if
     end do
 
-    call time_equal(working%accepted_time, requested_target, equal, compare_ok)
+    call accepted_store_time(working, working_time, time_ok)
+    if (.not. time_ok) then
+      reason = 'WORKING_TIME_UNAVAILABLE'
+      return
+    end if
+    call time_equal(working_time, requested_target, equal, compare_ok)
     if (.not. compare_ok .or. .not. equal) then
       reason = 'INCOMPLETE_INTERVAL_COMPLETION'
       return

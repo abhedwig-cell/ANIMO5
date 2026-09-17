@@ -2,7 +2,8 @@ module mod_swap_like_client
   use iso_fortran_env, only: real64
   use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
   use mod_transient_time, only: TimeCoordinate, time_compare
-  use mod_transient_contracts, only: transient_payload_t, accepted_store_t, admissibility_t
+  use mod_transient_contracts, only: transient_payload_t, admissibility_t
+  use mod_transient_transactions, only: accepted_store_t, initialize_accepted_store
   use mod_transient_interval_runtime, only: transient_client_t
   implicit none
   private
@@ -47,20 +48,12 @@ contains
     type(TimeCoordinate), intent(in) :: time
     real(real64), intent(in) :: initial_value
     logical, intent(out) :: ok
+    type(swap_like_payload_t) :: payload
 
-    store = accepted_store_t()
     ok = .false.
-    if (len_trim(lineage_id) == 0 .or. len_trim(lineage_id) > len(store%lineage_id)) return
     if (.not. ieee_is_finite(initial_value)) return
-    store%lineage_id = trim(lineage_id)
-    store%generation = 0
-    store%accepted_time = time
-    allocate(swap_like_payload_t :: store%payload)
-    select type (payload => store%payload)
-    type is (swap_like_payload_t)
-      payload%state_value = initial_value
-    end select
-    ok = store%payload%is_valid()
+    payload%state_value = initial_value
+    call initialize_accepted_store(lineage_id, time, payload, store, ok)
   end subroutine initialize_swap_like_store
 
   subroutine swap_like_execute_attempt(self, origin_payload, origin_time, endpoint_time, candidate_payload, &

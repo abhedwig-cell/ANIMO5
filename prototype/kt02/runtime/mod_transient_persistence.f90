@@ -1,8 +1,9 @@
 module mod_transient_persistence
   use iso_fortran_env, only: int64
   use mod_transient_time, only: TimeCoordinate, time_is_valid
-  use mod_transient_contracts, only: accepted_store_t, transient_payload_t, &
-    accepted_store_ready, identity_argument_valid, TRANSIENT_ID_LEN
+  use mod_transient_contracts, only: transient_payload_t, identity_argument_valid, TRANSIENT_ID_LEN
+  use mod_transient_transactions, only: accepted_store_t, accepted_store_ready, accepted_store_generation, &
+    accepted_store_lineage, accepted_store_time, snapshot_accepted_payload, reconstruct_accepted_store_trusted
   implicit none
   private
 
@@ -31,6 +32,7 @@ contains
     character(len=*), intent(in) :: configuration_id, feature_layout_id
     type(accepted_checkpoint_t), intent(out) :: checkpoint
     logical, intent(out) :: ok
+    logical :: time_ok, payload_ok
 
     checkpoint = accepted_checkpoint_t()
     ok = .false.
@@ -44,15 +46,12 @@ contains
     checkpoint%state_layout_id = trim(state_layout_id)
     checkpoint%configuration_id = trim(configuration_id)
     checkpoint%feature_layout_id = trim(feature_layout_id)
-    checkpoint%lineage_id = accepted%lineage_id
-    checkpoint%accepted_generation = accepted%generation
-    checkpoint%accepted_time = accepted%accepted_time
-    call accepted%payload%clone_payload(checkpoint%payload)
-    if (.not. allocated(checkpoint%payload)) return
-    if (.not. checkpoint%payload%is_valid()) then
-      deallocate(checkpoint%payload)
-      return
-    end if
+    checkpoint%lineage_id = accepted_store_lineage(accepted)
+    checkpoint%accepted_generation = accepted_store_generation(accepted)
+    call accepted_store_time(accepted, checkpoint%accepted_time, time_ok)
+    if (.not. time_ok) return
+    call snapshot_accepted_payload(accepted, checkpoint%payload, payload_ok)
+    if (.not. payload_ok) return
     checkpoint%valid = .true.
     ok = .true.
   end subroutine make_checkpoint
@@ -65,9 +64,7 @@ contains
     type(accepted_store_t), intent(out) :: restored
     logical, intent(out) :: ok
     character(len=*), intent(out) :: reason
-    class(transient_payload_t), allocatable :: payload_copy
 
-    restored = accepted_store_t()
     ok = .false.
     reason = 'UNSET'
 
@@ -111,17 +108,12 @@ contains
       return
     end if
 
-    call checkpoint%payload%clone_payload(payload_copy)
-    if (.not. allocated(payload_copy) .or. .not. payload_copy%is_valid()) then
-      reason = 'CHECKPOINT_PAYLOAD_CLONE_FAILED'
+    call reconstruct_accepted_store_trusted(checkpoint%lineage_id, checkpoint%accepted_generation, &
+      checkpoint%accepted_time, checkpoint%payload, restored, ok)
+    if (.not. ok) then
+      reason = 'TRUSTED_RECONSTRUCTION_FAILED'
       return
     end if
-
-    restored%lineage_id = checkpoint%lineage_id
-    restored%generation = checkpoint%accepted_generation
-    restored%accepted_time = checkpoint%accepted_time
-    call move_alloc(payload_copy, restored%payload)
-    ok = .true.
     reason = 'RESTORED'
   end subroutine restore_checkpoint
 
