@@ -36,10 +36,10 @@ program test_kt07_real_packet_projection
   call assert_equal_real(projection%pnt, step%ponding_end, 'Pnt')
   call assert_equal_real(projection%snt, step%snow_storage_end, 'Snt')
 
-  call assert_true(all(projection%mofrt == step%mofrt), 'Mofrt projection')
-  call assert_true(all(projection%flev == step%flev), 'Flev projection')
-  call assert_true(all(projection%flab == step%flab), 'Flab projection')
-  call assert_true(all(projection%fldr == step%fldr), 'Fldr projection')
+  call assert_same_vector(projection%mofrt, step%mofrt, 'Mofrt projection')
+  call assert_same_vector(projection%flev, step%flev, 'Flev projection')
+  call assert_same_vector(projection%flab, step%flab, 'Flab projection')
+  call assert_same_matrix(projection%fldr, step%fldr, 'Fldr projection')
 
   nl = step%layer_count
   nudr = step%drainage_count
@@ -56,11 +56,11 @@ program test_kt07_real_packet_projection
   call assert_equal_real(legacy_mofrt(0), -999.0_real64, 'Mofrt zero preserved')
   call assert_equal_real(legacy_flev(0), -999.0_real64, 'Flev zero preserved')
   call assert_equal_real(legacy_flab(0), -999.0_real64, 'Flab zero preserved')
-  call assert_true(all(legacy_fldr(:,0) == -999.0_real64), 'Fldr zero preserved')
-  call assert_true(all(legacy_mofrt(1:nl) == step%mofrt), 'Mofrt slices')
-  call assert_true(all(legacy_flev(1:nl) == step%flev), 'Flev slices')
-  call assert_true(all(legacy_flab(1:nl + 1) == step%flab), 'Flab slices')
-  call assert_true(all(legacy_fldr(1:nudr,1:nl) == step%fldr), 'Fldr slices')
+  call assert_constant_vector(legacy_fldr(:,0), -999.0_real64, 'Fldr zero preserved')
+  call assert_same_vector(legacy_mofrt(1:nl), step%mofrt, 'Mofrt slices')
+  call assert_same_vector(legacy_flev(1:nl), step%flev, 'Flev slices')
+  call assert_same_vector(legacy_flab(1:nl + 1), step%flab, 'Flab slices')
+  call assert_same_matrix(legacy_fldr(1:nudr,1:nl), step%fldr, 'Fldr slices')
 
   print '(A)', 'KT07 full derived LWKM packet projection: PASS'
 
@@ -87,10 +87,45 @@ contains
   subroutine assert_equal_real(actual, expected, label)
     real(real64), intent(in) :: actual, expected
     character(len=*), intent(in) :: label
-    if (actual /= expected) then
+    if (abs(actual - expected) > 0.0_real64) then
       write (*, '(A,": expected ",ES16.8,", got ",ES16.8)') trim(label), expected, actual
       error stop 1
     end if
   end subroutine assert_equal_real
+
+  subroutine assert_same_vector(actual, expected, label)
+    real(real64), intent(in) :: actual(:), expected(:)
+    character(len=*), intent(in) :: label
+    call assert_true(size(actual) == size(expected), trim(label)//' size')
+    if (size(actual) > 0) then
+      if (maxval(abs(actual - expected)) > 0.0_real64) then
+        write (*, '(A)') 'ASSERTION FAILED: '//trim(label)
+        error stop 1
+      end if
+    end if
+  end subroutine assert_same_vector
+
+  subroutine assert_same_matrix(actual, expected, label)
+    real(real64), intent(in) :: actual(:,:), expected(:,:)
+    character(len=*), intent(in) :: label
+    call assert_true(all(shape(actual) == shape(expected)), trim(label)//' shape')
+    if (size(actual) > 0) then
+      if (maxval(abs(actual - expected)) > 0.0_real64) then
+        write (*, '(A)') 'ASSERTION FAILED: '//trim(label)
+        error stop 1
+      end if
+    end if
+  end subroutine assert_same_matrix
+
+  subroutine assert_constant_vector(actual, expected, label)
+    real(real64), intent(in) :: actual(:), expected
+    character(len=*), intent(in) :: label
+    if (size(actual) > 0) then
+      if (maxval(abs(actual - expected)) > 0.0_real64) then
+        write (*, '(A)') 'ASSERTION FAILED: '//trim(label)
+        error stop 1
+      end if
+    end if
+  end subroutine assert_constant_vector
 
 end program test_kt07_real_packet_projection
