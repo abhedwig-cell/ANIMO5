@@ -24,3 +24,5 @@ jobs:
         run: python3 -m json.tool integration/animo-kt03f01/ANIMO-KT03F01_CHECKPOINT.json >/dev/null
       - name: Validate derived evidence JSON
         run: python3 -m json.tool reference/kt03f01/HLPIMP_INTERCEPTION_BALANCE_PROBE.json >/dev/null
+      - name: Validate independent review handoff JSON
+        run: python3 -m json.tool integration/animo-kt03f01/INDEPENDENT_REVIEW_HANDOFF.json >/dev/null

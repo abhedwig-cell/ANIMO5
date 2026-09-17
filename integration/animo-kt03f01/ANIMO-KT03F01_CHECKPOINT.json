@@ -2,7 +2,7 @@
   "workunit": "ANIMO-KT03F01",
   "title": "Hlpimp=1 Interception-State Scientific Source Disposition",
   "phase": "REVIEW",
-  "checkpoint_state": "AUTHORING_AND_SELF_REVIEW_COMPLETE_TIER_C_INDEPENDENT_REVIEW_REQUIRED",
+  "checkpoint_state": "INDEPENDENT_REVIEW_HANDOFF_PERSISTED_TIER_C_REVIEW_REQUIRED",
   "branch": "work/animo-kt03f01-hlpimp1-interception-disposition",
   "base_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
   "consumed_contract_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
@@ -29,7 +29,7 @@
   "review": {
     "same_agent_mode": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "same_agent_verdict": "PASS_AUTHORING_EVIDENCE_AND_BOUNDED_CANDIDATE_DISPOSITION",
-    "independent_review_status": "REQUIRED_NOT_YET_PERFORMED"
+    "independent_review_status": "READY_FOR_GENUINELY_INDEPENDENT_REVIEW_NOT_YET_PERFORMED"
   },
   "candidate_disposition": "HLPIMP1_INTERCEPTION_STORAGE_NOT_PART_OF_PRODUCER_EXCHANGE_STATE_CONTRACT",
   "candidate_semantics": {
@@ -42,7 +42,12 @@
   },
   "causal_classification": "UNDEFINED_LEGACY_LOCAL_STATE_WITH_TRANSPORT_FACING_HYDROLOGY_CONSEQUENCE",
   "real_file_evidence": {
-    "Hlpimp1_cases": ["CranMais", "CranGrass", "GrassPeat", "STONE"],
+    "Hlpimp1_cases": [
+      "CranMais",
+      "CranGrass",
+      "GrassPeat",
+      "STONE"
+    ],
     "Hlpimp11_contrast_case": "LWKM",
     "LWKM_mean_abs_closure_improvement_factor_with_explicit_interception": 18.057720003291088
   },
@@ -62,7 +67,7 @@
   "canonical_tcd_register_modified": false,
   "qualification_status": "NOT_YET_QUALIFIED_UNDER_GOV04_TIER_C",
   "admission_status": "NOT_ADMITTED",
-  "next_permitted_action": "GENUINELY_INDEPENDENT_SECOND_LINE_REVIEW_THEN_FORMAL_DISPOSITION_OR_NEGATIVE_CLOSE",
+  "next_permitted_action": "GENUINELY_INDEPENDENT_SECOND_LINE_REVIEW_USING_PERSISTED_HANDOFF_THEN_FORMAL_DISPOSITION_OR_NEGATIVE_CLOSE",
   "safe_parallel_action": "CONTINUE_KT03_SUCCESSOR_ARCHITECTURE_ONLY_ON_EXPLICIT_STATE_HLPIMP11_OR_OTHER_NON_F01_SURFACES",
   "explicit_exclusions": [
     "Hlpimp=2 semantics",
@@ -73,5 +78,11 @@
     "B3 or B4 admission",
     "production source patch",
     "Status A or Status AA claims"
-  ]
+  ],
+  "independent_review_handoff": {
+    "document": "docs/kt03f01/INDEPENDENT_REVIEW_HANDOFF.md",
+    "machine_readable": "integration/animo-kt03f01/INDEPENDENT_REVIEW_HANDOFF.json",
+    "suggested_review_branch": "review/animo-kt03f01-hlpimp1-independent-second-line",
+    "review_target_head": "36024e5b8cd62203b03b9b72c0d08e4c797612bb"
+  }
 }

@@ -1,0 +1,49 @@
+{
+  "workunit": "ANIMO-KT03F01",
+  "review_gate": "GOV04_TIER_C_GENUINELY_INDEPENDENT_SECOND_LINE",
+  "status": "READY_FOR_INDEPENDENT_REVIEW_NOT_PERFORMED",
+  "review_target_head": "36024e5b8cd62203b03b9b72c0d08e4c797612bb",
+  "candidate_disposition": "HLPIMP1_INTERCEPTION_STORAGE_NOT_PART_OF_PRODUCER_EXCHANGE_STATE_CONTRACT",
+  "scope": {
+    "Iopthyvs": 1,
+    "Hlpimp": 1
+  },
+  "governing_authorities": {
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "KT03_closeout": "c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
+    "KT03_contract": "e844c7658a95819fc0463c55737f9bd41b29a6da",
+    "KT03F01_authoring": "9e31afe36ca1bc8f4c90dab024c811c87337cbc0"
+  },
+  "same_agent_review": {
+    "head": "0bd8e3f2fe84837e85c45c44ec2e8201f81cef12",
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "may_satisfy_independent_gate": false
+  },
+  "required_result": ["PASS", "FAIL", "INCOMPLETE"],
+  "required_checks": [
+    "VERIFY_EXACT_REVIEW_TARGET",
+    "VERIFY_SOURCE_AND_TESTCASE_PINS",
+    "VERIFY_SCOPE_UNCHANGED",
+    "VERIFY_NO_SUPERSEDING_EVIDENCE",
+    "CHALLENGE_HIDDEN_OR_IMPLICIT_HLPIMP1_INTERCEPTION_STATE",
+    "CHALLENGE_BALANCE_CLOSURE_CAUSALITY",
+    "CHALLENGE_HLPIMP11_CONTROL_VALIDITY",
+    "CHECK_TOP_BOUNDARY_TRANSPORT_FACING_CAUSAL_CHAIN",
+    "CHECK_EDGE_AND_BOUNDARY_CASES",
+    "PRESERVE_B1_NOT_B2_BOUNDARY",
+    "PRESERVE_HLPIMP1_ONLY_SCOPE"
+  ],
+  "blocked_dependents": [
+    "KT04_HLPIMP1_PROJECTION_QUALIFICATION"
+  ],
+  "nonclaims": [
+    "Hlpimp2 semantics",
+    "Hlpimp11 requalification",
+    "corrected executable qualification",
+    "whole-model equivalence",
+    "B2 historical behaviour",
+    "B3 or B4 admission",
+    "production migration",
+    "Status A or Status AA"
+  ]
+}
