@@ -1,69 +1,89 @@
 {
   "workunit": "ANIMO-KT02",
-  "phase": "EXTRACT",
-  "checkpoint_state": "EXTRACT_COMPLETE_READY_FOR_PROTOTYPE",
+  "phase": "CLOSE",
+  "checkpoint_state": "CLOSE_COMPLETE",
   "branch": "work/animo-kt02-cross-model-transient-runtime",
   "branch_base": "ANIMO-KT01@df30e79a8785b4fd83746e80e7766935225e90d3",
   "central_regie_authority": "ANIMO-GOV06@7a7d3a1f5a5c07bf36b7e6e2915338dabde20660",
   "kt01_frozen_executable_head": "25819e08fa34676e8dddd0254c4539f6b4372b89",
-  "swap_current_canonical_observed": "fc6c4e00d3b94f39dee5a30d68f4c6ef22385f9e",
+  "swap_current_canonical_observed_at_reconcile": "fc6c4e00d3b94f39dee5a30d68f4c6ef22385f9e",
   "swap_scientific_production_source_authority": "50346642bd565f79134ea17d5462e544b354998c",
   "reconciliation": {
     "existing_equivalent_workunit_found": false,
-    "swap_canonical_ahead_by_commits": 357,
+    "swap_canonical_ahead_by_commits_at_reconcile": 357,
     "kt01_pinned_swap_runtime_files_changed_since_source_authority": false,
     "verdict": "PROCEED_TO_EXTRACT"
   },
-  "artifacts_added": [
-    "docs/kt02/WORK_UNIT_CONTRACT.md",
-    "docs/kt02/RECONCILIATION.md",
-    "docs/kt02/SHARED_RUNTIME_EXTRACTION_MATRIX.csv",
-    "docs/kt02/CANDIDATE_SHARED_RUNTIME_CONTRACT.md"
+  "frozen_executable_head": "1909709e7a244b5d0ee53342a26bab74815c118c",
+  "tests_executed": [
+    "GitHub Actions exact-head qualification on frozen executable head",
+    "gfortran -std=f2008 -Wall -Wextra -Werror build",
+    "dual-client executable runtime tests",
+    "shared-core structural dependency and opacity checks"
   ],
-  "core_candidates": [
-    "accepted_candidate_authority_separation",
-    "lineage_revision_origin_provenance",
-    "atomic_commit_or_reject",
-    "private_interval_execution",
-    "checkpoint_restart_envelope",
-    "worker_scratch_isolation",
-    "exact_time_identity_and_ordering_candidate",
-    "interval_target_contract",
-    "external_admissibility_hook"
+  "test_results": {
+    "exact_head_ci_run": 35278517691,
+    "exact_head_ci_result": "SUCCESS"
+  },
+  "review_state": {
+    "mode": "same-agent / not genuinely independent",
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "initial_verdict": "NOT_YET_QUALIFIABLE",
+    "post_remediation_verdict": "SELF_REVIEW_PASS_NONPRODUCTION_DUAL_CLIENT_PROTOTYPE_ONLY",
+    "material_open_findings": []
+  },
+  "qualified_core_surface": [
+    "opaque accepted authority",
+    "opaque trial-origin provenance",
+    "atomic accepted-payload commit or reject",
+    "stale-origin rejection",
+    "bounded retry from accepted authority",
+    "private interval execution",
+    "exact requested-target publication",
+    "bounded exact time identity and ordering prototype",
+    "serialization-neutral accepted-only checkpoint and restore",
+    "worker-local scratch isolation",
+    "externally supplied admissibility",
+    "single shared core used by SWAP-like and ANIMO-like proof clients"
   ],
   "adapter_or_policy_owned": [
-    "conservation_quantity_registry",
-    "transfer_event_semantics",
-    "retry_and_subdivision_policy",
-    "solver_diagnostics",
-    "forcing_and_input_payloads",
-    "calendar_conversion",
-    "model_specific_file_and_restart_grammars"
-  ],
-  "deferred": [
-    "production_shared_library_or_repository",
-    "SWAP5_production_migration",
-    "ANIMO5_production_migration",
-    "production_SWAPP5_ANIMO5_coupling",
-    "distributed_or_service_transport"
+    "conservation quantity registry and tolerances",
+    "transfer or event-ledger semantics",
+    "retry and subdivision policy",
+    "solver diagnostics and convergence interpretation",
+    "forcing and input payload semantics",
+    "calendar conversion",
+    "model-specific file and restart grammars"
   ],
   "mutations_performed": [
     "created isolated KT02 branch from closed KT01 head",
-    "persisted workunit contract and live reconciliation",
-    "classified shared-core versus adapter/policy responsibilities",
-    "defined nonproduction candidate shared runtime contract",
-    "no production source modified",
+    "persisted cross-model extraction contract and matrix",
+    "implemented neutral nonproduction runtime core",
+    "implemented two materially different synthetic proof clients",
+    "performed same-agent adversarial review",
+    "hardened accepted/trial authority after material review finding",
+    "reconciled target-ownership and client-authority contracts",
+    "qualified frozen executable after exact-head CI success",
+    "persisted status, qualification and closeout artifacts",
+    "no ANIMO production src modified",
+    "no SWAP5 source modified",
     "no B3/B4/admission state modified"
   ],
-  "tests_executed": [],
-  "current_verdict": "EXTRACTION_CONTRACT_READY_FOR_DUAL_CLIENT_PROTOTYPE",
-  "next_permitted_action": "IMPLEMENT_ONE_NEUTRAL_NONPRODUCTION_RUNTIME_AND_TWO_SYNTHETIC_CLIENTS_WITH_SHARED_CONFORMANCE_TESTS",
+  "current_verdict": "QUALIFIED_NONPRODUCTION_MODEL_NEUTRAL_TRANSIENT_RUNTIME_DUAL_CLIENT_PROTOTYPE_NO_PRODUCTION_LIBRARY_OR_MODEL_ADMISSION",
+  "next_permitted_action": "SEPARATE_REAL_ANIMO_ADAPTER_WORKUNIT_USING_ONE_BOUNDED_LEGACY_TIMESTEP_HYDROLOGY_BOUNDARY_AND_REFERENCE_COMPARISON",
   "explicit_exclusions": [
-    "scientific process equations",
+    "production shared runtime library or repository",
+    "SWAP5 production migration",
+    "ANIMO5 production migration",
+    "canonical TIME admission",
+    "scientific process equations or process ordering",
     "scientific or numerical tolerance selection",
-    "model specific solver policy",
-    "production coupling",
-    "production dependency changes",
+    "model-specific solver policy",
+    "generic atomic event sidecar",
+    "production SWAP5-ANIMO coupling",
+    "joint timestep ownership or negotiation",
+    "distributed service transport",
+    "B3 or B4 mutation",
     "Status A or Status AA claims"
   ]
 }
