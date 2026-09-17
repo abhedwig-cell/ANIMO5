@@ -1,0 +1,22 @@
+name: ANIMO KT03 hydrology adapter
+
+on:
+  push:
+    branches:
+      - 'work/animo-kt03-*'
+    paths:
+      - 'prototype/kt03/**'
+      - 'tools/kt03_probe_cranmais_hydrology.py'
+      - 'tests/kt03/**'
+      - 'docs/kt03/**'
+      - 'reference/kt03/**'
+      - '.github/workflows/animo-kt03-hydrology-adapter.yml'
+  workflow_dispatch:
+
+jobs:
+  adapter-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run KT03 adapter contract tests
+        run: python3 tests/kt03/test_kt03_hydrology_adapter.py
