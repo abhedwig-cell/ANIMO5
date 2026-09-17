@@ -15,8 +15,8 @@ from prototype.kt03.hydrology_step import (
 HLPIMP1_ABSENT_INTERCEPTION_POLICY = "ANIMO_KT03F01_HLPIMP1_ABSENT_INTERCEPTION_V1"
 EXPLICIT_INTERCEPTION_POLICY = "ANIMO_EXPLICIT_INTERCEPTION_STORAGE_V1"
 
-KT03F01_HLPIMP1_AUTHORITY_ID = (
-    "ANIMO-KT03F01@0bd8e3f2fe84837e85c45c44ec2e8201f81cef12"
+KT03F01_HLPIMP1_CANDIDATE_ID = (
+    "ANIMO-KT03F01-CANDIDATE@36024e5b8cd62203b03b9b72c0d08e4c797612bb"
 )
 KT03_EXPLICIT_INTERCEPTION_AUTHORITY_ID = (
     "ANIMO-KT03@e844c7658a95819fc0463c55737f9bd41b29a6da"
@@ -53,22 +53,27 @@ class ProjectionAuthority:
     interception_policy_id: str
 
     def validate(self) -> None:
+        identity = (self.authority_id, self.interception_policy_id)
+        pending_hlpimp1 = (
+            KT03F01_HLPIMP1_CANDIDATE_ID,
+            HLPIMP1_ABSENT_INTERCEPTION_POLICY,
+        )
+        if identity == pending_hlpimp1:
+            raise HydrologyAdapterError(
+                "Hlpimp=1 projection blocked pending GOV04 Tier C independent review"
+            )
         allowed = {
-            (
-                KT03F01_HLPIMP1_AUTHORITY_ID,
-                HLPIMP1_ABSENT_INTERCEPTION_POLICY,
-            ),
             (
                 KT03_EXPLICIT_INTERCEPTION_AUTHORITY_ID,
                 EXPLICIT_INTERCEPTION_POLICY,
             ),
         }
-        if (self.authority_id, self.interception_policy_id) not in allowed:
+        if identity not in allowed:
             raise HydrologyAdapterError("unqualified hydrology projection authority")
 
 
-HLPIMP1_AUTHORITY = ProjectionAuthority(
-    KT03F01_HLPIMP1_AUTHORITY_ID,
+HLPIMP1_CANDIDATE = ProjectionAuthority(
+    KT03F01_HLPIMP1_CANDIDATE_ID,
     HLPIMP1_ABSENT_INTERCEPTION_POLICY,
 )
 EXPLICIT_INTERCEPTION_AUTHORITY = ProjectionAuthority(
@@ -262,7 +267,9 @@ def authority_from_legacy_provenance(
             raise HydrologyAdapterError(
                 "Hlpimp=1 provenance conflicts with explicit interception payload"
             )
-        return HLPIMP1_AUTHORITY
+        raise HydrologyAdapterError(
+            "Hlpimp=1 projection blocked pending GOV04 Tier C independent review"
+        )
     if provenance.hlpimp == 11:
         if not step.has_interception_storage_end:
             raise HydrologyAdapterError(

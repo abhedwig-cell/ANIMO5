@@ -1,26 +1,31 @@
 # ANIMO-KT04 Reconciliation
 
-KT04 starts from the exact KT03F01 closeout head `0bd8e3f2fe84837e85c45c44ec2e8201f81cef12`. Its closeout workflow run `35283894975` completed successfully.
+KT04 initially consumed `ANIMO-KT03F01@0bd8e3f2fe84837e85c45c44ec2e8201f81cef12` as though the Hlpimp=1 absent-interception rule were fully qualified.
 
-The predecessor chain is now coherent:
+Current GOV06 and GOV04 require a correction. KT03F01 is Tier C because it decides missing physical state and state/source ownership semantics with transport-facing consequences. Same-agent adversarial review is valid process evidence but is not the genuinely independent second-line review required by GOV04.
 
-`KT02 model-neutral runtime -> KT03 file-independent HydrologyStep -> KT03F01 Hlpimp=1 absent interception-state disposition -> KT04 guarded downstream projection`.
+KT03F01 is now checkpointed at:
 
-KT04 does not reopen the KT03 payload schema. It adds a separate projection layer so the scientific distinction between "state absent" and "state explicitly supplied" survives into downstream transformation.
+`36024e5b8cd62203b03b9b72c0d08e4c797612bb`
 
-The first implementation head `7111ebc969fff927240a3c5532a2e322402814c9` passed exact-head CI run `35284103015`. Adversarial pre-close inspection identified two contract-hardening items: the projection carrier must be structurally immutable, and a typed provider must present a pinned semantic authority rather than a free policy string. Both are remediated before review.
+with exact-head CI run `35284428532` successful and status pending independent review.
 
-## Supplementary supplied build artifacts
+## Relevant KT04 delta preserved
 
-Additional user-supplied local artifacts were inspected during reconciliation:
+Before this governance correction, KT04 hardened the projection so that it:
 
-- `animo41.vfproj` SHA-256 `f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a`;
-- `animo41.exe` SHA-256 `40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d`.
+- freezes the external carrier;
+- validates exact fields and profile shapes;
+- checks finite ANIMO-owned context;
+- validates runoff splitting against imported `Ru`;
+- reconstructs preliminary `Flab(1)`, then `Dif -> Evso -> final Flab(1)` in revision-53 source order.
 
-The project declares `LocalVariableStorage="localStorageSave"` in all four configurations. Only `Debug|x64` explicitly declares `LocalSavedScalarsZero="true"`; the other three configurations do not explicitly set that property, so no false/default value is inferred for them.
+Those implementation improvements remain useful and are preserved.
 
-The supplied executable embeds the PDB path `D:\USR\5200048928_SWAP_ANIMO\ANIMO\x64\Debug\animo41.pdb`, is PE32+ x86-64, and carries a 2026 linker timestamp. This is consistent with the supplied Debug|x64 project profile.
+## Consequence
 
-This evidence is supplementary only. The executable is a modern rebuild, not a recovered revision-53 historical reference. KT04 therefore does not use it to replace the KT03F01 scientific/source disposition or to claim B2 historical behaviour.
+The Hlpimp=1 implementation is retained as research history but is no longer executable as an authorized semantic path. Both legacy-provenance and typed-provider Hlpimp=1 requests now fail closed until Tier C review completes.
 
-Current phase: `QUALIFY`.
+The Hlpimp=11 explicit-state path does not depend on KT03F01 and remains safe nonproduction architecture evidence under frozen KT03 authority. It is not, by itself, a completed KT04 qualification or any production/B3/B4 claim.
+
+Current phase: `REVIEW`, blocked only on the Hlpimp=1 scientific dependency.

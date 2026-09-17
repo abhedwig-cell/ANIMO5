@@ -1,53 +1,36 @@
 {
   "workunit": "ANIMO-KT04",
   "title": "Hlpimp=1 Legacy Projection and File/Typed Equivalence",
-  "phase": "QUALIFY",
-  "checkpoint_state": "SOURCE_EQUIVALENT_TOP_BOUNDARY_HARDENING_APPLIED_REVIEW_PENDING",
+  "phase": "REVIEW",
+  "checkpoint_state": "HLPIMP1_DEPENDENCY_BLOCKED_TIER_C_INDEPENDENT_REVIEW_REQUIRED_EXPLICIT_PATH_GREEN",
   "branch": "work/animo-kt04-hlpimp1-legacy-projection",
-  "base_authority": "ANIMO-KT03F01@0bd8e3f2fe84837e85c45c44ec2e8201f81cef12",
+  "original_base_claim": "ANIMO-KT03F01@0bd8e3f2fe84837e85c45c44ec2e8201f81cef12",
+  "corrected_kt03f01_review_checkpoint": "ANIMO-KT03F01@36024e5b8cd62203b03b9b72c0d08e4c797612bb",
   "consumed_kt03_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
   "frozen_kt03_qualification_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
-  "first_implementation_head": "7111ebc969fff927240a3c5532a2e322402814c9",
-  "first_implementation_exact_head_ci": {
-    "run_id": 35284103015,
-    "conclusion": "SUCCESS"
-  },
-  "first_remediation_head": "94ad6473711dc1136f41ff8ce6c7ebd147fd3aa8",
-  "first_remediation_exact_head_ci": {
-    "run_id": 35284238167,
-    "conclusion": "SUCCESS"
-  },
-  "second_remediation_head": "708738dca426bfa4eba6a8c374995619ed234fbf",
-  "second_remediation_exact_head_ci": {
-    "run_id": 35284458112,
-    "conclusion": "SUCCESS"
-  },
+  "latest_pre_governance_implementation_head": "373de962a125e1b77d4a4e25d749fd87bb8cd16e",
   "production_src_modified": false,
   "normalized_hydrology_step_contract_modified": false,
-  "implemented_capabilities": [
-    "pinned semantic projection authority",
+  "governance_correction": {
+    "GOV04_risk_tier": "TIER_C",
+    "reason": "Hlpimp=1 projection consumes a missing-state scientific semantic pending genuinely independent second-line review",
+    "action": "Hlpimp=1 executable projection fail-closed; KT04 cannot qualify or close on that semantic"
+  },
+  "current_capabilities": [
+    "explicit Hlpimp=11 projection authority from frozen KT03 evidence",
     "immutable external projection carrier",
     "exact external projection field-set and profile-shape validation",
     "finite ANIMO-owned top-boundary context validation",
     "runoff split closure validation against imported Ru",
-    "Hlpimp=1 absent-state projection without fabricated Sict",
-    "Hlpimp=11 explicit-state projection",
-    "legacy provenance to authority selection",
-    "producer-independent typed projection path",
-    "source-ordered SWAP3 top-boundary preliminary-Flab1, Dif, Evso and final-Flab1 transformation probe"
+    "Hlpimp=1 provenance and typed-provider requests fail closed pending independent review",
+    "Hlpimp=11 legacy-file and typed-provider projection equivalence in bounded prototype",
+    "source-ordered SWAP3 top-boundary preliminary-Flab1, Dif, Evso and final-Flab1 probe for explicit-state path"
   ],
   "supplementary_build_evidence": "SUPPLEMENTARY_BUILD_ARTIFACT_NOT_B2",
-  "preclose_findings_remediated": [
-    "free policy string could over-authorize unqualified typed producers",
-    "mutable external_inputs dictionary weakened projection immutability",
-    "absent LocalSavedScalarsZero attributes were incorrectly represented as false rather than not explicitly set",
-    "directly constructed projection could validate with missing, extra or incoherent profile fields",
-    "non-finite ANIMO-owned top-boundary context was not rejected explicitly",
-    "top-boundary probe accepted caller-supplied Flab1/Flab2/drainage terms that are file-derived or source-derived, allowing internally inconsistent source emulation"
-  ],
-  "accepted_review_boundary": "projection authority is a semantic contract pin, not cryptographic producer attestation",
-  "verdict": "QUALIFICATION_CANDIDATE_AWAITING_FINAL_REMEDIATION_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW",
-  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_FINAL_ADVERSARIAL_REVIEW",
+  "Hlpimp1_status": "BLOCKED_PENDING_KT03F01_GOV04_TIER_C_INDEPENDENT_REVIEW",
+  "Hlpimp11_status": "IMPLEMENTED_TESTED_NONPRODUCTION_ARCHITECTURE_EVIDENCE_NOT_KT04_QUALIFICATION",
+  "verdict": "KT04_NOT_QUALIFIABLE_UNTIL_KT03F01_INDEPENDENT_REVIEW; EXPLICIT_STATE_PATH_REMAINS_SAFE_PARALLEL_EVIDENCE",
+  "next_permitted_action": "WAIT_FOR_KT03F01_INDEPENDENT_REVIEW_FOR_HLPIMP1; EXPLICIT_STATE_SUCCESSOR_WORK MAY CONTINUE SEPARATELY",
   "explicit_exclusions": [
     "Hlpimp=2 semantics",
     "production source changes",
