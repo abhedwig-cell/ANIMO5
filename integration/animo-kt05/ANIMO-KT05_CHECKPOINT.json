@@ -1,8 +1,8 @@
 {
   "workunit": "ANIMO-KT05",
   "title": "Explicit-State Hydrology Runtime Interval Binding",
-  "phase": "QUALIFY",
-  "checkpoint_state": "FIRST_GREEN_HEAD_REVIEWED_MATERIAL_FINDINGS_REMEDIATED_EXACT_HEAD_CI_PENDING",
+  "phase": "REVIEW",
+  "checkpoint_state": "SELF_REVIEW_PASS_INDEPENDENT_TIER_C_REVIEW_REQUIRED",
   "branch": "work/animo-kt05-explicit-state-runtime-adapter",
   "base_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
   "consumed_kt02_authority": "ANIMO-KT02@1f88db4dc87fc4d93075884ac35a59711f0725bf",
@@ -10,39 +10,53 @@
   "consumed_kt03_contract_head": "e844c7658a95819fc0463c55737f9bd41b29a6da",
   "consumes_kt03f01_as_qualified_authority": false,
   "candidate_risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS",
-  "first_green_head": "1744609baaf2d39c04ac3af2b4d128af62a3bc79",
-  "first_green_exact_head_ci": {
-    "run_id": 35285609451,
-    "conclusion": "SUCCESS"
+  "reviewed_head": "c67c28f0475c42351c1a66f58d4d44ce8b584ee5",
+  "exact_head_ci": {
+    "run_id": 35285939129,
+    "conclusion": "SUCCESS",
+    "checks": [
+      "frozen KT02 qualification tests",
+      "frozen KT03 adapter tests",
+      "KT05 explicit-state runtime adapter tests",
+      "checkpoint JSON validation",
+      "LWKM derived fixture JSON validation"
+    ]
   },
   "review": {
     "mode": "same-agent / not genuinely independent",
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "material_findings": [
+    "verdict": "PASS_REMEDIATED_BOUNDED_RUNTIME_BINDING_CANDIDATE",
+    "independent_review_status": "REQUIRED_READY_NOT_YET_PERFORMED",
+    "material_findings_remediated": [
       "partial interval view incorrectly shared full HydrologyStep schema identity",
       "producer-day offset was not pinned to a runtime calendar contract",
       "first proof used only synthetic producer-time metadata",
       "single-forcing multi-step nonpublication required explicit coverage"
     ],
-    "remediation_status": "APPLIED_CI_PENDING"
+    "remaining_bounded_limitations": [
+      "semantic authority strings are contract pins not producer authentication",
+      "public runtime failure reason does not expose detailed client binding reason",
+      "one forcing binding at a time; no multi-packet forcing provider",
+      "synthetic accepted ANIMO state token rather than real scientific continuation state",
+      "no scientific admissibility calculation"
+    ]
   },
   "production_src_modified": false,
   "kt02_runtime_core_modified": false,
-  "implemented_capabilities": [
-    "distinct explicit interval-binding contract projected from frozen KT03 source contract",
-    "explicit-state hydrology forcing held outside accepted continuation state",
-    "runtime calendar contract pinned in coupling composition",
-    "exact whole-day runtime-to-producer interval binding",
-    "runtime time remains authoritative",
-    "producer endpoint and duration metadata checked fail-closed",
-    "pinned LWKM first-interval derived fixture used as bounded real-producer evidence",
-    "missing explicit interception endpoint fails closed",
+  "qualified_capability_candidate": [
+    "distinct KT05 explicit interval-binding projection from frozen KT03 contract",
+    "explicit-state forcing remains outside accepted continuation state",
+    "runtime calendar contract and whole-day offset are explicit composition inputs",
+    "KT02 runtime remains accepted-time and publication authority",
+    "exact producer endpoint and duration agreement fail closed",
     "fractional producer metadata and subday runtime mapping fail closed",
-    "single forcing cannot leak a partially completed multi-step interval",
-    "accepted payload remains unchanged by forcing-only proof attempt"
+    "pinned LWKM first interval provides B1 real-producer contact",
+    "partial multi-step working commit does not publish on later forcing mismatch"
   ],
-  "verdict": "REMEDIATED_NONPRODUCTION_RUNTIME_BINDING_CANDIDATE_AWAITING_EXACT_HEAD_CI_AND_FINAL_SAME_AGENT_REVIEW",
-  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_FINAL_SAME_AGENT_ADVERSARIAL_REVIEW_AND_PREPARE_GENUINELY_INDEPENDENT_TIER_C_HANDOFF",
+  "qualification_status": "NOT_YET_QUALIFIED_UNDER_GOV04_TIER_C",
+  "admission_status": "NOT_ADMITTED",
+  "next_permitted_action": "GENUINELY_INDEPENDENT_TIER_C_SECOND_LINE_REVIEW_THEN_FORMAL_DISPOSITION_OR_REOPEN",
+  "safe_parallel_action": "CONTINUE_NON_SEMANTIC_TOOLING_OR_SEPARATE_EXPLICIT_STATE_RESEARCH_THAT_DOES_NOT_CONSUME_KT05_AS_QUALIFIED_AUTHORITY",
   "explicit_exclusions": [
     "Hlpimp=1 semantics",
     "Hlpimp=2 semantics",
