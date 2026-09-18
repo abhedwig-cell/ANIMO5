@@ -1,0 +1,39 @@
+{
+  "work_unit": "ANIMO-KT15",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "ff7280e04dd0ceadbf726b112b7a414a23d9536e",
+  "exact_head_ci": {
+    "run_id": 35375867444,
+    "job_id": 105700281764,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "accepted_science_and_continuation_identity_bound_before_execution": "PASS",
+    "BOUNDQ02B_opaque_frame_used_not_public_mutable_frame": "PASS",
+    "boundary_content_identity_preserved": "PASS",
+    "science_executes_only_on_private_working_store": "PASS",
+    "next_hydrology_runinu_and_boundary_cursor_prepared_off_to_side": "PASS",
+    "next_continuation_matches_working_science_generation_lineage_time": "PASS",
+    "complete_working_application_validated_before_publication": "PASS",
+    "exactly_one_external_aggregate_assignment": "PASS",
+    "science_reject_after_boundary_candidate_leaves_external_group_unchanged": "PASS",
+    "invalid_content_identity_leaves_external_group_unchanged": "PASS",
+    "two_consecutive_intervals_advance_generation_and_continuation_coherently": "PASS",
+    "no_first_call_Runinu_semantics_invented": "PASS",
+    "no_source_hash_verification_claim": "PASS",
+    "no_canonical_state_or_checkpoint_admission": "PASS",
+    "no_B3_B4_TB7_or_production_effect": "PASS",
+    "independent_Tier_D_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "repair_history": [
+    "Validator mutable-frame substring check was narrowed so immutable_static_boundary_interval_frame_t is not falsely classified as public mutable frame use.",
+    "Validator atomic ordering check was anchored to the continuation call site rather than the use-association name."
+  ],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
