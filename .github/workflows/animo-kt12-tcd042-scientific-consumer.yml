@@ -1,0 +1,23 @@
+name: ANIMO KT12 TCD042 scientific consumer
+on:
+  push:
+    branches: [work/animo-kt12-tcd042-scientific-consumer-composition]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  scientific-consumer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in 8efdd151d89e1cff131d4b21e2acf559ca1828d6 7146612d5dfa8ad87a4660f0c50c68a5db1e3a29 9ca23f41dc3c28af686b1bc0bff8e7d66416d367 8b2a4071d623bc2e3003dca8977e032d5c0d8c3c 22e4ec3bb88e2e13905ccbbb2f380a9bf235db55 6895b67799f26888025eced7188e7190b2a0d07d 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Validate governance and scope
+        run: python tools/validate_kt12_tcd042_scientific_consumer.py
+      - name: Compile and run bounded TCD042 transaction client
+        run: bash tests/kt12/run_kt12_tests.sh
