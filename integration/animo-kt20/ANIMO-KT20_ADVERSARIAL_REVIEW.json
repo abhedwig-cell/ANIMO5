@@ -1,0 +1,54 @@
+{
+  "work_unit": "ANIMO-KT20",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "4509ce511fd9813f00a7311bc57c75b6ac96d366",
+  "reviewed_authoring_tree": "278ca3cb012c01e7377b3d3d596cf5934c65fe46",
+  "exact_head_ci": {
+    "run_id": 35404900389,
+    "conclusion": "success"
+  },
+  "frozen_blobs": {
+    "python_frame": "6f3b301b133dcc8ca4bdf04c302c4d4b8ad84af9",
+    "fortran_decoder": "88519e2e6f896e27ad5caf43f258dc1e55da1012",
+    "python_tests": "905114632ae30405330b2a3e7a38e4bcef4498b5",
+    "fortran_tests": "74ca90eef882ad5133658ff35b1a56a982f70927"
+  },
+  "review_axes": {
+    "KT19_pinned_source_authority_preserved": "PASS",
+    "KT18_application_authority_preserved": "PASS",
+    "KT11_central_authority_unchanged": "PASS",
+    "frame_explicitly_nonproduction_noncanonical": "PASS",
+    "binary64_values_cross_by_exact_bit_identity": "PASS",
+    "Python_roundtrip_recomputes_KT03_typed_digest": "PASS",
+    "payload_mutation_rejected": "PASS",
+    "Fortran_reconstruction_reuses_KT05_validation": "PASS",
+    "real_B1_first_packet_identity_preserved": "PASS",
+    "real_packet_selected_by_KT18": "PASS",
+    "real_packet_not_misclaimed_as_admitted_science": "PASS",
+    "real_packet_failure_preserves_accepted_application": "PASS",
+    "synthetic_positive_control_explicitly_nonhistorical": "PASS",
+    "synthetic_control_commits_through_same_bridge": "PASS",
+    "KT19_regression_green": "PASS",
+    "KT18_KT11_KT15_regressions_green": "PASS",
+    "no_B2_B3_B4_TB7_production_or_StatusA_claim": "PASS",
+    "independent_Tier_D_gate_retained": "PASS"
+  },
+  "repair_history": [
+    {
+      "runs": [
+        35404819400,
+        35404840877
+      ],
+      "classification": "LOCAL_TEST_HARNESS_IMPORT_PATH_ONLY",
+      "repair": "Bind repository root through PYTHONPATH for direct Python test and materializer execution.",
+      "scientific_or_architectural_change": false
+    }
+  ],
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
