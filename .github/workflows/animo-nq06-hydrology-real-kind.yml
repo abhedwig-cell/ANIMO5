@@ -1,0 +1,31 @@
+name: ANIMO NQ06 hydrology real kind
+on:
+  push:
+    branches: [work/animo-nq06-rev53-hydrology-real-kind-policy]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-numerics/NQ06_REV53_BUILD_PRECISION_EVIDENCE.json >/dev/null
+      - run: python -m json.tool integration/animo-numerics/ANIMO-NQ06_STATUS.json >/dev/null
+      - name: Validate evidence and scope
+        run: python tools/validate_nq06_hydrology_real_kind.py
+      - name: Verify nonproduction real64 compiler mapping
+        run: |
+          cat > /tmp/nq06.f90 <<'EOF'
+          program nq06
+            use iso_fortran_env, only: real64
+            implicit none
+            real(real64) :: x
+            x = 1.0_real64
+            if (storage_size(x) /= 64) error stop 1
+            print *, 'PASS_NQ06_REAL64_STORAGE_64'
+          end program nq06
+          EOF
+          gfortran -std=f2008 /tmp/nq06.f90 -o /tmp/nq06
+          /tmp/nq06
