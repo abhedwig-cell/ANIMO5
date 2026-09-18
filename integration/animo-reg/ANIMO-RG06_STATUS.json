@@ -2,9 +2,9 @@
   "work_unit": "ANIMO-RG06",
   "title": "Post-KT11 Program Rebaseline and Scientific-Execution Routing",
   "branch": "work/animo-rg06-post-kt11-program-rebaseline",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI_AND_GOV05_REVIEW",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_POST_KT11_CURRENT_PROGRAM_REBASELINE_AND_NEXT_WAVE_ROUTING_NO_SCIENTIFIC_OR_PRODUCTION_ADVANCE",
+  "decision": "QUALIFIED_POST_KT11_CURRENT_PROGRAM_REBASELINE_AND_NEXT_WAVE_ROUTING_NO_SCIENTIFIC_OR_PRODUCTION_ADVANCE",
   "source_central_regie": "ANIMO-RG05Q@3402666360d3e30105712b121a98fc4b9055926f",
   "scientific_aggregate": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
   "queue_authority": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
@@ -26,17 +26,21 @@
   "review": {
     "required": true,
     "mode": "GOV05_COMPATIBLE_SINGLE_AGENT_ADVERSARIAL_REVIEW",
-    "completed": false,
+    "completed": true,
     "genuinely_independent": false,
-    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT"
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "reviewed_head": "0fdc01a1cdf036ebe4fe1dd0ef96008cdacd7d71",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-rg06-post-kt11-program-rebaseline.yml",
     "validator": "tools/validate_rg06_post_kt11_rebaseline.py",
-    "authoring_run": null,
-    "authoring_job": null,
-    "authoring_conclusion": null,
-    "exact_final_head_required": true
+    "authoring_run": 35359253771,
+    "authoring_job": 105646133086,
+    "authoring_conclusion": "success",
+    "exact_final_head_required": true,
+    "reviewed_authoring_head": "0fdc01a1cdf036ebe4fe1dd0ef96008cdacd7d71",
+    "closeout_note": "Authoring head 0fdc01a1cdf036ebe4fe1dd0ef96008cdacd7d71 passed run 35359253771. This review/status-only closeout is authoritative only if the same workflow succeeds on this exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -53,10 +57,10 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_AUTHORING_CI_THEN_GOV05_ADVERSARIAL_REVIEW_IF_LIVE_AUTHORITY_SET_STABLE"
+  "next": "USE_ANIMO_RG06_AS_CURRENT_PROGRAM_REBASELINE; TCD016_REMAINS_PARKED; TCD034_AND_TCD040_EXTERNAL_EVIDENCE_ROUTES_MAY_PROCEED; KT12_BOUNDED_TCD042_SCIENTIFIC_CONSUMER_COMPOSITION_MAY_START_AFTER_EXACT_PINNING_AND_SEPARATE_GOV04_CLASSIFICATION"
 }
