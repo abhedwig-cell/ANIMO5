@@ -1,0 +1,91 @@
+{
+  "record_id": "ANIMO-KT06-A1-GOV04-TIER-C-ADMISSION",
+  "work_unit": "ANIMO-KT06-A1",
+  "target": "ANIMO-KT06",
+  "branch": "work/animo-kt06-gov04-tier-c-admission",
+  "gov04_risk_tier": "C",
+  "decision": "ADMIT_ANIMO_KT06_BOUNDED_NONPRODUCTION_RUNTIME_BINDING_GOV04_TIER_C",
+  "admitted": true,
+  "production_authorized": false,
+  "authorities": {
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "independent_review": "review/animo-kt06-explicit-hydrology-runtime-binding-independent@0d3906e0b54f21eb1a19f8137f1aabef4edff567",
+    "formal_disposition": "ANIMO-KT06-D1@b75fc91d812be689aecf2894c50b37c926e9c5fd"
+  },
+  "frozen_identity": {
+    "implementation_head": "fc818917a46408d55cd7f03e2fa8257534683907",
+    "implementation_path": "prototype/kt06/mod_animo_explicit_hydrology_runtime_binding.f90",
+    "implementation_blob": "9a24ea833291f761d2fa76ca4cc9fee28436c614",
+    "kt02_frozen_executable": "1909709e7a244b5d0ee53342a26bab74815c118c",
+    "kt02_interval_runtime_blob": "ac8eed3b7385daad3cb7c926bd7dab9d99e0a888",
+    "kt02_transactions_blob": "182164ca4bf4a890d98f9c89366764e5d818b10c",
+    "kt05_frozen_implementation": "69dd607ba1efa28de3f83cc963526021352b3311",
+    "kt05_adapter_blob": "9ed1d6d3e91d9f5522f8c2a49a5e19eed1d82a9a"
+  },
+  "admitted_claim": "Within the declared exact whole-day envelope, a complete explicit-state KT05 hydrology packet can be bound to a KT02 requested interval without making producer time authoritative, without placing forcing in accepted continuation state and without bypassing KT02 atomic publication.",
+  "admitted_scope": {
+    "accepted_time_authority": "KT02_ONLY",
+    "external_publication_authority": "KT02_ONLY",
+    "producer_time_role": "FAIL_CLOSED_VALIDATION_METADATA_ONLY",
+    "runtime_time_envelope": "EXACT_WHOLE_DAY_ONLY",
+    "calendar_relation": "CONFIGURED_RUNTIME_CALENDAR_ID_PLUS_NONNEGATIVE_INTEGER_DAY_OFFSET",
+    "forcing_ownership": "CLIENT_OWNED_OUTSIDE_ACCEPTED_CONTINUATION_STATE",
+    "hydrology_boundary": "COMPLETE_KT05_EXPLICIT_STATE_PACKET_VALIDATED_AND_PROJECTED",
+    "accepted_payload": "SYNTHETIC_RUNTIME_PROBE_STATE_ONLY",
+    "publication": "KT02_PRIVATE_INTERVAL_THEN_ATOMIC_EXTERNAL_PUBLICATION"
+  },
+  "gates": {
+    "independent_second_line_review": "PASS_CLAIM_UNCHANGED",
+    "material_findings": "NONE",
+    "formal_disposition": "PASS_ANIMO_KT06_D1",
+    "frozen_implementation_identity": "PASS",
+    "scope_unchanged_since_review": "PASS",
+    "production_authorization": "NOT_APPLICABLE",
+    "b3_b4_status_a": "NOT_APPLICABLE"
+  },
+  "supplemental_evidence_only": {
+    "kt07": "2d469e0a00071b73207112222199eef82c96a961",
+    "kt08": "6927d8f66bd5948797b163880a869ecc0be4c391",
+    "kt09": "e54fc115fabb58da5e79fad33e1359717a5ed19c",
+    "kt10": "e4f7f4576cbe5b4d8f2b57b16ea98041fcc06428",
+    "runtime_authority_effect": "NONE"
+  },
+  "explicit_nonclaims": [
+    "multi-packet forcing provider",
+    "packet selection or forcing lifetime",
+    "retry policy",
+    "timestep-selection policy",
+    "fractional or subday mapping",
+    "generic calendar conversion",
+    "Hlpimp=1 semantics",
+    "Hlpimp=2 semantics",
+    "Hydro_detailed scientific execution",
+    "ANIMO scientific admissibility",
+    "production coupling or migration",
+    "B3 or B4 admission",
+    "Status A or Status AA"
+  ],
+  "hard_boundaries": {
+    "frozen_implementation_modified": false,
+    "kt02_runtime_modified": false,
+    "kt05_adapter_modified": false,
+    "production_source_modified": false,
+    "canonical_tcd_register_modified": false,
+    "central_regie_updated": false,
+    "production_patch_authorized": false,
+    "composition_admitted": false
+  },
+  "downstream_use": {
+    "may_consume_as_authority": "BOUNDED_NONPRODUCTION_KT05_TO_KT02_RUNTIME_BINDING_ONLY",
+    "must_requalify_if": [
+      "time ownership changes",
+      "forcing ownership changes",
+      "accepted-state semantics change",
+      "interval mapping changes",
+      "consumed scientific authority changes",
+      "multi-packet or retry-aware forcing semantics are introduced",
+      "scientific execution is composed into the runtime object",
+      "production-bound coupling is attempted"
+    ]
+  }
+}
