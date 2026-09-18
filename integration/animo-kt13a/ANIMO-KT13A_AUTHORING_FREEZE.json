@@ -1,0 +1,16 @@
+{
+  "work_unit": "ANIMO-KT13A",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "95dead10d7e017b7f46b2ce3f85704df134bb0e0",
+  "substantive_authoring_tree": "081e6ca2bf6b6d1120541836b27dde06a1512c82",
+  "frozen_composition_module_blob": "6e2e4c73e9b43f5d1bda58dc9387a56be8b2e2b1",
+  "frozen_test_blob": "66d74245497b4d93428fdb4f16476b0778e2c037",
+  "validated_run": 35369924474,
+  "validated_conclusion": "success",
+  "material_finding": "KT13A-F01",
+  "finding_remediated_before_freeze": true,
+  "candidate_claim": "SELECTED_KT05_PACKET_PLUS_EXPLICIT_START_CHEMISTRY_AND_EXACT_SHARED_HETOP_CAN_DRIVE_ONE_BOUNDED_TCD042_INTERVAL_TO_ATOMIC_KT02_COMMIT",
+  "independent_tier_d_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
