@@ -1,0 +1,45 @@
+{
+  "work_unit": "ANIMO-UBFORCE01",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "90eb78be7546edc275251ffaa130930cdf88b119",
+  "frozen_substantive_head": "bf827cfbf0ac53ffc72d3ce40b47b96125a1f7e3",
+  "frozen_substantive_tree": "6b41b42336c44a445cb4b67e915260d96f7a485f",
+  "frozen_implementation_blob": "fbe12e01df715ed7c95c59f5dd6b1ee73604034f",
+  "validated_authoring_runs": [
+    {
+      "run_id": 35365619370,
+      "head": "bf827cfbf0ac53ffc72d3ce40b47b96125a1f7e3",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 35365669769,
+      "head": "90eb78be7546edc275251ffaa130930cdf88b119",
+      "conclusion": "success"
+    }
+  ],
+  "review_axes": {
+    "hydrology_and_chemistry_ownership_separated": "PASS",
+    "IO01_boundary_nonadmission_preserved": "PASS",
+    "detailed_IWA2_IOPTHYVS1_source_route_pinned": "PASS",
+    "load1_to_load6_source_mapping_complete": "PASS",
+    "dry_deposition_kept_separate": "PASS",
+    "constituent_unit_dimension_preserved": "PASS",
+    "exact_interval_binding_present": "PASS",
+    "forcing_execution_provenance_required": "PASS",
+    "phosphorus_presence_explicit": "PASS",
+    "inactive_phosphorus_not_silently_retained": "PASS",
+    "no_BOUNDARY_parser_implementation": "PASS",
+    "no_source_load_resolver_implementation": "PASS",
+    "no_TCD042_readmission": "PASS",
+    "no_B3_B4_TB7_or_production_effect": "PASS",
+    "independent_Tier_D_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "independent_review_status": "REQUIRED_NOT_PERFORMED_IN_AUTHORING_CONTEXT",
+  "admission_performed": false,
+  "production_authorized": false
+}
