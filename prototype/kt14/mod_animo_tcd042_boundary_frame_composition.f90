@@ -15,6 +15,8 @@ module mod_animo_tcd042_boundary_frame_composition
   type, public :: kt14_composition_trace_t
     logical :: boundary_frame_validated = .false.
     character(len=64) :: boundary_content_sha256 = ''
+    integer :: boundary_simulation_start_year = 0
+    integer :: boundary_nuyr = 0
     integer :: boundary_selected_year = 0
     integer :: boundary_selected_slot = 0
     real(real64) :: dry_deposition_nh = 0.0_real64
@@ -71,6 +73,8 @@ contains
 
     trace%boundary_frame_validated = .true.
     trace%boundary_content_sha256 = content_sha256
+    trace%boundary_simulation_start_year = simulation_start_year
+    trace%boundary_nuyr = boundary_nuyr
     trace%boundary_selected_year = selected_year
     trace%boundary_selected_slot = selected_slot
     trace%dry_deposition_nh = dry_nh
