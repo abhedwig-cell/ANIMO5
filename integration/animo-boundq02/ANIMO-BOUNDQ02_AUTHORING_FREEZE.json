@@ -1,0 +1,16 @@
+{
+  "work_unit": "ANIMO-BOUNDQ02",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "4de422facff090031d379a09e9829810686f1b12",
+  "substantive_authoring_tree": "bb3e7a460fce377b715dead5711e7b1c4cadc7bc",
+  "frozen_implementation_blob": "3b4212618121ba1cf5c8db7d32700be01b4db50a",
+  "validated_run": 35372783936,
+  "validated_conclusion": "success",
+  "candidate_claim": "REV53_STATIC_BOUNDARY_YEAR_SELECTION_AND_EXACT_INTERVAL_CHEMISTRY_BINDING_HAVE_A_SOURCE_FAITHFUL_NONPRODUCTION_RUNTIME_REALIZATION",
+  "source_refresh_semantics": "FIRST_INTERVAL_OR_EXACT_JANUARY_FIRST_ONLY",
+  "continuous_civil_year_selection_admitted": false,
+  "canonical_cursor_state_admitted": false,
+  "checkpoint_schema_admitted": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
