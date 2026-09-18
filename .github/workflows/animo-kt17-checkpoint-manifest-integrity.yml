@@ -1,0 +1,25 @@
+name: ANIMO KT17 checkpoint manifest integrity
+on:
+  push:
+    branches: [work/animo-kt17-checkpoint-manifest-integrity-build-identity]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in c60dd36a38a2030e4f4ac1925f95b2966a6d1c87 7cd863b71a7a7fcc985514a8af28dcb69cae999a a079d93c965f6073586c55ee4b3544dd8873b723; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-kt17/KT17_INTEGRITY_MANIFEST.json >/dev/null
+      - run: python -m json.tool integration/animo-kt17/ANIMO-KT17_STATUS.json >/dev/null
+      - name: Validate governance and integrity contract
+        run: python tools/validate_kt17_checkpoint_manifest_integrity.py
+      - name: Compile SHA256, integrity, restore and upstream regression harnesses
+        run: bash tests/kt17/run_kt17_tests.sh
