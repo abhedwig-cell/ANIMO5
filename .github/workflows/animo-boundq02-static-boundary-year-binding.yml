@@ -1,0 +1,25 @@
+name: ANIMO BOUNDQ02 static boundary year binding
+on:
+  push:
+    branches: [work/animo-boundq02-static-boundary-year-binding]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 62b4fc36f2a47b67c08eedb095c60a5c059b77d8 8efdd151d89e1cff131d4b21e2acf559ca1828d6 931e32cec69dc78a03015f01190cff97bf1fe1b4 b4d78cf32cb149cf50aa2b0a0fbefee571eee6b8 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-boundq02/BOUNDQ02_SOURCE_MAPPING.json >/dev/null
+      - run: python -m json.tool integration/animo-boundq02/ANIMO-BOUNDQ02_STATUS.json >/dev/null
+      - name: Validate year cursor and frame authority
+        run: python tools/validate_boundq02_static_boundary_year_binding.py
+      - name: Compile and run boundary year-binding tests
+        run: bash tests/boundq02/run_boundq02_tests.sh
