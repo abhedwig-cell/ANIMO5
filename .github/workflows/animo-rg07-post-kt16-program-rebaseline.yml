@@ -1,0 +1,22 @@
+name: ANIMO RG07 post-KT16 program rebaseline
+on:
+  push:
+    branches: [work/animo-rg07-post-kt16-program-rebaseline]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 8efdd151d89e1cff131d4b21e2acf559ca1828d6 bc9e6ed997a078336645210ebb4d99ae976893fe 11e9bcdc6654e63f84875bf1f28dc54abe725700 1f13c7cab30772f4aa8d5071b19d13761c2b5f16 b82e5de364396eef3132f33cc48f8c28ab5aa04e fedf2177b8228507beb91d7318b5f4dec5078241 56384db4107aed484218363e26dbb7be7f51e8de 50731bf118deb8ef1029f220a40b39a99240e480 df2310cc69e3fe16187ba2235843222f8acfb726 f6e91fc1cb664d67caccc02e6ab21525a768d006 614391014438b2cc4445d2d6a8008c3f0f1c45d0 62b4fc36f2a47b67c08eedb095c60a5c059b77d8 fb0c0c842aed9a90378aca613279e09a856ad09b de6eef3122354e74405ff9c92286794714bdee82 c2bd0d17ac6921fcd9f22d6289a510cae454153d 46e9e7397be751f245069033bae655b4382b63bd d3a51aad084969a753cb5b54c604ebefba4b26c6 2279a961459211e03550dfda4af09ab4f7f6b9a3 7cd863b71a7a7fcc985514a8af28dcb69cae999a; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-reg/RG07_PROGRAM_REBASELINE.json >/dev/null
+      - run: python -m json.tool integration/animo-reg/ANIMO-RG07_STATUS.json >/dev/null
+      - run: python tools/validate_rg07_post_kt16_rebaseline.py
