@@ -1,0 +1,19 @@
+{
+  "work_unit": "ANIMO-KT15",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "ff7280e04dd0ceadbf726b112b7a414a23d9536e",
+  "substantive_authoring_tree": "9dc766b5a7e331a08dd506ed9d064732ca45d0cc",
+  "frozen_implementation_blob": "c6fc2a5fdbc17280a2b8cc5752bb45f7989783ba",
+  "frozen_test_blob": "1b7fb2086a3167d9a3a8282d3d7cac200a408eed",
+  "stateq11_blob": "5450563ac74ff40b7144f5c1ab7805f8d5849862",
+  "boundq02b_blob": "eae62a2ce077e3e568a8a73b25ac45d20c432bae",
+  "kt14b_blob": "080454a49e123ff4bd86a2fcdac7755b635e8734",
+  "validated_run": 35375867444,
+  "validated_job": 105700281764,
+  "validated_conclusion": "success",
+  "candidate_claim": "BOUNDED_TCD042_APPLICATION_CAN_PUBLISH_SCIENCE_AND_REQUIRED_CROSS_MODULE_CONTINUATION_AS_ONE_LOGICAL_ACCEPTED_GROUP",
+  "independent_review_required": true,
+  "canonical_state_admitted": false,
+  "checkpoint_schema_admitted": false,
+  "production_authorized": false
+}
