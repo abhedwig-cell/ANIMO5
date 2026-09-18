@@ -17,6 +17,7 @@ def show_json(sha,path):
 
 st=load("integration/animo-boundq01/ANIMO-BOUNDQ01_STATUS.json")
 nat=load("integration/animo-boundq01/BOUNDQ01_NATURAL_TESTBANK_SCAN.json")
+rng=load("integration/animo-boundq01/BOUNDQ01_NATURAL_RANGE_AUDIT.json")
 
 rg=show_json(RG06,"integration/animo-reg/ANIMO-RG06_STATUS.json")
 if rg.get("state")!="QUALIFIED_POST_KT11_CURRENT_PROGRAM_REBASELINE_AND_NEXT_WAVE_ROUTING_NO_SCIENTIFIC_OR_PRODUCTION_ADVANCE":
@@ -42,6 +43,16 @@ if nat.get("dynamic_runon_cases")!=0 or nat.get("dynamic_irrigation_cases")!=0:
     fail("natural option scan")
 if {c.get("ipo") for c in nat.get("cases",[])}!={0,1}:
     fail("natural IPO coverage")
+if rng.get("testbank_sha256")!=nat.get("testbank_sha256"):
+    fail("natural range audit testbank pin")
+if rng.get("case_count")!=9 or rng.get("all_static_options") is not True or rng.get("all_source_ranges_pass") is not True:
+    fail("natural range audit")
+if rng.get("phosphorus_modes")!=[0,1]:
+    fail("natural range audit phosphorus modes")
+if rng.get("numeric_evidence")!="DECIMAL_LEXICAL_RANGE_AUDIT_NOT_BINARY64_RUNTIME_EQUIVALENCE":
+    fail("natural range evidence class")
+if rng.get("historical_b2") is not False:
+    fail("natural range audit B2 overclaim")
 for c in nat.get("cases",[]):
     if c.get("ioptidti")!=0 or c.get("ioptirti")!=0:
         fail("natural dynamic option")
@@ -71,7 +82,7 @@ for forbidden in [">runoti:",">irriti:","BOUNDARY.INP parser migration admitted"
     if forbidden.lower() in mod.lower():
         fail("scope widening "+forbidden)
 
-allowed_prefixes=("prototype/boundq01/","tests/boundq01/","docs/boundq01/","integration/animo-boundq01/")
+allowed_prefixes=("prototype/boundq01/","tests/boundq01/","docs/boundq01/","integration/animo-boundq01/","tools/boundq01/")
 allowed_exact={
  ".github/workflows/animo-boundq01-static-boundary-chemistry.yml",
  "tools/validate_boundq01_static_boundary.py"
