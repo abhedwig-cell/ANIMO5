@@ -16,16 +16,20 @@ program test_kt15_atomic_composite_application
   use mod_animo_tcd042_upper_boundary_client, only: &
     tcd042_top_state_t, initialize_tcd042_store
   use mod_animo_atomic_composite_application, only: &
-    kt15_static_hydrology_config_t, kt15_application_state_t, kt15_atomic_trace_t, &
+    kt15_static_hydrology_config_t, kt15_application_config_t, &
+    kt15_application_state_t, kt15_atomic_trace_t, make_kt15_application_config, &
+    validate_kt15_application_config, same_kt15_application_config, &
     initialize_kt15_application_state, validate_kt15_application_state, &
     execute_kt15_atomic_interval, kt15_application_generation, kt15_application_time, &
-    snapshot_kt15_science_payload, snapshot_kt15_continuation
+    snapshot_kt15_science_payload, snapshot_kt15_continuation, &
+    snapshot_kt15_application_config
   implicit none
 
   call test_two_interval_atomic_progression()
   call test_science_reject_preserves_full_application_state()
-  call test_invalid_content_identity_preserves_application_state()
-  print *, 'PASS_KT15_ATOMIC_COMPOSITE_APPLICATION_COMMIT'
+  call test_invalid_config_rejected_before_application_state()
+  call test_config_is_immutable_across_intervals()
+  print *, 'PASS_KT15A_IMMUTABLE_CONFIG_ATOMIC_COMPOSITE_APPLICATION'
 
 contains
 
@@ -100,15 +104,17 @@ contains
     value%lefrso=0.0_real64
   end subroutine make_static_config
 
-  subroutine initialize_application(lineage,t0,c0,runinu,state)
-    character(len=*),intent(in)::lineage
+  subroutine initialize_application(lineage,t0,c0,runinu,hash,state,config)
+    character(len=*),intent(in)::lineage,hash
     type(TimeCoordinate),intent(in)::t0
     real(real64),intent(in)::c0,runinu
     type(kt15_application_state_t),intent(out)::state
+    type(kt15_application_config_t),intent(out)::config
     type(accepted_store_t)::store
     type(detailed_hydrology_origin_state_t)::origin
     type(boundary_year_cursor_t)::cursor
     type(composite_accepted_continuation_t)::cont
+    type(kt15_static_hydrology_config_t)::hydro_cfg
     real(real64)::mofro(1)
     logical::ok
     character(len=128)::reason
@@ -121,8 +127,12 @@ contains
     call initialize_boundary_year_cursor(cursor)
     call initialize_composite_continuation(lineage,t0,origin,runinu,cursor,cont,ok,reason)
     call assert_true(ok,'initialize composite continuation')
-    call initialize_kt15_application_state(store,cont,state,ok,reason)
-    call assert_true(ok,'initialize KT15 application')
+    call make_static_config(hydro_cfg)
+    call make_kt15_application_config('ANIMO_PG_86400_NOLEAPSECONDS_V1',0_int64,hydro_cfg, &
+      hash,2000,1,config,ok,reason)
+    call assert_true(ok,'make immutable application config')
+    call initialize_kt15_application_state(store,cont,config,state,ok,reason)
+    call assert_true(ok,'initialize KT15A application')
   end subroutine initialize_application
 
   subroutine science_concentration(state,c)
@@ -144,7 +154,7 @@ contains
     type(TimeCoordinate)::t0,t1,t2,t
     type(hydrology_step_t)::p1,p2
     type(static_boundary_chemistry_t)::boundary
-    type(kt15_static_hydrology_config_t)::cfg
+    type(kt15_application_config_t)::cfg
     type(kt15_application_state_t)::state
     type(kt15_atomic_trace_t)::tr1,tr2
     type(composite_accepted_continuation_t)::cont
@@ -160,11 +170,9 @@ contains
     call make_packet(tiny,730120_int64,p1)
     call make_packet(tiny,730121_int64,p2)
     call read_boundary(boundary)
-    call make_static_config(cfg)
-    call initialize_application('KT15-TWO',t0,1.0_real64,0.0_real64,state)
+    call initialize_application('KT15-TWO',t0,1.0_real64,0.0_real64,hash,state,cfg)
 
-    call execute_kt15_atomic_interval(state,p1,'ANIMO_PG_86400_NOLEAPSECONDS_V1',0_int64, &
-      t1,'KT15-I1',cfg,boundary,hash,2000,1,tr1,success,reason)
+    call execute_kt15_atomic_interval(state,p1,t1,'KT15-I1',boundary,tr1,success,reason)
     call assert_true(success,'first atomic interval')
     call assert_true(tr1%boundary_bound .and. tr1%working_science_committed .and. &
       tr1%next_continuation_ready .and. tr1%external_group_published,'first atomic trace')
@@ -182,8 +190,7 @@ contains
     call assert_true(transfer(cont%hydrology_origin%mofro(1),0_int64)== &
       transfer(0.5_real64,0_int64),'hydrology endpoint published as next origin')
 
-    call execute_kt15_atomic_interval(state,p2,'ANIMO_PG_86400_NOLEAPSECONDS_V1',0_int64, &
-      t2,'KT15-I2',cfg,boundary,hash,2000,1,tr2,success,reason)
+    call execute_kt15_atomic_interval(state,p2,t2,'KT15-I2',boundary,tr2,success,reason)
     call assert_true(success,'second atomic interval')
     call assert_true(tr2%origin_generation==1_int64 .and. tr2%published_generation==2_int64, &
       'second generation transition')
@@ -204,7 +211,7 @@ contains
     type(TimeCoordinate)::t0,t1,t
     type(hydrology_step_t)::packet
     type(static_boundary_chemistry_t)::boundary
-    type(kt15_static_hydrology_config_t)::cfg
+    type(kt15_application_config_t)::cfg
     type(kt15_application_state_t)::state
     type(kt15_atomic_trace_t)::trace
     type(composite_accepted_continuation_t)::before,after
@@ -218,13 +225,11 @@ contains
     call make_day(730120_int64,t1)
     call make_packet(too_large,730120_int64,packet)
     call read_boundary(boundary)
-    call make_static_config(cfg)
-    call initialize_application('KT15-REJECT',t0,4.0_real64,0.0_real64,state)
+    call initialize_application('KT15-REJECT',t0,4.0_real64,0.0_real64,hash,state,cfg)
     call snapshot_kt15_continuation(state,before,ok)
     call assert_true(ok,'snapshot before reject')
 
-    call execute_kt15_atomic_interval(state,packet,'ANIMO_PG_86400_NOLEAPSECONDS_V1',0_int64, &
-      t1,'KT15-REJECT-I1',cfg,boundary,hash,2000,1,trace,success,reason)
+    call execute_kt15_atomic_interval(state,packet,t1,'KT15-REJECT-I1',boundary,trace,success,reason)
 
     call assert_true(.not.success,'out-of-scope science rejects group')
     call assert_true(trace%boundary_bound,'boundary candidate was prepared')
@@ -242,36 +247,56 @@ contains
       'continuation time unchanged')
   end subroutine test_science_reject_preserves_full_application_state
 
-  subroutine test_invalid_content_identity_preserves_application_state()
-    type(TimeCoordinate)::t0,t1
-    type(hydrology_step_t)::packet
+  subroutine test_invalid_config_rejected_before_application_state()
+    type(kt15_static_hydrology_config_t)::hydro_cfg
+    type(kt15_application_config_t)::config
+    logical::ok
+    character(len=128)::reason
+
+    call make_static_config(hydro_cfg)
+    call make_kt15_application_config('ANIMO_PG_86400_NOLEAPSECONDS_V1',0_int64,hydro_cfg, &
+      'NOT-A-SHA256',2000,1,config,ok,reason)
+    call assert_true(.not.ok,'invalid boundary content identity rejected by config')
+
+    call make_kt15_application_config('',0_int64,hydro_cfg, &
+      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',2000,1,config,ok,reason)
+    call assert_true(.not.ok,'missing calendar rejected by config')
+
+    call make_kt15_application_config('ANIMO_PG_86400_NOLEAPSECONDS_V1',0_int64,hydro_cfg, &
+      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',2000,7,config,ok,reason)
+    call assert_true(.not.ok,'invalid load channel rejected by config')
+  end subroutine test_invalid_config_rejected_before_application_state
+
+  subroutine test_config_is_immutable_across_intervals()
+    type(TimeCoordinate)::t0,t1,t2
+    type(hydrology_step_t)::p1,p2
     type(static_boundary_chemistry_t)::boundary
-    type(kt15_static_hydrology_config_t)::cfg
     type(kt15_application_state_t)::state
-    type(kt15_atomic_trace_t)::trace
-    type(composite_accepted_continuation_t)::cont
+    type(kt15_application_config_t)::initial_cfg,after_cfg
+    type(kt15_atomic_trace_t)::tr
     logical::ok,success
     character(len=128)::reason
-    real(real64)::c
+    real(real64),parameter::tiny=2.0_real64**(-30)
+    character(len=*),parameter::hash='cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc'
 
     call make_day(730119_int64,t0)
     call make_day(730120_int64,t1)
-    call make_packet(0.0_real64,730120_int64,packet)
+    call make_day(730121_int64,t2)
+    call make_packet(tiny,730120_int64,p1)
+    call make_packet(tiny,730121_int64,p2)
     call read_boundary(boundary)
-    call make_static_config(cfg)
-    call initialize_application('KT15-BADHASH',t0,3.0_real64,0.0_real64,state)
+    call initialize_application('KT15A-CONFIG',t0,1.0_real64,0.0_real64,hash,state,initial_cfg)
 
-    call execute_kt15_atomic_interval(state,packet,'ANIMO_PG_86400_NOLEAPSECONDS_V1',0_int64, &
-      t1,'KT15-BADHASH-I1',cfg,boundary,'NOT-A-SHA256',2000,1,trace,success,reason)
-
-    call assert_true(.not.success,'invalid content identity rejected')
-    call assert_true(.not.trace%boundary_bound,'invalid content identity rejects before frame binding')
-    call assert_true(.not.trace%external_group_published,'invalid content identity not published')
-    call assert_true(kt15_application_generation(state)==0_int64,'bad hash generation unchanged')
-    call science_concentration(state,c)
-    call assert_true(transfer(c,0_int64)==transfer(3.0_real64,0_int64),'bad hash science unchanged')
-    call snapshot_kt15_continuation(state,cont,ok)
-    call assert_true(ok .and. .not.cont%boundary_cursor%initialized,'bad hash cursor unchanged')
-  end subroutine test_invalid_content_identity_preserves_application_state
+    call execute_kt15_atomic_interval(state,p1,t1,'KT15A-CONFIG-I1',boundary,tr,success,reason)
+    call assert_true(success,'config interval one')
+    call execute_kt15_atomic_interval(state,p2,t2,'KT15A-CONFIG-I2',boundary,tr,success,reason)
+    call assert_true(success,'config interval two')
+    call snapshot_kt15_application_config(state,after_cfg,ok)
+    call assert_true(ok,'snapshot immutable config')
+    call assert_true(same_kt15_application_config(initial_cfg,after_cfg), &
+      'accepted application config unchanged across intervals')
+    call validate_kt15_application_config(after_cfg,ok,reason)
+    call assert_true(ok,'persisted config remains valid')
+  end subroutine test_config_is_immutable_across_intervals
 
 end program test_kt15_atomic_composite_application
