@@ -1,0 +1,25 @@
+{
+  "work_unit": "ANIMO-KT13A",
+  "finding_id": "KT13A-F01",
+  "classification": "MATERIAL_CROSS_MODULE_COMPOSITION_COHERENCE_FINDING",
+  "original_target": {
+    "head": "51baa9851d5bed0b711199835bb817b22514c511",
+    "module_blob": "f11b1a444db839994e7a5d4de00380eb8a6849a4"
+  },
+  "evidence": {
+    "hydroexec_geometry_coordinate": "start_context%he_top",
+    "kt12_geometry_coordinate": "hetop",
+    "original_exact_identity_guard_present": false,
+    "consequence": "one composed interval could evaluate source-derived hydrology and TCD042 concentration algebra using different top-layer thickness values"
+  },
+  "remediation": {
+    "branch": "work/animo-kt13a-composition-coherence-remediation",
+    "module_blob": "6e2e4c73e9b43f5d1bda58dc9387a56be8b2e2b1",
+    "exact_binary64_identity_guard_added": true,
+    "rejection_reason": "KT13_HETOP_GEOMETRY_MISMATCH",
+    "rejection_before_binding": true,
+    "accepted_store_nonmutation_test_added": true
+  },
+  "admission_effect": "NONE",
+  "independent_review_effect": "UNREMEDIATED_KT13_TARGET_SHOULD_NOT_BE_USED_FOR_TIER_D_REVIEW_IF_KT13A_QUALIFIES"
+}
