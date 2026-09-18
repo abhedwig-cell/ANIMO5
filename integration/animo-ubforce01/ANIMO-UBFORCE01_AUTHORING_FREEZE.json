@@ -1,0 +1,18 @@
+{
+  "work_unit": "ANIMO-UBFORCE01",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "bf827cfbf0ac53ffc72d3ce40b47b96125a1f7e3",
+  "substantive_authoring_tree": "6b41b42336c44a445cb4b67e915260d96f7a485f",
+  "frozen_implementation_blob": "fbe12e01df715ed7c95c59f5dd6b1ee73604034f",
+  "validated_run": 35365619370,
+  "validated_conclusion": "success",
+  "candidate_claim": "TCD042_UPPER_SOLUTE_LOAD_FORCING_HAS_AN_EXPLICIT_TYPED_SOURCE_MAPPED_BOUNDARY",
+  "execution_nonclaims": [
+    "BOUNDARY_PARSER_NOT_QUALIFIED",
+    "SOURCE_LOAD_RESOLVER_NOT_QUALIFIED",
+    "DRY_DEPOSITION_NOT_INCLUDED"
+  ],
+  "direct_composition_unlocked": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
