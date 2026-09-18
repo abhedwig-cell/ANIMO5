@@ -1,0 +1,71 @@
+{
+  "work_unit": "ANIMO-RG05Q",
+  "title": "KT11 Tier C Multi-Packet Provider Admission Integration",
+  "source_aggregate": "ANIMO-RG05P@9a8d0d886f745be91153f47437cb0de2b3076ab2",
+  "authority_kind": "NONPRODUCTION_RUNTIME_COUPLING_SEMANTICS",
+  "runtime_authority": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
+  "independent_review": "review/animo-kt11-multi-packet-hydrology-provider-independent@dc91b04cd01230fcffbde12fcc8423e35d98bf85",
+  "formal_disposition": "ANIMO-KT11-D1@1bd1232bba2cb2fa576a60742d8f968ea441c252",
+  "gov04_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "kt06_dependency": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+  "frozen_implementation": {
+    "head": "843ac357f8b86f84131ddc08bf2097bb5af4e080",
+    "path": "prototype/kt11/mod_animo_multi_packet_hydrology_provider.f90",
+    "blob": "a41d0f61da6dd30a18dbfadbe4b29b00259fa41e"
+  },
+  "admitted_claim": "An immutable collection of complete KT05 explicit hydrology packets can deterministically select exactly one packet from a bounded whole-day KT02 requested interval, remain stateless across repeated requests, fail closed on missing or duplicate interval keys, and delegate the selected packet through admitted KT06 without changing KT02 time, accepted-state or publication ownership.",
+  "admission_decision": "ADMIT_ANIMO_KT11_BOUNDED_NONPRODUCTION_MULTI_PACKET_PROVIDER_GOV04_TIER_C",
+  "admission_scope": {
+    "packet_storage": "IMMUTABLE_PROVIDER_OWNED_COMPLETE_KT05_PACKET_COPIES",
+    "packet_identity": "EXACT_PRODUCER_ENDPOINT_DAY_PLUS_PRODUCER_STEP_DURATION",
+    "duplicate_semantics": "INITIALIZATION_REJECTS_EXACT_DUPLICATE_KEYS",
+    "storage_order": "NON_SEMANTIC",
+    "sparse_provider": "ALLOWED_MISSING_INTERVAL_FAILS_CLOSED",
+    "repeated_lookup": "STATELESS_NON_CONSUMPTIVE",
+    "runtime_selection": "DETERMINISTIC_FROM_KT02_ORIGIN_ENDPOINT_AND_CONFIGURED_OFFSET",
+    "forcing_ownership": "PROVIDER_CLIENT_SIDE_OUTSIDE_ACCEPTED_CONTINUATION_STATE",
+    "kt06_delegation": "ADMITTED_FROZEN_KT06_RUNTIME_BINDING",
+    "accepted_time_authority": "KT02_ONLY",
+    "external_publication_authority": "KT02_ONLY",
+    "runtime_time_envelope": "EXACT_WHOLE_DAY_ONLY",
+    "calendar_relation": "CONFIGURED_RUNTIME_CALENDAR_ID_PLUS_NONNEGATIVE_INTEGER_DAY_OFFSET",
+    "failure_semantics": "FAIL_CLOSED_ON_MISSING_DUPLICATE_INVALID_METADATA_OR_OVERFLOW"
+  },
+  "inherited_central_runtime_authorities": {
+    "kt06": {
+      "admitted": true,
+      "risk_tier": "C",
+      "production_authorized": false,
+      "authority": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+      "frozen_implementation_blob": "9a24ea833291f761d2fa76ca4cc9fee28436c614"
+    }
+  },
+  "supplemental_evidence_only": {
+    "kt08_strength": "B1_DERIVED_FROM_PINNED_B0_PRODUCER_NOT_B2",
+    "kt08_summary_blob": "6ba7fe07ca47a6f8d45f18d09b7276dc4ece66f3",
+    "kt09_anchor_fixture_blob": "8aa4f5dcc8041979d9dc2e2b4fc8cc7f1c88de84",
+    "evidence_strength_promotion": false
+  },
+  "central_regie_effect": {
+    "b3_scientific_admission_count_change": 0,
+    "b3_queue_change": false,
+    "canonical_tcd_register_change": false,
+    "production_authorized": false,
+    "composition_beyond_kt11_admitted": false
+  },
+  "explicit_nonclaims": [
+    "full 1800-packet complete-payload execution",
+    "runtime SWATRE.UNF decoding",
+    "dynamic streaming, reload, cache or mutable provider lifecycle",
+    "retry or timestep-selection policy",
+    "fractional or subday mapping",
+    "generic calendar conversion",
+    "Hlpimp scientific semantics",
+    "Hydro_detailed scientific execution",
+    "ANIMO scientific admissibility",
+    "production coupling or migration",
+    "B3 or B4 admission",
+    "Status A or Status AA"
+  ],
+  "next_reuse_route": "USE_KT11_ONLY_AT_ADMITTED_SCOPE; ANY SEMANTIC EXPANSION REQUIRES NEW GOV04 CLASSIFICATION"
+}
