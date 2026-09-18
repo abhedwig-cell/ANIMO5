@@ -1,0 +1,30 @@
+name: ANIMO KT10 KT06 adversarial boundary harness
+
+on:
+  push:
+    branches:
+      - work/animo-kt10-kt06-adversarial-boundary-harness
+    paths:
+      - 'tests/kt10/**'
+      - 'docs/kt10/**'
+      - 'integration/animo-kt10/**'
+      - '.github/workflows/animo-kt10-kt06-adversarial.yml'
+  workflow_dispatch:
+
+jobs:
+  adversarial-boundaries:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install gfortran
+        run: sudo apt-get update && sudo apt-get install -y gfortran
+      - name: Re-run frozen KT02 qualification tests
+        run: bash tests/kt02/run_kt02_tests.sh
+      - name: Re-run frozen KT05 compiled adapter tests
+        run: bash tests/kt05/run_kt05_tests.sh
+      - name: Re-run KT06 baseline binding tests
+        run: bash tests/kt06/run_kt06_tests.sh
+      - name: Run KT10 adversarial boundary harness
+        run: bash tests/kt10/run_kt10_tests.sh
+      - name: Validate KT10 checkpoint
+        run: python3 -m json.tool integration/animo-kt10/ANIMO-KT10_CHECKPOINT.json >/dev/null

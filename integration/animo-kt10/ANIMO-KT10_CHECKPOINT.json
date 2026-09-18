@@ -1,0 +1,51 @@
+{
+  "workunit": "ANIMO-KT10",
+  "title": "KT06 Adversarial Runtime-Boundary Harness",
+  "phase": "IMPLEMENT",
+  "checkpoint_state": "ADVERSARIAL_TEST_HARNESS_AUTHORED_CI_PENDING",
+  "branch": "work/animo-kt10-kt06-adversarial-boundary-harness",
+  "base_support_head": "f89d5fe345d1acd55ab1d624d877dd28072eb514",
+  "subject_under_test": {
+    "workunit": "ANIMO-KT06",
+    "frozen_implementation_head": "fc818917a46408d55cd7f03e2fa8257534683907",
+    "frozen_implementation_blob": "9a24ea833291f761d2fa76ca4cc9fee28436c614",
+    "consumed_as_qualified_authority": false
+  },
+  "prepared_independent_review_branch": "review/animo-kt06-explicit-hydrology-runtime-binding-independent",
+  "independent_review_result_present_at_reconcile": false,
+  "production_src_modified": false,
+  "kt02_runtime_modified": false,
+  "kt05_adapter_modified": false,
+  "kt06_implementation_modified": false,
+  "implemented_tests": [
+    "missing forcing fails closed",
+    "missing runtime calendar binding fails closed",
+    "negative producer day offset fails closed",
+    "negative runtime origin fails closed",
+    "producer endpoint offset overflow fails closed",
+    "fractional producer endpoint fails closed",
+    "negative producer endpoint fails closed",
+    "negative-zero producer endpoint fails closed",
+    "NaN producer endpoint fails closed",
+    "infinite producer step fails closed",
+    "calendar mismatch fails closed",
+    "subday endpoint fails closed",
+    "2^53-1 exact producer integer envelope succeeds",
+    "2^53 producer integer is rejected by declared bounded envelope",
+    "accepted generation overflow cannot publish externally",
+    "retry-permitted flag cannot mask a KT06 client hard failure"
+  ],
+  "verdict": "IMPLEMENTED_ADVERSARIAL_TEST_EVIDENCE_AWAITING_EXACT_HEAD_CI_AND_REVIEW",
+  "next_permitted_action": "RUN_EXACT_HEAD_CI; IF GREEN PERFORM SAME_AGENT_TEST_HARNESS_REVIEW; IF RED CLASSIFY FINDING WITHOUT_CHANGING_FROZEN_KT06_UNLESS_SEPARATELY_REOPENED",
+  "explicit_exclusions": [
+    "independent Tier C review outcome",
+    "KT06 qualification or admission",
+    "new runtime semantics",
+    "multi-packet forcing provider",
+    "Hlpimp=1 semantics",
+    "Hydro_detailed science",
+    "production migration",
+    "B3 or B4",
+    "Status A or Status AA"
+  ]
+}
