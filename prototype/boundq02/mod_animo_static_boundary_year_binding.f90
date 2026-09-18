@@ -1,5 +1,6 @@
 module mod_animo_static_boundary_year_binding
   use iso_fortran_env, only: int64, real64
+  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
   use mod_transient_time, only: TimeCoordinate, time_compare, time_equal, time_is_valid
   use mod_animo_static_boundary_chemistry_adapter, only: &
     static_boundary_chemistry_t, validate_rev53_static_boundary_chemistry, BOUNDQ01_OK
@@ -29,6 +30,8 @@ module mod_animo_static_boundary_year_binding
     character(len=96) :: boundary_source_id = ''
     type(TimeCoordinate) :: origin_time
     type(TimeCoordinate) :: endpoint_time
+    integer :: simulation_start_year = 0
+    integer :: boundary_nuyr = 0
     integer :: selected_year = 0
     integer :: selected_slot = 0
     type(tcd042_upper_chemistry_forcing_t) :: chemistry
@@ -254,6 +257,8 @@ contains
     frame%boundary_source_id = boundary_source_id
     frame%origin_time = origin_time
     frame%endpoint_time = endpoint_time
+    frame%simulation_start_year = simulation_start_year
+    frame%boundary_nuyr = boundary%nuyr
     frame%selected_year = next_cursor%active_year
     frame%selected_slot = slot
     frame%dry_deposition_nh = boundary%dry_deposition_nh(slot)
@@ -273,7 +278,11 @@ contains
     type(TimeCoordinate), intent(in) :: expected_origin, expected_endpoint
     logical, intent(out) :: ok
     character(len=*), intent(out) :: reason
-    logical :: equal, compare_ok
+    logical :: equal, compare_ok, chemistry_ok
+    character(len=32) :: slot_text
+    character(len=96) :: expected_forcing_id
+    character(len=128) :: chemistry_reason
+    type(tcd042_upper_chemistry_forcing_t) :: validated_chemistry
 
     ok = .false.
     reason = 'UNSET'
@@ -286,11 +295,48 @@ contains
       reason = 'MISSING_BOUNDQ02_FRAME_SOURCE_ID'
       return
     end if
-    if (frame%selected_year < 1 .or. frame%selected_year > BOUNDQ02_MAX_LEGACY_YEAR .or. &
-        frame%selected_slot < 1) then
+    if (frame%simulation_start_year < 1 .or. &
+        frame%simulation_start_year > BOUNDQ02_MAX_LEGACY_YEAR) then
+      reason = 'INVALID_BOUNDQ02_FRAME_START_YEAR'
+      return
+    end if
+    if (frame%boundary_nuyr <= 0 .or. frame%selected_slot < 1 .or. &
+        frame%selected_slot > frame%boundary_nuyr) then
       reason = 'INVALID_BOUNDQ02_FRAME_YEAR_SLOT'
       return
     end if
+    if (frame%selected_year /= frame%simulation_start_year + frame%selected_slot - 1 .or. &
+        frame%selected_year > BOUNDQ02_MAX_LEGACY_YEAR) then
+      reason = 'BOUNDQ02_FRAME_YEAR_SLOT_INCOHERENT'
+      return
+    end if
+    if (.not. ieee_is_finite(frame%dry_deposition_nh) .or. &
+        .not. ieee_is_finite(frame%dry_deposition_ni)) then
+      reason = 'NONFINITE_BOUNDQ02_DRY_DEPOSITION'
+      return
+    end if
+
+    write(slot_text,'(I0)') frame%selected_slot
+    if (len_trim(frame%boundary_source_id) + len(':SLOT=') + len_trim(slot_text) > &
+        len(expected_forcing_id)) then
+      reason = 'BOUNDQ02_FRAME_FORCING_ID_TOO_LONG'
+      return
+    end if
+    expected_forcing_id = trim(frame%boundary_source_id)//':SLOT='//trim(slot_text)
+    if (trim(frame%chemistry%forcing_id) /= trim(expected_forcing_id)) then
+      reason = 'BOUNDQ02_FRAME_FORCING_PROVENANCE_MISMATCH'
+      return
+    end if
+
+    call make_tcd042_upper_chemistry_forcing(trim(frame%chemistry%forcing_id), &
+      frame%chemistry%phosphorus_enabled, frame%chemistry%precipitation, &
+      frame%chemistry%irrigation, frame%chemistry%runon, frame%chemistry%runin, &
+      validated_chemistry, chemistry_ok, chemistry_reason)
+    if (.not. chemistry_ok) then
+      reason = 'INVALID_BOUNDQ02_FRAME_CHEMISTRY'
+      return
+    end if
+
     call time_equal(frame%origin_time, expected_origin, equal, compare_ok)
     if (.not. compare_ok .or. .not. equal) then
       reason = 'BOUNDQ02_FRAME_ORIGIN_MISMATCH'
