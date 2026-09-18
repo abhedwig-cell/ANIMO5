@@ -1,0 +1,63 @@
+{
+  "work_unit": "ANIMO-RG09",
+  "title": "Post-KT20 Real-Source Provider Bridge Rebaseline and Independent-Review Gate Freeze",
+  "branch": "work/animo-rg09-post-kt20-real-provider-bridge-rebaseline",
+  "predecessor": "ANIMO-RG08@14109956b62376d0d0ab681e8c641c9e71d110bd",
+  "authoring_base": "ANIMO-KT20@c41a28580421bf4dce770e438535ba92a57567cd",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "central_runtime_admissions_changed": false,
+  "independent_review_bundle_is_logistics_only": true,
+  "independent_reviews_completed": false,
+  "candidate_auto_admission_performed": false,
+  "b3_complete": false,
+  "unadmitted_top_level": [
+    "TCD-016",
+    "TCD-034",
+    "TCD-040"
+  ],
+  "tb7_open": false,
+  "b4_open": false,
+  "production_open": false,
+  "denominator_status": "DENOMINATOR_NOT_YET_QUALIFIED",
+  "review": {
+    "required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-rg09-post-kt20-rebaseline.yml",
+    "validator": "tools/validate_rg09_post_kt20_rebaseline.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_source_modified": false,
+    "central_runtime_admission_performed": false,
+    "independent_review_performed": false,
+    "candidate_auto_admission_performed": false,
+    "canonical_state_admission_performed": false,
+    "canonical_checkpoint_admission_performed": false,
+    "canonical_forcing_admission_performed": false,
+    "b3_admission_performed": false,
+    "queue_modified": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_migration_authorized": false,
+    "status_a_claimed": false,
+    "status_aa_claimed": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_SELF_REVIEW; IF_GREEN_USE_RG09_AS_CURRENT_PROGRAM_REBASELINE_AND_ROUTE_GENUINE_INDEPENDENT_REVIEW_WITHOUT_AUTO_ADMISSION"
+}
