@@ -1,0 +1,33 @@
+{
+  "work_unit": "ANIMO-RG07",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_head": "86b8eed5992486ca919af184b797a2fa8864ab46",
+  "reviewed_head_ci_run": 35379817670,
+  "reviewed_head_ci_job": 105713071748,
+  "reviewed_head_ci_conclusion": "success",
+  "review_axes": {
+    "central_runtime_admission_not_inferred_from_candidate_stack": "PASS",
+    "post_KT11_candidates_not_auto_promoted": "PASS",
+    "KT16_restart_candidate_not_misread_as_canonical_checkpoint": "PASS",
+    "checkpoint_file_format_and_integrity_not_claimed": "PASS",
+    "same_agent_reviews_not_misrepresented_as_independent": "PASS",
+    "STATEQ08_Runinu_uncertainty_retained": "PASS",
+    "STATEQ09_STATEQ10_state_semantics_not_auto_admitted": "PASS",
+    "BOUNDQ02B_content_identity_not_misread_as_source_hash_verification": "PASS",
+    "KT13A_geometry_remediation_retained": "PASS",
+    "KT15_atomicity_not_misread_as_production_admission": "PASS",
+    "B3Q06_unresolved_set_retained": "PASS",
+    "TCD016_latest_negative_readiness_retained": "PASS",
+    "TCD034_three_material_gates_retained": "PASS",
+    "TCD040_external_B0_custody_blocker_retained": "PASS",
+    "TB7_B4_production_remain_closed": "PASS",
+    "denominator_not_inferred_from_green_branches": "PASS",
+    "KT17_route_is_nonproduction_only": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "substantive_remediation_required": false,
+  "note": "RG07 freezes and routes the current candidate stack. It performs no independent review and no admission."
+}
