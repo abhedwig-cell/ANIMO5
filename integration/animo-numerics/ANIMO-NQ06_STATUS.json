@@ -1,0 +1,47 @@
+{
+  "work_unit": "ANIMO-NQ06",
+  "title": "Revision-53 Hydrology Default REAL Kind and Floating-Point Build Metadata Qualification",
+  "branch": "work/animo-nq06-rev53-hydrology-real-kind-policy",
+  "base": "ANIMO-HYDROQ02@56b041ddb30b65fe1e77540dbbc36400ee49b1b1",
+  "numerical_governance": "ANIMO-NQ01",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "evidence_class": "USER_SUPPLIED_BUILD_METADATA_PLUS_FROZEN_SOURCE_DECLARATION_EVIDENCE_NOT_B2",
+  "selected_bounded_candidate_precision": "real64",
+  "source_default_real_configured_kind": "realKIND8",
+  "historical_numerical_equivalence": false,
+  "b2_created": false,
+  "production_authorized": false,
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-nq06-hydrology-real-kind.yml",
+    "validator": "tools/validate_nq06_hydrology_real_kind.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "global_tolerance_defined": false,
+    "binary32_selected": false,
+    "B2_claimed": false,
+    "B3_mutated": false,
+    "B4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_HYDROEXEC01_MAY_USE_REAL64_AS_BOUNDED_SOURCE_BUILD_CONFIGURATION_MATCHED_CANDIDATE_WITHOUT_CLAIMING_HISTORICAL_NUMERICAL_EQUIVALENCE"
+}
