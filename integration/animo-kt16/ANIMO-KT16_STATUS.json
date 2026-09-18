@@ -5,16 +5,16 @@
   "base": "ANIMO-KT15A@2279a961459211e03550dfda4af09ab4f7f6b9a3",
   "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
   "restart_architecture_design_basis": "ANIMO-ARCH02@a079d93c965f6073586c55ee4b3544dd8873b723",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_ACCEPTED_APPLICATION_CHECKPOINT_SPLIT_RUN_RESTART_TIER_D_REVIEW_REQUIRED",
+  "decision": "QUALIFY_BOUNDED_ACCEPTED_APPLICATION_IN_MEMORY_CHECKPOINT_RESTORE_AND_EXACT_SPLIT_RUN_EQUIVALENCE_NO_CANONICAL_CHECKPOINT_ADMISSION",
   "risk_tier_candidate": "D_ACCEPTED_APPLICATION_RESTART_COMPOSITION",
-  "accepted_boundary_checkpoint_qualified": false,
-  "typed_checkpoint_record_qualified": false,
-  "trusted_restore_path_qualified": false,
-  "exact_split_run_equivalence_qualified": false,
-  "corrupt_checkpoint_rejection_qualified": false,
-  "expected_config_restore_binding_qualified": false,
+  "accepted_boundary_checkpoint_qualified": true,
+  "typed_checkpoint_record_qualified": true,
+  "trusted_restore_path_qualified": true,
+  "exact_split_run_equivalence_qualified": true,
+  "corrupt_checkpoint_rejection_qualified": true,
+  "expected_config_restore_binding_qualified": true,
   "file_format_qualified": false,
   "integrity_hash_qualified": false,
   "canonical_checkpoint_admitted": false,
@@ -26,17 +26,24 @@
   "supported_scope": "KT15A_BOUNDED_TCD042_ACCEPTED_APPLICATION_IN_MEMORY_CHECKPOINT_RESTORE_AT_ACCEPTED_BOUNDARIES_ONLY",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_d_review_required_for_admission": true
+    "independent_tier_d_review_required_for_admission": true,
+    "reviewed_head": "eff38e0501d5178a82518ae0ae0cb2ab422fcdb0",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-kt16-accepted-application-checkpoint.yml",
     "validator": "tools/validate_kt16_accepted_application_checkpoint.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35377121131,
+    "authoring_job": 105704307775,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "eff38e0501d5178a82518ae0ae0cb2ab422fcdb0",
+    "closeout_note": "Validated accepted-checkpoint authoring package passed exact-head CI run 35377121131. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -57,10 +64,14 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_RETAIN_TIER_D_INDEPENDENT_REVIEW_GATE; NEXT_WORK_SHOULD_ADDRESS_MANIFEST_INTEGRITY_BUILD_IDENTITY_AND_OR_PROVIDER_APPLICATION_INTEGRATION_WITHOUT_PROMOTING_THIS_TO_CANONICAL_RESTART"
+  "next": "USE_KT16_AS_QUALIFIED_NONPRODUCTION_ACCEPTED_APPLICATION_RESTART_CANDIDATE_ONLY; RETAIN_GENUINE_TIER_D_REVIEW_GATE; NEXT_MATERIAL_GAPS_ARE_CHECKPOINT_MANIFEST_INTEGRITY_BUILD_IDENTITY_AND_EXTERNAL_PROVIDER_APPLICATION_COMPOSITION",
+  "frozen_substantive_head": "eff38e0501d5178a82518ae0ae0cb2ab422fcdb0",
+  "frozen_substantive_tree": "7333809ffef7059904cfd3ba6bf702f0391a2b1d",
+  "frozen_implementation_blob": "5427e61561ec405d6298adfdbf4dbe9cfe1cd91a",
+  "frozen_test_blob": "b672e820ce8c568449308701397ebbfff44b339f"
 }
