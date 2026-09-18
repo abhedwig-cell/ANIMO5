@@ -29,6 +29,7 @@ module mod_animo_multi_packet_hydrology_provider
   public :: initialize_multi_packet_client
   public :: multi_packet_client_ready
   public :: multi_packet_packet_count
+  public :: select_multi_packet_hydrology_step_copy
 
 contains
 
@@ -148,6 +149,75 @@ contains
     if (.not. multi_packet_client_ready(client)) return
     count = size(client%packets)
   end function multi_packet_packet_count
+
+  subroutine select_multi_packet_hydrology_step_copy(client, origin_time, endpoint_time, &
+      packet, ok, reason)
+    type(animo_multi_packet_hydrology_runtime_probe_client_t), intent(in) :: client
+    type(TimeCoordinate), intent(in) :: origin_time, endpoint_time
+    type(hydrology_step_t), intent(out) :: packet
+    logical, intent(out) :: ok
+    character(len=*), intent(out) :: reason
+
+    integer(int64) :: runtime_step, expected_endpoint
+    integer :: i, selected_index, match_count
+
+    packet = hydrology_step_t()
+    ok = .false.
+    reason = 'UNSET'
+
+    if (.not. multi_packet_client_ready(client)) then
+      reason = 'MULTI_PACKET_PROVIDER_NOT_READY'
+      return
+    end if
+    if (trim(origin_time%calendar_contract_id) /= &
+        trim(client%runtime_calendar_contract_id) .or. &
+        trim(endpoint_time%calendar_contract_id) /= &
+        trim(client%runtime_calendar_contract_id)) then
+      reason = 'RUNTIME_CALENDAR_BINDING_MISMATCH'
+      return
+    end if
+    if (origin_time%subday_numerator /= 0_int64 .or. &
+        endpoint_time%subday_numerator /= 0_int64) then
+      reason = 'SUBDAY_MAPPING_NOT_QUALIFIED'
+      return
+    end if
+    if (origin_time%day_index < 0_int64 .or. &
+        endpoint_time%day_index <= origin_time%day_index) then
+      reason = 'INVALID_RUNTIME_INTERVAL'
+      return
+    end if
+    if (endpoint_time%day_index > &
+        huge(expected_endpoint) - client%producer_day_offset) then
+      reason = 'PRODUCER_TIME_MAPPING_OVERFLOW'
+      return
+    end if
+
+    runtime_step = endpoint_time%day_index - origin_time%day_index
+    expected_endpoint = endpoint_time%day_index + client%producer_day_offset
+
+    selected_index = 0
+    match_count = 0
+    do i = 1, size(client%packets)
+      if (client%producer_endpoint_key(i) == expected_endpoint .and. &
+          client%producer_step_key(i) == runtime_step) then
+        selected_index = i
+        match_count = match_count + 1
+      end if
+    end do
+
+    if (match_count == 0) then
+      reason = 'HYDROLOGY_PACKET_NOT_FOUND'
+      return
+    end if
+    if (match_count /= 1 .or. selected_index <= 0) then
+      reason = 'AMBIGUOUS_HYDROLOGY_PACKET_SELECTION'
+      return
+    end if
+
+    packet = client%packets(selected_index)
+    ok = .true.
+    reason = 'MULTI_PACKET_HYDROLOGY_STEP_SELECTED_COPY'
+  end subroutine select_multi_packet_hydrology_step_copy
 
   subroutine execute_multi_packet_attempt( &
       self, origin_payload, origin_time, endpoint_time, candidate_payload, &
