@@ -18,6 +18,7 @@ evidence = json.loads(
 status = json.loads(
     (R / "integration/animo-kt22/ANIMO-KT22_STATUS.json").read_text()
 )
+review_path = R / "integration/animo-kt22/ANIMO-KT22_ADVERSARIAL_REVIEW.json"
 
 if evidence["authorities"]["predecessor"] != "ANIMO-KT21@e591344d9a2fd03b92fd56af1b9b555099edc340":
     fail("wrong KT21 predecessor")
@@ -84,5 +85,20 @@ if status["first_call_runinu_resolved"] is not False:
     fail("status claims Runinu resolution")
 if status["production_authorized"] is not False:
     fail("status claims production")
+
+if status["review"]["completed"]:
+    if not review_path.exists():
+        fail("completed review missing artifact")
+    review = json.loads(review_path.read_text())
+    if review.get("genuinely_independent") is not False:
+        fail("same-agent review misrepresented as independent")
+    if review.get("outcome") != "SELF_REVIEW_PASS":
+        fail("unexpected same-agent review outcome")
+    if any(v != "PASS" for v in review.get("review_axes", {}).values()):
+        fail("same-agent review has non-PASS axis")
+    if review.get("admission_performed") is not False:
+        fail("review attempted admission")
+    if review.get("production_authorized") is not False:
+        fail("review attempted production authorization")
 
 print("PASS_KT22_LWKM_TCD042_EXCLUSION_ROUTING")
