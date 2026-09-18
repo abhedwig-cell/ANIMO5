@@ -1,0 +1,14 @@
+{
+  "work_unit": "ANIMO-HYDROEXEC01",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "1cf33679e07ade1d2fe94f2a11579792e0b0db09",
+  "substantive_authoring_tree": "0bf3303e82adba266b7a103c153fd9ef9304d38e",
+  "frozen_implementation_blob": "b4b621d1957291b7cf26931fe065d2cbcb89e71c",
+  "validated_run": 35368172984,
+  "validated_conclusion": "success",
+  "candidate_claim": "BOUNDED_REV53_NO_PONDING_UPPER_HYDROLOGY_CAN_EXECUTABLY_PRODUCE_HYDROQ01_AND_HYDROQ02_FROM_EXPLICIT_KT05_AND_CALL_ENTRY_CONTEXT",
+  "near_zero_runinu_semantics": "PRESERVE_EXPLICIT_CALL_ENTRY_VALUE",
+  "runinu_canonical_state_ownership_decided": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
