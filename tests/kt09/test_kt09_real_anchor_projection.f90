@@ -36,7 +36,7 @@ program test_kt09_real_anchor_projection
     case default
       call assert_true(.false., 'unexpected duration class')
     end select
-    if (step%interception_storage_end /= 0.0_real64) seen_nonzero_sict = .true.
+    if (abs(step%interception_storage_end) > 0.0_real64) seen_nonzero_sict = .true.
 
     call project_hydro_detailed_explicit(step, projection, status)
     call assert_equal_int(status, KT05_OK, 'anchor projection')
