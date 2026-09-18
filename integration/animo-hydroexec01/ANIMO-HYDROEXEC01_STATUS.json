@@ -1,0 +1,55 @@
+{
+  "work_unit": "ANIMO-HYDROEXEC01",
+  "title": "Bounded Revision-53 No-Ponding Upper Hydrology Execution Qualification",
+  "branch": "work/animo-hydroexec01-bounded-no-ponding-upper-hydrology",
+  "base": "ANIMO-HYDROQ02@08d5b8301c217cf9d33d2bf248be133f2b5243fc",
+  "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "hydroq01_authority": "ANIMO-HYDROQ01@5301d90024c64057f2cb88fda1dbaa93aabfca47",
+  "hydroq02_authority": "ANIMO-HYDROQ02@08d5b8301c217cf9d33d2bf248be133f2b5243fc",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "D_BOUNDED_SCIENTIFIC_EXECUTION_COMPOSITION",
+  "source_mapping_qualified": false,
+  "bounded_execution_qualified": false,
+  "full_hydro_detailed_qualified": false,
+  "runinu_canonical_state_ownership_qualified": false,
+  "production_authorized": false,
+  "implementation": "prototype/hydroexec01/mod_animo_bounded_no_ponding_upper_hydrology.f90",
+  "supported_scope": "IWA2_IOPTHYVS1_IOPTMP0_FLPN0_EXACT_WHOLE_DAY_BOUNDED_TOP_HYDROLOGY",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_d_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-hydroexec01-bounded-upper-hydrology.yml",
+    "validator": "tools/validate_hydroexec01_bounded_upper_hydrology.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "full_hydro_detailed_implemented": false,
+    "mapohydro_implemented": false,
+    "ponding_implemented": false,
+    "near_zero_runinu_silently_zeroed": false,
+    "runinu_state_ownership_invented": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_ROUTE_CALL_ENTRY_RUNINU_CONTINUATION_OWNERSHIP_TO_SEPARATE_STATE_QUALIFICATION_BEFORE_CLAIMING_GENERAL_END_TO_END_HISTORICAL_RUNTIME_EQUIVALENCE"
+}
