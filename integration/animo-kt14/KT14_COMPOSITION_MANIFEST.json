@@ -35,6 +35,11 @@
       "issue": "KT14 CI could not read the BOUNDQ01 static no-P fixture because the exact fixture was absent from the composition branch.",
       "disposition": "Imported the exact BOUNDQ01 fixture blob and pinned it in the composition manifest.",
       "scientific_semantics_changed": false
+    },
+    {
+      "issue": "Initial positive test incorrectly assumed the low-concentration precipitation load must raise concentration above 1.0.",
+      "disposition": "Replaced sign-direction assertion with exact binary64 oracles for selected wet load, accepted end concentration and step-average concentration.",
+      "scientific_semantics_changed": false
     }
   ]
 }
