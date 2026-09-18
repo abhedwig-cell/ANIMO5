@@ -1,0 +1,24 @@
+name: ANIMO RG08 post KT18 review routing
+on:
+  push:
+    branches: [work/animo-rg08-post-kt18-review-routing]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  rebaseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in c60dd36a38a2030e4f4ac1925f95b2966a6d1c87 6d05b270e21a41ca626adbb719f8f55bfa9a97b5 42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72 11e9bcdc6654e63f84875bf1f28dc54abe725700; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-reg/RG08_PROGRAM_REBASELINE.json >/dev/null
+      - run: python -m json.tool integration/animo-reg/RG08_INDEPENDENT_REVIEW_BUNDLE.json >/dev/null
+      - run: python -m json.tool integration/animo-reg/ANIMO-RG08_STATUS.json >/dev/null
+      - name: Validate program rebaseline and review routing
+        run: python tools/validate_rg08_post_kt18_review_routing.py
