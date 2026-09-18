@@ -1,0 +1,45 @@
+{
+  "work_unit": "ANIMO-KT21",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "ba4b35fddcdd57881208bef57813a0cf6d62d52b",
+  "reviewed_authoring_tree": "b8ca4aa6f97663837ad7dda50249389edd6c2b10",
+  "frozen_implementation_blob": "cbca6bc62203765b44378da1367315684e7a6230",
+  "exact_head_ci": {
+    "run_id": 35405509543,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "pinned_LWKM_source_identity_preserved": "PASS",
+    "soil_configuration_source_identity_and_bounded_values_explicit": "PASS",
+    "KT03_B1_normalization_not_promoted_to_B2": "PASS",
+    "first_call_Runinu_starts_unknown": "PASS",
+    "near_zero_runoff_preserves_unknown_Runinu": "PASS",
+    "first_source_assignment_at_packet_347_identified": "PASS",
+    "post_reset_Runinu_zero_source_derived_not_invented": "PASS",
+    "STATEQ09_endpoint_to_origin_transfer_preserved": "PASS",
+    "HYDROEXEC01_bounded_equations_preserved": "PASS",
+    "TCD042_parent_scope_used_without_widening": "PASS",
+    "deterministic_partition_sums_to_1453": "PASS",
+    "exact_zero_36_and_E1_14_intersection_preserved": "PASS",
+    "outside_scope_1401_and_ponding_2_preserved": "PASS",
+    "no_sequential_real_application_claim": "PASS",
+    "no_B2_B3_B4_TB7_or_production_effect": "PASS",
+    "independent_Tier_C_gate_retained": "PASS"
+  },
+  "material_findings": [
+    {
+      "finding": "The first 347 LWKM packets do not admit source-faithful deterministic upper-boundary characterization because revision-53 leaves first-call Runinu undefined and all those packets stay on the near-zero runoff branch.",
+      "disposition": "PRESERVE_UNCERTAINTY_NO_ZEROING_MODEL_CHANGE"
+    },
+    {
+      "finding": "After packet 347 assigns Runinu=0, only 50 of 1453 deterministic packets intersect the current TCD-042 hydrology envelope; 1401 remain outside and 2 are ponding.",
+      "disposition": "DIAGNOSTIC_SCOPE_GAP_NOT_ADAPTER_DEFECT_NOT_SCIENCE_ADMISSION"
+    }
+  ],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
