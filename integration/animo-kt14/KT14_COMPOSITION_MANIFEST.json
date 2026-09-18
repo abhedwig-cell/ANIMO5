@@ -1,0 +1,32 @@
+{
+  "work_unit": "ANIMO-KT14",
+  "authorities": {
+    "RG06": "8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+    "KT13A": "df2310cc69e3fe16187ba2235843222f8acfb726",
+    "BOUNDQ02": "fb0c0c842aed9a90378aca613279e09a856ad09b"
+  },
+  "exact_final_upstream_evidence": {
+    "BOUNDQ02_run": 35373354465,
+    "BOUNDQ02_conclusion": "success",
+    "KT13A_run": 35370974894,
+    "KT13A_conclusion": "success"
+  },
+  "frozen_blobs": {
+    "BOUNDQ01": "6b381ec9b37528b0decee8a2fa484e8124fc767d",
+    "BOUNDQ02": "2b7441c9909022dcb16b3ca2f35ee08d079269b8",
+    "KT13A": "6e2e4c73e9b43f5d1bda58dc9387a56be8b2e2b1"
+  },
+  "composition": [
+    "VALIDATE_BOUNDQ02_EXACT_INTERVAL_FRAME",
+    "PASS_ONLY_FRAME_CHEMISTRY_TO_KT13A",
+    "KT13A_EXECUTES_EXISTING_BOUNDED_SCIENCE",
+    "KT02_OWNS_ACCEPTED_STATE_PUBLICATION"
+  ],
+  "explicit_nonclaims": [
+    "BOUNDARY year cursor is not atomically committed by KT14",
+    "multi-interval continuation is not qualified",
+    "dry deposition process execution is not qualified",
+    "first-call Runinu is not resolved",
+    "production remains closed"
+  ]
+}
