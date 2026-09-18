@@ -8,6 +8,8 @@ def fail(msg):
     raise SystemExit(1)
 
 st=json.loads((R/"integration/animo-kt13a/ANIMO-KT13A_STATUS.json").read_text())
+finding=json.loads((R/"integration/animo-kt13a/KT13A_MATERIAL_FINDING_F01.json").read_text())
+handoff=json.loads((R/"integration/animo-kt13a/KT13A_INDEPENDENT_REVIEW_HANDOFF.json").read_text())
 mod=(R/"prototype/kt13/mod_animo_tcd042_bounded_composition.f90").read_text()
 test=(R/"tests/kt13/test_kt13_bounded_composition.f90").read_text()
 
@@ -51,6 +53,18 @@ if any(st.get("scope",{}).get(k) is not False for k in [
     "science_formula_changed","upstream_frozen_modules_changed","tcd042_scope_widened",
     "production_changed","admission_performed"]):
     fail("scope overclaim")
+
+if finding.get("original_target",{}).get("module_blob")!="f11b1a444db839994e7a5d4de00380eb8a6849a4":
+    fail("original KT13 finding pin")
+if finding.get("remediation",{}).get("exact_binary64_identity_guard_added") is not True:
+    fail("finding remediation")
+if handoff.get("same_agent_review_satisfies_independence") is not False:
+    fail("review independence overclaim")
+for key in ["canonical_species_binding","boundary_parser","chemistry_time_provider",
+            "first_call_Runinu_value","multi_interval_state_continuation",
+            "canonical_Runinu_state","B2_historical_equivalence","production"]:
+    if handoff.get("explicit_nonclaims",{}).get(key) is not False:
+        fail("review nonclaim "+key)
 
 if st.get("state")=="NOT_YET_QUALIFIED":
     if st.get("work_status",{}).get("qualified") is not False:
