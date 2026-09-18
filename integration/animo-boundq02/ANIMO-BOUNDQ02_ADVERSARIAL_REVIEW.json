@@ -1,0 +1,38 @@
+{
+  "work_unit": "ANIMO-BOUNDQ02",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "4de422facff090031d379a09e9829810686f1b12",
+  "frozen_substantive_head": "4de422facff090031d379a09e9829810686f1b12",
+  "frozen_substantive_tree": "bb3e7a460fce377b715dead5711e7b1c4cadc7bc",
+  "frozen_implementation_blob": "3b4212618121ba1cf5c8db7d32700be01b4db50a",
+  "exact_head_ci": {
+    "run_id": 35372783936,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "interval_origin_year_source_mapping": "PASS",
+    "first_interval_refresh_preserved": "PASS",
+    "exact_january_first_refresh_preserved": "PASS",
+    "non_january_first_cursor_retention_preserved": "PASS",
+    "accepted_cursor_not_mutated_during_binding": "PASS",
+    "TIME02_calendar_identity_explicit": "PASS",
+    "exact_whole_day_scope_explicit": "PASS",
+    "legacy_year_1_to_3000_envelope_preserved": "PASS",
+    "exact_origin_endpoint_frame_binding": "PASS",
+    "BOUNDQ01_to_UBFORCE02_mapping_explicit": "PASS",
+    "dry_deposition_separate_from_wet_advective_forcing": "PASS",
+    "phosphorus_presence_preserved": "PASS",
+    "no_dynamic_boundary_widening": "PASS",
+    "continuous_year_selection_not_substituted": "PASS",
+    "no_canonical_cursor_or_checkpoint_admission": "PASS",
+    "no_B3_B4_or_production_effect": "PASS",
+    "independent_Tier_C_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
