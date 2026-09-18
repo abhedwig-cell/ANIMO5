@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-HYDROQ02",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "0ac23b83b047252241a35da3744fe91ead9764d8",
+  "frozen_substantive_head": "dd9d72126bedd016cdc4000cf8e5098e4ba8ece2",
+  "frozen_substantive_tree": "ca2debed4469ac8b037fcc1906276c26571d0270",
+  "frozen_implementation_blob": "786dce177c50c91149dad33289306f935b61b354",
+  "exact_head_ci": {
+    "run_id": 35367310595,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "Hydro_detailed_source_pin_exact": "PASS",
+    "Rupr_Runinu_classified_as_resolved_hydrology_outputs": "PASS",
+    "near_zero_Runinu_missing_local_assignment_recorded": "PASS",
+    "no_raw_Ru_reconstruction": "PASS",
+    "no_near_zero_semantic_repair": "PASS",
+    "exact_interval_and_execution_identity_required": "PASS",
+    "no_sign_rule_invented": "PASS",
+    "no_Hydro_detailed_implementation": "PASS",
+    "no_B3_B4_TB7_or_production_effect": "PASS",
+    "independent_Tier_D_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
