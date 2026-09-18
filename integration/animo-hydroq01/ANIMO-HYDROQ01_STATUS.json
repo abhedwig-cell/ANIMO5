@@ -1,0 +1,55 @@
+{
+  "work_unit": "ANIMO-HYDROQ01",
+  "title": "TCD-042 Post-Hydro_detailed Resolved Upper-Boundary Hydrology Contract & Source Mapping",
+  "branch": "work/animo-hydroq01-tcd042-resolved-upper-hydrology-contract",
+  "base": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
+  "current_program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "consumer_candidate": "ANIMO-KT12@8f0e8e4bfd0b391b781f7c69b7d2063d5cf8705e",
+  "tcd042_parent": "ANIMO-B3D35@9ca23f41dc3c28af686b1bc0bff8e7d66416d367",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "D_CROSS_MODULE_SCIENTIFIC_COMPOSITION_INTERFACE",
+  "source_mapping_qualified": false,
+  "typed_contract_qualified": false,
+  "hydro_detailed_execution_qualified": false,
+  "modflux_execution_qualified": false,
+  "direct_kt11_to_kt12_composition_unlocked": false,
+  "production_authorized": false,
+  "implementation": "prototype/hydroq01/mod_animo_resolved_upper_hydrology_contract.f90",
+  "supported_scope": "Flpn=0 AND Flib_top>=0 AND Rurv=exact_binary64_zero AND exact_forward_whole_day_interval",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_d_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-hydroq01-resolved-upper-hydrology.yml",
+    "validator": "tools/validate_hydroq01_resolved_upper_hydrology.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "hydro_detailed_implemented": false,
+    "modflux_implemented": false,
+    "kt05_raw_flab_promoted_to_resolved_flib": false,
+    "tcd042_readmitted": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW; IF_GREEN_PREPARE_SEPARATE_TIER_D_REVIEW_HANDOFF; DO_NOT_UNLOCK_DIRECT_COMPOSITION_UNTIL_SOLUTE_LOAD_FORCING_SURFACE_IS_ALSO_QUALIFIED"
+}
