@@ -1,0 +1,13 @@
+{
+  "work_unit": "ANIMO-UBFORCE02",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "b8cfc556c1f259ded246381ed113a1998bbf9805",
+  "substantive_authoring_tree": "c21460b346f008aad65b2d4c2c520fe1491a16d9",
+  "frozen_implementation_blob": "a82bd7ef40ce18ddb00e45933290d1999de05884",
+  "validated_run": 35366811967,
+  "validated_conclusion": "success",
+  "candidate_claim": "REV53_TCD042_WET_ADVECTIVE_LOAD_FORMULAS_HAVE_A_TYPED_NONPRODUCTION_EXECUTABLE_REALIZATION_WITH_EXPLICIT_HYDROLOGY_AND_CHEMISTRY_OWNERSHIP",
+  "scope": "REV53_IWA2_IOPTHYVS1_DETAILED_LOAD1_TO_LOAD6_SOURCE_FORMULAS_ONLY",
+  "independent_review_required": true,
+  "production_authorized": false
+}
