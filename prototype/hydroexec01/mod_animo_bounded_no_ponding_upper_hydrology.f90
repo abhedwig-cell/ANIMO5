@@ -123,6 +123,9 @@ contains
       reason = trim(local_reason)
       return
     end if
+    ! From here onward every early return remains a rejection until the
+    ! complete bounded source path has produced both typed outputs.
+    ok = .false.
 
     if (trim(origin_time%calendar_contract_id) /= trim(endpoint_time%calendar_contract_id)) then
       reason = 'HYDROEXEC01_CALENDAR_MISMATCH'
