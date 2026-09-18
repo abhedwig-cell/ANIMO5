@@ -60,7 +60,9 @@ KT05 carries producer-side `Flab` into the external `Hydro_detailed` call surfac
 
 Therefore raw KT05 `flab(1)` is not promoted to TCD-042 `Flib(1)`.
 
-The missing qualified composition surface is a typed post-`Hydro_detailed` resolved-hydrology output contract.
+The missing qualified hydrology composition surface is a typed post-`Hydro_detailed` resolved-hydrology output contract.
+
+In addition, frozen revision-53 `UBoundconc` computes `Load1...Load6` from hydrological quantities plus species-specific precipitation, irrigation, runon and run-in chemistry. KT11 does not own those chemistry forcings. KT12 therefore takes `load_rate` as already-resolved process forcing and does not claim that KT11 alone can supply a complete TCD-042 scientific attempt.
 
 ## Review classification
 
@@ -99,6 +101,12 @@ The next architecture-science workunit should qualify the missing resolved-hydro
 - exact interval identity;
 - provenance tying the resolved values to one hydrology execution.
 
-Provisional workunit:
+Provisional first workunit:
 
 `ANIMO-HYDROQ01 - TCD-042 Post-Hydro_detailed Resolved Upper-Boundary Hydrology Contract & Source Mapping`.
+
+A second separately owned forcing surface is also required unless an existing qualified authority is found:
+
+`ANIMO-UBFORCE01 - TCD-042 Upper-Boundary Solute Load Forcing Contract & Source Mapping`.
+
+Neither workunit may silently collapse hydrology forcing and solute chemistry forcing into one owner.
