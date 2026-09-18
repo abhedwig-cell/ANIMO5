@@ -1,0 +1,35 @@
+{
+  "work_unit": "ANIMO-STATEQ09",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "f5ab9db9a9719fe2fffa2893ebea0728cea5ab23",
+  "frozen_substantive_head": "f5ab9db9a9719fe2fffa2893ebea0728cea5ab23",
+  "frozen_substantive_tree": "0238d26a249e1086f8b268754cae0dcb8c279ff6",
+  "frozen_implementation_blob": "e55a72fd37b20addaf7131ed085b417768b84a1c",
+  "exact_head_ci": {
+    "run_id": 35369941647,
+    "job_id": 105681263296,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "Init_called_before_next_hydrology": "PASS",
+    "endpoint_to_origin_copy_source_mapped": "PASS",
+    "Pn_from_Pnt": "PASS",
+    "Sic_from_Sict_for_Hlpimp11": "PASS",
+    "Snla_from_Snt_for_Iopthyvs1": "PASS",
+    "Mofro_from_Mofrt_profile": "PASS",
+    "Runinu_excluded_and_left_to_STATEQ08": "PASS",
+    "static_He_Lefrrv_Lefrso_not_misclassified_as_state_transfer": "PASS",
+    "first_interval_initialization_not_claimed": "PASS",
+    "restart_dependency_not_checkpoint_admission": "PASS",
+    "no_tolerance_or_interpolation": "PASS",
+    "no_B3_B4_or_production_effect": "PASS",
+    "independent_Tier_C_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
