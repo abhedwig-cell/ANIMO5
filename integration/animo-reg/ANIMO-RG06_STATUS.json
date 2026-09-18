@@ -1,0 +1,62 @@
+{
+  "work_unit": "ANIMO-RG06",
+  "title": "Post-KT11 Program Rebaseline and Scientific-Execution Routing",
+  "branch": "work/animo-rg06-post-kt11-program-rebaseline",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI_AND_GOV05_REVIEW",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "source_central_regie": "ANIMO-RG05Q@3402666360d3e30105712b121a98fc4b9055926f",
+  "scientific_aggregate": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+  "queue_authority": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+  "runtime_authorities": [
+    "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+    "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480"
+  ],
+  "b3_complete": false,
+  "unadmitted_top_level": [
+    "TCD-016",
+    "TCD-034",
+    "TCD-040"
+  ],
+  "tb7_open": false,
+  "b4_open": false,
+  "production_open": false,
+  "denominator_status": "DENOMINATOR_NOT_YET_QUALIFIED",
+  "proposed_next_runtime_science_workunit": "KT12_BOUNDED_TCD042_SCIENTIFIC_CONSUMER_COMPOSITION",
+  "review": {
+    "required": true,
+    "mode": "GOV05_COMPATIBLE_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "completed": false,
+    "genuinely_independent": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-rg06-post-kt11-program-rebaseline.yml",
+    "validator": "tools/validate_rg06_post_kt11_rebaseline.py",
+    "authoring_run": null,
+    "authoring_job": null,
+    "authoring_conclusion": null,
+    "exact_final_head_required": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_source_modified": false,
+    "b3_admission_performed": false,
+    "canonical_tcd_register_modified": false,
+    "queue_modified": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_migration_authorized": false,
+    "status_a_claimed": false,
+    "status_aa_claimed": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_AUTHORING_CI_THEN_GOV05_ADVERSARIAL_REVIEW_IF_LIVE_AUTHORITY_SET_STABLE"
+}
