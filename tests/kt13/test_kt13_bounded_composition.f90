@@ -19,6 +19,7 @@ program test_kt13_bounded_composition
 
   call test_finite_positive_end_to_end_commit()
   call test_runinu_continuation_is_material()
+  call test_hetop_geometry_mismatch_preserves_store()
   call test_kt06_binding_failure_preserves_store()
   call test_tcd042_scope_reject_preserves_store()
   print *, 'PASS_KT13_BOUNDED_TCD042_END_TO_END_COMPOSITION'
@@ -171,7 +172,11 @@ contains
     call accepted_store_time(store,t,ok)
     call assert_true(ok .and. t%day_index==1_int64,'accepted endpoint')
     call accepted_concentration(store,c)
-    call assert_true(c>1.0_real64,'finite-positive composition changes state')
+    call assert_true(transfer(c,0_int64)==int(z'3FF0000000400000',int64), &
+      'finite-positive exact end concentration')
+    call assert_true(transfer(trace%average_concentration,0_int64)==int(z'3FF0000000200000',int64), &
+      'finite-positive exact average concentration')
+    call assert_true(trace%postcommit_diagnostics_valid,'postcommit diagnostics valid')
   end subroutine test_finite_positive_end_to_end_commit
 
   subroutine test_runinu_continuation_is_material()
@@ -203,6 +208,32 @@ contains
     call assert_true(transfer(trace%selected_load_rate,0_int64)==int(z'3E20000000000000',int64), &
       'Runinu affects upper solute load')
   end subroutine test_runinu_continuation_is_material
+
+  subroutine test_hetop_geometry_mismatch_preserves_store()
+    type(TimeCoordinate)::t0,t1
+    type(hydrology_step_t)::packet
+    type(hydroexec01_start_context_t)::start
+    type(tcd042_upper_chemistry_forcing_t)::chem
+    type(accepted_store_t)::store
+    type(kt13_composition_trace_t)::trace
+    logical::ok,success
+    character(len=128)::reason
+
+    call make_day(15_int64,t0); call make_day(16_int64,t1)
+    call make_packet(0.0_real64,0.0_real64,16.0_real64,packet)
+    call make_start(0.0_real64,start,ok); call assert_true(ok,'geometry-mismatch start')
+    call make_chemistry(0.0_real64,0.0_real64,chem,ok); call assert_true(ok,'geometry-mismatch chemistry')
+    call initialize_tcd042_store(store,'KT13-GEOMETRY',t0,2.5_real64,ok)
+    call assert_true(ok,'geometry-mismatch store')
+
+    call execute_bounded_tcd042_composed_interval(store,packet,'ANIMO_TEST_CALENDAR',0_int64, &
+      t0,t1,'KT13-GEOMETRY-EXEC',start,chem,1,2.0_real64,trace,success,reason)
+
+    call assert_true(.not.success,'mismatched top geometry rejects')
+    call assert_true(trim(reason)=='KT13_HETOP_GEOMETRY_MISMATCH','geometry mismatch reason')
+    call assert_true(.not.trace%kt06_binding_passed,'geometry mismatch rejected before binding')
+    call assert_store_origin(store,15_int64,2.5_real64)
+  end subroutine test_hetop_geometry_mismatch_preserves_store
 
   subroutine test_kt06_binding_failure_preserves_store()
     type(TimeCoordinate)::t0,t1
