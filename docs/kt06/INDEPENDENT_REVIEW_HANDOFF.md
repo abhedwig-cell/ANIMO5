@@ -37,12 +37,15 @@ process or numerical-equivalence claim.
 
 KT03F01 is explicitly not a consumed qualified authority.
 
-Suggested independent review branch:
+Prepared independent review branch:
 
 `review/animo-kt06-explicit-hydrology-runtime-binding-independent`
 
-The review must be performed from a genuinely separate review context. The
-authoring context must not self-approve this Tier C gate.
+The branch was created at review-support head
+`a06b60af02c52d8e85b9105e2a6dda5462d954e3`. Branch creation is only handoff
+preparation and is **not** review evidence. The review must be performed from a
+genuinely separate review context. The authoring context must not self-approve
+this Tier C gate.
 
 ## Primary review surfaces
 

@@ -34,7 +34,10 @@
       "KT06-R1 probe client naming insufficiently distinguished binding proof from scientific client",
       "KT06-R2 derived producer fixture and compiled test constants could drift independently"
     ],
-    "open_material_findings": []
+    "open_material_findings": [],
+    "prepared_independent_review_branch": "review/animo-kt06-explicit-hydrology-runtime-binding-independent",
+    "prepared_review_branch_base_support_head": "a06b60af02c52d8e85b9105e2a6dda5462d954e3",
+    "prepared_review_branch_is_review_evidence": false
   },
   "review_support": {
     "supplemental_evidence_changes_frozen_target": false,
