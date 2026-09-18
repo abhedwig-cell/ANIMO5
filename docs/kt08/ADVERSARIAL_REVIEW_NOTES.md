@@ -45,3 +45,11 @@ reproducible step when the pinned B0 source is available.
 
 KT06 is not consumed as qualified authority and its Tier C review gate is
 unchanged.
+
+## KT08-R1 completion check
+
+A second parity inspection found one remaining non-scientific mismatch in the
+same finding: the committed summary contained its workunit title while the
+rematerializer omitted that descriptive field. The materializer now emits the
+title as well. This does not alter any producer evidence, digest, packet value
+or temporal claim; it completes exact artifact reconstruction for KT08-R1.

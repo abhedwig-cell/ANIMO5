@@ -2,7 +2,7 @@
   "workunit": "ANIMO-KT08",
   "title": "LWKM Full Explicit Hydrology Producer Sequence Evidence",
   "phase": "QUALIFY",
-  "checkpoint_state": "FIRST_GREEN_HEAD_REVIEWED_REMATERIALIZER_PARITY_REMEDIATION_AUTHORED_CI_PENDING",
+  "checkpoint_state": "REMATERIALIZER_PARITY_REMEDIATION_COMPLETE_CI_PENDING",
   "branch": "work/animo-kt08-lwkm-full-sequence-evidence",
   "base_authority": "ANIMO-KT07@24dc3164c7832963d0b8931a8edf5155879a3f8d",
   "consumed_kt03_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
@@ -18,9 +18,9 @@
     "temporal_and_digest_record_sequence_sha256": "eb14311a997129df4ae590ea1c72baecadcc2991ec0c3e8e313ed4ba3720ddc1"
   },
   "temporal_envelope": {
-    "first_origin_day": 0.0,
-    "first_endpoint_day": 10.0,
-    "last_endpoint_day": 18263.0,
+    "first_origin_day": 0,
+    "first_endpoint_day": 10,
+    "last_endpoint_day": 18263,
     "chain_violation_count": 0,
     "duration_histogram_days": {
       "8": 37,
@@ -37,14 +37,14 @@
   "review": {
     "mode": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "finding": "KT08-R1 rematerializer omitted committed semantic anchor-role metadata",
-    "remediation": "materializer now emits exact role map and pins first origin first endpoint and minimum Sict explicitly",
-    "remediation_status": "APPLIED_CI_PENDING"
+    "remediation": "materializer now emits exact title and anchor-role metadata and pins first origin first endpoint and minimum Sict explicitly",
+    "remediation_status": "COMPLETE_CI_PENDING"
   },
   "production_src_modified": false,
   "kt03_adapter_modified": false,
   "kt05_adapter_modified": false,
   "kt06_modified": false,
-  "verdict": "REMEDIATED_B1_FULL_LWKM_SEQUENCE_EVIDENCE_AWAITING_EXACT_HEAD_CI_AND_FINAL_SAME_AGENT_REVIEW",
+  "verdict": "REMEDIATED_B1_FULL_LWKM_SEQUENCE_EVIDENCE_AWAITING_FINAL_EXACT_HEAD_CI_AND_SAME_AGENT_REVIEW",
   "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_FINAL_SAME_AGENT_REVIEW_AND_CLOSE_IF_NO_MATERIAL_FINDINGS",
   "explicit_exclusions": [
     "B2 historical compiler equivalence",

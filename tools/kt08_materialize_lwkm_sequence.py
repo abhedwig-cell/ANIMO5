@@ -169,6 +169,7 @@ def main() -> int:
 
     payload = {
         "workunit": "ANIMO-KT08",
+        "title": "LWKM Full Explicit Hydrology Producer Sequence Evidence",
         "evidence_class": "B1_DERIVED_FROM_PINNED_B0_PRODUCER_NOT_B2",
         "source_case": "LWKM_gras_1040.2021.2045",
         "source_member": "input/SWATRE.UNF",
