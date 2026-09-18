@@ -1,0 +1,24 @@
+name: ANIMO KT16 accepted application checkpoint
+on:
+  push:
+    branches: [work/animo-kt16-accepted-application-checkpoint-restart]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 8efdd151d89e1cff131d4b21e2acf559ca1828d6 2279a961459211e03550dfda4af09ab4f7f6b9a3 a079d93c965f6073586c55ee4b3544dd8873b723 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-kt16/ANIMO-KT16_STATUS.json >/dev/null
+      - name: Validate accepted checkpoint authority
+        run: python tools/validate_kt16_accepted_application_checkpoint.py
+      - name: Compile and run split-run checkpoint tests
+        run: bash tests/kt16/run_kt16_tests.sh
