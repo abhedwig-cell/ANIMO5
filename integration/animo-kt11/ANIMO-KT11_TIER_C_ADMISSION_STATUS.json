@@ -1,0 +1,48 @@
+{
+  "work_unit": "ANIMO-KT11-A1",
+  "title": "ANIMO-KT11 GOV04 Tier C Admission",
+  "branch": "work/animo-kt11-gov04-tier-c-admission",
+  "target": "ANIMO-KT11",
+  "state": "QUALIFIED_BOUNDED_NONPRODUCTION_MULTI_PACKET_PROVIDER_ADMITTED_GOV04_TIER_C",
+  "decision": "ADMIT_ANIMO_KT11_BOUNDED_NONPRODUCTION_MULTI_PACKET_PROVIDER_GOV04_TIER_C",
+  "admitted": true,
+  "production_authorized": false,
+  "formal_disposition_authority": "ANIMO-KT11-D1@1bd1232bba2cb2fa576a60742d8f968ea441c252",
+  "independent_review_authority": "review/animo-kt11-multi-packet-hydrology-provider-independent@dc91b04cd01230fcffbde12fcc8423e35d98bf85",
+  "independent_review_result": "PASS_CLAIM_UNCHANGED",
+  "gov04_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "kt06_dependency_authority": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+  "frozen_candidate_head": "843ac357f8b86f84131ddc08bf2097bb5af4e080",
+  "frozen_implementation_blob": "a41d0f61da6dd30a18dbfadbe4b29b00259fa41e",
+  "admission_record": "integration/animo-kt11/ANIMO-KT11_TIER_C_ADMISSION_CLOSEOUT.json",
+  "hard_boundaries": {
+    "frozen_implementation_modified": false,
+    "kt02_runtime_modified": false,
+    "kt05_adapter_modified": false,
+    "kt06_implementation_modified": false,
+    "production_source_modified": false,
+    "canonical_tcd_register_modified": false,
+    "central_regie_updated": false,
+    "production_patch_authorized": false,
+    "composition_admitted": false,
+    "b3_admitted": false,
+    "b4_admitted": false,
+    "status_a_claimed": false,
+    "status_aa_claimed": false
+  },
+  "validation": {
+    "independent_review_gate": "PASS",
+    "formal_disposition_gate": "PASS",
+    "admission_json_parse": "PASS",
+    "frozen_blob_reverified": true,
+    "scope_widening": false,
+    "kt06_dependency_pin_reverified": true,
+    "validated_admission_record_blob": "dfce1966f05b85184db9b51e76da5ce9ab6c8edd",
+    "validated_frozen_implementation_blob": "a41d0f61da6dd30a18dbfadbe4b29b00259fa41e"
+  },
+  "downstream_authority": {
+    "scope": "BOUNDED_NONPRODUCTION_MULTI_PACKET_HYDROLOGY_PROVIDER_AND_FORCING_LIFECYCLE_ONLY",
+    "atomic_admission_authoritative_before_aggregate_regie_integration": true
+  },
+  "next_if_validated": "DOWNSTREAM_WORK_MAY_CONSUME_KT11_ONLY_AT_ADMITTED_SCOPE; ANY DYNAMIC_PROVIDER, RETRY_TIMESTEP, SCIENTIFIC_EXECUTION, COMPOSITION OR PRODUCTION_BOUND CHANGE REQUIRES NEW GOV04 RISK CLASSIFICATION"
+}
