@@ -81,7 +81,7 @@ def export_hydrology_packet_frame(packet: HydrologyStep) -> str:
     ]
     lines.extend(_bits(getattr(packet, name)) for name in _SCALARS)
     lines.append("1" if packet.has_interception_storage_end else "0")
-    lines.append(_bits(packet.interception_storage_end or 0.0))
+    lines.append(_bits(packet.interception_storage_end if packet.interception_storage_end is not None else 0.0))
     lines.append("1" if packet.has_soil_temperature else "0")
 
     lines.extend(_bits(value) for value in packet.sc)
@@ -132,6 +132,8 @@ def parse_hydrology_packet_frame(text: str) -> HydrologyStep:
     if interception_flag not in ("0", "1"):
         raise PacketFrameError("invalid interception availability flag")
     interception_value = _from_bits(take())
+    if interception_flag == "0" and _bits(interception_value) != "0000000000000000":
+        raise PacketFrameError("absent interception payload must be positive binary zero")
 
     temperature_flag = take()
     if temperature_flag not in ("0", "1"):
