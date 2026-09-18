@@ -1,0 +1,24 @@
+name: ANIMO RG09 post KT20 rebaseline
+on:
+  push:
+    branches: [work/animo-rg09-post-kt20-real-provider-bridge-rebaseline]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 14109956b62376d0d0ab681e8c641c9e71d110bd 6245aad4aca962cb2a63d0394bb7f2baa686457d c41a28580421bf4dce770e438535ba92a57567cd; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-reg/RG09_PROGRAM_REBASELINE.json >/dev/null
+      - run: python -m json.tool integration/animo-reg/RG09_INDEPENDENT_REVIEW_ROUTING.json >/dev/null
+      - run: python -m json.tool integration/animo-reg/ANIMO-RG09_STATUS.json >/dev/null
+      - name: Validate rebaseline and review routing
+        run: python tools/validate_rg09_post_kt20_rebaseline.py
