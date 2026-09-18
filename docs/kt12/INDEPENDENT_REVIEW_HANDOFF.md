@@ -40,3 +40,6 @@ Any same-agent adversarial review retained in KT12 has assurance only:
 `PROCESS_SELF_REVIEWED_NOT_INDEPENDENT`
 
 and is input evidence for, not a substitute for, independent review.
+
+13. Verify that `load_rate` is explicitly treated as already-resolved process forcing and is not misattributed to KT11 hydrology ownership.
+14. Verify that the future composition identifies a separate qualified upper-boundary solute-load forcing surface, unless an existing exact authority is found.
