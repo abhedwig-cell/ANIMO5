@@ -1,0 +1,26 @@
+{
+  "work_unit": "ANIMO-KT20",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "4509ce511fd9813f00a7311bc57c75b6ac96d366",
+  "substantive_authoring_tree": "278ca3cb012c01e7377b3d3d596cf5934c65fe46",
+  "exact_head_ci": {
+    "run_id": 35404900389,
+    "conclusion": "success"
+  },
+  "frozen_blobs": {
+    "python_frame": "6f3b301b133dcc8ca4bdf04c302c4d4b8ad84af9",
+    "fortran_decoder": "88519e2e6f896e27ad5caf43f258dc1e55da1012",
+    "python_tests": "905114632ae30405330b2a3e7a38e4bcef4498b5",
+    "fortran_tests": "74ca90eef882ad5133658ff35b1a56a982f70927",
+    "harness": "63cb5304ec99a8ce34759ac0d120a165d79e16c1"
+  },
+  "candidate_claim": "EXACT_KT19_NORMALIZED_PACKET_VALUES_CAN_CROSS_THE_NONPRODUCTION_PYTHON_FORTRAN_ADAPTER_SEAM_AND_ENTER_KT18_WITH_FAIL_CLOSED_APPLICATION_SEMANTICS",
+  "real_b1_evidence": {
+    "typed_step_sha256": "eeeb862839cce8111535fae86220d8574240804b9f6f029f7ec8e07ceb65da1c",
+    "result": "SELECTED_BY_KT18_THEN_REJECTED_BEFORE_ACCEPTED_APPLICATION_PUBLICATION"
+  },
+  "synthetic_control_result": "SAME_FRAME_AND_DECODER_PATH_COMMITS_ONE_KT18_APPLICATION_GENERATION",
+  "independent_review_required": true,
+  "central_admission_performed": false,
+  "production_authorized": false
+}
