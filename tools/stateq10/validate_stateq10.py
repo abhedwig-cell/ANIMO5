@@ -60,6 +60,11 @@ if fn.get("function")!="Dble_trunc" or fn.get("input_type")!="REAL(4)" or fn.get
     fail("Dble_trunc type contract")
 if fn.get("integer_part")!="KINT(R4)" or fn.get("final_rounding")!="KIDNNT(R8)":
     fail("Dble_trunc intrinsic mapping")
+prec=mp.get("precision_evidence",{})
+if prec.get("vfproj_sha256")!="f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a":
+    fail("vfproj precision pin")
+if prec.get("project_setting")!="RealKIND=realKIND8":
+    fail("RealKIND setting")
 
 typed=mp.get("typed_first_origin",{})
 if typed.get("fields")!=["Pn","Sic","Snla","Mofro(1:Nl)"]:
@@ -76,10 +81,11 @@ for required in [
     "r = mod(r4, one)",
     "if (exact_real32_zero(r)) then",
     "help = -log10(abs(r))",
-    "i4 = int(help - 0.9999999_real32, kind=int32)",
-    "scale4 = 10.0_real32 ** (i4 + 7_int32)",
+    "i4 = int(real(help, real64) - 0.9999999_real64, kind=int32)",
+    "scale8 = 10.0_real64 ** (i4 + 7_int32)",
+    "r8 = scale8 * real(r, real64)",
     "rounded = nint(r8, kind=int64)",
-    "value = real(rounded, real64) / real(scale4, real64) + real(i, real64)",
+    "value = real(rounded, real64) / scale8 + real(i, real64)",
     "value%pn = normalize_rev53_real4(spn)",
     "value%sic = normalize_rev53_real4(ssic)",
     "value%snla = normalize_rev53_real4(ssnla)",
