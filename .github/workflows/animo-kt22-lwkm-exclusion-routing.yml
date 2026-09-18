@@ -1,0 +1,25 @@
+name: ANIMO KT22 LWKM TCD042 exclusion routing
+on:
+  push:
+    branches: [work/animo-kt22-lwkm-tcd042-exclusion-routing]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in e591344d9a2fd03b92fd56af1b9b555099edc340 b019ac4507648e57c196a8a62806d804f39014a2 9ca23f41dc3c28af686b1bc0bff8e7d66416d367 6895b67799f26888025eced7188e7190b2a0d07d 182dac2fc34ca42ed798203e90efeca1221f21e8; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-kt22/KT22_LWKM_EXCLUSION_ROUTING.json >/dev/null
+      - run: python -m json.tool integration/animo-kt22/ANIMO-KT22_STATUS.json >/dev/null
+      - name: Validate routing evidence and nonclaims
+        run: python tools/validate_kt22_lwkm_exclusion_routing.py
+      - name: Run bounded routing tests
+        run: bash tests/kt22/run_kt22_tests.sh
