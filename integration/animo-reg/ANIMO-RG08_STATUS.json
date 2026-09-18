@@ -2,9 +2,9 @@
   "work_unit": "ANIMO-RG08",
   "title": "Post-KT18 Program Rebaseline, Independent-Review Routing and External-Provider Materialization Boundary",
   "branch": "work/animo-rg08-post-kt18-review-routing",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_POST_KT18_PROGRAM_REBASELINE_REVIEW_ROUTING_NO_ADMISSION_OR_PRODUCTION_ADVANCE",
+  "decision": "QUALIFY_POST_KT18_REBASELINE_AND_INDEPENDENT_REVIEW_ROUTING_NO_CANDIDATE_ADMISSION_OR_PRODUCTION_ADVANCE",
   "predecessor": "ANIMO-RG07@c60dd36a38a2030e4f4ac1925f95b2966a6d1c87",
   "authoring_base": "ANIMO-KT18@42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72",
   "latest_checkpoint_integrity_candidate": "ANIMO-KT17@6d05b270e21a41ca626adbb719f8f55bfa9a97b5",
@@ -24,16 +24,22 @@
   "denominator_status": "DENOMINATOR_NOT_YET_QUALIFIED",
   "review": {
     "required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "genuinely_independent": false
+    "genuinely_independent": false,
+    "reviewed_head": "35d7b464d66e4bdeef8f20f4bcb59b7a8b557481",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-rg08-post-kt18-review-routing.yml",
     "validator": "tools/validate_rg08_post_kt18_review_routing.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35401662051,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "35d7b464d66e4bdeef8f20f4bcb59b7a8b557481",
+    "closeout_note": "Validated RG08 authoring package at 35d7b464d66e4bdeef8f20f4bcb59b7a8b557481 passed exact-head CI run 35401662051. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -54,10 +60,10 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW; IF_GREEN_USE_RG08_AS_CURRENT_PROGRAM_REBASELINE; SERIAL_GATE_IS_GENUINE_INDEPENDENT_REVIEW_AND_SEPARATE_ADMISSION; OWNERSHIP_DISJOINT_NONPRODUCTION_REAL_SOURCE_PROVIDER_MATERIALIZATION_MAY_PROCEED_ONLY_WITH_REPRODUCIBLE_PINNED_SOURCE_INPUT"
+  "next": "USE_ANIMO_RG08_AS_CURRENT_PROGRAM_REBASELINE_AFTER_EXACT_FINAL_HEAD_CI; GENUINE_INDEPENDENT_REVIEW_AND_SEPARATE_ADMISSION_REMAIN_SERIAL_GATES; OWNERSHIP_DISJOINT_NONPRODUCTION_REAL_SOURCE_PROVIDER_ADAPTER_MAY_PROCEED_FROM_PINNED_LWKM_SWATRE_SOURCE_WITH_REPRODUCIBLE_MATERIALIZATION"
 }
