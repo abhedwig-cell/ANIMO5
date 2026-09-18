@@ -1,0 +1,16 @@
+{
+  "work_unit": "ANIMO-BOUNDQ02B",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "6a243d40f78c58cae6afa792190b5a92c469df6a",
+  "substantive_authoring_tree": "1b6905c2e83ce868f352335b4fc56dbd9192bf14",
+  "frozen_implementation_blob": "eae62a2ce077e3e568a8a73b25ac45d20c432bae",
+  "validated_run": 35374249567,
+  "validated_job": 105695082821,
+  "validated_conclusion": "success",
+  "candidate_claim": "BOUNDQ02_STATIC_INTERVAL_CHEMISTRY_CAN_BE_CARRIED_IN_AN_OPAQUE_COPY_OUT_ONLY_FRAME_WITH_CANONICAL_CONTENT_SHA256_AND_SLOT_BOUND_FORCING_IDENTITY",
+  "compile_time_private_component_guard": "PASS",
+  "content_sha256_computed_by_runtime": false,
+  "content_sha256_verified_against_source_bytes_by_runtime": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
