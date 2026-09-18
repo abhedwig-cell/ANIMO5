@@ -1,0 +1,39 @@
+{
+  "work_unit": "ANIMO-BOUNDQ01",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "bc403a62b5e608d85581f91e7e9c1145d66e31a6",
+  "frozen_substantive_head": "bc403a62b5e608d85581f91e7e9c1145d66e31a6",
+  "frozen_substantive_tree": "6238237b858a37a09fc547ea5ace438a924842c6",
+  "frozen_implementation_blob": "6b381ec9b37528b0decee8a2fa484e8124fc767d",
+  "exact_head_ci": {
+    "run_id": 35369976714,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "exact_first_eight_label_match": "PASS",
+    "first_matching_label_wins": "PASS",
+    "list_directed_Fortran_conversion": "PASS",
+    "static_option_gate_exact": "PASS",
+    "precipitation_and_dry_deposition_sequences_preserved": "PASS",
+    "static_runon_and_irrigation_sequences_preserved": "PASS",
+    "lateral_runin_sequence_preserved": "PASS",
+    "phosphorus_presence_external_and_explicit": "PASS",
+    "source_ranges_preserved": "PASS",
+    "natural_testbank_all_static_options": "PASS",
+    "natural_testbank_both_phosphorus_modes": "PASS",
+    "dynamic_runon_not_claimed": "PASS",
+    "dynamic_irrigation_not_claimed": "PASS",
+    "active_year_selection_not_claimed": "PASS",
+    "dry_deposition_execution_not_claimed": "PASS",
+    "B2_behavior_not_claimed": "PASS",
+    "no_B3_B4_or_production_effect": "PASS",
+    "independent_Tier_C_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
