@@ -5,14 +5,14 @@
   "base": "ANIMO-KT13A@df2310cc69e3fe16187ba2235843222f8acfb726",
   "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
   "boundary_frame_authority": "ANIMO-BOUNDQ02@fb0c0c842aed9a90378aca613279e09a856ad09b",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_BOUNDQ02_EXACT_FRAME_TO_KT13A_TCD042_COMPOSITION_TIER_D_REVIEW_REQUIRED",
+  "decision": "QUALIFY_EXACT_INTERVAL_BOUNDARY_FRAME_TO_REMEDIATED_KT13A_ONE_INTERVAL_TCD042_COMPOSITION_NO_CURSOR_ATOMICITY_OR_MULTI_INTERVAL_ADMISSION",
   "risk_tier_candidate": "D_EXACT_INTERVAL_CHEMISTRY_SCIENCE_COMPOSITION",
-  "boundary_frame_identity_qualified": false,
-  "chemistry_time_binding_qualified": false,
-  "dry_deposition_separation_qualified": false,
-  "bounded_tcd042_composition_qualified": false,
+  "boundary_frame_identity_qualified": true,
+  "chemistry_time_binding_qualified": true,
+  "dry_deposition_separation_qualified": true,
+  "bounded_tcd042_composition_qualified": true,
   "year_cursor_atomic_commit_qualified": false,
   "multi_interval_continuation_qualified": false,
   "independent_review_completed": false,
@@ -21,17 +21,23 @@
   "supported_scope": "BOUNDQ02_EXACT_STATIC_BOUNDARY_FRAME_TO_REMEDIATED_KT13A_ONE_INTERVAL_TCD042_COMPOSITION",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_d_review_required_for_admission": true
+    "independent_tier_d_review_required_for_admission": true,
+    "reviewed_head": "7d410477c39d24f6b16d738a329a2d92db41d058",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-kt14-boundary-frame-composition.yml",
     "validator": "tools/validate_kt14_boundary_frame_composition.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35374003170,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "7d410477c39d24f6b16d738a329a2d92db41d058",
+    "closeout_note": "Validated repaired authoring package passed exact-head CI run 35374003170. Review/status closeout is authoritative only if the same workflow succeeds on this exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -49,10 +55,14 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_RETAIN_INDEPENDENT_TIER_D_GATE; NEXT_ARCHITECTURE_WORK_IS_ATOMIC_COMPOSITE_CONTINUATION_STATE_FOR_TCD042_PLUS_HYDROLOGY_PLUS_BOUNDARY_CURSOR"
+  "next": "USE_KT14_AS_QUALIFIED_NONPRODUCTION_EXACT_FRAME_COMPOSITION_CANDIDATE_ONLY; RETAIN_GENUINE_TIER_D_REVIEW_GATE; NEXT_RUNTIME_GAP_IS_ATOMIC_COMMIT_OF_KT02_ACCEPTED_STATE_WITH_BOUNDARY_CURSOR_AND_HYDROLOGY_CONTINUATION",
+  "frozen_substantive_head": "7d410477c39d24f6b16d738a329a2d92db41d058",
+  "frozen_substantive_tree": "62a1e3378f02d094b9600e64a942af4502407382",
+  "frozen_implementation_blob": "e7cb67202c49a6166be77bdb98cf1c7591cd13da",
+  "frozen_test_blob": "a694a1b85f36a1e24dc51ea853b1b01ea05654c6"
 }
