@@ -1,0 +1,57 @@
+{
+  "work_unit": "ANIMO-UBFORCE01",
+  "title": "TCD-042 Upper-Boundary Solute Load Forcing Contract & Source Mapping",
+  "branch": "work/animo-ubforce01-tcd042-upper-solute-load-contract",
+  "base": "ANIMO-KT12@8f0e8e4bfd0b391b781f7c69b7d2063d5cf8705e",
+  "current_program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "architecture_authority": "ANIMO-ARCH05@99b6098a19db405ce34928af89bb78b856dce7cd",
+  "input_audit_authority": "ANIMO-IO01@2bcf65360b08d278f28f1cc61ac96714db4793a3",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "D_FORCING_SCIENCE_COMPOSITION_INTERFACE",
+  "source_mapping_qualified": false,
+  "typed_contract_qualified": false,
+  "boundary_parser_qualified": false,
+  "load_resolver_execution_qualified": false,
+  "dry_deposition_included": false,
+  "direct_kt12_forcing_composition_unlocked": false,
+  "production_authorized": false,
+  "implementation": "prototype/ubforce01/mod_animo_tcd042_upper_solute_load_contract.f90",
+  "supported_scope": "REV53_IWA2_IOPTHYVS1_DETAILED_RESOLVED_LOAD1_TO_LOAD6_WITH_OPTIONAL_IPO1_PHOSPHORUS",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_d_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-ubforce01-upper-solute-load.yml",
+    "validator": "tools/validate_ubforce01_upper_solute_load.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "boundary_parser_implemented": false,
+    "source_load_resolver_implemented": false,
+    "dry_deposition_migrated": false,
+    "hydrology_owns_chemistry": false,
+    "tcd042_readmitted": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW; IF_GREEN_RETAIN_SEPARATE_TIER_D_REVIEW_GATE; NEXT_IMPLEMENTATION_SURFACE_MAY_RESOLVE_LOADS_FROM_PINNED_HYDROLOGY_PLUS_BOUNDARY_CHEMISTRY_ONLY_IN_A_SEPARATE_WORKUNIT"
+}
