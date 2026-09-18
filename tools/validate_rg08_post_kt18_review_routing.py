@@ -40,10 +40,12 @@ if kt18.get("independent_review_completed") is not False or kt18.get("production
     fail("KT18 admission/review overclaim")
 
 b3=show_json(B3Q06,"integration/animo-b3/ANIMO-B3Q06_STATUS.json")
-if b3.get("b3_complete") is not False:
+if b3.get("whole_b3_composition_complete") is not False:
     fail("B3 unexpectedly complete")
-if b3.get("canonical_top_level_unadmitted")!=["TCD-016","TCD-034","TCD-040"]:
+if b3.get("unadmitted_top_level")!=["TCD-016","TCD-034","TCD-040"]:
     fail("B3 unresolved frontier drift")
+if b3.get("decision")!="B3_COMPOSITION_INCOMPLETE_DO_NOT_OPEN_TB7_B4_OR_PRODUCTION":
+    fail("B3 closure decision drift")
 
 central=reb.get("central_admitted_runtime_authorities",{})
 if central.get("kt06")!="ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de":
