@@ -1,0 +1,38 @@
+{
+  "work_unit": "ANIMO-BOUNDQ02B",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "6a243d40f78c58cae6afa792190b5a92c469df6a",
+  "frozen_substantive_head": "6a243d40f78c58cae6afa792190b5a92c469df6a",
+  "frozen_substantive_tree": "1b6905c2e83ce868f352335b4fc56dbd9192bf14",
+  "frozen_implementation_blob": "eae62a2ce077e3e568a8a73b25ac45d20c432bae",
+  "exact_head_ci": {
+    "run_id": 35374249567,
+    "job_id": 105695082821,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "frame_components_private": "PASS",
+    "external_direct_mutation_compile_fails": "PASS",
+    "inspector_returns_copy_only": "PASS",
+    "returned_chemistry_mutation_does_not_change_frame": "PASS",
+    "canonical_lowercase_sha256_required": "PASS",
+    "content_and_slot_bound_forcing_identity": "PASS",
+    "different_declared_content_identity_changes_forcing_identity": "PASS",
+    "exact_origin_endpoint_revalidated": "PASS",
+    "year_slot_coherence_preserved": "PASS",
+    "chemistry_revalidated_through_UBFORCE02_constructor": "PASS",
+    "dry_deposition_separate_and_finite": "PASS",
+    "runtime_does_not_claim_to_compute_sha256": "PASS",
+    "runtime_does_not_claim_to_verify_sha_against_source_bytes": "PASS",
+    "no_science_or_year_selection_change": "PASS",
+    "no_canonical_state_checkpoint_or_production_effect": "PASS",
+    "independent_Tier_C_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
