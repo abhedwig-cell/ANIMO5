@@ -3,7 +3,7 @@
   "title": "KT13 Composition Coherence Remediation",
   "branch": "work/animo-kt13a-composition-coherence-remediation",
   "base": "ANIMO-KT13_AUTHORING@51baa9851d5bed0b711199835bb817b22514c511",
-  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "phase": "QUALIFIED_EXACT_FINAL_HEAD_CI_RECORDED",
   "state": "QUALIFIED_KT13_COMPOSITION_COHERENCE_REMEDIATION_INDEPENDENT_TIER_D_REVIEW_STILL_REQUIRED",
   "decision": "QUALIFY_REMEDIATED_BOUNDED_KT13_COMPOSITION_CANDIDATE_WITH_EXACT_SHARED_HETOP_AND_POSTCOMMIT_TRUTH_NO_ADMISSION",
   "purpose": "REMEDIATE_PRE_REVIEW_CROSS_MODULE_GEOMETRY_COHERENCE_AND_POSTCOMMIT_STATUS_TRUTH",
@@ -42,7 +42,7 @@
     "qualified": true,
     "workunit_complete": true
   },
-  "next": "WAIT_FOR_EXACT_FINAL_HEAD_CI; IF_GREEN_MARK_KT13A_AS_REVIEW_TARGET_READY_AND_DO_NOT_USE_UNREMEDIATED_KT13_FOR_TIER_D_REVIEW",
+  "next": "HAND_OFF_VALIDATED_REMEDIATED_TARGET_TO_GENUINELY_INDEPENDENT_GOV04_TIER_D_REVIEW; DO_NOT_USE_UNREMEDIATED_KT13_HEAD_51BAA985_FOR_REVIEW_OR_ADMISSION; NO_COMPOSITION_ADMISSION_UNTIL_REVIEW_PASS",
   "validation": {
     "workflow": ".github/workflows/animo-kt13a-composition-coherence.yml",
     "validator": "tools/validate_kt13a_composition_coherence.py",
@@ -50,7 +50,10 @@
     "substantive_green_head": "95dead10d7e017b7f46b2ce3f85704df134bb0e0",
     "substantive_green_run": 35369924474,
     "substantive_green_conclusion": "success",
-    "final_head_run": null,
-    "final_head_conclusion": null
+    "final_head_run": 35370707509,
+    "final_head_conclusion": "success",
+    "final_validated_head": "9373b48966e70eaea0e38f6bab49c5e3a504d80f",
+    "final_validated_job": 105683721643,
+    "recording_note": "The complete qualified KT13A closeout package at 9373b48966e70eaea0e38f6bab49c5e3a504d80f passed exact-head CI run 35370707509. This metadata-only recording commit does not alter the frozen substantive implementation or tests."
   }
 }

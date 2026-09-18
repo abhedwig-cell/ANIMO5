@@ -2,8 +2,8 @@
   "work_unit": "ANIMO-KT13A",
   "review_class": "GOV04_TIER_D_INDEPENDENT_COMPOSITION_REVIEW_REQUIRED",
   "candidate_claim": "SELECTED_KT05_PACKET_PLUS_EXPLICIT_START_CHEMISTRY_AND_EXACT_SHARED_HETOP_CAN_DRIVE_ONE_BOUNDED_TCD042_INTERVAL_TO_ATOMIC_KT02_COMMIT",
-  "review_target_ready": false,
-  "supersedes_unremediated_target_only_after_exact_head_ci": false,
+  "review_target_ready": true,
+  "supersedes_unremediated_target_only_after_exact_head_ci": true,
   "inherited_authorities": {
     "RG06": "8efdd151d89e1cff131d4b21e2acf559ca1828d6",
     "KT06": "56384db4107aed484218363e26dbb7be7f51e8de",
@@ -44,5 +44,15 @@
     "production": false
   },
   "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-  "same_agent_review_satisfies_independence": false
+  "same_agent_review_satisfies_independence": false,
+  "validated_closeout_head": "9373b48966e70eaea0e38f6bab49c5e3a504d80f",
+  "validated_closeout_run": 35370707509,
+  "validated_closeout_job": 105683721643,
+  "validated_closeout_conclusion": "success",
+  "frozen_substantive_target_head": "95dead10d7e017b7f46b2ce3f85704df134bb0e0",
+  "frozen_substantive_target_tree": "081e6ca2bf6b6d1120541836b27dde06a1512c82",
+  "frozen_composition_module_blob": "6e2e4c73e9b43f5d1bda58dc9387a56be8b2e2b1",
+  "frozen_test_blob": "66d74245497b4d93428fdb4f16476b0778e2c037",
+  "superseded_unremediated_kt13_head": "51baa9851d5bed0b711199835bb817b22514c511",
+  "target_disposition": "READY_FOR_GENUINELY_INDEPENDENT_TIER_D_REVIEW_NO_ADMISSION"
 }
