@@ -1,0 +1,50 @@
+{
+  "work_unit": "ANIMO-UBFORCE02",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_member": {
+    "path": "UBoundconc.for",
+    "sha256": "b9a7ec980d40c0f76279077852190788e36cd976d185b12683a38da0c7dfecf7",
+    "source_lines": "74-99",
+    "route": "Iwa=2 AND Iopthyvs=1"
+  },
+  "equations": {
+    "Wpr": "Prr-Rupr+Prsn",
+    "Load1": "Wpr*Coprnhyn + Prirr*Coirrnh + Runon*Corunonnh + Runinu*Coidnh",
+    "Load2": "Wpr*Coprniyn + Prirr*Coirrni + Runon*Corunonni + Runinu*Coidni",
+    "Load3": "Prirr*Codiormairr + Runon*Codiormarunon + Runinu*Codiormaid",
+    "Load4": "Prirr*Codiorniirr + Runon*Codiornirunon + Runinu*Codiorniid",
+    "Load5_if_Ipo1": "Wpr*Coprpoyn + Prirr*Coirrpo + Runon*Corunonpo + Runinu*Coidpo",
+    "Load6_if_Ipo1": "Prirr*Codiorpoirr + Runon*Codiorporunon + Runinu*Codiorpoid"
+  },
+  "hydrology_context": {
+    "fields": [
+      "Prr",
+      "Prsn",
+      "Prirr",
+      "Runon",
+      "Rupr",
+      "Runinu"
+    ],
+    "rupr_role": "RESOLVED_HYDROLOGY_OUTPUT",
+    "runinu_role": "RESOLVED_HYDROLOGY_OUTPUT",
+    "inferred_from_raw_runoff": false,
+    "reason": "Hydro_detailed owns runoff partition and near-zero branch does not locally assign Runinu."
+  },
+  "chemistry_ownership": {
+    "authority": "ANIMO-ARCH05@99b6098a19db405ce34928af89bb78b856dce7cd",
+    "hydrology_owner_owns_chemistry": false,
+    "parser_migration_authority": "NONE",
+    "IO01_BOUNDARY_migration": false
+  },
+  "dry_deposition": {
+    "included": false,
+    "reason": "revision-53 applies dry N deposition as a separate state pulse before Load1..Load6"
+  },
+  "numerical_policy": {
+    "precision": "binary64",
+    "expression_order": "EXPLICIT_SOURCE_MAPPED_ORDER",
+    "tolerance_used": false,
+    "clipping_added": false,
+    "balancing_added": false
+  }
+}
