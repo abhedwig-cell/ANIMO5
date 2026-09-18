@@ -1,6 +1,7 @@
 module mod_animo_tcd042_upper_boundary_client
   use iso_fortran_env, only: int64, real64
-  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
+  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite, ieee_class, &
+    ieee_positive_zero, ieee_negative_zero
   use mod_transient_time, only: TimeCoordinate, time_compare
   use mod_transient_contracts, only: transient_payload_t, admissibility_t
   use mod_transient_transactions, only: accepted_store_t, initialize_accepted_store
@@ -127,6 +128,12 @@ contains
     valid = client%last_diagnostic_valid
   end subroutine tcd042_last_diagnostics
 
+  logical function exact_binary_zero(value)
+    real(real64), intent(in) :: value
+    exact_binary_zero = ieee_class(value) == ieee_positive_zero .or. &
+      ieee_class(value) == ieee_negative_zero
+  end function exact_binary_zero
+
   logical function resolved_hydrology_valid(hydrology)
     type(tcd042_resolved_hydrology_t), intent(in) :: hydrology
 
@@ -137,7 +144,7 @@ contains
     if (.not. ieee_is_finite(hydrology%rurv)) return
     if (hydrology%flib_top < 0.0_real64) return
     ! Frozen revision-53 Hydro_detailed forces Rurv to exact zero when Flpn=0.
-    if (hydrology%rurv /= 0.0_real64) return
+    if (.not. exact_binary_zero(hydrology%rurv)) return
     resolved_hydrology_valid = .true.
   end function resolved_hydrology_valid
 
@@ -219,7 +226,7 @@ contains
       return
     end if
 
-    if (flux == 0.0_real64) then
+    if (exact_binary_zero(flux)) then
       a1 = 1.0_real64
       a2 = st / self%hetop
       b1 = 1.0_real64
