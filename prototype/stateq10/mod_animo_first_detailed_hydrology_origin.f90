@@ -24,6 +24,13 @@ module mod_animo_first_detailed_hydrology_origin
 
 contains
 
+  logical function exact_real32_zero(value32)
+    real(real32), intent(in) :: value32
+    integer(int32) :: bits
+    bits = transfer(value32, bits)
+    exact_real32_zero = iand(bits, int(z'7FFFFFFF', int32)) == 0_int32
+  end function exact_real32_zero
+
   function normalize_rev53_real4(r4) result(value)
     real(real32), intent(in) :: r4
     real(real64) :: value
@@ -38,7 +45,7 @@ contains
     i = int(r4, kind=int64)
     r = mod(r4, one)
 
-    if (r == 0.0_real32) then
+    if (exact_real32_zero(r)) then
       i4 = 0_int32
     else
       help = -log10(abs(r))
