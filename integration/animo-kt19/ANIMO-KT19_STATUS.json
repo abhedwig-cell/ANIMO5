@@ -6,9 +6,9 @@
   "program_authority": "ANIMO-RG08@14109956b62376d0d0ab681e8c641c9e71d110bd",
   "producer_evidence_authority": "ANIMO-KT08@281dc65cbaceaa61d31f9cb731b3c5a733ca5d57",
   "central_provider_authority": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_PINNED_LWKM_FILE_TO_IMMUTABLE_HYDROLOGY_PROVIDER_TIER_C_REVIEW_REQUIRED",
+  "decision": "QUALIFY_PINNED_EXTERNAL_LWKM_POWERSTATION_FILE_TO_EXACT_KT08_IMMUTABLE_PACKET_PROVIDER_NO_B2_OR_CENTRAL_ADMISSION",
   "risk_tier_candidate": "C_EXTERNAL_FORCING_RUNTIME_ADAPTER",
   "pinned_source_materialized": true,
   "pinned_source_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
@@ -26,17 +26,23 @@
   "external_replay_evidence": "integration/animo-kt19/KT19_EXTERNAL_SOURCE_REPLAY.json",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_c_review_required_for_admission": true
+    "independent_tier_c_review_required_for_admission": true,
+    "reviewed_head": "4fc215a164e6b015bfc91eb7d73fac27e76c532a",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-kt19-pinned-lwkm-file-provider.yml",
     "validator": "tools/validate_kt19_pinned_lwkm_file_provider.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35402574142,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "4fc215a164e6b015bfc91eb7d73fac27e76c532a",
+    "closeout_note": "Validated frozen KT19 authoring package passed exact-head CI run 35402574142. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "raw_b0_source_committed": false,
@@ -58,10 +64,14 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW; IF_GREEN_RETAIN_GENUINE_TIER_C_GATE; NEXT_COMPOSITION_STEP_MAY_BIND_THIS_EXTERNAL_ADAPTER_TO_KT18_WITHOUT_CHANGING_KT11_CENTRAL_AUTHORITY"
+  "next": "USE_KT19_AS_QUALIFIED_NONPRODUCTION_PINNED_REAL_FILE_PROVIDER_CANDIDATE_ONLY; RETAIN_GENUINE_TIER_C_REVIEW_GATE; NEXT_OWNERSHIP_DISJOINT_STEP_MAY_BIND_KT19_EXTERNAL_PROVIDER_OUTPUT_TO_KT18_ACCEPTED_APPLICATION_WITHOUT_CHANGING_KT11_CENTRAL_AUTHORITY",
+  "frozen_substantive_head": "752166959c006d745ad6fc6cfc6b9aadb1b2ce1f",
+  "frozen_substantive_tree": "d483038de4d9a5c4aa52a01b113e9a1ad36197e0",
+  "frozen_provider_blob": "9aa42bc124f7795d760e649163149447a07a4324",
+  "frozen_test_blob": "8eaacf8773e0cae0e1285444b5aaf4219aa46564"
 }
