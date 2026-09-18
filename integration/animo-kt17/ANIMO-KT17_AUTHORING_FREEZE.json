@@ -1,0 +1,31 @@
+{
+  "work_unit": "ANIMO-KT17",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "1411e245f62d87494947b648a89ea8207dfe9079",
+  "substantive_authoring_tree": "55500a1bd253603c423b21c43057c4d55506461a",
+  "validated_run": 35380676908,
+  "validated_job": 105715828062,
+  "validated_conclusion": "success",
+  "frozen_blobs": {
+    "sha256_implementation": "624a6cadb4471047f369e2c4f0e2ffb39c199bf6",
+    "checkpoint_integrity": "33b5a3d5b499ac56036f13b225382478138e7f88",
+    "kt15_read_only_config_inspector": "c7b164c9fc5033ecfd1b3034d5a0c46b68c84fbe",
+    "kt17_tests": "3d2b0954e498a792e016b25f502330ed325d7972"
+  },
+  "candidate_claim": "BOUNDED_KT16_ACCEPTED_CHECKPOINT_HAS_RECOMPUTABLE_SHA256_CONFIG_PAYLOAD_AND_MANIFEST_INTEGRITY_WITH_EXACT_EXPECTED_BUILD_AND_FIXED_EVIDENCE_IDENTITY_BINDING",
+  "repairs_before_freeze": [
+    "Manifest-digest tamper test exposed a fail-open status propagation bug after earlier successful hash checks.",
+    "The manifest mismatch guard was repaired to reset ok=false before returning.",
+    "The repaired substantive head passed KT17 plus KT15 and KT16 regression harnesses."
+  ],
+  "explicit_nonclaims": [
+    "source bytes are not rehashed by runtime",
+    "running executable does not self-attest Git commit",
+    "no disk checkpoint format",
+    "no canonical checkpoint/state admission",
+    "no independent Tier D review",
+    "no B4 or production authorization"
+  ],
+  "independent_review_required": true,
+  "production_authorized": false
+}
