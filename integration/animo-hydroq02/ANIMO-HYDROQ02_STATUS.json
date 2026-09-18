@@ -4,7 +4,7 @@
   "branch": "work/animo-hydroq02-tcd042-runoff-load-context",
   "base": "ANIMO-HYDROQ01@5301d90024c64057f2cb88fda1dbaa93aabfca47",
   "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
-  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "phase": "QUALIFIED_EXACT_FINAL_HEAD_CI_RECORDED",
   "state": "QUALIFIED_TCD042_RESOLVED_RUPR_RUNINU_LOAD_CONTEXT_TIER_D_REVIEW_REQUIRED",
   "decision": "QUALIFY_CAPTURED_RESOLVED_RUPR_RUNINU_CONTEXT_NO_RUNOFF_PARTITION_EXECUTION_OR_HISTORICAL_REPAIR",
   "risk_tier_candidate": "D_HYDROLOGY_SCIENCE_COMPOSITION_INTERFACE",
@@ -32,7 +32,11 @@
     "authoring_run": 35367310595,
     "authoring_conclusion": "success",
     "reviewed_authoring_head": "0ac23b83b047252241a35da3744fe91ead9764d8",
-    "closeout_note": "Validated freeze package passed run 35367310595. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
+    "closeout_note": "Validated freeze package passed run 35367310595. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head.",
+    "exact_final_candidate_head": "08d5b8301c217cf9d33d2bf248be133f2b5243fc",
+    "exact_final_candidate_run": 35367372077,
+    "exact_final_candidate_conclusion": "success",
+    "final_record_note": "Run 35367372077 validated the complete qualified closeout package at 08d5b8301c217cf9d33d2bf248be133f2b5243fc. This status-only record requires the same workflow to pass again on this recording head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
