@@ -1,0 +1,27 @@
+name: ANIMO RG05Q KT11 multi-packet admission integration
+on:
+  push:
+    branches: [work/animo-rg05q-kt11-multi-packet-admission-integration]
+  pull_request:
+    branches: [work/animo-rg05p-kt06-runtime-admission-integration]
+  workflow_dispatch:
+permissions: {contents: read, actions: read}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in 9a8d0d886f745be91153f47437cb0de2b3076ab2 50731bf118deb8ef1029f220a40b39a99240e480 dc91b04cd01230fcffbde12fcc8423e35d98bf85 1bd1232bba2cb2fa576a60742d8f968ea441c252 56384db4107aed484218363e26dbb7be7f51e8de; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Parse records
+        run: |
+          python -m json.tool integration/animo-reg/RG05Q_KT11_MULTI_PACKET_ADMISSION_ATTACHMENT.json >/dev/null
+          python -m json.tool integration/animo-reg/ANIMO-RG05Q_STATUS.json >/dev/null
+          python -m py_compile tools/validate_rg05q_kt11_multi_packet_admission.py
+      - run: python tools/validate_rg05q_kt11_multi_packet_admission.py
