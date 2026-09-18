@@ -74,6 +74,7 @@ mod=(R/"prototype/stateq10/mod_animo_first_detailed_hydrology_origin.f90").read_
 for required in [
     "i = int(r4, kind=int64)",
     "r = mod(r4, one)",
+    "if (exact_real32_zero(r)) then",
     "help = -log10(abs(r))",
     "i4 = int(help - 0.9999999_real32, kind=int32)",
     "scale4 = 10.0_real32 ** (i4 + 7_int32)",
