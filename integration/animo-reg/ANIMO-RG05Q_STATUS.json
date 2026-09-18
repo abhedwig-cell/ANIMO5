@@ -1,0 +1,64 @@
+{
+  "work_unit": "ANIMO-RG05Q",
+  "title": "KT11 Tier C Multi-Packet Provider Admission Integration",
+  "branch": "work/animo-rg05q-kt11-multi-packet-admission-integration",
+  "state": "PERSISTED_VALIDATION_PENDING",
+  "decision": null,
+  "source_aggregate": "ANIMO-RG05P@9a8d0d886f745be91153f47437cb0de2b3076ab2",
+  "source_aggregate_state": "QUALIFIED_KT06_GOV04_TIER_C_RUNTIME_ADMISSION_INTEGRATED_NO_B3_OR_PRODUCTION_EFFECT",
+  "kt11_admission_authority": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
+  "kt11_admission_decision": "ADMIT_ANIMO_KT11_BOUNDED_NONPRODUCTION_MULTI_PACKET_PROVIDER_GOV04_TIER_C",
+  "scientific_admission_count": 32,
+  "historical_uncertainty_admission_count": 32,
+  "top_level_admitted_tcd_count": 22,
+  "admitted_child_atom_count": 10,
+  "b3_queue_changed": false,
+  "central_runtime_authorities": {
+    "kt06": {
+      "admitted": true,
+      "risk_tier": "C",
+      "production_authorized": false,
+      "authority": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+      "frozen_implementation_blob": "9a24ea833291f761d2fa76ca4cc9fee28436c614"
+    },
+    "kt11": {
+      "admitted": true,
+      "risk_tier": "C",
+      "production_authorized": false,
+      "authority": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
+      "frozen_implementation_blob": "a41d0f61da6dd30a18dbfadbe4b29b00259fa41e"
+    }
+  },
+  "hard_boundaries": {
+    "scientific_readmission_performed": false,
+    "production_source_modified": false,
+    "canonical_tcd_register_modified": false,
+    "queue_authority_modified": false,
+    "kt06_scope_widened": false,
+    "kt11_scope_widened": false,
+    "scientific_execution_composed": false,
+    "dynamic_provider_admitted": false,
+    "retry_timestep_semantics_admitted": false,
+    "b4_open": false,
+    "production_open": false
+  },
+  "validation": {
+    "machine_validated": false,
+    "workflow": "ANIMO RG05Q KT11 multi-packet admission integration",
+    "candidate_run_id": null,
+    "candidate_job_id": null,
+    "tested_candidate_head": null,
+    "candidate_conclusion": "PENDING",
+    "validator": "PENDING",
+    "scope_guard": "PENDING",
+    "exact_final_head_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next_if_validated": "USE_ANIMO_RG05Q_AS_CURRENT_CENTRAL_REGIE_AUTHORITY_FOR_KT11_AT_ADMITTED_SCOPE; ANY EXPANSION REQUIRES SEPARATE GOV04 CLASSIFICATION"
+}
