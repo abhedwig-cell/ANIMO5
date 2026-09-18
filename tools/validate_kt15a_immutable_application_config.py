@@ -57,12 +57,10 @@ required=[
     "type(kt15_static_hydrology_config_t) :: static_hydrology",
     "character(len=64) :: boundary_content_sha256",
     "integer :: simulation_start_year",
-    "integer :: load_channel",
-    "bits = transfer(left, a)",
-    "bits = transfer(right, b)"
+    "integer :: load_channel"
 ]
 # The exact-real helper uses variables a/b, so validate separately below.
-for text in required[:13]:
+for text in required:
     if text not in mod:
         fail("immutable config implementation drift "+text)
 if "a = transfer(left, a)" not in mod or "b = transfer(right, b)" not in mod:
