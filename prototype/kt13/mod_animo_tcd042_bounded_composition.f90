@@ -40,11 +40,20 @@ module mod_animo_tcd042_bounded_composition
     real(real64) :: tcd042_p = 0.0_real64
     integer :: tcd042_branch = 0
     integer :: commit_count = 0
+    logical :: postcommit_diagnostics_valid = .false.
   end type kt13_composition_trace_t
 
   public :: execute_bounded_tcd042_composed_interval
 
 contains
+
+  logical function exact_binary64_equal(left, right)
+    real(real64), intent(in) :: left, right
+    integer(int64) :: a, b
+    a = transfer(left, a)
+    b = transfer(right, b)
+    exact_binary64_equal = a == b
+  end function exact_binary64_equal
 
   subroutine execute_bounded_tcd042_composed_interval( &
       store, selected_packet, runtime_calendar_contract_id, producer_day_offset, &
@@ -100,6 +109,10 @@ contains
     end if
     if (len_trim(execution_id) == 0) then
       reason = 'KT13_MISSING_EXECUTION_ID'
+      return
+    end if
+    if (.not. exact_binary64_equal(hetop, start_context%he_top)) then
+      reason = 'KT13_HETOP_GEOMETRY_MISMATCH'
       return
     end if
 
@@ -177,16 +190,17 @@ contains
       return
     end if
 
+    trace%commit_count = runtime_trace%commit_count
+    trace%science_runtime_committed = .true.
+
     call tcd042_last_diagnostics(science_client, trace%average_concentration, &
       trace%tcd042_flux, trace%tcd042_p, trace%tcd042_branch, diag_valid)
+    trace%postcommit_diagnostics_valid = diag_valid
     if (.not. diag_valid) then
-      success = .false.
-      reason = 'KT13_TCD042_DIAGNOSTICS_MISSING_AFTER_COMMIT'
+      reason = 'KT13_INTERVAL_COMMITTED_POSTCOMMIT_DIAGNOSTICS_INVALID'
       return
     end if
 
-    trace%commit_count = runtime_trace%commit_count
-    trace%science_runtime_committed = .true.
     success = .true.
     reason = 'KT13_BOUNDED_TCD042_INTERVAL_COMMITTED'
   end subroutine execute_bounded_tcd042_composed_interval
