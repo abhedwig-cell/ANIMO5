@@ -1,0 +1,106 @@
+{
+  "record_id": "ANIMO-KT11-A1-GOV04-TIER-C-ADMISSION",
+  "work_unit": "ANIMO-KT11-A1",
+  "target": "ANIMO-KT11",
+  "branch": "work/animo-kt11-gov04-tier-c-admission",
+  "gov04_risk_tier": "C",
+  "decision": "ADMIT_ANIMO_KT11_BOUNDED_NONPRODUCTION_MULTI_PACKET_PROVIDER_GOV04_TIER_C",
+  "admitted": true,
+  "production_authorized": false,
+  "authorities": {
+    "GOV04": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+    "independent_review": "review/animo-kt11-multi-packet-hydrology-provider-independent@dc91b04cd01230fcffbde12fcc8423e35d98bf85",
+    "formal_disposition": "ANIMO-KT11-D1@1bd1232bba2cb2fa576a60742d8f968ea441c252",
+    "kt06_runtime_binding": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de"
+  },
+  "frozen_identity": {
+    "candidate_head": "843ac357f8b86f84131ddc08bf2097bb5af4e080",
+    "implementation_path": "prototype/kt11/mod_animo_multi_packet_hydrology_provider.f90",
+    "implementation_blob": "a41d0f61da6dd30a18dbfadbe4b29b00259fa41e",
+    "kt06_implementation_blob": "9a24ea833291f761d2fa76ca4cc9fee28436c614",
+    "kt05_adapter_blob": "9ed1d6d3e91d9f5522f8c2a49a5e19eed1d82a9a",
+    "kt02_time_blob": "c43e3c761637054dd6166488ecb01902ce547771",
+    "kt02_interval_runtime_blob": "ac8eed3b7385daad3cb7c926bd7dab9d99e0a888",
+    "kt02_transactions_blob": "182164ca4bf4a890d98f9c89366764e5d818b10c"
+  },
+  "admitted_claim": "An immutable collection of complete KT05 explicit hydrology packets can deterministically select exactly one packet from a bounded whole-day KT02 requested interval, remain stateless across repeated requests, fail closed on missing or duplicate interval keys, and delegate the selected packet through admitted KT06 without changing KT02 time, accepted-state or publication ownership.",
+  "admitted_scope": {
+    "packet_storage": "IMMUTABLE_PROVIDER_OWNED_COMPLETE_KT05_PACKET_COPIES",
+    "packet_identity": "EXACT_PRODUCER_ENDPOINT_DAY_PLUS_PRODUCER_STEP_DURATION",
+    "duplicate_semantics": "INITIALIZATION_REJECTS_EXACT_DUPLICATE_KEYS",
+    "storage_order": "NON_SEMANTIC",
+    "sparse_provider": "ALLOWED_MISSING_INTERVAL_FAILS_CLOSED",
+    "repeated_lookup": "STATELESS_NON_CONSUMPTIVE",
+    "runtime_selection": "DETERMINISTIC_FROM_KT02_ORIGIN_ENDPOINT_AND_CONFIGURED_OFFSET",
+    "forcing_ownership": "PROVIDER_CLIENT_SIDE_OUTSIDE_ACCEPTED_CONTINUATION_STATE",
+    "kt06_delegation": "ADMITTED_FROZEN_KT06_RUNTIME_BINDING",
+    "accepted_time_authority": "KT02_ONLY",
+    "external_publication_authority": "KT02_ONLY",
+    "runtime_time_envelope": "EXACT_WHOLE_DAY_ONLY",
+    "calendar_relation": "CONFIGURED_RUNTIME_CALENDAR_ID_PLUS_NONNEGATIVE_INTEGER_DAY_OFFSET",
+    "failure_semantics": "FAIL_CLOSED_ON_MISSING_DUPLICATE_INVALID_METADATA_OR_OVERFLOW",
+    "accepted_payload": "SYNTHETIC_RUNTIME_PROBE_STATE_ONLY",
+    "publication": "KT02_PRIVATE_INTERVAL_THEN_ATOMIC_EXTERNAL_PUBLICATION"
+  },
+  "gates": {
+    "independent_second_line_review": "PASS_CLAIM_UNCHANGED",
+    "material_findings": "NONE",
+    "formal_disposition": "PASS_ANIMO_KT11_D1",
+    "frozen_implementation_identity": "PASS",
+    "scope_unchanged_since_review": "PASS",
+    "kt06_admission_dependency": "PASS_PINNED",
+    "production_authorization": "NOT_APPLICABLE",
+    "b3_b4_status_a": "NOT_APPLICABLE"
+  },
+  "supplemental_evidence_only": {
+    "kt08_closeout": "281dc65cbaceaa61d31f9cb731b3c5a733ca5d57",
+    "kt08_summary_blob": "6ba7fe07ca47a6f8d45f18d09b7276dc4ece66f3",
+    "kt08_strength": "B1_DERIVED_FROM_PINNED_B0_PRODUCER_NOT_B2",
+    "kt09_closeout": "249066b7c07d505ba9a72a5aa199401a4349b0da",
+    "kt09_anchor_fixture_blob": "8aa4f5dcc8041979d9dc2e2b4fc8cc7f1c88de84",
+    "runtime_authority_effect": "NONE",
+    "evidence_strength_promotion": false
+  },
+  "explicit_nonclaims": [
+    "full 1800-packet complete-payload execution",
+    "runtime SWATRE.UNF decoding",
+    "dynamic streaming, reload, cache or mutable provider lifecycle",
+    "retry policy",
+    "timestep-selection policy",
+    "fractional or subday mapping",
+    "generic calendar conversion",
+    "Hlpimp scientific semantics",
+    "Hydro_detailed scientific execution",
+    "ANIMO scientific admissibility",
+    "production coupling or migration",
+    "B3 or B4 admission",
+    "Status A or Status AA"
+  ],
+  "hard_boundaries": {
+    "frozen_implementation_modified": false,
+    "kt02_runtime_modified": false,
+    "kt05_adapter_modified": false,
+    "kt06_implementation_modified": false,
+    "production_source_modified": false,
+    "canonical_tcd_register_modified": false,
+    "central_regie_updated": false,
+    "production_patch_authorized": false,
+    "composition_admitted": false
+  },
+  "downstream_use": {
+    "may_consume_as_authority": "BOUNDED_NONPRODUCTION_MULTI_PACKET_HYDROLOGY_PROVIDER_AND_FORCING_LIFECYCLE_ONLY",
+    "atomic_admission_authoritative_before_aggregate_regie_integration": true,
+    "must_requalify_if": [
+      "packet identity changes",
+      "lookup ownership changes",
+      "forcing ownership changes",
+      "accepted-state semantics change",
+      "time or interval mapping changes",
+      "consumed scientific authority changes",
+      "dynamic provider or streaming semantics are introduced",
+      "retry or timestep-selection semantics are introduced",
+      "scientific execution is composed into the runtime object",
+      "production-bound coupling is attempted"
+    ]
+  }
+}
