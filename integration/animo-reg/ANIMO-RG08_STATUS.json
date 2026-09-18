@@ -1,0 +1,63 @@
+{
+  "work_unit": "ANIMO-RG08",
+  "title": "Post-KT18 Program Rebaseline, Independent-Review Routing and External-Provider Materialization Boundary",
+  "branch": "work/animo-rg08-post-kt18-review-routing",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "predecessor": "ANIMO-RG07@c60dd36a38a2030e4f4ac1925f95b2966a6d1c87",
+  "authoring_base": "ANIMO-KT18@42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72",
+  "latest_checkpoint_integrity_candidate": "ANIMO-KT17@6d05b270e21a41ca626adbb719f8f55bfa9a97b5",
+  "latest_provider_application_candidate": "ANIMO-KT18@42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72",
+  "central_runtime_admissions_changed": false,
+  "independent_review_bundle_is_logistics_only": true,
+  "independent_reviews_completed": false,
+  "b3_complete": false,
+  "unadmitted_top_level": [
+    "TCD-016",
+    "TCD-034",
+    "TCD-040"
+  ],
+  "tb7_open": false,
+  "b4_open": false,
+  "production_open": false,
+  "denominator_status": "DENOMINATOR_NOT_YET_QUALIFIED",
+  "review": {
+    "required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-rg08-post-kt18-review-routing.yml",
+    "validator": "tools/validate_rg08_post_kt18_review_routing.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_source_modified": false,
+    "central_runtime_admission_performed": false,
+    "independent_review_performed": false,
+    "candidate_auto_admission_performed": false,
+    "canonical_state_admission_performed": false,
+    "canonical_checkpoint_admission_performed": false,
+    "b3_admission_performed": false,
+    "queue_modified": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_migration_authorized": false,
+    "status_a_claimed": false,
+    "status_aa_claimed": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW; IF_GREEN_USE_RG08_AS_CURRENT_PROGRAM_REBASELINE; SERIAL_GATE_IS_GENUINE_INDEPENDENT_REVIEW_AND_SEPARATE_ADMISSION; OWNERSHIP_DISJOINT_NONPRODUCTION_REAL_SOURCE_PROVIDER_MATERIALIZATION_MAY_PROCEED_ONLY_WITH_REPRODUCIBLE_PINNED_SOURCE_INPUT"
+}
