@@ -1,0 +1,46 @@
+{
+  "work_unit": "ANIMO-KT12",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "a98364704ac3d9105b3e6525e768c32fc47e12d6",
+  "reviewed_substantive_head": "b26eec7dc07fc7e8f9d3f6fea87233eb68bc834e",
+  "reviewed_substantive_tree": "13d5db294ed8b5be21e81ea2c751b025088691af",
+  "frozen_implementation_blob": "e9ef255f9905e5b4fe3d8761f2ecd7105a6451ad",
+  "exact_head_ci": {
+    "run_id": 35361112850,
+    "job_id": 105652313993,
+    "conclusion": "success"
+  },
+  "candidate_claim": "ADMITTED_TCD042_B1_AND_E1_ALGEBRA_CAN_EXECUTE_AS_A_KT02_TRANSACTION_CLIENT_WHEN_SUPPLIED_AN_EXPLICIT_ALREADY_RESOLVED_POST_HYDRO_DETAILED_INPUT",
+  "direct_composition_disposition": "BLOCKED_NO_QUALIFIED_POST_HYDRO_DETAILED_RESOLVED_HYDROLOGY_OUTPUT_AUTHORITY_AND_SEPARATE_SOLUTE_LOAD_FORCING_SURFACE_REQUIRED",
+  "review_axes": {
+    "tcd042_parent_scope_exactly_preserved": "PASS",
+    "exact_zero_B1_equations_match_admitted_authority": "PASS",
+    "E1_NQ03_equations_and_P_envelope_preserved": "PASS",
+    "no_Hetop_zero_semantics_invented": "PASS",
+    "no_flux_threshold_or_tolerance_change": "PASS",
+    "binary64_exact_zero_no_epsilon": "PASS",
+    "KT02_accepted_time_sole_authority": "PASS",
+    "accepted_state_and_step_average_diagnostic_separated": "PASS",
+    "rejected_attempt_preserves_accepted_state_time_generation": "PASS",
+    "KT05_raw_Flab_not_promoted_to_post_Modflux_Flib": "PASS",
+    "Hydro_detailed_and_Modflux_not_reimplemented": "PASS",
+    "hydrology_and_solute_load_forcing_ownership_not_collapsed": "PASS",
+    "KT11_not_misrepresented_as_solute_chemistry_provider": "PASS",
+    "direct_real_scientific_composition_not_claimed": "PASS",
+    "b3_not_mutated": "PASS",
+    "b4_tb7_production_closed": "PASS",
+    "independent_Tier_D_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "remediations_before_review": [
+    "Exact-zero REAL comparisons were replaced by explicit binary64 bit-identity checks to preserve exact-zero semantics under strict compiler warnings.",
+    "Source reconciliation was expanded to record that Load1..Load6 require a separate solute-load forcing surface in addition to the missing post-Hydro_detailed hydrology surface."
+  ],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "independent_review_status": "REQUIRED_NOT_PERFORMED_IN_AUTHORING_CONTEXT",
+  "admission_performed": false,
+  "production_authorized": false
+}
