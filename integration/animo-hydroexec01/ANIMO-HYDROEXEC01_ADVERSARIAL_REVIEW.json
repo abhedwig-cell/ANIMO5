@@ -1,0 +1,39 @@
+{
+  "work_unit": "ANIMO-HYDROEXEC01",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "92db708731ae8cc26643126430a037c65f9a5482",
+  "frozen_substantive_head": "1cf33679e07ade1d2fe94f2a11579792e0b0db09",
+  "frozen_substantive_tree": "0bf3303e82adba266b7a103c153fd9ef9304d38e",
+  "frozen_implementation_blob": "b4b621d1957291b7cf26931fe065d2cbcb89e71c",
+  "exact_head_ci": {
+    "run_id": 35368284713,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "frozen_source_and_precision_pins_exact": "PASS",
+    "no_ponding_scope_explicit": "PASS",
+    "no_macropore_scope_explicit": "PASS",
+    "KT02_interval_is_time_authority": "PASS",
+    "producer_step_must_match_KT02_exactly": "PASS",
+    "detailed_near_zero_Runinu_call_entry_preserved": "PASS",
+    "no_silent_near_zero_zeroing": "PASS",
+    "positive_partition_singularity_fails_closed": "PASS",
+    "source_expression_order_preserved_for_bounded_path": "PASS",
+    "HYDROQ01_and_HYDROQ02_outputs_share_execution_identity": "PASS",
+    "diagnostics_not_promoted_to_accepted_state": "PASS",
+    "full_Hydro_detailed_not_claimed": "PASS",
+    "Runinu_canonical_state_ownership_not_claimed": "PASS",
+    "no_B3_B4_TB7_or_production_effect": "PASS",
+    "independent_Tier_D_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "remediations_before_freeze": [
+    "The first CI exposed a rejection-status plumbing bug after start-context validation. The resolver now resets ok=false before every subsequent fail-closed guard. The repaired head passed exact-head CI before authoring freeze."
+  ],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
