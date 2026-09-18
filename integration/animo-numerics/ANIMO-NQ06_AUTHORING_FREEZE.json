@@ -1,0 +1,13 @@
+{
+  "work_unit": "ANIMO-NQ06",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "420950f0c65d276fb6bd1146a390fff53324109e",
+  "substantive_authoring_tree": "2f69d49c6531c95cc9b5ceb0bbe62ce843782f51",
+  "validated_run": 35367840916,
+  "validated_conclusion": "success",
+  "vfproj_sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+  "selected_bounded_candidate_precision": "real64",
+  "historical_numerical_equivalence": false,
+  "b2_created": false,
+  "production_authorized": false
+}
