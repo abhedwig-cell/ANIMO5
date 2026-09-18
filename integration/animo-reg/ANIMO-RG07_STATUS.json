@@ -2,9 +2,9 @@
   "work_unit": "ANIMO-RG07",
   "title": "Post-KT16 Program Rebaseline, Candidate-Stack Freeze and Next Admission Routing",
   "branch": "work/animo-rg07-post-kt16-program-rebaseline",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_POST_KT16_PROGRAM_REBASELINE_CANDIDATE_STACK_FROZEN_NO_ADMISSION_OR_PRODUCTION_ADVANCE",
+  "decision": "QUALIFIED_POST_KT16_PROGRAM_REBASELINE_CANDIDATE_STACK_FROZEN_NO_ADMISSION_OR_PRODUCTION_ADVANCE",
   "predecessor": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
   "authoring_base": "ANIMO-KT16@7cd863b71a7a7fcc985514a8af28dcb69cae999a",
   "central_runtime_admissions_unchanged": true,
@@ -30,16 +30,23 @@
   "review": {
     "required": true,
     "mode": "GOV05_COMPATIBLE_SINGLE_AGENT_ADVERSARIAL_REVIEW",
-    "completed": false,
+    "completed": true,
     "genuinely_independent": false,
-    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT"
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "reviewed_head": "86b8eed5992486ca919af184b797a2fa8864ab46",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-rg07-post-kt16-program-rebaseline.yml",
     "validator": "tools/validate_rg07_post_kt16_rebaseline.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35379817670,
+    "authoring_job": 105713071748,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "86b8eed5992486ca919af184b797a2fa8864ab46",
+    "closeout_note": "Authoring head 86b8eed5992486ca919af184b797a2fa8864ab46 passed exact-head run 35379817670. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -58,10 +65,10 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW; IF_GREEN_USE_RG07_AS_CURRENT_PROGRAM_REBASELINE_AND_START_OWNERSHIP_DISJOINT_KT17_NONPRODUCTION_MANIFEST_INTEGRITY_WORK_WHILE_INDEPENDENT_REVIEW_BUNDLE_IS_PREPARED"
+  "next": "USE_ANIMO_RG07_AS_CURRENT_PROGRAM_REBASELINE_AFTER_EXACT_FINAL_HEAD_CI; CENTRAL_ADMITTED_RUNTIME_REMAINS_KT06_A1_PLUS_KT11_A1; FREEZE_CANDIDATE_STACK_FOR_GENUINE_INDEPENDENT_REVIEW; OWNERSHIP_DISJOINT_KT17_CHECKPOINT_MANIFEST_INTEGRITY_BUILD_IDENTITY_MAY_START_NONPRODUCTION"
 }
