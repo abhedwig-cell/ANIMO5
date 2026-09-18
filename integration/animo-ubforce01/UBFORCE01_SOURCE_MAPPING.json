@@ -1,0 +1,55 @@
+{
+  "work_unit": "ANIMO-UBFORCE01",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_members": {
+    "UBoundconc.for": {
+      "sha256": "b9a7ec980d40c0f76279077852190788e36cd976d185b12683a38da0c7dfecf7",
+      "bounded_route": "Iwa=2 AND Iopthyvs=1",
+      "load_channels": {
+        "load1": "(Prr-Rupr+Prsn)*Coprnhyn + Prirr*Coirrnh + Runon*Corunonnh + Runinu*Coidnh",
+        "load2": "(Prr-Rupr+Prsn)*Coprniyn + Prirr*Coirrni + Runon*Corunonni + Runinu*Coidni",
+        "load3": "Prirr*Codiormairr + Runon*Codiormarunon + Runinu*Codiormaid",
+        "load4": "Prirr*Codiorniirr + Runon*Codiornirunon + Runinu*Codiorniid",
+        "load5_if_Ipo_1": "(Prr-Rupr+Prsn)*Coprpoyn + Prirr*Coirrpo + Runon*Corunonpo + Runinu*Coidpo",
+        "load6_if_Ipo_1": "Prirr*Codiorpoirr + Runon*Codiorporunon + Runinu*Codiorpoid"
+      },
+      "dry_deposition": "SEPARATE_STATE_PULSE_BEFORE_LOAD_CALCULATION_NOT_INCLUDED_IN_LOAD1_TO_LOAD6"
+    },
+    "input1.for": {
+      "sha256": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+      "boundary_family_sections": [
+        ">topbou:",
+        ">latbou:",
+        ">runoti:",
+        ">irriti:"
+      ],
+      "concentration_role": "BOUNDARY_CHEMISTRY_FORCING",
+      "normalized_migration_status": "NOT_QUALIFIED_BY_IO01"
+    }
+  },
+  "architecture": {
+    "ARCH05": "99b6098a19db405ce34928af89bb78b856dce7cd",
+    "rule": "SOLUTE_BOUNDARY_COMPOSITION_IS_SEPARATE_FROM_HYDROLOGY_OWNER"
+  },
+  "io_authority": {
+    "IO01": "2bcf65360b08d278f28f1cc61ac96714db4793a3",
+    "family": "BOU",
+    "target_objects": [
+      "BoundaryForcingConfiguration",
+      "BoundaryForcingSeries"
+    ],
+    "production_migration_qualified": false
+  },
+  "unit_derivation": {
+    "water_flux": "m d-1",
+    "concentration": "kg constituent m-3",
+    "resolved_load": "kg constituent m-2 d-1"
+  },
+  "contract_boundary": {
+    "raw_boundary_parser_owned_here": false,
+    "raw_hydrology_owned_here": false,
+    "load_formula_execution_owned_here": false,
+    "already_resolved_load_carrier_owned_here": true,
+    "dry_deposition_owned_here": false
+  }
+}
