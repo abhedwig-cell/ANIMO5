@@ -6,12 +6,12 @@
   "current_program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
   "architecture_authority": "ANIMO-ARCH05@99b6098a19db405ce34928af89bb78b856dce7cd",
   "input_audit_authority": "ANIMO-IO01@2bcf65360b08d278f28f1cc61ac96714db4793a3",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_TCD042_UPPER_SOLUTE_LOAD_FORCING_CONTRACT_TIER_D_REVIEW_REQUIRED",
+  "decision": "QUALIFY_BOUNDED_SOURCE_MAPPED_TCD042_UPPER_SOLUTE_LOAD_FORCING_CONTRACT_NO_PARSER_OR_LOAD_RESOLVER_ADMISSION",
   "risk_tier_candidate": "D_FORCING_SCIENCE_COMPOSITION_INTERFACE",
-  "source_mapping_qualified": false,
-  "typed_contract_qualified": false,
+  "source_mapping_qualified": true,
+  "typed_contract_qualified": true,
   "boundary_parser_qualified": false,
   "load_resolver_execution_qualified": false,
   "dry_deposition_included": false,
@@ -21,17 +21,24 @@
   "supported_scope": "REV53_IWA2_IOPTHYVS1_DETAILED_RESOLVED_LOAD1_TO_LOAD6_WITH_OPTIONAL_IPO1_PHOSPHORUS",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_d_review_required_for_admission": true
+    "independent_tier_d_review_required_for_admission": true,
+    "reviewed_head": "90eb78be7546edc275251ffaa130930cdf88b119",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-ubforce01-upper-solute-load.yml",
     "validator": "tools/validate_ubforce01_upper_solute_load.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35365669769,
+    "authoring_job": 105667415741,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "90eb78be7546edc275251ffaa130930cdf88b119",
+    "closeout_note": "Validated authoring/freeze package passed run 35365669769. This review/status-only closeout is authoritative only if the same workflow succeeds on this exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -48,10 +55,13 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW; IF_GREEN_RETAIN_SEPARATE_TIER_D_REVIEW_GATE; NEXT_IMPLEMENTATION_SURFACE_MAY_RESOLVE_LOADS_FROM_PINNED_HYDROLOGY_PLUS_BOUNDARY_CHEMISTRY_ONLY_IN_A_SEPARATE_WORKUNIT"
+  "next": "USE_UBFORCE01_AS_QUALIFIED_NONPRODUCTION_UPPER_SOLUTE_LOAD_CONTRACT_CANDIDATE; DO_NOT_ADMIT_END_TO_END_COMPOSITION; ANY_SOURCE_AUTHORIZED_LOAD_RESOLVER_REQUIRES_SEPARATE_WORKUNIT_AND_TIER_D_REVIEW",
+  "frozen_substantive_head": "bf827cfbf0ac53ffc72d3ce40b47b96125a1f7e3",
+  "frozen_substantive_tree": "6b41b42336c44a445cb4b67e915260d96f7a485f",
+  "frozen_implementation_blob": "fbe12e01df715ed7c95c59f5dd6b1ee73604034f"
 }
