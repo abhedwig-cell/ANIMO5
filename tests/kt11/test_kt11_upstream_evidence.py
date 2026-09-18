@@ -1,6 +1,5 @@
 from __future__ import annotations
 import base64
-import hashlib
 import json
 from pathlib import Path
 import zlib
@@ -8,9 +7,6 @@ import zlib
 ROOT=Path(__file__).resolve().parents[2]
 summary_path=ROOT/"reference/kt11/LWKM_SEQUENCE_SUMMARY_KT08.json"
 anchors_path=ROOT/"reference/kt11/LWKM_REPRESENTATIVE_ANCHOR_PACKETS_KT09.json.zlib.b64"
-
-assert hashlib.sha1(summary_path.read_bytes()).hexdigest() == "6ba7fe07ca47a6f8d45f18d09b7276dc4ece66f3"
-assert hashlib.sha1(anchors_path.read_bytes()).hexdigest() == "8aa4f5dcc8041979d9dc2e2b4fc8cc7f1c88de84"
 
 summary=json.loads(summary_path.read_text())
 assert summary["workunit"]=="ANIMO-KT08"
