@@ -1,0 +1,18 @@
+{
+  "work_unit": "ANIMO-KT16",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "eff38e0501d5178a82518ae0ae0cb2ab422fcdb0",
+  "substantive_authoring_tree": "7333809ffef7059904cfd3ba6bf702f0391a2b1d",
+  "frozen_implementation_blob": "5427e61561ec405d6298adfdbf4dbe9cfe1cd91a",
+  "frozen_test_blob": "b672e820ce8c568449308701397ebbfff44b339f",
+  "validated_run": 35377121131,
+  "validated_job": 105704307775,
+  "validated_conclusion": "success",
+  "candidate_claim": "KT15A_BOUNDED_ACCEPTED_APPLICATION_AGGREGATE_IS_SUFFICIENT_FOR_EXACT_IN_MEMORY_CHECKPOINT_RESTORE_AND_SPLIT_RUN_CONTINUATION",
+  "file_format_qualified": false,
+  "integrity_hash_qualified": false,
+  "canonical_checkpoint_admitted": false,
+  "historical_b2_restart_equivalence_claimed": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
