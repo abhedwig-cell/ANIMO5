@@ -1,0 +1,55 @@
+{
+  "work_unit": "ANIMO-STATEQ10",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_members": {
+    "input1.for": {
+      "sha256": "041328a24569f7649958e6d7a0385911656f49e11a812be6adfb8d81b16f8b95",
+      "mapped_lines": "2629-2648",
+      "bounded_route": "Hlpimp=11 AND Iopthyvs=1",
+      "source_inputs": [
+        "SMofro(1:Nl)",
+        "sSic",
+        "SPn",
+        "SSnla"
+      ],
+      "assignments": [
+        "Mofro(Ln)=Dble_trunc(SMofro(Ln))",
+        "Sic=Dble_trunc(sSic)",
+        "Pn=Dble_trunc(SPn)",
+        "Snla=Dble_trunc(SSnla)"
+      ]
+    },
+    "Function.for": {
+      "sha256": "8d18e2558b43d38382033ed43a77bf00a71995804a20db0253f3a9795d748e59",
+      "mapped_lines": "293-337",
+      "function": "Dble_trunc",
+      "input_type": "REAL(4)",
+      "output_type": "REAL(8)",
+      "integer_part": "KINT(R4)",
+      "fractional_part": "MOD(R4,1.0)",
+      "final_rounding": "KIDNNT(R8)"
+    }
+  },
+  "typed_first_origin": {
+    "fields": [
+      "Pn",
+      "Sic",
+      "Snla",
+      "Mofro(1:Nl)"
+    ],
+    "Runinu_included": false,
+    "reason": "STATEQ08 first-call Runinu remains source-undefined and unqualified"
+  },
+  "scope_boundary": {
+    "parser_qualified": false,
+    "file_bytes_qualified": false,
+    "exact_source_conversion_semantics_qualified_candidate": true,
+    "historical_testbank_value_claimed": false,
+    "b2_claimed": false
+  },
+  "relation": {
+    "STATEQ08": "separate Runinu execution continuation",
+    "STATEQ09": "subsequent accepted endpoint-to-origin transfer",
+    "HYDROEXEC01": "consumer of normalized first-origin values plus separately owned geometry/configuration"
+  }
+}
