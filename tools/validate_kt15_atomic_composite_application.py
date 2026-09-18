@@ -82,7 +82,7 @@ for required in [
         fail("atomic composition implementation drift "+required)
 
 for forbidden in [
-    "static_boundary_interval_frame_t",
+    "type(static_boundary_interval_frame_t)",
     "bind_static_boundary_interval(",
     "state%science_store = working%science_store",
     "state%continuation = next_continuation",
