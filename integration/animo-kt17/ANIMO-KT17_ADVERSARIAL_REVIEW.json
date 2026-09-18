@@ -1,0 +1,56 @@
+{
+  "work_unit": "ANIMO-KT17",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_package_head": "90799c0b4d22f244b6d6d36db2f952da7afcec38",
+  "frozen_substantive_head": "1411e245f62d87494947b648a89ea8207dfe9079",
+  "frozen_substantive_tree": "55500a1bd253603c423b21c43057c4d55506461a",
+  "exact_head_ci": {
+    "run_id": 35380747443,
+    "job_id": 105716059439,
+    "conclusion": "success"
+  },
+  "repair_history": {
+    "failed_runs": [
+      35380551778,
+      35380622820
+    ],
+    "finding": "MANIFEST_DIGEST_MISMATCH_PATH_RETURNED_WITH_STALE_OK_TRUE_AFTER_PREVIOUS_SUCCESSFUL_HASH_CHECK",
+    "repaired": true,
+    "repair_commit": "1411e245f62d87494947b648a89ea8207dfe9079",
+    "post_repair_regressions": [
+      "KT17",
+      "KT15",
+      "KT16"
+    ],
+    "post_repair_result": "PASS"
+  },
+  "review_axes": {
+    "sha256_known_answer_vectors": "PASS",
+    "sha256_runtime_external_dependency_absent": "PASS",
+    "canonical_preimage_typed_and_length_bound": "PASS",
+    "exact_binary64_bit_identity": "PASS",
+    "immutable_config_read_only_inspector": "PASS",
+    "kt15_regression_after_inspector": "PASS",
+    "kt16_regression_after_inspector": "PASS",
+    "config_digest_recomputed": "PASS",
+    "checkpoint_payload_digest_recomputed": "PASS",
+    "manifest_digest_recomputed": "PASS",
+    "manifest_mismatch_fail_closed_after_repair": "PASS",
+    "restore_gated_behind_integrity_verification": "PASS",
+    "build_identity_exactly_bound_but_not_self_attested": "PASS",
+    "evidence_hashes_exactly_bound_but_source_bytes_not_rehashed": "PASS",
+    "no_file_format_claim": "PASS",
+    "no_canonical_checkpoint_or_state_admission": "PASS",
+    "no_historical_b2_claim": "PASS",
+    "no_b3_tb7_b4_or_production_effect": "PASS",
+    "independent_tier_d_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "substantive_remediation_required": false,
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
