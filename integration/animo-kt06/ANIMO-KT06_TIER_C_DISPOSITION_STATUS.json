@@ -30,8 +30,11 @@
   "validation": {
     "independent_review_gate": "PASS",
     "frozen_blob_reverified": true,
-    "formal_disposition_json_parse": "PENDING_FINAL_BRANCH_RECHECK",
-    "scope_widening": false
+    "formal_disposition_json_parse": "PASS",
+    "status_json_parse_before_closeout": "PASS",
+    "scope_widening": false,
+    "validated_disposition_blob": "b4050aaf2ac387ff4f146a8b2ed90107d60a24c6",
+    "validated_frozen_implementation_blob": "9a24ea833291f761d2fa76ca4cc9fee28436c614"
   },
   "next_if_validated": "SEPARATE_GOV04_TIER_C_ADMISSION_DECISION_FOR_ANIMO_KT06"
 }
