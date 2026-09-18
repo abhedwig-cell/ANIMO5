@@ -3,7 +3,7 @@ set -euo pipefail
 root="$(cd "$(dirname "$0")/../.." && pwd)"
 cd "$root"
 build="$(mktemp -d)"
-trap 'rm -rf "$build"; rm -f tests/boundq01/fixtures/bad_option.inp tests/boundq01/fixtures/bad_range.inp' EXIT
+trap 'rm -rf "$build"; rm -f tests/boundq01/fixtures/bad_option.inp tests/boundq01/fixtures/bad_range.inp tests/boundq01/fixtures/duplicate_labels.inp tests/boundq01/fixtures/case_mismatch.inp' EXIT
 gfortran -std=f2008 -Wall -Wextra -Werror \
   prototype/boundq01/mod_animo_static_boundary_chemistry_adapter.f90 \
   tests/boundq01/test_static_boundary_chemistry.f90 \
