@@ -1,0 +1,24 @@
+name: ANIMO KT13 bounded TCD042 composition
+on:
+  push:
+    branches: [work/animo-kt13-tcd042-bounded-end-to-end-composition]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 8efdd151d89e1cff131d4b21e2acf559ca1828d6 56384db4107aed484218363e26dbb7be7f51e8de 8f0e8e4bfd0b391b781f7c69b7d2063d5cf8705e 5301d90024c64057f2cb88fda1dbaa93aabfca47 08d5b8301c217cf9d33d2bf248be133f2b5243fc 182dac2fc34ca42ed798203e90efeca1221f21e8 9f9204ba53169285ac84272704de14836962ef41 931e32cec69dc78a03015f01190cff97bf1fe1b4 e9ee7fc9e69a62c58b6eacd6379220cc51c1bf07 9ca23f41dc3c28af686b1bc0bff8e7d66416d367 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-kt13/ANIMO-KT13_STATUS.json >/dev/null
+      - name: Validate authority and composition scope
+        run: python tools/validate_kt13_bounded_tcd042_composition.py
+      - name: Compile and run bounded end-to-end composition
+        run: bash tests/kt13/run_kt13_tests.sh
