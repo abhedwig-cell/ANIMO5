@@ -1,0 +1,151 @@
+{
+  "work_unit": "ANIMO-BOUNDQ01",
+  "evidence_class": "USER_SUPPLIED_FROZEN_TESTBANK_GRAMMAR_AND_OPTION_SCAN_NOT_B2",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "natural_boundary_file_count": 9,
+  "static_option_cases": 9,
+  "dynamic_runon_cases": 0,
+  "dynamic_irrigation_cases": 0,
+  "cases": [
+    {
+      "case": "CranGrass",
+      "path": "ANIMO_testbank/CranGrass/Input/BOUNDARY.INP",
+      "sha256": "30bae08f8895aa72f9cf721561268e3ce8e0857a3525cfd892b18bdc11014603",
+      "ipo": 1,
+      "nuyr": 8,
+      "ioptidti": 0,
+      "ioptirti": 0,
+      "labels": [
+        ">optibc:",
+        ">topbou:",
+        ">latbou:",
+        ">botbou:"
+      ]
+    },
+    {
+      "case": "CranMais",
+      "path": "ANIMO_testbank/CranMais/Input/BOUNDARY.INP",
+      "sha256": "06e4c503885c60e84731fb26cbd61bcf5bcecf4b1a4da7d5eaaf8759310f376e",
+      "ipo": 0,
+      "nuyr": 9,
+      "ioptidti": 0,
+      "ioptirti": 0,
+      "labels": [
+        ">optibc:",
+        ">topbou:",
+        ">latbou:",
+        ">botbou:"
+      ]
+    },
+    {
+      "case": "GHGMais",
+      "path": "ANIMO_testbank/GHGMais/Input/boundary.inp",
+      "sha256": "c867ae6e3edcd2e6fcdf899e864046f4c88863a692489ee4938e47efa884a1bc",
+      "ipo": 0,
+      "nuyr": 10,
+      "ioptidti": 0,
+      "ioptirti": 0,
+      "labels": [
+        ">optibc:",
+        ">topbou:",
+        ">latbou:",
+        ">botbou:"
+      ]
+    },
+    {
+      "case": "GrassPeat",
+      "path": "ANIMO_testbank/GrassPeat/Input/boundary.inp",
+      "sha256": "c76a21c3178e578eee6eb172bb618825ddb9540805cf5d01b41d91b35eaaf000",
+      "ipo": 1,
+      "nuyr": 15,
+      "ioptidti": 0,
+      "ioptirti": 0,
+      "labels": [
+        ">optibc:",
+        ">topbou:",
+        ">latbou:",
+        ">botbou:"
+      ]
+    },
+    {
+      "case": "LWKM_gras_1040.2021.2045",
+      "path": "ANIMO_testbank/LWKM_gras_1040.2021.2045/input/boundary.inp",
+      "sha256": "546aedc1987ad3000d43c3d2e0266725d11b264eef2b0993301ceffe5d5a1887",
+      "ipo": 1,
+      "nuyr": 25,
+      "ioptidti": 0,
+      "ioptirti": 0,
+      "labels": [
+        ">optibc:",
+        ">topbou:",
+        ">latbou:",
+        ">botbou:"
+      ]
+    },
+    {
+      "case": "Puitmijn_Cranendonck_60",
+      "path": "ANIMO_testbank/Puitmijn_Cranendonck_60/input/BOUNDARY.INP",
+      "sha256": "37af1cb46b55cd5cd1758c1376292f256ff9f30cb40f38cf1368a32bafc8bb38",
+      "ipo": 1,
+      "nuyr": 12,
+      "ioptidti": 0,
+      "ioptirti": 0,
+      "labels": [
+        ">optibc:",
+        ">topbou:",
+        ">latbou:",
+        ">botbou:"
+      ]
+    },
+    {
+      "case": "RuurloGrass",
+      "path": "ANIMO_testbank/RuurloGrass/Input/BOUNDARY.INP",
+      "sha256": "d5f441cc439aacad72faf2e720cbdb6408e63932bb7c8cf27292542632cdd915",
+      "ipo": 0,
+      "nuyr": 6,
+      "ioptidti": 0,
+      "ioptirti": 0,
+      "labels": [
+        ">optibc:",
+        ">topbou:",
+        ">latbou:",
+        ">botbou:"
+      ]
+    },
+    {
+      "case": "STONE_akk_0006.2001.2015",
+      "path": "ANIMO_testbank/STONE_akk_0006.2001.2015/input/boundary.inp",
+      "sha256": "8ec6d12bb0c5b2cc5d810ad5fcd5c6b1dc0fc6540f9ce71a20d57a126a822f9f",
+      "ipo": 1,
+      "nuyr": 15,
+      "ioptidti": 0,
+      "ioptirti": 0,
+      "labels": [
+        ">optibc:",
+        ">topbou:",
+        ">latbou:",
+        ">botbou:"
+      ]
+    },
+    {
+      "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+      "path": "ANIMO_testbank/Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA/Input/boundary.inp",
+      "sha256": "42c8d38bc7845f183ee9b49103b8d31e6c66060c3208fd34cc27de7f574f94c8",
+      "ipo": 1,
+      "nuyr": 3,
+      "ioptidti": 0,
+      "ioptirti": 0,
+      "labels": [
+        ">optibc:",
+        ">topbou:",
+        ">latbou:",
+        ">botbou:"
+      ]
+    }
+  ],
+  "interpretation": [
+    "All supplied natural BOUNDARY.INP cases are within the bounded static Ioptidti=0, Ioptirti=0 option surface.",
+    "Both phosphorus-off and phosphorus-on natural grammar families are present.",
+    "This scan proves option/label coverage only. It does not by itself prove field-exact runtime equivalence or historical B2 behavior."
+  ]
+}
