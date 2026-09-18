@@ -1,0 +1,41 @@
+{
+  "work_unit": "ANIMO-KT18",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_package_head": "76851b4d098d94346bca36d1370a784694b74e2f",
+  "frozen_substantive_head": "c0d433017bc0094c904f5bed39eec459003ab1e2",
+  "frozen_substantive_tree": "9a6abb7246c971effaee4404612b8c07059839a9",
+  "exact_head_ci": {
+    "run_id": 35381402043,
+    "job_id": 105718166724,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "central_KT11_A1_not_modified_or_promoted": "PASS",
+    "branch_local_selection_copy_semantics_bounded": "PASS",
+    "exact_provider_key_pair_preserved": "PASS",
+    "storage_order_nonsemantic": "PASS",
+    "provider_cursor_state_absent": "PASS",
+    "selected_packet_is_copy": "PASS",
+    "provider_owned_forcing_immutable_after_copy_mutation": "PASS",
+    "accepted_application_origin_time_is_selection_origin": "PASS",
+    "KT15_remains_atomic_publication_owner": "PASS",
+    "nested_KT06_revalidation_retained": "PASS",
+    "provider_application_offset_disagreement_fails_without_publication": "PASS",
+    "missing_packet_fails_without_publication": "PASS",
+    "two_interval_provider_application_execution_passes": "PASS",
+    "KT11_regression_passes": "PASS",
+    "KT15_regression_passes": "PASS",
+    "no_runtime_file_decoder_or_full_bank_claim": "PASS",
+    "no_canonical_forcing_or_application_admission": "PASS",
+    "no_B3_TB7_B4_or_production_effect": "PASS",
+    "independent_Tier_D_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "substantive_remediation_required": false,
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
