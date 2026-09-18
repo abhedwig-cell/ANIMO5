@@ -2,8 +2,8 @@
   "work_unit": "ANIMO-RG05P",
   "title": "KT06 Tier C Runtime Admission Integration",
   "branch": "work/animo-rg05p-kt06-runtime-admission-integration",
-  "state": "PERSISTED_VALIDATION_PENDING",
-  "decision": null,
+  "state": "QUALIFIED_KT06_GOV04_TIER_C_RUNTIME_ADMISSION_INTEGRATED_NO_B3_OR_PRODUCTION_EFFECT",
+  "decision": "QUALIFIED_KT06_GOV04_TIER_C_RUNTIME_ADMISSION_INTEGRATED_NO_B3_OR_PRODUCTION_EFFECT",
   "source_aggregate": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
   "source_aggregate_state": "QUALIFIED_NINTH_BATCHED_B3_ADMISSION_INTEGRATION_TCD033_TCD032_TCD019_NO_PRODUCTION",
   "kt06_admission_authority": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
@@ -33,22 +33,23 @@
     "production_open": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO RG05P KT06 runtime admission integration",
-    "candidate_run_id": null,
-    "candidate_job_id": null,
-    "tested_candidate_head": null,
-    "candidate_conclusion": "PENDING",
-    "validator": "PENDING",
-    "scope_guard": "PENDING",
-    "exact_final_head_required": true
+    "candidate_run_id": 35350087340,
+    "candidate_job_id": 105615875670,
+    "tested_candidate_head": "bcb38ac5dc61bef148bd8690e70c80459a2d2a75",
+    "candidate_conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "exact_final_head_required": true,
+    "closeout_note": "Candidate run 35350087340 validated the complete substantive RG05P package at bcb38ac5dc61bef148bd8690e70c80459a2d2a75. This status-only closeout is authoritative only if the same workflow succeeds on this exact final head."
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "qualified": true,
+    "workunit_complete": true
   },
   "next_if_validated": "USE_ANIMO_RG05P_AS_CURRENT_CENTRAL_REGIE_AUTHORITY_FOR_KT06_RUNTIME_REUSE; START_SEPARATE_GOV04_CLASSIFIED_KT11_MULTI_PACKET_PROVIDER_WORKUNIT"
 }
