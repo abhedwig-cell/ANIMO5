@@ -4,15 +4,14 @@ module mod_animo_atomic_composite_application
   use mod_transient_time, only: TimeCoordinate
   use mod_transient_contracts, only: transient_payload_t
   use mod_transient_transactions, only: accepted_store_t, accepted_store_ready, &
-    accepted_store_generation, accepted_store_lineage, accepted_store_time, &
-    snapshot_accepted_payload, reconstruct_accepted_store_trusted
+    accepted_store_generation, accepted_store_time, snapshot_accepted_payload
   use mod_animo_hydrology_adapter, only: hydrology_step_t
   use mod_animo_bounded_no_ponding_upper_hydrology, only: &
     hydroexec01_start_context_t, make_hydroexec01_start_context
   use mod_animo_static_boundary_chemistry_adapter, only: static_boundary_chemistry_t
-  use mod_animo_static_boundary_year_binding, only: &
-    boundary_year_cursor_t, static_boundary_interval_frame_t, &
-    bind_static_boundary_interval
+  use mod_animo_static_boundary_year_binding, only: boundary_year_cursor_t
+  use mod_animo_immutable_static_boundary_frame, only: &
+    immutable_static_boundary_interval_frame_t, make_immutable_static_boundary_interval_frame
   use mod_animo_tcd042_boundary_frame_composition, only: &
     kt14_composition_trace_t, execute_boundary_frame_tcd042_interval
   use mod_animo_composite_accepted_continuation, only: &
@@ -43,6 +42,7 @@ module mod_animo_atomic_composite_application
     logical :: working_science_committed = .false.
     logical :: next_continuation_ready = .false.
     logical :: external_group_published = .false.
+    character(len=64) :: boundary_content_sha256 = ''
     integer(int64) :: origin_generation = -1_int64
     integer(int64) :: published_generation = -1_int64
     integer :: selected_boundary_year = 0
@@ -112,7 +112,7 @@ contains
 
   subroutine execute_kt15_atomic_interval(state, selected_packet, runtime_calendar_contract_id, &
       producer_day_offset, endpoint_time, execution_id, static_hydrology, boundary, &
-      boundary_source_id, simulation_start_year, load_channel, trace, success, reason)
+      boundary_content_sha256, simulation_start_year, load_channel, trace, success, reason)
     type(kt15_application_state_t), intent(inout) :: state
     type(hydrology_step_t), intent(in) :: selected_packet
     character(len=*), intent(in) :: runtime_calendar_contract_id
@@ -121,7 +121,7 @@ contains
     character(len=*), intent(in) :: execution_id
     type(kt15_static_hydrology_config_t), intent(in) :: static_hydrology
     type(static_boundary_chemistry_t), intent(in) :: boundary
-    character(len=*), intent(in) :: boundary_source_id
+    character(len=*), intent(in) :: boundary_content_sha256
     integer, intent(in) :: simulation_start_year
     integer, intent(in) :: load_channel
     type(kt15_atomic_trace_t), intent(out) :: trace
@@ -130,13 +130,11 @@ contains
 
     type(kt15_application_state_t) :: working
     type(composite_accepted_continuation_t) :: next_continuation
-    type(static_boundary_interval_frame_t) :: boundary_frame
+    type(immutable_static_boundary_interval_frame_t) :: boundary_frame
     type(boundary_year_cursor_t) :: next_cursor
     type(hydroexec01_start_context_t) :: start_context
     type(TimeCoordinate) :: origin_time
-    class(transient_payload_t), allocatable :: science_payload
     character(len=128) :: local_reason
-    character(len=128) :: lineage
     integer(int64) :: generation
     logical :: ok
     real(real64) :: hetop
@@ -164,12 +162,9 @@ contains
       reason = 'KT15_MISSING_HYDROLOGY_ORIGIN_PROFILE'
       return
     end if
-    if (size(state%continuation%hydrology_origin%mofro) /= selected_packet%layer_count) then
+    if (selected_packet%layer_count <= 0 .or. &
+        size(state%continuation%hydrology_origin%mofro) /= selected_packet%layer_count) then
       reason = 'KT15_HYDROLOGY_PROFILE_LAYER_MISMATCH'
-      return
-    end if
-    if (selected_packet%layer_count <= 0) then
-      reason = 'KT15_INVALID_SELECTED_PACKET_LAYER_COUNT'
       return
     end if
 
@@ -192,35 +187,31 @@ contains
     end if
     hetop = static_hydrology%he_top
 
-    call bind_static_boundary_interval(boundary, boundary_source_id, simulation_start_year, &
-      state%continuation%boundary_cursor, origin_time, endpoint_time, boundary_frame, &
-      next_cursor, ok, local_reason)
+    call make_immutable_static_boundary_interval_frame(boundary, boundary_content_sha256, &
+      simulation_start_year, state%continuation%boundary_cursor, origin_time, endpoint_time, &
+      boundary_frame, next_cursor, ok, local_reason)
     if (.not. ok) then
-      reason = 'KT15_BOUNDARY_BINDING_FAILED'
+      reason = 'KT15_OPAQUE_BOUNDARY_BINDING_FAILED'
       return
     end if
     trace%boundary_bound = .true.
-    trace%selected_boundary_year = boundary_frame%selected_year
-    trace%selected_boundary_slot = boundary_frame%selected_slot
+    trace%boundary_content_sha256 = boundary_content_sha256
 
     ! Work only on a private application-state copy. External accepted state
-    ! remains untouched until every science and continuation gate has passed.
+    ! remains untouched until science, continuation and group identity all pass.
     working = state
 
     call execute_boundary_frame_tcd042_interval(working%science_store, selected_packet, &
       runtime_calendar_contract_id, producer_day_offset, origin_time, endpoint_time, &
-      execution_id, start_context, boundary_frame, load_channel, hetop, &
+      execution_id, boundary_frame, load_channel, hetop, start_context, &
       trace%composition, ok, local_reason)
     if (.not. ok) then
       reason = 'KT15_WORKING_SCIENCE_COMPOSITION_FAILED'
       return
     end if
     trace%working_science_committed = .true.
-
-    if (.not. selected_packet%has_interception_storage_end) then
-      reason = 'KT15_SELECTED_PACKET_MISSING_INTERCEPTION_ENDPOINT'
-      return
-    end if
+    trace%selected_boundary_year = trace%composition%boundary_selected_year
+    trace%selected_boundary_slot = trace%composition%boundary_selected_slot
 
     call prepare_next_composite_continuation(state%continuation, endpoint_time, &
       selected_packet%ponding_end, selected_packet%interception_storage_end, &
@@ -245,15 +236,13 @@ contains
       return
     end if
 
-    ! Publication is one intrinsic assignment of the complete validated
-    ! application aggregate. No external subcomponent has been mutated before
-    ! this point.
+    ! One intrinsic assignment publishes the complete validated aggregate.
     state = working
 
     trace%external_group_published = .true.
     trace%published_generation = accepted_store_generation(state%science_store)
     success = .true.
-    reason = 'KT15_ATOMIC_COMPOSITE_APPLICATION_INTERVAL_COMMITTED'
+    reason = 'KT15_ATOMIC_OPAQUE_FRAME_APPLICATION_INTERVAL_COMMITTED'
   end subroutine execute_kt15_atomic_interval
 
   integer(int64) function kt15_application_generation(state) result(value)
