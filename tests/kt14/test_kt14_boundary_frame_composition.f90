@@ -171,7 +171,12 @@ contains
     call assert_true(transfer(trace%dry_deposition_nh,0_int64)==transfer(10.0_real64,0_int64), &
       'dry deposition remains separately visible')
     call accepted_concentration(store,c)
-    call assert_true(c>1.0_real64,'chemistry-bearing TCD042 state advanced')
+    call assert_true(transfer(trace%science%selected_load_rate,0_int64)== &
+      int(z'3D70624DD2F1A9FC',int64),'slot-1 NH wet load exact')
+    call assert_true(transfer(c,0_int64)==int(z'3FEFFFFFFF8020C5',int64), &
+      'chemistry-bearing TCD042 end state exact')
+    call assert_true(transfer(trace%science%average_concentration,0_int64)== &
+      int(z'3FEFFFFFFFC01062',int64),'chemistry-bearing TCD042 average exact')
   end subroutine test_valid_exact_frame_commits
 
   subroutine test_stale_frame_rejects_before_science()
