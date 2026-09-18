@@ -1,8 +1,8 @@
 {
   "workunit": "ANIMO-KT08",
   "title": "LWKM Full Explicit Hydrology Producer Sequence Evidence",
-  "phase": "IMPLEMENT",
-  "checkpoint_state": "FULL_SEQUENCE_B1_SUMMARY_AND_FAIL_CLOSED_REMATERIALIZER_AUTHORED_CI_PENDING",
+  "phase": "QUALIFY",
+  "checkpoint_state": "FIRST_GREEN_HEAD_REVIEWED_REMATERIALIZER_PARITY_REMEDIATION_AUTHORED_CI_PENDING",
   "branch": "work/animo-kt08-lwkm-full-sequence-evidence",
   "base_authority": "ANIMO-KT07@24dc3164c7832963d0b8931a8edf5155879a3f8d",
   "consumed_kt03_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
@@ -19,6 +19,7 @@
   },
   "temporal_envelope": {
     "first_origin_day": 0.0,
+    "first_endpoint_day": 10.0,
     "last_endpoint_day": 18263.0,
     "chain_violation_count": 0,
     "duration_histogram_days": {
@@ -28,21 +29,23 @@
       "11": 350
     }
   },
+  "first_green_head": "ca18712c0849ca1d3c5607df03abfcb5ee865230",
+  "first_green_exact_head_ci": {
+    "run_id": 35291132020,
+    "conclusion": "SUCCESS"
+  },
+  "review": {
+    "mode": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "finding": "KT08-R1 rematerializer omitted committed semantic anchor-role metadata",
+    "remediation": "materializer now emits exact role map and pins first origin first endpoint and minimum Sict explicitly",
+    "remediation_status": "APPLIED_CI_PENDING"
+  },
   "production_src_modified": false,
   "kt03_adapter_modified": false,
   "kt05_adapter_modified": false,
   "kt06_modified": false,
-  "implemented_capabilities": [
-    "all 1800 pinned LWKM Hlpimp=11 packets covered by compact aggregate identities",
-    "all packets parsed and validated through frozen KT03 materializer logic",
-    "all packets require explicit interception projection capability",
-    "gap-free producer-coordinate chain checked fail closed",
-    "duration histogram and complete sequence extent persisted",
-    "representative anchors persisted across duration classes and sequence positions",
-    "raw-source rematerializer independently pins all aggregate sequence identities"
-  ],
-  "verdict": "IMPLEMENTED_B1_FULL_LWKM_SEQUENCE_EVIDENCE_AWAITING_EXACT_HEAD_CI_AND_SAME_AGENT_REVIEW",
-  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW_AND_CLOSE_IF_NO_MATERIAL_FINDINGS",
+  "verdict": "REMEDIATED_B1_FULL_LWKM_SEQUENCE_EVIDENCE_AWAITING_EXACT_HEAD_CI_AND_FINAL_SAME_AGENT_REVIEW",
+  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_FINAL_SAME_AGENT_REVIEW_AND_CLOSE_IF_NO_MATERIAL_FINDINGS",
   "explicit_exclusions": [
     "B2 historical compiler equivalence",
     "generic producer sequence semantics",

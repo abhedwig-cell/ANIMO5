@@ -29,7 +29,21 @@ EXPECTED_RECORD_SEQUENCE_SHA256 = "eb14311a997129df4ae590ea1c72baecadcc2991ec0c3
 EXPECTED_DURATION_HISTOGRAM = {8.0: 37, 9.0: 13, 10.0: 1400, 11.0: 350}
 EXPECTED_LAST_ENDPOINT = 18263.0
 EXPECTED_NONZERO_SICT_COUNT = 652
+EXPECTED_MIN_SICT = 0.0
 EXPECTED_MAX_SICT = 0.0002
+EXPECTED_FIRST_ORIGIN = 0.0
+EXPECTED_FIRST_ENDPOINT = 10.0
+
+ANCHOR_ROLES = {
+    0: "first_packet_and_first_duration_10",
+    2: "first_duration_11",
+    5: "first_duration_8",
+    41: "first_duration_9",
+    449: "quarter_anchor",
+    899: "mid_sequence_anchor",
+    1349: "three_quarter_anchor",
+    1799: "last_packet",
+}
 
 
 def sequence_sha256(values: list[str]) -> str:
@@ -127,6 +141,7 @@ def main() -> int:
                 "duration_days": duration,
                 "dynamic_group_sha256": group,
                 "typed_step_sha256": typed,
+                "role": ANCHOR_ROLES[index],
             })
 
     typed_sequence_sha = sequence_sha256(typed_digests)
@@ -139,7 +154,13 @@ def main() -> int:
         "record sequence": (record_sequence_sha, EXPECTED_RECORD_SEQUENCE_SHA256),
         "last endpoint": (previous_endpoint, EXPECTED_LAST_ENDPOINT),
         "duration histogram": (dict(durations), EXPECTED_DURATION_HISTOGRAM),
+        "first origin": (first_origin, EXPECTED_FIRST_ORIGIN),
+        "first endpoint": (
+            parse_dynamic_step(records, 0, static).producer_endpoint_day,
+            EXPECTED_FIRST_ENDPOINT,
+        ),
         "nonzero Sict count": (nonzero_sict_count, EXPECTED_NONZERO_SICT_COUNT),
+        "minimum Sict": (minimum_sict, EXPECTED_MIN_SICT),
         "maximum Sict": (maximum_sict, EXPECTED_MAX_SICT),
     }
     for label, (actual, expected) in checks.items():
