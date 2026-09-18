@@ -1,0 +1,58 @@
+{
+  "work_unit": "ANIMO-KT14",
+  "title": "Boundary-Frame TCD-042 Composition Qualification",
+  "branch": "work/animo-kt14-boundary-frame-tcd042-composition",
+  "base": "ANIMO-KT13A@df2310cc69e3fe16187ba2235843222f8acfb726",
+  "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "boundary_frame_authority": "ANIMO-BOUNDQ02@fb0c0c842aed9a90378aca613279e09a856ad09b",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "D_EXACT_INTERVAL_CHEMISTRY_SCIENCE_COMPOSITION",
+  "boundary_frame_identity_qualified": false,
+  "chemistry_time_binding_qualified": false,
+  "dry_deposition_separation_qualified": false,
+  "bounded_tcd042_composition_qualified": false,
+  "year_cursor_atomic_commit_qualified": false,
+  "multi_interval_continuation_qualified": false,
+  "independent_review_completed": false,
+  "production_authorized": false,
+  "implementation": "prototype/kt14/mod_animo_tcd042_boundary_frame_composition.f90",
+  "supported_scope": "BOUNDQ02_EXACT_STATIC_BOUNDARY_FRAME_TO_REMEDIATED_KT13A_ONE_INTERVAL_TCD042_COMPOSITION",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_d_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-kt14-boundary-frame-composition.yml",
+    "validator": "tools/validate_kt14_boundary_frame_composition.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "boundary_parser_modified": false,
+    "dynamic_boundary_implemented": false,
+    "dry_deposition_process_migrated": false,
+    "year_cursor_canonical_state_admitted": false,
+    "multi_interval_state_claimed": false,
+    "tcd042_scope_widened": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_RETAIN_INDEPENDENT_TIER_D_GATE; NEXT_ARCHITECTURE_WORK_IS_ATOMIC_COMPOSITE_CONTINUATION_STATE_FOR_TCD042_PLUS_HYDROLOGY_PLUS_BOUNDARY_CURSOR"
+}
