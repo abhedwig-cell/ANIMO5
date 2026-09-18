@@ -1,0 +1,13 @@
+{
+  "work_unit": "ANIMO-KT12",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "2655d38328d4cd904da7b7d7aea86caca89ecbd8",
+  "substantive_authoring_tree": "0c59daa8fddf98cb47f82822c54aea1828f3beac",
+  "frozen_implementation_path": "prototype/kt12/mod_animo_tcd042_upper_boundary_client.f90",
+  "frozen_implementation_blob": "e9ef255f9905e5b4fe3d8761f2ecd7105a6451ad",
+  "candidate_claim": "ADMITTED_TCD042_B1_AND_E1_ALGEBRA_CAN_EXECUTE_AS_A_KT02_TRANSACTION_CLIENT_WHEN_SUPPLIED_AN_EXPLICIT_ALREADY_RESOLVED_POST_HYDRO_DETAILED_INPUT",
+  "direct_composition_disposition": "BLOCKED_NO_QUALIFIED_POST_HYDRO_DETAILED_RESOLVED_HYDROLOGY_OUTPUT_AUTHORITY",
+  "risk_tier_candidate": "D_CROSS_MODULE_SCIENTIFIC_COMPOSITION",
+  "production_authorized": false,
+  "independent_review_required": true
+}
