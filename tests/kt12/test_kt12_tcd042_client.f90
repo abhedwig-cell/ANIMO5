@@ -1,5 +1,6 @@
 program test_kt12_tcd042_client
   use iso_fortran_env, only: int64, real64
+  use, intrinsic :: ieee_arithmetic, only: ieee_class, ieee_positive_zero, ieee_negative_zero
   use mod_transient_time, only: TimeCoordinate, make_time_coordinate
   use mod_transient_contracts, only: transient_payload_t
   use mod_transient_transactions, only: accepted_store_t, accepted_store_generation, &
@@ -19,6 +20,12 @@ program test_kt12_tcd042_client
   print *, 'PASS_KT12_TCD042_TRANSACTION_RUNTIME_CLIENT'
 
 contains
+
+  logical function exact_binary_zero(value)
+    real(real64), intent(in) :: value
+    exact_binary_zero = ieee_class(value) == ieee_positive_zero .or. &
+      ieee_class(value) == ieee_negative_zero
+  end function exact_binary_zero
 
   subroutine assert_true(value, message)
     logical, intent(in) :: value
@@ -101,7 +108,7 @@ contains
     call assert_true(valid, 'B1 diagnostics valid')
     call assert_true(branch_id == TCD042_BRANCH_B1_EXACT_ZERO, 'B1 branch')
     call assert_true(transfer(avg, 0_int64) == transfer(1.25_real64, 0_int64), 'B1 exact average concentration')
-    call assert_true(flux == 0.0_real64 .and. p == 0.0_real64, 'B1 zero flux and P')
+    call assert_true(exact_binary_zero(flux) .and. exact_binary_zero(p), 'B1 zero flux and P')
     call accepted_store_time(store, actual_time, ok)
     call assert_true(ok .and. actual_time%day_index == 1_int64, 'B1 accepted time')
   end subroutine test_exact_zero_commit
