@@ -1,0 +1,33 @@
+{
+  "work_unit": "ANIMO-STATEQ08",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "5c09bc163c42eb1128ebb7e8c758aa007773b4e4",
+  "frozen_substantive_head": "5c09bc163c42eb1128ebb7e8c758aa007773b4e4",
+  "frozen_substantive_tree": "2d6c0b18ab52e006eff827980f2e4f4e6b3b3d49",
+  "exact_head_ci": {
+    "run_id": 35368749457,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "detailed_near_zero_branch_omits_Runinu_assignment": "PASS",
+    "aggregated_mode_difference_recorded": "PASS",
+    "Runinu_affects_UBoundconc_transport_and_balance": "PASS",
+    "execution_continuation_not_conserved_storage": "PASS",
+    "execution_continuation_not_diagnostic_only": "PASS",
+    "first_call_value_not_source_defined": "PASS",
+    "historical_first_call_value_not_claimed": "PASS",
+    "no_canonical_state_admission": "PASS",
+    "no_checkpoint_schema_admission": "PASS",
+    "no_model_evolution_zeroing": "PASS",
+    "no_B2_claim": "PASS",
+    "no_B3_B4_or_production_effect": "PASS",
+    "independent_Tier_C_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
