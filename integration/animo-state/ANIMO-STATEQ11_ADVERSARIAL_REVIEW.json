@@ -1,0 +1,37 @@
+{
+  "work_unit": "ANIMO-STATEQ11",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "7602c29ef3fa6450d143d3381e55b915bb6380ff",
+  "frozen_substantive_tree": "6c1a064cef8c43f10cc650ef64fe25cf3698d1b8",
+  "frozen_implementation_blob": "5450563ac74ff40b7144f5c1ab7805f8d5849862",
+  "frozen_test_blob": "aa4a87260d5cfe80e6173b65dc3cebc16bbd7359",
+  "exact_head_ci": {
+    "run_id": 35374454964,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "kt02_identity_is_composite_identity": "PASS",
+    "STATEQ10_first_origin_only": "PASS",
+    "STATEQ09_endpoint_to_origin_transfer_reused": "PASS",
+    "STATEQ08_Runinu_kept_separate": "PASS",
+    "BOUNDQ02_cursor_explicit": "PASS",
+    "generation_zero_uninitialized_cursor_bounded": "PASS",
+    "next_generation_requires_initialized_cursor": "PASS",
+    "stale_lineage_generation_time_rejected": "PASS",
+    "candidate_construction_not_publication": "PASS",
+    "atomic_group_commit_not_claimed": "PASS",
+    "canonical_state_not_admitted": "PASS",
+    "checkpoint_schema_not_admitted": "PASS",
+    "first_call_Runinu_not_invented": "PASS",
+    "independent_Tier_D_gate_retained": "PASS",
+    "b3_b4_tb7_production_boundaries_retained": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "independent_review_status": "REQUIRED_NOT_PERFORMED_IN_AUTHORING_CONTEXT",
+  "admission_performed": false,
+  "production_authorized": false
+}
