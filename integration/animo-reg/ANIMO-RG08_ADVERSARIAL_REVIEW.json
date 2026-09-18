@@ -1,0 +1,30 @@
+{
+  "work_unit": "ANIMO-RG08",
+  "review_mode": "GOV05_COMPATIBLE_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "35d7b464d66e4bdeef8f20f4bcb59b7a8b557481",
+  "reviewed_authoring_ci": {
+    "run_id": 35401662051,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "predecessor_RG07_preserved": "PASS",
+    "KT17_candidate_not_auto_admitted": "PASS",
+    "KT18_candidate_not_auto_admitted": "PASS",
+    "central_runtime_authorities_unchanged": "PASS",
+    "independent_review_bundle_logistics_only": "PASS",
+    "per_candidate_review_and_admission_gates_retained": "PASS",
+    "B3_negative_closure_retained": "PASS",
+    "TCD016_TCD034_TCD040_frontier_retained": "PASS",
+    "TB7_B4_production_closed": "PASS",
+    "denominator_not_qualified": "PASS",
+    "real_source_provider_route_requires_reproducible_pinned_source": "PASS",
+    "no_Status_A_or_AA_claim": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_completed": false,
+  "admission_performed": false,
+  "production_authorized": false
+}
