@@ -6,32 +6,39 @@
   "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
   "kt13a_authority": "ANIMO-KT13A@df2310cc69e3fe16187ba2235843222f8acfb726",
   "boundq02b_authority": "ANIMO-BOUNDQ02B@de6eef3122354e74405ff9c92286794714bdee82",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_OPAQUE_BOUNDQ02B_FRAME_TO_KT13A_TCD042_COMPOSITION_TIER_D_REVIEW_REQUIRED",
+  "decision": "QUALIFY_OPAQUE_CONTENT_BOUND_BOUNDARY_FRAME_TO_REMEDIATED_TCD042_COMPOSITION_NO_ADMISSION",
   "risk_tier_candidate": "D_OPAQUE_EXACT_INTERVAL_CHEMISTRY_SCIENCE_COMPOSITION",
-  "opaque_frame_consumption_qualified": false,
-  "content_identity_propagation_qualified": false,
-  "copy_out_only_boundary_access_qualified": false,
-  "dry_deposition_separation_qualified": false,
-  "bounded_tcd042_composition_qualified": false,
+  "opaque_frame_consumption_qualified": true,
+  "content_identity_propagation_qualified": true,
+  "copy_out_only_boundary_access_qualified": true,
+  "dry_deposition_separation_qualified": true,
+  "bounded_tcd042_composition_qualified": true,
   "independent_review_completed": false,
   "production_authorized": false,
   "implementation": "prototype/kt14/mod_animo_tcd042_boundary_frame_composition.f90",
   "supported_scope": "BOUNDQ02B_OPAQUE_CONTENT_BOUND_STATIC_FRAME_TO_REMEDIATED_KT13A_ONE_INTERVAL_TCD042_COMPOSITION",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_d_review_required_for_admission": true
+    "independent_tier_d_review_required_for_admission": true,
+    "reviewed_head": "41c5f8053429786212f1d00536cc4940d2459e02",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-kt14b-opaque-boundary-frame.yml",
     "validator": "tools/validate_kt14b_opaque_boundary_frame.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35375260250,
+    "authoring_job": 105698325296,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "41c5f8053429786212f1d00536cc4940d2459e02",
+    "closeout_note": "Validated opaque-frame authoring package passed exact-head CI run 35375260250. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -48,10 +55,14 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW; IF_GREEN_USE_KT14B_IN_KT15_ATOMIC_APPLICATION_COMMIT_AND_RETAIN_GENUINE_TIER_D_REVIEW_GATE"
+  "next": "USE_KT14B_AS_THE_ONLY_NEW_BOUNDARY_FRAME_SCIENCE_COMPOSITION_SURFACE; RETAIN_GENUINE_TIER_D_REVIEW_GATE; UPDATE_KT15_ATOMIC_APPLICATION_COMMIT_TO_CREATE_BOUNDQ02B_FRAME_AND_CALL_KT14B",
+  "frozen_substantive_head": "41c5f8053429786212f1d00536cc4940d2459e02",
+  "frozen_substantive_tree": "ef4ef7959de202cee9de0cd1e7ef523a84f5c771",
+  "frozen_implementation_blob": "080454a49e123ff4bd86a2fcdac7755b635e8734",
+  "frozen_test_blob": "b157725f70fc48c2e8037c781ca38be07110ff01"
 }
