@@ -4,7 +4,7 @@
   "branch": "work/animo-ubforce02-tcd042-upper-solute-load-resolver",
   "base": "ANIMO-UBFORCE01@9f9204ba53169285ac84272704de14836962ef41",
   "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
-  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "phase": "QUALIFIED_EXACT_FINAL_HEAD_CI_RECORDED",
   "state": "QUALIFIED_TCD042_UPPER_SOLUTE_LOAD_RESOLVER_TIER_D_REVIEW_REQUIRED",
   "decision": "QUALIFY_BOUNDED_REV53_TCD042_WET_ADVECTIVE_LOAD_RESOLVER_NO_PARSER_OR_HYDROLOGY_PARTITION_ADMISSION",
   "risk_tier_candidate": "D_FORCING_SCIENCE_IMPLEMENTATION",
@@ -34,7 +34,11 @@
     "authoring_run": 35366867122,
     "authoring_conclusion": "success",
     "reviewed_authoring_head": "07572d90d0ff36cf8594298007cbb35c7473333e",
-    "closeout_note": "Validated freeze package passed run 35366867122. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
+    "closeout_note": "Validated freeze package passed run 35366867122. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head.",
+    "exact_final_candidate_head": "f1aef9a90b861734309e17dd4af9ee7a29f41fa4",
+    "exact_final_candidate_run": 35366930053,
+    "exact_final_candidate_conclusion": "success",
+    "final_record_note": "Run 35366930053 validated the complete qualified closeout package at f1aef9a90b861734309e17dd4af9ee7a29f41fa4. This status-only record requires the same workflow to pass again on this recording head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -56,7 +60,7 @@
     "qualified": true,
     "workunit_complete": true
   },
-  "next": "USE_UBFORCE02_AS_QUALIFIED_NONPRODUCTION_LOAD_RESOLVER_CANDIDATE; NEXT_MATERIAL_GAP_IS_EXPLICIT_RESOLVED_RUPR_RUNINU_HYDROLOGY_CONTEXT_AND_REAL_HYDRO_DETAILED_EXECUTION; INDEPENDENT_TIER_D_REVIEW_REMAINS_REQUIRED",
+  "next": "USE_UBFORCE02_AS_QUALIFIED_NONPRODUCTION_LOAD_RESOLVER_CANDIDATE_AFTER_EXACT_FINAL_RECORDING_CI; NEXT_MATERIAL_GAP_IS_RESOLVED_RUPR_RUNINU_HYDROLOGY_CONTEXT_AND_REAL_HYDRO_DETAILED_EXECUTION; INDEPENDENT_TIER_D_REVIEW_REMAINS_REQUIRED",
   "frozen_substantive_head": "b8cfc556c1f259ded246381ed113a1998bbf9805",
   "frozen_substantive_tree": "c21460b346f008aad65b2d4c2c520fe1491a16d9",
   "frozen_implementation_blob": "a82bd7ef40ce18ddb00e45933290d1999de05884"
