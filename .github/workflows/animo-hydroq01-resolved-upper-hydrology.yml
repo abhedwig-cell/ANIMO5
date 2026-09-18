@@ -1,0 +1,25 @@
+name: ANIMO HYDROQ01 resolved upper hydrology
+on:
+  push:
+    branches: [work/animo-hydroq01-tcd042-resolved-upper-hydrology-contract]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 8efdd151d89e1cff131d4b21e2acf559ca1828d6 8f0e8e4bfd0b391b781f7c69b7d2063d5cf8705e 9ca23f41dc3c28af686b1bc0bff8e7d66416d367 56384db4107aed484218363e26dbb7be7f51e8de 50731bf118deb8ef1029f220a40b39a99240e480 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-hydroq01/HYDROQ01_SOURCE_MAPPING.json >/dev/null
+      - run: python -m json.tool integration/animo-hydroq01/ANIMO-HYDROQ01_STATUS.json >/dev/null
+      - name: Validate contract and governance
+        run: python tools/validate_hydroq01_resolved_upper_hydrology.py
+      - name: Compile and run resolved-hydrology contract tests
+        run: bash tests/hydroq01/run_hydroq01_tests.sh
