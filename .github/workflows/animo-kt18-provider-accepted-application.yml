@@ -1,0 +1,25 @@
+name: ANIMO KT18 provider accepted application
+on:
+  push:
+    branches: [work/animo-kt18-multi-packet-provider-accepted-application]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in c60dd36a38a2030e4f4ac1925f95b2966a6d1c87 50731bf118deb8ef1029f220a40b39a99240e480 2279a961459211e03550dfda4af09ab4f7f6b9a3 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-kt18/KT18_COMPOSITION_MANIFEST.json >/dev/null
+      - run: python -m json.tool integration/animo-kt18/ANIMO-KT18_STATUS.json >/dev/null
+      - name: Validate provider/application composition scope
+        run: python tools/validate_kt18_provider_application.py
+      - name: Compile and run provider/application plus upstream regressions
+        run: bash tests/kt18/run_kt18_tests.sh
