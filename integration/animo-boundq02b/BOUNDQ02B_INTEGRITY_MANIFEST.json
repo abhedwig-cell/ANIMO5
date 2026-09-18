@@ -1,0 +1,40 @@
+{
+  "work_unit": "ANIMO-BOUNDQ02B",
+  "authorities": {
+    "RG06": "8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+    "BOUNDQ02": "fb0c0c842aed9a90378aca613279e09a856ad09b",
+    "GOV04": "1bbe4c211197590f346803106e45dca5faae79fc"
+  },
+  "upstream_exact_final_ci": {
+    "BOUNDQ02_run": 35373354465,
+    "conclusion": "success"
+  },
+  "architecture_repair": {
+    "mutable_public_frame_problem": true,
+    "opaque_private_components": true,
+    "validated_copy_out_access": true,
+    "content_identity_required": true,
+    "forcing_identity_formula": "SHA256=<content_sha256>:SLOT=<selected_slot>"
+  },
+  "content_identity_contract": {
+    "syntax": "64 lowercase hexadecimal characters",
+    "hash_algorithm_name": "SHA-256",
+    "computed_by_boundq02b": false,
+    "verified_against_source_bytes_by_boundq02b": false,
+    "upstream_adapter_verification_required": true
+  },
+  "synthetic_fixture": {
+    "path": "tests/boundq01/fixtures/static_no_p.inp",
+    "sha256": "629a94972504c2865f8f0cbae9960e1354f6acd09e39ef663cc8f74375a7a169"
+  },
+  "nonclaims": {
+    "science_change": false,
+    "boundary_parser_change": false,
+    "canonical_forcing_state": false,
+    "checkpoint_schema": false,
+    "B2": false,
+    "B3": false,
+    "B4": false,
+    "production": false
+  }
+}
