@@ -1,0 +1,27 @@
+{
+  "work_unit": "ANIMO-KT18",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "c0d433017bc0094c904f5bed39eec459003ab1e2",
+  "substantive_authoring_tree": "9a6abb7246c971effaee4404612b8c07059839a9",
+  "validated_run": 35381333445,
+  "validated_job": 105717941773,
+  "validated_conclusion": "success",
+  "frozen_blobs": {
+    "kt11_with_read_only_selection_copy": "7c6418a75c4ebf8d8d4b3de1869f8ff62b19e85e",
+    "kt18_application_composition": "cb4fcafb49c3d0ac9e2fb47cf5d12eb96999ec60",
+    "kt18_tests": "d15780dbb9f564452e9eb2005def9f38d2f3f584"
+  },
+  "candidate_claim": "IMMUTABLE_KT11_MULTI_PACKET_PROVIDER_CAN_SELECT_EXACT_CURRENT_ACCEPTED_APPLICATION_PACKET_AND_DRIVE_BOUNDED_KT15A_APPLICATION_TO_ATOMIC_COMMIT",
+  "prefreeze_repairs": [
+    "Validator field name was corrected to the exact KT15A immutable_application_config_qualified authority key."
+  ],
+  "test_results": [
+    "KT18 provider-backed application PASS",
+    "KT11 upstream KT08/KT09 evidence identity PASS",
+    "KT11 multi-packet provider regression PASS",
+    "KT15A atomic application regression PASS"
+  ],
+  "central_kt11_admission_changed": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
