@@ -3,13 +3,13 @@
   "title": "Pinned LWKM Bounded TCD-042 Hydrology-Envelope Characterization",
   "branch": "work/animo-kt21-lwkm-bounded-envelope-characterization",
   "base": "ANIMO-RG09@b019ac4507648e57c196a8a62806d804f39014a2",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_PINNED_LWKM_BOUNDED_TCD042_HYDROLOGY_ENVELOPE_CHARACTERIZATION_TIER_C_REVIEW_REQUIRED",
+  "decision": "QUALIFY_B1_PINNED_REAL_SOURCE_HYDROLOGY_ENVELOPE_CHARACTERIZATION_PRESERVING_FIRST_CALL_RUNINU_UNCERTAINTY_NO_SCIENCE_OR_APPLICATION_ADMISSION",
   "risk_tier_candidate": "C_REAL_SOURCE_EVIDENCE_RUNTIME_CHARACTERIZATION",
-  "pinned_source_characterization_qualified": false,
-  "first_call_runinu_uncertainty_preserved": false,
-  "post_reset_deterministic_envelope_qualified": false,
+  "pinned_source_characterization_qualified": true,
+  "first_call_runinu_uncertainty_preserved": true,
+  "post_reset_deterministic_envelope_qualified": true,
   "tcd042_scope_widened": false,
   "sequential_real_application_qualified": false,
   "b2_claimed": false,
@@ -18,17 +18,23 @@
   "evidence": "integration/animo-kt21/KT21_LWKM_EXTERNAL_CHARACTERIZATION.json",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_c_review_required_for_admission": true
+    "independent_tier_c_review_required_for_admission": true,
+    "reviewed_head": "ba4b35fddcdd57881208bef57813a0cf6d62d52b",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-kt21-lwkm-envelope-characterization.yml",
     "validator": "tools/validate_kt21_lwkm_envelope.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35405509543,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "ba4b35fddcdd57881208bef57813a0cf6d62d52b",
+    "closeout_note": "Validated KT21 authoring package at ba4b35fddcdd57881208bef57813a0cf6d62d52b passed exact-head CI run 35405509543. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "raw_b0_source_committed": false,
@@ -48,10 +54,13 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_AND_SELF_REVIEW; IF_GREEN_USE_AS_B1_CHARACTERIZATION_ONLY; SCIENTIFIC_SCOPE_GAPS_REMAIN_SEPARATE_FROM_ADAPTER_RUNTIME"
+  "next": "USE_KT21_AS_B1_REAL_SOURCE_CHARACTERIZATION_ONLY; DO_NOT_ZERO_FIRST_CALL_RUNINU_OR_WIDEN_TCD042; ROUTE_SCOPE_GAP_TO_SCIENTIFIC_FRONTIER_AND_KEEP_INDEPENDENT_TIER_C_REVIEW_GATE",
+  "frozen_substantive_head": "ba4b35fddcdd57881208bef57813a0cf6d62d52b",
+  "frozen_substantive_tree": "b8ca4aa6f97663837ad7dda50249389edd6c2b10",
+  "frozen_implementation_blob": "cbca6bc62203765b44378da1367315684e7a6230"
 }
