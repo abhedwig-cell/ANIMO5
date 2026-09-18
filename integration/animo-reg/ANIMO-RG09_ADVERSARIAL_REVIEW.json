@@ -1,0 +1,35 @@
+{
+  "work_unit": "ANIMO-RG09",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "1e504b0b7750541fe4c35f65d8565637723dceea",
+  "reviewed_authoring_tree": "8ee67ab6a4ab875430a44e71e84766c880bc05b7",
+  "exact_head_ci": {
+    "run_id": 35405109269,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "RG08_predecessor_preserved": "PASS",
+    "KT20_exact_final_head_and_ci_bound": "PASS",
+    "KT19_provider_not_promoted_to_science": "PASS",
+    "KT20_real_packet_negative_application_disposition_preserved": "PASS",
+    "central_KT06_KT11_admissions_unchanged": "PASS",
+    "B3_22_of_25_and_open_TCD_set_preserved": "PASS",
+    "TCD016_frontier_not_silently_resolved": "PASS",
+    "TCD034_class_F_gates_preserved": "PASS",
+    "TCD040_B0_custody_blocker_preserved": "PASS",
+    "review_bundle_logistics_only": "PASS",
+    "same_agent_review_not_independent": "PASS",
+    "per_candidate_review_and_admission_gates_retained": "PASS",
+    "no_bundle_level_auto_admission": "PASS",
+    "no_canonical_state_checkpoint_forcing_admission": "PASS",
+    "TB7_B4_production_closed": "PASS",
+    "no_Status_A_or_AA_claim": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_completed": false,
+  "admission_performed": false,
+  "production_authorized": false
+}
