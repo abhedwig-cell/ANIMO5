@@ -1,0 +1,25 @@
+{
+  "work_unit": "ANIMO-KT21",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "ba4b35fddcdd57881208bef57813a0cf6d62d52b",
+  "substantive_authoring_tree": "b8ca4aa6f97663837ad7dda50249389edd6c2b10",
+  "frozen_implementation_blob": "cbca6bc62203765b44378da1367315684e7a6230",
+  "exact_head_ci": {
+    "run_id": 35405509543,
+    "conclusion": "success"
+  },
+  "candidate_claim": "PINNED_LWKM_SEQUENCE_HAS_A_REPRODUCIBLE_BOUNDED_TCD042_HYDROLOGY_ENVELOPE_CHARACTERIZATION_WITH_FIRST_CALL_RUNINU_UNCERTAINTY_PRESERVED",
+  "evidence_class": "B1_DIAGNOSTIC_CHARACTERIZATION_DERIVED_FROM_PINNED_B0_NOT_B2",
+  "result_partition": {
+    "packets": 1800,
+    "blocked_first_call_runinu": 347,
+    "deterministic": 1453,
+    "exact_zero": 36,
+    "finite_positive_e1": 14,
+    "outside_tcd042": 1401,
+    "ponding": 2
+  },
+  "sequential_real_application_qualified": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
