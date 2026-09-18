@@ -1,0 +1,14 @@
+{
+  "work_unit": "ANIMO-KT20",
+  "phase": "AUTHORING_READY_FOR_EXACT_HEAD_CI",
+  "base": "ANIMO-KT19@6245aad4aca962cb2a63d0394bb7f2baa686457d",
+  "program_authority": "ANIMO-RG08@14109956b62376d0d0ab681e8c641c9e71d110bd",
+  "application_authority": "ANIMO-KT18@42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72",
+  "real_ci_evidence": "KT19 B1 first-packet PowerStation source-derived fixture",
+  "real_first_packet_typed_sha256": "eeeb862839cce8111535fae86220d8574240804b9f6f029f7ec8e07ceb65da1c",
+  "expected_real_application_disposition": "PROVIDER_SELECTION_SUCCEEDS_APPLICATION_REJECTS_FAIL_CLOSED",
+  "synthetic_control_role": "BRIDGE_MECHANICS_POSITIVE_CONTROL_NOT_HISTORICAL_EVIDENCE",
+  "independent_review_completed": false,
+  "canonical_forcing_abi_admitted": false,
+  "production_authorized": false
+}
