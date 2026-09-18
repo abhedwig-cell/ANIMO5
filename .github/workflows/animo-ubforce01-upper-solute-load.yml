@@ -1,0 +1,25 @@
+name: ANIMO UBFORCE01 upper solute load
+on:
+  push:
+    branches: [work/animo-ubforce01-tcd042-upper-solute-load-contract]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 8efdd151d89e1cff131d4b21e2acf559ca1828d6 99b6098a19db405ce34928af89bb78b856dce7cd 2bcf65360b08d278f28f1cc61ac96714db4793a3 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-ubforce01/UBFORCE01_SOURCE_MAPPING.json >/dev/null
+      - run: python -m json.tool integration/animo-ubforce01/ANIMO-UBFORCE01_STATUS.json >/dev/null
+      - name: Validate forcing contract and governance
+        run: python tools/validate_ubforce01_upper_solute_load.py
+      - name: Compile and run upper-load carrier tests
+        run: bash tests/ubforce01/run_ubforce01_tests.sh
