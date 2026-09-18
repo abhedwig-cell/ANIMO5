@@ -36,8 +36,8 @@ contains
     real(real64) :: value
     integer(int32) :: i4
     integer(int64) :: i, rounded
-    real(real32) :: r, one, help, scale4
-    real(real64) :: r8
+    real(real32) :: r, one, help
+    real(real64) :: r8, scale8
 
     ! Exact source mapping of Function.for Dble_trunc for an already-read
     ! REAL(4) value. KINT truncates to INTEGER(8); KIDNNT rounds a REAL(8).
@@ -49,17 +49,20 @@ contains
       i4 = 0_int32
     else
       help = -log10(abs(r))
-      if (help < 0.0_real32) then
-        i4 = int(help - 0.9999999_real32, kind=int32)
+      if (real(help, real64) < 0.0_real64) then
+        i4 = int(real(help, real64) - 0.9999999_real64, kind=int32)
       else
         i4 = int(help, kind=int32)
       end if
     end if
 
-    scale4 = 10.0_real32 ** (i4 + 7_int32)
-    r8 = real(scale4 * r, real64)
+    ! The frozen Visual Fortran project uses RealKIND=realKIND8, so the
+    ! unsuffixed source literal 10.0 is default REAL(8), while R remains
+    ! explicitly REAL(4). Preserve that mixed-kind source evaluation.
+    scale8 = 10.0_real64 ** (i4 + 7_int32)
+    r8 = scale8 * real(r, real64)
     rounded = nint(r8, kind=int64)
-    value = real(rounded, real64) / real(scale4, real64) + real(i, real64)
+    value = real(rounded, real64) / scale8 + real(i, real64)
   end function normalize_rev53_real4
 
   subroutine make_first_detailed_hydrology_origin(smofro, ssic, spn, ssnla, value, ok, reason)
