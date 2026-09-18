@@ -1,0 +1,45 @@
+{
+  "work_unit": "ANIMO-KT18",
+  "composition": [
+    "KT11 exact provider interval selection",
+    "read-only hydrology_step_t copy",
+    "KT15A accepted application origin/config identity",
+    "KT15 atomic interval execution",
+    "nested KT06 producer/runtime revalidation",
+    "KT14B/KT13A bounded TCD042 science",
+    "atomic science+continuation publication"
+  ],
+  "authority_boundary": {
+    "central_kt11": "50731bf118deb8ef1029f220a40b39a99240e480",
+    "kt11_central_admission_changed": false,
+    "kt15a": "2279a961459211e03550dfda4af09ab4f7f6b9a3",
+    "rg07": "c60dd36a38a2030e4f4ac1925f95b2966a6d1c87"
+  },
+  "selection_contract": {
+    "key": [
+      "producer_endpoint_day",
+      "producer_step_days"
+    ],
+    "storage_order_semantic": false,
+    "mutable_cursor": false,
+    "selected_value_is_copy": true,
+    "provider_forcing_ownership_retained": true,
+    "missing_key_fails_closed": true,
+    "ambiguous_key_fails_closed": true
+  },
+  "defense_in_depth": {
+    "provider_uses_own_calendar_and_offset": true,
+    "application_nested_kt06_revalidates_against_application_config": true,
+    "disagreement_can_not_publish": true
+  },
+  "nonclaims": {
+    "runtime_SWATRE_UNF_decoder": false,
+    "full_1800_packet_execution": false,
+    "canonical_forcing_admission": false,
+    "canonical_application_admission": false,
+    "independent_review": false,
+    "B3": false,
+    "B4": false,
+    "production": false
+  }
+}
