@@ -1,0 +1,58 @@
+{
+  "work_unit": "ANIMO-BOUNDQ01",
+  "title": "TCD-042 Static Revision-53 BOUNDARY Chemistry Adapter Qualification",
+  "branch": "work/animo-boundq01-tcd042-static-boundary-chemistry",
+  "base": "ANIMO-UBFORCE02@931e32cec69dc78a03015f01190cff97bf1fe1b4",
+  "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "io_authority": "ANIMO-IO01@2bcf65360b08d278f28f1cc61ac96714db4793a3",
+  "architecture_authority": "ANIMO-ARCH05@99b6098a19db405ce34928af89bb78b856dce7cd",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "C_RUNTIME_FORCING_REPRESENTATION",
+  "source_grammar_qualified": false,
+  "typed_adapter_qualified": false,
+  "natural_static_option_coverage": true,
+  "natural_case_count": 9,
+  "dynamic_runon_qualified": false,
+  "dynamic_irrigation_qualified": false,
+  "active_year_selection_qualified": false,
+  "dry_deposition_execution_qualified": false,
+  "production_authorized": false,
+  "implementation": "prototype/boundq01/mod_animo_static_boundary_chemistry_adapter.f90",
+  "supported_scope": "REV53_BOUNDARY_STATIC_IOPTIDTI0_IOPTIRTI0_TOP_AND_LATERAL_CHEMISTRY_WITH_EXPLICIT_IPO_AND_NUYR",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_c_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-boundq01-static-boundary-chemistry.yml",
+    "validator": "tools/validate_boundq01_static_boundary.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "dynamic_boundary_parser_implemented": false,
+    "bottom_boundary_migrated": false,
+    "dry_deposition_process_migrated": false,
+    "active_year_selection_invented": false,
+    "tcd042_readmitted": false,
+    "b3_mutated": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_PREPARE_TIER_C_INDEPENDENT_REVIEW; THEN BUILD_A_SEPARATE_YEAR_SLOT_AND_UBFORCE02_BINDING_USING_QUALIFIED_TIME_SEMANTICS"
+}
