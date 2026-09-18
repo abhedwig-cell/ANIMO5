@@ -9,7 +9,7 @@ module mod_animo_atomic_composite_application
   use mod_animo_bounded_no_ponding_upper_hydrology, only: &
     hydroexec01_start_context_t, make_hydroexec01_start_context
   use mod_animo_static_boundary_chemistry_adapter, only: static_boundary_chemistry_t
-  use mod_animo_static_boundary_year_binding, only: boundary_year_cursor_t
+  use mod_animo_static_boundary_year_binding, only: boundary_year_cursor_t, BOUNDQ02_MAX_LEGACY_YEAR
   use mod_animo_immutable_static_boundary_frame, only: &
     immutable_static_boundary_interval_frame_t, make_immutable_static_boundary_interval_frame
   use mod_animo_tcd042_boundary_frame_composition, only: &
@@ -21,7 +21,9 @@ module mod_animo_atomic_composite_application
   private
 
   character(len=*), parameter, public :: KT15_APPLICATION_SCHEMA = &
-    'ANIMO_KT15_ATOMIC_COMPOSITE_APPLICATION_V1'
+    'ANIMO_KT15_ATOMIC_COMPOSITE_APPLICATION_V2'
+  character(len=*), parameter, public :: KT15_CONFIG_SCHEMA = &
+    'ANIMO_KT15_IMMUTABLE_APPLICATION_CONFIG_V1'
 
   type, public :: kt15_static_hydrology_config_t
     real(real64) :: he_top = 0.0_real64
@@ -29,15 +31,28 @@ module mod_animo_atomic_composite_application
     real(real64) :: lefrso = 0.0_real64
   end type kt15_static_hydrology_config_t
 
+  type, public :: kt15_application_config_t
+    private
+    character(len=56) :: schema_id = ''
+    character(len=64) :: runtime_calendar_contract_id = ''
+    integer(int64) :: producer_day_offset = 0_int64
+    type(kt15_static_hydrology_config_t) :: static_hydrology
+    character(len=64) :: boundary_content_sha256 = ''
+    integer :: simulation_start_year = 0
+    integer :: load_channel = 0
+  end type kt15_application_config_t
+
   type, public :: kt15_application_state_t
     private
     character(len=64) :: schema_id = ''
+    type(kt15_application_config_t) :: config
     type(accepted_store_t) :: science_store
     type(composite_accepted_continuation_t) :: continuation
   end type kt15_application_state_t
 
   type, public :: kt15_atomic_trace_t
     logical :: origin_coherent = .false.
+    logical :: config_bound = .false.
     logical :: boundary_bound = .false.
     logical :: working_science_committed = .false.
     logical :: next_continuation_ready = .false.
@@ -50,6 +65,9 @@ module mod_animo_atomic_composite_application
     type(kt14_composition_trace_t) :: composition
   end type kt15_atomic_trace_t
 
+  public :: make_kt15_application_config
+  public :: validate_kt15_application_config
+  public :: same_kt15_application_config
   public :: initialize_kt15_application_state
   public :: validate_kt15_application_state
   public :: execute_kt15_atomic_interval
@@ -57,12 +75,118 @@ module mod_animo_atomic_composite_application
   public :: kt15_application_time
   public :: snapshot_kt15_science_payload
   public :: snapshot_kt15_continuation
+  public :: snapshot_kt15_application_config
 
 contains
 
-  subroutine initialize_kt15_application_state(science_store, continuation, state, ok, reason)
+  logical function canonical_sha256(value)
+    character(len=*), intent(in) :: value
+    integer :: i, code
+    canonical_sha256 = .false.
+    if (len_trim(value) /= 64) return
+    do i = 1, 64
+      code = iachar(value(i:i))
+      if (.not. ((code >= iachar('0') .and. code <= iachar('9')) .or. &
+                 (code >= iachar('a') .and. code <= iachar('f')))) return
+    end do
+    canonical_sha256 = .true.
+  end function canonical_sha256
+
+  logical function exact_real64_equal(left, right)
+    real(real64), intent(in) :: left, right
+    integer(int64) :: a, b
+    a = transfer(left, a)
+    b = transfer(right, b)
+    exact_real64_equal = a == b
+  end function exact_real64_equal
+
+  subroutine make_kt15_application_config(runtime_calendar_contract_id, producer_day_offset, &
+      static_hydrology, boundary_content_sha256, simulation_start_year, load_channel, config, ok, reason)
+    character(len=*), intent(in) :: runtime_calendar_contract_id
+    integer(int64), intent(in) :: producer_day_offset
+    type(kt15_static_hydrology_config_t), intent(in) :: static_hydrology
+    character(len=*), intent(in) :: boundary_content_sha256
+    integer, intent(in) :: simulation_start_year, load_channel
+    type(kt15_application_config_t), intent(out) :: config
+    logical, intent(out) :: ok
+    character(len=*), intent(out) :: reason
+
+    config = kt15_application_config_t()
+    if (len_trim(runtime_calendar_contract_id) > len(config%runtime_calendar_contract_id)) then
+      ok = .false.
+      reason = 'KT15_CONFIG_CALENDAR_ID_TOO_LONG'
+      return
+    end if
+    config%schema_id = KT15_CONFIG_SCHEMA
+    config%runtime_calendar_contract_id = trim(runtime_calendar_contract_id)
+    config%producer_day_offset = producer_day_offset
+    config%static_hydrology = static_hydrology
+    if (len_trim(boundary_content_sha256) == 64) then
+      config%boundary_content_sha256 = boundary_content_sha256(1:64)
+    end if
+    config%simulation_start_year = simulation_start_year
+    config%load_channel = load_channel
+    call validate_kt15_application_config(config, ok, reason)
+  end subroutine make_kt15_application_config
+
+  subroutine validate_kt15_application_config(config, ok, reason)
+    type(kt15_application_config_t), intent(in) :: config
+    logical, intent(out) :: ok
+    character(len=*), intent(out) :: reason
+
+    ok = .false.
+    reason = 'UNSET'
+    if (trim(config%schema_id) /= KT15_CONFIG_SCHEMA) then
+      reason = 'KT15_CONFIG_SCHEMA_MISMATCH'
+      return
+    end if
+    if (len_trim(config%runtime_calendar_contract_id) == 0) then
+      reason = 'KT15_CONFIG_MISSING_CALENDAR_ID'
+      return
+    end if
+    if (.not. ieee_is_finite(config%static_hydrology%he_top) .or. &
+        config%static_hydrology%he_top <= 0.0_real64 .or. &
+        .not. ieee_is_finite(config%static_hydrology%lefrrv) .or. &
+        .not. ieee_is_finite(config%static_hydrology%lefrso)) then
+      reason = 'KT15_CONFIG_INVALID_STATIC_HYDROLOGY'
+      return
+    end if
+    if (.not. canonical_sha256(config%boundary_content_sha256)) then
+      reason = 'KT15_CONFIG_INVALID_BOUNDARY_CONTENT_SHA256'
+      return
+    end if
+    if (config%simulation_start_year < 1 .or. &
+        config%simulation_start_year > BOUNDQ02_MAX_LEGACY_YEAR) then
+      reason = 'KT15_CONFIG_INVALID_SIMULATION_START_YEAR'
+      return
+    end if
+    if (config%load_channel < 1 .or. config%load_channel > 6) then
+      reason = 'KT15_CONFIG_INVALID_LOAD_CHANNEL'
+      return
+    end if
+    ok = .true.
+    reason = 'VALID_KT15_IMMUTABLE_APPLICATION_CONFIG'
+  end subroutine validate_kt15_application_config
+
+  logical function same_kt15_application_config(left, right)
+    type(kt15_application_config_t), intent(in) :: left, right
+    same_kt15_application_config = .false.
+    if (trim(left%schema_id) /= trim(right%schema_id)) return
+    if (trim(left%runtime_calendar_contract_id) /= trim(right%runtime_calendar_contract_id)) return
+    if (left%producer_day_offset /= right%producer_day_offset) return
+    if (.not. exact_real64_equal(left%static_hydrology%he_top, right%static_hydrology%he_top)) return
+    if (.not. exact_real64_equal(left%static_hydrology%lefrrv, right%static_hydrology%lefrrv)) return
+    if (.not. exact_real64_equal(left%static_hydrology%lefrso, right%static_hydrology%lefrso)) return
+    if (trim(left%boundary_content_sha256) /= trim(right%boundary_content_sha256)) return
+    if (left%simulation_start_year /= right%simulation_start_year) return
+    if (left%load_channel /= right%load_channel) return
+    same_kt15_application_config = .true.
+  end function same_kt15_application_config
+
+  subroutine initialize_kt15_application_state(science_store, continuation, config, state, ok, reason)
     type(accepted_store_t), intent(in) :: science_store
     type(composite_accepted_continuation_t), intent(in) :: continuation
+    type(kt15_application_config_t), intent(in) :: config
     type(kt15_application_state_t), intent(out) :: state
     logical, intent(out) :: ok
     character(len=*), intent(out) :: reason
@@ -71,6 +195,8 @@ contains
     ok = .false.
     reason = 'UNSET'
 
+    call validate_kt15_application_config(config, ok, reason)
+    if (.not. ok) return
     call validate_composite_against_accepted_store(continuation, science_store, ok, reason)
     if (.not. ok) then
       reason = 'KT15_INITIAL_SCIENCE_CONTINUATION_INCOHERENT'
@@ -78,6 +204,7 @@ contains
     end if
 
     state%schema_id = KT15_APPLICATION_SCHEMA
+    state%config = config
     state%science_store = science_store
     state%continuation = continuation
     call validate_kt15_application_state(state, ok, reason)
@@ -88,6 +215,7 @@ contains
     type(kt15_application_state_t), intent(in) :: state
     logical, intent(out) :: ok
     character(len=*), intent(out) :: reason
+    type(TimeCoordinate) :: accepted_time
 
     ok = .false.
     reason = 'UNSET'
@@ -96,8 +224,20 @@ contains
       reason = 'KT15_APPLICATION_SCHEMA_MISMATCH'
       return
     end if
+    call validate_kt15_application_config(state%config, ok, reason)
+    if (.not. ok) return
     if (.not. accepted_store_ready(state%science_store)) then
       reason = 'KT15_INVALID_SCIENCE_STORE'
+      return
+    end if
+    call accepted_store_time(state%science_store, accepted_time, ok)
+    if (.not. ok) then
+      reason = 'KT15_ACCEPTED_TIME_UNAVAILABLE'
+      return
+    end if
+    if (trim(accepted_time%calendar_contract_id) /= trim(state%config%runtime_calendar_contract_id)) then
+      ok = .false.
+      reason = 'KT15_CONFIG_ACCEPTED_TIME_CALENDAR_MISMATCH'
       return
     end if
     call validate_composite_against_accepted_store(state%continuation, state%science_store, ok, reason)
@@ -110,20 +250,13 @@ contains
     reason = 'VALID_KT15_APPLICATION_STATE'
   end subroutine validate_kt15_application_state
 
-  subroutine execute_kt15_atomic_interval(state, selected_packet, runtime_calendar_contract_id, &
-      producer_day_offset, endpoint_time, execution_id, static_hydrology, boundary, &
-      boundary_content_sha256, simulation_start_year, load_channel, trace, success, reason)
+  subroutine execute_kt15_atomic_interval(state, selected_packet, endpoint_time, execution_id, &
+      boundary, trace, success, reason)
     type(kt15_application_state_t), intent(inout) :: state
     type(hydrology_step_t), intent(in) :: selected_packet
-    character(len=*), intent(in) :: runtime_calendar_contract_id
-    integer(int64), intent(in) :: producer_day_offset
     type(TimeCoordinate), intent(in) :: endpoint_time
     character(len=*), intent(in) :: execution_id
-    type(kt15_static_hydrology_config_t), intent(in) :: static_hydrology
     type(static_boundary_chemistry_t), intent(in) :: boundary
-    character(len=*), intent(in) :: boundary_content_sha256
-    integer, intent(in) :: simulation_start_year
-    integer, intent(in) :: load_channel
     type(kt15_atomic_trace_t), intent(out) :: trace
     logical, intent(out) :: success
     character(len=*), intent(out) :: reason
@@ -149,15 +282,10 @@ contains
       return
     end if
     trace%origin_coherent = .true.
+    trace%config_bound = .true.
     generation = accepted_store_generation(state%science_store)
     trace%origin_generation = generation
 
-    if (.not. ieee_is_finite(static_hydrology%he_top) .or. static_hydrology%he_top <= 0.0_real64 .or. &
-        .not. ieee_is_finite(static_hydrology%lefrrv) .or. &
-        .not. ieee_is_finite(static_hydrology%lefrso)) then
-      reason = 'KT15_INVALID_STATIC_HYDROLOGY_CONFIG'
-      return
-    end if
     if (.not. allocated(state%continuation%hydrology_origin%mofro)) then
       reason = 'KT15_MISSING_HYDROLOGY_ORIGIN_PROFILE'
       return
@@ -179,32 +307,31 @@ contains
       state%continuation%hydrology_origin%sic, &
       state%continuation%hydrology_origin%snla, &
       state%continuation%hydrology_origin%mofro(1), &
-      static_hydrology%he_top, static_hydrology%lefrrv, static_hydrology%lefrso, &
-      state%continuation%runinu_call_entry, start_context, ok, local_reason)
+      state%config%static_hydrology%he_top, state%config%static_hydrology%lefrrv, &
+      state%config%static_hydrology%lefrso, state%continuation%runinu_call_entry, &
+      start_context, ok, local_reason)
     if (.not. ok) then
       reason = 'KT15_START_CONTEXT_CONSTRUCTION_FAILED'
       return
     end if
-    hetop = static_hydrology%he_top
+    hetop = state%config%static_hydrology%he_top
 
-    call make_immutable_static_boundary_interval_frame(boundary, boundary_content_sha256, &
-      simulation_start_year, state%continuation%boundary_cursor, origin_time, endpoint_time, &
+    call make_immutable_static_boundary_interval_frame(boundary, state%config%boundary_content_sha256, &
+      state%config%simulation_start_year, state%continuation%boundary_cursor, origin_time, endpoint_time, &
       boundary_frame, next_cursor, ok, local_reason)
     if (.not. ok) then
       reason = 'KT15_OPAQUE_BOUNDARY_BINDING_FAILED'
       return
     end if
     trace%boundary_bound = .true.
-    trace%boundary_content_sha256 = boundary_content_sha256
+    trace%boundary_content_sha256 = state%config%boundary_content_sha256
 
-    ! Work only on a private application-state copy. External accepted state
-    ! remains untouched until science, continuation and group identity all pass.
     working = state
 
     call execute_boundary_frame_tcd042_interval(working%science_store, selected_packet, &
-      runtime_calendar_contract_id, producer_day_offset, origin_time, endpoint_time, &
-      execution_id, boundary_frame, load_channel, hetop, start_context, &
-      trace%composition, ok, local_reason)
+      state%config%runtime_calendar_contract_id, state%config%producer_day_offset, &
+      origin_time, endpoint_time, execution_id, boundary_frame, state%config%load_channel, &
+      hetop, start_context, trace%composition, ok, local_reason)
     if (.not. ok) then
       reason = 'KT15_WORKING_SCIENCE_COMPOSITION_FAILED'
       return
@@ -236,13 +363,12 @@ contains
       return
     end if
 
-    ! One intrinsic assignment publishes the complete validated aggregate.
     state = working
 
     trace%external_group_published = .true.
     trace%published_generation = accepted_store_generation(state%science_store)
     success = .true.
-    reason = 'KT15_ATOMIC_OPAQUE_FRAME_APPLICATION_INTERVAL_COMMITTED'
+    reason = 'KT15_ATOMIC_IMMUTABLE_CONFIG_APPLICATION_INTERVAL_COMMITTED'
   end subroutine execute_kt15_atomic_interval
 
   integer(int64) function kt15_application_generation(state) result(value)
@@ -282,5 +408,17 @@ contains
     copy = state%continuation
     call validate_composite_continuation(copy, ok, local_reason)
   end subroutine snapshot_kt15_continuation
+
+  subroutine snapshot_kt15_application_config(state, copy, ok)
+    type(kt15_application_state_t), intent(in) :: state
+    type(kt15_application_config_t), intent(out) :: copy
+    logical, intent(out) :: ok
+    character(len=128) :: local_reason
+    copy = kt15_application_config_t()
+    ok = .false.
+    if (trim(state%schema_id) /= KT15_APPLICATION_SCHEMA) return
+    copy = state%config
+    call validate_kt15_application_config(copy, ok, local_reason)
+  end subroutine snapshot_kt15_application_config
 
 end module mod_animo_atomic_composite_application
