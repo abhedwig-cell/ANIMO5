@@ -19,6 +19,8 @@ jobs:
       - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - run: python -m json.tool integration/animo-boundq01/BOUNDQ01_NATURAL_TESTBANK_SCAN.json >/dev/null
       - run: python -m json.tool integration/animo-boundq01/ANIMO-BOUNDQ01_STATUS.json >/dev/null
+      - run: python -m json.tool integration/animo-boundq01/BOUNDQ01_NATURAL_RANGE_AUDIT.json >/dev/null
+      - run: python -m py_compile tools/boundq01/audit_natural_static_boundary.py
       - name: Validate grammar and governance
         run: python tools/validate_boundq01_static_boundary.py
       - name: Compile and run static boundary adapter tests
