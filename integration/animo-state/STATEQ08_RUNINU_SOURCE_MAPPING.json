@@ -1,0 +1,63 @@
+{
+  "work_unit": "ANIMO-STATEQ08",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "precision_evidence": {
+    "vfproj_sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+    "RealKIND": "realKIND8",
+    "LocalVariableStorage": "localStorageSave",
+    "LocalSavedScalarsZero": "ONLY_EXPLICIT_IN_DEBUG_X64_NOT_GLOBAL_PROJECT_CONTRACT"
+  },
+  "source_members": {
+    "Animo.inc": {
+      "sha256": "0f8b58e522ac2cdae95e8ae727dbf3ecea942e39c4d117b6bcae955d80fb69a2",
+      "evidence": "Runinu is a main-program scalar coordinate"
+    },
+    "Animo.for": {
+      "sha256": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
+      "evidence": "Runinu is passed by reference into Hydro_detailed each timestep and then into transport/balance consumers; no independent timestep initialization was found in this source unit"
+    },
+    "Hydro_detailed.for": {
+      "sha256": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
+      "evidence": {
+        "negative_Ru": "Runinu=-Ru",
+        "near_zero_Ru": "Rupr=Rurv=Ruso=0 while Runinu is not assigned",
+        "other_Ru": "Runinu=0 before partition"
+      }
+    },
+    "Hydro_aggregated.for": {
+      "sha256": "55a5f54a571b6461c7d45c9f4ac80ffb708f4ff79807d37c9c3878d3f88f0b36",
+      "evidence": "nonnegative Ru explicitly assigns Runinu=0, so the hidden continuation is detailed-mode specific"
+    },
+    "UBoundconc.for": {
+      "sha256": "b9a7ec980d40c0f76279077852190788e36cd976d185b12683a38da0c7dfecf7",
+      "evidence": "Runinu contributes directly to Load1..Load6 on the detailed route"
+    },
+    "TRANSPORT.FOR": {
+      "sha256": "3f597b896ab5514e0b836f5547b342e317b03c8e3e58e053e113bd1c17e2f998",
+      "evidence": "Runinu contributes to the upper-boundary transport flow term"
+    },
+    "Outbal_calc.for": {
+      "sha256": "4dc26a4b8a02896b26c9e3d4afd272a4adf7419e7e7738b11d65de51c07e4981",
+      "evidence": "Runinu contributes to water and solute balance accumulations"
+    }
+  },
+  "classification": {
+    "continuation_critical_for_exact_detailed_source_execution": true,
+    "conserved_physical_storage": false,
+    "report_only_diagnostic": false,
+    "candidate_class": "EXECUTION_CONTINUATION_STATE",
+    "detailed_mode_only": true,
+    "canonical_state_admitted": false,
+    "checkpoint_requirement": "REQUIRED_FOR_SOURCE_FAITHFUL_SPLIT_IF_NEXT_DETAILED_STEP_CAN_ENTER_NEAR_ZERO_RU_BRANCH_UNLESS_A_SEPARATE_MODEL_EVOLUTION_RULE_SUPERSEDES_LEGACY_BEHAVIOR"
+  },
+  "first_call_initialization": {
+    "source_defined": false,
+    "qualified_historical_runtime_value": false,
+    "reason": "no explicit Runinu initialization was found before the first Hydro_detailed call; project zero-initialization is not a uniform configuration-level source contract",
+    "b2_claim": false
+  },
+  "model_evolution_boundary": {
+    "deterministic_zeroing_in_near_zero_branch": "NOT_AUTHORIZED_BY_STATEQ08",
+    "consequence": "would change revision-53 detailed execution semantics and requires separate scientific/B3 disposition"
+  }
+}
