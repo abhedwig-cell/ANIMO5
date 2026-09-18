@@ -7,16 +7,16 @@
   "stateq11_authority": "ANIMO-STATEQ11@c2bd0d17ac6921fcd9f22d6289a510cae454153d",
   "boundq02b_authority": "ANIMO-BOUNDQ02B@de6eef3122354e74405ff9c92286794714bdee82",
   "kt14b_authority": "ANIMO-KT14B@46e9e7397be751f245069033bae655b4382b63bd",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_ATOMIC_COMPOSITE_APPLICATION_COMMIT_TIER_D_REVIEW_REQUIRED",
+  "decision": "QUALIFY_BOUNDED_LOGICAL_ATOMIC_PUBLICATION_OF_TCD042_SCIENCE_PLUS_STATEQ11_CONTINUATION_NO_CANONICAL_STATE_OR_PRODUCTION_ADMISSION",
   "risk_tier_candidate": "D_ATOMIC_CROSS_MODULE_APPLICATION_COMPOSITION",
-  "application_aggregate_identity_qualified": false,
-  "opaque_boundary_binding_qualified": false,
-  "private_working_science_execution_qualified": false,
-  "atomic_group_publication_qualified": false,
-  "two_interval_continuation_qualified": false,
-  "reject_rollback_qualified": false,
+  "application_aggregate_identity_qualified": true,
+  "opaque_boundary_binding_qualified": true,
+  "private_working_science_execution_qualified": true,
+  "atomic_group_publication_qualified": true,
+  "two_interval_continuation_qualified": true,
+  "reject_rollback_qualified": true,
   "source_hash_verification_qualified": false,
   "canonical_state_admitted": false,
   "checkpoint_schema_admitted": false,
@@ -26,17 +26,24 @@
   "supported_scope": "NONPRODUCTION_OPAQUE_BOUNDARY_KT14B_PLUS_STATEQ11_LOGICAL_ATOMIC_GROUP_FOR_BOUNDED_TCD042",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_d_review_required_for_admission": true
+    "independent_tier_d_review_required_for_admission": true,
+    "reviewed_head": "ff7280e04dd0ceadbf726b112b7a414a23d9536e",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-kt15-atomic-composite-application.yml",
     "validator": "tools/validate_kt15_atomic_composite_application.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35375867444,
+    "authoring_job": 105700281764,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "ff7280e04dd0ceadbf726b112b7a414a23d9536e",
+    "closeout_note": "Validated atomic application authoring package passed exact-head CI run 35375867444. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -55,10 +62,14 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_RETAIN_TIER_D_INDEPENDENT_REVIEW_GATE; NEXT_RUNTIME_GAP_IS_CHECKPOINT_RESTART_MATERIALIZATION_OF_THE_SAME_ACCEPTED_APPLICATION_AGGREGATE_OR_APPLICATION_PROVIDER_INTEGRATION"
+  "next": "USE_KT15_AS_QUALIFIED_NONPRODUCTION_LOGICAL_ATOMIC_APPLICATION_COMMIT_CANDIDATE_ONLY; RETAIN_GENUINE_TIER_D_REVIEW_GATE; NEXT_MATERIAL_RUNTIME_WORKUNIT_IS_ACCEPTED_APPLICATION_CHECKPOINT_RESTART_MATERIALIZATION_WITHOUT_CHANGING_STATE_OWNERSHIP",
+  "frozen_substantive_head": "ff7280e04dd0ceadbf726b112b7a414a23d9536e",
+  "frozen_substantive_tree": "9dc766b5a7e331a08dd506ed9d064732ca45d0cc",
+  "frozen_implementation_blob": "c6fc2a5fdbc17280a2b8cc5752bb45f7989783ba",
+  "frozen_test_blob": "1b7fb2086a3167d9a3a8282d3d7cac200a408eed"
 }
