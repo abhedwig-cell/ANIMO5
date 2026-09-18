@@ -1,0 +1,32 @@
+{
+  "work_unit": "ANIMO-UBFORCE02",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "07572d90d0ff36cf8594298007cbb35c7473333e",
+  "frozen_substantive_head": "b8cfc556c1f259ded246381ed113a1998bbf9805",
+  "frozen_substantive_tree": "c21460b346f008aad65b2d4c2c520fe1491a16d9",
+  "frozen_implementation_blob": "a82bd7ef40ce18ddb00e45933290d1999de05884",
+  "exact_head_ci": {
+    "run_id": 35366867122,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "source_route_exactly_Iwa2_Iopthyvs1": "PASS",
+    "load1_to_load6_equations_match_pinned_source": "PASS",
+    "no_Rupr_or_Runinu_inference": "PASS",
+    "hydrology_and_chemistry_ownership_separated": "PASS",
+    "inactive_phosphorus_chemistry_exactly_absent": "PASS",
+    "dry_deposition_excluded": "PASS",
+    "no_tolerance_or_clipping_added": "PASS",
+    "binary64_equation_oracles_exact": "PASS",
+    "no_boundary_parser": "PASS",
+    "no_b3_b4_tb7_or_production_effect": "PASS",
+    "independent_tier_d_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
