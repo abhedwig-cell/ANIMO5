@@ -1,0 +1,25 @@
+name: ANIMO HYDROEXEC01 bounded upper hydrology
+on:
+  push:
+    branches: [work/animo-hydroexec01-bounded-no-ponding-upper-hydrology]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 8efdd151d89e1cff131d4b21e2acf559ca1828d6 5301d90024c64057f2cb88fda1dbaa93aabfca47 08d5b8301c217cf9d33d2bf248be133f2b5243fc 9ca23f41dc3c28af686b1bc0bff8e7d66416d367 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-hydroexec01/HYDROEXEC01_SOURCE_MAPPING.json >/dev/null
+      - run: python -m json.tool integration/animo-hydroexec01/ANIMO-HYDROEXEC01_STATUS.json >/dev/null
+      - name: Validate source mapping and scope
+        run: python tools/validate_hydroexec01_bounded_upper_hydrology.py
+      - name: Compile and run bounded upper hydrology tests
+        run: bash tests/hydroexec01/run_hydroexec01_tests.sh
