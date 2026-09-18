@@ -6,16 +6,16 @@
   "program_authority": "ANIMO-RG07@c60dd36a38a2030e4f4ac1925f95b2966a6d1c87",
   "central_provider_authority": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
   "application_candidate": "ANIMO-KT15A@2279a961459211e03550dfda4af09ab4f7f6b9a3",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_MULTI_PACKET_PROVIDER_TO_ACCEPTED_APPLICATION_COMPOSITION_TIER_D_REVIEW_REQUIRED",
+  "decision": "QUALIFY_READ_ONLY_KT11_PACKET_SELECTION_COPY_TO_KT15A_ATOMIC_ACCEPTED_APPLICATION_COMPOSITION_NO_CENTRAL_ADMISSION",
   "risk_tier_candidate": "D_EXTERNAL_PROVIDER_ACCEPTED_APPLICATION_COMPOSITION",
-  "read_only_provider_selection_copy_qualified": false,
-  "provider_application_interval_composition_qualified": false,
-  "provider_owned_forcing_immutability_qualified": false,
-  "missing_packet_atomic_failure_qualified": false,
-  "provider_application_config_disagreement_failure_qualified": false,
-  "two_interval_provider_application_execution_qualified": false,
+  "read_only_provider_selection_copy_qualified": true,
+  "provider_application_interval_composition_qualified": true,
+  "provider_owned_forcing_immutability_qualified": true,
+  "missing_packet_atomic_failure_qualified": true,
+  "provider_application_config_disagreement_failure_qualified": true,
+  "two_interval_provider_application_execution_qualified": true,
   "central_kt11_admission_changed": false,
   "canonical_external_forcing_admitted": false,
   "canonical_application_admitted": false,
@@ -30,14 +30,21 @@
     "validator": "tools/validate_kt18_provider_application.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35381402043,
+    "authoring_job": 105718166724,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "76851b4d098d94346bca36d1370a784694b74e2f",
+    "closeout_note": "Frozen provider/application package at 76851b4d098d94346bca36d1370a784694b74e2f passed exact-head CI run 35381402043 including KT18, KT11 and KT15 regressions. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "review": {
     "required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_d_review_required_for_admission": true
+    "independent_tier_d_review_required_for_admission": true,
+    "reviewed_head": "76851b4d098d94346bca36d1370a784694b74e2f",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -55,10 +62,17 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI; REPAIR_LOCALLY_IF_NEEDED; FREEZE_AND_SELF_REVIEW; RETAIN_GENUINE_TIER_D_GATE; NEXT_LARGER_EXTERNAL_PROVIDER_STEP_IS_REAL_FILE_OR_STREAM_MATERIALIZATION_IN_A_SEPARATE_NONPRODUCTION_WORKUNIT"
+  "next": "USE_KT18_AS_QUALIFIED_NONPRODUCTION_PROVIDER_TO_APPLICATION_COMPOSITION_CANDIDATE_ONLY; RETAIN_GENUINE_TIER_D_REVIEW_GATE; NEXT_EXTERNAL_PROVIDER_STEP_MAY_MATERIALIZE_A_BOUNDED_REAL_FILE_OR_STREAM_PROVIDER_ADAPTER_WITHOUT_PRODUCTION_CLAIM",
+  "frozen_substantive_head": "c0d433017bc0094c904f5bed39eec459003ab1e2",
+  "frozen_substantive_tree": "9a6abb7246c971effaee4404612b8c07059839a9",
+  "frozen_blobs": {
+    "kt11_with_selection_copy": "7c6418a75c4ebf8d8d4b3de1869f8ff62b19e85e",
+    "kt18_composition": "cb4fcafb49c3d0ac9e2fb47cf5d12eb96999ec60",
+    "tests": "d15780dbb9f564452e9eb2005def9f38d2f3f584"
+  }
 }
