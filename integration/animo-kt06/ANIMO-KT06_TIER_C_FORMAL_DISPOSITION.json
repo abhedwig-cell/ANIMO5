@@ -1,0 +1,73 @@
+{
+  "work_unit": "ANIMO-KT06-D1",
+  "target": "ANIMO-KT06",
+  "title": "ANIMO-KT06 GOV04 Tier C Formal Disposition",
+  "branch": "work/animo-kt06-gov04-tier-c-disposition",
+  "authoring_base": "review/animo-kt06-explicit-hydrology-runtime-binding-independent@0d3906e0b54f21eb1a19f8137f1aabef4edff567",
+  "gov04_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "gov04_risk_tier": "C",
+  "formal_disposition": "QUALIFY_BOUNDED_NONPRODUCTION_RUNTIME_BINDING_CLAIM_UNCHANGED",
+  "decision": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_ADMISSION_DECISION",
+  "admitted": false,
+  "candidate_claim": "Within the declared exact whole-day envelope, a complete explicit-state KT05 hydrology packet can be bound to a KT02 requested interval without making producer time authoritative, without placing forcing in accepted continuation state and without bypassing KT02 atomic publication.",
+  "frozen_identity": {
+    "implementation_head": "fc818917a46408d55cd7f03e2fa8257534683907",
+    "implementation_path": "prototype/kt06/mod_animo_explicit_hydrology_runtime_binding.f90",
+    "implementation_blob": "9a24ea833291f761d2fa76ca4cc9fee28436c614",
+    "kt02_frozen_executable": "1909709e7a244b5d0ee53342a26bab74815c118c",
+    "kt02_interval_runtime_blob": "ac8eed3b7385daad3cb7c926bd7dab9d99e0a888",
+    "kt02_transactions_blob": "182164ca4bf4a890d98f9c89366764e5d818b10c",
+    "kt05_frozen_implementation": "69dd607ba1efa28de3f83cc963526021352b3311",
+    "kt05_adapter_blob": "9ed1d6d3e91d9f5522f8c2a49a5e19eed1d82a9a"
+  },
+  "independent_review": {
+    "authority": "review/animo-kt06-explicit-hydrology-runtime-binding-independent@0d3906e0b54f21eb1a19f8137f1aabef4edff567",
+    "report": "docs/kt06/INDEPENDENT_REVIEW_REPORT.md",
+    "checkpoint": "integration/animo-kt06/ANIMO-KT06_INDEPENDENT_REVIEW_CHECKPOINT.json",
+    "principal_verdict": "PASS_CLAIM_UNCHANGED",
+    "material_findings": [],
+    "independent_gate_satisfied": true
+  },
+  "reviewed_semantic_axes": {
+    "accepted_time_ownership": "KT02_SOLE_AUTHORITY",
+    "external_publication_ownership": "KT02_ATOMIC_PUBLICATION",
+    "producer_time_role": "VALIDATION_METADATA_ONLY",
+    "calendar_offset_mapping": "CONFIGURED_EXACT_WHOLE_DAY_RELATION_ONLY",
+    "forcing_ownership": "CLIENT_OWNED_OUTSIDE_ACCEPTED_STATE",
+    "kt05_validation_projection_order": "PASS",
+    "lineage_generation_protection": "PASS",
+    "retry_semantics": "NOT_QUALIFIED_NOT_IMPORTED",
+    "scientific_admissibility": "PROBE_ONLY_NOT_QUALIFIED"
+  },
+  "supplemental_evidence_only": {
+    "kt07": "2d469e0a00071b73207112222199eef82c96a961",
+    "kt08": "6927d8f66bd5948797b163880a869ecc0be4c391",
+    "kt09": "e54fc115fabb58da5e79fad33e1359717a5ed19c",
+    "kt10": "e4f7f4576cbe5b4d8f2b57b16ea98041fcc06428",
+    "changes_frozen_target": false,
+    "becomes_runtime_authority": false
+  },
+  "retained_limitations": [
+    "one forcing packet at a time",
+    "no packet-selection or forcing-lifetime semantics",
+    "no retry or timestep-selection policy",
+    "no fractional or subday mapping",
+    "no generic calendar conversion",
+    "no Hlpimp=1 or Hlpimp=2 semantics",
+    "no Hydro_detailed scientific execution",
+    "no ANIMO scientific admissibility"
+  ],
+  "hard_boundaries": {
+    "frozen_implementation_modified": false,
+    "kt02_runtime_modified": false,
+    "kt05_adapter_modified": false,
+    "production_source_modified": false,
+    "production_coupling_admitted": false,
+    "b3_admitted": false,
+    "b4_admitted": false,
+    "status_a_claimed": false,
+    "status_aa_claimed": false,
+    "central_regie_updated": false
+  },
+  "next_allowed_workunit": "SEPARATE_GOV04_TIER_C_ADMISSION_DECISION_FOR_ANIMO_KT06"
+}
