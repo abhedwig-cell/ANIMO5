@@ -56,7 +56,7 @@ contains
     call assert_true(size(s%mofro)==2,'profile extent')
     call assert_true(transfer(s%mofro(1),0_int64)==int(z'3FBF9ADD6678041E',int64), &
       'Mofro Dble_trunc exact')
-    call assert_true(s%mofro(2)==0.25_real64,'Mofro quarter exact')
+    call assert_true(transfer(s%mofro(2),0_int64)==int(z'3FD0000000000000',int64),'Mofro quarter exact')
     call assert_true(transfer(s%pn,0_int64)==transfer(normalize_rev53_real4( &
       0.000123456789_real32),0_int64),'Pn normalized')
     call assert_true(transfer(s%sic,0_int64)==transfer(normalize_rev53_real4( &
