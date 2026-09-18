@@ -4,9 +4,9 @@
   "branch": "work/animo-kt12-tcd042-scientific-consumer-composition",
   "base": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
   "central_regie": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_BOUNDED_TCD042_TRANSACTION_RUNTIME_CLIENT_DIRECT_KT11_SCIENCE_COMPOSITION_BLOCKED_TIER_D_REVIEW_REQUIRED",
+  "decision": "QUALIFY_BOUNDED_TCD042_TRANSACTION_RUNTIME_CLIENT_AND_FAIL_CLOSED_DIRECT_KT11_SCIENCE_COMPOSITION",
   "risk_tier_candidate": "D_CROSS_MODULE_SCIENTIFIC_COMPOSITION",
   "scientific_scope": "TCD042_PARENT_ADMITTED_SCOPE_ONLY",
   "implementation": "prototype/kt12/mod_animo_tcd042_upper_boundary_client.f90",
@@ -18,16 +18,23 @@
   "b4_open": false,
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_d_review_required_for_admission": true
+    "independent_tier_d_review_required_for_admission": true,
+    "reviewed_head": "a98364704ac3d9105b3e6525e768c32fc47e12d6",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-kt12-tcd042-scientific-consumer.yml",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35361112850,
+    "authoring_job": 105652313993,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "a98364704ac3d9105b3e6525e768c32fc47e12d6",
+    "closeout_note": "Authoring package at a98364704ac3d9105b3e6525e768c32fc47e12d6 passed exact-head run 35361112850. This review/status-only closeout is authoritative only if the identical workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -44,10 +51,14 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW; IF_GREEN_PREPARE_TIER_D_INDEPENDENT_REVIEW_HANDOFF_AND_OPEN_SEPARATE_HYDROQ01_FOR_THE_MISSING_POST_HYDRO_DETAILED_SEAM"
+  "next": "PREPARE_SEPARATE_TIER_D_INDEPENDENT_REVIEW_OF_KT12_CANDIDATE; IN_PARALLEL_START_HYDROQ01_POST_HYDRO_DETAILED_RESOLVED_HYDROLOGY_CONTRACT_AND_RECONCILE_EXISTING_AUTHORITY_FOR_UPPER_BOUNDARY_SOLUTE_LOAD_FORCING_BEFORE_CREATING_UBFORCE01",
+  "frozen_substantive_authoring_head": "b26eec7dc07fc7e8f9d3f6fea87233eb68bc834e",
+  "frozen_substantive_authoring_tree": "13d5db294ed8b5be21e81ea2c751b025088691af",
+  "frozen_implementation_blob": "e9ef255f9905e5b4fe3d8761f2ecd7105a6451ad",
+  "additional_composition_blocker": "NO_QUALIFIED_TCD042_UPPER_BOUNDARY_SOLUTE_LOAD_FORCING_CONTRACT_OR_EQUIVALENT"
 }
