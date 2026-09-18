@@ -1,0 +1,52 @@
+{
+  "work_unit": "ANIMO-KT13A",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_TECHNICAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_frozen_head": "95dead10d7e017b7f46b2ce3f85704df134bb0e0",
+  "reviewed_frozen_tree": "081e6ca2bf6b6d1120541836b27dde06a1512c82",
+  "exact_head_ci": {
+    "run_id": 35369924474,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "material_Hetop_coherence_finding_remediated": "PASS",
+    "hydroexec_and_tcd042_share_exact_binary64_Hetop": "PASS",
+    "geometry_mismatch_rejects_before_binding": "PASS",
+    "geometry_mismatch_preserves_accepted_store": "PASS",
+    "finite_positive_end_state_exact_oracle": "PASS",
+    "finite_positive_average_exact_oracle": "PASS",
+    "postcommit_transaction_truth_not_rewritten_false": "PASS",
+    "KT06_binding_reused_without_semantic_widening": "PASS",
+    "Runinu_continuation_explicit": "PASS",
+    "no_first_call_Runinu_assumption": "PASS",
+    "dry_deposition_excluded": "PASS",
+    "TCD042_scope_not_widened": "PASS",
+    "canonical_species_binding_not_claimed": "PASS",
+    "chemistry_time_provider_not_claimed": "PASS",
+    "multi_interval_state_continuation_not_claimed": "PASS",
+    "no_B3_TB7_B4_or_production_effect": "PASS",
+    "independent_Tier_D_gate_retained": "PASS"
+  },
+  "material_findings": [
+    {
+      "id": "KT13A-F01",
+      "disposition": "REMEDIATED_BEFORE_FREEZE",
+      "summary": "KT13 allowed HYDROEXEC01 and KT12 to consume different Hetop values; KT13A requires exact identity."
+    }
+  ],
+  "residual_nonclaims": [
+    "canonical load-channel to species-owner binding",
+    "BOUNDARY parser integration",
+    "chemistry provider time provenance",
+    "first-call Runinu historical value",
+    "multi-interval continuation",
+    "canonical Runinu state",
+    "B2 historical equivalence",
+    "production"
+  ],
+  "outcome": "SELF_REVIEW_PASS_REMEDIATED_COMPOSITION_CANDIDATE",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
