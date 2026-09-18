@@ -27,7 +27,12 @@
       "output_type": "REAL(8)",
       "integer_part": "KINT(R4)",
       "fractional_part": "MOD(R4,1.0)",
-      "final_rounding": "KIDNNT(R8)"
+      "final_rounding": "KIDNNT(R8)",
+      "mixed_kind_evaluation": [
+        "R and help are explicit REAL(4)",
+        "0.0, 0.9999999 and 10.0 source literals are default REAL(8) under frozen RealKIND8 project setting",
+        "10.0**(I4+7)*R is therefore evaluated with a REAL(8) scale and promoted REAL(4) fraction"
+      ]
     }
   },
   "typed_first_origin": {
@@ -51,5 +56,10 @@
     "STATEQ08": "separate Runinu execution continuation",
     "STATEQ09": "subsequent accepted endpoint-to-origin transfer",
     "HYDROEXEC01": "consumer of normalized first-origin values plus separately owned geometry/configuration"
+  },
+  "precision_evidence": {
+    "vfproj_sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+    "project_setting": "RealKIND=realKIND8",
+    "consequence": "unsuffixed REAL literals in Function.for are default REAL(8); explicit R4/R/One/help remain REAL(4)"
   }
 }
