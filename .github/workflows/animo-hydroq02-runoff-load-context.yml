@@ -1,0 +1,25 @@
+name: ANIMO HYDROQ02 runoff load context
+on:
+  push:
+    branches: [work/animo-hydroq02-tcd042-runoff-load-context]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 5301d90024c64057f2cb88fda1dbaa93aabfca47 8efdd151d89e1cff131d4b21e2acf559ca1828d6 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-hydroq02/HYDROQ02_SOURCE_MAPPING.json >/dev/null
+      - run: python -m json.tool integration/animo-hydroq02/ANIMO-HYDROQ02_STATUS.json >/dev/null
+      - name: Validate source mapping and scope
+        run: python tools/validate_hydroq02_runoff_load_context.py
+      - name: Compile and run context tests
+        run: bash tests/hydroq02/run_hydroq02_tests.sh
