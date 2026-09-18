@@ -1,0 +1,16 @@
+{
+  "workunit": "ANIMO-KT09",
+  "status": "CLOSED",
+  "evidence_class": "B1_DERIVED_FROM_PINNED_B0_PRODUCER_NOT_B2",
+  "frozen_qualified_head": "e54fc115fabb58da5e79fad33e1359717a5ed19c",
+  "exact_head_ci_run": 35293001679,
+  "exact_head_ci_conclusion": "SUCCESS",
+  "representative_packet_count": 8,
+  "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "open_material_findings": [],
+  "verdict": "QUALIFIED_B1_REPRESENTATIVE_REAL_LWKM_PACKETS_COMPILED_THROUGH_FROZEN_KT05_NO_COMPLETE_SEQUENCE_OR_RUNTIME_OR_B2_EQUIVALENCE",
+  "runtime_authority_changed": false,
+  "scientific_semantics_changed": false,
+  "production_source_changed": false,
+  "kt06_qualification_effect": "NONE_KT06_STILL_REQUIRES_GENUINELY_INDEPENDENT_TIER_C_REVIEW"
+}

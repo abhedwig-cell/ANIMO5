@@ -1,10 +1,11 @@
 {
   "workunit": "ANIMO-KT09",
   "title": "LWKM Representative Real-Packet Compiled KT05 Consumption",
-  "phase": "IMPLEMENT",
-  "checkpoint_state": "REPRESENTATIVE_REAL_PACKET_FIXTURE_AND_COMPILED_KT05_TEST_AUTHORED_CI_PENDING",
+  "phase": "CLOSE",
+  "checkpoint_state": "QUALIFIED_B1_REPRESENTATIVE_REAL_PACKET_COMPILED_KT05_CONSUMPTION_CLOSED",
   "branch": "work/animo-kt09-lwkm-anchor-compiled-consumption",
   "base_authority": "ANIMO-KT08@281dc65cbaceaa61d31f9cb731b3c5a733ca5d57",
+  "frozen_qualified_head": "e54fc115fabb58da5e79fad33e1359717a5ed19c",
   "consumed_kt03_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
   "consumed_kt05_frozen_implementation": "69dd607ba1efa28de3f83cc963526021352b3311",
   "consumed_kt07_closeout": "24dc3164c7832963d0b8931a8edf5155879a3f8d",
@@ -15,29 +16,58 @@
   "fixture_json_sha256": "fcb306cb4661139be0bc425db8fd4ff3d1d8d696a1a485c22dd6c67f5bb662b2",
   "fixture_compressed_text_sha256": "bb28e4f8ce0a23dfad497c4c52c4916fd6c30b322ad66b326db09d7d88f2ea13",
   "anchor_indices_zero_based": [0, 2, 5, 41, 449, 899, 1349, 1799],
+  "exact_head_ci": {
+    "run_id": 35293001679,
+    "head": "e54fc115fabb58da5e79fad33e1359717a5ed19c",
+    "conclusion": "SUCCESS"
+  },
+  "historical_ci": [
+    {
+      "run_id": 35292838414,
+      "head": "fa723cc0d6a4b152e1ab6a867015de88c408db2d",
+      "conclusion": "FAILURE",
+      "classification": "TOOLING_VALIDATOR_FAILURE",
+      "cause": "generated Fortran parameter lines exceeded free-form line length under Werror"
+    },
+    {
+      "run_id": 35292901652,
+      "head": "b4fbe378822ac32f79c7ebea20b6258aa9b7b928",
+      "conclusion": "FAILURE",
+      "classification": "TOOLING_VALIDATOR_FAILURE",
+      "cause": "compare-reals warning in nonzero-interception test expression under Werror"
+    }
+  ],
+  "review": {
+    "mode": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "open_material_findings": [],
+    "final_verdict": "SELF_REVIEW_PASS_B1_REPRESENTATIVE_COMPILED_CONSUMPTION_TOOLING_ONLY"
+  },
   "production_src_modified": false,
   "kt03_adapter_modified": false,
   "kt05_adapter_modified": false,
   "kt06_modified": false,
-  "implemented_capabilities": [
-    "eight complete real LWKM Hlpimp=11 anchor packets persisted as compact B1 fixture",
-    "all KT08 anchor typed-step and dynamic-group identities cross-checked",
-    "KT07 first complete packet exact-parity check",
-    "fixture integrity and fail-closed identity validation",
-    "raw-source rematerializer with independently pinned canonical bundle digest",
-    "deterministic fixture-to-Fortran generator",
-    "compiled frozen KT05 validation projection and legacy-slice mapping for all anchors"
+  "qualified_capabilities": [
+    "eight complete real LWKM Hlpimp=11 representative packets persisted as compact pinned B1 fixture",
+    "all packet typed-step and dynamic-group identities cross-checked against KT08",
+    "first packet exact normalized parity with KT07",
+    "all four observed producer duration classes represented",
+    "frozen KT05 explicit-state validation passed for all representative packets",
+    "frozen KT05 external projection passed for all representative packets",
+    "all projected fixture values preserved exactly",
+    "legacy slice mapping passed while preserving ANIMO-owned index-zero slices"
   ],
-  "verdict": "IMPLEMENTED_REPRESENTATIVE_REAL_PACKET_COMPILED_KT05_CONSUMPTION_AWAITING_EXACT_HEAD_CI_AND_SAME_AGENT_REVIEW",
-  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW_AND_CLOSE_IF_NO_MATERIAL_FINDINGS",
+  "verdict": "QUALIFIED_B1_REPRESENTATIVE_REAL_LWKM_PACKETS_COMPILED_THROUGH_FROZEN_KT05_NO_COMPLETE_SEQUENCE_OR_RUNTIME_OR_B2_EQUIVALENCE",
+  "next_permitted_action": "REUSE_KT09_AS_PINNED_B1_REPRESENTATIVE_COMPILED_BOUNDARY_EVIDENCE; KT06_RUNTIME_LANE_REMAINS_BLOCKED_ON_GENUINELY_INDEPENDENT_TIER_C_REVIEW",
   "explicit_exclusions": [
-    "B2 historical compiler equivalence",
     "complete 1800-packet compiled KT05 consumption",
+    "B2 historical compiler equivalence",
+    "Hlpimp=1 semantics",
+    "Hlpimp=2 semantics",
     "KT02 or KT06 runtime integration",
     "multi-packet forcing-provider semantics",
     "retry or timestep selection policy",
-    "Hlpimp=1 semantics",
-    "Hydro_detailed scientific execution",
+    "generic calendar mapping",
+    "Hydro_detailed scientific execution or numerical equivalence",
     "ANIMO scientific admissibility",
     "production migration",
     "B3 or B4 admission",
