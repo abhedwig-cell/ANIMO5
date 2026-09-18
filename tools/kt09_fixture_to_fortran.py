@@ -64,9 +64,22 @@ def main() -> int:
     bundle = load_bundle(args.fixture)
     anchors = bundle["anchors"]
     count = len(anchors)
-    indices = ", ".join(str(a["index_zero_based"]) for a in anchors)
-    endpoints = ", ".join(real_literal(a["diagnostic_normalized_step"]["producer_endpoint_day"]) for a in anchors)
-    durations = ", ".join(real_literal(a["diagnostic_normalized_step"]["producer_step_days"]) for a in anchors)
+    indices = [str(a["index_zero_based"]) for a in anchors]
+    endpoints = [
+        real_literal(a["diagnostic_normalized_step"]["producer_endpoint_day"])
+        for a in anchors
+    ]
+    durations = [
+        real_literal(a["diagnostic_normalized_step"]["producer_step_days"])
+        for a in anchors
+    ]
+
+    def array_decl(name: str, values: list[str], type_decl: str) -> list[str]:
+        return [
+            f"  {type_decl}, parameter, public :: {name}({count}) = [ &",
+            "    " + ", ".join(values[:4]) + ", &",
+            "    " + ", ".join(values[4:]) + " ]",
+        ]
 
     lines = [
         "module mod_kt09_real_lwkm_anchors",
@@ -75,16 +88,18 @@ def main() -> int:
         "  implicit none",
         "  private",
         f"  integer, parameter, public :: KT09_ANCHOR_COUNT = {count}",
-        f"  integer, parameter, public :: KT09_SOURCE_INDEX({count}) = [{indices}]",
-        f"  real(real64), parameter, public :: KT09_ENDPOINT({count}) = [{endpoints}]",
-        f"  real(real64), parameter, public :: KT09_DURATION({count}) = [{durations}]",
+    ]
+    lines.extend(array_decl("KT09_SOURCE_INDEX", indices, "integer"))
+    lines.extend(array_decl("KT09_ENDPOINT", endpoints, "real(real64)"))
+    lines.extend(array_decl("KT09_DURATION", durations, "real(real64)"))
+    lines.extend([
         "  public :: make_kt09_anchor_step",
         "contains",
         "  subroutine make_kt09_anchor_step(which, step)",
         "    integer, intent(in) :: which",
         "    type(hydrology_step_t), intent(out) :: step",
         "    select case (which)",
-    ]
+    ])
     for which, anchor in enumerate(anchors, start=1):
         lines.append(f"    case ({which})")
         emit_step(lines, anchor["diagnostic_normalized_step"])
