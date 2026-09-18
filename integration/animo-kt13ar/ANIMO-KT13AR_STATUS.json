@@ -1,0 +1,75 @@
+{
+  "work_unit": "ANIMO-KT13AR",
+  "title": "Independent Tier D Review of Remediated KT13A Composition",
+  "branch": "review/animo-kt13ar-remediated-tier-d-composition",
+  "phase": "REVIEW_HANDOFF_PREPARED",
+  "state": "AWAITING_GENUINELY_INDEPENDENT_TIER_D_REVIEW",
+  "review_target": {
+    "package_head": "df2310cc69e3fe16187ba2235843222f8acfb726",
+    "package_exact_head_ci_run": 35370974894,
+    "package_exact_head_ci_conclusion": "success",
+    "prior_validated_closeout_head": "9373b48966e70eaea0e38f6bab49c5e3a504d80f",
+    "prior_validated_closeout_run": 35370707509,
+    "frozen_substantive_head": "95dead10d7e017b7f46b2ce3f85704df134bb0e0",
+    "frozen_substantive_tree": "081e6ca2bf6b6d1120541836b27dde06a1512c82",
+    "composition_module_blob": "6e2e4c73e9b43f5d1bda58dc9387a56be8b2e2b1",
+    "composition_test_blob": "66d74245497b4d93428fdb4f16476b0778e2c037",
+    "authoring_status_blob": "6ae35bb08fad72c1dd49e6460daaee4ce2cce885",
+    "handoff_blob": "3312bc9eb30d5e94cc3accf0a686dd2855b807f9",
+    "finding_blob": "bead06a31801c7516154aa274bd2bfd07171d31e",
+    "freeze_blob": "347f2b095717929a56fa3cf20fae68237800c97d",
+    "same_agent_review_blob": "83bb6cb67828b61980cd2b2334bf9a96a573b5aa"
+  },
+  "candidate_claim": "SELECTED_KT05_PACKET_PLUS_EXPLICIT_START_CHEMISTRY_AND_EXACT_SHARED_HETOP_CAN_DRIVE_ONE_BOUNDED_TCD042_INTERVAL_TO_ATOMIC_KT02_COMMIT",
+  "review_axes": {
+    "shared_top_geometry_identity": "NOT_REVIEWED",
+    "transaction_truth_after_commit": "NOT_REVIEWED",
+    "kt06_binding_semantics_reuse": "NOT_REVIEWED",
+    "kt05_projection_frozen_identity": "NOT_REVIEWED",
+    "hydroexec01_bounded_no_ponding_scope": "NOT_REVIEWED",
+    "runinu_continuation_and_first_call_nonclaim": "NOT_REVIEWED",
+    "hydroq01_v1_to_kt12_v0_lossless_mapping": "NOT_REVIEWED",
+    "ubforce02_source_equation_identity": "NOT_REVIEWED",
+    "dry_deposition_separation": "NOT_REVIEWED",
+    "chemistry_hydrology_ownership_separation": "NOT_REVIEWED",
+    "load_channel_species_binding_nonclaim": "NOT_REVIEWED",
+    "kt02_sole_accepted_state_publication": "NOT_REVIEWED",
+    "precommit_failure_nonmutation": "NOT_REVIEWED",
+    "tcd042_parent_scope_not_widened": "NOT_REVIEWED",
+    "multi_interval_parser_tb7_b4_production_nonclaims": "NOT_REVIEWED"
+  },
+  "independence": {
+    "required": true,
+    "genuinely_independent": false,
+    "same_authoring_context_may_approve": false,
+    "current_scaffold_created_by_authoring_context": true,
+    "satisfaction_evidence": null
+  },
+  "known_authoring_finding": {
+    "id": "KT13A-F01",
+    "disposition": "REMEDIATED_BEFORE_FREEZE",
+    "independent_confirmation_required": true
+  },
+  "outcome": null,
+  "material_findings": [],
+  "admission": {
+    "composition_admitted": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_authorized": false
+  },
+  "hard_boundaries": {
+    "authoring_target_modified": false,
+    "scientific_formula_modified": false,
+    "tcd042_scope_widened": false,
+    "canonical_species_binding_claimed": false,
+    "boundary_parser_claimed": false,
+    "chemistry_time_provider_claimed": false,
+    "first_call_runinu_claimed": false,
+    "multi_interval_continuation_claimed": false,
+    "b2_historical_equivalence_claimed": false,
+    "production_claimed": false
+  },
+  "next": "A_GENUINELY_INDEPENDENT_REVIEW_CONTEXT_MUST_REVIEW_THE_PINNED_TARGET_AND_RECORD_PASS_FAIL_OR_INCOMPLETE; THIS_SCAFFOLD_DOES_NOT_SATISFY_THE_REVIEW_GATE"
+}
