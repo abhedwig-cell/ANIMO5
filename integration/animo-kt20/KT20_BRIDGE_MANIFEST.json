@@ -1,0 +1,40 @@
+{
+  "work_unit": "ANIMO-KT20",
+  "authority_chain": {
+    "rg08": "ANIMO-RG08@14109956b62376d0d0ab681e8c641c9e71d110bd",
+    "kt19": "ANIMO-KT19@6245aad4aca962cb2a63d0394bb7f2baa686457d",
+    "kt18": "ANIMO-KT18@42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72",
+    "kt11_central": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480"
+  },
+  "frame": {
+    "schema": "ANIMO_KT20_HYDROLOGY_PACKET_FRAME_V1",
+    "role": "NONPRODUCTION_ADAPTER_INTERCHANGE_NOT_CANONICAL_FORCING_ABI",
+    "real_representation": "IEEE_BINARY64_16_LOWERCASE_HEX",
+    "typed_digest_role": "PYTHON_KT03_TYPED_STEP_PROVENANCE_RECOMPUTED_ON_PYTHON_ROUNDTRIP_NOT_FORTRAN_REHASH",
+    "fortran_validation": "KT05_VALIDATE_AFTER_BIT_EXACT_RECONSTRUCTION"
+  },
+  "real_ci_fixture": {
+    "evidence_class": "B1_DERIVED_FIRST_PACKET_POWERSTATION_REPLAY_NOT_B0",
+    "parent_source_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
+    "typed_step_sha256": "eeeb862839cce8111535fae86220d8574240804b9f6f029f7ec8e07ceb65da1c",
+    "producer_endpoint_day": 10,
+    "producer_step_days": 10,
+    "expected_application_result": "KT18_SELECTION_SUCCEEDS_THEN_BOUNDED_APPLICATION_REJECTS_WITHOUT_PUBLICATION"
+  },
+  "positive_control": {
+    "evidence_class": "SYNTHETIC_MECHANICAL_CONTROL_NOT_HISTORICAL_EVIDENCE",
+    "producer_endpoint_day": 1,
+    "producer_step_days": 1,
+    "prr": "2^-30",
+    "expected_application_result": "ONE_KT18_ATOMIC_APPLICATION_COMMIT"
+  },
+  "nonclaims": [
+    "no full B0 bytes committed",
+    "no full real-sequence scientific application execution",
+    "no B2 claim",
+    "no canonical forcing ABI",
+    "no KT11 central authority change",
+    "no independent review",
+    "no B4 or production"
+  ]
+}
