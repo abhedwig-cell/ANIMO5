@@ -1,0 +1,24 @@
+name: ANIMO KT20 KT19 to KT18 bridge
+on:
+  push:
+    branches: [work/animo-kt20-kt19-provider-to-kt18-application-bridge]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 14109956b62376d0d0ab681e8c641c9e71d110bd 6245aad4aca962cb2a63d0394bb7f2baa686457d 42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72 50731bf118deb8ef1029f220a40b39a99240e480 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-kt20/ANIMO-KT20_STATUS.json >/dev/null
+      - name: Validate bridge governance and scope
+        run: python tools/validate_kt20_kt19_to_kt18_bridge.py
+      - name: Run cross-language bridge qualification
+        run: bash tests/kt20/run_kt20_tests.sh
