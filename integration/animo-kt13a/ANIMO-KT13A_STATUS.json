@@ -3,9 +3,9 @@
   "title": "KT13 Composition Coherence Remediation",
   "branch": "work/animo-kt13a-composition-coherence-remediation",
   "base": "ANIMO-KT13_AUTHORING@51baa9851d5bed0b711199835bb817b22514c511",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_KT13_COMPOSITION_COHERENCE_REMEDIATION_INDEPENDENT_TIER_D_REVIEW_STILL_REQUIRED",
+  "decision": "QUALIFY_REMEDIATED_BOUNDED_KT13_COMPOSITION_CANDIDATE_WITH_EXACT_SHARED_HETOP_AND_POSTCOMMIT_TRUTH_NO_ADMISSION",
   "purpose": "REMEDIATE_PRE_REVIEW_CROSS_MODULE_GEOMETRY_COHERENCE_AND_POSTCOMMIT_STATUS_TRUTH",
   "findings": {
     "shared_top_geometry_precondition_missing_in_KT13": true,
@@ -31,14 +31,26 @@
   "review": {
     "same_agent_technical_review_only": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "independent_tier_d_review_still_required": true
+    "independent_tier_d_review_still_required": true,
+    "same_agent_technical_review_completed": true,
+    "same_agent_review_outcome": "SELF_REVIEW_PASS_REMEDIATED_COMPOSITION_CANDIDATE"
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI; IF_GREEN FREEZE REMEDIATED COMPOSITION TARGET AND SUPERSEDE_UNREMEDIATED_KT13_REVIEW_TARGET"
+  "next": "WAIT_FOR_EXACT_FINAL_HEAD_CI; IF_GREEN_MARK_KT13A_AS_REVIEW_TARGET_READY_AND_DO_NOT_USE_UNREMEDIATED_KT13_FOR_TIER_D_REVIEW",
+  "validation": {
+    "workflow": ".github/workflows/animo-kt13a-composition-coherence.yml",
+    "validator": "tools/validate_kt13a_composition_coherence.py",
+    "exact_final_head_required": true,
+    "substantive_green_head": "95dead10d7e017b7f46b2ce3f85704df134bb0e0",
+    "substantive_green_run": 35369924474,
+    "substantive_green_conclusion": "success",
+    "final_head_run": null,
+    "final_head_conclusion": null
+  }
 }
