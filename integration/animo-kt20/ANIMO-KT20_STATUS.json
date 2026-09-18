@@ -6,16 +6,16 @@
   "program_authority": "ANIMO-RG08@14109956b62376d0d0ab681e8c641c9e71d110bd",
   "provider_application_authority": "ANIMO-KT18@42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72",
   "central_provider_authority": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_KT19_PACKET_FRAME_TO_KT18_APPLICATION_BRIDGE_TIER_D_REVIEW_REQUIRED",
+  "decision": "QUALIFY_EXACT_NONPRODUCTION_KT19_PACKET_MATERIALIZATION_TO_KT18_FAIL_CLOSED_APPLICATION_BRIDGE_NO_CENTRAL_OR_CANONICAL_ADMISSION",
   "risk_tier_candidate": "D_EXTERNAL_PROVIDER_APPLICATION_CROSS_LANGUAGE_COMPOSITION",
-  "exact_packet_frame_qualified": false,
-  "python_roundtrip_qualified": false,
-  "fortran_exact_bit_decode_qualified": false,
-  "real_b1_packet_reaches_kt18": false,
-  "real_b1_packet_fail_closed_preserves_application": false,
-  "synthetic_control_commits_through_kt18": false,
+  "exact_packet_frame_qualified": true,
+  "python_roundtrip_qualified": true,
+  "fortran_exact_bit_decode_qualified": true,
+  "real_b1_packet_reaches_kt18": true,
+  "real_b1_packet_fail_closed_preserves_application": true,
+  "synthetic_control_commits_through_kt18": true,
   "full_b0_source_ci_contained": false,
   "full_real_sequence_application_execution_qualified": false,
   "canonical_forcing_abi_admitted": false,
@@ -31,14 +31,20 @@
     "validator": "tools/validate_kt20_kt19_to_kt18_bridge.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35404900389,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "4509ce511fd9813f00a7311bc57c75b6ac96d366",
+    "closeout_note": "Validated bridge authoring package at 4509ce511fd9813f00a7311bc57c75b6ac96d366 passed exact-head CI run 35404900389. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_d_review_required_for_admission": true
+    "independent_tier_d_review_required_for_admission": true,
+    "reviewed_head": "4509ce511fd9813f00a7311bc57c75b6ac96d366",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "hard_boundaries": {
     "raw_b0_source_committed": false,
@@ -57,10 +63,12 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI; REPAIR_ONLY_LOCAL_BRIDGE_DEFECTS; THEN_ADVERSARIAL_REVIEW_AND_FREEZE; GENUINE_TIER_D_REVIEW_REMAINS_SEPARATE"
+  "next": "USE_KT20_AS_QUALIFIED_NONPRODUCTION_CROSS_LANGUAGE_PROVIDER_APPLICATION_BRIDGE_CANDIDATE_ONLY; RETAIN_GENUINE_TIER_D_REVIEW_GATE; DO_NOT_CLAIM_FULL_REAL_SEQUENCE_SCIENTIFIC_EXECUTION_OR_CANONICAL_FORCING_ABI; NEXT_REBASELINE_MAY_ROUTE_REAL_SOURCE_APPLICATION_EVIDENCE_AND_INDEPENDENT_REVIEW",
+  "frozen_substantive_head": "4509ce511fd9813f00a7311bc57c75b6ac96d366",
+  "frozen_substantive_tree": "278ca3cb012c01e7377b3d3d596cf5934c65fe46"
 }
