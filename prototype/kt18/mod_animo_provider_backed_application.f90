@@ -1,5 +1,5 @@
 module mod_animo_provider_backed_application
-  use iso_fortran_env, only: int64
+  use iso_fortran_env, only: int64, real64
   use mod_transient_time, only: TimeCoordinate
   use mod_animo_hydrology_adapter, only: hydrology_step_t
   use mod_animo_multi_packet_hydrology_provider, only: &
@@ -9,7 +9,7 @@ module mod_animo_provider_backed_application
   use mod_animo_atomic_composite_application, only: &
     kt15_application_state_t, kt15_atomic_trace_t, &
     validate_kt15_application_state, kt15_application_time, &
-    execute_kt15_atomic_interval
+    execute_kt15_atomic_interval, kt15_application_generation
   implicit none
   private
 
@@ -23,8 +23,8 @@ module mod_animo_provider_backed_application
     logical :: application_interval_committed = .false.
     integer(int64) :: origin_generation = -1_int64
     integer(int64) :: published_generation = -1_int64
-    real(8) :: selected_producer_endpoint_day = 0.0_8
-    real(8) :: selected_producer_step_days = 0.0_8
+    real(real64) :: selected_producer_endpoint_day = 0.0_real64
+    real(real64) :: selected_producer_step_days = 0.0_real64
     type(kt15_atomic_trace_t) :: application
   end type kt18_provider_application_trace_t
 
@@ -91,7 +91,6 @@ contains
   end subroutine execute_provider_backed_application_interval
 
   integer(int64) function state_generation(state) result(value)
-    use mod_animo_atomic_composite_application, only: kt15_application_generation
     type(kt15_application_state_t), intent(in) :: state
     value = kt15_application_generation(state)
   end function state_generation
