@@ -2,5 +2,5 @@
 set -euo pipefail
 root="$(cd "$(dirname "$0")/../.." && pwd)"
 cd "$root"
-python -m unittest tests.kt19.test_pinned_lwkm_file_provider
-python -m unittest tests.test_legacy_unformatted
+python tests/kt19/test_pinned_lwkm_file_provider.py
+python tests/test_legacy_unformatted.py
