@@ -51,6 +51,14 @@ module mod_animo_tcd042_upper_solute_load_resolver
 
 contains
 
+  logical function exact_binary_zero(value)
+    use iso_fortran_env, only: int64
+    real(real64), intent(in) :: value
+    integer(int64) :: bits
+    bits = transfer(value, bits)
+    exact_binary_zero = iand(bits, int(z'7FFFFFFFFFFFFFFF', int64)) == 0_int64
+  end function exact_binary_zero
+
   subroutine make_tcd042_upper_chemistry_forcing(forcing_id, phosphorus_enabled, &
       precipitation, irrigation, runon_chemistry, runin, forcing, ok, reason)
     character(len=*), intent(in) :: forcing_id
@@ -206,6 +214,20 @@ contains
       ok = .false.
       reason = 'NONFINITE_UPPER_PHOSPHORUS_CHEMISTRY'
       return
+    end if
+
+    if (.not. forcing%phosphorus_enabled) then
+      if (.not. exact_binary_zero(forcing%precipitation%po) .or. &
+          .not. exact_binary_zero(forcing%irrigation%po) .or. &
+          .not. exact_binary_zero(forcing%irrigation%dop) .or. &
+          .not. exact_binary_zero(forcing%runon%po) .or. &
+          .not. exact_binary_zero(forcing%runon%dop) .or. &
+          .not. exact_binary_zero(forcing%runin%po) .or. &
+          .not. exact_binary_zero(forcing%runin%dop)) then
+        ok = .false.
+        reason = 'INACTIVE_PHOSPHORUS_CHEMISTRY_MUST_BE_EXACT_ZERO'
+        return
+      end if
     end if
 
     ok = .true.
