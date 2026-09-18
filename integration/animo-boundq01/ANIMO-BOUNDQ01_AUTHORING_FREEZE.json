@@ -1,0 +1,18 @@
+{
+  "work_unit": "ANIMO-BOUNDQ01",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "bc403a62b5e608d85581f91e7e9c1145d66e31a6",
+  "substantive_authoring_tree": "6238237b858a37a09fc547ea5ace438a924842c6",
+  "frozen_implementation_blob": "6b381ec9b37528b0decee8a2fa484e8124fc767d",
+  "validated_run": 35369976714,
+  "validated_conclusion": "success",
+  "candidate_claim": "REV53_STATIC_BOUNDARY_CHEMISTRY_FOR_IOPTIDTI0_IOPTIRTI0_HAS_A_TYPED_NONPRODUCTION_SOURCE_GRAMMAR_ADAPTER_WITH_NATURAL_TESTBANK_OPTION_AND_RANGE_EVIDENCE",
+  "natural_testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "dynamic_runon_qualified": false,
+  "dynamic_irrigation_qualified": false,
+  "active_year_selection_qualified": false,
+  "dry_deposition_execution_qualified": false,
+  "historical_b2_claimed": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
