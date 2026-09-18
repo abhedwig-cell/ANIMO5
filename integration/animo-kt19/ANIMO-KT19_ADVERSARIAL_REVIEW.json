@@ -1,0 +1,59 @@
+{
+  "work_unit": "ANIMO-KT19",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "4fc215a164e6b015bfc91eb7d73fac27e76c532a",
+  "frozen_substantive_head": "752166959c006d745ad6fc6cfc6b9aadb1b2ce1f",
+  "frozen_substantive_tree": "d483038de4d9a5c4aa52a01b113e9a1ad36197e0",
+  "frozen_provider_blob": "9aa42bc124f7795d760e649163149447a07a4324",
+  "frozen_test_blob": "8eaacf8773e0cae0e1285444b5aaf4219aa46564",
+  "validated_runs": [
+    {
+      "run_id": 35402532743,
+      "head": "752166959c006d745ad6fc6cfc6b9aadb1b2ce1f",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 35402574142,
+      "head": "4fc215a164e6b015bfc91eb7d73fac27e76c532a",
+      "conclusion": "success"
+    }
+  ],
+  "review_axes": {
+    "exact_B0_source_sha_required_before_parse": "PASS",
+    "B0_source_not_committed_to_git": "PASS",
+    "existing_powerstation_and_KT03_parser_reused": "PASS",
+    "exact_1800_packet_count_required": "PASS",
+    "all_three_KT08_sequence_identities_recomputed": "PASS",
+    "static_LWKM_envelope_pinned": "PASS",
+    "producer_chain_continuity_fail_closed": "PASS",
+    "duplicate_interval_identity_fail_closed": "PASS",
+    "explicit_calendar_and_day_offset_selection": "PASS",
+    "immutable_packet_ownership_preserved": "PASS",
+    "B1_first_packet_fixture_not_misclassified_as_B0": "PASS",
+    "external_full_source_replay_not_misclassified_as_CI_or_B2": "PASS",
+    "KT11_central_authority_unchanged": "PASS",
+    "no_science_or_production_effect": "PASS",
+    "independent_Tier_C_gate_retained": "PASS"
+  },
+  "remediation_history": [
+    {
+      "issue": "Committed B1 first-packet base64 fixture was truncated during authoring.",
+      "evidence": "CI run 35402357742 failed closed on derived fixture hash.",
+      "repair": "Restored exact 2650-byte fixture representation.",
+      "repaired_head": "ea81e393a8d8af47a43aee6428b9edf59be135de"
+    },
+    {
+      "issue": "Python test runner did not expose repository root on sys.path.",
+      "evidence": "CI run 35402499371 reached tests then failed ModuleNotFoundError: prototype.",
+      "repair": "Added repository root to PYTHONPATH in KT19 test harness.",
+      "repaired_head": "752166959c006d745ad6fc6cfc6b9aadb1b2ce1f"
+    }
+  ],
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
