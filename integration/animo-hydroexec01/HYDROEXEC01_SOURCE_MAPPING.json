@@ -1,0 +1,62 @@
+{
+  "work_unit": "ANIMO-HYDROEXEC01",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "precision_evidence": {
+    "vfproj_sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+    "historical_setting": "RealKIND=realKIND8",
+    "prototype_precision": "binary64"
+  },
+  "source_members": {
+    "Hydro_detailed.for": {
+      "sha256": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
+      "mapped_ranges": [
+        "109-180",
+        "196-202"
+      ],
+      "responsibilities": [
+        "Flpn no-ponding classification",
+        "Ru/Runinu/Rupr/Rurv/Ruso partition",
+        "top Flab provisional reconstruction",
+        "Iopthyvs=1 Dif",
+        "Evso correction",
+        "top Flab final reconstruction"
+      ]
+    },
+    "MODFLUX.FOR": {
+      "sha256": "0c0909922e88ee59233cabc307fb18243ea86023b4722879f6301259780de93d",
+      "mapped_range": "46-64",
+      "responsibility": "Flib(1)=Max(0,Flab(1))"
+    }
+  },
+  "bounded_mode": {
+    "Iwa": 2,
+    "Iopthyvs": 1,
+    "Ioptmp": 0,
+    "Flpn": 0,
+    "whole_day_exact_time": true
+  },
+  "near_zero_runoff": {
+    "predicate": "0<=Ru<1.0d-8 after the preceding Ru<0 branch",
+    "revision53_Runinu_assignment": "ABSENT",
+    "prototype_semantics": "PRESERVE_EXPLICIT_CALL_ENTRY_RUNINU",
+    "silent_zero_repair": false,
+    "canonical_state_ownership_decided": false
+  },
+  "positive_runoff_singularity": {
+    "source_expression": "Rupr + Rurv*Rupr/(Rupr+Ruso)",
+    "prototype_policy": "FAIL_CLOSED_IF_DENOMINATOR_IS_EXACT_BINARY_ZERO",
+    "scientific_repair_claimed": false
+  },
+  "outputs": {
+    "hydroq01": "Flpn, post-Modflux Flib(1), Rurv, exact interval and execution identity",
+    "hydroq02": "Rupr, Runinu, exact interval and execution identity"
+  },
+  "nonclaims": {
+    "full_hydro_detailed": false,
+    "full_modflux": false,
+    "water_balance_acceptance": false,
+    "macropores": false,
+    "ponding": false,
+    "production": false
+  }
+}
