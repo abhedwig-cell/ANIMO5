@@ -1,0 +1,34 @@
+name: ANIMO KT09 LWKM representative compiled consumption
+
+on:
+  push:
+    branches:
+      - work/animo-kt09-lwkm-anchor-compiled-consumption
+    paths:
+      - 'reference/kt09/**'
+      - 'tools/kt09_*'
+      - 'tests/kt09/**'
+      - 'docs/kt09/**'
+      - 'integration/animo-kt09/**'
+      - '.github/workflows/animo-kt09-lwkm-anchor-consumption.yml'
+  workflow_dispatch:
+
+jobs:
+  representative-real-packets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install gfortran
+        run: sudo apt-get update && sudo apt-get install -y gfortran
+      - name: Re-run frozen KT03 adapter tests
+        run: python3 tests/kt03/test_kt03_hydrology_adapter.py
+      - name: Re-run frozen KT05 compiled adapter tests
+        run: bash tests/kt05/run_kt05_tests.sh
+      - name: Re-run KT07 first-real-packet proof
+        run: bash tests/kt07/run_kt07_tests.sh
+      - name: Re-run KT08 full-sequence summary
+        run: python3 tests/kt08/test_kt08_sequence_summary.py
+      - name: Run KT09 representative compiled-consumption proof
+        run: bash tests/kt09/run_kt09_tests.sh
+      - name: Validate KT09 checkpoint
+        run: python3 -m json.tool integration/animo-kt09/ANIMO-KT09_CHECKPOINT.json >/dev/null
