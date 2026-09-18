@@ -1,0 +1,202 @@
+{
+  "work_unit": "ANIMO-RG07",
+  "title": "Post-KT16 Program Rebaseline, Candidate-Stack Freeze and Next Admission Routing",
+  "authoring_base": "ANIMO-KT16@7cd863b71a7a7fcc985514a8af28dcb69cae999a",
+  "predecessor_program_rebaseline": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "central_admitted_runtime_authorities": {
+    "kt06": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+    "kt11": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
+    "note": "No post-KT11 candidate is promoted to central admitted runtime authority by RG07."
+  },
+  "current_scientific_aggregate": {
+    "scientific_aggregate": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+    "queue_authority": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+    "top_level_objects": 25,
+    "admitted_top_level": 22,
+    "unadmitted_top_level": [
+      "TCD-016",
+      "TCD-034",
+      "TCD-040"
+    ],
+    "whole_b3_composition_complete": false
+  },
+  "scientific_frontier": {
+    "TCD-016": {
+      "authority": "ANIMO-B3B14@1f13c7cab30772f4aa8d5071b19d13761c2b5f16",
+      "disposition": "QUALIFIED_TCD016_PARENT_NOT_READY_EXPLICIT_MODEL_EVOLUTION_DECISION_REQUIRED",
+      "historical_behavior": "UNKNOWN_WITHOUT_B2",
+      "b3_admitted": false,
+      "production_authorized": false,
+      "next_decision": "EXPLICIT_MODEL_EVOLUTION_DECISION_WITHOUT_SILENTLY_INVENTING_HISTORICAL_REWETTING_PHYSICS"
+    },
+    "TCD-034": {
+      "authority": "ANIMO-GHG14@b82e5de364396eef3132f33cc48f8c28ab5aa04e",
+      "disposition": "QUALIFIED_TCD034_CLASS_F_READINESS_REASSESSMENT_NOT_READY_THREE_MATERIAL_GATES_REMAIN_V1",
+      "remaining_material_gates": [
+        "PROCESS_RESOLVED_EMPIRICAL_VALIDATION_WITH_ANTI_COMPENSATION_DESIGN",
+        "INTENDED_APPLICATION_ENVELOPE_EXPECTED_CHANGE_EVIDENCE",
+        "GENUINELY_INDEPENDENT_CLASS_F_SCIENTIFIC_REVIEW"
+      ],
+      "b3_admitted": false,
+      "production_authorized": false
+    },
+    "TCD-040": {
+      "authority": "ANIMO-B3B04E3@fedf2177b8228507beb91d7318b5f4dec5078241",
+      "disposition": "CLOSED_RECONSTRUCTED_REPLAY_PACKAGE_VALIDATED_CONTROLLED_B0_CUSTODY_PENDING",
+      "remaining_blocker": "ANIMO-EG01 controlled immutable B0 primary/secondary custody and restore verification",
+      "independent_replay_qualified": false,
+      "b3_admitted": false,
+      "production_authorized": false
+    }
+  },
+  "bounded_runtime_candidate_stack": {
+    "lower_level_candidates": [
+      {
+        "id": "STATEQ09",
+        "authority": "ANIMO-STATEQ09@f6e91fc1cb664d67caccc02e6ab21525a768d006",
+        "state": "QUALIFIED_DETAILED_HYDROLOGY_ACCEPTED_ENDPOINT_TO_NEXT_ORIGIN_CONTINUATION_TIER_C_REVIEW_REQUIRED",
+        "exact_head_ci": 35370652476,
+        "independent_review_required": true
+      },
+      {
+        "id": "STATEQ10",
+        "authority": "ANIMO-STATEQ10@614391014438b2cc4445d2d6a8008c3f0f1c45d0",
+        "state": "QUALIFIED_FIRST_INTERVAL_DETAILED_HYDROLOGY_ORIGIN_NORMALIZATION_TIER_C_REVIEW_REQUIRED",
+        "exact_head_ci": 35371035447,
+        "independent_review_required": true
+      },
+      {
+        "id": "BOUNDQ01",
+        "authority": "ANIMO-BOUNDQ01@62b4fc36f2a47b67c08eedb095c60a5c059b77d8",
+        "state": "QUALIFIED_REV53_STATIC_BOUNDARY_CHEMISTRY_ADAPTER_TIER_C_REVIEW_REQUIRED",
+        "exact_head_ci": 35372184768,
+        "independent_review_required": true
+      },
+      {
+        "id": "BOUNDQ02",
+        "authority": "ANIMO-BOUNDQ02@fb0c0c842aed9a90378aca613279e09a856ad09b",
+        "state": "QUALIFIED_REV53_STATIC_BOUNDARY_YEAR_CURSOR_AND_INTERVAL_BINDING_TIER_C_REVIEW_REQUIRED",
+        "exact_head_ci": 35373354465,
+        "independent_review_required": true
+      },
+      {
+        "id": "BOUNDQ02B",
+        "authority": "ANIMO-BOUNDQ02B@de6eef3122354e74405ff9c92286794714bdee82",
+        "state": "QUALIFIED_OPAQUE_CONTENT_BOUND_STATIC_BOUNDARY_FRAME_TIER_C_REVIEW_REQUIRED",
+        "exact_head_ci": 35374350536,
+        "independent_review_required": true
+      }
+    ],
+    "composite_candidates": [
+      {
+        "id": "KT13A",
+        "authority": "ANIMO-KT13A@df2310cc69e3fe16187ba2235843222f8acfb726",
+        "state": "QUALIFIED_KT13_COMPOSITION_COHERENCE_REMEDIATION_INDEPENDENT_TIER_D_REVIEW_STILL_REQUIRED",
+        "exact_head_ci": 35370974894,
+        "independent_review_required": true
+      },
+      {
+        "id": "STATEQ11",
+        "authority": "ANIMO-STATEQ11@c2bd0d17ac6921fcd9f22d6289a510cae454153d",
+        "state": "QUALIFIED_COMPOSITE_ACCEPTED_CONTINUATION_IDENTITY_TIER_D_REVIEW_REQUIRED",
+        "exact_head_ci": 35374617799,
+        "independent_review_required": true
+      },
+      {
+        "id": "KT14B",
+        "authority": "ANIMO-KT14B@46e9e7397be751f245069033bae655b4382b63bd",
+        "state": "QUALIFIED_OPAQUE_BOUNDQ02B_FRAME_TO_KT13A_TCD042_COMPOSITION_TIER_D_REVIEW_REQUIRED",
+        "exact_head_ci": 35375383770,
+        "independent_review_required": true
+      },
+      {
+        "id": "KT15",
+        "authority": "ANIMO-KT15@d3a51aad084969a753cb5b54c604ebefba4b26c6",
+        "state": "QUALIFIED_ATOMIC_COMPOSITE_APPLICATION_COMMIT_TIER_D_REVIEW_REQUIRED",
+        "exact_head_ci": 35375951746,
+        "independent_review_required": true
+      },
+      {
+        "id": "KT15A",
+        "authority": "ANIMO-KT15A@2279a961459211e03550dfda4af09ab4f7f6b9a3",
+        "state": "QUALIFIED_IMMUTABLE_APPLICATION_CONFIGURATION_BINDING_TIER_D_REVIEW_REQUIRED",
+        "exact_head_ci": 35376766361,
+        "independent_review_required": true
+      },
+      {
+        "id": "KT16",
+        "authority": "ANIMO-KT16@7cd863b71a7a7fcc985514a8af28dcb69cae999a",
+        "state": "QUALIFIED_ACCEPTED_APPLICATION_CHECKPOINT_SPLIT_RUN_RESTART_TIER_D_REVIEW_REQUIRED",
+        "exact_head_ci": 35377214000,
+        "independent_review_required": true
+      }
+    ]
+  },
+  "strongest_current_bounded_application_claim": {
+    "authority": "ANIMO-KT16@7cd863b71a7a7fcc985514a8af28dcb69cae999a",
+    "claim": "A bounded nonproduction TCD-042 application has immutable configuration identity, logical atomic science+continuation commit, accepted-boundary in-memory checkpoint/restore and exact split-run equivalence.",
+    "nonclaims": [
+      "not independently Tier-D reviewed",
+      "not centrally admitted",
+      "not canonical state/checkpoint admission",
+      "no checkpoint byte/file format",
+      "no integrity hash or build/source identity verification",
+      "no historical B2 restart equivalence",
+      "no external provider application composition",
+      "no B4 or production authorization"
+    ]
+  },
+  "independent_review_backlog": {
+    "policy": "Do not treat same-agent self-review as independent assurance.",
+    "tier_c_candidates": [
+      "STATEQ09",
+      "STATEQ10",
+      "BOUNDQ01",
+      "BOUNDQ02",
+      "BOUNDQ02B"
+    ],
+    "tier_d_candidates": [
+      "KT13A",
+      "STATEQ11",
+      "KT14B",
+      "KT15",
+      "KT15A",
+      "KT16"
+    ],
+    "lower_level_science_runtime_candidates_also_pending": [
+      "KT12",
+      "HYDROQ01",
+      "HYDROQ02",
+      "HYDROEXEC01",
+      "UBFORCE01",
+      "UBFORCE02",
+      "STATEQ08"
+    ],
+    "recommended_serial_gate": "FREEZE_CANDIDATE_STACK_AND_PREPARE_GENUINELY_INDEPENDENT_REVIEW_BUNDLE_BEFORE_ANY_CANONICAL_ADMISSION"
+  },
+  "project_gates": {
+    "b3_complete": false,
+    "tb7_open": false,
+    "b4_open": false,
+    "production_open": false,
+    "status_a_claimed": false,
+    "status_aa_claimed": false,
+    "denominator_status": "DENOMINATOR_NOT_YET_QUALIFIED"
+  },
+  "next_wave": {
+    "serial": [
+      "CLOSE_RG07_ON_EXACT_FINAL_HEAD_CI",
+      "FREEZE_POST_KT16_CANDIDATE_STACK",
+      "PREPARE_GENUINELY_INDEPENDENT_TIER_C_AND_TIER_D_REVIEW_HANDOFF_BUNDLE_BEFORE_CANONICAL_ADMISSION"
+    ],
+    "ownership_disjoint_technical_after_rg07": [
+      "KT17_CHECKPOINT_MANIFEST_INTEGRITY_BUILD_AND_SOURCE_IDENTITY_NONPRODUCTION",
+      "EXTERNAL_PROVIDER_TO_ACCEPTED_APPLICATION_COMPOSITION_NONPRODUCTION"
+    ],
+    "scientific_parallel": [
+      "TCD016_EXPLICIT_MODEL_EVOLUTION_DECISION",
+      "TCD034_EMPIRICAL_CLASS_F_EVIDENCE",
+      "TCD040_EXTERNAL_B0_CUSTODY_RESTORE_PROOF"
+    ]
+  }
+}
