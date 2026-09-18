@@ -145,7 +145,8 @@ contains
     type(animo_multi_packet_hydrology_runtime_probe_client_t), intent(in) :: client
 
     count = 0
-    if (allocated(client%packets)) count = size(client%packets)
+    if (.not. multi_packet_client_ready(client)) return
+    count = size(client%packets)
   end function multi_packet_packet_count
 
   subroutine execute_multi_packet_attempt( &

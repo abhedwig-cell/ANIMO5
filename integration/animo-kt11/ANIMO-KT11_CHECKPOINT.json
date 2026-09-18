@@ -2,7 +2,7 @@
   "workunit": "ANIMO-KT11",
   "title": "Typed Multi-Packet Hydrology Provider and Forcing Lifecycle",
   "phase": "QUALIFY",
-  "checkpoint_state": "HARDENED_PROVIDER_TEST_HARNESS_EXACT_HEAD_CI_PENDING",
+  "checkpoint_state": "FINAL_HARDENED_PROVIDER_TEST_HARNESS_EXACT_HEAD_CI_PENDING",
   "branch": "work/animo-kt11-multi-packet-hydrology-provider",
   "base_authority": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
   "consumed_kt06_frozen_implementation_head": "fc818917a46408d55cd7f03e2fa8257534683907",
@@ -32,7 +32,8 @@
     "same interval may be selected repeatedly without consuming forcing",
     "missing interval fails closed",
     "selected complete packet delegates through frozen KT06",
-    "forcing remains outside accepted continuation state"
+    "forcing remains outside accepted continuation state",
+    "public packet count is zero for a provider that failed initialization"
   ],
   "tests": [
     "three-packet private interval reaches exact target",
@@ -40,6 +41,7 @@
     "missing middle packet cannot externally publish partial interval",
     "duplicate key rejected",
     "fractional key rejected",
+    "same endpoint with different durations remains two distinct exact interval keys",
     "nonzero producer-day offset multi-step binding",
     "repeat selection is stateless",
     "caller-owned source mutation after initialization cannot alter provider",

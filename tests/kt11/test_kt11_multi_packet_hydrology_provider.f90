@@ -22,6 +22,7 @@ program test_kt11_multi_packet_hydrology_provider
   call test_out_of_order_storage_is_key_selected()
   call test_missing_middle_packet_fails_atomic()
   call test_duplicate_key_rejected()
+  call test_same_endpoint_different_steps_are_distinct_keys()
   call test_fractional_key_rejected()
   call test_nonzero_offset_multistep()
   call test_repeat_selection_is_stateless()
@@ -220,7 +221,43 @@ contains
     call assert_true(.not. ok, 'duplicate rejected')
     call assert_true(trim(reason) == 'DUPLICATE_PRODUCER_INTERVAL_KEY', 'duplicate reason')
     call assert_true(.not. multi_packet_client_ready(client), 'duplicate provider not ready')
+    call assert_true(multi_packet_packet_count(client) == 0, 'invalid provider count is zero')
   end subroutine test_duplicate_key_rejected
+
+  subroutine test_same_endpoint_different_steps_are_distinct_keys()
+    type(hydrology_step_t) :: packets(2)
+    type(animo_multi_packet_hydrology_runtime_probe_client_t) :: client
+    type(accepted_store_t) :: store
+    type(TimeCoordinate) :: t0, t10, t20
+    type(attempt_request_t) :: request(1)
+    type(runtime_trace_t) :: trace
+    logical :: ok, success
+    character(len=128) :: reason
+
+    call make_step(packets(1), 20.0_real64, 20.0_real64, 1.0_real64)
+    call make_step(packets(2), 20.0_real64, 10.0_real64, 2.0_real64)
+    call initialize_multi_packet_client(client, packets, CALENDAR_ID, 0_int64, ok, reason)
+    call assert_true(ok, 'same endpoint distinct-step provider init')
+    call assert_true(multi_packet_packet_count(client) == 2, 'same endpoint distinct-step count')
+
+    call make_time(0_int64, t0)
+    call make_time(10_int64, t10)
+    call make_time(20_int64, t20)
+
+    call initialize_probe_store(store, 'KT11_PAIR20', t0, 111_int64, ok)
+    call assert_true(ok, 'pair step20 store init')
+    request(1)%endpoint_time = t20
+    call run_interval(store, client, t20, request, 1, trace, success, reason)
+    call assert_true(success, 'endpoint20 step20 selects exact pair')
+    call assert_store_token(store, 111_int64, 'pair step20 token')
+
+    call initialize_probe_store(store, 'KT11_PAIR10', t10, 113_int64, ok)
+    call assert_true(ok, 'pair step10 store init')
+    request(1)%endpoint_time = t20
+    call run_interval(store, client, t20, request, 1, trace, success, reason)
+    call assert_true(success, 'endpoint20 step10 selects exact pair')
+    call assert_store_token(store, 113_int64, 'pair step10 token')
+  end subroutine test_same_endpoint_different_steps_are_distinct_keys
 
   subroutine test_fractional_key_rejected()
     type(hydrology_step_t) :: packets(1)
