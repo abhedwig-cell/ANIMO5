@@ -2,7 +2,7 @@
   "workunit": "ANIMO-KT06",
   "title": "Explicit Hydrology Runtime Interval Binding",
   "phase": "REVIEW",
-  "checkpoint_state": "SELF_REVIEW_PASS_INDEPENDENT_TIER_C_REVIEW_REQUIRED_WITH_KT07_KT09_SUPPLEMENTAL_PRODUCER_EVIDENCE",
+  "checkpoint_state": "SELF_REVIEW_PASS_INDEPENDENT_TIER_C_REVIEW_REQUIRED_WITH_KT07_KT10_SUPPLEMENTAL_EVIDENCE",
   "branch": "work/animo-kt06-explicit-hydrology-runtime-binding",
   "base_head": "3319e57adbf6036a86684f8e26d9559454c07b82",
   "consumed_kt02_authority": "ANIMO-KT02@1f88db4dc87fc4d93075884ac35a59711f0725bf",
@@ -49,7 +49,14 @@
     "review_packet": "integration/animo-kt06/ANIMO-KT06_REVIEW_PACKET.json",
     "review_supplement": "docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT07_KT09.md",
     "kt09_qualified_evidence_head": "e54fc115fabb58da5e79fad33e1359717a5ed19c",
-    "kt09_effect": "supplemental B1 representative complete real-packet compiled KT05 contact across all observed duration classes only"
+    "kt09_effect": "supplemental B1 representative complete real-packet compiled KT05 contact across all observed duration classes only",
+    "kt10_closeout": "e4f7f4576cbe5b4d8f2b57b16ea98041fcc06428",
+    "kt10_exact_head_ci_run": 35294863617,
+    "kt10_effect": "supplemental adversarial fail-closed runtime-boundary evidence only; no KT06 qualification effect",
+    "review_supplements": [
+      "docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT07_KT09.md",
+      "docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT10.md"
+    ]
   },
   "production_src_modified": false,
   "kt02_runtime_core_modified": false,

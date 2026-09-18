@@ -37,6 +37,14 @@
       "qualified_head_ci_run": 35293001679,
       "closeout_ci_run": 35293114491,
       "effect": "strengthens representative complete real-packet compiled KT05 contact across all observed duration classes only"
+    },
+    "kt10": {
+      "closeout": "e4f7f4576cbe5b4d8f2b57b16ea98041fcc06428",
+      "exact_head_ci_run": 35294863617,
+      "exact_head_ci_conclusion": "SUCCESS",
+      "verdict": "QUALIFIED_SUPPLEMENTAL_ADVERSARIAL_TEST_EVIDENCE_FOR_FROZEN_KT06_NO_KT06_QUALIFICATION_EFFECT",
+      "review_assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+      "effect": "adds fail-closed adversarial runtime-boundary evidence only; no KT06 qualification effect"
     }
   },
   "risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS",
@@ -58,5 +66,9 @@
   ],
   "review_support_only": true,
   "supplement_changes_frozen_target": false,
-  "supplement_changes_candidate_claim": false
+  "supplement_changes_candidate_claim": false,
+  "review_support_supplements": [
+    "docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT07_KT09.md",
+    "docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT10.md"
+  ]
 }

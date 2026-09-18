@@ -61,23 +61,31 @@ this Tier C gate.
 10. `integration/animo-kt06/ANIMO-KT06_CHECKPOINT.json`
 11. `integration/animo-kt06/ANIMO-KT06_REVIEW_PACKET.json`
 12. `docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT07_KT09.md`
+13. `docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT10.md`
 
 Also inspect the consumed frozen KT02 and KT05 implementations where needed to
 verify ownership claims rather than trusting KT06 documentation.
 
 ## Later supplemental producer evidence
 
-KT07 and KT08 were completed after the frozen KT06 target. They do not modify
-or become implementation dependencies of KT06, but they strengthen the real
-producer evidence available to the reviewer.
+KT07 through KT10 were completed after the frozen KT06 target. They do not modify
+or become implementation dependencies of KT06. KT07-KT09 strengthen real
+producer/contact evidence; KT10 adds adversarial executable evidence around the
+frozen runtime boundary.
 
 - KT07 qualified evidence head:
   `2d469e0a00071b73207112222199eef82c96a961`;
 - KT08 qualified evidence head:
-  `6927d8f66bd5948797b163880a869ecc0be4c391`.
+  `6927d8f66bd5948797b163880a869ecc0be4c391`;
+- KT09 qualified evidence head:
+  `e54fc115fabb58da5e79fad33e1359717a5ed19c`;
+- KT10 closeout head:
+  `e4f7f4576cbe5b4d8f2b57b16ea98041fcc06428`, exact-head CI
+  `35294863617 -> SUCCESS`.
 
 Read
-`docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT07_KT09.md`
+`docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT07_KT09.md` and
+`docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT10.md`
 for the exact scope and non-effects.
 
 ## Questions for the independent reviewer
@@ -103,7 +111,9 @@ for the exact scope and non-effects.
    timestep selection or production-coupling claims being imported implicitly?
 10. Are there hidden overflow, calendar, lineage, retry or forcing-lifecycle
     cases that require remediation before even a nonproduction runtime-binding
-    qualification?
+    qualification? Use KT10 as supplemental executable evidence, but independently
+    assess whether its boundary set is sufficient and whether it misses a semantic
+    failure mode.
 
 ## Required review result
 
