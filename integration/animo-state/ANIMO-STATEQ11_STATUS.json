@@ -1,0 +1,60 @@
+{
+  "work_unit": "ANIMO-STATEQ11",
+  "title": "Composite Accepted Continuation for Bounded TCD-042 Application State",
+  "branch": "work/animo-stateq11-composite-accepted-continuation",
+  "base": "ANIMO-BOUNDQ02@fb0c0c842aed9a90378aca613279e09a856ad09b",
+  "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "D_CROSS_MODULE_ACCEPTED_CONTINUATION_COMPOSITION",
+  "composite_identity_qualified": false,
+  "first_origin_bridge_qualified": false,
+  "endpoint_to_origin_advance_qualified": false,
+  "runinu_continuation_binding_qualified": false,
+  "boundary_cursor_binding_qualified": false,
+  "accepted_store_coherence_qualified": false,
+  "atomic_group_commit_implemented": false,
+  "canonical_state_admitted": false,
+  "checkpoint_schema_admitted": false,
+  "first_call_runinu_qualified": false,
+  "production_authorized": false,
+  "implementation": "prototype/stateq11/mod_animo_composite_accepted_continuation.f90",
+  "supported_scope": "NONPRODUCTION_KT02_LINEAGE_GENERATION_TIME_PLUS_STATEQ09_STATEQ08_BOUNDQ02_CONTINUATION_IDENTITY",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_d_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-stateq11-composite-continuation.yml",
+    "validator": "tools/stateq11/validate_stateq11.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "process_science_changed": false,
+    "canonical_state_registry_modified": false,
+    "checkpoint_schema_modified": false,
+    "first_call_runinu_invented": false,
+    "boundary_parser_modified": false,
+    "tcd_readmitted": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_RETAIN_TIER_D_INDEPENDENT_REVIEW_GATE; FUTURE_KT15_MAY_IMPLEMENT_ATOMIC_GROUP_PUBLICATION_WITHOUT_REDEFINING_STATE_OWNERSHIP"
+}
