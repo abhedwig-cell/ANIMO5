@@ -102,11 +102,17 @@ for required in [
     "next_cursor = accepted_cursor",
     "frame%origin_time = origin_time",
     "frame%endpoint_time = endpoint_time",
+    "frame%simulation_start_year = simulation_start_year",
+    "frame%boundary_nuyr = boundary%nuyr",
     "frame%dry_deposition_nh = boundary%dry_deposition_nh(slot)",
     "frame%dry_deposition_ni = boundary%dry_deposition_ni(slot)",
     "call make_tcd042_upper_chemistry_forcing",
     "SUBDAY_BOUNDARY_YEAR_SELECTION_NOT_QUALIFIED",
-    "BOUNDQ02_YEAR_SLOT_OUT_OF_RANGE"
+    "BOUNDQ02_YEAR_SLOT_OUT_OF_RANGE",
+    "BOUNDQ02_FRAME_YEAR_SLOT_INCOHERENT",
+    "BOUNDQ02_FRAME_FORCING_PROVENANCE_MISMATCH",
+    "NONFINITE_BOUNDQ02_DRY_DEPOSITION",
+    "call make_tcd042_upper_chemistry_forcing(trim(frame%chemistry%forcing_id)"
 ]:
     if required not in mod:
         fail("implementation drift "+required)
@@ -126,7 +132,8 @@ for name in [
     "test_exact_january_first_refreshes_slot",
     "test_skipped_january_first_preserves_legacy_cursor",
     "test_phosphorus_binding_and_dry_dep_separation",
-    "test_interval_and_calendar_fail_closed"
+    "test_interval_and_calendar_fail_closed",
+    "test_frame_integrity_fail_closed"
 ]:
     if name not in test:
         fail("missing test "+name)
