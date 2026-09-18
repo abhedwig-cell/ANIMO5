@@ -1,0 +1,25 @@
+{
+  "work_unit": "ANIMO-NQ06",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "d91ec30493484220f24c4b7e6495be3fb73e0663",
+  "exact_head_ci": {
+    "run_id": 35367965653,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "supplied_vfproj_hash_pinned": "PASS",
+    "all_four_configurations_realKIND8": "PASS",
+    "all_four_configurations_fp_model_source": "PASS",
+    "source_routines_use_default_REAL": "PASS",
+    "executable_used_only_as_supporting_lineage": "PASS",
+    "real64_candidate_not_mislabeled_B2": "PASS",
+    "no_global_tolerance": "PASS",
+    "no_production_effect": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "admission_performed": false,
+  "production_authorized": false
+}
