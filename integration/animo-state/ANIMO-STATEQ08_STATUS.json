@@ -1,0 +1,54 @@
+{
+  "work_unit": "ANIMO-STATEQ08",
+  "title": "Detailed-Hydrology Runinu Call-Entry Continuation Ownership & Restart Disposition",
+  "branch": "work/animo-stateq08-runinu-execution-continuation",
+  "base": "ANIMO-STATEQ07@26f6e61da328a5578b9c4b332de04eb99a3ac04f",
+  "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "hydroq02_evidence": "ANIMO-HYDROQ02@08d5b8301c217cf9d33d2bf248be133f2b5243fc",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier": "C_STATE_RESTART_RUNTIME_SEMANTICS",
+  "source_semantics_qualified": false,
+  "continuation_classification_qualified": false,
+  "canonical_state_admitted": false,
+  "checkpoint_format_admitted": false,
+  "model_evolution_zeroing_admitted": false,
+  "historical_behavior": "UNKNOWN_WITHOUT_B2",
+  "first_call_runinu_value": "UNQUALIFIED",
+  "production_authorized": false,
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_c_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-stateq08-runinu-continuation.yml",
+    "validator": "tools/stateq08/validate_stateq08.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "canonical_state_registry_modified": false,
+    "checkpoint_schema_modified": false,
+    "new_top_level_tcd_reserved": false,
+    "near_zero_runinu_zeroing_introduced": false,
+    "b2_claimed": false,
+    "b3_mutated": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_GOV05_COMPATIBLE_SELF_REVIEW; IF_GREEN_PREPARE_TIER_C_INDEPENDENT_REVIEW; ANY_DECISION_TO_ZERO_RUNINU_IN_NEAR_ZERO_DETAILED_RUNOFF_REQUIRES_SEPARATE_B3_MODEL_EVOLUTION_OR_CORRECTION_ROUTE"
+}
