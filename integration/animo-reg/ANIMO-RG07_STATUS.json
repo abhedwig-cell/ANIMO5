@@ -1,0 +1,67 @@
+{
+  "work_unit": "ANIMO-RG07",
+  "title": "Post-KT16 Program Rebaseline, Candidate-Stack Freeze and Next Admission Routing",
+  "branch": "work/animo-rg07-post-kt16-program-rebaseline",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "predecessor": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "authoring_base": "ANIMO-KT16@7cd863b71a7a7fcc985514a8af28dcb69cae999a",
+  "central_runtime_admissions_unchanged": true,
+  "central_runtime_authorities": [
+    "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+    "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480"
+  ],
+  "b3_complete": false,
+  "unadmitted_top_level": [
+    "TCD-016",
+    "TCD-034",
+    "TCD-040"
+  ],
+  "latest_bounded_application_candidate": "ANIMO-KT16@7cd863b71a7a7fcc985514a8af28dcb69cae999a",
+  "candidate_stack_independently_reviewed": false,
+  "canonical_state_admission_performed": false,
+  "canonical_checkpoint_admission_performed": false,
+  "tb7_open": false,
+  "b4_open": false,
+  "production_open": false,
+  "denominator_status": "DENOMINATOR_NOT_YET_QUALIFIED",
+  "proposed_next_technical_workunit": "KT17_CHECKPOINT_MANIFEST_INTEGRITY_BUILD_AND_SOURCE_IDENTITY_NONPRODUCTION",
+  "review": {
+    "required": true,
+    "mode": "GOV05_COMPATIBLE_SINGLE_AGENT_ADVERSARIAL_REVIEW",
+    "completed": false,
+    "genuinely_independent": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT"
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-rg07-post-kt16-program-rebaseline.yml",
+    "validator": "tools/validate_rg07_post_kt16_rebaseline.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "scientific_source_modified": false,
+    "b3_admission_performed": false,
+    "central_runtime_admission_performed": false,
+    "canonical_state_registry_modified": false,
+    "checkpoint_schema_admitted": false,
+    "queue_modified": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_migration_authorized": false,
+    "status_a_claimed": false,
+    "status_aa_claimed": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW; IF_GREEN_USE_RG07_AS_CURRENT_PROGRAM_REBASELINE_AND_START_OWNERSHIP_DISJOINT_KT17_NONPRODUCTION_MANIFEST_INTEGRITY_WORK_WHILE_INDEPENDENT_REVIEW_BUNDLE_IS_PREPARED"
+}
