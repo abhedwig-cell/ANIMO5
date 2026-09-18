@@ -1,0 +1,36 @@
+{
+  "work_unit": "ANIMO-KT14",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "7d410477c39d24f6b16d738a329a2d92db41d058",
+  "frozen_substantive_tree": "62a1e3378f02d094b9600e64a942af4502407382",
+  "frozen_implementation_blob": "e7cb67202c49a6166be77bdb98cf1c7591cd13da",
+  "frozen_test_blob": "a694a1b85f36a1e24dc51ea853b1b01ea05654c6",
+  "exact_head_ci": {
+    "run_id": 35374003170,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "boundary_frame_validated_before_science": "PASS",
+    "exact_interval_identity_preserved": "PASS",
+    "forcing_provenance_mutation_rejected": "PASS",
+    "dry_deposition_not_leaked_into_wet_advective_loads": "PASS",
+    "KT13A_upstream_blob_pinned": "PASS",
+    "BOUNDQ02_upstream_blob_pinned": "PASS",
+    "BOUNDQ01_fixture_pinned": "PASS",
+    "source_consistent_exact_binary64_oracles": "PASS",
+    "accepted_store_preserved_on_pre_science_rejection": "PASS",
+    "KT02_remains_science_commit_owner": "PASS",
+    "year_cursor_atomic_commit_not_claimed": "PASS",
+    "multi_interval_continuation_not_claimed": "PASS",
+    "independent_Tier_D_gate_retained": "PASS",
+    "b3_b4_tb7_production_boundaries_retained": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "independent_review_status": "REQUIRED_NOT_PERFORMED_IN_AUTHORING_CONTEXT",
+  "admission_performed": false,
+  "production_authorized": false
+}
