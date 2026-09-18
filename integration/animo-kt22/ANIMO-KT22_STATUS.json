@@ -1,0 +1,58 @@
+{
+  "work_unit": "ANIMO-KT22",
+  "title": "Pinned LWKM TCD-042 Exclusion-Boundary Decomposition and Routing",
+  "branch": "work/animo-kt22-lwkm-tcd042-exclusion-routing",
+  "base": "ANIMO-KT21@e591344d9a2fd03b92fd56af1b9b555099edc340",
+  "program_authority": "ANIMO-RG09@b019ac4507648e57c196a8a62806d804f39014a2",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "C_REAL_SOURCE_EVIDENCE_RUNTIME_CHARACTERIZATION",
+  "tcd042_scope_widened": false,
+  "ordinary_positive_flow_implemented": false,
+  "ponding_implemented": false,
+  "first_call_runinu_resolved": false,
+  "production_authorized": false,
+  "evidence": "integration/animo-kt22/KT22_LWKM_EXCLUSION_ROUTING.json",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_review_required_for_any_later_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-kt22-lwkm-exclusion-routing.yml",
+    "validator": "tools/validate_kt22_lwkm_exclusion_routing.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "raw_b0_source_committed": false,
+    "tcd042_scope_widened": false,
+    "tcd042_readmitted": false,
+    "ordinary_positive_flow_science_implemented": false,
+    "ponding_science_implemented": false,
+    "first_call_runinu_invented": false,
+    "b2_claimed": false,
+    "b3_mutated": false,
+    "canonical_state_admitted": false,
+    "canonical_forcing_admitted": false,
+    "canonical_checkpoint_admitted": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false,
+    "status_a_claimed": false,
+    "status_aa_claimed": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_SELF_REVIEW; IF_GREEN_USE_KT22_TO_ROUTE_THE_1401_PACKET_REMAINDER_TO_ORDINARY_POSITIVE_FLOW_CAPABILITY_WORK_AND_KEEP_TCD042_CLOSED_TO_ITS_ADMITTED_FALLBACK_SCOPE"
+}
