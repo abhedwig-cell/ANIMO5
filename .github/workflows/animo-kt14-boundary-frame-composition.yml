@@ -1,0 +1,25 @@
+name: ANIMO KT14 boundary frame composition
+on:
+  push:
+    branches: [work/animo-kt14-boundary-frame-tcd042-composition]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in df2310cc69e3fe16187ba2235843222f8acfb726 8efdd151d89e1cff131d4b21e2acf559ca1828d6 fb0c0c842aed9a90378aca613279e09a856ad09b 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-kt14/KT14_COMPOSITION_MANIFEST.json >/dev/null
+      - run: python -m json.tool integration/animo-kt14/ANIMO-KT14_STATUS.json >/dev/null
+      - name: Validate exact-frame composition authority
+        run: python tools/validate_kt14_boundary_frame_composition.py
+      - name: Compile and run exact-frame TCD042 composition tests
+        run: bash tests/kt14/run_kt14_tests.sh
