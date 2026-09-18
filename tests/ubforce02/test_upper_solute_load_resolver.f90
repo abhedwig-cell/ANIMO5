@@ -42,13 +42,19 @@ contains
     logical::ok
     character(len=64)::reason
 
-    pr%nh=1.0_real64; pr%ni=2.0_real64; pr%po=3.0_real64
+    pr%nh=1.0_real64; pr%ni=2.0_real64
     irr%nh=4.0_real64; irr%ni=5.0_real64; irr%doma=6.0_real64
-    irr%don=7.0_real64; irr%po=8.0_real64; irr%dop=9.0_real64
+    irr%don=7.0_real64
     ron%nh=10.0_real64; ron%ni=11.0_real64; ron%doma=12.0_real64
-    ron%don=13.0_real64; ron%po=14.0_real64; ron%dop=15.0_real64
+    ron%don=13.0_real64
     rin%nh=16.0_real64; rin%ni=17.0_real64; rin%doma=18.0_real64
-    rin%don=19.0_real64; rin%po=20.0_real64; rin%dop=21.0_real64
+    rin%don=19.0_real64
+    if (p_enabled) then
+      pr%po=3.0_real64
+      irr%po=8.0_real64; irr%dop=9.0_real64
+      ron%po=14.0_real64; ron%dop=15.0_real64
+      rin%po=20.0_real64; rin%dop=21.0_real64
+    end if
 
     call make_tcd042_upper_chemistry_forcing('CHEM-1',p_enabled,pr,irr,ron,rin,forcing,ok,reason)
     call assert_true(ok,'chemistry fixture')
@@ -73,19 +79,19 @@ contains
 
     call select_tcd042_load_channel(loads,1,v,ok,reason)
     call assert_true(ok,'select load1')
-    call assert_true(abs(v-1.36_real64)<1.0e-14_real64,'load1 equation')
+    call assert_true(transfer(v,0_int64)==int(z'3FF6E147AE147AE2',int64),'load1 exact binary64 equation')
 
     call select_tcd042_load_channel(loads,2,v,ok,reason)
     call assert_true(ok,'select load2')
-    call assert_true(abs(v-1.57_real64)<1.0e-14_real64,'load2 equation')
+    call assert_true(transfer(v,0_int64)==int(z'3FFA8F5C28F5C290',int64),'load2 exact binary64 equation')
 
     call select_tcd042_load_channel(loads,3,v,ok,reason)
     call assert_true(ok,'select load3')
-    call assert_true(abs(v-1.56_real64)<1.0e-14_real64,'load3 equation')
+    call assert_true(transfer(v,0_int64)==int(z'3FF8F5C28F5C28F6',int64),'load3 exact binary64 equation')
 
     call select_tcd042_load_channel(loads,4,v,ok,reason)
     call assert_true(ok,'select load4')
-    call assert_true(abs(v-1.74_real64)<1.0e-14_real64,'load4 equation')
+    call assert_true(transfer(v,0_int64)==int(z'3FFAE147AE147AE2',int64),'load4 exact binary64 equation')
 
     call select_tcd042_load_channel(loads,5,v,ok,reason)
     call assert_true(.not.ok,'P channel unavailable when disabled')
@@ -110,11 +116,11 @@ contains
 
     call select_tcd042_load_channel(loads,5,v,ok,reason)
     call assert_true(ok,'select load5')
-    call assert_true(abs(v-2.20_real64)<1.0e-14_real64,'load5 equation')
+    call assert_true(transfer(v,0_int64)==int(z'40010A3D70A3D70A',int64),'load5 exact binary64 equation')
 
     call select_tcd042_load_channel(loads,6,v,ok,reason)
     call assert_true(ok,'select load6')
-    call assert_true(abs(v-1.92_real64)<1.0e-14_real64,'load6 equation')
+    call assert_true(transfer(v,0_int64)==int(z'3FFEB851EB851EB8',int64),'load6 exact binary64 equation')
   end subroutine test_exact_source_equations_with_p
 
   subroutine test_fail_closed_nonfinite()
