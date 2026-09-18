@@ -1,0 +1,48 @@
+{
+  "work_unit": "ANIMO-KT13A",
+  "review_class": "GOV04_TIER_D_INDEPENDENT_COMPOSITION_REVIEW_REQUIRED",
+  "candidate_claim": "SELECTED_KT05_PACKET_PLUS_EXPLICIT_START_CHEMISTRY_AND_EXACT_SHARED_HETOP_CAN_DRIVE_ONE_BOUNDED_TCD042_INTERVAL_TO_ATOMIC_KT02_COMMIT",
+  "review_target_ready": false,
+  "supersedes_unremediated_target_only_after_exact_head_ci": false,
+  "inherited_authorities": {
+    "RG06": "8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+    "KT06": "56384db4107aed484218363e26dbb7be7f51e8de",
+    "KT12": "8f0e8e4bfd0b391b781f7c69b7d2063d5cf8705e",
+    "HYDROQ01": "5301d90024c64057f2cb88fda1dbaa93aabfca47",
+    "HYDROQ02": "56b041ddb30b65fe1e77540dbbc36400ee49b1b1",
+    "HYDROEXEC01": "182dac2fc34ca42ed798203e90efeca1221f21e8",
+    "UBFORCE01": "9f9204ba53169285ac84272704de14836962ef41",
+    "UBFORCE02": "931e32cec69dc78a03015f01190cff97bf1fe1b4",
+    "STATEQ08": "e9ee7fc9e69a62c58b6eacd6379220cc51c1bf07",
+    "B3D35": "9ca23f41dc3c28af686b1bc0bff8e7d66416d367"
+  },
+  "mandatory_review_axes": [
+    "exact shared top-layer geometry identity between HYDROEXEC01 start_context%he_top and KT12 hetop",
+    "no false transactional failure may be reported after KT02 accepted-state commit",
+    "KT06 binding semantics reused without widening",
+    "KT05 projection semantics remain frozen",
+    "HYDROEXEC01 no-ponding bounded source path only",
+    "Runinu continuation remains explicit and no first-call value is invented",
+    "HYDROQ01 V1 to KT12 V0 field mapping is lossless for the admitted TCD042 forcing coordinates",
+    "UBFORCE02 equations remain frozen revision-53 wet/advective load equations",
+    "dry deposition remains separate",
+    "chemistry remains separate from hydrology",
+    "load channel selection does not imply canonical species-owner binding",
+    "KT02 is sole accepted-state publication owner",
+    "precommit rejection preserves accepted state",
+    "TCD042 admitted B1/E1 scope is not widened",
+    "multi-interval continuation, parser integration, TB7, B4 and production remain out of scope"
+  ],
+  "explicit_nonclaims": {
+    "canonical_species_binding": false,
+    "boundary_parser": false,
+    "chemistry_time_provider": false,
+    "first_call_Runinu_value": false,
+    "multi_interval_state_continuation": false,
+    "canonical_Runinu_state": false,
+    "B2_historical_equivalence": false,
+    "production": false
+  },
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "same_agent_review_satisfies_independence": false
+}
