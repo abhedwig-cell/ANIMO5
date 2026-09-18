@@ -1,0 +1,128 @@
+{
+  "work_unit": "ANIMO-RG06",
+  "title": "Post-KT11 Program Rebaseline and Scientific-Execution Routing",
+  "authoring_base": "ANIMO-RG05Q@3402666360d3e30105712b121a98fc4b9055926f",
+  "source_central_regie": {
+    "authority": "ANIMO-RG05Q@3402666360d3e30105712b121a98fc4b9055926f",
+    "exact_final_ci_run": 35359004116,
+    "exact_final_ci_conclusion": "success"
+  },
+  "scientific_aggregate": {
+    "authority": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+    "scientific_admission_objects": 32,
+    "top_level_admitted_tcd_count": 22,
+    "admitted_child_atom_count": 10,
+    "historical_uncertainty_admission_count": 32,
+    "normal_b2_admission_count": 0
+  },
+  "current_b3_queue": {
+    "authority": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+    "top_level_objects": 25,
+    "admitted_top_level": 22,
+    "unadmitted_top_level": [
+      "TCD-016",
+      "TCD-034",
+      "TCD-040"
+    ],
+    "global_queue_closed": false,
+    "whole_b3_composition_complete": false,
+    "tb7_allowed": false,
+    "b4_allowed": false,
+    "production_allowed": false
+  },
+  "runtime_authorities": {
+    "kt06": {
+      "authority": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+      "scope": "BOUNDED_NONPRODUCTION_EXPLICIT_HYDROLOGY_RUNTIME_BINDING",
+      "risk_tier": "C",
+      "admitted": true,
+      "production_authorized": false
+    },
+    "kt11": {
+      "authority": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
+      "scope": "BOUNDED_NONPRODUCTION_MULTI_PACKET_HYDROLOGY_PROVIDER_AND_FORCING_LIFECYCLE",
+      "risk_tier": "C",
+      "admitted": true,
+      "production_authorized": false
+    }
+  },
+  "unresolved_scientific_frontier": {
+    "TCD-016": {
+      "authority": "ANIMO-SQ11@afdfa2e61d4a9c7e45214e096696ce8632f5c504",
+      "state": "QUALIFIED_EXPERIMENT_DESIGN_READY_EXTERNAL_EVIDENCE_EXECUTION_REQUIRED",
+      "disposition": "PARKED_EXTERNAL_EVIDENCE_DEPENDENCY",
+      "b3_admitted": false,
+      "physical_evidence_available": false,
+      "resume_trigger": "TRACEABLE_DRYDOWN_REWETTING_DATA_OR_MATERIAL_IDENTITY_EVIDENCE"
+    },
+    "TCD-034": {
+      "authority": "ANIMO-GHG14@b82e5de364396eef3132f33cc48f8c28ab5aa04e",
+      "state": "QUALIFIED_CLASS_F_READINESS_REASSESSMENT_NOT_READY_NO_ADMISSION",
+      "b3_admitted": false,
+      "remaining_material_gates": [
+        "PROCESS_RESOLVED_EMPIRICAL_VALIDATION_WITH_ANTI_COMPENSATION_DESIGN",
+        "INTENDED_APPLICATION_ENVELOPE_EXPECTED_CHANGE_EVIDENCE",
+        "GENUINELY_INDEPENDENT_CLASS_F_SCIENTIFIC_REVIEW"
+      ],
+      "observed_ghg15_branch_head": "b82e5de364396eef3132f33cc48f8c28ab5aa04e",
+      "ghg15_qualified_advance_observed": false
+    },
+    "TCD-040": {
+      "disposition": "UNADMITTED_EXTERNAL_B0_CUSTODY_RESTORE_DEPENDENCY",
+      "b3_admitted": false,
+      "independent_review_authority": "review/animo-b3b04r-tcd040-independent-second-line@bb001129578457ca8435e39deb2b8586e7ebc6a2",
+      "b0_retention_contract": "ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300",
+      "controlled_immutable_storage_proven": false,
+      "resume_trigger": "EXTERNAL_PRIMARY_SECONDARY_CUSTODY_AND_RESTORE_HASH_EVIDENCE"
+    }
+  },
+  "testbank": {
+    "authority": "ANIMO-TB07A@6d77e92f5beb2a30deb7411d93890aa7a5559685",
+    "composed_regression_baseline_authorized": false,
+    "reason": "POSITIVE_WHOLE_B3_COMPOSITION_AUTHORITY_ABSENT"
+  },
+  "b0": {
+    "authority": "ANIMO-EG01@a818b5a37b80ed92aded0b9c404990d356eb2300",
+    "retention_contract_qualified": true,
+    "controlled_immutable_storage_proven": false,
+    "historical_reference_admitted": false
+  },
+  "first_real_scientific_consumer_candidate": {
+    "object": "TCD-042",
+    "aggregate_authority": "ANIMO-RG05M@7146612d5dfa8ad87a4660f0c50c68a5db1e3a29",
+    "parent_admission": "ANIMO-B3D35@9ca23f41dc3c28af686b1bc0bff8e7d66416d367",
+    "parent_exact_final_ci_run": 34596771535,
+    "supported_scope": "Flpn=0 AND Hetop>0 AND (Flux=0 OR (0<Flux<1.0d-8 AND 0<P<=3.8510200002999744e-7 AND binary64))",
+    "rationale": [
+      "already B3-admitted as a bounded composed parent in the aggregate lineage",
+      "directly consumes hydrology-facing upper-boundary variables",
+      "small bounded process surface suitable for first end-to-end nonproduction scientific composition",
+      "does not require opening TCD-016, TCD-034 or TCD-040"
+    ],
+    "route": "SEPARATE_GOV04_CLASSIFIED_NONPRODUCTION_SCIENTIFIC_CONSUMER_COMPOSITION_WORKUNIT",
+    "production_authorized": false
+  },
+  "denominator_status": "DENOMINATOR_NOT_YET_QUALIFIED",
+  "project_gates": {
+    "b3_complete": false,
+    "tb7_open": false,
+    "b4_open": false,
+    "production_open": false,
+    "status_a_claimed": false,
+    "status_aa_claimed": false
+  },
+  "next_wave": {
+    "serial": [
+      "CLOSE_RG06_ONLY_IF_LIVE_AUTHORITY_SET_REMAINS_STABLE",
+      "DO_NOT_OPEN_TB7_B4_OR_PRODUCTION_WHILE_TCD016_TCD034_TCD040_REMAIN_UNADMITTED"
+    ],
+    "parallel_after_pinning": [
+      "TCD034_EXTERNAL_EMPIRICAL_EVIDENCE_ACQUISITION",
+      "TCD040_EXTERNAL_B0_CUSTODY_AND_RESTORE_PROOF",
+      "KT12_BOUNDED_TCD042_SCIENTIFIC_CONSUMER_COMPOSITION"
+    ],
+    "parked": [
+      "TCD016_UNTIL_ISSUE54_EXTERNAL_EVIDENCE_EXISTS"
+    ]
+  }
+}
