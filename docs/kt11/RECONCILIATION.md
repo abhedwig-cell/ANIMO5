@@ -19,9 +19,17 @@ files are not modified by KT11.
 
 ## Central regie
 
-ANIMO-RG05P is being qualified in parallel as a disjoint governance-only
-attachment of KT06-A1 to central regie. KT11 may not claim central-regie
-completion until RG05P exact-final validation is green.
+ANIMO-RG05P is now the qualified central-regie attachment of KT06-A1:
+
+`ANIMO-RG05P@9a8d0d886f745be91153f47437cb0de2b3076ab2`
+
+Exact-final RG05P validation:
+
+`35350591836 -> SUCCESS`
+
+RG05P changes no B3 scientific count, queue, TCD identity or production scope.
+KT11 consumes it only as central traceability authority for the already admitted
+KT06 runtime object.
 
 ## Supplemental producer evidence
 

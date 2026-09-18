@@ -25,6 +25,7 @@ program test_kt11_multi_packet_hydrology_provider
   call test_fractional_key_rejected()
   call test_nonzero_offset_multistep()
   call test_repeat_selection_is_stateless()
+  call test_provider_owns_deep_copy()
   call test_real_lwkm_anchor_packets_bind()
   call test_missing_real_interval_fails_closed()
 
@@ -289,6 +290,42 @@ contains
     call assert_true(ok .and. admissibility%admissible, 'repeat second selection')
     call assert_candidate_token(candidate, 97_int64, 'repeat second token')
   end subroutine test_repeat_selection_is_stateless
+
+
+  subroutine test_provider_owns_deep_copy()
+    type(hydrology_step_t) :: packets(1)
+    type(animo_multi_packet_hydrology_runtime_probe_client_t) :: client
+    type(accepted_store_t) :: store
+    type(TimeCoordinate) :: t0, t10
+    type(attempt_request_t) :: request(1)
+    type(runtime_trace_t) :: trace
+    logical :: ok, success
+    character(len=128) :: reason
+
+    call make_step(packets(1), 10.0_real64, 10.0_real64, 1.0_real64)
+    call initialize_multi_packet_client(client, packets, CALENDAR_ID, 0_int64, ok, reason)
+    call assert_true(ok, 'deep-copy provider init')
+
+    ! Mutate the caller-owned source after initialization. Provider behaviour
+    ! must remain governed by its internal immutable copy.
+    packets(1)%schema_id = 'CALLER_MUTATED'
+    packets(1)%producer_endpoint_day = 999.0_real64
+    packets(1)%producer_step_days = 999.0_real64
+    packets(1)%prr = 999.0_real64
+    packets(1)%sc = 999.0_real64
+
+    call make_time(0_int64, t0)
+    call make_time(10_int64, t10)
+    call initialize_probe_store(store, 'KT11_DEEPCOPY', t0, 101_int64, ok)
+    call assert_true(ok, 'deep-copy store init')
+    request(1)%endpoint_time = t10
+    call run_interval(store, client, t10, request, 1, trace, success, reason)
+
+    call assert_true(success, 'deep-copy provider unaffected by caller mutation')
+    call assert_true(trace%commit_count == 1, 'deep-copy commit')
+    call assert_store_time(store, t10, 'deep-copy target')
+    call assert_store_token(store, 101_int64, 'deep-copy accepted payload unchanged')
+  end subroutine test_provider_owns_deep_copy
 
   subroutine assert_candidate_token(candidate, expected, label)
     class(transient_payload_t), allocatable, intent(in) :: candidate

@@ -1,8 +1,8 @@
 {
   "workunit": "ANIMO-KT11",
   "title": "Typed Multi-Packet Hydrology Provider and Forcing Lifecycle",
-  "phase": "IMPLEMENT",
-  "checkpoint_state": "IMPLEMENTED_PROVIDER_AND_TEST_HARNESS_EXACT_HEAD_CI_PENDING",
+  "phase": "QUALIFY",
+  "checkpoint_state": "HARDENED_PROVIDER_TEST_HARNESS_EXACT_HEAD_CI_PENDING",
   "branch": "work/animo-kt11-multi-packet-hydrology-provider",
   "base_authority": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
   "consumed_kt06_frozen_implementation_head": "fc818917a46408d55cd7f03e2fa8257534683907",
@@ -10,7 +10,10 @@
   "candidate_risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS",
   "central_regie_dependency": {
     "workunit": "ANIMO-RG05P",
-    "state": "QUALIFICATION_IN_PARALLEL_NOT_YET_CONSUMED_AS_FINAL_AUTHORITY"
+    "authority": "ANIMO-RG05P@9a8d0d886f745be91153f47437cb0de2b3076ab2",
+    "exact_final_ci_run": 35350591836,
+    "exact_final_ci_conclusion": "SUCCESS",
+    "state": "QUALIFIED_KT06_GOV04_TIER_C_RUNTIME_ADMISSION_INTEGRATED_NO_B3_OR_PRODUCTION_EFFECT"
   },
   "supplemental_evidence": {
     "kt08_closeout": "281dc65cbaceaa61d31f9cb731b3c5a733ca5d57",
@@ -25,6 +28,7 @@
     "duplicate packet interval key rejected at initialization",
     "storage order has no semantic effect",
     "no mutable selection cursor",
+    "provider owns a deep copy; caller mutation after initialization cannot alter selection or forcing",
     "same interval may be selected repeatedly without consuming forcing",
     "missing interval fails closed",
     "selected complete packet delegates through frozen KT06",
@@ -38,6 +42,7 @@
     "fractional key rejected",
     "nonzero producer-day offset multi-step binding",
     "repeat selection is stateless",
+    "caller-owned source mutation after initialization cannot alter provider",
     "eight representative real LWKM anchor packets bind",
     "missing real interval fails closed",
     "KT08 1800-packet temporal evidence identity pinned",
@@ -49,7 +54,7 @@
   "kt06_implementation_modified": false,
   "qualification_status": "NOT_YET_QUALIFIED_UNDER_GOV04_TIER_C",
   "admission_status": "NOT_ADMITTED",
-  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW_AND_PREPARE_GENUINELY_INDEPENDENT_TIER_C_HANDOFF",
+  "next_permitted_action": "RUN_HARDENED_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW_AND_PREPARE_GENUINELY_INDEPENDENT_TIER_C_HANDOFF",
   "explicit_exclusions": [
     "full 1800-packet payload materialization or execution",
     "runtime SWATRE.UNF packet generation",
@@ -62,5 +67,11 @@
     "production coupling or migration",
     "B3 or B4",
     "Status A or Status AA"
-  ]
+  ],
+  "prior_candidate_ci": {
+    "head": "ebf38522ffb4622fe0e1e2cfaf959c325e9c961f",
+    "run_id": 35350629856,
+    "conclusion": "SUCCESS",
+    "note": "pre-hardening provider implementation and test harness passed"
+  }
 }
