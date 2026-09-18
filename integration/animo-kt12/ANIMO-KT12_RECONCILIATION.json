@@ -36,6 +36,15 @@
         "for Flpn=0, Flux=Max(0,Flib(1)+Rurv)",
         "B1/E1 coefficients determine accepted end and average top-reservoir concentrations"
       ]
+    },
+    "uboundconc_load_mapping": {
+      "role": "SEPARATE_PROCESS_FORCING_NOT_SUPPLIED_BY_KT11",
+      "revision53_inputs": [
+        "precipitation/rain/snow/irrigation/runon/run-in hydrology terms",
+        "Rupr",
+        "species-specific precipitation/irrigation/runon/run-in concentrations"
+      ],
+      "consequence": "KT12 load_rate is an explicitly supplied already-resolved process forcing; KT11 hydrology packets alone cannot establish it."
     }
   },
   "kt05_boundary": {
@@ -103,12 +112,26 @@
       "Rurv",
       "exact interval identity",
       "hydrology resolution provenance"
-    ]
+    ],
+    "additional_missing_surface": "QUALIFIED_TCD042_UPPER_BOUNDARY_SOLUTE_LOAD_FORCING_CONTRACT_OR_EQUIVALENT",
+    "full_end_to_end_ready": false
   },
   "recommended_next": {
     "id": "ANIMO-HYDROQ01",
     "title": "Hydro_detailed Resolved Hydrology Output Contract and Runtime Scientific Seam Qualification",
     "purpose": "qualify the exact post-Hydro_detailed/Modflux typed output required by downstream ANIMO science without yet widening production",
     "risk_candidate": "GOV04_TIER_D_CROSS_MODULE_SCIENTIFIC_COMPOSITION"
-  }
+  },
+  "recommended_next_sequence": [
+    {
+      "id": "ANIMO-HYDROQ01",
+      "title": "TCD-042 Post-Hydro_detailed Resolved Upper-Boundary Hydrology Contract & Source Mapping",
+      "purpose": "qualify Flpn, post-Modflux Flib(1), Rurv and interval/provenance identity without faking Hydro_detailed execution"
+    },
+    {
+      "id": "ANIMO-UBFORCE01",
+      "title": "TCD-042 Upper-Boundary Solute Load Forcing Contract & Source Mapping",
+      "purpose": "qualify the separate species/load forcing needed by UBoundconc; do not treat hydrology forcing as solute-load forcing"
+    }
+  ]
 }
