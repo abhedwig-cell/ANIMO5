@@ -38,7 +38,7 @@ if k11.get("frozen_implementation_blob")!="a41d0f61da6dd30a18dbfadbe4b29b00259fa
 k15=gj(KT15A,"integration/animo-kt15a/ANIMO-KT15A_STATUS.json")
 if k15.get("state")!="QUALIFIED_IMMUTABLE_APPLICATION_CONFIGURATION_BINDING_TIER_D_REVIEW_REQUIRED":
     fail("KT15A state")
-if k15.get("application_config_qualified") is not True:
+if k15.get("immutable_application_config_qualified") is not True:
     fail("KT15A config")
 if k15.get("independent_review_completed") is not False or k15.get("production_authorized") is not False:
     fail("KT15A review/production boundary")
