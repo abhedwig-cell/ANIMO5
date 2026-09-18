@@ -1,0 +1,99 @@
+{
+  "work_unit": "ANIMO-KT22",
+  "evidence_class": "B1_DIAGNOSTIC_ROUTING_DERIVED_FROM_PINNED_B0_NOT_B2",
+  "authorities": {
+    "program_rebaseline": "ANIMO-RG09@b019ac4507648e57c196a8a62806d804f39014a2",
+    "predecessor": "ANIMO-KT21@e591344d9a2fd03b92fd56af1b9b555099edc340",
+    "tcd042_parent": "ANIMO-B3D35@9ca23f41dc3c28af686b1bc0bff8e7d66416d367",
+    "ubq01": "ANIMO-UBQ01@6895b67799f26888025eced7188e7190b2a0d07d",
+    "hydroexec01": "ANIMO-HYDROEXEC01@182dac2fc34ca42ed798203e90efeca1221f21e8"
+  },
+  "source": {
+    "container_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "hydrology_member": "ANIMO_testbank/LWKM_gras_1040.2021.2045/input/SWATRE.UNF",
+    "hydrology_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
+    "soil_member": "ANIMO_testbank/LWKM_gras_1040.2021.2045/input/SOIL.INP",
+    "soil_sha256": "57f2173723172bb5f92621786f7a49b23b8f497ee3554f25a36ea19ae0968f3c"
+  },
+  "frozen_discriminator": {
+    "no_ponding_flux_expression": "Flux=max(0,Flib(1)+Rurv)",
+    "ordinary_positive_flow_predicate": "Flpn=0 AND Flux>=1.0d-8",
+    "tcd042_fallback_predicate": "Flpn=0 AND Flux<1.0d-8",
+    "tcd042_parent_predicate": "Flpn=0 AND Hetop>0 AND (Flux=0 OR (0<Flux<1.0d-8 AND 0<P<=3.8510200002999744e-7 AND binary64))"
+  },
+  "kt21_partition": {
+    "packet_count": 1800,
+    "blocked_first_call_runinu": 347,
+    "deterministic_packet_count": 1453,
+    "tcd042_b1_exact_zero": 36,
+    "tcd042_e1": 14,
+    "tcd042_hydrology_outside_admitted_scope": 1401,
+    "ponding": 2
+  },
+  "outside_remainder_decomposition": {
+    "examined_count": 1401,
+    "ordinary_positive_flow_flux_ge_threshold": 1401,
+    "subthreshold_positive_flux_p_above_nq03_envelope": 0,
+    "other": 0,
+    "min_flux_m_per_d": 5.111600000000339e-7,
+    "max_flux_m_per_d": 0.010496963211764706,
+    "min_flux_over_tcd042_threshold": 51.11600000000339,
+    "min_p": 0.00025558000000001696,
+    "max_p": 5.773329766470588,
+    "step_days_counts": {
+      "8": 29,
+      "9": 9,
+      "10": 1089,
+      "11": 274
+    },
+    "first_ordinary_positive_flow_packet": {
+      "index_zero_based": 347,
+      "endpoint_day": 3531,
+      "duration_days": 11,
+      "runoff_m_per_d": 0.0006170152,
+      "flux_m_per_d": 0.010496963211764706,
+      "p": 5.773329766470588
+    },
+    "last_ordinary_positive_flow_packet": {
+      "index_zero_based": 1799,
+      "endpoint_day": 18263,
+      "duration_days": 11,
+      "runoff_m_per_d": 0,
+      "flux_m_per_d": 0.005061971282818181,
+      "p": 2.7840842055499997
+    }
+  },
+  "ponding_anchors": [
+    {
+      "index_zero_based": 1001,
+      "endpoint_day": 10166,
+      "duration_days": 11,
+      "runoff_m_per_d": 0
+    },
+    {
+      "index_zero_based": 1002,
+      "endpoint_day": 10176,
+      "duration_days": 10,
+      "runoff_m_per_d": 0.00009890192
+    }
+  ],
+  "conclusion": {
+    "tcd042_scope_extension_supported_by_this_evidence": false,
+    "p_envelope_extension_supported_by_this_evidence": false,
+    "entire_1401_remainder_is_ordinary_positive_flow_branch": true,
+    "remaining_fronts": [
+      "FIRST_CALL_RUNINU_PROVENANCE_OR_CONTINUATION",
+      "NO_PONDING_ORDINARY_POSITIVE_FLOW_SCIENTIFIC_CONSUMER_COMPOSITION",
+      "PONDING_FLPN_NONZERO_SCIENTIFIC_RUNTIME"
+    ]
+  },
+  "nonclaims": [
+    "historical first-call Runinu value",
+    "ordinary positive-flow scientific admission",
+    "ponding scientific admission",
+    "B2 historical executable equivalence",
+    "TCD-042 scope widening",
+    "B3 mutation",
+    "production"
+  ]
+}
