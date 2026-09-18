@@ -1,6 +1,5 @@
 program test_kt12_tcd042_client
   use iso_fortran_env, only: int64, real64
-  use, intrinsic :: ieee_arithmetic, only: ieee_class, ieee_positive_zero, ieee_negative_zero
   use mod_transient_time, only: TimeCoordinate, make_time_coordinate
   use mod_transient_contracts, only: transient_payload_t
   use mod_transient_transactions, only: accepted_store_t, accepted_store_generation, &
@@ -23,8 +22,9 @@ contains
 
   logical function exact_binary_zero(value)
     real(real64), intent(in) :: value
-    exact_binary_zero = ieee_class(value) == ieee_positive_zero .or. &
-      ieee_class(value) == ieee_negative_zero
+    integer(int64) :: bits
+    bits = transfer(value, bits)
+    exact_binary_zero = iand(bits, int(z'7FFFFFFFFFFFFFFF', int64)) == 0_int64
   end function exact_binary_zero
 
   subroutine assert_true(value, message)
