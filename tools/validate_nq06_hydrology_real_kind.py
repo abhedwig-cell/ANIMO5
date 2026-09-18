@@ -63,7 +63,7 @@ for path,sha in pins.items():
     if manifest.get(path)!=sha:
         fail("source manifest pin "+path)
 
-allowed_prefixes=("docs/numerics/ANIMO_NQ06_","integration/animo-numerics/NQ06_","tools/nq06/")
+allowed_prefixes=("docs/numerics/ANIMO_NQ06_","integration/animo-numerics/NQ06_","integration/animo-numerics/ANIMO-NQ06_","tools/nq06/")
 allowed_exact={
  "integration/animo-numerics/ANIMO-NQ06_STATUS.json",
  ".github/workflows/animo-nq06-hydrology-real-kind.yml",
