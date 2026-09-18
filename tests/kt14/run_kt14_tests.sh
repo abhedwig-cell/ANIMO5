@@ -18,6 +18,7 @@ gfortran -std=f2008 -Wall -Wextra -Werror -ffp-contract=off -fno-fast-math -J "$
   prototype/ubforce02/mod_animo_tcd042_upper_solute_load_resolver.f90 \
   prototype/boundq01/mod_animo_static_boundary_chemistry_adapter.f90 \
   prototype/boundq02/mod_animo_static_boundary_year_binding.f90 \
+  prototype/boundq02b/mod_animo_immutable_static_boundary_frame.f90 \
   prototype/kt12/mod_animo_tcd042_upper_boundary_client.f90 \
   prototype/kt13/mod_animo_tcd042_bounded_composition.f90 \
   prototype/kt14/mod_animo_tcd042_boundary_frame_composition.f90 \
