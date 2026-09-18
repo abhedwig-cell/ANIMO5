@@ -449,6 +449,7 @@ contains
     call manifest_preimage(envelope,manifest_text)
     manifest_hash=sha256_ascii(manifest_text)
     if(manifest_hash/=envelope%manifest_sha256) then
+      ok=.false.
       reason='KT17_MANIFEST_INTEGRITY_MISMATCH'
       return
     end if
