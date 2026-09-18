@@ -96,7 +96,7 @@ if mod.count("state = working") != 1:
 
 p_work=mod.find("working = state")
 p_science=mod.find("execute_boundary_frame_tcd042_interval(working%science_store")
-p_next=mod.find("prepare_next_composite_continuation")
+p_next=mod.find("call prepare_next_composite_continuation")
 p_publish=mod.find("state = working")
 if not (0 <= p_work < p_science < p_next < p_publish):
     fail("atomic publication ordering")
