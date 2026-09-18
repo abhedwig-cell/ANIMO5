@@ -1,0 +1,39 @@
+{
+  "work_unit": "ANIMO-KT15A",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "f2808c2af442f1bddd62b509f656547710bd6474",
+  "exact_head_ci": {
+    "run_id": 35376658944,
+    "job_id": 105702794122,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "config_is_private_component_of_accepted_application_aggregate": "PASS",
+    "calendar_identity_bound_to_accepted_time": "PASS",
+    "producer_day_offset_bound_in_config": "PASS",
+    "static_hydrology_geometry_partition_bound_in_config": "PASS",
+    "declared_boundary_content_sha256_bound_in_config": "PASS",
+    "simulation_start_year_bound_in_config": "PASS",
+    "load_channel_bound_in_config": "PASS",
+    "execute_interval_no_longer_accepts_interval_invariant_config_arguments": "PASS",
+    "exact_binary64_config_equality_no_tolerance": "PASS",
+    "invalid_hash_calendar_and_load_channel_rejected_before_application_init": "PASS",
+    "config_stable_across_two_accepted_intervals": "PASS",
+    "KT15_single_aggregate_publication_preserved": "PASS",
+    "source_byte_hash_verification_not_claimed": "PASS",
+    "checkpoint_schema_not_admitted": "PASS",
+    "canonical_state_not_admitted": "PASS",
+    "no_B3_B4_TB7_or_production_effect": "PASS",
+    "independent_Tier_D_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "repair_history": [
+    "Validator exact-binary64 helper check was aligned with the actual a=transfer(left,a), b=transfer(right,b) implementation."
+  ],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
