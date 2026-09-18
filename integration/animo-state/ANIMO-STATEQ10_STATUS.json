@@ -4,13 +4,13 @@
   "branch": "work/animo-stateq10-first-interval-detailed-hydrology-origin",
   "base": "ANIMO-STATEQ08@e9ee7fc9e69a62c58b6eacd6379220cc51c1bf07",
   "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_FIRST_INTERVAL_DETAILED_HYDROLOGY_ORIGIN_NORMALIZATION_TIER_C_REVIEW_REQUIRED",
+  "decision": "QUALIFY_SOURCE_MAPPED_REAL4_TO_REAL8_FIRST_DETAILED_HYDROLOGY_ORIGIN_NORMALIZATION_NO_PARSER_RUNINU_OR_CANONICAL_STATE_ADMISSION",
   "risk_tier": "C_INPUT_STATE_RUNTIME_SEMANTICS",
-  "source_mapping_qualified": false,
-  "dble_trunc_semantics_qualified": false,
-  "typed_first_origin_qualified": false,
+  "source_mapping_qualified": true,
+  "dble_trunc_semantics_qualified": true,
+  "typed_first_origin_qualified": true,
   "file_parser_qualified": false,
   "first_call_runinu_qualified": false,
   "canonical_state_admitted": false,
@@ -20,17 +20,24 @@
   "supported_scope": "HLPIMP11_IOPTHYVS1_REAL4_INITIAL_MOFRO_SIC_PN_SNLA_TO_SOURCE_NORMALIZED_REAL8_ORIGIN",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_c_review_required_for_admission": true
+    "independent_tier_c_review_required_for_admission": true,
+    "reviewed_head": "e47e45584a1e432a94c295fba20c2a3c6dbfb55c",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-stateq10-first-detailed-origin.yml",
     "validator": "tools/stateq10/validate_stateq10.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35370931738,
+    "authoring_job": 105684448293,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "e47e45584a1e432a94c295fba20c2a3c6dbfb55c",
+    "closeout_note": "Validated source/precision-remediated authoring package passed run 35370931738. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -48,10 +55,13 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_AND_GOV05_COMPATIBLE_SELF_REVIEW; IF_GREEN_RETAIN_TIER_C_INDEPENDENT_REVIEW_GATE; FIRST_CALL_RUNINU_REMAINS_SEPARATE_UNRESOLVED_HISTORICAL_INPUT"
+  "next": "USE_STATEQ10_ONLY_AS_QUALIFIED_FIRST_ORIGIN_NORMALIZATION_CANDIDATE; FIRST_CALL_RUNINU_REMAINS_UNQUALIFIED; STATEQ09_OWNS_LATER_ENDPOINT_TO_ORIGIN_TRANSFER; INDEPENDENT_TIER_C_REVIEW_REMAINS_REQUIRED_BEFORE_CANONICAL_INPUT_STATE_ADMISSION",
+  "frozen_substantive_head": "e47e45584a1e432a94c295fba20c2a3c6dbfb55c",
+  "frozen_substantive_tree": "4b2080810d314fa5ce8a6d1f3bdd813cef56fef5",
+  "frozen_implementation_blob": "7c4144785ae023abb3ff3fe4e760519c650626b8"
 }
