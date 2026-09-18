@@ -1,7 +1,6 @@
 module mod_animo_tcd042_upper_boundary_client
   use iso_fortran_env, only: int64, real64
-  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite, ieee_class, &
-    ieee_positive_zero, ieee_negative_zero
+  use, intrinsic :: ieee_arithmetic, only: ieee_is_finite
   use mod_transient_time, only: TimeCoordinate, time_compare
   use mod_transient_contracts, only: transient_payload_t, admissibility_t
   use mod_transient_transactions, only: accepted_store_t, initialize_accepted_store
@@ -130,8 +129,9 @@ contains
 
   logical function exact_binary_zero(value)
     real(real64), intent(in) :: value
-    exact_binary_zero = ieee_class(value) == ieee_positive_zero .or. &
-      ieee_class(value) == ieee_negative_zero
+    integer(int64) :: bits
+    bits = transfer(value, bits)
+    exact_binary_zero = iand(bits, int(z'7FFFFFFFFFFFFFFF', int64)) == 0_int64
   end function exact_binary_zero
 
   logical function resolved_hydrology_valid(hydrology)
