@@ -1,0 +1,45 @@
+{
+  "work_unit": "ANIMO-HYDROQ01",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_members": {
+    "Hydro_detailed.for": {
+      "sha256": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
+      "relevant_semantics": [
+        "Flpn = 0 when no beginning/end ponding+snow threshold activation",
+        "Rurv = 0 on negative/small runoff paths",
+        "for positive runoff with flpn=0, provisional Rurv is reallocated and then reset to 0.0",
+        "Flab(1) is recalculated from internal ANIMO water-balance terms",
+        "Modflux is called after final Flab reconstruction"
+      ]
+    },
+    "MODFLUX.FOR": {
+      "sha256": "0c0909922e88ee59233cabc307fb18243ea86023b4722879f6301259780de93d",
+      "relevant_semantics": [
+        "Flib(Ln)=Max(0.0,Flab(Ln))",
+        "therefore Flib(1) is a resolved nonnegative post-Hydro_detailed quantity"
+      ]
+    },
+    "UBoundconc.for": {
+      "sha256": "b9a7ec980d40c0f76279077852190788e36cd976d185b12683a38da0c7dfecf7",
+      "relevant_semantics": [
+        "for Flpn=0, Flux=Max(0.0,Flib(1)+Rurv)",
+        "TCD-042 B1/E1 then consumes that resolved Flux"
+      ]
+    }
+  },
+  "derived_bounded_invariant": {
+    "predicate": "Flpn=0 after Hydro_detailed runoff resolution and Modflux execution",
+    "result": [
+      "Rurv=exact zero",
+      "Flib(1)>=0",
+      "TCD042 Flux=Flib(1)"
+    ],
+    "qualification_scope": "SOURCE_MAPPING_AND_TYPED_OUTPUT_CONTRACT_ONLY",
+    "historical_runtime_equivalence_claimed": false
+  },
+  "ownership": {
+    "kt05_raw_flab1_role": "INPUT_TO_HYDRO_DETAILED",
+    "hydroq01_flib_top_role": "POST_HYDRO_DETAILED_POST_MODFLUX_RESOLVED_OUTPUT",
+    "interchangeable": false
+  }
+}
