@@ -1,0 +1,24 @@
+name: ANIMO KT15A immutable application config
+on:
+  push:
+    branches: [work/animo-kt15a-immutable-application-config]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 8efdd151d89e1cff131d4b21e2acf559ca1828d6 d3a51aad084969a753cb5b54c604ebefba4b26c6 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-kt15a/ANIMO-KT15A_STATUS.json >/dev/null
+      - name: Validate immutable configuration authority
+        run: python tools/validate_kt15a_immutable_application_config.py
+      - name: Compile and run atomic application tests
+        run: bash tests/kt15/run_kt15_tests.sh
