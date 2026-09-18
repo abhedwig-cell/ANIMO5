@@ -1,0 +1,16 @@
+{
+  "work_unit": "ANIMO-RG09",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "1e504b0b7750541fe4c35f65d8565637723dceea",
+  "substantive_authoring_tree": "8ee67ab6a4ab875430a44e71e84766c880bc05b7",
+  "exact_head_ci": {
+    "run_id": 35405109269,
+    "conclusion": "success"
+  },
+  "candidate_claim": "POST_KT20_PROGRAM_REBASELINE_AND_INDEPENDENT_REVIEW_ROUTING_WITH_NO_ADMISSION_OR_PRODUCTION_ADVANCE",
+  "predecessor": "ANIMO-RG08@14109956b62376d0d0ab681e8c641c9e71d110bd",
+  "authoring_base": "ANIMO-KT20@c41a28580421bf4dce770e438535ba92a57567cd",
+  "independent_review_performed": false,
+  "admission_performed": false,
+  "production_authorized": false
+}
