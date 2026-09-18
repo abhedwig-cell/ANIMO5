@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import json, pathlib, subprocess
-R=pathlib.Path(__file__).resolve().parents[1]
+R=pathlib.Path(__file__).resolve().parents[2]
 BASE="26f6e61da328a5578b9c4b332de04eb99a3ac04f"
 RG06="8efdd151d89e1cff131d4b21e2acf559ca1828d6"
 HYDROQ02="08d5b8301c217cf9d33d2bf248be133f2b5243fc"
