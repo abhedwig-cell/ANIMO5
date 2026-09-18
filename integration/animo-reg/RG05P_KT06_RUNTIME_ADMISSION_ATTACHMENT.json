@@ -1,0 +1,47 @@
+{
+  "work_unit": "ANIMO-RG05P",
+  "title": "KT06 Tier C Runtime Admission Integration",
+  "source_aggregate": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+  "authority_kind": "NONPRODUCTION_RUNTIME_COUPLING_SEMANTICS",
+  "runtime_authority": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+  "independent_review": "review/animo-kt06-explicit-hydrology-runtime-binding-independent@0d3906e0b54f21eb1a19f8137f1aabef4edff567",
+  "formal_disposition": "ANIMO-KT06-D1@b75fc91d812be689aecf2894c50b37c926e9c5fd",
+  "gov04_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "frozen_implementation": {
+    "head": "fc818917a46408d55cd7f03e2fa8257534683907",
+    "path": "prototype/kt06/mod_animo_explicit_hydrology_runtime_binding.f90",
+    "blob": "9a24ea833291f761d2fa76ca4cc9fee28436c614"
+  },
+  "admitted_claim": "Within the declared exact whole-day envelope, a complete explicit-state KT05 hydrology packet can be bound to a KT02 requested interval without making producer time authoritative, without placing forcing in accepted continuation state and without bypassing KT02 atomic publication.",
+  "admission_decision": "ADMIT_ANIMO_KT06_BOUNDED_NONPRODUCTION_RUNTIME_BINDING_GOV04_TIER_C",
+  "admission_scope": {
+    "accepted_time_authority": "KT02_ONLY",
+    "external_publication_authority": "KT02_ONLY",
+    "producer_time_role": "FAIL_CLOSED_VALIDATION_METADATA_ONLY",
+    "runtime_time_envelope": "EXACT_WHOLE_DAY_ONLY",
+    "forcing_ownership": "CLIENT_OWNED_OUTSIDE_ACCEPTED_CONTINUATION_STATE",
+    "hydrology_boundary": "COMPLETE_KT05_EXPLICIT_STATE_PACKET_VALIDATED_AND_PROJECTED",
+    "publication": "KT02_PRIVATE_INTERVAL_THEN_ATOMIC_EXTERNAL_PUBLICATION"
+  },
+  "central_regie_effect": {
+    "b3_scientific_admission_count_change": 0,
+    "b3_queue_change": false,
+    "canonical_tcd_register_change": false,
+    "production_authorized": false,
+    "composition_beyond_kt06_admitted": false
+  },
+  "explicit_nonclaims": [
+    "multi-packet forcing provider",
+    "packet selection or forcing lifetime",
+    "retry or timestep-selection policy",
+    "fractional or subday mapping",
+    "generic calendar conversion",
+    "Hlpimp scientific semantics",
+    "Hydro_detailed scientific execution",
+    "ANIMO scientific admissibility",
+    "production coupling or migration",
+    "B3 or B4 admission",
+    "Status A or Status AA"
+  ],
+  "next_reuse_route": "NEW_GOV04_CLASSIFIED_TYPED_MULTI_PACKET_PROVIDER_AND_FORCING_LIFECYCLE_WORKUNIT"
+}

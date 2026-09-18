@@ -1,0 +1,25 @@
+name: ANIMO RG05P KT06 runtime admission integration
+on:
+  push:
+    branches: [work/animo-rg05p-kt06-runtime-admission-integration]
+  workflow_dispatch:
+permissions: {contents: read, actions: read}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch exact authorities
+        run: |
+          set -euo pipefail
+          for sha in bc9e6ed997a078336645210ebb4d99ae976893fe 56384db4107aed484218363e26dbb7be7f51e8de 0d3906e0b54f21eb1a19f8137f1aabef4edff567 b75fc91d812be689aecf2894c50b37c926e9c5fd; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Parse records
+        run: |
+          python -m json.tool integration/animo-reg/RG05P_KT06_RUNTIME_ADMISSION_ATTACHMENT.json >/dev/null
+          python -m json.tool integration/animo-reg/ANIMO-RG05P_STATUS.json >/dev/null
+          python -m py_compile tools/validate_rg05p_kt06_runtime_admission.py
+      - run: python tools/validate_rg05p_kt06_runtime_admission.py

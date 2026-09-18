@@ -1,0 +1,54 @@
+{
+  "work_unit": "ANIMO-RG05P",
+  "title": "KT06 Tier C Runtime Admission Integration",
+  "branch": "work/animo-rg05p-kt06-runtime-admission-integration",
+  "state": "PERSISTED_VALIDATION_PENDING",
+  "decision": null,
+  "source_aggregate": "ANIMO-RG05O@bc9e6ed997a078336645210ebb4d99ae976893fe",
+  "source_aggregate_state": "QUALIFIED_NINTH_BATCHED_B3_ADMISSION_INTEGRATION_TCD033_TCD032_TCD019_NO_PRODUCTION",
+  "kt06_admission_authority": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+  "kt06_admission_decision": "ADMIT_ANIMO_KT06_BOUNDED_NONPRODUCTION_RUNTIME_BINDING_GOV04_TIER_C",
+  "scientific_admission_count": 32,
+  "historical_uncertainty_admission_count": 32,
+  "top_level_admitted_tcd_count": 22,
+  "admitted_child_atom_count": 10,
+  "b3_queue_changed": false,
+  "central_runtime_authorities": {
+    "kt06": {
+      "admitted": true,
+      "risk_tier": "C",
+      "production_authorized": false,
+      "frozen_implementation_blob": "9a24ea833291f761d2fa76ca4cc9fee28436c614"
+    }
+  },
+  "hard_boundaries": {
+    "scientific_readmission_performed": false,
+    "production_source_modified": false,
+    "canonical_tcd_register_modified": false,
+    "queue_authority_modified": false,
+    "kt06_scope_widened": false,
+    "multi_packet_provider_admitted": false,
+    "scientific_execution_composed": false,
+    "b4_open": false,
+    "production_open": false
+  },
+  "validation": {
+    "machine_validated": false,
+    "workflow": "ANIMO RG05P KT06 runtime admission integration",
+    "candidate_run_id": null,
+    "candidate_job_id": null,
+    "tested_candidate_head": null,
+    "candidate_conclusion": "PENDING",
+    "validator": "PENDING",
+    "scope_guard": "PENDING",
+    "exact_final_head_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next_if_validated": "USE_ANIMO_RG05P_AS_CURRENT_CENTRAL_REGIE_AUTHORITY_FOR_KT06_RUNTIME_REUSE; START_SEPARATE_GOV04_CLASSIFIED_KT11_MULTI_PACKET_PROVIDER_WORKUNIT"
+}
