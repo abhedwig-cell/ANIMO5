@@ -5,16 +5,16 @@
   "base": "ANIMO-RG07@c60dd36a38a2030e4f4ac1925f95b2966a6d1c87",
   "checkpoint_authority": "ANIMO-KT16@7cd863b71a7a7fcc985514a8af28dcb69cae999a",
   "restart_architecture_design_basis": "ANIMO-ARCH02@a079d93c965f6073586c55ee4b3544dd8873b723",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_ACCEPTED_CHECKPOINT_MANIFEST_SHA256_INTEGRITY_AND_IDENTITY_BINDING_TIER_D_REVIEW_REQUIRED",
+  "decision": "QUALIFY_RECOMPUTABLE_IN_MEMORY_CHECKPOINT_CONFIG_PAYLOAD_AND_MANIFEST_SHA256_INTEGRITY_WITH_EXPECTED_BUILD_AND_FIXED_EVIDENCE_IDENTITY_BINDING_NO_CANONICAL_RESTART_ADMISSION",
   "risk_tier_candidate": "D_ACCEPTED_APPLICATION_RESTART_INTEGRITY_COMPOSITION",
-  "sha256_implementation_qualified": false,
-  "canonical_config_integrity_qualified": false,
-  "canonical_checkpoint_payload_integrity_qualified": false,
-  "manifest_integrity_qualified": false,
-  "expected_build_identity_binding_qualified": false,
-  "evidence_identity_binding_qualified": false,
+  "sha256_implementation_qualified": true,
+  "canonical_config_integrity_qualified": true,
+  "canonical_checkpoint_payload_integrity_qualified": true,
+  "manifest_integrity_qualified": true,
+  "expected_build_identity_binding_qualified": true,
+  "evidence_identity_binding_qualified": true,
   "source_bytes_rehashed_by_runtime": false,
   "executable_build_self_attested": false,
   "file_format_qualified": false,
@@ -33,14 +33,21 @@
     "validator": "tools/validate_kt17_checkpoint_manifest_integrity.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35380747443,
+    "authoring_job": 105716059439,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "90799c0b4d22f244b6d6d36db2f952da7afcec38",
+    "closeout_note": "Repaired frozen authoring package at 90799c0b4d22f244b6d6d36db2f952da7afcec38 passed exact-head CI run 35380747443 including KT17, KT15 and KT16 regression harnesses. This review/status-only closeout is authoritative only if the identical workflow succeeds on the exact final head."
   },
   "review": {
     "required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_d_review_required_for_admission": true
+    "independent_tier_d_review_required_for_admission": true,
+    "reviewed_head": "90799c0b4d22f244b6d6d36db2f952da7afcec38",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -61,10 +68,29 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI; REPAIR_LOCALLY_IF_NEEDED; FREEZE; SAME_AGENT_ADVERSARIAL_REVIEW; RETAIN_GENUINE_TIER_D_GATE; NEXT_DISJOINT_ROUTE_AFTER_GREEN_IS_EXTERNAL_PROVIDER_TO_ACCEPTED_APPLICATION_COMPOSITION"
+  "next": "USE_KT17_AS_QUALIFIED_NONPRODUCTION_INTEGRITY_BOUND_CHECKPOINT_CANDIDATE_ONLY; RETAIN_GENUINE_TIER_D_REVIEW_GATE; DO_NOT_CLAIM_SOURCE_BYTE_OR_BUILD_SELF_ATTESTATION; NEXT_OWNERSHIP_DISJOINT_ROUTE_IS_EXTERNAL_PROVIDER_TO_ACCEPTED_APPLICATION_COMPOSITION_OR_A_SEPARATE_PORTABLE_CHECKPOINT_FILE_FORMAT_WORKUNIT",
+  "frozen_substantive_head": "1411e245f62d87494947b648a89ea8207dfe9079",
+  "frozen_substantive_tree": "55500a1bd253603c423b21c43057c4d55506461a",
+  "frozen_blobs": {
+    "sha256": "624a6cadb4471047f369e2c4f0e2ffb39c199bf6",
+    "integrity": "33b5a3d5b499ac56036f13b225382478138e7f88",
+    "kt15_with_read_only_inspector": "c7b164c9fc5033ecfd1b3034d5a0c46b68c84fbe",
+    "tests": "3d2b0954e498a792e016b25f502330ed325d7972"
+  },
+  "repair_history": {
+    "failed_runs": [
+      35380551778,
+      35380622820
+    ],
+    "material_finding": "MANIFEST_DIGEST_MISMATCH_GUARD_COULD_RETURN_STALE_OK_TRUE",
+    "repaired_before_freeze": true,
+    "repaired_head": "1411e245f62d87494947b648a89ea8207dfe9079",
+    "repaired_head_ci_run": 35380676908,
+    "repaired_head_ci_conclusion": "success"
+  }
 }
