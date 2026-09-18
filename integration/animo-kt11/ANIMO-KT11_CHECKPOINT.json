@@ -1,54 +1,55 @@
 {
   "workunit": "ANIMO-KT11",
   "title": "Typed Multi-Packet Hydrology Provider and Forcing Lifecycle",
-  "phase": "QUALIFY",
-  "checkpoint_state": "FINAL_HARDENED_PROVIDER_TEST_HARNESS_EXACT_HEAD_CI_PENDING",
+  "phase": "REVIEW",
+  "checkpoint_state": "SELF_REVIEW_PASS_INDEPENDENT_TIER_C_REVIEW_REQUIRED",
   "branch": "work/animo-kt11-multi-packet-hydrology-provider",
   "base_authority": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
-  "consumed_kt06_frozen_implementation_head": "fc818917a46408d55cd7f03e2fa8257534683907",
-  "consumed_kt06_frozen_implementation_blob": "9a24ea833291f761d2fa76ca4cc9fee28436c614",
-  "candidate_risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS",
-  "central_regie_dependency": {
-    "workunit": "ANIMO-RG05P",
-    "authority": "ANIMO-RG05P@9a8d0d886f745be91153f47437cb0de2b3076ab2",
-    "exact_final_ci_run": 35350591836,
-    "exact_final_ci_conclusion": "SUCCESS",
-    "state": "QUALIFIED_KT06_GOV04_TIER_C_RUNTIME_ADMISSION_INTEGRATED_NO_B3_OR_PRODUCTION_EFFECT"
+  "central_regie_authority": "ANIMO-RG05P@9a8d0d886f745be91153f47437cb0de2b3076ab2",
+  "central_regie_exact_final_ci": {
+    "run_id": 35350591836,
+    "conclusion": "SUCCESS"
   },
-  "supplemental_evidence": {
-    "kt08_closeout": "281dc65cbaceaa61d31f9cb731b3c5a733ca5d57",
-    "kt08_summary_blob": "6ba7fe07ca47a6f8d45f18d09b7276dc4ece66f3",
-    "kt09_closeout": "249066b7c07d505ba9a72a5aa199401a4349b0da",
-    "kt09_anchor_fixture_blob": "8aa4f5dcc8041979d9dc2e2b4fc8cc7f1c88de84",
-    "runtime_authority_effect": "NONE"
+  "candidate_risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS",
+  "frozen_review_target_head": "843ac357f8b86f84131ddc08bf2097bb5af4e080",
+  "frozen_implementation_path": "prototype/kt11/mod_animo_multi_packet_hydrology_provider.f90",
+  "frozen_implementation_blob": "a41d0f61da6dd30a18dbfadbe4b29b00259fa41e",
+  "exact_head_ci": {
+    "run_id": 35351056242,
+    "conclusion": "SUCCESS",
+    "checks": [
+      "frozen KT02 qualification tests",
+      "frozen KT05 compiled adapter tests",
+      "frozen KT06 runtime-binding tests",
+      "KT11 authority and evidence blob identity guards",
+      "KT11 upstream KT08/KT09 evidence checks",
+      "compiled KT11 provider and lifecycle harness",
+      "KT11 checkpoint JSON validation"
+    ]
   },
   "candidate_claim": "An immutable collection of complete KT05 explicit hydrology packets can deterministically select exactly one packet from a bounded whole-day KT02 requested interval, remain stateless across repeated requests, fail closed on missing or duplicate interval keys, and delegate the selected packet through admitted KT06 without changing KT02 time, accepted-state or publication ownership.",
-  "implemented_semantics": [
-    "exact endpoint plus duration packet key",
-    "duplicate packet interval key rejected at initialization",
+  "review": {
+    "mode": "same-agent / not genuinely independent",
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "verdict": "PASS_BOUNDED_MULTI_PACKET_PROVIDER_CANDIDATE_INDEPENDENT_TIER_C_REVIEW_REQUIRED",
+    "open_material_findings": [],
+    "independent_review_status": "REQUIRED_READY_NOT_YET_PERFORMED",
+    "prepared_independent_review_branch": "review/animo-kt11-multi-packet-hydrology-provider-independent",
+    "prepared_review_branch_is_review_evidence": false
+  },
+  "qualified_technical_evidence": [
+    "exact endpoint plus duration interval key",
+    "duplicate exact key rejected at initialization",
+    "equal endpoint with different durations remains distinct interval keys",
     "storage order has no semantic effect",
-    "no mutable selection cursor",
-    "provider owns a deep copy; caller mutation after initialization cannot alter selection or forcing",
-    "same interval may be selected repeatedly without consuming forcing",
-    "missing interval fails closed",
-    "selected complete packet delegates through frozen KT06",
-    "forcing remains outside accepted continuation state",
-    "public packet count is zero for a provider that failed initialization"
-  ],
-  "tests": [
-    "three-packet private interval reaches exact target",
-    "out-of-order provider storage remains deterministic",
-    "missing middle packet cannot externally publish partial interval",
-    "duplicate key rejected",
-    "fractional key rejected",
-    "same endpoint with different durations remains two distinct exact interval keys",
-    "nonzero producer-day offset multi-step binding",
-    "repeat selection is stateless",
-    "caller-owned source mutation after initialization cannot alter provider",
-    "eight representative real LWKM anchor packets bind",
-    "missing real interval fails closed",
-    "KT08 1800-packet temporal evidence identity pinned",
-    "KT09 representative fixture identity pinned"
+    "provider owns deep copies of caller packets",
+    "invalid provider reports not-ready and zero usable packet count",
+    "no mutable selection cursor or consume-on-read state",
+    "repeat selection of same interval is stable",
+    "missing middle packet cannot externally publish partial KT02 interval",
+    "nonzero producer-day offset remains bounded",
+    "eight representative real LWKM packets bind through provider and frozen KT06",
+    "KT08 1800-packet temporal summary remains supplemental B1 evidence only"
   ],
   "production_src_modified": false,
   "kt02_runtime_modified": false,
@@ -56,12 +57,14 @@
   "kt06_implementation_modified": false,
   "qualification_status": "NOT_YET_QUALIFIED_UNDER_GOV04_TIER_C",
   "admission_status": "NOT_ADMITTED",
-  "next_permitted_action": "RUN_HARDENED_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW_AND_PREPARE_GENUINELY_INDEPENDENT_TIER_C_HANDOFF",
+  "next_permitted_action": "GENUINELY_INDEPENDENT_TIER_C_SECOND_LINE_REVIEW_THEN_FORMAL_DISPOSITION_OR_REOPEN",
+  "safe_parallel_action": "NON_SEMANTIC_TOOLING_OR_SEPARATE_RESEARCH_THAT_DOES_NOT_CONSUME_KT11_AS_QUALIFIED_AUTHORITY",
   "explicit_exclusions": [
-    "full 1800-packet payload materialization or execution",
-    "runtime SWATRE.UNF packet generation",
+    "full 1800-packet complete-payload execution",
+    "runtime SWATRE.UNF decoding",
+    "dynamic streaming or mutable provider lifecycle",
     "retry or timestep-selection policy",
-    "fractional or subday time mapping",
+    "fractional or subday mapping",
     "generic calendar conversion",
     "Hlpimp semantics",
     "Hydro_detailed scientific execution",
@@ -69,11 +72,5 @@
     "production coupling or migration",
     "B3 or B4",
     "Status A or Status AA"
-  ],
-  "prior_candidate_ci": {
-    "head": "ebf38522ffb4622fe0e1e2cfaf959c325e9c961f",
-    "run_id": 35350629856,
-    "conclusion": "SUCCESS",
-    "note": "pre-hardening provider implementation and test harness passed"
-  }
+  ]
 }

@@ -1,0 +1,65 @@
+{
+  "workunit": "ANIMO-KT11",
+  "purpose": "GENUINELY_INDEPENDENT_GOV04_TIER_C_SECOND_LINE_REVIEW_PACKET",
+  "candidate_claim": "An immutable collection of complete KT05 explicit hydrology packets can deterministically select exactly one packet from a bounded whole-day KT02 requested interval, remain stateless across repeated requests, fail closed on missing or duplicate interval keys, and delegate the selected packet through admitted KT06 without changing KT02 time, accepted-state or publication ownership.",
+  "frozen_review_target": {
+    "branch": "work/animo-kt11-multi-packet-hydrology-provider",
+    "head": "843ac357f8b86f84131ddc08bf2097bb5af4e080",
+    "implementation_path": "prototype/kt11/mod_animo_multi_packet_hydrology_provider.f90",
+    "implementation_blob": "a41d0f61da6dd30a18dbfadbe4b29b00259fa41e",
+    "exact_head_ci_run": 35351056242,
+    "exact_head_ci_conclusion": "SUCCESS"
+  },
+  "consumed_authorities": {
+    "kt06_admission": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+    "kt06_frozen_implementation": "fc818917a46408d55cd7f03e2fa8257534683907",
+    "kt06_frozen_blob": "9a24ea833291f761d2fa76ca4cc9fee28436c614",
+    "central_regie": "ANIMO-RG05P@9a8d0d886f745be91153f47437cb0de2b3076ab2",
+    "kt05_adapter_blob": "9ed1d6d3e91d9f5522f8c2a49a5e19eed1d82a9a",
+    "kt02_interval_runtime_blob": "ac8eed3b7385daad3cb7c926bd7dab9d99e0a888",
+    "kt02_transactions_blob": "182164ca4bf4a890d98f9c89366764e5d818b10c"
+  },
+  "supplemental_evidence_not_runtime_authority": {
+    "kt08_closeout": "281dc65cbaceaa61d31f9cb731b3c5a733ca5d57",
+    "kt08_summary_blob": "6ba7fe07ca47a6f8d45f18d09b7276dc4ece66f3",
+    "kt09_closeout": "249066b7c07d505ba9a72a5aa199401a4349b0da",
+    "kt09_anchor_fixture_blob": "8aa4f5dcc8041979d9dc2e2b4fc8cc7f1c88de84"
+  },
+  "risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS",
+  "same_agent_review": {
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "verdict": "PASS_BOUNDED_MULTI_PACKET_PROVIDER_CANDIDATE_INDEPENDENT_TIER_C_REVIEW_REQUIRED",
+    "open_material_findings": []
+  },
+  "review_context_requirement": "GENUINELY_SEPARATE_FROM_AUTHORING_CONTEXT",
+  "current_qualification_status": "NOT_YET_QUALIFIED_UNDER_GOV04_TIER_C",
+  "current_admission_status": "NOT_ADMITTED",
+  "allowed_review_results": [
+    "PASS_CLAIM_UNCHANGED",
+    "PASS_WITH_NON_SEMANTIC_REMEDIATION",
+    "REOPEN_RUNTIME_SEMANTIC_CLAIM",
+    "NEGATIVE_DISPOSITION_REQUIRED"
+  ],
+  "semantic_reopen_triggers": [
+    "packet identity or lookup ownership change",
+    "forcing ownership change",
+    "time ownership change",
+    "accepted-state semantics change",
+    "interval mapping change",
+    "consumed scientific authority change"
+  ],
+  "explicit_nonclaims": [
+    "full 1800-packet complete-payload execution",
+    "runtime SWATRE.UNF decoding",
+    "dynamic streaming or mutable provider lifecycle",
+    "retry or timestep-selection policy",
+    "fractional or subday mapping",
+    "generic calendar conversion",
+    "Hlpimp scientific semantics",
+    "Hydro_detailed scientific execution",
+    "ANIMO scientific admissibility",
+    "production coupling or migration",
+    "B3 or B4",
+    "Status A or Status AA"
+  ]
+}

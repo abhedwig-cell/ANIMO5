@@ -29,5 +29,7 @@ jobs:
         run: bash tests/kt06/run_kt06_tests.sh
       - name: Run KT11 provider and lifecycle qualification harness
         run: bash tests/kt11/run_kt11_tests.sh
-      - name: Validate checkpoint JSON
-        run: python -m json.tool integration/animo-kt11/ANIMO-KT11_CHECKPOINT.json >/dev/null
+      - name: Validate review support JSON
+        run: |
+          python -m json.tool integration/animo-kt11/ANIMO-KT11_CHECKPOINT.json >/dev/null
+          python -m json.tool integration/animo-kt11/ANIMO-KT11_REVIEW_PACKET.json >/dev/null
