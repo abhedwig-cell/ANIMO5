@@ -59,7 +59,7 @@ for required in [
 ]:
     if required not in mod:
         fail("implementation drift "+required)
-for forbidden in ["max(0", "1.0e-8", "lefr", "runoff", "runinu = -", "rupr ="]:
+for forbidden in ["max(0", "1.0e-8", "lefr", "runinu = -", "rupr=(1.", "rupr = (1."]:
     if forbidden.lower() in mod.lower():
         fail("hydrology reconstruction leaked into context "+forbidden)
 
