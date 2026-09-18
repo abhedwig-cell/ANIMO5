@@ -4,14 +4,14 @@
   "branch": "work/animo-boundq02-static-boundary-year-binding",
   "base": "ANIMO-BOUNDQ01@62b4fc36f2a47b67c08eedb095c60a5c059b77d8",
   "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
-  "phase": "REMEDIATION_AUTHORING_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_REV53_STATIC_BOUNDARY_YEAR_CURSOR_AND_INTERVAL_BINDING_TIER_C_REVIEW_REQUIRED",
+  "decision": "QUALIFY_REMEDIATED_SOURCE_FAITHFUL_STATIC_BOUNDARY_YEAR_CURSOR_AND_SELF_VALIDATING_EXACT_INTERVAL_CHEMISTRY_FRAME_NO_CANONICAL_CURSOR_OR_PRODUCTION_ADMISSION",
   "risk_tier_candidate": "C_RUNTIME_FORCING_SELECTION_SEMANTICS",
-  "source_year_cursor_semantics_qualified": false,
-  "exact_calendar_binding_qualified": false,
-  "interval_chemistry_frame_qualified": false,
-  "dry_deposition_separation_qualified": false,
+  "source_year_cursor_semantics_qualified": true,
+  "exact_calendar_binding_qualified": true,
+  "interval_chemistry_frame_qualified": true,
+  "dry_deposition_separation_qualified": true,
   "continuous_civil_year_selection_admitted": false,
   "canonical_cursor_state_admitted": false,
   "checkpoint_schema_admitted": false,
@@ -20,10 +20,12 @@
   "supported_scope": "STATIC_BOUNDARY_IOPTIDTI0_IOPTIRTI0_TIME02_WHOLE_DAY_YEAR_CURSOR_AND_UBFORCE02_INTERVAL_FRAME",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_c_review_required_for_admission": true
+    "independent_tier_c_review_required_for_admission": true,
+    "reviewed_head": "9dac1ec26f795263be13a08ec46653311ef2ef6e",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-boundq02-static-boundary-year-binding.yml",
@@ -31,10 +33,10 @@
     "exact_final_head_required": true,
     "run_id": null,
     "conclusion": null,
-    "authoring_run": null,
-    "authoring_conclusion": null,
-    "reviewed_authoring_head": null,
-    "closeout_note": "Previous freeze/review is superseded by frame-integrity remediation. Requalification and refreeze are required."
+    "authoring_run": 35373241613,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "9dac1ec26f795263be13a08ec46653311ef2ef6e",
+    "closeout_note": "Remediated substantive target at 9dac1ec26f795263be13a08ec46653311ef2ef6e passed exact-head CI run 35373241613. This restarted review/status closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -53,10 +55,13 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_REMEDIATED_EXACT_HEAD_CI; IF_GREEN REFREeZE_AND_RESTART_ADVERSARIAL_REVIEW_FROM_THE_REMEDIATED_HEAD"
+  "next": "USE_BOUNDQ02_AS_QUALIFIED_NONPRODUCTION_SELF_VALIDATING_STATIC_BOUNDARY_INTERVAL_FRAME_CANDIDATE; RETAIN_EXPLICIT_CURSOR_CONTINUATION; NEXT_COMPOSE_FRAME_WITH_KT13A_USING_EXACT_INTERVAL_IDENTITY; INDEPENDENT_TIER_C_REVIEW_REMAINS_REQUIRED",
+  "frozen_substantive_head": "9dac1ec26f795263be13a08ec46653311ef2ef6e",
+  "frozen_substantive_tree": "09566648c710a2161ec6dbb1e8a8b797487276a5",
+  "frozen_implementation_blob": "2b7441c9909022dcb16b3ca2f35ee08d079269b8"
 }
