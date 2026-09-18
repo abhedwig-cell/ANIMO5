@@ -1,0 +1,78 @@
+{
+  "schema": "ANIMO-BOUNDQ01/NaturalStaticBoundaryAudit/v1",
+  "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+  "case_count": 9,
+  "all_static_options": true,
+  "all_source_ranges_pass": true,
+  "phosphorus_modes": [
+    0,
+    1
+  ],
+  "cases": [
+    {
+      "case": "CranGrass",
+      "sha256": "30bae08f8895aa72f9cf721561268e3ce8e0857a3525cfd892b18bdc11014603",
+      "ipo": 1,
+      "nuyr": 8,
+      "source_ranges_pass": true
+    },
+    {
+      "case": "CranMais",
+      "sha256": "06e4c503885c60e84731fb26cbd61bcf5bcecf4b1a4da7d5eaaf8759310f376e",
+      "ipo": 0,
+      "nuyr": 9,
+      "source_ranges_pass": true
+    },
+    {
+      "case": "GHGMais",
+      "sha256": "c867ae6e3edcd2e6fcdf899e864046f4c88863a692489ee4938e47efa884a1bc",
+      "ipo": 0,
+      "nuyr": 10,
+      "source_ranges_pass": true
+    },
+    {
+      "case": "GrassPeat",
+      "sha256": "c76a21c3178e578eee6eb172bb618825ddb9540805cf5d01b41d91b35eaaf000",
+      "ipo": 1,
+      "nuyr": 15,
+      "source_ranges_pass": true
+    },
+    {
+      "case": "LWKM_gras_1040.2021.2045",
+      "sha256": "546aedc1987ad3000d43c3d2e0266725d11b264eef2b0993301ceffe5d5a1887",
+      "ipo": 1,
+      "nuyr": 25,
+      "source_ranges_pass": true
+    },
+    {
+      "case": "Puitmijn_Cranendonck_60",
+      "sha256": "37af1cb46b55cd5cd1758c1376292f256ff9f30cb40f38cf1368a32bafc8bb38",
+      "ipo": 1,
+      "nuyr": 12,
+      "source_ranges_pass": true
+    },
+    {
+      "case": "RuurloGrass",
+      "sha256": "d5f441cc439aacad72faf2e720cbdb6408e63932bb7c8cf27292542632cdd915",
+      "ipo": 0,
+      "nuyr": 6,
+      "source_ranges_pass": true
+    },
+    {
+      "case": "STONE_akk_0006.2001.2015",
+      "sha256": "8ec6d12bb0c5b2cc5d810ad5fcd5c6b1dc0fc6540f9ce71a20d57a126a822f9f",
+      "ipo": 1,
+      "nuyr": 15,
+      "source_ranges_pass": true
+    },
+    {
+      "case": "Zuiderzeeland_MeeuwenTocht_1_Akkerbouw_AWA",
+      "sha256": "42c8d38bc7845f183ee9b49103b8d31e6c66060c3208fd34cc27de7f574f94c8",
+      "ipo": 1,
+      "nuyr": 3,
+      "source_ranges_pass": true
+    }
+  ],
+  "numeric_evidence": "DECIMAL_LEXICAL_RANGE_AUDIT_NOT_BINARY64_RUNTIME_EQUIVALENCE",
+  "historical_b2": false
+}
