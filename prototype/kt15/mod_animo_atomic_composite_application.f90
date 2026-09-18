@@ -76,6 +76,7 @@ module mod_animo_atomic_composite_application
   public :: snapshot_kt15_science_payload
   public :: snapshot_kt15_continuation
   public :: snapshot_kt15_application_config
+  public :: inspect_kt15_application_config
 
 contains
 
@@ -408,6 +409,54 @@ contains
     copy = state%continuation
     call validate_composite_continuation(copy, ok, local_reason)
   end subroutine snapshot_kt15_continuation
+
+  subroutine inspect_kt15_application_config(config, runtime_calendar_contract_id, &
+      producer_day_offset, static_hydrology, boundary_content_sha256, &
+      simulation_start_year, load_channel, ok, reason)
+    type(kt15_application_config_t), intent(in) :: config
+    character(len=*), intent(out) :: runtime_calendar_contract_id
+    integer(int64), intent(out) :: producer_day_offset
+    type(kt15_static_hydrology_config_t), intent(out) :: static_hydrology
+    character(len=*), intent(out) :: boundary_content_sha256
+    integer, intent(out) :: simulation_start_year, load_channel
+    logical, intent(out) :: ok
+    character(len=*), intent(out) :: reason
+    character(len=128) :: local_reason
+
+    runtime_calendar_contract_id = ''
+    producer_day_offset = 0_int64
+    static_hydrology = kt15_static_hydrology_config_t()
+    boundary_content_sha256 = ''
+    simulation_start_year = 0
+    load_channel = 0
+    ok = .false.
+    reason = 'UNSET'
+
+    call validate_kt15_application_config(config, ok, local_reason)
+    if (.not. ok) then
+      reason = 'KT15_CONFIG_INSPECTION_INVALID_CONFIG'
+      return
+    end if
+    if (len_trim(config%runtime_calendar_contract_id) > len(runtime_calendar_contract_id)) then
+      ok = .false.
+      reason = 'KT15_CONFIG_INSPECTION_CALENDAR_OUTPUT_TOO_SHORT'
+      return
+    end if
+    if (len_trim(config%boundary_content_sha256) > len(boundary_content_sha256)) then
+      ok = .false.
+      reason = 'KT15_CONFIG_INSPECTION_HASH_OUTPUT_TOO_SHORT'
+      return
+    end if
+
+    runtime_calendar_contract_id = trim(config%runtime_calendar_contract_id)
+    producer_day_offset = config%producer_day_offset
+    static_hydrology = config%static_hydrology
+    boundary_content_sha256 = trim(config%boundary_content_sha256)
+    simulation_start_year = config%simulation_start_year
+    load_channel = config%load_channel
+    ok = .true.
+    reason = 'KT15_APPLICATION_CONFIG_INSPECTED_READ_ONLY'
+  end subroutine inspect_kt15_application_config
 
   subroutine snapshot_kt15_application_config(state, copy, ok)
     type(kt15_application_state_t), intent(in) :: state
