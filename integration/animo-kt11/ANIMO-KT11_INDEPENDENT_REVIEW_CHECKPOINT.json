@@ -1,0 +1,111 @@
+{
+  "workunit": "ANIMO-KT11",
+  "title": "Typed Multi-Packet Hydrology Provider and Forcing Lifecycle",
+  "review": "GOV04_TIER_C_INDEPENDENT_SECOND_LINE_REVIEW",
+  "phase": "INDEPENDENT_REVIEW_COMPLETE",
+  "checkpoint_state": "PASS_CLAIM_UNCHANGED_PERSISTED_FORMAL_DISPOSITION_PENDING",
+  "review_branch": "review/animo-kt11-multi-packet-hydrology-provider-independent",
+  "review_context": "GENUINELY_SEPARATE_PROCESS_INDEPENDENCE_ONLY",
+  "gov04_policy": {
+    "branch": "work/animo-gov04-risk-tiered-review-policy",
+    "head": "1bbe4c211197590f346803106e45dca5faae79fc",
+    "mode": "RISK_TIERED_REVIEW_INTENSITY",
+    "risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS"
+  },
+  "frozen_target": {
+    "candidate_head": "843ac357f8b86f84131ddc08bf2097bb5af4e080",
+    "implementation_path": "prototype/kt11/mod_animo_multi_packet_hydrology_provider.f90",
+    "implementation_blob": "a41d0f61da6dd30a18dbfadbe4b29b00259fa41e"
+  },
+  "review_handoff_head_before_independent_evidence": "ca732a050f3f6534883a5dec3ed2958f38ff4cc9",
+  "candidate_claim": "An immutable collection of complete KT05 explicit hydrology packets can deterministically select exactly one packet from a bounded whole-day KT02 requested interval, remain stateless across repeated requests, fail closed on missing or duplicate interval keys, and delegate the selected packet through admitted KT06 without changing KT02 time, accepted-state or publication ownership.",
+  "principal_verdict": "PASS_CLAIM_UNCHANGED",
+  "material_findings": [],
+  "review_report": {
+    "path": "docs/kt11/INDEPENDENT_REVIEW_REPORT.md",
+    "commit": "0d4acf75c35ea49a0acdc5fcd0670f3137ef3f83"
+  },
+  "independently_verified_exact_head_ci": {
+    "candidate_head": "843ac357f8b86f84131ddc08bf2097bb5af4e080",
+    "run_id": 35351056242,
+    "job_id": 105619025907,
+    "job_name": "provider-lifecycle",
+    "conclusion": "SUCCESS",
+    "observed_passes": [
+      "KT02 dual-client runtime tests",
+      "KT02 structure checks",
+      "KT05 explicit Fortran hydrology adapter tests",
+      "KT05 structural contract tests",
+      "KT06 explicit hydrology runtime binding tests",
+      "KT11 upstream KT08/KT09 evidence identity",
+      "KT11 multi-packet hydrology provider tests"
+    ]
+  },
+  "reviewed_frozen_dependencies": {
+    "kt06_admission": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+    "kt06_implementation_head": "fc818917a46408d55cd7f03e2fa8257534683907",
+    "kt06_implementation_blob": "9a24ea833291f761d2fa76ca4cc9fee28436c614",
+    "central_regie": "ANIMO-RG05P@9a8d0d886f745be91153f47437cb0de2b3076ab2",
+    "kt05_adapter_blob": "9ed1d6d3e91d9f5522f8c2a49a5e19eed1d82a9a",
+    "kt02_time_blob": "c43e3c761637054dd6166488ecb01902ce547771",
+    "kt02_interval_runtime_blob": "ac8eed3b7385daad3cb7c926bd7dab9d99e0a888",
+    "kt02_transactions_blob": "182164ca4bf4a890d98f9c89366764e5d818b10c"
+  },
+  "supplemental_evidence_only": {
+    "kt08_closeout": "281dc65cbaceaa61d31f9cb731b3c5a733ca5d57",
+    "kt08_summary_blob": "6ba7fe07ca47a6f8d45f18d09b7276dc4ece66f3",
+    "kt08_strength": "B1_DERIVED_FROM_PINNED_B0_PRODUCER_NOT_B2",
+    "kt09_closeout": "249066b7c07d505ba9a72a5aa199401a4349b0da",
+    "kt09_anchor_fixture_blob": "8aa4f5dcc8041979d9dc2e2b4fc8cc7f1c88de84",
+    "runtime_authority_effect": "NONE",
+    "evidence_strength_promotion": false
+  },
+  "review_axes": {
+    "packet_identity": "PASS_EXACT_ENDPOINT_DURATION_KEY_WITHIN_BOUNDED_WHOLE_DAY_MAPPING",
+    "duplicate_semantics": "PASS_DUPLICATE_EXACT_KEY_REJECTED_BEFORE_READY",
+    "equal_endpoint_different_duration": "PASS_DISTINCT_INTERVAL_ORIGINS_AND_EXACT_PAIR_SELECTION",
+    "deep_copy_ownership": "PASS_PRIVATE_PROVIDER_OWNED_ALLOCATABLE_VALUE_COPY",
+    "repeated_lookup": "PASS_STATELESS_NON_CONSUMPTIVE",
+    "sparse_unordered_provider": "PASS_EXPLICIT_FAIL_CLOSED_MISSING_COVERAGE",
+    "missing_packet_atomicity": "PASS_NO_EXTERNAL_PARTIAL_PUBLICATION",
+    "forcing_ownership": "PASS_CLIENT_PROVIDER_SIDE_OUTSIDE_ACCEPTED_CONTINUATION_STATE",
+    "kt06_delegation": "PASS_FROZEN_KT06_REVALIDATES_BINDS_AND_PROJECTS_SELECTED_PACKET",
+    "accepted_time_ownership": "PASS_KT02_SOLE_AUTHORITY",
+    "external_publication_ownership": "PASS_KT02_ATOMIC_PUBLICATION",
+    "calendar_offset_mapping": "PASS_CONFIGURED_EXACT_WHOLE_DAY_RELATION_ONLY",
+    "integer_real64_boundary": "PASS_FAIL_CLOSED_SOURCE_RECONSTRUCTION",
+    "producer_mapping_overflow": "PASS_EXPLICIT_INT64_GUARD",
+    "retry_semantics": "EXCLUDED_NO_KT11_RETRY_OR_TIMESTEP_POLICY",
+    "kt08_kt09_strength": "PASS_B1_ONLY_NO_RUNTIME_AUTHORITY_PROMOTION",
+    "scientific_admissibility": "EXCLUDED_PROBE_ONLY",
+    "production_b3_b4_status": "EXCLUDED_NO_AUTHORIZATION"
+  },
+  "non_material_observations": [
+    "whole provider object may be replaced or reinitialized by its owner; dynamic mutable lifecycle is not claimed",
+    "runtime calendar binding is configured composition metadata rather than producer-carried calendar provenance",
+    "sparse provider semantics do not prove complete producer payload coverage",
+    "KT08 covers the pinned 1800-interval temporal sequence while KT09 contributes eight complete representative packets only",
+    "KT02 collapses detailed hard client failures to CLIENT_ATTEMPT_FAILED at the public interval boundary",
+    "KT11 has no dedicated test for every exact-integer and overflow boundary, but the bounded arithmetic path was directly inspected and frozen KT06 regression is rerun",
+    "successful execution remains a runtime probe and does not establish Hydro_detailed or ANIMO scientific admissibility"
+  ],
+  "frozen_implementation_mutated_by_review": false,
+  "production_source_modified": false,
+  "qualification_status": "INDEPENDENT_TIER_C_REVIEW_PASS_RECORDED_FORMAL_DISPOSITION_PENDING",
+  "admission_status": "NOT_ADMITTED_BY_THIS_REVIEW",
+  "next_permitted_action": "FORMAL_GOV04_TIER_C_DISPOSITION_AND_ADMISSION_BOOKKEEPING_WITHOUT_EXPANDING_THE_CLAIM",
+  "explicit_nonclaims": [
+    "full 1800-packet complete-payload execution",
+    "runtime SWATRE.UNF decoding",
+    "dynamic streaming or mutable provider lifecycle",
+    "retry or timestep-selection policy",
+    "fractional or subday mapping",
+    "generic calendar conversion",
+    "Hlpimp scientific semantics",
+    "Hydro_detailed scientific execution",
+    "ANIMO scientific admissibility",
+    "production coupling or migration",
+    "B3 or B4",
+    "Status A or Status AA"
+  ]
+}
