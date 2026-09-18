@@ -34,7 +34,8 @@ if "Solute boundary composition is separate" not in hydro:
 io=show_json(IO01,"integration/animo-io/ANIMO-IO01_STATUS.json")
 if io.get("qualified") is not True:
     fail("IO01 not qualified")
-if io.get("non_admissions",{}).get("BOUNDARY_migration") is not False:
+io_close=show_json(IO01,"integration/animo-io/ANIMO-IO01-CLOSEOUT.json")
+if io_close.get("non_admissions",{}).get("BOUNDARY_migration") is not False:
     fail("BOUNDARY migration unexpectedly admitted")
 
 gov=show_json(GOV04,"integration/animo-governance/ANIMO-GOV04_STATUS.json")
