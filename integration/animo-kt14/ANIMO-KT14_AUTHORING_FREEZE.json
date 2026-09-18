@@ -1,0 +1,19 @@
+{
+  "work_unit": "ANIMO-KT14",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "7d410477c39d24f6b16d738a329a2d92db41d058",
+  "substantive_authoring_tree": "62a1e3378f02d094b9600e64a942af4502407382",
+  "frozen_implementation_blob": "e7cb67202c49a6166be77bdb98cf1c7591cd13da",
+  "frozen_test_blob": "a694a1b85f36a1e24dc51ea853b1b01ea05654c6",
+  "validated_run": 35374003170,
+  "validated_conclusion": "success",
+  "candidate_claim": "A_SELF_VALIDATING_BOUNDQ02_CHEMISTRY_FRAME_BOUND_TO_EXACT_T0_T1_CAN_DRIVE_THE_REMEDIATED_KT13A_ONE_INTERVAL_TCD042_TRANSACTION_WITHOUT_STALE_FRAME_OR_DRY_DEPOSITION_LEAKAGE",
+  "repairs": [
+    "Imported and pinned exact BOUNDQ01 static_no_p fixture required by the composition harness.",
+    "Replaced an incorrect concentration-direction assertion with exact binary64 wet-load, end-state and average-state oracles."
+  ],
+  "year_cursor_atomic_commit_qualified": false,
+  "multi_interval_continuation_qualified": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
