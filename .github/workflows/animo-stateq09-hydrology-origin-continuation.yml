@@ -1,0 +1,25 @@
+name: ANIMO STATEQ09 hydrology origin continuation
+on:
+  push:
+    branches: [work/animo-stateq09-detailed-hydrology-origin-continuation]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 8efdd151d89e1cff131d4b21e2acf559ca1828d6 e9ee7fc9e69a62c58b6eacd6379220cc51c1bf07 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-state/STATEQ09_HYDROLOGY_ORIGIN_SOURCE_MAPPING.json >/dev/null
+      - run: python -m json.tool integration/animo-state/ANIMO-STATEQ09_STATUS.json >/dev/null
+      - name: Validate state transfer authority
+        run: python tools/stateq09/validate_stateq09.py
+      - name: Compile and run endpoint-to-origin tests
+        run: bash tests/stateq09/run_stateq09_tests.sh
