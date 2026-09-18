@@ -1,0 +1,25 @@
+name: ANIMO STATEQ10 first detailed origin
+on:
+  push:
+    branches: [work/animo-stateq10-first-interval-detailed-hydrology-origin]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 8efdd151d89e1cff131d4b21e2acf559ca1828d6 e9ee7fc9e69a62c58b6eacd6379220cc51c1bf07 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-state/STATEQ10_FIRST_ORIGIN_SOURCE_MAPPING.json >/dev/null
+      - run: python -m json.tool integration/animo-state/ANIMO-STATEQ10_STATUS.json >/dev/null
+      - name: Validate source normalization authority
+        run: python tools/stateq10/validate_stateq10.py
+      - name: Compile and run exact normalization tests
+        run: bash tests/stateq10/run_stateq10_tests.sh
