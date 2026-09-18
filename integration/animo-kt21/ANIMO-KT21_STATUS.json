@@ -1,0 +1,57 @@
+{
+  "work_unit": "ANIMO-KT21",
+  "title": "Pinned LWKM Bounded TCD-042 Hydrology-Envelope Characterization",
+  "branch": "work/animo-kt21-lwkm-bounded-envelope-characterization",
+  "base": "ANIMO-RG09@b019ac4507648e57c196a8a62806d804f39014a2",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "C_REAL_SOURCE_EVIDENCE_RUNTIME_CHARACTERIZATION",
+  "pinned_source_characterization_qualified": false,
+  "first_call_runinu_uncertainty_preserved": false,
+  "post_reset_deterministic_envelope_qualified": false,
+  "tcd042_scope_widened": false,
+  "sequential_real_application_qualified": false,
+  "b2_claimed": false,
+  "production_authorized": false,
+  "implementation": "prototype/kt21/lwkm_bounded_envelope.py",
+  "evidence": "integration/animo-kt21/KT21_LWKM_EXTERNAL_CHARACTERIZATION.json",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_c_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-kt21-lwkm-envelope-characterization.yml",
+    "validator": "tools/validate_kt21_lwkm_envelope.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "raw_b0_source_committed": false,
+    "first_call_runinu_invented": false,
+    "tcd042_scope_widened": false,
+    "sequential_real_application_claimed": false,
+    "b2_claimed": false,
+    "b3_mutated": false,
+    "central_kt11_admission_changed": false,
+    "canonical_forcing_admitted": false,
+    "canonical_state_admitted": false,
+    "canonical_checkpoint_admitted": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_SELF_REVIEW; IF_GREEN_USE_AS_B1_CHARACTERIZATION_ONLY; SCIENTIFIC_SCOPE_GAPS_REMAIN_SEPARATE_FROM_ADAPTER_RUNTIME"
+}
