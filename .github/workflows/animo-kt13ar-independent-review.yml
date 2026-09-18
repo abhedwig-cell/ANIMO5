@@ -1,0 +1,19 @@
+name: ANIMO KT13AR independent review scaffold
+on:
+  push:
+    branches: [review/animo-kt13ar-remediated-tier-d-composition]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  validate-review-record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch immutable authoring target
+        run: |
+          git cat-file -e "df2310cc69e3fe16187ba2235843222f8acfb726^{commit}" 2>/dev/null ||             git fetch --no-tags origin df2310cc69e3fe16187ba2235843222f8acfb726
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-kt13ar/ANIMO-KT13AR_STATUS.json >/dev/null
+      - name: Validate immutable target and review-state structure
+        run: python tools/validate_kt13ar_review_target.py
