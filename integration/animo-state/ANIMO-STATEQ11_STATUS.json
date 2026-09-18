@@ -4,16 +4,16 @@
   "branch": "work/animo-stateq11-composite-accepted-continuation",
   "base": "ANIMO-BOUNDQ02@fb0c0c842aed9a90378aca613279e09a856ad09b",
   "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_COMPOSITE_ACCEPTED_CONTINUATION_IDENTITY_TIER_D_REVIEW_REQUIRED",
+  "decision": "QUALIFY_CROSS_MODULE_ACCEPTED_CONTINUATION_IDENTITY_AND_CANDIDATE_ADVANCEMENT_NO_ATOMIC_COMMIT_OR_CANONICAL_STATE_ADMISSION",
   "risk_tier_candidate": "D_CROSS_MODULE_ACCEPTED_CONTINUATION_COMPOSITION",
-  "composite_identity_qualified": false,
-  "first_origin_bridge_qualified": false,
-  "endpoint_to_origin_advance_qualified": false,
-  "runinu_continuation_binding_qualified": false,
-  "boundary_cursor_binding_qualified": false,
-  "accepted_store_coherence_qualified": false,
+  "composite_identity_qualified": true,
+  "first_origin_bridge_qualified": true,
+  "endpoint_to_origin_advance_qualified": true,
+  "runinu_continuation_binding_qualified": true,
+  "boundary_cursor_binding_qualified": true,
+  "accepted_store_coherence_qualified": true,
   "atomic_group_commit_implemented": false,
   "canonical_state_admitted": false,
   "checkpoint_schema_admitted": false,
@@ -23,17 +23,23 @@
   "supported_scope": "NONPRODUCTION_KT02_LINEAGE_GENERATION_TIME_PLUS_STATEQ09_STATEQ08_BOUNDQ02_CONTINUATION_IDENTITY",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_d_review_required_for_admission": true
+    "independent_tier_d_review_required_for_admission": true,
+    "reviewed_head": "7602c29ef3fa6450d143d3381e55b915bb6380ff",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-stateq11-composite-continuation.yml",
     "validator": "tools/stateq11/validate_stateq11.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35374454964,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "7602c29ef3fa6450d143d3381e55b915bb6380ff",
+    "closeout_note": "Validated repaired authoring package passed exact-head CI run 35374454964. Review/status closeout is authoritative only if the same workflow succeeds on this exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -51,10 +57,14 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_RETAIN_TIER_D_INDEPENDENT_REVIEW_GATE; FUTURE_KT15_MAY_IMPLEMENT_ATOMIC_GROUP_PUBLICATION_WITHOUT_REDEFINING_STATE_OWNERSHIP"
+  "next": "USE_STATEQ11_AS_QUALIFIED_NONPRODUCTION_COMPOSITE_CONTINUATION_IDENTITY_CANDIDATE_ONLY; RETAIN_GENUINE_TIER_D_REVIEW_GATE; NEXT_RUNTIME_WORKUNIT_MAY_IMPLEMENT_ATOMIC_GROUP_COMMIT_WITH_KT14_WITHOUT_REDEFINING_STATE_OWNERSHIP",
+  "frozen_substantive_head": "7602c29ef3fa6450d143d3381e55b915bb6380ff",
+  "frozen_substantive_tree": "6c1a064cef8c43f10cc650ef64fe25cf3698d1b8",
+  "frozen_implementation_blob": "5450563ac74ff40b7144f5c1ab7805f8d5849862",
+  "frozen_test_blob": "aa4a87260d5cfe80e6173b65dc3cebc16bbd7359"
 }
