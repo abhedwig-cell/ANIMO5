@@ -1,0 +1,51 @@
+{
+  "work_unit": "ANIMO-HYDROQ02",
+  "title": "TCD-042 Resolved Rupr/Runinu Load-Context Qualification",
+  "branch": "work/animo-hydroq02-tcd042-runoff-load-context",
+  "base": "ANIMO-HYDROQ01@5301d90024c64057f2cb88fda1dbaa93aabfca47",
+  "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "D_HYDROLOGY_SCIENCE_COMPOSITION_INTERFACE",
+  "source_mapping_qualified": false,
+  "typed_context_qualified": false,
+  "runoff_partition_execution_qualified": false,
+  "near_zero_runinu_semantics_repaired": false,
+  "production_authorized": false,
+  "implementation": "prototype/hydroq02/mod_animo_tcd042_runoff_load_context.f90",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_d_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-hydroq02-runoff-load-context.yml",
+    "validator": "tools/validate_hydroq02_runoff_load_context.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "hydro_detailed_implemented": false,
+    "runoff_partition_algorithm_implemented": false,
+    "runinu_near_zero_repaired": false,
+    "raw_ru_reconstruction_added": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_USE_ONLY_AS_CAPTURED_RESOLVED_HYDROLOGY_CONTEXT; REAL_HYDRO_DETAILED_EXECUTION_REMAINS_SEPARATE"
+}
