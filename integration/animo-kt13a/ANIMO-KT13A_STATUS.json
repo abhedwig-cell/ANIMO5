@@ -1,0 +1,44 @@
+{
+  "work_unit": "ANIMO-KT13A",
+  "title": "KT13 Composition Coherence Remediation",
+  "branch": "work/animo-kt13a-composition-coherence-remediation",
+  "base": "ANIMO-KT13_AUTHORING@51baa9851d5bed0b711199835bb817b22514c511",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "purpose": "REMEDIATE_PRE_REVIEW_CROSS_MODULE_GEOMETRY_COHERENCE_AND_POSTCOMMIT_STATUS_TRUTH",
+  "findings": {
+    "shared_top_geometry_precondition_missing_in_KT13": true,
+    "consequence": "HYDROEXEC01 could use start_context%he_top while KT12 used a different hetop in the same composed interval",
+    "postcommit_failure_semantics_ambiguous": true,
+    "consequence_2": "KT13 could return success=false after KT02 had already committed if diagnostics were unexpectedly unavailable"
+  },
+  "remediation": {
+    "exact_binary64_hetop_binding_required": true,
+    "geometry_mismatch_rejects_before_KT06_binding": true,
+    "geometry_mismatch_preserves_accepted_store": true,
+    "postcommit_truth_preserved": true,
+    "exact_end_state_oracles_added": true,
+    "exact_average_oracle_added": true
+  },
+  "scope": {
+    "science_formula_changed": false,
+    "upstream_frozen_modules_changed": false,
+    "tcd042_scope_widened": false,
+    "production_changed": false,
+    "admission_performed": false
+  },
+  "review": {
+    "same_agent_technical_review_only": true,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "independent_tier_d_review_still_required": true
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI; IF_GREEN FREEZE REMEDIATED COMPOSITION TARGET AND SUPERSEDE_UNREMEDIATED_KT13_REVIEW_TARGET"
+}
