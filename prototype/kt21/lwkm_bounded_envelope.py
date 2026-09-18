@@ -11,7 +11,10 @@ from prototype.kt03.hydrology_step import (
     legacy_dble_trunc_diagnostic,
     typed_step_digest,
 )
-from prototype.kt19.pinned_lwkm_file_provider import PinnedLWKMFileHydrologyProvider
+from prototype.kt19.pinned_lwkm_file_provider import (
+    PinnedLWKMFileHydrologyProvider,
+    decode_unpinned_powerstation_hydrology,
+)
 
 REV53_PONDING_THRESHOLD = 1.0e-4
 REV53_RUNOFF_NEAR_ZERO = 1.0e-8
@@ -264,13 +267,18 @@ def characterize_pinned_lwkm(
         source, "ANIMO_PG_86400_NOLEAPSECONDS_V1", 0
     )
     static = provider.static_metadata
+    raw = source.read_bytes()
+    decoded_static, packets, _ = decode_unpinned_powerstation_hydrology(raw)
+    if len(packets) != provider.packet_count:
+        raise ValueError("pinned provider/decode packet-count mismatch")
+    if decoded_static["initial_surface_record"] != static["initial_surface_record"]:
+        raise ValueError("pinned provider/decode static metadata mismatch")
     initial_surface = static["initial_surface_record"]
     initial_mofro = tuple(
         legacy_dble_trunc_diagnostic(value) for value in static["initial_moisture"]
     )
     initial_pn = legacy_dble_trunc_diagnostic(initial_surface[2])
     initial_sic = legacy_dble_trunc_diagnostic(initial_surface[1])
-    packets = tuple(provider._packets)  # bounded diagnostic on already-validated immutable tuple
     return characterize_packets(
         packets,
         initial_pn=initial_pn,
