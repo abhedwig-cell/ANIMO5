@@ -1,0 +1,39 @@
+{
+  "work_unit": "ANIMO-KT16",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "eff38e0501d5178a82518ae0ae0cb2ab422fcdb0",
+  "exact_head_ci": {
+    "run_id": 35377121131,
+    "job_id": 105704307775,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "checkpoint_encodes_accepted_application_only": "PASS",
+    "no_trial_scratch_journal_or_midstep_state": "PASS",
+    "lineage_generation_time_manifest_present": "PASS",
+    "layer_extent_identity_present": "PASS",
+    "immutable_KT15A_config_preserved_as_qualified_type": "PASS",
+    "STATEQ11_continuation_preserved": "PASS",
+    "bounded_TCD042_payload_explicit": "PASS",
+    "internal_manifest_continuation_coherence_fail_closed": "PASS",
+    "restore_requires_exact_expected_config": "PASS",
+    "trusted_KT02_store_reconstruction_used": "PASS",
+    "restore_reenters_KT15A_public_validation_boundary": "PASS",
+    "uninterrupted_vs_split_run_final_science_bit_identical": "PASS",
+    "uninterrupted_vs_split_run_continuation_exact": "PASS",
+    "uninterrupted_vs_split_run_config_exact": "PASS",
+    "corrupt_schema_kind_generation_lineage_time_geometry_payload_rejected": "PASS",
+    "no_file_format_or_integrity_hash_claim": "PASS",
+    "no_legacy_B2_restart_equivalence_claim": "PASS",
+    "no_canonical_checkpoint_or_state_admission": "PASS",
+    "no_B3_B4_TB7_or_production_effect": "PASS",
+    "independent_Tier_D_gate_retained": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
