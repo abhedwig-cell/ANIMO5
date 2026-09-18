@@ -171,6 +171,8 @@ contains
     call make_packet(tiny,730121_int64,p2)
     call read_boundary(boundary)
     call initialize_application('KT15-TWO',t0,1.0_real64,0.0_real64,hash,state,cfg)
+    call validate_kt15_application_config(cfg,ok,reason)
+    call assert_true(ok,'two-interval config valid')
 
     call execute_kt15_atomic_interval(state,p1,t1,'KT15-I1',boundary,tr1,success,reason)
     call assert_true(success,'first atomic interval')
@@ -226,6 +228,8 @@ contains
     call make_packet(too_large,730120_int64,packet)
     call read_boundary(boundary)
     call initialize_application('KT15-REJECT',t0,4.0_real64,0.0_real64,hash,state,cfg)
+    call validate_kt15_application_config(cfg,ok,reason)
+    call assert_true(ok,'reject config valid')
     call snapshot_kt15_continuation(state,before,ok)
     call assert_true(ok,'snapshot before reject')
 
