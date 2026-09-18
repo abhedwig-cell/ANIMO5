@@ -31,9 +31,12 @@
   "validation": {
     "independent_review_gate": "PASS",
     "formal_disposition_gate": "PASS",
-    "admission_json_parse": "PENDING_FINAL_BRANCH_RECHECK",
-    "frozen_blob_reverified": false,
-    "scope_widening": false
+    "admission_json_parse": "PASS",
+    "status_json_parse_before_closeout": "PASS",
+    "frozen_blob_reverified": true,
+    "scope_widening": false,
+    "validated_admission_record_blob": "228c452525a4d803cdda9120b79bd1e36604d5b1",
+    "validated_frozen_implementation_blob": "9a24ea833291f761d2fa76ca4cc9fee28436c614"
   },
   "next_if_validated": "DOWNSTREAM_WORK_MAY_CONSUME_KT06_ONLY_AT_ADMITTED_SCOPE; ANY_COMPOSITION_OR_PRODUCTION_BOUND_CHANGE_REQUIRES_NEW_GOV04_RISK_CLASSIFICATION"
 }
