@@ -2,8 +2,8 @@
   "work_unit": "ANIMO-RG05Q",
   "title": "KT11 Tier C Multi-Packet Provider Admission Integration",
   "branch": "work/animo-rg05q-kt11-multi-packet-admission-integration",
-  "state": "PERSISTED_VALIDATION_PENDING",
-  "decision": null,
+  "state": "QUALIFIED_KT11_GOV04_TIER_C_MULTI_PACKET_PROVIDER_ADMISSION_INTEGRATED_NO_B3_OR_PRODUCTION_EFFECT",
+  "decision": "QUALIFIED_KT11_GOV04_TIER_C_MULTI_PACKET_PROVIDER_ADMISSION_INTEGRATED_NO_B3_OR_PRODUCTION_EFFECT",
   "source_aggregate": "ANIMO-RG05P@9a8d0d886f745be91153f47437cb0de2b3076ab2",
   "source_aggregate_state": "QUALIFIED_KT06_GOV04_TIER_C_RUNTIME_ADMISSION_INTEGRATED_NO_B3_OR_PRODUCTION_EFFECT",
   "kt11_admission_authority": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
@@ -43,22 +43,23 @@
     "production_open": false
   },
   "validation": {
-    "machine_validated": false,
+    "machine_validated": true,
     "workflow": "ANIMO RG05Q KT11 multi-packet admission integration",
-    "candidate_run_id": null,
-    "candidate_job_id": null,
-    "tested_candidate_head": null,
-    "candidate_conclusion": "PENDING",
-    "validator": "PENDING",
-    "scope_guard": "PENDING",
-    "exact_final_head_required": true
+    "candidate_run_id": 35355178845,
+    "candidate_job_id": 105632666967,
+    "tested_candidate_head": "d819ae50a0a4c51a6fbd14b000ed757a44607c22",
+    "candidate_conclusion": "success",
+    "validator": "PASS",
+    "scope_guard": "PASS",
+    "exact_final_head_required": true,
+    "closeout_note": "Run 35355178845 validated the complete substantive RG05Q package at d819ae50a0a4c51a6fbd14b000ed757a44607c22. This status-only closeout is authoritative only if the same workflow succeeds on this exact final head."
   },
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next_if_validated": "USE_ANIMO_RG05Q_AS_CURRENT_CENTRAL_REGIE_AUTHORITY_FOR_KT11_AT_ADMITTED_SCOPE; ANY EXPANSION REQUIRES SEPARATE GOV04 CLASSIFICATION"
+  "next_if_validated": "USE_ANIMO_RG05Q_AS_CURRENT_CENTRAL_REGIE_AUTHORITY_FOR_KT11_AT_ADMITTED_SCOPE; RECONCILE_CURRENT_B3_AND_PROGRAM_STATE_BEFORE_FIRST_REAL_SCIENTIFIC_PROCESS_COMPOSITION; ANY EXPANSION REQUIRES_SEPARATE_GOV04_CLASSIFICATION"
 }
