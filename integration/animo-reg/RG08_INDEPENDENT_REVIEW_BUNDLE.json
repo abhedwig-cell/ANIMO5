@@ -1,0 +1,105 @@
+{
+  "work_unit": "ANIMO-RG08",
+  "bundle_role": "INDEPENDENT_REVIEW_LOGISTICS_ONLY",
+  "assurance_created_by_bundle": "NONE",
+  "genuinely_independent_reviewer_required": true,
+  "review_rule": "A coordinated reviewer may review multiple frozen candidates in one session, but each candidate retains its own claim, risk tier, findings, disposition and admission gate.",
+  "tier_c_targets": [
+    {
+      "id": "STATEQ08",
+      "head": "e9ee7fc9e69a62c58b6eacd6379220cc51c1bf07"
+    },
+    {
+      "id": "STATEQ09",
+      "head": "f6e91fc1cb664d67caccc02e6ab21525a768d006"
+    },
+    {
+      "id": "STATEQ10",
+      "head": "614391014438b2cc4445d2d6a8008c3f0f1c45d0"
+    },
+    {
+      "id": "BOUNDQ01",
+      "head": "62b4fc36f2a47b67c08eedb095c60a5c059b77d8"
+    },
+    {
+      "id": "BOUNDQ02",
+      "head": "fb0c0c842aed9a90378aca613279e09a856ad09b"
+    },
+    {
+      "id": "BOUNDQ02B",
+      "head": "de6eef3122354e74405ff9c92286794714bdee82"
+    }
+  ],
+  "tier_d_targets": [
+    {
+      "id": "KT12",
+      "head": "8f0e8e4bfd0b391b781f7c69b7d2063d5cf8705e"
+    },
+    {
+      "id": "HYDROQ01",
+      "head": "5301d90024c64057f2cb88fda1dbaa93aabfca47"
+    },
+    {
+      "id": "HYDROQ02",
+      "head": "08d5b8301c217cf9d33d2bf248be133f2b5243fc"
+    },
+    {
+      "id": "HYDROEXEC01",
+      "head": "182dac2fc34ca42ed798203e90efeca1221f21e8"
+    },
+    {
+      "id": "UBFORCE01",
+      "head": "9f9204ba53169285ac84272704de14836962ef41"
+    },
+    {
+      "id": "UBFORCE02",
+      "head": "931e32cec69dc78a03015f01190cff97bf1fe1b4"
+    },
+    {
+      "id": "KT13A",
+      "head": "df2310cc69e3fe16187ba2235843222f8acfb726"
+    },
+    {
+      "id": "STATEQ11",
+      "head": "c2bd0d17ac6921fcd9f22d6289a510cae454153d"
+    },
+    {
+      "id": "KT14B",
+      "head": "46e9e7397be751f245069033bae655b4382b63bd"
+    },
+    {
+      "id": "KT15",
+      "head": "d3a51aad084969a753cb5b54c604ebefba4b26c6"
+    },
+    {
+      "id": "KT15A",
+      "head": "2279a961459211e03550dfda4af09ab4f7f6b9a3"
+    },
+    {
+      "id": "KT16",
+      "head": "7cd863b71a7a7fcc985514a8af28dcb69cae999a"
+    },
+    {
+      "id": "KT17",
+      "head": "6d05b270e21a41ca626adbb719f8f55bfa9a97b5"
+    },
+    {
+      "id": "KT18",
+      "head": "42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72"
+    }
+  ],
+  "dependency_review_order": [
+    "State and forcing contracts before dependent composition claims",
+    "KT13A/HYDRO/UBFORCE science-runtime seams before KT14B/KT15",
+    "KT15A before KT16",
+    "KT16 before KT17",
+    "KT11-A1 is already admitted and independently reviewed; review only the KT18 branch-local copy-selection extension inside KT18",
+    "KT15A and its prerequisites before KT18"
+  ],
+  "forbidden_shortcuts": [
+    "No candidate receives admission merely because a downstream candidate passed review.",
+    "No same-agent review is upgraded to independent assurance.",
+    "No review bundle result changes B3, B4 or production gates by itself.",
+    "No central runtime authority is inferred from branch presence or green CI."
+  ]
+}
