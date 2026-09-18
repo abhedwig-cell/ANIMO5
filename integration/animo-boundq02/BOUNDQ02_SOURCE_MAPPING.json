@@ -1,0 +1,58 @@
+{
+  "work_unit": "ANIMO-BOUNDQ02",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_members": {
+    "Animo.for": {
+      "sha256": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
+      "mapped_lines": "225-265",
+      "evidence": "Main loop advances Juda to interval end, then calls Init; Init receives Juda and St."
+    },
+    "Init.for": {
+      "sha256": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+      "mapped_lines": "121-136",
+      "year_origin": "GDATE(Juda-St, Yr, MONTH, DAY, ...)",
+      "slot_formula": "Yn=Yr-Yrmi+1",
+      "refresh_predicate": "Juda-St<=Judami OR (Month==1 AND Day==1)",
+      "refresh_assignments": [
+        "Coprnhyn=Coprnh(Yn)",
+        "Coprniyn=Coprni(Yn)",
+        "Coprpoyn=Coprpo(Yn)",
+        "Drdepnhyn=Drdepnh(Yn)",
+        "Drdepniyn=Drdepni(Yn)"
+      ]
+    }
+  },
+  "authorities": {
+    "BOUNDQ01": "62b4fc36f2a47b67c08eedb095c60a5c059b77d8",
+    "UBFORCE02": "931e32cec69dc78a03015f01190cff97bf1fe1b4",
+    "TIME02": "b4d78cf32cb149cf50aa2b0a0fbefee571eee6b8"
+  },
+  "calendar_contract": {
+    "id": "ANIMO_PG_86400_NOLEAPSECONDS_V1",
+    "epoch": "0001-01-01T00:00:00",
+    "epoch_day_index": 0,
+    "qualified_year_min": 1,
+    "qualified_year_max": 3000,
+    "subday_selection_qualified": false
+  },
+  "cursor_semantics": {
+    "first_interval": "SELECT_SLOT_FROM_ORIGIN_YEAR",
+    "later_exact_january_first": "REFRESH_SLOT_FROM_ORIGIN_YEAR",
+    "later_non_january_first": "PRESERVE_ACCEPTED_ACTIVE_SLOT",
+    "mutate_accepted_cursor_in_binding": false
+  },
+  "frame_semantics": {
+    "exact_origin_bound": true,
+    "exact_endpoint_bound": true,
+    "dry_deposition_separate": true,
+    "ubforce02_chemistry_only": true
+  },
+  "nonclaims": {
+    "continuous_civil_year_selection": false,
+    "dynamic_boundary": false,
+    "canonical_cursor_state": false,
+    "checkpoint_schema": false,
+    "B2": false,
+    "production": false
+  }
+}
