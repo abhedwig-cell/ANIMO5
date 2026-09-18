@@ -1,0 +1,53 @@
+{
+  "work_unit": "ANIMO-KT12",
+  "title": "TCD-042 Scientific Consumer on Transaction Runtime and Resolved-Hydrology Seam Qualification",
+  "branch": "work/animo-kt12-tcd042-scientific-consumer-composition",
+  "base": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
+  "central_regie": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "D_CROSS_MODULE_SCIENTIFIC_COMPOSITION",
+  "scientific_scope": "TCD042_PARENT_ADMITTED_SCOPE_ONLY",
+  "implementation": "prototype/kt12/mod_animo_tcd042_upper_boundary_client.f90",
+  "positive_candidate_claim": "ADMITTED_TCD042_B1_AND_E1_ALGEBRA_CAN_EXECUTE_AS_A_KT02_TRANSACTION_CLIENT_WHEN_SUPPLIED_AN_EXPLICIT_ALREADY_RESOLVED_POST_HYDRO_DETAILED_INPUT",
+  "direct_kt11_composition_ready": false,
+  "direct_composition_blocker": "NO_QUALIFIED_POST_HYDRO_DETAILED_RESOLVED_HYDROLOGY_OUTPUT_AUTHORITY",
+  "production_authorized": false,
+  "b3_readmission_performed": false,
+  "b4_open": false,
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_d_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-kt12-tcd042-scientific-consumer.yml",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "hydro_detailed_implemented": false,
+    "modflux_implemented": false,
+    "kt05_raw_flab_promoted_to_resolved_flux": false,
+    "tcd042_scope_widened": false,
+    "tcd042_readmitted": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW; IF_GREEN_PREPARE_TIER_D_INDEPENDENT_REVIEW_HANDOFF_AND_OPEN_SEPARATE_HYDROQ01_FOR_THE_MISSING_POST_HYDRO_DETAILED_SEAM"
+}
