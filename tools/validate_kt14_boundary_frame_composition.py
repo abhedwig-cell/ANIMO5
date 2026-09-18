@@ -60,7 +60,8 @@ if mf.get("exact_final_upstream_evidence",{}).get("KT13A_run")!=35370974894:
 expected_blobs={
  "prototype/boundq01/mod_animo_static_boundary_chemistry_adapter.f90":"6b381ec9b37528b0decee8a2fa484e8124fc767d",
  "prototype/boundq02/mod_animo_static_boundary_year_binding.f90":"2b7441c9909022dcb16b3ca2f35ee08d079269b8",
- "prototype/kt13/mod_animo_tcd042_bounded_composition.f90":"6e2e4c73e9b43f5d1bda58dc9387a56be8b2e2b1"
+ "prototype/kt13/mod_animo_tcd042_bounded_composition.f90":"6e2e4c73e9b43f5d1bda58dc9387a56be8b2e2b1",
+ "tests/boundq01/fixtures/static_no_p.inp":"d1f71677b69199a0c3b5f9b0a9b92d47c06e82c0"
 }
 for path,sha in expected_blobs.items():
     if blob(path)!=sha:
@@ -113,7 +114,8 @@ allowed_exact={
  ".github/workflows/animo-kt14-boundary-frame-composition.yml",
  "tools/validate_kt14_boundary_frame_composition.py",
  "prototype/boundq01/mod_animo_static_boundary_chemistry_adapter.f90",
- "prototype/boundq02/mod_animo_static_boundary_year_binding.f90"
+ "prototype/boundq02/mod_animo_static_boundary_year_binding.f90",
+ "tests/boundq01/fixtures/static_no_p.inp"
 }
 changed=subprocess.check_output(["git","diff","--name-only",BASE+"..HEAD"],cwd=R,text=True).splitlines()
 for path in changed:
