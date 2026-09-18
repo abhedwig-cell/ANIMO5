@@ -1,0 +1,66 @@
+{
+  "work_unit": "ANIMO-KT20",
+  "title": "KT19 Pinned Provider Packet to KT18 Accepted-Application Bridge Qualification",
+  "branch": "work/animo-kt20-kt19-provider-to-kt18-application-bridge",
+  "base": "ANIMO-KT19@6245aad4aca962cb2a63d0394bb7f2baa686457d",
+  "program_authority": "ANIMO-RG08@14109956b62376d0d0ab681e8c641c9e71d110bd",
+  "provider_application_authority": "ANIMO-KT18@42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72",
+  "central_provider_authority": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "D_EXTERNAL_PROVIDER_APPLICATION_CROSS_LANGUAGE_COMPOSITION",
+  "exact_packet_frame_qualified": false,
+  "python_roundtrip_qualified": false,
+  "fortran_exact_bit_decode_qualified": false,
+  "real_b1_packet_reaches_kt18": false,
+  "real_b1_packet_fail_closed_preserves_application": false,
+  "synthetic_control_commits_through_kt18": false,
+  "full_b0_source_ci_contained": false,
+  "full_real_sequence_application_execution_qualified": false,
+  "canonical_forcing_abi_admitted": false,
+  "central_kt11_authority_changed": false,
+  "independent_review_completed": false,
+  "production_authorized": false,
+  "implementation": [
+    "prototype/kt20/hydrology_packet_frame.py",
+    "prototype/kt20/mod_animo_kt20_hydrology_packet_frame.f90"
+  ],
+  "validation": {
+    "workflow": ".github/workflows/animo-kt20-kt19-to-kt18-bridge.yml",
+    "validator": "tools/validate_kt20_kt19_to_kt18_bridge.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_d_review_required_for_admission": true
+  },
+  "hard_boundaries": {
+    "raw_b0_source_committed": false,
+    "production_protocol_selected": false,
+    "canonical_forcing_abi_admitted": false,
+    "central_kt11_authority_modified": false,
+    "science_changed": false,
+    "tcd042_scope_widened": false,
+    "real_first_packet_claimed_admitted": false,
+    "b2_claimed": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI; REPAIR_ONLY_LOCAL_BRIDGE_DEFECTS; THEN_ADVERSARIAL_REVIEW_AND_FREEZE; GENUINE_TIER_D_REVIEW_REMAINS_SEPARATE"
+}
