@@ -1,0 +1,25 @@
+name: ANIMO BOUNDQ01 static boundary chemistry
+on:
+  push:
+    branches: [work/animo-boundq01-tcd042-static-boundary-chemistry]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 931e32cec69dc78a03015f01190cff97bf1fe1b4 8efdd151d89e1cff131d4b21e2acf559ca1828d6 2bcf65360b08d278f28f1cc61ac96714db4793a3 99b6098a19db405ce34928af89bb78b856dce7cd 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-boundq01/BOUNDQ01_NATURAL_TESTBANK_SCAN.json >/dev/null
+      - run: python -m json.tool integration/animo-boundq01/ANIMO-BOUNDQ01_STATUS.json >/dev/null
+      - name: Validate grammar and governance
+        run: python tools/validate_boundq01_static_boundary.py
+      - name: Compile and run static boundary adapter tests
+        run: bash tests/boundq01/run_boundq01_tests.sh
