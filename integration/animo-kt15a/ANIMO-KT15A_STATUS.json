@@ -1,0 +1,59 @@
+{
+  "work_unit": "ANIMO-KT15A",
+  "title": "Immutable Application Configuration Binding Remediation",
+  "branch": "work/animo-kt15a-immutable-application-config",
+  "base": "ANIMO-KT15@d3a51aad084969a753cb5b54c604ebefba4b26c6",
+  "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "D_ACCEPTED_APPLICATION_CONFIGURATION_IDENTITY",
+  "immutable_application_config_qualified": false,
+  "accepted_state_config_binding_qualified": false,
+  "exact_config_equality_qualified": false,
+  "multi_interval_config_stability_qualified": false,
+  "source_hash_verification_qualified": false,
+  "checkpoint_schema_admitted": false,
+  "canonical_state_admitted": false,
+  "independent_review_completed": false,
+  "production_authorized": false,
+  "implementation": "prototype/kt15/mod_animo_atomic_composite_application.f90",
+  "supported_scope": "KT15_BOUNDED_APPLICATION_WITH_IMMUTABLE_CALENDAR_OFFSET_STATIC_HYDROLOGY_BOUNDARY_ID_START_YEAR_AND_LOAD_CHANNEL",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_d_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-kt15a-immutable-application-config.yml",
+    "validator": "tools/validate_kt15a_immutable_application_config.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "source_hash_verification_implemented": false,
+    "boundary_parser_modified": false,
+    "process_science_changed": false,
+    "first_call_runinu_rule_invented": false,
+    "checkpoint_schema_modified": false,
+    "canonical_state_registry_modified": false,
+    "tcd_readmitted": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_USE_KT15A_AS_CHECKPOINT_MATERIALIZATION_BASE; RETAIN_GENUINE_TIER_D_REVIEW_GATE"
+}
