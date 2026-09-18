@@ -1,0 +1,46 @@
+{
+  "work_unit": "ANIMO-KT13",
+  "claim": "SELECTED_KT05_PACKET_PLUS_EXPLICIT_START_AND_CHEMISTRY_CONTEXT_CAN_DRIVE_ONE_BOUNDED_TCD042_INTERVAL_TO_ATOMIC_KT02_COMMIT",
+  "authority_chain": {
+    "program": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+    "runtime_binding": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+    "tcd042_parent": "ANIMO-B3D35@9ca23f41dc3c28af686b1bc0bff8e7d66416d367",
+    "transaction_science_client": "ANIMO-KT12@8f0e8e4bfd0b391b781f7c69b7d2063d5cf8705e",
+    "resolved_hydrology": "ANIMO-HYDROQ01@5301d90024c64057f2cb88fda1dbaa93aabfca47",
+    "runoff_context": "ANIMO-HYDROQ02@08d5b8301c217cf9d33d2bf248be133f2b5243fc",
+    "hydrology_execution": "ANIMO-HYDROEXEC01@182dac2fc34ca42ed798203e90efeca1221f21e8",
+    "load_contract": "ANIMO-UBFORCE01@9f9204ba53169285ac84272704de14836962ef41",
+    "load_resolver": "ANIMO-UBFORCE02@931e32cec69dc78a03015f01190cff97bf1fe1b4",
+    "runinu_classification": "ANIMO-STATEQ08@e9ee7fc9e69a62c58b6eacd6379220cc51c1bf07"
+  },
+  "frozen_blobs": {
+    "kt06": "9a24ea833291f761d2fa76ca4cc9fee28436c614",
+    "kt12": "e9ef255f9905e5b4fe3d8761f2ecd7105a6451ad",
+    "hydroq01": "081e6b45e777ebccb852b3d1adde05ed6baaeb6a",
+    "hydroq02": "786dce177c50c91149dad33289306f935b61b354",
+    "hydroexec01": "b4b621d1957291b7cf26931fe065d2cbcb89e71c",
+    "ubforce01": "fbe12e01df715ed7c95c59f5dd6b1ee73604034f",
+    "ubforce02": "a82bd7ef40ce18ddb00e45933290d1999de05884"
+  },
+  "composition_order": [
+    "KT06_BIND_SELECTED_PACKET",
+    "KT05_PROJECT_HYDRO_DETAILED_EXTERNAL",
+    "HYDROEXEC01_RESOLVE_NO_PONDING_UPPER_HYDROLOGY",
+    "HYDROQ01_HYDROQ02_TYPED_RESULTS",
+    "UBFORCE02_RESOLVE_WET_ADVECTIVE_LOADS",
+    "UBFORCE01_SELECT_LEGACY_LOAD_CHANNEL",
+    "KT12_EXECUTE_ADMITTED_TCD042_SCOPE",
+    "KT02_ATOMIC_PUBLICATION"
+  ],
+  "explicit_nonclaims": [
+    "KT11 provider selection itself is not executed inside KT13",
+    "multi-interval hydrology continuation is not qualified",
+    "Runinu canonical state/checkpoint ownership is not admitted",
+    "first-call historical Runinu is not known",
+    "BOUNDARY.INP parsing is not implemented",
+    "dry deposition is not migrated",
+    "full Hydro_detailed is not qualified",
+    "independent Tier D review is not completed",
+    "B4 and production remain closed"
+  ]
+}
