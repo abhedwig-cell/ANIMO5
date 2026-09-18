@@ -1,0 +1,18 @@
+{
+  "work_unit": "ANIMO-HYDROQ01",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "fd4e826fea01db90d9e6fde566ac7bde61c4ea4f",
+  "substantive_authoring_tree": "af4492c55e595789b055280336497c35bf8bf25f",
+  "frozen_implementation_blob": "081e6b45e777ebccb852b3d1adde05ed6baaeb6a",
+  "validated_run": 35365035630,
+  "validated_conclusion": "success",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "candidate_claim": "THE_POST_HYDRO_DETAILED_TCD042_HYDROLOGY_SEAM_IS_EXPLICITLY_TYPED_AND_SOURCE_MAPPED",
+  "execution_nonclaims": [
+    "HYDRO_DETAILED_EXECUTION_NOT_QUALIFIED",
+    "MODFLUX_EXECUTION_NOT_QUALIFIED"
+  ],
+  "direct_composition_unlocked": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
