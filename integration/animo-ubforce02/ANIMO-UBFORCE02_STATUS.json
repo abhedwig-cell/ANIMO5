@@ -1,0 +1,54 @@
+{
+  "work_unit": "ANIMO-UBFORCE02",
+  "title": "TCD-042 Upper-Boundary Solute Load Resolver Qualification",
+  "branch": "work/animo-ubforce02-tcd042-upper-solute-load-resolver",
+  "base": "ANIMO-UBFORCE01@9f9204ba53169285ac84272704de14836962ef41",
+  "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "D_FORCING_SCIENCE_IMPLEMENTATION",
+  "source_mapping_qualified": false,
+  "resolver_qualified": false,
+  "chemistry_parser_qualified": false,
+  "hydrology_partition_resolver_qualified": false,
+  "dry_deposition_included": false,
+  "production_authorized": false,
+  "implementation": "prototype/ubforce02/mod_animo_tcd042_upper_solute_load_resolver.f90",
+  "supported_scope": "REV53_IWA2_IOPTHYVS1_DETAILED_LOAD1_TO_LOAD6_SOURCE_FORMULAS_ONLY",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_d_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-ubforce02-upper-solute-load-resolver.yml",
+    "validator": "tools/validate_ubforce02_upper_solute_load_resolver.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "boundary_parser_implemented": false,
+    "hydrology_partition_inferred": false,
+    "dry_deposition_migrated": false,
+    "alternate_source_route_added": false,
+    "tcd042_readmitted": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_KEEP_INDEPENDENT_TIER_D_GATE; THEN TYPE_RESOLVED_RUPR_RUNINU_HYDROLOGY_CONTEXT_OR_FIND_EXISTING_AUTHORITY_BEFORE_END_TO_END_COMPOSITION"
+}
