@@ -1,0 +1,15 @@
+{
+  "work_unit": "ANIMO-KT14B",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "41c5f8053429786212f1d00536cc4940d2459e02",
+  "substantive_authoring_tree": "ef4ef7959de202cee9de0cd1e7ef523a84f5c771",
+  "frozen_implementation_blob": "080454a49e123ff4bd86a2fcdac7755b635e8734",
+  "frozen_test_blob": "b157725f70fc48c2e8037c781ca38be07110ff01",
+  "boundq02b_blob": "eae62a2ce077e3e568a8a73b25ac45d20c432bae",
+  "validated_run": 35375260250,
+  "validated_job": 105698325296,
+  "validated_conclusion": "success",
+  "candidate_claim": "OPAQUE_CONTENT_BOUND_BOUNDQ02B_FRAME_CAN_DRIVE_THE_REMEDIATED_KT13A_TCD042_ONE_INTERVAL_COMPOSITION_WITH_COPY_OUT_ONLY_ACCESS",
+  "independent_review_required": true,
+  "production_authorized": false
+}
