@@ -1,0 +1,59 @@
+{
+  "workunit": "ANIMO-KT08",
+  "title": "LWKM Full Explicit Hydrology Producer Sequence Evidence",
+  "phase": "IMPLEMENT",
+  "checkpoint_state": "FULL_SEQUENCE_B1_SUMMARY_AND_FAIL_CLOSED_REMATERIALIZER_AUTHORED_CI_PENDING",
+  "branch": "work/animo-kt08-lwkm-full-sequence-evidence",
+  "base_authority": "ANIMO-KT07@24dc3164c7832963d0b8931a8edf5155879a3f8d",
+  "consumed_kt03_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
+  "consumed_kt05_closeout": "ANIMO-KT05@3319e57adbf6036a86684f8e26d9559454c07b82",
+  "consumed_kt07_qualified_evidence_head": "2d469e0a00071b73207112222199eef82c96a961",
+  "consumes_kt06_as_qualified_authority": false,
+  "evidence_class": "B1_DERIVED_FROM_PINNED_B0_PRODUCER_NOT_B2",
+  "source_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
+  "packet_count": 1800,
+  "aggregate_identity": {
+    "typed_step_digest_sequence_sha256": "c17319d5a014d498335ed6d6736d0f10adffc4dc30fd3722b220e77dc2eaa5e4",
+    "dynamic_group_digest_sequence_sha256": "40664a5fa73a980ad00b044bbce543b571b0e9302356f4b889dae2802deb2e34",
+    "temporal_and_digest_record_sequence_sha256": "eb14311a997129df4ae590ea1c72baecadcc2991ec0c3e8e313ed4ba3720ddc1"
+  },
+  "temporal_envelope": {
+    "first_origin_day": 0.0,
+    "last_endpoint_day": 18263.0,
+    "chain_violation_count": 0,
+    "duration_histogram_days": {
+      "8": 37,
+      "9": 13,
+      "10": 1400,
+      "11": 350
+    }
+  },
+  "production_src_modified": false,
+  "kt03_adapter_modified": false,
+  "kt05_adapter_modified": false,
+  "kt06_modified": false,
+  "implemented_capabilities": [
+    "all 1800 pinned LWKM Hlpimp=11 packets covered by compact aggregate identities",
+    "all packets parsed and validated through frozen KT03 materializer logic",
+    "all packets require explicit interception projection capability",
+    "gap-free producer-coordinate chain checked fail closed",
+    "duration histogram and complete sequence extent persisted",
+    "representative anchors persisted across duration classes and sequence positions",
+    "raw-source rematerializer independently pins all aggregate sequence identities"
+  ],
+  "verdict": "IMPLEMENTED_B1_FULL_LWKM_SEQUENCE_EVIDENCE_AWAITING_EXACT_HEAD_CI_AND_SAME_AGENT_REVIEW",
+  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW_AND_CLOSE_IF_NO_MATERIAL_FINDINGS",
+  "explicit_exclusions": [
+    "B2 historical compiler equivalence",
+    "generic producer sequence semantics",
+    "Hlpimp=1 semantics",
+    "multi-packet forcing-provider semantics",
+    "retry or timestep selection policy",
+    "KT02 or KT06 runtime integration",
+    "Hydro_detailed scientific execution",
+    "ANIMO scientific admissibility",
+    "production migration",
+    "B3 or B4 admission",
+    "Status A or Status AA"
+  ]
+}

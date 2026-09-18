@@ -1,0 +1,34 @@
+name: ANIMO KT08 LWKM full sequence evidence
+
+on:
+  push:
+    branches:
+      - work/animo-kt08-lwkm-full-sequence-evidence
+    paths:
+      - 'reference/kt08/**'
+      - 'tools/kt08_*'
+      - 'tests/kt08/**'
+      - 'docs/kt08/**'
+      - 'integration/animo-kt08/**'
+      - '.github/workflows/animo-kt08-lwkm-sequence.yml'
+  workflow_dispatch:
+
+jobs:
+  sequence-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install gfortran
+        run: sudo apt-get update && sudo apt-get install -y gfortran
+      - name: Re-run frozen KT03 adapter tests
+        run: python3 tests/kt03/test_kt03_hydrology_adapter.py
+      - name: Re-run frozen KT05 compiled adapter tests
+        run: bash tests/kt05/run_kt05_tests.sh
+      - name: Re-run closed KT07 packet evidence tests
+        run: bash tests/kt07/run_kt07_tests.sh
+      - name: Validate KT08 full-sequence summary
+        run: python3 tests/kt08/test_kt08_sequence_summary.py
+      - name: Validate KT08 JSON
+        run: |
+          python3 -m json.tool reference/kt08/LWKM_SEQUENCE_SUMMARY.json >/dev/null
+          python3 -m json.tool integration/animo-kt08/ANIMO-KT08_CHECKPOINT.json >/dev/null

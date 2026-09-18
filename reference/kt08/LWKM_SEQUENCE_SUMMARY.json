@@ -1,0 +1,125 @@
+{
+  "workunit": "ANIMO-KT08",
+  "title": "LWKM Full Explicit Hydrology Producer Sequence Evidence",
+  "evidence_class": "B1_DERIVED_FROM_PINNED_B0_PRODUCER_NOT_B2",
+  "source_case": "LWKM_gras_1040.2021.2045",
+  "source_member": "input/SWATRE.UNF",
+  "source_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
+  "source_model_version": "V7.3.3.3",
+  "legacy_layout_id": "ANIMO41_SWAP3_RECORD_LAYOUT_V1",
+  "hlpimp": 11,
+  "static": {
+    "layer_count": 30,
+    "horizon_count": 30,
+    "drainage_count": 5,
+    "has_soil_temperature": true
+  },
+  "sequence": {
+    "packet_count": 1800,
+    "first_origin_day": 0.0,
+    "first_endpoint_day": 10.0,
+    "last_endpoint_day": 18263.0,
+    "sum_producer_step_days": 18263.0,
+    "chain_violation_count": 0,
+    "unique_endpoint_count": 1800,
+    "all_packets_explicit_interception": true,
+    "all_packets_soil_temperature": true,
+    "duration_histogram_days": {
+      "8": 37,
+      "9": 13,
+      "10": 1400,
+      "11": 350
+    },
+    "interception_storage_end_m": {
+      "minimum": 0.0,
+      "maximum": 0.0002,
+      "nonzero_packet_count": 652
+    }
+  },
+  "aggregate_identity": {
+    "typed_step_digest_sequence_sha256": "c17319d5a014d498335ed6d6736d0f10adffc4dc30fd3722b220e77dc2eaa5e4",
+    "dynamic_group_digest_sequence_sha256": "40664a5fa73a980ad00b044bbce543b571b0e9302356f4b889dae2802deb2e34",
+    "temporal_and_digest_record_sequence_sha256": "eb14311a997129df4ae590ea1c72baecadcc2991ec0c3e8e313ed4ba3720ddc1"
+  },
+  "anchors": [
+    {
+      "index_zero_based": 0,
+      "endpoint_day": 10.0,
+      "duration_days": 10.0,
+      "dynamic_group_sha256": "2e5e8ff7c088ddd94f91aeb663ea10abdecfda0ac4cd418a8bf90be955389ec7",
+      "typed_step_sha256": "eeeb862839cce8111535fae86220d8574240804b9f6f029f7ec8e07ceb65da1c",
+      "role": "first_packet_and_first_duration_10"
+    },
+    {
+      "index_zero_based": 2,
+      "endpoint_day": 31.0,
+      "duration_days": 11.0,
+      "dynamic_group_sha256": "791323b8bd543f5da63dd09ea87ffbaf4b870975640d77a76dfda7047d2fadc1",
+      "typed_step_sha256": "1c40735365aaa256f50ce6fb04932b8705ccc84a32a33e9c59ab2657e73d08bb",
+      "role": "first_duration_11"
+    },
+    {
+      "index_zero_based": 5,
+      "endpoint_day": 59.0,
+      "duration_days": 8.0,
+      "dynamic_group_sha256": "62ecdee40d2ccd0ca5cc937954a1c634f2a9a4b3bee74dc32144bf6a4f7b20db",
+      "typed_step_sha256": "1f6b50fc105c74b368c5ed874b638f25818c27de1e9db659ee886cad951796ff",
+      "role": "first_duration_8"
+    },
+    {
+      "index_zero_based": 41,
+      "endpoint_day": 425.0,
+      "duration_days": 9.0,
+      "dynamic_group_sha256": "f5c0caab3def68036a3105197de371cb1f5db85e5294f24360f1c0b8903416d7",
+      "typed_step_sha256": "c48214ac436c9064439985f3277e09168706da0ec9ac85fd99c13444c53f596f",
+      "role": "first_duration_9"
+    },
+    {
+      "index_zero_based": 449,
+      "endpoint_day": 4564.0,
+      "duration_days": 10.0,
+      "dynamic_group_sha256": "87224710b3ba490ffb1cb2fa96739e778d01e3383f44f9b31c7bca946ae98ef8",
+      "typed_step_sha256": "cd69eb989ab7a026abcf5639a4c48af869aaef827b4be7d6a58c9719ab21e93b",
+      "role": "quarter_anchor"
+    },
+    {
+      "index_zero_based": 899,
+      "endpoint_day": 9131.0,
+      "duration_days": 11.0,
+      "dynamic_group_sha256": "1399f89088ad6d3e1c3e6b9d4132f85513b5d557fd2fa0243e142faaea7881cb",
+      "typed_step_sha256": "38704acfa6d22e3fe01497ab50edd6d6615c3b7d6636a95dc1668bafeb5fdcf4",
+      "role": "mid_sequence_anchor"
+    },
+    {
+      "index_zero_based": 1349,
+      "endpoint_day": 13696.0,
+      "duration_days": 10.0,
+      "dynamic_group_sha256": "19c479071b52ea7b9293f787ba53f71bafd97552efb5e4abd9f8643dd6759e75",
+      "typed_step_sha256": "2754c5cfaebac86fbc8f9188c00795efb079d8e0c8a922401107dd573dfcbcfe",
+      "role": "three_quarter_anchor"
+    },
+    {
+      "index_zero_based": 1799,
+      "endpoint_day": 18263.0,
+      "duration_days": 11.0,
+      "dynamic_group_sha256": "37cf898001765e1524b4427c87f39cf88a01c3be4367a68db44f91b2db921b7e",
+      "typed_step_sha256": "fd66644f8ff471befadc0cb4ac46e615349e379d588437e6d6df390818fb4e0e",
+      "role": "last_packet"
+    }
+  ],
+  "diagnostic_normalization": {
+    "authority": "prototype/kt03/hydrology_step.py::legacy_dble_trunc_diagnostic",
+    "classification": "B1_DIAGNOSTIC_ADAPTER_PROBE_NOT_B2"
+  },
+  "nonclaims": [
+    "B2 historical compiler equivalence",
+    "generic producer sequence semantics outside the pinned LWKM file",
+    "KT02 or KT06 runtime integration",
+    "multi-packet forcing-provider semantics",
+    "retry or timestep-selection policy",
+    "Hydro_detailed scientific execution",
+    "ANIMO scientific admissibility",
+    "Hlpimp=1 semantics",
+    "production coupling"
+  ]
+}
