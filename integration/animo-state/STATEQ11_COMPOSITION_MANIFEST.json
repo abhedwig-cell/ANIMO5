@@ -1,0 +1,65 @@
+{
+  "work_unit": "ANIMO-STATEQ11",
+  "authorities": {
+    "RG06": "8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+    "STATEQ08": "e9ee7fc9e69a62c58b6eacd6379220cc51c1bf07",
+    "STATEQ09": "f6e91fc1cb664d67caccc02e6ab21525a768d006",
+    "STATEQ10": "614391014438b2cc4445d2d6a8008c3f0f1c45d0",
+    "BOUNDQ02": "fb0c0c842aed9a90378aca613279e09a856ad09b"
+  },
+  "exact_final_ci": {
+    "STATEQ08": {
+      "run": 35368900188,
+      "conclusion": "success"
+    },
+    "STATEQ09": {
+      "run": 35370652476,
+      "conclusion": "success"
+    },
+    "STATEQ10": {
+      "run": 35371035447,
+      "conclusion": "success"
+    },
+    "BOUNDQ02": {
+      "run": 35373354465,
+      "conclusion": "success"
+    }
+  },
+  "frozen_blobs": {
+    "STATEQ09": "e55a72fd37b20addaf7131ed085b417768b84a1c",
+    "STATEQ10": "7c4144785ae023abb3ff3fe4e760519c650626b8",
+    "BOUNDQ02": "2b7441c9909022dcb16b3ca2f35ee08d079269b8"
+  },
+  "accepted_identity": [
+    "lineage_id",
+    "generation",
+    "accepted_time"
+  ],
+  "continuation_payload": [
+    "STATEQ09_Pn_Sic_Snla_Mofro",
+    "STATEQ08_Runinu_call_entry",
+    "BOUNDQ02_boundary_year_cursor"
+  ],
+  "first_interval": {
+    "hydrology_origin": "STATEQ10_EXPLICIT_REAL4_NORMALIZATION",
+    "boundary_cursor": "BOUNDQ02_UNINITIALIZED_CURSOR_ALLOWED",
+    "runinu": "EXPLICIT_INPUT_REQUIRED_SOURCE_UNDEFINED"
+  },
+  "next_interval": {
+    "hydrology_origin": "STATEQ09_ACCEPTED_ENDPOINT_TRANSFER",
+    "runinu": "ACCEPTED_RESOLVED_RUNINU_BECOMES_NEXT_CALL_ENTRY",
+    "boundary_cursor": "PROPOSED_BOUNDQ02_NEXT_CURSOR_MUST_BE_INITIALIZED",
+    "generation_increment": 1
+  },
+  "atomicity": {
+    "implemented_here": false,
+    "future_requirement": "KT02 accepted store and STATEQ11 continuation must publish as one logical commit group"
+  },
+  "nonclaims": [
+    "canonical state admission",
+    "checkpoint schema admission",
+    "first-call Runinu historical value",
+    "multi-owner atomic commit implementation",
+    "B4 or production"
+  ]
+}
