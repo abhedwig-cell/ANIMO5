@@ -4,9 +4,9 @@
   "branch": "work/animo-rg09-post-kt20-real-provider-bridge-rebaseline",
   "predecessor": "ANIMO-RG08@14109956b62376d0d0ab681e8c641c9e71d110bd",
   "authoring_base": "ANIMO-KT20@c41a28580421bf4dce770e438535ba92a57567cd",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_POST_KT20_REAL_SOURCE_PROVIDER_BRIDGE_REBASELINE_REVIEW_GATE_FROZEN_NO_ADMISSION_OR_PRODUCTION_ADVANCE",
+  "decision": "QUALIFY_POST_KT20_REBASELINE_AND_REVIEW_GATE_FREEZE_NO_CANDIDATE_ADMISSION_OR_PRODUCTION_ADVANCE",
   "central_runtime_admissions_changed": false,
   "independent_review_bundle_is_logistics_only": true,
   "independent_reviews_completed": false,
@@ -23,16 +23,22 @@
   "denominator_status": "DENOMINATOR_NOT_YET_QUALIFIED",
   "review": {
     "required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "genuinely_independent": false
+    "genuinely_independent": false,
+    "reviewed_head": "1e504b0b7750541fe4c35f65d8565637723dceea",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-rg09-post-kt20-rebaseline.yml",
     "validator": "tools/validate_rg09_post_kt20_rebaseline.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35405109269,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "1e504b0b7750541fe4c35f65d8565637723dceea",
+    "closeout_note": "Validated RG09 authoring package at 1e504b0b7750541fe4c35f65d8565637723dceea passed exact-head CI run 35405109269. This review/status-only closeout is authoritative only if the identical workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -54,10 +60,10 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_AND_SELF_REVIEW; IF_GREEN_USE_RG09_AS_CURRENT_PROGRAM_REBASELINE_AND_ROUTE_GENUINE_INDEPENDENT_REVIEW_WITHOUT_AUTO_ADMISSION"
+  "next": "USE_RG09_AS_CURRENT_PROGRAM_REBASELINE_AFTER_EXACT_FINAL_HEAD_CI; NEXT_SERIAL_GATE_IS_GENUINELY_INDEPENDENT_TIER_C_AND_TIER_D_REVIEW_WITH_SEPARATE_PER_CANDIDATE_ADMISSION; OWNERSHIP_DISJOINT_REAL_SOURCE_APPLICATION_ENVELOPE_CHARACTERIZATION_MAY_PROCEED_NONPRODUCTION"
 }
