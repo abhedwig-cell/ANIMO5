@@ -1,0 +1,47 @@
+{
+  "work_unit": "ANIMO-STATEQ09",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_members": {
+    "Animo.for": {
+      "sha256": "352854c2ccd94b55731590fe2a2377012a302a041397fc51379c7b449b2821f7",
+      "evidence": [
+        "Init is called at the start of each timestep before Input_hydro and Hydro_detailed",
+        "source comment identifies Init as update from previous-step result"
+      ],
+      "mapped_lines": "262-295"
+    },
+    "Init.for": {
+      "sha256": "287db00773ea21a155383b01a3ea35426c216117085822069e7bd844f71e0058",
+      "description": "Initial values for this time step are determined using values from previous time step.",
+      "mapped_lines": "339-350",
+      "bounded_assignments": [
+        "Mofro(Ln)=Mofrt(Ln), Ln=1..Nl",
+        "Snla=Snt when Iopthyvs=1",
+        "Sic=Sict when Iopthyvs=1 and Hlpimp=11",
+        "Pn=Pnt"
+      ]
+    }
+  },
+  "bounded_route": {
+    "Iwa": 2,
+    "Iopthyvs": 1,
+    "Hlpimp": 11
+  },
+  "state_classification": {
+    "Pn": "ACCEPTED_HYDROLOGY_ORIGIN_CONTINUATION",
+    "Sic": "ACCEPTED_HYDROLOGY_ORIGIN_CONTINUATION",
+    "Snla": "ACCEPTED_HYDROLOGY_ORIGIN_CONTINUATION",
+    "Mofro_1_to_Nl": "ACCEPTED_HYDROLOGY_ORIGIN_CONTINUATION",
+    "Runinu": "EXCLUDED_SEPARATE_STATEQ08_EXECUTION_CONTINUATION",
+    "He": "EXCLUDED_STATIC_GEOMETRY_CONFIGURATION",
+    "Lefrrv": "EXCLUDED_STATIC_CONFIGURATION",
+    "Lefrso": "EXCLUDED_STATIC_CONFIGURATION"
+  },
+  "first_interval_initialization": {
+    "qualified_here": false
+  },
+  "restart_dependency": {
+    "source_faithful_reconstruction_required_after_accepted_endpoint": true,
+    "canonical_checkpoint_schema_admitted": false
+  }
+}
