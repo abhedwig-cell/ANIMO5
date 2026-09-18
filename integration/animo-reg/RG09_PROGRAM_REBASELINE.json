@@ -1,0 +1,137 @@
+{
+  "work_unit": "ANIMO-RG09",
+  "title": "Post-KT20 Real-Source Provider Bridge Rebaseline and Independent-Review Gate Freeze",
+  "predecessor": "ANIMO-RG08@14109956b62376d0d0ab681e8c641c9e71d110bd",
+  "authoring_base": "ANIMO-KT20@c41a28580421bf4dce770e438535ba92a57567cd",
+  "authoring_base_exact_final_ci": 35404974857,
+  "central_admitted_runtime_authorities": {
+    "kt06": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+    "kt11": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
+    "changed_by_rg09": false
+  },
+  "current_scientific_aggregate": {
+    "queue_authority": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+    "top_level_total": 25,
+    "admitted_top_level": 22,
+    "unadmitted_top_level": [
+      "TCD-016",
+      "TCD-034",
+      "TCD-040"
+    ],
+    "b3_complete": false
+  },
+  "scientific_frontier": {
+    "TCD-016": {
+      "authority": "ANIMO-B3B14@1f13c7cab30772f4aa8d5071b19d13761c2b5f16",
+      "state": "QUALIFIED_TCD016_PARENT_NOT_READY_EXPLICIT_MODEL_EVOLUTION_DECISION_REQUIRED",
+      "next": "EXPLICIT_MODEL_EVOLUTION_DECISION_NO_SILENT_HISTORICAL_REWETTING_PHYSICS"
+    },
+    "TCD-034": {
+      "authority": "ANIMO-GHG14@b82e5de364396eef3132f33cc48f8c28ab5aa04e",
+      "state": "QUALIFIED_TCD034_CLASS_F_READINESS_REASSESSMENT_NOT_READY_THREE_MATERIAL_GATES_REMAIN_V1",
+      "material_gates": [
+        "PROCESS_RESOLVED_EMPIRICAL_VALIDATION_WITH_ANTI_COMPENSATION_DESIGN",
+        "INTENDED_APPLICATION_ENVELOPE_EXPECTED_CHANGE_EVIDENCE",
+        "GENUINELY_INDEPENDENT_CLASS_F_SCIENTIFIC_REVIEW"
+      ]
+    },
+    "TCD-040": {
+      "authority": "ANIMO-B3B04E3@fedf2177b8228507beb91d7318b5f4dec5078241",
+      "state": "CLOSED_RECONSTRUCTED_REPLAY_PACKAGE_VALIDATED_CONTROLLED_B0_CUSTODY_PENDING",
+      "blocker": "ANIMO-EG01_CONTROLLED_IMMUTABLE_B0_PRIMARY_SECONDARY_CUSTODY_AND_RESTORE_VERIFICATION"
+    }
+  },
+  "latest_external_provider_chain": {
+    "kt19": {
+      "authority": "ANIMO-KT19@6245aad4aca962cb2a63d0394bb7f2baa686457d",
+      "state": "QUALIFIED_PINNED_LWKM_FILE_TO_IMMUTABLE_HYDROLOGY_PROVIDER_TIER_C_REVIEW_REQUIRED",
+      "source_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
+      "packet_count": 1800,
+      "full_external_source_replay_passed": true,
+      "b2_claimed": false,
+      "independent_review_required": true
+    },
+    "kt20": {
+      "authority": "ANIMO-KT20@c41a28580421bf4dce770e438535ba92a57567cd",
+      "state": "QUALIFIED_KT19_PACKET_FRAME_TO_KT18_APPLICATION_BRIDGE_TIER_D_REVIEW_REQUIRED",
+      "exact_final_ci": 35404974857,
+      "real_b1_first_packet_reaches_kt18": true,
+      "real_b1_first_packet_application_result": "FAIL_CLOSED_NO_PUBLICATION",
+      "synthetic_bridge_control_commits": true,
+      "full_real_sequence_application_execution_qualified": false,
+      "canonical_forcing_abi_admitted": false,
+      "independent_review_required": true
+    }
+  },
+  "strongest_bounded_runtime_claim": {
+    "checkpoint_restart": "ANIMO-KT17@6d05b270e21a41ca626adbb719f8f55bfa9a97b5",
+    "provider_application": "ANIMO-KT18@42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72",
+    "real_source_provider": "ANIMO-KT19@6245aad4aca962cb2a63d0394bb7f2baa686457d",
+    "real_source_bridge": "ANIMO-KT20@c41a28580421bf4dce770e438535ba92a57567cd",
+    "bounded_claim": "Pinned LWKM bytes can be fail-closed materialized into exact normalized packets; exact packet values can cross the nonproduction Python/Fortran seam and enter the bounded accepted-application runtime without bypassing scientific admission or atomic rollback."
+  },
+  "real_source_interpretation": {
+    "provider_evidence_is_not_scientific_admission": true,
+    "first_real_packet_outside_current_bounded_application": true,
+    "significance": "The adapter/runtime path is materially real while the current TCD-042 scientific envelope remains intentionally narrow. A provider success must not be promoted into a whole-application science claim.",
+    "full_sequence_application_claim": false
+  },
+  "review_backlog": {
+    "lower_level_tier_c": [
+      "STATEQ08",
+      "STATEQ09",
+      "STATEQ10",
+      "BOUNDQ01",
+      "BOUNDQ02",
+      "BOUNDQ02B",
+      "KT19"
+    ],
+    "lower_level_tier_d": [
+      "KT12",
+      "HYDROQ01",
+      "HYDROQ02",
+      "HYDROEXEC01",
+      "UBFORCE01",
+      "UBFORCE02"
+    ],
+    "composite_tier_d": [
+      "KT13A",
+      "STATEQ11",
+      "KT14B",
+      "KT15",
+      "KT15A",
+      "KT16",
+      "KT17",
+      "KT18",
+      "KT20"
+    ],
+    "genuinely_independent_review_completed": false,
+    "per_candidate_admission_gate_retained": true,
+    "no_bundle_level_auto_admission": true
+  },
+  "project_gates": {
+    "b3_complete": false,
+    "tb7_open": false,
+    "b4_open": false,
+    "production_open": false,
+    "status_a_claimed": false,
+    "status_aa_claimed": false,
+    "denominator_status": "DENOMINATOR_NOT_YET_QUALIFIED"
+  },
+  "next_wave": {
+    "serial_governance": [
+      "FREEZE_RG09_ON_EXACT_FINAL_HEAD_CI",
+      "EXECUTE_GENUINELY_INDEPENDENT_TIER_C_AND_TIER_D_REVIEW_OF_FROZEN_TARGETS",
+      "MAKE_SEPARATE_FORMAL_ADMISSION_DECISIONS_ONLY_AFTER_SUCCESSFUL_INDEPENDENT_REVIEW"
+    ],
+    "ownership_disjoint_technical": [
+      "REAL_SOURCE_APPLICATION_ENVELOPE_CHARACTERIZATION_NONPRODUCTION_WITHOUT_WIDENING_TCD042",
+      "PORTABLE_CHECKPOINT_BYTE_FORMAT_ONLY_IF_SEPARATELY_AUTHORIZED"
+    ],
+    "science": [
+      "TCD016_EXPLICIT_MODEL_EVOLUTION_DECISION",
+      "TCD034_REMAINING_CLASS_F_EVIDENCE",
+      "TCD040_CONTROLLED_B0_CUSTODY_RESTORE_PROOF"
+    ]
+  }
+}
