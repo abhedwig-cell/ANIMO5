@@ -4,13 +4,13 @@
   "branch": "work/animo-boundq02b-immutable-boundary-frame",
   "base": "ANIMO-BOUNDQ02@fb0c0c842aed9a90378aca613279e09a856ad09b",
   "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_OPAQUE_CONTENT_BOUND_STATIC_BOUNDARY_FRAME_TIER_C_REVIEW_REQUIRED",
+  "decision": "QUALIFY_OPAQUE_COPY_OUT_ONLY_BOUNDQ02_FRAME_WITH_CANONICAL_CONTENT_SHA256_AND_SLOT_BOUND_FORCING_IDENTITY_NO_HASH_VERIFICATION_OR_STATE_ADMISSION",
   "risk_tier_candidate": "C_RUNTIME_EXCHANGE_FRAME_INTEGRITY",
-  "opaque_frame_qualified": false,
-  "copy_out_access_qualified": false,
-  "content_slot_identity_qualified": false,
+  "opaque_frame_qualified": true,
+  "copy_out_access_qualified": true,
+  "content_slot_identity_qualified": true,
   "source_hash_verification_qualified": false,
   "canonical_forcing_state_admitted": false,
   "checkpoint_schema_admitted": false,
@@ -19,17 +19,24 @@
   "supported_scope": "BOUNDQ02_STATIC_FRAME_WRAPPED_AS_PRIVATE_CONTENT_SHA256_AND_SLOT_BOUND_EXACT_INTERVAL_FRAME",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_c_review_required_for_admission": true
+    "independent_tier_c_review_required_for_admission": true,
+    "reviewed_head": "6a243d40f78c58cae6afa792190b5a92c469df6a",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-boundq02b-immutable-frame.yml",
     "validator": "tools/validate_boundq02b_immutable_frame.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35374249567,
+    "authoring_job": 105695082821,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "6a243d40f78c58cae6afa792190b5a92c469df6a",
+    "closeout_note": "Validated substantive opaque-frame target passed exact-head CI run 35374249567. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -48,10 +55,13 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN USE_ONLY_THE_OPAQUE_BOUNDQ02B_FRAME_FOR_FUTURE_SCIENTIFIC_COMPOSITION_AND_SUPERSEDE_DIRECT_PUBLIC_BOUNDQ02_FRAME_CONSUMPTION"
+  "next": "USE_BOUNDQ02B_OPAQUE_FRAME_FOR_ALL_NEW_SCIENTIFIC_COMPOSITION; DO_NOT_ADD_NEW_DIRECT_CONSUMERS_OF_PUBLIC_BOUNDQ02_FRAME; UPDATE_KT14_COMPOSITION_TO_COPY_OUT_FROM_BOUNDQ02B; INDEPENDENT_TIER_C_REVIEW_REMAINS_REQUIRED",
+  "frozen_substantive_head": "6a243d40f78c58cae6afa792190b5a92c469df6a",
+  "frozen_substantive_tree": "1b6905c2e83ce868f352335b4fc56dbd9192bf14",
+  "frozen_implementation_blob": "eae62a2ce077e3e568a8a73b25ac45d20c432bae"
 }
