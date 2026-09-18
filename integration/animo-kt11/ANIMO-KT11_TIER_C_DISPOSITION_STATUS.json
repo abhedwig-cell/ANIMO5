@@ -1,0 +1,41 @@
+{
+  "work_unit": "ANIMO-KT11-D1",
+  "title": "ANIMO-KT11 GOV04 Tier C Formal Disposition",
+  "branch": "work/animo-kt11-gov04-tier-c-disposition",
+  "target": "ANIMO-KT11",
+  "state": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_ADMISSION_DECISION",
+  "decision": "QUALIFIED_TIER_C_FORMAL_DISPOSITION_READY_FOR_SEPARATE_ADMISSION_DECISION",
+  "formal_disposition": "QUALIFY_BOUNDED_NONPRODUCTION_MULTI_PACKET_PROVIDER_CLAIM_UNCHANGED",
+  "gov04_risk_tier": "C",
+  "admitted": false,
+  "production_authorized": false,
+  "gov04_authority": "ANIMO-GOV04@1bbe4c211197590f346803106e45dca5faae79fc",
+  "independent_review_authority": "review/animo-kt11-multi-packet-hydrology-provider-independent@dc91b04cd01230fcffbde12fcc8423e35d98bf85",
+  "independent_review_result": "PASS_CLAIM_UNCHANGED",
+  "frozen_candidate_head": "843ac357f8b86f84131ddc08bf2097bb5af4e080",
+  "frozen_implementation_blob": "a41d0f61da6dd30a18dbfadbe4b29b00259fa41e",
+  "disposition_record": "integration/animo-kt11/ANIMO-KT11_TIER_C_FORMAL_DISPOSITION.json",
+  "hard_boundaries": {
+    "frozen_implementation_modified": false,
+    "kt02_runtime_modified": false,
+    "kt05_adapter_modified": false,
+    "kt06_implementation_modified": false,
+    "production_source_modified": false,
+    "production_coupling_admitted": false,
+    "composition_admitted": false,
+    "b3_admitted": false,
+    "b4_admitted": false,
+    "status_a_claimed": false,
+    "status_aa_claimed": false,
+    "central_regie_updated": false
+  },
+  "validation": {
+    "independent_review_gate": "PASS",
+    "frozen_blob_reverified": true,
+    "formal_disposition_json_parse": "PASS",
+    "scope_widening": false,
+    "validated_disposition_blob": "864778816d0eb8d93130af56ae18660793d7e65a",
+    "validated_frozen_implementation_blob": "a41d0f61da6dd30a18dbfadbe4b29b00259fa41e"
+  },
+  "next_if_validated": "SEPARATE_GOV04_TIER_C_ADMISSION_DECISION_FOR_ANIMO_KT11"
+}
