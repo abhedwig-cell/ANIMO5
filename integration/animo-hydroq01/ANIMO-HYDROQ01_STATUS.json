@@ -6,12 +6,12 @@
   "current_program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
   "consumer_candidate": "ANIMO-KT12@8f0e8e4bfd0b391b781f7c69b7d2063d5cf8705e",
   "tcd042_parent": "ANIMO-B3D35@9ca23f41dc3c28af686b1bc0bff8e7d66416d367",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_TCD042_POST_HYDRO_DETAILED_RESOLVED_UPPER_HYDROLOGY_CONTRACT_TIER_D_REVIEW_REQUIRED",
+  "decision": "QUALIFY_BOUNDED_SOURCE_MAPPED_RESOLVED_UPPER_HYDROLOGY_CONTRACT_NO_EXECUTION_OR_COMPOSITION_ADMISSION",
   "risk_tier_candidate": "D_CROSS_MODULE_SCIENTIFIC_COMPOSITION_INTERFACE",
-  "source_mapping_qualified": false,
-  "typed_contract_qualified": false,
+  "source_mapping_qualified": true,
+  "typed_contract_qualified": true,
   "hydro_detailed_execution_qualified": false,
   "modflux_execution_qualified": false,
   "direct_kt11_to_kt12_composition_unlocked": false,
@@ -20,17 +20,24 @@
   "supported_scope": "Flpn=0 AND Flib_top>=0 AND Rurv=exact_binary64_zero AND exact_forward_whole_day_interval",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_d_review_required_for_admission": true
+    "independent_tier_d_review_required_for_admission": true,
+    "reviewed_head": "306998db1844ed4efa620fef7b573f098cab95e1",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-hydroq01-resolved-upper-hydrology.yml",
     "validator": "tools/validate_hydroq01_resolved_upper_hydrology.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35365089013,
+    "authoring_job": 105665475671,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "306998db1844ed4efa620fef7b573f098cab95e1",
+    "closeout_note": "Validated authoring/freeze package passed run 35365089013. This review/status-only closeout is authoritative only if the same workflow succeeds on this exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -46,10 +53,13 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_THEN_SAME_AGENT_ADVERSARIAL_REVIEW; IF_GREEN_PREPARE_SEPARATE_TIER_D_REVIEW_HANDOFF; DO_NOT_UNLOCK_DIRECT_COMPOSITION_UNTIL_SOLUTE_LOAD_FORCING_SURFACE_IS_ALSO_QUALIFIED"
+  "next": "USE_HYDROQ01_AS_QUALIFIED_NONPRODUCTION_RESOLVED_HYDROLOGY_CONTRACT_CANDIDATE; DO_NOT_ADMIT_END_TO_END_COMPOSITION; RECONCILE_OR_CREATE_SEPARATE_TCD042_UPPER_BOUNDARY_SOLUTE_LOAD_FORCING_CONTRACT; TIER_D_INDEPENDENT_REVIEW_REMAINS_REQUIRED",
+  "frozen_substantive_head": "fd4e826fea01db90d9e6fde566ac7bde61c4ea4f",
+  "frozen_substantive_tree": "af4492c55e595789b055280336497c35bf8bf25f",
+  "frozen_implementation_blob": "081e6b45e777ebccb852b3d1adde05ed6baaeb6a"
 }
