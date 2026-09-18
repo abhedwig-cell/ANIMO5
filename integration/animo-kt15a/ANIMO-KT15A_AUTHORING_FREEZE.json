@@ -1,0 +1,17 @@
+{
+  "work_unit": "ANIMO-KT15A",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "f2808c2af442f1bddd62b509f656547710bd6474",
+  "substantive_authoring_tree": "d12012862557f1de47d9d0ac0aabb8145b7cb23e",
+  "frozen_implementation_blob": "d9a975cadd4471767fdb71c010a636bba0e69c41",
+  "frozen_test_blob": "27e92f8318826cb4a7730434f577233b1d0e2eb5",
+  "validated_run": 35376658944,
+  "validated_job": 105702794122,
+  "validated_conclusion": "success",
+  "candidate_claim": "KT15_ACCEPTED_APPLICATION_STATE_CARRIES_IMMUTABLE_EXECUTION_CONFIGURATION_REQUIRED_TO_INTERPRET_AND_CONTINUE_ITS_ACCEPTED_STATE",
+  "source_hash_verification_qualified": false,
+  "checkpoint_schema_admitted": false,
+  "canonical_state_admitted": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
