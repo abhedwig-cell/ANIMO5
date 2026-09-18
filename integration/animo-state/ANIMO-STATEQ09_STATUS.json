@@ -4,13 +4,13 @@
   "branch": "work/animo-stateq09-detailed-hydrology-origin-continuation",
   "base": "ANIMO-STATEQ08@e9ee7fc9e69a62c58b6eacd6379220cc51c1bf07",
   "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_DETAILED_HYDROLOGY_ACCEPTED_ENDPOINT_TO_NEXT_ORIGIN_CONTINUATION_TIER_C_REVIEW_REQUIRED",
+  "decision": "QUALIFY_SOURCE_DEFINED_DETAILED_HYDROLOGY_ENDPOINT_TO_ORIGIN_CONTINUATION_NO_CANONICAL_STATE_OR_CHECKPOINT_ADMISSION",
   "risk_tier": "C_STATE_RESTART_RUNTIME_SEMANTICS",
-  "source_transfer_semantics_qualified": false,
-  "typed_origin_state_qualified": false,
-  "restart_dependency_qualified": false,
+  "source_transfer_semantics_qualified": true,
+  "typed_origin_state_qualified": true,
+  "restart_dependency_qualified": true,
   "canonical_state_admitted": false,
   "checkpoint_schema_admitted": false,
   "initial_condition_qualified": false,
@@ -20,17 +20,24 @@
   "supported_scope": "IWA2_IOPTHYVS1_HLPIMP11_ACCEPTED_ENDPOINT_TO_NEXT_ORIGIN_TRANSFER",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_c_review_required_for_admission": true
+    "independent_tier_c_review_required_for_admission": true,
+    "reviewed_head": "f5ab9db9a9719fe2fffa2893ebea0728cea5ab23",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-stateq09-hydrology-origin-continuation.yml",
     "validator": "tools/stateq09/validate_stateq09.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35369941647,
+    "authoring_job": 105681263296,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "f5ab9db9a9719fe2fffa2893ebea0728cea5ab23",
+    "closeout_note": "Authoring package at f5ab9db9a9719fe2fffa2893ebea0728cea5ab23 passed exact-head CI. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -46,10 +53,13 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_AND_GOV05_COMPATIBLE_SELF_REVIEW; IF_GREEN_PREPARE_TIER_C_INDEPENDENT_REVIEW; THEN A_MULTI_INTERVAL_COMPOSITION_CAN_USE_STATEQ09_PLUS_STATEQ08_WITHOUT_INVENTING_START_STATE"
+  "next": "USE_STATEQ09_AS_QUALIFIED_ENDPOINT_TO_ORIGIN_CONTINUATION_CANDIDATE_ONLY; STATEQ08_REMAINS_SEPARATE_FOR_RUNINU; STATEQ10_OR_EQUIVALENT_MUST_QUALIFY_FIRST_INTERVAL_ORIGIN_INPUTS; INDEPENDENT_TIER_C_REVIEW_REMAINS_REQUIRED_BEFORE_CANONICAL_STATE_OR_CHECKPOINT_ADMISSION",
+  "frozen_substantive_head": "f5ab9db9a9719fe2fffa2893ebea0728cea5ab23",
+  "frozen_substantive_tree": "0238d26a249e1086f8b268754cae0dcb8c279ff6",
+  "frozen_implementation_blob": "e55a72fd37b20addaf7131ed085b417768b84a1c"
 }
