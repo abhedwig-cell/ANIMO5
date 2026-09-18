@@ -4,9 +4,9 @@
   "branch": "work/animo-kt22-lwkm-tcd042-exclusion-routing",
   "base": "ANIMO-KT21@e591344d9a2fd03b92fd56af1b9b555099edc340",
   "program_authority": "ANIMO-RG09@b019ac4507648e57c196a8a62806d804f39014a2",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_PINNED_LWKM_TCD042_EXCLUSION_ROUTING_TIER_C_REVIEW_REQUIRED_FOR_ANY_LATER_ADMISSION",
+  "decision": "QUALIFY_B1_DIAGNOSTIC_ROUTING_OF_ALL_1401_KT21_OUTSIDE_PACKETS_TO_REV53_ORDINARY_POSITIVE_FLOW_BRANCH_NO_TCD042_WIDENING_OR_SCIENCE_ADMISSION",
   "risk_tier_candidate": "C_REAL_SOURCE_EVIDENCE_RUNTIME_CHARACTERIZATION",
   "tcd042_scope_widened": false,
   "ordinary_positive_flow_implemented": false,
@@ -16,17 +16,25 @@
   "evidence": "integration/animo-kt22/KT22_LWKM_EXCLUSION_ROUTING.json",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_review_required_for_any_later_admission": true
+    "independent_review_required_for_any_later_admission": true,
+    "reviewed_head": "a77424268a61f0e40798c958586c1508190776f6",
+    "outcome": "SELF_REVIEW_PASS",
+    "artifact": "integration/animo-kt22/ANIMO-KT22_ADVERSARIAL_REVIEW.json"
   },
   "validation": {
     "workflow": ".github/workflows/animo-kt22-lwkm-exclusion-routing.yml",
     "validator": "tools/validate_kt22_lwkm_exclusion_routing.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35406305276,
+    "authoring_job": 105796662362,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "a77424268a61f0e40798c958586c1508190776f6",
+    "closeout_note": "The full authoring package at a77424268a61f0e40798c958586c1508190776f6 passed exact-head CI run 35406305276. Review and status-only closeout remain authoritative only if the identical workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "raw_b0_source_committed": false,
@@ -49,10 +57,10 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_AND_SELF_REVIEW; IF_GREEN_USE_KT22_TO_ROUTE_THE_1401_PACKET_REMAINDER_TO_ORDINARY_POSITIVE_FLOW_CAPABILITY_WORK_AND_KEEP_TCD042_CLOSED_TO_ITS_ADMITTED_FALLBACK_SCOPE"
+  "next": "USE_KT22_AS_B1_DIAGNOSTIC_ROUTING_ONLY; DO_NOT_WIDEN_TCD042; NEXT_OWNERSHIP_DISJOINT_SCIENTIFIC_FRONT_IS_A_SEPARATE_REV53_ORDINARY_POSITIVE_FLOW_CONSUMER_COMPOSITION_WORKUNIT_WHILE_FIRST_CALL_RUNINU_AND_PONDING_REMAIN_SEPARATE; ANY_ADMISSION_REQUIRES_ITS_OWN_GOV04_REVIEW"
 }
