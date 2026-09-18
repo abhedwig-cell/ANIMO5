@@ -4,6 +4,7 @@ root="$(cd "$(dirname "$0")/../.." && pwd)"
 cd "$root"
 build="$(mktemp -d)"
 trap 'rm -rf "$build"' EXIT
+
 gfortran -std=f2008 -Wall -Wextra -Werror -ffp-contract=off -fno-fast-math -J "$build" -I "$build" \
   prototype/kt02/runtime/mod_transient_time.f90 \
   prototype/ubforce01/mod_animo_tcd042_upper_solute_load_contract.f90 \
@@ -13,4 +14,21 @@ gfortran -std=f2008 -Wall -Wextra -Werror -ffp-contract=off -fno-fast-math -J "$
   prototype/boundq02b/mod_animo_immutable_static_boundary_frame.f90 \
   tests/boundq02b/test_immutable_static_boundary_frame.f90 \
   -o "$build/test_boundq02b"
+
 "$build/test_boundq02b"
+
+if gfortran -std=f2008 -Wall -Wextra -Werror -I "$build" \
+    -c tests/boundq02b/compile_fail_public_frame_mutation.f90 \
+    -o "$build/should_not_compile.o" >"$build/negative.out" 2>&1; then
+  echo "BOUNDQ02B FAIL_CLOSED: private frame component was externally writable"
+  cat "$build/negative.out"
+  exit 1
+fi
+
+grep -qi "private" "$build/negative.out" || {
+  echo "BOUNDQ02B FAIL_CLOSED: negative compile did not fail for private-component access"
+  cat "$build/negative.out"
+  exit 1
+}
+
+echo "PASS_BOUNDQ02B_PRIVATE_COMPONENT_COMPILE_GUARD"
