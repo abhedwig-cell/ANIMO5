@@ -1,0 +1,114 @@
+{
+  "work_unit": "ANIMO-KT12",
+  "result": "PARTIAL_POSITIVE_SCIENTIFIC_RUNTIME_CLIENT_DIRECT_KT11_COMPOSITION_BLOCKED",
+  "authorities": {
+    "rg06": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+    "rg06_exact_final_ci": 35359364830,
+    "kt11": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
+    "kt06": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+    "tcd042_parent": "ANIMO-B3D35@9ca23f41dc3c28af686b1bc0bff8e7d66416d367",
+    "tcd042_b1": "ANIMO-B3D33@8b2a4071d623bc2e3003dca8977e032d5c0d8c3c",
+    "tcd042_e1": "ANIMO-B3D34@22e4ec3bb88e2e13905ccbbb2f380a9bf235db55",
+    "ubq01": "ANIMO-UBQ01@6895b67799f26888025eced7188e7190b2a0d07d"
+  },
+  "admitted_parent_scope": "Flpn=0 AND Hetop>0 AND (Flux=0 OR (0<Flux<1.0d-8 AND 0<P<=3.8510200002999744e-7 AND binary64))",
+  "source_seam": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "hydro_detailed": {
+      "sha256": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
+      "mapping": [
+        "Flpn resolved from beginning/end ponding+snow state",
+        "Rurv resolved by runoff partitioning",
+        "Flab(1) recalculated/corrected before Modflux",
+        "Modflux invoked before UBoundconc"
+      ]
+    },
+    "modflux": {
+      "sha256": "0c0909922e88ee59233cabc307fb18243ea86023b4722879f6301259780de93d",
+      "mapping": [
+        "Flib(Ln)=Max(0,Flab(Ln))",
+        "Flou receives Rurv/Ruso additions"
+      ]
+    },
+    "uboundconc": {
+      "sha256": "b9a7ec980d40c0f76279077852190788e36cd976d185b12683a38da0c7dfecf7",
+      "mapping": [
+        "for Flpn=0, Flux=Max(0,Flib(1)+Rurv)",
+        "B1/E1 coefficients determine accepted end and average top-reservoir concentrations"
+      ]
+    }
+  },
+  "kt05_boundary": {
+    "owned_external_fields": [
+      "Evicirr",
+      "Evicpr",
+      "Evpn",
+      "Evsn",
+      "Evso",
+      "Evsoma",
+      "Evtrma",
+      "Flab",
+      "Fldr",
+      "Flev",
+      "Mofrt",
+      "Pnt",
+      "Prirr",
+      "Prr",
+      "Prsn",
+      "Ru",
+      "Runon",
+      "Sict",
+      "Snt",
+      "St"
+    ],
+    "explicitly_not_owned": [
+      "runoff partitioning",
+      "Dif correction",
+      "Evso adjustment",
+      "accepted Mofro",
+      "Pn",
+      "Snla",
+      "Sic",
+      "macropore state",
+      "Modflux",
+      "water-balance acceptance",
+      "solute transport"
+    ],
+    "missing_tcd042_resolved_fields": [
+      "Flpn",
+      "Flib(1)",
+      "Rurv"
+    ],
+    "raw_flab1_is_not_authoritative_tcd042_flux": true
+  },
+  "kt12_client": {
+    "implementation": "prototype/kt12/mod_animo_tcd042_upper_boundary_client.f90",
+    "physical_state": "top-reservoir end concentration only",
+    "average_concentration_role": "attempt diagnostic outside accepted physical state",
+    "time_owner": "KT02_ONLY",
+    "resolved_hydrology_input_role": "CANDIDATE_SYNTHETIC_OR_FUTURE_QUALIFIED_POST_HYDRO_DETAILED_CARRIER",
+    "direct_kt11_provider_consumption": false,
+    "b1_implemented": true,
+    "e1_nq03_implemented": true,
+    "production": false
+  },
+  "direct_composition": {
+    "requested_path": "KT11 -> KT06/KT05 -> TCD042",
+    "ready": false,
+    "blocker": "NO_QUALIFIED_POST_HYDRO_DETAILED_RESOLVED_HYDROLOGY_OUTPUT_AUTHORITY",
+    "forbidden_shortcut": "DO_NOT_TREAT_KT05_RAW_FLAB1_AS_POST_HYDRO_DETAILED_FLIB1",
+    "minimum_next_surface": [
+      "Flpn",
+      "Flib_top_after_Modflux",
+      "Rurv",
+      "exact interval identity",
+      "hydrology resolution provenance"
+    ]
+  },
+  "recommended_next": {
+    "id": "ANIMO-HYDROQ01",
+    "title": "Hydro_detailed Resolved Hydrology Output Contract and Runtime Scientific Seam Qualification",
+    "purpose": "qualify the exact post-Hydro_detailed/Modflux typed output required by downstream ANIMO science without yet widening production",
+    "risk_candidate": "GOV04_TIER_D_CROSS_MODULE_SCIENTIFIC_COMPOSITION"
+  }
+}
