@@ -1,0 +1,57 @@
+{
+  "work_unit": "ANIMO-STATEQ10",
+  "title": "First-Interval Detailed-Hydrology Origin Normalization Qualification",
+  "branch": "work/animo-stateq10-first-interval-detailed-hydrology-origin",
+  "base": "ANIMO-STATEQ08@e9ee7fc9e69a62c58b6eacd6379220cc51c1bf07",
+  "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier": "C_INPUT_STATE_RUNTIME_SEMANTICS",
+  "source_mapping_qualified": false,
+  "dble_trunc_semantics_qualified": false,
+  "typed_first_origin_qualified": false,
+  "file_parser_qualified": false,
+  "first_call_runinu_qualified": false,
+  "canonical_state_admitted": false,
+  "historical_b2_claimed": false,
+  "production_authorized": false,
+  "implementation": "prototype/stateq10/mod_animo_first_detailed_hydrology_origin.f90",
+  "supported_scope": "HLPIMP11_IOPTHYVS1_REAL4_INITIAL_MOFRO_SIC_PN_SNLA_TO_SOURCE_NORMALIZED_REAL8_ORIGIN",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_c_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-stateq10-first-detailed-origin.yml",
+    "validator": "tools/stateq10/validate_stateq10.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "file_parser_implemented": false,
+    "runinu_initial_value_invented": false,
+    "generic_real4_to_real8_cast_substituted": false,
+    "canonical_state_registry_modified": false,
+    "checkpoint_schema_modified": false,
+    "hydrology_equation_added": false,
+    "b2_claimed": false,
+    "b3_mutated": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_GOV05_COMPATIBLE_SELF_REVIEW; IF_GREEN_RETAIN_TIER_C_INDEPENDENT_REVIEW_GATE; FIRST_CALL_RUNINU_REMAINS_SEPARATE_UNRESOLVED_HISTORICAL_INPUT"
+}
