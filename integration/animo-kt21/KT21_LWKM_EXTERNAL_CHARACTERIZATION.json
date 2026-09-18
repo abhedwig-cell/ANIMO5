@@ -1,0 +1,97 @@
+{
+  "work_unit": "ANIMO-KT21",
+  "evidence_class": "B1_DIAGNOSTIC_CHARACTERIZATION_DERIVED_FROM_PINNED_B0_NOT_B2",
+  "source_container": {
+    "label": "ANIMO_testbank.zip",
+    "sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84"
+  },
+  "hydrology_source": {
+    "member": "ANIMO_testbank/LWKM_gras_1040.2021.2045/input/SWATRE.UNF",
+    "sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
+    "packet_count": 1800,
+    "kt08_typed_sequence_sha256": "c17319d5a014d498335ed6d6736d0f10adffc4dc30fd3722b220e77dc2eaa5e4"
+  },
+  "soil_configuration_source": {
+    "member": "ANIMO_testbank/LWKM_gras_1040.2021.2045/input/SOIL.INP",
+    "sha256": "57f2173723172bb5f92621786f7a49b23b8f497ee3554f25a36ea19ae0968f3c",
+    "bounded_source_location": ">profil first records",
+    "values": {
+      "layer_count": 30,
+      "Hetop_m": 0.02,
+      "He0_m": 0.2,
+      "Lefrrv": 0.2,
+      "Lefrso": 0.25,
+      "Rodp_m": 0.25
+    }
+  },
+  "characterization_semantics": {
+    "packet_normalization": "KT03_B1_DIAGNOSTIC_DBLE_TRUNC_NOT_B2",
+    "origin_transfer": "STATEQ09_SOURCE_MAPPED_ENDPOINT_TO_NEXT_ORIGIN",
+    "runinu": "STATEQ08_SOURCE_UNDEFINED_AT_FIRST_CALL_PRESERVE_ON_NEAR_ZERO_RU_UNTIL_SOURCE_BRANCH_ASSIGNS",
+    "hydrology_equations": "HYDROEXEC01_BOUNDED_SOURCE_MAPPED_NO_PONDING_ALGEBRA",
+    "tcd042_hydrology_envelope": "B3D35_PARENT_HYDROLOGY_SIDE_ONLY",
+    "first_runinu_value_assumed": false
+  },
+  "result": {
+    "packet_count": 1800,
+    "blocked_first_call_runinu": 347,
+    "deterministic_packet_count": 1453,
+    "ponding_count": 2,
+    "exact_zero_count": 36,
+    "e1_hydrology_envelope_count": 14,
+    "tcd042_hydrology_outside_admitted_scope_count": 1401,
+    "runoff_partition_singularity_count": 0,
+    "hydrology_envelope_intersection_count": 50
+  },
+  "first_anchors": {
+    "first_runinu_reset": {
+      "index_zero_based": 347,
+      "endpoint_day": 3531,
+      "duration_days": 11,
+      "runoff_m_per_d": 0.0006170152,
+      "typed_step_sha256": "d2f7a4e37d1d9f3b31f7e8a3b758448d424e5bc601617d01ae3a057c7d189099",
+      "dynamic_group_sha256": "9e90f57780df18c9a4ba74caff9744a5746caf715735d263ce38f7b94866805f",
+      "effect": "positive runoff branch assigns Runinu=0, removing dependence on source-undefined first-call value for this and later packets until another assigning branch"
+    },
+    "first_exact_zero": {
+      "index_zero_based": 404,
+      "endpoint_day": 4108,
+      "duration_days": 11,
+      "typed_step_sha256": "89211ecd117f6474adcfe908d2d0ea928712e9ca34af4d6d00c12d8fb12dd2b5",
+      "dynamic_group_sha256": "af76be194a2db65792ae37ad19f620dd950231d9c05780ed2b10b9fcc6b797fc",
+      "resolved_flux_m_per_d": 0
+    },
+    "first_e1": {
+      "index_zero_based": 665,
+      "endpoint_day": 6756,
+      "duration_days": 10,
+      "typed_step_sha256": "bb501675617b1e53904e2264ca4980f2b7b613aec6f3a5c102e7e9c3bc64ef6c",
+      "dynamic_group_sha256": "de3841c37ae143588111f9a6ed707c758faf633003464507191ffd9f49a91371",
+      "resolved_flux_m_per_d": 5.421010862427522e-20,
+      "p": 2.710505431213761e-17
+    },
+    "first_ponding": {
+      "index_zero_based": 1001,
+      "endpoint_day": 10166,
+      "duration_days": 11,
+      "typed_step_sha256": "0d1525eb6da8ea006bcf3c3b5274808c4d2c1c15b0825cdfacdc5f6b8769fe71",
+      "dynamic_group_sha256": "f810f6b8e58d0ec27b978536bea808f6a147bc7cc10dfa7dd87121df78f64bee"
+    }
+  },
+  "interpretation": {
+    "early_sequence_blocker": "347 initial packets cannot be deterministically characterized through the bounded detailed-hydrology seam without inventing the source-undefined first-call Runinu value.",
+    "reset_fact": "The first non-near-zero runoff occurs at packet 347 and source semantics assign Runinu=0 there.",
+    "post_reset_fact": "1453 packets are then independent of the unknown first-call Runinu under this bounded continuation trace.",
+    "current_hydrology_intersection": "50 of those deterministic packets intersect the currently admitted TCD-042 hydrology-side B1/E1 envelope: 36 exact-zero and 14 finite-positive E1.",
+    "not_sequential_application": "This does not imply that the current bounded TCD-042 application can run the real source sequentially, because 1401 deterministic packets remain outside the admitted TCD-042 hydrology scope and two are ponding.",
+    "no_scientific_admission": true
+  },
+  "nonclaims": [
+    "B2 historical executable equivalence",
+    "known historical first-call Runinu",
+    "full application chemistry/load admissibility",
+    "sequential real-source accepted application",
+    "TCD042 scope widening",
+    "production"
+  ]
+}
