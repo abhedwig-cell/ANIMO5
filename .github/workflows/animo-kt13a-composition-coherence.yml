@@ -1,0 +1,18 @@
+name: ANIMO KT13A composition coherence
+on:
+  push:
+    branches: [work/animo-kt13a-composition-coherence-remediation]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-kt13a/ANIMO-KT13A_STATUS.json >/dev/null
+      - name: Validate narrow remediation scope
+        run: python tools/validate_kt13a_composition_coherence.py
+      - name: Compile and run remediated KT13 composition
+        run: bash tests/kt13/run_kt13_tests.sh
