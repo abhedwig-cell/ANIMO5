@@ -1,0 +1,57 @@
+{
+  "work_unit": "ANIMO-RG09",
+  "role": "INDEPENDENT_REVIEW_LOGISTICS_ONLY_NOT_REVIEW_NOT_ADMISSION",
+  "prerequisite": "RG09 exact-final-head CI success",
+  "review_order": [
+    {
+      "wave": "C1_LOW_LEVEL_STATE_BOUNDARY_PROVIDER",
+      "tier": "C",
+      "targets": [
+        "STATEQ08@e9ee7fc9e69a62c58b6eacd6379220cc51c1bf07",
+        "STATEQ09@f6e91fc1cb664d67caccc02e6ab21525a768d006",
+        "STATEQ10@614391014438b2cc4445d2d6a8008c3f0f1c45d0",
+        "BOUNDQ01@62b4fc36f2a47b67c08eedb095c60a5c059b77d8",
+        "BOUNDQ02@fb0c0c842aed9a90378aca613279e09a856ad09b",
+        "BOUNDQ02B@de6eef3122354e74405ff9c92286794714bdee82",
+        "KT19@6245aad4aca962cb2a63d0394bb7f2baa686457d"
+      ]
+    },
+    {
+      "wave": "D1_LOW_LEVEL_SCIENCE_RUNTIME",
+      "tier": "D",
+      "targets": [
+        "KT12@8f0e8e4bfd0b391b781f7c69b7d2063d5cf8705e",
+        "HYDROQ01@5301d90024c64057f2cb88fda1dbaa93aabfca47",
+        "HYDROQ02@08d5b8301c217cf9d33d2bf248be133f2b5243fc",
+        "HYDROEXEC01@182dac2fc34ca42ed798203e90efeca1221f21e8",
+        "UBFORCE01@9f9204ba53169285ac84272704de14836962ef41",
+        "UBFORCE02@931e32cec69dc78a03015f01190cff97bf1fe1b4"
+      ]
+    },
+    {
+      "wave": "D2_COMPOSITION_APPLICATION_RESTART_REAL_SOURCE_BRIDGE",
+      "tier": "D",
+      "targets": [
+        "KT13A@df2310cc69e3fe16187ba2235843222f8acfb726",
+        "STATEQ11@c2bd0d17ac6921fcd9f22d6289a510cae454153d",
+        "KT14B@46e9e7397be751f245069033bae655b4382b63bd",
+        "KT15@d3a51aad084969a753cb5b54c604ebefba4b26c6",
+        "KT15A@2279a961459211e03550dfda4af09ab4f7f6b9a3",
+        "KT16@7cd863b71a7a7fcc985514a8af28dcb69cae999a",
+        "KT17@6d05b270e21a41ca626adbb719f8f55bfa9a97b5",
+        "KT18@42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72",
+        "KT20@c41a28580421bf4dce770e438535ba92a57567cd"
+      ]
+    }
+  ],
+  "rules": [
+    "same-agent review is evidence only and never independent assurance",
+    "each target retains its own exact immutable review target",
+    "a coordinated review session may cover multiple targets but must return per-target findings/disposition",
+    "a material finding invalidates admission of that target until remediation, refreeze and new exact-head CI",
+    "successful independent review does not itself admit a candidate",
+    "admission is a separate formal workunit/decision",
+    "failure of a prerequisite blocks dependent composite review claims from being promoted"
+  ],
+  "automatic_admission": false
+}
