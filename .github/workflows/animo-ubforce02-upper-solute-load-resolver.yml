@@ -1,0 +1,25 @@
+name: ANIMO UBFORCE02 upper solute load resolver
+on:
+  push:
+    branches: [work/animo-ubforce02-tcd042-upper-solute-load-resolver]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 9f9204ba53169285ac84272704de14836962ef41 8efdd151d89e1cff131d4b21e2acf559ca1828d6 99b6098a19db405ce34928af89bb78b856dce7cd 2bcf65360b08d278f28f1cc61ac96714db4793a3 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-ubforce02/UBFORCE02_SOURCE_MAPPING.json >/dev/null
+      - run: python -m json.tool integration/animo-ubforce02/ANIMO-UBFORCE02_STATUS.json >/dev/null
+      - name: Validate source mapping and scope
+        run: python tools/validate_ubforce02_upper_solute_load_resolver.py
+      - name: Compile and run exact load resolver tests
+        run: bash tests/ubforce02/run_ubforce02_tests.sh
