@@ -1,0 +1,24 @@
+name: ANIMO KT14B opaque boundary frame
+on:
+  push:
+    branches: [work/animo-kt14b-opaque-boundary-frame-composition]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 8efdd151d89e1cff131d4b21e2acf559ca1828d6 df2310cc69e3fe16187ba2235843222f8acfb726 de6eef3122354e74405ff9c92286794714bdee82 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-kt14b/ANIMO-KT14B_STATUS.json >/dev/null
+      - name: Validate opaque composition authority
+        run: python tools/validate_kt14b_opaque_boundary_frame.py
+      - name: Compile and run opaque boundary composition
+        run: bash tests/kt14/run_kt14_tests.sh
