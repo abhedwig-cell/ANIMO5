@@ -1,0 +1,17 @@
+{
+  "work_unit": "ANIMO-STATEQ10",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "e47e45584a1e432a94c295fba20c2a3c6dbfb55c",
+  "substantive_authoring_tree": "4b2080810d314fa5ce8a6d1f3bdd813cef56fef5",
+  "frozen_implementation_blob": "7c4144785ae023abb3ff3fe4e760519c650626b8",
+  "validated_run": 35370931738,
+  "validated_job": 105684448293,
+  "validated_conclusion": "success",
+  "candidate_claim": "REV53_HLPIMP11_IOPTHYVS1_FIRST_ORIGIN_MOFRO_SIC_PN_SNLA_CAN_BE_SOURCE_NORMALIZED_FROM_EXPLICIT_REAL4_INPUTS_WITH_FROZEN_DBLE_TRUNC_SEMANTICS",
+  "first_call_runinu_qualified": false,
+  "file_parser_qualified": false,
+  "canonical_state_admitted": false,
+  "historical_b2_claimed": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
