@@ -1,0 +1,35 @@
+{
+  "work_unit": "ANIMO-KT22",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_authoring_head": "a77424268a61f0e40798c958586c1508190776f6",
+  "exact_head_ci": {
+    "run_id": 35406305276,
+    "job_id": 105796662362,
+    "conclusion": "success"
+  },
+  "review_axes": {
+    "pinned_KT21_partition_preserved": "PASS",
+    "revision53_flux_threshold_discriminator_preserved": "PASS",
+    "B3D35_supported_parent_scope_not_widened": "PASS",
+    "B3D35_Flux_ge_threshold_exclusion_preserved": "PASS",
+    "all_1401_outside_packets_route_to_Flux_ge_threshold": "PASS",
+    "no_subthreshold_P_only_remainder_observed": "PASS",
+    "ponding_two_packets_kept_separate": "PASS",
+    "first_347_Runinu_uncertainty_kept_separate": "PASS",
+    "ordinary_positive_flow_not_admitted": "PASS",
+    "ponding_not_admitted": "PASS",
+    "no_B2_B3_B4_TB7_or_production_effect": "PASS"
+  },
+  "material_findings": [
+    {
+      "finding": "The KT21 label TCD042_HYDROLOGY_OUTSIDE_ADMITTED_SCOPE is fail-closed but can be misread as a TCD-042 numerical-envelope deficit.",
+      "disposition": "KT22 decomposes the remainder and shows all 1401 packets are already outside the atomized TCD-042 fallback by the revision-53 Flux>=1.0d-8 branch discriminator."
+    }
+  ],
+  "outcome": "SELF_REVIEW_PASS",
+  "independent_review_required_for_any_later_admission": true,
+  "admission_performed": false,
+  "production_authorized": false
+}
