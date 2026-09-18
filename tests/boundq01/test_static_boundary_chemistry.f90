@@ -33,6 +33,15 @@ program test_boundq01_static_boundary
   call read_rev53_static_boundary_chemistry('tests/boundq01/fixtures/bad_range.inp',1,0,v,status)
   call assert_int(status,BOUNDQ01_ERR_RANGE,'source range violation rejected')
 
+  call write_duplicate_labels()
+  call read_rev53_static_boundary_chemistry('tests/boundq01/fixtures/duplicate_labels.inp',1,0,v,status)
+  call assert_int(status,BOUNDQ01_OK,'duplicate fixture parses first labels')
+  call assert_bits(v%runon%nh,transfer(0.10_real64,0_int64),'first matching topbou wins')
+
+  call write_case_mismatch()
+  call read_rev53_static_boundary_chemistry('tests/boundq01/fixtures/case_mismatch.inp',1,0,v,status)
+  call assert_int(status,2,'label comparison is exact and case-sensitive')
+
   print *, 'PASS_BOUNDQ01_STATIC_BOUNDARY_CHEMISTRY'
 
 contains
@@ -66,6 +75,39 @@ contains
     write(u,'(a)') '1 0'
     close(u)
   end subroutine write_bad_option
+
+  subroutine write_duplicate_labels()
+    integer::u
+    open(newunit=u,file='tests/boundq01/fixtures/duplicate_labels.inp',status='replace')
+    write(u,'(a)') '>optibc:'
+    write(u,'(a)') '0 0'
+    write(u,'(a)') '>topbou:'
+    write(u,'(a)') '0.001'
+    write(u,'(a)') '0.002'
+    write(u,'(a)') '0.0'
+    write(u,'(a)') '0.0'
+    write(u,'(a)') '0.10 0.20'
+    write(u,'(a)') '0.30 0.40'
+    write(u,'(a)') '0.50 0.60'
+    write(u,'(a)') '0.70 0.80'
+    write(u,'(a)') '>topbou:'
+    write(u,'(a)') '0.9'
+    write(u,'(a)') '0.9'
+    write(u,'(a)') '>latbou:'
+    write(u,'(a)') '0.0 0.0'
+    write(u,'(a)') '0.0 0.0'
+    close(u)
+  end subroutine write_duplicate_labels
+
+  subroutine write_case_mismatch()
+    integer::u
+    open(newunit=u,file='tests/boundq01/fixtures/case_mismatch.inp',status='replace')
+    write(u,'(a)') '>optibc:'
+    write(u,'(a)') '0 0'
+    write(u,'(a)') '>TOPBOU:'
+    write(u,'(a)') '0.0'
+    close(u)
+  end subroutine write_case_mismatch
 
   subroutine write_bad_range()
     integer::u
