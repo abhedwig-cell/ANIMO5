@@ -1,0 +1,13 @@
+{
+  "work_unit": "ANIMO-HYDROQ02",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "dd9d72126bedd016cdc4000cf8e5098e4ba8ece2",
+  "substantive_authoring_tree": "ca2debed4469ac8b037fcc1906276c26571d0270",
+  "frozen_implementation_blob": "786dce177c50c91149dad33289306f935b61b354",
+  "validated_run": 35367255917,
+  "validated_conclusion": "success",
+  "candidate_claim": "RUPR_AND_RUNINU_HAVE_AN_EXPLICIT_RESOLVED_HYDROLOGY_CAPTURE_CONTRACT_FOR_TCD042_LOAD_COMPOSITION",
+  "historical_near_zero_branch_repaired": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
