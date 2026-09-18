@@ -1,0 +1,26 @@
+name: ANIMO KT19 pinned LWKM file provider
+on:
+  push:
+    branches: [work/animo-kt19-pinned-lwkm-file-provider]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 14109956b62376d0d0ab681e8c641c9e71d110bd 281dc65cbaceaa61d31f9cb731b3c5a733ca5d57; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-kt19/ANIMO-KT19_STATUS.json >/dev/null
+      - run: python -m json.tool integration/animo-kt19/KT19_EXTERNAL_SOURCE_REPLAY.json >/dev/null
+      - run: python -m json.tool reference/kt19/LWKM_FIRST_PACKET_POWERSTATION_B1.json >/dev/null
+      - name: Validate authority, source identity and scope
+        run: python tools/validate_kt19_pinned_lwkm_file_provider.py
+      - name: Run pinned provider tests
+        run: bash tests/kt19/run_kt19_tests.sh
