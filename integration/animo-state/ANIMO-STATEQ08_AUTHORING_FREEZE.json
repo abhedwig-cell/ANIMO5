@@ -1,0 +1,15 @@
+{
+  "work_unit": "ANIMO-STATEQ08",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "5c09bc163c42eb1128ebb7e8c758aa007773b4e4",
+  "substantive_authoring_tree": "2d6c0b18ab52e006eff827980f2e4f4e6b3b3d49",
+  "validated_run": 35368749457,
+  "validated_conclusion": "success",
+  "candidate_claim": "RUNINU_IS_EXECUTION_CONTINUATION_STATE_FOR_SOURCE_FAITHFUL_DETAILED_HYDROLOGY_WHEN_THE_NEAR_ZERO_RU_BRANCH_CAN_BE_ENTERED",
+  "canonical_state_admitted": false,
+  "checkpoint_format_admitted": false,
+  "first_call_historical_value_qualified": false,
+  "model_evolution_zeroing_admitted": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
