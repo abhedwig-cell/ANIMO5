@@ -1,0 +1,70 @@
+{
+  "work_unit": "ANIMO-KT17",
+  "title": "Accepted Checkpoint Manifest Integrity, Build Identity & Evidence Binding Qualification",
+  "branch": "work/animo-kt17-checkpoint-manifest-integrity-build-identity",
+  "base": "ANIMO-RG07@c60dd36a38a2030e4f4ac1925f95b2966a6d1c87",
+  "checkpoint_authority": "ANIMO-KT16@7cd863b71a7a7fcc985514a8af28dcb69cae999a",
+  "restart_architecture_design_basis": "ANIMO-ARCH02@a079d93c965f6073586c55ee4b3544dd8873b723",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "D_ACCEPTED_APPLICATION_RESTART_INTEGRITY_COMPOSITION",
+  "sha256_implementation_qualified": false,
+  "canonical_config_integrity_qualified": false,
+  "canonical_checkpoint_payload_integrity_qualified": false,
+  "manifest_integrity_qualified": false,
+  "expected_build_identity_binding_qualified": false,
+  "evidence_identity_binding_qualified": false,
+  "source_bytes_rehashed_by_runtime": false,
+  "executable_build_self_attested": false,
+  "file_format_qualified": false,
+  "canonical_checkpoint_admitted": false,
+  "canonical_state_admitted": false,
+  "historical_b2_restart_equivalence_claimed": false,
+  "independent_review_completed": false,
+  "production_authorized": false,
+  "implementation": [
+    "prototype/kt17/mod_animo_sha256.f90",
+    "prototype/kt17/mod_animo_checkpoint_manifest_integrity.f90"
+  ],
+  "upstream_introspection_change": "prototype/kt15/mod_animo_atomic_composite_application.f90::inspect_kt15_application_config",
+  "validation": {
+    "workflow": ".github/workflows/animo-kt17-checkpoint-manifest-integrity.yml",
+    "validator": "tools/validate_kt17_checkpoint_manifest_integrity.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "review": {
+    "required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_d_review_required_for_admission": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "process_science_changed": false,
+    "file_io_implemented": false,
+    "disk_checkpoint_format_selected": false,
+    "source_bytes_rehashed_by_runtime": false,
+    "executable_build_self_attested": false,
+    "canonical_checkpoint_admitted": false,
+    "canonical_state_registry_modified": false,
+    "historical_b2_restart_claimed": false,
+    "mid_trial_checkpoint_supported": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI; REPAIR_LOCALLY_IF_NEEDED; FREEZE; SAME_AGENT_ADVERSARIAL_REVIEW; RETAIN_GENUINE_TIER_D_GATE; NEXT_DISJOINT_ROUTE_AFTER_GREEN_IS_EXTERNAL_PROVIDER_TO_ACCEPTED_APPLICATION_COMPOSITION"
+}
