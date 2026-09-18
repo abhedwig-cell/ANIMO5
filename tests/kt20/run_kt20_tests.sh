@@ -6,7 +6,7 @@ build="$root/build/kt20"
 rm -rf "$build"
 mkdir -p "$build"
 
-python -m unittest tests.kt20.test_kt20_packet_frame
+python tests/kt20/test_kt20_packet_frame.py
 
 base64 -d reference/kt19/LWKM_FIRST_PACKET_POWERSTATION_B1.b64 > "$build/real_first_packet.bin"
 python prototype/kt20/hydrology_packet_frame.py ci-frames   "$build/real_first_packet.bin" "$build"
