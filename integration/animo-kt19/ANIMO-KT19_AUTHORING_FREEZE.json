@@ -1,0 +1,20 @@
+{
+  "work_unit": "ANIMO-KT19",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "752166959c006d745ad6fc6cfc6b9aadb1b2ce1f",
+  "substantive_authoring_tree": "d483038de4d9a5c4aa52a01b113e9a1ad36197e0",
+  "frozen_provider_blob": "9aa42bc124f7795d760e649163149447a07a4324",
+  "frozen_test_blob": "8eaacf8773e0cae0e1285444b5aaf4219aa46564",
+  "exact_head_ci": {
+    "run_id": 35402532743,
+    "conclusion": "success"
+  },
+  "external_source_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
+  "external_source_replay_passed": true,
+  "kt08_aggregate_identity_matched": true,
+  "candidate_claim": "PINNED_LWKM_POWERSTATION_BYTES_CAN_BE_FAIL_CLOSED_MATERIALIZED_AS_THE_EXACT_KT08_TYPED_PACKET_SEQUENCE_AND_SELECTED_AS_IMMUTABLE_EXACT_WHOLE_DAY_FORCING",
+  "b2_claimed": false,
+  "central_kt11_authority_changed": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
