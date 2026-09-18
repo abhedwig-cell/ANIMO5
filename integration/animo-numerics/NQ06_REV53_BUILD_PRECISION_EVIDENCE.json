@@ -1,0 +1,95 @@
+{
+  "work_unit": "ANIMO-NQ06",
+  "title": "Revision-53 Hydrology Default REAL Kind and Floating-Point Build Metadata Qualification",
+  "evidence_role": "USER_SUPPLIED_BUILD_METADATA_PLUS_FROZEN_SOURCE_DECLARATION_EVIDENCE_NOT_B2",
+  "supplied_artifacts": {
+    "vfproj": {
+      "filename": "animo41.vfproj",
+      "sha256": "f8ac40ea91df926a035396b0afe8584ea0d9c19711535a12b4f12634ce688b2a",
+      "byte_count": 9829,
+      "copied_into_repository": false
+    },
+    "solution": {
+      "filename": "animo41.sln",
+      "sha256": "206dd6cc23b7d53c117131e16f15a22c4c97afc1c81febb3c73d789cdb9551f2",
+      "byte_count": 1233,
+      "copied_into_repository": false
+    },
+    "executable": {
+      "filename": "animo41.exe",
+      "sha256": "40e29853a0431cc7e2b787dfeb1870f44e1ff402b5aaebd6f56c8365fc5b178d",
+      "file_class": "PE32+ x86-64 Windows console executable",
+      "observed_runtime_string": "Intel Fortran RTL Message Catalog V20.0-001 Jan 10 2019",
+      "copied_into_repository": false,
+      "role": "SUPPORTING_LINEAGE_ONLY_NOT_PROOF_OF_EXACT_PROJECT_OPTIONS"
+    }
+  },
+  "vfproj_configurations": [
+    {
+      "name": "Debug|Win32",
+      "RealKIND": "realKIND8",
+      "FloatingPointModel": "source",
+      "FPS4General": true,
+      "LocalVariableStorage": "localStorageSave",
+      "Optimization": "optimizeDisabled"
+    },
+    {
+      "name": "Release|Win32",
+      "RealKIND": "realKIND8",
+      "FloatingPointModel": "source",
+      "FPS4General": true,
+      "LocalVariableStorage": "localStorageSave"
+    },
+    {
+      "name": "Debug|x64",
+      "RealKIND": "realKIND8",
+      "FloatingPointModel": "source",
+      "FPS4General": true,
+      "LocalVariableStorage": "localStorageSave",
+      "Optimization": "optimizeDisabled"
+    },
+    {
+      "name": "Release|x64",
+      "RealKIND": "realKIND8",
+      "FloatingPointModel": "source",
+      "FPS4General": true,
+      "LocalVariableStorage": "localStorageSave"
+    }
+  ],
+  "frozen_source_declarations": [
+    {
+      "path": "ANIMO_4.1.5.53/Hydro_detailed.for",
+      "sha256": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
+      "relevant_declaration": "hydrology floating formal/local variables declared default REAL without explicit KIND"
+    },
+    {
+      "path": "ANIMO_4.1.5.53/MODFLUX.FOR",
+      "sha256": "0c0909922e88ee59233cabc307fb18243ea86023b4722879f6301259780de93d",
+      "relevant_declaration": "Flab/Fldr/Flib/Flid/Flio/Flou/Rurv/Ruso declared default REAL without explicit KIND"
+    },
+    {
+      "path": "ANIMO_4.1.5.53/UBoundconc.for",
+      "sha256": "b9a7ec980d40c0f76279077852190788e36cd976d185b12683a38da0c7dfecf7",
+      "relevant_declaration": "upper-boundary concentrations, fluxes, loads and coefficients declared default REAL without explicit KIND"
+    }
+  ],
+  "inference": {
+    "source_default_real_kind_under_supplied_project_configuration": "REAL_KIND_8",
+    "prototype_precision_candidate": "IEEE_BINARY64_OR_COMPILER_REAL_KIND_8_EQUIVALENT",
+    "confidence_basis": "all four supplied vfproj configurations set RealKIND=realKIND8 and the bounded source routines use default REAL",
+    "historical_executable_equivalence_proven": false,
+    "B2_created": false,
+    "exact_compiler_expression_reassociation_equivalence_proven": false
+  },
+  "scope": {
+    "permits_for_nonproduction_prototypes": "using real64 as the source-build-configuration-matched candidate precision for bounded Hydro_detailed/Modflux/UBoundconc algebra",
+    "does_not_permit": [
+      "claiming B2 historical numerical equivalence",
+      "claiming exact reproduction of every Intel floating expression path",
+      "production migration",
+      "changing scientific formulas",
+      "using binary32 as canonical revision-53 precision",
+      "global tolerance definition"
+    ]
+  }
+}
