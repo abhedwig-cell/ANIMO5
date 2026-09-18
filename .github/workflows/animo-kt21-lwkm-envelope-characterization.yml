@@ -1,0 +1,25 @@
+name: ANIMO KT21 LWKM bounded envelope characterization
+on:
+  push:
+    branches: [work/animo-kt21-lwkm-bounded-envelope-characterization]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in b019ac4507648e57c196a8a62806d804f39014a2 6245aad4aca962cb2a63d0394bb7f2baa686457d e9ee7fc9e69a62c58b6eacd6379220cc51c1bf07 182dac2fc34ca42ed798203e90efeca1221f21e8 9ca23f41dc3c28af686b1bc0bff8e7d66416d367 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-kt21/KT21_LWKM_EXTERNAL_CHARACTERIZATION.json >/dev/null
+      - run: python -m json.tool integration/animo-kt21/ANIMO-KT21_STATUS.json >/dev/null
+      - name: Validate characterization evidence and boundaries
+        run: python tools/validate_kt21_lwkm_envelope.py
+      - name: Run bounded characterization tests
+        run: bash tests/kt21/run_kt21_tests.sh
