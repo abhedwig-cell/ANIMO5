@@ -57,7 +57,7 @@ authoring context must not self-approve this Tier C gate.
 9. `reference/kt06/LWKM_FIRST_INTERVAL_METADATA.json`
 10. `integration/animo-kt06/ANIMO-KT06_CHECKPOINT.json`
 11. `integration/animo-kt06/ANIMO-KT06_REVIEW_PACKET.json`
-12. `docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT07_KT08.md`
+12. `docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT07_KT09.md`
 
 Also inspect the consumed frozen KT02 and KT05 implementations where needed to
 verify ownership claims rather than trusting KT06 documentation.
@@ -74,7 +74,7 @@ producer evidence available to the reviewer.
   `6927d8f66bd5948797b163880a869ecc0be4c391`.
 
 Read
-`docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT07_KT08.md`
+`docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT07_KT09.md`
 for the exact scope and non-effects.
 
 ## Questions for the independent reviewer

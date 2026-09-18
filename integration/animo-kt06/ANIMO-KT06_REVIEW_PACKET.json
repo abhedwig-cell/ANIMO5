@@ -30,6 +30,13 @@
       "qualified_head_ci_run": 35291286873,
       "closeout_ci_run": 35291383064,
       "effect": "strengthens complete pinned producer-sequence identity and temporal envelope only"
+    },
+    "kt09": {
+      "qualified_evidence_head": "e54fc115fabb58da5e79fad33e1359717a5ed19c",
+      "closeout": "249066b7c07d505ba9a72a5aa199401a4349b0da",
+      "qualified_head_ci_run": 35293001679,
+      "closeout_ci_run": 35293114491,
+      "effect": "strengthens representative complete real-packet compiled KT05 contact across all observed duration classes only"
     }
   },
   "risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS",
