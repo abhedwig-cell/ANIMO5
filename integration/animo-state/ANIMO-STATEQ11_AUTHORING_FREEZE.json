@@ -1,0 +1,16 @@
+{
+  "work_unit": "ANIMO-STATEQ11",
+  "phase": "AUTHORING_FREEZE",
+  "substantive_authoring_head": "7602c29ef3fa6450d143d3381e55b915bb6380ff",
+  "substantive_authoring_tree": "6c1a064cef8c43f10cc650ef64fe25cf3698d1b8",
+  "frozen_implementation_blob": "5450563ac74ff40b7144f5c1ab7805f8d5849862",
+  "frozen_test_blob": "aa4a87260d5cfe80e6173b65dc3cebc16bbd7359",
+  "validated_run": 35374454964,
+  "validated_conclusion": "success",
+  "candidate_claim": "THE_BOUNDED_APPLICATION_CONTINUATION_COMPONENTS_CAN_BE_TYPED_AND_IDENTITY_BOUND_TO_ONE_KT02_ACCEPTED_GENERATION",
+  "atomic_group_commit_implemented": false,
+  "canonical_state_admitted": false,
+  "checkpoint_schema_admitted": false,
+  "independent_review_required": true,
+  "production_authorized": false
+}
