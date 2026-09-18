@@ -1,0 +1,110 @@
+{
+  "work_unit": "ANIMO-RG08",
+  "title": "Post-KT18 Program Rebaseline, Independent-Review Routing and External-Provider Materialization Boundary",
+  "authoring_base": "ANIMO-KT18@42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72",
+  "predecessor": "ANIMO-RG07@c60dd36a38a2030e4f4ac1925f95b2966a6d1c87",
+  "central_admitted_runtime_authorities": {
+    "kt06": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+    "kt11": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
+    "changed_by_rg08": false
+  },
+  "latest_bounded_candidates": {
+    "kt17": {
+      "authority": "ANIMO-KT17@6d05b270e21a41ca626adbb719f8f55bfa9a97b5",
+      "exact_final_ci": 35380850133,
+      "state": "QUALIFIED_ACCEPTED_CHECKPOINT_MANIFEST_SHA256_INTEGRITY_AND_IDENTITY_BINDING_TIER_D_REVIEW_REQUIRED",
+      "claim": "Recomputable in-memory config/payload/manifest SHA-256 integrity with expected build and fixed evidence identity binding.",
+      "independent_review_required": true,
+      "admission_performed": false
+    },
+    "kt18": {
+      "authority": "ANIMO-KT18@42d8837f85acd0c4c9e29b323d8b2cb1bfdd4d72",
+      "exact_final_ci": 35381481156,
+      "state": "QUALIFIED_MULTI_PACKET_PROVIDER_TO_ACCEPTED_APPLICATION_COMPOSITION_TIER_D_REVIEW_REQUIRED",
+      "claim": "KT11 exact multi-packet selection can drive the bounded KT15A accepted application to atomic commit through a read-only selected packet copy.",
+      "independent_review_required": true,
+      "admission_performed": false
+    }
+  },
+  "current_scientific_aggregate": {
+    "authority": "ANIMO-B3Q06@11e9bcdc6654e63f84875bf1f28dc54abe725700",
+    "top_level_total": 25,
+    "admitted_top_level": 22,
+    "unadmitted_top_level": [
+      "TCD-016",
+      "TCD-034",
+      "TCD-040"
+    ],
+    "b3_complete": false
+  },
+  "scientific_frontier": {
+    "TCD-016": "QUALIFIED_TCD016_PARENT_NOT_READY_EXPLICIT_MODEL_EVOLUTION_DECISION_REQUIRED",
+    "TCD-034": "QUALIFIED_TCD034_CLASS_F_READINESS_REASSESSMENT_NOT_READY_THREE_MATERIAL_GATES_REMAIN_V1",
+    "TCD-040": "CLOSED_RECONSTRUCTED_REPLAY_PACKAGE_VALIDATED_CONTROLLED_B0_CUSTODY_PENDING"
+  },
+  "review_routing": {
+    "purpose": "LOGISTICS_AND_FROZEN_TARGET_ROUTING_ONLY_NOT_REVIEW_OR_ADMISSION",
+    "genuinely_independent_review_completed_by_rg08": false,
+    "lower_level_tier_c": [
+      "STATEQ08",
+      "STATEQ09",
+      "STATEQ10",
+      "BOUNDQ01",
+      "BOUNDQ02",
+      "BOUNDQ02B"
+    ],
+    "tier_d_stack": [
+      "KT12",
+      "HYDROQ01",
+      "HYDROQ02",
+      "HYDROEXEC01",
+      "UBFORCE01",
+      "UBFORCE02",
+      "KT13A",
+      "STATEQ11",
+      "KT14B",
+      "KT15",
+      "KT15A",
+      "KT16",
+      "KT17",
+      "KT18"
+    ],
+    "review_session_may_be_coordinated": true,
+    "per_candidate_authority_and_admission_gate_retained": true,
+    "no_bundle_level_auto_admission": true
+  },
+  "external_provider_materialization_boundary": {
+    "existing_b1_authority": "ANIMO-KT08",
+    "pinned_lwkm_swatre_unf_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
+    "packet_count": 1800,
+    "complete_sequence_identity_qualified_as_b1": true,
+    "raw_b0_source_committed_to_repo": false,
+    "kt18_runtime_file_decoder_implemented": false,
+    "next_candidate_route": "SEPARATE_NONPRODUCTION_REAL_FILE_OR_STREAM_PROVIDER_ADAPTER_REQUIRING_REPRODUCIBLE_PINNED_SOURCE_MATERIALIZATION",
+    "production_claim": false
+  },
+  "project_gates": {
+    "b3_complete": false,
+    "tb7_open": false,
+    "b4_open": false,
+    "production_open": false,
+    "status_a_claimed": false,
+    "status_aa_claimed": false,
+    "denominator_status": "DENOMINATOR_NOT_YET_QUALIFIED"
+  },
+  "next_wave": {
+    "serial_governance": [
+      "Genuine independent Tier-C/Tier-D review of the frozen candidate stack",
+      "Separate formal disposition/admission decisions after successful independent review"
+    ],
+    "ownership_disjoint_technical": [
+      "Nonproduction real-file/stream hydrology provider adapter from pinned producer source",
+      "Portable checkpoint byte/file-format design only if separately authorized"
+    ],
+    "science": [
+      "TCD-016 explicit model-evolution decision",
+      "TCD-034 remaining Class-F empirical/evidence gates",
+      "TCD-040 controlled immutable B0 custody and restore verification"
+    ]
+  }
+}
