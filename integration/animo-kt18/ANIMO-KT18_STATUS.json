@@ -1,0 +1,64 @@
+{
+  "work_unit": "ANIMO-KT18",
+  "title": "Multi-Packet Hydrology Provider to Accepted Application Composition Qualification",
+  "branch": "work/animo-kt18-multi-packet-provider-accepted-application",
+  "base": "ANIMO-KT17@6d05b270e21a41ca626adbb719f8f55bfa9a97b5",
+  "program_authority": "ANIMO-RG07@c60dd36a38a2030e4f4ac1925f95b2966a6d1c87",
+  "central_provider_authority": "ANIMO-KT11-A1@50731bf118deb8ef1029f220a40b39a99240e480",
+  "application_candidate": "ANIMO-KT15A@2279a961459211e03550dfda4af09ab4f7f6b9a3",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "D_EXTERNAL_PROVIDER_ACCEPTED_APPLICATION_COMPOSITION",
+  "read_only_provider_selection_copy_qualified": false,
+  "provider_application_interval_composition_qualified": false,
+  "provider_owned_forcing_immutability_qualified": false,
+  "missing_packet_atomic_failure_qualified": false,
+  "provider_application_config_disagreement_failure_qualified": false,
+  "two_interval_provider_application_execution_qualified": false,
+  "central_kt11_admission_changed": false,
+  "canonical_external_forcing_admitted": false,
+  "canonical_application_admitted": false,
+  "independent_review_completed": false,
+  "production_authorized": false,
+  "implementation": [
+    "prototype/kt11/mod_animo_multi_packet_hydrology_provider.f90::select_multi_packet_hydrology_step_copy",
+    "prototype/kt18/mod_animo_provider_backed_application.f90"
+  ],
+  "validation": {
+    "workflow": ".github/workflows/animo-kt18-provider-accepted-application.yml",
+    "validator": "tools/validate_kt18_provider_application.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "review": {
+    "required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_d_review_required_for_admission": true
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "central_kt11_authority_modified": false,
+    "science_changed": false,
+    "runtime_file_decoder_implemented": false,
+    "retry_timestep_policy_added": false,
+    "canonical_external_forcing_admitted": false,
+    "canonical_application_admitted": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI; REPAIR_LOCALLY_IF_NEEDED; FREEZE_AND_SELF_REVIEW; RETAIN_GENUINE_TIER_D_GATE; NEXT_LARGER_EXTERNAL_PROVIDER_STEP_IS_REAL_FILE_OR_STREAM_MATERIALIZATION_IN_A_SEPARATE_NONPRODUCTION_WORKUNIT"
+}
