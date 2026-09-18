@@ -1,0 +1,30 @@
+{
+  "work_unit": "ANIMO-RG06",
+  "review_mode": "SAME_AGENT_ADVERSARIAL_REVIEW",
+  "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+  "genuinely_independent": false,
+  "reviewed_head": "0fdc01a1cdf036ebe4fe1dd0ef96008cdacd7d71",
+  "reviewed_head_ci_run": 35359253771,
+  "reviewed_head_ci_job": 105646133086,
+  "reviewed_head_ci_conclusion": "success",
+  "review_axes": {
+    "latest_branch_not_authority": "PASS",
+    "qualification_not_admission": "PASS",
+    "runtime_admission_not_scientific_admission": "PASS",
+    "kt06_scope_not_widened": "PASS",
+    "kt11_scope_not_widened": "PASS",
+    "kt07_kt10_not_promoted_to_runtime_authority": "PASS",
+    "b3q06_negative_closure_retained": "PASS",
+    "tcd016_parked_external_evidence": "PASS",
+    "tcd034_not_ready_three_material_gates": "PASS",
+    "tcd040_external_b0_dependency": "PASS",
+    "b3_incomplete_not_misread_as_tb7_ready": "PASS",
+    "b4_and_production_closed": "PASS",
+    "denominator_not_inferred_from_branch_count": "PASS",
+    "tcd042_candidate_is_only_next_workunit_route_not_production_authority": "PASS"
+  },
+  "material_findings": [],
+  "outcome": "SELF_REVIEW_PASS",
+  "substantive_remediation_required": false,
+  "note": "This review is process assurance only and is not genuinely independent."
+}
