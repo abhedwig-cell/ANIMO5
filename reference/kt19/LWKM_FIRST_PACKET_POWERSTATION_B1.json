@@ -1,0 +1,18 @@
+{
+  "work_unit": "ANIMO-KT19",
+  "fixture_role": "B1_DERIVED_FIRST_PACKET_POWERSTATION_REPLAY_NOT_B0",
+  "parent_source_case": "LWKM_gras_1040.2021.2045",
+  "parent_source_member": "input/SWATRE.UNF",
+  "parent_source_sha256": "b48c6aaac1c3bdcac8883f227346a22eb97e60df0997f09080fa0fac9118c34c",
+  "fixture_sha256": "6ee314e17bbe8c6aca904ff92403de4997d74734f5ac14bcbf79fed7e33df4df",
+  "fixture_size_bytes": 2650,
+  "construction": "Exact source bytes from file header through the trailing marker of logical record 30 (17 static records plus first 13-record dynamic packet group), followed by a synthetic PowerStation 0x82 file trailer.",
+  "logical_record_count": 30,
+  "expected_packet_count": 1,
+  "expected_first_typed_step_sha256": "eeeb862839cce8111535fae86220d8574240804b9f6f029f7ec8e07ceb65da1c",
+  "expected_first_dynamic_group_sha256": "2e5e8ff7c088ddd94f91aeb663ea10abdecfda0ac4cd418a8bf90be955389ec7",
+  "exact_source_prefix_preserved": true,
+  "synthetic_trailer_added": true,
+  "b0_source_committed": false,
+  "b2_claimed": false
+}
