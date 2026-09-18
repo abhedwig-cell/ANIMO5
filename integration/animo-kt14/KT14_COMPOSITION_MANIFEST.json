@@ -14,7 +14,8 @@
   "frozen_blobs": {
     "BOUNDQ01": "6b381ec9b37528b0decee8a2fa484e8124fc767d",
     "BOUNDQ02": "2b7441c9909022dcb16b3ca2f35ee08d079269b8",
-    "KT13A": "6e2e4c73e9b43f5d1bda58dc9387a56be8b2e2b1"
+    "KT13A": "6e2e4c73e9b43f5d1bda58dc9387a56be8b2e2b1",
+    "BOUNDQ01_STATIC_NO_P_FIXTURE": "d1f71677b69199a0c3b5f9b0a9b92d47c06e82c0"
   },
   "composition": [
     "VALIDATE_BOUNDQ02_EXACT_INTERVAL_FRAME",
@@ -28,5 +29,12 @@
     "dry deposition process execution is not qualified",
     "first-call Runinu is not resolved",
     "production remains closed"
+  ],
+  "repair_history": [
+    {
+      "issue": "KT14 CI could not read the BOUNDQ01 static no-P fixture because the exact fixture was absent from the composition branch.",
+      "disposition": "Imported the exact BOUNDQ01 fixture blob and pinned it in the composition manifest.",
+      "scientific_semantics_changed": false
+    }
   ]
 }
