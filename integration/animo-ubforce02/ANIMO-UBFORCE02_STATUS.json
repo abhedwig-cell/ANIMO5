@@ -4,12 +4,12 @@
   "branch": "work/animo-ubforce02-tcd042-upper-solute-load-resolver",
   "base": "ANIMO-UBFORCE01@9f9204ba53169285ac84272704de14836962ef41",
   "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_TCD042_UPPER_SOLUTE_LOAD_RESOLVER_TIER_D_REVIEW_REQUIRED",
+  "decision": "QUALIFY_BOUNDED_REV53_TCD042_WET_ADVECTIVE_LOAD_RESOLVER_NO_PARSER_OR_HYDROLOGY_PARTITION_ADMISSION",
   "risk_tier_candidate": "D_FORCING_SCIENCE_IMPLEMENTATION",
-  "source_mapping_qualified": false,
-  "resolver_qualified": false,
+  "source_mapping_qualified": true,
+  "resolver_qualified": true,
   "chemistry_parser_qualified": false,
   "hydrology_partition_resolver_qualified": false,
   "dry_deposition_included": false,
@@ -18,17 +18,23 @@
   "supported_scope": "REV53_IWA2_IOPTHYVS1_DETAILED_LOAD1_TO_LOAD6_SOURCE_FORMULAS_ONLY",
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
     "genuinely_independent": false,
-    "independent_tier_d_review_required_for_admission": true
+    "independent_tier_d_review_required_for_admission": true,
+    "reviewed_head": "07572d90d0ff36cf8594298007cbb35c7473333e",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-ubforce02-upper-solute-load-resolver.yml",
     "validator": "tools/validate_ubforce02_upper_solute_load_resolver.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35366867122,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "07572d90d0ff36cf8594298007cbb35c7473333e",
+    "closeout_note": "Validated freeze package passed run 35366867122. This review/status-only closeout is authoritative only if the same workflow succeeds on the exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -45,10 +51,13 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_KEEP_INDEPENDENT_TIER_D_GATE; THEN TYPE_RESOLVED_RUPR_RUNINU_HYDROLOGY_CONTEXT_OR_FIND_EXISTING_AUTHORITY_BEFORE_END_TO_END_COMPOSITION"
+  "next": "USE_UBFORCE02_AS_QUALIFIED_NONPRODUCTION_LOAD_RESOLVER_CANDIDATE; NEXT_MATERIAL_GAP_IS_EXPLICIT_RESOLVED_RUPR_RUNINU_HYDROLOGY_CONTEXT_AND_REAL_HYDRO_DETAILED_EXECUTION; INDEPENDENT_TIER_D_REVIEW_REMAINS_REQUIRED",
+  "frozen_substantive_head": "b8cfc556c1f259ded246381ed113a1998bbf9805",
+  "frozen_substantive_tree": "c21460b346f008aad65b2d4c2c520fe1491a16d9",
+  "frozen_implementation_blob": "a82bd7ef40ce18ddb00e45933290d1999de05884"
 }
