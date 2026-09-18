@@ -1,0 +1,20 @@
+{
+  "work_unit": "ANIMO-KT13",
+  "phase": "AUTHORING_READY_FOR_EXACT_HEAD_CI",
+  "base": "ANIMO-UBFORCE02@931e32cec69dc78a03015f01190cff97bf1fe1b4",
+  "composition_chain": [
+    "KT06 selected-packet binding",
+    "KT05 explicit hydrology projection",
+    "HYDROEXEC01 bounded no-ponding upper hydrology",
+    "HYDROQ01 resolved upper hydrology",
+    "HYDROQ02 Rupr/Runinu context",
+    "UBFORCE02 source-mapped wet/advective load resolution",
+    "UBFORCE01 channel selection",
+    "KT12 admitted-scope TCD-042 client",
+    "KT02 atomic commit"
+  ],
+  "explicit_continuation_input": "Runinu call-entry via HYDROEXEC01 start context",
+  "multi_interval_state_ownership_qualified": false,
+  "independent_review_completed": false,
+  "production_authorized": false
+}
