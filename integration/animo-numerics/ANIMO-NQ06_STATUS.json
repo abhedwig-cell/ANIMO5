@@ -4,9 +4,9 @@
   "branch": "work/animo-nq06-rev53-hydrology-real-kind-policy",
   "base": "ANIMO-HYDROQ02@56b041ddb30b65fe1e77540dbbc36400ee49b1b1",
   "numerical_governance": "ANIMO-NQ01",
-  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
-  "state": "NOT_YET_QUALIFIED",
-  "decision": null,
+  "phase": "QUALIFIED_SUBJECT_TO_EXACT_FINAL_HEAD_CI",
+  "state": "QUALIFIED_REV53_BUILD_METADATA_REAL_KIND8_FOR_BOUNDED_HYDROLOGY_PROTOTYPES_NO_B2_EQUIVALENCE",
+  "decision": "QUALIFY_REAL64_AS_SOURCE_BUILD_CONFIGURATION_MATCHED_BOUNDED_PROTOTYPE_PRECISION_NO_HISTORICAL_EQUIVALENCE",
   "evidence_class": "USER_SUPPLIED_BUILD_METADATA_PLUS_FROZEN_SOURCE_DECLARATION_EVIDENCE_NOT_B2",
   "selected_bounded_candidate_precision": "real64",
   "source_default_real_configured_kind": "realKIND8",
@@ -15,16 +15,22 @@
   "production_authorized": false,
   "review": {
     "same_agent_required": true,
-    "completed": false,
+    "completed": true,
     "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "genuinely_independent": false
+    "genuinely_independent": false,
+    "reviewed_head": "d91ec30493484220f24c4b7e6495be3fb73e0663",
+    "outcome": "SELF_REVIEW_PASS"
   },
   "validation": {
     "workflow": ".github/workflows/animo-nq06-hydrology-real-kind.yml",
     "validator": "tools/validate_nq06_hydrology_real_kind.py",
     "exact_final_head_required": true,
     "run_id": null,
-    "conclusion": null
+    "conclusion": null,
+    "authoring_run": 35367965653,
+    "authoring_conclusion": "success",
+    "reviewed_authoring_head": "d91ec30493484220f24c4b7e6495be3fb73e0663",
+    "closeout_note": "Validated build-metadata package passed run 35367965653. This review/status-only closeout is authoritative only if the same workflow succeeds on this exact final head."
   },
   "hard_boundaries": {
     "production_source_modified": false,
@@ -38,10 +44,10 @@
   "work_status": {
     "realized": true,
     "persisted": true,
-    "tested": false,
-    "reviewed": false,
-    "qualified": false,
-    "workunit_complete": false
+    "tested": true,
+    "reviewed": true,
+    "qualified": true,
+    "workunit_complete": true
   },
-  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_HYDROEXEC01_MAY_USE_REAL64_AS_BOUNDED_SOURCE_BUILD_CONFIGURATION_MATCHED_CANDIDATE_WITHOUT_CLAIMING_HISTORICAL_NUMERICAL_EQUIVALENCE"
+  "next": "HYDROEXEC01_MAY_USE_REAL64_FOR_BOUNDED_REV53_HYDROLOGY_ALGEBRA_WITH_SOURCE_ORDER_PRESERVED_AND_NO_B2_OR_PRODUCTION_CLAIM"
 }
