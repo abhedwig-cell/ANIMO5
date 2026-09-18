@@ -1,10 +1,11 @@
 {
   "workunit": "ANIMO-KT08",
   "title": "LWKM Full Explicit Hydrology Producer Sequence Evidence",
-  "phase": "QUALIFY",
-  "checkpoint_state": "REMATERIALIZER_PARITY_REMEDIATION_COMPLETE_CI_PENDING",
+  "phase": "CLOSE",
+  "checkpoint_state": "QUALIFIED_B1_FULL_LWKM_SEQUENCE_EVIDENCE_CLOSED",
   "branch": "work/animo-kt08-lwkm-full-sequence-evidence",
   "base_authority": "ANIMO-KT07@24dc3164c7832963d0b8931a8edf5155879a3f8d",
+  "frozen_qualified_head": "6927d8f66bd5948797b163880a869ecc0be4c391",
   "consumed_kt03_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
   "consumed_kt05_closeout": "ANIMO-KT05@3319e57adbf6036a86684f8e26d9559454c07b82",
   "consumed_kt07_qualified_evidence_head": "2d469e0a00071b73207112222199eef82c96a961",
@@ -18,9 +19,10 @@
     "temporal_and_digest_record_sequence_sha256": "eb14311a997129df4ae590ea1c72baecadcc2991ec0c3e8e313ed4ba3720ddc1"
   },
   "temporal_envelope": {
-    "first_origin_day": 0,
-    "first_endpoint_day": 10,
-    "last_endpoint_day": 18263,
+    "first_origin_day": 0.0,
+    "first_endpoint_day": 10.0,
+    "last_endpoint_day": 18263.0,
+    "sum_producer_step_days": 18263.0,
     "chain_violation_count": 0,
     "duration_histogram_days": {
       "8": 37,
@@ -29,31 +31,50 @@
       "11": 350
     }
   },
-  "first_green_head": "ca18712c0849ca1d3c5607df03abfcb5ee865230",
-  "first_green_exact_head_ci": {
-    "run_id": 35291132020,
+  "exact_head_ci": {
+    "run_id": 35291286873,
+    "head": "6927d8f66bd5948797b163880a869ecc0be4c391",
     "conclusion": "SUCCESS"
   },
   "review": {
     "mode": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
-    "finding": "KT08-R1 rematerializer omitted committed semantic anchor-role metadata",
-    "remediation": "materializer now emits exact title and anchor-role metadata and pins first origin first endpoint and minimum Sict explicitly",
-    "remediation_status": "COMPLETE_CI_PENDING"
+    "findings": [
+      "KT08-R1"
+    ],
+    "closed_findings": [
+      "KT08-R1"
+    ],
+    "open_material_findings": [],
+    "final_verdict": "SELF_REVIEW_PASS_B1_FULL_SEQUENCE_EVIDENCE_TOOLING_ONLY"
   },
   "production_src_modified": false,
   "kt03_adapter_modified": false,
   "kt05_adapter_modified": false,
   "kt06_modified": false,
-  "verdict": "REMEDIATED_B1_FULL_LWKM_SEQUENCE_EVIDENCE_AWAITING_FINAL_EXACT_HEAD_CI_AND_SAME_AGENT_REVIEW",
-  "next_permitted_action": "RUN_EXACT_HEAD_CI_THEN_FINAL_SAME_AGENT_REVIEW_AND_CLOSE_IF_NO_MATERIAL_FINDINGS",
+  "qualified_capabilities": [
+    "complete 1800-packet pinned LWKM Hlpimp=11 producer sequence summarized as B1 evidence",
+    "ordered normalized typed-step digest sequence pinned",
+    "ordered raw dynamic-group digest sequence pinned",
+    "ordered temporal-and-digest record sequence pinned",
+    "all packets validated through frozen KT03 normalization contract during materialization",
+    "all packets require explicit interception projection capability",
+    "gap-free producer-coordinate chain established for the pinned source",
+    "duration histogram and sequence extent frozen",
+    "representative anchors frozen across all duration classes and sequence positions",
+    "fail-closed raw-source rematerializer",
+    "closed KT07 first-packet compiled proof retained as regression evidence"
+  ],
+  "verdict": "QUALIFIED_B1_FULL_LWKM_EXPLICIT_HYDROLOGY_PRODUCER_SEQUENCE_IDENTITY_AND_TEMPORAL_ENVELOPE_NO_RUNTIME_PROVIDER_OR_B2_EQUIVALENCE",
+  "next_permitted_action": "REUSE_KT08_AS_PINNED_B1_PRODUCER_SEQUENCE_EVIDENCE; KT06_RUNTIME_LANE_REMAINS_BLOCKED_ON_GENUINELY_INDEPENDENT_TIER_C_REVIEW",
   "explicit_exclusions": [
     "B2 historical compiler equivalence",
     "generic producer sequence semantics",
     "Hlpimp=1 semantics",
+    "Hlpimp=2 semantics",
     "multi-packet forcing-provider semantics",
     "retry or timestep selection policy",
     "KT02 or KT06 runtime integration",
-    "Hydro_detailed scientific execution",
+    "Hydro_detailed scientific execution or numerical equivalence",
     "ANIMO scientific admissibility",
     "production migration",
     "B3 or B4 admission",
