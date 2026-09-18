@@ -1,0 +1,51 @@
+{
+  "work_unit": "ANIMO-KT17",
+  "authority": {
+    "rg07": "c60dd36a38a2030e4f4ac1925f95b2966a6d1c87",
+    "rg07_exact_final_ci": 35379875781,
+    "kt16": "7cd863b71a7a7fcc985514a8af28dcb69cae999a",
+    "arch02": "a079d93c965f6073586c55ee4b3544dd8873b723"
+  },
+  "integrity_contract": {
+    "hash_algorithm": "SHA-256",
+    "implementation": "prototype/kt17/mod_animo_sha256.f90",
+    "canonicalization": "ANIMO_KT17_CANON_ASCII_V1",
+    "canonicalization_role": "IN_MEMORY_HASH_PREIMAGE_ONLY_NOT_CHECKPOINT_FILE_FORMAT",
+    "config_hash_recomputed": true,
+    "checkpoint_payload_hash_recomputed": true,
+    "manifest_hash_recomputed": true
+  },
+  "fixed_evidence_identity": {
+    "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+    "testbank_sha256": "44e375510150ff4e9c4f94d81a3b0872aa1c964fefd3a10571c0c2a12b98bb84",
+    "documentation_sha256": "ae4cf81676e259c8974bb6c80d3d144d4dee42023bcb8dfa6a1553d98923e301",
+    "bytes_rehashed_by_runtime": false
+  },
+  "build_identity": {
+    "syntax": "40 lowercase hexadecimal Git commit characters",
+    "encode_role": "EXTERNAL_ASSERTION_RECORDED",
+    "restore_role": "EXTERNAL_EXPECTATION_EXACT_MATCH_REQUIRED",
+    "runtime_self_attestation": false
+  },
+  "diagnostic_policy": "NO_DIAGNOSTIC_CONTINUATION_IN_BOUNDED_SCOPE",
+  "feature_set": "BOUNDED_TCD042_STATIC_BOUNDARY_V1",
+  "kt15_change": {
+    "purpose": "READ_ONLY_CONFIG_INTROSPECTION_FOR_CANONICAL_HASHING",
+    "changes_science": false,
+    "changes_config_equality": false,
+    "changes_execution": false,
+    "kt15_regression_rerun_required": true,
+    "kt16_regression_rerun_required": true
+  },
+  "nonclaims": {
+    "disk_format": false,
+    "source_byte_custody_verification": false,
+    "build_self_attestation": false,
+    "canonical_checkpoint": false,
+    "canonical_state": false,
+    "B2": false,
+    "B3": false,
+    "B4": false,
+    "production": false
+  }
+}
