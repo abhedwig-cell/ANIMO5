@@ -1,0 +1,49 @@
+{
+  "work_unit": "ANIMO-HYDROQ02",
+  "source_archive_sha256": "183c20eb75b6e9f02d33b54aa96fd1537519966401b6b41b9b6b108d98445566",
+  "source_member": {
+    "path": "Hydro_detailed.for",
+    "sha256": "f3b8adc7ae56fc6f7002ce667c15288511984423e66ca619ccb4e90622bfbf5d",
+    "source_lines": "124-159"
+  },
+  "runoff_routes": [
+    {
+      "predicate": "Ru<0",
+      "assignments": [
+        "Runinu=-Ru",
+        "Rupr=0",
+        "Rurv=0",
+        "Ruso=0"
+      ]
+    },
+    {
+      "predicate": "-1.0d-8<Ru<1.0d-8",
+      "assignments": [
+        "Rupr=0",
+        "Rurv=0",
+        "Ruso=0"
+      ],
+      "runinu_assignment": "ABSENT_IN_LOCAL_BRANCH",
+      "implication": "CURRENT_RU_ALONE_IS_INSUFFICIENT_TO_RECONSTRUCT_EXACT_REV53_RUNINU_WITHOUT_ADDITIONAL_RUNTIME_STATE_ASSUMPTION"
+    },
+    {
+      "predicate": "remaining positive runoff",
+      "assignments": [
+        "Runinu=0 before partition",
+        "Rupr resolved from Ru/Lefrrv/Lefrso and precipitation constraint"
+      ]
+    }
+  ],
+  "contract_semantics": {
+    "rupr": "CAPTURED_RESOLVED_HYDROLOGY_OUTPUT",
+    "runinu": "CAPTURED_RESOLVED_HYDROLOGY_OUTPUT",
+    "raw_ru_reconstruction": false,
+    "historical_near_zero_branch_repaired": false,
+    "sign_constraints_added": false,
+    "exact_interval_binding": true,
+    "hydrology_execution_identity_required": true
+  },
+  "consumer": {
+    "UBFORCE02": "requires resolved Rupr and Runinu but does not own their hydrological derivation"
+  }
+}
