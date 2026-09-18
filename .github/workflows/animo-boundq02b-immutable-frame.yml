@@ -1,0 +1,25 @@
+name: ANIMO BOUNDQ02B immutable boundary frame
+on:
+  push:
+    branches: [work/animo-boundq02b-immutable-boundary-frame]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in fb0c0c842aed9a90378aca613279e09a856ad09b 8efdd151d89e1cff131d4b21e2acf559ca1828d6 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-boundq02b/BOUNDQ02B_INTEGRITY_MANIFEST.json >/dev/null
+      - run: python -m json.tool integration/animo-boundq02b/ANIMO-BOUNDQ02B_STATUS.json >/dev/null
+      - name: Validate opaque frame authority and scope
+        run: python tools/validate_boundq02b_immutable_frame.py
+      - name: Compile runtime, positive tests and negative immutability probe
+        run: bash tests/boundq02b/run_boundq02b_tests.sh
