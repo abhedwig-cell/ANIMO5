@@ -1,0 +1,55 @@
+{
+  "workunit": "ANIMO-KT06",
+  "purpose": "GENUINELY_INDEPENDENT_GOV04_TIER_C_SECOND_LINE_REVIEW_PACKET",
+  "candidate_claim": "Within the declared exact whole-day envelope, a complete explicit-state KT05 hydrology packet can be bound to a KT02 requested interval without making producer time authoritative, without placing forcing in accepted continuation state and without bypassing KT02 atomic publication.",
+  "frozen_review_target": {
+    "branch": "work/animo-kt06-explicit-hydrology-runtime-binding",
+    "implementation_head": "fc818917a46408d55cd7f03e2fa8257534683907",
+    "exact_head_ci_run": 35286651951,
+    "exact_head_ci_conclusion": "SUCCESS"
+  },
+  "consumed_authorities": {
+    "kt02_authority": "ANIMO-KT02@1f88db4dc87fc4d93075884ac35a59711f0725bf",
+    "kt02_frozen_executable": "1909709e7a244b5d0ee53342a26bab74815c118c",
+    "kt03_authority": "ANIMO-KT03@c5d4c14fbd4ce77ed5ef369bb8ecaee0709ea3b8",
+    "kt05_closeout": "3319e57adbf6036a86684f8e26d9559454c07b82",
+    "kt05_frozen_implementation": "69dd607ba1efa28de3f83cc963526021352b3311",
+    "kt03f01_consumed_as_qualified_authority": false
+  },
+  "later_supplemental_evidence_not_implementation_dependencies": {
+    "kt07": {
+      "qualified_evidence_head": "2d469e0a00071b73207112222199eef82c96a961",
+      "closeout": "24dc3164c7832963d0b8931a8edf5155879a3f8d",
+      "qualified_head_ci_run": 35288769233,
+      "closeout_ci_run": 35288927837,
+      "effect": "strengthens complete first-real-packet contact with frozen KT05 only"
+    },
+    "kt08": {
+      "qualified_evidence_head": "6927d8f66bd5948797b163880a869ecc0be4c391",
+      "closeout": "281dc65cbaceaa61d31f9cb731b3c5a733ca5d57",
+      "qualified_head_ci_run": 35291286873,
+      "closeout_ci_run": 35291383064,
+      "effect": "strengthens complete pinned producer-sequence identity and temporal envelope only"
+    }
+  },
+  "risk_tier": "GOV04_TIER_C_RUNTIME_SEMANTICS",
+  "review_context_requirement": "GENUINELY_SEPARATE_FROM_AUTHORING_CONTEXT",
+  "current_qualification_status": "NOT_YET_QUALIFIED_UNDER_GOV04_TIER_C",
+  "current_admission_status": "NOT_ADMITTED",
+  "allowed_review_results": [
+    "PASS_CLAIM_UNCHANGED",
+    "PASS_WITH_NON_SEMANTIC_REMEDIATION",
+    "REOPEN_RUNTIME_SEMANTIC_CLAIM",
+    "NEGATIVE_DISPOSITION_REQUIRED"
+  ],
+  "semantic_reopen_triggers": [
+    "time ownership change",
+    "forcing ownership change",
+    "accepted-state semantics change",
+    "interval mapping change",
+    "consumed scientific authority change"
+  ],
+  "review_support_only": true,
+  "supplement_changes_frozen_target": false,
+  "supplement_changes_candidate_claim": false
+}

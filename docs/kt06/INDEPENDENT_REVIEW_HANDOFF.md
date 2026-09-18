@@ -56,9 +56,26 @@ authoring context must not self-approve this Tier C gate.
 8. `docs/kt06/ADVERSARIAL_REVIEW.md`
 9. `reference/kt06/LWKM_FIRST_INTERVAL_METADATA.json`
 10. `integration/animo-kt06/ANIMO-KT06_CHECKPOINT.json`
+11. `integration/animo-kt06/ANIMO-KT06_REVIEW_PACKET.json`
+12. `docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT07_KT08.md`
 
 Also inspect the consumed frozen KT02 and KT05 implementations where needed to
 verify ownership claims rather than trusting KT06 documentation.
+
+## Later supplemental producer evidence
+
+KT07 and KT08 were completed after the frozen KT06 target. They do not modify
+or become implementation dependencies of KT06, but they strengthen the real
+producer evidence available to the reviewer.
+
+- KT07 qualified evidence head:
+  `2d469e0a00071b73207112222199eef82c96a961`;
+- KT08 qualified evidence head:
+  `6927d8f66bd5948797b163880a869ecc0be4c391`.
+
+Read
+`docs/kt06/INDEPENDENT_REVIEW_SUPPLEMENT_KT07_KT08.md`
+for the exact scope and non-effects.
 
 ## Questions for the independent reviewer
 
@@ -75,8 +92,10 @@ verify ownership claims rather than trusting KT06 documentation.
 7. Does the probe naming and documentation sufficiently prevent the no-op
    admissible candidate from being confused with real ANIMO scientific
    admissibility?
-8. Is the B1 LWKM contact bounded correctly, given that most test packet fields
-   are synthetic?
+8. Given the later KT07 first-real-packet compiled proof and KT08 complete
+   producer-sequence evidence, is the remaining B1 producer/contact limitation
+   stated narrowly enough in KT06 without importing runtime semantics from those
+   later workunits?
 9. Are any Hlpimp=1 semantics, `Hydro_detailed` science, retry policy,
    timestep selection or production-coupling claims being imported implicitly?
 10. Are there hidden overflow, calendar, lineage, retry or forcing-lifecycle
