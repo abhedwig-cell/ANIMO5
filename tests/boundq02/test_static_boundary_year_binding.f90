@@ -1,5 +1,6 @@
 program test_boundq02_static_boundary_year_binding
   use iso_fortran_env, only: int64, real64
+  use, intrinsic :: ieee_arithmetic, only: ieee_value, ieee_quiet_nan
   use mod_transient_time, only: TimeCoordinate, make_time_coordinate
   use mod_animo_static_boundary_chemistry_adapter, only: &
     static_boundary_chemistry_t, read_rev53_static_boundary_chemistry, BOUNDQ01_OK
@@ -14,6 +15,7 @@ program test_boundq02_static_boundary_year_binding
   call test_skipped_january_first_preserves_legacy_cursor()
   call test_phosphorus_binding_and_dry_dep_separation()
   call test_interval_and_calendar_fail_closed()
+  call test_frame_integrity_fail_closed()
   print *, 'PASS_BOUNDQ02_STATIC_BOUNDARY_YEAR_BINDING'
 
 contains
@@ -175,5 +177,39 @@ contains
     call validate_static_boundary_interval_frame(frame,t0,wrong,ok,reason)
     call assert_true(.not.ok,'frame endpoint identity mismatch rejected')
   end subroutine test_interval_and_calendar_fail_closed
+
+  subroutine test_frame_integrity_fail_closed()
+    type(static_boundary_chemistry_t)::boundary
+    type(boundary_year_cursor_t)::cursor,next
+    type(static_boundary_interval_frame_t)::frame
+    type(TimeCoordinate)::t0,t1
+    logical::ok
+    character(len=128)::reason
+    real(real64)::nan_value
+
+    call read_no_p(boundary)
+    call initialize_boundary_year_cursor(cursor)
+    call make_day(730119_int64,t0)
+    call make_day(730120_int64,t1)
+    call bind_static_boundary_interval(boundary,'STATIC-BOUNDARY',2000,cursor,t0,t1,frame,next,ok,reason)
+    call assert_true(ok,'frame integrity fixture')
+
+    frame%chemistry%forcing_id='WRONG'
+    call validate_static_boundary_interval_frame(frame,t0,t1,ok,reason)
+    call assert_true(.not.ok,'forcing provenance mismatch rejected')
+
+    call bind_static_boundary_interval(boundary,'STATIC-BOUNDARY',2000,cursor,t0,t1,frame,next,ok,reason)
+    call assert_true(ok,'frame rebuilt')
+    frame%selected_year=2001
+    call validate_static_boundary_interval_frame(frame,t0,t1,ok,reason)
+    call assert_true(.not.ok,'year-slot incoherence rejected')
+
+    call bind_static_boundary_interval(boundary,'STATIC-BOUNDARY',2000,cursor,t0,t1,frame,next,ok,reason)
+    call assert_true(ok,'frame rebuilt for dry deposition')
+    nan_value=ieee_value(0.0_real64,ieee_quiet_nan)
+    frame%dry_deposition_nh=nan_value
+    call validate_static_boundary_interval_frame(frame,t0,t1,ok,reason)
+    call assert_true(.not.ok,'nonfinite dry deposition rejected')
+  end subroutine test_frame_integrity_fail_closed
 
 end program test_boundq02_static_boundary_year_binding
