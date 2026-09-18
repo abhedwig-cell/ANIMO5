@@ -1,0 +1,71 @@
+{
+  "work_unit": "ANIMO-KT13",
+  "title": "Bounded Selected-Packet TCD-042 End-to-End Nonproduction Composition Qualification",
+  "branch": "work/animo-kt13-tcd042-bounded-end-to-end-composition",
+  "base": "ANIMO-UBFORCE02@931e32cec69dc78a03015f01190cff97bf1fe1b4",
+  "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "authorities": {
+    "kt06": "ANIMO-KT06-A1@56384db4107aed484218363e26dbb7be7f51e8de",
+    "kt12": "ANIMO-KT12@8f0e8e4bfd0b391b781f7c69b7d2063d5cf8705e",
+    "hydroq01": "ANIMO-HYDROQ01@5301d90024c64057f2cb88fda1dbaa93aabfca47",
+    "hydroq02": "ANIMO-HYDROQ02@08d5b8301c217cf9d33d2bf248be133f2b5243fc",
+    "hydroexec01": "ANIMO-HYDROEXEC01@182dac2fc34ca42ed798203e90efeca1221f21e8",
+    "ubforce01": "ANIMO-UBFORCE01@9f9204ba53169285ac84272704de14836962ef41",
+    "ubforce02": "ANIMO-UBFORCE02@931e32cec69dc78a03015f01190cff97bf1fe1b4",
+    "stateq08": "ANIMO-STATEQ08@e9ee7fc9e69a62c58b6eacd6379220cc51c1bf07",
+    "tcd042_parent": "ANIMO-B3D35@9ca23f41dc3c28af686b1bc0bff8e7d66416d367"
+  },
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "D_END_TO_END_SCIENTIFIC_COMPOSITION",
+  "selected_packet_binding_qualified": false,
+  "bounded_hydrology_composition_qualified": false,
+  "bounded_load_composition_qualified": false,
+  "transaction_science_composition_qualified": false,
+  "multi_interval_state_continuation_qualified": false,
+  "independent_review_completed": false,
+  "production_authorized": false,
+  "implementation": "prototype/kt13/mod_animo_tcd042_bounded_composition.f90",
+  "supported_scope": "SELECTED_PACKET_IWA2_IOPTHYVS1_IOPTMP0_FLPN0_TCD042_PARENT_ADMITTED_SCOPE_WITH_EXPLICIT_START_CONTEXT_AND_CHEMISTRY",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_d_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-kt13-bounded-tcd042-composition.yml",
+    "validator": "tools/validate_kt13_bounded_tcd042_composition.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "kt11_provider_modified": false,
+    "boundary_parser_implemented": false,
+    "dry_deposition_migrated": false,
+    "full_hydro_detailed_claimed": false,
+    "ponding_implemented": false,
+    "macropores_implemented": false,
+    "runinu_canonical_state_admitted": false,
+    "first_call_runinu_assumed": false,
+    "retry_timestep_policy_added": false,
+    "tcd042_scope_widened": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN_RETAIN_TIER_D_INDEPENDENT_REVIEW_GATE; NEXT_MATERIAL_ARCHITECTURE_GAP_IS_MULTI_INTERVAL_ACCEPTED_HYDROLOGY_CONTINUATION_STATE_AND_APPLICATION_ORCHESTRATION"
+}
