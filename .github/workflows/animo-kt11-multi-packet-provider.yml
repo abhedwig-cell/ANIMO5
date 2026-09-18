@@ -1,0 +1,27 @@
+name: ANIMO KT11 multi-packet hydrology provider
+on:
+  push:
+    branches: [work/animo-kt11-multi-packet-hydrology-provider]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  provider-lifecycle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Install gfortran
+        run: sudo apt-get update && sudo apt-get install -y gfortran
+      - name: Verify authority identities
+        run: |
+          set -euo pipefail
+          test "$(git hash-object prototype/kt06/mod_animo_explicit_hydrology_runtime_binding.f90)" = "9a24ea833291f761d2fa76ca4cc9fee28436c614"
+          test "$(git hash-object prototype/kt05/mod_animo_hydrology_adapter.f90)" = "9ed1d6d3e91d9f5522f8c2a49a5e19eed1d82a9a"
+          test "$(git hash-object prototype/kt02/runtime/mod_transient_interval_runtime.f90)" = "ac8eed3b7385daad3cb7c926bd7dab9d99e0a888"
+          test "$(git hash-object prototype/kt02/runtime/mod_transient_transactions.f90)" = "182164ca4bf4a890d98f9c89366764e5d818b10c"
+          test "$(git hash-object reference/kt11/LWKM_SEQUENCE_SUMMARY_KT08.json)" = "6ba7fe07ca47a6f8d45f18d09b7276dc4ece66f3"
+          test "$(git hash-object reference/kt11/LWKM_REPRESENTATIVE_ANCHOR_PACKETS_KT09.json.zlib.b64)" = "8aa4f5dcc8041979d9dc2e2b4fc8cc7f1c88de84"
+      - name: Run KT11 provider and lifecycle qualification harness
+        run: bash tests/kt11/run_kt11_tests.sh
+      - name: Validate checkpoint JSON
+        run: python -m json.tool integration/animo-kt11/ANIMO-KT11_CHECKPOINT.json >/dev/null
