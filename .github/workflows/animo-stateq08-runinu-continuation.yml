@@ -1,0 +1,25 @@
+name: ANIMO STATEQ08 Runinu continuation
+on:
+  push:
+    branches: [work/animo-stateq08-runinu-execution-continuation]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch pinned authorities
+        run: |
+          set -euo pipefail
+          for sha in 8efdd151d89e1cff131d4b21e2acf559ca1828d6 08d5b8301c217cf9d33d2bf248be133f2b5243fc 1bbe4c211197590f346803106e45dca5faae79fc; do
+            git cat-file -e "${sha}^{commit}" 2>/dev/null || git fetch --no-tags origin "${sha}"
+          done
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m json.tool integration/animo-state/STATEQ08_RUNINU_SOURCE_MAPPING.json >/dev/null
+      - run: python -m json.tool integration/animo-state/ANIMO-STATEQ08_STATUS.json >/dev/null
+      - name: Validate source/state disposition
+        run: python tools/stateq08/validate_stateq08.py
+      - name: Compile and run continuation probe
+        run: bash tests/stateq08/run_stateq08_tests.sh
