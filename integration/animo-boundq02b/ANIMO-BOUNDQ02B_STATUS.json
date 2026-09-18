@@ -1,0 +1,57 @@
+{
+  "work_unit": "ANIMO-BOUNDQ02B",
+  "title": "Immutable Content-Bound Boundary Frame Qualification",
+  "branch": "work/animo-boundq02b-immutable-boundary-frame",
+  "base": "ANIMO-BOUNDQ02@fb0c0c842aed9a90378aca613279e09a856ad09b",
+  "program_authority": "ANIMO-RG06@8efdd151d89e1cff131d4b21e2acf559ca1828d6",
+  "phase": "AUTHORING_PERSISTED_PENDING_EXACT_HEAD_CI",
+  "state": "NOT_YET_QUALIFIED",
+  "decision": null,
+  "risk_tier_candidate": "C_RUNTIME_EXCHANGE_FRAME_INTEGRITY",
+  "opaque_frame_qualified": false,
+  "copy_out_access_qualified": false,
+  "content_slot_identity_qualified": false,
+  "source_hash_verification_qualified": false,
+  "canonical_forcing_state_admitted": false,
+  "checkpoint_schema_admitted": false,
+  "production_authorized": false,
+  "implementation": "prototype/boundq02b/mod_animo_immutable_static_boundary_frame.f90",
+  "supported_scope": "BOUNDQ02_STATIC_FRAME_WRAPPED_AS_PRIVATE_CONTENT_SHA256_AND_SLOT_BOUND_EXACT_INTERVAL_FRAME",
+  "review": {
+    "same_agent_required": true,
+    "completed": false,
+    "assurance": "PROCESS_SELF_REVIEWED_NOT_INDEPENDENT",
+    "genuinely_independent": false,
+    "independent_tier_c_review_required_for_admission": true
+  },
+  "validation": {
+    "workflow": ".github/workflows/animo-boundq02b-immutable-frame.yml",
+    "validator": "tools/validate_boundq02b_immutable_frame.py",
+    "exact_final_head_required": true,
+    "run_id": null,
+    "conclusion": null
+  },
+  "hard_boundaries": {
+    "production_source_modified": false,
+    "boundary_parser_modified": false,
+    "year_selection_semantics_changed": false,
+    "dry_deposition_process_migrated": false,
+    "file_hashing_implemented": false,
+    "source_hash_cryptographically_verified_here": false,
+    "canonical_forcing_state_admitted": false,
+    "checkpoint_schema_modified": false,
+    "b3_mutated": false,
+    "tb7_opened": false,
+    "b4_opened": false,
+    "production_opened": false
+  },
+  "work_status": {
+    "realized": true,
+    "persisted": true,
+    "tested": false,
+    "reviewed": false,
+    "qualified": false,
+    "workunit_complete": false
+  },
+  "next": "RUN_EXACT_HEAD_CI_AND_ADVERSARIAL_REVIEW; IF_GREEN USE_ONLY_THE_OPAQUE_BOUNDQ02B_FRAME_FOR_FUTURE_SCIENTIFIC_COMPOSITION_AND_SUPERSEDE_DIRECT_PUBLIC_BOUNDQ02_FRAME_CONSUMPTION"
+}
