@@ -59,6 +59,10 @@ if status['state'].startswith('QUALIFIED_'):
     req(status['validation']['github_actions_conclusion'] == 'success', 'qualified status must record green validation')
     req(status['validation']['validator_result'] == 'PASS_B3D08_TCD026_ADMISSION', 'wrong validator result')
     req(status['validation']['scope_guard'] == 'PASS_B3D08_ADMISSION_SCOPE_GUARD', 'wrong scope guard result')
+    req("Following successful fail-closed validation, the bounded scientific correction is admitted as:" in doc, 'qualified reviewer closeout must state completed validation')
+    req("Validation is green and TCD-026 is one additional atomic B3 scientific admission." in doc, 'qualified reviewer project effect must state completed admission')
+    req("Subject to this workunit's fail-closed validation" not in doc, 'stale conditional validation wording remains after qualification')
+    req("If validation is green" not in doc, 'stale conditional project-effect wording remains after qualification')
 else:
     req(status['state'] == 'IN_PROGRESS_PERSISTED_TCD026_ADMISSION_CLOSEOUT_VALIDATION_PENDING', 'unexpected pre-closeout state')
     req(status['decision'] == 'PENDING_FAIL_CLOSED_VALIDATION', 'unexpected pre-closeout decision')

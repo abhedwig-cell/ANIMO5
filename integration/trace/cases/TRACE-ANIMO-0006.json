@@ -1,0 +1,124 @@
+{
+  "trace_id": "TRACE-ANIMO-0006",
+  "model": "ANIMO",
+  "status": "CLOSED",
+  "discovery": {
+    "first_observed_date": "2026-09-19",
+    "registered_date": "2026-09-19",
+    "observer": "TRACE_PRIMARY_RECONCILIATION",
+    "work_unit": "TRACE-B03-ANIMO-E03",
+    "inspection_trigger": "SCHEDULED_SYSTEMATIC_RECONCILIATION",
+    "planned_or_opportunistic": "PLANNED"
+  },
+  "eligibility": {
+    "known_before_registration": false,
+    "disposition_known_before_registration": false,
+    "prospective_eligible": true,
+    "decision_reason": "The conditional reviewer wording versus qualified B3D08 machine state was first observed during preregistered Batch-03 inspection and frozen before validator/branch chronology was read."
+  },
+  "scientific_element": {
+    "scientific_element_id": "TRACE-ELEM-ANIMO-B03-003",
+    "subsystem": "b3_tcd026",
+    "description": "TCD-026 atomic B3 accounting admission and reviewer-facing admission-state wording."
+  },
+  "representations": [
+    {
+      "kind": "reviewer_documentation",
+      "path": "docs/b3/TCD026_B3_ADMISSION_CLOSEOUT.md",
+      "pre_resolution_blob": "7487f66383526a0e48cd2e0f365ba82560df9ddc",
+      "claim": "Admission is subject to this workunit's fail-closed validation; if validation is green TCD-026 becomes admitted."
+    },
+    {
+      "kind": "machine_status",
+      "path": "integration/animo-b3/ANIMO-B3D08_STATUS.json",
+      "pre_resolution_blob": "390399905b57821a9a003893106c0ef3510ff59e",
+      "claim": "B3D08 is tested, qualified, complete and the TCD-026 B3 admission is qualified."
+    },
+    {
+      "kind": "machine_closeout",
+      "path": "integration/animo-b3/TCD026_B3_ADMISSION_CLOSEOUT.json",
+      "pre_resolution_blob": "ca21477120ee872bc5d96581935be525f4b3d510",
+      "claim": "The bounded TCD-026 scientific B3 admission is true and production migration remains unauthorized."
+    },
+    {
+      "kind": "validator",
+      "path": "tools/validate_b3d08_tcd026_admission.py",
+      "pre_resolution_blob": "661fd5a89887b7a5cfa9c78c1566cb2e406902cd",
+      "claim": "Validator checks admission tokens and qualified machine state but does not prohibit stale conditional reviewer wording when status is qualified."
+    }
+  ],
+  "conflict": {
+    "relation_classes": [
+      "DOCUMENTATION_IMPLEMENTATION"
+    ],
+    "initial_statement": "Reviewer-facing TCD-026 closeout describes admission as contingent on future validation while current B3D08 machine authorities record that validation succeeded and admission is qualified.",
+    "application_envelope": "Interpretation of the current scientific admission state for atomic TCD-026. The accounting identity and no-production boundaries themselves are not disputed.",
+    "discovery_uncertainty": "Before post-freeze inspection it was unknown whether the conditional prose was intentionally frozen provenance or stale documentation."
+  },
+  "detection": {
+    "first_exposing_evidence": "Comparison of preregistered reviewer closeout with current B3D08 status during planned Batch-03 reconciliation.",
+    "method": "Prospective scheduled reconciliation followed, after evidence freeze, by final B3D08 branch chronology, final-head workflow and validator-semantics inspection.",
+    "modernization_specific": true,
+    "mechanism_code": "STALE_CONDITIONAL_REVIEWER_PROSE_AFTER_FINAL_QUALIFICATION_WITH_INCOMPLETE_STATUS_CONSISTENCY_ORACLE"
+  },
+  "scientific_consequence": {
+    "potential": [
+      "INTERPRETATIVE",
+      "STRUCTURAL"
+    ],
+    "demonstrated": [
+      "INTERPRETATIVE"
+    ],
+    "evidence": "A reviewer can read the closeout as not yet admitted despite current machine authorities recording successful validation and qualified B3 admission. No physical-state, process-flux, restart-state or quantitative model consequence is demonstrated."
+  },
+  "regression_counterfactual": {
+    "preexisting_suite_ref": "ANIMO-B3D08 TCD026 admission closeout workflow run 34447874356 on final head cc280b630d6dc0d6bc1b8b0783ccfa4f91e15624",
+    "affected_route_within_scope": true,
+    "outcome": "REGRESSION_MISSED",
+    "evidence": "The final B3D08 workflow was green while the stale conditional reviewer wording remained byte-identical. The validator required admission tokens and machine-status flags but did not reject the phrases 'Subject to this workunit\\'s fail-closed validation' or 'If validation is green'."
+  },
+  "resolution": {
+    "candidate_authorities": [
+      {
+        "authority": "ANIMO-B3D08 final status",
+        "ref": "cc280b630d6dc0d6bc1b8b0783ccfa4f91e15624",
+        "role": "Final qualified B3D08 machine authority."
+      },
+      {
+        "authority": "TCD026_B3_ADMISSION_CLOSEOUT.json",
+        "ref": "current integration",
+        "role": "Atomic machine admission record."
+      },
+      {
+        "authority": "B3D08 final workflow",
+        "ref": "run 34447874356",
+        "role": "Exact final-head validation evidence."
+      }
+    ],
+    "final_authority": "ANIMO-B3D08 final status and TCD026_B3_ADMISSION_CLOSEOUT.json with exact final-head workflow run 34447874356",
+    "disposition": "DOCUMENTATION_CORRECTED",
+    "code_changed": false,
+    "documentation_changed": true,
+    "tests_changed": true,
+    "repair": {
+      "owner_branch": "work/animo-b3d08-tcd026-admission-closeout",
+      "owner_repair_head": "a27e13e6edadb35e11478e5ca914d8421dd181f7",
+      "owner_workflow_run": 35439411812,
+      "owner_workflow_conclusion": "success",
+      "changes": [
+        "Reviewer closeout now states completed fail-closed validation and completed bounded B3 admission.",
+        "Existing B3D08 validator now rejects stale conditional reviewer wording whenever the machine state is qualified."
+      ],
+      "production_source_changed": false,
+      "scientific_identity_changed": false
+    }
+  },
+  "reproducibility": {
+    "pre_resolution_ref": "c55078087aa8b86e704bb0fc869034fa79b27266",
+    "evidence_manifest": "integration/trace/evidence/TRACE-ANIMO-0006/manifest.json",
+    "final_b3d08_head": "cc280b630d6dc0d6bc1b8b0783ccfa4f91e15624",
+    "final_b3d08_run": 34447874356,
+    "owner_repair_head": "a27e13e6edadb35e11478e5ca914d8421dd181f7",
+    "owner_repair_run": 35439411812
+  }
+}
