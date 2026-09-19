@@ -1,0 +1,47 @@
+{
+  "schema": "trace.evidence_manifest.v0.1",
+  "trace_id": "TRACE-ANIMO-0003",
+  "freeze_date": "2026-09-19",
+  "pre_resolution": {
+    "repository": "abhedwig-cell/ANIMO5",
+    "ref": "rg05o-integration",
+    "commit": "1658f80bd932889de20c7da1e48c1c05fbad4d0d"
+  },
+  "theory_sources": [],
+  "documentation_sources": [
+    {
+      "path": "docs/b3/TCD017_B3_ADMISSION_CLOSEOUT.md",
+      "blob_sha": "efd6bfc60318cb4a08ce079dc73714e3cdbba711",
+      "observed_claim": "Final result remains conditional: subject to successful B3D02 validator and scope guard, TCD-017 becomes the first atomic B3 scientific admission."
+    }
+  ],
+  "implementation_sources": [],
+  "existing_regression_evidence": [],
+  "authority_and_governance_sources": [
+    {
+      "path": "integration/animo-b3/ANIMO-B3D02_STATUS.json",
+      "blob_sha": "f0090f498219c545f331e7484f24a7ea310cf0fa",
+      "observed_claims": [
+        "state=QUALIFIED_TCD017_ATOMIC_B3_SCIENTIFIC_ADMISSION_WITH_HISTORICAL_UNCERTAINTY_NO_PRODUCTION_MIGRATION",
+        "work_unit_complete=true",
+        "validator_result=PASS_B3D02_TCD017_ADMISSION",
+        "scope_guard=PASS_B3D02_ADMISSION_SCOPE_GUARD"
+      ]
+    },
+    {
+      "path": "integration/animo-b3/TCD017_B3_ADMISSION_CLOSEOUT.json",
+      "blob_sha": "74fc5ae79081b8405a4f135e9d030444a1bd0c8f",
+      "observed_claims": [
+        "admission_decision.admitted=true",
+        "disposition=HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY"
+      ]
+    }
+  ],
+  "inputs_and_configuration": [],
+  "runtime_environment": [],
+  "reproduction_commands": [],
+  "outputs": [],
+  "checksums": [],
+  "initial_conflict": "The reviewer-facing closeout remains conditional on a validator/scope guard that the current machine status says has already succeeded. It is not yet known whether the prose is an intentional pre-validation snapshot or stale current admission documentation.",
+  "notes": "Evidence frozen before reading the B3D02 validator, workunit commit chronology or any explicit freeze/immutability contract."
+}
