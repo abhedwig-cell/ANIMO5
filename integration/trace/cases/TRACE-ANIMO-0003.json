@@ -1,7 +1,7 @@
 {
   "trace_id": "TRACE-ANIMO-0003",
   "model": "ANIMO",
-  "status": "CONFIRMED",
+  "status": "CLOSED",
   "discovery": {
     "first_observed_date": "2026-09-19",
     "registered_date": "2026-09-19",
@@ -96,11 +96,15 @@
         "role": "Records admitted=true and the bounded admission disposition."
       }
     ],
-    "final_authority": "ANIMO-B3D02@bf31ffa96b4f71541c13d1426ccf48eac9536b24 with machine status/admission records",
-    "disposition": "UNRESOLVED_INSUFFICIENT_AUTHORITY",
+    "final_authority": "ANIMO-B3D02 final qualified machine status/admission record, backed by successful validator run 34394266202",
+    "disposition": "DOCUMENTATION_CORRECTED",
     "code_changed": false,
-    "documentation_changed": null,
-    "tests_changed": null
+    "documentation_changed": true,
+    "tests_changed": true,
+    "repair": {
+      "documentation": "docs/b3/TCD017_B3_ADMISSION_CLOSEOUT.md now states that B3D02 validation and scope guard passed and that TCD-017 is a qualified atomic B3 scientific admission, while preserving the UNKNOWN historical-behaviour and no-production-migration boundaries.",
+      "test_or_oracle": "tools/validate_b3d02_tcd017_admission.py now fails if a qualified final state retains the old conditional Result wording and requires final reviewer admission wording."
+    }
   },
   "reproducibility": {
     "pre_resolution_ref": "1658f80bd932889de20c7da1e48c1c05fbad4d0d",
@@ -110,6 +114,7 @@
       "validator_fixed_and_green_head": "51c5820613466e9b1fcd9b354b6bdf9f72f4edb9",
       "final_workunit_close": "bf31ffa96b4f71541c13d1426ccf48eac9536b24",
       "reviewer_doc_blob_unchanged_across_all_three": "efd6bfc60318cb4a08ce079dc73714e3cdbba711"
-    }
+    },
+    "repair_branch": "research/trace-animo-0003-resolution"
   }
 }
