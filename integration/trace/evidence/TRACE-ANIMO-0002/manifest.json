@@ -1,0 +1,53 @@
+{
+  "schema": "trace.evidence_manifest.v0.1",
+  "trace_id": "TRACE-ANIMO-0002",
+  "freeze_date": "2026-09-19",
+  "pre_resolution": {
+    "repository": "abhedwig-cell/ANIMO5",
+    "ref": "rg05o-integration",
+    "commit": "42829a645dfdb1cf99e71ab0955795503e099230"
+  },
+  "theory_sources": [],
+  "documentation_sources": [
+    {
+      "path": "docs/ghg/TCD032_METHANOGENESIS_C_TRANSFER_OWNERSHIP_QUALIFICATION.md",
+      "blob_sha": "ad5a7856293b5e9b84366e263330aca3be887688",
+      "observed_claim": "Status=AUTHORING_FROZEN_PENDING_GOV05_TIER_C_ADVERSARIAL_REVIEW; the workunit qualifies the transfer identity but does not admit TCD-032."
+    }
+  ],
+  "implementation_sources": [],
+  "existing_regression_evidence": [],
+  "authority_and_governance_sources": [
+    {
+      "path": "integration/animo-ghg/ANIMO-GHG03_STATUS.json",
+      "blob_sha": "85065742258c86b8feb7d92c3c781fd1975f7868",
+      "observed_claims": [
+        "phase=CLOSED_QUALIFIED_SCIENTIFIC_POLICY",
+        "review.completed=true",
+        "qualified=true",
+        "b3_admission_performed=false"
+      ]
+    },
+    {
+      "path": "integration/animo-ghg/ANIMO-GHG03_INTERNAL_ADVERSARIAL_REVIEW.json",
+      "blob_sha": "3fba4e4306ac90a43fbb1eed241813630553e243",
+      "observed_claim": "same-agent adversarial review completed with SELF_REVIEW_PASS; no independent review claim."
+    },
+    {
+      "path": "integration/animo-b3/B3D41_TCD032_ADMISSION_CONTRACT.json",
+      "blob_sha": "77f3539106ad61a6ce3ff6dcdf2a62553d843198",
+      "observed_claims": [
+        "candidate_admitted=true",
+        "formal_disposition=HISTORICAL_BEHAVIOUR_UNKNOWN_SCIENTIFIC_ADMISSION_WITH_UNCERTAINTY",
+        "production_implementation_admitted=false"
+      ]
+    }
+  ],
+  "inputs_and_configuration": [],
+  "runtime_environment": [],
+  "reproduction_commands": [],
+  "outputs": [],
+  "checksums": [],
+  "initial_conflict": "At the frozen integration state, the named GHG03 qualification document still presents the review as pending while the GHG03 status object says the review is complete and the policy qualified; a later B3D41 contract also records candidate admission. It is not yet known whether the document intentionally freezes the pre-review authoring state or is stale relative to its own workunit status.",
+  "notes": "Evidence frozen before reading B3D41 status/validator or broader successor integration artifacts."
+}
