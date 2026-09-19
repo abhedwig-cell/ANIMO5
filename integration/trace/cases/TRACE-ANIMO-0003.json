@@ -115,6 +115,16 @@
       "final_workunit_close": "bf31ffa96b4f71541c13d1426ccf48eac9536b24",
       "reviewer_doc_blob_unchanged_across_all_three": "efd6bfc60318cb4a08ce079dc73714e3cdbba711"
     },
-    "repair_branch": "research/trace-animo-0003-resolution"
+    "repair_branch": "research/trace-animo-0003-resolution",
+    "repair_postimage_ref": "c6efa57032727ed15102561e8eeacc311c8bfff1",
+    "repair_qualification": {
+      "workflow": "TRACE research integrity",
+      "run": 35429927284,
+      "conclusion": "success",
+      "checks": [
+        "TRACE registry integrity",
+        "TCD017 reviewer and admission-state consistency"
+      ]
+    }
   }
 }
