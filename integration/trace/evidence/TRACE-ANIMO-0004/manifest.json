@@ -1,0 +1,56 @@
+{
+  "schema": "trace.evidence_manifest.v0.1",
+  "trace_id": "TRACE-ANIMO-0004",
+  "freeze_date": "2026-09-19",
+  "pre_resolution": {
+    "repository": "abhedwig-cell/ANIMO5",
+    "ref": "rg05o-integration",
+    "commit": "b831acddeca9d14f4ab06f7fc6b9be5eca93ee69"
+  },
+  "theory_sources": [],
+  "documentation_sources": [
+    {
+      "path": "docs/ghg/TCD033_CH4_COMPONENT_PARTITION_QUALIFICATION.md",
+      "blob_sha": "3b89c05677c8647a16869a7a7c66c0aa5b2d96b4",
+      "observed_claims": [
+        "Status=CANDIDATE_SCIENTIFIC_POLICY_PENDING_EXACT_HEAD_REVIEW",
+        "A separate GOV05 Tier-C B3 admission decision is required after qualification is exact-final green."
+      ]
+    }
+  ],
+  "implementation_sources": [],
+  "existing_regression_evidence": [],
+  "authority_and_governance_sources": [
+    {
+      "path": "integration/animo-ghg/ANIMO-GHG02_STATUS.json",
+      "blob_sha": "3ee80ed3e24e98dc972bea62d3c3dc45355a9e93",
+      "observed_claims": [
+        "phase=CLOSED_QUALIFIED_SCIENTIFIC_POLICY",
+        "review.completed=true",
+        "qualified=true",
+        "b3_admission_performed=false"
+      ]
+    },
+    {
+      "path": "integration/animo-b3/ANIMO-B3D40_STATUS.json",
+      "blob_sha": "ae2ca1344d566953eeb5610211c82159b54a0403",
+      "observed_claims": [
+        "state=ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+        "admitted=true",
+        "qualified=true"
+      ]
+    },
+    {
+      "path": "integration/animo-b3/B3D40_TCD033_ADMISSION_CONTRACT.json",
+      "blob_sha": "b91ce79c7a4c17f5f09b4ac86a1543c8f1148041",
+      "observed_claim": "candidate_admitted=true for the qualified TCD033 parent/daughter partition identity."
+    }
+  ],
+  "inputs_and_configuration": [],
+  "runtime_environment": [],
+  "reproduction_commands": [],
+  "outputs": [],
+  "checksums": [],
+  "initial_conflict": "At the frozen current integration state, the reviewer-facing GHG02 qualification document presents the scientific policy as pending exact-head review and future B3 admission, while current GHG02 and B3D40 machine authorities record completed review/qualification and subsequent B3 admission. Temporal/freeze semantics have not yet been investigated.",
+  "notes": "Evidence frozen before reading GHG02 authoring-freeze, internal review, validator implementation, B3D40 authoring-freeze or commit chronology."
+}
