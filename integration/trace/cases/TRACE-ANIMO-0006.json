@@ -1,7 +1,7 @@
 {
   "trace_id": "TRACE-ANIMO-0006",
   "model": "ANIMO",
-  "status": "CONFIRMED",
+  "status": "CLOSED",
   "discovery": {
     "first_observed_date": "2026-09-19",
     "registered_date": "2026-09-19",
@@ -96,15 +96,29 @@
       }
     ],
     "final_authority": "ANIMO-B3D08 final status and TCD026_B3_ADMISSION_CLOSEOUT.json with exact final-head workflow run 34447874356",
-    "disposition": "UNRESOLVED_INSUFFICIENT_AUTHORITY",
+    "disposition": "DOCUMENTATION_CORRECTED",
     "code_changed": false,
-    "documentation_changed": null,
-    "tests_changed": null
+    "documentation_changed": true,
+    "tests_changed": true,
+    "repair": {
+      "owner_branch": "work/animo-b3d08-tcd026-admission-closeout",
+      "owner_repair_head": "a27e13e6edadb35e11478e5ca914d8421dd181f7",
+      "owner_workflow_run": 35439411812,
+      "owner_workflow_conclusion": "success",
+      "changes": [
+        "Reviewer closeout now states completed fail-closed validation and completed bounded B3 admission.",
+        "Existing B3D08 validator now rejects stale conditional reviewer wording whenever the machine state is qualified."
+      ],
+      "production_source_changed": false,
+      "scientific_identity_changed": false
+    }
   },
   "reproducibility": {
     "pre_resolution_ref": "c55078087aa8b86e704bb0fc869034fa79b27266",
     "evidence_manifest": "integration/trace/evidence/TRACE-ANIMO-0006/manifest.json",
     "final_b3d08_head": "cc280b630d6dc0d6bc1b8b0783ccfa4f91e15624",
-    "final_b3d08_run": 34447874356
+    "final_b3d08_run": 34447874356,
+    "owner_repair_head": "a27e13e6edadb35e11478e5ca914d8421dd181f7",
+    "owner_repair_run": 35439411812
   }
 }
