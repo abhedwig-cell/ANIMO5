@@ -1,0 +1,38 @@
+{
+  "schema": "trace.evidence_manifest.v0.1",
+  "trace_id": "TRACE-ANIMO-0001",
+  "freeze_date": "2026-09-19",
+  "pre_resolution": {
+    "repository": "abhedwig-cell/ANIMO5",
+    "ref": "rg05o-integration",
+    "commit": "dda2c4bbb8029c829f6e249068126ba2e1705c11"
+  },
+  "theory_sources": [],
+  "documentation_sources": [
+    {
+      "path": "docs/b3/TCD015_B3_ADMISSION_CLOSEOUT.md",
+      "blob_sha": "0a69956b591de3c49b4f94805844a0f6d4631c98",
+      "observed_claim": "TCD-015 is admitted as an atomic Class-B scientific correction after completed independent review."
+    }
+  ],
+  "implementation_sources": [],
+  "existing_regression_evidence": [],
+  "authority_and_governance_sources": [
+    {
+      "path": "integration/animo-b3/TCD015_B3_DISPOSITION_GOV03.json",
+      "blob_sha": "86e9a57ffef1676d997ab530b8b3ad31656f4181",
+      "observed_claims": [
+        "disposition=UNRESOLVED_NOT_ADMITTED",
+        "independent_review.review_status_at_reconciliation=PENDING_INDEPENDENT_REVIEW",
+        "admission_decision.admitted=false"
+      ]
+    }
+  ],
+  "inputs_and_configuration": [],
+  "runtime_environment": [],
+  "reproduction_commands": [],
+  "outputs": [],
+  "checksums": [],
+  "initial_conflict": "At the frozen current integration state, reviewer-facing closeout and machine-readable formal disposition appear to encode different admission states. Resolution/supersession semantics have not yet been investigated.",
+  "notes": "Evidence frozen before reading later authority-chain artifacts to determine whether this is intentional historical versioning or a current inconsistency."
+}
