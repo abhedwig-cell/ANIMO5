@@ -4,7 +4,7 @@ TRACE studies theory-documentation-code-executable-evidence reconciliation in ma
 
 Protocol freeze date: 2026-09-19
 Repository observation baseline: `rg05o-integration@86474df11ecf104797df9df3b8d53fcf2e847873`
-Study status: `PROSPECTIVE_CAPTURE_ACTIVE_ON_PROTOCOL_BRANCH`
+Study status: `PROSPECTIVE_CAPTURE_ACTIVE`
 
 ## Non-negotiable prospective rule
 
