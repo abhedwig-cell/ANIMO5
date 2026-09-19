@@ -88,6 +88,9 @@ def main():
         require(status["admission"]["scientific_b3_admission_intended"] is True, "qualified admission flag")
         require(status["work_status"]["tested"] is True, "qualified status tested")
         require(status["work_status"]["work_unit_complete"] is True, "qualified status complete")
+        require("B3D02 validation and the admission scope guard passed" in doc, "qualified reviewer result records passed validation")
+        require("TCD-017 is therefore the first qualified atomic B3 scientific admission" in doc, "qualified reviewer result records final admission")
+        require("Subject to successful B3D02 validator and scope guard" not in doc, "stale conditional reviewer result forbidden after qualification")
 
     print("PASS_B3D02_TCD017_ADMISSION")
 
