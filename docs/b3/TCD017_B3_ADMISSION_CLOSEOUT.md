@@ -88,4 +88,4 @@ The independent second-line review was performed in a separate ChatGPT context f
 
 ## Result
 
-Subject to successful B3D02 validator and scope guard, TCD-017 becomes the first atomic B3 scientific admission under the qualified historical-uncertainty route.
+B3D02 validation and the admission scope guard passed on tested head `51c5820613466e9b1fcd9b354b6bdf9f72f4edb9` in GitHub Actions run `34394266202`. TCD-017 is therefore the first qualified atomic B3 scientific admission under the qualified historical-uncertainty route. Historical revision-53 behaviour remains `UNKNOWN`, and this admission does not authorize a production source patch or production migration.
