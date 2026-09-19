@@ -1,0 +1,115 @@
+{
+  "trace_id": "TRACE-ANIMO-0003",
+  "model": "ANIMO",
+  "status": "CONFIRMED",
+  "discovery": {
+    "first_observed_date": "2026-09-19",
+    "registered_date": "2026-09-19",
+    "observer": "TRACE_PRIMARY_RECONCILIATION",
+    "work_unit": "TRACE-B02-ANIMO-E01",
+    "inspection_trigger": "SCHEDULED_SYSTEMATIC_RECONCILIATION",
+    "planned_or_opportunistic": "PLANNED"
+  },
+  "eligibility": {
+    "known_before_registration": false,
+    "disposition_known_before_registration": false,
+    "prospective_eligible": true,
+    "decision_reason": "The mismatch was first observed during preregistered Batch 02 inspection and both the discrepancy and its disposition were unknown when the candidate and pre-resolution evidence were frozen."
+  },
+  "scientific_element": {
+    "scientific_element_id": "TRACE-ELEM-ANIMO-B02-001",
+    "subsystem": "transport",
+    "description": "TCD-017 organic-P ploughing redistribution reporting-ledger scientific admission and its reviewer-facing authority chain."
+  },
+  "representations": [
+    {
+      "kind": "reviewer_documentation",
+      "path": "docs/b3/TCD017_B3_ADMISSION_CLOSEOUT.md",
+      "pre_resolution_blob": "efd6bfc60318cb4a08ce079dc73714e3cdbba711",
+      "claim": "Admission remains conditional on successful B3D02 validator and scope guard."
+    },
+    {
+      "kind": "machine_status",
+      "path": "integration/animo-b3/ANIMO-B3D02_STATUS.json",
+      "pre_resolution_blob": "f0090f498219c545f331e7484f24a7ea310cf0fa",
+      "claim": "B3D02 validation and scope guard passed; scientific admission is qualified and work unit complete."
+    },
+    {
+      "kind": "machine_admission_record",
+      "path": "integration/animo-b3/TCD017_B3_ADMISSION_CLOSEOUT.json",
+      "pre_resolution_blob": "74fc5ae79081b8405a4f135e9d030444a1bd0c8f",
+      "claim": "admission_decision.admitted=true under the historical-uncertainty route."
+    },
+    {
+      "kind": "preexisting_regression_oracle",
+      "path": "tools/validate_b3d02_tcd017_admission.py",
+      "pre_resolution_blob": "c7c1f9ca08b74ba48911ae3877ae5cd882bae079",
+      "claim": "Validator loads the reviewer document but checks only uncertainty/boundary wording, not consistency between the Result section and final qualified status."
+    }
+  ],
+  "conflict": {
+    "relation_classes": [
+      "DOCUMENTATION_IMPLEMENTATION",
+      "REGRESSION_ORACLE_INDEPENDENT_EVIDENCE"
+    ],
+    "initial_statement": "The current reviewer-facing TCD-017 closeout presents scientific admission as conditional on validation that the current machine status and admission record show has already succeeded.",
+    "application_envelope": "Reviewer interpretation of the admitted atomic TCD-017 Class-A scientific/accounting correction under the GOV03 historical-uncertainty route. Production migration remains outside scope.",
+    "discovery_uncertainty": "Initially unresolved whether the conditional prose was a deliberately frozen pre-validation artifact or stale current documentation."
+  },
+  "detection": {
+    "first_exposing_evidence": "Side-by-side reconciliation of the current TCD-017 reviewer closeout with ANIMO-B3D02_STATUS.json and TCD017_B3_ADMISSION_CLOSEOUT.json.",
+    "method": "Prospective scheduled theory-documentation-code-evidence reconciliation followed, after evidence freeze, by workunit commit chronology and validator reconstruction.",
+    "modernization_specific": true,
+    "mechanism_code": "STALE_CONDITIONAL_REVIEWER_PROSE_AFTER_FINAL_QUALIFICATION_WITH_INCOMPLETE_STATUS_CONSISTENCY_ORACLE"
+  },
+  "scientific_consequence": {
+    "potential": [
+      "INTERPRETATIVE",
+      "STRUCTURAL"
+    ],
+    "demonstrated": [
+      "INTERPRETATIVE"
+    ],
+    "evidence": "A reader of the designated reviewer-facing closeout can conclude that TCD-017 admission is still contingent, whereas the authoritative machine status records completed qualification and admission. No physical-state, process-flux or quantitative model consequence is demonstrated."
+  },
+  "regression_counterfactual": {
+    "preexisting_suite_ref": "tools/validate_b3d02_tcd017_admission.py on B3D02 tested head 51c5820613466e9b1fcd9b354b6bdf9f72f4edb9; GitHub Actions run 34394266202",
+    "affected_route_within_scope": true,
+    "outcome": "REGRESSION_MISSED",
+    "evidence": "The validator explicitly loaded docs/b3/TCD017_B3_ADMISSION_CLOSEOUT.md and passed the final qualified workunit, but asserted only historical-uncertainty and boundary wording. It did not reject the stale 'Subject to successful ...' Result sentence when status.work_status.qualified=true."
+  },
+  "resolution": {
+    "candidate_authorities": [
+      {
+        "authority": "ANIMO-B3D02 final workunit",
+        "ref": "bf31ffa96b4f71541c13d1426ccf48eac9536b24",
+        "role": "Final workunit close commit changes machine status to qualified while the reviewer-document blob remains unchanged."
+      },
+      {
+        "authority": "ANIMO-B3D02 machine status",
+        "ref": "integration/animo-b3/ANIMO-B3D02_STATUS.json@f0090f498219c545f331e7484f24a7ea310cf0fa",
+        "role": "Records successful validation, scope guard PASS, qualified scientific admission and complete workunit."
+      },
+      {
+        "authority": "TCD-017 admission record",
+        "ref": "integration/animo-b3/TCD017_B3_ADMISSION_CLOSEOUT.json@74fc5ae79081b8405a4f135e9d030444a1bd0c8f",
+        "role": "Records admitted=true and the bounded admission disposition."
+      }
+    ],
+    "final_authority": "ANIMO-B3D02@bf31ffa96b4f71541c13d1426ccf48eac9536b24 with machine status/admission records",
+    "disposition": "UNRESOLVED_INSUFFICIENT_AUTHORITY",
+    "code_changed": false,
+    "documentation_changed": null,
+    "tests_changed": null
+  },
+  "reproducibility": {
+    "pre_resolution_ref": "1658f80bd932889de20c7da1e48c1c05fbad4d0d",
+    "evidence_manifest": "integration/trace/evidence/TRACE-ANIMO-0003/manifest.json",
+    "chronology": {
+      "doc_authored": "239b56d8bfd8dde764c4990052cb556bcee6b9e6",
+      "validator_fixed_and_green_head": "51c5820613466e9b1fcd9b354b6bdf9f72f4edb9",
+      "final_workunit_close": "bf31ffa96b4f71541c13d1426ccf48eac9536b24",
+      "reviewer_doc_blob_unchanged_across_all_three": "efd6bfc60318cb4a08ce079dc73714e3cdbba711"
+    }
+  }
+}
