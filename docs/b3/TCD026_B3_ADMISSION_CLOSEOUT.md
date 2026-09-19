@@ -36,7 +36,7 @@ No qualified B2 exists. Historical revision-53 behaviour therefore remains `UNKN
 
 ## Admission decision
 
-Subject to this workunit's fail-closed validation, admit the bounded scientific correction as:
+Following successful fail-closed validation, the bounded scientific correction is admitted as:
 
 `ADMIT_TCD026_ATOMIC_CLASS_A_SCIENTIFIC_ACCOUNTING_CORRECTION_WITH_HISTORICAL_UNCERTAINTY`
 
@@ -54,4 +54,4 @@ No composition with other organic-matter TCDs is admitted. No production source 
 
 ## Project effect
 
-If validation is green, TCD-026 becomes one additional atomic B3 scientific admission. Whole-model B3 remains incomplete. A separate central-regie integration is required afterwards.
+Validation is green and TCD-026 is one additional atomic B3 scientific admission. Whole-model B3 remains incomplete. A separate central-regie integration remains required afterwards.
