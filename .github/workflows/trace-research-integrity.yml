@@ -5,11 +5,19 @@ on:
     paths:
       - 'integration/trace/**'
       - 'tools/validate_trace_registry.py'
+      - 'docs/b3/TCD017_B3_ADMISSION_CLOSEOUT.md'
+      - 'integration/animo-b3/ANIMO-B3D02_STATUS.json'
+      - 'integration/animo-b3/TCD017_B3_ADMISSION_CLOSEOUT.json'
+      - 'tools/validate_b3d02_tcd017_admission.py'
       - '.github/workflows/trace-research-integrity.yml'
   push:
     paths:
       - 'integration/trace/**'
       - 'tools/validate_trace_registry.py'
+      - 'docs/b3/TCD017_B3_ADMISSION_CLOSEOUT.md'
+      - 'integration/animo-b3/ANIMO-B3D02_STATUS.json'
+      - 'integration/animo-b3/TCD017_B3_ADMISSION_CLOSEOUT.json'
+      - 'tools/validate_b3d02_tcd017_admission.py'
       - '.github/workflows/trace-research-integrity.yml'
   workflow_dispatch:
 
@@ -26,6 +34,8 @@ jobs:
           python-version: '3.11'
       - name: Validate TRACE registry and case integrity
         run: python tools/validate_trace_registry.py
+      - name: Validate TCD017 reviewer and admission-state consistency
+        run: python tools/validate_b3d02_tcd017_admission.py
       - name: Validate TRACE JSON syntax
         run: |
           python -m json.tool integration/trace/TRACE_CASE_SCHEMA.json >/dev/null
