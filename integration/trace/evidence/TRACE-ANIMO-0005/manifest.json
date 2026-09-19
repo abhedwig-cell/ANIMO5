@@ -1,0 +1,53 @@
+{
+  "schema": "trace.evidence_manifest.v0.1",
+  "trace_id": "TRACE-ANIMO-0005",
+  "freeze_date": "2026-09-19",
+  "pre_resolution": {
+    "repository": "abhedwig-cell/ANIMO5",
+    "ref": "rg05o-integration",
+    "commit": "b831acddeca9d14f4ab06f7fc6b9be5eca93ee69"
+  },
+  "theory_sources": [],
+  "documentation_sources": [
+    {
+      "path": "docs/numerics/TCD019_RESTRICTED_NO_FALLBACK_NUMERICAL_POLICY.md",
+      "blob_sha": "770b882398c9aeefc848751185ceb1ec0ccaca35",
+      "observed_claim": "Status=AUTHORING_FROZEN_PENDING_GOV05_TIER_C_ADVERSARIAL_REVIEW; B3 admission remains a separate future workunit."
+    }
+  ],
+  "implementation_sources": [],
+  "existing_regression_evidence": [],
+  "authority_and_governance_sources": [
+    {
+      "path": "integration/animo-numerics/ANIMO-NQ05_STATUS.json",
+      "blob_sha": "b8db8f45183466c82028d16583b6e50dee269d16",
+      "observed_claims": [
+        "phase=CLOSED_QUALIFIED_SCIENTIFIC_POLICY",
+        "qualified=true",
+        "review.completed=true",
+        "workunit_complete=true"
+      ]
+    },
+    {
+      "path": "integration/animo-b3/ANIMO-B3D42_STATUS.json",
+      "blob_sha": "5e6646a71e4eaeab06bcd49d06ee1998bd5daa77",
+      "observed_claims": [
+        "state=ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+        "admitted=true",
+        "qualified=true"
+      ]
+    },
+    {
+      "path": "integration/animo-b3/B3D42_TCD019_ADMISSION_CONTRACT.json",
+      "blob_sha": "f7b5393eaa7fcfd43baa2d8056cc21882ca4713f",
+      "observed_claim": "candidate_admitted=true for the restricted exact-storage/no-legacy-fallback numerical policy."
+    }
+  ],
+  "inputs_and_configuration": [],
+  "runtime_environment": [],
+  "reproduction_commands": [],
+  "outputs": [],
+  "checksums": [],
+  "initial_conflict": "The reviewer-facing NQ05 document still presents adversarial review as pending and B3 admission as future while current NQ05 status records completed review/qualification and current B3D42 authority records admission. It is not yet known whether the reviewer document is intentionally frozen pre-review evidence or stale current documentation.",
+  "notes": "Evidence frozen before reading NQ05/B3D42 authoring-freeze contracts, validators or commit chronology."
+}
