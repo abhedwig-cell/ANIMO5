@@ -1,0 +1,56 @@
+{
+  "schema": "trace.evidence_manifest.v0.1",
+  "trace_id": "TRACE-ANIMO-0005",
+  "freeze_date": "2026-09-19",
+  "pre_resolution": {
+    "repository": "abhedwig-cell/ANIMO5",
+    "ref": "rg05o-integration",
+    "commit": "ab564e6ac0565d33babb8a7467789bc509463d64"
+  },
+  "theory_sources": [],
+  "documentation_sources": [
+    {
+      "path": "docs/numerics/TCD019_RESTRICTED_NO_FALLBACK_NUMERICAL_POLICY.md",
+      "blob_sha": "770b882398c9aeefc848751185ceb1ec0ccaca35",
+      "observed_claims": [
+        "Status=AUTHORING_FROZEN_PENDING_GOV05_TIER_C_ADVERSARIAL_REVIEW",
+        "This workunit performs no B3 admission; any restricted top-level TCD-019 admission is a separate workunit."
+      ]
+    }
+  ],
+  "implementation_sources": [],
+  "existing_regression_evidence": [],
+  "authority_and_governance_sources": [
+    {
+      "path": "integration/animo-numerics/ANIMO-NQ05_STATUS.json",
+      "blob_sha": "b8db8f45183466c82028d16583b6e50dee269d16",
+      "observed_claims": [
+        "phase=CLOSED_QUALIFIED_SCIENTIFIC_POLICY",
+        "review.completed=true",
+        "qualified=true",
+        "b3_admission_performed=false"
+      ]
+    },
+    {
+      "path": "integration/animo-b3/ANIMO-B3D42_STATUS.json",
+      "blob_sha": "5e6646a71e4eaeab06bcd49d06ee1998bd5daa77",
+      "observed_claims": [
+        "state=ADMITTED_B3_WITH_HISTORICAL_UNCERTAINTY",
+        "admitted=true",
+        "qualified=true"
+      ]
+    },
+    {
+      "path": "integration/animo-b3/B3D42_TCD019_ADMISSION_CONTRACT.json",
+      "blob_sha": "f7b5393eaa7fcfd43baa2d8056cc21882ca4713f",
+      "observed_claim": "candidate_admitted=true for the restricted TCD-019 numerical policy."
+    }
+  ],
+  "inputs_and_configuration": [],
+  "runtime_environment": [],
+  "reproduction_commands": [],
+  "outputs": [],
+  "checksums": [],
+  "initial_conflict": "The reviewer-facing NQ05 document remains at authoring-time pending-review/no-B3-admission wording while current NQ05 and B3D42 machine authorities record completed qualification and subsequent B3 admission. Freeze/provenance semantics have not yet been investigated.",
+  "notes": "Evidence frozen before reading ANIMO-NQ05_AUTHORING_FREEZE.json, the NQ05 validator, NQ05 review chronology, or B3D42 freeze/review chronology."
+}
